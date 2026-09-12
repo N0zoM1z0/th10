@@ -347,7 +347,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042A3D0,unknown,Replay,review,unknown,replay-initialize-raw-context-2026-09-13
 0x0042A3E0,unknown,Replay,review,unknown,replay-initialize-raw-context-2026-09-13
 0x0042A430,unknown,Replay,review,unknown,replay-initialize-raw-context-2026-09-13
-0x0042A450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0042A450,authored_game,Replay,authored,high,replay-stage-transition-2026-09-13
 0x0042A6A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0042A8A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0042A930,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

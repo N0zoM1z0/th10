@@ -52,6 +52,14 @@ typedef char ReplayDataHeaderSlowRateAt48[
 typedef char ReplayDataHeaderStageCountAt4C[
     (offsetof(ReplayDataHeader, stageCount) == 0x4c) ? 1 : -1];
 
+struct ReplayStageRuntimePair
+{
+    unsigned int first;
+    unsigned int second;
+};
+typedef char ReplayStageRuntimePairSizeIs08[
+    (sizeof(ReplayStageRuntimePair) == 0x08) ? 1 : -1];
+
 struct ReplayStageDataHeader
 {
     short stageIndex;
@@ -67,10 +75,14 @@ struct ReplayStageDataHeader
     unsigned int unknown020;
     unsigned int unknown024;
     unsigned int unknown028;
-    unsigned char unknown02C[0x188];
+    unsigned char runtimeSnapshot[0x108];
+    ReplayStageRuntimePair runtimePairs0[4];
+    ReplayStageRuntimePair runtimePairs1[4];
+    ReplayStageRuntimePair runtimePairs2[4];
+    ReplayStageRuntimePair runtimePairs3[4];
     unsigned int unknown1B4;
     unsigned int unknown1B8;
-    unsigned char unknown1BC[4];
+    unsigned int unknown1BC;
     unsigned int unknownFlag1C0 : 1;
     unsigned int unknownFlags1C0 : 31;
 };
@@ -82,10 +94,18 @@ typedef char ReplayStageDataHeaderPayloadSizeAt08[
     (offsetof(ReplayStageDataHeader, payloadSize) == 0x08) ? 1 : -1];
 typedef char ReplayStageDataHeaderUnknown00CAt0C[
     (offsetof(ReplayStageDataHeader, unknown00C) == 0x0c) ? 1 : -1];
+typedef char ReplayStageDataHeaderRuntimeSnapshotAt2C[
+    (offsetof(ReplayStageDataHeader, runtimeSnapshot) == 0x2c) ? 1 : -1];
+typedef char ReplayStageDataHeaderRuntimePairs0At134[
+    (offsetof(ReplayStageDataHeader, runtimePairs0) == 0x134) ? 1 : -1];
+typedef char ReplayStageDataHeaderRuntimePairs3At194[
+    (offsetof(ReplayStageDataHeader, runtimePairs3) == 0x194) ? 1 : -1];
 typedef char ReplayStageDataHeaderUnknown1B4At1B4[
     (offsetof(ReplayStageDataHeader, unknown1B4) == 0x1b4) ? 1 : -1];
 typedef char ReplayStageDataHeaderUnknown1B8At1B8[
     (offsetof(ReplayStageDataHeader, unknown1B8) == 0x1b8) ? 1 : -1];
+typedef char ReplayStageDataHeaderUnknown1BCAt1BC[
+    (offsetof(ReplayStageDataHeader, unknown1BC) == 0x1bc) ? 1 : -1];
 
 struct ReplayRecData
 {
@@ -168,6 +188,7 @@ class ReplayManager
     static ReplayManager *Create(int mode, const char *replayPath);
     static ReplayManager *Load(const char *replayPath);
     static void Destroy(ReplayManager *replayManager);
+    void BeginStage();
     int ProcessFrame();
 
     // Names below are maintained descriptions of target-observed roles. The
