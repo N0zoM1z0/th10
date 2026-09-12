@@ -1,182 +1,270 @@
-# TH10 reconstruction handoff
+# TH10 exact-reconstruction handoff
 
-## Current phase
+## Campaign state
 
-Exact reconstruction remains in boundary/origin review with early pinned-VC7.1
-feedback. This checkpoint reviews the executable entry seam and the application
-entry hard frontier. It does not claim source presence, function exactness,
-whole-product closure, runtime validation, semantic reconstruction, or ports.
+The exact-reconstruction campaign remains active and incomplete. This conversation
+reviewed one hard D3D/application-entry owner seam. It did not establish any
+source-present mapping, canonical exact function, whole Windows i386 build,
+runtime validation, or new Truth Kernel acceptance.
 
-## Session identity and recovery
+Repository selection was exactly `th10`, analysis provider exactly
+`th10-ghidra`, and target exactly `target:th10-main`. The ignored operator target
+remained at `resources/th10.exe`; it was verified in place and was not modified,
+relocated, staged, or committed.
 
-- Repository: `th10`; branch: `main`.
-- Starting HEAD: `1c89a91a57d9ff45cace3308f3c0e143b4657d42`.
-- Starting tracked/untracked state: clean; 0 staged, 0 unstaged, 0 untracked,
-  0 conflicts; upstream `origin/main`, ahead/behind `0/0`.
-- Mandatory repository guidance and Factory contracts were all mounted and read.
-- No interrupted tracked or untracked work required recovery.
-- Preserved ignored/private state: `resources/th10.exe`, `.tools/`,
-  `ghidra-project/`, pre-existing `.analysis/bootstrap/` and
-  `.analysis/factory-native-ghidra/`, and pre-existing generated `build/` state.
-  None was reset, replaced, deleted, staged, or committed.
-- `.analysis/` measured 4,222 bytes at entry. Current-session scratch is isolated
-  under `.analysis/gpt-web/20260912-main-frontier/`.
+Session starting HEAD was
+`9f7886f17954621890754ee86a90a3cd0d53a7c3` on `main`. The tree was clean at
+entry: zero staged, unstaged, untracked, or conflicted paths. The checkpoint
+containing this handoff should use subject `gpt-web: review TH10 D3D owner seam`;
+the live Git commit containing this document is the authoritative ending HEAD.
+No Factory repository command in this session performs network Git operations,
+and no push was requested or executed.
 
-Two read-only Factory repository-shell requests encountered transient transport
-failures and returned no command ID. After each failure the live repository
-status/diffs were re-read before continuing; no unexpected filesystem change was
-observed. The Ghidra attestation was also rechecked after the first failure.
+## Recovery gate and preserved state
 
-## Attested baseline and preflights
+The mandatory Factory authority/repository/status checks passed. All required
+repository and Factory guidance paths were mounted and read before editing.
+Recovery inspection covered recent commits, porcelain-v2 status, complete staged
+and unstaged diffs, untracked paths, relevant ignored state, build state, and
+this handoff.
 
-The Factory binding is exactly `target:th10-main` through read-only
-`th10-ghidra`. `factory_analysis_call(check, {})` passed with
-`attestation.provider_transport=factory-native-command`, the pinned target hash,
-image layout, and entry point. Useful Ghidra results in this packet carried the
-same passed attestation and have `exactness_credit=none`.
+No tracked or untracked interrupted work required recovery. Ignored paths were
+classified as follows:
 
-Repository preflights passed:
+- `resources/th10.exe`: operator-supplied private target; preserved and excluded.
+- `.tools/`: shared/tool-selection and game-bound Wine state; preserved and
+  excluded.
+- `.analysis/bootstrap/`: pre-existing analysis material; preserved as
+  legacy/pre-existing state without granting it authority.
+- `.analysis/gpt-web/20260912-main-frontier/`: prior checkpointed diagnostic
+  material; preserved.
+- `.analysis/gpt-web/20260912-d3d-owner-seam/`: current-session reproducible
+  diagnostic scratch; see the artifact section below.
+- `build/`: no relevant file was present at recovery inspection.
 
-```text
-python3 scripts/verify-target.py
-python3 scripts/verify-toolchain.py --execute
-python3 scripts/validate-tracking.py --require-target
-python3 scripts/report-reconstruction-status.py
-python3 scripts/ci.py
-```
+No reset, stash, cleanup, or deletion was used to obtain a clean tree.
 
-The pinned VC7.1 SP1 smoke still executes normal C/C++ COFF, C++ LTCG,
-resources, and PE32 i386 linking. Rich evidence remains 131 normal-C, 15
-normal-C++, and 52 LTCG-C++ build-6030 records; per-function input ownership and
-profiles remain unknown.
+## Identity and preflight
+
+The private target passed `scripts/verify-target.py` with SHA-256
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`,
+MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 image base `0x00400000`,
+entry `0x004537DC`, and Rich dominant build 6030.
+
+`scripts/verify-toolchain.py --execute` passed the hash-pinned VC7.1 SP1
+normal-COFF, C++ LTCG, resource, and PE32-link smoke under headless Wine.
+Tracking, reconstruction status, and public CI preflights also passed.
+
+Native Ghidra discovery was performed before target-dependent queries. A real
+`check {}` and every useful query returned a passed attestation for
+`target:th10-main` with
+`attestation.provider_transport=factory-native-command`. Ghidra remained
+read-only and every semantic result carried `exactness_credit=none`.
+
+A Truth Kernel accepted-snapshot refresh was attempted twice during this
+conversation, but both attempts were unavailable because another Factory
+operation owned the operator path. Do not infer acceptance from this absence;
+no current accepted-state result was obtained in this conversation.
 
 ## Reviewed hard-frontier packet
 
-### `0x004537DC` — CRT entry
+The packet was selected because it is directly connected to the previously
+reviewed WinMain/device-reset seam and includes a 1,159-byte central D3D
+initializer plus a 710-byte render-state initializer. It was not selected by
+smallest function size.
 
-The reviewed extent remains `0x004537DC-0x004539B0`. Target-local disassembly
-shows VC runtime startup: runtime/heap/thread/IO initialization, argv/environment
-setup, WinMain argument preparation, the single call to `0x00438AD0`, and CRT
-exit handling. It is now classified `library / CRT / exclude / high` rather than
-authored game code. The exact original CRT source file/library member remains
-unknown.
+### `0x004391F0-0x004392DB` — proposed `GameWindow::Present`
 
-### `0x00438AD0` — application entry / `WinMain`
+This 236-byte function is now reviewed as `authored_game` with high confidence.
+Direct target bytes show a `ret` at `0x004392DB`, followed by four `0xCC` bytes
+through `0x004392DF`; Ghidra independently identifies `0x004392E0` as the next
+function.
 
-The reviewed authored extent is `0x00438AD0-0x0043903C` (1,389 bytes). The
-unique CRT caller supplies the four GUI-entry arguments and the target returns
-with `ret 0x10`; `0x0043903D-0x0043903F` is three-byte `0xCC` padding. The body
-owns the target-local D3D9 cooperative-level/reset message loop, restart path,
-window teardown, configuration writeback, and process-level cleanup. The ledger
-therefore proposes `WinMain` with `__stdcall` and the four-argument WinMain
-signature, but has no source mapping and no exact claim.
+Target-local behavior is sufficient to establish the role without relying on an
+adjacent name: the function calls the D3D9 device `Present` vtable slot; on
+failure it calls the reviewed EAX-private resource-release helper at
+`0x00438A30`, resets the device with the presentation-parameter global, invokes
+`0x00439D20`, and sets a reset countdown/state. It then processes the
+`snapshot/th%.3d.bmp` capture path.
 
-Target strings inspected in this packet include `th10.cfg`, `./log.txt`, the
-startup log banner, the Direct3D creation error, and the option-change restart
-message. They corroborate the application-entry lifecycle but do not establish
-TU ownership.
+`GameWindow::Present` is only a proposed source name. Committed TH08/TH095
+sources contain a static function with the same engine role and unusually close
+control-flow shape, but those sources do not prove the TH10 identifier, TU, or
+owner. No source mapping or exactness claim was added.
 
-### `0x00438A30` — reset-path resource-release seam
+### `0x00439890-0x00439D16` — proposed `GameWindow::InitD3DRendering`
 
-The reviewed extent is `0x00438A30-0x00438A5A` (43 bytes), followed by five
-`0xCC` bytes before independent `0x00438A60`. Both target-local callers
-(`0x00438AD0` and `0x004391F0`) load the same manager pointer into EAX before the
-call. The callee uses that EAX object base and releases/clears 32 COM resource
-pointers at object offset `+0x3AD4E0`. Authorship is high-confidence, but the
-physical object owner/name and source-level ABI remain unknown.
+This 1,159-byte function is now reviewed as `authored_game` with high confidence.
+The target ends in `ret` at `0x00439D16`; `0x00439D17-0x00439D1F` is nine bytes
+of `0xCC` padding before independent `0x00439D20`.
 
-The EAX object convention is a material optimizer-context signal. It is not a
-normal out-of-line MSVC `__thiscall` boundary, so this packet does not strip an
-LTCG hypothesis merely to fit the standalone normal-COFF Oracle. Which Rich
-record/TU owns the code is still unknown.
+WinMain calls it directly and treats nonzero return as startup failure. The body
+constructs D3D9 presentation parameters, attempts HAL hardware-vertex-processing,
+HAL software-vertex-processing, and REF fallbacks, retries refresh/presentation
+settings, copies the selected presentation parameters into the persistent global,
+constructs the view/projection matrices, queries viewport/device capabilities,
+checks texture-format support, invokes `0x00439D20`, then clears startup/window
+state and returns success.
 
-### Denominator challenge after `WinMain`
+The proposed `GameWindow::InitD3DRendering` name is corroborated by committed
+TH08/TH095 source, while TH10 target control flow independently establishes the
+D3D-initialization role. Original identifier, source file, TU partition, and
+normal-COFF/LTCG owner remain unknown.
 
-Raw target code starts at `0x00439040`, `0x00439060`, `0x00439080`, and
-`0x004390A0` after WinMain padding. Ghidra reports no function containing any of
-those addresses, `xrefs_to` reports no direct references, and a bounded raw
-little-endian VA scan finds no literal pointers to them. Their register-dependent
-entry shapes are compatible with cleanup/compiler funclets, but that origin is
-not proved. They therefore remain documented unknowns and are not added to the
-function denominator yet.
+### `0x00439D20-0x00439FE5` — proposed `GameWindow::ResetRenderState`
 
-## Compiler feedback for this packet
+This 710-byte function is now reviewed as `authored_game` with high confidence.
+It ends in `ret` at `0x00439FE5`; ten `0xCC` bytes through `0x00439FEF` precede
+independent `0x00439FF0`. Its three reviewed callers are the WinMain device-reset
+path, `0x004391F0`, and `0x00439890`.
 
-A current-session ABI probe is retained under
-`.analysis/gpt-web/20260912-main-frontier/`. With the pinned compiler:
+A material ABI correction was made. Ghidra provisionally described the function
+as `__fastcall` with one parameter, but the target instruction stream contradicts
+that interpretation. Entry `push ecx` reserves one local dword. That same stack
+slot is overwritten with the bit patterns for `1.0f`, `1000.0f`, and `5000.0f`
+and passed to `SetRenderState`; exit `pop ecx; ret` releases the scratch. The
+first render-state call independently pushes the constant value `1`, so the
+saved ECX is not its source parameter. All three target callers issue a direct
+zero-stack-argument call. The source-level no-argument calling-convention family
+is still not distinguishable merely from `ret`, so no calling convention was
+invented in the ledger.
 
-- `/MT /O2 /Gy /GF /Oi /DNDEBUG` emits normal i386 COFF with symbol
-  `_WinMain@16` and `ret 0x10`.
-- the same probe with `/GL` emits a VC7.1 LTCG intermediate object rather than
-  normal COFF.
+The target applies a fixed D3D9 render-state sequence, then texture-stage states,
+then sampler states. The tail conditionally writes five bytes/dwords inside the
+large manager object referenced by `0x00491C10`. Committed TH095 source suggests
+these may correspond to inlined render-cache clearing methods, but TH10 does not
+yet establish the manager type/layout or exact source-level method ownership.
+Those writes therefore remain an owner/layout blocker rather than being encoded
+as a guessed structure.
 
-This confirms the compiler-side WinMain ABI and exercises both candidate
-artifact classes. It is diagnostic only: the probe is not reconstructed TH10
-source and has no exactness or source-presence credit.
+A pinned VC7.1 `/O2` diagnostic probe compiled a no-argument C++ function with a
+float local and virtual render-state calls. The normal-COFF object naturally
+emitted the same `push ecx`, stack-dword stores of `1.0f`/`1000.0f`/`5000.0f`,
+and `pop ecx; ret` source shape. A `/GL` probe also produced a valid LTCG
+intermediate object. This confirms that the observed local-scratch shape is
+natural VC7.1 output; it does not identify which artifact family owns the TH10
+function and grants no exactness credit.
 
-Adjacent-game committed source was consulted only as hypothesis material:
+## Adjacent-game hypothesis sources
+
+Only committed adjacent content was used. The observed repository states were:
 
 - TH08 HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, clean.
-- TH09 HEAD `943ec407a9429379fa9fdbcde97dd246e51f10a8`, clean; no relevant WinMain hit.
-- TH095 HEAD `ca16d9dd06101ae317b873069e30b6f61b801f20`; its worktree had unrelated
-  untracked files, so only committed `HEAD:src/Main.cpp` was read.
+- TH09 HEAD `943ec407a9429379fa9fdbcde97dd246e51f10a8`, clean; it did not supply a
+  materially useful D3D-main analogue for this packet.
+- TH095 HEAD `d8949073a3cb10586e3a5e0f9436594cede2e58b`, with unrelated live
+  modifications/untracked files. The dirty TH095 worktree was not consulted for
+  hypotheses; only `git show HEAD:...` committed content was read.
 
-TH08/TH095 supplied a useful lifecycle/name hypothesis, but every promoted TH10
-claim above is independently supported by TH10 target evidence.
+TH08/TH095 both supplied `GameWindow::Present`, `InitD3DRendering`, and
+`ResetRenderState` source-shape hypotheses. TH10 differs materially in D3D9
+state layout and constants, including an alpha-reference value of 1, unconditional
+fog enable in the reviewed target function, D3D9 sampler-state calls, and no
+corresponding edge-antialias state call in the reviewed extent. TH10 evidence
+wins over adjacent source wherever they differ.
 
-## Ledger state after this checkpoint
+## Ledger and verification-plane state
 
-After regenerating progress:
+After this packet the ledgers report:
 
-- tracked candidates: 1,195;
-- origin/boundary pending: 1,192;
-- reviewed authored: 2 functions / 1,432 bytes;
-- reviewed exclusions: 1;
-- source-present authored mappings: 0;
-- canonical exact functions/bytes: 0 / 0.
+- 1,195 tracked candidates;
+- 1,189 origin/boundary reviews pending;
+- 5 reviewed authored functions totaling 3,537 bytes;
+- 1 reviewed exclusion;
+- 0 source-present mappings;
+- 0 canonical exact functions and 0 canonical exact authored bytes.
 
-Source presence remains false for this packet because the `0x732460` manager
-layout, relevant globals/owners, TU boundary, and original source-level private
-ABI are not established. No opaque padding, address-encoded fake object, target
-bytes, or forced return was introduced merely to create a mapping.
+The authored denominator is still moving and incomplete. Proposed names do not
+count as source presence. No canonical match unit or `config/matches.csv` exact
+row was added.
 
-The whole Windows i386 graph remains explicitly open. `python3 scripts/build.py
---check` passes, while the honest `python3 scripts/build.py` diagnostic exits 2
-because compile flags, TU partition, libraries, resources, and link order remain
-unknown. Runtime validation has not started. No new Factory Truth Kernel exact
-claim is implied by these ledger edits.
+Verification planes remain separate:
 
-## Validation at checkpoint
+- Source presence: **0**; no TH10 production source file was added in this packet.
+- Function/owned-extent exactness: **0**; no target-bound zero-difference Oracle
+  passed.
+- Whole Windows i386 build closure: **open**. `scripts/build.py --check` passes
+  the explicitly open skeleton; the honest `scripts/build.py` diagnostic exits
+  RC=2 because compile flags, TU partition, libraries, resources, and link order
+  remain unknown.
+- Runtime validation: **not started**; no runtime claim is available.
+- Truth Kernel acceptance: **unavailable for refresh in this conversation** due
+  to the Factory operator-path lock; no new acceptance is claimed.
 
-The following all passed after the edits unless an expected nonzero result is
-shown:
+## Commands and checks actually run
 
-```text
-python3 scripts/validate-tracking.py --require-target       # pass
-python3 scripts/progress.py --check                         # pass
-python3 scripts/build-match-unit.py --check                 # pass; 0 units
-python3 scripts/build.py --check                            # pass; graph open
-python3 scripts/build.py                                    # expected RC=2; unavailable whole build
-python3 scripts/report-reconstruction-status.py             # pass
-python3 scripts/ci.py                                       # pass
-git diff --check                                            # pass
-```
+The conversation ran the mandatory target/toolchain/tracking/status/public-CI
+preflights, native Ghidra discovery plus `check {}`, bounded Ghidra
+`function`/`decompile`/`callers`/`callees`/`xrefs_to`/`disassemble` queries, and
+direct read-only PE byte/disassembly boundary inspection.
 
-No canonical `config/match-units.toml` row or `config/matches.csv` row was added.
+Focused compiler feedback used `scripts/compile-probe.sh` twice for the
+render-state source-shape diagnostic: one normal COFF `/MT /O2 /Gy /GF /Oi
+/DNDEBUG` build and one identical `/GL` build. These are diagnostics only.
 
-## Next evidence-connected packet
+After ledger edits the following passed:
 
-Stay on the same D3D/application-entry owner seam rather than switching to a
-small easy function. Review `0x004391F0` together with the larger
-`0x00439890`/`0x00439D20` cohort: `0x004391F0` is the second caller of the EAX
-resource-release routine and contains device-present/reset behavior;
-`0x00439890` is a 1,159-byte central initialization candidate; `0x00439D20` is a
-710-byte reset/render-state candidate. Reconcile their boundaries, caller/callee
-ownership, COM slots, and shared globals, then test whether one coherent TU/LTCG
-profile explains the private ABI before writing owner-bearing C++ or attempting
-exactness.
+- `python3 scripts/verify-toolchain.py --check`
+- `python3 scripts/validate-tracking.py --require-target`
+- `python3 scripts/progress.py --check`
+- `python3 scripts/build-match-unit.py --check`
+- `python3 scripts/build.py --check`
+- `python3 scripts/report-reconstruction-status.py`
+- `python3 scripts/ci.py`
+- `git diff --check`
 
-This is deliberately another hard, central packet: it is selected for direct
-evidence connectivity to the unresolved optimizer/owner boundary, not for small
-function size. Do not declare the exact phase complete even if later reviewed
-ratios cross the campaign pressure target; operator audit remains authoritative.
+The honest `python3 scripts/build.py` run returned the expected RC=2/open state;
+that is not a failed exact unit and not product closure.
+
+One earlier read-only focused-search shell command returned RC=1 because it
+assumed a TH10 `src/` directory that does not exist. Git status was immediately
+rechecked and remained clean before edits; the search was rerun using tracked
+file lists. No filesystem recovery was needed.
+
+## Analysis artifacts
+
+`.analysis/` was 25,077 bytes at conversation entry and 31,831 bytes at the
+final session inventory. No artifact was removed in this session. The current
+campaign uses
+`.analysis/gpt-web/20260912-d3d-owner-seam/` with a manifest and the following
+small reproducible diagnostics:
+
+- `reset-render-state-probe.cpp`
+- `reset-render-state-probe-coff.obj`
+- `reset-render-state-probe-ltcg.obj`
+
+No current-session artifact approaches the 64 MiB review threshold. These files
+are ignored diagnostic scratch, not a knowledge base and not exactness evidence.
+The previous bootstrap and main-frontier analysis roots remain untouched.
+
+## Remaining unknowns and next evidence-connected packet
+
+The principal blockers are still physical/TU ownership, per-function
+normal-COFF versus LTCG context, the large manager object's real type/layout,
+and the source-level identity of the render-cache writes following
+`0x00439D20`. These blockers are why no production `Main.cpp` was manufactured
+from adjacent source.
+
+The next preferred packet is the directly connected render/timing cohort:
+
+- `0x00439390-0x00439538` (425-byte span), the frame/render dispatcher that calls
+  `0x004391F0`;
+- `0x00439540-0x00439659` (282 bytes), its timing source;
+- the global object at `0x004924F0` passed on the stack to `0x00439390`, plus the
+  relevant call sites and adjacent committed `GameWindow::Render` hypotheses.
+
+This packet is selected to resolve an ABI/owner contradiction, not because it is
+small. WinMain explicitly pushes `0x004924F0` before calling `0x00439390`, while
+adjacent games expose an instance-style `GameWindow::Render`; TH10 must determine
+whether this is a static/helper ABI, optimizer transformation, or a genuinely
+different source shape. That result can establish useful `GameWindow` layout and
+TU evidence needed before production source is introduced.
+
+A secondary route, if that ABI packet becomes blocked, is `0x00439730-0x00439884`
+(341 bytes), the direct setup function called immediately before the reviewed
+D3D initializer. `0x00439FF0-0x0043A1A9` is another larger same-module candidate,
+but it is less directly connected to the current unresolved render-owner ABI and
+should not be selected merely to accumulate reviewed counts.
+
+The campaign remains active. Crossing any future reviewed ratio target does not
+authorize GPT-web to declare the exact phase complete.
