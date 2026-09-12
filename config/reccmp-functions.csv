@@ -24,3 +24,13 @@ CPbgFile::GetSize,0x00435530,function
 CPbgFile::Seek,0x00435550,function
 CPbgFile::ReadWholeFile,0x00435580,function
 CPbgFile::GetFullFilePath,0x00435610,function
+CMemoryPbgFile::Write,0x00436370,function
+CMemoryPbgFile::CMemoryPbgFile,0x00436380,function
+CMemoryPbgFile::~CMemoryPbgFile,0x004363C0,function
+CMemoryPbgFile::Open,0x00436400,function
+CMemoryPbgFile::Close,0x00436430,function
+CMemoryPbgFile::Read,0x00436460,function
+CMemoryPbgFile::Tell,0x004364D0,function
+CMemoryPbgFile::GetSize,0x004364E0,function
+CMemoryPbgFile::Seek,0x004364F0,function
+CWin32ResourcePbgFile::Open,0x004366C0,function

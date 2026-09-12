@@ -23,3 +23,13 @@ CPbgFile::GetSize
 CPbgFile::Seek
 CPbgFile::ReadWholeFile
 CPbgFile::GetFullFilePath
+CMemoryPbgFile::Write
+CMemoryPbgFile::CMemoryPbgFile
+CMemoryPbgFile::~CMemoryPbgFile
+CMemoryPbgFile::Open
+CMemoryPbgFile::Close
+CMemoryPbgFile::Read
+CMemoryPbgFile::Tell
+CMemoryPbgFile::GetSize
+CMemoryPbgFile::Seek
+CWin32ResourcePbgFile::Open
