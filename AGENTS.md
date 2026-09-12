@@ -53,7 +53,7 @@ Inspect their source, history, scripts, and game-local knowledge when a TH10
 subsystem has a plausible analogue. They may suggest source shape, names, engine
 structure, compiler idioms, and useful probes, but they are hypothesis material
 only. TH095 is itself undergoing semantic reconstruction, so its semantic names,
-owners, layouts, and abstractions are especially provisional. Neither adjacent
+owners, layouts, and abstractions are especially provisional. No adjacent
 game's addresses, bytes, layouts, ownership, behavior, or exactness claims are
 TH10 evidence. Accept every TH10 conclusion only from TH10-local target, Ghidra,
 xref, ABI, compiler, exact-byte, build, or runtime evidence. When the games
