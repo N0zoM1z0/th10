@@ -39,10 +39,23 @@ downloaded tools are private and never committed.
 
 The target is attested and the initial Ghidra inventory is provisional. Every
 candidate starts with unknown origin, unreviewed boundaries, no source-presence
-claim, and no exactness credit. PE linker 7.10 and dominant Rich build-6030
-records support a VC7.1 SP1-era compiler-family hypothesis. Exact compiler
-binaries, flags, translation-unit boundaries, libraries, resources, and link
-order remain unknown.
+claim, and no exactness credit. The repository pins a VC7.1 SP1 candidate
+reporting compiler/linker build 6030 and provides a headless-Wine verifier. The
+locally observed smoke covers normal C/C++ COFF, C++ LTCG, resources, and a PE32
+link. Target Rich records independently show 131 normal C, 15 normal C++, and 52
+LTCG C++ inputs.
+Per-unit flags and ownership, translation-unit boundaries, libraries, resource
+graph, and link order remain unknown.
+
+```bash
+python3 scripts/verify-toolchain.py --execute
+python3 scripts/build-match-unit.py --check
+```
+
+The executable tool payload is shared and ignored; its 32-bit Wine prefix is
+game-bound, ignored, and always driven through Xvfb. A normal-COFF function
+comparison cannot establish an LTCG-owned function. See
+[`docs/TOOLS.md`](docs/TOOLS.md) and [`docs/ORACLES.md`](docs/ORACLES.md).
 
 ## Required phase order
 
@@ -58,6 +71,8 @@ order remain unknown.
 - [`AGENTS.md`](AGENTS.md) — mandatory session and evidence rules.
 - [`config/target.toml`](config/target.toml) — target and observed PE facts.
 - [`config/build.toml`](config/build.toml) — explicit open whole-build graph.
+- [`config/tools.lock.toml`](config/tools.lock.toml) — compiler, linker,
+  frontend, optimizer, resource-tool, and headless-Wine lock.
 - [`docs/RE_WORKFLOW.md`](docs/RE_WORKFLOW.md) — reconstruction loop and gates.
 - [`docs/ORACLES.md`](docs/ORACLES.md) — claim-specific falsification rules.
 - [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current state and next work.

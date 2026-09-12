@@ -2,4 +2,7 @@ schema_version = 1
 target_sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
 
 # Add a unit only after its Ghidra candidate boundary is reconciled against
-# exact target control flow and a reproducible compiler object exists.
+# exact target control flow and a reproducible normal COFF compiler object
+# exists. The target also contains VC7.1 LTCG C++ input; do not force an LTCG
+# function into this standalone-object contract. Such units need a future
+# linked-image extent Oracle.

@@ -21,10 +21,13 @@ disk target, Ghidra target, ledgers, and live status using the commands in
 5. Place natural C/C++ in a candidate translation unit. Mark source presence
    without claiming exactness.
 6. Compile the smallest useful historical-compiler probe with an explicit
-   candidate profile. Until the exact compiler surfaces are identified, treat
-   its result as exploration rather than acceptance.
-   Compare the complete owned extent and every relocation; distinguish source,
-   profile, boundary, ownership, and library mismatches.
+   candidate profile. The pinned build-6030 tool surfaces are observed, but the
+   profile and physical owner are still hypotheses. Determine whether the
+   candidate belongs to a normal C/C++ COFF unit or to LTCG. For normal COFF,
+   compare the complete owned extent and every relocation. For LTCG, do not
+   strip `/GL` and do not use the standalone comparator; keep exactness
+   unknown until a linked-image extent Oracle exists. Distinguish source,
+   profile, boundary, ownership, optimizer, and library mismatches.
 7. Add a canonical match unit and exact ledger row only after repeatable zero
    difference against the verified target.
 8. Replay affected accepted units, regenerate progress, update the handoff and

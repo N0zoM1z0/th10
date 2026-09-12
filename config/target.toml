@@ -132,11 +132,14 @@ count = 1
 
 [toolchain]
 family = "Microsoft Visual C++ .NET 2003 SP1-era (VC7.1)"
-compiler_version = "13.10.6030"
-compiler_version_state = "inferred-from-rich-build"
+compiler_version_candidate = "13.10.6030"
+compiler_version_state = "observed-rich-comp-id-and-local-banner"
 linker_version = "7.10"
 rich_build = 6030
+normal_c_object_count = 131
+normal_cpp_object_count = 15
+ltcg_cpp_object_count = 52
 profile_state = "unknown"
 translation_unit_partition_state = "unknown"
 link_order_state = "unknown"
-evidence = "PE linker 7.10 and dominant Rich build-6030 records support a VC7.1 SP1-era compiler-family hypothesis. Exact compiler binaries, flags, source boundaries, libraries, resources, and link order remain unverified."
+evidence = "PE linker 7.10 plus Rich product IDs 95, 96, and 100 at build 6030 identify normal C, normal C++, and LTCG C++ inputs from the VC7.1 SP1 generation. The hash-pinned local candidate reports compiler/linker build 6030. Per-unit profile, source boundaries, libraries, resources, and link order remain unknown."

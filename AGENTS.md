@@ -24,6 +24,7 @@ Before changing anything:
    valuable dirty work. Understand, recover, finish, or deliberately supersede
    it; do not silently work around it.
 3. In the repository shell, run `python3 scripts/verify-target.py`,
+   `python3 scripts/verify-toolchain.py --execute`,
    `python3 scripts/validate-tracking.py --require-target`, and
    `python3 scripts/report-reconstruction-status.py` before target-dependent
    work. From GPT-web, attest Ghidra separately through the Factory-native
@@ -69,6 +70,10 @@ differ or the comparison is inconclusive, keep the TH10 fact unknown.
   closure, runtime validation, and port status independent.
 - Only a target-bound, complete, reproducible VC7.1 comparison may enter
   `config/matches.csv`. Near matches remain candidates.
+- The target contains normal C, normal C++, and LTCG C++ build-6030 inputs.
+  `scripts/compare-coff-function.py` proves only declared normal-COFF units.
+  Never remove `/GL` merely to make an LTCG-owned function fit that Oracle;
+  keep its exact state unknown until a linked-image extent workflow exists.
 - Use natural source. Never copy target bytes, manufacture fake returns, add
   inert padding, lie about the ABI, or patch target code to force equality.
 - Record durable TH10 facts in `docs/KNOWLEDGE_BASE.md`. Cross-game promotion
@@ -105,5 +110,6 @@ the repository.
   into a script or durable note, and remove superseded disposable artifacts.
 - Never commit the original executable, game archives/data, Ghidra databases,
   toolchains, generated decompiler text, credentials, or private endpoints.
-- Finish with the focused Oracle, `python3 scripts/validate-tracking.py`,
+- Finish with the focused Oracle, `python3 scripts/verify-toolchain.py --check`,
+  `python3 scripts/validate-tracking.py`,
   `python3 scripts/progress.py`, `python3 scripts/ci.py`, and `git diff --check`.

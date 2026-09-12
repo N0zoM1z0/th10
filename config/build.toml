@@ -7,11 +7,12 @@ output = "build/windows-i386/th10.exe"
 status = "skeleton"
 
 [toolchain]
-provider = "msvc71-sp1-candidate"
+provider = "msvc71-sp1"
 compiler_version = "13.10.6030"
-compiler_identity_state = "unknown"
+compiler_identity_state = "observed-candidate"
 compile_profile_state = "unknown"
 link_profile_state = "unknown"
+normal_coff_and_ltcg_inputs_observed = true
 
 [graph]
 translation_unit_partition_state = "unknown"
