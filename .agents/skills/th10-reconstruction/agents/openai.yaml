@@ -1,0 +1,4 @@
+interface:
+  display_name: "TH10 Reconstruction"
+  short_description: "Recover TH10 from attested target evidence"
+  default_prompt: "Use $th10-reconstruction to continue one bounded TH10 reconstruction unit from the verified Japanese v1.00a target."

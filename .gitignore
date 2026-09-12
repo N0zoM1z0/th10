@@ -1,0 +1,33 @@
+# Private targets, game data, tools, and analysis state
+/resources/th10.exe
+/resources/private/
+/game/
+/.analysis/
+/.tools/
+/ghidra-project/
+*.exe
+*.dll
+*.dat
+*.cfg
+*.log
+*.gpr
+*.rep/
+*.i64
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+
+# Generated build state
+/build/
+/out/
+/dist/
+/.cache/
+/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.DS_Store
+Thumbs.db

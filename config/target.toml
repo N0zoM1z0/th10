@@ -1,0 +1,142 @@
+[target]
+title = "東方風神録 ～ Mountain of Faith"
+version = "1.00a"
+region = "original-japanese"
+filename = "th10.exe"
+size = 487936
+sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+sha1 = "a2011f30d6c3ec02cbccc2e457d856ae1b8d9082"
+md5 = "7dc488d82c81dd4aee4ba098b8804d83"
+
+[provenance]
+classification = "original"
+version_database_url = "https://github.com/thpatch/thcrap-tsa/blob/f08b582ce57bce800955dd371fc9a68dbad5b324/base_tsa/versions.js"
+version_database_commit = "f08b582ce57bce800955dd371fc9a68dbad5b324"
+version_database_file_sha256 = "9ac6c0247b9c53129429f9522f66e035a7880d15082f8d519990ac7ed82c14e1"
+evidence = "The pinned thcrap version database classifies this exact SHA-256 as TH10 v1.00a (original) and lists patched and Steam executables under different digests."
+
+[pe]
+machine = "i386"
+machine_id = 332
+image_base = "0x00400000"
+entry_point = "0x004537DC"
+entry_rva = "0x000537DC"
+timestamp_utc = "2007-08-02T20:21:36Z"
+timestamp_unix = 1186086096
+linker_version = "7.10"
+section_count = 4
+size_of_image = 638976
+headers_raw_size = 1024
+text_start = "0x00401000"
+text_end = "0x00465A80"
+text_virtual_size = 412289
+text_raw_offset = "0x00000400"
+text_raw_size = 412672
+relocations_stripped = true
+
+[[pe.sections]]
+name = ".text"
+rva = "0x00001000"
+virtual_size = 412289
+raw_offset = "0x00000400"
+raw_size = 412672
+
+[[pe.sections]]
+name = ".rdata"
+rva = "0x00066000"
+virtual_size = 51782
+raw_offset = "0x00065000"
+raw_size = 52224
+
+[[pe.sections]]
+name = ".data"
+rva = "0x00073000"
+virtual_size = 156492
+raw_offset = "0x00071C00"
+raw_size = 16896
+
+[[pe.sections]]
+name = ".rsrc"
+rva = "0x0009A000"
+virtual_size = 4832
+raw_offset = "0x00075E00"
+raw_size = 5120
+
+[rich_header]
+checksum = "0x3152A748"
+clear_data_size = 136
+dominant_build = 6030
+dominant_build_record_count = 232
+evidence = "Direct decoding finds 232 build-6030 records across product IDs 15, 90, 95, 96, and 100. Mixed older build records also exist and are retained below."
+
+[[rich_header.records]]
+product_id = 96
+build = 6030
+count = 15
+[[rich_header.records]]
+product_id = 105
+build = 2067
+count = 3
+[[rich_header.records]]
+product_id = 15
+build = 6030
+count = 33
+[[rich_header.records]]
+product_id = 95
+build = 6030
+count = 131
+[[rich_header.records]]
+product_id = 95
+build = 2179
+count = 2
+[[rich_header.records]]
+product_id = 28
+build = 9178
+count = 1
+[[rich_header.records]]
+product_id = 93
+build = 2067
+count = 2
+[[rich_header.records]]
+product_id = 96
+build = 4035
+count = 1
+[[rich_header.records]]
+product_id = 93
+build = 2179
+count = 8
+[[rich_header.records]]
+product_id = 1
+build = 0
+count = 187
+[[rich_header.records]]
+product_id = 93
+build = 4035
+count = 9
+[[rich_header.records]]
+product_id = 95
+build = 4035
+count = 2
+[[rich_header.records]]
+product_id = 100
+build = 6030
+count = 52
+[[rich_header.records]]
+product_id = 94
+build = 3052
+count = 1
+[[rich_header.records]]
+product_id = 90
+build = 6030
+count = 1
+
+[toolchain]
+family = "Microsoft Visual C++ .NET 2003 SP1-era (VC7.1)"
+compiler_version = "13.10.6030"
+compiler_version_state = "inferred-from-rich-build"
+linker_version = "7.10"
+rich_build = 6030
+profile_state = "unknown"
+translation_unit_partition_state = "unknown"
+link_order_state = "unknown"
+evidence = "PE linker 7.10 and dominant Rich build-6030 records support a VC7.1 SP1-era compiler-family hypothesis. Exact compiler binaries, flags, source boundaries, libraries, resources, and link order remain unverified."

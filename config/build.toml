@@ -1,0 +1,25 @@
+schema_version = 1
+target_sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+
+[product]
+format = "pe32-i386-windows-gui"
+output = "build/windows-i386/th10.exe"
+status = "skeleton"
+
+[toolchain]
+provider = "msvc71-sp1-candidate"
+compiler_version = "13.10.6030"
+compiler_identity_state = "unknown"
+compile_profile_state = "unknown"
+link_profile_state = "unknown"
+
+[graph]
+translation_unit_partition_state = "unknown"
+link_order_state = "unknown"
+sources = []
+libraries = []
+resources = []
+
+[acceptance]
+whole_build_closed = false
+windows_i386_runtime_validated = false

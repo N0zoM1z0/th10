@@ -1,0 +1,5 @@
+schema_version = 1
+target_sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+
+# Add a unit only after its Ghidra candidate boundary is reconciled against
+# exact target control flow and a reproducible compiler object exists.
