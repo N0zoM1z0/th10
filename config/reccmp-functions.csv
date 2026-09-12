@@ -47,3 +47,8 @@ Lzss::ContractNode,0x00436260,function
 Lzss::ReplaceNode,0x004362B0,function
 Lzss::FindNextNode,0x00436330,function
 ReplayManager::SaveReplay,0x00429B60,function
+ReplayManager::~ReplayManager,0x004294A0,function
+ReplayManager::Create,0x00429610,function
+ReplayManager::Load,0x004296F0,function
+ReplayManager::Destroy,0x004297B0,function
+ReplayManager::ProcessFrame,0x004297D0,function

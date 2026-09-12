@@ -64,10 +64,21 @@ typedef char ReplayStageDataHeaderPayloadSizeAt08[
 
 struct ReplayRecData
 {
-    unsigned char data[6];
+    unsigned short input;
+    unsigned short auxiliaryInput;
+    unsigned short inputFlags;
 };
 typedef char ReplayRecDataSizeIs06[
     (sizeof(ReplayRecData) == 0x06) ? 1 : -1];
+
+struct ReplayListNode
+{
+    void *value;
+    ReplayListNode *next;
+    ReplayListNode *previous;
+};
+typedef char ReplayListNodeSizeIs0C[
+    (sizeof(ReplayListNode) == 0x0c) ? 1 : -1];
 
 struct ReplayFrameData
 {
@@ -75,6 +86,7 @@ struct ReplayFrameData
     ReplayRecData *recordEnd;
     unsigned char fpsSamples[3600];
     unsigned char *fpsEnd;
+    ReplayListNode link;
 };
 typedef char ReplayFrameDataRecordEndAt5460[
     (offsetof(ReplayFrameData, recordEnd) == 0x5460) ? 1 : -1];
@@ -82,47 +94,102 @@ typedef char ReplayFrameDataFpsAt5464[
     (offsetof(ReplayFrameData, fpsSamples) == 0x5464) ? 1 : -1];
 typedef char ReplayFrameDataFpsEndAt6274[
     (offsetof(ReplayFrameData, fpsEnd) == 0x6274) ? 1 : -1];
-typedef char ReplayFrameDataSizeIs6278[
-    (sizeof(ReplayFrameData) == 0x6278) ? 1 : -1];
+typedef char ReplayFrameDataLinkAt6278[
+    (offsetof(ReplayFrameData, link) == 0x6278) ? 1 : -1];
+typedef char ReplayFrameDataSizeIs6284[
+    (sizeof(ReplayFrameData) == 0x6284) ? 1 : -1];
 
-struct ReplayBufferLink
+struct ReplayStageState
 {
-    ReplayFrameData *frameData;
-    ReplayBufferLink *next;
-};
+    unsigned char *recordStart;
+    unsigned char *recordCursor;
+    unsigned char *fpsStart;
+    unsigned char *fpsCursor;
+    ReplayStageDataHeader *header;
+    int recordIndex;
+    ReplayListNode link;
 
-struct ReplayStageBuffer
-{
-    ReplayBufferLink *head;
-    void *unknown004;
-    void *unknown008;
+    ReplayStageState();
+    ~ReplayStageState();
 };
-typedef char ReplayStageBufferSizeIs0C[
-    (sizeof(ReplayStageBuffer) == 0x0c) ? 1 : -1];
+typedef char ReplayStageStateSizeIs24[
+    (sizeof(ReplayStageState) == 0x24) ? 1 : -1];
+typedef char ReplayStageStateHeaderAt10[
+    (offsetof(ReplayStageState, header) == 0x10) ? 1 : -1];
+typedef char ReplayStageStateRecordIndexAt14[
+    (offsetof(ReplayStageState, recordIndex) == 0x14) ? 1 : -1];
+typedef char ReplayStageStateLinkAt18[
+    (offsetof(ReplayStageState, link) == 0x18) ? 1 : -1];
+
+enum ReplayManagerMode
+{
+    REPLAY_MANAGER_RECORD = 0,
+    REPLAY_MANAGER_PLAYBACK = 1,
+    REPLAY_MANAGER_LOAD_ONLY = 2,
+};
 
 class ReplayManager
 {
   public:
+    ReplayManager();
+    ~ReplayManager();
+
+    int Initialize(int mode, const char *replayPath);
+    int LoadReplay(const char *replayPath);
     int SaveReplay(const char *replayPath, const char *replayName);
 
-    unsigned char unknown000[0x10];
+    static ReplayManager *Create(int mode, const char *replayPath);
+    static ReplayManager *Load(const char *replayPath);
+    static void Destroy(ReplayManager *replayManager);
+    int ProcessFrame();
+
+    // Names below are maintained descriptions of target-observed roles. The
+    // original member identifiers and physical data owner remain unproven.
+    unsigned char unknown000[0x08];
+    void *updateChain;
+    void *drawChain;
     int mode;
     ReplayFileHeader *fileHeader;
     ReplayDataHeader *replayData;
     ReplayStageDataHeader *stageHeaders[8];
-    unsigned int unknown03c;
-    ReplayStageBuffer stageBuffers[8];
-    // The target allocates and clears 0x2D4 bytes for the replay object.
-    // Fields at and beyond +0xA0 are outside this packet and remain unknown.
-    unsigned char unknown0A0[0x234];
+    ReplayListNode stageFrameLists[8];
+    ReplayListNode *currentFrameLink;
+    ReplayStageState stageStates[8];
+    unsigned char *decompressedPayload;
+    unsigned char replayFps;
+    unsigned char unknown1C5[3];
+    int frameCounter;
+    void *playbackChain;
+    int activeStage;
+    char replayPath[0x100];
 };
 typedef char ReplayManagerSizeIs2D4[
     (sizeof(ReplayManager) == 0x2d4) ? 1 : -1];
+typedef char ReplayManagerModeAt10[
+    (offsetof(ReplayManager, mode) == 0x10) ? 1 : -1];
 typedef char ReplayManagerFileHeaderAt14[
     (offsetof(ReplayManager, fileHeader) == 0x14) ? 1 : -1];
 typedef char ReplayManagerReplayDataAt18[
     (offsetof(ReplayManager, replayData) == 0x18) ? 1 : -1];
 typedef char ReplayManagerStageHeadersAt1C[
     (offsetof(ReplayManager, stageHeaders) == 0x1c) ? 1 : -1];
-typedef char ReplayManagerStageBuffersAt40[
-    (offsetof(ReplayManager, stageBuffers) == 0x40) ? 1 : -1];
+typedef char ReplayManagerStageFrameListsAt3C[
+    (offsetof(ReplayManager, stageFrameLists) == 0x3c) ? 1 : -1];
+typedef char ReplayManagerCurrentFrameLinkAt9C[
+    (offsetof(ReplayManager, currentFrameLink) == 0x9c) ? 1 : -1];
+typedef char ReplayManagerStageStatesAtA0[
+    (offsetof(ReplayManager, stageStates) == 0xa0) ? 1 : -1];
+typedef char ReplayManagerDecompressedPayloadAt1C0[
+    (offsetof(ReplayManager, decompressedPayload) == 0x1c0) ? 1 : -1];
+typedef char ReplayManagerReplayFpsAt1C4[
+    (offsetof(ReplayManager, replayFps) == 0x1c4) ? 1 : -1];
+typedef char ReplayManagerFrameCounterAt1C8[
+    (offsetof(ReplayManager, frameCounter) == 0x1c8) ? 1 : -1];
+typedef char ReplayManagerPlaybackChainAt1CC[
+    (offsetof(ReplayManager, playbackChain) == 0x1cc) ? 1 : -1];
+typedef char ReplayManagerActiveStageAt1D0[
+    (offsetof(ReplayManager, activeStage) == 0x1d0) ? 1 : -1];
+typedef char ReplayManagerReplayPathAt1D4[
+    (offsetof(ReplayManager, replayPath) == 0x1d4) ? 1 : -1];
+
+extern ReplayManager *g_ReplayManager;

@@ -1,48 +1,46 @@
-# TH10 Reconstruction Handoff
+# TH10 exact-reconstruction handoff
 
 ## Session status
 
-The exact-reconstruction campaign remains **active and incomplete**. This checkpoint reconstructs the central replay-save writer as reviewed authored/source-present code, but it does **not** establish canonical exactness, whole-product build closure, runtime closure, semantic-reconstruction readiness, port readiness, or new Truth Kernel acceptance.
+Exact reconstruction remains **active and incomplete**. This checkpoint advances the replay lifecycle/recording-owner seam; it is not a whole-executable, whole-build, runtime, semantic, or port completion claim.
 
-Repository selection for this session:
+Repository selection for this work is fixed to:
 
-- Repository: `th10`
-- Analysis provider: `th10-ghidra`
-- Target: `target:th10-main`
-- Private local target: `resources/th10.exe`
-- Phase: exact reconstruction with early faithful Windows i386 build feedback
+- repository: `th10`
+- analysis provider: `th10-ghidra`
+- target identity: `target:th10-main`
+- private target: `resources/th10.exe` at the repository-default operator path
+- toolchain candidate: pinned VC7.1 SP1-era build 6030 environment
 
-The private target remained ignored and untouched. No target bytes were patched, copied into source, relocated, or committed. No push was performed.
+The private target remained ignored and was never modified, relocated, staged, or committed. No push was performed.
 
 ## Recovery and starting state
 
-Session starting source commit:
+This session began from live HEAD:
 
-- `c10c371ed3b09451ef1076f6ec1e99d87f174d22`
-- subject: `gpt-web: reconstruct TH10 FileSystem encrypt transform`
-- branch: `main`
-- initial observed relation: ahead 1 / behind 0 against the then-visible `origin/main`
-- dirty counts: 0 staged / 0 unstaged / 0 untracked / 0 conflicts
+- `7a133c895c56e8a8aef2cece4279ee575afb1823`
+- branch `main`
+- upstream `origin/main`
+- ahead 1 / behind 0
+- 0 staged / 0 unstaged / 0 untracked / 0 conflicts
 
-During recovery, the remote-tracking reference was externally advanced to the same commit as local HEAD. The repository reflog recorded `origin/main` update-by-push at `2026-09-12 23:38:50 +0800`. Local HEAD did not move, this session did not push, and the live relation became ahead 0 / behind 0.
+The full recovery gate inspected recent history, porcelain-v2 status, staged and unstaged diffs, untracked paths, handoff state, and relevant ignored state. There was no interrupted tracked/untracked work to recover.
 
-The original packet recovery gate inspected recent commits, branch/upstream state, porcelain-v2 status, staged and unstaged diffs, untracked files, the handoff, and relevant ignored state. After that browser session was interrupted before checkpointing, the next resume observed the same HEAD and upstream with **0 staged / 8 unstaged / 2 untracked / 0 conflicts**. The eight tracked edits plus `src/ReplayManager.cpp` and `src/ReplayManager.hpp` were reviewed in full together with the campaign manifest and classified as **recoverable-current-work** for this replay-save packet. No unrelated or unknown dirty path was found. The resumed session therefore completed and checkpointed this packet before starting any new reconstruction work.
+Ignored state was preserved and excluded from Git work:
 
-Ignored/private/generated state was classified and preserved:
+- `resources/th10.exe`: operator-supplied private target
+- `.tools/`: shared pinned toolchain and Wine state
+- `ghidra-project/`: target-bound provider state
+- `build/`: generated/open build state
+- `.analysis/`: prior/shared/legacy plus bounded current-session scratch
 
-- `resources/th10.exe`: operator-supplied private target; preserve and exclude.
-- `.tools/`: shared tool selectors and Wine/tool state; preserve and exclude.
-- `ghidra-project/`: target-bound provider state; preserve and exclude.
-- previous `.analysis/` campaigns: checkpointed or legacy ignored evidence; preserve.
-- `build/`: generated/open build state; preserve.
+The session-entry `.analysis/` size was **294,912 bytes**. Pre-existing ignored content was treated as preserve/unknown-or-shared rather than current-session-owned.
 
-`.analysis/` measured **109,361 bytes** at session entry. `build/` measured **5,031,767 bytes**.
-
-All prompt-required repository guidance, Factory contracts/docs, the Factory-root `docs/semantic-reconstruction.md`, and `.agents/skills/th10-reconstruction/SKILL.md` were read completely before editing. The resumed recovery session reread the same complete guidance set before touching the recoverable packet. No required path was missing.
+All required repository guidance, both Factory contracts, all required Factory docs, `semantic-reconstruction.md`, and `.agents/skills/th10-reconstruction/SKILL.md` were re-read from the live repository/Factory filesystem before source edits. Several long-output Factory transport failures occurred while reading or querying; after each failure live repository status was reread before retry or continuation.
 
 ## Mandatory preflight
 
-The following repository preflights passed before target-dependent editing:
+Entry preflights passed:
 
 - `python3 scripts/verify-target.py`
 - `python3 scripts/verify-toolchain.py --execute`
@@ -52,195 +50,226 @@ The following repository preflights passed before target-dependent editing:
 
 Target identity remained:
 
-- SHA256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`
+- size 487,936
+- SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`
 - MD5 `7dc488d82c81dd4aee4ba098b8804d83`
-- PE32 i386, 4 sections
-- image base `0x00400000`
-- entry point `0x004537DC`
-- Rich checksum `0x3152A748`
-- dominant tool build 6030
+- PE32 i386, 4 sections, image base `0x00400000`, entry `0x004537DC`
+- Rich checksum `0x3152A748`, dominant build 6030
 
-The pinned VC7.1 SP1 candidate passed its execute smoke, including normal COFF, LTCG, resource, and PE32-link checks.
+`th10-ghidra` operations were rediscovered from their schemas. The mandatory `check {}` passed with exact `target:th10-main`, `attestation.status=passed`, and `attestation.provider_transport=factory-native-command`. Every useful Ghidra result used in this packet carried the same passed target/native-transport attestation and `exactness_credit=none`.
 
-`th10-ghidra` operations and schemas were rediscovered. The mandatory `check {}` passed with:
+## Hard packet: replay lifecycle and recording owner
 
-- `attestation.status = passed`
-- target `target:th10-main`
-- `attestation.provider_transport = factory-native-command`
-- correct target hash/layout/entry
-- `exactness_credit = none`
+The packet was selected from the live prior handoff because it surrounds the already reviewed 1,681-byte replay writer, closes the 0x2D4 replay-object lifetime, and resolves the recording/playback state that feeds that writer. It is a hard owner/layout frontier rather than a smallest-function or easy-exact strategy.
 
-All useful Ghidra observations in this packet were target-attested and read-only. No Ghidra observation is treated as exactness evidence.
+Reviewed authored target bodies:
 
-## Hard packet: replay-save writer
+- `0x004294A0-0x0042960E`, 367 bytes: maintained `ReplayManager::~ReplayManager`
+- `0x00429610-0x004296C8`, 185 bytes: maintained `ReplayManager::Create`
+- `0x004296F0-0x004297A4`, 181 bytes: maintained `ReplayManager::Load`
+- `0x004297B0-0x004297C1`, 18 bytes: maintained `ReplayManager::Destroy`
+- `0x004297D0-0x00429A23`, 596 bytes: maintained `ReplayManager::ProcessFrame`
 
-The selected hard frontier was:
+A sixth body was discovered by physical boundary review even though it was absent from the initial Ghidra candidate denominator:
 
-- `0x00429B60-0x0042A1F0`, **1,681 bytes**
-- initial ledger state: `unknown/review`, no source mapping, no exactness
-- maintained result: reviewed `authored_game`, source-present as `ReplayManager::SaveReplay`, non-exact
+- `0x004296D0-0x004296E8`, 25 bytes: compiler-generated scalar-deleting-destructor shape, classified as an exclusion rather than authored game code.
 
-This body was selected because it directly owns the write-side pipeline exposed by the previous packet: stage aggregation and packing, `CompressData`, two `FileSystem::Encrypt` passes, replay-file output, and two user-metadata blocks. It is a large central data-owner/ABI/control-flow packet, not a smallest-function or easy-exact target.
+The five maintained names are descriptive reconstruction names chosen only after TH10-local behavior/calls/layout were recovered. Committed adjacent source was used later for naming/source-shape corroboration. No original identifier, decorated symbol, translation-unit owner, source calling convention, or physical compiler owner is claimed.
 
-### Physical extent and machine boundary
+### Physical boundaries and machine ABI
 
-The physical extent was closed independently from the provisional Ghidra boundary:
+Observed boundary facts:
 
-- `0x00429B54-0x00429B5F` is `CC` padding before the body;
-- body starts at `0x00429B60`;
-- terminal `ret 4` is at `0x0042A1EE-0x0042A1F0`;
-- `0x0042A1F1-0x0042A1FF` is `CC` padding;
-- independent replay-load body begins at `0x0042A200`.
+- `0x004294A0` ends in `ret 4`; one `CC` byte separates it from `0x00429610`.
+- `0x00429610` ends in `ret 8`; `CC` padding continues through `0x004296CF`.
+- `0x004296D0-0x004296E8` is independently CC-delimited and ends in `ret 4`.
+- `0x004296F0` ends in `ret 4`; padding continues through `0x004297AF`.
+- `0x004297B0` ends in plain `ret`; padding continues through `0x004297CF`.
+- `0x004297D0` ends in plain `ret` at `0x00429A23`.
 
-Two direct target call sites were recovered:
+The per-frame callback wrapper at `0x0042A3D0` receives the replay owner in ECX, moves it to EDI, calls `0x004297D0`, restores EDI, and returns. The two normal business-path callers of `0x004297B0` load the object being replaced into ESI before calling the null-safe destroy body. These are machine-ABI observations only; maintained source intentionally remains ordinary C++.
 
-- `0x00423F16`
-- `0x0043399D`
+### Destructor / factories / destroy helper
 
-Both callers load the replay owner from global `0x00477838` into ECX, place the formatted replay path in EDX, push one replay-name pointer, call `0x00429B60`, and ignore the return value. The observed machine boundary is therefore:
+`0x004294A0` frees the replay file-header allocation, clears/frees each of eight stage frame lists, releases replay payload and stage-header allocations, cuts three chain elements when present, clears the global replay owner when it refers to this object, and runs destructor logic over eight 0x24 stage-state objects beginning at `+0xA0`.
 
-- ECX: replay owner
-- EDX: replay path
-- one stack argument: replay name
-- `ret 4`
+`0x00429610` allocates a 0x2D4 object, constructs the eight 0x24 stage states, clears the object, invokes the shared mode/path initializer at `0x00428F60`, and destroys/frees the object on initialization failure.
 
-This is a machine-ABI fact only. The maintained source uses an ordinary C++ member declaration and does not claim source-level `__fastcall` or original signature lowering.
+`0x004296F0` performs the same allocation/construction family, establishes mode 2, invokes the replay-load path, and destroys/frees the object on load failure.
 
-### Original replay source-family evidence
+`0x004297B0` is a null-safe delete body. Its two reviewed UI/menu call sites first remove an old replay object from a slot, call this body, then save and reload the same slot. This normal business-path use plus committed adjacent corroboration supports the maintained `ReplayManager::Destroy` name without proving the original source symbol.
 
-The TH10 target itself retains replay source/type strings including:
+### Newly discovered compiler-generated body
 
-- `src/game/replay.h:129 ReplayRecDataInf`
-- `src/game/replay.cpp:765 ReplayStageDataHeaderInf`
-- `src/game/replay.cpp:636 ReplayFrameDataInf`
-- `src/game/replay.cpp:168 ReplayInf`
-- `src/game/replay.cpp:48 ReplayStageDataHeaderInf`
-- adjacent `ReplayDataHeaderInf` and `ReplayFileHeaderInf` strings
+`0x004296D0-0x004296E8`:
 
-These establish original replay source-family participation and retained type-label vocabulary. They do **not** by themselves assign a reviewed function to an original translation unit or prove original C++ declarations.
+- calls the reviewed replay-manager destructor;
+- tests deleting flag bit 0;
+- conditionally frees the object;
+- returns the original object pointer;
+- ends in `ret 4`.
 
-### Target-local layout recovery
+No direct Ghidra xref and no whole-target raw little-endian VA reference were observed for this entry. A natural pinned VC7.1 non-virtual class with ordinary `delete` expressions automatically emits `??_GReplayManager@@QAEPAXI@Z`. That compiler behavior corroborates the target body's scalar-deleting-destructor origin class. The target and normal-object shapes still differ, so this creates an exclusion only, not an exact result.
 
-The replay-save body and independent load body establish the following maintained views:
+### ReplayManager target-local layout
 
-- `ReplayFileHeader`: size `0x24`
-  - `+0x0C`: user-data offset
-  - `+0x1C`: compressed payload size
-  - `+0x20`: decompressed payload size
-- `ReplayDataHeader`: size `0x64`
-  - `+0x0C`: timestamp used by `localtime`
-  - `+0x10`: score
-  - `+0x48`: slow rate
-  - `+0x4C`: packed stage count
-  - `+0x50/+0x54/+0x58/+0x5C`: character, shot, difficulty, completion-state selectors used by metadata formatting
-- `ReplayStageDataHeader`: size `0x1C4`
-  - signed stage index at `+0x00`
-  - six-byte record count at `+0x04`
-  - variable payload size at `+0x08`
-- `ReplayRecData`: size `0x06`
-- `ReplayFrameData` observed storage:
-  - 3,600 six-byte records: `0x5460` bytes
-  - record-end pointer at `+0x5460`
-  - 3,600 one-byte samples beginning at `+0x5464`
-  - sample-end pointer at `+0x6274`
-  - total observed size `0x6278`
+The allocation/clear sites establish an exact maintained object size of **0x2D4**. Fields supported directly by TH10 accesses are:
 
-The writer divides the first stream byte distance by six using the target's signed magic-multiply sequence, consistent with typed six-byte record pointer subtraction. The load body independently reconstructs the first stream end from `stageData + recordCount * 6`.
+- `+0x08`: chain pointer used by destructor
+- `+0x0C`: chain pointer used by destructor
+- `+0x10`: replay mode
+- `+0x14`: `ReplayFileHeader *`
+- `+0x18`: replay-data allocation/base
+- `+0x1C`: eight stage-header pointers
+- `+0x3C`: eight 0x0C intrusive frame-list roots
+- `+0x9C`: current recording-frame link
+- `+0xA0`: eight 0x24 stage states
+- `+0x1C0`: decompressed replay payload/base used by load-side code
+- `+0x1C4`: replay FPS byte
+- `+0x1C8`: frame counter
+- `+0x1CC`: chain pointer
+- `+0x1D0`: active stage
+- `+0x1D4`: 0x100-byte replay path through object end
 
-The adjacent replay-load body at `0x0042A200` independently validates the serialized layout:
+Each 0x24 stage state contains:
 
-- file header magic `0x72303174` (`"t10r"` in file byte order)
-- version word `5`
-- compressed/decompressed sizes at `+0x1C/+0x20`
-- first stage header at decompressed base `+0x64`
-- next stage at `current + 0x1C4 + payloadSize`
+- record-stream start/cursor at `+0x00/+0x04`
+- FPS-stream start/cursor at `+0x08/+0x0C`
+- stage-header pointer at `+0x10`
+- record index at `+0x14`
+- embedded 0x0C intrusive node at `+0x18`
 
-The replay object allocation site at `0x004296F0` allocates and clears exactly `0x2D4` bytes and constructs eight `0x24`-byte subobjects beginning at `+0xA0`. This packet establishes the total object size and the SaveReplay-relevant fields through `+0x9F`; maintained source deliberately keeps `+0xA0-0x2D3` as unknown storage rather than guessing the subobject semantics.
+Raw target bodies at `0x0042AC20` and `0x0042AC60` provide constructor/destructor behavior for this 0x24 state even though those raw labels are not promoted by this packet.
 
-### Save pipeline behavior
+### Runtime recording frame layout correction
 
-The reviewed body:
+The previous handoff conservatively stopped at a 0x6278 payload view. Connected allocation/free analysis now closes the runtime object:
 
-1. copies the supplied replay name into the replay-data header and pads the first eight name positions with spaces;
-2. creates the `replay` directory and formats `replay/%s`;
-3. iterates up to eight stage slots;
-4. for each present stage, resets its payload size, adds a fixed `0x1C4` stage header, walks its linked recording buffers, accumulates six-byte record count plus the one-byte sample stream, and tracks first/last present stage;
-5. stores packed-stage count, target score, and slow-rate metadata;
-6. allocates the full decompressed buffer, copies the `0x64` replay header, then each stage header and its variable streams;
-7. calls reviewed `CompressData`;
-8. applies reviewed `FileSystem::Encrypt` twice:
-   - seed `0x3D`, increment `0x7A`, chunk `0x80`, `maxBytes == compressedSize`;
-   - seed `0xAA`, increment `0xE1`, chunk `0x400`, `maxBytes == compressedSize`;
-9. stores compressed/decompressed sizes and user-data offset in the `0x24` file header;
-10. opens the replay output and writes the file header and compressed payload;
-11. allocates and clears a `0xFFFF`-byte scratch buffer and emits aligned `USER` type-0 metadata containing version, name, date, character, rank, stage summary, score, and slow rate;
-12. clears the same scratch and emits aligned `USER` type-1 retained comment text;
-13. frees scratch, closes the write state, and returns zero.
+- 3,600 six-byte records through `+0x545F`
+- record-end pointer `+0x5460`
+- 3,600 one-byte FPS samples starting `+0x5464`
+- FPS-end pointer `+0x6274`
+- embedded 0x0C intrusive node at `+0x6278/+0x627C/+0x6280`
+- total allocation: **0x6284**
 
-The target contains explicit short-write cleanup paths that close the Win32 handle, leave the file-system critical section, and decrement the target write-depth byte.
+`0x0042AA50` allocates and initializes this exact 0x6284 block; `0x0042AB20` walks/unlinks/frees the per-stage intrusive lists. SaveReplay serializes the record/sample streams, not the embedded runtime list node.
 
-`0x0044B620` was inspected only as connected context and target-locally behaves as the write-file opener: it enters the shared critical section, opens with `GENERIC_WRITE`, `CREATE_ALWAYS`, share mode 1, and normal attributes, and unwinds the write state on failure. That candidate remains independently `unknown/review`; this packet does not promote it.
+### ProcessFrame behavior
+
+`0x004297D0` is the target-local record/playback per-frame dispatcher.
+
+Record mode:
+
+- carries previous/current input state and masks live input with `0x01F7`;
+- applies the observed `0x0200` hold behavior and clamps its counter at 8 while adding bit `0x0004`;
+- calls the reviewed input-source updater;
+- every 30 frames samples FPS using target constants `0.5f` and `256.0f`, writes one byte, and advances the FPS end cursor;
+- appends three u16 values as one six-byte replay record;
+- when the current frame block fills, obtains another 0x6284 block and replaces the manager's `+0x9C` current link.
+
+Playback mode:
+
+- uses `+0x1D0` as the selected stage;
+- consumes six-byte records through that stage's 0x24 state;
+- updates replay FPS from the current FPS byte every frame while advancing the FPS cursor every 30 frames;
+- clears current input/auxiliary/flag values when the record stream is exhausted or no active stage is selected;
+- advances stage-record and manager-frame counters.
 
 ## Maintained source
 
-New maintained files:
+`src/ReplayManager.hpp` now replaces the previous conservative/partly incorrect replay-list view with target-supported types and offsets:
 
-- `src/ReplayManager.hpp`
-- `src/ReplayManager.cpp`
+- `ReplayRecData`: three u16 values, size 6
+- `ReplayListNode`: value/next/previous, size 0x0C
+- `ReplayFrameData`: runtime size 0x6284 with embedded node at 0x6278
+- `ReplayStageState`: size 0x24 with target-supported cursor/header/index/node layout
+- `ReplayManager`: size 0x2D4 with compile-time assertions for the reviewed field offsets
 
-The source uses natural C++ and target-supported replay type names while leaving unrecovered storage/fields explicitly unknown. It contains no target bytes, fake returns, inert padding, target patching, or exact-mode local arrangement.
+`src/ReplayManager.cpp` adds natural implementations of:
 
-`ReplayManager::SaveReplay` is retained as a descriptive maintained source name. The source does not claim an original decorated symbol, original translation-unit owner, production calling convention, or physical compiler owner.
+- `ReplayStageState` constructor/destructor
+- `ReplayManager` constructor/destructor
+- `ReplayManager::Create`
+- `ReplayManager::Load`
+- `ReplayManager::Destroy`
+- `ReplayManager::ProcessFrame`
 
-A minimal timing-source view is explicitly packed to four-byte alignment because the target reads consecutive doubles at `+0x24` and `+0x2C`. The first compile attempt failed the two offset assertions under the default layout; the pack-four correction follows direct target offsets rather than suppressing the assertions.
+It also updates the existing SaveReplay traversal to consume the target-observed intrusive frame-list roots and node values.
 
-The maintained `ReplayManager` size is asserted to `0x2D4`, but fields beginning at `+0xA0` remain an unknown byte range because their semantics are outside this packet.
+The source intentionally leaves connected helper implementations such as the shared initializer, load body, frame allocator/free helpers, input updater, and chain operations as descriptive externals when their independent origin/source ownership has not been reviewed. No target bytes, fake returns, inert padding, target patching, or private-register source ABI tricks were added.
 
 ## Adjacent-game hypothesis provenance
 
-Adjacent repositories were consulted only after TH10 had established the packet boundary, machine ABI, major layout, and save behavior. Only committed content was used.
+Only committed adjacent content was used, and only after TH10-local behavior had been recovered.
 
-- TH08: HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, branch `port/portable-64bit`, clean. Committed ReplayManager source corroborated the `SaveReplay` naming family only.
-- TH09: HEAD `0c0d91323a3d37cfc84c578ffa136840b5796dbc`, branch `main`, clean. Committed replay input/source corroborated naming and linked-buffer concepts; its data format differs materially and did not define TH10 layout.
-- TH095: HEAD `4c9cfb5085f34feabbb30a3cbff624eb11444450`, branch `main`, tracked clean with unrelated untracked `EnemyManagerUpdate.i`, `config/runtime-scenarios.json`, `droid.resume.txt`, and `scripts/runtime-diff.py`. None of those untracked files was read. Committed ReplayManager source corroborated the 0x24 file-header family, the same two Encrypt profiles, 0xFFFF USER scratch, two USER types, and four-byte metadata alignment only after those facts were recovered from TH10.
+- TH08: HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, branch `port/portable-64bit`, clean. Committed ReplayManager source supplied naming-family corroboration; its object layout materially differs.
+- TH09: HEAD `5b77d78f57bb0cdb6b5d7eaaf8091c0084736be7`, branch `main`, ahead 1, clean in the observed status. No TH09 address/layout was transferred.
+- TH095: HEAD `4c9cfb5085f34feabbb30a3cbff624eb11444450`, branch `main`. Unrelated tracked and untracked work was present and preserved; none of that uncommitted content was read. Only `git show HEAD:src/ReplayManager.hpp/.cpp` was consulted. Committed TH095 contains the analogous `Initialize`, `LoadReplay`, writer, destructor, `Create`, `Load`, `Destroy`, and `ProcessFrame` family, but its manager size/layout differs materially.
 
-No adjacent address, function extent, data/object ownership, translation-unit ownership, ABI, exactness, or completion state was transferred into TH10.
+No adjacent address, target extent, data ownership, TU ownership, ABI, exactness, or completion claim was transferred into TH10.
 
 ## Compiler and exactness feedback
 
-The final tracked `src/ReplayManager.cpp` compiles successfully with the pinned VC7.1 SP1 candidate under:
+Final maintained `src/ReplayManager.cpp` compiles successfully with pinned VC7.1 SP1 build 6030 using:
 
-- fixed normal profile: `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc`;
-- the same source/profile plus `/GL`.
+- fixed normal profile `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc`
+- the same source/profile plus `/GL`
 
-The final target-bound normal-COFF probe reports:
+True normal `/Gy` text-section extents from the final source are:
 
-- target owned extent: 1,681 bytes
-- object owned extent: 1,681 bytes
-- comparable non-relocation bytes: 1,465
-- matching comparable bytes: 73
-- result: mismatch
-- acceptance authority: none
+| Body | Normal section | Target |
+| --- | ---: | ---: |
+| `ReplayManager::~ReplayManager` | 199 | 367 |
+| `ReplayManager::Create` | 80 | 185 |
+| synthesized scalar deleting destructor | 30 | 25 |
+| `ReplayManager::Load` | 77 | 181 |
+| `ReplayManager::Destroy` | 27 | 18 |
+| `ReplayManager::ProcessFrame` | 456 | 596 |
 
-A natural source correction removed a redundant temporary `time_t`: the target directly passes replay-data `+0x0C` to `localtime`. This preserved the 1,681-byte owned extent and improved the normal diagnostic from 63/1465 to 73/1465 comparable bytes.
+The standalone normal source therefore has real extent/codegen mismatches. `/GL` feasibility preserves an LTCG/interprocedural hypothesis but has no target-bound linked-image extent authority.
 
-Target bytes visibly contain GS-cookie instrumentation. Additional **scratch-only** profile/ABI diagnostics were used to classify the mismatch, not to tune maintained source:
+An important diagnostic correction was made during this packet: probe-mode `scripts/compare-coff-function.py` can use its caller-supplied expected size as the extraction window when an old VC7.1 function symbol lacks an auxiliary definition extent. A probe JSON whose `object_size` equals the supplied target size is therefore not, by itself, evidence of the true COFF-owned function extent. This packet uses `/Gy` section sizes above for the normal extent diagnostic. The misleading fixed-window JSONs were treated as reproducible scratch and removed after the conclusion was recorded.
 
-- tracked source plus `/GS`: 1,681 bytes, mismatch, 86/1457 comparable bytes;
-- temporary source-level `__fastcall`, normal profile: 1,681 bytes, mismatch, 78/1465;
-- temporary source-level `__fastcall` plus `/GS`: 1,681 bytes, mismatch, 87/1457.
+No canonical match unit or exact ledger row was added. `config/matches.csv`, `config/match-units.toml`, and `config/build.toml` remain unchanged.
 
-None closes the target shape. The remaining mismatch is therefore not reducible to one obvious source-level calling-convention switch; GS profile, private register lowering, helper inlining, local lifetimes, LTCG/interprocedural context, and physical source ownership remain unresolved.
+## Durable ledger delta
 
-The maintained source remains ordinary C++. No canonical exact row or match unit was added. `/GL` compilation preserves the LTCG hypothesis but has no standalone target-bound exactness authority.
+Starting status:
 
-`config/matches.csv`, `config/match-units.toml`, and `config/build.toml` remain unchanged.
+- candidates: 1,229
+- pending origin/boundary review: 1,148
+- reviewed authored: 75 functions / 15,545 bytes
+- exclusions: 6
+- source-present mappings: 48
+- canonical exact: 0 functions / 0 bytes
 
-## Durable ledger changes
+Current post-packet status before checkpoint:
 
-The existing candidate `0x00429B60` was promoted only after target-local boundary, caller ABI, save/load layout, output behavior, and compiler feedback were reconciled.
+- candidates: **1,230**
+- pending: **1,143**
+- reviewed authored: **80 functions / 16,892 bytes**
+- exclusions: **7**
+- source-present mappings: **53**
+- canonical exact: **0 functions / 0 bytes**
+- canonical normal-COFF match units: **0**
+- whole Windows i386 build: **open**
+- runtime validation: **not started**
+- semantic reconstruction / ports: **not started**
 
-Tracked packet paths before the handoff update:
+Packet delta:
+
+- candidates: +1
+- pending: -5
+- reviewed authored: +5 functions / +1,347 bytes
+- exclusions: +1
+- source-present mappings: +5
+- exact: +0
+
+The new denominator candidate is the 25-byte compiler-generated body at `0x004296D0`; it is not counted as authored code.
+
+## Tracked paths in this packet
+
+Intended tracked paths are:
 
 - `config/function-origins.csv`
 - `config/functions.csv`
@@ -248,122 +277,89 @@ Tracked packet paths before the handoff update:
 - `config/reccmp-functions.csv`
 - `docs/KNOWLEDGE_BASE.md`
 - `docs/PROGRESS.md`
+- `docs/RE_HANDOFF.md`
 - `resources/progress.svg`
 - `src/ReplayManager.cpp`
 - `src/ReplayManager.hpp`
 
-This handoff is the tenth intended tracked path.
-
-Knowledge entries added/updated include `REPLAY-001`, `REPLAY-002`, `REPLAY-003`, `TOOLCHAIN-011`, and `SOURCE-002`.
-
-Current reconstruction status:
-
-- tracked candidates: **1,229**
-- origin/boundary pending: **1,148**
-- reviewed authored: **75 functions / 15,545 bytes**
-- exclusions: **6**
-- source-present mappings: **48**
-- canonical exact: **0 functions / 0 bytes**
-- canonical match units: **0**
-- whole Windows i386 build: **open**
-- runtime validation: **not started**
-- semantic reconstruction / ports: **not started**
-
-Packet delta:
-
-- candidates: +0
-- pending: -1
-- reviewed authored: +1 function / +1,681 bytes
-- source-present: +1
-- exclusions: +0
-- exact: +0
+No exact/build control-plane file is intended to change.
 
 ## Verification planes
 
-Focused validation after the edit passed:
+The pre-checkpoint cold gate has passed on the final maintained source and ledgers:
 
-- final tracked ReplayManager normal VC7.1 compile
-- final tracked ReplayManager `/GL` compile
-- full target-bound normal comparator: 1,681/1,681 owned bytes, mismatch 73/1465, acceptance none
-- `python3 scripts/validate-tracking.py --require-target`
-- `python3 scripts/progress.py --check`
-- `python3 scripts/report-reconstruction-status.py`
+- entry `verify-target.py`, `verify-toolchain.py --execute`, tracking/status, and public-CI preflight
+- mandatory native Ghidra target/provider check
+- final-source normal VC7.1 ReplayManager compile
+- final-source ReplayManager `/GL` compile
+- independent `/Gy` section-size reproduction for the six lifecycle/compiler bodies
+- `verify-target.py`
+- `verify-toolchain.py --check`
+- `validate-tracking.py --require-target`
+- `progress.py --check`
+- `build-match-unit.py --check` with zero canonical match units
+- `build.py --check`, which correctly reports the build graph open
+- honest `build.py`, which returns the expected RC=2 because compile flags, translation-unit partition, libraries, resources, and link order remain unknown
+- reconstruction-status generation
+- public CI
 - `git diff --check`
+- exact/build control-plane diff check: `config/matches.csv`, `config/match-units.toml`, and `config/build.toml` are unchanged
 
-The resumed recovery session reran the final tracked `ReplayManager.cpp` under the fixed normal VC7.1 profile and the same profile plus `/GL`; both compiled successfully. It also reran the full target-bound normal comparator for `ReplayManager::SaveReplay`, reproducing **1,681/1,681 owned bytes** with a non-exact **73/1465** relocation-masked comparable result and no acceptance authority. The cold checkpoint gate then passed `verify-target.py`, `verify-toolchain.py --check`, tracking/progress checks, the 0-unit match graph, the explicitly open build graph, reconstruction status, public CI, and `git diff --check`. The honest `python3 scripts/build.py` returned the expected **RC=2** because compile flags, TU partition, libraries, resources, and link order remain open. `config/matches.csv`, `config/match-units.toml`, and `config/build.toml` remained unchanged.
+A fresh dirty-state Ghidra `check {}` also passed after the cold gate with exact `target:th10-main`, `attestation.status=passed`, `provider_transport=factory-native-command`, and `exactness_credit=none`; its observed timestamp was `2026-09-13T07:18:26.448020Z`.
 
-The verification planes remain independent:
+The remaining pre-checkpoint work is repository diff/index audit and staging. After commit, rerun the cold gate, Ghidra attestation, and independent Truth snapshot when available. Source presence, exactness, whole-build closure, runtime validation, and Truth acceptance remain separate states.
 
-- source presence: **yes for this reviewed body**
-- canonical exactness: **no**
-- whole Windows i386 build closure: **open**
-- runtime validation: **not started**
-- Truth Kernel acceptance for this packet: **none established**
+## Truth Kernel
 
-## Truth Kernel acceptance
+The current-session pre-checkpoint accepted snapshot succeeded. Its source commit is `9f7886f72adcd1880c05e34c62408cf9b1dad966` and the registry contains exactly one accepted fact / one accepted claim: the prior target-bound scope `target_attested:target:th10-main` produced through the TH10 Ghidra provider. It contains no replay-lifecycle source, boundary, ownership, compiler-profile, exactness, build, or runtime acceptance. Therefore this packet has **no newly observed accepted claim**.
 
-The original packet's pre-checkpoint `factory_get_accepted_snapshot(th10)` attempt was unavailable because another Factory operation owned `<operator-path>`. On resume, a fresh accepted snapshot was successfully read. It is sourced from commit `9f7886f72adcd1880c05e34c62408cf9b1dad966` and contains exactly **one accepted fact / one accepted claim**, limited to `target_attested` for `target:th10-main`.
-
-The accepted registry therefore contains **no replay source-presence, boundary, compiler-profile, ownership, or exactness acceptance** for this packet. The current source/ledger/compile conclusions remain independent local reconstruction evidence rather than Truth Kernel acceptance.
+A fresh post-commit accepted snapshot must still be attempted. This pre-checkpoint registry observation must not be reused as proof of post-commit acceptance if that later refresh is unavailable.
 
 ## Analysis artifacts
 
-Campaign directory:
+Current-session campaign:
 
-- `.analysis/gpt-web/20260912-replay-writer/`
+- `.analysis/gpt-web/20260913-replay-lifecycle/`
 
-Observed `.analysis/` sizes:
+Observed sizes:
 
-- session entry: **109,361 bytes**
-- session peak: **248,963 bytes**
-- after packet scratch cleanup: **114,289 bytes**
+- session-entry `.analysis/`: **294,912 bytes**
+- observed session peak so far: **380,928 bytes**
+- after current-session scratch cleanup: **311,296 bytes**
 
-Retained compact campaign artifacts after cleanup:
+Retained current-session files after cleanup:
 
-- `compiler-shape-report.txt`: 3,290 bytes
-- `manifest.json`: 1,638 bytes before final checkpoint metadata
+- `compiler-shape-report.txt`: 4,333 bytes
+- `manifest.json`: current campaign manifest
 
-Removed only current-session reproducible scratch after its conclusions were compressed into the report:
+Removed only reproducible current-session scratch:
 
-- bounded full replay-writer objdump
-- normal and `/GL` probe objects
-- final normal and `/GL` probe objects
-- `/GS`, temporary fastcall, and fastcall-plus-`/GS` probe objects
-- detailed comparator JSON/stderr
-- temporary fastcall source copies
+- normal and `/GL` ReplayManager objects/PDBs
+- temporary origin-probe source/objects/PDBs
+- detailed fixed-window comparator JSON files
 
-No artifact exceeded 64 MiB. No old/shared analysis state, target, Ghidra database, Wine prefix, toolchain, or another process's output was deleted.
-
-## Engineering events and recovery handling
-
-Several Factory transport/network failures occurred during this packet, including optional Ghidra caller/callee/string queries, adjacent committed-source reads, source patch commands, and scratch ABI/profile diagnostics. After every failed/timed-out/non-transactional operation, live repository status was reread before retry or continuation. Commands that might have written source or scratch were inspected before any retry so partial effects were not guessed.
-
-One early campaign setup command exited nonzero because of a here-document boundary error after the manifest had already been written. Live status and the campaign file were inspected before the read-only ledger portion was rerun.
-
-The first ReplayManager compiler probe failed legitimately on two negative-size offset assertions for the target timing view. No output object was assumed. After live-status recovery and artifact inspection, the target-observed four-byte packing was applied and both normal and `/GL` compiles passed.
-
-These events affected availability/engineering flow only; they are not evidence for reconstruction or exactness.
+No current campaign artifact exceeded 64 MiB. No pre-existing/shared analysis tree, target, Ghidra project, toolchain, Wine prefix, or unknown artifact was removed.
 
 ## Next hard packet
 
-Prefer the connected replay lifecycle/recording owner cohort rather than the easier score writer:
+Prefer the shared replay initializer centered on **`0x00428F60-0x0042949F` (1,344 bytes)**, with only its necessary connected load/recording context such as `0x0042A200` and the reviewed frame-list helpers.
 
-- `0x004294A0`, 367 bytes
-- `0x00429610`, 185 bytes
-- `0x004296F0`, 181 bytes
-- `0x004297B0`, 18 bytes
-- `0x004297D0`, 596 bytes
+Why this is the next hard frontier:
 
-The `0x004296F0` body already provides direct target evidence for a `0x2D4` replay-object allocation and eight `0x24` subobjects at `+0xA0`; `0x004297D0` operates the recording/playback state that feeds SaveReplay. This cohort can close lifecycle ownership and replace the current conservative `+0xA0-0x2D3` unknown storage with evidence-backed fields where possible.
+- it is the common mode/path owner used by the newly reviewed Create path;
+- it establishes record/playback/load-only initialization and global-owner publication;
+- it allocates and initializes the same stage headers, frame lists, stage states, and callback/chain ownership resolved in this packet;
+- closing it can replace current descriptive external declarations with target-reviewed source while challenging the central owner boundary;
+- it is materially larger and more connected than available score/write leaf work, so it preserves the mixed hard-frontier balance rather than optimizing function count.
 
-The 564-byte score writer at `0x0042B1E0-0x0042B413` remains a useful secondary write-pipeline comparison but is not preferred merely because it is smaller. The next packet should preserve the current hard-frontier balance by continuing the newly exposed Replay owner/data-layout seam.
+Do not assume an old `0x00429240` subfunction: current Ghidra analysis identifies `0x00428F60-0x0042949F` as one function, and addresses inside that range are context within that body unless new physical evidence proves otherwise.
 
 ## Checkpoint intent
 
-The recovered packet passed its cold checkpoint gate. After full working-tree and staged-diff audit, create one local checkpoint with subject:
+After the remaining cold/Truth/diff gates pass, create one local checkpoint with subject:
 
-- `gpt-web: reconstruct TH10 replay save writer`
+- `gpt-web: reconstruct TH10 replay lifecycle`
 
-Do not push. The final commit hash is recorded in the ignored campaign manifest and session report after commit creation rather than self-referencing this tracked handoff.
+Do not push. Record the resulting commit hash in the ignored campaign manifest and final session report rather than attempting a self-referential tracked handoff commit hash.
 
-This handoff is a continuation checkpoint only. It does not declare the TH10 exact-reconstruction phase complete.
+This handoff is a continuation checkpoint only and does not declare the TH10 exact-reconstruction phase complete.

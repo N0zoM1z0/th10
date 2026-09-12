@@ -46,3 +46,8 @@ Lzss::ContractNode
 Lzss::ReplaceNode
 Lzss::FindNextNode
 ReplayManager::SaveReplay
+ReplayManager::~ReplayManager
+ReplayManager::Create
+ReplayManager::Load
+ReplayManager::Destroy
+ReplayManager::ProcessFrame

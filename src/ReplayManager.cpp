@@ -52,6 +52,205 @@ extern const char *g_ReplayDifficultyNames[];
 extern const char g_ReplayUserInfoText[];
 extern const char g_ReplayUserCommentText[];
 
+struct ReplayInputSource
+{
+    unsigned int currentInput;
+};
+
+struct ReplayInputPair
+{
+    unsigned short current;
+    unsigned short previous;
+};
+
+struct ReplayFpsSource
+{
+    unsigned char unknown000[0x34];
+    float currentFps;
+};
+
+extern void *g_ReplayRuntime;
+extern ReplayInputSource g_ReplayInputSource;
+extern ReplayInputPair g_ReplayInput;
+extern unsigned short g_ReplayInputHoldCounter;
+extern unsigned short g_ReplayAuxiliaryInput;
+extern unsigned short g_ReplayInputFlags;
+extern unsigned int g_ReplayInputBehaviorFlags;
+extern ReplayFpsSource *g_ReplayFpsSource;
+
+// These names describe independently reviewed TH10 helpers. Their source/TU
+// ownership is not promoted by this lifecycle packet.
+void ReplayUpdateInputSource(ReplayInputSource *source);
+bool ReplayAppendRecord(ReplayFrameData *frameData, unsigned short input,
+                        unsigned short auxiliaryInput, unsigned short inputFlags);
+ReplayListNode *ReplayAllocateFrameData(ReplayManager *manager, int stage);
+void ReplayClearStageFrameData(ReplayManager *manager, int stage);
+void ReplayCutChain(void *element);
+
+ReplayStageState::ReplayStageState()
+{
+    memset(this, 0, sizeof(*this));
+    recordCursor = recordStart;
+    fpsCursor = fpsStart;
+    link.value = this;
+}
+
+ReplayStageState::~ReplayStageState()
+{
+    if (link.next != NULL)
+        link.next->previous = link.previous;
+    if (link.previous != NULL)
+        link.previous->next = link.next;
+    link.next = NULL;
+    link.previous = NULL;
+}
+
+ReplayManager::ReplayManager()
+{
+    memset(this, 0, sizeof(*this));
+}
+
+ReplayManager::~ReplayManager()
+{
+    free(fileHeader);
+
+    for (int stage = 0; stage < 8; stage++)
+        ReplayClearStageFrameData(this, stage);
+
+    free(replayData);
+    replayData = NULL;
+
+    for (int stage = 0; stage < 8; stage++)
+    {
+        free(stageHeaders[stage]);
+        stageHeaders[stage] = NULL;
+    }
+
+    if (updateChain != NULL)
+        ReplayCutChain(updateChain);
+    if (playbackChain != NULL)
+        ReplayCutChain(playbackChain);
+    if (drawChain != NULL)
+        ReplayCutChain(drawChain);
+
+    if (this == g_ReplayManager)
+        g_ReplayManager = NULL;
+}
+
+ReplayManager *ReplayManager::Create(int replayMode, const char *path)
+{
+    ReplayManager *manager = new ReplayManager;
+    if (manager->Initialize(replayMode, path) != 0)
+    {
+        if (manager != NULL)
+            delete manager;
+        return NULL;
+    }
+    return manager;
+}
+
+ReplayManager *ReplayManager::Load(const char *path)
+{
+    ReplayManager *manager = new ReplayManager;
+    if (manager->Initialize(REPLAY_MANAGER_LOAD_ONLY, path) != 0)
+    {
+        if (manager != NULL)
+            delete manager;
+        return NULL;
+    }
+    return manager;
+}
+
+void ReplayManager::Destroy(ReplayManager *replayManager)
+{
+    ReplayManager *manager = replayManager;
+    if (manager != NULL)
+    {
+        delete manager;
+        manager = NULL;
+    }
+}
+
+int ReplayManager::ProcessFrame()
+{
+    if (g_ReplayRuntime == NULL)
+        return 1;
+
+    if (mode == REPLAY_MANAGER_RECORD)
+    {
+        g_ReplayInput.previous = g_ReplayInput.current;
+
+        unsigned short input =
+            (unsigned short)(g_ReplayInputSource.currentInput & 0x01f7);
+        if ((g_ReplayInputBehaviorFlags & 0x0200) != 0)
+        {
+            if ((input & 0x0001) != 0)
+            {
+                g_ReplayInputHoldCounter++;
+                if (g_ReplayInputHoldCounter >= 8)
+                {
+                    input |= 0x0004;
+                    g_ReplayInputHoldCounter = 8;
+                }
+            }
+            else
+            {
+                g_ReplayInputHoldCounter = 0;
+            }
+        }
+        g_ReplayInput.current = input;
+        ReplayUpdateInputSource(&g_ReplayInputSource);
+
+        ReplayFrameData *frameData =
+            (ReplayFrameData *)currentFrameLink->value;
+        if (frameCounter % 30 == 0)
+        {
+            float fps = g_ReplayFpsSource->currentFps + 0.5f;
+            *frameData->fpsEnd =
+                fps >= 256.0f ? 0xff : (unsigned char)fps;
+            frameData->fpsEnd++;
+        }
+
+        if (ReplayAppendRecord(frameData, g_ReplayInput.current,
+                               g_ReplayAuxiliaryInput, g_ReplayInputFlags))
+        {
+            currentFrameLink = ReplayAllocateFrameData(this, activeStage);
+        }
+    }
+    else if (activeStage >= 0)
+    {
+        ReplayStageState &stageState = stageStates[activeStage];
+        if (stageState.recordIndex < stageState.header->recordCount)
+        {
+            ReplayRecData *record = (ReplayRecData *)stageState.recordCursor;
+            g_ReplayInput.current = record->input;
+            g_ReplayAuxiliaryInput = record->auxiliaryInput;
+            g_ReplayInputFlags = record->inputFlags;
+            stageState.recordCursor += sizeof(ReplayRecData);
+
+            replayFps = *stageState.fpsCursor;
+            if (frameCounter % 30 == 0)
+                stageState.fpsCursor++;
+        }
+        else
+        {
+            g_ReplayInput.current = 0;
+            g_ReplayAuxiliaryInput = 0;
+            g_ReplayInputFlags = 0;
+        }
+        stageState.recordIndex++;
+    }
+    else
+    {
+        g_ReplayInput.current = 0;
+        g_ReplayAuxiliaryInput = 0;
+        g_ReplayInputFlags = 0;
+    }
+
+    frameCounter++;
+    return 1;
+}
+
 int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 {
     strcpy(replayData->replayName, replayName);
@@ -81,10 +280,10 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
         stageHeader->payloadSize = 0;
         allocationSize += sizeof(ReplayStageDataHeader);
 
-        for (ReplayBufferLink *link = stageBuffers[stage].head;
+        for (ReplayListNode *link = stageFrameLists[stage].next;
              link != NULL; link = link->next)
         {
-            ReplayFrameData *frameData = link->frameData;
+            ReplayFrameData *frameData = (ReplayFrameData *)link->value;
             int recordCount = frameData->recordEnd - frameData->records;
             int recordBytes = recordCount * sizeof(ReplayRecData);
             int fpsBytes = frameData->fpsEnd - frameData->fpsSamples;
@@ -121,10 +320,10 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
                sizeof(ReplayStageDataHeader));
         uncompressedSize += sizeof(ReplayStageDataHeader);
 
-        for (ReplayBufferLink *link = stageBuffers[stage].head;
+        for (ReplayListNode *link = stageFrameLists[stage].next;
              link != NULL; link = link->next)
         {
-            ReplayFrameData *frameData = link->frameData;
+            ReplayFrameData *frameData = (ReplayFrameData *)link->value;
             int recordCount = frameData->recordEnd - frameData->records;
             int recordBytes = recordCount * sizeof(ReplayRecData);
             memcpy(uncompressedData + uncompressedSize, frameData->records,
