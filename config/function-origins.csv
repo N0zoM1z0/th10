@@ -403,7 +403,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00434C10,authored_game,Archive,authored,high,pbg-archive-ctor-raw-2026-09-12
 0x00434C20,authored_game,Archive,authored,high,pbg-archive-dtor-2026-09-12
 0x00434C30,authored_game,Archive,authored,high,pbg-archive-load-2026-09-12
-0x00434CA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00434CA0,authored_game,Archive,authored,high,pbg-archive-resource-load-2026-09-12
 0x00434D10,authored_game,Archive,authored,high,pbg-archive-release-2026-09-12
 0x00434D70,compiler_generated,Archive,exclude,high,pbg-entry-deleting-dtor-compiler-2026-09-12
 0x00434DD0,authored_game,Archive,authored,high,pbg-archive-read-2026-09-12

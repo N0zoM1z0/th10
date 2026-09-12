@@ -1,4 +1,5 @@
 #include "PbgArchive.hpp"
+#include "ResFile.hpp"
 
 #include <stdlib.h>
 #include <string.h>
@@ -70,6 +71,25 @@ bool PbgArchive::Load(const char *filename)
             m_FileAbstraction->Open(m_Filename, g_PbgFileOpenModes[0]);
             return true;
         }
+    }
+
+    Release();
+    return false;
+}
+
+bool PbgArchive::LoadFromResource(const char *resourceName)
+{
+    Release();
+
+    m_FileAbstraction = new CWin32ResourcePbgFile;
+    if (m_FileAbstraction == NULL)
+        return false;
+
+    if (ParseHeader(resourceName))
+    {
+        m_Filename = CopyFileName(resourceName);
+        if (m_Filename != NULL)
+            return true;
     }
 
     Release();

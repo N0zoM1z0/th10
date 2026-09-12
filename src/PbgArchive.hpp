@@ -46,6 +46,9 @@ class PbgArchive
     ~PbgArchive();
 
     bool Load(const char *filename);
+    // Descriptive reconstruction name; the original TH10 identifier and TU
+    // owner for this retained resource-backed load body are not established.
+    bool LoadFromResource(const char *resourceName);
     void Release();
     unsigned char *ReadDecompressEntry(const char *filename,
                                        unsigned char *outBuffer);
@@ -62,6 +65,6 @@ class PbgArchive
     PbgArchiveEntry *m_Entries;
     i32 m_NumOfEntries;
     char *m_Filename;
-    CPbgFile *m_FileAbstraction;
+    IPbgFile *m_FileAbstraction;
 };
 typedef char PbgArchiveSizeIs10[(sizeof(PbgArchive) == 0x10) ? 1 : -1];

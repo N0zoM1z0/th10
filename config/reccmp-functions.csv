@@ -34,3 +34,4 @@ CMemoryPbgFile::Tell,0x004364D0,function
 CMemoryPbgFile::GetSize,0x004364E0,function
 CMemoryPbgFile::Seek,0x004364F0,function
 CWin32ResourcePbgFile::Open,0x004366C0,function
+PbgArchive::LoadFromResource,0x00434CA0,function

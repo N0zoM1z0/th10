@@ -33,3 +33,4 @@ CMemoryPbgFile::Tell
 CMemoryPbgFile::GetSize
 CMemoryPbgFile::Seek
 CWin32ResourcePbgFile::Open
+PbgArchive::LoadFromResource
