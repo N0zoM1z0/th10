@@ -662,7 +662,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044B010,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B0D0,authored_game,FileSystem,authored,high,filesystem-decrypt-2026-09-12
-0x0044B220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044B220,authored_game,FileSystem,authored,high,filesystem-encrypt-2026-09-12
 0x0044B360,authored_game,FileSystem,authored,high,filesystem-open-file-2026-09-12
 0x0044B4D0,authored_game,FileSystem,authored,high,filesystem-file-exists-2026-09-12
 0x0044B540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

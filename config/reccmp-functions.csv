@@ -37,6 +37,7 @@ CWin32ResourcePbgFile::Open,0x004366C0,function
 PbgArchive::LoadFromResource,0x00434CA0,function
 DecompressData,0x00435DC0,function
 FileSystem::Decrypt,0x0044B0D0,function
+FileSystem::Encrypt,0x0044B220,function
 CompressData,0x004359B0,function
 Lzss::InitTree,0x00435FA0,function
 Lzss::InitEncoderState,0x00435FD0,function

@@ -36,6 +36,7 @@ CWin32ResourcePbgFile::Open
 PbgArchive::LoadFromResource
 DecompressData
 FileSystem::Decrypt
+FileSystem::Encrypt
 CompressData
 Lzss::InitTree
 Lzss::InitEncoderState
