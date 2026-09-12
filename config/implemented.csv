@@ -54,3 +54,4 @@ ReplayManager::ProcessFrame
 ReplayManager::Initialize
 ReplayManager::LoadReplay
 ReplayManager::BeginStage
+RebuildPlayerOptions

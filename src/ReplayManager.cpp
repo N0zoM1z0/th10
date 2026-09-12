@@ -3,6 +3,7 @@
 #include "Decompress.hpp"
 #include "FileSystem.hpp"
 #include "Lzss.hpp"
+#include "Player.hpp"
 
 #include <direct.h>
 #include <stdio.h>
@@ -90,47 +91,6 @@ typedef char ReplayRuntimeStateSnapshotAt24[
 typedef char ReplayRuntimeStateFlagsAt58[
     (offsetof(ReplayRuntimeState, flags) == 0x58) ? 1 : -1];
 
-// Maintained view of only the runtime fields copied to/from replay stage
-// headers by the target. The original type and field identifiers are unknown.
-struct ReplayStageRuntimeSlot
-{
-    unsigned int value00;
-    unsigned int value04;
-    unsigned int value08;
-    unsigned int value0C;
-    unsigned int value10;
-    unsigned int value14;
-    unsigned int value18;
-    unsigned int value1C;
-    unsigned char unknown020[0x38];
-    unsigned int resetFlag;
-    unsigned char unknown05C[0x3c];
-};
-typedef char ReplayStageRuntimeSlotSizeIs98[
-    (sizeof(ReplayStageRuntimeSlot) == 0x98) ? 1 : -1];
-typedef char ReplayStageRuntimeSlotResetFlagAt58[
-    (offsetof(ReplayStageRuntimeSlot, resetFlag) == 0x58) ? 1 : -1];
-
-struct ReplayStageRuntime
-{
-    unsigned char unknown000[0x3cc];
-    unsigned int coordinateX;
-    unsigned int coordinateY;
-    unsigned char unknown3D4[0x2f00];
-    ReplayStageRuntimeSlot slots[4];
-    unsigned char unknown3534[0xe38];
-    unsigned char replaySnapshot[0x108];
-    unsigned int unknown4474;
-};
-typedef char ReplayStageRuntimeCoordinateXAt3CC[
-    (offsetof(ReplayStageRuntime, coordinateX) == 0x3cc) ? 1 : -1];
-typedef char ReplayStageRuntimeSlotsAt32D4[
-    (offsetof(ReplayStageRuntime, slots) == 0x32d4) ? 1 : -1];
-typedef char ReplayStageRuntimeSnapshotAt436C[
-    (offsetof(ReplayStageRuntime, replaySnapshot) == 0x436c) ? 1 : -1];
-typedef char ReplayStageRuntimeUnknown4474At4474[
-    (offsetof(ReplayStageRuntime, unknown4474) == 0x4474) ? 1 : -1];
-
 typedef int (*ReplayChainCallback)(ReplayManager *manager);
 
 struct ReplayChainElement
@@ -199,7 +159,6 @@ extern unsigned int g_ReplayStageValue1B4;
 extern unsigned int g_ReplayStageValue1B8;
 extern unsigned char g_ReplayStageTimer[];
 extern void *g_ReplayChainManager;
-extern ReplayStageRuntime *g_ReplayStageRuntime;
 
 // These names describe independently reviewed TH10 helpers. Their source/TU
 // ownership is not promoted by this lifecycle packet.
@@ -212,10 +171,9 @@ void ReplayCutChain(ReplayChainElement *element);
 
 // These interfaces describe calls observed from the stage-transition owner.
 // Their own target candidates remain origin/source/owner unknown in this packet.
-void ReplayRestoreStagePosition(ReplayStageRuntime *runtime,
+void ReplayRestoreStagePosition(Player *runtime,
                                 const unsigned int *position);
-void ReplayRebuildStageRuntime(ReplayStageRuntime *runtime);
-void ReplayResetStageRuntime(ReplayStageRuntime *runtime);
+void ReplayResetStageRuntime(Player *runtime);
 
 void ReplayInitializeStageTimer(void *timer, int value);
 void ReplaySetStageTimerValue(void *timer, int value);
@@ -474,58 +432,58 @@ void ReplayManager::BeginStage()
             stageHeader->unknown1B4 = g_ReplayStageValue1B4;
         }
 
-        ReplayStageRuntime *runtime = g_ReplayStageRuntime;
-        stageHeader->unknown024 = runtime->coordinateX;
-        stageHeader->unknown028 = runtime->coordinateY;
-        memcpy(stageHeader->runtimeSnapshot, runtime->replaySnapshot,
+        Player *runtime = g_Player;
+        stageHeader->unknown024 = runtime->positionX;
+        stageHeader->unknown028 = runtime->positionY;
+        memcpy(stageHeader->runtimeSnapshot, runtime->replayPositionHistory,
                sizeof(stageHeader->runtimeSnapshot));
 
         for (int i = 0; i < 4; i++)
         {
-            ReplayStageRuntimeSlot &slot = runtime->slots[i];
-            stageHeader->runtimePairs0[i].first = slot.value00;
-            stageHeader->runtimePairs0[i].second = slot.value04;
-            stageHeader->runtimePairs1[i].first = slot.value08;
-            stageHeader->runtimePairs1[i].second = slot.value0C;
-            stageHeader->runtimePairs2[i].first = slot.value10;
-            stageHeader->runtimePairs2[i].second = slot.value14;
-            stageHeader->runtimePairs3[i].first = slot.value18;
-            stageHeader->runtimePairs3[i].second = slot.value1C;
+            PlayerOptionRuntime &slot = runtime->options[i];
+            stageHeader->runtimePairs0[i].first = slot.replayPair0.x;
+            stageHeader->runtimePairs0[i].second = slot.replayPair0.y;
+            stageHeader->runtimePairs1[i].first = slot.replayPair1.x;
+            stageHeader->runtimePairs1[i].second = slot.replayPair1.y;
+            stageHeader->runtimePairs2[i].first = slot.replayPair2.x;
+            stageHeader->runtimePairs2[i].second = slot.replayPair2.y;
+            stageHeader->runtimePairs3[i].first = slot.replayPair3.x;
+            stageHeader->runtimePairs3[i].second = slot.replayPair3.y;
         }
 
         stageHeader->unknown1B8 = g_ReplayStageValue1B8;
         activeStage = stage;
-        stageHeader->unknown1BC = runtime->unknown4474;
+        stageHeader->unknown1BC = runtime->optionMode;
     }
     else if (mode == REPLAY_MANAGER_PLAYBACK)
     {
         int stage = g_ReplayCurrentStage;
         ReplayStageDataHeader *stageHeader = stageStates[stage].header;
-        ReplayStageRuntime *runtime = g_ReplayStageRuntime;
+        Player *runtime = g_Player;
 
         activeStage = stage;
         ReplayRestoreStagePosition(runtime, &stageHeader->unknown024);
-        memcpy(runtime->replaySnapshot, stageHeader->runtimeSnapshot,
+        memcpy(runtime->replayPositionHistory, stageHeader->runtimeSnapshot,
                sizeof(stageHeader->runtimeSnapshot));
-        runtime->unknown4474 = stageHeader->unknown1BC;
-        ReplayRebuildStageRuntime(runtime);
+        runtime->optionMode = stageHeader->unknown1BC;
+        RebuildPlayerOptions(runtime);
 
         for (int i = 0; i < 4; i++)
         {
-            ReplayStageRuntimeSlot &slot = runtime->slots[i];
-            slot.value00 = stageHeader->runtimePairs0[i].first;
-            slot.value04 = stageHeader->runtimePairs0[i].second;
-            slot.value08 = stageHeader->runtimePairs1[i].first;
-            slot.value0C = stageHeader->runtimePairs1[i].second;
-            slot.value10 = stageHeader->runtimePairs2[i].first;
-            slot.value14 = stageHeader->runtimePairs2[i].second;
-            slot.value18 = stageHeader->runtimePairs3[i].first;
-            slot.value1C = stageHeader->runtimePairs3[i].second;
+            PlayerOptionRuntime &slot = runtime->options[i];
+            slot.replayPair0.x = stageHeader->runtimePairs0[i].first;
+            slot.replayPair0.y = stageHeader->runtimePairs0[i].second;
+            slot.replayPair1.x = stageHeader->runtimePairs1[i].first;
+            slot.replayPair1.y = stageHeader->runtimePairs1[i].second;
+            slot.replayPair2.x = stageHeader->runtimePairs2[i].first;
+            slot.replayPair2.y = stageHeader->runtimePairs2[i].second;
+            slot.replayPair3.x = stageHeader->runtimePairs3[i].first;
+            slot.replayPair3.y = stageHeader->runtimePairs3[i].second;
 
             if (g_ReplayShotType + g_ReplayCharacter * 3 == 5)
             {
-                slot.value18 = stageHeader->runtimePairs0[i].first;
-                slot.value1C = stageHeader->runtimePairs0[i].second;
+                slot.replayPair3.x = stageHeader->runtimePairs0[i].first;
+                slot.replayPair3.y = stageHeader->runtimePairs0[i].second;
             }
             slot.resetFlag = 0;
         }
