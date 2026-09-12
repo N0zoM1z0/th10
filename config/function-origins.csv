@@ -455,9 +455,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043874C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004387C2,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00438880,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00438A30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00438A30,authored_game,Rendering,authored,high,main-reset-resource-release-2026-09-12
 0x00438A60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00438AD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00438AD0,authored_game,Main,authored,high,main-winmain-boundary-2026-09-12
 0x004390E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004391F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004392E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -766,7 +766,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045371B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045373D,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00453762,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004537DC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004537DC,library,CRT,exclude,high,crt-winmain-startup-2026-09-12
 0x004539B1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004539CB,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00453AA1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
