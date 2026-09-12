@@ -1,5 +1,6 @@
 #include "ReplayManager.hpp"
 
+#include "Decompress.hpp"
 #include "FileSystem.hpp"
 #include "Lzss.hpp"
 
@@ -18,6 +19,15 @@ namespace FileSystem
 int OpenWriteFile(const char *filename);
 void WriteToOpenFile(const void *data, unsigned int size);
 void CloseWriteFile();
+}
+
+namespace ReplayFile
+{
+// Descriptive source-level interfaces for the target-observed stateful replay
+// read seam. The original TH10 identifiers and translation-unit owner remain
+// unproven.
+int Open(const char *path);
+void *Read(unsigned int size);
 }
 
 #pragma pack(push, 4)
@@ -114,6 +124,14 @@ typedef char ReplayChainElementLinkAt14[
     (offsetof(ReplayChainElement, link) == 0x14) ? 1 : -1];
 typedef char ReplayChainElementArgumentAt20[
     (offsetof(ReplayChainElement, argument) == 0x20) ? 1 : -1];
+
+// Maintained view of the target byte whose 0x20 bit selects archive-backed
+// replay loading. The containing original object/field name is not established.
+extern unsigned char g_ReplayFileLoadFlags;
+enum
+{
+    REPLAY_FILE_LOAD_FROM_ARCHIVE = 0x20,
+};
 
 extern ReplayRuntimeState *g_ReplayRuntime;
 extern ReplayInputSource g_ReplayInputSource;
@@ -647,5 +665,85 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 
     free(userData);
     FileSystem::CloseWriteFile();
+    return 0;
+}
+
+
+int ReplayManager::LoadReplay(const char *path)
+{
+    unsigned char *compressedData;
+
+    strcpy(replayPath, path);
+
+    if ((g_ReplayFileLoadFlags & REPLAY_FILE_LOAD_FROM_ARCHIVE) == 0)
+    {
+        char fullPath[256];
+        sprintf(fullPath, "replay/%s", path);
+
+        if (!FileSystem::CheckIfFileAlreadyExists(fullPath))
+            return -1;
+        if (ReplayFile::Open(fullPath) != 0)
+            return -1;
+
+        fileHeader =
+            (ReplayFileHeader *)ReplayFile::Read(sizeof(ReplayFileHeader));
+        if (fileHeader->magic != 0x72303174 || fileHeader->version != 5)
+        {
+            FileSystem::CloseWriteFile();
+            return -1;
+        }
+
+        compressedData =
+            (unsigned char *)ReplayFile::Read(fileHeader->compressedPayloadSize);
+        FileSystem::CloseWriteFile();
+    }
+    else
+    {
+        int fileSize;
+        fileHeader =
+            (ReplayFileHeader *)FileSystem::OpenFile(path, &fileSize, 0);
+        compressedData = (unsigned char *)(fileHeader + 1);
+    }
+
+    decompressedPayload =
+        (unsigned char *)malloc(fileHeader->decompressedPayloadSize);
+
+    FileSystem::Decrypt(compressedData, fileHeader->compressedPayloadSize,
+                        0xaa, 0xe1, 0x400,
+                        fileHeader->compressedPayloadSize);
+    FileSystem::Decrypt(compressedData, fileHeader->compressedPayloadSize,
+                        0x3d, 0x7a, 0x80,
+                        fileHeader->compressedPayloadSize);
+    DecompressData(compressedData, fileHeader->compressedPayloadSize,
+                   decompressedPayload, fileHeader->decompressedPayloadSize);
+
+    replayData = (ReplayDataHeader *)decompressedPayload;
+    unsigned char *stageData = decompressedPayload + sizeof(ReplayDataHeader);
+
+    int stageCount = replayData->stageCount;
+    if (stageCount >= 8)
+        stageCount = 6;
+
+    for (int i = 0; i < stageCount; i++)
+    {
+        ReplayStageDataHeader *stageHeader =
+            (ReplayStageDataHeader *)stageData;
+        ReplayStageState &stageState = stageStates[stageHeader->stageIndex];
+
+        stageState.header = stageHeader;
+        stageState.recordStart = stageData + sizeof(ReplayStageDataHeader);
+        stageState.fpsStart =
+            stageState.recordStart +
+            stageHeader->recordCount * sizeof(ReplayRecData);
+
+        stageData += sizeof(ReplayStageDataHeader) + stageHeader->payloadSize;
+    }
+
+    if ((g_ReplayFileLoadFlags & REPLAY_FILE_LOAD_FROM_ARCHIVE) == 0 &&
+        compressedData != NULL)
+    {
+        free(compressedData);
+    }
+
     return 0;
 }
