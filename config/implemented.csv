@@ -36,3 +36,11 @@ CWin32ResourcePbgFile::Open
 PbgArchive::LoadFromResource
 DecompressData
 FileSystem::Decrypt
+CompressData
+Lzss::InitTree
+Lzss::InitEncoderState
+Lzss::AddString
+Lzss::DeleteString
+Lzss::ContractNode
+Lzss::ReplaceNode
+Lzss::FindNextNode
