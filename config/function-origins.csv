@@ -437,7 +437,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00435800,authored_game,FileSystem,authored,high,pack-file-read-fallback-2026-09-12
 0x004358E0,authored_game,FileSystem,authored,high,pack-file-size-fallback-2026-09-12
 0x004359B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00435DC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00435DC0,authored_game,Compression,authored,high,lzss-decompress-2026-09-12
+0x00435FA0,authored_game,Compression,authored,high,lzss-init-tree-raw-2026-09-12
+0x00435FD0,authored_game,Compression,authored,high,lzss-init-state-raw-2026-09-12
 0x00436000,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00436210,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00436260,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -659,7 +661,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044A5F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B010,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B080,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0044B0D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044B0D0,authored_game,FileSystem,authored,high,filesystem-decrypt-2026-09-12
 0x0044B220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044B360,authored_game,FileSystem,authored,high,filesystem-open-file-2026-09-12
 0x0044B4D0,authored_game,FileSystem,authored,high,filesystem-file-exists-2026-09-12

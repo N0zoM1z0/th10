@@ -1,4 +1,6 @@
 #include "PbgArchive.hpp"
+#include "Decompress.hpp"
+#include "FileSystem.hpp"
 #include "ResFile.hpp"
 
 #include <stdlib.h>
@@ -7,14 +9,6 @@
 // This file is maintained reconstruction source.  TH10's original source file,
 // translation-unit partition, and per-function normal-COFF/LTCG ownership are
 // still unknown; source presence here is not an exactness or object-owner claim.
-namespace FileSystem
-{
-unsigned char *Decrypt(unsigned char *data, i32 size, u8 xorValue,
-                       u8 xorValueIncrement, i32 chunkSize, i32 maxBytes);
-}
-
-unsigned char *DecompressData(unsigned char *input, i32 inputSize,
-                              unsigned char *output, i32 outputSize);
 
 struct PbgDecryptProfile
 {
