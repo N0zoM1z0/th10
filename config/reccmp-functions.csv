@@ -1,1 +1,15 @@
 name,address,type
+PbgArchive::PbgArchive,0x00434C10,function
+PbgArchive::~PbgArchive,0x00434C20,function
+PbgArchive::Load,0x00434C30,function
+PbgArchive::Release,0x00434D10,function
+PbgArchive::ReadDecompressEntry,0x00434DD0,function
+PbgArchive::GetEntryDecompressedSize,0x00434EF0,function
+PbgArchive::FindEntry,0x00434F30,function
+PbgArchive::ParseHeader,0x00434F70,function
+PbgArchive::AllocEntries,0x004350D0,function
+PbgArchive::CopyFileName,0x00435220,function
+PbgArchiveEntry::~PbgArchiveEntry,0x00435250,function
+PbgArchive::SeekPastInt,0x00435270,function
+PbgArchive::SeekPastString,0x00435280,function
+PbgArchiveEntry::PbgArchiveEntry,0x004352C0,function

@@ -1,0 +1,14 @@
+PbgArchive::PbgArchive
+PbgArchive::~PbgArchive
+PbgArchive::Load
+PbgArchive::Release
+PbgArchive::ReadDecompressEntry
+PbgArchive::GetEntryDecompressedSize
+PbgArchive::FindEntry
+PbgArchive::ParseHeader
+PbgArchive::AllocEntries
+PbgArchive::CopyFileName
+PbgArchiveEntry::~PbgArchiveEntry
+PbgArchive::SeekPastInt
+PbgArchive::SeekPastString
+PbgArchiveEntry::PbgArchiveEntry
