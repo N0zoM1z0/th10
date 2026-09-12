@@ -46,3 +46,4 @@ Lzss::DeleteString,0x00436210,function
 Lzss::ContractNode,0x00436260,function
 Lzss::ReplaceNode,0x004362B0,function
 Lzss::FindNextNode,0x00436330,function
+ReplayManager::SaveReplay,0x00429B60,function

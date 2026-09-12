@@ -45,3 +45,4 @@ Lzss::DeleteString
 Lzss::ContractNode
 Lzss::ReplaceNode
 Lzss::FindNextNode
+ReplayManager::SaveReplay
