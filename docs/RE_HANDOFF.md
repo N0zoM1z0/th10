@@ -2,415 +2,474 @@
 
 ## Campaign state
 
-The exact-reconstruction campaign remains active and incomplete. This conversation
-reviewed one hard Main/startup owner-and-ABI packet centered on
-`0x00439FF0-0x0043A1A9`, followed its immediately connected checksum/shortcut and
-dialog-callback cohort, expanded the target denominator by two Ghidra-missed
-authored bodies, and demonstrated with the pinned VC7.1 build-6030 toolchain that
-LTCG can naturally perform unused-argument elimination and private-register
-calling-convention transforms. It did not establish source presence, canonical
-function exactness, whole Windows i386 build closure, runtime validation,
-semantic reconstruction, ports, or new Truth Kernel acceptance.
+The exact-reconstruction campaign remains active and incomplete. This session
+reviewed a hard file-loader/archive/sound-owner packet centered on
+`0x0044B360-0x0044B4C7`, reviewed the immediately adjacent file-existence helper,
+and expanded the authored denominator with three target code bodies that Ghidra
+did not model as functions. The packet also used one fixed pinned-VC7.1
+normal-COFF versus `/GL`+`/LTCG` diagnostic to test the loader's private machine
+ABI without tuning flags for a desired answer.
 
 Repository selection was exactly `th10`, analysis provider exactly
-`th10-ghidra`, and target exactly `target:th10-main`. The ignored operator target
-remained at `resources/th10.exe`; it was verified in place and was never modified,
-replaced, relocated, staged, or committed. No `/mnt` search or
+`th10-ghidra`, and target exactly `target:th10-main`. The private operator target
+remained at `resources/th10.exe`; it was verified in place and was never
+modified, replaced, relocated, staged, or committed. No `/mnt` search or
 `TH10_TARGET_PATH` override was used.
 
 Session starting HEAD was
-`8e6189b175ba1be75824a5053b85837433844f33` on `main`. The tracked/untracked tree
+`c6978d346ac7cb28a9dc9391a117419dee126431` on `main`. The tracked/untracked tree
 was clean at entry: zero staged, unstaged, untracked, or conflicted paths. The
 checkpoint containing this handoff should use subject
-`gpt-web: review TH10 startup owner seam`; the live Git commit containing this
-file is the authoritative ending HEAD. No push was requested or executed in this
-conversation.
+`gpt-web: review TH10 file loader seam`; the live Git HEAD containing this file
+is the authoritative ending checkpoint. No push was requested or executed by
+this session.
 
-At session entry the local checkpoint was one commit ahead of `origin/main`.
-During read-only target work, `origin/main` moved externally to the same
-`8e6189b...` commit. Packet work was paused and recovery was repeated: HEAD,
-complete staged/unstaged diffs, untracked paths, and `.analysis` were unchanged.
-The remote-tracking reflog records
-`2026-09-12T18:55:16+08:00 update by push`. This conversation did not perform
-that push and does not infer who did.
+At entry the local branch was one commit ahead of `origin/main`. During
+read-only packet work, `origin/main` moved externally to the same starting HEAD.
+Work was paused and recovery was repeated: HEAD, complete staged/unstaged diffs,
+untracked paths, and `.analysis` were unchanged. The remote-tracking reflog
+records `2026-09-12T19:27:59+08:00 update by push`. This session did not perform
+that push and does not infer who did it.
 
 ## Recovery gate and preserved state
 
-The mandatory `factory_describe`, repository-list, and live TH10 status checks
-passed before editing. Recovery inspection covered branch/HEAD/upstream, recent
-commits, porcelain-v2, complete staged and unstaged diffs, all relevant untracked
-paths, ignored analysis/tool/build/provider state, the previous handoff, and the
-`origin/main` reflog after the external move.
+The mandatory `factory_describe`, repository-list, and live TH10 status calls
+were completed before editing. Recovery inspection covered branch, HEAD,
+upstream relation, recent commits, porcelain-v2 status, complete staged and
+unstaged diffs, all untracked paths, relevant ignored analysis/tool/build/target
+/provider state, and the previous handoff.
 
-All repository instructions, Factory contracts, Factory guidance paths named by
-the session prompt, the additional semantic-reconstruction guidance referenced
-by `AGENTS.md`, and the repository-local TH10 reconstruction skill body were
-mounted and read before edits. No required guidance path was missing.
+All repository instructions and Factory guidance named by the session prompt
+were mounted and read before editing, including `AGENTS.md`, `docs/RE_HANDOFF.md`,
+`docs/RE_WORKFLOW.md`, `docs/ORACLES.md`, `docs/TOOLS.md`, both named Factory
+contracts, `ontology.md`, `verification-planes.md`, `agent-autonomy.md`,
+`new-game-bootstrap.md`, and `worktree-recovery-and-analysis-artifacts.md`.
+`AGENTS.md` additionally led to `semantic-reconstruction.md`, which was read.
+The repository-local `.agents/skills/th10-reconstruction/SKILL.md` body was also
+located and read explicitly; no skill injection was assumed. No required
+guidance path was missing.
 
 No tracked or untracked interrupted work required recovery. Ignored/private
-state was classified and preserved as follows:
+state was classified and preserved:
 
-- `resources/th10.exe`: operator-supplied private target; preserved and excluded.
-- `.tools/`: immutable-tool selectors plus game-bound Wine state; preserved and
-  excluded.
-- `ghidra-project/`: target-bound provider state; preserved and excluded.
-- `.analysis/bootstrap/`: pre-existing/legacy analysis material; preserved
-  without granting it evidence authority.
-- earlier `.analysis/gpt-web/...` roots: prior checkpointed reproducible
-  diagnostics; preserved.
-- `.analysis/gpt-web/20260912-startup-owner/`: current-session bounded compiler
-  diagnostic campaign; see the artifact section.
+- `resources/th10.exe`: operator-supplied private target; preserve/exclude.
+- `.tools/`: immutable-tool selectors plus game-bound Wine state;
+  preserve/exclude.
+- `ghidra-project/`: target-bound provider state; preserve/exclude.
+- `.analysis/bootstrap/`: pre-existing/legacy analysis; preserve without
+  granting evidence authority.
+- earlier `.analysis/gpt-web/...` roots: prior checkpointed diagnostics;
+  preserve.
+- `.analysis/gpt-web/20260912-file-loader-owner/`: this session's bounded
+  compiler-diagnostic campaign; see the artifact section.
 - `build/`: generated/open build state; no recovery edit was required.
 
-No reset, stash, bulk cleanup, target edit, or deletion of unknown/legacy state
+No reset, stash, target edit, bulk deletion, or cleanup of unknown/shared state
 was used to manufacture a clean tree.
 
-Multiple Factory repository commands encountered transport-layer connection
-failures during read-only import/source queries and closeout validation/audit
-shells. After every failure, live repository status was re-read before retry,
-including staged/unstaged state, untracked paths, and the current `.analysis`
-inventory as applicable. No unexpected repository side effect was present; work
-continued only from the recovered live state. No repository recovery edit was
-required.
+Several read-only Factory repository/provider calls encountered transport-layer
+connection failures. After every such failure, live repository status was
+re-read before retry; where relevant, staged/unstaged state, untracked paths, and
+analysis inventory were re-inspected. No unexpected filesystem side effect was
+found. These failures did not change the target or tracked work.
 
 ## Identity and mandatory preflights
 
 The private target passed `python3 scripts/verify-target.py` with SHA-256
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`,
 MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 image base `0x00400000`,
-entry `0x004537DC`, four sections, and Rich dominant build 6030.
+entry `0x004537DC`, four sections, Rich checksum `0x3152A748`, and dominant
+build 6030.
 
-`python3 scripts/verify-toolchain.py --execute` passed the hash-pinned VC7.1 SP1
-normal-COFF, C++ LTCG, resource, and PE32-link smoke under headless Wine.
-Tracking, reconstruction status, and public CI preflights also passed.
+`python3 scripts/verify-toolchain.py --execute` passed the pinned VC7.1 SP1
+normal-C, normal-C++, C++ LTCG, resource, and PE32 i386 execution smoke tests.
+The target Rich facts remain 131 normal C, 15 normal C++, and 52 LTCG C++ inputs
+at build 6030. Per-function normal-COFF versus LTCG ownership, exact production
+flags, TU partition, libraries, resources, and link order remain unknown.
 
-Native Ghidra operation schemas were discovered before target-dependent work.
-The mandatory `check {}` and every useful semantic query in this packet returned
+The following mandatory repository preflights passed before edits:
+
+- `python3 scripts/verify-target.py`
+- `python3 scripts/verify-toolchain.py --execute`
+- `python3 scripts/validate-tracking.py --require-target`
+- `python3 scripts/report-reconstruction-status.py`
+- `python3 scripts/ci.py`
+
+Native Ghidra operations were rediscovered before use. The mandatory
+`factory_analysis_call(th10-ghidra, check, {})` passed with
 `attestation.status=passed`, target `target:th10-main`, and
-`attestation.provider_transport=factory-native-command`. The provider remained
-read-only and semantic results carried `exactness_credit=none`.
+`attestation.provider_transport=factory-native-command`. Observed SHA-256, MD5,
+size, image base, image size, entry point, and distributed mapped-byte samples
+matched the private target. Every useful Ghidra result used in this packet also
+carried the same passed target/native-transport attestation and
+`exactness_credit=none`.
 
-Truth Kernel accepted-snapshot reads were attempted twice during the packet and
-closeout. Both were unavailable because another operation owned the shared
-operator path. This absence is neither acceptance nor rejection; no new accepted
-fact is claimed.
+## Packet selection and balance
 
-## Packet selection and observable goal
+The packet was selected directly from the prior handoff rather than by smallest
+extent: the central file loader `0x0044B360-0x0044B4C7` has calls from many
+subsystems, is used by the previously reviewed executable-checksum path, owns a
+mixed register/stack machine ABI, and crosses the archive-versus-real-file data
+boundary. The observable goal was to close its physical extent, machine ABI,
+archive storage dependencies, side effects, and error paths and to decide
+whether source/TU/profile evidence was strong enough for production source.
 
-The selected hard packet was the previous handoff's connected startup/shortcut
-owner seam rather than a smallest-function choice:
+The packet grew only along evidence-connected boundaries. `xrefs_to` found 17
+actual calls to the loader while Ghidra assigned only 15 containing callers; the
+two extra calls exposed real Ghidra-missed sound/startup bodies. A third
+Ghidra-missed thread launcher was then found through direct target thread-start
+linkage and an inlined duplicate. These bodies were reviewed because they
+challenge the denominator and explain loader ownership; unrelated small
+FileSystem leaves were intentionally left pending.
 
-- `0x00439FF0-0x0043A1A9`, 442 bytes, initially `unknown/review`;
-- immediately adjacent raw/known bodies needed to reconcile physical ownership
-  and call flow: `0x0043A1B0`, `0x0043A1C0`, and `0x0043A290`;
-- a raw callback at `0x0043A3A0` discovered because WinMain passes that target
-  address directly to `DialogBoxParamA`.
+The previous checkpoint was already a hard Main/startup/private-ABI packet. This
+session remained on a hard owner/data-boundary frontier rather than accumulating
+easy function-count wins.
 
-The intended observable was to resolve the startup singleton/shortcut/checksum
-source roles and machine ABIs, test whether the private-register Main seam can be
-explained by natural VC7.1 link-time optimization rather than invented source
-calling conventions, and challenge the Ghidra denominator at the same owner
-boundary. The result is a reviewed authored boundary/ABI advance, two new
-function candidates, and a compiler-mechanism result. Per-function normal-COFF
-versus LTCG ownership remains unresolved, so no production source or exact unit
-is justified.
+## Reviewed `0x0044B360-0x0044B4C7` — proposed `FileSystem::OpenFile`
 
-## Reviewed `0x00439FF0-0x0043A1A9` — proposed `GameWindow::CheckForRunningGameInstance`
+The reviewed target extent is exactly 360 bytes. The final target return is
+`ret 8` through `0x0044B4C7`; `0x0044B4C8-0x0044B4CF` is eight bytes of `CC`
+padding before independent `0x0044B4D0`.
 
-This 442-byte extent is now reviewed `authored_game / Main / high`. WinMain is
-its unique direct caller and calls it without an explicit stack argument. Direct
-target behavior is:
+The target machine boundary is not the provisional Ghidra source signature:
 
-- create the named mutex `Touhou 10 App` and return failure if another instance
-  already owns it;
-- read startup information, module filename, and console title;
-- follow shortcut paths through reviewed `0x0043A290` when the startup path ends
-  in `.lnk`;
-- compare the resolved startup path to the module path;
-- write byte `1` to `0x00492518`, the reviewed 0x58-byte window/timing storage
-  at `0x004924F0 + 0x28`, when the launch path differs;
-- maintain the target startup-state bit at `0x00491FF4` and return target-local
-  success/failure state.
+- path/filename is supplied through live-in EAX and copied into ESI;
+- the first stack argument is the optional size-output pointer;
+- the second stack argument is the mode/external-resource flag;
+- both exits use `ret 8` and therefore consume the two stack slots.
 
-The extent ends at `0x0043A1A9`; `0x0043A1AA-0x0043A1AF` is `0xCC` padding before
-an independent retained raw body.
+Source-level calling convention and physical normal-COFF/LTCG owner remain
+unknown. The ledger records the machine boundary rather than inventing a source
+`__stdcall`/fastcall declaration.
 
-Committed TH08/TH095 source provides a close
-`GameWindow::CheckForRunningGameInstance(HINSTANCE)` source-shape/name
-hypothesis, but the adjacent HINSTANCE parameter is unused and is not transferred
-to TH10: the target call has no explicit argument. The source-level declaration,
-TU, physical normal-COFF versus LTCG owner, and exactness remain unknown.
+The body enters the file-system critical section at `0x004922A4` and increments
+the active-count byte at `0x0049231E`. In mode zero it strips `\\` and `/` path
+components, searches the archive entry array rooted at `0x00497990` using
+case-insensitive filenames and 0x10-byte records, reads decompressed size from
+entry `+0x08`, optionally writes that size, allocates output, and calls
+`0x00434DD0` to read/decode the selected archive entry. In nonzero mode it calls
+`CreateFileA` with read-only/share-read/open-existing/sequential-normal flags,
+gets the size, allocates, reads, optionally writes actual bytes read, closes the
+handle, and returns the allocation. All success/failure exits release the same
+critical section and decrement the active count.
 
-## Newly tracked `0x0043A1B0-0x0043A1B7` — proposed `GameWindow::ActivateWindow`
+`FileSystem::OpenFile` is retained only as a proposed semantic name. Committed
+TH08, TH09, and TH095 source contains a strongly corresponding source shape, but
+TH10 target behavior and layout were established first. No TH10 string/xref was
+found for `FileSystem`, `global.cpp`, or `src/core` in this packet, so no TU or
+source-file mapping is justified.
 
-This eight-byte target body was missing from the original Ghidra candidate
-inventory. It consumes an HWND through live-in EAX, pushes that value, calls the
-`USER32.dll!SetForegroundWindow` import, and returns. No direct or literal entry
-xref was found. `0x0043A1B8-0x0043A1BF` is `0xCC` padding before
-`0x0043A1C0`.
+## TH10 archive-owner context rooted at `0x00497990`
 
-The reviewed WindowProc already contains the same foreground-window operation
-inline in its target message path. The physical ordering also matches committed
-adjacent Main source that places an `ActivateWindow` source function between the
-single-instance and executable-checksum routines. These are corroborating
-signals only; TH10 target behavior controls the boundary and ABI.
+Target-local evidence now establishes a coherent archive object-like used prefix
+through `+0x0F`:
 
-A natural pinned normal-COFF `ActivateWindowProbe(HWND)` is 12 bytes and first
-loads the argument from `[esp+4]`; the TH10 retained body is eight bytes and uses
-live-in EAX. This excludes the ordinary standalone normal-COFF source ABI for the
-target machine body. The generic pinned LTCG diagnostic below demonstrates that
-this transformation class is naturally possible, but does not prove the target
-body's physical owner or exactness. `GameWindow::ActivateWindow` is therefore a
-proposed name only.
+- `+0x00`: entry-array pointer;
+- `+0x04`: entry count;
+- `+0x08`: heap-owned archive filename;
+- `+0x0C`: polymorphic file backend.
 
-## Reviewed `0x0043A1C0-0x0043A28E` — proposed `GameWindow::CalcExecutableChecksum`
+`0x00434D10` frees/zeros the filename, destroys/frees the 0x10-byte entry array,
+releases the backend, and clears the count. `0x00434F30` searches the `+0/+4`
+entry range case-insensitively. `0x00434DD0` uses the backend to open/seek/read a
+selected record, computes compressed size from adjacent entry data offsets,
+reads decompressed size from `+0x08`, applies the target data transform, and
+conditionally reaches the decompression helper.
 
-This 207-byte extent is now reviewed `authored_game / Main / high`. WinMain is
-its unique caller. The target:
+For each 0x10-byte entry, TH10 itself establishes filename at `+0x00`, data
+offset at `+0x04`, and decompressed size at `+0x08`. TH08/TH09 committed
+`PbgArchiveEntry` layouts and archive source corroborate the same shape only
+after these TH10 facts were established. The complete TH10 object extent, field
+`+0x0C` semantics for each entry, original type identifier, physical TU, and
+normal-COFF/LTCG owner remain unknown. `PbgArchive` is therefore descriptive
+adjacent-supported terminology, not an original-symbol claim.
 
-- obtains the current module filename;
-- loads the executable through `0x0044B360`;
-- sums the loaded image by dwords while excluding the final dword;
-- frees the temporary data;
-- stores the resulting checksum at `0x00492380` and file size at `0x00492384`.
+The archive helpers were not promoted from pending in this session; they form
+the preferred next hard packet.
 
-The call to `0x0044B360` is compiler-sensitive: the filename is supplied through
-live-in EAX, while `size_out` and mode `1` are stack arguments. The target loader
-has 15 direct callers using this mixed-ABI family. The reviewed checksum extent
-ends at `0x0043A28E`; `0x0043A28F` is one `0xCC` byte before `0x0043A290`.
+## Reviewed `0x0044B4D0-0x0044B53E` — proposed file-existence helper
 
-Committed TH08 source supplies a close `GameWindow::CalcExecutableChecksum`
-source-shape/name hypothesis. No adjacent address, ABI, ownership, or exactness
-is transferred.
+This 111-byte authored body uses the same file-system critical section and active
+count as the loader, attempts a read-only `CreateFileA`, closes a valid handle,
+and returns 1 for existence or 0 for failure. The machine boundary consumes one
+stack argument and both exits use `ret 4`. `0x0044B53F` is one byte of `CC`
+padding before `0x0044B540`.
 
-## Reviewed `0x0043A290-0x0043A39F` — proposed `GameWindow::ResolveShortcut`
+Direct target xrefs include reviewed `GameWindow::Present`, reviewed startup
+`GameWindow::CheckForRunningGameInstance`, and file/sound startup work.
+`FileSystem::CheckIfFileAlreadyExists` is an adjacent-supported proposed name
+only. The callee-pop target shape is not promoted to a source-level `__stdcall`
+claim because the physical compiler/LTCG context remains unresolved.
 
-This 272-byte extent is now reviewed `authored_game / Main / high`. Its unique
-caller is `0x00439FF0`. Direct target disassembly establishes a mixed internal
-machine ABI:
+## Denominator expansion — startup and sound worker bodies missed by Ghidra
 
-- shortcut path: one stack argument, consumed by the callee, which returns with
-  `ret 4`;
-- destination buffer: live-in EBX;
-- destination capacity: live-in EDI, supplied as `0x104` by the caller.
+Three complete CC-delimited authored bodies were added to the candidate
+denominator.
 
-The body initializes COM, creates and queries ShellLink-related interfaces,
-converts the input path to wide characters, loads the shortcut through the COM
-persistence interface, obtains the resolved path into the live-in destination,
-releases interfaces, and uninitializes COM. The function ends immediately before
-`0x0043A3A0`; there is no padding gap.
+### `0x0041F990-0x0041FABA` — proposed `Supervisor::StartupThread`
 
-Committed TH08/TH095 source supports `ResolveIt`/`GameWindow::ResolveShortcut`
-as source-shape/name hypotheses. The ledger uses
-`GameWindow::ResolveShortcut` only as a proposed name; the original declaration,
-TU, physical normal-COFF/LTCG owner, and exactness remain unknown.
+This 299-byte body begins after `0x0041F98B-0x0041F98F` CC padding and ends at
+`0x0041FABA`; `0x0041FABB-0x0041FABF` is CC padding before the existing
+`0x0041FAC0` candidate. Ghidra does not model it as a function.
 
-## Newly tracked `0x0043A3A0-0x0043A488` — configuration dialog callback
+`0x0041FAC0` stores the address in an object field and passes it to
+`_beginthreadex` with the same object as the thread argument. Its unique caller,
+`0x0041FD00`, first allocates 0x3F0 bytes, invokes `0x0041F850`, and then calls the thread launcher; that size is
+not used to infer an original type because adjacent Supervisor layouts vary
+substantially by game. The worker loads `sig.anm` and `text.anm`, reports a
+text-initialization failure, then loads `../../bgm/thbgm.fmt`, checks `thbgm.dat`,
+and reports BGM initialization failure. It also enters the reviewed file-loader
+and file-existence paths. The target body returns with plain `ret`; because it is
+used as a runtime thread start address, the source callback convention remains
+unresolved rather than inferred from the API typedef.
 
-Ghidra did not model a function at `0x0043A3A0`, but target-local ownership is
-direct: WinMain passes the address as the DLGPROC argument to
-`USER32.dll!DialogBoxParamA`. Raw target disassembly closes a 233-byte callback
-extent ending with `ret 0x10` at `0x0043A488`; `0x0043A489-0x0043A48F` is seven
-bytes of `0xCC` padding before unrelated following code.
+The earlier working hypothesis `SoundPlayerWorkerThread` was rejected during
+diff review because the target owns broad text/animation plus BGM startup work.
+Committed TH08, TH09, and TH095 instead place the corresponding text/BGM sequence
+inside `Supervisor::StartupThread`. That recurring name is retained only as an
+adjacent-supported proposed name; TH10 original identifier, object type, TU,
+physical normal-COFF/LTCG owner, and source mapping remain unknown.
 
-The body handles `WM_INITDIALOG` (`0x110`) and `WM_COMMAND` (`0x111`) and uses the
-target imports `SendMessageA`, `GetDlgItem`, `EndDialog`, and
-`IsDlgButtonChecked`. The machine ABI is therefore the four-argument Win32 DLGPROC
-family. The original identifier and source owner remain unknown, so no proposed
-source name is invented.
+### `0x0043D080-0x0043D0EA` — proposed `SoundDataLoaderThread`
 
-## Pinned VC7.1 LTCG calling-convention diagnostic
+This 107-byte body is passed as the thread start address by target
+`0x00420100`. It loops exactly 0x25 times over the target filename-pointer table
+at `0x00474B40`; direct target decoding shows all 37 names are `se_*.wav` sound
+effects. Each path is passed through reviewed `0x0044B360`, and the resulting
+buffer is stored in the array at `0x004977C0`. The body exits early when the
+sound stop state is 2; after all loads it repeatedly calls `Sleep(1)` while the
+state remains zero. On a failed load it reports the target Sound-file error with
+the failed name.
 
-The current ignored campaign contains a small natural C++ diagnostic compiled
-with the pinned VC7.1 SP1 build-6030 toolchain. The source declares a noinline
-three-argument callee whose first argument is unused, plus one caller. It was
-compiled both as normal COFF and with `/GL`; the `/GL` object was linked using the
-pinned linker with `/LTCG`.
+The target KERNEL32 IAT maps `0x004660AC` to `Sleep` and `0x00466118` to
+`CreateThread`. The thread body returns with plain `ret` and does not implement a
+standard callee-pop thread callback boundary; no source-level API callback ABI is
+claimed. Committed TH095 `SoundDataLoaderThread` source corroborates the role and
+name only.
 
-Normal COFF uses the ordinary stack ABI: the caller pushes all three arguments and
-the callee reads the surviving inputs from `[esp+8]`/`[esp+0xC]`. The linked LTCG
-image instead eliminates the unused argument from the internal machine boundary,
-passes surviving inputs in EAX/ECX, and tail-jumps from the caller to the callee.
+### `0x0043D0F0-0x0043D111` — proposed `StartSoundLoadThread`
 
-This directly demonstrates that VC7.1 build 6030 can naturally produce the same
-*class* of signature shrink and private-register ABI observed repeatedly in the
-TH10 Main seam. It therefore prevents the reconstruction from inventing exotic
-source declarations merely to mirror EAX/EBX/EDI machine inputs. It does **not**
-prove that any particular TH10 function came from one of the target's 52 LTCG C++
-Rich inputs; per-function physical ownership and exactness remain unknown.
+This 34-byte CC-delimited body allocates a local thread-id slot, calls
+`CreateThread(NULL, 0, 0x0043D080, 0x00492590, 0, &threadId)`, stores the returned
+handle at `0x004977AC`, and returns it. `0x0043D112-0x0043D11F` is CC padding
+before the existing `0x0043D120` candidate.
 
-The separate natural normal-COFF `ActivateWindowProbe(HWND)` diagnostic confirms
-the ordinary source boundary uses a stack argument and is 12 bytes, unlike the
-8-byte target EAX body. Both diagnostics have `exactness_credit=none` and are not
-canonical match units.
+Ghidra has no modeled direct entry xref to the retained body, but
+`0x00420100` contains the same launcher sequence inline. This retained-body plus
+inline-copy pattern is analogous to previously reviewed Main retained bodies and
+supports authored origin without claiming original source/TU ownership.
+`StartSoundLoadThread` is an adjacent-supported proposed name only.
 
-## Adjacent-game hypothesis discipline
+A nearby raw body at `0x0043D050-0x0043D074` looks like a deletion/destructor
+wrapper and was deliberately not promoted: compiler-generated versus authored
+ownership has not been reconciled. Accuracy takes precedence over denominator
+size.
 
-Adjacent live states observed during this packet were:
+## Fixed VC7.1 loader-ABI diagnostic
 
-- TH08 HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, branch
-  `port/portable-64bit`, clean;
-- TH09 HEAD `8aa2716a099af6fd4354294ebb73d170080fbc54`, branch `main`, clean,
-  one commit ahead of its own upstream; bounded committed searches did not yield
-  a useful corresponding Main helper source;
-- TH095 HEAD `f8043aa131929d142df058f34c95f799e0e2ec5a`, branch `main`, with
-  unrelated modified `src/PhotoGameTask.hpp`, `src/PhotoStage.cpp`, and
-  `src/ResultScreen.cpp`, plus unrelated untracked runtime/reconstruction files.
-  Only committed `HEAD:` content was consulted.
+A single natural three-argument diagnostic was kept fixed rather than tuned for
+the target. The source is
+`.analysis/gpt-web/20260912-file-loader-owner/open-file-callconv-probe.cpp` and
+uses all three inputs of `OpenFileProbe(path, sizeOut, mode)` plus a non-inlined
+path-value helper.
 
-Committed TH08/TH095 source supplied naming/source-shape hypotheses for the
-single-instance, activate-window, executable-checksum, and shortcut-resolution
-routines. No adjacent address, target extent, ABI, object layout, exactness, or
-completion state was transferred to TH10. The dialog callback remains unnamed
-because adjacent committed searches did not establish a useful original-name
-hypothesis.
+Under `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG`, normal VC7.1 COFF passes all three
+arguments on the stack; the caller cleans 12 bytes. The same exact source with
+one added `/GL` compile and one pinned linker `/LTCG` pass promotes the three
+surviving inputs to EDX/EDI/ESI and the callee returns with plain `ret`.
+Therefore this fixed diagnostic does **not** reproduce TH10's live-in-EAX plus
+two-stack-argument `ret 8` boundary.
+
+This is a useful negative source-shape/profile result, not a disproof of LTCG in
+a different whole-program context. No alternate flags or source mutations were
+tried to force the desired register allocation. The diagnostic has
+`exactness_credit=none` and creates no source mapping or canonical match unit.
+
+## Adjacent-game hypothesis record
+
+Adjacent repositories were consulted only after TH10 target evidence suggested
+the FileSystem/archive/sound seam. Only committed `HEAD:` content was used.
+Observed states when materially consulted were:
+
+- TH08: HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, branch
+  `port/portable-64bit`, clean.
+- TH09: HEAD `6f15efd70d7e155b6b23ad0cddbb2ff049f183c3`, branch `main`, with unrelated untracked `src/ScoreData.cpp`. No uncommitted TH09 content was used.
+- TH095: HEAD `f282620ec1a22be1c4257181ed672dfcd2b43a7e`, branch `main`, dirty with
+  unrelated `src/ScreenEffect.cpp`, `src/ScreenEffect.hpp`, and unrelated
+  untracked runtime/reconstruction files. No uncommitted TH095 content was used.
+
+Committed TH08/TH09/TH095 `FileSystem::OpenFile` shapes corroborate basename
+stripping, archive lookup/read-decompress behavior, and the external
+CreateFile/GetFileSize/ReadFile path. Committed TH08/TH09 archive layouts
+corroborate the TH10-local 0x10-byte entry shape and four-dword archive state
+prefix. Committed TH08/TH09/TH095 startup code corroborates the proposed
+`Supervisor::StartupThread` role for `0x0041F990`; committed TH095 sound code
+corroborates `SoundDataLoaderThread` and `StartSoundLoadThread`. These observations do not
+transfer addresses, extents, physical ownership, ABI, TU, or exactness into
+TH10.
 
 ## Ledger and verification-plane state
 
-After this packet:
+After the packet and generated progress refresh:
 
-- tracked candidates: **1,200**;
-- origin/boundary pending: **1,181**;
-- reviewed authored: **18 functions / 6,371 bytes**;
-- reviewed exclusions: **1**;
-- source-present authored mappings: **0**;
-- canonical exact functions/bytes: **0 / 0**.
+| Plane | State |
+| --- | --- |
+| Tracked candidates | 1,203 |
+| Origin/boundary pending | 1,179 |
+| Reviewed authored | 23 functions / 7,282 bytes |
+| Reviewed exclusions | 1 |
+| Source-present authored mappings | 0 |
+| Canonical exact functions / bytes | 0 / 0 |
+| Normal-COFF canonical match units | 0 |
+| Whole Windows i386 build | open |
+| Runtime validation | not started |
+| Semantic/port stages | not started |
+| Ghidra authority | provisional, `exactness_credit=none` |
+| Truth Kernel accepted snapshot | unavailable on two refresh attempts: the first was blocked by the shared operator-path lock and the second failed at the Factory transport layer; no new acceptance claimed |
 
-The packet reviews three existing candidates and adds two previously missing
-authored target extents. It adds 1,162 reviewed authored bytes relative to the
-session entry state and expands the denominator rather than merely improving a
-fixed ratio.
+The packet reviewed two pre-existing candidates and added three new denominator
+candidates, for 911 newly reviewed authored bytes. It did not add production
+source, source mappings, signatures, canonical match units, or exact rows.
 
-Verification planes remain independent:
+Tracked files changed by the packet before the handoff update are limited to:
 
-- **Source presence: 0.** No production source file or source mapping was added.
-  The target-observed `src/core/main.cpp` path remains build evidence without a
-  per-function ownership xref.
-- **Function/owned-extent exactness: 0.** The compiler work in this packet is
-  diagnostic mechanism/ABI feedback, not a target-bound zero-difference match
-  unit.
-- **Whole Windows i386 build closure: open.** `scripts/build.py --check` passes
-  the explicitly open skeleton. The honest `python3 scripts/build.py` invocation
-  returned the expected RC=2 because compile flags/profile, TU partition,
-  libraries, resources, and link order remain unknown.
-- **Runtime validation: not started.** No runtime scenario or behavioral-closure
-  claim is made.
-- **Truth Kernel acceptance: unavailable for refresh.** Two snapshot attempts
-  were blocked by the shared operator-path lock; no new accepted fact is claimed.
+- `config/function-origins.csv`
+- `config/functions.csv`
+- `docs/KNOWLEDGE_BASE.md`
+- `docs/PROGRESS.md`
+- `resources/progress.svg`
 
+This handoff itself adds `docs/RE_HANDOFF.md` to the checkpoint. No `src/` file,
 `config/implemented.csv`, `config/reccmp-functions.csv`, `config/matches.csv`,
-`config/match-units.toml`, and `config/build.toml` were not populated or promoted
-by this packet.
+`config/match-units.toml`, or `config/build.toml` is changed.
 
 ## Commands and validation actually run
 
-Mandatory recovery/preflight work included the Factory authority/repository/live
-status calls and:
+Recovery and guidance work included Factory repository/status/description calls,
+complete Git diff/status/untracked inspection, ignored-state inventory, all
+prompt-named guidance reads, the additional semantic-reconstruction guidance,
+and explicit repo-local skill-body reading.
 
-```text
-python3 scripts/verify-target.py
-python3 scripts/verify-toolchain.py --execute
-python3 scripts/validate-tracking.py --require-target
-python3 scripts/report-reconstruction-status.py
-python3 scripts/ci.py
-```
+Target/provider analysis used discovered native Ghidra `check`, `function`,
+`decompile`, `callers`, `callees`, `disassemble`, `xrefs_to`, and
+`search_strings` operations. Useful results were accepted only with passed
+`target:th10-main` and `factory-native-command` attestation. Direct target
+inspection used bounded `objdump` and small read-only Python PE/VA parsers. The
+optional Python `pefile` module was unavailable; a minimal read-only PE import
+parser was used instead and directly mapped the `Sleep`/`CreateThread` IAT
+slots.
 
-Factory-native Ghidra used discovered schemas for `check`, `function`,
-`decompile`, `callers`, `callees`, `disassemble`, and `xrefs_to`. Every useful
-result used the exact TH10 target/native transport attestation. Direct target PE
-work was bounded to the selected startup/callback entries, their adjacent
-padding, import slots, and entry-reference checks.
+The pinned compiler diagnostic actually ran:
 
-Focused compiler work used `scripts/compile-probe.sh` for normal COFF and `/GL`,
-then the hash-pinned VC7.1 linker with `/LTCG` only inside the ignored diagnostic
-campaign. `objdump`/link map output was reduced to a compact retained compiler
-report. No canonical exact unit was created and `/GL` was not removed from a TH10
-hypothesis to fit the normal-COFF Oracle.
+- `scripts/compile-probe.sh` once for normal COFF with
+  `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG`;
+- the same command once with one additional `/GL`;
+- the hash-pinned VC7.1 linker once with `/LTCG /nodefaultlib` and a diagnostic
+  entry point;
+- bounded `objdump`/map extraction into the retained compiler-shape report.
 
-After ledger edits, the following passed:
+No second profile or flag search was used after the LTCG result failed to
+reproduce the target ABI.
 
-```text
-python3 scripts/verify-toolchain.py --check
-python3 scripts/validate-tracking.py --require-target
-python3 scripts/progress.py --check
-python3 scripts/build-match-unit.py --check
-python3 scripts/build.py --check
-python3 scripts/report-reconstruction-status.py
-python3 scripts/ci.py
-git diff --check
-```
+Post-edit focused validation passed:
 
-The honest `python3 scripts/build.py` diagnostic returned the expected RC=2/open
-state rather than product closure.
+- `python3 scripts/verify-target.py`
+- `python3 scripts/verify-toolchain.py --check`
+- `python3 scripts/validate-tracking.py --require-target`
+- `python3 scripts/progress.py --check`
+- `python3 scripts/build-match-unit.py --check`
+- `python3 scripts/build.py --check`
+- `python3 scripts/report-reconstruction-status.py`
+- `python3 scripts/ci.py`
+- `git diff --check`
+
+An honest `python3 scripts/build.py` milestone returned expected RC=2 with
+`whole build unavailable: compile flags, TU partition, libraries, resources, and link order remain unknown`.
+This remains an explicit open whole-product state, not a failed exact-function
+Oracle and not a runtime result.
+
+Several read-only Factory calls failed at the transport layer during the packet.
+Each failure was followed by live-status recovery before retry. Two Truth Kernel
+accepted-snapshot refreshes were unavailable: the first because another operation
+owned the shared operator path, and the second because the Factory transport
+connection failed. Live repository status was re-read after the second failure.
+Neither unavailable read is converted into acceptance, rejection, or a target fact.
 
 ## Analysis artifacts
 
-`.analysis/` measured **62,774 bytes** at session entry. During the current
-compiler experiment it reached 73,990 bytes before cleanup. After deleting only
-current-session reproducible intermediates whose compact results were already
-retained, the pre-checkpoint inventory measured **68,313 bytes**. After the
-ignored manifest was marked `checkpointed` and bound to the local checkpoint,
-the final closeout inventory measured **68,494 bytes**. No current-session
-artifact exceeds 64 MiB, and the campaign remains far below the 256 MiB review
-budget.
+`.analysis/` measured **68,494 bytes** at session entry. This session owns only
+`.analysis/gpt-web/20260912-file-loader-owner/`.
 
-Current retained scratch under
-`.analysis/gpt-web/20260912-startup-owner/` is:
+After compiler feedback and reference review, the retained current-session
+artifacts are:
 
-- `ltcg-callconv-probe.cpp`: generic normal-COFF versus `/GL`+`/LTCG` ABI source;
-- `activate-window-probe.cpp`: normal-COFF HWND ABI source;
-- `compiler-shape-report.txt`: compact disassembly/link-map result;
-- `manifest.json`: target/toolchain bindings, results, and artifact dispositions.
+- `open-file-callconv-probe.cpp`: compact fixed natural source reproducer;
+- `compiler-shape-report.txt`: normal-COFF and linked-LTCG disassembly/map
+  summary;
+- `manifest.json`: target binding, producer/disposition metadata, and result
+  summary.
 
-Removed current-session artifacts were all reproducible outputs with completed
-producers and no remaining byte-level reference:
+The following current-session intermediates were deleted only after the retained
+report was confirmed to contain the needed result and no durable file depended
+on the binary artifact:
 
-- `ltcg-callconv-normal.obj`;
-- `ltcg-callconv-ltcg.obj`;
-- `ltcg-callconv.exe`;
-- `ltcg-callconv.map`;
-- `activate-window-probe-coff.obj`.
+- `open-file-normal.obj`
+- `open-file-ltcg.obj`
+- `open-file-ltcg.exe`
+- `open-file-ltcg.map`
 
-No legacy bootstrap state, previous campaign root, target, Wine prefix, Ghidra
-project, toolchain, or unknown artifact was deleted. The ignored manifest is
-marked `checkpointed`, records `pushed=false`, and is rebound to the final live
-commit during closeout.
+No current campaign artifact exceeds 64 MiB. The post-cleanup pre-checkpoint
+`.analysis` size was **76,299 bytes**. After the first local checkpoint, the
+ignored manifest was marked `checkpointed`, bound to that commit with
+`pushed=false`, and `.analysis` measured **76,462 bytes**. This handoff is then
+amended into the same logical checkpoint and the ignored manifest is rebound to
+the amended live HEAD; the authoritative final size is re-read after that rebind
+and must agree with the closeout report.
+
+No old campaign, bootstrap analysis, Ghidra project, target, Wine prefix,
+toolchain, or unknown/shared artifact was deleted.
 
 ## Remaining unknowns and next evidence-connected packet
 
-The main blockers remain:
+The principal unresolved facts after this packet are:
 
-1. physical normal-COFF versus LTCG ownership and original source declarations
-   for the reviewed Main/startup bodies;
-2. per-function ownership within the target-observed `src/core/main.cpp` build
-   path, whose source-path strings still have no code xrefs;
-3. whether each EAX/EBX/EDI private machine boundary is an LTCG transform,
-   explicit source declaration, inlining artifact, or a mixture; the new compiler
-   diagnostic establishes mechanism plausibility but not per-function ownership;
-4. original identifiers for the dialog callback and earlier retained raw helper
-   bodies where target evidence does not establish a name;
-5. whole-build TU partition, libraries, resources, link order, and production
-   compiler flags/profile;
-6. earlier unresolved `0x00439040/60/80/A0` blocks remain outside the denominator
-   pending stronger origin evidence.
+- physical normal-COFF versus LTCG ownership of `0x0044B360`, its callers, and
+  the archive helpers;
+- original source-level ABI of the loader and sound thread bodies;
+- TH10 source/TU ownership for FileSystem, archive, and Sound code;
+- complete `0x00497990` archive-object extent and the original names/types;
+- the purpose/ownership of archive-entry `+0x0C`;
+- the full transform/decompression ownership reached by `0x00434DD0`;
+- the raw `0x0043D050-0x0043D074` deletion/destructor-like body, whose authored
+  versus compiler-generated origin remains unknown;
+- exact production flags, TU partition, libraries, resources, and link order;
+- all source-present and canonical exact ledgers, which remain empty.
 
-The preferred next hard packet is the directly connected target file-loader seam
-centered on **`0x0044B360-0x0044B4C7` (360 bytes)**. It remains
-`unknown/review` in the ledger and has **15 direct target callers** across several
-subsystems, including the newly reviewed executable-checksum routine. Target
-callers pass filename through live-in EAX while `size_out/mode` are stack inputs;
-the callee selects archive/global-table versus real-file loading paths. Reviewing
-this function with a representative caller/data-table cohort can therefore test
-whether the widespread mixed ABI has one physical owner and recover file/archive
-data ownership. It is materially more central and evidence-connected than simply
-continuing into the small wrappers after `0x0043A490`, so it is not an easy-count
-choice.
+The preferred next hard packet remains directly connected to the reviewed loader
+rather than selecting an easier FileSystem leaf:
 
-Immediately after the local checkpoint, the tracked/untracked worktree was clean
-with zero staged, unstaged, untracked, or conflicted paths and the local branch
-was one commit ahead of the externally updated `origin/main`. No push was
-performed.
+1. `0x00434C30-0x00434C9B` — 108 bytes, archive load/lifecycle entry;
+2. `0x00434D10-0x00434D65` — 86 bytes, archive release/state cleanup;
+3. `0x00434DD0-0x00434EE8` — 278 bytes, archive read/transform/decompression
+   path called by `FileSystem::OpenFile`;
+4. `0x00434F30-0x00434F64` — 53 bytes, archive entry lookup;
+5. `0x00435800-0x004358D5` — 214 bytes only as needed, because it is the other
+   direct caller of `0x00434DD0` and may be required to resolve owner/ABI.
 
-The campaign remains active. A checkpoint, a compiler mechanism diagnostic, a
-future high review percentage, or even a later 99.5% reviewed ratio does not
-authorize GPT-web to declare the exact phase complete.
+Observable outcome: close the archive object's real owner and used/complete
+layout, recover the helper machine ABIs and decompression/data-transform
+boundary, and determine whether the target finally provides enough physical
+owner/profile evidence for maintainable production `PbgArchive`/FileSystem
+source. If it does not, keep source presence at zero and checkpoint the reviewed
+boundary/origin/data facts without forcing a mapping.
+
+This next packet is not chosen for size: it contains the central 278-byte archive
+read/decompression routine and its lifecycle/data-owner dependencies, and is the
+hardest directly connected owner question exposed by the current loader packet.
+
+Immediately after the first local checkpoint, before this handoff-only closeout
+amendment, the tracked/untracked worktree was clean with zero staged, unstaged,
+untracked, or conflicted paths; `main` was one commit ahead of the externally
+updated `origin/main` and zero behind. The final amended checkpoint is re-audited
+for the same clean state. No push is performed.
