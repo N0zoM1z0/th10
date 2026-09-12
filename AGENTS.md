@@ -43,12 +43,11 @@ plugin skill.
 
 ## Adjacent-game hypothesis sources
 
-The Factory mounts four adjacent reconstructions read-only for TH10 work:
+The Factory mounts three adjacent reconstructions read-only for TH10 work:
 
 - `/home/pentester/coding/codex_ida/th08-reconstruction/th08`
 - `/home/pentester/coding/codex_ida/th09-reconstruction/th09`
 - `/home/pentester/coding/codex_ida/th095-reconstruction/th095`
-- `/home/pentester/coding/codex_ida/th105-reconstruction/th105`
 
 Inspect their source, history, scripts, and game-local knowledge when a TH10
 subsystem has a plausible analogue. They may suggest source shape, names, engine
