@@ -2,16 +2,15 @@
 
 ## Campaign state
 
-The exact-reconstruction campaign remains active and incomplete. This conversation
-reviewed one hard archive-owner packet centered on the target archive object at
-`0x00497990` and the source bodies around `0x00434C10-0x004352C8`. It closed the
-physical archive-object extent, recovered the PBG entry layout and THA1 parser,
-challenged the function denominator with four Ghidra-missed authored source
-bodies plus one compiler-generated deletion dispatcher, and established the
-first maintained TH10 reconstruction source mappings. It did not establish any
-canonical exact function, per-function normal-COFF/LTCG object ownership, whole
-Windows i386 product closure, runtime validation, semantic reconstruction, or
-portability claim.
+The exact-reconstruction campaign remains active and incomplete. This browser
+conversation reviewed one hard `PbgFile` / pack-file owner packet centered on
+`0x00435300-0x0043599D`. It recovered the complete target `CPbgFile` vtable and
+0x0C object layout, challenged the denominator with eleven Ghidra-missed target
+entries, established maintained `CPbgFile` source, and reviewed the connected
+archive-aware file helpers that feed the `ResFile` owner seam. It did **not**
+establish any canonical exact function, original translation-unit ownership,
+whole Windows i386 product closure, runtime validation, semantic reconstruction,
+or portability claim.
 
 Repository selection was exactly `th10`, analysis provider exactly
 `th10-ghidra`, and target exactly `target:th10-main`. The private operator target
@@ -20,79 +19,78 @@ modified, replaced, relocated, staged, or committed. No `/mnt` search and no
 `TH10_TARGET_PATH` override were used.
 
 Session starting HEAD was
-`2f4a3350fc61132e7eb5e340f657527965ae5500` on `main`, with zero staged,
-unstaged, untracked, or conflicted paths. At session entry `origin/main` already
-matched that HEAD: the remote-tracking reflog records an external
-`2026-09-12T19:52:24+08:00 update by push`. This session did not perform that
-push and does not infer who did.
+`084a1ee3f5741f7325cad933534b14190ec0d7d0` on `main`. At entry it was clean:
+zero staged, zero unstaged, zero untracked, zero conflicts. Its upstream was
+`origin/main` at `2f4a3350fc61132e7eb5e340f657527965ae5500`, so local state was
+ahead 1 / behind 0 before this packet. This session never pushed.
 
-The intended local checkpoint subject for this packet is
-`gpt-web: reconstruct TH10 archive owner seam`. The live Git commit containing
-this handoff is authoritative after closeout. No push is performed by this
+The intended local checkpoint subject is:
+
+`gpt-web: reconstruct TH10 PbgFile backend seam`
+
+The live Git HEAD after closeout is authoritative. No push is performed by this
 session.
 
 ## Recovery gate and preserved state
 
 The mandatory Factory authority, repository-list, and live TH10 status calls
-were completed before editing. Recovery inspection covered branch, HEAD,
+were performed before editing. Recovery inspection covered branch, HEAD,
 upstream relation, recent commits, porcelain-v2 status, complete staged and
-unstaged diffs, all untracked paths, ignored analysis/tool/build/target/provider
-state, the previous handoff, and the remote-tracking reflog.
+unstaged diffs, all untracked paths, relevant ignored state, `.analysis/`,
+`build/`, and the prior handoff.
 
-No tracked or untracked interrupted work required recovery. Ignored/private
-state was classified and preserved:
+No recoverable interrupted tracked/untracked work existed. The following state
+was classified and preserved:
 
-- `resources/th10.exe`: operator-supplied private target; preserve/exclude.
-- `.tools/`: shared tool selectors plus game-bound Wine state; preserve/exclude.
-- `ghidra-project/`: target-bound provider state; preserve/exclude.
-- `.analysis/bootstrap/`: pre-existing/legacy analysis; preserve without
-  granting evidence authority.
-- earlier `.analysis/gpt-web/...` roots: previous bounded/checkpointed diagnostic
-  campaigns; preserve.
-- `build/`: generated/open build state; no recovery edit was required.
-- `.analysis/gpt-web/20260912-archive-owner/`: this conversation's owned bounded
-  compiler/source-shape diagnostic campaign.
+- `resources/th10.exe`: operator-supplied ignored private target; preserve and
+  exclude from Git.
+- `.tools/`: shared toolchain selectors and game-bound Wine state; preserve.
+- `ghidra-project/`: target-bound provider state; preserve.
+- `.analysis/bootstrap/` and earlier `.analysis/gpt-web/...`: pre-existing or
+  checkpointed diagnostic state; preserve without granting authority.
+- `build/`: reproducible generated/open build state; no recovery edit required.
 
-No reset, stash, target edit, bulk deletion, or cleanup of unknown/shared state
-was used to manufacture a clean tree.
+Entry `.analysis` size was **80,734 bytes**. No old campaign, target, provider
+database, Wine prefix, toolchain, or unknown/shared artifact was deleted.
 
-All prompt-named repository and Factory guidance was mounted and read before
+All prompt-named repository and Factory guidance was actually read before
 editing: `AGENTS.md`, `docs/RE_HANDOFF.md`, `docs/RE_WORKFLOW.md`,
-`docs/ORACLES.md`, `docs/TOOLS.md`, both named Factory contracts, `ontology.md`,
-`verification-planes.md`, `agent-autonomy.md`, `new-game-bootstrap.md`, and
-`worktree-recovery-and-analysis-artifacts.md`. `AGENTS.md` additionally led to
-`semantic-reconstruction.md`, which was read. The repository-local
-`.agents/skills/th10-reconstruction/SKILL.md` body was also located and read
-explicitly; no skill injection was assumed. No required guidance path was
-missing.
+`docs/ORACLES.md`, `docs/TOOLS.md`, both named Factory contracts,
+`ontology.md`, `verification-planes.md`, `agent-autonomy.md`,
+`new-game-bootstrap.md`, and `worktree-recovery-and-analysis-artifacts.md`.
+`AGENTS.md` also required `semantic-reconstruction.md`, which was read. The
+repository-local `.agents/skills/th10-reconstruction/SKILL.md` body was read
+explicitly; no skill injection was assumed. No required path was missing.
 
-Several repository/provider requests failed at the Factory transport layer.
-Every failure was followed by live repository recovery before retry. Notable
-cases were the initial combined recovery query, a combined guidance read, the
-combined preflight shell, the first standalone toolchain-execution request, and
-one adjacent PbgFile source query. None left unexpected tracked/untracked work.
-A local ledger-update Python script also failed once because it incorrectly read
-`fieldnames` from a file handle instead of the `csv.DictReader`; recovery showed
-that it had written no ledger state, after which the corrected script was run.
-The first archive-source compile failed because `<stddef.h>` was absent for
-`offsetof`; live status was checked and the natural missing include was added
-before recompiling. These are engineering/recovery events, not target facts.
+One initial read-only packet/preflight shell exited before any preflight because
+its Python inspection attempted to access a nonexistent `origin` field in
+`config/functions.csv`. Live repository status was re-read and remained clean
+before the corrected command ran. One initial multi-address Ghidra request and
+one adjacent committed-source search failed at the Factory network layer; each
+was followed by live recovery/status inspection before retry. A Truth Kernel
+snapshot request later returned `another factory operation owns <operator-path>`;
+that attempt was treated as unavailable and no inference was made from it. A
+final post-checkpoint refresh later succeeded and is recorded below.
 
 ## Identity and mandatory preflights
 
-The private target passed `python3 scripts/verify-target.py` with SHA-256
-`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`,
-MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 image base `0x00400000`,
-entry `0x004537DC`, four sections, Rich checksum `0x3152A748`, and dominant
-build 6030.
+The private target passed `python3 scripts/verify-target.py` with:
+
+- SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`
+- MD5 `7dc488d82c81dd4aee4ba098b8804d83`
+- PE32 i386, four sections
+- image base `0x00400000`
+- entry point `0x004537DC`
+- Rich checksum `0x3152A748`
+- dominant build 6030
 
 `python3 scripts/verify-toolchain.py --execute` passed the pinned VC7.1 SP1
 normal-COFF, C++ `/GL`/LTCG, resource, and PE32 i386 execution smoke. Target
 Rich records still establish 131 normal C, 15 normal C++, and 52 LTCG C++
-inputs at build 6030. Per-function compiler profile, physical owner, original TU
+inputs at build 6030. Per-function profile, physical object owner, original TU
 partition, production libraries/resources, and link order remain unknown.
 
-The mandatory repository preflights passed before target-dependent work:
+Mandatory repository preflights passed before target-dependent work:
 
 ```text
 python3 scripts/verify-target.py
@@ -102,391 +100,345 @@ python3 scripts/report-reconstruction-status.py
 python3 scripts/ci.py
 ```
 
-Native Ghidra operation schemas were rediscovered before use. The mandatory
-`check {}` passed with `attestation.status=passed`, exact target
-`target:th10-main`, and
+Native Ghidra operation schemas were rediscovered. The mandatory `check {}`
+passed with `attestation.status=passed`, exact target `target:th10-main`, and
 `attestation.provider_transport=factory-native-command`. Every useful Ghidra
-result in this packet carried the same target/native-transport attestation and
-`exactness_credit=none`. A second Ghidra `check {}` after the dirty source/ledger
-work also passed with the same private target hash, layout, entry point, and
-mapped-byte samples.
+result used the same target/native transport and carried
+`exactness_credit=none`.
 
 ## Packet selection and balance
 
-The selected packet followed the previous handoff and was deliberately a hard
-owner/data-boundary cohort rather than a small-leaf strategy:
+This packet followed the previous handoff and deliberately attacked a central
+owner/vtable/data-boundary cohort rather than a small-leaf count strategy:
 
-- `0x00434C30-0x00434C9B` archive load;
-- `0x00434D10-0x00434D65` archive release;
-- `0x00434DD0-0x00434EE8` archive read/transform/decompression path;
-- `0x00434F30-0x00434F64` archive entry lookup;
-- the directly connected parser/entry lifecycle helpers needed to close the
-  physical owner;
-- `0x00435800-0x004358D5` only as caller context, not promoted in this packet.
+- Ghidra-missed constructor around `0x00435300`;
+- `0x00435320` deleting destructor;
+- `0x00435340` destructor;
+- `0x00435370` `Open`;
+- `0x00435460` `Close`;
+- the raw vtable methods between `0x00435490-0x00435574`;
+- `0x00435580` whole-file reader;
+- `0x00435610` path helper;
+- base-interface lifecycle/compiler bodies through `0x004356E3`;
+- central archive lookup `0x004356F0`;
+- Ghidra-missed archive-load helper `0x004357D0`;
+- archive-or-disk read/size helpers `0x00435800` and `0x004358E0`.
 
-The observable goal was to determine whether the `0x00497990` storage, archive
-entry format, backend virtual interface, lifecycle, and private ABIs could be
-closed with TH10-local evidence strongly enough to justify maintained candidate
-source without pretending to know the original source file or compiler owner.
-The result is yes for source presence and no for exactness/object ownership.
+The observable outcome sought was to separate the physical `CPbgFile` owner
+from higher pack/file archive helpers, close the complete vtable/layout, expose
+hidden denominator entries, and determine whether natural maintained source can
+compile under both target-observed compiler artifact families without guessing
+per-function ownership.
 
-This follows two previous central Main/startup/FileSystem hard packets. The
-conversation did not switch to the easiest unreviewed functions merely to
-improve counts.
+The packet is a hard-frontier attempt because it includes a 239-byte Win32 open
+method, a 137-byte virtual whole-file path, 214/190-byte archive/disk fallback
+helpers, two polymorphic vtables, compiler-generated lifecycle helpers, and
+cross-owner `ResFile` callers. It was not selected for easy exact wins.
 
-## Complete TH10 archive-object storage at `0x00497990`
+## Complete `CPbgFile` storage and vtables
 
-The global archive object is now physically bounded to exactly `0x10` bytes:
+TH10 target construction sites establish a `CPbgFile` object of exactly 0x0C
+bytes:
 
-```text
-[0x00497990, 0x004979A0)
-+0x00  PbgArchiveEntry *entries
-+0x04  int entryCount
-+0x08  char *archiveFilename
-+0x0C  polymorphic file-backend pointer
-```
+- `+0x00`: vptr
+- `+0x04`: Win32 `HANDLE`
+- `+0x08`: desired access
 
-This is stronger than the previous used-prefix claim. Archive lifecycle code
-uses exactly those four dwords. A dedicated shutdown wrapper at the end of the
-image passes exactly `0x00497990` to the release body, while independent densely
-referenced storage begins at `0x004979A0`.
+The derived target vtable at `0x0046F230` contains **nine** slots:
 
-The target also contains an array of twenty separate 0x10-byte archive objects at
-`0x004923B0`. Static initialization passes `0x00434C10` and `0x00434C20` as the
-constructor/destructor pair to the MSVC vector constructor/destructor machinery
-with element size `0x10` and count `0x14`. Thus the 0x10-byte object size is a
-TH10-local physical fact, not a transferred adjacent-game layout.
+1. `+0x00` -> `0x00435370` `Open`
+2. `+0x04` -> `0x00435460` `Close`
+3. `+0x08` -> `0x00435490` `Read`
+4. `+0x0C` -> `0x004354D0` `Write`
+5. `+0x10` -> `0x00435510` `Tell`
+6. `+0x14` -> `0x00435530` `GetSize`
+7. `+0x18` -> `0x00435550` `Seek`
+8. `+0x1C` -> `0x00435320` compiler deleting destructor
+9. `+0x20` -> `0x00435580` `ReadWholeFile`
 
-`PbgArchive` is retained as a maintained/proposed C++ type name because the
-behavior and adjacent committed source agree. It is not an original-symbol,
-original-TU, or object-file ownership claim.
+The ninth slot corrected the prior declaration-only `src/PbgFile.hpp`, which
+had stopped after the inherited virtual destructor. The base vtable at
+`0x0046F210` contains seven pure-virtual slots followed by the base deleting
+destructor at `+0x1C`.
 
-## Reviewed archive lifecycle and query source bodies
+All vtable slot statements are direct TH10 rdata/xref facts. TH08/TH095 source
+was consulted only after the TH10 slot order was recovered and corroborates the
+source-level names/order; it does not transfer target ownership or exactness.
 
-### `0x00434C10-0x00434C1F` — proposed `PbgArchive::PbgArchive`
+## Reviewed authored `CPbgFile` bodies
 
-This 16-byte CC-delimited body was missing from the Ghidra function inventory.
-The target vector-constructor setup references it directly for the twenty
-0x10-byte archive objects. It clears all four object fields. A natural pinned
-VC7.1 normal-COFF compile of maintained source is also 16 bytes and fully
-byte-identical to this target body, but the per-function normal-COFF/LTCG owner
-is unknown, so no canonical exact row is created.
+### `0x00435300-0x00435314` — proposed `CPbgFile::CPbgFile`
 
-### `0x00434C20-0x00434C29` — proposed `PbgArchive::~PbgArchive`
+Ghidra missed this 21-byte CC-delimited body. It consumes the object through
+live-in EAX, writes vptr `0x0046F230`, writes `INVALID_HANDLE_VALUE` at `+4`,
+and clears `+8`. Maintained natural source uses an ordinary constructor; fixed
+normal COFF adds an ECX-to-EAX entry move, while the target consumes live-in EAX.
+This is source-shape/private-ABI evidence, not an exactness or LTCG-owner claim.
 
-The static vector-destructor setup references this existing Ghidra candidate.
-The target receives the object in ECX, moves it to ESI, calls the release body,
-and returns. The source-level name is adjacent-supported after the TH10 lifecycle
-role was established.
+### `0x00435320-0x0043533D` — compiler deleting destructor
 
-### `0x00434C30-0x00434C9B` — proposed `PbgArchive::Load`
+The derived vtable points here at `+0x1C`. The body calls the reviewed
+non-deleting destructor, tests deleting flags, conditionally invokes operator
+delete, and returns with `ret 4`. It is tracked as
+`compiler_generated / exclude`, not authored code and not source-present.
 
-The unique target startup caller supplies `ECX=0x00497990` and
-`EAX="th10.dat"`. The callee therefore has a private/interprocedural machine ABI
-of live-in ECX archive plus EAX filename, not a source-level fastcall claim. It
-releases prior state, allocates a 0x0C-byte CPbgFile-shaped backend, invokes the
-header parser, copies the archive filename, reopens the backend, and returns a
-boolean result in AL.
+### `0x00435340-0x0043536D` — proposed `CPbgFile::~CPbgFile`
 
-### `0x00434D10-0x00434D65` — proposed `PbgArchive::Release`
+The body installs the derived vptr, closes a live handle, resets handle/access,
+then installs the base vptr. Natural maintained source is a destructor that
+calls `Close()`. A fixed normal-COFF target-bound diagnostic is
+`structural-exact` across **34/34 comparable non-relocation bytes**, but physical
+normal-COFF versus LTCG ownership remains unresolved, so no canonical exact row
+was added.
 
-This existing candidate consumes the archive through live-in ESI. It frees and
-clears the archive filename, invokes the MSVC vector destructor for 0x10-byte
-entries and frees the array, deletes the polymorphic backend through vtable slot
-`+0x1C`, then clears entries/count/backend. The machine ABI is recorded as a
-target fact independently from the natural member-function declaration.
+### `0x00435370-0x0043545E` — proposed `CPbgFile::Open`
 
-### `0x00434DD0-0x00434EE8` — proposed `PbgArchive::ReadDecompressEntry`
+The derived vtable points here at slot 0. The target:
 
-The physical extent is 281 bytes. Ghidra reports 278 CFG body addresses because
-its decompiler labels the real signed-mod correction at `0x00434E80-0x00434E84`
-as unreachable; those instructions are target code, not padding or data.
+- closes prior state;
+- scans mode bytes for `r`, `w`, or `a`;
+- uses `GENERIC_READ`/`GENERIC_WRITE` and the observed Win32 creation modes;
+- deletes the old path for `w`;
+- resolves a full path through `0x00435610`;
+- calls `CreateFileA` with `FILE_SHARE_READ` and
+  `FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN`;
+- seeks to `FILE_END` for append mode.
 
-The machine boundary consumes filename through live-in ECX and two stack
-arguments (archive object and output buffer), with `ret 8` on every exit. The
-body finds the archive entry, derives compressed size from the next record's data
-offset, reads through the backend, computes an 8-bit filename checksum, selects
-one of eight 0x0C-byte decrypt profiles, applies the target data transform, and
-conditionally invokes the decompression helper when compressed and decompressed
-sizes differ.
+Its machine ABI is ECX `this` plus two stack args and `ret 8`. The target has a
+security-cookie frame and calls `GetFullFilePath` through a private
+EAX-filename/ECX-buffer boundary. The fixed standalone normal-COFF source probe
+therefore mismatches, while the same natural source also compiles successfully
+as `/GL`. Profile/owner/exactness remain unknown.
 
-The maintained source deliberately preserves a target error behavior that may
-look unattractive: when seek/read fails, the current non-null compressed buffer
-is freed even if it is the caller-provided output buffer. Reconstruction does not
-silently "fix" that behavior.
+### `0x00435460-0x00435481` — proposed `CPbgFile::Close`
 
-### `0x00434EF0-0x00434F22` — proposed `PbgArchive::GetEntryDecompressedSize`
+Slot `+0x04`. Invalid handle is a no-op; otherwise `CloseHandle` runs and the
+handle/access fields are reset. Normal-COFF diagnostic: **30/30 comparable
+bytes**, `structural-exact`, authority none.
 
-This 51-byte existing candidate uses live-in EAX archive and EBX filename,
-performs the same 0x10-byte case-insensitive entry lookup, and returns entry
-`+0x08` or zero.
+### Ghidra-missed virtual methods
 
-### `0x00434F30-0x00434F64` — proposed `PbgArchive::FindEntry`
+Raw target/vtable review added five denominator entries that Ghidra had not
+modeled as functions:
 
-This 53-byte existing candidate walks `entries/count` at object `+0/+4` in
-0x10-byte strides and returns the `_stricmp` match. Its target machine inputs are
-live-in EAX archive and EBX filename.
+- `0x00435490-0x004354C8`, 57 bytes — proposed `CPbgFile::Read`; slot `+0x08`;
+  requires `GENERIC_READ`, calls `ReadFile`, returns bytes read. Normal-COFF
+  diagnostic: **53/53 comparable bytes**, structural-exact.
+- `0x004354D0-0x0043550E`, 63 bytes — proposed `CPbgFile::Write`; slot `+0x0C`;
+  requires `GENERIC_WRITE`, calls `WriteFile`, returns byte-count equality.
+  Fixed normal COFF has a small post-call code-shape mismatch.
+- `0x00435510-0x00435528`, 25 bytes — proposed `CPbgFile::Tell`; slot `+0x10`;
+  invalid handle -> 0, otherwise `SetFilePointer(..., FILE_CURRENT)`.
+  Diagnostic: **21/21 comparable bytes**, structural-exact.
+- `0x00435530-0x00435544`, 21 bytes — proposed `CPbgFile::GetSize`; slot `+0x14`;
+  invalid handle -> 0, otherwise `GetFileSize`. Diagnostic: **17/17 comparable
+  bytes**, structural-exact.
+- `0x00435550-0x00435574`, 37 bytes — proposed `CPbgFile::Seek`; slot `+0x18`;
+  invalid handle -> false, otherwise `SetFilePointer` and true. Diagnostic:
+  **33/33 comparable bytes**, structural-exact.
 
-## THA1 header parser and entry-table ownership
+Boundary review explicitly includes callee-pop immediate operands: `Read` ends
+at `0x004354C8`, `Write` at `0x0043550E`, and `Seek` at `0x00435574`; following
+bytes are CC padding.
 
-### `0x00434F70-0x004350CD` — proposed `PbgArchive::ParseHeader`
+### `0x00435580-0x00435608` — proposed `CPbgFile::ReadWholeFile`
 
-The target machine boundary is live-in ESI archive plus one stack filename,
-returning with `ret 4`. It opens and reads a 16-byte header through the file
-backend, decrypts the header with XOR value/increment `0x1B/0x37`, and requires
-magic `0x31414854` (`THA1`). It decodes:
+This is the ninth derived virtual slot at `+0x20`, after the inherited deleting
+destructor. It requires `GENERIC_READ`, obtains size, enforces the caller max,
+allocates with `malloc`, saves/restores position, and reads through virtual
+methods. On a seek failure after allocation the retail target returns null
+without freeing that allocation; maintained source preserves this observed
+behavior instead of silently fixing it. Normal COFF differs in register
+allocation and seek-origin/global handling; `/GL` compiles successfully. No
+exactness credit.
 
-- file-table decompressed size by subtracting `123456789`;
-- file-table compressed size by subtracting `987654321`;
-- entry count by subtracting `135792468`.
+### `0x00435610-0x00435688` — proposed `CPbgFile::GetFullFilePath`
 
-It calculates the file-table offset from archive size minus compressed-table
-size, seeks to that offset, reads the compressed table, decrypts it with
-`0x3E/0x9B` and chunk size `0x80`, decompresses it, and invokes the entry-table
-builder. The target does not test the return of the file-table seek; maintained
-source preserves that observed behavior.
+The reviewed `Open` caller supplies filename in live-in EAX and output buffer in
+ECX. A drive-qualified path is copied directly; otherwise the module directory
+is fetched and the filename appended. Natural maintained static source matches
+the target semantics, including the observed path-end control flow, but the
+standalone normal-COFF static-argument ABI does not match the private target
+boundary. No source calling-convention or LTCG ownership claim is made.
 
-TH095 committed source later supplied unusually close naming/source-shape
-corroboration, including the THA1 format and constants, but the TH10 constants,
-control flow, ABI, and layout above were established from TH10 first.
+## Base-interface denominator challenge
 
-### `0x004350D0-0x00435216` — proposed `PbgArchive::AllocEntries`
+Three CC-delimited Ghidra-missed raw bodies were added to the candidate ledger
+without forcing origin:
 
-The target allocates `count + 1` records of exactly 0x10 bytes and invokes the
-entry constructor/destructor through the compiler array-construction machinery.
-Each decoded file-table entry copies:
+- `0x00435690-0x00435696`: destructor-shaped base-vptr store through ECX. An
+  empty virtual `IPbgFile` destructor in fixed normal COFF has the same 3/3
+  comparable bytes, but original explicit/defaulted source origin and physical
+  ownership remain unknown.
+- `0x004356C0-0x004356C6`: constructor-shaped base-vptr store through live-in
+  EAX. Standalone normal COFF needs an ECX-to-EAX move. Origin remains unknown.
+- `0x004356D0-0x004356E3`: retained helper returning the byte after the first
+  slash, or the original pointer. It has no established direct entry xref or
+  original identifier. Origin remains unknown.
 
-```text
-+0x00  filename pointer
-+0x04  dataOffset
-+0x08  decompressedSize
-+0x0C  third metadata dword
-```
+`0x004356A0-0x004356BE` is different: base vtable `+0x1C` points directly to it,
+and its flag/delete pattern is the MSVC scalar deleting destructor. The pinned
+normal compiler emits the same 31-byte helper with 23/23 comparable
+non-relocation bytes. It is classified `compiler_generated / exclude`.
 
-The extra sentinel record stores the archive data/table boundary at `+0x04` and
-zero at `+0x08`. `ReadDecompressEntry` uses
-`entry[1].dataOffset - entry.dataOffset` as compressed size. The target copies
-entry `+0x0C` but no reviewed retail reader consumes it, so maintained source
-uses the neutral name `unconsumedMetadata`; its meaning remains unknown.
+Keeping the three raw bodies `unknown/review` is intentional denominator
+pressure, not incomplete bookkeeping.
 
-The target machine body has three stack arguments and `ret 0x0C`; a source-level
-member `this` is unused/elided and is not reverse-invented into the machine ABI.
+## Connected pack/file archive helpers
 
-### `0x00435220-0x0043524E` — proposed `PbgArchive::CopyFileName`
+These functions are behaviorally connected to the backend but are **not**
+assigned to the `CPbgFile` source mapping.
 
-This 47-byte existing candidate receives filename through live-in EDI, allocates
-`strlen + 1`, and copies the NUL-terminated filename. Maintained source uses
-natural `strcpy`, matching the observed byte-copy behavior.
+### `0x004356F0-0x004357C3`
 
-### `0x00435250-0x00435269` — proposed `PbgArchiveEntry::~PbgArchiveEntry`
+Reviewed authored central archive lookup. It derives `<first path component>.dat`
+and searches the active array of 0x10-byte `PbgArchive` objects rooted at
+`0x004923B0`, using active count `0x00477850`. Both archive-aware read and size
+helpers call it.
 
-The target entry destructor receives ECX `this`, frees the filename when non-null,
-clears the field, and returns. A natural pinned normal-COFF compile is also 26
-bytes and matches all 22 comparable non-relocation bytes. This remains diagnostic
-source-shape evidence with zero exactness authority because physical compiler
-ownership is unresolved.
+### `0x004357D0-0x004357F3`
 
-## Ghidra-missed retained archive helpers and compiler exclusion
+Ghidra-missed 36-byte retained authored body. It selects the next archive object
+from `0x004923B0 + count * 0x10`, calls reviewed `PbgArchive::Load` using the
+live-in archive filename, increments `0x00477850` on success, and returns a
+boolean. No original identifier or source owner is claimed.
 
-The packet challenged the candidate denominator rather than trusting the initial
-Ghidra inventory.
+### `0x00435800-0x004358D5`
 
-- `0x00435270-0x0043527B` is a 12-byte CC-delimited authored retained body,
-  proposed `PbgArchive::SeekPastInt`. It receives a pointer-to-pointer through
-  live-in EAX, advances it four bytes, and returns the dword at the new cursor.
-  `AllocEntries` contains the same operation inline. Normal COFF is 16 bytes
-  because it first loads the normal stack argument.
-- `0x00435280-0x004352B2` is a 51-byte CC-delimited authored retained body,
-  proposed `PbgArchive::SeekPastString`. It consumes pointer-to-pointer through
-  live-in EDX, advances past the NUL string, rounds to a four-byte boundary, and
-  returns the updated pointer. `AllocEntries` contains the same logic inline.
-- `0x004352C0-0x004352C8` is a nine-byte CC-delimited authored entry constructor,
-  directly referenced by the target vector-constructor iterator. Natural normal
-  COFF from maintained source is nine bytes and fully byte-identical.
-- `0x00434C10-0x00434C1F`, described above, is the fourth newly added authored
-  body missed by Ghidra.
-- `0x00434D70-0x00434DCC` is **not** promoted to authored code. It is a 93-byte
-  CC-delimited MSVC scalar/vector deleting-destructor dispatcher using deletion
-  flags and the 0x10-byte entry destructor. The pinned normal compiler
-  automatically emits the same class of deleting-destructor COMDAT from the
-  maintained entry source. It is tracked as `compiler_generated / exclude`.
+Reviewed authored archive-or-disk read helper. Machine ABI is ECX path plus one
+stack output-buffer argument, `ret 4`. A matching archive uses the path suffix
+and `PbgArchive::ReadDecompressEntry`; fallback constructs a temporary
+`CPbgFile`, opens disk, and calls `ReadWholeFile`.
 
-Tiny raw return stubs around `0x004352D0/0x004352E0/0x004352F0` remain outside
-this authored promotion because their origin/ownership has not been established.
+### `0x004358E0-0x0043599D`
 
-## File-backend interface evidence
+Reviewed authored required sibling size helper. It uses the same archive lookup;
+archive hits call reviewed `PbgArchive::GetEntryDecompressedSize`, while disk
+fallback opens a temporary `CPbgFile` and calls `GetFileSize`.
 
-The reviewed archive methods call a polymorphic backend at object `+0x0C`.
-TH10 target virtual calls establish the relevant slot roles:
+Both `0x00435800` and `0x004358E0` are directly consumed by the raw owner seam at
+`0x00436400-0x0043642B`, which stores data/size state into the surrounding
+ResFile-like object. This makes the higher pack/file helper cohort a central
+owner seam rather than unrelated easy leaves.
 
-- vtable `+0x00`: Open;
-- `+0x08`: Read;
-- `+0x14`: GetSize;
-- `+0x18`: Seek;
-- `+0x1C`: deleting destructor.
+## Source-path evidence and original TU limits
 
-Adjacent committed PbgFile declarations corroborate the complete slot sequence as
-Open, Close, Read, Write, Tell, GetSize, Seek, destructor. `PbgArchive::Load`
-allocates a 0x0C-byte backend and initializes the expected vptr/handle/access-like
-storage. Maintained `src/PbgFile.hpp` contains only this minimal target-facing
-interface and declarations; the backend implementation remains deliberately
-absent and is the next owner packet.
+Attested target string search found:
 
-## Maintained source and source-present plane
+- `0x0046F254`: `.\src\pack\File.cpp:233 void`
+- `0x0046F348`: `.\src\pack\ResFile.cpp:82 BYTE`
 
-This is the first TH10 checkpoint to establish maintained source presence. New
-tracked files are:
+These strings prove those source paths participated in the original build.
+`xrefs_to` returned no code reference to either string, so they **do not** map
+any reviewed target function to an original translation unit. In particular,
+maintained `src/PbgFile.cpp` is a reconstruction source location, not a claim
+that the reviewed methods were physically owned by original
+`src/pack/File.cpp`.
 
-- `src/PbgFile.hpp` — minimal target-verified backend interface/declarations;
-- `src/PbgArchive.hpp` — TH10-observed header, entry, and 0x10-byte archive
-  layouts plus archive declarations;
-- `src/PbgArchive.cpp` — natural archive lifecycle/parser/read/source bodies.
+## Maintained source and compiler feedback
 
-Fourteen reviewed authored archive target functions are mapped in
-`config/reccmp-functions.csv` and listed in `config/implemented.csv`:
+Tracked maintained source now includes:
 
-```text
-PbgArchive::PbgArchive
-PbgArchive::~PbgArchive
-PbgArchive::Load
-PbgArchive::Release
-PbgArchive::ReadDecompressEntry
-PbgArchive::GetEntryDecompressedSize
-PbgArchive::FindEntry
-PbgArchive::ParseHeader
-PbgArchive::AllocEntries
-PbgArchive::CopyFileName
-PbgArchiveEntry::~PbgArchiveEntry
-PbgArchive::SeekPastInt
-PbgArchive::SeekPastString
-PbgArchiveEntry::PbgArchiveEntry
-```
+- updated `src/PbgFile.hpp` with the target-verified ninth virtual
+  `ReadWholeFile` and static `GetFullFilePath` declaration;
+- new `src/PbgFile.cpp` with natural maintainable implementations of constructor,
+  destructor, `Open`, `Close`, `Read`, `Write`, `Tell`, `GetSize`, `Seek`,
+  `ReadWholeFile`, and `GetFullFilePath`.
 
-This mapping means maintained reconstruction source exists for those target
-functions. It does **not** claim the original TH10 source file/TU, object-file
-ownership, normal-COFF/LTCG ownership, build-graph ownership, or exactness.
-`config/build.toml` remains explicitly open and receives no source entry from
-this packet.
+Exactly eleven reviewed authored `CPbgFile` target bodies are source-present and
+mapped through `config/reccmp-functions.csv` / `config/implemented.csv`. The
+compiler-generated deleting destructor and unresolved `IPbgFile` raw bodies are
+not source mappings.
 
-The source contains no target byte arrays, no fake returns, no inert padding, and
-no target patch/oracle-specific code.
-
-## Pinned VC7.1 source-shape feedback
-
-Maintained `src/PbgArchive.cpp` was compiled with one fixed normal profile:
+The same tracked source compiled successfully through the pinned compiler as:
 
 ```text
 /TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc
+/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc /GL
 ```
 
-and with the same exact source/profile plus `/GL`. Both compilation modes
-succeeded under the pinned VC7.1 SP1 build-6030 toolchain.
+The normal object was compared with `scripts/compare-coff-function.py` in probe
+mode. Relocation-masked structural-exact results were obtained for the
+non-deleting destructor, `Close`, `Read`, `Tell`, `GetSize`, and `Seek`, while
+other bodies retained real shape/context differences. The compact report is:
 
-A compact target-bound diagnostic is retained at
-`.analysis/gpt-web/20260912-archive-owner/compiler-shape-report.txt`:
+`.analysis/gpt-web/20260912-pbgfile-backend/compiler-shape-report.txt`
 
-- `PbgArchiveEntry::PbgArchiveEntry` target size 9, normal-COFF size 9, all bytes
-  equal;
-- `PbgArchive::PbgArchive` target size 16, normal-COFF size 16, all bytes equal;
-- `PbgArchiveEntry::~PbgArchiveEntry` target/normal size 26, all 22 comparable
-  non-relocation bytes equal;
-- `SeekPastInt` target is 12 bytes versus 16 normal-COFF bytes because the target
-  consumes the pointer through live-in EAX rather than loading `[esp+4]`;
-- `SeekPastString` target is 51 bytes versus 61 normal-COFF bytes, with live-in
-  EDX/private boundary differences;
-- the normal compiler automatically emits a PbgArchiveEntry vector deleting
-  destructor, corroborating the compiler-generated classification of raw
-  `0x00434D70`.
-
-These observations do **not** create a canonical normal-COFF match. The target
-contains LTCG inputs and the physical owner of these functions is not established.
-No `config/matches.csv` or `config/match-units.toml` row is added, and the `/GL`
-hypothesis is not stripped merely to fit the standalone COFF Oracle.
+All probe results have `acceptance_authority=none`. No `match-units.toml` row,
+`matches.csv` row, or canonical exact claim was added. `/GL` was not stripped to
+fit the standalone normal-COFF Oracle.
 
 ## Adjacent-game hypothesis discipline
 
-Adjacent source was consulted only after TH10 target observations established the
-archive subsystem. Only committed `HEAD:` content was used for evidence. Material
-states were:
+Only committed adjacent source was used, and only after TH10 target evidence
+established the backend behavior/vtable.
 
-- TH08 committed HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, branch
-  `port/portable-64bit`, clean when consulted;
-- TH09 committed source was materially consulted at HEAD
-  `6f15efd70d7e155b6b23ad0cddbb2ff049f183c3`; unrelated live dirty state was
-  excluded. Later in this conversation the live TH09 checkout externally moved
-  to `caa38688bcc88d5a711dee96cfd712d2261c4b99`; that later HEAD was observed
-  during closeout but was not substituted retroactively for the consulted source;
-- TH095 committed HEAD `2c1acc0402ddd793f77dd405718202bbe38e2477` was used for
-  archive/PbgFile source-shape corroboration. Its current checkout contains
-  unrelated modified/untracked work; only committed HEAD content was used.
+Observed adjacent states while consulted:
 
-Adjacent archive source corroborated names, natural C++ organization, virtual
-slot naming, and the THA1/PBG source shape. It did not transfer TH10 addresses,
-extents, physical ownership, ABI, exactness, source mappings, or completion.
-Where source generations differed, TH10 target behavior controlled the maintained
-implementation.
+- TH08: HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, branch
+  `port/portable-64bit`, clean in the observed status. Committed
+  `src/pbg/PbgFile.hpp/.cpp` corroborated names and natural source shape.
+- TH09: HEAD `caa38688bcc88d5a711dee96cfd712d2261c4b99`, branch `main`, with
+  unrelated dirty tracked paths in `config/function-origins.csv`,
+  `config/functions.csv`, `docs/KNOWLEDGE_BASE.md`, and `src/ScoreData.cpp`.
+  Only committed HEAD search results were used; no uncommitted content was
+  consulted.
+- TH095: HEAD `2c1acc0402ddd793f77dd405718202bbe38e2477`, branch `main`, with
+  unrelated dirty `src/FrontEndController.cpp`, `src/Supervisor.hpp`, plus
+  unrelated untracked analysis/runtime files. Only committed HEAD
+  `src/pbg/PbgFile.hpp/.cpp` was used.
+
+TH10 differs materially where observed: for example, its `ReadWholeFile` target
+uses `malloc/free`; TH08 committed source uses `GlobalAlloc/GlobalFree`, while
+TH095 committed source corroborates the later `malloc/free` shape. TH10 target
+facts always win.
 
 ## Ledger and verification-plane state
 
 After this packet and generated progress refresh:
 
-| Plane | State |
-| --- | --- |
-| Tracked candidates | **1,208** |
-| Origin/boundary pending | **1,169** |
-| Reviewed authored | **37 functions / 8,709 bytes** |
-| Reviewed exclusions | **2** |
-| Source-present authored mappings | **14** |
-| Canonical exact functions / bytes | **0 / 0** |
-| Canonical normal-COFF match units | **0** |
-| Whole Windows i386 build | **open** |
-| Runtime validation | **not started** |
-| Semantic/port stages | **not started** |
-| Ghidra authority | provisional, `exactness_credit=none` |
+- tracked candidates: **1,219**
+- origin/boundary pending: **1,163**
+- confirmed authored: **52 functions / 10,162 bytes**
+- classified exclusions: **4**
+- source-present authored mappings: **25**
+- canonical exact functions: **0**
+- canonical exact authored bytes: **0**
+- normal-COFF canonical match units: **0**
 
-Relative to session entry, this packet reviews ten existing authored archive
-candidates, adds four new authored denominator candidates, adds one
-compiler-generated exclusion candidate, and adds 1,427 reviewed authored bytes.
-It also adds the first fourteen maintained source mappings. Source presence and
-exactness remain separate: exactness is still zero.
+This packet added eleven target candidates to the denominator. Eight of those
+were reviewed immediately (six authored `CPbgFile`/archive bodies and two
+compiler helpers), while three deliberately remain `unknown/review`. Across
+existing plus new candidates, the packet added **15 reviewed authored functions
+and 1,453 authored bytes**, **2 compiler exclusions**, and **11 source-present
+mappings**.
 
-`config/matches.csv`, `config/match-units.toml`, and `config/build.toml` are
-unchanged. The whole-build graph therefore remains honestly open rather than
-claiming the newly maintained source has a known production TU/profile/link owner.
+Verification planes remain separate:
 
-## Truth Kernel acceptance plane
+- **source presence:** 25 reviewed authored mappings total; eleven new
+  `CPbgFile` mappings this packet.
+- **exactness:** 0 canonical exact functions/bytes. Structural probe equality is
+  diagnostic only.
+- **whole Windows i386 build:** open. `config/build.toml` remains unchanged and
+  honest.
+- **runtime validation:** not started.
+- **semantic/port stages:** not started.
+- **Truth Kernel acceptance:** an earlier current-session request was unavailable due
+  shared `<operator-path>` ownership, but the final post-checkpoint refresh succeeded.
+  The accepted snapshot contains exactly one accepted fact, `target_attested`, from
+  source commit `9f7886f72adcd1880c05e34c62408cf9b1dad966`. No PbgFile, archive, source-present,
+  ownership, or exactness fact from this packet is accepted.
 
-A current `factory_get_accepted_snapshot(th10)` succeeded during this packet.
-The acceptance registry exposed exactly one accepted TH10 fact: the existing
-`target_attested` claim for `target:th10-main`, backed by an older accepted target
-identity receipt whose source commit is
-`9f7886f72adcd1880c05e34c62408cf9b1dad966`.
+`config/matches.csv`, `config/match-units.toml`, and `config/build.toml` have no
+tracked diff in this packet.
 
-No current archive boundary, origin, source-present, object-ownership,
-compile-succeeded, codegen-exact, or whole-build claim from this conversation is
-accepted in the Truth Kernel. This session did not submit a replay. The newly
-maintained dirty source and ledgers therefore have **zero new Factory acceptance
-credit** even though repository-local validation passes.
+## Validation actually run
 
-## Commands and validation actually run
-
-Recovery/guidance work used the mandatory Factory authority/repository/status
-calls plus bounded live Git/ignored-state inspection and all required guidance
-reads. Target/provider work used discovered `th10-ghidra` schemas for `check`,
-`function`, `decompile`, `callers`, `callees`, `disassemble`, and `xrefs_to`,
-plus bounded direct target `objdump`/Python PE and raw-data inspection.
-
-Historical-compiler feedback used `scripts/compile-probe.sh`. A disposable
-archive-source probe first failed because `<stddef.h>` was missing for `offsetof`;
-the missing standard include was added and the same natural source then compiled
-successfully as normal COFF and `/GL`. After source semantics were corrected from
-TH10 target evidence, the tracked `src/PbgArchive.cpp` was again compiled
-successfully in both modes. No flag sweep or source mutation was used to force a
-target register allocation.
-
-Before handoff, the following repository checks passed:
+The following checks were run successfully after source/ledger work:
 
 ```text
+scripts/compile-probe.sh src/PbgFile.cpp <normal.obj> /TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc
+scripts/compile-probe.sh src/PbgFile.cpp <ltcg.obj> /TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc /GL
 python3 scripts/verify-target.py
 python3 scripts/verify-toolchain.py --check
 python3 scripts/validate-tracking.py --require-target
@@ -498,95 +450,113 @@ python3 scripts/ci.py
 git diff --check
 ```
 
-`python3 scripts/build-match-unit.py --check` reports zero canonical units. An
-honest `python3 scripts/build.py` invocation returned the expected RC=2 with:
+The pinned toolchain had already passed `python3 scripts/verify-toolchain.py
+--execute` at session preflight.
+
+The honest whole-build command was also exercised:
 
 ```text
-whole build unavailable: compile flags, TU partition, libraries, resources, and link order remain unknown
+python3 scripts/build.py
 ```
 
-This is an open product plane, not an exact-function failure and not runtime
-validation.
+It returned expected **RC=2** with the open-state message that compile flags, TU
+partition, libraries, resources, and link order remain unknown. This is not
+whole-product closure and is not reported as a successful reconstructed build.
 
 ## Analysis artifacts
 
-`.analysis/` measured **76,462 bytes** at session entry. The current archive
-campaign reached **166,193 bytes** before checkpoint cleanup while normal and
-`/GL` objects plus source probes were retained for comparison.
+Entry `.analysis` size: **80,734 bytes**.
 
-After reference review, only current-session reproducible intermediates were
-removed:
+Current campaign directory:
 
-- `archive-source-probe.cpp`;
-- `archive-normal.obj`;
-- `archive-ltcg.obj`;
-- `tracked-normal.obj`;
-- `tracked-ltcg.obj`.
+`.analysis/gpt-web/20260912-pbgfile-backend/`
 
-Current retained scratch under
-`.analysis/gpt-web/20260912-archive-owner/` is:
+Peak observed `.analysis` size during normal/LTCG objects plus detailed JSON was
+**138,115 bytes**, far below the 256 MiB review threshold. No file exceeded
+64 MiB.
 
-- `compiler-shape-report.txt` — compact target/compiler source-shape result;
-- `manifest.json` — target/source/toolchain binding and artifact dispositions.
+After validation, only the compact compiler report and manifest are retained;
+current pre-checkpoint `.analysis` size after the results manifest update is **87,069 bytes**. The current-session
+normal object, `/GL` object, and detailed comparator JSON were deleted only
+after their results were reviewed and summarized. They are reproducible from
+tracked source and the pinned toolchain. No old scratch tree, target, provider
+state, toolchain, or unknown/shared artifact was removed.
 
-After the retained manifest was updated with the available Truth Kernel snapshot and tracked-source bindings, the pre-checkpoint `.analysis` size was **80,564 bytes**. After the first local checkpoint, the ignored manifest was marked `checkpointed`, bound to that commit with `pushed=false`, and `.analysis` measured **80,734 bytes**. This handoff-only closeout amendment is then folded into the same logical checkpoint; the manifest is rebound to the amended live HEAD and the final size is re-read during cold closeout. No current campaign artifact exceeds 64 MiB, and the campaign is far below the 256 MiB review threshold. No old campaign, bootstrap state, provider database, target, Wine prefix, toolchain, or unknown/shared artifact was deleted.
+The manifest must be rebound to the final checkpoint hash during closeout; its
+final byte size and `.analysis` total must be re-read afterward.
 
-## Remaining unknowns and next evidence-connected packet
+## Remaining unknowns and blockers
 
-Important unresolved facts are:
+- Per-function normal-COFF versus LTCG physical ownership remains unknown,
+  including for the six small methods that are structurally identical in the
+  fixed normal-COFF diagnostic.
+- Original ownership of the observed `src/pack/File.cpp` path is not tied to any
+  function because its target string has no code xref.
+- `0x00435690`, `0x004356C0`, and `0x004356D0` remain explicit
+  `unknown/review` denominator entries.
+- Original identifiers for `0x004356F0`, `0x004357D0`, `0x00435800`, and
+  `0x004358E0` remain unknown.
+- The active archive-count/array initialization owner beyond the reviewed
+  helper remains only partially bounded.
+- Production TU partition, exact compile profiles, libraries, resources, and
+  link order remain open.
+- Whole-product build and runtime closure remain open.
+- The final Truth Kernel snapshot is available but contains only the older
+  `target_attested` fact; no current PbgFile packet claim is accepted.
 
-1. per-function normal-COFF versus LTCG physical ownership for the archive core;
-2. the original TH10 archive/FileSystem source-file and translation-unit
-   partition;
-3. semantic meaning of `PbgArchiveEntry +0x0C` beyond "copied third metadata
-   dword, no reviewed retail consumer";
-4. implementation and physical ownership of the CPbgFile backend;
-5. owners/constants for the PBG decrypt-profile table, transform routine
-   `0x0044B0D0`, and decompression routine `0x00435DC0`;
-6. higher-level fallback opener `0x00435800` and its archive/file owner;
-7. production compile flags, libraries, resources, source graph, and link order;
-8. all canonical exact claims, which remain zero.
+## Next evidence-connected hard packet
 
-The preferred next hard packet is the directly connected **PbgFile backend and
-archive/disk fallback seam**, not an easier unrelated leaf:
+Prefer the **ResFile owner seam** around `0x004362B0-0x00436767`, centered on the
+Ghidra-missed authored-looking body at `0x00436400-0x0043642B` that directly
+calls reviewed `0x00435800` and `0x004358E0`. Existing nearby candidates include:
 
-- raw `0x00435300` — constructor-shaped 0x0C backend initializer, not currently a
-  Ghidra function;
-- `0x00435320-0x0043533D` — deleting destructor;
-- `0x00435340-0x0043536D` — destructor;
-- `0x00435370-0x0043545E` — backend Open;
-- `0x00435580-0x00435608` — backend read/allocation helper;
-- `0x004356F0-0x004357C3` — archive/path lookup helper;
-- `0x00435800-0x004358D5` — archive-versus-real-file fallback opener as needed
-  for owner/ABI closure.
+- `0x004362B0-0x00436324` — 117 bytes
+- `0x00436330-0x00436360` — 49 bytes
+- `0x004363A0-0x004363BD` — 30 bytes
+- `0x004363C0-0x004363F0` — 49 bytes
+- raw `0x00436400-0x0043642B` — missing from the current denominator
+- `0x00436430-0x00436454` — 37 bytes
+- `0x00436570-0x00436638` — 201 bytes
+- `0x00436660-0x0043667D` — 30 bytes
+- `0x00436680-0x004366B0` — 49 bytes
+- `0x004366C0-0x00436767` — 168 bytes
 
-The observable goal is to replace the declaration-only `src/PbgFile.hpp` boundary
-with target-backed maintained backend source, reconcile its vtable/lifetime and
-private ABIs, determine which helper owns disk/archive path resolution, and test
-whether that source can be connected to the archive code without pretending to
-know the original production TU/profile. The first validation step in the next
-conversation remains the mandatory recovery/preflight plus a passed
-`th10-ghidra check {}` before inspecting these addresses.
+The target string `.\src\pack\ResFile.cpp:82 BYTE` and rdata/vtable context near
+`0x0046F308` make this a direct owner continuation, but the string has no xref
+and is not a function mapping. The next packet should first close its vtable,
+raw gaps, ctor/dtor/compiler helpers, object layout, and machine ABIs before
+consulting adjacent source or assigning names/source mappings.
 
-This next packet is structurally central because it closes the unresolved
-polymorphic backend on which every newly mapped archive method depends. It is not
-selected because of function size or likely exactness.
-
-The campaign remains active and incomplete. Fourteen source-present mappings,
-several strong normal-COFF source-shape matches, a future high reviewed ratio, or
-even a later 99.5% moving objective do not authorize GPT-web to declare the exact
-phase complete.
+This next packet is intentionally not the easiest remaining function: it is the
+consumer/owner of the newly reviewed archive-or-disk helpers, includes a
+Ghidra-missed central body and multiple 100-200-byte methods, and can challenge
+both denominator and data ownership. Do not detour back to small structural
+COFF wins merely because they are easy to count.
 
 ## Local checkpoint closeout
 
 The first local checkpoint for this packet was
-`d2bc9a53e81bea419098888dbea07254394e14a2`, subject
-`gpt-web: reconstruct TH10 archive owner seam`. Immediately after that commit the
-tracked/untracked worktree was clean with zero staged, unstaged, untracked, or
-conflicted paths; `main` was one commit ahead of `origin/main` and zero behind.
+`944eb6955935b7e597626f1d85531e329a3afe90`, subject
+`gpt-web: reconstruct TH10 PbgFile backend seam`. Immediately after that commit
+the tracked/untracked worktree was clean with zero staged, unstaged, untracked,
+or conflicted paths. `main` was ahead 2 / behind 0 relative to `origin/main`.
 No push was performed.
 
-The closeout-only handoff update is amended into that same logical checkpoint,
-so the final live Git commit containing this file is the authoritative ending
-HEAD. After amendment, the ignored campaign manifest is rebound to that final
-HEAD and the same clean/ahead relation is re-audited.
+The ignored campaign manifest was then marked `checkpointed`, bound to that
+checkpoint with `pushed=false`, and `.analysis` measured **87,227 bytes** with
+only the compact 2,609-byte compiler-shape report and the campaign manifest
+retained in the current campaign directory. The handoff-only closeout update is
+amended into the same logical checkpoint. The final live Git HEAD after that
+amend is authoritative and the ignored manifest is rebound to it; final status,
+Ghidra attestation, Truth Kernel availability, and `.analysis` size are re-read
+without changing tracked reconstruction content.
+
+### Final Truth Kernel refresh
+
+After the checkpoint and final Ghidra attestation,
+`factory_get_accepted_snapshot(th10)` succeeded. The accepted snapshot
+`source_commit` remained `9f7886f72adcd1880c05e34c62408cf9b1dad966`. The snapshot contained exactly
+one accepted fact and exactly one accepted claim, `target_attested`, for
+`target:th10-main`. Therefore the earlier operator-path lock was transient, but
+no PbgFile boundary, source-presence, ownership, compile, or exactness claim from
+this packet has Truth Kernel acceptance.

@@ -2,9 +2,9 @@
 
 #include <windows.h>
 
-// Minimal target-facing declaration needed by PbgArchive.  The original TH10
-// translation-unit partition and the remaining PbgFile implementation are not
-// established yet.
+// Maintained target-facing declaration used by PbgArchive and PbgFile. The
+// original TH10 translation-unit partition and higher pack/File utilities are
+// not established yet.
 class IPbgFile
 {
   public:
@@ -31,6 +31,9 @@ class CPbgFile : public IPbgFile
     virtual DWORD Tell();
     virtual DWORD GetSize();
     virtual bool Seek(DWORD offset, DWORD seekFrom);
+    virtual HGLOBAL ReadWholeFile(DWORD maxSize);
+
+    static void GetFullFilePath(char *buffer, const char *filename);
 
   protected:
     HANDLE m_hFile;

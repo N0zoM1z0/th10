@@ -13,3 +13,14 @@ PbgArchiveEntry::~PbgArchiveEntry,0x00435250,function
 PbgArchive::SeekPastInt,0x00435270,function
 PbgArchive::SeekPastString,0x00435280,function
 PbgArchiveEntry::PbgArchiveEntry,0x004352C0,function
+CPbgFile::CPbgFile,0x00435300,function
+CPbgFile::~CPbgFile,0x00435340,function
+CPbgFile::Open,0x00435370,function
+CPbgFile::Close,0x00435460,function
+CPbgFile::Read,0x00435490,function
+CPbgFile::Write,0x004354D0,function
+CPbgFile::Tell,0x00435510,function
+CPbgFile::GetSize,0x00435530,function
+CPbgFile::Seek,0x00435550,function
+CPbgFile::ReadWholeFile,0x00435580,function
+CPbgFile::GetFullFilePath,0x00435610,function

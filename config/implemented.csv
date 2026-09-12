@@ -12,3 +12,14 @@ PbgArchiveEntry::~PbgArchiveEntry
 PbgArchive::SeekPastInt
 PbgArchive::SeekPastString
 PbgArchiveEntry::PbgArchiveEntry
+CPbgFile::CPbgFile
+CPbgFile::~CPbgFile
+CPbgFile::Open
+CPbgFile::Close
+CPbgFile::Read
+CPbgFile::Write
+CPbgFile::Tell
+CPbgFile::GetSize
+CPbgFile::Seek
+CPbgFile::ReadWholeFile
+CPbgFile::GetFullFilePath
