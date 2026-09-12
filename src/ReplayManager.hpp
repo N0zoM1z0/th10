@@ -12,7 +12,8 @@ struct ReplayFileHeader
     unsigned short version;
     unsigned char unknown006[0x06];
     unsigned int userDataOffset;
-    unsigned char unknown010[0x0c];
+    unsigned int gameVersion;
+    unsigned char unknown014[0x08];
     unsigned int compressedPayloadSize;
     unsigned int decompressedPayloadSize;
 };
@@ -20,6 +21,8 @@ typedef char ReplayFileHeaderSizeIs24[
     (sizeof(ReplayFileHeader) == 0x24) ? 1 : -1];
 typedef char ReplayFileHeaderUserDataOffsetAt0C[
     (offsetof(ReplayFileHeader, userDataOffset) == 0x0c) ? 1 : -1];
+typedef char ReplayFileHeaderGameVersionAt10[
+    (offsetof(ReplayFileHeader, gameVersion) == 0x10) ? 1 : -1];
 typedef char ReplayFileHeaderCompressedSizeAt1C[
     (offsetof(ReplayFileHeader, compressedPayloadSize) == 0x1c) ? 1 : -1];
 typedef char ReplayFileHeaderDecompressedSizeAt20[
@@ -31,17 +34,19 @@ struct ReplayDataHeader
     unsigned char unknown009[3];
     int timestamp;
     int score;
-    unsigned char unknown014[0x34];
+    unsigned char runtimeSnapshot[0x34];
     float slowRate;
     int stageCount;
     int character;
     int shotType;
     int difficulty;
     int completionState;
-    unsigned char unknown060[4];
+    unsigned int unknown060;
 };
 typedef char ReplayDataHeaderSizeIs64[
     (sizeof(ReplayDataHeader) == 0x64) ? 1 : -1];
+typedef char ReplayDataHeaderRuntimeSnapshotAt14[
+    (offsetof(ReplayDataHeader, runtimeSnapshot) == 0x14) ? 1 : -1];
 typedef char ReplayDataHeaderSlowRateAt48[
     (offsetof(ReplayDataHeader, slowRate) == 0x48) ? 1 : -1];
 typedef char ReplayDataHeaderStageCountAt4C[
@@ -53,7 +58,21 @@ struct ReplayStageDataHeader
     unsigned short unknown002;
     int recordCount;
     int payloadSize;
-    unsigned char unknown00c[0x1b8];
+    unsigned int unknown00C;
+    unsigned short unknown010;
+    unsigned short unknown012;
+    unsigned int unknown014;
+    unsigned int unknown018;
+    unsigned int unknown01C;
+    unsigned int unknown020;
+    unsigned int unknown024;
+    unsigned int unknown028;
+    unsigned char unknown02C[0x188];
+    unsigned int unknown1B4;
+    unsigned int unknown1B8;
+    unsigned char unknown1BC[4];
+    unsigned int unknownFlag1C0 : 1;
+    unsigned int unknownFlags1C0 : 31;
 };
 typedef char ReplayStageDataHeaderSizeIs1C4[
     (sizeof(ReplayStageDataHeader) == 0x1c4) ? 1 : -1];
@@ -61,6 +80,12 @@ typedef char ReplayStageDataHeaderRecordCountAt04[
     (offsetof(ReplayStageDataHeader, recordCount) == 0x04) ? 1 : -1];
 typedef char ReplayStageDataHeaderPayloadSizeAt08[
     (offsetof(ReplayStageDataHeader, payloadSize) == 0x08) ? 1 : -1];
+typedef char ReplayStageDataHeaderUnknown00CAt0C[
+    (offsetof(ReplayStageDataHeader, unknown00C) == 0x0c) ? 1 : -1];
+typedef char ReplayStageDataHeaderUnknown1B4At1B4[
+    (offsetof(ReplayStageDataHeader, unknown1B4) == 0x1b4) ? 1 : -1];
+typedef char ReplayStageDataHeaderUnknown1B8At1B8[
+    (offsetof(ReplayStageDataHeader, unknown1B8) == 0x1b8) ? 1 : -1];
 
 struct ReplayRecData
 {
@@ -128,6 +153,8 @@ enum ReplayManagerMode
     REPLAY_MANAGER_LOAD_ONLY = 2,
 };
 
+struct ReplayChainElement;
+
 class ReplayManager
 {
   public:
@@ -146,8 +173,8 @@ class ReplayManager
     // Names below are maintained descriptions of target-observed roles. The
     // original member identifiers and physical data owner remain unproven.
     unsigned char unknown000[0x08];
-    void *updateChain;
-    void *drawChain;
+    ReplayChainElement *updateChain;
+    ReplayChainElement *drawChain;
     int mode;
     ReplayFileHeader *fileHeader;
     ReplayDataHeader *replayData;
@@ -159,7 +186,7 @@ class ReplayManager
     unsigned char replayFps;
     unsigned char unknown1C5[3];
     int frameCounter;
-    void *playbackChain;
+    ReplayChainElement *playbackChain;
     int activeStage;
     char replayPath[0x100];
 };

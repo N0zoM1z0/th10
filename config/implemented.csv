@@ -51,3 +51,4 @@ ReplayManager::Create
 ReplayManager::Load
 ReplayManager::Destroy
 ReplayManager::ProcessFrame
+ReplayManager::Initialize

@@ -69,7 +69,53 @@ struct ReplayFpsSource
     float currentFps;
 };
 
-extern void *g_ReplayRuntime;
+struct ReplayRuntimeState
+{
+    unsigned char unknown000[0x24];
+    unsigned char replaySnapshot[0x34];
+    unsigned int flags;
+};
+typedef char ReplayRuntimeStateSnapshotAt24[
+    (offsetof(ReplayRuntimeState, replaySnapshot) == 0x24) ? 1 : -1];
+typedef char ReplayRuntimeStateFlagsAt58[
+    (offsetof(ReplayRuntimeState, flags) == 0x58) ? 1 : -1];
+
+typedef int (*ReplayChainCallback)(ReplayManager *manager);
+
+struct ReplayChainElement
+{
+    int priority;
+    unsigned int isHeapAllocated : 1;
+    unsigned int unknownFlag1 : 1;
+    unsigned int unknownFlags : 30;
+    ReplayChainCallback callback;
+    ReplayChainCallback addedCallback;
+    ReplayChainCallback deletedCallback;
+    ReplayListNode link;
+    ReplayManager *argument;
+
+    ReplayChainElement()
+    {
+        priority = 0;
+        isHeapAllocated = 0;
+        callback = NULL;
+        addedCallback = NULL;
+        deletedCallback = NULL;
+        link.value = this;
+        link.next = NULL;
+        link.previous = NULL;
+    }
+};
+typedef char ReplayChainElementSizeIs24[
+    (sizeof(ReplayChainElement) == 0x24) ? 1 : -1];
+typedef char ReplayChainElementCallbackAt08[
+    (offsetof(ReplayChainElement, callback) == 0x08) ? 1 : -1];
+typedef char ReplayChainElementLinkAt14[
+    (offsetof(ReplayChainElement, link) == 0x14) ? 1 : -1];
+typedef char ReplayChainElementArgumentAt20[
+    (offsetof(ReplayChainElement, argument) == 0x20) ? 1 : -1];
+
+extern ReplayRuntimeState *g_ReplayRuntime;
 extern ReplayInputSource g_ReplayInputSource;
 extern ReplayInputPair g_ReplayInput;
 extern unsigned short g_ReplayInputHoldCounter;
@@ -77,6 +123,23 @@ extern unsigned short g_ReplayAuxiliaryInput;
 extern unsigned short g_ReplayInputFlags;
 extern unsigned int g_ReplayInputBehaviorFlags;
 extern ReplayFpsSource *g_ReplayFpsSource;
+extern int g_ReplayCurrentStage;
+extern int g_ReplayCharacter;
+extern int g_ReplayShotType;
+extern int g_ReplayDifficulty;
+extern unsigned short g_ReplayStageSeed;
+extern int g_ReplayStageSeedCounter;
+extern unsigned int g_ReplayStageFlags;
+extern unsigned int g_ReplayStageValue00C;
+extern unsigned short g_ReplayStageValue010;
+extern unsigned int g_ReplayStageValue014;
+extern unsigned int g_ReplayStageValue018;
+extern unsigned int g_ReplayStageValue01C;
+extern unsigned int g_ReplayStageValue020;
+extern unsigned int g_ReplayStageValue1B4;
+extern unsigned int g_ReplayStageValue1B8;
+extern unsigned char g_ReplayStageTimer[];
+extern void *g_ReplayChainManager;
 
 // These names describe independently reviewed TH10 helpers. Their source/TU
 // ownership is not promoted by this lifecycle packet.
@@ -85,7 +148,14 @@ bool ReplayAppendRecord(ReplayFrameData *frameData, unsigned short input,
                         unsigned short auxiliaryInput, unsigned short inputFlags);
 ReplayListNode *ReplayAllocateFrameData(ReplayManager *manager, int stage);
 void ReplayClearStageFrameData(ReplayManager *manager, int stage);
-void ReplayCutChain(void *element);
+void ReplayCutChain(ReplayChainElement *element);
+void ReplayInitializeStageTimer(void *timer, int value);
+void ReplaySetStageTimerValue(void *timer, int value);
+int ReplayAddToCalcChain(void *chainManager, ReplayChainElement *element, int priority);
+int ReplayAddToDrawChain(void *chainManager, ReplayChainElement *element, int priority);
+int ReplayProcessFrameCallback(ReplayManager *manager);
+int ReplayPlaybackFrameControlCallback(ReplayManager *manager);
+int ReplayDrawFpsCallback(ReplayManager *manager);
 
 ReplayStageState::ReplayStageState()
 {
@@ -135,6 +205,143 @@ ReplayManager::~ReplayManager()
 
     if (this == g_ReplayManager)
         g_ReplayManager = NULL;
+}
+
+int ReplayManager::Initialize(int replayMode, const char *path)
+{
+    mode = replayMode;
+
+    if (mode == REPLAY_MANAGER_RECORD)
+    {
+        g_ReplayManager = this;
+
+        ReplayClearStageFrameData(this, g_ReplayCurrentStage);
+        currentFrameLink = ReplayAllocateFrameData(this, g_ReplayCurrentStage);
+
+        fileHeader = new ReplayFileHeader;
+        memset(fileHeader, 0, sizeof(*fileHeader));
+        fileHeader->magic = 0x72303174;
+        fileHeader->version = 5;
+        fileHeader->gameVersion = 0x100;
+
+        replayData = new ReplayDataHeader;
+        memset(replayData, 0, sizeof(*replayData));
+
+        ReplayStageDataHeader *stageHeader = new ReplayStageDataHeader;
+        memset(stageHeader, 0, sizeof(*stageHeader));
+        stageHeaders[g_ReplayCurrentStage] = stageHeader;
+
+        replayData->character = g_ReplayCharacter;
+        replayData->shotType = g_ReplayShotType;
+        replayData->difficulty = g_ReplayDifficulty;
+        if (g_ReplayRuntime != NULL)
+        {
+            memcpy(replayData->runtimeSnapshot, g_ReplayRuntime->replaySnapshot,
+                   sizeof(replayData->runtimeSnapshot));
+        }
+
+        stageHeader->stageIndex = (short)g_ReplayCurrentStage;
+        stageHeader->unknown002 = g_ReplayStageSeed;
+        g_ReplayStageSeedCounter = 0;
+        stageHeader->unknownFlag1C0 = g_ReplayStageFlags;
+        if (g_ReplayStageFlags != 0)
+        {
+            stageHeader->unknown024 = 0;
+            stageHeader->unknown028 = 0;
+        }
+        stageHeader->unknown00C = g_ReplayStageValue00C;
+        stageHeader->unknown010 = g_ReplayStageValue010;
+        stageHeader->unknown014 = g_ReplayStageValue014;
+        stageHeader->unknown018 = g_ReplayStageValue018;
+        stageHeader->unknown01C = g_ReplayStageValue01C;
+        stageHeader->unknown020 = g_ReplayStageValue020;
+        stageHeader->unknown1B4 = g_ReplayStageValue1B4;
+        replayData->unknown060 = g_ReplayStageValue1B4;
+
+        updateChain = new ReplayChainElement;
+        updateChain->callback = ReplayProcessFrameCallback;
+        updateChain->argument = this;
+        updateChain->unknownFlag1 = 0;
+        updateChain->isHeapAllocated = 1;
+        ReplayAddToCalcChain(g_ReplayChainManager, updateChain, 0x0b);
+
+        playbackChain = new ReplayChainElement;
+        playbackChain->callback = ReplayPlaybackFrameControlCallback;
+        playbackChain->argument = this;
+        playbackChain->unknownFlag1 = 0;
+        playbackChain->isHeapAllocated = 1;
+        ReplayAddToCalcChain(g_ReplayChainManager, playbackChain, 0x1b);
+
+        drawChain = new ReplayChainElement;
+        drawChain->callback = ReplayDrawFpsCallback;
+        drawChain->argument = this;
+        drawChain->unknownFlag1 = 0;
+        drawChain->isHeapAllocated = 1;
+        ReplayAddToDrawChain(g_ReplayChainManager, drawChain, 5);
+
+        activeStage = g_ReplayCurrentStage;
+        return 0;
+    }
+
+    if (mode == REPLAY_MANAGER_PLAYBACK)
+    {
+        g_ReplayManager = this;
+        if (LoadReplay(path) != 0)
+            return -1;
+
+        memcpy(g_ReplayRuntime->replaySnapshot, replayData->runtimeSnapshot,
+               sizeof(replayData->runtimeSnapshot));
+
+        ReplayStageState &stageState = stageStates[g_ReplayCurrentStage];
+        ReplayStageDataHeader *stageHeader = stageState.header;
+        stageState.recordCursor = stageState.recordStart;
+        stageState.recordIndex = 0;
+        stageState.fpsCursor = stageState.fpsStart;
+
+        g_ReplayCharacter = replayData->character;
+        g_ReplayShotType = replayData->shotType;
+        g_ReplayDifficulty = replayData->difficulty;
+        g_ReplayStageSeed = stageHeader->unknown002;
+        g_ReplayStageSeedCounter = 0;
+        g_ReplayStageValue00C = stageHeader->unknown00C;
+        g_ReplayStageValue010 = stageHeader->unknown010;
+        ReplayInitializeStageTimer(g_ReplayStageTimer,
+                                   stageHeader->unknown014 * 10);
+        ReplaySetStageTimerValue(g_ReplayStageTimer, stageHeader->unknown018);
+        g_ReplayStageValue01C = stageHeader->unknown01C;
+        g_ReplayStageValue020 = stageHeader->unknown020;
+        g_ReplayStageValue1B4 = stageHeader->unknown1B4;
+        g_ReplayStageValue1B8 = stageHeader->unknown1B8;
+
+        updateChain = new ReplayChainElement;
+        updateChain->callback = ReplayProcessFrameCallback;
+        updateChain->argument = this;
+        updateChain->unknownFlag1 = 0;
+        updateChain->isHeapAllocated = 1;
+        ReplayAddToCalcChain(g_ReplayChainManager, updateChain, 0x0b);
+
+        playbackChain = new ReplayChainElement;
+        playbackChain->callback = ReplayPlaybackFrameControlCallback;
+        playbackChain->argument = this;
+        playbackChain->unknownFlag1 = 0;
+        playbackChain->isHeapAllocated = 1;
+        ReplayAddToCalcChain(g_ReplayChainManager, playbackChain, 0x1b);
+
+        drawChain = new ReplayChainElement;
+        drawChain->callback = ReplayDrawFpsCallback;
+        drawChain->argument = this;
+        drawChain->unknownFlag1 = 0;
+        drawChain->isHeapAllocated = 1;
+        ReplayAddToDrawChain(g_ReplayChainManager, drawChain, 5);
+
+        activeStage = -1;
+        return 0;
+    }
+
+    if (mode == REPLAY_MANAGER_LOAD_ONLY)
+        return LoadReplay(path) == 0 ? 0 : -1;
+
+    return 0;
 }
 
 ReplayManager *ReplayManager::Create(int replayMode, const char *path)
