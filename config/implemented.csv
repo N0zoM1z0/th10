@@ -55,3 +55,5 @@ ReplayManager::Initialize
 ReplayManager::LoadReplay
 ReplayManager::BeginStage
 RebuildPlayerOptions
+PlayerOptionTrailCallback
+PlayerOptionSpecialCallback

@@ -1,219 +1,190 @@
 # TH10 exact reconstruction handoff
 
-## Recovery and authority
+## Recovery, authority, and checkpoint scope
 
-Phase remains exact source reconstruction. Source presence, compilation,
-canonical exactness, whole-build closure, runtime validation, and Factory
-acceptance remain separate. Ghidra has `exactness_credit=none`.
+Phase remains exact source reconstruction with early faithful Windows i386 build
+feedback. Source presence, compiler feasibility, canonical exactness,
+whole-build closure, runtime validation, and Factory Truth Kernel acceptance are
+separate states. Native Ghidra observations have `exactness_credit=none`.
 
-Live entry was clean `main` at
-`55b876dc15a74198ab43135484cdac19989bc3f0`, upstream
-`origin/main=c10c371ed3b09451ef1076f6ec1e99d87f174d22`, ahead5/behind0,
-0 staged/unstaged/untracked/conflicts. `.analysis` was 142,662 bytes. The
-recovered HEAD already contained committed replay-loader and replay-stage
-transition packets; no dirty recovery work existed. Private target, `.tools/`,
-`ghidra-project/`, prior `.analysis`, and `build/` were preserved.
+This session started clean on branch `main` at
+`ae83c3ab72400534834746aeb7613a603a347310`, tracking `origin/main` at the same
+commit: 0 staged, 0 unstaged, 0 untracked, and 0 conflicts. No interrupted dirty
+work required recovery. Private `resources/th10.exe`, legacy `.analysis/`,
+`.tools/`, `build/`, `ghidra-project/`, caches, and other ignored state were
+preserved. The private target was not modified, replaced, relocated, or staged;
+no `/mnt` search and no `TH10_TARGET_PATH` override were used.
 
-All required repository/Factory guidance, contracts, semantic guidance, and
-repo-local skill were reread in full. Target/toolchain execute/tracking/status/
-public-CI preflights passed. Fresh Ghidra discovery passed; the first mandatory
-`check {}` transport-failed, live status was reread clean, and retry passed exact
-`target:th10-main` + `factory-native-command`. Truth refresh was unavailable
-because another Factory operation owned `<operator-path>`; no packet acceptance
-is inferred.
+All required repository and Factory guidance was reread through the registered
+repository runner. `verify-target.py`, executable toolchain preflight,
+`validate-tracking.py --require-target`, reconstruction status, and public CI
+passed before editing. Native Ghidra operation discovery followed by `check {}`
+passed for exact `target:th10-main` with
+`attestation.provider_transport=factory-native-command`. The target SHA-256 is
+`2f14760b...9040` (full identity remains in the target lock/preflight output).
 
-The ignored private `resources/th10.exe` was not modified, relocated, replaced,
-or staged. No `/mnt` search or `TH10_TARGET_PATH` override was used.
+The selected hard packet is the Player `+0x90` option-callback cohort connected
+to the previously reviewed `RebuildPlayerOptions` owner. It covers 482 physical
+candidate code bytes rather than harvesting unrelated small leaves:
 
-## Hard packet — player option rebuild
+- `0x00427950-0x0042795B`: 12-byte callback entry/wrapper
+- `0x00427960-0x00427AC6`: 359-byte adjacent body
+- `0x00427AD0-0x00427ADB`: 12-byte callback entry/wrapper
+- `0x00427AE0-0x00427B42`: 99-byte adjacent body.
 
-Primary target extent:
+## Boundary, callback slots, and machine ABI
 
-`0x00426F70-0x0042792D` — 2,494 bytes, previously `unknown/review`.
+`0x00427950` preserves ESI, moves live-in ECX to ESI, calls `0x00427960`, forces
+EAX to zero, restores ESI, and returns. `0x0042795C-0x0042795F` is `CC` padding.
+The physical body `0x00427960-0x00427AC6` is 359 bytes. Ghidra reaches 353 bytes
+because `0x00427A0A-0x00427A0F` is a retained unreachable six-byte LEA alignment
+sled. Padding follows through `0x00427ACF`.
 
-Maintained descriptive mapping: `RebuildPlayerOptions` in `src/Player.cpp`.
-TH10 target strings retain `.\\src\\game\\player.cpp:193 PlayerInf` plus
-PlayerInf initialize/shutdown labels, supporting the Player source family but
-not proving this function's original identifier or TU owner.
+`0x00427AD0` preserves EDI, moves live-in ECX to EDI, calls `0x00427AE0`, forces
+EAX to zero, restores EDI, and returns. `0x00427ADC-0x00427ADF` is `CC` padding.
+The adjacent body is exactly `0x00427AE0-0x00427B42` = 99 bytes, followed by
+`CC` padding through `0x00427B4F`; `0x00427B50` is a separate candidate.
 
-### Boundary and machine ABI
+The Player update path independently establishes the callback machine boundary.
+At `0x004255CC` it forms ECX as the option record base; `0x00425600` loads the
+function pointer at option `+0x90`; `0x00425607` calls it. A different loop at
+`0x004263B3-0x004263D5` loads and calls option `+0x94`, again with ECX equal to
+the 0x98-byte record base. Therefore `+0x90` and `+0x94` are distinct callback-
+like slots. The rebuild writes `0x00427950`/`0x00427AD0` into `+0x90`; `+0x94`
+remains unidentified. The maintained `__fastcall` declaration is a spelling of
+the observed ECX-bound machine ABI, not proof of the original source declaration.
 
-The physical extent is correct. Ghidra reports 2,471 reachable bytes because
-three retained unreachable alignment sleds account exactly for 23 bytes:
+## Recovered behavior and maintained source
 
-- `0x0042701A-0x0042701F`: 6 bytes
-- `0x00427197-0x0042719F`: 9 bytes
-- `0x004278D8-0x004278DF`: 8 bytes.
+`PlayerOptionRuntime` now exposes observed `previousMode` at option `+0x84`,
+keeps `optionIndex` at `+0x88`, `resetFlag` at `+0x8C`, types the `+0x90`
+callback slot, leaves `+0x94` unknown, and retains the 0x98-byte size assertions.
 
-The final instruction is `ret 4` at `0x0042792B-0x0042792D`.
-Nine direct calls at `0x004182E0`, `0x004184E0`, `0x0041B420`, `0x0041B67A`,
-`0x00424D3D`, `0x004259DD`, `0x00425B98`, `0x00425C4C`, and `0x0042A5EF`
-all push the player/runtime owner. Target machine boundary is therefore one
-stack `Player *` input with callee pop 4. This is not a source calling-convention
-claim.
+Maintained `PlayerOptionTrailCallback` models the `0x00427950` entry behavior.
+Its adjacent body uses option `+0x88` to address eight history samples per option.
+In mode zero it derives replay pair `+0x44` from the endpoint and current player
+position. In nonzero mode it reconstructs seven intermediate history samples;
+the target constant at `0x00470B90` is directly verified as `0.125f`. It then
+refreshes pair `+0x34` and stores the current mode at option `+0x84`.
 
-### Reviewed layout and behavior
+Maintained `PlayerOptionSpecialCallback` models the `0x00427AD0` entry behavior.
+On option-mode transitions its adjacent body applies managed-VM delete state 6
+or 3 to primary VM id `+0x68`, copies replay pair `+0x3C` to `+0x4C` when
+returning to mode zero or `+0x4C` to `+0x34` when entering nonzero mode, and
+updates `+0x84`.
 
-Four 0x98-byte option records begin at player `+0x32A0`. Replay's old
-`+0x32D4` view was only the first replay-copied field inside option 0, not the
-option base. Observed option fields are state `+0x00`, four 8-byte position
-pairs `+0x34/+0x3C/+0x44/+0x4C`, primary/secondary VM ids `+0x68/+0x6C`,
-option index `+0x88`, reset flag `+0x8C`, and callback `+0x90`.
+Source presence is recorded only at callback entries `0x00427950` and
+`0x00427AD0`. The two adjacent physical bodies remain unmapped as standalone
+source functions. All four physical candidates remain `origin=unknown`,
+`disposition=review`, `confidence=unknown`. In particular, source-written
+wrapper versus compiler/LTCG adapter and compiler-owned outlined body remain
+unresolved; no authorship promotion was made.
 
-Observed player fields used by this seam are resource pointer `+0x10`, position
-`+0x3CC/+0x3D0`, option-data pointer `+0x45C`, options `+0x32A0`, option count
-`+0x3500`, 33 8-byte history pairs at `+0x436C-0x4473`, and option mode
-`+0x4474`.
+## Compiler and Oracle feedback
 
-The target rebuilds all secondary option VMs, computes signed power/20 capped at
-four, rebuilds active option position/VM/callback state by character/shot data,
-retires inactive primary VMs, writes option count, and sets all four reset flags.
-Target `0x00463B2C` is an x87 float-to-int compiler/runtime helper, so maintained
-source uses natural casts rather than exposing it as a game API.
+Pinned VC7.1 SP1 build 6030 compiles final `src/Player.cpp` with fixed normal
+`/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc` and the same profile plus `/GL`.
+`src/ReplayManager.cpp`, which includes the changed Player layout, also compiles
+under both profiles.
 
-New `src/Player.hpp` holds only the reviewed partial layout with static offset/
-size assertions. New `src/Player.cpp` holds natural maintained behavior and
-neutral descriptive VM-manager interfaces. `src/ReplayManager.cpp` now reuses
-this Player layout during playback restore instead of maintaining a conflicting
-Replay-only slot type. Original Player type completeness, function identifier,
-TU, helper names/conventions, and physical owners remain unknown.
+Target-shaped direct option-index expressions produce a true 358-byte normal
+`/Gy` `PlayerOptionTrailCallback` COMDAT versus the 359-byte adjacent target
+body. A relocation-aware 358-byte diagnostic against target `0x00427960`
+returns `mismatch`: 89/338 comparable bytes match, with 20 relocation-owned
+bytes ignored and `acceptance_authority=none`.
 
-## Denominator expansion
+The normal `PlayerOptionSpecialCallback` COMDAT is 111 bytes. That is only a
+shape clue: the target wrapper and adjacent body contain 12+99 code bytes but
+are separated by four `CC` bytes. A 99-byte diagnostic against target
+`0x00427AE0` returns `mismatch`: 7/87 comparable bytes match, with 12
+relocation-owned bytes ignored and `acceptance_authority=none`.
 
-New raw candidate:
+These diagnostics reject the fixed standalone normal objects as exact physical
+matches. Successful `/GL` compilation preserves an optimizer/LTCG ownership
+hypothesis, but the standalone COFF Oracle cannot assign linked-image LTCG
+extent or exactness. No canonical match unit or exact ledger row was added.
 
-`0x00427AD0-0x00427ADB` — 12 bytes.
+## Adjacent-game hypothesis provenance
 
-The reviewed rebuild stores this address as an option callback. The wrapper
-preserves EDI, moves live-in ECX to EDI, calls separate candidate `0x00427AE0`,
-returns zero, and uses plain RET. It is CC-delimited and has only the observed
-data reference at `0x00427372`. Source-written adapter versus compiler/optimizer
-wrapper is unresolved, so it remains `unknown/review` with no source or exact
-credit.
+Only committed adjacent content was used as hypothesis material after TH10-local
+evidence existed:
 
-## Compiler feedback
+- TH08 HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, clean.
+- TH09 HEAD `3e1a9c86318652f13e6fed86d45b6cbeb8479c3a`, clean.
+- TH095 HEAD `bd97b9e08be1e4d4d485857284757b483512915a`. Four unrelated untracked
+  files were present and were not read or used.
 
-Pinned VC7.1 SP1 build 6030 compiled final `src/Player.cpp` and the modified
-`src/ReplayManager.cpp` with fixed normal:
+One read-only TH095 query requested a nonexistent committed `src/Player.cpp` and
+returned nonzero. TH10 status was reread immediately and remained unchanged;
+no files were left by that failed query. No adjacent address, extent, layout,
+owner, exactness, or completion claim was transferred into TH10.
 
-`/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc`
+## Ledger and verification planes
 
-and the same source/profile plus `/GL`.
+Starting ledger state at `ae83c3ab72400534834746aeb7613a603a347310`:
+1,237 candidates, 1,143 pending, 87 authored, 7 exclusions, 57 source-present,
+and 0 canonical exact.
 
-The true normal `/Gy` `?RebuildPlayerOptions@@YAXPAUPlayer@@@Z` COMDAT is
-0x797 = 1,943 bytes; target physical extent is 2,494 bytes. Fixed standalone
-normal is therefore not the physical target match.
+Current packet state before checkpoint:
+1,237 candidates, 1,143 pending, 87 authored, 7 exclusions, 59 source-present,
+and 0 canonical exact. The only metric delta is +2 source-present callback
+entries. The authored denominator does not change because all four packet
+candidates remain `unknown/review`.
 
-A separate caller-supplied 2,494-byte comparator window returns mismatch with
-186/2,246 comparable bytes and `acceptance_authority=none`. Its reported
-2,494-byte object size is the requested comparison window, not the true
-1,943-byte COMDAT. No canonical match unit or exact row was added. `/GL`
-compilation only preserves an LTCG/interprocedural hypothesis.
+Verification-plane state is intentionally separate:
 
-## Adjacent provenance
+- source presence: yes for maintained callback entries `0x00427950` and
+  `0x00427AD0`; adjacent body ownership remains unknown
+- canonical exactness: 0 functions / 0 bytes for this packet and repository
+- whole faithful Windows i386 build: open; build graph still has 0 canonical
+  translation units/libraries/resources and incomplete production flags/order
+- runtime validation: not performed; no whole product exists
+- Factory Truth Kernel acceptance: accepted snapshot sequence 0,
+  `accepted_count=0`, no pending submission, and no pending replay.
 
-Adjacent games were consulted only after TH10-local recovery:
+`build-match-unit.py --check` validates the empty canonical match graph.
+`build.py --check` validates the intentionally open build configuration. Honest
+`build.py` returns expected RC=2/open because compile flags, source TUs,
+libraries, resources, and link order remain unknown; it does not create a
+product.
 
-- TH08 HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, clean. Committed Player
-  source corroborates a four-option subsystem but has a different layout.
-- TH09 HEAD `ae13c343ff58cbce411cd507f9837b468635d58e`, clean. No relevant committed
-  Player implementation/history was found.
-- TH095 HEAD `a7e340d3ff00e81b56584bc03288953f754b1faf`, ahead6, with unrelated modified
-  `src/ResultScreen.cpp` and four unrelated untracked files. Only committed
-  content was queried; dirty content was not used.
+## Scratch and checkpoint discipline
 
-No adjacent address, extent, layout, ownership, exactness, or completion claim
-was transferred.
+Session entry `.analysis/` allocated size was 364K; the preceding checkpoint's
+regular-file total was 147,806 bytes. Current campaign scratch is
+`.analysis/gpt-web/20260914-player-option-callbacks/`. It contains only this
+session's small manifest, normal/LTCG compile probes, relocation-aware mismatch
+diagnostics, and whole-build stdout/stderr. No legacy/shared/provider/toolchain/
+target state was removed. Final inventory and disposition are recorded after the
+checkpoint in the ignored campaign manifest and operator-facing report.
 
-## Ledger state
+Final pre-commit target, toolchain, tracking, status, and `git diff --check`
+passed. The first public-CI rerun correctly failed because generated
+`docs/PROGRESS.md` still reported 57 source-present mappings; repository
+`progress.py` regenerated it to 59 and the complete public CI then passed.
+A fresh native Ghidra `check {}` also passed the exact target and
+`factory-native-command` transport attestation. The complete staged diff was
+audited with no unstaged tracked remainder. The checkpoint is local only and
+must never be pushed by this workflow.
 
-Entry metrics from the committed start HEAD:
+## Remaining unknowns and next hard packet
 
-- candidates 1,236
-- pending 1,143
-- authored 86 / 19,516 bytes
-- exclusions 7
-- source-present 56
-- canonical exact 0.
+Still unknown are the original callback declarations/calling convention, whether
+the two 12-byte entries are source-written or compiler/LTCG adapters, physical
+ownership/origin of the 359-byte and 99-byte bodies, production per-function
+optimizer/LTCG profile and TU, the producers/targets of option `+0x94`, and the
+whole product's TU/library/resource/link-order closure.
 
-Current packet metrics:
+The next evidence-connected hard packet should start at the central Player
+candidate `0x00426360-0x004264F8` (409 bytes, currently `unknown/review`) and
+trace its four-record `+0x94` callback dispatch back to the slot producers and
+actual callback targets. This directly continues the option ABI/layout seam and
+attacks a central dispatcher/owner rather than selecting the easiest remaining
+function. Do not absorb callback targets or neighboring candidates until target
+xrefs/data ownership establish the boundary.
 
-- candidates 1,237
-- pending 1,143
-- authored 87 / 22,010 bytes
-- exclusions 7
-- source-present 57
-- canonical exact 0.
-
-Delta: +1 candidate, pending net 0, +1 authored / +2,494 bytes, +1 source
-mapping, +0 exclusions, +0 exact. `config/matches.csv`,
-`config/match-units.toml`, and `config/build.toml` are unchanged.
-
-## Scratch / acceptance
-
-`.analysis` entry was 142,662 bytes. Current campaign is
-`.analysis/gpt-web/20260913-player-rebuild/`. Peak was 244,336 bytes. After
-reducing evidence and deleting only this session's reproducible normal/LTCG
-objects and detailed comparator JSON/stderr, `.analysis` measured 147,806 bytes.
-Retained campaign files are `compiler-shape-report.txt` (4,199 bytes) and
-`manifest.json` (945 bytes). No current campaign artifact exceeded 64 MiB; no
-legacy/shared/provider/toolchain/target state was removed.
-
-Truth snapshot refresh remained unavailable because another Factory operation
-owned `<operator-path>`. No Player boundary/source/compile/ownership/exactness
-claim is accepted or rejected by this packet on that basis.
-
-## Verification and checkpoint plan
-
-Before checkpointing, rerun from final tracked source:
-
-- normal and `/GL` compile for `src/Player.cpp` and `src/ReplayManager.cpp`
-- true normal `RebuildPlayerOptions` COMDAT extent and target comparator
-- `verify-target.py`
-- `verify-toolchain.py --check`
-- tracking and progress checks
-- `build-match-unit.py --check`
-- `build.py --check`
-- honest `build.py` (expected RC=2/open while inputs remain unknown)
-- reconstruction status and public CI
-- `git diff --check`
-- fresh target-bound Ghidra `check {}`.
-
-Then audit the complete working diff, stage only the intended packet paths,
-audit the complete staged diff, create one local English `gpt-web:` checkpoint,
-never push, and repeat applicable cold validation post-commit.
-
-Current verification-plane state before checkpoint:
-
-- source presence: reviewed maintained source exists for `0x00426F70`
-- canonical exactness: 0 functions / 0 bytes
-- whole Windows i386 build: open
-- runtime validation: not started for this packet
-- Truth acceptance: unavailable.
-
-## Next evidence-connected hard packet
-
-Preferred next packet is the directly connected Player option callback cohort:
-
-- `0x00427950-0x0042795B` — 12-byte wrapper, `unknown/review`
-- `0x00427960-0x00427AC6` — 359-byte body, `unknown/review`; Ghidra reports 353
-  reachable bytes and raw target code has a skipped 6-byte alignment LEA at
-  `0x00427A0A-0x00427A0F`
-- `0x00427AD0-0x00427ADB` — new 12-byte wrapper, `unknown/review`
-- `0x00427AE0-0x00427B42` — 99-byte body, `unknown/review`.
-
-The reviewed rebuild writes the two wrapper addresses into option records, and
-each wrapper dispatches to its adjacent larger body. This 482-byte cohort is
-connected ownership/control-flow work rather than an unrelated easy leaf.
-Resolve source-written callback versus compiler/optimizer adapter independently
-before origin promotion.
-
-Fresh Ghidra function metadata confirms 12/353/99 reachable bytes for the three
-Ghidra-recognized entries. A callback-body decompile attempt suffered Factory
-transport failure; live status was reread unchanged. Do not invent semantics
-from that unavailable result. Do not absorb nearby `0x00427B50-0x00427C04`
-without separate call/data ownership evidence.
-
-Packet balance remains hard-frontier oriented: this session attacked a central
-2,494-byte owner, corrected a cross-subsystem layout view, and expanded the
-candidate denominator instead of harvesting small exact-looking functions.
+Packet balance remains hard-frontier oriented: this session reviewed a
+482-byte multi-entry ABI/layout/control-flow cohort connected to the prior
+2,494-byte rebuild owner, corrected a plausible but false `+0x90`-versus-`+0x94`
+offset interpretation, recovered behavior and source shape, and retained
+origin/exactness unknown where the target-bound Oracle does not decide them.

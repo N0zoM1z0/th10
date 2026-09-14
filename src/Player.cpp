@@ -71,12 +71,6 @@ void PlayerInitializeManagedVmScript(PlayerVm *vm, int scriptIndex);
 void PlayerRegisterManagedVm(PlayerVm *vm, unsigned int *idOut);
 void PlayerSetManagedVmDeleteState(unsigned int *vmId, unsigned short state);
 
-// Opaque maintained code-entry symbols. The target stores these addresses in
-// option records, but the wrappers' source-level callback ABI/origin is not
-// established by this packet.
-extern unsigned char PlayerOptionTrailCallbackEntry;
-extern unsigned char PlayerOptionSpecialCallbackEntry;
-
 enum
 {
     PLAYER_OPTION_ACTIVE = 2,
@@ -213,6 +207,79 @@ static int GetSecondaryPlayerOptionScript()
     }
 }
 
+// Maintained spelling of the observed ECX-bound option callback boundary. This
+// models the target machine ABI; the original source declaration and the
+// wrapper/body optimizer ownership remain unknown.
+static int __fastcall PlayerOptionTrailCallback(PlayerOptionRuntime *option)
+{
+    Player *player = g_Player;
+    const int optionMode = player->optionMode;
+
+    option->replayPair0 =
+        player->replayPositionHistory[(option->optionIndex + 1) * 8];
+    if (optionMode == 0)
+    {
+        option->replayPair2.x = option->replayPair0.x - player->positionX;
+        option->replayPair2.y = option->replayPair0.y - player->positionY;
+    }
+    else
+    {
+        player->replayPositionHistory[(option->optionIndex + 1) * 8].x =
+            player->positionX + option->replayPair2.x;
+        player->replayPositionHistory[(option->optionIndex + 1) * 8].y =
+            player->positionY + option->replayPair2.y;
+
+        float fraction = 0.125f;
+        for (int i = option->optionIndex * 8 + 1;
+             i <= option->optionIndex * 8 + 7; ++i)
+        {
+            PlayerPositionPair &sample = player->replayPositionHistory[i];
+            sample.x = (int)(
+                (player->replayPositionHistory[(option->optionIndex + 1) * 8].x -
+                 player->replayPositionHistory[option->optionIndex * 8].x) *
+                    fraction +
+                player->replayPositionHistory[option->optionIndex * 8].x);
+            sample.y = (int)(
+                (player->replayPositionHistory[(option->optionIndex + 1) * 8].y -
+                 player->replayPositionHistory[option->optionIndex * 8].y) *
+                    fraction +
+                player->replayPositionHistory[option->optionIndex * 8].y);
+            fraction += 0.125f;
+        }
+    }
+
+    option->replayPair0.x = player->positionX + option->replayPair2.x;
+    option->replayPair0.y = player->positionY + option->replayPair2.y;
+    option->previousMode = optionMode;
+    return 0;
+}
+
+// Maintained spelling of the second observed ECX-bound option callback. The
+// target switches the primary VM delete state only when the option mode changes.
+static int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
+{
+    Player *player = g_Player;
+    const int optionMode = player->optionMode;
+
+    if (optionMode == 0)
+    {
+        if (option->previousMode != 0)
+            PlayerSetManagedVmDeleteState(&option->primaryVmId, 6);
+
+        option->replayPair3 = option->replayPair1;
+        option->previousMode = 0;
+    }
+    else
+    {
+        if (option->previousMode == 0)
+            PlayerSetManagedVmDeleteState(&option->primaryVmId, 3);
+
+        option->replayPair0 = option->replayPair3;
+        option->previousMode = optionMode;
+    }
+    return 0;
+}
+
 void RebuildPlayerOptions(Player *player)
 {
     int i;
@@ -297,7 +364,7 @@ void RebuildPlayerOptions(Player *player)
                         option.replayPair2 = player->options[i - 1].replayPair2;
                 }
 
-                option.updateCallback = &PlayerOptionTrailCallbackEntry;
+                option.updateCallback = PlayerOptionTrailCallback;
                 option.primaryVmId = CreatePrimaryPlayerOptionVm(
                     player, PLAYER_OPTION_PRIMARY_SCRIPT_0);
                 option.replayPair1 = player->replayPositionHistory[i * 8];
@@ -336,7 +403,7 @@ void RebuildPlayerOptions(Player *player)
                     player, PLAYER_OPTION_PRIMARY_SCRIPT_2);
                 if (player->optionMode != 0)
                     PlayerSetManagedVmDeleteState(&option.primaryVmId, 3);
-                option.updateCallback = &PlayerOptionSpecialCallbackEntry;
+                option.updateCallback = PlayerOptionSpecialCallback;
                 break;
             }
             }

@@ -13,6 +13,11 @@ typedef char PlayerPositionPairSizeIs08[
 
 // Maintained view of the 0x98-byte option records observed in the TH10 player
 // owner. The original field identifiers remain unknown.
+struct PlayerOptionRuntime;
+// Maintained spelling of the observed ECX-bound callback ABI. The original
+// source declaration/convention remains unknown.
+typedef int (__fastcall *PlayerOptionCallback)(PlayerOptionRuntime *option);
+
 struct PlayerOptionRuntime
 {
     int state;
@@ -24,10 +29,11 @@ struct PlayerOptionRuntime
     unsigned char unknown054[0x14];
     unsigned int primaryVmId;
     unsigned int secondaryVmId;
-    unsigned char unknown070[0x18];
+    unsigned char unknown070[0x14];
+    int previousMode;
     int optionIndex;
     int resetFlag;
-    void *updateCallback;
+    PlayerOptionCallback updateCallback;
     unsigned int unknown094;
 };
 typedef char PlayerOptionRuntimeSizeIs98[
@@ -38,6 +44,8 @@ typedef char PlayerOptionRuntimePrimaryVmIdAt68[
     (offsetof(PlayerOptionRuntime, primaryVmId) == 0x68) ? 1 : -1];
 typedef char PlayerOptionRuntimeSecondaryVmIdAt6C[
     (offsetof(PlayerOptionRuntime, secondaryVmId) == 0x6c) ? 1 : -1];
+typedef char PlayerOptionRuntimePreviousModeAt84[
+    (offsetof(PlayerOptionRuntime, previousMode) == 0x84) ? 1 : -1];
 typedef char PlayerOptionRuntimeIndexAt88[
     (offsetof(PlayerOptionRuntime, optionIndex) == 0x88) ? 1 : -1];
 typedef char PlayerOptionRuntimeResetAt8C[

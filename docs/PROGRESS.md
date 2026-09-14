@@ -10,7 +10,7 @@ their boundaries and origins must be reviewed independently.
 | Confirmed authored functions | 87 |
 | Confirmed authored code bytes | 22,010 |
 | Classified exclusions | 7 |
-| Source-present authored mappings | 57 |
+| Source-present authored mappings | 59 |
 | Canonical exact functions | 0 |
 | Canonical exact authored bytes | 0 |
 

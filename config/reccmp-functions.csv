@@ -56,3 +56,5 @@ RebuildPlayerOptions,0x00426F70,function
 ReplayManager::Initialize,0x00428F60,function
 ReplayManager::LoadReplay,0x0042A200,function
 ReplayManager::BeginStage,0x0042A450,function
+PlayerOptionTrailCallback,0x00427950,function
+PlayerOptionSpecialCallback,0x00427AD0,function

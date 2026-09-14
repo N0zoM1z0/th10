@@ -316,10 +316,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004269D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00426CF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00426F70,authored_game,Player,authored,high,player-option-rebuild-2026-09-13
-0x00427950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00427960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00427AD0,unknown,Player,review,unknown,player-option-rebuild-raw-2026-09-13
-0x00427AE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00427950,unknown,Player,review,unknown,player-option-callbacks-2026-09-14
+0x00427960,unknown,Player,review,unknown,player-option-callbacks-2026-09-14
+0x00427AD0,unknown,Player,review,unknown,player-option-callbacks-2026-09-14
+0x00427AE0,unknown,Player,review,unknown,player-option-callbacks-2026-09-14
 0x00427B50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00427C50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00427C70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
