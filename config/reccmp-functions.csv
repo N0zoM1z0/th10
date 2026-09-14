@@ -66,3 +66,4 @@ Player::Player,0x004246C0,function
 PlayerResetRuntimeState,0x00424D90,function
 Player::~Player,0x00424ED0,function
 PlayerCreate,0x00425020,function
+PlayerUpdateShots,0x00428280,function

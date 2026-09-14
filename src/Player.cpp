@@ -14,6 +14,13 @@ struct PlayerVmListNode
     PlayerVmListNode *previous;
 };
 
+struct PlayerVmSpriteView
+{
+    unsigned char unknown000[0x30];
+    float extent30;
+    float extent34;
+};
+
 struct PlayerVm
 {
     unsigned int id;
@@ -22,19 +29,36 @@ struct PlayerVm
     int childOwner;
     unsigned char unknown01C[0x04];
     int layer;
-    unsigned char unknown024[0x2e0];
+    unsigned char unknown024[0x08];
+    float angle2C;
+    unsigned char unknown030[0x0c];
+    float scale3C;
+    float scale40;
+    unsigned char unknown044[0x2c0];
     unsigned short deleteState;
-    unsigned char unknown306[0x56];
+    unsigned char unknown306[0x3a];
+    PlayerFloat3 position;
+    unsigned char unknown34C[0x10];
     unsigned int flags;
+    unsigned char unknown360[0x34];
+    PlayerVmSpriteView *sprite;
 };
 typedef char PlayerVmChildrenAt14[
     (offsetof(PlayerVm, children) == 0x14) ? 1 : -1];
 typedef char PlayerVmLayerAt20[
     (offsetof(PlayerVm, layer) == 0x20) ? 1 : -1];
+typedef char PlayerVmAngleAt2C[
+    (offsetof(PlayerVm, angle2C) == 0x2c) ? 1 : -1];
+typedef char PlayerVmScaleAt3C[
+    (offsetof(PlayerVm, scale3C) == 0x3c) ? 1 : -1];
 typedef char PlayerVmDeleteStateAt304[
     (offsetof(PlayerVm, deleteState) == 0x304) ? 1 : -1];
+typedef char PlayerVmPositionAt340[
+    (offsetof(PlayerVm, position) == 0x340) ? 1 : -1];
 typedef char PlayerVmFlagsAt35C[
     (offsetof(PlayerVm, flags) == 0x35c) ? 1 : -1];
+typedef char PlayerVmSpriteAt394[
+    (offsetof(PlayerVm, sprite) == 0x394) ? 1 : -1];
 
 struct PlayerVmManager
 {
@@ -193,7 +217,20 @@ float PlayerWrapEffectAngle(float value);
 void PlayerFinalizeEffectState(void *state);
 void PlayerUpdateDrawVmState(PlayerDrawVmView *vm);
 void PlayerUpdateInputAction(Player *player);
-void PlayerUpdateShots(Player *player);
+int PlayerUpdateShots(Player *player);
+
+// Descriptive interfaces for the target-observed shot-motion helpers. Their
+// physical callees use private register contracts; these ordinary declarations
+// are maintained source spellings, not original ABI claims.
+float PlayerWrapShotAngle(float value);
+void PlayerSetShotVelocityFromPolar(
+    PlayerFloat3 *velocity, float angle, float magnitude);
+void PlayerAdvanceShotMotion(PlayerShotMotionView *motion);
+int PlayerShotOutsidePlayfield(
+    const PlayerFloat3 *position, float extentX, float extentY);
+void PlayerSetShotVmDeleteState1(unsigned int *vmId);
+void PlayerSetShotVmDeleteState3(unsigned int *vmId);
+void PlayerMarkShotVmPending(unsigned int vmId);
 
 struct PlayerOptionPosition
 {
@@ -291,6 +328,13 @@ enum
     PLAYER_MAIN_VM_STOP_LEFT = 2,
     PLAYER_MAIN_VM_MOVE_RIGHT = 3,
     PLAYER_MAIN_VM_STOP_RIGHT = 4,
+    PLAYER_SHOT_INACTIVE = 0,
+    PLAYER_SHOT_ACTIVE = 1,
+    PLAYER_SHOT_HIT_TRANSITION = 2,
+    PLAYER_SHOT_TYPE_3 = 3,
+    PLAYER_SHOT_POLAR_MOTION = 1,
+    PLAYER_VM_SHOT_ANGLE_SOURCE = 0x08000000,
+    PLAYER_VM_SHOT_ANGLE_DIRTY = 4,
 };
 
 static PlayerVm *FindPlayerVm(unsigned int id)
@@ -984,6 +1028,146 @@ int PlayerUpdateMovementAndOptions(Player *player)
         optionPosition.z = 0.0f;
         PlayerSetManagedVmScreenPosition(option.primaryVmId, &optionPosition);
         PlayerSetManagedVmScreenPosition(option.secondaryVmId, &optionPosition);
+    }
+
+    return 0;
+}
+
+// Maintained source for the 128-row Player shot-update owner at
+// 0x00428280-0x004285EB. The target receives one stack Player* and returns zero
+// with RET 4. The 0x004282AA-0x004282AF gap is unreachable compiler alignment,
+// not a separate data owner. Helper declarations above hide private machine
+// ABIs rather than claiming original source conventions.
+int PlayerUpdateShots(Player *player)
+{
+    int i;
+
+    for (i = 0; i < 128; ++i)
+    {
+        PlayerShotRuntimeView *shot = &player->shots[i];
+        if (shot->state == PLAYER_SHOT_INACTIVE)
+            continue;
+
+        const PlayerShotDescriptorView *descriptor = shot->descriptor;
+        if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
+            shot->state == PLAYER_SHOT_ACTIVE &&
+            (player->updateTimer0.current < 0 ||
+             player->optionCount <= (int)descriptor->sourceIndex - 1))
+        {
+            PlayerSetShotVmDeleteState1(&shot->primaryVmId);
+            PlayerSetShotVmDeleteState1(&shot->secondaryVmId);
+            shot->state = PLAYER_SHOT_HIT_TRANSITION;
+            player->shotSourceActive[(int)descriptor->sourceIndex - 1] = 0;
+        }
+
+        if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
+            shot->state == PLAYER_SHOT_ACTIVE &&
+            ((g_PlayerDrawGate9EB8 != NULL &&
+              g_PlayerDrawGate9EB8->value9EB8 != 0) ||
+             g_PlayerDrawGate10 == NULL))
+        {
+            shot->state = PLAYER_SHOT_HIT_TRANSITION;
+            PlayerSetShotVmDeleteState1(&shot->primaryVmId);
+            PlayerSetShotVmDeleteState1(&shot->secondaryVmId);
+            player->shotSourceActive[(int)descriptor->sourceIndex - 1] = 0;
+        }
+
+        if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
+            shot->collidedThisFrame == 0 &&
+            shot->state == PLAYER_SHOT_ACTIVE &&
+            shot->collisionVmTransitionPending == 1)
+        {
+            PlayerSetShotVmDeleteState3(&shot->primaryVmId);
+            shot->collisionVmTransitionPending = 0;
+        }
+        shot->collidedThisFrame = 0;
+
+        if (descriptor->updateCallback != NULL)
+            descriptor->updateCallback(player, shot);
+
+        if ((shot->motion.flags & PLAYER_SHOT_POLAR_MOTION) == 0)
+        {
+            PlayerSetShotVelocityFromPolar(
+                &shot->motion.velocity,
+                shot->motion.angle,
+                shot->motion.speedOrAngleStep);
+            shot->motion.velocity.z = 0.0f;
+        }
+        else
+        {
+            shot->motion.polarMagnitude += shot->motion.polarMagnitudeDelta;
+            shot->motion.angle = PlayerWrapShotAngle(
+                shot->motion.speedOrAngleStep + shot->motion.angle);
+        }
+
+        PlayerAdvanceShotMotion(&shot->motion);
+
+        PlayerVm *primaryVm = FindPlayerVm(shot->primaryVmId);
+        if (primaryVm == NULL)
+        {
+            shot->state = PLAYER_SHOT_INACTIVE;
+            if (shot->secondaryVmId != 0)
+                PlayerMarkShotVmPending(shot->secondaryVmId);
+            shot->primaryVmId = 0;
+            shot->secondaryVmId = 0;
+            continue;
+        }
+
+        if (descriptor->type != PLAYER_SHOT_TYPE_3 &&
+            shot->timer.current >= 10)
+        {
+            const float extentX =
+                primaryVm->sprite->extent34 * primaryVm->scale3C;
+            const float extentY =
+                primaryVm->sprite->extent30 * primaryVm->scale40;
+            if (PlayerShotOutsidePlayfield(
+                    &shot->motion.position, extentX, extentY) != 0)
+            {
+                PlayerMarkShotVmPending(shot->primaryVmId);
+                shot->primaryVmId = 0;
+                shot->state = PLAYER_SHOT_INACTIVE;
+                continue;
+            }
+        }
+
+        primaryVm->position.x = shot->motion.position.x + 224.0f;
+        primaryVm->position.y = shot->motion.position.y + 16.0f;
+        primaryVm->position.z = shot->motion.position.z;
+
+        if (shot->secondaryVmId != 0)
+        {
+            PlayerVm *secondaryVm = FindPlayerVm(shot->secondaryVmId);
+            if (secondaryVm == NULL)
+            {
+                shot->secondaryVmId = 0;
+            }
+            else
+            {
+                secondaryVm->position.x = shot->motion.position.x + 224.0f;
+                secondaryVm->position.y = shot->motion.position.y + 16.0f;
+                secondaryVm->position.z = shot->motion.position.z;
+            }
+        }
+
+        if ((primaryVm->flags & PLAYER_VM_SHOT_ANGLE_SOURCE) != 0)
+        {
+            primaryVm->angle2C = shot->motion.angle;
+            primaryVm->flags |= PLAYER_VM_SHOT_ANGLE_DIRTY;
+        }
+
+        shot->timer.previous = shot->timer.current;
+        const float timerScale = *shot->timer.scale;
+        if (timerScale > 0.9900000095367432f &&
+            timerScale < 1.0099999904632568f)
+        {
+            ++shot->timer.current;
+            shot->timer.subframe += 1.0f;
+        }
+        else
+        {
+            shot->timer.subframe += timerScale;
+            shot->timer.current = (int)shot->timer.subframe;
+        }
     }
 
     return 0;

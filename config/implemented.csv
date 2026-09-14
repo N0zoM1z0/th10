@@ -65,3 +65,4 @@ Player::Player
 PlayerResetRuntimeState
 Player::~Player
 PlayerCreate
+PlayerUpdateShots

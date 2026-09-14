@@ -216,13 +216,98 @@ typedef char PlayerOptionDataViewCountAt02[
 typedef char PlayerOptionDataViewSpeedsAt10[
     (offsetof(PlayerOptionDataView, axisSpeedMode0) == 0x10) ? 1 : -1];
 
+struct Player;
+struct PlayerShotRuntimeView;
+
+// Maintained spelling of the target-observed ECX/EDX shot-update callback.
+// The callback return type is not observed because the owner ignores EAX.
+typedef void (__fastcall *PlayerShotUpdateCallback)(
+    Player *player, PlayerShotRuntimeView *shot);
+
+// Maintained 0x34-byte view of one loaded .sht shot descriptor. Only fields
+// directly consumed by the reviewed TH10 spawn/update/collision paths are
+// named; callback return types other than update remain unknown here.
+struct PlayerShotDescriptorView
+{
+    signed char fireInterval;
+    signed char fireFrame;
+    short value02;
+    float spawnOffsetX;
+    float spawnOffsetY;
+    float hitboxExtentX;
+    float hitboxExtentY;
+    float angle;
+    float speed;
+    signed char sourceIndex;
+    unsigned char type;
+    short animationScript;
+    short hitAnimationScript;
+    short soundId;
+    void *spawnCallback;
+    PlayerShotUpdateCallback updateCallback;
+    void *unknown2C;
+    void *collisionCallback;
+};
+typedef char PlayerShotDescriptorViewSizeIs34[
+    (sizeof(PlayerShotDescriptorView) == 0x34) ? 1 : -1];
+typedef char PlayerShotDescriptorAngleAt14[
+    (offsetof(PlayerShotDescriptorView, angle) == 0x14) ? 1 : -1];
+typedef char PlayerShotDescriptorSourceAt1C[
+    (offsetof(PlayerShotDescriptorView, sourceIndex) == 0x1c) ? 1 : -1];
+typedef char PlayerShotDescriptorSpawnCallbackAt24[
+    (offsetof(PlayerShotDescriptorView, spawnCallback) == 0x24) ? 1 : -1];
+typedef char PlayerShotDescriptorUpdateCallbackAt28[
+    (offsetof(PlayerShotDescriptorView, updateCallback) == 0x28) ? 1 : -1];
+typedef char PlayerShotDescriptorCollisionCallbackAt30[
+    (offsetof(PlayerShotDescriptorView, collisionCallback) == 0x30) ? 1 : -1];
+
+// The target motion helper receives a pointer to this exact subobject beginning
+// at shot +0x14. The value at +0x18 is speed in ordinary motion and an angular
+// step in the flagged polar mode, so its maintained name stays deliberately
+// dual-purpose.
+struct PlayerShotMotionView
+{
+    PlayerFloat3 position;
+    PlayerFloat3 velocity;
+    float speedOrAngleStep;
+    float angle;
+    float polarMagnitude;
+    float polarMagnitudeDelta;
+    unsigned int flags;
+};
+typedef char PlayerShotMotionViewSizeIs2C[
+    (sizeof(PlayerShotMotionView) == 0x2c) ? 1 : -1];
+typedef char PlayerShotMotionVelocityAt0C[
+    (offsetof(PlayerShotMotionView, velocity) == 0x0c) ? 1 : -1];
+typedef char PlayerShotMotionAngleAt1C[
+    (offsetof(PlayerShotMotionView, angle) == 0x1c) ? 1 : -1];
+typedef char PlayerShotMotionFlagsAt28[
+    (offsetof(PlayerShotMotionView, flags) == 0x28) ? 1 : -1];
+
 struct PlayerShotRuntimeView
 {
     PlayerTimerView timer;
-    unsigned char unknown014[0x48];
+    PlayerShotMotionView motion;
+    int state;
+    unsigned int primaryVmId;
+    unsigned int secondaryVmId;
+    unsigned int unknown04C;
+    int collidedThisFrame;
+    int collisionVmTransitionPending;
+    const PlayerShotDescriptorView *descriptor;
 };
 typedef char PlayerShotRuntimeViewSizeIs5C[
     (sizeof(PlayerShotRuntimeView) == 0x5c) ? 1 : -1];
+typedef char PlayerShotRuntimeMotionAt14[
+    (offsetof(PlayerShotRuntimeView, motion) == 0x14) ? 1 : -1];
+typedef char PlayerShotRuntimeStateAt40[
+    (offsetof(PlayerShotRuntimeView, state) == 0x40) ? 1 : -1];
+typedef char PlayerShotRuntimePrimaryVmAt44[
+    (offsetof(PlayerShotRuntimeView, primaryVmId) == 0x44) ? 1 : -1];
+typedef char PlayerShotRuntimeCollisionFlagAt50[
+    (offsetof(PlayerShotRuntimeView, collidedThisFrame) == 0x50) ? 1 : -1];
+typedef char PlayerShotRuntimeDescriptorAt58[
+    (offsetof(PlayerShotRuntimeView, descriptor) == 0x58) ? 1 : -1];
 
 struct PlayerCallbackNodeView;
 
@@ -269,7 +354,7 @@ struct Player
     unsigned char updateScratchByte;
     unsigned char unknown3509[0x03];
     PlayerEffectRowView effectRows[33];
-    unsigned char unknown42F8[0x10];
+    int shotSourceActive[4];
     int optionTransitionFrames;
     PlayerTimerView highlightTimer;
     unsigned char unknown4320[0x04];
@@ -325,7 +410,9 @@ typedef char PlayerOptionCountAt3500[
 typedef char PlayerEffectRowsAt350C[
     (offsetof(Player, effectRows) == 0x350c) ? 1 : -1];
 typedef char PlayerEffectRowsEndAt42F8[
-    (offsetof(Player, unknown42F8) == 0x42f8) ? 1 : -1];
+    (offsetof(Player, shotSourceActive) == 0x42f8) ? 1 : -1];
+typedef char PlayerShotSourceActiveAt42F8[
+    (offsetof(Player, shotSourceActive) == 0x42f8) ? 1 : -1];
 typedef char PlayerOptionTransitionFramesAt4308[
     (offsetof(Player, optionTransitionFrames) == 0x4308) ? 1 : -1];
 typedef char PlayerHighlightTimerAt430C[
