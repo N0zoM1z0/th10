@@ -122,7 +122,8 @@ struct AnmVmView
     int state22C;
     unsigned char unknown230[0x00c];
     AnmMatrixView matrix23C;
-    unsigned char unknown27C[0x080];
+    AnmMatrixView matrix27C;
+    unsigned char unknown2BC[0x040];
     AnmColorView primaryColor;
     AnmColorView secondaryColor;
     unsigned char unknown304[0x004];
@@ -142,7 +143,8 @@ struct AnmVmView
             unsigned int updateRotation : 1;
             unsigned int updateScale : 1;
             unsigned int blendMode : 2;
-            unsigned int unknownFlags06 : 9;
+            unsigned int unknownFlags06 : 8;
+            unsigned int useStaticMatrix : 1;
             unsigned int useSecondaryColor : 1;
             unsigned int unknownFlags16 : 2;
             unsigned int renderStateA : 2;
@@ -336,7 +338,9 @@ struct AnmRenderManagerView
     unsigned int flushesThisFrame;
     float screenShakeX;
     float screenShakeY;
-    unsigned char unknown064[0x3ada00];
+    unsigned char unknown064[0x3ad08c];
+    AnmMatrixView cachedWorldMatrix;
+    unsigned char unknown3AD130[0x934];
     void *currentTexture;
     unsigned char currentBlendMode;
     unsigned char unknown3ADA69;
@@ -366,6 +370,8 @@ struct AnmRenderManagerView
         float cosine, float xOffset, float yOffset);
     int ProjectCameraFacingQuad(AnmVmView *vm);
     int DrawCameraFacingQuad(AnmVmView *vm);
+    int Project3DQuad(AnmVmView *vm);
+    int DrawProjected3DQuad(AnmVmView *vm);
 };
 
 typedef char AnmRenderFlushCountAt058[
@@ -382,6 +388,8 @@ typedef char AnmRenderStateCacheAt3ADA64[
      offsetof(AnmRenderManagerView, currentBlendMode) == 0x3ada68 &&
      offsetof(AnmRenderManagerView, currentVertexShader) == 0x3ada6a &&
      offsetof(AnmRenderManagerView, currentTextureFilter) == 0x3ada6e) ? 1 : -1];
+typedef char AnmRenderCachedWorldMatrixAt3AD0F0[
+    (offsetof(AnmRenderManagerView, cachedWorldMatrix) == 0x3ad0f0) ? 1 : -1];
 typedef char AnmRenderMixColorAt732458[
     (offsetof(AnmRenderManagerView, mixColor) == 0x732458 &&
      offsetof(AnmRenderManagerView, useMixColor) == 0x73245c) ? 1 : -1];
@@ -437,6 +445,15 @@ extern "C" AnmFloat3View *__stdcall D3DXVec3Project(
     AnmFloat3View *output, const AnmFloat3View *input,
     const AnmViewportView *viewport, const AnmMatrixView *projection,
     const AnmMatrixView *view, const AnmMatrixView *world);
+extern "C" AnmMatrixView *__stdcall D3DXMatrixRotationX(
+    AnmMatrixView *output, float angle);
+extern "C" AnmMatrixView *__stdcall D3DXMatrixRotationY(
+    AnmMatrixView *output, float angle);
+extern "C" AnmMatrixView *__stdcall D3DXMatrixRotationZ(
+    AnmMatrixView *output, float angle);
+extern "C" AnmMatrixView *__stdcall D3DXMatrixMultiply(
+    AnmMatrixView *output, const AnmMatrixView *left,
+    const AnmMatrixView *right);
 
 extern "C" void __stdcall EnterCriticalSection(void *criticalSection);
 extern "C" void __stdcall LeaveCriticalSection(void *criticalSection);

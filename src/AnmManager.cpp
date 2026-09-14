@@ -1089,6 +1089,127 @@ int AnmRenderManagerView::DrawCameraFacingQuad(AnmVmView *vm)
     return DrawInner(vm, 0);
 }
 
+// Target 0x00444240-0x00444571 maintains a VM-local transform matrix, applies
+// scale and any dirty Euler rotations, translates a local 256-by-256 quad by
+// all three VM position vectors, and projects its four corners through the
+// active background viewport. The completed world matrix is cached on the
+// renderer for the following 3D draw modes. X/Y extend their matrix translation
+// while TH10 replaces Z with the accumulated VM position.
+int AnmRenderManagerView::Project3DQuad(AnmVmView *vm)
+{
+    AnmMatrixView rotationMatrix;
+    AnmMatrixView worldMatrix;
+    AnmFloat3View vertices[4];
+
+    if (!vm->useStaticMatrix && (vm->updateScale || vm->updateRotation))
+    {
+        vm->matrix27C = vm->matrix23C;
+        vm->matrix27C.values[0] *= vm->scaleX;
+        vm->matrix27C.values[5] *= vm->scaleY;
+        vm->updateScale = 0;
+
+        if (vm->rotation.x != 0.0)
+        {
+            D3DXMatrixRotationX(&rotationMatrix, vm->rotation.x);
+            D3DXMatrixMultiply(
+                &vm->matrix27C, &vm->matrix27C, &rotationMatrix);
+        }
+        if (vm->rotation.y != 0.0)
+        {
+            D3DXMatrixRotationY(&rotationMatrix, vm->rotation.y);
+            D3DXMatrixMultiply(
+                &vm->matrix27C, &vm->matrix27C, &rotationMatrix);
+        }
+        if (vm->rotation.z != 0.0)
+        {
+            D3DXMatrixRotationZ(&rotationMatrix, vm->rotation.z);
+            D3DXMatrixMultiply(
+                &vm->matrix27C, &vm->matrix27C, &rotationMatrix);
+        }
+        vm->updateRotation = 0;
+    }
+
+    worldMatrix = vm->matrix27C;
+    worldMatrix.values[12] +=
+        vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x;
+    worldMatrix.values[13] +=
+        vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y;
+    worldMatrix.values[14] =
+        vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+
+    switch (vm->renderStateA)
+    {
+    case 1:
+        vertices[0].x = vertices[2].x = 0.0f;
+        vertices[1].x = vertices[3].x = 256.0f;
+        break;
+    case 0:
+        vertices[0].x = vertices[2].x = -128.0f;
+        vertices[1].x = vertices[3].x = 128.0f;
+        break;
+    case 2:
+        vertices[0].x = vertices[2].x = -256.0f;
+        vertices[1].x = vertices[3].x = 0.0f;
+        break;
+    }
+
+    switch (vm->renderStateB)
+    {
+    case 1:
+        vertices[0].y = vertices[1].y = 0.0f;
+        vertices[2].y = vertices[3].y = 256.0f;
+        break;
+    case 0:
+        vertices[0].y = vertices[1].y = -128.0f;
+        vertices[2].y = vertices[3].y = 128.0f;
+        break;
+    case 2:
+        vertices[0].y = vertices[1].y = -256.0f;
+        vertices[2].y = vertices[3].y = 0.0f;
+        break;
+    }
+
+    vertices[0].z = vertices[1].z =
+        vertices[2].z = vertices[3].z = 0.0f;
+
+    D3DXVec3Project(
+        reinterpret_cast<AnmFloat3View *>(&g_AnmQuadVertices[0]),
+        &vertices[0], &g_AnmViewportOwner->viewport,
+        &g_AnmViewportOwner->projectionMatrix,
+        &g_AnmViewportOwner->viewMatrix, &worldMatrix);
+    D3DXVec3Project(
+        reinterpret_cast<AnmFloat3View *>(&g_AnmQuadVertices[1]),
+        &vertices[1], &g_AnmViewportOwner->viewport,
+        &g_AnmViewportOwner->projectionMatrix,
+        &g_AnmViewportOwner->viewMatrix, &worldMatrix);
+    D3DXVec3Project(
+        reinterpret_cast<AnmFloat3View *>(&g_AnmQuadVertices[2]),
+        &vertices[2], &g_AnmViewportOwner->viewport,
+        &g_AnmViewportOwner->projectionMatrix,
+        &g_AnmViewportOwner->viewMatrix, &worldMatrix);
+    D3DXVec3Project(
+        reinterpret_cast<AnmFloat3View *>(&g_AnmQuadVertices[3]),
+        &vertices[3], &g_AnmViewportOwner->viewport,
+        &g_AnmViewportOwner->projectionMatrix,
+        &g_AnmViewportOwner->viewMatrix, &worldMatrix);
+
+    cachedWorldMatrix = worldMatrix;
+    return 0;
+}
+
+// Target 0x00444580-0x004445BB restores the projected RHW values after the
+// common renderer has consumed the quad and propagates DrawInner's result.
+int AnmRenderManagerView::DrawProjected3DQuad(AnmVmView *vm)
+{
+    int result;
+
+    Project3DQuad(vm);
+    result = DrawInner(vm, 0);
+    g_AnmQuadVertices[0].rhw = g_AnmQuadVertices[1].rhw =
+        g_AnmQuadVertices[2].rhw = g_AnmQuadVertices[3].rhw = 1.0f;
+    return result;
+}
+
 // Target 0x00401760-0x00401A41 renders the 256-entry regular queue. Every
 // field read below is independently visible in the target body; the renderer
 // and viewport helper names remain semantic until their own owners are closed.

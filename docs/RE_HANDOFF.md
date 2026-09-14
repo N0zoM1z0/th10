@@ -77,12 +77,37 @@ differences or moved farther from the target; no inert dependency or padding
 was introduced.
 
 Current tracking contains **1,289** candidates, **166** authored functions,
-**138** source mappings, and **67 canonical exact functions / 6,136 bytes**.
-The authored source backlog is **67**. The full current `src/AnmManager.cpp`
-exact set remains **21 functions / 4,486 bytes** across four artifact contexts.
+**140** source mappings, and **68 canonical exact functions / 6,954 bytes**.
+The authored source backlog is **68**. The full current `src/AnmManager.cpp`
+exact set is **22 functions / 5,304 bytes** across four artifact contexts.
 
-The next ANM frontier is the projected/photo-color family at `0x00443FB0`,
-`0x00444240`, and `0x00444580`, followed by the mode-7 and direct-3D paths.
+The next ANM frontier is the photo-color owner at `0x00443FB0`, then the
+mode-7 and direct-3D paths. `DrawProjected3DQuad @ 0x00444580` is already
+source-present; implementing its real dispatcher at `0x004451C0` should expose
+the target private ABI for exact replay.
+
+## Completed packet: ANM projected 3D quad
+
+`Project3DQuad @ 0x00444240-0x00444571` is recovered from TH10-local target
+evidence. It establishes VM matrices at `+0x23C/+0x27C`, flag bit 14 as the
+matrix-recalculation suppressor, and the renderer's cached world matrix at
+`+0x3AD0F0`. Dirty transforms copy the base matrix, apply scale to `_11/_22`,
+then compose nonzero X/Y/Z rotations through D3DX. Anchor bits 18-21 select
+the local `-256/-128/0/128/256` corner coordinates before four projections
+through the active viewport owner.
+
+TH10 adds all three VM position vectors to existing world X/Y translation but
+replaces world Z with their sum. This differs from the first adjacent-game
+source-shape hypothesis and accounts for the only four bytes in the initial
+822-byte candidate beyond the 818-byte target. With the corrected assignment,
+the canonical `/GL` unit reproduces the complete PDB contribution and all 21
+link fields exactly.
+
+`DrawProjected3DQuad @ 0x00444580-0x004445BB` is source-present. It projects,
+calls `DrawInner(vm, 0)`, restores the four shared RHW values to one, and
+returns the draw result. The standalone compiler entry emits a conventional
+72-byte wrapper; target `Draw @ 0x004451C0` supplies the private ESI/EDI call
+context needed for the 60-byte production form, so exactness remains open.
 
 ## Completed packet: ANM camera-facing projection
 

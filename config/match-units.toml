@@ -383,6 +383,42 @@ linkages = [
   { offset = 0x1A, type = "REL32", symbol = "?DrawInner@AnmRenderManagerView@@QAEHPAUAnmVmView@@H@Z", target = 0x00442670 },
 ]
 
+[units.anm-render-project-3d-quad]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmRendererDraw"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z"
+functions = ["AnmRenderManagerView::Project3DQuad"]
+symbol = "?Project3DQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+target_address = 0x00444240
+size = 818
+linkages = [
+  { offset = 0x55, type = "DIR32", symbol = "__real@0000000000000000", target = 0x00470B70 },
+  { offset = 0x78, type = "REL32", symbol = "_D3DXMatrixRotationX@8", target = 0x004521AC },
+  { offset = 0x87, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x004521B2 },
+  { offset = 0x90, type = "DIR32", symbol = "__real@0000000000000000", target = 0x00470B70 },
+  { offset = 0xAA, type = "REL32", symbol = "_D3DXMatrixRotationY@8", target = 0x004521B8 },
+  { offset = 0xB9, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x004521B2 },
+  { offset = 0xC2, type = "DIR32", symbol = "__real@0000000000000000", target = 0x00470B70 },
+  { offset = 0xDC, type = "REL32", symbol = "_D3DXMatrixRotationZ@8", target = 0x004521BE },
+  { offset = 0xEB, type = "REL32", symbol = "_D3DXMatrixMultiply@12", target = 0x004521B2 },
+  { offset = 0x24A, type = "DIR32", symbol = "?g_AnmViewportOwner@@3PAUAnmViewportOwnerView@@A", target = 0x00491FAC },
+  { offset = 0x265, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0 },
+  { offset = 0x28A, type = "REL32", symbol = "_D3DXVec3Project@24", target = 0x0045218E },
+  { offset = 0x28F, type = "DIR32", symbol = "?g_AnmViewportOwner@@3PAUAnmViewportOwnerView@@A", target = 0x00491FAC },
+  { offset = 0x2AF, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x1C },
+  { offset = 0x2B4, type = "REL32", symbol = "_D3DXVec3Project@24", target = 0x0045218E },
+  { offset = 0x2BE, type = "DIR32", symbol = "?g_AnmViewportOwner@@3PAUAnmViewportOwnerView@@A", target = 0x00491FAC },
+  { offset = 0x2D9, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x38 },
+  { offset = 0x2DE, type = "REL32", symbol = "_D3DXVec3Project@24", target = 0x0045218E },
+  { offset = 0x2E3, type = "DIR32", symbol = "?g_AnmViewportOwner@@3PAUAnmViewportOwnerView@@A", target = 0x00491FAC },
+  { offset = 0x303, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x54 },
+  { offset = 0x308, type = "REL32", symbol = "_D3DXVec3Project@24", target = 0x0045218E },
+]
+
 [units.anm-render-clear-vertex-buffer]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
