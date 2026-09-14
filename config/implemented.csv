@@ -107,3 +107,11 @@ AnmVmView::AnmVmView
 AnmVmView::Initialize
 AnmMatrixView::SetIdentity
 AnmVmTimerView::Initialize
+AnmManagerView::AnmManagerView
+AnmManagerView::GetSize
+AnmManagerCreate
+AnmManagerView::OnUpdate
+AnmManagerView::DrawLayer0
+AnmManagerView::DrawLayer1
+AnmManagerView::Initialize
+AnmManagerView::~AnmManagerView

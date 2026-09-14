@@ -48,6 +48,13 @@ def parse_args() -> argparse.Namespace:
         default=20,
         help="maximum ranked rows to emit; zero emits all (default: 20)",
     )
+    parser.add_argument(
+        "--entry",
+        action="append",
+        default=[],
+        metavar="SOURCE=SOURCE_NAME",
+        help="forward an explicit per-source LTCG entry to probe-ltcg-backlog.py",
+    )
     parser.add_argument("--json", action="store_true", help="emit one JSON report")
     args = parser.parse_args()
     if args.limit < 0:
@@ -77,10 +84,14 @@ def run_json(command: list[str], label: str) -> dict[str, object]:
     return report
 
 
-def selected_command(script: str, sources: list[str]) -> list[str]:
+def selected_command(
+    script: str, sources: list[str], entries: list[str] | None = None
+) -> list[str]:
     command = [sys.executable, script]
     for source in sources:
         command.extend(["--source", source])
+    for entry in entries or []:
+        command.extend(["--entry", entry])
     command.append("--json")
     return command
 
@@ -325,7 +336,9 @@ def main() -> int:
             "normal-COFF backlog probe",
         )
         ltcg_report = run_json(
-            selected_command("scripts/probe-ltcg-backlog.py", args.source),
+            selected_command(
+                "scripts/probe-ltcg-backlog.py", args.source, args.entry
+            ),
             "LTCG backlog probe",
         )
         identity_after = input_identity(sources)
@@ -342,6 +355,7 @@ def main() -> int:
             "result": "ok",
             "acceptance_authority": "none",
             "target_sha256": target_sha256,
+            "ltcg_entry_overrides": args.entry,
             "input_sha256": identity_before,
             "selection": {"sources": sorted(args.source)},
             "ranking_method": (

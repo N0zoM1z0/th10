@@ -76,7 +76,9 @@ struct AnmVmView
     AnmMatrixView matrix23C;
     unsigned char unknown27C[0x080];
     int value2FC;
-    unsigned char unknown300[0x040];
+    unsigned char unknown300[0x008];
+    void *anmFile308;
+    unsigned char unknown30C[0x034];
     void *preserved340;
     void *preserved344;
     void *preserved348;
@@ -98,3 +100,89 @@ typedef char AnmVmLastTimerFlagsAt378[
     (offsetof(AnmVmView, timer368.flags) == 0x378) ? 1 : -1];
 typedef char AnmVmActiveSpriteAt384[
     (offsetof(AnmVmView, activeSpriteIndex) == 0x384) ? 1 : -1];
+
+// The manager embeds two lifecycle-proven VMs at +0x14 and +0x3C0. The large
+// middle region remains opaque until its individual ANM consumers are bounded.
+struct AnmManagerView
+{
+    AnmManagerView();
+    ~AnmManagerView();
+    virtual size_t GetSize();
+    int Initialize();
+    static int __fastcall OnUpdate(AnmManagerView *manager);
+    static int __fastcall DrawLayer0(AnmManagerView *manager);
+    static int __fastcall DrawLayer1(AnmManagerView *manager);
+
+    unsigned int flags004;
+    int unknown008;
+    void *calcChainElement;
+    void *drawChainElement0;
+    AnmVmView primaryVm014;
+    AnmVmView secondaryVm3C0;
+    unsigned char unknown76C[0x8200];
+    int debugMessageCount;
+    int secondaryDebugCounter;
+    int captureAnmIndex;
+    float defaultScaleX;
+    float defaultScaleY;
+    int currentRenderState;
+    int unknown8984;
+    int debugMessageColor;
+    int currentDrawLayer;
+    int updateCounter;
+    void *asciiAnm;
+    void *captureAnm;
+    void *textAnm;
+    unsigned char unknown89A0[0x008];
+    void *drawChainElement;
+};
+
+typedef char AnmManagerViewSizeIs89AC[
+    (sizeof(AnmManagerView) == 0x89ac) ? 1 : -1];
+typedef char AnmManagerPrimaryVmAt014[
+    (offsetof(AnmManagerView, primaryVm014) == 0x014) ? 1 : -1];
+typedef char AnmManagerSecondaryVmAt3C0[
+    (offsetof(AnmManagerView, secondaryVm3C0) == 0x3c0) ? 1 : -1];
+typedef char AnmManagerCaptureIndexAt8974[
+    (offsetof(AnmManagerView, captureAnmIndex) == 0x8974) ? 1 : -1];
+
+extern AnmManagerView *g_AnmManagerView;
+
+AnmManagerView *AnmManagerCreate();
+
+int __stdcall AnmManagerDrawLayer0(AnmManagerView *manager);
+int __stdcall AnmManagerDrawLayer1(AnmManagerView *manager);
+
+typedef int (__fastcall *AnmChainCallback)(AnmManagerView *manager);
+
+struct AnmChainElementView
+{
+    void *unknown000;
+    unsigned int flags;
+    unsigned char unknown008[0x018];
+    AnmManagerView *argument;
+};
+
+void * __fastcall AnmLoadResource(int slot, void *fileSystem, const char *path);
+AnmChainElementView * __stdcall AnmCreateChainElement(AnmChainCallback callback);
+void __fastcall AnmAddCalcChainElement(
+    AnmChainElementView *element, int priority, void *chain);
+void __fastcall AnmAddDrawChainElement(
+    AnmChainElementView *element, int priority, void *chain);
+void __fastcall AnmRemoveChainElement(AnmChainElementView *element, void *chain);
+void __fastcall AnmLoadedSetScript(void *anm, AnmVmView *vm, int scriptIndex);
+void __fastcall AnmReleaseResource(void *resource);
+
+struct AnmErrorLoggerView
+{
+    void Log(const char *message);
+};
+
+extern void *g_AnmFileSystemView;
+extern void *g_AnmChainView;
+extern AnmErrorLoggerView g_AnmErrorLoggerView;
+extern unsigned char g_AnmChainCriticalSection[];
+extern unsigned char g_AnmChainMutationDepth;
+
+extern "C" void __stdcall EnterCriticalSection(void *criticalSection);
+extern "C" void __stdcall LeaveCriticalSection(void *criticalSection);

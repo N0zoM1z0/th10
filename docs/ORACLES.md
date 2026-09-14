@@ -39,6 +39,14 @@ are enumerated and masked only for structural comparison. Because the harness
 is incomplete and does not establish production ownership or link context, its
 results always carry `acceptance_authority=none`.
 
+LTCG can change a function's private register ABI according to its real caller.
+When the default first-backlog-function entry suppresses that context, pass a
+reviewed source function explicitly with
+`--entry SOURCE=SOURCE_NAME`. The tool resolves the source name to one external
+VC7 symbol, rejects absent or ambiguous entries, and records the selection in
+JSON. The entry must be real maintained source; it is still a diagnostic link
+choice and grants no ownership or exactness credit by itself.
+
 A canonical `artifact_kind = "linked-pe"` unit uses the same cold compiler and
 linker surfaces but adds a target-bound acceptance contract. The comparator
 requires one uniquely named `source.ltcg.obj` PDB contribution, checks its full

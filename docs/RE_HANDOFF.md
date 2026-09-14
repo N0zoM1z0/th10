@@ -19,9 +19,10 @@
 - Completed session checkpoint: `ead21f9 gpt-5.6-sol: rank exact reconstruction backlog`.
 - Completed session checkpoint: `d4af1a5 gpt-5.6-sol: recover ECL core lifecycles`.
 - Completed session checkpoint: `e2fecf3 gpt-5.6-sol: recover ECL host hierarchy`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM VM lifecycle`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `2dbce7d gpt-5.6-sol: recover ANM VM lifecycle`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM manager core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-core/`. The ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-manager-core/`. The ANM-VM, ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -41,7 +42,47 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM VM lifecycle
+## Current packet: ANM manager core
+
+TH10-local construction, allocation, callback, vtable and destruction evidence
+establishes an `0x89AC`-byte polymorphic ANM manager. It embeds the two already
+proved `0x3AC` VMs at `+0x14` and `+0x3C0`; its single table entry at
+`0x0046CB14` points to a six-byte virtual method returning `0x89AC`. Construction
+clears the complete manager, publishes `g_AnmManagerView` at `0x004776E0`, and
+sets the observed flags, capture index, default scale and draw-layer state.
+
+Maintained source now covers construction, size query, initialization,
+destruction, allocation rollback, and three chain callbacks. Initialization
+loads `ascii.anm`, `text.anm`, and `capture.anm`, registers callbacks at
+priorities 4, `0x30`, and `0x26`, and binds scripts 0 and `0x62` to the two VMs.
+Destruction removes those chain elements, releases the three backing resources,
+clears the global, and lets C++ destroy the embedded VMs in reverse order.
+Normal/LTCG diagnostics remain mismatches for Initialize (309/301 versus 330),
+destructor (352/348 versus 467), factory (70 versus 69), and secondary draw
+callback (7 versus 10). Their source presence does not grant exactness.
+
+Four functions are canonical exact across **290 bytes**: the 251-byte manager
+constructor, six-byte virtual size query, 26-byte update callback, and seven-byte
+primary draw adapter. The constructor is exact only when the real 69-byte
+factory is selected as the linked entry; that context reproduces the target's
+private ESI receiver and contains exactly two declared DIR32 fields for the
+vtable and manager global. The draw adapter's sole REL32 replays to its reviewed
+target owner at `0x00401760`.
+
+`probe-ltcg-backlog.py` and `rank-exact-backlog.py` now accept repeatable
+`--entry SOURCE=SOURCE_NAME` selections. The probe resolves that source name to
+one real external VC7 symbol, rejects absent/ambiguous/stale selections, and
+records the choice in JSON. This closes the diagnostic blind spot that made the
+constructor appear as 255-byte mismatch when it was itself forced to be the
+public link entry.
+
+Current tracking contains **1,282** candidates, **145** authored functions,
+**117** source mappings, and **54 canonical exact functions / 2,132 bytes**.
+The authored source backlog is **59**. Relative to `2dbce7d`, this packet adds
+eight authored functions / 1,166 bytes, eight source mappings, three denominator
+candidates, and four exact functions / 290 bytes.
+
+## Completed packet: ANM VM lifecycle
 
 Direct TH10 constructor, destructor and reset evidence establishes a `0x3AC`-
 byte ANM VM. Its constructor runs nine `0x14` timer-like member constructors,
@@ -61,8 +102,9 @@ Two cold canonical passes reproduce four complete functions across **192
 bytes**: the 34-byte destructor and 88-byte constructor as normal COFF, and the
 55-byte matrix and 15-byte timer helpers as raw-equal linked-PE PDB
 contributions with no linked fields. The 273-byte reset compiles to the same
-extent under both current probes but remains non-exact because neither bounded
-harness recovers the target's private EDX receiver and register/save ordering.
+extent under normal COFF but remains non-exact because the bounded harnesses do
+not recover the target's private EDX receiver and register/save ordering. In the
+new explicit manager-factory link context it is 271 bytes.
 The emitted seven-byte timer constructor shape also occurs at two target
 locations already associated with other or unresolved owners; it receives no
 ANM mapping or exactness credit.

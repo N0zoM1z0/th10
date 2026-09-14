@@ -52,8 +52,34 @@ def parse_args() -> argparse.Namespace:
         default="all",
         help="filter text output; JSON always contains every result",
     )
+    parser.add_argument(
+        "--entry",
+        action="append",
+        default=[],
+        metavar="SOURCE=SOURCE_NAME",
+        help=(
+            "select a real source function as the LTCG link entry for one source "
+            "(repeatable); default: first uniquely resolved backlog function"
+        ),
+    )
     parser.add_argument("--json", action="store_true", help="emit one JSON report")
     return parser.parse_args()
+
+
+def parse_entry_overrides(values: list[str]) -> dict[str, str]:
+    overrides: dict[str, str] = {}
+    for value in values:
+        if "=" not in value:
+            raise ValueError(f"invalid --entry {value!r}; expected SOURCE=SOURCE_NAME")
+        source, source_name = value.split("=", 1)
+        source = source.replace("\\", "/").strip()
+        source_name = source_name.strip()
+        if not source or not source_name:
+            raise ValueError(f"invalid --entry {value!r}; both sides are required")
+        if source in overrides:
+            raise ValueError(f"duplicate --entry source {source!r}")
+        overrides[source] = source_name
+    return overrides
 
 
 def json_command(command: list[str], label: str) -> dict[str, object]:
@@ -214,6 +240,7 @@ def probe_source(
     target: PEImage,
     linker: Path,
     environment: dict[str, str],
+    entry_name: str | None = None,
 ) -> dict[str, object]:
     source = (ROOT / source_name).resolve()
     source.relative_to(ROOT.resolve())
@@ -227,14 +254,25 @@ def probe_source(
         hint = function.get("source_name_hint")
         if isinstance(hint, str) and hint:
             symbols_by_hint[hint].append(str(function["symbol"]))
-    entry_candidates = [
-        symbols_by_hint[str(item["name"])][0]
-        for item in backlog
-        if len(symbols_by_hint.get(str(item["name"]), [])) == 1
-    ]
-    if not entry_candidates:
-        raise ValueError(f"no external entry symbol can be derived for {source_name}")
-    linked = cold_link(source, directory, entry_candidates[0], linker, environment)
+    if entry_name is not None:
+        entry_candidates = symbols_by_hint.get(entry_name, [])
+        if len(entry_candidates) != 1:
+            raise ValueError(
+                f"explicit LTCG entry {entry_name!r} for {source_name} resolves "
+                f"to {len(entry_candidates)} external symbols: {entry_candidates}"
+            )
+        entry_selection = "explicit-source-name"
+    else:
+        entry_candidates = [
+            symbols_by_hint[str(item["name"])][0]
+            for item in backlog
+            if len(symbols_by_hint.get(str(item["name"]), [])) == 1
+        ]
+        if not entry_candidates:
+            raise ValueError(f"no external entry symbol can be derived for {source_name}")
+        entry_selection = "first-backlog-symbol"
+    entry_symbol = entry_candidates[0]
+    linked = cold_link(source, directory, entry_symbol, linker, environment)
     linked_report = linked_functions(linked["image"], linked["map"], linked["pdb"])
     publics = map_publics(linked["map"])
     candidate_image = PEImage(linked["image"])
@@ -303,7 +341,9 @@ def probe_source(
         counts[str(report["result"])] += 1
     return {
         "source": source_name,
-        "entry_symbol": entry_candidates[0],
+        "entry_name": entry_name,
+        "entry_symbol": entry_symbol,
+        "entry_selection": entry_selection,
         "normal_profile": NORMAL_PROFILE,
         "ltcg_profile": LTCG_PROFILE,
         "link_harness": HARNESS_KIND,
@@ -359,12 +399,26 @@ def main() -> int:
         by_source: dict[str, list[dict[str, object]]] = defaultdict(list)
         for item in backlog:
             by_source[str(item["source"])].append(item)
+        entry_overrides = parse_entry_overrides(args.entry)
+        unknown_entry_sources = sorted(set(entry_overrides) - set(by_source))
+        if unknown_entry_sources:
+            raise ValueError(
+                "--entry source is absent from the selected authored backlog: "
+                + ", ".join(unknown_entry_sources)
+            )
         target = verified_target()
         with TOOLS_LOCK.open("rb") as stream:
             decoder_identity = verify_capstone(tomllib.load(stream)["capstone"])
         linker, environment = tool_environment()
         source_reports = [
-            probe_source(source, items, target, linker, environment)
+            probe_source(
+                source,
+                items,
+                target,
+                linker,
+                environment,
+                entry_overrides.get(source),
+            )
             for source, items in sorted(by_source.items())
         ]
         counts: dict[str, int] = defaultdict(int)
@@ -376,6 +430,7 @@ def main() -> int:
             "result": "ok",
             "acceptance_authority": "none",
             "artifact_kind": "anchored-linked-pe-diagnostic",
+            "entry_overrides": entry_overrides,
             "decoder": {"name": "capstone", **decoder_identity},
             "source_count": len(source_reports),
             "function_count": len(backlog),

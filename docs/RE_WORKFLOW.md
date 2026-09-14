@@ -33,7 +33,11 @@ disk target, Ghidra target, ledgers, and live status using the commands in
    strip `/GL` and do not use the standalone comparator. Use
    `python3 scripts/probe-ltcg-backlog.py --source SOURCE` to recover a
    PE/PDB-bound linked extent and structural diagnostic, while keeping exactness
-   unknown until review establishes every resolved field. A canonical linked
+   unknown until review establishes every resolved field. If target calls show
+   that LTCG lowers the candidate only inside a particular maintained caller,
+   add `--entry SOURCE=SOURCE_NAME`; the report records and validates that
+   explicit context. `rank-exact-backlog.py` accepts the same option. A
+   canonical linked
    unit must declare `artifact_kind = "linked-pe"`, the fixed compiler/link
    profiles and harness, its unique PDB-owned symbol extent, and every semantic
    link target. `compare-linked-function.py` must decode the complete extent,
