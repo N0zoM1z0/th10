@@ -76,3 +76,11 @@ EnemyManagerDrawCallback,0x0040D820,function
 EnemyConstruct,0x0040D830,function
 EnemyTeardown,0x0040DAE0,function
 EnemyFinalizeDeath,0x0040E5F0,function
+EnemyEclResourceView::LoadFile,0x0040CD20,function
+EnemyManagerView::EnemyManagerView,0x0040D260,function
+EnemyManagerView::Initialize,0x0040D280,function
+EnemyEclResourceView::EnemyEclResourceView,0x0040D3D0,function
+EnemyEclResourceView::LoadPackage,0x0040D400,function
+EnemyManagerView::~EnemyManagerView,0x0040D530,function
+EnemyEclResourceView::~EnemyEclResourceView,0x0040D680,function
+EnemyManagerCreate,0x0040D6B0,function

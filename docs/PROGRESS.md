@@ -5,12 +5,12 @@ their boundaries and origins must be reviewed independently.
 
 | Measure | Count |
 | --- | ---: |
-| Tracked 1.00a function candidates | 1,251 |
-| Origin/boundary review pending | 1,139 |
-| Confirmed authored functions | 104 |
-| Confirmed authored code bytes | 35,474 |
-| Classified exclusions | 8 |
-| Source-present authored mappings | 77 |
+| Tracked 1.00a function candidates | 1,256 |
+| Origin/boundary review pending | 1,133 |
+| Confirmed authored functions | 112 |
+| Confirmed authored code bytes | 36,636 |
+| Classified exclusions | 11 |
+| Source-present authored mappings | 85 |
 | Canonical exact functions | 1 |
 | Canonical exact authored bytes | 6 |
 

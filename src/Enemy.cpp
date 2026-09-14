@@ -42,6 +42,114 @@ typedef char EnemyManagedVmRegistryPrimaryAt72DAD4[
 typedef char EnemyManagedVmRegistrySecondaryAt72DADC[
     (offsetof(EnemyManagedVmRegistryView, secondaryList) == 0x72dadc) ? 1 : -1];
 
+typedef int (__fastcall *EnemyChainCallback)(EnemyManagerView *manager);
+
+// Shared 0x24-byte chain-node shape established independently by the Player
+// and Enemy registration sites. Only fields consumed by this packet are named.
+struct EnemyCallbackNodeView
+{
+    int priority;
+    unsigned int flags;
+    EnemyChainCallback callback;
+    void *unknown00C;
+    void *unknown010;
+    EnemyCallbackNodeView *self14;
+    void *unknown018;
+    void *unknown01C;
+    EnemyManagerView *owner;
+};
+typedef char EnemyCallbackNodeViewSizeIs24[
+    (sizeof(EnemyCallbackNodeView) == 0x24) ? 1 : -1];
+typedef char EnemyCallbackNodeViewCallbackAt08[
+    (offsetof(EnemyCallbackNodeView, callback) == 0x08) ? 1 : -1];
+typedef char EnemyCallbackNodeViewSelfAt14[
+    (offsetof(EnemyCallbackNodeView, self14) == 0x14) ? 1 : -1];
+typedef char EnemyCallbackNodeViewOwnerAt20[
+    (offsetof(EnemyCallbackNodeView, owner) == 0x20) ? 1 : -1];
+
+struct EnemyConstructorDwordView
+{
+    unsigned int value;
+    EnemyConstructorDwordView() : value(0) {}
+};
+typedef char EnemyConstructorDwordViewSizeIs04[
+    (sizeof(EnemyConstructorDwordView) == 0x04) ? 1 : -1];
+
+// Target allocation at 0x40D28D is exactly 0x1098 bytes. The resource has a
+// two-slot base vtable and a three-slot derived vtable: slot 0 is inherited,
+// slot 1 is overridden by target 0x40D400, and slot 2 is added at 0x40CD20.
+// The names below describe behavior only; original type identifiers are unknown.
+struct EnemyEclResourceBaseView
+{
+    virtual int AddScriptData(void *scriptData);
+    virtual int LoadPackage(const unsigned char *packageData);
+
+    int loadedScriptCount;
+    int lookupCount;
+    void *scriptData[32];
+    void *lookupTable;
+    unsigned char unknown090[0x1000];
+    EnemyConstructorDwordView tailState1090;
+    EnemyConstructorDwordView tailState1094;
+
+    EnemyEclResourceBaseView()
+    {
+        memset(this, 0, sizeof(*this));
+    }
+
+    ~EnemyEclResourceBaseView()
+    {
+        if (lookupTable != NULL)
+        {
+            free(lookupTable);
+            lookupTable = NULL;
+        }
+    }
+};
+
+typedef char EnemyEclResourceBaseViewSizeIs1098[
+    (sizeof(EnemyEclResourceBaseView) == 0x1098) ? 1 : -1];
+typedef char EnemyEclResourceBaseScriptDataAt00C[
+    (offsetof(EnemyEclResourceBaseView, scriptData) == 0x0c) ? 1 : -1];
+typedef char EnemyEclResourceBaseLookupTableAt08C[
+    (offsetof(EnemyEclResourceBaseView, lookupTable) == 0x8c) ? 1 : -1];
+typedef char EnemyEclResourceBaseTailState1090[
+    (offsetof(EnemyEclResourceBaseView, tailState1090) == 0x1090) ? 1 : -1];
+typedef char EnemyEclResourceBaseTailState1094[
+    (offsetof(EnemyEclResourceBaseView, tailState1094) == 0x1094) ? 1 : -1];
+
+struct EnemyEclResourceView : EnemyEclResourceBaseView
+{
+    EnemyEclResourceView() {}
+    ~EnemyEclResourceView();
+
+    virtual int LoadPackage(const unsigned char *packageData);
+    virtual int LoadFile(const char *filename);
+};
+typedef char EnemyEclResourceViewSizeIs1098[
+    (sizeof(EnemyEclResourceView) == 0x1098) ? 1 : -1];
+
+struct EnemyAnimationOwnerView
+{
+    unsigned char unknown000000[0x3ad090];
+    void *resourceSlots[4];
+};
+typedef char EnemyAnimationOwnerResourceSlotsAt3AD090[
+    (offsetof(EnemyAnimationOwnerView, resourceSlots) == 0x3ad090) ? 1 : -1];
+
+struct EnemyPrimaryResourceOwnerView
+{
+    unsigned char unknown000000[0x3e0b50];
+    void *primaryEnemyResource;
+};
+typedef char EnemyPrimaryResourceAt3E0B50[
+    (offsetof(EnemyPrimaryResourceOwnerView, primaryEnemyResource) == 0x3e0b50) ? 1 : -1];
+
+struct EnemyCriticalSectionView
+{
+    unsigned char storage[0x18];
+};
+
 extern PlayerFloat3 g_EnemyGlobalPositionOffset;
 extern float g_EnemyPlayfieldMinX;
 extern float g_EnemyPlayfieldMaxX;
@@ -54,6 +162,14 @@ extern float g_PlayerTimerScale;
 extern int g_EnemySpawnLayerIndex;
 extern EnemyManagerView *g_EnemyManager;
 extern EnemyManagedVmRegistryView *g_EnemyManagedVmRegistry;
+
+extern void *g_EnemyCallbackManager;
+extern EnemyCriticalSectionView g_EnemyCallbackCriticalSection;
+extern unsigned char g_EnemyCallbackLockDepth;
+extern unsigned char g_EnemyLifecycleFlags;
+extern EnemyAnimationOwnerView *g_EnemyAnimationOwner;
+extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
+extern char g_EnemyEclFilenameBuffer[];
 
 struct EnemyAnimationModeView
 {
@@ -103,7 +219,8 @@ EnemyManagedVmView *EnemyResolveManagedVm(unsigned int vmId);
 void EnemySpawnDamageEffect(int kind, float positionX);
 void EnemyAdvanceTimer(PlayerTimerView *timer, float amount);
 void EnemyPrepareRuntimeStorage(EnemyRuntimeView *runtime);
-int EnemyLookupEclSubroutine(void *scriptDatabase, const char *name);
+int EnemyLookupEclSubroutine(
+    EnemyEclResourceView *scriptDatabase, const char *name);
 void EnemyInvokeScalarDeletingDestructor(EnemyFullObjectView *enemy, int freeObject);
 void EnemyPlayDeathSound(int soundId, float positionX);
 void EnemySpawnDeathEffect(
@@ -113,6 +230,26 @@ void EnemySpawnItem(
 void EnemyDropItemCounts(
     const PlayerFloat3 *position, int *itemDropBlock);
 void EnemyPlaySound(int soundId);
+
+extern "C" void __stdcall EnterCriticalSection(EnemyCriticalSectionView *section);
+extern "C" void __stdcall LeaveCriticalSection(EnemyCriticalSectionView *section);
+void __fastcall EnemyUnlinkCallbackNode(
+    EnemyCallbackNodeView *node, void *manager);
+void EnemyRegisterUpdateCallbackNode(
+    EnemyCallbackNodeView *node, int priority, void *manager);
+void EnemyRegisterDrawCallbackNode(
+    EnemyCallbackNodeView *node, int priority, void *manager);
+void * __fastcall EnemyLoadAnimationResource(
+    int resourceIndex, EnemyAnimationOwnerView *owner, const char *filename);
+void EnemyDestroyAnimationResource(
+    EnemyAnimationOwnerView *owner, void *resource);
+void EnemyReportResourceLoadError();
+// Target 0x0044B360 receives filename in EAX plus stack sizeOut/mode; this
+// logical declaration preserves all three source values without claiming that
+// private register assignment.
+void *EnemyLoadFileBytes(
+    const char *filename, unsigned int *sizeOut, int mode);
+void EnemyManagerClear(EnemyManagerView *manager);
 
 // Maintained source for the reviewed 0x0040DC80-0x0040E5EB hostile runtime
 // update owner. Allocation/constructor evidence proves that the sole target
@@ -475,6 +612,218 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     return 0;
 }
 
+
+static EnemyCallbackNodeView *CreateEnemyCallbackNode(EnemyChainCallback callback)
+{
+    EnemyCallbackNodeView *node = static_cast<EnemyCallbackNodeView *>(
+        ::operator new(sizeof(EnemyCallbackNodeView)));
+    if (node != NULL)
+    {
+        node->priority = 0;
+        node->flags &= ~1u;
+        node->callback = NULL;
+        node->unknown00C = NULL;
+        node->unknown010 = NULL;
+        node->self14 = node;
+        node->unknown018 = NULL;
+        node->unknown01C = NULL;
+        node->callback = callback;
+    }
+    return node;
+}
+
+static void RemoveEnemyCallbackNode(EnemyCallbackNodeView *node)
+{
+    if (node == NULL)
+        return;
+
+    EnterCriticalSection(&g_EnemyCallbackCriticalSection);
+    ++g_EnemyCallbackLockDepth;
+    EnemyUnlinkCallbackNode(node, g_EnemyCallbackManager);
+    LeaveCriticalSection(&g_EnemyCallbackCriticalSection);
+    --g_EnemyCallbackLockDepth;
+}
+
+// Target 0x0040CD20-0x0040CD7E is the filename-loading virtual entry of the
+// 0x1098-byte ECL resource object. It carries the object in ECX, one filename
+// on the stack, and RET 4. The maintained member/type spelling is descriptive.
+int EnemyEclResourceView::LoadFile(const char *filename)
+{
+    g_EnemyEclFilenameBuffer[0] = '\0';
+    strcat(g_EnemyEclFilenameBuffer, filename);
+
+    void *scriptData = EnemyLoadFileBytes(
+        g_EnemyEclFilenameBuffer, NULL, 0);
+    const int result = AddScriptData(scriptData);
+    return result < 0 ? -1 : 0;
+}
+
+// Target 0x0040D400-0x0040D4EE is reached from the second slot of the derived
+// ECL-resource vtable. The package begins with an ANIM string list, followed by
+// a four-byte-aligned ECLI string list. Animation slots start at target index 9;
+// loaded resources are mirrored into manager effectResources[1..].
+int EnemyEclResourceView::LoadPackage(const unsigned char *packageData)
+{
+    const unsigned int ANIM_MAGIC = 0x4d494e41u;
+    const unsigned int ECLI_MAGIC = 0x494c4345u;
+    const unsigned int *header =
+        reinterpret_cast<const unsigned int *>(packageData);
+    if (header[0] != ANIM_MAGIC)
+        return 0;
+
+    unsigned int animationCount = header[1];
+    const char *cursor = reinterpret_cast<const char *>(packageData + 8);
+    for (unsigned int i = 0; i < animationCount; ++i)
+    {
+        void *loaded = EnemyLoadAnimationResource(
+            static_cast<int>(i + 9), g_EnemyAnimationOwner, cursor);
+        g_EnemyManager->effectResources[i + 1] = loaded;
+        if (loaded == NULL)
+        {
+            EnemyReportResourceLoadError();
+            return -1;
+        }
+        cursor += strlen(cursor) + 1;
+    }
+
+    const unsigned int offset = static_cast<unsigned int>(
+        cursor - reinterpret_cast<const char *>(packageData));
+    const unsigned int remainder = offset & 3u;
+    if (remainder != 0)
+        cursor += 4u - remainder;
+
+    header = reinterpret_cast<const unsigned int *>(cursor);
+    if (header[0] == ECLI_MAGIC)
+    {
+        const unsigned int eclCount = header[1];
+        cursor += 8;
+        for (unsigned int i = 0; i < eclCount; ++i)
+        {
+            LoadFile(cursor);
+            cursor += strlen(cursor) + 1;
+        }
+    }
+
+    return 0;
+}
+
+// Target 0x0040D680-0x0040D6A3 is the derived destruction path. Its only
+// source-visible work is the inherited +0x8C owned-table release; VC7 owns the
+// observed transition back to the base vtable rather than maintained source.
+
+EnemyEclResourceView::~EnemyEclResourceView()
+{
+}
+
+// Target 0x0040D260-0x0040D27C is retained independently and is also inlined
+// byte-for-byte into the factory at 0x0040D6C1. The nested timer constructor
+// clears +0x50 before this source body clears the full 0x68-byte manager,
+// marks flags bit 1, and publishes the process-global owner.
+EnemyManagerView::EnemyManagerView()
+{
+    memset(this, 0, sizeof(*this));
+    flags |= 2u;
+    g_EnemyManager = this;
+}
+
+// Target 0x0040D280-0x0040D3CD carries manager in EBX and one ECL-resource
+// filename on the stack, returning with RET 4. It installs the process-owned
+// ECL resource, registers update/draw callbacks, and initializes manager timer.
+int EnemyManagerView::Initialize(const char *eclResourceFilename)
+{
+    EnemyManagerView *manager = this;
+    manager->effectResources[0] =
+        g_EnemyPrimaryResourceOwner->primaryEnemyResource;
+
+    EnemyEclResourceView *resource = new EnemyEclResourceView;
+    manager->scriptDatabase = resource;
+    resource->LoadFile(eclResourceFilename);
+
+    EnemyCallbackNodeView *updateNode =
+        CreateEnemyCallbackNode(EnemyManagerUpdateCallback);
+    updateNode->owner = manager;
+    updateNode->flags &= ~2u;
+    updateNode->flags |= 1u;
+    EnemyRegisterUpdateCallbackNode(updateNode, 0x12, g_EnemyCallbackManager);
+    manager->updateCallbackNode = updateNode;
+
+    EnemyCallbackNodeView *drawNode =
+        CreateEnemyCallbackNode(EnemyManagerDrawCallback);
+    drawNode->owner = manager;
+    drawNode->flags &= ~2u;
+    drawNode->flags |= 1u;
+    EnemyRegisterDrawCallbackNode(drawNode, 0x14, g_EnemyCallbackManager);
+    manager->drawCallbackNode = drawNode;
+
+    if ((manager->timer.flags & 1u) == 0)
+    {
+        manager->timer.previous = -999999;
+        manager->timer.current = 0;
+        manager->timer.subframe = 0.0f;
+        manager->timer.scale = &g_PlayerTimerScale;
+        manager->timer.flags |= 1u;
+    }
+    manager->timer.current = 0;
+    manager->timer.subframe = 0.0f;
+    manager->timer.previous = -1;
+    return 0;
+}
+
+// Target 0x0040D530-0x0040D65B carries manager in EAX and returns with plain
+// RET. It first clears live enemies/resources, removes both chain nodes, releases
+// all ECL resource allocations, conditionally unloads four animation resources,
+// and finally clears the global manager owner.
+EnemyManagerView::~EnemyManagerView()
+{
+    EnemyManagerView *manager = this;
+    EnemyManagerClear(manager);
+
+    RemoveEnemyCallbackNode(manager->updateCallbackNode);
+    RemoveEnemyCallbackNode(manager->drawCallbackNode);
+
+    EnemyEclResourceView *resource = manager->scriptDatabase;
+    for (int i = 0; i < 32; ++i)
+    {
+        if (resource->scriptData[i] != NULL)
+            free(resource->scriptData[i]);
+    }
+
+    if (resource != NULL)
+        delete resource;
+    manager->scriptDatabase = NULL;
+
+    if ((g_EnemyLifecycleFlags & 9u) == 0)
+    {
+        for (int i = 0; i < 4; ++i)
+        {
+            void *loaded = g_EnemyAnimationOwner->resourceSlots[i];
+            if (loaded != NULL)
+            {
+                EnemyDestroyAnimationResource(g_EnemyAnimationOwner, loaded);
+                free(loaded);
+                g_EnemyAnimationOwner->resourceSlots[i] = NULL;
+            }
+        }
+    }
+
+    g_EnemyManager = NULL;
+}
+
+// Target 0x0040D6B0-0x0040D70E allocates exactly 0x68 bytes, runs the nested
+// timer constructor before zeroing the full manager, publishes the global owner,
+// then calls the EBX-bound initializer. The sole source argument is stack-bound
+// and the target returns with RET 4.
+EnemyManagerView * __stdcall EnemyManagerCreate(
+    const char *eclResourceFilename)
+{
+    EnemyManagerView *manager = new EnemyManagerView;
+    if (manager->Initialize(eclResourceFilename) != 0)
+    {
+        delete manager;
+        return NULL;
+    }
+    return manager;
+}
 
 // Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
 // machine boundary carries the full object in ESI and one stack subroutine-name

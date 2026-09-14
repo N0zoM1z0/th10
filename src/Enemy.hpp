@@ -200,6 +200,9 @@ struct EnemyScriptStateView
 typedef char EnemyScriptStateViewSizeIs08[
     (sizeof(EnemyScriptStateView) == 0x08) ? 1 : -1];
 
+struct EnemyEclResourceView;
+struct EnemyCallbackNodeView;
+
 struct EnemyOwnedAllocationNodeView
 {
     void *allocation;
@@ -225,7 +228,7 @@ struct EnemyFullObjectView
     unsigned char spawnLayerMask;
     unsigned char unknown1025[0x03];
     unsigned int flags1028;
-    void *scriptDatabase;
+    EnemyEclResourceView *scriptDatabase;
     EnemyScriptStateView *scriptStateMirror;
     EnemyOwnedAllocationNodeView *ownedAllocations;
     int value1038;
@@ -248,14 +251,18 @@ typedef char EnemyFullObjectRuntimeAt103C[
 // all 0x1A dwords. Only fields used by the reviewed lifecycle seam are exposed.
 struct EnemyManagerView
 {
+    EnemyManagerView();
+    ~EnemyManagerView();
+    int Initialize(const char *eclResourceFilename);
+
     unsigned int flags;
     unsigned char unknown004[0x04];
-    void *updateCallbackNode;
-    void *drawCallbackNode;
+    EnemyCallbackNodeView *updateCallbackNode;
+    EnemyCallbackNodeView *drawCallbackNode;
     EnemyFullObjectView *specialEnemySlots[8];
     void *effectResources[4];
     PlayerTimerView timer;
-    void *scriptDatabase;
+    EnemyEclResourceView *scriptDatabase;
     EnemyListNodeView *enemyListHead;
     EnemyListNodeView *enemyListTail;
     int activeEnemyCount;
@@ -302,6 +309,13 @@ int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy);
 int EnemyManagerUpdate(EnemyManagerView *manager);
 int __fastcall EnemyManagerUpdateCallback(EnemyManagerView *manager);
 int __fastcall EnemyManagerDrawCallback(EnemyManagerView *manager);
+
+// Descriptive maintained interfaces for the reviewed manager/resource lifetime
+// cohort. The target uses private EBX/EAX/ESI receiver live-ins for several
+// bodies; those machine contracts are recorded in the function ledger rather
+// than falsely expressed as ordinary source calling conventions here.
+EnemyManagerView * __stdcall EnemyManagerCreate(
+    const char *eclResourceFilename);
 
 // Descriptive maintained name for the reviewed 0x0040DC80-0x0040E5EB owner.
 // The target boundary is one stack EnemyRuntimeView* argument with RET 4. The

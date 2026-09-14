@@ -75,3 +75,11 @@ EnemyManagerDrawCallback
 EnemyConstruct
 EnemyTeardown
 EnemyFinalizeDeath
+EnemyEclResourceView::LoadFile
+EnemyManagerView::EnemyManagerView
+EnemyManagerView::Initialize
+EnemyEclResourceView::EnemyEclResourceView
+EnemyEclResourceView::LoadPackage
+EnemyManagerView::~EnemyManagerView
+EnemyEclResourceView::~EnemyEclResourceView
+EnemyManagerCreate
