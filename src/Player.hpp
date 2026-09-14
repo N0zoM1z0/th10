@@ -116,9 +116,11 @@ typedef char PlayerEffectRowFinalizeAt18[
 typedef char PlayerEffectRowMotionAt24[
     (offsetof(PlayerEffectRowView, motion) == 0x24) ? 1 : -1];
 
-// Maintained partial draw-VM view beginning at Player +0x14. Only the
-// target-observed color, draw position and flags offsets are exposed; the
-// original VM type/field identifiers and physical object extent remain unknown.
+// Maintained 0x3AC-byte draw-VM storage view beginning at Player +0x14.
+// TH10's VM reset owner clears exactly 0xEB dwords from this base and the
+// Player initializer invokes the VM setup owner on the same address. Only the
+// target-observed fields below are named; the original VM type/field names are
+// not established.
 struct PlayerDrawVmView
 {
     unsigned char unknown000[0x300];
@@ -129,7 +131,10 @@ struct PlayerDrawVmView
     float positionZ;
     unsigned char unknown34C[0x10];
     unsigned int flags;
+    unsigned char unknown360[0x4c];
 };
+typedef char PlayerDrawVmViewSizeIs3AC[
+    (sizeof(PlayerDrawVmView) == 0x3ac) ? 1 : -1];
 typedef char PlayerDrawVmViewColorAt300[
     (offsetof(PlayerDrawVmView, color) == 0x300) ? 1 : -1];
 typedef char PlayerDrawVmViewPositionAt340[
@@ -137,16 +142,41 @@ typedef char PlayerDrawVmViewPositionAt340[
 typedef char PlayerDrawVmViewFlagsAt35C[
     (offsetof(PlayerDrawVmView, flags) == 0x35c) ? 1 : -1];
 
+
+// Maintained view of the fixed header of the variable-sized Player .sht data.
+// The first three float names remain offset-based because their original
+// semantics are not established. Speed fields are named from TH10-local use.
+struct PlayerOptionDataView
+{
+    unsigned short unknown000;
+    unsigned short entryCount;
+    float value04;
+    float value08;
+    float value0C;
+    float axisSpeedMode0;
+    float axisSpeedMode1;
+    float diagonalSpeedMode0;
+    float diagonalSpeedMode1;
+};
+typedef char PlayerOptionDataViewHeaderSizeIs20[
+    (sizeof(PlayerOptionDataView) == 0x20) ? 1 : -1];
+typedef char PlayerOptionDataViewCountAt02[
+    (offsetof(PlayerOptionDataView, entryCount) == 0x02) ? 1 : -1];
+typedef char PlayerOptionDataViewSpeedsAt10[
+    (offsetof(PlayerOptionDataView, axisSpeedMode0) == 0x10) ? 1 : -1];
+
+struct PlayerCallbackNodeView;
+
 // Maintained partial TH10 player layout. Only target-observed fields needed by
-// the reviewed Player replay, option, movement, update, and draw seams are exposed.
-// This is not an
-// original-symbol or translation-unit ownership claim.
+// the reviewed Player replay, option, movement, update, and draw seams are
+// exposed. This is not an original-symbol or translation-unit ownership claim.
 struct Player
 {
-    unsigned char unknown000[0x10];
+    unsigned char unknown000[0x08];
+    PlayerCallbackNodeView *updateCallbackNode;
+    PlayerCallbackNodeView *drawCallbackNode;
     void *resource;
     PlayerDrawVmView drawVm;
-    unsigned char unknown374[0x4c];
     PlayerFloat3 drawPosition;
     int positionX;
     int positionY;
@@ -168,7 +198,7 @@ struct Player
     int previousVerticalSpeed;
     int movementDirection;
     int runtimeState;
-    unsigned char *optionData;
+    PlayerOptionDataView *optionData;
     PlayerTimerView updateTimer0;
     PlayerTimerView updateTimer1;
     PlayerTimerView updateTimer2;
@@ -188,6 +218,10 @@ struct Player
     PlayerPositionPair replayPositionHistory[33];
     int optionMode;
 };
+typedef char PlayerUpdateCallbackNodeAt08[
+    (offsetof(Player, updateCallbackNode) == 0x08) ? 1 : -1];
+typedef char PlayerDrawCallbackNodeAt0C[
+    (offsetof(Player, drawCallbackNode) == 0x0c) ? 1 : -1];
 typedef char PlayerResourceAt10[
     (offsetof(Player, resource) == 0x10) ? 1 : -1];
 typedef char PlayerDrawVmViewAt14[
@@ -236,8 +270,16 @@ typedef char PlayerReplayHistoryAt436C[
     (offsetof(Player, replayPositionHistory) == 0x436c) ? 1 : -1];
 typedef char PlayerOptionModeAt4474[
     (offsetof(Player, optionMode) == 0x4474) ? 1 : -1];
+typedef char PlayerSizeIs4478[
+    (sizeof(Player) == 0x4478) ? 1 : -1];
 
 extern Player *g_Player;
+
+// Descriptive maintained name for the reviewed 0x004247F0-0x00424D8A owner.
+// The target machine boundary receives Player through live-in EBX and returns
+// an int in EAX; the original source identifier, declaration and TU remain
+// unknown.
+int PlayerInitialize(Player *player);
 
 // Descriptive maintained name for the reviewed 0x00426F70-0x0042792D owner.
 // The target machine boundary is one stack Player* argument with callee pop 4;

@@ -60,3 +60,4 @@ PlayerOptionSpecialCallback
 PlayerDrawCallback
 PlayerUpdateCallback
 PlayerUpdateMovementAndOptions
+PlayerInitialize

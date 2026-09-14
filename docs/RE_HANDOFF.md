@@ -2,15 +2,15 @@
 
 ## Recovery and authority
 
-The campaign remains active in exact source reconstruction with early faithful
-Windows i386 build feedback. Source presence, compilation, canonical exactness,
+This campaign remains in exact source reconstruction with early faithful Windows
+i386 build feedback. Source presence, compilation, canonical exactness,
 whole-build closure, runtime validation, and Factory Truth Kernel acceptance are
-independent states. Native Ghidra remains provisional semantic evidence with
+independent states. Native Ghidra is provisional semantic evidence with
 `exactness_credit=none`.
 
 This conversation started clean on branch `main` at
-`275ea521cef4723b4d46b5c7a31355edddbeff17`, with
-`origin/main=ae83c3ab72400534834746aeb7613a603a347310`, ahead3/behind0, 0 staged,
+`6a40c3a69c378132d48fe7e63997334ddc7412cc`, with
+`origin/main=ae83c3ab72400534834746aeb7613a603a347310`, ahead4/behind0, 0 staged,
 0 unstaged, 0 untracked, and 0 conflicts. No interrupted tracked work required
 recovery. Ignored private `resources/th10.exe`, `.analysis/`, `.tools/`, `build/`,
 `ghidra-project/`, caches, and prior campaign state were preserved. The private
@@ -19,103 +19,99 @@ and no `TH10_TARGET_PATH` override were used.
 
 All prompt-named repository rules, Factory contracts, and Factory guidance paths
 were reread through the registered repository runner before editing. No guidance
-path was missing. Target, executable VC7.1 SP1 toolchain, tracking, reconstruction
-status, public CI, canonical-match graph, and open whole-build graph preflights
-passed. Honest `scripts/build.py` returned expected RC=2/open because production
-compile flags, TU partition, libraries, resources, and link order remain unknown.
+path was missing. Target, executable VC7.1 SP1 build-6030 toolchain, tracking,
+reconstruction status, public CI, canonical-match graph, and open whole-build
+graph preflights passed. The executable toolchain smoke covered normal COFF,
+LTCG, resource, and PE32 paths under the pinned headless-Wine wrapper. Honest
+`scripts/build.py` remains expected RC=2/open because production compile flags,
+TU partition, libraries, resources, and link order are not established.
 
-Native `th10-ghidra` operation discovery exposed the bounded read schemas.
-Mandatory `check {}` passed exact `target:th10-main` with
+Native `th10-ghidra` operation discovery was repeated before target-dependent
+work. Mandatory `check {}` passed exact `target:th10-main` with
 `attestation.provider_transport=factory-native-command`; target SHA-256 remains
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
-Factory transport was intermittently unavailable during recovery, preflight,
-diagnostic, and diff-read attempts. After every operation whose execution state
-was uncertain, live repository status was reread before continuing. No failed
-transport call is treated as a rolled-back transaction or as evidence.
+A fresh pre-checkpoint check passed the same binding. Intermittent Factory
+transport failures occurred during the first Ghidra check, compile, and ledger
+calls. Every uncertain operation was followed by live repository/artifact state
+inspection before retrying; no transport failure was treated as rollback or as
+evidence. One exploratory host-C++ layout probe was discarded because the host
+compiler is neither VC7 nor i386; all layout acceptance below comes from TH10
+target evidence plus pinned VC7 compilation.
 
-A current Factory accepted-snapshot request was unavailable because another
-Factory operation owns the operator path. No accepted, rejected, pending, or
-replay count is inferred from that unavailable check.
+The current Factory Truth Kernel snapshot is sequence 0 with `accepted_count=0`
+and no accepted facts/evidence. No acceptance submission or replay was performed.
+This does not accept the current checkpoint.
 
-## Hard packet: Player movement/options owner
+## Hard packet: Player initialization owner
 
-The selected packet follows the previously reviewed 3,089-byte Player update
-body into its central movement/options callee rather than harvesting a small
-helper. Reviewed target scope:
+The selected hard packet follows the previously reviewed Player update/movement
+seam into its allocation/initialization owner rather than harvesting a small
+helper:
 
-- `0x004250B0-0x004256E6`: 1,591-byte Player movement/options body
-- `0x004256E7`: one-byte post-body NOP
-- `0x004256E8-0x00425707`: first eight-entry switch table
-- `0x00425708-0x00425727`: second eight-entry switch table
-- `0x00425728-0x0042572F`: CC padding before separate `0x00425730`.
+- `0x004247F0-0x00424D8A`: reviewed 1,435-byte Player initialization body
+- `0x00424939-0x0042493F`: seven-byte unreachable `lea esp,[esp]` alignment sled
+  retained inside that physical body
+- `0x00424D8B-0x00424D8F`: CC padding outside the body
+- `0x00424D90`: independent next candidate, not folded into this packet.
 
-### Boundary and private ABI
+Ghidra reports 1,428 reachable bytes for `0x004247F0`; the seven-byte sled exactly
+reconciles the reviewed 1,435-byte physical extent. The body ends in RET at
+`0x00424D8A` and the five CC bytes close the boundary before `0x00424D90`.
 
-Ghidra recognizes the function at `0x004250B0` with 1,588 reachable bytes.
-Target control flow reconciles the three-byte difference exactly: the branch at
-`0x0042558B` skips retained LEA alignment bytes
-`0x0042558D-0x0042558F`. The authored physical body ends at plain RET
-`0x004256E6`; the following NOP, two switch tables, and CC padding are not folded
-into the 1,591-byte authored body.
+### Private ABI and Player object extent
 
-The sole observed caller is `0x00425A8C` inside the previously reviewed central
-Player update body. Immediately before that call, target code executes
-`mov edi, ebp`, where EBP is the Player owner. The callee consistently addresses
-Player storage through live-in EDI and never initializes EDI from ECX or a stack
-argument. Therefore Ghidra's provisional fastcall parameter is rejected as an
-original machine boundary. The maintained C++ function uses an ordinary
-`Player *` parameter for readability, while the ledger records the target ABI as
-`internal EDI Player* / RET`. Original source declaration, TU, and optimizer
-ownership remain unknown.
+The sole observed caller is the Player factory at `0x00425020`. It allocates
+exactly `0x4478` bytes, calls the adjacent constructor/reset owner `0x004246C0`,
+moves the returned Player into EBX, and immediately calls `0x004247F0`.
+`0x004247F0` never establishes EBX and consistently addresses Player through it,
+so the ledger records the target machine boundary as `internal EBX Player* / RET`.
+The maintained C++ `Player *` parameter is a readable spelling of that behavior,
+not an original declaration or ABI claim.
 
-The body is classified `authored_game` / Player with high confidence: its target
-behavior is bespoke Player input decoding, movement, fixed/draw position update,
-mode VM lifecycle, replay history, option callback dispatch/interpolation, and
-option VM positioning.
+The adjacent `0x004246C0` constructor/reset performs `rep stosd` for exactly
+`0x111E` dwords from the newly allocated object and returns/publishes that same
+object. Together with the factory allocation, TH10-local evidence therefore
+establishes a complete Player physical extent of `0x4478` bytes. The maintained
+layout now has a pinned-VC7 `sizeof(Player)==0x4478` assertion.
 
-## Direction tables, layout, and behavior
+The initializer passes Player `+0x14` as the embedded draw-VM base. Its observed
+reset owner `0x00401DE0` clears exactly `0xEB` dwords while preserving selected
+VM fields, establishing `0x3AC` bytes of embedded VM storage through Player
+`+0x3BF`; Player draw position begins immediately at `+0x3C0`. The maintained
+`PlayerDrawVmView` is correspondingly closed to `0x3AC` bytes without claiming
+original VM field names.
 
-Target input bits map to maintained directions 0-8 in this exact priority:
-up-left (`0x50`), down-left (`0x60`), up-right (`0x90`), down-right (`0xA0`),
-down (`0x20`), up (`0x10`), left (`0x40`), right (`0x80`), otherwise none.
+### Initializer behavior and lifetime seam
 
-The two target switch tables independently establish the two movement profiles.
-For direction values 1-8, both tables point into physical case-block order
-`4, 3, 1, 2, 5, 7, 6, 8`. The first target table at `0x004256E8` belongs to the
-nonzero option-mode speed selection and uses Player `+0x3D8` axis /
-`+0x3E0` diagonal speed. The second at `0x00425708` belongs to mode zero and
-uses `+0x3D4` axis / `+0x3DC` diagonal speed. Those fields are therefore
-maintained as mode-specific axis/diagonal speeds, replacing the earlier
-unproven X/Y naming.
+The reviewed initializer source represents these TH10-local effects:
 
-Additional TH10-local facts represented in maintained source/layout:
+- selects `pl00.anm` or `pl01.anm` from character state and loads it through the
+  observed animation owner; null resource takes the target error path and returns
+  -1;
+- consumes an already shared option-data object if present, otherwise selects one
+  of `pl00a.sht`, `pl00b.sht`, `pl00c.sht`, `pl01a.sht`, `pl01b.sht`, or
+  `pl01c.sht` from character/shot state and invokes the observed data loader;
+- allocates two 0x24-byte callback nodes, stores their callback at `+0x08` and
+  Player owner at `+0x20`, clears node flag bit 1, registers the reviewed
+  `0x00426500` update callback at priority `0x10` and `0x00426510` draw callback
+  at priority `0x16`, then stores the node handles at Player `+0x08/+0x0C`;
+- initializes the embedded draw VM from the loaded resource;
+- initializes float/fixed starting position, the four mode-specific axis/diagonal
+  speeds, all 33 replay-position history rows, three timer-shaped records, option
+  transition state, and the reviewed Player extent/derived-vector fields;
+- calls `RebuildPlayerOptions` and returns 0 on success.
 
-- Player `+0x44C/+0x450` store the previous/current horizontal and vertical
-  movement speeds used by main-VM movement-script transitions.
-- `+0x3F0/+0x3F4` are fixed movement deltas obtained from the selected speed and
-  target timer scale; fixed position `+0x3CC/+0x3D0` is clamped to
-  `[-18400, 18400] x [3200, 43200]`.
-- float draw position `+0x3C0/+0x3C4` is fixed position multiplied by target
-  `0.01f`; Z remains the existing `+0x3C8` float.
-- Player `+0x329C` is a managed-VM handle used only by this option-mode seam.
-  Nonzero mode creates it with observed layer 9, script `0x160`, and runtime
-  flag `0x40000000`; mode zero applies delete state 1 and clears the handle.
-  While valid, its target position follows Player draw position with the
-  observed 224.0f/16.0f offsets.
-- mode zero plus nonzero movement maintains the existing 33-pair replay history;
-  history row zero is refreshed every call.
-- each active 0x98-byte option selects mode-zero offset pair `+0x44` or nonzero
-  offset pair `+0x4C`, adds it to Player fixed position to form pair `+0x34`,
-  invokes the `+0x90` callback with ECX equal to the option base, then either
-  interpolates pair `+0x3C` toward the target when Player `+0x4308 >= 30` or
-  snaps on reset flag `+0x8C`.
-- primary/secondary option VM ids `+0x68/+0x6C` are positioned from pair `+0x3C`
-  after target `0.01f` conversion; the called VM helper supplies the established
-  screen offsets.
+The paired teardown owner `0x00424ED0` later removes the same callback nodes,
+corroborating the `+0x08/+0x0C` lifetime role. Helper declarations in maintained
+source are descriptive interfaces for observed effects. Private-register helper
+ABIs, original symbols, translation-unit partition, and source declaration remain
+unknown unless independently demonstrated.
 
-Maintained `PlayerUpdateMovementAndOptions` is source-present at
-`0x004250B0`. Descriptive helper declarations express observed effects without
-claiming original symbols or private helper ABIs.
+The maintained option-data header exposes only the observed fixed fields: entry
+count at `+0x02`, neutral values at `+0x04/+0x08/+0x0C`, mode-0/mode-1 axis speeds
+at `+0x10/+0x14`, and corresponding diagonal speeds at `+0x18/+0x1C`. The first
+three float fields and the three Player extent families remain deliberately
+semantically neutral; this packet does not guess hitbox/graze/item names.
 
 ## Compiler and exact feedback
 
@@ -125,37 +121,27 @@ normal:
 `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc`
 
 and the same profile plus `/GL`. `src/ReplayManager.cpp`, which consumes the
-refined Player layout, also compiles under both profiles.
+closed Player layout, also compiles under both profiles.
 
-The true fixed-normal `/Gy` movement COMDAT is `0x604` = 1,540 bytes. Local
-labels at object offsets `0x5C4` and `0x5E4` begin two 32-byte relocated switch
-tables, so the object contains 1,476 code bytes plus 64 table bytes. Both object
-tables reproduce the target direction mapping and physical lexical block order
-`4, 3, 1, 2, 5, 7, 6, 8`.
+The true fixed-normal `/Gy` `PlayerInitialize` COMDAT is `.text` section 50 with
+size `0x474` = 1,140 bytes. Adjacent object sections 51 and 52 are only 4-byte
+`.rdata` sections and are not counted as function extent. A 1,435-byte
+relocation-aware diagnostic against target `0x004247F0` remains `mismatch`:
+133/1,251 comparable bytes match, 46 object relocations are present, and
+`acceptance_authority=none`. The comparator's requested target window is not the
+true object-owned COMDAT size.
 
-That strong source-shape signal is not exactness. Target physical ownership is a
-1,591-byte EDI-bound body followed by a one-byte NOP and two separate 32-byte
-tables, for 1,656 bytes across the reviewed code/table corridor. A caller-window
-1,591-byte relocation-aware diagnostic against target `0x004250B0` returns
-`mismatch`: 101/1,415 comparable bytes match, 44 object relocations are reported,
-and `acceptance_authority=none`. The comparator's requested 1,591-byte window is
-not the true 1,540-byte object-owned COMDAT extent. Fixed normal is therefore
-rejected as exact physical ownership. Successful `/GL` compilation preserves an
-optimizer/LTCG hypothesis; no linked-image LTCG Oracle exists, so exactness stays
-unknown. No canonical match unit or exact ledger row was added.
+Fixed normal is therefore rejected as exact physical ownership. The target's
+private EBX live-in boundary and compiler/optimizer context differ immediately
+from an ordinary standalone C++ call boundary. `/GL` compilation succeeds and
+preserves an LTCG/interprocedural-optimizer hypothesis, but there is no linked-image
+LTCG extent Oracle here. Exactness remains unknown. No canonical match unit,
+`matches.csv` row, or exact ledger entry was added, and `config/build.toml` remains
+open.
 
 ## Ledger delta and adjacent-game discipline
 
-Entry ledger state at `275ea521cef4723b4d46b5c7a31355edddbeff17`:
-
-- candidates 1,239
-- origin/boundary pending 1,144
-- authored 88 / 25,099 bytes
-- exclusions 7
-- source-present 61
-- canonical exact 0.
-
-Current pre-checkpoint state:
+Entry ledger state at `6a40c3a69c378132d48fe7e63997334ddc7412cc`:
 
 - candidates 1,239
 - origin/boundary pending 1,143
@@ -164,81 +150,96 @@ Current pre-checkpoint state:
 - source-present 62
 - canonical exact 0.
 
-Delta: pending -1, authored +1 / +1,591 bytes, source-present +1, candidates +0,
-exclusions +0, exact +0. The hard packet expands the reviewed authored-byte
-denominator rather than hiding optimizer/profile uncertainty.
+Current pre-checkpoint state:
 
-Committed TH08 Player source was consulted only after TH10-local tables, ABI,
-offsets, and behavior were recovered. TH08 HEAD
-`a45e99fb1942714e6edded20847e32a654d56f97` was clean and independently has a
-related movement/options function plus the same useful VC7 lexical switch-order
-idiom. This is source-family corroboration only. TH09 HEAD
-`1cf5cf3a356df05aef20412a167ec146b4a54de0` was ahead7 with unrelated tracked
-dirty work; no TH09 dirty content was read or used. TH095 HEAD
-`c1610c4a10cf44b93e263b30fe0ecbf91f46b42b` was ahead4 with four unrelated
-untracked files; no TH095 dirty content was read or used. No adjacent address,
-extent, layout, state value, owner, exactness, or completion claim was transferred
-into TH10.
+- candidates 1,239
+- origin/boundary pending 1,142
+- authored 90 / 28,125 bytes
+- exclusions 7
+- source-present 63
+- canonical exact 0.
+
+Delta: pending -1, authored +1 / +1,435 bytes, source-present +1, candidates +0,
+exclusions +0, exact +0. The packet expands the reviewed authored denominator
+while retaining optimizer/exactness uncertainty.
+
+Adjacent repositories were observed read-only. TH08 HEAD
+`a45e99fb1942714e6edded20847e32a654d56f97` was clean; focused committed Player
+source was queried only after TH10-local evidence and supplied family-level naming
+or source-shape corroboration, not TH10 facts. TH09 HEAD
+`b0d8fc11579b821fe07845669333d43478db72eb` was ahead8 with no dirty entries in
+the observed status. TH095 HEAD `c1610c4a10cf44b93e263b30fe0ecbf91f46b42b`
+was ahead4 with unrelated modified `src/PhotoCamera.cpp`, `src/PhotoRuntime.cpp`,
+`src/ecl/EnemyEclRuntimeView.hpp` and unrelated untracked analysis/runtime files;
+those dirty files were not read or used. No adjacent address, extent, layout,
+owner, exactness, or completion claim was transferred into TH10.
 
 ## Verification planes
 
 Final pre-checkpoint state remains deliberately separated:
 
-- source presence: yes for maintained `PlayerUpdateMovementAndOptions` at
-  `0x004250B0`
-- origin/boundary: reviewed 1,591-byte body classified `authored_game`; post-body
-  NOP/tables/padding kept outside authored body
-- canonical exactness: 0 functions / 0 bytes repository-wide
+- source presence: yes for maintained `PlayerInitialize` at `0x004247F0`;
+- origin/boundary: reviewed 1,435-byte body classified `authored_game`; internal
+  seven-byte alignment retained in the physical extent, post-body CC padding kept
+  outside;
+- canonical exactness: 0 functions / 0 bytes repository-wide;
 - whole faithful Windows i386 build: open; `build.py --check` validates the open
-  graph and actual `build.py` returns expected RC=2
-- runtime validation: not performed because no closed reconstructed product exists
-- Factory Truth Kernel acceptance: unavailable because another Factory operation
-  owns the operator path; no acceptance count is claimed.
+  graph and actual `build.py` returns expected RC=2;
+- runtime validation: not performed because no closed reconstructed product exists;
+- Factory Truth Kernel: snapshot sequence 0, accepted count 0; no submission or
+  replay was made for this packet.
 
 Final focused Player/Replay normal and `/GL` compilation passed. The final
-movement diagnostic remained the mismatch described above. `verify-target.py`,
-`verify-toolchain.py --check`, target-bound tracking, reconstruction status,
-`build-match-unit.py --check`, `build.py --check`, regenerated progress, public
-CI, and `git diff --check` all passed. `config/matches.csv`,
-`config/match-units.toml`, and `config/build.toml` are unchanged.
+initializer diagnostic remained the mismatch above. `verify-target.py`, pinned
+executable toolchain preflight, final toolchain declaration check,
+target-bound tracking, reconstruction status, `build-match-unit.py --check`,
+`build.py --check`, regenerated progress, public CI, and `git diff --check` all
+passed. `config/matches.csv`, `config/match-units.toml`, and `config/build.toml`
+are unchanged. A fresh native Ghidra `check {}` again passed exact
+`target:th10-main` with `factory-native-command` transport.
 
 ## Scratch lifecycle
 
-Session entry `.analysis/` was 87 regular files / 518,355 regular bytes and 780K
+Session entry `.analysis/` was 94 regular files / 606,862 regular bytes and 880K
 allocated, with no file over 64 MiB. This session created and reused
-`.analysis/gpt-web/20260914-player-movement/` with a manifest.
+`.analysis/gpt-web/20260914-player-init/` with a manifest.
 
-Immediately before tracked handoff/checkpoint audit, `.analysis/` is 94 regular
-files / 606,414 regular bytes and 880K allocated. This campaign is 7 regular
-files / 88,059 bytes, with no file over 64 MiB. Current-session ReplayManager
-normal/LTCG header-sanity objects were deleted after final compilation passed;
-they were reproducible and unreferenced. Retained artifacts are Player normal and
-`/GL` objects, the target-bound mismatch JSON/stderr, whole-build stdout/stderr,
-and the manifest. No legacy/unknown/provider/toolchain/target state was deleted.
+Immediately before tracked handoff/checkpoint audit, `.analysis/` is 101 regular
+files / 703,374 regular bytes and 992K allocated. This campaign is 7 regular
+files / 96,512 bytes, with no file over 64 MiB. Current-session ReplayManager
+normal/LTCG header-sanity objects were removed after final compilation passed.
+Temporary preflight whole-build logs outside the campaign were removed after
+campaign-local whole-build logs were written. Retained campaign artifacts are
+Player normal and `/GL` objects, the target-bound mismatch JSON/stderr,
+whole-build stdout/stderr, and the manifest. No legacy/unknown/provider/toolchain/
+target state was deleted.
 
-## Checkpoint and next hard frontier
+## Checkpoint and continuation frontier
 
-Final pre-commit gates completed successfully: the complete working diff and
-staged diff were audited, only the ten intended tracked packet files are staged,
-there is no unstaged or untracked remainder, and `git diff --cached --check`
-passes. A fresh native Ghidra `check {}` again passed exact `target:th10-main`
-with `factory-native-command` transport. Final Player/Replay normal and `/GL`
-probes, target/toolchain/tracking/status, open match/build graphs, honest RC=2
-whole-build diagnostic, and public CI also passed. Create one local English
-`gpt-web:` checkpoint and never push. Read the checkpoint hash from live HEAD
-after commit, then run cold post-commit CI/status/target checks.
+Pre-commit gates completed successfully: the complete working diff and staged
+diff were audited, exactly the ten intended packet files are staged, no unstaged
+or untracked remainder exists, `git diff --cached --check` passes, and public CI
+passes. A fresh native Ghidra `check {}` also passed exact `target:th10-main` with
+`factory-native-command` transport. Create one local English `gpt-web:` checkpoint
+and never push. After commit, read the actual hash from live HEAD and run cold
+post-commit target/tracking/CI/Ghidra and Truth snapshot checks. The checkpoint is
+continuation state, not phase completion.
 
-The next evidence-connected hard packet should be the Player initialization and
-callback-registration owner `0x004247F0-0x00424D8A` (1,435 bytes, currently
-`unknown/review`). It is not an easy helper: prior target evidence already ties
-it to both `0x00426500` update and `0x00426510` draw registration, while the new
-movement/update work exposes additional Player fields, managed-VM state, speed
-profiles, timers, and callback-node ownership that initialization may establish.
-Reconcile its full boundary, callback-node lifetimes, Player field initialization,
-VM/resource owners, and compiler profile before any origin/source promotion.
+The next evidence-connected packet should be the Player lifecycle cohort around
+this initializer rather than the easiest individual helper:
 
-Packet balance remains hard-frontier oriented: recent checkpoints reviewed a
-2,494-byte option rebuild, a 3,089-byte central update body, and now this
-1,591-byte movement/options owner. The next proposed 1,435-byte initializer
-continues the central Player ownership seam rather than selecting the 67-, 174-,
-or 229-byte adjacent helpers for easy function-count progress.
+- `0x004246C0-0x004247B3`: 244-byte constructor/reset candidate;
+- `0x00424D90-0x00424EA0`: 273-byte state/reset candidate;
+- `0x00424ED0-0x00425014`: 325-byte teardown candidate;
+- `0x00425020-0x00425064`: 69-byte allocation/factory candidate.
+
+Together these 911 target bytes form one allocation/zeroing/init/rollback/
+teardown seam and directly constrain the newly closed 0x4478 Player extent,
+callback-node ownership, resource/option-data lifetime, and original source/data
+partition. They remain `unknown/review`; their individual Ghidra boundaries and
+origins must be reconciled before any promotion.
+
+Packet balance remains hard-frontier oriented. Recent work covered the 2,494-byte
+option rebuild, 3,089-byte central update body, 1,591-byte movement/options owner,
+and now this 1,435-byte initializer. The proposed lifecycle cohort is selected for
+ownership and destruction connectivity, not for easy function-count progress.

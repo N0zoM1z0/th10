@@ -47,6 +47,25 @@ typedef char PlayerVmManagerPrimaryHeadAt72DAD4[
 typedef char PlayerVmManagerSecondaryHeadAt72DADC[
     (offsetof(PlayerVmManager, secondaryHead) == 0x72dadc) ? 1 : -1];
 
+typedef int (__fastcall *PlayerChainCallback)(Player *player);
+
+// Maintained view of the 0x24-byte callback-list node allocated by the target.
+// Only fields used by Player registration/lifetime evidence are exposed.
+struct PlayerCallbackNodeView
+{
+    int priority;
+    unsigned int flags;
+    PlayerChainCallback callback;
+    unsigned char unknown00C[0x14];
+    Player *owner;
+};
+typedef char PlayerCallbackNodeViewSizeIs24[
+    (sizeof(PlayerCallbackNodeView) == 0x24) ? 1 : -1];
+typedef char PlayerCallbackNodeViewCallbackAt08[
+    (offsetof(PlayerCallbackNodeView, callback) == 0x08) ? 1 : -1];
+typedef char PlayerCallbackNodeViewOwnerAt20[
+    (offsetof(PlayerCallbackNodeView, owner) == 0x20) ? 1 : -1];
+
 // Neutral maintained views for the target-observed auxiliary draw gate. Their
 // original object and field identifiers are not established by this packet.
 struct PlayerDrawGate54
@@ -185,6 +204,14 @@ extern int g_PlayerShotType;
 extern int g_PlayerOptionPositionBase[];
 extern float g_PlayerOptionCoordinateScale;
 extern PlayerVmManager *g_PlayerVmManager;
+extern void *g_PlayerAnimationOwner;
+extern void *g_PlayerCallbackManager;
+extern PlayerOptionDataView *g_PlayerSharedOptionData;
+extern const char *g_PlayerShotDataFilenames[6];
+extern float g_PlayerOptionValue04ByCharacter[2];
+extern float g_PlayerOptionValue08ByCharacter[2];
+extern float g_PlayerOptionValue0CByCharacter[2];
+extern float g_PlayerExtent2ByCharacter[2];
 
 // Descriptive interfaces for independently observed VM-manager callees. Their
 // own original identifiers, source conventions, and physical owners remain
@@ -194,6 +221,26 @@ PlayerVm *PlayerAllocateManagedVm();
 void PlayerInitializeManagedVmScript(PlayerVm *vm, int scriptIndex);
 void PlayerRegisterManagedVm(PlayerVm *vm, unsigned int *idOut);
 void PlayerSetManagedVmDeleteState(unsigned int *vmId, unsigned short state);
+
+// Descriptive interfaces for the Player initializer's observed callees. Only
+// PlayerLoadAnimationResource has a conventional machine spelling supported by
+// the target (ECX, EDX, then one stack argument). The others hide private
+// register contracts and are not original ABI claims.
+void * __fastcall PlayerLoadAnimationResource(
+    int loadFlags, void *owner, const char *filename);
+void PlayerReportInitializationError();
+int PlayerLoadOptionData(Player *player, const char *filename);
+PlayerCallbackNodeView * __stdcall PlayerAllocateCallbackNode(
+    PlayerChainCallback callback);
+void PlayerRegisterUpdateCallbackNode(
+    PlayerCallbackNodeView *node, int priority, void *manager);
+void PlayerRegisterDrawCallbackNode(
+    PlayerCallbackNodeView *node, int priority, void *manager);
+void PlayerInitializeEmbeddedDrawVm(
+    PlayerDrawVmView *vm, void *resource, int scriptIndex);
+
+int __fastcall PlayerUpdateCallback(Player *player);
+int __fastcall PlayerDrawCallback(Player *player);
 
 enum
 {
@@ -288,7 +335,8 @@ static const PlayerOptionPosition *GetPlayerOptionPosition(
     Player *player, unsigned int tableOffset, int optionCount, int optionIndex)
 {
     int index = g_PlayerOptionPositionBase[optionCount] + optionIndex;
-    return (const PlayerOptionPosition *)(player->optionData + tableOffset) + index;
+    return (const PlayerOptionPosition *)
+        ((const unsigned char *)player->optionData + tableOffset) + index;
 }
 
 static void LoadPlayerOptionPair(
@@ -416,6 +464,153 @@ static int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
         option->replayPair0 = option->replayPair3;
         option->previousMode = optionMode;
     }
+    return 0;
+}
+
+// Maintained source for the Player initialization owner at
+// 0x004247F0-0x00424D8A. Its sole target caller places the newly allocated
+// Player in EBX immediately before the call. This ordinary source parameter is
+// a maintainable spelling of that private machine boundary.
+int PlayerInitialize(Player *player)
+{
+    const char *animationFilename =
+        g_PlayerCharacter != 0 ? "pl01.anm" : "pl00.anm";
+    player->resource = PlayerLoadAnimationResource(
+        8, g_PlayerAnimationOwner, animationFilename);
+    if (player->resource == NULL)
+    {
+        PlayerReportInitializationError();
+        return -1;
+    }
+
+    if (g_PlayerSharedOptionData != NULL)
+    {
+        player->optionData = g_PlayerSharedOptionData;
+        g_PlayerSharedOptionData = NULL;
+    }
+    else
+    {
+        const int dataIndex = g_PlayerShotType + g_PlayerCharacter * 3;
+        if (PlayerLoadOptionData(
+                player, g_PlayerShotDataFilenames[dataIndex]) != 0)
+        {
+            PlayerReportInitializationError();
+            return -1;
+        }
+    }
+
+    PlayerCallbackNodeView *updateNode =
+        PlayerAllocateCallbackNode(PlayerUpdateCallback);
+    updateNode->owner = player;
+    updateNode->flags &= ~2u;
+    PlayerRegisterUpdateCallbackNode(updateNode, 0x10, g_PlayerCallbackManager);
+    player->updateCallbackNode = updateNode;
+
+    PlayerCallbackNodeView *drawNode =
+        PlayerAllocateCallbackNode(PlayerDrawCallback);
+    drawNode->flags &= ~2u;
+    drawNode->owner = player;
+    PlayerRegisterDrawCallbackNode(drawNode, 0x16, g_PlayerCallbackManager);
+    player->drawCallbackNode = drawNode;
+
+    PlayerInitializeEmbeddedDrawVm(&player->drawVm, player->resource, 0);
+
+    PlayerOptionDataView *data = player->optionData;
+    player->drawPosition.x = 0.0f;
+    player->drawPosition.y = 400.0f;
+    player->positionX = 0;
+    player->positionY = 40000;
+    player->axisSpeedMode0 = (int)(data->axisSpeedMode0 * 100.0f);
+    player->axisSpeedMode1 = (int)(data->axisSpeedMode1 * 100.0f);
+    player->diagonalSpeedMode0 = (int)(data->diagonalSpeedMode0 * 100.0f);
+    player->diagonalSpeedMode1 = (int)(data->diagonalSpeedMode1 * 100.0f);
+
+    for (int i = 0; i < 33; ++i)
+    {
+        player->replayPositionHistory[i].x = player->positionX;
+        player->replayPositionHistory[i].y = player->positionY;
+    }
+
+    if ((player->updateTimer0.flags & 1) == 0)
+    {
+        player->updateTimer0.current = 0;
+        player->updateTimer0.previous = 0xfff0bdc1;
+        player->updateTimer0.subframe = 0.0f;
+        player->updateTimer0.scale = &g_PlayerTimerScale;
+        player->updateTimer0.flags |= 1;
+    }
+    player->updateTimer0.subframe = -1.0f;
+    player->updateTimer0.previous = -2;
+    player->updateTimer0.current = -1;
+
+    data->value04 = g_PlayerOptionValue04ByCharacter[g_PlayerCharacter];
+    data->value0C = g_PlayerOptionValue0CByCharacter[g_PlayerCharacter];
+    data->value08 = g_PlayerOptionValue08ByCharacter[g_PlayerCharacter];
+
+    player->extent0.x = data->value04 * 0.5f;
+    player->extent0.y = player->extent0.x;
+    player->extent0.z = 5.0f;
+    player->extent1.x =
+        g_PlayerOptionValue0CByCharacter[g_PlayerCharacter] * 0.5f;
+    player->extent1.y = player->extent1.x;
+    player->extent1.z = 5.0f;
+    player->extent2.x =
+        g_PlayerExtent2ByCharacter[g_PlayerCharacter] * 0.5f;
+    player->extent2.y = player->extent2.x;
+    player->extent2.z = 5.0f;
+
+    player->derivedMin0.x = player->drawPosition.x - player->extent0.x;
+    player->derivedMin0.y = player->drawPosition.y - player->extent0.y;
+    player->derivedMin0.z = player->drawPosition.z - player->extent0.z;
+    player->derivedMax0.x = player->drawPosition.x + player->extent0.x;
+    player->derivedMax0.y = player->drawPosition.y + player->extent0.y;
+    player->derivedMax0.z = player->drawPosition.z + player->extent0.z;
+
+    player->derivedVectors[0].x = player->drawPosition.x - player->extent1.x;
+    player->derivedVectors[0].y = player->drawPosition.y - player->extent1.y;
+    player->derivedVectors[0].z = player->drawPosition.z - player->extent1.z;
+    player->derivedVectors[1].x = player->drawPosition.x + player->extent1.x;
+    player->derivedVectors[1].y = player->drawPosition.y + player->extent1.y;
+    player->derivedVectors[1].z = player->drawPosition.z + player->extent1.z;
+    player->derivedVectors[2].x = player->drawPosition.x - player->extent2.x;
+    player->derivedVectors[2].y = player->drawPosition.y - player->extent2.y;
+    player->derivedVectors[2].z = player->drawPosition.z - player->extent2.z;
+    player->derivedVectors[3].x = player->drawPosition.x + player->extent2.x;
+    player->derivedVectors[3].y = player->drawPosition.y + player->extent2.y;
+    player->derivedVectors[3].z = player->drawPosition.z + player->extent2.z;
+    player->derivedVectors[4].x = player->drawPosition.x - player->extent2.x;
+    player->derivedVectors[4].y = player->drawPosition.y - player->extent2.y;
+    player->derivedVectors[4].z = player->drawPosition.z - player->extent2.z;
+    player->derivedVectors[5].x = player->drawPosition.x + player->extent2.x;
+    player->derivedVectors[5].y = player->drawPosition.y + player->extent2.y;
+    player->derivedVectors[5].z = player->drawPosition.z + player->extent2.z;
+
+    if ((player->updateTimer1.flags & 1) == 0)
+    {
+        player->updateTimer1.current = 0;
+        player->updateTimer1.previous = 0xfff0bdc1;
+        player->updateTimer1.subframe = 0.0f;
+        player->updateTimer1.scale = &g_PlayerTimerScale;
+        player->updateTimer1.flags |= 1;
+    }
+    player->updateTimer1.current = 0;
+    player->updateTimer1.subframe = 0.0f;
+    player->updateTimer1.previous = -1;
+
+    if ((player->highlightTimer.flags & 1) == 0)
+    {
+        player->highlightTimer.current = 0;
+        player->highlightTimer.previous = 0xfff0bdc1;
+        player->highlightTimer.subframe = 0.0f;
+        player->highlightTimer.scale = &g_PlayerTimerScale;
+        player->highlightTimer.flags |= 1;
+    }
+    player->highlightTimer.current = 120;
+    player->highlightTimer.subframe = 120.0f;
+    player->highlightTimer.previous = 119;
+    player->optionTransitionFrames = 30;
+
+    RebuildPlayerOptions(player);
     return 0;
 }
 

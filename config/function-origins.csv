@@ -301,7 +301,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00424480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00424650,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004246C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004247F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004247F0,authored_game,Player,authored,high,player-initialization-2026-09-14
 0x00424D90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00424ED0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00425020,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
