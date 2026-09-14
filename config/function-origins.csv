@@ -120,8 +120,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040C480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C4D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040C6E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0040C730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040C6E0,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
+0x0040C730,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
+0x0040C800,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
+0x0040C810,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
+0x0040C820,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
+0x0040C830,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
+0x0040C860,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
 0x0040C9A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C9D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040CC50,compiler_generated,Enemy,exclude,high,enemy-deleting-dtor-compiler-2026-09-14

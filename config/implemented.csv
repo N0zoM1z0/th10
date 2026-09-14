@@ -88,3 +88,10 @@ EnemyFullObjectView::ReadIntOperand
 EnemyFullObjectView::ResolveIntOperand
 EnemyFullObjectView::ReadFloatOperand
 EnemyFullObjectView::ResolveFloatOperand
+EnemyFullObjectView::ReleaseEclAllocations
+EnemyFullObjectView::ResetEclState
+EnemyEclContextView::EnemyEclContextView
+EnemyEclResourceBaseView::LoadPackage
+EnemyEclResourceBaseView::GetScriptData
+EnemyEclResourceBaseView::EnemyEclResourceBaseView
+EnemyEclResourceBaseView::~EnemyEclResourceBaseView

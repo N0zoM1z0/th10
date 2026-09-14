@@ -155,6 +155,8 @@ struct EnemyEclResourceBaseView
     virtual int AddScriptData(void *scriptData);
     virtual int LoadPackage(const unsigned char *packageData);
 
+    void *GetScriptData(int index);
+
     int loadedScriptCount;
     int lookupCount;
     void *scriptData[32];
@@ -277,7 +279,6 @@ void EnemyAdvanceMotion(EnemyMotionView *motion);
 void EnemySetAnimationScript(EnemyRuntimeView *enemy, int script);
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
 const unsigned char *EnemyResolveRuntimeCallback(EnemyFullObjectView *owner);
-void EnemyResetEclState(EnemyFullObjectView *owner);
 void EnemyRunCallbackEcl(
     EnemyFullObjectView *owner, const unsigned char *callbackName);
 void EnemyInstallCallbackEcl(
@@ -326,6 +327,60 @@ void EnemyReportResourceLoadError();
 void *EnemyLoadFileBytes(
     const char *filename, unsigned int *sizeOut, int mode);
 void EnemyManagerClear(EnemyManagerView *manager);
+
+// Target 0x0040C800-0x0040C80E is the retained constructor for the embedded
+// 0x1008-byte operand-storage state. The two cursors are the only fields that
+// this constructor initializes; the containing ECL host owns the rest.
+EnemyEclContextView::EnemyEclContextView()
+    : operandStackOffset(0), localStorageOffset(0)
+{
+}
+
+// Target 0x0040C6E0-0x0040C70C releases the allocation payload and list node
+// for every temporary block owned by one ECL host. ResetEclState deliberately
+// clears the head separately, matching the target's reusable release/reset
+// pair at both callback-subroutine transition sites.
+void EnemyFullObjectView::ReleaseEclAllocations()
+{
+    EnemyOwnedAllocationNodeView *node = ownedAllocations;
+    while (node != NULL)
+    {
+        EnemyOwnedAllocationNodeView *next = node->next;
+        free(node->allocation);
+        free(node);
+        node = next;
+    }
+}
+
+// Target 0x0040C730-0x0040C776 restores the embedded context as the active
+// context without touching its 0x1000-byte operand-storage payload.
+void EnemyFullObjectView::ResetEclState()
+{
+    flags1028 &= ~1u;
+    embeddedEclContext.value00 = 0;
+    embeddedEclContext.currentInstruction = NULL;
+    embeddedEclContext.operandResolver = this;
+    embeddedEclContext.unknown1010 = -1;
+    value1020 = 0;
+    activeEclContext = &embeddedEclContext;
+    eclContextMirror = &embeddedEclContext;
+    ownedAllocations = NULL;
+    value1038 = 0;
+}
+
+// Base ECL resources accept script data through slot zero but do not know how
+// to interpret a package. The derived Enemy resource overrides this slot.
+int EnemyEclResourceBaseView::LoadPackage(const unsigned char *packageData)
+{
+    (void)packageData;
+    return 0;
+}
+
+// Target 0x0040C820-0x0040C824 indexes the target-proven 32-entry script table.
+void *EnemyEclResourceBaseView::GetScriptData(int index)
+{
+    return scriptData[index];
+}
 
 // Target 0x0040E760-0x0040E76A is the primary Enemy vtable slot-zero entry.
 // VC7.1 naturally lowers this ordinary member forwarding expression to
@@ -766,7 +821,8 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                 EnemyResolveRuntimeCallback(enemy->owner);
             if (callback != NULL)
             {
-                EnemyResetEclState(enemy->owner);
+                enemy->owner->ReleaseEclAllocations();
+                enemy->owner->ResetEclState();
                 EnemyRunCallbackEcl(enemy->owner, callback);
                 if (EnemyRunEcl(enemy->owner, timerScale) != 0)
                     return -1;
@@ -786,7 +842,8 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     const unsigned char *callback = EnemyResolveRuntimeCallback(enemy->owner);
     if (callback != NULL)
     {
-        EnemyResetEclState(enemy->owner);
+        enemy->owner->ReleaseEclAllocations();
+        enemy->owner->ResetEclState();
         EnemyInstallCallbackEcl(enemy->owner, callback);
     }
 

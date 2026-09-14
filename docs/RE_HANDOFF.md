@@ -16,9 +16,10 @@
 - Completed session checkpoint: `40c96ec gpt-5.6-sol: promote exact PbgArchive LTCG helpers`.
 - Completed session checkpoint: `e4c9077 gpt-5.6-sol: promote exact LZSS LTCG helpers`.
 - Completed session checkpoint: `37ebb83 gpt-5.6-sol: promote remaining exact LTCG helpers`.
-- Planned current checkpoint subject: `gpt-5.6-sol: rank exact reconstruction backlog`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `ead21f9 gpt-5.6-sol: rank exact reconstruction backlog`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL core lifecycles`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-backlog-ranking/`. The final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-ecl-core-lifecycle/`. The backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -38,7 +39,30 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: dual-codegen exact-backlog ranking
+## Current packet: ECL core lifecycle and resource base
+
+Direct TH10 review establishes a reusable ECL host around the full object's
+embedded `0x1018` context. The two callback-subroutine transition paths call a
+45-byte allocation-list release at `0x0040C6E0` and then the 71-byte execution
+reset at `0x0040C730`. Maintained `EnemyRuntimeUpdate` now expresses both calls.
+The release helper is canonical exact; reset is source-present and remains
+non-exact at 69 linked bytes versus 71 target bytes.
+
+The neighboring ECL resource base is now source-complete for its reviewed
+lifecycle seam. Base vtable slot one is a five-byte default `LoadPackage`
+returning zero; the five-byte indexed getter returns one of 32 script pointers
+from `+0x0C`; the 34-byte constructor clears the complete `0x1098` object and
+installs vtable `0x0046D0F0`; and the 36-byte destructor restores that vtable,
+frees lookup owner `+0x8C`, and clears it. The embedded-context constructor
+independently clears the two storage cursors at context `+0x1008/+0x100C`.
+
+Two cold linked builds replay all six newly exact functions across **140
+bytes**. The three nonzero-field units declare both release calls, the base
+vtable fields, and the direct free call exhaustively; omitted-field negative
+manifests are rejected. Repository exact coverage is now **39 functions / 1,555
+bytes**. Production TU partition and linked-image ownership remain unknown.
+
+## Completed packet: dual-codegen exact-backlog ranking
 
 `scripts/rank-exact-backlog.py` now turns the two existing batch probes into one
 fresh selection tool. It obtains the current authored backlog once, runs both
@@ -285,18 +309,18 @@ Total repository canonical exact coverage after the Enemy packet was **4 functio
 
 Current ledger:
 
-- candidates: **1264**
-- origin/boundary pending: **1132**
-- authored: **118 / 52,927 bytes**
+- candidates: **1269**
+- origin/boundary pending: **1130**
+- authored: **125 / 53,138 bytes**
 - excluded: **14**
-- source-present: **90 / 39,658 bytes**
-- canonical exact: **33 / 1,415 bytes**
+- source-present: **97 / 27,489 bytes**
+- canonical exact: **39 / 1,555 bytes**
 
-Current final-structural packet delta from `e4c9077`: **+4 functions / +220 bytes**. The authored source backlog is now **53 functions**. Session exact delta from `444eb1a...` is **+29 functions / +1,238 bytes**.
+Current ECL packet delta from `ead21f9`: **+6 functions / +140 exact bytes** and seven source mappings. The authored source backlog is now **54 functions**. Session exact delta from `444eb1a...` is **+35 functions / +1,378 bytes**.
 
-**Source presence:** no source mapping changed.
+**Source presence:** seven ECL lifecycle/resource functions became source-present.
 
-**Exactness:** repository canonical exact coverage is 33 functions / 1,415 bytes. The complete mixed set cold-replays through nine artifact builds across five source files. This exact lane does not establish production object ownership or whole-build closure.
+**Exactness:** repository canonical exact coverage is 39 functions / 1,555 bytes. The complete mixed set cold-replays through nine artifact builds across five source files. This exact lane does not establish production object ownership or whole-build closure.
 
 **Whole build:** actual final `python3 scripts/build.py` returned **RC2 / explicitly open**. Production compiler flags, TU partition, libraries, resources and link order remain unknown. `build.py --check`, tracking, toolchain execution and public CI pass this honest open state.
 
@@ -312,11 +336,11 @@ The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with
 
 The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
 
-The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, and current backlog-ranking campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
+The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, backlog-ranking, and current ECL lifecycle campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
 
 ## Next hard frontier
 
-The original 13-function structural-exact LTCG queue is exhausted. The new dual-codegen ranking identifies `Lzss::AddString` as the strongest current source/profile experiment, followed by `CPbgFile::Write` and `EnemyManagerCreate`. Start with the 516-byte Lzss owner: inspect its 51 non-field differences and four-byte size delta as control-flow/source-shape clusters, then rerun the bounded LTCG probe rather than adjusting code from a scalar score alone. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
+Continue the ECL core before returning to the general ranked backlog. The immediate bounded seam is the six-slot base host vtable at `0x0046D0D8`, its constructor/destructor family at `0x0040C710/0x0040C780/0x0040C7B0`, and the default typed operand methods at `0x0040C5E0/0x0040C690/0x0040C6A0/0x0040C6B0/0x0040C6C0`. Model the base/derived relationship only after the target-local object layout and all Ghidra-missed boundaries are entered into the denominator. The 71-byte reset is the closest connected non-exact source experiment.
 
 After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. The real production link graph remains a major infrastructure gap; canonical bounded linked-image units do not close it.
 

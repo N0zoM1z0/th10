@@ -89,3 +89,10 @@ EnemyFullObjectView::ReadIntOperand,0x00411FC0,function
 EnemyFullObjectView::ResolveIntOperand,0x00412300,function
 EnemyFullObjectView::ReadFloatOperand,0x00412350,function
 EnemyFullObjectView::ResolveFloatOperand,0x004126D0,function
+EnemyFullObjectView::ReleaseEclAllocations,0x0040C6E0,function
+EnemyFullObjectView::ResetEclState,0x0040C730,function
+EnemyEclContextView::EnemyEclContextView,0x0040C800,function
+EnemyEclResourceBaseView::LoadPackage,0x0040C810,function
+EnemyEclResourceBaseView::GetScriptData,0x0040C820,function
+EnemyEclResourceBaseView::EnemyEclResourceBaseView,0x0040C830,function
+EnemyEclResourceBaseView::~EnemyEclResourceBaseView,0x0040C860,function

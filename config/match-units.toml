@@ -52,6 +52,96 @@ linkages = [
   { offset = 18, type = "REL32", symbol = "_free", target = 0x00452422 },
 ]
 
+[units.enemy-ecl-release-allocations]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/Enemy"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadFile@EnemyEclResourceView@@UAEHPBD@Z"
+functions = ["EnemyFullObjectView::ReleaseEclAllocations"]
+symbol = "?ReleaseEclAllocations@EnemyFullObjectView@@QAEXXZ"
+target_address = 0x0040C6E0
+size = 45
+linkages = [
+  { offset = 23, type = "REL32", symbol = "_free", target = 0x004524A1 },
+  { offset = 29, type = "REL32", symbol = "_free", target = 0x004524A1 },
+]
+
+[units.enemy-ecl-context-constructor]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/Enemy"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadFile@EnemyEclResourceView@@UAEHPBD@Z"
+functions = ["EnemyEclContextView::EnemyEclContextView"]
+symbol = "??0EnemyEclContextView@@QAE@XZ"
+target_address = 0x0040C800
+size = 15
+linkages = []
+
+[units.enemy-ecl-resource-base-load-package]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/Enemy"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadFile@EnemyEclResourceView@@UAEHPBD@Z"
+functions = ["EnemyEclResourceBaseView::LoadPackage"]
+symbol = "?LoadPackage@EnemyEclResourceBaseView@@UAEHPBE@Z"
+target_address = 0x0040C810
+size = 5
+linkages = []
+
+[units.enemy-ecl-resource-base-get-script-data]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/Enemy"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadFile@EnemyEclResourceView@@UAEHPBD@Z"
+functions = ["EnemyEclResourceBaseView::GetScriptData"]
+symbol = "?GetScriptData@EnemyEclResourceBaseView@@QAEPAXH@Z"
+target_address = 0x0040C820
+size = 5
+linkages = []
+
+[units.enemy-ecl-resource-base-constructor]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/Enemy"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadFile@EnemyEclResourceView@@UAEHPBD@Z"
+functions = ["EnemyEclResourceBaseView::EnemyEclResourceBaseView"]
+symbol = "??0EnemyEclResourceBaseView@@QAE@XZ"
+target_address = 0x0040C830
+size = 34
+linkages = [{ offset = 5, type = "DIR32", symbol = "??_7EnemyEclResourceBaseView@@6B@", target = 0x0046D0F0 }]
+
+[units.enemy-ecl-resource-base-destructor]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/Enemy"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadFile@EnemyEclResourceView@@UAEHPBD@Z"
+functions = ["EnemyEclResourceBaseView::~EnemyEclResourceBaseView"]
+symbol = "??1EnemyEclResourceBaseView@@QAE@XZ"
+target_address = 0x0040C860
+size = 36
+linkages = [
+  { offset = 10, type = "DIR32", symbol = "??_7EnemyEclResourceBaseView@@6B@", target = 0x0046D0F0 },
+  { offset = 18, type = "REL32", symbol = "_free", target = 0x00452422 },
+]
+
 [units.enemy-manager-draw-callback]
 artifact_kind = "coff"
 source = "src/Enemy.cpp"
@@ -83,11 +173,11 @@ symbol = "?ResolveIntOperand@EnemyFullObjectView@@QAEPAHH@Z"
 target_address = 0x00412300
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L3787", target = 0x00412340 },
-  { offset = 64, type = "DIR32", symbol = "$L3166", target = 0x00412315 },
-  { offset = 68, type = "DIR32", symbol = "$L3167", target = 0x0041231E },
-  { offset = 72, type = "DIR32", symbol = "$L3168", target = 0x00412327 },
-  { offset = 76, type = "DIR32", symbol = "$L3169", target = 0x00412330 },
+  { offset = 17, type = "DIR32", symbol = "$L3829", target = 0x00412340 },
+  { offset = 64, type = "DIR32", symbol = "$L3191", target = 0x00412315 },
+  { offset = 68, type = "DIR32", symbol = "$L3192", target = 0x0041231E },
+  { offset = 72, type = "DIR32", symbol = "$L3193", target = 0x00412327 },
+  { offset = 76, type = "DIR32", symbol = "$L3194", target = 0x00412330 },
 ]
 
 [units.enemy-ecl-float-lvalue-resolver]
@@ -100,11 +190,11 @@ symbol = "?ResolveFloatOperand@EnemyFullObjectView@@QAEPAMH@Z"
 target_address = 0x004126D0
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L3829", target = 0x00412710 },
-  { offset = 64, type = "DIR32", symbol = "$L3244", target = 0x004126E5 },
-  { offset = 68, type = "DIR32", symbol = "$L3245", target = 0x004126EE },
-  { offset = 72, type = "DIR32", symbol = "$L3246", target = 0x004126F7 },
-  { offset = 76, type = "DIR32", symbol = "$L3247", target = 0x00412700 },
+  { offset = 17, type = "DIR32", symbol = "$L3871", target = 0x00412710 },
+  { offset = 64, type = "DIR32", symbol = "$L3269", target = 0x004126E5 },
+  { offset = 68, type = "DIR32", symbol = "$L3270", target = 0x004126EE },
+  { offset = 72, type = "DIR32", symbol = "$L3271", target = 0x004126F7 },
+  { offset = 76, type = "DIR32", symbol = "$L3272", target = 0x00412700 },
 ]
 
 [units.pbgfile-destructor]

@@ -239,6 +239,8 @@ typedef char EnemyEclInstructionOperandsAt010[
 // owner, whose vtable supplies the four typed value/lvalue operations.
 struct EnemyEclContextView
 {
+    EnemyEclContextView();
+
     int value00;
     EnemyEclInstructionView *currentInstruction;
     unsigned char unknown008[0x1000];
@@ -283,6 +285,8 @@ struct EnemyFullObjectView
     int *ResolveIntOperand(int operand);
     float ReadFloatOperand(int operand);
     float *ResolveFloatOperand(int operand);
+    void ReleaseEclAllocations();
+    void ResetEclState();
 
     void *vtable;
     EnemyEclContextView *activeEclContext;
