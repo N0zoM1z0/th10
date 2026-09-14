@@ -6,6 +6,7 @@
 #include <stddef.h>
 
 struct EnemyFullObjectView;
+struct EnemyEclHostBaseView;
 struct EnemyListNodeView;
 struct EnemyManagerView;
 
@@ -247,7 +248,7 @@ struct EnemyEclContextView
     int operandStackOffset;
     int localStorageOffset;
     int unknown1010;
-    EnemyFullObjectView *operandResolver;
+    EnemyEclHostBaseView *operandResolver;
 };
 typedef char EnemyEclContextSizeIs1018[
     (sizeof(EnemyEclContextView) == 0x1018) ? 1 : -1];
@@ -271,24 +272,22 @@ struct EnemyOwnedAllocationNodeView
 typedef char EnemyOwnedAllocationNodeViewSizeIs08[
     (sizeof(EnemyOwnedAllocationNodeView) == 0x08) ? 1 : -1];
 
-// TH10 allocation and constructor clearing jointly establish this full-object
-// extent. The prefix exposes only fields directly consumed by the reviewed
-// constructor/teardown seam; the large middle remains opaque.
-struct EnemyFullObjectView
+// The six-slot target vtable at 0x0046D0D8 supplies default ECL execution and
+// typed operand interfaces plus a virtual destructor. Its 0x103C-byte object
+// is also the exact prefix inherited by the Enemy-specific 0x2518-byte host.
+struct EnemyEclHostBaseView
 {
-    // The target primary vtable stores 0x0040E760 in slot zero. The unresolved
-    // base-class hierarchy is still represented by the explicit vtable field,
-    // so this maintained member remains non-virtual even though target dispatch
-    // reaches it virtually.
-    int DispatchEclInstruction();
-    int ReadIntOperand(int operand);
-    int *ResolveIntOperand(int operand);
-    float ReadFloatOperand(int operand);
-    float *ResolveFloatOperand(int operand);
+    EnemyEclHostBaseView();
+    virtual int DispatchEclInstruction();
+    virtual int ReadIntOperand(int operand);
+    virtual int *ResolveIntOperand(int operand);
+    virtual float ReadFloatOperand(int operand);
+    virtual float *ResolveFloatOperand(int operand);
+    virtual ~EnemyEclHostBaseView();
+
     void ReleaseEclAllocations();
     void ResetEclState();
 
-    void *vtable;
     EnemyEclContextView *activeEclContext;
     EnemyEclContextView embeddedEclContext;
     int value1020;
@@ -299,6 +298,29 @@ struct EnemyFullObjectView
     EnemyEclContextView *eclContextMirror;
     EnemyOwnedAllocationNodeView *ownedAllocations;
     int value1038;
+};
+typedef char EnemyEclHostBaseViewSizeIs103C[
+    (sizeof(EnemyEclHostBaseView) == 0x103c) ? 1 : -1];
+typedef char EnemyEclHostBaseActiveContextAt004[
+    (offsetof(EnemyEclHostBaseView, activeEclContext) == 0x004) ? 1 : -1];
+typedef char EnemyEclHostBaseEmbeddedContextAt008[
+    (offsetof(EnemyEclHostBaseView, embeddedEclContext) == 0x008) ? 1 : -1];
+typedef char EnemyEclHostBaseAllocationsAt1034[
+    (offsetof(EnemyEclHostBaseView, ownedAllocations) == 0x1034) ? 1 : -1];
+
+// TH10 allocation and constructor clearing jointly establish this full-object
+// extent. The Enemy-specific host overrides all five ECL operand interfaces
+// and appends the exact 0x14DC runtime tail to the base host.
+struct EnemyFullObjectView : EnemyEclHostBaseView
+{
+    EnemyFullObjectView(const char *eclSubroutineName);
+    virtual int DispatchEclInstruction();
+    virtual int ReadIntOperand(int operand);
+    virtual int *ResolveIntOperand(int operand);
+    virtual float ReadFloatOperand(int operand);
+    virtual float *ResolveFloatOperand(int operand);
+    virtual ~EnemyFullObjectView();
+
     EnemyRuntimeView runtime;
 };
 typedef char EnemyFullObjectViewSizeIs2518[
@@ -373,9 +395,6 @@ EnemyFullObjectView *EnemySpawn(
     EnemyManagerView *manager,
     const char *eclSubroutineName,
     const EnemySpawnRequestView *request);
-EnemyFullObjectView *EnemyConstruct(
-    EnemyFullObjectView *enemy, const char *eclSubroutineName);
-void __stdcall EnemyTeardown(EnemyFullObjectView *enemy);
 int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy);
 int EnemyManagerUpdate(EnemyManagerView *manager);
 int __fastcall EnemyManagerUpdateCallback(EnemyManagerView *manager);

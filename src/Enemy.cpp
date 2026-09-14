@@ -298,7 +298,6 @@ void EnemyAdvanceTimer(PlayerTimerView *timer, float amount);
 void EnemyPrepareRuntimeStorage(EnemyRuntimeView *runtime);
 EnemyEclInstructionView *EnemyLookupEclSubroutine(
     EnemyEclResourceView *scriptDatabase, const char *name);
-void EnemyInvokeScalarDeletingDestructor(EnemyFullObjectView *enemy, int freeObject);
 void EnemyPlayDeathSound(int soundId, float positionX);
 void EnemySpawnDeathEffect(
     const PlayerFloat3 *position, void *resource, int scriptId);
@@ -340,7 +339,7 @@ EnemyEclContextView::EnemyEclContextView()
 // for every temporary block owned by one ECL host. ResetEclState deliberately
 // clears the head separately, matching the target's reusable release/reset
 // pair at both callback-subroutine transition sites.
-void EnemyFullObjectView::ReleaseEclAllocations()
+void EnemyEclHostBaseView::ReleaseEclAllocations()
 {
     EnemyOwnedAllocationNodeView *node = ownedAllocations;
     while (node != NULL)
@@ -354,7 +353,7 @@ void EnemyFullObjectView::ReleaseEclAllocations()
 
 // Target 0x0040C730-0x0040C776 restores the embedded context as the active
 // context without touching its 0x1000-byte operand-storage payload.
-void EnemyFullObjectView::ResetEclState()
+void EnemyEclHostBaseView::ResetEclState()
 {
     flags1028 &= ~1u;
     embeddedEclContext.value00 = 0;
@@ -366,6 +365,47 @@ void EnemyFullObjectView::ResetEclState()
     eclContextMirror = &embeddedEclContext;
     ownedAllocations = NULL;
     value1038 = 0;
+}
+
+// The base virtual table at 0x0046D0D8 supplies neutral defaults for hosts that
+// do not provide Enemy-specific operand access. The empty constructor delegates
+// its only target-visible work to the embedded context constructor.
+EnemyEclHostBaseView::EnemyEclHostBaseView()
+{
+}
+
+int EnemyEclHostBaseView::DispatchEclInstruction()
+{
+    return 0;
+}
+
+int EnemyEclHostBaseView::ReadIntOperand(int operand)
+{
+    (void)operand;
+    return 0;
+}
+
+int *EnemyEclHostBaseView::ResolveIntOperand(int operand)
+{
+    (void)operand;
+    return NULL;
+}
+
+float EnemyEclHostBaseView::ReadFloatOperand(int operand)
+{
+    (void)operand;
+    return 0.0f;
+}
+
+float *EnemyEclHostBaseView::ResolveFloatOperand(int operand)
+{
+    (void)operand;
+    return NULL;
+}
+
+EnemyEclHostBaseView::~EnemyEclHostBaseView()
+{
+    ReleaseEclAllocations();
 }
 
 // Base ECL resources accept script data through slot zero but do not know how
@@ -1189,13 +1229,11 @@ EnemyManagerView * __stdcall EnemyManagerCreate(
 
 // Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
 // machine boundary carries the full object in ESI and one stack subroutine-name
-// argument with RET 4; this ordinary C++ spelling does not claim that private
-// ABI. Primary/base vptr writes are compiler/type ownership still under review.
-EnemyFullObjectView *EnemyConstruct(
-    EnemyFullObjectView *enemy, const char *eclSubroutineName)
+// argument with RET 4. The ordinary C++ spelling recovers the target-proven
+// base/derived construction order without claiming that private machine ABI.
+EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 {
-    enemy->embeddedEclContext.operandStackOffset = 0;
-    enemy->embeddedEclContext.localStorageOffset = 0;
+    EnemyFullObjectView *enemy = this;
 
     EnemyPrepareRuntimeStorage(&enemy->runtime);
     memset(&enemy->runtime, 0, sizeof(enemy->runtime));
@@ -1276,7 +1314,6 @@ EnemyFullObjectView *EnemyConstruct(
         enemy->runtime.callbackThresholds[i].state = 0;
     }
 
-    return enemy;
 }
 
 // Maintained source for target 0x0040CFB0 plus its compiler-owned alignment and
@@ -1289,10 +1326,7 @@ EnemyFullObjectView *EnemySpawn(
     const char *eclSubroutineName,
     const EnemySpawnRequestView *request)
 {
-    EnemyFullObjectView *enemy =
-        static_cast<EnemyFullObjectView *>(::operator new(sizeof(EnemyFullObjectView)));
-    if (enemy != NULL)
-        enemy = EnemyConstruct(enemy, eclSubroutineName);
+    EnemyFullObjectView *enemy = new EnemyFullObjectView(eclSubroutineName);
 
     enemy->runtime.offsetMotion.position = request->position;
     enemy->runtime.scoreReward = request->scoreReward;
@@ -1400,11 +1434,11 @@ int EnemyManagerUpdate(EnemyManagerView *manager)
             if (EnemyRuntimeUpdate(&enemy->runtime) == 0)
                 enemy->runtime.flags &= ~0x400u;
             else
-                EnemyInvokeScalarDeletingDestructor(enemy, 1);
+                delete enemy;
         }
         else
         {
-            EnemyInvokeScalarDeletingDestructor(enemy, 1);
+            delete enemy;
         }
         node = next;
     }
@@ -1438,12 +1472,13 @@ int __fastcall EnemyManagerDrawCallback(EnemyManagerView *manager)
     return 1;
 }
 
-// Maintained destructor body for target 0x0040DAE0-0x0040DC61. Its sole full
-// object argument is stack-bound with RET 4. The scalar-deleting wrapper at
-// 0x0040CC50 owns optional object deallocation; this body only tears down
-// references and owned suballocations.
-void __stdcall EnemyTeardown(EnemyFullObjectView *enemy)
+// Maintained destructor body for target 0x0040DAE0-0x0040DC61. The target's
+// private boundary carries the full object on the stack with RET 4. The
+// scalar-deleting wrapper at 0x0040CC50 owns optional object deallocation; the
+// compiler then appends the recovered base-host destruction.
+EnemyFullObjectView::~EnemyFullObjectView()
 {
+    EnemyFullObjectView *enemy = this;
     EnemyManagerView *manager = g_EnemyManager;
     EnemyListNodeView *listNode = &enemy->runtime.listNode;
 
@@ -1524,14 +1559,6 @@ void __stdcall EnemyTeardown(EnemyFullObjectView *enemy)
         }
     }
 
-    EnemyOwnedAllocationNodeView *owned = enemy->ownedAllocations;
-    while (owned != NULL)
-    {
-        EnemyOwnedAllocationNodeView *next = owned->next;
-        free(owned->allocation);
-        free(owned);
-        owned = next;
-    }
 }
 
 // Reviewed target 0x0040E5F0-0x0040E691 finalization path. The direct callees

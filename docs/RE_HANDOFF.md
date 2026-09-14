@@ -17,9 +17,10 @@
 - Completed session checkpoint: `e4c9077 gpt-5.6-sol: promote exact LZSS LTCG helpers`.
 - Completed session checkpoint: `37ebb83 gpt-5.6-sol: promote remaining exact LTCG helpers`.
 - Completed session checkpoint: `ead21f9 gpt-5.6-sol: rank exact reconstruction backlog`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL core lifecycles`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `d4af1a5 gpt-5.6-sol: recover ECL core lifecycles`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL host hierarchy`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-ecl-core-lifecycle/`. The backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-ecl-host-base/`. The ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -39,7 +40,39 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ECL core lifecycle and resource base
+## Current packet: ECL host hierarchy
+
+Direct TH10 evidence closes the previously unresolved class boundary. The
+six-slot vtable at `0x0046D0D8` contains neutral dispatch/int/int-pointer/float/
+float-pointer methods followed by scalar deleting destructor `0x0040C7B0`.
+The derived table at `0x0046D0C0` replaces those five methods and ends in the
+Enemy deleting destructor at `0x0040CC50`. Construction at `0x0040C710` and
+`0x0040D830`, destruction at `0x0040DAE0`, and the inline base tail through
+`0x0040DC5F` independently show a `0x103C` polymorphic ECL host followed by the
+Enemy runtime tail. The manager's indirect call through slot `+0x14` with flag
+one is virtual deletion.
+
+Maintained source now expresses that evidence as an actual
+`EnemyEclHostBaseView` base and `EnemyFullObjectView` derived class, including
+real constructors/destructors, `new`, virtual `delete`, and a base-typed operand
+resolver in the embedded context. Compile-time layout assertions preserve base
+size `0x103C`, full size `0x2518`, active context `+0x004`, embedded context
+`+0x008`, allocation list `+0x1034`, and runtime tail `+0x103C`.
+
+Five neutral virtuals are canonical exact normal-COFF units across 27 bytes.
+The 21-byte base constructor and 47-byte base destructor are canonical exact
+linked-PE units; their complete PDB-owned extents declare the base-vtable field,
+the constructor's one DIR32 field, and the destructor's two `free` REL32 fields.
+Two independent cold builds replay all seven new units across **95 bytes**.
+All 20 Enemy exact units replay together across **511 bytes** after refreshing
+only VC7 compiler-local resolver label names. Base reset and the large derived
+constructor/destructor remain non-exact.
+
+Repository exact coverage is now **46 functions / 1,650 bytes**. This bounded
+evidence establishes source-level class shape and the declared function bodies;
+it does not establish production TU partition or whole-product link closure.
+
+## Completed packet: ECL core lifecycle and resource base
 
 Direct TH10 review establishes a reusable ECL host around the full object's
 embedded `0x1018` context. The two callback-subroutine transition paths call a
@@ -309,18 +342,18 @@ Total repository canonical exact coverage after the Enemy packet was **4 functio
 
 Current ledger:
 
-- candidates: **1269**
+- candidates: **1277**
 - origin/boundary pending: **1130**
-- authored: **125 / 53,138 bytes**
-- excluded: **14**
-- source-present: **97 / 27,489 bytes**
-- canonical exact: **39 / 1,555 bytes**
+- authored: **132 / 53,233 bytes**
+- excluded: **15**
+- source-present: **104 / 27,584 bytes**
+- canonical exact: **46 / 1,650 bytes**
 
-Current ECL packet delta from `ead21f9`: **+6 functions / +140 exact bytes** and seven source mappings. The authored source backlog is now **54 functions**. Session exact delta from `444eb1a...` is **+35 functions / +1,378 bytes**.
+Current hierarchy packet delta from `d4af1a5`: **+7 functions / +95 exact bytes**, seven source mappings, and one compiler-generated deleting-destructor denominator entry. The authored source backlog remains **54 functions**. Session exact delta from `444eb1a...` is **+42 functions / +1,473 bytes**.
 
-**Source presence:** seven ECL lifecycle/resource functions became source-present.
+**Source presence:** seven ECL-host class functions became source-present.
 
-**Exactness:** repository canonical exact coverage is 39 functions / 1,555 bytes. The complete mixed set cold-replays through nine artifact builds across five source files. This exact lane does not establish production object ownership or whole-build closure.
+**Exactness:** repository canonical exact coverage is 46 functions / 1,650 bytes. The complete mixed set cold-replays through the configured shared artifacts across five source files. This exact lane does not establish production object ownership or whole-build closure.
 
 **Whole build:** actual final `python3 scripts/build.py` returned **RC2 / explicitly open**. Production compiler flags, TU partition, libraries, resources and link order remain unknown. `build.py --check`, tracking, toolchain execution and public CI pass this honest open state.
 
@@ -336,11 +369,11 @@ The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with
 
 The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
 
-The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, backlog-ranking, and current ECL lifecycle campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
+The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, backlog-ranking, ECL lifecycle, and current host-hierarchy campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
 
 ## Next hard frontier
 
-Continue the ECL core before returning to the general ranked backlog. The immediate bounded seam is the six-slot base host vtable at `0x0046D0D8`, its constructor/destructor family at `0x0040C710/0x0040C780/0x0040C7B0`, and the default typed operand methods at `0x0040C5E0/0x0040C690/0x0040C6A0/0x0040C6B0/0x0040C6C0`. Model the base/derived relationship only after the target-local object layout and all Ghidra-missed boundaries are entered into the denominator. The 71-byte reset is the closest connected non-exact source experiment.
+Continue the ECL core before returning to the general ranked backlog. The recovered host hierarchy makes the 71-byte reset at `0x0040C730` the closest connected non-exact source experiment. The large derived constructor/destructor at `0x0040D830/0x0040DAE0` now have the correct source-level class ownership but retain private LTCG ABIs and real byte mismatches; use them as structural feedback rather than exact candidates without new evidence.
 
 After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. The real production link graph remains a major infrastructure gap; canonical bounded linked-image units do not close it.
 

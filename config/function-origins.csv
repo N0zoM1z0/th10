@@ -120,8 +120,16 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040C480,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C4D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0040C540,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0040C5E0,authored_game,Enemy,authored,high,enemy-ecl-host-base-2026-09-14
+0x0040C690,authored_game,Enemy,authored,high,enemy-ecl-host-base-2026-09-14
+0x0040C6A0,authored_game,Enemy,authored,high,enemy-ecl-host-base-2026-09-14
+0x0040C6B0,authored_game,Enemy,authored,high,enemy-ecl-host-base-2026-09-14
+0x0040C6C0,authored_game,Enemy,authored,high,enemy-ecl-host-base-2026-09-14
 0x0040C6E0,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
+0x0040C710,authored_game,Enemy,authored,high,enemy-ecl-host-base-2026-09-14
 0x0040C730,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
+0x0040C780,authored_game,Enemy,authored,high,enemy-ecl-host-base-2026-09-14
+0x0040C7B0,compiler_generated,Enemy,exclude,high,enemy-ecl-host-base-2026-09-14
 0x0040C800,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
 0x0040C810,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
 0x0040C820,authored_game,Enemy,authored,high,enemy-ecl-core-lifecycle-2026-09-14
