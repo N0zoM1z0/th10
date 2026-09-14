@@ -6,6 +6,20 @@
 
 struct AnmFloat3View
 {
+    AnmFloat3View() {}
+    AnmFloat3View(float x, float y, float z)
+    {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+    }
+
+    AnmFloat3View operator-(const AnmFloat3View &other) const
+    {
+        return AnmFloat3View(
+            x - other.x, y - other.y, z - other.z);
+    }
+
     float x;
     float y;
     float z;
@@ -75,7 +89,8 @@ struct AnmVmView
     void *unknown018;
     unsigned char unknown01C[0x004];
     void *persistentOwner020;
-    unsigned char unknown024[0x018];
+    AnmFloat3View rotation;
+    unsigned char unknown030[0x00c];
     float scaleX;
     float scaleY;
     unsigned char unknown044[0x008];
@@ -155,6 +170,8 @@ typedef char AnmVmActiveSpriteAt384[
     (offsetof(AnmVmView, activeSpriteIndex) == 0x384) ? 1 : -1];
 typedef char AnmVmPositionAt334[
     (offsetof(AnmVmView, position) == 0x334) ? 1 : -1];
+typedef char AnmVmRotationAt024[
+    (offsetof(AnmVmView, rotation) == 0x024) ? 1 : -1];
 typedef char AnmVmLoadedSpriteAt394[
     (offsetof(AnmVmView, loadedSprite) == 0x394) ? 1 : -1];
 typedef char AnmVmColorsAt2FC[
@@ -342,6 +359,11 @@ struct AnmRenderManagerView
     int DrawInner(AnmVmView *vm, int roundToPixel);
     int DrawNoRotation(AnmVmView *vm);
     int DrawNoRotationNoRound(AnmVmView *vm);
+    void TranslateRotation(
+        AnmRenderVertexView *vertex, float x, float y, float sine,
+        float cosine, float xOffset, float yOffset);
+    int ProjectCameraFacingQuad(AnmVmView *vm);
+    int DrawCameraFacingQuad(AnmVmView *vm);
 };
 
 typedef char AnmRenderFlushCountAt058[
@@ -362,17 +384,33 @@ typedef char AnmRenderMixColorAt732458[
     (offsetof(AnmRenderManagerView, mixColor) == 0x732458 &&
      offsetof(AnmRenderManagerView, useMixColor) == 0x73245c) ? 1 : -1];
 
-struct AnmViewportOwnerView
+struct AnmViewportView
 {
-    unsigned char unknown000[0x0cc];
     unsigned int x;
     unsigned int y;
     unsigned int width;
     unsigned int height;
+    float minZ;
+    float maxZ;
+};
+
+struct AnmViewportOwnerView
+{
+    unsigned char unknown000[0x030];
+    AnmFloat3View cameraRight;
+    unsigned char unknown03C[0x010];
+    AnmMatrixView viewMatrix;
+    AnmMatrixView projectionMatrix;
+    AnmViewportView viewport;
 };
 
 typedef char AnmViewportAt0CC[
-    (offsetof(AnmViewportOwnerView, x) == 0x0cc) ? 1 : -1];
+    (offsetof(AnmViewportOwnerView, viewport) == 0x0cc) ? 1 : -1];
+typedef char AnmViewportCameraRightAt030[
+    (offsetof(AnmViewportOwnerView, cameraRight) == 0x030) ? 1 : -1];
+typedef char AnmViewportMatricesAt04C[
+    (offsetof(AnmViewportOwnerView, viewMatrix) == 0x04c &&
+     offsetof(AnmViewportOwnerView, projectionMatrix) == 0x08c) ? 1 : -1];
 
 extern AnmRenderManagerView *g_AnmRenderManagerView;
 extern D3d9DeviceView *g_Direct3DDevice;
@@ -392,6 +430,11 @@ extern void *g_AnmChainView;
 extern AnmErrorLoggerView g_AnmErrorLoggerView;
 extern unsigned char g_AnmChainCriticalSection[];
 extern unsigned char g_AnmChainMutationDepth;
+
+extern "C" AnmFloat3View *__stdcall D3DXVec3Project(
+    AnmFloat3View *output, const AnmFloat3View *input,
+    const AnmViewportView *viewport, const AnmMatrixView *projection,
+    const AnmMatrixView *view, const AnmMatrixView *world);
 
 extern "C" void __stdcall EnterCriticalSection(void *criticalSection);
 extern "C" void __stdcall LeaveCriticalSection(void *criticalSection);

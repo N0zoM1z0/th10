@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `e239b4b gpt-5.6-sol: recover ANM render buffer core`, branch `main`.
+- Current packet base: `591f59b gpt-5.6-sol: recover ANM draw core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -23,18 +23,19 @@
 - Completed session checkpoint: `260ac75 gpt-5.6-sol: recover ANM manager core`.
 - Completed session checkpoint: `3e6de60 gpt-5.6-sol: recover ASCII text pipeline`.
 - Completed session checkpoint: `e239b4b gpt-5.6-sol: recover ANM render buffer core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM draw core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery adopted and completed the source-present axis-draw work left in the worktree after the previous checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Completed session checkpoint: `591f59b gpt-5.6-sol: recover ANM draw core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM camera projection`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-draw-core/`. The earlier ANM-manager, ANM-VM, ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `e239b4b...` plus the reviewable axis-draw worktree delta were adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `591f59b...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
-Fresh repository preflight passed on `260ac75...`:
+Fresh repository preflight passed at the start of the current ANM reconstruction session:
 
 - `python3 scripts/verify-target.py`
 - `python3 scripts/verify-toolchain.py --execute`
@@ -45,7 +46,51 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM shared draw core
+## Current packet: ANM camera-facing projection
+
+The camera-facing placement owner at `0x00443B60-0x00443F76` is now recovered
+from TH10-local target evidence. It reads VM Z rotation at `+0x2C`, accumulates
+`position + preservedPosition + spriteOffset`, builds a translated identity
+world matrix, and calls the imported `D3DXVec3Project` thunk at `0x0045218E`
+twice through the active viewport owner at `0x00491FAC`. The owner layout is
+camera-right `+0x30`, view matrix `+0x4C`, projection matrix `+0x8C`, and D3D9
+viewport `+0xCC`; all four offsets have compile-time checks.
+
+The first projection supplies a zero vector and rejects projected Z outside
+`[0,1]`. The second projects camera-right, and the screen-space distance between
+the results supplies half-scale for sprite width/height. The same VM flag bits
+18-21 select horizontal and vertical anchor modes before the two-dimensional
+rotation is applied. TH10 writes `projectedPosition.z` to all four shared
+vertices; this target-local behavior differs from the adjacent TH095 source
+shape and was retained from TH10 evidence.
+
+Pinned VC7.1 SP1 build6030 `/GL` in the regular-text entry context reproduces
+the complete 1,047-byte PDB contribution and all 25 viewport, import, constant,
+and shared-quad fields exactly. The 33-byte `DrawCameraFacingQuad` wrapper is
+also exact with both REL32 calls replayed to `ProjectCameraFacingQuad` and
+`DrawInner`. The compiler's local symbol ordering affects LTCG stack coloring:
+renaming the two 12-byte projection temporaries alone produced eight stack-
+displacement differences, while the retained source form reproduces all 1,047
+bytes. This is compiler evidence, not an inferred target layout.
+
+Direct target review also recovered a Ghidra-missed 50-byte
+`TranslateRotation` body at `0x00443680-0x004436B1`. Its 50 instruction bytes
+are raw-equal to current source, but the candidate PDB contribution includes
+two trailing `CC` bytes and is therefore conservatively source-present/non-
+exact under the current complete-contribution Oracle. A second Ghidra-missed
+CC-delimited body at `0x004436C0-0x00443B5E` is now in the denominator as an
+origin-unknown ANM review candidate; no source or semantic name is assigned yet.
+
+Current tracking contains **1,288** candidates, **164** authored functions,
+**136** source mappings, and **67 canonical exact functions / 6,136 bytes**.
+The authored source backlog is **65**. The full current `src/AnmManager.cpp`
+exact set is **21 functions / 4,486 bytes** across four artifact contexts.
+
+The next ANM frontier is the newly bounded `0x004436C0` rotated draw body and
+the projected/photo wrapper at `0x00443FB0`; establish their TH10 caller and
+field semantics before transferring any adjacent-game source shape.
+
+## Completed packet: ANM shared draw core
 
 The common renderer path at `0x00442670` is now reconstructed together with
 its 25-byte color mixer at `0x004423C0`, 201-byte render-state owner at

@@ -132,3 +132,6 @@ AnmRenderManagerView::DrawNoRotationNoRound,0x00443290,function
 MixAnmColor,0x004423C0,function
 AnmRenderManagerView::SetRenderStateForVm,0x004425A0,function
 AnmRenderManagerView::DrawInner,0x00442670,function
+AnmRenderManagerView::TranslateRotation,0x00443680,function
+AnmRenderManagerView::ProjectCameraFacingQuad,0x00443B60,function
+AnmRenderManagerView::DrawCameraFacingQuad,0x00443F80,function

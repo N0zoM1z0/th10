@@ -499,10 +499,12 @@ int AnmRenderManagerView::DrawInner(AnmVmView *vm, int flags)
     minY = g_AnmQuadVertices[3].y < minY
         ? g_AnmQuadVertices[3].y : minY;
 
-    if (maxX < g_AnmViewportOwner->x ||
-        maxY < g_AnmViewportOwner->y ||
-        minX > g_AnmViewportOwner->x + g_AnmViewportOwner->width ||
-        minY > g_AnmViewportOwner->y + g_AnmViewportOwner->height)
+    if (maxX < g_AnmViewportOwner->viewport.x ||
+        maxY < g_AnmViewportOwner->viewport.y ||
+        minX > g_AnmViewportOwner->viewport.x +
+            g_AnmViewportOwner->viewport.width ||
+        minY > g_AnmViewportOwner->viewport.y +
+            g_AnmViewportOwner->viewport.height)
         return 0;
 
     if (currentTexture != vm->loadedSprite->texture)
@@ -747,6 +749,166 @@ int AnmRenderManagerView::DrawNoRotationNoRound(AnmVmView *vm)
     g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
         g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
             vm->spriteOffset.y + vm->preservedPosition.z + vm->position.z;
+    return DrawInner(vm, 0);
+}
+
+// Target 0x00443680-0x004436B1 applies the renderer's two-dimensional
+// rotation and translation to one shared textured vertex. The member receiver
+// is unused and disappears from the target's LTCG-internal calling convention.
+void AnmRenderManagerView::TranslateRotation(
+    AnmRenderVertexView *vertex, float x, float y, float sine,
+    float cosine, float xOffset, float yOffset)
+{
+    vertex->x = x * cosine - y * sine + xOffset;
+    vertex->y = x * sine + y * cosine + yOffset;
+}
+
+static __forceinline float AnmFloat3Length(const AnmFloat3View &value)
+{
+    return static_cast<float>(sqrt(
+        value.x * value.x + value.y * value.y + value.z * value.z));
+}
+
+// Target 0x00443B60-0x00443F76 projects the VM's accumulated world position
+// and the current camera-right reference through the active background
+// viewport. The projected reference fixes the screen-space sprite scale; the
+// VM's Z rotation and two anchor fields then place the shared quad. Unlike the
+// adjacent TH095 implementation, TH10 stores the projected depth in every
+// vertex.
+int AnmRenderManagerView::ProjectCameraFacingQuad(AnmVmView *vm)
+{
+    float rotation;
+    float sine;
+    float cosine;
+    float xOffset;
+    float yOffset;
+    float spriteHeight;
+    float spriteWidth;
+    AnmFloat3View projectedReference;
+    AnmMatrixView worldMatrix;
+    AnmFloat3View projectedPosition;
+    AnmFloat3View origin;
+    AnmFloat3View delta;
+    float vertexX[4];
+    float vertexY[4];
+    int i;
+
+    rotation = vm->rotation.z;
+#if defined(_MSC_VER) && defined(_M_IX86)
+    // Both target sites use one x87 FSINCOS and pop cosine before sine. VC7.1
+    // has no C/C++ intrinsic that retains this instruction shape.
+    __asm
+    {
+        fld rotation
+        fsincos
+        fstp cosine
+        fstp sine
+    }
+#else
+    cosine = static_cast<float>(cos(rotation));
+    sine = static_cast<float>(sin(rotation));
+#endif
+
+    // These two local identifiers retain the original build-6030 LTCG stack
+    // coloring: this first vector supplies the zero projection input, while
+    // origin below receives the projected camera-right reference.
+    projectedReference.x = 0.0f;
+    projectedReference.y = 0.0f;
+    projectedReference.z = 0.0f;
+
+    worldMatrix.SetIdentity();
+    worldMatrix.values[12] =
+        vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x;
+    worldMatrix.values[13] =
+        vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y;
+    worldMatrix.values[14] =
+        vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+
+    D3DXVec3Project(
+        &projectedPosition, &projectedReference,
+        &g_AnmViewportOwner->viewport,
+        &g_AnmViewportOwner->projectionMatrix,
+        &g_AnmViewportOwner->viewMatrix, &worldMatrix);
+    if (projectedPosition.z < 0.0f || projectedPosition.z > 1.0f)
+        return -1;
+
+    D3DXVec3Project(
+        &origin, &g_AnmViewportOwner->cameraRight,
+        &g_AnmViewportOwner->viewport,
+        &g_AnmViewportOwner->projectionMatrix,
+        &g_AnmViewportOwner->viewMatrix, &worldMatrix);
+
+    delta = origin - projectedPosition;
+    xOffset = AnmFloat3Length(delta) * 0.5f;
+    spriteWidth = vm->spriteWidth * vm->scaleX * xOffset;
+    spriteHeight = vm->spriteHeight * vm->scaleY * xOffset;
+    xOffset = projectedPosition.x;
+    yOffset = projectedPosition.y;
+    g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
+        g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
+            projectedPosition.z;
+
+#if defined(_MSC_VER) && defined(_M_IX86)
+    __asm
+    {
+        fld rotation
+        fsincos
+        fstp cosine
+        fstp sine
+    }
+#else
+    cosine = static_cast<float>(cos(rotation));
+    sine = static_cast<float>(sin(rotation));
+#endif
+
+    switch (vm->renderStateA)
+    {
+    case 1:
+        vertexX[0] = vertexX[2] = 0.0f;
+        vertexX[1] = vertexX[3] = spriteWidth;
+        break;
+    case 0:
+        vertexX[0] = vertexX[2] = -spriteWidth * 0.5f;
+        vertexX[1] = vertexX[3] = spriteWidth * 0.5f;
+        break;
+    case 2:
+        vertexX[0] = vertexX[2] = -spriteWidth;
+        vertexX[1] = vertexX[3] = 0.0f;
+        break;
+    }
+
+    switch (vm->renderStateB)
+    {
+    case 1:
+        vertexY[0] = vertexY[1] = 0.0f;
+        vertexY[2] = vertexY[3] = spriteHeight;
+        break;
+    case 0:
+        vertexY[0] = vertexY[1] = -spriteHeight * 0.5f;
+        vertexY[2] = vertexY[3] = spriteHeight * 0.5f;
+        break;
+    case 2:
+        vertexY[0] = vertexY[1] = -spriteHeight;
+        vertexY[2] = vertexY[3] = 0.0f;
+        break;
+    }
+
+    for (i = 0; i < 4; ++i)
+    {
+        TranslateRotation(
+            &g_AnmQuadVertices[i], vertexX[i], vertexY[i], sine, cosine,
+            xOffset, yOffset);
+    }
+
+    return 0;
+}
+
+// Target 0x00443F80-0x00443FA0 draws the projected quad through the common
+// non-rounded renderer path and propagates projection failure.
+int AnmRenderManagerView::DrawCameraFacingQuad(AnmVmView *vm)
+{
+    if (ProjectCameraFacingQuad(vm) != 0)
+        return -1;
     return DrawInner(vm, 0);
 }
 

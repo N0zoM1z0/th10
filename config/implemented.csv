@@ -131,3 +131,6 @@ AnmRenderManagerView::DrawNoRotationNoRound
 MixAnmColor
 AnmRenderManagerView::SetRenderStateForVm
 AnmRenderManagerView::DrawInner
+AnmRenderManagerView::TranslateRotation
+AnmRenderManagerView::ProjectCameraFacingQuad
+AnmRenderManagerView::DrawCameraFacingQuad
