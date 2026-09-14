@@ -61,3 +61,7 @@ PlayerDrawCallback
 PlayerUpdateCallback
 PlayerUpdateMovementAndOptions
 PlayerInitialize
+Player::Player
+PlayerResetRuntimeState
+Player::~Player
+PlayerCreate

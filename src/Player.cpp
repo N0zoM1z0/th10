@@ -2,6 +2,8 @@
 
 #include <stddef.h>
 #include <math.h>
+#include <stdlib.h>
+#include <string.h>
 
 struct PlayerVm;
 
@@ -36,12 +38,16 @@ typedef char PlayerVmFlagsAt35C[
 
 struct PlayerVmManager
 {
-    unsigned char unknown000[0x72dad4];
+    unsigned char unknown000[0x3ad08c];
+    void *playerCache;
+    unsigned char unknown3AD090[0x380a44];
     PlayerVmListNode *primaryHead;
     PlayerVmListNode *primaryTail;
     PlayerVmListNode *secondaryHead;
     PlayerVmListNode *secondaryTail;
 };
+typedef char PlayerVmManagerCacheAt3AD08C[
+    (offsetof(PlayerVmManager, playerCache) == 0x3ad08c) ? 1 : -1];
 typedef char PlayerVmManagerPrimaryHeadAt72DAD4[
     (offsetof(PlayerVmManager, primaryHead) == 0x72dad4) ? 1 : -1];
 typedef char PlayerVmManagerSecondaryHeadAt72DADC[
@@ -204,7 +210,6 @@ extern int g_PlayerShotType;
 extern int g_PlayerOptionPositionBase[];
 extern float g_PlayerOptionCoordinateScale;
 extern PlayerVmManager *g_PlayerVmManager;
-extern void *g_PlayerAnimationOwner;
 extern void *g_PlayerCallbackManager;
 extern PlayerOptionDataView *g_PlayerSharedOptionData;
 extern const char *g_PlayerShotDataFilenames[6];
@@ -221,6 +226,23 @@ PlayerVm *PlayerAllocateManagedVm();
 void PlayerInitializeManagedVmScript(PlayerVm *vm, int scriptIndex);
 void PlayerRegisterManagedVm(PlayerVm *vm, unsigned int *idOut);
 void PlayerSetManagedVmDeleteState(unsigned int *vmId, unsigned short state);
+
+// Neutral lifecycle globals and interfaces recovered around Player creation,
+// reset and teardown. Private register contracts are deliberately hidden here.
+extern unsigned int g_PlayerLifecycleFlags;
+extern void *g_PlayerRuntimeVmGroup;
+extern int g_PlayerRuntimeVmCount;
+extern unsigned char g_PlayerCallbackLockDepth;
+struct PlayerCriticalSectionView { unsigned char storage[0x18]; };
+extern PlayerCriticalSectionView g_PlayerCallbackCriticalSection;
+extern "C" void __stdcall EnterCriticalSection(PlayerCriticalSectionView *section);
+extern "C" void __stdcall LeaveCriticalSection(PlayerCriticalSectionView *section);
+void __fastcall PlayerUnlinkCallbackNode(
+    PlayerCallbackNodeView *node, void *manager);
+void PlayerMarkManagedVmPending(unsigned int vmId);
+void PlayerApplyRuntimeVmGroupState(void *group, int count);
+void PlayerMarkResourceVmsPending(void *resource);
+void PlayerDestroyAnimationCacheContents(void *cache);
 
 // Descriptive interfaces for the Player initializer's observed callees. Only
 // PlayerLoadAnimationResource has a conventional machine spelling supported by
@@ -467,6 +489,115 @@ static int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
     return 0;
 }
 
+// Maintained source for the Player constructor/reset/factory/destructor seam.
+// The target optimizer uses private ESI/stack/register boundaries for several
+// bodies; these natural C++ declarations do not claim those machine ABIs.
+Player::Player()
+{
+    memset(this, 0, sizeof(*this));
+    g_Player = this;
+}
+
+void PlayerResetRuntimeState(Player *player)
+{
+    player->runtimeState = 1;
+
+    if ((player->updateTimer0.flags & 1) == 0)
+    {
+        player->updateTimer0.current = 0;
+        player->updateTimer0.previous = 0xfff0bdc1;
+        player->updateTimer0.subframe = 0.0f;
+        player->updateTimer0.scale = &g_PlayerTimerScale;
+        player->updateTimer0.flags |= 1;
+    }
+    player->updateTimer0.current = -1;
+    player->updateTimer0.subframe = -1.0f;
+    player->updateTimer0.previous = -2;
+
+    if ((player->updateTimer1.flags & 1) == 0)
+    {
+        player->updateTimer1.current = 0;
+        player->updateTimer1.previous = 0xfff0bdc1;
+        player->updateTimer1.subframe = 0.0f;
+        player->updateTimer1.scale = &g_PlayerTimerScale;
+        player->updateTimer1.flags |= 1;
+    }
+    player->updateTimer1.current = 0;
+    player->updateTimer1.subframe = 0.0f;
+    player->updateTimer1.previous = -1;
+
+    if ((player->updateTimer2.flags & 1) == 0)
+    {
+        player->updateTimer2.current = 0;
+        player->updateTimer2.previous = 0xfff0bdc1;
+        player->updateTimer2.subframe = 0.0f;
+        player->updateTimer2.scale = &g_PlayerTimerScale;
+        player->updateTimer2.flags |= 1;
+    }
+    player->updateTimer2.current = 0;
+    player->updateTimer2.subframe = 0.0f;
+    player->updateTimer2.previous = -1;
+
+    PlayerMarkManagedVmPending(player->modeVmId);
+    player->modeVmId = 0;
+    PlayerApplyRuntimeVmGroupState(g_PlayerRuntimeVmGroup, g_PlayerRuntimeVmCount);
+}
+
+static void RemovePlayerCallbackNode(PlayerCallbackNodeView *node)
+{
+    if (node == NULL)
+        return;
+
+    EnterCriticalSection(&g_PlayerCallbackCriticalSection);
+    ++g_PlayerCallbackLockDepth;
+    PlayerUnlinkCallbackNode(node, g_PlayerCallbackManager);
+    LeaveCriticalSection(&g_PlayerCallbackCriticalSection);
+    --g_PlayerCallbackLockDepth;
+}
+
+Player::~Player()
+{
+    RemovePlayerCallbackNode(updateCallbackNode);
+    RemovePlayerCallbackNode(drawCallbackNode);
+    g_Player = NULL;
+
+    if ((g_PlayerLifecycleFlags & 1) != 0)
+    {
+        PlayerMarkResourceVmsPending(resource);
+        g_PlayerSharedOptionData = optionData;
+    }
+    else
+    {
+        if (g_PlayerVmManager->playerCache != NULL)
+        {
+            PlayerDestroyAnimationCacheContents(g_PlayerVmManager->playerCache);
+            free(g_PlayerVmManager->playerCache);
+            g_PlayerVmManager->playerCache = NULL;
+        }
+        if (optionData != NULL)
+        {
+            free(optionData);
+            optionData = NULL;
+        }
+        g_PlayerSharedOptionData = NULL;
+    }
+
+    if (drawVm.ownedData358 != NULL)
+        free(drawVm.ownedData358);
+    drawVm.ownedData358 = NULL;
+}
+
+Player *PlayerCreate()
+{
+    Player *player = new Player;
+    if (PlayerInitialize(player) != 0)
+    {
+        delete player;
+        return NULL;
+    }
+    return player;
+}
+
 // Maintained source for the Player initialization owner at
 // 0x004247F0-0x00424D8A. Its sole target caller places the newly allocated
 // Player in EBX immediately before the call. This ordinary source parameter is
@@ -476,7 +607,7 @@ int PlayerInitialize(Player *player)
     const char *animationFilename =
         g_PlayerCharacter != 0 ? "pl01.anm" : "pl00.anm";
     player->resource = PlayerLoadAnimationResource(
-        8, g_PlayerAnimationOwner, animationFilename);
+        8, g_PlayerVmManager, animationFilename);
     if (player->resource == NULL)
     {
         PlayerReportInitializationError();
@@ -1088,14 +1219,14 @@ int __fastcall PlayerUpdateCallback(Player *player)
         row.valueX += row.deltaX;
         row.valueY += row.deltaY;
 
-        motion.timerPrevious = motion.timerCurrent;
-        float scale = *motion.timerScale;
+        motion.timer.previous = motion.timer.current;
+        float scale = *motion.timer.scale;
         if (scale > 0.9900000095367432f && scale < 1.0099999904632568f)
-            motion.timerSubframe -= 1.0f;
+            motion.timer.subframe -= 1.0f;
         else
-            motion.timerSubframe -= scale * 1.0f;
-        motion.timerCurrent = (int)motion.timerSubframe;
-        if (motion.timerCurrent < 1)
+            motion.timer.subframe -= scale * 1.0f;
+        motion.timer.current = (int)motion.timer.subframe;
+        if (motion.timer.current < 1)
             motion.activeFlags &= ~1u;
     }
 

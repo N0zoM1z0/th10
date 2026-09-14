@@ -2,6 +2,7 @@
 #define TH10_RECONSTRUCTION_PLAYER_HPP
 
 #include <stddef.h>
+#include <string.h>
 
 struct PlayerPositionPair
 {
@@ -29,12 +30,15 @@ struct PlayerOptionRuntime
     unsigned char unknown054[0x14];
     unsigned int primaryVmId;
     unsigned int secondaryVmId;
-    unsigned char unknown070[0x14];
+    unsigned char unknown070[0x10];
+    unsigned int flags80;
     int previousMode;
     int optionIndex;
     int resetFlag;
     PlayerOptionCallback updateCallback;
     PlayerOptionCallback drawCallback;
+
+    PlayerOptionRuntime() { flags80 &= ~1u; }
 };
 typedef char PlayerOptionRuntimeSizeIs98[
     (sizeof(PlayerOptionRuntime) == 0x98) ? 1 : -1];
@@ -44,6 +48,8 @@ typedef char PlayerOptionRuntimePrimaryVmIdAt68[
     (offsetof(PlayerOptionRuntime, primaryVmId) == 0x68) ? 1 : -1];
 typedef char PlayerOptionRuntimeSecondaryVmIdAt6C[
     (offsetof(PlayerOptionRuntime, secondaryVmId) == 0x6c) ? 1 : -1];
+typedef char PlayerOptionRuntimeFlagsAt80[
+    (offsetof(PlayerOptionRuntime, flags80) == 0x80) ? 1 : -1];
 typedef char PlayerOptionRuntimePreviousModeAt84[
     (offsetof(PlayerOptionRuntime, previousMode) == 0x84) ? 1 : -1];
 typedef char PlayerOptionRuntimeIndexAt88[
@@ -73,6 +79,8 @@ struct PlayerTimerView
     float subframe;
     float *scale;
     unsigned int flags;
+
+    PlayerTimerView() { flags &= ~1u; }
 };
 typedef char PlayerTimerViewSizeIs14[
     (sizeof(PlayerTimerView) == 0x14) ? 1 : -1];
@@ -88,16 +96,14 @@ struct PlayerEffectMotionView
     float timerStep;
     float timerStepDelta;
     unsigned int motionFlags;
-    int timerPrevious;
-    int timerCurrent;
-    float timerSubframe;
-    float *timerScale;
-    unsigned int timerFlags;
+    PlayerTimerView timer;
     unsigned char unknown034[0x10];
     unsigned int activeFlags;
 };
 typedef char PlayerEffectMotionViewSizeIs48[
     (sizeof(PlayerEffectMotionView) == 0x48) ? 1 : -1];
+typedef char PlayerEffectMotionTimerAt20[
+    (offsetof(PlayerEffectMotionView, timer) == 0x20) ? 1 : -1];
 
 struct PlayerEffectRowView
 {
@@ -116,31 +122,76 @@ typedef char PlayerEffectRowFinalizeAt18[
 typedef char PlayerEffectRowMotionAt24[
     (offsetof(PlayerEffectRowView, motion) == 0x24) ? 1 : -1];
 
+// Neutral four-byte subobject view for draw-VM members whose only reviewed
+// constructor effect is clearing flag bit zero. Their original types and
+// semantics remain unknown.
+struct PlayerConstructorFlagView
+{
+    unsigned int flags;
+    PlayerConstructorFlagView() { flags &= ~1u; }
+};
+typedef char PlayerConstructorFlagViewSizeIs04[
+    (sizeof(PlayerConstructorFlagView) == 0x04) ? 1 : -1];
+
 // Maintained 0x3AC-byte draw-VM storage view beginning at Player +0x14.
-// TH10's VM reset owner clears exactly 0xEB dwords from this base and the
-// Player initializer invokes the VM setup owner on the same address. Only the
-// target-observed fields below are named; the original VM type/field names are
-// not established.
+// TH10 constructor order proves the neutral flag subobjects below run before
+// the containing VM body clears its 0x3AC-byte storage. Only independently
+// observed fields are given semantic names; original VM types/names are unknown.
 struct PlayerDrawVmView
 {
-    unsigned char unknown000[0x300];
+    unsigned char unknown000[0x6c];
+    PlayerConstructorFlagView constructorFlags06C;
+    unsigned char unknown070[0x40];
+    PlayerConstructorFlagView constructorFlags0B0;
+    unsigned char unknown0B4[0x48];
+    PlayerConstructorFlagView constructorFlags0FC;
+    unsigned char unknown100[0x28];
+    PlayerConstructorFlagView constructorFlags128;
+    unsigned char unknown12C[0x48];
+    PlayerConstructorFlagView constructorFlags174;
+    unsigned char unknown178[0x38];
+    PlayerConstructorFlagView constructorFlags1B0;
+    unsigned char unknown1B4[0x48];
+    PlayerConstructorFlagView constructorFlags1FC;
+    unsigned char unknown200[0x28];
+    PlayerConstructorFlagView constructorFlags228;
+    unsigned char unknown22C[0xd4];
     unsigned int color;
     unsigned char unknown304[0x3c];
     float positionX;
     float positionY;
     float positionZ;
-    unsigned char unknown34C[0x10];
+    unsigned char unknown34C[0x0c];
+    void *ownedData358;
     unsigned int flags;
-    unsigned char unknown360[0x4c];
+    unsigned char unknown360[0x18];
+    PlayerConstructorFlagView constructorFlags378;
+    unsigned char unknown37C[0x08];
+    unsigned short unknownWord384;
+    unsigned char unknown386[0x26];
+
+    PlayerDrawVmView()
+    {
+        memset(this, 0, sizeof(*this));
+        unknownWord384 = 0xffff;
+    }
 };
 typedef char PlayerDrawVmViewSizeIs3AC[
     (sizeof(PlayerDrawVmView) == 0x3ac) ? 1 : -1];
+typedef char PlayerDrawVmViewCtorFlagsAt06C[
+    (offsetof(PlayerDrawVmView, constructorFlags06C) == 0x06c) ? 1 : -1];
+typedef char PlayerDrawVmViewCtorFlagsAt378[
+    (offsetof(PlayerDrawVmView, constructorFlags378) == 0x378) ? 1 : -1];
 typedef char PlayerDrawVmViewColorAt300[
     (offsetof(PlayerDrawVmView, color) == 0x300) ? 1 : -1];
 typedef char PlayerDrawVmViewPositionAt340[
     (offsetof(PlayerDrawVmView, positionX) == 0x340) ? 1 : -1];
+typedef char PlayerDrawVmViewOwnedDataAt358[
+    (offsetof(PlayerDrawVmView, ownedData358) == 0x358) ? 1 : -1];
 typedef char PlayerDrawVmViewFlagsAt35C[
     (offsetof(PlayerDrawVmView, flags) == 0x35c) ? 1 : -1];
+typedef char PlayerDrawVmViewWordAt384[
+    (offsetof(PlayerDrawVmView, unknownWord384) == 0x384) ? 1 : -1];
 
 
 // Maintained view of the fixed header of the variable-sized Player .sht data.
@@ -164,6 +215,14 @@ typedef char PlayerOptionDataViewCountAt02[
     (offsetof(PlayerOptionDataView, entryCount) == 0x02) ? 1 : -1];
 typedef char PlayerOptionDataViewSpeedsAt10[
     (offsetof(PlayerOptionDataView, axisSpeedMode0) == 0x10) ? 1 : -1];
+
+struct PlayerShotRuntimeView
+{
+    PlayerTimerView timer;
+    unsigned char unknown014[0x48];
+};
+typedef char PlayerShotRuntimeViewSizeIs5C[
+    (sizeof(PlayerShotRuntimeView) == 0x5c) ? 1 : -1];
 
 struct PlayerCallbackNodeView;
 
@@ -202,21 +261,24 @@ struct Player
     PlayerTimerView updateTimer0;
     PlayerTimerView updateTimer1;
     PlayerTimerView updateTimer2;
-    unsigned char unknown49C[0x2e00];
+    PlayerShotRuntimeView shots[128];
     unsigned int modeVmId;
     PlayerOptionRuntime options[4];
     int optionCount;
     int updateScratch;
     unsigned char updateScratchByte;
     unsigned char unknown3509[0x03];
-    PlayerEffectRowView effectRows[32];
-    unsigned char unknown428C[0x7c];
+    PlayerEffectRowView effectRows[33];
+    unsigned char unknown42F8[0x10];
     int optionTransitionFrames;
     PlayerTimerView highlightTimer;
     unsigned char unknown4320[0x04];
     PlayerFloat3 derivedVectors[6];
     PlayerPositionPair replayPositionHistory[33];
     int optionMode;
+
+    Player();
+    ~Player();
 };
 typedef char PlayerUpdateCallbackNodeAt08[
     (offsetof(Player, updateCallbackNode) == 0x08) ? 1 : -1];
@@ -252,6 +314,8 @@ typedef char PlayerTimer1At474[
     (offsetof(Player, updateTimer1) == 0x474) ? 1 : -1];
 typedef char PlayerTimer2At488[
     (offsetof(Player, updateTimer2) == 0x488) ? 1 : -1];
+typedef char PlayerShotsAt49C[
+    (offsetof(Player, shots) == 0x49c) ? 1 : -1];
 typedef char PlayerModeVmIdAt329C[
     (offsetof(Player, modeVmId) == 0x329c) ? 1 : -1];
 typedef char PlayerOptionsAt32A0[
@@ -260,6 +324,8 @@ typedef char PlayerOptionCountAt3500[
     (offsetof(Player, optionCount) == 0x3500) ? 1 : -1];
 typedef char PlayerEffectRowsAt350C[
     (offsetof(Player, effectRows) == 0x350c) ? 1 : -1];
+typedef char PlayerEffectRowsEndAt42F8[
+    (offsetof(Player, unknown42F8) == 0x42f8) ? 1 : -1];
 typedef char PlayerOptionTransitionFramesAt4308[
     (offsetof(Player, optionTransitionFrames) == 0x4308) ? 1 : -1];
 typedef char PlayerHighlightTimerAt430C[
@@ -280,6 +346,11 @@ extern Player *g_Player;
 // an int in EAX; the original source identifier, declaration and TU remain
 // unknown.
 int PlayerInitialize(Player *player);
+
+// Descriptive maintained lifecycle names for reviewed TH10 Player owners. The
+// target machine ABIs are tracked separately from these natural C++ spellings.
+void PlayerResetRuntimeState(Player *player);
+Player *PlayerCreate();
 
 // Descriptive maintained name for the reviewed 0x00426F70-0x0042792D owner.
 // The target machine boundary is one stack Player* argument with callee pop 4;
