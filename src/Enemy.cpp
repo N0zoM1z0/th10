@@ -251,6 +251,15 @@ void *EnemyLoadFileBytes(
     const char *filename, unsigned int *sizeOut, int mode);
 void EnemyManagerClear(EnemyManagerView *manager);
 
+// Target 0x0040E760-0x0040E76A is the primary Enemy vtable slot-zero entry.
+// VC7.1 naturally lowers this ordinary member forwarding expression to
+// ADD ECX,0x103C / JMP EnemyRuntimeView::DispatchEclInstruction. The runtime
+// body at 0x0040E770 remains independently unreconstructed.
+int EnemyFullObjectView::DispatchEclInstruction()
+{
+    return runtime.DispatchEclInstruction();
+}
+
 // Maintained source for the reviewed 0x0040DC80-0x0040E5EB hostile runtime
 // update owner. Allocation/constructor evidence proves that the sole target
 // argument points to the 0x14DC-byte tail at full object +0x103C. The target

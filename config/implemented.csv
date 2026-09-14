@@ -83,3 +83,4 @@ EnemyEclResourceView::LoadPackage
 EnemyManagerView::~EnemyManagerView
 EnemyEclResourceView::~EnemyEclResourceView
 EnemyManagerCreate
+EnemyFullObjectView::DispatchEclInstruction

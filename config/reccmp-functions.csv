@@ -84,3 +84,4 @@ EnemyEclResourceView::LoadPackage,0x0040D400,function
 EnemyManagerView::~EnemyManagerView,0x0040D530,function
 EnemyEclResourceView::~EnemyEclResourceView,0x0040D680,function
 EnemyManagerCreate,0x0040D6B0,function
+EnemyFullObjectView::DispatchEclInstruction,0x0040E760,function

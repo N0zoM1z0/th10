@@ -16,3 +16,14 @@ functions = ["EnemyManagerDrawCallback"]
 symbol = "?EnemyManagerDrawCallback@@YIHPAUEnemyManagerView@@@Z"
 target_address = 0x0040D820
 size = 6
+
+[units.enemy-ecl-dispatch-forwarder]
+artifact_kind = "coff"
+source = "src/Enemy.cpp"
+object = "build/match/enemy-ecl-dispatch-forwarder.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemyFullObjectView::DispatchEclInstruction"]
+symbol = "?DispatchEclInstruction@EnemyFullObjectView@@QAEHXZ"
+target_address = 0x0040E760
+size = 11
+relocations = [{ offset = 7, type = "REL32", symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ", target = 0x0040E770 }]

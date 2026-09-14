@@ -3,20 +3,21 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`.
-- Session starting/pre-commit HEAD: `bd86313544d196c25858c7ed9c57c81a2fab89cf` (`gpt-web: reconstruct TH10 enemy lifecycle`).
-- Planned checkpoint subject: `gpt-web: reconstruct TH10 enemy manager lifecycle`.
-- Final commit hash is intentionally not self-recorded before the commit exists; read live Git and the ignored campaign manifest after recovery.
+- Session starting/pre-commit HEAD: `9f6cd941d089eca7d06df48ea6a47ae6a2d75eec` (`gpt-web: reconstruct TH10 enemy manager lifecycle`).
+- Planned checkpoint subject: `gpt-web: reconstruct TH10 enemy ECL dispatch seam`.
+- The final checkpoint hash is intentionally not self-recorded before the commit exists; recover it from live Git and the ignored campaign manifest.
 - No push was performed or requested.
-- Packet entry was clean: staged 0 / unstaged 0 / untracked 0 / conflicts 0, ahead 10 / behind 0 relative to `origin/main`.
-- A later conversation resume found 9 unstaged tracked files, all coherently belonging to this packet; staged/untracked/conflicts remained zero. They were classified `recoverable-current-work` and finished first. No unrelated or unknown tracked/untracked paths were present.
-- Entry `.analysis/`: 150 files / 1,238,917 bytes / 1628 KiB / 0 files >64 MiB. Resume-recovery `.analysis/`: 168 files / 1,662,528 bytes / 0 files >64 MiB.
-- Campaign: `.analysis/gpt-web/20260914-enemy-manager-lifecycle/`.
+- Entry was clean: staged 0 / unstaged 0 / untracked 0 / conflicts 0, `main` ahead 11 / behind 0 relative to `origin/main`. No recoverable, unrelated, or unknown dirty path existed at entry.
+- Entry `.analysis/`: 168 files / 1,491,112 regular bytes / 1912 KiB allocated / 0 files over 64 MiB.
+- Campaign: `.analysis/gpt-web/20260914-enemy-dispatcher/`.
 
-## Recovery and authority gates
+## Recovery, guidance, and authority
 
-The session re-ran `factory_describe`, `factory_list_repositories`, `factory_get_repository_status(th10)`, inspected branch/HEAD/history, porcelain-v2 state, complete working/staged diffs, ignored state, `.analysis/`, and the previous handoff. All requested repository/Factory guidance and contracts were re-read through `factory_repository_run_shell`; no requested path was missing.
+The session called `factory_describe`, `factory_list_repositories`, and `factory_get_repository_status(th10)`, then independently inspected branch, HEAD, recent commits, porcelain-v2 state, staged/unstaged diffs, untracked files, relevant ignored state, build state, `.analysis/`, and this handoff. The first repository-status call was a transport failure with no status result; the retry and repository-runner inspection both confirmed the clean checkpoint. No failed command was treated as rollback evidence.
 
-Repository preflight passed:
+All requested repository and Factory guidance/contracts were re-read completely through `factory_repository_run_shell`: `AGENTS.md`, `docs/RE_HANDOFF.md`, `docs/RE_WORKFLOW.md`, `docs/ORACLES.md`, `docs/TOOLS.md`, both reconstruction contracts, and the Factory ontology, verification-planes, autonomy, bootstrap, and analysis-artifact documents. No requested path was missing.
+
+Entry repository preflights passed:
 
 - `python3 scripts/verify-target.py`
 - `python3 scripts/verify-toolchain.py --execute`
@@ -26,120 +27,155 @@ Repository preflight passed:
 - `python3 scripts/build-match-unit.py --check`
 - `python3 scripts/build.py --check`
 
-The execute toolchain preflight again passed normal COFF, C++ `/GL`, resource, and PE32 i386 smoke under pinned VC7.1 SP1 build6030/headless Wine. Native `th10-ghidra` operation schemas were rediscovered and `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command`. Every useful Ghidra result in this packet carried the same passed attestation.
+The pinned VC7.1 SP1 build6030 execute preflight again passed normal COFF, C++ `/GL`, resource, and PE32 i386 smoke under the headless-Wine wrapper. Native `th10-ghidra` operation schemas were rediscovered before use. Fresh `check {}` passed for `target:th10-main` with `attestation.provider_transport=factory-native-command`, and every useful Ghidra result used below carried the same passed target/transport attestation. A few provider/Factory calls suffered transport failures; they produced no semantic evidence and were retried only after live-state reasoning.
 
-Several Factory calls suffered transport/network failures with no command id, attestation, or semantic result. Those were treated as no evidence; live Git/status was inspected before retrying uncertain operations. No target/provider mismatch occurred.
+Target identity remains size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`. The ignored operator file `resources/th10.exe` was not modified, moved, staged, or committed; `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-Target remains size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`. The ignored operator `resources/th10.exe` was not modified, moved, staged, or committed; `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
+## Hard packet: Enemy ECL dispatch seam
 
-## Hard packet and denominator changes
+This session deliberately attacked the previously handed-off central Enemy dispatcher instead of selecting easy leaves. The initial bounded packet was `0x0040E760` plus Ghidra's provisional `0x0040E770-0x00411D2E` 13,759-byte function. The observable goals were to reconcile vtable ownership, machine ABI, full source-owned physical extent, compiler switch data, source feasibility, and exactness independently.
 
-This packet deliberately continued the manager/resource ownership seam instead of selecting easy exact leaves. Direct TH10 vtable/constructor evidence expanded the initial manager cohort into the manager-owned ECL resource family.
+### Vtable ownership correction
 
-Reviewed authored/source-present bodies total **1162 target bytes**:
+Direct target `.rdata`, constructor, destructor, and base-constructor evidence corrects the previous handoff's “twelve-slot primary Enemy vtable” interpretation. There are two distinct six-slot tables:
 
-| Address | Maintained name | Bytes | State |
+- derived Enemy ECL-evaluation vtable `0x0046D0C0-0x0046D0D4`:
+  `0x0040E760`, `0x00411FC0`, `0x00412300`, `0x00412350`, `0x004126D0`, `0x0040CC50`;
+- separate base-state vtable `0x0046D0D8-0x0046D0EC`:
+  `0x0040C5E0`, `0x0040C690`, `0x0040C6A0`, `0x0040C6B0`, `0x0040C6C0`, `0x0040C7B0`.
+
+`EnemyConstruct` writes `0x0046D0C0` at full-object `+0x00`, teardown restores it before the base destructor path, and the base constructor at `0x0040C710` writes `0x0046D0D8`. The easy base stubs remain a denominator gap but were intentionally not selected merely to increase function count.
+
+### Slot zero and runtime dispatcher
+
+Raw target bytes close `0x0040E760-0x0040E76A` as an 11-byte forwarding entry followed by CC padding through `0x0040E76F`:
+
+- `ADD ECX,0x103C`
+- tail `JMP 0x0040E770`.
+
+Ghidra does not model `0x0040E760` as a function; its only attested reference is the derived vtable slot at `0x0046D0C0`. The `+0x103C` runtime tail is constructor-cleared data with no target vptr, so this is not an automatic multiple-inheritance adjustment to another polymorphic base. A source-level forwarding expression or equivalent logic is required; the original class/identifier spelling remains unknown.
+
+`0x0040E770` has machine boundary `ECX EnemyRuntimeView* / RET`. It immediately recovers the full owner from runtime `+0x14D8`, reads the current ECL instruction, and dispatches opcodes `0x100-0x1B4` across Enemy-specific spawn, motion/interpolation, hitbox/flags/life, item/drop, difficulty/rank, VM/effect, and child operations. Shared successful paths return zero; target-observed conditional instruction paths can return `-1`. It is maintained descriptively as `EnemyRuntimeView::DispatchEclInstruction`; this is not a claim of the original identifier.
+
+Most importantly, the source-owned physical extent is **not** Ghidra's 13,759 reachable-code bytes. The reviewed owner is `0x0040E770-0x00411FBF` = **14,416 bytes**:
+
+- executable code through final `RET` at `0x00411D2E`;
+- one-byte alignment at `0x00411D2F`;
+- `0x00411D30-0x00411EDF`: directly indexed 108-entry jump table, 432 bytes;
+- `0x00411EE0-0x00411F94`: directly indexed 181-byte opcode-to-case selector;
+- `0x00411F95-0x00411F97`: three-byte alignment;
+- `0x00411F98-0x00411FAB`: directly indexed five-entry nested jump table;
+- `0x00411FAC-0x00411FBF`: second directly indexed five-entry nested jump table.
+
+The next independent virtual method begins exactly at `0x00411FC0`. The maintained source declares the runtime method but does not implement this 14,416-byte owner; source presence and exactness remain unknown for it.
+
+### Derived operand interface denominator
+
+The same derived vtable supplied four additional Ghidra-missed authored candidates whose code/table boundaries are closed by raw target control/data references. All four remain source-absent and non-exact:
+
+| Address / reviewed span | Maintained descriptive name | Bytes | Boundary / role |
 | --- | --- | ---: | --- |
-| `0x0040CD20-0x0040CD7E` | `EnemyEclResourceView::LoadFile` | 95 | source-present, non-exact |
-| `0x0040D260-0x0040D27C` | `EnemyManagerView::EnemyManagerView` | 29 | new candidate, source-present, non-exact |
-| `0x0040D280-0x0040D3CD` | `EnemyManagerView::Initialize` | 334 | source-present, non-exact |
-| `0x0040D3D0-0x0040D3F1` | `EnemyEclResourceView::EnemyEclResourceView` | 34 | new candidate, source-present, non-exact |
-| `0x0040D400-0x0040D4EE` | `EnemyEclResourceView::LoadPackage` | 239 | new candidate, source-present, non-exact |
-| `0x0040D530-0x0040D65B` | `EnemyManagerView::~EnemyManagerView` | 300 | source-present, non-exact |
-| `0x0040D680-0x0040D6A3` | `EnemyEclResourceView::~EnemyEclResourceView` | 36 | source-present, non-exact |
-| `0x0040D6B0-0x0040D70E` | `EnemyManagerCreate` | 95 | source-present, non-exact |
+| `0x00411FC0-0x004122F3` | `EnemyFullObjectView::ReadIntOperand` | 820 | ECX full Enemy + one stack operand / `RET 4`; 51-entry selector table included |
+| `0x00412300-0x0041234F` | `EnemyFullObjectView::ResolveIntOperand` | 80 | ECX full Enemy + one stack operand / `RET 4`; four writable int lvalues at `+0x1138..+0x1144` |
+| `0x00412350-0x004126C3` | `EnemyFullObjectView::ReadFloatOperand` | 884 | ECX full Enemy + one stack operand / `RET 4`; 51-entry selector table included, float in ST0 |
+| `0x004126D0-0x0041271F` | `EnemyFullObjectView::ResolveFloatOperand` | 80 | ECX full Enemy + one stack operand / `RET 4`; four writable float lvalues at `+0x1148..+0x1154` |
 
-Reviewed compiler-generated/excluded bodies total **89 bytes**:
+These functions were added to the reviewed authored denominator without inventing source implementations.
 
-- `0x0040CC50-0x0040CC6E`, 31B: Enemy scalar deleting destructor wrapper.
-- `0x0040D660-0x0040D67D`, **30B**: ECL-resource scalar deleting wrapper. Final audit corrected an earlier truncated 28B window; `RET 4` occupies `0x0040D67B-0x0040D67D`, and `0x0040D67E-0x0040D67F` is padding.
-- `0x0040D710-0x0040D72B`, 28B: manager scalar deleting wrapper.
+## Natural VC7 forwarder and canonical exactness
 
-`0x0040D200`, `0x0040D730`, `0x0040D800`, and `0x0040DC70` remain `unknown/review`. Their clean CC-delimited body shapes are insufficient by themselves to establish source origin.
+A campaign-only source-shape probe first established that an ordinary VC7.1 virtual forwarder with a member at `+0x103C` naturally emits exactly `ADD ECX,0x103C; JMP member_method`, with one REL32 relocation and no assembly or byte embedding. Maintained source therefore adds only the natural forwarding method:
 
-## Manager ownership and source shape
+```cpp
+int EnemyFullObjectView::DispatchEclInstruction()
+{
+    return runtime.DispatchEclInstruction();
+}
+```
 
-`EnemyManagerView` is exactly `0x68` bytes: callback nodes `+0x08/+0x0C`, eight special-enemy slots `+0x10`, four effect resources `+0x30`, timer `+0x40`, ECL resource `+0x54`, list head/tail `+0x58/+0x5C`, active count `+0x60`, spawn counter `+0x64`.
+The full maintained `src/Enemy.cpp` builds successfully under fixed normal `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc` and the same profile plus `/GL`. Its normal COMDAT for `?DispatchEclInstruction@EnemyFullObjectView@@QAEHXZ` is exactly 11 bytes; all seven non-relocation bytes match the target and the sole REL32 is at offset `+7` against the unresolved runtime method.
 
-`0x0040D260` receives manager in private EDX, clears timer flag bit zero at `+0x50`, zeroes all `0x1A` dwords, sets flags bit 1, publishes `g_EnemyManager`, returns the object, and ends in plain RET. The same source construction operation appears inline byte-for-byte inside `EnemyManagerCreate`, establishing authored origin beyond constructor-like shape alone.
+Canonical unit `enemy-ecl-dispatch-forwarder` explicitly declares `artifact_kind="coff"`, target `0x0040E760`, size 11, and replays that REL32 to reviewed target `0x0040E770`. The generated object was deleted and rebuilt from scratch twice; both target-bound comparisons returned **exact 11/11 bytes**, one relocation replayed, zero mismatch, and identical JSON SHA-256 `2393f11ec0cc7434e7d0e2613abc3c38217151bddc9a315ed0a00400b2853db0`. Only after those two independent replays was `config/matches.csv` promoted.
 
-`0x0040D280` carries manager in EBX plus one stack ECL filename and `RET 4`. It installs the primary resource, allocates/constructs the `0x1098` ECL resource, invokes its virtual file loader, registers update/draw callbacks at priorities `0x12/0x14`, and initializes the timer.
+Because `src/Enemy.cpp` also owns the pre-existing `EnemyManagerDrawCallback` exact unit, that unit was deleted/rebuilt under the modified source and remains **exact 6/6 bytes, zero relocations**.
 
-The target callback node is exactly `0x24` bytes. Source audit corrected its construction to preserve target behavior: priority zero; flags only clear bit zero; callback initially NULL; `+0x0C/+0x10` NULL; `+0x14=self`; `+0x18/+0x1C` NULL; manager owner later at `+0x20`.
+No exact credit is assigned to the 14,416-byte runtime dispatcher or the four operand methods. Successful `/GL` compilation is only production-optimizer-context evidence and is not a standalone exact Oracle.
 
-`0x0040D530` carries manager in EAX and plain RET. It calls manager-clear owner `0x00409F90`, removes both callbacks under the callback critical section, frees 32 ECL script-data pointers, destroys/frees the ECL resource, clears manager `+0x54`, conditionally releases four animation-resource slots when lifecycle bits 0/3 are clear, and clears `g_EnemyManager`.
+## Adjacent-game hypothesis discipline
 
-`0x0040D6B0` has one stack filename/`RET 4`: allocate `0x68`, inline manager construction, initialize, destructor/free rollback on failure, return manager on success.
+Committed adjacent content was consulted only after TH10-local vtable and ECL evidence had established the seam:
 
-## ECL resource ownership
+- TH08 HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, committed source only;
+- TH09 HEAD `3a08724b6b321596905ad083cd72cf0751b09989`; no useful ECL implementation was transferred;
+- TH095 HEAD `3c54464e6d567a37219b31c4ee8bc49e033b61c1`; unrelated untracked `EnemyManagerUpdate.i`, `config/runtime-scenarios.json`, `droid.resume.txt`, and `scripts/runtime-diff.py` were observed in status but not read or used.
 
-The resource allocation is exactly `0x1098`. TH10 vtables establish a partial base/derived relationship without proving original type names:
+TH08/TH095 committed ECL source only supported the broad execute/operand-family hypothesis. No adjacent address, extent, owner, layout, name, ABI, phase state, or exactness claim was transferred. A target source-path string near `0x0046D0F8` had no attested code xref and was not used to claim translation-unit ownership.
 
-- derived `0x0046D0B4`: `0x00450220`, package loader `0x0040D400`, file loader `0x0040CD20`;
-- base `0x0046D0F0`: `0x00450220`, `0x0040C810`.
+## Ledger delta and changed tracked files
 
-Maintained source models this with natural virtual C++ and does not embed target vptr addresses. Target teardown establishes 32 owned script-data pointers at `+0x0C..+0x88` and an owned lookup table at `+0x8C`.
+Entry ledger:
 
-Retained constructor `0x0040D3D0` pre-clears neutral dword subobjects at `+0x1090/+0x1094`, then clears the complete `0x1098`, installs the derived vptr, and returns. Maintained source uses two neutral four-byte member constructors plus a containing full-object clear; VC7.1 naturally emits the same core ordering, with only conventional ECX-to-EDX receiver setup added in fixed normal code.
+- candidates 1256
+- pending 1133
+- authored 112 / 36,636 bytes
+- excluded 11
+- source-present 85
+- canonical exact 1 / 6 bytes
 
-`0x0040D400` is ECX-this plus one stack package pointer/`RET 4`. It parses `ANIM` magic `0x4D494E41`, loads NUL-terminated animation names starting at resource index 9, stores resources beginning at manager `effectResources[1]`, four-byte-aligns the cursor, then parses `ECLI` magic `0x494C4345` and virtually dispatches `LoadFile` for each ECL filename.
+Current ledger:
 
-`0x0040CD20` is ECX-this plus stack filename/`RET 4`. It copies the filename into the target buffer, invokes target loader `0x0044B360`, adds/parses the returned script data, and returns 0/-1. Target calling evidence passes filename in private EAX plus two zero stack values; existing TH10-local Main evidence identifies those logical values as size-out and mode. Maintained source therefore supplies `(filename, NULL, 0)` without claiming the private EAX ABI.
-
-`0x0040D680` carries resource in ESI, transitions to the base-state vptr, frees/nulls lookup storage at `+0x8C`, and returns. Natural derived/base VC7 destructor generation supplies the vptr transition; no target vtable bytes are hard-coded.
-
-## Source and compiler feedback
-
-Tracked source changes are confined to `src/Enemy.cpp` and `src/Enemy.hpp`. They add the exact callback-node partial view, the partial polymorphic ECL-resource classes, neutral constructor-visible tail dwords, resource/callback ownership views, and natural source for the eight reviewed authored bodies. No target-byte embedding, fake returns, inert padding, target patching, target-vptr constants, assembly, or Oracle-specific tricks were introduced.
-
-Final pinned VC7.1 SP1 source compiles both fixed normal `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc` and the same profile plus `/GL`.
-
-| Target | Normal/target bytes | Comparable match | Relocs | Result |
-| --- | ---: | ---: | ---: | --- |
-| `0x0040CD20` | 97 / 95 | 50 / 79 | 4 | mismatch, authority none |
-| `0x0040D260` | 31 / 29 | 1 / 25 | 1 | mismatch, authority none |
-| `0x0040D280` | 314 / 334 | 8 / 286 | 12 | mismatch, authority none |
-| `0x0040D3D0` | 36 / 34 | 0 / 30 | 1 | mismatch, authority none |
-| `0x0040D400` | 218 / 239 | 32 / 223 | 4 | mismatch, authority none |
-| `0x0040D530` | 298 / 300 | 12 / 184 | 29 | mismatch, authority none |
-| `0x0040D680` | 40 / 36 | 4 / 28 | 2 | mismatch, authority none |
-| `0x0040D6B0` | 97 / 95 | 43 / 75 | 5 | mismatch, authority none |
-
-Generated helpers also mismatch: normal ECL-resource deleting helper 60B versus target D660 30B (4/22, 2 relocs), manager deleting helper 30B versus target D710 28B (0/20, 2 relocs). `/GL` success preserves a possible production optimizer/LTCG context but gives no standalone exactness credit.
-
-## Ledger and verification planes
-
-Current ledger before commit:
-
-- candidates **1256**
-- pending **1133**
-- authored **112 / 36,636 bytes**
+- candidates **1261**
+- pending **1132**
+- authored **118 / 52,927 bytes**
 - excluded **11**
-- source-present **85**
-- canonical exact **1 / 6 bytes**
+- source-present **86**
+- canonical exact **2 / 17 bytes**
 
-Packet delta: candidates +5, pending -6, authored +8 / +1162B, excluded +3, source-present +8, exact +0. `config/matches.csv`, `config/match-units.toml`, and `config/build.toml` are unchanged. `docs/PROGRESS.md` and `resources/progress.svg` were regenerated. Durable facts are in `ENEMY-005`, `ENEMY-006`, and `TOOLCHAIN-026`; `ENEMY-004` explicitly records which older gap conclusions were superseded.
+Delta: candidates +5, pending -1, authored +6 / +16,291 bytes, excluded +0, source-present +1, exact +1 / +11 bytes. The exact percentages decrease after the large authored-boundary expansion; that is intentional and more truthful than omitting hard code from the denominator.
 
-**Source presence:** eight new authored bodies mapped; three deleting wrappers excluded as compiler-generated.
+Tracked packet files before staging are:
 
-**Exactness:** this packet adds no exact function. Because `src/Enemy.cpp` also owns the existing exact draw callback, `enemy-manager-draw-callback` was cold rebuilt and still compares **exact 6/6, zero relocations**. Its generated match object was then removed as reproducible scratch and must be rebuilt again at staged/post-commit validation.
+- `src/Enemy.hpp`
+- `src/Enemy.cpp`
+- `config/functions.csv`
+- `config/function-origins.csv`
+- `config/implemented.csv`
+- `config/reccmp-functions.csv`
+- `config/match-units.toml`
+- `config/matches.csv`
+- `docs/KNOWLEDGE_BASE.md`
+- `docs/PROGRESS.md`
+- `resources/progress.svg`
+- this `docs/RE_HANDOFF.md`.
 
-**Whole build:** actual `python3 scripts/build.py` returned **RC2 / explicitly open**. Unknown production compiler flags, TU partition, libraries, resources, and link order remain blockers. `build.py --check` passes the honest open graph.
+`config/build.toml` remains unchanged and honestly open. Durable conclusions are recorded as `ENEMY-007` and `TOOLCHAIN-027` in `docs/KNOWLEDGE_BASE.md`; generated progress was regenerated from the ledger.
 
-**Runtime:** not performed; there is no closed faithful reconstructed product.
+## Verification planes
 
-**Factory Truth:** fresh `factory_get_accepted_snapshot(th10)` returned sequence **0**, accepted facts **0**, accepted evidence count **0**. No replay/submission was performed. Repository canonical exact=1 and Factory accepted=0 remain separate states.
+**Source presence:** the 11-byte full-object forwarding method is newly source-present. The 14,416-byte runtime dispatcher and four adjacent operand methods are reviewed authored but source-absent. Their declarations/names are descriptive interfaces, not claims that the bodies were reconstructed.
 
-## Adjacent hypotheses and scratch
+**Exactness:** the new forwarder has repeatable canonical normal-COFF target-bound exactness, 11/11 bytes with its sole REL32 replayed. The existing draw callback remains exact 6/6. Repository total is two exact functions / 17 bytes. Ghidra observations and structural probes alone received no exactness credit.
 
-Only committed adjacent content was consulted after TH10-local observations: TH08 `a45e99fb1942714e6edded20847e32a654d56f97` clean; TH09 `3a08724b6b321596905ad083cd72cf0751b09989` main ahead9 clean; TH095 `229999a8029b3f2810256df7074f4eb094ed7fed` main ahead13 with unrelated untracked `EnemyManagerUpdate.i`, `config/runtime-scenarios.json`, `droid.resume.txt`, `scripts/runtime-diff.py`, none of which were read or used. Adjacent source only corroborated broad source-family hypotheses; no address/layout/ABI/owner/exactness fact was transferred.
+**Whole build:** an actual `python3 scripts/build.py` run returned **RC2 / explicitly open**. Missing production compiler flags, translation-unit partition, libraries, resources, and link order remain blockers. `python3 scripts/build.py --check` passes the honest open graph.
 
-After selective cleanup, `.analysis/` is **168 files / 1,490,821 bytes / 1776 KiB / 0 files >64 MiB**. The campaign retains **18 files / 251,904 bytes**: final normal/`/GL` objects, final symbol/disassembly reports, ten final diagnostic JSONs, the draw-callback canonical regression JSON, whole-build logs, and manifest. Removed only current-session reproducible superseded probe objects/disassemblies, ten obsolete diagnostic JSONs, and the generated match object. Legacy/unknown analysis, Ghidra, toolchain, Wine, target, and shared/provider state were preserved.
+**Runtime:** not performed; there is no closed faithful reconstructed Windows i386 product to launch.
 
-## Next hard frontier
+**Factory Truth:** a fresh pre-checkpoint `factory_get_accepted_snapshot(th10)` returned sequence **0**, accepted 0, evidence 0, rejected 0, pending 0. No Truth submission or replay was performed. Repository canonical exactness and Factory acceptance remain separate planes.
 
-Do not pivot to easy leaves. Fresh target-attested navigation identifies `0x0040E770-0x00411D2E`, **13,759 bytes**, still `unknown/review`, as the next hard Enemy dispatcher. Ghidra reports no direct caller at its modeled entry but an attested reference from `0x0040E766`. Raw target bytes show `0x0040E760-0x0040E76A` is an 11-byte adapter (`ADD ECX,0x103C; JMP 0x0040E770`) followed by CC padding at `0x0040E76B-0x0040E76F`; earlier TH10-local vtable review places `0x0040E760` in the primary Enemy vtable, while Ghidra does not model it as a function.
+**Ghidra:** fresh pre-checkpoint `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command` after the packet edits. No target/provider mismatch occurred.
 
-The next session should re-attest Ghidra, re-read that vtable entry, reconcile the adapter's physical/source/compiler ownership and denominator treatment, then bound the 13.7 KiB dispatcher's exits, tables, relocations, and ABI before source promotion. `0x00409F90` is useful context but should not replace this central dispatcher merely because it is smaller.
+Working-tree validation after the source/ledger edits passed target verification, toolchain declaration check, tracking/status, public CI, two-unit match-graph validation, cold rebuild/comparison of both canonical exact units, fixed normal and `/GL` compilation of `src/Enemy.cpp`, build-graph check, and `git diff --check`. The actual whole-build diagnostic returned the expected RC2/open result described above. Staged and post-commit cold validation must still be read from the live session/manifest when recovering a completed checkpoint rather than inferred from this pre-commit text.
 
-This checkpoint leaves the exact-reconstruction campaign active. Faithful Windows i386 product closure, runtime validation, Factory acceptance, semantic reconstruction, and portability remain open.
+## Scratch lifecycle
+
+After working validation but before selective cleanup, `.analysis/` reached 194 files / 1,925,706 regular bytes / 2408 KiB, with no file over 64 MiB. Only current-session reproducible duplicates were removed: the second `Enemy.working.normal.obj` / `Enemy.working.ltcg.obj`, duplicate working canonical JSONs, and generated `build/match` objects that staged validation will cold rebuild. No legacy/unknown analysis, Ghidra state, toolchain, Wine prefix, target, or shared/provider state was deleted.
+
+Pre-staging `.analysis/` after cleanup is **190 files / 1,846,954 regular bytes / 2320 KiB / 0 files over 64 MiB**. The campaign currently retains 22 files: final normal/`/GL` Enemy objects, the natural forwarder probe source/object/disassembly, forwarder symbol/disassembly reports, structural and repeated canonical comparator JSONs, existing exact-regression JSON, raw entry/tail/vtable/vptr/large-slot/small-slot/dispatcher target evidence, whole-build logs, and its manifest. The ignored manifest must be rebound to the actual checkpoint hash after commit.
+
+## Next evidence-connected hard packet
+
+Do not switch to the easy zero/NULL base virtual stubs merely to improve function count. The strongest continuation is the **derived operand-resolver cohort** immediately following the dispatcher: `0x00411FC0`, `0x00412300`, `0x00412350`, and `0x004126D0`, totaling **1,864 reviewed source-owned bytes**. Two members contain 51-way compiler switch tables and target-global/helper dependencies; the other two expose four writable integer and four writable float ECL lvalues. Recovering their natural source, layouts, and compiler-sensitive selectors will type the interface used by the still-source-absent 14,416-byte `EnemyRuntimeView::DispatchEclInstruction` and provide a stronger bridge into reconstructing that central owner.
+
+Packet-selection balance remains hard-frontier oriented: this session attacked a 14.4 KiB central dispatcher seam, expanded the authored denominator by 16,291 bytes, and accepted only one small exact forwarding method because it was structurally connected and canonically provable. The next proposed cohort is connected, switch-heavy, and owner-sensitive rather than the easiest remaining code.
+
+The TH10 exact-reconstruction phase remains active and incomplete. Faithful whole-product closure, runtime validation, Factory acceptance, semantic reconstruction, and portability all remain open.

@@ -84,6 +84,12 @@ typedef char EnemyCallbackThresholdViewSizeIs10[
 // callers/users; unresolved values retain offset-based names.
 struct EnemyRuntimeView
 {
+    // Target 0x0040E770 is the runtime-tail implementation reached by the
+    // full-object virtual forwarding entry at 0x0040E760. The body is not yet
+    // reconstructed; this declaration exists so the reviewed natural forwarder
+    // can preserve the target member-call shape without inventing its body.
+    int DispatchEclInstruction();
+
     EnemyMotionView previousMotion;
     EnemyMotionView worldMotion;
     EnemyMotionView offsetMotion;
@@ -216,6 +222,12 @@ typedef char EnemyOwnedAllocationNodeViewSizeIs08[
 // constructor/teardown seam; the large middle remains opaque.
 struct EnemyFullObjectView
 {
+    // The target primary vtable stores 0x0040E760 in slot zero. The unresolved
+    // base-class hierarchy is still represented by the explicit vtable field,
+    // so this maintained member remains non-virtual even though target dispatch
+    // reaches it virtually.
+    int DispatchEclInstruction();
+
     void *vtable;
     EnemyScriptStateView *activeScriptState;
     EnemyScriptStateView embeddedScriptState;
