@@ -79,9 +79,19 @@ struct EnemyCallbackThresholdView
 typedef char EnemyCallbackThresholdViewSizeIs10[
     (sizeof(EnemyCallbackThresholdView) == 0x10) ? 1 : -1];
 
-// Maintained exact-size view of the embedded runtime tail beginning at full
-// enemy object +0x103C. Names are limited to roles established by TH10-local
-// callers/users; unresolved values retain offset-based names.
+// The TH10 operand lvalue resolvers prove this exact 0x20-byte runtime block:
+// four writable integer variables followed by four writable float variables.
+// Original source identifiers remain unknown.
+struct EnemyEclVariableView
+{
+    int integers[4];
+    float floats[4];
+};
+typedef char EnemyEclVariableViewSizeIs20[
+    (sizeof(EnemyEclVariableView) == 0x20) ? 1 : -1];
+typedef char EnemyEclVariableFloatsAt10[
+    (offsetof(EnemyEclVariableView, floats) == 0x10) ? 1 : -1];
+
 struct EnemyRuntimeView
 {
     // Target 0x0040E770 is the runtime-tail implementation reached by the
@@ -102,7 +112,10 @@ struct EnemyRuntimeView
     int value0F0;
     int animationBaseScript;
     int animationDirection;
-    unsigned int spawnParameters[8];
+    // Target operand lvalue resolvers prove four writable integer variables at
+    // full Enemy +0x1138..+0x1144 and four writable float variables at
+    // +0x1148..+0x1154. This exact 0x20-byte block begins runtime +0x0FC.
+    EnemyEclVariableView eclVariables;
     PlayerTimerView updateTimer;
     EnemyListNodeView listNode;
     EnemyPositionInterpolationView positionInterpolations[2];
@@ -155,8 +168,11 @@ typedef char EnemyRuntimeManagedVmsAt0C0[
     (offsetof(EnemyRuntimeView, managedVmIds) == 0x0c0) ? 1 : -1];
 typedef char EnemyRuntimeValue0ECAt0EC[
     (offsetof(EnemyRuntimeView, value0EC) == 0x0ec) ? 1 : -1];
-typedef char EnemyRuntimeSpawnParametersAt0FC[
-    (offsetof(EnemyRuntimeView, spawnParameters) == 0x0fc) ? 1 : -1];
+typedef char EnemyRuntimeEclVariablesAt0FC[
+    (offsetof(EnemyRuntimeView, eclVariables) == 0x0fc) ? 1 : -1];
+typedef char EnemyRuntimeEclFloatVariablesAt10C[
+    (offsetof(EnemyRuntimeView, eclVariables) +
+         offsetof(EnemyEclVariableView, floats) == 0x10c) ? 1 : -1];
 typedef char EnemyRuntimeUpdateTimerAt11C[
     (offsetof(EnemyRuntimeView, updateTimer) == 0x11c) ? 1 : -1];
 typedef char EnemyRuntimeListNodeAt130[
@@ -227,6 +243,10 @@ struct EnemyFullObjectView
     // so this maintained member remains non-virtual even though target dispatch
     // reaches it virtually.
     int DispatchEclInstruction();
+    int ReadIntOperand(int operand);
+    int *ResolveIntOperand(int operand);
+    float ReadFloatOperand(int operand);
+    float *ResolveFloatOperand(int operand);
 
     void *vtable;
     EnemyScriptStateView *activeScriptState;
@@ -302,10 +322,12 @@ struct EnemySpawnRequestView
     int life;
     int setFlag0800;
     int setFlag40000;
-    unsigned int parameters[8];
+    EnemyEclVariableView eclVariables;
 };
 typedef char EnemySpawnRequestViewSizeIs40[
     (sizeof(EnemySpawnRequestView) == 0x40) ? 1 : -1];
+typedef char EnemySpawnRequestEclVariablesAt20[
+    (offsetof(EnemySpawnRequestView, eclVariables) == 0x20) ? 1 : -1];
 
 // Descriptive maintained interfaces for the reviewed lifecycle packet. Private
 // target register ABIs that cannot be stated honestly in ordinary C++ are

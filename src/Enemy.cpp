@@ -22,7 +22,11 @@ struct EnemyManagedVmView
     unsigned int color;
     unsigned char unknown304[0x58];
     unsigned int flags;
+    unsigned char unknown360[0x2a];
+    short value38A;
 };
+typedef char EnemyManagedVmValue38AAt38A[
+    (offsetof(EnemyManagedVmView, value38A) == 0x38a) ? 1 : -1];
 typedef char EnemyManagedVmChildrenAt014[
     (offsetof(EnemyManagedVmView, children) == 0x14) ? 1 : -1];
 typedef char EnemyManagedVmColorAt300[
@@ -41,6 +45,73 @@ typedef char EnemyManagedVmRegistryPrimaryAt72DAD4[
     (offsetof(EnemyManagedVmRegistryView, primaryList) == 0x72dad4) ? 1 : -1];
 typedef char EnemyManagedVmRegistrySecondaryAt72DADC[
     (offsetof(EnemyManagedVmRegistryView, secondaryList) == 0x72dadc) ? 1 : -1];
+
+
+struct EnemyRandomView
+{
+    unsigned int GetU32();
+    float GetUnitFloat();
+    float GetSignedUnitFloat();
+};
+
+// TH10 uses negative ECL operand selectors in the reviewed 0x00411FC0 /
+// 0x00412350 readers. Names below describe only target-observed behavior;
+// duplicate A/B selectors deliberately remain distinct because their original
+// protocol meanings are not established by TH10 yet.
+enum EnemyEclOperandSelector
+{
+    ENEMY_ECL_OPERAND_RANDOM_U32 = -10000,
+    ENEMY_ECL_OPERAND_RANDOM_UNIT = -9999,
+    ENEMY_ECL_OPERAND_RANDOM_ANGLE = -9998,
+    ENEMY_ECL_OPERAND_WORLD_X_A = -9997,
+    ENEMY_ECL_OPERAND_POSITION_Y_A = -9996,
+    ENEMY_ECL_OPERAND_OFFSET_X_A = -9995,
+    ENEMY_ECL_OPERAND_OFFSET_Y_A = -9994,
+    ENEMY_ECL_OPERAND_BASE_X_A = -9993,
+    ENEMY_ECL_OPERAND_BASE_Y_A = -9992,
+    ENEMY_ECL_OPERAND_PLAYER_X_A = -9991,
+    ENEMY_ECL_OPERAND_PLAYER_Y_A = -9990,
+    ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_WORLD = -9989,
+    ENEMY_ECL_OPERAND_UPDATE_TIMER = -9988,
+    ENEMY_ECL_OPERAND_RANDOM_SIGNED = -9987,
+    ENEMY_ECL_OPERAND_FLAG_10000 = -9986,
+    ENEMY_ECL_OPERAND_INT_0 = -9985,
+    ENEMY_ECL_OPERAND_INT_1 = -9984,
+    ENEMY_ECL_OPERAND_INT_2 = -9983,
+    ENEMY_ECL_OPERAND_INT_3 = -9982,
+    ENEMY_ECL_OPERAND_FLOAT_0 = -9981,
+    ENEMY_ECL_OPERAND_FLOAT_1 = -9980,
+    ENEMY_ECL_OPERAND_FLOAT_2 = -9979,
+    ENEMY_ECL_OPERAND_FLOAT_3 = -9978,
+    ENEMY_ECL_OPERAND_WORLD_X_B = -9977,
+    ENEMY_ECL_OPERAND_POSITION_Y_B = -9976,
+    ENEMY_ECL_OPERAND_OFFSET_X_B = -9975,
+    ENEMY_ECL_OPERAND_OFFSET_Y_B = -9974,
+    ENEMY_ECL_OPERAND_BASE_X_B = -9973,
+    ENEMY_ECL_OPERAND_BASE_Y_B = -9972,
+    ENEMY_ECL_OPERAND_OFFSET_VALUE1C = -9971,
+    ENEMY_ECL_OPERAND_BASE_VALUE1C = -9970,
+    ENEMY_ECL_OPERAND_OFFSET_VALUE18 = -9969,
+    ENEMY_ECL_OPERAND_BASE_VALUE18 = -9968,
+    ENEMY_ECL_OPERAND_OFFSET_VALUE20 = -9967,
+    ENEMY_ECL_OPERAND_BASE_VALUE20 = -9966,
+    ENEMY_ECL_OPERAND_PLAYER_X_B = -9965,
+    ENEMY_ECL_OPERAND_PLAYER_Y_B = -9964,
+    ENEMY_ECL_OPERAND_SPECIAL_ENEMY_X = -9963,
+    ENEMY_ECL_OPERAND_SPECIAL_ENEMY_Y = -9962,
+    ENEMY_ECL_OPERAND_PRIMARY_VM_VALUE38A = -9961,
+    ENEMY_ECL_OPERAND_RANK = -9960,
+    ENEMY_ECL_OPERAND_DIFFICULTY = -9959,
+    ENEMY_ECL_OPERAND_WORLD_VELOCITY_ANGLE = -9958,
+    ENEMY_ECL_OPERAND_ONE = -9957,
+    ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_OFFSET = -9956,
+    ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_BASE = -9955,
+    ENEMY_ECL_OPERAND_LIFE = -9954,
+    ENEMY_ECL_OPERAND_DIFFICULTY_IS_0 = -9953,
+    ENEMY_ECL_OPERAND_DIFFICULTY_IS_1 = -9952,
+    ENEMY_ECL_OPERAND_DIFFICULTY_IS_2 = -9951,
+    ENEMY_ECL_OPERAND_DIFFICULTY_IS_3 = -9950
+};
 
 typedef int (__fastcall *EnemyChainCallback)(EnemyManagerView *manager);
 
@@ -170,6 +241,9 @@ extern unsigned char g_EnemyLifecycleFlags;
 extern EnemyAnimationOwnerView *g_EnemyAnimationOwner;
 extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 extern char g_EnemyEclFilenameBuffer[];
+extern EnemyRandomView g_EnemyRandom;
+extern int g_EnemyRank;
+extern int g_EnemyDifficulty;
 
 struct EnemyAnimationModeView
 {
@@ -216,6 +290,8 @@ void EnemySetManagedVmPositionWithOffset(
 void EnemySetManagedVmPositionExact(
     unsigned int vmId, const PlayerFloat3 *position);
 EnemyManagedVmView *EnemyResolveManagedVm(unsigned int vmId);
+EnemyManagedVmView *EnemyResolveManagedVmId(unsigned int *vmId);
+float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 void EnemySpawnDamageEffect(int kind, float positionX);
 void EnemyAdvanceTimer(PlayerTimerView *timer, float amount);
 void EnemyPrepareRuntimeStorage(EnemyRuntimeView *runtime);
@@ -258,6 +334,226 @@ void EnemyManagerClear(EnemyManagerView *manager);
 int EnemyFullObjectView::DispatchEclInstruction()
 {
     return runtime.DispatchEclInstruction();
+}
+
+int EnemyFullObjectView::ReadIntOperand(int operand)
+{
+    switch (operand)
+    {
+    case ENEMY_ECL_OPERAND_RANDOM_U32:
+        return (int)g_EnemyRandom.GetU32();
+    case ENEMY_ECL_OPERAND_RANDOM_UNIT:
+        return (int)g_EnemyRandom.GetUnitFloat();
+    case ENEMY_ECL_OPERAND_WORLD_X_A:
+    case ENEMY_ECL_OPERAND_WORLD_X_B:
+        return (int)runtime.worldMotion.position.x;
+    case ENEMY_ECL_OPERAND_POSITION_Y_A:
+    case ENEMY_ECL_OPERAND_POSITION_Y_B:
+        return (int)runtime.worldMotion.position.y;
+    case ENEMY_ECL_OPERAND_OFFSET_X_A:
+    case ENEMY_ECL_OPERAND_OFFSET_X_B:
+        return (int)runtime.offsetMotion.position.x;
+    case ENEMY_ECL_OPERAND_OFFSET_Y_A:
+    case ENEMY_ECL_OPERAND_OFFSET_Y_B:
+        return (int)runtime.offsetMotion.position.y;
+    case ENEMY_ECL_OPERAND_BASE_X_A:
+    case ENEMY_ECL_OPERAND_BASE_X_B:
+        return (int)runtime.baseMotion.position.x;
+    case ENEMY_ECL_OPERAND_BASE_Y_A:
+    case ENEMY_ECL_OPERAND_BASE_Y_B:
+        return (int)runtime.baseMotion.position.y;
+    case ENEMY_ECL_OPERAND_PLAYER_X_A:
+    case ENEMY_ECL_OPERAND_PLAYER_X_B:
+        return (int)g_Player->drawPosition.x;
+    case ENEMY_ECL_OPERAND_PLAYER_Y_A:
+    case ENEMY_ECL_OPERAND_PLAYER_Y_B:
+        return (int)g_Player->drawPosition.y;
+    case ENEMY_ECL_OPERAND_UPDATE_TIMER:
+        return runtime.updateTimer.current;
+    case ENEMY_ECL_OPERAND_RANDOM_SIGNED:
+        return (int)g_EnemyRandom.GetSignedUnitFloat();
+    case ENEMY_ECL_OPERAND_FLAG_10000:
+        return (runtime.flags >> 16) & 1;
+    case ENEMY_ECL_OPERAND_INT_0:
+        return runtime.eclVariables.integers[0];
+    case ENEMY_ECL_OPERAND_INT_1:
+        return runtime.eclVariables.integers[1];
+    case ENEMY_ECL_OPERAND_INT_2:
+        return runtime.eclVariables.integers[2];
+    case ENEMY_ECL_OPERAND_INT_3:
+        return runtime.eclVariables.integers[3];
+    case ENEMY_ECL_OPERAND_FLOAT_0:
+        return (int)runtime.eclVariables.floats[0];
+    case ENEMY_ECL_OPERAND_FLOAT_1:
+        return (int)runtime.eclVariables.floats[1];
+    case ENEMY_ECL_OPERAND_FLOAT_2:
+        return (int)runtime.eclVariables.floats[2];
+    case ENEMY_ECL_OPERAND_FLOAT_3:
+        return (int)runtime.eclVariables.floats[3];
+    case ENEMY_ECL_OPERAND_OFFSET_VALUE1C:
+        return (int)runtime.offsetMotion.value1C;
+    case ENEMY_ECL_OPERAND_BASE_VALUE1C:
+        return (int)runtime.baseMotion.value1C;
+    case ENEMY_ECL_OPERAND_OFFSET_VALUE18:
+        return (int)runtime.offsetMotion.value18;
+    case ENEMY_ECL_OPERAND_BASE_VALUE18:
+        return (int)runtime.baseMotion.value18;
+    case ENEMY_ECL_OPERAND_OFFSET_VALUE20:
+        return (int)runtime.offsetMotion.value20;
+    case ENEMY_ECL_OPERAND_BASE_VALUE20:
+        return (int)runtime.baseMotion.value20;
+    case ENEMY_ECL_OPERAND_SPECIAL_ENEMY_X:
+        return (int)g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position.x;
+    case ENEMY_ECL_OPERAND_SPECIAL_ENEMY_Y:
+        return (int)g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position.y;
+    case ENEMY_ECL_OPERAND_PRIMARY_VM_VALUE38A:
+        return EnemyResolveManagedVmId(&runtime.managedVmIds[0])->value38A;
+    case ENEMY_ECL_OPERAND_RANK:
+        return g_EnemyRank;
+    case ENEMY_ECL_OPERAND_DIFFICULTY:
+        return g_EnemyDifficulty;
+    case ENEMY_ECL_OPERAND_WORLD_VELOCITY_ANGLE:
+        return (int)atan2(runtime.worldMotion.velocity.y, runtime.worldMotion.velocity.x);
+    case ENEMY_ECL_OPERAND_ONE:
+        return 1;
+    case ENEMY_ECL_OPERAND_LIFE:
+        return runtime.life;
+    case ENEMY_ECL_OPERAND_DIFFICULTY_IS_0:
+        return g_EnemyDifficulty == 0;
+    case ENEMY_ECL_OPERAND_DIFFICULTY_IS_1:
+        return g_EnemyDifficulty == 1;
+    case ENEMY_ECL_OPERAND_DIFFICULTY_IS_2:
+        return g_EnemyDifficulty == 2;
+    case ENEMY_ECL_OPERAND_DIFFICULTY_IS_3:
+        return g_EnemyDifficulty == 3;
+    default:
+        return 0;
+    }
+}
+
+int *EnemyFullObjectView::ResolveIntOperand(int operand)
+{
+    switch (operand)
+    {
+    case ENEMY_ECL_OPERAND_INT_0: return &runtime.eclVariables.integers[0];
+    case ENEMY_ECL_OPERAND_INT_1: return &runtime.eclVariables.integers[1];
+    case ENEMY_ECL_OPERAND_INT_2: return &runtime.eclVariables.integers[2];
+    case ENEMY_ECL_OPERAND_INT_3: return &runtime.eclVariables.integers[3];
+    default: return NULL;
+    }
+}
+
+float EnemyFullObjectView::ReadFloatOperand(int operand)
+{
+    switch (operand)
+    {
+    case ENEMY_ECL_OPERAND_RANDOM_U32:
+        return (float)g_EnemyRandom.GetU32();
+    case ENEMY_ECL_OPERAND_RANDOM_UNIT:
+        return g_EnemyRandom.GetUnitFloat();
+    case ENEMY_ECL_OPERAND_RANDOM_ANGLE:
+        return g_EnemyRandom.GetSignedUnitFloat() * 3.1415927f;
+    case ENEMY_ECL_OPERAND_WORLD_X_A:
+    case ENEMY_ECL_OPERAND_WORLD_X_B:
+        return runtime.worldMotion.position.x;
+    case ENEMY_ECL_OPERAND_POSITION_Y_A:
+    case ENEMY_ECL_OPERAND_POSITION_Y_B:
+        return runtime.worldMotion.position.y;
+    case ENEMY_ECL_OPERAND_OFFSET_X_A:
+    case ENEMY_ECL_OPERAND_OFFSET_X_B:
+        return runtime.offsetMotion.position.x;
+    case ENEMY_ECL_OPERAND_OFFSET_Y_A:
+    case ENEMY_ECL_OPERAND_OFFSET_Y_B:
+        return runtime.offsetMotion.position.y;
+    case ENEMY_ECL_OPERAND_BASE_X_A:
+    case ENEMY_ECL_OPERAND_BASE_X_B:
+        return runtime.baseMotion.position.x;
+    case ENEMY_ECL_OPERAND_BASE_Y_A:
+    case ENEMY_ECL_OPERAND_BASE_Y_B:
+        return runtime.baseMotion.position.y;
+    case ENEMY_ECL_OPERAND_PLAYER_X_A:
+    case ENEMY_ECL_OPERAND_PLAYER_X_B:
+        return g_Player->drawPosition.x;
+    case ENEMY_ECL_OPERAND_PLAYER_Y_A:
+    case ENEMY_ECL_OPERAND_PLAYER_Y_B:
+        return g_Player->drawPosition.y;
+    case ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_WORLD:
+        return EnemyAngleFromPlayer(g_Player, &runtime.worldMotion.position);
+    case ENEMY_ECL_OPERAND_UPDATE_TIMER:
+        return runtime.updateTimer.subframe;
+    case ENEMY_ECL_OPERAND_RANDOM_SIGNED:
+        return g_EnemyRandom.GetSignedUnitFloat();
+    case ENEMY_ECL_OPERAND_FLAG_10000:
+        return (float)((runtime.flags >> 16) & 1);
+    case ENEMY_ECL_OPERAND_INT_0:
+        return (float)runtime.eclVariables.integers[0];
+    case ENEMY_ECL_OPERAND_INT_1:
+        return (float)runtime.eclVariables.integers[1];
+    case ENEMY_ECL_OPERAND_INT_2:
+        return (float)runtime.eclVariables.integers[2];
+    case ENEMY_ECL_OPERAND_INT_3:
+        return (float)runtime.eclVariables.integers[3];
+    case ENEMY_ECL_OPERAND_FLOAT_0:
+        return runtime.eclVariables.floats[0];
+    case ENEMY_ECL_OPERAND_FLOAT_1:
+        return runtime.eclVariables.floats[1];
+    case ENEMY_ECL_OPERAND_FLOAT_2:
+        return runtime.eclVariables.floats[2];
+    case ENEMY_ECL_OPERAND_FLOAT_3:
+        return runtime.eclVariables.floats[3];
+    case ENEMY_ECL_OPERAND_OFFSET_VALUE1C:
+        return runtime.offsetMotion.value1C;
+    case ENEMY_ECL_OPERAND_BASE_VALUE1C:
+        return runtime.baseMotion.value1C;
+    case ENEMY_ECL_OPERAND_OFFSET_VALUE18:
+        return runtime.offsetMotion.value18;
+    case ENEMY_ECL_OPERAND_BASE_VALUE18:
+        return runtime.baseMotion.value18;
+    case ENEMY_ECL_OPERAND_OFFSET_VALUE20:
+        return runtime.offsetMotion.value20;
+    case ENEMY_ECL_OPERAND_BASE_VALUE20:
+        return runtime.baseMotion.value20;
+    case ENEMY_ECL_OPERAND_SPECIAL_ENEMY_X:
+        return g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position.x;
+    case ENEMY_ECL_OPERAND_SPECIAL_ENEMY_Y:
+        return g_EnemyManager->specialEnemySlots[0]->runtime.worldMotion.position.y;
+    case ENEMY_ECL_OPERAND_RANK:
+        return (float)g_EnemyRank;
+    case ENEMY_ECL_OPERAND_DIFFICULTY:
+        return (float)g_EnemyDifficulty;
+    case ENEMY_ECL_OPERAND_WORLD_VELOCITY_ANGLE:
+        return (float)atan2(runtime.worldMotion.velocity.y, runtime.worldMotion.velocity.x);
+    case ENEMY_ECL_OPERAND_ONE:
+        return 1.0f;
+    case ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_OFFSET:
+        return EnemyAngleFromPlayer(g_Player, &runtime.offsetMotion.position);
+    case ENEMY_ECL_OPERAND_ANGLE_TO_PLAYER_BASE:
+        return EnemyAngleFromPlayer(g_Player, &runtime.baseMotion.position);
+    case ENEMY_ECL_OPERAND_LIFE:
+        return (float)runtime.life;
+    case ENEMY_ECL_OPERAND_DIFFICULTY_IS_0:
+        return (float)g_EnemyDifficulty == 0.0f ? 1.0f : 0.0f;
+    case ENEMY_ECL_OPERAND_DIFFICULTY_IS_1:
+        return (float)g_EnemyDifficulty == 1.0f ? 1.0f : 0.0f;
+    case ENEMY_ECL_OPERAND_DIFFICULTY_IS_2:
+        return (float)g_EnemyDifficulty == 2.0f ? 1.0f : 0.0f;
+    case ENEMY_ECL_OPERAND_DIFFICULTY_IS_3:
+        return (float)g_EnemyDifficulty == 3.0f ? 1.0f : 0.0f;
+    default:
+        return 0.0f;
+    }
+}
+
+float *EnemyFullObjectView::ResolveFloatOperand(int operand)
+{
+    switch (operand)
+    {
+    case ENEMY_ECL_OPERAND_FLOAT_0: return &runtime.eclVariables.floats[0];
+    case ENEMY_ECL_OPERAND_FLOAT_1: return &runtime.eclVariables.floats[1];
+    case ENEMY_ECL_OPERAND_FLOAT_2: return &runtime.eclVariables.floats[2];
+    case ENEMY_ECL_OPERAND_FLOAT_3: return &runtime.eclVariables.floats[3];
+    default: return NULL;
+    }
 }
 
 // Maintained source for the reviewed 0x0040DC80-0x0040E5EB hostile runtime
@@ -952,8 +1248,9 @@ EnemyFullObjectView *EnemySpawn(
     enemy->spawnLayerMask =
         static_cast<unsigned char>(1u << g_EnemySpawnLayerIndex);
 
-    for (int i = 0; i < 8; ++i)
-        enemy->runtime.spawnParameters[i] = request->parameters[i];
+    // Spawn and the operand lvalue family share the exact 0x20-byte variable
+    // block. Aggregate copy preserves all four integer and four float values.
+    enemy->runtime.eclVariables = request->eclVariables;
 
     enemy->runtime.flags =
         (enemy->runtime.flags & ~0x40000u) |
