@@ -1,6 +1,7 @@
 #include "Player.hpp"
 
 #include <stddef.h>
+#include <math.h>
 
 struct PlayerVm;
 
@@ -45,6 +46,41 @@ typedef char PlayerVmManagerPrimaryHeadAt72DAD4[
     (offsetof(PlayerVmManager, primaryHead) == 0x72dad4) ? 1 : -1];
 typedef char PlayerVmManagerSecondaryHeadAt72DADC[
     (offsetof(PlayerVmManager, secondaryHead) == 0x72dadc) ? 1 : -1];
+
+// Neutral maintained views for the target-observed auxiliary draw gate. Their
+// original object and field identifiers are not established by this packet.
+struct PlayerDrawGate54
+{
+    unsigned char unknown000[0x54];
+    signed char value54;
+};
+struct PlayerDrawGate10
+{
+    unsigned char unknown000[0x10];
+    int value10;
+};
+struct PlayerDrawGate9EB8
+{
+    unsigned char unknown000[0x9eb8];
+    int value9EB8;
+};
+struct PlayerDrawGate4
+{
+    unsigned char unknown000[0x04];
+    int value4;
+};
+
+extern PlayerDrawGate54 *g_PlayerDrawGate54;
+extern PlayerDrawGate10 *g_PlayerDrawGate10;
+extern PlayerDrawGate9EB8 *g_PlayerDrawGate9EB8;
+extern PlayerDrawGate4 *g_PlayerDrawGate4;
+extern int g_PlayerAuxiliaryDrawSpan;
+
+// Descriptive interfaces for target-observed draw callees. The target machine
+// boundaries use private register conventions; these declarations are
+// maintained source spellings, not original ABI claims.
+void PlayerDrawManagedVm(PlayerDrawVmView *vm);
+void PlayerDrawAuxiliaryRectangle(const float *bounds, unsigned int color);
 
 struct PlayerOptionPosition
 {
@@ -278,6 +314,55 @@ static int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
         option->previousMode = optionMode;
     }
     return 0;
+}
+
+// Maintained spelling of the Player callback registered in the target's second
+// (draw-phase) chain. The physical target entry at 0x00426510 adapts ECX to an
+// EAX-bound body at 0x00426360; source-written thunk versus compiler/LTCG
+// adapter ownership remains unknown.
+int __fastcall PlayerDrawCallback(Player *player)
+{
+    if (player->runtimeState != 2)
+    {
+        player->drawVm.positionX = player->drawPositionX + 224.0f;
+        player->drawVm.positionY = player->drawPositionY + 16.0f;
+        player->drawVm.positionZ = player->drawPositionZ;
+        PlayerDrawManagedVm(&player->drawVm);
+
+        for (int i = 0; i < 4; ++i)
+        {
+            PlayerOptionRuntime &option = player->options[i];
+            if (option.drawCallback != NULL)
+                option.drawCallback(&option);
+        }
+
+        if (g_PlayerDrawGate54 != NULL &&
+            g_PlayerDrawGate54->value54 < 0 &&
+            g_PlayerDrawGate10 != NULL &&
+            g_PlayerDrawGate9EB8 != NULL &&
+            g_PlayerDrawGate10->value10 == 0 &&
+            g_PlayerDrawGate9EB8->value9EB8 == 0 &&
+            g_PlayerDrawGate4->value4 == 0 &&
+            g_PlayerAuxiliaryDrawSpan != 0)
+        {
+            float bounds[4];
+            bounds[0] = (float)floor(
+                (double)(player->drawPositionX + 225.0f - 16.0f));
+            bounds[2] = bounds[0] +
+                (float)g_PlayerAuxiliaryDrawSpan * 0.29230770468711853f;
+            bounds[1] = (float)floor(
+                (double)(player->drawPositionY + 17.0f - 24.0f));
+            bounds[3] = bounds[1] + 2.0f;
+
+            PlayerDrawAuxiliaryRectangle(bounds, 0x80000000u);
+            bounds[0] -= 1.0f;
+            bounds[1] -= 1.0f;
+            bounds[2] -= 1.0f;
+            bounds[3] -= 1.0f;
+            PlayerDrawAuxiliaryRectangle(bounds, 0xffffffffu);
+        }
+    }
+    return 1;
 }
 
 void RebuildPlayerOptions(Player *player)

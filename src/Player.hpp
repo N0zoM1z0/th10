@@ -34,7 +34,7 @@ struct PlayerOptionRuntime
     int optionIndex;
     int resetFlag;
     PlayerOptionCallback updateCallback;
-    unsigned int unknown094;
+    PlayerOptionCallback drawCallback;
 };
 typedef char PlayerOptionRuntimeSizeIs98[
     (sizeof(PlayerOptionRuntime) == 0x98) ? 1 : -1];
@@ -52,6 +52,25 @@ typedef char PlayerOptionRuntimeResetAt8C[
     (offsetof(PlayerOptionRuntime, resetFlag) == 0x8c) ? 1 : -1];
 typedef char PlayerOptionRuntimeCallbackAt90[
     (offsetof(PlayerOptionRuntime, updateCallback) == 0x90) ? 1 : -1];
+typedef char PlayerOptionRuntimeDrawCallbackAt94[
+    (offsetof(PlayerOptionRuntime, drawCallback) == 0x94) ? 1 : -1];
+
+// Maintained partial draw-VM view beginning at Player +0x14. Only the
+// target-observed draw position and flags offsets are exposed; the original
+// VM type/field identifiers and physical object extent remain unknown.
+struct PlayerDrawVmView
+{
+    unsigned char unknown000[0x340];
+    float positionX;
+    float positionY;
+    float positionZ;
+    unsigned char unknown34C[0x10];
+    unsigned int flags;
+};
+typedef char PlayerDrawVmViewPositionAt340[
+    (offsetof(PlayerDrawVmView, positionX) == 0x340) ? 1 : -1];
+typedef char PlayerDrawVmViewFlagsAt35C[
+    (offsetof(PlayerDrawVmView, flags) == 0x35c) ? 1 : -1];
 
 // Maintained partial TH10 player layout. Only target-observed fields needed by
 // the reviewed replay and option-rebuild seams are exposed. This is not an
@@ -60,10 +79,15 @@ struct Player
 {
     unsigned char unknown000[0x10];
     void *resource;
-    unsigned char unknown014[0x3b8];
+    PlayerDrawVmView drawVm;
+    unsigned char unknown374[0x4c];
+    float drawPositionX;
+    float drawPositionY;
+    float drawPositionZ;
     int positionX;
     int positionY;
-    unsigned char unknown3D4[0x88];
+    unsigned char unknown3D4[0x84];
+    int runtimeState;
     unsigned char *optionData;
     unsigned char unknown460[0x2e40];
     PlayerOptionRuntime options[4];
@@ -74,8 +98,14 @@ struct Player
 };
 typedef char PlayerResourceAt10[
     (offsetof(Player, resource) == 0x10) ? 1 : -1];
+typedef char PlayerDrawVmViewAt14[
+    (offsetof(Player, drawVm) == 0x14) ? 1 : -1];
+typedef char PlayerDrawPositionAt3C0[
+    (offsetof(Player, drawPositionX) == 0x3c0) ? 1 : -1];
 typedef char PlayerPositionAt3CC[
     (offsetof(Player, positionX) == 0x3cc) ? 1 : -1];
+typedef char PlayerRuntimeStateAt458[
+    (offsetof(Player, runtimeState) == 0x458) ? 1 : -1];
 typedef char PlayerOptionDataAt45C[
     (offsetof(Player, optionData) == 0x45c) ? 1 : -1];
 typedef char PlayerOptionsAt32A0[
