@@ -209,3 +209,36 @@ functions = ["CMemoryPbgFile::GetSize"]
 symbol = "?GetSize@CMemoryPbgFile@@UAEKXZ"
 target_address = 0x004364E0
 size = 4
+
+[units.pbgarchive-constructor]
+artifact_kind = "coff"
+source = "src/PbgArchive.cpp"
+object = "build/match/PbgArchive.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["PbgArchive::PbgArchive"]
+symbol = "??0PbgArchive@@QAE@XZ"
+target_address = 0x00434C10
+size = 16
+
+[units.pbgarchive-entry-destructor]
+artifact_kind = "coff"
+source = "src/PbgArchive.cpp"
+object = "build/match/PbgArchive.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["PbgArchiveEntry::~PbgArchiveEntry"]
+symbol = "??1PbgArchiveEntry@@QAE@XZ"
+target_address = 0x00435250
+size = 26
+relocations = [
+  { offset = 11, type = "REL32", symbol = "_free", target = 0x00452422 },
+]
+
+[units.pbgarchive-entry-constructor]
+artifact_kind = "coff"
+source = "src/PbgArchive.cpp"
+object = "build/match/PbgArchive.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["PbgArchiveEntry::PbgArchiveEntry"]
+symbol = "??0PbgArchiveEntry@@QAE@XZ"
+target_address = 0x004352C0
+size = 9

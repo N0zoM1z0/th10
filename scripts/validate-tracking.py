@@ -87,6 +87,8 @@ def validate() -> dict[str, int]:
     matched_units: set[str] = set()
     if len(match_addresses) != len(matches):
         raise ValueError("exact match addresses must be unique")
+    if [int(row["address"], 0) for row in matches] != sorted(match_addresses):
+        raise ValueError("exact match rows must be sorted by address")
     for row in matches:
         unit_name = row["unit"]
         if unit_name not in configured_units or row["match_percent"] != "100.00":
