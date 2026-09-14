@@ -140,7 +140,7 @@ struct AnmVmView
     unsigned char unknown230[0x00c];
     AnmMatrixView matrix23C;
     AnmMatrixView matrix27C;
-    unsigned char unknown2BC[0x040];
+    AnmMatrixView textureMatrix2BC;
     AnmColorView primaryColor;
     AnmColorView secondaryColor;
     unsigned char unknown304[0x004];
@@ -198,6 +198,8 @@ typedef char AnmVmLoadedSpriteAt394[
 typedef char AnmVmColorsAt2FC[
     (offsetof(AnmVmView, primaryColor) == 0x2fc &&
      offsetof(AnmVmView, secondaryColor) == 0x300) ? 1 : -1];
+typedef char AnmVmTextureMatrixAt2BC[
+    (offsetof(AnmVmView, textureMatrix2BC) == 0x2bc) ? 1 : -1];
 typedef char AnmVmFlagsAt35C[
     (offsetof(AnmVmView, flags35C) == 0x35c) ? 1 : -1];
 
@@ -371,14 +373,17 @@ struct AnmRenderManagerView
     float screenShakeY;
     unsigned char unknown064[0x3ad08c];
     AnmMatrixView cachedWorldMatrix;
-    unsigned char unknown3AD130[0x934];
+    unsigned char unknown3AD130[0x930];
+    unsigned int currentTextureFactor;
     void *currentTexture;
     unsigned char currentBlendMode;
     unsigned char unknown3ADA69;
     unsigned char currentVertexShader;
     unsigned char unknown3ADA6B[0x003];
     unsigned char currentTextureFilter;
-    unsigned char unknown3ADA6F[0x009];
+    unsigned char unknown3ADA6F;
+    AnmSpriteView *currentSprite;
+    void *quadVertexBuffer;
     AnmUntexturedVertexView untexturedVertices[4];
     unsigned int spritesToDraw;
     AnmRenderVertexView vertexBuffer[0x20000];
@@ -391,6 +396,7 @@ struct AnmRenderManagerView
     void ClearVertexBuffer();
     void FlushVertexBuffer();
     int AddSpriteToDrawBuffer(AnmRenderVertexView *vertices);
+    void SetRenderStateForVm3D(AnmVmView *vm);
     void SetRenderStateForVm(AnmVmView *vm);
     int DrawInner(AnmVmView *vm, int roundToPixel);
     int DrawNoRotation(AnmVmView *vm);
@@ -422,10 +428,14 @@ typedef char AnmRenderVertexCursorsAt72DACC[
     (offsetof(AnmRenderManagerView, vertexBufferEnd) == 0x72dacc &&
      offsetof(AnmRenderManagerView, vertexBufferStart) == 0x72dad0) ? 1 : -1];
 typedef char AnmRenderStateCacheAt3ADA64[
-    (offsetof(AnmRenderManagerView, currentTexture) == 0x3ada64 &&
+    (offsetof(AnmRenderManagerView, currentTextureFactor) == 0x3ada60 &&
+     offsetof(AnmRenderManagerView, currentTexture) == 0x3ada64 &&
      offsetof(AnmRenderManagerView, currentBlendMode) == 0x3ada68 &&
      offsetof(AnmRenderManagerView, currentVertexShader) == 0x3ada6a &&
      offsetof(AnmRenderManagerView, currentTextureFilter) == 0x3ada6e) ? 1 : -1];
+typedef char AnmRenderDirect3DStateAt3ADA70[
+    (offsetof(AnmRenderManagerView, currentSprite) == 0x3ada70 &&
+     offsetof(AnmRenderManagerView, quadVertexBuffer) == 0x3ada74) ? 1 : -1];
 typedef char AnmRenderCachedWorldMatrixAt3AD0F0[
     (offsetof(AnmRenderManagerView, cachedWorldMatrix) == 0x3ad0f0) ? 1 : -1];
 typedef char AnmRenderUntexturedVerticesAt3ADA78[

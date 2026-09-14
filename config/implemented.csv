@@ -129,6 +129,7 @@ AnmRenderManagerView::AddSpriteToDrawBuffer
 AnmRenderManagerView::DrawNoRotation
 AnmRenderManagerView::DrawNoRotationNoRound
 MixAnmColor
+AnmRenderManagerView::SetRenderStateForVm3D
 AnmRenderManagerView::SetRenderStateForVm
 AnmRenderManagerView::DrawInner
 AnmRenderManagerView::TranslateRotation
@@ -138,6 +139,7 @@ AnmRenderManagerView::DrawMode6
 AnmRenderManagerView::Project3DQuad
 AnmRenderManagerView::DrawProjected3DQuad
 AnmRenderManagerView::DrawMode7
+AnmRenderManagerView::Draw3D
 AnmRenderManagerView::Draw2D
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned
 AnmRenderManagerView::Draw

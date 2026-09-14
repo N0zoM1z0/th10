@@ -341,6 +341,85 @@ unsigned char __fastcall MixAnmColor(
     return static_cast<unsigned char>(mixed);
 }
 
+// Target 0x004423E0-0x00442597 applies the shared blend/filter cache and
+// publishes the selected, optionally mixed VM color as D3D texture factor.
+void AnmRenderManagerView::SetRenderStateForVm3D(AnmVmView *vm)
+{
+    AnmColorView color;
+
+    if (currentBlendMode != vm->blendMode)
+    {
+        FlushVertexBuffer();
+        currentBlendMode = static_cast<unsigned char>(vm->blendMode);
+
+        switch (currentBlendMode)
+        {
+        case 0:
+            g_Direct3DDevice->vtable->SetRenderState(
+                g_Direct3DDevice, D3D9_VIEW_RS_DESTBLEND,
+                D3D9_VIEW_BLEND_INVSRCALPHA);
+            break;
+        case 1:
+            g_Direct3DDevice->vtable->SetRenderState(
+                g_Direct3DDevice, D3D9_VIEW_RS_DESTBLEND,
+                D3D9_VIEW_BLEND_ONE);
+            break;
+        case 2:
+            g_Direct3DDevice->vtable->SetRenderState(
+                g_Direct3DDevice, D3D9_VIEW_RS_DESTBLEND,
+                D3D9_VIEW_BLEND_ONE);
+            break;
+        }
+    }
+
+    color.value = vm->useSecondaryColor
+        ? vm->secondaryColor.value : vm->primaryColor.value;
+    if (useMixColor)
+    {
+        color.red = MixAnmColor(color.red, mixColor.red);
+        color.green = MixAnmColor(color.green, mixColor.green);
+        color.blue = MixAnmColor(color.blue, mixColor.blue);
+        color.alpha = MixAnmColor(color.alpha, mixColor.alpha);
+    }
+
+    if (currentTextureFactor != color.value)
+    {
+        FlushVertexBuffer();
+        currentTextureFactor = color.value;
+        g_Direct3DDevice->vtable->SetRenderState(
+            g_Direct3DDevice, D3D9_VIEW_RS_TEXTUREFACTOR,
+            currentTextureFactor);
+    }
+
+    if (currentTextureFilter != vm->usePointTextureFilter)
+    {
+        FlushVertexBuffer();
+        currentTextureFilter =
+            static_cast<unsigned char>(vm->usePointTextureFilter);
+
+        if (currentTextureFilter == 0)
+        {
+            g_Direct3DDevice->vtable->SetSamplerState(
+                g_Direct3DDevice, 0, D3D9_VIEW_SAMP_MAGFILTER,
+                D3D9_VIEW_TEXF_LINEAR);
+            g_Direct3DDevice->vtable->SetSamplerState(
+                g_Direct3DDevice, 0, D3D9_VIEW_SAMP_MINFILTER,
+                D3D9_VIEW_TEXF_LINEAR);
+        }
+        else
+        {
+            g_Direct3DDevice->vtable->SetSamplerState(
+                g_Direct3DDevice, 0, D3D9_VIEW_SAMP_MAGFILTER,
+                D3D9_VIEW_TEXF_POINT);
+            g_Direct3DDevice->vtable->SetSamplerState(
+                g_Direct3DDevice, 0, D3D9_VIEW_SAMP_MINFILTER,
+                D3D9_VIEW_TEXF_POINT);
+        }
+    }
+
+    ++renderStateChangesThisFrame;
+}
+
 // Target 0x004425A0-0x00442668 batches sprites until either the blend mode or
 // texture filter changes. The VM remains live in EDI in the target LTCG seam.
 void AnmRenderManagerView::SetRenderStateForVm(AnmVmView *vm)
@@ -1381,6 +1460,141 @@ int AnmRenderManagerView::DrawMode7(AnmVmView *vm)
     g_AnmQuadVertices[0].rhw = g_AnmQuadVertices[1].rhw =
         g_AnmQuadVertices[2].rhw = g_AnmQuadVertices[3].rhw = 1.0f;
     return result;
+}
+
+// Target 0x00444760-0x00444B00 flushes the two-dimensional batch, prepares a
+// VM world transform and texture transform, installs the direct-3D stream and
+// fixed-function state, and submits the renderer's four-vertex strip.
+int AnmRenderManagerView::Draw3D(AnmVmView *vm)
+{
+    AnmMatrixView textureMatrix;
+    AnmMatrixView rotationMatrix;
+    AnmMatrixView worldMatrix;
+    void *texture;
+
+    if (!vm->visible)
+        return -1;
+    if (!vm->drawEnabled)
+        return -1;
+    if (vm->primaryColor.alpha == 0)
+        return -1;
+
+    if (spritesToDraw != 0)
+        FlushVertexBuffer();
+
+    if (!vm->useStaticMatrix && (vm->updateScale || vm->updateRotation))
+    {
+        vm->matrix27C = vm->matrix23C;
+        vm->matrix27C.values[0] *= vm->scaleX;
+        vm->matrix27C.values[5] *= vm->scaleY;
+        vm->updateScale = 0;
+
+        if (vm->rotation.x != 0.0)
+        {
+            D3DXMatrixRotationX(&rotationMatrix, vm->rotation.x);
+            D3DXMatrixMultiply(
+                &vm->matrix27C, &vm->matrix27C, &rotationMatrix);
+        }
+        if (vm->rotation.y != 0.0)
+        {
+            D3DXMatrixRotationY(&rotationMatrix, vm->rotation.y);
+            D3DXMatrixMultiply(
+                &vm->matrix27C, &vm->matrix27C, &rotationMatrix);
+        }
+        if (vm->rotation.z != 0.0)
+        {
+            D3DXMatrixRotationZ(&rotationMatrix, vm->rotation.z);
+            D3DXMatrixMultiply(
+                &vm->matrix27C, &vm->matrix27C, &rotationMatrix);
+        }
+        vm->updateRotation = 0;
+    }
+
+    worldMatrix = vm->matrix27C;
+    switch (vm->renderStateA)
+    {
+    case 1:
+        worldMatrix.values[12] =
+            vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x -
+            static_cast<float>(fabs(
+                vm->spriteWidth * vm->scaleX * 0.5f));
+        break;
+    case 0:
+        worldMatrix.values[12] =
+            vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x;
+        break;
+    case 2:
+        worldMatrix.values[12] =
+            static_cast<float>(fabs(
+                vm->spriteWidth * vm->scaleX * 0.5f)) +
+            vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x;
+        break;
+    }
+
+    switch (vm->renderStateB)
+    {
+    case 1:
+        worldMatrix.values[13] =
+            vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y -
+            static_cast<float>(fabs(
+                vm->spriteHeight * vm->scaleY * 0.5f));
+        break;
+    case 0:
+        worldMatrix.values[13] =
+            vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y;
+        break;
+    case 2:
+        worldMatrix.values[13] =
+            static_cast<float>(fabs(
+                vm->spriteHeight * vm->scaleY * 0.5f)) +
+            vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y;
+        break;
+    }
+
+    worldMatrix.values[14] = vm->position.z + vm->preservedPosition.z;
+    SetRenderStateForVm3D(vm);
+    worldMatrix.values[14] =
+        vm->spriteOffset.z + vm->position.z + vm->preservedPosition.z;
+    g_Direct3DDevice->vtable->SetTransform(
+        g_Direct3DDevice, D3D9_VIEW_TS_WORLD, &worldMatrix);
+
+    texture = vm->loadedSprite->texture;
+    if (currentTexture != texture)
+    {
+        currentTexture = texture;
+        g_Direct3DDevice->SetTexture(0, texture);
+    }
+
+    if (currentSprite != vm->loadedSprite ||
+        vm->uvScrollX != 0.0f || vm->uvScrollX != 0.0f)
+    {
+        currentSprite = vm->loadedSprite;
+        textureMatrix = vm->textureMatrix2BC;
+        textureMatrix.values[8] = vm->loadedSprite->uStart + vm->uvScrollX;
+        textureMatrix.values[9] = vm->loadedSprite->vStart + vm->uvScrollY;
+        g_Direct3DDevice->vtable->SetTransform(
+            g_Direct3DDevice, D3D9_VIEW_TS_TEXTURE0, &textureMatrix);
+    }
+
+    if (currentVertexShader != 2)
+    {
+        g_Direct3DDevice->vtable->SetStreamSource(
+            g_Direct3DDevice, 0, quadVertexBuffer, 0,
+            sizeof(AnmUntexturedVertexView));
+        g_Direct3DDevice->vtable->SetFVF(
+            g_Direct3DDevice, D3D9_VIEW_FVF_XYZ | D3D9_VIEW_FVF_TEX1);
+        g_Direct3DDevice->vtable->SetTextureStageState(
+            g_Direct3DDevice, 0,
+            D3D9_VIEW_TSS_ALPHAARG2, D3D9_VIEW_TA_TFACTOR);
+        g_Direct3DDevice->vtable->SetTextureStageState(
+            g_Direct3DDevice, 0,
+            D3D9_VIEW_TSS_COLORARG2, D3D9_VIEW_TA_TFACTOR);
+        currentVertexShader = 2;
+    }
+
+    g_Direct3DDevice->vtable->DrawPrimitive(
+        g_Direct3DDevice, D3D9_VIEW_PT_TRIANGLESTRIP, 0, 2);
+    return 0;
 }
 
 // Target 0x004451C0-0x0044526C rejects inactive or transparent VMs and

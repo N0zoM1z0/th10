@@ -130,6 +130,7 @@ AnmRenderManagerView::AddSpriteToDrawBuffer,0x00442FE0,function
 AnmRenderManagerView::DrawNoRotation,0x00443080,function
 AnmRenderManagerView::DrawNoRotationNoRound,0x00443290,function
 MixAnmColor,0x004423C0,function
+AnmRenderManagerView::SetRenderStateForVm3D,0x004423E0,function
 AnmRenderManagerView::SetRenderStateForVm,0x004425A0,function
 AnmRenderManagerView::DrawInner,0x00442670,function
 AnmRenderManagerView::TranslateRotation,0x00443680,function
@@ -139,6 +140,7 @@ AnmRenderManagerView::DrawMode6,0x00443FB0,function
 AnmRenderManagerView::Project3DQuad,0x00444240,function
 AnmRenderManagerView::DrawProjected3DQuad,0x00444580,function
 AnmRenderManagerView::DrawMode7,0x004445C0,function
+AnmRenderManagerView::Draw3D,0x00444760,function
 AnmRenderManagerView::Draw2D,0x004436C0,function
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned,0x00443910,function
 AnmRenderManagerView::Draw,0x004451C0,function

@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `9ad868a gpt-5.6-sol: recover ANM mode dispatch`, branch `main`.
+- Current packet base: `fc3dce0 gpt-5.6-sol: recover ANM projected photo blend`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -28,14 +28,15 @@
 - Completed session checkpoint: `1923623 gpt-5.6-sol: recover ANM rotated draw modes`.
 - Completed session checkpoint: `56ac2e8 gpt-5.6-sol: recover ANM projected 3D quad`.
 - Completed session checkpoint: `9ad868a gpt-5.6-sol: recover ANM mode dispatch`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM projected photo blend`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `fc3dce0 gpt-5.6-sol: recover ANM projected photo blend`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM direct 3D`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-mode7/`. The earlier ANM projected, ANM draw, ANM manager, ANM VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-draw3d/`. The earlier ANM mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `9ad868a...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `fc3dce0...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -50,7 +51,45 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM projected photo blend
+## Current packet: ANM direct 3D
+
+`SetRenderStateForVm3D @ 0x004423E0-0x00442597` is reconstructed from
+TH10-local target evidence. It is the direct-3D sibling of the batched 2D
+state helper: blend changes select inverse-source-alpha for mode zero and one
+for modes one and two; the selected primary/secondary VM color is optionally
+multiplied by the renderer color and published as D3D9 texture factor; and the
+same point/linear sampler cache is maintained. Every incompatible state change
+flushes pending 2D sprites, and the helper increments the per-frame state count.
+
+`Draw3D @ 0x00444760-0x00444B00` rejects hidden, disabled and zero-alpha VMs,
+flushes the 2D batch, updates scale and X/Y/Z rotations, and applies anchor
+translation from `spriteOffset + preservedPosition + position`. It installs
+the world transform, binds the sprite texture, optionally refreshes the
+texture transform from UV scroll, and submits the renderer's four 0x14-byte
+vertices as a two-primitive triangle strip. TH10 binds the texture before
+refreshing the sprite/UV cache, repeats the `uvScrollX != 0` test in the
+texture-transform condition, and writes world Z first without then with
+`spriteOffset.z`; source retains those target-observed details rather than
+normalizing them from adjacent code.
+
+Pinned VC7.1 `/GL` reproduces both complete target contribution extents: 440
+bytes for the state helper and 929 for the draw owner. The state helper matches
+396/408 comparable non-linkage bytes and Draw3D matches 816/829. Each remaining
+gap is one equal-length instruction-scheduling region around a D3D9 COM call:
+12 bytes for texture-factor state and 13 bytes for texture binding. Natural
+assignment-expression, explicit-local and inline member-wrapper probes do not
+change those regions. They remain source-present and non-exact; no artificial
+dependency or assembly constraint was added.
+
+Current tracking contains **1,289** candidates, **174** authored functions,
+**146** source mappings, and **70 canonical exact functions / 7,064 bytes**.
+The authored source backlog is **72**. The full `src/AnmManager.cpp` canonical
+set remains **24 functions / 5,414 bytes** across five artifact contexts.
+
+The next ANM frontier is the generated-vertex initialization/submission
+corridor at `0x00444B10`, `0x00444BE0`, `0x00444CE0`, and `0x004450E0`.
+
+## Completed packet: ANM projected photo blend
 
 `DrawMode7 @ 0x004445C0-0x00444751` is reconstructed from TH10-local target
 evidence. After `Project3DQuad`, it transforms the four renderer-local
