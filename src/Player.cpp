@@ -210,11 +210,11 @@ void PlayerRequestRuntimeTransition(int value);
 void PlayerFallbackRuntimeTransition();
 PlayerEffectRowView *PlayerSpawnEffectRow(
     Player *player, const PlayerFloat3 *position,
-    float width, float height, int frames, int value);
-void PlayerAdvanceEffectMotion(
-    PlayerEffectMotionView *motion, float angularStep, float angle);
+    float radius, float radiusDelta, int frames, int damage);
+void PlayerSetEffectVelocityFromPolar(
+    PlayerFloat3 *velocity, float angularStep, float angle);
 float PlayerWrapEffectAngle(float value);
-void PlayerFinalizeEffectState(void *state);
+void PlayerAdvanceEffectRegion(PlayerFloat3 *position);
 void PlayerUpdateDrawVmState(PlayerDrawVmView *vm);
 void PlayerUpdateInputAction(Player *player);
 int PlayerUpdateShots(Player *player);
@@ -229,8 +229,13 @@ void PlayerAdvanceShotMotion(PlayerShotMotionView *motion);
 int PlayerShotOutsidePlayfield(
     const PlayerFloat3 *position, float extentX, float extentY);
 void PlayerSetShotVmDeleteState1(unsigned int *vmId);
+void PlayerSetShotVmDeleteState2(unsigned int *vmId);
 void PlayerSetShotVmDeleteState3(unsigned int *vmId);
+PlayerVm *PlayerResolveShotVmAndClearMissing(unsigned int *vmId);
+void PlayerMarkShotVmPendingAndClear(unsigned int *vmId);
 void PlayerMarkShotVmPending(unsigned int vmId);
+int PlayerTimerHasIntervalTick(const PlayerTimerView *timer, int interval);
+int PlayerGetAuxiliaryDamageAtPosition(const PlayerFloat3 *position);
 
 struct PlayerOptionPosition
 {
@@ -242,6 +247,7 @@ typedef char PlayerOptionPositionSizeIs0C[
     (sizeof(PlayerOptionPosition) == 0x0c) ? 1 : -1];
 
 extern short g_PlayerPower;
+extern int g_GameScore;
 extern int g_PlayerCharacter;
 extern int g_PlayerShotType;
 extern int g_PlayerOptionPositionBase[];
@@ -1173,6 +1179,178 @@ int PlayerUpdateShots(Player *player)
     return 0;
 }
 
+// Maintained source for the 0x00428630-0x00428AC1 Player damage owner. The
+// logical source shape is a Player member with three arguments. The target's
+// optimized private boundary rotates those four logical values: optionalHitFlag
+// is live in ECX, while Player*, targetPosition, and targetSize are stack-bound,
+// and the body returns with RET 12. This spelling does not claim the original
+// identifier, translation unit, or production optimizer profile.
+int Player::CalculateDamageToTarget(
+    const PlayerFloat3 *targetPosition,
+    const PlayerFloat3 *targetSize,
+    int *optionalHitFlag)
+{
+    int damage = 0;
+    int i;
+
+    if (updateTimer1.current == updateTimer1.previous)
+        return 0;
+
+    const float targetHalfX = targetSize->x * 0.5f;
+    const float targetHalfY = targetSize->y * 0.5f;
+    const float targetMinX = targetPosition->x - targetHalfX;
+    const float targetMinY = targetPosition->y - targetHalfY;
+    const float targetMaxX = targetPosition->x + targetHalfX;
+    const float targetMaxY = targetPosition->y + targetHalfY;
+
+    if (optionalHitFlag != NULL)
+        *optionalHitFlag = 0;
+
+    for (i = 0; i < 128; ++i)
+    {
+        PlayerShotRuntimeView *shot = &shots[i];
+        if (shot->state == PLAYER_SHOT_INACTIVE ||
+            shot->state == PLAYER_SHOT_HIT_TRANSITION)
+        {
+            continue;
+        }
+
+        const PlayerShotDescriptorView *descriptor = shot->descriptor;
+        const float shotHalfX = descriptor->hitboxExtentX * 0.5f;
+        const float shotHalfY = descriptor->hitboxExtentY * 0.5f;
+        const float shotMinX = shot->motion.position.x - shotHalfX;
+        const float shotMinY = shot->motion.position.y - shotHalfY;
+        const float shotMaxX = shot->motion.position.x + shotHalfX;
+        const float shotMaxY = shot->motion.position.y + shotHalfY;
+
+        if (shotMinY > targetMaxY || shotMinX > targetMaxX ||
+            shotMaxY < targetMinY || shotMaxX < targetMinX)
+        {
+            continue;
+        }
+
+        if (descriptor->type != PLAYER_SHOT_TYPE_3 && shotMinY < 0.0f)
+            continue;
+        if (descriptor->type == PLAYER_SHOT_TYPE_3 && targetMaxY < 0.0f)
+            continue;
+
+        if (descriptor->collisionCallback != NULL &&
+            descriptor->collisionCallback(this, shot, targetPosition) != 0)
+        {
+            continue;
+        }
+
+        if (shot->collisionVmTransitionPending == 0)
+        {
+            PlayerSetShotVmDeleteState2(&shot->primaryVmId);
+            shot->collisionVmTransitionPending = 1;
+        }
+        shot->collidedThisFrame = 1;
+
+        if (descriptor->type != PLAYER_SHOT_TYPE_3 ||
+            PlayerTimerHasIntervalTick(&shot->timer, 4) != 0)
+        {
+            damage += descriptor->damage;
+        }
+
+        if (descriptor->type != PLAYER_SHOT_TYPE_3)
+        {
+            PlayerVm *vm =
+                PlayerResolveShotVmAndClearMissing(&shot->primaryVmId);
+            const float savedAngle = vm->angle2C;
+
+            PlayerMarkShotVmPendingAndClear(&shot->primaryVmId);
+
+            PlayerVm *createdVm = PlayerCreateManagedVm(
+                resource, descriptor->hitAnimationScript + 5, PLAYER_VM_LAYER);
+            shot->primaryVmId = createdVm->id;
+            PlayerVm *hitVm =
+                PlayerResolveShotVmAndClearMissing(&shot->primaryVmId);
+            hitVm->angle2C = savedAngle;
+            hitVm->flags |= PLAYER_VM_SHOT_ANGLE_DIRTY;
+
+            shot->motion.position.z = 0.1f;
+            shot->state = PLAYER_SHOT_HIT_TRANSITION;
+            shot->motion.speedOrAngleStep *= 0.125f;
+        }
+
+        if (descriptor->type == 2)
+        {
+            PlayerSpawnEffectRow(
+                this, &shot->motion.position,
+                32.0f, 1.3999999761581421f, 13, descriptor->damage / 3);
+        }
+    }
+
+    damage += PlayerGetAuxiliaryDamageAtPosition(targetPosition);
+
+    for (i = 0; i < 32; ++i)
+    {
+        PlayerEffectRowView *row = &effectRows[i];
+        PlayerEffectMotionView *motion = &row->motion;
+        if ((motion->activeFlags & 1) == 0)
+            continue;
+
+        if (motion->timer.current != motion->timer.previous &&
+            motion->timer.current % motion->collisionInterval == 0)
+        {
+            continue;
+        }
+
+        if ((motion->activeFlags & 2) != 0)
+        {
+            const float dx = row->position.x - targetPosition->x;
+            const float dy = row->position.y - targetPosition->y;
+            if (row->radius * row->radius < dx * dx + dy * dy)
+                continue;
+        }
+        else if (row->angle == 0.0f)
+        {
+            const float halfExtentX = row->extentX * 0.5f;
+            const float halfExtentY = row->extentY * 0.5f;
+            if (row->position.x - halfExtentX > targetMaxX ||
+                row->position.x + halfExtentX < targetMinX ||
+                row->position.y - halfExtentY > targetMaxY ||
+                row->position.y + halfExtentY < targetMinY)
+            {
+                continue;
+            }
+        }
+        else
+        {
+            const float dx = targetPosition->x - row->position.x;
+            const float dy = targetPosition->y - row->position.y;
+            const float sine = (float)sin(-(double)row->angle);
+            const float cosine = (float)cos(-(double)row->angle);
+            const float rotatedX = cosine * dx - sine * dy;
+            const float rotatedY = cosine * dy + sine * dx;
+            const float halfExtentX = row->extentX * 0.5f;
+            const float halfExtentY = row->extentY * 0.5f;
+            if (-halfExtentX > targetHalfX + rotatedX ||
+                halfExtentX < rotatedX - targetHalfX ||
+                -halfExtentY > targetHalfY + rotatedY ||
+                halfExtentY < rotatedY - targetHalfY)
+            {
+                continue;
+            }
+        }
+
+        damage += motion->damage;
+        motion->hitAccumulator += motion->damage;
+        if (motion->hitAccumulator >= motion->hitCap)
+            motion->damage = 0;
+    }
+
+    if (damage != 0)
+    {
+        g_GameScore += (damage / 10 + 10) / 10;
+        if (g_GameScore >= 1000000000)
+            g_GameScore = 999999999;
+    }
+
+    return damage;
+}
+
 // Maintained spelling of the Player callback registered in the target's first
 // (update-phase) chain. The physical target entry at 0x00426500 pushes its
 // live-in ECX Player pointer into the stack-bound 0x00425730 body. Source-written
@@ -1389,8 +1567,9 @@ int __fastcall PlayerUpdateCallback(Player *player)
 
         if ((motion.motionFlags & 1) == 0)
         {
-            PlayerAdvanceEffectMotion(&motion, motion.angularStep, motion.angle);
-            motion.resetField = 0;
+            PlayerSetEffectVelocityFromPolar(
+                &motion.velocity, motion.angularStep, motion.angle);
+            motion.velocity.z = 0.0f;
         }
         else
         {
@@ -1399,9 +1578,9 @@ int __fastcall PlayerUpdateCallback(Player *player)
                 PlayerWrapEffectAngle(motion.angle + motion.angularStep);
         }
 
-        PlayerFinalizeEffectState(row.finalizeState);
-        row.valueX += row.deltaX;
-        row.valueY += row.deltaY;
+        PlayerAdvanceEffectRegion(&row.position);
+        row.radius += row.radiusDelta;
+        row.angle += row.angleDelta;
 
         motion.timer.previous = motion.timer.current;
         float scale = *motion.timer.scale;

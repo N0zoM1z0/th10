@@ -338,7 +338,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004281D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428280,authored_game,Player,authored,high,player-shot-update-2026-09-14
 0x004285F0,unknown,Player,review,unknown,player-shot-update-denominator-2026-09-14
-0x00428630,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00428630,authored_game,Player,authored,high,player-shot-collision-2026-09-14
+0x00428AD0,unknown,Player,review,unknown,player-shot-adjacent-raw-2026-09-14
+0x00428B10,unknown,Player,review,unknown,player-shot-adjacent-raw-2026-09-14
 0x00428C20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00428DD0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

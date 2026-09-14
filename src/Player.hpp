@@ -85,40 +85,51 @@ struct PlayerTimerView
 typedef char PlayerTimerViewSizeIs14[
     (sizeof(PlayerTimerView) == 0x14) ? 1 : -1];
 
-// Maintained view of one 0x6C Player effect row used by the central update
-// owner. Field names are descriptive only and expose just target-observed use.
+// Maintained view of one 0x6C Player collision/effect row. TH10-local spawn,
+// update, and damage-collision owners jointly establish the position, velocity,
+// radius/extent, timer, damage, accumulator, cap, interval, and active fields.
+// The original source type name remains unknown.
 struct PlayerEffectMotionView
 {
-    unsigned char unknown000[0x08];
-    int resetField;
+    PlayerFloat3 velocity;
     float angle;
     float angularStep;
     float timerStep;
     float timerStepDelta;
     unsigned int motionFlags;
     PlayerTimerView timer;
-    unsigned char unknown034[0x10];
+    int damage;
+    int hitAccumulator;
+    int hitCap;
+    int collisionInterval;
     unsigned int activeFlags;
 };
 typedef char PlayerEffectMotionViewSizeIs48[
     (sizeof(PlayerEffectMotionView) == 0x48) ? 1 : -1];
 typedef char PlayerEffectMotionTimerAt20[
     (offsetof(PlayerEffectMotionView, timer) == 0x20) ? 1 : -1];
+typedef char PlayerEffectMotionDamageAt34[
+    (offsetof(PlayerEffectMotionView, damage) == 0x34) ? 1 : -1];
+typedef char PlayerEffectMotionIntervalAt40[
+    (offsetof(PlayerEffectMotionView, collisionInterval) == 0x40) ? 1 : -1];
+typedef char PlayerEffectMotionActiveAt44[
+    (offsetof(PlayerEffectMotionView, activeFlags) == 0x44) ? 1 : -1];
 
 struct PlayerEffectRowView
 {
-    float valueX;
-    float deltaX;
-    float valueY;
-    float deltaY;
-    unsigned char unknown010[0x08];
-    unsigned char finalizeState[0x0c];
+    float radius;
+    float radiusDelta;
+    float angle;
+    float angleDelta;
+    float extentX;
+    float extentY;
+    PlayerFloat3 position;
     PlayerEffectMotionView motion;
 };
 typedef char PlayerEffectRowViewSizeIs6C[
     (sizeof(PlayerEffectRowView) == 0x6c) ? 1 : -1];
-typedef char PlayerEffectRowFinalizeAt18[
-    (offsetof(PlayerEffectRowView, finalizeState) == 0x18) ? 1 : -1];
+typedef char PlayerEffectRowPositionAt18[
+    (offsetof(PlayerEffectRowView, position) == 0x18) ? 1 : -1];
 typedef char PlayerEffectRowMotionAt24[
     (offsetof(PlayerEffectRowView, motion) == 0x24) ? 1 : -1];
 
@@ -219,10 +230,14 @@ typedef char PlayerOptionDataViewSpeedsAt10[
 struct Player;
 struct PlayerShotRuntimeView;
 
-// Maintained spelling of the target-observed ECX/EDX shot-update callback.
-// The callback return type is not observed because the owner ignores EAX.
+// Maintained spellings of target-observed ECX/EDX shot callbacks. The update
+// owner ignores EAX, while the collision owner tests a nonzero collision return
+// and passes the target position as the sole stack callback argument.
 typedef void (__fastcall *PlayerShotUpdateCallback)(
     Player *player, PlayerShotRuntimeView *shot);
+typedef int (__fastcall *PlayerShotCollisionCallback)(
+    Player *player, PlayerShotRuntimeView *shot,
+    const PlayerFloat3 *targetPosition);
 
 // Maintained 0x34-byte view of one loaded .sht shot descriptor. Only fields
 // directly consumed by the reviewed TH10 spawn/update/collision paths are
@@ -231,7 +246,7 @@ struct PlayerShotDescriptorView
 {
     signed char fireInterval;
     signed char fireFrame;
-    short value02;
+    short damage;
     float spawnOffsetX;
     float spawnOffsetY;
     float hitboxExtentX;
@@ -246,10 +261,12 @@ struct PlayerShotDescriptorView
     void *spawnCallback;
     PlayerShotUpdateCallback updateCallback;
     void *unknown2C;
-    void *collisionCallback;
+    PlayerShotCollisionCallback collisionCallback;
 };
 typedef char PlayerShotDescriptorViewSizeIs34[
     (sizeof(PlayerShotDescriptorView) == 0x34) ? 1 : -1];
+typedef char PlayerShotDescriptorDamageAt02[
+    (offsetof(PlayerShotDescriptorView, damage) == 0x02) ? 1 : -1];
 typedef char PlayerShotDescriptorAngleAt14[
     (offsetof(PlayerShotDescriptorView, angle) == 0x14) ? 1 : -1];
 typedef char PlayerShotDescriptorSourceAt1C[
@@ -364,6 +381,10 @@ struct Player
 
     Player();
     ~Player();
+    int CalculateDamageToTarget(
+        const PlayerFloat3 *targetPosition,
+        const PlayerFloat3 *targetSize,
+        int *optionalHitFlag);
 };
 typedef char PlayerUpdateCallbackNodeAt08[
     (offsetof(Player, updateCallbackNode) == 0x08) ? 1 : -1];
