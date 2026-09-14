@@ -20,6 +20,12 @@ struct AnmFloat3View
             x - other.x, y - other.y, z - other.z);
     }
 
+    AnmFloat3View operator+(const AnmFloat3View &other) const
+    {
+        return AnmFloat3View(
+            x + other.x, y + other.y, z + other.z);
+    }
+
     float x;
     float y;
     float z;
@@ -128,7 +134,8 @@ struct AnmVmView
     AnmColorView secondaryColor;
     unsigned char unknown304[0x004];
     void *anmFile308;
-    unsigned char unknown30C[0x028];
+    int generatedVertexCount;
+    unsigned char unknown310[0x024];
     AnmFloat3View position;
     AnmFloat3View preservedPosition;
     AnmFloat3View spriteOffset;
@@ -149,7 +156,8 @@ struct AnmVmView
             unsigned int unknownFlags16 : 2;
             unsigned int renderStateA : 2;
             unsigned int renderStateB : 2;
-            unsigned int unknownFlags22 : 9;
+            unsigned int renderMode : 4;
+            unsigned int unknownFlags26 : 5;
             unsigned int usePointTextureFilter : 1;
         };
     };
@@ -370,8 +378,14 @@ struct AnmRenderManagerView
         float cosine, float xOffset, float yOffset);
     int ProjectCameraFacingQuad(AnmVmView *vm);
     int DrawCameraFacingQuad(AnmVmView *vm);
+    int DrawMode6(AnmVmView *vm);
     int Project3DQuad(AnmVmView *vm);
     int DrawProjected3DQuad(AnmVmView *vm);
+    int DrawMode7(AnmVmView *vm);
+    int Draw3D(AnmVmView *vm);
+    int DrawGeneratedVertices(
+        AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount);
+    int Draw(AnmVmView *vm);
 };
 
 typedef char AnmRenderFlushCountAt058[
@@ -422,10 +436,21 @@ typedef char AnmViewportMatricesAt04C[
     (offsetof(AnmViewportOwnerView, viewMatrix) == 0x04c &&
      offsetof(AnmViewportOwnerView, projectionMatrix) == 0x08c) ? 1 : -1];
 
+struct AnmPhotoBlendView
+{
+    float nearDistance;
+    float farDistance;
+    float blue;
+    float green;
+    float red;
+};
+
 extern AnmRenderManagerView *g_AnmRenderManagerView;
 extern D3d9DeviceView *g_Direct3DDevice;
 extern AnmRenderVertexView g_AnmQuadVertices[4];
 extern AnmViewportOwnerView *g_AnmViewportOwner;
+extern AnmFloat3View g_AnmBackgroundCameraPosition;
+extern AnmPhotoBlendView g_AnmPhotoBlend;
 unsigned char __fastcall MixAnmColor(
     unsigned char source, unsigned char multiplier);
 void __cdecl AsciiConfigureBackgroundViewport(int index);

@@ -135,7 +135,10 @@ AnmRenderManagerView::DrawInner,0x00442670,function
 AnmRenderManagerView::TranslateRotation,0x00443680,function
 AnmRenderManagerView::ProjectCameraFacingQuad,0x00443B60,function
 AnmRenderManagerView::DrawCameraFacingQuad,0x00443F80,function
+AnmRenderManagerView::DrawMode6,0x00443FB0,function
 AnmRenderManagerView::Project3DQuad,0x00444240,function
 AnmRenderManagerView::DrawProjected3DQuad,0x00444580,function
 AnmRenderManagerView::Draw2D,0x004436C0,function
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned,0x00443910,function
+AnmRenderManagerView::Draw,0x004451C0,function
+AnmPairOwnerDrawCallback,0x00409230,function

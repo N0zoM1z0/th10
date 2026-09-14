@@ -96,7 +96,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00408C90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00408D60,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004091C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00409230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00409230,authored_game,AnmManager,authored,high,anm-pair-draw-callback-2026-09-15
 0x00409270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00409280,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00409C00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -632,7 +632,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00443910,authored_game,AnmManager,authored,high,anm-draw2d-2026-09-15
 0x00443B60,authored_game,AnmManager,authored,high,anm-camera-facing-2026-09-15
 0x00443F80,authored_game,AnmManager,authored,high,anm-camera-facing-2026-09-15
-0x00443FB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00443FB0,authored_game,AnmManager,authored,high,anm-draw-mode6-2026-09-15
 0x00444240,authored_game,AnmManager,authored,high,anm-project3d-quad-2026-09-15
 0x00444580,authored_game,AnmManager,authored,high,anm-draw-projected3d-quad-2026-09-15
 0x004445C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -641,7 +641,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00444BE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00444CE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004450E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004451C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004451C0,authored_game,AnmManager,authored,high,anm-draw-dispatch-2026-09-15
 0x004452F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00445620,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004458B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

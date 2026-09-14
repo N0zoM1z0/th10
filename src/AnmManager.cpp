@@ -1089,6 +1089,79 @@ int AnmRenderManagerView::DrawCameraFacingQuad(AnmVmView *vm)
     return DrawInner(vm, 0);
 }
 
+struct AnmPhotoBlendDrawLocals
+{
+    AnmFloat3View cameraDelta;
+    AnmColorView color;
+    float distanceRange;
+    float distance;
+};
+
+// Target 0x00443FB0-0x00444232 is render mode 6. It first places a
+// camera-facing quad, then fades its color and alpha across the configured
+// camera-distance interval before asking DrawInner to preserve that color.
+int AnmRenderManagerView::DrawMode6(AnmVmView *vm)
+{
+    AnmPhotoBlendDrawLocals draw;
+
+    if (ProjectCameraFacingQuad(vm) != 0)
+        return -1;
+
+    draw.distanceRange =
+        g_AnmPhotoBlend.nearDistance - g_AnmPhotoBlend.farDistance;
+    draw.color.value = vm->useSecondaryColor
+        ? vm->secondaryColor.value : vm->primaryColor.value;
+    draw.cameraDelta =
+        vm->position + vm->preservedPosition + vm->spriteOffset -
+        g_AnmBackgroundCameraPosition;
+    draw.distance = AnmFloat3Length(draw.cameraDelta);
+
+    if (useMixColor)
+    {
+        draw.color.red = MixAnmColor(draw.color.red, mixColor.red);
+        draw.color.green = MixAnmColor(draw.color.green, mixColor.green);
+        draw.color.blue = MixAnmColor(draw.color.blue, mixColor.blue);
+        draw.color.alpha = MixAnmColor(draw.color.alpha, mixColor.alpha);
+    }
+
+    if (g_AnmPhotoBlend.nearDistance < draw.distance)
+    {
+        draw.distance =
+            (g_AnmPhotoBlend.nearDistance - draw.distance) /
+            draw.distanceRange;
+        if (draw.distance >= 1.0f)
+            return -1;
+
+        reinterpret_cast<AnmColorView *>(&g_AnmQuadVertices[0].color)->blue =
+            draw.color.blue - static_cast<unsigned char>(
+                (draw.color.blue -
+                 static_cast<int>(g_AnmPhotoBlend.blue)) *
+                draw.distance);
+        reinterpret_cast<AnmColorView *>(&g_AnmQuadVertices[0].color)->green =
+            draw.color.green - static_cast<unsigned char>(
+                (draw.color.green -
+                 static_cast<int>(g_AnmPhotoBlend.green)) *
+                draw.distance);
+        reinterpret_cast<AnmColorView *>(&g_AnmQuadVertices[0].color)->red =
+            draw.color.red - static_cast<unsigned char>(
+                (draw.color.red -
+                 static_cast<int>(g_AnmPhotoBlend.red)) *
+                draw.distance);
+        reinterpret_cast<AnmColorView *>(&g_AnmQuadVertices[0].color)->alpha =
+            static_cast<unsigned char>(
+                draw.color.alpha * (1.0f - draw.distance));
+    }
+    else
+    {
+        g_AnmQuadVertices[0].color = draw.color.value;
+    }
+
+    g_AnmQuadVertices[1].color = g_AnmQuadVertices[0].color;
+    g_AnmQuadVertices[2].color = g_AnmQuadVertices[0].color;
+    g_AnmQuadVertices[3].color = g_AnmQuadVertices[0].color;
+    return DrawInner(vm, 2);
+}
+
 // Target 0x00444240-0x00444571 maintains a VM-local transform matrix, applies
 // scale and any dirty Euler rotations, translates a local 256-by-256 quad by
 // all three VM position vectors, and projects its four corners through the
@@ -1208,6 +1281,71 @@ int AnmRenderManagerView::DrawProjected3DQuad(AnmVmView *vm)
     g_AnmQuadVertices[0].rhw = g_AnmQuadVertices[1].rhw =
         g_AnmQuadVertices[2].rhw = g_AnmQuadVertices[3].rhw = 1.0f;
     return result;
+}
+
+// Target 0x004451C0-0x0044526C rejects inactive or transparent VMs and
+// dispatches the four-bit render mode through a ten-entry jump table.
+int AnmRenderManagerView::Draw(AnmVmView *vm)
+{
+    if (!vm->visible)
+        return -1;
+    if (!vm->drawEnabled)
+        return -1;
+    if (vm->primaryColor.alpha == 0)
+        return -1;
+
+    switch (vm->renderMode)
+    {
+    case 0:
+        return DrawNoRotation(vm);
+    case 1:
+        return Draw2D(vm);
+    case 2:
+        return DrawNoRotationNoRound(vm);
+    case 3:
+        return Draw2DRotatedOrAxisAligned(vm);
+    case 4:
+        return DrawCameraFacingQuad(vm);
+    case 5:
+        return DrawProjected3DQuad(vm);
+    case 6:
+        return DrawMode6(vm);
+    case 7:
+        return DrawMode7(vm);
+    case 8:
+        return Draw3D(vm);
+    case 9:
+        return DrawGeneratedVertices(
+            vm, reinterpret_cast<AnmRenderVertexView *>(vm->generatedVertices),
+            vm->generatedVertexCount * 2);
+    default:
+        return 0;
+    }
+}
+
+// Target 0x00409230-0x00409261 is a registered-style draw callback for an
+// owner with two adjacent ANM VMs. The concrete subsystem owner is still
+// unknown; the field names describe only the target-proved view used here.
+struct AnmPairDrawOwnerView
+{
+    unsigned char unknown000[0x010];
+    AnmVmView firstVm;
+    AnmVmView secondVm;
+    unsigned char unknown768[0x3024];
+    unsigned int drawFlags;
+};
+
+typedef char AnmPairDrawOwnerFlagsAt378C[
+    (offsetof(AnmPairDrawOwnerView, drawFlags) == 0x378c) ? 1 : -1];
+
+int __fastcall AnmPairOwnerDrawCallback(AnmPairDrawOwnerView *owner)
+{
+    if (owner->drawFlags & 1)
+    {
+        g_AnmRenderManagerView->Draw(&owner->firstVm);
+        g_AnmRenderManagerView->Draw(&owner->secondVm);
+    }
+    return 1;
 }
 
 // Target 0x00401760-0x00401A41 renders the 256-entry regular queue. Every

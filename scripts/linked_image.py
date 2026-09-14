@@ -433,6 +433,7 @@ def linked_code_fields(
             str(public["symbol"])
         )
     fields: list[dict[str, object]] = []
+    base_relocation_bytes: set[int] = set()
     for relocation_address in image.base_relocations():
         if relocation_address < address + size and relocation_address + 4 > address:
             if not address <= relocation_address or relocation_address + 4 > address + size:
@@ -440,6 +441,7 @@ def linked_code_fields(
         if address <= relocation_address and relocation_address + 4 <= address + size:
             offset = relocation_address - address
             destination = struct.unpack_from("<I", code, offset)[0]
+            base_relocation_bytes.update(range(offset, offset + 4))
             fields.append(
                 {
                     "offset": offset,
@@ -469,9 +471,17 @@ def linked_code_fields(
         destination = int(operand.imm) & 0xFFFFFFFF
         if address <= destination < address + size:
             continue
+        relative_offset = instruction.address - address + instruction.imm_offset
+        relative_extent = set(range(relative_offset, relative_offset + instruction.imm_size))
+        # A PDB contribution may own an inline jump table after its executable
+        # body. Capstone necessarily decodes those data bytes as instructions;
+        # a PE base relocation is authoritative when such a false control-flow
+        # immediate overlaps one of the table's absolute entries.
+        if relative_extent & base_relocation_bytes:
+            continue
         fields.append(
             {
-                "offset": instruction.address - address + instruction.imm_offset,
+                "offset": relative_offset,
                 "width": instruction.imm_size,
                 "type": f"REL{instruction.imm_size * 8}",
                 "instruction": instruction.mnemonic,

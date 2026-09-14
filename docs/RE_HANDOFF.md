@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `3616aeb gpt-5.6-sol: recover ANM camera projection`, branch `main`.
+- Current packet base: `56ac2e8 gpt-5.6-sol: recover ANM projected 3D quad`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -25,14 +25,16 @@
 - Completed session checkpoint: `e239b4b gpt-5.6-sol: recover ANM render buffer core`.
 - Completed session checkpoint: `591f59b gpt-5.6-sol: recover ANM draw core`.
 - Completed session checkpoint: `3616aeb gpt-5.6-sol: recover ANM camera projection`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM rotated draw modes`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `1923623 gpt-5.6-sol: recover ANM rotated draw modes`.
+- Completed session checkpoint: `56ac2e8 gpt-5.6-sol: recover ANM projected 3D quad`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM mode dispatch`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-draw-core/`. The earlier ANM-manager, ANM-VM, ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-projected/`. The earlier ANM draw, ANM manager, ANM VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `591f59b...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `56ac2e8...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -47,7 +49,52 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM rotated draw modes
+## Current packet: ANM mode dispatch
+
+`DrawMode6 @ 0x00443FB0-0x00444232` is now reconstructed from TH10-local
+evidence. It first uses the camera-facing projector, computes the distance from
+`position + preservedPosition + spriteOffset` to background-camera global
+`0x00491D7C`, and optionally applies the renderer color multiplier. Beyond the
+near distance at `0x00491E78`, it interpolates color toward float B/G/R globals
+at `0x00491E80/84/88` and alpha toward zero across the configured near/far
+interval. A completed fade returns `-1`; otherwise all four shared vertices
+receive the computed color and `DrawInner(vm, 2)` submits the quad.
+
+The total `Draw @ 0x004451C0` owner is also source-present. Direct target and
+PDB review correct its physical extent from Ghidra's 173-byte code-only body to
+216 bytes through `0x00445297`: code ends at `0x0044526C`, a three-byte
+alignment instruction follows, and `0x00445270-0x00445297` is the owned
+ten-entry absolute jump table. It checks visible, draw-enabled and primary-alpha
+state separately, extracts render mode from VM flag bits 22-25, and dispatches
+modes 0-9 across the recovered draw family. Mode 9 exposes VM `+0x30C` as a
+generated-vertex count and passes twice that count with the VM vertex pointer.
+
+A real target caller at `0x00409230` draws two adjacent 0x3AC-byte VMs through
+the global renderer when owner flag bit zero is set. Using this callback as the
+pinned VC7.1 `/GL` entry reproduces both its complete 50-byte contribution and
+the private 60-byte `DrawProjected3DQuad` contribution exactly, including all
+ten declared linked fields. `DrawMode6` remains a close natural-source
+candidate at 645 bytes versus target 643: its EDI/ESI private ABI is correct,
+but the compiler candidate uses a `0x34` stack frame where the target uses
+`0x20`. `Draw` remains non-exact at 208 versus the 216-byte physical owner
+until its unrecovered mode-7, direct-3D, and generated-vertex callees are
+restored in the same LTCG context.
+
+This packet also fixes the linked-image Oracle for code contributions with
+inline absolute tables. PE base relocations now override only overlapping
+Capstone-derived false relative fields, while every other overlap still fails
+closed. This lets switch-heavy ANM and ECL contributions be probed without
+misclassifying jump-table data as code.
+
+Current tracking contains **1,289** candidates, **171** authored functions,
+**143** source mappings, and **70 canonical exact functions / 7,064 bytes**.
+The authored source backlog is **69**. The full current `src/AnmManager.cpp`
+exact set is **24 functions / 5,414 bytes** across five artifact contexts.
+
+The next ANM frontier is mode 7 at `0x004445C0`, followed by the direct-3D and
+generated-vertex owners reached by dispatcher modes 8 and 9.
+
+## Completed packet: ANM rotated draw modes
 
 Direct target boundary review splits the former `0x004436C0-0x00443B5E`
 candidate at the `CC` byte at `0x0044390F`. The two resulting 591-byte bodies
@@ -81,10 +128,9 @@ Current tracking contains **1,289** candidates, **166** authored functions,
 The authored source backlog is **68**. The full current `src/AnmManager.cpp`
 exact set is **22 functions / 5,304 bytes** across four artifact contexts.
 
-The next ANM frontier is the photo-color owner at `0x00443FB0`, then the
-mode-7 and direct-3D paths. `DrawProjected3DQuad @ 0x00444580` is already
-source-present; implementing its real dispatcher at `0x004451C0` should expose
-the target private ABI for exact replay.
+The photo-color owner and real dispatcher context identified here are completed
+by the current packet above. Mode 7 and the direct-3D/generated-vertex paths
+remain the open continuation.
 
 ## Completed packet: ANM projected 3D quad
 
@@ -105,9 +151,10 @@ link fields exactly.
 
 `DrawProjected3DQuad @ 0x00444580-0x004445BB` is source-present. It projects,
 calls `DrawInner(vm, 0)`, restores the four shared RHW values to one, and
-returns the draw result. The standalone compiler entry emits a conventional
-72-byte wrapper; target `Draw @ 0x004451C0` supplies the private ESI/EDI call
-context needed for the 60-byte production form, so exactness remains open.
+returns the draw result. Its standalone compiler entry emitted a conventional
+72-byte wrapper. The subsequently recovered real two-VM draw callback supplies
+the private ESI/EDI context and reproduces the complete 60-byte target form;
+the current packet promotes it to canonical exact.
 
 ## Completed packet: ANM camera-facing projection
 

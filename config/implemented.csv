@@ -134,7 +134,10 @@ AnmRenderManagerView::DrawInner
 AnmRenderManagerView::TranslateRotation
 AnmRenderManagerView::ProjectCameraFacingQuad
 AnmRenderManagerView::DrawCameraFacingQuad
+AnmRenderManagerView::DrawMode6
 AnmRenderManagerView::Project3DQuad
 AnmRenderManagerView::DrawProjected3DQuad
 AnmRenderManagerView::Draw2D
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned
+AnmRenderManagerView::Draw
+AnmPairOwnerDrawCallback
