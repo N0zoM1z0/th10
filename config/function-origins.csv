@@ -804,7 +804,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045265F,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004526D1,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004526DA,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00452706,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00452706,library,CRT,exclude,high,crt-malloc-wrapper-2026-09-14
 0x00452730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004527EE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452876,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -1075,7 +1075,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004601E8,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004603D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0046041E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0046054E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0046054E,library,CRT,exclude,high,crt-stricmp-wrapper-2026-09-14
 0x004605B7,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00460636,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00460674,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

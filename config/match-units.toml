@@ -220,6 +220,48 @@ symbol = "??0PbgArchive@@QAE@XZ"
 target_address = 0x00434C10
 size = 16
 
+[units.pbgarchive-get-entry-decompressed-size]
+artifact_kind = "linked-pe"
+source = "src/PbgArchive.cpp"
+output_dir = "build/match-linked/PbgArchive"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "??1PbgArchive@@QAE@XZ"
+functions = ["PbgArchive::GetEntryDecompressedSize"]
+symbol = "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z"
+target_address = 0x00434EF0
+size = 51
+linkages = [{ offset = 21, type = "REL32", symbol = "__stricmp", target = 0x0046054E }]
+
+[units.pbgarchive-find-entry]
+artifact_kind = "linked-pe"
+source = "src/PbgArchive.cpp"
+output_dir = "build/match-linked/PbgArchive"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "??1PbgArchive@@QAE@XZ"
+functions = ["PbgArchive::FindEntry"]
+symbol = "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z"
+target_address = 0x00434F30
+size = 53
+linkages = [{ offset = 24, type = "REL32", symbol = "__stricmp", target = 0x0046054E }]
+
+[units.pbgarchive-copy-file-name]
+artifact_kind = "linked-pe"
+source = "src/PbgArchive.cpp"
+output_dir = "build/match-linked/PbgArchive"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "??1PbgArchive@@QAE@XZ"
+functions = ["PbgArchive::CopyFileName"]
+symbol = "?CopyFileName@PbgArchive@@QAEPADPBD@Z"
+target_address = 0x00435220
+size = 47
+linkages = [{ offset = 17, type = "REL32", symbol = "_malloc", target = 0x00452706 }]
+
 [units.pbgarchive-entry-destructor]
 artifact_kind = "coff"
 source = "src/PbgArchive.cpp"

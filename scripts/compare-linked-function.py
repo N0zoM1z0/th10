@@ -233,15 +233,20 @@ def compare_unit(name: str) -> dict[str, object]:
             ),
             int(unit["target_address"]),
         )
+        encoded_width = int(field["width"])
+        encoded_mask = (1 << (encoded_width * 8)) - 1
+        encoded_text = f"0x{encoded & encoded_mask:0{encoded_width * 2}X}"
         replayed.append(
             {
                 "offset": f"0x{int(field['offset']):X}",
                 "type": field["type"],
                 "width": field["width"],
                 "symbol": semantic,
+                "linked_symbol": linked_symbol,
+                "candidate_target": f"0x{int(observed['candidate_target']):08X}",
                 "target": f"0x{int(field['target']):08X}",
                 "addend": int(field["addend"]),
-                "encoded": encoded,
+                "target_encoded_value": encoded_text,
             }
         )
 
