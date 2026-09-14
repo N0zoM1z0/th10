@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current session recovery HEAD: `260ac75 gpt-5.6-sol: recover ANM manager core`, clean, branch `main`, aligned with `origin/main`.
+- Current packet base: `e239b4b gpt-5.6-sol: recover ANM render buffer core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -22,14 +22,15 @@
 - Completed session checkpoint: `2dbce7d gpt-5.6-sol: recover ANM VM lifecycle`.
 - Completed session checkpoint: `260ac75 gpt-5.6-sol: recover ANM manager core`.
 - Completed session checkpoint: `3e6de60 gpt-5.6-sol: recover ASCII text pipeline`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM render buffer core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Completed session checkpoint: `e239b4b gpt-5.6-sol: recover ANM render buffer core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM draw core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery adopted and completed the source-present axis-draw work left in the worktree after the previous checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-draw-core/`. The earlier ANM-manager, ANM-VM, ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Clean HEAD `260ac75...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `e239b4b...` plus the reviewable axis-draw worktree delta were adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -44,7 +45,52 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM render buffer core
+## Current packet: ANM shared draw core
+
+The common renderer path at `0x00442670` is now reconstructed together with
+its 25-byte color mixer at `0x004423C0`, 201-byte render-state owner at
+`0x004425A0`, and axis-aligned callers at `0x00443080/0x00443290`. Direct TH10
+evidence establishes screen shake at renderer `+0x5C/+0x60`, the texture/blend/
+shader/filter cache at `+0x3ADA64..+0x3ADA6E`, mix color at `+0x732458`, VM UV
+scroll at `+0x54/+0x58`, primary/secondary colors at `+0x2FC/+0x300`, and
+sprite texture/UV/dimensions at `+0x04/+0x20..+0x34`. Every named layout field
+has a compile-time offset check or belongs to an already size-checked view.
+
+`DrawInner` adds screen shake to four shared vertices, optionally performs the
+D3D9 half-pixel `FRNDINT - 0.5f` sequence, assigns sprite UVs, computes four
+bounds, culls against the unsigned active viewport at global `0x00491FAC`,
+flushes on texture/shader changes, applies primary or secondary VM color and
+optional per-channel renderer mixing, updates render state, and expands the
+quad into the packed buffer. `SetRenderStateForVm` handles destination blend
+and point/linear min/mag filtering through D3D9 vtable slots `+0xE4/+0x114`;
+the texture change uses `SetTexture` at `+0x104`.
+
+Both axis-aligned draw owners implement the three horizontal and vertical
+anchor modes from VM flag bits 18-21. The rounded path floors centered axes and
+enters `DrawInner(vm, 1)`; the no-round path preserves sub-pixel coordinates
+and enters with zero. TH10 has one target-local quirk: no-round writes vertex Z
+from `spriteOffset.y (+0x350) + preservedPosition.z + position.z`, while the
+rounded sibling reads `spriteOffset.z (+0x354)`. Maintained source preserves
+the observed difference rather than normalizing it from adjacent games.
+
+Pinned VC7.1 `/GL` in the real regular-text draw entry context reproduces all
+five complete PDB contributions exactly: color mix 25 bytes/no fields, state
+owner 201 bytes/six fields, `DrawInner` 1,111 bytes/91 fields, rounded axis draw
+515 bytes/29 fields, and no-round axis draw 486 bytes/29 fields. Two cold
+canonical passes replay all **2,338 bytes and 155 linked fields** with zero
+differences. The full current `src/AnmManager.cpp` exact set is **19 functions /
+3,406 bytes** across four artifact contexts.
+
+Current tracking contains **1,286** candidates, **161** authored functions,
+**133** source mappings, and **65 canonical exact functions / 5,056 bytes**.
+The authored source backlog is **64**. This packet adds five source mappings
+and five exact functions without adding speculative denominator entries.
+
+The next ANM frontier is the neighboring transformed-quad corridor beginning at
+`0x00443B60`; keep its rotation/projection semantics provisional until its own
+TH10 matrix, caller, and compiler evidence is complete.
+
+## Completed packet: ANM render buffer core
 
 The actual ANM renderer reached through pointer `0x00491C10` owns a shared
 `0x20000`-entry vertex buffer. TH10 directly establishes its `0x1C`-byte packed

@@ -1,6 +1,7 @@
 #include "AnmManager.hpp"
 
 #include <stdarg.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -58,7 +59,7 @@ void AnmVmView::Initialize()
     persistentOwner020 = savedOwner;
     preservedPosition.z = savedZ;
 
-    value2FC = -1;
+    primaryColor.value = 0xffffffff;
     scaleX = 1.0f;
     scaleY = 1.0f;
     matrix23C.SetIdentity();
@@ -329,6 +330,218 @@ static void ConfigureAsciiViewport(int viewportIndex)
         AsciiConfigureBackgroundViewport(1);
 }
 
+// Target 0x004423C0-0x004423D8 multiplies two color channels with 7-bit
+// normalization and saturates the result to one byte.
+unsigned char __fastcall MixAnmColor(
+    unsigned char source, unsigned char multiplier)
+{
+    unsigned int mixed = (source * multiplier) / 128u;
+    if (mixed >= 256u)
+        mixed = 255u;
+    return static_cast<unsigned char>(mixed);
+}
+
+// Target 0x004425A0-0x00442668 batches sprites until either the blend mode or
+// texture filter changes. The VM remains live in EDI in the target LTCG seam.
+void AnmRenderManagerView::SetRenderStateForVm(AnmVmView *vm)
+{
+    if (currentBlendMode != vm->blendMode)
+    {
+        FlushVertexBuffer();
+        currentBlendMode = static_cast<unsigned char>(vm->blendMode);
+
+        switch (currentBlendMode)
+        {
+        case 0:
+            g_Direct3DDevice->vtable->SetRenderState(
+                g_Direct3DDevice, D3D9_VIEW_RS_DESTBLEND,
+                D3D9_VIEW_BLEND_INVSRCALPHA);
+            break;
+        case 1:
+            g_Direct3DDevice->vtable->SetRenderState(
+                g_Direct3DDevice, D3D9_VIEW_RS_DESTBLEND,
+                D3D9_VIEW_BLEND_ONE);
+            break;
+        }
+    }
+
+    if (currentTextureFilter != vm->usePointTextureFilter)
+    {
+        FlushVertexBuffer();
+        currentTextureFilter =
+            static_cast<unsigned char>(vm->usePointTextureFilter);
+
+        if (currentTextureFilter == 0)
+        {
+            g_Direct3DDevice->vtable->SetSamplerState(
+                g_Direct3DDevice, 0, D3D9_VIEW_SAMP_MAGFILTER,
+                D3D9_VIEW_TEXF_LINEAR);
+            g_Direct3DDevice->vtable->SetSamplerState(
+                g_Direct3DDevice, 0, D3D9_VIEW_SAMP_MINFILTER,
+                D3D9_VIEW_TEXF_LINEAR);
+        }
+        else
+        {
+            g_Direct3DDevice->vtable->SetSamplerState(
+                g_Direct3DDevice, 0, D3D9_VIEW_SAMP_MAGFILTER,
+                D3D9_VIEW_TEXF_POINT);
+            g_Direct3DDevice->vtable->SetSamplerState(
+                g_Direct3DDevice, 0, D3D9_VIEW_SAMP_MINFILTER,
+                D3D9_VIEW_TEXF_POINT);
+        }
+    }
+
+    ++renderStateChangesThisFrame;
+}
+
+extern const float g_AnmHalfPixel = 0.5f;
+
+// Target 0x00442670-0x00442AC6 applies screen shake and the D3D9 half-pixel
+// convention, rejects quads outside the active viewport, updates batched
+// texture/render state, resolves VM color, and queues the resulting vertices.
+int AnmRenderManagerView::DrawInner(AnmVmView *vm, int flags)
+{
+    AnmColorView color;
+    float maxX;
+    float minX;
+    float maxY;
+    float minY;
+
+    g_AnmQuadVertices[0].x += screenShakeX;
+    g_AnmQuadVertices[0].y += screenShakeY;
+    g_AnmQuadVertices[1].x += screenShakeX;
+    g_AnmQuadVertices[1].y += screenShakeY;
+    g_AnmQuadVertices[2].x += screenShakeX;
+    g_AnmQuadVertices[2].y += screenShakeY;
+    g_AnmQuadVertices[3].x += screenShakeX;
+    g_AnmQuadVertices[3].y += screenShakeY;
+
+    if ((flags & 1) != 0)
+    {
+#if defined(_MSC_VER) && defined(_M_IX86)
+        // VC7.1 has no C/C++ intrinsic that emits the target's four FRNDINT
+        // operations while retaining all values on the x87 stack. This narrow
+        // source-level x87 block is also the form preserved by the adjacent
+        // engine family; every address below remains a normal linker field.
+        __asm
+        {
+            fld g_AnmQuadVertices[0 * TYPE g_AnmQuadVertices].x
+            frndint
+            fsub g_AnmHalfPixel
+            fld g_AnmQuadVertices[1 * TYPE g_AnmQuadVertices].x
+            frndint
+            fsub g_AnmHalfPixel
+            fld g_AnmQuadVertices[0 * TYPE g_AnmQuadVertices].y
+            frndint
+            fsub g_AnmHalfPixel
+            fld g_AnmQuadVertices[2 * TYPE g_AnmQuadVertices].y
+            frndint
+            fsub g_AnmHalfPixel
+            fst g_AnmQuadVertices[2 * TYPE g_AnmQuadVertices].y
+            fstp g_AnmQuadVertices[3 * TYPE g_AnmQuadVertices].y
+            fst g_AnmQuadVertices[0 * TYPE g_AnmQuadVertices].y
+            fstp g_AnmQuadVertices[1 * TYPE g_AnmQuadVertices].y
+            fst g_AnmQuadVertices[1 * TYPE g_AnmQuadVertices].x
+            fstp g_AnmQuadVertices[3 * TYPE g_AnmQuadVertices].x
+            fst g_AnmQuadVertices[0 * TYPE g_AnmQuadVertices].x
+            fstp g_AnmQuadVertices[2 * TYPE g_AnmQuadVertices].x
+        }
+#else
+        maxX = static_cast<float>(floor(g_AnmQuadVertices[0].x + 0.5f)) -
+            g_AnmHalfPixel;
+        minX = static_cast<float>(floor(g_AnmQuadVertices[1].x + 0.5f)) -
+            g_AnmHalfPixel;
+        maxY = static_cast<float>(floor(g_AnmQuadVertices[0].y + 0.5f)) -
+            g_AnmHalfPixel;
+        minY = static_cast<float>(floor(g_AnmQuadVertices[2].y + 0.5f)) -
+            g_AnmHalfPixel;
+        g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y = minY;
+        g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y = maxY;
+        g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x = minX;
+        g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x = maxX;
+#endif
+    }
+
+    g_AnmQuadVertices[0].u = g_AnmQuadVertices[2].u =
+        vm->loadedSprite->uStart + vm->uvScrollX;
+    g_AnmQuadVertices[1].u = g_AnmQuadVertices[3].u =
+        vm->loadedSprite->uEnd + vm->uvScrollX;
+    g_AnmQuadVertices[0].v = g_AnmQuadVertices[1].v =
+        vm->loadedSprite->vStart + vm->uvScrollY;
+    g_AnmQuadVertices[2].v = g_AnmQuadVertices[3].v =
+        vm->loadedSprite->vEnd + vm->uvScrollY;
+
+    maxX = g_AnmQuadVertices[0].x > g_AnmQuadVertices[1].x
+        ? g_AnmQuadVertices[0].x : g_AnmQuadVertices[1].x;
+    maxX = g_AnmQuadVertices[2].x > maxX
+        ? g_AnmQuadVertices[2].x : maxX;
+    maxX = g_AnmQuadVertices[3].x > maxX
+        ? g_AnmQuadVertices[3].x : maxX;
+
+    maxY = g_AnmQuadVertices[0].y > g_AnmQuadVertices[1].y
+        ? g_AnmQuadVertices[0].y : g_AnmQuadVertices[1].y;
+    maxY = g_AnmQuadVertices[2].y > maxY
+        ? g_AnmQuadVertices[2].y : maxY;
+    maxY = g_AnmQuadVertices[3].y > maxY
+        ? g_AnmQuadVertices[3].y : maxY;
+
+    minX = g_AnmQuadVertices[0].x < g_AnmQuadVertices[1].x
+        ? g_AnmQuadVertices[0].x : g_AnmQuadVertices[1].x;
+    minX = g_AnmQuadVertices[2].x < minX
+        ? g_AnmQuadVertices[2].x : minX;
+    minX = g_AnmQuadVertices[3].x < minX
+        ? g_AnmQuadVertices[3].x : minX;
+
+    minY = g_AnmQuadVertices[0].y < g_AnmQuadVertices[1].y
+        ? g_AnmQuadVertices[0].y : g_AnmQuadVertices[1].y;
+    minY = g_AnmQuadVertices[2].y < minY
+        ? g_AnmQuadVertices[2].y : minY;
+    minY = g_AnmQuadVertices[3].y < minY
+        ? g_AnmQuadVertices[3].y : minY;
+
+    if (maxX < g_AnmViewportOwner->x ||
+        maxY < g_AnmViewportOwner->y ||
+        minX > g_AnmViewportOwner->x + g_AnmViewportOwner->width ||
+        minY > g_AnmViewportOwner->y + g_AnmViewportOwner->height)
+        return 0;
+
+    if (currentTexture != vm->loadedSprite->texture)
+    {
+        currentTexture = vm->loadedSprite->texture;
+        FlushVertexBuffer();
+        g_Direct3DDevice->vtable->SetTexture(
+            g_Direct3DDevice, 0, currentTexture);
+    }
+
+    if (currentVertexShader != 1)
+    {
+        FlushVertexBuffer();
+        currentVertexShader = 1;
+    }
+
+    if ((flags & 2) == 0)
+    {
+        color.value = vm->useSecondaryColor
+            ? vm->secondaryColor.value : vm->primaryColor.value;
+        if (useMixColor)
+        {
+            color.red = MixAnmColor(color.red, mixColor.red);
+            color.green = MixAnmColor(color.green, mixColor.green);
+            color.blue = MixAnmColor(color.blue, mixColor.blue);
+            color.alpha = MixAnmColor(color.alpha, mixColor.alpha);
+        }
+
+        g_AnmQuadVertices[0].color = color.value;
+        g_AnmQuadVertices[1].color = color.value;
+        g_AnmQuadVertices[2].color = color.value;
+        g_AnmQuadVertices[3].color = color.value;
+    }
+
+    SetRenderStateForVm(vm);
+    AddSpriteToDrawBuffer(g_AnmQuadVertices);
+    return 0;
+}
+
 // Target 0x00442F30-0x00442F4C resets the shared packed-vertex range. This
 // CC-delimited retained owner is absent from Ghidra's current inventory.
 void AnmRenderManagerView::ClearVertexBuffer()
@@ -379,6 +592,162 @@ int AnmRenderManagerView::AddSpriteToDrawBuffer(
     vertexBufferEnd += 6;
     ++spritesToDraw;
     return 0;
+}
+
+// Target 0x00443080-0x00443282 places one axis-aligned quad. Centered axes
+// are rounded down before the common render-state/draw path is entered.
+int AnmRenderManagerView::DrawNoRotation(AnmVmView *vm)
+{
+    float spriteWidth;
+    float spriteHeight;
+    float spriteHalfHeight;
+
+    spriteWidth = vm->spriteWidth * vm->scaleX;
+    spriteHeight = vm->spriteHeight * vm->scaleY;
+    spriteHalfHeight = spriteHeight * 0.5f;
+
+    switch ((vm->flags35C >> 18) & 3)
+    {
+    case 1:
+        g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x;
+        g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x +
+            spriteWidth;
+        break;
+    case 0:
+        g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
+            static_cast<float>(floor(
+                vm->position.x + vm->preservedPosition.x +
+                vm->spriteOffset.x - spriteWidth * 0.5f));
+        g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
+            g_AnmQuadVertices[0].x + spriteWidth;
+        break;
+    case 2:
+        g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x -
+            spriteWidth;
+        g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x;
+        break;
+    }
+
+    switch ((vm->flags35C >> 20) & 3)
+    {
+    case 1:
+        g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
+            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y;
+        g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
+            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y +
+            spriteHeight;
+        break;
+    case 0:
+        g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
+            static_cast<float>(floor(
+                vm->position.y + vm->preservedPosition.y +
+                vm->spriteOffset.y - spriteHalfHeight));
+        g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
+            g_AnmQuadVertices[0].y + spriteHeight;
+        break;
+    case 2:
+        g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
+            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y -
+            spriteHeight;
+        g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
+            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y;
+        break;
+    }
+
+    g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
+        g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
+            vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+    return DrawInner(vm, 1);
+}
+
+// Target 0x00443290-0x00443475 preserves sub-pixel centered coordinates and
+// requests the non-rounded common draw path.
+int AnmRenderManagerView::DrawNoRotationNoRound(AnmVmView *vm)
+{
+    float spriteWidth;
+    float spriteHeight;
+    float spriteHalfHeight;
+
+    spriteWidth = vm->spriteWidth * vm->scaleX;
+    spriteHeight = vm->spriteHeight * vm->scaleY;
+    spriteHalfHeight = spriteHeight * 0.5f;
+
+    switch ((vm->flags35C >> 18) & 3)
+    {
+    case 1:
+        g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x;
+        g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x +
+            spriteWidth;
+        break;
+    case 0:
+        g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x -
+            spriteWidth * 0.5f;
+        g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
+            g_AnmQuadVertices[0].x + spriteWidth;
+        break;
+    case 2:
+        g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x -
+            spriteWidth;
+        g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
+            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x;
+        break;
+    }
+
+    switch ((vm->flags35C >> 20) & 3)
+    {
+    case 1:
+    {
+        float y = vm->spriteOffset.y;
+        y += vm->position.y;
+        y += vm->preservedPosition.y;
+        g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
+            y;
+        y = vm->spriteOffset.y;
+        y += vm->position.y;
+        y += spriteHeight;
+        y += vm->preservedPosition.y;
+        g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
+            y;
+        break;
+    }
+    case 0:
+        g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
+            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y -
+            spriteHalfHeight;
+        g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
+            g_AnmQuadVertices[0].y + spriteHeight;
+        break;
+    case 2:
+    {
+        float y = vm->spriteOffset.y;
+        y += vm->position.y;
+        y += vm->preservedPosition.y;
+        y -= spriteHeight;
+        g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
+            y;
+        y = vm->spriteOffset.y;
+        y += vm->position.y;
+        y += vm->preservedPosition.y;
+        g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
+            y;
+        break;
+    }
+    }
+
+    // TH10's no-round path intentionally reads spriteOffset.y here; the
+    // rounded sibling at 0x00443080 reads spriteOffset.z.
+    g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
+        g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
+            vm->spriteOffset.y + vm->preservedPosition.z + vm->position.z;
+    return DrawInner(vm, 0);
 }
 
 // Target 0x00401760-0x00401A41 renders the 256-entry regular queue. Every
@@ -445,10 +814,10 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
 
                 if (string->drawShadow != 0)
                 {
-                    manager->primaryVm014.value2FC =
+                    manager->primaryVm014.primaryColor.value =
                         static_cast<int>(string->color & 0xff000000u);
                     reinterpret_cast<unsigned char *>(
-                        &manager->primaryVm014.value2FC)[3] =
+                        &manager->primaryVm014.primaryColor.value)[3] =
                             static_cast<unsigned char>(string->color >> 25);
                     manager->primaryVm014.position.x += 2.0f;
                     manager->primaryVm014.position.y += 2.0f;
@@ -458,7 +827,7 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
                     manager->primaryVm014.position.y -= 2.0f;
                 }
 
-                manager->primaryVm014.value2FC = string->color;
+                manager->primaryVm014.primaryColor.value = string->color;
                 g_AnmRenderManagerView->DrawNoRotation(
                     &manager->primaryVm014);
             }
@@ -518,7 +887,7 @@ int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
                 AnmSpriteView *sprite =
                     &manager->asciiAnm->sprites[*text - ' '];
                 manager->primaryVm014.loadedSprite = sprite;
-                manager->primaryVm014.value2FC = string->color;
+                manager->primaryVm014.primaryColor.value = string->color;
                 if (manager->primaryVm014.scaleX == 1.0f)
                     g_AnmRenderManagerView->DrawNoRotation(
                         &manager->primaryVm014);

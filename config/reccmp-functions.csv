@@ -127,3 +127,8 @@ AsciiManagerView::~AsciiManagerView,0x00401260,function
 AnmRenderManagerView::ClearVertexBuffer,0x00442F30,function
 AnmRenderManagerView::FlushVertexBuffer,0x00442F50,function
 AnmRenderManagerView::AddSpriteToDrawBuffer,0x00442FE0,function
+AnmRenderManagerView::DrawNoRotation,0x00443080,function
+AnmRenderManagerView::DrawNoRotationNoRound,0x00443290,function
+MixAnmColor,0x004423C0,function
+AnmRenderManagerView::SetRenderStateForVm,0x004425A0,function
+AnmRenderManagerView::DrawInner,0x00442670,function

@@ -14,6 +14,21 @@ struct AnmFloat3View
 typedef char AnmFloat3ViewSizeIs0C[
     (sizeof(AnmFloat3View) == 0x0c) ? 1 : -1];
 
+union AnmColorView
+{
+    unsigned int value;
+    struct
+    {
+        unsigned char blue;
+        unsigned char green;
+        unsigned char red;
+        unsigned char alpha;
+    };
+};
+
+typedef char AnmColorViewSizeIs04[
+    (sizeof(AnmColorView) == 0x04) ? 1 : -1];
+
 // TH10's small timer-like members clear the active bit when constructed. The
 // surrounding ANM VM constructor exposes nine such flag words at independent
 // target-proven offsets.
@@ -40,6 +55,8 @@ struct AnmMatrixView
 typedef char AnmMatrixViewSizeIs40[
     (sizeof(AnmMatrixView) == 0x40) ? 1 : -1];
 
+struct AnmSpriteView;
+
 // Exact-size view for the TH10 ANM virtual machine. Only fields established by
 // the lifecycle seam are named; the animation/render state between them stays
 // opaque until its consumers are reviewed.
@@ -64,7 +81,8 @@ struct AnmVmView
     unsigned char unknown044[0x008];
     float spriteWidth;
     float spriteHeight;
-    unsigned char unknown054[0x008];
+    float uvScrollX;
+    float uvScrollY;
     AnmVmTimerView timer05C;
     unsigned char unknown070[0x030];
     AnmVmTimerView timer0A0;
@@ -90,21 +108,40 @@ struct AnmVmView
     unsigned char unknown230[0x00c];
     AnmMatrixView matrix23C;
     unsigned char unknown27C[0x080];
-    int value2FC;
-    unsigned char unknown300[0x008];
+    AnmColorView primaryColor;
+    AnmColorView secondaryColor;
+    unsigned char unknown304[0x004];
     void *anmFile308;
     unsigned char unknown30C[0x028];
     AnmFloat3View position;
     AnmFloat3View preservedPosition;
     AnmFloat3View spriteOffset;
     void *generatedVertices;
-    unsigned short flags35C;
-    unsigned char unknown35E[0x00a];
+    union
+    {
+        unsigned int flags35C;
+        struct
+        {
+            unsigned int visible : 1;
+            unsigned int drawEnabled : 1;
+            unsigned int updateRotation : 1;
+            unsigned int updateScale : 1;
+            unsigned int blendMode : 2;
+            unsigned int unknownFlags06 : 9;
+            unsigned int useSecondaryColor : 1;
+            unsigned int unknownFlags16 : 2;
+            unsigned int renderStateA : 2;
+            unsigned int renderStateB : 2;
+            unsigned int unknownFlags22 : 9;
+            unsigned int usePointTextureFilter : 1;
+        };
+    };
+    unsigned char unknown360[0x008];
     AnmVmTimerView timer368;
     unsigned char unknown37C[0x008];
     short activeSpriteIndex;
     unsigned char unknown386[0x00e];
-    void *loadedSprite;
+    AnmSpriteView *loadedSprite;
     unsigned char unknown398[0x014];
 };
 
@@ -120,10 +157,21 @@ typedef char AnmVmPositionAt334[
     (offsetof(AnmVmView, position) == 0x334) ? 1 : -1];
 typedef char AnmVmLoadedSpriteAt394[
     (offsetof(AnmVmView, loadedSprite) == 0x394) ? 1 : -1];
+typedef char AnmVmColorsAt2FC[
+    (offsetof(AnmVmView, primaryColor) == 0x2fc &&
+     offsetof(AnmVmView, secondaryColor) == 0x300) ? 1 : -1];
+typedef char AnmVmFlagsAt35C[
+    (offsetof(AnmVmView, flags35C) == 0x35c) ? 1 : -1];
 
 struct AnmSpriteView
 {
-    unsigned char unknown000[0x030];
+    unsigned char unknown000[0x004];
+    void *texture;
+    unsigned char unknown008[0x018];
+    float uStart;
+    float vStart;
+    float uEnd;
+    float vEnd;
     float width;
     float height;
     unsigned char unknown038[0x00c];
@@ -131,6 +179,9 @@ struct AnmSpriteView
 
 typedef char AnmSpriteViewSizeIs44[
     (sizeof(AnmSpriteView) == 0x44) ? 1 : -1];
+typedef char AnmSpriteUvAt20[
+    (offsetof(AnmSpriteView, uStart) == 0x20 &&
+     offsetof(AnmSpriteView, vEnd) == 0x2c) ? 1 : -1];
 
 struct AnmLoadedView
 {
@@ -263,17 +314,32 @@ typedef char AnmRenderVertexViewSizeIs1C[
 // the target-observed buffer base and its end/start cursors.
 struct AnmRenderManagerView
 {
-    unsigned char unknown000[0x058];
+    unsigned char unknown000[0x054];
+    unsigned int renderStateChangesThisFrame;
     unsigned int flushesThisFrame;
-    unsigned char unknown05C[0x3ada6c];
+    float screenShakeX;
+    float screenShakeY;
+    unsigned char unknown064[0x3ada00];
+    void *currentTexture;
+    unsigned char currentBlendMode;
+    unsigned char unknown3ADA69;
+    unsigned char currentVertexShader;
+    unsigned char unknown3ADA6B[0x003];
+    unsigned char currentTextureFilter;
+    unsigned char unknown3ADA6F[0x059];
     unsigned int spritesToDraw;
     AnmRenderVertexView vertexBuffer[0x20000];
     AnmRenderVertexView *vertexBufferEnd;
     AnmRenderVertexView *vertexBufferStart;
+    unsigned char unknown72DAD4[0x4984];
+    AnmColorView mixColor;
+    int useMixColor;
 
     void ClearVertexBuffer();
     void FlushVertexBuffer();
     int AddSpriteToDrawBuffer(AnmRenderVertexView *vertices);
+    void SetRenderStateForVm(AnmVmView *vm);
+    int DrawInner(AnmVmView *vm, int roundToPixel);
     int DrawNoRotation(AnmVmView *vm);
     int DrawNoRotationNoRound(AnmVmView *vm);
 };
@@ -287,9 +353,33 @@ typedef char AnmRenderVertexBufferAt3ADACC[
 typedef char AnmRenderVertexCursorsAt72DACC[
     (offsetof(AnmRenderManagerView, vertexBufferEnd) == 0x72dacc &&
      offsetof(AnmRenderManagerView, vertexBufferStart) == 0x72dad0) ? 1 : -1];
+typedef char AnmRenderStateCacheAt3ADA64[
+    (offsetof(AnmRenderManagerView, currentTexture) == 0x3ada64 &&
+     offsetof(AnmRenderManagerView, currentBlendMode) == 0x3ada68 &&
+     offsetof(AnmRenderManagerView, currentVertexShader) == 0x3ada6a &&
+     offsetof(AnmRenderManagerView, currentTextureFilter) == 0x3ada6e) ? 1 : -1];
+typedef char AnmRenderMixColorAt732458[
+    (offsetof(AnmRenderManagerView, mixColor) == 0x732458 &&
+     offsetof(AnmRenderManagerView, useMixColor) == 0x73245c) ? 1 : -1];
+
+struct AnmViewportOwnerView
+{
+    unsigned char unknown000[0x0cc];
+    unsigned int x;
+    unsigned int y;
+    unsigned int width;
+    unsigned int height;
+};
+
+typedef char AnmViewportAt0CC[
+    (offsetof(AnmViewportOwnerView, x) == 0x0cc) ? 1 : -1];
 
 extern AnmRenderManagerView *g_AnmRenderManagerView;
 extern D3d9DeviceView *g_Direct3DDevice;
+extern AnmRenderVertexView g_AnmQuadVertices[4];
+extern AnmViewportOwnerView *g_AnmViewportOwner;
+unsigned char __fastcall MixAnmColor(
+    unsigned char source, unsigned char multiplier);
 void __cdecl AsciiConfigureBackgroundViewport(int index);
 
 struct AnmErrorLoggerView

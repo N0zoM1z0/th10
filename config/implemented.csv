@@ -126,3 +126,8 @@ AsciiManagerView::~AsciiManagerView
 AnmRenderManagerView::ClearVertexBuffer
 AnmRenderManagerView::FlushVertexBuffer
 AnmRenderManagerView::AddSpriteToDrawBuffer
+AnmRenderManagerView::DrawNoRotation
+AnmRenderManagerView::DrawNoRotationNoRound
+MixAnmColor
+AnmRenderManagerView::SetRenderStateForVm
+AnmRenderManagerView::DrawInner
