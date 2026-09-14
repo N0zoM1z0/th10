@@ -123,3 +123,6 @@ AsciiManagerDrawStrings
 AsciiManagerDrawGuiStrings
 AsciiManagerView::Initialize
 AsciiManagerView::~AsciiManagerView
+AnmRenderManagerView::ClearVertexBuffer
+AnmRenderManagerView::FlushVertexBuffer
+AnmRenderManagerView::AddSpriteToDrawBuffer

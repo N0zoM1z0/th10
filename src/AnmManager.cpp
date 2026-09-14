@@ -329,6 +329,58 @@ static void ConfigureAsciiViewport(int viewportIndex)
         AsciiConfigureBackgroundViewport(1);
 }
 
+// Target 0x00442F30-0x00442F4C resets the shared packed-vertex range. This
+// CC-delimited retained owner is absent from Ghidra's current inventory.
+void AnmRenderManagerView::ClearVertexBuffer()
+{
+    spritesToDraw = 0;
+    vertexBufferStart = vertexBufferEnd = vertexBuffer;
+}
+
+// Target 0x00442F50-0x00442FD4 submits two triangle-list primitives per
+// queued sprite, advances the submitted range, and records one flush.
+void AnmRenderManagerView::FlushVertexBuffer()
+{
+    if (spritesToDraw == 0)
+        return;
+
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAARG2, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLORARG2, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->SetFVF(
+        g_Direct3DDevice,
+        D3D9_VIEW_FVF_XYZRHW |
+        D3D9_VIEW_FVF_DIFFUSE |
+        D3D9_VIEW_FVF_TEX1);
+    g_Direct3DDevice->vtable->DrawPrimitiveUP(
+        g_Direct3DDevice, D3D9_VIEW_PT_TRIANGLELIST,
+        spritesToDraw * 2, vertexBufferStart,
+        sizeof(AnmRenderVertexView));
+
+    vertexBufferStart = vertexBufferEnd;
+    spritesToDraw = 0;
+    ++flushesThisFrame;
+}
+
+// Target 0x00442FE0-0x0044307C expands one four-corner quad into the six
+// packed vertices consumed as two triangles by FlushVertexBuffer.
+int AnmRenderManagerView::AddSpriteToDrawBuffer(
+    AnmRenderVertexView *vertices)
+{
+    vertexBufferEnd[0] = vertices[0];
+    vertexBufferEnd[1] = vertices[1];
+    vertexBufferEnd[2] = vertices[2];
+    vertexBufferEnd[3] = vertices[1];
+    vertexBufferEnd[4] = vertices[2];
+    vertexBufferEnd[5] = vertices[3];
+    vertexBufferEnd += 6;
+    ++spritesToDraw;
+    return 0;
+}
+
 // Target 0x00401760-0x00401A41 renders the 256-entry regular queue. Every
 // field read below is independently visible in the target body; the renderer
 // and viewport helper names remain semantic until their own owners are closed.

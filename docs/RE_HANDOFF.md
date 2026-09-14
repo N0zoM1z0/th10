@@ -21,7 +21,8 @@
 - Completed session checkpoint: `e2fecf3 gpt-5.6-sol: recover ECL host hierarchy`.
 - Completed session checkpoint: `2dbce7d gpt-5.6-sol: recover ANM VM lifecycle`.
 - Completed session checkpoint: `260ac75 gpt-5.6-sol: recover ANM manager core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ASCII text pipeline`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `3e6de60 gpt-5.6-sol: recover ASCII text pipeline`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM render buffer core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-draw-core/`. The earlier ANM-manager, ANM-VM, ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
@@ -43,7 +44,40 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ASCII text pipeline and ANM-owner correction
+## Current packet: ANM render buffer core
+
+The actual ANM renderer reached through pointer `0x00491C10` owns a shared
+`0x20000`-entry vertex buffer. TH10 directly establishes its `0x1C`-byte packed
+vertex size, sprite count `+0x3ADAC8`, buffer base `+0x3ADACC`, end/start cursors
+`+0x72DACC/+0x72DAD0`, and flush count `+0x58`. The complete buffer span is
+therefore the observed `0x380000` bytes rather than an adjacent-game layout.
+
+Maintained source covers the 29-byte clear owner at `0x00442F30`, 133-byte
+flush at `0x00442F50`, and 157-byte quad-to-triangle expansion at `0x00442FE0`.
+The clear resets count and cursors; the add path copies corners `0/1/2/1/2/3`,
+advances by six vertices, and increments the count; flush configures D3D9
+diffuse arguments and FVF, submits two triangle-list primitives per sprite,
+advances the submitted range, clears the count, and increments the frame tally.
+
+All three are canonical exact linked-PE units in the real regular-text draw
+context: clear and add are complete raw-equal PDB contributions with no linked
+fields; flush contains exactly four DIR32 fields, all replayed to D3D9 device
+global `0x00491C30`. Two independent cold builds reproduce all **319 bytes**.
+The pinned VC7.1 SDK lacks D3D9 headers, so `src/D3d9View.hpp` supplies the
+minimal target-used COM prefix with compile-time checks for vtable slots
+`+0x10C`, `+0x14C`, and `+0x164`.
+
+Current tracking contains **1,286** candidates, **156** authored functions,
+**128** source mappings, and **60 canonical exact functions / 2,718 bytes**.
+The authored source backlog remains **64**. The current `AnmManager.cpp` source
+replays fourteen exact units across **1,068 bytes** in four artifact contexts.
+
+The next draw-core seam is the paired axis-aligned placement owners at
+`0x00443080` and `0x00443290`. Their existing TH10 evidence already establishes
+VM position/offset/scale fields and the horizontal/vertical anchor bits; their
+final call reaches the common render-state/draw owner at `0x00442670`.
+
+## Completed packet: ASCII text pipeline and ANM-owner correction
 
 TH10-local queue append, formatting, glyph lookup, viewport, callback, and draw
 evidence corrects the preceding checkpoint's owner hypothesis. The `0x89AC`-
@@ -76,9 +110,9 @@ eight authored functions, eight source mappings, three denominator candidates,
 and three exact functions / 267 bytes while correcting the manager owner across
 source, ledgers, exact manifests, and documentation.
 
-The next ANM packet should begin from the real renderer at `0x00491C10`. The
-flush owner at `0x00442F50` and its neighboring draw helpers at `0x00443080` and
-`0x00443290` are already target-confirmed consumers and useful first boundaries.
+The following renderer-buffer packet takes up the real owner at `0x00491C10`
+and closes its clear, flush, and quad-expansion seam before the neighboring draw
+helpers at `0x00443080` and `0x00443290`.
 
 ## Completed packet: ANM VM lifecycle
 

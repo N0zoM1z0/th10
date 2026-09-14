@@ -124,3 +124,6 @@ AsciiManagerDrawStrings,0x00401760,function
 AsciiManagerDrawGuiStrings,0x00401A50,function
 AsciiManagerView::Initialize,0x00401110,function
 AsciiManagerView::~AsciiManagerView,0x00401260,function
+AnmRenderManagerView::ClearVertexBuffer,0x00442F30,function
+AnmRenderManagerView::FlushVertexBuffer,0x00442F50,function
+AnmRenderManagerView::AddSpriteToDrawBuffer,0x00442FE0,function

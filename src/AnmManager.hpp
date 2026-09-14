@@ -1,5 +1,7 @@
 #pragma once
 
+#include "D3d9View.hpp"
+
 #include <stddef.h>
 
 struct AnmFloat3View
@@ -242,14 +244,52 @@ void __fastcall AnmRemoveChainElement(AnmChainElementView *element, void *chain)
 void __fastcall AnmLoadedSetScript(void *anm, AnmVmView *vm, int scriptIndex);
 void __fastcall AnmReleaseResource(void *resource);
 
+struct AnmRenderVertexView
+{
+    float x;
+    float y;
+    float z;
+    float rhw;
+    unsigned int color;
+    float u;
+    float v;
+};
+
+typedef char AnmRenderVertexViewSizeIs1C[
+    (sizeof(AnmRenderVertexView) == 0x1c) ? 1 : -1];
+
+// Only the renderer fields established by the shared-buffer clear/flush seam
+// are named. The 0x20000 packed vertices account exactly for the span between
+// the target-observed buffer base and its end/start cursors.
 struct AnmRenderManagerView
 {
+    unsigned char unknown000[0x058];
+    unsigned int flushesThisFrame;
+    unsigned char unknown05C[0x3ada6c];
+    unsigned int spritesToDraw;
+    AnmRenderVertexView vertexBuffer[0x20000];
+    AnmRenderVertexView *vertexBufferEnd;
+    AnmRenderVertexView *vertexBufferStart;
+
+    void ClearVertexBuffer();
     void FlushVertexBuffer();
+    int AddSpriteToDrawBuffer(AnmRenderVertexView *vertices);
     int DrawNoRotation(AnmVmView *vm);
     int DrawNoRotationNoRound(AnmVmView *vm);
 };
 
+typedef char AnmRenderFlushCountAt058[
+    (offsetof(AnmRenderManagerView, flushesThisFrame) == 0x058) ? 1 : -1];
+typedef char AnmRenderSpritesToDrawAt3ADAC8[
+    (offsetof(AnmRenderManagerView, spritesToDraw) == 0x3adac8) ? 1 : -1];
+typedef char AnmRenderVertexBufferAt3ADACC[
+    (offsetof(AnmRenderManagerView, vertexBuffer) == 0x3adacc) ? 1 : -1];
+typedef char AnmRenderVertexCursorsAt72DACC[
+    (offsetof(AnmRenderManagerView, vertexBufferEnd) == 0x72dacc &&
+     offsetof(AnmRenderManagerView, vertexBufferStart) == 0x72dad0) ? 1 : -1];
+
 extern AnmRenderManagerView *g_AnmRenderManagerView;
+extern D3d9DeviceView *g_Direct3DDevice;
 void __cdecl AsciiConfigureBackgroundViewport(int index);
 
 struct AnmErrorLoggerView
