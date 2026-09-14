@@ -13,9 +13,9 @@ their boundaries and origins must be reviewed independently.
 | Source-present mappings | 90 |
 | Source-present with authored origin | 86 |
 | Source-present origin review pending | 4 |
-| Authored source-present exact backlog | 61 |
-| Canonical exact functions | 25 |
-| Canonical exact authored bytes | 914 |
+| Authored source-present exact backlog | 57 |
+| Canonical exact functions | 29 |
+| Canonical exact authored bytes | 1,195 |
 
 While review remains pending, the authored exact denominator is unknown. A
 mapped name, maintained source, successful compilation, or Ghidra similarity does

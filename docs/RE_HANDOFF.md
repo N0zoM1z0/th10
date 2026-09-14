@@ -13,9 +13,10 @@
 - Completed session checkpoint: `d59f975 gpt-5.6-sol: batch probe exact backlog`.
 - Completed session checkpoint: `26af714 gpt-5.6-sol: add LTCG linked-image diagnostics`.
 - Completed session checkpoint: `f5a0c4f gpt-5.6-sol: add canonical LTCG replay`.
-- Planned current checkpoint subject: `gpt-5.6-sol: promote exact PbgArchive LTCG helpers`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `40c96ec gpt-5.6-sol: promote exact PbgArchive LTCG helpers`.
+- Planned current checkpoint subject: `gpt-5.6-sol: promote exact LZSS LTCG helpers`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-pbgarchive-linked-fields/`. The canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-lzss-linked-fields/`. The PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -35,7 +36,32 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: canonical PbgArchive linked fields
+## Current packet: canonical Lzss linked fields
+
+All 24 linked fields across the four structural-exact Lzss candidates resolve
+to the already target-proven `g_LzssTree` owner at `0x00477858`. Their only
+addends are `+0` (`parent`), `+4` (`left`), `+8` (`right`), and `+0x18008`
+(`tree[0x2000].right`). The last address is four bytes inside the final
+0x0C-byte node of the independently bounded `0x2001`-node / `0x1800C`-byte
+array; it is not promoted as a separate global.
+
+Two independent cold linked builds reproduce:
+
+- `Lzss::InitTree`: **36/36 bytes**, four DIR32 fields;
+- `Lzss::ContractNode`: **79/79 bytes**, eight DIR32 fields;
+- `Lzss::ReplaceNode`: **117/117 bytes**, nine DIR32 fields;
+- `Lzss::FindNextNode`: **49/49 bytes**, three DIR32 fields.
+
+Each complete `source.ltcg.obj` PDB contribution decodes without gaps and has
+exactly the declared field offsets, types and widths. Replaying the reviewed
+tree base/addends leaves zero differences across all **281 bytes**. Together
+with the normal-COFF exact `InitEncoderState`, this seam has five exact helpers
+/ 323 bytes in two explicitly separate artifact contexts. The result does not
+establish a production source/data TU, physical compiler owner, or product
+closure. A fresh Lzss backlog probe after the promotions reports only three
+mismatches and no remaining structural-exact candidate for this source.
+
+## Completed packet: canonical PbgArchive linked fields
 
 The remaining three structural-exact PbgArchive helpers each have one external
 REL32 field. Direct hash-attested target review closes `0x00452706-0x00452717`
@@ -97,7 +123,7 @@ The repository now parses MSF 7/PDB DBI section contributions directly and joins
 
 `scripts/probe-ltcg-backlog.py` cold-compiles one source at a time with fixed `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc /GL`, then performs an iterative diagnostic link. Missing externals receive distinct non-runnable data anchors, allowing every linked field to retain a unique candidate-symbol identity without manufacturing executable stubs. PE HIGHLOW fields and decoded external control-flow operands are masked only for structural comparison. The harness, every result, and the report itself explicitly carry no acceptance authority.
 
-The complete authored backlog scan covers all **66 functions across nine sources**. It found **13 structural-exact diagnostics / 715 bytes** and 53 mismatches: three Enemy lifecycle bodies, four Lzss tree helpers, five PbgArchive helpers, and `CPbgFile::GetFullFilePath`. The two PbgArchive pointer-advance helpers have no linked fields and reproduce all **63 raw bytes**. The other 11 candidates contain 34 resolved fields requiring explicit symbol/target review before any canonical linked unit can exist. Two independent cold PbgArchive passes reproduced the same result/extent/field signature. At checkpoint `26af714` these remained diagnostics; the current packet supersedes only the two zero-field helpers with canonical replay evidence.
+The complete authored backlog scan covers all **66 functions across nine sources**. It found **13 structural-exact diagnostics / 715 bytes** and 53 mismatches: three Enemy lifecycle bodies, four Lzss tree helpers, five PbgArchive helpers, and `CPbgFile::GetFullFilePath`. The two PbgArchive pointer-advance helpers have no linked fields and reproduce all **63 raw bytes**. The other 11 candidates contain 34 resolved fields requiring explicit symbol/target review before any canonical linked unit can exist. Two independent cold PbgArchive passes reproduced the same result/extent/field signature. At checkpoint `26af714` all 13 remained diagnostics; later canonical packets have promoted the five PbgArchive and four Lzss candidates, leaving four structural candidates under review.
 
 ## Completed packet: batch normal-COFF backlog diagnostics
 
@@ -207,13 +233,13 @@ Current ledger:
 - authored: **118 / 52,927 bytes**
 - excluded: **13**
 - source-present: **90 / 39,658 bytes**
-- canonical exact: **25 / 914 bytes**
+- canonical exact: **29 / 1,195 bytes**
 
-Current PbgArchive linked-field packet delta from `f5a0c4f`: **+3 functions / +151 bytes** and two reviewed CRT exclusions. The authored source backlog is now **61 functions**. Session exact delta from `444eb1a...` is **+21 functions / +737 bytes**.
+Current Lzss linked-field packet delta from `40c96ec`: **+4 functions / +281 bytes**. The authored source backlog is now **57 functions**. Session exact delta from `444eb1a...` is **+25 functions / +1,018 bytes**.
 
 **Source presence:** no source mapping changed.
 
-**Exactness:** repository canonical exact coverage is 25 functions / 914 bytes. The complete mixed set cold-replays through six artifact builds across five source files. This exact lane does not establish production object ownership or whole-build closure.
+**Exactness:** repository canonical exact coverage is 29 functions / 1,195 bytes. The complete mixed set cold-replays through seven artifact builds across five source files. This exact lane does not establish production object ownership or whole-build closure.
 
 **Whole build:** actual final `python3 scripts/build.py` returned **RC2 / explicitly open**. Production compiler flags, TU partition, libraries, resources and link order remain unknown. `build.py --check`, tracking, toolchain execution and public CI pass this honest open state.
 
@@ -229,11 +255,11 @@ The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with
 
 The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
 
-The linked-diagnostic, canonical replay, and current PbgArchive field campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
+The linked-diagnostic, canonical replay, PbgArchive, and current Lzss field campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
 
 ## Next hard frontier
 
-Review the 31 fields across the remaining eight structural LTCG candidates against target symbols, addends, and complete target control flow before promoting any of them. Continue with the Lzss tree helpers whose internal data targets need stronger ownership evidence, then the Enemy lifecycle bodies and `CPbgFile::GetFullFilePath`. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
+Review the seven fields across the remaining four structural LTCG candidates against target symbols, addends, and complete target control flow: three Enemy lifecycle bodies and `CPbgFile::GetFullFilePath`. The Enemy vtables/global and PbgFile CRT/import targets already have strong local hypotheses but still require field-by-field confirmation. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
 
 After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. The real production link graph remains a major infrastructure gap; canonical bounded linked-image units do not close it.
 
