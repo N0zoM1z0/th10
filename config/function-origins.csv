@@ -157,8 +157,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004126D0,authored_game,Enemy,authored,high,enemy-ecl-operands-2026-09-14
 0x00412720,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004127A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00412A00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00412A10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00412A00,unknown,Enemy,review,unknown,enemy-ecl-dispatch-hard-2026-09-14
+0x00412A10,unknown,Enemy,review,unknown,enemy-ecl-dispatch-hard-2026-09-14
+0x00412A60,unknown,Enemy,review,unknown,enemy-ecl-dispatch-hard-2026-09-14
+0x00412A70,unknown,Enemy,review,unknown,enemy-ecl-dispatch-hard-2026-09-14
+0x00412A80,unknown,Enemy,review,unknown,enemy-ecl-dispatch-hard-2026-09-14
 0x00412AA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412AC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

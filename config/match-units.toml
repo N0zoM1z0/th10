@@ -38,11 +38,11 @@ symbol = "?ResolveIntOperand@EnemyFullObjectView@@QAEPAHH@Z"
 target_address = 0x00412300
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L3750", target = 0x00412340 },
-  { offset = 64, type = "DIR32", symbol = "$L3129", target = 0x00412315 },
-  { offset = 68, type = "DIR32", symbol = "$L3130", target = 0x0041231E },
-  { offset = 72, type = "DIR32", symbol = "$L3131", target = 0x00412327 },
-  { offset = 76, type = "DIR32", symbol = "$L3132", target = 0x00412330 },
+  { offset = 17, type = "DIR32", symbol = "$L3787", target = 0x00412340 },
+  { offset = 64, type = "DIR32", symbol = "$L3166", target = 0x00412315 },
+  { offset = 68, type = "DIR32", symbol = "$L3167", target = 0x0041231E },
+  { offset = 72, type = "DIR32", symbol = "$L3168", target = 0x00412327 },
+  { offset = 76, type = "DIR32", symbol = "$L3169", target = 0x00412330 },
 ]
 
 [units.enemy-ecl-float-lvalue-resolver]
@@ -55,9 +55,9 @@ symbol = "?ResolveFloatOperand@EnemyFullObjectView@@QAEPAMH@Z"
 target_address = 0x004126D0
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L3792", target = 0x00412710 },
-  { offset = 64, type = "DIR32", symbol = "$L3207", target = 0x004126E5 },
-  { offset = 68, type = "DIR32", symbol = "$L3208", target = 0x004126EE },
-  { offset = 72, type = "DIR32", symbol = "$L3209", target = 0x004126F7 },
-  { offset = 76, type = "DIR32", symbol = "$L3210", target = 0x00412700 },
+  { offset = 17, type = "DIR32", symbol = "$L3829", target = 0x00412710 },
+  { offset = 64, type = "DIR32", symbol = "$L3244", target = 0x004126E5 },
+  { offset = 68, type = "DIR32", symbol = "$L3245", target = 0x004126EE },
+  { offset = 72, type = "DIR32", symbol = "$L3246", target = 0x004126F7 },
+  { offset = 76, type = "DIR32", symbol = "$L3247", target = 0x00412700 },
 ]

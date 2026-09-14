@@ -295,7 +295,7 @@ float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 void EnemySpawnDamageEffect(int kind, float positionX);
 void EnemyAdvanceTimer(PlayerTimerView *timer, float amount);
 void EnemyPrepareRuntimeStorage(EnemyRuntimeView *runtime);
-int EnemyLookupEclSubroutine(
+EnemyEclInstructionView *EnemyLookupEclSubroutine(
     EnemyEclResourceView *scriptDatabase, const char *name);
 void EnemyInvokeScalarDeletingDestructor(EnemyFullObjectView *enemy, int freeObject);
 void EnemyPlayDeathSound(int soundId, float positionX);
@@ -1137,20 +1137,20 @@ EnemyManagerView * __stdcall EnemyManagerCreate(
 EnemyFullObjectView *EnemyConstruct(
     EnemyFullObjectView *enemy, const char *eclSubroutineName)
 {
-    enemy->value1010 = 0;
-    enemy->value1014 = 0;
+    enemy->embeddedEclContext.operandStackOffset = 0;
+    enemy->embeddedEclContext.localStorageOffset = 0;
 
     EnemyPrepareRuntimeStorage(&enemy->runtime);
     memset(&enemy->runtime, 0, sizeof(enemy->runtime));
 
-    enemy->embeddedScriptState.value00 = 0;
-    enemy->embeddedScriptState.subroutineOffset = 0;
-    enemy->activeScriptState = &enemy->embeddedScriptState;
-    enemy->self101C = enemy;
+    enemy->embeddedEclContext.value00 = 0;
+    enemy->embeddedEclContext.currentInstruction = NULL;
+    enemy->activeEclContext = &enemy->embeddedEclContext;
+    enemy->embeddedEclContext.operandResolver = enemy;
     enemy->flags1028 &= ~1u;
     enemy->value1020 = 0;
-    enemy->value1018 = -1;
-    enemy->scriptStateMirror = &enemy->embeddedScriptState;
+    enemy->embeddedEclContext.unknown1010 = -1;
+    enemy->eclContextMirror = &enemy->embeddedEclContext;
     enemy->ownedAllocations = NULL;
     enemy->value1038 = 0;
 
@@ -1204,9 +1204,9 @@ EnemyFullObjectView *EnemyConstruct(
     enemy->runtime.playerCollisionTimer.previous = -1;
 
     enemy->scriptDatabase = g_EnemyManager->scriptDatabase;
-    enemy->activeScriptState->subroutineOffset =
+    enemy->activeEclContext->currentInstruction =
         EnemyLookupEclSubroutine(enemy->scriptDatabase, eclSubroutineName);
-    enemy->activeScriptState->value00 = 0;
+    enemy->activeEclContext->value00 = 0;
 
     enemy->runtime.life = 0;
     enemy->runtime.unknown13C4 = 0;

@@ -214,13 +214,49 @@ typedef char EnemyRuntimeCallbackThresholdsAt1458[
 typedef char EnemyRuntimeOwnerAt14D8[
     (offsetof(EnemyRuntimeView, owner) == 0x14d8) ? 1 : -1];
 
-struct EnemyScriptStateView
+// Minimal variable-length instruction header proven by the TH10 ECL dispatcher
+// and the generic typed-operand helpers. Names describe target-observed roles;
+// the original source type and the fields not exposed here remain unknown.
+struct EnemyEclInstructionView
 {
     int value00;
-    int subroutineOffset;
+    unsigned short opcode;
+    unsigned short value06;
+    unsigned short operandMask;
+    unsigned char unknown00A[0x06];
+    int operands[1];
 };
-typedef char EnemyScriptStateViewSizeIs08[
-    (sizeof(EnemyScriptStateView) == 0x08) ? 1 : -1];
+typedef char EnemyEclInstructionOpcodeAt004[
+    (offsetof(EnemyEclInstructionView, opcode) == 0x004) ? 1 : -1];
+typedef char EnemyEclInstructionOperandMaskAt008[
+    (offsetof(EnemyEclInstructionView, operandMask) == 0x008) ? 1 : -1];
+typedef char EnemyEclInstructionOperandsAt010[
+    (offsetof(EnemyEclInstructionView, operands) == 0x010) ? 1 : -1];
+
+// The generic TH10 ECL operand helpers prove that the full Enemy embeds this
+// execution context at +0x008. The active-context pointer is stored separately
+// at full Enemy +0x004. +0x1014 points back to the Enemy operand-resolver
+// owner, whose vtable supplies the four typed value/lvalue operations.
+struct EnemyEclContextView
+{
+    int value00;
+    EnemyEclInstructionView *currentInstruction;
+    unsigned char unknown008[0x1000];
+    int operandStackOffset;
+    int localStorageOffset;
+    int unknown1010;
+    EnemyFullObjectView *operandResolver;
+};
+typedef char EnemyEclContextSizeIs1018[
+    (sizeof(EnemyEclContextView) == 0x1018) ? 1 : -1];
+typedef char EnemyEclContextInstructionAt004[
+    (offsetof(EnemyEclContextView, currentInstruction) == 0x004) ? 1 : -1];
+typedef char EnemyEclContextOperandStackAt1008[
+    (offsetof(EnemyEclContextView, operandStackOffset) == 0x1008) ? 1 : -1];
+typedef char EnemyEclContextLocalStorageAt100C[
+    (offsetof(EnemyEclContextView, localStorageOffset) == 0x100c) ? 1 : -1];
+typedef char EnemyEclContextResolverAt1014[
+    (offsetof(EnemyEclContextView, operandResolver) == 0x1014) ? 1 : -1];
 
 struct EnemyEclResourceView;
 struct EnemyCallbackNodeView;
@@ -249,29 +285,26 @@ struct EnemyFullObjectView
     float *ResolveFloatOperand(int operand);
 
     void *vtable;
-    EnemyScriptStateView *activeScriptState;
-    EnemyScriptStateView embeddedScriptState;
-    unsigned char unknown010[0x1000];
-    int value1010;
-    int value1014;
-    int value1018;
-    EnemyFullObjectView *self101C;
+    EnemyEclContextView *activeEclContext;
+    EnemyEclContextView embeddedEclContext;
     int value1020;
     unsigned char spawnLayerMask;
     unsigned char unknown1025[0x03];
     unsigned int flags1028;
     EnemyEclResourceView *scriptDatabase;
-    EnemyScriptStateView *scriptStateMirror;
+    EnemyEclContextView *eclContextMirror;
     EnemyOwnedAllocationNodeView *ownedAllocations;
     int value1038;
     EnemyRuntimeView runtime;
 };
 typedef char EnemyFullObjectViewSizeIs2518[
     (sizeof(EnemyFullObjectView) == 0x2518) ? 1 : -1];
-typedef char EnemyFullObjectActiveScriptAt004[
-    (offsetof(EnemyFullObjectView, activeScriptState) == 0x004) ? 1 : -1];
-typedef char EnemyFullObjectValue1010At1010[
-    (offsetof(EnemyFullObjectView, value1010) == 0x1010) ? 1 : -1];
+typedef char EnemyFullObjectActiveEclContextAt004[
+    (offsetof(EnemyFullObjectView, activeEclContext) == 0x004) ? 1 : -1];
+typedef char EnemyFullObjectEmbeddedEclContextAt008[
+    (offsetof(EnemyFullObjectView, embeddedEclContext) == 0x008) ? 1 : -1];
+typedef char EnemyFullObjectEclContextMirrorAt1030[
+    (offsetof(EnemyFullObjectView, eclContextMirror) == 0x1030) ? 1 : -1];
 typedef char EnemyFullObjectFlagsAt1028[
     (offsetof(EnemyFullObjectView, flags1028) == 0x1028) ? 1 : -1];
 typedef char EnemyFullObjectOwnedAllocationsAt1034[
