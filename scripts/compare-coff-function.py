@@ -31,6 +31,31 @@ def symbol_name(raw: bytes, strings: bytes) -> str:
     return c_string(raw)
 
 
+def source_name_hint(symbol: str) -> str | None:
+    """Return a conservative source spelling for common external MSVC names."""
+    if symbol.startswith("??0") or symbol.startswith("??1"):
+        separator = symbol.find("@@", 3)
+        if separator < 0:
+            return None
+        scopes = symbol[3:separator].split("@")
+        if not scopes or any(not scope for scope in scopes):
+            return None
+        qualified_class = "::".join(reversed(scopes))
+        method = scopes[0] if symbol.startswith("??0") else f"~{scopes[0]}"
+        return f"{qualified_class}::{method}"
+    if not symbol.startswith("?") or symbol.startswith("??"):
+        return None
+    separator = symbol.find("@@", 1)
+    if separator < 0:
+        return None
+    components = symbol[1:separator].split("@")
+    if not components or any(not component for component in components):
+        return None
+    function = components[0]
+    scopes = list(reversed(components[1:]))
+    return "::".join([*scopes, function])
+
+
 def coff_object(
     path: Path,
 ) -> tuple[bytes, list[dict[str, object]], dict[int, dict[str, object]]]:
@@ -141,6 +166,7 @@ def object_functions(path: Path, contains: str = "") -> list[dict[str, object]]:
         result.append(
             {
                 "symbol": name,
+                "source_name_hint": source_name_hint(name),
                 "size": size,
                 "extent_source": extent_source,
                 "relocation_count": relocation_count,
@@ -362,18 +388,21 @@ def compare_probe(
     for relocation in relocations:
         row = dict(relocation)
         offset = int(relocation["offset"])
-        if offset + 4 > size:
-            raise ValueError(f"relocation at {offset:#x} leaves the probe extent")
         addend = struct.unpack_from("<I", code, offset)[0]
-        encoded = struct.unpack_from("<I", original, offset)[0]
         row["object_addend"] = f"0x{addend:08X}"
-        row["target_encoded_value"] = f"0x{encoded:08X}"
-        if relocation["type_id"] == RELOCATION_IDS["DIR32"]:
-            candidate = encoded - addend
-        elif relocation["type_id"] == RELOCATION_IDS["REL32"]:
-            displacement = struct.unpack_from("<i", original, offset)[0]
-            candidate = address + offset + 4 + displacement - addend
+        row["target_extent_complete"] = offset + 4 <= size
+        if row["target_extent_complete"]:
+            encoded = struct.unpack_from("<I", original, offset)[0]
+            row["target_encoded_value"] = f"0x{encoded:08X}"
+            if relocation["type_id"] == RELOCATION_IDS["DIR32"]:
+                candidate = encoded - addend
+            elif relocation["type_id"] == RELOCATION_IDS["REL32"]:
+                displacement = struct.unpack_from("<i", original, offset)[0]
+                candidate = address + offset + 4 + displacement - addend
+            else:
+                candidate = None
         else:
+            row["target_encoded_value"] = None
             candidate = None
         row["candidate_target"] = (
             f"0x{candidate & 0xFFFFFFFF:08X}" if candidate is not None else None

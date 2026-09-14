@@ -12,6 +12,7 @@
 | Compare a canonical normal-COFF unit | `python3 scripts/compare-coff-function.py --unit NAME --json` | Complete target bytes and declared relocation replay |
 | Cold-replay canonical exact units | `python3 scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold compile per shared source/profile/object followed by strict comparison of every selected unit |
 | List the source-present exact backlog | `python3 scripts/report-exact-backlog.py [--source SOURCE] [--module MODULE] [--state authored\|origin-review\|excluded\|all] [--json]` | Triage-only joined view of non-exact source mappings; default excludes origin-pending entries |
+| Batch-probe the authored exact backlog | `python3 scripts/probe-exact-backlog.py [--source SOURCE] [--show RESULT] [--json]` | One cold normal-COFF compile per source plus strict diagnostic comparison; no acceptance authority |
 | Initialize private Ghidra project | `python3 scripts/ghidra.py import` | Operator-only bootstrap; provisional inventory |
 | Attest private Ghidra project | `python3 scripts/ghidra.py check` | Target/project binding, no exactness credit |
 | Discover/call Ghidra | Factory provider `th10-ghidra` | Target-attested provisional semantic analysis |
@@ -51,7 +52,9 @@ the symbol meaning, complete extent, and relocation ownership are reviewed and
 the resulting manifest unit replays with zero differences. Candidate code size
 comes only from its COFF function definition or a single-function COMDAT code
 section; requested target length never extends the candidate into the next
-section.
+section. Probe records produced before this invariant was added must be rerun
+before their object-size or comparable-byte fields are used as current
+evidence.
 
 The original executable is copied once from the Windows installation to the
 ignored `resources/th10.exe`. Normal Factory work neither searches nor mounts

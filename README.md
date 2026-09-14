@@ -51,6 +51,7 @@ graph, and link order remain unknown.
 python3 scripts/verify-toolchain.py --execute
 python3 scripts/build-match-unit.py --check
 python3 scripts/report-exact-backlog.py
+python3 scripts/probe-exact-backlog.py --source src/PbgArchive.cpp
 python3 scripts/replay-exact-units.py
 ```
 

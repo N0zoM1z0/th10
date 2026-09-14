@@ -30,6 +30,9 @@ disk target, Ghidra target, ledgers, and live status using the commands in
    strip `/GL` and do not use the standalone comparator; keep exactness
    unknown until a linked-image extent Oracle exists. Distinguish source,
    profile, boundary, ownership, optimizer, and library mismatches.
+   `python3 scripts/probe-exact-backlog.py --source SOURCE` performs the fixed
+   normal-COFF batch diagnostic after deriving symbols and extents from the
+   object itself; it grants no exactness credit.
 7. Add a canonical match unit and exact ledger row only after repeatable zero
    difference against the verified target.
 8. Cold-replay affected accepted units with
