@@ -138,7 +138,8 @@ typedef char PlayerDrawVmViewFlagsAt35C[
     (offsetof(PlayerDrawVmView, flags) == 0x35c) ? 1 : -1];
 
 // Maintained partial TH10 player layout. Only target-observed fields needed by
-// the reviewed replay and option-rebuild seams are exposed. This is not an
+// the reviewed Player replay, option, movement, update, and draw seams are exposed.
+// This is not an
 // original-symbol or translation-unit ownership claim.
 struct Player
 {
@@ -149,10 +150,10 @@ struct Player
     PlayerFloat3 drawPosition;
     int positionX;
     int positionY;
-    int movementSpeedX;
-    int movementSpeedY;
-    int diagonalSpeedX;
-    int diagonalSpeedY;
+    int axisSpeedMode0;
+    int axisSpeedMode1;
+    int diagonalSpeedMode0;
+    int diagonalSpeedMode1;
     unsigned char unknown3E4[0x0c];
     int movementDeltaX;
     int movementDeltaY;
@@ -163,15 +164,16 @@ struct Player
     PlayerFloat3 extent1;
     PlayerFloat3 extent2;
     PlayerFloat3 savedDrawPosition;
-    int lastHorizontalInput;
-    int lastVerticalInput;
+    int previousHorizontalSpeed;
+    int previousVerticalSpeed;
     int movementDirection;
     int runtimeState;
     unsigned char *optionData;
     PlayerTimerView updateTimer0;
     PlayerTimerView updateTimer1;
     PlayerTimerView updateTimer2;
-    unsigned char unknown49C[0x2e04];
+    unsigned char unknown49C[0x2e00];
+    unsigned int modeVmId;
     PlayerOptionRuntime options[4];
     int optionCount;
     int updateScratch;
@@ -194,14 +196,16 @@ typedef char PlayerDrawPositionAt3C0[
     (offsetof(Player, drawPosition) == 0x3c0) ? 1 : -1];
 typedef char PlayerPositionAt3CC[
     (offsetof(Player, positionX) == 0x3cc) ? 1 : -1];
-typedef char PlayerMovementSpeedsAt3D4[
-    (offsetof(Player, movementSpeedX) == 0x3d4) ? 1 : -1];
+typedef char PlayerMovementSpeedModesAt3D4[
+    (offsetof(Player, axisSpeedMode0) == 0x3d4) ? 1 : -1];
 typedef char PlayerDerivedMinAt404[
     (offsetof(Player, derivedMin0) == 0x404) ? 1 : -1];
 typedef char PlayerExtent0At41C[
     (offsetof(Player, extent0) == 0x41c) ? 1 : -1];
 typedef char PlayerSavedDrawPositionAt440[
     (offsetof(Player, savedDrawPosition) == 0x440) ? 1 : -1];
+typedef char PlayerPreviousMovementAt44C[
+    (offsetof(Player, previousHorizontalSpeed) == 0x44c) ? 1 : -1];
 typedef char PlayerMovementDirectionAt454[
     (offsetof(Player, movementDirection) == 0x454) ? 1 : -1];
 typedef char PlayerRuntimeStateAt458[
@@ -214,6 +218,8 @@ typedef char PlayerTimer1At474[
     (offsetof(Player, updateTimer1) == 0x474) ? 1 : -1];
 typedef char PlayerTimer2At488[
     (offsetof(Player, updateTimer2) == 0x488) ? 1 : -1];
+typedef char PlayerModeVmIdAt329C[
+    (offsetof(Player, modeVmId) == 0x329c) ? 1 : -1];
 typedef char PlayerOptionsAt32A0[
     (offsetof(Player, options) == 0x32a0) ? 1 : -1];
 typedef char PlayerOptionCountAt3500[

@@ -59,3 +59,4 @@ PlayerOptionTrailCallback
 PlayerOptionSpecialCallback
 PlayerDrawCallback
 PlayerUpdateCallback
+PlayerUpdateMovementAndOptions

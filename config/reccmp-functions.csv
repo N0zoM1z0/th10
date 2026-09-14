@@ -60,3 +60,4 @@ PlayerOptionTrailCallback,0x00427950,function
 PlayerOptionSpecialCallback,0x00427AD0,function
 PlayerDrawCallback,0x00426510,function
 PlayerUpdateCallback,0x00426500,function
+PlayerUpdateMovementAndOptions,0x004250B0,function

@@ -136,6 +136,10 @@ extern PlayerUpdateGate10 *g_PlayerUpdateGate10;
 // maintained source spellings, not original ABI claims.
 void PlayerDrawManagedVm(PlayerDrawVmView *vm);
 void PlayerDrawAuxiliaryRectangle(const float *bounds, unsigned int color);
+void PlayerSetMainVmMovementScript(Player *player, int scriptIndex);
+void PlayerSetManagedVmPosition(unsigned int vmId, const PlayerFloat3 *position);
+void PlayerSetManagedVmScreenPosition(
+    unsigned int vmId, const PlayerFloat3 *position);
 
 // Descriptive interfaces for target-observed Player update callees. Their
 // original identifiers and private register conventions remain unproven.
@@ -148,7 +152,6 @@ void PlayerCommitStateTransitionEffect(float value, int mode);
 void PlayerFinalizeState3Transition();
 void PlayerInvokeHostileCleanup(PlayerHostileRowView *row);
 void PlayerInvokeLinkedObjectCallback(PlayerLinkedObjectView *object);
-void PlayerUpdateMovementAndOptions(Player *player);
 void PlayerTransitionToState2(Player *player);
 float PlayerAngleToPoint(Player *player, const PlayerFloat3 *point);
 void PlayerSpawnDirectionalEffect(
@@ -204,6 +207,21 @@ enum
     PLAYER_OPTION_SECONDARY_SCRIPT_0 = 0x14,
     PLAYER_OPTION_SECONDARY_SCRIPT_1 = 0x15,
     PLAYER_OPTION_SECONDARY_SCRIPT_2 = 0x16,
+    PLAYER_DIRECTION_NONE = 0,
+    PLAYER_DIRECTION_UP = 1,
+    PLAYER_DIRECTION_DOWN = 2,
+    PLAYER_DIRECTION_LEFT = 3,
+    PLAYER_DIRECTION_RIGHT = 4,
+    PLAYER_DIRECTION_UP_LEFT = 5,
+    PLAYER_DIRECTION_UP_RIGHT = 6,
+    PLAYER_DIRECTION_DOWN_LEFT = 7,
+    PLAYER_DIRECTION_DOWN_RIGHT = 8,
+    PLAYER_MODE_VM_LAYER = 9,
+    PLAYER_MODE_VM_SCRIPT = 0x160,
+    PLAYER_MAIN_VM_MOVE_LEFT = 1,
+    PLAYER_MAIN_VM_STOP_LEFT = 2,
+    PLAYER_MAIN_VM_MOVE_RIGHT = 3,
+    PLAYER_MAIN_VM_STOP_RIGHT = 4,
 };
 
 static PlayerVm *FindPlayerVm(unsigned int id)
@@ -398,6 +416,250 @@ static int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
         option->replayPair0 = option->replayPair3;
         option->previousMode = optionMode;
     }
+    return 0;
+}
+
+// Maintained source for the Player movement/options owner at 0x004250B0.
+// The target body receives Player in live-in EDI from its sole caller. This
+// ordinary source parameter is a maintainable spelling of that behavior, not a
+// claim about the original declaration or the optimizer-owned machine ABI.
+int PlayerUpdateMovementAndOptions(Player *player)
+{
+    int horizontalSpeed = 0;
+    int verticalSpeed = 0;
+
+    if ((g_PlayerInputBits & 0x50) == 0x50)
+        player->movementDirection = PLAYER_DIRECTION_UP_LEFT;
+    else if ((g_PlayerInputBits & 0x60) == 0x60)
+        player->movementDirection = PLAYER_DIRECTION_DOWN_LEFT;
+    else if ((g_PlayerInputBits & 0x90) == 0x90)
+        player->movementDirection = PLAYER_DIRECTION_UP_RIGHT;
+    else if ((g_PlayerInputBits & 0xa0) == 0xa0)
+        player->movementDirection = PLAYER_DIRECTION_DOWN_RIGHT;
+    else if ((g_PlayerInputBits & 0x20) != 0)
+        player->movementDirection = PLAYER_DIRECTION_DOWN;
+    else if ((g_PlayerInputBits & 0x10) != 0)
+        player->movementDirection = PLAYER_DIRECTION_UP;
+    else if ((g_PlayerInputBits & 0x40) != 0)
+        player->movementDirection = PLAYER_DIRECTION_LEFT;
+    else if ((g_PlayerInputBits & 0x80) != 0)
+        player->movementDirection = PLAYER_DIRECTION_RIGHT;
+    else
+        player->movementDirection = PLAYER_DIRECTION_NONE;
+
+    if (g_PlayerDrawGate10 == NULL ||
+        g_PlayerDrawGate10->value60 == 0 ||
+        player->updateTimer2.current < 4)
+    {
+        player->optionMode = 0;
+        player->optionTransitionFrames = 30;
+    }
+    else
+    {
+        player->optionMode = (g_PlayerInputBits >> 2) & 1;
+        if (g_PlayerShotType + g_PlayerCharacter * 3 == 5)
+        {
+            if ((g_PlayerInputBits & 4) != 0)
+                player->optionTransitionFrames = 0;
+            else if (player->optionTransitionFrames < 30)
+                ++player->optionTransitionFrames;
+        }
+    }
+
+    if (player->optionMode != 0)
+    {
+        if (player->modeVmId == 0)
+        {
+            PlayerVm *vm = PlayerAllocateManagedVm();
+            vm->layer = PLAYER_MODE_VM_LAYER;
+            vm->flags |= PLAYER_VM_RUNTIME_FLAG;
+            PlayerInitializeManagedVmScript(vm, PLAYER_MODE_VM_SCRIPT);
+            PlayerRegisterManagedVm(vm, &player->modeVmId);
+        }
+
+        // Lexical order follows the target's mode-1 switch body order. The
+        // compiler emits the eight-entry table separately after the function.
+        switch (player->movementDirection)
+        {
+        case PLAYER_DIRECTION_RIGHT:
+            horizontalSpeed = player->axisSpeedMode1;
+            break;
+        case PLAYER_DIRECTION_LEFT:
+            horizontalSpeed = -player->axisSpeedMode1;
+            break;
+        case PLAYER_DIRECTION_UP:
+            verticalSpeed = -player->axisSpeedMode1;
+            break;
+        case PLAYER_DIRECTION_DOWN:
+            verticalSpeed = player->axisSpeedMode1;
+            break;
+        case PLAYER_DIRECTION_UP_LEFT:
+            horizontalSpeed = -player->diagonalSpeedMode1;
+            verticalSpeed = horizontalSpeed;
+            break;
+        case PLAYER_DIRECTION_DOWN_LEFT:
+            verticalSpeed = player->diagonalSpeedMode1;
+            horizontalSpeed = -verticalSpeed;
+            break;
+        case PLAYER_DIRECTION_UP_RIGHT:
+            horizontalSpeed = player->diagonalSpeedMode1;
+            verticalSpeed = -horizontalSpeed;
+            break;
+        case PLAYER_DIRECTION_DOWN_RIGHT:
+            horizontalSpeed = player->diagonalSpeedMode1;
+            verticalSpeed = horizontalSpeed;
+            break;
+        default:
+            break;
+        }
+    }
+    else
+    {
+        if (FindPlayerVm(player->modeVmId) != NULL)
+            PlayerSetManagedVmDeleteState(&player->modeVmId, 1);
+        player->modeVmId = 0;
+
+        // Same target-observed lexical block order as the mode-1 switch.
+        switch (player->movementDirection)
+        {
+        case PLAYER_DIRECTION_RIGHT:
+            horizontalSpeed = player->axisSpeedMode0;
+            break;
+        case PLAYER_DIRECTION_LEFT:
+            horizontalSpeed = -player->axisSpeedMode0;
+            break;
+        case PLAYER_DIRECTION_UP:
+            verticalSpeed = -player->axisSpeedMode0;
+            break;
+        case PLAYER_DIRECTION_DOWN:
+            verticalSpeed = player->axisSpeedMode0;
+            break;
+        case PLAYER_DIRECTION_UP_LEFT:
+            horizontalSpeed = -player->diagonalSpeedMode0;
+            verticalSpeed = horizontalSpeed;
+            break;
+        case PLAYER_DIRECTION_DOWN_LEFT:
+            verticalSpeed = player->diagonalSpeedMode0;
+            horizontalSpeed = -verticalSpeed;
+            break;
+        case PLAYER_DIRECTION_UP_RIGHT:
+            horizontalSpeed = player->diagonalSpeedMode0;
+            verticalSpeed = -horizontalSpeed;
+            break;
+        case PLAYER_DIRECTION_DOWN_RIGHT:
+            horizontalSpeed = player->diagonalSpeedMode0;
+            verticalSpeed = horizontalSpeed;
+            break;
+        default:
+            break;
+        }
+    }
+
+    if (horizontalSpeed < 0 && player->previousHorizontalSpeed >= 0)
+        PlayerSetMainVmMovementScript(player, PLAYER_MAIN_VM_MOVE_LEFT);
+    else if (horizontalSpeed > 0 && player->previousHorizontalSpeed <= 0)
+        PlayerSetMainVmMovementScript(player, PLAYER_MAIN_VM_MOVE_RIGHT);
+    else if (horizontalSpeed == 0 && player->previousHorizontalSpeed < 0)
+        PlayerSetMainVmMovementScript(player, PLAYER_MAIN_VM_STOP_LEFT);
+    else if (horizontalSpeed == 0 && player->previousHorizontalSpeed > 0)
+        PlayerSetMainVmMovementScript(player, PLAYER_MAIN_VM_STOP_RIGHT);
+
+    player->previousHorizontalSpeed = horizontalSpeed;
+    player->previousVerticalSpeed = verticalSpeed;
+    player->movementDeltaX = (int)((float)horizontalSpeed * g_PlayerTimerScale);
+    player->movementDeltaY = (int)((float)verticalSpeed * g_PlayerTimerScale);
+    player->positionX += player->movementDeltaX;
+    player->positionY += player->movementDeltaY;
+
+    if (player->positionX < -18400)
+        player->positionX = -18400;
+    else if (player->positionX > 18400)
+        player->positionX = 18400;
+    if (player->positionY < 3200)
+        player->positionY = 3200;
+    else if (player->positionY > 43200)
+        player->positionY = 43200;
+
+    player->drawPosition.x = (float)player->positionX * 0.01f;
+    player->drawPosition.y = (float)player->positionY * 0.01f;
+
+    if (FindPlayerVm(player->modeVmId) == NULL)
+    {
+        player->modeVmId = 0;
+    }
+    else
+    {
+        PlayerFloat3 position;
+        position.x = player->drawPosition.x + 224.0f;
+        position.y = player->drawPosition.y + 16.0f;
+        position.z = player->drawPosition.z;
+        PlayerSetManagedVmPosition(player->modeVmId, &position);
+    }
+
+    if (player->optionMode == 0 &&
+        (horizontalSpeed != 0 || verticalSpeed != 0))
+    {
+        int historyIndex = 32;
+        const int historyLimit = player->optionCount * 8;
+        for (; historyIndex > historyLimit; --historyIndex)
+            player->replayPositionHistory[historyIndex] =
+                player->replayPositionHistory[historyLimit];
+        for (; historyIndex > 0; --historyIndex)
+            player->replayPositionHistory[historyIndex] =
+                player->replayPositionHistory[historyIndex - 1];
+    }
+    player->replayPositionHistory[0].x = player->positionX;
+    player->replayPositionHistory[0].y = player->positionY;
+
+    for (int i = 0; i < 4; ++i)
+    {
+        PlayerOptionRuntime &option = player->options[i];
+        if (option.state == 0)
+            continue;
+
+        const PlayerPositionPair &offset =
+            player->optionMode == 0 ? option.replayPair2 : option.replayPair3;
+        option.replayPair0.x = player->positionX + offset.x;
+        option.replayPair0.y = player->positionY + offset.y;
+
+        if (option.updateCallback != NULL)
+            option.updateCallback(&option);
+
+        if (option.resetFlag == 0)
+        {
+            if (player->optionTransitionFrames >= 30)
+            {
+                const int stepX =
+                    ((option.replayPair0.x - option.replayPair1.x) *
+                     player->optionTransitionFrames) / 100;
+                const int stepY =
+                    ((option.replayPair0.y - option.replayPair1.y) *
+                     player->optionTransitionFrames) / 100;
+                if (stepX != 0 || stepY != 0)
+                {
+                    option.replayPair1.x += stepX;
+                    option.replayPair1.y += stepY;
+                }
+                else
+                {
+                    option.replayPair1 = option.replayPair0;
+                }
+            }
+        }
+        else
+        {
+            option.resetFlag = 0;
+            option.replayPair1 = option.replayPair0;
+        }
+
+        PlayerFloat3 optionPosition;
+        optionPosition.x = (float)option.replayPair1.x * 0.01f;
+        optionPosition.y = (float)option.replayPair1.y * 0.01f;
+        optionPosition.z = 0.0f;
+        PlayerSetManagedVmScreenPosition(option.primaryVmId, &optionPosition);
+        PlayerSetManagedVmScreenPosition(option.secondaryVmId, &optionPosition);
+    }
+
     return 0;
 }
 
