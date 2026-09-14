@@ -15,9 +15,10 @@
 - Completed session checkpoint: `f5a0c4f gpt-5.6-sol: add canonical LTCG replay`.
 - Completed session checkpoint: `40c96ec gpt-5.6-sol: promote exact PbgArchive LTCG helpers`.
 - Completed session checkpoint: `e4c9077 gpt-5.6-sol: promote exact LZSS LTCG helpers`.
-- Planned current checkpoint subject: `gpt-5.6-sol: promote remaining exact LTCG helpers`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `37ebb83 gpt-5.6-sol: promote remaining exact LTCG helpers`.
+- Planned current checkpoint subject: `gpt-5.6-sol: rank exact reconstruction backlog`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-final-structural-linked/`. The Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-backlog-ranking/`. The final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -37,7 +38,33 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: final structural-exact LTCG promotions
+## Current packet: dual-codegen exact-backlog ranking
+
+`scripts/rank-exact-backlog.py` now turns the two existing batch probes into one
+fresh selection tool. It obtains the current authored backlog once, runs both
+normal COFF and LTCG diagnostics, requires both reports to match every current
+address/name/source/size key exactly, and rejects a run if the target, ledgers,
+tools, or maintained source tree changes between the two probes. Its explicit
+distance combines relative complete-extent size delta with the mismatch ratio
+over non-link-field bytes. Profile recommendation and `ltcg_gain` remain triage
+signals with `acceptance_authority=none`.
+
+A full target-bound run covers all **53** current authored backlog functions.
+Both lanes report **53 mismatches**, zero structural-exact candidates, and zero
+unresolved keys. The leading bounded experiments are:
+
+1. `Lzss::AddString`, LTCG: candidate/target **512/516 bytes**, **51/408**
+   comparable mismatches, 27 linked fields, distance **0.133**;
+2. `CPbgFile::Write`, normal COFF: **67/63**, **10/59**, one relocation,
+   distance **0.233**;
+3. `EnemyManagerCreate`, LTCG: **94/95**, **22/75**, five linked fields,
+   distance **0.304**.
+
+The ranking does not make any function exact or determine its production
+profile/physical owner. It gives later sessions a reproducible reason to choose
+a source/codegen experiment and preserves both lanes' raw metrics in JSON.
+
+## Completed packet: final structural-exact LTCG promotions
 
 The final seven unreviewed fields from the original linked diagnostic are now
 bound to TH10-local targets. The Enemy link uses `g_EnemyManager` at
@@ -285,11 +312,11 @@ The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with
 
 The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
 
-The linked-diagnostic, canonical replay, PbgArchive, Lzss, and current final-structural campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
+The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, and current backlog-ranking campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
 
 ## Next hard frontier
 
-The original 13-function structural-exact LTCG queue is exhausted. The next exactness work must change source/profile/context for real mismatches rather than promote diagnostics already known to match. A useful tooling frontier is to rank the remaining 53 authored mismatches by complete-extent size delta, comparable-byte distance, relocation/linked-field shape, and normal-versus-LTCG improvement so later Web sessions can choose bounded candidates from evidence instead of visual similarity. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
+The original 13-function structural-exact LTCG queue is exhausted. The new dual-codegen ranking identifies `Lzss::AddString` as the strongest current source/profile experiment, followed by `CPbgFile::Write` and `EnemyManagerCreate`. Start with the 516-byte Lzss owner: inspect its 51 non-field differences and four-byte size delta as control-flow/source-shape clusters, then rerun the bounded LTCG probe rather than adjusting code from a scalar score alone. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
 
 After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. The real production link graph remains a major infrastructure gap; canonical bounded linked-image units do not close it.
 

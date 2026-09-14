@@ -11,8 +11,11 @@ disk target, Ghidra target, ledgers, and live status using the commands in
 
 1. Select one candidate from the ledger; use
    `python3 scripts/report-exact-backlog.py` for the reviewed authored,
-   source-present queue. Queue membership is triage only. Never select only by
-   an attractive decompiler name.
+   source-present queue. Use `python3 scripts/rank-exact-backlog.py` when a
+   fresh, target-bound comparison of the normal-COFF and LTCG lanes would help
+   select a bounded source/codegen experiment. Its score is triage only and
+   grants no exactness or physical-owner credit. Never select only by an
+   attractive decompiler name.
 2. Reconcile its entry, exits, tails, tables, padding, references, and physical
    ownership against target bytes.
 3. Classify origin independently: authored game code, compiler-generated,
