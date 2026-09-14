@@ -763,6 +763,183 @@ void AnmRenderManagerView::TranslateRotation(
     vertex->y = x * sine + y * cosine + yOffset;
 }
 
+// Target 0x004436C0-0x0044390E is the first of two instruction-identical
+// rotated-quad blocks reached by render modes 1 and 3 in the Draw dispatcher.
+// TH10 accumulates all three VM position vectors on every axis before rotating
+// the anchor-selected corners. A zero rotation enters the established
+// sub-pixel axis-aligned path.
+int AnmRenderManagerView::Draw2D(AnmVmView *vm)
+{
+    float rotation;
+    float sine;
+    float cosine;
+    float xOffset;
+    float yOffset;
+    float spriteWidth;
+    float spriteHeight;
+    float vertexX[4];
+    float vertexY[4];
+    int i;
+
+    if (vm->rotation.z == 0.0f)
+        return DrawNoRotationNoRound(vm);
+
+    rotation = vm->rotation.z;
+#if defined(_MSC_VER) && defined(_M_IX86)
+    __asm
+    {
+        fld rotation
+        fsincos
+        fstp cosine
+        fstp sine
+    }
+#else
+    cosine = static_cast<float>(cos(rotation));
+    sine = static_cast<float>(sin(rotation));
+#endif
+
+    xOffset = vm->spriteOffset.x;
+    xOffset += vm->preservedPosition.x;
+    xOffset += vm->position.x;
+    yOffset = vm->spriteOffset.y;
+    yOffset += vm->preservedPosition.y;
+    yOffset += vm->position.y;
+    spriteWidth = vm->spriteWidth * vm->scaleX;
+    spriteHeight = vm->spriteHeight * vm->scaleY;
+
+    switch (vm->renderStateA)
+    {
+    case 1:
+        vertexX[0] = vertexX[2] = 0.0f;
+        vertexX[1] = vertexX[3] = spriteWidth;
+        break;
+    case 0:
+        vertexX[0] = vertexX[2] = -spriteWidth * 0.5f;
+        vertexX[1] = vertexX[3] = spriteWidth * 0.5f;
+        break;
+    case 2:
+        vertexX[0] = vertexX[2] = -spriteWidth;
+        vertexX[1] = vertexX[3] = 0.0f;
+        break;
+    }
+
+    switch (vm->renderStateB)
+    {
+    case 1:
+        vertexY[0] = vertexY[1] = 0.0f;
+        vertexY[2] = vertexY[3] = spriteHeight;
+        break;
+    case 0:
+        vertexY[0] = vertexY[1] = -spriteHeight * 0.5f;
+        vertexY[2] = vertexY[3] = spriteHeight * 0.5f;
+        break;
+    case 2:
+        vertexY[0] = vertexY[1] = -spriteHeight;
+        vertexY[2] = vertexY[3] = 0.0f;
+        break;
+    }
+
+    for (i = 0; i < 4; ++i)
+    {
+        TranslateRotation(
+            &g_AnmQuadVertices[i], vertexX[i], vertexY[i], sine, cosine,
+            xOffset, yOffset);
+    }
+
+    g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
+        g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
+            vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+    return DrawInner(vm, 0);
+}
+
+// Target 0x00443910-0x00443B5E is the render-mode 3 sibling retained as a
+// separate method. Its complete target body is instruction-identical to
+// Draw2D apart from address-dependent REL32 displacements. The descriptive
+// name follows the mode-3 owner in TH08 and remains a cross-game hypothesis.
+int AnmRenderManagerView::Draw2DRotatedOrAxisAligned(AnmVmView *vm)
+{
+    float rotation;
+    float sine;
+    float cosine;
+    float xOffset;
+    float yOffset;
+    float spriteWidth;
+    float spriteHeight;
+    float vertexX[4];
+    float vertexY[4];
+    int i;
+
+    if (vm->rotation.z == 0.0f)
+        return DrawNoRotationNoRound(vm);
+
+    rotation = vm->rotation.z;
+#if defined(_MSC_VER) && defined(_M_IX86)
+    __asm
+    {
+        fld rotation
+        fsincos
+        fstp cosine
+        fstp sine
+    }
+#else
+    cosine = static_cast<float>(cos(rotation));
+    sine = static_cast<float>(sin(rotation));
+#endif
+
+    xOffset = vm->spriteOffset.x;
+    xOffset += vm->preservedPosition.x;
+    xOffset += vm->position.x;
+    yOffset = vm->spriteOffset.y;
+    yOffset += vm->preservedPosition.y;
+    yOffset += vm->position.y;
+    spriteWidth = vm->spriteWidth * vm->scaleX;
+    spriteHeight = vm->spriteHeight * vm->scaleY;
+
+    switch (vm->renderStateA)
+    {
+    case 1:
+        vertexX[0] = vertexX[2] = 0.0f;
+        vertexX[1] = vertexX[3] = spriteWidth;
+        break;
+    case 0:
+        vertexX[0] = vertexX[2] = -spriteWidth * 0.5f;
+        vertexX[1] = vertexX[3] = spriteWidth * 0.5f;
+        break;
+    case 2:
+        vertexX[0] = vertexX[2] = -spriteWidth;
+        vertexX[1] = vertexX[3] = 0.0f;
+        break;
+    }
+
+    switch (vm->renderStateB)
+    {
+    case 1:
+        vertexY[0] = vertexY[1] = 0.0f;
+        vertexY[2] = vertexY[3] = spriteHeight;
+        break;
+    case 0:
+        vertexY[0] = vertexY[1] = -spriteHeight * 0.5f;
+        vertexY[2] = vertexY[3] = spriteHeight * 0.5f;
+        break;
+    case 2:
+        vertexY[0] = vertexY[1] = -spriteHeight;
+        vertexY[2] = vertexY[3] = 0.0f;
+        break;
+    }
+
+    for (i = 0; i < 4; ++i)
+    {
+        TranslateRotation(
+            &g_AnmQuadVertices[i], vertexX[i], vertexY[i], sine, cosine,
+            xOffset, yOffset);
+    }
+
+    g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
+        g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
+            vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+    return DrawInner(vm, 0);
+}
+
 static __forceinline float AnmFloat3Length(const AnmFloat3View &value)
 {
     return static_cast<float>(sqrt(

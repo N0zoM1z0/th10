@@ -134,3 +134,5 @@ AnmRenderManagerView::DrawInner
 AnmRenderManagerView::TranslateRotation
 AnmRenderManagerView::ProjectCameraFacingQuad
 AnmRenderManagerView::DrawCameraFacingQuad
+AnmRenderManagerView::Draw2D
+AnmRenderManagerView::Draw2DRotatedOrAxisAligned

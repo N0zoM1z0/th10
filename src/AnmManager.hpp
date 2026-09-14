@@ -359,6 +359,8 @@ struct AnmRenderManagerView
     int DrawInner(AnmVmView *vm, int roundToPixel);
     int DrawNoRotation(AnmVmView *vm);
     int DrawNoRotationNoRound(AnmVmView *vm);
+    int Draw2D(AnmVmView *vm);
+    int Draw2DRotatedOrAxisAligned(AnmVmView *vm);
     void TranslateRotation(
         AnmRenderVertexView *vertex, float x, float y, float sine,
         float cosine, float xOffset, float yOffset);

@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `591f59b gpt-5.6-sol: recover ANM draw core`, branch `main`.
+- Current packet base: `3616aeb gpt-5.6-sol: recover ANM camera projection`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -24,7 +24,8 @@
 - Completed session checkpoint: `3e6de60 gpt-5.6-sol: recover ASCII text pipeline`.
 - Completed session checkpoint: `e239b4b gpt-5.6-sol: recover ANM render buffer core`.
 - Completed session checkpoint: `591f59b gpt-5.6-sol: recover ANM draw core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM camera projection`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `3616aeb gpt-5.6-sol: recover ANM camera projection`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM rotated draw modes`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-draw-core/`. The earlier ANM-manager, ANM-VM, ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
@@ -46,7 +47,44 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM camera-facing projection
+## Current packet: ANM rotated draw modes
+
+Direct target boundary review splits the former `0x004436C0-0x00443B5E`
+candidate at the `CC` byte at `0x0044390F`. The two resulting 591-byte bodies
+are `0x004436C0-0x0044390E` and `0x00443910-0x00443B5E`. Ghidra xrefs and raw
+control flow prove that `Draw @ 0x004451C0` render-mode cases 1 and 3 tail-jump
+to the two entries at `0x00445203` and `0x00445263`. The dispatcher extracts
+the four-bit mode from VM flags 22-25 after checking visible, draw-enabled and
+primary-alpha state.
+
+Both bodies are instruction-identical apart from their two address-dependent
+REL32 displacements. Each handles zero Z rotation through
+`DrawNoRotationNoRound`, uses one x87 `FSINCOS`, accumulates all three VM
+position vectors, scales sprite width/height, applies the anchor modes in flag
+bits 18-21, writes four rotated XY pairs plus common accumulated Z, and enters
+`DrawInner(vm, 0)`. Maintained source therefore supplies `Draw2D` for mode 1
+and a distinct `Draw2DRotatedOrAxisAligned` method for mode 3. The latter name
+is corroborated by TH08's same mode table and remains a descriptive hypothesis;
+all behavior, boundaries, ABIs and duplicate-body facts come from TH10.
+
+Pinned VC7.1 SP1 build6030 `/GL` produces complete 591-byte PDB contributions
+for both methods. Each probe matches 497/507 comparable bytes; the only ten
+non-linkage differences are one equal-length scheduling choice at offsets
+`+0x54..+0x5E`, where the target completes the horizontal anchor mask before
+loading the first Y-offset operand. No exact promotion is made. Natural
+calculation-order and aggregate-layout experiments either preserved those ten
+differences or moved farther from the target; no inert dependency or padding
+was introduced.
+
+Current tracking contains **1,289** candidates, **166** authored functions,
+**138** source mappings, and **67 canonical exact functions / 6,136 bytes**.
+The authored source backlog is **67**. The full current `src/AnmManager.cpp`
+exact set remains **21 functions / 4,486 bytes** across four artifact contexts.
+
+The next ANM frontier is the projected/photo-color family at `0x00443FB0`,
+`0x00444240`, and `0x00444580`, followed by the mode-7 and direct-3D paths.
+
+## Completed packet: ANM camera-facing projection
 
 The camera-facing placement owner at `0x00443B60-0x00443F76` is now recovered
 from TH10-local target evidence. It reads VM Z rotation at `+0x2C`, accumulates
@@ -77,18 +115,8 @@ Direct target review also recovered a Ghidra-missed 50-byte
 `TranslateRotation` body at `0x00443680-0x004436B1`. Its 50 instruction bytes
 are raw-equal to current source, but the candidate PDB contribution includes
 two trailing `CC` bytes and is therefore conservatively source-present/non-
-exact under the current complete-contribution Oracle. A second Ghidra-missed
-CC-delimited body at `0x004436C0-0x00443B5E` is now in the denominator as an
-origin-unknown ANM review candidate; no source or semantic name is assigned yet.
-
-Current tracking contains **1,288** candidates, **164** authored functions,
-**136** source mappings, and **67 canonical exact functions / 6,136 bytes**.
-The authored source backlog is **65**. The full current `src/AnmManager.cpp`
-exact set is **21 functions / 4,486 bytes** across four artifact contexts.
-
-The next ANM frontier is the newly bounded `0x004436C0` rotated draw body and
-the projected/photo wrapper at `0x00443FB0`; establish their TH10 caller and
-field semantics before transferring any adjacent-game source shape.
+exact under the current complete-contribution Oracle. The following rotated
+draw range was subsequently split and reconstructed in the current packet.
 
 ## Completed packet: ANM shared draw core
 
