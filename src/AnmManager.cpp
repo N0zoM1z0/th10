@@ -1283,6 +1283,106 @@ int AnmRenderManagerView::DrawProjected3DQuad(AnmVmView *vm)
     return result;
 }
 
+struct AnmProjectedPhotoBlendDrawLocals
+{
+    // VC7.1 reuses the live component slot for each byte-to-float conversion.
+    // This is target arithmetic storage, not inert stack-shape padding.
+    AnmColorView color;
+    float distanceRange;
+    int colorComponent;
+};
+
+// Target 0x004445C0-0x00444751 is render mode 7. It transforms each local
+// source vertex through the matrix cached by Project3DQuad and applies the
+// background photo blend independently from that vertex's camera distance.
+int AnmRenderManagerView::DrawMode7(AnmVmView *vm)
+{
+    Project3DQuad(vm);
+
+    AnmFloat4View transformedVertices[4];
+    AnmProjectedPhotoBlendDrawLocals draw;
+    AnmFloat3View cameraDelta;
+    float distance;
+    int result;
+    int vertexAlpha;
+    AnmUntexturedVertexView *sourceVertex;
+    AnmFloat4View *transformedVertex;
+
+    draw.distanceRange =
+        g_AnmPhotoBlend.nearDistance - g_AnmPhotoBlend.farDistance;
+    draw.color.value = vm->useSecondaryColor
+        ? vm->secondaryColor.value : vm->primaryColor.value;
+
+    vertexAlpha = reinterpret_cast<int>(g_AnmQuadVertices) +
+        offsetof(AnmRenderVertexView, color) + 3;
+    sourceVertex = untexturedVertices;
+    transformedVertex = transformedVertices;
+    do
+    {
+        D3DXVec4Transform(
+            transformedVertex,
+            reinterpret_cast<const AnmFloat4View *>(sourceVertex),
+            &cachedWorldMatrix);
+        cameraDelta.x = transformedVertex->x -
+            g_AnmBackgroundCameraPosition.x;
+        cameraDelta.y = transformedVertex->y -
+            g_AnmBackgroundCameraPosition.y;
+        cameraDelta.z = transformedVertex->z -
+            g_AnmBackgroundCameraPosition.z;
+        distance = AnmFloat3Length(cameraDelta);
+
+        if (g_AnmPhotoBlend.nearDistance < distance)
+        {
+            distance =
+                (g_AnmPhotoBlend.nearDistance - distance) /
+                draw.distanceRange;
+            if (distance >= 1.0f)
+            {
+                *reinterpret_cast<unsigned int *>(vertexAlpha - 3) =
+                    g_AnmPhotoBlend.farColor.value;
+                *reinterpret_cast<unsigned char *>(vertexAlpha) =
+                    draw.color.alpha;
+            }
+            else
+            {
+                draw.colorComponent = draw.color.blue;
+                reinterpret_cast<unsigned char *>(vertexAlpha)[-3] =
+                        draw.color.blue - static_cast<unsigned char>(
+                            (static_cast<float>(draw.colorComponent) -
+                             g_AnmPhotoBlend.blue) * distance);
+                draw.colorComponent = draw.color.green;
+                reinterpret_cast<unsigned char *>(vertexAlpha)[-2] =
+                        draw.color.green - static_cast<unsigned char>(
+                            (static_cast<float>(draw.colorComponent) -
+                             g_AnmPhotoBlend.green) * distance);
+                draw.colorComponent = draw.color.red;
+                reinterpret_cast<unsigned char *>(vertexAlpha)[-1] =
+                        draw.color.red - static_cast<unsigned char>(
+                            (static_cast<float>(draw.colorComponent) -
+                             g_AnmPhotoBlend.red) * distance);
+                *reinterpret_cast<unsigned char *>(vertexAlpha) =
+                    draw.color.alpha;
+            }
+        }
+        else
+        {
+            *reinterpret_cast<unsigned int *>(vertexAlpha - 3) =
+                draw.color.value;
+        }
+        vertexAlpha += sizeof(AnmRenderVertexView);
+        ++sourceVertex;
+        ++transformedVertex;
+    } while (vertexAlpha <
+        reinterpret_cast<int>(g_AnmQuadVertices) +
+            sizeof(g_AnmQuadVertices) +
+            offsetof(AnmRenderVertexView, color) + 3);
+
+    result = DrawInner(vm, 2);
+    g_AnmQuadVertices[0].rhw = g_AnmQuadVertices[1].rhw =
+        g_AnmQuadVertices[2].rhw = g_AnmQuadVertices[3].rhw = 1.0f;
+    return result;
+}
+
 // Target 0x004451C0-0x0044526C rejects inactive or transparent VMs and
 // dispatches the four-bit render mode through a ten-entry jump table.
 int AnmRenderManagerView::Draw(AnmVmView *vm)

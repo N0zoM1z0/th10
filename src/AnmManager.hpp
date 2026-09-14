@@ -34,6 +34,17 @@ struct AnmFloat3View
 typedef char AnmFloat3ViewSizeIs0C[
     (sizeof(AnmFloat3View) == 0x0c) ? 1 : -1];
 
+struct AnmFloat4View
+{
+    float x;
+    float y;
+    float z;
+    float w;
+};
+
+typedef char AnmFloat4ViewSizeIs10[
+    (sizeof(AnmFloat4View) == 0x10) ? 1 : -1];
+
 union AnmColorView
 {
     unsigned int value;
@@ -336,6 +347,18 @@ struct AnmRenderVertexView
 typedef char AnmRenderVertexViewSizeIs1C[
     (sizeof(AnmRenderVertexView) == 0x1c) ? 1 : -1];
 
+struct AnmUntexturedVertexView
+{
+    float x;
+    float y;
+    float z;
+    float w;
+    unsigned int color;
+};
+
+typedef char AnmUntexturedVertexViewSizeIs14[
+    (sizeof(AnmUntexturedVertexView) == 0x14) ? 1 : -1];
+
 // Only the renderer fields established by the shared-buffer clear/flush seam
 // are named. The 0x20000 packed vertices account exactly for the span between
 // the target-observed buffer base and its end/start cursors.
@@ -355,7 +378,8 @@ struct AnmRenderManagerView
     unsigned char currentVertexShader;
     unsigned char unknown3ADA6B[0x003];
     unsigned char currentTextureFilter;
-    unsigned char unknown3ADA6F[0x059];
+    unsigned char unknown3ADA6F[0x009];
+    AnmUntexturedVertexView untexturedVertices[4];
     unsigned int spritesToDraw;
     AnmRenderVertexView vertexBuffer[0x20000];
     AnmRenderVertexView *vertexBufferEnd;
@@ -404,6 +428,8 @@ typedef char AnmRenderStateCacheAt3ADA64[
      offsetof(AnmRenderManagerView, currentTextureFilter) == 0x3ada6e) ? 1 : -1];
 typedef char AnmRenderCachedWorldMatrixAt3AD0F0[
     (offsetof(AnmRenderManagerView, cachedWorldMatrix) == 0x3ad0f0) ? 1 : -1];
+typedef char AnmRenderUntexturedVerticesAt3ADA78[
+    (offsetof(AnmRenderManagerView, untexturedVertices) == 0x3ada78) ? 1 : -1];
 typedef char AnmRenderMixColorAt732458[
     (offsetof(AnmRenderManagerView, mixColor) == 0x732458 &&
      offsetof(AnmRenderManagerView, useMixColor) == 0x73245c) ? 1 : -1];
@@ -443,7 +469,14 @@ struct AnmPhotoBlendView
     float blue;
     float green;
     float red;
+    float unknown14;
+    AnmColorView farColor;
 };
+
+typedef char AnmPhotoBlendViewSizeIs1C[
+    (sizeof(AnmPhotoBlendView) == 0x1c) ? 1 : -1];
+typedef char AnmPhotoBlendFarColorAt18[
+    (offsetof(AnmPhotoBlendView, farColor) == 0x18) ? 1 : -1];
 
 extern AnmRenderManagerView *g_AnmRenderManagerView;
 extern D3d9DeviceView *g_Direct3DDevice;
@@ -470,6 +503,9 @@ extern "C" AnmFloat3View *__stdcall D3DXVec3Project(
     AnmFloat3View *output, const AnmFloat3View *input,
     const AnmViewportView *viewport, const AnmMatrixView *projection,
     const AnmMatrixView *view, const AnmMatrixView *world);
+extern "C" AnmFloat4View *__stdcall D3DXVec4Transform(
+    AnmFloat4View *output, const AnmFloat4View *input,
+    const AnmMatrixView *matrix);
 extern "C" AnmMatrixView *__stdcall D3DXMatrixRotationX(
     AnmMatrixView *output, float angle);
 extern "C" AnmMatrixView *__stdcall D3DXMatrixRotationY(

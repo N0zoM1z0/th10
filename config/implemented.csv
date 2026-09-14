@@ -137,6 +137,7 @@ AnmRenderManagerView::DrawCameraFacingQuad
 AnmRenderManagerView::DrawMode6
 AnmRenderManagerView::Project3DQuad
 AnmRenderManagerView::DrawProjected3DQuad
+AnmRenderManagerView::DrawMode7
 AnmRenderManagerView::Draw2D
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned
 AnmRenderManagerView::Draw

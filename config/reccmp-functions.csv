@@ -138,6 +138,7 @@ AnmRenderManagerView::DrawCameraFacingQuad,0x00443F80,function
 AnmRenderManagerView::DrawMode6,0x00443FB0,function
 AnmRenderManagerView::Project3DQuad,0x00444240,function
 AnmRenderManagerView::DrawProjected3DQuad,0x00444580,function
+AnmRenderManagerView::DrawMode7,0x004445C0,function
 AnmRenderManagerView::Draw2D,0x004436C0,function
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned,0x00443910,function
 AnmRenderManagerView::Draw,0x004451C0,function

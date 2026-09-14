@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `56ac2e8 gpt-5.6-sol: recover ANM projected 3D quad`, branch `main`.
+- Current packet base: `9ad868a gpt-5.6-sol: recover ANM mode dispatch`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -27,14 +27,15 @@
 - Completed session checkpoint: `3616aeb gpt-5.6-sol: recover ANM camera projection`.
 - Completed session checkpoint: `1923623 gpt-5.6-sol: recover ANM rotated draw modes`.
 - Completed session checkpoint: `56ac2e8 gpt-5.6-sol: recover ANM projected 3D quad`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM mode dispatch`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `9ad868a gpt-5.6-sol: recover ANM mode dispatch`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM projected photo blend`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-projected/`. The earlier ANM draw, ANM manager, ANM VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-mode7/`. The earlier ANM projected, ANM draw, ANM manager, ANM VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `56ac2e8...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `9ad868a...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -49,7 +50,47 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM mode dispatch
+## Current packet: ANM projected photo blend
+
+`DrawMode7 @ 0x004445C0-0x00444751` is reconstructed from TH10-local target
+evidence. After `Project3DQuad`, it transforms the four renderer-local
+0x14-byte source vertices beginning at renderer `+0x3ADA78` through cached
+world matrix `+0x3AD0F0`. Each resulting XYZ is measured independently from
+camera global `0x00491D7C`.
+
+Within the near distance at `0x00491E78`, a vertex keeps the VM's selected
+primary or secondary color. Across the near/far interval it interpolates B/G/R
+toward float channels at `0x00491E80/84/88` and preserves VM alpha. At or
+beyond the far endpoint, it takes dword color `0x00491E90` and then restores VM
+alpha. Unlike mode 6, this path neither applies renderer mix color nor rejects
+a fully blended quad. It submits through `DrawInner(vm, 2)` and restores all
+four shared RHW fields to one.
+
+The dispatcher pushes VM then renderer for mode 7; the callee owns both stack
+arguments and returns with `RET 8`. Its source view now names the four source
+vertices and extends the photo-blend state through the far color, with compile-
+time offset and size checks. TH095 supplied a source-family hypothesis only;
+all accepted offsets, arithmetic and ABI facts are TH10-local.
+
+Pinned VC7.1 `/GL` in the real two-VM caller context produces a 404-byte PDB
+contribution versus the 402-byte target. Refining the initial 479-byte adjacent-
+shaped candidate to TH10 float-channel arithmetic, pointer induction and a
+12-byte live color/range/conversion aggregate closes the stack frame exactly at
+`0x4C` and aligns the full transform/distance/control-flow core. The remaining
+two-byte extent difference comes from the candidate retaining the shared-color
+base with positive channel offsets and an adjusted loop comparison, while the
+target retains an alpha pointer and offsets `-3..0`. It remains source-present
+and non-exact without artificial codegen constraints.
+
+Current tracking contains **1,289** candidates, **172** authored functions,
+**144** source mappings, and **70 canonical exact functions / 7,064 bytes**.
+The authored source backlog is **70**. The full `src/AnmManager.cpp` canonical
+set remains **24 functions / 5,414 bytes** across five artifact contexts.
+
+The next ANM frontier is `Draw3D @ 0x00444760`, followed by the generated-
+vertex initialization/submission corridor at `0x00444B10-0x004450E0`.
+
+## Completed packet: ANM mode dispatch
 
 `DrawMode6 @ 0x00443FB0-0x00444232` is now reconstructed from TH10-local
 evidence. It first uses the camera-facing projector, computes the distance from
