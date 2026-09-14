@@ -9,8 +9,10 @@ disk target, Ghidra target, ledgers, and live status using the commands in
 
 ## Bounded exact-reconstruction loop
 
-1. Select one candidate from the ledger; never select only by an attractive
-   decompiler name.
+1. Select one candidate from the ledger; use
+   `python3 scripts/report-exact-backlog.py` for the reviewed authored,
+   source-present queue. Queue membership is triage only. Never select only by
+   an attractive decompiler name.
 2. Reconcile its entry, exits, tails, tables, padding, references, and physical
    ownership against target bytes.
 3. Classify origin independently: authored game code, compiler-generated,

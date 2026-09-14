@@ -7,9 +7,10 @@
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
-- Planned current checkpoint subject: `gpt-5.6-sol: promote exact LZSS state reset`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `621add9 gpt-5.6-sol: promote exact LZSS state reset`.
+- Planned current checkpoint subject: `gpt-5.6-sol: report exact reconstruction backlog`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-lzss-init-exact/`. The completed PbgFile, exact-replay and PbgArchive campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-exact-backlog-report/`. Earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -29,13 +30,17 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: canonical LZSS state-reset backlog
+## Current packet: exact-work backlog reporting
 
-The LZSS audit promoted the reviewed authored `Lzss::InitEncoderState` body at `0x00435FD0-0x00435FF9` that earlier work left at relocation-masked diagnostic state. Fresh raw target review confirms the complete 42-byte CC-delimited extent clears the 0x2000-byte dictionary and all 0x2001 three-dword tree nodes. Ghidra still misses the standalone body; the neighboring encoder contains the same reset operation inline.
+The new `scripts/report-exact-backlog.py` replaces manual searching across `functions.csv`, `function-origins.csv`, `reccmp-functions.csv`, and `matches.csv`. It validates the control plane before reporting, joins the four evidence planes by address, sorts by source/address, and supports exact source, module and origin-state filters plus JSON output. The default queue includes only authored, source-present, non-exact functions and explicitly grants no exactness credit.
 
-Current `src/Lzss.cpp` was compiled twice from an absent shared output with pinned VC7.1 SP1 build6030. Its 30 ordinary bytes match, and all three DIR32 relocations are now target-bound: dictionary base `0x0048F868` at `+9`, plus `g_LzssTree` base `0x00477858` at `+16` and `+35` with object addends `+4` and `+0x18010`. Both cold passes reproduce **42/42 bytes and three relocations** exactly.
+At this checkpoint the 90 source mappings split into **20 canonical exact**, **66 authored non-exact functions / 26,540 bytes**, and **four origin-review functions / 38 bytes**. The latter are Player callback mappings whose source presence was already recorded while source-written versus compiler/optimizer wrapper origin remains unknown. Progress and live status now expose this split instead of describing all 90 mappings as authored.
 
-No source behavior or layout changed. Original LZSS TU partition, production normal-COFF versus LTCG ownership, complete link graph, runtime behavior, and the general linked-image LTCG Oracle remain unknown.
+No target conclusion, source behavior, exact unit, or whole-build state changed in this infrastructure packet.
+
+## Completed packet: canonical LZSS state-reset backlog
+
+Checkpoint `621add9` promoted the reviewed `Lzss::InitEncoderState` body at `0x00435FD0-0x00435FF9`. Two cold builds reproduced **42/42 bytes and three DIR32 relocations**: dictionary base `0x0048F868`, plus `g_LzssTree` base `0x00477858` with object addends `+4` and `+0x18010`. Ghidra still misses the standalone helper; raw target code and the encoder's inline reset establish its extent and behavior.
 
 ## Completed packet: canonical PbgArchive lifecycle backlog
 
@@ -118,7 +123,7 @@ Total repository canonical exact coverage after the Enemy packet was **4 functio
 
 ## Ledger and verification planes
 
-Current ledger at the LZSS reset checkpoint:
+Current ledger at the backlog-report checkpoint:
 
 - candidates: **1264**
 - origin/boundary pending: **1135**
@@ -127,11 +132,11 @@ Current ledger at the LZSS reset checkpoint:
 - source-present: **90 / 39,658 bytes**
 - canonical exact: **20 / 700 bytes**
 
-Current-packet delta from `4ed34ee`: **+1 canonical exact function / +42 exact bytes**. Session delta from `444eb1a...` is **+16 canonical exact functions / +523 exact bytes**. Candidate, authored, excluded, and source-present denominators are unchanged. The previous Enemy hard-packet delta was +3 candidates / +3 pending from the unreferenced `0x00412A60/70/80` bodies. `config/build.toml` remains unchanged and honestly open.
+Current infrastructure-packet delta from `621add9`: no ledger totals changed. The 90 source mappings comprise 86 authored and four origin-review functions; after subtracting the 20 canonical exact functions, the authored source-present exact backlog is 66 functions / 26,540 bytes. Session exact delta from `444eb1a...` remains **+16 functions / +523 bytes**.
 
-**Source presence:** no new target function is promoted source-present. The LZSS reset was already mapped to maintained source.
+**Source presence:** no new target function is promoted source-present. Reporting now keeps the 86 authored and four origin-review mappings visible as separate counts.
 
-**Exactness:** repository canonical exact coverage is 20 functions / 700 bytes. The new LZSS unit passes two cold-output source-object replay cycles across 42 bytes and three relocations. The complete set remains cold-replayable with one compile per source/profile. This exact lane does not establish production object ownership or whole-build closure.
+**Exactness:** repository canonical exact coverage remains 20 functions / 700 bytes. The complete set remains cold-replayable with one compile per source/profile. This exact lane does not establish production object ownership or whole-build closure.
 
 **Whole build:** actual final `python3 scripts/build.py` returned **RC2 / explicitly open**. Production compiler flags, TU partition, libraries, resources and link order remain unknown. `build.py --check`, tracking, toolchain execution and public CI pass this honest open state.
 
@@ -147,11 +152,11 @@ The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with
 
 The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
 
-The current LZSS campaign retains its compact manifest and one bounded Ghidra receipt in addition to the completed campaign manifests and archive receipts. Current `.analysis/` inventory is **354 regular files / 3,976,195 logical bytes / 0 files >64 MiB**. Reproducible compiler objects remain below ignored `build/`; no copied target was created.
+The current reporting campaign retains one compact manifest; its outputs are reproducible from tracked ledgers. Current `.analysis/` inventory is **355 regular files / 3,977,656 logical bytes / 0 files >64 MiB**. Reproducible compiler objects remain below ignored `build/`; no copied target was created.
 
 ## Next hard frontier
 
-Scan the remaining source-present normal-COFF probes for other relocation-complete candidates. A reusable report of authored, source-present, non-exact functions should replace manual CSV hunting; compiler-generated deleting destructors and origin-unknown constructor-shaped bodies must remain outside the authored exact queue.
+Use `python3 scripts/report-exact-backlog.py` to scan the 66-function authored queue. The previous probe notes no longer contain another registered structural-exact source mapping, so the next unit requires fresh source/compiler comparison rather than ledger-only promotion. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
 
 After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. In parallel with later product work, the major infrastructure gap remains a target-bound linked-image extent Oracle for LTCG-owned code; normal-COFF exact units do not close that gap.
 

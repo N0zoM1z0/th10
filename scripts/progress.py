@@ -22,6 +22,7 @@ def rows(name: str) -> list[dict[str, str]]:
 def measures() -> dict[str, int]:
     functions = rows("functions.csv")
     origins = {row["address"]: row for row in rows("function-origins.csv")}
+    mappings = rows("reccmp-functions.csv")
     matches = rows("matches.csv")
     implemented = []
     with (CONFIG / "implemented.csv").open(newline="", encoding="utf-8") as stream:
@@ -31,6 +32,15 @@ def measures() -> dict[str, int]:
     exact_bytes = sum(int(row["size"], 0) for row in matches)
     authored_bytes = sum(int(row["size"], 0) for row in authored)
     reviewed = len(authored) + len(excluded)
+    mapped_authored = sum(
+        origins[row["address"]]["disposition"] == "authored" for row in mappings
+    )
+    mapped_review = sum(
+        origins[row["address"]]["disposition"] == "review" for row in mappings
+    )
+    mapped_excluded = sum(
+        origins[row["address"]]["disposition"] == "exclude" for row in mappings
+    )
     return {
         "functions": len(functions),
         "reviewed": reviewed,
@@ -39,6 +49,10 @@ def measures() -> dict[str, int]:
         "authored_bytes": authored_bytes,
         "excluded": len(excluded),
         "implemented": len(implemented),
+        "mapped_authored": mapped_authored,
+        "mapped_review": mapped_review,
+        "mapped_excluded": mapped_excluded,
+        "authored_exact_backlog": mapped_authored - len(matches),
         "matches": len(matches),
         "exact_bytes": exact_bytes,
     }
@@ -57,7 +71,10 @@ their boundaries and origins must be reviewed independently.
 | Confirmed authored functions | {values['authored']:,} |
 | Confirmed authored code bytes | {values['authored_bytes']:,} |
 | Classified exclusions | {values['excluded']:,} |
-| Source-present authored mappings | {values['implemented']:,} |
+| Source-present mappings | {values['implemented']:,} |
+| Source-present with authored origin | {values['mapped_authored']:,} |
+| Source-present origin review pending | {values['mapped_review']:,} |
+| Authored source-present exact backlog | {values['authored_exact_backlog']:,} |
 | Canonical exact functions | {values['matches']:,} |
 | Canonical exact authored bytes | {values['exact_bytes']:,} |
 
