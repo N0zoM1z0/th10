@@ -68,3 +68,4 @@ Player::~Player,0x00424ED0,function
 PlayerCreate,0x00425020,function
 PlayerUpdateShots,0x00428280,function
 Player::CalculateDamageToTarget,0x00428630,function
+EnemyRuntimeUpdate,0x0040DC80,function

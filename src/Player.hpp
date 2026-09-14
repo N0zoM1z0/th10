@@ -327,6 +327,7 @@ typedef char PlayerShotRuntimeDescriptorAt58[
     (offsetof(PlayerShotRuntimeView, descriptor) == 0x58) ? 1 : -1];
 
 struct PlayerCallbackNodeView;
+struct EnemyFullObjectView;
 
 // Maintained partial TH10 player layout. Only target-observed fields needed by
 // the reviewed Player replay, option, movement, update, and draw seams are
@@ -367,8 +368,8 @@ struct Player
     unsigned int modeVmId;
     PlayerOptionRuntime options[4];
     int optionCount;
-    int updateScratch;
-    unsigned char updateScratchByte;
+    EnemyFullObjectView *trackedEnemy;
+    unsigned char trackedEnemyValid;
     unsigned char unknown3509[0x03];
     PlayerEffectRowView effectRows[33];
     int shotSourceActive[4];

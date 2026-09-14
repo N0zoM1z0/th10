@@ -67,3 +67,4 @@ Player::~Player
 PlayerCreate
 PlayerUpdateShots
 Player::CalculateDamageToTarget
+EnemyRuntimeUpdate

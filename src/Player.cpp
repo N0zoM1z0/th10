@@ -1706,8 +1706,8 @@ int __fastcall PlayerUpdateCallback(Player *player)
         player->updateTimer0.current = -1;
         player->updateTimer0.subframe = -1.0f;
         player->updateTimer0.previous = -2;
-        player->updateScratch = 0;
-        player->updateScratchByte = 0;
+        player->trackedEnemy = NULL;
+        player->trackedEnemyValid = 0;
     }
 
     PlayerUpdateShots(player);
