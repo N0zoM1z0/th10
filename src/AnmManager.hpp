@@ -377,9 +377,10 @@ struct AnmRenderManagerView
     unsigned int currentTextureFactor;
     void *currentTexture;
     unsigned char currentBlendMode;
-    unsigned char unknown3ADA69;
+    unsigned char currentColorOperation;
     unsigned char currentVertexShader;
-    unsigned char unknown3ADA6B[0x003];
+    unsigned char currentZWrite;
+    unsigned char unknown3ADA6C[0x002];
     unsigned char currentTextureFilter;
     unsigned char unknown3ADA6F;
     AnmSpriteView *currentSprite;
@@ -413,7 +414,21 @@ struct AnmRenderManagerView
     int DrawProjected3DQuad(AnmVmView *vm);
     int DrawMode7(AnmVmView *vm);
     int Draw3D(AnmVmView *vm);
+    int InitializeHorizontalTextureStrip(
+        AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount);
+    int InitializeVerticalTextureStrip(
+        AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount);
+    int SetGeneratedVertexColor(
+        AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount);
     int DrawGeneratedVertices(
+        AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount);
+    int QueueSpriteQuad(
+        AnmVmView *vm, AnmRenderVertexView *vertices);
+    int DrawUntexturedTriangleStrip(
+        AnmVmView *vm, AnmUntexturedVertexView *vertices, int vertexCount);
+    int DrawUntexturedTriangleFan(
+        AnmVmView *vm, AnmUntexturedVertexView *vertices, int vertexCount);
+    int DrawTexturedTriangleFan(
         AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount);
     int Draw(AnmVmView *vm);
 };
@@ -431,7 +446,9 @@ typedef char AnmRenderStateCacheAt3ADA64[
     (offsetof(AnmRenderManagerView, currentTextureFactor) == 0x3ada60 &&
      offsetof(AnmRenderManagerView, currentTexture) == 0x3ada64 &&
      offsetof(AnmRenderManagerView, currentBlendMode) == 0x3ada68 &&
+     offsetof(AnmRenderManagerView, currentColorOperation) == 0x3ada69 &&
      offsetof(AnmRenderManagerView, currentVertexShader) == 0x3ada6a &&
+     offsetof(AnmRenderManagerView, currentZWrite) == 0x3ada6b &&
      offsetof(AnmRenderManagerView, currentTextureFilter) == 0x3ada6e) ? 1 : -1];
 typedef char AnmRenderDirect3DStateAt3ADA70[
     (offsetof(AnmRenderManagerView, currentSprite) == 0x3ada70 &&

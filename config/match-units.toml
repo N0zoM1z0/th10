@@ -1195,3 +1195,45 @@ linkages = [
   { offset = 16, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
   { offset = 40, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
 ]
+
+[units.anm-initialize-horizontal-texture-strip]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmRendererDispatch"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AnmPairOwnerDrawCallback@@YIHPAUAnmPairDrawOwnerView@@@Z"
+functions = ["AnmRenderManagerView::InitializeHorizontalTextureStrip"]
+symbol = "?InitializeHorizontalTextureStrip@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z"
+target_address = 0x00444B10
+size = 201
+linkages = []
+
+[units.anm-initialize-vertical-texture-strip]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmRendererDispatch"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AnmPairOwnerDrawCallback@@YIHPAUAnmPairDrawOwnerView@@@Z"
+functions = ["AnmRenderManagerView::InitializeVerticalTextureStrip"]
+symbol = "?InitializeVerticalTextureStrip@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z"
+target_address = 0x00444BE0
+size = 201
+linkages = []
+
+[units.anm-set-generated-vertex-color]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmRendererDispatch"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AnmPairOwnerDrawCallback@@YIHPAUAnmPairDrawOwnerView@@@Z"
+functions = ["AnmRenderManagerView::SetGeneratedVertexColor"]
+symbol = "?SetGeneratedVertexColor@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z"
+target_address = 0x00444CB0
+size = 34
+linkages = []

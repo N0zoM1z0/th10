@@ -1597,6 +1597,333 @@ int AnmRenderManagerView::Draw3D(AnmVmView *vm)
     return 0;
 }
 
+// Target 0x00444B10-0x00444BD8 initializes alternating top and bottom rows
+// across a horizontal generated-vertex strip.
+int AnmRenderManagerView::InitializeHorizontalTextureStrip(
+    AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount)
+{
+    float y;
+    int i;
+    AnmRenderVertexView *vertex;
+    float x;
+    float currentX;
+    float step;
+    float xSpan;
+
+    if (vertexCount < 3)
+        return -1;
+
+    x = vm->loadedSprite->uEnd + vm->uvScrollX;
+    xSpan = vm->loadedSprite->uEnd - vm->loadedSprite->uStart;
+    y = vm->loadedSprite->vStart + vm->uvScrollY;
+    vertex = vertices;
+    step = xSpan / ((vertexCount + 1) / 2 - 1);
+    i = 0;
+    currentX = x;
+    for (; i < vertexCount; i += 2, vertex += 2, currentX -= step)
+    {
+        vertex->u = currentX;
+        vertex->v = y;
+        vertex->color = vm->primaryColor.value;
+        vertex->rhw = 1.0f;
+    }
+
+    y = vm->loadedSprite->vEnd + vm->uvScrollY;
+    vertex = vertices + 1;
+    i = 1;
+    currentX = x;
+    for (; i < vertexCount; i += 2, vertex += 2, currentX -= step)
+    {
+        vertex->u = currentX;
+        vertex->v = y;
+        vertex->color = vm->primaryColor.value;
+        vertex->rhw = 1.0f;
+    }
+    return 0;
+}
+
+// Target 0x00444BE0-0x00444CA8 is the vertical counterpart: alternating
+// left and right columns receive decreasing V coordinates.
+int AnmRenderManagerView::InitializeVerticalTextureStrip(
+    AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount)
+{
+    float x;
+    int i;
+    AnmRenderVertexView *vertex;
+    float y;
+    float currentY;
+    float step;
+    float ySpan;
+
+    if (vertexCount < 3)
+        return -1;
+
+    y = vm->loadedSprite->vEnd + vm->uvScrollY;
+    ySpan = vm->loadedSprite->vEnd - vm->loadedSprite->vStart;
+    x = vm->loadedSprite->uStart + vm->uvScrollX;
+    vertex = vertices;
+    step = ySpan / ((vertexCount + 1) / 2 - 1);
+    i = 0;
+    currentY = y;
+    for (; i < vertexCount; i += 2, vertex += 2, currentY -= step)
+    {
+        vertex->v = currentY;
+        vertex->u = x;
+        vertex->color = vm->primaryColor.value;
+        vertex->rhw = 1.0f;
+    }
+
+    x = vm->loadedSprite->uEnd + vm->uvScrollX;
+    vertex = vertices + 1;
+    i = 1;
+    currentY = y;
+    for (; i < vertexCount; i += 2, vertex += 2, currentY -= step)
+    {
+        vertex->v = currentY;
+        vertex->u = x;
+        vertex->color = vm->primaryColor.value;
+        vertex->rhw = 1.0f;
+    }
+    return 0;
+}
+
+// Target 0x00444CB0-0x00444CD1 copies the VM primary color into an arbitrary
+// generated-vertex range. LTCG removes the unused manager receiver.
+int AnmRenderManagerView::SetGeneratedVertexColor(
+    AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount)
+{
+    while (vertexCount-- > 0)
+    {
+        vertices->color = vm->primaryColor.value;
+        ++vertices;
+    }
+    return 0;
+}
+
+// Target 0x00444CE0-0x00444DBF is the render-mode-9 textured triangle-strip
+// submitter. Vertex colors are consumed directly through D3DTA_DIFFUSE.
+int AnmRenderManagerView::DrawGeneratedVertices(
+    AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount)
+{
+    if (!vm->visible)
+        return -1;
+    if (!vm->drawEnabled)
+        return -1;
+    if (vm->primaryColor.alpha == 0)
+        return -1;
+
+    if (spritesToDraw != 0)
+        FlushVertexBuffer();
+
+    if (currentTexture != vm->loadedSprite->texture)
+    {
+        currentTexture = vm->loadedSprite->texture;
+        g_Direct3DDevice->SetTexture(0, currentTexture);
+    }
+
+    if (currentVertexShader != 3)
+    {
+        g_Direct3DDevice->vtable->SetFVF(
+            g_Direct3DDevice,
+            D3D9_VIEW_FVF_XYZRHW | D3D9_VIEW_FVF_DIFFUSE |
+                D3D9_VIEW_FVF_TEX1);
+        currentVertexShader = 3;
+    }
+
+    SetRenderStateForVm(vm);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAARG2, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLORARG2, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->DrawPrimitiveUP(
+        g_Direct3DDevice, D3D9_VIEW_PT_TRIANGLESTRIP,
+        vertexCount - 2, vertices, sizeof(AnmRenderVertexView));
+    return 0;
+}
+
+// Target 0x00444DC0-0x00444E4E queues one caller-supplied textured quad in
+// the shared six-vertex batch after applying the VM's texture/render state.
+int AnmRenderManagerView::QueueSpriteQuad(
+    AnmVmView *vm, AnmRenderVertexView *vertices)
+{
+    if (!vm->visible)
+        return -1;
+    if (!vm->drawEnabled)
+        return -1;
+    if (vm->primaryColor.alpha == 0)
+        return -1;
+
+    if (currentTexture != vm->loadedSprite->texture)
+    {
+        currentTexture = vm->loadedSprite->texture;
+        FlushVertexBuffer();
+        g_Direct3DDevice->SetTexture(0, currentTexture);
+    }
+
+    if (currentVertexShader != 1)
+    {
+        FlushVertexBuffer();
+        currentVertexShader = 1;
+    }
+
+    SetRenderStateForVm(vm);
+    AddSpriteToDrawBuffer(vertices);
+    return 0;
+}
+
+// Targets 0x00444E60 and 0x00444FA0 install the untextured diffuse pipeline,
+// temporarily disable Z writes, submit a strip or fan, and restore the normal
+// texture-stage operations and renderer caches.
+int AnmRenderManagerView::DrawUntexturedTriangleStrip(
+    AnmVmView *vm, AnmUntexturedVertexView *vertices, int vertexCount)
+{
+    if (spritesToDraw != 0)
+        FlushVertexBuffer();
+
+    if (currentVertexShader != 4)
+    {
+        g_Direct3DDevice->vtable->SetFVF(
+            g_Direct3DDevice,
+            D3D9_VIEW_FVF_XYZRHW | D3D9_VIEW_FVF_DIFFUSE);
+        currentVertexShader = 4;
+    }
+
+    SetRenderStateForVm(vm);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAOP, D3D9_VIEW_TOP_SELECTARG1);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLOROP, D3D9_VIEW_TOP_SELECTARG1);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAARG1, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLORARG1, D3D9_VIEW_TA_DIFFUSE);
+
+    g_AnmRenderManagerView->FlushVertexBuffer();
+    g_Direct3DDevice->vtable->SetRenderState(
+        g_Direct3DDevice, D3D9_VIEW_RS_ZWRITEENABLE, 0);
+    g_Direct3DDevice->vtable->DrawPrimitiveUP(
+        g_Direct3DDevice, D3D9_VIEW_PT_TRIANGLESTRIP,
+        vertexCount - 2, vertices, sizeof(AnmUntexturedVertexView));
+
+    g_AnmRenderManagerView->currentVertexShader = 0xff;
+    g_AnmRenderManagerView->currentColorOperation = 0xff;
+    g_AnmRenderManagerView->currentBlendMode = 3;
+    g_AnmRenderManagerView->currentZWrite = 0xff;
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAOP, D3D9_VIEW_TOP_MODULATE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLOROP, D3D9_VIEW_TOP_MODULATE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAARG1, D3D9_VIEW_TA_TEXTURE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLORARG1, D3D9_VIEW_TA_TEXTURE);
+    return 0;
+}
+
+int AnmRenderManagerView::DrawUntexturedTriangleFan(
+    AnmVmView *vm, AnmUntexturedVertexView *vertices, int vertexCount)
+{
+    if (spritesToDraw != 0)
+        FlushVertexBuffer();
+
+    if (currentVertexShader != 4)
+    {
+        g_Direct3DDevice->vtable->SetFVF(
+            g_Direct3DDevice,
+            D3D9_VIEW_FVF_XYZRHW | D3D9_VIEW_FVF_DIFFUSE);
+        currentVertexShader = 4;
+    }
+
+    SetRenderStateForVm(vm);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAOP, D3D9_VIEW_TOP_SELECTARG1);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLOROP, D3D9_VIEW_TOP_SELECTARG1);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAARG1, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLORARG1, D3D9_VIEW_TA_DIFFUSE);
+
+    g_AnmRenderManagerView->FlushVertexBuffer();
+    g_Direct3DDevice->vtable->SetRenderState(
+        g_Direct3DDevice, D3D9_VIEW_RS_ZWRITEENABLE, 0);
+    g_Direct3DDevice->vtable->DrawPrimitiveUP(
+        g_Direct3DDevice, D3D9_VIEW_PT_TRIANGLEFAN,
+        vertexCount - 2, vertices, sizeof(AnmUntexturedVertexView));
+
+    g_AnmRenderManagerView->currentVertexShader = 0xff;
+    g_AnmRenderManagerView->currentColorOperation = 0xff;
+    g_AnmRenderManagerView->currentBlendMode = 3;
+    g_AnmRenderManagerView->currentZWrite = 0xff;
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAOP, D3D9_VIEW_TOP_MODULATE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLOROP, D3D9_VIEW_TOP_MODULATE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAARG1, D3D9_VIEW_TA_TEXTURE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLORARG1, D3D9_VIEW_TA_TEXTURE);
+    return 0;
+}
+
+// Target 0x004450E0-0x004451B2 is the textured fan submitter used by the
+// 33-vertex generated trail callback at 0x00445880.
+int AnmRenderManagerView::DrawTexturedTriangleFan(
+    AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount)
+{
+    if (spritesToDraw != 0)
+        FlushVertexBuffer();
+
+    if (currentVertexShader != 3)
+    {
+        g_Direct3DDevice->vtable->SetFVF(
+            g_Direct3DDevice,
+            D3D9_VIEW_FVF_XYZRHW | D3D9_VIEW_FVF_DIFFUSE |
+                D3D9_VIEW_FVF_TEX1);
+        currentVertexShader = 3;
+    }
+
+    SetRenderStateForVm(vm);
+
+    if (currentTexture != vm->loadedSprite->texture)
+    {
+        currentTexture = vm->loadedSprite->texture;
+        g_Direct3DDevice->SetTexture(0, currentTexture);
+    }
+
+    g_AnmRenderManagerView->FlushVertexBuffer();
+    g_Direct3DDevice->vtable->SetRenderState(
+        g_Direct3DDevice, D3D9_VIEW_RS_ZWRITEENABLE, 0);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_ALPHAARG2, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->SetTextureStageState(
+        g_Direct3DDevice, 0,
+        D3D9_VIEW_TSS_COLORARG2, D3D9_VIEW_TA_DIFFUSE);
+    g_Direct3DDevice->vtable->DrawPrimitiveUP(
+        g_Direct3DDevice, D3D9_VIEW_PT_TRIANGLEFAN,
+        vertexCount - 2, vertices, sizeof(AnmRenderVertexView));
+    return 0;
+}
+
 // Target 0x004451C0-0x0044526C rejects inactive or transparent VMs and
 // dispatches the four-bit render mode through a ten-entry jump table.
 int AnmRenderManagerView::Draw(AnmVmView *vm)

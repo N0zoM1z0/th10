@@ -141,6 +141,14 @@ AnmRenderManagerView::Project3DQuad,0x00444240,function
 AnmRenderManagerView::DrawProjected3DQuad,0x00444580,function
 AnmRenderManagerView::DrawMode7,0x004445C0,function
 AnmRenderManagerView::Draw3D,0x00444760,function
+AnmRenderManagerView::InitializeHorizontalTextureStrip,0x00444B10,function
+AnmRenderManagerView::InitializeVerticalTextureStrip,0x00444BE0,function
+AnmRenderManagerView::SetGeneratedVertexColor,0x00444CB0,function
+AnmRenderManagerView::DrawGeneratedVertices,0x00444CE0,function
+AnmRenderManagerView::QueueSpriteQuad,0x00444DC0,function
+AnmRenderManagerView::DrawUntexturedTriangleStrip,0x00444E60,function
+AnmRenderManagerView::DrawUntexturedTriangleFan,0x00444FA0,function
+AnmRenderManagerView::DrawTexturedTriangleFan,0x004450E0,function
 AnmRenderManagerView::Draw2D,0x004436C0,function
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned,0x00443910,function
 AnmRenderManagerView::Draw,0x004451C0,function

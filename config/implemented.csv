@@ -140,6 +140,14 @@ AnmRenderManagerView::Project3DQuad
 AnmRenderManagerView::DrawProjected3DQuad
 AnmRenderManagerView::DrawMode7
 AnmRenderManagerView::Draw3D
+AnmRenderManagerView::InitializeHorizontalTextureStrip
+AnmRenderManagerView::InitializeVerticalTextureStrip
+AnmRenderManagerView::SetGeneratedVertexColor
+AnmRenderManagerView::DrawGeneratedVertices
+AnmRenderManagerView::QueueSpriteQuad
+AnmRenderManagerView::DrawUntexturedTriangleStrip
+AnmRenderManagerView::DrawUntexturedTriangleFan
+AnmRenderManagerView::DrawTexturedTriangleFan
 AnmRenderManagerView::Draw2D
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned
 AnmRenderManagerView::Draw

@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `fc3dce0 gpt-5.6-sol: recover ANM projected photo blend`, branch `main`.
+- Current packet base: `f6d88dd gpt-5.6-sol: recover ANM direct 3D`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -29,14 +29,15 @@
 - Completed session checkpoint: `56ac2e8 gpt-5.6-sol: recover ANM projected 3D quad`.
 - Completed session checkpoint: `9ad868a gpt-5.6-sol: recover ANM mode dispatch`.
 - Completed session checkpoint: `fc3dce0 gpt-5.6-sol: recover ANM projected photo blend`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM direct 3D`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `f6d88dd gpt-5.6-sol: recover ANM direct 3D`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM generated geometry`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-draw3d/`. The earlier ANM mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-generated/`. The earlier ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `fc3dce0...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `f6d88dd...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -51,7 +52,49 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM direct 3D
+## Current packet: ANM generated geometry
+
+The full `0x00444B10-0x004451B2` generated-geometry corridor is now
+source-present as eight distinct functions. Horizontal and vertical strip
+initializers fill alternating UV rows or columns with the VM primary color and
+unit RHW; the adjacent color helper updates a caller-supplied 0x1C-stride
+range. Dispatcher mode 9 reaches the visible/alpha-gated textured strip
+submitter with `generatedVertices` and twice `generatedVertexCount`.
+
+The corridor also contains a batched supplied-quad path, two 0x14-stride
+untextured diffuse submitters for triangle strips and fans, and a textured fan
+submitter used by the 33-vertex callback at `0x00445880`. The untextured paths
+select diffuse-only texture operations, disable Z writes for submission, then
+invalidate the renderer's shader/color/blend/Z caches and restore normal
+modulate/texture arguments. D3D9 vtable slots and all state/FVF/primitive
+values are represented explicitly in the target-bound device view.
+
+Ghidra originally omitted the independently CC-delimited bodies at
+`0x00444CB0`, `0x00444DC0`, `0x00444E60`, and `0x00444FA0`; all four are now
+included in the function denominator. Ghidra and raw scans find target callers
+only for the dispatcher strip path and the 33-vertex textured fan. Names for
+the retained no-xref bodies are descriptive or adjacent-supported rather than
+original-symbol claims.
+
+Three units are canonical exact after two cold linked-image replays:
+`InitializeHorizontalTextureStrip` (201 bytes),
+`InitializeVerticalTextureStrip` (201), and `SetGeneratedVertexColor` (34).
+They add 436 exact bytes and have no linked fields. `DrawGeneratedVertices`
+and `DrawTexturedTriangleFan` reproduce their complete 224/211-byte extents
+apart from the same 13-byte texture-bind scheduling block seen in Draw3D.
+`QueueSpriteQuad` and both 313-byte untextured submitters reproduce every
+instruction and linked field, while the candidate PDB contributions own two
+extra trailing `CC` bytes; strict extent policy keeps these five non-exact.
+
+Current tracking contains **1,293** candidates, **182** authored functions,
+**154** source mappings, and **73 canonical exact functions / 7,500 bytes**.
+The authored source backlog is **77**. The full `src/AnmManager.cpp` canonical
+set is **27 functions / 5,850 bytes** across five artifact contexts.
+
+The next ANM frontier is the generated-trail initializer, updater, and draw
+callback at `0x004452F0`, `0x00445620`, and Ghidra-missed `0x00445880`.
+
+## Completed packet: ANM direct 3D
 
 `SetRenderStateForVm3D @ 0x004423E0-0x00442597` is reconstructed from
 TH10-local target evidence. It is the direct-3D sibling of the batched 2D
