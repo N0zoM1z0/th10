@@ -61,3 +61,83 @@ relocations = [
   { offset = 72, type = "DIR32", symbol = "$L3246", target = 0x004126F7 },
   { offset = 76, type = "DIR32", symbol = "$L3247", target = 0x00412700 },
 ]
+
+[units.pbgfile-destructor]
+artifact_kind = "coff"
+source = "src/PbgFile.cpp"
+object = "build/match/pbgfile-destructor.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CPbgFile::~CPbgFile"]
+symbol = "??1CPbgFile@@UAE@XZ"
+target_address = 0x00435340
+size = 46
+relocations = [
+  { offset = 11, type = "DIR32", symbol = "??_7CPbgFile@@6B@", target = 0x0046F230 },
+  { offset = 20, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+  { offset = 40, type = "DIR32", symbol = "??_7IPbgFile@@6B@", target = 0x0046F210 },
+]
+
+[units.pbgfile-close]
+artifact_kind = "coff"
+source = "src/PbgFile.cpp"
+object = "build/match/pbgfile-close.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CPbgFile::Close"]
+symbol = "?Close@CPbgFile@@UAEXXZ"
+target_address = 0x00435460
+size = 34
+relocations = [
+  { offset = 14, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+]
+
+[units.pbgfile-read]
+artifact_kind = "coff"
+source = "src/PbgFile.cpp"
+object = "build/match/pbgfile-read.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CPbgFile::Read"]
+symbol = "?Read@CPbgFile@@UAEKPAXK@Z"
+target_address = 0x00435490
+size = 57
+relocations = [
+  { offset = 46, type = "DIR32", symbol = "__imp__ReadFile@20", target = 0x004660D0 },
+]
+
+[units.pbgfile-tell]
+artifact_kind = "coff"
+source = "src/PbgFile.cpp"
+object = "build/match/pbgfile-tell.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CPbgFile::Tell"]
+symbol = "?Tell@CPbgFile@@UAEKXZ"
+target_address = 0x00435510
+size = 25
+relocations = [
+  { offset = 20, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x004660C8 },
+]
+
+[units.pbgfile-get-size]
+artifact_kind = "coff"
+source = "src/PbgFile.cpp"
+object = "build/match/pbgfile-get-size.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CPbgFile::GetSize"]
+symbol = "?GetSize@CPbgFile@@UAEKXZ"
+target_address = 0x00435530
+size = 21
+relocations = [
+  { offset = 16, type = "DIR32", symbol = "__imp__GetFileSize@8", target = 0x004660D8 },
+]
+
+[units.pbgfile-seek]
+artifact_kind = "coff"
+source = "src/PbgFile.cpp"
+object = "build/match/pbgfile-seek.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CPbgFile::Seek"]
+symbol = "?Seek@CPbgFile@@UAE_NKK@Z"
+target_address = 0x00435550
+size = 37
+relocations = [
+  { offset = 28, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x004660C8 },
+]

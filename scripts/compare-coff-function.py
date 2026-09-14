@@ -259,6 +259,27 @@ def compare_probe(
 ) -> dict[str, object]:
     code, relocations = object_function(path, symbol, size)
     original = target_bytes(verified_target(), address, size)
+    relocation_candidates = []
+    for relocation in relocations:
+        row = dict(relocation)
+        offset = int(relocation["offset"])
+        if offset + 4 > size:
+            raise ValueError(f"relocation at {offset:#x} leaves the probe extent")
+        addend = struct.unpack_from("<I", code, offset)[0]
+        encoded = struct.unpack_from("<I", original, offset)[0]
+        row["object_addend"] = f"0x{addend:08X}"
+        row["target_encoded_value"] = f"0x{encoded:08X}"
+        if relocation["type_id"] == RELOCATION_IDS["DIR32"]:
+            candidate = encoded - addend
+        elif relocation["type_id"] == RELOCATION_IDS["REL32"]:
+            displacement = struct.unpack_from("<i", original, offset)[0]
+            candidate = address + offset + 4 + displacement - addend
+        else:
+            candidate = None
+        row["candidate_target"] = (
+            f"0x{candidate & 0xFFFFFFFF:08X}" if candidate is not None else None
+        )
+        relocation_candidates.append(row)
     ignored = {
         index
         for relocation in relocations
@@ -285,7 +306,7 @@ def compare_probe(
         "object_size": len(code),
         "comparable_bytes": comparable,
         "matched_comparable_bytes": comparable - len(differences),
-        "relocations": relocations,
+        "relocations": relocation_candidates,
         "first_differences": differences[:32],
         "acceptance_authority": "none",
     }

@@ -3,36 +3,40 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Conversation starting HEAD: `93a141c3d223eef62dc4ff7a2c235893a347a842`; the recovered operand packet was checkpointed locally as `2053a39e81b9a2cf0d3aa08b8e6d1625ea2db7b6` (`gpt-web: reconstruct TH10 enemy ECL operands`).
-- Current hard-packet starting HEAD: `2053a39e81b9a2cf0d3aa08b8e6d1625ea2db7b6`, clean, branch `main`, ahead of `origin/main` by one local commit.
-- Planned current checkpoint subject: `gpt-web: map TH10 enemy ECL dispatcher context`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Overall conversation recovery began with 12 unstaged tracked paths, 0 staged, 0 untracked and 0 conflicts on `93a141c3...`; all 12 were the coherent recoverable operand packet. Repeated external same-packet churn/staging was audited and corrected from target evidence before the first checkpoint. No unrelated or unknown tracked/untracked work was reset, overwritten, deleted or staged.
-- The current hard packet entered clean at `2053a39e...`; no pre-existing dirty path needed recovery.
-- Recovery/resume `.analysis/` entry inventory earlier in this conversation was **365 regular files / 4,218,280 logical bytes / 0 files >64 MiB**; legacy and unknown ignored state was preserved.
-- Current hard campaign: `.analysis/gpt-web/20260914-enemy-dispatcher-hard/`. The prior operand campaign is retained as ignored evidence.
-- This Web session has not pushed. The exact-reconstruction campaign remains active/incomplete.
+- Current session starting HEAD: `444eb1a63d4e3a91c4bfcad90c63da25d55c4a02`, clean, branch `main`, ahead of `origin/main` by two local `gpt-web:` commits.
+- Planned current checkpoint subject: `gpt-5.6-sol: promote exact PbgFile accessors`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-pbgfile-exact/`. Earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session called `factory_describe`, `factory_list_repositories`, and `factory_get_repository_status(th10)`, inspected branch/HEAD/history, porcelain-v2 state, complete tracked/untracked state, ignored target/tool/build/analysis state, and the prior handoff. A newer clean checkpoint `93a141c3...` was found as a direct descendant of remembered `9f6cd941...`; it was adopted as live authority instead of restoring old chat state.
+The session inspected branch/HEAD/history, complete tracked/untracked state, the prior handoff, and the two commits ahead of `origin/main`. Clean HEAD `444eb1a...` was adopted as live authority.
 
-All requested repository/Factory guidance and contracts were re-read through `factory_repository_run_shell` before tracked reconstruction work. No requested path was missing.
+All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
-Fresh repository preflight passed on `93a141c3...`:
+Fresh repository preflight passed on `444eb1a...`:
 
 - `python3 scripts/verify-target.py`
 - `python3 scripts/verify-toolchain.py --execute`
 - `python3 scripts/validate-tracking.py --require-target`
 - `python3 scripts/report-reconstruction-status.py`
-- `python3 scripts/ci.py`
-- `python3 scripts/build-match-unit.py --check`
-- `python3 scripts/build.py --check`
 
 The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/GL`, resource and PE32-i386 link smoke through headless Wine. Native `th10-ghidra` operation schemas were rediscovered and `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command`; a later final refresh also passed. Useful Ghidra results used this same passed target binding. Capacity/ownership/transport failures that returned no semantic result were treated as unavailable evidence, never as mismatch or rollback.
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current hard packet: Enemy ECL dispatcher context seam
+## Current packet: canonical PbgFile exact backlog
+
+The systematic audit found that the low exact count is partly a workflow backlog rather than a compiler failure. Earlier work had already compiled several PbgFile and ResFile methods to exact non-relocation bytes, but stopped at relocation-masked probe mode because the executable contains both normal COFF and LTCG inputs. Later Enemy checkpoints used the narrower and correct claim boundary: a canonical normal-COFF unit may prove exact reproduction of its declared target extent without claiming the original production TU or LTCG physical owner. This packet applies that same boundary consistently to six already reviewed authored PbgFile methods.
+
+Fresh target inspection re-confirmed the complete PbgFile boundaries and import/vtable destinations. Ghidra models the destructor and `Close`; the existing TH10-local vtable and raw-byte evidence remains necessary for the four Ghidra-missed methods. Current `src/PbgFile.cpp` was compiled from absent output paths twice with pinned VC7.1 SP1 build6030. The six canonical units replay exact across **220/220 bytes and nine DIR32 relocations**: destructor 46 bytes/three relocations, `Close` 34/one, `Read` 57/one, `Tell` 25/one, `GetSize` 21/one, and `Seek` 37/one.
+
+The packet also makes probe-to-canonical review cheaper: probe mode in `scripts/compare-coff-function.py` now decodes each relocation's object addend, target encoded word, and target-derived candidate destination. These values remain diagnostic and cannot grant exactness; the reviewer must still establish the symbol, boundary, ownership of the relocation, and a zero-difference canonical replay.
+
+No source behavior or layout changed. Original PbgFile TU partition, production normal-COFF versus LTCG ownership, complete link graph, runtime behavior, and the general linked-image LTCG Oracle remain unknown.
+
+## Completed previous hard packet: Enemy ECL dispatcher context seam
 
 This packet deliberately stayed on the central 14,416-byte `EnemyRuntimeView::DispatchEclInstruction` owner at `0x0040E770-0x00411FBF` instead of pivoting to easier leaf functions. It bounded opcodes `0x15D-0x164`, the nested difficulty tables, and the adjacent integer argument seam. The observable outcome was structural: recover context ownership/ABI and denominator gaps needed for a natural future dispatcher, without writing a partial `default`-return switch and falsely promoting the dispatcher to source-present.
 
@@ -97,30 +101,30 @@ Because all current Enemy exact units share `src/Enemy.cpp`, the final integrati
 - `enemy-ecl-int-lvalue-resolver`: exact 80/80, five relocations;
 - `enemy-ecl-float-lvalue-resolver`: exact 80/80, five relocations.
 
-Total repository canonical exact coverage after this packet is **4 functions / 177 bytes**.
+Total repository canonical exact coverage after the Enemy packet was **4 functions / 177 bytes**.
 
 ## Ledger and verification planes
 
-Current ledger at the hard-packet checkpoint:
+Current ledger at the PbgFile checkpoint:
 
 - candidates: **1264**
 - origin/boundary pending: **1135**
 - authored: **118 / 52,927 bytes**
 - excluded: **11**
 - source-present: **90 / 39,658 bytes**
-- canonical exact: **4 / 177 bytes**
+- canonical exact: **10 / 397 bytes**
 
-Hard-packet delta from `2053a39e...`: **+3 candidates / +3 pending**, from the unreferenced `0x00412A60/70/80` machine bodies; authored, excluded, source-present and exact denominators are unchanged. Across the whole conversation from `93a141c3...`, the earlier operand checkpoint also added four source-present mappings and two canonical exact functions / 160 exact bytes. `config/build.toml` remains unchanged and honestly open.
+Current-packet delta from `444eb1a...`: **+6 canonical exact functions / +220 exact bytes**. Candidate, authored, excluded, and source-present denominators are unchanged. The previous Enemy hard-packet delta was +3 candidates / +3 pending from the unreferenced `0x00412A60/70/80` bodies. `config/build.toml` remains unchanged and honestly open.
 
-**Source presence:** no new target function is promoted source-present in this hard packet. Maintained source only refines the already-present full Enemy layout into the target-proven ECL instruction/context views. The 14,416-byte dispatcher remains source-absent.
+**Source presence:** no new target function is promoted source-present. All six PbgFile methods were already mapped to maintained source.
 
-**Exactness:** repository canonical exact coverage remains four functions / 177 bytes. After the verified VC7.1 internal-label manifest refresh, fresh cold replay is 6/6 (draw callback), 11/11 (dispatcher forwarder), 80/80 (int lvalue resolver), and 80/80 (float lvalue resolver). The selected dispatcher cohort and the `0x00412A00/10` wrappers receive no exactness credit.
+**Exactness:** repository canonical exact coverage is ten functions / 397 bytes. The six new PbgFile units pass two cold-output rebuild/replay cycles across 220 bytes and nine relocations. The four prior Enemy units remain separately replayable. This exact lane does not establish production object ownership or whole-build closure.
 
 **Whole build:** actual final `python3 scripts/build.py` returned **RC2 / explicitly open**. Production compiler flags, TU partition, libraries, resources and link order remain unknown. `build.py --check`, tracking, toolchain execution and public CI pass this honest open state.
 
 **Runtime:** not performed. There is no closed faithful reconstructed Windows-i386 product to execute.
 
-**Factory Truth:** two final read-only `factory_get_accepted_snapshot(th10)` refresh attempts were unavailable because another Factory operation owned the operator path. The latest successful snapshot observed earlier in this conversation was sequence **0** with **0 accepted facts**, before this hard checkpoint; it is historical evidence, not a claim about the unavailable final refresh. No acceptance replay/submission was performed by this session. Repository canonical exact receipts and Factory accepted facts remain separate states.
+**Factory Truth:** no Factory replay or acceptance submission was performed by this session. Repository canonical exact results and Factory accepted facts remain separate states.
 
 ## Scratch and recovery artifacts
 
@@ -128,11 +132,15 @@ The overall recovery/resume entry inventory earlier in this conversation was **3
 
 The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with **28 files / 257,221 bytes**. It retains the manifest, bounded dispatch/table/helper disassemblies, top-level and nested table maps, clean-HEAD baseline source/object evidence, final normal and `/GL` objects, constructor/read-int/read-float diagnostics, local-label shift receipt, exact replay receipts (including the intentional failed pre-refresh receipt), and whole-build logs. Superseded current-packet `Enemy.context.*` scratch and reproducible `build/match/*.obj` outputs were removed only after final receipts existed.
 
-Final `.analysis/` inventory is **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
+The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
+
+The current PbgFile campaign adds one compact ignored manifest. Current `.analysis/` inventory is **348 regular files / 3,970,042 logical bytes / 0 files >64 MiB**. Reproducible compiler objects remain below ignored `build/`; no new decompiler dump or copied target was created.
 
 ## Next hard frontier
 
-Continue the central dispatcher rather than harvesting leaf exact wins. The strongest evidence-connected next packet is a second dispatcher opcode cohort that shares the newly typed execution context and argument wrappers, chosen to reconcile lexical case ownership/shared tails against the top-level 108-entry table and 181-byte selector. Use that second cohort to decide whether a maintainable full switch/source partition can be introduced without a fake partial default; keep `0x0040E770-0x00411FBF` source-absent until that representation is defensible.
+Continue the canonical backlog audit with the six already observed structural-exact `CMemoryPbgFile` methods, then the PbgArchive constructor/entry-constructor/destructor candidates. Each requires reviewed relocation destinations and cold canonical replay; do not promote the compiler-generated deleting destructors. This route can recover exact coverage that prior probe-only sessions left unregistered and provides a fast check of the new relocation-candidate output.
+
+After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. In parallel with later product work, the major infrastructure gap remains a target-bound linked-image extent Oracle for LTCG-owned code; normal-COFF exact units do not close that gap.
 
 The adjacent `0x00412AA0` and later ECL helper corridor is also relevant as ABI/owner context, but smaller size alone is not a reason to abandon the central owner. The three newly discovered unreferenced `0x00412A60/70/80` candidates require origin evidence before any authored promotion.
 
