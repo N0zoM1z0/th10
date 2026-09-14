@@ -68,3 +68,10 @@ PlayerCreate
 PlayerUpdateShots
 Player::CalculateDamageToTarget
 EnemyRuntimeUpdate
+EnemySpawn
+EnemyManagerUpdate
+EnemyManagerUpdateCallback
+EnemyManagerDrawCallback
+EnemyConstruct
+EnemyTeardown
+EnemyFinalizeDeath

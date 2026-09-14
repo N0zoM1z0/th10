@@ -229,6 +229,7 @@ typedef char PlayerOptionDataViewSpeedsAt10[
 
 struct Player;
 struct PlayerShotRuntimeView;
+struct EnemyFullObjectView;
 
 // Maintained spellings of target-observed ECX/EDX shot callbacks. The update
 // owner ignores EAX, while the collision owner tests a nonzero collision return
@@ -308,7 +309,7 @@ struct PlayerShotRuntimeView
     int state;
     unsigned int primaryVmId;
     unsigned int secondaryVmId;
-    unsigned int unknown04C;
+    EnemyFullObjectView *trackedEnemy;
     int collidedThisFrame;
     int collisionVmTransitionPending;
     const PlayerShotDescriptorView *descriptor;
@@ -321,13 +322,14 @@ typedef char PlayerShotRuntimeStateAt40[
     (offsetof(PlayerShotRuntimeView, state) == 0x40) ? 1 : -1];
 typedef char PlayerShotRuntimePrimaryVmAt44[
     (offsetof(PlayerShotRuntimeView, primaryVmId) == 0x44) ? 1 : -1];
+typedef char PlayerShotRuntimeTrackedEnemyAt4C[
+    (offsetof(PlayerShotRuntimeView, trackedEnemy) == 0x4c) ? 1 : -1];
 typedef char PlayerShotRuntimeCollisionFlagAt50[
     (offsetof(PlayerShotRuntimeView, collidedThisFrame) == 0x50) ? 1 : -1];
 typedef char PlayerShotRuntimeDescriptorAt58[
     (offsetof(PlayerShotRuntimeView, descriptor) == 0x58) ? 1 : -1];
 
 struct PlayerCallbackNodeView;
-struct EnemyFullObjectView;
 
 // Maintained partial TH10 player layout. Only target-observed fields needed by
 // the reviewed Player replay, option, movement, update, and draw seams are

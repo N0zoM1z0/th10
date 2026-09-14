@@ -69,3 +69,10 @@ PlayerCreate,0x00425020,function
 PlayerUpdateShots,0x00428280,function
 Player::CalculateDamageToTarget,0x00428630,function
 EnemyRuntimeUpdate,0x0040DC80,function
+EnemySpawn,0x0040CFB0,function
+EnemyManagerUpdate,0x0040D750,function
+EnemyManagerUpdateCallback,0x0040D810,function
+EnemyManagerDrawCallback,0x0040D820,function
+EnemyConstruct,0x0040D830,function
+EnemyTeardown,0x0040DAE0,function
+EnemyFinalizeDeath,0x0040E5F0,function

@@ -5,6 +5,10 @@
 
 #include <stddef.h>
 
+struct EnemyFullObjectView;
+struct EnemyListNodeView;
+struct EnemyManagerView;
+
 struct EnemyFloat2
 {
     float x;
@@ -54,11 +58,30 @@ typedef char EnemyScalarInterpolationSizeIs3C[
 typedef char EnemyScalarInterpolationDurationAt34[
     (offsetof(EnemyScalarInterpolationView, duration) == 0x34) ? 1 : -1];
 
-struct EnemyFullObjectView;
+// The manager list embeds this exact 12-byte node at full enemy +0x116C
+// (runtime +0x130). Spawn links it and teardown unlinks it.
+struct EnemyListNodeView
+{
+    EnemyFullObjectView *enemy;
+    EnemyListNodeView *next;
+    EnemyListNodeView *previous;
+};
+typedef char EnemyListNodeViewSizeIs0C[
+    (sizeof(EnemyListNodeView) == 0x0c) ? 1 : -1];
+
+struct EnemyCallbackThresholdView
+{
+    int threshold;
+    int callbackId;
+    int state;
+    int unknown0C;
+};
+typedef char EnemyCallbackThresholdViewSizeIs10[
+    (sizeof(EnemyCallbackThresholdView) == 0x10) ? 1 : -1];
 
 // Maintained exact-size view of the embedded runtime tail beginning at full
-// enemy object +0x103C. Only fields exercised by the reviewed update owner are
-// named. This does not claim the original source type or member identifiers.
+// enemy object +0x103C. Names are limited to roles established by TH10-local
+// callers/users; unresolved values retain offset-based names.
 struct EnemyRuntimeView
 {
     EnemyMotionView previousMotion;
@@ -67,13 +90,15 @@ struct EnemyRuntimeView
     EnemyMotionView baseMotion;
     EnemyFloat2 damageHitbox;
     EnemyFloat2 playerCollisionHitbox;
-    unsigned int managedVmIds[8];
-    unsigned char unknown0E0[0x14];
+    unsigned int managedVmIds[10];
+    int value0E8;
+    int value0EC;
+    int value0F0;
     int animationBaseScript;
     int animationDirection;
-    unsigned char unknown0FC[0x20];
+    unsigned int spawnParameters[8];
     PlayerTimerView updateTimer;
-    unsigned char unknown130[0x0c];
+    EnemyListNodeView listNode;
     EnemyPositionInterpolationView positionInterpolations[2];
     EnemyScalarInterpolationView scalarInterpolations[4];
     unsigned char unknown2C4[0x10e0];
@@ -85,17 +110,26 @@ struct EnemyRuntimeView
     float movementBoundsSizeY;
     int scoreReward;
     int life;
-    unsigned char unknown13C4[0x04];
+    int unknown13C4;
     int ageCounter;
-    unsigned char unknown13CC[0x48];
+    int itemDropType;
+    int itemDropCounts[11];
+    int unknown13FC;
+    float value1400;
+    float value1404;
+    int deathSoundId;
+    int deathEffectScript;
+    int deathEffectResourceIndex;
     int damageFlashFrames;
-    unsigned char unknown1418[0x04];
+    int unknown1418;
     PlayerTimerView damageReductionTimer;
     PlayerTimerView playerCollisionTimer;
     unsigned int flags;
     int animationScriptPrimary;
     int animationScriptAlternate;
-    unsigned char unknown1450[0x88];
+    int managerSlot;
+    int unknown1454;
+    EnemyCallbackThresholdView callbackThresholds[8];
     EnemyFullObjectView *owner;
 };
 
@@ -113,8 +147,14 @@ typedef char EnemyRuntimePlayerHitboxAt0B8[
     (offsetof(EnemyRuntimeView, playerCollisionHitbox) == 0x0b8) ? 1 : -1];
 typedef char EnemyRuntimeManagedVmsAt0C0[
     (offsetof(EnemyRuntimeView, managedVmIds) == 0x0c0) ? 1 : -1];
+typedef char EnemyRuntimeValue0ECAt0EC[
+    (offsetof(EnemyRuntimeView, value0EC) == 0x0ec) ? 1 : -1];
+typedef char EnemyRuntimeSpawnParametersAt0FC[
+    (offsetof(EnemyRuntimeView, spawnParameters) == 0x0fc) ? 1 : -1];
 typedef char EnemyRuntimeUpdateTimerAt11C[
     (offsetof(EnemyRuntimeView, updateTimer) == 0x11c) ? 1 : -1];
+typedef char EnemyRuntimeListNodeAt130[
+    (offsetof(EnemyRuntimeView, listNode) == 0x130) ? 1 : -1];
 typedef char EnemyRuntimePositionInterpolationAt13C[
     (offsetof(EnemyRuntimeView, positionInterpolations) == 0x13c) ? 1 : -1];
 typedef char EnemyRuntimeScalarInterpolationAt1D4[
@@ -125,6 +165,18 @@ typedef char EnemyRuntimeScoreAt13BC[
     (offsetof(EnemyRuntimeView, scoreReward) == 0x13bc) ? 1 : -1];
 typedef char EnemyRuntimeLifeAt13C0[
     (offsetof(EnemyRuntimeView, life) == 0x13c0) ? 1 : -1];
+typedef char EnemyRuntimeItemDropAt13CC[
+    (offsetof(EnemyRuntimeView, itemDropType) == 0x13cc) ? 1 : -1];
+typedef char EnemyRuntimeItemDropCountsAt13D0[
+    (offsetof(EnemyRuntimeView, itemDropCounts) == 0x13d0) ? 1 : -1];
+typedef char EnemyRuntimeValue1400At1400[
+    (offsetof(EnemyRuntimeView, value1400) == 0x1400) ? 1 : -1];
+typedef char EnemyRuntimeValue1404At1404[
+    (offsetof(EnemyRuntimeView, value1404) == 0x1404) ? 1 : -1];
+typedef char EnemyRuntimeDeathSoundAt1408[
+    (offsetof(EnemyRuntimeView, deathSoundId) == 0x1408) ? 1 : -1];
+typedef char EnemyRuntimeDeathEffectAt140C[
+    (offsetof(EnemyRuntimeView, deathEffectScript) == 0x140c) ? 1 : -1];
 typedef char EnemyRuntimeDamageFlashAt1414[
     (offsetof(EnemyRuntimeView, damageFlashFrames) == 0x1414) ? 1 : -1];
 typedef char EnemyRuntimeDamageTimerAt141C[
@@ -133,20 +185,123 @@ typedef char EnemyRuntimeCollisionTimerAt1430[
     (offsetof(EnemyRuntimeView, playerCollisionTimer) == 0x1430) ? 1 : -1];
 typedef char EnemyRuntimeFlagsAt1444[
     (offsetof(EnemyRuntimeView, flags) == 0x1444) ? 1 : -1];
+typedef char EnemyRuntimeManagerSlotAt1450[
+    (offsetof(EnemyRuntimeView, managerSlot) == 0x1450) ? 1 : -1];
+typedef char EnemyRuntimeCallbackThresholdsAt1458[
+    (offsetof(EnemyRuntimeView, callbackThresholds) == 0x1458) ? 1 : -1];
 typedef char EnemyRuntimeOwnerAt14D8[
     (offsetof(EnemyRuntimeView, owner) == 0x14d8) ? 1 : -1];
 
-// TH10 allocation and constructor clearing jointly establish the full object
-// size and the runtime-tail offset. All pre-tail storage remains opaque here.
+struct EnemyScriptStateView
+{
+    int value00;
+    int subroutineOffset;
+};
+typedef char EnemyScriptStateViewSizeIs08[
+    (sizeof(EnemyScriptStateView) == 0x08) ? 1 : -1];
+
+struct EnemyOwnedAllocationNodeView
+{
+    void *allocation;
+    EnemyOwnedAllocationNodeView *next;
+};
+typedef char EnemyOwnedAllocationNodeViewSizeIs08[
+    (sizeof(EnemyOwnedAllocationNodeView) == 0x08) ? 1 : -1];
+
+// TH10 allocation and constructor clearing jointly establish this full-object
+// extent. The prefix exposes only fields directly consumed by the reviewed
+// constructor/teardown seam; the large middle remains opaque.
 struct EnemyFullObjectView
 {
-    unsigned char unknown000[0x103c];
+    void *vtable;
+    EnemyScriptStateView *activeScriptState;
+    EnemyScriptStateView embeddedScriptState;
+    unsigned char unknown010[0x1000];
+    int value1010;
+    int value1014;
+    int value1018;
+    EnemyFullObjectView *self101C;
+    int value1020;
+    unsigned char spawnLayerMask;
+    unsigned char unknown1025[0x03];
+    unsigned int flags1028;
+    void *scriptDatabase;
+    EnemyScriptStateView *scriptStateMirror;
+    EnemyOwnedAllocationNodeView *ownedAllocations;
+    int value1038;
     EnemyRuntimeView runtime;
 };
 typedef char EnemyFullObjectViewSizeIs2518[
     (sizeof(EnemyFullObjectView) == 0x2518) ? 1 : -1];
+typedef char EnemyFullObjectActiveScriptAt004[
+    (offsetof(EnemyFullObjectView, activeScriptState) == 0x004) ? 1 : -1];
+typedef char EnemyFullObjectValue1010At1010[
+    (offsetof(EnemyFullObjectView, value1010) == 0x1010) ? 1 : -1];
+typedef char EnemyFullObjectFlagsAt1028[
+    (offsetof(EnemyFullObjectView, flags1028) == 0x1028) ? 1 : -1];
+typedef char EnemyFullObjectOwnedAllocationsAt1034[
+    (offsetof(EnemyFullObjectView, ownedAllocations) == 0x1034) ? 1 : -1];
 typedef char EnemyFullObjectRuntimeAt103C[
     (offsetof(EnemyFullObjectView, runtime) == 0x103c) ? 1 : -1];
+
+// The target factory allocates exactly 0x68 bytes for this manager and zeros
+// all 0x1A dwords. Only fields used by the reviewed lifecycle seam are exposed.
+struct EnemyManagerView
+{
+    unsigned int flags;
+    unsigned char unknown004[0x04];
+    void *updateCallbackNode;
+    void *drawCallbackNode;
+    EnemyFullObjectView *specialEnemySlots[8];
+    void *effectResources[4];
+    PlayerTimerView timer;
+    void *scriptDatabase;
+    EnemyListNodeView *enemyListHead;
+    EnemyListNodeView *enemyListTail;
+    int activeEnemyCount;
+    int spawnCounter;
+};
+typedef char EnemyManagerViewSizeIs68[
+    (sizeof(EnemyManagerView) == 0x68) ? 1 : -1];
+typedef char EnemyManagerTimerAt40[
+    (offsetof(EnemyManagerView, timer) == 0x40) ? 1 : -1];
+typedef char EnemyManagerScriptDatabaseAt54[
+    (offsetof(EnemyManagerView, scriptDatabase) == 0x54) ? 1 : -1];
+typedef char EnemyManagerListHeadAt58[
+    (offsetof(EnemyManagerView, enemyListHead) == 0x58) ? 1 : -1];
+typedef char EnemyManagerActiveCountAt60[
+    (offsetof(EnemyManagerView, activeEnemyCount) == 0x60) ? 1 : -1];
+
+// 0x40-byte spawn request consumed from the target EAX live-in at 0x40CFB0.
+// Names are assigned only where the downstream TH10 consumer establishes the
+// role; flag controls remain descriptive by their target bit.
+struct EnemySpawnRequestView
+{
+    PlayerFloat3 position;
+    int scoreReward;
+    int itemDropType;
+    int life;
+    int setFlag0800;
+    int setFlag40000;
+    unsigned int parameters[8];
+};
+typedef char EnemySpawnRequestViewSizeIs40[
+    (sizeof(EnemySpawnRequestView) == 0x40) ? 1 : -1];
+
+// Descriptive maintained interfaces for the reviewed lifecycle packet. Private
+// target register ABIs that cannot be stated honestly in ordinary C++ are
+// recorded beside each function in config/functions.csv.
+EnemyFullObjectView *EnemySpawn(
+    EnemyManagerView *manager,
+    const char *eclSubroutineName,
+    const EnemySpawnRequestView *request);
+EnemyFullObjectView *EnemyConstruct(
+    EnemyFullObjectView *enemy, const char *eclSubroutineName);
+void __stdcall EnemyTeardown(EnemyFullObjectView *enemy);
+int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy);
+int EnemyManagerUpdate(EnemyManagerView *manager);
+int __fastcall EnemyManagerUpdateCallback(EnemyManagerView *manager);
+int __fastcall EnemyManagerDrawCallback(EnemyManagerView *manager);
 
 // Descriptive maintained name for the reviewed 0x0040DC80-0x0040E5EB owner.
 // The target boundary is one stack EnemyRuntimeView* argument with RET 4. The

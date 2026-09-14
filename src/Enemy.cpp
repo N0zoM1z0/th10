@@ -1,18 +1,46 @@
 #include "Enemy.hpp"
 
 #include <math.h>
+#include <new>
+#include <stdlib.h>
+#include <string.h>
+
+struct EnemyManagedVmView;
+struct EnemyManagedVmListNodeView
+{
+    EnemyManagedVmView *vm;
+    EnemyManagedVmListNodeView *next;
+};
 
 struct EnemyManagedVmView
 {
-    unsigned char unknown000[0x300];
+    unsigned int id;
+    unsigned char unknown004[0x10];
+    EnemyManagedVmListNodeView *children;
+    int childState;
+    unsigned char unknown01C[0x2e4];
     unsigned int color;
     unsigned char unknown304[0x58];
     unsigned int flags;
 };
+typedef char EnemyManagedVmChildrenAt014[
+    (offsetof(EnemyManagedVmView, children) == 0x14) ? 1 : -1];
 typedef char EnemyManagedVmColorAt300[
     (offsetof(EnemyManagedVmView, color) == 0x300) ? 1 : -1];
 typedef char EnemyManagedVmFlagsAt35C[
     (offsetof(EnemyManagedVmView, flags) == 0x35c) ? 1 : -1];
+
+struct EnemyManagedVmRegistryView
+{
+    unsigned char unknown000[0x72dad4];
+    EnemyManagedVmListNodeView *primaryList;
+    unsigned char unknown72DAD8[0x04];
+    EnemyManagedVmListNodeView *secondaryList;
+};
+typedef char EnemyManagedVmRegistryPrimaryAt72DAD4[
+    (offsetof(EnemyManagedVmRegistryView, primaryList) == 0x72dad4) ? 1 : -1];
+typedef char EnemyManagedVmRegistrySecondaryAt72DADC[
+    (offsetof(EnemyManagedVmRegistryView, secondaryList) == 0x72dadc) ? 1 : -1];
 
 extern PlayerFloat3 g_EnemyGlobalPositionOffset;
 extern float g_EnemyPlayfieldMinX;
@@ -22,6 +50,10 @@ extern float g_EnemyPlayfieldMaxY;
 extern float g_EnemyDirectionNegativeThreshold;
 extern float g_EnemyDirectionPositiveThreshold;
 extern int g_EnemyDamageProcessedFlag;
+extern float g_PlayerTimerScale;
+extern int g_EnemySpawnLayerIndex;
+extern EnemyManagerView *g_EnemyManager;
+extern EnemyManagedVmRegistryView *g_EnemyManagedVmRegistry;
 
 struct EnemyAnimationModeView
 {
@@ -61,7 +93,6 @@ void EnemyRunCallbackEcl(
 void EnemyInstallCallbackEcl(
     EnemyFullObjectView *owner, const unsigned char *callbackName);
 void EnemyAddScoreReward(int value);
-int EnemyFinalizeDeath(EnemyFullObjectView *owner);
 void EnemyCheckPlayerCollision(
     const PlayerFloat3 *position, const EnemyFloat2 *size, Player *player);
 void EnemySetManagedVmPositionWithOffset(
@@ -71,6 +102,17 @@ void EnemySetManagedVmPositionExact(
 EnemyManagedVmView *EnemyResolveManagedVm(unsigned int vmId);
 void EnemySpawnDamageEffect(int kind, float positionX);
 void EnemyAdvanceTimer(PlayerTimerView *timer, float amount);
+void EnemyPrepareRuntimeStorage(EnemyRuntimeView *runtime);
+int EnemyLookupEclSubroutine(void *scriptDatabase, const char *name);
+void EnemyInvokeScalarDeletingDestructor(EnemyFullObjectView *enemy, int freeObject);
+void EnemyPlayDeathSound(int soundId, float positionX);
+void EnemySpawnDeathEffect(
+    const PlayerFloat3 *position, void *resource, int scriptId);
+void EnemySpawnItem(
+    const PlayerFloat3 *position, int itemType, int owner, float angle, float speed);
+void EnemyDropItemCounts(
+    const PlayerFloat3 *position, int *itemDropBlock);
+void EnemyPlaySound(int soundId);
 
 // Maintained source for the reviewed 0x0040DC80-0x0040E5EB hostile runtime
 // update owner. Allocation/constructor evidence proves that the sole target
@@ -431,4 +473,385 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
 
     return 0;
+}
+
+
+// Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
+// machine boundary carries the full object in ESI and one stack subroutine-name
+// argument with RET 4; this ordinary C++ spelling does not claim that private
+// ABI. Primary/base vptr writes are compiler/type ownership still under review.
+EnemyFullObjectView *EnemyConstruct(
+    EnemyFullObjectView *enemy, const char *eclSubroutineName)
+{
+    enemy->value1010 = 0;
+    enemy->value1014 = 0;
+
+    EnemyPrepareRuntimeStorage(&enemy->runtime);
+    memset(&enemy->runtime, 0, sizeof(enemy->runtime));
+
+    enemy->embeddedScriptState.value00 = 0;
+    enemy->embeddedScriptState.subroutineOffset = 0;
+    enemy->activeScriptState = &enemy->embeddedScriptState;
+    enemy->self101C = enemy;
+    enemy->flags1028 &= ~1u;
+    enemy->value1020 = 0;
+    enemy->value1018 = -1;
+    enemy->scriptStateMirror = &enemy->embeddedScriptState;
+    enemy->ownedAllocations = NULL;
+    enemy->value1038 = 0;
+
+    enemy->runtime.owner = enemy;
+    enemy->runtime.listNode.enemy = enemy;
+    enemy->runtime.listNode.next = NULL;
+    enemy->runtime.listNode.previous = NULL;
+
+    enemy->runtime.damageHitbox.x = 24.0f;
+    enemy->runtime.damageHitbox.y = 24.0f;
+    enemy->runtime.playerCollisionHitbox.x = 24.0f;
+    enemy->runtime.playerCollisionHitbox.y = 24.0f;
+    enemy->runtime.value1400 = 32.0f;
+    enemy->runtime.value1404 = 32.0f;
+    enemy->runtime.managerSlot = -1;
+
+    if ((enemy->runtime.updateTimer.flags & 1u) == 0)
+    {
+        enemy->runtime.updateTimer.previous = -999999;
+        enemy->runtime.updateTimer.current = 0;
+        enemy->runtime.updateTimer.subframe = 0.0f;
+        enemy->runtime.updateTimer.scale = &g_PlayerTimerScale;
+        enemy->runtime.updateTimer.flags |= 1u;
+    }
+    enemy->runtime.updateTimer.current = 0;
+    enemy->runtime.updateTimer.subframe = 0.0f;
+    enemy->runtime.updateTimer.previous = -1;
+
+    if ((enemy->runtime.damageReductionTimer.flags & 1u) == 0)
+    {
+        enemy->runtime.damageReductionTimer.previous = -999999;
+        enemy->runtime.damageReductionTimer.current = 0;
+        enemy->runtime.damageReductionTimer.subframe = 0.0f;
+        enemy->runtime.damageReductionTimer.scale = &g_PlayerTimerScale;
+        enemy->runtime.damageReductionTimer.flags |= 1u;
+    }
+    enemy->runtime.damageReductionTimer.current = 0;
+    enemy->runtime.damageReductionTimer.subframe = 0.0f;
+    enemy->runtime.damageReductionTimer.previous = -1;
+
+    if ((enemy->runtime.playerCollisionTimer.flags & 1u) == 0)
+    {
+        enemy->runtime.playerCollisionTimer.previous = -999999;
+        enemy->runtime.playerCollisionTimer.current = 0;
+        enemy->runtime.playerCollisionTimer.subframe = 0.0f;
+        enemy->runtime.playerCollisionTimer.scale = &g_PlayerTimerScale;
+        enemy->runtime.playerCollisionTimer.flags |= 1u;
+    }
+    enemy->runtime.playerCollisionTimer.current = 0;
+    enemy->runtime.playerCollisionTimer.subframe = 0.0f;
+    enemy->runtime.playerCollisionTimer.previous = -1;
+
+    enemy->scriptDatabase = g_EnemyManager->scriptDatabase;
+    enemy->activeScriptState->subroutineOffset =
+        EnemyLookupEclSubroutine(enemy->scriptDatabase, eclSubroutineName);
+    enemy->activeScriptState->value00 = 0;
+
+    enemy->runtime.life = 0;
+    enemy->runtime.unknown13C4 = 0;
+    enemy->runtime.ageCounter = 0;
+
+    for (int i = 0; i < 8; ++i)
+    {
+        enemy->runtime.callbackThresholds[i].threshold = -1;
+        enemy->runtime.callbackThresholds[i].callbackId = -1;
+        enemy->runtime.callbackThresholds[i].state = 0;
+    }
+
+    return enemy;
+}
+
+// Maintained source for target 0x0040CFB0 plus its compiler-owned alignment and
+// switch tables through 0x0040D1F0. The target machine boundary uses EAX for the
+// 0x40-byte request and two stack arguments (manager, ECL subroutine name), then
+// RET 8. The ordinary signature below preserves logical values without claiming
+// that private register assignment.
+EnemyFullObjectView *EnemySpawn(
+    EnemyManagerView *manager,
+    const char *eclSubroutineName,
+    const EnemySpawnRequestView *request)
+{
+    EnemyFullObjectView *enemy =
+        static_cast<EnemyFullObjectView *>(::operator new(sizeof(EnemyFullObjectView)));
+    if (enemy != NULL)
+        enemy = EnemyConstruct(enemy, eclSubroutineName);
+
+    enemy->runtime.offsetMotion.position = request->position;
+    enemy->runtime.scoreReward = request->scoreReward;
+    enemy->runtime.life = request->life;
+    enemy->runtime.itemDropType = request->itemDropType;
+
+    enemy->runtime.flags =
+        (enemy->runtime.flags & ~0x800u) |
+        ((static_cast<unsigned int>(request->setFlag0800) & 1u) << 11);
+    enemy->spawnLayerMask =
+        static_cast<unsigned char>(1u << g_EnemySpawnLayerIndex);
+
+    for (int i = 0; i < 8; ++i)
+        enemy->runtime.spawnParameters[i] = request->parameters[i];
+
+    enemy->runtime.flags =
+        (enemy->runtime.flags & ~0x40000u) |
+        ((static_cast<unsigned int>(request->setFlag40000) & 1u) << 18);
+
+    if ((enemy->runtime.damageReductionTimer.flags & 1u) == 0)
+    {
+        enemy->runtime.damageReductionTimer.previous = -999999;
+        enemy->runtime.damageReductionTimer.current = 0;
+        enemy->runtime.damageReductionTimer.subframe = 0.0f;
+        enemy->runtime.damageReductionTimer.scale = &g_PlayerTimerScale;
+        enemy->runtime.damageReductionTimer.flags |= 1u;
+    }
+    enemy->runtime.damageReductionTimer.current = 2;
+    enemy->runtime.damageReductionTimer.subframe = 2.0f;
+    enemy->runtime.damageReductionTimer.previous = 1;
+
+    EnemyRuntimeUpdate(&enemy->runtime);
+
+    if ((enemy->runtime.flags & 0x8000u) != 0)
+    {
+        if (enemy->runtime.itemDropType == 1)
+            enemy->runtime.itemDropType = 10;
+        else if (enemy->runtime.itemDropType == 4)
+            enemy->runtime.itemDropType = 11;
+    }
+
+    enemy->runtime.deathSoundId = (manager->spawnCounter & 1) + 2;
+    enemy->runtime.deathEffectScript = 0x167;
+    if (enemy->runtime.value0EC == 1)
+    {
+        switch (enemy->runtime.value0F0)
+        {
+        case 5:
+        case 25:
+        case 50:
+            enemy->runtime.deathEffectScript = 0x164;
+            break;
+        case 10:
+        case 30:
+        case 51:
+            enemy->runtime.deathEffectScript = 0x16a;
+            break;
+        case 15:
+        case 35:
+        case 52:
+            enemy->runtime.deathEffectScript = 0x16d;
+            break;
+        default:
+            break;
+        }
+    }
+    enemy->runtime.deathEffectResourceIndex = 0;
+
+    EnemyListNodeView *node = &enemy->runtime.listNode;
+    if (manager->enemyListHead == NULL)
+    {
+        manager->enemyListHead = node;
+    }
+    else
+    {
+        EnemyListNodeView *tail = manager->enemyListTail;
+        if (tail->next != NULL)
+        {
+            node->next = tail->next;
+            tail->next->previous = node;
+        }
+        tail->next = node;
+        node->previous = tail;
+    }
+    manager->enemyListTail = node;
+    ++manager->activeEnemyCount;
+    ++manager->spawnCounter;
+    return enemy;
+}
+
+// Target 0x0040D750-0x0040D7F5 carries EnemyManagerView* in EDI and returns
+// with plain RET. The target callback wrapper at 0x0040D810 supplies EDI from
+// its conventional ECX callback argument.
+int EnemyManagerUpdate(EnemyManagerView *manager)
+{
+    EnemyListNodeView *node = manager->enemyListHead;
+    while (node != NULL)
+    {
+        EnemyFullObjectView *enemy = node->enemy;
+        EnemyListNodeView *next = node->next;
+
+        if ((enemy->runtime.flags & 0x20000u) == 0)
+        {
+            if (EnemyRuntimeUpdate(&enemy->runtime) == 0)
+                enemy->runtime.flags &= ~0x400u;
+            else
+                EnemyInvokeScalarDeletingDestructor(enemy, 1);
+        }
+        else
+        {
+            EnemyInvokeScalarDeletingDestructor(enemy, 1);
+        }
+        node = next;
+    }
+
+    manager->timer.previous = manager->timer.current;
+    const float scale = *manager->timer.scale;
+    if (scale > 0.9900000095367432f && scale < 1.0099999904632568f)
+    {
+        ++manager->timer.current;
+        manager->timer.subframe += 1.0f;
+    }
+    else
+    {
+        manager->timer.subframe += scale;
+        manager->timer.current = static_cast<int>(manager->timer.subframe);
+    }
+    return 1;
+}
+
+// Registered at target update priority 0x12. The machine body is a thin
+// ECX-to-EDI wrapper around the private EnemyManagerUpdate owner.
+int __fastcall EnemyManagerUpdateCallback(EnemyManagerView *manager)
+{
+    return EnemyManagerUpdate(manager);
+}
+
+// Registered through the target draw-chain registrar at priority 0x14.
+int __fastcall EnemyManagerDrawCallback(EnemyManagerView *manager)
+{
+    (void)manager;
+    return 1;
+}
+
+// Maintained destructor body for target 0x0040DAE0-0x0040DC61. Its sole full
+// object argument is stack-bound with RET 4. The scalar-deleting wrapper at
+// 0x0040CC50 owns optional object deallocation; this body only tears down
+// references and owned suballocations.
+void __stdcall EnemyTeardown(EnemyFullObjectView *enemy)
+{
+    EnemyManagerView *manager = g_EnemyManager;
+    EnemyListNodeView *listNode = &enemy->runtime.listNode;
+
+    if (manager->enemyListHead == listNode)
+        manager->enemyListHead = listNode->next;
+    if (manager->enemyListTail == listNode)
+        manager->enemyListTail = listNode->previous;
+    if (listNode->next != NULL)
+        listNode->next->previous = listNode->previous;
+    if (listNode->previous != NULL)
+        listNode->previous->next = listNode->next;
+    listNode->next = NULL;
+    listNode->previous = NULL;
+    --manager->activeEnemyCount;
+
+    if ((enemy->runtime.flags & 0x8000u) != 0)
+        manager->specialEnemySlots[enemy->runtime.managerSlot] = NULL;
+
+    for (int i = 0; i < 10; ++i)
+    {
+        const unsigned int vmId = enemy->runtime.managedVmIds[i];
+        if (vmId != 0)
+        {
+            EnemyManagedVmView *vm = NULL;
+            EnemyManagedVmListNodeView *vmNode =
+                g_EnemyManagedVmRegistry->primaryList;
+            while (vmNode != NULL)
+            {
+                if (vmNode->vm->id == vmId)
+                {
+                    vm = vmNode->vm;
+                    break;
+                }
+                vmNode = vmNode->next;
+            }
+            if (vm == NULL)
+            {
+                vmNode = g_EnemyManagedVmRegistry->secondaryList;
+                while (vmNode != NULL)
+                {
+                    if (vmNode->vm->id == vmId)
+                    {
+                        vm = vmNode->vm;
+                        break;
+                    }
+                    vmNode = vmNode->next;
+                }
+            }
+
+            if (vm != NULL)
+            {
+                vm->flags |= 0x4000000u;
+                if (vm->childState == 0)
+                {
+                    EnemyManagedVmListNodeView *child = vm->children;
+                    while (child != NULL)
+                    {
+                        child->vm->flags |= 0x4000000u;
+                        child = child->next;
+                    }
+                }
+            }
+        }
+        enemy->runtime.managedVmIds[i] = 0;
+    }
+
+    if (g_Player != NULL)
+    {
+        if (g_Player->trackedEnemy == enemy)
+        {
+            g_Player->trackedEnemy = NULL;
+            g_Player->trackedEnemyValid = 0;
+        }
+        for (int i = 0; i < 128; ++i)
+        {
+            if (g_Player->shots[i].trackedEnemy == enemy)
+                g_Player->shots[i].trackedEnemy = NULL;
+        }
+    }
+
+    EnemyOwnedAllocationNodeView *owned = enemy->ownedAllocations;
+    while (owned != NULL)
+    {
+        EnemyOwnedAllocationNodeView *next = owned->next;
+        free(owned->allocation);
+        free(owned);
+        owned = next;
+    }
+}
+
+// Reviewed target 0x0040E5F0-0x0040E691 finalization path. The direct callees
+// use private register live-ins; these descriptive calls express only the
+// target-observed logical values and do not claim their original declarations.
+int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy)
+{
+    EnemyRuntimeView *runtime = &enemy->runtime;
+
+    if (runtime->deathSoundId >= 0)
+        EnemyPlayDeathSound(runtime->deathSoundId, runtime->worldMotion.position.x);
+
+    if (runtime->deathEffectScript >= 0)
+    {
+        EnemySpawnDeathEffect(
+            &runtime->worldMotion.position,
+            g_EnemyManager->effectResources[runtime->deathEffectResourceIndex],
+            runtime->deathEffectScript);
+    }
+
+    if (runtime->itemDropType > 0)
+    {
+        EnemySpawnItem(
+            &runtime->worldMotion.position,
+            runtime->itemDropType,
+            -1,
+            -1.5707964f,
+            2.2f);
+    }
+
+    EnemyDropItemCounts(&runtime->worldMotion.position, &runtime->itemDropType);
+    runtime->itemDropType = 0;
+    EnemyPlaySound(10);
+    return 1;
 }
