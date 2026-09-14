@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current session starting HEAD: `444eb1a63d4e3a91c4bfcad90c63da25d55c4a02`, clean, branch `main`, ahead of `origin/main` by two local `gpt-web:` commits.
+- Current session recovery HEAD: `260ac75 gpt-5.6-sol: recover ANM manager core`, clean, branch `main`, aligned with `origin/main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -20,67 +20,65 @@
 - Completed session checkpoint: `d4af1a5 gpt-5.6-sol: recover ECL core lifecycles`.
 - Completed session checkpoint: `e2fecf3 gpt-5.6-sol: recover ECL host hierarchy`.
 - Completed session checkpoint: `2dbce7d gpt-5.6-sol: recover ANM VM lifecycle`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM manager core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `260ac75 gpt-5.6-sol: recover ANM manager core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ASCII text pipeline`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-manager-core/`. The ANM-VM, ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-draw-core/`. The earlier ANM-manager, ANM-VM, ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, the prior handoff, and the two commits ahead of `origin/main`. Clean HEAD `444eb1a...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Clean HEAD `260ac75...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
-Fresh repository preflight passed on `444eb1a...`:
+Fresh repository preflight passed on `260ac75...`:
 
 - `python3 scripts/verify-target.py`
 - `python3 scripts/verify-toolchain.py --execute`
 - `python3 scripts/validate-tracking.py --require-target`
 - `python3 scripts/report-reconstruction-status.py`
 
-The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/GL`, resource and PE32-i386 link smoke through headless Wine. Native `th10-ghidra` operation schemas were rediscovered and `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command`; an earlier refresh also passed. The latest operation-discovery attempt reported that the native implementation differed from its operator binding and returned no semantic result, so this packet uses direct hash-attested target evidence instead. Provider failures were treated as unavailable evidence, never as mismatch or rollback.
+The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/GL`, resource and PE32-i386 link smoke through headless Wine. Native `th10-ghidra` `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command`. This packet combines that provider's read-only decompilation, disassembly, calls, and xrefs with direct hash-attested target disassembly and compiler evidence.
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM manager core
+## Current packet: ASCII text pipeline and ANM-owner correction
 
-TH10-local construction, allocation, callback, vtable and destruction evidence
-establishes an `0x89AC`-byte polymorphic ANM manager. It embeds the two already
-proved `0x3AC` VMs at `+0x14` and `+0x3C0`; its single table entry at
-`0x0046CB14` points to a six-byte virtual method returning `0x89AC`. Construction
-clears the complete manager, publishes `g_AnmManagerView` at `0x004776E0`, and
-sets the observed flags, capture index, default scale and draw-layer state.
+TH10-local queue append, formatting, glyph lookup, viewport, callback, and draw
+evidence corrects the preceding checkpoint's owner hypothesis. The `0x89AC`-
+byte polymorphic object at global `0x004776E0` is the ASCII text manager. It
+contains 256 regular and 64 GUI records of `0x68` bytes, queue counts at
+`+0x896C/+0x8970`, text color/scale/viewport/shadow/spacing state, an ASCII ANM
+resource at `+0x8994`, and two embedded `0x3AC` ANM VMs. The true ANM renderer is
+a distinct object published through the pointer at `0x00491C10`.
 
-Maintained source now covers construction, size query, initialization,
-destruction, allocation rollback, and three chain callbacks. Initialization
-loads `ascii.anm`, `text.anm`, and `capture.anm`, registers callbacks at
-priorities 4, `0x30`, and `0x26`, and binds scripts 0 and `0x62` to the two VMs.
-Destruction removes those chain elements, releases the three backing resources,
-clears the global, and lets C++ destroy the embedded VMs in reverse order.
-Normal/LTCG diagnostics remain mismatches for Initialize (309/301 versus 330),
-destructor (352/348 versus 467), factory (70 versus 69), and secondary draw
-callback (7 versus 10). Their source presence does not grant exactness.
+Maintained source now expresses the complete regular and GUI record layouts,
+queue reset, both append paths, three variadic formatters, and the two large text
+renderers at `0x00401760` and `0x00401A50`. The renderers cover both `0x62`-glyph
+banks, `0x44`-byte sprite records, line and space advance, regular-text shadow,
+viewport transitions, vertex-buffer flushes, and rounded versus non-rounded ANM
+draw calls. Each named field and helper target is directly visible in TH10. The
+TH095 ASCII implementation supplied only a source-shape hypothesis.
 
-Four functions are canonical exact across **290 bytes**: the 251-byte manager
-constructor, six-byte virtual size query, 26-byte update callback, and seven-byte
-primary draw adapter. The constructor is exact only when the real 69-byte
-factory is selected as the linked entry; that context reproduces the target's
-private ESI receiver and contains exactly two declared DIR32 fields for the
-vtable and manager global. The draw adapter's sole REL32 replays to its reviewed
-target owner at `0x00401760`.
+The retained reset at `0x004014D0`, regular append at `0x00401530`, and GUI
+append at `0x004015C0` are canonical exact linked-PE units across **267 bytes**.
+They are complete, raw-equal PDB-owned contributions with no linked fields in
+the real `AsciiManagerCreate` LTCG context. Together with the four renamed exact
+units from `260ac75`, the current source file replays eleven exact units across
+**749 bytes**. The three formatters and two renderers remain source-present
+non-exact work; no semantic recovery claim has been promoted to exactness.
 
-`probe-ltcg-backlog.py` and `rank-exact-backlog.py` now accept repeatable
-`--entry SOURCE=SOURCE_NAME` selections. The probe resolves that source name to
-one real external VC7 symbol, rejects absent/ambiguous/stale selections, and
-records the choice in JSON. This closes the diagnostic blind spot that made the
-constructor appear as 255-byte mismatch when it was itself forced to be the
-public link entry.
+Current tracking contains **1,285** candidates, **153** authored functions,
+**125** source mappings, and **57 canonical exact functions / 2,399 bytes**.
+The authored source backlog is **64**. Relative to `260ac75`, this packet adds
+eight authored functions, eight source mappings, three denominator candidates,
+and three exact functions / 267 bytes while correcting the manager owner across
+source, ledgers, exact manifests, and documentation.
 
-Current tracking contains **1,282** candidates, **145** authored functions,
-**117** source mappings, and **54 canonical exact functions / 2,132 bytes**.
-The authored source backlog is **59**. Relative to `2dbce7d`, this packet adds
-eight authored functions / 1,166 bytes, eight source mappings, three denominator
-candidates, and four exact functions / 290 bytes.
+The next ANM packet should begin from the real renderer at `0x00491C10`. The
+flush owner at `0x00442F50` and its neighboring draw helpers at `0x00443080` and
+`0x00443290` are already target-confirmed consumers and useful first boundaries.
 
 ## Completed packet: ANM VM lifecycle
 

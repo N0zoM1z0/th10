@@ -1,9 +1,11 @@
 #include "AnmManager.hpp"
 
+#include <stdarg.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-AnmManagerView *g_AnmManagerView;
+AsciiManagerView *g_AsciiManagerView;
 
 // These two target helpers are also inlined by AnmVmView::Initialize. Their
 // chained assignments preserve VC7.1's target-observed right-to-left stores.
@@ -44,17 +46,17 @@ AnmVmView::~AnmVmView()
 // externally owned pointers at +0x20 and +0x340..+0x348.
 void AnmVmView::Initialize()
 {
-    void *saved340 = preserved340;
-    void *saved344 = preserved344;
-    void *saved348 = preserved348;
+    float savedX = preservedPosition.x;
+    float savedY = preservedPosition.y;
+    float savedZ = preservedPosition.z;
     void *savedOwner = persistentOwner020;
 
     memset(this, 0, sizeof(AnmVmView));
 
-    preserved340 = saved340;
-    preserved344 = saved344;
+    preservedPosition.x = savedX;
+    preservedPosition.y = savedY;
     persistentOwner020 = savedOwner;
-    preserved348 = saved348;
+    preservedPosition.z = savedZ;
 
     value2FC = -1;
     scaleX = 1.0f;
@@ -82,29 +84,29 @@ void AnmVmView::Initialize()
 // Target 0x00401000-0x004010FA receives this through a private ESI register.
 // C++ construction accounts for the manager vtable and both embedded VM
 // constructors before the body clears the complete manager state.
-AnmManagerView::AnmManagerView()
+AsciiManagerView::AsciiManagerView()
 {
-    memset(this, 0, sizeof(AnmManagerView));
+    memset(this, 0, sizeof(AsciiManagerView));
     flags004 |= 2;
-    g_AnmManagerView = this;
-    captureAnmIndex = -1;
-    defaultScaleX = 1.0f;
-    defaultScaleY = 1.0f;
+    g_AsciiManagerView = this;
+    color = 0xffffffff;
+    scaleX = 1.0f;
+    scaleY = 1.0f;
     unknown8984 = 0;
-    currentDrawLayer = 9;
+    spaceWidth = 9;
 }
 
 // The manager's single-slot table at 0x0046CB14 points to target 0x00401C90.
-size_t AnmManagerView::GetSize()
+size_t AsciiManagerView::GetSize()
 {
-    return sizeof(AnmManagerView);
+    return sizeof(AsciiManagerView);
 }
 
 // Target 0x00401440-0x00401484 keeps the allocated manager in ESI, allowing
 // LTCG to lower construction to the private ESI receiver used at 0x00401000.
-AnmManagerView *AnmManagerCreate()
+AsciiManagerView *AsciiManagerCreate()
 {
-    AnmManagerView *manager = new AnmManagerView;
+    AsciiManagerView *manager = new AsciiManagerView;
     if (manager->Initialize() != 0)
     {
         delete manager;
@@ -113,7 +115,7 @@ AnmManagerView *AnmManagerCreate()
     return manager;
 }
 
-int AnmManagerView::Initialize()
+int AsciiManagerView::Initialize()
 {
     AnmChainElementView *element;
 
@@ -133,13 +135,13 @@ int AnmManagerView::Initialize()
     AnmAddCalcChainElement(element, 4, g_AnmChainView);
     calcChainElement = element;
 
-    element = AnmCreateChainElement(DrawLayer0);
+    element = AnmCreateChainElement(OnDrawLowPriority);
     element->flags &= ~2u;
     element->argument = this;
     AnmAddDrawChainElement(element, 0x30, g_AnmChainView);
     drawChainElement0 = element;
 
-    element = AnmCreateChainElement(DrawLayer1);
+    element = AnmCreateChainElement(OnDrawHighPriority);
     element->flags &= ~2u;
     element->argument = this;
     AnmAddDrawChainElement(element, 0x26, g_AnmChainView);
@@ -184,7 +186,7 @@ static void ReleaseAnmResourceSlot(unsigned int offset)
     *slot = NULL;
 }
 
-AnmManagerView::~AnmManagerView()
+AsciiManagerView::~AsciiManagerView()
 {
     RemoveAnmChainElement(
         static_cast<AnmChainElementView *>(calcChainElement));
@@ -196,28 +198,291 @@ AnmManagerView::~AnmManagerView()
     ReleaseAnmResourceSlot(0x3ad074);
     ReleaseAnmResourceSlot(0x3ad06c);
     ReleaseAnmResourceSlot(0x3ad078);
-    g_AnmManagerView = NULL;
+    g_AsciiManagerView = NULL;
 }
 
-// Target 0x004014F0-0x00401509 is the manager's calculation-chain callback.
-int __fastcall AnmManagerView::OnUpdate(AnmManagerView *manager)
+// Target 0x004014D0-0x004014E9 is a retained member form of the queue reset.
+int AsciiManagerView::ResetStrings()
 {
-    manager->debugMessageCount = 0;
-    manager->secondaryDebugCounter = 0;
-    ++manager->updateCounter;
+    numStrings = 0;
+    numGuiStrings = 0;
+    ++frameCounter;
+    return 1;
+}
+
+// Target 0x004014F0-0x00401509 is the calculation-chain callback form.
+int __fastcall AsciiManagerView::OnUpdate(AsciiManagerView *manager)
+{
+    manager->numStrings = 0;
+    manager->numGuiStrings = 0;
+    ++manager->frameCounter;
     return 1;
 }
 
 // Target 0x00401510-0x00401516 adapts the fastcall chain ABI to the stack
 // receiver used by the primary ANM draw-layer owner at 0x00401760.
-int __fastcall AnmManagerView::DrawLayer0(AnmManagerView *manager)
+int __fastcall AsciiManagerView::OnDrawLowPriority(AsciiManagerView *manager)
 {
-    return AnmManagerDrawLayer0(manager);
+    return AsciiManagerDrawStrings(manager);
 }
 
 // Target 0x00401520-0x00401529 preserves the manager in EBX for the secondary
 // draw owner at 0x00401A50. The natural wrapper keeps that optimizer choice open.
-int __fastcall AnmManagerView::DrawLayer1(AnmManagerView *manager)
+int __fastcall AsciiManagerView::OnDrawHighPriority(AsciiManagerView *manager)
 {
-    return AnmManagerDrawLayer1(manager);
+    return AsciiManagerDrawGuiStrings(manager);
+}
+
+// Target 0x00401530-0x004015B3 appends one of at most 256 regular strings.
+// Its register-only EAX/EBX text and position arguments are an LTCG lowering
+// of this ordinary member call, as shown by both variadic formatter callers.
+void AsciiManagerView::AddString(
+    AnmFloat3View *position, const char *text)
+{
+    AsciiManagerStringView *nextString;
+
+    if (numStrings >= 256)
+        return;
+
+    nextString = &strings[numStrings];
+    ++numStrings;
+    strcpy(nextString->text, text);
+    nextString->position = *position;
+    nextString->color = color;
+    nextString->scaleX = scaleX;
+    nextString->scaleY = scaleY;
+    nextString->viewportIndex = viewportIndex;
+    nextString->smallFont = 0;
+    nextString->drawShadow = drawShadow;
+}
+
+// Target 0x004015C0-0x0040162C is the analogous 64-entry GUI queue append.
+// This CC-delimited owner is absent from Ghidra's current function inventory.
+void AsciiManagerView::AddGuiString(
+    AnmFloat3View *position, const char *text)
+{
+    AsciiManagerStringView *nextString;
+
+    if (numGuiStrings >= 64)
+        return;
+
+    nextString = &guiStrings[numGuiStrings];
+    ++numGuiStrings;
+    strcpy(nextString->text, text);
+    nextString->position = *position;
+    nextString->color = color;
+    nextString->scaleX = scaleX;
+    nextString->scaleY = scaleY;
+    nextString->viewportIndex = viewportIndex;
+    nextString->smallFont = 0;
+}
+
+// Target 0x00401630-0x00401684 formats into the target-observed 512-byte
+// stack buffer and then appends to the regular queue.
+void AsciiManagerView::AddFormatText(
+    AnmFloat3View *position, const char *format, ...)
+{
+    char buffer[512];
+    va_list args;
+
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    AddString(position, buffer);
+    va_end(args);
+}
+
+// Target 0x00401690-0x004016F3 uses the same regular queue and marks the
+// newly appended record to select the second 0x62-glyph font bank.
+void AsciiManagerView::AddSmallFormatText(
+    AnmFloat3View *position, const char *format, ...)
+{
+    char buffer[512];
+    va_list args;
+
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    AddString(position, buffer);
+    va_end(args);
+    strings[numStrings - 1].smallFont = 1;
+}
+
+// Target 0x00401700-0x0040175D appends to the GUI queue and returns the
+// formatted byte count. The compiler inlines strlen after the queue call.
+int AsciiManagerView::AddGuiFormatText(
+    AnmFloat3View *position, const char *format, ...)
+{
+    char buffer[512];
+    va_list args;
+
+    va_start(args, format);
+    vsprintf(buffer, format, args);
+    AddGuiString(position, buffer);
+    va_end(args);
+    return strlen(buffer);
+}
+
+static void ConfigureAsciiViewport(int viewportIndex)
+{
+    if (viewportIndex != 0)
+        AsciiConfigureBackgroundViewport(0);
+    else
+        AsciiConfigureBackgroundViewport(1);
+}
+
+// Target 0x00401760-0x00401A41 renders the 256-entry regular queue. Every
+// field read below is independently visible in the target body; the renderer
+// and viewport helper names remain semantic until their own owners are closed.
+int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
+{
+    float spaceWidth;
+    float lineHeight;
+    int currentViewport = 1;
+    int index;
+    AsciiManagerStringView *string = manager->strings;
+
+    // The target writes the complete containing dword and establishes the
+    // two high render-state bits as well as the low visible bit.
+    *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) =
+        (*reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) &
+         0xffd7ffffu) | 0x00140001u;
+
+    for (index = 0; index < manager->numStrings; ++index, ++string)
+    {
+        unsigned char *text;
+
+        manager->primaryVm014.position = string->position;
+        manager->primaryVm014.scaleX = string->scaleX;
+        manager->primaryVm014.scaleY = string->scaleY;
+        *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) |= 8;
+
+        if (string->smallFont == 1)
+        {
+            spaceWidth = 7.0f;
+            lineHeight = 9.0f;
+        }
+        else
+        {
+            spaceWidth = manager->spaceWidth * string->scaleX;
+            lineHeight = 14.0f;
+        }
+
+        if (currentViewport != string->viewportIndex)
+        {
+            g_AnmRenderManagerView->FlushVertexBuffer();
+            currentViewport = string->viewportIndex;
+            ConfigureAsciiViewport(currentViewport);
+        }
+
+        text = reinterpret_cast<unsigned char *>(string->text);
+        while (*text != '\0')
+        {
+            if (*text == '\n')
+            {
+                manager->primaryVm014.position.y +=
+                    lineHeight * string->scaleY;
+                manager->primaryVm014.position.x = string->position.x;
+            }
+            else if (*text != ' ')
+            {
+                AnmSpriteView *sprite =
+                    &manager->asciiAnm->sprites[
+                        string->smallFont * 0x62 + *text - ' '];
+                manager->primaryVm014.loadedSprite = sprite;
+                manager->primaryVm014.spriteWidth = sprite->width;
+                manager->primaryVm014.spriteHeight = sprite->height;
+
+                if (string->drawShadow != 0)
+                {
+                    manager->primaryVm014.value2FC =
+                        static_cast<int>(string->color & 0xff000000u);
+                    reinterpret_cast<unsigned char *>(
+                        &manager->primaryVm014.value2FC)[3] =
+                            static_cast<unsigned char>(string->color >> 25);
+                    manager->primaryVm014.position.x += 2.0f;
+                    manager->primaryVm014.position.y += 2.0f;
+                    g_AnmRenderManagerView->DrawNoRotation(
+                        &manager->primaryVm014);
+                    manager->primaryVm014.position.x -= 2.0f;
+                    manager->primaryVm014.position.y -= 2.0f;
+                }
+
+                manager->primaryVm014.value2FC = string->color;
+                g_AnmRenderManagerView->DrawNoRotation(
+                    &manager->primaryVm014);
+            }
+            manager->primaryVm014.position.x += spaceWidth;
+            ++text;
+        }
+    }
+
+    if (currentViewport != 0)
+    {
+        g_AnmRenderManagerView->FlushVertexBuffer();
+        ConfigureAsciiViewport(0);
+    }
+    return 1;
+}
+
+// Target 0x00401A50-0x00401C89 renders the 64-entry GUI queue. The sole draw
+// mode split is the exact floating-point comparison against scale 1.0.
+int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
+{
+    float spaceWidth;
+    int currentViewport = 1;
+    int index;
+    AsciiManagerStringView *string = manager->guiStrings;
+
+    *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) =
+        (*reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) &
+         0xffd7ffffu) | 0x00140001u;
+
+    for (index = 0; index < manager->numGuiStrings; ++index, ++string)
+    {
+        unsigned char *text;
+
+        manager->primaryVm014.position = string->position;
+        manager->primaryVm014.scaleX = string->scaleX;
+        manager->primaryVm014.scaleY = string->scaleY;
+        *reinterpret_cast<unsigned int *>(&manager->primaryVm014.flags35C) |= 8;
+        spaceWidth = manager->spaceWidth * string->scaleX;
+
+        if (currentViewport != string->viewportIndex)
+        {
+            g_AnmRenderManagerView->FlushVertexBuffer();
+            currentViewport = string->viewportIndex;
+            ConfigureAsciiViewport(currentViewport);
+        }
+
+        text = reinterpret_cast<unsigned char *>(string->text);
+        while (*text != '\0')
+        {
+            if (*text == '\n')
+            {
+                manager->primaryVm014.position.y += 14.0f * string->scaleY;
+                manager->primaryVm014.position.x = string->position.x;
+            }
+            else if (*text != ' ')
+            {
+                AnmSpriteView *sprite =
+                    &manager->asciiAnm->sprites[*text - ' '];
+                manager->primaryVm014.loadedSprite = sprite;
+                manager->primaryVm014.value2FC = string->color;
+                if (manager->primaryVm014.scaleX == 1.0f)
+                    g_AnmRenderManagerView->DrawNoRotation(
+                        &manager->primaryVm014);
+                else
+                    g_AnmRenderManagerView->DrawNoRotationNoRound(
+                        &manager->primaryVm014);
+            }
+            manager->primaryVm014.position.x += spaceWidth;
+            ++text;
+        }
+    }
+
+    if (currentViewport != 0)
+    {
+        g_AnmRenderManagerView->FlushVertexBuffer();
+        ConfigureAsciiViewport(0);
+    }
+    return 1;
 }

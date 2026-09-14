@@ -55,7 +55,7 @@ python3 scripts/rank-exact-backlog.py --source src/PbgArchive.cpp
 python3 scripts/probe-exact-backlog.py --source src/PbgArchive.cpp
 python3 scripts/probe-ltcg-backlog.py --source src/PbgArchive.cpp
 python3 scripts/probe-ltcg-backlog.py --source src/AnmManager.cpp \
-  --entry src/AnmManager.cpp=AnmManagerCreate
+  --entry src/AnmManager.cpp=AsciiManagerCreate
 python3 scripts/replay-exact-units.py
 ```
 

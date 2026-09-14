@@ -7,53 +7,95 @@ target_sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc904
 # require /GL, a PDB-owned complete extent, and an exhaustive manifest of every
 # link-resolved field. Neither artifact kind establishes whole-product closure.
 
-[units.anm-manager-constructor]
+[units.ascii-manager-constructor]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
-output_dir = "build/match-linked/AnmManagerFactory"
+output_dir = "build/match-linked/AsciiManagerFactory"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?AnmManagerCreate@@YAPAUAnmManagerView@@XZ"
-functions = ["AnmManagerView::AnmManagerView"]
-symbol = "??0AnmManagerView@@QAE@XZ"
+entry_symbol = "?AsciiManagerCreate@@YAPAUAsciiManagerView@@XZ"
+functions = ["AsciiManagerView::AsciiManagerView"]
+symbol = "??0AsciiManagerView@@QAE@XZ"
 target_address = 0x00401000
 size = 251
 linkages = [
-  { offset = 2, type = "DIR32", symbol = "??_7AnmManagerView@@6B@", target = 0x0046CB14 },
-  { offset = 200, type = "DIR32", symbol = "?g_AnmManagerView@@3PAUAnmManagerView@@A", target = 0x004776E0 },
+  { offset = 2, type = "DIR32", symbol = "??_7AsciiManagerView@@6B@", target = 0x0046CB14 },
+  { offset = 200, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
 ]
 
-[units.anm-manager-get-size]
+[units.ascii-manager-reset-strings]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AsciiManagerFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AsciiManagerCreate@@YAPAUAsciiManagerView@@XZ"
+functions = ["AsciiManagerView::ResetStrings"]
+symbol = "?ResetStrings@AsciiManagerView@@QAEHXZ"
+target_address = 0x004014D0
+size = 26
+linkages = []
+
+[units.ascii-manager-add-string]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AsciiManagerFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AsciiManagerCreate@@YAPAUAsciiManagerView@@XZ"
+functions = ["AsciiManagerView::AddString"]
+symbol = "?AddString@AsciiManagerView@@QAEXPAUAnmFloat3View@@PBD@Z"
+target_address = 0x00401530
+size = 132
+linkages = []
+
+[units.ascii-manager-add-gui-string]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AsciiManagerFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AsciiManagerCreate@@YAPAUAsciiManagerView@@XZ"
+functions = ["AsciiManagerView::AddGuiString"]
+symbol = "?AddGuiString@AsciiManagerView@@QAEXPAUAnmFloat3View@@PBD@Z"
+target_address = 0x004015C0
+size = 109
+linkages = []
+
+[units.ascii-manager-get-size]
 artifact_kind = "coff"
 source = "src/AnmManager.cpp"
 object = "build/match/AnmManager.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
-functions = ["AnmManagerView::GetSize"]
-symbol = "?GetSize@AnmManagerView@@UAEIXZ"
+functions = ["AsciiManagerView::GetSize"]
+symbol = "?GetSize@AsciiManagerView@@UAEIXZ"
 target_address = 0x00401C90
 size = 6
 
-[units.anm-manager-on-update]
+[units.ascii-manager-on-update]
 artifact_kind = "coff"
 source = "src/AnmManager.cpp"
 object = "build/match/AnmManager.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
-functions = ["AnmManagerView::OnUpdate"]
-symbol = "?OnUpdate@AnmManagerView@@SIHPAU1@@Z"
+functions = ["AsciiManagerView::OnUpdate"]
+symbol = "?OnUpdate@AsciiManagerView@@SIHPAU1@@Z"
 target_address = 0x004014F0
 size = 26
 
-[units.anm-manager-draw-layer0]
+[units.ascii-manager-on-draw-low]
 artifact_kind = "coff"
 source = "src/AnmManager.cpp"
 object = "build/match/AnmManager.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
-functions = ["AnmManagerView::DrawLayer0"]
-symbol = "?DrawLayer0@AnmManagerView@@SIHPAU1@@Z"
+functions = ["AsciiManagerView::OnDrawLowPriority"]
+symbol = "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z"
 target_address = 0x00401510
 size = 7
-relocations = [{ offset = 2, type = "REL32", symbol = "?AnmManagerDrawLayer0@@YGHPAUAnmManagerView@@@Z", target = 0x00401760 }]
+relocations = [{ offset = 2, type = "REL32", symbol = "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z", target = 0x00401760 }]
 
 [units.anm-vm-destructor]
 artifact_kind = "coff"
