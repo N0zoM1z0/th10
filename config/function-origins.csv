@@ -808,7 +808,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00452730,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004527EE,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452876,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00452930,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00452930,library,CRT,exclude,high,crt-strrchr-2026-09-14
 0x00452960,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452A84,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452ABC,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

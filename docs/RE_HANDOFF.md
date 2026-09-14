@@ -14,9 +14,10 @@
 - Completed session checkpoint: `26af714 gpt-5.6-sol: add LTCG linked-image diagnostics`.
 - Completed session checkpoint: `f5a0c4f gpt-5.6-sol: add canonical LTCG replay`.
 - Completed session checkpoint: `40c96ec gpt-5.6-sol: promote exact PbgArchive LTCG helpers`.
-- Planned current checkpoint subject: `gpt-5.6-sol: promote exact LZSS LTCG helpers`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `e4c9077 gpt-5.6-sol: promote exact LZSS LTCG helpers`.
+- Planned current checkpoint subject: `gpt-5.6-sol: promote remaining exact LTCG helpers`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-lzss-linked-fields/`. The PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-final-structural-linked/`. The Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -32,11 +33,40 @@ Fresh repository preflight passed on `444eb1a...`:
 - `python3 scripts/validate-tracking.py --require-target`
 - `python3 scripts/report-reconstruction-status.py`
 
-The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/GL`, resource and PE32-i386 link smoke through headless Wine. Native `th10-ghidra` operation schemas were rediscovered and `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command`; a later final refresh also passed. Useful Ghidra results used this same passed target binding. Capacity/ownership/transport failures that returned no semantic result were treated as unavailable evidence, never as mismatch or rollback.
+The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/GL`, resource and PE32-i386 link smoke through headless Wine. Native `th10-ghidra` operation schemas were rediscovered and `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command`; an earlier refresh also passed. The latest operation-discovery attempt reported that the native implementation differed from its operator binding and returned no semantic result, so this packet uses direct hash-attested target evidence instead. Provider failures were treated as unavailable evidence, never as mismatch or rollback.
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: canonical Lzss linked fields
+## Current packet: final structural-exact LTCG promotions
+
+The final seven unreviewed fields from the original linked diagnostic are now
+bound to TH10-local targets. The Enemy link uses `g_EnemyManager` at
+`0x00477704`, derived/base ECL-resource vtables at `0x0046D0B4` and
+`0x0046D0F0`, and the already reviewed `free` entry at `0x00452422`. The
+PbgFile link uses the reviewed `strchr` entry at `0x00452730`, complete
+45-byte `strrchr` entry at `0x00452930`, and the `GetModuleFileNameA` IAT slot
+at `0x004660DC`.
+
+Two independent cold linked builds reproduce:
+
+- `EnemyManagerView::EnemyManagerView`: **29/29 bytes**, one DIR32 field;
+- `EnemyEclResourceView::EnemyEclResourceView`: **34/34 bytes**, one DIR32;
+- `EnemyEclResourceView::~EnemyEclResourceView`: **36/36 bytes**, one DIR32
+  and one REL32;
+- `CPbgFile::GetFullFilePath`: **121/121 bytes**, one DIR32 and two REL32.
+
+Each complete `source.ltcg.obj` PDB contribution decodes without gaps and has
+exactly the declared fields. Replaying all seven fields leaves zero differences
+across all **220 bytes**. Negative manifests omitting the Enemy global DIR32 or
+the PbgFile `strrchr` REL32 are rejected. The `strrchr` boundary is independently
+reviewed and classified library/CRT; `strchr` keeps origin/boundary state open
+because its optimized body shares a backward return tail outside the current
+Ghidra candidate. A fresh Enemy/PbgFile backlog probe reports 18 mismatches and
+zero structural-exact candidates. All 13 structural candidates / 715 bytes from
+the original full LTCG diagnostic have now been promoted through canonical
+replay; none remains a diagnostic-only exact candidate.
+
+## Completed packet: canonical Lzss linked fields
 
 All 24 linked fields across the four structural-exact Lzss candidates resolve
 to the already target-proven `g_LzssTree` owner at `0x00477858`. Their only
@@ -229,17 +259,17 @@ Total repository canonical exact coverage after the Enemy packet was **4 functio
 Current ledger:
 
 - candidates: **1264**
-- origin/boundary pending: **1133**
+- origin/boundary pending: **1132**
 - authored: **118 / 52,927 bytes**
-- excluded: **13**
+- excluded: **14**
 - source-present: **90 / 39,658 bytes**
-- canonical exact: **29 / 1,195 bytes**
+- canonical exact: **33 / 1,415 bytes**
 
-Current Lzss linked-field packet delta from `40c96ec`: **+4 functions / +281 bytes**. The authored source backlog is now **57 functions**. Session exact delta from `444eb1a...` is **+25 functions / +1,018 bytes**.
+Current final-structural packet delta from `e4c9077`: **+4 functions / +220 bytes**. The authored source backlog is now **53 functions**. Session exact delta from `444eb1a...` is **+29 functions / +1,238 bytes**.
 
 **Source presence:** no source mapping changed.
 
-**Exactness:** repository canonical exact coverage is 29 functions / 1,195 bytes. The complete mixed set cold-replays through seven artifact builds across five source files. This exact lane does not establish production object ownership or whole-build closure.
+**Exactness:** repository canonical exact coverage is 33 functions / 1,415 bytes. The complete mixed set cold-replays through nine artifact builds across five source files. This exact lane does not establish production object ownership or whole-build closure.
 
 **Whole build:** actual final `python3 scripts/build.py` returned **RC2 / explicitly open**. Production compiler flags, TU partition, libraries, resources and link order remain unknown. `build.py --check`, tracking, toolchain execution and public CI pass this honest open state.
 
@@ -255,11 +285,11 @@ The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with
 
 The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
 
-The linked-diagnostic, canonical replay, PbgArchive, and current Lzss field campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
+The linked-diagnostic, canonical replay, PbgArchive, Lzss, and current final-structural campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
 
 ## Next hard frontier
 
-Review the seven fields across the remaining four structural LTCG candidates against target symbols, addends, and complete target control flow: three Enemy lifecycle bodies and `CPbgFile::GetFullFilePath`. The Enemy vtables/global and PbgFile CRT/import targets already have strong local hypotheses but still require field-by-field confirmation. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
+The original 13-function structural-exact LTCG queue is exhausted. The next exactness work must change source/profile/context for real mismatches rather than promote diagnostics already known to match. A useful tooling frontier is to rank the remaining 53 authored mismatches by complete-extent size delta, comparable-byte distance, relocation/linked-field shape, and normal-versus-LTCG improvement so later Web sessions can choose bounded candidates from evidence instead of visual similarity. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
 
 After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. The real production link graph remains a major infrastructure gap; canonical bounded linked-image units do not close it.
 
