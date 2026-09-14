@@ -4,9 +4,10 @@
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
 - Current session starting HEAD: `444eb1a63d4e3a91c4bfcad90c63da25d55c4a02`, clean, branch `main`, ahead of `origin/main` by two local `gpt-web:` commits.
-- Planned current checkpoint subject: `gpt-5.6-sol: promote exact PbgFile accessors`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
+- Planned current checkpoint subject: `gpt-5.6-sol: add exact replay workflow`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-pbgfile-exact/`. Earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-exact-replay/`. The completed PbgFile campaign is checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -26,15 +27,19 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: canonical PbgFile exact backlog
+## Current packet: exact replay workflow and ResFile backlog
 
-The systematic audit found that the low exact count is partly a workflow backlog rather than a compiler failure. Earlier work had already compiled several PbgFile and ResFile methods to exact non-relocation bytes, but stopped at relocation-masked probe mode because the executable contains both normal COFF and LTCG inputs. Later Enemy checkpoints used the narrower and correct claim boundary: a canonical normal-COFF unit may prove exact reproduction of its declared target extent without claiming the original production TU or LTCG physical owner. This packet applies that same boundary consistently to six already reviewed authored PbgFile methods.
+The systematic audit found that the low exact count is partly a workflow and registration backlog rather than a compiler failure. Earlier work had already compiled several ResFile methods to exact non-relocation bytes, but stopped at diagnostic probe mode. This packet applies the same bounded claim used by existing Enemy and PbgFile units: a canonical normal-COFF unit proves reproduction of its declared target extent without claiming the original production TU or LTCG physical owner.
 
-Fresh target inspection re-confirmed the complete PbgFile boundaries and import/vtable destinations. Ghidra models the destructor and `Close`; the existing TH10-local vtable and raw-byte evidence remains necessary for the four Ghidra-missed methods. Current `src/PbgFile.cpp` was compiled from absent output paths twice with pinned VC7.1 SP1 build6030. The six canonical units replay exact across **220/220 bytes and nine DIR32 relocations**: destructor 46 bytes/three relocations, `Close` 34/one, `Read` 57/one, `Tell` 25/one, `GetSize` 21/one, and `Seek` 37/one.
+Fresh target inspection re-confirmed the complete `CMemoryPbgFile` boundaries, both vtables and relocation destinations. Ghidra models the destructor and `Close`; TH10-local vtable and raw-byte evidence remains necessary for the four Ghidra-missed methods. Current `src/ResFile.cpp` was compiled from an absent shared output twice with pinned VC7.1 SP1 build6030. The six canonical units replay exact across **210/210 bytes and four relocations**: `Write` 5 bytes/no relocation, destructor 49/two DIR32 plus one REL32, `Close` 37/one REL32, `Read` 108/none, `Tell` 7/none, and `GetSize` 4/none.
 
-The packet also makes probe-to-canonical review cheaper: probe mode in `scripts/compare-coff-function.py` now decodes each relocation's object addend, target encoded word, and target-derived candidate destination. These values remain diagnostic and cannot grant exactness; the reviewer must still establish the symbol, boundary, ownership of the relocation, and a zero-difference canonical replay.
+The new `scripts/replay-exact-units.py` cold-builds one shared object per source/profile and then strictly compares every selected unit. The 16 canonical units now use three shared outputs instead of compiling the same three translation units 16 times. `build-match-unit.py --check` rejects malformed extents/relocations and inconsistent output sharing. `validate-tracking.py` now joins canonical units to the exact ledger, source mappings, candidate ledger and origin ledger, and requires the exact-unit sets to agree completely.
 
-No source behavior or layout changed. Original PbgFile TU partition, production normal-COFF versus LTCG ownership, complete link graph, runtime behavior, and the general linked-image LTCG Oracle remain unknown.
+No source behavior or layout changed. Original ResFile TU partition, production normal-COFF versus LTCG ownership, complete link graph, runtime behavior, and the general linked-image LTCG Oracle remain unknown.
+
+## Completed packet: canonical PbgFile exact backlog
+
+Checkpoint `bd9b2e3` promoted six already reviewed PbgFile methods. Current `src/PbgFile.cpp` compiled from absent output paths twice and replayed exact across **220/220 bytes and nine DIR32 relocations**: destructor 46 bytes/three relocations, `Close` 34/one, `Read` 57/one, `Tell` 25/one, `GetSize` 21/one, and `Seek` 37/one. It also extended diagnostic probe output with target-derived relocation candidates; these remain non-authoritative until a reviewed canonical unit passes.
 
 ## Completed previous hard packet: Enemy ECL dispatcher context seam
 
@@ -105,20 +110,20 @@ Total repository canonical exact coverage after the Enemy packet was **4 functio
 
 ## Ledger and verification planes
 
-Current ledger at the PbgFile checkpoint:
+Current ledger at the exact-replay checkpoint:
 
 - candidates: **1264**
 - origin/boundary pending: **1135**
 - authored: **118 / 52,927 bytes**
 - excluded: **11**
 - source-present: **90 / 39,658 bytes**
-- canonical exact: **10 / 397 bytes**
+- canonical exact: **16 / 607 bytes**
 
-Current-packet delta from `444eb1a...`: **+6 canonical exact functions / +220 exact bytes**. Candidate, authored, excluded, and source-present denominators are unchanged. The previous Enemy hard-packet delta was +3 candidates / +3 pending from the unreferenced `0x00412A60/70/80` bodies. `config/build.toml` remains unchanged and honestly open.
+Current-packet delta from `bd9b2e3`: **+6 canonical exact functions / +210 exact bytes**. Session delta from `444eb1a...` is **+12 canonical exact functions / +430 exact bytes**. Candidate, authored, excluded, and source-present denominators are unchanged. The previous Enemy hard-packet delta was +3 candidates / +3 pending from the unreferenced `0x00412A60/70/80` bodies. `config/build.toml` remains unchanged and honestly open.
 
-**Source presence:** no new target function is promoted source-present. All six PbgFile methods were already mapped to maintained source.
+**Source presence:** no new target function is promoted source-present. All six ResFile methods were already mapped to maintained source.
 
-**Exactness:** repository canonical exact coverage is ten functions / 397 bytes. The six new PbgFile units pass two cold-output rebuild/replay cycles across 220 bytes and nine relocations. The four prior Enemy units remain separately replayable. This exact lane does not establish production object ownership or whole-build closure.
+**Exactness:** repository canonical exact coverage is 16 functions / 607 bytes. The six new ResFile units pass two cold-output source-object replay cycles across 210 bytes and four relocations. The complete set is now cold-replayable with three compilations. This exact lane does not establish production object ownership or whole-build closure.
 
 **Whole build:** actual final `python3 scripts/build.py` returned **RC2 / explicitly open**. Production compiler flags, TU partition, libraries, resources and link order remain unknown. `build.py --check`, tracking, toolchain execution and public CI pass this honest open state.
 
@@ -134,11 +139,11 @@ The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with
 
 The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
 
-The current PbgFile campaign adds one compact ignored manifest. Current `.analysis/` inventory is **348 regular files / 3,970,042 logical bytes / 0 files >64 MiB**. Reproducible compiler objects remain below ignored `build/`; no new decompiler dump or copied target was created.
+The completed PbgFile campaign and current exact-replay campaign each retain one compact ignored manifest. Current `.analysis/` inventory is **349 regular files / 3,971,729 logical bytes / 0 files >64 MiB**. Reproducible compiler objects remain below ignored `build/`; no new decompiler dump or copied target was created.
 
 ## Next hard frontier
 
-Continue the canonical backlog audit with the six already observed structural-exact `CMemoryPbgFile` methods, then the PbgArchive constructor/entry-constructor/destructor candidates. Each requires reviewed relocation destinations and cold canonical replay; do not promote the compiler-generated deleting destructors. This route can recover exact coverage that prior probe-only sessions left unregistered and provides a fast check of the new relocation-candidate output.
+Continue the canonical backlog audit with the PbgArchive constructor, entry constructor and entry destructor candidates, using the shared-object cold replay path. Each requires reviewed relocation destinations and must remain a bounded reproduction claim; do not promote compiler-generated deleting destructors. `Lzss::InitEncoderState` is the next known relocation-free structural-exact candidate after that.
 
 After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. In parallel with later product work, the major infrastructure gap remains a target-bound linked-image extent Oracle for LTCG-owned code; normal-COFF exact units do not close that gap.
 

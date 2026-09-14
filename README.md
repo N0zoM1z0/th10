@@ -50,7 +50,12 @@ graph, and link order remain unknown.
 ```bash
 python3 scripts/verify-toolchain.py --execute
 python3 scripts/build-match-unit.py --check
+python3 scripts/replay-exact-units.py
 ```
+
+Canonical units from the same source and compiler profile share one object.
+The replay command removes that output, compiles it once, and checks every
+selected function against the target with its declared relocations.
 
 The executable tool payload is shared and ignored; its 32-bit Wine prefix is
 game-bound, ignored, and always driven through Xvfb. A normal-COFF function

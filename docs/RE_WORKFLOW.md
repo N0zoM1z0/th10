@@ -30,9 +30,11 @@ disk target, Ghidra target, ledgers, and live status using the commands in
    profile, boundary, ownership, optimizer, and library mismatches.
 7. Add a canonical match unit and exact ledger row only after repeatable zero
    difference against the verified target.
-8. Replay affected accepted units, regenerate progress, update the handoff and
-   per-game knowledge, inspect the final diff, and commit one coherent local
-   checkpoint.
+8. Cold-replay affected accepted units with
+   `python3 scripts/replay-exact-units.py --source SOURCE`; use the unfiltered
+   command at integration checkpoints. Then regenerate progress, update the
+   handoff and per-game knowledge, inspect the final diff, and commit one
+   coherent local checkpoint.
 
 ## Product and semantic gates
 

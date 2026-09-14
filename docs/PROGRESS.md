@@ -11,8 +11,8 @@ their boundaries and origins must be reviewed independently.
 | Confirmed authored code bytes | 52,927 |
 | Classified exclusions | 11 |
 | Source-present authored mappings | 90 |
-| Canonical exact functions | 10 |
-| Canonical exact authored bytes | 397 |
+| Canonical exact functions | 16 |
+| Canonical exact authored bytes | 607 |
 
 While review remains pending, the authored exact denominator is unknown. A
 mapped name, maintained source, successful compilation, or Ghidra similarity does

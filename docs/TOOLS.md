@@ -9,6 +9,7 @@
 | Compare a normal-COFF source probe | `python3 scripts/compare-coff-function.py OBJECT SYMBOL ADDRESS SIZE --json` | Relocation-masked diagnostic plus target-derived relocation candidates; no acceptance authority |
 | Build a canonical normal-COFF unit | `python3 scripts/build-match-unit.py --unit NAME` | Forced compile, no exactness by itself |
 | Compare a canonical normal-COFF unit | `python3 scripts/compare-coff-function.py --unit NAME --json` | Complete target bytes and declared relocation replay |
+| Cold-replay canonical exact units | `python3 scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold compile per shared source/profile/object followed by strict comparison of every selected unit |
 | Initialize private Ghidra project | `python3 scripts/ghidra.py import` | Operator-only bootstrap; provisional inventory |
 | Attest private Ghidra project | `python3 scripts/ghidra.py check` | Target/project binding, no exactness credit |
 | Discover/call Ghidra | Factory provider `th10-ghidra` | Target-attested provisional semantic analysis |

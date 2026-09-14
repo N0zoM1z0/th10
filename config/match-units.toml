@@ -10,7 +10,7 @@ target_sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc904
 [units.enemy-manager-draw-callback]
 artifact_kind = "coff"
 source = "src/Enemy.cpp"
-object = "build/match/enemy-manager-draw-callback.obj"
+object = "build/match/Enemy.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["EnemyManagerDrawCallback"]
 symbol = "?EnemyManagerDrawCallback@@YIHPAUEnemyManagerView@@@Z"
@@ -20,7 +20,7 @@ size = 6
 [units.enemy-ecl-dispatch-forwarder]
 artifact_kind = "coff"
 source = "src/Enemy.cpp"
-object = "build/match/enemy-ecl-dispatch-forwarder.obj"
+object = "build/match/Enemy.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["EnemyFullObjectView::DispatchEclInstruction"]
 symbol = "?DispatchEclInstruction@EnemyFullObjectView@@QAEHXZ"
@@ -31,7 +31,7 @@ relocations = [{ offset = 7, type = "REL32", symbol = "?DispatchEclInstruction@E
 [units.enemy-ecl-int-lvalue-resolver]
 artifact_kind = "coff"
 source = "src/Enemy.cpp"
-object = "build/match/enemy-ecl-int-lvalue-resolver.obj"
+object = "build/match/Enemy.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["EnemyFullObjectView::ResolveIntOperand"]
 symbol = "?ResolveIntOperand@EnemyFullObjectView@@QAEPAHH@Z"
@@ -48,7 +48,7 @@ relocations = [
 [units.enemy-ecl-float-lvalue-resolver]
 artifact_kind = "coff"
 source = "src/Enemy.cpp"
-object = "build/match/enemy-ecl-float-lvalue-resolver.obj"
+object = "build/match/Enemy.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["EnemyFullObjectView::ResolveFloatOperand"]
 symbol = "?ResolveFloatOperand@EnemyFullObjectView@@QAEPAMH@Z"
@@ -65,7 +65,7 @@ relocations = [
 [units.pbgfile-destructor]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"
-object = "build/match/pbgfile-destructor.obj"
+object = "build/match/PbgFile.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["CPbgFile::~CPbgFile"]
 symbol = "??1CPbgFile@@UAE@XZ"
@@ -80,7 +80,7 @@ relocations = [
 [units.pbgfile-close]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"
-object = "build/match/pbgfile-close.obj"
+object = "build/match/PbgFile.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["CPbgFile::Close"]
 symbol = "?Close@CPbgFile@@UAEXXZ"
@@ -93,7 +93,7 @@ relocations = [
 [units.pbgfile-read]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"
-object = "build/match/pbgfile-read.obj"
+object = "build/match/PbgFile.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["CPbgFile::Read"]
 symbol = "?Read@CPbgFile@@UAEKPAXK@Z"
@@ -106,7 +106,7 @@ relocations = [
 [units.pbgfile-tell]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"
-object = "build/match/pbgfile-tell.obj"
+object = "build/match/PbgFile.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["CPbgFile::Tell"]
 symbol = "?Tell@CPbgFile@@UAEKXZ"
@@ -119,7 +119,7 @@ relocations = [
 [units.pbgfile-get-size]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"
-object = "build/match/pbgfile-get-size.obj"
+object = "build/match/PbgFile.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["CPbgFile::GetSize"]
 symbol = "?GetSize@CPbgFile@@UAEKXZ"
@@ -132,7 +132,7 @@ relocations = [
 [units.pbgfile-seek]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"
-object = "build/match/pbgfile-seek.obj"
+object = "build/match/PbgFile.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["CPbgFile::Seek"]
 symbol = "?Seek@CPbgFile@@UAE_NKK@Z"
@@ -141,3 +141,71 @@ size = 37
 relocations = [
   { offset = 28, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x004660C8 },
 ]
+
+[units.memory-pbgfile-write]
+artifact_kind = "coff"
+source = "src/ResFile.cpp"
+object = "build/match/ResFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CMemoryPbgFile::Write"]
+symbol = "?Write@CMemoryPbgFile@@UAE_NPAXK@Z"
+target_address = 0x00436370
+size = 5
+
+[units.memory-pbgfile-destructor]
+artifact_kind = "coff"
+source = "src/ResFile.cpp"
+object = "build/match/ResFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CMemoryPbgFile::~CMemoryPbgFile"]
+symbol = "??1CMemoryPbgFile@@UAE@XZ"
+target_address = 0x004363C0
+size = 49
+relocations = [
+  { offset = 13, type = "DIR32", symbol = "??_7CMemoryPbgFile@@6B@", target = 0x0046F308 },
+  { offset = 21, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 43, type = "DIR32", symbol = "??_7IPbgFile@@6B@", target = 0x0046F210 },
+]
+
+[units.memory-pbgfile-close]
+artifact_kind = "coff"
+source = "src/ResFile.cpp"
+object = "build/match/ResFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CMemoryPbgFile::Close"]
+symbol = "?Close@CMemoryPbgFile@@UAEXXZ"
+target_address = 0x00436430
+size = 37
+relocations = [
+  { offset = 15, type = "REL32", symbol = "_free", target = 0x00452422 },
+]
+
+[units.memory-pbgfile-read]
+artifact_kind = "coff"
+source = "src/ResFile.cpp"
+object = "build/match/ResFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CMemoryPbgFile::Read"]
+symbol = "?Read@CMemoryPbgFile@@UAEKPAXK@Z"
+target_address = 0x00436460
+size = 108
+
+[units.memory-pbgfile-tell]
+artifact_kind = "coff"
+source = "src/ResFile.cpp"
+object = "build/match/ResFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CMemoryPbgFile::Tell"]
+symbol = "?Tell@CMemoryPbgFile@@UAEKXZ"
+target_address = 0x004364D0
+size = 7
+
+[units.memory-pbgfile-get-size]
+artifact_kind = "coff"
+source = "src/ResFile.cpp"
+object = "build/match/ResFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CMemoryPbgFile::GetSize"]
+symbol = "?GetSize@CMemoryPbgFile@@UAEKXZ"
+target_address = 0x004364E0
+size = 4

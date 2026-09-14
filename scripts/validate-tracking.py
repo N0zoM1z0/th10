@@ -56,8 +56,10 @@ def validate() -> dict[str, int]:
         starts.append(address)
     if starts != sorted(set(starts)):
         raise ValueError("function addresses must be unique and sorted")
-    function_addresses = {row["address"] for row in functions}
-    origin_addresses = {row["address"] for row in origins}
+    functions_by_address = {int(row["address"], 0): row for row in functions}
+    origins_by_address = {int(row["address"], 0): row for row in origins}
+    function_addresses = set(functions_by_address)
+    origin_addresses = set(origins_by_address)
     if origin_addresses != function_addresses or len(origins) != len(functions):
         raise ValueError("origin ledger must cover each function exactly once")
     allowed_origins = {"unknown", "authored", "authored_game", "compiler", "compiler_generated", "library", "third_party", "import_thunk", "data", "padding"}
@@ -65,19 +67,54 @@ def validate() -> dict[str, int]:
     for row in origins:
         if row["origin"] not in allowed_origins or row["disposition"] not in allowed_dispositions:
             raise ValueError(f"invalid origin state at {row['address']}")
-    mapping_addresses = {row["address"] for row in mappings}
-    match_addresses = {row["address"] for row in matches}
+    mapping_addresses = {int(row["address"], 0) for row in mappings}
+    match_addresses = {int(row["address"], 0) for row in matches}
     if not mapping_addresses.issubset(function_addresses) or not match_addresses.issubset(function_addresses):
         raise ValueError("mapping or match ledger references an unknown address")
+    if len(mapping_addresses) != len(mappings):
+        raise ValueError("source mapping addresses must be unique")
+    mappings_by_address = {int(row["address"], 0): row for row in mappings}
     mapped_names = {row["name"] for row in mappings}
+    if len(mapped_names) != len(mappings):
+        raise ValueError("source mapping names must be unique")
     if not implemented.issubset(mapped_names):
         raise ValueError("implemented.csv contains an unmapped source name")
+    if implemented != mapped_names:
+        raise ValueError("implemented.csv must cover every mapped source name")
     configured_units = units.get("units", {})
     if not isinstance(configured_units, dict):
         raise ValueError("match units must be a table")
+    matched_units: set[str] = set()
+    if len(match_addresses) != len(matches):
+        raise ValueError("exact match addresses must be unique")
     for row in matches:
-        if row["unit"] not in configured_units or row["match_percent"] != "100.00":
+        unit_name = row["unit"]
+        if unit_name not in configured_units or row["match_percent"] != "100.00":
             raise ValueError(f"unreplayable exact claim at {row['address']}")
+        if row["status"] != "exact" or unit_name in matched_units:
+            raise ValueError(f"invalid or duplicate exact unit {unit_name!r}")
+        matched_units.add(unit_name)
+        unit = configured_units[unit_name]
+        address = int(row["address"], 0)
+        size = int(row["size"], 0)
+        if address != int(unit["target_address"]) or size != int(unit["size"]):
+            raise ValueError(f"exact ledger extent differs from unit {unit_name!r}")
+        if row["name"] not in unit["functions"]:
+            raise ValueError(f"exact ledger name differs from unit {unit_name!r}")
+        mapping = mappings_by_address.get(address)
+        if mapping is None or mapping["name"] != row["name"]:
+            raise ValueError(f"exact unit {unit_name!r} lacks its source mapping")
+        function = functions_by_address[address]
+        if function["source_file"] != unit["source"]:
+            raise ValueError(f"exact unit {unit_name!r} differs from source ledger")
+        if origins_by_address[address]["disposition"] != "authored":
+            raise ValueError(f"exact unit {unit_name!r} is not reviewed authored code")
+    if matched_units != set(configured_units):
+        missing = sorted(set(configured_units) - matched_units)
+        extra = sorted(matched_units - set(configured_units))
+        raise ValueError(
+            f"canonical units and exact ledger differ: missing={missing!r} extra={extra!r}"
+        )
     if build.get("schema_version") != 1:
         raise ValueError("unsupported build manifest schema")
     acceptance = build.get("acceptance", {})
