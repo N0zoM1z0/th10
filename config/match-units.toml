@@ -1237,3 +1237,87 @@ symbol = "?SetGeneratedVertexColor@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAn
 target_address = 0x00444CB0
 size = 34
 linkages = []
+
+[units.anm-draw-pulsing-radial-trail]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+support_sources = ["src/RandomMath.cpp"]
+output_dir = "build/match-linked/AnmTrail"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?InitializePulsingRadialTrail@AnmVmView@@QAEHXZ"
+functions = ["DrawPulsingRadialTrail"]
+symbol = "?DrawPulsingRadialTrail@@YIHPAUAnmVmView@@@Z"
+target_address = 0x00445880
+size = 25
+linkages = [
+  { offset = 0x0D, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x12, type = "REL32", symbol = "?DrawTexturedTriangleFan@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z", target = 0x004450E0 },
+]
+
+[units.anm-float3-from-angle-magnitude]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+support_sources = ["src/RandomMath.cpp"]
+output_dir = "build/match-linked/AnmTrail"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?InitializePulsingRadialTrail@AnmVmView@@QAEHXZ"
+functions = ["AnmFloat3View::FromAngleMagnitude"]
+symbol = "?FromAngleMagnitude@AnmFloat3View@@QAEXMM@Z"
+target_address = 0x004458B0
+size = 30
+linkages = []
+
+[units.rng-get-random-u16]
+artifact_kind = "coff"
+source = "src/RandomMath.cpp"
+object = "build/match/RandomMath.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["RngView::GetRandomU16"]
+symbol = "?GetRandomU16@RngView@@QAEGXZ"
+target_address = 0x0044B9B0
+size = 39
+relocations = []
+
+[units.rng-get-random-u32]
+artifact_kind = "coff"
+source = "src/RandomMath.cpp"
+object = "build/match/RandomMath.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["RngView::GetRandomU32"]
+symbol = "?GetRandomU32@RngView@@QAEIXZ"
+target_address = 0x0044B9E0
+size = 78
+relocations = []
+
+[units.rng-get-random-f32]
+artifact_kind = "coff"
+source = "src/RandomMath.cpp"
+object = "build/match/RandomMath.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["RngView::GetRandomF32"]
+symbol = "?GetRandomF32@RngView@@QAEMXZ"
+target_address = 0x0044BB20
+size = 109
+relocations = [
+  { offset = 0x60, type = "DIR32", symbol = "__real@4f800000", target = 0x00470B98 },
+  { offset = 0x66, type = "DIR32", symbol = "__real@2f800000", target = 0x00470BF0 },
+]
+
+[units.rng-get-random-f32-signed]
+artifact_kind = "coff"
+source = "src/RandomMath.cpp"
+object = "build/match/RandomMath.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["RngView::GetRandomF32Signed"]
+symbol = "?GetRandomF32Signed@RngView@@QAEMXZ"
+target_address = 0x0044BB90
+size = 115
+relocations = [
+  { offset = 0x60, type = "DIR32", symbol = "__real@4f800000", target = 0x00470B98 },
+  { offset = 0x66, type = "DIR32", symbol = "__real@30000000", target = 0x00470BEC },
+  { offset = 0x6D, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+]

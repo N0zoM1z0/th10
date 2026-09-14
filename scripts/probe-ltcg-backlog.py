@@ -62,6 +62,16 @@ def parse_args() -> argparse.Namespace:
             "(repeatable); default: first uniquely resolved backlog function"
         ),
     )
+    parser.add_argument(
+        "--support",
+        action="append",
+        default=[],
+        metavar="SOURCE=SUPPORT_SOURCE",
+        help=(
+            "compile and link one additional /GL source with a selected primary "
+            "source (repeatable)"
+        ),
+    )
     parser.add_argument("--json", action="store_true", help="emit one JSON report")
     return parser.parse_args()
 
@@ -80,6 +90,28 @@ def parse_entry_overrides(values: list[str]) -> dict[str, str]:
             raise ValueError(f"duplicate --entry source {source!r}")
         overrides[source] = source_name
     return overrides
+
+
+def parse_support_sources(values: list[str]) -> dict[str, list[str]]:
+    result: dict[str, list[str]] = defaultdict(list)
+    for value in values:
+        if "=" not in value:
+            raise ValueError(
+                f"invalid --support {value!r}; expected SOURCE=SUPPORT_SOURCE"
+            )
+        source, support = value.split("=", 1)
+        source = source.replace("\\", "/").strip()
+        support = support.replace("\\", "/").strip()
+        if not source or not support:
+            raise ValueError(
+                f"invalid --support {value!r}; both sides are required"
+            )
+        if support in result[source]:
+            raise ValueError(
+                f"duplicate --support {support!r} for source {source!r}"
+            )
+        result[source].append(support)
+    return dict(result)
 
 
 def json_command(command: list[str], label: str) -> dict[str, object]:
@@ -241,6 +273,7 @@ def probe_source(
     linker: Path,
     environment: dict[str, str],
     entry_name: str | None = None,
+    support_source_names: list[str] | None = None,
 ) -> dict[str, object]:
     source = (ROOT / source_name).resolve()
     source.relative_to(ROOT.resolve())
@@ -272,7 +305,21 @@ def probe_source(
             raise ValueError(f"no external entry symbol can be derived for {source_name}")
         entry_selection = "first-backlog-symbol"
     entry_symbol = entry_candidates[0]
-    linked = cold_link(source, directory, entry_symbol, linker, environment)
+    if support_source_names is None:
+        support_source_names = []
+    support_sources = [(ROOT / name).resolve() for name in support_source_names]
+    for support_source in support_sources:
+        support_source.relative_to(ROOT.resolve())
+        if not support_source.is_file():
+            raise ValueError(f"missing LTCG support source: {support_source}")
+    linked = cold_link(
+        source,
+        directory,
+        entry_symbol,
+        linker,
+        environment,
+        support_sources=support_sources,
+    )
     linked_report = linked_functions(linked["image"], linked["map"], linked["pdb"])
     publics = map_publics(linked["map"])
     candidate_image = PEImage(linked["image"])
@@ -344,6 +391,7 @@ def probe_source(
         "entry_name": entry_name,
         "entry_symbol": entry_symbol,
         "entry_selection": entry_selection,
+        "support_sources": support_source_names,
         "normal_profile": NORMAL_PROFILE,
         "ltcg_profile": LTCG_PROFILE,
         "link_harness": HARNESS_KIND,
@@ -400,11 +448,18 @@ def main() -> int:
         for item in backlog:
             by_source[str(item["source"])].append(item)
         entry_overrides = parse_entry_overrides(args.entry)
+        support_sources = parse_support_sources(args.support)
         unknown_entry_sources = sorted(set(entry_overrides) - set(by_source))
         if unknown_entry_sources:
             raise ValueError(
                 "--entry source is absent from the selected authored backlog: "
                 + ", ".join(unknown_entry_sources)
+            )
+        unknown_support_sources = sorted(set(support_sources) - set(by_source))
+        if unknown_support_sources:
+            raise ValueError(
+                "--support source is absent from the selected authored backlog: "
+                + ", ".join(unknown_support_sources)
             )
         target = verified_target()
         with TOOLS_LOCK.open("rb") as stream:
@@ -418,6 +473,7 @@ def main() -> int:
                 linker,
                 environment,
                 entry_overrides.get(source),
+                support_sources.get(source, []),
             )
             for source, items in sorted(by_source.items())
         ]
@@ -431,6 +487,7 @@ def main() -> int:
             "acceptance_authority": "none",
             "artifact_kind": "anchored-linked-pe-diagnostic",
             "entry_overrides": entry_overrides,
+            "support_sources": support_sources,
             "decoder": {"name": "capstone", **decoder_identity},
             "source_count": len(source_reports),
             "function_count": len(backlog),

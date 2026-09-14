@@ -1,6 +1,7 @@
 #pragma once
 
 #include "D3d9View.hpp"
+#include "Rng.hpp"
 
 #include <stddef.h>
 
@@ -26,6 +27,16 @@ struct AnmFloat3View
             x + other.x, y + other.y, z + other.z);
     }
 
+    AnmFloat3View &operator+=(const AnmFloat3View &other)
+    {
+        x += other.x;
+        y += other.y;
+        z += other.z;
+        return *this;
+    }
+
+    void FromAngleMagnitude(float angle, float magnitude);
+
     float x;
     float y;
     float z;
@@ -44,6 +55,15 @@ struct AnmFloat4View
 
 typedef char AnmFloat4ViewSizeIs10[
     (sizeof(AnmFloat4View) == 0x10) ? 1 : -1];
+
+struct AnmFloat2View
+{
+    float x;
+    float y;
+};
+
+typedef char AnmFloat2ViewSizeIs08[
+    (sizeof(AnmFloat2View) == 0x08) ? 1 : -1];
 
 union AnmColorView
 {
@@ -87,6 +107,11 @@ typedef char AnmMatrixViewSizeIs40[
     (sizeof(AnmMatrixView) == 0x40) ? 1 : -1];
 
 struct AnmSpriteView;
+struct AnmVmView;
+
+typedef int (__fastcall *AnmVmCallback)(AnmVmView *vm);
+int __fastcall UpdatePulsingRadialTrail(AnmVmView *vm);
+int __fastcall DrawPulsingRadialTrail(AnmVmView *vm);
 
 // Exact-size view for the TH10 ANM virtual machine. Only fields established by
 // the lifecycle seam are named; the animation/render state between them stays
@@ -96,6 +121,7 @@ struct AnmVmView
     AnmVmView();
     ~AnmVmView();
     void Initialize();
+    int InitializePulsingRadialTrail();
 
     void *unknown000;
     AnmVmView *listSelf004;
@@ -178,7 +204,9 @@ struct AnmVmView
     short activeSpriteIndex;
     unsigned char unknown386[0x00e];
     AnmSpriteView *loadedSprite;
-    unsigned char unknown398[0x014];
+    AnmVmCallback positionCallback;
+    AnmVmCallback drawCallback;
+    unsigned char unknown3A0[0x00c];
 };
 
 typedef char AnmVmViewSizeIs3AC[
@@ -195,6 +223,9 @@ typedef char AnmVmRotationAt024[
     (offsetof(AnmVmView, rotation) == 0x024) ? 1 : -1];
 typedef char AnmVmLoadedSpriteAt394[
     (offsetof(AnmVmView, loadedSprite) == 0x394) ? 1 : -1];
+typedef char AnmVmCallbacksAt398[
+    (offsetof(AnmVmView, positionCallback) == 0x398 &&
+     offsetof(AnmVmView, drawCallback) == 0x39c) ? 1 : -1];
 typedef char AnmVmColorsAt2FC[
     (offsetof(AnmVmView, primaryColor) == 0x2fc &&
      offsetof(AnmVmView, secondaryColor) == 0x300) ? 1 : -1];
@@ -341,13 +372,36 @@ struct AnmRenderVertexView
     float y;
     float z;
     float rhw;
-    unsigned int color;
-    float u;
-    float v;
+    union
+    {
+        AnmColorView diffuse;
+        unsigned int color;
+    };
+    union
+    {
+        AnmFloat2View uv;
+        struct
+        {
+            float u;
+            float v;
+        };
+    };
 };
 
 typedef char AnmRenderVertexViewSizeIs1C[
     (sizeof(AnmRenderVertexView) == 0x1c) ? 1 : -1];
+
+struct PulsingRadialTrailDataView
+{
+    AnmRenderVertexView vertices[33];
+    float radii[33];
+    float radialVelocities[33];
+    AnmFloat2View uvVelocity;
+    unsigned int unknown4AC;
+};
+
+typedef char PulsingRadialTrailDataViewSizeIs4B0[
+    (sizeof(PulsingRadialTrailDataView) == 0x4b0) ? 1 : -1];
 
 struct AnmUntexturedVertexView
 {
@@ -511,6 +565,7 @@ extern AnmRenderVertexView g_AnmQuadVertices[4];
 extern AnmViewportOwnerView *g_AnmViewportOwner;
 extern AnmFloat3View g_AnmBackgroundCameraPosition;
 extern AnmPhotoBlendView g_AnmPhotoBlend;
+
 unsigned char __fastcall MixAnmColor(
     unsigned char source, unsigned char multiplier);
 void __cdecl AsciiConfigureBackgroundViewport(int index);

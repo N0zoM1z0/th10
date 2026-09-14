@@ -97,6 +97,7 @@ def replay(
                 str(unit["entry_symbol"]),
                 tuple(str(flag) for flag in unit["link_profile"]),
                 str(unit["harness"]),
+                tuple(str(value) for value in unit.get("support_sources", [])),
             )
         else:
             raise ValueError(f"unit {name!r} has an unsupported artifact kind")

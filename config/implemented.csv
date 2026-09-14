@@ -152,3 +152,11 @@ AnmRenderManagerView::Draw2D
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned
 AnmRenderManagerView::Draw
 AnmPairOwnerDrawCallback
+AnmVmView::InitializePulsingRadialTrail
+UpdatePulsingRadialTrail
+DrawPulsingRadialTrail
+AnmFloat3View::FromAngleMagnitude
+RngView::GetRandomU16
+RngView::GetRandomU32
+RngView::GetRandomF32
+RngView::GetRandomF32Signed

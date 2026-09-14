@@ -16,7 +16,7 @@
 | Rank the exact backlog in both codegen lanes | `python3 scripts/rank-exact-backlog.py [--source SOURCE] [--limit N] [--json]` | Fresh normal-COFF and LTCG probes joined to the same current backlog and ranked by explicit size/byte distance; no acceptance authority |
 | Batch-probe the authored exact backlog | `python3 scripts/probe-exact-backlog.py [--source SOURCE] [--show RESULT] [--json]` | One cold normal-COFF compile per source plus strict diagnostic comparison; no acceptance authority |
 | Inspect linked function extents | `python3 scripts/inspect-linked-functions.py IMAGE MAP PDB [--object TEXT] [--contains TEXT] [--json]` | PE/map/PDB-bound public functions whose sizes come from DBI section contributions; no acceptance authority |
-| Batch-probe LTCG backlog | `python3 scripts/probe-ltcg-backlog.py [--source SOURCE] [--show RESULT] [--json]` | Cold `/GL` compile and diagnostic link, PDB-owned extents, and target structural comparison; no acceptance authority |
+| Batch-probe LTCG backlog | `python3 scripts/probe-ltcg-backlog.py [--source SOURCE] [--entry SOURCE=NAME] [--support SOURCE=SUPPORT_SOURCE] [--show RESULT] [--json]` | Cold one- or multi-source `/GL` compile and diagnostic link, PDB-owned extents, and target structural comparison; no acceptance authority |
 | Initialize private Ghidra project | `python3 scripts/ghidra.py import` | Operator-only bootstrap; provisional inventory |
 | Attest private Ghidra project | `python3 scripts/ghidra.py check` | Target/project binding, no exactness credit |
 | Discover/call Ghidra | Factory provider `th10-ghidra` | Target-attested provisional semantic analysis |

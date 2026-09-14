@@ -8,6 +8,28 @@
 
 AsciiManagerView *g_AsciiManagerView;
 
+// Target 0x004458B0-0x004458CD is the retained polar-vector primitive used by
+// generated radial trails. VC7.1 otherwise lowers separate sin/cos calls and
+// loses the target's single x87 FSINCOS operation.
+void AnmFloat3View::FromAngleMagnitude(float angle, float magnitude)
+{
+#if defined(_MSC_VER) && defined(_M_IX86)
+    __asm
+    {
+        mov eax, this
+        fld angle
+        fsincos
+        fmul magnitude
+        fstp [eax]
+        fmul magnitude
+        fstp [eax + 4]
+    }
+#else
+    x = static_cast<float>(cos(angle)) * magnitude;
+    y = static_cast<float>(sin(angle)) * magnitude;
+#endif
+}
+
 // These two target helpers are also inlined by AnmVmView::Initialize. Their
 // chained assignments preserve VC7.1's target-observed right-to-left stores.
 void AnmMatrixView::SetIdentity()
@@ -1962,6 +1984,149 @@ int AnmRenderManagerView::Draw(AnmVmView *vm)
     default:
         return 0;
     }
+}
+
+// Target 0x004452F0-0x00445612 allocates the complete 33-vertex radial-fan
+// payload and installs its update/draw callbacks. The first vertex is the fan
+// center; vertices 1..31 form the ring and the updater closes it at index 32.
+int AnmVmView::InitializePulsingRadialTrail()
+{
+    PulsingRadialTrailDataView *data;
+    AnmRenderVertexView *vertex;
+    float angle;
+    float radialVelocity;
+    int i;
+    AnmFloat3View direction;
+
+    if (generatedVertices != NULL)
+    {
+        free(generatedVertices);
+        generatedVertices = NULL;
+    }
+
+    generatedVertices = malloc(sizeof(PulsingRadialTrailDataView));
+    positionCallback = UpdatePulsingRadialTrail;
+    drawCallback = DrawPulsingRadialTrail;
+
+    data = static_cast<PulsingRadialTrailDataView *>(generatedVertices);
+    data->uvVelocity.x =
+        g_RngView.GetRandomF32Signed() * (1.0f / 120.0f);
+    data->uvVelocity.y =
+        g_RngView.GetRandomF32Signed() * (1.0f / 120.0f);
+
+    angle = -3.1415927f;
+    vertex = data->vertices;
+    *reinterpret_cast<AnmFloat3View *>(&vertex->x) =
+        position + preservedPosition;
+    vertex->rhw = 1.0f;
+    vertex->uv.x = 0.5f;
+    vertex->uv.y = 0.5f;
+    ++vertex;
+
+    radialVelocity =
+        g_RngView.GetRandomF32Signed() * (1.0f / 15.0f);
+    for (i = 1; i < 32; ++i)
+    {
+        if (angle >= 3.1415927f)
+            angle -= 6.2831855f;
+
+        vertex->rhw = 1.0f;
+        direction.FromAngleMagnitude(angle, 0.5f);
+        vertex->uv.x = direction.x + 0.5f;
+        vertex->uv.y = direction.y + 0.5f;
+        vertex->z = 0.0f;
+
+        data->radii[i] =
+            g_RngView.GetRandomF32Signed() * 8.0f + 80.0f;
+        data->radialVelocities[i] = radialVelocity;
+        radialVelocity +=
+            g_RngView.GetRandomF32Signed() * (1.0f / 30.0f);
+        if (radialVelocity < -(1.0f / 15.0f))
+            radialVelocity = -(1.0f / 15.0f);
+        else if (radialVelocity > (1.0f / 15.0f))
+            radialVelocity = (1.0f / 15.0f);
+
+        reinterpret_cast<AnmFloat3View *>(&vertex->x)->FromAngleMagnitude(
+            angle, data->radii[i]);
+        *reinterpret_cast<AnmFloat3View *>(&vertex->x) +=
+            this->position + preservedPosition;
+        ++vertex;
+        angle += 0.2026834041f;
+    }
+
+    return 0;
+}
+
+// Target 0x00445620-0x00445875 advances the ring radii and scrolls its UVs.
+// TH10 uses the X velocity for both U and V, including the center vertex.
+int __fastcall UpdatePulsingRadialTrail(AnmVmView *vm)
+{
+    int i;
+    int wrapIndex;
+    AnmRenderVertexView *vertex;
+    PulsingRadialTrailDataView *data;
+    float angleStep;
+    float angle;
+
+    data = static_cast<PulsingRadialTrailDataView *>(vm->generatedVertices);
+    angleStep = 0.2026834041f;
+    angle = -3.1415927f;
+    vertex = data->vertices;
+
+    *reinterpret_cast<AnmFloat3View *>(&vertex->x) =
+        vm->position + vm->preservedPosition;
+    vertex->uv.x += data->uvVelocity.x;
+    if (vertex->uv.x < 0.0f)
+    {
+        for (wrapIndex = 0; wrapIndex < 33; ++wrapIndex)
+            data->vertices[wrapIndex].uv.x += 1.0f;
+    }
+    vertex->uv.y += data->uvVelocity.x;
+    if (vertex->uv.y < 0.0f)
+    {
+        for (wrapIndex = 0; wrapIndex < 33; ++wrapIndex)
+            data->vertices[wrapIndex].uv.y += 1.0f;
+    }
+    vertex->diffuse.value = vm->primaryColor.value;
+    ++vertex;
+
+    for (i = 1; i < 32; ++i)
+    {
+        vertex->uv.x += data->uvVelocity.x;
+        if (vertex->uv.x < 0.0f)
+        {
+            for (wrapIndex = 0; wrapIndex < 33; ++wrapIndex)
+                data->vertices[wrapIndex].uv.x += 1.0f;
+        }
+        vertex->uv.y += data->uvVelocity.x;
+        if (vertex->uv.y < 0.0f)
+        {
+            for (wrapIndex = 0; wrapIndex < 33; ++wrapIndex)
+                data->vertices[wrapIndex].uv.y += 1.0f;
+        }
+
+        vertex->diffuse.value = vm->primaryColor.value;
+        vertex->diffuse.alpha = 0;
+        data->radii[i] += data->radialVelocities[i];
+        reinterpret_cast<AnmFloat3View *>(&vertex->x)->FromAngleMagnitude(
+            angle, data->radii[i]);
+        *reinterpret_cast<AnmFloat3View *>(&vertex->x) +=
+            vm->position + vm->preservedPosition;
+        ++vertex;
+        angle += angleStep;
+    }
+
+    *vertex = data->vertices[1];
+    return 0;
+}
+
+// Target 0x00445880-0x00445898 submits the generated fan as 31 triangles.
+int __fastcall DrawPulsingRadialTrail(AnmVmView *vm)
+{
+    PulsingRadialTrailDataView *data =
+        static_cast<PulsingRadialTrailDataView *>(vm->generatedVertices);
+    g_AnmRenderManagerView->DrawTexturedTriangleFan(vm, data->vertices, 33);
+    return 0;
 }
 
 // Target 0x00409230-0x00409261 is a registered-style draw callback for an

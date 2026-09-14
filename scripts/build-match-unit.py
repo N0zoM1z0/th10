@@ -110,6 +110,32 @@ def load() -> dict[str, object]:
             raise ValueError(f"unit {name!r} source leaves the repository") from exc
         if not source.is_file():
             raise ValueError(f"unit {name!r} source does not exist")
+        support_sources_raw = unit.get("support_sources", [])
+        if (
+            not isinstance(support_sources_raw, list)
+            or not all(isinstance(value, str) and value for value in support_sources_raw)
+        ):
+            raise ValueError(f"unit {name!r} has invalid support_sources")
+        support_sources = tuple(
+            (ROOT / value).resolve() for value in support_sources_raw
+        )
+        if len(set(support_sources)) != len(support_sources):
+            raise ValueError(f"unit {name!r} repeats an LTCG support source")
+        for support_source in support_sources:
+            try:
+                support_source.relative_to(ROOT.resolve())
+            except ValueError as exc:
+                raise ValueError(
+                    f"unit {name!r} support source leaves the repository"
+                ) from exc
+            if not support_source.is_file():
+                raise ValueError(
+                    f"unit {name!r} support source does not exist: {support_source}"
+                )
+        if source in support_sources:
+            raise ValueError(
+                f"unit {name!r} repeats its primary source as a support source"
+            )
         functions = unit["functions"]
         if (
             not isinstance(functions, list)
@@ -129,6 +155,8 @@ def load() -> dict[str, object]:
         target_extents.append((address, address + compare_size, name))
 
         if kind == "coff":
+            if support_sources:
+                raise ValueError(f"unit {name!r} gives a COFF unit support sources")
             if has_gl:
                 raise ValueError(f"unit {name!r} requests LTCG for a COFF artifact")
             output = build_path(unit.get("object", ""), f"unit {name!r} object")
@@ -181,6 +209,7 @@ def load() -> dict[str, object]:
                 entry,
                 tuple(link_profile),
                 HARNESS_KIND,
+                support_sources,
             )
         previous_output = compile_groups.setdefault(group, output)
         if previous_output != output:
@@ -243,6 +272,7 @@ def main() -> int:
                 linker,
                 environment,
                 list(unit["profile"]),
+                [ROOT / str(value) for value in unit.get("support_sources", [])],
             )
             if Path(linked["object"]).read_bytes()[:8] != bytes.fromhex(
                 "0000ffff01004c01"

@@ -138,7 +138,7 @@ def unresolved_symbols(output: str) -> list[str]:
 def link_command(
     linker: Path,
     environment: dict[str, str],
-    source_object: Path,
+    source_objects: list[Path],
     entry: str,
     image: Path,
     map_path: Path,
@@ -156,7 +156,7 @@ def link_command(
         f"/map:{windows_path(map_path, environment)}",
         f"/pdb:{windows_path(pdb, environment)}",
         f"/out:{windows_path(image, environment)}",
-        windows_path(source_object, environment),
+        *(windows_path(source_object, environment) for source_object in source_objects),
     ]
     if anchor_object is not None:
         command.append(windows_path(anchor_object, environment))
@@ -201,6 +201,7 @@ def cold_link(
     linker: Path,
     environment: dict[str, str],
     profile: list[str] | None = None,
+    support_sources: list[Path] | None = None,
 ) -> dict[str, object]:
     if profile is None:
         profile = LTCG_PROFILE
@@ -213,6 +214,17 @@ def cold_link(
         raise ValueError("LTCG link directory must stay below build/") from exc
     directory.mkdir(parents=True, exist_ok=True)
     ltcg_object = directory / "source.ltcg.obj"
+    if support_sources is None:
+        support_sources = []
+    resolved_support_sources = [support.resolve() for support in support_sources]
+    if len(set(resolved_support_sources)) != len(resolved_support_sources):
+        raise ValueError("LTCG support sources must be unique")
+    if source.resolve() in resolved_support_sources:
+        raise ValueError("LTCG primary source cannot also be a support source")
+    support_objects = [
+        directory / f"support-{index:02d}-{support.stem}.ltcg.obj"
+        for index, support in enumerate(resolved_support_sources)
+    ]
     image = directory / "source.exe"
     map_path = directory / "source.map"
     pdb = directory / "source.pdb"
@@ -235,6 +247,11 @@ def cold_link(
         ]
     )
     compile_source(source, ltcg_object, list(profile))
+    for support_source, support_object in zip(
+        resolved_support_sources, support_objects
+    ):
+        compile_source(support_source, support_object, list(profile))
+    source_objects = [ltcg_object, *support_objects]
     symbols: list[str] = []
     bindings: dict[str, str] = {}
     logs = []
@@ -248,7 +265,7 @@ def cold_link(
             link_command(
                 linker,
                 environment,
-                ltcg_object,
+                source_objects,
                 entry,
                 image,
                 map_path,
@@ -282,6 +299,8 @@ def cold_link(
         raise ValueError("LTCG link did not produce image, map, and PDB")
     return {
         "object": ltcg_object,
+        "objects": source_objects,
+        "support_sources": resolved_support_sources,
         "image": image,
         "map": map_path,
         "pdb": pdb,

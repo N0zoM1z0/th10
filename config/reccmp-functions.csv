@@ -153,3 +153,11 @@ AnmRenderManagerView::Draw2D,0x004436C0,function
 AnmRenderManagerView::Draw2DRotatedOrAxisAligned,0x00443910,function
 AnmRenderManagerView::Draw,0x004451C0,function
 AnmPairOwnerDrawCallback,0x00409230,function
+AnmVmView::InitializePulsingRadialTrail,0x004452F0,function
+UpdatePulsingRadialTrail,0x00445620,function
+DrawPulsingRadialTrail,0x00445880,function
+AnmFloat3View::FromAngleMagnitude,0x004458B0,function
+RngView::GetRandomU16,0x0044B9B0,function
+RngView::GetRandomU32,0x0044B9E0,function
+RngView::GetRandomF32,0x0044BB20,function
+RngView::GetRandomF32Signed,0x0044BB90,function

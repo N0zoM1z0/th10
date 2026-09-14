@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `f6d88dd gpt-5.6-sol: recover ANM direct 3D`, branch `main`.
+- Current packet base: `09e4da8 gpt-5.6-sol: recover ANM generated geometry`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -30,9 +30,10 @@
 - Completed session checkpoint: `9ad868a gpt-5.6-sol: recover ANM mode dispatch`.
 - Completed session checkpoint: `fc3dce0 gpt-5.6-sol: recover ANM projected photo blend`.
 - Completed session checkpoint: `f6d88dd gpt-5.6-sol: recover ANM direct 3D`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM generated geometry`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `09e4da8 gpt-5.6-sol: recover ANM generated geometry`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM radial trail and RNG`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-generated/`. The earlier ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-trail/`. The earlier generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -52,7 +53,49 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM generated geometry
+## Current packet: ANM radial trail and RNG
+
+The pulsing radial-trail family at `0x004452F0-0x00445898` is now
+source-present. Its 0x4B0-byte VM-owned payload contains 33 textured vertices,
+33 radii, 33 radial velocities, a two-float UV velocity and a trailing dword.
+The initializer frees/replaces VM `generatedVertices`, installs callbacks at
+VM `+0x398/+0x39C`, seeds a center plus 31 radial vertices, and uses RNG owner
+`0x004918B0`. The updater scrolls both U and V with the X velocity, applies the
+target's 33-vertex wrap loops, advances radii, rebuilds the ring with the
+angle/magnitude helper, clears ring alpha and copies vertex 1 into closing
+vertex 32. The draw callback submits the 33-vertex textured fan.
+
+`UpdatePulsingRadialTrail` has the exact 598-byte target extent and matches
+524/526 comparable bytes under normal and linked compiler probes; only two
+commutative X/Y position-sum displacement bytes differ. In the single-source
+LTCG diagnostic the initializer was only 572 bytes because unresolved RNG
+methods could not be inlined. New multi-source `/GL` support lets the probe add
+`src/RandomMath.cpp`; the initializer then becomes 804 bytes versus target 803,
+but remains non-exact because its real caller is the source-absent 9,587-byte
+ANM script executor at `0x0043EE30`, which supplies the target's private EDI VM
+receiver.
+
+Two trail units are canonical exact in that multi-source context:
+`DrawPulsingRadialTrail` (25 bytes and two linked fields) and
+`AnmFloat3View::FromAngleMagnitude` (30 relocation-free bytes). The recovered
+RNG recurrence independently produces four normal-COFF exact units:
+`GetRandomU16` (39), `GetRandomU32` (78), `GetRandomF32` (109), and
+`GetRandomF32Signed` (115), totaling 341 bytes and five constant relocations.
+Boundary review also added Ghidra-missed, unreferenced bodies at `0x004452E0`,
+`0x004458A0`, `0x0044B9B0`, and `0x0044BA30`; only `0x0044B9B0` has sufficient
+source/compiler evidence for authored exact promotion.
+
+Current tracking contains **1,298** candidates, **190** authored functions,
+**162** source mappings, and **79 canonical exact functions / 7,896 bytes**.
+The authored source backlog is **79**. The full `src/AnmManager.cpp` canonical
+set is **29 functions / 5,905 bytes** across six artifact contexts; its cold
+replay passes with the trail artifact compiling both ANM and RNG inputs.
+
+The next high-value ANM frontier is the script executor at `0x0043EE30`, which
+owns the private trail-initializer call context, or the following generated
+effect families beginning at `0x00445900`.
+
+## Completed packet: ANM generated geometry
 
 The full `0x00444B10-0x004451B2` generated-geometry corridor is now
 source-present as eight distinct functions. Horizontal and vertical strip
@@ -86,13 +129,9 @@ apart from the same 13-byte texture-bind scheduling block seen in Draw3D.
 instruction and linked field, while the candidate PDB contributions own two
 extra trailing `CC` bytes; strict extent policy keeps these five non-exact.
 
-Current tracking contains **1,293** candidates, **182** authored functions,
-**154** source mappings, and **73 canonical exact functions / 7,500 bytes**.
-The authored source backlog is **77**. The full `src/AnmManager.cpp` canonical
-set is **27 functions / 5,850 bytes** across five artifact contexts.
-
-The next ANM frontier is the generated-trail initializer, updater, and draw
-callback at `0x004452F0`, `0x00445620`, and Ghidra-missed `0x00445880`.
+At checkpoint `09e4da8`, tracking contained 1,293 candidates, 154 source
+mappings and 73 canonical exact functions / 7,500 bytes. The next frontier at
+that checkpoint was the generated radial-trail family now covered above.
 
 ## Completed packet: ANM direct 3D
 

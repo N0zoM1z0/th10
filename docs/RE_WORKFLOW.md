@@ -36,8 +36,10 @@ disk target, Ghidra target, ledgers, and live status using the commands in
    unknown until review establishes every resolved field. If target calls show
    that LTCG lowers the candidate only inside a particular maintained caller,
    add `--entry SOURCE=SOURCE_NAME`; the report records and validates that
-   explicit context. `rank-exact-backlog.py` accepts the same option. A
-   canonical linked
+   explicit context. If cross-translation-unit inlining needs another recovered
+   `/GL` input, add one or more `--support SOURCE=SUPPORT_SOURCE` arguments;
+   canonical linked units preserve that ordered list as `support_sources`.
+   `rank-exact-backlog.py` accepts the same entry override. A canonical linked
    unit must declare `artifact_kind = "linked-pe"`, the fixed compiler/link
    profiles and harness, its unique PDB-owned symbol extent, and every semantic
    link target. `compare-linked-function.py` must decode the complete extent,

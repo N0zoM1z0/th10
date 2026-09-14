@@ -31,8 +31,11 @@ derives each candidate function extent from a COFF function-definition record
 or a single-function COMDAT code section; a caller-supplied target size cannot
 widen the candidate past its own section.
 
-The LTCG diagnostic compiles one selected maintained source and links it with
-unique non-runnable data anchors for missing external symbols. The linker's PDB
+The LTCG diagnostic compiles one selected maintained source and may also
+compile explicitly named support sources with the same `/GL` profile before
+linking them together. This lets the linker observe real cross-TU definitions
+needed for interprocedural inlining. Remaining external symbols receive unique
+non-runnable data anchors. The linker's PDB
 supplies each contribution extent. PE CodeView GUID/age, map timestamp/image
 base, public start, and PE section layout must all agree. Link-address fields
 are enumerated and masked only for structural comparison. Because the harness
@@ -46,6 +49,13 @@ reviewed source function explicitly with
 VC7 symbol, rejects absent or ambiguous entries, and records the selection in
 JSON. The entry must be real maintained source; it is still a diagnostic link
 choice and grants no ownership or exactness credit by itself.
+
+When a candidate depends on a separately maintained `/GL` translation unit,
+pass `--support SOURCE=SUPPORT_SOURCE`. Support sources must be repository-local
+files, must be unique, and never change which `source.ltcg.obj` PDB contribution
+owns the function under comparison. A canonical linked unit records the same
+context with `support_sources = [...]`; build grouping and cold replay include
+the ordered support-source list.
 
 A canonical `artifact_kind = "linked-pe"` unit uses the same cold compiler and
 linker surfaces but adds a target-bound acceptance contract. The comparator
