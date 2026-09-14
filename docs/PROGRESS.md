@@ -5,17 +5,17 @@ their boundaries and origins must be reviewed independently.
 
 | Measure | Count |
 | --- | ---: |
-| Tracked 1.00a function candidates | 1,277 |
-| Origin/boundary review pending | 1,130 |
-| Confirmed authored functions | 132 |
-| Confirmed authored code bytes | 53,233 |
+| Tracked 1.00a function candidates | 1,279 |
+| Origin/boundary review pending | 1,127 |
+| Confirmed authored functions | 137 |
+| Confirmed authored code bytes | 53,698 |
 | Classified exclusions | 15 |
-| Source-present mappings | 104 |
-| Source-present with authored origin | 100 |
+| Source-present mappings | 109 |
+| Source-present with authored origin | 105 |
 | Source-present origin review pending | 4 |
-| Authored source-present exact backlog | 54 |
-| Canonical exact functions | 46 |
-| Canonical exact authored bytes | 1,650 |
+| Authored source-present exact backlog | 55 |
+| Canonical exact functions | 50 |
+| Canonical exact authored bytes | 1,842 |
 
 While review remains pending, the authored exact denominator is unknown. A
 mapped name, maintained source, successful compilation, or Ghidra similarity does

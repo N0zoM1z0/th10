@@ -102,3 +102,8 @@ EnemyEclResourceBaseView::LoadPackage
 EnemyEclResourceBaseView::GetScriptData
 EnemyEclResourceBaseView::EnemyEclResourceBaseView
 EnemyEclResourceBaseView::~EnemyEclResourceBaseView
+AnmVmView::~AnmVmView
+AnmVmView::AnmVmView
+AnmVmView::Initialize
+AnmMatrixView::SetIdentity
+AnmVmTimerView::Initialize

@@ -10,9 +10,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00401760,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00401A50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00401D20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00401DE0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00401FF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00402050,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00401DE0,authored_game,AnmManager,authored,high,anm-vm-lifecycle-2026-09-14
+0x00401F00,authored_game,AnmManager,authored,high,anm-vm-lifecycle-2026-09-14
+0x00401F40,authored_game,AnmManager,authored,high,anm-vm-lifecycle-2026-09-14
+0x00401FF0,authored_game,AnmManager,authored,high,anm-vm-lifecycle-2026-09-14
+0x00402050,authored_game,AnmManager,authored,high,anm-vm-lifecycle-2026-09-14
 0x00402160,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00402230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00402440,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

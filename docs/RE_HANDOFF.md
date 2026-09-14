@@ -18,9 +18,10 @@
 - Completed session checkpoint: `37ebb83 gpt-5.6-sol: promote remaining exact LTCG helpers`.
 - Completed session checkpoint: `ead21f9 gpt-5.6-sol: rank exact reconstruction backlog`.
 - Completed session checkpoint: `d4af1a5 gpt-5.6-sol: recover ECL core lifecycles`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL host hierarchy`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `e2fecf3 gpt-5.6-sol: recover ECL host hierarchy`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM VM lifecycle`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-ecl-host-base/`. The ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-anm-core/`. The ECL-host, ECL-lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -40,7 +41,39 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ECL host hierarchy
+## Current packet: ANM VM lifecycle
+
+Direct TH10 constructor, destructor and reset evidence establishes a `0x3AC`-
+byte ANM VM. Its constructor runs nine `0x14` timer-like member constructors,
+clears exactly `0xEB` dwords, and marks the active sprite index at `+0x384` as
+invalid. Its destructor owns and clears the optional generated-vertex pointer at
+`+0x358`. The reusable reset at `0x00401DE0` preserves `+0x20` and
+`+0x340..+0x348`, clears the VM, restores list sentinels, scale, matrix, timer,
+flags and seven observed state fields, and writes `-1` at `+0x2FC`.
+
+Maintained `AnmVmView`, `AnmVmTimerView`, and `AnmMatrixView` source expresses
+these facts with compile-time size and offset checks. Denominator review also
+adds two CC-delimited helpers missed by Ghidra: the 55-byte matrix identity body
+at `0x00401F00` and the 15-byte timer initializer at `0x00401F40`. Their logic
+is independently visible inline in the reusable reset.
+
+Two cold canonical passes reproduce four complete functions across **192
+bytes**: the 34-byte destructor and 88-byte constructor as normal COFF, and the
+55-byte matrix and 15-byte timer helpers as raw-equal linked-PE PDB
+contributions with no linked fields. The 273-byte reset compiles to the same
+extent under both current probes but remains non-exact because neither bounded
+harness recovers the target's private EDX receiver and register/save ordering.
+The emitted seven-byte timer constructor shape also occurs at two target
+locations already associated with other or unresolved owners; it receives no
+ANM mapping or exactness credit.
+
+Current tracking contains **1,279** candidates, **137** authored functions,
+**109** source mappings, and **50 canonical exact functions / 1,842 bytes**.
+The authored source backlog is **55**. Relative to the preceding checkpoint,
+this packet adds five authored functions / 465 bytes, five source mappings, two
+denominator candidates, and four exact functions / 192 bytes.
+
+## Completed packet: ECL host hierarchy
 
 Direct TH10 evidence closes the previously unresolved class boundary. The
 six-slot vtable at `0x0046D0D8` contains neutral dispatch/int/int-pointer/float/

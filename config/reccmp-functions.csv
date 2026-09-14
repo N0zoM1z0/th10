@@ -103,3 +103,8 @@ EnemyEclResourceBaseView::LoadPackage,0x0040C810,function
 EnemyEclResourceBaseView::GetScriptData,0x0040C820,function
 EnemyEclResourceBaseView::EnemyEclResourceBaseView,0x0040C830,function
 EnemyEclResourceBaseView::~EnemyEclResourceBaseView,0x0040C860,function
+AnmVmView::~AnmVmView,0x00401FF0,function
+AnmVmView::AnmVmView,0x00402050,function
+AnmVmView::Initialize,0x00401DE0,function
+AnmMatrixView::SetIdentity,0x00401F00,function
+AnmVmTimerView::Initialize,0x00401F40,function
