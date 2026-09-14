@@ -504,9 +504,15 @@ def linked_code_fields(
         if occupied & extent:
             raise LinkedImageError("overlapping linked-image fields")
         occupied.update(extent)
+    # PDB code contributions can end in compiler-emitted absolute jump-table
+    # data. Capstone may stop in the middle of the final table entry because
+    # those bytes are not an instruction stream. PE base relocations still
+    # account for such bytes exactly, so regard the extent as normalized when
+    # every undecoded byte belongs to a complete authoritative DIR32 field.
+    normalized_bytes = set(range(decoded)) | base_relocation_bytes
     return {
         "decoded_bytes": decoded,
-        "normalization_complete": decoded == len(code),
+        "normalization_complete": len(normalized_bytes) == len(code),
         "fields": fields,
     }
 

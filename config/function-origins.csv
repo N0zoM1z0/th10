@@ -604,10 +604,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043E710,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043E7E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0043E8B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043EAC0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043EC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043ED00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x0043EDA0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0043EAC0,authored_game,AnmManager,authored,high,anm-script-variables-2026-09-15
+0x0043EC70,authored_game,AnmManager,authored,high,anm-script-variables-2026-09-15
+0x0043ED00,authored_game,AnmManager,authored,high,anm-script-variables-2026-09-15
+0x0043EDA0,authored_game,AnmManager,authored,high,anm-script-variables-2026-09-15
 0x0043EE30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00441600,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00441950,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

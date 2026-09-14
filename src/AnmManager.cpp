@@ -8,6 +8,182 @@
 
 AsciiManagerView *g_AsciiManagerView;
 
+enum AnmVariableView
+{
+    ANM_VAR_I0 = 10000,
+    ANM_VAR_I1,
+    ANM_VAR_I2,
+    ANM_VAR_I3,
+    ANM_VAR_F0,
+    ANM_VAR_F1,
+    ANM_VAR_F2,
+    ANM_VAR_F3,
+    ANM_VAR_IC0,
+    ANM_VAR_IC1,
+    ANM_VAR_RANDOM_ANGLE,
+    ANM_VAR_RANDOM,
+    ANM_VAR_RANDOM_SIGNED,
+    ANM_VAR_POSITION_X,
+    ANM_VAR_POSITION_Y,
+    ANM_VAR_POSITION_Z,
+    ANM_VAR_GLOBAL_491D7C_X,
+    ANM_VAR_GLOBAL_491D7C_Y,
+    ANM_VAR_GLOBAL_491D7C_Z,
+    ANM_VAR_GLOBAL_491DA0_X,
+    ANM_VAR_GLOBAL_491DA0_Y,
+    ANM_VAR_GLOBAL_491DA0_Z
+};
+
+// Target 0x0043EAC0-0x0043EC67 resolves the float-valued script variables.
+// TH10 extends the earlier engine's VM-local set with two global Float3
+// sources. The second owner's semantics remain unknown, so its address stays
+// in the maintained name rather than being inferred from adjacent games.
+float AnmVmView::GetFloatVar(float variable)
+{
+    switch (static_cast<int>(variable))
+    {
+    case ANM_VAR_I0:
+        return intVar0;
+    case ANM_VAR_I1:
+        return intVar1;
+    case ANM_VAR_I2:
+        return intVar2;
+    case ANM_VAR_I3:
+        return intVar3;
+    case ANM_VAR_F0:
+        return floatVar0;
+    case ANM_VAR_F1:
+        return floatVar1;
+    case ANM_VAR_F2:
+        return floatVar2;
+    case ANM_VAR_F3:
+        return floatVar3;
+    case ANM_VAR_IC0:
+        return counterVar0;
+    case ANM_VAR_IC1:
+        return counterVar1;
+    case ANM_VAR_RANDOM_ANGLE:
+        return (flags35C & 0x40000000u) != 0
+            ? g_AlternateRngView.GetRandomF32Signed() * 3.1415927f
+            : g_RngView.GetRandomF32Signed() * 3.1415927f;
+    case ANM_VAR_RANDOM:
+        return (flags35C & 0x40000000u) != 0
+            ? g_AlternateRngView.GetRandomF32()
+            : g_RngView.GetRandomF32();
+    case ANM_VAR_RANDOM_SIGNED:
+        return (flags35C & 0x40000000u) != 0
+            ? g_AlternateRngView.GetRandomF32Signed()
+            : g_RngView.GetRandomF32Signed();
+    case ANM_VAR_POSITION_X:
+        return position.x;
+    case ANM_VAR_POSITION_Y:
+        return position.y;
+    case ANM_VAR_POSITION_Z:
+        return position.z;
+    case ANM_VAR_GLOBAL_491D7C_X:
+        return g_AnmBackgroundCameraPosition.x;
+    case ANM_VAR_GLOBAL_491D7C_Y:
+        return g_AnmBackgroundCameraPosition.y;
+    case ANM_VAR_GLOBAL_491D7C_Z:
+        return g_AnmBackgroundCameraPosition.z;
+    case ANM_VAR_GLOBAL_491DA0_X:
+        return g_AnmPosition491DA0.x;
+    case ANM_VAR_GLOBAL_491DA0_Y:
+        return g_AnmPosition491DA0.y;
+    case ANM_VAR_GLOBAL_491DA0_Z:
+        return g_AnmPosition491DA0.z;
+    default:
+        return variable;
+    }
+}
+
+// Target 0x0043EC70-0x0043ECFF converts the four float locals through the
+// compiler's normal float-to-int helper and directly returns integer locals.
+int AnmVmView::GetIntVar(int variable)
+{
+    switch (variable)
+    {
+    case ANM_VAR_I0:
+        return intVar0;
+    case ANM_VAR_I1:
+        return intVar1;
+    case ANM_VAR_I2:
+        return intVar2;
+    case ANM_VAR_I3:
+        return intVar3;
+    case ANM_VAR_F0:
+        return static_cast<int>(floatVar0);
+    case ANM_VAR_F1:
+        return static_cast<int>(floatVar1);
+    case ANM_VAR_F2:
+        return static_cast<int>(floatVar2);
+    case ANM_VAR_F3:
+        return static_cast<int>(floatVar3);
+    case ANM_VAR_IC0:
+        return counterVar0;
+    case ANM_VAR_IC1:
+        return counterVar1;
+    default:
+        return variable;
+    }
+}
+
+// Target 0x0043ED00-0x0043ED9B redirects a masked float instruction argument
+// to one of the VM's writable float or position slots.
+float *AnmVmView::GetFloatVarPtr(
+    float *value, unsigned short variableMask, unsigned int argumentNumber)
+{
+    if ((variableMask & (1u << argumentNumber)) == 0)
+        return value;
+
+    switch (static_cast<int>(*value))
+    {
+    case ANM_VAR_F0:
+        return &floatVar0;
+    case ANM_VAR_F1:
+        return &floatVar1;
+    case ANM_VAR_F2:
+        return &floatVar2;
+    case ANM_VAR_F3:
+        return &floatVar3;
+    case ANM_VAR_POSITION_X:
+        return &position.x;
+    case ANM_VAR_POSITION_Y:
+        return &position.y;
+    case ANM_VAR_POSITION_Z:
+        return &position.z;
+    default:
+        return value;
+    }
+}
+
+// Target 0x0043EDA0-0x0043EE23 is the integer counterpart. Only the four
+// integer locals and two counter locals are legal writable destinations.
+int *AnmVmView::GetIntVarPtr(
+    int *value, unsigned short variableMask, unsigned int argumentNumber)
+{
+    if ((variableMask & (1u << argumentNumber)) == 0)
+        return value;
+
+    switch (*value)
+    {
+    case ANM_VAR_I0:
+        return &intVar0;
+    case ANM_VAR_I1:
+        return &intVar1;
+    case ANM_VAR_I2:
+        return &intVar2;
+    case ANM_VAR_I3:
+        return &intVar3;
+    case ANM_VAR_IC0:
+        return &counterVar0;
+    case ANM_VAR_IC1:
+        return &counterVar1;
+    default:
+        return value;
+    }
+}
+
 // Target 0x004458B0-0x004458CD is the retained polar-vector primitive used by
 // generated radial trails. VC7.1 otherwise lowers separate sin/cos calls and
 // loses the target's single x87 FSINCOS operation.

@@ -122,6 +122,14 @@ struct AnmVmView
     ~AnmVmView();
     void Initialize();
     int InitializePulsingRadialTrail();
+    float GetFloatVar(float variable);
+    int GetIntVar(int variable);
+    float *GetFloatVarPtr(
+        float *value, unsigned short variableMask,
+        unsigned int argumentNumber);
+    int *GetIntVarPtr(
+        int *value, unsigned short variableMask,
+        unsigned int argumentNumber);
 
     void *unknown000;
     AnmVmView *listSelf004;
@@ -171,8 +179,20 @@ struct AnmVmView
     AnmColorView secondaryColor;
     unsigned char unknown304[0x004];
     void *anmFile308;
-    int generatedVertexCount;
-    unsigned char unknown310[0x024];
+    union
+    {
+        int intVar0;
+        int generatedVertexCount;
+    };
+    int intVar1;
+    int intVar2;
+    int intVar3;
+    float floatVar0;
+    float floatVar1;
+    float floatVar2;
+    float floatVar3;
+    int counterVar0;
+    int counterVar1;
     AnmFloat3View position;
     AnmFloat3View preservedPosition;
     AnmFloat3View spriteOffset;
@@ -219,6 +239,10 @@ typedef char AnmVmActiveSpriteAt384[
     (offsetof(AnmVmView, activeSpriteIndex) == 0x384) ? 1 : -1];
 typedef char AnmVmPositionAt334[
     (offsetof(AnmVmView, position) == 0x334) ? 1 : -1];
+typedef char AnmVmVariablesAt30C[
+    (offsetof(AnmVmView, intVar0) == 0x30c &&
+     offsetof(AnmVmView, floatVar0) == 0x31c &&
+     offsetof(AnmVmView, counterVar0) == 0x32c) ? 1 : -1];
 typedef char AnmVmRotationAt024[
     (offsetof(AnmVmView, rotation) == 0x024) ? 1 : -1];
 typedef char AnmVmLoadedSpriteAt394[
@@ -564,6 +588,7 @@ extern D3d9DeviceView *g_Direct3DDevice;
 extern AnmRenderVertexView g_AnmQuadVertices[4];
 extern AnmViewportOwnerView *g_AnmViewportOwner;
 extern AnmFloat3View g_AnmBackgroundCameraPosition;
+extern AnmFloat3View g_AnmPosition491DA0;
 extern AnmPhotoBlendView g_AnmPhotoBlend;
 
 unsigned char __fastcall MixAnmColor(

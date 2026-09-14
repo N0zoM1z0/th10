@@ -160,3 +160,7 @@ RngView::GetRandomU16
 RngView::GetRandomU32
 RngView::GetRandomF32
 RngView::GetRandomF32Signed
+AnmVmView::GetFloatVar
+AnmVmView::GetIntVar
+AnmVmView::GetFloatVarPtr
+AnmVmView::GetIntVarPtr

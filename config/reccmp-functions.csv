@@ -161,3 +161,7 @@ RngView::GetRandomU16,0x0044B9B0,function
 RngView::GetRandomU32,0x0044B9E0,function
 RngView::GetRandomF32,0x0044BB20,function
 RngView::GetRandomF32Signed,0x0044BB90,function
+AnmVmView::GetFloatVar,0x0043EAC0,function
+AnmVmView::GetIntVar,0x0043EC70,function
+AnmVmView::GetFloatVarPtr,0x0043ED00,function
+AnmVmView::GetIntVarPtr,0x0043EDA0,function

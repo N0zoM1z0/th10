@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `09e4da8 gpt-5.6-sol: recover ANM generated geometry`, branch `main`.
+- Current packet base: `2d8c48b gpt-5.6-sol: recover ANM radial trail and RNG`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -31,14 +31,15 @@
 - Completed session checkpoint: `fc3dce0 gpt-5.6-sol: recover ANM projected photo blend`.
 - Completed session checkpoint: `f6d88dd gpt-5.6-sol: recover ANM direct 3D`.
 - Completed session checkpoint: `09e4da8 gpt-5.6-sol: recover ANM generated geometry`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM radial trail and RNG`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `2d8c48b gpt-5.6-sol: recover ANM radial trail and RNG`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM script variables`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-trail/`. The earlier generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-runtime/`. The earlier radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `f6d88dd...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `2d8c48b...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -53,7 +54,45 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM radial trail and RNG
+## Current packet: ANM script variables
+
+The four variable helpers immediately before the 9,587-byte script executor
+are now source-present. They establish VM integer locals at `+0x30C..+0x318`,
+float locals at `+0x31C..+0x328`, and two integer counters at `+0x32C/+0x330`.
+`GetFloatVar` resolves IDs 10000-10021 across those locals, both RNG owners,
+VM position, the background-camera Float3 at `0x00491D7C`, and a second
+semantically unknown Float3 at `0x00491DA0`. `GetIntVar` resolves IDs
+10000-10009, while the two mask-aware pointer helpers redirect writable
+instruction operands to the legal float/position or integer/counter slots.
+
+Direct target and PDB review extend all four candidates through their inline
+absolute jump tables: `GetFloatVar` is 424 bytes, `GetIntVar` is 144,
+`GetFloatVarPtr` is 156, and `GetIntVarPtr` is 132. A shared `/GL` artifact with
+`RandomMath.cpp` supplied reproduces the latter three contributions exactly,
+adding **3 functions / 432 bytes**. The manifests cover the `__ftol2` calls and
+every self-relative jump-table entry. `GetFloatVar` is source-correct but
+remains non-exact at 452 candidate bytes: its public compiler entry saves and
+restores ESI, while target `ExecuteScript @ 0x0043EE30` retains the VM in ESI
+for the private call context.
+
+The linked-image normalizer now handles a decoder stopping inside the last
+absolute jump-table entry. An undecoded suffix is complete only when every byte
+belongs to authoritative PE base-relocation fields; ordinary undecoded bytes
+and undeclared fields still fail closed. This closes a real Oracle gap for PDB
+code contributions whose physical extent ends in inline data.
+
+Current tracking contains **1,298** candidates, **194** authored functions,
+**166** source mappings, and **82 canonical exact functions / 8,328 bytes**.
+The authored source backlog is **80**. The full `src/AnmManager.cpp` canonical
+set is **32 functions / 6,337 bytes** across seven artifact contexts; affected
+ANM/RNG cold replay passes **36 functions / 6,678 bytes** across eight artifact
+builds and two source files.
+
+The next high-value ANM frontier remains `ExecuteScript @ 0x0043EE30`. Its
+recovery supplies the private context needed to close `GetFloatVar` and the
+radial-trail initializer while restoring the central ANM opcode dispatcher.
+
+## Completed packet: ANM radial trail and RNG
 
 The pulsing radial-trail family at `0x004452F0-0x00445898` is now
 source-present. Its 0x4B0-byte VM-owned payload contains 33 textured vertices,

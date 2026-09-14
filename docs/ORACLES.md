@@ -60,15 +60,18 @@ the ordered support-source list.
 A canonical `artifact_kind = "linked-pe"` unit uses the same cold compiler and
 linker surfaces but adds a target-bound acceptance contract. The comparator
 requires one uniquely named `source.ltcg.obj` PDB contribution, checks its full
-size, requires the pinned Capstone decoder to consume the whole extent, rejects
-any undeclared base-relocation or external control-flow field, validates each
-declared semantic symbol through the linker map or its unique data-anchor
-alias, and rewrites that field to the reviewed target address before comparing
-all bytes. A zero-field unit must therefore be raw-equal. Acceptance establishes
-only reproducibility of that bounded function in the declared LTCG context; it
-does not make the anchor image runnable or establish production ownership,
-translation-unit partition, link order, data ownership, or whole-product
-closure.
+size, requires the pinned Capstone decoder to consume the instruction extent,
+and accepts an undecoded suffix only when every byte is covered by complete,
+authoritative PE base-relocation fields. This narrow suffix rule supports PDB
+code contributions ending in compiler-emitted absolute jump tables while still
+rejecting ordinary undecoded bytes. The comparator rejects any undeclared
+base-relocation or external control-flow field, validates each declared semantic
+symbol through the linker map or its unique data-anchor alias, and rewrites that
+field to the reviewed target address before comparing all bytes. A zero-field
+unit must therefore be raw-equal. Acceptance establishes only reproducibility
+of that bounded function in the declared LTCG context; it does not make the
+anchor image runnable or establish production ownership, translation-unit
+partition, link order, data ownership, or whole-product closure.
 
 If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent

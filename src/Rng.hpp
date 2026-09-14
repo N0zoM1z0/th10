@@ -19,3 +19,4 @@ typedef char RngViewSizeIs08[
     (sizeof(RngView) == 0x08) ? 1 : -1];
 
 extern RngView g_RngView;
+extern RngView g_AlternateRngView;
