@@ -1263,7 +1263,7 @@ output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
 functions = ["AnmVmLayerNodeView::InsertAfter"]
 symbol = "?InsertAfter@AnmVmLayerNodeView@@QAEXPAU1@@Z"
 target_address = 0x00413200
@@ -1277,7 +1277,7 @@ output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
 functions = ["AnmVmView::StartScaleInterpolation"]
 symbol = "?StartScaleInterpolation@AnmVmView@@QAEXPBUAnmFloat2View@@0HE@Z"
 target_address = 0x0041AB70
@@ -1293,7 +1293,7 @@ output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
 functions = ["AnmLoadedView::SetSprite"]
 symbol = "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z"
 target_address = 0x0043E5A0
@@ -1310,7 +1310,7 @@ output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
 functions = ["AnmVmTimerView::Add"]
 symbol = "?Add@AnmVmTimerView@@QAEXM@Z"
 target_address = 0x0044BF40
@@ -1329,7 +1329,7 @@ output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
 functions = ["AddNormalizeAngle"]
 symbol = "?AddNormalizeAngle@@YGMMM@Z"
 target_address = 0x0044BC10
@@ -1350,7 +1350,7 @@ output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
 functions = ["AnmVmView::StartSecondaryColorInterpolation"]
 symbol = "?StartSecondaryColorInterpolation@AnmVmView@@QAEXPBTAnmColorView@@0HE@Z"
 target_address = 0x00442050
@@ -1366,7 +1366,7 @@ output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
 functions = ["AnmVmView::StartSecondaryAlphaInterpolation"]
 symbol = "?StartSecondaryAlphaInterpolation@AnmVmView@@QAEXHEEE@Z"
 target_address = 0x00441F50
@@ -1382,7 +1382,7 @@ output_dir = "build/match-linked/AnmExecutor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SAHPAUAnmVmView@@@Z"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
 functions = ["AnmVmView::StartPrimaryColorInterpolation"]
 symbol = "?StartPrimaryColorInterpolation@AnmVmView@@QAEXPBTAnmColorView@@0HE@Z"
 target_address = 0x00442220
@@ -1544,3 +1544,50 @@ linkages = [
   { offset = 0x7C, type = "DIR32", symbol = "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z", target = 0x0043EDA0, addend = 0x4A },
   { offset = 0x80, type = "DIR32", symbol = "?GetIntVarPtr@AnmVmView@@QAEPAHPAHGI@Z", target = 0x0043EDA0, addend = 0x53 },
 ]
+
+
+[units.anm-loaded-set-and-execute-script-index]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmExecutor"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+functions = ["AnmLoadedView::SetAndExecuteScriptIndex"]
+symbol = "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z"
+target_address = 0x0043E7E0
+size = 194
+linkages = [
+  { offset = 0x7C, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0xA1, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x0043EE30 },
+  { offset = 0xA6, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+]
+
+[units.anm-manager-add-vm-primary-tail]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmExecutor"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+functions = ["AnmRenderManagerView::AddVmVariant0"]
+symbol = "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+target_address = 0x004489D0
+size = 118
+linkages = []
+
+[units.anm-manager-add-vm-secondary-tail]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmExecutor"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+functions = ["AnmRenderManagerView::AddVmVariant1"]
+symbol = "?AddVmVariant1@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+target_address = 0x00448AC0
+size = 118
+linkages = []

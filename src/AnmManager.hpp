@@ -5,6 +5,12 @@
 
 #include <stddef.h>
 
+#if defined(_MSC_VER)
+#define TH10_ANM_NOINLINE __declspec(noinline)
+#else
+#define TH10_ANM_NOINLINE
+#endif
+
 struct AnmFloat3View
 {
     AnmFloat3View() {}
@@ -409,6 +415,16 @@ struct AnmVmIdView
 {
     AnmVmIdView() { value = 0; }
 
+    int operator==(AnmVmIdView other)
+    {
+        return value == other.value;
+    }
+
+    int operator++(int)
+    {
+        return value++;
+    }
+
     AnmVmView *GetVm();
 
     int value;
@@ -466,12 +482,10 @@ struct AnmVmView
         int duration, unsigned char mode,
         unsigned char initial, unsigned char final);
 
-    void *unknown000;
-    AnmVmView *listSelf004;
-    void *unknown008;
-    void *unknown00C;
+    int id;
+    AnmVmLayerNodeView managerNode;
     AnmVmLayerNodeView layerNode;
-    unsigned char unknown01C[0x004];
+    AnmVmView *nextInDrawLayer;
     unsigned int renderLayer;
     AnmFloat3View rotation;
     AnmFloat3View angularVelocity;
@@ -568,6 +582,10 @@ struct AnmVmView
 
 typedef char AnmVmViewSizeIs3AC[
     (sizeof(AnmVmView) == 0x3ac) ? 1 : -1];
+typedef char AnmVmListNodesAt004[
+    (offsetof(AnmVmView, managerNode) == 0x004 &&
+     offsetof(AnmVmView, layerNode) == 0x010 &&
+     offsetof(AnmVmView, nextInDrawLayer) == 0x01c) ? 1 : -1];
 typedef char AnmVmGeneratedVerticesAt358[
     (offsetof(AnmVmView, generatedVertices) == 0x358) ? 1 : -1];
 typedef char AnmVmLastTimerFlagsAt378[
@@ -638,22 +656,45 @@ typedef char AnmSpriteUvAt20[
 
 struct AnmLoadedView
 {
-    unsigned char unknown000[0x108];
+    short anmFileIndex;
+    unsigned char unknown002[0x106];
     void *rawData;
     unsigned char unknown10C[0x00c];
     AnmSpriteView *sprites;
-    unsigned char unknown11C[0x008];
+    AnmRawInstructionView **scripts;
+    void *unknown120;
     int pendingLoadCount;
 
     int SetSprite(AnmVmView *vm, int spriteIndex);
+    void InitializeVm(AnmVmView *vm, int scriptIndex);
+    void InitializeAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
+    void SetAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
+    void SetAndExecuteScriptIdx(AnmVmView *vm, int scriptIndex);
     AnmVmIdView CreateVmVariant0(int scriptIndex, unsigned int renderLayer);
+    AnmVmIdView CreateVmAtScreenVariant0(
+        int scriptIndex, const AnmFloat3View *position);
+    AnmVmIdView CreateVmAtWorldVariant0(
+        int scriptIndex, const AnmFloat3View *position);
     AnmVmIdView CreateVmVariant1(int scriptIndex, unsigned int renderLayer);
+    AnmVmIdView CreateVmAtScreenVariant1(
+        int scriptIndex, const AnmFloat3View *position);
+    AnmVmIdView CreateVmAtWorldVariant1(
+        int scriptIndex, const AnmFloat3View *position);
     AnmVmIdView CreateVmVariant2(int scriptIndex, unsigned int renderLayer);
+    AnmVmIdView CreateVmAtScreenVariant2(
+        int scriptIndex, const AnmFloat3View *position);
+    AnmVmIdView CreateVmAtWorldVariant2(
+        int scriptIndex, const AnmFloat3View *position);
     AnmVmIdView CreateVmVariant3(int scriptIndex, unsigned int renderLayer);
+    AnmVmIdView CreateVmAtScreenVariant3(
+        int scriptIndex, const AnmFloat3View *position);
+    AnmVmIdView CreateVmAtWorldVariant3(
+        int scriptIndex, const AnmFloat3View *position);
 };
 
 typedef char AnmLoadedSpritesAt118[
     (offsetof(AnmLoadedView, sprites) == 0x118 &&
+     offsetof(AnmLoadedView, scripts) == 0x11c &&
      offsetof(AnmLoadedView, pendingLoadCount) == 0x124) ? 1 : -1];
 
 struct AsciiManagerStringView
@@ -816,12 +857,18 @@ typedef char AnmUntexturedVertexViewSizeIs14[
 // the target-observed buffer base and its end/start cursors.
 struct AnmRenderManagerView
 {
-    unsigned char unknown000[0x054];
+    unsigned char unknown000[0x04c];
+    unsigned int scriptsStartedThisFrame;
+    unsigned char unknown050[0x004];
     unsigned int renderStateChangesThisFrame;
     unsigned int flushesThisFrame;
     float screenShakeX;
     float screenShakeY;
-    unsigned char unknown064[0x3ad08c];
+    unsigned char unknown064[0x004];
+    AnmVmView vmPool[0x1000];
+    unsigned char vmPoolUsed[0x1000];
+    int nextVmPoolIndex;
+    unsigned char unknown3AD06C[0x084];
     AnmMatrixView cachedWorldMatrix;
     unsigned char unknown3AD130[0x930];
     unsigned int currentTextureFactor;
@@ -840,11 +887,29 @@ struct AnmRenderManagerView
     AnmRenderVertexView vertexBuffer[0x20000];
     AnmRenderVertexView *vertexBufferEnd;
     AnmRenderVertexView *vertexBufferStart;
-    unsigned char unknown72DAD4[0x4984];
+    AnmVmLayerNodeView *primaryVmListHead;
+    AnmVmLayerNodeView *primaryVmListTail;
+    AnmVmLayerNodeView *secondaryVmListHead;
+    AnmVmLayerNodeView *secondaryVmListTail;
+    AnmVmView drawLayerSentinels[20];
+    AnmVmIdView nextVmId;
     AnmColorView mixColor;
     int useMixColor;
 
-    static int ExecuteScript(AnmVmView *vm);
+    static int __stdcall ExecuteScript(AnmVmView *vm);
+    AnmVmView *AllocateVm();
+    AnmVmIdView AddVmVariant0(AnmVmView *vm);
+    AnmVmIdView AddVmVariant1(AnmVmView *vm);
+    TH10_ANM_NOINLINE AnmVmIdView AddVmVariant2(AnmVmView *vm);
+    TH10_ANM_NOINLINE AnmVmIdView AddVmVariant3(AnmVmView *vm);
+    TH10_ANM_NOINLINE AnmVmView *FindVm(int id);
+    void SetVmPendingInterrupt(int id, short interrupt);
+    void SetVmPendingInterruptAndExecute(int id, short interrupt);
+    void MarkVmForDeletion(int id);
+    void SetVmPosition(int id, const AnmFloat3View *position);
+    void SetVmWorldPosition(int id, const AnmFloat3View *position);
+    AnmFloat3View *GetVmPosition(int id);
+    void MarkLoadedVmsForDeletion(AnmLoadedView *loaded);
     void ClearVertexBuffer();
     void FlushVertexBuffer();
     int AddSpriteToDrawBuffer(AnmRenderVertexView *vertices);
@@ -885,7 +950,12 @@ struct AnmRenderManagerView
 };
 
 typedef char AnmRenderFlushCountAt058[
-    (offsetof(AnmRenderManagerView, flushesThisFrame) == 0x058) ? 1 : -1];
+    (offsetof(AnmRenderManagerView, scriptsStartedThisFrame) == 0x04c &&
+     offsetof(AnmRenderManagerView, flushesThisFrame) == 0x058) ? 1 : -1];
+typedef char AnmRenderVmPoolAt068[
+    (offsetof(AnmRenderManagerView, vmPool) == 0x068 &&
+     offsetof(AnmRenderManagerView, vmPoolUsed) == 0x3ac068 &&
+     offsetof(AnmRenderManagerView, nextVmPoolIndex) == 0x3ad068) ? 1 : -1];
 typedef char AnmRenderSpritesToDrawAt3ADAC8[
     (offsetof(AnmRenderManagerView, spritesToDraw) == 0x3adac8) ? 1 : -1];
 typedef char AnmRenderVertexBufferAt3ADACC[
@@ -893,6 +963,11 @@ typedef char AnmRenderVertexBufferAt3ADACC[
 typedef char AnmRenderVertexCursorsAt72DACC[
     (offsetof(AnmRenderManagerView, vertexBufferEnd) == 0x72dacc &&
      offsetof(AnmRenderManagerView, vertexBufferStart) == 0x72dad0) ? 1 : -1];
+typedef char AnmRenderVmListsAt72DAD4[
+    (offsetof(AnmRenderManagerView, primaryVmListHead) == 0x72dad4 &&
+     offsetof(AnmRenderManagerView, secondaryVmListHead) == 0x72dadc &&
+     offsetof(AnmRenderManagerView, drawLayerSentinels) == 0x72dae4 &&
+     offsetof(AnmRenderManagerView, nextVmId) == 0x732454) ? 1 : -1];
 typedef char AnmRenderStateCacheAt3ADA64[
     (offsetof(AnmRenderManagerView, currentTextureFactor) == 0x3ada60 &&
      offsetof(AnmRenderManagerView, currentTexture) == 0x3ada64 &&
@@ -1001,3 +1076,5 @@ extern "C" AnmMatrixView *__stdcall D3DXMatrixMultiply(
 
 extern "C" void __stdcall EnterCriticalSection(void *criticalSection);
 extern "C" void __stdcall LeaveCriticalSection(void *criticalSection);
+
+#undef TH10_ANM_NOINLINE

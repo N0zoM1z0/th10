@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `92db5f4 gpt-5.6-sol: recover ANM script variables`, branch `main`.
+- Current packet base: `d994538 gpt-5.6-sol: reconstruct ANM script executor`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -33,14 +33,15 @@
 - Completed session checkpoint: `09e4da8 gpt-5.6-sol: recover ANM generated geometry`.
 - Completed session checkpoint: `2d8c48b gpt-5.6-sol: recover ANM radial trail and RNG`.
 - Completed session checkpoint: `92db5f4 gpt-5.6-sol: recover ANM script variables`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct ANM script executor`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean ANM script-variable checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-executor/`. The earlier script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `d994538 gpt-5.6-sol: reconstruct ANM script executor`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct ANM child VM lifecycle`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean ANM script-executor checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-child-vm/`. The earlier executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `92db5f4...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `d994538...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -55,68 +56,67 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM script executor and interpolation core
+## Current packet: ANM child-VM and manager lifecycle
 
-`AnmRenderManagerView::ExecuteScript @ 0x0043EE30-0x004413A2` is now a complete
-maintained source body rather than a declaration. The target instruction header
-is eight bytes (`opcode`, `size`, `time`, `variableMask`) followed by typed
-arguments. The executor implements every target opcode from `-1` through `92`,
-including interrupt save/restore, variable reads and writable operands,
-arithmetic/comparison/jump behavior, RNG and trigonometry, sprite/transform and
-render flags, child-VM creation, callback setup, and the end-of-frame position,
-rotation, scale, UV, color, alpha and timer updates. The absolute opcode table
-at `0x004413A4` remains separate from the 9,587-byte physical contribution.
+The ANM executor's former child-VM declarations are now connected to maintained
+source. Twelve creator bodies cover the four manager-order variants and their
+screen/world-positioned forms. Each obtains a VM from the manager's 4096-entry
+inline pool or heap fallback, initializes the selected script, applies a render
+layer or position, and inserts the VM at the front or back of the primary or
+secondary manager list. World-positioned forms apply the TH10-local playfield
+origin `(+224,+16)`; no adjacent-game offset was transferred.
 
-The executor review replaces most of the VM's opaque middle with target-bound
-fields. The 0x3AC-byte VM now carries seven typed interpolation slots from
-`+0x070` through `+0x233`, three matrices at `+0x23C/+0x27C/+0x2BC`, two BGRA
-colors, script locals and counters, three position vectors, generated-geometry
-state, interrupt return state, resource/script/sprite pointers and update/draw
-callbacks. `AnmLoadedView::SetSprite` establishes the loaded sprite stride,
-texture dimensions, UV rectangle, scale and texture-matrix writes. Four child
-creation variants and VM-id lookup remain declared seams because their bodies
-have not yet been reconstructed.
+The manager view now exposes the target-proved pool at `+0x68`, occupancy bytes
+at `+0x3AC068`, list heads/tails at `+0x72DAD4..+0x72DAE0`, twenty draw-layer
+sentinel VMs at `+0x72DAE4`, and the next VM id at `+0x732454`. Maintained bodies
+cover allocation, all four insertion variants, two-list id lookup, stale-id
+clearing, interrupt and immediate-interrupt propagation, tree deletion,
+screen/world position propagation, position lookup, and resource-wide deletion.
+The VM's `+0x04` manager node and `+0x10` parent/child layer node are distinct;
+root operations walk only the latter child chain.
 
-Fifteen connected helper bodies are also source-present: the four interpolation
-evaluators, scalar interpolation curve, integer-triplet scaling, five setup
-functions, intrusive child-node insertion, sprite binding, angular wrapping and
-timer addition. All interpolation modes `0..17` are represented, including the
-state-mutating add/accelerate modes and component-truncating Hermite color path.
-The primary-alpha setup remains non-exact because the current partial executor
-context registerizes its mode in EDX while the target keeps that argument on the
-stack; the mismatch is retained rather than hidden with an artificial shim.
+Three script-transition bodies close the resource side.
+`SetAndExecuteScriptIndex @ 0x0043E7E0` binds and executes frame zero without a
+full VM initializer, while `InitializeAndExecuteScriptIndex @ 0x0043E710`
+initializes a newly allocated VM first. `SetAndExecuteScriptIdx @ 0x0043E8B0`
+restarts an existing VM, rebuilding color, timer and interpolation state and
+undoing a pending horizontal flip by
+negating scale X. The restart body has the exact 287-byte target extent and only
+22 ordinary differing bytes, all caused by an ESI/EDI register exchange; it is
+retained as a strong near match without exact credit.
 
-Supplying `RandomMath.cpp` beside this real executor entry also closes almost
-all of the radial-trail initializer's former context gap. Its linked PDB
-contribution is now exactly 803 bytes against the 803-byte target and differs
-in only eight ordinary bytes: one independent-load scheduling choice in the
-inlined RNG expression and the operand order of one commutative Y sum. Scoping
-the 12-byte direction temporary inside the loop and writing vertex Z before UV
-recover the target's reused stack slot and remove 18 earlier differences. This
-is a strong near match, but it has no exactness credit.
+Pinned VC7.1 `/GL` in the complete executor context canonically reproduces three
+new units: `SetAndExecuteScriptIndex` (194 bytes), primary-tail insertion (118),
+and secondary-tail insertion (118). Two final independent cold replays rebuild
+all **43 AnmManager.cpp units / 7,996 bytes** across eight artifacts with zero
+differences. Current repository tracking contains **1,305** candidates, **240**
+authored functions, **212** source mappings, and **93 canonical exact functions /
+9,987 bytes**. The authored source-present exact backlog is **115**.
 
-The real executor `/GL` context produces eight new canonical exact units:
-child-node insertion (23 bytes), scale setup (136), sprite binding (356),
-secondary-alpha setup (116), both color setups (208 each), signed-pi angular
-addition (94), and timer addition (88). Two independent cold artifact builds
-replay all **8 functions / 1,229 bytes** exactly, including every declared
-constant, runtime-helper and global-speed field. In particular, writing
-`duration` before `mode` recovers the secondary-alpha private ABI, endpoint
-value construction recovers the two color helpers, and the target-observed
-callee-cleans `RET 8` establishes `AddNormalizeAngle` as `__stdcall`.
+The remaining lifecycle bodies are source-present and non-exact. Representative
+candidate/target extents are 197/203 for initialize-and-bind, 201/217 for
+`InitializeVm`, 153/161 for allocation, 65/73 for two-list lookup, 19/21 for
+stale-id lookup, and 74/73, 93/95, 116/118 for the three creator shapes. The two
+front insertion variants are 94/112 because the current complete-program
+context eliminates a generic list branch that the target retained. These gaps
+are compiler/caller-context diagnostics and have no acceptance authority.
 
-Current tracking contains **1,298** candidates, **210** authored functions,
-**182** source mappings, and **90 canonical exact functions / 9,557 bytes**.
-The authored source backlog is **88**. The `src/AnmManager.cpp` canonical set is
-**40 functions / 7,566 bytes** and passes a complete cold replay across eight
-independent artifact contexts. The full executor itself remains non-exact: the
-current `/GL` PDB contribution is 8,548 bytes versus the 9,587-byte target, so
-source presence, semantic completeness and exact code generation remain
-separate claims.
+`scripts/progress.py` now keys cross-ledger origin lookups by parsed integer
+addresses. This fixes a real report failure when equally valid uppercase and
+lowercase hex spellings occur in different CSV files, while tracking validation
+already treats addresses numerically.
 
-The next ANM frontier is to reconstruct the four child-VM creators and VM-id
-lookup used by opcodes 69-72, then re-probe the executor, `GetFloatVar`, and the
-eight-byte radial-trail near match in that richer caller graph.
+The session's initial Factory-native `th10-ghidra check {}` attestation passed.
+A later provider discovery attempt refused operation because the native Ghidra
+implementation no longer matched its operator binding. No conclusions after
+that point are attributed to fresh Ghidra output; the packet used the verified
+target directly plus the pinned compiler Oracle. A future session must refresh
+and re-attest the provider before relying on new Ghidra reads.
+
+The next ANM frontier is the 268-byte VM removal owner at `0x00448BB0`, followed
+by the remaining id/child wrappers and caller-context tuning for the close
+initialize, allocation, lookup and creator bodies. Those connections may also
+bring the central executor and radial-trail initializer closer to target codegen.
 
 ## Completed packet: ANM radial trail and RNG
 

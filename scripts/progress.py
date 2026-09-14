@@ -19,27 +19,38 @@ def rows(name: str) -> list[dict[str, str]]:
         return list(csv.DictReader(stream))
 
 
+def parse_address(value: str) -> int:
+    """Parse a ledger address without depending on its hex formatting."""
+    return int(value, 0)
+
+
 def measures() -> dict[str, int]:
     functions = rows("functions.csv")
-    origins = {row["address"]: row for row in rows("function-origins.csv")}
+    origins = {
+        parse_address(row["address"]): row
+        for row in rows("function-origins.csv")
+    }
     mappings = rows("reccmp-functions.csv")
     matches = rows("matches.csv")
     implemented = []
     with (CONFIG / "implemented.csv").open(newline="", encoding="utf-8") as stream:
         implemented = [row[0] for row in csv.reader(stream) if row and row[0]]
-    authored = [row for row in functions if origins[row["address"]]["disposition"] == "authored"]
-    excluded = [row for row in functions if origins[row["address"]]["disposition"] == "exclude"]
+    def disposition(row: dict[str, str]) -> str:
+        return origins[parse_address(row["address"])]["disposition"]
+
+    authored = [row for row in functions if disposition(row) == "authored"]
+    excluded = [row for row in functions if disposition(row) == "exclude"]
     exact_bytes = sum(int(row["size"], 0) for row in matches)
     authored_bytes = sum(int(row["size"], 0) for row in authored)
     reviewed = len(authored) + len(excluded)
     mapped_authored = sum(
-        origins[row["address"]]["disposition"] == "authored" for row in mappings
+        disposition(row) == "authored" for row in mappings
     )
     mapped_review = sum(
-        origins[row["address"]]["disposition"] == "review" for row in mappings
+        disposition(row) == "review" for row in mappings
     )
     mapped_excluded = sum(
-        origins[row["address"]]["disposition"] == "exclude" for row in mappings
+        disposition(row) == "exclude" for row in mappings
     )
     return {
         "functions": len(functions),

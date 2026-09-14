@@ -611,6 +611,308 @@ void AnmVmLayerNodeView::InsertAfter(AnmVmLayerNodeView *node)
     node->previous = this;
 }
 
+// Target 0x004491C0 resolves ids across the two independently ordered VM
+// lists. A zero id is always invalid.
+AnmVmView *AnmRenderManagerView::FindVm(int id)
+{
+    AnmVmLayerNodeView *node;
+
+    if (id == 0)
+        return NULL;
+
+    node = primaryVmListHead;
+    while (node != NULL)
+    {
+        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+        if (vm->id == id)
+            return vm;
+        node = node->next;
+    }
+
+    node = secondaryVmListHead;
+    while (node != NULL)
+    {
+        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+        if (vm->id == id)
+            return vm;
+        node = node->next;
+    }
+    return NULL;
+}
+
+// Target 0x00449210 sends one interrupt to a VM and, for a root VM, to every
+// following node in its child layer chain.
+void AnmRenderManagerView::SetVmPendingInterrupt(int id, short interrupt)
+{
+    AnmVmView *vm = FindVm(id);
+    if (vm == NULL)
+        return;
+
+    vm->pendingInterrupt = interrupt;
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        static_cast<AnmVmView *>(node->owner)->pendingInterrupt = interrupt;
+        node = node->next;
+    }
+}
+
+// Target 0x00449250 performs the same propagation and immediately advances
+// each affected VM through the ANM executor.
+void AnmRenderManagerView::SetVmPendingInterruptAndExecute(
+    int id, short interrupt)
+{
+    AnmVmView *vm = FindVm(id);
+    if (vm == NULL)
+        return;
+
+    vm->pendingInterrupt = interrupt;
+    AnmRenderManagerView::ExecuteScript(vm);
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        AnmVmView *child = static_cast<AnmVmView *>(node->owner);
+        child->pendingInterrupt = interrupt;
+        AnmRenderManagerView::ExecuteScript(child);
+        node = node->next;
+    }
+}
+
+// Target 0x004492A0 marks a VM tree for removal during the manager update.
+void AnmRenderManagerView::MarkVmForDeletion(int id)
+{
+    AnmVmView *vm = FindVm(id);
+    if (vm == NULL)
+        return;
+
+    const unsigned int deletionFlag = 0x04000000u;
+    vm->flags35C |= deletionFlag;
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        static_cast<AnmVmView *>(node->owner)->flags35C |= deletionFlag;
+        node = node->next;
+    }
+}
+
+// Target 0x004492F0 updates the screen-space offset of a VM tree.
+void AnmRenderManagerView::SetVmPosition(
+    int id, const AnmFloat3View *position)
+{
+    AnmVmView *vm = FindVm(id);
+    if (vm == NULL)
+        return;
+
+    vm->positionOffset = *position;
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        static_cast<AnmVmView *>(node->owner)->positionOffset = *position;
+        node = node->next;
+    }
+}
+
+// Target 0x00449350 applies TH10's playfield origin before propagating the
+// position through the same VM tree.
+void AnmRenderManagerView::SetVmWorldPosition(
+    int id, const AnmFloat3View *position)
+{
+    AnmVmView *vm = FindVm(id);
+    if (vm == NULL)
+        return;
+
+    vm->positionOffset.x = position->x + 224.0f;
+    vm->positionOffset.y = position->y + 16.0f;
+    vm->positionOffset.z = position->z;
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        AnmVmView *child = static_cast<AnmVmView *>(node->owner);
+        child->positionOffset.x = position->x + 224.0f;
+        child->positionOffset.y = position->y + 16.0f;
+        child->positionOffset.z = position->z;
+        node = node->next;
+    }
+}
+
+AnmFloat3View *AnmRenderManagerView::GetVmPosition(int id)
+{
+    AnmVmView *vm = FindVm(id);
+    return vm == NULL ? NULL : &vm->positionOffset;
+}
+
+// Target 0x004493E0 scans both manager-order lists and marks every VM backed
+// by the selected loaded ANM resource.
+void AnmRenderManagerView::MarkLoadedVmsForDeletion(AnmLoadedView *loaded)
+{
+    const unsigned int deletionFlag = 0x04000000u;
+    AnmVmLayerNodeView *node = primaryVmListHead;
+    while (node != NULL)
+    {
+        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+        if (vm->anmFile == loaded)
+            vm->flags35C |= deletionFlag;
+        node = node->next;
+    }
+
+    node = secondaryVmListHead;
+    while (node != NULL)
+    {
+        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+        if (vm->anmFile == loaded)
+            vm->flags35C |= deletionFlag;
+        node = node->next;
+    }
+}
+
+// Target 0x00449950 first tries the current slot in the 4096-VM inline pool,
+// then the next slot, and falls back to a separately allocated VM when both
+// are occupied. Removed inline VMs are reset before their occupancy byte is
+// cleared, so allocation need only initialize the heap fallback.
+AnmVmView *AnmRenderManagerView::AllocateVm()
+{
+    int index = nextVmPoolIndex;
+    AnmVmView *vm = &vmPool[index];
+
+    if (vmPoolUsed[index] != 0)
+    {
+        index = (index + 1) % 0x1000;
+        nextVmPoolIndex = index;
+        vm = &vmPool[index];
+        if (vmPoolUsed[index] != 0)
+        {
+            vm = new AnmVmView;
+            vm->Initialize();
+        }
+        else
+        {
+            vmPoolUsed[index] = 1;
+        }
+    }
+    else
+    {
+        vmPoolUsed[index] = 1;
+    }
+
+    nextVmPoolIndex = (nextVmPoolIndex + 1) % 0x1000;
+    return vm;
+}
+
+AnmVmIdView AnmRenderManagerView::AddVmVariant0(AnmVmView *vm)
+{
+    AnmVmLayerNodeView *node = &vm->managerNode;
+    node->owner = vm;
+    node->next = NULL;
+    node->previous = NULL;
+
+    if (primaryVmListHead == NULL)
+    {
+        primaryVmListHead = node;
+    }
+    else
+    {
+        primaryVmListTail->InsertAfter(node);
+    }
+    primaryVmListTail = node;
+
+    AnmVmIdView *incrementReceiver = &nextVmId;
+    (*incrementReceiver)++;
+    if (nextVmId == AnmVmIdView())
+        nextVmId++;
+    vm->id = nextVmId.value;
+    return nextVmId;
+}
+
+AnmVmIdView AnmRenderManagerView::AddVmVariant1(AnmVmView *vm)
+{
+    AnmVmLayerNodeView *node = &vm->managerNode;
+    node->owner = vm;
+    node->next = NULL;
+    node->previous = NULL;
+
+    if (secondaryVmListHead == NULL)
+    {
+        secondaryVmListHead = node;
+    }
+    else
+    {
+        secondaryVmListTail->InsertAfter(node);
+    }
+    secondaryVmListTail = node;
+
+    AnmVmIdView *incrementReceiver = &nextVmId;
+    (*incrementReceiver)++;
+    if (nextVmId == AnmVmIdView())
+        nextVmId++;
+    vm->id = nextVmId.value;
+    return nextVmId;
+}
+
+AnmVmIdView AnmRenderManagerView::AddVmVariant2(AnmVmView *vm)
+{
+    AnmVmLayerNodeView *node = &vm->managerNode;
+    node->owner = vm;
+    node->next = NULL;
+    node->previous = NULL;
+
+    if (primaryVmListHead == NULL)
+    {
+        primaryVmListTail = node;
+    }
+    else
+    {
+        node->InsertAfter(primaryVmListHead);
+    }
+    primaryVmListHead = node;
+
+    AnmVmIdView *incrementReceiver = &nextVmId;
+    (*incrementReceiver)++;
+    if (nextVmId == AnmVmIdView())
+        nextVmId++;
+    vm->id = nextVmId.value;
+    return nextVmId;
+}
+
+AnmVmIdView AnmRenderManagerView::AddVmVariant3(AnmVmView *vm)
+{
+    AnmVmLayerNodeView *node = &vm->managerNode;
+    node->owner = vm;
+    node->next = NULL;
+    node->previous = NULL;
+
+    if (secondaryVmListHead == NULL)
+    {
+        secondaryVmListTail = node;
+    }
+    else
+    {
+        node->InsertAfter(secondaryVmListHead);
+    }
+    secondaryVmListHead = node;
+
+    AnmVmIdView *incrementReceiver = &nextVmId;
+    (*incrementReceiver)++;
+    if (nextVmId == AnmVmIdView())
+        nextVmId++;
+    vm->id = nextVmId.value;
+    return nextVmId;
+}
+
 // Target 0x0043E5A0 binds one loaded sprite to a VM and rebuilds the two
 // texture-space matrices derived from its dimensions.
 int AnmLoadedView::SetSprite(AnmVmView *vm, int spriteIndex)
@@ -638,11 +940,278 @@ int AnmLoadedView::SetSprite(AnmVmView *vm, int spriteIndex)
     return 0;
 }
 
+// Target 0x0043E7E0 binds a VM to one script owned by this loaded ANM. Invalid
+// or still-loading entries clear the whole VM; a valid entry resets the script
+// timer, executes frame zero, and accounts for the newly started script.
+void AnmLoadedView::SetAndExecuteScriptIndex(
+    AnmVmView *vm, int scriptIndex)
+{
+    AnmRawInstructionView *beginningOfScript = scripts[scriptIndex];
+
+    if (beginningOfScript == NULL || pendingLoadCount != 0)
+    {
+        memset(vm, 0, sizeof(AnmVmView));
+    }
+    else
+    {
+        vm->scriptIndex = static_cast<short>(scriptIndex);
+        vm->anmFileIndex = anmFileIndex;
+        unsigned int flags = vm->flags35C;
+        flags &= ~0x600u;
+        vm->anmFile = this;
+        vm->flags35C = flags;
+        vm->beginningOfScript = scripts[scriptIndex];
+        vm->currentInstruction = vm->beginningOfScript;
+        vm->scriptTimer.SetCurrent(0);
+        vm->visible = 0;
+        AnmRenderManagerView::ExecuteScript(vm);
+        ++g_AnmRenderManagerView->scriptsStartedThisFrame;
+    }
+}
+
+// Target 0x0043E710 is the allocating-spawn counterpart of the binder above.
+// It preserves the caller-selected position and layer through Initialize,
+// then installs and starts the requested script.
+void AnmLoadedView::InitializeAndExecuteScriptIndex(
+    AnmVmView *vm, int scriptIndex)
+{
+    AnmRawInstructionView *beginningOfScript = scripts[scriptIndex];
+
+    if (beginningOfScript == NULL || pendingLoadCount != 0)
+    {
+        memset(vm, 0, sizeof(AnmVmView));
+    }
+    else
+    {
+        vm->Initialize();
+        vm->scriptIndex = static_cast<short>(scriptIndex);
+        vm->anmFileIndex = anmFileIndex;
+        unsigned int flags = vm->flags35C;
+        flags &= ~0x600u;
+        vm->anmFile = this;
+        vm->flags35C = flags;
+        vm->beginningOfScript = scripts[scriptIndex];
+        vm->currentInstruction = vm->beginningOfScript;
+        vm->scriptTimer.SetCurrent(0);
+        vm->visible = 0;
+        AnmRenderManagerView::ExecuteScript(vm);
+        ++g_AnmRenderManagerView->scriptsStartedThisFrame;
+    }
+}
+
+// Target 0x0043E8B0 switches an existing VM to another script while retaining
+// its placement and list identity. The script-local timer, color, interpolation
+// state and flip transform are rebuilt before frame zero executes.
+void AnmLoadedView::SetAndExecuteScriptIdx(
+    AnmVmView *vm, int scriptIndex)
+{
+    AnmRawInstructionView *beginningOfScript = scripts[scriptIndex];
+    if (beginningOfScript == NULL)
+        return;
+    if (pendingLoadCount != 0)
+        return;
+
+    vm->scriptIndex = static_cast<short>(scriptIndex);
+    unsigned int flags = vm->flags35C;
+    vm->anmFile = this;
+    if ((flags & 0x200u) != 0)
+    {
+        flags |= 8u;
+        vm->scaleX *= -1.0f;
+        flags ^= 0x200u;
+        vm->flags35C = flags;
+    }
+
+    *reinterpret_cast<unsigned short *>(&vm->flags35C) = 7;
+    vm->primaryColor.value = 0xffffffffu;
+    vm->scriptTimer.Initialize();
+    vm->positionInterpolation.duration = 0;
+    vm->primaryColorInterpolation.duration = 0;
+    vm->primaryAlphaInterpolation.duration = 0;
+    vm->rotationInterpolation.duration = 0;
+    vm->scaleInterpolation.duration = 0;
+    vm->secondaryColorInterpolation.duration = 0;
+    vm->secondaryAlphaInterpolation.duration = 0;
+
+    vm->anmFileIndex = anmFileIndex;
+    flags = vm->flags35C;
+    flags &= ~0x600u;
+    vm->anmFile = this;
+    vm->flags35C = flags;
+    vm->beginningOfScript = beginningOfScript;
+    vm->currentInstruction = beginningOfScript;
+    vm->scriptTimer.SetCurrent(0);
+    vm->visible = 0;
+    AnmRenderManagerView::ExecuteScript(vm);
+    ++g_AnmRenderManagerView->scriptsStartedThisFrame;
+}
+
+// Target 0x00449870 prepares a newly allocated VM for a loaded script. The
+// allocator owns the full VM reset; this phase initializes spawn-local state
+// before handing the script index to the loaded-resource executor.
+void AnmLoadedView::InitializeVm(AnmVmView *vm, int scriptIndex)
+{
+    vm->positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->position = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    vm->flags35C |= 0x40000000u;
+    vm->scriptIndex = static_cast<short>(scriptIndex);
+    vm->unknown3A0[0] = 0x10;
+    vm->unknown3A0[1] = 0x10;
+    SetAndExecuteScriptIndex(vm, scriptIndex);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmVariant0(
+    int scriptIndex, unsigned int renderLayer)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->renderLayer = renderLayer;
+    vm->flags35C |= 0x40000000u;
+    InitializeVm(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant0(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant0(
+    int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 0;
+    vm->positionOffset = *position;
+    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant0(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant0(
+    int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 0;
+    vm->positionOffset.x = position->x + 224.0f;
+    vm->positionOffset.y = position->y + 16.0f;
+    vm->positionOffset.z = position->z;
+    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant0(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmVariant1(
+    int scriptIndex, unsigned int renderLayer)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->renderLayer = renderLayer;
+    vm->flags35C |= 0x40000000u;
+    InitializeVm(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant1(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant1(
+    int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 0;
+    vm->positionOffset = *position;
+    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant1(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant1(
+    int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 0;
+    vm->positionOffset.x = position->x + 224.0f;
+    vm->positionOffset.y = position->y + 16.0f;
+    vm->positionOffset.z = position->z;
+    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant1(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmVariant2(
+    int scriptIndex, unsigned int renderLayer)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->renderLayer = renderLayer;
+    vm->flags35C |= 0x40000000u;
+    InitializeVm(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant2(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant2(
+    int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 0;
+    vm->positionOffset = *position;
+    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant2(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant2(
+    int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 0;
+    vm->positionOffset.x = position->x + 224.0f;
+    vm->positionOffset.y = position->y + 16.0f;
+    vm->positionOffset.z = position->z;
+    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant2(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmVariant3(
+    int scriptIndex, unsigned int renderLayer)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->renderLayer = renderLayer;
+    vm->flags35C |= 0x40000000u;
+    InitializeVm(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant3(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant3(
+    int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 0;
+    vm->positionOffset = *position;
+    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant3(vm);
+}
+
+AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant3(
+    int scriptIndex, const AnmFloat3View *position)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+    vm->flags35C |= 0x40000000u;
+    vm->renderLayer = 0;
+    vm->positionOffset.x = position->x + 224.0f;
+    vm->positionOffset.y = position->y + 16.0f;
+    vm->positionOffset.z = position->z;
+    InitializeAndExecuteScriptIndex(vm, scriptIndex);
+    return g_AnmRenderManagerView->AddVmVariant3(vm);
+}
+
+// Target 0x00449450 clears a stale id after the two manager lists fail to
+// resolve it, making future lookups cheap and deterministic.
+AnmVmView *AnmVmIdView::GetVm()
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(value);
+    if (vm == NULL)
+        value = 0;
+    return vm;
+}
+
 // Target 0x0043EE30 is TH10's complete variable-length ANM instruction
 // executor. The adjacent TH095 source supplies control-flow hypotheses; every
 // opcode, VM offset, interpolation call and frame-end update below is checked
 // against the TH10 v1.00a target.
-int AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
+int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
     AnmRawInstructionView *fallbackInterrupt;
@@ -1434,9 +2003,9 @@ void AnmVmView::Initialize()
     secondaryColorInterpolation.duration = 0;
     secondaryAlphaInterpolation.duration = 0;
 
-    listSelf004 = this;
-    unknown008 = NULL;
-    unknown00C = NULL;
+    managerNode.owner = this;
+    managerNode.next = NULL;
+    managerNode.previous = NULL;
     layerNode.owner = this;
     layerNode.next = NULL;
     layerNode.previous = NULL;
