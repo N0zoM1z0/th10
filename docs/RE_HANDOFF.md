@@ -2,156 +2,161 @@
 
 ## Recovery and authority
 
-Phase remains exact source reconstruction with early faithful Windows i386 build
-feedback. Source presence, compilation, canonical exactness, whole-build
-closure, runtime validation, and Factory Truth Kernel acceptance remain separate
-states. Native Ghidra has `exactness_credit=none`.
+The campaign remains active in exact source reconstruction with early faithful
+Windows i386 build feedback. Source presence, compilation, canonical exactness,
+whole-build closure, runtime validation, and Factory Truth Kernel acceptance are
+independent states. Native Ghidra has `exactness_credit=none`.
 
-This session started clean on branch `main` at
-`a70e17cca7e36a34ca18eedfb9ed42297af09194`, tracking
-`origin/main=ae83c3ab72400534834746aeb7613a603a347310`, ahead1/behind0, with 0 staged,
-0 unstaged, 0 untracked, and 0 conflicts. No interrupted dirty work required
-recovery. Private `resources/th10.exe`, legacy `.analysis/`, `.tools/`, `build/`,
-`ghidra-project/`, caches, and other ignored state were preserved. The private
-target was not modified, replaced, relocated, or staged; no `/mnt` search and no
-`TH10_TARGET_PATH` override were used.
+This conversation started clean on branch `main` at
+`81b10925249c4f0620ffa467895f3659682720de`, with
+`origin/main=ae83c3ab72400534834746aeb7613a603a347310`, ahead2/behind0, 0 staged,
+0 unstaged, 0 untracked, and 0 conflicts. No interrupted tracked work required
+recovery. Ignored private `resources/th10.exe`, `.analysis/`, `.tools/`, `build/`,
+`ghidra-project/`, caches, and other prior state were preserved. The private
+executable was not modified, replaced, relocated, or staged; no `/mnt` search
+and no `TH10_TARGET_PATH` override were used.
 
-All required repository and Factory guidance was reread through the registered
-repository runner before editing. Target, executable toolchain, tracking,
-reconstruction-status, public-CI, canonical-match-graph, and open-build-graph
-preflights passed. Honest `scripts/build.py` returned expected RC=2/open because
-production compile flags, translation-unit partition, libraries, resources, and
-link order remain unknown. Fresh native Ghidra operation discovery and mandatory
-`check {}` passed exact `target:th10-main` with
-`attestation.provider_transport=factory-native-command` and private-target SHA-256
-`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+All prompt-named repository rules, Factory contracts, and Factory guidance paths
+were reread through the registered repository runner before editing. No guidance
+path was missing. Target, executable toolchain, tracking, reconstruction status,
+public CI, canonical-match graph, and open whole-build graph preflights passed.
+Honest `scripts/build.py` returned expected RC=2/open because production compile
+flags, TU partition, libraries, resources, and link order remain unknown.
 
-A later Factory Truth snapshot refresh failed with a network connection error.
-One pre-handoff repository-runner request also hit a network connection error;
-live repository status was immediately reread and showed the expected nine
-unstaged packet files with no extra/untracked/conflicted paths, then the complete
-diff audit was rerun successfully. No acceptance or filesystem result is inferred
-from either unavailable operation.
+Native `th10-ghidra` operation discovery exposed the documented bounded read
+schemas. Mandatory `check {}` passed exact `target:th10-main` with
+`attestation.provider_transport=factory-native-command`; the private target SHA-256
+remains `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+Several Factory calls suffered transient network failures. In each case the live
+repository status or durable output was reread before continuing; failed patch
+calls were confirmed not to have partially edited tracked files before retry.
+A helper-decompile query failed once and then succeeded with a fresh passed
+attestation. No timeout or failure is treated as a rolled-back transaction.
 
-## Hard packet: Player update/draw callback seam
+A current Factory accepted-snapshot request is unavailable because another
+Factory operation owns the operator path. No accepted/rejected/pending count is
+inferred from that unavailable check.
 
-The selected packet followed the previous option-callback cohort into the
-central Player callback registration/draw seam rather than harvesting a small
-leaf. Primary reviewed target extents are:
+## Hard packet: central Player update callback
 
-- `0x00426360-0x004264F8`: 409-byte EAX-bound Player draw body, existing
-  `unknown/review` candidate
-- `0x00426500-0x00426506`: newly tracked 7-byte Player update callback adapter
-- `0x00426510-0x00426516`: newly tracked 7-byte Player draw callback adapter.
+This packet attacked the directly registered Player update owner rather than an
+easy leaf. Reviewed target scope:
 
-Both seven-byte entries were absent from the Ghidra candidate denominator and
-are CC-delimited. `0x00426500` is preceded by `0x004264F9-0x004264FF` padding and
-followed by `0x00426507-0x0042650F`; `0x00426510` is followed by
-`0x00426517-0x0042651F` before the separate `0x00426520` candidate.
+- `0x00425730-0x00426340`: 3,089-byte central Player update body
+- `0x00426500-0x00426506`: seven-byte registered first-lane adapter.
 
-### Registration and callback-manager lanes
+The packet is directly connected to the previous Player draw seam, reviewed
+`RebuildPlayerOptions`, option `+0x90` callbacks, and the next movement/options
+owner.
 
-Player initialization at `0x004247F0` proves two independent callback
-registrations. At `0x00424856`, it supplies `0x00426500` to callback-node
-allocator `0x00449ED0`, stores the Player owner at node `+0x20`, inserts the node
-through `0x00449AE0`, and retains it at Player `+0x08`. The entry pushes its
-live-in ECX Player pointer, calls the large Player owner `0x00425730`, and
-returns its result.
+### Physical boundary and machine ABI
 
-At `0x0042487E`, the same initializer supplies `0x00426510`, stores the Player
-owner at node `+0x20`, inserts through `0x00449B70`, and retains the node at
-Player `+0x0C`. The raw entry is exactly `mov eax, ecx; jmp 0x00426360`.
+Ghidra recognizes `0x00425730-0x00426340` but reports only 3,060 reachable body
+bytes. Raw target review reconciles the 29-byte difference exactly with five
+retained unreachable alignment sleds skipped by control flow:
 
-The callback manager independently establishes two list families. `0x00449C00`
-runs the list rooted at manager `+0x18`, paired with insertion `0x00449AE0`;
-`0x00449D40` runs the list rooted at manager `+0x3C`, paired with insertion
-`0x00449B70`. Main frame owner `0x00439390` runs `0x00449C00` before the render
-sequence and runs `0x00449D40` inside the render path after graphics preparation
-and before later renderer/end/present virtual calls. Maintained names
-`PlayerUpdateCallback` and `PlayerDrawCallback` therefore describe TH10-local
-roles; they are not original-symbol claims.
+- `0x004257C8-0x004257CF`: 8 bytes
+- `0x0042580D-0x0042580F`: 3 bytes
+- `0x00425858-0x0042585F`: 8 bytes
+- `0x00425A3D-0x00425A3F`: 3 bytes
+- `0x00425B39-0x00425B3F`: 7 bytes.
 
-Both seven-byte candidates remain `origin=unknown`, `disposition=review`, and
-`confidence=unknown`. Source-written adapters versus compiler/LTCG-generated
-callback wrappers remain unresolved.
+The physical body ends with `ret 4` at `0x0042633E-0x00426340`. It is followed
+by a separate three-byte alignment LEA at `0x00426341-0x00426343`, then a
+20-byte five-entry state jump table at `0x00426344-0x00426357`, then CC padding
+through `0x0042635F`. None of that post-body table/padding is absorbed into the
+3,089-byte function extent.
 
-### Draw body and option +0x94
+Ghidra's provisional `__thiscall` signature is rejected by raw evidence. The
+body prologue loads the sole Player pointer from `[ESP+0x28]` after saving its
+frame state, and the epilogue consumes exactly one four-byte stack argument.
+The only observed direct transfer is the raw call at `0x00426501`. The
+seven-byte adapter is exactly `push ecx; call 0x00425730; ret`, so its callback
+boundary is live-in ECX Player while the body boundary is one stack Player* /
+`ret 4`.
 
-The registered draw adapter transfers to `0x00426360` with the Player owner in
-EAX. The 409-byte body checks Player `+0x458`; when it is not 2, the body writes
-an embedded draw view beginning at Player `+0x14`: view-relative positions
-`+0x340/+0x344/+0x348` receive Player floats `+0x3C0/+0x3C4/+0x3C8`, with
-`224.0f` added to X and `16.0f` added to Y, then the target draw-VM owner is
-called.
+The body is classified `authored_game` / Player with high confidence because it
+contains a large bespoke Player state machine, power rules, option rebuilding,
+effect/timer updates, movement seams, and shot/update integration. This origin
+classification does not resolve whether the seven-byte adapter is source-written
+or compiler/LTCG-generated, nor whether the maintained source function maps
+physically to the body, adapter, or an optimizer split. The adapter therefore
+remains `unknown/review`.
 
-The body next iterates four 0x98-byte option records starting at Player
-`+0x32A0`. It begins from Player `+0x3334` (option 0 `+0x94`), loads each
-non-null function pointer, forms ECX as `slot - 0x94` (the option record base),
-calls the hook, and advances by 0x98. This proves the machine boundary of option
-`+0x94` independently from the prior `+0x90` update callback path.
+## State-machine and layout evidence
 
-A complete target `.text` Capstone displacement scan found no Player-local write
-to option `+0x94`. Other `[reg+0x94]` writes belong to unrelated owners and have
-no observed static connection to this Player registration/update seam. Therefore
-the maintained field is now named `drawCallback` from the TH10 draw-chain
-consumer role, while the actual producer/assignment remains unknown. Do not add
-a producer to `RebuildPlayerOptions` without new target evidence.
+The target state jump table selects numeric states 0 through 4, but raw target
+layout establishes physical lexical block order `0, 1, 4, 2, 3`. State 4 can
+call the connected transition helper and fall through into the physical state-2
+block. Maintained source preserves that lexical order rather than sorting case
+labels for readability.
 
-The remaining auxiliary draw branch is also represented naturally. Target
-constants were directly decoded as `225.0f`, `17.0f`, `24.0f`, `2.0f`, `1.0f`,
-and `0.29230770468711853f`. `0x00427C50` takes a float, converts it to double,
-calls the target floor implementation at `0x00452FF0`, and returns through x87;
-it is called twice by this body. The target then draws the derived four-float
-rectangle twice with colors `0x80000000` and `0xFFFFFFFF`, subtracting 1.0f from
-all four coordinates before the second pass. The gate objects/global identifiers
-remain neutral maintained names because their original ownership and semantics
-are not established.
+Target-local behavior recovered for the five states includes:
 
-`src/Player.hpp` now exposes only a maintained partial `PlayerDrawVmView` through
-the observed relative `+0x35C` flags field. Its original VM type and physical
-object extent explicitly remain unknown. Player float coordinates `+0x3C0`,
-runtime state `+0x458`, and option `drawCallback +0x94` receive offset assertions.
+- state 0 drives the initial vertical position from the Player timer, marks all
+  four option reset flags, reconstructs the 33-row replay/history seam, runs
+  bounded transition effects/cleanup, then changes to state 1 after 60 frames;
+- state 1 handles the observed power/input gate, updates the displayed power,
+  invokes `RebuildPlayerOptions`, performs early cleanup, and calls the connected
+  movement/options owner at `0x004250B0`;
+- state 4 contains a short transition window and can enter state 2 through the
+  connected `0x004269D0` helper;
+- state 2 performs the observed 64-power transition, seven-direction effect
+  emission using target constants, invokes `RebuildPlayerOptions`, and later
+  either requests another runtime transition or restores the observed Player
+  position/draw state;
+- state 3 owns the observed frame-15 cleanup path.
 
-Maintained `PlayerDrawCallback` in `src/Player.cpp` models the registered draw
-entry and connected behavior. Source presence is recorded at `0x00426510` only.
-The separate physical body at `0x00426360` remains without standalone source
-ownership, and `0x00426500` has no maintained source mapping in this packet.
+The common tail independently establishes several maintained partial layouts:
 
-## Compiler and Oracle feedback
+- four 0x14 timer-shaped Player records at `+0x460`, `+0x474`, `+0x488`, and
+  `+0x430C`;
+- 32 repeated 0x6C Player effect rows beginning at `+0x350C`;
+- the draw-VM color field at Player `+0x314`, in addition to prior draw-VM
+  position/flags evidence;
+- float Player draw position as one contiguous Float3 at `+0x3C0`;
+- fixed movement speed/delta and direction fields through `+0x454`;
+- six contiguous derived Float3 rows at `+0x4324`;
+- the existing replay/history array at `+0x436C` and option mode at `+0x4474`.
 
-Pinned VC7.1 SP1 build 6030 compiles final `src/Player.cpp` with fixed normal
+These are deliberately partial maintained views. Original class/type names,
+complete object extents, timer type identity, and field identifiers remain
+unknown. Neutral helper interfaces in `src/Player.cpp` spell observed calls
+without claiming their original names or private register ABIs.
+
+Maintained `PlayerUpdateCallback` is source-present at registered entry
+`0x00426500`. The adjacent 3,089-byte body remains without a standalone
+`source_file` mapping so source presence is not confused with physical source or
+optimizer ownership.
+
+## Compiler and exact feedback
+
+Final `src/Player.cpp` compiles under pinned VC7.1 SP1 build 6030 using fixed
+normal:
 
 `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc`
 
 and the same profile plus `/GL`. `src/ReplayManager.cpp`, which consumes the
-changed Player layout, also compiles under both profiles.
+expanded Player layout, also compiles under both profiles.
 
-The true fixed-normal `/Gy` `PlayerDrawCallback` COMDAT is exactly `0x1A0` = 416
-bytes. That is numerically equal to the target's 409-byte EAX-bound body plus its
-7-byte registered ECX adapter. The normal object also naturally retains the same
-runtime-state gate, four-option `+0x94` callback loop, target floating constants,
-gate ordering, and floor-driven auxiliary rectangle structure.
+The true fixed-normal `/Gy` `PlayerUpdateCallback` COMDAT is `0xAF0` = 2,800
+bytes. It naturally emits the same five-way switch family and target-observed
+lexical block ordering, but that object is not the target physical owner. The
+target has a separate seven-byte registered adapter, a 3,089-byte stack-bound
+body, and its five-entry jump table outside the body.
 
-This is not exactness evidence. The target code chunks are non-contiguous and
-have different optimizer/private-ABI ownership. A relocation-aware 409-byte
-body diagnostic against target `0x00426360` is `mismatch`: 69/317 comparable
-bytes match, 23 object relocations are reported, and
-`acceptance_authority=none`. Successful `/GL` compilation preserves an
-optimizer/LTCG split hypothesis, but the standalone COFF Oracle cannot assign a
-linked-image LTCG extent. No canonical match unit or exact ledger row was added.
+A caller-supplied 3,089-byte relocation-aware diagnostic against target
+`0x00425730` returns `mismatch`: 191/2,693 comparable bytes match, 99 object
+relocations are reported, and `acceptance_authority=none`. The comparator's
+reported 3,089-byte requested window must not be confused with the true 2,800-byte
+COMDAT extent. Fixed normal is therefore excluded as an exact physical match.
+Successful `/GL` compilation preserves a live optimizer/LTCG ownership
+hypothesis, but the standalone COFF Oracle cannot assign linked-image LTCG
+extent or exactness. No canonical match unit and no exact ledger row were added.
 
-## Denominator and adjacent-game discipline
+## Ledger delta and adjacent-game discipline
 
-Entry ledger state at `a70e17cca7e36a34ca18eedfb9ed42297af09194`:
-
-- candidates 1,237
-- origin/boundary pending 1,143
-- authored 87 / 22,010 bytes
-- exclusions 7
-- source-present 59
-- canonical exact 0.
-
-Current packet state before checkpoint:
+Entry ledger state at `81b10925249c4f0620ffa467895f3659682720de`:
 
 - candidates 1,239
 - origin/boundary pending 1,145
@@ -160,80 +165,95 @@ Current packet state before checkpoint:
 - source-present 60
 - canonical exact 0.
 
-Delta: +2 denominator candidates, +2 pending, +0 authored, +0 exclusions, +1
-source-present, +0 exact. Both denominator additions are the missed seven-byte
-callback adapters. The hard packet does not improve authored/exact percentage by
-reclassifying uncertain physical chunks.
+Current pre-checkpoint state:
 
-Adjacent committed content was consulted only after TH10-local evidence existed:
+- candidates 1,239
+- origin/boundary pending 1,144
+- authored 88 / 25,099 bytes
+- exclusions 7
+- source-present 61
+- canonical exact 0.
 
-- TH08 HEAD `a45e99fb1942714e6edded20847e32a654d56f97`, clean. Its committed exact
-  Player corpus independently has separate option update/render callback slots;
-  this is corroboration only.
-- TH09 HEAD `3e1a9c86318652f13e6fed86d45b6cbeb8479c3a`, clean, branch ahead6.
-- TH095 HEAD `fb9d07b0dd9ad069a67ac18f367497bbb536b665`, branch ahead1, with unrelated
-  modified `src/Main.cpp` plus four unrelated untracked files. Only `HEAD:`
-  committed content was queried; those dirty files were not read or used.
+Delta: pending -1, authored +1 / +3,089 bytes, source-present +1, candidate count
+unchanged, exclusions +0, exact +0. The authored denominator expands rather than
+being hidden by the adapter/profile uncertainty.
 
-No adjacent address, extent, layout, owner, exactness, or completion claim was
-transferred into TH10.
+Adjacent committed material was consulted only after TH10-local state-machine
+and ABI evidence existed. TH08 HEAD
+`a45e99fb1942714e6edded20847e32a654d56f97` was clean; its exact Player source
+was used only to corroborate that VC7 Player switch lexical order and timer
+source shape can be target-visible. TH09 HEAD
+`1cf5cf3a356df05aef20412a167ec146b4a54de0` was clean and ahead7; no TH09
+content materially shaped this packet. TH095 HEAD
+`f93406f4488acb29240c048a17d36f67d28abf5f` was ahead3 with unrelated modified
+`src/PhotoGameTask.cpp` plus four unrelated untracked files. No TH095 dirty
+content was read or used. No adjacent address, layout, state value, ownership,
+exactness, or completion claim was transferred into TH10.
 
-## Verification planes and unavailable acceptance
+## Verification planes
 
-Final pre-checkpoint verification currently separates the planes as follows:
+Final pre-checkpoint state remains deliberately separated:
 
-- source presence: maintained source at registered draw entry `0x00426510`;
-  standalone ownership of body `0x00426360` and update adapter `0x00426500`
-  remains unknown
+- source presence: yes at registered update entry `0x00426500`; the body/source
+  physical ownership relationship remains unresolved
+- origin/boundary: body reviewed and classified authored_game; adapter remains
+  unknown/review
 - canonical exactness: 0 functions / 0 bytes repository-wide
 - whole faithful Windows i386 build: open; `build.py --check` passes the honest
   open graph and actual `build.py` returns expected RC=2
 - runtime validation: not performed because there is no closed reconstructed
   product
-- Factory Truth Kernel acceptance: current refresh unavailable because the
-  snapshot request hit a Factory network connection error; no new accepted,
-  rejected, pending, or replay fact is claimed.
+- Factory Truth Kernel acceptance: unavailable because another Factory operation
+  owns the operator path; no accepted, rejected, pending, or replay count is
+  claimed.
 
-Final focused normal and `/GL` Player/Replay compilation passed. Target identity,
-`verify-toolchain.py --check`, tracking, reconstruction status, regenerated
-progress artifacts, public CI, and `git diff --check` all passed. The canonical
-normal-COFF match graph still contains 0 configured units.
+Final focused normal and `/GL` Player/Replay compilation passed. `verify-target.py`,
+`verify-toolchain.py --check`, target-bound tracking, reconstruction status,
+regenerated progress, `build-match-unit.py --check`, `build.py --check`, public
+CI, and `git diff --check` passed. The canonical normal-COFF match graph remains
+empty.
 
-## Scratch discipline
+## Scratch lifecycle
 
-Session entry `.analysis/` was 69 regular files / 245,708 regular bytes and 476K
-allocated, with no file over 64 MiB. This campaign reuses
-`.analysis/gpt-web/20260914-player-postupdate/` and retains the manifest, final
-normal/LTCG Player and Replay probes, relocation-aware draw mismatch JSON,
-comparator stderr, and honest whole-build stdout/stderr.
+Session entry `.analysis/` was 78 regular files / 364,833 regular bytes and 612K
+allocated, with no file over 64 MiB. This session created and reused
+`.analysis/gpt-web/20260914-player-update/` with a manifest.
 
-Immediately before handoff, `.analysis/` is 78 regular files / 363,757 regular
-bytes and 612K allocated; this campaign is 9 regular files / 118,049 bytes. No
-current campaign artifact exceeds 64 MiB. Nothing from legacy/shared/provider/
-toolchain/target analysis state was deleted.
+After final probes and cleanup, `.analysis/` is 87 regular files / 518,056
+regular bytes and 780K allocated. The current campaign contains 9 regular files /
+153,223 bytes, with no file over 64 MiB. Four header-sanity compiler objects and
+the temporary `PlayerUpdateCallback.inc` were removed only after final probes
+superseded them; they were current-session, reproducible, unreferenced scratch.
+Retained artifacts are the final Player/Replay normal and `/GL` objects, the
+relocation-aware mismatch JSON/stderr, whole-build stdout/stderr, and manifest.
+No legacy/unknown/provider/toolchain/target state was deleted.
 
-## Checkpoint plan and next hard frontier
+## Checkpoint and next hard frontier
 
-Audit the complete staged diff after adding this handoff, run a fresh native
-Ghidra `check {}`, stage only the intended packet files, create one local English
-`gpt-web:` checkpoint, never push, then run cold post-commit CI/status/target
-checks. The checkpoint hash must be read from live HEAD after commit; this file
-does not self-claim a future hash.
+Final pre-commit gates completed successfully: the complete working diff and
+staged diff were audited, only the ten intended tracked packet files are staged,
+there is no unstaged or untracked remainder, `git diff --cached --check` passes,
+and a fresh native Ghidra `check {}` again passed exact `target:th10-main` with
+`factory-native-command` transport. Final Player/Replay normal and `/GL` probes,
+target/toolchain/tracking/status, open match/build graphs, honest RC=2 whole-build
+diagnostic, and public CI also passed. Create one local English `gpt-web:`
+checkpoint and never push. Read the checkpoint hash from live HEAD after commit,
+then run cold post-commit CI/status/target checks.
 
-The next evidence-connected hard packet should be the directly registered Player
-update owner `0x00425730-0x00426340` (3,089 bytes) together with its
-`0x00426500` adapter context. It is the first-list counterpart to this session's
-draw seam, contains the central movement/state/option update logic, and directly
-connects to previously reconstructed `RebuildPlayerOptions` and option `+0x90`
-callbacks. This is a materially larger central owner, not the easiest remaining
-function. Reconcile its private machine ABI, physical tails/alignment, state and
-input owners, option update dispatch, and compiler profile before any authorship
-or source mapping promotion.
+The next evidence-connected hard packet should be
+`0x004250B0-0x004256E6` (1,591 bytes, currently `unknown/review`). This is the
+central movement/options owner called directly from update state 1. TH10-local
+decompilation already shows movement-direction selection, fixed and float Player
+position updates, replay/history maintenance, four-option interpolation, and the
+option `+0x90` update-callback dispatch. It is directly connected to this packet,
+`RebuildPlayerOptions`, and the previously reviewed option callbacks. Resolve its
+private live-in register boundary, physical gaps/tables, authored origin, option
+layout dependencies, and compiler profile before promoting source or exactness.
 
-Packet-selection balance remains hard-frontier oriented: the previous packet
-reviewed a 482-byte option callback cohort after a 2,494-byte rebuild owner; this
-session followed it into a 409-byte central draw body, expanded the denominator
-with two hidden registration adapters, and resolved the update/draw chain seam.
-The next proposed packet escalates to the connected 3,089-byte Player update
-owner rather than harvesting small exact-looking helpers such as the 21-byte
-floor wrapper.
+Packet balance remains hard-frontier oriented: prior conversations reviewed a
+2,494-byte option rebuild, a 482-byte option callback cohort, and the 409-byte
+draw body plus hidden adapters. This conversation attacked the materially larger
+3,089-byte central Player update body, expanded the reviewed authored-byte
+denominator, and rejected an attractive but non-exact fixed-normal profile. The
+next packet follows the central movement/options seam rather than selecting a
+small floor/timer/helper function for easy counts.

@@ -58,3 +58,4 @@ RebuildPlayerOptions
 PlayerOptionTrailCallback
 PlayerOptionSpecialCallback
 PlayerDrawCallback
+PlayerUpdateCallback
