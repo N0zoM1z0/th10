@@ -7,6 +7,7 @@
 | Attest and execute VC7.1 SP1 | `python3 scripts/verify-toolchain.py --execute` | Hash/banner identity plus headless normal-COFF, LTCG, resource, and PE32-link smoke |
 | Compile a source/profile hypothesis | `scripts/compile-probe.sh SOURCE OUTPUT.obj FLAG...` | Compiler observation only |
 | Compare a normal-COFF source probe | `python3 scripts/compare-coff-function.py OBJECT SYMBOL ADDRESS SIZE --json` | Relocation-masked diagnostic plus target-derived relocation candidates; no acceptance authority |
+| Enumerate normal-COFF functions | `python3 scripts/compare-coff-function.py OBJECT --list-functions [--contains TEXT] [--json]` | Exact decorated symbol, section extent and relocation count for probe setup; no acceptance authority |
 | Build a canonical normal-COFF unit | `python3 scripts/build-match-unit.py --unit NAME` | Forced compile, no exactness by itself |
 | Compare a canonical normal-COFF unit | `python3 scripts/compare-coff-function.py --unit NAME --json` | Complete target bytes and declared relocation replay |
 | Cold-replay canonical exact units | `python3 scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold compile per shared source/profile/object followed by strict comparison of every selected unit |
@@ -47,7 +48,10 @@ must remain non-accepted until a linked-image extent Oracle is implemented.
 Probe-mode relocation targets are decoded from the selected target window to
 make a prospective canonical manifest reviewable. They remain candidates until
 the symbol meaning, complete extent, and relocation ownership are reviewed and
-the resulting manifest unit replays with zero differences.
+the resulting manifest unit replays with zero differences. Candidate code size
+comes only from its COFF function definition or a single-function COMDAT code
+section; requested target length never extends the candidate into the next
+section.
 
 The original executable is copied once from the Windows installation to the
 ignored `resources/th10.exe`. Normal Factory work neither searches nor mounts

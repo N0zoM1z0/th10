@@ -24,7 +24,10 @@ relocations, data owners, or scenario observables.
 The toolchain smoke proves that normal C/C++ COFF, C++ `/GL`, resources, and
 a PE32 link execute under headless Wine. It grants no TH10 source, profile,
 ownership, or exactness credit. The normal-COFF comparator is intentionally
-narrow because the target's Rich stream also contains LTCG C++ inputs.
+narrow because the target's Rich stream also contains LTCG C++ inputs. It
+derives each candidate function extent from a COFF function-definition record
+or a single-function COMDAT code section; a caller-supplied target size cannot
+widen the candidate past its own section.
 
 If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent

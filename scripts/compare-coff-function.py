@@ -31,9 +31,9 @@ def symbol_name(raw: bytes, strings: bytes) -> str:
     return c_string(raw)
 
 
-def object_function(
-    path: Path, wanted: str, expected_size: int | None = None
-) -> tuple[bytearray, list[dict[str, object]]]:
+def coff_object(
+    path: Path,
+) -> tuple[bytes, list[dict[str, object]], dict[int, dict[str, object]]]:
     data = path.read_bytes()
     if len(data) < 20:
         raise ValueError("truncated COFF object")
@@ -50,6 +50,7 @@ def object_function(
         fields = struct.unpack_from("<8sIIIIIIHHI", data, offset)
         sections.append(
             {
+                "name": c_string(fields[0]),
                 "size": fields[3],
                 "raw_offset": fields[4],
                 "reloc_offset": fields[5],
@@ -61,6 +62,8 @@ def object_function(
     if strings_offset + 4 > len(data):
         raise ValueError("truncated COFF symbol table")
     strings_size = struct.unpack_from("<I", data, strings_offset)[0]
+    if strings_size < 4 or strings_offset + strings_size > len(data):
+        raise ValueError("invalid COFF string table")
     strings = data[strings_offset : strings_offset + strings_size]
     symbols: dict[int, dict[str, object]] = {}
     raw_index = 0
@@ -69,6 +72,10 @@ def object_function(
         raw_name, value, section, type_id, storage, aux_count = struct.unpack_from(
             "<8sIhHBB", data, offset
         )
+        if section > section_count:
+            raise ValueError("COFF symbol references an unknown section")
+        if offset + 18 * (aux_count + 1) > strings_offset:
+            raise ValueError("truncated COFF auxiliary symbol records")
         aux = data[offset + 18 : offset + 18 * (aux_count + 1)]
         symbols[raw_index] = {
             "name": symbol_name(raw_name, strings),
@@ -80,6 +87,83 @@ def object_function(
             "aux": aux,
         }
         raw_index += 1 + aux_count
+    return data, sections, symbols
+
+
+def object_functions(path: Path, contains: str = "") -> list[dict[str, object]]:
+    data, sections, symbols = coff_object(path)
+    needle = contains.lower()
+    defined = [
+        symbol
+        for symbol in symbols.values()
+        if int(symbol["section"]) > 0
+        and int(symbol["type"]) == 0x20
+        and int(sections[int(symbol["section"]) - 1]["flags"]) & 0x20
+    ]
+    functions_per_section: dict[int, int] = {}
+    for symbol in defined:
+        section_number = int(symbol["section"])
+        functions_per_section[section_number] = (
+            functions_per_section.get(section_number, 0) + 1
+        )
+    result = []
+    for symbol in defined:
+        name = str(symbol["name"])
+        section_number = int(symbol["section"])
+        if needle and needle not in name.lower():
+            continue
+        section = sections[section_number - 1]
+        size = None
+        extent_source = None
+        if int(symbol["aux_count"]) >= 1 and len(symbol["aux"]) >= 8:
+            auxiliary_size = struct.unpack_from("<I", symbol["aux"], 4)[0]
+            if auxiliary_size:
+                size = auxiliary_size
+                extent_source = "function-definition-aux"
+        if (
+            size is None
+            and functions_per_section[section_number] == 1
+            and int(symbol["value"]) == 0
+            and int(section["flags"]) & 0x1000
+        ):
+            size = int(section["size"])
+            extent_source = "single-function-comdat-section"
+        relocation_count = None
+        if size is not None:
+            start = int(symbol["value"])
+            stop = start + size
+            relocation_count = 0
+            for index in range(int(section["reloc_count"])):
+                offset = int(section["reloc_offset"]) + index * 10
+                virtual_address = struct.unpack_from("<I", data, offset)[0]
+                if start <= virtual_address < stop:
+                    relocation_count += 1
+        result.append(
+            {
+                "symbol": name,
+                "size": size,
+                "extent_source": extent_source,
+                "relocation_count": relocation_count,
+                "section": section["name"],
+                "section_number": section_number,
+                "section_offset": int(symbol["value"]),
+                "storage_class": int(symbol["storage"]),
+            }
+        )
+    result.sort(
+        key=lambda row: (
+            int(row["section_number"]),
+            int(row["section_offset"]),
+            str(row["symbol"]),
+        )
+    )
+    return result
+
+
+def object_function(
+    path: Path, wanted: str
+) -> tuple[bytearray, list[dict[str, object]]]:
+    data, sections, symbols = coff_object(path)
     matches = [
         symbol
         for symbol in symbols.values()
@@ -89,19 +173,32 @@ def object_function(
         raise ValueError(f"expected one defined symbol {wanted!r}, found {len(matches)}")
     symbol = matches[0]
     section = sections[int(symbol["section"]) - 1]
+    if int(symbol["type"]) != 0x20 or not int(section["flags"]) & 0x20:
+        raise ValueError("selected COFF symbol is not a code function")
+    size = 0
     if int(symbol["aux_count"]) >= 1 and len(symbol["aux"]) >= 8:
         size = struct.unpack_from("<I", symbol["aux"], 4)[0]
-    elif (
-        expected_size is not None
-        and int(symbol["type"]) == 0x20
-        and int(section["flags"]) & 0x20
-    ):
-        size = expected_size
-    else:
+    if not size:
+        section_number = int(symbol["section"])
+        section_functions = [
+            candidate
+            for candidate in symbols.values()
+            if int(candidate["section"]) == section_number
+            and int(candidate["type"]) == 0x20
+        ]
+        if (
+            len(section_functions) == 1
+            and int(symbol["value"]) == 0
+            and int(section["flags"]) & 0x20
+            and int(section["flags"]) & 0x1000
+        ):
+            size = int(section["size"])
+    if not size:
         raise ValueError("function symbol lacks a usable definition extent")
     start = int(section["raw_offset"]) + int(symbol["value"])
-    if start + size > len(data):
-        raise ValueError("function extends beyond the COFF object")
+    section_end = int(section["raw_offset"]) + int(section["size"])
+    if start + size > section_end or section_end > len(data):
+        raise ValueError("function extends beyond its COFF section")
     code = bytearray(data[start : start + size])
     relocations = []
     for index in range(int(section["reloc_count"])):
@@ -110,6 +207,8 @@ def object_function(
         local = virtual_address - int(symbol["value"])
         if not 0 <= local < size:
             continue
+        if local + 4 > size:
+            raise ValueError("relocation leaves the COFF function extent")
         target = symbols.get(target_index)
         if target is None:
             raise ValueError("relocation references an auxiliary symbol")
@@ -155,7 +254,7 @@ def target_bytes(data: bytes, address: int, size: int) -> bytes:
         _, virtual_size, section_rva, raw_size, raw_offset = struct.unpack_from(
             "<8sIIII", data, offset
         )
-        if section_rva <= rva and rva + size <= section_rva + max(virtual_size, raw_size):
+        if section_rva <= rva and rva + size <= section_rva + virtual_size:
             relative = rva - section_rva
             if relative + size > raw_size:
                 raise ValueError("target extent leaves section raw data")
@@ -179,7 +278,7 @@ def compare_unit(name: str) -> dict[str, object]:
         raise ValueError("comparison extent is smaller than the claimed extent")
     object_path = (ROOT / str(unit["object"])).resolve()
     object_path.relative_to((ROOT / "build").resolve())
-    code, actual = object_function(object_path, str(unit["symbol"]), compared_size)
+    code, actual = object_function(object_path, str(unit["symbol"]))
     if len(code) != compared_size:
         raise ValueError(
             f"object function size {len(code):#x} differs from manifest {compared_size:#x}"
@@ -257,7 +356,7 @@ def compare_unit(name: str) -> dict[str, object]:
 def compare_probe(
     path: Path, symbol: str, address: int, size: int
 ) -> dict[str, object]:
-    code, relocations = object_function(path, symbol, size)
+    code, relocations = object_function(path, symbol)
     original = target_bytes(verified_target(), address, size)
     relocation_candidates = []
     for relocation in relocations:
@@ -288,11 +387,15 @@ def compare_probe(
             min(int(relocation["offset"]) + 4, size),
         )
     }
-    differences = [
-        {"offset": f"0x{index:X}", "object": left, "target": right}
-        for index, (left, right) in enumerate(zip(code, original))
-        if index not in ignored and left != right
-    ]
+    differences = []
+    for index, right in enumerate(original):
+        if index in ignored:
+            continue
+        left = code[index] if index < len(code) else None
+        if left != right:
+            differences.append(
+                {"offset": f"0x{index:X}", "object": left, "target": right}
+            )
     comparable = size - len(ignored)
     return {
         "result": (
@@ -319,26 +422,71 @@ def main() -> int:
     parser.add_argument("address", nargs="?", type=lambda value: int(value, 0))
     parser.add_argument("size", nargs="?", type=lambda value: int(value, 0))
     parser.add_argument("--unit")
+    parser.add_argument(
+        "--list-functions",
+        action="store_true",
+        help="list defined code symbols and their COFF extents",
+    )
+    parser.add_argument(
+        "--contains",
+        default="",
+        help="case-insensitive symbol filter for --list-functions",
+    )
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args()
     try:
-        if args.unit:
+        if args.list_functions:
+            if args.unit or args.object is None or any(
+                value is not None for value in (args.symbol, args.address, args.size)
+            ):
+                raise ValueError(
+                    "--list-functions requires only OBJECT and optional --contains"
+                )
+            object_path = args.object.resolve()
+            functions = object_functions(object_path, args.contains)
+            report = {
+                "result": "ok",
+                "artifact_kind": "coff",
+                "object": str(object_path),
+                "function_count": len(functions),
+                "functions": functions,
+                "acceptance_authority": "none",
+            }
+        elif args.unit:
             if any(value is not None for value in (args.object, args.symbol, args.address, args.size)):
                 raise ValueError("--unit cannot be combined with probe arguments")
+            if args.contains:
+                raise ValueError("--contains requires --list-functions")
             report = compare_unit(args.unit)
         else:
             if None in (args.object, args.symbol, args.address, args.size):
                 raise ValueError("probe mode requires OBJECT SYMBOL ADDRESS SIZE")
+            if args.contains:
+                raise ValueError("--contains requires --list-functions")
             report = compare_probe(
                 args.object.resolve(), args.symbol, args.address, args.size
             )
     except (OSError, KeyError, TypeError, ValueError, struct.error, tomllib.TOMLDecodeError) as error:
         report = {"result": "error", "error": str(error)}
-    if args.json:
+    if args.list_functions and not args.json and report["result"] == "ok":
+        for function in report["functions"]:
+            size = "?" if function["size"] is None else str(function["size"])
+            relocations = (
+                "?"
+                if function["relocation_count"] is None
+                else str(function["relocation_count"])
+            )
+            print(
+                f"{function['symbol']}  size={size}  relocations={relocations}  "
+                f"section={function['section']}"
+            )
+        print(f"defined COFF functions: {report['function_count']}")
+        print("symbol inventory is diagnostic and grants no exactness credit")
+    elif args.json:
         print(json.dumps(report, indent=2, sort_keys=True))
     else:
         print(json.dumps(report, indent=2, sort_keys=True))
-    return 0 if report["result"] in {"exact", "structural-exact"} else 1
+    return 0 if report["result"] in {"ok", "exact", "structural-exact"} else 1
 
 
 if __name__ == "__main__":
