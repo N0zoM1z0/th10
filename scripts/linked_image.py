@@ -8,7 +8,6 @@ from pathlib import Path
 import re
 import struct
 
-
 MSF7_SIGNATURE = b"Microsoft C/C++ MSF 7.00\r\n\x1aDS\0\0\0"
 DBI_SECTION_CONTRIB_V60 = 0xEFFE0000 + 19970605
 DBI_SECTION_CONTRIB_V2 = 0xEFFE0000 + 20140516
@@ -18,6 +17,34 @@ IMAGE_REL_BASED_HIGHLOW = 3
 
 class LinkedImageError(ValueError):
     """Raised when linked-image evidence cannot be parsed unambiguously."""
+
+
+def verify_capstone(lock: dict[str, object]) -> dict[str, object]:
+    try:
+        import capstone
+    except ImportError as exc:
+        raise LinkedImageError("Capstone is required for linked-image decoding") from exc
+    if lock.get("authority") != "linked-image-field-decoder":
+        raise LinkedImageError("Capstone lock has an invalid authority")
+    if capstone.__version__ != str(lock.get("version", "")):
+        raise LinkedImageError("Capstone version does not match the lock")
+    root = Path(capstone.__file__).resolve().parent
+    files = {
+        "python_wrapper": Path(capstone.__file__).resolve(),
+        "x86_wrapper": root / "x86.py",
+        "x86_constants": root / "x86_const.py",
+        "native_library": root / "lib" / "libcapstone.so",
+    }
+    result = {}
+    for name, path in files.items():
+        expected = str(lock.get(f"{name}_sha256", ""))
+        if not path.is_file():
+            raise LinkedImageError(f"Capstone {name} is missing")
+        actual = hashlib.sha256(path.read_bytes()).hexdigest()
+        if actual != expected:
+            raise LinkedImageError(f"Capstone {name} identity does not match the lock")
+        result[name] = {"sha256": actual, "size": path.stat().st_size}
+    return {"version": capstone.__version__, "components": result}
 
 
 def _need(data: bytes, offset: int, size: int, what: str) -> None:
@@ -385,6 +412,93 @@ def map_publics(path: Path | str) -> list[dict[str, object]]:
     if not result:
         raise LinkedImageError("linker map contains no public symbols")
     return result
+
+
+def linked_code_fields(
+    image: PEImage,
+    publics: list[dict[str, object]],
+    address: int,
+    size: int,
+) -> dict[str, object]:
+    """Enumerate link-resolved fields in one complete linked code extent."""
+    try:
+        from capstone import CS_ARCH_X86, CS_GRP_CALL, CS_GRP_JUMP, CS_MODE_32, Cs
+        from capstone.x86_const import X86_OP_IMM
+    except ImportError as exc:
+        raise LinkedImageError("Capstone is required for linked-image decoding") from exc
+    code = image.read_address(address, size)
+    symbols_by_address: dict[int, list[str]] = {}
+    for public in publics:
+        symbols_by_address.setdefault(int(public["address"]), []).append(
+            str(public["symbol"])
+        )
+    fields: list[dict[str, object]] = []
+    for relocation_address in image.base_relocations():
+        if relocation_address < address + size and relocation_address + 4 > address:
+            if not address <= relocation_address or relocation_address + 4 > address + size:
+                raise LinkedImageError("base relocation crosses the function boundary")
+        if address <= relocation_address and relocation_address + 4 <= address + size:
+            offset = relocation_address - address
+            destination = struct.unpack_from("<I", code, offset)[0]
+            fields.append(
+                {
+                    "offset": offset,
+                    "width": 4,
+                    "type": "DIR32",
+                    "candidate_target": destination,
+                    "candidate_symbols": sorted(
+                        symbols_by_address.get(destination, [])
+                    ),
+                    "instruction_end": None,
+                }
+            )
+
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    decoder.detail = True
+    decoded = 0
+    for instruction in decoder.disasm(code, address):
+        if instruction.address != address + decoded:
+            break
+        decoded += instruction.size
+        is_control = instruction.group(CS_GRP_CALL) or instruction.group(CS_GRP_JUMP)
+        if not is_control or not instruction.operands:
+            continue
+        operand = instruction.operands[0]
+        if operand.type != X86_OP_IMM or not instruction.imm_size:
+            continue
+        destination = int(operand.imm) & 0xFFFFFFFF
+        if address <= destination < address + size:
+            continue
+        fields.append(
+            {
+                "offset": instruction.address - address + instruction.imm_offset,
+                "width": instruction.imm_size,
+                "type": f"REL{instruction.imm_size * 8}",
+                "instruction": instruction.mnemonic,
+                "candidate_target": destination,
+                "candidate_symbols": sorted(symbols_by_address.get(destination, [])),
+                "instruction_end": instruction.address - address + instruction.size,
+            }
+        )
+    fields.sort(key=lambda field: (int(field["offset"]), str(field["type"])))
+    occupied: set[int] = set()
+    for field in fields:
+        extent = set(
+            range(
+                int(field["offset"]),
+                int(field["offset"]) + int(field["width"]),
+            )
+        )
+        if min(extent, default=0) < 0 or max(extent, default=-1) >= size:
+            raise LinkedImageError("linked-image field leaves the function extent")
+        if occupied & extent:
+            raise LinkedImageError("overlapping linked-image fields")
+        occupied.update(extent)
+    return {
+        "decoded_bytes": decoded,
+        "normalization_complete": decoded == len(code),
+        "fields": fields,
+    }
 
 
 def linked_functions(

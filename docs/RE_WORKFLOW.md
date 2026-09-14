@@ -30,7 +30,13 @@ disk target, Ghidra target, ledgers, and live status using the commands in
    strip `/GL` and do not use the standalone comparator. Use
    `python3 scripts/probe-ltcg-backlog.py --source SOURCE` to recover a
    PE/PDB-bound linked extent and structural diagnostic, while keeping exactness
-   unknown until a canonical linked-image unit replays every resolved field.
+   unknown until review establishes every resolved field. A canonical linked
+   unit must declare `artifact_kind = "linked-pe"`, the fixed compiler/link
+   profiles and harness, its unique PDB-owned symbol extent, and every semantic
+   link target. `compare-linked-function.py` must decode the complete extent,
+   reject any missing or extra linked field, replay all declared fields, and
+   return zero differences. The resulting bounded claim does not establish the
+   diagnostic image as a product or identify the production physical owner.
    Distinguish source,
    profile, boundary, ownership, optimizer, and library mismatches.
    `python3 scripts/probe-exact-backlog.py --source SOURCE` performs the fixed

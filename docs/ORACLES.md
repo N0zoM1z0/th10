@@ -12,7 +12,7 @@ view supplies every kind of truth.
 | Source presence | maintained mapping and source file | no exactness credit |
 | Normal-COFF codegen exactness | cold pinned historical-compiler object build, complete bytes and relocations | zero difference for full accepted extent |
 | LTCG structural diagnosis | pinned compiler/linker, PE-bound PDB contribution extent, complete linked bytes and resolved-field inventory | routes canonical-unit review; no exactness credit |
-| LTCG codegen exactness | cold pinned compiler/linker plus canonical linked-image resolved-field replay | currently unavailable; never promote a stubbed diagnostic image |
+| LTCG codegen exactness | cold pinned compiler/linker, PE/map/PDB-bound complete contribution, exhaustive decoded link-field manifest and target replay | zero difference for the full accepted extent; diagnostic image remains non-product |
 | Native product closure | cold compile/link graph, imports/resources/data owners | no missing required production owner |
 | Runtime semantics | deterministic scenarios against original and native products | both Oracles agree on declared observables |
 | Port behavior | native baseline plus port scenario | separate portability claim |
@@ -38,6 +38,19 @@ base, public start, and PE section layout must all agree. Link-address fields
 are enumerated and masked only for structural comparison. Because the harness
 is incomplete and does not establish production ownership or link context, its
 results always carry `acceptance_authority=none`.
+
+A canonical `artifact_kind = "linked-pe"` unit uses the same cold compiler and
+linker surfaces but adds a target-bound acceptance contract. The comparator
+requires one uniquely named `source.ltcg.obj` PDB contribution, checks its full
+size, requires the pinned Capstone decoder to consume the whole extent, rejects
+any undeclared base-relocation or external control-flow field, validates each
+declared semantic symbol through the linker map or its unique data-anchor
+alias, and rewrites that field to the reviewed target address before comparing
+all bytes. A zero-field unit must therefore be raw-equal. Acceptance establishes
+only reproducibility of that bounded function in the declared LTCG context; it
+does not make the anchor image runnable or establish production ownership,
+translation-unit partition, link order, data ownership, or whole-product
+closure.
 
 If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent

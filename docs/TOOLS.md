@@ -8,9 +8,10 @@
 | Compile a source/profile hypothesis | `scripts/compile-probe.sh SOURCE OUTPUT.obj FLAG...` | Compiler observation only |
 | Compare a normal-COFF source probe | `python3 scripts/compare-coff-function.py OBJECT SYMBOL ADDRESS SIZE --json` | Relocation-masked diagnostic plus target-derived relocation candidates; no acceptance authority |
 | Enumerate normal-COFF functions | `python3 scripts/compare-coff-function.py OBJECT --list-functions [--contains TEXT] [--json]` | Exact decorated symbol, section extent and relocation count for probe setup; no acceptance authority |
-| Build a canonical normal-COFF unit | `python3 scripts/build-match-unit.py --unit NAME` | Forced compile, no exactness by itself |
+| Build a canonical compiler unit | `python3 scripts/build-match-unit.py --unit NAME` | Cold normal-COFF compile or `/GL` compile/link, no exactness by itself |
 | Compare a canonical normal-COFF unit | `python3 scripts/compare-coff-function.py --unit NAME --json` | Complete target bytes and declared relocation replay |
-| Cold-replay canonical exact units | `python3 scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold compile per shared source/profile/object followed by strict comparison of every selected unit |
+| Compare a canonical linked-PE unit | `python3 scripts/compare-linked-function.py --unit NAME --json` | PE/map/PDB-bound complete extent, exhaustive linked-field validation and target replay |
+| Cold-replay canonical exact units | `python3 scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold build per shared artifact context followed by strict comparison of every selected COFF or linked-PE unit |
 | List the source-present exact backlog | `python3 scripts/report-exact-backlog.py [--source SOURCE] [--module MODULE] [--state authored\|origin-review\|excluded\|all] [--json]` | Triage-only joined view of non-exact source mappings; default excludes origin-pending entries |
 | Batch-probe the authored exact backlog | `python3 scripts/probe-exact-backlog.py [--source SOURCE] [--show RESULT] [--json]` | One cold normal-COFF compile per source plus strict diagnostic comparison; no acceptance authority |
 | Inspect linked function extents | `python3 scripts/inspect-linked-functions.py IMAGE MAP PDB [--object TEXT] [--contains TEXT] [--json]` | PE/map/PDB-bound public functions whose sizes come from DBI section contributions; no acceptance authority |
@@ -45,14 +46,18 @@ under Xvfb with a win32 prefix and disables Gecko/Mono prompts. Set
 local override; receipts bind those selector values and tool files.
 
 The target is not a uniform standalone-COFF build. Rich product IDs establish
-normal C, normal C++, and LTCG C++ inputs. The current exact comparator accepts
+normal C, normal C++, and LTCG C++ inputs. The standalone comparator accepts
 only `artifact_kind = "coff"` units and rejects `/GL`. The linked LTCG probe
-now recovers exact candidate extents from a PDB bound to the PE by its CodeView
+recovers exact candidate extents from a PDB bound to the PE by its CodeView
 GUID/age and to the linker map by timestamp, image base, public start, and PE
 section layout. Its unresolved-symbol data-anchor harness is intentionally
-non-runnable and can only provide structural diagnostics. An LTCG result remains
-non-accepted until a canonical linked-image unit declares and replays every
-link-resolved field through a cold build.
+non-runnable, and probe results have no acceptance authority. A reviewed
+`artifact_kind = "linked-pe"` unit can claim bounded exactness only through the
+separate canonical comparator: its PDB contribution must cover the complete
+declared extent, the hash-pinned Capstone decoder must enumerate every linked
+field, the manifest must bind every field to a semantic target, and target
+replay must leave zero differences. The linked harness never receives product
+closure or runtime credit.
 Probe-mode relocation targets are decoded from the selected target window to
 make a prospective canonical manifest reviewable. They remain candidates until
 the symbol meaning, complete extent, and relocation ownership are reviewed and

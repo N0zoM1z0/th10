@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Cold-build shared normal-COFF objects and replay canonical exact units."""
+"""Cold-build shared compiler artifacts and replay canonical exact units."""
 
 from __future__ import annotations
 
@@ -77,43 +77,63 @@ def run(command: list[str]) -> subprocess.CompletedProcess[str]:
 def replay(
     units: dict[str, dict[str, object]], names: list[str]
 ) -> dict[str, object]:
-    groups: dict[tuple[str, tuple[str, ...], str], list[str]] = defaultdict(list)
+    groups: dict[tuple[object, ...], list[str]] = defaultdict(list)
     for name in names:
         unit = units[name]
-        key = (
-            str(unit["source"]),
-            tuple(str(flag) for flag in unit["profile"]),
-            str(unit["object"]),
-        )
+        kind = str(unit["artifact_kind"])
+        if kind == "coff":
+            key = (
+                kind,
+                str(unit["source"]),
+                tuple(str(flag) for flag in unit["profile"]),
+                str(unit["object"]),
+            )
+        elif kind == "linked-pe":
+            key = (
+                kind,
+                str(unit["source"]),
+                tuple(str(flag) for flag in unit["profile"]),
+                str(unit["output_dir"]),
+                str(unit["entry_symbol"]),
+                tuple(str(flag) for flag in unit["link_profile"]),
+                str(unit["harness"]),
+            )
+        else:
+            raise ValueError(f"unit {name!r} has an unsupported artifact kind")
         groups[key].append(name)
 
     reports = []
     total_bytes = 0
-    for (source, profile, object_name), group_names in groups.items():
-        object_path = (ROOT / object_name).resolve()
-        object_path.relative_to((ROOT / "build").resolve())
-        pdb_path = object_path.with_suffix(".pdb")
+    for key, group_names in groups.items():
+        kind, source, profile, artifact_name = key[:4]
+        artifact_path = (ROOT / str(artifact_name)).resolve()
+        artifact_path.relative_to((ROOT / "build").resolve())
         removed = []
-        for path in (object_path, pdb_path):
-            if path.exists():
-                if not path.is_file():
-                    raise ValueError(f"cold-build output is not a file: {path}")
-                path.unlink()
-                removed.append(str(path.relative_to(ROOT)))
+        if kind == "coff":
+            for path in (artifact_path, artifact_path.with_suffix(".pdb")):
+                if path.exists():
+                    if not path.is_file():
+                        raise ValueError(f"cold-build output is not a file: {path}")
+                    path.unlink()
+                    removed.append(str(path.relative_to(ROOT)))
 
         build_unit = group_names[0]
         built = run(
             [sys.executable, "scripts/build-match-unit.py", "--unit", build_unit]
         )
         group_report: dict[str, object] = {
+            "artifact_kind": kind,
             "source": source,
             "profile": list(profile),
-            "object": object_name,
+            "artifact": artifact_name,
             "build_unit": build_unit,
-            "cold_removed": removed,
             "build_returncode": built.returncode,
             "units": [],
         }
+        if kind == "coff":
+            group_report["cold_removed"] = removed
+        else:
+            group_report["cold_driver"] = "scripts/ltcg_link.py:cold_link"
         if built.returncode != 0:
             group_report["build_stdout"] = built.stdout
             group_report["build_stderr"] = built.stderr
@@ -123,10 +143,15 @@ def replay(
             )
 
         for name in group_names:
+            comparator = (
+                "scripts/compare-coff-function.py"
+                if kind == "coff"
+                else "scripts/compare-linked-function.py"
+            )
             compared = run(
                 [
                     sys.executable,
-                    "scripts/compare-coff-function.py",
+                    comparator,
                     "--unit",
                     name,
                     "--json",
@@ -153,7 +178,8 @@ def replay(
     return {
         "result": "exact",
         "unit_count": len(names),
-        "source_count": len(groups),
+        "source_count": len({str(units[name]["source"]) for name in names}),
+        "artifact_count": len(groups),
         "matched_bytes": total_bytes,
         "groups": reports,
     }
@@ -185,12 +211,13 @@ def main() -> int:
         for group in report["groups"]:
             print(
                 f"{group['source']}: exact {len(group['units'])} unit(s) "
-                f"from one cold object build"
+                f"from one cold {group['artifact_kind']} build"
             )
         print(
             f"canonical exact replay passed: {report['unit_count']} unit(s), "
             f"{report['matched_bytes']} bytes across "
-            f"{report['source_count']} source object(s)"
+            f"{report['artifact_count']} cold artifact build(s) and "
+            f"{report['source_count']} source file(s)"
         )
     return 0
 

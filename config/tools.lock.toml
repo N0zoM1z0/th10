@@ -24,6 +24,14 @@ display_mode = "xvfb-headless"
 prefix = ".tools/wineprefix-msvc710-sp1"
 prefix_ownership = "game-bound-ignored-state"
 
+[capstone]
+version = "5.0.6"
+python_wrapper_sha256 = "de6aa463d9008ce52827d5b6074780bc141f5422ccc07e4163851d0fee7c1719"
+x86_wrapper_sha256 = "7c3a2f434e20df6f69ced3bed07217c996379d647aeb62de9bf5d6e8b195f525"
+x86_constants_sha256 = "00dcf65aad410f95a61dacd1dadacfe11b0f19b2afbeb07d19a484d35c692c38"
+native_library_sha256 = "fb3e851989440c51fa026fa5be0441a5d5f09d3c4018f6521138762bfbf473b8"
+authority = "linked-image-field-decoder"
+
 [ghidra]
 version = "12.1.3"
 release_tag = "Ghidra_12.1.3_build"

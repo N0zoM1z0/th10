@@ -56,12 +56,18 @@ python3 scripts/probe-ltcg-backlog.py --source src/PbgArchive.cpp
 python3 scripts/replay-exact-units.py
 ```
 
-Canonical units from the same source and compiler profile share one object.
-The replay command removes that output, compiles it once, and checks every
-selected function against the target with its declared relocations.
+Canonical units that share one source, compiler profile, and artifact context
+are built once. The replay command cold-builds each normal-COFF object or LTCG
+linked image and checks every selected function against the target. COFF units
+declare relocations; linked-PE units declare every link-resolved code field.
 
 The linked LTCG probe derives function extents from the linker's PDB section
 contributions and reports structural candidates without granting exactness.
+Reviewed `artifact_kind = "linked-pe"` units use a separate fail-closed
+comparator that verifies PE/map/PDB identity, requires a complete PDB-owned
+extent, exhaustively enumerates link-resolved fields, and replays them against
+the target. This proves only the declared bounded unit; the incomplete harness
+is not a reconstructed product.
 The executable tool payload is shared and ignored; its 32-bit Wine prefix is
 game-bound, ignored, and always driven through Xvfb. A normal-COFF function
 comparison cannot establish an LTCG-owned function. See
@@ -82,7 +88,8 @@ comparison cannot establish an LTCG-owned function. See
 - [`config/target.toml`](config/target.toml) — target and observed PE facts.
 - [`config/build.toml`](config/build.toml) — explicit open whole-build graph.
 - [`config/tools.lock.toml`](config/tools.lock.toml) — compiler, linker,
-  frontend, optimizer, resource-tool, and headless-Wine lock.
+  frontend, optimizer, resource-tool, linked-code decoder, and headless-Wine
+  lock.
 - [`docs/RE_WORKFLOW.md`](docs/RE_WORKFLOW.md) — reconstruction loop and gates.
 - [`docs/ORACLES.md`](docs/ORACLES.md) — claim-specific falsification rules.
 - [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current state and next work.

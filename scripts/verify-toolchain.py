@@ -15,7 +15,7 @@ import sys
 import tempfile
 import tomllib
 
-from linked_image import linked_functions
+from linked_image import linked_functions, verify_capstone
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,15 +40,18 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def load_lock() -> tuple[dict[str, object], dict[str, object]]:
+def load_lock() -> tuple[dict[str, object], dict[str, object], dict[str, object]]:
     with LOCK.open("rb") as stream:
         manifest = tomllib.load(stream)
     tool = manifest["msvc71"]
     wine = manifest["wine"]
+    decoder = manifest["capstone"]
     if tool.get("identity_state") != "observed-candidate":
         raise ValueError("VC7.1 lock must remain an observed candidate")
     if wine.get("architecture") != "win32" or wine.get("display_mode") != "xvfb-headless":
         raise ValueError("Wine lock must require a headless win32 prefix")
+    if decoder.get("authority") != "linked-image-field-decoder":
+        raise ValueError("Capstone lock has an invalid authority")
     for script in ("scripts/run-headless-wine.sh", "scripts/compile-probe.sh"):
         if not os.access(ROOT / script, os.X_OK):
             raise ValueError(f"toolchain wrapper is not executable: {script}")
@@ -59,7 +62,7 @@ def load_lock() -> tuple[dict[str, object], dict[str, object]]:
     ):
         if not (ROOT / probe).is_file():
             raise ValueError(f"toolchain smoke input is missing: {probe}")
-    return tool, wine
+    return tool, wine, decoder
 
 
 def tool_root(tool: dict[str, object]) -> Path:
@@ -129,7 +132,11 @@ def verify_pe32(path: Path) -> None:
         raise ValueError("headless link smoke did not produce PE32 i386")
 
 
-def execute(tool: dict[str, object], wine: dict[str, object]) -> dict[str, object]:
+def execute(
+    tool: dict[str, object],
+    wine: dict[str, object],
+    decoder: dict[str, object],
+) -> dict[str, object]:
     selected = tool_root(tool)
     prefix = prefix_root(wine)
     environment = wine_environment(prefix)
@@ -138,6 +145,8 @@ def execute(tool: dict[str, object], wine: dict[str, object]) -> dict[str, objec
         raise ValueError("system Wine and winepath are required")
     if shutil.which("xvfb-run") is None:
         raise ValueError("xvfb-run is required for headless Wine")
+
+    decoder_identity = verify_capstone(decoder)
 
     observed = {}
     for component, (relative, key) in COMPONENTS.items():
@@ -239,6 +248,8 @@ def execute(tool: dict[str, object], wine: dict[str, object]) -> dict[str, objec
         "identity_pass": True,
         "execution_pass": True,
         "linked_image_extent_pass": True,
+        "linked_image_decoder_pass": True,
+        "capstone_version": decoder_identity["version"],
         "compiler_banner": str(tool["compiler_banner"]),
         "linker_banner": str(tool["linker_banner"]),
         "toolchain_commit": str(tool["commit"]),
@@ -257,9 +268,9 @@ def main() -> int:
     if args.check == args.execute:
         parser.error("select exactly one of --check or --execute")
     try:
-        tool, wine = load_lock()
+        tool, wine, decoder = load_lock()
         report = (
-            execute(tool, wine)
+            execute(tool, wine, decoder)
             if args.execute
             else {"ready": False, "declarations_pass": True, "execution_state": "not-requested"}
         )
