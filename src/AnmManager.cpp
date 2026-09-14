@@ -8,6 +8,28 @@
 
 AsciiManagerView *g_AsciiManagerView;
 
+// Target 0x0044BC10 adds an angular delta and bounds the result to the
+// engine's signed-pi interval. The loop cap is part of the target body.
+float __stdcall AddNormalizeAngle(float angle, float delta)
+{
+    int i = 0;
+
+    angle += delta;
+    while (angle > 3.1415927f)
+    {
+        angle -= 6.2831855f;
+        if (i++ > 32)
+            break;
+    }
+    while (angle < -3.1415927f)
+    {
+        angle += 6.2831855f;
+        if (i++ > 32)
+            break;
+    }
+    return angle;
+}
+
 enum AnmVariableView
 {
     ANM_VAR_I0 = 10000,
@@ -184,6 +206,1134 @@ int *AnmVmView::GetIntVarPtr(
     }
 }
 
+// Target 0x0044C350 computes the normalized interpolation progress used by
+// the scalar and vector interpolation evaluators. Modes 8, 7, and 17 are
+// handled by the evaluators because they also consume or mutate endpoints.
+float CalculateAnmInterpolation(int mode, float current, float duration)
+{
+    float value = current / duration;
+
+    switch (mode)
+    {
+    case ANM_INTERPOLATION_EASE_IN:
+        return value * value;
+    case ANM_INTERPOLATION_EASE_IN_CUBIC:
+        return value * value * value;
+    case ANM_INTERPOLATION_EASE_IN_QUARTIC:
+        return value * value * value * value;
+    case ANM_INTERPOLATION_EASE_OUT:
+        return 1.0f - (1.0f - value) * (1.0f - value);
+    case ANM_INTERPOLATION_EASE_OUT_CUBIC:
+        value = 1.0f - value;
+        return 1.0f - value * value * value;
+    case ANM_INTERPOLATION_EASE_OUT_QUARTIC:
+        value = 1.0f - value;
+        return 1.0f - value * value * value * value;
+    case ANM_INTERPOLATION_EASE_IN_OUT:
+        value += value;
+        if (value < 1.0f)
+            return value * value * 0.5f;
+        return (2.0f - (2.0f - value) * (2.0f - value)) * 0.5f;
+    case ANM_INTERPOLATION_EASE_IN_OUT_CUBIC:
+        value += value;
+        if (value < 1.0f)
+            return value * value * value * 0.5f;
+        value = 2.0f - value;
+        return (2.0f - value * value * value) * 0.5f;
+    case ANM_INTERPOLATION_EASE_IN_OUT_QUARTIC:
+        value += value;
+        if (value < 1.0f)
+            return value * value * value * value * 0.5f;
+        value = 2.0f - value;
+        return (2.0f - value * value * value * value) * 0.5f;
+    case ANM_INTERPOLATION_EASE_OUT_IN:
+        value += value;
+        if (value < 1.0f)
+            return 0.5f - (1.0f - value) * (1.0f - value) * 0.5f;
+        value -= 1.0f;
+        return value * value * 0.5f + 0.5f;
+    case ANM_INTERPOLATION_EASE_OUT_IN_CUBIC:
+        value += value;
+        if (value < 1.0f)
+        {
+            value = 1.0f - value;
+            return 0.5f - value * value * value * 0.5f;
+        }
+        value -= 1.0f;
+        return value * value * value * 0.5f + 0.5f;
+    case ANM_INTERPOLATION_EASE_OUT_IN_QUARTIC:
+        value += value;
+        if (value < 1.0f)
+        {
+            value = 1.0f - value;
+            return 0.5f - value * value * value * value * 0.5f;
+        }
+        value -= 1.0f;
+        return value * value * value * value * 0.5f + 0.5f;
+    case ANM_INTERPOLATION_CONSTANT_ZERO:
+        return 0.0f;
+    case ANM_INTERPOLATION_CONSTANT_ONE:
+        return 1.0f;
+    default:
+        return value;
+    }
+}
+
+// Target 0x00404610 evaluates TH10's 0x4C-byte three-component
+// interpolation object. The same body serves ANM position/rotation and two
+// earlier engine users; modes 7 and 17 update their stored state each tick.
+AnmFloat3View *AnmVmFloat3InterpolationView::Evaluate(
+    AnmFloat3View *output)
+{
+    if (duration > 0)
+    {
+        timer.Tick();
+        if (timer.current >= duration)
+        {
+            timer.SetCurrent(duration);
+            duration = 0;
+            *output = mode == ANM_INTERPOLATION_ADD ? initial : final;
+            return output;
+        }
+    }
+
+    if (mode == ANM_INTERPOLATION_ADD)
+    {
+        initial += final;
+        *output = initial;
+        return output;
+    }
+
+    if (mode == ANM_INTERPOLATION_ACCELERATE)
+    {
+        initial += finalTangent;
+        finalTangent += final;
+        *output = initial;
+        return output;
+    }
+
+    if (mode == ANM_INTERPOLATION_HERMITE)
+    {
+        float value = timer.subframe / static_cast<float>(duration);
+        float minusOne = value - 1.0f;
+        float initialWeight = (1.0f + value + value) * minusOne * minusOne;
+        float finalWeight = (3.0f - value - value) * value * value;
+        float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
+        float finalTangentWeight = minusOne * value * value;
+
+        *output = initial * initialWeight + final * finalWeight +
+            initialTangent * initialTangentWeight +
+            finalTangent * finalTangentWeight;
+        return output;
+    }
+
+    float value = CalculateAnmInterpolation(
+        mode, timer.subframe, static_cast<float>(duration));
+    *output = (final - initial) * value + initial;
+    return output;
+}
+
+static AnmInt3View ScaleAnmInt3(const AnmInt3View &input, float scale)
+{
+    AnmInt3View output;
+    output.x = static_cast<int>(input.x * scale);
+    output.y = static_cast<int>(input.y * scale);
+    output.z = static_cast<int>(input.z * scale);
+    return output;
+}
+
+// Target 0x00441600 is the integer-triplet counterpart used by the two RGB
+// slots. Hermite mode truncates each weighted triplet before summing it.
+AnmInt3View *AnmVmColorInterpolationView::Evaluate(AnmInt3View *output)
+{
+    if (duration > 0)
+    {
+        timer.Tick();
+        if (timer.current >= duration)
+        {
+            timer.SetCurrent(duration);
+            duration = 0;
+            *output = mode == ANM_INTERPOLATION_ADD ? initial : final;
+            return output;
+        }
+    }
+
+    if (mode == ANM_INTERPOLATION_ADD)
+    {
+        initial.x += final.x;
+        initial.y += final.y;
+        initial.z += final.z;
+        *output = initial;
+        return output;
+    }
+
+    if (mode == ANM_INTERPOLATION_ACCELERATE)
+    {
+        initial.x += finalTangent.x;
+        initial.y += finalTangent.y;
+        initial.z += finalTangent.z;
+        finalTangent.x += final.x;
+        finalTangent.y += final.y;
+        finalTangent.z += final.z;
+        *output = initial;
+        return output;
+    }
+
+    if (mode == ANM_INTERPOLATION_HERMITE)
+    {
+        float value = timer.subframe / static_cast<float>(duration);
+        float minusOne = value - 1.0f;
+        float initialWeight = (1.0f + value + value) * minusOne * minusOne;
+        float finalWeight = (3.0f - value - value) * value * value;
+        float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
+        float finalTangentWeight = minusOne * value * value;
+        AnmInt3View initialPart = ScaleAnmInt3(initial, initialWeight);
+        AnmInt3View finalPart = ScaleAnmInt3(final, finalWeight);
+        AnmInt3View initialTangentPart =
+            ScaleAnmInt3(initialTangent, initialTangentWeight);
+        AnmInt3View finalTangentPart =
+            ScaleAnmInt3(finalTangent, finalTangentWeight);
+
+        output->x = initialPart.x + finalPart.x +
+            initialTangentPart.x + finalTangentPart.x;
+        output->y = initialPart.y + finalPart.y +
+            initialTangentPart.y + finalTangentPart.y;
+        output->z = initialPart.z + finalPart.z +
+            initialTangentPart.z + finalTangentPart.z;
+        return output;
+    }
+
+    float value = CalculateAnmInterpolation(
+        mode, timer.subframe, static_cast<float>(duration));
+    output->x = static_cast<int>((final.x - initial.x) * value) + initial.x;
+    output->y = static_cast<int>((final.y - initial.y) * value) + initial.y;
+    output->z = static_cast<int>((final.z - initial.z) * value) + initial.z;
+    return output;
+}
+
+// Target 0x00441950 evaluates either primary or secondary alpha through the
+// scalar 0x2C-byte slot.
+int AnmVmAlphaInterpolationView::Evaluate()
+{
+    if (duration > 0)
+    {
+        timer.Tick();
+        if (timer.current >= duration)
+        {
+            timer.SetCurrent(duration);
+            duration = 0;
+            return mode == ANM_INTERPOLATION_ADD ? initial : final;
+        }
+    }
+
+    if (mode == ANM_INTERPOLATION_ADD)
+    {
+        initial += final;
+        return initial;
+    }
+
+    if (mode == ANM_INTERPOLATION_ACCELERATE)
+    {
+        initial += finalTangent;
+        finalTangent += final;
+        return initial;
+    }
+
+    if (mode == ANM_INTERPOLATION_HERMITE)
+    {
+        float value = timer.subframe / static_cast<float>(duration);
+        float minusOne = value - 1.0f;
+        return static_cast<int>(
+            (1.0f + value + value) * minusOne * minusOne * initial +
+            (3.0f - value - value) * value * value * final +
+            (1.0f - value) * (1.0f - value) * value * initialTangent +
+            minusOne * value * value * finalTangent);
+    }
+
+    float value = CalculateAnmInterpolation(
+        mode, timer.subframe, static_cast<float>(duration));
+    return static_cast<int>((final - initial) * value) + initial;
+}
+
+// Target 0x00441AD0 evaluates the 0x3C-byte scale slot.
+AnmFloat2View *AnmVmFloat2InterpolationView::Evaluate(AnmFloat2View *output)
+{
+    if (duration > 0)
+    {
+        timer.Tick();
+        if (timer.current >= duration)
+        {
+            timer.SetCurrent(duration);
+            duration = 0;
+            *output = mode == ANM_INTERPOLATION_ADD ? initial : final;
+            return output;
+        }
+    }
+
+    if (mode == ANM_INTERPOLATION_ADD)
+    {
+        initial.x += final.x;
+        initial.y += final.y;
+        *output = initial;
+        return output;
+    }
+
+    if (mode == ANM_INTERPOLATION_ACCELERATE)
+    {
+        initial.x += finalTangent.x;
+        initial.y += finalTangent.y;
+        finalTangent.x += final.x;
+        finalTangent.y += final.y;
+        *output = initial;
+        return output;
+    }
+
+    if (mode == ANM_INTERPOLATION_HERMITE)
+    {
+        float value = timer.subframe / static_cast<float>(duration);
+        float minusOne = value - 1.0f;
+        float initialWeight = (1.0f + value + value) * minusOne * minusOne;
+        float finalWeight = (3.0f - value - value) * value * value;
+        float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
+        float finalTangentWeight = minusOne * value * value;
+        *output = initial * initialWeight + final * finalWeight +
+            initialTangent * initialTangentWeight +
+            finalTangent * finalTangentWeight;
+        return output;
+    }
+
+    float value = CalculateAnmInterpolation(
+        mode, timer.subframe, static_cast<float>(duration));
+    output->x = (final.x - initial.x) * value + initial.x;
+    output->y = (final.y - initial.y) * value + initial.y;
+    return output;
+}
+
+// Target 0x0041AB70 installs the two-component scale interpolation. The
+// target's private LTCG seam keeps the VM in EAX and the final/initial vectors
+// in ECX/EDX, but the state written here is independent of that optimization.
+void AnmVmView::StartScaleInterpolation(
+    const AnmFloat2View *initial, const AnmFloat2View *final,
+    int duration, unsigned char mode)
+{
+    scaleInterpolation.duration = duration;
+    scaleInterpolation.mode = mode;
+    scaleInterpolation.initial = *initial;
+    scaleInterpolation.final = *final;
+    scaleInterpolation.timer.SetCurrent(0);
+}
+
+// Target 0x00442050 converts the packed secondary BGRA endpoints to the
+// integer triplets consumed by TH10's color interpolator. Alpha has its own
+// adjacent scalar slot and is intentionally left alone.
+void AnmVmView::StartSecondaryColorInterpolation(
+    const AnmColorView *initial, const AnmColorView *final,
+    int duration, unsigned char mode)
+{
+    secondaryColorInterpolation.duration = duration;
+    secondaryColorInterpolation.initialTangent = AnmInt3View(0, 0, 0);
+    secondaryColorInterpolation.finalTangent = AnmInt3View(0, 0, 0);
+    secondaryColorInterpolation.mode = mode;
+
+    AnmInt3View initialValue;
+    initialValue.z = initial->red;
+    initialValue.y = initial->green;
+    initialValue.x = initial->blue;
+    AnmInt3View finalValue;
+    finalValue.z = final->red;
+    finalValue.y = final->green;
+    finalValue.x = final->blue;
+    secondaryColorInterpolation.initial = initialValue;
+    secondaryColorInterpolation.final = finalValue;
+    secondaryColorInterpolation.timer.SetCurrent(0);
+}
+
+// Target 0x00441F50 installs the scalar secondary-alpha interpolation.
+void AnmVmView::StartSecondaryAlphaInterpolation(
+    int duration, unsigned char mode,
+    unsigned char initial, unsigned char final)
+{
+    secondaryAlphaInterpolation.duration = duration;
+    secondaryAlphaInterpolation.mode = mode;
+    secondaryAlphaInterpolation.initial = initial;
+    secondaryAlphaInterpolation.final = final;
+    secondaryAlphaInterpolation.timer.SetCurrent(0);
+}
+
+// Target 0x00442220 is the primary-color counterpart of 0x00442050.
+void AnmVmView::StartPrimaryColorInterpolation(
+    const AnmColorView *initial, const AnmColorView *final,
+    int duration, unsigned char mode)
+{
+    primaryColorInterpolation.duration = duration;
+    primaryColorInterpolation.initialTangent = AnmInt3View(0, 0, 0);
+    primaryColorInterpolation.finalTangent = AnmInt3View(0, 0, 0);
+    primaryColorInterpolation.mode = mode;
+
+    AnmInt3View initialValue;
+    initialValue.z = initial->red;
+    initialValue.y = initial->green;
+    initialValue.x = initial->blue;
+    AnmInt3View finalValue;
+    finalValue.z = final->red;
+    finalValue.y = final->green;
+    finalValue.x = final->blue;
+    primaryColorInterpolation.initial = initialValue;
+    primaryColorInterpolation.final = finalValue;
+    primaryColorInterpolation.timer.SetCurrent(0);
+}
+
+// Target 0x00442300 installs the scalar primary-alpha interpolation.
+void AnmVmView::StartPrimaryAlphaInterpolation(
+    int duration, unsigned char mode,
+    unsigned char initial, unsigned char final)
+{
+    primaryAlphaInterpolation.duration = duration;
+    primaryAlphaInterpolation.mode = mode;
+    primaryAlphaInterpolation.initial = initial;
+    primaryAlphaInterpolation.initialTangent = 0;
+    primaryAlphaInterpolation.finalTangent = 0;
+    primaryAlphaInterpolation.final = final;
+    primaryAlphaInterpolation.timer.SetCurrent(0);
+}
+
+// Target 0x00413200 links a child VM's secondary list node immediately after
+// its parent. The node addresses, rather than their owning VM bases, are what
+// the intrusive list stores.
+void AnmVmLayerNodeView::InsertAfter(AnmVmLayerNodeView *node)
+{
+    if (next != NULL)
+    {
+        node->next = next;
+        next->previous = node;
+    }
+    next = node;
+    node->previous = this;
+}
+
+// Target 0x0043E5A0 binds one loaded sprite to a VM and rebuilds the two
+// texture-space matrices derived from its dimensions.
+int AnmLoadedView::SetSprite(AnmVmView *vm, int spriteIndex)
+{
+    if (rawData == NULL || pendingLoadCount != 0)
+        return -1;
+
+    vm->activeSpriteIndex = static_cast<short>(spriteIndex);
+    vm->anmFile = this;
+    vm->loadedSprite = &sprites[spriteIndex];
+    vm->spriteWidth = vm->loadedSprite->width;
+    vm->spriteHeight = vm->loadedSprite->height;
+
+    vm->matrix23C.SetIdentity();
+    vm->textureMatrix2BC.SetIdentity();
+    vm->matrix23C.values[0] = vm->spriteWidth * (1.0f / 256.0f);
+    vm->matrix23C.values[5] = vm->spriteHeight * (1.0f / 256.0f);
+    vm->textureMatrix2BC.values[0] =
+        vm->loadedSprite->horizontalScale /
+        vm->loadedSprite->textureWidth * vm->spriteWidth;
+    vm->textureMatrix2BC.values[5] =
+        vm->loadedSprite->verticalScale /
+        vm->loadedSprite->textureHeight * vm->spriteHeight;
+    vm->matrix27C = vm->matrix23C;
+    return 0;
+}
+
+// Target 0x0043EE30 is TH10's complete variable-length ANM instruction
+// executor. The adjacent TH095 source supplies control-flow hypotheses; every
+// opcode, VM offset, interpolation call and frame-end update below is checked
+// against the TH10 v1.00a target.
+int AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
+{
+    AnmRawInstructionView *currentInstruction;
+    AnmRawInstructionView *fallbackInterrupt;
+    float savedGameSpeed;
+
+    if (vm->currentInstruction == NULL)
+        return 1;
+    if (vm->scriptDisabled)
+        return 0;
+
+    savedGameSpeed = g_AnmGameSpeed;
+    if (vm->useUnitSpeed)
+        g_AnmGameSpeed = 1.0f;
+
+    if (vm->pendingInterrupt != 0)
+        goto handleInterrupt;
+
+    while ((currentInstruction = vm->currentInstruction),
+           currentInstruction->time <= vm->scriptTimer.current)
+    {
+#define GET_INT_VAR(argumentNumber)                                      \
+    ((currentInstruction->variableMask & (1 << (argumentNumber))) != 0   \
+        ? vm->GetIntVar(currentInstruction->intArgs[(argumentNumber)])   \
+        : currentInstruction->intArgs[(argumentNumber)])
+#define GET_FLOAT_VAR(argumentNumber)                                    \
+    ((currentInstruction->variableMask & (1 << (argumentNumber))) != 0   \
+        ? vm->GetFloatVar(currentInstruction->floatArgs[(argumentNumber)]) \
+        : currentInstruction->floatArgs[(argumentNumber)])
+#define GET_INT_VAR_PTR(argumentNumber)                                  \
+    vm->GetIntVarPtr(                                                    \
+        &currentInstruction->intArgs[(argumentNumber)],                  \
+        currentInstruction->variableMask, (argumentNumber))
+#define GET_FLOAT_VAR_PTR(argumentNumber)                                \
+    vm->GetFloatVarPtr(                                                  \
+        &currentInstruction->floatArgs[(argumentNumber)],                \
+        currentInstruction->variableMask, (argumentNumber))
+
+        switch (currentInstruction->opcode)
+        {
+        case ANM_OP_END:
+        case ANM_OP_DELETE:
+            vm->visible = 0;
+        case ANM_OP_STATIC:
+            vm->currentInstruction = NULL;
+            g_AnmGameSpeed = savedGameSpeed;
+            return 1;
+
+        case ANM_OP_SPRITE:
+            vm->visible = 1;
+            vm->anmFile->SetSprite(vm, GET_INT_VAR(0));
+            vm->timeOfLastSpriteSet = vm->scriptTimer.current;
+            break;
+
+        case ANM_OP_JUMP:
+            vm->scriptTimer.SetCurrent(currentInstruction->intArgs[1]);
+            vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
+                reinterpret_cast<unsigned char *>(vm->beginningOfScript) +
+                currentInstruction->intArgs[0]);
+            continue;
+
+        case ANM_OP_JUMP_DEC:
+            --*GET_INT_VAR_PTR(0);
+            if (GET_INT_VAR(0) > 0)
+            {
+                vm->scriptTimer.SetCurrent(currentInstruction->intArgs[2]);
+                vm->currentInstruction =
+                    reinterpret_cast<AnmRawInstructionView *>(
+                        reinterpret_cast<unsigned char *>(
+                            vm->beginningOfScript) +
+                        currentInstruction->intArgs[1]);
+                continue;
+            }
+            break;
+
+        case ANM_OP_I_SET:
+            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1);
+            break;
+        case ANM_OP_F_SET:
+            *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1);
+            break;
+        case ANM_OP_I_ADD:
+            *GET_INT_VAR_PTR(0) += GET_INT_VAR(1);
+            break;
+        case ANM_OP_F_ADD:
+            *GET_FLOAT_VAR_PTR(0) += GET_FLOAT_VAR(1);
+            break;
+        case ANM_OP_I_SUB:
+            *GET_INT_VAR_PTR(0) -= GET_INT_VAR(1);
+            break;
+        case ANM_OP_F_SUB:
+            *GET_FLOAT_VAR_PTR(0) -= GET_FLOAT_VAR(1);
+            break;
+        case ANM_OP_I_MUL:
+            *GET_INT_VAR_PTR(0) *= GET_INT_VAR(1);
+            break;
+        case ANM_OP_F_MUL:
+            *GET_FLOAT_VAR_PTR(0) *= GET_FLOAT_VAR(1);
+            break;
+        case ANM_OP_I_DIV:
+            *GET_INT_VAR_PTR(0) /= GET_INT_VAR(1);
+            break;
+        case ANM_OP_F_DIV:
+            *GET_FLOAT_VAR_PTR(0) /= GET_FLOAT_VAR(1);
+            break;
+        case ANM_OP_I_MOD:
+            *GET_INT_VAR_PTR(0) %= GET_INT_VAR(1);
+            break;
+        case ANM_OP_F_MOD:
+            *GET_FLOAT_VAR_PTR(0) =
+                fmodf(GET_FLOAT_VAR(0), GET_FLOAT_VAR(1));
+            break;
+
+        case ANM_OP_I_SET_ADD:
+            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1) + GET_INT_VAR(2);
+            break;
+        case ANM_OP_F_SET_ADD:
+            *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1) + GET_FLOAT_VAR(2);
+            break;
+        case ANM_OP_I_SET_SUB:
+            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1) - GET_INT_VAR(2);
+            break;
+        case ANM_OP_F_SET_SUB:
+            *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1) - GET_FLOAT_VAR(2);
+            break;
+        case ANM_OP_I_SET_MUL:
+            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1) * GET_INT_VAR(2);
+            break;
+        case ANM_OP_F_SET_MUL:
+            *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1) * GET_FLOAT_VAR(2);
+            break;
+        case ANM_OP_I_SET_DIV:
+            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1) / GET_INT_VAR(2);
+            break;
+        case ANM_OP_F_SET_DIV:
+            *GET_FLOAT_VAR_PTR(0) = GET_FLOAT_VAR(1) / GET_FLOAT_VAR(2);
+            break;
+        case ANM_OP_I_SET_MOD:
+            *GET_INT_VAR_PTR(0) = GET_INT_VAR(1) % GET_INT_VAR(2);
+            break;
+        case ANM_OP_F_SET_MOD:
+            *GET_FLOAT_VAR_PTR(0) =
+                fmodf(GET_FLOAT_VAR(1), GET_FLOAT_VAR(2));
+            break;
+
+        case ANM_OP_I_JUMP_EQ:
+            if (GET_INT_VAR(0) == GET_INT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_F_JUMP_EQ:
+            if (GET_FLOAT_VAR(0) == GET_FLOAT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_I_JUMP_NE:
+            if (GET_INT_VAR(0) != GET_INT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_F_JUMP_NE:
+            if (GET_FLOAT_VAR(0) != GET_FLOAT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_I_JUMP_LT:
+            if (GET_INT_VAR(0) < GET_INT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_F_JUMP_LT:
+            if (GET_FLOAT_VAR(0) < GET_FLOAT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_I_JUMP_LE:
+            if (GET_INT_VAR(0) <= GET_INT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_F_JUMP_LE:
+            if (GET_FLOAT_VAR(0) <= GET_FLOAT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_I_JUMP_GT:
+            if (GET_INT_VAR(0) > GET_INT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_F_JUMP_GT:
+            if (GET_FLOAT_VAR(0) > GET_FLOAT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_I_JUMP_GE:
+            if (GET_INT_VAR(0) >= GET_INT_VAR(1)) goto jump;
+            break;
+        case ANM_OP_F_JUMP_GE:
+            if (GET_FLOAT_VAR(0) >= GET_FLOAT_VAR(1)) goto jump;
+            break;
+
+        jump:
+            vm->scriptTimer.SetCurrent(currentInstruction->intArgs[3]);
+            vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
+                reinterpret_cast<unsigned char *>(vm->beginningOfScript) +
+                currentInstruction->intArgs[2]);
+            continue;
+
+        case ANM_OP_I_SET_RANDOM:
+            *GET_INT_VAR_PTR(0) = vm->useAlternateRng
+                ? g_AlternateRngView.GetRandomU32InRange(GET_INT_VAR(1))
+                : g_RngView.GetRandomU32InRange(GET_INT_VAR(1));
+            break;
+        case ANM_OP_F_SET_RANDOM:
+            *GET_FLOAT_VAR_PTR(0) = vm->useAlternateRng
+                ? g_AlternateRngView.GetRandomF32InRange(GET_FLOAT_VAR(1))
+                : g_RngView.GetRandomF32InRange(GET_FLOAT_VAR(1));
+            break;
+        case ANM_OP_F_SIN:
+            *GET_FLOAT_VAR_PTR(0) = sinf(GET_FLOAT_VAR(1));
+            break;
+        case ANM_OP_F_COS:
+            *GET_FLOAT_VAR_PTR(0) = cosf(GET_FLOAT_VAR(1));
+            break;
+        case ANM_OP_F_TAN:
+            *GET_FLOAT_VAR_PTR(0) = tanf(GET_FLOAT_VAR(1));
+            break;
+        case ANM_OP_F_ACOS:
+            *GET_FLOAT_VAR_PTR(0) = acosf(GET_FLOAT_VAR(1));
+            break;
+        case ANM_OP_F_ATAN:
+            *GET_FLOAT_VAR_PTR(0) = atanf(GET_FLOAT_VAR(1));
+            break;
+        case ANM_OP_NORMALIZE_ANGLE:
+            *GET_FLOAT_VAR_PTR(0) =
+                AddNormalizeAngle(GET_FLOAT_VAR(0), 0.0f);
+            break;
+
+        case ANM_OP_POSITION:
+            if (!vm->useAlternatePosition)
+            {
+                vm->position.x = GET_FLOAT_VAR(0);
+                vm->position.y = GET_FLOAT_VAR(1);
+                vm->position.z = GET_FLOAT_VAR(2);
+            }
+            else
+            {
+                vm->alternatePosition.x = GET_FLOAT_VAR(0);
+                vm->alternatePosition.y = GET_FLOAT_VAR(1);
+                vm->alternatePosition.z = GET_FLOAT_VAR(2);
+            }
+            break;
+        case ANM_OP_ROTATION:
+            vm->rotation.x = GET_FLOAT_VAR(0);
+            vm->rotation.y = GET_FLOAT_VAR(1);
+            vm->rotation.z = GET_FLOAT_VAR(2);
+            vm->updateRotation = 1;
+            break;
+        case ANM_OP_SCALE:
+            vm->scaleX = GET_FLOAT_VAR(0);
+            vm->scaleY = GET_FLOAT_VAR(1);
+            vm->updateScale = 1;
+            break;
+        case ANM_OP_ALPHA1:
+            vm->primaryColor.alpha =
+                static_cast<unsigned char>(GET_INT_VAR(0));
+            break;
+        case ANM_OP_COLOR1:
+            vm->primaryColor.red =
+                static_cast<unsigned char>(GET_INT_VAR(0));
+            vm->primaryColor.green =
+                static_cast<unsigned char>(GET_INT_VAR(1));
+            vm->primaryColor.blue =
+                static_cast<unsigned char>(GET_INT_VAR(2));
+            break;
+        case ANM_OP_ANGULAR_VELOCITY:
+            vm->angularVelocity.x = GET_FLOAT_VAR(0);
+            vm->angularVelocity.y = GET_FLOAT_VAR(1);
+            vm->angularVelocity.z = GET_FLOAT_VAR(2);
+            vm->updateRotation = 1;
+            break;
+        case ANM_OP_SCALE_GROWTH:
+            vm->scaleGrowth.x = GET_FLOAT_VAR(0);
+            vm->scaleGrowth.y = GET_FLOAT_VAR(1);
+            break;
+
+        case ANM_OP_ALPHA1_TIME_LINEAR:
+            vm->StartPrimaryAlphaInterpolation(
+                GET_INT_VAR(1), ANM_INTERPOLATION_LINEAR,
+                vm->primaryColor.alpha,
+                static_cast<unsigned char>(currentInstruction->intArgs[0]));
+            break;
+        case ANM_OP_POSITION_TIME:
+            vm->positionInterpolation.duration = GET_INT_VAR(0);
+            vm->positionInterpolation.initialTangent =
+                AnmFloat3View(0.0f, 0.0f, 0.0f);
+            vm->positionInterpolation.finalTangent =
+                AnmFloat3View(0.0f, 0.0f, 0.0f);
+            vm->positionInterpolation.mode =
+                currentInstruction->byteArgs[4];
+            vm->positionInterpolation.initial = vm->useAlternatePosition
+                ? vm->alternatePosition : vm->position;
+            vm->positionInterpolation.final.x = GET_FLOAT_VAR(2);
+            vm->positionInterpolation.final.y = GET_FLOAT_VAR(3);
+            vm->positionInterpolation.final.z = GET_FLOAT_VAR(4);
+            vm->positionInterpolation.timer.SetCurrent(0);
+            break;
+        case ANM_OP_COLOR1_TIME:
+        {
+            AnmColorView initialColor = vm->primaryColor;
+            AnmColorView finalColor;
+            finalColor.value = 0;
+            finalColor.red = static_cast<unsigned char>(GET_INT_VAR(2));
+            finalColor.green = static_cast<unsigned char>(GET_INT_VAR(3));
+            finalColor.blue = static_cast<unsigned char>(GET_INT_VAR(4));
+            vm->StartPrimaryColorInterpolation(
+                &initialColor, &finalColor, GET_INT_VAR(0),
+                currentInstruction->byteArgs[4]);
+            break;
+        }
+        case ANM_OP_ALPHA1_TIME:
+            vm->StartPrimaryAlphaInterpolation(
+                GET_INT_VAR(0), currentInstruction->byteArgs[4],
+                vm->primaryColor.alpha,
+                static_cast<unsigned char>(GET_INT_VAR(2)));
+            break;
+        case ANM_OP_ROTATION_TIME:
+            vm->rotationInterpolation.duration = GET_INT_VAR(0);
+            vm->rotationInterpolation.initialTangent =
+                AnmFloat3View(0.0f, 0.0f, 0.0f);
+            vm->rotationInterpolation.finalTangent =
+                AnmFloat3View(0.0f, 0.0f, 0.0f);
+            vm->rotationInterpolation.mode = currentInstruction->byteArgs[4];
+            vm->rotationInterpolation.initial = vm->rotation;
+            vm->rotationInterpolation.final.x = GET_FLOAT_VAR(2);
+            vm->rotationInterpolation.final.y = GET_FLOAT_VAR(3);
+            vm->rotationInterpolation.final.z = GET_FLOAT_VAR(4);
+            vm->rotationInterpolation.timer.SetCurrent(0);
+            vm->updateRotation = 1;
+            break;
+        case ANM_OP_SCALE_TIME:
+        {
+            AnmFloat2View finalScale;
+            finalScale.x = GET_FLOAT_VAR(2);
+            finalScale.y = GET_FLOAT_VAR(3);
+            vm->StartScaleInterpolation(
+                reinterpret_cast<AnmFloat2View *>(&vm->scaleX),
+                &finalScale,
+                GET_INT_VAR(0), currentInstruction->byteArgs[4]);
+            vm->updateScale = 1;
+            break;
+        }
+
+        case ANM_OP_FLIP_X:
+            vm->flipX ^= 1;
+            vm->scaleX *= -1.0f;
+            vm->updateScale = 1;
+            break;
+        case ANM_OP_FLIP_Y:
+            vm->flipY ^= 1;
+            vm->scaleY *= -1.0f;
+            vm->updateScale = 1;
+            break;
+
+        case ANM_OP_STOP:
+            if (vm->pendingInterrupt == 0)
+            {
+                vm->stopped = 1;
+                vm->scriptTimer.Add(-1.0f);
+                goto stop;
+            }
+        handleInterrupt:
+            fallbackInterrupt = NULL;
+            currentInstruction = vm->beginningOfScript;
+            while (!((currentInstruction->opcode == ANM_OP_INTERRUPT_LABEL) &&
+                     (vm->pendingInterrupt ==
+                      currentInstruction->intArgs[0])) &&
+                   currentInstruction->opcode != ANM_OP_END)
+            {
+                if (currentInstruction->opcode == ANM_OP_INTERRUPT_LABEL &&
+                    currentInstruction->intArgs[0] == -1)
+                {
+                    fallbackInterrupt = currentInstruction;
+                }
+                currentInstruction =
+                    reinterpret_cast<AnmRawInstructionView *>(
+                        reinterpret_cast<unsigned char *>(currentInstruction) +
+                        currentInstruction->size);
+            }
+            vm->pendingInterrupt = 0;
+            vm->stopped = 0;
+            if (currentInstruction->opcode != ANM_OP_INTERRUPT_LABEL)
+            {
+                if (fallbackInterrupt == NULL)
+                {
+                    vm->scriptTimer.Add(-1.0f);
+                    goto stop;
+                }
+                currentInstruction = fallbackInterrupt;
+            }
+            vm->interruptReturnTimer = vm->scriptTimer;
+            vm->interruptReturnInstruction = vm->currentInstruction;
+            vm->scriptTimer.SetCurrent(currentInstruction->time);
+            vm->currentInstruction =
+                reinterpret_cast<AnmRawInstructionView *>(
+                    reinterpret_cast<unsigned char *>(currentInstruction) +
+                    currentInstruction->size);
+            vm->visible = 1;
+            continue;
+
+        case ANM_OP_RENDER_STATE:
+            vm->renderStateA = currentInstruction->shortArgs[0];
+            vm->renderStateB = currentInstruction->shortArgs[1];
+            break;
+        case ANM_OP_BLEND_MODE:
+            vm->blendMode = currentInstruction->intArgs[0];
+            break;
+        case ANM_OP_RENDER_MODE:
+            vm->renderMode = currentInstruction->intArgs[0];
+            if (vm->renderMode == 10)
+                vm->InitializePulsingRadialTrail();
+            break;
+        case ANM_OP_RENDER_LAYER:
+            vm->renderLayer = currentInstruction->byteArgs[0];
+            break;
+        case ANM_OP_STOP_HIDE:
+            vm->visible = 0;
+            if (vm->pendingInterrupt == 0)
+            {
+                vm->stopped = 1;
+                vm->scriptTimer.Add(-1.0f);
+                goto stop;
+            }
+            goto handleInterrupt;
+        case ANM_OP_U_SCROLL:
+            vm->uvScrollVelocityX = GET_FLOAT_VAR(0);
+            break;
+        case ANM_OP_V_SCROLL:
+            vm->uvScrollVelocityY = GET_FLOAT_VAR(0);
+            break;
+        case ANM_OP_VISIBLE:
+            vm->visible = currentInstruction->intArgs[0];
+            break;
+        case ANM_OP_Z_WRITE_DISABLE:
+            vm->zWriteDisabled = currentInstruction->intArgs[0];
+            break;
+        case ANM_OP_FLAG13:
+            vm->flag13 = currentInstruction->intArgs[0];
+            break;
+        case ANM_OP_WAIT:
+            vm->scriptTimer.Decrement(GET_INT_VAR(0));
+            break;
+
+        case ANM_OP_COLOR2:
+            vm->secondaryColor.red =
+                static_cast<unsigned char>(GET_INT_VAR(0));
+            vm->secondaryColor.green =
+                static_cast<unsigned char>(GET_INT_VAR(1));
+            vm->secondaryColor.blue =
+                static_cast<unsigned char>(GET_INT_VAR(2));
+            break;
+        case ANM_OP_ALPHA2:
+            vm->secondaryColor.alpha =
+                static_cast<unsigned char>(GET_INT_VAR(0));
+            break;
+        case ANM_OP_COLOR2_TIME:
+        {
+            AnmColorView initialColor = vm->secondaryColor;
+            AnmColorView finalColor;
+            finalColor.value = 0;
+            finalColor.red = static_cast<unsigned char>(GET_INT_VAR(2));
+            finalColor.green = static_cast<unsigned char>(GET_INT_VAR(3));
+            finalColor.blue = static_cast<unsigned char>(GET_INT_VAR(4));
+            vm->StartSecondaryColorInterpolation(
+                &initialColor, &finalColor, GET_INT_VAR(0),
+                currentInstruction->byteArgs[4]);
+            break;
+        }
+        case ANM_OP_ALPHA2_TIME:
+            vm->StartSecondaryAlphaInterpolation(
+                GET_INT_VAR(0), currentInstruction->byteArgs[4],
+                vm->secondaryColor.alpha,
+                static_cast<unsigned char>(GET_INT_VAR(2)));
+            break;
+        case ANM_OP_USE_SECONDARY_COLOR:
+            vm->useSecondaryColor = currentInstruction->byteArgs[0];
+            break;
+        case ANM_OP_RETURN:
+            vm->scriptTimer = vm->interruptReturnTimer;
+            vm->currentInstruction = vm->interruptReturnInstruction;
+            continue;
+        case ANM_OP_FLAG27:
+            vm->flag27 = currentInstruction->byteArgs[0];
+            break;
+        case ANM_OP_COMMIT_POSITION:
+            vm->position = vm->positionOffset;
+            vm->positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
+            break;
+        case ANM_OP_ALLOC_VERTICES:
+            vm->renderMode = 9;
+            vm->generatedVertices = malloc(
+                GET_INT_VAR(0) * sizeof(AnmRenderVertexView) * 2);
+            break;
+        case ANM_OP_FLAG28:
+            vm->flag28 = currentInstruction->byteArgs[0];
+            break;
+        case ANM_OP_UNIT_SPEED:
+            vm->useUnitSpeed = GET_INT_VAR(0);
+            break;
+        case ANM_OP_ALTERNATE_RNG:
+            vm->useAlternateRng = currentInstruction->byteArgs[0];
+            break;
+
+        case ANM_OP_CREATE_CHILD_88:
+        case ANM_OP_CREATE_CHILD_90:
+        case ANM_OP_CREATE_CHILD_91:
+        case ANM_OP_CREATE_CHILD_92:
+        {
+            AnmVmIdView childId;
+            int scriptIndex = GET_INT_VAR(0);
+            switch (currentInstruction->opcode)
+            {
+            case ANM_OP_CREATE_CHILD_88:
+                childId = vm->anmFile->CreateVmVariant0(
+                    scriptIndex, vm->renderLayer);
+                break;
+            case ANM_OP_CREATE_CHILD_90:
+                childId = vm->anmFile->CreateVmVariant2(
+                    scriptIndex, vm->renderLayer);
+                break;
+            case ANM_OP_CREATE_CHILD_91:
+                childId = vm->anmFile->CreateVmVariant1(
+                    scriptIndex, vm->renderLayer);
+                break;
+            default:
+                childId = vm->anmFile->CreateVmVariant3(
+                    scriptIndex, vm->renderLayer);
+                break;
+            }
+            AnmVmView *child = childId.GetVm();
+            vm->layerNode.InsertAfter(&child->layerNode);
+            child->alternatePosition = vm->position;
+            child->positionOffset = vm->positionOffset;
+            break;
+        }
+        case ANM_OP_POINT_TEXTURE_FILTER:
+            vm->usePointTextureFilter = currentInstruction->intArgs[0];
+            break;
+
+        default:
+            break;
+        }
+
+#undef GET_FLOAT_VAR_PTR
+#undef GET_INT_VAR_PTR
+#undef GET_FLOAT_VAR
+#undef GET_INT_VAR
+
+        vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
+            reinterpret_cast<unsigned char *>(currentInstruction) +
+            currentInstruction->size);
+    }
+
+stop:
+    if (vm->angularVelocity.x != 0.0f)
+    {
+        vm->rotation.x = AddNormalizeAngle(
+            vm->rotation.x, g_AnmGameSpeed * vm->angularVelocity.x);
+        vm->updateRotation = 1;
+    }
+    if (vm->angularVelocity.y != 0.0f)
+    {
+        vm->rotation.y = AddNormalizeAngle(
+            vm->rotation.y, g_AnmGameSpeed * vm->angularVelocity.y);
+        vm->updateRotation = 1;
+    }
+    if (vm->angularVelocity.z != 0.0f)
+    {
+        vm->rotation.z = AddNormalizeAngle(
+            vm->rotation.z, g_AnmGameSpeed * vm->angularVelocity.z);
+        vm->updateRotation = 1;
+    }
+
+    if (vm->scaleGrowth.y != 0.0f)
+    {
+        vm->scaleY += g_AnmGameSpeed * vm->scaleGrowth.y;
+        vm->updateScale = 1;
+    }
+    if (vm->scaleGrowth.x != 0.0f)
+    {
+        vm->scaleX += g_AnmGameSpeed * vm->scaleGrowth.x;
+        vm->updateScale = 1;
+        vm->updateRotation = 1;
+    }
+
+    vm->uvScrollX += g_AnmGameSpeed * vm->uvScrollVelocityX;
+    if (vm->uvScrollX >= 1.0f)
+        vm->uvScrollX -= 1.0f;
+    else if (vm->uvScrollX < 0.0f)
+        vm->uvScrollX += 1.0f;
+    vm->uvScrollY += g_AnmGameSpeed * vm->uvScrollVelocityY;
+    if (vm->uvScrollY >= 1.0f)
+        vm->uvScrollY -= 1.0f;
+    else if (vm->uvScrollY < 0.0f)
+        vm->uvScrollY += 1.0f;
+
+    if (vm->flag13)
+        vm->positionOffset += g_AnmPositionOffsetDelta;
+
+    if (vm->positionInterpolation.duration != 0)
+    {
+        AnmFloat3View value;
+        vm->positionInterpolation.Evaluate(&value);
+        if (!vm->useAlternatePosition)
+            vm->position = value;
+        else
+            vm->alternatePosition = value;
+    }
+    if (vm->primaryColorInterpolation.duration != 0)
+    {
+        AnmInt3View value;
+        vm->primaryColorInterpolation.Evaluate(&value);
+        vm->primaryColor.blue = static_cast<unsigned char>(value.x);
+        vm->primaryColor.green = static_cast<unsigned char>(value.y);
+        vm->primaryColor.red = static_cast<unsigned char>(value.z);
+    }
+    if (vm->primaryAlphaInterpolation.duration != 0)
+        vm->primaryColor.alpha = static_cast<unsigned char>(
+            vm->primaryAlphaInterpolation.Evaluate());
+    if (vm->scaleInterpolation.duration != 0)
+    {
+        AnmFloat2View value;
+        vm->scaleInterpolation.Evaluate(&value);
+        vm->scaleX = value.x;
+        vm->scaleY = value.y;
+        vm->updateScale = 1;
+    }
+    if (vm->rotationInterpolation.duration != 0)
+    {
+        vm->rotationInterpolation.Evaluate(&vm->rotation);
+        vm->updateRotation = 1;
+    }
+    if (vm->secondaryColorInterpolation.duration != 0)
+    {
+        AnmInt3View value;
+        vm->secondaryColorInterpolation.Evaluate(&value);
+        vm->secondaryColor.blue = static_cast<unsigned char>(value.x);
+        vm->secondaryColor.green = static_cast<unsigned char>(value.y);
+        vm->secondaryColor.red = static_cast<unsigned char>(value.z);
+    }
+    if (vm->secondaryAlphaInterpolation.duration != 0)
+        vm->secondaryColor.alpha = static_cast<unsigned char>(
+            vm->secondaryAlphaInterpolation.Evaluate());
+
+    if (vm->renderMode == 9)
+    {
+        int segmentCount = vm->intVar0 - 1;
+        float angleValue = vm->rotation.z;
+        float angleStep = 6.2831855f / segmentCount;
+        AnmRenderVertexView *vertex =
+            static_cast<AnmRenderVertexView *>(vm->generatedVertices);
+        float textureV = 0.0f;
+        float textureStep =
+            static_cast<float>(vm->intVar1) / segmentCount;
+
+        for (int i = 0; i < segmentCount; ++i)
+        {
+            vertex[0].rhw = 1.0f;
+            vertex[0].diffuse.value = vm->primaryColor.value;
+            vertex[0].u = vm->loadedSprite->uStart + vm->uvScrollX;
+            vertex[0].v = textureV + vm->uvScrollY;
+            reinterpret_cast<AnmFloat3View *>(&vertex[0].x)
+                ->FromAngleMagnitude(
+                    angleValue, vm->scaleX * 0.5f + vm->scaleY);
+            vertex[0].z = 0.0f;
+            *reinterpret_cast<AnmFloat3View *>(&vertex[0].x) +=
+                vm->position + vm->positionOffset;
+            ++vertex;
+
+            vertex[0].rhw = 1.0f;
+            vertex[0].diffuse.value = vm->primaryColor.value;
+            vertex[0].u = vm->loadedSprite->uEnd + vm->uvScrollX;
+            vertex[0].v = textureV + vm->uvScrollY;
+            reinterpret_cast<AnmFloat3View *>(&vertex[0].x)
+                ->FromAngleMagnitude(
+                    angleValue, vm->scaleY - vm->scaleX * 0.5f);
+            vertex[0].z = 0.0f;
+            *reinterpret_cast<AnmFloat3View *>(&vertex[0].x) +=
+                vm->position + vm->positionOffset;
+            ++vertex;
+
+            textureV += textureStep;
+            angleValue = AddNormalizeAngle(angleValue, angleStep);
+        }
+
+        vertex[0] = static_cast<AnmRenderVertexView *>(
+            vm->generatedVertices)[0];
+        vertex[0].v = textureV + vm->uvScrollY;
+        vertex[1] = static_cast<AnmRenderVertexView *>(
+            vm->generatedVertices)[1];
+        vertex[1].v = textureV + vm->uvScrollY;
+    }
+
+    if (vm->positionCallback != NULL)
+        vm->positionCallback(vm);
+
+    vm->scriptTimer.Tick();
+    g_AnmGameSpeed = savedGameSpeed;
+    return 0;
+}
+
 // Target 0x004458B0-0x004458CD is the retained polar-vector primitive used by
 // generated radial trails. VC7.1 otherwise lowers separate sin/cos calls and
 // loses the target's single x87 FSINCOS operation.
@@ -224,6 +1374,18 @@ void AnmVmTimerView::Initialize()
     subframe = 0.0f;
 }
 
+// Target 0x0044BF40 updates the fractional and integer timer values while
+// respecting the timer's selected speed multiplier.
+void AnmVmTimerView::Add(float value)
+{
+    previous = current;
+    if (*scale > 0.99f && *scale < 1.01f)
+        subframe += value;
+    else
+        subframe += value * *scale;
+    current = static_cast<int>(subframe);
+}
+
 // Target 0x00402050-0x004020A7 first runs the nine embedded timer
 // constructors, then clears the complete 0x3AC-byte VM and marks its active
 // sprite index invalid.
@@ -245,39 +1407,39 @@ AnmVmView::~AnmVmView()
 // externally owned pointers at +0x20 and +0x340..+0x348.
 void AnmVmView::Initialize()
 {
-    float savedX = preservedPosition.x;
-    float savedY = preservedPosition.y;
-    float savedZ = preservedPosition.z;
-    void *savedOwner = persistentOwner020;
+    float savedX = positionOffset.x;
+    float savedY = positionOffset.y;
+    float savedZ = positionOffset.z;
+    unsigned int savedLayer = renderLayer;
 
     memset(this, 0, sizeof(AnmVmView));
 
-    preservedPosition.x = savedX;
-    preservedPosition.y = savedY;
-    persistentOwner020 = savedOwner;
-    preservedPosition.z = savedZ;
+    positionOffset.x = savedX;
+    positionOffset.y = savedY;
+    renderLayer = savedLayer;
+    positionOffset.z = savedZ;
 
     primaryColor.value = 0xffffffff;
     scaleX = 1.0f;
     scaleY = 1.0f;
     matrix23C.SetIdentity();
     flags35C = 7;
-    timer05C.Initialize();
+    scriptTimer.Initialize();
 
-    state0B4 = 0;
-    state100 = 0;
-    state12C = 0;
-    state178 = 0;
-    state1B4 = 0;
-    state200 = 0;
-    state22C = 0;
+    positionInterpolation.duration = 0;
+    primaryColorInterpolation.duration = 0;
+    primaryAlphaInterpolation.duration = 0;
+    rotationInterpolation.duration = 0;
+    scaleInterpolation.duration = 0;
+    secondaryColorInterpolation.duration = 0;
+    secondaryAlphaInterpolation.duration = 0;
 
     listSelf004 = this;
     unknown008 = NULL;
     unknown00C = NULL;
-    layerSelf010 = this;
-    unknown014 = NULL;
-    unknown018 = NULL;
+    layerNode.owner = this;
+    layerNode.next = NULL;
+    layerNode.previous = NULL;
 }
 
 // Target 0x00401000-0x004010FA receives this through a private ESI register.
@@ -347,11 +1509,11 @@ int AsciiManagerView::Initialize()
     drawChainElement = element;
 
     primaryVm014.Initialize();
-    primaryVm014.anmFile308 = asciiAnm;
+    primaryVm014.anmFile = asciiAnm;
     AnmLoadedSetScript(asciiAnm, &primaryVm014, 0);
 
     secondaryVm3C0.Initialize();
-    secondaryVm3C0.anmFile308 = asciiAnm;
+    secondaryVm3C0.anmFile = asciiAnm;
     AnmLoadedSetScript(asciiAnm, &secondaryVm3C0, 0x62);
     return 0;
 
@@ -889,25 +2051,25 @@ int AnmRenderManagerView::DrawNoRotation(AnmVmView *vm)
     {
     case 1:
         g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x;
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x;
         g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x +
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x +
             spriteWidth;
         break;
     case 0:
         g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
             static_cast<float>(floor(
-                vm->position.x + vm->preservedPosition.x +
-                vm->spriteOffset.x - spriteWidth * 0.5f));
+                vm->position.x + vm->positionOffset.x +
+                vm->alternatePosition.x - spriteWidth * 0.5f));
         g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
             g_AnmQuadVertices[0].x + spriteWidth;
         break;
     case 2:
         g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x -
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x -
             spriteWidth;
         g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x;
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x;
         break;
     }
 
@@ -915,31 +2077,31 @@ int AnmRenderManagerView::DrawNoRotation(AnmVmView *vm)
     {
     case 1:
         g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
-            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y;
+            vm->position.y + vm->positionOffset.y + vm->alternatePosition.y;
         g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
-            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y +
+            vm->position.y + vm->positionOffset.y + vm->alternatePosition.y +
             spriteHeight;
         break;
     case 0:
         g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
             static_cast<float>(floor(
-                vm->position.y + vm->preservedPosition.y +
-                vm->spriteOffset.y - spriteHalfHeight));
+                vm->position.y + vm->positionOffset.y +
+                vm->alternatePosition.y - spriteHalfHeight));
         g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
             g_AnmQuadVertices[0].y + spriteHeight;
         break;
     case 2:
         g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
-            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y -
+            vm->position.y + vm->positionOffset.y + vm->alternatePosition.y -
             spriteHeight;
         g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
-            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y;
+            vm->position.y + vm->positionOffset.y + vm->alternatePosition.y;
         break;
     }
 
     g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
         g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
-            vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+            vm->alternatePosition.z + vm->positionOffset.z + vm->position.z;
     return DrawInner(vm, 1);
 }
 
@@ -959,24 +2121,24 @@ int AnmRenderManagerView::DrawNoRotationNoRound(AnmVmView *vm)
     {
     case 1:
         g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x;
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x;
         g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x +
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x +
             spriteWidth;
         break;
     case 0:
         g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x -
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x -
             spriteWidth * 0.5f;
         g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
             g_AnmQuadVertices[0].x + spriteWidth;
         break;
     case 2:
         g_AnmQuadVertices[0].x = g_AnmQuadVertices[2].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x -
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x -
             spriteWidth;
         g_AnmQuadVertices[1].x = g_AnmQuadVertices[3].x =
-            vm->position.x + vm->preservedPosition.x + vm->spriteOffset.x;
+            vm->position.x + vm->positionOffset.x + vm->alternatePosition.x;
         break;
     }
 
@@ -984,48 +2146,48 @@ int AnmRenderManagerView::DrawNoRotationNoRound(AnmVmView *vm)
     {
     case 1:
     {
-        float y = vm->spriteOffset.y;
+        float y = vm->alternatePosition.y;
         y += vm->position.y;
-        y += vm->preservedPosition.y;
+        y += vm->positionOffset.y;
         g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
             y;
-        y = vm->spriteOffset.y;
+        y = vm->alternatePosition.y;
         y += vm->position.y;
         y += spriteHeight;
-        y += vm->preservedPosition.y;
+        y += vm->positionOffset.y;
         g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
             y;
         break;
     }
     case 0:
         g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
-            vm->position.y + vm->preservedPosition.y + vm->spriteOffset.y -
+            vm->position.y + vm->positionOffset.y + vm->alternatePosition.y -
             spriteHalfHeight;
         g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
             g_AnmQuadVertices[0].y + spriteHeight;
         break;
     case 2:
     {
-        float y = vm->spriteOffset.y;
+        float y = vm->alternatePosition.y;
         y += vm->position.y;
-        y += vm->preservedPosition.y;
+        y += vm->positionOffset.y;
         y -= spriteHeight;
         g_AnmQuadVertices[0].y = g_AnmQuadVertices[1].y =
             y;
-        y = vm->spriteOffset.y;
+        y = vm->alternatePosition.y;
         y += vm->position.y;
-        y += vm->preservedPosition.y;
+        y += vm->positionOffset.y;
         g_AnmQuadVertices[2].y = g_AnmQuadVertices[3].y =
             y;
         break;
     }
     }
 
-    // TH10's no-round path intentionally reads spriteOffset.y here; the
-    // rounded sibling at 0x00443080 reads spriteOffset.z.
+    // TH10's no-round path intentionally reads alternatePosition.y here; the
+    // rounded sibling at 0x00443080 reads alternatePosition.z.
     g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
         g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
-            vm->spriteOffset.y + vm->preservedPosition.z + vm->position.z;
+            vm->alternatePosition.y + vm->positionOffset.z + vm->position.z;
     return DrawInner(vm, 0);
 }
 
@@ -1075,11 +2237,11 @@ int AnmRenderManagerView::Draw2D(AnmVmView *vm)
     sine = static_cast<float>(sin(rotation));
 #endif
 
-    xOffset = vm->spriteOffset.x;
-    xOffset += vm->preservedPosition.x;
+    xOffset = vm->alternatePosition.x;
+    xOffset += vm->positionOffset.x;
     xOffset += vm->position.x;
-    yOffset = vm->spriteOffset.y;
-    yOffset += vm->preservedPosition.y;
+    yOffset = vm->alternatePosition.y;
+    yOffset += vm->positionOffset.y;
     yOffset += vm->position.y;
     spriteWidth = vm->spriteWidth * vm->scaleX;
     spriteHeight = vm->spriteHeight * vm->scaleY;
@@ -1125,7 +2287,7 @@ int AnmRenderManagerView::Draw2D(AnmVmView *vm)
 
     g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
         g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
-            vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+            vm->alternatePosition.z + vm->positionOffset.z + vm->position.z;
     return DrawInner(vm, 0);
 }
 
@@ -1163,11 +2325,11 @@ int AnmRenderManagerView::Draw2DRotatedOrAxisAligned(AnmVmView *vm)
     sine = static_cast<float>(sin(rotation));
 #endif
 
-    xOffset = vm->spriteOffset.x;
-    xOffset += vm->preservedPosition.x;
+    xOffset = vm->alternatePosition.x;
+    xOffset += vm->positionOffset.x;
     xOffset += vm->position.x;
-    yOffset = vm->spriteOffset.y;
-    yOffset += vm->preservedPosition.y;
+    yOffset = vm->alternatePosition.y;
+    yOffset += vm->positionOffset.y;
     yOffset += vm->position.y;
     spriteWidth = vm->spriteWidth * vm->scaleX;
     spriteHeight = vm->spriteHeight * vm->scaleY;
@@ -1213,7 +2375,7 @@ int AnmRenderManagerView::Draw2DRotatedOrAxisAligned(AnmVmView *vm)
 
     g_AnmQuadVertices[0].z = g_AnmQuadVertices[1].z =
         g_AnmQuadVertices[2].z = g_AnmQuadVertices[3].z =
-            vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+            vm->alternatePosition.z + vm->positionOffset.z + vm->position.z;
     return DrawInner(vm, 0);
 }
 
@@ -1272,11 +2434,11 @@ int AnmRenderManagerView::ProjectCameraFacingQuad(AnmVmView *vm)
 
     worldMatrix.SetIdentity();
     worldMatrix.values[12] =
-        vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x;
+        vm->alternatePosition.x + vm->positionOffset.x + vm->position.x;
     worldMatrix.values[13] =
-        vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y;
+        vm->alternatePosition.y + vm->positionOffset.y + vm->position.y;
     worldMatrix.values[14] =
-        vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+        vm->alternatePosition.z + vm->positionOffset.z + vm->position.z;
 
     D3DXVec3Project(
         &projectedPosition, &projectedReference,
@@ -1389,7 +2551,7 @@ int AnmRenderManagerView::DrawMode6(AnmVmView *vm)
     draw.color.value = vm->useSecondaryColor
         ? vm->secondaryColor.value : vm->primaryColor.value;
     draw.cameraDelta =
-        vm->position + vm->preservedPosition + vm->spriteOffset -
+        vm->position + vm->positionOffset + vm->alternatePosition -
         g_AnmBackgroundCameraPosition;
     draw.distance = AnmFloat3Length(draw.cameraDelta);
 
@@ -1481,11 +2643,11 @@ int AnmRenderManagerView::Project3DQuad(AnmVmView *vm)
 
     worldMatrix = vm->matrix27C;
     worldMatrix.values[12] +=
-        vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x;
+        vm->alternatePosition.x + vm->positionOffset.x + vm->position.x;
     worldMatrix.values[13] +=
-        vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y;
+        vm->alternatePosition.y + vm->positionOffset.y + vm->position.y;
     worldMatrix.values[14] =
-        vm->spriteOffset.z + vm->preservedPosition.z + vm->position.z;
+        vm->alternatePosition.z + vm->positionOffset.z + vm->position.z;
 
     switch (vm->renderStateA)
     {
@@ -1713,19 +2875,19 @@ int AnmRenderManagerView::Draw3D(AnmVmView *vm)
     {
     case 1:
         worldMatrix.values[12] =
-            vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x -
+            vm->alternatePosition.x + vm->positionOffset.x + vm->position.x -
             static_cast<float>(fabs(
                 vm->spriteWidth * vm->scaleX * 0.5f));
         break;
     case 0:
         worldMatrix.values[12] =
-            vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x;
+            vm->alternatePosition.x + vm->positionOffset.x + vm->position.x;
         break;
     case 2:
         worldMatrix.values[12] =
             static_cast<float>(fabs(
                 vm->spriteWidth * vm->scaleX * 0.5f)) +
-            vm->spriteOffset.x + vm->preservedPosition.x + vm->position.x;
+            vm->alternatePosition.x + vm->positionOffset.x + vm->position.x;
         break;
     }
 
@@ -1733,26 +2895,26 @@ int AnmRenderManagerView::Draw3D(AnmVmView *vm)
     {
     case 1:
         worldMatrix.values[13] =
-            vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y -
+            vm->alternatePosition.y + vm->positionOffset.y + vm->position.y -
             static_cast<float>(fabs(
                 vm->spriteHeight * vm->scaleY * 0.5f));
         break;
     case 0:
         worldMatrix.values[13] =
-            vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y;
+            vm->alternatePosition.y + vm->positionOffset.y + vm->position.y;
         break;
     case 2:
         worldMatrix.values[13] =
             static_cast<float>(fabs(
                 vm->spriteHeight * vm->scaleY * 0.5f)) +
-            vm->spriteOffset.y + vm->preservedPosition.y + vm->position.y;
+            vm->alternatePosition.y + vm->positionOffset.y + vm->position.y;
         break;
     }
 
-    worldMatrix.values[14] = vm->position.z + vm->preservedPosition.z;
+    worldMatrix.values[14] = vm->position.z + vm->positionOffset.z;
     SetRenderStateForVm3D(vm);
     worldMatrix.values[14] =
-        vm->spriteOffset.z + vm->position.z + vm->preservedPosition.z;
+        vm->alternatePosition.z + vm->position.z + vm->positionOffset.z;
     g_Direct3DDevice->vtable->SetTransform(
         g_Direct3DDevice, D3D9_VIEW_TS_WORLD, &worldMatrix);
 
@@ -2172,7 +3334,6 @@ int AnmVmView::InitializePulsingRadialTrail()
     float angle;
     float radialVelocity;
     int i;
-    AnmFloat3View direction;
 
     if (generatedVertices != NULL)
     {
@@ -2193,7 +3354,7 @@ int AnmVmView::InitializePulsingRadialTrail()
     angle = -3.1415927f;
     vertex = data->vertices;
     *reinterpret_cast<AnmFloat3View *>(&vertex->x) =
-        position + preservedPosition;
+        position + positionOffset;
     vertex->rhw = 1.0f;
     vertex->uv.x = 0.5f;
     vertex->uv.y = 0.5f;
@@ -2203,14 +3364,16 @@ int AnmVmView::InitializePulsingRadialTrail()
         g_RngView.GetRandomF32Signed() * (1.0f / 15.0f);
     for (i = 1; i < 32; ++i)
     {
+        AnmFloat3View direction;
+
         if (angle >= 3.1415927f)
             angle -= 6.2831855f;
 
         vertex->rhw = 1.0f;
         direction.FromAngleMagnitude(angle, 0.5f);
+        vertex->z = 0.0f;
         vertex->uv.x = direction.x + 0.5f;
         vertex->uv.y = direction.y + 0.5f;
-        vertex->z = 0.0f;
 
         data->radii[i] =
             g_RngView.GetRandomF32Signed() * 8.0f + 80.0f;
@@ -2225,7 +3388,7 @@ int AnmVmView::InitializePulsingRadialTrail()
         reinterpret_cast<AnmFloat3View *>(&vertex->x)->FromAngleMagnitude(
             angle, data->radii[i]);
         *reinterpret_cast<AnmFloat3View *>(&vertex->x) +=
-            this->position + preservedPosition;
+            this->position + positionOffset;
         ++vertex;
         angle += 0.2026834041f;
     }
@@ -2250,7 +3413,7 @@ int __fastcall UpdatePulsingRadialTrail(AnmVmView *vm)
     vertex = data->vertices;
 
     *reinterpret_cast<AnmFloat3View *>(&vertex->x) =
-        vm->position + vm->preservedPosition;
+        vm->position + vm->positionOffset;
     vertex->uv.x += data->uvVelocity.x;
     if (vertex->uv.x < 0.0f)
     {
@@ -2287,7 +3450,7 @@ int __fastcall UpdatePulsingRadialTrail(AnmVmView *vm)
         reinterpret_cast<AnmFloat3View *>(&vertex->x)->FromAngleMagnitude(
             angle, data->radii[i]);
         *reinterpret_cast<AnmFloat3View *>(&vertex->x) +=
-            vm->position + vm->preservedPosition;
+            vm->position + vm->positionOffset;
         ++vertex;
         angle += angleStep;
     }

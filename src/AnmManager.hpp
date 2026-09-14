@@ -27,6 +27,11 @@ struct AnmFloat3View
             x + other.x, y + other.y, z + other.z);
     }
 
+    AnmFloat3View operator*(float scale) const
+    {
+        return AnmFloat3View(x * scale, y * scale, z * scale);
+    }
+
     AnmFloat3View &operator+=(const AnmFloat3View &other)
     {
         x += other.x;
@@ -58,6 +63,37 @@ typedef char AnmFloat4ViewSizeIs10[
 
 struct AnmFloat2View
 {
+    AnmFloat2View operator-(const AnmFloat2View &other) const
+    {
+        AnmFloat2View result;
+        result.x = x - other.x;
+        result.y = y - other.y;
+        return result;
+    }
+
+    AnmFloat2View operator+(const AnmFloat2View &other) const
+    {
+        AnmFloat2View result;
+        result.x = x + other.x;
+        result.y = y + other.y;
+        return result;
+    }
+
+    AnmFloat2View operator*(float scale) const
+    {
+        AnmFloat2View result;
+        result.x = x * scale;
+        result.y = y * scale;
+        return result;
+    }
+
+    AnmFloat2View &operator+=(const AnmFloat2View &other)
+    {
+        x += other.x;
+        y += other.y;
+        return *this;
+    }
+
     float x;
     float y;
 };
@@ -80,6 +116,166 @@ union AnmColorView
 typedef char AnmColorViewSizeIs04[
     (sizeof(AnmColorView) == 0x04) ? 1 : -1];
 
+extern float g_AnmGameSpeed;
+
+enum AnmOpcodeView
+{
+    ANM_OP_END = -1,
+    ANM_OP_NOP = 0,
+    ANM_OP_DELETE = 1,
+    ANM_OP_STATIC = 2,
+    ANM_OP_SPRITE = 3,
+    ANM_OP_JUMP = 4,
+    ANM_OP_JUMP_DEC = 5,
+    ANM_OP_I_SET = 6,
+    ANM_OP_F_SET = 7,
+    ANM_OP_I_ADD = 8,
+    ANM_OP_F_ADD = 9,
+    ANM_OP_I_SUB = 10,
+    ANM_OP_F_SUB = 11,
+    ANM_OP_I_MUL = 12,
+    ANM_OP_F_MUL = 13,
+    ANM_OP_I_DIV = 14,
+    ANM_OP_F_DIV = 15,
+    ANM_OP_I_MOD = 16,
+    ANM_OP_F_MOD = 17,
+    ANM_OP_I_SET_ADD = 18,
+    ANM_OP_F_SET_ADD = 19,
+    ANM_OP_I_SET_SUB = 20,
+    ANM_OP_F_SET_SUB = 21,
+    ANM_OP_I_SET_MUL = 22,
+    ANM_OP_F_SET_MUL = 23,
+    ANM_OP_I_SET_DIV = 24,
+    ANM_OP_F_SET_DIV = 25,
+    ANM_OP_I_SET_MOD = 26,
+    ANM_OP_F_SET_MOD = 27,
+    ANM_OP_I_JUMP_EQ = 28,
+    ANM_OP_F_JUMP_EQ = 29,
+    ANM_OP_I_JUMP_NE = 30,
+    ANM_OP_F_JUMP_NE = 31,
+    ANM_OP_I_JUMP_LT = 32,
+    ANM_OP_F_JUMP_LT = 33,
+    ANM_OP_I_JUMP_LE = 34,
+    ANM_OP_F_JUMP_LE = 35,
+    ANM_OP_I_JUMP_GT = 36,
+    ANM_OP_F_JUMP_GT = 37,
+    ANM_OP_I_JUMP_GE = 38,
+    ANM_OP_F_JUMP_GE = 39,
+    ANM_OP_I_SET_RANDOM = 40,
+    ANM_OP_F_SET_RANDOM = 41,
+    ANM_OP_F_SIN = 42,
+    ANM_OP_F_COS = 43,
+    ANM_OP_F_TAN = 44,
+    ANM_OP_F_ACOS = 45,
+    ANM_OP_F_ATAN = 46,
+    ANM_OP_NORMALIZE_ANGLE = 47,
+    ANM_OP_POSITION = 48,
+    ANM_OP_ROTATION = 49,
+    ANM_OP_SCALE = 50,
+    ANM_OP_ALPHA1 = 51,
+    ANM_OP_COLOR1 = 52,
+    ANM_OP_ANGULAR_VELOCITY = 53,
+    ANM_OP_SCALE_GROWTH = 54,
+    ANM_OP_ALPHA1_TIME_LINEAR = 55,
+    ANM_OP_POSITION_TIME = 56,
+    ANM_OP_COLOR1_TIME = 57,
+    ANM_OP_ALPHA1_TIME = 58,
+    ANM_OP_ROTATION_TIME = 59,
+    ANM_OP_SCALE_TIME = 60,
+    ANM_OP_FLIP_X = 61,
+    ANM_OP_FLIP_Y = 62,
+    ANM_OP_STOP = 63,
+    ANM_OP_INTERRUPT_LABEL = 64,
+    ANM_OP_RENDER_STATE = 65,
+    ANM_OP_BLEND_MODE = 66,
+    ANM_OP_RENDER_MODE = 67,
+    ANM_OP_RENDER_LAYER = 68,
+    ANM_OP_STOP_HIDE = 69,
+    ANM_OP_U_SCROLL = 70,
+    ANM_OP_V_SCROLL = 71,
+    ANM_OP_VISIBLE = 72,
+    ANM_OP_Z_WRITE_DISABLE = 73,
+    ANM_OP_FLAG13 = 74,
+    ANM_OP_WAIT = 75,
+    ANM_OP_COLOR2 = 76,
+    ANM_OP_ALPHA2 = 77,
+    ANM_OP_COLOR2_TIME = 78,
+    ANM_OP_ALPHA2_TIME = 79,
+    ANM_OP_USE_SECONDARY_COLOR = 80,
+    ANM_OP_RETURN = 81,
+    ANM_OP_FLAG27 = 82,
+    ANM_OP_COMMIT_POSITION = 83,
+    ANM_OP_ALLOC_VERTICES = 84,
+    ANM_OP_FLAG28 = 85,
+    ANM_OP_UNIT_SPEED = 86,
+    ANM_OP_ALTERNATE_RNG = 87,
+    ANM_OP_CREATE_CHILD_88 = 88,
+    ANM_OP_POINT_TEXTURE_FILTER = 89,
+    ANM_OP_CREATE_CHILD_90 = 90,
+    ANM_OP_CREATE_CHILD_91 = 91,
+    ANM_OP_CREATE_CHILD_92 = 92
+};
+
+enum AnmInterpolationModeView
+{
+    ANM_INTERPOLATION_LINEAR = 0,
+    ANM_INTERPOLATION_EASE_IN = 1,
+    ANM_INTERPOLATION_EASE_IN_CUBIC = 2,
+    ANM_INTERPOLATION_EASE_IN_QUARTIC = 3,
+    ANM_INTERPOLATION_EASE_OUT = 4,
+    ANM_INTERPOLATION_EASE_OUT_CUBIC = 5,
+    ANM_INTERPOLATION_EASE_OUT_QUARTIC = 6,
+    ANM_INTERPOLATION_ADD = 7,
+    ANM_INTERPOLATION_HERMITE = 8,
+    ANM_INTERPOLATION_EASE_IN_OUT = 9,
+    ANM_INTERPOLATION_EASE_IN_OUT_CUBIC = 10,
+    ANM_INTERPOLATION_EASE_IN_OUT_QUARTIC = 11,
+    ANM_INTERPOLATION_EASE_OUT_IN = 12,
+    ANM_INTERPOLATION_EASE_OUT_IN_CUBIC = 13,
+    ANM_INTERPOLATION_EASE_OUT_IN_QUARTIC = 14,
+    ANM_INTERPOLATION_CONSTANT_ZERO = 15,
+    ANM_INTERPOLATION_CONSTANT_ONE = 16,
+    ANM_INTERPOLATION_ACCELERATE = 17
+};
+
+float CalculateAnmInterpolation(int mode, float current, float duration);
+
+struct AnmRawInstructionView
+{
+    short opcode;
+    unsigned short size;
+    short time;
+    unsigned short variableMask;
+    union
+    {
+        int intArgs[10];
+        float floatArgs[10];
+        unsigned short shortArgs[20];
+        unsigned char byteArgs[40];
+    };
+};
+
+typedef char AnmRawInstructionArgumentsAt08[
+    (offsetof(AnmRawInstructionView, intArgs) == 0x08) ? 1 : -1];
+
+struct AnmInt3View
+{
+    AnmInt3View() {}
+    AnmInt3View(int x, int y, int z)
+    {
+        this->x = x;
+        this->y = y;
+        this->z = z;
+    }
+
+    int x;
+    int y;
+    int z;
+};
+
+typedef char AnmInt3ViewSizeIs0C[
+    (sizeof(AnmInt3View) == 0x0c) ? 1 : -1];
+
 // TH10's small timer-like members clear the active bit when constructed. The
 // surrounding ANM VM constructor exposes nine such flag words at independent
 // target-proven offsets.
@@ -93,9 +289,108 @@ struct AnmVmTimerView
 
     AnmVmTimerView() { flags &= ~1u; }
     void Initialize();
+    void Add(float value);
+    void Decrement(int value)
+    {
+        Add(static_cast<float>(-value));
+    }
+    int Tick()
+    {
+        previous = current;
+        if (*scale <= 0.99f || *scale >= 1.01f)
+        {
+            subframe += *scale;
+            current = static_cast<int>(subframe);
+        }
+        else
+        {
+            ++current;
+            subframe += 1.0f;
+        }
+        return current;
+    }
+    void SetCurrent(int value)
+    {
+        if ((flags & 1u) == 0)
+        {
+            current = 0;
+            previous = -999999;
+            subframe = 0.0f;
+            scale = &g_AnmGameSpeed;
+            flags |= 1u;
+        }
+
+        current = value;
+        subframe = static_cast<float>(value);
+        previous = value - 1;
+    }
 };
 typedef char AnmVmTimerViewSizeIs14[
     (sizeof(AnmVmTimerView) == 0x14) ? 1 : -1];
+
+struct AnmVmFloat3InterpolationView
+{
+    AnmFloat3View initial;
+    AnmFloat3View final;
+    AnmFloat3View initialTangent;
+    AnmFloat3View finalTangent;
+    AnmVmTimerView timer;
+    int duration;
+    int mode;
+
+    AnmFloat3View *Evaluate(AnmFloat3View *output);
+};
+
+typedef char AnmVmFloat3InterpolationViewSizeIs4C[
+    (sizeof(AnmVmFloat3InterpolationView) == 0x4c) ? 1 : -1];
+
+struct AnmVmColorInterpolationView
+{
+    AnmInt3View initial;
+    AnmInt3View final;
+    AnmInt3View initialTangent;
+    AnmInt3View finalTangent;
+    AnmVmTimerView timer;
+    int duration;
+    int mode;
+
+    AnmInt3View *Evaluate(AnmInt3View *output);
+};
+
+typedef char AnmVmColorInterpolationViewSizeIs4C[
+    (sizeof(AnmVmColorInterpolationView) == 0x4c) ? 1 : -1];
+
+struct AnmVmAlphaInterpolationView
+{
+    int initial;
+    int final;
+    int initialTangent;
+    int finalTangent;
+    AnmVmTimerView timer;
+    int duration;
+    int mode;
+
+    int Evaluate();
+};
+
+typedef char AnmVmAlphaInterpolationViewSizeIs2C[
+    (sizeof(AnmVmAlphaInterpolationView) == 0x2c) ? 1 : -1];
+
+struct AnmVmFloat2InterpolationView
+{
+    AnmFloat2View initial;
+    AnmFloat2View final;
+    AnmFloat2View initialTangent;
+    AnmFloat2View finalTangent;
+    AnmVmTimerView timer;
+    int duration;
+    int mode;
+
+    AnmFloat2View *Evaluate(AnmFloat2View *output);
+};
+
+typedef char AnmVmFloat2InterpolationViewSizeIs3C[
+    (sizeof(AnmVmFloat2InterpolationView) == 0x3c) ? 1 : -1];
 
 struct AnmMatrixView
 {
@@ -108,14 +403,39 @@ typedef char AnmMatrixViewSizeIs40[
 
 struct AnmSpriteView;
 struct AnmVmView;
+struct AnmLoadedView;
+
+struct AnmVmIdView
+{
+    AnmVmIdView() { value = 0; }
+
+    AnmVmView *GetVm();
+
+    int value;
+};
+
+typedef char AnmVmIdViewSizeIs04[
+    (sizeof(AnmVmIdView) == 0x04) ? 1 : -1];
+
+struct AnmVmLayerNodeView
+{
+    void InsertAfter(AnmVmLayerNodeView *node);
+
+    void *owner;
+    AnmVmLayerNodeView *next;
+    AnmVmLayerNodeView *previous;
+};
+
+typedef char AnmVmLayerNodeViewSizeIs0C[
+    (sizeof(AnmVmLayerNodeView) == 0x0c) ? 1 : -1];
 
 typedef int (__fastcall *AnmVmCallback)(AnmVmView *vm);
 int __fastcall UpdatePulsingRadialTrail(AnmVmView *vm);
 int __fastcall DrawPulsingRadialTrail(AnmVmView *vm);
 
-// Exact-size view for the TH10 ANM virtual machine. Only fields established by
-// the lifecycle seam are named; the animation/render state between them stays
-// opaque until its consumers are reviewed.
+// Exact-size view for the TH10 ANM virtual machine. The lifecycle, script
+// executor, interpolation and draw paths establish the named fields below;
+// offsets that still lack a reviewed consumer remain opaque.
 struct AnmVmView
 {
     AnmVmView();
@@ -130,55 +450,56 @@ struct AnmVmView
     int *GetIntVarPtr(
         int *value, unsigned short variableMask,
         unsigned int argumentNumber);
+    void StartScaleInterpolation(
+        const AnmFloat2View *initial, const AnmFloat2View *final,
+        int duration, unsigned char mode);
+    void StartSecondaryColorInterpolation(
+        const AnmColorView *initial, const AnmColorView *final,
+        int duration, unsigned char mode);
+    void StartSecondaryAlphaInterpolation(
+        int duration, unsigned char mode,
+        unsigned char initial, unsigned char final);
+    void StartPrimaryColorInterpolation(
+        const AnmColorView *initial, const AnmColorView *final,
+        int duration, unsigned char mode);
+    void StartPrimaryAlphaInterpolation(
+        int duration, unsigned char mode,
+        unsigned char initial, unsigned char final);
 
     void *unknown000;
     AnmVmView *listSelf004;
     void *unknown008;
     void *unknown00C;
-    AnmVmView *layerSelf010;
-    void *unknown014;
-    void *unknown018;
+    AnmVmLayerNodeView layerNode;
     unsigned char unknown01C[0x004];
-    void *persistentOwner020;
+    unsigned int renderLayer;
     AnmFloat3View rotation;
-    unsigned char unknown030[0x00c];
+    AnmFloat3View angularVelocity;
     float scaleX;
     float scaleY;
-    unsigned char unknown044[0x008];
+    AnmFloat2View scaleGrowth;
     float spriteWidth;
     float spriteHeight;
     float uvScrollX;
     float uvScrollY;
-    AnmVmTimerView timer05C;
-    unsigned char unknown070[0x030];
-    AnmVmTimerView timer0A0;
-    int state0B4;
-    unsigned char unknown0B8[0x034];
-    AnmVmTimerView timer0EC;
-    int state100;
-    unsigned char unknown104[0x014];
-    AnmVmTimerView timer118;
-    int state12C;
-    unsigned char unknown130[0x034];
-    AnmVmTimerView timer164;
-    int state178;
-    unsigned char unknown17C[0x024];
-    AnmVmTimerView timer1A0;
-    int state1B4;
-    unsigned char unknown1B8[0x034];
-    AnmVmTimerView timer1EC;
-    int state200;
-    unsigned char unknown204[0x014];
-    AnmVmTimerView timer218;
-    int state22C;
-    unsigned char unknown230[0x00c];
+    AnmVmTimerView scriptTimer;
+    AnmVmFloat3InterpolationView positionInterpolation;
+    AnmVmColorInterpolationView primaryColorInterpolation;
+    AnmVmAlphaInterpolationView primaryAlphaInterpolation;
+    AnmVmFloat3InterpolationView rotationInterpolation;
+    AnmVmFloat2InterpolationView scaleInterpolation;
+    AnmVmColorInterpolationView secondaryColorInterpolation;
+    AnmVmAlphaInterpolationView secondaryAlphaInterpolation;
+    float uvScrollVelocityX;
+    float uvScrollVelocityY;
     AnmMatrixView matrix23C;
     AnmMatrixView matrix27C;
     AnmMatrixView textureMatrix2BC;
     AnmColorView primaryColor;
     AnmColorView secondaryColor;
-    unsigned char unknown304[0x004];
-    void *anmFile308;
+    short pendingInterrupt;
+    short unknown306;
+    AnmLoadedView *anmFile;
     union
     {
         int intVar0;
@@ -194,8 +515,8 @@ struct AnmVmView
     int counterVar0;
     int counterVar1;
     AnmFloat3View position;
-    AnmFloat3View preservedPosition;
-    AnmFloat3View spriteOffset;
+    AnmFloat3View positionOffset;
+    AnmFloat3View alternatePosition;
     void *generatedVertices;
     union
     {
@@ -207,22 +528,38 @@ struct AnmVmView
             unsigned int updateRotation : 1;
             unsigned int updateScale : 1;
             unsigned int blendMode : 2;
-            unsigned int unknownFlags06 : 8;
+            unsigned int unknownFlags06 : 2;
+            unsigned int useAlternatePosition : 1;
+            unsigned int flipX : 1;
+            unsigned int flipY : 1;
+            unsigned int zWriteDisabled : 1;
+            unsigned int stopped : 1;
+            unsigned int flag13 : 1;
             unsigned int useStaticMatrix : 1;
             unsigned int useSecondaryColor : 1;
-            unsigned int unknownFlags16 : 2;
+            unsigned int unknownFlag16 : 1;
+            unsigned int scriptDisabled : 1;
             unsigned int renderStateA : 2;
             unsigned int renderStateB : 2;
             unsigned int renderMode : 4;
-            unsigned int unknownFlags26 : 5;
+            unsigned int unknownFlag26 : 1;
+            unsigned int flag27 : 1;
+            unsigned int flag28 : 1;
+            unsigned int useUnitSpeed : 1;
+            unsigned int useAlternateRng : 1;
             unsigned int usePointTextureFilter : 1;
         };
     };
     unsigned char unknown360[0x008];
-    AnmVmTimerView timer368;
-    unsigned char unknown37C[0x008];
+    AnmVmTimerView interruptReturnTimer;
+    AnmRawInstructionView *interruptReturnInstruction;
+    int timeOfLastSpriteSet;
     short activeSpriteIndex;
-    unsigned char unknown386[0x00e];
+    short anmFileIndex;
+    short baseSpriteIndex;
+    short scriptIndex;
+    AnmRawInstructionView *beginningOfScript;
+    AnmRawInstructionView *currentInstruction;
     AnmSpriteView *loadedSprite;
     AnmVmCallback positionCallback;
     AnmVmCallback drawCallback;
@@ -234,7 +571,7 @@ typedef char AnmVmViewSizeIs3AC[
 typedef char AnmVmGeneratedVerticesAt358[
     (offsetof(AnmVmView, generatedVertices) == 0x358) ? 1 : -1];
 typedef char AnmVmLastTimerFlagsAt378[
-    (offsetof(AnmVmView, timer368.flags) == 0x378) ? 1 : -1];
+    (offsetof(AnmVmView, interruptReturnTimer.flags) == 0x378) ? 1 : -1];
 typedef char AnmVmActiveSpriteAt384[
     (offsetof(AnmVmView, activeSpriteIndex) == 0x384) ? 1 : -1];
 typedef char AnmVmPositionAt334[
@@ -257,19 +594,40 @@ typedef char AnmVmTextureMatrixAt2BC[
     (offsetof(AnmVmView, textureMatrix2BC) == 0x2bc) ? 1 : -1];
 typedef char AnmVmFlagsAt35C[
     (offsetof(AnmVmView, flags35C) == 0x35c) ? 1 : -1];
+typedef char AnmVmScriptStateAt304[
+    (offsetof(AnmVmView, pendingInterrupt) == 0x304 &&
+     offsetof(AnmVmView, anmFile) == 0x308 &&
+     offsetof(AnmVmView, interruptReturnInstruction) == 0x37c &&
+     offsetof(AnmVmView, timeOfLastSpriteSet) == 0x380 &&
+     offsetof(AnmVmView, beginningOfScript) == 0x38c &&
+     offsetof(AnmVmView, currentInstruction) == 0x390) ? 1 : -1];
+typedef char AnmVmInterpolationLayoutAt070[
+    (offsetof(AnmVmView, positionInterpolation) == 0x070 &&
+     offsetof(AnmVmView, positionInterpolation.timer) == 0x0a0 &&
+     offsetof(AnmVmView, primaryColorInterpolation) == 0x0bc &&
+     offsetof(AnmVmView, primaryAlphaInterpolation) == 0x108 &&
+     offsetof(AnmVmView, rotationInterpolation) == 0x134 &&
+     offsetof(AnmVmView, scaleInterpolation) == 0x180 &&
+     offsetof(AnmVmView, secondaryColorInterpolation) == 0x1bc &&
+     offsetof(AnmVmView, secondaryAlphaInterpolation) == 0x208 &&
+     offsetof(AnmVmView, uvScrollVelocityX) == 0x234) ? 1 : -1];
 
 struct AnmSpriteView
 {
     unsigned char unknown000[0x004];
     void *texture;
-    unsigned char unknown008[0x018];
+    unsigned char unknown008[0x010];
+    float textureHeight;
+    float textureWidth;
     float uStart;
     float vStart;
     float uEnd;
     float vEnd;
-    float width;
     float height;
-    unsigned char unknown038[0x00c];
+    float width;
+    float horizontalScale;
+    float verticalScale;
+    unsigned int unknown040;
 };
 
 typedef char AnmSpriteViewSizeIs44[
@@ -280,9 +638,23 @@ typedef char AnmSpriteUvAt20[
 
 struct AnmLoadedView
 {
-    unsigned char unknown000[0x118];
+    unsigned char unknown000[0x108];
+    void *rawData;
+    unsigned char unknown10C[0x00c];
     AnmSpriteView *sprites;
+    unsigned char unknown11C[0x008];
+    int pendingLoadCount;
+
+    int SetSprite(AnmVmView *vm, int spriteIndex);
+    AnmVmIdView CreateVmVariant0(int scriptIndex, unsigned int renderLayer);
+    AnmVmIdView CreateVmVariant1(int scriptIndex, unsigned int renderLayer);
+    AnmVmIdView CreateVmVariant2(int scriptIndex, unsigned int renderLayer);
+    AnmVmIdView CreateVmVariant3(int scriptIndex, unsigned int renderLayer);
 };
+
+typedef char AnmLoadedSpritesAt118[
+    (offsetof(AnmLoadedView, sprites) == 0x118 &&
+     offsetof(AnmLoadedView, pendingLoadCount) == 0x124) ? 1 : -1];
 
 struct AsciiManagerStringView
 {
@@ -472,6 +844,7 @@ struct AnmRenderManagerView
     AnmColorView mixColor;
     int useMixColor;
 
+    static int ExecuteScript(AnmVmView *vm);
     void ClearVertexBuffer();
     void FlushVertexBuffer();
     int AddSpriteToDrawBuffer(AnmRenderVertexView *vertices);
@@ -589,7 +962,10 @@ extern AnmRenderVertexView g_AnmQuadVertices[4];
 extern AnmViewportOwnerView *g_AnmViewportOwner;
 extern AnmFloat3View g_AnmBackgroundCameraPosition;
 extern AnmFloat3View g_AnmPosition491DA0;
+extern AnmFloat3View g_AnmPositionOffsetDelta;
 extern AnmPhotoBlendView g_AnmPhotoBlend;
+
+float __stdcall AddNormalizeAngle(float angle, float delta);
 
 unsigned char __fastcall MixAnmColor(
     unsigned char source, unsigned char multiplier);

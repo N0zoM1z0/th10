@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `2d8c48b gpt-5.6-sol: recover ANM radial trail and RNG`, branch `main`.
+- Current packet base: `92db5f4 gpt-5.6-sol: recover ANM script variables`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -32,14 +32,15 @@
 - Completed session checkpoint: `f6d88dd gpt-5.6-sol: recover ANM direct 3D`.
 - Completed session checkpoint: `09e4da8 gpt-5.6-sol: recover ANM generated geometry`.
 - Completed session checkpoint: `2d8c48b gpt-5.6-sol: recover ANM radial trail and RNG`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ANM script variables`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean ANM draw-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-runtime/`. The earlier radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `92db5f4 gpt-5.6-sol: recover ANM script variables`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct ANM script executor`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean ANM script-variable checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-executor/`. The earlier script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `2d8c48b...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `92db5f4...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -54,43 +55,68 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM script variables
+## Current packet: ANM script executor and interpolation core
 
-The four variable helpers immediately before the 9,587-byte script executor
-are now source-present. They establish VM integer locals at `+0x30C..+0x318`,
-float locals at `+0x31C..+0x328`, and two integer counters at `+0x32C/+0x330`.
-`GetFloatVar` resolves IDs 10000-10021 across those locals, both RNG owners,
-VM position, the background-camera Float3 at `0x00491D7C`, and a second
-semantically unknown Float3 at `0x00491DA0`. `GetIntVar` resolves IDs
-10000-10009, while the two mask-aware pointer helpers redirect writable
-instruction operands to the legal float/position or integer/counter slots.
+`AnmRenderManagerView::ExecuteScript @ 0x0043EE30-0x004413A2` is now a complete
+maintained source body rather than a declaration. The target instruction header
+is eight bytes (`opcode`, `size`, `time`, `variableMask`) followed by typed
+arguments. The executor implements every target opcode from `-1` through `92`,
+including interrupt save/restore, variable reads and writable operands,
+arithmetic/comparison/jump behavior, RNG and trigonometry, sprite/transform and
+render flags, child-VM creation, callback setup, and the end-of-frame position,
+rotation, scale, UV, color, alpha and timer updates. The absolute opcode table
+at `0x004413A4` remains separate from the 9,587-byte physical contribution.
 
-Direct target and PDB review extend all four candidates through their inline
-absolute jump tables: `GetFloatVar` is 424 bytes, `GetIntVar` is 144,
-`GetFloatVarPtr` is 156, and `GetIntVarPtr` is 132. A shared `/GL` artifact with
-`RandomMath.cpp` supplied reproduces the latter three contributions exactly,
-adding **3 functions / 432 bytes**. The manifests cover the `__ftol2` calls and
-every self-relative jump-table entry. `GetFloatVar` is source-correct but
-remains non-exact at 452 candidate bytes: its public compiler entry saves and
-restores ESI, while target `ExecuteScript @ 0x0043EE30` retains the VM in ESI
-for the private call context.
+The executor review replaces most of the VM's opaque middle with target-bound
+fields. The 0x3AC-byte VM now carries seven typed interpolation slots from
+`+0x070` through `+0x233`, three matrices at `+0x23C/+0x27C/+0x2BC`, two BGRA
+colors, script locals and counters, three position vectors, generated-geometry
+state, interrupt return state, resource/script/sprite pointers and update/draw
+callbacks. `AnmLoadedView::SetSprite` establishes the loaded sprite stride,
+texture dimensions, UV rectangle, scale and texture-matrix writes. Four child
+creation variants and VM-id lookup remain declared seams because their bodies
+have not yet been reconstructed.
 
-The linked-image normalizer now handles a decoder stopping inside the last
-absolute jump-table entry. An undecoded suffix is complete only when every byte
-belongs to authoritative PE base-relocation fields; ordinary undecoded bytes
-and undeclared fields still fail closed. This closes a real Oracle gap for PDB
-code contributions whose physical extent ends in inline data.
+Fifteen connected helper bodies are also source-present: the four interpolation
+evaluators, scalar interpolation curve, integer-triplet scaling, five setup
+functions, intrusive child-node insertion, sprite binding, angular wrapping and
+timer addition. All interpolation modes `0..17` are represented, including the
+state-mutating add/accelerate modes and component-truncating Hermite color path.
+The primary-alpha setup remains non-exact because the current partial executor
+context registerizes its mode in EDX while the target keeps that argument on the
+stack; the mismatch is retained rather than hidden with an artificial shim.
 
-Current tracking contains **1,298** candidates, **194** authored functions,
-**166** source mappings, and **82 canonical exact functions / 8,328 bytes**.
-The authored source backlog is **80**. The full `src/AnmManager.cpp` canonical
-set is **32 functions / 6,337 bytes** across seven artifact contexts; affected
-ANM/RNG cold replay passes **36 functions / 6,678 bytes** across eight artifact
-builds and two source files.
+Supplying `RandomMath.cpp` beside this real executor entry also closes almost
+all of the radial-trail initializer's former context gap. Its linked PDB
+contribution is now exactly 803 bytes against the 803-byte target and differs
+in only eight ordinary bytes: one independent-load scheduling choice in the
+inlined RNG expression and the operand order of one commutative Y sum. Scoping
+the 12-byte direction temporary inside the loop and writing vertex Z before UV
+recover the target's reused stack slot and remove 18 earlier differences. This
+is a strong near match, but it has no exactness credit.
 
-The next high-value ANM frontier remains `ExecuteScript @ 0x0043EE30`. Its
-recovery supplies the private context needed to close `GetFloatVar` and the
-radial-trail initializer while restoring the central ANM opcode dispatcher.
+The real executor `/GL` context produces eight new canonical exact units:
+child-node insertion (23 bytes), scale setup (136), sprite binding (356),
+secondary-alpha setup (116), both color setups (208 each), signed-pi angular
+addition (94), and timer addition (88). Two independent cold artifact builds
+replay all **8 functions / 1,229 bytes** exactly, including every declared
+constant, runtime-helper and global-speed field. In particular, writing
+`duration` before `mode` recovers the secondary-alpha private ABI, endpoint
+value construction recovers the two color helpers, and the target-observed
+callee-cleans `RET 8` establishes `AddNormalizeAngle` as `__stdcall`.
+
+Current tracking contains **1,298** candidates, **210** authored functions,
+**182** source mappings, and **90 canonical exact functions / 9,557 bytes**.
+The authored source backlog is **88**. The `src/AnmManager.cpp` canonical set is
+**40 functions / 7,566 bytes** and passes a complete cold replay across eight
+independent artifact contexts. The full executor itself remains non-exact: the
+current `/GL` PDB contribution is 8,548 bytes versus the 9,587-byte target, so
+source presence, semantic completeness and exact code generation remain
+separate claims.
+
+The next ANM frontier is to reconstruct the four child-VM creators and VM-id
+lookup used by opcodes 69-72, then re-probe the executor, `GetFloatVar`, and the
+eight-byte radial-trail near match in that richer caller graph.
 
 ## Completed packet: ANM radial trail and RNG
 

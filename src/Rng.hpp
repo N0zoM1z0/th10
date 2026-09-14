@@ -13,6 +13,16 @@ struct RngView
     unsigned int GetRandomU32();
     float GetRandomF32();
     float GetRandomF32Signed();
+
+    unsigned int GetRandomU32InRange(unsigned int range)
+    {
+        return range != 0 ? GetRandomU32() % range : 0;
+    }
+
+    float GetRandomF32InRange(float range)
+    {
+        return GetRandomF32() * range;
+    }
 };
 
 typedef char RngViewSizeIs08[
