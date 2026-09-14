@@ -15,6 +15,8 @@ import sys
 import tempfile
 import tomllib
 
+from linked_image import linked_functions
+
 
 ROOT = Path(__file__).resolve().parents[1]
 LOCK = ROOT / "config" / "tools.lock.toml"
@@ -173,6 +175,8 @@ def execute(tool: dict[str, object], wine: dict[str, object]) -> dict[str, objec
         ltcg_obj = scratch / "ltcg-cpp.obj"
         resource = scratch / "probe.res"
         executable = scratch / "probe.exe"
+        map_path = scratch / "probe.map"
+        linked_pdb = scratch / "probe.pdb"
         compile_script = ROOT / "scripts" / "compile-probe.sh"
         for source, output, flags in (
             (ROOT / "probes/toolchain-smoke.c", c_obj, ["/O2", "/Gy"]),
@@ -206,16 +210,35 @@ def execute(tool: dict[str, object], wine: dict[str, object]) -> dict[str, objec
             "/nodefaultlib",
             "/subsystem:console",
             "/entry:factory_toolchain_cpp_probe",
+            "/incremental:no",
+            "/fixed:no",
+            "/debug",
+            "/debugtype:cv",
+            "/opt:noref",
+            "/opt:noicf",
+            "/map:" + windows_path(environment, map_path),
+            "/pdb:" + windows_path(environment, linked_pdb),
             "/out:" + windows_path(environment, executable),
             windows_path(environment, ltcg_obj),
             windows_path(environment, resource),
         )
         verify_pe32(executable)
+        linked = linked_functions(executable, map_path, linked_pdb)
+        smoke_functions = [
+            function
+            for function in linked["functions"]
+            if function["symbol"] == "_factory_toolchain_cpp_probe"
+        ]
+        if len(smoke_functions) != 1 or smoke_functions[0]["size"] != 10:
+            raise ValueError(
+                "linked-image extent smoke did not recover the expected LTCG function"
+            )
 
     return {
         "ready": True,
         "identity_pass": True,
         "execution_pass": True,
+        "linked_image_extent_pass": True,
         "compiler_banner": str(tool["compiler_banner"]),
         "linker_banner": str(tool["linker_banner"]),
         "toolchain_commit": str(tool["commit"]),

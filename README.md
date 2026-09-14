@@ -52,6 +52,7 @@ python3 scripts/verify-toolchain.py --execute
 python3 scripts/build-match-unit.py --check
 python3 scripts/report-exact-backlog.py
 python3 scripts/probe-exact-backlog.py --source src/PbgArchive.cpp
+python3 scripts/probe-ltcg-backlog.py --source src/PbgArchive.cpp
 python3 scripts/replay-exact-units.py
 ```
 
@@ -59,6 +60,8 @@ Canonical units from the same source and compiler profile share one object.
 The replay command removes that output, compiles it once, and checks every
 selected function against the target with its declared relocations.
 
+The linked LTCG probe derives function extents from the linker's PDB section
+contributions and reports structural candidates without granting exactness.
 The executable tool payload is shared and ignored; its 32-bit Wine prefix is
 game-bound, ignored, and always driven through Xvfb. A normal-COFF function
 comparison cannot establish an LTCG-owned function. See

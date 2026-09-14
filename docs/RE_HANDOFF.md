@@ -10,9 +10,10 @@
 - Completed session checkpoint: `621add9 gpt-5.6-sol: promote exact LZSS state reset`.
 - Completed session checkpoint: `88800b6 gpt-5.6-sol: report exact reconstruction backlog`.
 - Completed session checkpoint: `96f17c6 gpt-5.6-sol: harden COFF extent diagnostics`.
-- Planned current checkpoint subject: `gpt-5.6-sol: batch probe exact backlog`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `d59f975 gpt-5.6-sol: batch probe exact backlog`.
+- Planned current checkpoint subject: `gpt-5.6-sol: add LTCG linked-image diagnostics`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery found no staged, unstaged, or untracked files. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260914-batch-backlog-probe/`. Earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260914-ltcg-linked-diagnostics/`. Earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -32,9 +33,17 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: batch normal-COFF backlog diagnostics
+## Current packet: linked LTCG backlog diagnostics
 
-The new `scripts/probe-exact-backlog.py` cold-compiles each selected source once under fixed `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc`, enumerates strict COFF functions, joins conservative source-name hints only when one external symbol matches, and runs every authored source backlog entry through target-bound probe comparison. Unresolved mappings, true size/byte mismatches and structural-exact results are separate states; the entire report has `acceptance_authority=none`.
+The repository now parses MSF 7/PDB DBI section contributions directly and joins them to VC7.1 linker-map publics and PE raw bytes. It fails closed unless the PDB RSDS GUID/age matches the PE CodeView record and map timestamp, image base, public start, and section layout all agree. `verify-toolchain.py --execute` exercises this PE/PDB extent path in addition to the existing compiler, resource, and link smoke.
+
+`scripts/probe-ltcg-backlog.py` cold-compiles one source at a time with fixed `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc /GL`, then performs an iterative diagnostic link. Missing externals receive distinct non-runnable data anchors, allowing every linked field to retain a unique candidate-symbol identity without manufacturing executable stubs. PE HIGHLOW fields and decoded external control-flow operands are masked only for structural comparison. The harness, every result, and the report itself explicitly carry no acceptance authority.
+
+The complete authored backlog scan covers all **66 functions across nine sources**. It found **13 structural-exact diagnostics / 715 bytes** and 53 mismatches: three Enemy lifecycle bodies, four Lzss tree helpers, five PbgArchive helpers, and `CPbgFile::GetFullFilePath`. The two PbgArchive pointer-advance helpers have no linked fields and reproduce all **63 raw bytes**. The other 11 candidates contain 34 resolved fields requiring explicit symbol/target review before any canonical linked unit can exist. Two independent cold PbgArchive passes reproduced the same result/extent/field signature. Exact ledger totals did not change.
+
+## Completed packet: batch normal-COFF backlog diagnostics
+
+Checkpoint `d59f975` added `scripts/probe-exact-backlog.py`. It cold-compiles each selected source once under fixed `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc`, enumerates strict COFF functions, joins conservative source-name hints only when one external symbol matches, and runs every authored source backlog entry through target-bound probe comparison. Unresolved mappings, true size/byte mismatches and structural-exact results are separate states; the entire report has `acceptance_authority=none`.
 
 The complete current run covers all **66 authored, source-present, non-exact functions across nine sources**. All 66 map uniquely to a COFF symbol and all 66 are real mismatches; there are zero unresolved and zero structural-exact results. Thus the fixed normal profile has no additional exact unit waiting for ledger-only promotion. This does not reject alternate normal profiles or LTCG ownership.
 
@@ -142,7 +151,7 @@ Current ledger at the backlog-report checkpoint:
 - source-present: **90 / 39,658 bytes**
 - canonical exact: **20 / 700 bytes**
 
-Current infrastructure-packet delta from `96f17c6`: no ledger totals changed. The strict fixed-profile scan classifies all 66 authored source backlog functions as mismatch. Session exact delta from `444eb1a...` remains **+16 functions / +523 bytes**.
+Current infrastructure-packet delta from `d59f975`: no ledger totals changed. The linked LTCG diagnostic classifies 13 of 66 authored backlog functions as structural-exact candidates but grants no exactness credit. Session exact delta from `444eb1a...` remains **+16 functions / +523 bytes**.
 
 **Source presence:** no source mapping changed.
 
@@ -162,13 +171,13 @@ The hard campaign `.analysis/gpt-web/20260914-enemy-dispatcher-hard/` exits with
 
 The previous Web checkpoint's final `.analysis/` inventory was **347 regular files / 3,966,359 logical bytes / 4,796 KiB allocated / 0 files >64 MiB**. No legacy/unknown artifact was bulk-deleted, and the ignored private `resources/th10.exe` was not modified, moved, staged or committed.
 
-The current batch-probe campaign retains one compact manifest; full JSON reports and objects are reproducible below ignored `build/`. Current `.analysis/` inventory is **357 regular files / 3,980,867 logical bytes / 0 files >64 MiB**. No copied target was created.
+The linked-diagnostic campaign retains one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. Current `.analysis/` inventory is **358 regular files / 3,981,592 logical bytes / 0 files >64 MiB**. No copied target was created.
 
 ## Next hard frontier
 
-The fixed normal-profile backlog is now fully scanned and contains no unregistered structural-exact unit. Continue with focused source/profile work on a bounded mismatch, using the batch report to measure changes, or implement the separate linked-image extent Oracle needed for LTCG experiments. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
+Turn the two raw-equal, relocation-free PbgArchive helpers into the first fail-closed canonical linked-image units. The acceptance path must cold rebuild `/GL`, rebind PE/map/PDB, require the complete PDB contribution extent, reject the diagnostic image as a product, and replay every declared linked field for later candidates. Then review the 34 fields across the other 11 structural candidates against target symbols before promoting them. Compiler-generated deleting destructors and origin-unknown constructor-shaped bodies remain outside the authored exact queue.
 
-After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. In parallel with later product work, the major infrastructure gap remains a target-bound linked-image extent Oracle for LTCG-owned code; normal-COFF exact units do not close that gap.
+After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. In parallel with later product work, canonical linked-image resolved-field replay and the real production link graph remain major infrastructure gaps; diagnostic LTCG links and normal-COFF exact units do not close them.
 
 The adjacent `0x00412AA0` and later ECL helper corridor is also relevant as ABI/owner context, but smaller size alone is not a reason to abandon the central owner. The three newly discovered unreferenced `0x00412A60/70/80` candidates require origin evidence before any authored promotion.
 

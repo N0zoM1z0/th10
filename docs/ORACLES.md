@@ -11,7 +11,8 @@ view supplies every kind of truth.
 | Compiler generation | PE/Rich evidence plus hash/banner-pinned headless compiler probe | observed generation/build and supported artifact families, not per-unit flags |
 | Source presence | maintained mapping and source file | no exactness credit |
 | Normal-COFF codegen exactness | cold pinned historical-compiler object build, complete bytes and relocations | zero difference for full accepted extent |
-| LTCG codegen exactness | pinned compiler plus link-time image-extent workflow | currently unavailable; never substitute standalone COFF |
+| LTCG structural diagnosis | pinned compiler/linker, PE-bound PDB contribution extent, complete linked bytes and resolved-field inventory | routes canonical-unit review; no exactness credit |
+| LTCG codegen exactness | cold pinned compiler/linker plus canonical linked-image resolved-field replay | currently unavailable; never promote a stubbed diagnostic image |
 | Native product closure | cold compile/link graph, imports/resources/data owners | no missing required production owner |
 | Runtime semantics | deterministic scenarios against original and native products | both Oracles agree on declared observables |
 | Port behavior | native baseline plus port scenario | separate portability claim |
@@ -21,13 +22,22 @@ Decompiler text, names, types, and candidate extents remain provisional. A
 successful build or visually plausible runtime also cannot waive missing bytes,
 relocations, data owners, or scenario observables.
 
-The toolchain smoke proves that normal C/C++ COFF, C++ `/GL`, resources, and
-a PE32 link execute under headless Wine. It grants no TH10 source, profile,
-ownership, or exactness credit. The normal-COFF comparator is intentionally
+The toolchain smoke proves that normal C/C++ COFF, C++ `/GL`, resources, a
+PE32 link, and PE/PDB contribution binding execute under headless Wine. It
+grants no TH10 source, profile, ownership, or exactness credit. The
+normal-COFF comparator is intentionally
 narrow because the target's Rich stream also contains LTCG C++ inputs. It
 derives each candidate function extent from a COFF function-definition record
 or a single-function COMDAT code section; a caller-supplied target size cannot
 widen the candidate past its own section.
+
+The LTCG diagnostic compiles one selected maintained source and links it with
+unique non-runnable data anchors for missing external symbols. The linker's PDB
+supplies each contribution extent. PE CodeView GUID/age, map timestamp/image
+base, public start, and PE section layout must all agree. Link-address fields
+are enumerated and masked only for structural comparison. Because the harness
+is incomplete and does not establish production ownership or link context, its
+results always carry `acceptance_authority=none`.
 
 If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent

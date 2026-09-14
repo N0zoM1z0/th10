@@ -4,7 +4,7 @@
 | --- | --- | --- |
 | Verify the private target | `python3 scripts/verify-target.py` | Target identity, PE structure, and Rich record stream |
 | Verify shared analyzer surfaces | `python3 scripts/verify-analysis-tools.py` | Selected Ghidra/JDK file identity |
-| Attest and execute VC7.1 SP1 | `python3 scripts/verify-toolchain.py --execute` | Hash/banner identity plus headless normal-COFF, LTCG, resource, and PE32-link smoke |
+| Attest and execute VC7.1 SP1 | `python3 scripts/verify-toolchain.py --execute` | Hash/banner identity plus headless normal-COFF, LTCG, resource, PE32 link, and PE/PDB extent smoke |
 | Compile a source/profile hypothesis | `scripts/compile-probe.sh SOURCE OUTPUT.obj FLAG...` | Compiler observation only |
 | Compare a normal-COFF source probe | `python3 scripts/compare-coff-function.py OBJECT SYMBOL ADDRESS SIZE --json` | Relocation-masked diagnostic plus target-derived relocation candidates; no acceptance authority |
 | Enumerate normal-COFF functions | `python3 scripts/compare-coff-function.py OBJECT --list-functions [--contains TEXT] [--json]` | Exact decorated symbol, section extent and relocation count for probe setup; no acceptance authority |
@@ -13,6 +13,8 @@
 | Cold-replay canonical exact units | `python3 scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold compile per shared source/profile/object followed by strict comparison of every selected unit |
 | List the source-present exact backlog | `python3 scripts/report-exact-backlog.py [--source SOURCE] [--module MODULE] [--state authored\|origin-review\|excluded\|all] [--json]` | Triage-only joined view of non-exact source mappings; default excludes origin-pending entries |
 | Batch-probe the authored exact backlog | `python3 scripts/probe-exact-backlog.py [--source SOURCE] [--show RESULT] [--json]` | One cold normal-COFF compile per source plus strict diagnostic comparison; no acceptance authority |
+| Inspect linked function extents | `python3 scripts/inspect-linked-functions.py IMAGE MAP PDB [--object TEXT] [--contains TEXT] [--json]` | PE/map/PDB-bound public functions whose sizes come from DBI section contributions; no acceptance authority |
+| Batch-probe LTCG backlog | `python3 scripts/probe-ltcg-backlog.py [--source SOURCE] [--show RESULT] [--json]` | Cold `/GL` compile and diagnostic link, PDB-owned extents, and target structural comparison; no acceptance authority |
 | Initialize private Ghidra project | `python3 scripts/ghidra.py import` | Operator-only bootstrap; provisional inventory |
 | Attest private Ghidra project | `python3 scripts/ghidra.py check` | Target/project binding, no exactness credit |
 | Discover/call Ghidra | Factory provider `th10-ghidra` | Target-attested provisional semantic analysis |
@@ -44,8 +46,13 @@ local override; receipts bind those selector values and tool files.
 
 The target is not a uniform standalone-COFF build. Rich product IDs establish
 normal C, normal C++, and LTCG C++ inputs. The current exact comparator accepts
-only `artifact_kind = "coff"` units and rejects `/GL`; an LTCG hypothesis
-must remain non-accepted until a linked-image extent Oracle is implemented.
+only `artifact_kind = "coff"` units and rejects `/GL`. The linked LTCG probe
+now recovers exact candidate extents from a PDB bound to the PE by its CodeView
+GUID/age and to the linker map by timestamp, image base, public start, and PE
+section layout. Its unresolved-symbol data-anchor harness is intentionally
+non-runnable and can only provide structural diagnostics. An LTCG result remains
+non-accepted until a canonical linked-image unit declares and replays every
+link-resolved field through a cold build.
 Probe-mode relocation targets are decoded from the selected target window to
 make a prospective canonical manifest reviewable. They remain candidates until
 the symbol meaning, complete extent, and relocation ownership are reviewed and

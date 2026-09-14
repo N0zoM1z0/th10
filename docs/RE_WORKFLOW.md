@@ -27,8 +27,11 @@ disk target, Ghidra target, ledgers, and live status using the commands in
    profile and physical owner are still hypotheses. Determine whether the
    candidate belongs to a normal C/C++ COFF unit or to LTCG. For normal COFF,
    compare the complete owned extent and every relocation. For LTCG, do not
-   strip `/GL` and do not use the standalone comparator; keep exactness
-   unknown until a linked-image extent Oracle exists. Distinguish source,
+   strip `/GL` and do not use the standalone comparator. Use
+   `python3 scripts/probe-ltcg-backlog.py --source SOURCE` to recover a
+   PE/PDB-bound linked extent and structural diagnostic, while keeping exactness
+   unknown until a canonical linked-image unit replays every resolved field.
+   Distinguish source,
    profile, boundary, ownership, optimizer, and library mismatches.
    `python3 scripts/probe-exact-backlog.py --source SOURCE` performs the fixed
    normal-COFF batch diagnostic after deriving symbols and extents from the
