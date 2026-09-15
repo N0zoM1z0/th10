@@ -76,8 +76,8 @@ enum FrontEndScreenView
     FRONT_END_SCREEN_SHOT_TYPE = 8,
     FRONT_END_SCREEN_STAGE = 9,
     FRONT_END_SCREEN_START_GAME_10 = 10,
-    FRONT_END_SCREEN_REPLAY = 11,
-    FRONT_END_SCREEN_PRACTICE = 12,
+    FRONT_END_SCREEN_PRACTICE = 11,
+    FRONT_END_SCREEN_REPLAY = 12,
     FRONT_END_SCREEN_START_GAME_13 = 13,
     FRONT_END_SCREEN_MUSIC_ROOM = 14,
     FRONT_END_SCREEN_SPECIAL = 15,
@@ -186,6 +186,7 @@ struct FrontEndControllerView
     ReplayManager *replayFiles[50];
 
     int Update();
+    int Draw();
     static int __stdcall UpdateOptions(FrontEndControllerView *controller);
     void RefreshOptionsDisplay();
     static int __stdcall UpdateKeyConfig(FrontEndControllerView *controller);
@@ -200,6 +201,7 @@ struct FrontEndControllerView
     static int __stdcall DrawReplay(FrontEndControllerView *controller);
     static int __stdcall UpdatePractice(FrontEndControllerView *controller);
     int RefreshPracticeRecords();
+    int DrawPractice();
 };
 
 typedef char FrontEndControllerStateAt1C[

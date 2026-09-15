@@ -431,7 +431,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042CD50,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0042CDB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0042CDF0,authored_game,FrontEnd,authored,high,frontend-options-core-2026-09-15
-0x0042D260,unknown,FrontEnd,review,unknown,frontend-gap-boundaries-2026-09-15
+0x0042D260,authored_game,FrontEnd,authored,high,frontend-practice-draw-2026-09-15
 0x0042D2E0,unknown,FrontEnd,review,unknown,frontend-gap-boundaries-2026-09-15
 0x0042D2F0,unknown,FrontEnd,review,unknown,frontend-gap-boundaries-2026-09-15
 0x0042D300,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -450,7 +450,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00431BA0,authored_game,FrontEnd,authored,high,frontend-replay-core-2026-09-15
 0x00431EE0,authored_game,FrontEnd,authored,high,frontend-practice-core-2026-09-15
 0x00432690,authored_game,FrontEnd,authored,high,frontend-practice-core-2026-09-15
-0x004329F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004329F0,authored_game,FrontEnd,authored,high,frontend-practice-draw-2026-09-15
 0x00432CB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00433230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00433570,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

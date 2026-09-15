@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `8edf352 gpt-5.6-sol: reconstruct front-end replay core`, branch `main`.
+- Current packet base: `9cbe831 gpt-5.6-sol: reconstruct front-end practice core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -49,9 +49,10 @@
 - Completed session checkpoint: `5b6a544 gpt-5.6-sol: reconstruct front-end selection core`.
 - Completed session checkpoint: `41c0f09 gpt-5.6-sol: reconstruct front-end stage core`.
 - Completed session checkpoint: `8edf352 gpt-5.6-sol: reconstruct front-end replay core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end practice core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `9cbe831 gpt-5.6-sol: reconstruct front-end practice core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: complete front-end practice draw`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-practice-core/`. The earlier front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-practice-draw/`. The earlier front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -377,6 +378,51 @@ Repository totals become **1,312 candidates, 276 source mappings, 292 reviewed
 authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage is
 340,371 `.text` bytes; the indexed-table queue is now 59 references inside
 their recorded owner and 41 outside.
+
+## Completed packet: front-end practice draw and discriminator correction
+
+The practice-record screen is now complete through its draw path, and the
+front-end draw dispatcher itself has maintained source:
+
+- `FrontEndControllerView::Draw @ 0x0042D260-0x0042D2D3` (116 bytes)
+- `FrontEndControllerView::DrawPractice @ 0x004329F0-0x00432CA0`
+  (689 bytes)
+
+Reviewing the target draw table exposed a semantic error in the maintained
+screen enum. Target discriminator 11 dispatches to `UpdatePractice @
+0x00431EE0` and `DrawPractice @ 0x004329F0`; discriminator 12 dispatches to
+`UpdateReplay @ 0x004315C0` and `DrawReplay @ 0x00431BA0`. The enum is corrected
+accordingly, so every maintained `SetScreen` and both central dispatchers now
+use the target-proven values.
+
+The practice draw owner renders ten 0x18-byte score records on summary page
+zero. Each record supplies a score, stage-name selector, suffix digit,
+ten-byte name, timestamp and slowdown percentage. Rows fade from white by
+subtracting `0x10` from the red and green channels for each successive entry.
+The footer
+always prints the selected shot's aggregate value at profile `+0x4C8`, converts
+the frame total at `+0x4CC` to `hours:minutes:seconds`, and prints the selected
+difficulty value at `+0x4D0 + difficulty*4`.
+
+The draw dispatcher code ends at `0x0042D2B3` and owns its eight-entry table at
+`0x0042D2B4-0x0042D2D3`. Its `0x0042D2F0` callback adapter remains a separate
+seven-byte candidate. `DrawPractice` ends in `RET` at `0x00432CA0`, followed by
+fifteen `CC` bytes. The expanded `scripts/report-frontend-practice.py --check`
+validates these extents, both dispatch tables, complete direct-call multisets,
+formats, screen discriminators, profile-access source markers and the earlier
+practice update/refresh evidence.
+
+Pinned VC7.1 normal, selected-entry `/GL`, and `/W4` probes pass. Normal `Draw`
+and `DrawPractice` COMDATs are 116/585 bytes versus target owners 116/689 and
+mismatch at 10/60 and 51/625 comparable bytes with 14/16 relocations. Selected
+`/GL` contributions are 120/585 and mismatch at 15/64 and 54/625 comparable
+bytes. The equal normal size of `Draw` is diagnostic only; no exactness is
+claimed.
+
+Repository totals become **1,312 candidates, 280 source mappings, 296 reviewed
+authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage
+remains 340,390 `.text` bytes and the indexed-table queue remains 60 references
+inside their recorded owner and 40 outside.
 
 ## Completed packet: front-end practice-record core
 

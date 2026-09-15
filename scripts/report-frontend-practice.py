@@ -28,7 +28,14 @@ UPDATE_TABLE = 0x00432680
 UPDATE_END = 0x0043268F
 REFRESH_START = 0x00432690
 REFRESH_END = 0x004329E1
-NEXT_START = 0x004329F0
+DRAW_PRACTICE_START = 0x004329F0
+DRAW_PRACTICE_END = 0x00432CA0
+NEXT_START = 0x00432CB0
+
+DRAW_DISPATCH_START = 0x0042D260
+DRAW_DISPATCH_CODE_END = 0x0042D2B3
+DRAW_DISPATCH_TABLE = 0x0042D2B4
+DRAW_DISPATCH_END = 0x0042D2D3
 
 STATE_DESTINATIONS = (
     0x00431F06,
@@ -36,8 +43,25 @@ STATE_DESTINATIONS = (
     0x004320BA,
     0x00432615,
 )
+DRAW_DESTINATIONS = (
+    0x0042D2A8,
+    0x0042D2AD,
+    0x0042D282,
+    0x0042D275,
+    0x0042D2AD,
+    0x0042D2AD,
+    0x0042D28E,
+    0x0042D29B,
+)
 
 EXPECTED_CALLS = {
+    DRAW_DISPATCH_START: {
+        0x00431410: 1,
+        0x00431BA0: 1,
+        0x004329F0: 1,
+        0x00433230: 1,
+        0x00433B30: 1,
+    },
     UPDATE_START: {
         0x004088C0: 2,
         0x00409E50: 2,
@@ -59,6 +83,10 @@ EXPECTED_CALLS = {
     REFRESH_START: {
         0x00447BB0: 3,
         0x00458EA5: 1,
+    },
+    DRAW_PRACTICE_START: {
+        0x00401630: 5,
+        0x00452BAA: 1,
     },
 }
 
@@ -120,15 +148,20 @@ def source_report(source: Path, header: Path) -> tuple[dict[str, object], list[s
     text = source.read_text(encoding="utf-8")
     header_text = header.read_text(encoding="utf-8")
     problems: list[str] = []
-    starts = {UPDATE_START, REFRESH_START}
+    starts = {
+        DRAW_DISPATCH_START, UPDATE_START, REFRESH_START,
+        DRAW_PRACTICE_START,
+    }
     markers = [
         (int(address, 0), name)
         for address, name in MARKER_PATTERN.findall(text)
         if int(address, 0) in starts
     ]
     expected_markers = [
+        (DRAW_DISPATCH_START, "FrontEndControllerView::Draw"),
         (UPDATE_START, "FrontEndControllerView::UpdatePractice"),
         (REFRESH_START, "FrontEndControllerView::RefreshPracticeRecords"),
+        (DRAW_PRACTICE_START, "FrontEndControllerView::DrawPractice"),
     ]
     if markers != expected_markers:
         problems.append("source markers do not match reviewed owner order")
@@ -141,6 +174,10 @@ def source_report(source: Path, header: Path) -> tuple[dict[str, object], list[s
         problems.append("practice state enum does not cover exactly 0..3")
 
     required_source = (
+        "case FRONT_END_SCREEN_PRACTICE:",
+        "DrawPractice();",
+        "case FRONT_END_SCREEN_REPLAY:",
+        "DrawReplay(this);",
         "UpdatePractice(this)",
         "controller->practiceDifficultyCursor.count = 5",
         "controller->practicePageCursor.count =",
@@ -158,14 +195,22 @@ def source_report(source: Path, header: Path) -> tuple[dict[str, object], list[s
         "? 0x00ffff80u : 0x00efefefu",
         "g_FrontEndPracticeUnavailableFormat",
         "memset(name + length, ' ', 42 - length)",
+        "GetPracticeScoreRecord(cursor.current, difficulty, row)",
+        '"%2d  %s  %9ld%d  ----/--/-- --:--  Stage -  ---%%"',
+        '"%3d:%.2d:%.2d"',
+        "playTimeFrames / 216000",
     )
     for token in required_source:
         if token not in text:
             problems.append(f"source is missing reviewed behavior token: {token}")
 
     required_header = (
+        "FRONT_END_SCREEN_PRACTICE = 11",
+        "FRONT_END_SCREEN_REPLAY = 12",
+        "int Draw()",
         "static int __stdcall UpdatePractice(FrontEndControllerView *controller)",
         "int RefreshPracticeRecords()",
+        "int DrawPractice()",
         "FrontEndCursorView practiceDifficultyCursor",
         "FrontEndCursorView practicePageCursor",
         "int practiceDisplayedEntries",
@@ -217,14 +262,23 @@ def main() -> int:
             decoder_identity = verify_capstone(tomllib.load(stream)["capstone"])
         image = target.read_bytes()
         calls = {
+            DRAW_DISPATCH_START: direct_call_counts(
+                image, DRAW_DISPATCH_START, DRAW_DISPATCH_CODE_END
+            ),
             UPDATE_START: direct_call_counts(
                 image, UPDATE_START, UPDATE_CODE_END
             ),
             REFRESH_START: direct_call_counts(
                 image, REFRESH_START, REFRESH_END
             ),
+            DRAW_PRACTICE_START: direct_call_counts(
+                image, DRAW_PRACTICE_START, DRAW_PRACTICE_END
+            ),
         }
         table = struct.unpack("<4I", pe_bytes_at(image, UPDATE_TABLE, 16))
+        draw_table = struct.unpack(
+            "<8I", pe_bytes_at(image, DRAW_DISPATCH_TABLE, 32)
+        )
         secret_keys = struct.unpack(
             "<22I", pe_bytes_at(image, 0x0046EF10, 88)
         )
@@ -247,8 +301,18 @@ def main() -> int:
         problems.append("practice update state table differs from review")
     if pe_bytes_at(image, REFRESH_END, 1) != b"\xc3":
         problems.append("practice refresh does not end in RET")
-    if pe_bytes_at(image, REFRESH_END + 1, NEXT_START - REFRESH_END - 1) != b"\xcc" * 14:
-        problems.append("padding after practice refresh differs")
+    if pe_bytes_at(image, REFRESH_END + 1, DRAW_PRACTICE_START - REFRESH_END - 1) != b"\xcc" * 14:
+        problems.append("padding before practice draw differs")
+    if pe_bytes_at(image, DRAW_DISPATCH_CODE_END, 1) != b"\xc3":
+        problems.append("front-end draw dispatcher does not end in RET")
+    if draw_table != DRAW_DESTINATIONS:
+        problems.append("front-end draw dispatcher table differs from review")
+    if pe_bytes_at(image, DRAW_PRACTICE_END, 1) != b"\xc3":
+        problems.append("practice draw does not end in RET")
+    if pe_bytes_at(
+        image, DRAW_PRACTICE_END + 1, NEXT_START - DRAW_PRACTICE_END - 1
+    ) != b"\xcc" * 15:
+        problems.append("padding after practice draw differs")
     for start, expected in EXPECTED_CALLS.items():
         if calls[start] != Counter(expected):
             problems.append(f"direct-call multiset differs at 0x{start:08X}")
@@ -269,6 +333,10 @@ def main() -> int:
         problems.append("practice update boundary ledger omits its state table")
     if extents.get(REFRESH_START) != REFRESH_END:
         problems.append("practice refresh boundary ledger differs from review")
+    if extents.get(DRAW_DISPATCH_START) != DRAW_DISPATCH_END:
+        problems.append("front-end draw dispatcher boundary differs from review")
+    if extents.get(DRAW_PRACTICE_START) != DRAW_PRACTICE_END:
+        problems.append("practice draw boundary differs from review")
 
     report = {
         "ok": not problems,
@@ -276,6 +344,16 @@ def main() -> int:
         "target_sha256": observed["sha256"],
         "decoder": {"name": "capstone", **decoder_identity},
         "owners": [
+            {
+                "start": f"0x{DRAW_DISPATCH_START:08X}",
+                "code_end": f"0x{DRAW_DISPATCH_CODE_END:08X}",
+                "end": f"0x{DRAW_DISPATCH_END:08X}",
+                "size": DRAW_DISPATCH_END - DRAW_DISPATCH_START + 1,
+                "name": "FrontEndControllerView::Draw",
+                "screen_table": [
+                    f"0x{value:08X}" for value in draw_table
+                ],
+            },
             {
                 "start": f"0x{UPDATE_START:08X}",
                 "code_end": f"0x{UPDATE_CODE_END:08X}",
@@ -289,6 +367,12 @@ def main() -> int:
                 "end": f"0x{REFRESH_END:08X}",
                 "size": REFRESH_END - REFRESH_START + 1,
                 "name": "FrontEndControllerView::RefreshPracticeRecords",
+            },
+            {
+                "start": f"0x{DRAW_PRACTICE_START:08X}",
+                "end": f"0x{DRAW_PRACTICE_END:08X}",
+                "size": DRAW_PRACTICE_END - DRAW_PRACTICE_START + 1,
+                "name": "FrontEndControllerView::DrawPractice",
             },
         ],
         "reviewed_call_counts": {

@@ -277,3 +277,5 @@ FrontEndControllerView::RefreshKeyConfigDisplay,0x0042F8B0,function
 FrontEndControllerView::AssignKeyConfigBinding,0x00430250,function
 FrontEndControllerView::UpdatePractice,0x00431EE0,function
 FrontEndControllerView::RefreshPracticeRecords,0x00432690,function
+FrontEndControllerView::Draw,0x0042D260,function
+FrontEndControllerView::DrawPractice,0x004329F0,function

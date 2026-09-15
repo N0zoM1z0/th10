@@ -276,3 +276,5 @@ FrontEndControllerView::UpdateReplay
 FrontEndControllerView::DrawReplay
 FrontEndControllerView::UpdatePractice
 FrontEndControllerView::RefreshPracticeRecords
+FrontEndControllerView::Draw
+FrontEndControllerView::DrawPractice
