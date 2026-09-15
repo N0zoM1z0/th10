@@ -1977,6 +1977,65 @@ relocations = [
   { offset = 0x6D, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
 ]
 
+[units.anm-get-float-var]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmExecutor"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+functions = ["AnmVmView::GetFloatVar"]
+symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z"
+target_address = 0x0043EAC0
+size = 424
+linkages = [
+  { offset = 0x005, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x01A, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x150 },
+  { offset = 0x085, type = "DIR32", symbol = "?g_AlternateRngView@@3URngView@@A", target = 0x004918A8 },
+  { offset = 0x08A, type = "REL32", symbol = "?GetRandomF32@RngView@@QAEMXZ", target = 0x0044BB20 },
+  { offset = 0x092, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x097, type = "REL32", symbol = "?GetRandomF32@RngView@@QAEMXZ", target = 0x0044BB20 },
+  { offset = 0x0AB, type = "DIR32", symbol = "?g_AlternateRngView@@3URngView@@A", target = 0x004918A8 },
+  { offset = 0x0B0, type = "REL32", symbol = "?GetRandomF32Signed@RngView@@QAEMXZ", target = 0x0044BB90 },
+  { offset = 0x0B8, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x0BD, type = "REL32", symbol = "?GetRandomF32Signed@RngView@@QAEMXZ", target = 0x0044BB90 },
+  { offset = 0x0D1, type = "DIR32", symbol = "?g_AlternateRngView@@3URngView@@A", target = 0x004918A8 },
+  { offset = 0x0D6, type = "REL32", symbol = "?GetRandomF32Signed@RngView@@QAEMXZ", target = 0x0044BB90 },
+  { offset = 0x0DC, type = "DIR32", symbol = "__real@40490fdb", target = 0x00470B18 },
+  { offset = 0x0E4, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0 },
+  { offset = 0x0E9, type = "REL32", symbol = "?GetRandomF32Signed@RngView@@QAEMXZ", target = 0x0044BB90 },
+  { offset = 0x0EF, type = "DIR32", symbol = "__real@40490fdb", target = 0x00470B18 },
+  { offset = 0x113, type = "DIR32", symbol = "?g_AnmBackgroundCameraPosition@@3UAnmFloat3View@@A", target = 0x00491D7C },
+  { offset = 0x11C, type = "DIR32", symbol = "?g_AnmBackgroundCameraPosition@@3UAnmFloat3View@@A", target = 0x00491D7C, addend = 4 },
+  { offset = 0x125, type = "DIR32", symbol = "?g_AnmBackgroundCameraPosition@@3UAnmFloat3View@@A", target = 0x00491D7C, addend = 8 },
+  { offset = 0x12E, type = "DIR32", symbol = "?g_AnmPosition491DA0@@3UAnmFloat3View@@A", target = 0x00491DA0 },
+  { offset = 0x137, type = "DIR32", symbol = "?g_AnmPosition491DA0@@3UAnmFloat3View@@A", target = 0x00491DA0, addend = 4 },
+  { offset = 0x140, type = "DIR32", symbol = "?g_AnmPosition491DA0@@3UAnmFloat3View@@A", target = 0x00491DA0, addend = 8 },
+  { offset = 0x150, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x01E },
+  { offset = 0x154, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x027 },
+  { offset = 0x158, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x030 },
+  { offset = 0x15C, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x039 },
+  { offset = 0x160, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x042 },
+  { offset = 0x164, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x04B },
+  { offset = 0x168, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x054 },
+  { offset = 0x16C, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x05D },
+  { offset = 0x170, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x066 },
+  { offset = 0x174, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x06F },
+  { offset = 0x178, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x0C4 },
+  { offset = 0x17C, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x078 },
+  { offset = 0x180, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x09E },
+  { offset = 0x184, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x0F6 },
+  { offset = 0x188, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x0FF },
+  { offset = 0x18C, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x108 },
+  { offset = 0x190, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x111 },
+  { offset = 0x194, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x11A },
+  { offset = 0x198, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x123 },
+  { offset = 0x19C, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x12C },
+  { offset = 0x1A0, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x135 },
+  { offset = 0x1A4, type = "DIR32", symbol = "?GetFloatVar@AnmVmView@@QAEMM@Z", target = 0x0043EAC0, addend = 0x13E },
+]
+
 [units.anm-get-int-var]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"

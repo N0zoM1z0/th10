@@ -56,14 +56,15 @@
 - Completed session checkpoint: `7a2779f gpt-5.6-sol: recover exact ANM Draw3D`.
 - Completed session checkpoint: `ac9541d gpt-5.6-sol: recover exact ANM Draw2D pair`.
 - Completed session checkpoint: `ee13d3a gpt-5.6-sol: recover exact ANM 3D render state`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM generated draws`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `8b0f19e gpt-5.6-sol: recover exact ANM generated draws`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM float variable resolver`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-ecl-exact-next/`. The earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `ee13d3a` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `8b0f19e` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -136,6 +137,34 @@ its count is the conservative intersection of candidates whose origin and
 boundary reviews are both complete. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
+
+## Completed packet: exact ANM float variable resolver
+
+`AnmVmView::GetFloatVar @ 0x0043EAC0` already had the exact 424-byte linked
+extent, including its two-byte alignment and 22-entry absolute jump table. The
+49 remaining comparable differences occupied only the three RNG case bodies.
+The maintained switch listed angle, unsigned random and signed random, while
+the target physically emits unsigned random, signed random and angle. Reordering
+those three case clauses restores the target body order without changing any
+case value, jump-table mapping or returned value.
+
+The canonical unit runs in the established `AnmExecutor` `/GL` context and
+declares all **44 linkage fields**: `__ftol2`, six RNG calls, six RNG-owner
+globals, two pi constants, both three-component global owners with explicit
+addends, the switch-table base and all 22 case destinations. Two independent
+focused cold replays close **424/424 bytes and 44/44 fields**. The final
+full-source cold gate closes all **72 configured `src/AnmManager.cpp` units /
+10 artifacts / 14,478 target bytes**. Repository totals are now **122 exact
+functions / 16,469 bytes**. ANM has 62 exact owners / 13,642 bytes and 61
+source-present authored owners / 28,065 bytes remaining.
+
+The preceding `SetAndExecuteScriptIdx @ 0x0043E8B0` triage confirms its control
+flow, 287-byte extent and four linkage fields. Its 22 non-field differences are
+only an `ESI`/`EDI` live-range exchange. Parameter naming, top-scoped locals,
+split and combined guards, direct flag access, `register`/`const`, reversed
+subscript syntax, explicit link entry and `/G7` diagnostics did not produce an
+evidence-backed exact form. Natural source was restored; the owner remains a
+near match rather than retaining an artificial code-shaping variant.
 
 ## Completed packet: exact ANM generated draws
 
@@ -1840,15 +1869,17 @@ The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, bac
 
 ## Next hard frontier
 
-Continue the user-selected ANM/ECL exact campaign owner by owner. The generated
-draw promotions leave `UpdatePulsingRadialTrail @ 0x00445620` as the highest
-known near-exact owner: its complete 598-byte linked contribution matches
-524/526 comparable bytes. Roughly twenty bounded natural-source variants have
-not reproduced the target's exchanged X87 load/add operands for one commutative
-Y sum. Retain that honest near match rather than introducing a volatile
-dependency or assembly. The next productive non-radial candidate is
-`AnmLoadedView::SetAndExecuteScriptIdx @ 0x0043E8B0`, whose current linked
-contribution has exact target size 287 and matches 249/271 comparable bytes.
+Continue the user-selected ANM/ECL exact campaign owner by owner. The refreshed
+rank leaves two thoroughly triaged near matches first: `UpdatePulsingRadialTrail
+@ 0x00445620` is 598/598 bytes and 524/526 comparable bytes, while
+`SetAndExecuteScriptIdx @ 0x0043E8B0` is 287/287 and 249/271. Their remaining
+differences are respectively one commutative X87 operand order and one complete
+`ESI`/`EDI` live-range exchange. Retain their natural source until stronger
+production-context evidence exists. The next productive core candidate is
+`AnmRenderManagerView::CreateTextureFromAnm @ 0x00446F40`: its linked
+contribution is 261/264 bytes, 183/228 comparable bytes and nine fields. The
+four 93/95-byte `CreateVmAtScreenVariant*` siblings follow and can remain in the
+Web leaf queue unless their shared two-byte issue reveals useful owner context.
 
 The largest remaining core owners are ANM `ExecuteScript @ 0x00450B30`
 (9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). Use smaller

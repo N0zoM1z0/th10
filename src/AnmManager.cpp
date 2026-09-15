@@ -95,10 +95,6 @@ float AnmVmView::GetFloatVar(float variable)
         return counterVar0;
     case ANM_VAR_IC1:
         return counterVar1;
-    case ANM_VAR_RANDOM_ANGLE:
-        return (flags35C & 0x40000000u) != 0
-            ? g_AlternateRngView.GetRandomF32Signed() * 3.1415927f
-            : g_RngView.GetRandomF32Signed() * 3.1415927f;
     case ANM_VAR_RANDOM:
         return (flags35C & 0x40000000u) != 0
             ? g_AlternateRngView.GetRandomF32()
@@ -107,6 +103,10 @@ float AnmVmView::GetFloatVar(float variable)
         return (flags35C & 0x40000000u) != 0
             ? g_AlternateRngView.GetRandomF32Signed()
             : g_RngView.GetRandomF32Signed();
+    case ANM_VAR_RANDOM_ANGLE:
+        return (flags35C & 0x40000000u) != 0
+            ? g_AlternateRngView.GetRandomF32Signed() * 3.1415927f
+            : g_RngView.GetRandomF32Signed() * 3.1415927f;
     case ANM_VAR_POSITION_X:
         return position.x;
     case ANM_VAR_POSITION_Y:
