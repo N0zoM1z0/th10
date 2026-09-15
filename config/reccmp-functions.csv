@@ -281,6 +281,12 @@ FrontEndControllerView::Draw,0x0042D260,function
 FrontEndControllerView::DrawPractice,0x004329F0,function
 FrontEndControllerView::UpdateScoreEntry,0x00432CB0,function
 FrontEndControllerView::DrawScoreEntry,0x00433230,function
+EclVmContext::ReadInt,0x0044FDB0,function
+EclVmContext::ReadFloat,0x0044FE40,function
+EclVmContext::ReadIntValue,0x0044FF00,function
+EclVmContext::ReadFloatValue,0x0044FF80,function
+EclVmContext::ResolveInt,0x00450030,function
+EclVmContext::ResolveFloat,0x00450070,function
 EclVmStackView::Push,0x004505B0,function
 EclVmStackView::Pop,0x00450610,function
 EclVmStackView::EnterFrame,0x00450690,function

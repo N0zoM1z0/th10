@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `e17e4ff gpt-5.6-sol: recover exact ECL VM stack core`, branch `main`.
+- Current packet base: `358daf4 gpt-5.6-sol: recover exact ECL VM typed pop`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -63,14 +63,15 @@
 - Completed session checkpoint: `d955eba gpt-5.6-sol: recover exact ANM projected photo blend`.
 - Completed session checkpoint: `209595d gpt-5.6-sol: recover exact ANM draw dispatcher`.
 - Completed session checkpoint: `e17e4ff gpt-5.6-sol: recover exact ECL VM stack core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ECL VM typed pop`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `358daf4 gpt-5.6-sol: recover exact ECL VM typed pop`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL VM operand helpers`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-vm-pop/`. The ECL stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-vm-read-resolve/`. The ECL typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `e17e4ff` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `358daf4` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -223,6 +224,41 @@ raises the selected `/GL` `Run` contribution from about 2,756 to 2,776 bytes,
 still far below the 7,020-byte target owner. The remaining core gap is not a
 small inlining effect; the next evidence-bearing batch is the target read and
 resolve corridor at `0x0044FDB0-0x004500CC`.
+
+## Completed packet: ECL VM operand helpers
+
+The six reviewed owners from `0x0044FDB0` through `0x004500CC` now have
+maintained member source: `ReadInt`, `ReadFloat`, `ReadIntValue`,
+`ReadFloatValue`, `ResolveInt`, and `ResolveFloat`. They implement the complete
+generic operand path for immediate values, frame locals, typed-stack pops, and
+host-owned integer/float variables. Target code establishes their distinct
+private register conventions independently from the logical C++ member
+signatures.
+
+`EclVmContext::ResolveFloat @ 0x00450070-0x004500CC` is canonical exact over
+its complete 93-byte linked `/GL` PDB contribution and all three fields: the
+zero constant and two `__ftol2` calls. Two independent cold replays produce
+different PE hashes while closing 93/93 bytes. The full `src/EclVm.cpp` gate
+closes **4 units / 1 artifact / 375 bytes**.
+
+Three adjacent natural-source helpers reach the exact target size and differ
+only in the stack-pop decrement encoding: `ReadFloat` is 183 bytes with
+181/183 bytes equal, `ReadIntValue` is 124 bytes with 122/124 equal, and
+`ReadFloatValue` is 171 bytes with 169/171 equal. The compiler emits `SUB
+register,4`; the target emits the equivalent `ADD register,-4`. They remain
+near matches with no exact credit. Bounded natural forms did not alter this
+choice.
+
+`ReadInt` remains 120 candidate bytes against 144 target bytes, and
+`ResolveInt` remains 59 against 58. Their target-private receiver registers
+depend on production callers outside the limited diagnostic link graph; the
+selected `Run` contribution is 2,772 bytes against the 7,020-byte target. No
+dummy parameters, artificial dependencies, or ABI claims were introduced to
+force the output. Repository totals become **1,313 candidates, 292 source
+mappings, and 130 exact functions / 18,105 bytes**. The authored source backlog
+is **158**. The next ECL exact frontier should restore more of the real
+whole-program owner/caller context around `Run` before revisiting these private
+ABI-dependent helpers.
 
 ## Completed packet: exact ANM projected photo blend
 

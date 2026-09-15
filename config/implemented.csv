@@ -280,6 +280,12 @@ FrontEndControllerView::Draw
 FrontEndControllerView::DrawPractice
 FrontEndControllerView::UpdateScoreEntry
 FrontEndControllerView::DrawScoreEntry
+EclVmContext::ReadInt
+EclVmContext::ReadFloat
+EclVmContext::ReadIntValue
+EclVmContext::ReadFloatValue
+EclVmContext::ResolveInt
+EclVmContext::ResolveFloat
 EclVmStackView::Push
 EclVmStackView::Pop
 EclVmStackView::EnterFrame

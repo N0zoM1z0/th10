@@ -188,7 +188,7 @@ static float OperandFloat(
 static bool IsOperandIndirect(
     const EclVmInstruction *instruction, unsigned int index)
 {
-    return (instruction->operandFlags & (1U << (index & 31))) != 0;
+    return (instruction->operandFlags & (1U << index)) != 0;
 }
 
 static int PopInt(EclVmContext *context)
@@ -213,69 +213,6 @@ static int PushInt(EclVmContext *context, int value)
 static int PushFloat(EclVmContext *context, float value)
 {
     return context->stack.Push('f', sizeof(value), &value);
-}
-
-static int ReadIntValue(
-    EclVmContext *context, unsigned int flagIndex, int value)
-{
-    if (!IsOperandIndirect(context->instruction, flagIndex))
-        return value;
-    if (value >= 0)
-        return *reinterpret_cast<int *>(
-            context->stack.data + context->stack.frameBase + value);
-    if (value == -1)
-        return PopInt(context);
-    return context->host->ReadEclInt(value);
-}
-
-static int ReadInt(EclVmContext *context, unsigned int index)
-{
-    return ReadIntValue(context, index, OperandInt(context->instruction, index));
-}
-
-static float ReadFloatValue(
-    EclVmContext *context, unsigned int flagIndex, float value)
-{
-    if (!IsOperandIndirect(context->instruction, flagIndex))
-        return value;
-    if (value >= 0.0f)
-        return *reinterpret_cast<float *>(
-            context->stack.data + context->stack.frameBase
-            + static_cast<int>(value));
-    if (value == -1.0f)
-        return PopFloat(context);
-    return context->host->ReadEclFloat(static_cast<int>(value));
-}
-
-static float ReadFloat(EclVmContext *context, unsigned int index)
-{
-    return ReadFloatValue(
-        context, index, OperandFloat(context->instruction, index));
-}
-
-static int *ResolveInt(EclVmContext *context, unsigned int index)
-{
-    if (!IsOperandIndirect(context->instruction, index))
-        return NULL;
-
-    const int value = OperandInt(context->instruction, index);
-    if (value >= 0)
-        return reinterpret_cast<int *>(
-            context->stack.data + context->stack.frameBase + value);
-    return context->host->ResolveEclInt(value);
-}
-
-static float *ResolveFloat(EclVmContext *context, unsigned int index)
-{
-    if (!IsOperandIndirect(context->instruction, index))
-        return NULL;
-
-    const float value = OperandFloat(context->instruction, index);
-    if (value >= 0.0f)
-        return reinterpret_cast<float *>(
-            context->stack.data + context->stack.frameBase
-            + static_cast<int>(value));
-    return context->host->ResolveEclFloat(static_cast<int>(value));
 }
 
 static void Jump(EclVmContext *context, const EclVmInstruction *instruction)
@@ -315,9 +252,9 @@ static void EvaluateFormatOperands(EclVmContext *context)
             if (argumentType == 'f' || argumentType == 'g') {
                 EclVmScalar value;
                 value.integer = raw;
-                ReadFloatValue(context, flagIndex, value.real);
+                context->ReadFloatValue(flagIndex, value.real);
             } else {
-                ReadIntValue(context, flagIndex, raw);
+                context->ReadIntValue(flagIndex, raw);
             }
             metadataOffset += 8;
             valueWord += 2;
@@ -329,6 +266,117 @@ static void EvaluateFormatOperands(EclVmContext *context)
 }
 
 } // namespace
+
+
+int EclVmContext::ReadIntValue(unsigned int flagIndex, int value)
+{
+    if (IsOperandIndirect(instruction, flagIndex))
+    {
+        if (value >= 0)
+        {
+            EclVmStackView *const operandStack = &stack;
+            return *reinterpret_cast<int *>(
+                operandStack->data + operandStack->frameBase + value);
+        }
+        if (value == -1)
+        {
+            stack.Pop('i', sizeof(value), &value);
+        }
+        else
+        {
+            return host->ReadEclInt(value);
+        }
+    }
+    return value;
+}
+
+int EclVmContext::ReadInt(unsigned int index)
+{
+    if (IsOperandIndirect(instruction, index))
+    {
+        const int value = OperandInt(instruction, index);
+        if (value >= 0)
+            return *reinterpret_cast<int *>(
+                stack.data + stack.frameBase + value);
+        if (value == -1)
+        {
+            int result;
+            stack.Pop('i', sizeof(result), &result);
+            return result;
+        }
+        return host->ReadEclInt(value);
+    }
+    return OperandInt(instruction, index);
+}
+
+float EclVmContext::ReadFloatValue(unsigned int flagIndex, float value)
+{
+    if (IsOperandIndirect(instruction, flagIndex))
+    {
+        if (value >= 0.0f)
+            return *reinterpret_cast<float *>(
+                stack.data + stack.frameBase + static_cast<int>(value));
+        if (value == -1.0f)
+        {
+            stack.Pop('f', sizeof(value), &value);
+        }
+        else
+        {
+            return host->ReadEclFloat(static_cast<int>(value));
+        }
+    }
+    return value;
+}
+
+float EclVmContext::ReadFloat(unsigned int index)
+{
+    if (IsOperandIndirect(instruction, index))
+    {
+        if (OperandFloat(instruction, index) >= 0.0f)
+            return *reinterpret_cast<float *>(
+                stack.data + stack.frameBase
+                + static_cast<int>(OperandFloat(instruction, index)));
+        if (OperandFloat(instruction, index) == -1.0f)
+        {
+            float result;
+            stack.Pop('f', sizeof(result), &result);
+            return result;
+        }
+        return host->ReadEclFloat(
+            static_cast<int>(OperandFloat(instruction, index)));
+    }
+    return OperandFloat(instruction, index);
+}
+
+int *EclVmContext::ResolveInt(unsigned int index)
+{
+    if (IsOperandIndirect(instruction, index))
+    {
+        const int value = OperandInt(instruction, index);
+        if (value >= 0)
+            return reinterpret_cast<int *>(
+                stack.data + stack.frameBase + value);
+        return host->ResolveEclInt(value);
+    }
+    return NULL;
+}
+
+float *EclVmContext::ResolveFloat(unsigned int index)
+{
+    if (IsOperandIndirect(instruction, index))
+    {
+        if (OperandFloat(instruction, index) >= 0.0f)
+        {
+            EclVmStackView *const operandStack = &stack;
+            return reinterpret_cast<float *>(
+                operandStack->data + operandStack->frameBase
+                + static_cast<int>(OperandFloat(instruction, index)));
+        }
+        return host->ResolveEclFloat(
+            static_cast<int>(OperandFloat(instruction, index)));
+    }
+    return NULL;
+}
 
 
 int EclVmContext::Run(float timeDelta)
@@ -403,14 +451,14 @@ int EclVmContext::Run(float timeDelta)
                 const unsigned int idIndex =
                     static_cast<unsigned int>((OperandInt(current, 0) + 4) >> 2);
                 const int id = ReadIntValue(
-                    this, 1, OperandInt(current, idIndex));
+                    1, OperandInt(current, idIndex));
                 EclVmSpawnThread(host, id, 1);
                 break;
             }
 
             case ECL_VM_STOP_THREAD:
             {
-                EclVmContext *thread = EclVmFindThread(host, ReadInt(this, 0));
+                EclVmContext *thread = EclVmFindThread(host, ReadInt(0));
                 if (thread != NULL)
                     thread->instruction = NULL;
                 break;
@@ -418,7 +466,7 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_SET_THREAD_FLAG:
             {
-                EclVmContext *thread = EclVmFindThread(host, ReadInt(this, 0));
+                EclVmContext *thread = EclVmFindThread(host, ReadInt(0));
                 if (thread != NULL)
                     thread->flags |= 1;
                 break;
@@ -426,7 +474,7 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_CLEAR_THREAD_FLAG:
             {
-                EclVmContext *thread = EclVmFindThread(host, ReadInt(this, 0));
+                EclVmContext *thread = EclVmFindThread(host, ReadInt(0));
                 if (thread != NULL)
                     thread->flags &= ~1U;
                 break;
@@ -434,9 +482,9 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_SET_THREAD_CONTROL:
             {
-                EclVmContext *thread = EclVmFindThread(host, ReadInt(this, 0));
+                EclVmContext *thread = EclVmFindThread(host, ReadInt(0));
                 if (thread != NULL)
-                    thread->threadControl = ReadInt(this, 1);
+                    thread->threadControl = ReadInt(1);
                 break;
             }
 
@@ -449,7 +497,7 @@ int EclVmContext::Run(float timeDelta)
                 break;
 
             case ECL_VM_ENTER_FRAME:
-                stack.EnterFrame(ReadInt(this, 0));
+                stack.EnterFrame(ReadInt(0));
                 break;
 
             case ECL_VM_LEAVE_FRAME:
@@ -457,19 +505,19 @@ int EclVmContext::Run(float timeDelta)
                 break;
 
             case ECL_VM_PUSH_INT:
-                PushInt(this, ReadInt(this, 0));
+                PushInt(this, ReadInt(0));
                 break;
 
             case ECL_VM_STORE_INT:
-                *ResolveInt(this, 0) = PopInt(this);
+                *ResolveInt(0) = PopInt(this);
                 break;
 
             case ECL_VM_PUSH_FLOAT:
-                PushFloat(this, ReadFloat(this, 0));
+                PushFloat(this, ReadFloat(0));
                 break;
 
             case ECL_VM_STORE_FLOAT:
-                *ResolveFloat(this, 0) = PopFloat(this);
+                *ResolveFloat(0) = PopFloat(this);
                 break;
 
             case ECL_VM_ADD_INT:
@@ -690,8 +738,8 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_POST_DECREMENT_INT:
             {
-                const int value = ReadInt(this, 0);
-                *ResolveInt(this, 0) = value - 1;
+                const int value = ReadInt(0);
+                *ResolveInt(0) = value - 1;
                 PushInt(this, value);
                 break;
             }
@@ -706,21 +754,21 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_POLAR_TO_CARTESIAN:
             {
-                const float magnitude = ReadFloat(this, 3);
-                const float angle = EclVmNormalizeAngle(ReadFloat(this, 2));
-                *ResolveFloat(this, 0) =
+                const float magnitude = ReadFloat(3);
+                const float angle = EclVmNormalizeAngle(ReadFloat(2));
+                *ResolveFloat(0) =
                     static_cast<float>(cos(angle) * magnitude);
-                *ResolveFloat(this, 1) =
+                *ResolveFloat(1) =
                     static_cast<float>(sin(angle) * magnitude);
                 break;
             }
 
             case ECL_VM_NORMALIZE_ANGLE:
-                *ResolveFloat(this, 0) = EclVmNormalizeAngle(ReadFloat(this, 0));
+                *ResolveFloat(0) = EclVmNormalizeAngle(ReadFloat(0));
                 break;
 
             case ECL_VM_SUBTRACT_TIME:
-                currentTime -= static_cast<float>(ReadInt(this, 0));
+                currentTime -= static_cast<float>(ReadInt(0));
                 break;
 
             case ECL_VM_NEGATE_INT:
@@ -740,17 +788,17 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_LENGTH_SQUARED:
             {
-                const float x = ReadFloat(this, 1);
-                const float y = ReadFloat(this, 2);
-                *ResolveFloat(this, 0) = x * x + y * y;
+                const float x = ReadFloat(1);
+                const float y = ReadFloat(2);
+                *ResolveFloat(0) = x * x + y * y;
                 break;
             }
 
             case ECL_VM_POINT_ANGLE:
             {
-                const float dx = ReadFloat(this, 2) - ReadFloat(this, 0);
-                const float dy = ReadFloat(this, 3) - ReadFloat(this, 1);
-                *ResolveFloat(this, 0) =
+                const float dx = ReadFloat(2) - ReadFloat(0);
+                const float dy = ReadFloat(3) - ReadFloat(1);
+                *ResolveFloat(0) =
                     static_cast<float>(atan2(dy, dx));
                 break;
             }
