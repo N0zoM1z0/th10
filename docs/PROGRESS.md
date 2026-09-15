@@ -6,14 +6,14 @@ their boundaries and origins must be reviewed independently.
 | Measure | Count |
 | --- | ---: |
 | Tracked 1.00a function candidates | 1,309 |
-| Origin/boundary review pending | 1,018 |
-| Confirmed authored functions | 276 |
-| Confirmed authored code bytes | 98,882 |
+| Origin/boundary review pending | 1,017 |
+| Confirmed authored functions | 277 |
+| Confirmed authored code bytes | 105,902 |
 | Classified exclusions | 15 |
-| Source-present mappings | 250 |
-| Source-present with authored origin | 246 |
+| Source-present mappings | 251 |
+| Source-present with authored origin | 247 |
 | Source-present origin review pending | 4 |
-| Authored source-present exact backlog | 136 |
+| Authored source-present exact backlog | 137 |
 | Canonical exact functions | 110 |
 | Canonical exact authored bytes | 12,166 |
 

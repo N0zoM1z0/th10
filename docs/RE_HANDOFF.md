@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `ff78689 gpt-5.6-sol: reconstruct Enemy callback core`, branch `main`.
+- Current packet base: `1d22766 gpt-5.6-sol: split Player update callback core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -40,9 +40,9 @@
 - Completed session checkpoint: `acfcf07 gpt-5.6-sol: reconstruct ANM resource and surface core`.
 - Completed session checkpoint: `adfd172 gpt-5.6-sol: reconstruct Enemy ECL dispatcher`.
 - Completed session checkpoint: `ff78689 gpt-5.6-sol: reconstruct Enemy callback core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: split Player update callback core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct generic ECL VM core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean Enemy callback checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-player-update-core/`. The earlier Enemy callback, ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-ecl-vm-core/`. The earlier Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -62,7 +62,59 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: Player update callback/core split
+## Current packet: generic typed-stack ECL VM
+
+`EclVmContext::Run @ 0x0044E1A0` is now maintained in `src/EclVm.cpp`.
+This is the generic TH10 VM below the already reconstructed Enemy-specific
+`0x100-0x1B4` dispatcher, rather than another part of that high-opcode switch.
+The target's 88-byte selector table contains 59 active generic opcodes and
+routes 29 values to the host's virtual extension dispatcher.
+
+The source recovers time and difficulty gating, ordinary advancement, call,
+return and conditional/unconditional jumps, child-thread control, frame entry
+and leave, the typed operand stack, local and host-backed int/float operands,
+assignment, arithmetic, comparison, logical and bitwise operations, sine,
+cosine, polar conversion, angle normalization, vector length squared and point
+angle. Opcode `0x1E` retains the target-observed format scan and operand
+evaluation even though the target makes no output call. Opcode `0x55` retains
+the target's unusual integer `NEG` of the raw float dword before pushing it as
+type `f`; it is deliberately not rewritten as ordinary floating negation.
+
+Direct target review expands the physical owner from Ghidra's reachable body
+to `0x0044E1A0-0x0044FD0B` = 7,020 bytes. Executable code ends at
+`0x0044FBC1`, two alignment bytes follow, the 60-entry destination table spans
+`0x0044FBC4-0x0044FCB3`, and the 88-byte selector table spans
+`0x0044FCB4-0x0044FD0B`; four `CC` bytes precede independent
+`0x0044FD10`. `scripts/report-ecl-vm-table.py --check` verifies the target
+identity, this layout, the sole default slot, and exact target/source opcode
+coverage.
+
+The context is a target-observed `0x1024`-byte extended view: float time at
+`+0x0000`, instruction at `+0x0004`, `0x1000` stack bytes at `+0x0008`, stack
+top/frame base at `+0x1008/+0x100C`, thread id and host at
+`+0x1010/+0x1014`, thread control and difficulty mask at
+`+0x1018/+0x101C`, and flags at `+0x1020`. For the embedded Enemy context this
+view overlaps the separately known host fields immediately after its former
+`0x1018` prefix; dynamically spawned contexts allocate the full `0x1024`
+bytes. Integer operands use negative host ids and `-1` as stack-pop; float
+operands use values below zero as host ids, `-1.0f` as stack-pop, and
+nonnegative flagged values as frame offsets.
+
+Raw entry/caller/return evidence establishes a private EAX context plus one
+stack float and `RET 4`. Natural source expresses the logical member method;
+fixed normal VC7.1 emits a 2,760-byte COMDAT, and the `/GL` PDB contribution is
+also 2,760 bytes, versus the 7,020-byte source-owned target extent. Both
+diagnostics are mismatches with `acceptance_authority=none`; normal, `/GL` and
+`/W4` compilation pass and no exact claim is added. Repository totals become
+**1,309 candidates, 251 source mappings and 110 exact functions / 12,166
+bytes**.
+
+The adjacent `0x0044DF70` subroutine setup and
+`0x0044FD10-0x004506D0` runner/operand/thread/stack helpers remain bounded leaf
+seams. The next user-selected core batch is GUI `0x00414900 + 0x00415E90`,
+followed by the Main corridor.
+
+## Completed packet: Player update callback/core split
 
 The largest confirmed authored source gap was
 `PlayerUpdateCallbackBody @ 0x00425730-0x00426340`, even though its full semantic

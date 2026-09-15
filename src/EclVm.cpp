@@ -1,0 +1,747 @@
+#include "EclVm.hpp"
+
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+// These small runtime services are separate target functions in the
+// 0x0044DF70-0x004506D0 corridor.  Their logical declarations let this file
+// retain the complete VM dispatch while their private register ABIs remain a
+// separate reconstruction unit.
+extern int EclVmStartSubroutine(
+    EclVmContext *destination, EclVmContext *caller,
+    unsigned int firstArgument);
+extern void EclVmSpawnThread(
+    EclVmHost *host, int threadId, unsigned int firstArgument);
+extern EclVmContext *EclVmFindThread(EclVmHost *host, int threadId);
+extern void EclVmStopAllThreads(EclVmHost *host);
+extern int EclVmEnterFrame(EclVmContext *context, int localBytes);
+extern int EclVmLeaveFrame(EclVmContext *context);
+extern float EclVmNormalizeAngle(float angle);
+
+
+// The target selector table at 0x0044FCB4 covers opcodes 0x00-0x57.  Values
+// omitted here route to the host's extended dispatcher.
+enum EclVmOpcode
+{
+    ECL_VM_NOP = 0x00,
+    ECL_VM_TERMINATE = 0x01,
+    ECL_VM_RETURN = 0x0A,
+    ECL_VM_CALL = 0x0B,
+    ECL_VM_JUMP = 0x0C,
+    ECL_VM_JUMP_IF_FALSE = 0x0D,
+    ECL_VM_JUMP_IF_TRUE = 0x0E,
+    ECL_VM_SPAWN_THREAD = 0x0F,
+    ECL_VM_SPAWN_THREAD_WITH_ID = 0x10,
+    ECL_VM_STOP_THREAD = 0x11,
+    ECL_VM_SET_THREAD_FLAG = 0x12,
+    ECL_VM_CLEAR_THREAD_FLAG = 0x13,
+    ECL_VM_SET_THREAD_CONTROL = 0x14,
+    ECL_VM_STOP_ALL_THREADS = 0x15,
+    ECL_VM_EVALUATE_FORMAT_OPERANDS = 0x1E,
+    ECL_VM_ENTER_FRAME = 0x28,
+    ECL_VM_LEAVE_FRAME = 0x29,
+    ECL_VM_PUSH_INT = 0x2A,
+    ECL_VM_STORE_INT = 0x2B,
+    ECL_VM_PUSH_FLOAT = 0x2C,
+    ECL_VM_STORE_FLOAT = 0x2D,
+    ECL_VM_ADD_INT = 0x32,
+    ECL_VM_ADD_FLOAT = 0x33,
+    ECL_VM_SUBTRACT_INT = 0x34,
+    ECL_VM_SUBTRACT_FLOAT = 0x35,
+    ECL_VM_MULTIPLY_INT = 0x36,
+    ECL_VM_MULTIPLY_FLOAT = 0x37,
+    ECL_VM_DIVIDE_INT = 0x38,
+    ECL_VM_DIVIDE_FLOAT = 0x39,
+    ECL_VM_MODULO_INT = 0x3A,
+    ECL_VM_EQUAL_INT = 0x3B,
+    ECL_VM_EQUAL_FLOAT = 0x3C,
+    ECL_VM_NOT_EQUAL_INT = 0x3D,
+    ECL_VM_NOT_EQUAL_FLOAT = 0x3E,
+    ECL_VM_LESS_INT = 0x3F,
+    ECL_VM_LESS_FLOAT = 0x40,
+    ECL_VM_LESS_EQUAL_INT = 0x41,
+    ECL_VM_LESS_EQUAL_FLOAT = 0x42,
+    ECL_VM_GREATER_INT = 0x43,
+    ECL_VM_GREATER_FLOAT = 0x44,
+    ECL_VM_GREATER_EQUAL_INT = 0x45,
+    ECL_VM_GREATER_EQUAL_FLOAT = 0x46,
+    ECL_VM_NOT_INT = 0x47,
+    ECL_VM_NOT_FLOAT = 0x48,
+    ECL_VM_LOGICAL_OR = 0x49,
+    ECL_VM_LOGICAL_AND = 0x4A,
+    ECL_VM_BITWISE_XOR = 0x4B,
+    ECL_VM_BITWISE_OR = 0x4C,
+    ECL_VM_BITWISE_AND = 0x4D,
+    ECL_VM_POST_DECREMENT_INT = 0x4E,
+    ECL_VM_SINE = 0x4F,
+    ECL_VM_COSINE = 0x50,
+    ECL_VM_POLAR_TO_CARTESIAN = 0x51,
+    ECL_VM_NORMALIZE_ANGLE = 0x52,
+    ECL_VM_SUBTRACT_TIME = 0x53,
+    ECL_VM_NEGATE_INT = 0x54,
+    ECL_VM_NEGATE_FLOAT_STORAGE = 0x55,
+    ECL_VM_LENGTH_SQUARED = 0x56,
+    ECL_VM_POINT_ANGLE = 0x57,
+};
+
+namespace
+{
+
+union EclVmScalar
+{
+    int integer;
+    unsigned int bits;
+    float real;
+    EclVmInstruction *instruction;
+};
+
+static int OperandInt(const EclVmInstruction *instruction, unsigned int index)
+{
+    return reinterpret_cast<const int *>(instruction->operands)[index];
+}
+
+static float OperandFloat(
+    const EclVmInstruction *instruction, unsigned int index)
+{
+    return reinterpret_cast<const float *>(instruction->operands)[index];
+}
+
+static bool IsOperandIndirect(
+    const EclVmInstruction *instruction, unsigned int index)
+{
+    return (instruction->operandFlags & (1U << (index & 31))) != 0;
+}
+
+static bool PopRaw(EclVmContext *context, EclVmScalar *value)
+{
+    const int valueOffset = context->stackTop - 4;
+    if (valueOffset < 0)
+        return false;
+
+    context->stackTop = valueOffset;
+    value->bits = *reinterpret_cast<unsigned int *>(
+        context->stack + valueOffset);
+    return true;
+}
+
+static bool PopTyped(
+    EclVmContext *context, EclVmScalar *value, unsigned char *type)
+{
+    if (!PopRaw(context, value))
+        return false;
+
+    const int typeOffset = context->stackTop - 4;
+    if (typeOffset < 0)
+        return false;
+
+    context->stackTop = typeOffset;
+    *type = context->stack[typeOffset];
+    return true;
+}
+
+static int PopInt(EclVmContext *context)
+{
+    EclVmScalar value;
+    unsigned char type;
+    value.integer = 0;
+    type = 0;
+    if (PopTyped(context, &value, &type) && type == 'f')
+        value.integer = static_cast<int>(value.real);
+    return value.integer;
+}
+
+static float PopFloat(EclVmContext *context)
+{
+    EclVmScalar value;
+    unsigned char type;
+    value.real = 0.0f;
+    type = 0;
+    if (PopTyped(context, &value, &type) && type == 'i')
+        value.real = static_cast<float>(value.integer);
+    return value.real;
+}
+
+static int PushTyped(
+    EclVmContext *context, unsigned char type, const EclVmScalar &value)
+{
+    if (context->stackTop + 4 >= 0x1000)
+        return -1;
+
+    context->stack[context->stackTop] = type;
+    context->stackTop += 4;
+    *reinterpret_cast<unsigned int *>(context->stack + context->stackTop) =
+        value.bits;
+    context->stackTop += 4;
+    return 0;
+}
+
+static int PushInt(EclVmContext *context, int value)
+{
+    EclVmScalar scalar;
+    scalar.integer = value;
+    return PushTyped(context, 'i', scalar);
+}
+
+static int PushFloat(EclVmContext *context, float value)
+{
+    EclVmScalar scalar;
+    scalar.real = value;
+    return PushTyped(context, 'f', scalar);
+}
+
+static int ReadIntValue(
+    EclVmContext *context, unsigned int flagIndex, int value)
+{
+    if (!IsOperandIndirect(context->instruction, flagIndex))
+        return value;
+    if (value >= 0)
+        return *reinterpret_cast<int *>(
+            context->stack + context->frameBase + value);
+    if (value == -1)
+        return PopInt(context);
+    return context->host->ReadEclInt(value);
+}
+
+static int ReadInt(EclVmContext *context, unsigned int index)
+{
+    return ReadIntValue(context, index, OperandInt(context->instruction, index));
+}
+
+static float ReadFloatValue(
+    EclVmContext *context, unsigned int flagIndex, float value)
+{
+    if (!IsOperandIndirect(context->instruction, flagIndex))
+        return value;
+    if (value >= 0.0f)
+        return *reinterpret_cast<float *>(
+            context->stack + context->frameBase + static_cast<int>(value));
+    if (value == -1.0f)
+        return PopFloat(context);
+    return context->host->ReadEclFloat(static_cast<int>(value));
+}
+
+static float ReadFloat(EclVmContext *context, unsigned int index)
+{
+    return ReadFloatValue(
+        context, index, OperandFloat(context->instruction, index));
+}
+
+static int *ResolveInt(EclVmContext *context, unsigned int index)
+{
+    if (!IsOperandIndirect(context->instruction, index))
+        return NULL;
+
+    const int value = OperandInt(context->instruction, index);
+    if (value >= 0)
+        return reinterpret_cast<int *>(
+            context->stack + context->frameBase + value);
+    return context->host->ResolveEclInt(value);
+}
+
+static float *ResolveFloat(EclVmContext *context, unsigned int index)
+{
+    if (!IsOperandIndirect(context->instruction, index))
+        return NULL;
+
+    const float value = OperandFloat(context->instruction, index);
+    if (value >= 0.0f)
+        return reinterpret_cast<float *>(
+            context->stack + context->frameBase + static_cast<int>(value));
+    return context->host->ResolveEclFloat(static_cast<int>(value));
+}
+
+static void Jump(EclVmContext *context, const EclVmInstruction *instruction)
+{
+    context->currentTime = static_cast<float>(OperandInt(instruction, 1));
+    context->instruction = reinterpret_cast<EclVmInstruction *>(
+        reinterpret_cast<unsigned char *>(context->instruction)
+        + OperandInt(instruction, 0));
+}
+
+static void EvaluateFormatOperands(EclVmContext *context)
+{
+    const EclVmInstruction *instruction = context->instruction;
+    const char *format = reinterpret_cast<const char *>(instruction) + 0x14;
+    const char *cursor = format;
+    char *scratch = static_cast<char *>(malloc(0x400));
+    scratch[0] = '\0';
+
+    unsigned int flagIndex = 1;
+    int metadataOffset = 0;
+    int valueWord = 6;
+    while (cursor != NULL) {
+        const char *percent = strchr(cursor, '%');
+        if (percent == NULL)
+            break;
+
+        strcpy(scratch, cursor);
+        scratch[percent - cursor] = '\0';
+        const char conversion = percent[1];
+        if (conversion != '%' && (conversion == 'd' || conversion == 'f')) {
+            const int inlineBytes = OperandInt(instruction, 0);
+            const char argumentType = *(
+                reinterpret_cast<const char *>(instruction)
+                + 0x14 + inlineBytes + metadataOffset);
+            const int raw = reinterpret_cast<const int *>(instruction)[
+                inlineBytes / 4 + valueWord];
+            if (argumentType == 'f' || argumentType == 'g') {
+                EclVmScalar value;
+                value.integer = raw;
+                ReadFloatValue(context, flagIndex, value.real);
+            } else {
+                ReadIntValue(context, flagIndex, raw);
+            }
+            metadataOffset += 8;
+            valueWord += 2;
+            ++flagIndex;
+        }
+        cursor = percent + 2;
+    }
+    free(scratch);
+}
+
+} // namespace
+
+
+int EclVmContext::Run(float timeDelta)
+{
+    if (instruction == NULL)
+        return -1;
+
+    while (instruction != NULL
+           && static_cast<float>(instruction->time) <= currentTime) {
+        EclVmInstruction *current = instruction;
+        bool advance = true;
+
+        if ((difficultyMask & current->difficultyMask) != 0) {
+            switch (current->opcode) {
+            case ECL_VM_NOP:
+                break;
+
+            case ECL_VM_TERMINATE:
+                instruction = NULL;
+                return -1;
+
+            case ECL_VM_RETURN:
+            {
+                EclVmLeaveFrame(this);
+                if (stackTop == 0) {
+                    instruction = NULL;
+                    return -1;
+                }
+
+                EclVmScalar value;
+                value.bits = 0;
+                PopRaw(this, &value);
+                instruction = value.instruction;
+                PopRaw(this, &value);
+                currentTime = value.real;
+                if (instruction == NULL)
+                    return -1;
+                current = instruction;
+                break;
+            }
+
+            case ECL_VM_CALL:
+                if (EclVmStartSubroutine(this, this, 0) != 0)
+                    return -1;
+                continue;
+
+            case ECL_VM_JUMP:
+                Jump(this, current);
+                advance = false;
+                break;
+
+            case ECL_VM_JUMP_IF_FALSE:
+                if (PopInt(this) == 0) {
+                    Jump(this, current);
+                    advance = false;
+                }
+                break;
+
+            case ECL_VM_JUMP_IF_TRUE:
+                if (PopInt(this) != 0) {
+                    Jump(this, current);
+                    advance = false;
+                }
+                break;
+
+            case ECL_VM_SPAWN_THREAD:
+                EclVmSpawnThread(host, -1, 0);
+                break;
+
+            case ECL_VM_SPAWN_THREAD_WITH_ID:
+            {
+                const unsigned int idIndex =
+                    static_cast<unsigned int>((OperandInt(current, 0) + 4) >> 2);
+                const int id = ReadIntValue(
+                    this, 1, OperandInt(current, idIndex));
+                EclVmSpawnThread(host, id, 1);
+                break;
+            }
+
+            case ECL_VM_STOP_THREAD:
+            {
+                EclVmContext *thread = EclVmFindThread(host, ReadInt(this, 0));
+                if (thread != NULL)
+                    thread->instruction = NULL;
+                break;
+            }
+
+            case ECL_VM_SET_THREAD_FLAG:
+            {
+                EclVmContext *thread = EclVmFindThread(host, ReadInt(this, 0));
+                if (thread != NULL)
+                    thread->flags |= 1;
+                break;
+            }
+
+            case ECL_VM_CLEAR_THREAD_FLAG:
+            {
+                EclVmContext *thread = EclVmFindThread(host, ReadInt(this, 0));
+                if (thread != NULL)
+                    thread->flags &= ~1U;
+                break;
+            }
+
+            case ECL_VM_SET_THREAD_CONTROL:
+            {
+                EclVmContext *thread = EclVmFindThread(host, ReadInt(this, 0));
+                if (thread != NULL)
+                    thread->threadControl = ReadInt(this, 1);
+                break;
+            }
+
+            case ECL_VM_STOP_ALL_THREADS:
+                EclVmStopAllThreads(host);
+                break;
+
+            case ECL_VM_EVALUATE_FORMAT_OPERANDS:
+                EvaluateFormatOperands(this);
+                break;
+
+            case ECL_VM_ENTER_FRAME:
+                EclVmEnterFrame(this, ReadInt(this, 0));
+                break;
+
+            case ECL_VM_LEAVE_FRAME:
+                EclVmLeaveFrame(this);
+                break;
+
+            case ECL_VM_PUSH_INT:
+                PushInt(this, ReadInt(this, 0));
+                break;
+
+            case ECL_VM_STORE_INT:
+                *ResolveInt(this, 0) = PopInt(this);
+                break;
+
+            case ECL_VM_PUSH_FLOAT:
+                PushFloat(this, ReadFloat(this, 0));
+                break;
+
+            case ECL_VM_STORE_FLOAT:
+                *ResolveFloat(this, 0) = PopFloat(this);
+                break;
+
+            case ECL_VM_ADD_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left + right);
+                break;
+            }
+
+            case ECL_VM_ADD_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushFloat(this, left + right);
+                break;
+            }
+
+            case ECL_VM_SUBTRACT_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left - right);
+                break;
+            }
+
+            case ECL_VM_SUBTRACT_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushFloat(this, left - right);
+                break;
+            }
+
+            case ECL_VM_MULTIPLY_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left * right);
+                break;
+            }
+
+            case ECL_VM_MULTIPLY_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushFloat(this, left * right);
+                break;
+            }
+
+            case ECL_VM_DIVIDE_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left / right);
+                break;
+            }
+
+            case ECL_VM_DIVIDE_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushFloat(this, left / right);
+                break;
+            }
+
+            case ECL_VM_MODULO_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left % right);
+                break;
+            }
+
+            case ECL_VM_EQUAL_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left == right);
+                break;
+            }
+
+            case ECL_VM_EQUAL_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left == right);
+                break;
+            }
+
+            case ECL_VM_NOT_EQUAL_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left != right);
+                break;
+            }
+
+            case ECL_VM_NOT_EQUAL_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left != right);
+                break;
+            }
+
+            case ECL_VM_LESS_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left < right);
+                break;
+            }
+
+            case ECL_VM_LESS_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left < right);
+                break;
+            }
+
+            case ECL_VM_LESS_EQUAL_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left <= right);
+                break;
+            }
+
+            case ECL_VM_LESS_EQUAL_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left <= right);
+                break;
+            }
+
+            case ECL_VM_GREATER_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left > right);
+                break;
+            }
+
+            case ECL_VM_GREATER_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left > right);
+                break;
+            }
+
+            case ECL_VM_GREATER_EQUAL_INT:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left >= right);
+                break;
+            }
+
+            case ECL_VM_GREATER_EQUAL_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left >= right);
+                break;
+            }
+
+            case ECL_VM_NOT_INT:
+                PushInt(this, !PopInt(this));
+                break;
+
+            case ECL_VM_NOT_FLOAT:
+                PushInt(this, PopFloat(this) == 0.0f);
+                break;
+
+            case ECL_VM_LOGICAL_OR:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left != 0 || right != 0);
+                break;
+            }
+
+            case ECL_VM_LOGICAL_AND:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left != 0 && right != 0);
+                break;
+            }
+
+            case ECL_VM_BITWISE_XOR:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left ^ right);
+                break;
+            }
+
+            case ECL_VM_BITWISE_OR:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left | right);
+                break;
+            }
+
+            case ECL_VM_BITWISE_AND:
+            {
+                const int right = PopInt(this);
+                const int left = PopInt(this);
+                PushInt(this, left & right);
+                break;
+            }
+
+            case ECL_VM_POST_DECREMENT_INT:
+            {
+                const int value = ReadInt(this, 0);
+                *ResolveInt(this, 0) = value - 1;
+                PushInt(this, value);
+                break;
+            }
+
+            case ECL_VM_SINE:
+                PushFloat(this, static_cast<float>(sin(PopFloat(this))));
+                break;
+
+            case ECL_VM_COSINE:
+                PushFloat(this, static_cast<float>(cos(PopFloat(this))));
+                break;
+
+            case ECL_VM_POLAR_TO_CARTESIAN:
+            {
+                const float magnitude = ReadFloat(this, 3);
+                const float angle = EclVmNormalizeAngle(ReadFloat(this, 2));
+                *ResolveFloat(this, 0) =
+                    static_cast<float>(cos(angle) * magnitude);
+                *ResolveFloat(this, 1) =
+                    static_cast<float>(sin(angle) * magnitude);
+                break;
+            }
+
+            case ECL_VM_NORMALIZE_ANGLE:
+                *ResolveFloat(this, 0) = EclVmNormalizeAngle(ReadFloat(this, 0));
+                break;
+
+            case ECL_VM_SUBTRACT_TIME:
+                currentTime -= static_cast<float>(ReadInt(this, 0));
+                break;
+
+            case ECL_VM_NEGATE_INT:
+                PushInt(this, -PopInt(this));
+                break;
+
+            case ECL_VM_NEGATE_FLOAT_STORAGE:
+            {
+                // 0x0044F851 executes integer NEG on the raw float dword and
+                // then pushes that dword with type 'f'.  This is not x87 FCHS.
+                EclVmScalar value;
+                value.real = PopFloat(this);
+                value.integer = -value.integer;
+                PushTyped(this, 'f', value);
+                break;
+            }
+
+            case ECL_VM_LENGTH_SQUARED:
+            {
+                const float x = ReadFloat(this, 1);
+                const float y = ReadFloat(this, 2);
+                *ResolveFloat(this, 0) = x * x + y * y;
+                break;
+            }
+
+            case ECL_VM_POINT_ANGLE:
+            {
+                const float dx = ReadFloat(this, 2) - ReadFloat(this, 0);
+                const float dy = ReadFloat(this, 3) - ReadFloat(this, 1);
+                *ResolveFloat(this, 0) =
+                    static_cast<float>(atan2(dy, dx));
+                break;
+            }
+
+            default:
+                if (host->DispatchEclInstruction() == -1)
+                    return 0;
+                break;
+            }
+        }
+
+        if (advance) {
+            instruction = reinterpret_cast<EclVmInstruction *>(
+                reinterpret_cast<unsigned char *>(current) + current->size);
+        }
+    }
+
+    currentTime += timeDelta;
+    return 0;
+}

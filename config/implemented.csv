@@ -248,3 +248,4 @@ AnmRenderManagerView::CopyTextureRect
 AnmRenderManagerView::CaptureToSurface
 EnemyResolveRuntimeCallback
 PlayerUpdateCallbackBody
+EclVmContext::Run
