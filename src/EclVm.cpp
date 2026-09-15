@@ -16,9 +16,55 @@ extern void EclVmSpawnThread(
     EclVmHost *host, int threadId, unsigned int firstArgument);
 extern EclVmContext *EclVmFindThread(EclVmHost *host, int threadId);
 extern void EclVmStopAllThreads(EclVmHost *host);
-extern int EclVmEnterFrame(EclVmContext *context, int localBytes);
-extern int EclVmLeaveFrame(EclVmContext *context);
 extern float EclVmNormalizeAngle(float angle);
+
+
+int EclVmStackView::Push(
+    unsigned char type, int size, const void *value)
+{
+    if (stackTop + size >= 0x1000)
+        return -1;
+
+    if (type != 0)
+    {
+        data[stackTop] = type;
+        stackTop += 4;
+    }
+
+    memcpy(data + stackTop, value, size);
+    stackTop += size;
+    return 0;
+}
+
+int EclVmStackView::EnterFrame(int localBytes)
+{
+    const int previousTop = stackTop;
+    const int localTop = previousTop + localBytes;
+    if (localTop >= 0x1000)
+        return -1;
+
+    stackTop = localTop;
+    if (stackTop + 4 < 0x1000)
+    {
+        *reinterpret_cast<int *>(data + stackTop) = frameBase;
+        stackTop += 4;
+    }
+    frameBase = previousTop;
+    return 0;
+}
+
+int EclVmStackView::LeaveFrame()
+{
+    const int previousFrame = frameBase;
+    const int previousFrameOffset = stackTop - 4;
+    if (previousFrameOffset >= 0)
+    {
+        stackTop = previousFrameOffset;
+        frameBase = *reinterpret_cast<int *>(data + previousFrameOffset);
+    }
+    stackTop = previousFrame;
+    return 0;
+}
 
 
 // The target selector table at 0x0044FCB4 covers opcodes 0x00-0x57.  Values
@@ -116,13 +162,13 @@ static bool IsOperandIndirect(
 
 static bool PopRaw(EclVmContext *context, EclVmScalar *value)
 {
-    const int valueOffset = context->stackTop - 4;
+    const int valueOffset = context->stack.stackTop - 4;
     if (valueOffset < 0)
         return false;
 
-    context->stackTop = valueOffset;
+    context->stack.stackTop = valueOffset;
     value->bits = *reinterpret_cast<unsigned int *>(
-        context->stack + valueOffset);
+        context->stack.data + valueOffset);
     return true;
 }
 
@@ -132,12 +178,12 @@ static bool PopTyped(
     if (!PopRaw(context, value))
         return false;
 
-    const int typeOffset = context->stackTop - 4;
+    const int typeOffset = context->stack.stackTop - 4;
     if (typeOffset < 0)
         return false;
 
-    context->stackTop = typeOffset;
-    *type = context->stack[typeOffset];
+    context->stack.stackTop = typeOffset;
+    *type = context->stack.data[typeOffset];
     return true;
 }
 
@@ -163,32 +209,14 @@ static float PopFloat(EclVmContext *context)
     return value.real;
 }
 
-static int PushTyped(
-    EclVmContext *context, unsigned char type, const EclVmScalar &value)
-{
-    if (context->stackTop + 4 >= 0x1000)
-        return -1;
-
-    context->stack[context->stackTop] = type;
-    context->stackTop += 4;
-    *reinterpret_cast<unsigned int *>(context->stack + context->stackTop) =
-        value.bits;
-    context->stackTop += 4;
-    return 0;
-}
-
 static int PushInt(EclVmContext *context, int value)
 {
-    EclVmScalar scalar;
-    scalar.integer = value;
-    return PushTyped(context, 'i', scalar);
+    return context->stack.Push('i', sizeof(value), &value);
 }
 
 static int PushFloat(EclVmContext *context, float value)
 {
-    EclVmScalar scalar;
-    scalar.real = value;
-    return PushTyped(context, 'f', scalar);
+    return context->stack.Push('f', sizeof(value), &value);
 }
 
 static int ReadIntValue(
@@ -198,7 +226,7 @@ static int ReadIntValue(
         return value;
     if (value >= 0)
         return *reinterpret_cast<int *>(
-            context->stack + context->frameBase + value);
+            context->stack.data + context->stack.frameBase + value);
     if (value == -1)
         return PopInt(context);
     return context->host->ReadEclInt(value);
@@ -216,7 +244,8 @@ static float ReadFloatValue(
         return value;
     if (value >= 0.0f)
         return *reinterpret_cast<float *>(
-            context->stack + context->frameBase + static_cast<int>(value));
+            context->stack.data + context->stack.frameBase
+            + static_cast<int>(value));
     if (value == -1.0f)
         return PopFloat(context);
     return context->host->ReadEclFloat(static_cast<int>(value));
@@ -236,7 +265,7 @@ static int *ResolveInt(EclVmContext *context, unsigned int index)
     const int value = OperandInt(context->instruction, index);
     if (value >= 0)
         return reinterpret_cast<int *>(
-            context->stack + context->frameBase + value);
+            context->stack.data + context->stack.frameBase + value);
     return context->host->ResolveEclInt(value);
 }
 
@@ -248,7 +277,8 @@ static float *ResolveFloat(EclVmContext *context, unsigned int index)
     const float value = OperandFloat(context->instruction, index);
     if (value >= 0.0f)
         return reinterpret_cast<float *>(
-            context->stack + context->frameBase + static_cast<int>(value));
+            context->stack.data + context->stack.frameBase
+            + static_cast<int>(value));
     return context->host->ResolveEclFloat(static_cast<int>(value));
 }
 
@@ -326,8 +356,8 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_RETURN:
             {
-                EclVmLeaveFrame(this);
-                if (stackTop == 0) {
+                stack.LeaveFrame();
+                if (stack.stackTop == 0) {
                     instruction = NULL;
                     return -1;
                 }
@@ -423,11 +453,11 @@ int EclVmContext::Run(float timeDelta)
                 break;
 
             case ECL_VM_ENTER_FRAME:
-                EclVmEnterFrame(this, ReadInt(this, 0));
+                stack.EnterFrame(ReadInt(this, 0));
                 break;
 
             case ECL_VM_LEAVE_FRAME:
-                EclVmLeaveFrame(this);
+                stack.LeaveFrame();
                 break;
 
             case ECL_VM_PUSH_INT:
@@ -708,7 +738,7 @@ int EclVmContext::Run(float timeDelta)
                 EclVmScalar value;
                 value.real = PopFloat(this);
                 value.integer = -value.integer;
-                PushTyped(this, 'f', value);
+                stack.Push('f', sizeof(value), &value);
                 break;
             }
 

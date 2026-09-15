@@ -280,3 +280,6 @@ FrontEndControllerView::Draw
 FrontEndControllerView::DrawPractice
 FrontEndControllerView::UpdateScoreEntry
 FrontEndControllerView::DrawScoreEntry
+EclVmStackView::Push
+EclVmStackView::EnterFrame
+EclVmStackView::LeaveFrame

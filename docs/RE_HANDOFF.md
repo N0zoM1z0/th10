@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `d955eba gpt-5.6-sol: recover exact ANM projected photo blend`, branch `main`.
+- Current packet base: `209595d gpt-5.6-sol: recover exact ANM draw dispatcher`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -61,14 +61,15 @@
 - Completed session checkpoint: `52bd0ff gpt-5.6-sol: recover exact ANM embedded texture upload`.
 - Completed session checkpoint: `bdc2a51 gpt-5.6-sol: recover exact ANM surface capture`.
 - Completed session checkpoint: `d955eba gpt-5.6-sol: recover exact ANM projected photo blend`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM draw dispatcher`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `209595d gpt-5.6-sol: recover exact ANM draw dispatcher`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ECL VM stack core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-draw-exact/`. The earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-vm-stack/`. The ANM draw exact campaign and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `d955eba` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `209595d` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -166,6 +167,40 @@ all ten table destinations as offsets within the same PDB owner. The full
 bytes** with no regression. Repository totals are now **126 exact functions /
 17,730 bytes**. ANM has **66 exact owners / 14,903 bytes** and **57
 source-present authored owners / 26,804 bytes** remaining.
+
+## Completed packet: exact ECL VM stack core
+
+Direct target review separates `EclVmContext + 0x08` into an embedded
+`EclVmStackView` of exactly `0x1008` bytes: `data[0x1000]`, `stackTop` at
+stack `+0x1000`, and `frameBase` at stack `+0x1004`. The enclosing context
+therefore retains its proven `0x1024` size and the absolute member offsets
+`+0x1008/+0x100C`, while the source now expresses the original nested owner
+used by the helper corridor.
+
+`EclVmStackView::Push @ 0x004505B0-0x0045060F` and
+`EclVmStackView::EnterFrame @ 0x00450690-0x004506CF` are canonical exact over
+their complete relocation-free linked `/GL` PDB contributions. Push is 96
+bytes and takes its private receiver in EAX, type in DL, and size/value on the
+stack with `RET 8`; EnterFrame is 64 bytes and takes the receiver in EAX and
+local byte count in ECX. Two independent focused cold replays and the complete
+`src/EclVm.cpp` source gate reproduce **2 units / 1 artifact / 160 bytes**.
+
+The adjacent `EclVmStackView::LeaveFrame @ 0x004506D0-0x004506F8` is source
+present over its reviewed 41-byte owner. Natural VC7.1 `/GL` output matches
+39/41 bytes; its only difference is `SUB ECX,4` where the target uses the
+equivalent `ADD ECX,-4` encoding. It remains a near match without a canonical
+unit or exact credit. Repository totals become **1,312 candidates, 285 source
+mappings, and 128 exact functions / 17,890 bytes**. The authored source
+backlog is **153**.
+
+Recompiling the generic `EclVmContext::Run` after restoring this owner shape
+still produces a selected `/GL` contribution of about 2,756 bytes against the
+7,020-byte target owner. The remaining gap is therefore a larger helper and
+handler source-shape problem, not a small stack-layout correction. The next
+high-value seam is the clear but currently untracked typed-pop body beginning
+at `0x00450610`, followed by the read/resolve helper corridor at
+`0x0044FDB0-0x004500CC`; both should be boundary-reviewed and represented
+before another full Run exact attempt.
 
 ## Completed packet: exact ANM projected photo blend
 
@@ -1979,12 +2014,13 @@ their shared two-byte issue reveals useful owner context. `CaptureToSurface @
 0x00448450`, `DrawMode7 @ 0x004445C0`, and the complete `Draw @ 0x004451C0`
 dispatcher are now canonical exact.
 
-The largest remaining core owners are ANM `ExecuteScript @ 0x00450B30`
-(9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). Use smaller
-renderer/update owners to recover production compiler context and source shape,
-then apply that evidence to those dispatchers. Keep exactness tied to complete
-owned extents and cold canonical replay; linked diagnostic proximity alone does
-not promote a unit.
+The largest remaining core owners are ANM `ExecuteScript @ 0x0043EE30`
+(9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). For ECL, first
+review and add the missing typed-pop owner at `0x00450610`, then recover the
+read/resolve helpers at `0x0044FDB0-0x004500CC`. These target-local owner seams
+are now the best evidence for restoring the Run source shape. Keep exactness
+tied to complete owned extents and cold canonical replay; linked diagnostic
+proximity alone does not promote a unit.
 
 After ANM, continue the generic and Enemy ECL owner families, including a second
 Enemy opcode cohort that shares the recovered typed operand context. The real

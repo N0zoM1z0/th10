@@ -814,9 +814,9 @@ address,span_end,state,confidence,evidence_id,notes
 0x004501B0,0x004501CD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00450220,0x0045046C,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret; direct-code-refs=1, aligned-data-refs=2; no overlap or external interior branch"
 0x00450470,0x004504F7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
-0x004505B0,0x0045060F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=42; no overlap or external interior branch
-0x00450690,0x004506CF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x004506D0,0x004506F8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
+0x004505B0,0x0045060F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 96/96, tail ret"
+0x00450690,0x004506CF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 64/64, tail ret"
+0x004506D0,0x004506F8,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 41/41, tail ret"
 0x00450700,0x0045071D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045071E,0x00450723,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x00452170,0x00452175,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch

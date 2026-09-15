@@ -814,9 +814,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004501B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00450220,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00450470,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004505B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00450690,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004506D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004505B0,authored_game,EclVm,authored,high,ecl-vm-stack-core-2026-09-16
+0x00450690,authored_game,EclVm,authored,high,ecl-vm-stack-core-2026-09-16
+0x004506D0,authored_game,EclVm,authored,high,ecl-vm-stack-core-2026-09-16
 0x00450700,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0045071E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00452170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

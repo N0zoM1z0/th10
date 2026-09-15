@@ -281,3 +281,6 @@ FrontEndControllerView::Draw,0x0042D260,function
 FrontEndControllerView::DrawPractice,0x004329F0,function
 FrontEndControllerView::UpdateScoreEntry,0x00432CB0,function
 FrontEndControllerView::DrawScoreEntry,0x00433230,function
+EclVmStackView::Push,0x004505B0,function
+EclVmStackView::EnterFrame,0x00450690,function
+EclVmStackView::LeaveFrame,0x004506D0,function

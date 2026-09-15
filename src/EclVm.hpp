@@ -26,13 +26,22 @@ public:
     virtual float *ResolveEclFloat(int id) = 0;
 };
 
+struct EclVmStackView
+{
+    unsigned char data[0x1000];
+    int stackTop;
+    int frameBase;
+
+    int Push(unsigned char type, int size, const void *value);
+    int EnterFrame(int localBytes);
+    int LeaveFrame();
+};
+
 struct EclVmContext
 {
     float currentTime;
     EclVmInstruction *instruction;
-    unsigned char stack[0x1000];
-    int stackTop;
-    int frameBase;
+    EclVmStackView stack;
     int threadId;
     EclVmHost *host;
     int threadControl;
@@ -61,9 +70,11 @@ typedef char EclVmContext_instruction_offset[
 typedef char EclVmContext_stack_offset[
     offsetof(EclVmContext, stack) == 0x8 ? 1 : -1];
 typedef char EclVmContext_stack_top_offset[
-    offsetof(EclVmContext, stackTop) == 0x1008 ? 1 : -1];
+    offsetof(EclVmContext, stack) + offsetof(EclVmStackView, stackTop) == 0x1008
+        ? 1 : -1];
 typedef char EclVmContext_frame_base_offset[
-    offsetof(EclVmContext, frameBase) == 0x100C ? 1 : -1];
+    offsetof(EclVmContext, stack) + offsetof(EclVmStackView, frameBase) == 0x100C
+        ? 1 : -1];
 typedef char EclVmContext_thread_id_offset[
     offsetof(EclVmContext, threadId) == 0x1010 ? 1 : -1];
 typedef char EclVmContext_host_offset[
@@ -75,5 +86,6 @@ typedef char EclVmContext_difficulty_offset[
 typedef char EclVmContext_flags_offset[
     offsetof(EclVmContext, flags) == 0x1020 ? 1 : -1];
 typedef char EclVmContext_size[sizeof(EclVmContext) == 0x1024 ? 1 : -1];
+typedef char EclVmStackView_size[sizeof(EclVmStackView) == 0x1008 ? 1 : -1];
 
 #endif
