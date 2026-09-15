@@ -5610,12 +5610,17 @@ int AnmRenderManagerView::DrawTexturedTriangleFan(
 // dispatches the four-bit render mode through a ten-entry jump table.
 int AnmRenderManagerView::Draw(AnmVmView *vm)
 {
+    // The target keeps one shared rejection block immediately before the
+    // render-mode dispatch.
     if (!vm->visible)
-        return -1;
+        goto invalid_vm;
     if (!vm->drawEnabled)
-        return -1;
+        goto invalid_vm;
     if (vm->primaryColor.alpha == 0)
+    {
+    invalid_vm:
         return -1;
+    }
 
     switch (vm->renderMode)
     {
@@ -5623,10 +5628,6 @@ int AnmRenderManagerView::Draw(AnmVmView *vm)
         return DrawNoRotation(vm);
     case 1:
         return Draw2D(vm);
-    case 2:
-        return DrawNoRotationNoRound(vm);
-    case 3:
-        return Draw2DRotatedOrAxisAligned(vm);
     case 4:
         return DrawCameraFacingQuad(vm);
     case 5:
@@ -5641,6 +5642,10 @@ int AnmRenderManagerView::Draw(AnmVmView *vm)
         return DrawGeneratedVertices(
             vm, reinterpret_cast<AnmRenderVertexView *>(vm->generatedVertices),
             vm->generatedVertexCount * 2);
+    case 2:
+        return DrawNoRotationNoRound(vm);
+    case 3:
+        return Draw2DRotatedOrAxisAligned(vm);
     default:
         return 0;
     }

@@ -813,6 +813,42 @@ linkages = [
   { offset = 0x27, type = "REL32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0 },
 ]
 
+[units.anm-render-draw]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmRendererDispatch"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AnmPairOwnerDrawCallback@@YIHPAUAnmPairDrawOwnerView@@@Z"
+functions = ["AnmRenderManagerView::Draw"]
+symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+target_address = 0x004451C0
+size = 216
+linkages = [
+  { offset = 0x30, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0xB0 },
+  { offset = 0x38, type = "REL32", symbol = "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00443080 },
+  { offset = 0x44, type = "REL32", symbol = "?Draw2D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004436C0 },
+  { offset = 0x4C, type = "REL32", symbol = "?DrawCameraFacingQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00443F80 },
+  { offset = 0x58, type = "REL32", symbol = "?DrawProjected3DQuad@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00444580 },
+  { offset = 0x64, type = "REL32", symbol = "?DrawMode6@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00443FB0 },
+  { offset = 0x6E, type = "REL32", symbol = "?DrawMode7@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004445C0 },
+  { offset = 0x77, type = "REL32", symbol = "?Draw3D@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00444760 },
+  { offset = 0x8F, type = "REL32", symbol = "?DrawGeneratedVertices@AnmRenderManagerView@@QAEHPAUAnmVmView@@PAUAnmRenderVertexView@@H@Z", target = 0x00444CE0 },
+  { offset = 0x98, type = "REL32", symbol = "?DrawNoRotationNoRound@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00443290 },
+  { offset = 0xA4, type = "REL32", symbol = "?Draw2DRotatedOrAxisAligned@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00443910 },
+  { offset = 0xB0, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x34 },
+  { offset = 0xB4, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x3F },
+  { offset = 0xB8, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x96 },
+  { offset = 0xBC, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x9F },
+  { offset = 0xC0, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x48 },
+  { offset = 0xC4, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x53 },
+  { offset = 0xC8, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x5F },
+  { offset = 0xCC, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x6B },
+  { offset = 0xD0, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x75 },
+  { offset = 0xD4, type = "DIR32", symbol = "?Draw@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x004451C0, addend = 0x7E },
+]
+
 [units.anm-render-clear-vertex-buffer]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"

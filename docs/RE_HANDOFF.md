@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `bdc2a51 gpt-5.6-sol: recover exact ANM surface capture`, branch `main`.
+- Current packet base: `d955eba gpt-5.6-sol: recover exact ANM projected photo blend`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -60,14 +60,15 @@
 - Completed session checkpoint: `91c8d5f gpt-5.6-sol: recover exact ANM float variable resolver`.
 - Completed session checkpoint: `52bd0ff gpt-5.6-sol: recover exact ANM embedded texture upload`.
 - Completed session checkpoint: `bdc2a51 gpt-5.6-sol: recover exact ANM surface capture`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM projected photo blend`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `d955eba gpt-5.6-sol: recover exact ANM projected photo blend`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM draw dispatcher`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-ecl-exact-next/`. The earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-draw-exact/`. The earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `bdc2a51` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `d955eba` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -140,6 +141,31 @@ its count is the conservative intersection of candidates whose origin and
 boundary reviews are both complete. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
+
+## Completed packet: exact ANM draw dispatcher
+
+`AnmRenderManagerView::Draw @ 0x004451C0-0x00445297` is now canonical exact
+across its complete 216-byte linked `/GL` PDB contribution. The contribution
+contains 173 bytes of executable code, the three-byte alignment instruction at
+`0x0044526D`, and the ten-entry absolute jump table at `0x00445270`.
+
+TH10 physically orders its case blocks as modes `0, 1, 4, 5, 6, 7, 8, 9, 2,
+3`, although the table continues to map numeric modes 0-9 normally. Preserving
+that source case order closes the dispatcher after offset `+0x20`. The final
+entry mismatch was confined to the three VM guards: separate early returns
+made VC7.1 place the shared failure block after the first visibility test,
+whereas the target branches both flag failures into the alpha-zero rejection
+block immediately before the switch. Expressing that real common return with a
+single label inside the alpha branch reproduces the target control flow without
+adding state, padding, assembly, or copied bytes.
+
+Two independent focused cold replays close **216/216 bytes and all 21 linkage
+fields**. The exhaustive fields cover the table base, ten renderer calls, and
+all ten table destinations as offsets within the same PDB owner. The full
+`src/AnmManager.cpp` cold gate closes **76 units / 10 artifacts / 15,739 target
+bytes** with no regression. Repository totals are now **126 exact functions /
+17,730 bytes**. ANM has **66 exact owners / 14,903 bytes** and **57
+source-present authored owners / 26,804 bytes** remaining.
 
 ## Completed packet: exact ANM projected photo blend
 
@@ -1950,7 +1976,8 @@ differences are respectively one commutative X87 operand order and one complete
 production-context evidence exists. The four 93/95-byte
 `CreateVmAtScreenVariant*` siblings can remain in the Web leaf queue unless
 their shared two-byte issue reveals useful owner context. `CaptureToSurface @
-0x00448450` and `DrawMode7 @ 0x004445C0` are now canonical exact.
+0x00448450`, `DrawMode7 @ 0x004445C0`, and the complete `Draw @ 0x004451C0`
+dispatcher are now canonical exact.
 
 The largest remaining core owners are ANM `ExecuteScript @ 0x00450B30`
 (9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). Use smaller
