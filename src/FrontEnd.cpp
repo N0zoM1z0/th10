@@ -2,7 +2,10 @@
 #include "FrontEnd.hpp"
 #include "ReplayManager.hpp"
 
+#include <direct.h>
+#include <stdio.h>
 #include <string.h>
+#include <time.h>
 
 
 struct FrontEndInputView
@@ -31,6 +34,10 @@ extern int g_FrontEndNextGameMode;
 extern unsigned char *g_FrontEndProfileData;
 extern const char *g_FrontEndStageNames[];
 extern unsigned char g_FrontEndKeyboardState[256];
+extern int g_FrontEndReplayCursor;
+extern const char *g_ReplayCharacterNames[];
+extern const char *g_ReplayDifficultyNames[];
+extern const char *g_ReplayCompletionNames[];
 
 extern int g_ReplayCurrentStage;
 extern int g_ReplayCharacter;
@@ -55,7 +62,6 @@ extern int FrontEndReadKeyboardState(unsigned char *keyboardState);
 extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
-extern int FrontEndUpdateReplay(FrontEndControllerView *controller);
 extern int FrontEndUpdatePractice(FrontEndControllerView *controller);
 extern int FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
 extern int FrontEndUpdateSpecial(FrontEndControllerView *controller);
@@ -269,6 +275,22 @@ static int ReadFrontEndStageShortcut()
             return shortcut;
     }
     return 0;
+}
+
+static void DrawReplaySummary(
+    AsciiManagerView *ascii, AnmFloat3View *position,
+    ReplayManager *replay, int replayNumber)
+{
+    ReplayDataHeader *data = replay->replayData;
+    tm *date = localtime(reinterpret_cast<time_t *>(&data->timestamp));
+    ascii->AddFormatText(
+        position,
+        "No.%.2d %s %.2d/%.2d/%.2d %.2d:%.2d %s %s %s %2.1f%%",
+        replayNumber, data->replayName, date->tm_year % 100,
+        date->tm_mon + 1, date->tm_mday, date->tm_hour, date->tm_min,
+        g_ReplayCharacterNames[data->character * 3 + data->shotType],
+        g_ReplayDifficultyNames[data->difficulty],
+        g_ReplayCompletionNames[data->completionState], data->slowRate);
 }
 
 static AnmVmView *FindChildVm(
@@ -552,7 +574,7 @@ int FrontEndControllerView::Update()
         FrontEndBeginGame();
         break;
     case FRONT_END_SCREEN_REPLAY:
-        FrontEndUpdateReplay(this);
+        UpdateReplay(this);
         break;
     case FRONT_END_SCREEN_PRACTICE:
         FrontEndUpdatePractice(this);
@@ -1486,5 +1508,284 @@ int FrontEndControllerView::DrawStageScores()
         ascii->color = 0xffffffff;
         ascii->drawShadow = 0;
     }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x004315C0 FrontEndControllerView::UpdateReplay
+int __stdcall FrontEndControllerView::UpdateReplay(
+    FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case FRONT_END_REPLAY_INITIALIZE:
+    {
+        controller->cursor.count = 25;
+        controller->cursor.SetCurrent(g_FrontEndReplayCursor);
+        g_FrontEndReplayCursor = 0;
+
+        if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
+        {
+            CreateVm(controller, 0x5e);
+            controller->difficultyAuxVmId =
+                g_AsciiManagerView->asciiAnm->CreateVmVariant0(
+                    8, FRONT_END_RENDER_LAYER);
+        }
+        CreateVm(controller, 0x65);
+        SetScreenState(controller, FRONT_END_REPLAY_OPENING);
+
+        memset(controller->replayFiles, 0, sizeof(controller->replayFiles));
+        for (int replayNumber = 1; replayNumber <= 25; ++replayNumber)
+        {
+            char replayPath[64];
+            sprintf(replayPath, "th10_%.2d.rpy", replayNumber);
+            controller->replayFiles[replayNumber - 1] =
+                ReplayManager::Load(replayPath);
+        }
+
+        _mkdir("replay");
+        _chdir("replay");
+
+        WIN32_FIND_DATAA findData;
+        HANDLE search = FindFirstFileA("th10_ud????.rpy", &findData);
+        if (search != INVALID_HANDLE_VALUE)
+        {
+            int replayIndex = 25;
+            do
+            {
+                _chdir("../");
+                controller->replayFiles[replayIndex] =
+                    ReplayManager::Load(findData.cFileName);
+                _chdir("replay");
+                ++replayIndex;
+            }
+            while (replayIndex < 50 && FindNextFileA(search, &findData));
+        }
+
+        // The original calls FindClose even when FindFirstFileA returned the
+        // invalid sentinel. Preserve that observable error-path behavior.
+        FindClose(search);
+        _chdir("../");
+        controller->replayListOffset = 0;
+        break;
+    }
+
+    case FRONT_END_REPLAY_OPENING:
+        if (controller->stateTimer.current > 6)
+        {
+            SetScreenState(controller, FRONT_END_REPLAY_SELECT_FILE);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_REPLAY_SELECT_FILE:
+        controller->cursor.previous = controller->cursor.current;
+        if (InputRepeated(FRONT_END_INPUT_UP))
+            controller->cursor.Move(-1);
+        if (InputRepeated(FRONT_END_INPUT_DOWN))
+            controller->cursor.Move(1);
+
+        if (controller->cursor.previous != controller->cursor.current)
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            SetScreenState(controller, FRONT_END_REPLAY_CLOSING);
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            return 1;
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0 &&
+            controller->replayFiles[controller->cursor.current] != NULL)
+        {
+            SetScreenState(controller, FRONT_END_REPLAY_SELECT_STAGE);
+            controller->selectedReplay = controller->cursor.current;
+            controller->cursor.Push();
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+
+            controller->cursor.count = 7;
+            controller->cursor.SetCurrent(0);
+            ReplayManager *replay =
+                controller->replayFiles[controller->selectedReplay];
+            for (int stage = 1; stage <= 7; ++stage)
+            {
+                if (replay->stageStates[stage].header == NULL)
+                    controller->cursor.DisableEntry(stage - 1);
+            }
+            controller->cursor.Move(-1);
+            controller->cursor.Move(1);
+        }
+        break;
+
+    case FRONT_END_REPLAY_SELECT_STAGE:
+        if (controller->stateTimer.current < 15)
+            break;
+
+        controller->cursor.previous = controller->cursor.current;
+        if (InputRepeated(FRONT_END_INPUT_UP))
+            controller->cursor.Move(-1);
+        if (InputRepeated(FRONT_END_INPUT_DOWN))
+            controller->cursor.Move(1);
+
+        if (controller->cursor.previous != controller->cursor.current)
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            controller->cursor.Pop();
+            controller->cursor.count = 25;
+            controller->cursor.disabledEntryCount = 0;
+            SetScreenState(controller, FRONT_END_REPLAY_SELECT_FILE);
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            return 1;
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            controller->selectedReplayStage = controller->cursor.current;
+            SetScreenState(controller, FRONT_END_REPLAY_STARTING);
+        }
+        break;
+
+    case FRONT_END_REPLAY_STARTING:
+        if (controller->stateTimer.current == 2)
+        {
+            FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
+            EnsureAsciiSelectionVm(480.0f, 392.0f);
+        }
+
+        if (controller->stateTimer.current >= 32)
+        {
+            SetScreen(controller, FRONT_END_SCREEN_START_GAME);
+            g_FrontEndSelectedStage = controller->selectedReplayStage + 1;
+            g_FrontEndSelectedStageRecord =
+                g_FrontEndStageRecords[controller->selectedReplayStage];
+            g_FrontEndSelectedStageMirror = g_FrontEndSelectedStage;
+            FrontEndFinalizeGameSelection(6.0f);
+            g_FrontEndNextGameMode = 12;
+
+            ReplayManager *replay =
+                controller->replayFiles[controller->selectedReplay];
+            strcpy(g_FrontEndDemoPath, replay->replayPath);
+            g_ReplayCharacter = replay->replayData->character;
+            g_ReplayShotType = replay->replayData->shotType;
+            g_ReplayDifficulty = replay->replayData->difficulty;
+            g_FrontEndMode = 2;
+            g_FrontEndReplayCursor = controller->selectedReplay;
+        }
+        break;
+
+    case FRONT_END_REPLAY_CLOSING:
+        if (controller->stateTimer.current >= 6)
+        {
+            for (int replayIndex = 0; replayIndex < 50; ++replayIndex)
+                ReplayManager::Destroy(controller->replayFiles[replayIndex]);
+            memset(controller->replayFiles, 0, sizeof(controller->replayFiles));
+
+            DeleteVm(controller, 0x65);
+            InterruptVm(controller, 0x5a, 8);
+            InterruptVm(controller, 0x5b, 8);
+            DeleteVm(controller, 0x5e);
+            InterruptVmId(controller->difficultyAuxVmId.value, 1);
+            SetScreen(controller, FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            controller->cursor.Pop();
+        }
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00431BA0 FrontEndControllerView::DrawReplay
+int __stdcall FrontEndControllerView::DrawReplay(
+    FrontEndControllerView *controller)
+{
+    AsciiManagerView *ascii = g_AsciiManagerView;
+
+    if (controller->screenState == FRONT_END_REPLAY_SELECT_FILE)
+    {
+        ascii->drawShadow = 1;
+        AnmFloat3View position(58.0f, 80.0f, 0.0f);
+
+        for (int replayIndex = 0; replayIndex < 25; ++replayIndex)
+        {
+            ascii->color = controller->cursor.current == replayIndex
+                ? 0xffffff00 : 0xff808080;
+            ReplayManager *replay = controller->replayFiles[replayIndex];
+            if (replay == NULL)
+            {
+                ascii->AddFormatText(
+                    &position,
+                    "No.%.2d -------- --/--/-- --:-- ------- ------- --- ---%%",
+                    replayIndex + 1);
+            }
+            else
+            {
+                DrawReplaySummary(ascii, &position, replay, replayIndex + 1);
+            }
+            position.y += 15.0f;
+        }
+    }
+    else if (controller->screenState == FRONT_END_REPLAY_SELECT_STAGE)
+    {
+        ascii->drawShadow = 1;
+        AnmFloat3View position(80.0f, 80.0f, 0.0f);
+        if (controller->stateTimer.current < 10)
+        {
+            position.y += controller->selectedReplay * 15.0f *
+                (10.0f - controller->stateTimer.subframe) * 0.1f;
+        }
+
+        ReplayManager *replay =
+            controller->replayFiles[controller->selectedReplay];
+        DrawReplaySummary(
+            ascii, &position, replay, controller->selectedReplay + 1);
+
+        if (controller->stateTimer.current >= 10)
+        {
+            position.x = 220.0f;
+            position.y = 128.0f;
+            for (int stage = 1; stage <= 7; ++stage)
+            {
+                ascii->color = controller->cursor.current == stage - 1
+                    ? 0xffffff00 : 0xff808080;
+                ReplayStageDataHeader *header =
+                    replay->stageStates[stage].header;
+                if (header == NULL)
+                {
+                    ascii->AddFormatText(
+                        &position, "%s  ---------",
+                        g_FrontEndStageNames[stage]);
+                }
+                else
+                {
+                    ReplayStageDataHeader *nextHeader = stage < 6
+                        ? replay->stageStates[stage + 1].header : NULL;
+                    if (nextHeader != NULL)
+                    {
+                        ascii->AddFormatText(
+                            &position, "%s  %.8d%d",
+                            g_FrontEndStageNames[stage], nextHeader->unknown00C,
+                            nextHeader->unknown1B4);
+                    }
+                    else
+                    {
+                        ascii->AddFormatText(
+                            &position, "%s  %.8d%d",
+                            g_FrontEndStageNames[stage], replay->replayData->score,
+                            replay->replayData->unknown060);
+                    }
+                }
+                position.y += 18.0f;
+            }
+        }
+    }
+    else
+    {
+        return 1;
+    }
+
+    ascii->color = 0xffffffff;
+    ascii->drawShadow = 0;
     return 1;
 }

@@ -272,3 +272,5 @@ FrontEndControllerView::UpdateCharacter
 FrontEndControllerView::UpdateShotType
 FrontEndControllerView::UpdateStage
 FrontEndControllerView::DrawStageScores
+FrontEndControllerView::UpdateReplay
+FrontEndControllerView::DrawReplay

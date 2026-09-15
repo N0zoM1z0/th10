@@ -6,6 +6,9 @@
 #include <stddef.h>
 
 
+class ReplayManager;
+
+
 // The three target cursor helpers at 0x0044BE20/70/A0 establish this complete
 // 0xD8-byte layout. Their original type name and source owner remain unknown.
 struct FrontEndCursorView
@@ -111,6 +114,17 @@ enum FrontEndSelectionStateView
 };
 
 
+enum FrontEndReplayStateView
+{
+    FRONT_END_REPLAY_INITIALIZE = 0,
+    FRONT_END_REPLAY_OPENING = 1,
+    FRONT_END_REPLAY_SELECT_FILE = 2,
+    FRONT_END_REPLAY_STARTING = 3,
+    FRONT_END_REPLAY_SELECT_STAGE = 4,
+    FRONT_END_REPLAY_CLOSING = 5
+};
+
+
 // TH10 stores all nine controller bindings as adjacent signed shorts. Target
 // input masks identify the first four actions and skip. The middle directional
 // names are adjacent-supported and remain provisional; all four values are
@@ -133,8 +147,8 @@ typedef char FrontEndControllerMappingSizeIs12[
 
 
 // This maintained partial view reaches the highest VM slot consumed by the
-// reviewed update paths and the key-configuration scratch bindings. It does
-// not claim the complete front-end allocation.
+// reviewed update paths, key-configuration scratch bindings, and replay-list
+// storage. It does not claim the complete front-end allocation.
 struct FrontEndControllerView
 {
     unsigned char unknown000[0x010];
@@ -153,6 +167,11 @@ struct FrontEndControllerView
     int savedDifficulty;
     unsigned char unknown58F4[0x0d8];
     short keyConfigBindings[5];
+    unsigned char unknown59D6[2];
+    int replayListOffset;
+    int selectedReplay;
+    int selectedReplayStage;
+    ReplayManager *replayFiles[50];
 
     int Update();
     static int __stdcall UpdateOptions(FrontEndControllerView *controller);
@@ -165,6 +184,8 @@ struct FrontEndControllerView
     static int __stdcall UpdateShotType(FrontEndControllerView *controller);
     static int __stdcall UpdateStage(FrontEndControllerView *controller);
     int DrawStageScores();
+    static int __stdcall UpdateReplay(FrontEndControllerView *controller);
+    static int __stdcall DrawReplay(FrontEndControllerView *controller);
 };
 
 typedef char FrontEndControllerStateAt1C[
@@ -183,5 +204,13 @@ typedef char FrontEndControllerSelectionFields[
      offsetof(FrontEndControllerView, savedDifficulty) == 0x58f0) ? 1 : -1];
 typedef char FrontEndControllerKeyConfigBindingsAt59CC[
     (offsetof(FrontEndControllerView, keyConfigBindings) == 0x59cc) ? 1 : -1];
+typedef char FrontEndControllerReplayFieldsAt59D8[
+    (offsetof(FrontEndControllerView, replayListOffset) == 0x59d8 &&
+     offsetof(FrontEndControllerView, selectedReplay) == 0x59dc &&
+     offsetof(FrontEndControllerView, selectedReplayStage) == 0x59e0 &&
+     offsetof(FrontEndControllerView, replayFiles) == 0x59e4) ? 1 : -1];
+typedef char FrontEndControllerReplayFilesEndAt5AAC[
+    (offsetof(FrontEndControllerView, replayFiles) +
+         sizeof(ReplayManager *) * 50 == 0x5aac) ? 1 : -1];
 
 #endif

@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `5b6a544 gpt-5.6-sol: reconstruct front-end selection core`, branch `main`.
+- Current packet base: `41c0f09 gpt-5.6-sol: reconstruct front-end stage core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -47,9 +47,10 @@
 - Completed session checkpoint: `e7615ce gpt-5.6-sol: reconstruct front-end options core`.
 - Completed session checkpoint: `4142a89 gpt-5.6-sol: reconstruct front-end key config core`.
 - Completed session checkpoint: `5b6a544 gpt-5.6-sol: reconstruct front-end selection core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end stage core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `41c0f09 gpt-5.6-sol: reconstruct front-end stage core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end replay core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-stage-core/`. The earlier front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-replay-core/`. The earlier front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -322,6 +323,59 @@ Repository totals become **1,312 candidates, 274 source mappings, 290 reviewed
 authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage is
 340,345 `.text` bytes; the indexed-table queue is now 58 references inside
 their recorded owner and 42 outside.
+
+## Completed packet: front-end replay core
+
+Replay selection now has maintained source across two authored owners and 2,317
+reviewed target bytes:
+
+- `FrontEndControllerView::UpdateReplay @ 0x004315C0-0x00431B93`
+  (1,492 bytes)
+- `FrontEndControllerView::DrawReplay @ 0x00431BA0-0x00431ED8`
+  (825 bytes)
+
+The six-state update owner loads the twenty-five numbered replay slots, scans up
+to twenty-five additional `th10_ud????.rpy` files, preserves the target's
+unconditional `FindClose` error path, and constructs the seven-stage cursor from
+the selected replay's stage headers. Confirmation publishes the selected stage,
+stage record, replay path, character, shot type and difficulty before entering
+game mode 12. Cancellation releases all fifty replay pointers and the replay
+screen's ANM VM tree before restoring the outer cursor.
+
+The display owner draws twenty-five fixed replay rows with replay name, date,
+character/shot, difficulty, completion marker and slowdown percentage. After a
+file is chosen, its summary moves from the selected list row to y=80 over ten
+frames, then seven stage rows appear at x=220/y=128 with 18-pixel spacing. For
+stages before the last available stream, the displayed score and trailing digit
+come from the next stage header at `+0x0C/+0x1B4`; otherwise they come from replay
+header `+0x10/+0x60`. Controller layout assertions bind the replay fields at
+`+0x59D8/+0x59DC/+0x59E0` and the fifty-pointer array at `+0x59E4..+0x5AAB`.
+
+Boundary review corrects the prior code-only extent for the update owner. Its
+`RET 4` ends at `0x00431B79`, `MOV EDI,EDI` occupies `0x00431B7A-0x00431B7B`,
+and the directly indexed six-entry table spans `0x00431B7C-0x00431B93` with
+destinations `0x004315F2`, `0x0043174D`, `0x004317B1`, `0x004319B4`,
+`0x004318FD` and `0x00431A9E`. Twelve `CC` bytes precede the display owner; its
+`RET 4` is followed by seven `CC` bytes before `0x00431EE0`. This adds 26 bytes
+to tracked `.text` union coverage and moves one indexed table inside its owner.
+
+`scripts/report-frontend-replay.py --check` fails closed on the canonical target
+and validates the two extents, table/tails, complete direct-call multisets,
+update/draw callback call sites, name tables, display constants, source markers,
+state domain and controller offsets.
+
+Pinned VC7.1 build6030 normal, `/GL` and `/W4` compiles pass; `/W4` reports only
+the existing anonymous-union warnings. The normal COMDATs are 1,588 and 554
+bytes versus target owners 1,492 and 825, with 89/1,184 and 33/753 comparable
+bytes matching and 88/18 relocations. In the selected replay-update linked
+`/GL` context the contributions are 1,672 and 554 bytes with 102/1,196 and
+33/753 comparable bytes matching. Every diagnostic is a real mismatch with
+`acceptance_authority=none`; no match row or exactness promotion is made.
+
+Repository totals become **1,312 candidates, 276 source mappings, 292 reviewed
+authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage is
+340,371 `.text` bytes; the indexed-table queue is now 59 references inside
+their recorded owner and 41 outside.
 
 ## Completed packet: Main execution corridor
 
