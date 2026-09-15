@@ -2,6 +2,8 @@ name,address,type
 FrontEndControllerView::UpdateDifficulty,0x00430320,function
 FrontEndControllerView::UpdateCharacter,0x004306A0,function
 FrontEndControllerView::UpdateShotType,0x00430A60,function
+FrontEndControllerView::UpdateStage,0x00430FF0,function
+FrontEndControllerView::DrawStageScores,0x00431410,function
 PbgArchive::PbgArchive,0x00434C10,function
 PbgArchive::~PbgArchive,0x00434C20,function
 PbgArchive::Load,0x00434C30,function

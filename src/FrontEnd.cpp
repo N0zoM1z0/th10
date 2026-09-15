@@ -23,10 +23,14 @@ extern unsigned char g_FrontEndStageRecords[][0x30];
 extern unsigned char *g_FrontEndSelectedStageRecord;
 extern int g_FrontEndSelectedStage;
 extern int g_FrontEndSelectedStageMirror;
+extern int g_FrontEndStageCursor;
+extern int g_FrontEndStageShortcut;
 extern int g_FrontEndSavedDifficulty;
 extern unsigned int g_FrontEndSupervisorFlags;
 extern int g_FrontEndNextGameMode;
 extern unsigned char *g_FrontEndProfileData;
+extern const char *g_FrontEndStageNames[];
+extern unsigned char g_FrontEndKeyboardState[256];
 
 extern int g_ReplayCurrentStage;
 extern int g_ReplayCharacter;
@@ -46,11 +50,11 @@ extern void FrontEndLoadMusic(int slot, const char *path);
 extern void FrontEndPlayMusic(int slot, int loopStart);
 extern void FrontEndResetAsciiAuxiliary(int *state);
 extern signed char *__fastcall FrontEndGetControllerState(int controllerIndex);
+extern int FrontEndReadKeyboardState(unsigned char *keyboardState);
 
 extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
-extern int FrontEndUpdateStage(FrontEndControllerView *controller);
 extern int FrontEndUpdateReplay(FrontEndControllerView *controller);
 extern int FrontEndUpdatePractice(FrontEndControllerView *controller);
 extern int FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
@@ -82,6 +86,17 @@ enum
     FRONT_END_SOUND_CANCEL = 11,
     FRONT_END_SOUND_MOVE = 12
 };
+
+struct FrontEndStageScoreRecordView
+{
+    int score;
+    unsigned char unknown004;
+    unsigned char available;
+    unsigned char unknown006[2];
+};
+
+typedef char FrontEndStageScoreRecordSizeIs8[
+    (sizeof(FrontEndStageScoreRecordView) == 8) ? 1 : -1];
 
 enum FrontEndKeyConfigBindingView
 {
@@ -231,6 +246,29 @@ static void EnsureAsciiSelectionVm(float x, float y)
             g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(
                 6, &position);
     }
+}
+
+static FrontEndStageScoreRecordView *GetFrontEndStageScoreRecord(int stage)
+{
+    int shotGroup = g_ReplayShotType + g_ReplayCharacter * 3;
+    FrontEndStageScoreRecordView *records =
+        reinterpret_cast<FrontEndStageScoreRecordView *>(
+            g_FrontEndProfileData + shotGroup * 0x437c + 0x4dc);
+    return &records[stage + g_ReplayDifficulty * 6];
+}
+
+static int ReadFrontEndStageShortcut()
+{
+    int directInput = FrontEndReadKeyboardState(g_FrontEndKeyboardState);
+    int firstKey = directInput != 0 ? 2 : '1';
+    int shortcut;
+
+    for (shortcut = 1; shortcut <= 9; ++shortcut)
+    {
+        if ((g_FrontEndKeyboardState[firstKey + shortcut - 1] & 0x80) != 0)
+            return shortcut;
+    }
+    return 0;
 }
 
 static AnmVmView *FindChildVm(
@@ -507,7 +545,7 @@ int FrontEndControllerView::Update()
         UpdateShotType(this);
         break;
     case FRONT_END_SCREEN_STAGE:
-        FrontEndUpdateStage(this);
+        UpdateStage(this);
         break;
     case FRONT_END_SCREEN_START_GAME_10:
     case FRONT_END_SCREEN_START_GAME_13:
@@ -1293,6 +1331,160 @@ int __stdcall FrontEndControllerView::UpdateShotType(
             controller->cursor.Pop();
         }
         break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00430FF0 FrontEndControllerView::UpdateStage
+int __stdcall FrontEndControllerView::UpdateStage(
+    FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case FRONT_END_SELECTION_INITIALIZE:
+        controller->cursor.count = 6;
+        controller->cursor.SetCurrent(g_FrontEndStageCursor);
+        CreateVm(controller, 0x6a);
+        CreateVm(controller, 0x6b + g_ReplayCharacter);
+        SetScreenState(controller, FRONT_END_SELECTION_OPENING);
+        break;
+
+    case FRONT_END_SELECTION_OPENING:
+        if (controller->stateTimer.current > 10)
+        {
+            SetScreenState(controller, FRONT_END_SELECTION_ACTIVE);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_ACTIVE:
+        controller->cursor.previous = controller->cursor.current;
+        if (InputRepeated(FRONT_END_INPUT_UP))
+            controller->cursor.Move(-1);
+        if (InputRepeated(FRONT_END_INPUT_DOWN))
+            controller->cursor.Move(1);
+
+        if (controller->cursor.previous != controller->cursor.current)
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            SetScreenState(controller, FRONT_END_SELECTION_CLOSING);
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            g_FrontEndStageCursor = controller->cursor.current;
+            return 1;
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            FrontEndStageScoreRecordView *record =
+                GetFrontEndStageScoreRecord(controller->cursor.current + 1);
+            if (record->available != 0)
+                SetScreenState(controller, FRONT_END_SELECTION_CONFIRMED);
+
+            FrontEndPlaySound(
+                record->available != 0 ? FRONT_END_SOUND_SELECT : 0x25);
+            g_FrontEndStageCursor = controller->cursor.current;
+            g_FrontEndStageShortcut = ReadFrontEndStageShortcut();
+        }
+        break;
+
+    case FRONT_END_SELECTION_CONFIRMED:
+        if (controller->stateTimer.current == 10)
+        {
+            EnsureAsciiSelectionVm(480.0f, 392.0f);
+            FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
+        }
+
+        if (controller->stateTimer.current >= 40)
+        {
+            controller->cursor.Push();
+            SetScreen(controller, FRONT_END_SCREEN_START_GAME);
+            g_FrontEndSelectedStage = controller->cursor.current + 1;
+            g_FrontEndSelectedStageRecord =
+                g_FrontEndStageRecords[controller->cursor.current];
+            g_FrontEndSelectedStageMirror = g_FrontEndSelectedStage;
+            FrontEndFinalizeGameSelection(6.0f);
+            g_FrontEndNextGameMode = 7;
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_CLOSING:
+        if (controller->stateTimer.current >= 6)
+        {
+            DeleteVm(controller, 0x6a);
+            DeleteVm(controller, 0x6b + g_ReplayCharacter);
+            SetScreen(controller, FRONT_END_SCREEN_SHOT_TYPE);
+            controller->cursor.Pop();
+        }
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00431410 FrontEndControllerView::DrawStageScores
+int FrontEndControllerView::DrawStageScores()
+{
+    AsciiManagerView *ascii = g_AsciiManagerView;
+
+    if (screenState >= FRONT_END_SELECTION_ACTIVE &&
+        screenState <= FRONT_END_SELECTION_CONFIRMED)
+    {
+        ascii->drawShadow = 1;
+        AnmFloat3View position(80.0f, 80.0f, 0.0f);
+
+        if (stateTimer.current >= 10 ||
+            screenState == FRONT_END_SELECTION_CONFIRMED)
+        {
+            position.x = g_ReplayCharacter == 0 ? 168.0f : 296.0f;
+            position.y = 216.0f;
+
+            for (int stage = 1; stage <= 6; ++stage)
+            {
+                FrontEndStageScoreRecordView *record =
+                    GetFrontEndStageScoreRecord(stage);
+                if (cursor.current == stage - 1)
+                {
+                    if (record->available == 0)
+                    {
+                        ascii->color = 0xffdfdfdf;
+                    }
+                    else if (screenState == FRONT_END_SELECTION_CONFIRMED &&
+                             stateTimer.current % 4 >= 2)
+                    {
+                        ascii->color = 0xff000000;
+                    }
+                    else
+                    {
+                        ascii->color = 0xffffff00;
+                    }
+                }
+                else
+                {
+                    ascii->color = 0xff808080;
+                }
+
+                if (record->available == 0)
+                {
+                    ascii->AddFormatText(
+                        &position, "%s  ---------",
+                        g_FrontEndStageNames[stage]);
+                }
+                else
+                {
+                    ascii->AddFormatText(
+                        &position, "%s  %.8d0",
+                        g_FrontEndStageNames[stage], record->score);
+                }
+                position.y += 18.0f;
+            }
+        }
+
+        ascii->color = 0xffffffff;
+        ascii->drawShadow = 0;
     }
     return 1;
 }

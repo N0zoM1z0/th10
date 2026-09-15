@@ -270,3 +270,5 @@ FrontEndControllerView::AssignKeyConfigBinding
 FrontEndControllerView::UpdateDifficulty
 FrontEndControllerView::UpdateCharacter
 FrontEndControllerView::UpdateShotType
+FrontEndControllerView::UpdateStage
+FrontEndControllerView::DrawStageScores

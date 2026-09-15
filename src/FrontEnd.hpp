@@ -163,6 +163,8 @@ struct FrontEndControllerView
     static int __stdcall UpdateDifficulty(FrontEndControllerView *controller);
     static int __stdcall UpdateCharacter(FrontEndControllerView *controller);
     static int __stdcall UpdateShotType(FrontEndControllerView *controller);
+    static int __stdcall UpdateStage(FrontEndControllerView *controller);
+    int DrawStageScores();
 };
 
 typedef char FrontEndControllerStateAt1C[

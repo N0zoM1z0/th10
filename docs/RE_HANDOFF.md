@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `4142a89 gpt-5.6-sol: reconstruct front-end key config core`, branch `main`.
+- Current packet base: `5b6a544 gpt-5.6-sol: reconstruct front-end selection core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -46,9 +46,10 @@
 - Completed session checkpoint: `048a3c8 gpt-5.6-sol: separate boundary inventory`.
 - Completed session checkpoint: `e7615ce gpt-5.6-sol: reconstruct front-end options core`.
 - Completed session checkpoint: `4142a89 gpt-5.6-sol: reconstruct front-end key config core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end selection core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `5b6a544 gpt-5.6-sol: reconstruct front-end selection core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end stage core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-selection-core/`. The earlier front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-stage-core/`. The earlier front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -270,6 +271,57 @@ Repository totals become **1,312 candidates, 272 source mappings, 288 reviewed
 authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage is
 340,324 `.text` bytes; the indexed-table queue is now 57 references inside
 their recorded owner and 43 outside.
+
+## Completed packet: front-end stage core
+
+The stage-selection continuation now has maintained source across two authored
+owners and 1,471 reviewed target bytes:
+
+- `FrontEndControllerView::UpdateStage @ 0x00430FF0-0x0043140B`
+  (1,052 bytes)
+- `FrontEndControllerView::DrawStageScores @ 0x00431410-0x004315B2`
+  (419 bytes)
+
+The five-state update owner restores a six-entry cursor, creates the stage and
+character-specific ANM VMs, handles movement/cancel/confirm, rejects unavailable
+profile stages, records numeric-key stage shortcuts, and completes the
+stage-record/game-mode transition. Direct target review identifies one shared
+256-byte keyboard buffer: the helper at `0x0044B010` returns nonzero after the
+DirectInput path, selecting scan codes `2..10`, and zero after the Win32
+`GetKeyboardState` path, selecting virtual-key codes `0x31..0x39`.
+
+The display owner is called at `0x0042D2A8` with the controller retained in
+private EDI. It draws the six stage rows at x=168 or 296 and y=216 with 18-pixel
+spacing, prints the stored score or an unavailable marker, distinguishes the
+current row by color, blinks it during confirmation, and restores ASCII color
+and shadow state. Profile entries are eight bytes: score at `+0`, an unknown
+byte at `+4`, availability at `+5`, then two unknown bytes. The selected record
+is indexed by stage `1..6` plus difficulty times six within the
+character/shot-group block.
+
+Boundary review extends the update owner past its final `RET 4` at
+`0x004313F4-0x004313F6`: one NOP follows and its directly indexed five-entry
+state table occupies `0x004313F8-0x0043140B`. Four `CC` bytes separate the
+display owner, whose RET at `0x004315B2` is followed by thirteen `CC` bytes.
+This adds 21 bytes to tracked `.text` union coverage and moves one indexed table
+inside its owner.
+
+`scripts/report-frontend-stage.py --check` fails closed on the canonical target
+and validates both extents, the state table, tails/padding, complete direct-call
+multisets, draw-callback call site, stage-name pointers/strings, 18.0 row
+spacing, source markers, profile layout tokens and dispatcher integration.
+
+Pinned VC7.1 build6030 normal, `/GL` and `/W4` compiles pass; `/W4` reports only
+the existing anonymous-union extension warnings. Normal COMDATs are 660 and 378
+bytes versus target owners of 1,052 and 419 bytes. Strict diagnostics are real
+mismatches at 26/876 and 5/371 matched comparable bytes, with 44 and 12
+relocations and `acceptance_authority=none`. No match row or exactness promotion
+is made.
+
+Repository totals become **1,312 candidates, 274 source mappings, 290 reviewed
+authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage is
+340,345 `.text` bytes; the indexed-table queue is now 58 references inside
+their recorded owner and 42 outside.
 
 ## Completed packet: Main execution corridor
 
