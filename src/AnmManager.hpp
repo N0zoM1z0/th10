@@ -697,6 +697,17 @@ typedef char AnmLoadedSpritesAt118[
      offsetof(AnmLoadedView, scripts) == 0x11c &&
      offsetof(AnmLoadedView, pendingLoadCount) == 0x124) ? 1 : -1];
 
+struct AnmTextureEntryView
+{
+    D3d9TextureView *texture;
+    unsigned char *rawData;
+    int rawDataSize;
+    int bytesPerPixel;
+};
+
+typedef char AnmTextureEntryViewSizeIs10[
+    (sizeof(AnmTextureEntryView) == 0x10) ? 1 : -1];
+
 struct AsciiManagerStringView
 {
     char text[64];
@@ -789,7 +800,7 @@ struct AnmChainElementView
     void *unknown000;
     unsigned int flags;
     unsigned char unknown008[0x018];
-    AsciiManagerView *argument;
+    void *argument;
 };
 
 AnmLoadedView * __fastcall AnmLoadResource(
@@ -845,32 +856,42 @@ struct AnmUntexturedVertexView
     float x;
     float y;
     float z;
-    float w;
-    unsigned int color;
+    union
+    {
+        float w;
+        float u;
+    };
+    union
+    {
+        unsigned int color;
+        float v;
+    };
 };
 
 typedef char AnmUntexturedVertexViewSizeIs14[
     (sizeof(AnmUntexturedVertexView) == 0x14) ? 1 : -1];
 
-// The manager owns one allocation through a single-pointer member. Its
-// destructor is ordered between the draw-layer VM array and the inline VM
-// pool by the target's manager destructor.
-struct AnmOwnedAllocationView
+struct AnmRenderVertexNoDiffuseView
 {
-    ~AnmOwnedAllocationView();
-
-    void *data;
+    float x;
+    float y;
+    float z;
+    float rhw;
+    float u;
+    float v;
 };
 
-typedef char AnmOwnedAllocationViewSizeIs04[
-    (sizeof(AnmOwnedAllocationView) == 0x04) ? 1 : -1];
+typedef char AnmRenderVertexNoDiffuseViewSizeIs18[
+    (sizeof(AnmRenderVertexNoDiffuseView) == 0x18) ? 1 : -1];
 
 // Only the renderer fields established by the shared-buffer clear/flush seam
 // are named. The 0x20000 packed vertices account exactly for the span between
 // the target-observed buffer base and its end/start cursors.
 struct AnmRenderManagerView
 {
-    unsigned char unknown000[0x04c];
+    int captureAnmIndex;
+    int captureSurfaceIndex;
+    unsigned char unknown008[0x044];
     unsigned int scriptsStartedThisFrame;
     unsigned char unknown050[0x004];
     unsigned int renderStateChangesThisFrame;
@@ -883,20 +904,20 @@ struct AnmRenderManagerView
     int nextVmPoolIndex;
     unsigned char unknown3AD06C[0x084];
     AnmMatrixView cachedWorldMatrix;
-    unsigned char unknown3AD130[0x358];
-    AnmOwnedAllocationView ownedAllocation;
-    unsigned char unknown3AD48C[0x5d4];
+    AnmVmView primaryVm;
+    unsigned char unknown3AD4DC[0x584];
     unsigned int currentTextureFactor;
     void *currentTexture;
     unsigned char currentBlendMode;
     unsigned char currentColorOperation;
     unsigned char currentVertexShader;
     unsigned char currentZWrite;
-    unsigned char unknown3ADA6C[0x002];
+    unsigned char currentCameraMode;
+    unsigned char unknown3ADA6D;
     unsigned char currentTextureFilter;
     unsigned char unknown3ADA6F;
     AnmSpriteView *currentSprite;
-    void *quadVertexBuffer;
+    D3d9VertexBufferView *quadVertexBuffer;
     AnmUntexturedVertexView untexturedVertices[4];
     unsigned int spritesToDraw;
     AnmRenderVertexView vertexBuffer[0x20000];
@@ -911,7 +932,10 @@ struct AnmRenderManagerView
     AnmColorView mixColor;
     int useMixColor;
 
+    AnmRenderManagerView();
     ~AnmRenderManagerView();
+    void SetupVertexBuffer();
+    void ApplyTextureAlphaBleed(AnmTextureEntryView *entry);
     static int __stdcall ExecuteScript(AnmVmView *vm);
     int UpdatePrimaryVms();
     int UpdateSecondaryVms();
@@ -967,6 +991,27 @@ struct AnmRenderManagerView
     int DrawTexturedTriangleFan(
         AnmVmView *vm, AnmRenderVertexView *vertices, int vertexCount);
     int Draw(AnmVmView *vm);
+
+    static int __fastcall OnUpdatePrimary(AnmRenderManagerView *manager);
+    static int __fastcall OnUpdateSecondary(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer0(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer1(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer2(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer3(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer4(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer5(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer6(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer7(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer8(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer9(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer10(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer11(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer12(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer13(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer14(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer15(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer16(AnmRenderManagerView *manager);
+    static int __fastcall DrawLayer19(AnmRenderManagerView *manager);
 };
 
 typedef char AnmRenderFlushCountAt058[
@@ -1002,13 +1047,16 @@ typedef char AnmRenderDirect3DStateAt3ADA70[
      offsetof(AnmRenderManagerView, quadVertexBuffer) == 0x3ada74) ? 1 : -1];
 typedef char AnmRenderCachedWorldMatrixAt3AD0F0[
     (offsetof(AnmRenderManagerView, cachedWorldMatrix) == 0x3ad0f0) ? 1 : -1];
-typedef char AnmRenderOwnedAllocationAt3AD488[
-    (offsetof(AnmRenderManagerView, ownedAllocation) == 0x3ad488) ? 1 : -1];
+typedef char AnmRenderPrimaryVmAt3AD130[
+    (offsetof(AnmRenderManagerView, primaryVm) == 0x3ad130 &&
+     offsetof(AnmRenderManagerView, primaryVm.generatedVertices) == 0x3ad488) ? 1 : -1];
 typedef char AnmRenderUntexturedVerticesAt3ADA78[
     (offsetof(AnmRenderManagerView, untexturedVertices) == 0x3ada78) ? 1 : -1];
 typedef char AnmRenderMixColorAt732458[
     (offsetof(AnmRenderManagerView, mixColor) == 0x732458 &&
      offsetof(AnmRenderManagerView, useMixColor) == 0x73245c) ? 1 : -1];
+typedef char AnmRenderManagerViewSizeIs732460[
+    (sizeof(AnmRenderManagerView) == 0x732460) ? 1 : -1];
 
 struct AnmViewportView
 {
@@ -1057,6 +1105,8 @@ typedef char AnmPhotoBlendFarColorAt18[
 extern AnmRenderManagerView *g_AnmRenderManagerView;
 extern D3d9DeviceView *g_Direct3DDevice;
 extern AnmRenderVertexView g_AnmQuadVertices[4];
+extern AnmRenderVertexNoDiffuseView g_AnmQuadVerticesNoDiffuse[4];
+extern AnmRenderVertexNoDiffuseView g_AnmBackgroundQuadVertices[4];
 extern AnmViewportOwnerView *g_AnmViewportOwner;
 extern AnmFloat3View g_AnmBackgroundCameraPosition;
 extern AnmFloat3View g_AnmPosition491DA0;

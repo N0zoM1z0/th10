@@ -1074,16 +1074,403 @@ int AnmRenderManagerView::RemoveVm(AnmVmView *vm)
     return 0;
 }
 
-AnmOwnedAllocationView::~AnmOwnedAllocationView()
+// Target 0x00445900 constructs the 4096-entry VM pool, the embedded primary
+// VM at +0x3AD130 and the twenty draw-layer sentinels before clearing the
+// complete 0x732460-byte manager. The explicit Initialize pass then restores
+// the reusable state of every pool VM. The callback priorities and layer set
+// below are direct TH10 observations; TH095 supplied only the source-family
+// hypothesis for the repeated chain registration shape.
+AnmRenderManagerView::AnmRenderManagerView()
 {
-    if (data != NULL)
-        free(data);
-    data = NULL;
+    AnmChainElementView *element;
+
+    memset(this, 0, sizeof(AnmRenderManagerView));
+
+    g_AnmQuadVerticesNoDiffuse[0].rhw =
+        g_AnmQuadVerticesNoDiffuse[1].rhw =
+        g_AnmQuadVerticesNoDiffuse[2].rhw =
+        g_AnmQuadVerticesNoDiffuse[3].rhw = 1.0f;
+    g_AnmQuadVerticesNoDiffuse[0].u = 0.0f;
+    g_AnmQuadVerticesNoDiffuse[0].v = 0.0f;
+    g_AnmQuadVerticesNoDiffuse[1].u = 1.0f;
+    g_AnmQuadVerticesNoDiffuse[1].v = 0.0f;
+    g_AnmQuadVerticesNoDiffuse[2].u = 0.0f;
+    g_AnmQuadVerticesNoDiffuse[2].v = 1.0f;
+    g_AnmQuadVerticesNoDiffuse[3].u = 1.0f;
+    g_AnmQuadVerticesNoDiffuse[3].v = 1.0f;
+
+    g_AnmQuadVertices[0].rhw = g_AnmQuadVertices[1].rhw =
+        g_AnmQuadVertices[2].rhw = g_AnmQuadVertices[3].rhw = 1.0f;
+    g_AnmQuadVertices[0].u = 0.0f;
+    g_AnmQuadVertices[0].v = 0.0f;
+    g_AnmQuadVertices[1].u = 1.0f;
+    g_AnmQuadVertices[1].v = 0.0f;
+    g_AnmQuadVertices[2].u = 0.0f;
+    g_AnmQuadVertices[2].v = 1.0f;
+    g_AnmQuadVertices[3].u = 1.0f;
+    g_AnmQuadVertices[3].v = 1.0f;
+
+    quadVertexBuffer = NULL;
+    currentTexture = NULL;
+    currentBlendMode = 0;
+    currentColorOperation = 0;
+    currentTextureFactor = 1;
+    currentVertexShader = 0;
+    currentCameraMode = 0xff;
+    currentZWrite = 0;
+    currentTextureFilter = 0;
+    captureAnmIndex = -1;
+    captureSurfaceIndex = -1;
+
+    for (int i = 0; i < 0x1000; ++i)
+        vmPool[i].Initialize();
+
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(OnUpdatePrimary));
+    element->argument = this;
+    AnmAddCalcChainElement(element, 0x1a, g_AnmChainView);
+
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(OnUpdateSecondary));
+    element->argument = this;
+    AnmAddCalcChainElement(element, 0x08, g_AnmChainView);
+
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer0));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x09, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer1));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x0b, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer2));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x0d, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer3));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x0f, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer4));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x10, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer5));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x11, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer6));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x12, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer7));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x13, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer8));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x15, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer9));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x17, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer10));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x18, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer11));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x1a, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer12));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x1c, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer13));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x21, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer14));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x24, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer15));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x29, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer16));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x2a, g_AnmChainView);
+    element = AnmCreateChainElement(
+        reinterpret_cast<AnmChainCallback>(DrawLayer19));
+    element->argument = this;
+    AnmAddDrawChainElement(element, 0x2d, g_AnmChainView);
+
+    g_Direct3DDevice->vtable->SetVertexShader(g_Direct3DDevice, NULL);
+}
+
+// Target 0x004462F0 builds the manager's fixed -128..+128 XYZ/UV quad,
+// mirrors it to the otherwise independent background-quad storage, uploads
+// the 80-byte array into a managed vertex buffer and binds the stream with a
+// 0x14-byte stride. The target does not check any of the COM return values.
+void AnmRenderManagerView::SetupVertexBuffer()
+{
+    void *lockedVertices;
+
+    untexturedVertices[0].x = untexturedVertices[2].x = -128.0f;
+    untexturedVertices[1].x = untexturedVertices[3].x = 128.0f;
+    untexturedVertices[0].y = untexturedVertices[1].y = -128.0f;
+    untexturedVertices[2].y = untexturedVertices[3].y = 128.0f;
+    untexturedVertices[0].z = untexturedVertices[1].z =
+        untexturedVertices[2].z = untexturedVertices[3].z = 0.0f;
+    untexturedVertices[0].u = 0.0f;
+    untexturedVertices[0].v = 0.0f;
+    untexturedVertices[1].u = 1.0f;
+    untexturedVertices[1].v = 0.0f;
+    untexturedVertices[2].u = 0.0f;
+    untexturedVertices[2].v = 1.0f;
+    untexturedVertices[3].u = 1.0f;
+    untexturedVertices[3].v = 1.0f;
+
+    for (int i = 0; i < 4; ++i)
+    {
+        g_AnmBackgroundQuadVertices[i].x = untexturedVertices[i].x;
+        g_AnmBackgroundQuadVertices[i].y = untexturedVertices[i].y;
+        g_AnmBackgroundQuadVertices[i].z = untexturedVertices[i].z;
+        g_AnmBackgroundQuadVertices[i].u = untexturedVertices[i].u;
+        g_AnmBackgroundQuadVertices[i].v = untexturedVertices[i].v;
+    }
+
+    g_Direct3DDevice->vtable->CreateVertexBuffer(
+        g_Direct3DDevice, sizeof(untexturedVertices), 0,
+        D3D9_VIEW_FVF_XYZ | D3D9_VIEW_FVF_TEX1,
+        D3D9_VIEW_POOL_MANAGED, &quadVertexBuffer, NULL);
+    quadVertexBuffer->vtable->Lock(
+        quadVertexBuffer, 0, 0, &lockedVertices, 0);
+    memcpy(lockedVertices, untexturedVertices, sizeof(untexturedVertices));
+    quadVertexBuffer->vtable->Unlock(quadVertexBuffer);
+    g_Direct3DDevice->vtable->SetStreamSource(
+        g_Direct3DDevice, 0, quadVertexBuffer, 0,
+        sizeof(AnmUntexturedVertexView));
+}
+
+struct AnmArgb1555PixelView
+{
+    unsigned short blue : 5;
+    unsigned short green : 5;
+    unsigned short red : 5;
+    unsigned short alpha : 1;
+};
+
+struct AnmArgb4444PixelView
+{
+    unsigned short blue : 4;
+    unsigned short green : 4;
+    unsigned short red : 4;
+    unsigned short alpha : 4;
+};
+
+static void __fastcall AccumulateArgb8888Neighbor(
+    unsigned int *sums, unsigned char *pixel, unsigned int *count)
+{
+    if (pixel[3] != 0)
+    {
+        sums[0] += pixel[2];
+        sums[1] += pixel[1];
+        sums[2] += pixel[0];
+        ++*count;
+    }
+}
+
+static void __fastcall AccumulateArgb1555Neighbor(
+    unsigned int *sums, AnmArgb1555PixelView *pixel, unsigned int *count)
+{
+    if (pixel->alpha != 0)
+    {
+        sums[0] += pixel->red;
+        sums[1] += pixel->green;
+        sums[2] += pixel->blue;
+        ++*count;
+    }
+}
+
+static void __fastcall AccumulateArgb4444Neighbor(
+    unsigned int *sums, AnmArgb4444PixelView *pixel, unsigned int *count)
+{
+    if (pixel->alpha != 0)
+    {
+        sums[0] += pixel->red;
+        sums[1] += pixel->green;
+        sums[2] += pixel->blue;
+        ++*count;
+    }
+}
+
+// Target 0x004465B0 fills the RGB channels of transparent texels from their
+// nontransparent orthogonal neighbors. This prevents colored fringes after
+// filtered sampling while retaining the original zero alpha. TH10 handles
+// 32-bit ARGB, A1R5G5B5 and A4R4G4B4 surfaces and treats format zero like
+// A8R8G8B8. The surface calls, format cases and every edge condition below
+// are present in the target; TH095 was consulted only for natural source shape.
+void AnmRenderManagerView::ApplyTextureAlphaBleed(
+    AnmTextureEntryView *entry)
+{
+    D3d9SurfaceView *surface = NULL;
+    D3d9SurfaceDescriptionView description;
+    D3d9LockedRectView locked;
+
+    entry->texture->vtable->GetSurfaceLevel(entry->texture, 0, &surface);
+    surface->vtable->GetDesc(surface, &description);
+    surface->vtable->LockRect(surface, &locked, NULL, 0);
+
+    switch (description.format)
+    {
+    case D3D9_VIEW_FMT_UNKNOWN:
+    case D3D9_VIEW_FMT_A8R8G8B8:
+        for (unsigned int y = 0; y < description.height; ++y)
+        {
+            unsigned int *pixel = reinterpret_cast<unsigned int *>(
+                static_cast<unsigned char *>(locked.bits) + locked.pitch * y);
+            for (unsigned int x = 0; x < description.width; ++x, ++pixel)
+            {
+                unsigned char *components =
+                    reinterpret_cast<unsigned char *>(pixel);
+                if (components[3] == 0)
+                {
+                    unsigned int sums[3] = {0, 0, 0};
+                    unsigned int neighborCount = 0;
+                    if (x > 0)
+                        AccumulateArgb8888Neighbor(
+                            sums, reinterpret_cast<unsigned char *>(pixel - 1),
+                            &neighborCount);
+                    if (x < description.width - 1)
+                        AccumulateArgb8888Neighbor(
+                            sums, reinterpret_cast<unsigned char *>(pixel + 1),
+                            &neighborCount);
+                    if (y > 0)
+                        AccumulateArgb8888Neighbor(
+                            sums, reinterpret_cast<unsigned char *>(pixel) -
+                                locked.pitch,
+                            &neighborCount);
+                    if (y < description.height - 1)
+                        AccumulateArgb8888Neighbor(
+                            sums, reinterpret_cast<unsigned char *>(pixel) +
+                                locked.pitch,
+                            &neighborCount);
+                    if (neighborCount > 1)
+                    {
+                        sums[0] /= neighborCount;
+                        sums[1] /= neighborCount;
+                        sums[2] /= neighborCount;
+                    }
+                    components[2] = static_cast<unsigned char>(sums[0]);
+                    components[1] = static_cast<unsigned char>(sums[1]);
+                    components[0] = static_cast<unsigned char>(sums[2]);
+                }
+            }
+        }
+        break;
+
+    case D3D9_VIEW_FMT_A1R5G5B5:
+        for (unsigned int y = 0; y < description.height; ++y)
+        {
+            AnmArgb1555PixelView *pixel =
+                reinterpret_cast<AnmArgb1555PixelView *>(
+                    static_cast<unsigned char *>(locked.bits) +
+                    locked.pitch * y);
+            for (unsigned int x = 0; x < description.width; ++x, ++pixel)
+            {
+                if (pixel->alpha == 0)
+                {
+                    unsigned int sums[3] = {0, 0, 0};
+                    unsigned int neighborCount = 0;
+                    if (x > 0)
+                        AccumulateArgb1555Neighbor(
+                            sums, pixel - 1, &neighborCount);
+                    if (x < description.width - 1)
+                        AccumulateArgb1555Neighbor(
+                            sums, pixel + 1, &neighborCount);
+                    if (y > 0)
+                        AccumulateArgb1555Neighbor(
+                            sums, reinterpret_cast<AnmArgb1555PixelView *>(
+                                reinterpret_cast<unsigned char *>(pixel) -
+                                locked.pitch),
+                            &neighborCount);
+                    if (y < description.height - 1)
+                        AccumulateArgb1555Neighbor(
+                            sums, reinterpret_cast<AnmArgb1555PixelView *>(
+                                reinterpret_cast<unsigned char *>(pixel) +
+                                locked.pitch),
+                            &neighborCount);
+                    if (neighborCount > 1)
+                    {
+                        sums[0] /= neighborCount;
+                        sums[1] /= neighborCount;
+                        sums[2] /= neighborCount;
+                    }
+                    pixel->red = static_cast<unsigned short>(sums[0]);
+                    pixel->green = static_cast<unsigned short>(sums[1]);
+                    pixel->blue = static_cast<unsigned short>(sums[2]);
+                }
+            }
+        }
+        break;
+
+    case D3D9_VIEW_FMT_A4R4G4B4:
+        for (unsigned int y = 0; y < description.height; ++y)
+        {
+            AnmArgb4444PixelView *pixel =
+                reinterpret_cast<AnmArgb4444PixelView *>(
+                    static_cast<unsigned char *>(locked.bits) +
+                    locked.pitch * y);
+            for (unsigned int x = 0; x < description.width; ++x, ++pixel)
+            {
+                if (pixel->alpha == 0)
+                {
+                    unsigned int sums[3] = {0, 0, 0};
+                    unsigned int neighborCount = 0;
+                    if (x > 0)
+                        AccumulateArgb4444Neighbor(
+                            sums, pixel - 1, &neighborCount);
+                    if (x < description.width - 1)
+                        AccumulateArgb4444Neighbor(
+                            sums, pixel + 1, &neighborCount);
+                    if (y > 0)
+                        AccumulateArgb4444Neighbor(
+                            sums, reinterpret_cast<AnmArgb4444PixelView *>(
+                                reinterpret_cast<unsigned char *>(pixel) -
+                                locked.pitch),
+                            &neighborCount);
+                    if (y < description.height - 1)
+                        AccumulateArgb4444Neighbor(
+                            sums, reinterpret_cast<AnmArgb4444PixelView *>(
+                                reinterpret_cast<unsigned char *>(pixel) +
+                                locked.pitch),
+                            &neighborCount);
+                    if (neighborCount > 1)
+                    {
+                        sums[0] /= neighborCount;
+                        sums[1] /= neighborCount;
+                        sums[2] /= neighborCount;
+                    }
+                    pixel->red = static_cast<unsigned short>(sums[0]);
+                    pixel->green = static_cast<unsigned short>(sums[1]);
+                    pixel->blue = static_cast<unsigned short>(sums[2]);
+                }
+            }
+        }
+        break;
+    }
+
+    surface->vtable->UnlockRect(surface);
+    surface->vtable->Release(surface);
 }
 
 // Target 0x00446220 drains both manager-order lists. Compiler-generated member
-// destruction then releases the 20 sentinel VMs, ownedAllocation and 4096
-// inline-pool VMs in that target-observed order.
+// destruction then releases the 20 sentinel VMs, primaryVm and 4096 inline-
+// pool VMs in that target-observed order.
 AnmRenderManagerView::~AnmRenderManagerView()
 {
     while (primaryVmListHead != NULL)

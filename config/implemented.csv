@@ -215,3 +215,6 @@ AnmRenderManagerView::UpdateSecondaryVms
 AnmRenderManagerView::DrawLayer
 AnmRenderManagerView::RemoveVm
 AnmRenderManagerView::~AnmRenderManagerView
+AnmRenderManagerView::AnmRenderManagerView
+AnmRenderManagerView::SetupVertexBuffer
+AnmRenderManagerView::ApplyTextureAlphaBleed

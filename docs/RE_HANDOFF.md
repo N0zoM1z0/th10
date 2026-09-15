@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `94141ac gpt-5.6-sol: reconstruct ANM child VM lifecycle`, branch `main`.
+- Current packet base: `8c254ad gpt-5.6-sol: reconstruct ANM manager update core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -35,9 +35,10 @@
 - Completed session checkpoint: `92db5f4 gpt-5.6-sol: recover ANM script variables`.
 - Completed session checkpoint: `d994538 gpt-5.6-sol: reconstruct ANM script executor`.
 - Completed session checkpoint: `94141ac gpt-5.6-sol: reconstruct ANM child VM lifecycle`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct ANM manager update core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `8c254ad gpt-5.6-sol: reconstruct ANM manager update core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct ANM manager setup core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean ANM child-VM lifecycle checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-manager-update/`. The earlier child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-manager-setup/`. The earlier manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -57,7 +58,52 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM manager update and removal core
+## Current packet: ANM manager setup core
+
+Maintained source now covers the three large setup owners at the start of the
+remaining ANM manager corridor. The 2,315-byte constructor at `0x00445900`
+initializes the complete `0x732460`-byte manager, two global quad templates,
+all 4,096 pool VMs, two update callbacks and eighteen draw-layer callbacks.
+The callback layer set is 0–16 plus 19; layers 17 and 18 are not registered by
+this constructor. The final device operation clears the active vertex shader.
+
+Constructor member calls establish a complete embedded `AnmVmView` at manager
+`+0x3AD130`. Its relative `generatedVertices +0x358` is manager `+0x3AD488`,
+which the destructor frees and nulls. This supersedes the earlier standalone
+allocation interpretation. The target destruction order is twenty sentinel
+VMs, the embedded primary VM, then 4,096 pool VMs. Compile-time assertions now
+bind the complete manager size and the embedded VM/pointer offsets.
+
+`SetupVertexBuffer @ 0x004462F0` initializes the manager's fixed
+`-128..+128` XYZ/UV quad, mirrors XYZ/UV into the separate background-quad
+storage, uploads all 80 bytes to a managed D3D9 vertex buffer and binds stream
+zero at stride `0x14`. Ghidra did not recover its owning caller, but a raw
+target REL32 scan found the call at `0x0042025B` after EAX receives global ANM
+manager `0x00491C10`.
+
+`ApplyTextureAlphaBleed @ 0x004465B0` now has maintained natural source for
+32-bit ARGB, A1R5G5B5 and A4R4G4B4. It fills RGB of transparent pixels from
+nontransparent orthogonal neighbors while retaining zero alpha. Boundary
+review extends its physical contribution beyond the code return at
+`0x00446B38`: three alignment bytes, a four-entry absolute jump table and a
+27-byte selector table end at `0x00446B66`, for 1,463 owned bytes. Four callers
+in the following texture-creation corridor pass the texture entry in EAX.
+
+The initial linked `/GL` diagnostic compiles all three bodies in the maintained
+ANM executor context. `SetupVertexBuffer` is 475 candidate bytes versus 472;
+alpha bleed is 1,343 versus the 1,463-byte target contribution; the constructor
+is 1,284 versus 2,315 because its target member construction and callback-node
+allocation context is heavily inlined. These are diagnostic near/mismatch
+results with no acceptance authority. No new exact unit is claimed. Tracking
+now contains 220 source mappings and remains at 97 exact functions / 10,594
+bytes. Existing `AnmManager.cpp` exact units replay unchanged.
+
+The next core ANM batch is the texture/resource pipeline beginning at
+`0x00446C70`: surface upload, texture creation, ANM file parsing/postload and
+resource release through `0x00447810`. Small retained format/pixel helpers and
+the callback wrappers at `0x004485D0-0x00448810` remain in the Web leaf queue.
+
+## Completed packet: ANM manager update and removal core
 
 The former `th10-ghidra` discovery refusal was traced to the intentional
 implementation-binding guard. Commit `f5a0c4f` added pinned Capstone identity to
@@ -95,8 +141,8 @@ repository tracking contains **1,305** candidates, **217** source mappings and
 
 The 206-byte manager destructor at `0x00446220` is also source-present. It drains
 both lists through `RemoveVm`; target SEH states establish the subsequent member
-order as twenty sentinel VM destructors, the owned allocation at `+0x3AD488`,
-then 4096 pool VM destructors. Its current 197-byte linked candidate remains
+order as twenty sentinel VM destructors, the embedded primary VM whose
+generated-vertex pointer is at `+0x3AD488`, then 4096 pool VM destructors. Its current 197-byte linked candidate remains
 non-exact because the target retains a different SEH/vector-destructor context.
 
 Small update/draw wrappers and the Ghidra-missed VM scalar deleting helper are

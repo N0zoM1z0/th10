@@ -216,3 +216,6 @@ AnmRenderManagerView::SetVmWorldPosition,0x00449350,function
 AnmRenderManagerView::GetVmPosition,0x004493C0,function
 AnmRenderManagerView::MarkLoadedVmsForDeletion,0x004493E0,function
 AnmLoadedView::SetAndExecuteScriptIdx,0x0043E8B0,function
+AnmRenderManagerView::AnmRenderManagerView,0x00445900,function
+AnmRenderManagerView::SetupVertexBuffer,0x004462F0,function
+AnmRenderManagerView::ApplyTextureAlphaBleed,0x004465B0,function

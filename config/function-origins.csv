@@ -652,10 +652,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00445880,authored_game,AnmManager,authored,high,anm-pulsing-radial-trail-2026-09-15
 0x004458A0,unknown,AnmManager,review,unknown,raw-boundary-review-2026-09-15
 0x004458B0,authored_game,AnmManager,authored,high,anm-pulsing-radial-trail-2026-09-15
-0x00445900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00445900,authored_game,AnmManager,authored,high,anm-manager-setup-2026-09-15
 0x00446220,authored_game,AnmManager,authored,high,anm-manager-update-lifecycle-2026-09-15
-0x004462F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004465B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004462F0,authored_game,AnmManager,authored,high,anm-manager-setup-2026-09-15
+0x004465B0,authored_game,AnmManager,authored,high,anm-manager-setup-2026-09-15
 0x00446C70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446D70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00446EB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
