@@ -67,13 +67,28 @@ struct EclVmSubroutineEntry
     unsigned char *header;
 };
 
+struct EclVmScriptFileHeader
+{
+    unsigned int magic;
+    unsigned short version;
+    unsigned short includeLength;
+    unsigned int includeOffset;
+    unsigned int zero0C;
+    unsigned short subroutineCount;
+    unsigned short unknown12;
+    unsigned int zero14[4];
+};
+
 struct EclVmScriptDatabase
 {
-    void *vtable;
+    virtual int AddScriptData(void *scriptData);
+    virtual int LoadPackage(const unsigned char *packageData) = 0;
+
     int fileCount;
     int subroutineCount;
-    void *files[32];
+    EclVmScriptFileHeader *files[32];
     EclVmSubroutineEntry *subroutines;
+    unsigned char unknown090[0x1008];
 
     EclVmInstruction *FindSubroutine(const char *name);
 };
@@ -136,6 +151,12 @@ typedef char EclVmThreadNode_size[
     sizeof(EclVmThreadNode) == 0x0C ? 1 : -1];
 typedef char EclVmSubroutineEntry_size[
     sizeof(EclVmSubroutineEntry) == 0x08 ? 1 : -1];
+typedef char EclVmScriptFileHeader_include_length_offset[
+    offsetof(EclVmScriptFileHeader, includeLength) == 0x06 ? 1 : -1];
+typedef char EclVmScriptFileHeader_subroutine_count_offset[
+    offsetof(EclVmScriptFileHeader, subroutineCount) == 0x10 ? 1 : -1];
+typedef char EclVmScriptFileHeader_size[
+    sizeof(EclVmScriptFileHeader) == 0x24 ? 1 : -1];
 typedef char EclVmScriptDatabase_file_count_offset[
     offsetof(EclVmScriptDatabase, fileCount) == 0x4 ? 1 : -1];
 typedef char EclVmScriptDatabase_subroutine_count_offset[
@@ -145,7 +166,7 @@ typedef char EclVmScriptDatabase_files_offset[
 typedef char EclVmScriptDatabase_subroutines_offset[
     offsetof(EclVmScriptDatabase, subroutines) == 0x8C ? 1 : -1];
 typedef char EclVmScriptDatabase_size[
-    sizeof(EclVmScriptDatabase) == 0x90 ? 1 : -1];
+    sizeof(EclVmScriptDatabase) == 0x1098 ? 1 : -1];
 typedef char EclVmHost_active_context_offset[
     offsetof(EclVmHost, activeContext) == 0x4 ? 1 : -1];
 typedef char EclVmHost_embedded_context_offset[

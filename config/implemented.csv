@@ -290,6 +290,7 @@ EclVmContext::ResolveFloat
 EclVmHost::SpawnThread
 EclVmHost::FindThread
 EclVmHost::StopAllThreads
+EclVmScriptDatabase::AddScriptData
 EclVmScriptDatabase::FindSubroutine
 EclVmStackView::Push
 EclVmStackView::Pop

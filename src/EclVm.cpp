@@ -377,6 +377,102 @@ float *EclVmContext::ResolveFloat(unsigned int index)
 }
 
 
+int EclVmScriptDatabase::AddScriptData(void *scriptData)
+{
+    const unsigned int SCPT_MAGIC = 0x54504353u;
+    files[fileCount] = static_cast<EclVmScriptFileHeader *>(scriptData);
+    EclVmScriptFileHeader **const fileSlot = &files[fileCount];
+    EclVmScriptFileHeader *file = *fileSlot;
+    if (file->magic != SCPT_MAGIC || file->version != 1)
+    {
+        *fileSlot = NULL;
+        return -1;
+    }
+
+    file = *fileSlot;
+    EclVmSubroutineEntry *const previousEntries = subroutines;
+    scriptData = reinterpret_cast<unsigned char *>(file)
+        + sizeof(EclVmScriptFileHeader) + file->includeLength;
+    unsigned int *offsets = static_cast<unsigned int *>(scriptData);
+    const int totalCount = subroutineCount + file->subroutineCount;
+    const char *name = reinterpret_cast<const char *>(
+        offsets + file->subroutineCount);
+    subroutineCount = totalCount;
+    EclVmSubroutineEntry *const newEntries =
+        static_cast<EclVmSubroutineEntry *>(
+        malloc(subroutineCount * sizeof(EclVmSubroutineEntry)));
+    subroutines = newEntries;
+
+    if (previousEntries == NULL)
+    {
+        int index = 0;
+        if (subroutineCount > 0)
+        {
+            do
+            {
+                subroutines[index].header =
+                    reinterpret_cast<unsigned char *>(files[fileCount]) + *offsets;
+                subroutines[index].name = name;
+                name += strlen(name) + 1;
+                ++index;
+                ++offsets;
+            } while (index < subroutineCount);
+        }
+    }
+    else
+    {
+        int sortedCount = subroutineCount
+            - files[fileCount]->subroutineCount;
+        memcpy(newEntries, previousEntries,
+               sortedCount * sizeof(EclVmSubroutineEntry));
+        if (previousEntries != NULL)
+            free(previousEntries);
+
+        int added = 0;
+        if (files[fileCount]->subroutineCount != 0)
+        {
+            do
+            {
+                int insertionIndex = 0;
+                if (sortedCount > 0)
+                {
+                    EclVmSubroutineEntry *entry = subroutines;
+                    do
+                    {
+                        if (strcmp(name, entry->name) <= 0)
+                            break;
+                        ++insertionIndex;
+                        ++entry;
+                    } while (insertionIndex < sortedCount);
+                }
+
+                int index = subroutineCount;
+                while (--index > insertionIndex)
+                    subroutines[index] = subroutines[index - 1];
+
+                subroutines[insertionIndex].header =
+                    reinterpret_cast<unsigned char *>(files[fileCount]) + *offsets;
+                subroutines[insertionIndex].name = name;
+                name += strlen(name) + 1;
+                ++offsets;
+                ++sortedCount;
+                ++added;
+            } while (added < files[fileCount]->subroutineCount);
+        }
+    }
+
+    const int result = fileCount++;
+    file = files[result];
+    if (file->includeLength != 0)
+    {
+        LoadPackage(
+            reinterpret_cast<unsigned char *>(file)
+            + sizeof(EclVmScriptFileHeader));
+    }
+    return result;
+}
+
+
 EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
 {
     int lower = 0;

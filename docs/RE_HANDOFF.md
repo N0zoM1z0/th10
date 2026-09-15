@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `85b7088 gpt-5.6-sol: recover ECL VM operand helpers`, branch `main`.
+- Current packet base: `c615a72 gpt-5.6-sol: recover ECL VM thread control`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -65,14 +65,15 @@
 - Completed session checkpoint: `e17e4ff gpt-5.6-sol: recover exact ECL VM stack core`.
 - Completed session checkpoint: `358daf4 gpt-5.6-sol: recover exact ECL VM typed pop`.
 - Completed session checkpoint: `85b7088 gpt-5.6-sol: recover ECL VM operand helpers`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL VM thread control`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `c615a72 gpt-5.6-sol: recover ECL VM thread control`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL script database loader`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-vm-control/`. The ECL operand, typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-script-loader/`. The ECL control, operand, typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `85b7088` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `c615a72` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -293,6 +294,42 @@ exact functions / 18,308 bytes**. The authored source backlog is **160**. The
 next high-value ECL owner is the 589-byte script database loader at
 `0x00450220`; restoring it will complete the database side of the same control
 flow before another `StartSubroutine` exact pass.
+
+## Completed packet: ECL script database loader
+
+`EclVmScriptDatabase::AddScriptData @ 0x00450220-0x0045046C` now has complete
+maintained source for its 589-byte reviewed owner. The virtual method retains
+one caller-owned SCPT buffer in the next of 32 file slots, rejects any buffer
+whose magic is not `SCPT` or whose version is not one, and leaves a rejected
+slot null without advancing the file count.
+
+The target establishes a 0x24-byte fixed header, include-data length at
+`+0x06`, and the low 16-bit subroutine count at `+0x10`. The loader finds the
+subroutine-offset table immediately after the include block and the packed
+name strings immediately after that table. A first file initializes every
+eight-byte `{name, header}` entry. Later files copy the old table, free it,
+insert each new entry before the first lexically greater-or-equal name, and
+shift the remaining entries right. The resulting table is the ordered owner
+consumed by the already exact binary-search lookup at `0x00450470`.
+
+The resource database is now modeled as the target-proven polymorphic
+0x1098-byte object rather than only its 0x90-byte used prefix. Virtual slot zero
+is `AddScriptData`; when the include length is nonzero, it invokes slot one on
+the block at file `+0x24`. The Enemy-derived vtable at `0x0046D0B4` binds that
+slot to the already maintained ANIM/ECLI package loader.
+
+Pinned VC7.1 normal and linked `/GL` diagnostics both emit a complete natural
+547-byte contribution under `/O2`; `/Ot` is identical, while `/O1` and `/Os`
+shrink it to 522 bytes and move farther from the target. The `/O2` candidate
+has exactly two linked fields, `malloc` and `free`, but remains a real mismatch
+with `acceptance_authority=none`. No exact row is added. The full current
+`src/EclVm.cpp` exact gate remains **7 units / 1 artifact / 578 bytes**.
+
+Repository totals become **1,313 candidates, 298 source mappings, and 133
+exact functions / 18,308 bytes**. Combined origin/boundary review rises to 329
+and the authored source backlog to 161. The next ECL exact pass should use the
+now complete database/caller context to revisit `EclVmStartSubroutine`, then
+the generic `Run` owner and its private helper ABIs.
 
 ## Completed packet: exact ANM projected photo blend
 

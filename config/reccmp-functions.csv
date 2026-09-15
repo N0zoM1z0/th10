@@ -291,6 +291,7 @@ EclVmContext::ResolveFloat,0x00450070,function
 EclVmHost::SpawnThread,0x004500D0,function
 EclVmHost::FindThread,0x00450160,function
 EclVmHost::StopAllThreads,0x00450190,function
+EclVmScriptDatabase::AddScriptData,0x00450220,function
 EclVmScriptDatabase::FindSubroutine,0x00450470,function
 EclVmStackView::Push,0x004505B0,function
 EclVmStackView::Pop,0x00450610,function
