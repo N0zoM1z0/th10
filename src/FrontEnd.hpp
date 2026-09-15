@@ -125,6 +125,15 @@ enum FrontEndReplayStateView
 };
 
 
+enum FrontEndPracticeStateView
+{
+    FRONT_END_PRACTICE_INITIALIZE = 0,
+    FRONT_END_PRACTICE_OPENING = 1,
+    FRONT_END_PRACTICE_ACTIVE = 2,
+    FRONT_END_PRACTICE_CLOSING = 3
+};
+
+
 // TH10 stores all nine controller bindings as adjacent signed shorts. Target
 // input masks identify the first four actions and skip. The middle directional
 // names are adjacent-supported and remain provisional; all four values are
@@ -158,12 +167,15 @@ struct FrontEndControllerView
     int screen;
     int screenState;
     FrontEndCursorView cursor;
-    unsigned char unknown0FC[0x1b4];
+    FrontEndCursorView practiceDifficultyCursor;
+    FrontEndCursorView practicePageCursor;
+    int practiceDisplayedEntries;
     AnmVmTimerView stateTimer;
     AnmVmIdView vmIds[0x98];
     unsigned char unknown524[0x0ac];
     AnmVmIdView difficultyAuxVmId;
-    unsigned char unknown5D4[0x531c];
+    AnmVmIdView practiceRowVmIds[10];
+    unsigned char unknown5FC[0x52f4];
     int savedDifficulty;
     unsigned char unknown58F4[0x0d8];
     short keyConfigBindings[5];
@@ -186,6 +198,8 @@ struct FrontEndControllerView
     int DrawStageScores();
     static int __stdcall UpdateReplay(FrontEndControllerView *controller);
     static int __stdcall DrawReplay(FrontEndControllerView *controller);
+    static int __stdcall UpdatePractice(FrontEndControllerView *controller);
+    int RefreshPracticeRecords();
 };
 
 typedef char FrontEndControllerStateAt1C[
@@ -194,6 +208,10 @@ typedef char FrontEndControllerStateAt1C[
      offsetof(FrontEndControllerView, cursor) == 0x24) ? 1 : -1];
 typedef char FrontEndControllerTimerAt2B0[
     (offsetof(FrontEndControllerView, stateTimer) == 0x2b0) ? 1 : -1];
+typedef char FrontEndControllerPracticeCursors[
+    (offsetof(FrontEndControllerView, practiceDifficultyCursor) == 0x0fc &&
+     offsetof(FrontEndControllerView, practicePageCursor) == 0x1d4 &&
+     offsetof(FrontEndControllerView, practiceDisplayedEntries) == 0x2ac) ? 1 : -1];
 typedef char FrontEndControllerVmIdsAt2C4[
     (offsetof(FrontEndControllerView, vmIds) == 0x2c4 &&
      offsetof(FrontEndControllerView, vmIds) + sizeof(AnmVmIdView) == 0x2c8 &&
@@ -209,6 +227,10 @@ typedef char FrontEndControllerReplayFieldsAt59D8[
      offsetof(FrontEndControllerView, selectedReplay) == 0x59dc &&
      offsetof(FrontEndControllerView, selectedReplayStage) == 0x59e0 &&
      offsetof(FrontEndControllerView, replayFiles) == 0x59e4) ? 1 : -1];
+typedef char FrontEndControllerPracticeRowsAt5D4[
+    (offsetof(FrontEndControllerView, practiceRowVmIds) == 0x5d4 &&
+     offsetof(FrontEndControllerView, practiceRowVmIds) +
+         sizeof(AnmVmIdView) * 10 == 0x5fc) ? 1 : -1];
 typedef char FrontEndControllerReplayFilesEndAt5AAC[
     (offsetof(FrontEndControllerView, replayFiles) +
          sizeof(ReplayManager *) * 50 == 0x5aac) ? 1 : -1];

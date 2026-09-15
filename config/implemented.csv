@@ -274,3 +274,5 @@ FrontEndControllerView::UpdateStage
 FrontEndControllerView::DrawStageScores
 FrontEndControllerView::UpdateReplay
 FrontEndControllerView::DrawReplay
+FrontEndControllerView::UpdatePractice
+FrontEndControllerView::RefreshPracticeRecords

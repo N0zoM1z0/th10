@@ -34,6 +34,13 @@ extern int g_FrontEndNextGameMode;
 extern unsigned char *g_FrontEndProfileData;
 extern const char *g_FrontEndStageNames[];
 extern unsigned char g_FrontEndKeyboardState[256];
+extern unsigned char g_FrontEndPreviousKeyboardState[256];
+extern unsigned char g_FrontEndKeyboardTransitions[256];
+extern int g_FrontEndPracticeSecretIdleFrames;
+extern int g_FrontEndPracticeSecretProgress;
+extern const unsigned int g_FrontEndPracticeSecretKeys[22];
+extern const signed char g_FrontEndPracticeDifficulties[110];
+extern const char g_FrontEndPracticeUnavailableFormat[];
 extern int g_FrontEndReplayCursor;
 extern const char *g_ReplayCharacterNames[];
 extern const char *g_ReplayDifficultyNames[];
@@ -62,10 +69,10 @@ extern int FrontEndReadKeyboardState(unsigned char *keyboardState);
 extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
-extern int FrontEndUpdatePractice(FrontEndControllerView *controller);
 extern int FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
 extern int FrontEndUpdateSpecial(FrontEndControllerView *controller);
 extern int FrontEndUpdateResult(FrontEndControllerView *controller);
+extern void FrontEndUnlockPracticeRecords();
 extern void * __stdcall FrontEndBeginSelectionTransition(
     int type, int duration, int parameter2, int parameter3, int parameter4,
     int chainPriority);
@@ -90,7 +97,10 @@ enum
     FRONT_END_SOUND_PREVIEW = 4,
     FRONT_END_SOUND_SELECT = 10,
     FRONT_END_SOUND_CANCEL = 11,
-    FRONT_END_SOUND_MOVE = 12
+    FRONT_END_SOUND_MOVE = 12,
+    FRONT_END_SOUND_UNLOCK = 44,
+    FRONT_END_PRACTICE_RECORD_COUNT = 110,
+    FRONT_END_PRACTICE_ROWS_PER_PAGE = 10
 };
 
 struct FrontEndStageScoreRecordView
@@ -261,6 +271,85 @@ static FrontEndStageScoreRecordView *GetFrontEndStageScoreRecord(int stage)
         reinterpret_cast<FrontEndStageScoreRecordView *>(
             g_FrontEndProfileData + shotGroup * 0x437c + 0x4dc);
     return &records[stage + g_ReplayDifficulty * 6];
+}
+
+static int CountPracticeRecordsForDifficulty(int difficulty)
+{
+    int count = 0;
+    for (int record = 0; record < FRONT_END_PRACTICE_RECORD_COUNT; ++record)
+    {
+        if (g_FrontEndPracticeDifficulties[record] == difficulty)
+            ++count;
+    }
+    return count;
+}
+
+static unsigned char *GetPracticeCatalogRecord(int record)
+{
+    return g_FrontEndProfileData + 0x19a8c + record * 0x90;
+}
+
+static int *GetPracticeResultRecord(int shot, int record)
+{
+    return reinterpret_cast<int *>(
+        g_FrontEndProfileData + shot * 0x437c + 0x624 + record * 0x90);
+}
+
+static void InterruptPracticeRows(FrontEndControllerView *controller)
+{
+    for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
+        InterruptVmId(controller->practiceRowVmIds[row].value, 1);
+}
+
+static void UpdatePracticeSecretSequence()
+{
+    memcpy(
+        g_FrontEndPreviousKeyboardState, g_FrontEndKeyboardState,
+        sizeof(g_FrontEndPreviousKeyboardState));
+    if (FrontEndReadKeyboardState(g_FrontEndKeyboardState) == 0)
+        goto tickTimeout;
+
+    for (int key = 0; key < 256; ++key)
+    {
+        g_FrontEndKeyboardTransitions[key] =
+            (g_FrontEndPreviousKeyboardState[key] ^
+             g_FrontEndKeyboardState[key]) &
+            g_FrontEndKeyboardState[key];
+    }
+
+    if (g_FrontEndPracticeSecretProgress >= 22)
+    {
+        FrontEndUnlockPracticeRecords();
+        FrontEndPlaySound(FRONT_END_SOUND_UNLOCK);
+        g_FrontEndPracticeSecretProgress = 0;
+    }
+    else if ((g_FrontEndKeyboardTransitions[
+                  g_FrontEndPracticeSecretKeys[
+                      g_FrontEndPracticeSecretProgress]] & 0x80) != 0)
+    {
+        ++g_FrontEndPracticeSecretProgress;
+        g_FrontEndPracticeSecretIdleFrames = 0;
+        goto tickTimeout;
+    }
+    else
+    {
+        for (int key = 0; key < 57; ++key)
+        {
+            if ((g_FrontEndKeyboardTransitions[key] & 0x80) != 0)
+            {
+                g_FrontEndPracticeSecretProgress = 0;
+                break;
+            }
+        }
+    }
+
+tickTimeout:
+    ++g_FrontEndPracticeSecretIdleFrames;
+    if (g_FrontEndPracticeSecretIdleFrames > 300)
+    {
+        g_FrontEndPracticeSecretProgress = 0;
+        g_FrontEndPracticeSecretIdleFrames = 0;
+    }
 }
 
 static int ReadFrontEndStageShortcut()
@@ -476,7 +565,7 @@ static void InitializeFrontEndScreen(FrontEndControllerView *controller)
         InterruptVm(controller, 0x5b, 9);
         controller->transitionOwner->flags004 |= FRONT_END_TRANSITION_ACTIVE;
         g_FrontEndMode = 1;
-        FrontEndUpdatePractice(controller);
+        FrontEndControllerView::UpdatePractice(controller);
     }
     else
     {
@@ -577,7 +666,7 @@ int FrontEndControllerView::Update()
         UpdateReplay(this);
         break;
     case FRONT_END_SCREEN_PRACTICE:
-        FrontEndUpdatePractice(this);
+        UpdatePractice(this);
         break;
     case FRONT_END_SCREEN_MUSIC_ROOM:
         FrontEndUpdateMusicRoom(this);
@@ -1788,4 +1877,263 @@ int __stdcall FrontEndControllerView::DrawReplay(
     ascii->color = 0xffffffff;
     ascii->drawShadow = 0;
     return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00431EE0 FrontEndControllerView::UpdatePractice
+int __stdcall FrontEndControllerView::UpdatePractice(
+    FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case FRONT_END_PRACTICE_INITIALIZE:
+        controller->cursor.count = 6;
+        controller->cursor.SetCurrent(0);
+        controller->practiceDifficultyCursor.count = 5;
+        controller->practiceDifficultyCursor.SetCurrent(1);
+        controller->practiceDifficultyCursor.wraps = 1;
+
+        controller->practicePageCursor.count =
+            (CountPracticeRecordsForDifficulty(
+                controller->practiceDifficultyCursor.current) + 9) / 10 + 1;
+        controller->practicePageCursor.SetCurrent(0);
+        controller->practicePageCursor.wraps = 1;
+
+        if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
+        {
+            CreateVm(controller, 0x5e);
+            controller->difficultyAuxVmId =
+                g_AsciiManagerView->asciiAnm->CreateVmVariant0(
+                    8, FRONT_END_RENDER_LAYER);
+        }
+
+        CreateVm(controller, 0x66);
+        SetScreenState(controller, FRONT_END_PRACTICE_OPENING);
+        CreateVm(controller, 0x98 + controller->cursor.current / 3);
+        CreateVm(controller, 0x9a + controller->cursor.current);
+        CreateVm(
+            controller,
+            0xa0 + controller->practiceDifficultyCursor.current);
+        CreateVm(controller, 0xa8);
+        CreateVm(controller, 0xa9);
+        CreateVm(controller, 0xaa);
+        CreateVm(controller, 0xab);
+        CreateVm(controller, 0xa5);
+        CreateVm(controller, 0xa6);
+        CreateVm(controller, 0xa7);
+        CreateVm(controller, 0xac);
+        break;
+
+    case FRONT_END_PRACTICE_OPENING:
+        if (controller->stateTimer.current > 6)
+        {
+            SetScreenState(controller, FRONT_END_PRACTICE_ACTIVE);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_PRACTICE_ACTIVE:
+    {
+        FrontEndCursorView *difficulty =
+            &controller->practiceDifficultyCursor;
+        FrontEndCursorView *page = &controller->practicePageCursor;
+
+        controller->cursor.previous = controller->cursor.current;
+        difficulty->previous = difficulty->current;
+        page->previous = page->current;
+
+        if (InputRepeated(FRONT_END_INPUT_UP))
+        {
+            difficulty->Move(-1);
+            InterruptVmNow(controller, 0xaa, 2);
+        }
+        if (InputRepeated(FRONT_END_INPUT_DOWN))
+        {
+            difficulty->Move(1);
+            InterruptVmNow(controller, 0xab, 2);
+        }
+
+        if (difficulty->previous != difficulty->current)
+        {
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+            DeleteVm(controller, 0xa0 + difficulty->previous);
+            CreateVm(controller, 0xa0 + difficulty->current);
+            if (page->current > 0)
+            {
+                page->SetCurrent(1);
+                controller->RefreshPracticeRecords();
+            }
+            page->count =
+                (CountPracticeRecordsForDifficulty(difficulty->current) + 9) /
+                    10 + 1;
+        }
+
+        if (InputRepeated(FRONT_END_INPUT_LEFT))
+        {
+            controller->cursor.Move(-1);
+            InterruptVmNow(controller, 0xa8, 2);
+        }
+        if (InputRepeated(FRONT_END_INPUT_RIGHT))
+        {
+            controller->cursor.Move(1);
+            InterruptVmNow(controller, 0xa9, 2);
+        }
+
+        if (controller->cursor.previous != controller->cursor.current)
+        {
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+            if (controller->cursor.previous / 3 !=
+                controller->cursor.current / 3)
+            {
+                DeleteVm(
+                    controller, 0x98 + controller->cursor.previous / 3);
+                CreateVm(
+                    controller, 0x98 + controller->cursor.current / 3);
+            }
+            DeleteVm(controller, 0x9a + controller->cursor.previous);
+            CreateVm(controller, 0x9a + controller->cursor.current);
+            if (page->current > 0)
+                controller->RefreshPracticeRecords();
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            if (page->current == 0)
+            {
+                for (int row = 0; row < FRONT_END_PRACTICE_ROWS_PER_PAGE;
+                     ++row)
+                {
+                    controller->practiceRowVmIds[row] =
+                        g_AsciiManagerView->asciiAnm->CreateVmVariant0(
+                            row + 0x17, FRONT_END_RENDER_LAYER);
+                }
+            }
+
+            page->Move(1);
+            if (page->current == 0)
+                InterruptPracticeRows(controller);
+            else
+                controller->RefreshPracticeRecords();
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+        }
+
+        if (difficulty->current == 4 && controller->cursor.current == 2)
+        {
+            if ((g_FrontEndInput.pressed & 0x160b) != 0)
+            {
+                g_FrontEndPracticeSecretProgress = 0;
+                g_FrontEndPracticeSecretIdleFrames = 0;
+            }
+            UpdatePracticeSecretSequence();
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            SetScreenState(controller, FRONT_END_PRACTICE_CLOSING);
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            DeleteVm(controller, 0xa0 + difficulty->current);
+            DeleteVm(controller, 0x9a + controller->cursor.current);
+            DeleteVm(controller, 0x98 + controller->cursor.current / 3);
+            DeleteVm(controller, 0xa8);
+            DeleteVm(controller, 0xa9);
+            DeleteVm(controller, 0xaa);
+            DeleteVm(controller, 0xab);
+            DeleteVm(controller, 0xa5);
+            DeleteVm(controller, 0xa6);
+            DeleteVm(controller, 0xa7);
+            DeleteVm(controller, 0xac);
+            InterruptPracticeRows(controller);
+            return 1;
+        }
+        break;
+    }
+
+    case FRONT_END_PRACTICE_CLOSING:
+        if (controller->stateTimer.current >= 6)
+        {
+            DeleteVm(controller, 0x66);
+            InterruptVm(controller, 0x5a, 8);
+            InterruptVm(controller, 0x5b, 8);
+            DeleteVm(controller, 0x5e);
+            InterruptVmId(controller->difficultyAuxVmId.value, 1);
+            SetScreen(controller, FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            controller->cursor.Pop();
+        }
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00432690 FrontEndControllerView::RefreshPracticeRecords
+int FrontEndControllerView::RefreshPracticeRecords()
+{
+    int record = 0;
+    int matchingRecords = 0;
+    int recordsToSkip =
+        practicePageCursor.current * FRONT_END_PRACTICE_ROWS_PER_PAGE -
+        FRONT_END_PRACTICE_ROWS_PER_PAGE;
+
+    while (matchingRecords < recordsToSkip)
+    {
+        if (g_FrontEndPracticeDifficulties[record] ==
+            practiceDifficultyCursor.current)
+        {
+            ++matchingRecords;
+        }
+        ++record;
+    }
+
+    practiceDisplayedEntries = 0;
+    int row = 0;
+    for (; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
+    {
+        while (record < FRONT_END_PRACTICE_RECORD_COUNT &&
+               g_FrontEndPracticeDifficulties[record] !=
+                   practiceDifficultyCursor.current)
+        {
+            ++record;
+        }
+        if (record >= FRONT_END_PRACTICE_RECORD_COUNT)
+            break;
+
+        unsigned char *catalog = GetPracticeCatalogRecord(record);
+        int *result = GetPracticeResultRecord(cursor.current, record);
+        AnmVmView *vm = ResolveVm(&practiceRowVmIds[row]);
+        if (*reinterpret_cast<int *>(catalog + 0x84) != 0)
+        {
+            char name[168];
+            strcpy(name, reinterpret_cast<char *>(catalog));
+            int length = strlen(name);
+            if (length < 42)
+            {
+                memset(name + length, ' ', 42 - length);
+                length = 42;
+            }
+            name[length] = '\0';
+
+            unsigned int color = result[0] != 0
+                ? 0x00ffff80u : 0x00efefefu;
+            g_AnmRenderManagerView->DrawTextCentered(
+                vm, color, "No.%3d %s %4d/%4d",
+                row + 1, name, result[0], result[1]);
+        }
+        else
+        {
+            g_AnmRenderManagerView->DrawTextCentered(
+                vm, 0x00808080u, g_FrontEndPracticeUnavailableFormat,
+                row + 1, result[0], result[1]);
+        }
+
+        ++record;
+        ++practiceDisplayedEntries;
+    }
+
+    for (; row < FRONT_END_PRACTICE_ROWS_PER_PAGE; ++row)
+    {
+        AnmVmView *vm = ResolveVm(&practiceRowVmIds[row]);
+        g_AnmRenderManagerView->DrawTextCentered(
+            vm, 0xffffffffu, " ");
+    }
+    return 0;
 }
