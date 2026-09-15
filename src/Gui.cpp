@@ -178,7 +178,7 @@ static AnmVmView *ResolveVm(AnmVmIdView *id)
 }
 
 static int FindChildVmId(
-    AnmVmIdView *parentId, short activeSpriteIndex)
+    AnmVmIdView *parentId, short scriptIndex)
 {
     AnmVmView *parent = ResolveVm(parentId);
     if (parent == NULL)
@@ -188,7 +188,7 @@ static int FindChildVmId(
     while (node != NULL)
     {
         AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
-        if (vm != NULL && vm->activeSpriteIndex == activeSpriteIndex)
+        if (vm != NULL && vm->scriptIndex == scriptIndex)
             return vm->id;
         node = node->next;
     }

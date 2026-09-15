@@ -235,7 +235,9 @@ struct MainSupervisorView
         unsigned char serializedConfiguration[0x34]; // +0x120
         struct
         {
-            unsigned char configUnknown120[0x01A];
+            unsigned char configUnknown120[0x018];
+            signed char bgmVolume;              // +0x138
+            signed char sfxVolume;              // +0x139
             signed char colorMode;              // +0x13A
             unsigned char configUnknown13B[2];
             unsigned char windowed;             // +0x13D
@@ -276,6 +278,8 @@ typedef char MainSupervisorPresentationAt0E4[
     (offsetof(MainSupervisorView, presentParameters) == 0x0e4) ? 1 : -1];
 typedef char MainSupervisorConfigurationOffsets[
     (offsetof(MainSupervisorView, serializedConfiguration) == 0x120 &&
+     offsetof(MainSupervisorView, bgmVolume) == 0x138 &&
+     offsetof(MainSupervisorView, sfxVolume) == 0x139 &&
      offsetof(MainSupervisorView, colorMode) == 0x13a &&
      offsetof(MainSupervisorView, windowed) == 0x13d &&
      offsetof(MainSupervisorView, frameskip) == 0x13e &&

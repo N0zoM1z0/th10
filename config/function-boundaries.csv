@@ -152,7 +152,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0040CF40,0x0040CF56,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040CF60,0x0040CF76,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040CF90,0x0040CFA5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
-0x0040CFB0,0x0040D1F0,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 576/577, tail add"
+0x0040CFB0,0x0040D1F0,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 576/577; owned indirect control table at 0x0040D1A8
 0x0040D260,0x0040D27C,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 29/29, tail ret"
 0x0040D280,0x0040D3CD,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 334/334, tail ret"
 0x0040D3D0,0x0040D3F1,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 34/34, tail ret"
@@ -171,11 +171,11 @@ address,span_end,state,confidence,evidence_id,notes
 0x0040E5F0,0x0040E691,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 162/162, tail ret"
 0x0040E6A0,0x0040E755,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x0040E760,0x0040E76A,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 11/11, tail jmp"
-0x0040E770,0x00411FBF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 14416/14416, tail add"
-0x00411FC0,0x004122F3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 819/820, tail inc"
-0x00412300,0x0041234F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 79/80, tail inc"
-0x00412350,0x004126C3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 748/884, tail and"
-0x004126D0,0x0041271F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 79/80, tail inc"
+0x0040E770,0x00411FBF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 14416/14416; owned indirect control table at 0x00411D30
+0x00411FC0,0x004122F3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 819/820; owned indirect control table at 0x00412228
+0x00412300,0x0041234F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 79/80; owned indirect control table at 0x00412340
+0x00412350,0x004126C3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 748/884; owned indirect control table at 0x004125F8
+0x004126D0,0x0041271F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 79/80; owned indirect control table at 0x00412710
 0x00412720,0x0041274F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004127A0,0x004129F0,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 593/593, tail ret"
 0x00412A00,0x00412A0F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 16/16, tail ret"
@@ -206,11 +206,11 @@ address,span_end,state,confidence,evidence_id,notes
 0x00414570,0x004145E8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004145F0,0x0041482D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00414830,0x004148B7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00414900,0x004157FB,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 3835/3836, tail inc"
+0x00414900,0x004157FB,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 3835/3836; owned indirect control table at 0x004157E0
 0x00415800,0x00415AD3,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
 0x00415B00,0x00415DAA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00415DB0,0x00415E2B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00415E90,0x0041700F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 4479/4480, tail inc"
+0x00415E90,0x0041700F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 4479/4480; owned indirect control table at 0x00416F64
 0x00417010,0x00417038,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00417040,0x004172DE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004172E0,0x0041755F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -430,14 +430,14 @@ address,span_end,state,confidence,evidence_id,notes
 0x0042CB60,0x0042CD4A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0042CD50,0x0042CDAF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042CDB0,0x0042CDC1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0042CDF0,0x0042D212,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0042D260,0x0042D2D3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 111/116, tail inc"
+0x0042CDF0,0x0042D257,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 1112/1128; owned indirect control table at 0x0042D214
+0x0042D260,0x0042D2D3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 111/116; owned indirect control table at 0x0042D2B4
 0x0042D2E0,0x0042D2E6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail jmp"
 0x0042D2F0,0x0042D2F6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail jmp"
 0x0042D300,0x0042D40B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042D420,0x0042D8CA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0042D920,0x0042E57F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0042E5A0,0x0042F53E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=8; no overlap or external interior branch
+0x0042D920,0x0042E593,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 3187/3188; owned indirect control table at 0x0042E580
+0x0042E5A0,0x0042F53E,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 3999/3999, tail jmp"
 0x0042F540,0x0042F89A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042F8B0,0x00430243,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x00430250,0x00430317,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -607,10 +607,10 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043E710,0x0043E7DA,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 203/203, tail ret"
 0x0043E7E0,0x0043E8A1,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 194/194, tail ret"
 0x0043E8B0,0x0043E9CE,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 287/287, tail ret"
-0x0043EAC0,0x0043EC67,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 423/424, tail jmp"
-0x0043EC70,0x0043ECFF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 143/144, tail inc; automated diagnostic: external-interior-branch"
-0x0043ED00,0x0043ED9B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 155/156, tail inc"
-0x0043EDA0,0x0043EE23,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 92/132, tail ret"
+0x0043EAC0,0x0043EC67,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 423/424; owned indirect control table at 0x0043EC10
+0x0043EC70,0x0043ECFF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 143/144; owned indirect control table at 0x0043ECD8; automated diagnostic: external-interior-branch
+0x0043ED00,0x0043ED9B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 155/156; owned indirect control table at 0x0043ED6C
+0x0043EDA0,0x0043EE23,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 92/132; owned indirect control table at 0x0043EDFC
 0x0043EE30,0x004413A2,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 9587/9587, tail ret"
 0x00441600,0x00441933,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 820/820, tail ret"
 0x00441950,0x00441AC1,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 370/370, tail jmp"
@@ -648,7 +648,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00444E60,0x00444F98,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 312/313, tail pop"
 0x00444FA0,0x004450D8,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 312/313, tail pop"
 0x004450E0,0x004451B2,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 211/211, tail ret"
-0x004451C0,0x00445297,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 215/216, tail inc; automated diagnostic: remote-ghidra-body"
+0x004451C0,0x00445297,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 215/216; owned indirect control table at 0x00445270; automated diagnostic: remote-ghidra-body
 0x004452E0,0x004452E9,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 10/10, tail ret"
 0x004452F0,0x00445612,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 803/803, tail ret"
 0x00445620,0x00445875,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 598/598, tail ret"
@@ -658,7 +658,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00445900,0x0044620A,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 2315/2315, tail ret"
 0x00446220,0x004462ED,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 206/206, tail ret"
 0x004462F0,0x004464C7,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 472/472, tail ret"
-0x004465B0,0x00446B66,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 1463/1463, tail add"
+0x004465B0,0x00446B66,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 1463/1463; owned indirect control table at 0x00446B3C
 0x00446C70,0x00446D62,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 243/243, tail ret"
 0x00446D70,0x00446EAF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 320/320, tail ret"
 0x00446EB0,0x00446F33,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 132/132, tail ret"
@@ -800,7 +800,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0044DD40,0x0044DE01,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0044DE10,0x0044DED9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0044DF70,0x0044E195,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0044E1A0,0x0044FD0B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7019/7020, tail cmp"
+0x0044E1A0,0x0044FD0B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 7019/7020; owned indirect control table at 0x0044FBC4
 0x0044FD10,0x0044FDA1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0044FDB0,0x0044FE3F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=116; no overlap or external interior branch
 0x0044FE40,0x0044FEF6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=105; no overlap or external interior branch
@@ -876,7 +876,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00452FB9,0x00452FEC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00452FF0,0x00453110,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00453111,0x00453258,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
-0x00453280,0x004535BC,needs_review,low,target-boundary-audit-2026-09-15,dense-decode=674/829; tail=inc; direct-code-refs=6
+0x00453280,0x004535BC,needs_review,low,target-boundary-audit-2026-09-15,"dense-decode=674/829; tail=inc; direct-code-refs=6, owned-indirect-control-table=0x004532E0"
 0x004535BD,0x004535EC,needs_review,low,target-boundary-audit-2026-09-15,tail=call; direct-code-refs=1
 0x004535EE,0x00453676,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x00453683,0x0045370D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
@@ -1029,7 +1029,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0045BE80,0x0045BEC5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045BED0,0x0045BF2F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=7; no overlap or external interior branch
 0x0045BF30,0x0045BFB7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=3; no overlap or external interior branch
-0x0045BFC0,0x0045C2FC,needs_review,low,target-boundary-audit-2026-09-15,dense-decode=674/829; tail=inc; direct-code-refs=3
+0x0045BFC0,0x0045C2FC,needs_review,low,target-boundary-audit-2026-09-15,"dense-decode=674/829; tail=inc; direct-code-refs=3, owned-indirect-control-table=0x0045C020"
 0x0045C2FD,0x0045C35C,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
 0x0045C377,0x0045C3F0,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
 0x0045C3F1,0x0045C40E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch

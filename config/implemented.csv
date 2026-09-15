@@ -261,3 +261,6 @@ GameWindowView::InitD3DRendering
 GameWindowView::ResetRenderState
 GameWindowView::CheckForRunningGameInstance
 GameWindowView::CalcExecutableChecksum
+FrontEndControllerView::Update
+FrontEndControllerView::UpdateOptions
+FrontEndControllerView::RefreshOptionsDisplay

@@ -178,7 +178,7 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
             CS_MODE_32,
             Cs,
         )
-        from capstone.x86_const import X86_OP_IMM
+        from capstone.x86_const import X86_OP_IMM, X86_OP_MEM
     except ImportError as exc:
         raise LinkedImageError("Capstone is required for boundary review") from exc
 
@@ -218,6 +218,7 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
     decoded: dict[int, dict[str, object]] = {}
     raw_direct_references: list[tuple[int, int, int]] = []
     raw_absolute_references: list[tuple[int, int, int]] = []
+    raw_indirect_control_references: list[tuple[int, int, int]] = []
     for start, end in extents:
         data = pe_bytes_at(image, start, end - start + 1)
         consumed = 0
@@ -227,13 +228,26 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
                 break
             consumed += instruction.size
             instructions.append(instruction)
-            is_control = instruction.group(CS_GRP_CALL) or instruction.group(CS_GRP_JUMP)
+            is_control = instruction.group(CS_GRP_CALL) or instruction.group(
+                CS_GRP_JUMP
+            )
             if is_control and instruction.operands:
                 operand = instruction.operands[0]
                 if operand.type == X86_OP_IMM:
                     destination = int(operand.imm) & 0xFFFFFFFF
                     if text_start <= destination <= text_end:
                         raw_direct_references.append(
+                            (start, instruction.address, destination)
+                        )
+                elif (
+                    operand.type == X86_OP_MEM
+                    and instruction.mnemonic == "jmp"
+                    and operand.mem.index != 0
+                    and operand.mem.scale == 4
+                ):
+                    destination = int(operand.mem.disp) & 0xFFFFFFFF
+                    if text_start <= destination <= text_end:
+                        raw_indirect_control_references.append(
                             (start, instruction.address, destination)
                         )
             for operand in instruction.operands:
@@ -261,6 +275,17 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
     absolute_references = [
         item for item in raw_absolute_references if item[0] not in overlap_addresses
     ]
+    indirect_control_references = [
+        item
+        for item in raw_indirect_control_references
+        if item[0] not in overlap_addresses
+    ]
+    owned_indirect_control_bases: dict[int, int] = {}
+    for source, _, destination in indirect_control_references:
+        if source <= destination <= ends[source]:
+            previous = owned_indirect_control_bases.get(source)
+            if previous is None or destination < previous:
+                owned_indirect_control_bases[source] = destination
     entry_references: Counter[int] = Counter()
     absolute_entry_references: Counter[int] = Counter()
     interior_references: dict[int, list[dict[str, str]]] = {}
@@ -295,6 +320,7 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
         result = decoded[start]
         decoded_bytes = int(result["bytes"])
         last_mnemonic = str(result["last_mnemonic"])
+        table_base = owned_indirect_control_bases.get(start)
         complete = decoded_bytes == size
         terminal = last_mnemonic.startswith("ret") or last_mnemonic == "jmp"
         historical_text = row["evidence"] + " " + row["notes"]
@@ -334,13 +360,24 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
             entry_parts.append(f"absolute-code-refs={absolute_refs}")
         if data_refs:
             entry_parts.append(f"aligned-data-refs={data_refs}")
+        if table_base is not None:
+            entry_parts.append(
+                f"owned-indirect-control-table={format_address(table_base)}"
+            )
         if prior_review:
             state, confidence = "reviewed", "high"
             evidence = f"prior-target-boundary-review+{EVIDENCE_ID}"
-            notes = (
-                f"Prior boundary evidence retained; dense decode {decoded_bytes}/{size}, "
-                f"tail {last_mnemonic or 'none'}"
-            )
+            if table_base is None:
+                notes = (
+                    f"Prior boundary evidence retained; dense decode "
+                    f"{decoded_bytes}/{size}, tail {last_mnemonic or 'none'}"
+                )
+            else:
+                notes = (
+                    f"Prior boundary evidence retained; dense decode "
+                    f"{decoded_bytes}/{size}; owned indirect control table at "
+                    f"{format_address(table_base)}"
+                )
             if conflicts:
                 notes += "; automated diagnostic: " + "+".join(conflicts)
         elif complete and terminal and not conflicts and entry_parts:
@@ -461,6 +498,22 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
         for (candidate, owner), count in sorted(remote_body_targets.items())
     ]
 
+    indirect_control_rows = []
+    for source, instruction, destination in indirect_control_references:
+        owner = containing_extent(starts, ends, destination)
+        indirect_control_rows.append(
+            {
+                "source": format_address(source),
+                "instruction": format_address(instruction),
+                "destination": format_address(destination),
+                "owner": format_address(owner[0]) if owner is not None else None,
+                "owned_by_source": owner is not None and owner[0] == source,
+            }
+        )
+    unowned_indirect_control_rows = [
+        row for row in indirect_control_rows if not row["owned_by_source"]
+    ]
+
     text_size = text_end - text_start + 1
     union_bytes = sum(end - start + 1 for start, end in merged)
     total_gap_bytes = sum(row["size"] for row in gap_rows)
@@ -493,12 +546,15 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
             "ghidra_sparse_body_functions": len(sparse_ghidra_functions),
             "ghidra_remote_body_functions": len(remote_ghidra_functions),
             "remote_body_direct_targets": len(remote_body_targets),
+            "indirect_control_tables": len(indirect_control_rows),
+            "unowned_indirect_control_tables": len(unowned_indirect_control_rows),
         },
         "boundaries": boundary_rows,
         "overlaps": overlap_pairs,
         "gaps": gap_rows,
         "untracked_entries": untracked_entries,
         "remote_body_targets": remote_body_rows,
+        "indirect_control_tables": indirect_control_rows,
         "ghidra_body_ranges": {
             "path": str(ghidra_ranges_path) if ghidra_ranges_path else None,
             "available": bool(ghidra_ranges),
@@ -567,6 +623,11 @@ def print_report(report: dict[str, object]) -> None:
         f"{summary['untracked_direct_targets']} direct / "
         f"{summary['untracked_data_targets']} data-pointer"
     )
+    print(
+        "indirect control tables:    "
+        f"{summary['indirect_control_tables']} referenced / "
+        f"{summary['unowned_indirect_control_tables']} outside their owners"
+    )
     if summary["ghidra_body_functions"]:
         print(
             "Ghidra body ranges:         "
@@ -596,6 +657,18 @@ def print_report(report: dict[str, object]) -> None:
             print(
                 f"  {row['address']} code refs={row['direct_code_references']} "
                 f"data refs={row['aligned_data_references']}"
+            )
+    unowned_tables = [
+        row
+        for row in report["indirect_control_tables"]
+        if not row["owned_by_source"]
+    ]
+    if unowned_tables:
+        print("indirect control tables outside their source owners:")
+        for row in unowned_tables:
+            print(
+                f"  {row['source']} at {row['instruction']} -> "
+                f"{row['destination']} (recorded owner {row['owner'] or 'none'})"
             )
 
 

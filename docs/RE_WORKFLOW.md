@@ -18,6 +18,10 @@ disk target, Ghidra target, ledgers, and live status using the commands in
    The report's gap and target-reference lists are triage evidence: inspect a
    candidate's bytes, references, tails, tables, padding, and Ghidra body ranges
    before adding an entry or promoting it to `reviewed`.
+   Its indexed-indirect-control list is also a boundary queue. A table base
+   beyond a candidate's recorded end often reveals an omitted compiler-owned
+   switch table, but review the selector domain, full table length, all
+   destinations and neighboring padding before extending the owner.
 2. Select one candidate from the ledger; use
    `python3 scripts/report-exact-backlog.py` for the reviewed authored,
    source-present queue. Use `python3 scripts/rank-exact-backlog.py` when a

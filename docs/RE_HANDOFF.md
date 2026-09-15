@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `979522c gpt-5.6-sol: reconstruct Main execution corridor`, branch `main`.
+- Current packet base: `048a3c8 gpt-5.6-sol: separate boundary inventory`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -43,18 +43,19 @@
 - Completed session checkpoint: `d4352b5 gpt-5.6-sol: reconstruct generic ECL VM core`.
 - Completed session checkpoint: `623cd37 gpt-5.6-sol: reconstruct GUI update and message cores`.
 - Completed session checkpoint: `979522c gpt-5.6-sol: reconstruct Main execution corridor`.
-- Planned current checkpoint subject: `gpt-5.6-sol: separate boundary inventory`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean Main-corridor checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-boundary-inventory/`. The earlier Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `048a3c8 gpt-5.6-sol: separate boundary inventory`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end options core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-options-core/`. The earlier boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `979522cf8bf67074d55fd928045af6b4f56d8b92` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `048a3c80ecd8d99555ee3bb63b770fff36a49eb0` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
-Fresh repository preflight passed at the start of the current boundary-review session:
+Fresh repository preflight passed at the start of the current front-end session:
 
 - `python3 scripts/verify-target.py`
 - `python3 scripts/verify-toolchain.py --execute`
@@ -65,7 +66,7 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: independent boundary inventory
+## Completed packet: independent boundary inventory
 
 Boundary state is now separate from origin state. `config/function-boundaries.csv`
 contains one target-bound row for each of the 1,312 candidates, and
@@ -79,11 +80,18 @@ decodes each tracked extent, checks terminal control flow, independent code and
 aligned non-text pointer references, overlapping extents, external branches into
 another body, Ghidra sparse/remote ranges, `.text` union coverage and gaps. The
 current ledger has **1,173 reviewed, 88 provisional and 51 needs-review**
-boundaries. Tracked extents cover 340,150 union bytes. The remaining 72,139
-`.text` bytes contain 505 pure alignment gaps / 4,070 bytes and 448 unresolved
-gaps / 68,069 bytes. The report retains 26 overlapping extent pairs involving
+boundaries. Tracked extents cover 340,239 union bytes. The remaining 72,050
+`.text` bytes contain 507 pure alignment gaps / 4,090 bytes and 446 unresolved
+gaps / 67,960 bytes. The report retains 26 overlapping extent pairs involving
 37 candidates, four direct targets outside tracked extents and 97 aligned data
 pointers into untracked `.text` as triage evidence.
+
+The audit now also extracts absolute `.text` bases from indexed indirect jumps.
+It finds 100 target references to such control tables: 53 table references are
+inside their source owner's recorded span and 47 point beyond it. This is a
+boundary-review queue, not automatic permission to extend those owners; table
+length, selector domain, neighboring code/data and padding still require direct
+target review.
 
 The former inventory export treated each Ghidra function as one dense interval.
 `python3 scripts/ghidra.py architecture` now exports every address-set range.
@@ -109,15 +117,58 @@ refreshed to `c001f8ef3d9a64e96664d999c14891d9c92fa12f393bca64cc77bb087c0e2143`,
 the Factory validator passed, and native `check {}` passed again. No tracked
 Factory file changed.
 
-`scripts/progress.py` and `scripts/report-reconstruction-status.py` now report
+`scripts/progress.py` and `scripts/report-reconstruction-status.py` report
 origin and boundary independently. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
-connectivity while explicitly granting no ownership or semantic credit. Its
-result, supported by direct target call review, selects the title/front-end
-chain `0x0042CDF0` (1,059 bytes), `0x0042D920` (3,168 bytes), and
-`0x0042E5A0` (3,999 bytes) as the next coherent core batch. `0x0042D920` calls
-`0x0042E5A0` eight times; `0x0042E5A0` contains the option/volume update path.
-`0x0042F8B0` remains the next connected front-end owner after that batch.
+connectivity while explicitly granting no ownership or semantic credit.
+
+## Current packet: front-end/options core
+
+The selected title/options chain now has maintained source across three authored
+owners and 8,315 reviewed target bytes:
+
+- `FrontEndControllerView::Update @ 0x0042CDF0-0x0042D257` (1,128 bytes)
+- `FrontEndControllerView::UpdateOptions @ 0x0042D920-0x0042E593` (3,188 bytes)
+- `FrontEndControllerView::RefreshOptionsDisplay @ 0x0042E5A0-0x0042F53E`
+  (3,999 bytes)
+
+Boundary review corrected the first two imported extents. The title dispatcher
+ends executable code at `0x0042D212`, has one NOP, and owns its directly
+referenced 17-entry screen table through `0x0042D257`. The options controller
+ends with `RET 4` at `0x0042E57D-0x0042E57F` and owns its directly referenced
+five-entry state table through `0x0042E593`. Both tables were previously left
+in untracked gaps by the terminal-instruction heuristic.
+
+The source covers the complete 17-screen title dispatcher, 900-frame demo replay
+rotation, front-end ANM cleanup and re-entry, the five-state/six-row options
+controller, color-depth cycling, BGM/SFX adjustment and preview, defaults,
+key-configuration transition and return. The display owner reproduces the
+observed sound-state update and quartic BGM attenuation curve, queues `SetVol`,
+updates twelve digit sprites and toggles the four normal/selected leading-digit
+pairs.
+
+Repeated child traversal in both this owner and the earlier GUI source compares
+ANM VM `scriptIndex` at `+0x38A`. The maintained GUI helper had instead compared
+`activeSpriteIndex` at `+0x384`; this packet corrects that semantic field error.
+`FrontEndCursorView` is closed at `0xD8`, and the maintained partial controller
+binds screen/state/cursor at `+0x1C/+0x20/+0x24`, timer at `+0x2B0`, and VM ids
+from `+0x2C4` through slot `0x5B` at `+0x430`.
+
+`scripts/report-frontend-core.py --check` fails closed on the target and verifies
+the two tables, tails/padding, selected direct-call multiplicities, source marker
+coverage, state enums, layout assertions and the `+0x38A` lookup invariant.
+Pinned VC7.1 SP1 build6030 compiles `src/FrontEnd.cpp` under fixed normal,
+`/GL`, and `/W4` profiles. All three normal and linked diagnostics are real
+mismatches with `acceptance_authority=none`: normal object sizes are 324, 928
+and 203 bytes; selected linked `/GL` contributions are 368, 884 and 199 bytes.
+The target owners are dominated by optimizer-inlined helpers and repeated VM
+lookup paths, so no match row or exactness promotion is made.
+
+Repository totals become **1,312 candidates, 266 source mappings and 110 exact
+functions / 12,166 bytes**. The refreshed core rank places `0x0042F8B0`
+(2,452 bytes) as the largest connected continuation in this front-end corridor;
+its directly referenced tables remain outside the current recorded owner and
+must be boundary-reviewed before semantic recovery.
 
 ## Completed packet: Main execution corridor
 
