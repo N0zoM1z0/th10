@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `52bd0ff gpt-5.6-sol: recover exact ANM embedded texture upload`, branch `main`.
+- Current packet base: `bdc2a51 gpt-5.6-sol: recover exact ANM surface capture`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -59,14 +59,15 @@
 - Completed session checkpoint: `8b0f19e gpt-5.6-sol: recover exact ANM generated draws`.
 - Completed session checkpoint: `91c8d5f gpt-5.6-sol: recover exact ANM float variable resolver`.
 - Completed session checkpoint: `52bd0ff gpt-5.6-sol: recover exact ANM embedded texture upload`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM surface capture`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `bdc2a51 gpt-5.6-sol: recover exact ANM surface capture`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM projected photo blend`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-ecl-exact-next/`. The earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `52bd0ff` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `bdc2a51` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -139,6 +140,32 @@ its count is the conservative intersection of candidates whose origin and
 boundary reviews are both complete. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
+
+## Completed packet: exact ANM projected photo blend
+
+`AnmRenderManagerView::DrawMode7 @ 0x004445C0` was already semantically closed
+but remained at 404 candidate bytes against the 402-byte target. The explicit
+three-pointer loop let LTCG rebase its color induction variable to the dword
+color address, while the target keeps the alpha address and accesses BGRA at
+offsets `-3..0`. Eight independently calibrated VC7.1 identifier buckets
+produced byte-identical 404-byte candidates, ruling out identifier hashing for
+this register-allocation decision.
+
+Restoring the natural `for (i = 0; i < 4; ++i)` source form lets VC7.1 derive
+the target alpha/source/transformed-vertex induction variables on its own. A
+fully live 16-bit snapshot of the selected red and alpha pair across the final
+float-to-byte conversion then emits the target packed word reload instead of
+two separate byte loads. No padding, inert local, assembly, or copied target
+bytes are involved.
+
+Two focused cold replays close the complete **402/402-byte PDB contribution and
+24/24 linkage fields** in the established real two-VM draw-callback `/GL`
+context. The retained negative and convergence reports are below
+`.analysis/gpt-5.6-sol/20260916-anm-mode7-buckets/`. The final full-source cold
+gate closes all **75 configured `src/AnmManager.cpp` units / 10 artifacts /
+15,523 target bytes**. Repository totals are now **125 exact functions / 17,514
+bytes**. ANM has 65 exact owners / 14,687 bytes and 58 source-present authored
+owners / 27,020 bytes remaining.
 
 ## Completed packet: exact ANM surface capture
 
@@ -1923,8 +1950,7 @@ differences are respectively one commutative X87 operand order and one complete
 production-context evidence exists. The four 93/95-byte
 `CreateVmAtScreenVariant*` siblings can remain in the Web leaf queue unless
 their shared two-byte issue reveals useful owner context. `CaptureToSurface @
-0x00448450` is now canonical exact. The next larger renderer candidate is
-`DrawMode7 @ 0x004445C0` at 404/402 bytes with 24 fields.
+0x00448450` and `DrawMode7 @ 0x004445C0` are now canonical exact.
 
 The largest remaining core owners are ANM `ExecuteScript @ 0x00450B30`
 (9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). Use smaller

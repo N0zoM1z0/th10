@@ -5066,30 +5066,27 @@ int AnmRenderManagerView::DrawMode7(AnmVmView *vm)
     AnmFloat3View cameraDelta;
     float distance;
     int result;
-    int vertexAlpha;
-    AnmUntexturedVertexView *sourceVertex;
-    AnmFloat4View *transformedVertex;
+    int i;
+    // Red and alpha are consumed together after the final float conversion.
+    // Preserve that packed color pair while publishing the two result bytes.
+    unsigned short redAlpha;
 
     draw.distanceRange =
         g_AnmPhotoBlend.nearDistance - g_AnmPhotoBlend.farDistance;
     draw.color.value = vm->useSecondaryColor
         ? vm->secondaryColor.value : vm->primaryColor.value;
 
-    vertexAlpha = reinterpret_cast<int>(g_AnmQuadVertices) +
-        offsetof(AnmRenderVertexView, color) + 3;
-    sourceVertex = untexturedVertices;
-    transformedVertex = transformedVertices;
-    do
+    for (i = 0; i < 4; ++i)
     {
         D3DXVec4Transform(
-            transformedVertex,
-            reinterpret_cast<const AnmFloat4View *>(sourceVertex),
+            &transformedVertices[i],
+            reinterpret_cast<const AnmFloat4View *>(&untexturedVertices[i]),
             &cachedWorldMatrix);
-        cameraDelta.x = transformedVertex->x -
+        cameraDelta.x = transformedVertices[i].x -
             g_AnmBackgroundCameraPosition.x;
-        cameraDelta.y = transformedVertex->y -
+        cameraDelta.y = transformedVertices[i].y -
             g_AnmBackgroundCameraPosition.y;
-        cameraDelta.z = transformedVertex->z -
+        cameraDelta.z = transformedVertices[i].z -
             g_AnmBackgroundCameraPosition.z;
         distance = AnmFloat3Length(cameraDelta);
 
@@ -5100,44 +5097,39 @@ int AnmRenderManagerView::DrawMode7(AnmVmView *vm)
                 draw.distanceRange;
             if (distance >= 1.0f)
             {
-                *reinterpret_cast<unsigned int *>(vertexAlpha - 3) =
+                g_AnmQuadVertices[i].color =
                     g_AnmPhotoBlend.farColor.value;
-                *reinterpret_cast<unsigned char *>(vertexAlpha) =
-                    draw.color.alpha;
+                g_AnmQuadVertices[i].diffuse.alpha = draw.color.alpha;
             }
             else
             {
                 draw.colorComponent = draw.color.blue;
-                reinterpret_cast<unsigned char *>(vertexAlpha)[-3] =
-                        draw.color.blue - static_cast<unsigned char>(
-                            (static_cast<float>(draw.colorComponent) -
-                             g_AnmPhotoBlend.blue) * distance);
+                g_AnmQuadVertices[i].diffuse.blue =
+                    draw.color.blue - static_cast<unsigned char>(
+                        (static_cast<float>(draw.colorComponent) -
+                         g_AnmPhotoBlend.blue) * distance);
                 draw.colorComponent = draw.color.green;
-                reinterpret_cast<unsigned char *>(vertexAlpha)[-2] =
-                        draw.color.green - static_cast<unsigned char>(
-                            (static_cast<float>(draw.colorComponent) -
-                             g_AnmPhotoBlend.green) * distance);
+                g_AnmQuadVertices[i].diffuse.green =
+                    draw.color.green - static_cast<unsigned char>(
+                        (static_cast<float>(draw.colorComponent) -
+                         g_AnmPhotoBlend.green) * distance);
                 draw.colorComponent = draw.color.red;
-                reinterpret_cast<unsigned char *>(vertexAlpha)[-1] =
-                        draw.color.red - static_cast<unsigned char>(
-                            (static_cast<float>(draw.colorComponent) -
-                             g_AnmPhotoBlend.red) * distance);
-                *reinterpret_cast<unsigned char *>(vertexAlpha) =
-                    draw.color.alpha;
+                redAlpha = *reinterpret_cast<unsigned short *>(
+                    &draw.color.red);
+                g_AnmQuadVertices[i].diffuse.red =
+                    static_cast<unsigned char>(redAlpha) -
+                    static_cast<unsigned char>(
+                        (static_cast<float>(draw.colorComponent) -
+                         g_AnmPhotoBlend.red) * distance);
+                g_AnmQuadVertices[i].diffuse.alpha =
+                    static_cast<unsigned char>(redAlpha >> 8);
             }
         }
         else
         {
-            *reinterpret_cast<unsigned int *>(vertexAlpha - 3) =
-                draw.color.value;
+            g_AnmQuadVertices[i].color = draw.color.value;
         }
-        vertexAlpha += sizeof(AnmRenderVertexView);
-        ++sourceVertex;
-        ++transformedVertex;
-    } while (vertexAlpha <
-        reinterpret_cast<int>(g_AnmQuadVertices) +
-            sizeof(g_AnmQuadVertices) +
-            offsetof(AnmRenderVertexView, color) + 3);
+    }
 
     result = DrawInner(vm, 2);
     g_AnmQuadVertices[0].rhw = g_AnmQuadVertices[1].rhw =
