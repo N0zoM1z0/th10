@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `5f719b6 gpt-5.6-sol: complete front-end practice draw`, branch `main`.
+- Current packet base: `27b272a gpt-5.6-sol: reconstruct front-end score entry`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -51,14 +51,15 @@
 - Completed session checkpoint: `8edf352 gpt-5.6-sol: reconstruct front-end replay core`.
 - Completed session checkpoint: `9cbe831 gpt-5.6-sol: reconstruct front-end practice core`.
 - Completed session checkpoint: `5f719b6 gpt-5.6-sol: complete front-end practice draw`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end score entry`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `27b272a gpt-5.6-sol: reconstruct front-end score entry`.
+- Planned current checkpoint subject: `gpt-5.6-sol: fix ANM exact owner boundaries`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-score-entry/`. The earlier front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-ecl-exact-triage/`. The earlier front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `5f719b6` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `27b272a` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -87,9 +88,9 @@ decodes each tracked extent, checks terminal control flow, independent code and
 aligned non-text pointer references, overlapping extents, external branches into
 another body, Ghidra sparse/remote ranges, `.text` union coverage and gaps. The
 current ledger has **1,173 reviewed, 88 provisional and 51 needs-review**
-boundaries. Tracked extents cover 340,408 union bytes. The remaining 71,881
-`.text` bytes contain 512 pure alignment gaps / 4,126 bytes and 438 unresolved
-gaps / 67,755 bytes. The report retains 26 overlapping extent pairs involving
+boundaries. Tracked extents cover 340,424 union bytes. The remaining 71,865
+`.text` bytes contain 519 pure alignment gaps / 4,186 bytes and 430 unresolved
+gaps / 67,679 bytes. The report retains 26 overlapping extent pairs involving
 37 candidates, four direct targets outside tracked extents and 97 aligned data
 pointers into untracked `.text` as triage evidence.
 
@@ -131,6 +132,56 @@ its count is the conservative intersection of candidates whose origin and
 boundary reviews are both complete. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
+
+## Completed packet: ANM exact boundary repair
+
+Dual normal-COFF and linked `/GL` backlog ranking exposed a systematic boundary
+error: eight reviewed spans ended on the `C2` opcode of `RET imm16` but omitted
+its two-byte immediate. The boundary audit had reported incomplete dense decode,
+yet its prior-review path retained `reviewed` state. The corrected extents are:
+
+- compiler-owned deleting helpers `0x00425070-0x0042508A` and
+  `0x004296D0-0x004296EA`;
+- `TranslateRotation @ 0x00443680-0x004436B3`;
+- `QueueSpriteQuad @ 0x00444DC0-0x00444E50`;
+- untextured strip/fan `0x00444E60-0x00444F9A` and
+  `0x00444FA0-0x004450DA`;
+- `LoadSurface @ 0x00447C80-0x00447EBF`;
+- `CopyTextureRect @ 0x00448360-0x00448442`.
+
+`scripts/report-boundary-inventory.py` now recognizes a one- or two-byte
+trailing `C2/CA` suffix as a truncated `RET imm16` and refuses to preserve a
+reviewed result for it. All eight corrected owners densely decode through a
+complete return. The correction adds sixteen tracked `.text` bytes without
+changing the candidate or review-state counts.
+
+Four corrected ANM owners were already exact linked `/GL` contributions once
+the missing immediates were admitted: 52-byte `TranslateRotation`, 145-byte
+`QueueSpriteQuad`, and the two 315-byte untextured strip/fan methods. Their
+complete canonical manifests cover 827 bytes and 37 linked fields. Normal COFF
+also closes the adjacent 66-byte `MarkVmForDeletion` plus its sole `FindVm`
+REL32 relocation. Two independent cold aggregate replay passes return exact
+for all five units, **893/893 bytes**. Repository totals are now **115 exact
+functions / 13,059 bytes**; ANM accounts for 55 exact owners / 10,232 bytes,
+with 68 source-present authored owners / 31,475 bytes remaining.
+
+The same ranking places `UpdatePulsingRadialTrail @ 0x00445620` at 598/598
+bytes with all eighteen fields resolved and 524/526 comparable bytes equal.
+The two differences swap commutative X87 operands for only the Y component of
+`position + positionOffset`. Bounded natural-source variants did not reproduce
+that scheduling, so this owner remains honestly non-exact.
+
+The final full-source regression gate also caught a stale source-shape
+interaction in an older exact owner. Typing ASCII manager field `+0x89A4` as
+the non-trivial `AnmVmIdView` had inserted a target-absent pre-clear before the
+constructor's full-object `memset`, growing its linked contribution from the
+canonical 251 bytes to 255. Removing that constructor globally repaired ASCII
+but changed exact `AddVmVariant0` from 118 to 119 bytes. The maintained layout
+now expresses only this ASCII field as its target-used scalar integer storage;
+general VM-id return values retain their established wrapper semantics. A
+focused cold replay closes the 251-byte ASCII constructor and both 118-byte
+AddVm tails. The final full `src/AnmManager.cpp` gate closes all **65 configured
+units / 10 artifacts / 11,068 compared bytes** with no failure.
 
 ## Completed packet: front-end score entry
 
@@ -1689,10 +1740,23 @@ The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, bac
 
 ## Next hard frontier
 
-Continue the ECL core before returning to the general ranked backlog. The recovered host hierarchy makes the 71-byte reset at `0x0040C730` the closest connected non-exact source experiment. The large derived constructor/destructor at `0x0040D830/0x0040DAE0` now have the correct source-level class ownership but retain private LTCG ABIs and real byte mismatches; use them as structural feedback rather than exact candidates without new evidence.
+Continue the user-selected ANM/ECL exact campaign owner by owner. Rerun the
+dual-lane ranking after this five-unit promotion and prioritize large core
+owners whose complete normal-COFF or linked `/GL` diagnostics are already
+close. `UpdatePulsingRadialTrail @ 0x00445620` remains a useful two-byte
+compiler-scheduling probe, but do not distort its natural source while that
+last X87 ordering difference remains unexplained.
 
-After the reviewed backlog is exhausted, return to the central Enemy dispatcher with a second opcode cohort that shares the typed execution context and argument wrappers. Keep `0x0040E770-0x00411FBF` source-absent until a complete maintainable switch representation is defensible. The real production link graph remains a major infrastructure gap; canonical bounded linked-image units do not close it.
+The largest remaining core owners are ANM `ExecuteScript @ 0x00450B30`
+(9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). Use smaller
+renderer/update owners to recover production compiler context and source shape,
+then apply that evidence to those dispatchers. Keep exactness tied to complete
+owned extents and cold canonical replay; linked diagnostic proximity alone does
+not promote a unit.
 
-The adjacent `0x00412AA0` and later ECL helper corridor is also relevant as ABI/owner context, but smaller size alone is not a reason to abandon the central owner. The three newly discovered unreferenced `0x00412A60/70/80` candidates require origin evidence before any authored promotion.
+After ANM, continue the generic and Enemy ECL owner families, including a second
+Enemy opcode cohort that shares the recovered typed operand context. The real
+production link graph remains a major infrastructure gap; canonical bounded
+linked-image units do not close it.
 
 The exact-reconstruction campaign remains active/incomplete. Faithful Windows-i386 whole-build closure, runtime validation, Factory acceptance, semantic reconstruction and portability remain open.

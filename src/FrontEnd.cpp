@@ -282,12 +282,12 @@ static void DisableChildVmTree(
 
 static void EnsureAsciiSelectionVm(float x, float y)
 {
-    if (g_AsciiManagerView->auxiliaryVm89A4.value == 0)
+    if (g_AsciiManagerView->auxiliaryVm89A4 == 0)
     {
         AnmFloat3View position(x, y, 0.0f);
         g_AsciiManagerView->auxiliaryVm89A4 =
             g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(
-                6, &position);
+                6, &position).value;
     }
 }
 
@@ -544,7 +544,7 @@ static void InitializeFrontEndScreen(FrontEndControllerView *controller)
     g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
         g_AnmRenderManagerView->loadedAnms[0]);
 
-    int *asciiAuxiliary = &g_AsciiManagerView->auxiliaryVm89A4.value;
+    int *asciiAuxiliary = &g_AsciiManagerView->auxiliaryVm89A4;
     FrontEndResetAsciiAuxiliary(asciiAuxiliary);
     *asciiAuxiliary = 0;
 

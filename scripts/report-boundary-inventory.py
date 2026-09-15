@@ -265,6 +265,15 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
         decoded[start] = {
             "bytes": consumed,
             "last_mnemonic": instructions[-1].mnemonic if instructions else "",
+            # A one- or two-byte C2/CA suffix is not data or padding: it is a
+            # near/far RET whose imm16 operand was cut off by the recorded end.
+            # Keep this explicit because Capstone quite correctly stops before
+            # the incomplete instruction, while a retained manual review used
+            # to override that evidence and leave the owner ending mid-opcode.
+            "truncated_ret_immediate": (
+                0 < len(data) - consumed < 3
+                and data[consumed] in (0xC2, 0xCA)
+            ),
         }
 
     # Do not promote references decoded from overlapping extents. Those spans are
@@ -320,6 +329,7 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
         result = decoded[start]
         decoded_bytes = int(result["bytes"])
         last_mnemonic = str(result["last_mnemonic"])
+        truncated_ret_immediate = bool(result["truncated_ret_immediate"])
         table_base = owned_indirect_control_bases.get(start)
         complete = decoded_bytes == size
         terminal = last_mnemonic.startswith("ret") or last_mnemonic == "jmp"
@@ -364,7 +374,16 @@ def audit(ghidra_ranges_path: Path | None = DEFAULT_GHIDRA_RANGES) -> dict[str, 
             entry_parts.append(
                 f"owned-indirect-control-table={format_address(table_base)}"
             )
-        if prior_review:
+        if truncated_ret_immediate:
+            state, confidence = "needs_review", "low"
+            evidence = EVIDENCE_ID
+            notes = (
+                f"Recorded span truncates a RET imm16 instruction after "
+                f"{decoded_bytes}/{size} bytes"
+            )
+            if entry_parts:
+                notes += "; " + ", ".join(entry_parts)
+        elif prior_review:
             state, confidence = "reviewed", "high"
             evidence = f"prior-target-boundary-review+{EVIDENCE_ID}"
             if table_base is None:

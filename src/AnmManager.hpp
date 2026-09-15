@@ -837,7 +837,7 @@ struct AsciiManagerView
     AnmLoadedView *captureAnm;
     AnmLoadedView *textAnm;
     int unknown89A0;
-    AnmVmIdView auxiliaryVm89A4;
+    int auxiliaryVm89A4;
     void *drawChainElement;
 };
 

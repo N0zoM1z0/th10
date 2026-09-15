@@ -11,14 +11,14 @@ their boundaries and origins must be reviewed independently.
 | Boundary needs focused review | 51 |
 | Origin review pending | 999 |
 | Confirmed authored functions | 298 |
-| Confirmed authored code bytes | 138,970 |
+| Confirmed authored code bytes | 138,982 |
 | Classified exclusions | 15 |
 | Source-present mappings | 282 |
 | Source-present with authored origin | 278 |
 | Source-present origin review pending | 4 |
-| Authored source-present exact backlog | 168 |
-| Canonical exact functions | 110 |
-| Canonical exact authored bytes | 12,166 |
+| Authored source-present exact backlog | 163 |
+| Canonical exact functions | 115 |
+| Canonical exact authored bytes | 13,059 |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
 gaps can contain code, data, thunks, tables, and padding. While origin review and
