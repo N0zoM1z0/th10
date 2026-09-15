@@ -1652,7 +1652,7 @@ int AnmRenderManagerView::CreateTextureFromAnm(
 
     (*texture)->vtable->GetSurfaceLevel(*texture, 0, &surface);
     D3DXLoadSurfaceFromMemory(
-        surface, NULL, NULL,
+        surface, NULL, &sourceRect,
         reinterpret_cast<unsigned char *>(header) + sizeof(*header),
         g_AnmTextureFormats[header->format],
         g_AnmTextureBytesPerPixel[header->format] * header->width,
