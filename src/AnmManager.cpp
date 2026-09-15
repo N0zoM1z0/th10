@@ -5391,7 +5391,10 @@ int AnmRenderManagerView::DrawGeneratedVertices(
     if (currentTexture != vm->loadedSprite->texture)
     {
         currentTexture = vm->loadedSprite->texture;
-        g_Direct3DDevice->SetTexture(0, currentTexture);
+        MainSupervisorAnmPrefixView *supervisor =
+            reinterpret_cast<MainSupervisorAnmPrefixView *>(
+                &g_MainSupervisorView);
+        supervisor->d3dDevice->SetTexture(0, currentTexture);
     }
 
     if (currentVertexShader != 3)
@@ -5579,7 +5582,10 @@ int AnmRenderManagerView::DrawTexturedTriangleFan(
     if (currentTexture != vm->loadedSprite->texture)
     {
         currentTexture = vm->loadedSprite->texture;
-        g_Direct3DDevice->SetTexture(0, currentTexture);
+        MainSupervisorAnmPrefixView *supervisor =
+            reinterpret_cast<MainSupervisorAnmPrefixView *>(
+                &g_MainSupervisorView);
+        supervisor->d3dDevice->SetTexture(0, currentTexture);
     }
 
     g_AnmRenderManagerView->FlushVertexBuffer();
