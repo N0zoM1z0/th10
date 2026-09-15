@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `bdf8f14 gpt-5.6-sol: reconstruct ANM manager setup core`, branch `main`.
+- Current packet base: `acfcf07 gpt-5.6-sol: reconstruct ANM resource and surface core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -37,14 +37,15 @@
 - Completed session checkpoint: `94141ac gpt-5.6-sol: reconstruct ANM child VM lifecycle`.
 - Completed session checkpoint: `8c254ad gpt-5.6-sol: reconstruct ANM manager update core`.
 - Completed session checkpoint: `bdf8f14 gpt-5.6-sol: reconstruct ANM manager setup core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct ANM resource and surface core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean ANM manager-setup checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-resource/`. The earlier manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `acfcf07 gpt-5.6-sol: reconstruct ANM resource and surface core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct Enemy ECL dispatcher`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean ANM resource/surface checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-ecl-dispatcher/`. The earlier ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `bdf8f14...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `acfcf07...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -59,7 +60,49 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM resource, text and surface core
+## Current packet: complete Enemy ECL dispatcher
+
+`EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` now has a complete
+maintained body in `src/EnemyEclDispatcher.cpp`. Direct decoding of the
+hash-attested target's 181-byte selector table and 108-entry destination table
+finds 124 active opcode values and 57 values routed to the common default. The
+maintained enum has the same 124 unique values and the switch has exactly one
+case label for every enum member. The full family spans enemy creation and ANM,
+motion/interpolation, hitboxes and lifecycle flags, items, dialog/spells,
+rank/difficulty selection, bullet patterns and lasers.
+
+The source preserves the separately reviewed physical owner
+`0x0040E770-0x00411FBF` = 14,416 bytes: executable code through
+`0x00411D2E`, alignment, the two top-level tables and both five-entry nested
+difficulty tables. The 108 number describes jump destinations rather than
+semantic opcode coverage. `scripts/report-ecl-dispatch-table.py --check`
+replays this distinction directly against the canonical target and fails if a
+target-active opcode is missing, a source opcode reaches the target default, or
+enum/case values are duplicated.
+
+Decompiler stack-overlap artifacts were removed from the source representation.
+Enemy creation uses the existing typed 0x40-byte `EnemySpawnRequestView`; laser
+instructions use a 0x1F8 union-backed request scratch that contains both the
+0x1DC curved-laser prefix and the complete straight-laser request. This avoids
+array overruns and preserves the target's packed short and float bit fields.
+Opcode and helper identifiers remain descriptive where original symbols cannot
+be recovered, and the six private argument helpers remain declaration-only leaf
+seams for the Web queue.
+
+Pinned VC7.1 SP1 build6030 compiles the complete dispatcher under both fixed
+normal `/TP /MT /O2 /Gy /GF /Oi /DNDEBUG /Isrc` and the same profile plus
+`/GL`. No target-byte or bounded linked-image comparison is accepted for this
+LTCG-sized owner, so exactness remains unknown. Repository totals are **1,309
+candidates, 248 source mappings and 110 exact functions / 12,166 bytes**.
+
+The first `Enemy.cpp` canonical replay failed closed because the six new member
+declarations advanced the compiler's internal resolver `$L...` labels by
+exactly 14. Object inspection found the same five DIR32 offsets and target VAs
+in each resolver; only the generated names changed. After refreshing those ten
+manifest symbol names, two independent cold builds replay all **20 existing
+Enemy units / 511 bytes** exactly.
+
+## Completed packet: ANM resource, text and surface core
 
 The manager setup corridor is now source-present from `0x00445900` through the
 end of `CaptureToSurface @ 0x004485C8`. Its texture/resource half covers direct

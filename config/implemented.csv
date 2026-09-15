@@ -84,6 +84,7 @@ EnemyManagerView::~EnemyManagerView
 EnemyEclResourceView::~EnemyEclResourceView
 EnemyManagerCreate
 EnemyFullObjectView::DispatchEclInstruction
+EnemyRuntimeView::DispatchEclInstruction
 EnemyFullObjectView::ReadIntOperand
 EnemyFullObjectView::ResolveIntOperand
 EnemyFullObjectView::ReadFloatOperand

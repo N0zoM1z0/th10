@@ -96,10 +96,15 @@ typedef char EnemyEclVariableFloatsAt10[
 struct EnemyRuntimeView
 {
     // Target 0x0040E770 is the runtime-tail implementation reached by the
-    // full-object virtual forwarding entry at 0x0040E760. The body is not yet
-    // reconstructed; this declaration exists so the reviewed natural forwarder
-    // can preserve the target member-call shape without inventing its body.
+    // full-object virtual forwarding entry at 0x0040E760. Its maintained body
+    // covers every target-active opcode; compiler exactness remains unknown.
     int DispatchEclInstruction();
+    int ReadIntArgument(int index);
+    int *ResolveIntArgument(int index);
+    float ReadFloatArgument(int index);
+    float *ResolveFloatArgument(int index);
+    int ReadRawIntArgument(int index, int rawValue);
+    float ReadRawFloatArgument(int index, float rawValue);
 
     EnemyMotionView previousMotion;
     EnemyMotionView worldMotion;

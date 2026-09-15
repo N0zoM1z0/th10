@@ -10,10 +10,10 @@ their boundaries and origins must be reviewed independently.
 | Confirmed authored functions | 275 |
 | Confirmed authored code bytes | 98,289 |
 | Classified exclusions | 15 |
-| Source-present mappings | 247 |
-| Source-present with authored origin | 243 |
+| Source-present mappings | 248 |
+| Source-present with authored origin | 244 |
 | Source-present origin review pending | 4 |
-| Authored source-present exact backlog | 133 |
+| Authored source-present exact backlog | 134 |
 | Canonical exact functions | 110 |
 | Canonical exact authored bytes | 12,166 |
 
