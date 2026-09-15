@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `d994538 gpt-5.6-sol: reconstruct ANM script executor`, branch `main`.
+- Current packet base: `94141ac gpt-5.6-sol: reconstruct ANM child VM lifecycle`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -34,14 +34,15 @@
 - Completed session checkpoint: `2d8c48b gpt-5.6-sol: recover ANM radial trail and RNG`.
 - Completed session checkpoint: `92db5f4 gpt-5.6-sol: recover ANM script variables`.
 - Completed session checkpoint: `d994538 gpt-5.6-sol: reconstruct ANM script executor`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct ANM child VM lifecycle`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean ANM script-executor checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-child-vm/`. The earlier executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `94141ac gpt-5.6-sol: reconstruct ANM child VM lifecycle`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct ANM manager update core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean ANM child-VM lifecycle checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-manager-update/`. The earlier child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `d994538...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `94141ac...` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -56,7 +57,54 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: ANM child-VM and manager lifecycle
+## Current packet: ANM manager update and removal core
+
+The former `th10-ghidra` discovery refusal was traced to the intentional
+implementation-binding guard. Commit `f5a0c4f` added pinned Capstone identity to
+the registered `config/tools.lock.toml`, while the ignored private Factory
+configuration retained the previous aggregate hash. Per-file history proved
+that this was the sole registered-file delta. The private binding was refreshed
+to aggregate `406ab2a25af49916607390d2d2eaad09d31fe3df6291b93b07919d162926679d`;
+Factory validator, live MCP discovery and live MCP `check {}` then passed against
+the canonical target with `provider_transport=factory-native-command`.
+
+Maintained source now covers the four central manager-update bodies.
+`UpdatePrimaryVms @ 0x00448860` rebuilds ordinary layers 0–18 while updating the
+primary manager list. `UpdateSecondaryVms @ 0x00448900` resets the shared
+processed count and rebuilds reserved layer 19. Both save the next manager node
+before callbacks, remove marked or completed VMs, run the optional position
+callback before `ExecuteScript`, append survivors through `nextInDrawLayer`, and
+count each visited VM. `DrawLayer @ 0x00448980` skips removal-marked VMs, invokes
+the optional draw callback and reaches the common draw dispatcher.
+
+`RemoveVm @ 0x00448BB0` is the shared 268-byte lifecycle owner. It repairs
+either manager-list head/tail pair, unlinks both the manager and parent/child
+nodes, and distinguishes the 4096-entry inline pool from heap fallbacks. Pool
+VMs clear their occupancy byte, release generated storage and run `Initialize`
+in place; heap VMs are destroyed and deleted. Direct-member expressions for the
+four head/tail transfers reproduce the target's VM-relative encodings without
+artificial constraints.
+
+All four functions are canonical exact under pinned VC7.1 SP1 build6030 `/GL`
+in the complete ANM executor context: primary update 149 bytes, secondary update
+123, layer draw 67 and removal 268. Two independent final cold replays cover
+**607/607 bytes** and all eleven declared linkage fields with zero differences.
+The full `AnmManager.cpp` canonical set is now **47 functions / 8,603 bytes**;
+repository tracking contains **1,305** candidates, **217** source mappings and
+**97 exact functions / 10,594 bytes**.
+
+The 206-byte manager destructor at `0x00446220` is also source-present. It drains
+both lists through `RemoveVm`; target SEH states establish the subsequent member
+order as twenty sentinel VM destructors, the owned allocation at `+0x3AD488`,
+then 4096 pool VM destructors. Its current 197-byte linked candidate remains
+non-exact because the target retains a different SEH/vector-destructor context.
+
+Small update/draw wrappers and the Ghidra-missed VM scalar deleting helper are
+left for the Web leaf-function queue. The next core frontier is the 2,315-byte
+manager constructor at `0x00445900`, followed by the 472-byte initialization
+owner at `0x004462F0` and other large bodies through the manager setup corridor.
+
+## Completed packet: ANM child-VM and manager lifecycle
 
 The ANM executor's former child-VM declarations are now connected to maintained
 source. Twelve creator bodies cover the four manager-order variants and their
@@ -106,17 +154,14 @@ addresses. This fixes a real report failure when equally valid uppercase and
 lowercase hex spellings occur in different CSV files, while tracking validation
 already treats addresses numerically.
 
-The session's initial Factory-native `th10-ghidra check {}` attestation passed.
-A later provider discovery attempt refused operation because the native Ghidra
-implementation no longer matched its operator binding. No conclusions after
-that point are attributed to fresh Ghidra output; the packet used the verified
-target directly plus the pinned compiler Oracle. A future session must refresh
-and re-attest the provider before relying on new Ghidra reads.
+At that checkpoint, a later provider discovery attempt refused operation because
+the native Ghidra implementation no longer matched its operator binding. The
+current manager-update packet reviewed the registered-file delta, refreshed the
+private binding and re-attested the provider before making new Ghidra reads.
 
-The next ANM frontier is the 268-byte VM removal owner at `0x00448BB0`, followed
-by the remaining id/child wrappers and caller-context tuning for the close
-initialize, allocation, lookup and creator bodies. Those connections may also
-bring the central executor and radial-trail initializer closer to target codegen.
+The 268-byte VM removal frontier is completed by the current packet. Remaining
+id/child wrappers stay in the leaf queue, while core work proceeds to the large
+manager constructor and initialization owners.
 
 ## Completed packet: ANM radial trail and RNG
 

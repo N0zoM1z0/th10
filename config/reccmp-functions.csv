@@ -191,6 +191,11 @@ AnmRenderManagerView::AddVmVariant0,0x004489D0,function
 AnmRenderManagerView::AddVmVariant2,0x00448A50,function
 AnmRenderManagerView::AddVmVariant1,0x00448AC0,function
 AnmRenderManagerView::AddVmVariant3,0x00448B40,function
+AnmRenderManagerView::RemoveVm,0x00448BB0,function
+AnmRenderManagerView::UpdatePrimaryVms,0x00448860,function
+AnmRenderManagerView::UpdateSecondaryVms,0x00448900,function
+AnmRenderManagerView::DrawLayer,0x00448980,function
+AnmRenderManagerView::~AnmRenderManagerView,0x00446220,function
 AnmRenderManagerView::FindVm,0x004491C0,function
 AnmRenderManagerView::AllocateVm,0x00449950,function
 AnmLoadedView::SetAndExecuteScriptIndex,0x0043E7E0,function

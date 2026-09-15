@@ -913,6 +913,185 @@ AnmVmIdView AnmRenderManagerView::AddVmVariant3(AnmVmView *vm)
     return nextVmId;
 }
 
+// Target 0x00448860 rebuilds draw layers 0 through 18 from the primary VM
+// ordering. Deleted or completed VMs are removed immediately; surviving VMs
+// are appended to the transient draw chain selected by renderLayer.
+int AnmRenderManagerView::UpdatePrimaryVms()
+{
+    AnmVmView *drawLayerTails[20];
+    int layer = 0;
+    AnmVmView *sentinel = drawLayerSentinels;
+
+    do
+    {
+        drawLayerTails[layer] = sentinel;
+        sentinel->nextInDrawLayer = NULL;
+        ++layer;
+        ++sentinel;
+    } while (layer < 19);
+
+    AnmVmLayerNodeView *node = primaryVmListHead;
+    if (node != NULL)
+    {
+        do
+        {
+            AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+            AnmVmLayerNodeView *next = node->next;
+
+            if ((vm->flags35C & 0x04000000u) != 0)
+            {
+                RemoveVm(vm);
+            }
+            else
+            {
+                if (vm->positionCallback != NULL)
+                    vm->positionCallback(vm);
+
+                if (ExecuteScript(vm) != 0)
+                {
+                    RemoveVm(vm);
+                }
+                else
+                {
+                    AnmVmView *tail = drawLayerTails[vm->renderLayer];
+                    tail->nextInDrawLayer = vm;
+                    drawLayerTails[vm->renderLayer] = vm;
+                    vm->nextInDrawLayer = NULL;
+                }
+            }
+
+            ++vmsProcessedThisFrame;
+            node = next;
+        } while (node != NULL);
+    }
+    return 1;
+}
+
+// Target 0x00448900 rebuilds the secondary manager list into reserved draw
+// layer 19. This pass resets the shared processed count before visiting VMs.
+int AnmRenderManagerView::UpdateSecondaryVms()
+{
+    AnmVmLayerNodeView *node = secondaryVmListHead;
+
+    drawLayerSentinels[19].nextInDrawLayer = NULL;
+    AnmVmView *tail = &drawLayerSentinels[19];
+    vmsProcessedThisFrame = 0;
+    if (node != NULL)
+    {
+        do
+        {
+            AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+            AnmVmLayerNodeView *next = node->next;
+
+            if ((vm->flags35C & 0x04000000u) != 0)
+            {
+                RemoveVm(vm);
+            }
+            else
+            {
+                if (vm->positionCallback != NULL)
+                    vm->positionCallback(vm);
+
+                if (ExecuteScript(vm) != 0)
+                {
+                    RemoveVm(vm);
+                }
+                else
+                {
+                    tail->nextInDrawLayer = vm;
+                    tail = vm;
+                    vm->nextInDrawLayer = NULL;
+                }
+            }
+
+            ++vmsProcessedThisFrame;
+            node = next;
+        } while (node != NULL);
+    }
+    return 1;
+}
+
+// Target 0x00448980 walks one transient layer. Removal-marked VMs are not
+// drawn; each surviving VM may update its generated draw payload first.
+int AnmRenderManagerView::DrawLayer(int layer)
+{
+    AnmVmView *vm = drawLayerSentinels[layer].nextInDrawLayer;
+    while (vm != NULL)
+    {
+        if ((vm->flags35C & 0x04000000u) == 0)
+        {
+            if (vm->drawCallback != NULL)
+                vm->drawCallback(vm);
+            Draw(vm);
+        }
+        vm = vm->nextInDrawLayer;
+    }
+    return 1;
+}
+
+// Target 0x00448BB0 unlinks both independent VM nodes. Inline-pool VMs are
+// reset in place and made available to AllocateVm; heap fallbacks are deleted.
+int AnmRenderManagerView::RemoveVm(AnmVmView *vm)
+{
+    AnmVmLayerNodeView *node = &vm->managerNode;
+
+    if (node == primaryVmListTail)
+        primaryVmListTail = vm->managerNode.previous;
+    if (node == primaryVmListHead)
+        primaryVmListHead = vm->managerNode.next;
+    if (node == secondaryVmListTail)
+        secondaryVmListTail = vm->managerNode.previous;
+    if (node == secondaryVmListHead)
+        secondaryVmListHead = vm->managerNode.next;
+
+    if (node->next != NULL)
+        node->next->previous = node->previous;
+    if (node->previous != NULL)
+        node->previous->next = node->next;
+    node->next = NULL;
+    node->previous = NULL;
+
+    node = &vm->layerNode;
+    if (node->next != NULL)
+        node->next->previous = node->previous;
+    if (node->previous != NULL)
+        node->previous->next = node->next;
+    node->next = NULL;
+    node->previous = NULL;
+
+    if (vm >= vmPool && vm < vmPool + 0x1000)
+    {
+        vmPoolUsed[vm - vmPool] = 0;
+        if (vm->generatedVertices != NULL)
+            free(vm->generatedVertices);
+        vm->generatedVertices = NULL;
+        vm->Initialize();
+    }
+    else
+    {
+        delete vm;
+    }
+    return 0;
+}
+
+AnmOwnedAllocationView::~AnmOwnedAllocationView()
+{
+    if (data != NULL)
+        free(data);
+    data = NULL;
+}
+
+// Target 0x00446220 drains both manager-order lists. Compiler-generated member
+// destruction then releases the 20 sentinel VMs, ownedAllocation and 4096
+// inline-pool VMs in that target-observed order.
+AnmRenderManagerView::~AnmRenderManagerView()
+{
+    while (primaryVmListHead != NULL)
+        RemoveVm(static_cast<AnmVmView *>(primaryVmListHead->owner));
+    while (secondaryVmListHead != NULL)
+        RemoveVm(static_cast<AnmVmView *>(secondaryVmListHead->owner));
+}
+
 // Target 0x0043E5A0 binds one loaded sprite to a VM and rebuilds the two
 // texture-space matrices derived from its dimensions.
 int AnmLoadedView::SetSprite(AnmVmView *vm, int spriteIndex)

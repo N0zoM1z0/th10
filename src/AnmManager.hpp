@@ -852,6 +852,19 @@ struct AnmUntexturedVertexView
 typedef char AnmUntexturedVertexViewSizeIs14[
     (sizeof(AnmUntexturedVertexView) == 0x14) ? 1 : -1];
 
+// The manager owns one allocation through a single-pointer member. Its
+// destructor is ordered between the draw-layer VM array and the inline VM
+// pool by the target's manager destructor.
+struct AnmOwnedAllocationView
+{
+    ~AnmOwnedAllocationView();
+
+    void *data;
+};
+
+typedef char AnmOwnedAllocationViewSizeIs04[
+    (sizeof(AnmOwnedAllocationView) == 0x04) ? 1 : -1];
+
 // Only the renderer fields established by the shared-buffer clear/flush seam
 // are named. The 0x20000 packed vertices account exactly for the span between
 // the target-observed buffer base and its end/start cursors.
@@ -864,13 +877,15 @@ struct AnmRenderManagerView
     unsigned int flushesThisFrame;
     float screenShakeX;
     float screenShakeY;
-    unsigned char unknown064[0x004];
+    unsigned int vmsProcessedThisFrame;
     AnmVmView vmPool[0x1000];
     unsigned char vmPoolUsed[0x1000];
     int nextVmPoolIndex;
     unsigned char unknown3AD06C[0x084];
     AnmMatrixView cachedWorldMatrix;
-    unsigned char unknown3AD130[0x930];
+    unsigned char unknown3AD130[0x358];
+    AnmOwnedAllocationView ownedAllocation;
+    unsigned char unknown3AD48C[0x5d4];
     unsigned int currentTextureFactor;
     void *currentTexture;
     unsigned char currentBlendMode;
@@ -896,12 +911,17 @@ struct AnmRenderManagerView
     AnmColorView mixColor;
     int useMixColor;
 
+    ~AnmRenderManagerView();
     static int __stdcall ExecuteScript(AnmVmView *vm);
+    int UpdatePrimaryVms();
+    int UpdateSecondaryVms();
+    int DrawLayer(int layer);
     AnmVmView *AllocateVm();
     AnmVmIdView AddVmVariant0(AnmVmView *vm);
     AnmVmIdView AddVmVariant1(AnmVmView *vm);
     TH10_ANM_NOINLINE AnmVmIdView AddVmVariant2(AnmVmView *vm);
     TH10_ANM_NOINLINE AnmVmIdView AddVmVariant3(AnmVmView *vm);
+    int RemoveVm(AnmVmView *vm);
     TH10_ANM_NOINLINE AnmVmView *FindVm(int id);
     void SetVmPendingInterrupt(int id, short interrupt);
     void SetVmPendingInterruptAndExecute(int id, short interrupt);
@@ -951,7 +971,8 @@ struct AnmRenderManagerView
 
 typedef char AnmRenderFlushCountAt058[
     (offsetof(AnmRenderManagerView, scriptsStartedThisFrame) == 0x04c &&
-     offsetof(AnmRenderManagerView, flushesThisFrame) == 0x058) ? 1 : -1];
+     offsetof(AnmRenderManagerView, flushesThisFrame) == 0x058 &&
+     offsetof(AnmRenderManagerView, vmsProcessedThisFrame) == 0x064) ? 1 : -1];
 typedef char AnmRenderVmPoolAt068[
     (offsetof(AnmRenderManagerView, vmPool) == 0x068 &&
      offsetof(AnmRenderManagerView, vmPoolUsed) == 0x3ac068 &&
@@ -981,6 +1002,8 @@ typedef char AnmRenderDirect3DStateAt3ADA70[
      offsetof(AnmRenderManagerView, quadVertexBuffer) == 0x3ada74) ? 1 : -1];
 typedef char AnmRenderCachedWorldMatrixAt3AD0F0[
     (offsetof(AnmRenderManagerView, cachedWorldMatrix) == 0x3ad0f0) ? 1 : -1];
+typedef char AnmRenderOwnedAllocationAt3AD488[
+    (offsetof(AnmRenderManagerView, ownedAllocation) == 0x3ad488) ? 1 : -1];
 typedef char AnmRenderUntexturedVerticesAt3ADA78[
     (offsetof(AnmRenderManagerView, untexturedVertices) == 0x3ada78) ? 1 : -1];
 typedef char AnmRenderMixColorAt732458[

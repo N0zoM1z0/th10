@@ -210,3 +210,8 @@ AnmRenderManagerView::SetVmWorldPosition
 AnmRenderManagerView::GetVmPosition
 AnmRenderManagerView::MarkLoadedVmsForDeletion
 AnmLoadedView::SetAndExecuteScriptIdx
+AnmRenderManagerView::UpdatePrimaryVms
+AnmRenderManagerView::UpdateSecondaryVms
+AnmRenderManagerView::DrawLayer
+AnmRenderManagerView::RemoveVm
+AnmRenderManagerView::~AnmRenderManagerView
