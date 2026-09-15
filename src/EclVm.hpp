@@ -16,15 +16,9 @@ struct EclVmInstruction
     unsigned char operands[1];
 };
 
-class EclVmHost
-{
-public:
-    virtual int DispatchEclInstruction() = 0;
-    virtual int ReadEclInt(int id) = 0;
-    virtual int *ResolveEclInt(int id) = 0;
-    virtual float ReadEclFloat(int id) = 0;
-    virtual float *ResolveEclFloat(int id) = 0;
-};
+class EclVmHost;
+struct EclVmScriptDatabase;
+struct EclVmThreadNode;
 
 struct EclVmStackView
 {
@@ -32,6 +26,7 @@ struct EclVmStackView
     int stackTop;
     int frameBase;
 
+    EclVmStackView();
     int Push(unsigned char type, int size, const void *value);
     int Pop(unsigned char type, int size, void *value);
     int EnterFrame(int localBytes);
@@ -57,6 +52,49 @@ struct EclVmContext
     int *ResolveInt(unsigned int index);
     float *ResolveFloat(unsigned int index);
     int Run(float timeDelta);
+};
+
+struct EclVmThreadNode
+{
+    EclVmContext *context;
+    EclVmThreadNode *next;
+    EclVmThreadNode *previous;
+};
+
+struct EclVmSubroutineEntry
+{
+    const char *name;
+    unsigned char *header;
+};
+
+struct EclVmScriptDatabase
+{
+    void *vtable;
+    int fileCount;
+    int subroutineCount;
+    void *files[32];
+    EclVmSubroutineEntry *subroutines;
+
+    EclVmInstruction *FindSubroutine(const char *name);
+};
+
+class EclVmHost
+{
+public:
+    virtual int DispatchEclInstruction() = 0;
+    virtual int ReadEclInt(int id) = 0;
+    virtual int *ResolveEclInt(int id) = 0;
+    virtual float ReadEclFloat(int id) = 0;
+    virtual float *ResolveEclFloat(int id) = 0;
+
+    void SpawnThread(int threadId, unsigned int firstArgument);
+    EclVmThreadNode *FindThread(int threadId);
+    void StopAllThreads();
+
+    EclVmContext *activeContext;
+    EclVmContext embeddedContext;
+    EclVmScriptDatabase *scriptDatabase;
+    EclVmThreadNode threadList;
 };
 
 typedef char EclVmInstruction_opcode_offset[
@@ -94,5 +132,32 @@ typedef char EclVmContext_flags_offset[
     offsetof(EclVmContext, flags) == 0x1020 ? 1 : -1];
 typedef char EclVmContext_size[sizeof(EclVmContext) == 0x1024 ? 1 : -1];
 typedef char EclVmStackView_size[sizeof(EclVmStackView) == 0x1008 ? 1 : -1];
+typedef char EclVmThreadNode_size[
+    sizeof(EclVmThreadNode) == 0x0C ? 1 : -1];
+typedef char EclVmSubroutineEntry_size[
+    sizeof(EclVmSubroutineEntry) == 0x08 ? 1 : -1];
+typedef char EclVmScriptDatabase_file_count_offset[
+    offsetof(EclVmScriptDatabase, fileCount) == 0x4 ? 1 : -1];
+typedef char EclVmScriptDatabase_subroutine_count_offset[
+    offsetof(EclVmScriptDatabase, subroutineCount) == 0x8 ? 1 : -1];
+typedef char EclVmScriptDatabase_files_offset[
+    offsetof(EclVmScriptDatabase, files) == 0x0C ? 1 : -1];
+typedef char EclVmScriptDatabase_subroutines_offset[
+    offsetof(EclVmScriptDatabase, subroutines) == 0x8C ? 1 : -1];
+typedef char EclVmScriptDatabase_size[
+    sizeof(EclVmScriptDatabase) == 0x90 ? 1 : -1];
+typedef char EclVmHost_active_context_offset[
+    offsetof(EclVmHost, activeContext) == 0x4 ? 1 : -1];
+typedef char EclVmHost_embedded_context_offset[
+    offsetof(EclVmHost, embeddedContext) == 0x8 ? 1 : -1];
+typedef char EclVmHost_script_database_offset[
+    offsetof(EclVmHost, scriptDatabase) == 0x102C ? 1 : -1];
+typedef char EclVmHost_thread_list_offset[
+    offsetof(EclVmHost, threadList) == 0x1030 ? 1 : -1];
+typedef char EclVmHost_size[sizeof(EclVmHost) == 0x103C ? 1 : -1];
+
+int EclVmStartSubroutine(
+    EclVmContext *destination, EclVmContext *caller,
+    unsigned int firstArgument);
 
 #endif

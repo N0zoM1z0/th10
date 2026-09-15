@@ -25,6 +25,48 @@ linkages = [
   { offset = 0x4B, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
 ]
 
+[units.ecl-vm-find-thread]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+output_dir = "build/match-linked/EclVmStack"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmContext@@QAEHM@Z"
+functions = ["EclVmHost::FindThread"]
+symbol = "?FindThread@EclVmHost@@QAEPAUEclVmThreadNode@@H@Z"
+target_address = 0x00450160
+size = 36
+linkages = []
+
+[units.ecl-vm-stop-all-threads]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+output_dir = "build/match-linked/EclVmStack"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmContext@@QAEHM@Z"
+functions = ["EclVmHost::StopAllThreads"]
+symbol = "?StopAllThreads@EclVmHost@@QAEXXZ"
+target_address = 0x00450190
+size = 31
+linkages = []
+
+[units.ecl-vm-find-subroutine]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+output_dir = "build/match-linked/EclVmStack"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmContext@@QAEHM@Z"
+functions = ["EclVmScriptDatabase::FindSubroutine"]
+symbol = "?FindSubroutine@EclVmScriptDatabase@@QAEPAUEclVmInstruction@@PBD@Z"
+target_address = 0x00450470
+size = 136
+linkages = []
+
 [units.ecl-vm-stack-push]
 artifact_kind = "linked-pe"
 source = "src/EclVm.cpp"

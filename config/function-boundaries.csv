@@ -799,7 +799,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0044DCA0,0x0044DCED,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0044DD40,0x0044DE01,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0044DE10,0x0044DED9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
-0x0044DF70,0x0044E195,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
+0x0044DF70,0x0044E195,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 550/550, tail ret"
 0x0044E1A0,0x0044FD0B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 7019/7020; owned indirect control table at 0x0044FBC4
 0x0044FD10,0x0044FDA1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0044FDB0,0x0044FE3F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 144/144, tail ret"
@@ -808,12 +808,12 @@ address,span_end,state,confidence,evidence_id,notes
 0x0044FF80,0x0045002A,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 171/171, tail ret"
 0x00450030,0x00450069,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 58/58, tail ret"
 0x00450070,0x004500CC,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 93/93, tail ret"
-0x004500D0,0x0045015D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00450160,0x00450183,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
-0x00450190,0x004501AE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x004500D0,0x0045015D,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 142/142, tail ret"
+0x00450160,0x00450183,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 36/36, tail ret"
+0x00450190,0x004501AE,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 31/31, tail ret"
 0x004501B0,0x004501CD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00450220,0x0045046C,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret; direct-code-refs=1, aligned-data-refs=2; no overlap or external interior branch"
-0x00450470,0x004504F7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
+0x00450470,0x004504F7,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 136/136, tail ret"
 0x004505B0,0x0045060F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 96/96, tail ret"
 0x00450610,0x00450689,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 122/122, tail ret"
 0x00450690,0x004506CF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 64/64, tail ret"

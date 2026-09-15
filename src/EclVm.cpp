@@ -5,18 +5,16 @@
 #include <string.h>
 
 
-// These small runtime services are separate target functions in the
-// 0x0044DF70-0x004506D0 corridor.  Their logical declarations let this file
-// retain the complete VM dispatch while their private register ABIs remain a
-// separate reconstruction unit.
-extern int EclVmStartSubroutine(
-    EclVmContext *destination, EclVmContext *caller,
-    unsigned int firstArgument);
-extern void EclVmSpawnThread(
-    EclVmHost *host, int threadId, unsigned int firstArgument);
-extern EclVmContext *EclVmFindThread(EclVmHost *host, int threadId);
-extern void EclVmStopAllThreads(EclVmHost *host);
+// This runtime service is a separate target function in the
+// 0x0044DF70-0x004506D0 corridor. Its declaration lets this file retain the
+// complete VM dispatch while its implementation remains a separate unit.
 extern float EclVmNormalizeAngle(float angle);
+
+
+EclVmStackView::EclVmStackView()
+    : stackTop(0), frameBase(0)
+{
+}
 
 
 int EclVmStackView::Push(
@@ -379,6 +377,166 @@ float *EclVmContext::ResolveFloat(unsigned int index)
 }
 
 
+EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
+{
+    int lower = 0;
+    int upper = subroutineCount - 1;
+    while (lower <= upper)
+    {
+        const int middle = (upper - lower) / 2 + lower;
+        const int comparison = strcmp(name, subroutines[middle].name);
+        if (comparison == 0)
+        {
+            return reinterpret_cast<EclVmInstruction *>(
+                subroutines[middle].header + 0x10);
+        }
+        if (comparison < 0)
+            upper = middle - 1;
+        else
+            lower = middle + 1;
+    }
+    return NULL;
+}
+
+
+int EclVmStartSubroutine(
+    EclVmContext *destination, EclVmContext *caller,
+    unsigned int firstArgument)
+{
+    EclVmInstruction **const callerInstruction = &caller->instruction;
+    EclVmInstruction *const call = *callerInstruction;
+    const int inlineBytes = OperandInt(call, 0);
+    int metadataOffset = inlineBytes + firstArgument * 4 + 4;
+    const int previousTop = destination->stack.stackTop;
+    int argumentOffset = previousTop + 8;
+    int preservedValue = 0;
+
+    if (previousTop == 0)
+    {
+        destination->stack.Push(0, sizeof(preservedValue), &preservedValue);
+        argumentOffset = destination->stack.stackTop + 8;
+    }
+
+    unsigned int argumentIndex = firstArgument + 1;
+    int valueOffset = metadataOffset + 4;
+    unsigned char *argument = destination->stack.data + argumentOffset;
+    while (argumentIndex < call->operandCount)
+    {
+        const char sourceType = call->operands[metadataOffset];
+        const char targetType = call->operands[metadataOffset + 1];
+        EclVmScalar value;
+        value.integer = *reinterpret_cast<const int *>(
+            call->operands + (valueOffset & ~3));
+
+        if (sourceType == 'f' || sourceType == 'g')
+        {
+            value.real = caller->ReadFloatValue(argumentIndex, value.real);
+            if (targetType == 'f')
+                *reinterpret_cast<float *>(argument) = value.real;
+            else
+                *reinterpret_cast<int *>(argument) =
+                    static_cast<int>(value.real);
+        }
+        else
+        {
+            value.integer = caller->ReadIntValue(
+                argumentIndex, value.integer);
+            if (targetType == 'f')
+                *reinterpret_cast<float *>(argument) =
+                    static_cast<float>(value.integer);
+            else
+                *reinterpret_cast<int *>(argument) = value.integer;
+        }
+
+        argument += 4;
+        ++argumentIndex;
+        valueOffset += 8;
+        metadataOffset += 8;
+    }
+
+    if (previousTop == 0)
+    {
+        destination->stack.stackTop = 4;
+        destination->stack.Push(0, sizeof(preservedValue), &preservedValue);
+    }
+    else
+    {
+        destination->stack.Pop(0, sizeof(preservedValue), &preservedValue);
+        destination->stack.stackTop = previousTop;
+        *reinterpret_cast<int *>(
+            destination->stack.data + previousTop - 4) = preservedValue;
+        destination->stack.Push(
+            0, sizeof(caller->currentTime), &caller->currentTime);
+    }
+    destination->stack.Push(
+        0, sizeof(*callerInstruction), callerInstruction);
+
+    EclVmHost *const host = caller->host;
+    EclVmContext *const previousContext = host->activeContext;
+    host->activeContext = destination;
+    destination->instruction = host->scriptDatabase->FindSubroutine(
+        reinterpret_cast<const char *>(call) + 0x14);
+    destination->currentTime = 0.0f;
+    if (destination->instruction == NULL)
+    {
+        *callerInstruction = NULL;
+        return -1;
+    }
+    host->activeContext = previousContext;
+    return 0;
+}
+
+
+void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)
+{
+    EclVmContext *context = new EclVmContext;
+    EclVmThreadNode *node = new EclVmThreadNode;
+
+    context->threadId = threadId;
+    context->host = this;
+    context->currentTime = 0.0f;
+    context->instruction = NULL;
+    context->difficultyMask = activeContext->difficultyMask;
+
+    EclVmThreadNode *const list = &threadList;
+    node->context = context;
+    node->next = NULL;
+    node->previous = NULL;
+    if (list->next != NULL)
+    {
+        node->next = list->next;
+        list->next->previous = node;
+    }
+    list->next = node;
+    node->previous = list;
+
+    EclVmStartSubroutine(context, activeContext, firstArgument);
+}
+
+EclVmThreadNode *EclVmHost::FindThread(int threadId)
+{
+    EclVmThreadNode *node = &threadList;
+    while (node != NULL)
+    {
+        if (node->context->threadId == threadId)
+            return node;
+        node = node->next;
+    }
+    return NULL;
+}
+
+void EclVmHost::StopAllThreads()
+{
+    EclVmThreadNode *node = threadList.next;
+    while (node != NULL)
+    {
+        EclVmThreadNode *next = node->next;
+        node->context->instruction = NULL;
+        node = next;
+    }
+}
+
+
 int EclVmContext::Run(float timeDelta)
 {
     if (instruction == NULL)
@@ -443,7 +601,7 @@ int EclVmContext::Run(float timeDelta)
                 break;
 
             case ECL_VM_SPAWN_THREAD:
-                EclVmSpawnThread(host, -1, 0);
+                host->SpawnThread(-1, 0);
                 break;
 
             case ECL_VM_SPAWN_THREAD_WITH_ID:
@@ -452,44 +610,44 @@ int EclVmContext::Run(float timeDelta)
                     static_cast<unsigned int>((OperandInt(current, 0) + 4) >> 2);
                 const int id = ReadIntValue(
                     1, OperandInt(current, idIndex));
-                EclVmSpawnThread(host, id, 1);
+                host->SpawnThread(id, 1);
                 break;
             }
 
             case ECL_VM_STOP_THREAD:
             {
-                EclVmContext *thread = EclVmFindThread(host, ReadInt(0));
+                EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->instruction = NULL;
+                    thread->context->instruction = NULL;
                 break;
             }
 
             case ECL_VM_SET_THREAD_FLAG:
             {
-                EclVmContext *thread = EclVmFindThread(host, ReadInt(0));
+                EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->flags |= 1;
+                    thread->context->flags |= 1;
                 break;
             }
 
             case ECL_VM_CLEAR_THREAD_FLAG:
             {
-                EclVmContext *thread = EclVmFindThread(host, ReadInt(0));
+                EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->flags &= ~1U;
+                    thread->context->flags &= ~1U;
                 break;
             }
 
             case ECL_VM_SET_THREAD_CONTROL:
             {
-                EclVmContext *thread = EclVmFindThread(host, ReadInt(0));
+                EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->threadControl = ReadInt(1);
+                    thread->context->threadControl = ReadInt(1);
                 break;
             }
 
             case ECL_VM_STOP_ALL_THREADS:
-                EclVmStopAllThreads(host);
+                host->StopAllThreads();
                 break;
 
             case ECL_VM_EVALUATE_FORMAT_OPERANDS:

@@ -248,6 +248,7 @@ AnmRenderManagerView::CopyTextureRect
 AnmRenderManagerView::CaptureToSurface
 EnemyResolveRuntimeCallback
 PlayerUpdateCallbackBody
+EclVmStartSubroutine
 EclVmContext::Run
 GuiView::UpdateStageElements
 GuiMessageVmView::Run
@@ -286,6 +287,10 @@ EclVmContext::ReadIntValue
 EclVmContext::ReadFloatValue
 EclVmContext::ResolveInt
 EclVmContext::ResolveFloat
+EclVmHost::SpawnThread
+EclVmHost::FindThread
+EclVmHost::StopAllThreads
+EclVmScriptDatabase::FindSubroutine
 EclVmStackView::Push
 EclVmStackView::Pop
 EclVmStackView::EnterFrame

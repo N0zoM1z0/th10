@@ -256,6 +256,7 @@ AnmRenderManagerView::CopyTextureRect,0x00448360,function
 AnmRenderManagerView::CaptureToSurface,0x00448450,function
 EnemyResolveRuntimeCallback,0x004127A0,function
 PlayerUpdateCallbackBody,0x00425730,function
+EclVmStartSubroutine,0x0044DF70,function
 EclVmContext::Run,0x0044E1A0,function
 GuiView::UpdateStageElements,0x00414900,function
 GuiMessageVmView::Run,0x00415E90,function
@@ -287,6 +288,10 @@ EclVmContext::ReadIntValue,0x0044FF00,function
 EclVmContext::ReadFloatValue,0x0044FF80,function
 EclVmContext::ResolveInt,0x00450030,function
 EclVmContext::ResolveFloat,0x00450070,function
+EclVmHost::SpawnThread,0x004500D0,function
+EclVmHost::FindThread,0x00450160,function
+EclVmHost::StopAllThreads,0x00450190,function
+EclVmScriptDatabase::FindSubroutine,0x00450470,function
 EclVmStackView::Push,0x004505B0,function
 EclVmStackView::Pop,0x00450610,function
 EclVmStackView::EnterFrame,0x00450690,function
