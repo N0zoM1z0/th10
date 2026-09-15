@@ -35,10 +35,23 @@ The following remain unknown until compiler and link Oracles reproduce them:
 - linker switches and input order;
 - ownership of compiler-generated, library, padding, and data extents.
 
-## Initial Ghidra inventory
+## Function and boundary inventories
 
 `config/functions.csv` is a navigation inventory exported from the exact,
-target-attested Ghidra database. Every extent and auto-name is provisional.
+target-attested Ghidra database and augmented by target review. Ghidra names are
+provisional, and an entry in this file does not by itself prove a physical
+boundary or source origin.
+
+`config/function-origins.csv` records origin independently.
+`config/function-boundaries.csv` records the current boundary review state for
+each candidate. `scripts/report-boundary-inventory.py` reproduces the automatic
+part of that ledger from the verified target, the pinned Capstone decoder, and,
+when available, Ghidra address-set ranges exported by
+`python3 scripts/ghidra.py architecture`. A boundary may be `reviewed`,
+`provisional`, or `needs_review`; only the first state closes boundary review.
+
 Shared tails, switch tables, EH metadata, thunks, alignment, interleaved data,
 and remote owned chunks can make a Ghidra function extent incomplete or
-over-broad. Review those surfaces before classifying origin or accepting bytes.
+over-broad. Ghidra's address set is therefore exported as individual ranges,
+rather than collapsed to `entry..maximum-address`. Review those surfaces before
+classifying origin or accepting bytes.

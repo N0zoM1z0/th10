@@ -5,8 +5,11 @@ their boundaries and origins must be reviewed independently.
 
 | Measure | Count |
 | --- | ---: |
-| Tracked 1.00a function candidates | 1,309 |
-| Origin/boundary review pending | 1,015 |
+| Tracked 1.00a function candidates | 1,312 |
+| Boundary reviewed | 1,173 |
+| Boundary provisional | 88 |
+| Boundary needs focused review | 51 |
+| Origin review pending | 1,018 |
 | Confirmed authored functions | 279 |
 | Confirmed authored code bytes | 114,218 |
 | Classified exclusions | 15 |
@@ -17,6 +20,8 @@ their boundaries and origins must be reviewed independently.
 | Canonical exact functions | 110 |
 | Canonical exact authored bytes | 12,166 |
 
-While review remains pending, the authored exact denominator is unknown. A
-mapped name, maintained source, successful compilation, or Ghidra similarity does
-not contribute to the exact totals.
+The tracked-candidate denominator remains provisional because unresolved `.text`
+gaps can contain code, data, thunks, tables, and padding. While origin review and
+inventory closure remain pending, the authored exact denominator is unknown. A
+mapped name, maintained source, successful compilation, or Ghidra similarity
+does not contribute to the exact totals.

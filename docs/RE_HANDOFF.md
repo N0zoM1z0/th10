@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `623cd37 gpt-5.6-sol: reconstruct GUI update and message cores`, branch `main`.
+- Current packet base: `979522c gpt-5.6-sol: reconstruct Main execution corridor`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -42,29 +42,84 @@
 - Completed session checkpoint: `ff78689 gpt-5.6-sol: reconstruct Enemy callback core`.
 - Completed session checkpoint: `d4352b5 gpt-5.6-sol: reconstruct generic ECL VM core`.
 - Completed session checkpoint: `623cd37 gpt-5.6-sol: reconstruct GUI update and message cores`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct Main execution corridor`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean GUI-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-main-corridor/`. The earlier GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `979522c gpt-5.6-sol: reconstruct Main execution corridor`.
+- Planned current checkpoint subject: `gpt-5.6-sol: separate boundary inventory`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean Main-corridor checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-boundary-inventory/`. The earlier Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `623cd371e5ccb44a186253d90c104e93d5af0df1` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `979522cf8bf67074d55fd928045af6b4f56d8b92` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
-Fresh repository preflight passed at the start of the current Main reconstruction session:
+Fresh repository preflight passed at the start of the current boundary-review session:
 
 - `python3 scripts/verify-target.py`
 - `python3 scripts/verify-toolchain.py --execute`
 - `python3 scripts/validate-tracking.py --require-target`
 - `python3 scripts/report-reconstruction-status.py`
 
-The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/GL`, resource and PE32-i386 link smoke through headless Wine. Native `th10-ghidra` `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command`. This packet combines that provider's read-only decompilation, disassembly, calls, and xrefs with direct hash-attested target disassembly and compiler evidence.
+The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/GL`, resource and PE32-i386 link smoke through headless Wine. Native `th10-ghidra` `check {}` passed for `target:th10-main` with `provider_transport=factory-native-command`. This packet combines that provider's read-only address-set ranges, decompilation, disassembly, calls and xrefs with direct hash-attested target disassembly.
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: Main execution corridor
+## Current packet: independent boundary inventory
+
+Boundary state is now separate from origin state. `config/function-boundaries.csv`
+contains one target-bound row for each of the 1,312 candidates, and
+`scripts/validate-tracking.py` enforces its address order, one-to-one coverage,
+span equality, state/confidence combinations, evidence and notes. Exact rows
+must have a reviewed boundary.
+
+`scripts/report-boundary-inventory.py --check-ledger` reproduces the automatic
+review against the exact target with the pinned Capstone decoder. It densely
+decodes each tracked extent, checks terminal control flow, independent code and
+aligned non-text pointer references, overlapping extents, external branches into
+another body, Ghidra sparse/remote ranges, `.text` union coverage and gaps. The
+current ledger has **1,173 reviewed, 88 provisional and 51 needs-review**
+boundaries. Tracked extents cover 340,150 union bytes. The remaining 72,139
+`.text` bytes contain 505 pure alignment gaps / 4,070 bytes and 448 unresolved
+gaps / 68,069 bytes. The report retains 26 overlapping extent pairs involving
+37 candidates, four direct targets outside tracked extents and 97 aligned data
+pointers into untracked `.text` as triage evidence.
+
+The former inventory export treated each Ghidra function as one dense interval.
+`python3 scripts/ghidra.py architecture` now exports every address-set range.
+The current database has 1,419 ranges for 1,195 functions, including 122 sparse
+bodies and two functions with ranges below their entry. `0x004451C0` owns remote
+ranges at `0x004436C0-0x0044390E` and `0x00443910-0x00443B5E` in addition to
+its entry range; `0x0046227B` owns the shared return range
+`0x00452720-0x00452724`. These cases demonstrate why boundary review cannot use
+`entry..maximum-address` as the physical owner.
+
+Direct review added three Ghidra-missed front-end candidates. The reviewed
+`0x0042D260-0x0042D2D3` body owns code through `0x0042D2B3` and an eight-entry
+absolute switch table. The seven-byte adapters at `0x0042D2E0` and
+`0x0042D2F0` move ECX to EAX and jump to `0x0042CDF0` and `0x0042D260`
+respectively; target data references and following CC padding close both.
+
+Changing the registered Ghidra wrapper/exporter caused the earlier provider
+failure. The Factory compares an aggregate SHA-256 of native implementation
+files with its private operator binding, so the message “native Ghidra
+implementation differs from its operator binding” was a deliberate stale-binding
+failure. The new implementation was reviewed, the ignored private binding was
+refreshed to `c001f8ef3d9a64e96664d999c14891d9c92fa12f393bca64cc77bb087c0e2143`,
+the Factory validator passed, and native `check {}` passed again. No tracked
+Factory file changed.
+
+`scripts/progress.py` and `scripts/report-reconstruction-status.py` now report
+origin and boundary independently. `scripts/rank-core-backlog.py` orders
+source-absent, boundary-reviewed candidates by target size and optional Ghidra
+connectivity while explicitly granting no ownership or semantic credit. Its
+result, supported by direct target call review, selects the title/front-end
+chain `0x0042CDF0` (1,059 bytes), `0x0042D920` (3,168 bytes), and
+`0x0042E5A0` (3,999 bytes) as the next coherent core batch. `0x0042D920` calls
+`0x0042E5A0` eight times; `0x0042E5A0` contains the option/volume update path.
+`0x0042F8B0` remains the next connected front-end owner after that batch.
+
+## Completed packet: Main execution corridor
 
 Ten central application/window/D3D owners now have maintained source in
 `src/Main.cpp` across 5,456 reviewed target bytes:

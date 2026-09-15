@@ -368,6 +368,7 @@ def main() -> int:
                         str((architecture_dir / "call-edges.csv").resolve()),
                         str((architecture_dir / "global-refs.csv").resolve()),
                         str((architecture_dir / "string-refs.csv").resolve()),
+                        str((ROOT / ".analysis" / "boundaries" / "function-body-ranges.csv").resolve()),
                         str(pe["text_start"]),
                         str(pe["text_end"]),
                     ]

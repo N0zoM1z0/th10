@@ -4,6 +4,9 @@
 
 import ghidra.app.script.GhidraScript;
 import ghidra.program.model.address.Address;
+import ghidra.program.model.address.AddressRange;
+import ghidra.program.model.address.AddressRangeIterator;
+import ghidra.program.model.address.AddressSetView;
 import ghidra.program.model.listing.Data;
 import ghidra.program.model.listing.Function;
 import ghidra.program.model.listing.FunctionIterator;
@@ -61,26 +64,30 @@ public class ExportArchitecture extends GhidraScript
     protected void run() throws Exception
     {
         String[] args = getScriptArgs();
-        if (args.length != 6)
+        if (args.length != 7)
             throw new IllegalArgumentException(
-                "usage: ExportArchitecture.java METRICS EDGES GLOBALS STRINGS " +
+                "usage: ExportArchitecture.java METRICS EDGES GLOBALS STRINGS RANGES " +
                 "TEXT_START TEXT_END");
 
         Path metricsPath = Path.of(args[0]);
         Path edgesPath = Path.of(args[1]);
         Path globalsPath = Path.of(args[2]);
         Path stringsPath = Path.of(args[3]);
-        Address textStart = toAddr(args[4]);
-        Address textEnd = toAddr(args[5]);
-        for (Path path : new Path[] {metricsPath, edgesPath, globalsPath, stringsPath})
+        Path rangesPath = Path.of(args[4]);
+        Address textStart = toAddr(args[5]);
+        Address textEnd = toAddr(args[6]);
+        for (Path path : new Path[] {
+            metricsPath, edgesPath, globalsPath, stringsPath, rangesPath})
             Files.createDirectories(path.toAbsolutePath().getParent());
 
         Path metricsTemp = Path.of(metricsPath.toString() + ".tmp");
         Path edgesTemp = Path.of(edgesPath.toString() + ".tmp");
         Path globalsTemp = Path.of(globalsPath.toString() + ".tmp");
         Path stringsTemp = Path.of(stringsPath.toString() + ".tmp");
+        Path rangesTemp = Path.of(rangesPath.toString() + ".tmp");
         int functionCount = 0;
         int edgeCount = 0;
+        int rangeCount = 0;
 
         try (
             BufferedWriter metrics = Files.newBufferedWriter(
@@ -90,7 +97,9 @@ public class ExportArchitecture extends GhidraScript
             BufferedWriter globals = Files.newBufferedWriter(
                 globalsTemp, StandardCharsets.UTF_8);
             BufferedWriter strings = Files.newBufferedWriter(
-                stringsTemp, StandardCharsets.UTF_8)
+                stringsTemp, StandardCharsets.UTF_8);
+            BufferedWriter ranges = Files.newBufferedWriter(
+                rangesTemp, StandardCharsets.UTF_8)
         )
         {
             metrics.write(
@@ -100,6 +109,9 @@ public class ExportArchitecture extends GhidraScript
             edges.write("caller,callee,callee_name,kind,call_sites\n");
             globals.write("function,address,symbol,references\n");
             strings.write("function,address,value,references\n");
+            ranges.write(
+                "address,name,body_min,body_max,body_bytes,range_count," +
+                "range_index,range_start,range_end,range_size,contains_entry\n");
 
             FunctionIterator iterator = currentProgram.getFunctionManager().getFunctions(true);
             while (iterator.hasNext())
@@ -114,6 +126,24 @@ public class ExportArchitecture extends GhidraScript
                 Address maximum = function.getBody().getMaxAddress();
                 long spanEnd = maximum == null ? entry.getOffset() : maximum.getOffset();
                 long size = spanEnd - entry.getOffset() + 1;
+                AddressSetView body = function.getBody();
+                Address minimum = body.getMinAddress();
+                int bodyRangeCount = body.getNumAddressRanges();
+                int bodyRangeIndex = 0;
+                AddressRangeIterator bodyRanges = body.getAddressRanges(true);
+                while (bodyRanges.hasNext())
+                {
+                    AddressRange range = bodyRanges.next();
+                    ranges.write(
+                        hex(entry.getOffset()) + "," + csv(function.getName(true)) + "," +
+                        hex(minimum.getOffset()) + "," + hex(maximum.getOffset()) + "," +
+                        body.getNumAddresses() + "," + bodyRangeCount + "," +
+                        bodyRangeIndex + "," + hex(range.getMinAddress().getOffset()) +
+                        "," + hex(range.getMaxAddress().getOffset()) + "," +
+                        range.getLength() + "," + range.contains(entry) + "\n");
+                    bodyRangeIndex++;
+                    rangeCount++;
+                }
                 int instructionCount = 0;
                 int conditionalBranches = 0;
                 int terminalInstructions = 0;
@@ -231,7 +261,9 @@ public class ExportArchitecture extends GhidraScript
         replace(edgesTemp, edgesPath);
         replace(globalsTemp, globalsPath);
         replace(stringsTemp, stringsPath);
+        replace(rangesTemp, rangesPath);
         println("Exported architecture metrics for " + functionCount +
-            " functions and " + edgeCount + " direct edges");
+            " functions, " + edgeCount + " direct edges, and " + rangeCount +
+            " body ranges");
     }
 }

@@ -42,6 +42,7 @@ def validate() -> dict[str, int]:
             raise ValueError(f"{label} target SHA-256 mismatch")
     functions = rows("functions.csv")
     origins = rows("function-origins.csv")
+    boundaries = rows("function-boundaries.csv")
     mappings = rows("reccmp-functions.csv")
     matches = rows("matches.csv")
     implemented = set(one_column("implemented.csv"))
@@ -58,10 +59,30 @@ def validate() -> dict[str, int]:
         raise ValueError("function addresses must be unique and sorted")
     functions_by_address = {int(row["address"], 0): row for row in functions}
     origins_by_address = {int(row["address"], 0): row for row in origins}
+    boundaries_by_address = {int(row["address"], 0): row for row in boundaries}
     function_addresses = set(functions_by_address)
     origin_addresses = set(origins_by_address)
     if origin_addresses != function_addresses or len(origins) != len(functions):
         raise ValueError("origin ledger must cover each function exactly once")
+    boundary_addresses = set(boundaries_by_address)
+    if boundary_addresses != function_addresses or len(boundaries) != len(functions):
+        raise ValueError("boundary ledger must cover each function exactly once")
+    if [int(row["address"], 0) for row in boundaries] != starts:
+        raise ValueError("boundary ledger rows must follow the sorted function inventory")
+    allowed_boundary_states = {
+        "reviewed": {"high", "medium"},
+        "provisional": {"medium", "low"},
+        "needs_review": {"low"},
+    }
+    for row in boundaries:
+        candidate = functions_by_address[int(row["address"], 0)]
+        if int(row["span_end"], 0) != int(candidate["span_end"], 0):
+            raise ValueError(f"boundary extent differs at {row['address']}")
+        state, confidence = row["state"], row["confidence"]
+        if state not in allowed_boundary_states or confidence not in allowed_boundary_states[state]:
+            raise ValueError(f"invalid boundary state at {row['address']}")
+        if not row["evidence_id"] or not row["notes"]:
+            raise ValueError(f"boundary evidence is incomplete at {row['address']}")
     allowed_origins = {"unknown", "authored", "authored_game", "compiler", "compiler_generated", "library", "third_party", "import_thunk", "data", "padding"}
     allowed_dispositions = {"review", "authored", "exclude"}
     for row in origins:
@@ -111,6 +132,8 @@ def validate() -> dict[str, int]:
             raise ValueError(f"exact unit {unit_name!r} differs from source ledger")
         if origins_by_address[address]["disposition"] != "authored":
             raise ValueError(f"exact unit {unit_name!r} is not reviewed authored code")
+        if boundaries_by_address[address]["state"] != "reviewed":
+            raise ValueError(f"exact unit {unit_name!r} lacks a reviewed boundary")
     if matched_units != set(configured_units):
         missing = sorted(set(configured_units) - matched_units)
         extra = sorted(matched_units - set(configured_units))
@@ -122,7 +145,12 @@ def validate() -> dict[str, int]:
     acceptance = build.get("acceptance", {})
     if acceptance.get("whole_build_closed") and not build.get("graph", {}).get("sources"):
         raise ValueError("whole-build closure cannot be true for an empty graph")
-    return {"functions": len(functions), "mappings": len(mappings), "matches": len(matches)}
+    return {
+        "functions": len(functions),
+        "boundaries": len(boundaries),
+        "mappings": len(mappings),
+        "matches": len(matches),
+    }
 
 
 def main() -> int:
@@ -137,7 +165,7 @@ def main() -> int:
         print(f"error: tracking validation failed: {exc}", file=sys.stderr)
         return 1
     print(
-        f"tracking OK: {counts['functions']} candidates, "
+        f"tracking OK: {counts['functions']} candidates/boundaries, "
         f"{counts['mappings']} mappings, {counts['matches']} exact"
     )
     return 0

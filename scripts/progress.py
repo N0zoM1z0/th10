@@ -30,6 +30,10 @@ def measures() -> dict[str, int]:
         parse_address(row["address"]): row
         for row in rows("function-origins.csv")
     }
+    boundaries = {
+        parse_address(row["address"]): row
+        for row in rows("function-boundaries.csv")
+    }
     mappings = rows("reccmp-functions.csv")
     matches = rows("matches.csv")
     implemented = []
@@ -42,7 +46,19 @@ def measures() -> dict[str, int]:
     excluded = [row for row in functions if disposition(row) == "exclude"]
     exact_bytes = sum(int(row["size"], 0) for row in matches)
     authored_bytes = sum(int(row["size"], 0) for row in authored)
-    reviewed = len(authored) + len(excluded)
+    origin_reviewed = len(authored) + len(excluded)
+    boundary_reviewed = sum(
+        boundaries[parse_address(row["address"])]["state"] == "reviewed"
+        for row in functions
+    )
+    boundary_provisional = sum(
+        boundaries[parse_address(row["address"])]["state"] == "provisional"
+        for row in functions
+    )
+    boundary_needs_review = sum(
+        boundaries[parse_address(row["address"])]["state"] == "needs_review"
+        for row in functions
+    )
     mapped_authored = sum(
         disposition(row) == "authored" for row in mappings
     )
@@ -54,8 +70,12 @@ def measures() -> dict[str, int]:
     )
     return {
         "functions": len(functions),
-        "reviewed": reviewed,
-        "pending": len(functions) - reviewed,
+        "origin_reviewed": origin_reviewed,
+        "origin_pending": len(functions) - origin_reviewed,
+        "boundary_reviewed": boundary_reviewed,
+        "boundary_provisional": boundary_provisional,
+        "boundary_needs_review": boundary_needs_review,
+        "boundary_pending": len(functions) - boundary_reviewed,
         "authored": len(authored),
         "authored_bytes": authored_bytes,
         "excluded": len(excluded),
@@ -78,7 +98,10 @@ their boundaries and origins must be reviewed independently.
 | Measure | Count |
 | --- | ---: |
 | Tracked 1.00a function candidates | {values['functions']:,} |
-| Origin/boundary review pending | {values['pending']:,} |
+| Boundary reviewed | {values['boundary_reviewed']:,} |
+| Boundary provisional | {values['boundary_provisional']:,} |
+| Boundary needs focused review | {values['boundary_needs_review']:,} |
+| Origin review pending | {values['origin_pending']:,} |
 | Confirmed authored functions | {values['authored']:,} |
 | Confirmed authored code bytes | {values['authored_bytes']:,} |
 | Classified exclusions | {values['excluded']:,} |
@@ -89,17 +112,23 @@ their boundaries and origins must be reviewed independently.
 | Canonical exact functions | {values['matches']:,} |
 | Canonical exact authored bytes | {values['exact_bytes']:,} |
 
-While review remains pending, the authored exact denominator is unknown. A
-mapped name, maintained source, successful compilation, or Ghidra similarity does
-not contribute to the exact totals.
+The tracked-candidate denominator remains provisional because unresolved `.text`
+gaps can contain code, data, thunks, tables, and padding. While origin review and
+inventory closure remain pending, the authored exact denominator is unknown. A
+mapped name, maintained source, successful compilation, or Ghidra similarity
+does not contribute to the exact totals.
 """
 
 
 def render_svg(values: dict[str, int]) -> str:
-    total, reviewed = values["functions"], values["reviewed"]
-    review_pct = 100 * reviewed / total if total else 0.0
-    review_width = 512 * review_pct / 100
-    if values["pending"]:
+    total = values["functions"]
+    boundary_reviewed = values["boundary_reviewed"]
+    origin_reviewed = values["origin_reviewed"]
+    boundary_pct = 100 * boundary_reviewed / total if total else 0.0
+    origin_pct = 100 * origin_reviewed / total if total else 0.0
+    boundary_width = 512 * boundary_pct / 100
+    origin_width = 512 * origin_pct / 100
+    if values["origin_pending"] or values["boundary_pending"]:
         exact_label = "denominator pending"
         exact_width = 0.0
         exact_detail = f"{values['matches']:,} exact functions · {values['exact_bytes']:,} exact bytes"
@@ -110,19 +139,24 @@ def render_svg(values: dict[str, int]) -> str:
         exact_width = 512 * exact_pct / 100
         exact_detail = f"{values['matches']:,} / {values['authored']:,} functions · {values['exact_bytes']:,} / {values['authored_bytes']:,} bytes"
         aria_exact = f"authored {exact_pct:.2f}% exact bytes"
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="176" role="img" aria-label="TH10 reconstruction progress: {aria_exact}, origin review {review_pct:.2f}%">
-  <rect width="560" height="176" rx="8" fill="#1f2335"/>
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="240" role="img" aria-label="TH10 reconstruction progress: {aria_exact}, boundary review {boundary_pct:.2f}%, origin review {origin_pct:.2f}%">
+  <rect width="560" height="240" rx="8" fill="#1f2335"/>
   <text x="24" y="28" fill="#f4f4f5" font-family="sans-serif" font-size="16" font-weight="600">TH10 reconstruction progress</text>
   <text x="24" y="52" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Authored exact</text>
   <text x="536" y="52" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{exact_label}</text>
   <rect x="24" y="60" width="512" height="12" rx="6" fill="#3b4058"/>
   <rect x="24" y="60" width="{exact_width:.2f}" height="12" rx="6" fill="#9b6de3"/>
   <text x="24" y="89" fill="#c8cad2" font-family="sans-serif" font-size="12">{exact_detail}</text>
-  <text x="24" y="116" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Origin/boundary reviewed</text>
-  <text x="536" y="116" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{review_pct:.2f}%</text>
+  <text x="24" y="116" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Boundary reviewed</text>
+  <text x="536" y="116" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{boundary_pct:.2f}%</text>
   <rect x="24" y="124" width="512" height="12" rx="6" fill="#3b4058"/>
-  <rect x="24" y="124" width="{review_width:.2f}" height="12" rx="6" fill="#9b6de3"/>
-  <text x="24" y="153" fill="#c8cad2" font-family="sans-serif" font-size="12">{reviewed:,} / {total:,} candidates · {values['pending']:,} pending</text>
+  <rect x="24" y="124" width="{boundary_width:.2f}" height="12" rx="6" fill="#6fa8dc"/>
+  <text x="24" y="153" fill="#c8cad2" font-family="sans-serif" font-size="12">{boundary_reviewed:,} / {total:,} candidates · {values['boundary_provisional']:,} provisional · {values['boundary_needs_review']:,} focused review</text>
+  <text x="24" y="180" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Origin reviewed</text>
+  <text x="536" y="180" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{origin_pct:.2f}%</text>
+  <rect x="24" y="188" width="512" height="12" rx="6" fill="#3b4058"/>
+  <rect x="24" y="188" width="{origin_width:.2f}" height="12" rx="6" fill="#9b6de3"/>
+  <text x="24" y="217" fill="#c8cad2" font-family="sans-serif" font-size="12">{origin_reviewed:,} / {total:,} candidates · {values['origin_pending']:,} pending</text>
 </svg>
 '''
 
