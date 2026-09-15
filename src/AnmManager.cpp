@@ -9,6 +9,16 @@
 
 AsciiManagerView *g_AsciiManagerView;
 
+struct MainSupervisorView;
+extern MainSupervisorView g_MainSupervisorView;
+
+struct MainSupervisorAnmPrefixView
+{
+    void *instance;
+    void *d3dInterface;
+    D3d9DeviceView *d3dDevice;
+};
+
 // Target 0x0044BC10 adds an angular delta and bounds the result to the
 // engine's signed-pi interval. The loop cap is part of the target body.
 float __stdcall AddNormalizeAngle(float angle, float delta)
@@ -5133,7 +5143,6 @@ int AnmRenderManagerView::Draw3D(AnmVmView *vm)
     AnmMatrixView textureMatrix;
     AnmMatrixView rotationMatrix;
     AnmMatrixView worldMatrix;
-    void *texture;
 
     if (!vm->visible)
         return -1;
@@ -5221,11 +5230,13 @@ int AnmRenderManagerView::Draw3D(AnmVmView *vm)
     g_Direct3DDevice->vtable->SetTransform(
         g_Direct3DDevice, D3D9_VIEW_TS_WORLD, &worldMatrix);
 
-    texture = vm->loadedSprite->texture;
-    if (currentTexture != texture)
+    if (currentTexture != vm->loadedSprite->texture)
     {
-        currentTexture = texture;
-        g_Direct3DDevice->SetTexture(0, texture);
+        currentTexture = vm->loadedSprite->texture;
+        MainSupervisorAnmPrefixView *supervisor =
+            reinterpret_cast<MainSupervisorAnmPrefixView *>(
+                &g_MainSupervisorView);
+        supervisor->d3dDevice->SetTexture(0, currentTexture);
     }
 
     if (currentSprite != vm->loadedSprite ||

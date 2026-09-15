@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `27b272a gpt-5.6-sol: reconstruct front-end score entry`, branch `main`.
+- Current packet base: `3fd501c gpt-5.6-sol: fix ANM exact owner boundaries`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -52,14 +52,15 @@
 - Completed session checkpoint: `9cbe831 gpt-5.6-sol: reconstruct front-end practice core`.
 - Completed session checkpoint: `5f719b6 gpt-5.6-sol: complete front-end practice draw`.
 - Completed session checkpoint: `27b272a gpt-5.6-sol: reconstruct front-end score entry`.
-- Planned current checkpoint subject: `gpt-5.6-sol: fix ANM exact owner boundaries`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `3fd501c gpt-5.6-sol: fix ANM exact owner boundaries`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM Draw3D`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-anm-ecl-exact-triage/`. The earlier front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-ecl-exact-next/`. The earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `27b272a` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `3fd501c` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -132,6 +133,35 @@ its count is the conservative intersection of candidates whose origin and
 boundary reviews are both complete. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
+
+## Completed packet: exact ANM Draw3D
+
+Fresh ANM/ECL dual-lane ranking after `3fd501c` leaves the two-byte X87
+`UpdatePulsingRadialTrail` experiment first and places the 929-byte
+`AnmRenderManagerView::Draw3D @ 0x00444760` second. Its diagnostic linked `/GL`
+contribution already had exact size, all 25 fields visible and only thirteen
+non-field bytes different. Those bytes form one contiguous instruction-order
+change around the texture-cache update.
+
+Three ordinary source spellings through the standalone `g_Direct3DDevice`
+pointer all emitted the same device-load/push/store order. Target-local Main
+layout establishes that address `0x00491C30` is also the `d3dDevice` field at
+`MainSupervisorView +0x8`, based at `0x00491C28`. Expressing the texture call
+through a source-local supervisor prefix changes VC7.1's alias scheduling to
+the exact target push/cache-store/device-load sequence. The source continues to
+perform the same cache update and COM call; no volatile qualifier, inline
+assembly, padding or copied bytes are used.
+
+The canonical linked unit covers the complete 929-byte PDB contribution and
+all 25 fields. Its supervisor field manifest records base `0x00491C28` with
+addend eight, which disambiguates the address from a neighboring four-byte
+diagnostic anchor. Two cold replays close Draw3D; the second also closes the
+four adjacent renderer owners in the same artifact for **1,756/1,756 bytes**.
+The final full-source regression gate closes all **66 configured units / 10
+cold artifacts / 11,997 target bytes** with no failure.
+Repository totals are now **116 exact functions / 13,988 bytes**. The ANM module
+has 56 exact owners / 11,161 bytes and 67 source-present authored owners /
+30,546 bytes remaining.
 
 ## Completed packet: ANM exact boundary repair
 
@@ -1741,9 +1771,11 @@ The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, bac
 ## Next hard frontier
 
 Continue the user-selected ANM/ECL exact campaign owner by owner. Rerun the
-dual-lane ranking after this five-unit promotion and prioritize large core
-owners whose complete normal-COFF or linked `/GL` diagnostics are already
-close. `UpdatePulsingRadialTrail @ 0x00445620` remains a useful two-byte
+dual-lane ranking after the Draw3D promotion. The next close core pair is
+`Draw2D @ 0x004436C0` and `Draw2DRotatedOrAxisAligned @ 0x00443910`: each is
+591/591 linked bytes with 497/507 comparable bytes already equal. The
+440-byte `SetRenderStateForVm3D @ 0x004423E0` follows at 396/408 comparable
+bytes. `UpdatePulsingRadialTrail @ 0x00445620` remains a useful two-byte
 compiler-scheduling probe, but do not distort its natural source while that
 last X87 ordering difference remains unexplained.
 
