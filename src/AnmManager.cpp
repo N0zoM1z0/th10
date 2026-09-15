@@ -4059,8 +4059,11 @@ void AnmRenderManagerView::SetRenderStateForVm3D(AnmVmView *vm)
     {
         FlushVertexBuffer();
         currentTextureFactor = color.value;
-        g_Direct3DDevice->vtable->SetRenderState(
-            g_Direct3DDevice, D3D9_VIEW_RS_TEXTUREFACTOR,
+        MainSupervisorAnmPrefixView *supervisor =
+            reinterpret_cast<MainSupervisorAnmPrefixView *>(
+                &g_MainSupervisorView);
+        supervisor->d3dDevice->vtable->SetRenderState(
+            supervisor->d3dDevice, D3D9_VIEW_RS_TEXTUREFACTOR,
             currentTextureFactor);
     }
 
