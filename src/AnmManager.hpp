@@ -836,7 +836,8 @@ struct AsciiManagerView
     AnmLoadedView *asciiAnm;
     AnmLoadedView *captureAnm;
     AnmLoadedView *textAnm;
-    unsigned char unknown89A0[0x008];
+    int unknown89A0;
+    AnmVmIdView auxiliaryVm89A4;
     void *drawChainElement;
 };
 
@@ -857,6 +858,8 @@ typedef char AsciiManagerColorAt8974[
     (offsetof(AsciiManagerView, color) == 0x8974) ? 1 : -1];
 typedef char AsciiManagerAsciiAnmAt8994[
     (offsetof(AsciiManagerView, asciiAnm) == 0x8994) ? 1 : -1];
+typedef char AsciiManagerAuxiliaryVmAt89A4[
+    (offsetof(AsciiManagerView, auxiliaryVm89A4) == 0x89a4) ? 1 : -1];
 
 extern AsciiManagerView *g_AsciiManagerView;
 

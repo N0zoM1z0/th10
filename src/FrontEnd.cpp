@@ -26,6 +26,7 @@ extern int g_FrontEndSelectedStageMirror;
 extern int g_FrontEndSavedDifficulty;
 extern unsigned int g_FrontEndSupervisorFlags;
 extern int g_FrontEndNextGameMode;
+extern unsigned char *g_FrontEndProfileData;
 
 extern int g_ReplayCurrentStage;
 extern int g_ReplayCharacter;
@@ -49,15 +50,16 @@ extern signed char *__fastcall FrontEndGetControllerState(int controllerIndex);
 extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
-extern int FrontEndUpdateDifficulty(FrontEndControllerView *controller);
-extern int FrontEndUpdateCharacter(FrontEndControllerView *controller);
-extern int FrontEndUpdateShotType(FrontEndControllerView *controller);
 extern int FrontEndUpdateStage(FrontEndControllerView *controller);
 extern int FrontEndUpdateReplay(FrontEndControllerView *controller);
 extern int FrontEndUpdatePractice(FrontEndControllerView *controller);
 extern int FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
 extern int FrontEndUpdateSpecial(FrontEndControllerView *controller);
 extern int FrontEndUpdateResult(FrontEndControllerView *controller);
+extern void * __stdcall FrontEndBeginSelectionTransition(
+    int type, int duration, int parameter2, int parameter3, int parameter4,
+    int chainPriority);
+extern int __stdcall FrontEndFinalizeGameSelection(float value);
 
 
 namespace
@@ -136,6 +138,20 @@ static void InterruptVm(
         controller->vmIds[index].value, interrupt);
 }
 
+static void InterruptVmId(int id, short interrupt)
+{
+    g_AnmRenderManagerView->SetVmPendingInterrupt(id, interrupt);
+}
+
+static void DeleteVm(
+    FrontEndControllerView *controller, int index)
+{
+    AnmVmIdView *id = &controller->vmIds[index];
+    if (g_AnmRenderManagerView->FindVm(id->value) != NULL)
+        InterruptVmId(id->value, 1);
+    id->value = 0;
+}
+
 static int InputRepeated(unsigned short mask)
 {
     return ((g_FrontEndInput.pressed | g_FrontEndInput.repeated) & mask) != 0;
@@ -160,6 +176,8 @@ static int FindChildVmId(
     AnmVmIdView *parentId, short scriptIndex)
 {
     AnmVmView *parent = ResolveVm(parentId);
+    if (parent == NULL)
+        return 0;
     AnmVmLayerNodeView *node = &parent->layerNode;
     while (node != NULL)
     {
@@ -169,6 +187,50 @@ static int FindChildVmId(
         node = node->next;
     }
     return 0;
+}
+
+static void InterruptChildVm(
+    FrontEndControllerView *controller, int rootIndex,
+    short scriptIndex, short interrupt)
+{
+    int id = FindChildVmId(&controller->vmIds[rootIndex], scriptIndex);
+    InterruptVmId(id, interrupt);
+}
+
+static void DisableVmTree(int id)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id);
+    if (vm == NULL)
+        return;
+
+    vm->drawEnabled = 0;
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        static_cast<AnmVmView *>(node->owner)->drawEnabled = 0;
+        node = node->next;
+    }
+}
+
+static void DisableChildVmTree(
+    FrontEndControllerView *controller, int rootIndex, short scriptIndex)
+{
+    DisableVmTree(
+        FindChildVmId(&controller->vmIds[rootIndex], scriptIndex));
+}
+
+static void EnsureAsciiSelectionVm(float x, float y)
+{
+    if (g_AsciiManagerView->auxiliaryVm89A4.value == 0)
+    {
+        AnmFloat3View position(x, y, 0.0f);
+        g_AsciiManagerView->auxiliaryVm89A4 =
+            g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(
+                6, &position);
+    }
 }
 
 static AnmVmView *FindChildVm(
@@ -292,8 +354,7 @@ static void InitializeFrontEndScreen(FrontEndControllerView *controller)
     g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
         g_AnmRenderManagerView->loadedAnms[0]);
 
-    int *asciiAuxiliary = reinterpret_cast<int *>(
-        g_AsciiManagerView->unknown89A0 + 4);
+    int *asciiAuxiliary = &g_AsciiManagerView->auxiliaryVm89A4.value;
     FrontEndResetAsciiAuxiliary(asciiAuxiliary);
     *asciiAuxiliary = 0;
 
@@ -437,13 +498,13 @@ int FrontEndControllerView::Update()
         UpdateKeyConfig(this);
         break;
     case FRONT_END_SCREEN_DIFFICULTY:
-        FrontEndUpdateDifficulty(this);
+        UpdateDifficulty(this);
         break;
     case FRONT_END_SCREEN_CHARACTER:
-        FrontEndUpdateCharacter(this);
+        UpdateCharacter(this);
         break;
     case FRONT_END_SCREEN_SHOT_TYPE:
-        FrontEndUpdateShotType(this);
+        UpdateShotType(this);
         break;
     case FRONT_END_SCREEN_STAGE:
         FrontEndUpdateStage(this);
@@ -834,4 +895,404 @@ void FrontEndControllerView::AssignKeyConfigBinding(
     keyConfigBindings[bindingIndex] = static_cast<short>(controllerButton);
     RefreshKeyConfigDisplay();
     FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00430320 FrontEndControllerView::UpdateDifficulty
+int __stdcall FrontEndControllerView::UpdateDifficulty(
+    FrontEndControllerView *controller)
+{
+    int rootIndex = 0x77 + (g_ReplayDifficulty >= 4);
+
+    switch (controller->screenState)
+    {
+    case FRONT_END_SELECTION_INITIALIZE:
+        if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
+        {
+            CreateVm(controller, 0x5e);
+            controller->difficultyAuxVmId =
+                g_AsciiManagerView->asciiAnm->CreateVmVariant0(
+                    8, FRONT_END_RENDER_LAYER);
+        }
+
+        controller->cursor.count = g_ReplayDifficulty < 4 ? 4 : 1;
+        DeleteVm(controller, 0x62);
+        CreateVm(controller, rootIndex);
+        InterruptVmNow(controller, rootIndex, 3);
+        InterruptVm(
+            controller, rootIndex,
+            static_cast<short>(controller->cursor.current + 0x11));
+        CreateVm(controller, 0x62);
+        SetScreenState(controller, FRONT_END_SELECTION_OPENING);
+        break;
+
+    case FRONT_END_SELECTION_OPENING:
+        if (controller->stateTimer.current > 6)
+        {
+            SetScreenState(controller, FRONT_END_SELECTION_ACTIVE);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_ACTIVE:
+        if (g_ReplayDifficulty < 4)
+        {
+            controller->cursor.previous = controller->cursor.current;
+            if (InputRepeated(FRONT_END_INPUT_UP))
+                controller->cursor.Move(-1);
+            if (InputRepeated(FRONT_END_INPUT_DOWN))
+                controller->cursor.Move(1);
+
+            if (controller->cursor.previous != controller->cursor.current)
+            {
+                FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+                InterruptVmNow(controller, rootIndex, 3);
+                InterruptVm(
+                    controller, rootIndex,
+                    static_cast<short>(controller->cursor.current + 7));
+            }
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            SetScreenState(controller, FRONT_END_SELECTION_CLOSING);
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            DeleteVm(controller, rootIndex);
+            return 1;
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            short childScript = g_ReplayDifficulty < 4
+                ? static_cast<short>(controller->cursor.current + 0x6d)
+                : static_cast<short>(0x71);
+            InterruptVm(controller, rootIndex, 6);
+            InterruptChildVm(controller, rootIndex, childScript, 2);
+            SetScreenState(controller, FRONT_END_SELECTION_CONFIRMED);
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_CONFIRMED:
+        if (controller->stateTimer.current >= 14)
+        {
+            DeleteVm(controller, 0x62);
+            SetScreen(controller, FRONT_END_SCREEN_CHARACTER);
+            if (g_ReplayDifficulty < 4)
+                g_ReplayDifficulty = controller->cursor.current;
+            controller->cursor.Push();
+            controller->cursor.count = 2;
+            controller->cursor.SetCurrent(g_ReplayCharacter);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_CLOSING:
+        if (controller->stateTimer.current >= 6)
+        {
+            DeleteVm(controller, 0x62);
+            InterruptVm(controller, 0x5a, 8);
+            InterruptVm(controller, 0x5b, 8);
+            DeleteVm(controller, 0x5e);
+            InterruptVmId(controller->difficultyAuxVmId.value, 1);
+            SetScreen(controller, FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            if (g_ReplayDifficulty < 4)
+                g_ReplayDifficulty = controller->cursor.current;
+            else
+                g_ReplayDifficulty = controller->savedDifficulty;
+            controller->cursor.Pop();
+        }
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x004306A0 FrontEndControllerView::UpdateCharacter
+int __stdcall FrontEndControllerView::UpdateCharacter(
+    FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case FRONT_END_SELECTION_INITIALIZE:
+        controller->cursor.count = 2;
+        if (g_ReplayDifficulty == 4)
+        {
+            if (g_FrontEndProfileData[0x1d888] == 0 &&
+                g_FrontEndProfileData[0x1d889] == 0 &&
+                g_FrontEndProfileData[0x1d88a] == 0)
+            {
+                if (controller->cursor.current == 0)
+                    controller->cursor.SetCurrent(1);
+                controller->cursor.DisableEntry(0);
+            }
+            if (g_FrontEndProfileData[0x1d88b] == 0 &&
+                g_FrontEndProfileData[0x1d88c] == 0 &&
+                g_FrontEndProfileData[0x1d88d] == 0)
+            {
+                if (controller->cursor.current == 1)
+                    controller->cursor.SetCurrent(0);
+                controller->cursor.DisableEntry(1);
+            }
+        }
+
+        CreateVm(controller, 0x63);
+        DeleteVm(controller, 0x7d);
+        CreateVm(controller, 0x7d);
+        InterruptVmNow(controller, 0x7d, 3);
+        InterruptVm(
+            controller, 0x7d,
+            static_cast<short>(controller->cursor.current + 0x11));
+        SetScreenState(controller, FRONT_END_SELECTION_OPENING);
+        break;
+
+    case FRONT_END_SELECTION_OPENING:
+        if (controller->stateTimer.current > 6)
+        {
+            SetScreenState(controller, FRONT_END_SELECTION_ACTIVE);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_ACTIVE:
+        controller->cursor.previous = controller->cursor.current;
+        if (InputRepeated(FRONT_END_INPUT_LEFT))
+            controller->cursor.Move(-1);
+        if (InputRepeated(FRONT_END_INPUT_RIGHT))
+            controller->cursor.Move(1);
+
+        if (controller->cursor.previous != controller->cursor.current)
+        {
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+            InterruptVmNow(controller, 0x7d, 3);
+            InterruptVm(
+                controller, 0x7d,
+                static_cast<short>(controller->cursor.current + 7));
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            SetScreenState(controller, FRONT_END_SELECTION_CLOSING);
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            return 1;
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            int current = controller->cursor.current;
+            InterruptChildVm(
+                controller, 0x7d,
+                static_cast<short>(current + 0x79), 6);
+            InterruptChildVm(
+                controller, 0x7d,
+                static_cast<short>(current + 0x7b), 6);
+            InterruptChildVm(
+                controller, 0x7d,
+                static_cast<short>(0x7a - current), 1);
+            InterruptChildVm(
+                controller, 0x7d,
+                static_cast<short>(0x7c - current), 1);
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+            SetScreenState(controller, FRONT_END_SELECTION_CONFIRMED);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_CONFIRMED:
+        if (controller->stateTimer.current >= 14)
+        {
+            int previousCharacter = g_ReplayCharacter;
+            DeleteVm(controller, 0x63);
+            SetScreen(controller, FRONT_END_SCREEN_SHOT_TYPE);
+            g_ReplayCharacter = controller->cursor.current;
+            controller->cursor.Push();
+            controller->cursor.count = 3;
+            if (previousCharacter == g_ReplayCharacter)
+                controller->cursor.SetCurrent(g_ReplayShotType);
+            else
+                controller->cursor.SetCurrent(0);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_CLOSING:
+        if (controller->stateTimer.current >= 6)
+        {
+            DeleteVm(controller, 0x7d);
+            DeleteVm(controller, 0x63);
+            SetScreen(controller, FRONT_END_SCREEN_DIFFICULTY);
+            g_ReplayCharacter = controller->cursor.current;
+            controller->cursor.Pop();
+        }
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00430A60 FrontEndControllerView::UpdateShotType
+int __stdcall FrontEndControllerView::UpdateShotType(
+    FrontEndControllerView *controller)
+{
+    int rootIndex = g_ReplayCharacter + 0x96;
+
+    switch (controller->screenState)
+    {
+    case FRONT_END_SELECTION_INITIALIZE:
+        controller->cursor.count = 3;
+        if (g_ReplayDifficulty == 4)
+        {
+            unsigned char *unlocks =
+                g_FrontEndProfileData + 0x1d888 + g_ReplayCharacter * 3;
+            if (unlocks[0] == 0)
+            {
+                if (controller->cursor.current == 0)
+                    controller->cursor.SetCurrent(unlocks[1] == 0 ? 2 : 1);
+                controller->cursor.DisableEntry(0);
+            }
+            if (unlocks[1] == 0)
+            {
+                if (controller->cursor.current == 1)
+                    controller->cursor.SetCurrent(unlocks[0] == 0 ? 2 : 0);
+                controller->cursor.DisableEntry(1);
+            }
+            if (unlocks[2] == 0)
+            {
+                if (controller->cursor.current == 2)
+                    controller->cursor.SetCurrent(unlocks[0] == 0 ? 1 : 0);
+                controller->cursor.DisableEntry(2);
+            }
+        }
+
+        CreateVm(controller, 0x64);
+        DeleteVm(controller, rootIndex);
+        CreateVm(controller, rootIndex);
+        InterruptVmNow(controller, rootIndex, 3);
+        InterruptVm(
+            controller, rootIndex,
+            static_cast<short>(controller->cursor.current + 0x11));
+        SetScreenState(controller, FRONT_END_SELECTION_OPENING);
+
+        {
+            int recordIndex = g_ReplayCharacter * 0x329d + g_ReplayDifficulty;
+            int firstRecord = *reinterpret_cast<int *>(
+                g_FrontEndProfileData + 0x4d0 + recordIndex * 4);
+            int secondRecord = *reinterpret_cast<int *>(
+                g_FrontEndProfileData + 0x484c + recordIndex * 4);
+            int thirdRecord = *reinterpret_cast<int *>(
+                g_FrontEndProfileData + 0x8bc8 + recordIndex * 4);
+            short firstScript = static_cast<short>(
+                g_ReplayCharacter * 3 + 0x8a);
+
+            if (firstRecord == 0)
+                DisableChildVmTree(controller, rootIndex, firstScript);
+            if (secondRecord == 0)
+                DisableChildVmTree(controller, rootIndex, firstScript + 1);
+            if (thirdRecord == 0)
+                DisableChildVmTree(controller, rootIndex, firstScript + 2);
+        }
+        break;
+
+    case FRONT_END_SELECTION_OPENING:
+        if (controller->stateTimer.current > 6)
+        {
+            SetScreenState(controller, FRONT_END_SELECTION_ACTIVE);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_ACTIVE:
+        controller->cursor.previous = controller->cursor.current;
+        if (InputRepeated(FRONT_END_INPUT_UP))
+            controller->cursor.Move(-1);
+        if (InputRepeated(FRONT_END_INPUT_DOWN))
+            controller->cursor.Move(1);
+
+        if (controller->cursor.previous != controller->cursor.current)
+        {
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+            InterruptVmNow(controller, rootIndex, 3);
+            InterruptVm(
+                controller, rootIndex,
+                static_cast<short>(controller->cursor.current + 7));
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            SetScreenState(controller, FRONT_END_SELECTION_CLOSING);
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            return 1;
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            short scriptIndex = static_cast<short>(
+                g_ReplayCharacter * 3 + 0x3f +
+                controller->cursor.current);
+            SetScreenState(controller, FRONT_END_SELECTION_CONFIRMED);
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+            InterruptChildVm(controller, rootIndex, scriptIndex, 6);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_CONFIRMED:
+        if (controller->stateTimer.current == 10)
+        {
+            if ((g_FrontEndSupervisorFlags & 0x10) == 0)
+            {
+                EnsureAsciiSelectionVm(480.0f, 392.0f);
+                FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
+            }
+            else
+            {
+                g_ReplayShotType = controller->cursor.current;
+                controller->cursor.Push();
+                DeleteVm(controller, 0x64);
+                SetScreen(controller, FRONT_END_SCREEN_STAGE);
+            }
+        }
+
+        if (controller->stateTimer.current >= 40)
+        {
+            g_ReplayShotType = controller->cursor.current;
+            controller->cursor.Push();
+            if ((g_FrontEndSupervisorFlags & 0x10) != 0)
+            {
+                DeleteVm(controller, 0x64);
+                SetScreen(controller, FRONT_END_SCREEN_STAGE);
+                return 1;
+            }
+
+            SetScreen(controller, FRONT_END_SCREEN_START_GAME);
+            if (g_ReplayDifficulty < 4)
+            {
+                g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[0];
+                g_FrontEndSelectedStage = 1;
+                g_FrontEndSelectedStageMirror = 1;
+            }
+            else
+            {
+                g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[6];
+                g_FrontEndSelectedStage = 7;
+                g_FrontEndSelectedStageMirror = 7;
+            }
+            g_FrontEndNextGameMode = 7;
+            FrontEndFinalizeGameSelection(6.0f);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SELECTION_CLOSING:
+        if (controller->stateTimer.current >= 6)
+        {
+            DeleteVm(controller, rootIndex);
+            DeleteVm(controller, 0x64);
+            SetScreen(controller, FRONT_END_SCREEN_CHARACTER);
+            controller->cursor.Pop();
+        }
+        break;
+    }
+    return 1;
 }

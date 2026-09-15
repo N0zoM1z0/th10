@@ -267,3 +267,6 @@ FrontEndControllerView::RefreshOptionsDisplay
 FrontEndControllerView::UpdateKeyConfig
 FrontEndControllerView::RefreshKeyConfigDisplay
 FrontEndControllerView::AssignKeyConfigBinding
+FrontEndControllerView::UpdateDifficulty
+FrontEndControllerView::UpdateCharacter
+FrontEndControllerView::UpdateShotType

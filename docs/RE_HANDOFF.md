@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `e7615ce gpt-5.6-sol: reconstruct front-end options core`, branch `main`.
+- Current packet base: `4142a89 gpt-5.6-sol: reconstruct front-end key config core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -45,9 +45,10 @@
 - Completed session checkpoint: `979522c gpt-5.6-sol: reconstruct Main execution corridor`.
 - Completed session checkpoint: `048a3c8 gpt-5.6-sol: separate boundary inventory`.
 - Completed session checkpoint: `e7615ce gpt-5.6-sol: reconstruct front-end options core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end key config core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `4142a89 gpt-5.6-sol: reconstruct front-end key config core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end selection core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-key-config-core/`. The earlier front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-selection-core/`. The earlier front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -217,6 +218,58 @@ Repository totals become **1,312 candidates, 269 source mappings, 285 reviewed
 authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage is
 340,260 `.text` bytes; the indexed-table queue is now 54 references inside
 their recorded owner and 46 outside.
+
+## Completed packet: front-end selection core
+
+The next contiguous front-end corridor now has maintained source across three
+authored owners and 3,268 reviewed target bytes:
+
+- `FrontEndControllerView::UpdateDifficulty @ 0x00430320-0x00430697`
+  (888 bytes)
+- `FrontEndControllerView::UpdateCharacter @ 0x004306A0-0x00430A5B`
+  (956 bytes)
+- `FrontEndControllerView::UpdateShotType @ 0x00430A60-0x00430FEF`
+  (1,424 bytes)
+
+All three owners use a five-state selection protocol. Difficulty distinguishes
+the four normal difficulties from Extra, selects VM root slot `0x77/0x78`,
+manages screen VM `0x5E`, auxiliary VM `+0x5D0` and transition VM `0x62`, then
+advances to character selection or restores the title-menu state. Character
+filters both entries from the six Extra unlock bytes at profile
+`+0x1D888..+0x1D88D`, drives the horizontal ANM cursor and sends four
+complementary child interrupts on confirmation. Shot type filters three
+per-character unlocks, suppresses three unavailable profile-record child rows,
+drives the vertical ANM cursor and commits normal-game or practice stage state.
+The normal path creates the observed ASCII VM at `(480,392)`, starts the
+32-frame transition and publishes stage record zero or six, stage one or seven,
+and game mode seven.
+
+Boundary review closes three tables previously reported outside their owners.
+Difficulty code ends at `0x00430680`, has a three-byte alignment instruction,
+and owns its five-entry table at `0x00430684-0x00430697`. Character code ends at
+`0x00430A47` and its table immediately follows through `0x00430A5B`. Shot-type
+code ends at `0x00430FDA`, has one NOP, and owns its table at
+`0x00430FDC-0x00430FEF`. The controller layout now covers VM slots through
+`0x97`, the auxiliary difficulty VM id at `+0x5D0`, saved difficulty at
+`+0x58F0`, and the existing key-config scratch at `+0x59CC`. The ASCII manager
+view names its separately observed auxiliary VM id at `+0x89A4`.
+
+`scripts/report-frontend-selection.py --check` fails closed on the canonical
+target and validates the three complete owners, table destinations,
+alignment/tails, complete direct-call multisets, five state values, source
+markers and the new layout offsets. The existing front-end/options and
+key-config reports still pass after the shared layout expansion.
+
+Pinned VC7.1 build6030 normal, `/GL` and `/W4` compiles pass. Normal COMDATs are
+876/872/1,196 bytes against target owners 888/956/1,424. Strict normal
+diagnostics are real mismatches at 40/640, 49/740 and 49/1,120 matched
+comparable bytes, with 62/54/76 relocations and `acceptance_authority=none`.
+No match row or exactness promotion is made.
+
+Repository totals become **1,312 candidates, 272 source mappings, 288 reviewed
+authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage is
+340,324 `.text` bytes; the indexed-table queue is now 57 references inside
+their recorded owner and 43 outside.
 
 ## Completed packet: Main execution corridor
 

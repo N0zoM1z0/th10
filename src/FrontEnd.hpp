@@ -30,6 +30,12 @@ struct FrontEndCursorView
             current = value;
     }
 
+    void DisableEntry(int value)
+    {
+        disabledEntries[disabledEntryCount] = value;
+        ++disabledEntryCount;
+    }
+
     int Move(int amount);
     void Push();
     void Pop();
@@ -95,6 +101,15 @@ enum FrontEndKeyConfigStateView
     FRONT_END_KEY_CONFIG_CLOSING = 4
 };
 
+enum FrontEndSelectionStateView
+{
+    FRONT_END_SELECTION_INITIALIZE = 0,
+    FRONT_END_SELECTION_OPENING = 1,
+    FRONT_END_SELECTION_ACTIVE = 2,
+    FRONT_END_SELECTION_CONFIRMED = 3,
+    FRONT_END_SELECTION_CLOSING = 4
+};
+
 
 // TH10 stores all nine controller bindings as adjacent signed shorts. Target
 // input masks identify the first four actions and skip. The middle directional
@@ -131,8 +146,12 @@ struct FrontEndControllerView
     FrontEndCursorView cursor;
     unsigned char unknown0FC[0x1b4];
     AnmVmTimerView stateTimer;
-    AnmVmIdView vmIds[0x5c];
-    unsigned char unknown434[0x5598];
+    AnmVmIdView vmIds[0x98];
+    unsigned char unknown524[0x0ac];
+    AnmVmIdView difficultyAuxVmId;
+    unsigned char unknown5D4[0x531c];
+    int savedDifficulty;
+    unsigned char unknown58F4[0x0d8];
     short keyConfigBindings[5];
 
     int Update();
@@ -141,6 +160,9 @@ struct FrontEndControllerView
     static int __stdcall UpdateKeyConfig(FrontEndControllerView *controller);
     void RefreshKeyConfigDisplay();
     void AssignKeyConfigBinding(int bindingIndex, int controllerButton);
+    static int __stdcall UpdateDifficulty(FrontEndControllerView *controller);
+    static int __stdcall UpdateCharacter(FrontEndControllerView *controller);
+    static int __stdcall UpdateShotType(FrontEndControllerView *controller);
 };
 
 typedef char FrontEndControllerStateAt1C[
@@ -153,7 +175,10 @@ typedef char FrontEndControllerVmIdsAt2C4[
     (offsetof(FrontEndControllerView, vmIds) == 0x2c4 &&
      offsetof(FrontEndControllerView, vmIds) + sizeof(AnmVmIdView) == 0x2c8 &&
      offsetof(FrontEndControllerView, vmIds) +
-         sizeof(AnmVmIdView) * 0x5b == 0x430) ? 1 : -1];
+         sizeof(AnmVmIdView) * 0x97 == 0x520) ? 1 : -1];
+typedef char FrontEndControllerSelectionFields[
+    (offsetof(FrontEndControllerView, difficultyAuxVmId) == 0x5d0 &&
+     offsetof(FrontEndControllerView, savedDifficulty) == 0x58f0) ? 1 : -1];
 typedef char FrontEndControllerKeyConfigBindingsAt59CC[
     (offsetof(FrontEndControllerView, keyConfigBindings) == 0x59cc) ? 1 : -1];
 
