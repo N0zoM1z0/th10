@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `b3eaac1 gpt-5.6-sol: recover exact ECL host runner`, branch `main`.
+- Current packet base: `afa2277 gpt-5.6-sol: align ECL dispatcher code shape`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -68,14 +68,15 @@
 - Completed session checkpoint: `c615a72 gpt-5.6-sol: recover ECL VM thread control`.
 - Completed session checkpoint: `82003dd gpt-5.6-sol: recover ECL script database loader`.
 - Completed session checkpoint: `b3eaac1 gpt-5.6-sol: recover exact ECL host runner`.
-- Planned current checkpoint subject: `gpt-5.6-sol: align ECL dispatcher code shape`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `afa2277 gpt-5.6-sol: align ECL dispatcher code shape`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL dispatcher control flow`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-run-exact/`. The host-runner, start-subroutine, script-database, ECL control, operand, typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `b3eaac1` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `afa2277` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -405,6 +406,43 @@ A cold canonical replay after these changes keeps `EclVmHost::Run` exact across
 all **146 bytes and four REL32 fields**. Repository exact totals therefore stay
 at **134 functions / 18,454 bytes** while the central non-exact dispatcher is
 substantially closer and has a reproducible per-case triage surface.
+
+## Completed packet: ECL dispatcher control flow
+
+The next target/candidate comparison showed that opcode-number order was the
+wrong source model. The target groups integer arithmetic before float
+arithmetic, integer comparisons before float comparisons, and uses separate
+target-specific thread, jump, vector and format groups. Reordering the clauses
+to those target destinations makes the linked candidate reproduce the complete
+59-case physical order. The report now records both physical-order lists and
+fails the comparison visibly when they differ.
+
+Two source corrections also recover target control flow. RETURN now pops the
+restored instruction pointer and time directly into the context fields instead
+of routing both through one scalar scratch. This restores the target `0x108`
+frame and saved-register set and reduces the RETURN block from 109 candidate
+bytes to 81 against target 83. TRUE and FALSE conditional jumps now enter one
+shared JUMP block; that block and ordinary instruction advancement join at one
+offset-based writeback tail, matching the target's table-visible block order.
+The source uses only real VM state and shared control-flow labels already
+present in the target.
+
+The final selected `/GL` diagnostic is **6,648 / 7,020 bytes** with **431 / 6,316
+comparable bytes** equal. Its pre-table span is **6,320 / 6,692 bytes**,
+the complete case order matches, the frame is `0x108`, and the EAX receiver ABI
+is unchanged. This contribution is smaller than the previous 6,748-byte
+candidate because the recovered jump and advance tails remove duplicated work;
+the remaining 372-byte owner gap is therefore a more meaningful mismatch.
+Target/candidate disassembly localizes it mainly to typed arithmetic conversion
+branches plus an EBX/EBP live-range exchange. Exactness remains unknown and no
+match row is added.
+
+`scripts/report-ecl-vm-table.py` now includes the 6,690-byte target code size,
+target/candidate pre-table spans, signed span delta, both physical order lists and `physical_order_matches` in
+candidate reports. The full current `src/EclVm.cpp` canonical gate remains
+exact at **8 units / 2 artifacts / 724 bytes**, including the 146-byte host
+runner and all four fields. Repository exact totals remain **134 functions /
+18,454 bytes**.
 
 ## Completed packet: exact ANM projected photo blend
 

@@ -217,14 +217,6 @@ static __forceinline int PushFloat(EclVmContext *context, float value)
 }
 #pragma inline_depth(16)
 
-static void Jump(EclVmContext *context, const EclVmInstruction *instruction)
-{
-    context->currentTime = static_cast<float>(OperandInt(instruction, 1));
-    context->instruction = reinterpret_cast<EclVmInstruction *>(
-        reinterpret_cast<unsigned char *>(context->instruction)
-        + OperandInt(instruction, 0));
-}
-
 static __forceinline void EvaluateFormatOperands(EclVmContext *context)
 {
     const EclVmInstruction *instruction = context->instruction;
@@ -684,13 +676,15 @@ void EclVmHost::StopAllThreads()
 
 int EclVmContext::Run(float timeDelta)
 {
-    if (instruction == NULL)
+    EclVmInstruction **const instructionCursor = &instruction;
+    int instructionOffset;
+
+    if (*instructionCursor == NULL)
         return -1;
 
-    while (instruction != NULL
-           && static_cast<float>(instruction->time) <= currentTime) {
-        EclVmInstruction *current = instruction;
-        bool advance = true;
+    while (*instructionCursor != NULL
+           && static_cast<float>((*instructionCursor)->time) <= currentTime) {
+        EclVmInstruction *current = *instructionCursor;
 
         if ((difficultyMask & current->difficultyMask) != 0) {
             switch (current->opcode) {
@@ -698,7 +692,7 @@ int EclVmContext::Run(float timeDelta)
                 break;
 
             case ECL_VM_TERMINATE:
-                instruction = NULL;
+                *instructionCursor = NULL;
                 return -1;
 
             case ECL_VM_RETURN:
@@ -709,52 +703,32 @@ int EclVmContext::Run(float timeDelta)
                     return -1;
                 }
 
-                EclVmScalar value;
-                stack.Pop(0, sizeof(value), &value);
-                instruction = value.instruction;
-                stack.Pop(0, sizeof(value), &value);
-                currentTime = value.real;
-                if (instruction == NULL)
+                stack.Pop(
+                    0, sizeof(*instructionCursor), instructionCursor);
+                stack.Pop(0, sizeof(currentTime), &currentTime);
+                if (*instructionCursor == NULL)
                     return -1;
-                current = instruction;
                 break;
             }
-
-            case ECL_VM_CALL:
-                if (EclVmStartSubroutine(this, this, 0) != 0)
-                    return -1;
-                continue;
-
-            case ECL_VM_JUMP:
-                Jump(this, current);
-                advance = false;
-                break;
-
-            case ECL_VM_JUMP_IF_FALSE:
-                if (PopInt(this) == 0) {
-                    Jump(this, current);
-                    advance = false;
-                }
-                break;
-
-            case ECL_VM_JUMP_IF_TRUE:
-                if (PopInt(this) != 0) {
-                    Jump(this, current);
-                    advance = false;
-                }
-                break;
 
             case ECL_VM_SPAWN_THREAD:
                 host->SpawnThread(-1, 0);
                 break;
 
+            case ECL_VM_STOP_ALL_THREADS:
+                host->StopAllThreads();
+                break;
+
             case ECL_VM_SPAWN_THREAD_WITH_ID:
             {
-                const unsigned int idIndex =
-                    static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;
-                const int id = ReadIntValue(
-                    1, OperandInt(current, idIndex));
-                host->SpawnThread(id, 1);
+                host->SpawnThread(
+                    ReadIntValue(
+                        1,
+                        OperandInt(
+                            current,
+                            static_cast<unsigned int>(
+                                OperandInt(current, 0) + 4) >> 2)),
+                    1);
                 break;
             }
 
@@ -790,12 +764,29 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
-            case ECL_VM_STOP_ALL_THREADS:
-                host->StopAllThreads();
+            case ECL_VM_CALL:
+                if (EclVmStartSubroutine(this, this, 0) != 0)
+                    return -1;
+                continue;
+
+            case ECL_VM_JUMP_IF_TRUE:
+                if (PopInt(this) != 0)
+                    goto jump_instruction;
                 break;
 
-            case ECL_VM_EVALUATE_FORMAT_OPERANDS:
-                EvaluateFormatOperands(this);
+            case ECL_VM_JUMP_IF_FALSE:
+                if (PopInt(this) == 0)
+                    goto jump_instruction;
+                break;
+
+            case ECL_VM_JUMP:
+jump_instruction:
+                currentTime = static_cast<float>(OperandInt(current, 1));
+                instructionOffset = OperandInt(current, 0);
+                goto advance_instruction;
+
+            case ECL_VM_SUBTRACT_TIME:
+                currentTime -= static_cast<float>(ReadInt(0));
                 break;
 
             case ECL_VM_ENTER_FRAME:
@@ -830,27 +821,11 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
-            case ECL_VM_ADD_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushFloat(this, left + right);
-                break;
-            }
-
             case ECL_VM_SUBTRACT_INT:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
                 PushInt(this, left - right);
-                break;
-            }
-
-            case ECL_VM_SUBTRACT_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushFloat(this, left - right);
                 break;
             }
 
@@ -862,27 +837,11 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
-            case ECL_VM_MULTIPLY_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushFloat(this, left * right);
-                break;
-            }
-
             case ECL_VM_DIVIDE_INT:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
                 PushInt(this, left / right);
-                break;
-            }
-
-            case ECL_VM_DIVIDE_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushFloat(this, left / right);
                 break;
             }
 
@@ -894,18 +853,42 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
+            case ECL_VM_ADD_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushFloat(this, left + right);
+                break;
+            }
+
+            case ECL_VM_SUBTRACT_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushFloat(this, left - right);
+                break;
+            }
+
+            case ECL_VM_MULTIPLY_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushFloat(this, left * right);
+                break;
+            }
+
+            case ECL_VM_DIVIDE_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushFloat(this, left / right);
+                break;
+            }
+
             case ECL_VM_EQUAL_INT:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                PushInt(this, left == right);
-                break;
-            }
-
-            case ECL_VM_EQUAL_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
                 PushInt(this, left == right);
                 break;
             }
@@ -918,26 +901,10 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
-            case ECL_VM_NOT_EQUAL_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushInt(this, left != right);
-                break;
-            }
-
             case ECL_VM_LESS_INT:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                PushInt(this, left < right);
-                break;
-            }
-
-            case ECL_VM_LESS_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
                 PushInt(this, left < right);
                 break;
             }
@@ -950,26 +917,10 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
-            case ECL_VM_LESS_EQUAL_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushInt(this, left <= right);
-                break;
-            }
-
             case ECL_VM_GREATER_INT:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                PushInt(this, left > right);
-                break;
-            }
-
-            case ECL_VM_GREATER_FLOAT:
-            {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
                 PushInt(this, left > right);
                 break;
             }
@@ -982,6 +933,50 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
+            case ECL_VM_NOT_INT:
+                PushInt(this, !PopInt(this));
+                break;
+
+            case ECL_VM_EQUAL_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left == right);
+                break;
+            }
+
+            case ECL_VM_NOT_EQUAL_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left != right);
+                break;
+            }
+
+            case ECL_VM_LESS_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left < right);
+                break;
+            }
+
+            case ECL_VM_LESS_EQUAL_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left <= right);
+                break;
+            }
+
+            case ECL_VM_GREATER_FLOAT:
+            {
+                const float right = PopFloat(this);
+                const float left = PopFloat(this);
+                PushInt(this, left > right);
+                break;
+            }
+
             case ECL_VM_GREATER_EQUAL_FLOAT:
             {
                 const float right = PopFloat(this);
@@ -989,10 +984,6 @@ int EclVmContext::Run(float timeDelta)
                 PushInt(this, left >= right);
                 break;
             }
-
-            case ECL_VM_NOT_INT:
-                PushInt(this, !PopInt(this));
-                break;
 
             case ECL_VM_NOT_FLOAT:
                 PushInt(this, PopFloat(this) == 0.0f);
@@ -1038,6 +1029,21 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
+            case ECL_VM_NEGATE_INT:
+                PushInt(this, -PopInt(this));
+                break;
+
+            case ECL_VM_NEGATE_FLOAT_STORAGE:
+            {
+                // 0x0044F851 executes integer NEG on the raw float dword and
+                // then pushes that dword with type 'f'.  This is not x87 FCHS.
+                EclVmScalar value;
+                value.real = PopFloat(this);
+                value.integer = -value.integer;
+                stack.Push('f', sizeof(value), &value);
+                break;
+            }
+
             case ECL_VM_POST_DECREMENT_INT:
             {
                 const int value = ReadInt(0);
@@ -1065,29 +1071,6 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
-            case ECL_VM_NORMALIZE_ANGLE:
-                *ResolveFloat(0) = EclVmNormalizeAngle(ReadFloat(0));
-                break;
-
-            case ECL_VM_SUBTRACT_TIME:
-                currentTime -= static_cast<float>(ReadInt(0));
-                break;
-
-            case ECL_VM_NEGATE_INT:
-                PushInt(this, -PopInt(this));
-                break;
-
-            case ECL_VM_NEGATE_FLOAT_STORAGE:
-            {
-                // 0x0044F851 executes integer NEG on the raw float dword and
-                // then pushes that dword with type 'f'.  This is not x87 FCHS.
-                EclVmScalar value;
-                value.real = PopFloat(this);
-                value.integer = -value.integer;
-                stack.Push('f', sizeof(value), &value);
-                break;
-            }
-
             case ECL_VM_LENGTH_SQUARED:
             {
                 const float x = ReadFloat(1);
@@ -1095,6 +1078,10 @@ int EclVmContext::Run(float timeDelta)
                 *ResolveFloat(0) = x * x + y * y;
                 break;
             }
+
+            case ECL_VM_NORMALIZE_ANGLE:
+                *ResolveFloat(0) = EclVmNormalizeAngle(ReadFloat(0));
+                break;
 
             case ECL_VM_POINT_ANGLE:
             {
@@ -1105,6 +1092,10 @@ int EclVmContext::Run(float timeDelta)
                 break;
             }
 
+            case ECL_VM_EVALUATE_FORMAT_OPERANDS:
+                EvaluateFormatOperands(this);
+                break;
+
             default:
                 if (host->DispatchEclInstruction() == -1)
                     return 0;
@@ -1112,10 +1103,11 @@ int EclVmContext::Run(float timeDelta)
             }
         }
 
-        if (advance) {
-            instruction = reinterpret_cast<EclVmInstruction *>(
-                reinterpret_cast<unsigned char *>(current) + current->size);
-        }
+        instructionOffset = (*instructionCursor)->size;
+advance_instruction:
+        *instructionCursor = reinterpret_cast<EclVmInstruction *>(
+            reinterpret_cast<unsigned char *>(*instructionCursor)
+            + instructionOffset);
     }
 
     currentTime += timeDelta;

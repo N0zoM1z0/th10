@@ -143,12 +143,36 @@ def candidate_case_layout(
                 "gap_delta": candidate_gap - target_gap,
             }
         )
+    target_physical_order = [
+        row["opcode"]
+        for row in sorted(
+            rows, key=lambda row: int(row["target_destination"], 16)
+        )
+    ]
+    candidate_physical_order = [
+        row["opcode"]
+        for row in sorted(
+            rows, key=lambda row: int(row["candidate_destination"], 16)
+        )
+    ]
     return {
         "image": str(path),
         "image_sha256": image.sha256,
         "function_address": f"0x{function_address:08X}",
+        "target_code_size": CODE_END_ADDRESS - FUNCTION_ADDRESS + 1,
+        "target_pre_table_size": JUMP_TABLE_ADDRESS - FUNCTION_ADDRESS,
+        "candidate_pre_table_size": jump_table_address - function_address,
+        "pre_table_size_delta": (
+            jump_table_address - function_address
+            - (JUMP_TABLE_ADDRESS - FUNCTION_ADDRESS)
+        ),
         "jump_table_address": f"0x{jump_table_address:08X}",
         "selector_table_address": f"0x{selector_address:08X}",
+        "physical_order_matches": (
+            candidate_physical_order == target_physical_order
+        ),
+        "target_physical_order": target_physical_order,
+        "candidate_physical_order": candidate_physical_order,
         "case_rows": rows,
     }
 
@@ -308,6 +332,18 @@ def main() -> int:
                 "candidate tables: "
                 f"{candidate_layout['jump_table_address']} / "
                 f"{candidate_layout['selector_table_address']}"
+            )
+            print(
+                "candidate pre-table span: "
+                f"{candidate_layout['candidate_pre_table_size']} bytes / "
+                f"target {candidate_layout['target_pre_table_size']} / "
+                f"delta {candidate_layout['pre_table_size_delta']:+d}; "
+                "physical order "
+                + (
+                    "matches"
+                    if candidate_layout["physical_order_matches"]
+                    else "differs"
+                )
             )
             print(
                 "opcode  target+  candidate+  delta  next-gap target/candidate"
