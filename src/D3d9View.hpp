@@ -16,6 +16,31 @@ struct D3d9LockedRectView
     void *bits;
 };
 
+struct D3d9RectView
+{
+    int left;
+    int top;
+    int right;
+    int bottom;
+};
+
+struct D3d9PointView
+{
+    int x;
+    int y;
+};
+
+struct D3d9ImageInfoView
+{
+    unsigned int width;
+    unsigned int height;
+    unsigned int depth;
+    unsigned int mipLevels;
+    unsigned int format;
+    unsigned int resourceType;
+    unsigned int imageFileFormat;
+};
+
 struct D3d9SurfaceDescriptionView
 {
     unsigned int format;
@@ -35,6 +60,36 @@ typedef long (__stdcall *D3d9CreateVertexBuffer)(
     unsigned int fvf,
     unsigned int pool,
     D3d9VertexBufferView **vertexBuffer,
+    void *sharedHandle);
+typedef long (__stdcall *D3d9GetBackBuffer)(
+    D3d9DeviceView *device,
+    unsigned int swapChain,
+    unsigned int backBuffer,
+    unsigned int type,
+    D3d9SurfaceView **surface);
+typedef long (__stdcall *D3d9CreateRenderTarget)(
+    D3d9DeviceView *device,
+    unsigned int width,
+    unsigned int height,
+    unsigned int format,
+    unsigned int multisampleType,
+    unsigned int multisampleQuality,
+    int lockable,
+    D3d9SurfaceView **surface,
+    void *sharedHandle);
+typedef long (__stdcall *D3d9UpdateSurface)(
+    D3d9DeviceView *device,
+    D3d9SurfaceView *sourceSurface,
+    const D3d9RectView *sourceRect,
+    D3d9SurfaceView *destinationSurface,
+    const D3d9PointView *destinationPoint);
+typedef long (__stdcall *D3d9CreateOffscreenPlainSurface)(
+    D3d9DeviceView *device,
+    unsigned int width,
+    unsigned int height,
+    unsigned int format,
+    unsigned int pool,
+    D3d9SurfaceView **surface,
     void *sharedHandle);
 
 typedef long (__stdcall *D3d9SetRenderState)(
@@ -85,9 +140,17 @@ typedef long (__stdcall *D3d9SetStreamSource)(
 
 struct D3d9DeviceVtableView
 {
-    void *slots000To064[26];
+    void *slots000To044[18];
+    D3d9GetBackBuffer GetBackBuffer;             // +0x048
+    void *slots04CTo064[7];
     D3d9CreateVertexBuffer CreateVertexBuffer;   // +0x068
-    void *slots06CTo0AC[17];
+    void *slot06C;
+    D3d9CreateRenderTarget CreateRenderTarget;   // +0x070
+    void *slot074;
+    D3d9UpdateSurface UpdateSurface;             // +0x078
+    void *slots07CTo08C[5];
+    D3d9CreateOffscreenPlainSurface CreateOffscreenPlainSurface; // +0x090
+    void *slots094To0AC[7];
     D3d9SetTransform SetTransform;               // +0x0B0
     void *slots0B4To0E0[12];
     D3d9SetRenderState SetRenderState;           // +0x0E4
@@ -134,10 +197,28 @@ typedef long (__stdcall *D3d9TextureGetSurfaceLevel)(
     D3d9TextureView *texture,
     unsigned int level,
     D3d9SurfaceView **surface);
+typedef unsigned long (__stdcall *D3d9TextureRelease)(
+    D3d9TextureView *texture);
+typedef unsigned long (__stdcall *D3d9TextureSetPriority)(
+    D3d9TextureView *texture,
+    unsigned long priority);
+typedef void (__stdcall *D3d9TexturePreLoad)(D3d9TextureView *texture);
+typedef long (__stdcall *D3d9TextureGetLevelDescription)(
+    D3d9TextureView *texture,
+    unsigned int level,
+    D3d9SurfaceDescriptionView *description);
 
 struct D3d9TextureVtableView
 {
-    void *slots000To044[18];
+    void *QueryInterface;
+    void *AddRef;
+    D3d9TextureRelease Release;                 // +0x008
+    void *slots00CTo018[4];
+    D3d9TextureSetPriority SetPriority;         // +0x01C
+    void *GetPriority;
+    D3d9TexturePreLoad PreLoad;                 // +0x024
+    void *slots028To040[7];
+    D3d9TextureGetLevelDescription GetLevelDesc; // +0x044
     D3d9TextureGetSurfaceLevel GetSurfaceLevel;   // +0x048
 };
 
@@ -191,6 +272,12 @@ typedef char D3d9SetTransformAt0B0[
     (offsetof(D3d9DeviceVtableView, SetTransform) == 0x0b0) ? 1 : -1];
 typedef char D3d9CreateVertexBufferAt068[
     (offsetof(D3d9DeviceVtableView, CreateVertexBuffer) == 0x068) ? 1 : -1];
+typedef char D3d9SurfaceDeviceMethodsAt048[
+    (offsetof(D3d9DeviceVtableView, GetBackBuffer) == 0x048 &&
+     offsetof(D3d9DeviceVtableView, CreateRenderTarget) == 0x070 &&
+     offsetof(D3d9DeviceVtableView, UpdateSurface) == 0x078 &&
+     offsetof(D3d9DeviceVtableView, CreateOffscreenPlainSurface) == 0x090)
+        ? 1 : -1];
 typedef char D3d9SetTextureAt104[
     (offsetof(D3d9DeviceVtableView, SetTexture) == 0x104) ? 1 : -1];
 typedef char D3d9SetTextureStageStateAt10C[
@@ -211,7 +298,11 @@ typedef char D3d9VertexBufferLockAt02C[
     (offsetof(D3d9VertexBufferVtableView, Lock) == 0x02c &&
      offsetof(D3d9VertexBufferVtableView, Unlock) == 0x030) ? 1 : -1];
 typedef char D3d9TextureSurfaceAt048[
-    (offsetof(D3d9TextureVtableView, GetSurfaceLevel) == 0x048) ? 1 : -1];
+    (offsetof(D3d9TextureVtableView, Release) == 0x008 &&
+     offsetof(D3d9TextureVtableView, SetPriority) == 0x01c &&
+     offsetof(D3d9TextureVtableView, PreLoad) == 0x024 &&
+     offsetof(D3d9TextureVtableView, GetLevelDesc) == 0x044 &&
+     offsetof(D3d9TextureVtableView, GetSurfaceLevel) == 0x048) ? 1 : -1];
 typedef char D3d9SurfaceMethodsAt030[
     (offsetof(D3d9SurfaceVtableView, GetDesc) == 0x030 &&
      offsetof(D3d9SurfaceVtableView, LockRect) == 0x034 &&
@@ -239,6 +330,7 @@ enum D3d9ViewConstants
     D3D9_VIEW_SAMP_MINFILTER = 6,
     D3D9_VIEW_TEXF_POINT = 1,
     D3D9_VIEW_TEXF_LINEAR = 2,
+    D3D9_VIEW_TEXF_NONE = 1,
     D3D9_VIEW_PT_TRIANGLELIST = 4,
     D3D9_VIEW_PT_TRIANGLESTRIP = 5,
     D3D9_VIEW_PT_TRIANGLEFAN = 6,

@@ -7,6 +7,248 @@ target_sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc904
 # require /GL, a PDB-owned complete extent, and an exhaustive manifest of every
 # link-resolved field. Neither artifact kind establishes whole-product closure.
 
+[units.ascii-manager-add-format-text-gs]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmTextSurfaceGs"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AsciiManagerView::AddFormatText"]
+symbol = "?AddFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target_address = 0x00401630
+size = 85
+linkages = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x2A, type = "REL32", symbol = "_vsprintf", target = 0x004524A6 },
+  { offset = 0x3C, type = "REL32", symbol = "?AddString@AsciiManagerView@@QAEXPAUAnmFloat3View@@PBD@Z", target = 0x00401530 },
+  { offset = 0x4A, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
+[units.ascii-manager-add-small-format-text-gs]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmTextSurfaceGs"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AsciiManagerView::AddSmallFormatText"]
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target_address = 0x00401690
+size = 100
+linkages = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x2A, type = "REL32", symbol = "_vsprintf", target = 0x004524A6 },
+  { offset = 0x37, type = "REL32", symbol = "?AddString@AsciiManagerView@@QAEXPAUAnmFloat3View@@PBD@Z", target = 0x00401530 },
+  { offset = 0x59, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
+[units.ascii-manager-add-gui-format-text-gs]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmTextSurfaceGs"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AsciiManagerView::AddGuiFormatText"]
+symbol = "?AddGuiFormatText@AsciiManagerView@@QAAHPAUAnmFloat3View@@PBDZZ"
+target_address = 0x00401700
+size = 94
+linkages = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x2A, type = "REL32", symbol = "_vsprintf", target = 0x004524A6 },
+  { offset = 0x35, type = "REL32", symbol = "?AddGuiString@AsciiManagerView@@QAEXPAUAnmFloat3View@@PBD@Z", target = 0x004015C0 },
+  { offset = 0x53, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
+[units.anm-text-inner-gs]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmTextSurfaceGs"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::DrawTextInner"]
+symbol = "?DrawTextInner@AnmRenderManagerView@@QAEXPAUD3d9TextureView@@PAUAnmSpriteView@@HHIPBDH@Z"
+target_address = 0x004479D0
+size = 127
+linkages = [
+  { offset = 0x1F, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x2B, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x37, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x43, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x66, type = "REL32", symbol = "?RenderTextToTexture@TextHelperView@@YGXPBUD3d9RectView@@HHIPBDPAUD3d9TextureView@@@Z", target = 0x00437DB0 },
+  { offset = 0x73, type = "REL32", symbol = "?RenderTextToTextureAlternate@TextHelperView@@YGXPBUD3d9RectView@@HHIPBDPAUD3d9TextureView@@@Z", target = 0x00437FE0 },
+]
+
+[units.anm-text-left-gs]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmTextSurfaceGs"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::DrawTextLeft"]
+symbol = "?DrawTextLeft@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+target_address = 0x00447A50
+size = 141
+linkages = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x34, type = "REL32", symbol = "_vsprintf", target = 0x004524A6 },
+  { offset = 0x62, type = "REL32", symbol = "?DrawTextInner@AnmRenderManagerView@@QAEXPAUD3d9TextureView@@PAUAnmSpriteView@@HHIPBDH@Z", target = 0x004479D0 },
+  { offset = 0x82, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
+[units.anm-text-right-gs]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmTextSurfaceGs"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::DrawTextRight"]
+symbol = "?DrawTextRight@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+target_address = 0x00447AE0
+size = 204
+linkages = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x3F, type = "REL32", symbol = "_vsprintf", target = 0x004524A6 },
+  { offset = 0x89, type = "DIR32", symbol = "__real@4f800000", target = 0x00470B98 },
+  { offset = 0x91, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0xA1, type = "REL32", symbol = "?DrawTextInner@AnmRenderManagerView@@QAEXPAUD3d9TextureView@@PAUAnmSpriteView@@HHIPBDH@Z", target = 0x004479D0 },
+  { offset = 0xC1, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
+[units.anm-text-centered-gs]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmTextSurfaceGs"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::DrawTextCentered"]
+symbol = "?DrawTextCentered@AnmRenderManagerView@@QAAXPAUAnmVmView@@IPBDZZ"
+target_address = 0x00447BB0
+size = 194
+linkages = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x3F, type = "REL32", symbol = "_vsprintf", target = 0x004524A6 },
+  { offset = 0x80, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x97, type = "REL32", symbol = "?DrawTextInner@AnmRenderManagerView@@QAEXPAUD3d9TextureView@@PAUAnmSpriteView@@HHIPBDH@Z", target = 0x004479D0 },
+  { offset = 0xB7, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
+[units.anm-surface-release]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmTextSurfaceGs"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::ReleaseSurface"]
+symbol = "?ReleaseSurface@AnmRenderManagerView@@QAEXH@Z"
+target_address = 0x00447F70
+size = 87
+linkages = [
+  { offset = 0x40, type = "REL32", symbol = "_free", target = 0x00452422 },
+]
+
+[units.anm-resource-create-texture-from-file]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmResourcePipeline"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::CreateTextureFromFile"]
+symbol = "?CreateTextureFromFile@AnmRenderManagerView@@QAEHPAUAnmTextureEntryView@@HIHH@Z"
+target_address = 0x00446EB0
+size = 132
+linkages = [
+  { offset = 0x05, type = "DIR32", symbol = "?g_AnmHardwareFlags@@3EA", target = 0x00491D78 },
+  { offset = 0x0F, type = "DIR32", symbol = "?g_AnmTextureFormats@@3QBIB", target = 0x0046F288 },
+  { offset = 0x34, type = "DIR32", symbol = "?g_AnmTextureFormats@@3QBIB", target = 0x0046F288 },
+  { offset = 0x56, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
+  { offset = 0x5E, type = "REL32", symbol = "_D3DXCreateTextureFromFileInMemoryEx@60", target = 0x004521CA },
+  { offset = 0x70, type = "REL32", symbol = "?ApplyTextureAlphaBleed@AnmRenderManagerView@@QAEXPAUAnmTextureEntryView@@@Z", target = 0x004465B0 },
+  { offset = 0x77, type = "DIR32", symbol = "?g_AnmTextureBytesPerPixel@@3QBIB", target = 0x0046F2A0 },
+]
+
+[units.anm-resource-create-empty-texture]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmResourcePipeline"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::CreateEmptyTexture"]
+symbol = "?CreateEmptyTexture@AnmRenderManagerView@@QAEHPAPAUD3d9TextureView@@HHH@Z"
+target_address = 0x00447050
+size = 41
+linkages = [
+  { offset = 0x03, type = "DIR32", symbol = "?g_AnmTextureFormats@@3QBIB", target = 0x0046F288 },
+  { offset = 0x0C, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
+  { offset = 0x18, type = "REL32", symbol = "_D3DXCreateTexture@32", target = 0x004521A0 },
+  { offset = 0x1F, type = "DIR32", symbol = "?g_AnmTextureBytesPerPixel@@3QBIB", target = 0x0046F2A0 },
+]
+
+[units.anm-resource-load-anm]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmResourcePipeline"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::LoadAnm"]
+symbol = "?LoadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z"
+target_address = 0x00447080
+size = 50
+linkages = [
+  { offset = 0x04, type = "REL32", symbol = "?ReadAnmEntries@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z", target = 0x004470C0 },
+  { offset = 0x23, type = "REL32", symbol = "?PostloadAnmEntry@AnmRenderManagerView@@QAEPAUAnmLoadedView@@PAU2@@Z", target = 0x004473C0 },
+]
+
+[units.anm-resource-postload-entry]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmResourcePipeline"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmRenderManagerView::PostloadAnmEntry"]
+symbol = "?PostloadAnmEntry@AnmRenderManagerView@@QAEPAUAnmLoadedView@@PAU2@@Z"
+target_address = 0x004473C0
+size = 174
+linkages = [
+  { offset = 0x39, type = "REL32", symbol = "?LoadTextureData@AnmRenderManagerView@@QAEHPAUAnmLoadedView@@HHHPAUAnmRawEntryView@@@Z", target = 0x00447470 },
+]
+
+[units.anm-resource-load-sprite]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmResourcePipeline"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+functions = ["AnmLoadedView::LoadSprite"]
+symbol = "?LoadSprite@AnmLoadedView@@QAEXHPAUAnmSpriteView@@@Z"
+target_address = 0x00447940
+size = 143
+linkages = []
+
 [units.ascii-manager-constructor]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"

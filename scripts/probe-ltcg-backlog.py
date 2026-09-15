@@ -72,6 +72,15 @@ def parse_args() -> argparse.Namespace:
             "source (repeatable)"
         ),
     )
+    parser.add_argument(
+        "--profile-flag",
+        action="append",
+        default=[],
+        help=(
+            "append one compiler flag to both the normal symbol inventory and "
+            "the LTCG diagnostic build (repeatable)"
+        ),
+    )
     parser.add_argument("--json", action="store_true", help="emit one JSON report")
     return parser.parse_args()
 
@@ -146,8 +155,10 @@ def load_backlog(sources: list[str]) -> list[dict[str, object]]:
     return items
 
 
-def normal_inventory(source: Path, output: Path) -> list[dict[str, object]]:
-    compile_source(source, output, NORMAL_PROFILE)
+def normal_inventory(
+    source: Path, output: Path, profile: list[str]
+) -> list[dict[str, object]]:
+    compile_source(source, output, profile)
     report = json_command(
         [
             sys.executable,
@@ -274,6 +285,7 @@ def probe_source(
     environment: dict[str, str],
     entry_name: str | None = None,
     support_source_names: list[str] | None = None,
+    profile_flags: list[str] | None = None,
 ) -> dict[str, object]:
     source = (ROOT / source_name).resolve()
     source.relative_to(ROOT.resolve())
@@ -281,7 +293,13 @@ def probe_source(
         raise ValueError(f"missing source: {source_name}")
     directory = BUILD / source_name.replace("/", "_").replace("\\", "_")
     directory.mkdir(parents=True, exist_ok=True)
-    inventory = normal_inventory(source, directory / "source.normal.obj")
+    if profile_flags is None:
+        profile_flags = []
+    normal_profile = [*NORMAL_PROFILE, *profile_flags]
+    ltcg_profile = [*LTCG_PROFILE, *profile_flags]
+    inventory = normal_inventory(
+        source, directory / "source.normal.obj", normal_profile
+    )
     symbols_by_hint: dict[str, list[str]] = defaultdict(list)
     for function in inventory:
         hint = function.get("source_name_hint")
@@ -318,6 +336,7 @@ def probe_source(
         entry_symbol,
         linker,
         environment,
+        profile=ltcg_profile,
         support_sources=support_sources,
     )
     linked_report = linked_functions(linked["image"], linked["map"], linked["pdb"])
@@ -392,8 +411,8 @@ def probe_source(
         "entry_symbol": entry_symbol,
         "entry_selection": entry_selection,
         "support_sources": support_source_names,
-        "normal_profile": NORMAL_PROFILE,
-        "ltcg_profile": LTCG_PROFILE,
+        "normal_profile": normal_profile,
+        "ltcg_profile": ltcg_profile,
         "link_harness": HARNESS_KIND,
         "physical_ownership": "unknown",
         "object": str(Path(linked["object"]).relative_to(ROOT)),
@@ -474,6 +493,7 @@ def main() -> int:
                 environment,
                 entry_overrides.get(source),
                 support_sources.get(source, []),
+                args.profile_flag,
             )
             for source, items in sorted(by_source.items())
         ]
@@ -488,6 +508,7 @@ def main() -> int:
             "artifact_kind": "anchored-linked-pe-diagnostic",
             "entry_overrides": entry_overrides,
             "support_sources": support_sources,
+            "profile_flags": args.profile_flag,
             "decoder": {"name": "capstone", **decoder_identity},
             "source_count": len(source_reports),
             "function_count": len(backlog),

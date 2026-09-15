@@ -1,4 +1,5 @@
 #include "AnmManager.hpp"
+#include "FileSystem.hpp"
 
 #include <stdarg.h>
 #include <math.h>
@@ -1468,6 +1469,1173 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
     surface->vtable->Release(surface);
 }
 
+static int NormalizeAnmTextureFormat(int format)
+{
+    if ((g_AnmHardwareFlags & 1) != 0)
+    {
+        unsigned int deviceFormat = g_AnmTextureFormats[format];
+        if (deviceFormat == D3D9_VIEW_FMT_A8R8G8B8 ||
+            deviceFormat == D3D9_VIEW_FMT_UNKNOWN)
+        {
+            format = 5;
+        }
+        else if (deviceFormat == 20)
+        {
+            format = 3;
+        }
+    }
+    return format;
+}
+
+// Target 0x00446C70 uploads either an external image or the embedded texture
+// payload of one raw ANM entry into an existing texture. The target keeps the
+// otherwise-unused argument present in the source ABI.
+int AnmRenderManagerView::LoadTexture(
+    AnmTextureEntryView *entry, unsigned char *data, int size, int format,
+    int unused, int hasData)
+{
+    D3d9SurfaceView *surface = NULL;
+    D3d9RectView sourceRect;
+    AnmRawEntryView *rawEntry;
+    AnmTextureHeaderView *header;
+
+    (void)unused;
+    format = NormalizeAnmTextureFormat(format);
+    entry->rawDataSize = size;
+    entry->texture->vtable->GetSurfaceLevel(entry->texture, 0, &surface);
+
+    if (hasData == 0)
+    {
+        D3DXLoadSurfaceFromFileInMemory(
+            surface, NULL, NULL, data, size, NULL,
+            D3D9_VIEW_TEXF_NONE, 0, NULL);
+    }
+    else
+    {
+        rawEntry = reinterpret_cast<AnmRawEntryView *>(data);
+        header = reinterpret_cast<AnmTextureHeaderView *>(
+            data + rawEntry->textureOffset);
+        sourceRect.left = 0;
+        sourceRect.top = 0;
+        sourceRect.right = header->width;
+        sourceRect.bottom = header->height;
+        D3DXLoadSurfaceFromMemory(
+            surface, NULL, NULL,
+            reinterpret_cast<unsigned char *>(header) + sizeof(*header),
+            g_AnmTextureFormats[header->format],
+            g_AnmTextureBytesPerPixel[header->format] * header->width,
+            NULL, &sourceRect, D3D9_VIEW_TEXF_NONE, 0);
+    }
+
+    surface->vtable->Release(surface);
+    ApplyTextureAlphaBleed(entry);
+    entry->bytesPerPixel = g_AnmTextureBytesPerPixel[format];
+    return 0;
+}
+
+// Target 0x00446D70 is the vertically-offset form used when several source
+// images share one destination texture.
+int AnmRenderManagerView::LoadTextureRegion(
+    AnmTextureEntryView *entry, unsigned char *data, int size, int format,
+    int unused, int hasData, int top)
+{
+    D3d9SurfaceView *surface = NULL;
+    D3d9SurfaceDescriptionView description;
+    D3d9RectView fileDestinationRect;
+    D3d9RectView sourceRect;
+    D3d9RectView dataDestinationRect;
+    AnmRawEntryView *rawEntry;
+    AnmTextureHeaderView *header;
+
+    (void)unused;
+    format = NormalizeAnmTextureFormat(format);
+    entry->rawDataSize = size;
+    entry->texture->vtable->GetSurfaceLevel(entry->texture, 0, &surface);
+
+    if (hasData == 0)
+    {
+        surface->vtable->GetDesc(surface, &description);
+        fileDestinationRect.left = 0;
+        fileDestinationRect.top = top;
+        fileDestinationRect.right = description.width;
+        fileDestinationRect.bottom = description.height;
+        D3DXLoadSurfaceFromFileInMemory(
+            surface, NULL, &fileDestinationRect, data, size, NULL,
+            D3D9_VIEW_TEXF_NONE, 0, NULL);
+    }
+    else
+    {
+        rawEntry = reinterpret_cast<AnmRawEntryView *>(data);
+        header = reinterpret_cast<AnmTextureHeaderView *>(
+            data + rawEntry->textureOffset);
+        sourceRect.left = 0;
+        sourceRect.top = 0;
+        sourceRect.right = header->width;
+        sourceRect.bottom = header->height;
+        dataDestinationRect.left = 0;
+        dataDestinationRect.top = top;
+        dataDestinationRect.right = header->width;
+        dataDestinationRect.bottom = header->height + top;
+        D3DXLoadSurfaceFromMemory(
+            surface, NULL, &dataDestinationRect,
+            reinterpret_cast<unsigned char *>(header) + sizeof(*header),
+            g_AnmTextureFormats[header->format],
+            g_AnmTextureBytesPerPixel[header->format] * header->width,
+            NULL, &sourceRect, D3D9_VIEW_TEXF_NONE, 0);
+    }
+
+    surface->vtable->Release(surface);
+    ApplyTextureAlphaBleed(entry);
+    entry->bytesPerPixel = g_AnmTextureBytesPerPixel[format];
+    return 0;
+}
+
+// Target 0x00446EB0 creates an explicitly-sized managed texture from an
+// external image already held in memory.
+int AnmRenderManagerView::CreateTextureFromFile(
+    AnmTextureEntryView *entry, int format, unsigned int colorKey,
+    int width, int height)
+{
+    format = NormalizeAnmTextureFormat(format);
+    if (D3DXCreateTextureFromFileInMemoryEx(
+            g_Direct3DDevice, entry->rawData, entry->rawDataSize,
+            width, height, 0, 0, g_AnmTextureFormats[format],
+            D3D9_VIEW_POOL_MANAGED, D3D9_VIEW_TEXF_NONE,
+            static_cast<unsigned int>(-1), colorKey, NULL, NULL,
+            &entry->texture) != 0)
+    {
+        return -1;
+    }
+
+    ApplyTextureAlphaBleed(entry);
+    entry->bytesPerPixel = g_AnmTextureBytesPerPixel[format];
+    return 0;
+}
+
+// Target 0x00446F40 creates the destination at the dimensions requested by
+// the caller, then uploads the dimensions and pixel format serialized in the
+// embedded ANM texture header.
+int AnmRenderManagerView::CreateTextureFromAnm(
+    D3d9TextureView **texture, void *textureData, int format,
+    int width, int height)
+{
+    D3d9SurfaceView *surface = NULL;
+    D3d9RectView sourceRect;
+    AnmTextureHeaderView *header =
+        static_cast<AnmTextureHeaderView *>(textureData);
+
+    format = NormalizeAnmTextureFormat(format);
+    sourceRect.left = 0;
+    sourceRect.top = 0;
+    sourceRect.right = header->width;
+    sourceRect.bottom = header->height;
+
+    if (D3DXCreateTexture(
+            g_Direct3DDevice, width, height, 1, 0,
+            g_AnmTextureFormats[format], D3D9_VIEW_POOL_MANAGED,
+            texture) != 0)
+    {
+        if (surface != NULL)
+            surface->vtable->Release(surface);
+        return -1;
+    }
+
+    (*texture)->vtable->GetSurfaceLevel(*texture, 0, &surface);
+    D3DXLoadSurfaceFromMemory(
+        surface, NULL, NULL,
+        reinterpret_cast<unsigned char *>(header) + sizeof(*header),
+        g_AnmTextureFormats[header->format],
+        g_AnmTextureBytesPerPixel[header->format] * header->width,
+        NULL, &sourceRect, D3D9_VIEW_TEXF_NONE, 0);
+    reinterpret_cast<AnmTextureEntryView *>(texture)->bytesPerPixel =
+        g_AnmTextureBytesPerPixel[format];
+
+    if (surface != NULL)
+        surface->vtable->Release(surface);
+    return 0;
+}
+
+// Target 0x00447050 creates a blank managed texture and records its stride.
+int AnmRenderManagerView::CreateEmptyTexture(
+    D3d9TextureView **texture, int width, int height, int format)
+{
+    D3DXCreateTexture(
+        g_Direct3DDevice, width, height, 1, 0,
+        g_AnmTextureFormats[format], D3D9_VIEW_POOL_MANAGED, texture);
+    reinterpret_cast<AnmTextureEntryView *>(texture)->bytesPerPixel =
+        g_AnmTextureBytesPerPixel[format];
+    return 0;
+}
+
+// Target 0x00447080 performs the synchronous form of the two-phase ANM load.
+// It is a retained CC-delimited body that Ghidra's function inventory missed.
+AnmLoadedView *AnmRenderManagerView::LoadAnm(
+    int index, const char *path)
+{
+    AnmLoadedView *loaded = ReadAnmEntries(index, path);
+    if (loaded != NULL)
+    {
+        loaded->pendingLoadCount = 1;
+        while (loaded->pendingLoadCount != 0)
+            loaded = PostloadAnmEntry(loaded);
+    }
+    return loaded;
+}
+
+// Target 0x004470C0 reads and inventories all linked version-four raw ANM
+// entries, then allocates the three aggregate tables consumed by postload.
+AnmLoadedView *AnmRenderManagerView::ReadAnmEntries(
+    int index, const char *path)
+{
+    char filePath[256];
+    AnmRawEntryView *rawData;
+    AnmRawEntryView *entry;
+    AnmLoadedView *loaded;
+    int totalEntries = 0;
+    int totalScripts = 0;
+    int totalSprites = 0;
+
+    if (index >= 33)
+    {
+        g_AnmErrorLoggerView.Log(
+            "\x83\x65\x83\x4e\x83\x58\x83\x60\x83\x83\x8a\x69"
+            "\x94\x5b\x90\xe6\x82\xaa\x91\xab\x82\xe8\x82\xdc"
+            "\x82\xb9\x82\xf1\r\n");
+        return NULL;
+    }
+
+    sprintf(filePath, "%s", path);
+    rawData = reinterpret_cast<AnmRawEntryView *>(
+        FileSystem::OpenFile(filePath, NULL, 0));
+    loaded = new AnmLoadedView;
+    if (loaded != NULL)
+        memset(loaded, 0, sizeof(*loaded));
+    loadedAnms[index] = loaded;
+    if (rawData == NULL)
+        return NULL;
+
+    loaded->anmFileIndex = index;
+    loaded->rawData = rawData;
+    strcpy(loaded->path, path);
+
+    entry = rawData;
+    do
+    {
+        ++totalEntries;
+        totalScripts += entry->numScripts;
+        totalSprites += entry->numSprites;
+        if (entry->nextOffset == 0)
+            break;
+        entry = reinterpret_cast<AnmRawEntryView *>(
+            reinterpret_cast<unsigned char *>(entry) + entry->nextOffset);
+    } while (true);
+
+    loaded->totalEntries = totalEntries;
+    loaded->textures = static_cast<AnmTextureEntryView *>(
+        malloc(totalEntries * sizeof(AnmTextureEntryView)));
+    memset(loaded->textures, 0,
+           totalEntries * sizeof(AnmTextureEntryView));
+    loaded->sprites = static_cast<AnmSpriteView *>(
+        malloc(totalSprites * sizeof(AnmSpriteView)));
+    loaded->scripts = static_cast<AnmRawInstructionView **>(
+        malloc(totalScripts * sizeof(AnmRawInstructionView *)));
+    loaded->totalScripts = totalScripts;
+    loaded->totalSprites = totalSprites;
+
+    entry = rawData;
+    for (int entryNumber = 0;; ++entryNumber)
+    {
+        if (LoadExternalTextureData(
+                loaded, entryNumber, &totalSprites, &totalScripts,
+                entry) < 0)
+        {
+            return NULL;
+        }
+        if (entry->nextOffset == 0)
+            break;
+        entry = reinterpret_cast<AnmRawEntryView *>(
+            reinterpret_cast<unsigned char *>(entry) + entry->nextOffset);
+    }
+    return loaded;
+}
+
+// Target 0x00447280 publishes one pending entry and waits for the main-thread
+// service callback to consume it. Existing slots are returned immediately.
+AnmLoadedView *AnmRenderManagerView::PreloadAnm(
+    int index, const char *path)
+{
+    AnmLoadedView *loaded = loadedAnms[index];
+    if (loaded != NULL)
+        return loaded;
+
+    loaded = ReadAnmEntries(index, path);
+    if (loaded == NULL)
+        return NULL;
+
+    loaded->pendingLoadCount = 1;
+    do
+    {
+        if (g_AnmPreloadStopRequested < 0)
+            break;
+        Sleep(1);
+    } while (loaded->pendingLoadCount != 0);
+    return loaded;
+}
+
+// Target 0x004472E0 acquires external image data during the read phase. The
+// aggregate-count pointers survive in the source interface but are optimized
+// away because this phase does not modify them.
+int AnmRenderManagerView::LoadExternalTextureData(
+    AnmLoadedView *loaded, int entryNumber, int *spriteCount,
+    int *scriptCount, AnmRawEntryView *rawEntry)
+{
+    char filePath[256];
+    const char *texturePath;
+    unsigned char *fileData;
+    int fileSize;
+
+    (void)spriteCount;
+    (void)scriptCount;
+    if (rawEntry == NULL)
+    {
+        g_AnmErrorLoggerView.Log(
+            "\x83\x41\x83\x6a\x83\x81\x82\xaa\x93\xc7\x82\xdd"
+            "\x8d\x9e\x82\xdf\x82\xdc\x82\xb9\x82\xf1\x81\x42"
+            "\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8e\xb8\x82\xed"
+            "\x82\xea\x82\xc4\x82\xe9\x82\xa9\x89\xf3\x82\xea"
+            "\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
+        return -1;
+    }
+    if (rawEntry->version != 4)
+    {
+        g_AnmErrorLoggerView.Log(
+            "\x83\x41\x83\x6a\x83\x81\x82\xcc\x83\x6f\x81\x5b"
+            "\x83\x57\x83\x87\x83\x93\x82\xaa\x88\xe1\x82\xa2"
+            "\x82\xdc\x82\xb7\r\n");
+        return -1;
+    }
+
+    if (rawEntry->hasData == 0)
+    {
+        texturePath = reinterpret_cast<const char *>(rawEntry) +
+            rawEntry->nameOffset;
+        if (texturePath[0] != '@')
+        {
+            sprintf(filePath, "%s", texturePath);
+            fileData = FileSystem::OpenFile(filePath, &fileSize, 1);
+            if (fileData == NULL)
+            {
+                g_AnmErrorLoggerView.Log(
+                    "\x83\x65\x83\x4e\x83\x58\x83\x60\x83\x83 %s "
+                    "\x82\xaa\x93\xc7\x82\xdd\x8d\x9e\x82\xdf\x82\xdc"
+                    "\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e"
+                    "\x82\xaa\x8e\xb8\x82\xed\x82\xea\x82\xc4\x82\xe9"
+                    "\x82\xa9\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc"
+                    "\x82\xb7\r\n",
+                    texturePath);
+                return -1;
+            }
+            loaded->textures[entryNumber].rawDataSize = fileSize;
+            loaded->textures[entryNumber].rawData = fileData;
+        }
+    }
+    return 1;
+}
+
+// Target 0x004473C0 advances the two-phase loader by exactly one raw entry.
+AnmLoadedView *AnmRenderManagerView::PostloadAnmEntry(
+    AnmLoadedView *loaded)
+{
+    AnmRawEntryView *rawEntry =
+        static_cast<AnmRawEntryView *>(loaded->rawData);
+    int entryLoadNumber = 0;
+    int currentScripts = 0;
+    int currentSprites = 0;
+    int entryNumber = 0;
+    int loadedOne = 0;
+
+    for (;;)
+    {
+        if (entryLoadNumber == loaded->pendingLoadCount - 1)
+        {
+            if (LoadTextureData(
+                    loaded, entryNumber, currentSprites, currentScripts,
+                    rawEntry) < 0)
+            {
+                loaded->pendingLoadCount = 0;
+                return NULL;
+            }
+            loadedOne = 1;
+        }
+
+        currentSprites += rawEntry->numSprites;
+        currentScripts += rawEntry->numScripts;
+        ++entryNumber;
+        if (rawEntry->nextOffset == 0)
+            break;
+        rawEntry = reinterpret_cast<AnmRawEntryView *>(
+            reinterpret_cast<unsigned char *>(rawEntry) +
+            rawEntry->nextOffset);
+        ++entryLoadNumber;
+        if (entryLoadNumber == loaded->pendingLoadCount || loadedOne != 0)
+        {
+            ++loaded->pendingLoadCount;
+            return loaded;
+        }
+    }
+
+    loaded->pendingLoadCount = 0;
+    return loaded;
+}
+
+// Target 0x00447470 creates one entry texture, publishes all of its sprites,
+// and records the instruction pointers for all scripts following the sprite
+// offset table.
+int AnmRenderManagerView::LoadTextureData(
+    AnmLoadedView *loaded, int entryNumber, int spriteCount,
+    int scriptCount, AnmRawEntryView *rawEntry)
+{
+    D3d9SurfaceDescriptionView description;
+    AnmSpriteView sprite;
+    const char *texturePath;
+    unsigned int *offset;
+
+    if (rawEntry == NULL)
+    {
+        g_AnmErrorLoggerView.Log(
+            "\x83\x41\x83\x6a\x83\x81\x82\xaa\x93\xc7\x82\xdd"
+            "\x8d\x9e\x82\xdf\x82\xdc\x82\xb9\x82\xf1\x81\x42"
+            "\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8e\xb8\x82\xed"
+            "\x82\xea\x82\xc4\x82\xe9\x82\xa9\x89\xf3\x82\xea"
+            "\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
+        return -1;
+    }
+    if (rawEntry->version != 4)
+    {
+        g_AnmErrorLoggerView.Log(
+            "\x83\x41\x83\x6a\x83\x81\x82\xcc\x83\x6f\x81\x5b"
+            "\x83\x57\x83\x87\x83\x93\x82\xaa\x88\xe1\x82\xa2"
+            "\x82\xdc\x82\xb7\r\n");
+        return -1;
+    }
+
+    if (rawEntry->hasData == 0)
+    {
+        texturePath = reinterpret_cast<const char *>(rawEntry) +
+            rawEntry->nameOffset;
+        if (texturePath[0] == '@')
+        {
+            CreateEmptyTexture(
+                &loaded->textures[entryNumber].texture,
+                rawEntry->width, rawEntry->height, rawEntry->format);
+        }
+        else if (CreateTextureFromFile(
+                     &loaded->textures[entryNumber], rawEntry->format,
+                     rawEntry->colorKey, rawEntry->width,
+                     rawEntry->height) != 0)
+        {
+            g_AnmErrorLoggerView.Log(
+                "\x83\x65\x83\x4e\x83\x58\x83\x60\x83\x83 %s "
+                "\x82\xaa\x8d\xec\x90\xac\x82\xc5\x82\xab\x82\xdc"
+                "\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e"
+                "\x82\xaa\x8e\xb8\x82\xed\x82\xea\x82\xc4\x82\xe9"
+                "\x82\xa9\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc"
+                "\x82\xb7\r\n",
+                texturePath);
+            return -1;
+        }
+    }
+    else if (CreateTextureFromAnm(
+                 &loaded->textures[entryNumber].texture,
+                 reinterpret_cast<unsigned char *>(rawEntry) +
+                     rawEntry->textureOffset,
+                 rawEntry->format, rawEntry->width,
+                 rawEntry->height) != 0)
+    {
+        g_AnmErrorLoggerView.Log(
+            "\x83\x65\x83\x4e\x83\x58\x83\x60\x83\x83\x82\xaa"
+            "\x93\xc7\x82\xdd\x8d\x9e\x82\xdf\x82\xdc\x82\xb9"
+            "\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa"
+            "\x8e\xb8\x82\xed\x82\xea\x82\xc4\x82\xe9\x82\xa9"
+            "\x89\xf3\x82\xea\x82\xc4\x82\xa2\x82\xdc\x82\xb7"
+            "\r\n");
+        return -1;
+    }
+
+    D3d9TextureView *texture = loaded->textures[entryNumber].texture;
+    texture->vtable->SetPriority(texture, rawEntry->priority);
+    texture->vtable->PreLoad(texture);
+    texture->vtable->GetLevelDesc(texture, 0, &description);
+
+    offset = reinterpret_cast<unsigned int *>(rawEntry + 1);
+    for (int i = 0; i < rawEntry->numSprites; ++i, ++offset)
+    {
+        AnmRawSpriteView *rawSprite =
+            reinterpret_cast<AnmRawSpriteView *>(
+                reinterpret_cast<unsigned char *>(rawEntry) + *offset);
+        sprite.anmFileIndex = loaded->anmFileIndex;
+        sprite.texture = texture;
+        sprite.horizontalScale =
+            static_cast<float>(description.width) / rawEntry->width;
+        sprite.verticalScale =
+            static_cast<float>(description.height) / rawEntry->height;
+        sprite.sourceX = rawSprite->x * sprite.horizontalScale;
+        sprite.sourceY = rawSprite->y * sprite.verticalScale;
+        sprite.sourceRight =
+            (rawSprite->x + rawSprite->width) * sprite.horizontalScale;
+        sprite.sourceBottom =
+            (rawSprite->y + rawSprite->height) * sprite.verticalScale;
+        sprite.textureWidth = static_cast<float>(description.width);
+        sprite.textureHeight = static_cast<float>(description.height);
+        loaded->LoadSprite(spriteCount++, &sprite);
+    }
+
+    for (int i = 0; i < rawEntry->numScripts; ++i, offset += 2)
+    {
+        loaded->scripts[scriptCount++] =
+            reinterpret_cast<AnmRawInstructionView *>(
+                reinterpret_cast<unsigned char *>(rawEntry) + offset[1]);
+    }
+    return 1;
+}
+
+// Target 0x00447700 services one pending entry per manager tick. Its release
+// branch really clears the pointer and then writes through that cleared slot;
+// this apparent target bug is preserved as observed.
+int AnmRenderManagerView::ServicePreloadedAnms()
+{
+    for (int i = 0; i < 33; ++i)
+    {
+        AnmLoadedView *loaded = loadedAnms[i];
+        if (loaded == NULL)
+            continue;
+        if (loaded->releasePending != 0)
+        {
+            ReleaseAnm(i);
+            loadedAnms[i]->releasePending = 0;
+        }
+        else if (loaded->pendingLoadCount != 0)
+        {
+            return PostloadAnmEntry(loaded) == NULL ? -1 : 0;
+        }
+    }
+    return 0;
+}
+
+// Target 0x004477D0 validates a 33-slot index, releases the loaded owner, and
+// deletes the 0x130-byte allocation.
+void AnmRenderManagerView::ReleaseAnm(int index)
+{
+    if (index < 0 || index >= 33)
+        return;
+    AnmLoadedView *loaded = loadedAnms[index];
+    if (loaded != NULL)
+    {
+        loaded->Release();
+        delete loaded;
+        loadedAnms[index] = NULL;
+    }
+}
+
+// Target 0x00447810 tears down every allocation owned by one loaded ANM. Raw
+// image buffers belong to their texture entry; the parsed ANM blob is freed
+// only after the aggregate tables and optional map data.
+void AnmLoadedView::Release()
+{
+    if (rawData == NULL)
+        return;
+
+    g_AnmRenderManagerView->MarkLoadedVmsForDeletion(this);
+    for (int i = 0; i < totalEntries; ++i)
+    {
+        if (textures[i].texture != NULL)
+        {
+            textures[i].texture->vtable->Release(textures[i].texture);
+            textures[i].texture = NULL;
+        }
+        if (textures[i].rawData != NULL)
+        {
+            free(textures[i].rawData);
+            textures[i].rawData = NULL;
+        }
+    }
+
+    if (textures != NULL)
+    {
+        free(textures);
+        textures = NULL;
+    }
+    if (sprites != NULL)
+    {
+        free(sprites);
+        sprites = NULL;
+    }
+    if (scripts != NULL)
+    {
+        free(scripts);
+        scripts = NULL;
+    }
+    if (mapData != NULL)
+    {
+        free(mapData);
+        mapData = NULL;
+    }
+    if (rawData != NULL)
+    {
+        free(rawData);
+        rawData = NULL;
+    }
+}
+
+// Target 0x00447940 publishes one 0x44-byte sprite and derives normalized UV
+// coordinates plus the unscaled pixel dimensions used by ANM VMs.
+void AnmLoadedView::LoadSprite(
+    int spriteIndex, AnmSpriteView *sprite)
+{
+    sprites[spriteIndex] = *sprite;
+    sprites[spriteIndex].uStart =
+        sprites[spriteIndex].sourceX / sprites[spriteIndex].textureWidth;
+    sprites[spriteIndex].uEnd =
+        sprites[spriteIndex].sourceRight / sprites[spriteIndex].textureWidth;
+    sprites[spriteIndex].vStart =
+        sprites[spriteIndex].sourceY / sprites[spriteIndex].textureHeight;
+    sprites[spriteIndex].vEnd =
+        sprites[spriteIndex].sourceBottom / sprites[spriteIndex].textureHeight;
+    sprites[spriteIndex].width =
+        (sprites[spriteIndex].sourceRight - sprites[spriteIndex].sourceX) /
+        sprite->horizontalScale;
+    sprites[spriteIndex].height =
+        (sprites[spriteIndex].sourceBottom - sprites[spriteIndex].sourceY) /
+        sprite->verticalScale;
+}
+
+// Target 0x004479D0 converts one sprite's source rectangle to integer pixels
+// and routes formatted text through one of the two target text rasterizers.
+void AnmRenderManagerView::DrawTextInner(
+    D3d9TextureView *texture, AnmSpriteView *sprite,
+    int x, int textGlyphWidth,
+    unsigned int color, const char *text,
+    int useAlternateRenderer)
+{
+    D3d9RectView rectangle;
+
+    if (textGlyphWidth <= 0)
+        textGlyphWidth = 17;
+    else if (textGlyphWidth <= 8)
+        return;
+
+    rectangle.left = static_cast<int>(sprite->sourceX);
+    rectangle.top = static_cast<int>(sprite->sourceY);
+    rectangle.right = static_cast<int>(sprite->sourceRight);
+    rectangle.bottom = static_cast<int>(sprite->sourceBottom);
+    if (useAlternateRenderer == 0)
+    {
+        TextHelperView::RenderTextToTexture(
+            &rectangle, x, textGlyphWidth, color, text, texture);
+    }
+    else
+    {
+        TextHelperView::RenderTextToTextureAlternate(
+            &rectangle, x, textGlyphWidth, color, text, texture);
+    }
+}
+
+#define textBuffer restartCommandProcessingLocal05
+#define textGlyphWidth averagedPanLocal12
+#define textX textXLocal00
+
+// Target 0x00447A50 formats into the sprite rectangle with no horizontal
+// offset. The renderer selector is VM textFlags360 bit one.
+#pragma var_order(textBuffer, textGlyphWidth)
+void AnmRenderManagerView::DrawTextLeft(
+    AnmVmView *vm, unsigned int color, const char *format, ...)
+{
+    char textBuffer[128];
+    int textGlyphWidth = vm->glyphWidth;
+    va_list args;
+
+    va_start(args, format);
+    vsprintf(textBuffer, format, args);
+    va_end(args);
+
+    DrawTextInner(
+        vm->loadedSprite->texture, vm->loadedSprite, 0,
+        textGlyphWidth, color, textBuffer,
+        (vm->textFlags360 >> 1) & 1);
+    vm->flags35C |= 1;
+}
+
+// Target 0x00447AE0 right-aligns using the unscaled sprite width and a
+// target-observed one-pixel overlap between adjacent glyph cells.
+#pragma var_order(textBuffer, textGlyphWidth)
+void AnmRenderManagerView::DrawTextRight(
+    AnmVmView *vm, unsigned int color, const char *format, ...)
+{
+    char textBuffer[128];
+    int textX;
+    int textGlyphWidth = vm->glyphWidth <= 0 ? 17 : vm->glyphWidth;
+    va_list args;
+
+    va_start(args, format);
+    vsprintf(textBuffer, format, args);
+    va_end(args);
+
+    textX = static_cast<int>(
+        vm->loadedSprite->width -
+        strlen(textBuffer) * (textGlyphWidth - 1) / 2);
+    DrawTextInner(
+        vm->loadedSprite->texture, vm->loadedSprite, textX,
+        textGlyphWidth, color, textBuffer,
+        (vm->textFlags360 >> 1) & 1);
+    vm->flags35C |= 1;
+}
+
+// Target 0x00447BB0 centers text in the integer sprite width. Division of
+// both the sprite and glyph span is integral in the target.
+#pragma var_order(textBuffer, textGlyphWidth)
+void AnmRenderManagerView::DrawTextCentered(
+    AnmVmView *vm, unsigned int color, const char *format, ...)
+{
+    char textBuffer[128];
+    int textX;
+    int textGlyphWidth = vm->glyphWidth <= 0 ? 17 : vm->glyphWidth;
+    va_list args;
+
+    va_start(args, format);
+    vsprintf(textBuffer, format, args);
+    va_end(args);
+
+    textX = static_cast<int>(vm->loadedSprite->width) / 2 -
+        strlen(textBuffer) * (textGlyphWidth - 1) / 4;
+    DrawTextInner(
+        vm->loadedSprite->texture, vm->loadedSprite, textX,
+        textGlyphWidth, color, textBuffer,
+        (vm->textFlags360 >> 1) & 1);
+    vm->flags35C |= 1;
+}
+
+#undef textBuffer
+#undef textGlyphWidth
+#undef textX
+
+// Target 0x00447C80 consumes either a preloaded image or a synchronous file,
+// decodes it through a temporary 640x1024 surface, and preserves two copies:
+// a render-target-capable primary surface and an offscreen backup surface.
+int AnmRenderManagerView::LoadSurface(int surfaceIndex, const char *path)
+{
+    char filePath[256];
+    unsigned char *fileData;
+    int fileSize;
+    D3d9SurfaceView *surface;
+
+    if (surfaces[surfaceIndex] != NULL)
+        ReleaseSurface(surfaceIndex);
+
+    if (surfaceData[surfaceIndex] == NULL)
+    {
+        sprintf(filePath, "%s", path);
+        fileData = FileSystem::OpenFile(filePath, &fileSize, 0);
+        if (fileData == NULL)
+        {
+            g_AnmErrorLoggerView.Log(
+                "%s\x82\xaa\x93\xc7\x82\xdd\x8d\x9e\x82\xdf"
+                "\x82\xc8\x82\xa2\x82\xc5\x82\xb7\x81\x42\r\n",
+                path);
+            return -1;
+        }
+    }
+    else
+    {
+        fileData = surfaceData[surfaceIndex];
+        fileSize = surfaceDataSizes[surfaceIndex];
+        surfaceData[surfaceIndex] = NULL;
+    }
+
+    if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
+            g_Direct3DDevice, 640, 1024, g_AnmBackbufferFormat, 3,
+            &surface, NULL) != 0)
+    {
+        return -1;
+    }
+
+    if (D3DXLoadSurfaceFromFileInMemory(
+            surface, NULL, NULL, fileData, fileSize, NULL, 1, 0,
+            &surfaceInfo[surfaceIndex]) != 0)
+    {
+        goto error;
+    }
+
+    if (g_Direct3DDevice->vtable->CreateRenderTarget(
+            g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+            surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+            0, 0, 1, &surfaces[surfaceIndex], NULL) != 0)
+    {
+        if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
+                g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+                surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+                3, &surfaces[surfaceIndex], NULL) != 0)
+        {
+            goto error;
+        }
+    }
+
+    if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
+            g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+            surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+            3, &secondarySurfaces[surfaceIndex], NULL) != 0)
+    {
+        goto error;
+    }
+
+    if (D3DXLoadSurfaceFromSurface(
+            surfaces[surfaceIndex], NULL, NULL, surface, NULL, NULL,
+            1, 0) != 0)
+    {
+        goto error;
+    }
+    if (D3DXLoadSurfaceFromSurface(
+            secondarySurfaces[surfaceIndex], NULL, NULL, surface,
+            NULL, NULL, 1, 0) != 0)
+    {
+        goto error;
+    }
+
+    if (surface != NULL)
+    {
+        surface->vtable->Release(surface);
+        surface = NULL;
+    }
+    free(fileData);
+    return 0;
+
+error:
+    if (surface != NULL)
+    {
+        surface->vtable->Release(surface);
+        surface = NULL;
+    }
+    free(fileData);
+    return -1;
+}
+
+// Target 0x00447EC0 stages raw surface bytes for a later LoadSurface call.
+int AnmRenderManagerView::PreloadSurface(int surfaceIndex, const char *path)
+{
+    char filePath[256];
+    int fileSize;
+    unsigned char *fileData;
+
+    if (surfaces[surfaceIndex] != NULL)
+        ReleaseSurface(surfaceIndex);
+
+    sprintf(filePath, "%s", path);
+    fileData = FileSystem::OpenFile(filePath, &fileSize, 0);
+    if (fileData == NULL)
+    {
+        g_AnmErrorLoggerView.Log(
+            "%s\x82\xaa\x93\xc7\x82\xdd\x8d\x9e\x82\xdf"
+            "\x82\xc8\x82\xa2\x82\xc5\x82\xb7\x81\x42\r\n",
+            path);
+        return -1;
+    }
+
+    surfaceData[surfaceIndex] = fileData;
+    surfaceDataSizes[surfaceIndex] = fileSize;
+    return 0;
+}
+
+// Target 0x00447F70 releases the live pair and any still-staged file buffer.
+void AnmRenderManagerView::ReleaseSurface(int surfaceIndex)
+{
+    if (surfaces[surfaceIndex] != NULL)
+    {
+        surfaces[surfaceIndex]->vtable->Release(surfaces[surfaceIndex]);
+        surfaces[surfaceIndex] = NULL;
+    }
+    if (secondarySurfaces[surfaceIndex] != NULL)
+    {
+        secondarySurfaces[surfaceIndex]->vtable->Release(
+            secondarySurfaces[surfaceIndex]);
+        secondarySurfaces[surfaceIndex] = NULL;
+    }
+    if (surfaceData[surfaceIndex] != NULL)
+    {
+        free(surfaceData[surfaceIndex]);
+        surfaceData[surfaceIndex] = NULL;
+    }
+    surfaceData[surfaceIndex] = NULL;
+}
+
+// Target 0x00447FD0 restores the primary surface lazily from its offscreen
+// backup, then updates the requested point on the current backbuffer.
+void AnmRenderManagerView::CopySurfaceToBackbuffer(
+    int surfaceIndex, int left, int top, int x, int y)
+{
+    D3d9SurfaceView *backbuffer;
+    D3d9RectView sourceRect;
+    D3d9PointView destinationPoint;
+
+    if (secondarySurfaces[surfaceIndex] == NULL)
+        return;
+    if (g_Direct3DDevice->vtable->GetBackBuffer(
+            g_Direct3DDevice, 0, 0, 0, &backbuffer) != 0)
+    {
+        return;
+    }
+
+    if (surfaces[surfaceIndex] == NULL)
+    {
+        if (g_Direct3DDevice->vtable->CreateRenderTarget(
+                g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+                surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+                0, 0, 1, &surfaces[surfaceIndex], NULL) != 0)
+        {
+            if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
+                    g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+                    surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+                    3, &surfaces[surfaceIndex], NULL) != 0)
+            {
+                backbuffer->vtable->Release(backbuffer);
+                return;
+            }
+        }
+        if (D3DXLoadSurfaceFromSurface(
+                surfaces[surfaceIndex], NULL, NULL,
+                secondarySurfaces[surfaceIndex], NULL, NULL, 1, 0) != 0)
+        {
+            backbuffer->vtable->Release(backbuffer);
+            return;
+        }
+    }
+
+    sourceRect.left = left;
+    sourceRect.top = top;
+    sourceRect.right = surfaceInfo[surfaceIndex].width;
+    sourceRect.bottom = surfaceInfo[surfaceIndex].height;
+    destinationPoint.x = x;
+    destinationPoint.y = y;
+    g_Direct3DDevice->vtable->UpdateSurface(
+        g_Direct3DDevice, surfaces[surfaceIndex], &sourceRect,
+        backbuffer, &destinationPoint);
+    backbuffer->vtable->Release(backbuffer);
+}
+
+// Target 0x00448120 is the bounded-rectangle variant of the same operation.
+void AnmRenderManagerView::CopySurfaceToBackbuffer2(
+    int surfaceIndex, int destinationX, int destinationY,
+    int sourceX, int sourceY, int width, int height)
+{
+    D3d9SurfaceView *backbuffer;
+    D3d9RectView sourceRect;
+    D3d9PointView destinationPoint;
+
+    if (secondarySurfaces[surfaceIndex] == NULL)
+        return;
+    if (g_Direct3DDevice->vtable->GetBackBuffer(
+            g_Direct3DDevice, 0, 0, 0, &backbuffer) != 0)
+    {
+        return;
+    }
+
+    if (surfaces[surfaceIndex] == NULL)
+    {
+        if (g_Direct3DDevice->vtable->CreateRenderTarget(
+                g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+                surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+                0, 0, 1, &surfaces[surfaceIndex], NULL) != 0)
+        {
+            if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
+                    g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+                    surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+                    3, &surfaces[surfaceIndex], NULL) != 0)
+            {
+                backbuffer->vtable->Release(backbuffer);
+                return;
+            }
+        }
+        if (D3DXLoadSurfaceFromSurface(
+                surfaces[surfaceIndex], NULL, NULL,
+                secondarySurfaces[surfaceIndex], NULL, NULL, 1, 0) != 0)
+        {
+            backbuffer->vtable->Release(backbuffer);
+            return;
+        }
+    }
+
+    sourceRect.left = sourceX;
+    sourceRect.top = sourceY;
+    sourceRect.right = sourceX + width;
+    sourceRect.bottom = sourceY + height;
+    destinationPoint.x = destinationX;
+    destinationPoint.y = destinationY;
+    g_Direct3DDevice->vtable->UpdateSurface(
+        g_Direct3DDevice, surfaces[surfaceIndex], &sourceRect,
+        backbuffer, &destinationPoint);
+    backbuffer->vtable->Release(backbuffer);
+}
+
+// Target 0x00448270 copies a backbuffer rectangle into one ANM texture entry.
+void AnmRenderManagerView::CaptureToTexture(
+    int anmIndex, int entryIndex, int sourceX, int sourceY,
+    int sourceWidth, int sourceHeight, int destinationX,
+    int destinationY, int destinationWidth, int destinationHeight)
+{
+    D3d9SurfaceView *backbuffer;
+    D3d9SurfaceView *textureSurface;
+    D3d9RectView sourceRect;
+    D3d9RectView destinationRect;
+    D3d9TextureView *texture = loadedAnms[anmIndex]->textures[entryIndex].texture;
+
+    if (texture == NULL)
+        return;
+    FlushVertexBuffer();
+    if (g_Direct3DDevice->vtable->GetBackBuffer(
+            g_Direct3DDevice, 0, 0, 0, &backbuffer) != 0)
+    {
+        return;
+    }
+    if (texture->vtable->GetSurfaceLevel(
+            texture, 0, &textureSurface) != 0)
+    {
+        backbuffer->vtable->Release(backbuffer);
+        return;
+    }
+
+    sourceRect.left = sourceX;
+    sourceRect.top = sourceY;
+    sourceRect.right = sourceX + sourceWidth;
+    sourceRect.bottom = sourceY + sourceHeight;
+    destinationRect.left = destinationX;
+    destinationRect.top = destinationY;
+    destinationRect.right = destinationX + destinationWidth;
+    destinationRect.bottom = destinationY + destinationHeight;
+    if (D3DXLoadSurfaceFromSurface(
+            textureSurface, NULL, &destinationRect, backbuffer, NULL,
+            &sourceRect, 2, 0) != 0)
+    {
+        textureSurface->vtable->Release(textureSurface);
+        backbuffer->vtable->Release(backbuffer);
+        return;
+    }
+    textureSurface->vtable->Release(textureSurface);
+    backbuffer->vtable->Release(backbuffer);
+}
+
+// Target 0x00448360 copies arbitrary rectangles between two loaded ANM
+// texture entries. This complete function was absent from the initial Ghidra
+// candidate inventory but is delimited by its RET 0x10 and following padding.
+void AnmRenderManagerView::CopyTextureRect(
+    int destinationAnmIndex, int destinationEntryIndex,
+    int sourceAnmIndex, int sourceEntryIndex,
+    D3d9RectView *destinationRect, D3d9RectView *sourceRect)
+{
+    D3d9SurfaceView *destinationSurface;
+    D3d9SurfaceView *sourceSurface;
+    D3d9TextureView *destinationTexture =
+        loadedAnms[destinationAnmIndex]->textures[destinationEntryIndex].texture;
+    D3d9TextureView *sourceTexture =
+        loadedAnms[sourceAnmIndex]->textures[sourceEntryIndex].texture;
+
+    if (destinationTexture == NULL || sourceTexture == NULL)
+        return;
+    FlushVertexBuffer();
+    if (destinationTexture->vtable->GetSurfaceLevel(
+            destinationTexture, 0, &destinationSurface) != 0)
+    {
+        return;
+    }
+    if (sourceTexture->vtable->GetSurfaceLevel(
+            sourceTexture, 0, &sourceSurface) != 0)
+    {
+        destinationSurface->vtable->Release(destinationSurface);
+        return;
+    }
+
+    if (D3DXLoadSurfaceFromSurface(
+            destinationSurface, NULL, destinationRect, sourceSurface,
+            NULL, sourceRect, static_cast<unsigned int>(-1), 0) != 0)
+    {
+        destinationSurface->vtable->Release(destinationSurface);
+        sourceSurface->vtable->Release(sourceSurface);
+        return;
+    }
+    destinationSurface->vtable->Release(destinationSurface);
+    sourceSurface->vtable->Release(sourceSurface);
+}
+
+// Target 0x00448450 captures a backbuffer rectangle into a fresh primary
+// surface and mirrors it into the offscreen backup used across device loss.
+void AnmRenderManagerView::CaptureToSurface(
+    int surfaceIndex, int sourceX, int sourceY,
+    int sourceWidth, int sourceHeight, int destinationX,
+    int destinationY, int destinationWidth, int destinationHeight)
+{
+    D3d9SurfaceView *backbuffer;
+    D3d9RectView sourceRect;
+    D3d9RectView destinationRect;
+
+    FlushVertexBuffer();
+    if (surfaces[surfaceIndex] != NULL)
+        ReleaseSurface(surfaceIndex);
+
+    sourceRect.left = sourceX;
+    sourceRect.top = sourceY;
+    sourceRect.right = sourceX + sourceWidth;
+    sourceRect.bottom = sourceY + sourceHeight;
+    destinationRect.left = destinationX;
+    destinationRect.top = destinationY;
+    destinationRect.right = destinationX + destinationWidth;
+    destinationRect.bottom = destinationY + destinationHeight;
+
+    if (g_Direct3DDevice->vtable->GetBackBuffer(
+            g_Direct3DDevice, 0, 0, 0, &backbuffer) != 0)
+    {
+        return;
+    }
+
+    surfaceInfo[surfaceIndex].width = destinationWidth;
+    surfaceInfo[surfaceIndex].height = destinationHeight;
+    if (g_Direct3DDevice->vtable->CreateRenderTarget(
+            g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+            surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+            0, 0, 1, &surfaces[surfaceIndex], NULL) != 0)
+    {
+        if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
+                g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+                surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+                3, &surfaces[surfaceIndex], NULL) != 0)
+        {
+            goto out;
+        }
+    }
+
+    if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
+            g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
+            surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+            3, &secondarySurfaces[surfaceIndex], NULL) != 0)
+    {
+        goto out;
+    }
+    if (D3DXLoadSurfaceFromSurface(
+            surfaces[surfaceIndex], NULL, &destinationRect,
+            backbuffer, NULL, &sourceRect,
+            static_cast<unsigned int>(-1), 0) != 0)
+    {
+        goto out;
+    }
+    D3DXLoadSurfaceFromSurface(
+        secondarySurfaces[surfaceIndex], NULL, NULL,
+        surfaces[surfaceIndex], NULL, NULL,
+        static_cast<unsigned int>(-1), 0);
+
+out:
+    if (backbuffer != NULL)
+    {
+        backbuffer->vtable->Release(backbuffer);
+        backbuffer = NULL;
+    }
+}
+
 // Target 0x00446220 drains both manager-order lists. Compiler-generated member
 // destruction then releases the 20 sentinel VMs, primaryVm and 4096 inline-
 // pool VMs in that target-observed order.
@@ -1622,8 +2790,8 @@ void AnmLoadedView::InitializeVm(AnmVmView *vm, int scriptIndex)
     vm->alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
     vm->flags35C |= 0x40000000u;
     vm->scriptIndex = static_cast<short>(scriptIndex);
-    vm->unknown3A0[0] = 0x10;
-    vm->unknown3A0[1] = 0x10;
+    vm->glyphWidth = 0x10;
+    vm->glyphHeight = 0x10;
     SetAndExecuteScriptIndex(vm, scriptIndex);
 }
 

@@ -410,6 +410,7 @@ typedef char AnmMatrixViewSizeIs40[
 struct AnmSpriteView;
 struct AnmVmView;
 struct AnmLoadedView;
+struct AnmTextureEntryView;
 
 struct AnmVmIdView
 {
@@ -564,7 +565,8 @@ struct AnmVmView
             unsigned int usePointTextureFilter : 1;
         };
     };
-    unsigned char unknown360[0x008];
+    unsigned int textFlags360;
+    unsigned char unknown364[0x004];
     AnmVmTimerView interruptReturnTimer;
     AnmRawInstructionView *interruptReturnInstruction;
     int timeOfLastSpriteSet;
@@ -577,7 +579,9 @@ struct AnmVmView
     AnmSpriteView *loadedSprite;
     AnmVmCallback positionCallback;
     AnmVmCallback drawCallback;
-    unsigned char unknown3A0[0x00c];
+    unsigned char glyphWidth;
+    unsigned char glyphHeight;
+    unsigned char unknown3A2[0x00a];
 };
 
 typedef char AnmVmViewSizeIs3AC[
@@ -612,6 +616,10 @@ typedef char AnmVmTextureMatrixAt2BC[
     (offsetof(AnmVmView, textureMatrix2BC) == 0x2bc) ? 1 : -1];
 typedef char AnmVmFlagsAt35C[
     (offsetof(AnmVmView, flags35C) == 0x35c) ? 1 : -1];
+typedef char AnmVmTextFieldsAt360[
+    (offsetof(AnmVmView, textFlags360) == 0x360 &&
+     offsetof(AnmVmView, glyphWidth) == 0x3a0 &&
+     offsetof(AnmVmView, glyphHeight) == 0x3a1) ? 1 : -1];
 typedef char AnmVmScriptStateAt304[
     (offsetof(AnmVmView, pendingInterrupt) == 0x304 &&
      offsetof(AnmVmView, anmFile) == 0x308 &&
@@ -632,9 +640,12 @@ typedef char AnmVmInterpolationLayoutAt070[
 
 struct AnmSpriteView
 {
-    unsigned char unknown000[0x004];
-    void *texture;
-    unsigned char unknown008[0x010];
+    int anmFileIndex;
+    D3d9TextureView *texture;
+    float sourceX;
+    float sourceY;
+    float sourceRight;
+    float sourceBottom;
     float textureHeight;
     float textureWidth;
     float uStart;
@@ -654,17 +665,72 @@ typedef char AnmSpriteUvAt20[
     (offsetof(AnmSpriteView, uStart) == 0x20 &&
      offsetof(AnmSpriteView, vEnd) == 0x2c) ? 1 : -1];
 
+struct AnmRawEntryView
+{
+    int numSprites;
+    int numScripts;
+    unsigned int textureIndex;
+    int width;
+    int height;
+    int format;
+    unsigned int colorKey;
+    unsigned int nameOffset;
+    unsigned int spriteIndexOffset;
+    unsigned int mipmapNameOffset;
+    unsigned int version;
+    unsigned int priority;
+    unsigned int textureOffset;
+    unsigned char hasData;
+    unsigned char padding035[3];
+    unsigned int nextOffset;
+    unsigned int reserved03C;
+};
+
+struct AnmRawSpriteView
+{
+    unsigned int id;
+    float x;
+    float y;
+    float width;
+    float height;
+};
+
+struct AnmTextureHeaderView
+{
+    char magic[4];
+    unsigned short reserved004;
+    short format;
+    short width;
+    short height;
+    unsigned short reserved00C;
+    unsigned short reserved00E;
+};
+
+typedef char AnmRawEntryViewSizeIs40[
+    (sizeof(AnmRawEntryView) == 0x40 &&
+     offsetof(AnmRawEntryView, nextOffset) == 0x38) ? 1 : -1];
+typedef char AnmRawSpriteViewSizeIs14[
+    (sizeof(AnmRawSpriteView) == 0x14) ? 1 : -1];
+typedef char AnmTextureHeaderViewSizeIs10[
+    (sizeof(AnmTextureHeaderView) == 0x10) ? 1 : -1];
+
 struct AnmLoadedView
 {
-    short anmFileIndex;
-    unsigned char unknown002[0x106];
+    int anmFileIndex;
+    char path[0x104];
     void *rawData;
-    unsigned char unknown10C[0x00c];
+    int totalEntries;
+    int totalScripts;
+    int totalSprites;
     AnmSpriteView *sprites;
     AnmRawInstructionView **scripts;
-    void *unknown120;
+    AnmTextureEntryView *textures;
     int pendingLoadCount;
+    int releasePending;
+    void *mapData;
 
+    void LoadSprite(int spriteIndex, AnmSpriteView *sprite);
+    void Release();
     int SetSprite(AnmVmView *vm, int spriteIndex);
     void InitializeVm(AnmVmView *vm, int scriptIndex);
     void InitializeAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
@@ -693,9 +759,15 @@ struct AnmLoadedView
 };
 
 typedef char AnmLoadedSpritesAt118[
-    (offsetof(AnmLoadedView, sprites) == 0x118 &&
+    (sizeof(AnmLoadedView) == 0x130 &&
+     offsetof(AnmLoadedView, rawData) == 0x108 &&
+     offsetof(AnmLoadedView, totalEntries) == 0x10c &&
+     offsetof(AnmLoadedView, sprites) == 0x118 &&
      offsetof(AnmLoadedView, scripts) == 0x11c &&
-     offsetof(AnmLoadedView, pendingLoadCount) == 0x124) ? 1 : -1];
+     offsetof(AnmLoadedView, textures) == 0x120 &&
+     offsetof(AnmLoadedView, pendingLoadCount) == 0x124 &&
+     offsetof(AnmLoadedView, releasePending) == 0x128 &&
+     offsetof(AnmLoadedView, mapData) == 0x12c) ? 1 : -1];
 
 struct AnmTextureEntryView
 {
@@ -902,10 +974,15 @@ struct AnmRenderManagerView
     AnmVmView vmPool[0x1000];
     unsigned char vmPoolUsed[0x1000];
     int nextVmPoolIndex;
-    unsigned char unknown3AD06C[0x084];
+    AnmLoadedView *loadedAnms[33];
     AnmMatrixView cachedWorldMatrix;
     AnmVmView primaryVm;
-    unsigned char unknown3AD4DC[0x584];
+    unsigned char unknown3AD4DC[0x004];
+    D3d9SurfaceView *surfaces[32];
+    D3d9SurfaceView *secondarySurfaces[32];
+    unsigned char *surfaceData[32];
+    int surfaceDataSizes[32];
+    D3d9ImageInfoView surfaceInfo[32];
     unsigned int currentTextureFactor;
     void *currentTexture;
     unsigned char currentBlendMode;
@@ -936,6 +1013,63 @@ struct AnmRenderManagerView
     ~AnmRenderManagerView();
     void SetupVertexBuffer();
     void ApplyTextureAlphaBleed(AnmTextureEntryView *entry);
+    int LoadTexture(
+        AnmTextureEntryView *entry, unsigned char *data, int size,
+        int format, int unused, int hasData);
+    int LoadTextureRegion(
+        AnmTextureEntryView *entry, unsigned char *data, int size,
+        int format, int unused, int hasData, int top);
+    int CreateTextureFromFile(
+        AnmTextureEntryView *entry, int format, unsigned int colorKey,
+        int width, int height);
+    int CreateTextureFromAnm(
+        D3d9TextureView **texture, void *textureData, int format,
+        int width, int height);
+    int CreateEmptyTexture(
+        D3d9TextureView **texture, int width, int height, int format);
+    AnmLoadedView *LoadAnm(int index, const char *path);
+    AnmLoadedView *ReadAnmEntries(int index, const char *path);
+    AnmLoadedView *PreloadAnm(int index, const char *path);
+    int LoadExternalTextureData(
+        AnmLoadedView *loaded, int entryNumber, int *spriteCount,
+        int *scriptCount, AnmRawEntryView *rawEntry);
+    AnmLoadedView *PostloadAnmEntry(AnmLoadedView *loaded);
+    int LoadTextureData(
+        AnmLoadedView *loaded, int entryNumber, int spriteCount,
+        int scriptCount, AnmRawEntryView *rawEntry);
+    int ServicePreloadedAnms();
+    void ReleaseAnm(int index);
+    TH10_ANM_NOINLINE void DrawTextInner(
+        D3d9TextureView *texture, AnmSpriteView *sprite,
+        int x, int glyphWidth,
+        unsigned int color, const char *text,
+        int useAlternateRenderer);
+    void DrawTextLeft(
+        AnmVmView *vm, unsigned int color, const char *format, ...);
+    void DrawTextRight(
+        AnmVmView *vm, unsigned int color, const char *format, ...);
+    void DrawTextCentered(
+        AnmVmView *vm, unsigned int color, const char *format, ...);
+    int LoadSurface(int surfaceIndex, const char *path);
+    int PreloadSurface(int surfaceIndex, const char *path);
+    TH10_ANM_NOINLINE void ReleaseSurface(int surfaceIndex);
+    void CopySurfaceToBackbuffer(
+        int surfaceIndex, int left, int top, int x, int y);
+    void CopySurfaceToBackbuffer2(
+        int surfaceIndex, int destinationX, int destinationY,
+        int sourceX, int sourceY, int width, int height);
+    void CaptureToTexture(
+        int anmIndex, int entryIndex, int sourceX, int sourceY,
+        int sourceWidth, int sourceHeight, int destinationX,
+        int destinationY, int destinationWidth, int destinationHeight);
+    void CopyTextureRect(
+        int destinationAnmIndex, int destinationEntryIndex,
+        int sourceAnmIndex, int sourceEntryIndex,
+        D3d9RectView *destinationRect, D3d9RectView *sourceRect);
+    void CaptureToSurface(
+        int surfaceIndex, int sourceX, int sourceY,
+        int sourceWidth, int sourceHeight, int destinationX,
+        int destinationY, int destinationWidth, int destinationHeight);
     static int __stdcall ExecuteScript(AnmVmView *vm);
     int UpdatePrimaryVms();
     int UpdateSecondaryVms();
@@ -1050,11 +1184,19 @@ typedef char AnmRenderCachedWorldMatrixAt3AD0F0[
 typedef char AnmRenderPrimaryVmAt3AD130[
     (offsetof(AnmRenderManagerView, primaryVm) == 0x3ad130 &&
      offsetof(AnmRenderManagerView, primaryVm.generatedVertices) == 0x3ad488) ? 1 : -1];
+typedef char AnmRenderLoadedAnmsAt3AD06C[
+    (offsetof(AnmRenderManagerView, loadedAnms) == 0x3ad06c) ? 1 : -1];
 typedef char AnmRenderUntexturedVerticesAt3ADA78[
     (offsetof(AnmRenderManagerView, untexturedVertices) == 0x3ada78) ? 1 : -1];
 typedef char AnmRenderMixColorAt732458[
     (offsetof(AnmRenderManagerView, mixColor) == 0x732458 &&
      offsetof(AnmRenderManagerView, useMixColor) == 0x73245c) ? 1 : -1];
+typedef char AnmRenderSurfaceStorageAt3AD4E0[
+    (offsetof(AnmRenderManagerView, surfaces) == 0x3ad4e0 &&
+     offsetof(AnmRenderManagerView, secondarySurfaces) == 0x3ad560 &&
+     offsetof(AnmRenderManagerView, surfaceData) == 0x3ad5e0 &&
+     offsetof(AnmRenderManagerView, surfaceDataSizes) == 0x3ad660 &&
+     offsetof(AnmRenderManagerView, surfaceInfo) == 0x3ad6e0) ? 1 : -1];
 typedef char AnmRenderManagerViewSizeIs732460[
     (sizeof(AnmRenderManagerView) == 0x732460) ? 1 : -1];
 
@@ -1121,10 +1263,15 @@ void __cdecl AsciiConfigureBackgroundViewport(int index);
 
 struct AnmErrorLoggerView
 {
-    void Log(const char *message);
+    void Log(const char *format, ...);
 };
 
 extern void *g_AnmFileSystemView;
+extern signed char g_AnmPreloadStopRequested;
+extern unsigned char g_AnmHardwareFlags;
+extern const unsigned int g_AnmTextureFormats[6];
+extern const unsigned int g_AnmTextureBytesPerPixel[6];
+extern unsigned int g_AnmBackbufferFormat;
 extern void *g_AnmChainView;
 extern AnmErrorLoggerView g_AnmErrorLoggerView;
 extern unsigned char g_AnmChainCriticalSection[];
@@ -1149,5 +1296,43 @@ extern "C" AnmMatrixView *__stdcall D3DXMatrixMultiply(
 
 extern "C" void __stdcall EnterCriticalSection(void *criticalSection);
 extern "C" void __stdcall LeaveCriticalSection(void *criticalSection);
+extern "C" void __stdcall Sleep(unsigned long milliseconds);
+extern "C" long __stdcall D3DXCreateTexture(
+    D3d9DeviceView *device, unsigned int width, unsigned int height,
+    unsigned int levels, unsigned long usage, unsigned int format,
+    unsigned int pool, D3d9TextureView **texture);
+extern "C" long __stdcall D3DXCreateTextureFromFileInMemoryEx(
+    D3d9DeviceView *device, const void *sourceData,
+    unsigned int sourceDataSize, unsigned int width, unsigned int height,
+    unsigned int levels, unsigned long usage, unsigned int format,
+    unsigned int pool, unsigned int filter, unsigned int mipFilter,
+    unsigned int colorKey, void *sourceInfo, void *palette,
+    D3d9TextureView **texture);
+extern "C" long __stdcall D3DXLoadSurfaceFromMemory(
+    D3d9SurfaceView *destinationSurface, const void *destinationPalette,
+    const D3d9RectView *destinationRect, const void *sourceMemory,
+    unsigned int sourceFormat, unsigned int sourcePitch,
+    const void *sourcePalette, const D3d9RectView *sourceRect,
+    unsigned int filter, unsigned int colorKey);
+extern "C" long __stdcall D3DXLoadSurfaceFromFileInMemory(
+    D3d9SurfaceView *destinationSurface, const void *destinationPalette,
+    const D3d9RectView *destinationRect, const void *sourceData,
+    unsigned int sourceDataSize, const D3d9RectView *sourceRect,
+    unsigned int filter, unsigned int colorKey, void *sourceInfo);
+extern "C" long __stdcall D3DXLoadSurfaceFromSurface(
+    D3d9SurfaceView *destinationSurface, const void *destinationPalette,
+    const D3d9RectView *destinationRect, D3d9SurfaceView *sourceSurface,
+    const void *sourcePalette, const D3d9RectView *sourceRect,
+    unsigned int filter, unsigned int colorKey);
+
+namespace TextHelperView
+{
+void __stdcall RenderTextToTexture(
+    const D3d9RectView *rectangle, int x, int glyphWidth,
+    unsigned int color, const char *text, D3d9TextureView *texture);
+void __stdcall RenderTextToTextureAlternate(
+    const D3d9RectView *rectangle, int x, int glyphWidth,
+    unsigned int color, const char *text, D3d9TextureView *texture);
+}
 
 #undef TH10_ANM_NOINLINE
