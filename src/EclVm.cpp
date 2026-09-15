@@ -189,29 +189,33 @@ static bool IsOperandIndirect(
     return (instruction->operandFlags & (1U << index)) != 0;
 }
 
-static int PopInt(EclVmContext *context)
+static __forceinline int PopInt(EclVmContext *context)
 {
     int value;
     context->stack.Pop('i', sizeof(value), &value);
     return value;
 }
 
-static float PopFloat(EclVmContext *context)
+static __forceinline float PopFloat(EclVmContext *context)
 {
     float value;
     context->stack.Pop('f', sizeof(value), &value);
     return value;
 }
 
-static int PushInt(EclVmContext *context, int value)
+// Target Run expands these scalar wrappers but retains calls to the separate
+// EclVmStackView::Push owner.  Limit nested inlining only across this pair.
+#pragma inline_depth(1)
+static __forceinline int PushInt(EclVmContext *context, int value)
 {
     return context->stack.Push('i', sizeof(value), &value);
 }
 
-static int PushFloat(EclVmContext *context, float value)
+static __forceinline int PushFloat(EclVmContext *context, float value)
 {
     return context->stack.Push('f', sizeof(value), &value);
 }
+#pragma inline_depth(16)
 
 static void Jump(EclVmContext *context, const EclVmInstruction *instruction)
 {
@@ -221,7 +225,7 @@ static void Jump(EclVmContext *context, const EclVmInstruction *instruction)
         + OperandInt(instruction, 0));
 }
 
-static void EvaluateFormatOperands(EclVmContext *context)
+static __forceinline void EvaluateFormatOperands(EclVmContext *context)
 {
     const EclVmInstruction *instruction = context->instruction;
     const char *format = reinterpret_cast<const char *>(instruction) + 0x14;
@@ -229,7 +233,7 @@ static void EvaluateFormatOperands(EclVmContext *context)
     char *scratch = static_cast<char *>(malloc(0x400));
     scratch[0] = '\0';
 
-    unsigned int flagIndex = 1;
+    unsigned char flagIndex = 1;
     int metadataOffset = 0;
     int valueWord = 6;
     while (cursor != NULL) {
@@ -706,7 +710,6 @@ int EclVmContext::Run(float timeDelta)
                 }
 
                 EclVmScalar value;
-                value.bits = 0;
                 stack.Pop(0, sizeof(value), &value);
                 instruction = value.instruction;
                 stack.Pop(0, sizeof(value), &value);
@@ -748,7 +751,7 @@ int EclVmContext::Run(float timeDelta)
             case ECL_VM_SPAWN_THREAD_WITH_ID:
             {
                 const unsigned int idIndex =
-                    static_cast<unsigned int>((OperandInt(current, 0) + 4) >> 2);
+                    static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;
                 const int id = ReadIntValue(
                     1, OperandInt(current, idIndex));
                 host->SpawnThread(id, 1);

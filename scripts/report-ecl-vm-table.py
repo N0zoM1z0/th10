@@ -10,6 +10,7 @@ import re
 import struct
 import sys
 
+from linked_image import LinkedImageError, PEImage
 from target_identity import pe_bytes_at, resolve_target, verify_target
 
 
@@ -55,13 +56,118 @@ def parse_source(path: Path) -> tuple[dict[str, int], list[str], list[str]]:
     return enum_values, case_names, problems
 
 
+def candidate_case_layout(
+    path: Path,
+    function_address: int,
+    selectors: bytes,
+    target_jump_table: tuple[int, ...],
+    enum_values: dict[str, int],
+) -> dict[str, object]:
+    image = PEImage(path)
+    raw_hits = []
+    cursor = 0
+    while True:
+        hit = image.data.find(selectors, cursor)
+        if hit < 0:
+            break
+        raw_hits.append(hit)
+        cursor = hit + 1
+    if len(raw_hits) != 1:
+        raise ValueError(
+            "candidate must contain exactly one target selector table, found "
+            f"{len(raw_hits)}"
+        )
+
+    selector_raw = raw_hits[0]
+    selector_address = None
+    for section in image.sections:
+        relative = selector_raw - section.raw_offset
+        if 0 <= relative and relative + len(selectors) <= section.raw_size:
+            selector_address = image.image_base + section.rva + relative
+            break
+    if selector_address is None:
+        raise ValueError("candidate selector table is not mapped by one PE section")
+
+    jump_table_address = selector_address - JUMP_TABLE_ENTRIES * 4
+    jump_table = struct.unpack(
+        f"<{JUMP_TABLE_ENTRIES}I",
+        image.read_address(jump_table_address, JUMP_TABLE_ENTRIES * 4),
+    )
+    if len(set(jump_table)) != JUMP_TABLE_ENTRIES:
+        raise ValueError("candidate jump table does not have 60 unique destinations")
+    invalid_destinations = [
+        destination
+        for destination in jump_table
+        if not function_address <= destination < jump_table_address
+    ]
+    if invalid_destinations:
+        raise ValueError(
+            "candidate jump-table destination leaves the function code extent: "
+            + ", ".join(f"0x{value:08X}" for value in invalid_destinations[:4])
+        )
+
+    def destination_gaps(
+        table: tuple[int, ...], limit: int
+    ) -> dict[int, int]:
+        destinations = sorted(set(table))
+        following = destinations[1:] + [limit]
+        return {
+            destination: next_destination - destination
+            for destination, next_destination in zip(destinations, following)
+        }
+
+    target_gaps = destination_gaps(target_jump_table, ALIGNMENT_ADDRESS)
+    candidate_gaps = destination_gaps(jump_table, jump_table_address)
+    names_by_opcode = {value: name for name, value in enum_values.items()}
+    rows = []
+    for opcode, selector in enumerate(selectors):
+        target_destination = target_jump_table[selector]
+        if target_destination == DEFAULT_DESTINATION:
+            continue
+        candidate_destination = jump_table[selector]
+        target_relative = target_destination - FUNCTION_ADDRESS
+        candidate_relative = candidate_destination - function_address
+        target_gap = target_gaps[target_destination]
+        candidate_gap = candidate_gaps[candidate_destination]
+        rows.append(
+            {
+                "opcode": f"0x{opcode:02X}",
+                "name": names_by_opcode.get(opcode, "unknown"),
+                "target_destination": f"0x{target_destination:08X}",
+                "candidate_destination": f"0x{candidate_destination:08X}",
+                "target_relative": target_relative,
+                "candidate_relative": candidate_relative,
+                "relative_delta": candidate_relative - target_relative,
+                "target_next_destination_gap": target_gap,
+                "candidate_next_destination_gap": candidate_gap,
+                "gap_delta": candidate_gap - target_gap,
+            }
+        )
+    return {
+        "image": str(path),
+        "image_sha256": image.sha256,
+        "function_address": f"0x{function_address:08X}",
+        "jump_table_address": f"0x{jump_table_address:08X}",
+        "selector_table_address": f"0x{selector_address:08X}",
+        "case_rows": rows,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("executable", nargs="?", type=Path)
     parser.add_argument("--source", type=Path, default=DEFAULT_SOURCE)
+    parser.add_argument("--candidate", type=Path)
+    parser.add_argument(
+        "--candidate-function-address", type=lambda value: int(value, 0)
+    )
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
+    if (args.candidate is None) != (args.candidate_function_address is None):
+        parser.error(
+            "--candidate and --candidate-function-address must be supplied together"
+        )
 
     target = resolve_target(args.executable)
     if not target.is_file():
@@ -82,7 +188,22 @@ def main() -> int:
         alignment = pe_bytes_at(image, ALIGNMENT_ADDRESS, 2)
         following_padding = pe_bytes_at(image, OWNER_END_ADDRESS + 1, 4)
         enum_values, case_names, source_problems = parse_source(args.source)
-    except (OSError, UnicodeError, ValueError, struct.error) as exc:
+        candidate_layout = None
+        if args.candidate is not None:
+            candidate_layout = candidate_case_layout(
+                args.candidate,
+                args.candidate_function_address,
+                selectors,
+                jump_table,
+                enum_values,
+            )
+    except (
+        OSError,
+        UnicodeError,
+        ValueError,
+        struct.error,
+        LinkedImageError,
+    ) as exc:
         print(f"error: {exc}", file=sys.stderr)
         return 2
 
@@ -158,6 +279,7 @@ def main() -> int:
         "source_enum_entries": len(enum_values),
         "source_case_labels": len(case_names),
         "active_opcode_values": [f"0x{value:02X}" for value in active_opcodes],
+        "candidate_case_layout": candidate_layout,
         "problems": problems,
     }
     if args.json:
@@ -181,6 +303,24 @@ def main() -> int:
             f"source: {len(enum_values)} enum entries / "
             f"{len(case_names)} case labels"
         )
+        if candidate_layout is not None:
+            print(
+                "candidate tables: "
+                f"{candidate_layout['jump_table_address']} / "
+                f"{candidate_layout['selector_table_address']}"
+            )
+            print(
+                "opcode  target+  candidate+  delta  next-gap target/candidate"
+            )
+            for row in candidate_layout["case_rows"]:
+                print(
+                    f"{row['opcode']:>6}  {row['target_relative']:7d}  "
+                    f"{row['candidate_relative']:10d}  "
+                    f"{row['relative_delta']:5d}  "
+                    f"{row['target_next_destination_gap']:4d}/"
+                    f"{row['candidate_next_destination_gap']:<4d}  "
+                    f"{row['name']}"
+                )
         if problems:
             for problem in problems:
                 print(f"problem: {problem}", file=sys.stderr)
