@@ -252,3 +252,13 @@ PlayerUpdateCallbackBody,0x00425730,function
 EclVmContext::Run,0x0044E1A0,function
 GuiView::UpdateStageElements,0x00414900,function
 GuiMessageVmView::Run,0x00415E90,function
+WinMain,0x00438AD0,function
+GameWindowView::WindowProc,0x004390E0,function
+GameWindowView::Present,0x004391F0,function
+GameWindowView::Render,0x00439390,function
+GameWindowView::GetTimestamp,0x00439540,function
+GameWindowView::CreateGameWindow,0x00439730,function
+GameWindowView::InitD3DRendering,0x00439890,function
+GameWindowView::ResetRenderState,0x00439D20,function
+GameWindowView::CheckForRunningGameInstance,0x00439FF0,function
+GameWindowView::CalcExecutableChecksum,0x0043A1C0,function

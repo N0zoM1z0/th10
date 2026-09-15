@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `d4352b5 gpt-5.6-sol: reconstruct generic ECL VM core`, branch `main`.
+- Current packet base: `623cd37 gpt-5.6-sol: reconstruct GUI update and message cores`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -41,18 +41,19 @@
 - Completed session checkpoint: `adfd172 gpt-5.6-sol: reconstruct Enemy ECL dispatcher`.
 - Completed session checkpoint: `ff78689 gpt-5.6-sol: reconstruct Enemy callback core`.
 - Completed session checkpoint: `d4352b5 gpt-5.6-sol: reconstruct generic ECL VM core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct GUI update and message cores`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean generic-ECL-VM checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-gui-core/`. The earlier generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `623cd37 gpt-5.6-sol: reconstruct GUI update and message cores`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct Main execution corridor`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean GUI-core checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-main-corridor/`. The earlier GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `acfcf07...` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `623cd371e5ccb44a186253d90c104e93d5af0df1` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
-Fresh repository preflight passed at the start of the current ANM reconstruction session:
+Fresh repository preflight passed at the start of the current Main reconstruction session:
 
 - `python3 scripts/verify-target.py`
 - `python3 scripts/verify-toolchain.py --execute`
@@ -63,61 +64,65 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: stage GUI update and message VM
+## Current packet: Main execution corridor
 
-`GuiView::UpdateStageElements @ 0x00414900` and
-`GuiMessageVmView::Run @ 0x00415E90` are now maintained in `src/Gui.cpp`.
-The first is the central stage-HUD update owner; the second is the complete
-compact message interpreter called by it. Both use one stack pointer and end
-in `RET 4`; the registered update entry at `0x00415AE0` pushes its GUI pointer
-before calling `0x00414900`.
+Ten central application/window/D3D owners now have maintained source in
+`src/Main.cpp` across 5,456 reviewed target bytes:
 
-Constructor and consumer evidence establishes the message state as exactly
-`0x90` bytes. It contains three `0x14`-byte timers, six managed VM ids, the
-current variable-sized instruction, two text positions, input cooldown,
-skippable and alternating-line state, active side and two colors. Message
-records contain `u16 time`, one-byte opcode and payload size, then the payload;
-the next record is payload plus size. The maintained switch covers all 24
-opcodes `0..23`: message completion, portrait/text VM creation and retirement,
-side and skip control, input wait, stage-specific child sprites and enemy-name
-scripts, stage-clear/save/score transitions, and the two retained stage-event
-paths.
+- `WinMain @ 0x00438AD0`
+- `GameWindowView::WindowProc @ 0x004390E0`
+- `GameWindowView::Present @ 0x004391F0`
+- `GameWindowView::Render @ 0x00439390`
+- `GameWindowView::GetTimestamp @ 0x00439540`
+- `GameWindowView::CreateGameWindow @ 0x00439730`
+- `GameWindowView::InitD3DRendering @ 0x00439890`
+- `GameWindowView::ResetRenderState @ 0x00439D20`
+- `GameWindowView::CheckForRunningGameInstance @ 0x00439FF0`
+- `GameWindowView::CalcExecutableChecksum @ 0x0043A1C0`
 
-The GUI owner is an exact-sized `0x9ED0` view. Constructor `0x00413810` proves
-the six embedded VM arrays at `+0x10/+0x24C8/+0x4980/+0x6A8C/+0x793C/+0x8094`
-and a separate VM at `+0x9A48`; the tail owns managed VM ids, boss gauge state,
-four interleaved gauge values, the message pointer, stage/front ANM resources,
-spell-second state and ending counter. The updater advances the display groups,
-uses the target player-position boundaries for the side panel and boss gauge,
-maintains the five counter digits, interpolates boss gauge value by `0.025f`,
-runs and disposes the message state, updates spell digits and drives the boss
-position marker. The four-phase boss marker thresholds are
-`700/400/200/200` or `2000/1000/400/400`; phases zero through two transition
-below the threshold and phase three transitions above it.
+The source covers startup and configuration, the Win32 message/device-loss
+loop, restart and teardown, window activation/close handling, frame timing,
+gameplay/draw callback chains, ANM buffer servicing, presentation and snapshot
+capture, window/fullscreen setup, the D3D9 HAL/software/REF fallback ladder,
+view/projection/viewport setup, single-instance and launch-path handling, and
+executable checksum calculation. `ResetRenderState` retains the complete target
+order of 19 render-state, eight texture-stage and six sampler-state calls plus
+five ANM manager cache writes.
 
-Direct boundary review expands the two physical owners beyond their reachable
-code. `0x00414900-0x004157FB` is 3,836 bytes: code ends at `0x004157DC`, three
-alignment bytes follow, and a seven-entry stage selector occupies
-`0x004157E0-0x004157FB`. `0x00415E90-0x0041700F` is 4,480 bytes: code ends at
-`0x00416F61`, two alignment bytes follow, and 43 pointers occupy
-`0x00416F64-0x0041700F`. Those pointers partition into the 24-entry opcode
-table, seven enemy-portrait stage cases, seven enemy-name stage cases and five
-difficulty bonus cases. `scripts/report-gui-core.py --check` verifies the
-target identity, both boundaries, all table destinations and exact source
-opcode/case coverage.
+`src/Main.hpp` provides target-bounded Win32/D3D9 views without changing the
+existing exact-sensitive D3D declarations. Compile-time assertions close
+`GameWindowView` at `0x58` bytes and bind its QPC/path/timestamp fields. They
+also bind the Main supervisor's D3D objects, matrices, viewport and
+presentation parameters, serialized configuration, gameplay and active
+viewports, transition/render flags, music owner, caps, seven critical sections,
+render-state cache and last-frame duration. The allocation registry is exactly
+`0xA004` bytes.
 
-Pinned VC7.1 SP1 build6030 compiles `src/Gui.cpp` under fixed normal, `/GL`,
-and `/W4` profiles. Normal COMDATs are 690 and 1,348 bytes; linked `/GL`
-contributions are 689 and 1,560 bytes, against the 3,836- and 4,480-byte target
-owners. Both target-bound diagnostics are mismatches with
-`acceptance_authority=none`, consistent with substantial target inlining but
-insufficient to identify the production link context. No exact claim is added.
-Repository totals become **1,309 candidates, 253 source mappings and 110 exact
-functions / 12,166 bytes**.
+`scripts/report-main-corridor.py --check` fails closed on the wrong executable
+and validates all ten extents, epilogues and separating padding, the registered
+window-procedure pointer, source marker order, layout assertions and all 33 D3D
+state calls. It reports ten owners / 5,456 bytes.
 
-The adjacent GUI constructor/load/draw/message-start bodies at
-`0x00413810/0x00413980/0x00415800/0x00415B00/0x00415DB0` remain bounded
-follow-up units. The next user-selected core batch is the Main corridor.
+Pinned VC7.1 SP1 build6030 compiles `src/Main.cpp` under fixed normal `/GS`, the
+same profile plus `/GL`, and `/W4`. Nine owners remain diagnostic mismatches.
+`GetTimestamp` is 282/282 bytes in both lanes and matches 159/162 comparable
+bytes; the only differences are three instances of the stack-frame constant
+`0x10` versus target `0x14`. In the selected `Render` LTCG context,
+`CreateGameWindow` is also 341/341 bytes but differs in 11 of 261 comparable
+bytes.
+
+`ResetRenderState` is the strongest result: normal and selected `/GL` lanes both
+produce the complete 710-byte extent, account for all 34 linkage fields and
+match all 574 comparable bytes. Both diagnostics are `structural-exact` with
+`acceptance_authority=none`. Physical normal-COFF versus LTCG ownership and the
+original TU identity are still unresolved, so no canonical unit or exact ledger
+row is added.
+
+Repository totals become **1,309 candidates, 263 source mappings and 110 exact
+functions / 12,166 bytes**. The remaining nearby Main owners are bounded leaf
+or medium seams at `0x00438A30/60`, `0x004392E0`, `0x00439350`, `0x00439660`,
+`0x00439700`, `0x0043A1B0`, `0x0043A290`, and `0x0043A3A0`; they remain in the
+Web queue. The central Main execution skeleton is now source-present.
 
 ## Completed packet: generic typed-stack ECL VM
 
