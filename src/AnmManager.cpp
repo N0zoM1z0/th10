@@ -4550,12 +4550,10 @@ int AnmRenderManagerView::Draw2D(AnmVmView *vm)
     sine = static_cast<float>(sin(rotation));
 #endif
 
-    xOffset = vm->alternatePosition.x;
-    xOffset += vm->positionOffset.x;
-    xOffset += vm->position.x;
-    yOffset = vm->alternatePosition.y;
-    yOffset += vm->positionOffset.y;
-    yOffset += vm->position.y;
+    // Keep each three-term sum in one expression: splitting it into compound
+    // assignments changes VC7.1's anchor-mask/Y-load schedule.
+    xOffset = vm->alternatePosition.x + vm->positionOffset.x + vm->position.x;
+    yOffset = vm->alternatePosition.y + vm->positionOffset.y + vm->position.y;
     spriteWidth = vm->spriteWidth * vm->scaleX;
     spriteHeight = vm->spriteHeight * vm->scaleY;
 
@@ -4638,12 +4636,10 @@ int AnmRenderManagerView::Draw2DRotatedOrAxisAligned(AnmVmView *vm)
     sine = static_cast<float>(sin(rotation));
 #endif
 
-    xOffset = vm->alternatePosition.x;
-    xOffset += vm->positionOffset.x;
-    xOffset += vm->position.x;
-    yOffset = vm->alternatePosition.y;
-    yOffset += vm->positionOffset.y;
-    yOffset += vm->position.y;
+    // Keep each three-term sum in one expression: splitting it into compound
+    // assignments changes VC7.1's anchor-mask/Y-load schedule.
+    xOffset = vm->alternatePosition.x + vm->positionOffset.x + vm->position.x;
+    yOffset = vm->alternatePosition.y + vm->positionOffset.y + vm->position.y;
     spriteWidth = vm->spriteWidth * vm->scaleX;
     spriteHeight = vm->spriteHeight * vm->scaleY;
 

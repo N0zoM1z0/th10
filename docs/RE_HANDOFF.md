@@ -53,14 +53,15 @@
 - Completed session checkpoint: `5f719b6 gpt-5.6-sol: complete front-end practice draw`.
 - Completed session checkpoint: `27b272a gpt-5.6-sol: reconstruct front-end score entry`.
 - Completed session checkpoint: `3fd501c gpt-5.6-sol: fix ANM exact owner boundaries`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM Draw3D`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `7a2779f gpt-5.6-sol: recover exact ANM Draw3D`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM Draw2D pair`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-ecl-exact-next/`. The earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `3fd501c` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `7a2779f` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -133,6 +134,27 @@ its count is the conservative intersection of candidates whose origin and
 boundary reviews are both complete. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
+
+## Completed packet: exact ANM Draw2D pair
+
+The two 591-byte rotated two-dimensional draw owners at `0x004436C0` and
+`0x00443910` previously reproduced every target field and all but one
+equal-length scheduling region. In the near match, VC7.1 began loading the Y
+coordinate before completing the horizontal-anchor `AND/SUB`; the target
+completes that integer normalization first.
+
+The maintained source had split each three-term coordinate sum across one
+assignment and two compound assignments. Restoring each to one naturally
+left-associated C++ expression retains the same operand order and arithmetic,
+while giving VC7.1 the target instruction schedule. Both complete linked `/GL`
+PDB contributions now replay exactly: **591/591 bytes and 21/21 fields each**.
+No padding, volatile dependency, copied bytes, or new assembly was introduced.
+
+Two focused cold replays close both owners. A final full-source cold gate closes
+all **68 configured `src/AnmManager.cpp` units / 10 artifacts / 13,179 target
+bytes**. Repository totals are now **118 exact functions / 15,170 bytes**. The
+ANM module has 58 exact owners / 12,343 bytes and 65 source-present authored
+owners / 29,364 bytes remaining.
 
 ## Completed packet: exact ANM Draw3D
 
@@ -1214,13 +1236,14 @@ is corroborated by TH08's same mode table and remains a descriptive hypothesis;
 all behavior, boundaries, ABIs and duplicate-body facts come from TH10.
 
 Pinned VC7.1 SP1 build6030 `/GL` produces complete 591-byte PDB contributions
-for both methods. Each probe matches 497/507 comparable bytes; the only ten
-non-linkage differences are one equal-length scheduling choice at offsets
+for both methods. The initial form matched 497/507 comparable bytes; its only
+ten non-linkage differences were one equal-length scheduling choice at offsets
 `+0x54..+0x5E`, where the target completes the horizontal anchor mask before
-loading the first Y-offset operand. No exact promotion is made. Natural
-calculation-order and aggregate-layout experiments either preserved those ten
-differences or moved farther from the target; no inert dependency or padding
-was introduced.
+loading the first Y-offset operand. A later exact-source pass recovered the
+original expression family: keeping each three-term coordinate sum as one
+left-associated expression reproduces all 507 comparable bytes and all 21
+fields in both owners. The canonical promotions are recorded in the current
+exact Draw2D packet.
 
 Current tracking contains **1,289** candidates, **166** authored functions,
 **140** source mappings, and **68 canonical exact functions / 6,954 bytes**.
@@ -1771,13 +1794,12 @@ The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, bac
 ## Next hard frontier
 
 Continue the user-selected ANM/ECL exact campaign owner by owner. Rerun the
-dual-lane ranking after the Draw3D promotion. The next close core pair is
-`Draw2D @ 0x004436C0` and `Draw2DRotatedOrAxisAligned @ 0x00443910`: each is
-591/591 linked bytes with 497/507 comparable bytes already equal. The
-440-byte `SetRenderStateForVm3D @ 0x004423E0` follows at 396/408 comparable
-bytes. `UpdatePulsingRadialTrail @ 0x00445620` remains a useful two-byte
-compiler-scheduling probe, but do not distort its natural source while that
-last X87 ordering difference remains unexplained.
+dual-lane ranking after the Draw2D pair promotion. The next close core owner is
+`SetRenderStateForVm3D @ 0x004423E0`: its complete 440-byte linked contribution
+already matches 396/408 comparable bytes. `UpdatePulsingRadialTrail @
+0x00445620` remains a useful two-byte compiler-scheduling probe, but do not
+distort its natural source while that last X87 ordering difference remains
+unexplained.
 
 The largest remaining core owners are ANM `ExecuteScript @ 0x00450B30`
 (9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). Use smaller
