@@ -35,6 +35,22 @@ target_address = 0x00450690
 size = 64
 linkages = []
 
+[units.ecl-vm-stack-pop]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+output_dir = "build/match-linked/EclVmStack"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmContext@@QAEHM@Z"
+functions = ["EclVmStackView::Pop"]
+symbol = "?Pop@EclVmStackView@@QAEHEHPAX@Z"
+target_address = 0x00450610
+size = 122
+linkages = [
+  { offset = 0x6D, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]
+
 [units.ascii-manager-add-format-text-gs]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"

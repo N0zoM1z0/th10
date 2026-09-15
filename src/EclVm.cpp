@@ -36,6 +36,37 @@ int EclVmStackView::Push(
     return 0;
 }
 
+int EclVmStackView::Pop(unsigned char type, int size, void *value)
+{
+    const int valueOffset = stackTop - size;
+    if (valueOffset < 0)
+        return -1;
+
+    stackTop = valueOffset;
+    memcpy(value, data + valueOffset, size);
+
+    if (type != 0)
+    {
+        stackTop -= 4;
+        const unsigned char storedType = data[stackTop];
+        if (storedType != 'f')
+        {
+            if (storedType == 'i' && type == 'f')
+            {
+                *reinterpret_cast<float *>(value) = static_cast<float>(
+                    *reinterpret_cast<int *>(value));
+            }
+        }
+        else if (type == 'i')
+        {
+            *reinterpret_cast<int *>(value) = static_cast<int>(
+                *reinterpret_cast<float *>(value));
+        }
+    }
+
+    return 0;
+}
+
 int EclVmStackView::EnterFrame(int localBytes)
 {
     const int previousTop = stackTop;
@@ -160,53 +191,18 @@ static bool IsOperandIndirect(
     return (instruction->operandFlags & (1U << (index & 31))) != 0;
 }
 
-static bool PopRaw(EclVmContext *context, EclVmScalar *value)
-{
-    const int valueOffset = context->stack.stackTop - 4;
-    if (valueOffset < 0)
-        return false;
-
-    context->stack.stackTop = valueOffset;
-    value->bits = *reinterpret_cast<unsigned int *>(
-        context->stack.data + valueOffset);
-    return true;
-}
-
-static bool PopTyped(
-    EclVmContext *context, EclVmScalar *value, unsigned char *type)
-{
-    if (!PopRaw(context, value))
-        return false;
-
-    const int typeOffset = context->stack.stackTop - 4;
-    if (typeOffset < 0)
-        return false;
-
-    context->stack.stackTop = typeOffset;
-    *type = context->stack.data[typeOffset];
-    return true;
-}
-
 static int PopInt(EclVmContext *context)
 {
-    EclVmScalar value;
-    unsigned char type;
-    value.integer = 0;
-    type = 0;
-    if (PopTyped(context, &value, &type) && type == 'f')
-        value.integer = static_cast<int>(value.real);
-    return value.integer;
+    int value;
+    context->stack.Pop('i', sizeof(value), &value);
+    return value;
 }
 
 static float PopFloat(EclVmContext *context)
 {
-    EclVmScalar value;
-    unsigned char type;
-    value.real = 0.0f;
-    type = 0;
-    if (PopTyped(context, &value, &type) && type == 'i')
-        value.real = static_cast<float>(value.integer);
-    return value.real;
+    float value;
+    context->stack.Pop('f', sizeof(value), &value);
+    return value;
 }
 
 static int PushInt(EclVmContext *context, int value)
@@ -364,9 +360,9 @@ int EclVmContext::Run(float timeDelta)
 
                 EclVmScalar value;
                 value.bits = 0;
-                PopRaw(this, &value);
+                stack.Pop(0, sizeof(value), &value);
                 instruction = value.instruction;
-                PopRaw(this, &value);
+                stack.Pop(0, sizeof(value), &value);
                 currentTime = value.real;
                 if (instruction == NULL)
                     return -1;

@@ -33,6 +33,7 @@ struct EclVmStackView
     int frameBase;
 
     int Push(unsigned char type, int size, const void *value);
+    int Pop(unsigned char type, int size, void *value);
     int EnterFrame(int localBytes);
     int LeaveFrame();
 };
