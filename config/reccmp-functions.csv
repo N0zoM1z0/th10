@@ -247,3 +247,4 @@ AnmRenderManagerView::CopySurfaceToBackbuffer2,0x00448120,function
 AnmRenderManagerView::CaptureToTexture,0x00448270,function
 AnmRenderManagerView::CopyTextureRect,0x00448360,function
 AnmRenderManagerView::CaptureToSurface,0x00448450,function
+EnemyResolveRuntimeCallback,0x004127A0,function

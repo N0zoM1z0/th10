@@ -9,6 +9,7 @@ struct EnemyFullObjectView;
 struct EnemyEclHostBaseView;
 struct EnemyListNodeView;
 struct EnemyManagerView;
+struct EnemyVisualStateView;
 
 struct EnemyFloat2
 {
@@ -72,10 +73,11 @@ typedef char EnemyListNodeViewSizeIs0C[
 
 struct EnemyCallbackThresholdView
 {
-    int threshold;
-    int callbackId;
-    int state;
-    int unknown0C;
+    // Target 0x004127A0 consumes eight records with this exact field order.
+    int lifeThreshold;
+    int timerThreshold;
+    const unsigned char *lifeCallbackName;
+    const unsigned char *timerCallbackName;
 };
 typedef char EnemyCallbackThresholdViewSizeIs10[
     (sizeof(EnemyCallbackThresholdView) == 0x10) ? 1 : -1];
@@ -136,7 +138,8 @@ struct EnemyRuntimeView
     int scoreReward;
     int life;
     int unknown13C4;
-    int ageCounter;
+    // The callback resolver writes life minus the next active life threshold.
+    int value13C8;
     int itemDropType;
     int itemDropCounts[11];
     int unknown13FC;

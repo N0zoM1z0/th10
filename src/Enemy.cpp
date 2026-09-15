@@ -278,7 +278,8 @@ void EnemySetVectorFromPolar(PlayerFloat3 *out, float angle, float magnitude);
 void EnemyAdvanceMotion(EnemyMotionView *motion);
 void EnemySetAnimationScript(EnemyRuntimeView *enemy, int script);
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
-const unsigned char *EnemyResolveRuntimeCallback(EnemyFullObjectView *owner);
+const unsigned char *__fastcall EnemyResolveRuntimeCallback(
+    EnemyFullObjectView *owner);
 void EnemyRunCallbackEcl(
     EnemyFullObjectView *owner, const unsigned char *callbackName);
 void EnemyInstallCallbackEcl(
@@ -980,10 +981,10 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
             {
                 if ((gameFlags & 1u) == 0)
                 {
-                    if (enemy->ageCounter < 900)
+                    if (enemy->value13C8 < 900)
                         effectKind = 0x23;
                 }
-                else if (enemy->ageCounter < 300)
+                else if (enemy->value13C8 < 300)
                 {
                     effectKind = 0x23;
                 }
@@ -1305,13 +1306,13 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 
     enemy->runtime.life = 0;
     enemy->runtime.unknown13C4 = 0;
-    enemy->runtime.ageCounter = 0;
+    enemy->runtime.value13C8 = 0;
 
     for (int i = 0; i < 8; ++i)
     {
-        enemy->runtime.callbackThresholds[i].threshold = -1;
-        enemy->runtime.callbackThresholds[i].callbackId = -1;
-        enemy->runtime.callbackThresholds[i].state = 0;
+        enemy->runtime.callbackThresholds[i].lifeThreshold = -1;
+        enemy->runtime.callbackThresholds[i].timerThreshold = -1;
+        enemy->runtime.callbackThresholds[i].lifeCallbackName = NULL;
     }
 
 }

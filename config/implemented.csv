@@ -246,3 +246,4 @@ AnmRenderManagerView::CopySurfaceToBackbuffer2
 AnmRenderManagerView::CaptureToTexture
 AnmRenderManagerView::CopyTextureRect
 AnmRenderManagerView::CaptureToSurface
+EnemyResolveRuntimeCallback

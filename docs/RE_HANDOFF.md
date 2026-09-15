@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `acfcf07 gpt-5.6-sol: reconstruct ANM resource and surface core`, branch `main`.
+- Current packet base: `adfd172 gpt-5.6-sol: reconstruct Enemy ECL dispatcher`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -38,9 +38,10 @@
 - Completed session checkpoint: `8c254ad gpt-5.6-sol: reconstruct ANM manager update core`.
 - Completed session checkpoint: `bdf8f14 gpt-5.6-sol: reconstruct ANM manager setup core`.
 - Completed session checkpoint: `acfcf07 gpt-5.6-sol: reconstruct ANM resource and surface core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct Enemy ECL dispatcher`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean ANM resource/surface checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-ecl-dispatcher/`. The earlier ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `adfd172 gpt-5.6-sol: reconstruct Enemy ECL dispatcher`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct Enemy callback core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean Enemy ECL dispatcher checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-enemy-callback-core/`. The earlier ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -60,7 +61,46 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: complete Enemy ECL dispatcher
+## Current packet: Enemy runtime callback resolver
+
+`EnemyResolveRuntimeCallback @ 0x004127A0-0x004129F0` is now maintained in
+`src/EnemyCallback.cpp` with its target-observed ECX-bound fastcall ABI. Both
+direct callers in `EnemyRuntimeUpdate` supply the full `0x2518`-byte Enemy
+owner. The function scans eight `0x10`-byte callback records beginning at full
+Enemy `+0x2494`; each record contains a life threshold, timer threshold, life
+callback name and timer callback name.
+
+The first active life record stores `life - threshold` at full `+0x2404`. When
+life reaches the threshold, it clamps life, disables that record, resets the
+update timer, clears runtime flag `0x10000` and returns the life callback name.
+The first active timer record publishes a capped `0..99` seconds countdown at
+visual owner `+0x9EC0`. At expiry it performs the same life/timer transition,
+sets flag `0x10000`, subtracts 3000 from the global timeout value with a floor
+of 5000, and conditionally clears bit one from eight Player state words before
+returning the timer callback name.
+
+Direct disassembly corrected the timer reset source: the target initializes
+`current=0`, `previous=-999999`, `subframe=0`, installs the shared scale pointer
+and flag bit zero when needed, then always finishes with `current=0`,
+`subframe=0`, and `previous=-1`. Callback-record and full-runtime fields now
+carry descriptive or offset-neutral names instead of the former misleading
+`threshold/callbackId/state` and `ageCounter` names.
+
+The isolated source compiles with pinned VC7.1 SP1 build6030 under fixed normal,
+`/GL`, and `/W4` profiles. Its final normal fastcall COMDAT is 598 bytes versus
+the target's 593 bytes and remains a diagnostic mismatch at 48/565 comparable
+bytes, so no exactness is claimed. Keeping it outside `Enemy.cpp` prevents the
+new control flow from renumbering VC7 compiler-local switch labels; a cold
+replay still reproduces all **20 existing Enemy units / 511 bytes** exactly.
+Repository totals become **1,309 candidates, 249 source mappings and 110 exact
+functions / 12,166 bytes**.
+
+The adjacent `0x00412720` callback-record setter and the Ghidra-missed retained
+bodies at `0x00412750/0x00412790` remain in the Web leaf queue. The next useful
+core frontier should stay inside Enemy/ECL or move to another high-fanout core
+owner instead of consuming those leaves.
+
+## Completed packet: complete Enemy ECL dispatcher
 
 `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` now has a complete
 maintained body in `src/EnemyEclDispatcher.cpp`. Direct decoding of the
