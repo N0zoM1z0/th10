@@ -247,3 +247,4 @@ AnmRenderManagerView::CaptureToTexture
 AnmRenderManagerView::CopyTextureRect
 AnmRenderManagerView::CaptureToSurface
 EnemyResolveRuntimeCallback
+PlayerUpdateCallbackBody

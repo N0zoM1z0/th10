@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `adfd172 gpt-5.6-sol: reconstruct Enemy ECL dispatcher`, branch `main`.
+- Current packet base: `ff78689 gpt-5.6-sol: reconstruct Enemy callback core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -39,9 +39,10 @@
 - Completed session checkpoint: `bdf8f14 gpt-5.6-sol: reconstruct ANM manager setup core`.
 - Completed session checkpoint: `acfcf07 gpt-5.6-sol: reconstruct ANM resource and surface core`.
 - Completed session checkpoint: `adfd172 gpt-5.6-sol: reconstruct Enemy ECL dispatcher`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct Enemy callback core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean Enemy ECL dispatcher checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-enemy-callback-core/`. The earlier ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `ff78689 gpt-5.6-sol: reconstruct Enemy callback core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: split Player update callback core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean Enemy callback checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-player-update-core/`. The earlier Enemy callback, ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -61,7 +62,40 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: Enemy runtime callback resolver
+## Current packet: Player update callback/core split
+
+The largest confirmed authored source gap was
+`PlayerUpdateCallbackBody @ 0x00425730-0x00426340`, even though its full semantic
+implementation already existed under the name `PlayerUpdateCallback`. The source
+mapping had been attached only to the seven-byte registered entry at `0x00426500`.
+Fresh target review confirms two distinct physical boundaries: the registered ECX entry is
+exactly `push ecx; call 0x00425730; ret`, while the 3,089-byte body loads one
+stack Player pointer and ends in `ret 4`.
+
+Maintained source now represents those boundaries directly.
+`PlayerUpdateCallbackBody` is a `__stdcall` body in `src/Player.cpp`; the
+separate `src/PlayerUpdateCallback.cpp` defines the `__fastcall` chain entry.
+The core body retains the complete five-state update machine, power and death
+transitions, movement/options, 32 active effect rows, highlight and update
+timers, collision-derived vectors, input owner and 128-shot update.
+
+Ghidra still proposes a two-parameter `__thiscall` signature for the body, but
+the raw entry, sole incoming call, stack load and `ret 4` establish the actual
+machine ABI. Its reachable-body count remains 3,060 because the reviewed
+physical extent contains five alignment sleds totaling 29 bytes; its separate
+five-entry state table remains at `0x00426344-0x00426357`.
+
+Pinned VC7.1 normal compilation emits a 2,800-byte body COMDAT including its
+compiler-owned table versus the target's 3,089-byte body plus separate table;
+the target diagnostic remains non-exact at 139/2,693 comparable bytes with 99
+relocations. Normal, `/GL`, and `/W4` compilation all succeed. The isolated
+adapter naturally emits all seven target bytes and its sole REL32 resolves to
+`0x00425730`, but its source-written-versus-LTCG-generated origin remains
+unknown. It therefore stays a structural diagnostic without a canonical exact
+claim. Repository totals become **1,309 candidates, 250 source mappings and 110
+exact functions / 12,166 bytes**.
+
+## Completed packet: Enemy runtime callback resolver
 
 `EnemyResolveRuntimeCallback @ 0x004127A0-0x004129F0` is now maintained in
 `src/EnemyCallback.cpp` with its target-observed ECX-bound fastcall ABI. Both

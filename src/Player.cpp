@@ -1351,11 +1351,10 @@ int Player::CalculateDamageToTarget(
     return damage;
 }
 
-// Maintained spelling of the Player callback registered in the target's first
-// (update-phase) chain. The physical target entry at 0x00426500 pushes its
-// live-in ECX Player pointer into the stack-bound 0x00425730 body. Source-written
-// adapter versus compiler/LTCG ownership remains unknown.
-int __fastcall PlayerUpdateCallback(Player *player)
+// Target 0x00425730-0x00426340 receives the Player owner on the stack and owns
+// the complete update state machine. PlayerUpdateCallback is its separately
+// retained ECX-bound chain adapter at 0x00426500.
+int __stdcall PlayerUpdateCallbackBody(Player *player)
 {
     int i;
 

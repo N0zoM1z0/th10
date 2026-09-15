@@ -248,3 +248,4 @@ AnmRenderManagerView::CaptureToTexture,0x00448270,function
 AnmRenderManagerView::CopyTextureRect,0x00448360,function
 AnmRenderManagerView::CaptureToSurface,0x00448450,function
 EnemyResolveRuntimeCallback,0x004127A0,function
+PlayerUpdateCallbackBody,0x00425730,function
