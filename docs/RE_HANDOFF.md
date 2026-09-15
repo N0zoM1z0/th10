@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `c615a72 gpt-5.6-sol: recover ECL VM thread control`, branch `main`.
+- Current packet base: `82003dd gpt-5.6-sol: recover ECL script database loader`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -66,9 +66,10 @@
 - Completed session checkpoint: `358daf4 gpt-5.6-sol: recover exact ECL VM typed pop`.
 - Completed session checkpoint: `85b7088 gpt-5.6-sol: recover ECL VM operand helpers`.
 - Completed session checkpoint: `c615a72 gpt-5.6-sol: recover ECL VM thread control`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL script database loader`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `82003dd gpt-5.6-sol: recover ECL script database loader`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ECL host runner`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-script-loader/`. The ECL control, operand, typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-start-subroutine/`. The script-database, ECL control, operand, typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -330,6 +331,43 @@ exact functions / 18,308 bytes**. Combined origin/boundary review rises to 329
 and the authored source backlog to 161. The next ECL exact pass should use the
 now complete database/caller context to revisit `EclVmStartSubroutine`, then
 the generic `Run` owner and its private helper ABIs.
+
+## Completed packet: exact ECL host runner
+
+`EclVmHost::Run @ 0x0044FD10-0x0044FDA1` now has complete maintained source
+for its 146-byte reviewed owner. It walks the embedded thread-list sentinel at
+host `+0x1030` and all secondary nodes, publishes each node's context through
+host `+0x4`, and invokes `EclVmContext::Run` with the supplied frame delta. A
+failure from the embedded context aborts with `-1`; a failed secondary context
+is deleted, unlinked in both directions and followed by deletion of its node.
+After the list is exhausted, the active context is restored to the embedded
+context at host `+0x8`.
+
+The two target callers at `0x0040E0FE` and `0x0040E205` are both inside the
+maintained `EnemyRuntimeUpdate` owner and keep the ECL host in EDI. Connecting
+that existing logical call to the generic host runner gives the linker the
+real cross-TU graph. With `EnemyRuntimeUpdate` as the entry and `Enemy.cpp` as
+support context, VC7.1 naturally emits the target's private EDI host ABI and
+also promotes both calls into `EclVmContext::Run` to its target EAX context
+ABI. Two independent cold canonical links reproduce the complete 146-byte
+PDB-owned ECL contribution and all four REL32 fields: two calls to context
+`Run` and two operator-delete calls.
+
+The adjacent `EclVmStartSubroutine @ 0x0044DF70` source now re-reads the caller
+instruction across virtual typed-operand resolution, uses the target's signed
+argument-index comparison, and writes the new instruction/time through
+`host->activeContext`. These target-observed changes raise its selected `/GL`
+candidate from 487 to 518 bytes and from 22 to 73 of 534 comparable bytes. It
+remains non-exact because the incomplete 7,020-byte context `Run` owner still
+does not reproduce the production private ABI passed to this deeper helper.
+
+The full current `src/EclVm.cpp` gate closes **8 units / 2 artifacts / 724
+bytes**; the independently rerun `src/Enemy.cpp` gate remains **20 units / 2
+artifacts / 511 bytes**. Repository totals become **1,313 candidates, 299
+source mappings, and 134 exact functions / 18,454 bytes**. The authored source
+backlog is **161**. The next core exact frontier is the generic
+`EclVmContext::Run` owner, whose missing source shape controls the remaining
+private ABI of `StartSubroutine` and `SpawnThread`.
 
 ## Completed packet: exact ANM projected photo blend
 

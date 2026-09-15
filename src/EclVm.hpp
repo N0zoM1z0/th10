@@ -102,6 +102,7 @@ public:
     virtual float ReadEclFloat(int id) = 0;
     virtual float *ResolveEclFloat(int id) = 0;
 
+    int Run(float timeDelta);
     void SpawnThread(int threadId, unsigned int firstArgument);
     EclVmThreadNode *FindThread(int threadId);
     void StopAllThreads();

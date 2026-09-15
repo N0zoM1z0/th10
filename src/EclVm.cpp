@@ -513,21 +513,21 @@ int EclVmStartSubroutine(
         argumentOffset = destination->stack.stackTop + 8;
     }
 
-    unsigned int argumentIndex = firstArgument + 1;
+    int argumentIndex = firstArgument + 1;
     int valueOffset = metadataOffset + 4;
     unsigned char *argument = destination->stack.data + argumentOffset;
-    while (argumentIndex < call->operandCount)
+    while (argumentIndex < (*callerInstruction)->operandCount)
     {
-        const char sourceType = call->operands[metadataOffset];
-        const char targetType = call->operands[metadataOffset + 1];
-        EclVmScalar value;
-        value.integer = *reinterpret_cast<const int *>(
-            call->operands + (valueOffset & ~3));
+        const char sourceType =
+            (*callerInstruction)->operands[metadataOffset];
 
         if (sourceType == 'f' || sourceType == 'g')
         {
+            EclVmScalar value;
+            value.integer = *reinterpret_cast<const int *>(
+                (*callerInstruction)->operands + (valueOffset & ~3));
             value.real = caller->ReadFloatValue(argumentIndex, value.real);
-            if (targetType == 'f')
+            if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')
                 *reinterpret_cast<float *>(argument) = value.real;
             else
                 *reinterpret_cast<int *>(argument) =
@@ -535,9 +535,12 @@ int EclVmStartSubroutine(
         }
         else
         {
+            EclVmScalar value;
+            value.integer = *reinterpret_cast<const int *>(
+                (*callerInstruction)->operands + (valueOffset & ~3));
             value.integer = caller->ReadIntValue(
                 argumentIndex, value.integer);
-            if (targetType == 'f')
+            if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')
                 *reinterpret_cast<float *>(argument) =
                     static_cast<float>(value.integer);
             else
@@ -570,16 +573,58 @@ int EclVmStartSubroutine(
     EclVmHost *const host = caller->host;
     EclVmContext *const previousContext = host->activeContext;
     host->activeContext = destination;
-    destination->instruction = host->scriptDatabase->FindSubroutine(
-        reinterpret_cast<const char *>(call) + 0x14);
-    destination->currentTime = 0.0f;
-    if (destination->instruction == NULL)
+    host->activeContext->instruction = host->scriptDatabase->FindSubroutine(
+        reinterpret_cast<const char *>(*callerInstruction) + 0x14);
+    host->activeContext->currentTime = 0.0f;
+    if (host->activeContext->instruction == NULL)
     {
         *callerInstruction = NULL;
         return -1;
     }
     host->activeContext = previousContext;
     return 0;
+}
+
+
+int EclVmHost::Run(float timeDelta)
+{
+    int first = 1;
+    EclVmThreadNode *node = &threadList;
+    while (node != NULL)
+    {
+        EclVmThreadNode *next = node->next;
+        activeContext = node->context;
+        if (first)
+        {
+            if (activeContext->Run(timeDelta) != 0)
+                return -1;
+            first = false;
+        }
+        else if (activeContext->Run(timeDelta) != 0)
+        {
+            delete activeContext;
+            if (node->next != NULL)
+                node->next->previous = node->previous;
+            if (node->previous != NULL)
+                node->previous->next = node->next;
+            node->next = NULL;
+            node->previous = NULL;
+            delete node;
+        }
+        node = next;
+    }
+    activeContext = &embeddedContext;
+    return 0;
+}
+
+
+struct EnemyFullObjectView;
+
+// Enemy.cpp keeps its target-specific full-object view separate from this
+// generic VM layer. Both views share the target-proven EclVmHost prefix.
+int EnemyRunEcl(EnemyFullObjectView *owner, float timeDelta)
+{
+    return reinterpret_cast<EclVmHost *>(owner)->Run(timeDelta);
 }
 
 

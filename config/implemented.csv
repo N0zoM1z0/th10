@@ -250,6 +250,7 @@ EnemyResolveRuntimeCallback
 PlayerUpdateCallbackBody
 EclVmStartSubroutine
 EclVmContext::Run
+EclVmHost::Run
 GuiView::UpdateStageElements
 GuiMessageVmView::Run
 WinMain
