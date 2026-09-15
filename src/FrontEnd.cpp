@@ -35,6 +35,8 @@ extern int g_ReplayDifficulty;
 extern int g_FrontEndSoundBgmVolume;
 extern int g_FrontEndSoundSfxVolume;
 extern int g_FrontEndSoundBgmAttenuation;
+extern FrontEndControllerMappingView g_FrontEndControllerMapping;
+extern FrontEndControllerMappingView g_FrontEndSavedControllerMapping;
 
 extern void FrontEndQueueSoundCommand(
     const char *command, int parameter0, int parameter1);
@@ -42,11 +44,11 @@ extern void FrontEndPlaySound(int soundId);
 extern void FrontEndLoadMusic(int slot, const char *path);
 extern void FrontEndPlayMusic(int slot, int loopStart);
 extern void FrontEndResetAsciiAuxiliary(int *state);
+extern signed char *__fastcall FrontEndGetControllerState(int controllerIndex);
 
 extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
-extern int FrontEndUpdateKeyConfig(FrontEndControllerView *controller);
 extern int FrontEndUpdateDifficulty(FrontEndControllerView *controller);
 extern int FrontEndUpdateCharacter(FrontEndControllerView *controller);
 extern int FrontEndUpdateShotType(FrontEndControllerView *controller);
@@ -77,6 +79,22 @@ enum
     FRONT_END_SOUND_SELECT = 10,
     FRONT_END_SOUND_CANCEL = 11,
     FRONT_END_SOUND_MOVE = 12
+};
+
+enum FrontEndKeyConfigBindingView
+{
+    FRONT_END_KEY_CONFIG_SHOT = 0,
+    FRONT_END_KEY_CONFIG_BOMB = 1,
+    FRONT_END_KEY_CONFIG_FOCUS = 2,
+    FRONT_END_KEY_CONFIG_MENU = 3,
+    FRONT_END_KEY_CONFIG_SKIP = 4,
+    FRONT_END_KEY_CONFIG_BINDING_COUNT = 5
+};
+
+enum
+{
+    FRONT_END_KEY_CONFIG_ROOT_VM = 2,
+    FRONT_END_CONTROLLER_BUTTON_COUNT = 31
 };
 
 static void ResetStateTimer(FrontEndControllerView *controller)
@@ -216,6 +234,47 @@ static void BeginOptionsClose(FrontEndControllerView *controller)
     InterruptVm(controller, FRONT_END_ROOT_VM, 6);
     FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
     SetScreenState(controller, FRONT_END_OPTIONS_CLOSING);
+}
+
+static void CopyKeyConfigBindingsFromGlobal(
+    FrontEndControllerView *controller)
+{
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] =
+        g_FrontEndControllerMapping.shotButton;
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] =
+        g_FrontEndControllerMapping.bombButton;
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] =
+        g_FrontEndControllerMapping.focusButton;
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] =
+        g_FrontEndControllerMapping.menuButton;
+    controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] =
+        g_FrontEndControllerMapping.skipButton;
+}
+
+static void CommitKeyConfigBindings(FrontEndControllerView *controller)
+{
+    g_FrontEndControllerMapping.shotButton =
+        controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT];
+    g_FrontEndControllerMapping.bombButton =
+        controller->keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB];
+    g_FrontEndControllerMapping.focusButton =
+        controller->keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS];
+    g_FrontEndControllerMapping.menuButton =
+        controller->keyConfigBindings[FRONT_END_KEY_CONFIG_MENU];
+    g_FrontEndControllerMapping.skipButton =
+        controller->keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP];
+
+    g_FrontEndSavedControllerMapping = g_FrontEndControllerMapping;
+}
+
+static void SetKeyBindingDigitSprites(
+    FrontEndControllerView *controller, short binding,
+    short normalFirst, short selectedFirst)
+{
+    SetChildSprite(controller, normalFirst + 0, binding / 10 + 0x33);
+    SetChildSprite(controller, normalFirst + 1, binding % 10 + 0x33);
+    SetChildSprite(controller, selectedFirst + 0, binding / 10 + 0x33);
+    SetChildSprite(controller, selectedFirst + 1, binding % 10 + 0x33);
 }
 
 static void InitializeFrontEndScreen(FrontEndControllerView *controller)
@@ -375,7 +434,7 @@ int FrontEndControllerView::Update()
         UpdateOptions(this);
         break;
     case FRONT_END_SCREEN_KEY_CONFIG:
-        FrontEndUpdateKeyConfig(this);
+        UpdateKeyConfig(this);
         break;
     case FRONT_END_SCREEN_DIFFICULTY:
         FrontEndUpdateDifficulty(this);
@@ -610,4 +669,169 @@ void FrontEndControllerView::RefreshOptionsDisplay()
         this, g_MainSupervisorView.bgmVolume, 0x25, 0x29);
     SetVolumeLeadingDigitVisibility(
         this, g_MainSupervisorView.sfxVolume, 0x2d, 0x31);
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x0042F540 FrontEndControllerView::UpdateKeyConfig
+int __stdcall FrontEndControllerView::UpdateKeyConfig(
+    FrontEndControllerView *controller)
+{
+    int controllerButton;
+    signed char *controllerState;
+
+    switch (controller->screenState)
+    {
+    case FRONT_END_KEY_CONFIG_INITIALIZE:
+        controller->cursor.count = 7;
+        controller->cursor.SetCurrent(0);
+        CreateVm(controller, FRONT_END_KEY_CONFIG_ROOT_VM);
+        SetScreenState(controller, FRONT_END_KEY_CONFIG_OPENING);
+        CopyKeyConfigBindingsFromGlobal(controller);
+        controller->RefreshKeyConfigDisplay();
+        // The target intentionally falls through into the opening wait.
+
+    case FRONT_END_KEY_CONFIG_OPENING:
+        if (controller->stateTimer.current > 6)
+        {
+            SetScreenState(controller, FRONT_END_KEY_CONFIG_ACTIVE);
+            InterruptVmNow(controller, FRONT_END_KEY_CONFIG_ROOT_VM, 3);
+            InterruptVm(
+                controller, FRONT_END_KEY_CONFIG_ROOT_VM,
+                static_cast<short>(controller->cursor.current + 0x11));
+            return 1;
+        }
+        break;
+
+    case FRONT_END_KEY_CONFIG_ACTIVE:
+        controller->cursor.previous = controller->cursor.current;
+        if (InputRepeated(FRONT_END_INPUT_UP))
+            controller->cursor.Move(-1);
+        if (InputRepeated(FRONT_END_INPUT_DOWN))
+            controller->cursor.Move(1);
+
+        if (controller->cursor.previous != controller->cursor.current)
+        {
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+            InterruptVmNow(controller, FRONT_END_KEY_CONFIG_ROOT_VM, 3);
+            InterruptVm(
+                controller, FRONT_END_KEY_CONFIG_ROOT_VM,
+                static_cast<short>(controller->cursor.current + 7));
+        }
+
+        controllerState = FrontEndGetControllerState(0);
+        for (controllerButton = 0;
+             controllerButton < FRONT_END_CONTROLLER_BUTTON_COUNT;
+             ++controllerButton)
+        {
+            if (controllerState[controllerButton] < 0)
+            {
+                if (controller->cursor.current <
+                    FRONT_END_KEY_CONFIG_BINDING_COUNT)
+                {
+                    controller->AssignKeyConfigBinding(
+                        controller->cursor.current, controllerButton);
+                }
+                break;
+            }
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0 &&
+            controller->cursor.current == 6)
+        {
+            CopyKeyConfigBindingsFromGlobal(controller);
+            controller->RefreshKeyConfigDisplay();
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            InterruptVm(controller, FRONT_END_KEY_CONFIG_ROOT_VM, 6);
+            SetScreenState(controller, FRONT_END_KEY_CONFIG_CLOSING);
+            return 1;
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            if (controller->cursor.current == 5)
+            {
+                CopyKeyConfigBindingsFromGlobal(controller);
+                controller->RefreshKeyConfigDisplay();
+                FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+                return 1;
+            }
+            if (controller->cursor.current == 6)
+            {
+                CommitKeyConfigBindings(controller);
+                FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+                InterruptVm(controller, FRONT_END_KEY_CONFIG_ROOT_VM, 6);
+                SetScreenState(controller, FRONT_END_KEY_CONFIG_CLOSING);
+                return 1;
+            }
+        }
+        break;
+
+    case FRONT_END_KEY_CONFIG_UNUSED:
+        break;
+
+    case FRONT_END_KEY_CONFIG_CLOSING:
+        if (controller->stateTimer.current >= 10)
+        {
+            SetScreen(controller, FRONT_END_SCREEN_OPTIONS);
+            controller->cursor.Pop();
+        }
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x0042F8B0 FrontEndControllerView::RefreshKeyConfigDisplay
+void FrontEndControllerView::RefreshKeyConfigDisplay()
+{
+    SetKeyBindingDigitSprites(
+        this, keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT], 0x43, 0x4d);
+    SetKeyBindingDigitSprites(
+        this, keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB], 0x45, 0x4f);
+    SetKeyBindingDigitSprites(
+        this, keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS], 0x47, 0x51);
+    SetKeyBindingDigitSprites(
+        this, keyConfigBindings[FRONT_END_KEY_CONFIG_MENU], 0x49, 0x53);
+    SetKeyBindingDigitSprites(
+        this, keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP], 0x4b, 0x55);
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00430250 FrontEndControllerView::AssignKeyConfigBinding
+void FrontEndControllerView::AssignKeyConfigBinding(
+    int bindingIndex, int controllerButton)
+{
+    short previousBinding = keyConfigBindings[bindingIndex];
+    if (previousBinding == controllerButton)
+        return;
+
+    if (bindingIndex != FRONT_END_KEY_CONFIG_SHOT &&
+        keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] == controllerButton)
+    {
+        keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] = previousBinding;
+    }
+    if (bindingIndex != FRONT_END_KEY_CONFIG_BOMB &&
+        keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] == controllerButton)
+    {
+        keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] = previousBinding;
+    }
+    if (bindingIndex != FRONT_END_KEY_CONFIG_FOCUS &&
+        keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] == controllerButton)
+    {
+        keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] = previousBinding;
+    }
+    if (bindingIndex != FRONT_END_KEY_CONFIG_MENU &&
+        keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] == controllerButton)
+    {
+        keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] = previousBinding;
+    }
+    if (bindingIndex != FRONT_END_KEY_CONFIG_SKIP &&
+        keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] == controllerButton)
+    {
+        keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] = previousBinding;
+    }
+
+    keyConfigBindings[bindingIndex] = static_cast<short>(controllerButton);
+    RefreshKeyConfigDisplay();
+    FrontEndPlaySound(FRONT_END_SOUND_SELECT);
 }

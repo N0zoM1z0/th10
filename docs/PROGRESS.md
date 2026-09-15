@@ -9,14 +9,14 @@ their boundaries and origins must be reviewed independently.
 | Boundary reviewed | 1,173 |
 | Boundary provisional | 88 |
 | Boundary needs focused review | 51 |
-| Origin review pending | 1,015 |
-| Confirmed authored functions | 282 |
-| Confirmed authored code bytes | 122,533 |
+| Origin review pending | 1,012 |
+| Confirmed authored functions | 285 |
+| Confirmed authored code bytes | 126,065 |
 | Classified exclusions | 15 |
-| Source-present mappings | 266 |
-| Source-present with authored origin | 262 |
+| Source-present mappings | 269 |
+| Source-present with authored origin | 265 |
 | Source-present origin review pending | 4 |
-| Authored source-present exact backlog | 152 |
+| Authored source-present exact backlog | 155 |
 | Canonical exact functions | 110 |
 | Canonical exact authored bytes | 12,166 |
 

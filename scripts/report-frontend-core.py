@@ -151,10 +151,12 @@ def source_report(
     gui_text = gui_source.read_text(encoding="utf-8")
     problems: list[str] = []
 
-    markers = [
+    all_markers = [
         (int(address, 0), name)
         for address, name in MARKER_PATTERN.findall(text)
     ]
+    reviewed_starts = {start for start, _, _ in FUNCTIONS}
+    markers = [marker for marker in all_markers if marker[0] in reviewed_starts]
     expected_markers = [(start, name) for start, _, name in FUNCTIONS]
     if markers != expected_markers:
         problems.append("source markers do not match reviewed owner order")

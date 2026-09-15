@@ -265,3 +265,6 @@ GameWindowView::CalcExecutableChecksum,0x0043A1C0,function
 FrontEndControllerView::Update,0x0042CDF0,function
 FrontEndControllerView::UpdateOptions,0x0042D920,function
 FrontEndControllerView::RefreshOptionsDisplay,0x0042E5A0,function
+FrontEndControllerView::UpdateKeyConfig,0x0042F540,function
+FrontEndControllerView::RefreshKeyConfigDisplay,0x0042F8B0,function
+FrontEndControllerView::AssignKeyConfigBinding,0x00430250,function

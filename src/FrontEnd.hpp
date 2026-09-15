@@ -20,6 +20,16 @@ struct FrontEndCursorView
     int wraps;
     int disabledEntryCount;
 
+    void SetCurrent(int value)
+    {
+        if (count == 0)
+            current = 0;
+        else if (count <= value)
+            current = count - 1;
+        else
+            current = value;
+    }
+
     int Move(int amount);
     void Push();
     void Pop();
@@ -76,8 +86,40 @@ enum FrontEndOptionsStateView
 };
 
 
+enum FrontEndKeyConfigStateView
+{
+    FRONT_END_KEY_CONFIG_INITIALIZE = 0,
+    FRONT_END_KEY_CONFIG_OPENING = 1,
+    FRONT_END_KEY_CONFIG_ACTIVE = 2,
+    FRONT_END_KEY_CONFIG_UNUSED = 3,
+    FRONT_END_KEY_CONFIG_CLOSING = 4
+};
+
+
+// TH10 stores all nine controller bindings as adjacent signed shorts. Target
+// input masks identify the first four actions and skip. The middle directional
+// names are adjacent-supported and remain provisional; all four values are
+// nevertheless preserved in the target's persisted 0x12-byte mapping.
+struct FrontEndControllerMappingView
+{
+    short shotButton;
+    short bombButton;
+    short focusButton;
+    short menuButton;
+    short upButton;
+    short downButton;
+    short leftButton;
+    short rightButton;
+    short skipButton;
+};
+
+typedef char FrontEndControllerMappingSizeIs12[
+    (sizeof(FrontEndControllerMappingView) == 0x12) ? 1 : -1];
+
+
 // This maintained partial view reaches the highest VM slot consumed by the
-// reviewed update paths. It does not claim the complete front-end allocation.
+// reviewed update paths and the key-configuration scratch bindings. It does
+// not claim the complete front-end allocation.
 struct FrontEndControllerView
 {
     unsigned char unknown000[0x010];
@@ -90,10 +132,15 @@ struct FrontEndControllerView
     unsigned char unknown0FC[0x1b4];
     AnmVmTimerView stateTimer;
     AnmVmIdView vmIds[0x5c];
+    unsigned char unknown434[0x5598];
+    short keyConfigBindings[5];
 
     int Update();
     static int __stdcall UpdateOptions(FrontEndControllerView *controller);
     void RefreshOptionsDisplay();
+    static int __stdcall UpdateKeyConfig(FrontEndControllerView *controller);
+    void RefreshKeyConfigDisplay();
+    void AssignKeyConfigBinding(int bindingIndex, int controllerButton);
 };
 
 typedef char FrontEndControllerStateAt1C[
@@ -107,5 +154,7 @@ typedef char FrontEndControllerVmIdsAt2C4[
      offsetof(FrontEndControllerView, vmIds) + sizeof(AnmVmIdView) == 0x2c8 &&
      offsetof(FrontEndControllerView, vmIds) +
          sizeof(AnmVmIdView) * 0x5b == 0x430) ? 1 : -1];
+typedef char FrontEndControllerKeyConfigBindingsAt59CC[
+    (offsetof(FrontEndControllerView, keyConfigBindings) == 0x59cc) ? 1 : -1];
 
 #endif

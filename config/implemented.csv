@@ -264,3 +264,6 @@ GameWindowView::CalcExecutableChecksum
 FrontEndControllerView::Update
 FrontEndControllerView::UpdateOptions
 FrontEndControllerView::RefreshOptionsDisplay
+FrontEndControllerView::UpdateKeyConfig
+FrontEndControllerView::RefreshKeyConfigDisplay
+FrontEndControllerView::AssignKeyConfigBinding

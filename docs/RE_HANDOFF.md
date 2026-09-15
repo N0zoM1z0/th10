@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `048a3c8 gpt-5.6-sol: separate boundary inventory`, branch `main`.
+- Current packet base: `e7615ce gpt-5.6-sol: reconstruct front-end options core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -44,14 +44,15 @@
 - Completed session checkpoint: `623cd37 gpt-5.6-sol: reconstruct GUI update and message cores`.
 - Completed session checkpoint: `979522c gpt-5.6-sol: reconstruct Main execution corridor`.
 - Completed session checkpoint: `048a3c8 gpt-5.6-sol: separate boundary inventory`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end options core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `e7615ce gpt-5.6-sol: reconstruct front-end options core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end key config core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-options-core/`. The earlier boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-key-config-core/`. The earlier front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `048a3c80ecd8d99555ee3bb63b770fff36a49eb0` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `e7615ce` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -122,7 +123,7 @@ origin and boundary independently. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
 
-## Current packet: front-end/options core
+## Completed packet: front-end/options core
 
 The selected title/options chain now has maintained source across three authored
 owners and 8,315 reviewed target bytes:
@@ -164,11 +165,58 @@ and 203 bytes; selected linked `/GL` contributions are 368, 884 and 199 bytes.
 The target owners are dominated by optimizer-inlined helpers and repeated VM
 lookup paths, so no match row or exactness promotion is made.
 
-Repository totals become **1,312 candidates, 266 source mappings and 110 exact
-functions / 12,166 bytes**. The refreshed core rank places `0x0042F8B0`
-(2,452 bytes) as the largest connected continuation in this front-end corridor;
-its directly referenced tables remain outside the current recorded owner and
-must be boundary-reviewed before semantic recovery.
+Repository totals at that checkpoint became **1,312 candidates, 266 source
+mappings and 110 exact functions / 12,166 bytes**.
+
+## Completed packet: front-end key-configuration core
+
+The connected continuation now has maintained source across three more authored
+owners and 3,532 reviewed target bytes:
+
+- `FrontEndControllerView::UpdateKeyConfig @ 0x0042F540-0x0042F8AF`
+  (880 bytes)
+- `FrontEndControllerView::RefreshKeyConfigDisplay @ 0x0042F8B0-0x00430243`
+  (2,452 bytes)
+- `FrontEndControllerView::AssignKeyConfigBinding @ 0x00430250-0x00430317`
+  (200 bytes)
+
+The first owner ends code at `0x0042F89A`, has one NOP, and owns the five-entry
+state table at `0x0042F89C-0x0042F8AF`. This closes the table that the boundary
+inventory had previously reported outside its owner. The display and assignment
+owners are separated from their successors by twelve and eight `CC` bytes.
+
+The five-state/seven-row controller creates key-config root VM slot 2, scans 31
+signed controller-button transition bytes, handles cursor interrupts, edits the
+five configurable actions, resets from live mappings, commits the complete
+mapping and returns to options. Duplicate button assignments are resolved by
+swapping the displaced binding. The display path updates twenty digit VMs: two
+digits in each of the normal and selected rows for each editable action.
+
+TH10-local input and configuration consumers establish the runtime mapping at
+`0x00474E88` as nine adjacent signed shorts with target defaults
+`0,1,2,3,-1,-1,-1,-1,4`. Target button masks identify the first four as
+shot/bomb/focus/menu and the last as skip. The maintained up/down/left/right
+names for the preserved middle four entries are adjacent-supported and remain
+provisional because the reviewed TH10 controller path derives direction bits
+from axes. The key-config scratch copy contains the first four actions plus skip
+at controller `+0x59CC`; commit preserves the middle entries and copies the
+complete 18-byte mapping to persisted storage at `0x00491D4C`.
+
+`scripts/report-frontend-key-config.py --check` fails closed on the exact target
+and validates all three extents, the five-entry table, tails/padding, complete
+direct-call multisets, the display owner's 40 FindVm transfers and 19 SetSprite
+calls plus one tail jump, the nine-short defaults, source markers/state coverage
+and layout assertions.
+
+Pinned VC7.1 build6030 normal, `/GL` and `/W4` compiles pass. The new normal
+COMDATs are 624/113/171 bytes versus target 880/2,452/200 and remain real
+mismatches at 15/700, 9/2,432 and 19/192 comparable bytes, each with
+`acceptance_authority=none`. No match row or exactness promotion is made.
+
+Repository totals become **1,312 candidates, 269 source mappings, 285 reviewed
+authored owners and 110 exact functions / 12,166 bytes**. Boundary coverage is
+340,260 `.text` bytes; the indexed-table queue is now 54 references inside
+their recorded owner and 46 outside.
 
 ## Completed packet: Main execution corridor
 
