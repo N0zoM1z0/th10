@@ -26,9 +26,11 @@ struct FrontEndCursorView
     void SetCurrent(int value)
     {
         if (count == 0)
-            current = 0;
+            current = value;
         else if (count <= value)
             current = count - 1;
+        else if (value < 0)
+            current = 0;
         else
             current = value;
     }
@@ -80,7 +82,7 @@ enum FrontEndScreenView
     FRONT_END_SCREEN_REPLAY = 12,
     FRONT_END_SCREEN_START_GAME_13 = 13,
     FRONT_END_SCREEN_MUSIC_ROOM = 14,
-    FRONT_END_SCREEN_SPECIAL = 15,
+    FRONT_END_SCREEN_SCORE_ENTRY = 15,
     FRONT_END_SCREEN_RESULT = 16
 };
 
@@ -134,6 +136,15 @@ enum FrontEndPracticeStateView
 };
 
 
+enum FrontEndScoreEntryStateView
+{
+    FRONT_END_SCORE_ENTRY_INITIALIZE = 0,
+    FRONT_END_SCORE_ENTRY_OPENING = 1,
+    FRONT_END_SCORE_ENTRY_ACTIVE = 2,
+    FRONT_END_SCORE_ENTRY_CLOSING = 3
+};
+
+
 // TH10 stores all nine controller bindings as adjacent signed shorts. Target
 // input masks identify the first four actions and skip. The middle directional
 // names are adjacent-supported and remain provisional; all four values are
@@ -175,9 +186,13 @@ struct FrontEndControllerView
     unsigned char unknown524[0x0ac];
     AnmVmIdView difficultyAuxVmId;
     AnmVmIdView practiceRowVmIds[10];
-    unsigned char unknown5FC[0x52f4];
+    unsigned char unknown5FC[0x52e0];
+    char scoreEntryName[9];
+    unsigned char unknown58E5[3];
+    int scoreEntryNameCursor;
+    int scoreEntryUnavailable;
     int savedDifficulty;
-    unsigned char unknown58F4[0x0d8];
+    FrontEndCursorView scoreEntryKeyboardCursor;
     short keyConfigBindings[5];
     unsigned char unknown59D6[2];
     int replayListOffset;
@@ -202,6 +217,8 @@ struct FrontEndControllerView
     static int __stdcall UpdatePractice(FrontEndControllerView *controller);
     int RefreshPracticeRecords();
     int DrawPractice();
+    static int __stdcall UpdateScoreEntry(FrontEndControllerView *controller);
+    static int __stdcall DrawScoreEntry(FrontEndControllerView *controller);
 };
 
 typedef char FrontEndControllerStateAt1C[
@@ -222,6 +239,13 @@ typedef char FrontEndControllerVmIdsAt2C4[
 typedef char FrontEndControllerSelectionFields[
     (offsetof(FrontEndControllerView, difficultyAuxVmId) == 0x5d0 &&
      offsetof(FrontEndControllerView, savedDifficulty) == 0x58f0) ? 1 : -1];
+typedef char FrontEndControllerScoreEntryFields[
+    (offsetof(FrontEndControllerView, scoreEntryName) == 0x58dc &&
+     offsetof(FrontEndControllerView, scoreEntryNameCursor) == 0x58e8 &&
+     offsetof(FrontEndControllerView, scoreEntryUnavailable) == 0x58ec &&
+     offsetof(FrontEndControllerView, scoreEntryKeyboardCursor) == 0x58f4 &&
+     offsetof(FrontEndControllerView, scoreEntryKeyboardCursor) +
+         offsetof(FrontEndCursorView, wraps) == 0x59c4) ? 1 : -1];
 typedef char FrontEndControllerKeyConfigBindingsAt59CC[
     (offsetof(FrontEndControllerView, keyConfigBindings) == 0x59cc) ? 1 : -1];
 typedef char FrontEndControllerReplayFieldsAt59D8[

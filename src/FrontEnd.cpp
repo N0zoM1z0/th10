@@ -41,6 +41,10 @@ extern int g_FrontEndPracticeSecretProgress;
 extern const unsigned int g_FrontEndPracticeSecretKeys[22];
 extern const signed char g_FrontEndPracticeDifficulties[110];
 extern const char g_FrontEndPracticeUnavailableFormat[];
+extern const char *g_FrontEndScoreEntryAlphabet;
+extern void *g_FrontEndScoreFormatTable;
+extern unsigned char g_FrontEndScoreEntryFormatTable[];
+extern unsigned char g_FrontEndDefaultScoreFormatTable[];
 extern int g_FrontEndReplayCursor;
 extern const char *g_ReplayCharacterNames[];
 extern const char *g_ReplayDifficultyNames[];
@@ -70,9 +74,7 @@ extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
 extern int FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
-extern int FrontEndUpdateSpecial(FrontEndControllerView *controller);
 extern int FrontEndUpdateResult(FrontEndControllerView *controller);
-extern int FrontEndDrawSpecial(FrontEndControllerView *controller);
 extern int FrontEndDrawResult(FrontEndControllerView *controller);
 extern void FrontEndUnlockPracticeRecords();
 extern void * __stdcall FrontEndBeginSelectionTransition(
@@ -102,7 +104,10 @@ enum
     FRONT_END_SOUND_MOVE = 12,
     FRONT_END_SOUND_UNLOCK = 44,
     FRONT_END_PRACTICE_RECORD_COUNT = 110,
-    FRONT_END_PRACTICE_ROWS_PER_PAGE = 10
+    FRONT_END_PRACTICE_ROWS_PER_PAGE = 10,
+    FRONT_END_SCORE_ENTRY_ROWS = 10,
+    FRONT_END_SCORE_ENTRY_NAME_LENGTH = 8,
+    FRONT_END_SCORE_ENTRY_COLUMNS = 13
 };
 
 struct FrontEndStageScoreRecordView
@@ -116,7 +121,7 @@ struct FrontEndStageScoreRecordView
 typedef char FrontEndStageScoreRecordSizeIs8[
     (sizeof(FrontEndStageScoreRecordView) == 8) ? 1 : -1];
 
-struct FrontEndPracticeScoreRecordView
+struct FrontEndScoreRecordView
 {
     int score;
     signed char stageNameIndex;
@@ -126,8 +131,15 @@ struct FrontEndPracticeScoreRecordView
     float slowdownRate;
 };
 
-typedef char FrontEndPracticeScoreRecordSizeIs18[
-    (sizeof(FrontEndPracticeScoreRecordView) == 0x18) ? 1 : -1];
+typedef char FrontEndScoreRecordSizeIs18[
+    (sizeof(FrontEndScoreRecordView) == 0x18) ? 1 : -1];
+
+struct FrontEndScoreTableView
+{
+    unsigned char unknown000[0x10];
+};
+
+extern int FrontEndInsertScore(FrontEndScoreTableView *table);
 
 enum FrontEndKeyConfigBindingView
 {
@@ -310,12 +322,18 @@ static int *GetPracticeResultRecord(int shot, int record)
         g_FrontEndProfileData + shot * 0x437c + 0x624 + record * 0x90);
 }
 
-static FrontEndPracticeScoreRecordView *GetPracticeScoreRecord(
+static FrontEndScoreRecordView *GetPracticeScoreRecord(
     int shot, int difficulty, int row)
 {
-    return reinterpret_cast<FrontEndPracticeScoreRecordView *>(
+    return reinterpret_cast<FrontEndScoreRecordView *>(
         g_FrontEndProfileData + shot * 0x437c + 0x18 +
         (difficulty * 10 + row) * 0x18);
+}
+
+static FrontEndScoreTableView *GetFrontEndScoreTable(int shot)
+{
+    return reinterpret_cast<FrontEndScoreTableView *>(
+        g_FrontEndProfileData + shot * 0x437c + 8);
 }
 
 static void InterruptPracticeRows(FrontEndControllerView *controller)
@@ -535,12 +553,12 @@ static void InitializeFrontEndScreen(FrontEndControllerView *controller)
         controller->cursor.count = 10;
         controller->cursor.current = 0;
         controller->cursor.Push();
-        SetScreen(controller, FRONT_END_SCREEN_SPECIAL);
+        SetScreen(controller, FRONT_END_SCREEN_SCORE_ENTRY);
         CreateVm(controller, 0x5b);
         InterruptVm(controller, 0x5b, 9);
         controller->transitionOwner->flags004 |= FRONT_END_TRANSITION_ACTIVE;
         g_FrontEndMode = 1;
-        FrontEndUpdateSpecial(controller);
+        FrontEndControllerView::UpdateScoreEntry(controller);
         return;
     }
 
@@ -694,8 +712,8 @@ int FrontEndControllerView::Update()
     case FRONT_END_SCREEN_MUSIC_ROOM:
         FrontEndUpdateMusicRoom(this);
         break;
-    case FRONT_END_SCREEN_SPECIAL:
-        FrontEndUpdateSpecial(this);
+    case FRONT_END_SCREEN_SCORE_ENTRY:
+        UpdateScoreEntry(this);
         break;
     case FRONT_END_SCREEN_RESULT:
         FrontEndUpdateResult(this);
@@ -721,8 +739,8 @@ int FrontEndControllerView::Draw()
     case FRONT_END_SCREEN_REPLAY:
         DrawReplay(this);
         break;
-    case FRONT_END_SCREEN_SPECIAL:
-        FrontEndDrawSpecial(this);
+    case FRONT_END_SCREEN_SCORE_ENTRY:
+        DrawScoreEntry(this);
         break;
     case FRONT_END_SCREEN_RESULT:
         FrontEndDrawResult(this);
@@ -2205,7 +2223,7 @@ int FrontEndControllerView::DrawPractice()
         {
             ascii->color =
                 ((shade << 8 | shade) << 8) | 0xff0000ffu;
-            FrontEndPracticeScoreRecordView *record =
+            FrontEndScoreRecordView *record =
                 GetPracticeScoreRecord(cursor.current, difficulty, row);
             if (record->timestamp == 0)
             {
@@ -2255,5 +2273,334 @@ int FrontEndControllerView::DrawPractice()
         *reinterpret_cast<int *>(shotProfile + 0x4d0 + difficulty * 4));
     ascii->color = 0xffffffffu;
     ascii->drawShadow = 0;
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00432CB0 FrontEndControllerView::UpdateScoreEntry
+int __stdcall FrontEndControllerView::UpdateScoreEntry(
+    FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case FRONT_END_SCORE_ENTRY_INITIALIZE:
+    {
+        controller->cursor.count = 30;
+        FrontEndLoadMusic(0, "bgm/th10_17.wav");
+        FrontEndPlayMusic(0, 17);
+
+        if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
+        {
+            CreateVm(controller, 0x5e);
+            controller->difficultyAuxVmId =
+                g_AsciiManagerView->asciiAnm->CreateVmVariant0(
+                    8, FRONT_END_RENDER_LAYER);
+        }
+
+        CreateVm(controller, 0x68);
+        SetScreenState(controller, FRONT_END_SCORE_ENTRY_OPENING);
+        CreateVm(controller, 0x98 + g_ReplayCharacter);
+        int shot = g_ReplayShotType + g_ReplayCharacter * 3;
+        CreateVm(controller, 0x9a + shot);
+        CreateVm(controller, 0xa0 + g_ReplayDifficulty);
+
+        g_FrontEndSelectedStage = FRONT_END_SCORE_ENTRY_NAME_LENGTH;
+        g_FrontEndSelectedStageMirror = FRONT_END_SCORE_ENTRY_NAME_LENGTH;
+        g_FrontEndScoreFormatTable = g_FrontEndScoreEntryFormatTable;
+        int insertedRow = FrontEndInsertScore(GetFrontEndScoreTable(shot));
+        g_FrontEndScoreFormatTable = g_FrontEndDefaultScoreFormatTable;
+        g_FrontEndSelectedStage = 0;
+        g_FrontEndSelectedStageMirror = 0;
+
+        if (insertedRow < 0)
+        {
+            controller->cursor.SetCurrent(insertedRow);
+            controller->scoreEntryUnavailable = 1;
+        }
+        else
+        {
+            ResetStateTimer(controller);
+            controller->cursor.wraps = 1;
+            controller->cursor.SetCurrent(insertedRow);
+
+            FrontEndCursorView *keyboard =
+                &controller->scoreEntryKeyboardCursor;
+            keyboard->SetCurrent(0);
+            keyboard->count = strlen(g_FrontEndScoreEntryAlphabet);
+            keyboard->wraps = 1;
+
+            strcpy(
+                controller->scoreEntryName,
+                reinterpret_cast<char *>(
+                    g_FrontEndProfileData + 0x1d878));
+            if (strcmp(controller->scoreEntryName, "        ") != 0)
+                keyboard->Move(-1);
+
+            int cursor = FRONT_END_SCORE_ENTRY_NAME_LENGTH;
+            while (cursor > 0 &&
+                   controller->scoreEntryName[cursor - 1] == ' ')
+            {
+                --cursor;
+            }
+            controller->scoreEntryNameCursor = cursor;
+            controller->scoreEntryUnavailable = 0;
+        }
+    }
+    case FRONT_END_SCORE_ENTRY_OPENING:
+        if (controller->stateTimer.current > 6)
+        {
+            SetScreenState(controller, FRONT_END_SCORE_ENTRY_ACTIVE);
+            return 1;
+        }
+        break;
+
+    case FRONT_END_SCORE_ENTRY_ACTIVE:
+    {
+        FrontEndCursorView *keyboard =
+            &controller->scoreEntryKeyboardCursor;
+        if (controller->scoreEntryUnavailable == 0)
+        {
+            keyboard->previous = keyboard->current;
+            if (InputRepeated(FRONT_END_INPUT_UP))
+                keyboard->Move(-FRONT_END_SCORE_ENTRY_COLUMNS);
+            if (InputRepeated(FRONT_END_INPUT_DOWN))
+                keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS);
+            if (InputRepeated(FRONT_END_INPUT_LEFT))
+            {
+                keyboard->Move(
+                    keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS == 0
+                        ? FRONT_END_SCORE_ENTRY_COLUMNS - 1 : -1);
+            }
+            if (InputRepeated(FRONT_END_INPUT_RIGHT))
+            {
+                keyboard->Move(
+                    keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS ==
+                            FRONT_END_SCORE_ENTRY_COLUMNS - 1
+                        ? -(FRONT_END_SCORE_ENTRY_COLUMNS - 1) : 1);
+            }
+            if (keyboard->previous != keyboard->current)
+                FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            if (controller->scoreEntryUnavailable == 0)
+            {
+                int alphabetLength = strlen(g_FrontEndScoreEntryAlphabet);
+                int key = keyboard->current;
+                if (key < alphabetLength - 3)
+                {
+                    int cursor = controller->scoreEntryNameCursor;
+                    if (cursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                    {
+                        controller->scoreEntryName[cursor] =
+                            g_FrontEndScoreEntryAlphabet[key];
+                        ++controller->scoreEntryNameCursor;
+                        if (controller->scoreEntryNameCursor >=
+                            FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                        {
+                            keyboard->SetCurrent(alphabetLength - 1);
+                        }
+                    }
+                    else
+                    {
+                        controller->scoreEntryName[
+                            FRONT_END_SCORE_ENTRY_NAME_LENGTH - 1] =
+                                g_FrontEndScoreEntryAlphabet[key];
+                    }
+                }
+                else if (key == alphabetLength - 3)
+                {
+                    int cursor = controller->scoreEntryNameCursor;
+                    if (cursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                    {
+                        controller->scoreEntryName[cursor] = ' ';
+                        ++controller->scoreEntryNameCursor;
+                        if (controller->scoreEntryNameCursor >=
+                            FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                        {
+                            keyboard->SetCurrent(alphabetLength - 1);
+                        }
+                    }
+                    else
+                    {
+                        controller->scoreEntryName[
+                            FRONT_END_SCORE_ENTRY_NAME_LENGTH - 1] = ' ';
+                    }
+                }
+                else if (key == alphabetLength - 2)
+                {
+                    if (controller->scoreEntryNameCursor == 0)
+                        return 1;
+                    --controller->scoreEntryNameCursor;
+                    controller->scoreEntryName[
+                        controller->scoreEntryNameCursor] = ' ';
+                }
+                else if (key == alphabetLength - 1)
+                {
+                    int shot = g_ReplayShotType + g_ReplayCharacter * 3;
+                    FrontEndScoreRecordView *record =
+                        GetPracticeScoreRecord(
+                            shot, g_ReplayDifficulty,
+                            controller->cursor.current);
+                    strcpy(record->name, controller->scoreEntryName);
+                    strcpy(
+                        reinterpret_cast<char *>(
+                            g_FrontEndProfileData + 0x1d878),
+                        controller->scoreEntryName);
+                    SetScreenState(
+                        controller, FRONT_END_SCORE_ENTRY_CLOSING);
+                }
+            }
+            else
+            {
+                SetScreenState(
+                    controller, FRONT_END_SCORE_ENTRY_CLOSING);
+            }
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+        }
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            if (controller->scoreEntryUnavailable != 0)
+            {
+                SetScreenState(
+                    controller, FRONT_END_SCORE_ENTRY_CLOSING);
+                FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+                return 1;
+            }
+            if (controller->scoreEntryNameCursor != 0)
+            {
+                FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+                --controller->scoreEntryNameCursor;
+                controller->scoreEntryName[
+                    controller->scoreEntryNameCursor] = ' ';
+                return 1;
+            }
+        }
+        break;
+    }
+
+    case FRONT_END_SCORE_ENTRY_CLOSING:
+        if (controller->stateTimer.current >= 6)
+        {
+            DeleteVm(controller, 0x68);
+            DeleteVm(controller, 0x98 + g_ReplayCharacter);
+            DeleteVm(
+                controller,
+                0x9a + g_ReplayShotType + g_ReplayCharacter * 3);
+            DeleteVm(controller, 0xa0 + g_ReplayDifficulty);
+            SetScreen(controller, FRONT_END_SCREEN_RESULT);
+        }
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00433230 FrontEndControllerView::DrawScoreEntry
+int __stdcall FrontEndControllerView::DrawScoreEntry(
+    FrontEndControllerView *controller)
+{
+    if (controller->screenState != FRONT_END_SCORE_ENTRY_ACTIVE)
+        return 1;
+
+    AsciiManagerView *ascii = g_AsciiManagerView;
+    ascii->drawShadow = 1;
+    AnmFloat3View position(48.0f, 160.0f, 0.0f);
+    int shot = g_ReplayShotType + g_ReplayCharacter * 3;
+    unsigned int shade = 0xff;
+
+    for (int row = 0; row < FRONT_END_SCORE_ENTRY_ROWS; ++row)
+    {
+        if (controller->scoreEntryUnavailable != 0)
+        {
+            ascii->color =
+                ((shade << 8 | shade) << 8) | 0xff0000ffu;
+        }
+        else
+        {
+            ascii->color = controller->cursor.current == row
+                ? 0xffffffffu : 0xff404040u;
+        }
+
+        FrontEndScoreRecordView *record =
+            GetPracticeScoreRecord(shot, g_ReplayDifficulty, row);
+        if (record->timestamp == 0)
+        {
+            ascii->AddFormatText(
+                &position,
+                "%2d  %s  %9ld%d  ----/--/-- --:--  Stage -  ---%%",
+                row + 1, record->name, record->score,
+                record->scoreSuffix, (double)record->slowdownRate);
+        }
+        else
+        {
+            tm *localTime = localtime(&record->timestamp);
+            ascii->AddFormatText(
+                &position,
+                "%2d  %s  %9ld%d  %.4d/%.2d/%.2d %.2d:%.2d  %s  %2.1f%%",
+                row + 1, record->name, record->score,
+                record->scoreSuffix, localTime->tm_year + 1900,
+                localTime->tm_mon + 1, localTime->tm_mday,
+                localTime->tm_hour, localTime->tm_min,
+                g_FrontEndStageNames[record->stageNameIndex],
+                (double)record->slowdownRate);
+        }
+        shade -= 0x10;
+        position.y += 18.0f;
+    }
+
+    if (controller->scoreEntryUnavailable == 0)
+    {
+        int alphabetLength = strlen(g_FrontEndScoreEntryAlphabet);
+        position.x = 84.0f;
+        position.y =
+            controller->cursor.current * 18.0f + 160.0f;
+        ascii->color = 0xffffffffu;
+        ascii->AddFormatText(&position, "%s", controller->scoreEntryName);
+
+        position.x =
+            controller->scoreEntryNameCursor * 9.0f + 84.0f;
+        if (controller->scoreEntryNameCursor ==
+            FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+        {
+            position.x -= 9.0f;
+        }
+        ascii->color = 0xffffff00u;
+        ascii->AddFormatText(&position, "_");
+
+        position.x = 212.0f;
+        position.y = 360.0f;
+        position.z = 0.0f;
+        for (int key = 0; key < alphabetLength; ++key)
+        {
+            ascii->color =
+                controller->scoreEntryKeyboardCursor.current == key
+                    ? 0xffffff00u : 0xff808080u;
+            int glyph;
+            if (key < alphabetLength - 3)
+                glyph = g_FrontEndScoreEntryAlphabet[key];
+            else if (key == alphabetLength - 3)
+                glyph = 0x81;
+            else if (key == alphabetLength - 2)
+                glyph = 0x7f;
+            else
+                glyph = 0x80;
+            ascii->AddFormatText(&position, "%c", glyph);
+
+            if (key % FRONT_END_SCORE_ENTRY_COLUMNS ==
+                FRONT_END_SCORE_ENTRY_COLUMNS - 1)
+            {
+                position.x = 212.0f;
+                position.y += 16.0f;
+            }
+            else
+            {
+                position.x += 18.0f;
+            }
+        }
+        ascii->color = 0xffffffffu;
+    }
     return 1;
 }

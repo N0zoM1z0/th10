@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `9cbe831 gpt-5.6-sol: reconstruct front-end practice core`, branch `main`.
+- Current packet base: `5f719b6 gpt-5.6-sol: complete front-end practice draw`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -50,14 +50,15 @@
 - Completed session checkpoint: `41c0f09 gpt-5.6-sol: reconstruct front-end stage core`.
 - Completed session checkpoint: `8edf352 gpt-5.6-sol: reconstruct front-end replay core`.
 - Completed session checkpoint: `9cbe831 gpt-5.6-sol: reconstruct front-end practice core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: complete front-end practice draw`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `5f719b6 gpt-5.6-sol: complete front-end practice draw`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct front-end score entry`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-practice-draw/`. The earlier front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-frontend-score-entry/`. The earlier front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `e7615ce` was adopted as live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `5f719b6` was adopted as live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -86,15 +87,15 @@ decodes each tracked extent, checks terminal control flow, independent code and
 aligned non-text pointer references, overlapping extents, external branches into
 another body, Ghidra sparse/remote ranges, `.text` union coverage and gaps. The
 current ledger has **1,173 reviewed, 88 provisional and 51 needs-review**
-boundaries. Tracked extents cover 340,239 union bytes. The remaining 72,050
-`.text` bytes contain 507 pure alignment gaps / 4,090 bytes and 446 unresolved
-gaps / 67,960 bytes. The report retains 26 overlapping extent pairs involving
+boundaries. Tracked extents cover 340,408 union bytes. The remaining 71,881
+`.text` bytes contain 512 pure alignment gaps / 4,126 bytes and 438 unresolved
+gaps / 67,755 bytes. The report retains 26 overlapping extent pairs involving
 37 candidates, four direct targets outside tracked extents and 97 aligned data
 pointers into untracked `.text` as triage evidence.
 
 The audit now also extracts absolute `.text` bases from indexed indirect jumps.
-It finds 100 target references to such control tables: 53 table references are
-inside their source owner's recorded span and 47 point beyond it. This is a
+It finds 100 target references to such control tables: 61 table references are
+inside their source owner's recorded span and 39 point beyond it. This is a
 boundary-review queue, not automatic permission to extend those owners; table
 length, selector domain, neighboring code/data and padding still require direct
 target review.
@@ -123,10 +124,60 @@ refreshed to `c001f8ef3d9a64e96664d999c14891d9c92fa12f393bca64cc77bb087c0e2143`,
 the Factory validator passed, and native `check {}` passed again. No tracked
 Factory file changed.
 
-`scripts/progress.py` and `scripts/report-reconstruction-status.py` report
-origin and boundary independently. `scripts/rank-core-backlog.py` orders
+`docs/PROGRESS.md` and `scripts/report-reconstruction-status.py` retain the
+separate origin and boundary ledger counts. The generated SVG follows the TH09
+status-card convention and shows one combined `Origin/boundary reviewed` bar;
+its count is the conservative intersection of candidates whose origin and
+boundary reviews are both complete. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
+
+## Completed packet: front-end score entry
+
+The score-entry screen discriminator 15 now routes to maintained update and draw
+owners instead of unresolved external stubs:
+
+- `FrontEndControllerView::UpdateScoreEntry @ 0x00432CB0-0x00433227`
+  (1,400 bytes)
+- `FrontEndControllerView::DrawScoreEntry @ 0x00433230-0x00433569`
+  (826 bytes)
+
+The four-state updater inserts the current score into the selected
+character/shot/difficulty table, loads the profile's last eight-character name,
+and drives a 91-entry wrapping keyboard laid out in thirteen columns. The final
+three entries are space, backspace and accept. Accept copies the name into both
+the inserted 0x18-byte score record and profile offset `+0x1D878`; cancellation
+erases one character, while an insertion failure skips directly to the result
+screen after confirmation. The owner creates and retires the target
+`0x68/0x98+/0x9A+/0xA0+` ANM scripts and preserves the target opening/closing
+timer thresholds.
+
+The draw owner emits all ten score rows using the same target record layout as
+the practice screen, highlights the inserted row, overlays the editable name and
+caret on that row, and draws all 91 glyphs at `(212,360)` with 18-pixel columns
+and 16-pixel rows. Controller layout review binds the name at `+0x58DC`, name
+cursor at `+0x58E8`, insertion-failure flag at `+0x58EC`, and a complete second
+`FrontEndCursorView` at `+0x58F4`; its target-written wrap field is therefore
+the existing cursor member at `+0x59C4`.
+
+Boundary review extends the update owner beyond Ghidra's executable end. Code
+ends with `RET 4` at `0x00433213-0x00433215`, `MOV EDI,EDI` occupies
+`0x00433216-0x00433217`, and the directly indexed four-entry table at
+`0x00433218-0x00433227` targets `0x00432CCC`, `0x00432EDA`, `0x00432F00`, and
+`0x004331AC`. Eight `CC` bytes separate the draw entry; its `RET 4` ends at
+`0x00433569`, followed by six `CC` bytes. The focused
+`scripts/report-frontend-score-entry.py --check` binds these extents, both
+dispatcher call sites, direct-call multisets, alphabet/table bytes, source
+markers and controller offsets to the canonical target.
+
+Pinned VC7.1 SP1 build6030 compiles the expanded `src/FrontEnd.cpp` under normal,
+`/GL`, and `/W4` profiles; `/W4` adds only the established anonymous-union
+extension warnings. Normal COMDATs are 1,384/781 bytes and mismatch at 72/1,096
+and 22/718 comparable bytes. With `UpdateScoreEntry` selected as the linked
+`/GL` entry, PDB contributions are 1,392/781 bytes and mismatch at 88/1,100 and
+22/718 comparable bytes. Every diagnostic has `acceptance_authority=none`; no
+exact row is added. Repository totals become 282 source mappings and remain 110
+exact functions / 12,166 bytes.
 
 ## Completed packet: front-end/options core
 

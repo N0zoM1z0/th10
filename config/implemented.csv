@@ -278,3 +278,5 @@ FrontEndControllerView::UpdatePractice
 FrontEndControllerView::RefreshPracticeRecords
 FrontEndControllerView::Draw
 FrontEndControllerView::DrawPractice
+FrontEndControllerView::UpdateScoreEntry
+FrontEndControllerView::DrawScoreEntry

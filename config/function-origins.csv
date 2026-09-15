@@ -451,8 +451,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00431EE0,authored_game,FrontEnd,authored,high,frontend-practice-core-2026-09-15
 0x00432690,authored_game,FrontEnd,authored,high,frontend-practice-core-2026-09-15
 0x004329F0,authored_game,FrontEnd,authored,high,frontend-practice-draw-2026-09-15
-0x00432CB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00433230,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00432CB0,authored_game,FrontEnd,authored,high,frontend-score-entry-2026-09-15
+0x00433230,authored_game,FrontEnd,authored,high,frontend-score-entry-2026-09-15
 0x00433570,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00433B30,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00433EF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

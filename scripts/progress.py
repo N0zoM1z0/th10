@@ -68,10 +68,17 @@ def measures() -> dict[str, int]:
     mapped_excluded = sum(
         disposition(row) == "exclude" for row in mappings
     )
+    review_completed = sum(
+        disposition(row) in ("authored", "exclude") and
+        boundaries[parse_address(row["address"])]["state"] == "reviewed"
+        for row in functions
+    )
     return {
         "functions": len(functions),
         "origin_reviewed": origin_reviewed,
         "origin_pending": len(functions) - origin_reviewed,
+        "review_completed": review_completed,
+        "review_pending": len(functions) - review_completed,
         "boundary_reviewed": boundary_reviewed,
         "boundary_provisional": boundary_provisional,
         "boundary_needs_review": boundary_needs_review,
@@ -122,13 +129,10 @@ does not contribute to the exact totals.
 
 def render_svg(values: dict[str, int]) -> str:
     total = values["functions"]
-    boundary_reviewed = values["boundary_reviewed"]
-    origin_reviewed = values["origin_reviewed"]
-    boundary_pct = 100 * boundary_reviewed / total if total else 0.0
-    origin_pct = 100 * origin_reviewed / total if total else 0.0
-    boundary_width = 512 * boundary_pct / 100
-    origin_width = 512 * origin_pct / 100
-    if values["origin_pending"] or values["boundary_pending"]:
+    reviewed = values["review_completed"]
+    review_pct = 100 * reviewed / total if total else 0.0
+    review_width = 512 * review_pct / 100
+    if values["review_pending"]:
         exact_label = "denominator pending"
         exact_width = 0.0
         exact_detail = f"{values['matches']:,} exact functions · {values['exact_bytes']:,} exact bytes"
@@ -139,24 +143,19 @@ def render_svg(values: dict[str, int]) -> str:
         exact_width = 512 * exact_pct / 100
         exact_detail = f"{values['matches']:,} / {values['authored']:,} functions · {values['exact_bytes']:,} / {values['authored_bytes']:,} bytes"
         aria_exact = f"authored {exact_pct:.2f}% exact bytes"
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="240" role="img" aria-label="TH10 reconstruction progress: {aria_exact}, boundary review {boundary_pct:.2f}%, origin review {origin_pct:.2f}%">
-  <rect width="560" height="240" rx="8" fill="#1f2335"/>
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="176" role="img" aria-label="TH10 reconstruction progress: {aria_exact}, origin and boundary review {review_pct:.2f}%">
+  <rect width="560" height="176" rx="8" fill="#1f2335"/>
   <text x="24" y="28" fill="#f4f4f5" font-family="sans-serif" font-size="16" font-weight="600">TH10 reconstruction progress</text>
   <text x="24" y="52" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Authored exact</text>
   <text x="536" y="52" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{exact_label}</text>
   <rect x="24" y="60" width="512" height="12" rx="6" fill="#3b4058"/>
   <rect x="24" y="60" width="{exact_width:.2f}" height="12" rx="6" fill="#9b6de3"/>
   <text x="24" y="89" fill="#c8cad2" font-family="sans-serif" font-size="12">{exact_detail}</text>
-  <text x="24" y="116" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Boundary reviewed</text>
-  <text x="536" y="116" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{boundary_pct:.2f}%</text>
+  <text x="24" y="116" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Origin/boundary reviewed</text>
+  <text x="536" y="116" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{review_pct:.2f}%</text>
   <rect x="24" y="124" width="512" height="12" rx="6" fill="#3b4058"/>
-  <rect x="24" y="124" width="{boundary_width:.2f}" height="12" rx="6" fill="#6fa8dc"/>
-  <text x="24" y="153" fill="#c8cad2" font-family="sans-serif" font-size="12">{boundary_reviewed:,} / {total:,} candidates · {values['boundary_provisional']:,} provisional · {values['boundary_needs_review']:,} focused review</text>
-  <text x="24" y="180" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Origin reviewed</text>
-  <text x="536" y="180" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{origin_pct:.2f}%</text>
-  <rect x="24" y="188" width="512" height="12" rx="6" fill="#3b4058"/>
-  <rect x="24" y="188" width="{origin_width:.2f}" height="12" rx="6" fill="#9b6de3"/>
-  <text x="24" y="217" fill="#c8cad2" font-family="sans-serif" font-size="12">{origin_reviewed:,} / {total:,} candidates · {values['origin_pending']:,} pending</text>
+  <rect x="24" y="124" width="{review_width:.2f}" height="12" rx="6" fill="#9b6de3"/>
+  <text x="24" y="153" fill="#c8cad2" font-family="sans-serif" font-size="12">{reviewed:,} / {total:,} candidates · {values['review_pending']:,} pending</text>
 </svg>
 '''
 

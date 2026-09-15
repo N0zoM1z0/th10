@@ -279,3 +279,5 @@ FrontEndControllerView::UpdatePractice,0x00431EE0,function
 FrontEndControllerView::RefreshPracticeRecords,0x00432690,function
 FrontEndControllerView::Draw,0x0042D260,function
 FrontEndControllerView::DrawPractice,0x004329F0,function
+FrontEndControllerView::UpdateScoreEntry,0x00432CB0,function
+FrontEndControllerView::DrawScoreEntry,0x00433230,function
