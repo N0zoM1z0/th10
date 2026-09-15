@@ -249,3 +249,5 @@ AnmRenderManagerView::CaptureToSurface
 EnemyResolveRuntimeCallback
 PlayerUpdateCallbackBody
 EclVmContext::Run
+GuiView::UpdateStageElements
+GuiMessageVmView::Run

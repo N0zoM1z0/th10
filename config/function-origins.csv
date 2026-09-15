@@ -206,11 +206,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414570,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004145F0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00414830,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00414900,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00414900,authored_game,Gui,authored,high,gui-core-2026-09-15
 0x00415800,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415B00,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00415DB0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00415E90,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00415E90,authored_game,Gui,authored,high,gui-core-2026-09-15
 0x00417010,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00417040,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x004172E0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

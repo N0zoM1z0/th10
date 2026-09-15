@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `1d22766 gpt-5.6-sol: split Player update callback core`, branch `main`.
+- Current packet base: `d4352b5 gpt-5.6-sol: reconstruct generic ECL VM core`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -40,9 +40,10 @@
 - Completed session checkpoint: `acfcf07 gpt-5.6-sol: reconstruct ANM resource and surface core`.
 - Completed session checkpoint: `adfd172 gpt-5.6-sol: reconstruct Enemy ECL dispatcher`.
 - Completed session checkpoint: `ff78689 gpt-5.6-sol: reconstruct Enemy callback core`.
-- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct generic ECL VM core`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
-- Recovery continued from the clean Enemy callback checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260915-ecl-vm-core/`. The earlier Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Completed session checkpoint: `d4352b5 gpt-5.6-sol: reconstruct generic ECL VM core`.
+- Planned current checkpoint subject: `gpt-5.6-sol: reconstruct GUI update and message cores`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Recovery continued from the clean generic-ECL-VM checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
+- Current campaign: `.analysis/gpt-5.6-sol/20260915-gui-core/`. The earlier generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -62,7 +63,63 @@ The execute toolchain path passed pinned VC7.1 SP1 build6030 normal COFF, C++ `/
 
 Target remains the ignored operator file `resources/th10.exe`: size 487,936, SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`, MD5 `7dc488d82c81dd4aee4ba098b8804d83`, PE32 i386 base `0x00400000`, entry `0x004537DC`, dominant Rich build6030. It was not modified, moved, staged or committed. `/mnt` was not searched and `TH10_TARGET_PATH` was not set.
 
-## Current packet: generic typed-stack ECL VM
+## Current packet: stage GUI update and message VM
+
+`GuiView::UpdateStageElements @ 0x00414900` and
+`GuiMessageVmView::Run @ 0x00415E90` are now maintained in `src/Gui.cpp`.
+The first is the central stage-HUD update owner; the second is the complete
+compact message interpreter called by it. Both use one stack pointer and end
+in `RET 4`; the registered update entry at `0x00415AE0` pushes its GUI pointer
+before calling `0x00414900`.
+
+Constructor and consumer evidence establishes the message state as exactly
+`0x90` bytes. It contains three `0x14`-byte timers, six managed VM ids, the
+current variable-sized instruction, two text positions, input cooldown,
+skippable and alternating-line state, active side and two colors. Message
+records contain `u16 time`, one-byte opcode and payload size, then the payload;
+the next record is payload plus size. The maintained switch covers all 24
+opcodes `0..23`: message completion, portrait/text VM creation and retirement,
+side and skip control, input wait, stage-specific child sprites and enemy-name
+scripts, stage-clear/save/score transitions, and the two retained stage-event
+paths.
+
+The GUI owner is an exact-sized `0x9ED0` view. Constructor `0x00413810` proves
+the six embedded VM arrays at `+0x10/+0x24C8/+0x4980/+0x6A8C/+0x793C/+0x8094`
+and a separate VM at `+0x9A48`; the tail owns managed VM ids, boss gauge state,
+four interleaved gauge values, the message pointer, stage/front ANM resources,
+spell-second state and ending counter. The updater advances the display groups,
+uses the target player-position boundaries for the side panel and boss gauge,
+maintains the five counter digits, interpolates boss gauge value by `0.025f`,
+runs and disposes the message state, updates spell digits and drives the boss
+position marker. The four-phase boss marker thresholds are
+`700/400/200/200` or `2000/1000/400/400`; phases zero through two transition
+below the threshold and phase three transitions above it.
+
+Direct boundary review expands the two physical owners beyond their reachable
+code. `0x00414900-0x004157FB` is 3,836 bytes: code ends at `0x004157DC`, three
+alignment bytes follow, and a seven-entry stage selector occupies
+`0x004157E0-0x004157FB`. `0x00415E90-0x0041700F` is 4,480 bytes: code ends at
+`0x00416F61`, two alignment bytes follow, and 43 pointers occupy
+`0x00416F64-0x0041700F`. Those pointers partition into the 24-entry opcode
+table, seven enemy-portrait stage cases, seven enemy-name stage cases and five
+difficulty bonus cases. `scripts/report-gui-core.py --check` verifies the
+target identity, both boundaries, all table destinations and exact source
+opcode/case coverage.
+
+Pinned VC7.1 SP1 build6030 compiles `src/Gui.cpp` under fixed normal, `/GL`,
+and `/W4` profiles. Normal COMDATs are 690 and 1,348 bytes; linked `/GL`
+contributions are 689 and 1,560 bytes, against the 3,836- and 4,480-byte target
+owners. Both target-bound diagnostics are mismatches with
+`acceptance_authority=none`, consistent with substantial target inlining but
+insufficient to identify the production link context. No exact claim is added.
+Repository totals become **1,309 candidates, 253 source mappings and 110 exact
+functions / 12,166 bytes**.
+
+The adjacent GUI constructor/load/draw/message-start bodies at
+`0x00413810/0x00413980/0x00415800/0x00415B00/0x00415DB0` remain bounded
+follow-up units. The next user-selected core batch is the Main corridor.
+
+## Completed packet: generic typed-stack ECL VM
 
 `EclVmContext::Run @ 0x0044E1A0` is now maintained in `src/EclVm.cpp`.
 This is the generic TH10 VM below the already reconstructed Enemy-specific
