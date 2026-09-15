@@ -17,7 +17,12 @@ struct MainSupervisorAnmPrefixView
     void *instance;
     void *d3dInterface;
     D3d9DeviceView *d3dDevice;
+    unsigned char padding00C[0xe0];
+    unsigned int backbufferFormat;
 };
+
+typedef char MainSupervisorAnmPrefixBackbufferFormatAt0EC[
+    (offsetof(MainSupervisorAnmPrefixView, backbufferFormat) == 0x0ec) ? 1 : -1];
 
 // Target 0x0044BC10 adds an angular delta and bounds the result to the
 // engine's signed-pi interval. The loop cap is part of the target body.
@@ -2580,6 +2585,9 @@ void AnmRenderManagerView::CaptureToSurface(
     int sourceWidth, int sourceHeight, int destinationX,
     int destinationY, int destinationWidth, int destinationHeight)
 {
+    MainSupervisorAnmPrefixView *supervisor =
+        reinterpret_cast<MainSupervisorAnmPrefixView *>(
+            &g_MainSupervisorView);
     D3d9SurfaceView *backbuffer;
     D3d9RectView sourceRect;
     D3d9RectView destinationRect;
@@ -2597,32 +2605,35 @@ void AnmRenderManagerView::CaptureToSurface(
     destinationRect.right = destinationX + destinationWidth;
     destinationRect.bottom = destinationY + destinationHeight;
 
-    if (g_Direct3DDevice->vtable->GetBackBuffer(
-            g_Direct3DDevice, 0, 0, 0, &backbuffer) != 0)
+    if (supervisor->d3dDevice->vtable->GetBackBuffer(
+            supervisor->d3dDevice, 0, 0, 0, &backbuffer) != 0)
     {
         return;
     }
 
     surfaceInfo[surfaceIndex].width = destinationWidth;
     surfaceInfo[surfaceIndex].height = destinationHeight;
-    if (g_Direct3DDevice->vtable->CreateRenderTarget(
-            g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
-            surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+    if (supervisor->d3dDevice->vtable->CreateRenderTarget(
+            supervisor->d3dDevice, surfaceInfo[surfaceIndex].width,
+            surfaceInfo[surfaceIndex].height, supervisor->backbufferFormat,
             0, 0, 1, &surfaces[surfaceIndex], NULL) != 0)
     {
-        if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
-                g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
-                surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
+        if (supervisor->d3dDevice->vtable->CreateOffscreenPlainSurface(
+                supervisor->d3dDevice, surfaceInfo[surfaceIndex].width,
+                surfaceInfo[surfaceIndex].height, supervisor->backbufferFormat,
                 3, &surfaces[surfaceIndex], NULL) != 0)
         {
             goto out;
         }
     }
 
-    if (g_Direct3DDevice->vtable->CreateOffscreenPlainSurface(
-            g_Direct3DDevice, surfaceInfo[surfaceIndex].width,
-            surfaceInfo[surfaceIndex].height, g_AnmBackbufferFormat,
-            3, &secondarySurfaces[surfaceIndex], NULL) != 0)
+    D3d9SurfaceView **secondarySurface =
+        &secondarySurfaces[surfaceIndex];
+    D3d9DeviceView *secondaryDevice = supervisor->d3dDevice;
+    if (secondaryDevice->vtable->CreateOffscreenPlainSurface(
+            secondaryDevice, surfaceInfo[surfaceIndex].width,
+            surfaceInfo[surfaceIndex].height, supervisor->backbufferFormat,
+            3, secondarySurface, NULL) != 0)
     {
         goto out;
     }

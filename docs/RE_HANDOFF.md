@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `3fd501c gpt-5.6-sol: fix ANM exact owner boundaries`, branch `main`.
+- Current packet base: `52bd0ff gpt-5.6-sol: recover exact ANM embedded texture upload`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -58,14 +58,15 @@
 - Completed session checkpoint: `ee13d3a gpt-5.6-sol: recover exact ANM 3D render state`.
 - Completed session checkpoint: `8b0f19e gpt-5.6-sol: recover exact ANM generated draws`.
 - Completed session checkpoint: `91c8d5f gpt-5.6-sol: recover exact ANM float variable resolver`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM embedded texture upload`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `52bd0ff gpt-5.6-sol: recover exact ANM embedded texture upload`.
+- Planned current checkpoint subject: `gpt-5.6-sol: recover exact ANM surface capture`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
 - Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-ecl-exact-next/`. The earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `91c8d5f` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `52bd0ff` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -138,6 +139,30 @@ its count is the conservative intersection of candidates whose origin and
 boundary reviews are both complete. `scripts/rank-core-backlog.py` orders
 source-absent, boundary-reviewed candidates by target size and optional Ghidra
 connectivity while explicitly granting no ownership or semantic credit.
+
+## Completed packet: exact ANM surface capture
+
+`AnmRenderManagerView::CaptureToSurface @ 0x00448450` previously produced a
+378-byte linked contribution against the complete 379-byte target owner and
+matched 204/335 non-linkage bytes. The existing boundary note incorrectly
+described the last two bytes as padding. Direct decode establishes that
+`0x004485C8-0x004485CA` is the complete three-byte `RET 36`; the canonical PDB
+contribution now covers the full instruction.
+
+TH10 Main layout places the D3D9 device at `MainSupervisorView +0x8` and the
+present-parameter backbuffer format at `+0xEC`. Expressing both fields through
+that common source owner restores the target's render-target and fallback-call
+schedule. Retaining a natural pointer to the selected secondary surface slot
+and a local `secondaryDevice` then restores VC7.1's register choice for the
+second surface creation and both following D3DX copies.
+
+Two focused cold replays close the complete **379/379-byte PDB contribution and
+11/11 linkage fields** in the established `AnmResourcePipeline` `/GL` context.
+The final full-source cold gate closes all **74 configured
+`src/AnmManager.cpp` units / 10 artifacts / 15,121 target bytes**; the resource
+artifact itself closes seven owners / 1,183 bytes. Repository totals are now
+**124 exact functions / 17,112 bytes**. ANM has 64 exact owners / 14,285 bytes
+and 59 source-present authored owners / 27,422 bytes remaining.
 
 ## Completed packet: exact ANM embedded texture upload
 
@@ -961,7 +986,7 @@ Enemy units / 511 bytes** exactly.
 ## Completed packet: ANM resource, text and surface core
 
 The manager setup corridor is now source-present from `0x00445900` through the
-end of `CaptureToSurface @ 0x004485C8`. Its texture/resource half covers direct
+end of `CaptureToSurface @ 0x004485CA`. Its texture/resource half covers direct
 and sub-rectangle texture loads, texture creation from files and ANM payloads,
 empty-texture creation, synchronous/preloaded ANM parsing, external texture
 data, postload relocation, texture upload, preload service, resource release,
@@ -1897,10 +1922,9 @@ differences are respectively one commutative X87 operand order and one complete
 `ESI`/`EDI` live-range exchange. Retain their natural source until stronger
 production-context evidence exists. The four 93/95-byte
 `CreateVmAtScreenVariant*` siblings can remain in the Web leaf queue unless
-their shared two-byte issue reveals useful owner context. The next larger core
-candidate is `AnmRenderManagerView::CaptureToSurface @ 0x00448450`; its current
-linked contribution is 378/379 bytes, 204/335 comparable bytes and 11 fields.
-`DrawMode7 @ 0x004445C0` follows at 404/402 bytes with 24 fields.
+their shared two-byte issue reveals useful owner context. `CaptureToSurface @
+0x00448450` is now canonical exact. The next larger renderer candidate is
+`DrawMode7 @ 0x004445C0` at 404/402 bytes with 24 fields.
 
 The largest remaining core owners are ANM `ExecuteScript @ 0x00450B30`
 (9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). Use smaller
