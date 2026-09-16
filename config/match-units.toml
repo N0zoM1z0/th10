@@ -1634,6 +1634,40 @@ symbol = "?GetSize@CMemoryPbgFile@@UAEKXZ"
 target_address = 0x004364E0
 size = 4
 
+
+[units.pbgarchive-destructor]
+artifact_kind = "linked-pe"
+source = "src/PbgArchive.cpp"
+output_dir = "build/match-linked/PbgArchiveLifecycle"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/EHsc", "/Ob1"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "??1PbgArchive@@QAE@XZ"
+functions = ["PbgArchive::~PbgArchive"]
+symbol = "??1PbgArchive@@QAE@XZ"
+target_address = 0x00434C20
+size = 10
+linkages = [{ offset = 0x04, type = "REL32", symbol = "?Release@PbgArchive@@QAEXXZ", target = 0x00434D10 }]
+
+[units.pbgarchive-release]
+artifact_kind = "linked-pe"
+source = "src/PbgArchive.cpp"
+output_dir = "build/match-linked/PbgArchiveLifecycle"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/EHsc", "/Ob1"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "??1PbgArchive@@QAE@XZ"
+functions = ["PbgArchive::Release"]
+symbol = "?Release@PbgArchive@@QAEXXZ"
+target_address = 0x00434D10
+size = 86
+linkages = [
+  { offset = 0x0C, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x27, type = "DIR32", symbol = "??1PbgArchiveEntry@@QAE@XZ", target = 0x00435250 },
+  { offset = 0x30, type = "REL32", symbol = "??_L@YGXPAXIHP6EX0@Z1@Z", target = 0x004525FF },
+  { offset = 0x36, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
 [units.pbgarchive-constructor]
 artifact_kind = "coff"
 source = "src/PbgArchive.cpp"

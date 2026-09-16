@@ -97,18 +97,15 @@ void PbgArchive::Release()
         free(m_Filename);
         m_Filename = NULL;
     }
+    m_Filename = NULL;
 
     if (m_Entries != NULL)
-    {
         delete[] m_Entries;
-        m_Entries = NULL;
-    }
+    m_Entries = NULL;
 
     if (m_FileAbstraction != NULL)
-    {
         delete m_FileAbstraction;
-        m_FileAbstraction = NULL;
-    }
+    m_FileAbstraction = NULL;
 
     m_NumOfEntries = 0;
 }
