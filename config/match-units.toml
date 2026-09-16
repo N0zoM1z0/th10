@@ -1451,6 +1451,19 @@ relocations = [
   { offset = 46, type = "DIR32", symbol = "__imp__ReadFile@20", target = 0x004660D0 },
 ]
 
+[units.pbgfile-write]
+artifact_kind = "coff"
+source = "src/PbgFile.cpp"
+object = "build/match/PbgFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CPbgFile::Write"]
+symbol = "?Write@CPbgFile@@UAE_NPAXK@Z"
+target_address = 0x004354D0
+size = 63
+relocations = [
+  { offset = 47, type = "DIR32", symbol = "__imp__WriteFile@20", target = 0x004660D4 },
+]
+
 [units.pbgfile-tell]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"

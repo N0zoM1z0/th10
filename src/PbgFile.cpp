@@ -96,7 +96,9 @@ bool CPbgFile::Write(void *data, DWORD dataLen)
         return false;
 
     WriteFile(m_hFile, data, dataLen, &numBytesWritten, NULL);
-    return dataLen == numBytesWritten;
+    if (dataLen == numBytesWritten)
+        return true;
+    return false;
 }
 
 DWORD CPbgFile::Tell()

@@ -76,9 +76,9 @@
 - Completed session checkpoint: `0d85d50 gpt-5.6-sol: gate ANM ECL Web handoff`.
 - Completed session checkpoint: `34e55b8 gpt-5.6-sol: repair Web Python toolchain selection`.
 - Completed session checkpoint: `b3f8fc7 gpt-web: isolate ECL VM allocator gap`.
-- Planned current checkpoint subject: `gpt-web: recover exact ECL stack read leaves`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Planned current checkpoint subject: `gpt-web: recover exact PbgFile write leaf`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: small-leaf exact recovery around the generic ECL stack/read corridor. The retained pinned-decoder diagnostics live under `.analysis/gpt-5.6-sol/20260916-ecl-vm-read-resolve/`; current cold linked evidence is rebuilt from tracked source and canonical match-unit definitions. Factory acceptance still requires the post-commit canonical replay receipt.
+- Current campaign: small-leaf exact recovery, with the ECL linked-image corridor locally closed and a Factory-replayable normal-COFF `CPbgFile::Write` leaf prepared next. The retained pinned-decoder diagnostics live under `.analysis/gpt-5.6-sol/20260916-ecl-vm-read-resolve/`; current cold linked evidence is rebuilt from tracked source and canonical match-unit definitions. Factory acceptance still requires the post-commit canonical replay receipt.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
@@ -2494,6 +2494,33 @@ canonical replay; they are not counted as a new accepted snapshot until that
 receipt is accepted. The generic 7,020-byte `EclVmContext::Run` allocator gap
 remains open and was not forced with register hints, dummy dependencies, inline
 assembly, or copied target bytes.
+
+## Completed packet: exact normal-COFF `CPbgFile::Write` leaf
+
+After the linked-image ECL packet, the pass deliberately rotated to a Factory-
+replayable normal-COFF leaf rather than forcing a linked unit through the current
+normal-COFF-only Factory acceptance driver. `CPbgFile::Write @ 0x004354D0` was
+already close: the maintained normal-COFF body was 67 bytes versus the 63-byte
+target and matched through the `WriteFile` call. Rewriting only the final bool
+expression as an explicit true/false branch makes VC7.1 naturally retain the
+requested length in ESI and compare it directly against the stack local, yielding
+the target `cmp esi,[esp+4]; sete al` tail.
+
+The new `pbgfile-write` canonical unit covers the complete 63-byte COMDAT and
+its sole DIR32 relocation to `__imp__WriteFile@20 -> 0x004660D4`. Two independent
+cold `replay-exact-units.py` runs both report 63/63 exact. Rebuilding the shared
+`PbgFile.obj` also leaves the six pre-existing normal-COFF units (`destructor`,
+`Close`, `Read`, `Tell`, `GetSize`, `Seek`) exact with complete reviewed
+relocation coverage. No private calling-convention annotation, inline assembly,
+padding, copied bytes, or inert dependency was introduced.
+
+The tracked repository graph therefore advances to **139 canonical exact
+functions / 19,036 authored exact bytes**, with **156 authored source backlog**.
+The preceding four ECL linked-PE claims remain locally reproducible exact claims
+but cannot yet receive a Factory acceptance receipt because the currently
+exposed TH10 Factory replay driver accepts only declared normal-COFF units. This
+`CPbgFile::Write` unit is intentionally in that supported lane and should be
+submitted after the checkpoint commit.
 
 ## Next hard frontier
 
