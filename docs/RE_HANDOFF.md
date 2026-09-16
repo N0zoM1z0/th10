@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `0d85d50 gpt-5.6-sol: gate ANM ECL Web handoff`, branch `main`.
+- Current packet base: `b3f8fc7 gpt-web: isolate ECL VM allocator gap`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -74,14 +74,16 @@
 - Completed session checkpoint: `2e1cd95 gpt-5.6-sol: recover ANM Float2 evaluator core`.
 - Completed session checkpoint: `dfc22c4 gpt-5.6-sol: recover ECL typed arithmetic flow`.
 - Completed session checkpoint: `0d85d50 gpt-5.6-sol: gate ANM ECL Web handoff`.
-- Planned current checkpoint subject: `gpt-5.6-sol: repair Web Python toolchain selection`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `34e55b8 gpt-5.6-sol: repair Web Python toolchain selection`.
+- Completed session checkpoint: `b3f8fc7 gpt-web: isolate ECL VM allocator gap`.
+- Planned current checkpoint subject: `gpt-web: recover exact ECL stack read leaves`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: Web Python toolchain selection, with receipt `.analysis/gpt-5.6-sol/20260916-python-selection-toolchain.json`. The ANM/ECL Web handoff is checkpointed separately under `.analysis/gpt-5.6-sol/20260916-anm-ecl-web-handoff/`; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: small-leaf exact recovery around the generic ECL stack/read corridor. The retained pinned-decoder diagnostics live under `.analysis/gpt-5.6-sol/20260916-ecl-vm-read-resolve/`; current cold linked evidence is rebuilt from tracked source and canonical match-unit definitions. Factory acceptance still requires the post-commit canonical replay receipt.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `0d85d50` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `b3f8fc7` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -2461,6 +2463,37 @@ runner even though the retained local receipt proves the pinned Capstone 5.0.6
 path and full toolchain smoke in the operator Web shell. This packet grants no
 new linked exactness on that basis; canonical replay must be rerun from a
 Factory-visible pinned interpreter before any future promotion.
+
+## Completed packet: exact ECL stack/read leaves
+
+The small-leaf pass revisited the four ECL near matches whose only ordinary-code
+difference was the first four-byte stack-pop decrement. The key source-shape
+recovery is semantic rather than byte-directed: `EclVmStackView::Pop` now tests
+`stackTop - size`, then updates the member directly with `stackTop -= size` and
+copies from the updated top. Its standalone 122-byte canonical body remains
+unchanged, while VC7.1 LTCG now lowers constant-size inlined pops to the target
+`ADD reg,-4` encoding. `LeaveFrame` uses the same direct state-update form for
+its saved-frame pop.
+
+That single owner-shape correction closes four reviewed leaves:
+`EclVmContext::ReadFloat @ 0x0044FE40` (183 bytes),
+`ReadIntValue @ 0x0044FF00` (124), `ReadFloatValue @ 0x0044FF80` (171), and
+`EclVmStackView::LeaveFrame @ 0x004506D0` (41). Two independent cold builds of
+the maintained `EclVmContext::Run` linked context reproduce each complete
+PDB-owned extent with zero ordinary-byte differences after replaying the
+exhaustive declared DIR32/REL32 fields; `LeaveFrame` is raw 41/41 byte-identical.
+The same-context accepted units `ResolveFloat`, `FindThread`, `StopAllThreads`,
+`FindSubroutine`, `Push`, `EnterFrame`, and `Pop` remain zero-difference. The
+separate `EclVmHost::Run` canonical context was rebuilt with `src/Enemy.cpp`
+support and also remains 146/146 normalized zero-difference.
+
+The tracked graph now contains **138 exact match units** and the generated status
+reports **138 source-present exact functions / 157 authored source backlog**.
+These four local exact claims are ready for the required post-commit Factory
+canonical replay; they are not counted as a new accepted snapshot until that
+receipt is accepted. The generic 7,020-byte `EclVmContext::Run` allocator gap
+remains open and was not forced with register hints, dummy dependencies, inline
+assembly, or copied target bytes.
 
 ## Next hard frontier
 

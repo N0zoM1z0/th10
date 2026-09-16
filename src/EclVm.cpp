@@ -36,12 +36,11 @@ int EclVmStackView::Push(
 
 int EclVmStackView::Pop(unsigned char type, int size, void *value)
 {
-    const int valueOffset = stackTop - size;
-    if (valueOffset < 0)
+    if (stackTop - size < 0)
         return -1;
 
-    stackTop = valueOffset;
-    memcpy(value, data + valueOffset, size);
+    stackTop -= size;
+    memcpy(value, data + stackTop, size);
 
     if (type != 0)
     {
@@ -85,11 +84,10 @@ int EclVmStackView::EnterFrame(int localBytes)
 int EclVmStackView::LeaveFrame()
 {
     const int previousFrame = frameBase;
-    const int previousFrameOffset = stackTop - 4;
-    if (previousFrameOffset >= 0)
+    if (stackTop - 4 >= 0)
     {
-        stackTop = previousFrameOffset;
-        frameBase = *reinterpret_cast<int *>(data + previousFrameOffset);
+        stackTop -= 4;
+        frameBase = *reinterpret_cast<int *>(data + stackTop);
     }
     stackTop = previousFrame;
     return 0;

@@ -7,6 +7,60 @@ target_sha256 = "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc904
 # require /GL, a PDB-owned complete extent, and an exhaustive manifest of every
 # link-resolved field. Neither artifact kind establishes whole-product closure.
 
+[units.ecl-vm-read-float]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+output_dir = "build/match-linked/EclVmStack"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmContext@@QAEHM@Z"
+functions = ["EclVmContext::ReadFloat"]
+symbol = "?ReadFloat@EclVmContext@@QAEMI@Z"
+target_address = 0x0044FE40
+size = 183
+linkages = [
+  { offset = 0x21, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x31, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x45, type = "DIR32", symbol = "__real@bf800000", target = 0x00470B60 },
+  { offset = 0xA1, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]
+
+[units.ecl-vm-read-int-value]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+output_dir = "build/match-linked/EclVmStack"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmContext@@QAEHM@Z"
+functions = ["EclVmContext::ReadIntValue"]
+symbol = "?ReadIntValue@EclVmContext@@QAEHIH@Z"
+target_address = 0x0044FF00
+size = 124
+linkages = [
+  { offset = 0x66, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]
+
+[units.ecl-vm-read-float-value]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+output_dir = "build/match-linked/EclVmStack"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmContext@@QAEHM@Z"
+functions = ["EclVmContext::ReadFloatValue"]
+symbol = "?ReadFloatValue@EclVmContext@@QAEMIM@Z"
+target_address = 0x0044FF80
+size = 171
+linkages = [
+  { offset = 0x1B, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x2B, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x3F, type = "DIR32", symbol = "__real@bf800000", target = 0x00470B60 },
+  { offset = 0x9C, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]
+
 [units.ecl-vm-resolve-float]
 artifact_kind = "linked-pe"
 source = "src/EclVm.cpp"
@@ -130,6 +184,20 @@ size = 122
 linkages = [
   { offset = 0x6D, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
 ]
+
+[units.ecl-vm-stack-leave-frame]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+output_dir = "build/match-linked/EclVmStack"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmContext@@QAEHM@Z"
+functions = ["EclVmStackView::LeaveFrame"]
+symbol = "?LeaveFrame@EclVmStackView@@QAEHXZ"
+target_address = 0x004506D0
+size = 41
+linkages = []
 
 [units.ascii-manager-add-format-text-gs]
 artifact_kind = "linked-pe"
