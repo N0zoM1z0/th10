@@ -2677,3 +2677,34 @@ available graph; member/declaration/loop-shape probes did not move them.
 EAX receiver contract of `EclVmStartSubroutine` inside the larger generic ECL
 optimizer graph. Do not revisit these with ABI lies or inert code shaping; rotate
 to a new standard-ABI leaf unless stronger production-link evidence appears.
+
+### Follow-up: exact FPS display owner
+
+The first FPS checkpoint deliberately left `FpsCounterView::DrawFpsCounter @
+0x004135D0` source-present but non-exact. Its Main-only `/GL` candidate already
+had the correct 180-byte physical extent, but could not reproduce the target's
+private call into `AsciiManagerView::AddSmallFormatText`: without the formatter
+TU visible, VC7.1 kept manager/position as ordinary call arguments and reloaded
+`currentFps` around both comparisons.
+
+Adding the real `src/AnmManager.cpp` support contribution resolves that seam.
+VC7.1 then naturally selects the target `EDI` FPS owner, `ESI` ASCII manager and
+`EBX` position contract. A source-local `float fps = currentFps` preserves the
+same x87 value across the `<30` and `<40` tests and the final variadic conversion,
+yielding the target `FCOM`, second `FCOM`, then `FSTP QWORD [esp]` sequence.
+No register annotation, artificial dependency or assembly is used.
+
+Canonical unit `main-fps-draw` uses the retained FPS draw adapter as the linked
+entry and `src/AnmManager.cpp` as support. Two independent cold VC7.1 SP1 `/GL`
+links reproduce all **180/180** target bytes after replaying nine declared fields.
+The same links emit adapter `0x00413690` as the target ten bytes exactly, including
+the relative call displacement; the adapter remains outside canonical exactness
+because source-written versus compiler/LTCG-generated provenance is still
+unresolved. It is maintained only as optimizer-context glue.
+
+The Draw change was also replayed twice in the original Main-only FPS context:
+`CalculateFps` remains 280/280 normalized zero-difference and `GetTimestamp`
+remains 282/282 normalized zero-difference. The FPS family therefore closes
+three canonical owners / 742 bytes in total with no exact regression. Repository
+totals are now **144 canonical exact functions / 20,515 exact bytes**, with
+**153 authored source-present exact backlog**.

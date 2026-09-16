@@ -1046,26 +1046,41 @@ int FpsCounterView::CalculateFps()
 
 // Target 0x004135D0-0x00413683 is the paired FPS display owner.  It is kept
 // source-present because it is the real production caller context for the exact
-// CalculateFps/GetTimestamp codegen below; its own exactness remains open.
+// CalculateFps/GetTimestamp codegen.  In the retained draw-adapter plus
+// AnmManager support graph this 180-byte owner is also canonical exact.
 int FpsCounterView::DrawFpsCounter()
 {
     CalculateFps();
-    if (g_FpsDisplayMode != 14 && g_AsciiManagerView != NULL)
+    if (g_FpsDisplayMode != 14)
     {
-        unsigned int color;
-        if (currentFps < 30.0f)
-            color = 0xff5050ffu;
-        else if (currentFps < 40.0f)
-            color = 0xffa0a0ffu;
-        else
-            color = 0xffffffffu;
+        AsciiManagerView *asciiManager = g_AsciiManagerView;
+        float fps = currentFps;
+        if (asciiManager != NULL)
+        {
+            unsigned int color;
+            if (fps < 30.0f)
+                color = 0xff5050ffu;
+            else if (fps < 40.0f)
+                color = 0xffa0a0ffu;
+            else
+                color = 0xffffffffu;
 
-        g_AsciiManagerView->color = color;
-        AnmFloat3View position(590.0f, 470.0f, 0.0f);
-        g_AsciiManagerView->AddSmallFormatText(
-            &position, "%2.1ffps", currentFps);
-        g_AsciiManagerView->color = 0xffffffffu;
+            asciiManager->color = color;
+            AnmFloat3View position(590.0f, 470.0f, 0.0f);
+            asciiManager->AddSmallFormatText(
+                &position, "%2.1ffps", fps);
+            g_AsciiManagerView->color = 0xffffffffu;
+        }
     }
     fpsFrameCount += (unsigned int)g_MainSupervisorView.frameskip + 1u;
     return 1;
+}
+
+// Target 0x00413690-0x00413699 is the retained draw-chain adapter.  Its
+// source-written versus compiler/LTCG-generated provenance is still unresolved;
+// this maintained spelling is used only to recreate the observed optimizer
+// entry context and is not itself promoted as authored/exact.
+int __fastcall FpsCounterDrawCallback(FpsCounterView *counter)
+{
+    return counter->DrawFpsCounter();
 }
