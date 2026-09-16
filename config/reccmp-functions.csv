@@ -181,7 +181,7 @@ AnmRenderManagerView::ExecuteScript,0x0043EE30,function
 AnmVmColorInterpolationView::Evaluate,0x00441600,function
 AnmVmAlphaInterpolationView::Evaluate,0x00441950,function
 AnmVmFloat2InterpolationView::Evaluate,0x00441AD0,function
-ScaleAnmInt3,0x00441E50,function
+AnmInt3View::operator*,0x00441E50,function
 AnmVmView::StartSecondaryAlphaInterpolation,0x00441F50,function
 AnmVmView::StartSecondaryColorInterpolation,0x00442050,function
 AnmVmView::StartPrimaryColorInterpolation,0x00442220,function

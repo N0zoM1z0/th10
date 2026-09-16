@@ -2708,3 +2708,34 @@ remains 282/282 normalized zero-difference. The FPS family therefore closes
 three canonical owners / 742 bytes in total with no exact regression. Repository
 totals are now **144 canonical exact functions / 20,515 exact bytes**, with
 **153 authored source-present exact backlog**.
+
+## Completed packet: exact `AnmInt3View::operator*` scale leaf
+
+The former descriptive `ScaleAnmInt3 @ 0x00441E50` helper is now represented by
+the source abstraction that explains its complete target ABI and instruction
+schedule: `AnmInt3View::operator*(float) const`. The unique color-Hermite caller
+physically calls this owner four times. Target call order is final, initial,
+initial tangent, final tangent; each call supplies the triplet in EDI, hidden
+result storage in ESI and one float stack argument. The target callee returns
+with `RET 4`.
+
+VC7.1's value-return path is sensitive to constructor argument evaluation. The
+maintained three-argument `AnmInt3View` therefore keeps X/Z/Y argument slots
+while storing members in the normal X/Y/Z field order. `operator*` returns
+`AnmInt3View(x*scale, z*scale, y*scale)`: VC7.1 evaluates those arguments from
+right to left as Y/Z/X, exactly matching the target's three FILD/FMUL/__ftol2
+sequences, while the hidden-result stores naturally become Z/X/Y at the target
+addresses. No explicit private calling convention, noinline annotation, asm,
+volatile qualifier, padding, copied bytes or fake dependency is retained.
+
+Two independent cold `ExecuteScript`-context links from tracked source emit the
+same complete 56-byte PDB contribution. After replaying the three __ftol2 REL32
+fields at offsets 0x09, 0x17 and 0x25, all ordinary bytes are zero-difference.
+All 16 previously canonical exact units sharing this exact entry/profile remain
+zero-difference in the final tracked-source regression. Clean metadata validation
+advances the repository to **147 canonical exact functions / 20,729 exact bytes**
+with **150 authored source-present functions** remaining in the exact backlog.
+
+`UpdatePulsingRadialTrail @ 0x00445620` remains a separate 598/598 two-byte X87
+operand-scheduling frontier. Its natural caller/type/profile/link-root variants
+have been exhausted and should not be forced with volatile/asm/inert shaping.

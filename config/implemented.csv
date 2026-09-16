@@ -174,7 +174,7 @@ AnmVmFloat3InterpolationView::Evaluate
 AnmVmColorInterpolationView::Evaluate
 AnmVmAlphaInterpolationView::Evaluate
 AnmVmFloat2InterpolationView::Evaluate
-ScaleAnmInt3
+AnmInt3View::operator*
 CalculateAnmInterpolation
 AnmVmLayerNodeView::InsertAfter
 AnmLoadedView::SetSprite
