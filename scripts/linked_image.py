@@ -27,7 +27,11 @@ def verify_capstone(lock: dict[str, object]) -> dict[str, object]:
     if lock.get("authority") != "linked-image-field-decoder":
         raise LinkedImageError("Capstone lock has an invalid authority")
     if capstone.__version__ != str(lock.get("version", "")):
-        raise LinkedImageError("Capstone version does not match the lock")
+        raise LinkedImageError(
+            f"Capstone {capstone.__version__} at {Path(capstone.__file__).resolve()} "
+            f"does not match locked version {lock.get('version')}; "
+            "run repository commands through scripts/repo-python"
+        )
     root = Path(capstone.__file__).resolve().parent
     files = {
         "python_wrapper": Path(capstone.__file__).resolve(),

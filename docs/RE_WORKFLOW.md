@@ -5,7 +5,10 @@
 First recover the current worktree instead of assuming it is clean. Read the
 handoff, inspect status and diffs (including untracked work), then attest the
 disk target, Ghidra target, ledgers, and live status using the commands in
-`AGENTS.md`. Stop if any identity differs.
+`AGENTS.md`. Run repository Python through `scripts/repo-python`; it verifies
+the four pinned Capstone component hashes before selecting an interpreter, so
+Web and local shells cannot silently use different decoders. Stop if any
+identity differs.
 
 ## Bounded exact-reconstruction loop
 

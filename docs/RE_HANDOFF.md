@@ -3,7 +3,7 @@
 ## Checkpoint state
 
 - Repository `th10`, branch `main`, target `target:th10-main`, analysis provider `th10-ghidra`.
-- Current packet base: `afa2277 gpt-5.6-sol: align ECL dispatcher code shape`, branch `main`.
+- Current packet base: `0d85d50 gpt-5.6-sol: gate ANM ECL Web handoff`, branch `main`.
 - Completed session checkpoint: `bd9b2e3 gpt-5.6-sol: promote exact PbgFile accessors`.
 - Completed session checkpoint: `9b5e7eb gpt-5.6-sol: add exact replay workflow`.
 - Completed session checkpoint: `4ed34ee gpt-5.6-sol: promote exact PbgArchive lifecycles`.
@@ -73,14 +73,15 @@
 - Completed session checkpoint: `7248af7 gpt-5.6-sol: recover ANM interpolation value flow`.
 - Completed session checkpoint: `2e1cd95 gpt-5.6-sol: recover ANM Float2 evaluator core`.
 - Completed session checkpoint: `dfc22c4 gpt-5.6-sol: recover ECL typed arithmetic flow`.
-- Planned current checkpoint subject: `gpt-5.6-sol: gate ANM ECL Web handoff`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `0d85d50 gpt-5.6-sol: gate ANM ECL Web handoff`.
+- Planned current checkpoint subject: `gpt-5.6-sol: repair Web Python toolchain selection`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-ecl-web-handoff/`. The ECL typed-arithmetic, ANM interpolation, executor, host-runner, start-subroutine, script-database, ECL control, operand, typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: Web Python toolchain selection, with receipt `.analysis/gpt-5.6-sol/20260916-python-selection-toolchain.json`. The ANM/ECL Web handoff is checkpointed separately under `.analysis/gpt-5.6-sol/20260916-anm-ecl-web-handoff/`; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `dfc22c4` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `0d85d50` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -2373,6 +2374,28 @@ an exactness claim. Large non-exact owners remain in the queue, including the
 14,416-byte Enemy dispatcher, 9,587-byte ANM executor and 7,020-byte generic ECL
 VM, but their opcode/business coverage is maintained; their remaining task is
 compiler/context matching and complete owned-extent replay.
+
+## Completed packet: Web Python decoder selection
+
+The screenshot's Capstone preflight failure is an interpreter-path issue. On
+this host `/usr/bin/python3` imports system Capstone 4.0.2, while the Conda
+Python imports the hash-pinned Capstone 5.0.6. A direct system-Python
+`verify-toolchain.py --execute` correctly fails closed; it now reports both the
+observed package path and the required `scripts/repo-python` entry point.
+
+The new executable `scripts/repo-python` tries the current Python and available
+Conda candidates, selecting one only after `verify_capstone` checks all four
+unchanged lock hashes. `AGENTS.md` and the README now use it for repository
+commands. With `PATH=/usr/bin:/bin` to reproduce the Web shell, the wrapper
+selects the pinned interpreter and passes the complete VC7.1/Wine normal COFF,
+LTCG, resource, PE32 and PDB extent smoke. The generic ECL table gate also
+passes in that environment. The receipt is
+`.analysis/gpt-5.6-sol/20260916-python-selection-toolchain.json`.
+
+Factory-native `th10-ghidra` discovery and `check {}` independently passed for
+`target:th10-main` with `provider_transport=factory-native-command`. The target
+hash and exact ledger remain unchanged; this packet repairs only environment
+routing and error diagnosis.
 
 ## Next hard frontier
 

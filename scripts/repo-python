@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Choose an interpreter that can import the hash-pinned linked-image decoder.
+# This keeps a Web shell's /usr/bin/python3 (Ubuntu Capstone 4.0.2) from
+# silently replacing the verified Capstone 5.0.6 used by reconstruction tools.
+repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+
+candidate_interpreters=()
+if [[ -n "${TH10_PYTHON:-}" ]]; then
+    candidate_interpreters+=("$TH10_PYTHON")
+else
+    if command -v python3 >/dev/null 2>&1; then
+        candidate_interpreters+=("$(command -v python3)")
+    fi
+    if command -v python3.13 >/dev/null 2>&1; then
+        candidate_interpreters+=("$(command -v python3.13)")
+    fi
+    if [[ -n "${CONDA_PREFIX:-}" ]]; then
+        candidate_interpreters+=("$CONDA_PREFIX/bin/python3")
+    fi
+    if [[ -n "${HOME:-}" ]]; then
+        candidate_interpreters+=("$HOME/miniconda3/bin/python3")
+    fi
+fi
+
+for repo_python in "${candidate_interpreters[@]}"; do
+    [[ -x "$repo_python" ]] || continue
+    if "$repo_python" - "$repo_root" >/dev/null 2>&1 <<'PY'
+import sys
+import tomllib
+from pathlib import Path
+
+root = Path(sys.argv[1])
+sys.path.insert(0, str(root / "scripts"))
+from linked_image import verify_capstone
+
+with (root / "config" / "tools.lock.toml").open("rb") as stream:
+    verify_capstone(tomllib.load(stream)["capstone"])
+PY
+    then
+        exec "$repo_python" "$@"
+    fi
+done
+
+printf '%s\n' \
+    'error: no Python interpreter can import the hash-pinned Capstone decoder' \
+    'Set TH10_PYTHON to a Python with the exact config/tools.lock.toml Capstone 5.0.6 package.' >&2
+exit 1

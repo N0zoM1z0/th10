@@ -23,11 +23,15 @@ Before changing anything:
    review the diff. A previous Web session may have disconnected while leaving
    valuable dirty work. Understand, recover, finish, or deliberately supersede
    it; do not silently work around it.
-3. In the repository shell, run `python3 scripts/verify-target.py`,
-   `python3 scripts/verify-toolchain.py --execute`,
-   `python3 scripts/validate-tracking.py --require-target`, and
-   `python3 scripts/report-reconstruction-status.py` before target-dependent
-   work. From GPT-web, attest Ghidra separately through the Factory-native
+3. In the repository shell, use `scripts/repo-python` for repository Python
+   commands. It selects an interpreter only after verifying the exact pinned
+   Capstone decoder in `config/tools.lock.toml`; a Web shell may otherwise use
+   `/usr/bin/python3` with Ubuntu's incompatible Capstone 4.0.2. Run
+   `scripts/repo-python scripts/verify-target.py`,
+   `scripts/repo-python scripts/verify-toolchain.py --execute`,
+   `scripts/repo-python scripts/validate-tracking.py --require-target`, and
+   `scripts/repo-python scripts/report-reconstruction-status.py` before
+   target-dependent work. From GPT-web, attest Ghidra separately through the Factory-native
    `th10-ghidra` provider: discover its operation schemas, then call
    `check` and require a passed attestation for `target:th10-main` with
    `attestation.provider_transport=factory-native-command`. The preflight call's
@@ -110,6 +114,7 @@ the repository.
   into a script or durable note, and remove superseded disposable artifacts.
 - Never commit the original executable, game archives/data, Ghidra databases,
   toolchains, generated decompiler text, credentials, or private endpoints.
-- Finish with the focused Oracle, `python3 scripts/verify-toolchain.py --check`,
-  `python3 scripts/validate-tracking.py`,
-  `python3 scripts/progress.py`, `python3 scripts/ci.py`, and `git diff --check`.
+- Finish with the focused Oracle, `scripts/repo-python scripts/verify-toolchain.py --check`,
+  `scripts/repo-python scripts/validate-tracking.py`,
+  `scripts/repo-python scripts/progress.py`, `scripts/repo-python scripts/ci.py`,
+  and `git diff --check`.

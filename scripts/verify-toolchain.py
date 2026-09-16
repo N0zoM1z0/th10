@@ -52,7 +52,11 @@ def load_lock() -> tuple[dict[str, object], dict[str, object], dict[str, object]
         raise ValueError("Wine lock must require a headless win32 prefix")
     if decoder.get("authority") != "linked-image-field-decoder":
         raise ValueError("Capstone lock has an invalid authority")
-    for script in ("scripts/run-headless-wine.sh", "scripts/compile-probe.sh"):
+    for script in (
+        "scripts/repo-python",
+        "scripts/run-headless-wine.sh",
+        "scripts/compile-probe.sh",
+    ):
         if not os.access(ROOT / script, os.X_OK):
             raise ValueError(f"toolchain wrapper is not executable: {script}")
     for probe in (

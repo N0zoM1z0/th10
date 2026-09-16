@@ -27,9 +27,9 @@ classifies this exact SHA-256 as `th10`, `v1.00a`, `(original)`; patched
 and Steam executables have different digests.
 
 ```bash
-python3 scripts/verify-target.py
-python3 scripts/validate-tracking.py --require-target
-python3 scripts/report-reconstruction-status.py
+scripts/repo-python scripts/verify-target.py
+scripts/repo-python scripts/validate-tracking.py --require-target
+scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
 Original executables, game data, Ghidra projects, decompiler output, and
@@ -47,17 +47,22 @@ LTCG C++ inputs.
 Per-unit flags and ownership, translation-unit boundaries, libraries, resource
 graph, and link order remain unknown.
 
+Use `scripts/repo-python` for repository Python commands. It selects an
+interpreter only when its Capstone package matches all four hashes in
+`config/tools.lock.toml`; this avoids the system Python/Conda decoder mismatch
+in Web shells without changing the decoder lock.
+
 ```bash
-python3 scripts/verify-toolchain.py --execute
-python3 scripts/build-match-unit.py --check
-python3 scripts/report-source-completeness.py --module AnmManager --require-complete
-python3 scripts/report-exact-backlog.py
-python3 scripts/rank-exact-backlog.py --source src/PbgArchive.cpp
-python3 scripts/probe-exact-backlog.py --source src/PbgArchive.cpp
-python3 scripts/probe-ltcg-backlog.py --source src/PbgArchive.cpp
-python3 scripts/probe-ltcg-backlog.py --source src/AnmManager.cpp \
+scripts/repo-python scripts/verify-toolchain.py --execute
+scripts/repo-python scripts/build-match-unit.py --check
+scripts/repo-python scripts/report-source-completeness.py --module AnmManager --require-complete
+scripts/repo-python scripts/report-exact-backlog.py
+scripts/repo-python scripts/rank-exact-backlog.py --source src/PbgArchive.cpp
+scripts/repo-python scripts/probe-exact-backlog.py --source src/PbgArchive.cpp
+scripts/repo-python scripts/probe-ltcg-backlog.py --source src/PbgArchive.cpp
+scripts/repo-python scripts/probe-ltcg-backlog.py --source src/AnmManager.cpp \
   --entry src/AnmManager.cpp=AsciiManagerCreate
-python3 scripts/replay-exact-units.py
+scripts/repo-python scripts/replay-exact-units.py
 ```
 
 Canonical units that share one source, compiler profile, and artifact context
