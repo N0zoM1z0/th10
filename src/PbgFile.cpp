@@ -20,7 +20,7 @@ CPbgFile::~CPbgFile()
 
 bool CPbgFile::Open(const char *filename, char *mode)
 {
-    DWORD creationDisposition;
+    DWORD creationDisposition = 0;
     BOOL goToEnd = FALSE;
     char filePathBuffer[MAX_PATH];
 
