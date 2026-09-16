@@ -2313,6 +2313,42 @@ the current unresolved candidates were retained. `.analysis/` decreased from
 154,965,595 logical bytes to about 43 MiB; the local audit is
 `.analysis/gpt-5.6-sol/20260916-artifact-cleanup.txt`.
 
+## Completed packet: ECL VM typed arithmetic core
+
+The generic `EclVmContext::Run @ 0x0044E1A0` now expresses all nine integer
+and floating arithmetic opcodes through the target-observed typed stack owner.
+Each case pops the right operand and then the left operand directly into typed
+locals, mutates the left local in place, and pushes that same local. The two
+negation cases likewise reuse their pop local; opcode `0x55` continues to apply
+integer `NEG` to the raw float dword. Post-decrement preserves its original
+value in the pushed local while writing the decremented value through the
+resolved destination.
+
+In the selected `EclVmHost::Run` `/GL` context these natural source forms move
+the complete `Run` contribution from **6,648 to 6,916 bytes** against the
+7,020-byte physical target owner. The code before its two tables moves from
+**6,320 to 6,588 bytes** against the 6,692-byte target span, reducing the gap
+from 372 to **104 bytes**. The candidate retains the target's `0x108` stack
+frame and exact physical order for all 59 active opcode bodies. Formerly
+exceptional comparison and negation blocks now differ by the same two-to-four
+byte class as neighboring typed-pop cases.
+
+The remaining systematic difference is code generation rather than missing VM
+semantics: the target keeps the instruction cursor in `EBX` and zero in `EBP`,
+while the selected candidate exchanges those live ranges and emits `SUB reg,4;
+JS` where the target emits `ADD reg,-4; CMP reg,EBP; JL`. The three-byte
+post-decrement excess is also isolated to LTCG's internal call convention: the
+target passes zero with `PUSH EBP` and preserves the context register between
+the read and resolve calls, while the candidate clears and reloads registers.
+No artificial dependency was retained to force either allocation.
+
+The final diagnostic packet is
+`.analysis/gpt-5.6-sol/20260916-ecl-typed-arithmetic/final/`. A cold full-source
+gate preserves all **8 canonical ECL units / 2 artifacts / 724 bytes** exactly.
+The generic VM's opcode semantics, case topology and typed arithmetic data flow
+are therefore closed for core reconstruction; its 104-byte aggregate codegen
+gap belongs in the Web exact queue.
+
 ## Next hard frontier
 
 Continue the user-selected ANM/ECL exact campaign owner by owner. The refreshed
@@ -2327,21 +2363,17 @@ their shared two-byte issue reveals useful owner context. `CaptureToSurface @
 0x00448450`, `DrawMode7 @ 0x004445C0`, and the complete `Draw @ 0x004451C0`
 dispatcher are now canonical exact.
 
-The largest remaining core owners are ANM `ExecuteScript @ 0x0043EE30`
-(9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). For ECL,
-the read/resolve and stack owner corridors are now represented and the selected
-linked contribution is 6,648 bytes with the exact target case order and a
-matching `0x108` frame. For ANM, use `report-anm-execute-table.py` to move the
-shared advance group after POSITION and then work the post-loop interpolation
-temporary layout. Position, rotation and the Float2 private `ESI/EDI` seam are
-now structurally closed; Float2's four-byte contribution difference, Float3's
-33-byte difference and the shared advance placement are suitable for the Web
-exact queue. The current executor pre-table gap is 116 bytes. For ECL, use the
-candidate mode of `report-ecl-vm-table.py` to work the remaining typed
-arithmetic conversion branches and EBX/EBP live-range exchange while retaining
-the exact host runner as an ABI regression gate. Keep exactness tied to complete
-owned extents and cold canonical replay; linked diagnostic proximity alone does
-not promote a unit.
+The two largest ANM/ECL execution owners now have their core semantics and
+table topology represented. ANM `ExecuteScript @ 0x0043EE30` retains a
+9,472/9,588-byte pre-table span; its remaining shared-advance placement,
+Float2 four-byte extent difference, Float3 33-byte extent difference and outer
+register schedule are suitable for the Web exact queue. Generic ECL `Run @
+0x0044E1A0` retains a 6,588/6,692-byte pre-table span with exact active-opcode
+order; its typed-pop short-branch encoding, `EBX`/`EBP` live-range exchange and
+small internal-call ABI differences are likewise exact-codegen work. Retain
+the exact host runner and the complete ANM/ECL cold replays as regression gates.
+Keep exactness tied to complete owned extents; linked diagnostic proximity alone
+does not promote a unit.
 
 After ANM, continue the generic and Enemy ECL owner families, including a second
 Enemy opcode cohort that shares the recovered typed operand context. The real

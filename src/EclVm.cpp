@@ -815,73 +815,100 @@ jump_instruction:
 
             case ECL_VM_ADD_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left + right);
+                int right;
+                stack.Pop('i', sizeof(right), &right);
+                int left;
+                stack.Pop('i', sizeof(left), &left);
+                left += right;
+                stack.Push('i', sizeof(left), &left);
                 break;
             }
 
             case ECL_VM_SUBTRACT_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left - right);
+                int right;
+                stack.Pop('i', sizeof(right), &right);
+                int left;
+                stack.Pop('i', sizeof(left), &left);
+                left -= right;
+                stack.Push('i', sizeof(left), &left);
                 break;
             }
 
             case ECL_VM_MULTIPLY_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left * right);
+                int right;
+                stack.Pop('i', sizeof(right), &right);
+                int left;
+                stack.Pop('i', sizeof(left), &left);
+                left *= right;
+                stack.Push('i', sizeof(left), &left);
                 break;
             }
 
             case ECL_VM_DIVIDE_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left / right);
+                int right;
+                stack.Pop('i', sizeof(right), &right);
+                int left;
+                stack.Pop('i', sizeof(left), &left);
+                left /= right;
+                stack.Push('i', sizeof(left), &left);
                 break;
             }
 
             case ECL_VM_MODULO_INT:
             {
-                const int right = PopInt(this);
-                const int left = PopInt(this);
-                PushInt(this, left % right);
+                int right;
+                stack.Pop('i', sizeof(right), &right);
+                int left;
+                stack.Pop('i', sizeof(left), &left);
+                left %= right;
+                stack.Push('i', sizeof(left), &left);
                 break;
             }
 
             case ECL_VM_ADD_FLOAT:
             {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushFloat(this, left + right);
+                float right;
+                stack.Pop('f', sizeof(right), &right);
+                float left;
+                stack.Pop('f', sizeof(left), &left);
+                left += right;
+                stack.Push('f', sizeof(left), &left);
                 break;
             }
 
             case ECL_VM_SUBTRACT_FLOAT:
             {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushFloat(this, left - right);
+                float right;
+                stack.Pop('f', sizeof(right), &right);
+                float left;
+                stack.Pop('f', sizeof(left), &left);
+                left -= right;
+                stack.Push('f', sizeof(left), &left);
                 break;
             }
 
             case ECL_VM_MULTIPLY_FLOAT:
             {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushFloat(this, left * right);
+                float right;
+                stack.Pop('f', sizeof(right), &right);
+                float left;
+                stack.Pop('f', sizeof(left), &left);
+                left *= right;
+                stack.Push('f', sizeof(left), &left);
                 break;
             }
 
             case ECL_VM_DIVIDE_FLOAT:
             {
-                const float right = PopFloat(this);
-                const float left = PopFloat(this);
-                PushFloat(this, left / right);
+                float right;
+                stack.Pop('f', sizeof(right), &right);
+                float left;
+                stack.Pop('f', sizeof(left), &left);
+                left /= right;
+                stack.Push('f', sizeof(left), &left);
                 break;
             }
 
@@ -1030,15 +1057,20 @@ jump_instruction:
             }
 
             case ECL_VM_NEGATE_INT:
-                PushInt(this, -PopInt(this));
+            {
+                int value;
+                stack.Pop('i', sizeof(value), &value);
+                value = -value;
+                stack.Push('i', sizeof(value), &value);
                 break;
+            }
 
             case ECL_VM_NEGATE_FLOAT_STORAGE:
             {
                 // 0x0044F851 executes integer NEG on the raw float dword and
                 // then pushes that dword with type 'f'.  This is not x87 FCHS.
                 EclVmScalar value;
-                value.real = PopFloat(this);
+                stack.Pop('f', sizeof(value), &value);
                 value.integer = -value.integer;
                 stack.Push('f', sizeof(value), &value);
                 break;
@@ -1046,9 +1078,10 @@ jump_instruction:
 
             case ECL_VM_POST_DECREMENT_INT:
             {
-                const int value = ReadInt(0);
-                *ResolveInt(0) = value - 1;
-                PushInt(this, value);
+                int value = ReadInt(0);
+                int *destination = ResolveInt(0);
+                *destination = value - 1;
+                stack.Push('i', sizeof(value), &value);
                 break;
             }
 
