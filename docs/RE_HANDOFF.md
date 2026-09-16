@@ -2397,6 +2397,71 @@ Factory-native `th10-ghidra` discovery and `check {}` independently passed for
 hash and exact ledger remain unchanged; this packet repairs only environment
 routing and error diagnosis.
 
+## Completed packet: ECL VM allocator hard frontier
+
+This packet deliberately stayed on the 7,020-byte generic
+`EclVmContext::Run @ 0x0044E1A0-0x0044FD0B` instead of consuming easier
+near-match leaves. Fresh Factory-native Ghidra attestation remained passed for
+`target:th10-main` with `provider_transport=factory-native-command`, and raw
+target review reconfirmed the complete code/table owner and its one real caller
+`EclVmHost::Run`.
+
+A fresh current-source `/GL` link reproduces the same **6,916-byte** PDB-owned
+candidate and **6,588 / 6,692-byte pre-table span** recorded by the typed
+arithmetic packet. Repeating the link in the already canonical
+`EnemyRuntimeUpdate -> EclVmHost::Run -> EclVmContext::Run` context, with
+`src/Enemy.cpp` as a support source and the real Enemy runtime entry, leaves the
+Run contribution at 6,916 bytes and preserves the same entry register shape.
+Thus the remaining gap is not caused by omitting that proven outer caller
+context.
+
+Direct target/candidate comparison isolates the dominant systematic difference.
+The target keeps `this` in ESI, `&instruction` in EBX, zero in EBP, and the
+current instruction in EDI; the candidate keeps the same ESI/EDI roles but
+exchanges the EBX/EBP live ranges. Every inlined typed pop therefore uses target
+`ADD reg,-4; CMP reg,EBP; JL` instead of candidate `SUB reg,4; JS`, adding two
+target bytes per pop. The target-minus-candidate destination-gap sum across all
+59 physical case groups is **93 bytes**; the complete pre-table difference is
+**104 bytes**, leaving only eleven bytes in shared/prologue-tail shape. Binary
+typed arithmetic/logical cases are normally four bytes short and unary cases
+two bytes short, exactly matching their pop counts.
+
+The large format case supplies an independent lifetime check. Target opcode
+`0x1E` uses the outer EDI instruction directly, then temporarily repurposes EBX
+as the one-byte operand-flag index and EBP as value-word index six. Before the
+common advance tail it restores zero with `XOR EBP,EBP`; the tail reloads the
+instruction from `[ESI+4]` and reconstructs `&instruction` in EBX. This proves
+that the allocator intentionally recolors those registers across the case and
+that no separate persistent owner is missing.
+
+Bounded natural-source probes were deliberately kept below ignored scratch and
+were not promoted. Swapping declarations, `register`/`const` hints, pointer
+versus reference aliases, moving `current` to function scope, and using the full
+Enemy caller graph either emitted the exact same 6,916-byte contribution or did
+not fix the EBX/EBP exchange. Direct-member variants were 6,900 bytes; a direct
+loop form fell to 6,800; a direct entry check reached 6,932 only by introducing
+a second null test absent from the target; direct-context and lexical format
+variants were 6,904 and 6,900 bytes and changed register coloring in the wrong
+direction. Natural maintained source was restored unchanged. The compact probe
+summary is `.analysis/gpt-web/20260916-ecl-run-hard/findings.json`; reproducible
+variant sources and diagnostic build trees were removed at checkpoint.
+
+No exact ledger row changed: repository state remains **1,313 candidates, 299
+source mappings, 134 canonical exact functions / 18,454 bytes**. The honest
+product check remains separate: `python3 scripts/build.py --check` passes the
+explicitly open graph, while `python3 scripts/build.py` returns **RC2** because
+production compiler flags, TU partition, libraries, resources, and link order
+remain unknown. Runtime was not attempted.
+
+The preceding `34e55b8 gpt-5.6-sol: repair Web Python toolchain selection`
+checkpoint is valid local repository infrastructure work, but this Factory
+repository runner exposes `HOME=/tmp/home` and cannot see the operator Conda
+interpreter. `scripts/repo-python` therefore correctly fails closed in this
+runner even though the retained local receipt proves the pinned Capstone 5.0.6
+path and full toolchain smoke in the operator Web shell. This packet grants no
+new linked exactness on that basis; canonical replay must be rerun from a
+Factory-visible pinned interpreter before any future promotion.
+
 ## Next hard frontier
 
 Continue the user-selected ANM/ECL exact campaign owner by owner. The refreshed
@@ -2424,9 +2489,12 @@ Keep exactness tied to complete owned extents; linked diagnostic proximity alone
 does not promote a unit.
 
 Do not reopen a supposed second Enemy opcode cohort: the 14,416-byte maintained
-dispatcher already covers every target-active selector. Web work should start
-with the recorded ANM near matches, the generic ECL 104-byte aggregate gap and
-the remaining module-filtered exact backlog. The real production link graph
+dispatcher already covers every target-active selector. Web work should not
+repeat the exhausted ECL alias/declaration/register probes. The next hard packet
+should rotate to `AnmVmView::ExecuteScript @ 0x0043EE30`
+(the 9,588-byte central ANM executor) or return to ECL only with new production
+optimizer-context evidence; the four small ANM creator siblings remain a leaf
+queue rather than the default choice. The real production link graph
 remains a major infrastructure gap; canonical bounded linked-image units do not
 close it.
 
