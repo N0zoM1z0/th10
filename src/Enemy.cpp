@@ -1427,33 +1427,29 @@ int EnemyManagerUpdate(EnemyManagerView *manager)
     EnemyListNodeView *node = manager->enemyListHead;
     while (node != NULL)
     {
-        EnemyFullObjectView *enemy = node->enemy;
         EnemyListNodeView *next = node->next;
-
-        if ((enemy->runtime.flags & 0x20000u) == 0)
+        if ((node->enemy->runtime.flags & 0x20000u) != 0 ||
+            EnemyRuntimeUpdate(&node->enemy->runtime) != 0)
         {
-            if (EnemyRuntimeUpdate(&enemy->runtime) == 0)
-                enemy->runtime.flags &= ~0x400u;
-            else
-                delete enemy;
+            delete node->enemy;
         }
         else
         {
-            delete enemy;
+            node->enemy->runtime.flags &= ~0x400u;
         }
         node = next;
     }
 
     manager->timer.previous = manager->timer.current;
-    const float scale = *manager->timer.scale;
-    if (scale > 0.9900000095367432f && scale < 1.0099999904632568f)
+    if (*manager->timer.scale > 0.9900000095367432f &&
+        *manager->timer.scale < 1.0099999904632568f)
     {
         ++manager->timer.current;
         manager->timer.subframe += 1.0f;
     }
     else
     {
-        manager->timer.subframe += scale;
+        manager->timer.subframe += *manager->timer.scale;
         manager->timer.current = static_cast<int>(manager->timer.subframe);
     }
     return 1;
