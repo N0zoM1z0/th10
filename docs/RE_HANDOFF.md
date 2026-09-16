@@ -2609,3 +2609,71 @@ available. The best current near-exact owner remains `UpdatePulsingRadialTrail`
 both now have bounded exhausted natural-source/profile probes. Rotate to another
 owner rather than using volatile qualifiers, fake dependencies, inline assembly,
 or calling-convention lies.
+
+## Completed packet: FPS caller context closes GetTimestamp and CalculateFps
+
+The leaf pass found that `GameWindowView::GetTimestamp @ 0x00439540` was not
+missing a local variable or source-level pragma. Normal COFF and incomplete
+linked contexts already reproduced the complete 282-byte body and every one of
+its 30 address/import/constant fields; only the prologue and two epilogue frame
+immediates used `0x10` instead of target `0x14`. `LARGE_INTEGER` is size eight
+and alignment eight under the pinned VC7.1 SDK/compiler, and all declaration,
+`#pragma var_order`, `/Zi`/`/Z7`, `/GS`, optimization, and member/static probes
+left those three bytes unchanged.
+
+The missing evidence was a real cross-owner caller. Target owner
+`0x004134B0-0x004135C7` begins `push ebp; mov ebp,esp; and esp,-8` and calls
+GetTimestamp three times while maintaining the half-second FPS sample state.
+The adjacent `0x004135D0-0x00413683` display owner calls that sampler, emits the
+literal `%2.1ffps`, and increments its frame count by `frameskip + 1`; callback
+bridge `0x00413690` directly calls the display owner at `0x00413693`. TH095's
+`CalculateFps`/`DrawFpsCounter` family corroborates only the descriptive family
+name. TH10 itself proves every maintained offset, branch, threshold and call.
+
+`src/Main.cpp` now contains a bounded `FpsCounterView` of size `0x8C` and a
+minimal `FpsSampleGateView`. `FpsCounterView::CalculateFps` binds the target
+fields at `+0x14/+0x1C/+0x20/+0x24/+0x2C/+0x34`, the 0.5-second sample window,
+65-FPS clock-anomaly handling, 57/60-FPS lag accounting, and the QPC reset path.
+`DrawFpsCounter` is retained as source-present support and as the real optimizer
+entry context; its own exactness remains open.
+
+Two independent cold VC7.1 SP1 `/GL` links using
+`?DrawFpsCounter@FpsCounterView@@QAEHXZ` as entry reproduce:
+
+- `FpsCounterView::CalculateFps @ 0x004134B0`: 280/280 bytes with all 20 declared
+  REL32/DIR32 fields replayed and zero ordinary-byte differences;
+- `GameWindowView::GetTimestamp @ 0x00439540`: 282/282 bytes with all 30 declared
+  critical-section, timing-import, GameWindow, supervisor and floating-constant
+  fields replayed and zero ordinary-byte differences.
+
+The key codegen seam is physical rather than cosmetic: once the real FPS caller
+supplies an 8-byte-aligned stack phase, VC7.1 naturally changes GetTimestamp's
+local allocation from `sub esp,0x10` to the target `sub esp,0x14`; no source
+padding, volatile qualifier, dummy local, assembly, or copied target bytes are
+used. `config/match-units.toml` records both linked units in the shared
+`MainFps` context.
+
+The repository now tracks **143 canonical exact functions / 20,335 exact
+bytes** and **301 source mappings**. The authored source-present exact backlog
+remains 154 because GetTimestamp leaves the backlog while the newly recovered,
+non-exact DrawFpsCounter enters it. The live repository shell currently cannot
+import the hash-pinned Capstone 5.0.6 package, so `scripts/repo-python` and the
+formal `replay-exact-units.py` wrapper fail closed. No system Capstone fallback
+was used; the two cold links were instead checked directly across complete
+owned extents with exhaustive declared fields. Factory service acceptance for
+linked-PE claims remains a separate platform capability/receipt question.
+
+## Current leaf frontier
+
+The remaining five same-size historical near matches at five ordinary bytes or
+fewer are now well classified. `UpdatePulsingRadialTrail @ 0x00445620` remains
+598/598 with only the Y-component X87 load/add operands exchanged after natural
+operator/local/profile experiments. `EnemyManagerUpdateCallback @ 0x0040D810`,
+`AsciiManagerView::OnDrawHighPriority @ 0x00401520`, and
+`PbgArchive::~PbgArchive @ 0x00434C20` are linked private-register bridge
+frontiers whose owner contracts choose the wrong nonvolatile register in the
+available graph; member/declaration/loop-shape probes did not move them.
+`EclVmHost::SpawnThread @ 0x004500D0` is controlled by the still-open private
+EAX receiver contract of `EclVmStartSubroutine` inside the larger generic ECL
+optimizer graph. Do not revisit these with ABI lies or inert code shaping; rotate
+to a new standard-ABI leaf unless stronger production-link evidence appears.

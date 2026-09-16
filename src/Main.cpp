@@ -947,3 +947,125 @@ int GameWindowView::CalcExecutableChecksum()
     g_MainExecutableChecksum = checksum;
     return checksum;
 }
+
+// Target 0x004134B0-0x004135C7 is TH10's half-second FPS sampler.  The
+// adjacent game family supplies only the descriptive owner name; every field,
+// threshold, timer reset, and gameplay-sampling gate below is visible in TH10.
+#pragma pack(push, 4)
+struct FpsSampleGateView
+{
+    unsigned char unknown000[0x58];
+    unsigned int flags58;
+};
+
+struct FpsCounterView
+{
+    unsigned char unknown000[0x14];
+    double lastFpsTimestamp;       // +0x14
+    int clockAnomalyCount;         // +0x1C
+    unsigned int fpsFrameCount;    // +0x20
+    double lagNumerator;           // +0x24
+    double lagDenominator;         // +0x2C
+    float currentFps;              // +0x34
+    unsigned char unknown038[0x54];
+
+    int CalculateFps();
+    int DrawFpsCounter();
+};
+#pragma pack(pop)
+
+typedef char FpsCounterViewSizeIs8C[
+    (sizeof(FpsCounterView) == 0x8c) ? 1 : -1];
+typedef char FpsCounterLastTimestampAt14[
+    (offsetof(FpsCounterView, lastFpsTimestamp) == 0x14) ? 1 : -1];
+typedef char FpsCounterFrameCountAt20[
+    (offsetof(FpsCounterView, fpsFrameCount) == 0x20) ? 1 : -1];
+typedef char FpsCounterCurrentFpsAt34[
+    (offsetof(FpsCounterView, currentFps) == 0x34) ? 1 : -1];
+
+extern FpsSampleGateView *g_FpsSampleGateView;
+extern int g_FpsDisplayMode;
+
+int FpsCounterView::CalculateFps()
+{
+    double currentTime;
+    double elapsed;
+
+    currentTime = GameWindowView::GetTimestamp();
+    if (lastFpsTimestamp > currentTime)
+        lastFpsTimestamp = currentTime;
+
+    if (currentTime - lastFpsTimestamp >= 0.5)
+    {
+        elapsed = currentTime - lastFpsTimestamp;
+        lastFpsTimestamp += elapsed;
+        currentFps = (float)((double)fpsFrameCount / elapsed);
+
+        if (currentFps > 65.0f)
+        {
+            ++clockAnomalyCount;
+            if (clockAnomalyCount == 2)
+            {
+                g_GameWindowView.lastTimestamp =
+                    g_GameWindowView.currentTimestamp =
+                    g_GameWindowView.lastFrameTime =
+                    g_GameWindowView.timeOrigin = GameWindowView::GetTimestamp();
+            }
+            else if (clockAnomalyCount == 4)
+            {
+                g_GameWindowView.performanceFrequency.QuadPart = 0;
+                g_GameWindowView.lastTimestamp =
+                    g_GameWindowView.currentTimestamp =
+                    g_GameWindowView.lastFrameTime =
+                    g_GameWindowView.timeOrigin = GameWindowView::GetTimestamp();
+                clockAnomalyCount = 0;
+            }
+        }
+        else
+        {
+            clockAnomalyCount = 0;
+        }
+
+        FpsSampleGateView *gate = g_FpsSampleGateView;
+        if (gate != NULL)
+        {
+            if ((gate->flags58 & 0x14u) == 0)
+            {
+                lagDenominator += 60.0;
+                if (currentFps > 57.0f)
+                    lagNumerator += 60.0;
+                else
+                    lagNumerator += currentFps;
+            }
+            gate->flags58 &= ~0x80u;
+        }
+        fpsFrameCount = 0;
+    }
+    return 1;
+}
+
+// Target 0x004135D0-0x00413683 is the paired FPS display owner.  It is kept
+// source-present because it is the real production caller context for the exact
+// CalculateFps/GetTimestamp codegen below; its own exactness remains open.
+int FpsCounterView::DrawFpsCounter()
+{
+    CalculateFps();
+    if (g_FpsDisplayMode != 14 && g_AsciiManagerView != NULL)
+    {
+        unsigned int color;
+        if (currentFps < 30.0f)
+            color = 0xff5050ffu;
+        else if (currentFps < 40.0f)
+            color = 0xffa0a0ffu;
+        else
+            color = 0xffffffffu;
+
+        g_AsciiManagerView->color = color;
+        AnmFloat3View position(590.0f, 470.0f, 0.0f);
+        g_AsciiManagerView->AddSmallFormatText(
+            &position, "%2.1ffps", currentFps);
+        g_AsciiManagerView->color = 0xffffffffu;
+    }
+    fpsFrameCount += (unsigned int)g_MainSupervisorView.frameskip + 1u;
+    return 1;
+}

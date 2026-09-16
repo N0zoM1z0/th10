@@ -195,7 +195,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00413350,0x004133E6,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
 0x00413450,0x004134A3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004134B0,0x004135C7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x004135D0,0x00413683,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x004135D0,0x00413683,reviewed,high,fps-counter-owner-2026-09-16,"Complete dense decode covers 180/180 bytes and ends in RET; target callback bridge 0x00413690 directly calls this owner at 0x00413693, with no overlap or external interior branch."
 0x004136C0,0x00413720,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00413790,0x004137DC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x00413810,0x0041397E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch

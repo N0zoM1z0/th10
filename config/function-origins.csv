@@ -194,8 +194,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00413270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413450,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004134B0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x004135D0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x004134B0,authored_game,Main,authored,high,fps-counter-owner-2026-09-16
+0x004135D0,authored_game,Main,authored,high,fps-counter-owner-2026-09-16
 0x004136C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413790,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

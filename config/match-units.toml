@@ -2638,3 +2638,83 @@ relocations = [
   { offset = 0x283, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x8 },
   { offset = 0x297, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
 ]
+
+[units.main-fps-calculate]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+output_dir = "build/match-linked/MainFps"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DrawFpsCounter@FpsCounterView@@QAEHXZ"
+functions = ["FpsCounterView::CalculateFps"]
+symbol = "?CalculateFps@FpsCounterView@@QAEHXZ"
+target_address = 0x004134B0
+size = 280
+linkages = [
+  { offset = 0x09, type = "REL32", symbol = "?GetTimestamp@GameWindowView@@SANXZ", target = 0x00439540 },
+  { offset = 0x1F, type = "DIR32", symbol = "__real@3fe0000000000000", target = 0x00470BC0 },
+  { offset = 0x42, type = "DIR32", symbol = "__real@41f0000000000000", target = 0x00470B30 },
+  { offset = 0x4F, type = "DIR32", symbol = "__real@42820000", target = 0x00470BB8 },
+  { offset = 0x69, type = "REL32", symbol = "?GetTimestamp@GameWindowView@@SANXZ", target = 0x00439540 },
+  { offset = 0x6F, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0x75, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x48 },
+  { offset = 0x7B, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x38 },
+  { offset = 0x81, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x40 },
+  { offset = 0x8E, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x18 },
+  { offset = 0x94, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x1C },
+  { offset = 0x99, type = "REL32", symbol = "?GetTimestamp@GameWindowView@@SANXZ", target = 0x00439540 },
+  { offset = 0x9F, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0xA5, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x48 },
+  { offset = 0xAB, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x38 },
+  { offset = 0xB1, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x40 },
+  { offset = 0xBA, type = "DIR32", symbol = "?g_FpsSampleGateView@@3PAUFpsSampleGateView@@A", target = 0x00477810 },
+  { offset = 0xCD, type = "DIR32", symbol = "__real@404e000000000000", target = 0x00470BB0 },
+  { offset = 0xD9, type = "DIR32", symbol = "__real@42640000", target = 0x00470BA8 },
+  { offset = 0xE9, type = "DIR32", symbol = "__real@404e000000000000", target = 0x00470BB0 },
+]
+
+[units.main-get-timestamp-fps]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+output_dir = "build/match-linked/MainFps"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DrawFpsCounter@FpsCounterView@@QAEHXZ"
+functions = ["GameWindowView::GetTimestamp"]
+symbol = "?GetTimestamp@GameWindowView@@SANXZ"
+target_address = 0x00439540
+size = 282
+linkages = [
+  { offset = 0x04, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6C4 },
+  { offset = 0x0A, type = "DIR32", symbol = "__imp__EnterCriticalSection@4", target = 0x004660B0 },
+  { offset = 0x10, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F9 },
+  { offset = 0x15, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x18 },
+  { offset = 0x1B, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x1C },
+  { offset = 0x25, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F9 },
+  { offset = 0x32, type = "DIR32", symbol = "__imp__QueryPerformanceCounter@4", target = 0x004660FC },
+  { offset = 0x37, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x20 },
+  { offset = 0x41, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x24 },
+  { offset = 0x59, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x18 },
+  { offset = 0x64, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0x73, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0x7C, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6C4 },
+  { offset = 0x82, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x8A, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F9 },
+  { offset = 0x90, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0x97, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F9 },
+  { offset = 0xA3, type = "DIR32", symbol = "__imp__timeBeginPeriod@4", target = 0x00466278 },
+  { offset = 0xA9, type = "DIR32", symbol = "__imp__timeGetTime@0", target = 0x00466270 },
+  { offset = 0xB9, type = "DIR32", symbol = "__real@41f0000000000000", target = 0x00470B30 },
+  { offset = 0xC5, type = "DIR32", symbol = "__imp__timeEndPeriod@4", target = 0x00466274 },
+  { offset = 0xCB, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0xDE, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0xE4, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0xE9, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6C4 },
+  { offset = 0xEF, type = "DIR32", symbol = "__real@408f400000000000", target = 0x00470B88 },
+  { offset = 0xF9, type = "DIR32", symbol = "__real@3f50624dd2f1a9fc", target = 0x00470B28 },
+  { offset = 0x103, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x108, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F9 },
+  { offset = 0x112, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x6F9 },
+]

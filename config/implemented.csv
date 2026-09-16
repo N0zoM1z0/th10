@@ -297,3 +297,5 @@ EclVmStackView::Push
 EclVmStackView::Pop
 EclVmStackView::EnterFrame
 EclVmStackView::LeaveFrame
+FpsCounterView::CalculateFps
+FpsCounterView::DrawFpsCounter

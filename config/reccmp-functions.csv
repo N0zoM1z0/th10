@@ -298,3 +298,5 @@ EclVmStackView::Push,0x004505B0,function
 EclVmStackView::Pop,0x00450610,function
 EclVmStackView::EnterFrame,0x00450690,function
 EclVmStackView::LeaveFrame,0x004506D0,function
+FpsCounterView::CalculateFps,0x004134B0,function
+FpsCounterView::DrawFpsCounter,0x004135D0,function
