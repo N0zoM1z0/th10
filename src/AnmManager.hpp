@@ -426,7 +426,7 @@ struct AnmVmIdView
         return value++;
     }
 
-    AnmVmView *GetVm();
+    TH10_ANM_NOINLINE AnmVmView *GetVm();
 
     int value;
 };

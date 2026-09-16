@@ -2242,6 +2242,33 @@ The previous Web checkpoint's final `.analysis/` inventory was **347 regular fil
 
 The linked-diagnostic, canonical replay, PbgArchive, Lzss, final-structural, backlog-ranking, ECL lifecycle, and current host-hierarchy campaigns each retain one compact manifest; full JSON reports, objects, linked images, maps and PDBs are reproducible below ignored `build/`. No copied target was created.
 
+## Completed packet: ANM executor physical order and child control flow
+
+`scripts/report-anm-execute-table.py` is the target-bound ANM counterpart to the
+generic ECL table report. It verifies the 9,587-byte code body, the NOP at
+`0x004413A3`, the 94-entry absolute table at `0x004413A4`, all 94 enum values
+from `-1` through `92`, and optional candidate destinations and physical order.
+
+The maintained executor switch now follows the target-observed physical order
+instead of numeric opcode order. The four early child cases are independent and
+map 88/91/90/92 to Variant0/Variant2/Variant1/Variant3, correcting the former
+90/91 reversal. `STOP_HIDE` falls through `STOP`, NOP and interrupt labels share
+the instruction-advance path, and the target-absent executor-side position
+callback was removed; manager update owners already call it before execution.
+`AnmVmIdView::GetVm` retains an out-of-line target call through the same guarded
+MSVC no-inline mechanism used by other target-proven ANM call seams.
+
+The final linked diagnostic has a 9,488-byte candidate pre-table span against
+the target's 9,588 bytes including alignment. UNIT_SPEED and child 88/91/90 are
+within one byte of their target relative entries, child 92 is within four,
+sprite is within eight, and END/STATIC are within one. All 92 physical groups
+are in target order except the shared NOP/interrupt advance block, which remains
+placed between conditional cases 28 and 29. The candidate is non-exact at
+379/8,516 comparable bytes and has no acceptance authority. The full ANM source
+gate remains exact for **76 units / 10 artifacts / 15,739 bytes**. Durable
+reports and the stable candidate image are below
+`.analysis/gpt-5.6-sol/20260916-anm-executor-exact/final/`.
+
 ## Next hard frontier
 
 Continue the user-selected ANM/ECL exact campaign owner by owner. The refreshed
@@ -2259,11 +2286,15 @@ dispatcher are now canonical exact.
 The largest remaining core owners are ANM `ExecuteScript @ 0x0043EE30`
 (9,587 bytes) and generic ECL `Run @ 0x0044E1A0` (7,020 bytes). For ECL,
 the read/resolve and stack owner corridors are now represented and the selected
-linked contribution is 6,748 bytes. Use the candidate mode of
-`report-ecl-vm-table.py` to work the remaining typed arithmetic, comparison and
-bitwise case shapes while retaining the exact host runner as an ABI regression
-gate. Keep exactness tied to complete owned extents and cold canonical replay;
-linked diagnostic proximity alone does not promote a unit.
+linked contribution is 6,648 bytes with the exact target case order and a
+matching `0x108` frame. For ANM, use `report-anm-execute-table.py` to move the
+shared advance group after POSITION and then work the post-loop interpolation
+temporary layout; the current pre-table gap is 100 bytes. For ECL, use the
+candidate mode of `report-ecl-vm-table.py` to work the remaining typed
+arithmetic conversion branches and EBX/EBP live-range exchange while retaining
+the exact host runner as an ABI regression gate. Keep exactness tied to complete
+owned extents and cold canonical replay; linked diagnostic proximity alone does
+not promote a unit.
 
 After ANM, continue the generic and Enemy ECL owner families, including a second
 Enemy opcode cohort that shares the recovered typed operand context. The real
