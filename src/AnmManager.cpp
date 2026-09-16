@@ -354,15 +354,6 @@ AnmFloat3View *AnmVmFloat3InterpolationView::Evaluate(
     return output;
 }
 
-static AnmInt3View ScaleAnmInt3(const AnmInt3View &input, float scale)
-{
-    AnmInt3View output;
-    output.x = static_cast<int>(input.x * scale);
-    output.y = static_cast<int>(input.y * scale);
-    output.z = static_cast<int>(input.z * scale);
-    return output;
-}
-
 // Target 0x00441600 is the integer-triplet counterpart used by the two RGB
 // slots. Hermite mode truncates each weighted triplet before summing it.
 AnmInt3View *AnmVmColorInterpolationView::Evaluate(AnmInt3View *output)
@@ -408,12 +399,12 @@ AnmInt3View *AnmVmColorInterpolationView::Evaluate(AnmInt3View *output)
         float finalWeight = (3.0f - value - value) * value * value;
         float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
         float finalTangentWeight = minusOne * value * value;
-        AnmInt3View initialPart = ScaleAnmInt3(initial, initialWeight);
-        AnmInt3View finalPart = ScaleAnmInt3(final, finalWeight);
+        AnmInt3View finalPart = final * finalWeight;
+        AnmInt3View initialPart = initial * initialWeight;
         AnmInt3View initialTangentPart =
-            ScaleAnmInt3(initialTangent, initialTangentWeight);
+            initialTangent * initialTangentWeight;
         AnmInt3View finalTangentPart =
-            ScaleAnmInt3(finalTangent, finalTangentWeight);
+            finalTangent * finalTangentWeight;
 
         output->x = initialPart.x + finalPart.x +
             initialTangentPart.x + finalTangentPart.x;

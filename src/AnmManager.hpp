@@ -267,11 +267,21 @@ typedef char AnmRawInstructionArgumentsAt08[
 struct AnmInt3View
 {
     AnmInt3View() {}
-    AnmInt3View(int x, int y, int z)
+    // Target 0x00441E50 is reproduced by the value-returning scale operator
+    // below; X/Z/Y argument slots yield VC7.1's observed Y/Z/X evaluation.
+    AnmInt3View(int x, int z, int y)
     {
         this->x = x;
         this->y = y;
         this->z = z;
+    }
+
+    AnmInt3View operator*(float scale) const
+    {
+        return AnmInt3View(
+            static_cast<int>(x * scale),
+            static_cast<int>(z * scale),
+            static_cast<int>(y * scale));
     }
 
     int x;
