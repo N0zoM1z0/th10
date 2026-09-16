@@ -344,11 +344,14 @@ int *EclVmContext::ResolveInt(unsigned int index)
 {
     if (IsOperandIndirect(instruction, index))
     {
-        const int value = OperandInt(instruction, index);
-        if (value >= 0)
+        if (OperandInt(instruction, index) >= 0)
+        {
+            EclVmStackView *const operandStack = &stack;
             return reinterpret_cast<int *>(
-                stack.data + stack.frameBase + value);
-        return host->ResolveEclInt(value);
+                operandStack->data + operandStack->frameBase
+                + OperandInt(instruction, index));
+        }
+        return host->ResolveEclInt(OperandInt(instruction, index));
     }
     return NULL;
 }
