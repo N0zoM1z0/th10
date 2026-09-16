@@ -356,14 +356,17 @@ void EnemyEclHostBaseView::ReleaseEclAllocations()
 // context without touching its 0x1000-byte operand-storage payload.
 void EnemyEclHostBaseView::ResetEclState()
 {
-    flags1028 &= ~1u;
+    unsigned int flags = flags1028;
     embeddedEclContext.value00 = 0;
+    EnemyEclContextView *context = &embeddedEclContext;
+    flags &= ~1u;
+    flags1028 = flags;
     embeddedEclContext.currentInstruction = NULL;
     embeddedEclContext.operandResolver = this;
     embeddedEclContext.unknown1010 = -1;
     value1020 = 0;
-    activeEclContext = &embeddedEclContext;
-    eclContextMirror = &embeddedEclContext;
+    activeEclContext = context;
+    eclContextMirror = context;
     ownedAllocations = NULL;
     value1038 = 0;
 }
