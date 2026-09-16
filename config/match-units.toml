@@ -1469,6 +1469,27 @@ linkages = [
   { offset = 0x02, type = "DIR32", symbol = "??_7CPbgFile@@6B@", target = 0x0046F230 },
 ]
 
+[units.pbgfile-open]
+artifact_kind = "linked-pe"
+source = "src/PbgFile.cpp"
+output_dir = "build/match-linked/PbgFileOpenGS"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "??0CPbgFile@@QAE@XZ"
+functions = ["CPbgFile::Open"]
+symbol = "?Open@CPbgFile@@UAE_NPBDPAD@Z"
+target_address = 0x00435370
+size = 239
+linkages = [
+  { offset = 0x07, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x67, type = "DIR32", symbol = "__imp__DeleteFileA@4", target = 0x004660C0 },
+  { offset = 0x92, type = "REL32", symbol = "?GetFullFilePath@CPbgFile@@SAXPADPBD@Z", target = 0x00435610 },
+  { offset = 0xAD, type = "DIR32", symbol = "__imp__CreateFileA@28", target = 0x004660C4 },
+  { offset = 0xCE, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x004660C8 },
+  { offset = 0xE2, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
 [units.pbgfile-destructor]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"

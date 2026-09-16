@@ -16,9 +16,9 @@ their boundaries and origins must be reviewed independently.
 | Source-present mappings | 301 |
 | Source-present with authored origin | 297 |
 | Source-present origin review pending | 4 |
-| Authored source-present exact backlog | 143 |
-| Canonical exact functions | 154 |
-| Canonical exact authored bytes | 21,580 |
+| Authored source-present exact backlog | 142 |
+| Canonical exact functions | 155 |
+| Canonical exact authored bytes | 21,819 |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
 gaps can contain code, data, thunks, tables, and padding. While origin review and
