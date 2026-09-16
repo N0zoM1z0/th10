@@ -41,6 +41,20 @@ def main() -> int:
         validate_public_tree()
         run("Compile workflow Python", [sys.executable, "-m", "py_compile", *tracked("scripts/*.py")])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])
+        run(
+            "Validate ANM/ECL core source completeness",
+            [
+                sys.executable,
+                "scripts/report-source-completeness.py",
+                "--module",
+                "AnmManager",
+                "--module",
+                "EclVm",
+                "--module",
+                "Enemy",
+                "--require-complete",
+            ],
+        )
         run("Validate toolchain declarations", [sys.executable, "scripts/verify-toolchain.py", "--check"])
         run("Validate canonical match graph", [sys.executable, "scripts/build-match-unit.py", "--check"])
         run("Validate open whole-build graph", [sys.executable, "scripts/build.py", "--check"])

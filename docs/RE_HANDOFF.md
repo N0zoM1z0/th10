@@ -69,14 +69,18 @@
 - Completed session checkpoint: `82003dd gpt-5.6-sol: recover ECL script database loader`.
 - Completed session checkpoint: `b3eaac1 gpt-5.6-sol: recover exact ECL host runner`.
 - Completed session checkpoint: `afa2277 gpt-5.6-sol: align ECL dispatcher code shape`.
-- Planned current checkpoint subject: `gpt-5.6-sol: recover ECL dispatcher control flow`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
+- Completed session checkpoint: `581d75d gpt-5.6-sol: recover ANM executor physical order`.
+- Completed session checkpoint: `7248af7 gpt-5.6-sol: recover ANM interpolation value flow`.
+- Completed session checkpoint: `2e1cd95 gpt-5.6-sol: recover ANM Float2 evaluator core`.
+- Completed session checkpoint: `dfc22c4 gpt-5.6-sol: recover ECL typed arithmetic flow`.
+- Planned current checkpoint subject: `gpt-5.6-sol: gate ANM ECL Web handoff`. Final commit hash is intentionally not self-recorded before the commit exists; recover it from live Git after checkpoint.
 - Recovery continued from the clean boundary-inventory checkpoint. The ignored private target, existing `.analysis/`, toolchain, Wine prefix, Ghidra project, and build caches were preserved.
-- Current campaign: `.analysis/gpt-5.6-sol/20260916-ecl-run-exact/`. The host-runner, start-subroutine, script-database, ECL control, operand, typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, executor, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
+- Current campaign: `.analysis/gpt-5.6-sol/20260916-anm-ecl-web-handoff/`. The ECL typed-arithmetic, ANM interpolation, executor, host-runner, start-subroutine, script-database, ECL control, operand, typed-pop, stack and ANM draw exact campaigns and earlier ANM/ECL exact triage, front-end/score-entry, front-end/practice-draw, front-end/practice-core, front-end/replay, front-end/stage, front-end/selection, front-end/key-config, front-end/options, boundary-inventory, Main, GUI, generic ECL VM, Player update, Enemy callback, Enemy high-opcode ECL dispatcher, ANM resource, manager-setup, manager-update, child-VM, script-variable, radial-trail, generated-geometry, ANM direct-3D, mode-7, projected, draw, manager, VM, ECL host, ECL lifecycle, backlog-ranking, final-structural, Lzss, PbgArchive, canonical-replay, linked-diagnostic, and earlier session campaigns are checkpointed separately; earlier `gpt-web` campaigns remain ignored evidence and were not treated as current authority without replay.
 - This session has not pushed. The exact-reconstruction campaign remains active/incomplete.
 
 ## Recovery and authority
 
-The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `afa2277` is the current live authority.
+The session inspected branch/HEAD/history, complete tracked/untracked state, and the prior handoff. Committed base `dfc22c4` is the current live authority.
 
 All requested repository and Factory guidance was re-read from the live repository shell before tracked reconstruction work. No requested path was missing.
 
@@ -2349,6 +2353,27 @@ The generic VM's opcode semantics, case topology and typed arithmetic data flow
 are therefore closed for core reconstruction; its 104-byte aggregate codegen
 gap belongs in the Web exact queue.
 
+## Completed packet: ANM/ECL Web handoff gate
+
+`scripts/report-source-completeness.py` now audits reviewed authored owners
+independently from exactness and can fail closed for selected modules. The
+focused gate for `AnmManager`, `EclVm`, and `Enemy` covers **178 authored owners
+/ 74,197 bytes** and reports **178 source-present, zero source-absent**. Of
+those, 94 owners are canonical exact and **84 owners / 58,059 bytes** are
+source-present/non-exact. The matching exact-backlog and completeness reports
+are retained below
+`.analysis/gpt-5.6-sol/20260916-anm-ecl-web-handoff/`.
+
+The three target-bound topology gates also pass together: ANM `ExecuteScript`
+has all 94 enum values and explicit cases, generic ECL `Run` has all 59 active
+opcodes in target physical order, and the Enemy dispatcher has all 124 active
+opcodes with its complete top-level and nested tables. This establishes the
+requested semantic handoff condition without converting source presence into
+an exactness claim. Large non-exact owners remain in the queue, including the
+14,416-byte Enemy dispatcher, 9,587-byte ANM executor and 7,020-byte generic ECL
+VM, but their opcode/business coverage is maintained; their remaining task is
+compiler/context matching and complete owned-extent replay.
+
 ## Next hard frontier
 
 Continue the user-selected ANM/ECL exact campaign owner by owner. The refreshed
@@ -2375,9 +2400,11 @@ the exact host runner and the complete ANM/ECL cold replays as regression gates.
 Keep exactness tied to complete owned extents; linked diagnostic proximity alone
 does not promote a unit.
 
-After ANM, continue the generic and Enemy ECL owner families, including a second
-Enemy opcode cohort that shares the recovered typed operand context. The real
-production link graph remains a major infrastructure gap; canonical bounded
-linked-image units do not close it.
+Do not reopen a supposed second Enemy opcode cohort: the 14,416-byte maintained
+dispatcher already covers every target-active selector. Web work should start
+with the recorded ANM near matches, the generic ECL 104-byte aggregate gap and
+the remaining module-filtered exact backlog. The real production link graph
+remains a major infrastructure gap; canonical bounded linked-image units do not
+close it.
 
 The exact-reconstruction campaign remains active/incomplete. Faithful Windows-i386 whole-build closure, runtime validation, Factory acceptance, semantic reconstruction and portability remain open.

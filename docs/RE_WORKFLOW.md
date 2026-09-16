@@ -24,7 +24,11 @@ disk target, Ghidra target, ledgers, and live status using the commands in
    destinations and neighboring padding before extending the owner.
 2. Select one candidate from the ledger; use
    `python3 scripts/report-exact-backlog.py` for the reviewed authored,
-   source-present queue. Use `python3 scripts/rank-exact-backlog.py` when a
+   source-present queue. Before handing a subsystem to exact-codegen work, use
+   `python3 scripts/report-source-completeness.py --module NAME
+   --require-complete` to fail closed if any reviewed authored owner still lacks
+   a maintained source mapping. This checks source presence only and grants no
+   exactness credit. Use `python3 scripts/rank-exact-backlog.py` when a
    fresh, target-bound comparison of the normal-COFF and LTCG lanes would help
    select a bounded source/codegen experiment. Its score is triage only and
    grants no exactness or physical-owner credit. Never select only by an
