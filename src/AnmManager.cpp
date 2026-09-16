@@ -783,7 +783,9 @@ void AnmRenderManagerView::SetVmWorldPosition(
 AnmFloat3View *AnmRenderManagerView::GetVmPosition(int id)
 {
     AnmVmView *vm = FindVm(id);
-    return vm == NULL ? NULL : &vm->positionOffset;
+    if (vm != NULL)
+        return &vm->positionOffset;
+    return NULL;
 }
 
 // Target 0x004493E0 scans both manager-order lists and marks every VM backed

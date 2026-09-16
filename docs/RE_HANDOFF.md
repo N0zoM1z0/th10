@@ -2559,3 +2559,53 @@ remains a major infrastructure gap; canonical bounded linked-image units do not
 close it.
 
 The exact-reconstruction campaign remains active/incomplete. Faithful Windows-i386 whole-build closure, runtime validation, Factory acceptance, semantic reconstruction and portability remain open.
+
+## Completed packet: normal-COFF leaf sweep and Main exact promotion
+
+This pass re-ranked the complete authored normal-COFF backlog by ordinary-byte
+difference count and explicitly rejected several tempting private-ABI leaves
+rather than reshaping source around optimizer registers. `AsciiManagerView::
+OnDrawHighPriority`, `ReplayManager::Destroy`, `AsciiManagerCreate`,
+`CMemoryPbgFile::Open`, `EnemyEclResourceView::LoadFile`, `PlayerCreate`, and
+the pending-interrupt wrappers all expose target-only live-register or
+devirtualized LTCG contracts and remain non-exact in standalone COFF.
+`UpdatePulsingRadialTrail @ 0x00445620` remains 598/598 with only the Y-component
+X87 load/add operands exchanged; reversing the whole vector expression worsened
+the comparison and explicit component expansion changed the body size, so the
+natural operator source was retained.
+
+One genuine leaf source-shape correction closed `AnmRenderManagerView::
+GetVmPosition @ 0x004493C0`. Replacing the ternary null return with an explicit
+non-null branch yields the retail 27-byte control flow naturally. The new
+`anm-manager-get-vm-position` normal-COFF unit replays all 27 bytes and its sole
+`FindVm` REL32 field exactly on two cold builds; the six older normal-COFF units
+sharing `AnmManager.obj` remain exact in both passes.
+
+The sweep also exposed a canonicalization gap: `GameWindowView::ResetRenderState
+@ 0x00439D20` was already 710/710 structural-exact in the maintained source but
+had never been admitted because physical normal-COFF versus LTCG ownership is
+still unknown. Exact codegen and production ownership are independent. The new
+`main-reset-render-state` unit therefore records the bounded normal-COFF fact
+without changing the ownership claim: two cold replays reproduce all 710 bytes,
+574 ordinary bytes, and all 34 DIR32 fields.
+
+The tracked graph is now **141 canonical exact functions / 19,773 authored exact
+bytes**, with **154 authored source backlog**. `GameWindowView::GetTimestamp @
+0x00439540` remains a useful near-exact profile frontier: normal VC7.1 emits the
+correct 282-byte body and every relocation, with only the prologue and two
+epilogue stack-allocation immediates at `0x10` versus target `0x14`. Named-local,
+local-count/order, static-versus-member, `/Zi`, `/Z7`, `/GS+/-`, `/EHsc`, `/G6`,
+`/Ob1/2`, `/O1 /Ot`, `/Ox`, and `/Og` experiments do not change those three
+bytes; `/G7`, `/Os`, and `/Oy-` change the body substantially. TH10 call sites
+make the current static source spelling the best local evidence, so no ABI change
+was retained.
+
+## Next leaf frontier
+
+Continue with standard-ABI leaves first. Avoid the already classified
+private-register wrappers unless a real linked production context becomes
+available. The best current near-exact owner remains `UpdatePulsingRadialTrail`
+(two ordinary bytes), followed by `GetTimestamp` (three frame-size bytes), but
+both now have bounded exhausted natural-source/profile probes. Rotate to another
+owner rather than using volatile qualifiers, fake dependencies, inline assembly,
+or calling-convention lies.
