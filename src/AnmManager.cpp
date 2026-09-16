@@ -5739,11 +5739,14 @@ int AnmVmView::InitializePulsingRadialTrail()
 int __fastcall UpdatePulsingRadialTrail(AnmVmView *vm)
 {
     int i;
-    int wrapIndex;
     AnmRenderVertexView *vertex;
     PulsingRadialTrailDataView *data;
     float angleStep;
     float angle;
+    int firstUWrapIndex;
+    int firstVWrapIndex;
+    int uWrapIndex;
+    int vWrapIndex;
 
     data = static_cast<PulsingRadialTrailDataView *>(vm->generatedVertices);
     angleStep = 0.2026834041f;
@@ -5755,14 +5758,14 @@ int __fastcall UpdatePulsingRadialTrail(AnmVmView *vm)
     vertex->uv.x += data->uvVelocity.x;
     if (vertex->uv.x < 0.0f)
     {
-        for (wrapIndex = 0; wrapIndex < 33; ++wrapIndex)
-            data->vertices[wrapIndex].uv.x += 1.0f;
+        for (firstUWrapIndex = 0; firstUWrapIndex < 33; ++firstUWrapIndex)
+            data->vertices[firstUWrapIndex].uv.x += 1.0f;
     }
     vertex->uv.y += data->uvVelocity.x;
     if (vertex->uv.y < 0.0f)
     {
-        for (wrapIndex = 0; wrapIndex < 33; ++wrapIndex)
-            data->vertices[wrapIndex].uv.y += 1.0f;
+        for (firstVWrapIndex = 0; firstVWrapIndex < 33; ++firstVWrapIndex)
+            data->vertices[firstVWrapIndex].uv.y += 1.0f;
     }
     vertex->diffuse.value = vm->primaryColor.value;
     ++vertex;
@@ -5772,14 +5775,14 @@ int __fastcall UpdatePulsingRadialTrail(AnmVmView *vm)
         vertex->uv.x += data->uvVelocity.x;
         if (vertex->uv.x < 0.0f)
         {
-            for (wrapIndex = 0; wrapIndex < 33; ++wrapIndex)
-                data->vertices[wrapIndex].uv.x += 1.0f;
+            for (uWrapIndex = 0; uWrapIndex < 33; ++uWrapIndex)
+                data->vertices[uWrapIndex].uv.x += 1.0f;
         }
         vertex->uv.y += data->uvVelocity.x;
         if (vertex->uv.y < 0.0f)
         {
-            for (wrapIndex = 0; wrapIndex < 33; ++wrapIndex)
-                data->vertices[wrapIndex].uv.y += 1.0f;
+            for (vWrapIndex = 0; vWrapIndex < 33; ++vWrapIndex)
+                data->vertices[vWrapIndex].uv.y += 1.0f;
         }
 
         vertex->diffuse.value = vm->primaryColor.value;
