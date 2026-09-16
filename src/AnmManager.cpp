@@ -308,22 +308,27 @@ AnmFloat3View *AnmVmFloat3InterpolationView::Evaluate(
         {
             timer.SetCurrent(duration);
             duration = 0;
-            *output = mode == ANM_INTERPOLATION_ADD ? initial : final;
+            if (mode == ANM_INTERPOLATION_ADD)
+            {
+                *output = initial;
+                return output;
+            }
+            *output = final;
             return output;
         }
     }
 
     if (mode == ANM_INTERPOLATION_ADD)
     {
-        initial += final;
+        initial = initial + final;
         *output = initial;
         return output;
     }
 
     if (mode == ANM_INTERPOLATION_ACCELERATE)
     {
-        initial += finalTangent;
-        finalTangent += final;
+        initial = initial + finalTangent;
+        finalTangent = finalTangent + final;
         *output = initial;
         return output;
     }
@@ -3565,11 +3570,11 @@ stop:
     if (vm->positionInterpolation.duration != 0)
     {
         AnmFloat3View value;
-        vm->positionInterpolation.Evaluate(&value);
         if (!vm->useAlternatePosition)
-            vm->position = value;
+            vm->position = *vm->positionInterpolation.Evaluate(&value);
         else
-            vm->alternatePosition = value;
+            vm->alternatePosition =
+                *vm->positionInterpolation.Evaluate(&value);
     }
     if (vm->primaryColorInterpolation.duration != 0)
     {
@@ -3585,14 +3590,15 @@ stop:
     if (vm->scaleInterpolation.duration != 0)
     {
         AnmFloat2View value;
-        vm->scaleInterpolation.Evaluate(&value);
-        vm->scaleX = value.x;
-        vm->scaleY = value.y;
+        AnmFloat2View *evaluated = vm->scaleInterpolation.Evaluate(&value);
+        vm->scaleX = evaluated->x;
+        vm->scaleY = evaluated->y;
         vm->updateScale = 1;
     }
     if (vm->rotationInterpolation.duration != 0)
     {
-        vm->rotationInterpolation.Evaluate(&vm->rotation);
+        AnmFloat3View value;
+        vm->rotation = *vm->rotationInterpolation.Evaluate(&value);
         vm->updateRotation = 1;
     }
     if (vm->secondaryColorInterpolation.duration != 0)
