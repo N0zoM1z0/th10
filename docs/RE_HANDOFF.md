@@ -2291,6 +2291,28 @@ cold replay preserves all **76 ANM exact units / 10 artifacts / 15,739 bytes**.
 Reports and the stable candidate image are below
 `.analysis/gpt-5.6-sol/20260916-anm-interpolation-shape/final/`.
 
+## Completed packet: ANM Float2 evaluator core
+
+The scale evaluator now preserves the target's value flow rather than using
+component-wise compound assignments. Its completed-duration path has distinct
+mode-7 initial and ordinary final returns, modes 7 and 17 materialize their
+two-component sums, and Hermite materializes four weighted vectors before
+summing x and y. In the real maintained executor context this restores the
+target private `ESI` receiver and `EDI` output ABI. The selected candidate is
+**656 bytes against the 652-byte target**, with **190/612 comparable bytes**
+matching; the remaining four-byte contribution difference is not promoted to
+exactness. The executor table report is unchanged at a **9,472 / 9,588-byte
+pre-table span**. A fresh full-source cold replay closes all **76 ANM exact
+units / 10 artifacts / 15,739 bytes**. Durable evidence is below
+`.analysis/gpt-5.6-sol/20260916-anm-float2-core/vector-products/`.
+
+The local analysis store was pruned after this packet. Superseded intermediate
+variants and duplicate whole-source diagnostic snapshots were removed while
+canonical replay receipts, final owner reports, explicitly cited evidence and
+the current unresolved candidates were retained. `.analysis/` decreased from
+154,965,595 logical bytes to about 43 MiB; the local audit is
+`.analysis/gpt-5.6-sol/20260916-artifact-cleanup.txt`.
+
 ## Next hard frontier
 
 Continue the user-selected ANM/ECL exact campaign owner by owner. The refreshed
@@ -2311,10 +2333,10 @@ the read/resolve and stack owner corridors are now represented and the selected
 linked contribution is 6,648 bytes with the exact target case order and a
 matching `0x108` frame. For ANM, use `report-anm-execute-table.py` to move the
 shared advance group after POSITION and then work the post-loop interpolation
-temporary layout. The position and rotation value flow is now structurally
-closed; continue with the Float2 private `ESI/EDI` seam, the Float3 evaluator's
-remaining 33 contribution bytes, and the shared advance placement. The current
-pre-table gap is 116 bytes. For ECL, use the
+temporary layout. Position, rotation and the Float2 private `ESI/EDI` seam are
+now structurally closed; Float2's four-byte contribution difference, Float3's
+33-byte difference and the shared advance placement are suitable for the Web
+exact queue. The current executor pre-table gap is 116 bytes. For ECL, use the
 candidate mode of `report-ecl-vm-table.py` to work the remaining typed
 arithmetic conversion branches and EBX/EBP live-range exchange while retaining
 the exact host runner as an ABI regression gate. Keep exactness tied to complete

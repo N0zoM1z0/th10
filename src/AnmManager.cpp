@@ -486,25 +486,27 @@ AnmFloat2View *AnmVmFloat2InterpolationView::Evaluate(AnmFloat2View *output)
         {
             timer.SetCurrent(duration);
             duration = 0;
-            *output = mode == ANM_INTERPOLATION_ADD ? initial : final;
+            if (mode == ANM_INTERPOLATION_ADD)
+            {
+                *output = initial;
+                return output;
+            }
+            *output = final;
             return output;
         }
     }
 
     if (mode == ANM_INTERPOLATION_ADD)
     {
-        initial.x += final.x;
-        initial.y += final.y;
+        initial = initial + final;
         *output = initial;
         return output;
     }
 
     if (mode == ANM_INTERPOLATION_ACCELERATE)
     {
-        initial.x += finalTangent.x;
-        initial.y += finalTangent.y;
-        finalTangent.x += final.x;
-        finalTangent.y += final.y;
+        initial = initial + finalTangent;
+        finalTangent = finalTangent + final;
         *output = initial;
         return output;
     }
@@ -517,9 +519,16 @@ AnmFloat2View *AnmVmFloat2InterpolationView::Evaluate(AnmFloat2View *output)
         float finalWeight = (3.0f - value - value) * value * value;
         float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
         float finalTangentWeight = minusOne * value * value;
-        *output = initial * initialWeight + final * finalWeight +
-            initialTangent * initialTangentWeight +
+        AnmFloat2View initialPart = initial * initialWeight;
+        AnmFloat2View finalPart = final * finalWeight;
+        AnmFloat2View initialTangentPart =
+            initialTangent * initialTangentWeight;
+        AnmFloat2View finalTangentPart =
             finalTangent * finalTangentWeight;
+        output->x = initialPart.x + finalPart.x +
+            initialTangentPart.x + finalTangentPart.x;
+        output->y = initialPart.y + finalPart.y +
+            initialTangentPart.y + finalTangentPart.y;
         return output;
     }
 
