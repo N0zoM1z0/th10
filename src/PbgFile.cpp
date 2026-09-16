@@ -140,7 +140,7 @@ HGLOBAL CPbgFile::ReadWholeFile(DWORD maxSize)
         return NULL;
 
     DWORD oldLocation = Tell();
-    if (!Seek(oldLocation, g_PbgFileSeekModes[0]))
+    if (!Seek(oldLocation, 0))
         return NULL;
 
     if (Read(data, dataLen) == 0)
@@ -149,7 +149,7 @@ HGLOBAL CPbgFile::ReadWholeFile(DWORD maxSize)
         return NULL;
     }
 
-    Seek(oldLocation, g_PbgFileSeekModes[0]);
+    Seek(oldLocation, 0);
     return data;
 }
 

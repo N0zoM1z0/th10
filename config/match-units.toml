@@ -1410,6 +1410,23 @@ relocations = [
   { offset = 76, type = "DIR32", symbol = "$L3352", target = 0x00412700 },
 ]
 
+[units.pbgfile-constructor]
+artifact_kind = "linked-pe"
+source = "src/PbgFile.cpp"
+support_sources = ["src/PbgArchive.cpp"]
+output_dir = "build/match-linked/PbgFileCtorArchive"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Load@PbgArchive@@QAE_NPBD@Z"
+functions = ["CPbgFile::CPbgFile"]
+symbol = "??0CPbgFile@@QAE@XZ"
+target_address = 0x00435300
+size = 21
+linkages = [
+  { offset = 0x02, type = "DIR32", symbol = "??_7CPbgFile@@6B@", target = 0x0046F230 },
+]
+
 [units.pbgfile-destructor]
 artifact_kind = "coff"
 source = "src/PbgFile.cpp"
@@ -1501,6 +1518,20 @@ target_address = 0x00435550
 size = 37
 relocations = [
   { offset = 28, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x004660C8 },
+]
+
+[units.pbgfile-read-whole-file]
+artifact_kind = "coff"
+source = "src/PbgFile.cpp"
+object = "build/match/PbgFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CPbgFile::ReadWholeFile"]
+symbol = "?ReadWholeFile@CPbgFile@@UAEPAXK@Z"
+target_address = 0x00435580
+size = 137
+relocations = [
+  { offset = 0x2C, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0x66, type = "REL32", symbol = "_free", target = 0x00452422 },
 ]
 
 [units.pbgfile-get-full-file-path]
