@@ -3165,7 +3165,6 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
         case ANM_OP_NOP:
         case ANM_OP_INTERRUPT_LABEL:
-        advanceInstruction:
             vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
                 reinterpret_cast<unsigned char *>(currentInstruction) +
                 currentInstruction->size);
@@ -3520,7 +3519,10 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 #undef GET_FLOAT_VAR
 #undef GET_INT_VAR
 
-        goto advanceInstruction;
+        vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
+            reinterpret_cast<unsigned char *>(currentInstruction) +
+            currentInstruction->size);
+        continue;
     }
 
 stop:

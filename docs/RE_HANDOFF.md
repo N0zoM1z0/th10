@@ -3216,3 +3216,35 @@ attributed to typed-pop case shapes and EBX/EBP register allocation. Those
 figures are earlier local observations, not fresh exact claims. Keep using
 focused compiler probes; skip unneeded full cold replay while no canonical
 unit or shared source is being promoted.
+
+## Current bounded exact packet: ANM and generic ECL dispatch
+
+Fresh focused `/GL` diagnostics supersede the prior ANM/ECL size figures
+above. Current ANM `ExecuteScript` under its own selected entry has a 9,408
+byte pre-table span against 9,588 target (`-180`), while the 9,784-byte PDB
+contribution includes a separate 376-byte jump table. Splitting the shared
+NOP/interrupt advance from switch-exit advance puts **all 92 physical case
+groups** in target order; NOP/interrupt moves from candidate index 77 to
+target index 21. The code span is farther from target than before (`-116`),
+so the owner is still non-exact. All 17 exact units sharing this `AnmExecutor`
+artifact replay exactly after the change (2,746 bytes); other ANM contexts
+were not cold replayed after it.
+
+The ANM replay also surfaced a pre-existing manifest error for
+`anm-int3-scale`: two `__ftol2` REL32 offsets described CALL opcodes rather
+than displacement fields. Target/candidate disassembly proves fields at
+`+0x0A`, `+0x18`, `+0x25`; fixing the first two manifest offsets restores the
+56-byte exact unit. Before the ANM source change, full cold source replay
+passed 79 units / 16,420 bytes over ten artifacts. The false attribution of
+the initial replay error to the NOP source experiment was corrected by
+retesting after reverting that experiment.
+
+Current generic `EclVmContext::Run` in the selected `EclVmHost::Run` context
+has a 6,712-byte pre-table span versus target 6,692 (`+20`) and a 7,040-byte
+PDB contribution versus target 7,020. Its 59 physical opcode groups remain
+in target order. A natural switch over the format conversion character
+shortened the candidate by four bytes; the largest remaining local format
+case gap is 15 bytes. It remains a mismatch with incomplete normalization.
+All 13 exact `EclVm.cpp` units / 1,301 bytes across two artifacts replay after
+the source change. Evidence is retained below `.analysis/gpt-5.6-sol/20260918-anm-exact/`
+and `.analysis/gpt-5.6-sol/20260918-ecl-vm-exact/`.

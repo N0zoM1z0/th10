@@ -234,7 +234,11 @@ static __forceinline void EvaluateFormatOperands(EclVmContext *context)
         strcpy(scratch, cursor);
         scratch[percent - cursor] = '\0';
         const char conversion = percent[1];
-        if (conversion != '%' && (conversion == 'd' || conversion == 'f')) {
+        switch (conversion) {
+        case '%':
+            break;
+        case 'd':
+        case 'f': {
             const int inlineBytes = OperandInt(instruction, 0);
             const char argumentType = *(
                 reinterpret_cast<const char *>(instruction)
@@ -251,6 +255,10 @@ static __forceinline void EvaluateFormatOperands(EclVmContext *context)
             metadataOffset += 8;
             valueWord += 2;
             ++flagIndex;
+            break;
+        }
+        default:
+            break;
         }
         cursor = percent + 2;
     }

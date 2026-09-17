@@ -2445,8 +2445,8 @@ symbol = "??DAnmInt3View@@QBE?AU0@M@Z"
 target_address = 0x00441E50
 size = 56
 linkages = [
-  { offset = 0x09, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
-  { offset = 0x17, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x0A, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+  { offset = 0x18, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
   { offset = 0x25, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
 ]
 
