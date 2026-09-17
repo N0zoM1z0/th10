@@ -2874,3 +2874,22 @@ Latest ledger: 1,313/1,313 boundaries reviewed; 783 origin rows reviewed
 489 lie before `0x00452000` and 41 after. The remaining authored and
 compiler-versus-library provenance requires target-local evidence; the
 three large exact dispatchers remain queued behind that origin review.
+
+## Completed checkpoint: target call and shared-global authored origins
+
+`scripts/review-game-global-origins.py --apply` classified 46 more game-region
+entries as authored at medium confidence, covering 31,234 target bytes. Every
+accepted entry completely decodes within its reviewed physical extent, directly
+calls a previously reviewed authored function, and references at least two
+specific game-global addresses that each occur in two or more previously
+reviewed authored bodies. No reviewed excluded body uses those selected
+globals. The classifier excludes its own 46 results from the seed set, so the
+evidence does not amplify itself on replay. IDA spot checks at five entries
+support the game-code interpretation, but do not establish source identity or
+exact codegen. The functions keep unknown subsystem and source ownership.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 829 origin rows reviewed
+(366 authored, 463 excluded), 484 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. The pending origins
+include 443 game-region entries and 41 later runtime-region entries. Continue
+conservative origin review before the three requested large exact owners.
