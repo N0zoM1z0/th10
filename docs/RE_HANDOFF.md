@@ -2893,3 +2893,20 @@ Current ledger: 1,313/1,313 boundaries reviewed; 829 origin rows reviewed
 161 canonical exact functions and 22,413 exact bytes. The pending origins
 include 443 game-region entries and 41 later runtime-region entries. Continue
 conservative origin review before the three requested large exact owners.
+
+## Completed checkpoint: direct authored neighbors with shared globals
+
+The same target-bound game-origin reviewer now identifies a second fixed cohort:
+77 more complete bodies, totaling 30,505 bytes. Each references a game-global
+address used by at least two of the original 320 reviewed authored functions
+and has a direct call edge to or from an original reviewed authored function.
+Selected globals are absent from reviewed excluded bodies. IDA spot checks
+support game-specific behavior across several code regions. Both cohorts keep
+their own evidence IDs and exclude one another from the seed set on replay.
+The second cohort is medium-confidence authored origin only; source, subsystem,
+production compiler mode and exactness remain open.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 906 origin rows reviewed
+(443 authored, 463 excluded), 407 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. The pending origins
+include 366 game-region entries and 41 later runtime-region entries.

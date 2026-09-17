@@ -2,6 +2,7 @@
 
 import argparse
 from collections import Counter
+from collections import defaultdict
 import csv
 from pathlib import Path
 
@@ -13,10 +14,12 @@ from target_identity import pe_bytes_at, resolve_target, verify_target
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_ID = 'target-authored-call-and-globals-2026-09-17'
+NEIGHBOR_EVIDENCE_ID = 'target-authored-neighbor-and-global-2026-09-17'
 GAME_GLOBAL_START = 0x00491000
 GAME_GLOBAL_END = 0x00493000
 GAME_CODE_END = 0x00452000
 EXPECTED_COUNT = 46
+EXPECTED_NEIGHBOR_COUNT = 77
 
 
 def read_rows(name):
@@ -89,13 +92,18 @@ def main():
     # Never use this pass's own classifications as seeds on a later replay.
     seeds = {int(row['address'], 0) for row in origins
              if row['origin'] == 'authored_game' and row['disposition'] == 'authored'
-             and row['evidence_id'] != EVIDENCE_ID}
+             and row['evidence_id'] not in (EVIDENCE_ID, NEIGHBOR_EVIDENCE_ID)}
     excluded = {int(row['address'], 0) for row in origins
                 if row['disposition'] == 'exclude'}
     use_count = Counter(value for address in seeds if evidence[address]
                         for value in evidence[address][0])
     excluded_globals = {value for address in excluded if evidence[address]
                         for value in evidence[address][0]}
+    incoming = defaultdict(set)
+    for caller, facts in evidence.items():
+        if facts:
+            for callee in facts[1]:
+                incoming[callee].add(caller)
     reviewed = []
     for row in functions:
         address = int(row['address'], 0)
@@ -127,11 +135,49 @@ def main():
     if len(reviewed) != EXPECTED_COUNT:
         raise ValueError(f'expected {EXPECTED_COUNT} conservative game candidates, '
                          f'found {len(reviewed)}')
+    neighbors = []
+    for row in functions:
+        address = int(row['address'], 0)
+        origin = by_origin[row['address']]
+        if (origin['disposition'] != 'review'
+                and origin['evidence_id'] != NEIGHBOR_EVIDENCE_ID):
+            continue
+        facts = evidence[address]
+        if address >= GAME_CODE_END or int(row['size']) < 32 or not facts:
+            continue
+        shared = sorted(value for value in facts[0]
+                        if use_count[value] >= 2 and value not in excluded_globals)
+        authored_calls = sorted(facts[1] & seeds)
+        authored_callers = sorted(incoming[address] & seeds)
+        if not shared or not (authored_calls or authored_callers):
+            continue
+        if row['source_file'] or row['owner'] not in ('', 'authored'):
+            raise ValueError(f'candidate already has a competing source/owner: {row["address"]}')
+        neighbors.append((row['address'], int(row['size'])))
+        if args.apply:
+            origin.update(origin='authored_game', subsystem='GameUnassigned',
+                          disposition='authored', confidence='medium',
+                          evidence_id=NEIGHBOR_EVIDENCE_ID)
+            row['owner'] = 'authored'
+            if NEIGHBOR_EVIDENCE_ID not in row['notes']:
+                if authored_calls:
+                    edge = f'directly calls reviewed authored 0x{authored_calls[0]:08X}'
+                else:
+                    edge = f'is directly called by reviewed authored 0x{authored_callers[0]:08X}'
+                note = (f'Complete target decode; {edge} and references shared '
+                        f'game global 0x{shared[0]:08X} '
+                        f'({NEIGHBOR_EVIDENCE_ID}). Subsystem and source unit remain unknown.')
+                row['notes'] = (row['notes'] + ' ' + note).strip()
+    if len(neighbors) != EXPECTED_NEIGHBOR_COUNT:
+        raise ValueError(f'expected {EXPECTED_NEIGHBOR_COUNT} neighbor candidates, '
+                         f'found {len(neighbors)}')
     if args.apply:
         write_rows('function-origins.csv', origins)
         write_rows('functions.csv', functions)
     print(f'{len(reviewed)} hash-attested authored game origins reviewed; '
           f'{sum(size for _, size in reviewed)} target bytes')
+    print(f'{len(neighbors)} neighbor-and-global authored origins reviewed; '
+          f'{sum(size for _, size in neighbors)} target bytes')
 
 
 if __name__ == '__main__':
