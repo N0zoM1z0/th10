@@ -13,6 +13,7 @@ from target_identity import pe_bytes_at, resolve_target, verify_target
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_ID = 'target-ida-reviewed-game-behavior-2026-09-17'
 EARLY_EVIDENCE_ID = 'target-ida-reviewed-early-game-2026-09-17'
+MIDDLE_EVIDENCE_ID = 'target-ida-reviewed-middle-game-2026-09-17'
 # These cues are individually reviewed observations, not proposed source names.
 BEHAVIORS = {
     0x00402230: (522, 'game manager state and ANM resource setup'),
@@ -70,6 +71,30 @@ EARLY_BEHAVIORS = {
     0x0040BD20: (93, 'game renderer state check'),
     0x0040CC70: (145, 'ANM VM array state initialization'),
 }
+MIDDLE_BEHAVIORS = {
+    0x00413350: (151, 'game object allocation and initialization'),
+    0x00413450: (84, 'game object resource cleanup'),
+    0x00414830: (136, 'game manager allocation'),
+    0x00415DB0: (124, 'stage object allocation and lookup'),
+    0x00417770: (66, 'game object linked-list cleanup'),
+    0x00418810: (64, 'stage position and camera globals'),
+    0x00418A00: (65, 'stage object state update'),
+    0x00418B80: (73, 'stage timer and state update'),
+    0x00418C40: (125, 'stage object state initialization'),
+    0x00418E30: (131, 'game scheduler registration'),
+    0x00418EE0: (346, 'game loader resource and synchronization cleanup'),
+    0x00419090: (67, 'stage object allocation'),
+    0x0041AD90: (84, 'game scheduler registration'),
+    0x0041ADF0: (216, 'game object resource and synchronization cleanup'),
+    0x0041AED0: (185, 'game projectile pool allocation'),
+    0x0041C1C0: (195, 'game object resource and synchronization cleanup'),
+    0x0041C290: (91, 'game object allocation'),
+    0x0041C510: (153, 'game object event queue update'),
+    0x0041C800: (76, 'game object state transfer'),
+    0x0041F7A0: (91, 'playfield bounds test'),
+    0x0041FAC0: (140, 'game scheduler registration'),
+    0x0041FD00: (69, 'game object allocation'),
+}
 DIRECT_XREF_SITES = {
     0x00421FA0: (0x00432DB9, 0x00432CB0),
     0x0044A4E0: (0x0042F6B6, 0x0042F540),
@@ -114,10 +139,12 @@ def main():
     by_origin = {int(row['address'], 0): row for row in origins}
     seeds = {address for address, row in by_origin.items()
              if row['origin'] == 'authored_game' and row['disposition'] == 'authored'
-             and row['evidence_id'] not in (EVIDENCE_ID, EARLY_EVIDENCE_ID)}
+             and row['evidence_id'] not in (
+                 EVIDENCE_ID, EARLY_EVIDENCE_ID, MIDDLE_EVIDENCE_ID)}
     decoder = Cs(CS_ARCH_X86, CS_MODE_32)
     decoder.detail = True
-    incoming = {address: set() for address in BEHAVIORS | EARLY_BEHAVIORS}
+    incoming = {address: set() for address in
+                BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS}
     calls = {}
     for row in functions:
         address = int(row['address'], 0)
@@ -144,8 +171,11 @@ def main():
                 or instruction.operands[0].imm != callee):
             raise ValueError(f'direct xref changed: {site:#x}')
         incoming[callee].add(caller)
-    for address, (size, behavior) in (BEHAVIORS | EARLY_BEHAVIORS).items():
-        evidence_id = EVIDENCE_ID if address in BEHAVIORS else EARLY_EVIDENCE_ID
+    for address, (size, behavior) in (
+            BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS).items():
+        evidence_id = (EVIDENCE_ID if address in BEHAVIORS else
+                       EARLY_EVIDENCE_ID if address in EARLY_BEHAVIORS else
+                       MIDDLE_EVIDENCE_ID)
         row = by_function[address]
         origin = by_origin[address]
         if int(row['size']) != size or (origin['disposition'] != 'review'
@@ -179,6 +209,8 @@ def main():
           f'{sum(size for size, _ in BEHAVIORS.values())} target bytes')
     print(f'{len(EARLY_BEHAVIORS)} individually reviewed early-game origins; '
           f'{sum(size for size, _ in EARLY_BEHAVIORS.values())} target bytes')
+    print(f'{len(MIDDLE_BEHAVIORS)} individually reviewed middle-game origins; '
+          f'{sum(size for size, _ in MIDDLE_BEHAVIORS.values())} target bytes')
 
 
 if __name__ == '__main__':

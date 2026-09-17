@@ -3016,3 +3016,22 @@ Current ledger: 1,313/1,313 boundaries reviewed; 1,030 origin rows reviewed
 (524 authored, 506 excluded), 283 origins pending; 307 source mappings,
 161 canonical exact functions and 22,413 exact bytes. Origin review remains
 the gate before the three large exact tasks.
+
+## Completed checkpoint: middle game behavior entries
+
+Twenty-two complete `0x0041xxxx` entries totaling 2,732 bytes were reviewed
+for stage objects, scheduling, projectile pooling and
+playfield behavior. Each has a direct target call edge to or from an authored
+owner outside the current manual behavior cohorts; the reviewer excludes all
+three of its own cohorts from the seed set on replay. The medium-confidence
+origin classification leaves source and exactness open. Generic string/math
+helpers and constructor fragments without independent authored edges remain
+pending. The 75-byte ECL integer-lvalue helper at `0x00412A10` also remains
+unknown: a direct dispatcher call proves its use, but prior target review left
+source-written versus compiler-outlined provenance unresolved. It is outside
+the accepted cohort and does not need a fabricated source mapping.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 1,052 origin rows reviewed
+(546 authored, 506 excluded), 261 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. Origin review is still
+the prerequisite for the requested large exact work.
