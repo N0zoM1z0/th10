@@ -24,6 +24,10 @@ LIBRARY_HASHES = {
 }
 EVIDENCE_ID = 'vc71-static-runtime-body-2026-09-17'
 AMBIGUOUS_EVIDENCE_ID = 'vc71-static-runtime-family-2026-09-17'
+SHORT_EVIDENCE_ID = 'vc71-static-runtime-short-body-2026-09-17'
+EXTENDED_EVIDENCE_ID = 'vc71-static-runtime-extended-body-2026-09-17'
+CONTAINED_EVIDENCE_ID = 'vc71-static-runtime-contained-fragment-2026-09-17'
+NAMED_EVIDENCE_ID = 'vc71-static-runtime-named-body-2026-09-17'
 
 spec = importlib.util.spec_from_file_location('compare_coff_function', ROOT / 'scripts' / 'compare-coff-function.py')
 coff = importlib.util.module_from_spec(spec)
@@ -94,20 +98,26 @@ def main():
     function_rows = csv_rows('functions.csv')
     boundaries = csv_rows('function-boundaries.csv')
     candidates = {}
+    prefix_candidates = []
     for row in function_rows:
         address = row['address']
         origin = origins[address]
         if origin['disposition'] != 'review' and origin['evidence_id'] not in (
-                EVIDENCE_ID, AMBIGUOUS_EVIDENCE_ID):
+                EVIDENCE_ID, AMBIGUOUS_EVIDENCE_ID, SHORT_EVIDENCE_ID,
+                EXTENDED_EVIDENCE_ID, CONTAINED_EVIDENCE_ID,
+                NAMED_EVIDENCE_ID):
             continue
         size = int(row['size'])
         if size < 8:
             continue
         code = pe_bytes_at(image, int(address, 0), size)
         candidates.setdefault(size, []).append((address, code, row['current_name']))
+        if int(address, 0) >= 0x00452000:
+            prefix_candidates.append((address, size, row['current_name']))
     selection = ROOT / '.tools' / 'msvc710-sp1' / 'Vc7' / 'lib'
     libraries = [selection / name for name in ('libcmt.lib', 'libcpmt.lib')]
     matches = []
+    extended_matches = []
     stats = {}
     with tempfile.TemporaryDirectory() as directory:
         object_path = Path(directory) / 'member.obj'
@@ -130,7 +140,8 @@ def main():
                     continue
                 for function in functions:
                     size = function['size']
-                    if size not in candidates:
+                    if size is None or (size not in candidates and (
+                            library.name != 'libcmt.lib' or size < 32)):
                         continue
                     try:
                         code, relocations = coff.object_function(object_path, function['symbol'])
@@ -145,13 +156,32 @@ def main():
                     comparable = tuple(i for i in range(size) if i not in excluded)
                     if len(comparable) < 12:
                         continue
-                    for address, target, ida_name in candidates[size]:
+                    for address, target, ida_name in candidates.get(size, []):
                         if all(code[i] == target[i] for i in comparable):
                             matches.append({'address': address, 'size': size,
                                 'ledger_name': ida_name, 'library': library.name,
                                 'library_sha256': digest,
                                 'member': member, 'symbol': function['symbol'],
                                 'relocations': relocations, 'comparable_bytes': len(comparable)})
+                    if library.name == 'libcmt.lib' and size >= 32 and len(comparable) >= 24:
+                        signature = comparable[:12]
+                        for address, ledger_size, ida_name in prefix_candidates:
+                            if ledger_size >= size:
+                                continue
+                            try:
+                                target = pe_bytes_at(image, int(address, 0), size)
+                            except ValueError:
+                                continue
+                            if not all(code[index] == target[index] for index in signature):
+                                continue
+                            if all(code[index] == target[index] for index in comparable):
+                                extended_matches.append({
+                                    'address': address, 'ledger_size': ledger_size,
+                                    'size': size, 'ledger_name': ida_name,
+                                    'library': library.name, 'library_sha256': digest,
+                                    'member': member, 'symbol': function['symbol'],
+                                    'relocations': relocations,
+                                    'comparable_bytes': len(comparable)})
             stats[library.name] = {'archive_members': inspected, 'usable_functions': usable, 'parse_errors': errors}
     by_address = {}
     for match in matches:
@@ -159,17 +189,67 @@ def main():
     qualified = [group[0] for group in by_address.values()
                  if len(group) == 1 and group[0]['size'] >= 32
                  and group[0]['comparable_bytes'] >= 24]
+    qualified_short = [group[0] for group in by_address.values()
+                       if len(group) == 1 and 12 <= group[0]['size'] < 32
+                       and group[0]['comparable_bytes'] >= 12]
     qualified_ambiguous = [group for group in by_address.values()
                            if len(group) > 1 and group[0]['size'] >= 32 and
                            all(match['library'] == 'libcmt.lib' and
                                match['comparable_bytes'] >= 24 for match in group)]
+    already_qualified = {match['address'] for match in qualified + qualified_short}
+    already_qualified.update(group[0]['address'] for group in qualified_ambiguous)
+    qualified_named = []
+    for address, group in by_address.items():
+        if address in already_qualified or not (
+                origins[address]['disposition'] == 'review' or
+                origins[address]['evidence_id'] == NAMED_EVIDENCE_ID):
+            continue
+        if any(match['library'] != 'libcmt.lib' for match in group):
+            continue
+        ledger_name = group[0]['ledger_name'].split(':')[-1].strip('_').lower()
+        named = [match for match in group if len(ledger_name) >= 4 and
+                 ledger_name in match['symbol'].lower() and
+                 match['size'] >= 9 and match['comparable_bytes'] >= 5]
+        if named:
+            qualified_named.append(max(named, key=lambda match: match['comparable_bytes']))
+    extended_by_address = {}
+    for match in extended_matches:
+        extended_by_address.setdefault(match['address'], []).append(match)
+    qualified_extended = [group[0] for group in extended_by_address.values()
+                          if len(group) == 1]
+    parent_matches = [(match, 'high') for match in qualified + qualified_extended]
+    parent_matches += [(match, 'medium') for match in qualified_named]
+    parent_matches += [(group[0], 'medium') for group in qualified_ambiguous]
+    separately_matched = {match['address'] for match in qualified + qualified_short + qualified_extended + qualified_named}
+    separately_matched.update(group[0]['address'] for group in qualified_ambiguous)
+    contained = []
+    for child in function_rows:
+        address = child['address']
+        origin = origins[address]
+        if address in separately_matched or (origin['disposition'] != 'review' and
+                origin['evidence_id'] != CONTAINED_EVIDENCE_ID):
+            continue
+        start, end = int(address, 0), int(child['span_end'], 0)
+        parents = [(match, confidence) for match, confidence in parent_matches
+                   if int(match['address'], 0) < start and
+                   end < int(match['address'], 0) + match['size']]
+        if len(parents) > 1:
+            raise ValueError(f'ambiguous containing runtime owner: {address}')
+        if parents:
+            parent, confidence = parents[0]
+            contained.append({'address': address, 'size': int(child['size']),
+                              'parent_address': parent['address'],
+                              'parent_symbol': parent['symbol'],
+                              'parent_member': parent['member'],
+                              'parent_extent': parent['size'],
+                              'confidence': confidence})
     # Link the members to each other in the target. A symbol with several
     # plausible target entries is deliberately left unresolved.
     by_symbol = {}
-    for match in qualified:
+    for match in qualified + qualified_short + qualified_extended + qualified_named:
         by_symbol.setdefault(match['symbol'], set()).add(int(match['address'], 0))
     resolved = 0
-    for match in qualified:
+    for match in qualified + qualified_short + qualified_extended + qualified_named:
         address = int(match['address'], 0)
         target = pe_bytes_at(image, address, match['size'])
         for relocation in match['relocations']:
@@ -187,8 +267,17 @@ def main():
             resolved += 1
     report = {'target_sha256': observed['sha256'], 'library_sha256': LIBRARY_HASHES,
               'stats': stats, 'match_count': len(matches),
-              'qualified_count': len(qualified), 'resolved_runtime_references': resolved,
-              'qualified': qualified, 'qualified_ambiguous': qualified_ambiguous,
+              'qualified_count': len(qualified),
+              'qualified_short_count': len(qualified_short),
+              'qualified_extended_count': len(qualified_extended),
+              'qualified_named_count': len(qualified_named),
+              'contained_count': len(contained),
+              'resolved_runtime_references': resolved,
+              'qualified': qualified, 'qualified_short': qualified_short,
+              'qualified_extended': qualified_extended,
+              'qualified_named': qualified_named,
+              'contained': contained,
+              'qualified_ambiguous': qualified_ambiguous,
               'ambiguous': [group for group in by_address.values()
                                                 if len(group) != 1]}
     out = ROOT / '.analysis' / 'gpt-5.6-sol' / '20260917-origin-review' / 'runtime-origin-review.json'
@@ -197,34 +286,85 @@ def main():
     promoted_boundaries = 0
     if args.apply:
         qualified_by_address = {match['address']: match for match in qualified}
+        short_by_address = {match['address']: match for match in qualified_short}
+        extended_by_address = {match['address']: match for match in qualified_extended}
+        named_by_address = {match['address']: match for match in qualified_named}
         ambiguous_by_address = {group[0]['address']: group for group in qualified_ambiguous}
+        contained_by_address = {match['address']: match for match in contained}
         for row in origin_rows:
             match = qualified_by_address.get(row['address'])
+            short = short_by_address.get(row['address'])
+            extended = extended_by_address.get(row['address'])
+            named = named_by_address.get(row['address'])
             group = ambiguous_by_address.get(row['address'])
-            if match is None and group is None:
+            child = contained_by_address.get(row['address'])
+            if (match is None and short is None and extended is None and
+                    named is None and group is None and child is None):
                 continue
             if row['disposition'] not in ('review', 'exclude'):
                 raise ValueError(f"refusing to replace origin: {row['address']}")
-            evidence_id = EVIDENCE_ID if match is not None else AMBIGUOUS_EVIDENCE_ID
+            evidence_id = (EVIDENCE_ID if match is not None else
+                           SHORT_EVIDENCE_ID if short is not None else
+                           EXTENDED_EVIDENCE_ID if extended is not None else
+                           NAMED_EVIDENCE_ID if named is not None else
+                           CONTAINED_EVIDENCE_ID if child is not None else
+                           AMBIGUOUS_EVIDENCE_ID)
             row.update(origin='library', subsystem='CRT', disposition='exclude',
-                       confidence='high' if match is not None else 'medium',
+                       confidence=(child['confidence'] if child is not None else
+                                   'high' if match is not None or extended is not None else
+                                   'medium'),
                        evidence_id=evidence_id)
         for row in function_rows:
             match = qualified_by_address.get(row['address'])
+            short = short_by_address.get(row['address'])
+            extended = extended_by_address.get(row['address'])
+            named = named_by_address.get(row['address'])
             group = ambiguous_by_address.get(row['address'])
-            if match is None and group is None:
+            child = contained_by_address.get(row['address'])
+            if (match is None and short is None and extended is None and
+                    named is None and group is None and child is None):
                 continue
             if row['owner'] not in ('', 'library'):
                 raise ValueError(f"refusing to replace function owner: {row['address']}")
             row.update(module='CRT', status='excluded', owner='library')
-            if match is not None and not row['proposed_name']:
-                row['proposed_name'] = match['symbol']
+            if (match is not None or short is not None or extended is not None or named is not None) and not row['proposed_name']:
+                row['proposed_name'] = (match or short or extended or named)['symbol']
             if match is not None:
                 note = (f"Pinned VC7.1 {match['library']} member {match['member']} symbol "
                         f"{match['symbol']}: complete {match['size']}-byte COFF extent and "
                         f"{match['comparable_bytes']} non-relocation bytes match target; "
                         f"origin only, no source-exact claim ({EVIDENCE_ID}).")
                 evidence_id = EVIDENCE_ID
+            elif short is not None:
+                note = (f"Pinned VC7.1 {short['library']} member {short['member']} symbol "
+                        f"{short['symbol']}: unique complete {short['size']}-byte COFF body "
+                        f"with {short['comparable_bytes']} exact non-relocation bytes; "
+                        f"short-body provenance is medium confidence ({SHORT_EVIDENCE_ID}).")
+                evidence_id = SHORT_EVIDENCE_ID
+            elif extended is not None:
+                note = (f"Pinned VC7.1 {extended['library']} member {extended['member']} "
+                        f"symbol {extended['symbol']}: complete {extended['size']}-byte "
+                        f"COFF body matches target across {extended['comparable_bytes']} "
+                        f"non-relocation bytes. Ledger entry is the "
+                        f"{extended['ledger_size']}-byte contiguous fragment; the "
+                        f"COFF extent also owns a suffix/shared helper "
+                        f"({EXTENDED_EVIDENCE_ID}).")
+                evidence_id = EXTENDED_EVIDENCE_ID
+            elif named is not None:
+                note = (f"Pinned VC7.1 libcmt.lib member {named['member']} symbol "
+                        f"{named['symbol']} has a complete same-size body and "
+                        f"{named['comparable_bytes']} exact non-relocation bytes; "
+                        f"the target function name independently agrees "
+                        f"({NAMED_EVIDENCE_ID}).")
+                evidence_id = NAMED_EVIDENCE_ID
+            elif child is not None:
+                note = (f"Local fragment lies wholly inside pinned VC7.1 libcmt.lib "
+                        f"member {child['parent_member']} symbol "
+                        f"{child['parent_symbol']} at {child['parent_address']} "
+                        f"({child['parent_extent']} matching COFF bytes); "
+                        f"separate authored ownership is not claimed "
+                        f"({CONTAINED_EVIDENCE_ID}).")
+                evidence_id = CONTAINED_EVIDENCE_ID
             else:
                 first = group[0]
                 note = (f"Pinned VC7.1 libcmt.lib has {len(group)} matching full "
@@ -277,6 +417,10 @@ def main():
         write_rows('function-boundaries.csv', boundaries)
     print(json.dumps({'stats': stats, 'match_count': len(matches),
                       'qualified_origins': len(qualified),
+                      'qualified_short_origins': len(qualified_short),
+                      'qualified_extended_origins': len(qualified_extended),
+                      'qualified_named_origins': len(qualified_named),
+                      'contained_runtime_fragments': len(contained),
                       'ambiguous_runtime_origins': len(qualified_ambiguous),
                       'resolved_runtime_references': resolved,
                       'promoted_boundaries': promoted_boundaries, 'output': str(out)}))

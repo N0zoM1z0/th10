@@ -2846,3 +2846,31 @@ authored-versus-compiler evidence; an address range alone is insufficient.
 The remaining library-region origins include short, ambiguous, and unmatched
 bodies. Origin review is therefore still open, and the three large dispatchers
 have not been resumed in this packet.
+
+## Completed checkpoint: target import, EH, and CRT-origin expansion
+
+The next origin pass classified 21 import thunks by decoding their six-byte
+`FF 25` body and parsing the target's own PE import descriptor/IAT slot. The
+target's `.rdata` also contains 41 valid VC7.1 C++ `FuncInfo` records with
+magic `0x19930520`; their unwind maps identify all 62 current `Unwind@`
+cleanup actions. These were classified compiler generated after complete
+target code decoding. `scripts/review-import-origins.py` and
+`scripts/review-eh-origins.py` replay the evidence without IDA write access.
+
+The pinned CRT scan additionally accepted 39 unique short function bodies at
+medium confidence, 30 complete COFF bodies whose physical object extent is
+longer than the ledger's local entry fragment, 30 code fragments contained
+inside those complete runtime member extents, and 11 lower-information
+same-size CRT matches supported by the candidate's provisional name. The
+complete extended bodies match all non-relocation bytes, and all 961
+uniquely resolvable intra-runtime reference fields reach their expected
+target addresses. These are origin observations only; no source/exact ledger
+was changed. The `.analysis/gpt-5.6-sol/20260917-origin-review/` report keeps
+the complete accepted and ambiguous match lists.
+
+Latest ledger: 1,313/1,313 boundaries reviewed; 783 origin rows reviewed
+(320 authored, 463 excluded), 530 origin rows pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. Of the pending origins,
+489 lie before `0x00452000` and 41 after. The remaining authored and
+compiler-versus-library provenance requires target-local evidence; the
+three large exact dispatchers remain queued behind that origin review.
