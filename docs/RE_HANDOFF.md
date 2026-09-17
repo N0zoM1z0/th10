@@ -2933,3 +2933,21 @@ Current ledger: 1,313/1,313 boundaries reviewed; 948 origin rows reviewed
 161 canonical exact functions and 22,413 exact bytes. Four source-present
 player callback adapters remain origin-unknown by prior review. Three large
 exact dispatchers remain queued behind origin review.
+
+## Completed checkpoint: individually reviewed game behaviors
+
+Twenty more large, complete bodies totaling 14,404 bytes were individually
+inspected with IDA and replayed from target instructions in
+`scripts/review-game-behavior-origins.py --apply`. They show ANM VM commands,
+stage/score state, player options, the target `TH10` replay header, game sound
+cues and input transitions. Every row has a direct call edge to or from an
+already reviewed authored function. Two reviewed authored callers include
+switch data that blocks a whole-span linear decode; their actual `call`
+instructions at `0x00432DB9` and `0x0042F6B6` are independently decoded and
+bound to the caller span. The origin confidence is medium; source units and
+exact codegen remain unknown.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 968 origin rows reviewed
+(492 authored, 476 excluded), 345 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. Origin review still
+precedes the three requested large exact owners.
