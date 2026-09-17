@@ -2951,3 +2951,19 @@ Current ledger: 1,313/1,313 boundaries reviewed; 968 origin rows reviewed
 (492 authored, 476 excluded), 345 origins pending; 307 source mappings,
 161 canonical exact functions and 22,413 exact bytes. Origin review still
 precedes the three requested large exact owners.
+
+## Completed checkpoint: five additional runtime entries
+
+The runtime reviewer now checks five further complete entries: SSE `floor`
+reaching two reviewed CRT math bodies, CRT floating-conversion pointer-table
+initialization, `__NLG_Notify1` and `strcpy` prefixes jumping into reviewed
+library bodies, and an x87 status-word helper. Each had an IDA behavior review;
+the replay script checks the concrete target transfer or instruction/data shape.
+They are medium-confidence library-origin observations without source-exact or
+production object ownership claims.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 973 origin rows reviewed
+(492 authored, 481 excluded), 340 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. The remaining 25
+runtime-region entries include ambiguous C++ standard-library bodies and
+unresolved short helpers. The authored-origin queue remains open.

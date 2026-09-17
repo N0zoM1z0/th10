@@ -875,7 +875,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00452EEC,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x00452F80,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x00452FB9,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
-0x00452FF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00452FF0,library,CRT,exclude,medium,target-vc71-runtime-special-2026-09-17
 0x00453111,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x00453280,library,CRT,exclude,medium,vc71-static-runtime-family-2026-09-17
 0x004535BD,library,CRT,exclude,high,vc71-static-runtime-extended-body-2026-09-17
@@ -936,7 +936,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00456898,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x004568D7,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x00456A8B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00456A8C,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00456A8C,library,CRT,exclude,medium,target-vc71-runtime-special-2026-09-17
 0x00456AD4,library,CRT,exclude,medium,vc71-static-runtime-short-body-2026-09-17
 0x00456AF2,library,CRT,exclude,medium,target-vc71-runtime-wrapper-2026-09-17
 0x00456AFB,library,CRT,exclude,medium,target-vc71-runtime-wrapper-2026-09-17
@@ -993,7 +993,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045989C,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x004598DE,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x00459946,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
-0x00459969,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00459969,library,CRT,exclude,medium,target-vc71-runtime-special-2026-09-17
 0x00459972,library,CRT,exclude,medium,vc71-static-runtime-short-body-2026-09-17
 0x0045998A,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x00459BB3,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
@@ -1025,7 +1025,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045B81B,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045B8F4,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045BB33,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
-0x0045BD80,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045BD80,library,CRT,exclude,medium,target-vc71-runtime-special-2026-09-17
 0x0045BD90,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045BE80,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045BED0,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
@@ -1099,7 +1099,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045EC34,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045EC59,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045ECB4,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
-0x0045ED70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045ED70,library,CRT,exclude,medium,target-vc71-runtime-special-2026-09-17
 0x0045ED7B,library,CRT,exclude,medium,vc71-static-runtime-short-body-2026-09-17
 0x0045ED87,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045EDAB,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
