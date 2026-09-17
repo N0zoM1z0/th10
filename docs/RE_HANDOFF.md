@@ -3001,3 +3001,18 @@ Current ledger: 1,313/1,313 boundaries reviewed; 998 origin rows reviewed
 161 canonical exact functions and 22,413 exact bytes. All current pending
 origins are before `0x00452000`; four have maintained Player callback sources
 but unresolved authored-versus-generated provenance.
+
+## Completed checkpoint: early game behavior entries
+
+IDA behavior review plus target-decoded direct call edges classified 32 more
+complete entries in the first `0x0040xxxx` code region as medium-confidence
+authored game code. The 6,650-byte cohort covers game/ANM managers,
+projectiles, playfield bounds, scheduling and resource access. The reviewer
+keeps the original 20 manually checked game entries out of this cohort's
+authored seed set, so the new result does not rely on itself. Nearby pure
+math/constructor fragments with no independent reviewed call edge stay open.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 1,030 origin rows reviewed
+(524 authored, 506 excluded), 283 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. Origin review remains
+the gate before the three large exact tasks.

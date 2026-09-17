@@ -12,6 +12,7 @@ from target_identity import pe_bytes_at, resolve_target, verify_target
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_ID = 'target-ida-reviewed-game-behavior-2026-09-17'
+EARLY_EVIDENCE_ID = 'target-ida-reviewed-early-game-2026-09-17'
 # These cues are individually reviewed observations, not proposed source names.
 BEHAVIORS = {
     0x00402230: (522, 'game manager state and ANM resource setup'),
@@ -34,6 +35,40 @@ BEHAVIORS = {
     0x0043D950: (298, 'game sound manager state and playback'),
     0x0044A4E0: (264, 'game controller state through DirectInput'),
     0x0044A5F0: (850, 'keyboard state and game input transition update'),
+}
+EARLY_BEHAVIORS = {
+    0x00402640: (151, 'game manager object allocation and initialization'),
+    0x00403090: (1984, 'game collision geometry using transformed bounds'),
+    0x00403990: (154, 'ANM script record traversal'),
+    0x00404450: (214, 'ANM VM flag changes across manager slots'),
+    0x00404530: (119, 'game sound and ANM manager state'),
+    0x004045B0: (92, 'ANM manager state flag reset'),
+    0x004049A0: (688, 'ANM interpolation state update'),
+    0x00404ED0: (72, 'ANM interpolation record advance'),
+    0x00405500: (81, 'frame-timed game state update'),
+    0x004055C0: (84, 'game scheduler registration'),
+    0x00405620: (137, 'game loader synchronization cleanup'),
+    0x004056B0: (85, 'game loader object allocation'),
+    0x00405AC0: (124, 'effect state and game manager access'),
+    0x00405BE0: (158, 'ANM script state reset'),
+    0x00406060: (182, 'game projectile pool allocation'),
+    0x00406160: (109, 'playfield bounds test'),
+    0x004061D0: (109, 'playfield bounds test'),
+    0x004065C0: (249, 'projectile manager initialization'),
+    0x004074B0: (164, 'sprite position and timed state update'),
+    0x004076A0: (209, 'ANM interpolation update'),
+    0x00408660: (80, 'game angle normalization'),
+    0x004086B0: (91, 'game playfield culling'),
+    0x004089C0: (211, 'game scheduler registration'),
+    0x00408C90: (136, 'ANM manager object allocation'),
+    0x0040AC20: (109, 'game object state initialization'),
+    0x0040AF00: (137, 'game object synchronization cleanup'),
+    0x0040AF90: (86, 'small game state object allocation'),
+    0x0040B3A0: (192, 'game renderer manager setup'),
+    0x0040B480: (106, 'game resource path and file access'),
+    0x0040B940: (99, 'small game state object allocation'),
+    0x0040BD20: (93, 'game renderer state check'),
+    0x0040CC70: (145, 'ANM VM array state initialization'),
 }
 DIRECT_XREF_SITES = {
     0x00421FA0: (0x00432DB9, 0x00432CB0),
@@ -79,10 +114,10 @@ def main():
     by_origin = {int(row['address'], 0): row for row in origins}
     seeds = {address for address, row in by_origin.items()
              if row['origin'] == 'authored_game' and row['disposition'] == 'authored'
-             and row['evidence_id'] != EVIDENCE_ID}
+             and row['evidence_id'] not in (EVIDENCE_ID, EARLY_EVIDENCE_ID)}
     decoder = Cs(CS_ARCH_X86, CS_MODE_32)
     decoder.detail = True
-    incoming = {address: set() for address in BEHAVIORS}
+    incoming = {address: set() for address in BEHAVIORS | EARLY_BEHAVIORS}
     calls = {}
     for row in functions:
         address = int(row['address'], 0)
@@ -109,11 +144,12 @@ def main():
                 or instruction.operands[0].imm != callee):
             raise ValueError(f'direct xref changed: {site:#x}')
         incoming[callee].add(caller)
-    for address, (size, behavior) in BEHAVIORS.items():
+    for address, (size, behavior) in (BEHAVIORS | EARLY_BEHAVIORS).items():
+        evidence_id = EVIDENCE_ID if address in BEHAVIORS else EARLY_EVIDENCE_ID
         row = by_function[address]
         origin = by_origin[address]
         if int(row['size']) != size or (origin['disposition'] != 'review'
-                                         and origin['evidence_id'] != EVIDENCE_ID):
+                                         and origin['evidence_id'] != evidence_id):
             raise ValueError(f'behavior ledger conflict: {address:#x}')
         if address not in calls:
             raise ValueError(f'behavior body does not completely decode: {address:#x}')
@@ -126,14 +162,14 @@ def main():
         if args.apply:
             origin.update(origin='authored_game', subsystem='GameUnassigned',
                           disposition='authored', confidence='medium',
-                          evidence_id=EVIDENCE_ID)
+                          evidence_id=evidence_id)
             row['owner'] = 'authored'
-            if EVIDENCE_ID not in row['notes']:
+            if evidence_id not in row['notes']:
                 edge = (f'directly calls reviewed authored 0x{outgoing[0]:08X}'
                         if outgoing else
                         f'is directly called by reviewed authored 0x{inbound[0]:08X}')
                 note = (f'Complete target decode; {edge}. IDA behavior review '
-                        f'shows {behavior} ({EVIDENCE_ID}). Original owner and '
+                        f'shows {behavior} ({evidence_id}). Original owner and '
                         f'source unit remain unknown.')
                 row['notes'] = (row['notes'] + ' ' + note).strip()
     if args.apply:
@@ -141,6 +177,8 @@ def main():
         write_rows('functions.csv', functions)
     print(f'{len(BEHAVIORS)} individually reviewed game-behavior origins; '
           f'{sum(size for size, _ in BEHAVIORS.values())} target bytes')
+    print(f'{len(EARLY_BEHAVIORS)} individually reviewed early-game origins; '
+          f'{sum(size for size, _ in EARLY_BEHAVIORS.values())} target bytes')
 
 
 if __name__ == '__main__':
