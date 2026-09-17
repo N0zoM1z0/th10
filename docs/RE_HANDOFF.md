@@ -2910,3 +2910,26 @@ Current ledger: 1,313/1,313 boundaries reviewed; 906 origin rows reviewed
 (443 authored, 463 excluded), 407 origins pending; 307 source mappings,
 161 canonical exact functions and 22,413 exact bytes. The pending origins
 include 366 game-region entries and 41 later runtime-region entries.
+
+## Completed checkpoint: call/data owners, catch handlers and CRT wrappers
+
+`scripts/review-game-edge-origins.py --apply` classified 11 complete game bodies
+between direct calls from and to the original 320 reviewed authored functions,
+plus 18 more complete bodies with an original authored call edge and a shared,
+non-excluded `.data` address. The generic `1.0f` data constant is explicitly
+excluded. These 29 medium-confidence origins cover 10,641 target bytes and do
+not grant source presence or exactness.
+
+The target's VC7.1 `TryBlockMap` and `HandlerType` records directly point to
+the two tracked `Catch@` bodies; `scripts/review-eh-origins.py --apply` now
+classifies them compiler generated while replaying all 62 existing unwind
+actions. Eleven individually reviewed 5–15-byte CRT wrappers directly enter
+an already reviewed runtime body and were classified library origin at medium
+confidence by `scripts/review-crt-wrapper-origins.py --apply`. Their exact CRT
+object identities remain open.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 948 origin rows reviewed
+(472 authored, 476 excluded), 365 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. Four source-present
+player callback adapters remain origin-unknown by prior review. Three large
+exact dispatchers remain queued behind origin review.

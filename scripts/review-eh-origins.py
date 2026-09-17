@@ -11,6 +11,7 @@ from target_identity import parse_pe, pe_bytes_at, resolve_target, verify_target
 
 ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_ID = 'target-cxx-eh-unwind-map-2026-09-17'
+HANDLER_EVIDENCE_ID = 'target-cxx-eh-handler-map-2026-09-17'
 FUNC_INFO_MAGIC = 0x19930520
 
 
@@ -62,6 +63,39 @@ def unwind_actions(image):
     return info_count, actions
 
 
+def catch_handlers(image):
+    pe = parse_pe(image)
+    section = next(item for item in pe['sections'] if item['name'] == '.rdata')
+    data = image[section['raw_offset']:section['raw_offset'] + section['raw_size']]
+    start = pe['image_base'] + section['rva']
+    stop = start + len(data)
+    handlers = {}
+    for offset in range(0, len(data) - 20, 4):
+        if struct.unpack_from('<I', data, offset)[0] != FUNC_INFO_MAGIC:
+            continue
+        max_state, unwind, try_count, try_map = struct.unpack_from(
+            '<IIII', data, offset + 4)
+        if not (0 < max_state < 100 and start <= unwind < stop
+                and 0 < try_count < 100 and start <= try_map
+                and try_map + try_count * 20 <= stop):
+            continue
+        for index in range(try_count):
+            entry = try_map + index * 20
+            low, high, catch_high, count, array = struct.unpack(
+                '<iiiII', pe_bytes_at(image, entry, 20))
+            if not (0 <= low <= high <= catch_high <= max_state
+                    and 0 < count < 100 and start <= array
+                    and array + count * 16 <= stop):
+                raise ValueError(f'invalid VC7.1 TryBlockMap entry at {entry:#x}')
+            for catch_index in range(count):
+                handler_entry = array + catch_index * 16
+                address = struct.unpack('<I', pe_bytes_at(
+                    image, handler_entry + 12, 4))[0]
+                handlers.setdefault(address, []).append(
+                    (start + offset, entry, handler_entry))
+    return handlers
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--apply', action='store_true')
@@ -72,6 +106,7 @@ def main():
         raise ValueError(problems)
     image = target_path.read_bytes()
     info_count, actions = unwind_actions(image)
+    handlers = catch_handlers(image)
     functions = read_rows('functions.csv')
     origins = read_rows('function-origins.csv')
     by_origin = {row['address']: row for row in origins}
@@ -109,10 +144,45 @@ def main():
                 row['notes'] = (row['notes'] + ' ' + note).strip()
     if len(reviewed) != 62:
         raise ValueError(f'expected 62 current unwind actions, found {len(reviewed)}')
+    catch_reviewed = []
+    for row in functions:
+        if not row['current_name'].startswith('Catch@'):
+            continue
+        address = int(row['address'], 0)
+        references = handlers.get(address)
+        if not references:
+            raise ValueError(f'Catch entry lacks target TryBlockMap: {row["address"]}')
+        size = int(row['size'])
+        instructions = list(decoder.disasm(pe_bytes_at(image, address, size), address))
+        if sum(instruction.size for instruction in instructions) != size:
+            raise ValueError(f'Catch entry does not completely decode: {row["address"]}')
+        origin = by_origin[row['address']]
+        if origin['disposition'] not in ('review', 'exclude') or (
+                origin['disposition'] == 'exclude'
+                and origin['evidence_id'] != HANDLER_EVIDENCE_ID):
+            raise ValueError(f'Catch origin has competing evidence: {row["address"]}')
+        catch_reviewed.append(row['address'])
+        if args.apply:
+            if row['owner'] not in ('', 'compiler_generated'):
+                raise ValueError(f'refusing to replace function owner: {row["address"]}')
+            origin.update(origin='compiler_generated', subsystem='CxxEH',
+                          disposition='exclude', confidence='high',
+                          evidence_id=HANDLER_EVIDENCE_ID)
+            row.update(module='CxxEH', status='excluded', owner='compiler_generated')
+            if HANDLER_EVIDENCE_ID not in row['notes']:
+                info, try_entry, handler_entry = references[0]
+                note = (f'VC7.1 C++ FuncInfo 0x{info:08X} TryBlockMap entry '
+                        f'0x{try_entry:08X} HandlerType entry 0x{handler_entry:08X} '
+                        f'points to this complete generated catch body '
+                        f'({HANDLER_EVIDENCE_ID}).')
+                row['notes'] = (row['notes'] + ' ' + note).strip()
+    if len(catch_reviewed) != 2:
+        raise ValueError(f'expected two current catch handlers, found {len(catch_reviewed)}')
     if args.apply:
         write_rows('function-origins.csv', origins)
         write_rows('functions.csv', functions)
     print(f'{info_count} VC7.1 FuncInfo records; {len(reviewed)} unwind actions reviewed')
+    print(f'{len(catch_reviewed)} VC7.1 TryBlockMap catch handlers reviewed')
 
 
 if __name__ == '__main__':
