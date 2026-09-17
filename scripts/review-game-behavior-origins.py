@@ -15,6 +15,7 @@ EVIDENCE_ID = 'target-ida-reviewed-game-behavior-2026-09-17'
 EARLY_EVIDENCE_ID = 'target-ida-reviewed-early-game-2026-09-17'
 MIDDLE_EVIDENCE_ID = 'target-ida-reviewed-middle-game-2026-09-17'
 LATE_EVIDENCE_ID = 'target-ida-reviewed-late-game-2026-09-17'
+AUDIO_RENDER_EVIDENCE_ID = 'target-ida-reviewed-audio-render-2026-09-17'
 # These cues are individually reviewed observations, not proposed source names.
 BEHAVIORS = {
     0x00402230: (522, 'game manager state and ANM resource setup'),
@@ -123,6 +124,29 @@ LATE_BEHAVIORS = {
     0x0042C620: (80, 'game controller state assignment'),
     0x0042C850: (69, 'game controller flag query'),
 }
+AUDIO_RENDER_BEHAVIORS = {
+    0x00437D10: (149, 'game GDI font and bitmap cleanup'),
+    0x00437DB0: (554, 'GDI glyph rendering into the game texture'),
+    0x00437FE0: (509, 'GDI glyph rendering with alternate color path'),
+    0x00438880: (103, 'game window state initialization'),
+    0x0043A910: (156, 'game MIDI output object cleanup'),
+    0x0043AE20: (129, 'game MIDI output reset'),
+    0x0043AEB0: (79, 'game MIDI output header release'),
+    0x0043BC40: (135, 'game D3D draw-state update'),
+    0x0043C2C0: (68, 'game D3D draw wrapper'),
+    0x0043C410: (68, 'game D3D draw wrapper'),
+    0x0043C500: (74, 'game D3D draw wrapper'),
+    0x0043C8B0: (82, 'game sprite state allocation'),
+    0x0043CB80: (88, 'game script random-state update'),
+    0x0043CC40: (175, 'game sound worker cleanup'),
+    0x0043D120: (301, 'game sound manager cleanup'),
+    0x0043D2A0: (227, 'game sound filename lookup'),
+    0x0043D690: (241, 'game sound stream thread setup'),
+    0x0043DAB0: (176, 'game sound stream thread cleanup'),
+    0x0043DC90: (123, 'game sound cue queue update'),
+    0x0043DD10: (149, 'game sound cue queue with timing'),
+    0x0043E460: (104, 'game sound filename slot assignment'),
+}
 DIRECT_XREF_SITES = {
     0x00421FA0: (0x00432DB9, 0x00432CB0),
     0x0044A4E0: (0x0042F6B6, 0x0042F540),
@@ -169,11 +193,12 @@ def main():
              if row['origin'] == 'authored_game' and row['disposition'] == 'authored'
              and row['evidence_id'] not in (
                  EVIDENCE_ID, EARLY_EVIDENCE_ID, MIDDLE_EVIDENCE_ID,
-                 LATE_EVIDENCE_ID)}
+                 LATE_EVIDENCE_ID, AUDIO_RENDER_EVIDENCE_ID)}
     decoder = Cs(CS_ARCH_X86, CS_MODE_32)
     decoder.detail = True
     incoming = {address: set() for address in
-                BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS | LATE_BEHAVIORS}
+                BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS |
+                LATE_BEHAVIORS | AUDIO_RENDER_BEHAVIORS}
     calls = {}
     for row in functions:
         address = int(row['address'], 0)
@@ -201,11 +226,13 @@ def main():
             raise ValueError(f'direct xref changed: {site:#x}')
         incoming[callee].add(caller)
     for address, (size, behavior) in (
-            BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS | LATE_BEHAVIORS).items():
+            BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS |
+            LATE_BEHAVIORS | AUDIO_RENDER_BEHAVIORS).items():
         evidence_id = (EVIDENCE_ID if address in BEHAVIORS else
                        EARLY_EVIDENCE_ID if address in EARLY_BEHAVIORS else
                        MIDDLE_EVIDENCE_ID if address in MIDDLE_BEHAVIORS else
-                       LATE_EVIDENCE_ID)
+                       LATE_EVIDENCE_ID if address in LATE_BEHAVIORS else
+                       AUDIO_RENDER_EVIDENCE_ID)
         row = by_function[address]
         origin = by_origin[address]
         if int(row['size']) != size or (origin['disposition'] != 'review'
@@ -243,6 +270,8 @@ def main():
           f'{sum(size for size, _ in MIDDLE_BEHAVIORS.values())} target bytes')
     print(f'{len(LATE_BEHAVIORS)} individually reviewed late-game origins; '
           f'{sum(size for size, _ in LATE_BEHAVIORS.values())} target bytes')
+    print(f'{len(AUDIO_RENDER_BEHAVIORS)} individually reviewed audio/render origins; '
+          f'{sum(size for size, _ in AUDIO_RENDER_BEHAVIORS.values())} target bytes')
 
 
 if __name__ == '__main__':

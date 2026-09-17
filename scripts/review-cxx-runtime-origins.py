@@ -13,6 +13,7 @@ from target_identity import pe_bytes_at, resolve_target, verify_target
 ROOT = Path(__file__).resolve().parents[1]
 CXX_EVIDENCE_ID = 'target-vc71-standard-exception-family-2026-09-17'
 ADAPTER_EVIDENCE_ID = 'target-vc71-eh-member-adapter-2026-09-17'
+STRING_EVIDENCE_ID = 'target-vc71-string-implementation-2026-09-17'
 CXX_BODIES = {
     0x00462301: (38, 'std::string constructor'),
     0x00462327: (60, 'std::logic_error constructor'),
@@ -33,6 +34,30 @@ CXX_BODIES = {
     0x00462DBD: (28, 'bad_cast deleting destructor'),
     0x00462DD9: (28, 'bad_typeid deleting destructor'),
     0x00462DF5: (28, 'bad_typeid deleting destructor'),
+}
+# These are the VC7.1 std::basic_string<char> small-string and growth bodies.
+# 0x43874C is the normal continuation after the out-of-line EH catch at
+# 0x438723, not a separate source function.
+STRING_BODIES = {
+    0x004381F0: (38, 'small-string destructor/reset'),
+    0x00438260: (227, 'substring assign'),
+    0x00438350: (37, 'C-string assign'),
+    0x00438380: (83, 'small-string storage tidy'),
+    0x00438420: (234, 'C-string range assign'),
+    0x00438510: (117, 'string erase'),
+    0x00438590: (31, 'string size and terminator update'),
+    0x004386B0: (115, 'string growth and EH entry'),
+    0x0043874C: (118, 'string growth EH continuation'),
+}
+STRING_CALLEE_ANCHORS = {
+    0x004381F0: 0x004524A1,
+    0x00438260: 0x00462428,
+    0x00438350: 0x00438420,
+    0x00438380: 0x004524A1,
+    0x00438420: 0x004624E5,
+    0x00438510: 0x00462428,
+    0x004386B0: 0x00452493,
+    0x0043874C: 0x004524A1,
 }
 # Verified direct call sites inside already reviewed VC7.1 EH library bodies.
 MEMBER_ADAPTER_SITES = {
@@ -102,6 +127,39 @@ def main():
                         f'exception family ({CXX_EVIDENCE_ID}). Exact CRT member '
                         f'and source unit remain unknown.')
                 row['notes'] = (row['notes'] + ' ' + note).strip()
+    for address, (size, behavior) in STRING_BODIES.items():
+        row = by_function[address]
+        origin = by_origin[address]
+        if int(row['size']) != size or (origin['disposition'] != 'review'
+                                         and origin['evidence_id'] != STRING_EVIDENCE_ID):
+            raise ValueError(f'C++ string ledger conflict: {address:#x}')
+        instructions = list(decoder.disasm(pe_bytes_at(image, address, size), address))
+        if sum(instruction.size for instruction in instructions) != size:
+            raise ValueError(f'C++ string body does not completely decode: {address:#x}')
+        if address in STRING_CALLEE_ANCHORS and not any(
+                instruction.group(CS_GRP_CALL) and instruction.operands
+                and instruction.operands[0].type == X86_OP_IMM
+                and instruction.operands[0].imm == STRING_CALLEE_ANCHORS[address]
+                for instruction in instructions):
+            raise ValueError(f'C++ string call anchor changed: {address:#x}')
+        if address == 0x00438590 and not any(
+                instruction.mnemonic == 'cmp' and '+ 0x18' in instruction.op_str
+                and '0x10' in instruction.op_str for instruction in instructions):
+            raise ValueError('C++ string small-storage check changed')
+        if args.apply:
+            if row['owner'] not in ('', 'library') or row['source_file']:
+                raise ValueError(f'refusing to replace C++ string owner: {address:#x}')
+            origin.update(origin='library', subsystem='CxxRuntime',
+                          disposition='exclude', confidence='medium',
+                          evidence_id=STRING_EVIDENCE_ID)
+            row.update(module='CxxRuntime', status='excluded', owner='library')
+            if STRING_EVIDENCE_ID not in row['notes']:
+                note = (f'Complete target decode and IDA behavior review identify '
+                        f'the VC7.1 std::basic_string<char> {behavior}; '
+                        f'small-string capacity is 0xF and the reviewed CRT '
+                        f'call anchor is retained ({STRING_EVIDENCE_ID}). '
+                        f'Exact library object provenance remains unknown.')
+                row['notes'] = (row['notes'] + ' ' + note).strip()
     for address, (site, caller) in MEMBER_ADAPTER_SITES.items():
         row = by_function[address]
         origin = by_origin[address]
@@ -136,7 +194,7 @@ def main():
     if args.apply:
         write_rows('function-origins.csv', origins)
         write_rows('functions.csv', functions)
-    print(f'{len(CXX_BODIES)} C++ standard-library bodies and '
+    print(f'{len(CXX_BODIES) + len(STRING_BODIES)} C++ standard-library bodies and '
           f'{len(MEMBER_ADAPTER_SITES)} EH member-call adapters reviewed')
 
 

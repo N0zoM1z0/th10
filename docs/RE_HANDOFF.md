@@ -3050,3 +3050,25 @@ Current ledger: 1,313/1,313 boundaries reviewed; 1,077 origin rows reviewed
 (571 authored, 506 excluded), 236 origins pending; 307 source mappings,
 161 canonical exact functions and 22,413 exact bytes. Source mapping and
 exactness were not changed in this cohort.
+
+## Completed checkpoint: standard string and audio/render origin review
+
+Nine complete `0x004381F0-0x004387C1` candidates are now excluded as VC7.1
+`std::basic_string<char>` library code. Target small-string storage, calls to
+reviewed standard string throw helpers, and IDA body/EH review support the
+classification; `0x0043874C` is a post-catch continuation, not a distinct
+source routine. Exact library object membership is still unknown.
+
+Twenty-one more audio/render/game-window candidates totaling 3,690 bytes are
+authored at medium confidence. Each has an independently decoded direct call
+edge to or from a previously reviewed authored function outside all five
+manual behavior cohorts, plus individual IDA behavior review. The reviewed
+roles include GDI font/texture work, MIDI output cleanup, D3D drawing, ANM
+random state and TH10 sound cue/stream management. Source unit, original
+identifier, production build mode and exact codegen remain open.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 1,107 origin rows reviewed
+(592 authored, 515 excluded), 206 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. No source or exact
+mapping changed in this checkpoint. Continue the remaining origin review
+before the requested three large exact owners.
