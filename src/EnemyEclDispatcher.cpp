@@ -318,9 +318,6 @@ int EnemyRuntimeView::DispatchEclInstruction()
   iVar26 = reinterpret_cast<int>(owner);
   iVar27 = reinterpret_cast<int>(owner->activeEclContext->currentInstruction);
   opcode = *(short *)(iVar27 + 4);
-  if (0xb4 < (int)opcode - 0x100U) {
-    return 0;
-  }
   switch(opcode) {
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
     goto dispatch_create_enemy_absolute;

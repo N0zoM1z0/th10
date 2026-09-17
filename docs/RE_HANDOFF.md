@@ -3183,3 +3183,36 @@ compilation/linked-image diagnostics, starting with Enemy ECL dispatcher
 `0x0040E770` (14,416 bytes). Its small ECL helpers include reviewed but
 origin-indeterminate entries such as `0x00412A10`; do not use their apparent
 source shape as an authorship or exactness assumption.
+
+## Current bounded exact packet: Enemy ECL dispatcher
+
+The maintained `EnemyEclDispatcher.cpp` had an explicit opcode range guard
+before its `switch`. The target has one guard; VC7.1 emitted two for that
+source shape. Removing the redundant guard preserves default dispatch and
+improves the focused `/GL /GS` candidate from 13,128 bytes / 421 of 11,692
+comparable bytes equal to 13,112 bytes / 486 equal. Target extent is 14,416
+bytes. The candidate remains non-exact, with incomplete normalization; no
+match row or production compiler-profile claim follows.
+
+The new optional candidate mode of `report-ecl-dispatch-table.py` finds the
+linked byte selector and jump table from the entry instructions, then checks
+adjacency, selector range and pre-table destinations. The candidate selector
+matches the target in all 181 bytes; both have 108 distinct jump destinations
+and 43 bytes after the selector within their contributions. All 1,304 missing
+bytes lie before the table. Physical case order differs from the first group,
+so the next source/codegen work should compare case order and per-case size.
+The target prologue contains a VC7.1 security cookie and allocates `0x2C4`
+bytes; `/GS` reproduces the cookie form but current source allocates `0x2BC`.
+The default profile omits the cookie. A separate spell-name buffer made the
+frame `0x304` and was reverted. Retained ignored evidence is under
+`.analysis/gpt-5.6-sol/20260918-enemy-exact/`.
+
+The other two requested frontiers remain source-present and non-exact. Prior
+target-bound linked diagnostics put ANM `ExecuteScript @ 0x0043EE30` at a
+9,488-byte pre-table span versus 9,588 target (`-100`) with a misplaced shared
+NOP/interrupt advance block. Generic `EclVmContext::Run @ 0x0044E1A0`
+remains 6,916 versus 7,020 bytes (`-104`), with 93 bytes of the code gap
+attributed to typed-pop case shapes and EBX/EBP register allocation. Those
+figures are earlier local observations, not fresh exact claims. Keep using
+focused compiler probes; skip unneeded full cold replay while no canonical
+unit or shared source is being promoted.
