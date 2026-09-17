@@ -1383,6 +1383,26 @@ linkages = [
   { offset = 18, type = "REL32", symbol = "_free", target = 0x00452422 },
 ]
 
+[units.enemy-manager-update]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/EnemyManagerUpdate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?EnemyManagerUpdateCallback@@YIHPAUEnemyManagerView@@@Z"
+functions = ["EnemyManagerUpdate"]
+symbol = "?EnemyManagerUpdate@@YAHPAUEnemyManagerView@@@Z"
+target_address = 0x0040D750
+size = 166
+linkages = [
+  { offset = 0x28, type = "REL32", symbol = "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z", target = 0x0040DC80 },
+  { offset = 0x5F, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x00470B68 },
+  { offset = 0x6F, type = "DIR32", symbol = "__real@3f8147ae", target = 0x00470B64 },
+  { offset = 0x80, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x99, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]
+
 [units.enemy-manager-update-callback]
 artifact_kind = "linked-pe"
 source = "src/Enemy.cpp"
