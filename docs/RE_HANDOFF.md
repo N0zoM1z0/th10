@@ -2967,3 +2967,21 @@ Current ledger: 1,313/1,313 boundaries reviewed; 973 origin rows reviewed
 161 canonical exact functions and 22,413 exact bytes. The remaining 25
 runtime-region entries include ambiguous C++ standard-library bodies and
 unresolved short helpers. The authored-origin queue remains open.
+
+## Completed checkpoint: standard C++ exception and EH runtime cluster
+
+`scripts/review-cxx-runtime-origins.py --apply` classified 19 complete
+`std::string`, standard exception, type-info and throw-helper bodies as
+medium-confidence C++ runtime library origin. IDA behavior and target vtable,
+call and exception-string observations support the family interpretation;
+duplicate template code still leaves exact CRT object membership unknown.
+Three identical seven-byte `_CallMemberFunction` adapters are directly called
+from already reviewed CRT EH bodies, with their exact target call sites replayed.
+Those are also excluded as runtime library origin at medium confidence.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 995 origin rows reviewed
+(492 authored, 503 excluded), 318 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. Only three short
+runtime-region entries remain pending; 315 game-region entries, including four
+source-present player adapters, still require authored-versus-library or
+generated-origin evidence.
