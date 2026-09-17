@@ -3091,3 +3091,23 @@ Current ledger: 1,313/1,313 boundaries reviewed; 1,125 origin rows reviewed
 still includes source-present Player adapters and ambiguous constructor or
 compiler-outlined fragments. Three large source-present exact owners remain
 queued behind the user's requested review order.
+
+## Completed checkpoint: game utilities and sound stream origins
+
+Forty more `0x0044xxxx` candidates totaling 7,014 bytes now have
+medium-confidence authored origin. The fixed call-anchor replay requires a
+complete target decode and a direct edge to a previously reviewed authored
+owner; IDA inspection confirmed scheduler/resource nodes, input and logging,
+game timer/movement, and sound stream object/file/playback behavior. The
+short `0x0044C100/0x0044C130` wrappers and several object lifecycle bodies
+remain pending because a game call or address neighborhood does not by itself
+settle compiler-generated versus source-written ownership.
+
+Current tracked ledger: 1,313/1,313 boundaries reviewed; 1,165 origin rows
+reviewed (650 authored, 515 excluded), 148 origins pending; 307 source
+mappings, 161 canonical exact functions and 22,413 exact bytes. IDA's full
+function inventory also contains independent-looking starts outside this
+tracked candidate set, including `0x0043BA90`, `0x0043BB30` and
+`0x0043CCF0`; the 1,313 boundary count applies only to tracked candidates.
+These untracked IDA entries need separate target entry/extent triage before
+any inventory expansion or exhaustive `.text` claim.
