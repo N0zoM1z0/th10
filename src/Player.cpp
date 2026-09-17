@@ -273,8 +273,9 @@ void PlayerSetManagedVmDeleteState(unsigned int *vmId, unsigned short state);
 // Neutral lifecycle globals and interfaces recovered around Player creation,
 // reset and teardown. Private register contracts are deliberately hidden here.
 extern unsigned int g_PlayerLifecycleFlags;
-extern void *g_PlayerRuntimeVmGroup;
-extern int g_PlayerRuntimeVmCount;
+struct GuiView;
+extern GuiView *g_GuiView;
+extern int g_PlayerLivesDisplayCount;
 extern unsigned char g_PlayerCallbackLockDepth;
 struct PlayerCriticalSectionView { unsigned char storage[0x18]; };
 extern PlayerCriticalSectionView g_PlayerCallbackCriticalSection;
@@ -283,7 +284,7 @@ extern "C" void __stdcall LeaveCriticalSection(PlayerCriticalSectionView *sectio
 void __fastcall PlayerUnlinkCallbackNode(
     PlayerCallbackNodeView *node, void *manager);
 void PlayerMarkManagedVmPending(unsigned int vmId);
-void PlayerApplyRuntimeVmGroupState(void *group, int count);
+void GuiSetLivesDisplayCount(GuiView *gui, int count);
 void PlayerMarkResourceVmsPending(void *resource);
 void PlayerDestroyAnimationCacheContents(void *cache);
 
@@ -590,7 +591,7 @@ void PlayerResetRuntimeState(Player *player)
 
     PlayerMarkManagedVmPending(player->modeVmId);
     player->modeVmId = 0;
-    PlayerApplyRuntimeVmGroupState(g_PlayerRuntimeVmGroup, g_PlayerRuntimeVmCount);
+    GuiSetLivesDisplayCount(g_GuiView, g_PlayerLivesDisplayCount);
 }
 
 static void RemovePlayerCallbackNode(PlayerCallbackNodeView *node)

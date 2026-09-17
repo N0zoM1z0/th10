@@ -2739,3 +2739,62 @@ with **150 authored source-present functions** remaining in the exact backlog.
 `UpdatePulsingRadialTrail @ 0x00445620` remains a separate 598/598 two-byte X87
 operand-scheduling frontier. Its natural caller/type/profile/link-root variants
 have been exhausted and should not be forced with volatile/asm/inert shaping.
+
+## Completed packet: IDA recovery, angle and Main timing leaves
+
+This session recovered ten pre-existing dirty tracked files before selecting new
+work. The dirty state contained three new source-present names without mapping
+rows, two declared Enemy match units without exact ledger rows, and a missing
+`MainInitializeSystemParameters` forward declaration that made `Main.cpp` fail
+VC7.1 compilation. Those gaps were repaired in place, without resetting or
+silently staging unknown work. The source for GUI life display, Player call-site
+routing, Main system/timing helpers and the `Lzss::DeleteString` ECX ABI was
+retained after target review and focused compiler checks. No target bytes or
+private game data changed.
+
+Per the current operator request, live analysis used IDA Pro MCP instead of the
+Factory Ghidra provider. IDA metadata reports SHA-256
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`,
+MD5 `7dc488d82c81dd4aee4ba098b8804d83`, image base `0x00400000`, and
+file size `0x77200`; the independent canonical `resources/th10.exe` verification
+passed. IDA decompilation was treated as provisional. It does not identify a
+function at `0x00439350`; direct pinned-Capstone decode covers that complete
+62-byte reviewed extent through RET. The reference
+`saekaze/th10-decomphelp-forN0` was shallow-cloned under
+`.analysis/gpt-web/20260917-ida-progress/reference/` for hypotheses only. Its
+port/progress numbers and source did not establish any TH10 exact claim here.
+
+`EnemySetMotionAngle @ 0x00413170` and `EnemyWrapAngle @ 0x0044BC70`
+now replay as two canonical normal-COFF exact units: 20 + 94 bytes, one REL32
+call and six DIR32 constants. Two independent cold replays pass all 114 bytes.
+The source and the `Enemy.cpp` declaration use the target `__stdcall` RET 8 /
+RET 4 contracts. This shifts VC7.1 local label names in two pre-existing Enemy
+COFF units; their manifests were updated to the actual compiler labels while
+keeping every target destination fixed. A full affected-source regression then
+passed all 23 Enemy units.
+
+`MainInitializeSystemParameters @ 0x004392E0`,
+`MainRestoreSystemParameters @ 0x00439350`, and
+`MainGetTimestampUnlocked @ 0x00439660` are also canonical normal-COFF exact
+in the declared profile. Strict diagnostics first reported complete sizes
+100/62/152 and 68/42/96 matching non-relocation bytes; two independent cold
+replays then reproduced all 314 bytes and all 8/5/14 declared fields. The
+production COFF/LTCG physical owner and original identifiers remain unknown.
+The complete affected-source regression passed 34 units / 2,647 bytes across
+Enemy, Enemy ECL dispatcher, LZSS and Main; GUI and Player `/GL` smoke builds
+also passed. The only changed-source support edge, `src/Enemy.cpp` into
+`ecl-vm-host-run`, was separately replayed with zero differences across its 146-byte linked extent.
+`GuiSetLivesDisplayCount` and `Lzss::DeleteString` remain source-present but
+non-exact.
+
+The live ledger now has 1,313 candidates, 1,175 reviewed boundaries, 320
+reviewed authored functions, 307 source mappings, and 161 canonical exact
+functions / 22,413 exact authored bytes. Seventeen reviewed authored functions
+still lack source; 142 reviewed authored mapped functions remain non-exact;
+978 origin reviews and 138 boundary reviews remain open. The Windows i386
+product graph is still a skeleton with unknown TU partition, flags, resources,
+libraries, static/data owners and link order; runtime, semantic dual-Oracle and
+portability gates remain unopened. The largest mapped exact backlogs remain the
+14,416-byte Enemy ECL dispatcher, 9,587-byte ANM script executor, and
+7,020-byte generic ECL VM runner. Their codegen/context issues are documented
+above and should not be forced with target-byte copies or fake dependencies.

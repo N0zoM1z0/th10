@@ -199,7 +199,7 @@ int Lzss::AddString(int newNode, int *matchPosition)
     }
 }
 
-void Lzss::DeleteString(int node)
+void __fastcall Lzss::DeleteString(int node)
 {
     if (g_LzssTree[node].parent == 0)
         return;

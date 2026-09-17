@@ -179,7 +179,7 @@ extern void EnemyConfigureInterrupt(int first, int second, int third);
 extern void EnemyInitializeScalarInterpolation(
     EnemyScalarInterpolationView *interpolation);
 extern void EnemySetChapter(int chapter);
-extern void EnemySetMotionAngle(EnemyMotionView *motion, float angle);
+extern void __stdcall EnemySetMotionAngle(EnemyMotionView *motion, float angle);
 extern void EnemyReadDialog();
 extern PlayerFloat3 *EnemyGetAnmPosition(const PlayerFloat3 *position);
 extern unsigned int EnemyFireLaser(
@@ -201,7 +201,7 @@ extern void EnemyShowManagedVm(unsigned int *id);
 extern void EnemyHideManagedVm(unsigned int *id);
 extern void EnemyReleaseManagedVm(unsigned int *id);
 extern float EnemyRandomAngle();
-extern float EnemyWrapAngle(float angle);
+extern float __stdcall EnemyWrapAngle(float angle);
 
 static int EnemyDecodeOperandIndex(float encoded)
 {
@@ -229,6 +229,33 @@ typedef char EnemyLaserRequestScratchSizeIs1F8[
 static float EnemyAbsoluteFloat(float value)
 {
     return value < 0.0f ? -value : value;
+}
+
+// Target 0x0044BC70-0x0044BCCD wraps one angle into the signed-pi interval.
+// The shared counter and 32-iteration guard are both visible in the target.
+float __stdcall EnemyWrapAngle(float angle)
+{
+    int i = 0;
+    while (angle > 3.1415927f)
+    {
+        angle -= 6.2831855f;
+        if (i++ > 32)
+            break;
+    }
+    while (angle < -3.1415927f)
+    {
+        angle += 6.2831855f;
+        if (i++ > 32)
+            break;
+    }
+    return angle;
+}
+
+// Target 0x00413170-0x00413183 normalizes one motion angle and stores it in
+// the +0x1C scalar used by the 0x11C/0x11E/0x120/0x122 ECL motion cases.
+void __stdcall EnemySetMotionAngle(EnemyMotionView *motion, float angle)
+{
+    motion->value1C = EnemyWrapAngle(angle);
 }
 
 int EnemyRuntimeView::DispatchEclInstruction()

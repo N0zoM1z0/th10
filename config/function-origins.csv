@@ -189,7 +189,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00412E70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412ED0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00412FF0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00413170,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413170,authored_game,Enemy,authored,high,enemy-angle-helper-2026-09-16
 0x00413200,authored_game,AnmManager,authored,high,anm-script-executor-2026-09-15
 0x00413270,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413350,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -197,7 +197,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004134B0,authored_game,Main,authored,high,fps-counter-owner-2026-09-16
 0x004135D0,authored_game,Main,authored,high,fps-counter-owner-2026-09-16
 0x004136C0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
-0x00413790,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00413790,authored_game,Gui,authored,high,gui-lives-display-owner-2026-09-16
 0x00413810,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413980,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x00413A20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
@@ -761,7 +761,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044BB20,authored_game,RandomMath,authored,high,rng-core-2026-09-15
 0x0044BB90,authored_game,RandomMath,authored,high,rng-core-2026-09-15
 0x0044BC10,authored_game,AnmManager,authored,high,anm-script-executor-2026-09-15
-0x0044BC70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0044BC70,authored_game,Enemy,authored,high,enemy-angle-helper-2026-09-16
 0x0044BD10,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044BE20,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
 0x0044BE70,unknown,,review,unknown,ghidra-12.1.3-initial-inventory

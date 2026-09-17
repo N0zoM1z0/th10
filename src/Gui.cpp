@@ -784,6 +784,18 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 // 22 embedded display VMs, maintains the player-side panel, power digits, boss
 // gauge/segments, the heap-owned message VM, spell timer and boss marker, and
 // finally advances the GUI frame timer.
+// Target 0x00413790-0x004137DC mirrors the current life count into the
+// nine preconstructed HUD life VMs.  LTCG keeps the GuiView owner in EAX and
+// the count in ECX in the reviewed Player reset/death caller family.
+void GuiSetLivesDisplayCount(GuiView *gui, int count)
+{
+    int i;
+    for (i = 0; i < count; ++i)
+        gui->displayVms2[i].flags35C |= 2;
+    for (; i < 9; ++i)
+        gui->displayVms2[i].flags35C &= ~2u;
+}
+
 int __stdcall GuiView::UpdateStageElements(GuiView *gui)
 {
     int i;

@@ -1084,3 +1084,62 @@ int __fastcall FpsCounterDrawCallback(FpsCounterView *counter)
 {
     return counter->DrawFpsCounter();
 }
+// Target 0x004392E0-0x00439343 saves/disables the three OS power states and
+// initializes the high-resolution timer. WinMain directly calls this owner.
+void MainInitializeSystemParameters()
+{
+    SystemParametersInfoA(
+        SPI_GETSCREENSAVEACTIVE, 0, &g_GameWindowView.screenSaveActive, 0);
+    SystemParametersInfoA(
+        SPI_GETLOWPOWERACTIVE, 0, &g_GameWindowView.lowPowerActive, 0);
+    SystemParametersInfoA(
+        SPI_GETPOWEROFFACTIVE, 0, &g_GameWindowView.powerOffActive, 0);
+    SystemParametersInfoA(SPI_SETSCREENSAVEACTIVE, 0, NULL, SPIF_SENDCHANGE);
+    SystemParametersInfoA(SPI_SETLOWPOWERACTIVE, 0, NULL, SPIF_SENDCHANGE);
+    SystemParametersInfoA(SPI_SETPOWEROFFACTIVE, 0, NULL, SPIF_SENDCHANGE);
+    QueryPerformanceFrequency(&g_GameWindowView.performanceFrequency);
+    QueryPerformanceCounter(&g_GameWindowView.performanceStart);
+}
+
+// Target 0x00439350-0x0043938D is a retained system-state restore helper.
+// WinMain also owns an inlined copy; this independent CC-delimited body has no
+// direct target caller and is retained without inventing one.
+void MainRestoreSystemParameters()
+{
+    SystemParametersInfoA(
+        SPI_SETSCREENSAVEACTIVE, g_GameWindowView.screenSaveActive,
+        NULL, SPIF_SENDCHANGE);
+    SystemParametersInfoA(
+        SPI_SETLOWPOWERACTIVE, g_GameWindowView.lowPowerActive,
+        NULL, SPIF_SENDCHANGE);
+    SystemParametersInfoA(
+        SPI_SETPOWEROFFACTIVE, g_GameWindowView.powerOffActive,
+        NULL, SPIF_SENDCHANGE);
+    WINNLSEnableIME(NULL, TRUE);
+}
+
+// Target 0x00439660-0x004396F7 computes the unlocked form of the window timer:
+// QPC when available, timeGetTime otherwise, then clamps and subtracts origin.
+double MainGetTimestampUnlocked()
+{
+    double timestamp;
+    if (g_GameWindowView.performanceFrequency.QuadPart != 0)
+    {
+        LARGE_INTEGER current;
+        QueryPerformanceCounter(&current);
+        timestamp =
+            (double)(current.QuadPart -
+                     g_GameWindowView.performanceStart.QuadPart) /
+            (double)g_GameWindowView.performanceFrequency.QuadPart;
+    }
+    else
+    {
+        timeBeginPeriod(1);
+        timestamp = (double)timeGetTime();
+        timeEndPeriod(1);
+        timestamp *= 0.001;
+    }
+    if (g_GameWindowView.timeOrigin > timestamp)
+        g_GameWindowView.timeOrigin = timestamp;
+    return timestamp - g_GameWindowView.timeOrigin;
+}

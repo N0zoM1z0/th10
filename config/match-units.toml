@@ -1448,11 +1448,11 @@ symbol = "?ResolveIntOperand@EnemyFullObjectView@@UAEPAHH@Z"
 target_address = 0x00412300
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L3943", target = 0x00412340 },
-  { offset = 64, type = "DIR32", symbol = "$L3271", target = 0x00412315 },
-  { offset = 68, type = "DIR32", symbol = "$L3272", target = 0x0041231E },
-  { offset = 72, type = "DIR32", symbol = "$L3273", target = 0x00412327 },
-  { offset = 76, type = "DIR32", symbol = "$L3274", target = 0x00412330 },
+  { offset = 17, type = "DIR32", symbol = "$L3952", target = 0x00412340 },
+  { offset = 64, type = "DIR32", symbol = "$L3278", target = 0x00412315 },
+  { offset = 68, type = "DIR32", symbol = "$L3279", target = 0x0041231E },
+  { offset = 72, type = "DIR32", symbol = "$L3280", target = 0x00412327 },
+  { offset = 76, type = "DIR32", symbol = "$L3281", target = 0x00412330 },
 ]
 
 [units.enemy-ecl-float-lvalue-resolver]
@@ -1465,11 +1465,11 @@ symbol = "?ResolveFloatOperand@EnemyFullObjectView@@UAEPAMH@Z"
 target_address = 0x004126D0
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L3983", target = 0x00412710 },
-  { offset = 64, type = "DIR32", symbol = "$L3349", target = 0x004126E5 },
-  { offset = 68, type = "DIR32", symbol = "$L3350", target = 0x004126EE },
-  { offset = 72, type = "DIR32", symbol = "$L3351", target = 0x004126F7 },
-  { offset = 76, type = "DIR32", symbol = "$L3352", target = 0x00412700 },
+  { offset = 17, type = "DIR32", symbol = "$L3992", target = 0x00412710 },
+  { offset = 64, type = "DIR32", symbol = "$L3356", target = 0x004126E5 },
+  { offset = 68, type = "DIR32", symbol = "$L3357", target = 0x004126EE },
+  { offset = 72, type = "DIR32", symbol = "$L3358", target = 0x004126F7 },
+  { offset = 76, type = "DIR32", symbol = "$L3359", target = 0x00412700 },
 ]
 
 [units.pbgfile-constructor]
@@ -1716,7 +1716,6 @@ functions = ["CMemoryPbgFile::GetSize"]
 symbol = "?GetSize@CMemoryPbgFile@@UAEKXZ"
 target_address = 0x004364E0
 size = 4
-
 
 [units.pbgarchive-destructor]
 artifact_kind = "linked-pe"
@@ -2803,6 +2802,69 @@ linkages = [
   { offset = 0x49, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x0043EE30 },
   { offset = 0x52, type = "REL32", symbol = "?RemoveVm@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z", target = 0x00448BB0 },
 ]
+[units.main-initialize-system-parameters]
+artifact_kind = "coff"
+source = "src/Main.cpp"
+object = "build/match/Main.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["MainInitializeSystemParameters"]
+symbol = "?MainInitializeSystemParameters@@YAXXZ"
+target_address = 0x004392E0
+size = 100
+relocations = [
+  { offset = 0x03, type = "DIR32", symbol = "__imp__SystemParametersInfoA@16", target = 0x00466258 },
+  { offset = 0x0A, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x2C },
+  { offset = 0x17, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x30 },
+  { offset = 0x24, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x34 },
+  { offset = 0x4D, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x18 },
+  { offset = 0x53, type = "DIR32", symbol = "__imp__QueryPerformanceFrequency@4", target = 0x00466114 },
+  { offset = 0x58, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x20 },
+  { offset = 0x5E, type = "DIR32", symbol = "__imp__QueryPerformanceCounter@4", target = 0x004660FC },
+]
+
+[units.main-restore-system-parameters]
+artifact_kind = "coff"
+source = "src/Main.cpp"
+object = "build/match/Main.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["MainRestoreSystemParameters"]
+symbol = "?MainRestoreSystemParameters@@YAXXZ"
+target_address = 0x00439350
+size = 62
+relocations = [
+  { offset = 0x01, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x2C },
+  { offset = 0x08, type = "DIR32", symbol = "__imp__SystemParametersInfoA@16", target = 0x00466258 },
+  { offset = 0x17, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x30 },
+  { offset = 0x26, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x34 },
+  { offset = 0x38, type = "REL32", symbol = "_WINNLSEnableIME@8", target = 0x0045232C },
+]
+
+[units.main-get-timestamp-unlocked]
+artifact_kind = "coff"
+source = "src/Main.cpp"
+object = "build/match/Main.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["MainGetTimestampUnlocked"]
+symbol = "?MainGetTimestampUnlocked@@YANXZ"
+target_address = 0x00439660
+size = 152
+relocations = [
+  { offset = 0x01, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x18 },
+  { offset = 0x07, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x1C },
+  { offset = 0x18, type = "DIR32", symbol = "__imp__QueryPerformanceCounter@4", target = 0x004660FC },
+  { offset = 0x20, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x20 },
+  { offset = 0x26, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x24 },
+  { offset = 0x3E, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x18 },
+  { offset = 0x4A, type = "DIR32", symbol = "__imp__timeBeginPeriod@4", target = 0x00466278 },
+  { offset = 0x50, type = "DIR32", symbol = "__imp__timeGetTime@0", target = 0x00466270 },
+  { offset = 0x60, type = "DIR32", symbol = "__real@41f0000000000000", target = 0x00470B30 },
+  { offset = 0x6C, type = "DIR32", symbol = "__imp__timeEndPeriod@4", target = 0x00466274 },
+  { offset = 0x75, type = "DIR32", symbol = "__real@3f50624dd2f1a9fc", target = 0x00470B28 },
+  { offset = 0x7B, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0x8A, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+  { offset = 0x90, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x50 },
+]
+
 [units.main-reset-render-state]
 artifact_kind = "coff"
 source = "src/Main.cpp"
@@ -2952,4 +3014,33 @@ linkages = [
   { offset = 0x7F, type = "REL32", symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ", target = 0x00401690 },
   { offset = 0x84, type = "DIR32", symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A", target = 0x004776E0 },
   { offset = 0x9D, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x13E },
+]
+
+[units.enemy-set-motion-angle]
+artifact_kind = "coff"
+source = "src/EnemyEclDispatcher.cpp"
+object = "build/match/EnemyEclDispatcher.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemySetMotionAngle"]
+symbol = "?EnemySetMotionAngle@@YGXPAUEnemyMotionView@@M@Z"
+target_address = 0x00413170
+size = 20
+relocations = [{ offset = 0x06, type = "REL32", symbol = "?EnemyWrapAngle@@YGMM@Z", target = 0x0044BC70 }]
+
+[units.enemy-wrap-angle]
+artifact_kind = "coff"
+source = "src/EnemyEclDispatcher.cpp"
+object = "build/match/EnemyEclDispatcher.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemyWrapAngle"]
+symbol = "?EnemyWrapAngle@@YGMM@Z"
+target_address = 0x0044BC70
+size = 94
+relocations = [
+  { offset = 0x08, type = "DIR32", symbol = "__real@40490fdb", target = 0x00470B18 },
+  { offset = 0x15, type = "DIR32", symbol = "__real@40c90fdb", target = 0x00470B14 },
+  { offset = 0x23, type = "DIR32", symbol = "__real@40490fdb", target = 0x00470B18 },
+  { offset = 0x30, type = "DIR32", symbol = "__real@c0490fdb", target = 0x00470B10 },
+  { offset = 0x42, type = "DIR32", symbol = "__real@40c90fdb", target = 0x00470B14 },
+  { offset = 0x50, type = "DIR32", symbol = "__real@c0490fdb", target = 0x00470B10 },
 ]

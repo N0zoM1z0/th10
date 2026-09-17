@@ -299,3 +299,9 @@ EclVmStackView::EnterFrame
 EclVmStackView::LeaveFrame
 FpsCounterView::CalculateFps
 FpsCounterView::DrawFpsCounter
+GuiSetLivesDisplayCount
+EnemySetMotionAngle
+EnemyWrapAngle
+MainInitializeSystemParameters
+MainRestoreSystemParameters
+MainGetTimestampUnlocked

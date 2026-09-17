@@ -300,3 +300,9 @@ EclVmStackView::EnterFrame,0x00450690,function
 EclVmStackView::LeaveFrame,0x004506D0,function
 FpsCounterView::CalculateFps,0x004134B0,function
 FpsCounterView::DrawFpsCounter,0x004135D0,function
+EnemySetMotionAngle,0x00413170,function
+GuiSetLivesDisplayCount,0x00413790,function
+EnemyWrapAngle,0x0044BC70,function
+MainInitializeSystemParameters,0x004392E0,function
+MainRestoreSystemParameters,0x00439350,function
+MainGetTimestampUnlocked,0x00439660,function

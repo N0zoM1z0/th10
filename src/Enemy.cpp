@@ -273,7 +273,7 @@ void EnemyEvaluatePositionInterpolation(
     EnemyPositionInterpolationView *interpolation, PlayerFloat3 *out);
 void EnemyEvaluateScalarInterpolation(
     EnemyScalarInterpolationView *interpolation, EnemyFloat2 *out);
-float EnemyWrapAngle(float angle);
+float __stdcall EnemyWrapAngle(float angle);
 void EnemySetVectorFromPolar(PlayerFloat3 *out, float angle, float magnitude);
 void EnemyAdvanceMotion(EnemyMotionView *motion);
 void EnemySetAnimationScript(EnemyRuntimeView *enemy, int script);
