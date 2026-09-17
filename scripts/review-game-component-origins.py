@@ -122,6 +122,18 @@ COMPONENTS = {
     0x0042ACB0: (274, 'TH10 replay header initialization', 0x0042AE60, 'incoming'),
     0x0042ADD0: (142, 'TH10 replay payload initialization', 0x0042AE60, 'incoming'),
     0x0042CD50: (96, 'game manager and worker allocation', 0x004218D0, 'incoming'),
+    0x0044B010: (103, 'game keyboard state acquisition', 0x00430FF0, 'incoming'),
+    0x004501B0: (30, 'game polar-to-Cartesian vector update', 0x0044E1A0, 'incoming'),
+    0x00450700: (30, 'game renderer state-link update', 0x0040DC80, 'incoming'),
+    0x0040ACE0: (33, 'game collision category mask test', 0x00422C80, 'incoming'),
+}
+# These reviewed callers contain embedded switch data, so decode their exact
+# call instructions rather than pretending their ledger span is all code.
+DIRECT_SITES = {
+    0x0044B010: 0x00431196,
+    0x004501B0: 0x0044F97B,
+    0x00450700: 0x0040E1EB,
+    0x0040ACE0: 0x00422F9F,
 }
 
 
@@ -186,7 +198,16 @@ def main():
                 or row['source_file'] or row['owner'] not in ('', 'authored')):
             raise ValueError(f'game component ledger conflict: {address:#x}')
         calls = direct_calls(decoder, image, address, size)
-        anchor_calls = direct_calls(decoder, image, anchor, int(anchor_row['size']))
+        if address in DIRECT_SITES:
+            site = DIRECT_SITES[address]
+            if not anchor <= site < anchor + int(anchor_row['size']):
+                raise ValueError(f'game component call site left anchor: {address:#x}')
+            instruction = next(decoder.disasm(pe_bytes_at(image, site, 8), site))
+            anchor_calls = {instruction.operands[0].imm} if (
+                instruction.group(CS_GRP_CALL) and instruction.operands
+                and instruction.operands[0].type == X86_OP_IMM) else set()
+        else:
+            anchor_calls = direct_calls(decoder, image, anchor, int(anchor_row['size']))
         if ((direction == 'outgoing' and anchor not in calls)
                 or (direction == 'incoming' and address not in anchor_calls)):
             raise ValueError(f'game component direct call changed: {address:#x}')

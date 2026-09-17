@@ -9,19 +9,22 @@ their boundaries and origins must be reviewed independently.
 | Boundary reviewed | 1,317 |
 | Boundary provisional | 0 |
 | Boundary needs focused review | 0 |
-| Origin review pending | 94 |
-| Confirmed authored functions | 705 |
-| Confirmed authored code bytes | 265,037 |
+| Origin review pending | 0 |
+| Confirmed authored functions | 709 |
+| Confirmed authored code bytes | 265,233 |
 | Classified exclusions | 518 |
+| Reviewed, origin indeterminate | 90 |
 | Source-present mappings | 307 |
 | Source-present with authored origin | 303 |
-| Source-present origin review pending | 4 |
+| Source-present origin review pending | 0 |
+| Source-present origin indeterminate | 4 |
 | Authored source-present exact backlog | 142 |
 | Canonical exact functions | 161 |
 | Canonical exact authored bytes | 22,413 |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
-gaps can contain code, data, thunks, tables, and padding. While origin review and
-inventory closure remain pending, the authored exact denominator is unknown. A
+gaps can contain code, data, thunks, tables, and padding. While origin review,
+indeterminate attribution, or inventory closure remain pending, the authored
+exact denominator is unknown. A
 mapped name, maintained source, successful compilation, or Ghidra similarity
 does not contribute to the exact totals.

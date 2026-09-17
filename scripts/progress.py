@@ -44,9 +44,10 @@ def measures() -> dict[str, int]:
 
     authored = [row for row in functions if disposition(row) == "authored"]
     excluded = [row for row in functions if disposition(row) == "exclude"]
+    indeterminate = [row for row in functions if disposition(row) == "indeterminate"]
     exact_bytes = sum(int(row["size"], 0) for row in matches)
     authored_bytes = sum(int(row["size"], 0) for row in authored)
-    origin_reviewed = len(authored) + len(excluded)
+    origin_reviewed = len(authored) + len(excluded) + len(indeterminate)
     boundary_reviewed = sum(
         boundaries[parse_address(row["address"])]["state"] == "reviewed"
         for row in functions
@@ -68,8 +69,11 @@ def measures() -> dict[str, int]:
     mapped_excluded = sum(
         disposition(row) == "exclude" for row in mappings
     )
+    mapped_indeterminate = sum(
+        disposition(row) == "indeterminate" for row in mappings
+    )
     review_completed = sum(
-        disposition(row) in ("authored", "exclude") and
+        disposition(row) in ("authored", "exclude", "indeterminate") and
         boundaries[parse_address(row["address"])]["state"] == "reviewed"
         for row in functions
     )
@@ -86,10 +90,12 @@ def measures() -> dict[str, int]:
         "authored": len(authored),
         "authored_bytes": authored_bytes,
         "excluded": len(excluded),
+        "indeterminate": len(indeterminate),
         "implemented": len(implemented),
         "mapped_authored": mapped_authored,
         "mapped_review": mapped_review,
         "mapped_excluded": mapped_excluded,
+        "mapped_indeterminate": mapped_indeterminate,
         "authored_exact_backlog": mapped_authored - len(matches),
         "matches": len(matches),
         "exact_bytes": exact_bytes,
@@ -112,16 +118,19 @@ their boundaries and origins must be reviewed independently.
 | Confirmed authored functions | {values['authored']:,} |
 | Confirmed authored code bytes | {values['authored_bytes']:,} |
 | Classified exclusions | {values['excluded']:,} |
+| Reviewed, origin indeterminate | {values['indeterminate']:,} |
 | Source-present mappings | {values['implemented']:,} |
 | Source-present with authored origin | {values['mapped_authored']:,} |
 | Source-present origin review pending | {values['mapped_review']:,} |
+| Source-present origin indeterminate | {values['mapped_indeterminate']:,} |
 | Authored source-present exact backlog | {values['authored_exact_backlog']:,} |
 | Canonical exact functions | {values['matches']:,} |
 | Canonical exact authored bytes | {values['exact_bytes']:,} |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
-gaps can contain code, data, thunks, tables, and padding. While origin review and
-inventory closure remain pending, the authored exact denominator is unknown. A
+gaps can contain code, data, thunks, tables, and padding. While origin review,
+indeterminate attribution, or inventory closure remain pending, the authored
+exact denominator is unknown. A
 mapped name, maintained source, successful compilation, or Ghidra similarity
 does not contribute to the exact totals.
 """
@@ -132,7 +141,7 @@ def render_svg(values: dict[str, int]) -> str:
     reviewed = values["review_completed"]
     review_pct = 100 * reviewed / total if total else 0.0
     review_width = 512 * review_pct / 100
-    if values["review_pending"]:
+    if values["review_pending"] or values["indeterminate"]:
         exact_label = "denominator pending"
         exact_width = 0.0
         exact_detail = f"{values['matches']:,} exact functions · {values['exact_bytes']:,} exact bytes"

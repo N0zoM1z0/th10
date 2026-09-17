@@ -37,7 +37,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--state",
-        choices=("authored", "origin-review", "excluded", "all"),
+        choices=("authored", "origin-review", "origin-indeterminate", "excluded", "all"),
         default="authored",
         help="select one origin state or all non-exact source mappings",
     )
@@ -56,8 +56,9 @@ def load_backlog() -> tuple[list[dict[str, object]], dict[str, int]]:
     exact_addresses = {int(row["address"], 0) for row in rows("matches.csv")}
 
     result: list[dict[str, object]] = []
-    state_counts = {"authored": 0, "origin-review": 0, "excluded": 0}
-    state_bytes = {"authored": 0, "origin-review": 0, "excluded": 0}
+    state_counts = {"authored": 0, "origin-review": 0,
+                    "origin-indeterminate": 0, "excluded": 0}
+    state_bytes = dict.fromkeys(state_counts, 0)
     for mapping in mappings:
         address = int(mapping["address"], 0)
         if address in exact_addresses:
@@ -69,6 +70,8 @@ def load_backlog() -> tuple[list[dict[str, object]], dict[str, int]]:
             state = "authored"
         elif disposition == "review":
             state = "origin-review"
+        elif disposition == "indeterminate":
+            state = "origin-indeterminate"
         else:
             state = "excluded"
         size = int(function["size"], 0)
@@ -108,6 +111,8 @@ def load_backlog() -> tuple[list[dict[str, object]], dict[str, int]]:
         "authored_backlog_bytes": state_bytes["authored"],
         "origin_review": state_counts["origin-review"],
         "origin_review_bytes": state_bytes["origin-review"],
+        "origin_indeterminate": state_counts["origin-indeterminate"],
+        "origin_indeterminate_bytes": state_bytes["origin-indeterminate"],
         "excluded": state_counts["excluded"],
         "excluded_bytes": state_bytes["excluded"],
     }
@@ -160,6 +165,8 @@ def render_text(selected: list[dict[str, object]], totals: dict[str, int]) -> No
         f"{totals['authored_backlog_bytes']} bytes; "
         f"origin review: {totals['origin_review']} function(s), "
         f"{totals['origin_review_bytes']} bytes; "
+        f"origin indeterminate: {totals['origin_indeterminate']} function(s), "
+        f"{totals['origin_indeterminate_bytes']} bytes; "
         f"canonical exact: {totals['exact']}"
     )
     print("queue membership is triage only and grants no exactness credit")

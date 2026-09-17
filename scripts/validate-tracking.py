@@ -84,10 +84,16 @@ def validate() -> dict[str, int]:
         if not row["evidence_id"] or not row["notes"]:
             raise ValueError(f"boundary evidence is incomplete at {row['address']}")
     allowed_origins = {"unknown", "authored", "authored_game", "compiler", "compiler_generated", "library", "third_party", "import_thunk", "data", "padding"}
-    allowed_dispositions = {"review", "authored", "exclude"}
+    allowed_dispositions = {"review", "authored", "exclude", "indeterminate"}
     for row in origins:
         if row["origin"] not in allowed_origins or row["disposition"] not in allowed_dispositions:
             raise ValueError(f"invalid origin state at {row['address']}")
+        if row["disposition"] == "indeterminate":
+            function = functions_by_address[int(row["address"], 0)]
+            if (row["origin"] != "unknown" or row["confidence"] != "unknown"
+                    or not row["evidence_id"]
+                    or "origin indeterminate:" not in function["notes"]):
+                raise ValueError(f"indeterminate origin lacks individual reason at {row['address']}")
     mapping_addresses = {int(row["address"], 0) for row in mappings}
     match_addresses = {int(row["address"], 0) for row in matches}
     if not mapping_addresses.issubset(function_addresses) or not match_addresses.issubset(function_addresses):

@@ -33,9 +33,11 @@ def main() -> int:
         print(f"  provisional / focused:   {values['boundary_provisional']} / {values['boundary_needs_review']}")
         print(f"origin reviewed/pending:   {values['origin_reviewed']} / {values['origin_pending']}")
         print(f"authored / excluded:       {values['authored']} / {values['excluded']}")
+        print(f"origin indeterminate:      {values['indeterminate']}")
         print(f"source-present / exact:    {values['implemented']} / {values['matches']}")
         print(f"authored source backlog:   {values['authored_exact_backlog']}")
         print(f"mapped origin pending:     {values['mapped_review']}")
+        print(f"mapped indeterminate:      {values['mapped_indeterminate']}")
         print("whole Windows i386 build:  open")
         print("semantic and port stages:  not started")
     return 0

@@ -42,7 +42,11 @@ identity differs.
 3. Reconcile its entry, exits, tails, tables, padding, references, and physical
    ownership against target bytes.
 4. Classify origin independently: authored game code, compiler-generated,
-   library, import thunk, data, padding, or still unknown.
+   library, import thunk, data, padding, or still unknown. Use `review` for an
+   unexamined tracked entry and `indeterminate` only after an individual
+   target/IDA review records why source authorship remains unresolved. An
+   indeterminate entry is reviewed, but contributes neither to authored nor
+   excluded counts; it keeps the authored exact denominator provisional.
 5. For authored code, recover ABI, types, object layout, globals, constants,
    side effects, and error behavior using bounded Ghidra queries and raw target
    evidence. Keep hypotheses explicitly falsifiable.

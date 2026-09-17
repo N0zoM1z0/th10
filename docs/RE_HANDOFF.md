@@ -3160,3 +3160,26 @@ mappings, 161 canonical exact functions and 22,413 exact bytes. The remaining
 tracked queue includes constructor/destructor ownership, short adapters,
 Player callbacks and ECL/LTCG outlined-helper questions. The larger
 untracked IDA-entry queue remains a separate provisional boundary inventory.
+
+## Completed checkpoint: tracked origin review with explicit unknowns
+
+Four more call-backed game helpers are authored at medium confidence. The
+remaining 90 tracked entries were individually inspected in target/IDA and
+recorded as `indeterminate`, with a per-address observation and reason rather
+than being silently counted as authored or excluded. These include C++ object
+lifecycle bodies, private adapters, source-present Player callbacks and game
+behavior with unresolved original source/linker attribution. The author/exact
+denominator is still unknown; `indeterminate` is a completed review outcome,
+not a positive origin claim. `report-exact-backlog.py` reports the four mapped
+Player entries separately as `origin-indeterminate`.
+
+Current tracked ledger: 1,317/1,317 boundary reviews; 1,317/1,317 origin
+reviews (709 authored, 518 excluded, 90 indeterminate), zero unreviewed.
+There are 307 source mappings and 161 canonical exact functions / 22,413
+bytes. IDA's 888 additional function starts remain provisional and outside
+the tracked boundary denominator; exhaustive `.text` inventory is still open.
+Next investigate the three requested large exact owners using focused
+compilation/linked-image diagnostics, starting with Enemy ECL dispatcher
+`0x0040E770` (14,416 bytes). Its small ECL helpers include reviewed but
+origin-indeterminate entries such as `0x00412A10`; do not use their apparent
+source shape as an authorship or exactness assumption.
