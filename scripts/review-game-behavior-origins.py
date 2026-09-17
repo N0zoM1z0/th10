@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EVIDENCE_ID = 'target-ida-reviewed-game-behavior-2026-09-17'
 EARLY_EVIDENCE_ID = 'target-ida-reviewed-early-game-2026-09-17'
 MIDDLE_EVIDENCE_ID = 'target-ida-reviewed-middle-game-2026-09-17'
+LATE_EVIDENCE_ID = 'target-ida-reviewed-late-game-2026-09-17'
 # These cues are individually reviewed observations, not proposed source names.
 BEHAVIORS = {
     0x00402230: (522, 'game manager state and ANM resource setup'),
@@ -95,6 +96,33 @@ MIDDLE_BEHAVIORS = {
     0x0041FAC0: (140, 'game scheduler registration'),
     0x0041FD00: (69, 'game object allocation'),
 }
+LATE_BEHAVIORS = {
+    0x00420A90: (120, 'game resource filename transformation'),
+    0x00420B10: (73, 'game sound and stage state transition'),
+    0x004218D0: (572, 'game stage state update'),
+    0x00421E00: (225, 'game object cleanup'),
+    0x00422150: (142, 'game scheduler registration'),
+    0x00422360: (67, 'game controller allocation'),
+    0x004223F0: (179, 'game controller state dispatch'),
+    0x00423510: (89, 'stage state transition'),
+    0x00424650: (104, 'difficulty-indexed game resource access'),
+    0x00426610: (67, 'player-relative angle computation'),
+    0x00426660: (67, 'player-relative angle computation'),
+    0x00427B50: (181, 'player option slot traversal'),
+    0x00428160: (105, 'player power to option-count conversion'),
+    0x00428D70: (91, 'playfield bounds test'),
+    0x00428E10: (83, 'player position conversion'),
+    0x0042A8A0: (85, 'game state buffer write'),
+    0x0042AA50: (139, 'game controller allocation'),
+    0x0042AB20: (93, 'game subsystem node cleanup'),
+    0x0042AE60: (132, 'game controller initialization'),
+    0x0042B570: (232, 'game object resource cleanup'),
+    0x0042B660: (71, 'game object allocation'),
+    0x0042B9C0: (167, 'frame-indexed game state update'),
+    0x0042C5C0: (83, 'game controller state assignment'),
+    0x0042C620: (80, 'game controller state assignment'),
+    0x0042C850: (69, 'game controller flag query'),
+}
 DIRECT_XREF_SITES = {
     0x00421FA0: (0x00432DB9, 0x00432CB0),
     0x0044A4E0: (0x0042F6B6, 0x0042F540),
@@ -140,11 +168,12 @@ def main():
     seeds = {address for address, row in by_origin.items()
              if row['origin'] == 'authored_game' and row['disposition'] == 'authored'
              and row['evidence_id'] not in (
-                 EVIDENCE_ID, EARLY_EVIDENCE_ID, MIDDLE_EVIDENCE_ID)}
+                 EVIDENCE_ID, EARLY_EVIDENCE_ID, MIDDLE_EVIDENCE_ID,
+                 LATE_EVIDENCE_ID)}
     decoder = Cs(CS_ARCH_X86, CS_MODE_32)
     decoder.detail = True
     incoming = {address: set() for address in
-                BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS}
+                BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS | LATE_BEHAVIORS}
     calls = {}
     for row in functions:
         address = int(row['address'], 0)
@@ -172,10 +201,11 @@ def main():
             raise ValueError(f'direct xref changed: {site:#x}')
         incoming[callee].add(caller)
     for address, (size, behavior) in (
-            BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS).items():
+            BEHAVIORS | EARLY_BEHAVIORS | MIDDLE_BEHAVIORS | LATE_BEHAVIORS).items():
         evidence_id = (EVIDENCE_ID if address in BEHAVIORS else
                        EARLY_EVIDENCE_ID if address in EARLY_BEHAVIORS else
-                       MIDDLE_EVIDENCE_ID)
+                       MIDDLE_EVIDENCE_ID if address in MIDDLE_BEHAVIORS else
+                       LATE_EVIDENCE_ID)
         row = by_function[address]
         origin = by_origin[address]
         if int(row['size']) != size or (origin['disposition'] != 'review'
@@ -211,6 +241,8 @@ def main():
           f'{sum(size for size, _ in EARLY_BEHAVIORS.values())} target bytes')
     print(f'{len(MIDDLE_BEHAVIORS)} individually reviewed middle-game origins; '
           f'{sum(size for size, _ in MIDDLE_BEHAVIORS.values())} target bytes')
+    print(f'{len(LATE_BEHAVIORS)} individually reviewed late-game origins; '
+          f'{sum(size for size, _ in LATE_BEHAVIORS.values())} target bytes')
 
 
 if __name__ == '__main__':

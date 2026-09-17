@@ -3035,3 +3035,18 @@ Current ledger: 1,313/1,313 boundaries reviewed; 1,052 origin rows reviewed
 (546 authored, 506 excluded), 261 origins pending; 307 source mappings,
 161 canonical exact functions and 22,413 exact bytes. Origin review is still
 the prerequisite for the requested large exact work.
+
+## Completed checkpoint: late game behavior entries
+
+Twenty-five complete `0x0042xxxx` entries totaling 3,316 bytes now have
+target-decoded call edges to previously reviewed authored functions plus
+individual IDA behavior review. They cover resource handling, stage state,
+player option/position logic, playfield tests and game controllers. The
+reviewer excludes all four of its manual cohorts from its seed set on replay.
+Player callback bodies at `0x00427960` and `0x00427AE0` retain their prior
+origin-unknown state while their wrapper ownership remains unresolved.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 1,077 origin rows reviewed
+(571 authored, 506 excluded), 236 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. Source mapping and
+exactness were not changed in this cohort.
