@@ -920,7 +920,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00455A90,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x00455ADE,library,CRT,exclude,high,vc71-static-runtime-extended-body-2026-09-17
 0x00455B10,library,CRT,exclude,high,vc71-static-runtime-contained-fragment-2026-09-17
-0x0045631E,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045631E,library,CRT,exclude,medium,target-vc71-runtime-callback-helper-2026-09-17
 0x00456327,library,CRT,exclude,medium,vc71-static-runtime-short-body-2026-09-17
 0x00456344,library,CRT,exclude,medium,vc71-static-runtime-short-body-2026-09-17
 0x00456357,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
@@ -935,7 +935,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045685E,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x00456898,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x004568D7,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
-0x00456A8B,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x00456A8B,library,CRT,exclude,medium,target-vc71-runtime-callback-helper-2026-09-17
 0x00456A8C,library,CRT,exclude,medium,target-vc71-runtime-special-2026-09-17
 0x00456AD4,library,CRT,exclude,medium,vc71-static-runtime-short-body-2026-09-17
 0x00456AF2,library,CRT,exclude,medium,target-vc71-runtime-wrapper-2026-09-17
@@ -1084,7 +1084,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0045E204,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045E2B5,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045E375,library,CRT,exclude,medium,vc71-static-runtime-family-2026-09-17
-0x0045E3A0,unknown,,review,unknown,ghidra-12.1.3-initial-inventory
+0x0045E3A0,library,CRT,exclude,medium,target-vc71-runtime-callback-helper-2026-09-17
 0x0045E3A3,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045E648,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17
 0x0045E86C,library,CRT,exclude,high,vc71-static-runtime-body-2026-09-17

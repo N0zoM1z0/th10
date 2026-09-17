@@ -2985,3 +2985,19 @@ Current ledger: 1,313/1,313 boundaries reviewed; 995 origin rows reviewed
 runtime-region entries remain pending; 315 game-region entries, including four
 source-present player adapters, still require authored-versus-library or
 generated-origin evidence.
+
+## Completed checkpoint: remaining tracked CRT callback helpers
+
+Three short runtime entries now have independent target callback ownership:
+`0x0045631E` is the `TlsAlloc` import wrapper installed by reviewed CRT
+`__mtinit`; `0x00456A8B` is a one-byte RET stored in two CRT thread callback
+slots; `0x0045E3A0` is a zero-result math callback stored in a CRT data slot
+and directly called by two reviewed math bodies. The callback reviewer checks
+all target instruction, import and data references before classifying their
+origins library at medium confidence. Exact CRT object membership stays open.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 998 origin rows reviewed
+(492 authored, 506 excluded), 315 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. All current pending
+origins are before `0x00452000`; four have maintained Player callback sources
+but unresolved authored-versus-generated provenance.
