@@ -291,6 +291,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041FDD0,0x0041FEAB,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x41fef1 to entry; independent IDA MCP extent agrees"
 0x0041FF80,0x0041FFF0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x00420100,0x004201AD,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4201b2 to entry; independent IDA MCP extent agrees"
+0x004201B0,0x00420269,reviewed,high,target-ida-missed-pointer-boundary-2026-09-17,Complete target dense decode ends in RET; independent mov pointer at 0x004204B7; hash-attested IDA contiguous extent agrees; no tracked overlap.
 0x00420270,0x00420394,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004203C0,0x004203EF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004203F0,0x0042046F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -571,6 +572,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043B110,0x0043B63A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043B7A0,0x0043B82B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043B8D0,0x0043BA86,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x43ba9f to entry; independent IDA MCP extent agrees"
+0x0043BA90,0x0043BAE2,reviewed,high,target-ida-missed-pointer-boundary-2026-09-17,Complete target dense decode ends in RET; independent push pointer at 0x00420222; hash-attested IDA contiguous extent agrees; no tracked overlap.
+0x0043BB30,0x0043BB91,reviewed,high,target-ida-missed-pointer-boundary-2026-09-17,Complete target dense decode ends in RET; independent push pointer at 0x0043BA66; hash-attested IDA contiguous extent agrees; no tracked overlap.
 0x0043BC40,0x0043BCC6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043BCD0,0x0043BD3B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043BDA0,0x0043BF82,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=11; no overlap or external interior branch
@@ -585,6 +588,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043CB00,0x0043CB7E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043CB80,0x0043CBD7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043CC40,0x0043CCEE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
+0x0043CCF0,0x0043CD28,reviewed,high,target-ida-missed-pointer-boundary-2026-09-17,Complete target dense decode ends in RET; independent push pointer at 0x00438C08; hash-attested IDA contiguous extent agrees; no tracked overlap.
 0x0043CD30,0x0043D041,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x43ccfb to entry; independent IDA MCP extent agrees"
 0x0043D080,0x0043D0EA,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 107/107, tail ret"
 0x0043D0F0,0x0043D111,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 34/34, tail ret"

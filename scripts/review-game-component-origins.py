@@ -73,6 +73,9 @@ COMPONENTS = {
     0x0044DBF0: (173, 'game sound stream source file open', 0x0044C8F0, 'incoming'),
     0x0044DD40: (194, 'game sound stream read cursor update', 0x0044D110, 'incoming'),
     0x0044DE10: (202, 'game sound stream sample copy', 0x0044D110, 'incoming'),
+    0x0043CD30: (786, 'game sound device and WAV resource setup', 0x0043CCF0, 'incoming'),
+    0x0043D390: (684, 'game WAV format and DirectSound buffer setup', 0x0043CD30, 'incoming'),
+    0x0043D250: (71, 'game WAV chunk scan', 0x0043D390, 'incoming'),
 }
 
 

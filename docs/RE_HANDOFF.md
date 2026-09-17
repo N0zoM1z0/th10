@@ -3111,3 +3111,34 @@ tracked candidate set, including `0x0043BA90`, `0x0043BB30` and
 `0x0043CCF0`; the 1,313 boundary count applies only to tracked candidates.
 These untracked IDA entries need separate target entry/extent triage before
 any inventory expansion or exhaustive `.text` claim.
+
+## Completed checkpoint: four pointer-backed boundaries and input/sound origins
+
+IDA's previously untracked `0x004201B0`, `0x0043BA90`, `0x0043BB30` and
+`0x0043CCF0` entries now have reviewed target-bound ledger extents. Each has
+an independent immediate function-pointer reference, dense decode through
+RET, an agreeing contiguous IDA extent and no overlap with tracked entries.
+The four add 424 candidate bytes. Of the 892 IDA function starts outside the
+old denominator, 888 remain provisional; IDA starts alone do not prove
+independent function boundaries.
+
+The new input initializer, polling thread, DirectInput setup and device
+callback form a target-replayed acyclic source-behavior chain. Two sound
+worker callbacks are pointer-linked to existing authored callers; the sound
+setup, WAV format and chunk helpers are linked by direct calls to those
+reviewed workers. These nine entries, 2,593 bytes, are authored at medium
+confidence without source-unit or exact-codegen claims.
+
+Current tracked ledger: 1,317/1,317 boundaries reviewed; 1,174 origin rows
+reviewed (659 authored, 515 excluded), 143 origins pending; 307 source
+mappings, 161 canonical exact functions and 22,413 exact bytes. The boundary
+statistic remains limited to tracked candidates. The original-executable
+target hash and target pointer sites are replayed by the new scripts.
+
+The four focused boundary/origin reviewers, target-required ledger validation,
+toolchain check, generated progress check and `scripts/ci.py` pass. The older
+`report-boundary-inventory.py --check-ledger` compares against the original
+automatic audit and still fails first at `0x00402720`, whose boundary was
+manually promoted in an earlier IDA-backed campaign; it does not replay those
+manual promotions. This failure predates the four new entries and is not a
+target mismatch.
