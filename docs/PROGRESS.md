@@ -9,10 +9,10 @@ their boundaries and origins must be reviewed independently.
 | Boundary reviewed | 1,317 |
 | Boundary provisional | 0 |
 | Boundary needs focused review | 0 |
-| Origin review pending | 143 |
-| Confirmed authored functions | 659 |
-| Confirmed authored code bytes | 261,040 |
-| Classified exclusions | 515 |
+| Origin review pending | 94 |
+| Confirmed authored functions | 705 |
+| Confirmed authored code bytes | 265,037 |
+| Classified exclusions | 518 |
 | Source-present mappings | 307 |
 | Source-present with authored origin | 303 |
 | Source-present origin review pending | 4 |

@@ -3142,3 +3142,21 @@ automatic audit and still fails first at `0x00402720`, whose boundary was
 manually promoted in an earlier IDA-backed campaign; it does not replay those
 manual promotions. This failure predates the four new entries and is not a
 target mismatch.
+
+## Completed checkpoint: additional game components and deleting destructors
+
+Forty-six more complete entries totaling 3,997 bytes have authored origin at
+medium confidence from individual IDA behavior review and fixed direct target
+call edges. They cover ANM and game timers, stage/hint-file helpers, replay
+data initialization, input/worker setup, DirectSound buffer creation and
+sprite task cleanup. Three separate VC7.1 scalar deleting-destructor wrappers
+at `0x0044C100`, `0x0044CF00` and `0x0044D710` are compiler-generated and
+excluded after target replay of their destructor call, deletion-flag test,
+conditional free and `RET 4`.
+
+Current tracked ledger: 1,317/1,317 boundaries reviewed; 1,223 origin rows
+reviewed (705 authored, 518 excluded), 94 origins pending; 307 source
+mappings, 161 canonical exact functions and 22,413 exact bytes. The remaining
+tracked queue includes constructor/destructor ownership, short adapters,
+Player callbacks and ECL/LTCG outlined-helper questions. The larger
+untracked IDA-entry queue remains a separate provisional boundary inventory.
