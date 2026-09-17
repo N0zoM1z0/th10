@@ -2798,3 +2798,51 @@ portability gates remain unopened. The largest mapped exact backlogs remain the
 14,416-byte Enemy ECL dispatcher, 9,587-byte ANM script executor, and
 7,020-byte generic ECL VM runner. Their codegen/context issues are documented
 above and should not be forced with target-byte copies or fake dependencies.
+
+## Active packet: IDA boundary and runtime-origin review
+
+The operator asked to finish authored/origin and boundary review before
+revisiting the three large dispatchers, to use IDA Pro MCP instead of Factory
+Ghidra, and to favor focused checks over unrelated cold builds. This packet
+uses only the hash-attested original Japanese target. The locked VC7.1 SP1
+`libcmt.lib` and `libcpmt.lib` are checked by SHA-256 before analysis.
+
+`scripts/review-crt-origins.py --apply` classified 242 uniquely matched
+`libcmt.lib` function extents (49,952 target bytes) as library/excluded. It
+requires a complete matching COFF function extent, at least 32 bytes of body,
+at least 24 exact non-relocation bytes, and a unique archive match. All 635
+resolvable intra-runtime relocation targets agree with the target addresses.
+The detailed candidate and ambiguity report is ignored under
+`.analysis/gpt-5.6-sol/20260917-origin-review/`. No candidate was added to
+`config/matches.csv`. The same member extents promoted 41 non-overlapping
+boundary rows. Overlapping function candidates were left open.
+
+The IDA function inventory and target xrefs identified 28 more previously
+provisional entries. `scripts/review-boundary-entry-refs.py --apply` replays a
+target-bound Capstone check that each recorded reference is an external direct
+call or jump into its reviewed entry. The prior dense-decode audit and the
+independent IDA extent agree. These 28 boundaries were promoted without using
+IDA decompilation as an exactness Oracle.
+
+Further boundary review corrected `0x00463C0D` from a false 5,022-byte
+contiguous span to its 174-byte main fragment, revealing the independent
+interleaved math CRT entries. Ten runtime functions contain a small directly
+called RET helper inside their full function extent; the two corresponding
+ledger rows now document this intentional overlap. Six independent math helper
+entries, a seven-byte shared prefix, nine focused termination/exception
+entries, and three target-direct entries omitted by IDA were also replayed.
+The final fifteen no-reference code islands were reviewed at medium confidence
+from eleven matching IDA extents or four target-local RET/CC separators. The
+two 829-byte memory-copy bodies have embedded dispatch data; both match
+complete pinned CRT object extents and all 46 local relocation targets stay
+inside their physical range. Thirteen additional ambiguous-symbol CRT-family
+bodies were classified as library origin without choosing a symbol name.
+
+Current ledger: 1,313 candidates and **all 1,313 boundary rows reviewed**;
+320 reviewed authored, 270 excluded, and 723 origin reviews pending; 307
+source mappings and 161 canonical exact functions / 22,413 exact bytes.
+The 490 pending origins before `0x00452000` need owner and
+authored-versus-compiler evidence; an address range alone is insufficient.
+The remaining library-region origins include short, ambiguous, and unmatched
+bodies. Origin review is therefore still open, and the three large dispatchers
+have not been resumed in this packet.

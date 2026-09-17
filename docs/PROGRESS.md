@@ -6,13 +6,13 @@ their boundaries and origins must be reviewed independently.
 | Measure | Count |
 | --- | ---: |
 | Tracked 1.00a function candidates | 1,313 |
-| Boundary reviewed | 1,175 |
-| Boundary provisional | 87 |
-| Boundary needs focused review | 51 |
-| Origin review pending | 978 |
+| Boundary reviewed | 1,313 |
+| Boundary provisional | 0 |
+| Boundary needs focused review | 0 |
+| Origin review pending | 723 |
 | Confirmed authored functions | 320 |
 | Confirmed authored code bytes | 142,359 |
-| Classified exclusions | 15 |
+| Classified exclusions | 270 |
 | Source-present mappings | 307 |
 | Source-present with authored origin | 303 |
 | Source-present origin review pending | 4 |

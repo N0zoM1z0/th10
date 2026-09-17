@@ -25,9 +25,9 @@ address,span_end,state,confidence,evidence_id,notes
 0x00402230,0x00402439,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00402440,0x00402632,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00402640,0x004026D6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00402720,0x0040284F,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x00402850,0x00402C9A,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x00402CA0,0x00403040,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00402720,0x0040284F,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x403052 to entry; independent IDA MCP extent agrees"
+0x00402850,0x00402C9A,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x403061 to entry; independent IDA MCP extent agrees"
+0x00402CA0,0x00403040,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x403071 to entry; independent IDA MCP extent agrees"
 0x00403090,0x0040384F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00403850,0x00403983,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00403990,0x00403A29,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -52,7 +52,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004055C0,0x00405613,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00405620,0x004056A8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004056B0,0x00405704,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00405750,0x0040582E,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00405750,0x0040582E,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x405843 to entry; independent IDA MCP extent agrees"
 0x00405860,0x004059EC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004059F0,0x00405AB9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00405AC0,0x00405B3B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -68,8 +68,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x004061D0,0x0040623C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00406240,0x004065B4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004065C0,0x004066B8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x004066E0,0x00406765,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0040678E,0x00406797,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x004066E0,0x00406765,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4066c7 to entry; independent IDA MCP extent agrees"
+0x0040678E,0x00406797,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x406777 to entry; IDA MCP does not define this separate entry; target local extent is independently dense through its terminal instruction"
 0x004067D0,0x00406D54,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00406D90,0x0040733D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004073E0,0x004074A1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -94,7 +94,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004089C0,0x00408A92,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00408AF0,0x00408C81,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00408C90,0x00408D17,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00408D60,0x00409180,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00408D60,0x00409180,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x409223 to entry; independent IDA MCP extent agrees"
 0x004091C0,0x0040921E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00409230,0x00409261,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 50/50, tail ret"
 0x00409270,0x00409279,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
@@ -104,7 +104,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00409E20,0x00409E3B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00409E50,0x00409E90,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=41; no overlap or external interior branch
 0x00409F90,0x0040A005,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
-0x0040A940,0x0040ABC6,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0040A940,0x0040ABC6,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x40abf3 to entry; independent IDA MCP extent agrees"
 0x0040AC20,0x0040AC8C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040AC90,0x0040ACB4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x0040ACE0,0x0040AD00,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=22; no overlap or external interior branch
@@ -112,7 +112,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0040AE70,0x0040AEF5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040AF00,0x0040AF88,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0040AF90,0x0040AFE5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0040B110,0x0040B1A3,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0040B110,0x0040B1A3,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x0040B250,0x0040B28B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0040B3A0,0x0040B45F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040B480,0x0040B4E9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -120,11 +120,11 @@ address,span_end,state,confidence,evidence_id,notes
 0x0040B7B0,0x0040B919,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x0040B940,0x0040B9A2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040B9D0,0x0040B9E1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0040B9F0,0x0040BA5E,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0040B9F0,0x0040BA5E,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x40ba73 to entry; independent IDA MCP extent agrees"
 0x0040BA90,0x0040BD17,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040BD20,0x0040BD7C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040BD80,0x0040C355,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0040C3C0,0x0040C43D,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0040C3C0,0x0040C43D,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x40b4f4 to entry; independent IDA MCP extent agrees"
 0x0040C480,0x0040C4C0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=8; no overlap or external interior branch
 0x0040C4D0,0x0040C510,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=12; no overlap or external interior branch
 0x0040C540,0x0040C58A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=7; no overlap or external interior branch
@@ -192,7 +192,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00413170,0x00413183,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00413200,0x00413216,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 23/23, tail ret"
 0x00413270,0x0041328D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00413350,0x004133E6,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00413350,0x004133E6,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x420207 to entry; independent IDA MCP extent agrees"
 0x00413450,0x004134A3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004134B0,0x004135C7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004135D0,0x00413683,reviewed,high,fps-counter-owner-2026-09-16,"Complete dense decode covers 180/180 bytes and ends in RET; target callback bridge 0x00413690 directly calls this owner at 0x00413693, with no overlap or external interior branch."
@@ -207,7 +207,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004145F0,0x0041482D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00414830,0x004148B7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00414900,0x004157FB,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 3835/3836; owned indirect control table at 0x004157E0
-0x00415800,0x00415AD3,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00415800,0x00415AD3,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x415af1 to entry; independent IDA MCP extent agrees"
 0x00415B00,0x00415DAA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00415DB0,0x00415E2B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00415E90,0x0041700F,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 4479/4480; owned indirect control table at 0x00416F64
@@ -217,11 +217,11 @@ address,span_end,state,confidence,evidence_id,notes
 0x004175E0,0x004175FF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00417770,0x004177B1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00417800,0x00417839,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00417870,0x00417C60,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00417870,0x00417C60,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x417c76 to entry; independent IDA MCP extent agrees"
 0x00417C80,0x004180D0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004180E0,0x0041814A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00418150,0x00418161,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
-0x00418190,0x00418797,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00418190,0x00418797,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4187c1 to entry; independent IDA MCP extent agrees"
 0x00418810,0x0041884F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004188A0,0x0041892C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00418930,0x004189D5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -251,7 +251,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041AD90,0x0041ADE3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041ADF0,0x0041AEC7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041AED0,0x0041AF88,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0041AFD0,0x0041B89C,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0041AFD0,0x0041B89C,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x41ba29 to entry; independent IDA MCP extent agrees"
 0x0041BA50,0x0041BAF4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041BB00,0x0041BE18,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=13; no overlap or external interior branch
 0x0041BE80,0x0041BEAD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
@@ -260,7 +260,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041C120,0x0041C1B1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041C1C0,0x0041C282,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041C290,0x0041C2EA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0041C330,0x0041C441,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0041C330,0x0041C441,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x41c4c1 to entry; independent IDA MCP extent agrees"
 0x0041C510,0x0041C5A8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=10; no overlap or external interior branch
 0x0041C5B0,0x0041C679,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041C680,0x0041C75A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -288,9 +288,9 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041FAC0,0x0041FB4B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041FB50,0x0041FCF0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041FD00,0x0041FD44,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0041FDD0,0x0041FEAB,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0041FDD0,0x0041FEAB,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x41fef1 to entry; independent IDA MCP extent agrees"
 0x0041FF80,0x0041FFF0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
-0x00420100,0x004201AD,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00420100,0x004201AD,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4201b2 to entry; independent IDA MCP extent agrees"
 0x00420270,0x00420394,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004203C0,0x004203EF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004203F0,0x0042046F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -302,19 +302,19 @@ address,span_end,state,confidence,evidence_id,notes
 0x00420C00,0x00420C28,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00420C30,0x00420C83,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00420CD0,0x00420D04,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00420DD0,0x00420E9C,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00420DD0,0x00420E9C,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x00420EA0,0x00420F15,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00421070,0x0042117B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00421300,0x0042140C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00421480,0x0042159E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004215A0,0x004216E9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=11; no overlap or external interior branch
-0x004216F0,0x004218C0,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x004216F0,0x004218C0,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4201cb to entry; independent IDA MCP extent agrees"
 0x004218D0,0x00421B0B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
-0x00421B90,0x00421BDC,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00421B90,0x00421BDC,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x00421C50,0x00421C68,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00421D20,0x00421D34,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00421E00,0x00421EE0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00421F00,0x00421F46,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00421F00,0x00421F46,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4658f6 to entry; independent IDA MCP extent agrees"
 0x00421F60,0x00421F7B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00421FA0,0x004220DB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004220E0,0x00422144,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -323,7 +323,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00422360,0x004223A2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004223F0,0x004224A2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004224C0,0x00422653,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00422660,0x00422A6A,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00422660,0x00422A6A,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x422aa1 to entry; independent IDA MCP extent agrees"
 0x00422A90,0x00422A99,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x00422AB0,0x00422C2D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00422C30,0x00422C79,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -368,12 +368,12 @@ address,span_end,state,confidence,evidence_id,notes
 0x00427B50,0x00427C04,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00427C50,0x00427C64,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00427C70,0x00427C8C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00427D80,0x00427D94,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00427D80,0x00427D94,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; target-local RET/CC separator and neighboring code establish the contiguous extent; no independent entry reference observed"
 0x00427E90,0x0042815C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00428160,0x004281C8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004281D0,0x0042827D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00428280,0x004285EB,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 876/876, tail ret"
-0x004285F0,0x00428626,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x004285F0,0x00428626,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; target-local RET/CC separator and neighboring code establish the contiguous extent; no independent entry reference observed"
 0x00428630,0x00428AC1,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 1170/1170, tail ret"
 0x00428AD0,0x00428B04,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 53/53, tail ret"
 0x00428B10,0x00428C19,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 266/266, tail ret"
@@ -412,10 +412,10 @@ address,span_end,state,confidence,evidence_id,notes
 0x0042B4D0,0x0042B560,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042B570,0x0042B657,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0042B660,0x0042B6A6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0042B6F0,0x0042B775,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0042B780,0x0042B99B,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0042B6F0,0x0042B775,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x42b9a2 to entry; IDA MCP does not define this separate entry; target local extent is independently dense through its terminal instruction"
+0x0042B780,0x0042B99B,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x42b9b3 to entry; independent IDA MCP extent agrees"
 0x0042B9C0,0x0042BA66,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=8; no overlap or external interior branch
-0x0042C360,0x0042C572,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0042C360,0x0042C572,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x42c593 to entry; independent IDA MCP extent agrees"
 0x0042C5C0,0x0042C612,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=31; no overlap or external interior branch
 0x0042C620,0x0042C66F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=48; no overlap or external interior branch
 0x0042C670,0x0042C6CE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=44; no overlap or external interior branch
@@ -426,7 +426,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0042C850,0x0042C894,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042C8C0,0x0042C91C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042C920,0x0042C9EB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0042CAA0,0x0042CB5F,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0042CAA0,0x0042CB5F,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x42c9f7 to entry; independent IDA MCP extent agrees"
 0x0042CB60,0x0042CD4A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0042CD50,0x0042CDAF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042CDB0,0x0042CDC1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -514,7 +514,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004364D0,0x004364D6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail ret"
 0x004364E0,0x004364E3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 4/4, tail ret"
 0x004364F0,0x0043655A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=2; no overlap or external interior branch
-0x00436570,0x00436638,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00436570,0x00436638,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x00436640,0x00436651,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 18/18, tail ret"
 0x00436660,0x0043667D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x00436680,0x004366B0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -524,8 +524,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x00436CA0,0x00436CE7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00436DA0,0x00437151,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00437160,0x004371FC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
-0x00437750,0x004379D4,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x00437A00,0x00437D0C,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00437750,0x004379D4,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
+0x00437A00,0x00437D0C,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x420260 to entry; independent IDA MCP extent agrees"
 0x00437D10,0x00437DA4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00437DB0,0x00437FD9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00437FE0,0x004381DC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -539,7 +539,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004386B0,0x00438722,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=2; no overlap or external interior branch
 0x00438723,0x00438742,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0043874C,0x004387C1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x004387C2,0x004387F1,needs_review,low,target-boundary-audit-2026-09-15,tail=call; aligned-data-refs=1
+0x004387C2,0x004387F1,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=call; aligned-data-refs=1; target metadata pointer at 0x0047140C identifies the entry; complete local body ends in a C++ throw call
 0x00438880,0x004388E6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00438A30,0x00438A5A,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 43/43, tail ret"
 0x00438A60,0x00438ACE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -563,18 +563,18 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043A730,0x0043A749,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0043A910,0x0043A9AB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043AA60,0x0043AACA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0043AAD0,0x0043AC8F,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0043AAD0,0x0043AC8F,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x43acad to entry; independent IDA MCP extent agrees"
 0x0043ACE0,0x0043AD63,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043AE20,0x0043AEA0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0043AEB0,0x0043AEFE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x0043AF30,0x0043B108,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0043B110,0x0043B63A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043B7A0,0x0043B82B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0043B8D0,0x0043BA86,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0043B8D0,0x0043BA86,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x43ba9f to entry; independent IDA MCP extent agrees"
 0x0043BC40,0x0043BCC6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043BCD0,0x0043BD3B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043BDA0,0x0043BF82,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=11; no overlap or external interior branch
-0x0043BFA0,0x0043C194,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0043BFA0,0x0043C194,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x0043C1A0,0x0043C225,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0043C2C0,0x0043C303,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0043C410,0x0043C453,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
@@ -585,7 +585,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043CB00,0x0043CB7E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043CB80,0x0043CBD7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043CC40,0x0043CCEE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0043CD30,0x0043D041,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0043CD30,0x0043D041,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x43ccfb to entry; independent IDA MCP extent agrees"
 0x0043D080,0x0043D0EA,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 107/107, tail ret"
 0x0043D0F0,0x0043D111,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 34/34, tail ret"
 0x0043D120,0x0043D24C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -757,12 +757,12 @@ address,span_end,state,confidence,evidence_id,notes
 0x0044B9B0,0x0044B9D6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 39/39, tail ret"
 0x0044B9E0,0x0044BA2D,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 78/78, tail ret"
 0x0044BA30,0x0044BA7D,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 78/78, tail ret"
-0x0044BA80,0x0044BB1A,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in jmp, but no independent entry reference was found"
+0x0044BA80,0x0044BB1A,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in jmp, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x0044BB20,0x0044BB8C,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 109/109, tail ret"
 0x0044BB90,0x0044BC02,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 115/115, tail ret"
 0x0044BC10,0x0044BC6D,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 94/94, tail ret"
 0x0044BC70,0x0044BCCD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=19; no overlap or external interior branch
-0x0044BD10,0x0044BE13,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0044BD10,0x0044BE13,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; target-local RET/CC separator and neighboring code establish the contiguous extent; no independent entry reference observed"
 0x0044BE20,0x0044BE61,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=17; no overlap or external interior branch
 0x0044BE70,0x0044BE9E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=14; no overlap or external interior branch
 0x0044BEA0,0x0044BF1F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=57; no overlap or external interior branch
@@ -777,7 +777,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0044C7E0,0x0044C8E3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0044C8F0,0x0044CBAD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0044CBF0,0x0044CE7A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0044CE80,0x0044CEF5,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0044CE80,0x0044CEF5,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x0044CF00,0x0044CF1D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0044CF20,0x0044D071,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0044D080,0x0044D107,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -839,12 +839,12 @@ address,span_end,state,confidence,evidence_id,notes
 0x004521D0,0x004521D5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=3; no overlap or external interior branch
 0x004521D6,0x004521DB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=8; no overlap or external interior branch
 0x0045232C,0x00452331,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=4; no overlap or external interior branch
-0x00452422,0x00452492,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=215
-0x00452475,0x0045247D,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; aligned-data-refs=1
+0x00452422,0x00452492,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=215; Contains local RET helper 0x00452475; target call at 0x00452465 and IDA parent extent confirm intentional overlap
+0x00452475,0x0045247D,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; aligned-data-refs=1; Local RET helper inside 0x00452422; target call at 0x00452465 confirms nested entry; IDA does not claim a separate owner
 0x00452493,0x004524A0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=94; no overlap or external interior branch
 0x004524A1,0x004524A5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=163; no overlap or external interior branch
 0x004524A6,0x004524FC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=8; no overlap or external interior branch
-0x004524FD,0x0045252C,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x004524FD,0x0045252C,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-family-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; 2 pinned libcmt.lib COFF symbols with identical complete extent and matching non-relocation body establish the physical extent"
 0x0045252D,0x00452576,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=18; no overlap or external interior branch
 0x00452577,0x0045258E,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret; direct-code-refs=1, aligned-data-refs=1; no overlap or external interior branch"
 0x004525A1,0x004525CF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -862,7 +862,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00452A84,0x00452ABB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00452ABC,0x00452AE7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x00452AE8,0x00452B3F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=51; no overlap or external interior branch
-0x00452B40,0x00452B70,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00452B40,0x00452B70,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-family-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; 2 pinned libcmt.lib COFF symbols with identical complete extent and matching non-relocation body establish the physical extent"
 0x00452B71,0x00452BA9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x00452BAA,0x00452D29,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=11; no overlap or external interior branch
 0x00452D2A,0x00452DA9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -870,15 +870,15 @@ address,span_end,state,confidence,evidence_id,notes
 0x00452DD2,0x00452E03,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00452E04,0x00452E09,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret; direct-code-refs=1, aligned-data-refs=1; no overlap or external interior branch"
 0x00452E0A,0x00452E1B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00452E1C,0x00452E58,needs_review,low,target-boundary-audit-2026-09-15,tail=call; direct-code-refs=1
+0x00452E1C,0x00452E58,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=call; direct-code-refs=1; direct target call/jump at 0x452ec7 to entry; independent IDA MCP extent agrees
 0x00452E5A,0x00452EDF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x00452EEC,0x00452F7C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00452F80,0x00452FB8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x00452FB9,0x00452FEC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00452FF0,0x00453110,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00453111,0x00453258,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
-0x00453280,0x004535BC,needs_review,low,target-boundary-audit-2026-09-15,"dense-decode=674/829; tail=inc; direct-code-refs=6, owned-indirect-control-table=0x004532E0"
-0x004535BD,0x004535EC,needs_review,low,target-boundary-audit-2026-09-15,tail=call; direct-code-refs=1
+0x00453280,0x004535BC,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-family-2026-09-17,"dense-decode=674/829; tail=inc; direct-code-refs=6, owned-indirect-control-table=0x004532E0; 2 pinned libcmt.lib COFF symbols with identical complete extent and matching non-relocation body establish the physical extent"
+0x004535BD,0x004535EC,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=call; direct-code-refs=1; direct target call/jump at 0x45365e to entry; independent IDA MCP extent agrees
 0x004535EE,0x00453676,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x00453683,0x0045370D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0045371B,0x0045373C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -895,15 +895,15 @@ address,span_end,state,confidence,evidence_id,notes
 0x00453C0C,0x00453C3C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=13; no overlap or external interior branch
 0x00453C52,0x00453C99,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00453C9A,0x00453CC4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00453CC5,0x00453FDC,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00453CC5,0x00453FDC,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol ___sbh_free_block has the identical complete physical extent"
 0x00453FDD,0x00454093,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00454094,0x00454199,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0045419A,0x00454478,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0045454A,0x00454862,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in jmp, but no independent entry reference was found"
+0x0045419A,0x00454478,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol ___sbh_resize_block has the identical complete physical extent"
+0x0045454A,0x00454862,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in jmp, but no independent entry reference was found; independent libcmt.lib COFF symbol ___sbh_heap_check has the identical complete physical extent"
 0x004548BE,0x00454BB9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00454BBC,0x00454BF6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=38; no overlap or external interior branch
 0x00454BF7,0x00454C07,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=32; no overlap or external interior branch
-0x00454CF6,0x00454D10,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00454CF6,0x00454D10,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x00454D11,0x00454E29,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x00454E2A,0x00454E5C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x00454E5D,0x00454E80,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
@@ -916,8 +916,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x004557FC,0x004558CB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004558CC,0x0045598C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00455990,0x004559B3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x004559B4,0x00455A8F,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in jmp, but no independent entry reference was found"
-0x00455A90,0x00455ADD,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x004559B4,0x00455A8F,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in jmp, but no independent entry reference was found; independent libcmt.lib COFF symbol ___lc_strtolc has the identical complete physical extent"
+0x00455A90,0x00455ADD,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol ___lc_lctostr has the identical complete physical extent"
 0x00455ADE,0x00455B0F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=10; no overlap or external interior branch
 0x00455B10,0x00455B18,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret; direct-code-refs=1, aligned-data-refs=1; no overlap or external interior branch"
 0x0045631E,0x00456326,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
@@ -942,8 +942,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x00456AFB,0x00456B03,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00456B04,0x00456B76,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=9; no overlap or external interior branch
 0x00456B80,0x00456BE7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
-0x00456BE8,0x00456E8F,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x00456E03,0x00456E0B,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
+0x00456BE8,0x00456E8F,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=1; Contains local RET helper 0x00456E03; target call at 0x00456C95 and IDA parent extent confirm intentional overlap
+0x00456E03,0x00456E0B,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x00456BE8; target call at 0x00456C95 confirms nested entry; IDA does not claim a separate owner
 0x00456E90,0x00457047,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x00457048,0x004571CE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x004571CF,0x00457211,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -951,23 +951,23 @@ address,span_end,state,confidence,evidence_id,notes
 0x00457250,0x00457284,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00457285,0x0045728D,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret; direct-code-refs=1, aligned-data-refs=1; no overlap or external interior branch"
 0x0045728E,0x00457394,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
-0x00457395,0x00457546,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=4
-0x004574FD,0x00457505,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00457547,0x00457575,needs_review,low,target-boundary-audit-2026-09-15,tail=call; direct-code-refs=1
+0x00457395,0x00457546,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=4; Contains local RET helper 0x004574FD; target call at 0x004574A7 and IDA parent extent confirm intentional overlap
+0x004574FD,0x00457505,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x00457395; target call at 0x004574A7 confirms nested entry; IDA does not claim a separate owner
+0x00457547,0x00457575,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=call; direct-code-refs=1; direct target call/jump at 0x45377e to entry; independent IDA MCP extent agrees
 0x00457577,0x0045757F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00457580,0x00457588,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00457589,0x004575A0,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00457589,0x004575A0,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4576a1 to entry; independent IDA MCP extent agrees"
 0x004575BF,0x00457628,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00457629,0x004576EB,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=3
-0x004576D8,0x004576E5,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
+0x00457629,0x004576EB,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=3; Contains local RET helper 0x004576D8; target call at 0x004576BB and IDA parent extent confirm intentional overlap
+0x004576D8,0x004576E5,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x00457629; target call at 0x004576BB confirms nested entry; IDA does not claim a separate owner
 0x004576EC,0x004576FC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004576FD,0x0045770D,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret; direct-code-refs=3, aligned-data-refs=1; no overlap or external interior branch"
 0x0045770E,0x0045771C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045772C,0x00457795,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00457799,0x004577A1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004577CE,0x00457931,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
-0x0045794D,0x00457A23,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=9
-0x00457A13,0x00457A1B,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
+0x0045794D,0x00457A23,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=9; Contains local RET helper 0x00457A13; target call at 0x004579C1 and IDA parent extent confirm intentional overlap
+0x00457A13,0x00457A1B,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x0045794D; target call at 0x004579C1 confirms nested entry; IDA does not claim a separate owner
 0x00457A3C,0x00457A51,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=19; no overlap or external interior branch
 0x00457A7C,0x004588A6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004588A7,0x00458B1D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -976,7 +976,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00458C39,0x00458D0B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00458D0C,0x00458D90,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00458D91,0x00458E73,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=12; no overlap or external interior branch
-0x00458E74,0x00458EA3,needs_review,low,target-boundary-audit-2026-09-15,tail=call; direct-code-refs=1
+0x00458E74,0x00458EA3,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=call; direct-code-refs=1; direct target call/jump at 0x458eae to entry; independent IDA MCP extent agrees
 0x00458EA5,0x00458EB2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=217; no overlap or external interior branch
 0x00458EC0,0x00458EFC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=17; no overlap or external interior branch
 0x00458EFD,0x00459074,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
@@ -990,35 +990,35 @@ address,span_end,state,confidence,evidence_id,notes
 0x00459776,0x004597B9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004597FE,0x0045980D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0045980E,0x00459898,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
-0x0045989C,0x004598BB,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045989C,0x004598BB,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __global_unwind2 has the identical complete physical extent"
 0x004598DE,0x00459945,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x00459946,0x00459968,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00459969,0x00459971,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=2; no overlap or external interior branch
-0x00459972,0x00459989,needs_review,low,target-boundary-audit-2026-09-15,external-interior-branch; direct-code-refs=1
-0x0045998A,0x00459BB2,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x00459BB3,0x00459C26,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x00459C27,0x00459CD1,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x00459CAE,0x00459CB5,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00459CD2,0x00459E8D,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x00459E8E,0x00459F38,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=3
-0x00459F15,0x00459F1C,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
+0x00459972,0x00459989,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,external-interior-branch; direct-code-refs=1; direct target call/jump at 0x454c9e to entry; independent IDA MCP extent agrees
+0x0045998A,0x00459BB2,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __ValidateEH3RN has the identical complete physical extent"
+0x00459BB3,0x00459C26,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __lseek_lk has the identical complete physical extent"
+0x00459C27,0x00459CD1,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=1; Contains local RET helper 0x00459CAE; target call at 0x00459CA1 and IDA parent extent confirm intentional overlap
+0x00459CAE,0x00459CB5,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x00459C27; target call at 0x00459CA1 confirms nested entry; IDA does not claim a separate owner
+0x00459CD2,0x00459E8D,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __write_lk has the identical complete physical extent"
+0x00459E8E,0x00459F38,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=3; Contains local RET helper 0x00459F15; target call at 0x00459F08 and IDA parent extent confirm intentional overlap
+0x00459F15,0x00459F1C,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x00459E8E; target call at 0x00459F08 confirms nested entry; IDA does not claim a separate owner
 0x00459F39,0x00459F7C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x00459F7D,0x00459FA6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045A10E,0x0045A16D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045A16E,0x0045A194,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0045A1B0,0x0045A244,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0045A245,0x0045A25C,needs_review,low,target-boundary-audit-2026-09-15,tail=int3; direct-code-refs=1
+0x0045A245,0x0045A25C,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=int3; direct-code-refs=1; direct target call/jump at 0x4556c3 to entry; independent IDA MCP extent agrees
 0x0045A25D,0x0045A416,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
-0x0045A417,0x0045A495,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0045A496,0x0045A52A,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0045A52B,0x0045A75D,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045A417,0x0045A495,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __Getdays has the identical complete physical extent"
+0x0045A496,0x0045A52A,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __Getmonths has the identical complete physical extent"
+0x0045A52B,0x0045A75D,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __Gettnames has the identical complete physical extent"
 0x0045A75E,0x0045A77D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045A7B4,0x0045A82C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045A82D,0x0045AA92,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0045AA93,0x0045AF1C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=2; no overlap or external interior branch
 0x0045AF1D,0x0045AFDF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0045AFE0,0x0045B011,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0045B033,0x0045B399,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045AFE0,0x0045B011,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __Strftime has the identical complete physical extent"
+0x0045B033,0x0045B399,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __get_lc_time has the identical complete physical extent"
 0x0045B39A,0x0045B529,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045B5BC,0x0045B61A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0045B61B,0x0045B7E7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
@@ -1026,22 +1026,22 @@ address,span_end,state,confidence,evidence_id,notes
 0x0045B8F4,0x0045BB32,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0045BB33,0x0045BD20,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0045BD80,0x0045BD86,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=26; no overlap or external interior branch
-0x0045BD90,0x0045BE77,needs_review,low,target-boundary-audit-2026-09-15,external-interior-branch; direct-code-refs=9
+0x0045BD90,0x0045BE77,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,external-interior-branch; direct-code-refs=9; independent libcmt.lib COFF symbol _strcat has the identical complete physical extent
 0x0045BE80,0x0045BEC5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045BED0,0x0045BF2F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=7; no overlap or external interior branch
 0x0045BF30,0x0045BFB7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=3; no overlap or external interior branch
-0x0045BFC0,0x0045C2FC,needs_review,low,target-boundary-audit-2026-09-15,"dense-decode=674/829; tail=inc; direct-code-refs=3, owned-indirect-control-table=0x0045C020"
-0x0045C2FD,0x0045C35C,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0045C377,0x0045C3F0,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045BFC0,0x0045C2FC,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-family-2026-09-17,"dense-decode=674/829; tail=inc; direct-code-refs=3, owned-indirect-control-table=0x0045C020; 2 pinned libcmt.lib COFF symbols with identical complete extent and matching non-relocation body establish the physical extent"
+0x0045C2FD,0x0045C35C,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol _TranslateName has the identical complete physical extent"
+0x0045C377,0x0045C3F0,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol _ProcessCodePage has the identical complete physical extent"
 0x0045C3F1,0x0045C40E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0045C40F,0x0045C4F1,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in jmp, but no independent entry reference was found"
+0x0045C40F,0x0045C4F1,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in jmp, but no independent entry reference was found; independent libcmt.lib COFF symbol _crtGetLocaleInfoA@16 has the identical complete physical extent"
 0x0045C4F2,0x0045C526,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0045C527,0x0045C543,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0045C544,0x0045C5DB,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045C544,0x0045C5DB,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol _CountryEnumProc@4 has the identical complete physical extent"
 0x0045C5DC,0x0045C650,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0045C651,0x0045C86E,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0045C86F,0x0045C93D,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0045CCD0,0x0045CD0F,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045C651,0x0045C86E,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol _LangCountryEnumProc@4 has the identical complete physical extent"
+0x0045C86F,0x0045C93D,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol _LanguageEnumProc@4 has the identical complete physical extent"
+0x0045CCD0,0x0045CD0F,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol _strpbrk has the identical complete physical extent"
 0x0045CD56,0x0045CD84,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0045CD85,0x0045CDAD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045CDAE,0x0045CF48,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -1055,7 +1055,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0045D2FC,0x0045D348,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045D349,0x0045D3BA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x0045D3BB,0x0045D3D5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0045D3D6,0x0045D3E1,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045D3D6,0x0045D3E1,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; target-local RET/CC separator and neighboring code establish the contiguous extent; no independent entry reference observed"
 0x0045D3E2,0x0045D3FA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045D3FB,0x0045D475,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0045D476,0x0045D5CD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -1063,10 +1063,10 @@ address,span_end,state,confidence,evidence_id,notes
 0x0045D5E4,0x0045D5F9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045D5FA,0x0045D675,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0045D676,0x0045D6BA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0045D6BB,0x0045D700,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045D6BB,0x0045D700,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __atoldbl has the identical complete physical extent"
 0x0045D701,0x0045D745,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045D746,0x0045DB54,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
-0x0045DB86,0x0045DBDA,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045DB86,0x0045DBDA,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol ___STRINGTOLD has the identical complete physical extent"
 0x0045DBDB,0x0045DC16,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0045DC7C,0x0045DCB9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0045DCBA,0x0045DCD6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
@@ -1079,7 +1079,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0045DFE8,0x0045DFF9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045DFFA,0x0045E039,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045E03A,0x0045E062,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
-0x0045E063,0x0045E0E3,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in jmp, but no independent entry reference was found"
+0x0045E063,0x0045E0E3,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in jmp, but no independent entry reference was found; independent libcmt.lib COFF symbol __getenv_lk has the identical complete physical extent"
 0x0045E123,0x0045E203,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045E204,0x0045E26F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=9; no overlap or external interior branch
 0x0045E2B5,0x0045E374,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
@@ -1091,12 +1091,12 @@ address,span_end,state,confidence,evidence_id,notes
 0x0045E8B4,0x0045E8E0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0045E8E1,0x0045E97E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0045E97F,0x0045E9D1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0045E9D2,0x0045EA30,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045E9D2,0x0045EA30,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __handle_qnan2 has the identical complete physical extent"
 0x0045EA31,0x0045EAEC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0045EAED,0x0045EBB9,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045EAED,0x0045EBB9,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __except2 has the identical complete physical extent"
 0x0045EBBA,0x0045EBCA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045EBCB,0x0045EBF4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0045EC34,0x0045EC58,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045EC34,0x0045EC58,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __set_bexp has the identical complete physical extent"
 0x0045EC59,0x0045ECB3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045ECB4,0x0045ED6F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045ED70,0x0045ED7A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -1105,21 +1105,21 @@ address,span_end,state,confidence,evidence_id,notes
 0x0045EDAB,0x0045EE00,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x0045EE1D,0x0045F1F2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0045F1F3,0x0045F258,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
-0x0045F259,0x0045F3A3,needs_review,low,target-boundary-audit-2026-09-15,tail=int3; direct-code-refs=1
+0x0045F259,0x0045F3A3,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,tail=int3; direct-code-refs=1; independent libcmt.lib COFF symbol ___security_error_handler has the identical complete physical extent
 0x0045F3D0,0x0045F4C8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0045F4C9,0x0045F4FB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045F590,0x0045F5A0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045F655,0x0045F6D3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045F6D4,0x0045F714,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
-0x0045F715,0x0045F7A8,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045F715,0x0045F7A8,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x459c5f to entry; IDA MCP does not define this separate entry; target local extent is independently dense through its terminal instruction"
 0x0045F7AC,0x0045F7B4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0045F7B5,0x0045F7D6,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0045F7B5,0x0045F7D6,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __unlock_fhandle has the identical complete physical extent"
 0x0045FA1A,0x0045FA9C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0045FBF6,0x0045FC52,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0045FDAF,0x0045FDB7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=6; no overlap or external interior branch
-0x0045FE47,0x0045FE74,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x00460028,0x004601A0,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x00460163,0x0046016F,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
+0x0045FE47,0x0045FE74,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol _siglookup has the identical complete physical extent"
+0x00460028,0x004601A0,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=1; Contains local RET helper 0x00460163; target call at 0x00460146 and IDA parent extent confirm intentional overlap
+0x00460163,0x0046016F,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x00460028; target call at 0x00460146 confirms nested entry; IDA does not claim a separate owner
 0x004601A1,0x004601E7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x004601E8,0x004603C1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x004603D0,0x0046041D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
@@ -1127,11 +1127,11 @@ address,span_end,state,confidence,evidence_id,notes
 0x0046054E,0x004605B6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 105/105, tail ret"
 0x004605B7,0x00460635,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x00460636,0x00460673,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00460674,0x0046069D,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0046069E,0x004606C4,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00460674,0x0046069D,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __itoa has the identical complete physical extent"
+0x0046069E,0x004606C4,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __ltoa has the identical complete physical extent"
 0x004606DF,0x0046074B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0046074C,0x0046077C,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0046077D,0x00460797,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0046074C,0x0046077C,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __i64toa has the identical complete physical extent"
+0x0046077D,0x00460797,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x00460798,0x004607B8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=7; no overlap or external interior branch
 0x004607B9,0x00460816,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x00460817,0x00460844,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=9; no overlap or external interior branch
@@ -1150,10 +1150,10 @@ address,span_end,state,confidence,evidence_id,notes
 0x00461090,0x004610A5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004610A6,0x004610F3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004610F4,0x00461183,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=2; no overlap or external interior branch
-0x00461184,0x00461360,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x00461361,0x0046140B,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x004613E8,0x004613EF,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x0046140C,0x00461457,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00461184,0x00461360,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __read_lk has the identical complete physical extent"
+0x00461361,0x0046140B,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=1; Contains local RET helper 0x004613E8; target call at 0x004613DB and IDA parent extent confirm intentional overlap
+0x004613E8,0x004613EF,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x00461361; target call at 0x004613DB confirms nested entry; IDA does not claim a separate owner
+0x0046140C,0x00461457,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __fclose_lk has the identical complete physical extent"
 0x00461565,0x00461694,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00461695,0x004617D4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x004617E0,0x00461840,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -1163,12 +1163,12 @@ address,span_end,state,confidence,evidence_id,notes
 0x00461E83,0x00461ECF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00461ED0,0x00461F30,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00461F31,0x00462106,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
-0x00462107,0x00462189,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0046218A,0x00462224,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x00462201,0x00462208,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
+0x00462107,0x00462189,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __close_lk has the identical complete physical extent"
+0x0046218A,0x00462224,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=1; Contains local RET helper 0x00462201; target call at 0x004621F4 and IDA parent extent confirm intentional overlap
+0x00462201,0x00462208,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; Local RET helper inside 0x0046218A; target call at 0x004621F4 confirms nested entry; IDA does not claim a separate owner
 0x00462225,0x0046224F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00462250,0x0046227A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0046227B,0x004622F5,needs_review,low,target-boundary-audit-2026-09-15,remote-ghidra-body; direct-code-refs=1
+0x0046227B,0x004622F5,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,remote-ghidra-body; direct-code-refs=1; independent libcmt.lib COFF symbol __mbschr has the identical complete physical extent
 0x00462301,0x00462326,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00462327,0x00462362,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00462371,0x0046238D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=3; no overlap or external interior branch
@@ -1177,16 +1177,16 @@ address,span_end,state,confidence,evidence_id,notes
 0x004623DE,0x004623E8,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in jmp; direct-code-refs=1, aligned-data-refs=1; no overlap or external interior branch"
 0x00462401,0x0046241C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0046241D,0x00462427,reviewed,high,target-boundary-audit-2026-09-15,"Complete dense decode ends in jmp; direct-code-refs=1, aligned-data-refs=1; no overlap or external interior branch"
-0x00462428,0x00462466,needs_review,low,target-boundary-audit-2026-09-15,tail=call; direct-code-refs=2
+0x00462428,0x00462466,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=call; direct-code-refs=2; direct target call/jump at 0x438273 to entry; independent IDA MCP extent agrees
 0x004624C3,0x004624E4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x004624E5,0x00462523,needs_review,low,target-boundary-audit-2026-09-15,tail=call; direct-code-refs=2
+0x004624E5,0x00462523,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=call; direct-code-refs=2; direct target call/jump at 0x4382b1 to entry; independent IDA MCP extent agrees
 0x0046263A,0x0046263F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=2; no overlap or external interior branch
 0x004626D6,0x00462700,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x00462706,0x0046270C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x0046270D,0x00462713,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x00462714,0x0046271A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x0046271B,0x0046276C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x0046276D,0x004627A2,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x0046276D,0x004627A2,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol ___CxxFrameHandler has the identical complete physical extent"
 0x004627F8,0x004628BE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004628BF,0x00462970,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x00462971,0x004629EA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -1206,7 +1206,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00462D3C,0x00462D46,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x00462D77,0x00462D81,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x00462D82,0x00462D9D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
-0x00462D9E,0x00462DBC,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00462D9E,0x00462DBC,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x00462DBD,0x00462DD8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x00462DD9,0x00462DF4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x00462DF5,0x00462E10,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
@@ -1218,7 +1218,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004631D5,0x00463320,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0046332A,0x00463398,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00463399,0x00463508,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00463515,0x00463639,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00463515,0x00463639,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol ___CxxExceptionFilter has the identical complete physical extent"
 0x0046363A,0x004636A0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004636A1,0x0046375E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0046375F,0x00463962,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
@@ -1231,25 +1231,25 @@ address,span_end,state,confidence,evidence_id,notes
 0x00463B2C,0x00463BA0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=207; no overlap or external interior branch
 0x00463BBA,0x00463BC3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=2; no overlap or external interior branch
 0x00463BF0,0x00463C03,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00463C0D,0x00464FAA,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x00463CC0,0x00463CFD,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x00463CFE,0x00463D3A,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00463D3B,0x00463D82,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00463D83,0x00463D89,needs_review,low,target-boundary-audit-2026-09-15,tail=and; overlapping-extents
-0x00463D8A,0x00463ED0,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00463ED1,0x00463F03,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00463F04,0x00463F3F,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00463F40,0x00463FA6,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00463FA7,0x00464032,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00464916,0x00464B1B,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00464B1C,0x00464BCD,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00464EA0,0x00464EB6,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00464EB7,0x00464EF2,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x00464F15,0x00464F2B,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00464F2C,0x00464F44,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents
-0x00464F88,0x00464F9D,needs_review,low,target-boundary-audit-2026-09-15,overlapping-extents; direct-code-refs=1
-0x00464FAB,0x00464FD4,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
-0x0046508C,0x00465187,provisional,medium,target-boundary-audit-2026-09-15,"Complete dense decode ends in ret, but no independent entry reference was found"
+0x00463C0D,0x00463CBA,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"overlapping-extents; direct-code-refs=1; IDA MCP identifies the 174-byte contiguous acos entry; target direct call at 0x00463BFB and dense decode through RET at 0x00463CBA confirm its local extent. Shared exit chunks at 0x00464F9E and later are noncontiguous; the old 5,022-byte span merged independent CRT functions."
+0x00463CC0,0x00463CFD,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; direct-code-refs=1; independent libcmt.lib COFF symbol __cintrindisp2 has the identical complete physical extent
+0x00463CFE,0x00463D3A,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; independent libcmt.lib COFF symbol __cintrindisp1 has the identical complete physical extent
+0x00463D3B,0x00463D82,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct target call/jump at 0x463bb5 to entry; independent IDA MCP extent agrees
+0x00463D83,0x00463D89,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,tail=and; overlapping-extents; Shared CRT math entry prefix called at 0x00463D7B and 0x00463EFC; one 7-byte AND instruction falls through to 0x00463D8A
+0x00463D8A,0x00463ED0,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct target call/jump at 0x463ce7 to entry; independent IDA MCP extent agrees
+0x00463ED1,0x00463F03,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; independent libcmt.lib COFF symbol __ctrandisp1 has the identical complete physical extent
+0x00463F04,0x00463F3F,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; independent libcmt.lib COFF symbol __fload has the identical complete physical extent
+0x00463F40,0x00463FA6,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; independent libcmt.lib COFF symbol __trandisp1 has the identical complete physical extent
+0x00463FA7,0x00464032,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; independent libcmt.lib COFF symbol __trandisp2 has the identical complete physical extent
+0x00464916,0x00464B1B,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; independent libcmt.lib COFF symbol __fprem_common has the identical complete physical extent
+0x00464B1C,0x00464BCD,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; independent libcmt.lib COFF symbol __adj_fprem has the identical complete physical extent
+0x00464EA0,0x00464EB6,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct target call/jump at 0x46502e to entry; independent IDA MCP extent agrees
+0x00464EB7,0x00464EF2,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,overlapping-extents; direct-code-refs=1; independent libcmt.lib COFF symbol __startOneArgErrorHandling has the identical complete physical extent
+0x00464F15,0x00464F2B,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct target call/jump at 0x463c1c to entry; independent IDA MCP extent agrees
+0x00464F2C,0x00464F44,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct target call/jump at 0x463c7a to entry; independent IDA MCP extent agrees
+0x00464F88,0x00464F9D,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,overlapping-extents; direct-code-refs=1; direct target call/jump at 0x463bf6 to entry; independent IDA MCP extent agrees
+0x00464FAB,0x00464FD4,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __math_exit has the identical complete physical extent"
+0x0046508C,0x00465187,reviewed,high,target-boundary-audit-2026-09-15+vc71-static-runtime-body-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent libcmt.lib COFF symbol __87except has the identical complete physical extent"
 0x00465190,0x00465197,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; aligned-data-refs=1; no overlap or external interior branch
 0x004651A2,0x004651A9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; aligned-data-refs=1; no overlap or external interior branch
 0x004651B4,0x004651BB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; aligned-data-refs=1; no overlap or external interior branch
