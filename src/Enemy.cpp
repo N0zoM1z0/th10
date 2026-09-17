@@ -1452,8 +1452,7 @@ int EnemyManagerUpdate(EnemyManagerView *manager)
     }
     else
     {
-        manager->timer.subframe += *manager->timer.scale;
-        manager->timer.current = static_cast<int>(manager->timer.subframe);
+        manager->timer.Add(*manager->timer.scale);
     }
     return 1;
 }

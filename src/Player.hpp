@@ -81,6 +81,11 @@ struct PlayerTimerView
     unsigned int flags;
 
     PlayerTimerView() { flags &= ~1u; }
+    __forceinline void Add(float value)
+    {
+        subframe += value;
+        current = static_cast<int>(subframe);
+    }
 };
 typedef char PlayerTimerViewSizeIs14[
     (sizeof(PlayerTimerView) == 0x14) ? 1 : -1];
