@@ -3072,3 +3072,22 @@ Current ledger: 1,313/1,313 boundaries reviewed; 1,107 origin rows reviewed
 161 canonical exact functions and 22,413 exact bytes. No source or exact
 mapping changed in this checkpoint. Continue the remaining origin review
 before the requested three large exact owners.
+
+## Completed checkpoint: connected game component origins
+
+Eighteen additional entries totaling 5,902 bytes are authored at medium
+confidence. The target-bound reviewer requires a complete decode and a fixed
+direct call to or from an independently reviewed authored anchor. Its explicit
+cohort order is acyclic, so later entries can use earlier reviewed GDI and
+MIDI entries without self-supporting cycles. IDA review covered game text
+parsing, render object state, GDI glyph bitmap processing, MIDI tracks and
+events, sprite state and sound filename lookup. No original source unit or
+exactness is inferred. The DirectInput initializer `0x0043B8D0` was excluded
+from this cohort because its observed callee `0x00421D20` is still pending.
+
+Current ledger: 1,313/1,313 boundaries reviewed; 1,125 origin rows reviewed
+(610 authored, 515 excluded), 188 origins pending; 307 source mappings,
+161 canonical exact functions and 22,413 exact bytes. The next origin queue
+still includes source-present Player adapters and ambiguous constructor or
+compiler-outlined fragments. Three large source-present exact owners remain
+queued behind the user's requested review order.
