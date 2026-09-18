@@ -3497,3 +3497,15 @@ the private `ReadInt` call ABI. Target `ReadInt @ 0x0044FDB0` is 144 bytes with
 an EDX receiver and stack index; the selected candidate is 122 bytes with an
 EDX receiver and ECX index. Prologue and return paths differ, so neither this
 helper nor the caller should be marked exact by case length alone.
+
+Target `ReadInt` keeps its input index in EAX across an empty-stack typed pop,
+returning that index on underflow. The maintained pop destination is now
+initialized from the index. In the real-host linked probe this corrects the
+return-path semantics and changes the candidate helper from 122 to 117 bytes;
+the target is 144 bytes. The private EDX-plus-ECX versus EDX-plus-stack index
+ABI difference remains, as does the 7,032 versus 7,020-byte runner gap. The
+focused diagnostic and opcode layout are
+`ecl-readint-init-index-{probe,layout}.json` in the analysis folder.
+The subsequent focused `src/EclVm.cpp` cold replay passes all 14 exact units,
+1,331/1,331 bytes and every declared linkage field; receipt
+`ecl-readint-init-index-focused-replay.json`.

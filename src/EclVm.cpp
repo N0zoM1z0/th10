@@ -332,7 +332,7 @@ int EclVmContext::ReadInt(unsigned int index)
                 stack.data + stack.frameBase + value);
         if (value == -1)
         {
-            int result;
+            int result = static_cast<int>(index);
             stack.Pop('i', sizeof(result), &result);
             return result;
         }
