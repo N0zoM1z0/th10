@@ -3351,10 +3351,13 @@ shape. The candidate's executable pre-table span becomes **9,584 versus 9,588
 target** (`-4`, formerly `-180`), with all 92 physical case groups still in
 target order. The selected PDB contribution is 9,960 bytes because it also
 owns the 376-byte jump table; this should not be compared directly to the
-9,587-byte target code-only ledger extent. The frame still differs by 40 bytes
-(`0xD4` candidate, `0xFC` target), and the alternate-position block is placed
-before the interrupt-label block instead of after it. Explicit shared-tail
-and label variants did not recover that local placement and were reverted.
+9,587-byte target code-only ledger extent. The constructor also changes the
+candidate frame from `0xD4` to the target's `0xFC`; the saved game-speed local
+still has a different stack slot (`+0x60` candidate, `+0x98` target), and the
+alternate-position block is placed before the interrupt-label block instead
+of after it. Explicit shared-tail, label, and early-break variants did not
+recover that local placement and were reverted. The early-break form increased
+comparable byte agreement but widened the executable span deficit to 84 bytes.
 
 For the generic ECL runner, a carried current-instruction local shortened the
 host-entry candidate to 7,028 versus 7,020 target but changed the frame to
