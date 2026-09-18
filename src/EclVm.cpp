@@ -215,15 +215,14 @@ static __forceinline int PushFloat(EclVmContext *context, float value)
 }
 #pragma inline_depth(16)
 
-static __forceinline void EvaluateFormatOperands(EclVmContext *context)
+static __forceinline void EvaluateFormatOperands(
+    EclVmContext *context, const char *format)
 {
-    const EclVmInstruction *instruction = context->instruction;
-    const char *format = reinterpret_cast<const char *>(instruction) + 0x14;
     const char *cursor = format;
     char *scratch = static_cast<char *>(malloc(0x400));
     scratch[0] = '\0';
 
-    unsigned char flagIndex = 1;
+    int flagIndex = 1;
     int metadataOffset = 0;
     int valueWord = 6;
     while (cursor != NULL) {
@@ -239,18 +238,20 @@ static __forceinline void EvaluateFormatOperands(EclVmContext *context)
             break;
         case 'd':
         case 'f': {
-            const int inlineBytes = OperandInt(instruction, 0);
+            const int inlineBytes = OperandInt(context->instruction, 0);
             const char argumentType = *(
-                reinterpret_cast<const char *>(instruction)
+                reinterpret_cast<const char *>(context->instruction)
                 + 0x14 + inlineBytes + metadataOffset);
-            const int raw = reinterpret_cast<const int *>(instruction)[
-                inlineBytes / 4 + valueWord];
             if (argumentType == 'f' || argumentType == 'g') {
                 EclVmScalar value;
-                value.integer = raw;
+                value.integer = reinterpret_cast<const int *>(context->instruction)[
+                    inlineBytes / 4 + valueWord];
                 context->ReadFloatValue(flagIndex, value.real);
             } else {
-                context->ReadIntValue(flagIndex, raw);
+                context->ReadIntValue(
+                    flagIndex,
+                    reinterpret_cast<const int *>(context->instruction)[
+                        inlineBytes / 4 + valueWord]);
             }
             metadataOffset += 8;
             valueWord += 2;
@@ -1135,7 +1136,8 @@ jump_instruction:
             }
 
             case ECL_VM_EVALUATE_FORMAT_OPERANDS:
-                EvaluateFormatOperands(this);
+                EvaluateFormatOperands(
+                    this, reinterpret_cast<const char *>(current) + 0x14);
                 break;
 
             default:

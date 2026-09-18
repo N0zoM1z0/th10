@@ -3369,3 +3369,24 @@ remain non-exact. Focused probe JSON and case layouts are retained under
 
 A focused cold replay after the two source changes passes all 81 configured
 exact units across 11 artifacts, 16,534/16,534 bytes and all declared fields.
+
+## Current continuation: generic ECL format operand ordering
+
+IDA target disassembly of `EclVmContext::Run` shows the format opcode compares
+the operand metadata type before loading the raw operand, and reloads the
+instruction through its context. The maintained inline helper now performs
+those reads in the same order and accepts only the initial format cursor from
+the outer `current` pointer. `flagIndex` is a 32-bit counter. In the real
+`EclVmHost::Run` selected `/GL` diagnostic, this source gives a **7,020-byte
+contribution and 6,692-byte pre-table span**, both exactly the target lengths;
+all 59 opcode groups retain target physical order. The format case's local
+span is 250 versus target 247, improved from 262. The candidate now assigns
+EBX to the instruction cursor and EBP to zero at the prologue, as the target
+does. The remaining frame differs (`0x104` candidate, `0x108` target), and
+the full byte comparison and linked-field normalization fail. This is still
+a non-exact owner. An explicit `continue` in the percent case grew the
+candidate to 7,028 bytes and was reverted. Focused evidence is
+`ecl-format-cursor-argument-{probe,layout}.json` and
+`ecl-format-final-percent-continue-probe.json` below the same analysis folder.
+A focused cold replay of `EclVm.cpp` passes all 13 configured exact units in
+two artifacts, 1,301/1,301 bytes and all declared linked fields.
