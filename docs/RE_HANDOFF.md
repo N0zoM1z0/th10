@@ -3248,3 +3248,29 @@ case gap is 15 bytes. It remains a mismatch with incomplete normalization.
 All 13 exact `EclVm.cpp` units / 1,301 bytes across two artifacts replay after
 the source change. Evidence is retained below `.analysis/gpt-5.6-sol/20260918-anm-exact/`
 and `.analysis/gpt-5.6-sol/20260918-ecl-vm-exact/`.
+
+## Completed packet: exact FileSystem close leaf and ECL ABI check
+
+IDA attests the canonical target SHA-256 and confirms that
+`FileSystem::CloseWriteFile @ 0x0044B7E0-0x0044B804` is a complete 37-byte
+reviewed authored body with two direct replay-loader call sites. Natural source
+in `src/FileSystem.cpp` reproduces every byte in a normal VC7.1 SP1 COFF
+object. The canonical `file-system-close-write-file` unit declares all five
+DIR32 fields: shared handle `0x00474C38`, `CloseHandle` IAT `0x004660CC`,
+critical section `0x004922A4`, `LeaveCriticalSection` IAT `0x004660B4`, and
+active-file count `0x0049231E`. Two independent cold builds and the focused
+source replay pass with zero differences. Tracking is now 308 source mappings
+and 162 exact functions / 22,450 bytes; all 1,317 tracked boundary and origin
+reviews remain complete. Production TU/profile and global data ownership stay
+unknown.
+
+The requested generic ECL runner remains non-exact. A source experiment
+removing its per-iteration null check changed the selected pre-table span from
+6,712 to 6,736 bytes versus 6,692 target, so it was reverted. Giving
+`EclVmStartSubroutine` internal linkage left its caller unchanged and made the
+helper invisible to the current symbol diagnostic. A natural `__stdcall`
+declaration removed caller cleanup but allocated the private destination in
+ESI rather than target EAX, shortened `SpawnThread` to 140 versus 142 target,
+and worsened the generic runner. That experiment was also reverted. Retained
+focused diagnostics are under `.analysis/gpt-5.6-sol/20260918-ecl-vm-exact/`;
+no exact ECL VM claim follows.

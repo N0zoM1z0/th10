@@ -1,7 +1,12 @@
 #include "FileSystem.hpp"
 
+#include <windows.h>
 #include <stdlib.h>
 #include <string.h>
+
+extern HANDLE gReplayFileHandle;
+extern CRITICAL_SECTION gReplayFileCriticalSection;
+extern unsigned char gReplayFileOpenCount;
 
 // Maintained reconstruction source. The namespace/function name is retained as
 // an adjacent-supported descriptive name after TH10 target behavior recovery;
@@ -108,5 +113,16 @@ unsigned char *Encrypt(unsigned char *data, int size, unsigned char xorValue,
 
     free(temporary);
     return data;
+}
+
+int CloseWriteFile()
+{
+    if (gReplayFileHandle != INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(gReplayFileHandle);
+        LeaveCriticalSection(&gReplayFileCriticalSection);
+        --gReplayFileOpenCount;
+    }
+    return 0;
 }
 }

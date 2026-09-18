@@ -37,6 +37,7 @@ PbgArchive::LoadFromResource
 DecompressData
 FileSystem::Decrypt
 FileSystem::Encrypt
+FileSystem::CloseWriteFile
 CompressData
 Lzss::InitTree
 Lzss::InitEncoderState

@@ -3044,3 +3044,20 @@ relocations = [
   { offset = 0x42, type = "DIR32", symbol = "__real@40c90fdb", target = 0x00470B14 },
   { offset = 0x50, type = "DIR32", symbol = "__real@c0490fdb", target = 0x00470B10 },
 ]
+
+[units.file-system-close-write-file]
+artifact_kind = "coff"
+source = "src/FileSystem.cpp"
+object = "build/match/FileSystem.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["FileSystem::CloseWriteFile"]
+symbol = "?CloseWriteFile@FileSystem@@YAHXZ"
+target_address = 0x0044B7E0
+size = 37
+relocations = [
+  { offset = 0x01, type = "DIR32", symbol = "?gReplayFileHandle@@3PAXA", target = 0x00474C38 },
+  { offset = 0x0D, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+  { offset = 0x12, type = "DIR32", symbol = "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A", target = 0x004922A4 },
+  { offset = 0x18, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x1E, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+]
