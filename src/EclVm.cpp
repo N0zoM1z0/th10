@@ -8,7 +8,34 @@
 // This runtime service is a separate target function in the
 // 0x0044DF70-0x004506D0 corridor. Its declaration lets this file retain the
 // complete VM dispatch while its implementation remains a separate unit.
-extern float EclVmNormalizeAngle(float angle);
+extern float __stdcall EnemyWrapAngle(float angle);
+
+struct EclVmPolarVectorView
+{
+    float x;
+    float y;
+
+    void FromAngleMagnitude(float angle, float magnitude);
+};
+
+void EclVmPolarVectorView::FromAngleMagnitude(float angle, float magnitude)
+{
+#if defined(_MSC_VER) && defined(_M_IX86)
+    __asm
+    {
+        mov eax, this
+        fld angle
+        fsincos
+        fmul magnitude
+        fstp [eax]
+        fmul magnitude
+        fstp [eax + 4]
+    }
+#else
+    x = static_cast<float>(cos(angle)) * magnitude;
+    y = static_cast<float>(sin(angle)) * magnitude;
+#endif
+}
 
 
 EclVmStackView::EclVmStackView()
@@ -1104,12 +1131,11 @@ jump_instruction:
 
             case ECL_VM_POLAR_TO_CARTESIAN:
             {
-                const float magnitude = ReadFloat(3);
-                const float angle = EclVmNormalizeAngle(ReadFloat(2));
-                *ResolveFloat(0) =
-                    static_cast<float>(cos(angle) * magnitude);
-                *ResolveFloat(1) =
-                    static_cast<float>(sin(angle) * magnitude);
+                EclVmPolarVectorView vector;
+                vector.FromAngleMagnitude(
+                    EnemyWrapAngle(ReadFloat(2)), ReadFloat(3));
+                *ResolveFloat(0) = vector.x;
+                *ResolveFloat(1) = vector.y;
                 break;
             }
 
@@ -1122,7 +1148,7 @@ jump_instruction:
             }
 
             case ECL_VM_NORMALIZE_ANGLE:
-                *ResolveFloat(0) = EclVmNormalizeAngle(ReadFloat(0));
+                *ResolveFloat(0) = EnemyWrapAngle(ReadFloat(0));
                 break;
 
             case ECL_VM_POINT_ANGLE:

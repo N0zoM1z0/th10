@@ -815,7 +815,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004500D0,authored_game,EclVm,authored,high,ecl-vm-thread-control-2026-09-16
 0x00450160,authored_game,EclVm,authored,high,ecl-vm-thread-control-2026-09-16
 0x00450190,authored_game,EclVm,authored,high,ecl-vm-thread-control-2026-09-16
-0x004501B0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x004501B0,authored_game,EclVm,authored,high,ecl-vm-polar-helper-2026-09-18
 0x00450220,authored_game,EclVm,authored,high,ecl-vm-script-loader-2026-09-16
 0x00450470,authored_game,EclVm,authored,high,ecl-vm-thread-control-2026-09-16
 0x004505B0,authored_game,EclVm,authored,high,ecl-vm-stack-core-2026-09-16

@@ -141,6 +141,21 @@ target_address = 0x00450190
 size = 31
 linkages = []
 
+[units.ecl-vm-polar-from-angle-magnitude]
+artifact_kind = "linked-pe"
+source = "src/EclVm.cpp"
+support_sources = ["src/EnemyEclDispatcher.cpp"]
+output_dir = "build/match-linked/EclVmPolar"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@EclVmHost@@QAEHM@Z"
+functions = ["EclVmPolarVectorView::FromAngleMagnitude"]
+symbol = "?FromAngleMagnitude@EclVmPolarVectorView@@QAEXMM@Z"
+target_address = 0x004501B0
+size = 30
+linkages = []
+
 [units.ecl-vm-find-subroutine]
 artifact_kind = "linked-pe"
 source = "src/EclVm.cpp"

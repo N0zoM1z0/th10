@@ -298,6 +298,7 @@ EclVmStackView::Push
 EclVmStackView::Pop
 EclVmStackView::EnterFrame
 EclVmStackView::LeaveFrame
+EclVmPolarVectorView::FromAngleMagnitude
 FpsCounterView::CalculateFps
 FpsCounterView::DrawFpsCounter
 GuiSetLivesDisplayCount

@@ -3447,3 +3447,30 @@ The target `ReadInt @ 0x0044FDB0` uses EDX for its receiver and a stack
 argument. The current linked probe specializes its candidate helper to EDX
 plus ECX, which contributes to the opcode-0x14 call-shape gap. Recover this
 helper/link context before treating nearby case lengths as exact evidence.
+
+## Current continuation: ECL polar helper and angle calls
+
+IDA establishes that the generic runner's 0x51 polar opcode calls a separate
+30-byte helper at `0x004501B0`, and both polar and angle-normalization opcodes
+call `EnemyWrapAngle @ 0x0044BC70`. The maintained source now names that exact
+angle helper and implements `EclVmPolarVectorView::FromAngleMagnitude` with
+the target's `FSINCOS` operation. Two independent cold linked PE builds in the
+real `EclVmHost::Run` entry context reproduce all 30 bytes of the complete
+PDB-owned helper, with no relocation fields. Its exact unit is
+`ecl-vm-polar-from-angle-magnitude`; the replay receipts are
+`ecl-polar-canonical-{1,2}.json` in the current analysis folder.
+
+Nested argument evaluation in 0x51 restores target-sized physical opcode
+spans of 97/97 for polar conversion and 36/36 for angle normalization. All 59
+runner opcode groups stay in target physical order, but the whole contribution
+is 7,032 candidate versus 7,020 target bytes, with a `0x104` versus `0x108`
+frame. The generic runner is therefore still non-exact. The selected probe
+and layout are `ecl-polar-nested-call-{probe,layout}.json`; remaining local
+gaps include the paired integer/float arithmetic cases, 0x34 and float
+comparison slots. Enemy dispatcher remains 14,508 versus 14,416 bytes, and
+the ANM script executor remains a 9,960-byte contribution including its
+376-byte table versus the target's 9,964-byte owner. Neither is exact.
+
+The focused `src/EclVm.cpp` cold replay passes all 14 exact units across
+three artifacts, 1,331/1,331 bytes and every declared linkage field. Its
+receipt is `ecl-polar-focused-exact-replay.json` in the same analysis folder.
