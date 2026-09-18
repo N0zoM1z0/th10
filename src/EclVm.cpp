@@ -692,8 +692,7 @@ int EclVmContext::Run(float timeDelta)
     if (*instructionCursor == NULL)
         return -1;
 
-    while (*instructionCursor != NULL
-           && static_cast<float>((*instructionCursor)->time) <= currentTime) {
+    while (static_cast<float>((*instructionCursor)->time) <= currentTime) {
         EclVmInstruction *current = *instructionCursor;
 
         if ((difficultyMask & current->difficultyMask) != 0) {

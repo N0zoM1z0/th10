@@ -3398,3 +3398,32 @@ uses `[esp+0x4C]`. In 0x44 the target uses short-offset slots `+0x7C/+0x74`
 and the candidate uses `+0x80/+0x78`. Function-scope temporary and commutative
 operand-name experiments compiled byte-identically and were reverted. The
 stack-slot allocation remains an exact-codegen blocker.
+
+## Current continuation: ECL loop entry and ANM advance placement
+
+The IDA-attested target `EclVmContext::Run @ 0x0044E1A0` checks for a null
+instruction only on entry. The maintained runner now omits the extra null
+condition on each loop iteration. Its selected `EclVmHost::Run` `/GL` candidate
+matches the target's entry and first selector instruction sequence apart from
+the frame constant (`0x104` candidate, `0x108` target) and linked addresses.
+The return-to-loop path now uses the target's `FILD/FCOMP` comparison. The
+candidate is **7,036 versus 7,020 target bytes** and has 694/6,268 raw
+comparable bytes equal, up from 591; the sum of physical case-gap differences
+falls from 68 to 60. This is a better local codegen hypothesis, not an exact
+match. The shared instruction advance still differs: target adds an ECX
+offset to an EAX pointer before storing; candidate adds directly in memory
+and reloads. Direct-member and explicit-local advance spellings and an
+unsigned offset compiled identically; cursor-reload variants shortened the
+whole candidate to 6,972 bytes and were reverted. Selected evidence is
+`ecl-loop-final-{probe,layout}.json` and `ecl-loop-final.exe` under the
+existing `.analysis/gpt-5.6-sol/20260918-enemy-order/` folder.
+
+ANM POSITION/NOP advance placement remains open. Target puts the NOP advance
+at `0x0043F532` between primary and alternate POSITION branches; the current
+candidate puts its separate NOP advance after alternate POSITION. Two explicit
+shared-label variants kept case order but reduced the candidate contribution
+to 9,848 bytes and still did not move NOP before alternate; both were
+reverted. Removing a redundant switch-exit `continue` changed no case
+destinations. The selected ANM candidate remains 9,960 bytes including its
+separate 376-byte table, with 9,584 versus 9,588 pre-table bytes, and is
+non-exact. Enemy remains 14,508 versus 14,416 bytes and non-exact.
