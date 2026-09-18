@@ -3509,3 +3509,47 @@ focused diagnostic and opcode layout are
 The subsequent focused `src/EclVm.cpp` cold replay passes all 14 exact units,
 1,331/1,331 bytes and every declared linkage field; receipt
 `ecl-readint-init-index-focused-replay.json`.
+
+## Current continuation: linked context and ANM tail audit
+
+The repository remains source-clean after this bounded probe batch. IDA still
+attests the original SHA-256 target. For the ECL runner, removing Enemy support
+from the host-entry `/GL` probe or selecting Enemy as the entry with ECL support
+leaves `Run` at 7,032 bytes and `ReadInt` at 117 bytes; target sizes are 7,020
+and 144. Target opcode 0x14 calls `ReadInt` with a stack index and occupies 51
+bytes; the candidate passes an ECX index and occupies 57. The full private ABI
+and caller register allocation remain open.
+
+For Enemy, the target entry has an EBP-aligned `0x2C4` frame and security
+cookie. The matching compiler profile is `/GS`: selected-entry, ECL-supported
+codegen reproduces the earlier 14,508-byte candidate, physical case order and
+181-byte selector against the 14,416-byte target. Without `/GS`, the candidate
+shrinks to 12,988 bytes with ECL support or 12,692 without it; those are
+profile diagnostics only. The `/GS` candidate frame is `0x2BC`. No-inline
+`ReadInt` changes neither candidate, and a 32-bit opcode local grows the Enemy
+candidate to 14,516 bytes. Both source experiments were reverted.
+
+For ANM `ExecuteScript`, the saved-speed declaration-order experiment compiled
+byte-identically to the current 9,960-byte candidate. Inverting POSITION's
+condition changed only three bytes and changed the branch sense away from the
+target, so it was reverted. The target's float-jump opcode 39 body ends at
+`0x00440DFC`, followed by END return and then the stop-update block at
+`0x00440E2B`. The candidate puts the first stop-update block at `0x00407EA6`
+before END at `0x00407EFD`, widening that physical interval from 105 to 192
+bytes. Its complete contribution remains 9,960 bytes, with a 9,584-byte
+pre-table span versus target 9,588. `FindVm`/`GetVm` and child Variant3 retain
+the private ABI mismatches recorded in `ANM-041`; their exactness is unknown.
+
+Probe receipts are under `.analysis/gpt-5.6-sol/20260918-ecl-abi/`, with the
+prior selected ANM candidate and layout in the neighboring
+`20260918-enemy-order/` folder. The next actionable source work is to recover
+the target register and local-slot live ranges that select the private helper
+ABIs and stop-tail placement. Do not promote any of the three large owners by
+size, table order, or source coverage alone.
+
+The ANM float-jump operand slots further isolate the allocator issue: for
+opcodes 33/35/37, target offsets `+0x84/+0x8C/+0x94` each exceed candidate
+`+0x4C/+0x54/+0x5C` by `0x38`, matching the saved-speed slot difference;
+opcode 39 instead uses `+0x2C` versus `+0x24`. A single shared float
+temporary would erase target-observed distinct slots, so the next source
+experiment should preserve each case's independent operand lifetime.
