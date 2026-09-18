@@ -3390,3 +3390,11 @@ candidate to 7,028 bytes and was reverted. Focused evidence is
 `ecl-format-final-percent-continue-probe.json` below the same analysis folder.
 A focused cold replay of `EclVm.cpp` passes all 13 configured exact units in
 two artifacts, 1,301/1,301 bytes and all declared linked fields.
+
+The equal-length ECL runner still has opposite 12-byte local gaps in float
+comparison opcodes 0x3E and 0x44. In 0x3E the target's first float temporary
+is at `[esp+0x100]`, causing long displacement encodings, while the candidate
+uses `[esp+0x4C]`. In 0x44 the target uses short-offset slots `+0x7C/+0x74`
+and the candidate uses `+0x80/+0x78`. Function-scope temporary and commutative
+operand-name experiments compiled byte-identically and were reverted. The
+stack-slot allocation remains an exact-codegen blocker.
