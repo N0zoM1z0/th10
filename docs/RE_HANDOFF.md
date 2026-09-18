@@ -3474,3 +3474,26 @@ the ANM script executor remains a 9,960-byte contribution including its
 The focused `src/EclVm.cpp` cold replay passes all 14 exact units across
 three artifacts, 1,331/1,331 bytes and every declared linkage field. Its
 receipt is `ecl-polar-focused-exact-replay.json` in the same analysis folder.
+
+## Current continuation: ECL polar local width
+
+The target 0x51 call stores its polar result in adjacent stack floats, and
+the byte-identical ANM helper operates on a three-float vector. The ECL view
+now also has three floats, asserted at 12 bytes. In a focused real-host `/GL`
+diagnostic, this changes the runner's frame from `0x104` to the target's
+`0x108` and moves the first raw byte difference from offset `0x2` to `0x32`.
+Its complete contribution remains **7,032 versus 7,020 target bytes**. The
+polar case remains 97/97 bytes, all 59 opcode groups stay in target order,
+and a cold exact replay of the 30-byte helper still passes. The third float's
+runtime meaning is not yet established. Evidence is
+`ecl-polar-three-component-{probe,layout}.json` and
+`ecl-polar-three-component-helper-replay.json` in the same analysis folder.
+The full focused `src/EclVm.cpp` cold replay then passes all 14 exact units
+across three artifacts, 1,331/1,331 bytes and every declared field; receipt
+`ecl-polar-three-component-focused-replay.json`.
+
+The next runner gaps remain the paired arithmetic temporary placements and
+the private `ReadInt` call ABI. Target `ReadInt @ 0x0044FDB0` is 144 bytes with
+an EDX receiver and stack index; the selected candidate is 122 bytes with an
+EDX receiver and ECX index. Prologue and return paths differ, so neither this
+helper nor the caller should be marked exact by case length alone.

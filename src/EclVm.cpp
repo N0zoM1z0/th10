@@ -14,9 +14,13 @@ struct EclVmPolarVectorView
 {
     float x;
     float y;
+    float z;
 
     void FromAngleMagnitude(float angle, float magnitude);
 };
+
+typedef char EclVmPolarVectorViewSizeIs0C[
+    (sizeof(EclVmPolarVectorView) == 0x0c) ? 1 : -1];
 
 void EclVmPolarVectorView::FromAngleMagnitude(float angle, float magnitude)
 {
