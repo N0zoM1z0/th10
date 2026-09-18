@@ -3305,11 +3305,25 @@ Generic `EclVmContext::Run @ 0x0044E1A0` still gives a 7,040-byte candidate
 against 7,020 target when selected as its own `/GL` link entry. The target
 receives the context in EAX, while this candidate receives it in ECX; both
 reserve `0x108` stack bytes. A 32-bit format-index type experiment did not
-change the 20-byte span excess and was reverted. Recover the real private
-LTCG caller/register context before source-level microtuning of this case.
+change the 20-byte span excess and was reverted. Use the host entry for
+subsequent source probes so the private receiver convention is preserved.
+IDA confirms both direct target callers are in `EclVmHost::Run @ 0x0044FD10`.
+Selecting that real host as the link entry makes the candidate runner receive
+its context in EAX too, while the contribution remains 7,040 bytes; this
+isolates the remaining register problem to the runner's EBX/EBP coloring and
+later body shape, rather than the private receiver convention itself.
 The three owners remain non-exact. Focused diagnostics and intermediate
 negative probes are below `.analysis/gpt-5.6-sol/20260918-enemy-order/`.
 A focused cold replay of the two edited source files passed all 81 configured
 exact units across 11 artifacts (16,534/16,534 bytes plus every declared
 linkage field); it does not establish exactness for either large owner.
 Target-independent CI and the required tracking/progress/toolchain checks pass.
+After this checkpoint, moving the absolute-spawn source label next to its
+switch cases left the Enemy candidate byte-identical at 14,532 bytes; that
+experiment was reverted. In the real ECL host entry, swapping the runner's
+two local declarations likewise left the 7,040-byte candidate unchanged.
+Changing only its initial null guard from `*instructionCursor` to
+`instruction` grew it to 7,056 bytes and reduced comparable byte agreement
+from 2,281 to 460; it was reverted. Retained negative diagnostics are
+`absolute-inline-label-probe.json`, `ecl-local-declaration-order-probe.json`,
+and `ecl-direct-initial-guard-probe.json` in the same ignored analysis folder.
