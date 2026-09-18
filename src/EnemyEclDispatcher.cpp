@@ -1241,37 +1241,40 @@ dispatch_store_float_result:
     *(short *)(iVar26 + 0x4ba) = (short)uVar22;
     return 0;
   case ENEMY_ECL_SET_BULLET_SPEED_BY_DIFFICULTY:
+  {
+    int speedIndex;
     uVar22 = ReadIntArgument(0);
     if (g_EnemyDifficulty == 0) {
-      fVar9 = EnemyEncodeOperandIndex(1);
+      speedIndex = 1;
     }
     else if (g_EnemyDifficulty == 1) {
-      fVar9 = EnemyEncodeOperandIndex(2);
+      speedIndex = 2;
     }
     else {
-      fVar9 = EnemyEncodeOperandIndex(3);
+      speedIndex = 3;
       if (g_EnemyDifficulty != 2) {
-        fVar9 = EnemyEncodeOperandIndex(4);
+        speedIndex = 4;
       }
     }
-    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
+    fVar19 = ReadFloatArgument(speedIndex);
     iVar26 = (int)uVar22 * 0x210;
     *(float *)(iVar26 + 0x2dc + (int)runtimeAddress) = (float)fVar19;
     if (g_EnemyDifficulty == 0) {
-      fVar9 = EnemyEncodeOperandIndex(5);
+      speedIndex = 5;
     }
     else if (g_EnemyDifficulty == 1) {
-      fVar9 = EnemyEncodeOperandIndex(6);
+      speedIndex = 6;
     }
     else {
-      fVar9 = EnemyEncodeOperandIndex(7);
+      speedIndex = 7;
       if (g_EnemyDifficulty != 2) {
-        fVar9 = EnemyEncodeOperandIndex(8);
+        speedIndex = 8;
       }
     }
-    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
+    fVar19 = ReadFloatArgument(speedIndex);
     *(float *)(iVar26 + (int)runtimeAddress + 0x2e0) = (float)fVar19;
     return 0;
+  }
   case ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY:
     uVar22 = ReadIntArgument(0);
     if (g_EnemyDifficulty == 0) {

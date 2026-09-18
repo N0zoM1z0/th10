@@ -3647,3 +3647,36 @@ Selected and negative receipts are in
 `ecl-thread-format-focused-replay.json`. Next compare the physical format
 case and arithmetic stack-slot lifetimes against IDA before another
 source/codegen experiment; do not promote the runner from its matched size.
+
+## Current bounded exact packet: Enemy difficulty float operand index
+
+The original Japanese v1.00a target and the active IDA database both attest
+SHA-256 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+The user requested IDA Pro MCP for this investigation; do not route this packet
+through Ghidra. The target dispatcher is reviewed at `0x0040E770`, with its
+full 14,416-byte physical owner and 181-byte selector.
+
+The retained source change in `src/EnemyEclDispatcher.cpp` replaces the
+bit-encoded float carrier of opcode `0x1B3`'s difficulty-selected operand
+index with a case-local integer. The selected Enemy-entry `/GL /GS` link with
+ECL support now gives a 169-byte candidate interval for this case against the
+target's 170 bytes, previously 211; its complete contribution is 14,204
+versus target 14,416. All 108 case groups remain in target physical order,
+and the selector matches. This is source-shape progress, **not** exactness.
+The target saves the initial bullet index in ESI before the first float read
+and scales it afterward; the candidate scales it before that call. The nearby
+opcode `0x1B4` remains 216 versus target 151 bytes.
+
+Eight focused source-shape experiments were compared under the same selected
+link context. A local count index, an explicit count switch, and a preloaded
+count context did not reproduce target `0x1B4` flow. For `0x1B3`, local bullet
+index and float-result declarations compiled identically to the retained
+candidate; an explicit four-way difficulty branch produced a 161-byte case.
+Changing shared rank/difficulty float selectors over-merged the rank-5 case,
+and was reverted. The retained source was compiled again after restoring the
+negative variants; both selected probes report 14,204 bytes and 596/11,660
+comparable-byte agreement. Evidence is in
+`.analysis/gpt-5.6-sol/20260919-enemy-count/`, especially
+`speed-retained-final-{probe,layout}.json` and `speed-int-index-{probe,layout}.json`.
+The ANM executor and generic ECL runner remain non-exact; their current
+measurements and unresolved stack/ABI issues are in `docs/KNOWLEDGE_BASE.md`.
