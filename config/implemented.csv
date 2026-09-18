@@ -86,6 +86,8 @@ EnemyEclResourceView::~EnemyEclResourceView
 EnemyManagerCreate
 EnemyFullObjectView::DispatchEclInstruction
 EnemyRuntimeView::DispatchEclInstruction
+EnemyRuntimeView::ReadIntArgument
+EnemyRuntimeView::ResolveIntArgument
 EnemyFullObjectView::ReadIntOperand
 EnemyFullObjectView::ResolveIntOperand
 EnemyFullObjectView::ReadFloatOperand

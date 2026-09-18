@@ -94,6 +94,8 @@ EnemyEclResourceView::~EnemyEclResourceView,0x0040D680,function
 EnemyManagerCreate,0x0040D6B0,function
 EnemyFullObjectView::DispatchEclInstruction,0x0040E760,function
 EnemyRuntimeView::DispatchEclInstruction,0x0040E770,function
+EnemyRuntimeView::ReadIntArgument,0x00412A00,function
+EnemyRuntimeView::ResolveIntArgument,0x00412A10,function
 EnemyFullObjectView::ReadIntOperand,0x00411FC0,function
 EnemyFullObjectView::ResolveIntOperand,0x00412300,function
 EnemyFullObjectView::ReadFloatOperand,0x00412350,function

@@ -3553,3 +3553,28 @@ opcodes 33/35/37, target offsets `+0x84/+0x8C/+0x94` each exceed candidate
 opcode 39 instead uses `+0x2C` versus `+0x24`. A single shared float
 temporary would erase target-observed distinct slots, so the next source
 experiment should preserve each case's independent operand lifetime.
+
+## Current bounded exact packet: Enemy integer argument resolver
+
+The original Japanese target still attests SHA-256
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+The dispatcher at `0x0040E770` calls `EnemyRuntimeView::ResolveIntArgument`
+at `0x00412A10` nine times. Its complete 75-byte target body resolves a
+variable operand through the active ECL context. Adding a maintained
+forwarder to `EclVmContext::ResolveInt` compiles in two independent selected
+`/GS` LTCG links into a complete 75-byte PDB-owned function whose raw bytes
+equal the target. `EnemyRuntimeView::ReadIntArgument @ 0x00412A00` is also
+source-mapped; its selected candidate remains 14 versus target 16 bytes due
+to the unresolved private `ReadInt` ABI. These two entries retain
+origin-indeterminate status; no `matches.csv` row or authored claim was added.
+
+With the new resolver, selected `/GS` dispatcher codegen is 14,512 versus
+14,416 target bytes, so the owner remains non-exact. The source edit preserves
+all three affected exact units: the two Enemy COFF units plus the ECL polar
+LTCG unit, 144/144 bytes across two artifacts. Evidence is under
+`.analysis/gpt-5.6-sol/20260918-ecl-abi/`, especially
+`enemy-resolve-int-raw-second.json` and `enemy-resolver-focused-replay.json`.
+The next Enemy step is to resolve `ReadInt`'s EDX plus stack-index ABI and
+recompare call-site physical groups, while independently investigating the
+dispatcher frame and register live ranges. ANM `ExecuteScript` and generic
+ECL `Run` remain non-exact at the sizes described above.
