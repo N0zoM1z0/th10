@@ -3614,3 +3614,36 @@ compare the inlined stack-pop source shape and live ranges at the three
 register-choice fields, then remeasure the ECL runner and Enemy dispatcher
 under their selected linked contexts. Do not promote either large owner or
 `ReadInt` from size and ABI alone.
+
+## Current bounded exact packet: ECL runner case 0x14 and percent conversion
+
+The target's opcode 0x14 takes a thread node from `FindThread`, checks it,
+loads `thread->context` into EDI, then calls `ReadInt(1)` before storing the
+control field. The earlier candidate loaded that context only after the
+second call and occupied 53 bytes. A local `threadContext` evaluated before
+the call now yields the target's complete 51-byte instruction sequence in
+the selected `/GL` candidate, modulo linked addresses.
+
+In the format-operand parser, explicitly advancing `cursor` for the literal
+`%%` case makes VC7.1 retain the target's `'%'/ 'd'/ 'f'` branch sequence.
+With the real EclVmHost entry and Enemy support, the generic runner now has
+the target's full 7,020-byte PDB contribution, 6,692-byte pre-table span,
+and all 59 physical opcode groups in order. This is still a mismatched
+candidate: only 795 of 6,264 comparable bytes agree. The format case spans
+253 versus target 247 bytes, and arithmetic cases still contain offsetting
+12- and 15-byte stack-slot gaps. Equal total size is not an exact claim.
+The Enemy `/GS` dispatcher remains 14,284 versus target 14,416 bytes;
+`ReadInt` remains 144 bytes with three register-choice instruction fields
+different. ANM `ExecuteScript` remains non-exact.
+
+The direct null-guard and outer do-while format-parser variants produced
+7,040 and 7,024-byte runners and were reverted. A merged `ReadInt` return
+and a tagged-stack-top local also failed to remove its register differences
+and were reverted. All 14 configured `EclVm.cpp` exact units cold-replay at
+1,331/1,331 bytes across three artifacts after the retained changes.
+Selected and negative receipts are in
+`.analysis/gpt-5.6-sol/20260918-ecl-abi/`; see
+`ecl-thread-format-enemy-support-{probe,layout}.json` and
+`ecl-thread-format-focused-replay.json`. Next compare the physical format
+case and arithmetic stack-slot lifetimes against IDA before another
+source/codegen experiment; do not promote the runner from its matched size.

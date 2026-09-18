@@ -266,7 +266,8 @@ static __forceinline void EvaluateFormatOperands(
         const char conversion = percent[1];
         switch (conversion) {
         case '%':
-            break;
+            cursor = percent + 2;
+            continue;
         case 'd':
         case 'f': {
             const int inlineBytes = OperandInt(context->instruction, 0);
@@ -799,7 +800,11 @@ int EclVmContext::Run(float timeDelta)
             {
                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));
                 if (thread != NULL)
-                    thread->context->threadControl = ReadInt(1);
+                {
+                    EclVmContext *const threadContext = thread->context;
+                    const int control = ReadInt(1);
+                    threadContext->threadControl = control;
+                }
                 break;
             }
 
