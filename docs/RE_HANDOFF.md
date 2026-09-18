@@ -3578,3 +3578,39 @@ The next Enemy step is to resolve `ReadInt`'s EDX plus stack-index ABI and
 recompare call-site physical groups, while independently investigating the
 dispatcher frame and register live ranges. ANM `ExecuteScript` and generic
 ECL `Run` remain non-exact at the sizes described above.
+
+## Current bounded exact packet: ECL integer-reader stack argument
+
+The previous `ReadInt` source copied the index into a separate pop result,
+which led VC7.1 LTCG to pass the index in ECX and emit 117 bytes. The target
+passes the index on the stack, and the pop can overwrite that argument. The
+maintained source now passes `&index` directly to `EclVmStackView::Pop`.
+Selected EclVmHost and Enemy-supported `/GS` links both emit the target's
+EDX receiver, stack index, `RET 4`, and 144-byte extent. The hash-attested
+target differs at three register-choice instruction fields after the pop:
+target modifies ESI with `ADD ESI,-4`, candidate computes `LEA ECX,[ESI-4]`
+and uses ECX for two subsequent memory operands. The remaining three raw
+byte differences are the linked `__ftol2` call displacement. This helper is
+close but still non-exact; changing the parameter to signed `int` did not
+change candidate bytes and was reverted.
+
+The real-host ECL runner now contributes 7,016 bytes versus target 7,020,
+with all 59 physical opcode groups in target order and a four-byte pre-table
+deficit. The selected Enemy `/GS` plus ECL-support link emits a target-sized
+16-byte `ReadIntArgument`, but its ECX/EAX entry allocation is reversed from
+the target's EAX/ECX. The 75-byte `ResolveIntArgument` remains raw-equal.
+The Enemy dispatcher now contributes 14,284 versus target 14,416; its
+181-byte selector and case order still match, but pre-table code is 132
+bytes short. ANM `ExecuteScript` remains non-exact at the earlier 9,960-byte
+candidate. All 14 configured `EclVm.cpp` exact units replay at 1,331/1,331
+bytes across three artifacts after the source edit.
+
+Evidence receipts are under `.analysis/gpt-5.6-sol/20260918-ecl-abi/`,
+especially `ecl-readint-pop-index-raw-diagnostic.json`,
+`ecl-readint-pop-index-layout.json`,
+`enemy-readint-pop-index-layout.json`, and
+`ecl-readint-pop-index-focused-replay.json`. The next exact attempt should
+compare the inlined stack-pop source shape and live ranges at the three
+register-choice fields, then remeasure the ECL runner and Enemy dispatcher
+under their selected linked contexts. Do not promote either large owner or
+`ReadInt` from size and ABI alone.
