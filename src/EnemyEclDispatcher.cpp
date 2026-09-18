@@ -1,6 +1,8 @@
 #include "Enemy.hpp"
+#include "EclVm.hpp"
 
 #include <math.h>
+#include <string.h>
 
 
 // The target dispatcher at 0x0040E770 owns opcodes 0x100 through 0x1B4.
@@ -258,6 +260,31 @@ void __stdcall EnemySetMotionAngle(EnemyMotionView *motion, float angle)
     motion->value1C = EnemyWrapAngle(angle);
 }
 
+int EnemyRuntimeView::ReadIntArgument(int index)
+{
+    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadInt(index);
+}
+
+float EnemyRuntimeView::ReadFloatArgument(int index)
+{
+    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadFloat(index);
+}
+
+float *EnemyRuntimeView::ResolveFloatArgument(int index)
+{
+    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ResolveFloat(index);
+}
+
+int EnemyRuntimeView::ReadRawIntArgument(int index, int rawValue)
+{
+    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadIntValue(index, rawValue);
+}
+
+float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
+{
+    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadFloatValue(index, rawValue);
+}
+
 int EnemyRuntimeView::DispatchEclInstruction()
 
 {
@@ -321,119 +348,13 @@ int EnemyRuntimeView::DispatchEclInstruction()
   switch(opcode) {
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
     goto dispatch_create_enemy_absolute;
-  case ENEMY_ECL_SELECT_ANM_RESOURCE:
-    uVar22 = ReadIntArgument(0);
-    *(int *)((int)runtimeAddress + 0xe8) = (int)uVar22;
-    return 0;
-  case ENEMY_ECL_SET_ANM_SCRIPT:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = (int)uVar22;
-    uVar22 = ReadIntArgument(1);
-    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
-    if ((int)uVar22 < 0) {
-      return 0;
-    }
-    uVar22 = ReadIntArgument(1);
-    puVar5 = (unsigned int *)
-             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
-                          (int)uVar22,5);
-    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = *puVar5;
-    uVar6 = managedVmIds[iVar26];
-    if (iVar26 == 0) {
-      uVar22 = ReadIntArgument(1);
-      *(int *)((int)runtimeAddress + 0xf0) = (int)uVar22;
-      *(unsigned int *)((int)runtimeAddress + 0xec) = *(unsigned int *)((int)runtimeAddress + 0xe8);
-      uVar6 = managedVmIds[iVar26];
-    }
-    iVar27 = reinterpret_cast<int>(EnemyResolveManagedVm(uVar6));
-    goto dispatch_update_primary_anm_bounds;
-  case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
-dispatch_create_enemy_mirrored:
-    iVar26 = *(int *)(iVar27 + 0x10) + 4;
-    fVar9 = *(float *)((int)runtimeAddress + 0x2c);
-    pfVar15 = local_90.floatWords;
-    for (iVar11 = 0x10; iVar11 != 0; iVar11 = iVar11 + -1) {
-      *pfVar15 = 0.0;
-      pfVar15 = pfVar15 + 1;
-    }
-    iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
-    fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
-    fVar10 = *(float *)((int)runtimeAddress + 0x30);
-    local_90.spawnRequest.position.x = (float)(fVar19 + fVar9);
-    fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
-    local_90.spawnRequest.position.y = (float)(fVar19 + fVar10);
-    uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
-    local_90.spawnRequest.life = uVar22;
-    uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
-    local_90.spawnRequest.scoreReward = uVar22;
-    uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
-    local_90.spawnRequest.itemDropType = uVar22;
-    puVar5 = (unsigned int *)((int)runtimeAddress + 0xfc);
-    pbVar16 = reinterpret_cast<unsigned char *>(&local_90.spawnRequest.eclVariables);
-    for (iVar26 = 8; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *(unsigned int *)pbVar16 = *puVar5;
-      puVar5 = puVar5 + 1;
-      pbVar16 = pbVar16 + 4;
-    }
-    local_90.spawnRequest.setFlag0800 = 1;
-    EnemySpawnFromEclInstruction(
-        g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
-        &local_90.spawnRequest);
-    return 0;
-  case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
-    goto dispatch_create_enemy_absolute_mirrored;
-  case ENEMY_ECL_SET_MAIN_ANM_SCRIPT:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = (int)uVar22;
-    uVar22 = ReadIntArgument(1);
-    iVar27 = (int)uVar22;
-    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
-    puVar5 = (unsigned int *)
-             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
-                          iVar27,5);
-    uVar6 = *puVar5;
-    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = uVar6;
-    iVar11 = reinterpret_cast<int>(EnemyResolveManagedVm(uVar6));
-    if (iVar26 == 0) {
-      *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar11 + 0x50) * *(float *)(iVar11 + 0x40);
-      *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar11 + 0x4c) * *(float *)(iVar11 + 0x3c);
-    }
-    if ((*(unsigned char *)((int)runtimeAddress + 0x1444) & 0x10) != 0) {
-      EnemyHideManagedVm(&managedVmIds[iVar26]);
-    }
-    if (iVar26 == 0) {
-      *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x1000;
-      *(int *)((int)runtimeAddress + 0xf4) = iVar27;
-      *(int *)((int)runtimeAddress + 0xf0) = iVar27;
-      *(unsigned int *)((int)runtimeAddress + 0xf8) = 0;
-      *(unsigned int *)((int)runtimeAddress + 0xec) = *(unsigned int *)((int)runtimeAddress + 0xe8);
-      return 0;
-    }
-    break;
-  case ENEMY_ECL_PLAY_ANM:
-    uVar22 = ReadIntArgument(0);
-    uVar23 = ReadIntArgument(1);
-    puVar5 = (unsigned int *)EnemyCreateManagedVm(
-        *(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + (int)uVar22 * 4),
-        (int)uVar23, 6);
-    uVar6 = *puVar5;
-    goto dispatch_place_temporary_anm;
-  case ENEMY_ECL_PLAY_ANM_ABSOLUTE:
-    uVar22 = ReadIntArgument(0);
-    uVar23 = ReadIntArgument(1);
-    EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + (int)uVar22 * 4),(int)uVar23,6);
-    return 0;
   case ENEMY_ECL_CREATE_ENEMY_IF_NO_BOSS:
     if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
       return 0;
     }
   case ENEMY_ECL_CREATE_ENEMY:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;
-    pfVar15 = local_90.floatWords;
-    for (iVar11 = 0x10; iVar11 != 0; iVar11 = iVar11 + -1) {
-      *pfVar15 = 0.0;
-      pfVar15 = pfVar15 + 1;
-    }
+    memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       fVar9 = *(float *)((int)runtimeAddress + 0x2c);
@@ -487,41 +408,10 @@ dispatch_spawn_enemy:
       return 0;
     }
     goto dispatch_create_enemy_absolute;
-  case ENEMY_ECL_CREATE_ENEMY_MIRRORED_IF_NO_BOSS:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) == 0) goto dispatch_create_enemy_mirrored;
-    break;
-  case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED_IF_NO_BOSS:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
-      return 0;
-    }
-    goto dispatch_create_enemy_absolute_mirrored;
-  case ENEMY_ECL_PLAY_SELECTED_ANM:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = (int)uVar22;
-    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
-    puVar5 = (unsigned int *)
-             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
-                          *(int *)((int)runtimeAddress + 0xf4) + 5,5);
-    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = *puVar5;
-    iVar27 = reinterpret_cast<int>(EnemyResolveManagedVm(managedVmIds[iVar26]));
-dispatch_update_primary_anm_bounds:
-    if (iVar26 == 0) {
-      *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar27 + 0x50) * *(float *)(iVar27 + 0x40);
-      *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar27 + 0x4c) * *(float *)(iVar27 + 0x3c);
-    }
-    if ((*(unsigned char *)((int)runtimeAddress + 0x1444) & 0x10) != 0) {
-      EnemyHideManagedVm(&managedVmIds[iVar26]);
-      return 0;
-    }
-    break;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
 dispatch_create_enemy_global:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;
-    pfVar15 = local_90.floatWords;
-    for (iVar11 = 0x10; iVar11 != 0; iVar11 = iVar11 + -1) {
-      *pfVar15 = 0.0;
-      pfVar15 = pfVar15 + 1;
-    }
+    memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
     fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
     local_90.spawnRequest.position.x = (float)(fVar19 + g_EnemyGlobalPositionOffset.x);
@@ -550,6 +440,79 @@ dispatch_create_enemy_global:
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET_IF_NO_BOSS:
     if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) == 0) goto dispatch_create_enemy_global;
     break;
+  case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
+dispatch_create_enemy_mirrored:
+    iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    fVar9 = *(float *)((int)runtimeAddress + 0x2c);
+    memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
+    iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
+    fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
+    fVar10 = *(float *)((int)runtimeAddress + 0x30);
+    local_90.spawnRequest.position.x = (float)(fVar19 + fVar9);
+    fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
+    local_90.spawnRequest.position.y = (float)(fVar19 + fVar10);
+    uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
+    local_90.spawnRequest.life = uVar22;
+    uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
+    local_90.spawnRequest.scoreReward = uVar22;
+    uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
+    local_90.spawnRequest.itemDropType = uVar22;
+    puVar5 = (unsigned int *)((int)runtimeAddress + 0xfc);
+    pbVar16 = reinterpret_cast<unsigned char *>(&local_90.spawnRequest.eclVariables);
+    for (iVar26 = 8; iVar26 != 0; iVar26 = iVar26 + -1) {
+      *(unsigned int *)pbVar16 = *puVar5;
+      puVar5 = puVar5 + 1;
+      pbVar16 = pbVar16 + 4;
+    }
+    local_90.spawnRequest.setFlag0800 = 1;
+    EnemySpawnFromEclInstruction(
+        g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
+        &local_90.spawnRequest);
+    return 0;
+  case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
+    goto dispatch_create_enemy_absolute_mirrored;
+  case ENEMY_ECL_CREATE_ENEMY_MIRRORED_IF_NO_BOSS:
+    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) == 0) goto dispatch_create_enemy_mirrored;
+    break;
+  case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED_IF_NO_BOSS:
+    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
+      return 0;
+    }
+    goto dispatch_create_enemy_absolute_mirrored;
+  case ENEMY_ECL_SELECT_ANM_RESOURCE:
+    uVar22 = ReadIntArgument(0);
+    *(int *)((int)runtimeAddress + 0xe8) = (int)uVar22;
+    return 0;
+  case ENEMY_ECL_SET_ANM_SCRIPT:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = (int)uVar22;
+    uVar22 = ReadIntArgument(1);
+    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
+    if ((int)uVar22 < 0) {
+      return 0;
+    }
+    uVar22 = ReadIntArgument(1);
+    puVar5 = (unsigned int *)
+             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
+                          (int)uVar22,5);
+    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = *puVar5;
+    uVar6 = managedVmIds[iVar26];
+    if (iVar26 == 0) {
+      uVar22 = ReadIntArgument(1);
+      *(int *)((int)runtimeAddress + 0xf0) = (int)uVar22;
+      *(unsigned int *)((int)runtimeAddress + 0xec) = *(unsigned int *)((int)runtimeAddress + 0xe8);
+      uVar6 = managedVmIds[iVar26];
+    }
+    iVar27 = reinterpret_cast<int>(EnemyResolveManagedVm(uVar6));
+    goto dispatch_update_primary_anm_bounds;
+  case ENEMY_ECL_PLAY_ANM:
+    uVar22 = ReadIntArgument(0);
+    uVar23 = ReadIntArgument(1);
+    puVar5 = (unsigned int *)EnemyCreateManagedVm(
+        *(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + (int)uVar22 * 4),
+        (int)uVar23, 6);
+    uVar6 = *puVar5;
+    goto dispatch_place_temporary_anm;
   case ENEMY_ECL_PLAY_ANM_HIGH:
     uVar22 = ReadIntArgument(0);
     uVar23 = ReadIntArgument(1);
@@ -570,6 +533,11 @@ dispatch_place_temporary_anm:
     *(unsigned int *)(iVar26 + 0x340) = *(unsigned int *)((int)runtimeAddress + 0x2c);
     *(unsigned int *)(iVar26 + 0x344) = *(unsigned int *)((int)runtimeAddress + 0x30);
     *(unsigned int *)(iVar26 + 0x348) = *(unsigned int *)((int)runtimeAddress + 0x34);
+    return 0;
+  case ENEMY_ECL_PLAY_ANM_ABSOLUTE:
+    uVar22 = ReadIntArgument(0);
+    uVar23 = ReadIntArgument(1);
+    EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + (int)uVar22 * 4),(int)uVar23,6);
     return 0;
   case ENEMY_ECL_PLAY_ANM_ROTATED:
     uVar22 = ReadIntArgument(0);
@@ -594,6 +562,53 @@ dispatch_place_temporary_anm:
     *(float *)(iVar26 + 0x2c) = (float)fVar19;
     *(unsigned int *)(iVar26 + 0x35c) = *(unsigned int *)(iVar26 + 0x35c) | 4;
     return 0;
+  case ENEMY_ECL_SET_MAIN_ANM_SCRIPT:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = (int)uVar22;
+    uVar22 = ReadIntArgument(1);
+    iVar27 = (int)uVar22;
+    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
+    puVar5 = (unsigned int *)
+             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
+                          iVar27,5);
+    uVar6 = *puVar5;
+    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = uVar6;
+    iVar11 = reinterpret_cast<int>(EnemyResolveManagedVm(uVar6));
+    if (iVar26 == 0) {
+      *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar11 + 0x50) * *(float *)(iVar11 + 0x40);
+      *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar11 + 0x4c) * *(float *)(iVar11 + 0x3c);
+    }
+    if ((*(unsigned char *)((int)runtimeAddress + 0x1444) & 0x10) != 0) {
+      EnemyHideManagedVm(&managedVmIds[iVar26]);
+    }
+    if (iVar26 == 0) {
+      *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x1000;
+      *(int *)((int)runtimeAddress + 0xf4) = iVar27;
+      *(int *)((int)runtimeAddress + 0xf0) = iVar27;
+      *(unsigned int *)((int)runtimeAddress + 0xf8) = 0;
+      *(unsigned int *)((int)runtimeAddress + 0xec) = *(unsigned int *)((int)runtimeAddress + 0xe8);
+      return 0;
+    }
+    break;
+  case ENEMY_ECL_PLAY_SELECTED_ANM:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = (int)uVar22;
+    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
+    puVar5 = (unsigned int *)
+             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
+                          *(int *)((int)runtimeAddress + 0xf4) + 5,5);
+    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = *puVar5;
+    iVar27 = reinterpret_cast<int>(EnemyResolveManagedVm(managedVmIds[iVar26]));
+dispatch_update_primary_anm_bounds:
+    if (iVar26 == 0) {
+      *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar27 + 0x50) * *(float *)(iVar27 + 0x40);
+      *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar27 + 0x4c) * *(float *)(iVar27 + 0x3c);
+    }
+    if ((*(unsigned char *)((int)runtimeAddress + 0x1444) & 0x10) != 0) {
+      EnemyHideManagedVm(&managedVmIds[iVar26]);
+      return 0;
+    }
+    break;
   // Movement and interpolation instructions.
   case ENEMY_ECL_SET_OFFSET_POSITION:
   case ENEMY_ECL_SET_BASE_POSITION:
@@ -613,6 +628,20 @@ dispatch_place_temporary_anm:
     worldMotion.position.x = baseMotion.position.x + offsetMotion.position.x;
     worldMotion.position.y = baseMotion.position.y + offsetMotion.position.y;
     worldMotion.position.z = baseMotion.position.z + offsetMotion.position.z;
+    return 0;
+  case ENEMY_ECL_ADD_OFFSET_POSITION:
+  case ENEMY_ECL_ADD_BASE_POSITION:
+    pfVar15 = (float *)((int)runtimeAddress + 0x58);
+    if (opcode != 0x128) {
+      pfVar15 = (float *)((int)runtimeAddress + 0x84);
+    }
+    fVar19 = (ReadFloatArgument(0));
+    fVar21 = (ReadFloatArgument(1));
+    local_2a8 = (float)fVar21;
+    fVar21 = (ReadFloatArgument(2));
+    *pfVar15 = (float)fVar19 + *pfVar15;
+    pfVar15[1] = local_2a8 + pfVar15[1];
+    pfVar15[2] = (float)(fVar21 + pfVar15[2]);
     return 0;
   case ENEMY_ECL_INTERPOLATE_OFFSET_POSITION:
   case ENEMY_ECL_INTERPOLATE_BASE_POSITION:
@@ -840,6 +869,48 @@ dispatch_place_temporary_anm:
     selectedMotion->velocity = selectedMotion->position;
     selectedMotion->flags |= 1;
     return 0;
+  // Movement and game-state instructions in target case order.
+  case ENEMY_ECL_ADD_OFFSET_VELOCITY:
+  case ENEMY_ECL_ADD_BASE_VELOCITY:
+    iVar26 = (int)runtimeAddress + 0x58;
+    if (opcode != 0x12a) {
+      iVar26 = (int)runtimeAddress + 0x84;
+    }
+    fVar19 = (ReadFloatArgument(0));
+    fVar21 = (ReadFloatArgument(1));
+    if ((float)0.0f < (float)fVar19) {
+      *(float *)(iVar26 + 0xc) = (float)fVar19;
+    }
+    if (0.0f < fVar21) {
+      *(float *)(iVar26 + 0x10) = (float)fVar21;
+    }
+    goto dispatch_copy_player_to_motion;
+  case ENEMY_ECL_COPY_PLAYER_TO_OFFSET:
+    goto dispatch_copy_player_to_motion;
+  case ENEMY_ECL_COPY_PLAYER_TO_BASE:
+    iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
+    *(unsigned int *)((int)runtimeAddress + 0x84) = *(unsigned int *)(iVar26 + 0x1068);
+    *(unsigned int *)((int)runtimeAddress + 0x88) = *(unsigned int *)(iVar26 + 0x106c);
+    *(unsigned int *)((int)runtimeAddress + 0x8c) = *(unsigned int *)(iVar26 + 0x1070);
+    return 0;
+  case ENEMY_ECL_SET_MOVEMENT_BOUNDS:
+    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x200;
+    fVar19 = (ReadFloatArgument(0));
+    *(float *)((int)runtimeAddress + 0x13ac) = (float)fVar19;
+    fVar19 = (ReadFloatArgument(1));
+    *(float *)((int)runtimeAddress + 0x13b0) = (float)fVar19;
+    fVar19 = (ReadFloatArgument(2));
+    *(float *)((int)runtimeAddress + 0x13b4) = (float)fVar19;
+    fVar19 = (ReadFloatArgument(3));
+    *(float *)((int)runtimeAddress + 0x13b8) = (float)fVar19;
+    return 0;
+  case ENEMY_ECL_CLEAR_MOVEMENT_BOUNDS:
+    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) & 0xfffffdff;
+    return 0;
+  case ENEMY_ECL_SET_BULLET_PROTECTION_RANGE:
+    fVar19 = (ReadFloatArgument(0));
+    *(float *)((int)runtimeAddress + 0x1454) = (float)(fVar19 * fVar19);
+    break;
   case ENEMY_ECL_MOVE_RANDOM:
   case ENEMY_ECL_MOVE_RANDOM_BASE:
     selectedMotion = &offsetMotion;
@@ -907,44 +978,16 @@ dispatch_initialize_polar_interpolation:
     EnemyInitializeScalarInterpolation(firstScalarInterpolation);
     selectedMotion->flags &= 0xfffffffe;
     return 0;
-  case ENEMY_ECL_COPY_PLAYER_TO_OFFSET:
-    goto dispatch_copy_player_to_motion;
-  case ENEMY_ECL_COPY_PLAYER_TO_BASE:
-    iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
-    *(unsigned int *)((int)runtimeAddress + 0x84) = *(unsigned int *)(iVar26 + 0x1068);
-    *(unsigned int *)((int)runtimeAddress + 0x88) = *(unsigned int *)(iVar26 + 0x106c);
-    *(unsigned int *)((int)runtimeAddress + 0x8c) = *(unsigned int *)(iVar26 + 0x1070);
+  case ENEMY_ECL_SET_LIFE_MARKER:
+    uVar22 = ReadIntArgument(2);
+    fVar19 = (ReadFloatArgument(1));
+    local_2a8 = (float)fVar19;
+    iVar26 = *(int *)((int)runtimeAddress + 0x13c4);
+    uVar23 = ReadIntArgument(0);
+    iVar27 = reinterpret_cast<int>(g_EnemyVisualState);
+    *(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9e98 + (int)uVar23 * 8) = (int)uVar22;
+    *(float *)(iVar27 + 0x9e94 + (int)uVar23 * 8) = local_2a8 / (float)iVar26;
     return 0;
-  case ENEMY_ECL_ADD_OFFSET_POSITION:
-  case ENEMY_ECL_ADD_BASE_POSITION:
-    pfVar15 = (float *)((int)runtimeAddress + 0x58);
-    if (opcode != 0x128) {
-      pfVar15 = (float *)((int)runtimeAddress + 0x84);
-    }
-    fVar19 = (ReadFloatArgument(0));
-    fVar21 = (ReadFloatArgument(1));
-    local_2a8 = (float)fVar21;
-    fVar21 = (ReadFloatArgument(2));
-    *pfVar15 = (float)fVar19 + *pfVar15;
-    pfVar15[1] = local_2a8 + pfVar15[1];
-    pfVar15[2] = (float)(fVar21 + pfVar15[2]);
-    return 0;
-  case ENEMY_ECL_ADD_OFFSET_VELOCITY:
-  case ENEMY_ECL_ADD_BASE_VELOCITY:
-    iVar26 = (int)runtimeAddress + 0x58;
-    if (opcode != 0x12a) {
-      iVar26 = (int)runtimeAddress + 0x84;
-    }
-    fVar19 = (ReadFloatArgument(0));
-    fVar21 = (ReadFloatArgument(1));
-    if ((float)0.0f < (float)fVar19) {
-      *(float *)(iVar26 + 0xc) = (float)fVar19;
-    }
-    if (0.0f < fVar21) {
-      *(float *)(iVar26 + 0x10) = (float)fVar21;
-    }
-    goto dispatch_copy_player_to_motion;
-  // Enemy state, lifecycle and difficulty instructions.
   case ENEMY_ECL_SET_DAMAGE_HITBOX:
     fVar19 = (ReadFloatArgument(0));
     *(float *)((int)runtimeAddress + 0xb0) = (float)fVar19;
@@ -977,20 +1020,6 @@ dispatch_initialize_polar_interpolation:
       return 0;
     }
     break;
-  case ENEMY_ECL_SET_MOVEMENT_BOUNDS:
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x200;
-    fVar19 = (ReadFloatArgument(0));
-    *(float *)((int)runtimeAddress + 0x13ac) = (float)fVar19;
-    fVar19 = (ReadFloatArgument(1));
-    *(float *)((int)runtimeAddress + 0x13b0) = (float)fVar19;
-    fVar19 = (ReadFloatArgument(2));
-    *(float *)((int)runtimeAddress + 0x13b4) = (float)fVar19;
-    fVar19 = (ReadFloatArgument(3));
-    *(float *)((int)runtimeAddress + 0x13b8) = (float)fVar19;
-    return 0;
-  case ENEMY_ECL_CLEAR_MOVEMENT_BOUNDS:
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) & 0xfffffdff;
-    return 0;
   case ENEMY_ECL_CLEAR_ITEM_DROPS:
     puVar5 = (unsigned int *)((int)runtimeAddress + 0x13d0);
     for (iVar26 = 0xc; iVar26 != 0; iVar26 = iVar26 + -1) {
@@ -1065,194 +1094,16 @@ dispatch_initialize_polar_interpolation:
     *(unsigned int *)(iVar26 + 0x10 + iVar27 * 4) = *(unsigned int *)((int)runtimeAddress + 0x14d8);
     *(int *)((int)runtimeAddress + 0x1450) = iVar27;
     return 0;
-  case ENEMY_ECL_RESET_UPDATE_TIMER:
-    EnemySetTimerCurrent(&updateTimer, 0);
-    return 0;
-  case ENEMY_ECL_SET_INTERRUPT:
-    uVar22 = ReadIntArgument(2);
-    uVar23 = ReadIntArgument(1);
-    uVar24 = ReadIntArgument(0);
-    EnemyConfigureInterrupt((int)uVar23,(int)uVar24,(int)uVar22);
-    return 0;
   case ENEMY_ECL_SET_INVULNERABILITY:
     uVar22 = ReadIntArgument(0);
     EnemySetTimerCurrent(&damageReductionTimer, (int)uVar22);
     return 0;
-  case ENEMY_ECL_PLAY_SOUND:
-    EnemyPlaySound(ReadIntArgument(0));
-    return 0;
-  case ENEMY_ECL_SET_SCREEN_SHAKE:
-    uVar22 = ReadIntArgument(2);
-    uVar6 = (unsigned int)uVar22;
-    uVar22 = ReadIntArgument(1);
-    uVar4 = (unsigned int)uVar22;
-    uVar28 = 0;
+  case ENEMY_ECL_SET_PLAYER_COLLISION_TIMER:
     uVar22 = ReadIntArgument(0);
-    EnemySetScreenShake(1,(int)uVar22,uVar4,uVar6,uVar28);
-    return 0;
-  case ENEMY_ECL_READ_DIALOG:
-    ReadIntArgument(0);
-    EnemyReadDialog();
-    EnemyCancelAllBullets(0);
-    EnemyApplyBulletClear();
-    EnemyKillAll(g_EnemyManager);
-    return 0;
-  case ENEMY_ECL_WAIT_DIALOG:
-    if ((*(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9eb8) != 0) &&
-       (*(int *)(*(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9eb8) + 0x78) == 0)) {
-      return 0xffffffff;
-    }
-    break;
-  case ENEMY_ECL_WAIT_BOSS_CLEAR:
-    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
-      return 0xffffffff;
-    }
-    break;
-  case ENEMY_ECL_SET_TIMEOUT:
-    uVar22 = ReadIntArgument(0);
-    *(int *)(((int)uVar22 + 0x24a) * 0x10 + *(int *)((int)runtimeAddress + 0x14d8)) = iVar27 + 0x18;
-    return 0;
-  case ENEMY_ECL_START_SPELL:
-  case ENEMY_ECL_START_SPELL_2:
-  case ENEMY_ECL_START_SPELL_DIFFICULTY:
-  case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
-  case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
-    local_2a8 = *(float *)(iVar27 + 0x1c);
-    iVar17 = 0;
-    bVar3 = 0x77;
-    local_29d = '\a';
-    iVar11 = iVar27 + 0x20;
-    if (0 < (int)local_2a8) {
-      do {
-        local_90.bytes[iVar17] =
-            reinterpret_cast<const unsigned char *>(iVar27 + 0x20)[iVar17] ^ bVar3;
-        bVar3 = bVar3 + local_29d;
-        local_29d = local_29d + '\x10';
-        iVar17 = iVar17 + 1;
-        iVar11 = (int)local_2a8;
-      } while (iVar17 < (int)local_2a8);
-    }
-    uVar22 = ReadIntArgument(0);
-    iVar26 = (int)uVar22;
-    opcode = *(short *)(iVar27 + 4);
-    if (opcode == 0x165) {
-      iVar26 = iVar26 + g_EnemyDifficulty;
-    }
-    else if (opcode == 0x166) {
-      iVar26 = iVar26 + -1 + g_EnemyDifficulty;
-      iVar27 = g_EnemyDifficulty;
-    }
-    else {
-      if (opcode == 0x167) {
-        iVar26 = iVar26 + -2 + g_EnemyDifficulty;
-      }
-    }
-    ReadIntArgument(2);
-    uVar22 = ReadIntArgument(1);
-    EnemyBeginSpell(reinterpret_cast<int>(g_EnemyGameState),iVar26,reinterpret_cast<char *>(local_90.bytes),(int)uVar22);
-    return 0;
-  case ENEMY_ECL_END_SPELL:
-    EnemyEndSpell(g_EnemyGameState);
-    return 0;
-  case ENEMY_ECL_SET_CHAPTER:
-    uVar22 = ReadIntArgument(0);
-    EnemySetChapter((int)uVar22);
+    EnemySetTimerCurrent(&playerCollisionTimer, (int)uVar22);
     return 0;
   case ENEMY_ECL_KILL_ALL_ENEMIES:
     EnemyKillAll(g_EnemyManager);
-    return 0;
-  case ENEMY_ECL_SET_BULLET_PROTECTION_RANGE:
-    fVar19 = (ReadFloatArgument(0));
-    *(float *)((int)runtimeAddress + 0x1454) = (float)(fVar19 * fVar19);
-    break;
-  case ENEMY_ECL_SET_LIFE_MARKER:
-    uVar22 = ReadIntArgument(2);
-    fVar19 = (ReadFloatArgument(1));
-    local_2a8 = (float)fVar19;
-    iVar26 = *(int *)((int)runtimeAddress + 0x13c4);
-    uVar23 = ReadIntArgument(0);
-    iVar27 = reinterpret_cast<int>(g_EnemyVisualState);
-    *(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9e98 + (int)uVar23 * 8) = (int)uVar22;
-    *(float *)(iVar27 + 0x9e94 + (int)uVar23 * 8) = local_2a8 / (float)iVar26;
-    return 0;
-  case ENEMY_ECL_SELECT_FLOAT_BY_RANK_3:
-    if (g_EnemyRank < 0x200) {
-      fVar9 = 0.0;
-      if (g_EnemyRank < -0x1ff) goto dispatch_store_selected_float;
-    }
-    else {
-      fVar9 = EnemyEncodeOperandIndex(2);
-    }
-    goto dispatch_read_selected_float;
-  case ENEMY_ECL_SELECT_FLOAT_BY_RANK_5:
-    if (599 < g_EnemyRank) {
-dispatch_rank_band_3:
-      fVar9 = EnemyEncodeOperandIndex(4);
-      goto dispatch_store_selected_float;
-    }
-    if (199 < g_EnemyRank) goto dispatch_rank_band_2;
-    if (g_EnemyRank < -200) {
-      if (g_EnemyRank < -400) {
-        fVar9 = 0.0;
-        goto dispatch_store_selected_float;
-      }
-      goto dispatch_difficulty_float_1;
-    }
-dispatch_rank_band_1:
-    fVar9 = EnemyEncodeOperandIndex(2);
-dispatch_store_selected_float:
-    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
-    pfVar15 = (float *)((int)ResolveFloatArgument(0));
-    *pfVar15 = (float)fVar19;
-    return 0;
-  case ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK:
-    fVar19 = (ReadFloatArgument(1));
-    fVar21 = (ReadFloatArgument(2));
-    local_2a8 = (float)fVar21;
-    pfVar15 = (float *)((int)ResolveFloatArgument(0));
-    *pfVar15 = (local_2a8 - (float)fVar19) * ((float)g_EnemyRank + 1024.0f) * 0.00048828125f +
-               (float)fVar19;
-    return 0;
-  case ENEMY_ECL_SELECT_INT_BY_RANK_3:
-    if (0x1ff < g_EnemyRank) {
-dispatch_rank_int_high:
-      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-      uVar22 = ReadIntArgument(2);
-      *puVar5 = (int)uVar22;
-      return 0;
-    }
-    goto dispatch_rank_int_low;
-  case ENEMY_ECL_SELECT_INT_BY_RANK_5:
-    if (599 < g_EnemyRank) {
-      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-      uVar22 = ReadIntArgument(4);
-      *puVar5 = (int)uVar22;
-      return 0;
-    }
-    if (199 < g_EnemyRank) {
-      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-      uVar22 = ReadIntArgument(3);
-      *puVar5 = (int)uVar22;
-      return 0;
-    }
-    if (-0xc9 < g_EnemyRank) goto dispatch_rank_int_high;
-    if (-0x191 < g_EnemyRank) {
-      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-      uVar22 = ReadIntArgument(1);
-      *puVar5 = (int)uVar22;
-      return 0;
-    }
-dispatch_rank_int_low:
-    puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-    uVar22 = ReadIntArgument(0);
-    *puVar5 = (int)uVar22;
-    return 0;
-  case ENEMY_ECL_INTERPOLATE_INT_BY_RANK:
-    uVar22 = ReadIntArgument(1);
-    uVar23 = ReadIntArgument(2);
-    piVar7 = (int *)((int)ResolveIntArgument(0));
-    iVar26 = ((int)uVar23 - (int)uVar22) * (g_EnemyRank + 0x400);
-    *piVar7 = ((int)(iVar26 + (iVar26 >> 0x1f & 0x7ffU)) >> 0xb) + (int)uVar22;
     return 0;
   case ENEMY_ECL_SELECT_INT_BY_DIFFICULTY:
     switch(g_EnemyDifficulty) {
@@ -1302,64 +1153,6 @@ dispatch_store_float_result:
     pfVar15 = (float *)((int)ResolveFloatArgument(0));
     *pfVar15 = (float)fVar19;
     return 0;
-  case ENEMY_ECL_SET_SPELL_TIMEOUT:
-    uVar22 = ReadIntArgument(0);
-    *(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9e90) = (int)uVar22;
-    return 0;
-  case ENEMY_ECL_SET_PLAYER_COLLISION_TIMER:
-    uVar22 = ReadIntArgument(0);
-    EnemySetTimerCurrent(&playerCollisionTimer, (int)uVar22);
-    return 0;
-  case ENEMY_ECL_CANCEL_LASERS:
-    *(unsigned int *)(reinterpret_cast<int>(g_EnemyGameState) + 0x378c) = *(unsigned int *)(reinterpret_cast<int>(g_EnemyGameState) + 0x378c) | 8;
-    return 0;
-  case ENEMY_ECL_ENABLE_BOMB_SHIELD:
-    EnemyEnableBombShield(g_EnemyGameState);
-    return 0;
-  case ENEMY_ECL_SET_GAME_SPEED_FLAG:
-    uVar22 = ReadIntArgument(0);
-    *(unsigned int *)((int)runtimeAddress + 0x1444) =
-         *(unsigned int *)((int)runtimeAddress + 0x1444) ^
-         ((int)uVar22 << 0x13 ^ *(unsigned int *)((int)runtimeAddress + 0x1444)) & 0x80000;
-    return 0;
-  case ENEMY_ECL_WAIT_FOR_EFFECT:
-    EnemyWaitForEffect();
-    return 0;
-  case ENEMY_ECL_SET_ANM_MODE:
-    uVar22 = ReadIntArgument(0);
-    *(unsigned int *)((int)runtimeAddress + 0x1444) =
-         *(unsigned int *)((int)runtimeAddress + 0x1444) ^
-         ((int)uVar22 << 0x14 ^ *(unsigned int *)((int)runtimeAddress + 0x1444)) & 0x100000;
-    uVar22 = ReadIntArgument(1);
-    *(int *)((int)runtimeAddress + 0x1448) = (int)uVar22;
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) & 0xffdfffff;
-    *(unsigned int *)((int)runtimeAddress + 0x144c) = *(unsigned int *)((int)runtimeAddress + 0xf4);
-    return 0;
-  case ENEMY_ECL_SET_TIMER_SCALE:
-    fVar19 = (ReadFloatArgument(0));
-    g_PlayerTimerScale = (float)fVar19;
-    return 0;
-  case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
-    if (g_EnemyDifficulty == 0) {
-      uVar22 = ReadIntArgument(0);
-      fVar9 = (float)(int)uVar22;
-    }
-    else if (g_EnemyDifficulty == 1) {
-      uVar22 = ReadIntArgument(1);
-      fVar9 = (float)(int)uVar22;
-    }
-    else if (g_EnemyDifficulty == 2) {
-      uVar22 = ReadIntArgument(2);
-      fVar9 = (float)(int)uVar22;
-    }
-    else {
-      uVar22 = ReadIntArgument(3);
-      fVar9 = (float)(int)uVar22;
-    }
-    pfVar15 = *(float **)(*(int *)((int)runtimeAddress + 0x14d8) + 4);
-    *pfVar15 = *pfVar15 - fVar9;
-    break;
-  // Bullet-pattern and laser instructions.
   case ENEMY_ECL_INITIALIZE_BULLET_PATTERN:
     uVar22 = ReadIntArgument(0);
     iVar26 = (int)uVar22;
@@ -1378,6 +1171,17 @@ dispatch_store_float_result:
     *(unsigned int *)(iVar11 + 0x4c0) = 0x203;
     *(unsigned int *)((int)runtimeAddress + (iVar26 * 3 + 0x4d1) * 4) = 0;
     *(unsigned int *)((int)runtimeAddress + 0x1348 + iVar26 * 0xc) = 0;
+    return 0;
+  case ENEMY_ECL_COPY_BULLET_PATTERN:
+    uVar22 = ReadIntArgument(1);
+    uVar23 = ReadIntArgument(0);
+    puVar5 = (unsigned int *)((int)uVar22 * 0x210 + 0x2c4 + (int)runtimeAddress);
+    puVar14 = (unsigned int *)((int)uVar23 * 0x210 + 0x2c4 + (int)runtimeAddress);
+    for (iVar26 = 0x84; iVar26 != 0; iVar26 = iVar26 + -1) {
+      *puVar14 = *puVar5;
+      puVar5 = puVar5 + 1;
+      puVar14 = puVar14 + 1;
+    }
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ReadIntArgument(0);
@@ -1434,216 +1238,69 @@ dispatch_store_float_result:
     uVar22 = ReadIntArgument(2);
     *(short *)(iVar26 + 0x4ba) = (short)uVar22;
     return 0;
-  case ENEMY_ECL_SET_BULLET_AIM_MODE:
+  case ENEMY_ECL_SET_BULLET_SPEED_BY_DIFFICULTY:
     uVar22 = ReadIntArgument(0);
-    uVar23 = ReadIntArgument(1);
-    *(short *)((int)uVar22 * 0x210 + 0x4bc + (int)runtimeAddress) = (short)uVar23;
+    if (g_EnemyDifficulty == 0) {
+      fVar9 = EnemyEncodeOperandIndex(1);
+    }
+    else if (g_EnemyDifficulty == 1) {
+      fVar9 = EnemyEncodeOperandIndex(2);
+    }
+    else {
+      fVar9 = EnemyEncodeOperandIndex(3);
+      if (g_EnemyDifficulty != 2) {
+        fVar9 = EnemyEncodeOperandIndex(4);
+      }
+    }
+    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
+    iVar26 = (int)uVar22 * 0x210;
+    *(float *)(iVar26 + 0x2dc + (int)runtimeAddress) = (float)fVar19;
+    if (g_EnemyDifficulty == 0) {
+      fVar9 = EnemyEncodeOperandIndex(5);
+    }
+    else if (g_EnemyDifficulty == 1) {
+      fVar9 = EnemyEncodeOperandIndex(6);
+    }
+    else {
+      fVar9 = EnemyEncodeOperandIndex(7);
+      if (g_EnemyDifficulty != 2) {
+        fVar9 = EnemyEncodeOperandIndex(8);
+      }
+    }
+    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
+    *(float *)(iVar26 + (int)runtimeAddress + 0x2e0) = (float)fVar19;
     return 0;
-  case ENEMY_ECL_SET_BULLET_SOUND:
+  case ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY:
     uVar22 = ReadIntArgument(0);
+    if (g_EnemyDifficulty == 0) {
+      iVar26 = 1;
+    }
+    else if (g_EnemyDifficulty == 1) {
+      iVar26 = 2;
+    }
+    else if (g_EnemyDifficulty == 2) {
+      iVar26 = 3;
+    }
+    else {
+      iVar26 = 4;
+    }
+    uVar23 = ReadIntArgument(iVar26);
     iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
-    uVar22 = ReadIntArgument(1);
-    *(int *)(iVar26 + 0x4c4) = (int)uVar22;
-    uVar22 = ReadIntArgument(2);
-    *(int *)(iVar26 + 0x4c8) = (int)uVar22;
-    return 0;
-  case ENEMY_ECL_SET_BULLET_EXTRA:
-    uVar22 = ReadIntArgument(0);
-    uVar23 = ReadIntArgument(1);
-    iVar26 = (int)uVar22 * 0x16 + (int)uVar23;
-    iVar27 = (int)runtimeAddress + iVar26 * 0x18;
-    uVar22 = ReadIntArgument(2);
-    *(int *)(iVar27 + 0x2f8) = (int)uVar22;
-    uVar22 = ReadIntArgument(3);
-    *(int *)(iVar27 + 0x2f4) = (int)uVar22;
-    uVar22 = ReadIntArgument(4);
-    *(int *)(iVar27 + 0x2ec) = (int)uVar22;
-    uVar22 = ReadIntArgument(5);
-    *(int *)(iVar27 + 0x2f0) = (int)uVar22;
-    fVar19 = (ReadFloatArgument(6));
-    *(float *)(iVar27 + 0x2e4) = (float)fVar19;
-    fVar19 = (ReadFloatArgument(7));
-    *(float *)((int)runtimeAddress + (iVar26 * 3 + 0x5d) * 8) = (float)fVar19;
-    return 0;
-  case ENEMY_ECL_CANCEL_ALL_BULLETS:
-    EnemyCancelAllBullets(1);
-    EnemyApplyBulletClear();
-    return 0;
-  case ENEMY_ECL_COPY_BULLET_PATTERN:
-    uVar22 = ReadIntArgument(1);
-    uVar23 = ReadIntArgument(0);
-    puVar5 = (unsigned int *)((int)uVar22 * 0x210 + 0x2c4 + (int)runtimeAddress);
-    puVar14 = (unsigned int *)((int)uVar23 * 0x210 + 0x2c4 + (int)runtimeAddress);
-    for (iVar26 = 0x84; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *puVar14 = *puVar5;
-      puVar5 = puVar5 + 1;
-      puVar14 = puVar14 + 1;
+    *(short *)(iVar26 + 0x4b8) = (short)uVar23;
+    if (g_EnemyDifficulty == 0) {
+      iVar27 = 5;
     }
-    return 0;
-  case ENEMY_ECL_FIRE_LASER_A:
-  case ENEMY_ECL_FIRE_LASER_A_WITH_PATTERN:
-    pfVar15 = local_288.floats;
-    for (iVar27 = 0x77; iVar27 != 0; iVar27 = iVar27 + -1) {
-      *pfVar15 = 0.0;
-      pfVar15 = pfVar15 + 1;
+    else if (g_EnemyDifficulty == 1) {
+      iVar27 = 6;
     }
-    if (opcode == 0x1af) {
-      puVar5 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar14 = local_288.words + 11;
-      for (iVar27 = 0x6c; iVar27 != 0; iVar27 = iVar27 + -1) {
-        *puVar14 = *puVar5;
-        puVar5 = puVar5 + 1;
-        puVar14 = puVar14 + 1;
-      }
+    else if (g_EnemyDifficulty == 2) {
+      iVar27 = 7;
     }
-    local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    local_288.floats[0] = local_2b4;
-    local_288.floats[1] = local_2b0;
-    local_288.floats[2] = local_2ac;
-    uVar22 = ReadIntArgument(0);
-    local_288.halves[18] = (unsigned short)uVar22;
-    uVar22 = ReadIntArgument(1);
-    local_288.halves[19] = (unsigned short)uVar22;
-    fVar19 = (ReadFloatArgument(2));
-    local_288.floats[3] = (float)fVar19;
-    fVar19 = (ReadFloatArgument(3));
-    local_288.floats[8] = (float)fVar19;
-    fVar19 = (ReadFloatArgument(4));
-    local_288.floats[5] = (float)fVar19;
-    fVar19 = (ReadFloatArgument(5));
-    local_288.floats[4] = (float)fVar19;
-    fVar19 = (ReadFloatArgument(6));
-    local_288.floats[6] = (float)fVar19;
-    fVar19 = (ReadFloatArgument(7));
-    local_288.floats[7] = (float)fVar19;
-    local_288.words[10] |= 1;
-    EnemyFireLaser(g_EnemyBulletManager, &local_288, 0);
-    return 0;
-  case ENEMY_ECL_FIRE_STRAIGHT_LASER:
-  case ENEMY_ECL_FIRE_STRAIGHT_LASER_WITH_PATTERN:
-    pfVar15 = local_288.floats;
-    for (iVar26 = 0x7e; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *pfVar15 = 0.0;
-      pfVar15 = pfVar15 + 1;
+    else {
+      iVar27 = 8;
     }
-    local_288.floats[11] = 8.0f;
-    puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-    if (*(short *)(iVar27 + 4) == 0x1b0) {
-      puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar13 = local_288.words + 18;
-      for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
-        *puVar13 = *puVar14;
-        puVar14 = puVar14 + 1;
-        puVar13 = puVar13 + 1;
-      }
-    }
-    local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    local_288.floats[0] = local_2b4;
-    local_288.floats[1] = local_2b0;
-    local_288.floats[2] = local_2ac;
-    uVar22 = ReadIntArgument(1);
-    local_288.halves[32] = (unsigned short)uVar22;
-    uVar22 = ReadIntArgument(2);
-    local_288.halves[33] = (unsigned short)uVar22;
-    fVar19 = (ReadFloatArgument(3));
-    local_288.floats[6] = (float)fVar19;
-    fVar19 = (ReadFloatArgument(4));
-    local_288.floats[9] = (float)fVar19;
-    fVar19 = (ReadFloatArgument(5));
-    local_288.floats[8] = (float)fVar19;
-    uVar22 = ReadIntArgument(6);
-    local_288.words[12] = (unsigned int)uVar22;
-    uVar22 = ReadIntArgument(7);
-    local_288.words[13] = (unsigned int)uVar22;
-    uVar22 = ReadIntArgument(8);
-    local_288.words[14] = (unsigned int)uVar22;
-    uVar22 = ReadIntArgument(9);
-    local_288.words[15] = (unsigned int)uVar22;
-    fVar19 = (ReadFloatArgument(10));
-    local_288.floats[10] = (float)fVar19;
-    uVar22 = ReadIntArgument(0xb);
-    local_288.words[17] = (unsigned int)uVar22 | 2;
-    uVar6 = EnemyFireLaser(g_EnemyBulletManager, &local_288, 1);
-    if (puVar5 != (unsigned int *)0x0) {
-      *puVar5 = uVar6;
-      return 0;
-    }
-    break;
-  case ENEMY_ECL_SET_LASER_OFFSET:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
-    if (iVar26 != 0) {
-      fVar19 = (ReadFloatArgument(2));
-      fVar21 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x24) = (float)fVar21;
-      *(float *)(iVar26 + 0x28) = (float)fVar19;
-      *(unsigned int *)(iVar26 + 0x2c) = 0;
-      return 0;
-    }
-    break;
-  case ENEMY_ECL_SET_LASER_ANGLE:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
-    if (iVar26 != 0) {
-      fVar19 = (ReadFloatArgument(2));
-      fVar21 = (ReadFloatArgument(1));
-      local_2b4 = (float)fVar21;
-      local_2ac = 0.0;
-      local_2b0 = (float)fVar19;
-      EnemySetLaserPosition(
-          iVar26, reinterpret_cast<const PlayerFloat3 *>(&local_2b4));
-      return 0;
-    }
-    break;
-  case ENEMY_ECL_SET_LASER_SPEED:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
-    if (iVar26 != 0) {
-      fVar19 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x48) = (float)fVar19;
-      return 0;
-    }
-    break;
-  case ENEMY_ECL_SET_LASER_COUNT:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
-    if (iVar26 != 0) {
-      fVar19 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x44) = (float)fVar19;
-      return 0;
-    }
-    break;
-  case ENEMY_ECL_SET_LASER_AIM:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
-    if (iVar26 != 0) {
-      fVar19 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x3c) = (float)fVar19;
-      return 0;
-    }
-    break;
-  case ENEMY_ECL_SET_LASER_SOUND:
-    uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
-    if (iVar26 != 0) {
-      fVar19 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x440) = (float)fVar19;
-      return 0;
-    }
-    break;
-  case ENEMY_ECL_CANCEL_BULLET_PATTERN:
-    fVar19 = (ReadFloatArgument(0));
-    EnemyCancelBulletPattern((float)fVar19,1,0);
-    EnemyApplyBulletCancel();
-    return 0;
-  case ENEMY_ECL_CLEAR_BULLET_PATTERN:
-    fVar19 = (ReadFloatArgument(0));
-    EnemyCancelBulletPattern((float)fVar19,0,0);
-    EnemyApplyBulletCancel();
+    uVar22 = ReadIntArgument(iVar27);
+    *(short *)(iVar26 + 0x4ba) = (short)uVar22;
     return 0;
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_3:
     uVar22 = ReadIntArgument(0);
@@ -1775,6 +1432,231 @@ dispatch_select_bullet_count_low:
          (short)((int)(iVar26 + (iVar26 >> 0x1f & 0x7ffU)) >> 0xb) +
          (short)secondLowBulletCount;
     return 0;
+  case ENEMY_ECL_SET_BULLET_AIM_MODE:
+    uVar22 = ReadIntArgument(0);
+    uVar23 = ReadIntArgument(1);
+    *(short *)((int)uVar22 * 0x210 + 0x4bc + (int)runtimeAddress) = (short)uVar23;
+    return 0;
+  case ENEMY_ECL_SET_BULLET_SOUND:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
+    uVar22 = ReadIntArgument(1);
+    *(int *)(iVar26 + 0x4c4) = (int)uVar22;
+    uVar22 = ReadIntArgument(2);
+    *(int *)(iVar26 + 0x4c8) = (int)uVar22;
+    return 0;
+  case ENEMY_ECL_SET_BULLET_EXTRA:
+    uVar22 = ReadIntArgument(0);
+    uVar23 = ReadIntArgument(1);
+    iVar26 = (int)uVar22 * 0x16 + (int)uVar23;
+    iVar27 = (int)runtimeAddress + iVar26 * 0x18;
+    uVar22 = ReadIntArgument(2);
+    *(int *)(iVar27 + 0x2f8) = (int)uVar22;
+    uVar22 = ReadIntArgument(3);
+    *(int *)(iVar27 + 0x2f4) = (int)uVar22;
+    uVar22 = ReadIntArgument(4);
+    *(int *)(iVar27 + 0x2ec) = (int)uVar22;
+    uVar22 = ReadIntArgument(5);
+    *(int *)(iVar27 + 0x2f0) = (int)uVar22;
+    fVar19 = (ReadFloatArgument(6));
+    *(float *)(iVar27 + 0x2e4) = (float)fVar19;
+    fVar19 = (ReadFloatArgument(7));
+    *(float *)((int)runtimeAddress + (iVar26 * 3 + 0x5d) * 8) = (float)fVar19;
+    return 0;
+  case ENEMY_ECL_RESET_UPDATE_TIMER:
+    EnemySetTimerCurrent(&updateTimer, 0);
+    return 0;
+  case ENEMY_ECL_SET_INTERRUPT:
+    uVar22 = ReadIntArgument(2);
+    uVar23 = ReadIntArgument(1);
+    uVar24 = ReadIntArgument(0);
+    EnemyConfigureInterrupt((int)uVar23,(int)uVar24,(int)uVar22);
+    return 0;
+  case ENEMY_ECL_SET_TIMEOUT:
+    uVar22 = ReadIntArgument(0);
+    *(int *)(((int)uVar22 + 0x24a) * 0x10 + *(int *)((int)runtimeAddress + 0x14d8)) = iVar27 + 0x18;
+    return 0;
+  case ENEMY_ECL_CANCEL_ALL_BULLETS:
+    EnemyCancelAllBullets(1);
+    EnemyApplyBulletClear();
+    return 0;
+  case ENEMY_ECL_PLAY_SOUND:
+    EnemyPlaySound(ReadIntArgument(0));
+    return 0;
+  case ENEMY_ECL_SET_SCREEN_SHAKE:
+    uVar22 = ReadIntArgument(2);
+    uVar6 = (unsigned int)uVar22;
+    uVar22 = ReadIntArgument(1);
+    uVar4 = (unsigned int)uVar22;
+    uVar28 = 0;
+    uVar22 = ReadIntArgument(0);
+    EnemySetScreenShake(1,(int)uVar22,uVar4,uVar6,uVar28);
+    return 0;
+  case ENEMY_ECL_READ_DIALOG:
+    ReadIntArgument(0);
+    EnemyReadDialog();
+    EnemyCancelAllBullets(0);
+    EnemyApplyBulletClear();
+    EnemyKillAll(g_EnemyManager);
+    return 0;
+  case ENEMY_ECL_WAIT_DIALOG:
+    if ((*(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9eb8) != 0) &&
+       (*(int *)(*(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9eb8) + 0x78) == 0)) {
+      return 0xffffffff;
+    }
+    break;
+  case ENEMY_ECL_WAIT_BOSS_CLEAR:
+    if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
+      return 0xffffffff;
+    }
+    break;
+  case ENEMY_ECL_START_SPELL:
+  case ENEMY_ECL_START_SPELL_2:
+  case ENEMY_ECL_START_SPELL_DIFFICULTY:
+  case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
+  case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
+    local_2a8 = *(float *)(iVar27 + 0x1c);
+    iVar17 = 0;
+    bVar3 = 0x77;
+    local_29d = '\a';
+    iVar11 = iVar27 + 0x20;
+    if (0 < (int)local_2a8) {
+      do {
+        local_90.bytes[iVar17] =
+            reinterpret_cast<const unsigned char *>(iVar27 + 0x20)[iVar17] ^ bVar3;
+        bVar3 = bVar3 + local_29d;
+        local_29d = local_29d + '\x10';
+        iVar17 = iVar17 + 1;
+        iVar11 = (int)local_2a8;
+      } while (iVar17 < (int)local_2a8);
+    }
+    uVar22 = ReadIntArgument(0);
+    iVar26 = (int)uVar22;
+    opcode = *(short *)(iVar27 + 4);
+    if (opcode == 0x165) {
+      iVar26 = iVar26 + g_EnemyDifficulty;
+    }
+    else if (opcode == 0x166) {
+      iVar26 = iVar26 + -1 + g_EnemyDifficulty;
+      iVar27 = g_EnemyDifficulty;
+    }
+    else {
+      if (opcode == 0x167) {
+        iVar26 = iVar26 + -2 + g_EnemyDifficulty;
+      }
+    }
+    ReadIntArgument(2);
+    uVar22 = ReadIntArgument(1);
+    EnemyBeginSpell(reinterpret_cast<int>(g_EnemyGameState),iVar26,reinterpret_cast<char *>(local_90.bytes),(int)uVar22);
+    return 0;
+  case ENEMY_ECL_END_SPELL:
+    EnemyEndSpell(g_EnemyGameState);
+    return 0;
+  case ENEMY_ECL_CANCEL_LASERS:
+    *(unsigned int *)(reinterpret_cast<int>(g_EnemyGameState) + 0x378c) = *(unsigned int *)(reinterpret_cast<int>(g_EnemyGameState) + 0x378c) | 8;
+    return 0;
+  case ENEMY_ECL_ENABLE_BOMB_SHIELD:
+    EnemyEnableBombShield(g_EnemyGameState);
+    return 0;
+  case ENEMY_ECL_SET_GAME_SPEED_FLAG:
+    uVar22 = ReadIntArgument(0);
+    *(unsigned int *)((int)runtimeAddress + 0x1444) =
+         *(unsigned int *)((int)runtimeAddress + 0x1444) ^
+         ((int)uVar22 << 0x13 ^ *(unsigned int *)((int)runtimeAddress + 0x1444)) & 0x80000;
+    return 0;
+  case ENEMY_ECL_FIRE_LASER_A:
+  case ENEMY_ECL_FIRE_LASER_A_WITH_PATTERN:
+    pfVar15 = local_288.floats;
+    for (iVar27 = 0x77; iVar27 != 0; iVar27 = iVar27 + -1) {
+      *pfVar15 = 0.0;
+      pfVar15 = pfVar15 + 1;
+    }
+    if (opcode == 0x1af) {
+      puVar5 = (unsigned int *)((int)runtimeAddress + 0x2e4);
+      puVar14 = local_288.words + 11;
+      for (iVar27 = 0x6c; iVar27 != 0; iVar27 = iVar27 + -1) {
+        *puVar14 = *puVar5;
+        puVar5 = puVar5 + 1;
+        puVar14 = puVar14 + 1;
+      }
+    }
+    local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
+    local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
+    local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    local_288.floats[0] = local_2b4;
+    local_288.floats[1] = local_2b0;
+    local_288.floats[2] = local_2ac;
+    uVar22 = ReadIntArgument(0);
+    local_288.halves[18] = (unsigned short)uVar22;
+    uVar22 = ReadIntArgument(1);
+    local_288.halves[19] = (unsigned short)uVar22;
+    fVar19 = (ReadFloatArgument(2));
+    local_288.floats[3] = (float)fVar19;
+    fVar19 = (ReadFloatArgument(3));
+    local_288.floats[8] = (float)fVar19;
+    fVar19 = (ReadFloatArgument(4));
+    local_288.floats[5] = (float)fVar19;
+    fVar19 = (ReadFloatArgument(5));
+    local_288.floats[4] = (float)fVar19;
+    fVar19 = (ReadFloatArgument(6));
+    local_288.floats[6] = (float)fVar19;
+    fVar19 = (ReadFloatArgument(7));
+    local_288.floats[7] = (float)fVar19;
+    local_288.words[10] |= 1;
+    EnemyFireLaser(g_EnemyBulletManager, &local_288, 0);
+    return 0;
+  case ENEMY_ECL_FIRE_STRAIGHT_LASER:
+  case ENEMY_ECL_FIRE_STRAIGHT_LASER_WITH_PATTERN:
+    pfVar15 = local_288.floats;
+    for (iVar26 = 0x7e; iVar26 != 0; iVar26 = iVar26 + -1) {
+      *pfVar15 = 0.0;
+      pfVar15 = pfVar15 + 1;
+    }
+    local_288.floats[11] = 8.0f;
+    puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+    if (*(short *)(iVar27 + 4) == 0x1b0) {
+      puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);
+      puVar13 = local_288.words + 18;
+      for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
+        *puVar13 = *puVar14;
+        puVar14 = puVar14 + 1;
+        puVar13 = puVar13 + 1;
+      }
+    }
+    local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
+    local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
+    local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    local_288.floats[0] = local_2b4;
+    local_288.floats[1] = local_2b0;
+    local_288.floats[2] = local_2ac;
+    uVar22 = ReadIntArgument(1);
+    local_288.halves[32] = (unsigned short)uVar22;
+    uVar22 = ReadIntArgument(2);
+    local_288.halves[33] = (unsigned short)uVar22;
+    fVar19 = (ReadFloatArgument(3));
+    local_288.floats[6] = (float)fVar19;
+    fVar19 = (ReadFloatArgument(4));
+    local_288.floats[9] = (float)fVar19;
+    fVar19 = (ReadFloatArgument(5));
+    local_288.floats[8] = (float)fVar19;
+    uVar22 = ReadIntArgument(6);
+    local_288.words[12] = (unsigned int)uVar22;
+    uVar22 = ReadIntArgument(7);
+    local_288.words[13] = (unsigned int)uVar22;
+    uVar22 = ReadIntArgument(8);
+    local_288.words[14] = (unsigned int)uVar22;
+    uVar22 = ReadIntArgument(9);
+    local_288.words[15] = (unsigned int)uVar22;
+    fVar19 = (ReadFloatArgument(10));
+    local_288.floats[10] = (float)fVar19;
+    uVar22 = ReadIntArgument(0xb);
+    local_288.words[17] = (unsigned int)uVar22 | 2;
+    uVar6 = EnemyFireLaser(g_EnemyBulletManager, &local_288, 1);
+    if (puVar5 != (unsigned int *)0x0) {
+      *puVar5 = uVar6;
+      return 0;
+    }
+    break;
   case ENEMY_ECL_FIRE_LASER:
   case ENEMY_ECL_FIRE_LASER_WITH_PATTERN:
     pfVar15 = local_288.floats;
@@ -1863,6 +1745,182 @@ dispatch_select_bullet_count_low:
       return 0;
     }
     break;
+  case ENEMY_ECL_SET_LASER_OFFSET:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = EnemyFindLaser((int)uVar22);
+    if (iVar26 != 0) {
+      fVar19 = (ReadFloatArgument(2));
+      fVar21 = (ReadFloatArgument(1));
+      *(float *)(iVar26 + 0x24) = (float)fVar21;
+      *(float *)(iVar26 + 0x28) = (float)fVar19;
+      *(unsigned int *)(iVar26 + 0x2c) = 0;
+      return 0;
+    }
+    break;
+  case ENEMY_ECL_SET_LASER_ANGLE:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = EnemyFindLaser((int)uVar22);
+    if (iVar26 != 0) {
+      fVar19 = (ReadFloatArgument(2));
+      fVar21 = (ReadFloatArgument(1));
+      local_2b4 = (float)fVar21;
+      local_2ac = 0.0;
+      local_2b0 = (float)fVar19;
+      EnemySetLaserPosition(
+          iVar26, reinterpret_cast<const PlayerFloat3 *>(&local_2b4));
+      return 0;
+    }
+    break;
+  case ENEMY_ECL_SET_LASER_SPEED:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = EnemyFindLaser((int)uVar22);
+    if (iVar26 != 0) {
+      fVar19 = (ReadFloatArgument(1));
+      *(float *)(iVar26 + 0x48) = (float)fVar19;
+      return 0;
+    }
+    break;
+  case ENEMY_ECL_SET_LASER_COUNT:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = EnemyFindLaser((int)uVar22);
+    if (iVar26 != 0) {
+      fVar19 = (ReadFloatArgument(1));
+      *(float *)(iVar26 + 0x44) = (float)fVar19;
+      return 0;
+    }
+    break;
+  case ENEMY_ECL_SET_LASER_AIM:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = EnemyFindLaser((int)uVar22);
+    if (iVar26 != 0) {
+      fVar19 = (ReadFloatArgument(1));
+      *(float *)(iVar26 + 0x3c) = (float)fVar19;
+      return 0;
+    }
+    break;
+  case ENEMY_ECL_SET_LASER_SOUND:
+    uVar22 = ReadIntArgument(0);
+    iVar26 = EnemyFindLaser((int)uVar22);
+    if (iVar26 != 0) {
+      fVar19 = (ReadFloatArgument(1));
+      *(float *)(iVar26 + 0x440) = (float)fVar19;
+      return 0;
+    }
+    break;
+  case ENEMY_ECL_CANCEL_BULLET_PATTERN:
+    fVar19 = (ReadFloatArgument(0));
+    EnemyCancelBulletPattern((float)fVar19,1,0);
+    EnemyApplyBulletCancel();
+    return 0;
+  case ENEMY_ECL_CLEAR_BULLET_PATTERN:
+    fVar19 = (ReadFloatArgument(0));
+    EnemyCancelBulletPattern((float)fVar19,0,0);
+    EnemyApplyBulletCancel();
+    return 0;
+  case ENEMY_ECL_SET_CHAPTER:
+    uVar22 = ReadIntArgument(0);
+    EnemySetChapter((int)uVar22);
+    return 0;
+  case ENEMY_ECL_SELECT_FLOAT_BY_RANK_3:
+    if (g_EnemyRank < 0x200) {
+      fVar9 = 0.0;
+      if (g_EnemyRank < -0x1ff) goto dispatch_store_selected_float;
+    }
+    else {
+      fVar9 = EnemyEncodeOperandIndex(2);
+    }
+    goto dispatch_read_selected_float;
+  case ENEMY_ECL_SELECT_FLOAT_BY_RANK_5:
+    if (599 < g_EnemyRank) {
+dispatch_rank_band_3:
+      fVar9 = EnemyEncodeOperandIndex(4);
+      goto dispatch_store_selected_float;
+    }
+    if (199 < g_EnemyRank) goto dispatch_rank_band_2;
+    if (g_EnemyRank < -200) {
+      if (g_EnemyRank < -400) {
+        fVar9 = 0.0;
+        goto dispatch_store_selected_float;
+      }
+      goto dispatch_difficulty_float_1;
+    }
+dispatch_rank_band_1:
+    fVar9 = EnemyEncodeOperandIndex(2);
+dispatch_store_selected_float:
+    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
+    pfVar15 = (float *)((int)ResolveFloatArgument(0));
+    *pfVar15 = (float)fVar19;
+    return 0;
+  case ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK:
+    fVar19 = (ReadFloatArgument(1));
+    fVar21 = (ReadFloatArgument(2));
+    local_2a8 = (float)fVar21;
+    pfVar15 = (float *)((int)ResolveFloatArgument(0));
+    *pfVar15 = (local_2a8 - (float)fVar19) * ((float)g_EnemyRank + 1024.0f) * 0.00048828125f +
+               (float)fVar19;
+    return 0;
+  case ENEMY_ECL_SELECT_INT_BY_RANK_3:
+    if (0x1ff < g_EnemyRank) {
+dispatch_rank_int_high:
+      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+      uVar22 = ReadIntArgument(2);
+      *puVar5 = (int)uVar22;
+      return 0;
+    }
+    goto dispatch_rank_int_low;
+  case ENEMY_ECL_SELECT_INT_BY_RANK_5:
+    if (599 < g_EnemyRank) {
+      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+      uVar22 = ReadIntArgument(4);
+      *puVar5 = (int)uVar22;
+      return 0;
+    }
+    if (199 < g_EnemyRank) {
+      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+      uVar22 = ReadIntArgument(3);
+      *puVar5 = (int)uVar22;
+      return 0;
+    }
+    if (-0xc9 < g_EnemyRank) goto dispatch_rank_int_high;
+    if (-0x191 < g_EnemyRank) {
+      puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+      uVar22 = ReadIntArgument(1);
+      *puVar5 = (int)uVar22;
+      return 0;
+    }
+dispatch_rank_int_low:
+    puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
+    uVar22 = ReadIntArgument(0);
+    *puVar5 = (int)uVar22;
+    return 0;
+  case ENEMY_ECL_INTERPOLATE_INT_BY_RANK:
+    uVar22 = ReadIntArgument(1);
+    uVar23 = ReadIntArgument(2);
+    piVar7 = (int *)((int)ResolveIntArgument(0));
+    iVar26 = ((int)uVar23 - (int)uVar22) * (g_EnemyRank + 0x400);
+    *piVar7 = ((int)(iVar26 + (iVar26 >> 0x1f & 0x7ffU)) >> 0xb) + (int)uVar22;
+    return 0;
+  case ENEMY_ECL_SET_SPELL_TIMEOUT:
+    uVar22 = ReadIntArgument(0);
+    *(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9e90) = (int)uVar22;
+    return 0;
+  case ENEMY_ECL_WAIT_FOR_EFFECT:
+    EnemyWaitForEffect();
+    return 0;
+  case ENEMY_ECL_SET_ANM_MODE:
+    uVar22 = ReadIntArgument(0);
+    *(unsigned int *)((int)runtimeAddress + 0x1444) =
+         *(unsigned int *)((int)runtimeAddress + 0x1444) ^
+         ((int)uVar22 << 0x14 ^ *(unsigned int *)((int)runtimeAddress + 0x1444)) & 0x100000;
+    uVar22 = ReadIntArgument(1);
+    *(int *)((int)runtimeAddress + 0x1448) = (int)uVar22;
+    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) & 0xffdfffff;
+    *(unsigned int *)((int)runtimeAddress + 0x144c) = *(unsigned int *)((int)runtimeAddress + 0xf4);
+    return 0;
+  case ENEMY_ECL_SET_TIMER_SCALE:
+    fVar19 = (ReadFloatArgument(0));
+    g_PlayerTimerScale = (float)fVar19;
+    return 0;
   case ENEMY_ECL_AIM_BULLET_AT_PLAYER:
     pfVar15 = (float *)(reinterpret_cast<int>(g_Player) + 0x3c0);
     fVar19 = (ReadFloatArgument(1));
@@ -1871,80 +1929,32 @@ dispatch_select_bullet_count_low:
     fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,
                    *pfVar15 - (float)fVar19);
     goto dispatch_store_float_result;
-  case ENEMY_ECL_SET_BULLET_SPEED_BY_DIFFICULTY:
-    uVar22 = ReadIntArgument(0);
+  case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
     if (g_EnemyDifficulty == 0) {
-      fVar9 = EnemyEncodeOperandIndex(1);
+      uVar22 = ReadIntArgument(0);
+      fVar9 = (float)(int)uVar22;
     }
     else if (g_EnemyDifficulty == 1) {
-      fVar9 = EnemyEncodeOperandIndex(2);
-    }
-    else {
-      fVar9 = EnemyEncodeOperandIndex(3);
-      if (g_EnemyDifficulty != 2) {
-        fVar9 = EnemyEncodeOperandIndex(4);
-      }
-    }
-    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
-    iVar26 = (int)uVar22 * 0x210;
-    *(float *)(iVar26 + 0x2dc + (int)runtimeAddress) = (float)fVar19;
-    if (g_EnemyDifficulty == 0) {
-      fVar9 = EnemyEncodeOperandIndex(5);
-    }
-    else if (g_EnemyDifficulty == 1) {
-      fVar9 = EnemyEncodeOperandIndex(6);
-    }
-    else {
-      fVar9 = EnemyEncodeOperandIndex(7);
-      if (g_EnemyDifficulty != 2) {
-        fVar9 = EnemyEncodeOperandIndex(8);
-      }
-    }
-    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
-    *(float *)(iVar26 + (int)runtimeAddress + 0x2e0) = (float)fVar19;
-    return 0;
-  case ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY:
-    uVar22 = ReadIntArgument(0);
-    if (g_EnemyDifficulty == 0) {
-      iVar26 = 1;
-    }
-    else if (g_EnemyDifficulty == 1) {
-      iVar26 = 2;
+      uVar22 = ReadIntArgument(1);
+      fVar9 = (float)(int)uVar22;
     }
     else if (g_EnemyDifficulty == 2) {
-      iVar26 = 3;
+      uVar22 = ReadIntArgument(2);
+      fVar9 = (float)(int)uVar22;
     }
     else {
-      iVar26 = 4;
+      uVar22 = ReadIntArgument(3);
+      fVar9 = (float)(int)uVar22;
     }
-    uVar23 = ReadIntArgument(iVar26);
-    iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
-    *(short *)(iVar26 + 0x4b8) = (short)uVar23;
-    if (g_EnemyDifficulty == 0) {
-      iVar27 = 5;
-    }
-    else if (g_EnemyDifficulty == 1) {
-      iVar27 = 6;
-    }
-    else if (g_EnemyDifficulty == 2) {
-      iVar27 = 7;
-    }
-    else {
-      iVar27 = 8;
-    }
-    uVar22 = ReadIntArgument(iVar27);
-    *(short *)(iVar26 + 0x4ba) = (short)uVar22;
-    return 0;
+    pfVar15 = *(float **)(*(int *)((int)runtimeAddress + 0x14d8) + 4);
+    *pfVar15 = *pfVar15 - fVar9;
+    break;
   }
 dispatch_complete:
   return 0;
 dispatch_create_enemy_absolute_mirrored:
   iVar26 = *(int *)(iVar27 + 0x10) + 4;
-  pfVar15 = local_90.floatWords;
-  for (iVar11 = 0x10; iVar11 != 0; iVar11 = iVar11 + -1) {
-    *pfVar15 = 0.0;
-    pfVar15 = pfVar15 + 1;
-  }
+  memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
   iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
   fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
   local_90.spawnRequest.position.x = (float)fVar19;
@@ -1967,11 +1977,7 @@ dispatch_create_enemy_absolute_mirrored:
   goto dispatch_spawn_enemy;
 dispatch_create_enemy_absolute:
   iVar26 = *(int *)(iVar27 + 0x10) + 4;
-  pfVar15 = local_90.floatWords;
-  for (iVar11 = 0x10; iVar11 != 0; iVar11 = iVar11 + -1) {
-    *pfVar15 = 0.0;
-    pfVar15 = pfVar15 + 1;
-  }
+  memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
   iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
   fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
   local_90.spawnRequest.position.x = (float)fVar19;

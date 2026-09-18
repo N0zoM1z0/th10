@@ -2977,6 +2977,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
     AnmRawInstructionView *fallbackInterrupt;
+    AnmVmView *createdChild;
     float savedGameSpeed;
 
     if (vm->currentInstruction == NULL)
@@ -3020,42 +3021,38 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         {
             AnmVmIdView childId = vm->anmFile->CreateVmVariant0(
                 GET_INT_VAR(0), vm->renderLayer);
-            AnmVmView *child = childId.GetVm();
-            vm->layerNode.InsertAfter(&child->layerNode);
-            child->alternatePosition = vm->position;
-            child->positionOffset = vm->positionOffset;
-            break;
+            createdChild = childId.GetVm();
+            goto child_variant_0_or_1;
         }
         case ANM_OP_CREATE_CHILD_91:
         {
             AnmVmIdView childId = vm->anmFile->CreateVmVariant2(
                 GET_INT_VAR(0), vm->renderLayer);
-            AnmVmView *child = childId.GetVm();
-            vm->layerNode.InsertAfter(&child->layerNode);
-            child->alternatePosition = vm->position;
-            child->positionOffset = vm->positionOffset;
-            break;
+            createdChild = childId.GetVm();
+            goto child_variant_2_or_3;
         }
         case ANM_OP_CREATE_CHILD_90:
         {
             AnmVmIdView childId = vm->anmFile->CreateVmVariant1(
                 GET_INT_VAR(0), vm->renderLayer);
-            AnmVmView *child = childId.GetVm();
-            vm->layerNode.InsertAfter(&child->layerNode);
-            child->alternatePosition = vm->position;
-            child->positionOffset = vm->positionOffset;
-            break;
+            createdChild = childId.GetVm();
         }
+        child_variant_0_or_1:
+            vm->layerNode.InsertAfter(&createdChild->layerNode);
+            createdChild->alternatePosition = vm->position;
+            createdChild->positionOffset = vm->positionOffset;
+            break;
         case ANM_OP_CREATE_CHILD_92:
         {
             AnmVmIdView childId = vm->anmFile->CreateVmVariant3(
                 GET_INT_VAR(0), vm->renderLayer);
-            AnmVmView *child = childId.GetVm();
-            vm->layerNode.InsertAfter(&child->layerNode);
-            child->alternatePosition = vm->position;
-            child->positionOffset = vm->positionOffset;
-            break;
+            createdChild = childId.GetVm();
         }
+        child_variant_2_or_3:
+            vm->layerNode.InsertAfter(&createdChild->layerNode);
+            createdChild->alternatePosition = vm->position;
+            createdChild->positionOffset = vm->positionOffset;
+            break;
         case ANM_OP_SPRITE:
             vm->visible = 1;
             vm->anmFile->SetSprite(vm, GET_INT_VAR(0));

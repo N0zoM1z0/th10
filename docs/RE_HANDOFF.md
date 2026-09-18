@@ -3274,3 +3274,42 @@ ESI rather than target EAX, shortened `SpawnThread` to 140 versus 142 target,
 and worsened the generic runner. That experiment was also reverted. Retained
 focused diagnostics are under `.analysis/gpt-5.6-sol/20260918-ecl-vm-exact/`;
 no exact ECL VM claim follows.
+
+## Current bounded packet: three large exact frontiers
+
+Enemy `DispatchEclInstruction @ 0x0040E770` now has candidate definitions for
+the active-context argument wrappers observed in IDA. Replacing five natural
+16-word zero loops with `memset` makes VC7.1 emit the target's `rep stosd`
+form. A sequence of target-directed source case moves makes the linked
+candidate's 108 physical jump destinations agree with the target in **all 108
+positions**. The 181-byte selector is equal, and both contributions have the
+same 43-byte suffix after it. With `src/EclVm.cpp` as `/GL` support and `/GS`,
+the selected candidate is 14,532 bytes versus the 14,416-byte target, with
+692/11,684 comparable bytes equal and complete normalization. The target
+frame is still `0x2C4` versus candidate `0x2BC`; helper receiver registers
+and individual case bodies remain different. No exact row is added. The next
+bounded comparison is the first spawn case and its shared absolute-position
+tail: physical order is now controlled, while those adjacent case spans
+redistribute 133/139 bytes between target and candidate.
+
+ANM `ExecuteScript @ 0x0043EE30` now has explicit common child tails for
+88/90 and 91/92. Their first two candidate physical gaps are 44 and 47
+bytes, exactly the target gaps, and all 92 physical groups stay in target
+order. The focused selected-entry `/GL` contribution with `RandomMath.cpp`
+support remains 9,784 bytes including its 376-byte table, and the pre-table
+span remains 9,408 versus target 9,588. The target reserves `0xFC` stack
+bytes versus candidate `0xD4`; investigate the missing 40 bytes of live
+locals and later per-case gaps before making an exact claim.
+
+Generic `EclVmContext::Run @ 0x0044E1A0` still gives a 7,040-byte candidate
+against 7,020 target when selected as its own `/GL` link entry. The target
+receives the context in EAX, while this candidate receives it in ECX; both
+reserve `0x108` stack bytes. A 32-bit format-index type experiment did not
+change the 20-byte span excess and was reverted. Recover the real private
+LTCG caller/register context before source-level microtuning of this case.
+The three owners remain non-exact. Focused diagnostics and intermediate
+negative probes are below `.analysis/gpt-5.6-sol/20260918-enemy-order/`.
+A focused cold replay of the two edited source files passed all 81 configured
+exact units across 11 artifacts (16,534/16,534 bytes plus every declared
+linkage field); it does not establish exactness for either large owner.
+Target-independent CI and the required tracking/progress/toolchain checks pass.
