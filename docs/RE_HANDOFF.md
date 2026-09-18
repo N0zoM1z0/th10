@@ -3427,3 +3427,23 @@ reverted. Removing a redundant switch-exit `continue` changed no case
 destinations. The selected ANM candidate remains 9,960 bytes including its
 separate 376-byte table, with 9,584 versus 9,588 pre-table bytes, and is
 non-exact. Enemy remains 14,508 versus 14,416 bytes and non-exact.
+
+## Current continuation: ECL direct STORE operands
+
+IDA and canonical disassembly show that runner opcodes 0x2B and 0x2D resolve
+the destination pointer first, then inline `stack.Pop` to copy directly into
+it. The old source popped into a temporary before resolving the destination.
+Both cases now call `stack.Pop` with `ResolveInt(0)` or `ResolveFloat(0)` as the
+output pointer. Their candidate physical spans match the target exactly:
+80/80 and 86/86 bytes, with matching local instruction shapes apart from
+linked addresses. All 59 opcode groups remain in target order. The selected
+runner contribution becomes **7,032 versus 7,020 target bytes** and the sum
+of absolute case-gap differences improves from 60 to 52. Its frame becomes
+`0xFC` versus target `0x108`; other float case slots move and the complete
+owner remains non-exact. Focused evidence is `ecl-direct-store-{probe,layout}.json`
+and `ecl-direct-store.exe` in the same analysis folder.
+
+The target `ReadInt @ 0x0044FDB0` uses EDX for its receiver and a stack
+argument. The current linked probe specializes its candidate helper to EDX
+plus ECX, which contributes to the opcode-0x14 call-shape gap. Recover this
+helper/link context before treating nearby case lengths as exact evidence.

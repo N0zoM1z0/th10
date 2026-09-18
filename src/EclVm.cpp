@@ -811,7 +811,7 @@ jump_instruction:
                 break;
 
             case ECL_VM_STORE_INT:
-                *ResolveInt(0) = PopInt(this);
+                stack.Pop('i', sizeof(int), ResolveInt(0));
                 break;
 
             case ECL_VM_PUSH_FLOAT:
@@ -819,7 +819,7 @@ jump_instruction:
                 break;
 
             case ECL_VM_STORE_FLOAT:
-                *ResolveFloat(0) = PopFloat(this);
+                stack.Pop('f', sizeof(float), ResolveFloat(0));
                 break;
 
             case ECL_VM_ADD_INT:
