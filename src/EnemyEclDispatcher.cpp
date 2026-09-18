@@ -1275,33 +1275,31 @@ dispatch_store_float_result:
   case ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY:
     uVar22 = ReadIntArgument(0);
     if (g_EnemyDifficulty == 0) {
-      iVar26 = 1;
+      uVar23 = ReadIntArgument(1);
     }
     else if (g_EnemyDifficulty == 1) {
-      iVar26 = 2;
+      uVar23 = ReadIntArgument(2);
     }
     else if (g_EnemyDifficulty == 2) {
-      iVar26 = 3;
+      uVar23 = ReadIntArgument(3);
     }
     else {
-      iVar26 = 4;
+      uVar23 = ReadIntArgument(4);
     }
-    uVar23 = ReadIntArgument(iVar26);
     iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
     *(short *)(iVar26 + 0x4b8) = (short)uVar23;
     if (g_EnemyDifficulty == 0) {
-      iVar27 = 5;
+      uVar22 = ReadIntArgument(5);
     }
     else if (g_EnemyDifficulty == 1) {
-      iVar27 = 6;
+      uVar22 = ReadIntArgument(6);
     }
     else if (g_EnemyDifficulty == 2) {
-      iVar27 = 7;
+      uVar22 = ReadIntArgument(7);
     }
     else {
-      iVar27 = 8;
+      uVar22 = ReadIntArgument(8);
     }
-    uVar22 = ReadIntArgument(iVar27);
     *(short *)(iVar26 + 0x4ba) = (short)uVar22;
     return 0;
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_3:
