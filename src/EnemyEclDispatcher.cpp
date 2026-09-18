@@ -157,7 +157,7 @@ extern unsigned char g_EnemyProjectionMatrix;
 extern unsigned char g_EnemyViewport;
 extern unsigned char g_EnemyWorldMatrix;
 
-extern PlayerFloat3 *D3DXVec3Project(
+extern PlayerFloat3 *__stdcall D3DXVec3Project(
     PlayerFloat3 *output, const PlayerFloat3 *input, const void *viewport,
     const void *projection, const void *view, const void *world);
 extern void EnemyPrepareProjection();
@@ -368,14 +368,11 @@ int EnemyRuntimeView::DispatchEclInstruction()
       fVar9 = *(float *)((int)runtimeAddress + 0x2c);
       fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
       fVar10 = *(float *)((int)runtimeAddress + 0x30);
-      local_2b4 = (float)(fVar19 + fVar9);
+      projectionInput.x = (float)(fVar19 + fVar9);
       fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
-      local_2ac = *(float *)((int)runtimeAddress + 0x34);
-      local_2b0 = (float)(fVar19 + fVar10);
+      projectionInput.z = *(float *)((int)runtimeAddress + 0x34);
+      projectionInput.y = (float)(fVar19 + fVar10);
       EnemyPrepareProjection();
-      projectionInput.x = local_2b4;
-      projectionInput.y = local_2b0;
-      projectionInput.z = local_2ac;
       D3DXVec3Project(&local_90.spawnRequest.position, &projectionInput,
                       &g_EnemyViewport, &g_EnemyProjectionMatrix,
                       &g_EnemyViewMatrix, &g_EnemyWorldMatrix);

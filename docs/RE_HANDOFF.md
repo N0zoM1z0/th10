@@ -3327,3 +3327,42 @@ Changing only its initial null guard from `*instructionCursor` to
 from 2,281 to 460; it was reverted. Retained negative diagnostics are
 `absolute-inline-label-probe.json`, `ecl-local-declaration-order-probe.json`,
 and `ecl-direct-initial-guard-probe.json` in the same ignored analysis folder.
+
+## Current continuation: projection ABI and ANM vector construction
+
+IDA-attested target bytes show the Enemy dispatcher calls the imported
+`D3DXVec3Project` thunk with six stack arguments and no caller cleanup. The
+manual source prototype incorrectly used caller cleanup; it now declares
+`__stdcall`. The target also writes all three projection-input coordinates
+before `EnemyPrepareProjection`, so the source builds that vector before the
+call. In the focused selected `/GL /GS` diagnostic with `EclVm.cpp` support,
+these two corrections reduce the candidate from 14,532 to 14,508 bytes versus
+14,416 target. All 108 jump destinations retain target physical order. The
+candidate frame remains `0x2BC` versus `0x2C4` target, and the current
+diagnostic cannot normalize all linked fields. Reordering the two large local
+declarations and widening the temporary opcode type produced byte-identical
+results, so those experiments were reverted.
+
+The target ANM `POSITION` case evaluates Z, Y, X before copying a completed
+three-word vector into the chosen VM position. The maintained field-by-field
+X, Y, Z source has been replaced with the existing `AnmFloat3View` constructor
+in each branch. This reproduces the local operand order and aggregate-copy
+shape. The candidate's executable pre-table span becomes **9,584 versus 9,588
+target** (`-4`, formerly `-180`), with all 92 physical case groups still in
+target order. The selected PDB contribution is 9,960 bytes because it also
+owns the 376-byte jump table; this should not be compared directly to the
+9,587-byte target code-only ledger extent. The frame still differs by 40 bytes
+(`0xD4` candidate, `0xFC` target), and the alternate-position block is placed
+before the interrupt-label block instead of after it. Explicit shared-tail
+and label variants did not recover that local placement and were reverted.
+
+For the generic ECL runner, a carried current-instruction local shortened the
+host-entry candidate to 7,028 versus 7,020 target but changed the frame to
+`0x10C` versus target `0x108` and left one undecoded suffix byte. An explicit
+percent-case `continue` produced 7,048 bytes. Both experiments were reverted,
+leaving the current 7,040-byte host-entry candidate. All three large owners
+remain non-exact. Focused probe JSON and case layouts are retained under
+`.analysis/gpt-5.6-sol/20260918-enemy-order/`.
+
+A focused cold replay after the two source changes passes all 81 configured
+exact units across 11 artifacts, 16,534/16,534 bytes and all declared fields.

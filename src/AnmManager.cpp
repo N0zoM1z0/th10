@@ -3149,15 +3149,13 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         case ANM_OP_POSITION:
             if (!vm->useAlternatePosition)
             {
-                vm->position.x = GET_FLOAT_VAR(0);
-                vm->position.y = GET_FLOAT_VAR(1);
-                vm->position.z = GET_FLOAT_VAR(2);
+                vm->position = AnmFloat3View(
+                    GET_FLOAT_VAR(0), GET_FLOAT_VAR(1), GET_FLOAT_VAR(2));
             }
             else
             {
-                vm->alternatePosition.x = GET_FLOAT_VAR(0);
-                vm->alternatePosition.y = GET_FLOAT_VAR(1);
-                vm->alternatePosition.z = GET_FLOAT_VAR(2);
+                vm->alternatePosition = AnmFloat3View(
+                    GET_FLOAT_VAR(0), GET_FLOAT_VAR(1), GET_FLOAT_VAR(2));
             }
             break;
         case ANM_OP_NOP:
