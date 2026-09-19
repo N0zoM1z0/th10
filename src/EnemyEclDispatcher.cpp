@@ -1590,22 +1590,22 @@ dispatch_initialize_polar_interpolation:
   case ENEMY_ECL_SELECT_FLOAT_BY_DIFFICULTY:
     switch(g_EnemyDifficulty) {
     case 0:
-      iVar27 = 1;
-      goto dispatch_rank_float_tail_b;
+      fVar19 = ReadFloatArgument(1);
+      goto dispatch_store_float_result;
     case 1:
-      iVar27 = 2;
-      goto dispatch_rank_float_tail_a;
+      fVar21 = ReadFloatArgument(2);
+      goto dispatch_store_float_result_a;
     case 2:
 dispatch_difficulty_float_index_3:
-      iVar27 = 3;
-      goto dispatch_rank_float_tail_b;
+      fVar19 = ReadFloatArgument(3);
+      goto dispatch_store_float_result;
     case 3:
 dispatch_difficulty_float_index_4_a:
-      iVar27 = 4;
-      goto dispatch_rank_float_tail_a;
+      fVar21 = ReadFloatArgument(4);
+      goto dispatch_store_float_result_a;
     case 4:
-      iVar27 = 4;
-      goto dispatch_rank_float_tail_b;
+      fVar19 = ReadFloatArgument(4);
+      goto dispatch_store_float_result;
     default:
       goto dispatch_complete;
     }
@@ -2317,6 +2317,7 @@ dispatch_store_float_result:
     return 0;
 dispatch_rank_float_tail_a:
     fVar21 = ReadFloatArgument(iVar27);
+dispatch_store_float_result_a:
     positionInterpolationValues = ResolveFloatArgument(0);
     *positionInterpolationValues = (float)fVar21;
     return 0;
