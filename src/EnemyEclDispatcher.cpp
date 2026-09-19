@@ -786,29 +786,22 @@ dispatch_update_primary_anm_bounds:
     fVar9 = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     positionInterpolation->duration = uVar22;
-    positionInterpolationValues[6] = g_EnemyInterpolationOrigin.x;
-    positionInterpolationValues[7] = g_EnemyInterpolationOrigin.y;
-    positionInterpolationValues[8] = g_EnemyInterpolationOrigin.z;
-    positionInterpolationValues[9] = g_EnemyInterpolationOrigin.x;
-    positionInterpolationValues[10] = g_EnemyInterpolationOrigin.y;
-    positionInterpolationValues[0xb] = g_EnemyInterpolationOrigin.z;
+    positionInterpolation->initialTangent = g_EnemyInterpolationOrigin;
+    positionInterpolation->finalTangent = g_EnemyInterpolationOrigin;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     positionInterpolation->mode = uVar22;
-    positionInterpolationValues[0] = selectedMotion->position.x;
-    positionInterpolationValues[1] = selectedMotion->position.y;
-    positionInterpolationValues[2] = selectedMotion->position.z;
+    positionInterpolation->initial = selectedMotion->position;
     if (fVar9 <= 0.0) {
       fVar9 = selectedMotion->position.y;
     }
     if (fVar10 <= 0.0) {
       fVar10 = selectedMotion->position.x;
     }
-    positionInterpolationValues[3] = fVar10;
-    positionInterpolationValues[4] = fVar9;
-    local_2ac = 0.0;
-    positionInterpolationValues[5] = 0.0;
     local_2b4 = fVar10;
     local_2b0 = fVar9;
+    local_2ac = 0.0;
+    positionInterpolation->final =
+        *reinterpret_cast<PlayerFloat3 *>(&local_2b4);
     EnemyInitializePositionInterpolation(positionInterpolation);
     selectedMotion->flags &= 0xfffffffe;
     return 0;
@@ -889,9 +882,8 @@ dispatch_update_primary_anm_bounds:
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     firstScalarInterpolation->duration = uVar22;
-    firstScalarValues[4] = g_EnemyInterpolationBasis.x;
-    firstScalarValues[5] = g_EnemyInterpolationBasis.y;
-    firstScalarValues[6] = g_EnemyInterpolationBasis.x;
+    firstScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
+    firstScalarInterpolation->finalTangent.x = g_EnemyInterpolationBasis.x;
     fVar9 = local_2a8;
     fVar10 = local_2a4;
     goto dispatch_initialize_polar_interpolation;
@@ -965,29 +957,23 @@ dispatch_update_primary_anm_bounds:
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     firstScalarValues = reinterpret_cast<float *>(firstScalarInterpolation);
     firstScalarInterpolation->duration = (int)uVar22;
-    firstScalarValues[4] = g_EnemyInterpolationBasis.x;
-    firstScalarValues[5] = g_EnemyInterpolationBasis.y;
-    firstScalarValues[6] = g_EnemyInterpolationBasis.x;
-    fVar9 = g_EnemyInterpolationBasis.y;
-    firstScalarValues[0] = local_2a8;
-    firstScalarValues[7] = fVar9;
-    firstScalarValues[3] = local_298;
+    firstScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
+    firstScalarInterpolation->finalTangent = g_EnemyInterpolationBasis;
+    firstScalarInterpolation->initial.x = local_2a8;
+    firstScalarInterpolation->final.y = local_298;
     firstScalarInterpolation->mode = (int)uVar23;
-    firstScalarValues[1] = local_2a4;
-    firstScalarValues[2] = local_29c;
+    firstScalarInterpolation->initial.y = local_2a4;
+    firstScalarInterpolation->final.x = local_29c;
     EnemyInitializeScalarInterpolation(firstScalarInterpolation);
     secondScalarValues = reinterpret_cast<float *>(secondScalarInterpolation);
     secondScalarInterpolation->duration = (int)uVar22;
-    secondScalarValues[4] = g_EnemyInterpolationBasis.x;
-    secondScalarValues[5] = g_EnemyInterpolationBasis.y;
-    secondScalarValues[6] = g_EnemyInterpolationBasis.x;
-    fVar9 = g_EnemyInterpolationBasis.y;
-    secondScalarValues[0] = selectedMotion->value20;
-    secondScalarValues[7] = fVar9;
-    secondScalarValues[3] = local_2b0;
+    secondScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
+    secondScalarInterpolation->finalTangent = g_EnemyInterpolationBasis;
+    secondScalarInterpolation->initial.x = selectedMotion->value20;
+    secondScalarInterpolation->final.y = local_2b0;
     secondScalarInterpolation->mode = (int)uVar23;
-    secondScalarValues[1] = selectedMotion->value24;
-    secondScalarValues[2] = local_2b4;
+    secondScalarInterpolation->initial.y = selectedMotion->value24;
+    secondScalarInterpolation->final.x = local_2b4;
     EnemyInitializeScalarInterpolation(secondScalarInterpolation);
     selectedMotion->velocity = selectedMotion->position;
     selectedMotion->flags |= 1;
@@ -1087,17 +1073,16 @@ dispatch_random_angle_ready:
     local_2b0 = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     firstScalarInterpolation->duration = uVar22;
-    firstScalarValues[4] = g_EnemyInterpolationBasis.x;
-    firstScalarValues[5] = g_EnemyInterpolationBasis.y;
-    firstScalarValues[6] = g_EnemyInterpolationBasis.x;
+    firstScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
+    firstScalarInterpolation->finalTangent.x = g_EnemyInterpolationBasis.x;
     fVar9 = local_2b4;
     fVar10 = local_2b0;
 dispatch_initialize_polar_interpolation:
-    firstScalarValues[7] = g_EnemyInterpolationBasis.y;
-    firstScalarValues[0] = fVar9;
-    firstScalarValues[1] = fVar10;
-    firstScalarValues[2] = local_2c8;
-    firstScalarValues[3] = local_2c4;
+    firstScalarInterpolation->finalTangent.y = g_EnemyInterpolationBasis.y;
+    firstScalarInterpolation->initial.x = fVar9;
+    firstScalarInterpolation->initial.y = fVar10;
+    firstScalarInterpolation->final.x = local_2c8;
+    firstScalarInterpolation->final.y = local_2c4;
     EnemyInitializeScalarInterpolation(firstScalarInterpolation);
     selectedMotion->flags &= 0xfffffffe;
     return 0;

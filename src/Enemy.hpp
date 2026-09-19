@@ -36,27 +36,52 @@ typedef char EnemyMotionViewSizeIs2C[(sizeof(EnemyMotionView) == 0x2c) ? 1 : -1]
 typedef char EnemyMotionVelocityAt0C[(offsetof(EnemyMotionView, velocity) == 0x0c) ? 1 : -1];
 typedef char EnemyMotionFlagsAt28[(offsetof(EnemyMotionView, flags) == 0x28) ? 1 : -1];
 
-// Opaque interpolation records with only the target-observed duration/mode
-// controls exposed. Their helper ABIs are private register conventions.
+// TH10's Enemy interpolation records use the same four-value plus timer
+// layout observed independently in their evaluator and initializer bodies.
+// Keep the timer POD here: EnemyRuntimeView construction must not acquire an
+// implicit C++ constructor merely from exposing these target-proven fields.
+struct EnemyInterpolationTimerView
+{
+    int previous;
+    int current;
+    float subframe;
+    float *scale;
+    unsigned int flags;
+};
+typedef char EnemyInterpolationTimerSizeIs14[
+    (sizeof(EnemyInterpolationTimerView) == 0x14) ? 1 : -1];
+
 struct EnemyPositionInterpolationView
 {
-    unsigned char unknown000[0x44];
+    PlayerFloat3 initial;
+    PlayerFloat3 final;
+    PlayerFloat3 initialTangent;
+    PlayerFloat3 finalTangent;
+    EnemyInterpolationTimerView timer;
     int duration;
     int mode;
 };
 typedef char EnemyPositionInterpolationSizeIs4C[
     (sizeof(EnemyPositionInterpolationView) == 0x4c) ? 1 : -1];
+typedef char EnemyPositionInterpolationTimerAt30[
+    (offsetof(EnemyPositionInterpolationView, timer) == 0x30) ? 1 : -1];
 typedef char EnemyPositionInterpolationDurationAt44[
     (offsetof(EnemyPositionInterpolationView, duration) == 0x44) ? 1 : -1];
 
 struct EnemyScalarInterpolationView
 {
-    unsigned char unknown000[0x34];
+    EnemyFloat2 initial;
+    EnemyFloat2 final;
+    EnemyFloat2 initialTangent;
+    EnemyFloat2 finalTangent;
+    EnemyInterpolationTimerView timer;
     int duration;
     int mode;
 };
 typedef char EnemyScalarInterpolationSizeIs3C[
     (sizeof(EnemyScalarInterpolationView) == 0x3c) ? 1 : -1];
+typedef char EnemyScalarInterpolationTimerAt20[
+    (offsetof(EnemyScalarInterpolationView, timer) == 0x20) ? 1 : -1];
 typedef char EnemyScalarInterpolationDurationAt34[
     (offsetof(EnemyScalarInterpolationView, duration) == 0x34) ? 1 : -1];
 
