@@ -1354,9 +1354,8 @@ dispatch_update_primary_anm_bounds:
     goto dispatch_copy_player_to_motion;
   case ENEMY_ECL_COPY_PLAYER_TO_BASE:
     iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
-    *(unsigned int *)((int)runtimeAddress + 0x84) = *(unsigned int *)(iVar26 + 0x1068);
-    *(unsigned int *)((int)runtimeAddress + 0x88) = *(unsigned int *)(iVar26 + 0x106c);
-    *(unsigned int *)((int)runtimeAddress + 0x8c) = *(unsigned int *)(iVar26 + 0x1070);
+    baseMotion.position =
+        *reinterpret_cast<PlayerFloat3 *>(iVar26 + 0x1068);
     return 0;
   case ENEMY_ECL_SET_MOVEMENT_BOUNDS:
     *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x200;
