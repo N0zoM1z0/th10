@@ -1200,11 +1200,7 @@ dispatch_initialize_polar_interpolation:
     }
     break;
   case ENEMY_ECL_CLEAR_ITEM_DROPS:
-    puVar5 = (unsigned int *)((int)runtimeAddress + 0x13d0);
-    for (iVar26 = 0xc; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *puVar5 = 0;
-      puVar5 = puVar5 + 1;
-    }
+    memset(itemDropCounts, 0, sizeof(itemDropCounts) + sizeof(unknown13FC));
     return 0;
   case ENEMY_ECL_ADD_ITEM_DROP:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
