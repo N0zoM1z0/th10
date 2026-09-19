@@ -2218,9 +2218,10 @@ dispatch_select_bullet_count_low:
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(2));
       fVar21 = (ReadFloatArgument(1));
-      *(float *)(iVar26 + 0x24) = (float)fVar21;
-      *(float *)(iVar26 + 0x28) = (float)fVar19;
-      *(unsigned int *)(iVar26 + 0x2c) = 0;
+      vectorScratch.x = (float)fVar21;
+      vectorScratch.y = (float)fVar19;
+      vectorScratch.z = 0.0f;
+      *reinterpret_cast<PlayerFloat3 *>(iVar26 + 0x24) = vectorScratch;
       return 0;
     }
     break;
