@@ -1692,9 +1692,7 @@ dispatch_select_bullet_count_low:
     vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
     vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
-    reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
-    reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
+    *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     reinterpret_cast<unsigned short *>(&local_288)[18] = (unsigned short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
@@ -1735,9 +1733,7 @@ dispatch_select_bullet_count_low:
     vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
     vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
-    reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
-    reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
+    *reinterpret_cast<PlayerFloat3 *>(&local_288) = vectorScratch;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(2);
