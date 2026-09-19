@@ -538,7 +538,55 @@ static __declspec(noinline) unsigned int EnemyApplyBulletClear(
 extern unsigned int *EnemySetScreenShake(
     int enabled, int duration, unsigned int horizontal,
     unsigned int vertical, unsigned int flags);
-extern void EnemyPlaySound(int soundId);
+struct EnemySoundCueMetadataView
+{
+    int unknown000;
+    unsigned short unknown004;
+    short cueValue;
+};
+
+struct EnemySoundQueueView
+{
+    unsigned char unknown000[0x408];
+    int cueValues[134];
+    int activeSoundIds[12];
+    int sampleCounts[12];
+    int samples[12][128];
+
+    __declspec(noinline) void QueueSoundCue(int soundId, float positionX);
+};
+
+extern EnemySoundCueMetadataView g_EnemySoundCueMetadata[];
+
+void EnemySoundQueueView::QueueSoundCue(int soundId, float positionX)
+{
+    float scaledPosition = positionX * 5.208333492279053f;
+    int cueValue = g_EnemySoundCueMetadata[soundId].cueValue;
+    int sample = static_cast<int>(scaledPosition);
+    int slot = 0;
+    while (slot < 12) {
+        int activeId = activeSoundIds[slot];
+        if (activeId < 0) {
+            break;
+        }
+        if (activeId == soundId) {
+            int count = sampleCounts[slot];
+            if (count >= 128) {
+                return;
+            }
+            samples[slot][count] = sample;
+            sampleCounts[slot] = sampleCounts[slot] + 1;
+            return;
+        }
+        ++slot;
+    }
+    if (slot < 12) {
+        activeSoundIds[slot] = soundId;
+        cueValues[soundId] = cueValue;
+        samples[slot][0] = sample;
+        ++sampleCounts[slot];
+    }
+}
 extern void EnemyDropItemCounts(const PlayerFloat3 *position, int *itemDropBlock);
 extern unsigned int *EnemyCreateManagedVm(
     unsigned int resource, int script, int layer);
@@ -1900,7 +1948,9 @@ dispatch_select_bullet_count_low:
     EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager), 1);
     return 0;
   case ENEMY_ECL_PLAY_SOUND:
-    EnemyPlaySound(ENEMY_READ_INT_DIRECT(0));
+    uVar22 = ENEMY_READ_INT_DIRECT(0);
+    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+        QueueSoundCue((int)uVar22, worldMotion.position.x);
     return 0;
   case ENEMY_ECL_SET_SCREEN_SHAKE:
     uVar22 = ENEMY_READ_INT_DIRECT(2);
