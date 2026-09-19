@@ -195,8 +195,23 @@ extern int EnemySpawnFromEclInstruction(
     const EnemySpawnRequestView *request);
 extern void EnemyKillAll(EnemyManagerView *manager);
 extern void EnemyConfigureInterrupt(int first, int second, int third);
-extern void EnemyInitializeScalarInterpolation(
-    EnemyScalarInterpolationView *interpolation);
+static __declspec(noinline) void EnemyInitializeScalarInterpolation(
+    EnemyScalarInterpolationView *interpolation)
+{
+    unsigned int *words = reinterpret_cast<unsigned int *>(interpolation);
+    unsigned int flags = words[0x30 / 4];
+    if ((flags & 1) == 0) {
+        flags |= 1;
+        words[0x24 / 4] = 0;
+        words[0x20 / 4] = static_cast<unsigned int>(-999999);
+        words[0x28 / 4] = 0;
+        words[0x2c / 4] = reinterpret_cast<unsigned int>(&g_AnmGameSpeed);
+        words[0x30 / 4] = flags;
+    }
+    words[0x24 / 4] = 0;
+    words[0x28 / 4] = 0;
+    words[0x20 / 4] = static_cast<unsigned int>(-1);
+}
 extern void EnemySetChapter(int chapter);
 extern void __stdcall EnemySetMotionAngle(EnemyMotionView *motion, float angle);
 extern void EnemyReadDialog();
