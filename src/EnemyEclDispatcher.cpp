@@ -140,7 +140,7 @@ enum EnemyEclOpcode
 struct EnemyGameStateView;
 struct EnemyManagedVmView;
 struct EnemyVisualStateView;
-union EnemyLaserRequestScratch;
+struct EnemyLaserRequestScratch;
 
 extern int g_EnemyDifficulty;
 extern int g_EnemyRank;
@@ -219,11 +219,134 @@ static float EnemyEncodeOperandIndex(int index)
     return bits.f;
 }
 
-union EnemyLaserRequestScratch
+struct EnemyLaserRequestScratch
 {
-    float floats[0x7e];
-    unsigned int words[0x7e];
-    unsigned short halves[0xfc];
+    unsigned int field000;
+    unsigned int field001;
+    unsigned int field002;
+    unsigned int field003;
+    unsigned int field004;
+    unsigned int field005;
+    unsigned int field006;
+    unsigned int field007;
+    unsigned int field008;
+    unsigned int field009;
+    unsigned int field010;
+    unsigned int field011;
+    unsigned int field012;
+    unsigned int field013;
+    unsigned int field014;
+    unsigned int field015;
+    unsigned int field016;
+    unsigned int field017;
+    unsigned int field018;
+    unsigned int field019;
+    unsigned int field020;
+    unsigned int field021;
+    unsigned int field022;
+    unsigned int field023;
+    unsigned int field024;
+    unsigned int field025;
+    unsigned int field026;
+    unsigned int field027;
+    unsigned int field028;
+    unsigned int field029;
+    unsigned int field030;
+    unsigned int field031;
+    unsigned int field032;
+    unsigned int field033;
+    unsigned int field034;
+    unsigned int field035;
+    unsigned int field036;
+    unsigned int field037;
+    unsigned int field038;
+    unsigned int field039;
+    unsigned int field040;
+    unsigned int field041;
+    unsigned int field042;
+    unsigned int field043;
+    unsigned int field044;
+    unsigned int field045;
+    unsigned int field046;
+    unsigned int field047;
+    unsigned int field048;
+    unsigned int field049;
+    unsigned int field050;
+    unsigned int field051;
+    unsigned int field052;
+    unsigned int field053;
+    unsigned int field054;
+    unsigned int field055;
+    unsigned int field056;
+    unsigned int field057;
+    unsigned int field058;
+    unsigned int field059;
+    unsigned int field060;
+    unsigned int field061;
+    unsigned int field062;
+    unsigned int field063;
+    unsigned int field064;
+    unsigned int field065;
+    unsigned int field066;
+    unsigned int field067;
+    unsigned int field068;
+    unsigned int field069;
+    unsigned int field070;
+    unsigned int field071;
+    unsigned int field072;
+    unsigned int field073;
+    unsigned int field074;
+    unsigned int field075;
+    unsigned int field076;
+    unsigned int field077;
+    unsigned int field078;
+    unsigned int field079;
+    unsigned int field080;
+    unsigned int field081;
+    unsigned int field082;
+    unsigned int field083;
+    unsigned int field084;
+    unsigned int field085;
+    unsigned int field086;
+    unsigned int field087;
+    unsigned int field088;
+    unsigned int field089;
+    unsigned int field090;
+    unsigned int field091;
+    unsigned int field092;
+    unsigned int field093;
+    unsigned int field094;
+    unsigned int field095;
+    unsigned int field096;
+    unsigned int field097;
+    unsigned int field098;
+    unsigned int field099;
+    unsigned int field100;
+    unsigned int field101;
+    unsigned int field102;
+    unsigned int field103;
+    unsigned int field104;
+    unsigned int field105;
+    unsigned int field106;
+    unsigned int field107;
+    unsigned int field108;
+    unsigned int field109;
+    unsigned int field110;
+    unsigned int field111;
+    unsigned int field112;
+    unsigned int field113;
+    unsigned int field114;
+    unsigned int field115;
+    unsigned int field116;
+    unsigned int field117;
+    unsigned int field118;
+    unsigned int field119;
+    unsigned int field120;
+    unsigned int field121;
+    unsigned int field122;
+    unsigned int field123;
+    unsigned int field124;
+    unsigned int field125;
 };
 typedef char EnemyLaserRequestScratchSizeIs1F8[
     (sizeof(EnemyLaserRequestScratch) == 0x1f8) ? 1 : -1];
@@ -1276,35 +1399,40 @@ dispatch_store_float_result:
     return 0;
   }
   case ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY:
+  {
+    int countIndex;
     uVar22 = ReadIntArgument(0);
     if (g_EnemyDifficulty == 0) {
-      uVar23 = ReadIntArgument(1);
+      countIndex = 1;
     }
     else if (g_EnemyDifficulty == 1) {
-      uVar23 = ReadIntArgument(2);
-    }
-    else if (g_EnemyDifficulty == 2) {
-      uVar23 = ReadIntArgument(3);
+      countIndex = 2;
     }
     else {
-      uVar23 = ReadIntArgument(4);
+      countIndex = 3;
+      if (g_EnemyDifficulty != 2) {
+        countIndex = 4;
+      }
     }
+    uVar23 = ReadIntArgument(countIndex);
     iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
     *(short *)(iVar26 + 0x4b8) = (short)uVar23;
     if (g_EnemyDifficulty == 0) {
-      uVar22 = ReadIntArgument(5);
+      countIndex = 5;
     }
     else if (g_EnemyDifficulty == 1) {
-      uVar22 = ReadIntArgument(6);
-    }
-    else if (g_EnemyDifficulty == 2) {
-      uVar22 = ReadIntArgument(7);
+      countIndex = 6;
     }
     else {
-      uVar22 = ReadIntArgument(8);
+      countIndex = 7;
+      if (g_EnemyDifficulty != 2) {
+        countIndex = 8;
+      }
     }
+    uVar22 = ReadIntArgument(countIndex);
     *(short *)(iVar26 + 0x4ba) = (short)uVar22;
     return 0;
+  }
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_3:
     uVar22 = ReadIntArgument(0);
     iVar26 = (int)uVar22;
@@ -1569,14 +1697,14 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_FIRE_LASER_A:
   case ENEMY_ECL_FIRE_LASER_A_WITH_PATTERN:
-    pfVar15 = local_288.floats;
+    pfVar15 = reinterpret_cast<float *>(&local_288);
     for (iVar27 = 0x77; iVar27 != 0; iVar27 = iVar27 + -1) {
       *pfVar15 = 0.0;
       pfVar15 = pfVar15 + 1;
     }
     if (opcode == 0x1af) {
       puVar5 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar14 = local_288.words + 11;
+      puVar14 = reinterpret_cast<unsigned int *>(&local_288) + 11;
       for (iVar27 = 0x6c; iVar27 != 0; iVar27 = iVar27 + -1) {
         *puVar14 = *puVar5;
         puVar5 = puVar5 + 1;
@@ -1586,40 +1714,40 @@ dispatch_select_bullet_count_low:
     local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
     local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    local_288.floats[0] = local_2b4;
-    local_288.floats[1] = local_2b0;
-    local_288.floats[2] = local_2ac;
+    reinterpret_cast<float *>(&local_288)[0] = local_2b4;
+    reinterpret_cast<float *>(&local_288)[1] = local_2b0;
+    reinterpret_cast<float *>(&local_288)[2] = local_2ac;
     uVar22 = ReadIntArgument(0);
-    local_288.halves[18] = (unsigned short)uVar22;
+    reinterpret_cast<unsigned short *>(&local_288)[18] = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(1);
-    local_288.halves[19] = (unsigned short)uVar22;
+    reinterpret_cast<unsigned short *>(&local_288)[19] = (unsigned short)uVar22;
     fVar19 = (ReadFloatArgument(2));
-    local_288.floats[3] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[3] = (float)fVar19;
     fVar19 = (ReadFloatArgument(3));
-    local_288.floats[8] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[8] = (float)fVar19;
     fVar19 = (ReadFloatArgument(4));
-    local_288.floats[5] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[5] = (float)fVar19;
     fVar19 = (ReadFloatArgument(5));
-    local_288.floats[4] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[4] = (float)fVar19;
     fVar19 = (ReadFloatArgument(6));
-    local_288.floats[6] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[6] = (float)fVar19;
     fVar19 = (ReadFloatArgument(7));
-    local_288.floats[7] = (float)fVar19;
-    local_288.words[10] |= 1;
+    reinterpret_cast<float *>(&local_288)[7] = (float)fVar19;
+    reinterpret_cast<unsigned int *>(&local_288)[10] |= 1;
     EnemyFireLaser(g_EnemyBulletManager, &local_288, 0);
     return 0;
   case ENEMY_ECL_FIRE_STRAIGHT_LASER:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_WITH_PATTERN:
-    pfVar15 = local_288.floats;
+    pfVar15 = reinterpret_cast<float *>(&local_288);
     for (iVar26 = 0x7e; iVar26 != 0; iVar26 = iVar26 + -1) {
       *pfVar15 = 0.0;
       pfVar15 = pfVar15 + 1;
     }
-    local_288.floats[11] = 8.0f;
+    reinterpret_cast<float *>(&local_288)[11] = 8.0f;
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
     if (*(short *)(iVar27 + 4) == 0x1b0) {
       puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar13 = local_288.words + 18;
+      puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
         *puVar13 = *puVar14;
         puVar14 = puVar14 + 1;
@@ -1629,31 +1757,31 @@ dispatch_select_bullet_count_low:
     local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
     local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    local_288.floats[0] = local_2b4;
-    local_288.floats[1] = local_2b0;
-    local_288.floats[2] = local_2ac;
+    reinterpret_cast<float *>(&local_288)[0] = local_2b4;
+    reinterpret_cast<float *>(&local_288)[1] = local_2b0;
+    reinterpret_cast<float *>(&local_288)[2] = local_2ac;
     uVar22 = ReadIntArgument(1);
-    local_288.halves[32] = (unsigned short)uVar22;
+    reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(2);
-    local_288.halves[33] = (unsigned short)uVar22;
+    reinterpret_cast<unsigned short *>(&local_288)[33] = (unsigned short)uVar22;
     fVar19 = (ReadFloatArgument(3));
-    local_288.floats[6] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[6] = (float)fVar19;
     fVar19 = (ReadFloatArgument(4));
-    local_288.floats[9] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[9] = (float)fVar19;
     fVar19 = (ReadFloatArgument(5));
-    local_288.floats[8] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[8] = (float)fVar19;
     uVar22 = ReadIntArgument(6);
-    local_288.words[12] = (unsigned int)uVar22;
+    reinterpret_cast<unsigned int *>(&local_288)[12] = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(7);
-    local_288.words[13] = (unsigned int)uVar22;
+    reinterpret_cast<unsigned int *>(&local_288)[13] = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(8);
-    local_288.words[14] = (unsigned int)uVar22;
+    reinterpret_cast<unsigned int *>(&local_288)[14] = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(9);
-    local_288.words[15] = (unsigned int)uVar22;
+    reinterpret_cast<unsigned int *>(&local_288)[15] = (unsigned int)uVar22;
     fVar19 = (ReadFloatArgument(10));
-    local_288.floats[10] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;
     uVar22 = ReadIntArgument(0xb);
-    local_288.words[17] = (unsigned int)uVar22 | 2;
+    reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 | 2;
     uVar6 = EnemyFireLaser(g_EnemyBulletManager, &local_288, 1);
     if (puVar5 != (unsigned int *)0x0) {
       *puVar5 = uVar6;
@@ -1662,14 +1790,14 @@ dispatch_select_bullet_count_low:
     break;
   case ENEMY_ECL_FIRE_LASER:
   case ENEMY_ECL_FIRE_LASER_WITH_PATTERN:
-    pfVar15 = local_288.floats;
+    pfVar15 = reinterpret_cast<float *>(&local_288);
     for (iVar26 = 0x77; iVar26 != 0; iVar26 = iVar26 + -1) {
       *pfVar15 = 0.0;
       pfVar15 = pfVar15 + 1;
     }
     if (opcode == 0x1b1) {
       puVar5 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar14 = local_288.words + 11;
+      puVar14 = reinterpret_cast<unsigned int *>(&local_288) + 11;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
         *puVar14 = *puVar5;
         puVar5 = puVar5 + 1;
@@ -1679,26 +1807,26 @@ dispatch_select_bullet_count_low:
     local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
     local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    local_288.floats[0] = local_2b4;
-    local_288.floats[1] = local_2b0;
-    local_288.floats[2] = local_2ac;
+    reinterpret_cast<float *>(&local_288)[0] = local_2b4;
+    reinterpret_cast<float *>(&local_288)[1] = local_2b0;
+    reinterpret_cast<float *>(&local_288)[2] = local_2ac;
     uVar22 = ReadIntArgument(0);
-    local_288.halves[18] = (unsigned short)uVar22;
+    reinterpret_cast<unsigned short *>(&local_288)[18] = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(1);
-    local_288.halves[19] = (unsigned short)uVar22;
+    reinterpret_cast<unsigned short *>(&local_288)[19] = (unsigned short)uVar22;
     fVar19 = (ReadFloatArgument(2));
-    local_288.floats[3] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[3] = (float)fVar19;
     fVar19 = (ReadFloatArgument(3));
-    local_288.floats[8] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[8] = (float)fVar19;
     fVar19 = (ReadFloatArgument(4));
-    local_288.floats[5] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[5] = (float)fVar19;
     fVar19 = (ReadFloatArgument(5));
-    local_288.floats[4] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[4] = (float)fVar19;
     fVar19 = (ReadFloatArgument(6));
-    local_288.floats[6] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[6] = (float)fVar19;
     fVar19 = (ReadFloatArgument(7));
-    local_288.floats[7] = (float)fVar19;
-    local_288.words[10] &= 0xfffffffe;
+    reinterpret_cast<float *>(&local_288)[7] = (float)fVar19;
+    reinterpret_cast<unsigned int *>(&local_288)[10] &= 0xfffffffe;
     EnemyFireLaser(g_EnemyBulletManager, &local_288, 0);
     return 0;
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2:
@@ -1707,7 +1835,7 @@ dispatch_select_bullet_count_low:
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
     if (*(short *)(iVar27 + 4) == 0x1b2) {
       puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar13 = local_288.words + 18;
+      puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
         *puVar13 = *puVar14;
         puVar14 = puVar14 + 1;
@@ -1717,31 +1845,31 @@ dispatch_select_bullet_count_low:
     local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
     local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    local_288.floats[0] = local_2b4;
-    local_288.floats[1] = local_2b0;
-    local_288.floats[2] = local_2ac;
+    reinterpret_cast<float *>(&local_288)[0] = local_2b4;
+    reinterpret_cast<float *>(&local_288)[1] = local_2b0;
+    reinterpret_cast<float *>(&local_288)[2] = local_2ac;
     uVar22 = ReadIntArgument(1);
-    local_288.halves[32] = (unsigned short)uVar22;
+    reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(2);
-    local_288.halves[33] = (unsigned short)uVar22;
+    reinterpret_cast<unsigned short *>(&local_288)[33] = (unsigned short)uVar22;
     fVar19 = (ReadFloatArgument(3));
-    local_288.floats[6] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[6] = (float)fVar19;
     fVar19 = (ReadFloatArgument(4));
-    local_288.floats[9] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[9] = (float)fVar19;
     fVar19 = (ReadFloatArgument(5));
-    local_288.floats[8] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[8] = (float)fVar19;
     uVar22 = ReadIntArgument(6);
-    local_288.words[12] = (unsigned int)uVar22;
+    reinterpret_cast<unsigned int *>(&local_288)[12] = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(7);
-    local_288.words[13] = (unsigned int)uVar22;
+    reinterpret_cast<unsigned int *>(&local_288)[13] = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(8);
-    local_288.words[14] = (unsigned int)uVar22;
+    reinterpret_cast<unsigned int *>(&local_288)[14] = (unsigned int)uVar22;
     uVar22 = ReadIntArgument(9);
-    local_288.words[15] = (unsigned int)uVar22;
+    reinterpret_cast<unsigned int *>(&local_288)[15] = (unsigned int)uVar22;
     fVar19 = (ReadFloatArgument(10));
-    local_288.floats[10] = (float)fVar19;
+    reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;
     uVar22 = ReadIntArgument(0xb);
-    local_288.words[17] = (unsigned int)uVar22 & 0xfffffffd;
+    reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 & 0xfffffffd;
     uVar6 = EnemyFireLaser(g_EnemyBulletManager, &local_288, 1);
     if (puVar5 != (unsigned int *)0x0) {
       *puVar5 = uVar6;
