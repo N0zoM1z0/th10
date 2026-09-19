@@ -101,7 +101,7 @@ struct EnemyRuntimeView
     // full-object virtual forwarding entry at 0x0040E760. Its maintained body
     // covers every target-active opcode; compiler exactness remains unknown.
     int DispatchEclInstruction();
-    int ReadIntArgument(int index);
+    __declspec(noinline) int ReadIntArgument(int index);
     int *ResolveIntArgument(int index);
     float ReadFloatArgument(int index);
     float *ResolveFloatArgument(int index);
