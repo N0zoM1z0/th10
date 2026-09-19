@@ -405,7 +405,22 @@ extern int EnemySpawnFromEclInstruction(
     EnemyManagerView *manager, const void *subroutineName,
     const EnemySpawnRequestView *request);
 extern void __stdcall EnemyKillAll(EnemyManagerView *manager);
-extern void EnemyConfigureInterrupt(int first, int second, int third);
+static __declspec(noinline) void __stdcall EnemyConfigureInterrupt(
+    EnemyFullObjectView *owner, int slot, int lifeThreshold,
+    int timerThreshold, const unsigned char *callbackName)
+{
+    unsigned char *record =
+        reinterpret_cast<unsigned char *>(owner) + slot * 0x10;
+    *reinterpret_cast<int *>(record + 0x2494) = lifeThreshold;
+    if (lifeThreshold >= 0) {
+        *reinterpret_cast<int *>(record + 0x2498) = timerThreshold;
+        *reinterpret_cast<const unsigned char **>(record + 0x249c) =
+            callbackName;
+        *reinterpret_cast<const unsigned char **>(
+            reinterpret_cast<unsigned char *>(owner) +
+            (slot + 0x24a) * 0x10) = callbackName;
+    }
+}
 static __declspec(noinline) void EnemyInitializeScalarInterpolation(
     EnemyScalarInterpolationView *interpolation)
 {
@@ -1850,7 +1865,9 @@ dispatch_select_bullet_count_low:
     uVar22 = ENEMY_READ_INT_DIRECT(2);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     uVar24 = ENEMY_READ_INT_DIRECT(0);
-    EnemyConfigureInterrupt((int)uVar23,(int)uVar24,(int)uVar22);
+    EnemyConfigureInterrupt(
+        owner, (int)uVar24, (int)uVar23, (int)uVar22,
+        reinterpret_cast<const unsigned char *>(iVar27 + 0x20));
     return 0;
   case ENEMY_ECL_SET_TIMEOUT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
