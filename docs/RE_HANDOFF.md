@@ -115,17 +115,21 @@ to close this byte. Fix the surrounding natural source and private call graph.
 
 The selected dispatcher prologue still exposes the broader allocator gap:
 
-- target frame allocation is `SUB ESP,0x2C4`;
-- candidate frame allocation is `SUB ESP,0x2BC`;
-- target laser/spawn scratch addresses are `ESP+0x50` and `ESP+0x248`;
-- candidate addresses are `ESP+0x40` and `ESP+0x238`;
-- target retains the owner in EDX while decoding the opcode through EAX;
-- candidate retains the owner in EDI and the active context in EAX, decoding the
-  opcode through DX.
+- target and current candidate frame allocation are both `SUB ESP,0x2C4`;
+- target retains the owner in EDX, active context in EAX, instruction in ESI,
+  and decodes the opcode through AX before spilling the long-lived values;
+- with only ECL support the candidate still keeps the instruction in EDI and
+  opcode in SI; adding the authored AnmManager.cpp LTCG support restores the
+  candidate instruction/opcode carriers to ESI/AX while the owner remains in
+  EDI;
+- the ANM-supported diagnostic keeps the 181/181 selector bytes and physical
+  case order, improves the pre-table span from 13,364 to 13,404 bytes against
+  target 13,760, and reduces the 108-interval absolute-size error from 866 to
+  834 while increasing zero-delta intervals from 28 to 29.
 
-The largest remaining Enemy intervals include the laser request families. Use
-the case-layout report to rank them again after every allocator or ABI change;
-avoid optimizing only total size.
+The largest remaining Enemy intervals still include the spawn and laser request
+families. Use the case-layout report to rank them again after every allocator or
+ABI change; avoid optimizing only total size.
 
 ### Focused Enemy probe
 
@@ -134,6 +138,7 @@ scripts/repo-python scripts/probe-ltcg-backlog.py \
   --source src/EnemyEclDispatcher.cpp \
   --entry 'src/EnemyEclDispatcher.cpp=EnemyRuntimeView::DispatchEclInstruction' \
   --support 'src/EnemyEclDispatcher.cpp=src/EclVm.cpp' \
+  --support 'src/EnemyEclDispatcher.cpp=src/AnmManager.cpp' \
   --profile-flag=/GS --json > .analysis/enemy-probe.json
 
 scripts/repo-python scripts/report-ecl-dispatch-table.py \
