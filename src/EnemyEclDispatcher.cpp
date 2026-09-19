@@ -139,7 +139,17 @@ enum EnemyEclOpcode
     ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY = 0x1B4,
 };
 
-struct EnemyGameStateView;
+struct EnemyGameStateView
+{
+    unsigned char unknown000[0x774];
+    int managedVmId;
+    unsigned char unknown778[0x378c - 0x778];
+    unsigned int flags378C;
+};
+typedef char EnemyGameStateVmIdAt774[
+    (offsetof(EnemyGameStateView, managedVmId) == 0x774) ? 1 : -1];
+typedef char EnemyGameStateFlagsAt378C[
+    (offsetof(EnemyGameStateView, flags378C) == 0x378c) ? 1 : -1];
 struct EnemyPrimaryResourceOwnerView;
 struct EnemyManagedVmView;
 struct EnemyVisualStateView
@@ -349,7 +359,13 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int m
 }
 extern void EnemyBeginSpell(int gameState, int spellId, char *name, int value);
 extern void EnemyEndSpell(EnemyGameStateView *gameState);
-extern void EnemyEnableBombShield(EnemyGameStateView *gameState);
+static __declspec(noinline) void EnemyEnableBombShield(
+    EnemyGameStateView *gameState)
+{
+    gameState->flags378C |= 0x10;
+    g_AnmRenderManagerView->MarkVmForDeletion(gameState->managedVmId);
+    gameState->managedVmId = 0;
+}
 extern void EnemyInitializeLaserConfig(EnemyLaserRequestScratch *config);
 extern void EnemySetLaserPosition(int laser, const PlayerFloat3 *position);
 extern int EnemyFindLaser(int id);
