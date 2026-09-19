@@ -161,8 +161,25 @@ extern PlayerFloat3 *__stdcall D3DXVec3Project(
     PlayerFloat3 *output, const PlayerFloat3 *input, const void *viewport,
     const void *projection, const void *view, const void *world);
 extern void EnemyPrepareProjection();
-extern void EnemyInitializePositionInterpolation(
-    EnemyPositionInterpolationView *interpolation);
+extern float g_AnmGameSpeed;
+
+static __declspec(noinline) void EnemyInitializePositionInterpolation(
+    EnemyPositionInterpolationView *interpolation)
+{
+    unsigned int *words = reinterpret_cast<unsigned int *>(interpolation);
+    unsigned int flags = words[0x40 / 4];
+    if ((flags & 1) == 0) {
+        flags |= 1;
+        words[0x34 / 4] = 0;
+        words[0x30 / 4] = static_cast<unsigned int>(-999999);
+        words[0x38 / 4] = 0;
+        words[0x3c / 4] = reinterpret_cast<unsigned int>(&g_AnmGameSpeed);
+        words[0x40 / 4] = flags;
+    }
+    words[0x34 / 4] = 0;
+    words[0x38 / 4] = 0;
+    words[0x30 / 4] = static_cast<unsigned int>(-1);
+}
 extern void EnemySetTimerCurrent(PlayerTimerView *timer, int value);
 extern unsigned int EnemyFireBulletPattern(int manager, int pattern, int owner);
 extern unsigned int EnemyCancelBulletPattern(float value, int mode, int flags);
