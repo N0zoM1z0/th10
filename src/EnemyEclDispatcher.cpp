@@ -205,20 +205,6 @@ extern void EnemyReleaseManagedVm(unsigned int *id);
 extern float EnemyRandomAngle();
 extern float __stdcall EnemyWrapAngle(float angle);
 
-static int EnemyDecodeOperandIndex(float encoded)
-{
-    union { float f; int i; } bits;
-    bits.f = encoded;
-    return bits.i;
-}
-
-static float EnemyEncodeOperandIndex(int index)
-{
-    union { float f; int i; } bits;
-    bits.i = index;
-    return bits.f;
-}
-
 struct EnemyLaserRequestScratch
 {
     unsigned int field000;
@@ -1255,29 +1241,25 @@ dispatch_initialize_polar_interpolation:
   case ENEMY_ECL_SELECT_FLOAT_BY_DIFFICULTY:
     switch(g_EnemyDifficulty) {
     case 0:
-dispatch_difficulty_float_1:
-      fVar9 = EnemyEncodeOperandIndex(1);
-      break;
+      iVar27 = 1;
+      goto dispatch_rank_float_tail_b;
     case 1:
-      goto dispatch_rank_band_1;
+      iVar27 = 2;
+      goto dispatch_rank_float_tail_a;
     case 2:
-dispatch_rank_band_2:
-      fVar9 = EnemyEncodeOperandIndex(3);
-      break;
+dispatch_difficulty_float_index_3:
+      iVar27 = 3;
+      goto dispatch_rank_float_tail_b;
     case 3:
-      goto dispatch_rank_band_3;
+dispatch_difficulty_float_index_4_a:
+      iVar27 = 4;
+      goto dispatch_rank_float_tail_a;
     case 4:
-      fVar9 = EnemyEncodeOperandIndex(4);
-      break;
+      iVar27 = 4;
+      goto dispatch_rank_float_tail_b;
     default:
       goto dispatch_complete;
     }
-dispatch_read_selected_float:
-    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
-dispatch_store_float_result:
-    pfVar15 = (float *)((int)ResolveFloatArgument(0));
-    *pfVar15 = (float)fVar19;
-    return 0;
   case ENEMY_ECL_INITIALIZE_BULLET_PATTERN:
     uVar22 = ReadIntArgument(0);
     iVar26 = (int)uVar22;
@@ -1953,34 +1935,38 @@ dispatch_select_bullet_count_low:
     EnemySetChapter((int)uVar22);
     return 0;
   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_3:
-    if (g_EnemyRank < 0x200) {
-      fVar9 = 0.0;
-      if (g_EnemyRank < -0x1ff) goto dispatch_store_selected_float;
+    if (g_EnemyRank >= 0x200) {
+      iVar27 = 2;
+      goto dispatch_rank_float_tail_b;
     }
-    else {
-      fVar9 = EnemyEncodeOperandIndex(2);
-    }
-    goto dispatch_read_selected_float;
+    iVar27 = 0;
+    if (g_EnemyRank > -0x200) goto dispatch_rank_float_tail_b;
+    goto dispatch_rank_float_tail_a;
   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_5:
-    if (599 < g_EnemyRank) {
-dispatch_rank_band_3:
-      fVar9 = EnemyEncodeOperandIndex(4);
-      goto dispatch_store_selected_float;
+    if (g_EnemyRank >= 600) {
+      goto dispatch_difficulty_float_index_4_a;
     }
-    if (199 < g_EnemyRank) goto dispatch_rank_band_2;
-    if (g_EnemyRank < -200) {
-      if (g_EnemyRank < -400) {
-        fVar9 = 0.0;
-        goto dispatch_store_selected_float;
-      }
-      goto dispatch_difficulty_float_1;
+    if (g_EnemyRank >= 200) {
+      goto dispatch_difficulty_float_index_3;
     }
-dispatch_rank_band_1:
-    fVar9 = EnemyEncodeOperandIndex(2);
-dispatch_store_selected_float:
-    fVar19 = (ReadFloatArgument(EnemyDecodeOperandIndex(fVar9)));
-    pfVar15 = (float *)((int)ResolveFloatArgument(0));
+    if (g_EnemyRank >= -200) {
+      iVar27 = 2;
+      goto dispatch_rank_float_tail_a;
+    }
+    if (g_EnemyRank < -400) {
+      iVar27 = 0;
+      goto dispatch_rank_float_tail_a;
+    }
+    iVar27 = 1;
+dispatch_rank_float_tail_b:
+    fVar19 = ReadFloatArgument(iVar27);
+    pfVar15 = ResolveFloatArgument(0);
     *pfVar15 = (float)fVar19;
+    return 0;
+dispatch_rank_float_tail_a:
+    fVar21 = ReadFloatArgument(iVar27);
+    positionInterpolationValues = ResolveFloatArgument(0);
+    *positionInterpolationValues = (float)fVar21;
     return 0;
   case ENEMY_ECL_INTERPOLATE_FLOAT_BY_RANK:
     fVar19 = (ReadFloatArgument(1));
@@ -2059,7 +2045,9 @@ dispatch_rank_int_low:
     fVar21 = (ReadFloatArgument(2));
     fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,
                    *pfVar15 - (float)fVar19);
-    goto dispatch_store_float_result;
+    pfVar15 = ResolveFloatArgument(0);
+    *pfVar15 = (float)fVar19;
+    return 0;
   case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
     if (g_EnemyDifficulty == 0) {
       uVar22 = ReadIntArgument(0);
