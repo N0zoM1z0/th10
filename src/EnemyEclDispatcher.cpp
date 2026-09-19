@@ -288,7 +288,35 @@ extern void EnemyReadDialog();
 extern PlayerFloat3 *EnemyGetAnmPosition(const PlayerFloat3 *position);
 extern unsigned int EnemyFireLaser(
     void *manager, EnemyLaserRequestScratch *request, int type);
-extern unsigned int EnemyWaitForEffect();
+struct EnemyEffectWaitNode
+{
+    unsigned char unknown000[0x08];
+    EnemyEffectWaitNode *next;
+    int state;
+    unsigned char unknown010[0x40];
+    unsigned char flag50;
+};
+
+struct EnemyEffectWaitManager
+{
+    unsigned char unknown000[0x18];
+    EnemyEffectWaitNode *head;
+};
+
+static __declspec(noinline) unsigned int EnemyWaitForEffect(
+    EnemyEffectWaitManager *manager)
+{
+    EnemyEffectWaitNode *node = manager->head;
+    while (node != 0) {
+        EnemyEffectWaitNode *next = node->next;
+        unsigned char flag = node->flag50;
+        if (node->state != 1 && flag == 0) {
+            node->flag50 = 1;
+        }
+        node = next;
+    }
+    return 0;
+}
 extern int EnemyApplyBulletCancel();
 extern unsigned int EnemyApplyBulletClear();
 extern unsigned int *EnemySetScreenShake(
@@ -2076,7 +2104,8 @@ dispatch_rank_int_low:
     *(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9e90) = (int)uVar22;
     return 0;
   case ENEMY_ECL_WAIT_FOR_EFFECT:
-    EnemyWaitForEffect();
+    EnemyWaitForEffect(
+        reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager));
     return 0;
   case ENEMY_ECL_SET_ANM_MODE:
     uVar22 = ReadIntArgument(0);
