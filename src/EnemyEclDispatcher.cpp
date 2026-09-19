@@ -1569,22 +1569,21 @@ dispatch_initialize_polar_interpolation:
   case ENEMY_ECL_SELECT_INT_BY_DIFFICULTY:
     switch(g_EnemyDifficulty) {
     case 0:
-      iVar27 = 1;
+      uVar22 = ENEMY_READ_INT_DIRECT(1);
       break;
     case 1:
-      iVar27 = 2;
+      uVar22 = ENEMY_READ_INT_DIRECT(2);
       break;
     case 2:
-      iVar27 = 3;
+      uVar22 = ENEMY_READ_INT_DIRECT(3);
       break;
     case 3:
     case 4:
-      iVar27 = 4;
+      uVar22 = ENEMY_READ_INT_DIRECT(4);
       break;
     default:
       goto dispatch_complete;
     }
-    uVar22 = ENEMY_READ_INT_DIRECT(iVar27);
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
     *puVar5 = (int)uVar22;
     return 0;
