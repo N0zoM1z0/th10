@@ -1960,6 +1960,7 @@ dispatch_select_bullet_count_low:
     iVar27 = 1;
 dispatch_rank_float_tail_b:
     fVar19 = ReadFloatArgument(iVar27);
+dispatch_store_float_result:
     pfVar15 = ResolveFloatArgument(0);
     *pfVar15 = (float)fVar19;
     return 0;
@@ -2045,9 +2046,7 @@ dispatch_rank_int_low:
     fVar21 = (ReadFloatArgument(2));
     fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,
                    *pfVar15 - (float)fVar19);
-    pfVar15 = ResolveFloatArgument(0);
-    *pfVar15 = (float)fVar19;
-    return 0;
+    goto dispatch_store_float_result;
   case ENEMY_ECL_SUBTRACT_DIFFICULTY_VALUE:
     if (g_EnemyDifficulty == 0) {
       uVar22 = ReadIntArgument(0);
