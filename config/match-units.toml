@@ -3033,8 +3033,8 @@ linkages = [
 
 [units.enemy-set-motion-angle]
 artifact_kind = "coff"
-source = "src/EnemyEclDispatcher.cpp"
-object = "build/match/EnemyEclDispatcher.obj"
+source = "src/EnemyMotion.cpp"
+object = "build/match/EnemyMotion.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["EnemySetMotionAngle"]
 symbol = "?EnemySetMotionAngle@@YGXPAUEnemyMotionView@@M@Z"
