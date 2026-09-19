@@ -522,13 +522,7 @@ dispatch_finish_spawn_position:
     local_90.spawnRequest.scoreReward = uVar22;
     uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
     local_90.spawnRequest.itemDropType = uVar22;
-    puVar5 = (unsigned int *)((int)runtimeAddress + 0xfc);
-    pbVar16 = reinterpret_cast<unsigned char *>(&local_90.spawnRequest.eclVariables);
-    for (iVar26 = 8; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *(unsigned int *)pbVar16 = *puVar5;
-      puVar5 = puVar5 + 1;
-      pbVar16 = pbVar16 + 4;
-    }
+    local_90.spawnRequest.eclVariables = eclVariables;
 dispatch_spawn_enemy:
     EnemySpawnFromEclInstruction(
         g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
@@ -556,13 +550,7 @@ dispatch_create_enemy_global:
     local_90.spawnRequest.scoreReward = uVar22;
     uVar22 = ReadRawIntArgument(6, *(int *)(iVar27 + 0x24 + iVar26 * 4));
     local_90.spawnRequest.itemDropType = uVar22;
-    puVar5 = (unsigned int *)((int)runtimeAddress + 0xfc);
-    pbVar16 = reinterpret_cast<unsigned char *>(&local_90.spawnRequest.eclVariables);
-    for (iVar26 = 8; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *(unsigned int *)pbVar16 = *puVar5;
-      puVar5 = puVar5 + 1;
-      pbVar16 = pbVar16 + 4;
-    }
+    local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag40000 = local_90.spawnRequest.setFlag40000 | 1;
     EnemySpawnFromEclInstruction(
         g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
@@ -588,13 +576,7 @@ dispatch_create_enemy_mirrored:
     local_90.spawnRequest.scoreReward = uVar22;
     uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
     local_90.spawnRequest.itemDropType = uVar22;
-    puVar5 = (unsigned int *)((int)runtimeAddress + 0xfc);
-    pbVar16 = reinterpret_cast<unsigned char *>(&local_90.spawnRequest.eclVariables);
-    for (iVar26 = 8; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *(unsigned int *)pbVar16 = *puVar5;
-      puVar5 = puVar5 + 1;
-      pbVar16 = pbVar16 + 4;
-    }
+    local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag0800 = 1;
     EnemySpawnFromEclInstruction(
         g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
@@ -2101,13 +2083,7 @@ dispatch_create_enemy_absolute_mirrored:
   local_90.spawnRequest.scoreReward = uVar22;
   uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
   local_90.spawnRequest.itemDropType = uVar22;
-  puVar5 = (unsigned int *)((int)runtimeAddress + 0xfc);
-  pbVar16 = reinterpret_cast<unsigned char *>(&local_90.spawnRequest.eclVariables);
-  for (iVar26 = 8; iVar26 != 0; iVar26 = iVar26 + -1) {
-    *(unsigned int *)pbVar16 = *puVar5;
-    puVar5 = puVar5 + 1;
-    pbVar16 = pbVar16 + 4;
-  }
+  local_90.spawnRequest.eclVariables = eclVariables;
   local_90.spawnRequest.setFlag0800 = 1;
   goto dispatch_spawn_enemy;
 dispatch_create_enemy_absolute:
