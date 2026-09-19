@@ -1026,7 +1026,9 @@ dispatch_place_temporary_anm:
   case ENEMY_ECL_PLAY_ANM_ABSOLUTE:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + (int)uVar22 * 4),(int)uVar23,6);
+    reinterpret_cast<AnmLoadedView *>(
+        g_EnemyManager->effectResources[(int)uVar22])->
+        CreateVmVariant2((int)uVar23, 6);
     return 0;
   case ENEMY_ECL_PLAY_ANM_ROTATED:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
