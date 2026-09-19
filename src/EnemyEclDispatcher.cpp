@@ -159,6 +159,12 @@ struct EnemyVisualStateView
     unsigned char *dialogTable;
 };
 struct EnemyLaserRequestScratch;
+struct EnemyBulletPatternCopyView
+{
+    unsigned int words[0x84];
+};
+typedef char EnemyBulletPatternCopyViewSizeIs210[
+    (sizeof(EnemyBulletPatternCopyView) == 0x210) ? 1 : -1];
 
 struct EnemyCancelManagerView
 {
@@ -1631,13 +1637,10 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_COPY_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     uVar23 = ENEMY_READ_INT_DIRECT(0);
-    puVar5 = (unsigned int *)((int)uVar22 * 0x210 + 0x2c4 + (int)runtimeAddress);
-    puVar14 = (unsigned int *)((int)uVar23 * 0x210 + 0x2c4 + (int)runtimeAddress);
-    for (iVar26 = 0x84; iVar26 != 0; iVar26 = iVar26 + -1) {
-      *puVar14 = *puVar5;
-      puVar5 = puVar5 + 1;
-      puVar14 = puVar14 + 1;
-    }
+    *reinterpret_cast<EnemyBulletPatternCopyView *>(
+        (int)runtimeAddress + 0x2c4 + (int)uVar23 * 0x210) =
+        *reinterpret_cast<const EnemyBulletPatternCopyView *>(
+            (int)runtimeAddress + 0x2c4 + (int)uVar22 * 0x210);
     return 0;
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
