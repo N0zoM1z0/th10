@@ -475,9 +475,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
   float local_2c8;
   float local_2c4;
   float local_2bc;
-  float local_2b4;
-  float local_2b0;
-  float local_2ac;
+  PlayerFloat3 vectorScratch;
   float local_2a8;
   float local_2a4;
   PlayerFloat3 projectionInput;
@@ -799,11 +797,10 @@ dispatch_update_primary_anm_bounds:
     if (fVar10 <= 0.0) {
       fVar10 = selectedMotion->position.x;
     }
-    local_2b4 = fVar10;
-    local_2b0 = fVar9;
-    local_2ac = 0.0;
-    positionInterpolation->final =
-        *reinterpret_cast<PlayerFloat3 *>(&local_2b4);
+    vectorScratch.x = fVar10;
+    vectorScratch.y = fVar9;
+    vectorScratch.z = 0.0;
+    positionInterpolation->final = vectorScratch;
     EnemyInitializePositionInterpolation(positionInterpolation);
     selectedMotion->flags &= 0xfffffffe;
     return 0;
@@ -950,8 +947,8 @@ dispatch_update_primary_anm_bounds:
     if (fVar10 <= 0.0) {
       fVar10 = selectedMotion->value20;
     }
-    local_2b0 = (float)fVar19;
-    local_2b4 = fVar10;
+    vectorScratch.y = (float)fVar19;
+    vectorScratch.x = fVar10;
     local_29c = local_2a8;
     local_2a8 = selectedMotion->value1C;
     local_298 = fVar9;
@@ -972,10 +969,10 @@ dispatch_update_primary_anm_bounds:
     secondScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
     secondScalarInterpolation->finalTangent = g_EnemyInterpolationBasis;
     secondScalarInterpolation->initial.x = selectedMotion->value20;
-    secondScalarInterpolation->final.y = local_2b0;
+    secondScalarInterpolation->final.y = vectorScratch.y;
     secondScalarInterpolation->mode = (int)uVar23;
     secondScalarInterpolation->initial.y = selectedMotion->value24;
-    secondScalarInterpolation->final.x = local_2b4;
+    secondScalarInterpolation->final.x = vectorScratch.x;
     EnemyInitializeScalarInterpolation(secondScalarInterpolation);
     selectedMotion->velocity = selectedMotion->position;
     selectedMotion->flags |= 1;
@@ -1070,15 +1067,15 @@ dispatch_random_angle_ready:
     firstScalarInterpolation->mode = uVar22;
     local_2c4 = 0.0;
     local_2c8 = local_2bc;
-    local_2b4 = local_2bc;
+    vectorScratch.x = local_2bc;
     fVar19 = (ReadFloatArgument(2));
-    local_2b0 = (float)fVar19;
+    vectorScratch.y = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     firstScalarInterpolation->duration = uVar22;
     firstScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
     firstScalarInterpolation->finalTangent.x = g_EnemyInterpolationBasis.x;
-    fVar9 = local_2b4;
-    fVar10 = local_2b0;
+    fVar9 = vectorScratch.x;
+    fVar10 = vectorScratch.y;
 dispatch_initialize_polar_interpolation:
     firstScalarInterpolation->finalTangent.y = g_EnemyInterpolationBasis.y;
     firstScalarInterpolation->initial.x = fVar9;
@@ -1292,14 +1289,14 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_FIRE_BULLET_PATTERN:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar27 = (int)uVar22 * 3 + 0x4d1;
-    local_2b4 = *(float *)((int)runtimeAddress + iVar27 * 4) + *(float *)((int)runtimeAddress + 0x2c);
-    local_2b0 = *(float *)((int)runtimeAddress + 4 + iVar27 * 4) + *(float *)((int)runtimeAddress + 0x30);
+    vectorScratch.x = *(float *)((int)runtimeAddress + iVar27 * 4) + *(float *)((int)runtimeAddress + 0x2c);
+    vectorScratch.y = *(float *)((int)runtimeAddress + 4 + iVar27 * 4) + *(float *)((int)runtimeAddress + 0x30);
     iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
-    local_2ac = *(float *)((int)runtimeAddress + iVar27 * 4 + 8) + *(float *)((int)runtimeAddress + 0x34);
-    *(float *)(iVar26 + 0x2c8) = local_2b4;
-    *(float *)(iVar26 + 0x2cc) = local_2b0;
+    vectorScratch.z = *(float *)((int)runtimeAddress + iVar27 * 4 + 8) + *(float *)((int)runtimeAddress + 0x34);
+    *(float *)(iVar26 + 0x2c8) = vectorScratch.x;
+    *(float *)(iVar26 + 0x2cc) = vectorScratch.y;
     fVar9 = 0.0f;
-    *(float *)(iVar26 + 0x2d0) = local_2ac;
+    *(float *)(iVar26 + 0x2d0) = vectorScratch.z;
     if ((*(float *)((int)runtimeAddress + 0x1454) == fVar9) ||
        (fVar9 = *(float *)(iVar26 + 0x2cc) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c4),
        fVar10 = *(float *)(iVar26 + 0x2c8) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0),
@@ -1692,12 +1689,12 @@ dispatch_select_bullet_count_low:
         puVar14 = puVar14 + 1;
       }
     }
-    local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    reinterpret_cast<float *>(&local_288)[0] = local_2b4;
-    reinterpret_cast<float *>(&local_288)[1] = local_2b0;
-    reinterpret_cast<float *>(&local_288)[2] = local_2ac;
+    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
+    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
+    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
+    reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
+    reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     reinterpret_cast<unsigned short *>(&local_288)[18] = (unsigned short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
@@ -1735,12 +1732,12 @@ dispatch_select_bullet_count_low:
         puVar13 = puVar13 + 1;
       }
     }
-    local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    reinterpret_cast<float *>(&local_288)[0] = local_2b4;
-    reinterpret_cast<float *>(&local_288)[1] = local_2b0;
-    reinterpret_cast<float *>(&local_288)[2] = local_2ac;
+    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
+    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
+    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
+    reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
+    reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(2);
@@ -1785,12 +1782,12 @@ dispatch_select_bullet_count_low:
         puVar14 = puVar14 + 1;
       }
     }
-    local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    reinterpret_cast<float *>(&local_288)[0] = local_2b4;
-    reinterpret_cast<float *>(&local_288)[1] = local_2b0;
-    reinterpret_cast<float *>(&local_288)[2] = local_2ac;
+    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
+    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
+    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
+    reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
+    reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
     uVar22 = ReadIntArgument(0);
     reinterpret_cast<unsigned short *>(&local_288)[18] = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(1);
@@ -1823,12 +1820,12 @@ dispatch_select_bullet_count_low:
         puVar13 = puVar13 + 1;
       }
     }
-    local_2b4 = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
-    local_2b0 = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
-    local_2ac = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
-    reinterpret_cast<float *>(&local_288)[0] = local_2b4;
-    reinterpret_cast<float *>(&local_288)[1] = local_2b0;
-    reinterpret_cast<float *>(&local_288)[2] = local_2ac;
+    vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
+    vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
+    vectorScratch.z = *(float *)((int)runtimeAddress + 0x134c) + *(float *)((int)runtimeAddress + 0x34);
+    reinterpret_cast<float *>(&local_288)[0] = vectorScratch.x;
+    reinterpret_cast<float *>(&local_288)[1] = vectorScratch.y;
+    reinterpret_cast<float *>(&local_288)[2] = vectorScratch.z;
     uVar22 = ReadIntArgument(1);
     reinterpret_cast<unsigned short *>(&local_288)[32] = (unsigned short)uVar22;
     uVar22 = ReadIntArgument(2);
@@ -1875,11 +1872,11 @@ dispatch_select_bullet_count_low:
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(2));
       fVar21 = (ReadFloatArgument(1));
-      local_2b4 = (float)fVar21;
-      local_2ac = 0.0;
-      local_2b0 = (float)fVar19;
+      vectorScratch.x = (float)fVar21;
+      vectorScratch.z = 0.0;
+      vectorScratch.y = (float)fVar19;
       EnemySetLaserPosition(
-          iVar26, reinterpret_cast<const PlayerFloat3 *>(&local_2b4));
+          iVar26, reinterpret_cast<const PlayerFloat3 *>(&vectorScratch.x));
       return 0;
     }
     break;
