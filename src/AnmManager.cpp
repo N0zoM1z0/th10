@@ -644,18 +644,16 @@ AnmVmView *AnmRenderManagerView::FindVm(int id)
     node = primaryVmListHead;
     while (node != NULL)
     {
-        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
-        if (vm->id == id)
-            return vm;
+        if (static_cast<AnmVmView *>(node->owner)->id == id)
+            return static_cast<AnmVmView *>(node->owner);
         node = node->next;
     }
 
     node = secondaryVmListHead;
     while (node != NULL)
     {
-        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
-        if (vm->id == id)
-            return vm;
+        if (static_cast<AnmVmView *>(node->owner)->id == id)
+            return static_cast<AnmVmView *>(node->owner);
         node = node->next;
     }
     return NULL;
