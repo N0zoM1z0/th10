@@ -3,6 +3,7 @@
 #include "Main.hpp"
 
 #include <math.h>
+#include <new>
 #include <string.h>
 
 
@@ -140,7 +141,12 @@ enum EnemyEclOpcode
 
 struct EnemyGameStateView;
 struct EnemyManagedVmView;
-struct EnemyVisualStateView;
+struct EnemyVisualStateView
+{
+    unsigned char unknown000[0x9eb8];
+    void *activeDialog;
+    unsigned char *dialogTable;
+};
 struct EnemyLaserRequestScratch;
 
 extern int g_EnemyDifficulty;
@@ -284,7 +290,29 @@ static __declspec(noinline) void EnemyInitializeScalarInterpolation(
 }
 extern void EnemySetChapter(int chapter);
 extern void __stdcall EnemySetMotionAngle(EnemyMotionView *motion, float angle);
-extern void EnemyReadDialog();
+extern void *__stdcall EnemyInitializeDialog(
+    void *storage, const unsigned char *record);
+extern int g_EnemyDialogIndex;
+extern int g_EnemyDialogState;
+
+static __declspec(noinline) void EnemyReadDialog(
+    EnemyVisualStateView *visualState, int index)
+{
+    void *storage = ::operator new(0x90);
+    void *dialog = 0;
+    if (storage != 0) {
+        unsigned char *table = visualState->dialogTable;
+        int offset = *reinterpret_cast<int *>(table + 4 + index * 8);
+        dialog = EnemyInitializeDialog(storage, table + offset);
+    }
+    visualState->activeDialog = dialog;
+    *reinterpret_cast<int *>(dialog) = index;
+    int nextIndex = index + 1;
+    if (g_EnemyDialogIndex != nextIndex) {
+        g_EnemyDialogState = 0;
+    }
+    g_EnemyDialogIndex = nextIndex;
+}
 extern PlayerFloat3 *EnemyGetAnmPosition(const PlayerFloat3 *position);
 extern unsigned int EnemyFireLaser(
     void *manager, EnemyLaserRequestScratch *request, int type);
@@ -1710,8 +1738,8 @@ dispatch_select_bullet_count_low:
     EnemySetScreenShake(1,(int)uVar22,uVar4,uVar6,uVar28);
     return 0;
   case ENEMY_ECL_READ_DIALOG:
-    ENEMY_READ_INT_DIRECT(0);
-    EnemyReadDialog();
+    uVar22 = ENEMY_READ_INT_DIRECT(0);
+    EnemyReadDialog(g_EnemyVisualState, (int)uVar22);
     EnemyCancelAllBullets(0);
     EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager), 0);
     EnemyKillAll(g_EnemyManager);
