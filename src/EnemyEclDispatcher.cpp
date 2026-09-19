@@ -2268,13 +2268,10 @@ dispatch_select_bullet_count_low:
       pfVar15 = pfVar15 + 1;
     }
     if (opcode == 0x1b1) {
-      puVar5 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar14 = reinterpret_cast<unsigned int *>(&local_288) + 11;
-      for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
-        *puVar14 = *puVar5;
-        puVar5 = puVar5 + 1;
-        puVar14 = puVar14 + 1;
-      }
+      memcpy(
+          reinterpret_cast<unsigned int *>(&local_288) + 11,
+          reinterpret_cast<const void *>(runtimeAddress + 0x2e4),
+          0x6c * sizeof(unsigned int));
     }
     vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
