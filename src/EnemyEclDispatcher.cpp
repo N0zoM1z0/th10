@@ -438,7 +438,26 @@ static __declspec(noinline) void EnemyInitializeScalarInterpolation(
     words[0x28 / 4] = 0;
     words[0x20 / 4] = static_cast<unsigned int>(-1);
 }
-extern void EnemySetChapter(int chapter);
+struct EnemyChapterStateView
+{
+    unsigned char unknown000[0x44];
+    int chapter;
+    int unknown048;
+    int chapterTimer;
+};
+
+extern EnemyChapterStateView g_EnemyChapterState;
+
+static __declspec(noinline) void EnemySetChapter(
+    EnemyChapterStateView *state, int chapter)
+{
+    if (state->chapter == chapter) {
+        state->chapter = chapter;
+        return;
+    }
+    state->chapter = chapter;
+    state->chapterTimer = 0;
+}
 extern void __stdcall EnemySetMotionAngle(EnemyMotionView *motion, float angle);
 extern void *__stdcall EnemyInitializeDialog(
     void *storage, const unsigned char *record);
@@ -2216,7 +2235,7 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_SET_CHAPTER:
     uVar22 = ReadIntArgument(0);
-    EnemySetChapter((int)uVar22);
+    EnemySetChapter(&g_EnemyChapterState, (int)uVar22);
     return 0;
   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_3:
     if (g_EnemyRank >= 0x200) {
