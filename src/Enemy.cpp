@@ -429,7 +429,8 @@ void *EnemyEclResourceBaseView::GetScriptData(int index)
 // Target 0x0040E760-0x0040E76A is the primary Enemy vtable slot-zero entry.
 // VC7.1 naturally lowers this ordinary member forwarding expression to
 // ADD ECX,0x103C / JMP EnemyRuntimeView::DispatchEclInstruction. The runtime
-// body at 0x0040E770 remains independently unreconstructed.
+// body at 0x0040E770 is maintained in EnemyEclDispatcher.cpp and remains
+// independently non-exact.
 int EnemyFullObjectView::DispatchEclInstruction()
 {
     return runtime.DispatchEclInstruction();

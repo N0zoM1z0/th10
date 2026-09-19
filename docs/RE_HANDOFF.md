@@ -11,10 +11,11 @@ belongs in Git. Do not append another chronological session transcript here.
 - Required SHA-256:
   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 - Current branch: `main`.
-- Source checkpoint immediately below this handoff:
+- Last code-changing checkpoint before this handoff:
   `07e2a37 gpt-5.6-sol: restore Enemy integer adapter call graph`.
-- `origin/main` was `cc7c686` when this handoff was written. After committing
-  this document, local `main` has two unpublished commits; nothing was pushed.
+- `origin/main` was `cc7c686` when this handoff was written. Nothing in this
+  campaign was pushed; recover the live unpublished distance with
+  `git status --short --branch`.
 - The adjacent reference repository is available at
   `/home/pentester/coding/codex_ida/th10-decomphelp-forN0`. It is hypothesis
   material only.
@@ -65,11 +66,15 @@ semantic source coverage does not promote an exact unit.
 | Owner | Target | Selected candidate | Current evidence | Main open issue |
 | --- | ---: | ---: | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | 14,416 bytes | 14,020 bytes | 636/11,664 normalized comparable bytes; 181/181 selector; all 108 physical groups in target order | private operand-helper ABIs, frame/register allocation and several large case intervals |
-| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | 9,587-byte executable owner | 9,960-byte linked contribution including its 376-byte table | candidate pre-table 9,584 vs target 9,588; all 92 physical groups in order | END/stop block placement, float temporary slots and child helper private ABIs |
+| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | 9,587-byte executable owner | 9,960-byte linked contribution including its 376-byte table | 705/8,608 comparable bytes; candidate pre-table 9,584 vs target 9,588; all 92 physical groups in order | END/stop block placement, float temporary slots and child helper private ABIs |
 | `EclVmContext::Run @ 0x0044E1A0` | 7,020 bytes | 7,020 bytes | 795/6,264 comparable bytes; 6,692/6,692 pre-table; all 59 physical groups in order | arithmetic stack slots, format-parser registers and `ReadInt` private allocation |
 
 All three remain non-exact. Their target sizes must not be inferred from a PDB
 contribution that includes or excludes an adjacent table differently.
+In particular, the ANM target's separate table follows one alignment byte, so
+its comparable code/alignment/table span is 9,964 bytes; the selected candidate
+is four bytes shorter at 9,960. The 9,587 owner row deliberately excludes that
+separate target table.
 
 ## Enemy dispatcher: selected checkpoint
 
@@ -230,10 +235,13 @@ scripts/repo-python scripts/replay-exact-units.py \
   --source src/AnmManager.cpp
 ```
 
-The last Enemy-focused checkpoint replay passed four affected exact units across
-three artifacts, 237/237 bytes. The last full ECL source replay passed 14 units,
-1,331/1,331 bytes. Prior ANM focused replay passed its configured exact units;
-re-run it after any new ANM edit because its linked context is sensitive.
+A clean handoff audit rebuilt all three selected owners and then replayed every
+canonical unit sourced from `EnemyEclDispatcher.cpp`, `EclVm.cpp` and
+`AnmManager.cpp`. It passed 95 units across 14 artifacts, 17,865/17,865 bytes
+and every declared linkage field. The receipt is
+`.analysis/gpt-5.6-sol/20260919-handoff-audit/three-source-exact-replay.json`.
+Re-run the relevant source gate after any code edit because the linked contexts
+are sensitive.
 
 Before a checkpoint, also run:
 
