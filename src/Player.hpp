@@ -86,6 +86,22 @@ struct PlayerTimerView
         subframe += value;
         current = static_cast<int>(subframe);
     }
+    void SetCurrent(int value)
+    {
+        extern float g_AnmGameSpeed;
+        if ((flags & 1u) == 0)
+        {
+            current = 0;
+            previous = -999999;
+            subframe = 0.0f;
+            scale = &g_AnmGameSpeed;
+            flags |= 1u;
+        }
+
+        current = value;
+        subframe = static_cast<float>(value);
+        previous = value - 1;
+    }
 };
 typedef char PlayerTimerViewSizeIs14[
     (sizeof(PlayerTimerView) == 0x14) ? 1 : -1];

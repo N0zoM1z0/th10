@@ -180,7 +180,6 @@ static __declspec(noinline) void EnemyInitializePositionInterpolation(
     words[0x38 / 4] = 0;
     words[0x30 / 4] = static_cast<unsigned int>(-1);
 }
-extern void EnemySetTimerCurrent(PlayerTimerView *timer, int value);
 extern unsigned int EnemyFireBulletPattern(int manager, int pattern, int owner);
 extern unsigned int EnemyCancelBulletPattern(float value, int mode, int flags);
 extern unsigned int EnemyCancelAllBullets(int mode);
@@ -1221,11 +1220,11 @@ dispatch_initialize_polar_interpolation:
     return 0;
   case ENEMY_ECL_SET_INVULNERABILITY:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    EnemySetTimerCurrent(&damageReductionTimer, (int)uVar22);
+    damageReductionTimer.SetCurrent((int)uVar22);
     return 0;
   case ENEMY_ECL_SET_PLAYER_COLLISION_TIMER:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    EnemySetTimerCurrent(&playerCollisionTimer, (int)uVar22);
+    playerCollisionTimer.SetCurrent((int)uVar22);
     return 0;
   case ENEMY_ECL_KILL_ALL_ENEMIES:
     EnemyKillAll(g_EnemyManager);
@@ -1591,7 +1590,7 @@ dispatch_select_bullet_count_low:
     *(float *)((int)runtimeAddress + (iVar26 * 3 + 0x5d) * 8) = (float)fVar19;
     return 0;
   case ENEMY_ECL_RESET_UPDATE_TIMER:
-    EnemySetTimerCurrent(&updateTimer, 0);
+    updateTimer.SetCurrent(0);
     return 0;
   case ENEMY_ECL_SET_INTERRUPT:
     uVar22 = ENEMY_READ_INT_DIRECT(2);
