@@ -426,7 +426,9 @@ int EnemyRuntimeView::ReadRawIntArgument(int index, int rawValue)
 
 float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
 {
-    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadFloatValue(index, rawValue);
+    EclVmContext *context =
+        reinterpret_cast<EclVmContext *>(owner->activeEclContext);
+    return context->ReadFloatValue(index, rawValue);
 }
 
 #define ENEMY_READ_INT_DIRECT(index) \
