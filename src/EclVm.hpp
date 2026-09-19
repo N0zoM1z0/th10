@@ -50,7 +50,7 @@ struct EclVmContext
     int ReadIntValue(unsigned int flagIndex, int value);
     float ReadFloatValue(unsigned int flagIndex, float value);
     int *ResolveInt(unsigned int index);
-    float *ResolveFloat(unsigned int index);
+    __declspec(noinline) float *ResolveFloat(unsigned int index);
     int Run(float timeDelta);
 };
 
