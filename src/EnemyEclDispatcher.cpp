@@ -372,7 +372,7 @@ extern int EnemyFindLaser(int id);
 extern int EnemySpawnFromEclInstruction(
     EnemyManagerView *manager, const void *subroutineName,
     const EnemySpawnRequestView *request);
-extern void EnemyKillAll(EnemyManagerView *manager);
+extern void __stdcall EnemyKillAll(EnemyManagerView *manager);
 extern void EnemyConfigureInterrupt(int first, int second, int third);
 static __declspec(noinline) void EnemyInitializeScalarInterpolation(
     EnemyScalarInterpolationView *interpolation)
