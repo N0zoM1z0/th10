@@ -1,5 +1,6 @@
 #include "Enemy.hpp"
 #include "EclVm.hpp"
+#include "Main.hpp"
 
 #include <math.h>
 #include <string.h>
@@ -159,7 +160,78 @@ extern unsigned char g_EnemyWorldMatrix;
 extern PlayerFloat3 *__stdcall D3DXVec3Project(
     PlayerFloat3 *output, const PlayerFloat3 *input, const void *viewport,
     const void *projection, const void *view, const void *world);
-extern void EnemyPrepareProjection();
+extern "C" AnmFloat3View *__stdcall D3DXVec3Normalize(
+    AnmFloat3View *output, const AnmFloat3View *input);
+extern "C" AnmMatrixView *__stdcall D3DXMatrixLookAtLH(
+    AnmMatrixView *output, const AnmFloat3View *eye,
+    const AnmFloat3View *at, const AnmFloat3View *up);
+extern "C" AnmMatrixView *__stdcall D3DXMatrixPerspectiveFovLH(
+    AnmMatrixView *output, float fov, float aspect,
+    float nearPlane, float farPlane);
+
+static __declspec(noinline) void EnemyConfigureViewportOwner(
+    AnmViewportOwnerView *viewport)
+{
+    if (g_AnmRenderManagerView != 0) {
+        g_AnmRenderManagerView->FlushVertexBuffer();
+    }
+
+    float *values = reinterpret_cast<float *>(viewport);
+    AnmFloat3View at;
+    AnmFloat3View eye;
+    at.x = values[3] + values[0];
+    at.y = values[4] + values[1];
+    at.z = values[5] + values[2];
+    eye.x = values[0] + values[15];
+    eye.y = values[1] + values[16];
+    eye.z = values[2] + values[17];
+
+    D3DXMatrixLookAtLH(
+        &viewport->viewMatrix, &eye, &at,
+        reinterpret_cast<AnmFloat3View *>(
+            reinterpret_cast<unsigned char *>(viewport) + 0x18));
+
+    unsigned int width = viewport->viewport.width;
+    unsigned int height = viewport->viewport.height;
+    D3DXMatrixPerspectiveFovLH(
+        &viewport->projectionMatrix, values[0x48 / 4],
+        static_cast<float>(width) / static_cast<float>(height),
+        30.0f, 1800.0f);
+
+    g_MainSupervisorView.d3dDevice->vtable->SetTransform(
+        g_MainSupervisorView.d3dDevice, 2, &viewport->viewMatrix);
+    g_MainSupervisorView.d3dDevice->vtable->SetTransform(
+        g_MainSupervisorView.d3dDevice, 3, &viewport->projectionMatrix);
+
+    const AnmFloat3View *up =
+        reinterpret_cast<const AnmFloat3View *>(
+            reinterpret_cast<const unsigned char *>(viewport) + 0x18);
+    AnmFloat3View cross;
+    cross.x = up->z * values[4] - up->y * values[5];
+    cross.y = up->x * values[5] - up->z * values[3];
+    cross.z = up->y * values[3] - up->x * values[4];
+    viewport->cameraRight = cross;
+    D3DXVec3Normalize(&viewport->cameraRight, &viewport->cameraRight);
+
+    if (g_AnmRenderManagerView != 0) {
+        g_AnmRenderManagerView->screenShakeX = values[0xE8 / 4];
+        g_AnmRenderManagerView->screenShakeY = values[0xEC / 4];
+    }
+}
+
+static __declspec(noinline) void EnemyPrepareProjection(
+    MainSupervisorView *supervisor, int viewportIndex)
+{
+    AnmViewportOwnerView *viewport =
+        reinterpret_cast<AnmViewportOwnerView *>(
+            reinterpret_cast<unsigned char *>(supervisor) +
+            0x154 + viewportIndex * 0x118);
+    supervisor->activeViewport = viewport;
+    EnemyConfigureViewportOwner(viewport);
+    supervisor->d3dDevice->vtable->SetViewport(
+        supervisor->d3dDevice, &supervisor->activeViewport->viewport);
+    supervisor->viewportConfigured = viewportIndex;
+}
 extern float g_AnmGameSpeed;
 
 static __declspec(noinline) void EnemyInitializePositionInterpolation(
@@ -519,7 +591,7 @@ int EnemyRuntimeView::DispatchEclInstruction()
       fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
       projectionInput.z = *(float *)((int)runtimeAddress + 0x34);
       projectionInput.y = (float)(fVar19 + fVar10);
-      EnemyPrepareProjection();
+      EnemyPrepareProjection(&g_MainSupervisorView, 0);
       D3DXVec3Project(&local_90.spawnRequest.position, &projectionInput,
                       &g_EnemyViewport, &g_EnemyProjectionMatrix,
                       &g_EnemyViewMatrix, &g_EnemyWorldMatrix);
