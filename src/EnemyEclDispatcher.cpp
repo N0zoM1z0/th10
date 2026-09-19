@@ -1362,7 +1362,7 @@ dispatch_difficulty_float_index_4_a:
        (fVar9 = *(float *)(iVar26 + 0x2cc) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c4),
        fVar10 = *(float *)(iVar26 + 0x2c8) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0),
        fVar9 = fVar9 * fVar9 + fVar10 * fVar10,
-       *(float *)((int)runtimeAddress + 0x1454) < fVar9 != (*(float *)((int)runtimeAddress + 0x1454) == fVar9))) {
+       *(float *)((int)runtimeAddress + 0x1454) <= fVar9)) {
       EnemyFireBulletPattern(reinterpret_cast<int>(g_EnemyBulletManager),iVar26,reinterpret_cast<int>(g_EnemyBulletManager));
       return 0;
     }
