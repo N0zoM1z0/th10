@@ -140,6 +140,7 @@ enum EnemyEclOpcode
 };
 
 struct EnemyGameStateView;
+struct EnemyPrimaryResourceOwnerView;
 struct EnemyManagedVmView;
 struct EnemyVisualStateView
 {
@@ -149,10 +150,31 @@ struct EnemyVisualStateView
 };
 struct EnemyLaserRequestScratch;
 
+struct EnemyCancelManagerView
+{
+    unsigned char unknown000000[0x44];
+    AnmFloat3View cancelCenter;
+    AnmFloat3View cancelSize;
+    unsigned int unknown05C;
+    unsigned char bulletStorage[0x3e0af0];
+    void *primaryEnemyResource;
+
+    __declspec(noinline) unsigned int CancelAllBullets(int mode);
+};
+typedef char EnemyCancelManagerCenterAt44[
+    (offsetof(EnemyCancelManagerView, cancelCenter) == 0x44) ? 1 : -1];
+typedef char EnemyCancelManagerSizeAt50[
+    (offsetof(EnemyCancelManagerView, cancelSize) == 0x50) ? 1 : -1];
+typedef char EnemyCancelManagerBulletsAt60[
+    (offsetof(EnemyCancelManagerView, bulletStorage) == 0x60) ? 1 : -1];
+typedef char EnemyCancelManagerResourceAt3E0B50[
+    (offsetof(EnemyCancelManagerView, primaryEnemyResource) == 0x3e0b50) ? 1 : -1];
+
 extern int g_EnemyDifficulty;
 extern int g_EnemyRank;
 extern EnemyManagerView *g_EnemyManager;
 extern EnemyGameStateView *g_EnemyGameState;
+extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 extern EnemyVisualStateView *g_EnemyVisualState;
 extern void *g_EnemyBulletManager;
 extern PlayerFloat3 g_EnemyGlobalPositionOffset;
@@ -259,7 +281,72 @@ static __declspec(noinline) void EnemyInitializePositionInterpolation(
 }
 extern unsigned int EnemyFireBulletPattern(int manager, int pattern, int owner);
 extern unsigned int EnemyCancelBulletPattern(float value, int mode, int flags);
-extern unsigned int EnemyCancelAllBullets(int mode);
+extern void EnemySpawnCancelEffect(
+    float *position, int kind, int color, float angle, float scale);
+extern int *EnemyCreateCancelVm(void *resource);
+extern int EnemyResolveCancelVm(int id);
+extern float g_EnemyCancelHalfScale;
+extern float g_EnemyCancelHighThreshold;
+extern float g_EnemyCancelUpperThreshold;
+extern unsigned int g_EnemyCancelColorHigh[];
+extern unsigned int g_EnemyCancelColorMid[];
+extern unsigned int g_EnemyCancelColorLow[];
+
+__declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int mode)
+{
+    AnmFloat3View halfSize = cancelSize * g_EnemyCancelHalfScale;
+    AnmFloat3View minimum = cancelCenter - halfSize;
+    AnmFloat3View maximum = cancelCenter + halfSize;
+    unsigned char *bullet = bulletStorage;
+    for (int remaining = 2000; remaining != 0;
+         --remaining, bullet += 0x7f0) {
+        short state = *reinterpret_cast<short *>(bullet + 0x446);
+        if (state == 0 || state == 3) {
+            continue;
+        }
+
+        float *position = reinterpret_cast<float *>(bullet + 0x3b4);
+        float radiusX =
+            *reinterpret_cast<float *>(bullet + 0x3f0) *
+            g_EnemyCancelHalfScale;
+        float radiusY =
+            *reinterpret_cast<float *>(bullet + 0x3f4) *
+            g_EnemyCancelHalfScale;
+        if (minimum.x <= position[0] + radiusX &&
+            position[0] - radiusX <= maximum.x &&
+            minimum.y <= position[1] + radiusY &&
+            position[1] - radiusY <= maximum.y) {
+            *reinterpret_cast<unsigned int *>(bullet) |= 8;
+            if (mode != 0) {
+                EnemySpawnCancelEffect(
+                    position, 8, -1, -1.5707964f, 0.6f);
+            }
+
+            int *vmId = EnemyCreateCancelVm(primaryEnemyResource);
+            int vm = EnemyResolveCancelVm(*vmId);
+            unsigned int colorOwner =
+                *reinterpret_cast<unsigned int *>(bullet + 0x39c);
+            if (colorOwner != 0) {
+                float value = *reinterpret_cast<float *>(colorOwner + 0x34);
+                short colorIndex =
+                    *reinterpret_cast<short *>(bullet + 0x7ec);
+                unsigned int color;
+                if (value > g_EnemyCancelHighThreshold) {
+                    color = g_EnemyCancelColorHigh[colorIndex];
+                }
+                else if (value > g_EnemyCancelUpperThreshold) {
+                    color = g_EnemyCancelColorMid[colorIndex];
+                }
+                else {
+                    color = g_EnemyCancelColorLow[colorIndex];
+                }
+                *reinterpret_cast<unsigned int *>(vm + 0x2fc) = color;
+            }
+            *reinterpret_cast<unsigned int *>(bullet + 0x450) = 0;
+        }
+    }
+    return 0;
+}
 extern void EnemyBeginSpell(int gameState, int spellId, char *name, int value);
 extern void EnemyEndSpell(EnemyGameStateView *gameState);
 extern void EnemyEnableBombShield(EnemyGameStateView *gameState);
@@ -1722,7 +1809,8 @@ dispatch_select_bullet_count_low:
     *(int *)(((int)uVar22 + 0x24a) * 0x10 + *(int *)((int)runtimeAddress + 0x14d8)) = iVar27 + 0x18;
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
-    EnemyCancelAllBullets(1);
+    reinterpret_cast<EnemyCancelManagerView *>(
+        g_EnemyPrimaryResourceOwner)->CancelAllBullets(1);
     EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager), 1);
     return 0;
   case ENEMY_ECL_PLAY_SOUND:
@@ -1740,7 +1828,8 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_READ_DIALOG:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     EnemyReadDialog(g_EnemyVisualState, (int)uVar22);
-    EnemyCancelAllBullets(0);
+    reinterpret_cast<EnemyCancelManagerView *>(
+        g_EnemyPrimaryResourceOwner)->CancelAllBullets(0);
     EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager), 0);
     EnemyKillAll(g_EnemyManager);
     return 0;
