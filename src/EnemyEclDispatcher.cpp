@@ -290,7 +290,14 @@ extern unsigned int EnemyFireLaser(
     void *manager, EnemyLaserRequestScratch *request, int type);
 struct EnemyEffectWaitNode
 {
-    unsigned char unknown000[0x08];
+    virtual void UnknownVirtual0();
+    virtual void UnknownVirtual1();
+    virtual void UnknownVirtual2();
+    virtual void UnknownVirtual3();
+    virtual void UnknownVirtual4();
+    virtual unsigned int ApplyClear(int mode);
+
+    unsigned int unknown004;
     EnemyEffectWaitNode *next;
     int state;
     unsigned char unknown010[0x40];
@@ -318,7 +325,19 @@ static __declspec(noinline) unsigned int EnemyWaitForEffect(
     return 0;
 }
 extern int EnemyApplyBulletCancel();
-extern unsigned int EnemyApplyBulletClear();
+static __declspec(noinline) unsigned int EnemyApplyBulletClear(
+    EnemyEffectWaitManager *manager, int mode)
+{
+    EnemyEffectWaitNode *node = manager->head;
+    while (node != 0) {
+        EnemyEffectWaitNode *next = node->next;
+        if (node->state != 1) {
+            node->ApplyClear(mode);
+        }
+        node = next;
+    }
+    return 1;
+}
 extern unsigned int *EnemySetScreenShake(
     int enabled, int duration, unsigned int horizontal,
     unsigned int vertical, unsigned int flags);
@@ -1676,7 +1695,7 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
     EnemyCancelAllBullets(1);
-    EnemyApplyBulletClear();
+    EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager), 1);
     return 0;
   case ENEMY_ECL_PLAY_SOUND:
     EnemyPlaySound(ENEMY_READ_INT_DIRECT(0));
@@ -1694,7 +1713,7 @@ dispatch_select_bullet_count_low:
     ENEMY_READ_INT_DIRECT(0);
     EnemyReadDialog();
     EnemyCancelAllBullets(0);
-    EnemyApplyBulletClear();
+    EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager), 0);
     EnemyKillAll(g_EnemyManager);
     return 0;
   case ENEMY_ECL_WAIT_DIALOG:
