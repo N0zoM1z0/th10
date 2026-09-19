@@ -150,7 +150,12 @@ typedef char EnemyGameStateVmIdAt774[
     (offsetof(EnemyGameStateView, managedVmId) == 0x774) ? 1 : -1];
 typedef char EnemyGameStateFlagsAt378C[
     (offsetof(EnemyGameStateView, flags378C) == 0x378c) ? 1 : -1];
-struct EnemyPrimaryResourceOwnerView;
+struct EnemyPrimaryResourceOwnerView
+{
+    unsigned char unknown000000[0x3e0b50];
+    AnmLoadedView *primaryEnemyResource;
+};
+
 struct EnemyManagedVmView;
 struct EnemyVisualStateView
 {
@@ -176,6 +181,8 @@ struct EnemyCancelManagerView
     void *primaryEnemyResource;
 
     __declspec(noinline) unsigned int CancelAllBullets(int mode);
+    __declspec(noinline) unsigned int CancelBulletPattern(
+        const PlayerFloat3 *position, float radius, int mode, int flags);
 };
 typedef char EnemyCancelManagerCenterAt44[
     (offsetof(EnemyCancelManagerView, cancelCenter) == 0x44) ? 1 : -1];
@@ -296,12 +303,18 @@ static __declspec(noinline) void EnemyInitializePositionInterpolation(
     words[0x30 / 4] = static_cast<unsigned int>(-1);
 }
 extern unsigned int EnemyFireBulletPattern(int manager, int pattern, int owner);
-extern unsigned int EnemyCancelBulletPattern(float value, int mode, int flags);
+extern void EnemySpawnItem(
+    const PlayerFloat3 *position, int itemType, int owner,
+    float angle, float speed);
 extern void EnemySpawnCancelEffect(
     float *position, int kind, int color, float angle, float scale);
 extern int *EnemyCreateCancelVm(void *resource);
 extern int EnemyResolveCancelVm(int id);
 extern float g_EnemyCancelHalfScale;
+extern float g_EnemyPlayfieldMinX;
+extern float g_EnemyPlayfieldMaxX;
+extern float g_EnemyPlayfieldMinY;
+extern float g_EnemyPlayfieldMaxY;
 extern float g_EnemyCancelHighThreshold;
 extern float g_EnemyCancelUpperThreshold;
 extern unsigned int g_EnemyCancelColorHigh[];
@@ -359,6 +372,104 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelAllBullets(int m
                 *reinterpret_cast<unsigned int *>(vm + 0x2fc) = color;
             }
             *reinterpret_cast<unsigned int *>(bullet + 0x450) = 0;
+        }
+    }
+    return 0;
+}
+
+struct EnemyBulletPositionView
+{
+    float x;
+    float y;
+    float z;
+
+    __declspec(noinline) int IsOutsidePlayfield(float marginX, float marginY);
+};
+
+
+__declspec(noinline) int EnemyBulletPositionView::IsOutsidePlayfield(
+    float marginX, float marginY)
+{
+    if (x + marginX <= g_EnemyPlayfieldMaxX &&
+        g_EnemyPlayfieldMinX < x - marginX &&
+        y + marginY <= g_EnemyPlayfieldMaxY &&
+        g_EnemyPlayfieldMinY < y - marginY) {
+        return 0;
+    }
+    return 1;
+}
+
+static __declspec(noinline) unsigned int EnemyCancelBulletRecord(
+    unsigned char *bullet)
+{
+    short state = *reinterpret_cast<short *>(bullet + 0x446);
+    if (state != 2 && state != 1) {
+        return 0;
+    }
+
+    EnemyBulletPositionView *position =
+        reinterpret_cast<EnemyBulletPositionView *>(bullet + 0x3b4);
+    int outside = position->IsOutsidePlayfield(8.0f, 8.0f);
+    *reinterpret_cast<short *>(bullet + 0x30c) = 1;
+    *reinterpret_cast<short *>(bullet + 0x446) = 3;
+    if (outside == 0) {
+        int effectScript = *reinterpret_cast<int *>(bullet + 0x438);
+        if (effectScript >= 0) {
+            g_EnemyPrimaryResourceOwner->primaryEnemyResource->
+                CreateVmAtWorldVariant0(
+                    effectScript,
+                    reinterpret_cast<const AnmFloat3View *>(
+                        bullet + 0x3b4));
+        }
+
+        unsigned int *flags = reinterpret_cast<unsigned int *>(bullet + 0x408);
+        if ((*flags & 1) == 0) {
+            *reinterpret_cast<unsigned int *>(bullet + 0x3fc) = 0;
+            *reinterpret_cast<unsigned int *>(bullet + 0x3f8) = 0xfff0bdc1u;
+            *reinterpret_cast<unsigned int *>(bullet + 0x400) = 0;
+            *reinterpret_cast<unsigned int *>(bullet + 0x404) =
+                reinterpret_cast<unsigned int>(&g_AnmGameSpeed);
+            *flags |= 1;
+        }
+        *reinterpret_cast<unsigned int *>(bullet + 0x3fc) = 0;
+        *reinterpret_cast<unsigned int *>(bullet + 0x400) = 0;
+        *reinterpret_cast<unsigned int *>(bullet + 0x3f8) = 0xffffffffu;
+        return 1;
+    }
+    *reinterpret_cast<unsigned int *>(bullet) |= 8;
+    return 1;
+}
+
+__declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
+    const PlayerFloat3 *position, float radius, int mode, int flags)
+{
+    unsigned char *bullet = bulletStorage;
+    for (int remaining = 2000; remaining != 0;
+         --remaining, bullet += 0x7f0) {
+        short state = *reinterpret_cast<short *>(bullet + 0x446);
+        if (state == 0 || state == 3) {
+            continue;
+        }
+        if (flags != 0 && *reinterpret_cast<int *>(bullet + 4) != 0) {
+            continue;
+        }
+
+        EnemyBulletPositionView *bulletPosition =
+            reinterpret_cast<EnemyBulletPositionView *>(bullet + 0x3b4);
+        float dx = bulletPosition->x - position->x;
+        float dy = bulletPosition->y - position->y;
+        float effectiveRadius =
+            *reinterpret_cast<float *>(bullet + 0x3f0) *
+                g_EnemyCancelHalfScale +
+            radius;
+        if (dx * dx + dy * dy <= effectiveRadius * effectiveRadius) {
+            EnemyCancelBulletRecord(bullet);
+            if (bulletPosition->IsOutsidePlayfield(2.0f, 2.0f) == 0 &&
+                mode != 0) {
+                EnemySpawnItem(
+                    reinterpret_cast<PlayerFloat3 *>(bulletPosition),
+                    8, -1, -1.5707964f, 0.6f);
+            }
         }
     }
     return 0;
@@ -2302,14 +2413,18 @@ dispatch_select_bullet_count_low:
     break;
   case ENEMY_ECL_CANCEL_BULLET_PATTERN:
     fVar19 = (ReadFloatArgument(0));
-    EnemyCancelBulletPattern((float)fVar19,1,0);
+    reinterpret_cast<EnemyCancelManagerView *>(
+        g_EnemyPrimaryResourceOwner)->CancelBulletPattern(
+            &worldMotion.position, (float)fVar19, 1, 0);
     reinterpret_cast<EnemyEffectWaitManager *>(
         g_EnemyBulletManager)->ApplyPatternCancel(
             &worldMotion.position, (float)fVar19, 1);
     return 0;
   case ENEMY_ECL_CLEAR_BULLET_PATTERN:
     fVar19 = (ReadFloatArgument(0));
-    EnemyCancelBulletPattern((float)fVar19,0,0);
+    reinterpret_cast<EnemyCancelManagerView *>(
+        g_EnemyPrimaryResourceOwner)->CancelBulletPattern(
+            &worldMotion.position, (float)fVar19, 0, 0);
     reinterpret_cast<EnemyEffectWaitManager *>(
         g_EnemyBulletManager)->ApplyPatternCancel(
             &worldMotion.position, (float)fVar19, 0);
