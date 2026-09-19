@@ -1474,18 +1474,20 @@ dispatch_initialize_polar_interpolation:
     return 0;
   case ENEMY_ECL_SET_BOSS_SLOT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    iVar26 = reinterpret_cast<int>(g_EnemyManager);
     iVar27 = (int)uVar22;
     if (iVar27 < 0) {
-      if ((char)((unsigned int)*(unsigned int *)((int)runtimeAddress + 0x1444) >> 8) < '\0') {
-        *(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10 + *(int *)((int)runtimeAddress + 0x1450) * 4) = 0;
+      if ((char)(flags >> 8) < 0) {
+        g_EnemyManager->specialEnemySlots[managerSlot] = 0;
       }
-      *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) & 0xffff7fff;
+      flags &= 0xffff7fff;
       return 0;
     }
-    *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x8000;
-    *(unsigned int *)(iVar26 + 0x10 + iVar27 * 4) = *(unsigned int *)((int)runtimeAddress + 0x14d8);
-    *(int *)((int)runtimeAddress + 0x1450) = iVar27;
+    uVar4 = flags;
+    iVar26 = reinterpret_cast<int>(g_EnemyManager);
+    uVar4 |= 0x8000;
+    flags = uVar4;
+    reinterpret_cast<EnemyManagerView *>(iVar26)->specialEnemySlots[iVar27] = owner;
+    managerSlot = iVar27;
     return 0;
   case ENEMY_ECL_SET_INVULNERABILITY:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
