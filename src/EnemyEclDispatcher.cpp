@@ -144,7 +144,6 @@ struct EnemyLaserRequestScratch;
 
 extern int g_EnemyDifficulty;
 extern int g_EnemyRank;
-extern float g_PlayerTimerScale;
 extern EnemyManagerView *g_EnemyManager;
 extern EnemyGameStateView *g_EnemyGameState;
 extern EnemyVisualStateView *g_EnemyVisualState;
@@ -2050,7 +2049,7 @@ dispatch_rank_int_low:
     return 0;
   case ENEMY_ECL_SET_TIMER_SCALE:
     fVar19 = (ReadFloatArgument(0));
-    g_PlayerTimerScale = (float)fVar19;
+    g_AnmGameSpeed = (float)fVar19;
     return 0;
   case ENEMY_ECL_AIM_BULLET_AT_PLAYER:
     pfVar15 = (float *)(reinterpret_cast<int>(g_Player) + 0x3c0);
