@@ -3680,3 +3680,26 @@ comparable-byte agreement. Evidence is in
 `speed-retained-final-{probe,layout}.json` and `speed-int-index-{probe,layout}.json`.
 The ANM executor and generic ECL runner remain non-exact; their current
 measurements and unresolved stack/ABI issues are in `docs/KNOWLEDGE_BASE.md`.
+
+## Current bounded exact packet: three-boss register and block-layout negatives
+
+Eleven further focused iterations were run against the hash-attested target,
+with no source variant retained. For Enemy opcode `0x1B3`, moving the raw
+bullet index between natural locals did not change the retained 14,204-byte
+candidate. Caching difficulty, explicitly joining the neighboring count call,
+and placing float reads directly inside difficulty branches produced 14,204,
+14,252, and 14,304-byte candidates with worse local control flow. This narrows
+the remaining 169/170 case gap to whole-function private register allocation;
+the target holds the raw index in ESI, while the candidate holds its scaled
+form there.
+
+For generic ECL runner opcode `0x1E`, three equivalent cursor/metadata address
+expressions and one support-source order permutation all reproduced the exact
+same 7,020-byte non-exact candidate, 795/6,264 comparable bytes and a 253-byte
+format case versus target 247. Target uses EDX for metadata and can reuse ADD
+flags at the cursor tail; candidate keeps metadata in EDI and emits LEA/TEST
+plus three loop-alignment bytes. For ANM, an explicit loop stop edge grew the
+selected executor from 9,960 to 9,996 bytes and was reverted. Evidence is under
+`.analysis/gpt-5.6-sol/20260919-enemy-speed/`, `20260919-ecl-format/`, and
+`20260919-anm-loop/`. No canonical exact count changed; proceed from the
+retained source at commit `934f2f5` plus this evidence checkpoint.
