@@ -368,7 +368,39 @@ static __declspec(noinline) void EnemyEnableBombShield(
 }
 extern void EnemyInitializeLaserConfig(EnemyLaserRequestScratch *config);
 extern void EnemySetLaserPosition(int laser, const PlayerFloat3 *position);
-extern int EnemyFindLaser(int id);
+struct EnemyLaserNodeView
+{
+    unsigned char unknown000[0x08];
+    EnemyLaserNodeView *next;
+    unsigned char unknown00C[0x54 - 0x0c];
+    int id;
+};
+struct EnemyLaserManagerView
+{
+    unsigned char unknown000[0x18];
+    EnemyLaserNodeView *head;
+};
+typedef char EnemyLaserNodeNextAt08[
+    (offsetof(EnemyLaserNodeView, next) == 0x08) ? 1 : -1];
+typedef char EnemyLaserNodeIdAt54[
+    (offsetof(EnemyLaserNodeView, id) == 0x54) ? 1 : -1];
+typedef char EnemyLaserManagerHeadAt18[
+    (offsetof(EnemyLaserManagerView, head) == 0x18) ? 1 : -1];
+
+extern EnemyLaserManagerView *g_EnemyLaserManager;
+
+static __declspec(noinline) int EnemyFindLaser(
+    EnemyLaserManagerView *manager, int id)
+{
+    EnemyLaserNodeView *laser = manager->head;
+    while (laser != 0) {
+        if (laser->id == id) {
+            return reinterpret_cast<int>(laser);
+        }
+        laser = laser->next;
+    }
+    return 0;
+}
 extern int EnemySpawnFromEclInstruction(
     EnemyManagerView *manager, const void *subroutineName,
     const EnemySpawnRequestView *request);
@@ -2093,7 +2125,7 @@ dispatch_select_bullet_count_low:
     break;
   case ENEMY_ECL_SET_LASER_OFFSET:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
+    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(2));
       fVar21 = (ReadFloatArgument(1));
@@ -2105,7 +2137,7 @@ dispatch_select_bullet_count_low:
     break;
   case ENEMY_ECL_SET_LASER_ANGLE:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
+    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(2));
       fVar21 = (ReadFloatArgument(1));
@@ -2119,7 +2151,7 @@ dispatch_select_bullet_count_low:
     break;
   case ENEMY_ECL_SET_LASER_SPEED:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
+    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(1));
       *(float *)(iVar26 + 0x48) = (float)fVar19;
@@ -2128,7 +2160,7 @@ dispatch_select_bullet_count_low:
     break;
   case ENEMY_ECL_SET_LASER_COUNT:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
+    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(1));
       *(float *)(iVar26 + 0x44) = (float)fVar19;
@@ -2137,7 +2169,7 @@ dispatch_select_bullet_count_low:
     break;
   case ENEMY_ECL_SET_LASER_AIM:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
+    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(1));
       *(float *)(iVar26 + 0x3c) = (float)fVar19;
@@ -2146,7 +2178,7 @@ dispatch_select_bullet_count_low:
     break;
   case ENEMY_ECL_SET_LASER_SOUND:
     uVar22 = ReadIntArgument(0);
-    iVar26 = EnemyFindLaser((int)uVar22);
+    iVar26 = EnemyFindLaser(g_EnemyLaserManager, (int)uVar22);
     if (iVar26 != 0) {
       fVar19 = (ReadFloatArgument(1));
       *(float *)(iVar26 + 0x440) = (float)fVar19;
