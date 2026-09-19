@@ -499,6 +499,9 @@ struct EnemyEffectWaitNode
     virtual void UnknownVirtual3();
     virtual void UnknownVirtual4();
     virtual unsigned int ApplyClear(int mode);
+    virtual void UnknownVirtual6();
+    virtual unsigned int ApplyPatternCancel(
+        const PlayerFloat3 *position, float radius, int mode);
 
     unsigned int unknown004;
     EnemyEffectWaitNode *next;
@@ -511,6 +514,11 @@ struct EnemyEffectWaitManager
 {
     unsigned char unknown000[0x18];
     EnemyEffectWaitNode *head;
+    unsigned char unknown01C[0x440 - 0x1c];
+    PlayerFloat3 cancelPosition;
+
+    __declspec(noinline) unsigned int ApplyPatternCancel(
+        const PlayerFloat3 *position, float radius, int mode);
 };
 
 static __declspec(noinline) unsigned int EnemyWaitForEffect(
@@ -527,7 +535,22 @@ static __declspec(noinline) unsigned int EnemyWaitForEffect(
     }
     return 0;
 }
-extern int EnemyApplyBulletCancel();
+__declspec(noinline) unsigned int EnemyEffectWaitManager::ApplyPatternCancel(
+    const PlayerFloat3 *position, float radius, int mode)
+{
+    cancelPosition = *position;
+    unsigned int total = 0;
+    EnemyEffectWaitNode *node = head;
+    while (node != 0) {
+        EnemyEffectWaitNode *next = node->next;
+        if (node->state != 1) {
+            total += node->ApplyPatternCancel(position, radius, mode);
+        }
+        node = next;
+    }
+    return total;
+}
+
 static __declspec(noinline) unsigned int EnemyApplyBulletClear(
     EnemyEffectWaitManager *manager, int mode)
 {
@@ -2280,12 +2303,16 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_CANCEL_BULLET_PATTERN:
     fVar19 = (ReadFloatArgument(0));
     EnemyCancelBulletPattern((float)fVar19,1,0);
-    EnemyApplyBulletCancel();
+    reinterpret_cast<EnemyEffectWaitManager *>(
+        g_EnemyBulletManager)->ApplyPatternCancel(
+            &worldMotion.position, (float)fVar19, 1);
     return 0;
   case ENEMY_ECL_CLEAR_BULLET_PATTERN:
     fVar19 = (ReadFloatArgument(0));
     EnemyCancelBulletPattern((float)fVar19,0,0);
-    EnemyApplyBulletCancel();
+    reinterpret_cast<EnemyEffectWaitManager *>(
+        g_EnemyBulletManager)->ApplyPatternCancel(
+            &worldMotion.position, (float)fVar19, 0);
     return 0;
   case ENEMY_ECL_SET_CHAPTER:
     uVar22 = ReadIntArgument(0);
