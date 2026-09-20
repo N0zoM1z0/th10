@@ -975,7 +975,6 @@ int EnemyRuntimeView::DispatchEclInstruction()
   PlayerFloat3 vectorScratch;
   float local_2a8;
   float local_2a4;
-  PlayerFloat3 projectionInput;
   char local_29d;
   float local_29c;
   float local_298;
@@ -1012,12 +1011,12 @@ int EnemyRuntimeView::DispatchEclInstruction()
       fVar9 = *(float *)((int)runtimeAddress + 0x2c);
       fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
       fVar10 = *(float *)((int)runtimeAddress + 0x30);
-      projectionInput.x = (float)(fVar19 + fVar9);
+      vectorScratch.x = (float)(fVar19 + fVar9);
       fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
-      projectionInput.z = *(float *)((int)runtimeAddress + 0x34);
-      projectionInput.y = (float)(fVar19 + fVar10);
+      vectorScratch.z = *(float *)((int)runtimeAddress + 0x34);
+      vectorScratch.y = (float)(fVar19 + fVar10);
       EnemyPrepareProjection(&g_MainSupervisorView, 0);
-      D3DXVec3Project(&local_90.spawnRequest.position, &projectionInput,
+      D3DXVec3Project(&local_90.spawnRequest.position, &vectorScratch,
                       &g_EnemyViewport, &g_EnemyProjectionMatrix,
                       &g_EnemyViewMatrix, &g_EnemyWorldMatrix);
       local_90.spawnRequest.position.x = local_90.spawnRequest.position.x - 16.0f;
@@ -1451,6 +1450,8 @@ dispatch_update_primary_anm_bounds:
     local_29c = local_2a8;
     local_2a8 = selectedMotion->value1C;
     local_298 = fVar9;
+    uVar6 = *reinterpret_cast<unsigned int *>(&selectedMotion->value24);
+    uVar4 = *reinterpret_cast<unsigned int *>(&selectedMotion->value20);
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
     firstScalarValues = reinterpret_cast<float *>(firstScalarInterpolation);
@@ -1467,10 +1468,10 @@ dispatch_update_primary_anm_bounds:
     secondScalarInterpolation->duration = (int)uVar22;
     secondScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
     secondScalarInterpolation->finalTangent = g_EnemyInterpolationBasis;
-    secondScalarInterpolation->initial.x = selectedMotion->value20;
+    *reinterpret_cast<unsigned int *>(&secondScalarInterpolation->initial.x) = uVar4;
     secondScalarInterpolation->final.y = vectorScratch.y;
     secondScalarInterpolation->mode = (int)uVar23;
-    secondScalarInterpolation->initial.y = selectedMotion->value24;
+    *reinterpret_cast<unsigned int *>(&secondScalarInterpolation->initial.y) = uVar6;
     secondScalarInterpolation->final.x = vectorScratch.x;
     EnemyInitializeScalarInterpolation(secondScalarInterpolation);
     selectedMotion->velocity = selectedMotion->position;
