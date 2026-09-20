@@ -698,6 +698,7 @@ struct EnemySoundQueueView
     int samples[12][128];
 
     __declspec(noinline) void QueueSoundCue(int soundId, float positionX);
+    __declspec(noinline) void QueueSoundSample(int soundId, int sample);
 };
 
 extern EnemySoundCueMetadataView g_EnemySoundCueMetadata[];
@@ -731,6 +732,34 @@ void EnemySoundQueueView::QueueSoundCue(int soundId, float positionX)
         ++sampleCounts[slot];
     }
 }
+void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
+{
+    int cueValue = g_EnemySoundCueMetadata[soundId].cueValue;
+    int slot = 0;
+    while (slot < 12) {
+        int activeId = activeSoundIds[slot];
+        if (activeId < 0) {
+            break;
+        }
+        if (activeId == soundId) {
+            int count = sampleCounts[slot];
+            if (count >= 128) {
+                return;
+            }
+            samples[slot][count] = sample;
+            sampleCounts[slot] = sampleCounts[slot] + 1;
+            return;
+        }
+        ++slot;
+    }
+    if (slot < 12) {
+        activeSoundIds[slot] = soundId;
+        cueValues[soundId] = cueValue;
+        samples[slot][0] = sample;
+        ++sampleCounts[slot];
+    }
+}
+
 extern void EnemyDropItemCounts(const PlayerFloat3 *position, int *itemDropBlock);
 extern unsigned int *EnemyCreateManagedVm(
     unsigned int resource, int script, int layer);
