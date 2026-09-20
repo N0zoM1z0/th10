@@ -475,6 +475,27 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
     return 0;
 }
 extern void EnemyBeginSpell(int gameState, int spellId, char *name, int value);
+
+__declspec(noinline) void EnemyMarkPendingInterrupt(int *id)
+{
+    AnmVmView *vm =
+        g_AnmRenderManagerView->FindVm(AnmVmIdView(*id));
+    if (vm == 0) {
+        return;
+    }
+
+    vm->pendingInterrupt = 1;
+    if (vm->layerNode.previous != 0) {
+        return;
+    }
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != 0) {
+        static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 1;
+        node = node->next;
+    }
+}
+
 extern void EnemyEndSpell(EnemyGameStateView *gameState);
 static __declspec(noinline) void EnemyEnableBombShield(
     EnemyGameStateView *gameState)
