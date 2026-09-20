@@ -1,6 +1,12 @@
 # TH10 verified knowledge
 
 This file stores durable TH10-scoped facts and important negative results.
+Rows are time-scoped observations: newer rows, tracked ledgers and
+docs/RE_HANDOFF.md supersede older inventory/toolchain counts when they differ.
+Historical .analysis/... paths are provenance labels; .analysis/ is disposable
+and the referenced scratch file may have been pruned after its conclusion was
+recorded here.
+
 Cross-game promotion is a later Factory review, never an automatic game action.
 
 | ID | State | Fact | Evidence |
