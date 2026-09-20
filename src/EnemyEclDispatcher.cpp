@@ -1196,11 +1196,14 @@ dispatch_place_temporary_anm:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     iVar27 = (int)uVar22;
     EnemyReleaseManagedVm(&managedVmIds[iVar26]);
-    puVar5 = (unsigned int *)
-             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
-                          iVar27,5);
-    uVar6 = *puVar5;
-    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = uVar6;
+    {
+      AnmVmIdView createdVm =
+          reinterpret_cast<AnmLoadedView *>(
+              g_EnemyManager->effectResources[value0E8])->
+              CreateVmVariant2(iVar27, 5);
+      managedVmIds[iVar26] = createdVm.value;
+    }
+    uVar6 = managedVmIds[iVar26];
     iVar11 = reinterpret_cast<int>(EnemyResolveManagedVm(uVar6));
     if (iVar26 == 0) {
       *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar11 + 0x50) * *(float *)(iVar11 + 0x40);
