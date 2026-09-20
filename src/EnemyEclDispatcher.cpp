@@ -782,11 +782,6 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
 }
 
 extern void EnemyDropItemCounts(const PlayerFloat3 *position, int *itemDropBlock);
-extern unsigned int *EnemyCreateManagedVm(
-    unsigned int resource, int script, int layer);
-extern unsigned int *EnemyCreateManagedVmRotated(
-    unsigned int resource, int script, int layer);
-extern EnemyManagedVmView *EnemyResolveManagedVm(unsigned int id);
 extern void EnemyShowManagedVm(unsigned int *id);
 extern void EnemyHideManagedVm(unsigned int *id);
 extern void EnemyReleaseManagedVm(unsigned int *id);
@@ -1168,10 +1163,13 @@ dispatch_create_enemy_mirrored:
       return 0;
     }
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    puVar5 = (unsigned int *)
-             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
-                          (int)uVar22,5);
-    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = *puVar5;
+    {
+      AnmVmIdView createdVm =
+          reinterpret_cast<AnmLoadedView *>(
+              g_EnemyManager->effectResources[value0E8])->
+              CreateVmVariant2((int)uVar22, 5);
+      managedVmIds[iVar26] = createdVm.value;
+    }
     uVar6 = managedVmIds[iVar26];
     if (iVar26 == 0) {
       uVar22 = ENEMY_READ_INT_DIRECT(1);
@@ -1179,25 +1177,41 @@ dispatch_create_enemy_mirrored:
       *(unsigned int *)((int)runtimeAddress + 0xec) = *(unsigned int *)((int)runtimeAddress + 0xe8);
       uVar6 = managedVmIds[iVar26];
     }
-    iVar27 = reinterpret_cast<int>(EnemyResolveManagedVm(uVar6));
+    iVar27 = reinterpret_cast<int>(
+        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
     goto dispatch_update_primary_anm_bounds;
   case ENEMY_ECL_PLAY_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    puVar5 = (unsigned int *)EnemyCreateManagedVm(
-        *(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + (int)uVar22 * 4),
-        (int)uVar23, 6);
-    uVar6 = *puVar5;
-    goto dispatch_place_temporary_anm;
+    {
+      AnmVmIdView createdVm =
+          reinterpret_cast<AnmLoadedView *>(
+              g_EnemyManager->effectResources[(int)uVar22])->
+              CreateVmVariant2((int)uVar23, 6);
+      iVar26 = reinterpret_cast<int>(createdVm.GetVm());
+    }
+    if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
+      puVar5 = reinterpret_cast<unsigned int *>(
+          EnemyGetAnmPosition(&worldMotion.position));
+      *(unsigned int *)(iVar26 + 0x340) = *puVar5;
+      *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
+      *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
+      return 0;
+    }
+    *(unsigned int *)(iVar26 + 0x340) = *(unsigned int *)((int)runtimeAddress + 0x2c);
+    *(unsigned int *)(iVar26 + 0x344) = *(unsigned int *)((int)runtimeAddress + 0x30);
+    *(unsigned int *)(iVar26 + 0x348) = *(unsigned int *)((int)runtimeAddress + 0x34);
+    return 0;
   case ENEMY_ECL_PLAY_ANM_HIGH:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    puVar5 = (unsigned int *)EnemyCreateManagedVmRotated(
-        *(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + (int)uVar22 * 4),
-        (int)uVar23, 6);
-    uVar6 = *puVar5;
-dispatch_place_temporary_anm:
-    iVar26 = reinterpret_cast<int>(EnemyResolveManagedVm(uVar6));
+    {
+      AnmVmIdView createdVm =
+          reinterpret_cast<AnmLoadedView *>(
+              g_EnemyManager->effectResources[(int)uVar22])->
+              CreateVmVariant0((int)uVar23, 6);
+      iVar26 = reinterpret_cast<int>(createdVm.GetVm());
+    }
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           EnemyGetAnmPosition(&worldMotion.position));
@@ -1220,10 +1234,13 @@ dispatch_place_temporary_anm:
   case ENEMY_ECL_PLAY_ANM_ROTATED:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     uVar23 = ENEMY_READ_INT_DIRECT(1);
-    puVar5 = (unsigned int *)EnemyCreateManagedVm(
-        *(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + (int)uVar22 * 4),
-        (int)uVar23, 6);
-    iVar26 = reinterpret_cast<int>(EnemyResolveManagedVm(*puVar5));
+    {
+      AnmVmIdView createdVm =
+          reinterpret_cast<AnmLoadedView *>(
+              g_EnemyManager->effectResources[(int)uVar22])->
+              CreateVmVariant2((int)uVar23, 6);
+      iVar26 = reinterpret_cast<int>(createdVm.GetVm());
+    }
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
           EnemyGetAnmPosition(&worldMotion.position));
@@ -1254,7 +1271,8 @@ dispatch_place_temporary_anm:
       managedVmIds[iVar26] = createdVm.value;
     }
     uVar6 = managedVmIds[iVar26];
-    iVar11 = reinterpret_cast<int>(EnemyResolveManagedVm(uVar6));
+    iVar11 = reinterpret_cast<int>(
+        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
     if (iVar26 == 0) {
       *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar11 + 0x50) * *(float *)(iVar11 + 0x40);
       *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar11 + 0x4c) * *(float *)(iVar11 + 0x3c);
@@ -1275,11 +1293,15 @@ dispatch_place_temporary_anm:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
     EnemyReleaseManagedVm(&managedVmIds[iVar26]);
-    puVar5 = (unsigned int *)
-             EnemyCreateManagedVm(*(unsigned int *)(reinterpret_cast<int>(g_EnemyManager) + 0x30 + *(int *)((int)runtimeAddress + 0xe8) * 4),
-                          *(int *)((int)runtimeAddress + 0xf4) + 5,5);
-    *(unsigned int *)((int)runtimeAddress + 0xc0 + iVar26 * 4) = *puVar5;
-    iVar27 = reinterpret_cast<int>(EnemyResolveManagedVm(managedVmIds[iVar26]));
+    {
+      AnmVmIdView createdVm =
+          reinterpret_cast<AnmLoadedView *>(
+              g_EnemyManager->effectResources[value0E8])->
+              CreateVmVariant2(animationBaseScript + 5, 5);
+      managedVmIds[iVar26] = createdVm.value;
+    }
+    iVar27 = reinterpret_cast<int>(
+        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->GetVm());
 dispatch_update_primary_anm_bounds:
     if (iVar26 == 0) {
       *(float *)((int)runtimeAddress + 0x13a4) = *(float *)(iVar27 + 0x50) * *(float *)(iVar27 + 0x40);
