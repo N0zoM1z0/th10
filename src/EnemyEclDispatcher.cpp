@@ -782,9 +782,6 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
 }
 
 extern void EnemyDropItemCounts(const PlayerFloat3 *position, int *itemDropBlock);
-extern void EnemyShowManagedVm(unsigned int *id);
-extern void EnemyHideManagedVm(unsigned int *id);
-extern void EnemyReleaseManagedVm(unsigned int *id);
 extern float EnemyRandomAngle();
 extern float __stdcall EnemyWrapAngle(float angle);
 
@@ -1158,7 +1155,7 @@ dispatch_create_enemy_mirrored:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
-    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
+    reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->Release();
     if ((int)uVar22 < 0) {
       return 0;
     }
@@ -1262,7 +1259,7 @@ dispatch_create_enemy_mirrored:
     iVar26 = (int)uVar22;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     iVar27 = (int)uVar22;
-    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
+    reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->Release();
     {
       AnmVmIdView createdVm =
           reinterpret_cast<AnmLoadedView *>(
@@ -1278,7 +1275,7 @@ dispatch_create_enemy_mirrored:
       *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar11 + 0x4c) * *(float *)(iVar11 + 0x3c);
     }
     if ((*(unsigned char *)((int)runtimeAddress + 0x1444) & 0x10) != 0) {
-      EnemyHideManagedVm(&managedVmIds[iVar26]);
+      reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
     }
     if (iVar26 == 0) {
       *(unsigned int *)((int)runtimeAddress + 0x1444) = *(unsigned int *)((int)runtimeAddress + 0x1444) | 0x1000;
@@ -1292,7 +1289,7 @@ dispatch_create_enemy_mirrored:
   case ENEMY_ECL_PLAY_SELECTED_ANM:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    EnemyReleaseManagedVm(&managedVmIds[iVar26]);
+    reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->Release();
     {
       AnmVmIdView createdVm =
           reinterpret_cast<AnmLoadedView *>(
@@ -1308,7 +1305,7 @@ dispatch_update_primary_anm_bounds:
       *(float *)((int)runtimeAddress + 0x13a8) = *(float *)(iVar27 + 0x4c) * *(float *)(iVar27 + 0x3c);
     }
     if ((*(unsigned char *)((int)runtimeAddress + 0x1444) & 0x10) != 0) {
-      EnemyHideManagedVm(&managedVmIds[iVar26]);
+      reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
       return 0;
     }
     break;
@@ -1692,7 +1689,7 @@ dispatch_initialize_polar_interpolation:
     *(unsigned int *)((int)runtimeAddress + 0x1444) = uVar8;
     if ((uVar8 & 0x10) != 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
-        EnemyHideManagedVm(&managedVmIds[iVar26]);
+        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->ClearFlag2();
       return 0;
     }
     break;
@@ -1702,7 +1699,7 @@ dispatch_initialize_polar_interpolation:
     *(unsigned int *)((int)runtimeAddress + 0x1444) = uVar8;
     if ((uVar8 & 0x10) == 0) {
       for (iVar26 = 0; iVar26 < 10; ++iVar26)
-        EnemyShowManagedVm(&managedVmIds[iVar26]);
+        reinterpret_cast<AnmVmIdView *>(&managedVmIds[iVar26])->SetFlag2();
       return 0;
     }
     break;
