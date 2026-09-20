@@ -749,7 +749,7 @@ struct AnmLoadedView
     void InitializeAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
     void SetAndExecuteScriptIndex(AnmVmView *vm, int scriptIndex);
     void SetAndExecuteScriptIdx(AnmVmView *vm, int scriptIndex);
-    AnmVmIdView CreateVmVariant0(int scriptIndex, unsigned int renderLayer);
+    TH10_ANM_NOINLINE AnmVmIdView CreateVmVariant0(int scriptIndex, unsigned int renderLayer);
     AnmVmIdView CreateVmAtScreenVariant0(
         int scriptIndex, const AnmFloat3View *position);
     AnmVmIdView CreateVmAtWorldVariant0(
