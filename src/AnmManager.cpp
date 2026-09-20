@@ -2967,6 +2967,31 @@ AnmVmView *AnmVmIdView::GetVm()
     return vm;
 }
 
+void AnmVmIdView::ClearFlag2()
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(value);
+    if (vm == NULL)
+        return;
+
+    const unsigned int mask = 0xfffffffdu;
+    vm->flags35C &= mask;
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        static_cast<AnmVmView *>(node->owner)->flags35C &= mask;
+        node = node->next;
+    }
+}
+
+void AnmVmIdView::Release()
+{
+    g_AnmRenderManagerView->MarkVmForDeletion(value);
+    value = 0;
+}
+
 // Target 0x0043EE30 is TH10's complete variable-length ANM instruction
 // executor. The adjacent TH095 source supplies control-flow hypotheses; every
 // opcode, VM offset, interpolation call and frame-end update below is checked
