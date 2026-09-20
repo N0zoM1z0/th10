@@ -1415,13 +1415,14 @@ dispatch_update_primary_anm_bounds:
   case ENEMY_ECL_INTERPOLATE_OFFSET_CIRCLE:
   case ENEMY_ECL_INTERPOLATE_BASE_CIRCLE:
     selectedMotion = &offsetMotion;
+    if (opcode != 0x121) {
+      selectedMotion = &baseMotion;
+    }
     firstScalarInterpolation = &scalarInterpolations[0];
-    secondScalarInterpolation = &scalarInterpolations[2];
     if (opcode == 0x121) {
       secondScalarInterpolation = &scalarInterpolations[2];
     }
     else {
-      selectedMotion = &baseMotion;
       firstScalarInterpolation = &scalarInterpolations[1];
       secondScalarInterpolation = &scalarInterpolations[3];
     }
