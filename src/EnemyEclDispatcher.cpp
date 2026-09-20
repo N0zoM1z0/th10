@@ -484,7 +484,11 @@ static __declspec(noinline) void EnemyEnableBombShield(
     gameState->managedVmId = 0;
 }
 extern void EnemyInitializeLaserConfig(EnemyLaserRequestScratch *config);
-extern void EnemySetLaserPosition(int laser, const PlayerFloat3 *position);
+static __declspec(noinline) void EnemySetLaserPosition(
+    int laser, const PlayerFloat3 *position)
+{
+    *reinterpret_cast<PlayerFloat3 *>(laser + 0x430) = *position;
+}
 struct EnemyLaserNodeView
 {
     unsigned char unknown000[0x08];
