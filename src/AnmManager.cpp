@@ -2967,6 +2967,25 @@ AnmVmView *AnmVmIdView::GetVm()
     return vm;
 }
 
+void AnmVmIdView::SetFlag2()
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
+    if (vm == NULL)
+        return;
+
+    const unsigned int mask = 2u;
+    vm->flags35C |= mask;
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        static_cast<AnmVmView *>(node->owner)->flags35C |= mask;
+        node = node->next;
+    }
+}
+
 void AnmVmIdView::ClearFlag2()
 {
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);

@@ -438,6 +438,7 @@ struct AnmVmIdView
     }
 
     TH10_ANM_NOINLINE AnmVmView *GetVm();
+    TH10_ANM_NOINLINE void SetFlag2();
     TH10_ANM_NOINLINE void ClearFlag2();
     TH10_ANM_NOINLINE void Release();
 
