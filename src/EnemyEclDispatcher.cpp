@@ -1249,9 +1249,9 @@ dispatch_update_primary_anm_bounds:
       selectedMotion->position.y = (float)fVar21;
     }
     selectedMotion->flags &= 0xfffffffe;
-    worldMotion.position.x = baseMotion.position.x + offsetMotion.position.x;
-    worldMotion.position.y = baseMotion.position.y + offsetMotion.position.y;
-    worldMotion.position.z = baseMotion.position.z + offsetMotion.position.z;
+    *reinterpret_cast<AnmFloat3View *>(&worldMotion.position) =
+        *reinterpret_cast<const AnmFloat3View *>(&baseMotion.position) +
+        *reinterpret_cast<const AnmFloat3View *>(&offsetMotion.position);
     return 0;
   case ENEMY_ECL_ADD_OFFSET_POSITION:
   case ENEMY_ECL_ADD_BASE_POSITION:
