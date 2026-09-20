@@ -634,17 +634,17 @@ void AnmVmLayerNodeView::InsertAfter(AnmVmLayerNodeView *node)
 
 // Target 0x004491C0 resolves ids across the two independently ordered VM
 // lists. A zero id is always invalid.
-AnmVmView *AnmRenderManagerView::FindVm(int id)
+AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)
 {
     AnmVmLayerNodeView *node;
 
-    if (id == 0)
+    if (id.value == 0)
         return NULL;
 
     node = primaryVmListHead;
     while (node != NULL)
     {
-        if (static_cast<AnmVmView *>(node->owner)->id == id)
+        if (static_cast<AnmVmView *>(node->owner)->id == id.value)
             return static_cast<AnmVmView *>(node->owner);
         node = node->next;
     }
@@ -652,7 +652,7 @@ AnmVmView *AnmRenderManagerView::FindVm(int id)
     node = secondaryVmListHead;
     while (node != NULL)
     {
-        if (static_cast<AnmVmView *>(node->owner)->id == id)
+        if (static_cast<AnmVmView *>(node->owner)->id == id.value)
             return static_cast<AnmVmView *>(node->owner);
         node = node->next;
     }
@@ -704,7 +704,7 @@ void AnmRenderManagerView::SetVmPendingInterruptAndExecute(
 }
 
 // Target 0x004492A0 marks a VM tree for removal during the manager update.
-void AnmRenderManagerView::MarkVmForDeletion(int id)
+void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)
 {
     AnmVmView *vm = FindVm(id);
     if (vm == NULL)
@@ -769,7 +769,7 @@ void AnmRenderManagerView::SetVmWorldPosition(
     }
 }
 
-AnmFloat3View *AnmRenderManagerView::GetVmPosition(int id)
+AnmFloat3View *AnmRenderManagerView::GetVmPosition(AnmVmIdView id)
 {
     AnmVmView *vm = FindVm(id);
     if (vm != NULL)
@@ -2961,7 +2961,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant3(
 // resolve it, making future lookups cheap and deterministic.
 AnmVmView *AnmVmIdView::GetVm()
 {
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(value);
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
     if (vm == NULL)
         value = 0;
     return vm;
@@ -2969,7 +2969,7 @@ AnmVmView *AnmVmIdView::GetVm()
 
 void AnmVmIdView::ClearFlag2()
 {
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(value);
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
     if (vm == NULL)
         return;
 
@@ -2988,7 +2988,7 @@ void AnmVmIdView::ClearFlag2()
 
 void AnmVmIdView::Release()
 {
-    g_AnmRenderManagerView->MarkVmForDeletion(value);
+    g_AnmRenderManagerView->MarkVmForDeletion(*this);
     value = 0;
 }
 

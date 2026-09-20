@@ -425,6 +425,7 @@ struct AnmTextureEntryView;
 struct AnmVmIdView
 {
     AnmVmIdView() { value = 0; }
+    AnmVmIdView(int initialValue) { value = initialValue; }
 
     int operator==(AnmVmIdView other)
     {
@@ -1095,13 +1096,13 @@ struct AnmRenderManagerView
     TH10_ANM_NOINLINE AnmVmIdView AddVmVariant2(AnmVmView *vm);
     TH10_ANM_NOINLINE AnmVmIdView AddVmVariant3(AnmVmView *vm);
     int RemoveVm(AnmVmView *vm);
-    TH10_ANM_NOINLINE AnmVmView *FindVm(int id);
+    TH10_ANM_NOINLINE AnmVmView *FindVm(AnmVmIdView id);
     void SetVmPendingInterrupt(int id, short interrupt);
     void SetVmPendingInterruptAndExecute(int id, short interrupt);
-    TH10_ANM_NOINLINE void MarkVmForDeletion(int id);
+    TH10_ANM_NOINLINE void MarkVmForDeletion(AnmVmIdView id);
     void SetVmPosition(int id, const AnmFloat3View *position);
     void SetVmWorldPosition(int id, const AnmFloat3View *position);
-    AnmFloat3View *GetVmPosition(int id);
+    AnmFloat3View *GetVmPosition(AnmVmIdView id);
     void MarkLoadedVmsForDeletion(AnmLoadedView *loaded);
     void ClearVertexBuffer();
     void FlushVertexBuffer();

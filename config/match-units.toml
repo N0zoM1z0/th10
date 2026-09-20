@@ -2766,10 +2766,10 @@ source = "src/AnmManager.cpp"
 object = "build/match/AnmManager.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["AnmRenderManagerView::MarkVmForDeletion"]
-symbol = "?MarkVmForDeletion@AnmRenderManagerView@@QAEXH@Z"
+symbol = "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z"
 target_address = 0x004492A0
 size = 66
-relocations = [{ offset = 0x06, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@H@Z", target = 0x004491C0 }]
+relocations = [{ offset = 0x06, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z", target = 0x004491C0 }]
 
 [units.anm-manager-get-vm-position]
 artifact_kind = "coff"
@@ -2777,10 +2777,10 @@ source = "src/AnmManager.cpp"
 object = "build/match/AnmManager.obj"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
 functions = ["AnmRenderManagerView::GetVmPosition"]
-symbol = "?GetVmPosition@AnmRenderManagerView@@QAEPAUAnmFloat3View@@H@Z"
+symbol = "?GetVmPosition@AnmRenderManagerView@@QAEPAUAnmFloat3View@@UAnmVmIdView@@@Z"
 target_address = 0x004493C0
 size = 27
-relocations = [{ offset = 0x06, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@H@Z", target = 0x004491C0 }]
+relocations = [{ offset = 0x06, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z", target = 0x004491C0 }]
 
 [units.anm-manager-update-primary-vms]
 artifact_kind = "linked-pe"
