@@ -1032,8 +1032,8 @@ int EnemyRuntimeView::DispatchEclInstruction()
   } local_90;
 
   iVar26 = reinterpret_cast<int>(owner);
-  EnemyEclInstructionView *instruction = owner->activeEclContext->currentInstruction;
-  opcode = instruction->opcode;
+  iVar27 = reinterpret_cast<int>(owner->activeEclContext->currentInstruction);
+  opcode = *(short *)(iVar27 + 4);
   switch(opcode) {
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
     goto dispatch_create_enemy_absolute;
@@ -1042,23 +1042,23 @@ int EnemyRuntimeView::DispatchEclInstruction()
       return 0;
     }
   case ENEMY_ECL_CREATE_ENEMY:
-    iVar26 = *(int *)(reinterpret_cast<int>(instruction) + 0x10) + 4;
+    iVar26 = *(int *)(iVar27 + 0x10) + 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       fVar9 = *(float *)((int)runtimeAddress + 0x2c);
-      fVar19 = (ReadRawFloatArgument((1), (*(float *)(reinterpret_cast<int>(instruction) + 0x10 + iVar26 * 4))));
+      fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
       fVar10 = *(float *)((int)runtimeAddress + 0x30);
       local_90.spawnRequest.position.x = (float)(fVar19 + fVar9);
-      fVar19 = (ReadRawFloatArgument((2), (*(float *)(reinterpret_cast<int>(instruction) + 0x14 + iVar26 * 4))));
+      fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
       fVar19 = fVar19 + fVar10;
     }
     else {
       fVar9 = *(float *)((int)runtimeAddress + 0x2c);
-      fVar19 = (ReadRawFloatArgument((1), (*(float *)(reinterpret_cast<int>(instruction) + 0x10 + iVar26 * 4))));
+      fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
       fVar10 = *(float *)((int)runtimeAddress + 0x30);
       vectorScratch.x = (float)(fVar19 + fVar9);
-      fVar19 = (ReadRawFloatArgument((2), (*(float *)(reinterpret_cast<int>(instruction) + 0x14 + iVar26 * 4))));
+      fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
       vectorScratch.z = *(float *)((int)runtimeAddress + 0x34);
       vectorScratch.y = (float)(fVar19 + fVar10);
       EnemyPrepareProjection(&g_MainSupervisorView, 0);
@@ -1071,16 +1071,16 @@ int EnemyRuntimeView::DispatchEclInstruction()
     }
 dispatch_finish_spawn_position:
     local_90.spawnRequest.position.y = (float)fVar19;
-    uVar22 = ReadRawIntArgument(3, *(int *)(reinterpret_cast<int>(instruction) + 0x18 + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
     local_90.spawnRequest.life = uVar22;
-    uVar22 = ReadRawIntArgument(4, *(int *)(reinterpret_cast<int>(instruction) + 0x1c + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
     local_90.spawnRequest.scoreReward = uVar22;
-    uVar22 = ReadRawIntArgument(5, *(int *)(reinterpret_cast<int>(instruction) + 0x20 + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
 dispatch_spawn_enemy:
     EnemySpawnFromEclInstruction(
-        g_EnemyManager, reinterpret_cast<const void *>(reinterpret_cast<int>(instruction) + 0x14),
+        g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_IF_NO_BOSS:
@@ -1090,25 +1090,25 @@ dispatch_spawn_enemy:
     goto dispatch_create_enemy_absolute;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
 dispatch_create_enemy_global:
-    iVar26 = *(int *)(reinterpret_cast<int>(instruction) + 0x10) + 4;
+    iVar26 = *(int *)(iVar27 + 0x10) + 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
-    fVar19 = (ReadRawFloatArgument((1), (*(float *)(reinterpret_cast<int>(instruction) + 0x10 + iVar26 * 4))));
+    fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
     local_90.spawnRequest.position.x = (float)(fVar19 + g_EnemyGlobalPositionOffset.x);
-    fVar19 = (ReadRawFloatArgument((2), (*(float *)(reinterpret_cast<int>(instruction) + 0x14 + iVar26 * 4))));
+    fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
     local_90.spawnRequest.position.y = (float)(fVar19 + g_EnemyGlobalPositionOffset.y);
-    fVar19 = (ReadRawFloatArgument((3), (*(float *)(reinterpret_cast<int>(instruction) + 0x18 + iVar26 * 4))));
+    fVar19 = (ReadRawFloatArgument((3), (*(float *)(iVar27 + 0x18 + iVar26 * 4))));
     local_90.spawnRequest.position.z = (float)fVar19;
-    uVar22 = ReadRawIntArgument(4, *(int *)(reinterpret_cast<int>(instruction) + 0x1c + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
     local_90.spawnRequest.life = uVar22;
-    uVar22 = ReadRawIntArgument(5, *(int *)(reinterpret_cast<int>(instruction) + 0x20 + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
     local_90.spawnRequest.scoreReward = uVar22;
-    uVar22 = ReadRawIntArgument(6, *(int *)(reinterpret_cast<int>(instruction) + 0x24 + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(6, *(int *)(iVar27 + 0x24 + iVar26 * 4));
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag40000 = local_90.spawnRequest.setFlag40000 | 1;
     EnemySpawnFromEclInstruction(
-        g_EnemyManager, reinterpret_cast<const void *>(reinterpret_cast<int>(instruction) + 0x14),
+        g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET_IF_NO_BOSS:
@@ -1116,25 +1116,25 @@ dispatch_create_enemy_global:
     break;
   case ENEMY_ECL_CREATE_ENEMY_MIRRORED:
 dispatch_create_enemy_mirrored:
-    iVar26 = *(int *)(reinterpret_cast<int>(instruction) + 0x10) + 4;
+    iVar26 = *(int *)(iVar27 + 0x10) + 4;
     fVar9 = *(float *)((int)runtimeAddress + 0x2c);
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
-    fVar19 = (ReadRawFloatArgument((1), (*(float *)(reinterpret_cast<int>(instruction) + 0x10 + iVar26 * 4))));
+    fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
     fVar10 = *(float *)((int)runtimeAddress + 0x30);
     local_90.spawnRequest.position.x = (float)(fVar19 + fVar9);
-    fVar19 = (ReadRawFloatArgument((2), (*(float *)(reinterpret_cast<int>(instruction) + 0x14 + iVar26 * 4))));
+    fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
     local_90.spawnRequest.position.y = (float)(fVar19 + fVar10);
-    uVar22 = ReadRawIntArgument(3, *(int *)(reinterpret_cast<int>(instruction) + 0x18 + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
     local_90.spawnRequest.life = uVar22;
-    uVar22 = ReadRawIntArgument(4, *(int *)(reinterpret_cast<int>(instruction) + 0x1c + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
     local_90.spawnRequest.scoreReward = uVar22;
-    uVar22 = ReadRawIntArgument(5, *(int *)(reinterpret_cast<int>(instruction) + 0x20 + iVar26 * 4));
+    uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag0800 = 1;
     EnemySpawnFromEclInstruction(
-        g_EnemyManager, reinterpret_cast<const void *>(reinterpret_cast<int>(instruction) + 0x14),
+        g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
@@ -2151,11 +2151,11 @@ dispatch_select_bullet_count_low:
     uVar24 = ENEMY_READ_INT_DIRECT(0);
     EnemyConfigureInterrupt(
         owner, (int)uVar24, (int)uVar23, (int)uVar22,
-        reinterpret_cast<const unsigned char *>(owner->activeEclContext->currentInstruction) + 0x20);
+        reinterpret_cast<const unsigned char *>(iVar27 + 0x20));
     return 0;
   case ENEMY_ECL_SET_TIMEOUT:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    *(int *)(((int)uVar22 + 0x24a) * 0x10 + *(int *)((int)runtimeAddress + 0x14d8)) = reinterpret_cast<int>(owner->activeEclContext->currentInstruction) + 0x18;
+    *(int *)(((int)uVar22 + 0x24a) * 0x10 + *(int *)((int)runtimeAddress + 0x14d8)) = iVar27 + 0x18;
     return 0;
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
     reinterpret_cast<EnemyCancelManagerView *>(
@@ -2200,15 +2200,15 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_START_SPELL_DIFFICULTY:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
-    local_2a8 = *(float *)(reinterpret_cast<int>(owner->activeEclContext->currentInstruction) + 0x1c);
+    local_2a8 = *(float *)(iVar27 + 0x1c);
     iVar17 = 0;
     bVar3 = 0x77;
     local_29d = '\a';
-    iVar11 = reinterpret_cast<int>(owner->activeEclContext->currentInstruction) + 0x20;
+    iVar11 = iVar27 + 0x20;
     if (0 < (int)local_2a8) {
       do {
         local_90.bytes[iVar17] =
-            reinterpret_cast<const unsigned char *>(owner->activeEclContext->currentInstruction)[0x20 + iVar17] ^ bVar3;
+            reinterpret_cast<const unsigned char *>(iVar27 + 0x20)[iVar17] ^ bVar3;
         bVar3 = bVar3 + local_29d;
         local_29d = local_29d + '\x10';
         iVar17 = iVar17 + 1;
@@ -2217,7 +2217,7 @@ dispatch_select_bullet_count_low:
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    opcode = owner->activeEclContext->currentInstruction->opcode;
+    opcode = *(short *)(iVar27 + 4);
     if (opcode == 0x165) {
       iVar26 = iVar26 + g_EnemyDifficulty;
     }
@@ -2297,7 +2297,7 @@ dispatch_select_bullet_count_low:
     }
     reinterpret_cast<float *>(&local_288)[11] = 8.0f;
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-    if (owner->activeEclContext->currentInstruction->opcode == 0x1b0) {
+    if (*(short *)(iVar27 + 4) == 0x1b0) {
       puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);
       puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
@@ -2380,7 +2380,7 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2_WITH_PATTERN:
     EnemyInitializeLaserConfig(&local_288);
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
-    if (owner->activeEclContext->currentInstruction->opcode == 0x1b2) {
+    if (*(short *)(iVar27 + 4) == 0x1b2) {
       puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);
       puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;
       for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
@@ -2653,29 +2653,29 @@ dispatch_rank_int_low:
 dispatch_complete:
   return 0;
 dispatch_create_enemy_absolute_mirrored:
-  iVar26 = *(int *)(reinterpret_cast<int>(instruction) + 0x10) + 4;
+  iVar26 = *(int *)(iVar27 + 0x10) + 4;
   memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
   iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
-  fVar19 = (ReadRawFloatArgument((1), (*(float *)(reinterpret_cast<int>(instruction) + 0x10 + iVar26 * 4))));
+  fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
   local_90.spawnRequest.position.x = (float)fVar19;
-  fVar19 = (ReadRawFloatArgument((2), (*(float *)(reinterpret_cast<int>(instruction) + 0x14 + iVar26 * 4))));
+  fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
   local_90.spawnRequest.position.y = (float)fVar19;
-  uVar22 = ReadRawIntArgument(3, *(int *)(reinterpret_cast<int>(instruction) + 0x18 + iVar26 * 4));
+  uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
   local_90.spawnRequest.life = uVar22;
-  uVar22 = ReadRawIntArgument(4, *(int *)(reinterpret_cast<int>(instruction) + 0x1c + iVar26 * 4));
+  uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
   local_90.spawnRequest.scoreReward = uVar22;
-  uVar22 = ReadRawIntArgument(5, *(int *)(reinterpret_cast<int>(instruction) + 0x20 + iVar26 * 4));
+  uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));
   local_90.spawnRequest.itemDropType = uVar22;
   local_90.spawnRequest.eclVariables = eclVariables;
   local_90.spawnRequest.setFlag0800 = 1;
   goto dispatch_spawn_enemy;
 dispatch_create_enemy_absolute:
-  iVar26 = *(int *)(reinterpret_cast<int>(instruction) + 0x10) + 4;
+  iVar26 = *(int *)(iVar27 + 0x10) + 4;
   memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
   iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
-  fVar19 = (ReadRawFloatArgument((1), (*(float *)(reinterpret_cast<int>(instruction) + 0x10 + iVar26 * 4))));
+  fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
   local_90.spawnRequest.position.x = (float)fVar19;
-  fVar19 = (ReadRawFloatArgument((2), (*(float *)(reinterpret_cast<int>(instruction) + 0x14 + iVar26 * 4))));
+  fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
   goto dispatch_finish_spawn_position;
 dispatch_copy_player_to_motion:
   iVar26 = *(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10);
