@@ -1080,9 +1080,9 @@ dispatch_create_enemy_absolute:
       D3DXVec3Project(&local_90.spawnRequest.position, &vectorScratch,
                       &g_EnemyViewport, &g_EnemyProjectionMatrix,
                       &g_EnemyViewMatrix, &g_EnemyWorldMatrix);
-      local_90.spawnRequest.position.x = local_90.spawnRequest.position.x - 16.0f;
+      local_90.spawnRequest.position.x = local_90.spawnRequest.position.x - 224.0f;
       local_90.spawnRequest.position.z = 0.0;
-      fVar19 = local_90.spawnRequest.position.y - 100.0f;
+      fVar19 = local_90.spawnRequest.position.y - 16.0f;
     }
 dispatch_finish_spawn_position:
     local_90.spawnRequest.position.y = (float)fVar19;
