@@ -801,8 +801,21 @@ struct EnemyDropVectorView
     __declspec(noinline) void FromAngleRadii(
         float angle, float radiusX, float radiusY)
     {
+#if defined(_MSC_VER) && defined(_M_IX86)
+        __asm
+        {
+            mov eax, this
+            fld angle
+            fsincos
+            fmul radiusX
+            fstp [eax]
+            fmul radiusY
+            fstp [eax + 4]
+        }
+#else
         x = static_cast<float>(cos(angle)) * radiusX;
         y = static_cast<float>(sin(angle)) * radiusY;
+#endif
     }
 };
 
