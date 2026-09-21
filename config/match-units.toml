@@ -2711,6 +2711,20 @@ target_address = 0x004489D0
 size = 118
 linkages = []
 
+[units.anm-manager-add-vm-primary-head]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmExecutor"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+functions = ["AnmRenderManagerView::AddVmVariant2"]
+symbol = "?AddVmVariant2@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+target_address = 0x00448A50
+size = 112
+linkages = []
+
 [units.anm-manager-add-vm-secondary-tail]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"
@@ -2723,6 +2737,20 @@ functions = ["AnmRenderManagerView::AddVmVariant1"]
 symbol = "?AddVmVariant1@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
 target_address = 0x00448AC0
 size = 118
+linkages = []
+
+[units.anm-manager-add-vm-secondary-head]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmExecutor"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+functions = ["AnmRenderManagerView::AddVmVariant3"]
+symbol = "?AddVmVariant3@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z"
+target_address = 0x00448B40
+size = 112
 linkages = []
 
 [units.anm-manager-draw-layer]
