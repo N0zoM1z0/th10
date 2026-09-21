@@ -309,3 +309,5 @@ EnemyWrapAngle
 MainInitializeSystemParameters
 MainRestoreSystemParameters
 MainGetTimestampUnlocked
+EnemyMarkPendingInterrupt
+EnemySoundQueueView::QueueSoundSample

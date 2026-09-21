@@ -310,3 +310,5 @@ EnemyWrapAngle,0x0044BC70,function
 MainInitializeSystemParameters,0x004392E0,function
 MainRestoreSystemParameters,0x00439350,function
 MainGetTimestampUnlocked,0x00439660,function
+EnemyMarkPendingInterrupt,0x00409E50,function
+EnemySoundQueueView::QueueSoundSample,0x0043DC90,function
