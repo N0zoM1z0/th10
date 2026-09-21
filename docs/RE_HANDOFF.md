@@ -1,7 +1,7 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-09-20. This is the current recovery snapshot, not a chronological
-session log. Historical target facts belong in docs/KNOWLEDGE_BASE.md;
+Updated 2026-09-21. This is a current recovery snapshot, not a chronological
+session log. Historical target facts belong in docs/KNOWLEDGE_BASE.md and
 accepted implementation history belongs in Git.
 
 ## Authority and recovery
@@ -11,9 +11,9 @@ accepted implementation history belongs in Git.
 - Required SHA-256:
   2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
 - Branch: main.
-- Current checkpoint when this handoff was refreshed:
-  89bd4b8 gpt-web: recover Enemy pending interrupt helper.
-- Current checkpoint commit prefix: gpt-web:.
+- Enemy checkpoint when this handoff was refreshed:
+  76848d9 gpt-web: restore Enemy spell name length semantics.
+- Checkpoint commit prefix: gpt-web:.
 - Decompiler output, adjacent games, ignored build products and .analysis/
   artifacts are hypothesis/evidence only. They never establish exactness by
   themselves.
@@ -30,73 +30,98 @@ Before editing:
 For Factory work, also require a passing th10-ghidra preflight for the
 attested target before treating new disassembly/decompilation as evidence.
 
-## Repository status
-
-The reviewed inventory currently reports:
-
-| Measure | Current value |
-| --- | ---: |
-| Function candidates | 1,317 |
-| Boundary reviewed | 1,317 |
-| Origin reviewed | 1,317 |
-| Authored / excluded / indeterminate | 709 / 518 / 90 |
-| Source-present mappings | 311 |
-| Canonical exact functions | 163 |
-| Canonical exact authored bytes | tracked by scripts/progress.py |
-| Authored source-present exact backlog | 142 |
-
-The whole Windows i386 product build is still open. Semantic reconstruction and
-portability have not started.
+Do not copy static repository-wide inventory counts from this file into a new
+report. Regenerate them with the tracking scripts because source-present and
+exact-unit counts change independently of the three giant owners.
 
 ## Active exact frontiers
 
-The three large owners remain non-exact. Do not infer exactness from equal
-size, equal selector/table order, or semantic coverage.
+The three large owners remain non-exact. Equal size, equal table order or
+semantic coverage is not exactness.
 
 | Owner | Target owner | Current focus |
 | --- | ---: | --- |
-| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | private operand-helper allocation, spawn topology, several laser/rank intervals, shared-tail placement |
+| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | whole-function register allocation, private operand-helper allocation, laser/rank shared tails |
 | AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | block placement, float temporary homes, child-helper/private ABI effects |
-| EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | arithmetic stack homes, format-parser register allocation, remaining ReadInt register differences |
-
-Regenerate candidate metrics before relying on old numeric handoff values. The
-9/19 probe/layout files were intentionally removed during housekeeping.
+| EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | arithmetic stack homes, format-parser registers, remaining ReadInt register differences |
 
 ## Enemy dispatcher: current recovery point
 
-Recent retained checkpoints materially relevant to the current call graph:
+The latest retained diagnostic is
+build/gpt-web-enemy-checkpoint-spell-name-length/. It is intentionally a
+build-only diagnostic, not exactness evidence.
+
+| Measure | Latest candidate | Target |
+| --- | ---: | ---: |
+| Complete contribution | 14,336 | 14,416 |
+| Pre-table delta | -80 | 0 |
+| Selector bytes | 181 / 181 | 181 / 181 |
+| Physical selector-group order | matches | matches |
+| Sum of absolute physical-block size deltas | 572 | 0 |
+| Physical blocks with equal size | 38 | all |
+
+The candidate is still non-exact. Its exact-unit replay was not completed in
+that retained packet because the local Python environment could not import the
+hash-pinned Capstone 5.0.6 decoder. Treat that as an unavailable regression
+check, not as a pass or failure.
+
+Recent retained Enemy checkpoints:
 
 | Commit | Retained result |
 | --- | --- |
-| 89bd4b8 | recovers the Enemy pending-interrupt helper |
-| 9cf1845 | recovers the Enemy raw sound-sample queue helper |
-| 82729a0 | recovers the ANM VM visibility helper used by Enemy/GUI paths |
-| 6ad01a2 | preserves the target-observed CreateVmVariant0 function boundary |
-| 54ff159 | restores AnmVmIdView value-type API and the target-shaped FindVm ABI chain |
-| 2b02c56 | recovers Enemy main-ANM creation through the real ANM type |
-| 87ea4fd | restores ANM VM-id lifecycle helpers |
-| d52d8c8 | recovers Enemy laser-position helper |
-| e4655a6 | aggregates Enemy world-position sum |
-| 914a8fd / 49a73ab | improve Enemy circle/motion layout |
-| 3204f09 / 1c5d7eb | recover bullet-pattern cancel paths |
+| 59c542e | corrects projected spawn origin/value flow |
+| cdcb9aa | reconstructs the item-drop helper instead of keeping an external placeholder |
+| 114cc83 | restores the target-shaped item-drop polar vector fsincos helper |
+| 8b5a2cb | preserves the target-observed owner lifetime in the shared float-store tail |
+| 76848d9 | treats the encrypted spell-name length at instruction +0x1C as an integer byte count |
 
-Important target-shaped helper results already established in the maintained
-source/call graph:
+The dispatcher frame has reached the target 0x2C4 and all 181 selectors remain
+mapped in target physical order. Remaining gaps are dominated by register
+allocation, helper-private ABI and shared-tail ownership, not by missing
+selectors. Total contribution size is not a monotonic quality metric: the
+76848d9 semantic fix increased the contribution while improving block-layout
+agreement.
 
-- AnmRenderManagerView::FindVm uses the 4-byte AnmVmIdView value API and,
-  in the full LTCG context, takes manager in EDX and id on the stack with
-  RET 4.
-- AnmVmIdView::GetVm, ClearFlag2, Release, and the visibility helper
-  follow the target VM-id lifecycle family.
-- AnmLoadedView::CreateVmVariant0 is kept out of line because the target owns
-  a distinct function boundary at 0x00448D00.
-- the raw sound-sample queue helper and Enemy pending-interrupt helper have been
-  recovered as separate target-shaped helpers.
+### Known negative experiments
 
-The dispatcher frame has previously been brought to the target 0x2C4.
-Remaining differences are dominated by whole-function allocation and CFG
-placement, not missing switch selectors. Avoid padding, inline assembly,
-volatile-only shaping or fake dependencies.
+These experiments were useful for diagnosis but should not be repeated or
+restored without a new target-derived reason:
+
+- replacing ordinary owner uses with normal runtime reloads is optimized back
+  to the same code;
+- volatile owner reloads release a register but greatly inflate the dispatcher
+  and worsen physical layout;
+- routing all direct integer reads through ReadIntArgument changes the physical
+  case order and is not a valid replacement for the private ReadInt call shape;
+- direct rank-threshold rewrites for the 0x1A6/0x1A9 family worsen shared-tail
+  ownership even when the source condition looks closer to the decompiler;
+- aggregate ANM position copies and a forced managed-VM pointer in opcode 0x103
+  both worsened the linked layout;
+- moving C labels/source anchors alone does not move the shared float-store
+  tail; VC7.1 canonicalizes those equivalent CFGs;
+- synthetic Enemy-local reconstructions of FireLaser/laser constructors do
+  not reproduce the shipped private ABI. Target FireLaser @ 0x0041C510 has
+  six target callers, five outside the dispatcher, so its ABI is a
+  cross-owner/LTCG problem. Do not fake that context inside the dispatcher.
+
+Useful target-local clues that remain open:
+
+- PLAY_ANM 0x107 is three bytes short because the shipped dispatcher reaches
+  the case with EDX holding the owner and performs mov edx,[edx+4] at the case
+  entry; the current candidate reaches it with a different whole-function
+  register state. This is not a local three-byte bug.
+- AIM_BULLET_AT_PLAYER 0x1AE jumps into the float Resolve/store tail used by
+  rank/difficulty float selection. Commit 8b5a2cb recovers the target-shaped
+  EBX=owner lifetime in that tail, but physical ownership is still different.
+- FireLaser @ 0x0041C510 uses ESI=manager, EDI=request and stack type in the
+  shipped image. The base laser initializer @ 0x0041C030 can be reproduced as
+  a 98-byte EDX-receiver body, but the real derived laser subobject
+  constructors and full caller graph are still missing; raw offset-based fake
+  constructors only inflate code and should not be committed.
+
+Avoid padding, inline assembly used only for byte shaping, volatile-only
+dependencies, fake data dependencies, and speculative class graphs whose only
+purpose is to steer LTCG.
 
 ### Focused Enemy probe
 
@@ -105,7 +130,9 @@ volatile-only shaping or fake dependencies.
     scripts/repo-python scripts/report-ecl-dispatch-table.py       --candidate build/probe-ltcg/src_EnemyEclDispatcher.cpp/source.exe       --candidate-function-address <read-from-probe> --json       > .analysis/enemy-layout.json
 
 Read the linked entry address from the probe report. Do not hard-code an old
-candidate address.
+candidate address. When the worktree contains unrelated edits, use committed
+HEAD snapshots for support translation units rather than silently incorporating
+dirty source.
 
 ## ANM executor: recovery point
 

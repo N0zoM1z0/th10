@@ -2334,6 +2334,7 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_START_SPELL_DIFFICULTY:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
+    // Target +0x1C is the encrypted spell-name byte count, not a float.
     uVar6 = *(unsigned int *)(iVar27 + 0x1c);
     iVar17 = 0;
     bVar3 = 0x77;
@@ -2674,6 +2675,8 @@ dispatch_rank5_float_low_store:
 dispatch_rank_float_tail_b:
     fVar19 = ReadFloatArgument(iVar27);
 dispatch_store_float_result:
+    // Keep this owner lifetime explicit: the shipped shared tail reuses EBX
+    // as the full owner immediately before ResolveFloat.
     iVar26 = reinterpret_cast<int>(owner);
     pfVar15 = reinterpret_cast<EclVmContext *>(
         *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
