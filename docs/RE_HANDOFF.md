@@ -11,8 +11,8 @@ accepted implementation history belongs in Git.
 - Required SHA-256:
   2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
 - Branch: main.
-- Enemy checkpoint when this handoff was refreshed:
-  76848d9 gpt-web: restore Enemy spell name length semantics.
+- Enemy base checkpoint used for the current recovery:
+  c09a251 gpt-web: refresh Enemy handoff and cleanup.
 - Checkpoint commit prefix: gpt-web:.
 - Decompiler output, adjacent games, ignored build products and .analysis/
   artifacts are hypothesis/evidence only. They never establish exactness by
@@ -48,22 +48,41 @@ semantic coverage is not exactness.
 ## Enemy dispatcher: current recovery point
 
 The latest retained diagnostic is
-build/gpt-web-enemy-checkpoint-spell-name-length/. It is intentionally a
-build-only diagnostic, not exactness evidence.
+build/gpt-web-enemy-checkpoint-spell-scratch-lifetime/. It is intentionally a
+build-only linked-PE diagnostic, not exactness evidence.
 
 | Measure | Latest candidate | Target |
 | --- | ---: | ---: |
-| Complete contribution | 14,336 | 14,416 |
-| Pre-table delta | -80 | 0 |
-| Selector bytes | 181 / 181 | 181 / 181 |
+| Complete contribution | 14,304 | 14,416 |
+| Pre-table delta | -120 | 0 |
+| Stack frame allocation | 0x2C4 | 0x2C4 |
+| Selector bytes | unchanged from the prior audited 181 / 181 blob | 181 / 181 |
 | Physical selector-group order | matches | matches |
-| Sum of absolute physical-block size deltas | 572 | 0 |
-| Physical blocks with equal size | 38 | all |
+| Retained-layout grouped-block absolute delta | 590 | 0 |
+| START_SPELL physical group | 217 | 219 |
 
-The candidate is still non-exact. Its exact-unit replay was not completed in
-that retained packet because the local Python environment could not import the
-hash-pinned Capstone 5.0.6 decoder. Treat that as an unavailable regression
-check, not as a pass or failure.
+The candidate is still non-exact. The grouped-block values above come from the
+retained target-relative layout plus a stdlib PE reader because the local
+`scripts/repo-python` environment still cannot import the hash-pinned Capstone
+5.0.6 decoder. They are diagnostic only and do not replace the canonical
+target-bound Oracle.
+
+The current spell checkpoint reverses the source-shape normalization introduced
+by 76848d9. Attested TH10 Ghidra decompilation of the shipped
+0x0040E770 owner shows opcodes 0x156/0x15C/0x165-0x167 loading instruction
++0x1C through the shared `local_2a8` float scratch, using that scratch as the
+loop bound, and refreshing `iVar11` inside the loop. Restoring that dataflow:
+
+- changes the START_SPELL physical group from 233 bytes to 217 bytes against a
+  219-byte target group;
+- restores the whole-function VC7.1 frame from 0x2BC to the target 0x2C4;
+- restores a zero-extended opcode spill in the prologue;
+- preserves the 181-byte selector blob and target physical selector-group order.
+
+This is a target-facing source/lifetime improvement even though aggregate
+contribution and total grouped-block delta temporarily move away from the
+previous 14,336-byte candidate. Total contribution size is not a monotonic
+quality metric for this LTCG owner.
 
 Recent retained Enemy checkpoints:
 
@@ -73,14 +92,12 @@ Recent retained Enemy checkpoints:
 | cdcb9aa | reconstructs the item-drop helper instead of keeping an external placeholder |
 | 114cc83 | restores the target-shaped item-drop polar vector fsincos helper |
 | 8b5a2cb | preserves the target-observed owner lifetime in the shared float-store tail |
-| 76848d9 | treats the encrypted spell-name length at instruction +0x1C as an integer byte count |
+| 76848d9 | normalized the spell-name +0x1C scratch to an unsigned integer; useful size/layout improvement, but it shrank the dispatcher frame to 0x2BC and diverged from the target-observed scratch dataflow |
 
-The dispatcher frame has reached the target 0x2C4 and all 181 selectors remain
-mapped in target physical order. Remaining gaps are dominated by register
-allocation, helper-private ABI and shared-tail ownership, not by missing
-selectors. Total contribution size is not a monotonic quality metric: the
-76848d9 semantic fix increased the contribution while improving block-layout
-agreement.
+Remaining gaps are dominated by whole-function register allocation,
+helper-private ABI and shared-tail ownership, not by missing selectors. The
+prologue is closer structurally after restoring the 0x2C4 frame, but register
+choice and spill-slot assignment still differ from the shipped image.
 
 ### Known negative experiments
 

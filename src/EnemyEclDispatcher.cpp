@@ -2334,20 +2334,22 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_START_SPELL_DIFFICULTY:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
-    // Target +0x1C is the encrypted spell-name byte count, not a float.
-    uVar6 = *(unsigned int *)(iVar27 + 0x1c);
+    // Preserve the target's shared float scratch lifetime for this field.
+    // Normalizing it to an unsigned-int temporary changes the VC7.1 frame.
+    local_2a8 = *(float *)(iVar27 + 0x1c);
     iVar17 = 0;
     bVar3 = 0x77;
     local_29d = '\a';
     iVar11 = iVar27 + 0x20;
-    if (0 < (int)uVar6) {
+    if (0 < (int)local_2a8) {
       do {
         local_90.bytes[iVar17] =
-            *reinterpret_cast<const unsigned char *>(iVar11 + iVar17) ^ bVar3;
+            reinterpret_cast<const unsigned char *>(iVar27 + 0x20)[iVar17] ^ bVar3;
         bVar3 = bVar3 + local_29d;
         local_29d = local_29d + '\x10';
         iVar17 = iVar17 + 1;
-      } while (iVar17 < (int)uVar6);
+        iVar11 = (int)local_2a8;
+      } while (iVar17 < (int)local_2a8);
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
