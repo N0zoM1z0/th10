@@ -1,6 +1,13 @@
 # 東方風神録 ～ Mountain of Faith
 
 <p align="center">
+  <img
+    src="resources/title-screen.png"
+    width="640"
+    alt="Original Japanese TH10 1.00a title screen">
+</p>
+
+<p align="center">
   <img src="resources/progress.svg" alt="TH10 reconstruction progress">
 </p>
 
