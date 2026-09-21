@@ -2334,20 +2334,19 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_START_SPELL_DIFFICULTY:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
-    local_2a8 = *(float *)(iVar27 + 0x1c);
+    uVar6 = *(unsigned int *)(iVar27 + 0x1c);
     iVar17 = 0;
     bVar3 = 0x77;
     local_29d = '\a';
     iVar11 = iVar27 + 0x20;
-    if (0 < (int)local_2a8) {
+    if (0 < (int)uVar6) {
       do {
         local_90.bytes[iVar17] =
-            reinterpret_cast<const unsigned char *>(iVar27 + 0x20)[iVar17] ^ bVar3;
+            *reinterpret_cast<const unsigned char *>(iVar11 + iVar17) ^ bVar3;
         bVar3 = bVar3 + local_29d;
         local_29d = local_29d + '\x10';
         iVar17 = iVar17 + 1;
-        iVar11 = (int)local_2a8;
-      } while (iVar17 < (int)local_2a8);
+      } while (iVar17 < (int)uVar6);
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
