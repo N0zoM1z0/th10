@@ -1510,30 +1510,39 @@ dispatch_update_primary_anm_bounds:
       secondScalarInterpolation = &scalarInterpolations[3];
     }
     fVar19 = (ReadFloatArgument(2));
-    local_2a8 = (float)fVar19;
+    local_2c8 = (float)fVar19;
     fVar19 = (ReadFloatArgument(3));
-    fVar9 = (float)fVar19;
+    local_2c4 = (float)fVar19;
     fVar19 = (ReadFloatArgument(4));
-    fVar10 = (float)fVar19;
+    local_2bc = (float)fVar19;
     fVar19 = (ReadFloatArgument(5));
-    if (fVar9 <= 0.0) {
-      fVar9 = selectedMotion->value18;
+
+    if (local_2c4 <= 0.0) {
+      local_298 = selectedMotion->value18;
     }
-    if (local_2a8 <= 0.0) {
-      local_2a8 = selectedMotion->value1C;
+    else {
+      local_298 = local_2c4;
     }
+    if (local_2c8 <= 0.0) {
+      local_29c = selectedMotion->value1C;
+    }
+    else {
+      local_29c = local_2c8;
+    }
+
     local_2a4 = selectedMotion->value18;
+    local_2a8 = selectedMotion->value1C;
+
     if (fVar19 <= 0.0) {
       fVar19 = selectedMotion->value24;
     }
-    if (fVar10 <= 0.0) {
-      fVar10 = selectedMotion->value20;
+    if (local_2bc <= 0.0) {
+      vectorScratch.x = selectedMotion->value20;
+    }
+    else {
+      vectorScratch.x = local_2bc;
     }
     vectorScratch.y = (float)fVar19;
-    vectorScratch.x = fVar10;
-    local_29c = local_2a8;
-    local_2a8 = selectedMotion->value1C;
-    local_298 = fVar9;
     uVar6 = *reinterpret_cast<unsigned int *>(&selectedMotion->value24);
     uVar4 = *reinterpret_cast<unsigned int *>(&selectedMotion->value20);
     uVar22 = ENEMY_READ_INT_DIRECT(0);
