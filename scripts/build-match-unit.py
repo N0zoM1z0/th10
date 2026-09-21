@@ -136,6 +136,14 @@ def load() -> dict[str, object]:
             raise ValueError(
                 f"unit {name!r} repeats its primary source as a support source"
             )
+        pdb_source_raw = unit.get("pdb_source", unit["source"])
+        if not isinstance(pdb_source_raw, str) or not pdb_source_raw:
+            raise ValueError(f"unit {name!r} has an invalid pdb_source")
+        pdb_source = (ROOT / pdb_source_raw).resolve()
+        if pdb_source != source and pdb_source not in support_sources:
+            raise ValueError(
+                f"unit {name!r} pdb_source must be its primary or a support source"
+            )
         functions = unit["functions"]
         if (
             not isinstance(functions, list)
@@ -155,6 +163,8 @@ def load() -> dict[str, object]:
         target_extents.append((address, address + compare_size, name))
 
         if kind == "coff":
+            if pdb_source != source:
+                raise ValueError(f"unit {name!r} COFF pdb_source must equal source")
             if support_sources:
                 raise ValueError(f"unit {name!r} gives a COFF unit support sources")
             if has_gl:

@@ -150,15 +150,37 @@ def compare_unit(name: str) -> dict[str, object]:
     map_path = directory / "source.map"
     pdb_path = directory / "source.pdb"
     linked = linked_functions(image_path, map_path, pdb_path)
+    primary_source = str(unit["source"]).replace("\\", "/")
+    pdb_source = str(unit.get("pdb_source", primary_source)).replace("\\", "/")
+    if pdb_source == primary_source:
+        expected_object = "source.ltcg.obj"
+    else:
+        support_sources = [
+            str(value).replace("\\", "/")
+            for value in unit.get("support_sources", [])
+        ]
+        try:
+            support_index = support_sources.index(pdb_source)
+        except ValueError as exc:
+            raise ValueError(
+                f"linked unit pdb_source {pdb_source!r} is not its primary or support source"
+            ) from exc
+        expected_object = (
+            f"support-{support_index:02d}-{Path(pdb_source).stem}.ltcg.obj"
+        )
+
     source_matches = []
     for function in linked["functions"]:
         object_name = str(function["pdb_object"]).replace("\\", "/").rsplit("/", 1)[-1]
-        if function["symbol"] == unit["symbol"] and object_name.lower() == "source.ltcg.obj":
+        if (
+            function["symbol"] == unit["symbol"]
+            and object_name.lower() == expected_object.lower()
+        ):
             source_matches.append(function)
     if len(source_matches) != 1:
         raise ValueError(
-            f"expected one PDB-owned source.ltcg.obj contribution for {unit['symbol']!r}, "
-            f"found {len(source_matches)}"
+            f"expected one PDB-owned {expected_object} contribution for "
+            f"{unit['symbol']!r}, found {len(source_matches)}"
         )
     function = source_matches[0]
     size = int(unit["size"])

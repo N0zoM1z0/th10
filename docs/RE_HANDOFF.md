@@ -157,8 +157,17 @@ The executor source covers opcodes -1..92. Useful unresolved themes:
 - child creation and VM helper boundaries can change the whole LTCG layout;
 - FindVm/VM-id value semantics are now substantially better than the 9/19
   handoff and should not be regressed back to raw int APIs;
-- CreateVmVariant0 now has an explicit retained boundary; verify any future
-  boundary change against both the executor and external callers.
+- the four render-layer creators Variant0/2/1/3 are now canonical exact
+  73-byte units with the target EDI hidden-return ABI. Variant0 remains a
+  natural AnmLoadedView member but its maintained definition lives in the
+  separate src/AnmVmCreate.cpp TU; this is a maintained TU boundary, not an
+  original-filename claim;
+- do not infer executor exactness from those four helpers. In the
+  Variant0-member-split focused ExecuteScript link, the executor is still
+  10,040 bytes with 9,664 pre-table bytes versus target 9,588, although all
+  92 physical groups remain in target order. The older 9,960/9,584 diagnostic
+  remains useful evidence of link-context sensitivity rather than an exact
+  baseline.
 
 After an ANM probe, use scripts/report-anm-execute-table.py and compare
 physical groups, not just total size.

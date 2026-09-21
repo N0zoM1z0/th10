@@ -134,7 +134,8 @@ def validate() -> dict[str, int]:
         if mapping is None or mapping["name"] != row["name"]:
             raise ValueError(f"exact unit {unit_name!r} lacks its source mapping")
         function = functions_by_address[address]
-        if function["source_file"] != unit["source"]:
+        expected_source = unit.get("pdb_source", unit["source"])
+        if function["source_file"] != expected_source:
             raise ValueError(f"exact unit {unit_name!r} differs from source ledger")
         if origins_by_address[address]["disposition"] != "authored":
             raise ValueError(f"exact unit {unit_name!r} is not reviewed authored code")
