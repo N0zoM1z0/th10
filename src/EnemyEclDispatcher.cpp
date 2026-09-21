@@ -624,7 +624,15 @@ static __declspec(noinline) void EnemyReadDialog(
     }
     g_EnemyDialogIndex = nextIndex;
 }
-extern PlayerFloat3 *EnemyGetAnmPosition(const PlayerFloat3 *position);
+static __declspec(noinline) AnmFloat3View *EnemyGetAnmPosition(
+    const AnmFloat3View *position)
+{
+    static AnmFloat3View result;
+    result.x = position->x + 224.0f;
+    result.y = position->y + 16.0f;
+    result.z = position->z;
+    return &result;
+}
 extern unsigned int EnemyFireLaser(
     void *manager, EnemyLaserRequestScratch *request, int type);
 struct EnemyEffectWaitNode
@@ -1203,7 +1211,7 @@ dispatch_create_enemy_mirrored:
     }
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
-          EnemyGetAnmPosition(&worldMotion.position));
+          EnemyGetAnmPosition(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
       *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
@@ -1225,7 +1233,7 @@ dispatch_create_enemy_mirrored:
     }
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
-          EnemyGetAnmPosition(&worldMotion.position));
+          EnemyGetAnmPosition(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
       *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
@@ -1254,7 +1262,7 @@ dispatch_create_enemy_mirrored:
     }
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       puVar5 = reinterpret_cast<unsigned int *>(
-          EnemyGetAnmPosition(&worldMotion.position));
+          EnemyGetAnmPosition(reinterpret_cast<const AnmFloat3View *>(&worldMotion.position)));
       *(unsigned int *)(iVar26 + 0x340) = *puVar5;
       *(unsigned int *)(iVar26 + 0x344) = puVar5[1];
       *(unsigned int *)(iVar26 + 0x348) = puVar5[2];
