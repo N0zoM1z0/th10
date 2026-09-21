@@ -312,3 +312,4 @@ MainRestoreSystemParameters,0x00439350,function
 MainGetTimestampUnlocked,0x00439660,function
 EnemyMarkPendingInterrupt,0x00409E50,function
 EnemySoundQueueView::QueueSoundSample,0x0043DC90,function
+EnemySoundQueueView::QueueSoundCue,0x0043DD10,function

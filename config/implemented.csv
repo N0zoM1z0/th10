@@ -311,3 +311,4 @@ MainRestoreSystemParameters
 MainGetTimestampUnlocked
 EnemyMarkPendingInterrupt
 EnemySoundQueueView::QueueSoundSample
+EnemySoundQueueView::QueueSoundCue

@@ -3225,3 +3225,23 @@ size = 123
 linkages = [
   { offset = 0x05, type = "DIR32", symbol = "?g_EnemySoundCueMetadata@@3PAUEnemySoundCueMetadataView@@A", target = 0x004749C8, addend = 6 },
 ]
+
+
+[units.enemy-sound-queue-cue]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp"]
+output_dir = "build/match-linked/EnemyDispatcherHelpers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+functions = ["EnemySoundQueueView::QueueSoundCue"]
+symbol = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z"
+target_address = 0x0043DD10
+size = 149
+linkages = [
+  { offset = 0x07, type = "DIR32", symbol = "__real@40a6aaab", target = 0x00470B20 },
+  { offset = 0x0F, type = "DIR32", symbol = "?g_EnemySoundCueMetadata@@3PAUEnemySoundCueMetadataView@@A", target = 0x004749C8, addend = 6 },
+  { offset = 0x15, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]

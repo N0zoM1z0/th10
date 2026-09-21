@@ -88,9 +88,12 @@ Recent retained Enemy checkpoints:
 | 271b254 | restores target spell scratch lifetime and the 0x2C4 dispatcher frame |
 | 1840f6d | restores the target callee-clean EnemyBeginSpell ABI; 608 -> 657 normalized matching bytes |
 | current checkpoint | restores the target callee-clean EnemySetScreenShake ABI; 657 -> 680 normalized matching bytes |
-| current work | promotes EnemyMarkPendingInterrupt (65 bytes) and EnemySoundQueueView::QueueSoundSample (123 bytes) to canonical exact linked-PE units; the dispatcher owner remains non-exact |
+| ca8b589 | promotes EnemyMarkPendingInterrupt (65 bytes) and EnemySoundQueueView::QueueSoundSample (123 bytes) to canonical exact linked-PE units; the dispatcher owner remains non-exact |
+| current work | promotes EnemySoundQueueView::QueueSoundCue (149 bytes) to canonical exact linked-PE; the dispatcher owner remains non-exact |
 
 Two spell-path dependencies are now independently exact even though the large dispatcher is not. EnemyMarkPendingInterrupt @ 0x00409E50 replays all 65 bytes plus two linkage fields zero-difference, and EnemySoundQueueView::QueueSoundSample @ 0x0043DC90 replays all 123 bytes plus its sound-metadata field zero-difference. Both passed two independent cold canonical replays in the dispatcher /GL /GS entry context. These promotions do not change the retained 14,292 / 14,416 whole-owner diagnostic, 680 / 11,544 normalized agreement, 181/181 selector, or physical case order, and they do not justify an exact claim for DispatchEclInstruction.
+
+The adjacent position-aware sound queue entry is exact as well: EnemySoundQueueView::QueueSoundCue @ 0x0043DD10 replays all 149 bytes plus three linkage fields zero-difference in two independent cold dispatcher-context builds. The EnemyEclDispatcher source now has four canonical exact units totaling 431 bytes. This still does not alter the retained 14,292 / 14,416 dispatcher diagnostic or justify an exact claim for the large owner.
 
 Remaining gaps are dominated by whole-function register allocation,
 helper-private ABI, /GS local placement and shared-tail ownership, not missing
