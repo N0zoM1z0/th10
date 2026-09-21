@@ -48,41 +48,33 @@ semantic coverage is not exactness.
 ## Enemy dispatcher: current recovery point
 
 The latest retained diagnostic is
-build/gpt-web-enemy-checkpoint-spell-scratch-lifetime/. It is intentionally a
+build/gpt-web-enemy-checkpoint-spell-stdcall/. It is intentionally a
 build-only linked-PE diagnostic, not exactness evidence.
 
 | Measure | Latest candidate | Target |
 | --- | ---: | ---: |
-| Complete contribution | 14,304 | 14,416 |
-| Pre-table delta | -120 | 0 |
+| Complete contribution | 14,296 | 14,416 |
+| Pre-table span | 13,640 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Selector bytes | unchanged from the prior audited 181 / 181 blob | 181 / 181 |
+| Normalized comparable bytes | 657 / 11,544 | 11,544 / 11,544 |
+| Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
-| Retained-layout grouped-block absolute delta | 590 | 0 |
-| START_SPELL physical group | 217 | 219 |
+| START_SPELL physical group | 214 | 219 |
 
-The candidate is still non-exact. The grouped-block values above predate the
-Factory-shell Capstone routing repair and came from the retained target-relative
-layout plus a stdlib PE reader. They remain diagnostic only and do not replace
-the canonical target-bound Oracle; new work can use `scripts/repo-python` in the
-Factory repository shell again.
+The candidate is still non-exact. The current checkpoint repairs a target-proven
+ABI at the spell boundary: authored target owner 0x00409280-0x00409BE2 ends
+with RET 0x10, and the dispatcher call at 0x00410F3A performs no caller
+cleanup. The maintained EnemyBeginSpell declaration had been caller-clean,
+which emitted an extra add esp,0x10. Declaring it __stdcall removes that
+false cleanup and raises normalized whole-owner agreement from 608/11,544 to
+657/11,544 without changing total contribution size, pre-table span, selector
+bytes or physical case order.
 
-The current spell checkpoint reverses the source-shape normalization introduced
-by 76848d9. Attested TH10 Ghidra decompilation of the shipped
-0x0040E770 owner shows opcodes 0x156/0x15C/0x165-0x167 loading instruction
-+0x1C through the shared `local_2a8` float scratch, using that scratch as the
-loop bound, and refreshing `iVar11` inside the loop. Restoring that dataflow:
-
-- changes the START_SPELL physical group from 233 bytes to 217 bytes against a
-  219-byte target group;
-- restores the whole-function VC7.1 frame from 0x2BC to the target 0x2C4;
-- restores a zero-extended opcode spill in the prologue;
-- preserves the 181-byte selector blob and target physical selector-group order.
-
-This is a target-facing source/lifetime improvement even though aggregate
-contribution and total grouped-block delta temporarily move away from the
-previous 14,336-byte candidate. Total contribution size is not a monotonic
-quality metric for this LTCG owner.
+The preceding spell-scratch checkpoint remains important: attested TH10 Ghidra
+decompilation of opcodes 0x156/0x15C/0x165-0x167 shows instruction +0x1C
+flowing through the shared float scratch and restores the target 0x2C4 frame.
+Do not re-normalize that field to an unsigned integer merely to improve total
+size.
 
 Recent retained Enemy checkpoints:
 
@@ -92,12 +84,14 @@ Recent retained Enemy checkpoints:
 | cdcb9aa | reconstructs the item-drop helper instead of keeping an external placeholder |
 | 114cc83 | restores the target-shaped item-drop polar vector fsincos helper |
 | 8b5a2cb | preserves the target-observed owner lifetime in the shared float-store tail |
-| 76848d9 | normalized the spell-name +0x1C scratch to an unsigned integer; useful size/layout improvement, but it shrank the dispatcher frame to 0x2BC and diverged from the target-observed scratch dataflow |
+| 271b254 | restores target spell scratch lifetime and the 0x2C4 dispatcher frame |
+| current checkpoint | restores the target callee-clean EnemyBeginSpell ABI; 608 -> 657 normalized matching bytes |
 
 Remaining gaps are dominated by whole-function register allocation,
-helper-private ABI and shared-tail ownership, not by missing selectors. The
-prologue is closer structurally after restoring the 0x2C4 frame, but register
-choice and spill-slot assignment still differ from the shipped image.
+helper-private ABI, /GS local placement and shared-tail ownership, not missing
+selectors. In particular the candidate still keeps owner/instruction values in
+EDI/ESI across the top-level switch where the target spills/reloads them, and
+its large laser/spawn scratch objects sit eight bytes below the target offsets.
 
 ### Known negative experiments
 
