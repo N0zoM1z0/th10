@@ -61,11 +61,11 @@ build-only linked-PE diagnostic, not exactness evidence.
 | Retained-layout grouped-block absolute delta | 590 | 0 |
 | START_SPELL physical group | 217 | 219 |
 
-The candidate is still non-exact. The grouped-block values above come from the
-retained target-relative layout plus a stdlib PE reader because the local
-`scripts/repo-python` environment still cannot import the hash-pinned Capstone
-5.0.6 decoder. They are diagnostic only and do not replace the canonical
-target-bound Oracle.
+The candidate is still non-exact. The grouped-block values above predate the
+Factory-shell Capstone routing repair and came from the retained target-relative
+layout plus a stdlib PE reader. They remain diagnostic only and do not replace
+the canonical target-bound Oracle; new work can use `scripts/repo-python` in the
+Factory repository shell again.
 
 The current spell checkpoint reverses the source-shape normalization introduced
 by 76848d9. Attested TH10 Ghidra decompilation of the shipped

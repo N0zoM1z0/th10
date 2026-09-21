@@ -57,7 +57,10 @@ graph, and link order remain unknown.
 Use `scripts/repo-python` for repository Python commands. It selects an
 interpreter only when its Capstone package matches all four hashes in
 `config/tools.lock.toml`; this avoids the system Python/Conda decoder mismatch
-in Web shells without changing the decoder lock.
+in Web shells without changing the decoder lock. A Factory shell may expose the
+ignored `.tools/capstone` Python-package root; the wrapper prepends that root
+only for a candidate execution and still verifies the same four locked files
+before running the requested command.
 
 ```bash
 scripts/repo-python scripts/verify-toolchain.py --execute

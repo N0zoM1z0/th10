@@ -5,6 +5,7 @@ set -euo pipefail
 # This keeps a Web shell's /usr/bin/python3 (Ubuntu Capstone 4.0.2) from
 # silently replacing the verified Capstone 5.0.6 used by reconstruction tools.
 repo_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd -P)"
+capstone_tool_root="$repo_root/.tools/capstone"
 
 candidate_interpreters=()
 if [[ -n "${TH10_PYTHON:-}" ]]; then
@@ -26,7 +27,19 @@ fi
 
 for repo_python in "${candidate_interpreters[@]}"; do
     [[ -x "$repo_python" ]] || continue
-    if "$repo_python" - "$repo_root" >/dev/null 2>&1 <<'PY'
+    candidate_pythonpaths=("")
+    if [[ -f "$capstone_tool_root/capstone/__init__.py" ]]; then
+        candidate_pythonpaths=("$capstone_tool_root" "")
+    fi
+    for candidate_pythonpath in "${candidate_pythonpaths[@]}"; do
+        python_environment=()
+        if [[ -n "$candidate_pythonpath" ]]; then
+            python_environment+=(
+                "PYTHONPATH=$candidate_pythonpath${PYTHONPATH:+:$PYTHONPATH}"
+            )
+        fi
+        if env "${python_environment[@]}" \
+            "$repo_python" - "$repo_root" >/dev/null 2>&1 <<'PY'
 import sys
 import tomllib
 from pathlib import Path
@@ -38,12 +51,13 @@ from linked_image import verify_capstone
 with (root / "config" / "tools.lock.toml").open("rb") as stream:
     verify_capstone(tomllib.load(stream)["capstone"])
 PY
-    then
-        exec "$repo_python" "$@"
-    fi
+        then
+            exec env "${python_environment[@]}" "$repo_python" "$@"
+        fi
+    done
 done
 
 printf '%s\n' \
     'error: no Python interpreter can import the hash-pinned Capstone decoder' \
-    'Set TH10_PYTHON to a Python with the exact config/tools.lock.toml Capstone 5.0.6 package.' >&2
+    'Expose the exact package at .tools/capstone/capstone or set TH10_PYTHON to a matching Python.' >&2
 exit 1
