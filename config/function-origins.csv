@@ -146,7 +146,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040C9A0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x0040C9D0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0040CC50,compiler_generated,Enemy,exclude,high,enemy-deleting-dtor-compiler-2026-09-14
-0x0040CC70,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
+0x0040CC70,authored_game,Enemy,authored,high,enemy-runtime-constructor-2026-09-21
 0x0040CD20,authored_game,Enemy,authored,high,enemy-manager-resource-lifecycle-2026-09-14
 0x0040CEA0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0040CF40,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18

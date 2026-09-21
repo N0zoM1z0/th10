@@ -38,10 +38,13 @@ typedef char EnemyMotionFlagsAt28[(offsetof(EnemyMotionView, flags) == 0x28) ? 1
 
 // TH10's Enemy interpolation records use the same four-value plus timer
 // layout observed independently in their evaluator and initializer bodies.
-// Keep the timer POD here: EnemyRuntimeView construction must not acquire an
-// implicit C++ constructor merely from exposing these target-proven fields.
+// The target runtime default constructor clears bit zero in each embedded timer,
+// so the natural timer constructor preserves that compiler-generated aggregate
+// construction path.
 struct EnemyInterpolationTimerView
 {
+    EnemyInterpolationTimerView() { flags &= ~1u; }
+
     int previous;
     int current;
     float subframe;
@@ -107,6 +110,18 @@ struct EnemyCallbackThresholdView
 typedef char EnemyCallbackThresholdViewSizeIs10[
     (sizeof(EnemyCallbackThresholdView) == 0x10) ? 1 : -1];
 
+// The eight target bullet-pattern records occupy runtime +0x2C4..+0x1343.
+// Their constructor clears all 0x210 bytes and then writes -1 at +0x204.
+// The dispatcher independently proves the 0x210 stride.
+struct EnemyBulletPatternView
+{
+    EnemyBulletPatternView();
+
+    unsigned int words[0x84];
+};
+typedef char EnemyBulletPatternViewSizeIs210[
+    (sizeof(EnemyBulletPatternView) == 0x210) ? 1 : -1];
+
 // The TH10 operand lvalue resolvers prove this exact 0x20-byte runtime block:
 // four writable integer variables followed by four writable float variables.
 // Original source identifiers remain unknown.
@@ -151,9 +166,14 @@ struct EnemyRuntimeView
     EnemyEclVariableView eclVariables;
     PlayerTimerView updateTimer;
     EnemyListNodeView listNode;
-    EnemyPositionInterpolationView positionInterpolations[2];
-    EnemyScalarInterpolationView scalarInterpolations[4];
-    unsigned char unknown2C4[0x10e0];
+    EnemyPositionInterpolationView positionInterpolation0;
+    EnemyPositionInterpolationView positionInterpolation1;
+    EnemyScalarInterpolationView scalarInterpolation0;
+    EnemyScalarInterpolationView scalarInterpolation1;
+    EnemyScalarInterpolationView scalarInterpolation2;
+    EnemyScalarInterpolationView scalarInterpolation3;
+    EnemyBulletPatternView bulletPatterns[8];
+    PlayerFloat3 bulletPatternOffsets[8];
     float visibilityExtentX;
     float visibilityExtentY;
     float movementBoundsCenterX;
@@ -212,9 +232,17 @@ typedef char EnemyRuntimeUpdateTimerAt11C[
 typedef char EnemyRuntimeListNodeAt130[
     (offsetof(EnemyRuntimeView, listNode) == 0x130) ? 1 : -1];
 typedef char EnemyRuntimePositionInterpolationAt13C[
-    (offsetof(EnemyRuntimeView, positionInterpolations) == 0x13c) ? 1 : -1];
+    (offsetof(EnemyRuntimeView, positionInterpolation0) == 0x13c &&
+     offsetof(EnemyRuntimeView, positionInterpolation1) == 0x188) ? 1 : -1];
 typedef char EnemyRuntimeScalarInterpolationAt1D4[
-    (offsetof(EnemyRuntimeView, scalarInterpolations) == 0x1d4) ? 1 : -1];
+    (offsetof(EnemyRuntimeView, scalarInterpolation0) == 0x1d4 &&
+     offsetof(EnemyRuntimeView, scalarInterpolation1) == 0x210 &&
+     offsetof(EnemyRuntimeView, scalarInterpolation2) == 0x24c &&
+     offsetof(EnemyRuntimeView, scalarInterpolation3) == 0x288) ? 1 : -1];
+typedef char EnemyRuntimeBulletPatternsAt2C4[
+    (offsetof(EnemyRuntimeView, bulletPatterns) == 0x2c4) ? 1 : -1];
+typedef char EnemyRuntimeBulletPatternOffsetsAt1344[
+    (offsetof(EnemyRuntimeView, bulletPatternOffsets) == 0x1344) ? 1 : -1];
 typedef char EnemyRuntimeVisibilityExtentAt13A4[
     (offsetof(EnemyRuntimeView, visibilityExtentX) == 0x13a4) ? 1 : -1];
 typedef char EnemyRuntimeScoreAt13BC[

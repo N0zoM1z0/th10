@@ -1339,6 +1339,20 @@ target_address = 0x0040C800
 size = 15
 linkages = []
 
+[units.enemy-runtime-constructor]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/EnemyRuntimeCtor"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?EnemySpawn@@YAPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+functions = ["EnemyRuntimeView::EnemyRuntimeView"]
+symbol = "??0EnemyRuntimeView@@QAE@XZ"
+target_address = 0x0040CC70
+size = 145
+linkages = []
+
 [units.enemy-ecl-resource-base-load-package]
 artifact_kind = "linked-pe"
 source = "src/Enemy.cpp"
@@ -1463,11 +1477,11 @@ symbol = "?ResolveIntOperand@EnemyFullObjectView@@UAEPAHH@Z"
 target_address = 0x00412300
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L3989", target = 0x00412340 },
-  { offset = 64, type = "DIR32", symbol = "$L3313", target = 0x00412315 },
-  { offset = 68, type = "DIR32", symbol = "$L3314", target = 0x0041231E },
-  { offset = 72, type = "DIR32", symbol = "$L3315", target = 0x00412327 },
-  { offset = 76, type = "DIR32", symbol = "$L3316", target = 0x00412330 },
+  { offset = 17, type = "DIR32", symbol = "$L4060", target = 0x00412340 },
+  { offset = 64, type = "DIR32", symbol = "$L3342", target = 0x00412315 },
+  { offset = 68, type = "DIR32", symbol = "$L3343", target = 0x0041231E },
+  { offset = 72, type = "DIR32", symbol = "$L3344", target = 0x00412327 },
+  { offset = 76, type = "DIR32", symbol = "$L3345", target = 0x00412330 },
 ]
 
 [units.enemy-ecl-float-lvalue-resolver]
@@ -1480,11 +1494,11 @@ symbol = "?ResolveFloatOperand@EnemyFullObjectView@@UAEPAMH@Z"
 target_address = 0x004126D0
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L4029", target = 0x00412710 },
-  { offset = 64, type = "DIR32", symbol = "$L3391", target = 0x004126E5 },
-  { offset = 68, type = "DIR32", symbol = "$L3392", target = 0x004126EE },
-  { offset = 72, type = "DIR32", symbol = "$L3393", target = 0x004126F7 },
-  { offset = 76, type = "DIR32", symbol = "$L3394", target = 0x00412700 },
+  { offset = 17, type = "DIR32", symbol = "$L4100", target = 0x00412710 },
+  { offset = 64, type = "DIR32", symbol = "$L3420", target = 0x004126E5 },
+  { offset = 68, type = "DIR32", symbol = "$L3421", target = 0x004126EE },
+  { offset = 72, type = "DIR32", symbol = "$L3422", target = 0x004126F7 },
+  { offset = 76, type = "DIR32", symbol = "$L3423", target = 0x00412700 },
 ]
 
 [units.pbgfile-constructor]

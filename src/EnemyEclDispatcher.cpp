@@ -1454,10 +1454,10 @@ dispatch_update_primary_anm_bounds:
     selectedMotion = &offsetMotion;
     if (opcode != ENEMY_ECL_INTERPOLATE_OFFSET_POSITION) {
       selectedMotion = &baseMotion;
-      positionInterpolation = &positionInterpolations[1];
+      positionInterpolation = &positionInterpolation1;
     }
     else {
-      positionInterpolation = &positionInterpolations[0];
+      positionInterpolation = &positionInterpolation0;
     }
     positionInterpolationValues = reinterpret_cast<float *>(positionInterpolation);
     fVar19 = (ReadFloatArgument(2));
@@ -1513,13 +1513,13 @@ dispatch_update_primary_anm_bounds:
   case ENEMY_ECL_INTERPOLATE_OFFSET_POLAR:
   case ENEMY_ECL_INTERPOLATE_BASE_POLAR:
     selectedMotion = &offsetMotion;
-    firstScalarInterpolation = &scalarInterpolations[0];
+    firstScalarInterpolation = &scalarInterpolation0;
     if (opcode == 0x11d) {
-      firstScalarInterpolation = &scalarInterpolations[0];
+      firstScalarInterpolation = &scalarInterpolation0;
     }
     else {
       selectedMotion = &baseMotion;
-      firstScalarInterpolation = &scalarInterpolations[1];
+      firstScalarInterpolation = &scalarInterpolation1;
     }
     firstScalarValues = reinterpret_cast<float *>(firstScalarInterpolation);
     fVar19 = (ReadFloatArgument(2));
@@ -1611,13 +1611,13 @@ dispatch_update_primary_anm_bounds:
     if (opcode != 0x121) {
       selectedMotion = &baseMotion;
     }
-    firstScalarInterpolation = &scalarInterpolations[0];
+    firstScalarInterpolation = &scalarInterpolation0;
     if (opcode == 0x121) {
-      secondScalarInterpolation = &scalarInterpolations[2];
+      secondScalarInterpolation = &scalarInterpolation2;
     }
     else {
-      firstScalarInterpolation = &scalarInterpolations[1];
-      secondScalarInterpolation = &scalarInterpolations[3];
+      firstScalarInterpolation = &scalarInterpolation1;
+      secondScalarInterpolation = &scalarInterpolation3;
     }
     fVar19 = (ReadFloatArgument(2));
     local_2c8 = (float)fVar19;
@@ -1724,13 +1724,13 @@ dispatch_update_primary_anm_bounds:
   case ENEMY_ECL_MOVE_RANDOM:
   case ENEMY_ECL_MOVE_RANDOM_BASE:
     selectedMotion = &offsetMotion;
-    firstScalarInterpolation = &scalarInterpolations[0];
+    firstScalarInterpolation = &scalarInterpolation0;
     if (opcode == 0x124) {
-      firstScalarInterpolation = &scalarInterpolations[0];
+      firstScalarInterpolation = &scalarInterpolation0;
     }
     else {
       selectedMotion = &baseMotion;
-      firstScalarInterpolation = &scalarInterpolations[1];
+      firstScalarInterpolation = &scalarInterpolation1;
     }
     firstScalarValues = reinterpret_cast<float *>(firstScalarInterpolation);
     fVar9 = *(float *)((int)runtimeAddress + 0x13b4) * 0.25f;

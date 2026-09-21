@@ -296,7 +296,6 @@ EnemyManagedVmView *EnemyResolveManagedVmId(unsigned int *vmId);
 float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 void EnemySpawnDamageEffect(int kind, float positionX);
 void EnemyAdvanceTimer(PlayerTimerView *timer, float amount);
-void EnemyPrepareRuntimeStorage(EnemyRuntimeView *runtime);
 EnemyEclInstructionView *EnemyLookupEclSubroutine(
     EnemyEclResourceView *scriptDatabase, const char *name);
 void EnemyPlayDeathSound(int soundId, float positionX);
@@ -669,36 +668,36 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     enemy->previousMotion = enemy->worldMotion;
 
     EnemyFloat2 interpolation;
-    if (enemy->scalarInterpolations[0].duration != 0)
+    if (enemy->scalarInterpolation0.duration != 0)
     {
         EnemyEvaluateScalarInterpolation(
-            &enemy->scalarInterpolations[0], &interpolation);
+            &enemy->scalarInterpolation0, &interpolation);
         enemy->offsetMotion.value1C = EnemyWrapAngle(interpolation.x);
         enemy->offsetMotion.value18 = interpolation.y;
     }
-    if (enemy->scalarInterpolations[2].duration != 0)
+    if (enemy->scalarInterpolation2.duration != 0)
     {
         EnemyEvaluateScalarInterpolation(
-            &enemy->scalarInterpolations[2], &interpolation);
+            &enemy->scalarInterpolation2, &interpolation);
         enemy->offsetMotion.value20 = interpolation.x;
         enemy->offsetMotion.value24 = interpolation.y;
     }
-    if (enemy->scalarInterpolations[1].duration != 0)
+    if (enemy->scalarInterpolation1.duration != 0)
     {
         EnemyEvaluateScalarInterpolation(
-            &enemy->scalarInterpolations[1], &interpolation);
+            &enemy->scalarInterpolation1, &interpolation);
         enemy->baseMotion.value1C = EnemyWrapAngle(interpolation.x);
         enemy->baseMotion.value18 = interpolation.y;
     }
-    if (enemy->scalarInterpolations[3].duration != 0)
+    if (enemy->scalarInterpolation3.duration != 0)
     {
         EnemyEvaluateScalarInterpolation(
-            &enemy->scalarInterpolations[3], &interpolation);
+            &enemy->scalarInterpolation3, &interpolation);
         enemy->baseMotion.value20 = interpolation.x;
         enemy->baseMotion.value24 = interpolation.y;
     }
 
-    if (enemy->positionInterpolations[0].duration == 0)
+    if (enemy->positionInterpolation0.duration == 0)
     {
         if ((enemy->offsetMotion.flags & 1u) == 0)
         {
@@ -719,13 +718,13 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     {
         PlayerFloat3 target;
         EnemyEvaluatePositionInterpolation(
-            &enemy->positionInterpolations[0], &target);
+            &enemy->positionInterpolation0, &target);
         enemy->offsetMotion.velocity.x = target.x - enemy->offsetMotion.position.x;
         enemy->offsetMotion.velocity.y = target.y - enemy->offsetMotion.position.y;
         enemy->offsetMotion.velocity.z = target.z - enemy->offsetMotion.position.z;
     }
 
-    if (enemy->positionInterpolations[1].duration == 0)
+    if (enemy->positionInterpolation1.duration == 0)
     {
         if ((enemy->baseMotion.flags & 1u) == 0)
         {
@@ -746,7 +745,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     {
         PlayerFloat3 target;
         EnemyEvaluatePositionInterpolation(
-            &enemy->positionInterpolations[1], &target);
+            &enemy->positionInterpolation1, &target);
         enemy->baseMotion.velocity.x = target.x - enemy->baseMotion.position.x;
         enemy->baseMotion.velocity.y = target.y - enemy->baseMotion.position.y;
         enemy->baseMotion.velocity.z = target.z - enemy->baseMotion.position.z;
@@ -1232,6 +1231,27 @@ EnemyManagerView * __stdcall EnemyManagerCreate(
     return manager;
 }
 
+// Target 0x0040CC70-0x0040CD00 is the compiler-generated EnemyRuntimeView
+// default constructor. PlayerTimerView and EnemyInterpolationTimerView clear
+// their initialized bit; each bullet-pattern member clears its complete 0x210
+// record and restores the target -1 sentinel at +0x204.
+EnemyBulletPatternView::EnemyBulletPatternView()
+{
+    memset(this, 0, sizeof(*this));
+    words[0x81] = 0xffffffffu;
+}
+
+struct EnemyItemDropStateView
+{
+    int itemDropType;
+    int itemDropCounts[11];
+    int unknown34;
+    float value38;
+    float value3C;
+};
+typedef char EnemyItemDropStateViewSizeIs3C[
+    (sizeof(EnemyItemDropStateView) == 0x3c) ? 1 : -1];
+
 // Maintained logical constructor for target 0x0040D830-0x0040DAD0. The target
 // machine boundary carries the full object in ESI and one stack subroutine-name
 // argument with RET 4. The ordinary C++ spelling recovers the target-proven
@@ -1240,37 +1260,53 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 {
     EnemyFullObjectView *enemy = this;
 
-    EnemyPrepareRuntimeStorage(&enemy->runtime);
     memset(&enemy->runtime, 0, sizeof(enemy->runtime));
 
     enemy->embeddedEclContext.value00 = 0;
     enemy->embeddedEclContext.currentInstruction = NULL;
-    enemy->activeEclContext = &enemy->embeddedEclContext;
     enemy->embeddedEclContext.operandResolver = enemy;
     enemy->flags1028 &= ~1u;
     enemy->value1020 = 0;
+    enemy->activeEclContext = &enemy->embeddedEclContext;
     enemy->embeddedEclContext.unknown1010 = -1;
     enemy->eclContextMirror = &enemy->embeddedEclContext;
     enemy->ownedAllocations = NULL;
     enemy->value1038 = 0;
 
     enemy->runtime.owner = enemy;
-    enemy->runtime.listNode.enemy = enemy;
-    enemy->runtime.listNode.next = NULL;
-    enemy->runtime.listNode.previous = NULL;
+
+    enemy->runtime.positionInterpolation0.duration = 0;
+    enemy->runtime.positionInterpolation1.duration = 0;
+    enemy->runtime.scalarInterpolation0.duration = 0;
+    enemy->runtime.scalarInterpolation1.duration = 0;
+    enemy->runtime.scalarInterpolation2.duration = 0;
+    enemy->runtime.scalarInterpolation3.duration = 0;
+
+    memset(&enemy->runtime.baseMotion, 0, sizeof(enemy->runtime.baseMotion));
+    memset(&enemy->runtime.offsetMotion, 0, sizeof(enemy->runtime.offsetMotion));
+    memset(&enemy->runtime.worldMotion, 0, sizeof(enemy->runtime.worldMotion));
 
     enemy->runtime.damageHitbox.x = 24.0f;
     enemy->runtime.damageHitbox.y = 24.0f;
     enemy->runtime.playerCollisionHitbox.x = 24.0f;
     enemy->runtime.playerCollisionHitbox.y = 24.0f;
-    enemy->runtime.value1400 = 32.0f;
-    enemy->runtime.value1404 = 32.0f;
+
     enemy->runtime.managerSlot = -1;
+
+    enemy->runtime.listNode.enemy = enemy;
+    enemy->runtime.listNode.next = NULL;
+    enemy->runtime.listNode.previous = NULL;
+
+    EnemyItemDropStateView *itemDropState =
+        reinterpret_cast<EnemyItemDropStateView *>(&enemy->runtime.itemDropType);
+    memset(itemDropState, 0, sizeof(*itemDropState));
+    itemDropState->value3C = 32.0f;
+    itemDropState->value38 = 32.0f;
 
     if ((enemy->runtime.updateTimer.flags & 1u) == 0)
     {
-        enemy->runtime.updateTimer.previous = -999999;
         enemy->runtime.updateTimer.current = 0;
+        enemy->runtime.updateTimer.previous = -999999;
         enemy->runtime.updateTimer.subframe = 0.0f;
         enemy->runtime.updateTimer.scale = &g_PlayerTimerScale;
         enemy->runtime.updateTimer.flags |= 1u;
@@ -1281,8 +1317,8 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 
     if ((enemy->runtime.damageReductionTimer.flags & 1u) == 0)
     {
-        enemy->runtime.damageReductionTimer.previous = -999999;
         enemy->runtime.damageReductionTimer.current = 0;
+        enemy->runtime.damageReductionTimer.previous = -999999;
         enemy->runtime.damageReductionTimer.subframe = 0.0f;
         enemy->runtime.damageReductionTimer.scale = &g_PlayerTimerScale;
         enemy->runtime.damageReductionTimer.flags |= 1u;
@@ -1293,8 +1329,8 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 
     if ((enemy->runtime.playerCollisionTimer.flags & 1u) == 0)
     {
-        enemy->runtime.playerCollisionTimer.previous = -999999;
         enemy->runtime.playerCollisionTimer.current = 0;
+        enemy->runtime.playerCollisionTimer.previous = -999999;
         enemy->runtime.playerCollisionTimer.subframe = 0.0f;
         enemy->runtime.playerCollisionTimer.scale = &g_PlayerTimerScale;
         enemy->runtime.playerCollisionTimer.flags |= 1u;

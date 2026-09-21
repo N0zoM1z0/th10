@@ -91,7 +91,8 @@ Recent retained Enemy checkpoints:
 | ca8b589 | promotes EnemyMarkPendingInterrupt (65 bytes) and EnemySoundQueueView::QueueSoundSample (123 bytes) to canonical exact linked-PE units; the dispatcher owner remains non-exact |
 | 92646bd | promotes EnemySoundQueueView::QueueSoundCue (149 bytes) to canonical exact linked-PE; the dispatcher owner remains non-exact |
 | e73bde8 | promotes EnemyDropVectorView::FromAngleRadii (30 bytes) to canonical raw-equal exact; the dispatcher owner remains non-exact |
-| current checkpoint | restores target-observed EnemySpawn timer/flag/item-drop/switch source shape; focused Spawn becomes 577/577 but remains non-exact |
+| 9007f2d | restores target-observed EnemySpawn timer/flag/item-drop/switch source shape; focused Spawn becomes 577/577 but remains non-exact |
+| current work | promotes EnemyRuntimeView::EnemyRuntimeView (145 bytes) to canonical exact; the full Enemy constructor improves to 672/673 but remains non-exact |
 
 Two spell-path dependencies are now independently exact even though the large dispatcher is not. EnemyMarkPendingInterrupt @ 0x00409E50 replays all 65 bytes plus two linkage fields zero-difference, and EnemySoundQueueView::QueueSoundSample @ 0x0043DC90 replays all 123 bytes plus its sound-metadata field zero-difference. Both passed two independent cold canonical replays in the dispatcher /GL /GS entry context. These promotions do not change the retained 14,292 / 14,416 whole-owner diagnostic, 680 / 11,544 normalized agreement, 181/181 selector, or physical case order, and they do not justify an exact claim for DispatchEclInstruction.
 
@@ -100,6 +101,17 @@ The adjacent position-aware sound queue entry is exact as well: EnemySoundQueueV
 The item-drop polar helper is now exact too. EnemyDropVectorView::FromAngleRadii @ 0x00413270 is raw byte-identical over its complete 30-byte relocation-free contribution and passed two independent cold dispatcher-context replays. The EnemyEclDispatcher source now has five canonical exact units totaling 461 bytes. The shared 14KB dispatcher owner remains non-exact and its retained whole-owner metrics are unchanged.
 
 EnemySpawn @ 0x0040CFB0 now preserves four target-observed source-order details: timer initialization order, delayed request flag 0x40000 application, one-store item-drop remapping, and the explicit 0/20/49 death-effect switch arm. In a focused /GL /GS Spawn diagnostic this moves the candidate from 564 to 577 bytes against target 577 and raises normalized agreement from 49/533 to 86/529. Equal size is not exactness. Linking that improved Spawn body directly into the dispatcher currently worsens the large owner, so DispatchEclInstruction keeps its existing external spawn seam while the constructor/runtime-initializer dependency chain is recovered.
+
+
+
+The Enemy runtime-tail default constructor is now independently exact. The
+target EnemyRuntimeView::EnemyRuntimeView @ 0x0040CC70 is a 145-byte
+EDX-receiver body generated from the maintained interpolation/bullet-pattern
+member model, and the selected EnemySpawn /GL /GS context reproduces all 145
+bytes zero-difference. This does not make the full object constructor exact:
+EnemyFullObjectView::EnemyFullObjectView @ 0x0040D830 is currently 672/673
+with 137/653 normalized comparable bytes, versus the prior 622/673 and 92/653.
+The 14KB dispatcher recovery point remains independently non-exact.
 
 Remaining gaps are dominated by whole-function register allocation,
 helper-private ABI, /GS local placement and shared-tail ownership, not missing

@@ -78,6 +78,7 @@ PlayerUpdateShots,0x00428280,function
 Player::CalculateDamageToTarget,0x00428630,function
 EnemyRuntimeUpdate,0x0040DC80,function
 EnemySpawn,0x0040CFB0,function
+EnemyRuntimeView::EnemyRuntimeView,0x0040CC70,function
 EnemyManagerUpdate,0x0040D750,function
 EnemyManagerUpdateCallback,0x0040D810,function
 EnemyManagerDrawCallback,0x0040D820,function
