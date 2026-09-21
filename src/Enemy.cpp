@@ -1348,14 +1348,10 @@ EnemyFullObjectView *EnemySpawn(
     // block. Aggregate copy preserves all four integer and four float values.
     enemy->runtime.eclVariables = request->eclVariables;
 
-    enemy->runtime.flags =
-        (enemy->runtime.flags & ~0x40000u) |
-        ((static_cast<unsigned int>(request->setFlag40000) & 1u) << 18);
-
     if ((enemy->runtime.damageReductionTimer.flags & 1u) == 0)
     {
-        enemy->runtime.damageReductionTimer.previous = -999999;
         enemy->runtime.damageReductionTimer.current = 0;
+        enemy->runtime.damageReductionTimer.previous = -999999;
         enemy->runtime.damageReductionTimer.subframe = 0.0f;
         enemy->runtime.damageReductionTimer.scale = &g_PlayerTimerScale;
         enemy->runtime.damageReductionTimer.flags |= 1u;
@@ -1364,14 +1360,20 @@ EnemyFullObjectView *EnemySpawn(
     enemy->runtime.damageReductionTimer.subframe = 2.0f;
     enemy->runtime.damageReductionTimer.previous = 1;
 
+    enemy->runtime.flags =
+        (enemy->runtime.flags & ~0x40000u) |
+        ((static_cast<unsigned int>(request->setFlag40000) & 1u) << 18);
+
     EnemyRuntimeUpdate(&enemy->runtime);
 
     if ((enemy->runtime.flags & 0x8000u) != 0)
     {
-        if (enemy->runtime.itemDropType == 1)
-            enemy->runtime.itemDropType = 10;
-        else if (enemy->runtime.itemDropType == 4)
-            enemy->runtime.itemDropType = 11;
+        int itemDropType = enemy->runtime.itemDropType;
+        if (itemDropType == 1)
+            itemDropType = 10;
+        else if (itemDropType == 4)
+            itemDropType = 11;
+        enemy->runtime.itemDropType = itemDropType;
     }
 
     enemy->runtime.deathSoundId = (manager->spawnCounter & 1) + 2;
@@ -1380,6 +1382,11 @@ EnemyFullObjectView *EnemySpawn(
     {
         switch (enemy->runtime.value0F0)
         {
+        case 0:
+        case 20:
+        case 49:
+            enemy->runtime.deathEffectScript = 0x167;
+            break;
         case 5:
         case 25:
         case 50:
