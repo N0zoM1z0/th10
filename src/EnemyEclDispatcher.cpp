@@ -709,7 +709,7 @@ static __declspec(noinline) unsigned int EnemyApplyBulletClear(
     }
     return 1;
 }
-extern unsigned int *EnemySetScreenShake(
+extern unsigned int * __stdcall EnemySetScreenShake(
     int enabled, int duration, unsigned int horizontal,
     unsigned int vertical, unsigned int flags);
 struct EnemySoundCueMetadataView

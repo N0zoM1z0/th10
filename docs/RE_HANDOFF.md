@@ -48,27 +48,28 @@ semantic coverage is not exactness.
 ## Enemy dispatcher: current recovery point
 
 The latest retained diagnostic is
-build/gpt-web-enemy-checkpoint-spell-stdcall/. It is intentionally a
+build/gpt-web-enemy-checkpoint-screen-stdcall/. It is intentionally a
 build-only linked-PE diagnostic, not exactness evidence.
 
 | Measure | Latest candidate | Target |
 | --- | ---: | ---: |
-| Complete contribution | 14,296 | 14,416 |
-| Pre-table span | 13,640 | 13,760 |
+| Complete contribution | 14,292 | 14,416 |
+| Pre-table span | 13,636 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 657 / 11,544 | 11,544 / 11,544 |
+| Normalized comparable bytes | 680 / 11,544 | 11,544 / 11,544 |
 | Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
 | START_SPELL physical group | 214 | 219 |
 
-The candidate is still non-exact. The current checkpoint repairs a target-proven
-ABI at the spell boundary: authored target owner 0x00409280-0x00409BE2 ends
-with RET 0x10, and the dispatcher call at 0x00410F3A performs no caller
-cleanup. The maintained EnemyBeginSpell declaration had been caller-clean,
-which emitted an extra add esp,0x10. Declaring it __stdcall removes that
-false cleanup and raises normalized whole-owner agreement from 608/11,544 to
-657/11,544 without changing total contribution size, pre-table span, selector
-bytes or physical case order.
+The candidate is still non-exact. The current checkpoint adds a second
+target-proven callee-clean ABI repair. EnemySetScreenShake at 0x0043C8B0 ends
+with RET 0x14, and the dispatcher call at 0x00410DAD performs no caller
+cleanup. The maintained declaration had been caller-clean, which emitted an
+extra add esp,0x14. Declaring it __stdcall removes that false cleanup and
+raises normalized whole-owner agreement from 657/11,544 to 680/11,544. The
+candidate contribution becomes 14,292 and its pre-table span 13,636; the
+181-byte selector and physical case order remain target-equal. The preceding
+EnemyBeginSpell __stdcall correction remains retained as commit 1840f6d.
 
 The preceding spell-scratch checkpoint remains important: attested TH10 Ghidra
 decompilation of opcodes 0x156/0x15C/0x165-0x167 shows instruction +0x1C
@@ -85,7 +86,8 @@ Recent retained Enemy checkpoints:
 | 114cc83 | restores the target-shaped item-drop polar vector fsincos helper |
 | 8b5a2cb | preserves the target-observed owner lifetime in the shared float-store tail |
 | 271b254 | restores target spell scratch lifetime and the 0x2C4 dispatcher frame |
-| current checkpoint | restores the target callee-clean EnemyBeginSpell ABI; 608 -> 657 normalized matching bytes |
+| 1840f6d | restores the target callee-clean EnemyBeginSpell ABI; 608 -> 657 normalized matching bytes |
+| current checkpoint | restores the target callee-clean EnemySetScreenShake ABI; 657 -> 680 normalized matching bytes |
 
 Remaining gaps are dominated by whole-function register allocation,
 helper-private ABI, /GS local placement and shared-tail ownership, not missing
