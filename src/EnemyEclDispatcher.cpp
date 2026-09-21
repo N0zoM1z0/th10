@@ -1,6 +1,7 @@
 #include "Enemy.hpp"
 #include "EclVm.hpp"
 #include "Main.hpp"
+#include "Rng.hpp"
 
 #include <math.h>
 #include <new>
@@ -789,9 +790,79 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
     }
 }
 
-extern void EnemyDropItemCounts(const PlayerFloat3 *position, int *itemDropBlock);
-extern float EnemyRandomAngle();
 extern float __stdcall EnemyWrapAngle(float angle);
+
+struct EnemyDropVectorView
+{
+    float x;
+    float y;
+    float z;
+
+    __declspec(noinline) void FromAngleRadii(
+        float angle, float radiusX, float radiusY)
+    {
+        x = static_cast<float>(cos(angle)) * radiusX;
+        y = static_cast<float>(sin(angle)) * radiusY;
+    }
+};
+
+static __declspec(noinline) void EnemyDropItemCountsCore(
+    const PlayerFloat3 *position, int *itemDropBlock)
+{
+    int *counts = itemDropBlock + 1;
+    float angle = g_RngView.GetRandomF32Signed() * 3.1415927f;
+
+    for (int itemIndex = 0; itemIndex < 11; ++itemIndex) {
+        for (int i = 0; i < counts[itemIndex]; ++i) {
+            EnemyDropVectorView offset;
+            offset.FromAngleRadii(
+                angle,
+                reinterpret_cast<float *>(itemDropBlock)[13],
+                reinterpret_cast<float *>(itemDropBlock)[14]);
+
+            unsigned int radiusBits = g_RngView.GetRandomU32();
+            float radiusScale = static_cast<float>(radiusBits);
+            if (static_cast<int>(radiusBits) < 0) {
+                radiusScale += 4294967296.0f;
+            }
+            radiusScale =
+                radiusScale * 1.1641532182693481e-10f + 0.5f;
+
+            PlayerFloat3 dropPosition;
+            dropPosition.x = position->x + offset.x * radiusScale;
+            dropPosition.y = position->y + offset.y * radiusScale;
+            dropPosition.z = position->z;
+
+            EnemySpawnItem(
+                &dropPosition, itemIndex + 1, -1, -1.5707964f, 2.2f);
+
+            unsigned int angleBits = g_RngView.GetRandomU32();
+            float angleRandom = static_cast<float>(angleBits);
+            if (static_cast<int>(angleBits) < 0) {
+                angleRandom += 4294967296.0f;
+            }
+            angleRandom =
+                angleRandom * 4.656612873077393e-10f - 1.0f;
+            angle = EnemyWrapAngle(
+                angleRandom * 0.7853982f + angle + 1.5707964f);
+        }
+    }
+
+    memset(counts, 0, 12 * sizeof(int));
+}
+
+static __declspec(noinline) void EnemyDropItemCounts(
+    const PlayerFloat3 *position, int *itemDropBlock)
+{
+    if (*itemDropBlock > 0) {
+        EnemySpawnItem(
+            position, *itemDropBlock, -1, -1.5707964f, 2.2f);
+    }
+    EnemyDropItemCountsCore(position, itemDropBlock);
+    *itemDropBlock = 0;
+}
+
+extern float EnemyRandomAngle();
 
 struct EnemyLaserRequestScratch
 {
