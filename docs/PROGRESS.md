@@ -14,13 +14,13 @@ their boundaries and origins must be reviewed independently.
 | Confirmed authored code bytes | 265,233 |
 | Classified exclusions | 518 |
 | Reviewed, origin indeterminate | 90 |
-| Source-present mappings | 314 |
-| Source-present with authored origin | 308 |
+| Source-present mappings | 315 |
+| Source-present with authored origin | 309 |
 | Source-present origin review pending | 0 |
 | Source-present origin indeterminate | 6 |
 | Authored source-present exact backlog | 136 |
-| Canonical exact functions | 172 |
-| Canonical exact authored bytes | 23,333 |
+| Canonical exact functions | 173 |
+| Canonical exact authored bytes | 23,363 |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
 gaps can contain code, data, thunks, tables, and padding. While origin review,
