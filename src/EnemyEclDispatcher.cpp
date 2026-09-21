@@ -1132,11 +1132,13 @@ dispatch_create_enemy_mirrored:
     fVar9 = *(float *)((int)runtimeAddress + 0x2c);
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
     iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
-    fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
+    local_90.spawnRequest.position.x =
+        ReadRawFloatArgument(
+            1, *(float *)(iVar27 + 0x10 + iVar26 * 4)) + fVar9;
     fVar10 = *(float *)((int)runtimeAddress + 0x30);
-    local_90.spawnRequest.position.x = (float)(fVar19 + fVar9);
-    fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
-    local_90.spawnRequest.position.y = (float)(fVar19 + fVar10);
+    local_90.spawnRequest.position.y =
+        ReadRawFloatArgument(
+            2, *(float *)(iVar27 + 0x14 + iVar26 * 4)) + fVar10;
     uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));
     local_90.spawnRequest.life = uVar22;
     uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));
