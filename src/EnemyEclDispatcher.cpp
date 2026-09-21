@@ -1444,41 +1444,48 @@ dispatch_update_primary_anm_bounds:
     local_2c4 = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     firstScalarInterpolation->mode = uVar22;
+
     if (uVar22 == 7) {
-      if (local_2c8 <= 0.0) {
-        local_2c8 = 0.0;
+      local_29c = local_2c8;
+      if (local_29c <= 0.0) {
+        local_29c = 0.0;
       }
-      if (local_2c4 <= 0.0) {
-        local_2c4 = 0.0;
+      local_298 = local_2c4;
+      if (local_298 <= 0.0) {
+        local_298 = 0.0;
       }
     }
     else {
       if (local_2c8 <= 0.0) {
-        fVar19 = selectedMotion->value1C;
+        local_29c = selectedMotion->value1C;
       }
       else {
-        fVar19 = local_2c8;
+        local_29c = local_2c8;
         if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x800) != 0) {
-          fVar19 = EnemyWrapAngle((float)(fVar19 - 1.5707964f));
-          fVar19 = EnemyWrapAngle((float)(1.5707964f - fVar19));
+          fVar19 = EnemyWrapAngle((float)(local_29c - 1.5707964f));
+          local_29c = (float)EnemyWrapAngle((float)(1.5707964f - fVar19));
         }
       }
-      local_2c8 = (float)fVar19;
       if (local_2c4 <= 0.0) {
-        local_2c4 = selectedMotion->value18;
-      }
-    }
-    fVar9 = selectedMotion->value1C;
-    local_2a4 = selectedMotion->value18;
-    local_2a8 = fVar9;
-    if (3.1415927f <= EnemyAbsoluteFloat(fVar9 - local_2c8)) {
-      if (local_2c8 <= fVar9) {
-        local_2c8 = local_2c8 + -3.1415927f;
+        local_298 = selectedMotion->value18;
       }
       else {
-        local_2a8 = fVar9 + -3.1415927f;
+        local_298 = local_2c4;
       }
     }
+
+    local_2a8 = selectedMotion->value1C;
+    local_2a4 = selectedMotion->value18;
+    if (3.1415927f <= static_cast<float>(fabs(local_2a8 - local_29c))) {
+      if (local_29c <= local_2a8) {
+        local_29c = local_29c + -3.1415927f;
+      }
+      else {
+        local_2a8 = local_2a8 + -3.1415927f;
+      }
+    }
+    local_2c8 = local_29c;
+    local_2c4 = local_298;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     firstScalarInterpolation->duration = uVar22;
     firstScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
