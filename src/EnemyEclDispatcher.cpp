@@ -1362,9 +1362,9 @@ dispatch_update_primary_anm_bounds:
     }
     positionInterpolationValues = reinterpret_cast<float *>(positionInterpolation);
     fVar19 = (ReadFloatArgument(2));
-    fVar10 = (float)fVar19;
+    local_2c8 = (float)fVar19;
     fVar19 = (ReadFloatArgument(3));
-    fVar9 = (float)fVar19;
+    local_2c4 = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     positionInterpolation->duration = uVar22;
     positionInterpolation->initialTangent = g_EnemyInterpolationOrigin;
@@ -1372,14 +1372,18 @@ dispatch_update_primary_anm_bounds:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     positionInterpolation->mode = uVar22;
     positionInterpolation->initial = selectedMotion->position;
-    if (fVar9 <= 0.0) {
-      fVar9 = selectedMotion->position.y;
+    if (local_2c4 <= 0.0) {
+      vectorScratch.y = selectedMotion->position.y;
     }
-    if (fVar10 <= 0.0) {
-      fVar10 = selectedMotion->position.x;
+    else {
+      vectorScratch.y = local_2c4;
     }
-    vectorScratch.x = fVar10;
-    vectorScratch.y = fVar9;
+    if (local_2c8 <= 0.0) {
+      vectorScratch.x = selectedMotion->position.x;
+    }
+    else {
+      vectorScratch.x = local_2c8;
+    }
     vectorScratch.z = 0.0;
     positionInterpolation->final = vectorScratch;
     EnemyInitializePositionInterpolation(positionInterpolation);
