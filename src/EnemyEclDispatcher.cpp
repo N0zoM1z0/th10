@@ -2675,7 +2675,9 @@ dispatch_rank5_float_low_store:
 dispatch_rank_float_tail_b:
     fVar19 = ReadFloatArgument(iVar27);
 dispatch_store_float_result:
-    pfVar15 = ResolveFloatArgument(0);
+    iVar26 = reinterpret_cast<int>(owner);
+    pfVar15 = reinterpret_cast<EclVmContext *>(
+        *reinterpret_cast<int *>(iVar26 + 4))->ResolveFloat(0);
     *pfVar15 = (float)fVar19;
     return 0;
 dispatch_rank_float_tail_a:
