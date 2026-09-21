@@ -897,7 +897,7 @@ AnmVmIdView AnmRenderManagerView::AddVmVariant2(AnmVmView *vm)
     }
     else
     {
-        node->InsertAfter(primaryVmListHead);
+        vm->managerNode.InsertAfter(primaryVmListHead);
     }
     primaryVmListHead = node;
 
@@ -922,7 +922,7 @@ AnmVmIdView AnmRenderManagerView::AddVmVariant3(AnmVmView *vm)
     }
     else
     {
-        node->InsertAfter(secondaryVmListHead);
+        vm->managerNode.InsertAfter(secondaryVmListHead);
     }
     secondaryVmListHead = node;
 
