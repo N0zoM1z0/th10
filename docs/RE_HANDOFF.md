@@ -41,7 +41,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 
 | Owner | Target | Current retained diagnostic | Status |
 | --- | ---: | --- | --- |
-| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,228 bytes; pre-table 13,572/13,760; 731/11,556 normalized comparable bytes; selector 181/181; physical order matches; rank-float routing now uses the target two shared store tails | non-exact |
+| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,228 bytes; pre-table 13,572/13,760; 730/11,556 normalized comparable bytes; selector 181/181; physical order matches; rank-float shared tails and target 0x119 positive-value tests retained | non-exact |
 | AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | selected source-shape diagnostic: contribution 9,960 with pre-table 9,584/9,588 and 705/8,608 agreement; exact-creator split context separately yields 10,040 with pre-table 9,664 | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | 7,020/7,020; pre-table 6,692/6,692; 945/6,264 normalized agreement, normalization incomplete | non-exact |
 
@@ -50,10 +50,11 @@ not mix measurements from different LTCG support graphs.
 
 ## Enemy dispatcher: current recovery point
 
-The selected current diagnostic is the rank-float shared-tail checkpoint:
+The selected current diagnostic extends the rank-float shared-tail checkpoint
+with the target 0x119 positive-value comparison shape:
 
-- .analysis/enemy-exp-rank5-shared-tails-probe.json
-- .analysis/enemy-exp-rank5-shared-tails-layout.json
+- .analysis/enemy-exp-119-positive-comparisons-probe.json
+- .analysis/enemy-exp-119-positive-comparisons-layout.json
 
 These are focused linked-PE diagnostics, not exactness evidence.
 
@@ -62,7 +63,7 @@ These are focused linked-PE diagnostics, not exactness evidence.
 | Complete contribution | 14,228 | 14,416 |
 | Pre-table span | 13,572 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 731 / 11,556 | 11,556 / 11,556 |
+| Normalized comparable bytes | 730 / 11,556 | 11,556 / 11,556 |
 | Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
 | Suffix | 43 | 43 |
@@ -106,6 +107,23 @@ target-equal. The resulting 0x15D, 0x15E and 0x1AE physical intervals are
 control-flow recovery checkpoint rather than a local or whole-owner exactness
 claim. All five canonical EnemyEclDispatcher exact helper units cold-replay
 zero-difference for 461/461 bytes after the change.
+
+The current extension also restores the target comparison semantics in opcode
+0x119 INTERPOLATE_OFFSET_POSITION/BASE_POSITION. The shipped code compares each
+optional coordinate as `0.0 < value`: after `FCOMP 0.0` it tests x87 C3/C0 with
+`TEST AH,0x41` and uses `JNE` to select the current motion coordinate when the
+argument is not strictly positive. The earlier maintained spelling
+`value <= 0.0` is equivalent only for ordinary finite values; VC7.1 emits `JP`
+and therefore takes a different path for unordered/NaN inputs. Reversing each
+source branch to the target-positive form changes those two candidate `JP`s to
+target-shaped `JNE`s without changing the 14,228-byte contribution, 13,572-byte
+pre-table span, 313/304 target/candidate 0x119 physical interval, selector, or
+physical case order. The broad normalized coloring score moves from 731 to
+730/11,556; the one-byte heuristic decrease is not a reason to restore the
+wrong unordered comparison semantics. Five canonical EnemyEclDispatcher helper
+units cold-replay exact for 461/461 bytes after the change. Experiments that
+introduced scalar result temporaries shrank 0x119 to 296 bytes and the whole
+owner to 14,180, so they were reverted.
 
 The earlier spell and screen-shake ABI fixes are already retained in Git and
 KNOWLEDGE_BASE. Do not re-derive the current baseline from their older

@@ -1471,17 +1471,17 @@ dispatch_update_primary_anm_bounds:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     positionInterpolation->mode = uVar22;
     positionInterpolation->initial = selectedMotion->position;
-    if (local_2c4 <= 0.0) {
-      vectorScratch.y = selectedMotion->position.y;
-    }
-    else {
+    if (0.0 < local_2c4) {
       vectorScratch.y = local_2c4;
     }
-    if (local_2c8 <= 0.0) {
-      vectorScratch.x = selectedMotion->position.x;
+    else {
+      vectorScratch.y = selectedMotion->position.y;
+    }
+    if (0.0 < local_2c8) {
+      vectorScratch.x = local_2c8;
     }
     else {
-      vectorScratch.x = local_2c8;
+      vectorScratch.x = selectedMotion->position.x;
     }
     vectorScratch.z = 0.0;
     positionInterpolation->final = vectorScratch;
