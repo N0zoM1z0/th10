@@ -188,10 +188,17 @@ Useful target-local clues that remain open:
   rank/difficulty float selection. Commit 8b5a2cb recovers the target-shaped
   EBX=owner lifetime in that tail, but physical ownership is still different.
 - FireLaser @ 0x0041C510 uses ESI=manager, EDI=request and stack type in the
-  shipped image. The base laser initializer @ 0x0041C030 can be reproduced as
-  a 98-byte EDX-receiver body, but the real derived laser subobject
-  constructors and full caller graph are still missing; raw offset-based fake
-  constructors only inflate code and should not be committed.
+  shipped image. This is now confirmed at all ten direct call sites across six
+  owners: four dispatcher calls, two from 0x0041CFD0, and one each from
+  0x0041D880/0x0041DD80/0x0041EB00/0x0041EFA0. Every reviewed site carries
+  the same manager global at 0x0047781C in ESI while EDI names an object-local
+  or stack request. The base initializer @ 0x0041C030 is a 98-byte EDX-receiver
+  body; derived initializers at 0x0041C5B0/0x0041C680 are 202/219-byte bodies.
+  Recasting only the dispatcher seam as a normal C++ member worsens the owner
+  to 14,152/14,416 and 677/11,572 because the five external caller owners are
+  absent from the focused support graph. Treat the ESI/EDI ABI as a real
+  cross-owner LTCG problem; do not fake it inside the dispatcher or with raw
+  offset-only constructors.
 
 Avoid padding, inline assembly used only for byte shaping, volatile-only
 dependencies, fake data dependencies, and speculative class graphs whose only
