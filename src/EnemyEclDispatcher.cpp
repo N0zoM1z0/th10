@@ -877,134 +877,72 @@ static __declspec(noinline) void EnemyDropItemCounts(
 
 extern float EnemyRandomAngle();
 
+// TH10's two laser constructors and request-apply virtuals prove two
+// overlapping request layouts. Type 0 copies 0x77 dwords and consumes a
+// 0x2C-byte prefix before its 0x6C-dword pattern payload. Type 1 copies 0x7E
+// dwords, initializes +0x2C to 8.0f, and consumes its pattern payload at +0x48.
+// Names below stay neutral where target-local semantics are not established.
+struct EnemyLaserType0RequestView
+{
+    PlayerFloat3 position;
+    float value0C;
+    float value10;
+    float value14;
+    float value18;
+    float value1C;
+    float value20;
+    short value24;
+    short value26;
+    unsigned int flags28;
+    unsigned int patternWords[0x6c];
+};
+typedef char EnemyLaserType0RequestViewSizeIs1DC[
+    (sizeof(EnemyLaserType0RequestView) == 0x1dc) ? 1 : -1];
+typedef char EnemyLaserType0Value24At024[
+    (offsetof(EnemyLaserType0RequestView, value24) == 0x24) ? 1 : -1];
+typedef char EnemyLaserType0FlagsAt028[
+    (offsetof(EnemyLaserType0RequestView, flags28) == 0x28) ? 1 : -1];
+typedef char EnemyLaserType0PatternAt02C[
+    (offsetof(EnemyLaserType0RequestView, patternWords) == 0x2c) ? 1 : -1];
+
+struct EnemyLaserType1RequestView
+{
+    PlayerFloat3 position;
+    unsigned char unknown00C[0x18 - 0x0c];
+    float value18;
+    float value1C;
+    float value20;
+    float value24;
+    float value28;
+    float fixed2C;
+    unsigned int value30;
+    unsigned int value34;
+    unsigned int value38;
+    unsigned int value3C;
+    short value40;
+    short value42;
+    unsigned int flags44;
+    unsigned int patternWords[0x6c];
+};
+typedef char EnemyLaserType1RequestViewSizeIs1F8[
+    (sizeof(EnemyLaserType1RequestView) == 0x1f8) ? 1 : -1];
+typedef char EnemyLaserType1FixedAt02C[
+    (offsetof(EnemyLaserType1RequestView, fixed2C) == 0x2c) ? 1 : -1];
+typedef char EnemyLaserType1Value40At040[
+    (offsetof(EnemyLaserType1RequestView, value40) == 0x40) ? 1 : -1];
+typedef char EnemyLaserType1FlagsAt044[
+    (offsetof(EnemyLaserType1RequestView, flags44) == 0x44) ? 1 : -1];
+typedef char EnemyLaserType1PatternAt048[
+    (offsetof(EnemyLaserType1RequestView, patternWords) == 0x48) ? 1 : -1];
+
 struct EnemyLaserRequestScratch
 {
-    unsigned int field000;
-    unsigned int field001;
-    unsigned int field002;
-    unsigned int field003;
-    unsigned int field004;
-    unsigned int field005;
-    unsigned int field006;
-    unsigned int field007;
-    unsigned int field008;
-    unsigned int field009;
-    unsigned int field010;
-    unsigned int field011;
-    unsigned int field012;
-    unsigned int field013;
-    unsigned int field014;
-    unsigned int field015;
-    unsigned int field016;
-    unsigned int field017;
-    unsigned int field018;
-    unsigned int field019;
-    unsigned int field020;
-    unsigned int field021;
-    unsigned int field022;
-    unsigned int field023;
-    unsigned int field024;
-    unsigned int field025;
-    unsigned int field026;
-    unsigned int field027;
-    unsigned int field028;
-    unsigned int field029;
-    unsigned int field030;
-    unsigned int field031;
-    unsigned int field032;
-    unsigned int field033;
-    unsigned int field034;
-    unsigned int field035;
-    unsigned int field036;
-    unsigned int field037;
-    unsigned int field038;
-    unsigned int field039;
-    unsigned int field040;
-    unsigned int field041;
-    unsigned int field042;
-    unsigned int field043;
-    unsigned int field044;
-    unsigned int field045;
-    unsigned int field046;
-    unsigned int field047;
-    unsigned int field048;
-    unsigned int field049;
-    unsigned int field050;
-    unsigned int field051;
-    unsigned int field052;
-    unsigned int field053;
-    unsigned int field054;
-    unsigned int field055;
-    unsigned int field056;
-    unsigned int field057;
-    unsigned int field058;
-    unsigned int field059;
-    unsigned int field060;
-    unsigned int field061;
-    unsigned int field062;
-    unsigned int field063;
-    unsigned int field064;
-    unsigned int field065;
-    unsigned int field066;
-    unsigned int field067;
-    unsigned int field068;
-    unsigned int field069;
-    unsigned int field070;
-    unsigned int field071;
-    unsigned int field072;
-    unsigned int field073;
-    unsigned int field074;
-    unsigned int field075;
-    unsigned int field076;
-    unsigned int field077;
-    unsigned int field078;
-    unsigned int field079;
-    unsigned int field080;
-    unsigned int field081;
-    unsigned int field082;
-    unsigned int field083;
-    unsigned int field084;
-    unsigned int field085;
-    unsigned int field086;
-    unsigned int field087;
-    unsigned int field088;
-    unsigned int field089;
-    unsigned int field090;
-    unsigned int field091;
-    unsigned int field092;
-    unsigned int field093;
-    unsigned int field094;
-    unsigned int field095;
-    unsigned int field096;
-    unsigned int field097;
-    unsigned int field098;
-    unsigned int field099;
-    unsigned int field100;
-    unsigned int field101;
-    unsigned int field102;
-    unsigned int field103;
-    unsigned int field104;
-    unsigned int field105;
-    unsigned int field106;
-    unsigned int field107;
-    unsigned int field108;
-    unsigned int field109;
-    unsigned int field110;
-    unsigned int field111;
-    unsigned int field112;
-    unsigned int field113;
-    unsigned int field114;
-    unsigned int field115;
-    unsigned int field116;
-    unsigned int field117;
-    unsigned int field118;
-    unsigned int field119;
-    unsigned int field120;
-    unsigned int field121;
-    unsigned int field122;
-    unsigned int field123;
-    unsigned int field124;
-    unsigned int field125;
+    union
+    {
+        unsigned int words[0x7e];
+        EnemyLaserType0RequestView type0;
+        EnemyLaserType1RequestView type1;
+    };
 };
 typedef char EnemyLaserRequestScratchSizeIs1F8[
     (sizeof(EnemyLaserRequestScratch) == 0x1f8) ? 1 : -1];

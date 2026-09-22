@@ -127,8 +127,16 @@ Current open problems, in priority order:
 4. **FireLaser cross-owner LTCG ABI.** Target `EnemyFireLaser @ 0x0041C510`
    consistently receives `ESI=manager`, `EDI=request`, plus stack type across ten
    calls in six owners. Five caller owners are outside the focused dispatcher
-   graph. Do not fake this ESI/EDI convention with a dispatcher-only member or
-   synthetic local dependency; reconstruct the real caller graph when those
+   graph. The request storage itself is now structurally recovered from TH10:
+   the type-0 apply virtual copies 0x77 dwords and has a 0x2C-byte prefix before
+   a 0x6C-dword pattern payload, while type 1 copies 0x7E dwords, initializes
+   +0x2C to 8.0f, and has its pattern payload at +0x48. The maintained source
+   carries these as overlapping typed overlays without changing dispatcher
+   codegen (14,228/14,416 and 746/11,556 remain unchanged). Rewriting the
+   dispatcher cases themselves to aggregate/memcpy spelling shrank the owner to
+   14,172 bytes and 711/11,568 agreement, so that source-shape experiment is
+   superseded. Do not fake the ESI/EDI convention with a dispatcher-only member
+   or synthetic local dependency; reconstruct the real caller graph when those
    owners become available.
 5. **Whole-function spill/stack coloring.** Large laser/spawn scratch objects are
    uniformly eight bytes below target stack offsets despite the correct 0x2C4
