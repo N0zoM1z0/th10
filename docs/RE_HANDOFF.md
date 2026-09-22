@@ -66,7 +66,7 @@ These linked-PE reports are diagnostics, not exactness authority.
 | Complete contribution | 14,228 | 14,416 |
 | Pre-table span | 13,572 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 730 / 11,556 | 11,556 / 11,556 |
+| Normalized comparable bytes | 735 / 11,556 | 11,556 / 11,556 |
 | Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
 | Suffix | 43 | 43 |
@@ -79,7 +79,13 @@ Current retained source facts:
   explicit `EclVmContext *context` local merely because it scored 696/11,536;
   that variant introduced false adapter calls.
 - Opcode `0x1A8` writes through the recovered `EnemyBulletPatternView` array.
-  The raw-offset spelling is superseded.
+  Its four float operands now have natural case-local source lifetimes instead
+  of reusing function-wide decompiler temporaries. Under the selected linked
+  context this keeps the owner at 14,228/14,416 and the case at 171/206 bytes
+  while improving normalized agreement from 730 to 735/11,556. The target
+  still homes the three saved float operands at ESP+0x10/+0x30/+0x18 while the
+  candidate uses +0x18/+0x40/+0x38, so this is a non-exact lifetime checkpoint,
+  not a local exact claim. The raw-offset spelling is superseded.
 - Rank-float selection uses the two target-observed shared
   ReadFloat/ResolveFloat/store tails. Do not restore a private third 0x15E tail.
 - Opcode `0x119` uses the target's strict-positive tests (`0.0 < value`). This
@@ -120,9 +126,17 @@ Current open problems, in priority order:
    owners become available.
 5. **Whole-function spill/stack coloring.** Large laser/spawn scratch objects are
    uniformly eight bytes below target stack offsets despite the correct 0x2C4
-   frame and understood object sizes/order. Treat this as a lifetime/spill
-   symptom, not missing padding or dummy locals. The PLAY_ANM 0x107 three-byte
-   gap is another symptom of the same entry-register state problem.
+   frame and understood object sizes/order. At dispatcher entry the target
+   homes runtime/current-instruction/opcode state at ESP+0x30/+0x1C/+0x10,
+   whereas the current candidate uses +0x40/+0x14/+0x1C. In 0x1A8 the target
+   later reuses the runtime's +0x30 home for a saved float operand; the
+   case-local checkpoint similarly reuses the candidate runtime's +0x40 home.
+   This ties the remaining rank-speed stack mismatch directly to whole-owner
+   lifetime allocation. Treat it as a lifetime/spill symptom, not missing
+   padding or dummy locals. Simple declaration permutations and `#pragma
+   var_order` are byte-identical to the baseline and are closed directions.
+   The PLAY_ANM 0x107 three-byte gap is another symptom of the same
+   entry-register state problem.
 
 Known negative/superseded experiment classes that should not be repeated without
 new target evidence:
