@@ -315,3 +315,4 @@ EnemySoundQueueView::QueueSoundSample
 EnemySoundQueueView::QueueSoundCue
 EnemyDropVectorView::FromAngleRadii
 EnemyLaserVectorView::FromAngleMagnitude
+EnemyLaserBoundaryStateView::UpdateBoundary

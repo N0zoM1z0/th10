@@ -127,15 +127,20 @@ Current open problems, in priority order:
 4. **FireLaser cross-owner LTCG ABI.** Target EnemyFireLaser @ 0x0041C510
    consistently receives ESI=manager, EDI=request, plus stack type across ten
    calls in six owners. Five caller owners are outside the focused dispatcher
-   graph. The first recovered support owner is now
+   graph. The first recovered support owner is
    EnemyLaserVectorView::FromAngleMagnitude @ 0x0041F800: its maintained
    src/EnemyLaser.cpp body is canonical exact 30/30 in two independent cold
-   linked-PE replays. A diagnostic reconstruction of the central laser creation
-   seam makes the dispatcher 14,336/14,416 and naturally recovers ESI=manager,
-   but still passes request on the stack and type in EAX, so that seam is not
-   retained as exact/source truth yet. Do not fake the remaining ESI/EDI
-   convention with a dispatcher-only member or synthetic dependency; continue
-   reconstructing the real caller graph.
+   linked-PE replays. The 410-byte boundary caller at 0x0041CFD0 is now also
+   source-present as EnemyLaserBoundaryStateView::UpdateBoundary. Its two
+   target FireLaser calls and embedded request at +0x424 are retained; the
+   focused source-entry diagnostic is 402/410 bytes and 123/342 normalized
+   agreement, so the caller is explicitly non-exact. A diagnostic
+   reconstruction of the central laser creation seam makes the dispatcher
+   14,336/14,416 and naturally recovers ESI=manager, but still passes request
+   on the stack and type in EAX, so that seam is not retained as exact/source
+   truth yet. Do not fake the remaining ESI/EDI convention with a
+   dispatcher-only member or synthetic dependency; continue reconstructing the
+   real caller graph.
 5. **Whole-function spill/stack coloring.** Large laser/spawn scratch objects are
    uniformly eight bytes below target stack offsets despite the correct 0x2C4
    frame and understood object sizes/order. At dispatcher entry the target
