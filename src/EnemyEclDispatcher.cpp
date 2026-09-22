@@ -1046,7 +1046,9 @@ int *EnemyRuntimeView::ResolveIntArgument(int index)
 
 float EnemyRuntimeView::ReadFloatArgument(int index)
 {
-    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadFloat(index);
+    EclVmContext *context =
+        reinterpret_cast<EclVmContext *>(owner->activeEclContext);
+    return context->ReadFloat(index);
 }
 
 float *EnemyRuntimeView::ResolveFloatArgument(int index)

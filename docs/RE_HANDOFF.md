@@ -92,7 +92,8 @@ Recent retained Enemy checkpoints:
 | 92646bd | promotes EnemySoundQueueView::QueueSoundCue (149 bytes) to canonical exact linked-PE; the dispatcher owner remains non-exact |
 | e73bde8 | promotes EnemyDropVectorView::FromAngleRadii (30 bytes) to canonical raw-equal exact; the dispatcher owner remains non-exact |
 | 9007f2d | restores target-observed EnemySpawn timer/flag/item-drop/switch source shape; focused Spawn becomes 577/577 but remains non-exact |
-| current work | promotes EnemyRuntimeView::EnemyRuntimeView (145 bytes) to canonical exact; the full Enemy constructor improves to 672/673 but remains non-exact |
+| 5691f40 | promotes EnemyRuntimeView::EnemyRuntimeView (145 bytes) to canonical exact; the full Enemy constructor improves to 672/673 but remains non-exact |
+| current work | refines Enemy ReadFloatArgument lifetime; dispatcher stays 14,292/14,416 while normalized agreement improves 680 -> 696; selector/order remain exact |
 
 Two spell-path dependencies are now independently exact even though the large dispatcher is not. EnemyMarkPendingInterrupt @ 0x00409E50 replays all 65 bytes plus two linkage fields zero-difference, and EnemySoundQueueView::QueueSoundSample @ 0x0043DC90 replays all 123 bytes plus its sound-metadata field zero-difference. Both passed two independent cold canonical replays in the dispatcher /GL /GS entry context. These promotions do not change the retained 14,292 / 14,416 whole-owner diagnostic, 680 / 11,544 normalized agreement, 181/181 selector, or physical case order, and they do not justify an exact claim for DispatchEclInstruction.
 
@@ -112,6 +113,19 @@ bytes zero-difference. This does not make the full object constructor exact:
 EnemyFullObjectView::EnemyFullObjectView @ 0x0040D830 is currently 672/673
 with 137/653 normalized comparable bytes, versus the prior 622/673 and 92/653.
 The 14KB dispatcher recovery point remains independently non-exact.
+
+
+
+A retained Enemy-dispatcher register-allocation checkpoint now makes
+ReadFloatArgument bind owner->activeEclContext to an explicit
+EclVmContext *context local before calling the generic reader. With the
+committed Generic ECL support image, the focused /GL /GS dispatcher remains
+14,292 / 14,416 bytes while normalized agreement improves from 680 / 11,544 to
+696 / 11,536. The 181-byte selector, physical case order, 13,636-byte
+candidate pre-table span (target 13,760), and 43-byte suffix remain unchanged.
+This is still non-exact; the change redistributes several physical case
+intervals and therefore should be treated as a whole-function coloring
+checkpoint, not an exact-case promotion.
 
 Remaining gaps are dominated by whole-function register allocation,
 helper-private ABI, /GS local placement and shared-tail ownership, not missing
