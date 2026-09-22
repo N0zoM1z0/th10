@@ -41,7 +41,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 
 | Owner | Target | Current retained diagnostic | Status |
 | --- | ---: | --- | --- |
-| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,292 bytes; pre-table 13,636/13,760; 690/11,544 normalized comparable bytes; selector 181/181; physical order matches; direct generic ReadFloat topology retained and rank-speed pattern source shape refined | non-exact |
+| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,228 bytes; pre-table 13,572/13,760; 731/11,556 normalized comparable bytes; selector 181/181; physical order matches; rank-float routing now uses the target two shared store tails | non-exact |
 | AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | selected source-shape diagnostic: contribution 9,960 with pre-table 9,584/9,588 and 705/8,608 agreement; exact-creator split context separately yields 10,040 with pre-table 9,664 | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | 7,020/7,020; pre-table 6,692/6,692; 945/6,264 normalized agreement, normalization incomplete | non-exact |
 
@@ -50,19 +50,19 @@ not mix measurements from different LTCG support graphs.
 
 ## Enemy dispatcher: current recovery point
 
-The selected current diagnostic is the rank-speed pattern checkpoint:
+The selected current diagnostic is the rank-float shared-tail checkpoint:
 
-- .analysis/enemy-rank-speed-pattern-probe.json
-- .analysis/enemy-rank-speed-pattern-layout.json
+- .analysis/enemy-exp-rank5-shared-tails-probe.json
+- .analysis/enemy-exp-rank5-shared-tails-layout.json
 
 These are focused linked-PE diagnostics, not exactness evidence.
 
 | Measure | Selected candidate | Target |
 | --- | ---: | ---: |
-| Complete contribution | 14,292 | 14,416 |
-| Pre-table span | 13,636 | 13,760 |
+| Complete contribution | 14,228 | 14,416 |
+| Pre-table span | 13,572 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 690 / 11,544 | 11,544 / 11,544 |
+| Normalized comparable bytes | 731 / 11,556 | 11,556 / 11,556 |
 | Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
 | Suffix | 43 | 43 |
@@ -91,6 +91,21 @@ changes from 172 to 171 bytes against target 206; this remains a global coloring
 checkpoint, not a local exact case. All five canonical EnemyEclDispatcher exact
 helper units cold-replay zero-difference for 461/461 bytes after the change.
 The owner remains non-exact.
+
+The current checkpoint additionally restores the target rank-float sharing
+topology. Target 0x15E does not own a third private ReadFloat/ResolveFloat/store
+return path: its >= -200 and < -400 paths select operand indices 2 and 0 into
+the first rank-float tail, while the -400..-200 path selects index 1 into the
+second tail also reached by 0x15D and AIM_BULLET_AT_PLAYER. Routing the
+maintained source through those two existing tails removes the extra candidate
+tail and raises normalized agreement from 690/11,544 to 731/11,556. The
+complete contribution becomes 14,228/14,416 and the pre-table span
+13,572/13,760; selector bytes remain 181/181 and physical group order remains
+target-equal. The resulting 0x15D, 0x15E and 0x1AE physical intervals are
+44/39, 123/169 and 116/76 candidate/target bytes respectively, so this is a
+control-flow recovery checkpoint rather than a local or whole-owner exactness
+claim. All five canonical EnemyEclDispatcher exact helper units cold-replay
+zero-difference for 461/461 bytes after the change.
 
 The earlier spell and screen-shake ABI fixes are already retained in Git and
 KNOWLEDGE_BASE. Do not re-derive the current baseline from their older

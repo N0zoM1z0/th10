@@ -2663,20 +2663,15 @@ dispatch_select_bullet_count_low:
       goto dispatch_difficulty_float_index_3;
     }
     if (g_EnemyRank >= -200) {
-      fVar19 = ReadFloatArgument(2);
-      pfVar15 = ResolveFloatArgument(0);
-      *pfVar15 = (float)fVar19;
-      return 0;
+      iVar27 = 2;
+      goto dispatch_rank_float_tail_a;
     }
     if (g_EnemyRank < -400) {
-      fVar21 = ReadFloatArgument(0);
-      goto dispatch_rank5_float_low_store;
+      iVar27 = 0;
+      goto dispatch_rank_float_tail_a;
     }
-    fVar21 = ReadFloatArgument(1);
-dispatch_rank5_float_low_store:
-    positionInterpolationValues = ResolveFloatArgument(0);
-    *positionInterpolationValues = (float)fVar21;
-    return 0;
+    iVar27 = 1;
+    goto dispatch_rank_float_tail_b;
 dispatch_rank_float_tail_b:
     fVar19 = ReadFloatArgument(iVar27);
 dispatch_store_float_result:
