@@ -48,15 +48,15 @@ semantic coverage is not exactness.
 ## Enemy dispatcher: current recovery point
 
 The latest retained diagnostic is
-build/gpt-web-enemy-checkpoint-screen-stdcall/. It is intentionally a
-build-only linked-PE diagnostic, not exactness evidence.
+.analysis/enemy-readfloat-context-local-repro-probe.json. It is intentionally a
+focused linked-PE diagnostic, not exactness evidence.
 
 | Measure | Latest candidate | Target |
 | --- | ---: | ---: |
 | Complete contribution | 14,292 | 14,416 |
 | Pre-table span | 13,636 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 680 / 11,544 | 11,544 / 11,544 |
+| Normalized comparable bytes | 696 / 11,536 | 11,536 / 11,536 |
 | Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
 | START_SPELL physical group | 214 | 219 |
@@ -87,13 +87,13 @@ Recent retained Enemy checkpoints:
 | 8b5a2cb | preserves the target-observed owner lifetime in the shared float-store tail |
 | 271b254 | restores target spell scratch lifetime and the 0x2C4 dispatcher frame |
 | 1840f6d | restores the target callee-clean EnemyBeginSpell ABI; 608 -> 657 normalized matching bytes |
-| current checkpoint | restores the target callee-clean EnemySetScreenShake ABI; 657 -> 680 normalized matching bytes |
+| 02486a7 | restores the target callee-clean EnemySetScreenShake ABI; 657 -> 680 normalized matching bytes |
 | ca8b589 | promotes EnemyMarkPendingInterrupt (65 bytes) and EnemySoundQueueView::QueueSoundSample (123 bytes) to canonical exact linked-PE units; the dispatcher owner remains non-exact |
 | 92646bd | promotes EnemySoundQueueView::QueueSoundCue (149 bytes) to canonical exact linked-PE; the dispatcher owner remains non-exact |
 | e73bde8 | promotes EnemyDropVectorView::FromAngleRadii (30 bytes) to canonical raw-equal exact; the dispatcher owner remains non-exact |
 | 9007f2d | restores target-observed EnemySpawn timer/flag/item-drop/switch source shape; focused Spawn becomes 577/577 but remains non-exact |
 | 5691f40 | promotes EnemyRuntimeView::EnemyRuntimeView (145 bytes) to canonical exact; the full Enemy constructor improves to 672/673 but remains non-exact |
-| current work | refines Enemy ReadFloatArgument lifetime; dispatcher stays 14,292/14,416 while normalized agreement improves 680 -> 696; selector/order remain exact |
+| c317b0f | refines Enemy ReadFloatArgument lifetime; dispatcher stays 14,292/14,416 while normalized agreement improves 680 -> 696; selector/order remain exact |
 
 Two spell-path dependencies are now independently exact even though the large dispatcher is not. EnemyMarkPendingInterrupt @ 0x00409E50 replays all 65 bytes plus two linkage fields zero-difference, and EnemySoundQueueView::QueueSoundSample @ 0x0043DC90 replays all 123 bytes plus its sound-metadata field zero-difference. Both passed two independent cold canonical replays in the dispatcher /GL /GS entry context. These promotions do not change the retained 14,292 / 14,416 whole-owner diagnostic, 680 / 11,544 normalized agreement, 181/181 selector, or physical case order, and they do not justify an exact claim for DispatchEclInstruction.
 
@@ -126,6 +126,21 @@ candidate pre-table span (target 13,760), and 43-byte suffix remain unchanged.
 This is still non-exact; the change redistributes several physical case
 intervals and therefore should be treated as a whole-function coloring
 checkpoint, not an exact-case promotion.
+
+
+
+Generic ECL has a new retained owner-shape checkpoint. Target 0x0044DF70 is
+now maintained as EclVmContext::StartSubroutine(caller, firstArgument), not as
+a three-argument global helper. This ordinary member spelling naturally gives
+the target-observed RET 8 on both exits: the receiver is private and only the
+two explicit arguments are callee-popped. In the selected Run /GL diagnostic,
+EclVmContext::Run stays 7,020 / 7,020 with an exact 6,692 / 6,692 pre-table
+span and all 59 physical opcode groups in target order, while normalized
+agreement improves from 795 / 6,264 to 945 / 6,264. SpawnThread improves to
+140 / 142 and 122 / 130. StartSubroutine itself remains 522 / 550 and Run
+normalization is incomplete, so these remain non-exact. All fourteen existing
+canonical EclVm exact units replay zero-difference, and the Enemy dispatcher
+remains at 14,292 / 14,416 with 696 / 11,536 when linked against this support.
 
 Remaining gaps are dominated by whole-function register allocation,
 helper-private ABI, /GS local placement and shared-tail ownership, not missing

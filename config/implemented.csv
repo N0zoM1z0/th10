@@ -252,7 +252,7 @@ AnmRenderManagerView::CopyTextureRect
 AnmRenderManagerView::CaptureToSurface
 EnemyResolveRuntimeCallback
 PlayerUpdateCallbackBody
-EclVmStartSubroutine
+EclVmContext::StartSubroutine
 EclVmContext::Run
 EclVmHost::Run
 GuiView::UpdateStageElements

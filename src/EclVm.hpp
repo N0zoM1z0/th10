@@ -52,6 +52,7 @@ struct EclVmContext
     int *ResolveInt(unsigned int index);
     __declspec(noinline) float *ResolveFloat(unsigned int index);
     int Run(float timeDelta);
+    int StartSubroutine(EclVmContext *caller, unsigned int firstArgument);
 };
 
 struct EclVmThreadNode
@@ -177,9 +178,5 @@ typedef char EclVmHost_script_database_offset[
 typedef char EclVmHost_thread_list_offset[
     offsetof(EclVmHost, threadList) == 0x1030 ? 1 : -1];
 typedef char EclVmHost_size[sizeof(EclVmHost) == 0x103C ? 1 : -1];
-
-int EclVmStartSubroutine(
-    EclVmContext *destination, EclVmContext *caller,
-    unsigned int firstArgument);
 
 #endif

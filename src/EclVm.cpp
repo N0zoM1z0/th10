@@ -532,10 +532,10 @@ EclVmInstruction *EclVmScriptDatabase::FindSubroutine(const char *name)
 }
 
 
-int EclVmStartSubroutine(
-    EclVmContext *destination, EclVmContext *caller,
-    unsigned int firstArgument)
+int EclVmContext::StartSubroutine(
+    EclVmContext *caller, unsigned int firstArgument)
 {
+    EclVmContext *destination = this;
     EclVmInstruction **const callerInstruction = &caller->instruction;
     EclVmInstruction *const call = *callerInstruction;
     const int inlineBytes = OperandInt(call, 0);
@@ -688,7 +688,7 @@ void EclVmHost::SpawnThread(int threadId, unsigned int firstArgument)
     list->next = node;
     node->previous = list;
 
-    EclVmStartSubroutine(context, activeContext, firstArgument);
+    context->StartSubroutine(activeContext, firstArgument);
 }
 
 EclVmThreadNode *EclVmHost::FindThread(int threadId)
@@ -809,7 +809,7 @@ int EclVmContext::Run(float timeDelta)
             }
 
             case ECL_VM_CALL:
-                if (EclVmStartSubroutine(this, this, 0) != 0)
+                if (StartSubroutine(this, 0) != 0)
                     return -1;
                 continue;
 
