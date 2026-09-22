@@ -2331,8 +2331,8 @@ dispatch_select_bullet_count_low:
       pfVar15 = pfVar15 + 1;
     }
     if (opcode == 0x1af) {
-      puVar5 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar14 = reinterpret_cast<unsigned int *>(&local_288) + 11;
+      puVar5 = &bulletPatterns[0].words[8];
+      puVar14 = &local_288.words[11];
       for (iVar27 = 0x6c; iVar27 != 0; iVar27 = iVar27 + -1) {
         *puVar14 = *puVar5;
         puVar5 = puVar5 + 1;
