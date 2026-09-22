@@ -3275,3 +3275,17 @@ symbol = "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z"
 target_address = 0x00413270
 size = 30
 linkages = []
+
+[units.enemy-laser-vector-from-angle-magnitude]
+artifact_kind = "linked-pe"
+source = "src/EnemyLaser.cpp"
+output_dir = "build/match-linked/EnemyLaserVector"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z"
+functions = ["EnemyLaserVectorView::FromAngleMagnitude"]
+symbol = "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z"
+target_address = 0x0041F800
+size = 30
+linkages = []

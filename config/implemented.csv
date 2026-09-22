@@ -314,3 +314,4 @@ EnemyMarkPendingInterrupt
 EnemySoundQueueView::QueueSoundSample
 EnemySoundQueueView::QueueSoundCue
 EnemyDropVectorView::FromAngleRadii
+EnemyLaserVectorView::FromAngleMagnitude

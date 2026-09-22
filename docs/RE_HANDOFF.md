@@ -124,24 +124,18 @@ Current open problems, in priority order:
    per tree; the second join also changes the owner register lifetime. The
    retained group is 140/151 bytes. Several locally closer 128..226-byte source
    variants worsen whole-owner agreement and are superseded.
-4. **FireLaser cross-owner LTCG ABI.** Target `EnemyFireLaser @ 0x0041C510`
-   consistently receives `ESI=manager`, `EDI=request`, plus stack type across ten
+4. **FireLaser cross-owner LTCG ABI.** Target EnemyFireLaser @ 0x0041C510
+   consistently receives ESI=manager, EDI=request, plus stack type across ten
    calls in six owners. Five caller owners are outside the focused dispatcher
-   graph. The request storage itself is now structurally recovered from TH10:
-   the type-0 apply virtual copies 0x77 dwords and has a 0x2C-byte prefix before
-   a 0x6C-dword pattern payload, while type 1 copies 0x7E dwords, initializes
-   +0x2C to 8.0f, and has its pattern payload at +0x48. The maintained source
-   carries these as overlapping typed overlays without changing dispatcher
-   codegen (14,228/14,416 and 746/11,556 remain unchanged). The retained 0x1AF
-   pattern-copy loop now names the proven pattern base through
-   bulletPatterns[0].words[8] and local_288.words[11]; an independent
-   HEAD/dirty relink produces identical dispatcher disassembly, and all five
-   canonical EnemyEclDispatcher exact units still replay 461/461 bytes.
-   Rewriting the dispatcher cases themselves to aggregate/memcpy spelling shrank the owner to
-   14,172 bytes and 711/11,568 agreement, so that source-shape experiment is
-   superseded. Do not fake the ESI/EDI convention with a dispatcher-only member
-   or synthetic local dependency; reconstruct the real caller graph when those
-   owners become available.
+   graph. The first recovered support owner is now
+   EnemyLaserVectorView::FromAngleMagnitude @ 0x0041F800: its maintained
+   src/EnemyLaser.cpp body is canonical exact 30/30 in two independent cold
+   linked-PE replays. A diagnostic reconstruction of the central laser creation
+   seam makes the dispatcher 14,336/14,416 and naturally recovers ESI=manager,
+   but still passes request on the stack and type in EAX, so that seam is not
+   retained as exact/source truth yet. Do not fake the remaining ESI/EDI
+   convention with a dispatcher-only member or synthetic dependency; continue
+   reconstructing the real caller graph.
 5. **Whole-function spill/stack coloring.** Large laser/spawn scratch objects are
    uniformly eight bytes below target stack offsets despite the correct 0x2C4
    frame and understood object sizes/order. At dispatcher entry the target
