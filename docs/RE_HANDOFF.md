@@ -187,6 +187,16 @@ Useful target-local clues that remain open:
 - AIM_BULLET_AT_PLAYER 0x1AE jumps into the float Resolve/store tail used by
   rank/difficulty float selection. Commit 8b5a2cb recovers the target-shaped
   EBX=owner lifetime in that tail, but physical ownership is still different.
+- SET_BULLET_COUNT_BY_DIFFICULTY 0x1B4 is target-observed as two local
+  difficulty trees whose branches push immediate indices 1..4 and 5..8 before
+  joining one generic ReadInt call per tree; the second join destructively
+  changes EBX from runtime to full owner. The retained 140/151-byte case uses
+  register index selection and shares its second call outside the group.
+  Isolated branch/switch/context variants produce 128, 143, 146, 171, 177,
+  208, 214 and 226-byte cases but all worsen whole-owner agreement from the
+  retained 731/11,556 frontier. Do not pad the closest 146-byte variant or
+  re-promote it on local size alone; common-call placement remains coupled to
+  whole-function register allocation.
 - FireLaser @ 0x0041C510 uses ESI=manager, EDI=request and stack type in the
   shipped image. This is now confirmed at all ten direct call sites across six
   owners: four dispatcher calls, two from 0x0041CFD0, and one each from
