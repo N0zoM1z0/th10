@@ -317,3 +317,4 @@ EnemySoundQueueView::QueueSoundCue,0x0043DD10,function
 EnemyDropVectorView::FromAngleRadii,0x00413270,function
 EnemyLaserVectorView::FromAngleMagnitude,0x0041F800,function
 EnemyLaserBoundaryStateView::UpdateBoundary,0x0041CFD0,function
+EnemyLaserType0CollisionView::CheckCollisionBox,0x0041D880,function

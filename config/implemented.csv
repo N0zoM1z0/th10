@@ -316,3 +316,4 @@ EnemySoundQueueView::QueueSoundCue
 EnemyDropVectorView::FromAngleRadii
 EnemyLaserVectorView::FromAngleMagnitude
 EnemyLaserBoundaryStateView::UpdateBoundary
+EnemyLaserType0CollisionView::CheckCollisionBox

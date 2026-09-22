@@ -134,13 +134,20 @@ Current open problems, in priority order:
    source-present as EnemyLaserBoundaryStateView::UpdateBoundary. Its two
    target FireLaser calls and embedded request at +0x424 are retained; the
    focused source-entry diagnostic is 402/410 bytes and 123/342 normalized
-   agreement, so the caller is explicitly non-exact. A diagnostic
-   reconstruction of the central laser creation seam makes the dispatcher
-   14,336/14,416 and naturally recovers ESI=manager, but still passes request
-   on the stack and type in EAX, so that seam is not retained as exact/source
-   truth yet. Do not fake the remaining ESI/EDI convention with a
-   dispatcher-only member or synthetic dependency; continue reconstructing the
-   real caller graph.
+   agreement, so the caller is explicitly non-exact. A second real caller,
+   EnemyLaserType0CollisionView::CheckCollisionBox @ 0x0041D880, is now
+   source-present with the target 256-byte hit bitmap, 0x77-dword request copy,
+   ANM hit-effect path and gap splitting. It is 1042/1269 with 54/1177
+   normalized agreement in its own source-entry context and 1150/1269 with
+   63/1169 in the expanded current laser caller graph. In that expanded graph
+   central EnemyFireLaser is still 154/153 and retains ESI=manager but passes
+   request on the stack with type in EAX; the dispatcher becomes
+   14,320/14,416 with 699/11,556 normalized agreement. These are
+   context-sensitive diagnostics and do not replace the retained dispatcher
+   baseline. An older central-seam diagnostic reached 14,336/14,416 under a
+   different support graph; do not mix those measurements. Do not fake the
+   remaining ESI/EDI convention with a dispatcher-only member or synthetic
+   dependency; continue reconstructing the real caller graph.
 5. **Whole-function spill/stack coloring.** Large laser/spawn scratch objects are
    uniformly eight bytes below target stack offsets despite the correct 0x2C4
    frame and understood object sizes/order. At dispatcher entry the target
