@@ -41,7 +41,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 
 | Owner | Target | Current retained diagnostic | Status |
 | --- | ---: | --- | --- |
-| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,292 bytes; pre-table 13,636/13,760; 680/11,544 normalized comparable bytes; selector 181/181; physical order matches; target/direct generic ReadFloat call topology restored | non-exact |
+| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,292 bytes; pre-table 13,636/13,760; 690/11,544 normalized comparable bytes; selector 181/181; physical order matches; direct generic ReadFloat topology retained and rank-speed pattern source shape refined | non-exact |
 | AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | selected source-shape diagnostic: contribution 9,960 with pre-table 9,584/9,588 and 705/8,608 agreement; exact-creator split context separately yields 10,040 with pre-table 9,664 | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | 7,020/7,020; pre-table 6,692/6,692; 945/6,264 normalized agreement, normalization incomplete | non-exact |
 
@@ -50,10 +50,10 @@ not mix measurements from different LTCG support graphs.
 
 ## Enemy dispatcher: current recovery point
 
-The selected current diagnostic is the direct-ReadFloat callgraph checkpoint:
+The selected current diagnostic is the rank-speed pattern checkpoint:
 
-- .analysis/enemy-readfloat-direct-callgraph-probe.json
-- .analysis/enemy-readfloat-direct-callgraph-layout.json
+- .analysis/enemy-rank-speed-pattern-probe.json
+- .analysis/enemy-rank-speed-pattern-layout.json
 
 These are focused linked-PE diagnostics, not exactness evidence.
 
@@ -62,7 +62,7 @@ These are focused linked-PE diagnostics, not exactness evidence.
 | Complete contribution | 14,292 | 14,416 |
 | Pre-table span | 13,636 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 680 / 11,544 | 11,544 / 11,544 |
+| Normalized comparable bytes | 690 / 11,544 | 11,544 / 11,544 |
 | Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
 | Suffix | 43 | 43 |
@@ -79,7 +79,18 @@ pre-table span, selector, physical group order and suffix unchanged. Its raw
 normalized agreement is 680/11,544 rather than c317b0f's 696/11,536 coloring
 score; do not restore the false adapter calls merely to improve that heuristic.
 Opcode 0x10E is now 289/287 and 0x1B3 is 167/170, versus 231/287 and 227/170
-under the explicit-local variant. The owner remains non-exact.
+under the explicit-local variant.
+
+The current extension keeps that direct generic ReadFloat topology and expresses
+opcode 0x1A8's two result stores through the recovered EnemyBulletPatternView
+array rather than a manually reconstructed byte address. That natural typed
+source shape leaves the 14,292-byte contribution, 13,636-byte pre-table span,
+181/181 selector, physical order and 43-byte suffix unchanged while raising
+normalized agreement from 680/11,544 to 690/11,544. The 0x1A8 physical group
+changes from 172 to 171 bytes against target 206; this remains a global coloring
+checkpoint, not a local exact case. All five canonical EnemyEclDispatcher exact
+helper units cold-replay zero-difference for 461/461 bytes after the change.
+The owner remains non-exact.
 
 The earlier spell and screen-shake ABI fixes are already retained in Git and
 KNOWLEDGE_BASE. Do not re-derive the current baseline from their older

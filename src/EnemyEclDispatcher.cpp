@@ -2158,20 +2158,23 @@ dispatch_bullet_speed_lowest:
     *(float *)(iVar26 + 0x2e0) = (float)fVar19;
     return 0;
   case ENEMY_ECL_INTERPOLATE_BULLET_SPEED_BY_RANK:
+  {
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     fVar19 = (ReadFloatArgument(1));
     fVar21 = (ReadFloatArgument(2));
     local_2a8 = (float)fVar21;
     fVar21 = (ReadFloatArgument(3));
     fVar20 = (ReadFloatArgument(4));
-    iVar26 = (int)uVar22 * 0x210 + (int)runtimeAddress;
-    *(float *)(iVar26 + 0x2dc) =
+    EnemyBulletPatternView *pattern = &bulletPatterns[(int)uVar22];
+    float *patternValues = reinterpret_cast<float *>(pattern);
+    patternValues[0x18 / 4] =
          ((float)fVar21 - (float)fVar19) * ((float)g_EnemyRank + 1024.0f) * 0.00048828125f +
          (float)fVar19;
-    *(float *)(iVar26 + 0x2e0) =
+    patternValues[0x1c / 4] =
          (float)((fVar20 - local_2a8) * (g_EnemyRank + 1024.0f) *
                  0.00048828125f + local_2a8);
     return 0;
+  }
   case ENEMY_ECL_SET_BULLET_COUNT_BY_RANK_3:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
