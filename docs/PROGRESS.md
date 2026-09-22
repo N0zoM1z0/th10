@@ -14,11 +14,11 @@ their boundaries and origins must be reviewed independently.
 | Confirmed authored code bytes | 265,233 |
 | Classified exclusions | 518 |
 | Reviewed, origin indeterminate | 90 |
-| Source-present mappings | 320 |
-| Source-present with authored origin | 314 |
+| Source-present mappings | 322 |
+| Source-present with authored origin | 316 |
 | Source-present origin review pending | 0 |
 | Source-present origin indeterminate | 6 |
-| Authored source-present exact backlog | 139 |
+| Authored source-present exact backlog | 141 |
 | Canonical exact functions | 175 |
 | Canonical exact authored bytes | 23,538 |
 

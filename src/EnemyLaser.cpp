@@ -548,3 +548,313 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
 
     return hitCount;
 }
+
+
+// TH10 owners 0x0041EB00 and 0x0041EFA0 are the type-1 box/circle
+// collision split paths. They retain the leading unhit span in the current
+// laser and respawn later unhit gaps as zero-initialized type-0 requests.
+struct EnemyLaserType1CollisionView
+{
+    void *vtable;
+    void *previous;
+    void *next;
+    unsigned char unknown00C[0x24 - 0x0c];
+    EnemyLaserVectorView position;
+    unsigned char unknown030[0x3c - 0x30];
+    float angle;
+    float length;
+    float width;
+    unsigned char unknown048[0x444 - 0x48];
+    float terminalDistance;
+    unsigned char unknown448[0x464 - 0x448];
+    short type;
+    short color;
+
+    int CheckCollisionBox(
+        EnemyLaserVectorView *center,
+        EnemyLaserVectorView *size,
+        int capture);
+    int CheckCollisionCircle(
+        EnemyLaserVectorView *center,
+        float radius,
+        int capture);
+};
+
+typedef char EnemyLaserType1CollisionPositionAt024[
+    (offsetof(EnemyLaserType1CollisionView, position) == 0x24) ? 1 : -1];
+typedef char EnemyLaserType1CollisionAngleAt03C[
+    (offsetof(EnemyLaserType1CollisionView, angle) == 0x3c) ? 1 : -1];
+typedef char EnemyLaserType1CollisionLengthAt040[
+    (offsetof(EnemyLaserType1CollisionView, length) == 0x40) ? 1 : -1];
+typedef char EnemyLaserType1CollisionWidthAt044[
+    (offsetof(EnemyLaserType1CollisionView, width) == 0x44) ? 1 : -1];
+typedef char EnemyLaserType1CollisionTerminalAt444[
+    (offsetof(EnemyLaserType1CollisionView, terminalDistance) == 0x444) ? 1 : -1];
+typedef char EnemyLaserType1CollisionTypeAt464[
+    (offsetof(EnemyLaserType1CollisionView, type) == 0x464) ? 1 : -1];
+typedef char EnemyLaserType1CollisionColorAt466[
+    (offsetof(EnemyLaserType1CollisionView, color) == 0x466) ? 1 : -1];
+
+int EnemyLaserType1CollisionView::CheckCollisionBox(
+    EnemyLaserVectorView *center,
+    EnemyLaserVectorView *size,
+    int capture)
+{
+    EnemyLaserVectorView originalPosition = position;
+    unsigned char hits[256];
+    memset(hits, 0, sizeof(hits));
+
+    int sampleCount = 0;
+    int hitCount = 0;
+    float distance = 6.0f;
+
+    EnemyLaserVectorView halfSize;
+    halfSize.x = size->x * 0.5f;
+    halfSize.y = size->y * 0.5f;
+    halfSize.z = size->z * 0.5f;
+
+    EnemyLaserVectorView minimum;
+    minimum.x = center->x - halfSize.x;
+    minimum.y = center->y - halfSize.y;
+    minimum.z = center->z - halfSize.z;
+
+    EnemyLaserVectorView maximum;
+    maximum.x = center->x + halfSize.x;
+    maximum.y = center->y + halfSize.y;
+    maximum.z = center->z + halfSize.z;
+
+    EnemyLaserVectorView step;
+    step.z = 0.0f;
+    step.FromAngleMagnitude(angle, 6.0f);
+
+    EnemyLaserVectorView sample;
+    sample.x = position.x + step.x;
+    sample.y = position.y + step.y;
+    sample.z = position.z + step.z;
+
+    step.x += step.x;
+    step.y += step.y;
+    step.z += step.z;
+
+    while (distance + 6.0f < length)
+    {
+        if (minimum.x <= sample.x && sample.x <= maximum.x &&
+            minimum.y <= sample.y && sample.y <= maximum.y)
+        {
+            hits[sampleCount] = 1;
+            ++hitCount;
+
+            if (capture != 0 &&
+                EnemyLaserSampleBoundsTest(&sample, 32.0f, 32.0f) == 0)
+            {
+                g_EnemyLaserHitEffectManager->SpawnCancelEffect(
+                    &sample, 8, -1, -1.5707964f, 0.6f);
+            }
+
+            EnemyLaserManagerResourceView *manager =
+                reinterpret_cast<EnemyLaserManagerResourceView *>(
+                    g_EnemyBulletManager);
+            manager->effectResource->CreateVmAtWorldVariant0(
+                static_cast<int>(color) * 2 + 0x11,
+                reinterpret_cast<const AnmFloat3View *>(&sample));
+        }
+
+        ++sampleCount;
+        sample.x += step.x;
+        sample.y += step.y;
+        sample.z += step.z;
+        distance += 12.0f;
+    }
+
+    if (hitCount == 0)
+        return 0;
+
+    int sampleIndex = 0;
+    while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+        ++sampleIndex;
+
+    if (sampleIndex != 0)
+    {
+        length = 0.0f;
+    }
+    else
+    {
+        int prefixLength = 0;
+        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+        {
+            ++sampleIndex;
+            ++prefixLength;
+        }
+        if (sampleIndex >= sampleCount)
+            return hitCount;
+        length = static_cast<float>(prefixLength) * 12.0f;
+    }
+
+    while (sampleIndex < sampleCount)
+    {
+        while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+            ++sampleIndex;
+        if (sampleIndex >= sampleCount)
+            return hitCount;
+
+        const int gapStart = sampleIndex;
+        int gapLength = 0;
+        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+        {
+            ++sampleIndex;
+            ++gapLength;
+        }
+
+        EnemyLaserType0RequestView args;
+        memset(&args, 0, sizeof(args));
+
+        const float start = static_cast<float>(gapStart);
+        const float segmentLength =
+            static_cast<float>(gapLength) * 12.0f;
+        args.position.x = originalPosition.x + step.x * start;
+        args.position.y = originalPosition.y + step.y * start;
+        args.position.z = originalPosition.z + step.z * start;
+        args.angle = angle;
+        args.maximumLength = segmentLength;
+        args.initialLength = segmentLength;
+        args.terminalDistance = terminalDistance - start * 12.0f;
+        args.width = width;
+        args.speed = 8.0f;
+        args.type = type;
+        args.color = color;
+
+        EnemyFireLaser(
+            g_EnemyBulletManager,
+            reinterpret_cast<EnemyLaserRequestScratch *>(&args),
+            0);
+    }
+
+    return hitCount;
+}
+
+int EnemyLaserType1CollisionView::CheckCollisionCircle(
+    EnemyLaserVectorView *center,
+    float radius,
+    int capture)
+{
+    EnemyLaserVectorView originalPosition = position;
+    unsigned char hits[256];
+    memset(hits, 0, sizeof(hits));
+
+    int sampleCount = 0;
+    int hitCount = 0;
+    float distance = 6.0f;
+    const float radiusSquared = radius * radius;
+
+    EnemyLaserVectorView step;
+    step.z = 0.0f;
+    step.FromAngleMagnitude(angle, 6.0f);
+
+    EnemyLaserVectorView sample;
+    sample.x = position.x + step.x;
+    sample.y = position.y + step.y;
+    sample.z = position.z + step.z;
+
+    step.x += step.x;
+    step.y += step.y;
+    step.z += step.z;
+
+    while (distance + 6.0f < length)
+    {
+        const float dx = center->x - sample.x;
+        const float dy = center->y - sample.y;
+        if (dx * dx + dy * dy <= radiusSquared)
+        {
+            hits[sampleCount] = 1;
+            ++hitCount;
+
+            if (capture != 0 &&
+                g_EnemyPlayfieldMinX <= sample.x + 32.0f &&
+                sample.x - 32.0f < g_EnemyPlayfieldMaxX &&
+                g_EnemyPlayfieldMinY <= sample.y + 32.0f &&
+                sample.y - 32.0f < g_EnemyPlayfieldMaxY)
+            {
+                g_EnemyLaserHitEffectManager->SpawnCancelEffect(
+                    &sample, 8, -1, -1.5707964f, 0.6f);
+            }
+
+            EnemyLaserManagerResourceView *manager =
+                reinterpret_cast<EnemyLaserManagerResourceView *>(
+                    g_EnemyBulletManager);
+            manager->effectResource->CreateVmAtWorldVariant0(
+                static_cast<int>(color) * 2 + 0x11,
+                reinterpret_cast<const AnmFloat3View *>(&sample));
+        }
+
+        ++sampleCount;
+        sample.x += step.x;
+        sample.y += step.y;
+        sample.z += step.z;
+        distance += 12.0f;
+    }
+
+    if (hitCount == 0)
+        return 0;
+
+    int sampleIndex = 0;
+    while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+        ++sampleIndex;
+
+    if (sampleIndex != 0)
+    {
+        length = 0.0f;
+    }
+    else
+    {
+        int prefixLength = 0;
+        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+        {
+            ++sampleIndex;
+            ++prefixLength;
+        }
+        if (sampleIndex >= sampleCount)
+            return hitCount;
+        length = static_cast<float>(prefixLength) * 12.0f;
+    }
+
+    while (sampleIndex < sampleCount)
+    {
+        while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+            ++sampleIndex;
+        if (sampleIndex >= sampleCount)
+            return hitCount;
+
+        const int gapStart = sampleIndex;
+        int gapLength = 0;
+        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+        {
+            ++sampleIndex;
+            ++gapLength;
+        }
+
+        EnemyLaserType0RequestView args;
+        memset(&args, 0, sizeof(args));
+
+        const float start = static_cast<float>(gapStart);
+        const float segmentLength =
+            static_cast<float>(gapLength) * 12.0f;
+        args.position.x = originalPosition.x + step.x * start;
+        args.position.y = originalPosition.y + step.y * start;
+        args.position.z = originalPosition.z + step.z * start;
+        args.angle = angle;
+        args.maximumLength = segmentLength;
+        args.initialLength = segmentLength;
+        args.terminalDistance = terminalDistance - start * 12.0f;
+        args.width = width;
+        args.speed = 8.0f;
+        args.type = type;
+        args.color = color;
+
+        EnemyFireLaser(
+            g_EnemyBulletManager,
+            reinterpret_cast<EnemyLaserRequestScratch *>(&args),
+            0);
+    }
+
+    return hitCount;
+}

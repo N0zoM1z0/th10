@@ -318,3 +318,5 @@ EnemyLaserVectorView::FromAngleMagnitude
 EnemyLaserBoundaryStateView::UpdateBoundary
 EnemyLaserType0CollisionView::CheckCollisionBox
 EnemyLaserType0CollisionView::CheckCollisionCircle
+EnemyLaserType1CollisionView::CheckCollisionBox
+EnemyLaserType1CollisionView::CheckCollisionCircle

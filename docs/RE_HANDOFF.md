@@ -125,26 +125,31 @@ Current open problems, in priority order:
    retained group is 140/151 bytes. Several locally closer 128..226-byte source
    variants worsen whole-owner agreement and are superseded.
 4. **FireLaser cross-owner LTCG ABI.** Target EnemyFireLaser @ 0x0041C510
-   consistently receives ESI=manager, EDI=request, plus stack type across ten
-   calls in six owners. Five caller owners are outside the focused dispatcher
-   graph. Three of those five are now source-present in src/EnemyLaser.cpp:
-   EnemyLaserBoundaryStateView::UpdateBoundary @ 0x0041CFD0,
-   EnemyLaserType0CollisionView::CheckCollisionBox @ 0x0041D880, and
-   CheckCollisionCircle @ 0x0041DD80. The independently exact
+   receives ESI=manager, EDI=request, plus one stack type argument and RET 4
+   across ten calls in six owners. The entire caller topology is now
+   source-present: the dispatcher supplies four calls, while src/EnemyLaser.cpp
+   supplies EnemyLaserBoundaryStateView::UpdateBoundary @ 0x0041CFD0,
+   type-0 box/circle collision @ 0x0041D880/0x0041DD80, and type-1 box/circle
+   collision @ 0x0041EB00/0x0041EFA0. The independently exact
    EnemyLaserVectorView::FromAngleMagnitude @ 0x0041F800 remains 30/30.
-   Fresh owner-entry diagnostics are 402/410 with 123/342 normalized agreement
-   for the boundary caller, 1042/1269 with 43/1177 for box collision, and
-   1042/1238 with 47/1126 for circle collision. The box/circle split paths now
-   retain the target-proven sampled-position hit effect, 0x77-dword request
-   copies and 18.0f minimum segment threshold. In the expanded graph containing
-   all three real callers plus the remaining synthetic type-1 callers, central
-   EnemyFireLaser is still 154/153 with 29/137 normalized agreement: it keeps
-   ESI=manager but still passes request on the stack with type in EAX instead of
-   target EDI=request plus stack type. The dispatcher remains 14,320/14,416 with
-   699/11,556 in that context. These are context-sensitive diagnostics and do
-   not replace the retained 14,228/14,416, 746/11,556 dispatcher baseline.
-   Recover the remaining real type-1 caller owners instead of faking the private
-   ABI with dispatcher-only dependencies.
+   The type-1 owners preserve the target 256-byte hit bitmap and 12-unit scan;
+   they keep the leading unhit prefix in the current laser and respawn later
+   gaps through zero-initialized 0x77-dword type-0 requests carrying angle,
+   width, terminal-distance, type/color and speed 8.0f.
+   In the first complete all-real-caller graph, central EnemyFireLaser remains
+   154/153 with 29/137 normalized agreement and the dispatcher remains
+   14,320/14,416 with 699/11,556. Therefore missing caller coverage is no
+   longer a viable explanation for the private ABI mismatch. Free-function
+   parameter-order variants keep the wrong ESI=manager/EAX=type/stack-request
+   ABI. Member-method variants recover RET 4 but still keep type in EAX and
+   request on the stack. Rewriting the central type selection as switch(type)
+   reproduces the target sub/dec branch shape and leaves type on the stack, but
+   rotates the remaining registers to EDI=manager/ESI=laser/stack-request.
+   The next frontier is the Type0/Type1 constructor private ABI: target
+   constructors keep the allocated object in EBX and use ESI=-2, whereas the
+   current diagnostic constructors keep object in EDX and use EBX=-2. Do not
+   fake EDI=request with synthetic dependencies; recover the constructor/source
+   lifetime that naturally produces the target register coloring.
 
 5. **Whole-function spill/stack coloring.** Large laser/spawn scratch objects are
    uniformly eight bytes below target stack offsets despite the correct 0x2C4
