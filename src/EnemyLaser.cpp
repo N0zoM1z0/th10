@@ -187,7 +187,9 @@ extern int EnemyLaserSampleBoundsTest(
 
 struct EnemyLaserHitEffectManagerView
 {
-    void SpawnCancelEffect(int kind, int color, float angle, float scale);
+    void SpawnCancelEffect(
+        EnemyLaserVectorView *position,
+        int kind, int color, float angle, float scale);
 };
 
 extern EnemyLaserHitEffectManagerView *g_EnemyLaserHitEffectManager;
@@ -225,6 +227,10 @@ struct EnemyLaserType0CollisionView
     int CheckCollisionBox(
         EnemyLaserVectorView *center,
         EnemyLaserVectorView *size,
+        int capture);
+    int CheckCollisionCircle(
+        EnemyLaserVectorView *center,
+        float radius,
         int capture);
 };
 
@@ -294,7 +300,7 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
                 EnemyLaserSampleBoundsTest(&sample, 32.0f, 32.0f) == 0)
             {
                 g_EnemyLaserHitEffectManager->SpawnCancelEffect(
-                    8, -1, -1.5707964f, 0.6f);
+                    &sample, 8, -1, -1.5707964f, 0.6f);
             }
 
             EnemyLaserManagerResourceView *manager =
@@ -334,7 +340,7 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
         position.y += step.y * prefixScale;
         position.z += step.z * prefixScale;
         length -= prefixDistance;
-        if (length <= 0.0f)
+        if (length <= 18.0f)
         {
             deletionCounter = 1;
             return hitCount;
@@ -357,7 +363,7 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
         static_cast<float>(gapLength) * 12.0f;
     request.maximumLength -= length - firstGapLength;
     length = firstGapLength;
-    if (firstGapLength < 0.0f)
+    if (firstGapLength < 18.0f)
         deletionCounter = 1;
 
     while (sampleIndex < sampleCount)
@@ -381,7 +387,153 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
         args.maximumLength = segmentLength;
         args.initialLength = segmentLength;
 
-        if (0.0f < segmentLength)
+        if (18.0f < segmentLength)
+        {
+            const float start = static_cast<float>(gapStart);
+            args.position.x = originalPosition.x + step.x * start;
+            args.position.y = originalPosition.y + step.y * start;
+            args.position.z = originalPosition.z + step.z * start;
+            EnemyFireLaser(
+                g_EnemyBulletManager,
+                reinterpret_cast<EnemyLaserRequestScratch *>(&args),
+                0);
+        }
+    }
+
+    return hitCount;
+}
+
+
+int EnemyLaserType0CollisionView::CheckCollisionCircle(
+    EnemyLaserVectorView *center,
+    float radius,
+    int capture)
+{
+    EnemyLaserVectorView originalPosition = position;
+    unsigned char hits[256];
+    memset(hits, 0, sizeof(hits));
+
+    int sampleCount = 0;
+    int hitCount = 0;
+    float distance = 6.0f;
+    const float radiusSquared = radius * radius;
+
+    EnemyLaserVectorView step;
+    step.z = 0.0f;
+    step.FromAngleMagnitude(angle, 6.0f);
+
+    EnemyLaserVectorView sample;
+    sample.x = position.x + step.x;
+    sample.y = position.y + step.y;
+    sample.z = position.z + step.z;
+
+    step.x += step.x;
+    step.y += step.y;
+    step.z += step.z;
+
+    while (distance + 6.0f < length)
+    {
+        const float dx = center->x - sample.x;
+        const float dy = center->y - sample.y;
+        if (dx * dx + dy * dy <= radiusSquared)
+        {
+            hits[sampleCount] = 1;
+            ++hitCount;
+
+            if (capture != 0 &&
+                g_EnemyPlayfieldMinX <= sample.x + 32.0f &&
+                sample.x - 32.0f < g_EnemyPlayfieldMaxX &&
+                g_EnemyPlayfieldMinY <= sample.y + 32.0f &&
+                sample.y - 32.0f < g_EnemyPlayfieldMaxY)
+            {
+                g_EnemyLaserHitEffectManager->SpawnCancelEffect(
+                    &sample, 8, -1, -1.5707964f, 0.6f);
+            }
+
+            EnemyLaserManagerResourceView *manager =
+                reinterpret_cast<EnemyLaserManagerResourceView *>(
+                    g_EnemyBulletManager);
+            manager->effectResource->CreateVmAtWorldVariant0(
+                static_cast<int>(request.color) * 2 + 0x11,
+                reinterpret_cast<const AnmFloat3View *>(&sample));
+        }
+
+        ++sampleCount;
+        sample.x += step.x;
+        sample.y += step.y;
+        sample.z += step.z;
+        distance += 12.0f;
+    }
+
+    if (hitCount == 0)
+        return 0;
+
+    if (sampleCount <= hitCount)
+    {
+        deletionCounter = 1;
+        return hitCount;
+    }
+
+    int sampleIndex = 0;
+    while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+        ++sampleIndex;
+
+    if (sampleIndex != 0)
+    {
+        const float prefixScale = static_cast<float>(sampleIndex);
+        const float prefixDistance = prefixScale * 12.0f;
+        position.x += step.x * prefixScale;
+        position.y += step.y * prefixScale;
+        position.z += step.z * prefixScale;
+        length -= prefixDistance;
+        if (length <= 18.0f)
+        {
+            deletionCounter = 1;
+            return hitCount;
+        }
+        request.maximumLength = length;
+        tailOffset = prefixDistance;
+    }
+
+    int gapLength = 0;
+    while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+    {
+        ++sampleIndex;
+        ++gapLength;
+    }
+
+    if (sampleIndex >= sampleCount)
+        return hitCount;
+
+    const float firstGapLength =
+        static_cast<float>(gapLength) * 12.0f;
+    request.maximumLength -= length - firstGapLength;
+    length = firstGapLength;
+    if (firstGapLength < 18.0f)
+        deletionCounter = 1;
+
+    while (sampleIndex < sampleCount)
+    {
+        while (sampleIndex < sampleCount && hits[sampleIndex] != 0)
+            ++sampleIndex;
+        if (sampleIndex >= sampleCount)
+            return hitCount;
+
+        gapLength = 0;
+        const int gapStart = sampleIndex;
+        while (sampleIndex < sampleCount && hits[sampleIndex] == 0)
+        {
+            ++sampleIndex;
+            ++gapLength;
+        }
+
+        EnemyLaserType0RequestView args = request;
+        const float segmentLength =
+            static_cast<float>(gapLength) * 12.0f;
+        args.maximumLength = segmentLength;
+        args.initialLength = segmentLength;
+
+        if (18.0f < segmentLength)
         {
             const float start = static_cast<float>(gapStart);
             args.position.x = originalPosition.x + step.x * start;

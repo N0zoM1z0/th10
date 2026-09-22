@@ -317,3 +317,4 @@ EnemyDropVectorView::FromAngleRadii
 EnemyLaserVectorView::FromAngleMagnitude
 EnemyLaserBoundaryStateView::UpdateBoundary
 EnemyLaserType0CollisionView::CheckCollisionBox
+EnemyLaserType0CollisionView::CheckCollisionCircle
