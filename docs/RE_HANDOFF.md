@@ -50,13 +50,16 @@ not mix measurements from different LTCG support graphs.
 
 ## Enemy dispatcher: current recovery point
 
-The selected current diagnostic extends the rank-float shared-tail checkpoint
-with the target 0x119 positive-value comparison shape:
+Use only the current target-correct source checkpoint at HEAD. Historical Enemy
+measurements in KNOWLEDGE_BASE and Git explain how the source got here; they are
+not alternate baselines to restore.
 
-- .analysis/enemy-exp-119-positive-comparisons-probe.json
-- .analysis/enemy-exp-119-positive-comparisons-layout.json
+Selected focused diagnostic:
 
-These are focused linked-PE diagnostics, not exactness evidence.
+- `.analysis/enemy-exp-119-positive-comparisons-probe.json`
+- `.analysis/enemy-exp-119-positive-comparisons-layout.json`
+
+These linked-PE reports are diagnostics, not exactness authority.
 
 | Measure | Selected candidate | Target |
 | --- | ---: | ---: |
@@ -69,168 +72,81 @@ These are focused linked-PE diagnostics, not exactness evidence.
 | Suffix | 43 | 43 |
 | START_SPELL physical group | 214 | 219 |
 
-The current source-shape checkpoint deliberately supersedes c317b0f's explicit
-ReadFloatArgument context local. Target 0x00412A60 is an unreferenced 14-byte
-float-reader adapter, while the dispatcher calls generic EclVmContext::ReadFloat
-at 0x0044FE40 directly. The one-expression maintained wrapper reproduces that
-call topology: its separate candidate adapter is 14 bytes with a tail jump and
-has no dispatcher calls, while the explicit-local variant introduced four false
-adapter calls. The structural correction keeps the complete contribution,
-pre-table span, selector, physical group order and suffix unchanged. Its raw
-normalized agreement is 680/11,544 rather than c317b0f's 696/11,536 coloring
-score; do not restore the false adapter calls merely to improve that heuristic.
-Opcode 0x10E is now 289/287 and 0x1B3 is 167/170, versus 231/287 and 227/170
-under the explicit-local variant.
+Current retained source facts:
 
-The current extension keeps that direct generic ReadFloat topology and expresses
-opcode 0x1A8's two result stores through the recovered EnemyBulletPatternView
-array rather than a manually reconstructed byte address. That natural typed
-source shape leaves the 14,292-byte contribution, 13,636-byte pre-table span,
-181/181 selector, physical order and 43-byte suffix unchanged while raising
-normalized agreement from 680/11,544 to 690/11,544. The 0x1A8 physical group
-changes from 172 to 171 bytes against target 206; this remains a global coloring
-checkpoint, not a local exact case. All five canonical EnemyEclDispatcher exact
-helper units cold-replay zero-difference for 461/461 bytes after the change.
-The owner remains non-exact.
+- Dispatcher float reads use the generic `EclVmContext::ReadFloat` boundary;
+  target `0x00412A60` is an unreferenced adapter. Do not restore the older
+  explicit `EclVmContext *context` local merely because it scored 696/11,536;
+  that variant introduced false adapter calls.
+- Opcode `0x1A8` writes through the recovered `EnemyBulletPatternView` array.
+  The raw-offset spelling is superseded.
+- Rank-float selection uses the two target-observed shared
+  ReadFloat/ResolveFloat/store tails. Do not restore a private third 0x15E tail.
+- Opcode `0x119` uses the target's strict-positive tests (`0.0 < value`). This
+  changed the broad heuristic score from the preceding rank-tail checkpoint's
+  731 to the current 730/11,556 while fixing unordered/NaN behavior and branch
+  shape. The old 731 score is superseded and is not a better checkpoint.
 
-The current checkpoint additionally restores the target rank-float sharing
-topology. Target 0x15E does not own a third private ReadFloat/ResolveFloat/store
-return path: its >= -200 and < -400 paths select operand indices 2 and 0 into
-the first rank-float tail, while the -400..-200 path selects index 1 into the
-second tail also reached by 0x15D and AIM_BULLET_AT_PLAYER. Routing the
-maintained source through those two existing tails removes the extra candidate
-tail and raises normalized agreement from 690/11,544 to 731/11,556. The
-complete contribution becomes 14,228/14,416 and the pre-table span
-13,572/13,760; selector bytes remain 181/181 and physical group order remains
-target-equal. The resulting 0x15D, 0x15E and 0x1AE physical intervals are
-44/39, 123/169 and 116/76 candidate/target bytes respectively, so this is a
-control-flow recovery checkpoint rather than a local or whole-owner exactness
-claim. All five canonical EnemyEclDispatcher exact helper units cold-replay
-zero-difference for 461/461 bytes after the change.
+Canonical exact dependencies already protected around this owner include
+`EnemyMarkPendingInterrupt` (65 bytes), `EnemySoundQueueView::QueueSoundSample`
+(123), `QueueSoundCue` (149), `EnemyDropVectorView::FromAngleRadii` (30), and
+`EnemyRuntimeView::EnemyRuntimeView` (145). The ANM render-layer creator family
+also remains independently exact in its canonical context. Re-run the focused
+exact-unit gate after changing this translation unit; giant-owner diagnostics do
+not override accepted small exact units.
 
-The current extension also restores the target comparison semantics in opcode
-0x119 INTERPOLATE_OFFSET_POSITION/BASE_POSITION. The shipped code compares each
-optional coordinate as `0.0 < value`: after `FCOMP 0.0` it tests x87 C3/C0 with
-`TEST AH,0x41` and uses `JNE` to select the current motion coordinate when the
-argument is not strictly positive. The earlier maintained spelling
-`value <= 0.0` is equivalent only for ordinary finite values; VC7.1 emits `JP`
-and therefore takes a different path for unordered/NaN inputs. Reversing each
-source branch to the target-positive form changes those two candidate `JP`s to
-target-shaped `JNE`s without changing the 14,228-byte contribution, 13,572-byte
-pre-table span, 313/304 target/candidate 0x119 physical interval, selector, or
-physical case order. The broad normalized coloring score moves from 731 to
-730/11,556; the one-byte heuristic decrease is not a reason to restore the
-wrong unordered comparison semantics. Five canonical EnemyEclDispatcher helper
-units cold-replay exact for 461/461 bytes after the change. Experiments that
-introduced scalar result temporaries shrank 0x119 to 296 bytes and the whole
-owner to 14,180, so they were reverted.
+Current open problems, in priority order:
 
-The earlier spell and screen-shake ABI fixes are already retained in Git and
-KNOWLEDGE_BASE. Do not re-derive the current baseline from their older
-657/11,544 or 680/11,544 measurements. In particular, target
-EnemySetScreenShake @ 0x0043C8B0 consumes five stack arguments and returns
-with RET 0x14; the target dispatcher additionally carries draw priority 0x31
-in EBX as a private LTCG value. A six-stack-argument source prototype is not
-the shipped ABI and should not be restored merely because a focused experiment
-changes the whole-owner score.
+1. **Private integer-reader ABI.** Target `ReadIntArgument @ 0x00412A00` is a
+   16-byte adapter with private `EAX=runtime`, `ECX=index`. The maintained
+   callgraph has the target-observed 30 direct adapter calls and a 16-byte
+   candidate adapter, but its private registers are reversed. This difference
+   propagates into rank/difficulty integer cases and whole-function coloring.
+2. **Shared-tail physical ownership.** `AIM_BULLET_AT_PLAYER 0x1AE` reaches the
+   same float Resolve/store tail as rank/difficulty selection in the target;
+   semantic routing is recovered, but VC7.1 still places the shared block under
+   the wrong physical group. Moving equivalent C labels alone does not change
+   this.
+3. **`SET_BULLET_COUNT_BY_DIFFICULTY 0x1B4`.** Target has two local difficulty
+   trees whose branches select immediate indices before one generic ReadInt join
+   per tree; the second join also changes the owner register lifetime. The
+   retained group is 140/151 bytes. Several locally closer 128..226-byte source
+   variants worsen whole-owner agreement and are superseded.
+4. **FireLaser cross-owner LTCG ABI.** Target `EnemyFireLaser @ 0x0041C510`
+   consistently receives `ESI=manager`, `EDI=request`, plus stack type across ten
+   calls in six owners. Five caller owners are outside the focused dispatcher
+   graph. Do not fake this ESI/EDI convention with a dispatcher-only member or
+   synthetic local dependency; reconstruct the real caller graph when those
+   owners become available.
+5. **Whole-function spill/stack coloring.** Large laser/spawn scratch objects are
+   uniformly eight bytes below target stack offsets despite the correct 0x2C4
+   frame and understood object sizes/order. Treat this as a lifetime/spill
+   symptom, not missing padding or dummy locals. The PLAY_ANM 0x107 three-byte
+   gap is another symptom of the same entry-register state problem.
 
-Canonical exact dependencies already accepted around this owner include:
+Known negative/superseded experiment classes that should not be repeated without
+new target evidence:
 
-- EnemyMarkPendingInterrupt @ 0x00409E50: 65 bytes;
-- EnemySoundQueueView::QueueSoundSample @ 0x0043DC90: 123 bytes;
-- EnemySoundQueueView::QueueSoundCue @ 0x0043DD10: 149 bytes;
-- EnemyDropVectorView::FromAngleRadii @ 0x00413270: 30 bytes;
-- EnemyRuntimeView::EnemyRuntimeView @ 0x0040CC70: 145 bytes;
-- ANM render-layer creators CreateVmVariant0/2/1/3: four independent 73-byte
-  exact units in their canonical AnmVmCreate.cpp/ExecuteScript context.
+- volatile/dummy owner reloads, fake dependencies, padding, or dummy locals;
+- direct exposure of recovered Spawn/EndSpell/screen-effect bodies to the
+  dispatcher solely to steer LTCG;
+- the 2026-09-22 EndSpell/GUI full-seam experiments, which produced only
+  14,180/14,416 and at best 669/11,568 (later variants also had incomplete
+  normalization), well below the retained checkpoint;
+- changing `EnemyRuntimeView::owner` from the full host pointer to the base ECL
+  host type solely for alias coloring; it produced byte-identical owner metrics;
+- source-order-only moves of spawn cases or shared-tail labels;
+- replacing all ReadInt calls with direct generic reads, or forcing a synthetic
+  local/static/private wrapper ABI;
+- memcpy/aggregate rewrites chosen only because a short local sequence looks
+  closer; several caused unrelated cross-case folding and worse whole-owner
+  diagnostics;
+- changing accepted exact ANM creator ABI/TU shape to improve this giant owner.
 
-Useful supporting owners remain non-exact:
-
-- EnemySpawn @ 0x0040CFB0 is target-sized at 577/577 in its focused diagnostic
-  but is not byte-exact;
-- EnemyFullObjectView::EnemyFullObjectView @ 0x0040D830 is 672/673 with
-  137/653 normalized comparable bytes;
-- directly exposing recovered Spawn/EndSpell/screen-effect bodies to the
-  dispatcher changes its private register allocation and has not reproduced
-  the shipped production caller graph.
-
-The target 0x2C4 frame and shared spell scratch lifetime are target-derived.
-Do not normalize instruction +0x1C back to an integer merely to improve size.
-The remaining broad differences are dominated by private register allocation,
-helper visibility/caller graph, shared-tail ownership, and stack slot coloring.
-The large laser/spawn scratch objects remain uniformly eight bytes below their
-target stack offsets even though their sizes/order are understood; current
-evidence indicates this is a spill/lifetime problem, not missing padding or
-missing dummy locals.
-
-### Known negative experiments
-
-These experiments were useful for diagnosis but should not be repeated or
-restored without a new target-derived reason:
-
-- replacing ordinary owner uses with normal runtime reloads is optimized back
-  to the same code;
-- volatile owner reloads release a register but greatly inflate the dispatcher
-  and worsen physical layout;
-- routing all direct integer reads through ReadIntArgument changes the physical
-  case order and is not a valid replacement for the private ReadInt call shape;
-- direct rank-threshold rewrites for the 0x1A6/0x1A9 family worsen shared-tail
-  ownership even when the source condition looks closer to the decompiler;
-- aggregate ANM position copies and a forced managed-VM pointer in opcode 0x103
-  both worsened the linked layout;
-- moving C labels/source anchors alone does not move the shared float-store
-  tail; VC7.1 canonicalizes those equivalent CFGs;
-- synthetic Enemy-local reconstructions of FireLaser/laser constructors do
-  not reproduce the shipped private ABI. Target FireLaser @ 0x0041C510 has
-  six target callers, five outside the dispatcher, so its ABI is a
-  cross-owner/LTCG problem. Do not fake that context inside the dispatcher.
-
-- splitting PlayerFloat3 vectorScratch into three scalar locals shrinks the
-  owner to 13,952 bytes and worsens agreement; the eight-byte scratch offset
-  is not fixed by changing aggregate spelling;
-- six-stack-argument screen-shake prototypes and synthetic full screen-effect
-  caller graphs do not reproduce the shipped five-stack-argument + EBX
-  private ABI;
-- changing the canonical exact CreateVmVariant0 member ABI/TU shape can make
-  the Enemy owner look much closer in one diagnostic, but regresses the ANM
-  production-context diagnostic. Do not trade an accepted exact helper
-  context for a giant-owner score.
-
-Useful target-local clues that remain open:
-
-- PLAY_ANM 0x107 is three bytes short because the shipped dispatcher reaches
-  the case with EDX holding the owner and performs mov edx,[edx+4] at the case
-  entry; the current candidate reaches it with a different whole-function
-  register state. This is not a local three-byte bug.
-- AIM_BULLET_AT_PLAYER 0x1AE jumps into the float Resolve/store tail used by
-  rank/difficulty float selection. Commit 8b5a2cb recovers the target-shaped
-  EBX=owner lifetime in that tail, but physical ownership is still different.
-- SET_BULLET_COUNT_BY_DIFFICULTY 0x1B4 is target-observed as two local
-  difficulty trees whose branches push immediate indices 1..4 and 5..8 before
-  joining one generic ReadInt call per tree; the second join destructively
-  changes EBX from runtime to full owner. The retained 140/151-byte case uses
-  register index selection and shares its second call outside the group.
-  Isolated branch/switch/context variants produce 128, 143, 146, 171, 177,
-  208, 214 and 226-byte cases but all worsen whole-owner agreement from the
-  retained 731/11,556 frontier. Do not pad the closest 146-byte variant or
-  re-promote it on local size alone; common-call placement remains coupled to
-  whole-function register allocation.
-- FireLaser @ 0x0041C510 uses ESI=manager, EDI=request and stack type in the
-  shipped image. This is now confirmed at all ten direct call sites across six
-  owners: four dispatcher calls, two from 0x0041CFD0, and one each from
-  0x0041D880/0x0041DD80/0x0041EB00/0x0041EFA0. Every reviewed site carries
-  the same manager global at 0x0047781C in ESI while EDI names an object-local
-  or stack request. The base initializer @ 0x0041C030 is a 98-byte EDX-receiver
-  body; derived initializers at 0x0041C5B0/0x0041C680 are 202/219-byte bodies.
-  Recasting only the dispatcher seam as a normal C++ member worsens the owner
-  to 14,152/14,416 and 677/11,572 because the five external caller owners are
-  absent from the focused support graph. Treat the ESI/EDI ABI as a real
-  cross-owner LTCG problem; do not fake it inside the dispatcher or with raw
-  offset-only constructors.
-
-Avoid padding, inline assembly used only for byte shaping, volatile-only
-dependencies, fake data dependencies, and speculative class graphs whose only
-purpose is to steer LTCG.
+Useful supporting owners remain non-exact: `EnemySpawn @ 0x0040CFB0` is
+577/577 in its focused diagnostic but not byte-exact, and
+`EnemyFullObjectView::EnemyFullObjectView @ 0x0040D830` is 672/673 with
+137/653 normalized comparable bytes.
 
 ### Focused Enemy probe
 
@@ -240,8 +156,8 @@ purpose is to steer LTCG.
 
 Read the linked entry address from the probe report. Do not hard-code an old
 candidate address. When the worktree contains unrelated edits, use committed
-HEAD snapshots for support translation units rather than silently
-incorporating dirty source.
+HEAD snapshots for support translation units rather than silently incorporating
+dirty source.
 
 ## ANM executor: recovery point
 
@@ -338,9 +254,15 @@ Delete after a checkpoint:
 
 At the current checkpoint, the useful top-level retained comparisons are:
 
-- enemy-readfloat-context-local-repro-{probe,layout}.json;
-- anm-variant0-member-split-{probe,layout}.json;
-- ecl-start-member-cached-host-{probe,layout}.json.
+- `enemy-exp-119-positive-comparisons-{probe,layout}.json` plus the small
+  `enemy-119-positive-focused-replay.json` regression report;
+- `anm-variant0-member-split-{probe,layout}.json` for the still-relevant
+  exact-creator split context;
+- `ecl-start-member-cached-host-{probe,layout}.json`.
+
+Historical paths named by KNOWLEDGE_BASE are provenance labels and may be absent
+after their conclusions have been compacted into tracked evidence. Do not treat
+a missing historical scratch file as loss of exactness authority.
 
 Do not preserve scratch merely because an old KNOWLEDGE_BASE row names it.
 Accepted exactness lives in config/match-units.toml, config/matches.csv,
