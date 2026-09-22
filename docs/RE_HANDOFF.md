@@ -41,7 +41,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 
 | Owner | Target | Current retained diagnostic | Status |
 | --- | ---: | --- | --- |
-| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,228 bytes; pre-table 13,572/13,760; 730/11,556 normalized comparable bytes; selector 181/181; physical order matches; rank-float shared tails and target 0x119 positive-value tests retained | non-exact |
+| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,228 bytes; pre-table 13,572/13,760; 746/11,556 normalized comparable bytes; selector 181/181; physical order matches; typed 0x1A8 speed fields, rank-float shared tails and target 0x119 positive-value tests retained | non-exact |
 | AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | selected source-shape diagnostic: contribution 9,960 with pre-table 9,584/9,588 and 705/8,608 agreement; exact-creator split context separately yields 10,040 with pre-table 9,664 | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | 7,020/7,020; pre-table 6,692/6,692; 945/6,264 normalized agreement, normalization incomplete | non-exact |
 
@@ -56,8 +56,8 @@ not alternate baselines to restore.
 
 Selected focused diagnostic:
 
-- `.analysis/enemy-exp-119-positive-comparisons-probe.json`
-- `.analysis/enemy-exp-119-positive-comparisons-layout.json`
+- `.analysis/gpt-web-enemy-rankspeed-typed-fields-probe.json`
+- `.analysis/gpt-web-enemy-rankspeed-typed-fields-layout.json`
 
 These linked-PE reports are diagnostics, not exactness authority.
 
@@ -66,7 +66,7 @@ These linked-PE reports are diagnostics, not exactness authority.
 | Complete contribution | 14,228 | 14,416 |
 | Pre-table span | 13,572 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 735 / 11,556 | 11,556 / 11,556 |
+| Normalized comparable bytes | 746 / 11,556 | 11,556 / 11,556 |
 | Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
 | Suffix | 43 | 43 |
@@ -79,19 +79,25 @@ Current retained source facts:
   explicit `EclVmContext *context` local merely because it scored 696/11,536;
   that variant introduced false adapter calls.
 - Opcode `0x1A8` writes through the recovered `EnemyBulletPatternView` array.
-  Its four float operands now have natural case-local source lifetimes instead
-  of reusing function-wide decompiler temporaries. Under the selected linked
-  context this keeps the owner at 14,228/14,416 and the case at 171/206 bytes
-  while improving normalized agreement from 730 to 735/11,556. The target
-  still homes the three saved float operands at ESP+0x10/+0x30/+0x18 while the
-  candidate uses +0x18/+0x40/+0x38, so this is a non-exact lifetime checkpoint,
-  not a local exact claim. The raw-offset spelling is superseded.
+  Its four float operands have natural case-local source lifetimes, and target
+  stores prove typed float speed fields at pattern `+0x18` and `+0x1C`.
+  Maintaining those fields as an overlay on the existing 0x210-byte words view
+  makes VC7.1 form the destination in the target shape (`LEA` of scaled index
+  plus runtime, then stores at `+0x2DC/+0x2E0`). Under the selected linked
+  context this keeps the owner at 14,228/14,416, changes the case from 171 to
+  173 bytes versus target 206, and raises normalized agreement from 735 to
+  746/11,556. The target still homes the three saved float operands at
+  ESP+0x10/+0x30/+0x18 while the candidate uses +0x18/+0x40/+0x38; it also
+  consumes and rematerializes the rank factor where the candidate keeps it live
+  on x87. This remains a non-exact checkpoint. The raw-offset spelling is
+  superseded.
 - Rank-float selection uses the two target-observed shared
   ReadFloat/ResolveFloat/store tails. Do not restore a private third 0x15E tail.
 - Opcode `0x119` uses the target's strict-positive tests (`0.0 < value`). This
   changed the broad heuristic score from the preceding rank-tail checkpoint's
-  731 to the current 730/11,556 while fixing unordered/NaN behavior and branch
-  shape. The old 731 score is superseded and is not a better checkpoint.
+  731 to 730/11,556 at that checkpoint while fixing unordered/NaN behavior and
+  branch shape. The later retained 0x1A8 source work supersedes that whole-owner
+  score; the old 731 score is not a better checkpoint.
 
 Canonical exact dependencies already protected around this owner include
 `EnemyMarkPendingInterrupt` (65 bytes), `EnemySoundQueueView::QueueSoundSample`

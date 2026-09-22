@@ -2164,12 +2164,10 @@ dispatch_bullet_speed_lowest:
     float lowSpeedB = ReadFloatArgument(2);
     float highSpeedA = ReadFloatArgument(3);
     float highSpeedB = ReadFloatArgument(4);
-    EnemyBulletPatternView *pattern = &bulletPatterns[patternIndex];
-    float *patternValues = reinterpret_cast<float *>(pattern);
-    patternValues[0x18 / 4] =
+    bulletPatterns[patternIndex].fields.speedA =
          (highSpeedA - lowSpeedA) * ((float)g_EnemyRank + 1024.0f) *
          0.00048828125f + lowSpeedA;
-    patternValues[0x1c / 4] =
+    bulletPatterns[patternIndex].fields.speedB =
          (highSpeedB - lowSpeedB) * ((float)g_EnemyRank + 1024.0f) *
          0.00048828125f + lowSpeedB;
     return 0;

@@ -113,11 +113,29 @@ typedef char EnemyCallbackThresholdViewSizeIs10[
 // The eight target bullet-pattern records occupy runtime +0x2C4..+0x1343.
 // Their constructor clears all 0x210 bytes and then writes -1 at +0x204.
 // The dispatcher independently proves the 0x210 stride.
+struct EnemyBulletPatternFieldsView
+{
+    unsigned char unknown000[0x18];
+    float speedA;
+    float speedB;
+    unsigned char unknown020[0x210 - 0x20];
+};
+typedef char EnemyBulletPatternFieldsViewSizeIs210[
+    (sizeof(EnemyBulletPatternFieldsView) == 0x210) ? 1 : -1];
+typedef char EnemyBulletPatternSpeedAAt018[
+    (offsetof(EnemyBulletPatternFieldsView, speedA) == 0x18) ? 1 : -1];
+typedef char EnemyBulletPatternSpeedBAt01C[
+    (offsetof(EnemyBulletPatternFieldsView, speedB) == 0x1c) ? 1 : -1];
+
 struct EnemyBulletPatternView
 {
     EnemyBulletPatternView();
 
-    unsigned int words[0x84];
+    union
+    {
+        unsigned int words[0x84];
+        EnemyBulletPatternFieldsView fields;
+    };
 };
 typedef char EnemyBulletPatternViewSizeIs210[
     (sizeof(EnemyBulletPatternView) == 0x210) ? 1 : -1];
