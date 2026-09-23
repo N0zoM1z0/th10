@@ -190,6 +190,9 @@ AnmLoadedView::CreateVmVariant2
 AnmLoadedView::CreateVmVariant1
 AnmLoadedView::CreateVmVariant3
 AnmVmIdView::GetVm
+AnmVmIdView::SetFlag2
+AnmVmIdView::ClearFlag2
+AnmVmIdView::Release
 AnmLoadedView::InitializeVm
 AnmRenderManagerView::AddVmVariant0
 AnmRenderManagerView::AddVmVariant2

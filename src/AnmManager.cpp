@@ -2947,60 +2947,6 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant3(
     return g_AnmRenderManagerView->AddVmVariant3(vm);
 }
 
-// Target 0x00449450 clears a stale id after the two manager lists fail to
-// resolve it, making future lookups cheap and deterministic.
-AnmVmView *AnmVmIdView::GetVm()
-{
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
-    if (vm == NULL)
-        value = 0;
-    return vm;
-}
-
-void AnmVmIdView::SetFlag2()
-{
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
-    if (vm == NULL)
-        return;
-
-    const unsigned int mask = 2u;
-    vm->flags35C |= mask;
-    if (vm->layerNode.previous != NULL)
-        return;
-
-    AnmVmLayerNodeView *node = vm->layerNode.next;
-    while (node != NULL)
-    {
-        static_cast<AnmVmView *>(node->owner)->flags35C |= mask;
-        node = node->next;
-    }
-}
-
-void AnmVmIdView::ClearFlag2()
-{
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
-    if (vm == NULL)
-        return;
-
-    const unsigned int mask = 0xfffffffdu;
-    vm->flags35C &= mask;
-    if (vm->layerNode.previous != NULL)
-        return;
-
-    AnmVmLayerNodeView *node = vm->layerNode.next;
-    while (node != NULL)
-    {
-        static_cast<AnmVmView *>(node->owner)->flags35C &= mask;
-        node = node->next;
-    }
-}
-
-void AnmVmIdView::Release()
-{
-    g_AnmRenderManagerView->MarkVmForDeletion(*this);
-    value = 0;
-}
-
 // Target 0x0043EE30 is TH10's complete variable-length ANM instruction
 // executor. The adjacent TH095 source supplies control-flow hypotheses; every
 // opcode, VM offset, interpolation call and frame-end update below is checked
