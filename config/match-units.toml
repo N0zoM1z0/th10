@@ -1477,11 +1477,11 @@ symbol = "?ResolveIntOperand@EnemyFullObjectView@@UAEPAHH@Z"
 target_address = 0x00412300
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L4060", target = 0x00412340 },
-  { offset = 64, type = "DIR32", symbol = "$L3342", target = 0x00412315 },
-  { offset = 68, type = "DIR32", symbol = "$L3343", target = 0x0041231E },
-  { offset = 72, type = "DIR32", symbol = "$L3344", target = 0x00412327 },
-  { offset = 76, type = "DIR32", symbol = "$L3345", target = 0x00412330 },
+  { offset = 17, type = "DIR32", symbol = "$L4106", target = 0x00412340 },
+  { offset = 64, type = "DIR32", symbol = "$L3365", target = 0x00412315 },
+  { offset = 68, type = "DIR32", symbol = "$L3366", target = 0x0041231E },
+  { offset = 72, type = "DIR32", symbol = "$L3367", target = 0x00412327 },
+  { offset = 76, type = "DIR32", symbol = "$L3368", target = 0x00412330 },
 ]
 
 [units.enemy-ecl-float-lvalue-resolver]
@@ -1494,11 +1494,11 @@ symbol = "?ResolveFloatOperand@EnemyFullObjectView@@UAEPAMH@Z"
 target_address = 0x004126D0
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L4100", target = 0x00412710 },
-  { offset = 64, type = "DIR32", symbol = "$L3420", target = 0x004126E5 },
-  { offset = 68, type = "DIR32", symbol = "$L3421", target = 0x004126EE },
-  { offset = 72, type = "DIR32", symbol = "$L3422", target = 0x004126F7 },
-  { offset = 76, type = "DIR32", symbol = "$L3423", target = 0x00412700 },
+  { offset = 17, type = "DIR32", symbol = "$L4146", target = 0x00412710 },
+  { offset = 64, type = "DIR32", symbol = "$L3443", target = 0x004126E5 },
+  { offset = 68, type = "DIR32", symbol = "$L3444", target = 0x004126EE },
+  { offset = 72, type = "DIR32", symbol = "$L3445", target = 0x004126F7 },
+  { offset = 76, type = "DIR32", symbol = "$L3446", target = 0x00412700 },
 ]
 
 [units.pbgfile-constructor]

@@ -703,6 +703,18 @@ void AnmRenderManagerView::SetVmPendingInterruptAndExecute(
     }
 }
 
+// Target 0x004496D0 resolves an existing VM ID through the shared manager,
+// selects its new loaded-ANM script, and immediately executes that script.
+void AnmSetVmScriptIndexAndExecute(
+    const unsigned int *vmId, int scriptIndex)
+{
+    AnmVmView *const vm = g_AnmRenderManagerView->FindVm(*vmId);
+    if (vm == NULL)
+        return;
+
+    vm->anmFile->SetAndExecuteScriptIdx(vm, scriptIndex);
+}
+
 // Target 0x004492A0 marks a VM tree for removal during the manager update.
 void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)
 {

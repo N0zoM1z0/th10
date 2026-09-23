@@ -275,7 +275,8 @@ void EnemyEvaluateScalarInterpolation(
     EnemyScalarInterpolationView *interpolation, EnemyFloat2 *out);
 float __stdcall EnemyWrapAngle(float angle);
 void EnemyAdvanceMotion(EnemyMotionView *motion);
-void EnemySetAnimationScript(EnemyRuntimeView *enemy, int script);
+void AnmSetVmScriptIndexAndExecute(
+    const unsigned int *vmId, int scriptIndex);
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
 const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     EnemyFullObjectView *owner);
@@ -851,14 +852,16 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
             if ((enemy->flags & 0x200000u) == 0)
             {
                 enemy->animationBaseScript = enemy->animationScriptPrimary;
-                EnemySetAnimationScript(enemy, enemy->animationScriptPrimary);
+                AnmSetVmScriptIndexAndExecute(
+                    &enemy->managedVmIds[0], enemy->animationScriptPrimary);
                 enemy->flags |= 0x200001u;
             }
         }
         else if ((enemy->flags & 0x200000u) != 0)
         {
             enemy->animationBaseScript = enemy->animationScriptAlternate;
-            EnemySetAnimationScript(enemy, enemy->animationScriptAlternate);
+            AnmSetVmScriptIndexAndExecute(
+                &enemy->managedVmIds[0], enemy->animationScriptAlternate);
             enemy->flags &= 0xffdffffeu;
         }
     }
@@ -957,8 +960,9 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                 scriptOffset = direction == 0 ? 4 : 1;
 
             enemy->animationDirection = direction;
-            EnemySetAnimationScript(
-                enemy, enemy->animationBaseScript + scriptOffset);
+            AnmSetVmScriptIndexAndExecute(
+                &enemy->managedVmIds[0],
+                enemy->animationBaseScript + scriptOffset);
         }
     }
 

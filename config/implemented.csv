@@ -215,6 +215,7 @@ AnmRenderManagerView::SetVmPendingInterrupt
 AnmRenderManagerView::SetVmPendingInterruptAndExecute
 AnmRenderManagerView::MarkVmForDeletion
 AnmRenderManagerView::SetVmPosition
+AnmSetVmScriptIndexAndExecute
 AnmRenderManagerView::SetVmWorldPosition
 AnmRenderManagerView::GetVmPosition
 AnmRenderManagerView::MarkLoadedVmsForDeletion

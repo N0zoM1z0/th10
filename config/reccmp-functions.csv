@@ -228,6 +228,7 @@ AnmRenderManagerView::SetVmPendingInterrupt,0x00449210,function
 AnmRenderManagerView::SetVmPendingInterruptAndExecute,0x00449250,function
 AnmRenderManagerView::MarkVmForDeletion,0x004492A0,function
 AnmRenderManagerView::SetVmPosition,0x004492F0,function
+AnmSetVmScriptIndexAndExecute,0x004496D0,function
 AnmRenderManagerView::SetVmWorldPosition,0x00449350,function
 AnmRenderManagerView::GetVmPosition,0x004493C0,function
 AnmRenderManagerView::MarkLoadedVmsForDeletion,0x004493E0,function
