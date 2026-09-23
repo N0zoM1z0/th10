@@ -13,13 +13,12 @@
 
 namespace FileSystem
 {
-// Descriptive source-level interfaces for the observed write-file seam.
-// OpenWriteFile is target-observed at 0x0044B620. The writer contains the
-// WriteToOpenFile/CloseWriteFile behavior inline; their original source-level
-// inlining and physical owner remain unknown.
+// Descriptive source-level interfaces for replay writing.
+// OpenWriteFile is target-observed at 0x0044B620. WriteToOpenFile remains a
+// caller-facing seam whose target boundary and original owner are unknown.
+// CloseWriteFile uses the declaration in FileSystem.hpp.
 int OpenWriteFile(const char *filename);
 void WriteToOpenFile(const void *data, unsigned int size);
-void CloseWriteFile();
 }
 
 namespace ReplayFile
