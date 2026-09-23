@@ -85,15 +85,15 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
 {
     LONG signedOffset = (LONG)offset;
 
-    if (seekFrom == FILE_BEGIN)
+    switch (seekFrom)
     {
+    case FILE_BEGIN:
         if (signedOffset < 0 || offset >= m_Size)
             return false;
         m_Current = m_Data + offset;
         return true;
-    }
 
-    if (seekFrom == FILE_CURRENT)
+    case FILE_CURRENT:
     {
         LONG bytesRemaining = (LONG)(m_Data + m_Size - m_Current);
         if (bytesRemaining <= signedOffset)
@@ -102,7 +102,7 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
         return true;
     }
 
-    if (seekFrom == FILE_END)
+    case FILE_END:
     {
         if (signedOffset > 0)
             return false;
@@ -115,7 +115,9 @@ bool CMemoryPbgFile::Seek(DWORD offset, DWORD seekFrom)
         return true;
     }
 
-    return false;
+    default:
+        return false;
+    }
 }
 
 bool CWin32ResourcePbgFile::Open(const char *resourceName, char *mode)
