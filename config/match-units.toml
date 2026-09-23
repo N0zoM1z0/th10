@@ -3372,3 +3372,22 @@ linkages = [
   { offset = 47, type = "DIR32", symbol = "_g_PlayerShotPlayfieldMinimumY", target = 0x00470B04 },
   { offset = 67, type = "DIR32", symbol = "_g_PlayerShotPlayfieldMaximumY", target = 0x00470B38 },
 ]
+
+[units.enemy-laser-playfield-bounds]
+artifact_kind = "linked-pe"
+source = "src/EnemyLaser.cpp"
+output_dir = "build/match-linked/EnemyLaserBounds"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?IsOutsidePlayfield@EnemyLaserVectorView@@QAEHMM@Z"
+functions = ["EnemyLaserVectorView::IsOutsidePlayfield"]
+symbol = "?IsOutsidePlayfield@EnemyLaserVectorView@@QAEHMM@Z"
+target_address = 0x0041F7A0
+size = 91
+linkages = [
+  { offset = 8, type = "DIR32", symbol = "_g_EnemyLaserPlayfieldMinimumX", target = 0x00470B40 },
+  { offset = 27, type = "DIR32", symbol = "_g_EnemyLaserPlayfieldMaximumX", target = 0x00470B3C },
+  { offset = 47, type = "DIR32", symbol = "_g_EnemyLaserPlayfieldMinimumY", target = 0x00470B04 },
+  { offset = 67, type = "DIR32", symbol = "_g_EnemyLaserPlayfieldMaximumY", target = 0x00470B38 },
+]

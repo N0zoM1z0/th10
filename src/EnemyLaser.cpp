@@ -10,6 +10,7 @@ struct EnemyLaserVectorView
     float z;
 
     void FromAngleMagnitude(float angle, float magnitude);
+    int IsOutsidePlayfield(float extentX, float extentY);
 };
 
 typedef char EnemyLaserVectorViewSizeIs0C[
@@ -34,6 +35,29 @@ void EnemyLaserVectorView::FromAngleMagnitude(float angle, float magnitude)
     x = 0.0f;
     y = 0.0f;
 #endif
+}
+
+// This local view method matches the bounds helper called by the type-0 and
+// type-1 laser collision owners. The original class and production TU remain
+// unknown; the third target caller is still unmapped.
+extern "C" {
+    extern const float g_EnemyLaserPlayfieldMinimumX;
+    extern const float g_EnemyLaserPlayfieldMaximumX;
+    extern const float g_EnemyLaserPlayfieldMinimumY;
+    extern const float g_EnemyLaserPlayfieldMaximumY;
+}
+
+int EnemyLaserVectorView::IsOutsidePlayfield(
+    float extentX, float extentY)
+{
+    if (!(x + extentX <= g_EnemyLaserPlayfieldMinimumX) &&
+        !(x - extentX >= g_EnemyLaserPlayfieldMaximumX) &&
+        !(y + extentY <= g_EnemyLaserPlayfieldMinimumY) &&
+        !(y - extentY >= g_EnemyLaserPlayfieldMaximumY))
+    {
+        return 0;
+    }
+    return 1;
 }
 
 
@@ -182,9 +206,6 @@ typedef char EnemyLaserType0RequestColorAt026[
 typedef char EnemyLaserType0RequestPatternAt02C[
     (offsetof(EnemyLaserType0RequestView, patternWords) == 0x2c) ? 1 : -1];
 
-extern int EnemyLaserSampleBoundsTest(
-    EnemyLaserVectorView *position, float width, float height);
-
 struct EnemyLaserHitEffectManagerView
 {
     void SpawnCancelEffect(
@@ -297,7 +318,7 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
             ++hitCount;
 
             if (capture != 0 &&
-                EnemyLaserSampleBoundsTest(&sample, 32.0f, 32.0f) == 0)
+                sample.IsOutsidePlayfield(32.0f, 32.0f) == 0)
             {
                 g_EnemyLaserHitEffectManager->SpawnCancelEffect(
                     &sample, 8, -1, -1.5707964f, 0.6f);
@@ -645,7 +666,7 @@ int EnemyLaserType1CollisionView::CheckCollisionBox(
             ++hitCount;
 
             if (capture != 0 &&
-                EnemyLaserSampleBoundsTest(&sample, 32.0f, 32.0f) == 0)
+                sample.IsOutsidePlayfield(32.0f, 32.0f) == 0)
             {
                 g_EnemyLaserHitEffectManager->SpawnCancelEffect(
                     &sample, 8, -1, -1.5707964f, 0.6f);

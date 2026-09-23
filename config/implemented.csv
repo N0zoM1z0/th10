@@ -324,3 +324,4 @@ AnmOpcodeVectorView::FromAngleMagnitude
 AnmScriptVectorView::FromAngleMagnitude
 EnemyRuntimeVectorView::FromAngleMagnitude
 PlayerShotBoundsView::IsOutsidePlayfield
+EnemyLaserVectorView::IsOutsidePlayfield
