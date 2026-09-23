@@ -321,3 +321,7 @@ EnemyLaserType0CollisionView::CheckCollisionBox,0x0041D880,function
 EnemyLaserType0CollisionView::CheckCollisionCircle,0x0041DD80,function
 EnemyLaserType1CollisionView::CheckCollisionBox,0x0041EB00,function
 EnemyLaserType1CollisionView::CheckCollisionCircle,0x0041EFA0,function
+AnmOpcodeVectorView::FromAngleMagnitude,0x00408750,function
+AnmScriptVectorView::FromAngleMagnitude,0x00441EF0,function
+EnemyRuntimeVectorView::FromAngleMagnitude,0x0044C5D0,function
+PlayerShotBoundsView::IsOutsidePlayfield,0x00428D70,function

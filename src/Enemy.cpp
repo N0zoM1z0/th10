@@ -274,7 +274,6 @@ void EnemyEvaluatePositionInterpolation(
 void EnemyEvaluateScalarInterpolation(
     EnemyScalarInterpolationView *interpolation, EnemyFloat2 *out);
 float __stdcall EnemyWrapAngle(float angle);
-void EnemySetVectorFromPolar(PlayerFloat3 *out, float angle, float magnitude);
 void EnemyAdvanceMotion(EnemyMotionView *motion);
 void EnemySetAnimationScript(EnemyRuntimeView *enemy, int script);
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
@@ -655,6 +654,39 @@ float *EnemyFullObjectView::ResolveFloatOperand(int operand)
     }
 }
 
+// Target 0x0044C5D0 is called by EnemyRuntimeUpdate to build the velocity's
+// XY components from angle and magnitude. Its original class name is unknown.
+struct EnemyRuntimeVectorView
+{
+    float x;
+    float y;
+    float z;
+
+    void FromAngleMagnitude(float angle, float magnitude);
+};
+typedef char EnemyRuntimeVectorViewSizeIs0C[
+    (sizeof(EnemyRuntimeVectorView) == 0x0c) ? 1 : -1];
+
+void EnemyRuntimeVectorView::FromAngleMagnitude(
+    float angle, float magnitude)
+{
+#if defined(_MSC_VER) && defined(_M_IX86)
+    __asm
+    {
+        mov eax, this
+        fld angle
+        fsincos
+        fmul magnitude
+        fstp [eax]
+        fmul magnitude
+        fstp [eax + 4]
+    }
+#else
+    x = static_cast<float>(cos(angle)) * magnitude;
+    y = static_cast<float>(sin(angle)) * magnitude;
+#endif
+}
+
 // Maintained source for the reviewed 0x0040DC80-0x0040E5EB hostile runtime
 // update owner. Allocation/constructor evidence proves that the sole target
 // argument points to the 0x14DC-byte tail at full object +0x103C. The target
@@ -701,10 +733,10 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     {
         if ((enemy->offsetMotion.flags & 1u) == 0)
         {
-            EnemySetVectorFromPolar(
-                &enemy->offsetMotion.velocity,
-                enemy->offsetMotion.value1C,
-                enemy->offsetMotion.value18);
+            reinterpret_cast<EnemyRuntimeVectorView *>(
+                &enemy->offsetMotion.velocity)->FromAngleMagnitude(
+                    enemy->offsetMotion.value1C,
+                    enemy->offsetMotion.value18);
             enemy->offsetMotion.velocity.z = 0.0f;
         }
         else
@@ -728,10 +760,10 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     {
         if ((enemy->baseMotion.flags & 1u) == 0)
         {
-            EnemySetVectorFromPolar(
-                &enemy->baseMotion.velocity,
-                enemy->baseMotion.value1C,
-                enemy->baseMotion.value18);
+            reinterpret_cast<EnemyRuntimeVectorView *>(
+                &enemy->baseMotion.velocity)->FromAngleMagnitude(
+                    enemy->baseMotion.value1C,
+                    enemy->baseMotion.value18);
             enemy->baseMotion.velocity.z = 0.0f;
         }
         else

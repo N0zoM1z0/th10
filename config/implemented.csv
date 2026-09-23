@@ -320,3 +320,7 @@ EnemyLaserType0CollisionView::CheckCollisionBox
 EnemyLaserType0CollisionView::CheckCollisionCircle
 EnemyLaserType1CollisionView::CheckCollisionBox
 EnemyLaserType1CollisionView::CheckCollisionCircle
+AnmOpcodeVectorView::FromAngleMagnitude
+AnmScriptVectorView::FromAngleMagnitude
+EnemyRuntimeVectorView::FromAngleMagnitude
+PlayerShotBoundsView::IsOutsidePlayfield

@@ -3720,6 +3720,69 @@ void AnmFloat3View::FromAngleMagnitude(float angle, float magnitude)
 #endif
 }
 
+// The target has separate, byte-identical polar helpers for the ANM opcode
+// path and the script executor path. These local views preserve those entries;
+// their original class names and production translation units are unknown.
+struct AnmOpcodeVectorView
+{
+    float x;
+    float y;
+    float z;
+
+    void FromAngleMagnitude(float angle, float magnitude);
+};
+typedef char AnmOpcodeVectorViewSizeIs0C[
+    (sizeof(AnmOpcodeVectorView) == 0x0c) ? 1 : -1];
+
+void AnmOpcodeVectorView::FromAngleMagnitude(float angle, float magnitude)
+{
+#if defined(_MSC_VER) && defined(_M_IX86)
+    __asm
+    {
+        mov eax, this
+        fld angle
+        fsincos
+        fmul magnitude
+        fstp [eax]
+        fmul magnitude
+        fstp [eax + 4]
+    }
+#else
+    x = static_cast<float>(cos(angle)) * magnitude;
+    y = static_cast<float>(sin(angle)) * magnitude;
+#endif
+}
+
+struct AnmScriptVectorView
+{
+    float x;
+    float y;
+    float z;
+
+    void FromAngleMagnitude(float angle, float magnitude);
+};
+typedef char AnmScriptVectorViewSizeIs0C[
+    (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];
+
+void AnmScriptVectorView::FromAngleMagnitude(float angle, float magnitude)
+{
+#if defined(_MSC_VER) && defined(_M_IX86)
+    __asm
+    {
+        mov eax, this
+        fld angle
+        fsincos
+        fmul magnitude
+        fstp [eax]
+        fmul magnitude
+        fstp [eax + 4]
+    }
+#else
+    x = static_cast<float>(cos(angle)) * magnitude;
+    y = static_cast<float>(sin(angle)) * magnitude;
+#endif
+}
+
 // These two target helpers are also inlined by AnmVmView::Initialize. Their
 // chained assignments preserve VC7.1's target-observed right-to-left stores.
 void AnmMatrixView::SetIdentity()

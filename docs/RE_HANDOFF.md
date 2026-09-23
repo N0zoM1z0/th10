@@ -1,6 +1,6 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-09-23. This is a current recovery snapshot, not a chronological
+Updated 2026-09-24. This is a current recovery snapshot, not a chronological
 session log. Historical target facts belong in docs/KNOWLEDGE_BASE.md and
 accepted implementation history belongs in Git.
 
@@ -16,8 +16,8 @@ accepted implementation history belongs in Git.
 - Earlier giant-owner measurements below belong to explicitly selected LTCG
   support graphs. The associated `.analysis/` files are no longer present;
   regenerate a focused probe before using a measurement as live feedback.
-- Follow the active operator's commit-prefix instruction; this cleanup uses
-  `gpt-6-sol:`.
+- Commit and push substantive checkpoints as requested by the active operator;
+  this work uses the `gpt-6-luna-max:` prefix.
 - Decompiler output, adjacent games, ignored build products and .analysis/
   artifacts are hypothesis/evidence only. They never establish exactness by
   themselves.
@@ -54,6 +54,27 @@ equal selector bytes, or source/semantic coverage is not exactness.
 
 Use the per-owner sections below for the selected context and open problems. Do
 not mix measurements from different LTCG support graphs.
+
+## Small-function roadmap
+
+Keep each helper in a source module supported by its TH10 caller path. Local
+view names describe maintained code and do not establish the original class or
+production translation unit. Do not collect unrelated helpers in a generic
+`GameSmallFunctions.cpp`.
+
+| Priority | Candidate | Evidence and next step |
+| --- | --- | --- |
+| Completed | `Lzss::DeleteString @ 0x00436210` | `src/Lzss.cpp`; exact linked-PE replay covers the complete 80-byte PDB extent and all seven linkage fields. Original production owner remains unknown. |
+| Completed | `AnmOpcodeVectorView::FromAngleMagnitude @ 0x00408750` | Maintained in `src/AnmManager.cpp`; caller `0x00406D90` is the ANM VM opcode handler. Exact body replay covers all 30 relocation-free bytes. |
+| Completed | `AnmScriptVectorView::FromAngleMagnitude @ 0x00441EF0` | Maintained in `src/AnmManager.cpp`; direct caller `0x0043EE30` is the ANM script executor. Exact body replay covers all 30 relocation-free bytes. |
+| Completed | `EnemyRuntimeVectorView::FromAngleMagnitude @ 0x0044C5D0` | Maintained in `src/Enemy.cpp`; called by `EnemyRuntimeUpdate @ 0x0040DC80`. Exact body replay covers all 30 relocation-free bytes. |
+| Completed | `PlayerShotBoundsView::IsOutsidePlayfield @ 0x00428D70` | Maintained in `src/Player.cpp`; called from `PlayerUpdateShots @ 0x00428280`. Exact linked-PE replay covers all 91 bytes and four bounds references; target values are X `(-192, 192)` and Y `(0, 448)`. |
+| Defer | `0x004086B0` and `0x0041F7A0` playfield-bounds siblings, 91 bytes each | Both share the reviewed bounds-test body, but their callers `0x00408030` and `0x0041D3D0` are not yet assigned to a maintained source owner. Keep them unmapped until the caller modules are supported by TH10 evidence. |
+| Defer | `0x0041BEB0` polar-vector helper, 30 bytes | Body matches the three completed polar helpers, but its caller `0x0041AFD0` mixes manager-state, animation-execution and score behavior. Keep it source-unmapped until the caller's module is supported by clearer TH10 evidence. |
+| Defer | `0x00409D90` and `0x0041BE80` score-cap helpers, 46 bytes each | Target behavior and callers are reviewed, but their owning types/source modules are unresolved. Do not place them by guess; revisit after the adjacent owner clusters are mapped. |
+
+These are bounded exact-reconstruction tasks only. Exact helper replay does not
+close the whole-product Windows i386 build gate.
 
 ## Enemy dispatcher: current recovery point
 
@@ -275,8 +296,9 @@ Before a checkpoint:
     scripts/repo-python scripts/ci.py
     git diff --check
 
-Checkpoint commits follow the active operator's prefix instruction. Do not
-push from the reconstruction factory.
+Checkpoint commits follow the active operator's prefix instruction. The active
+operator has requested pushes for substantive progress in this session; other
+sessions must follow their current operator authorization and repository rules.
 
 ## Local analysis retention
 

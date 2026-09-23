@@ -226,8 +226,6 @@ float PlayerWrapShotAngle(float value);
 void PlayerSetShotVelocityFromPolar(
     PlayerFloat3 *velocity, float angle, float magnitude);
 void PlayerAdvanceShotMotion(PlayerShotMotionView *motion);
-int PlayerShotOutsidePlayfield(
-    const PlayerFloat3 *position, float extentX, float extentY);
 void PlayerSetShotVmDeleteState1(unsigned int *vmId);
 void PlayerSetShotVmDeleteState2(unsigned int *vmId);
 void PlayerSetShotVmDeleteState3(unsigned int *vmId);
@@ -1040,6 +1038,41 @@ int PlayerUpdateMovementAndOptions(Player *player)
     return 0;
 }
 
+// These C-linkage names describe four target-referenced float slots. The
+// original global names and data owner remain unknown.
+extern "C" {
+    extern const float g_PlayerShotPlayfieldMinimumX;
+    extern const float g_PlayerShotPlayfieldMaximumX;
+    extern const float g_PlayerShotPlayfieldMinimumY;
+    extern const float g_PlayerShotPlayfieldMaximumY;
+}
+
+// Target 0x00428D70 returns zero while the shot bounds overlap the playable
+// rectangle and one otherwise. The address names below are local descriptions;
+// the original constant-owner names remain unknown.
+struct PlayerShotBoundsView
+{
+    float x;
+    float y;
+
+    int IsOutsidePlayfield(float extentX, float extentY);
+};
+typedef char PlayerShotBoundsViewSizeIs08[
+    (sizeof(PlayerShotBoundsView) == 0x08) ? 1 : -1];
+
+int PlayerShotBoundsView::IsOutsidePlayfield(
+    float extentX, float extentY)
+{
+    if (!(x + extentX <= g_PlayerShotPlayfieldMinimumX) &&
+        !(x - extentX >= g_PlayerShotPlayfieldMaximumX) &&
+        !(y + extentY <= g_PlayerShotPlayfieldMinimumY) &&
+        !(y - extentY >= g_PlayerShotPlayfieldMaximumY))
+    {
+        return 0;
+    }
+    return 1;
+}
+
 // Maintained source for the 128-row Player shot-update owner at
 // 0x00428280-0x004285EB. The target receives one stack Player* and returns zero
 // with RET 4. The 0x004282AA-0x004282AF gap is unreachable compiler alignment,
@@ -1127,8 +1160,9 @@ int PlayerUpdateShots(Player *player)
                 primaryVm->sprite->extent34 * primaryVm->scale3C;
             const float extentY =
                 primaryVm->sprite->extent30 * primaryVm->scale40;
-            if (PlayerShotOutsidePlayfield(
-                    &shot->motion.position, extentX, extentY) != 0)
+            if (reinterpret_cast<PlayerShotBoundsView *>(
+                    &shot->motion.position)->IsOutsidePlayfield(
+                    extentX, extentY) != 0)
             {
                 PlayerMarkShotVmPending(shot->primaryVmId);
                 shot->primaryVmId = 0;
