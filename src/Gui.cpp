@@ -159,7 +159,7 @@ static int CreateGuiVm(AnmLoadedView *loaded, int scriptIndex)
 static void InterruptVm(AnmVmIdView *id, short interrupt)
 {
     if (id->value != 0)
-        g_AnmRenderManagerView->SetVmPendingInterrupt(id->value, interrupt);
+        id->SetInterrupt(interrupt);
 }
 
 static void DeleteVm(AnmVmIdView *id)

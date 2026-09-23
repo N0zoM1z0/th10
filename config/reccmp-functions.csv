@@ -198,6 +198,7 @@ AnmLoadedView::CreateVmVariant2,0x00448E30,function
 AnmLoadedView::CreateVmVariant1,0x00448F60,function
 AnmLoadedView::CreateVmVariant3,0x00449090,function
 AnmVmIdView::GetVm,0x00449450,function
+AnmVmIdView::SetInterrupt,0x00449470,function
 AnmVmIdView::SetFlag2,0x00449590,function
 AnmVmIdView::ClearFlag2,0x004495E0,function
 AnmVmIdView::Release,0x00449630,function

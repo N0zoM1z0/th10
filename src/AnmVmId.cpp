@@ -10,6 +10,27 @@ AnmVmView *AnmVmIdView::GetVm()
     return vm;
 }
 
+// Target 0x00449470 sets an interrupt on a live VM and its root child chain.
+void AnmVmIdView::SetInterrupt(short interrupt)
+{
+    AnmVmIdView vmId(value);
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(vmId);
+    if (vm == NULL)
+        return;
+
+    vm->pendingInterrupt = interrupt;
+    if (vm->layerNode.previous != NULL)
+        return;
+
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        AnmVmView &child = *static_cast<AnmVmView *>(node->owner);
+        child.pendingInterrupt = interrupt;
+        node = node->next;
+    }
+}
+
 // Target 0x00449590 sets flag bit 2 on the VM and, for a root VM, its children.
 void AnmVmIdView::SetFlag2()
 {

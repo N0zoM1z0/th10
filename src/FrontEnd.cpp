@@ -192,8 +192,7 @@ static void InterruptVmNow(
 static void InterruptVm(
     FrontEndControllerView *controller, int index, short interrupt)
 {
-    g_AnmRenderManagerView->SetVmPendingInterrupt(
-        controller->vmIds[index].value, interrupt);
+    controller->vmIds[index].SetInterrupt(interrupt);
 }
 
 static void InterruptVmId(int id, short interrupt)
