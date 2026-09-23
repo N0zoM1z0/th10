@@ -2,32 +2,32 @@
 
 | Need | Command or provider | Authority |
 | --- | --- | --- |
-| Verify the private target | `python3 scripts/verify-target.py` | Target identity, PE structure, and Rich record stream |
-| Verify shared analyzer surfaces | `python3 scripts/verify-analysis-tools.py` | Selected Ghidra/JDK file identity |
-| Attest and execute VC7.1 SP1 | `python3 scripts/verify-toolchain.py --execute` | Hash/banner identity plus headless normal-COFF, LTCG, resource, PE32 link, and PE/PDB extent smoke |
+| Verify the private target | `scripts/repo-python scripts/verify-target.py` | Target identity, PE structure, and Rich record stream |
+| Verify shared analyzer surfaces | `scripts/repo-python scripts/verify-analysis-tools.py` | Selected Ghidra/JDK file identity |
+| Attest and execute VC7.1 SP1 | `scripts/repo-python scripts/verify-toolchain.py --execute` | Hash/banner identity plus headless normal-COFF, LTCG, resource, PE32 link, and PE/PDB extent smoke |
 | Compile a source/profile hypothesis | `scripts/compile-probe.sh SOURCE OUTPUT.obj FLAG...` | Compiler observation only |
-| Compare a normal-COFF source probe | `python3 scripts/compare-coff-function.py OBJECT SYMBOL ADDRESS SIZE --json` | Relocation-masked diagnostic plus target-derived relocation candidates; no acceptance authority |
-| Enumerate normal-COFF functions | `python3 scripts/compare-coff-function.py OBJECT --list-functions [--contains TEXT] [--json]` | Exact decorated symbol, section extent and relocation count for probe setup; no acceptance authority |
-| Build a canonical compiler unit | `python3 scripts/build-match-unit.py --unit NAME` | Cold normal-COFF compile or `/GL` compile/link, no exactness by itself |
-| Compare a canonical normal-COFF unit | `python3 scripts/compare-coff-function.py --unit NAME --json` | Complete target bytes and declared relocation replay |
-| Compare a canonical linked-PE unit | `python3 scripts/compare-linked-function.py --unit NAME --json` | PE/map/PDB-bound complete extent, exhaustive linked-field validation and target replay |
-| Cold-replay canonical exact units | `python3 scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold build per shared artifact context followed by strict comparison of every selected COFF or linked-PE unit |
-| List the source-present exact backlog | `python3 scripts/report-exact-backlog.py [--source SOURCE] [--module MODULE] [--state authored\|origin-review\|excluded\|all] [--json]` | Triage-only joined view of non-exact source mappings; default excludes origin-pending entries |
-| Rank the exact backlog in both codegen lanes | `python3 scripts/rank-exact-backlog.py [--source SOURCE] [--limit N] [--json]` | Fresh normal-COFF and LTCG probes joined to the same current backlog and ranked by explicit size/byte distance; no acceptance authority |
-| Batch-probe the authored exact backlog | `python3 scripts/probe-exact-backlog.py [--source SOURCE] [--show RESULT] [--json]` | One cold normal-COFF compile per source plus strict diagnostic comparison; no acceptance authority |
-| Inspect linked function extents | `python3 scripts/inspect-linked-functions.py IMAGE MAP PDB [--object TEXT] [--contains TEXT] [--json]` | PE/map/PDB-bound public functions whose sizes come from DBI section contributions; no acceptance authority |
-| Batch-probe LTCG backlog | `python3 scripts/probe-ltcg-backlog.py [--source SOURCE] [--entry SOURCE=NAME] [--support SOURCE=SUPPORT_SOURCE] [--show RESULT] [--json]` | Cold one- or multi-source `/GL` compile and diagnostic link, PDB-owned extents, and target structural comparison; no acceptance authority |
-| Audit physical function boundaries | `python3 scripts/report-boundary-inventory.py --check-ledger [--json]` | Target-bound dense decode, sparse Ghidra ranges, gaps, references and indexed indirect-control-table queue; no automatic ownership credit |
-| Verify the front-end/options core | `python3 scripts/report-frontend-core.py --check [--json]` | Target identity, physical tails/tables/padding, selected call counts, maintained state/layout coverage and ANM child-key invariant |
-| Initialize private Ghidra project | `python3 scripts/ghidra.py import` | Operator-only bootstrap; provisional inventory |
-| Attest private Ghidra project | `python3 scripts/ghidra.py check` | Target/project binding, no exactness credit |
+| Compare a normal-COFF source probe | `scripts/repo-python scripts/compare-coff-function.py OBJECT SYMBOL ADDRESS SIZE --json` | Relocation-masked diagnostic plus target-derived relocation candidates; no acceptance authority |
+| Enumerate normal-COFF functions | `scripts/repo-python scripts/compare-coff-function.py OBJECT --list-functions [--contains TEXT] [--json]` | Exact decorated symbol, section extent and relocation count for probe setup; no acceptance authority |
+| Build a canonical compiler unit | `scripts/repo-python scripts/build-match-unit.py --unit NAME` | Cold normal-COFF compile or `/GL` compile/link, no exactness by itself |
+| Compare a canonical normal-COFF unit | `scripts/repo-python scripts/compare-coff-function.py --unit NAME --json` | Complete target bytes and declared relocation replay |
+| Compare a canonical linked-PE unit | `scripts/repo-python scripts/compare-linked-function.py --unit NAME --json` | PE/map/PDB-bound complete extent, exhaustive linked-field validation and target replay |
+| Cold-replay canonical exact units | `scripts/repo-python scripts/replay-exact-units.py [--source SOURCE | --unit NAME]` | One cold build per shared artifact context followed by strict comparison of every selected COFF or linked-PE unit |
+| List the source-present exact backlog | `scripts/repo-python scripts/report-exact-backlog.py [--source SOURCE] [--module MODULE] [--state authored\|origin-review\|origin-indeterminate\|excluded\|all] [--json]` | Triage-only joined view of non-exact source mappings; default excludes origin-pending entries |
+| Rank the exact backlog in both codegen lanes | `scripts/repo-python scripts/rank-exact-backlog.py [--source SOURCE] [--limit N] [--json]` | Fresh normal-COFF and LTCG probes joined to the same current backlog and ranked by explicit size/byte distance; no acceptance authority |
+| Batch-probe the authored exact backlog | `scripts/repo-python scripts/probe-exact-backlog.py [--source SOURCE] [--show RESULT] [--json]` | One cold normal-COFF compile per source plus strict diagnostic comparison; no acceptance authority |
+| Inspect linked function extents | `scripts/repo-python scripts/inspect-linked-functions.py IMAGE MAP PDB [--object TEXT] [--contains TEXT] [--json]` | PE/map/PDB-bound public functions whose sizes come from DBI section contributions; no acceptance authority |
+| Batch-probe LTCG backlog | `scripts/repo-python scripts/probe-ltcg-backlog.py [--source SOURCE] [--entry SOURCE=NAME] [--support SOURCE=SUPPORT_SOURCE] [--show RESULT] [--json]` | Cold one- or multi-source `/GL` compile and diagnostic link, PDB-owned extents, and target structural comparison; no acceptance authority |
+| Audit physical function boundaries | `scripts/repo-python scripts/report-boundary-inventory.py --check-ledger [--json]` | Target-bound dense decode, sparse Ghidra ranges, gaps, references and indexed indirect-control-table queue; no automatic ownership credit |
+| Verify the front-end/options core | `scripts/repo-python scripts/report-frontend-core.py --check [--json]` | Target identity, physical tails/tables/padding, selected call counts, maintained state/layout coverage and ANM child-key invariant |
+| Initialize private Ghidra project | `scripts/repo-python scripts/ghidra.py import` | Operator-only bootstrap; provisional inventory |
+| Attest private Ghidra project | `scripts/repo-python scripts/ghidra.py check` | Target/project binding, no exactness credit |
 | Discover/call Ghidra | Factory provider `th10-ghidra` | Target-attested provisional semantic analysis |
-| Validate ledgers | `python3 scripts/validate-tracking.py --require-target` | Internal consistency and target binding |
-| Report progress | `python3 scripts/report-reconstruction-status.py` | Ledger-derived status |
-| Validate public checkout | `python3 scripts/ci.py` | Small target-independent checks |
+| Validate ledgers | `scripts/repo-python scripts/validate-tracking.py --require-target` | Internal consistency and target binding |
+| Report progress | `scripts/repo-python scripts/report-reconstruction-status.py` | Ledger-derived status |
+| Validate public checkout | `scripts/repo-python scripts/ci.py` | Small target-independent checks |
 
 The public game repository contains no MCP server and has no game-specific
-public URL. GPT-web uses the one shared Factory MCP and selects repository
+public URL. Web agents use the shared Factory MCP and select repository
 `th10` plus provider `th10-ghidra`.
 
 Ghidra 12.1.3 and Temurin JDK 21.0.12.1 are installed once in private

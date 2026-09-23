@@ -83,13 +83,17 @@ def validate() -> dict[str, int]:
             raise ValueError(f"invalid boundary state at {row['address']}")
         if not row["evidence_id"] or not row["notes"]:
             raise ValueError(f"boundary evidence is incomplete at {row['address']}")
+        if state == "reviewed" and "boundary unreviewed" in candidate["evidence"].lower():
+            raise ValueError(f"stale boundary state in function inventory at {row['address']}")
     allowed_origins = {"unknown", "authored", "authored_game", "compiler", "compiler_generated", "library", "third_party", "import_thunk", "data", "padding"}
     allowed_dispositions = {"review", "authored", "exclude", "indeterminate"}
     for row in origins:
         if row["origin"] not in allowed_origins or row["disposition"] not in allowed_dispositions:
             raise ValueError(f"invalid origin state at {row['address']}")
+        function = functions_by_address[int(row["address"], 0)]
+        if (row["disposition"] == "exclude") != (function["status"] == "excluded"):
+            raise ValueError(f"exclusion state differs from function inventory at {row['address']}")
         if row["disposition"] == "indeterminate":
-            function = functions_by_address[int(row["address"], 0)]
             if (row["origin"] != "unknown" or row["confidence"] != "unknown"
                     or not row["evidence_id"]
                     or "origin indeterminate:" not in function["notes"]):
@@ -101,6 +105,13 @@ def validate() -> dict[str, int]:
     if len(mapping_addresses) != len(mappings):
         raise ValueError("source mapping addresses must be unique")
     mappings_by_address = {int(row["address"], 0): row for row in mappings}
+    for address, mapping in mappings_by_address.items():
+        function = functions_by_address[address]
+        if not function["source_file"] or function["proposed_name"] != mapping["name"]:
+            raise ValueError(f"source mapping differs from function inventory at {function['address']}")
+    for address, function in functions_by_address.items():
+        if function["source_file"] and address not in mappings_by_address:
+            raise ValueError(f"source-present function lacks mapping at {function['address']}")
     mapped_names = {row["name"] for row in mappings}
     if len(mapped_names) != len(mappings):
         raise ValueError("source mapping names must be unique")
@@ -134,6 +145,9 @@ def validate() -> dict[str, int]:
         if mapping is None or mapping["name"] != row["name"]:
             raise ValueError(f"exact unit {unit_name!r} lacks its source mapping")
         function = functions_by_address[address]
+        if (function["status"] != "exact" or function["match_percent"] != "100.00"
+                or function["proposed_name"] != row["name"]):
+            raise ValueError(f"exact match differs from function inventory at {row['address']}")
         expected_source = unit.get("pdb_source", unit["source"])
         if function["source_file"] != expected_source:
             raise ValueError(f"exact unit {unit_name!r} differs from source ledger")
@@ -147,6 +161,9 @@ def validate() -> dict[str, int]:
         raise ValueError(
             f"canonical units and exact ledger differ: missing={missing!r} extra={extra!r}"
         )
+    for address, function in functions_by_address.items():
+        if function["status"] == "exact" and address not in match_addresses:
+            raise ValueError(f"function inventory has unregistered exact claim at {function['address']}")
     if build.get("schema_version") != 1:
         raise ValueError("unsupported build manifest schema")
     acceptance = build.get("acceptance", {})

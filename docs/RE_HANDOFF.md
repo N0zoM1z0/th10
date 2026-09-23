@@ -1,6 +1,6 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-09-22. This is a current recovery snapshot, not a chronological
+Updated 2026-09-23. This is a current recovery snapshot, not a chronological
 session log. Historical target facts belong in docs/KNOWLEDGE_BASE.md and
 accepted implementation history belongs in Git.
 
@@ -11,9 +11,13 @@ accepted implementation history belongs in Git.
 - Required SHA-256:
   2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040.
 - Branch: main.
-- Code checkpoint underlying the current giant-owner diagnostics:
-  b3a74c1 gpt-web: restore ECL start-subroutine member shape.
-- Checkpoint commit prefix: gpt-web:.
+- Latest source checkpoint for the complete Enemy laser caller graph:
+  `1d53446 gpt-web: recover Enemy laser type1 collision callers`.
+- Earlier giant-owner measurements below belong to explicitly selected LTCG
+  support graphs. The associated `.analysis/` files are no longer present;
+  regenerate a focused probe before using a measurement as live feedback.
+- Follow the active operator's commit-prefix instruction; this cleanup uses
+  `gpt-6-sol:`.
 - Decompiler output, adjacent games, ignored build products and .analysis/
   artifacts are hypothesis/evidence only. They never establish exactness by
   themselves.
@@ -32,14 +36,17 @@ attested target before treating new disassembly/decompilation as evidence.
 
 Do not copy static repository-wide inventory counts from this file into a new
 report. Regenerate them with the tracking scripts because source-present and
-exact-unit counts change independently of the three giant owners.
+exact-unit counts change independently of the three giant owners. The tracked
+candidate boundaries are reviewed, but 90 origins are indeterminate and
+unresolved `.text` gaps leave the final authored denominator open. Whole-product
+Windows i386 closure is still open; semantic and port stages have not started.
 
 ## Active exact frontiers
 
 The three large owners remain non-exact. Equal size, equal table order,
 equal selector bytes, or source/semantic coverage is not exactness.
 
-| Owner | Target | Current retained diagnostic | Status |
+| Owner | Target | Last recorded diagnostic context (replay required) | Status |
 | --- | ---: | --- | --- |
 | EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,228 bytes; pre-table 13,572/13,760; 746/11,556 normalized comparable bytes; selector 181/181; physical order matches; typed 0x1A8 speed fields, rank-float shared tails and target 0x119 positive-value tests retained | non-exact |
 | AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | selected source-shape diagnostic: contribution 9,960 with pre-table 9,584/9,588 and 705/8,608 agreement; exact-creator split context separately yields 10,040 with pre-table 9,664 | non-exact; context-sensitive |
@@ -50,16 +57,12 @@ not mix measurements from different LTCG support graphs.
 
 ## Enemy dispatcher: current recovery point
 
-Use only the current target-correct source checkpoint at HEAD. Historical Enemy
-measurements in KNOWLEDGE_BASE and Git explain how the source got here; they are
-not alternate baselines to restore.
-
-Selected focused diagnostic:
-
-- `.analysis/gpt-web-enemy-rankspeed-typed-fields-probe.json`
-- `.analysis/gpt-web-enemy-rankspeed-typed-fields-layout.json`
-
-These linked-PE reports are diagnostics, not exactness authority.
+Use the maintained source at HEAD. Historical Enemy measurements in
+KNOWLEDGE_BASE and Git explain how the source got here; they are not alternate
+baselines to restore. The 14,228-byte typed-field measurement below is the last
+recorded result for its selected four-source linked graph, not a fresh replay
+of the later all-real-caller graph. Its named scratch reports were pruned.
+Linked-PE probe reports have no exactness authority.
 
 | Measure | Selected candidate | Target |
 | --- | ---: | ---: |
@@ -72,7 +75,7 @@ These linked-PE reports are diagnostics, not exactness authority.
 | Suffix | 43 | 43 |
 | START_SPELL physical group | 214 | 219 |
 
-Current retained source facts:
+Retained source facts:
 
 - Dispatcher float reads use the generic `EclVmContext::ReadFloat` boundary;
   target `0x00412A60` is an unreferenced adapter. Do not restore the older
@@ -107,7 +110,7 @@ also remains independently exact in its canonical context. Re-run the focused
 exact-unit gate after changing this translation unit; giant-owner diagnostics do
 not override accepted small exact units.
 
-Current open problems, in priority order:
+Open problems (independent; select one bounded experiment):
 
 1. **Private integer-reader ABI.** Target `ReadIntArgument @ 0x00412A00` is a
    16-byte adapter with private `EAX=runtime`, `ECX=index`. The maintained
@@ -147,7 +150,7 @@ Current open problems, in priority order:
    rotates the remaining registers to EDI=manager/ESI=laser/stack-request.
    The next frontier is the Type0/Type1 constructor private ABI: target
    constructors keep the allocated object in EBX and use ESI=-2, whereas the
-   current diagnostic constructors keep object in EDX and use EBX=-2. Do not
+   the recorded diagnostic constructors keep object in EDX and use EBX=-2. Do not
    fake EDI=request with synthetic dependencies; recover the constructor/source
    lifetime that naturally produces the target register coloring.
 
@@ -155,7 +158,7 @@ Current open problems, in priority order:
    uniformly eight bytes below target stack offsets despite the correct 0x2C4
    frame and understood object sizes/order. At dispatcher entry the target
    homes runtime/current-instruction/opcode state at ESP+0x30/+0x1C/+0x10,
-   whereas the current candidate uses +0x40/+0x14/+0x1C. In 0x1A8 the target
+   whereas the recorded candidate uses +0x40/+0x14/+0x1C. In 0x1A8 the target
    later reuses the runtime's +0x30 home for a saved float operand; the
    case-local checkpoint similarly reuses the candidate runtime's +0x40 home.
    This ties the remaining rank-speed stack mismatch directly to whole-owner
@@ -191,14 +194,17 @@ Useful supporting owners remain non-exact: `EnemySpawn @ 0x0040CFB0` is
 
 ### Focused Enemy probe
 
-    scripts/repo-python scripts/probe-ltcg-backlog.py --source src/EnemyEclDispatcher.cpp --entry 'src/EnemyEclDispatcher.cpp=EnemyRuntimeView::DispatchEclInstruction' --support 'src/EnemyEclDispatcher.cpp=src/EclVm.cpp' --support 'src/EnemyEclDispatcher.cpp=src/AnmManager.cpp' --support 'src/EnemyEclDispatcher.cpp=src/AnmVmCreate.cpp' --profile-flag=/GS --json > .analysis/enemy-probe.json
+Set `analysis_dir` to a new `.analysis/<agent>/<campaign>` directory and create
+its manifest before writing these outputs, per the Factory artifact policy.
 
-    scripts/repo-python scripts/report-ecl-dispatch-table.py --candidate build/probe-ltcg/src_EnemyEclDispatcher.cpp/source.exe --candidate-function-address <read-from-probe> --json > .analysis/enemy-layout.json
+    scripts/repo-python scripts/probe-ltcg-backlog.py --source src/EnemyEclDispatcher.cpp --entry 'src/EnemyEclDispatcher.cpp=EnemyRuntimeView::DispatchEclInstruction' --support 'src/EnemyEclDispatcher.cpp=src/EclVm.cpp' --support 'src/EnemyEclDispatcher.cpp=src/AnmManager.cpp' --support 'src/EnemyEclDispatcher.cpp=src/AnmVmCreate.cpp' --profile-flag=/GS --json > "$analysis_dir/enemy-probe.json"
 
-Read the linked entry address from the probe report. Do not hard-code an old
-candidate address. When the worktree contains unrelated edits, use committed
-HEAD snapshots for support translation units rather than silently incorporating
-dirty source.
+    scripts/repo-python scripts/report-ecl-dispatch-table.py --candidate build/probe-ltcg/src_EnemyEclDispatcher.cpp/source.exe --candidate-function-address "$candidate_address" --json > "$analysis_dir/enemy-layout.json"
+
+After the probe, set `candidate_address` to the linked entry address from its
+JSON; do not hard-code an old candidate address. When the worktree contains
+unrelated edits, use committed HEAD snapshots for support translation units
+rather than silently incorporating dirty source.
 
 ## ANM executor: recovery point
 
@@ -228,7 +234,7 @@ physical groups, not just contribution size.
 
 ## Generic ECL runner: recovery point
 
-The current b3a74c1 checkpoint restores target 0x0044DF70 as
+The earlier `b3a74c1` checkpoint restored target 0x0044DF70 as
 EclVmContext::StartSubroutine(caller, firstArgument) rather than a
 three-argument global helper. The member spelling naturally reproduces the
 target-observed RET 8 exits: the receiver is private and only the two explicit
@@ -255,11 +261,11 @@ to replay zero-difference while iterating on Run.
 While iterating on the three large owners, replay exact units sourced from the
 changed translation units:
 
-    scripts/repo-python scripts/replay-exact-units.py       --source src/EnemyEclDispatcher.cpp
+    scripts/repo-python scripts/replay-exact-units.py --source src/EnemyEclDispatcher.cpp
 
-    scripts/repo-python scripts/replay-exact-units.py       --source src/EclVm.cpp
+    scripts/repo-python scripts/replay-exact-units.py --source src/EclVm.cpp
 
-    scripts/repo-python scripts/replay-exact-units.py       --source src/AnmManager.cpp
+    scripts/repo-python scripts/replay-exact-units.py --source src/AnmManager.cpp
 
 Before a checkpoint:
 
@@ -269,8 +275,8 @@ Before a checkpoint:
     scripts/repo-python scripts/ci.py
     git diff --check
 
-Checkpoint commits use gpt-web: .... Do not push from the reconstruction
-factory.
+Checkpoint commits follow the active operator's prefix instruction. Do not
+push from the reconstruction factory.
 
 ## Local analysis retention
 
@@ -293,13 +299,9 @@ Delete after a checkpoint:
 - interrupted/zero-byte outputs;
 - negative experiments invalidated by later source/call-graph changes.
 
-At the current checkpoint, the useful top-level retained comparisons are:
-
-- `enemy-exp-119-positive-comparisons-{probe,layout}.json` plus the small
-  `enemy-119-positive-focused-replay.json` regression report;
-- `anm-variant0-member-split-{probe,layout}.json` for the still-relevant
-  exact-creator split context;
-- `ecl-start-member-cached-host-{probe,layout}.json`.
+The 2026-09-23 audit found no retained file artifacts under `.analysis/`.
+Historical probe/layout names above and in KNOWLEDGE_BASE are provenance, not
+files to open or baselines to trust without a fresh source-bound replay.
 
 Historical paths named by KNOWLEDGE_BASE are provenance labels and may be absent
 after their conclusions have been compacted into tracked evidence. Do not treat

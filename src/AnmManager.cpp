@@ -3982,7 +3982,8 @@ void AsciiManagerView::AddString(
 }
 
 // Target 0x004015C0-0x0040162C is the analogous 64-entry GUI queue append.
-// This CC-delimited owner is absent from Ghidra's current function inventory.
+// This CC-delimited owner was absent from the initial Ghidra export; the
+// target-bound ledger tracks it.
 void AsciiManagerView::AddGuiString(
     AnmFloat3View *position, const char *text)
 {
@@ -4351,7 +4352,8 @@ int AnmRenderManagerView::DrawInner(AnmVmView *vm, int flags)
 }
 
 // Target 0x00442F30-0x00442F4C resets the shared packed-vertex range. This
-// CC-delimited retained owner is absent from Ghidra's current inventory.
+// CC-delimited owner was absent from the initial Ghidra export; the target-bound
+// ledger tracks it.
 void AnmRenderManagerView::ClearVertexBuffer()
 {
     spritesToDraw = 0;

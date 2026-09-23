@@ -44,15 +44,19 @@ downloaded tools are private and never committed.
 
 ## Current status
 
-The target is attested and the initial Ghidra inventory is provisional. Every
-candidate starts with unknown origin, unreviewed boundaries, no source-presence
-claim, and no exactness credit. The repository pins a VC7.1 SP1 candidate
-reporting compiler/linker build 6030 and provides a headless-Wine verifier. The
-locally observed smoke covers normal C/C++ COFF, C++ LTCG, resources, and a PE32
-link. Target Rich records independently show 131 normal C, 15 normal C++, and 52
-LTCG C++ inputs.
-Per-unit flags and ownership, translation-unit boundaries, libraries, resource
-graph, and link order remain unknown.
+The tracked function candidates have reviewed boundaries and origins, but some
+origins remain indeterminate and unresolved `.text` gaps can still change the
+inventory. Maintained source and canonical exact units are tracked separately;
+see the generated [`docs/PROGRESS.md`](docs/PROGRESS.md) for live counts. The
+whole Windows i386 build graph is still open, and semantic reconstruction and
+portability have not started.
+
+The repository pins a VC7.1 SP1 candidate reporting compiler/linker build 6030
+and provides a headless-Wine verifier. Its smoke covers normal C/C++ COFF, C++
+LTCG, resources, and a PE32 link. Target Rich records independently show 131
+normal C, 15 normal C++, and 52 LTCG C++ inputs. Accepted exact units bind their
+own compiler contexts; production translation-unit partition, libraries,
+resources, data owners, and link order remain open.
 
 Use `scripts/repo-python` for repository Python commands. It selects an
 interpreter only when its Capstone package matches all four hashes in

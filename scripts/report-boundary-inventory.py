@@ -65,7 +65,7 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=DEFAULT_GHIDRA_RANGES,
         help=(
-            "body-range CSV from `python3 scripts/ghidra.py architecture`; the "
+            "body-range CSV from `scripts/repo-python scripts/ghidra.py architecture`; the "
             "default is used when present"
         ),
     )
@@ -697,7 +697,7 @@ def main() -> int:
         if (args.write_ledger or args.check_ledger) and not args.ghidra_ranges.is_file():
             raise ValueError(
                 "Ghidra body ranges are required for ledger writes/checks; run "
-                "`python3 scripts/ghidra.py architecture` first"
+                "`scripts/repo-python scripts/ghidra.py architecture` first"
             )
         report = audit(args.ghidra_ranges)
         if args.write_ledger:

@@ -47,7 +47,7 @@ boundary or source origin.
 each candidate. `scripts/report-boundary-inventory.py` reproduces the automatic
 part of that ledger from the verified target, the pinned Capstone decoder, and,
 when available, Ghidra address-set ranges exported by
-`python3 scripts/ghidra.py architecture`. A boundary may be `reviewed`,
+`scripts/repo-python scripts/ghidra.py architecture`. A boundary may be `reviewed`,
 `provisional`, or `needs_review`; only the first state closes boundary review.
 
 Shared tails, switch tables, EH metadata, thunks, alignment, interleaved data,

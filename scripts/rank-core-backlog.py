@@ -44,7 +44,7 @@ def parse_args() -> argparse.Namespace:
         "--architecture",
         type=Path,
         default=DEFAULT_ARCHITECTURE,
-        help="optional Ghidra metrics from `python3 scripts/ghidra.py architecture`",
+        help="optional Ghidra metrics from `scripts/repo-python scripts/ghidra.py architecture`",
     )
     parser.add_argument("--json", action="store_true")
     return parser.parse_args()

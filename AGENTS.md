@@ -104,8 +104,9 @@ the repository.
 
 ## Checkpoints and artifacts
 
-- Use concise, coherent local commits, with `gpt-web: ...` for Web-authored
-  checkpoints. GPT-web may commit in this repository but must not push.
+- Use concise, coherent local commits. Follow an operator-specified commit
+  prefix when one is given; otherwise use `gpt-web: ...` for Web-authored
+  checkpoints. Web agents may commit in this repository but must not push.
 - Keep decompiler dumps, logs, experiments, screenshots, and generated reports
   below `.analysis/`; keep builds below `build/`, shared-tool links below
   `.tools/`, and the private database below `ghidra-project/`.
