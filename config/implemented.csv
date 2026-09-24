@@ -357,3 +357,4 @@ AnmVmIdView::SetSpriteWithAnm
 MainSupervisorView::SetNextGameMode
 PlayerAngleToPoint
 EnemyAngleFromPlayer
+StartSoundLoadThread
