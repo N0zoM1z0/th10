@@ -331,3 +331,5 @@ AnmScriptVectorView::FromAngleMagnitude
 EnemyRuntimeVectorView::FromAngleMagnitude
 PlayerShotBoundsView::IsOutsidePlayfield
 EnemyLaserVectorView::IsOutsidePlayfield
+GameScoreStateView::AddFaith
+ItemVectorView::FromAngleMagnitude

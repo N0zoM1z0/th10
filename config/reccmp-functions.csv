@@ -1,4 +1,6 @@
 name,address,type
+GameScoreStateView::AddFaith,0x0041BE80,function
+ItemVectorView::FromAngleMagnitude,0x0041BEB0,function
 FrontEndControllerView::UpdateDifficulty,0x00430320,function
 FrontEndControllerView::UpdateCharacter,0x004306A0,function
 FrontEndControllerView::UpdateShotType,0x00430A60,function
