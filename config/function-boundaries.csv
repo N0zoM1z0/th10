@@ -252,6 +252,9 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041ADF0,0x0041AEC7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041AED0,0x0041AF88,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041AFD0,0x0041B89C,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x41ba29 to entry; independent IDA MCP extent agrees"
+0x0041B8E0,0x0041B9F8,reviewed,high,target-raw-gap-review-2026-09-24,"Raw dense decode begins at the 0x0041BA48 tail-jump target, ends in RET at 0x0041B9F8, and is followed by CC padding."
+0x0041BA00,0x0041BA2F,reviewed,high,target-raw-gap-review-2026-09-24,Raw dense 48-byte decode ends in RET; entry is stored by callback registration at 0x0041AD92.
+0x0041BA30,0x0041BA4C,reviewed,high,target-raw-gap-review-2026-09-24,Raw dense 29-byte decode has early RET and tail JMP to 0x0041B8E0; entry is stored at 0x0041ADB5; followed by CC padding.
 0x0041BA50,0x0041BAF4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041BB00,0x0041BE18,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=13; no overlap or external interior branch
 0x0041BE80,0x0041BEAD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
