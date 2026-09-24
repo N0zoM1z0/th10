@@ -293,6 +293,19 @@ HRESULT CSound::Pause()
 }
 
 
+// TH10 0x0044D5D0. Resumes the primary buffer with the priority/flags retained
+// by Play and restores the public playing-state flag.
+HRESULT CSound::Unpause()
+{
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    LPDIRECTSOUNDBUFFER buffer = m_apDSBuffer[0];
+    m_bIsPlaying = TRUE;
+    return buffer->Play(0, m_dwPriority, m_dwFlags);
+}
+
+
 // TH10 0x0044D730. The retained destructor installs the derived vtable and
 // tail-calls CSound::~CSound. Whether the original destructor was explicitly
 // written or implicitly emitted remains origin-indeterminate.
