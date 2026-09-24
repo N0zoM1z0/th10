@@ -1055,7 +1055,7 @@ struct AnmRenderManagerView
     int LoadTextureData(
         AnmLoadedView *loaded, int entryNumber, int spriteCount,
         int scriptCount, AnmRawEntryView *rawEntry);
-    int ServicePreloadedAnms();
+    int __stdcall ServicePreloadedAnms();
     void ReleaseAnm(int index);
     TH10_ANM_NOINLINE void DrawTextInner(
         D3d9TextureView *texture, AnmSpriteView *sprite,

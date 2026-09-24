@@ -2031,19 +2031,25 @@ int AnmRenderManagerView::LoadTextureData(
     return 1;
 }
 
-// Target 0x00447700 services one pending entry per manager tick. Its release
-// branch really clears the pointer and then writes through that cleared slot;
-// this apparent target bug is preserved as observed.
-int AnmRenderManagerView::ServicePreloadedAnms()
+// Target 0x00447700 has one observed caller, which pushes the manager pointer;
+// the callee consumes it with RET 4. It services one pending entry per tick.
+// The release branch clears the slot and then writes through that cleared
+// slot, so this apparent target bug is preserved as observed.
+int __stdcall AnmRenderManagerView::ServicePreloadedAnms()
 {
-    for (int i = 0; i < 33; ++i)
+    for (int i = 0; static_cast<unsigned int>(i) < 33u; ++i)
     {
         AnmLoadedView *loaded = loadedAnms[i];
         if (loaded == NULL)
             continue;
         if (loaded->releasePending != 0)
         {
-            ReleaseAnm(i);
+            if (i >= 0 && static_cast<unsigned int>(i) < 33u)
+            {
+                loaded->Release();
+                delete loadedAnms[i];
+                loadedAnms[i] = NULL;
+            }
             loadedAnms[i]->releasePending = 0;
         }
         else if (loaded->pendingLoadCount != 0)
