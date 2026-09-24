@@ -3740,3 +3740,17 @@ symbol = "?IsRepeated@FrontEndInputView@@QAEHG@Z"
 target_address = 0x0040ACE0
 size = 33
 linkages = []
+
+[units.item-faith-decay]
+artifact_kind = "linked-pe"
+source = "src/ItemManager.cpp"
+output_dir = "build/match-linked/ItemHelpers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?FromAngleMagnitude@ItemVectorView@@QAEXMM@Z"
+functions = ["GameScoreStateView::DecayFaith"]
+symbol = "?DecayFaith@GameScoreStateView@@QAEXH@Z"
+target_address = 0x00412E70
+size = 46
+linkages = []

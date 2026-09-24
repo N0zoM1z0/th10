@@ -349,3 +349,4 @@ CSound::~CSound
 GameScoreStateView::AddRank
 FrontEndCursorSetCurrent
 FrontEndInputView::IsRepeated
+GameScoreStateView::DecayFaith

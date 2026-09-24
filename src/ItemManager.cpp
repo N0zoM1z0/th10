@@ -45,6 +45,7 @@ struct GameScoreStateView
     int rank;
 
     void AddFaith(int amount);
+    void DecayFaith(int amount);
     void AddRank(int amount);
 };
 
@@ -58,6 +59,13 @@ void GameScoreStateView::AddFaith(int amount)
     faith += amount / 10;
     if (faith > 99999)
         faith = 99999;
+}
+
+void GameScoreStateView::DecayFaith(int amount)
+{
+    faith -= amount / 10;
+    if (faith < 5000)
+        faith = 5000;
 }
 
 void GameScoreStateView::AddRank(int amount)
