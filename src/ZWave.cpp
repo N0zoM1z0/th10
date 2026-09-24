@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <mmsystem.h>
 #include <dsound.h>
+#include <stdlib.h>
 
 
 struct ThBgmFormat;
@@ -69,6 +70,12 @@ public:
 
     virtual ~CSound();
 
+    HRESULT RestoreBuffer(LPDIRECTSOUNDBUFFER buffer, BOOL *wasRestored);
+    LPDIRECTSOUNDBUFFER GetFreeBuffer();
+    HRESULT FillBufferWithSound(
+        LPDIRECTSOUNDBUFFER buffer, BOOL repeatIfBufferLarger);
+    HRESULT Play(DWORD priority, DWORD flags);
+    HRESULT SetVolume(int volume);
     HRESULT Stop();
     HRESULT Pause();
     HRESULT Unpause();
@@ -122,6 +129,102 @@ CSound::~CSound()
         delete m_pWaveFile;
         m_pWaveFile = NULL;
     }
+}
+
+
+
+
+// TH10 0x0044D300. Restores a lost DirectSound buffer and reports whether a
+// restore occurred. The retained double-Restore loop is visible in the target.
+HRESULT CSound::RestoreBuffer(
+    LPDIRECTSOUNDBUFFER buffer, BOOL *wasRestored)
+{
+    HRESULT hr;
+
+    if (buffer == NULL)
+        return CO_E_NOTINITIALIZED;
+    if (wasRestored != NULL)
+        *wasRestored = FALSE;
+
+    DWORD status;
+    if (FAILED(hr = buffer->GetStatus(&status)))
+        return hr;
+
+    if (status & DSBSTATUS_BUFFERLOST)
+    {
+        do
+        {
+            hr = buffer->Restore();
+            if (hr == DSERR_BUFFERLOST)
+                Sleep(10);
+        } while (hr = buffer->Restore());
+
+        if (wasRestored != NULL)
+            *wasRestored = TRUE;
+        return S_OK;
+    }
+    return S_FALSE;
+}
+
+
+// TH10 0x0044D370. Returns the first non-playing DirectSound buffer, falling
+// back to a random buffer when every allocated buffer is currently playing.
+LPDIRECTSOUNDBUFFER CSound::GetFreeBuffer()
+{
+    if (m_apDSBuffer == NULL)
+        return NULL;
+
+    DWORD i;
+    for (i = 0; i < m_dwNumBuffers; ++i)
+    {
+        if (m_apDSBuffer[i] != NULL)
+        {
+            DWORD status = 0;
+            m_apDSBuffer[i]->GetStatus(&status);
+            if ((status & DSBSTATUS_PLAYING) == 0)
+                break;
+        }
+    }
+
+    if (i != m_dwNumBuffers)
+        return m_apDSBuffer[i];
+    return m_apDSBuffer[rand() % m_dwNumBuffers];
+}
+
+
+// TH10 0x0044D440. Natural DirectSound play path; target-local control flow
+// establishes the helper calls, fade reset, stored priority/flags and final Play.
+HRESULT CSound::Play(DWORD priority, DWORD flags)
+{
+    HRESULT hr;
+    BOOL restored;
+
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    LPDIRECTSOUNDBUFFER buffer = GetFreeBuffer();
+    if (buffer == NULL)
+        return E_FAIL;
+
+    if (FAILED(hr = RestoreBuffer(buffer, &restored)))
+        return hr;
+
+    if (restored)
+    {
+        if (FAILED(hr = FillBufferWithSound(buffer, FALSE)))
+            return hr;
+        Reset();
+    }
+
+    m_iFadeType = 0;
+    m_iCurFadeProgress = 0;
+    m_iTotalFade = 0;
+    SetVolume(0);
+    m_bIsPlaying = TRUE;
+    m_dwPriority = priority;
+    m_dwFlags = flags;
+    unconsumedDword2C = 0;
+    return buffer->Play(0, priority, flags);
 }
 
 
