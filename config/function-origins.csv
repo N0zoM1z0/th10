@@ -267,9 +267,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041C510,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x0041C5B0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0041C680,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
-0x0041C7D0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0041C7D0,authored_game,Enemy,authored,high,target-enemy-effect-list-owner-2026-09-24
 0x0041C800,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
-0x0041C850,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0041C850,authored_game,Enemy,authored,high,target-enemy-effect-list-owner-2026-09-24
 0x0041CFD0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0041D2C0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0041D3D0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17

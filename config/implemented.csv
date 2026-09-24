@@ -335,3 +335,8 @@ GameScoreStateView::AddFaith
 ItemVectorView::FromAngleMagnitude
 EnemyBulletPositionView::IsOutsidePlayfield
 EnemySetChapter
+EnemySetLaserPosition
+EnemyFindLaser
+EnemyConfigureInterrupt
+EnemyWaitForEffect
+EnemyApplyBulletClear

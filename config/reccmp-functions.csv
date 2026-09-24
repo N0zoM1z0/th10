@@ -336,3 +336,8 @@ PlayerShotBoundsView::IsOutsidePlayfield,0x00428D70,function
 EnemyLaserVectorView::IsOutsidePlayfield,0x0041F7A0,function
 EnemyBulletPositionView::IsOutsidePlayfield,0x004086B0,function
 EnemySetChapter,0x00412ED0,function
+EnemySetLaserPosition,0x0040CF60,function
+EnemyFindLaser,0x0040CF90,function
+EnemyConfigureInterrupt,0x00412720,function
+EnemyWaitForEffect,0x0041C7D0,function
+EnemyApplyBulletClear,0x0041C850,function
