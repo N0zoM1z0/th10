@@ -1,5 +1,7 @@
 #include <windows.h>
 
+#include "SoundFormat.hpp"
+
 // TH10 retains ".\src\core\sound.cpp" source-path strings.  These names
 // are maintained/descriptive; the original symbols are not recovered.
 extern unsigned char g_MainSoundOwner[0x52d0];
@@ -24,11 +26,23 @@ HANDLE StartSoundLoadThread()
 }
 
 
+class CWaveFile
+{
+public:
+    __declspec(noinline) HRESULT Reopen(ThBgmFormat *format);
+};
+
 class CSound
 {
 public:
     virtual ~CSound();
     HRESULT Stop();
+
+    CWaveFile *GetWaveFile()
+    {
+        return *reinterpret_cast<CWaveFile **>(
+            reinterpret_cast<unsigned char *>(this) + 0x0c);
+    }
 };
 
 struct SoundPlayerView
@@ -36,11 +50,15 @@ struct SoundPlayerView
     unsigned char unknown000[0x614];
     DWORD bgmThreadId;
     HANDLE bgmThreadHandle;
-    unsigned char unknown61C[0x5208 - 0x61c];
+    unsigned char unknown61C[0x1f84 - 0x61c];
+    ThBgmFormat *bgmFormats;
+    unsigned char unknown1F88[0x5208 - 0x1f88];
     CSound *bgm;
     HANDLE bgmUpdateEvent;
     unsigned char unknown5210[0x52d0 - 0x5210];
 
+    int GetFmtIndexByName(const char *path);
+    int ReopenBgm(const char *path);
     void StopBgm();
 };
 
@@ -66,4 +84,17 @@ void SoundPlayerView::StopBgm()
 
     delete bgm;
     bgm = NULL;
+}
+
+
+int SoundPlayerView::ReopenBgm(const char *path)
+{
+    if (bgm == NULL)
+        return -1;
+
+    const int index = GetFmtIndexByName(path);
+    ThBgmFormat *format = &bgmFormats[index];
+    CWaveFile *waveFile = bgm->GetWaveFile();
+    waveFile->Reopen(format);
+    return 0;
 }

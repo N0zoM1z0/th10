@@ -3,8 +3,9 @@
 #include <dsound.h>
 #include <stdlib.h>
 
+#include "SoundFormat.hpp"
 
-struct ThBgmFormat;
+
 class CSoundManager;
 extern int g_FrontEndSoundBgmVolume;
 
@@ -37,6 +38,9 @@ public:
         }
         return S_OK;
     }
+
+    __declspec(noinline) HRESULT Reopen(ThBgmFormat *format);
+    HRESULT ResetFile(bool loop);
 
     ~CWaveFile()
     {
@@ -104,6 +108,64 @@ typedef char CSoundSizeIs5C[(sizeof(CSound) == 0x5c) ? 1 : -1];
 typedef char CStreamingSoundSizeIs78[
     (sizeof(CStreamingSound) == 0x78) ? 1 : -1];
 
+
+
+
+// TH10 0x0044DCA0. Rebinds a disk-backed wave object to one BGM-format row.
+// The target inlines the non-memory ResetFile(false) path: seek to the row's
+// start offset plus the shared BGM-file base and refresh both size fields.
+extern int g_SoundBgmFileBaseOffset;
+
+HRESULT CWaveFile::Reopen(ThBgmFormat *format)
+{
+    if (m_bIsReadingFromMemory)
+        return E_FAIL;
+    if (m_hWaveFile == INVALID_HANDLE_VALUE)
+        return E_FAIL;
+
+    m_pzwf = format;
+    ResetFile(false);
+    m_dwSize = m_ck.cksize;
+    return S_OK;
+}
+
+HRESULT CWaveFile::ResetFile(bool loop)
+{
+    if (m_bIsReadingFromMemory)
+    {
+        m_pbDataCur = m_pbData;
+        if (m_pzwf->totalLength > 0)
+            m_ulDataSize = m_pzwf->totalLength;
+        if (loop && m_pzwf->introLength > 0)
+            m_pbDataCur += m_pzwf->introLength;
+    }
+    else
+    {
+        if (m_hWaveFile == NULL)
+            return CO_E_NOTINITIALIZED;
+
+        if (loop && m_pzwf->introLength > 0)
+        {
+            SetFilePointer(
+                m_hWaveFile,
+                g_SoundBgmFileBaseOffset + m_pzwf->startOffset +
+                    m_pzwf->introLength,
+                NULL,
+                FILE_BEGIN);
+            m_ck.cksize = m_pzwf->totalLength - m_pzwf->introLength;
+        }
+        else
+        {
+            SetFilePointer(
+                m_hWaveFile,
+                g_SoundBgmFileBaseOffset + m_pzwf->startOffset,
+                NULL,
+                FILE_BEGIN);
+            m_ck.cksize = m_pzwf->totalLength;
+        }
+    }
+    return S_OK;
+}
 
 // TH10 0x0044D080. The target releases each DirectSound buffer, deletes the
 // buffer-pointer array, inlines the owned CWaveFile close/destruction path and
