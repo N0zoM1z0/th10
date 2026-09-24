@@ -1807,7 +1807,8 @@ AnmLoadedView *AnmRenderManagerView::PreloadAnm(
     loaded->pendingLoadCount = 1;
     do
     {
-        if (g_AnmPreloadStopRequested < 0)
+        // The target tests the stop byte's sign bit directly (JS).
+        if ((g_AnmPreloadStopRequested & 0x80) != 0)
             break;
         Sleep(1);
     } while (loaded->pendingLoadCount != 0);
