@@ -344,3 +344,4 @@ FrontEndCursorView::Push
 FrontEndCursorView::Pop
 FrontEndCursorView::Move
 CSound::Pause
+CStreamingSound::~CStreamingSound
