@@ -260,6 +260,25 @@ HRESULT CSound::Reset()
 }
 
 
+// TH10 0x0044D550. Stops every allocated DirectSound buffer, rewinds each
+// buffer to position zero, clears playing state and resets the fade type.
+HRESULT CSound::Stop()
+{
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    HRESULT hr = 0;
+    m_bIsPlaying = FALSE;
+    for (DWORD i = 0; i < m_dwNumBuffers; ++i)
+    {
+        hr |= m_apDSBuffer[i]->Stop();
+        hr |= m_apDSBuffer[i]->SetCurrentPosition(0);
+    }
+    m_iFadeType = 0;
+    return hr;
+}
+
+
 // TH10 0x0044D5B0. This is the same DirectSound utility source family whose
 // original path survives in the executable as ".\src\core\zwave.cpp".
 HRESULT CSound::Pause()

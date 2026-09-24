@@ -22,3 +22,48 @@ HANDLE StartSoundLoadThread()
             0,
             &threadId);
 }
+
+
+class CSound
+{
+public:
+    virtual ~CSound();
+    HRESULT Stop();
+};
+
+struct SoundPlayerView
+{
+    unsigned char unknown000[0x614];
+    DWORD bgmThreadId;
+    HANDLE bgmThreadHandle;
+    unsigned char unknown61C[0x5208 - 0x61c];
+    CSound *bgm;
+    HANDLE bgmUpdateEvent;
+    unsigned char unknown5210[0x52d0 - 0x5210];
+
+    void StopBgm();
+};
+
+typedef char SoundPlayerViewSizeIs52D0[
+    (sizeof(SoundPlayerView) == 0x52d0) ? 1 : -1];
+
+void SoundPlayerView::StopBgm()
+{
+    if (bgm == NULL)
+        return;
+
+    bgm->Stop();
+    if (bgmThreadHandle != NULL)
+    {
+        PostThreadMessageA(bgmThreadId, WM_QUIT, 0, 0);
+        while (WaitForSingleObject(bgmThreadHandle, 256) != WAIT_OBJECT_0)
+            PostThreadMessageA(bgmThreadId, WM_QUIT, 0, 0);
+
+        CloseHandle(bgmThreadHandle);
+        CloseHandle(bgmUpdateEvent);
+        bgmThreadHandle = NULL;
+    }
+
+    delete bgm;
+    bgm = NULL;
+}
