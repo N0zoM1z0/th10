@@ -187,7 +187,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00412AC0,authored_game,GameUnassigned,authored,medium,target-authored-call-sandwich-2026-09-17
 0x00412DB0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00412E70,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x00412ED0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x00412ED0,authored_game,Enemy,authored,high,target-enemy-set-chapter-owner-2026-09-24
 0x00412FF0,authored_game,GameUnassigned,authored,medium,target-authored-call-sandwich-2026-09-17
 0x00413170,authored_game,Enemy,authored,high,enemy-angle-helper-2026-09-16
 0x00413200,authored_game,AnmManager,authored,high,anm-script-executor-2026-09-15

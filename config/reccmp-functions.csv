@@ -335,3 +335,4 @@ EnemyRuntimeVectorView::FromAngleMagnitude,0x0044C5D0,function
 PlayerShotBoundsView::IsOutsidePlayfield,0x00428D70,function
 EnemyLaserVectorView::IsOutsidePlayfield,0x0041F7A0,function
 EnemyBulletPositionView::IsOutsidePlayfield,0x004086B0,function
+EnemySetChapter,0x00412ED0,function
