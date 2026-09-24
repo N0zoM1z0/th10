@@ -333,3 +333,4 @@ PlayerShotBoundsView::IsOutsidePlayfield
 EnemyLaserVectorView::IsOutsidePlayfield
 GameScoreStateView::AddFaith
 ItemVectorView::FromAngleMagnitude
+EnemyBulletPositionView::IsOutsidePlayfield

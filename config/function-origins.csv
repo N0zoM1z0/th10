@@ -87,7 +87,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00408100,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x00408210,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00408660,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
-0x004086B0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
+0x004086B0,authored_game,Enemy,authored,high,target-enemy-bullet-pool-owner-2026-09-24
 0x00408750,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x004088C0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00408910,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
