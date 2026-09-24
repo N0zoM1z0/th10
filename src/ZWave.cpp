@@ -6,6 +6,7 @@
 
 struct ThBgmFormat;
 class CSoundManager;
+extern int g_FrontEndSoundBgmVolume;
 
 // TH10's wave-file fields are independently visible in the streaming read,
 // reopen, reset and CSound destruction paths. The Win32 layout below places
@@ -225,6 +226,24 @@ HRESULT CSound::Play(DWORD priority, DWORD flags)
     m_dwFlags = flags;
     unconsumedDword2C = 0;
     return buffer->Play(0, priority, flags);
+}
+
+
+// TH10 0x0044D4E0. Applies the shared BGM-volume attenuation curve before
+// forwarding the adjusted millibel value to the primary DirectSound buffer.
+HRESULT CSound::SetVolume(int volume)
+{
+    float volumeScale = (float)g_FrontEndSoundBgmVolume / 100.0f;
+
+    if (g_FrontEndSoundBgmVolume != 0)
+    {
+        volumeScale = 1.0f - volumeScale;
+        volumeScale *= volumeScale;
+        volumeScale = 1.0f - volumeScale;
+        return m_apDSBuffer[0]->SetVolume(
+            (int)((volume + 5000) * volumeScale) - 5000);
+    }
+    return m_apDSBuffer[0]->SetVolume(DSBVOLUME_MIN);
 }
 
 
