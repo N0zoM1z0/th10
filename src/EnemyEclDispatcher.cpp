@@ -391,10 +391,10 @@ struct EnemyBulletPositionView
 __declspec(noinline) int EnemyBulletPositionView::IsOutsidePlayfield(
     float marginX, float marginY)
 {
-    if (x + marginX <= g_EnemyPlayfieldMaxX &&
-        g_EnemyPlayfieldMinX < x - marginX &&
-        y + marginY <= g_EnemyPlayfieldMaxY &&
-        g_EnemyPlayfieldMinY < y - marginY) {
+    if (!(x + marginX <= g_EnemyPlayfieldMaxX) &&
+        !(x - marginX >= g_EnemyPlayfieldMinX) &&
+        !(y + marginY <= g_EnemyPlayfieldMaxY) &&
+        !(y - marginY >= g_EnemyPlayfieldMinY)) {
         return 0;
     }
     return 1;
