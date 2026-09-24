@@ -262,6 +262,7 @@ EclVmContext::Run
 EclVmHost::Run
 GuiView::UpdateStageElements
 GuiMessageVmView::Run
+GuiScoreView::Add
 WinMain
 GameWindowView::WindowProc
 GameWindowView::Present

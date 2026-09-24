@@ -55,7 +55,7 @@ struct GuiScoreView
     void Add(int amount)
     {
         score += amount / 10;
-        if (score > 999999999)
+        if (score >= 1000000000)
             score = 999999999;
     }
 };
