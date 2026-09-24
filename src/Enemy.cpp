@@ -275,7 +275,7 @@ void EnemyEvaluateScalarInterpolation(
     EnemyScalarInterpolationView *interpolation, EnemyFloat2 *out);
 float __stdcall EnemyWrapAngle(float angle);
 void EnemyAdvanceMotion(EnemyMotionView *motion);
-void AnmSetVmScriptIndexAndExecute(
+void __stdcall AnmSetVmScriptIndexAndExecute(
     const unsigned int *vmId, int scriptIndex);
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
 const unsigned char *__fastcall EnemyResolveRuntimeCallback(

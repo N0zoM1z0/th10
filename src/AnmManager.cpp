@@ -705,10 +705,11 @@ void AnmRenderManagerView::SetVmPendingInterruptAndExecute(
 
 // Target 0x004496D0 resolves an existing VM ID through the shared manager,
 // selects its new loaded-ANM script, and immediately executes that script.
-void AnmSetVmScriptIndexAndExecute(
+void __stdcall AnmSetVmScriptIndexAndExecute(
     const unsigned int *vmId, int scriptIndex)
 {
-    AnmVmView *const vm = g_AnmRenderManagerView->FindVm(*vmId);
+    AnmVmView *const vm = g_AnmRenderManagerView->FindVm(
+        *reinterpret_cast<const AnmVmIdView *>(vmId));
     if (vm == NULL)
         return;
 
