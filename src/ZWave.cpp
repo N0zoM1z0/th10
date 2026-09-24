@@ -228,6 +228,19 @@ HRESULT CSound::Play(DWORD priority, DWORD flags)
 }
 
 
+// TH10 0x0044D600. Resets every DirectSound buffer to position zero.
+HRESULT CSound::Reset()
+{
+    if (m_apDSBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    HRESULT hr = 0;
+    for (DWORD i = 0; i < m_dwNumBuffers; ++i)
+        hr |= m_apDSBuffer[i]->SetCurrentPosition(0);
+    return hr;
+}
+
+
 // TH10 0x0044D5B0. This is the same DirectSound utility source family whose
 // original path survives in the executable as ".\src\core\zwave.cpp".
 HRESULT CSound::Pause()
