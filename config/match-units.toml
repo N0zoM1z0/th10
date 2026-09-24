@@ -1692,6 +1692,21 @@ symbol = "?Write@CMemoryPbgFile@@UAE_NPAXK@Z"
 target_address = 0x00436370
 size = 5
 
+
+[units.memory-pbgfile-open]
+artifact_kind = "coff"
+source = "src/ResFile.cpp"
+object = "build/match/ResFile.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CMemoryPbgFile::Open"]
+symbol = "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z"
+target_address = 0x00436400
+size = 46
+relocations = [
+  { offset = 0x0D, type = "REL32", symbol = "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z", target = 0x00435800 },
+  { offset = 0x17, type = "REL32", symbol = "?GetSize@ArchiveOrDiskPathView@@QAEKXZ", target = 0x004358E0 },
+]
+
 [units.memory-pbgfile-constructor]
 artifact_kind = "linked-pe"
 source = "src/ResFile.cpp"

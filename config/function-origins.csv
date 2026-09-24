@@ -512,7 +512,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00436380,authored_game,ResFile,authored,high,resfile-memory-ctor-raw-2026-09-12
 0x004363A0,compiler_generated,ResFile,exclude,high,resfile-memory-deleting-dtor-2026-09-12
 0x004363C0,authored_game,ResFile,authored,high,resfile-memory-dtor-vtable-2026-09-12
-0x00436400,authored_game,ResFile,authored,high,resfile-memory-open-raw-2026-09-12
+0x00436400,authored_game,ResFile,authored,high,target-resfile-memory-open-exact-2026-09-24
 0x00436430,authored_game,ResFile,authored,high,resfile-memory-close-vtable-2026-09-12
 0x00436460,authored_game,ResFile,authored,high,resfile-memory-read-raw-2026-09-12
 0x004364D0,authored_game,ResFile,authored,high,resfile-memory-tell-raw-2026-09-12

@@ -3,11 +3,15 @@
 #include <stdlib.h>
 #include <string.h>
 
-// These descriptive declarations represent the reviewed archive-or-disk
-// helpers at 0x00435800 and 0x004358E0. Their original identifiers, source
-// owner, and source-level calling conventions remain unknown.
-extern BYTE *ReadArchiveOrDiskFile(const char *filename, BYTE *optionalBuffer);
-extern DWORD GetArchiveOrDiskFileSize(const char *filename);
+// Physical target-call view for the reviewed archive-or-disk helpers at
+// 0x00435800 and 0x004358E0. TH10 passes the path pointer in ECX; the data
+// helper additionally consumes one stack buffer argument. The descriptive
+// type does not claim an original source class or identifier.
+struct ArchiveOrDiskPathView
+{
+    BYTE *Read(BYTE *optionalBuffer);
+    DWORD GetSize();
+};
 
 CMemoryPbgFile::CMemoryPbgFile()
 {
@@ -25,10 +29,11 @@ bool CMemoryPbgFile::Open(const char *filename, char *mode)
 {
     (void)mode;
 
-    m_Data = ReadArchiveOrDiskFile(filename, NULL);
-    m_Size = GetArchiveOrDiskFileSize(filename);
-    m_Current = m_Data;
-    return m_Data != NULL;
+    ArchiveOrDiskPathView *path =
+        reinterpret_cast<ArchiveOrDiskPathView *>(const_cast<char *>(filename));
+    m_Data = path->Read(NULL);
+    m_Size = path->GetSize();
+    return m_Current = m_Data;
 }
 
 void CMemoryPbgFile::Close()
