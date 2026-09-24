@@ -227,7 +227,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00418930,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00418A00,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x00418A90,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x00418B80,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
+0x00418B80,authored_game,ItemManager,authored,high,target-game-score-set-faith-exact-2026-09-24
 0x00418C40,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x00418D00,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00418D40,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
@@ -403,7 +403,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042A450,authored_game,Replay,authored,high,replay-stage-transition-2026-09-13
 0x0042A6A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
 0x0042A8A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
-0x0042A930,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0042A930,authored_game,ItemManager,authored,high,target-game-score-timer-current-exact-2026-09-24
 0x0042AA50,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x0042AB20,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x0042ACB0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17

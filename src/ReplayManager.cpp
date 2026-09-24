@@ -2,6 +2,7 @@
 
 #include "Decompress.hpp"
 #include "FileSystem.hpp"
+#include "GameScoreState.hpp"
 #include "Lzss.hpp"
 #include "Player.hpp"
 
@@ -156,7 +157,6 @@ extern unsigned int g_ReplayStageValue01C;
 extern unsigned int g_ReplayStageValue020;
 extern unsigned int g_ReplayStageValue1B4;
 extern unsigned int g_ReplayStageValue1B8;
-extern unsigned char g_ReplayStageTimer[];
 extern void *g_ReplayChainManager;
 
 // These names describe independently reviewed TH10 helpers. Their source/TU
@@ -174,8 +174,6 @@ void ReplayRestoreStagePosition(Player *runtime,
                                 const unsigned int *position);
 void ReplayResetStageRuntime(Player *runtime);
 
-void ReplayInitializeStageTimer(void *timer, int value);
-void ReplaySetStageTimerValue(void *timer, int value);
 int ReplayAddToCalcChain(void *chainManager, ReplayChainElement *element, int priority);
 int ReplayAddToDrawChain(void *chainManager, ReplayChainElement *element, int priority);
 int ReplayProcessFrameCallback(ReplayManager *manager);
@@ -330,9 +328,8 @@ int ReplayManager::Initialize(int replayMode, const char *path)
         g_ReplayStageSeedCounter = 0;
         g_ReplayStageValue00C = stageHeader->unknown00C;
         g_ReplayStageValue010 = stageHeader->unknown010;
-        ReplayInitializeStageTimer(g_ReplayStageTimer,
-                                   stageHeader->unknown014 * 10);
-        ReplaySetStageTimerValue(g_ReplayStageTimer, stageHeader->unknown018);
+        g_GameScoreState.SetFaith(stageHeader->unknown014 * 10);
+        g_GameScoreState.SetTimerCurrent(stageHeader->unknown018);
         g_ReplayStageValue01C = stageHeader->unknown01C;
         g_ReplayStageValue020 = stageHeader->unknown020;
         g_ReplayStageValue1B4 = stageHeader->unknown1B4;

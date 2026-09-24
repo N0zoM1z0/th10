@@ -350,3 +350,5 @@ GameScoreStateView::AddRank
 FrontEndCursorSetCurrent
 FrontEndInputView::IsRepeated
 GameScoreStateView::DecayFaith
+GameScoreStateView::SetFaith
+GameScoreStateView::SetTimerCurrent

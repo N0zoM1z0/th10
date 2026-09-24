@@ -1,6 +1,7 @@
 #include <stddef.h>
 
 #include "AnmManager.hpp"
+#include "GameScoreState.hpp"
 
 struct ItemVectorView
 {
@@ -35,25 +36,6 @@ void ItemVectorView::FromAngleMagnitude(float angle, float magnitude)
 #endif
 }
 
-struct GameScoreStateView
-{
-    int unknown00;
-    int score;
-    int highScore;
-    int faith;
-    unsigned char unknown10[0x48];
-    int rank;
-
-    void AddFaith(int amount);
-    void DecayFaith(int amount);
-    void AddRank(int amount);
-};
-
-typedef char GameScoreStateFaithAt0C[
-    (offsetof(GameScoreStateView, faith) == 0x0c) ? 1 : -1];
-typedef char GameScoreStateRankAt58[
-    (offsetof(GameScoreStateView, rank) == 0x58) ? 1 : -1];
-
 void GameScoreStateView::AddFaith(int amount)
 {
     faith += amount / 10;
@@ -66,6 +48,37 @@ void GameScoreStateView::DecayFaith(int amount)
     faith -= amount / 10;
     if (faith < 5000)
         faith = 5000;
+}
+
+void GameScoreStateView::SetFaith(int amount)
+{
+    faith = amount / 10;
+    if ((timer.flags & 1u) == 0)
+    {
+        timer.current = 0;
+        timer.previous = -999999;
+        timer.subframe = 0.0f;
+        timer.scale = &g_PlayerTimerScale;
+        timer.flags |= 1u;
+    }
+    timer.current = 0;
+    timer.subframe = 0.0f;
+    timer.previous = -1;
+}
+
+void GameScoreStateView::SetTimerCurrent(int value)
+{
+    if ((timer.flags & 1u) == 0)
+    {
+        timer.current = 0;
+        timer.previous = -999999;
+        timer.subframe = 0.0f;
+        timer.scale = &g_PlayerTimerScale;
+        timer.flags |= 1u;
+    }
+    timer.current = value;
+    timer.previous = value - 1;
+    timer.subframe = (float)value;
 }
 
 void GameScoreStateView::AddRank(int amount)
