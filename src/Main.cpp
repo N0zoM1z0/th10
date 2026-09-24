@@ -110,6 +110,14 @@ static __forceinline int MainD3dFailed(long result)
     return result < 0;
 }
 
+void MainSupervisorView::SetNextGameMode(int mode)
+{
+    if ((flags & 0x1000u) == 0)
+        nextGameMode = mode;
+    else
+        nextGameMode = 2;
+}
+
 // TH10_MAIN_FUNCTION: 0x00438AD0 WinMain
 // Target 0x00438AD0-0x0043903C owns process startup, the device-loss loop,
 // restart teardown and final process cleanup. The physical ABI consumes all

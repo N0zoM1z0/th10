@@ -1,3 +1,4 @@
+#include "Main.hpp"
 #include "Gui.hpp"
 
 #include <math.h>
@@ -102,7 +103,6 @@ extern int g_GuiGlobalMode;
 
 extern char *GuiDecryptMessageText(const unsigned char *encrypted);
 extern void GuiPlaySound(int soundId);
-extern void GuiSetGameMode(int mode);
 extern void GuiBeginStageTransition(int kind);
 extern void GuiCreateScreenEffect(
     int type, int duration, int color, int p3, int p4);
@@ -330,7 +330,7 @@ static void CompleteStageFromMessage()
         AddStageClearScore();
         if (g_GuiModeOwner != NULL && g_GuiModeOwner->state == 1)
         {
-            GuiSetGameMode(4);
+            g_MainSupervisorView.SetNextGameMode(4);
             return;
         }
 
@@ -350,7 +350,7 @@ static void CompleteStageFromMessage()
         DeleteVm(&g_GuiView->specialVmId9E14);
         g_GuiView->specialVmId9E14.value =
             CreateGuiVm(g_GuiView->frontAnm, 0x4c);
-        GuiSetGameMode(0x0b);
+        g_MainSupervisorView.SetNextGameMode(0x0b);
     }
 }
 

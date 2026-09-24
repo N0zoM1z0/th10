@@ -354,3 +354,4 @@ GameScoreStateView::SetFaith
 GameScoreStateView::SetTimerCurrent
 AnmVmIdView::SetSprite
 AnmVmIdView::SetSpriteWithAnm
+MainSupervisorView::SetNextGameMode

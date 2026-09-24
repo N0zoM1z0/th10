@@ -355,3 +355,4 @@ GameScoreStateView::SetFaith,0x00418B80,function
 GameScoreStateView::SetTimerCurrent,0x0042A930,function
 AnmVmIdView::SetSprite,0x00449670,function
 AnmVmIdView::SetSpriteWithAnm,0x004496A0,function
+MainSupervisorView::SetNextGameMode,0x0040AC90,function

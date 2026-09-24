@@ -64,6 +64,7 @@ production translation unit. Do not collect unrelated helpers in a generic
 
 | Priority | Candidate | Evidence and next step |
 | --- | --- | --- |
+| Completed | `MainSupervisorView::SetNextGameMode @ 0x0040AC90` | Six target call sites all preload EAX=`0x00491C28`, whose +0x04 D3D interface proves it is the MainSupervisor base. The helper writes +0x390, the same slot maintained FrontEnd source calls next game mode, unless supervisor flags +0x3CC has bit 0x1000, in which case it forces mode 2. Replacing the GUI placeholder `GuiSetGameMode` with the natural MainSupervisor member and compiling under real `GuiMessageVmView::Run` /GL context reproduces all 37 bytes raw-equal. |
 | Completed | `Lzss::DeleteString @ 0x00436210` | `src/Lzss.cpp`; exact linked-PE replay covers the complete 80-byte PDB extent and all seven linkage fields. Original production owner remains unknown. |
 | Completed | `AnmOpcodeVectorView::FromAngleMagnitude @ 0x00408750` | Maintained in `src/AnmManager.cpp`; caller `0x00406D90` is the ANM VM opcode handler. Exact body replay covers all 30 relocation-free bytes. |
 | Completed | `AnmScriptVectorView::FromAngleMagnitude @ 0x00441EF0` | Maintained in `src/AnmManager.cpp`; direct caller `0x0043EE30` is the ANM script executor. Exact body replay covers all 30 relocation-free bytes. |

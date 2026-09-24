@@ -3826,3 +3826,19 @@ linkages = [
   { offset = 0x0A, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z", target = 0x004491C0 },
   { offset = 0x1B, type = "REL32", symbol = "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z", target = 0x0043E5A0 },
 ]
+
+[units.main-set-next-game-mode]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/Gui.cpp", "src/AnmManager.cpp"]
+pdb_source = "src/Main.cpp"
+output_dir = "build/match-linked/MainNextGameMode"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Run@GuiMessageVmView@@SGHPAU1@@Z"
+functions = ["MainSupervisorView::SetNextGameMode"]
+symbol = "?SetNextGameMode@MainSupervisorView@@QAEXH@Z"
+target_address = 0x0040AC90
+size = 37
+linkages = []

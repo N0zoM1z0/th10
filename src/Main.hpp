@@ -220,6 +220,8 @@ typedef char GameWindowViewCurrentTimestampAt38[
 
 struct MainSupervisorView
 {
+    void SetNextGameMode(int mode);
+
     HINSTANCE instance;                         // +0x000
     MainD3d9InterfaceView *d3dInterface;        // +0x004
     MainD3d9DeviceView *d3dDevice;              // +0x008
@@ -251,7 +253,9 @@ struct MainSupervisorView
     unsigned char unknown350[0x034];
     AnmViewportOwnerView *activeViewport;       // +0x384
     int viewportConfigured;                     // +0x388
-    unsigned char unknown38C[0x020];
+    unsigned char unknown38C[0x004];
+    int nextGameMode;                           // +0x390
+    unsigned char unknown394[0x018];
     int screenTransitionCountdown;              // +0x3AC
     unsigned char unknown3B0[0x004];
     int disableVsync;                           // +0x3B4
@@ -288,7 +292,8 @@ typedef char MainSupervisorViewportAt26C[
     (offsetof(MainSupervisorView, gameplayViewport) == 0x26c &&
      offsetof(MainSupervisorView, activeViewport) == 0x384) ? 1 : -1];
 typedef char MainSupervisorFlagsAt3CC[
-    (offsetof(MainSupervisorView, screenTransitionCountdown) == 0x3ac &&
+    (offsetof(MainSupervisorView, nextGameMode) == 0x390 &&
+     offsetof(MainSupervisorView, screenTransitionCountdown) == 0x3ac &&
      offsetof(MainSupervisorView, flags) == 0x3cc) ? 1 : -1];
 typedef char MainSupervisorCriticalSectionsAt64C[
     (offsetof(MainSupervisorView, criticalSections) == 0x64c &&
