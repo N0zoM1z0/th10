@@ -77,3 +77,19 @@ void AnmVmIdView::Release()
     g_AnmRenderManagerView->MarkVmForDeletion(*this);
     value = 0;
 }
+
+// Target 0x00449670 resolves this id and sets a sprite using the VM's own ANM.
+void AnmVmIdView::SetSprite(int spriteIndex)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(vm, spriteIndex);
+}
+
+// Target 0x004496A0 resolves this id and sets a sprite from an explicit ANM.
+void AnmVmIdView::SetSpriteWithAnm(AnmLoadedView *loaded, int spriteIndex)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
+    if (vm != NULL)
+        loaded->SetSprite(vm, spriteIndex);
+}

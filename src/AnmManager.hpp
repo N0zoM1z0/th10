@@ -442,6 +442,8 @@ struct AnmVmIdView
     TH10_ANM_NOINLINE void SetFlag2();
     TH10_ANM_NOINLINE void ClearFlag2();
     TH10_ANM_NOINLINE void Release();
+    TH10_ANM_NOINLINE void SetSprite(int spriteIndex);
+    TH10_ANM_NOINLINE void SetSpriteWithAnm(AnmLoadedView *loaded, int spriteIndex);
 
     int value;
 };

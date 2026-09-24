@@ -726,8 +726,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00449590,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x004495E0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00449630,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x00449670,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
-0x004496A0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x00449670,authored_game,AnmVmId,authored,high,target-anm-vm-id-set-sprite-exact-2026-09-24
+0x004496A0,authored_game,AnmVmId,authored,high,target-anm-vm-id-set-sprite-exact-2026-09-24
 0x004496D0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x004497D0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00449870,authored_game,AnmManager,authored,high,anm-child-vm-2026-09-15

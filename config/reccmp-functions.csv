@@ -353,3 +353,5 @@ FrontEndInputView::IsRepeated,0x0040ACE0,function
 GameScoreStateView::DecayFaith,0x00412E70,function
 GameScoreStateView::SetFaith,0x00418B80,function
 GameScoreStateView::SetTimerCurrent,0x0042A930,function
+AnmVmIdView::SetSprite,0x00449670,function
+AnmVmIdView::SetSpriteWithAnm,0x004496A0,function

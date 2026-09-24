@@ -199,10 +199,8 @@ static void SetChildSprite(
     AnmVmIdView *parentId, short childSpriteIndex,
     AnmLoadedView *spriteOwner, int spriteIndex)
 {
-    const int childId = FindChildVmId(parentId, childSpriteIndex);
-    AnmVmView *child = g_AnmRenderManagerView->FindVm(childId);
-    if (child != NULL && spriteOwner != NULL)
-        spriteOwner->SetSprite(child, spriteIndex);
+    AnmVmIdView childId(FindChildVmId(parentId, childSpriteIndex));
+    childId.SetSpriteWithAnm(spriteOwner, spriteIndex);
 }
 
 static void DrawMessageText(
@@ -245,16 +243,12 @@ static void SetPlayerPortraitSprites(
 {
     const int firstOffset = g_GuiCharacter == 0 ? 0x34 : 0x2d;
     const int secondOffset = g_GuiCharacter == 0 ? 0x3c : 0x35;
-    const int child0 = FindChildVmId(
-        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17);
-    const int child1 = FindChildVmId(
-        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a);
-    AnmVmView *vm0 = g_AnmRenderManagerView->FindVm(child0);
-    AnmVmView *vm1 = g_AnmRenderManagerView->FindVm(child1);
-    if (vm0 != NULL && vm0->anmFile != NULL)
-        vm0->anmFile->SetSprite(vm0, baseSprite + firstOffset);
-    if (vm1 != NULL && vm1->anmFile != NULL)
-        vm1->anmFile->SetSprite(vm1, baseSprite + secondOffset);
+    AnmVmIdView child0(FindChildVmId(
+        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17));
+    AnmVmIdView child1(FindChildVmId(
+        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a));
+    child0.SetSprite(baseSprite + firstOffset);
+    child1.SetSprite(baseSprite + secondOffset);
 }
 
 static void SetEnemyPortraitSprites(
