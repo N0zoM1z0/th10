@@ -46,6 +46,8 @@ def measures() -> dict[str, int]:
     excluded = [row for row in functions if disposition(row) == "exclude"]
     indeterminate = [row for row in functions if disposition(row) == "indeterminate"]
     exact_bytes = sum(int(row["size"], 0) for row in matches)
+    authored_exact = [row for row in matches if disposition(row) == "authored"]
+    authored_exact_bytes = sum(int(row["size"], 0) for row in authored_exact)
     authored_bytes = sum(int(row["size"], 0) for row in authored)
     origin_reviewed = len(authored) + len(excluded) + len(indeterminate)
     boundary_reviewed = sum(
@@ -96,9 +98,11 @@ def measures() -> dict[str, int]:
         "mapped_review": mapped_review,
         "mapped_excluded": mapped_excluded,
         "mapped_indeterminate": mapped_indeterminate,
-        "authored_exact_backlog": mapped_authored - len(matches),
+        "authored_exact_backlog": mapped_authored - len(authored_exact),
         "matches": len(matches),
         "exact_bytes": exact_bytes,
+        "authored_matches": len(authored_exact),
+        "authored_exact_bytes": authored_exact_bytes,
     }
 
 
@@ -125,7 +129,9 @@ inventory is provisional; reviewed boundary and origin states are counted below.
 | Source-present origin indeterminate | {values['mapped_indeterminate']:,} |
 | Authored source-present exact backlog | {values['authored_exact_backlog']:,} |
 | Canonical exact functions | {values['matches']:,} |
-| Canonical exact authored bytes | {values['exact_bytes']:,} |
+| Canonical exact codegen bytes | {values['exact_bytes']:,} |
+| Canonical exact functions with authored origin | {values['authored_matches']:,} |
+| Canonical exact authored bytes | {values['authored_exact_bytes']:,} |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
 gaps can contain code, data, thunks, tables, and padding. While origin review,
@@ -144,13 +150,22 @@ def render_svg(values: dict[str, int]) -> str:
     if values["review_pending"] or values["indeterminate"]:
         exact_label = "denominator pending"
         exact_width = 0.0
-        exact_detail = f"{values['matches']:,} exact functions · {values['exact_bytes']:,} exact bytes"
+        exact_detail = (
+            f"{values['authored_matches']:,} authored / {values['matches']:,} exact · "
+            f"{values['exact_bytes']:,} codegen bytes"
+        )
         aria_exact = "authored exact denominator pending"
     else:
-        exact_pct = 100 * values["exact_bytes"] / values["authored_bytes"] if values["authored_bytes"] else 0.0
+        exact_pct = (
+            100 * values["authored_exact_bytes"] / values["authored_bytes"]
+            if values["authored_bytes"] else 0.0
+        )
         exact_label = f"{exact_pct:.2f}%"
         exact_width = 512 * exact_pct / 100
-        exact_detail = f"{values['matches']:,} / {values['authored']:,} functions · {values['exact_bytes']:,} / {values['authored_bytes']:,} bytes"
+        exact_detail = (
+            f"{values['authored_matches']:,} / {values['authored']:,} authored · "
+            f"{values['authored_exact_bytes']:,} / {values['authored_bytes']:,} bytes"
+        )
         aria_exact = f"authored {exact_pct:.2f}% exact bytes"
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="176" role="img" aria-label="TH10 reconstruction progress: {aria_exact}, origin and boundary review {review_pct:.2f}%">
   <rect width="560" height="176" rx="8" fill="#1f2335"/>

@@ -73,6 +73,12 @@ of that bounded function in the declared LTCG context; it does not make the
 anchor image runnable or establish production ownership, translation-unit
 partition, link order, data ownership, or whole-product closure.
 
+Target origin is recorded independently from codegen exactness. A canonical
+unit requires a maintained source mapping and reviewed target boundary, but an
+unknown authored-versus-outlined origin remains unknown after an exact replay.
+The exact claim covers only the complete target extent in the declared source
+and compiler context.
+
 If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent
 completion.

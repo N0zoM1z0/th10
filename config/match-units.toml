@@ -3495,3 +3495,18 @@ linkages = [
   { offset = 47, type = "DIR32", symbol = "_g_EnemyLaserPlayfieldMinimumY", target = 0x00470B04 },
   { offset = 67, type = "DIR32", symbol = "_g_EnemyLaserPlayfieldMaximumY", target = 0x00470B38 },
 ]
+
+[units.enemy-resolve-int-argument]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp"]
+output_dir = "build/match-linked/EnemyDispatcherHelpers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+functions = ["EnemyRuntimeView::ResolveIntArgument"]
+symbol = "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z"
+target_address = 0x00412A10
+size = 75
+linkages = []

@@ -151,8 +151,6 @@ def validate() -> dict[str, int]:
         expected_source = unit.get("pdb_source", unit["source"])
         if function["source_file"] != expected_source:
             raise ValueError(f"exact unit {unit_name!r} differs from source ledger")
-        if origins_by_address[address]["disposition"] != "authored":
-            raise ValueError(f"exact unit {unit_name!r} is not reviewed authored code")
         if boundaries_by_address[address]["state"] != "reviewed":
             raise ValueError(f"exact unit {unit_name!r} lacks a reviewed boundary")
     if matched_units != set(configured_units):
