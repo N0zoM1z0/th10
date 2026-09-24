@@ -4047,3 +4047,49 @@ size = 12
 linkages = [
   { offset = 0x04, type = "REL32", symbol = "?PlayerOptionSpecialCallbackBody@@YAXPAUPlayerOptionRuntime@@@Z", target = 0x00427AE0 },
 ]
+
+[units.zwave-csound-restore-buffer]
+artifact_kind = "linked-pe"
+source = "src/ZWave.cpp"
+output_dir = "build/match-linked/ZWavePlayHelpers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Play@CSound@@QAEJKK@Z"
+functions = ["CSound::RestoreBuffer"]
+symbol = "?RestoreBuffer@CSound@@QAEJPAUIDirectSoundBuffer@@PAH@Z"
+target_address = 0x0044D300
+size = 98
+linkages = [
+  { offset = 0x2D, type = "DIR32", symbol = "__imp__Sleep@4", target = 0x004660AC },
+]
+
+[units.zwave-csound-get-free-buffer]
+artifact_kind = "linked-pe"
+source = "src/ZWave.cpp"
+output_dir = "build/match-linked/ZWavePlayHelpers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Play@CSound@@QAEJKK@Z"
+functions = ["CSound::GetFreeBuffer"]
+symbol = "?GetFreeBuffer@CSound@@QAEPAUIDirectSoundBuffer@@XZ"
+target_address = 0x0044D370
+size = 103
+linkages = [
+  { offset = 0x55, type = "REL32", symbol = "_rand", target = 0x0045371B },
+]
+
+[units.zwave-csound-reset]
+artifact_kind = "linked-pe"
+source = "src/ZWave.cpp"
+output_dir = "build/match-linked/ZWavePlayHelpers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Play@CSound@@QAEJKK@Z"
+functions = ["CSound::Reset"]
+symbol = "?Reset@CSound@@QAEJXZ"
+target_address = 0x0044D600
+size = 61
+linkages = []

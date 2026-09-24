@@ -359,3 +359,7 @@ PlayerAngleToPoint
 EnemyAngleFromPlayer
 StartSoundLoadThread
 ItemManagerView::OnDraw
+CSound::RestoreBuffer
+CSound::GetFreeBuffer
+CSound::Play
+CSound::Reset
