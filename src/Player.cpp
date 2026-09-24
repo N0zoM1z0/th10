@@ -1748,6 +1748,14 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
     return 1;
 }
 
+// Keep the registered update adapter beside its Player callback body and its
+// paired draw-chain entry.
+int __fastcall PlayerUpdateCallback(Player *player)
+{
+    return PlayerUpdateCallbackBody(player);
+}
+
+
 // Maintained spelling of the Player callback registered in the target's second
 // (draw-phase) chain. The physical target entry at 0x00426510 adapts ECX to an
 // EAX-bound body at 0x00426360; source-written thunk versus compiler/LTCG

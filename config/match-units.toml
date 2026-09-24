@@ -3510,3 +3510,16 @@ symbol = "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z"
 target_address = 0x00412A10
 size = 75
 linkages = []
+
+[units.player-update-callback]
+artifact_kind = "coff"
+source = "src/Player.cpp"
+object = "build/match/PlayerUpdateCallback.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["PlayerUpdateCallback"]
+symbol = "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z"
+target_address = 0x00426500
+size = 7
+relocations = [
+  { offset = 2, type = "REL32", symbol = "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z", target = 0x00425730 },
+]
