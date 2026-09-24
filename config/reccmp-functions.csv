@@ -346,3 +346,4 @@ FrontEndCursorView::Pop,0x0044BE70,function
 FrontEndCursorView::Move,0x0044BEA0,function
 CSound::Pause,0x0044D5B0,function
 CStreamingSound::~CStreamingSound,0x0044D730,function
+CSound::~CSound,0x0044D080,function

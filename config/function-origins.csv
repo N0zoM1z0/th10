@@ -787,7 +787,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044CE80,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044CF00,compiler_generated,GameCxx,exclude,high,target-vc71-scalar-deleting-destructor-2026-09-17
 0x0044CF20,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x0044D080,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x0044D080,unknown,ZWave,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0044D110,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D300,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D370,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17

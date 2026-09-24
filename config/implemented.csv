@@ -345,3 +345,4 @@ FrontEndCursorView::Pop
 FrontEndCursorView::Move
 CSound::Pause
 CStreamingSound::~CStreamingSound
+CSound::~CSound

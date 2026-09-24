@@ -3685,3 +3685,19 @@ relocations = [
   { offset = 0x02, type = "DIR32", symbol = "??_7CStreamingSound@@6B@", target = 0x004705D4 },
   { offset = 0x07, type = "REL32", symbol = "??1CSound@@UAE@XZ", target = 0x0044D080 },
 ]
+
+[units.zwave-csound-destructor]
+artifact_kind = "coff"
+source = "src/ZWave.cpp"
+object = "build/match/ZWave.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CSound::~CSound"]
+symbol = "??1CSound@@UAE@XZ"
+target_address = 0x0044D080
+size = 136
+relocations = [
+  { offset = 0x0D, type = "DIR32", symbol = "??_7CSound@@6B@", target = 0x004705D8 },
+  { offset = 0x43, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x67, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+  { offset = 0x77, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
