@@ -3701,3 +3701,17 @@ relocations = [
   { offset = 0x67, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
   { offset = 0x77, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
 ]
+
+[units.item-rank-add]
+artifact_kind = "linked-pe"
+source = "src/ItemManager.cpp"
+output_dir = "build/match-linked/ItemHelpers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?FromAngleMagnitude@ItemVectorView@@QAEXMM@Z"
+functions = ["GameScoreStateView::AddRank"]
+symbol = "?AddRank@GameScoreStateView@@QAEXH@Z"
+target_address = 0x00405B60
+size = 42
+linkages = []

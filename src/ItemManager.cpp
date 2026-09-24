@@ -41,18 +41,32 @@ struct GameScoreStateView
     int score;
     int highScore;
     int faith;
+    unsigned char unknown10[0x48];
+    int rank;
 
     void AddFaith(int amount);
+    void AddRank(int amount);
 };
 
 typedef char GameScoreStateFaithAt0C[
     (offsetof(GameScoreStateView, faith) == 0x0c) ? 1 : -1];
+typedef char GameScoreStateRankAt58[
+    (offsetof(GameScoreStateView, rank) == 0x58) ? 1 : -1];
 
 void GameScoreStateView::AddFaith(int amount)
 {
     faith += amount / 10;
     if (faith > 99999)
         faith = 99999;
+}
+
+void GameScoreStateView::AddRank(int amount)
+{
+    rank += amount;
+    if (rank > 0x400)
+        rank = 0x400;
+    else if (rank < -0x400)
+        rank = -0x400;
 }
 
 // TH10 0x0041B8E0-0x0041B9F8 draws the fixed 0x896-row item pool.  The

@@ -56,7 +56,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00405860,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x004059F0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x00405AC0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
-0x00405B60,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x00405B60,authored_game,ItemManager,authored,high,target-itemmanager-owner-recovery-2026-09-24
 0x00405BE0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x00405D00,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00405DE0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18

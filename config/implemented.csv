@@ -346,3 +346,4 @@ FrontEndCursorView::Move
 CSound::Pause
 CStreamingSound::~CStreamingSound
 CSound::~CSound
+GameScoreStateView::AddRank
