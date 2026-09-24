@@ -359,3 +359,4 @@ MainSupervisorView::SetNextGameMode,0x0040AC90,function
 PlayerAngleToPoint,0x00426610,function
 EnemyAngleFromPlayer,0x00426660,function
 StartSoundLoadThread,0x0043D0F0,function
+ItemManagerView::OnDraw,0x0041BA30,function
