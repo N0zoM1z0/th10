@@ -3715,3 +3715,14 @@ symbol = "?AddRank@GameScoreStateView@@QAEXH@Z"
 target_address = 0x00405B60
 size = 42
 linkages = []
+
+[units.frontend-cursor-set-current]
+artifact_kind = "coff"
+source = "src/FrontEnd.cpp"
+object = "build/match/FrontEnd.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["FrontEndCursorSetCurrent"]
+symbol = "?FrontEndCursorSetCurrent@@YIHHPAUFrontEndCursorView@@@Z"
+target_address = 0x0040AD20
+size = 33
+relocations = []

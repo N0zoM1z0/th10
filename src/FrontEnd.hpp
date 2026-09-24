@@ -7,6 +7,9 @@
 
 
 class ReplayManager;
+struct FrontEndCursorView;
+int __fastcall FrontEndCursorSetCurrent(
+    int value, FrontEndCursorView *cursor);
 
 
 // The three target cursor helpers at 0x0044BE20/70/A0 establish this complete
@@ -25,14 +28,7 @@ struct FrontEndCursorView
 
     void SetCurrent(int value)
     {
-        if (count == 0)
-            current = value;
-        else if (count <= value)
-            current = count - 1;
-        else if (value < 0)
-            current = 0;
-        else
-            current = value;
+        FrontEndCursorSetCurrent(value, this);
     }
 
     void DisableEntry(int value)

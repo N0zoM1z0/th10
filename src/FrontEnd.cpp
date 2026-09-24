@@ -7,6 +7,32 @@
 #include <string.h>
 #include <time.h>
 
+// TH10 0x0040AD20 is the shared cursor setter used by multiple FrontEnd
+// controllers. The physical helper consumes value in ECX and cursor in EDX;
+// the member API in FrontEnd.hpp delegates here without claiming that this
+// private helper ABI was the original source declaration.
+int __fastcall FrontEndCursorSetCurrent(
+    int value, FrontEndCursorView *cursor)
+{
+    int count = cursor->count;
+    if (count != 0)
+    {
+        if (value >= count)
+        {
+            --count;
+            cursor->current = count;
+            return count;
+        }
+
+        int chosen = value < 0 ? 0 : value;
+        cursor->current = chosen;
+        return chosen;
+    }
+
+    cursor->current = value;
+    return value;
+}
+
 void FrontEndCursorView::Push()
 {
     savedCurrent[saveDepth] = current;
