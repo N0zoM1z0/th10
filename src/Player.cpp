@@ -1,4 +1,5 @@
 #include "Player.hpp"
+#include "AnmVmId.hpp"
 
 #include <stddef.h>
 #include <math.h>
@@ -475,7 +476,17 @@ static int GetSecondaryPlayerOptionScript()
 // Maintained spelling of the observed ECX-bound option callback boundary. This
 // models the target machine ABI; the original source declaration and the
 // wrapper/body optimizer ownership remain unknown.
-static int __fastcall PlayerOptionTrailCallback(PlayerOptionRuntime *option)
+__declspec(noinline) void PlayerOptionTrailCallbackBody(
+    PlayerOptionRuntime *option);
+
+int __fastcall PlayerOptionTrailCallback(PlayerOptionRuntime *option)
+{
+    PlayerOptionTrailCallbackBody(option);
+    return 0;
+}
+
+__declspec(noinline) void PlayerOptionTrailCallbackBody(
+    PlayerOptionRuntime *option)
 {
     Player *player = g_Player;
     const int optionMode = player->optionMode;
@@ -516,12 +527,21 @@ static int __fastcall PlayerOptionTrailCallback(PlayerOptionRuntime *option)
     option->replayPair0.x = player->positionX + option->replayPair2.x;
     option->replayPair0.y = player->positionY + option->replayPair2.y;
     option->previousMode = optionMode;
-    return 0;
 }
 
 // Maintained spelling of the second observed ECX-bound option callback. The
-// target switches the primary VM delete state only when the option mode changes.
-static int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
+// target sends interrupt 6/3 to the primary VM when the option mode changes.
+__declspec(noinline) void PlayerOptionSpecialCallbackBody(
+    PlayerOptionRuntime *option);
+
+int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
+{
+    PlayerOptionSpecialCallbackBody(option);
+    return 0;
+}
+
+__declspec(noinline) void PlayerOptionSpecialCallbackBody(
+    PlayerOptionRuntime *option)
 {
     Player *player = g_Player;
     const int optionMode = player->optionMode;
@@ -529,7 +549,7 @@ static int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
     if (optionMode == 0)
     {
         if (option->previousMode != 0)
-            PlayerSetManagedVmDeleteState(&option->primaryVmId, 6);
+            reinterpret_cast<AnmVmIdView *>(&option->primaryVmId)->SetInterrupt(6);
 
         option->replayPair3 = option->replayPair1;
         option->previousMode = 0;
@@ -537,12 +557,11 @@ static int __fastcall PlayerOptionSpecialCallback(PlayerOptionRuntime *option)
     else
     {
         if (option->previousMode == 0)
-            PlayerSetManagedVmDeleteState(&option->primaryVmId, 3);
+            reinterpret_cast<AnmVmIdView *>(&option->primaryVmId)->SetInterrupt(3);
 
         option->replayPair0 = option->replayPair3;
         option->previousMode = optionMode;
     }
-    return 0;
 }
 
 // Maintained source for the Player constructor/reset/factory/destructor seam.
