@@ -33,6 +33,8 @@ bool CMemoryPbgFile::Open(const char *filename, char *mode)
         reinterpret_cast<ArchiveOrDiskPathView *>(const_cast<char *>(filename));
     m_Data = path->Read(NULL);
     m_Size = path->GetSize();
+    // Intentional assignment expression: the target stores the cursor and
+    // then converts the same EAX pointer value directly to bool.
     return m_Current = m_Data;
 }
 
