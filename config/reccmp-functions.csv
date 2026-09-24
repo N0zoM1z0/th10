@@ -349,3 +349,4 @@ CStreamingSound::~CStreamingSound,0x0044D730,function
 CSound::~CSound,0x0044D080,function
 GameScoreStateView::AddRank,0x00405B60,function
 FrontEndCursorSetCurrent,0x0040AD20,function
+FrontEndInputView::IsRepeated,0x0040ACE0,function

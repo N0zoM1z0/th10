@@ -107,7 +107,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040A940,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0040AC20,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x0040AC90,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x0040ACE0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0040ACE0,authored_game,FrontEnd,authored,high,target-frontend-input-helper-2026-09-24
 0x0040AD20,authored_game,FrontEnd,authored,high,target-frontend-cursor-helper-2026-09-24
 0x0040AE70,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0040AF00,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17

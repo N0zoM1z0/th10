@@ -348,3 +348,4 @@ CStreamingSound::~CStreamingSound
 CSound::~CSound
 GameScoreStateView::AddRank
 FrontEndCursorSetCurrent
+FrontEndInputView::IsRepeated

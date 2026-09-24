@@ -88,7 +88,19 @@ struct FrontEndInputView
     unsigned int current;
     unsigned short repeated;
     unsigned short pressed;
+
+    int IsRepeated(unsigned short mask);
 };
+
+// TH10 0x0040ACE0. FrontEnd callers keep the shared input object in ECX while
+// /GL promotes the 16-bit mask to EAX. The source method keeps the natural
+// object API and lets the selected target caller graph recover that private ABI.
+int FrontEndInputView::IsRepeated(unsigned short mask)
+{
+    if ((pressed & mask) == 0 && (repeated & mask) == 0)
+        return 0;
+    return 1;
+}
 
 extern FrontEndInputView g_FrontEndInput;
 extern unsigned int g_FrontEndFlags;
@@ -286,7 +298,7 @@ static void DeleteVm(
 
 static int InputRepeated(unsigned short mask)
 {
-    return ((g_FrontEndInput.pressed | g_FrontEndInput.repeated) & mask) != 0;
+    return g_FrontEndInput.IsRepeated(mask);
 }
 
 static int TimerReachedMultiple(
