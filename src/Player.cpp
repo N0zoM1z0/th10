@@ -202,7 +202,14 @@ void PlayerFinalizeState3Transition();
 void PlayerInvokeHostileCleanup(PlayerHostileRowView *row);
 void PlayerInvokeLinkedObjectCallback(PlayerLinkedObjectView *object);
 void PlayerTransitionToState2(Player *player);
-float PlayerAngleToPoint(Player *player, const PlayerFloat3 *point);
+float PlayerAngleToPoint(Player *player, const PlayerFloat3 *point)
+{
+    float dx = point->x - player->drawPosition.x;
+    float dy = point->y - player->drawPosition.y;
+    if (dy == 0.0f && dx == 0.0f)
+        return 1.5707964f;
+    return (float)atan2(dy, dx);
+}
 void PlayerSpawnDirectionalEffect(
     const PlayerFloat3 *position, int kind, unsigned int color,
     float angle, float scale);

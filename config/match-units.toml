@@ -3842,3 +3842,21 @@ symbol = "?SetNextGameMode@MainSupervisorView@@QAEXH@Z"
 target_address = 0x0040AC90
 size = 37
 linkages = []
+
+[units.player-angle-to-point]
+artifact_kind = "linked-pe"
+source = "src/Player.cpp"
+output_dir = "build/match-linked/PlayerAngleToPoint"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z"
+functions = ["PlayerAngleToPoint"]
+symbol = "?PlayerAngleToPoint@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z"
+target_address = 0x00426610
+size = 67
+linkages = [
+  { offset = 0x13, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x24, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x39, type = "DIR32", symbol = "__real@3fc90fdb", target = 0x00470B94 },
+]

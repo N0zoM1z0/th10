@@ -355,3 +355,4 @@ GameScoreStateView::SetTimerCurrent
 AnmVmIdView::SetSprite
 AnmVmIdView::SetSpriteWithAnm
 MainSupervisorView::SetNextGameMode
+PlayerAngleToPoint

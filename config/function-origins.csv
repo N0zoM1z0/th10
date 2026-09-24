@@ -358,7 +358,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00426500,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00426510,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00426520,authored_game,GameUnassigned,authored,medium,target-authored-call-sandwich-2026-09-17
-0x00426610,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
+0x00426610,authored_game,Player,authored,high,target-player-angle-to-point-exact-2026-09-24
 0x00426660,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x004266B0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x004267F0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
