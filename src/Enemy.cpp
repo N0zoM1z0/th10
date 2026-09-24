@@ -1673,3 +1673,14 @@ int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy)
     EnemyPlaySound(10);
     return 1;
 }
+
+// TH10 0x00426660. Kept late in this TU so the new exact helper does not
+// perturb compiler-local label numbering in earlier canonical COFF units.
+float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position)
+{
+    float dx = player->drawPosition.x - position->x;
+    float dy = player->drawPosition.y - position->y;
+    if (dy == 0.0f && dx == 0.0f)
+        return 1.5707964f;
+    return (float)atan2(dy, dx);
+}

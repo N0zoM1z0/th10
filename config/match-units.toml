@@ -1495,7 +1495,7 @@ symbol = "?ResolveIntOperand@EnemyFullObjectView@@UAEPAHH@Z"
 target_address = 0x00412300
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L4106", target = 0x00412340 },
+  { offset = 17, type = "DIR32", symbol = "$L4115", target = 0x00412340 },
   { offset = 64, type = "DIR32", symbol = "$L3365", target = 0x00412315 },
   { offset = 68, type = "DIR32", symbol = "$L3366", target = 0x0041231E },
   { offset = 72, type = "DIR32", symbol = "$L3367", target = 0x00412327 },
@@ -1512,7 +1512,7 @@ symbol = "?ResolveFloatOperand@EnemyFullObjectView@@UAEPAMH@Z"
 target_address = 0x004126D0
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L4146", target = 0x00412710 },
+  { offset = 17, type = "DIR32", symbol = "$L4118", target = 0x00412710 },
   { offset = 64, type = "DIR32", symbol = "$L3443", target = 0x004126E5 },
   { offset = 68, type = "DIR32", symbol = "$L3444", target = 0x004126EE },
   { offset = 72, type = "DIR32", symbol = "$L3445", target = 0x004126F7 },
@@ -3926,3 +3926,21 @@ symbol = "?EnemyApplyBulletClear@@YAIPAUEnemyEffectWaitManager@@H@Z"
 target_address = 0x0041C850
 size = 44
 relocations = []
+
+[units.enemy-angle-from-player]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/EnemyAngleFromPlayer"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ReadFloatOperand@EnemyFullObjectView@@UAEMH@Z"
+functions = ["EnemyAngleFromPlayer"]
+symbol = "?EnemyAngleFromPlayer@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z"
+target_address = 0x00426660
+size = 67
+linkages = [
+  { offset = 0x13, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x24, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x39, type = "DIR32", symbol = "__real@3fc90fdb", target = 0x00470B94 },
+]

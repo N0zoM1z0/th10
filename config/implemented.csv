@@ -356,3 +356,4 @@ AnmVmIdView::SetSprite
 AnmVmIdView::SetSpriteWithAnm
 MainSupervisorView::SetNextGameMode
 PlayerAngleToPoint
+EnemyAngleFromPlayer
