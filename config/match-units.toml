@@ -4093,3 +4093,24 @@ symbol = "?Reset@CSound@@QAEJXZ"
 target_address = 0x0044D600
 size = 61
 linkages = []
+
+[units.zwave-csound-set-volume]
+artifact_kind = "linked-pe"
+source = "src/ZWave.cpp"
+output_dir = "build/match-linked/ZWavePlayHelpers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Play@CSound@@QAEJKK@Z"
+functions = ["CSound::SetVolume"]
+symbol = "?SetVolume@CSound@@QAEJH@Z"
+target_address = 0x0044D4E0
+size = 106
+linkages = [
+  { offset = 0x02, type = "DIR32", symbol = "?g_FrontEndSoundBgmVolume@@3HA", target = 0x00497854 },
+  { offset = 0x0C, type = "DIR32", symbol = "?g_FrontEndSoundBgmVolume@@3HA", target = 0x00497854 },
+  { offset = 0x1F, type = "DIR32", symbol = "__real@3c23d70a", target = 0x00470B00 },
+  { offset = 0x2C, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x39, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x42, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]

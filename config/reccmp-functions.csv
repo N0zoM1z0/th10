@@ -364,3 +364,4 @@ CSound::RestoreBuffer,0x0044D300,function
 CSound::GetFreeBuffer,0x0044D370,function
 CSound::Play,0x0044D440,function
 CSound::Reset,0x0044D600,function
+CSound::SetVolume,0x0044D4E0,function

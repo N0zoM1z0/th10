@@ -363,3 +363,4 @@ CSound::RestoreBuffer
 CSound::GetFreeBuffer
 CSound::Play
 CSound::Reset
+CSound::SetVolume
