@@ -343,3 +343,4 @@ EnemyApplyBulletClear
 FrontEndCursorView::Push
 FrontEndCursorView::Pop
 FrontEndCursorView::Move
+CSound::Pause

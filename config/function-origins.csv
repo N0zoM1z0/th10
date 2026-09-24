@@ -794,7 +794,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044D440,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D4E0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D550,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x0044D5B0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0044D5B0,authored_game,ZWave,authored,high,target-zwave-source-family-exact-2026-09-24
 0x0044D5D0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D600,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D6A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17

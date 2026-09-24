@@ -344,3 +344,4 @@ EnemyApplyBulletClear,0x0041C850,function
 FrontEndCursorView::Push,0x0044BE20,function
 FrontEndCursorView::Pop,0x0044BE70,function
 FrontEndCursorView::Move,0x0044BEA0,function
+CSound::Pause,0x0044D5B0,function

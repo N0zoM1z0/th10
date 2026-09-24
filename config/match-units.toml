@@ -3660,3 +3660,14 @@ symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
 target_address = 0x0044BEA0
 size = 128
 linkages = []
+
+[units.zwave-csound-pause]
+artifact_kind = "coff"
+source = "src/ZWave.cpp"
+object = "build/match/ZWave.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["CSound::Pause"]
+symbol = "?Pause@CSound@@QAEJXZ"
+target_address = 0x0044D5B0
+size = 29
+relocations = []
