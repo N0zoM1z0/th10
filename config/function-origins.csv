@@ -770,9 +770,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044BC10,authored_game,AnmManager,authored,high,anm-script-executor-2026-09-15
 0x0044BC70,authored_game,Enemy,authored,high,enemy-angle-helper-2026-09-16
 0x0044BD10,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
-0x0044BE20,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x0044BE70,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x0044BEA0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0044BE20,authored_game,FrontEnd,authored,high,target-frontend-cursor-callers-2026-09-24
+0x0044BE70,authored_game,FrontEnd,authored,high,target-frontend-cursor-callers-2026-09-24
+0x0044BEA0,authored_game,FrontEnd,authored,high,target-frontend-cursor-callers-2026-09-24
 0x0044BF40,authored_game,AnmManager,authored,high,anm-script-executor-2026-09-15
 0x0044C100,compiler_generated,GameCxx,exclude,high,target-vc71-scalar-deleting-destructor-2026-09-17
 0x0044C130,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18

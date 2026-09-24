@@ -7,6 +7,52 @@
 #include <string.h>
 #include <time.h>
 
+void FrontEndCursorView::Push()
+{
+    savedCurrent[saveDepth] = current;
+    savedCount[saveDepth] = count;
+    ++saveDepth;
+    if (saveDepth >= 16)
+        saveDepth = 15;
+    disabledEntryCount = 0;
+}
+
+void FrontEndCursorView::Pop()
+{
+    --saveDepth;
+    if (saveDepth < 0)
+        saveDepth = 0;
+    current = savedCurrent[saveDepth];
+    count = savedCount[saveDepth];
+    disabledEntryCount = 0;
+}
+
+int FrontEndCursorView::Move(int amount)
+{
+tryAgain:
+    current += amount;
+    while (current >= count)
+    {
+        if (wraps != 0)
+            current -= count;
+        else
+            current = count - 1;
+    }
+    while (current < 0)
+    {
+        if (wraps != 0)
+            current += count;
+        else
+            current = 0;
+    }
+    for (int i = 0; i < disabledEntryCount; ++i)
+    {
+        if (disabledEntries[i] == current)
+            goto tryAgain;
+    }
+    return current;
+}
+
 
 struct FrontEndInputView
 {

@@ -341,3 +341,6 @@ EnemyFindLaser,0x0040CF90,function
 EnemyConfigureInterrupt,0x00412720,function
 EnemyWaitForEffect,0x0041C7D0,function
 EnemyApplyBulletClear,0x0041C850,function
+FrontEndCursorView::Push,0x0044BE20,function
+FrontEndCursorView::Pop,0x0044BE70,function
+FrontEndCursorView::Move,0x0044BEA0,function

@@ -340,3 +340,6 @@ EnemyFindLaser
 EnemyConfigureInterrupt
 EnemyWaitForEffect
 EnemyApplyBulletClear
+FrontEndCursorView::Push
+FrontEndCursorView::Pop
+FrontEndCursorView::Move
