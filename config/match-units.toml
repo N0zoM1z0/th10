@@ -3871,3 +3871,58 @@ symbol = "?EnemySetChapter@@YAXPAUEnemyChapterStateView@@H@Z"
 target_address = 0x00412ED0
 size = 16
 relocations = []
+
+[units.enemy-set-laser-position]
+artifact_kind = "coff"
+source = "src/EnemyEclDispatcher.cpp"
+object = "build/match/EnemyEclDispatcher.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemySetLaserPosition"]
+symbol = "?EnemySetLaserPosition@@YAXHPBUPlayerFloat3@@@Z"
+target_address = 0x0040CF60
+size = 23
+relocations = []
+
+[units.enemy-find-laser]
+artifact_kind = "coff"
+source = "src/EnemyEclDispatcher.cpp"
+object = "build/match/EnemyEclDispatcher.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemyFindLaser"]
+symbol = "?EnemyFindLaser@@YAHPAUEnemyLaserManagerView@@H@Z"
+target_address = 0x0040CF90
+size = 22
+relocations = []
+
+[units.enemy-configure-interrupt]
+artifact_kind = "coff"
+source = "src/EnemyEclDispatcher.cpp"
+object = "build/match/EnemyEclDispatcher.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemyConfigureInterrupt"]
+symbol = "?EnemyConfigureInterrupt@@YGXPAUEnemyFullObjectView@@HHHPBE@Z"
+target_address = 0x00412720
+size = 48
+relocations = []
+
+[units.enemy-wait-for-effect]
+artifact_kind = "coff"
+source = "src/EnemyEclDispatcher.cpp"
+object = "build/match/EnemyEclDispatcher.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemyWaitForEffect"]
+symbol = "?EnemyWaitForEffect@@YAIPAUEnemyEffectWaitManager@@@Z"
+target_address = 0x0041C7D0
+size = 44
+relocations = []
+
+[units.enemy-apply-bullet-clear]
+artifact_kind = "coff"
+source = "src/EnemyEclDispatcher.cpp"
+object = "build/match/EnemyEclDispatcher.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemyApplyBulletClear"]
+symbol = "?EnemyApplyBulletClear@@YAIPAUEnemyEffectWaitManager@@H@Z"
+target_address = 0x0041C850
+size = 44
+relocations = []
