@@ -3860,3 +3860,14 @@ linkages = [
   { offset = 0x24, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
   { offset = 0x39, type = "DIR32", symbol = "__real@3fc90fdb", target = 0x00470B94 },
 ]
+
+[units.enemy-set-chapter]
+artifact_kind = "coff"
+source = "src/EnemyEclDispatcher.cpp"
+object = "build/match/EnemyEclDispatcher.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["EnemySetChapter"]
+symbol = "?EnemySetChapter@@YAXPAUEnemyChapterStateView@@H@Z"
+target_address = 0x00412ED0
+size = 16
+relocations = []
