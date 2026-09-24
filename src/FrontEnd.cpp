@@ -29,6 +29,9 @@ void FrontEndCursorView::Pop()
 
 int FrontEndCursorView::Move(int amount)
 {
+    if (count <= 0)
+        return current;
+
 tryAgain:
     current += amount;
     while (current >= count)
