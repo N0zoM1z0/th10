@@ -388,3 +388,4 @@ BulletManagerView::UpdateBullets
 BulletRuntimeView::UpdateDeceleration
 BulletRuntimeView::UpdateVectorAcceleration
 BulletRuntimeView::UpdatePolarAcceleration
+BulletManagerUpdateCallback

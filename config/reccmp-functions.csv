@@ -389,3 +389,4 @@ BulletManagerView::UpdateBullets,0x004065C0,function
 BulletRuntimeView::UpdateDeceleration,0x004074B0,function
 BulletRuntimeView::UpdateVectorAcceleration,0x00407560,function
 BulletRuntimeView::UpdatePolarAcceleration,0x004076A0,function
+BulletManagerUpdateCallback,0x00406770,function

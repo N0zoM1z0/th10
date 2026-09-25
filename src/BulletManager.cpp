@@ -276,44 +276,57 @@ updateActive:
 // Target 0x004065C0. Retail LTCG keeps the manager in private ESI.
 int BulletManagerView::UpdateBullets()
 {
-    drawBucketHeads[0] = 0;
-    drawBucketHeads[1] = 0;
-    drawBucketHeads[2] = 0;
-    drawBucketHeads[3] = 0;
-    drawBucketHeads[4] = 0;
-    drawBucketHeads[5] = 0;
-    drawBucketTails[0] = 0;
-    drawBucketTails[1] = 0;
-    drawBucketTails[2] = 0;
-    drawBucketTails[3] = 0;
-    drawBucketTails[4] = 0;
-    drawBucketTails[5] = 0;
     activeBulletCount = 0;
+    drawBucketHeads[5] = 0;
+    drawBucketHeads[4] = 0;
+    drawBucketHeads[3] = 0;
+    drawBucketHeads[2] = 0;
+    drawBucketHeads[1] = 0;
+    drawBucketHeads[0] = 0;
+    drawBucketTails[5] = 0;
+    drawBucketTails[4] = 0;
+    drawBucketTails[3] = 0;
+    drawBucketTails[2] = 0;
+    drawBucketTails[1] = 0;
+    drawBucketTails[0] = 0;
 
     BulletRuntimeView *bullet = &bullets[0];
     for (int remaining = 2000; remaining != 0; --remaining, ++bullet) {
         if (bullet->state == 0)
             continue;
 
-        int skipUpdate = 0;
-        if (g_BulletUpdateGate != 0 &&
-            (g_BulletUpdateGate->flags58 & 0x402u) == 0x402u) {
-            skipUpdate = 1;
+        BulletUpdateGateView *updateGate = g_BulletUpdateGate;
+        if (updateGate == 0 ||
+            (updateGate->flags58 & 0x00000002u) == 0 ||
+            (updateGate->flags58 & 0x00000400u) == 0) {
+            if (BulletUpdateRuntime(bullet) != 0)
+                continue;
         }
-        if (!skipUpdate && BulletUpdateRuntime(bullet) != 0)
-            continue;
 
         int bucket = bullet->drawBucketIndex;
         if (drawBucketHeads[bucket] != 0)
             drawBucketTails[bucket]->nextInDrawBucket = bullet;
         else
             drawBucketHeads[bucket] = bullet;
-        drawBucketTails[bucket] = bullet;
+        drawBucketTails[bullet->drawBucketIndex] = bullet;
         bullet->nextInDrawBucket = 0;
         ++activeBulletCount;
         bullet->stateTimer.Tick();
     }
     return 1;
+}
+
+// Target 0x00406770. Registered as the BulletManager calc-chain callback.
+// The chain passes the manager owner in ECX.
+int __fastcall BulletManagerUpdateCallback(BulletManagerView *manager)
+{
+    BulletUpdateGateView *updateGate = g_BulletUpdateGate;
+    if (updateGate != 0) {
+        unsigned int flags = updateGate->flags58;
+        if ((((flags >> 2) | flags) & 1u) != 0)
+            return 1;
+    }
+    return manager->UpdateBullets();
 }
 
 static float BulletResolveTransformAngle(
