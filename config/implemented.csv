@@ -366,3 +366,4 @@ CSound::Reset
 CSound::SetVolume
 CSound::Stop
 CWaveFile::Reopen
+CWaveFile::ResetFile
