@@ -67,12 +67,13 @@ __declspec(noinline) int BulletPositionView::IsOutsidePlayfield(
     float width, float height)
 {
     float halfWidth = width * 0.5f;
-    float halfHeight = height * 0.5f;
     if (!(x + halfWidth <= g_BulletCullLeft) &&
-        !(x - halfWidth >= g_BulletCullRight) &&
-        !(y + halfHeight <= g_BulletCullTop) &&
-        !(y - halfHeight >= g_BulletCullBottom)) {
-        return 0;
+        !(x - halfWidth >= g_BulletCullRight)) {
+        float halfHeight = height * 0.5f;
+        if (!(y + halfHeight <= g_BulletCullTop) &&
+            !(y - halfHeight >= g_BulletCullBottom)) {
+            return 0;
+        }
     }
     return 1;
 }
