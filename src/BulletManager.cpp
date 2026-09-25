@@ -198,29 +198,39 @@ void BulletRuntimeView::UpdateRelativeDirectionChange()
     BulletExStateView &state = exStates[3];
     float nextSpeed;
 
-    if (state.timer.current < state.int0) {
-        nextSpeed =
-            speed - (speed * state.timer.subframe) /
-                static_cast<float>(state.int0);
-    }
-    else {
+    if (state.timer.current >= state.int0) {
         if (transformSound >= 0) {
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
         ++state.int2;
-        if (state.int1 <= state.int2)
+        if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE;
 
         angle += state.value1;
-        nextSpeed = state.value0;
-        speed = nextSpeed;
+        speed = state.value0;
+        nextSpeed = speed;
         state.timer.SetCurrent(0);
+    }
+    else {
+        nextSpeed = speed;
+        nextSpeed -=
+            (nextSpeed * state.timer.subframe) /
+                static_cast<float>(state.int0);
     }
 
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
         FromAngleMagnitude(angle, nextSpeed);
-    state.timer.Tick();
+    state.timer.previous = state.timer.current;
+    if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
+        ++state.timer.current;
+        state.timer.subframe += 1.0f;
+    }
+    else {
+        state.timer.subframe =
+            *state.timer.scale + state.timer.subframe;
+        state.timer.current = static_cast<int>(state.timer.subframe);
+    }
 }
 
 void BulletRuntimeView::UpdateAbsoluteDirectionChange()
@@ -228,29 +238,39 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
     BulletExStateView &state = exStates[3];
     float nextSpeed;
 
-    if (state.timer.current < state.int0) {
-        nextSpeed =
-            speed - (speed * state.timer.subframe) /
-                static_cast<float>(state.int0);
-    }
-    else {
+    if (state.timer.current >= state.int0) {
         if (transformSound >= 0) {
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
         ++state.int2;
-        if (state.int1 <= state.int2)
+        if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
         angle = state.value1;
-        nextSpeed = state.value0;
-        speed = nextSpeed;
+        speed = state.value0;
+        nextSpeed = speed;
         state.timer.SetCurrent(0);
+    }
+    else {
+        nextSpeed = speed;
+        nextSpeed -=
+            (nextSpeed * state.timer.subframe) /
+                static_cast<float>(state.int0);
     }
 
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
         FromAngleMagnitude(angle, nextSpeed);
-    state.timer.Tick();
+    state.timer.previous = state.timer.current;
+    if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
+        ++state.timer.current;
+        state.timer.subframe += 1.0f;
+    }
+    else {
+        state.timer.subframe =
+            *state.timer.scale + state.timer.subframe;
+        state.timer.current = static_cast<int>(state.timer.subframe);
+    }
 }
 
 // Target 0x00408660. Returns the shortest signed angular difference
@@ -273,18 +293,13 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
     BulletExStateView &state = exStates[3];
     float nextSpeed;
 
-    if (state.timer.current < state.int0) {
-        nextSpeed =
-            speed - (speed * state.timer.subframe) /
-                static_cast<float>(state.int0);
-    }
-    else {
+    if (state.timer.current >= state.int0) {
         if (transformSound >= 0) {
             reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                 QueueSoundSample(transformSound, 0);
         }
         ++state.int2;
-        if (state.int1 <= state.int2)
+        if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED;
 
         float dx = g_Player->drawPosition.x - position.x;
@@ -296,9 +311,14 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
             aimedAngle = static_cast<float>(atan2(dy, dx));
 
         angle = AddNormalizeAngle(aimedAngle, state.value1);
-        nextSpeed = state.value0;
-        speed = nextSpeed;
+        speed = state.value0;
+        nextSpeed = speed;
         state.timer.SetCurrent(0);
+    }
+    else {
+        nextSpeed =
+            speed - (speed * state.timer.subframe) /
+                static_cast<float>(state.int0);
     }
 
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
