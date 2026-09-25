@@ -4426,3 +4426,32 @@ linkages = [
   { offset = 0x169, type = "DIR32", symbol = "__real@c4778000", target = 0x00470B50 },
   { offset = 0x195, type = "REL32", symbol = "?FromAngleMagnitude@AnmOpcodeVectorView@@QAEXMM@Z", target = 0x00408750 },
 ]
+
+
+[units.bullet-update-state8]
+artifact_kind = "linked-pe"
+source = "src/BulletManager.cpp"
+support_sources = ["src/AnmManager.cpp", "src/EnemyEclDispatcher.cpp"]
+output_dir = "build/match-linked/BulletState8"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?BulletManagerUpdateCallback@@YIHPAUBulletManagerView@@@Z"
+functions = ["BulletRuntimeView::UpdateState8"]
+symbol = "?UpdateState8@BulletRuntimeView@@QAEXXZ"
+target_address = 0x00407EF0
+size = 306
+linkages = [
+  { offset = 0x1F, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x00477834 },
+  { offset = 0x3D, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x4E, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x84, type = "REL32", symbol = "?AddNormalizeAngle@@YGMMM@Z", target = 0x0044BC10 },
+  { offset = 0x8D, type = "REL32", symbol = "?BulletAngleDifference@@YGMMM@Z", target = 0x00408660 },
+  { offset = 0xA0, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x00476F78 },
+  { offset = 0xA9, type = "REL32", symbol = "?AddNormalizeAngle@@YGMMM@Z", target = 0x0044BC10 },
+  { offset = 0xC8, type = "REL32", symbol = "?FromAngleMagnitude@AnmOpcodeVectorView@@QAEXMM@Z", target = 0x00408750 },
+  { offset = 0xE2, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x00470B68 },
+  { offset = 0xF1, type = "DIR32", symbol = "__real@3f8147ae", target = 0x00470B64 },
+  { offset = 0x105, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
+  { offset = 0x126, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
+]

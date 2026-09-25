@@ -431,7 +431,12 @@ void BulletRuntimeView::UpdateState8()
 {
     BulletExStateView &state = exStates[8];
 
-    if (state.timer.current < state.int0) {
+    if (state.timer.current >= state.int0) {
+        activeTransformFlags &= ~BULLET_TRANSFORM_STATE_8;
+        goto tickTimer;
+    }
+
+    {
         float dx = g_Player->drawPosition.x - position.x;
         float dy = g_Player->drawPosition.y - position.y;
         float aimedAngle;
@@ -448,11 +453,18 @@ void BulletRuntimeView::UpdateState8()
         reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
             FromAngleMagnitude(angle, speed);
     }
-    else {
-        activeTransformFlags &= ~BULLET_TRANSFORM_STATE_8;
-    }
 
-    state.timer.Tick();
+tickTimer:
+    state.timer.previous = state.timer.current;
+    if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
+        ++state.timer.current;
+        state.timer.subframe += 1.0f;
+    }
+    else {
+        state.timer.subframe =
+            *state.timer.scale + state.timer.subframe;
+        state.timer.current = static_cast<int>(state.timer.subframe);
+    }
 }
 
 
