@@ -172,6 +172,7 @@ struct BulletRuntimeView
     void UpdateAimedDirectionChange();
     void UpdateBoundaryBounce();
     void UpdateHorizontalWrap();
+    void UpdateVerticalWrap();
 };
 
 typedef char BulletRuntimeViewSizeIs7F0[
