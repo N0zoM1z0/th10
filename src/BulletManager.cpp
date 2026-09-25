@@ -426,6 +426,36 @@ checkTimer:
 }
 
 
+// Target 0x00407EF0. Retail LTCG keeps the BulletRuntimeView owner in ESI.
+void BulletRuntimeView::UpdateState8()
+{
+    BulletExStateView &state = exStates[8];
+
+    if (state.timer.current < state.int0) {
+        float dx = g_Player->drawPosition.x - position.x;
+        float dy = g_Player->drawPosition.y - position.y;
+        float aimedAngle;
+        if (dy == 0.0f && dx == 0.0f)
+            aimedAngle = 1.5707964f;
+        else
+            aimedAngle = static_cast<float>(atan2(dy, dx));
+
+        angle = AddNormalizeAngle(
+            angle,
+            BulletAngleDifference(
+                AddNormalizeAngle(state.value1, aimedAngle), angle) *
+                state.value0 * g_AnmGameSpeed);
+        reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
+            FromAngleMagnitude(angle, speed);
+    }
+    else {
+        activeTransformFlags &= ~BULLET_TRANSFORM_STATE_8;
+    }
+
+    state.timer.Tick();
+}
+
+
 // Target 0x004065C0. Retail LTCG keeps the manager in private ESI.
 int BulletManagerView::UpdateBullets()
 {

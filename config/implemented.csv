@@ -397,3 +397,4 @@ BulletAngleDifference
 BulletRuntimeView::UpdateBoundaryBounce
 BulletRuntimeView::UpdateHorizontalWrap
 BulletRuntimeView::UpdateVerticalWrap
+BulletRuntimeView::UpdateState8
