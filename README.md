@@ -51,6 +51,15 @@ see the generated [`docs/PROGRESS.md`](docs/PROGRESS.md) for live counts. The
 whole Windows i386 build graph is still open, and semantic reconstruction and
 portability have not started.
 
+After changing a function, origin, mapping, implementation, or match ledger,
+regenerate the committed progress artifacts before committing. Public CI checks
+both `docs/PROGRESS.md` and `resources/progress.svg` against the current ledgers.
+
+```bash
+scripts/repo-python scripts/progress.py
+scripts/repo-python scripts/ci.py
+```
+
 The repository pins a VC7.1 SP1 candidate reporting compiler/linker build 6030
 and provides a headless-Wine verifier. Its smoke covers normal C/C++ COFF, C++
 LTCG, resources, and a PE32 link. Target Rich records independently show 131

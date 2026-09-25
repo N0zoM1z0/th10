@@ -198,6 +198,7 @@ def main() -> int:
             stale.append(str(SVG.relative_to(ROOT)))
         if stale:
             print(f"error: stale generated progress: {', '.join(stale)}")
+            print("regenerate with: scripts/repo-python scripts/progress.py")
             return 1
         print("progress artifacts are current")
         return 0
