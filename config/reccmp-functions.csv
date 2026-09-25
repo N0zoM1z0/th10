@@ -366,3 +366,4 @@ CSound::Play,0x0044D440,function
 CSound::Reset,0x0044D600,function
 CSound::SetVolume,0x0044D4E0,function
 CSound::Stop,0x0044D550,function
+CWaveFile::Reopen,0x0044DCA0,function

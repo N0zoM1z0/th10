@@ -365,3 +365,4 @@ CSound::Play
 CSound::Reset
 CSound::SetVolume
 CSound::Stop
+CWaveFile::Reopen
