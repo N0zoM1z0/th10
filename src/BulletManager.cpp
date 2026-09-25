@@ -25,6 +25,7 @@ struct EnemySoundQueueView
     int samples[12][128];
 
     void QueueSoundCue(int soundId, float positionX);
+    void QueueSoundSample(int soundId, int sample);
 };
 extern unsigned char g_MainSoundOwner[];
 
@@ -50,9 +51,6 @@ extern float g_BulletCullTop;
 extern float g_BulletCullBottom;
 extern BulletUpdateGateView *g_BulletUpdateGate;
 
-extern void BulletUpdateRelativeDirectionChange(BulletRuntimeView *bullet);
-extern void BulletUpdateAbsoluteDirectionChange(BulletRuntimeView *bullet);
-extern void BulletUpdateAimedDirectionChange(BulletRuntimeView *bullet);
 extern void BulletUpdateBoundaryBounce(BulletRuntimeView *bullet);
 extern void BulletUpdateHorizontalWrap(BulletRuntimeView *bullet);
 extern void BulletUpdateVerticalWrap(BulletRuntimeView *bullet);
@@ -163,6 +161,106 @@ void BulletRuntimeView::UpdatePolarAcceleration()
         state.timer.subframe += *state.timer.scale;
         state.timer.current = static_cast<int>(state.timer.subframe);
     }
+}
+
+// Targets 0x00407780 and 0x004078E0. Both operate on transform state 3.
+// Their retail calls use a private ESI receiver recovered from BulletUpdateRuntime.
+void BulletRuntimeView::UpdateRelativeDirectionChange()
+{
+    BulletExStateView &state = exStates[3];
+    float nextSpeed;
+
+    if (state.timer.current < state.int0) {
+        nextSpeed =
+            speed - (speed * state.timer.subframe) /
+                static_cast<float>(state.int0);
+    }
+    else {
+        if (transformSound >= 0) {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(transformSound, 0);
+        }
+        ++state.int2;
+        if (state.int1 <= state.int2)
+            activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_RELATIVE;
+
+        angle += state.value1;
+        nextSpeed = state.value0;
+        speed = nextSpeed;
+        state.timer.SetCurrent(0);
+    }
+
+    reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
+        FromAngleMagnitude(angle, nextSpeed);
+    state.timer.Tick();
+}
+
+void BulletRuntimeView::UpdateAbsoluteDirectionChange()
+{
+    BulletExStateView &state = exStates[3];
+    float nextSpeed;
+
+    if (state.timer.current < state.int0) {
+        nextSpeed =
+            speed - (speed * state.timer.subframe) /
+                static_cast<float>(state.int0);
+    }
+    else {
+        if (transformSound >= 0) {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(transformSound, 0);
+        }
+        ++state.int2;
+        if (state.int1 <= state.int2)
+            activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
+
+        angle = state.value1;
+        nextSpeed = state.value0;
+        speed = nextSpeed;
+        state.timer.SetCurrent(0);
+    }
+
+    reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
+        FromAngleMagnitude(angle, nextSpeed);
+    state.timer.Tick();
+}
+
+void BulletRuntimeView::UpdateAimedDirectionChange()
+{
+    BulletExStateView &state = exStates[3];
+    float nextSpeed;
+
+    if (state.timer.current < state.int0) {
+        nextSpeed =
+            speed - (speed * state.timer.subframe) /
+                static_cast<float>(state.int0);
+    }
+    else {
+        if (transformSound >= 0) {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(transformSound, 0);
+        }
+        ++state.int2;
+        if (state.int1 <= state.int2)
+            activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED;
+
+        float dx = g_Player->drawPosition.x - position.x;
+        float dy = g_Player->drawPosition.y - position.y;
+        float aimedAngle;
+        if (dy == 0.0f && dx == 0.0f)
+            aimedAngle = 1.5707964f;
+        else
+            aimedAngle = static_cast<float>(atan2(dy, dx));
+
+        angle = AddNormalizeAngle(aimedAngle, state.value1);
+        nextSpeed = state.value0;
+        speed = nextSpeed;
+        state.timer.SetCurrent(0);
+    }
+
+    reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
+        FromAngleMagnitude(angle, nextSpeed);
+    state.timer.Tick();
 }
 
 // Target 0x004065C0. Retail LTCG keeps the manager in private ESI.

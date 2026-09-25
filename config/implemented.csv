@@ -389,3 +389,6 @@ BulletRuntimeView::UpdateDeceleration
 BulletRuntimeView::UpdateVectorAcceleration
 BulletRuntimeView::UpdatePolarAcceleration
 BulletManagerUpdateCallback
+BulletRuntimeView::UpdateRelativeDirectionChange
+BulletRuntimeView::UpdateAbsoluteDirectionChange
+BulletRuntimeView::UpdateAimedDirectionChange
