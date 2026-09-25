@@ -377,3 +377,4 @@ SoundPlayerView::StopBgm
 CSound::Unpause
 AnmVmTimerView::SetCurrent
 BulletRuntimeView::AdvanceTransformProgram
+EnemyCancelBulletRecord

@@ -400,7 +400,7 @@ __declspec(noinline) int EnemyBulletPositionView::IsOutsidePlayfield(
     return 1;
 }
 
-static __declspec(noinline) unsigned int EnemyCancelBulletRecord(
+__declspec(noinline) unsigned int EnemyCancelBulletRecord(
     unsigned char *bullet)
 {
     short state = *reinterpret_cast<short *>(bullet + 0x446);
@@ -414,6 +414,7 @@ static __declspec(noinline) unsigned int EnemyCancelBulletRecord(
     *reinterpret_cast<short *>(bullet + 0x30c) = 1;
     *reinterpret_cast<short *>(bullet + 0x446) = 3;
     if (outside == 0) {
+        int zero = 0;
         int effectScript = *reinterpret_cast<int *>(bullet + 0x438);
         if (effectScript >= 0) {
             g_EnemyPrimaryResourceOwner->primaryEnemyResource->
@@ -423,18 +424,18 @@ static __declspec(noinline) unsigned int EnemyCancelBulletRecord(
                         bullet + 0x3b4));
         }
 
-        unsigned int *flags = reinterpret_cast<unsigned int *>(bullet + 0x408);
-        if ((*flags & 1) == 0) {
-            *reinterpret_cast<unsigned int *>(bullet + 0x3fc) = 0;
-            *reinterpret_cast<unsigned int *>(bullet + 0x3f8) = 0xfff0bdc1u;
-            *reinterpret_cast<unsigned int *>(bullet + 0x400) = 0;
-            *reinterpret_cast<unsigned int *>(bullet + 0x404) =
-                reinterpret_cast<unsigned int>(&g_AnmGameSpeed);
-            *flags |= 1;
+        unsigned int *timerFlags =
+            reinterpret_cast<unsigned int *>(bullet + 0x408);
+        if ((*timerFlags & 1u) == 0) {
+            *reinterpret_cast<int *>(bullet + 0x3fc) = zero;
+            *reinterpret_cast<int *>(bullet + 0x3f8) = -999999;
+            *reinterpret_cast<float *>(bullet + 0x400) = 0.0f;
+            *reinterpret_cast<float **>(bullet + 0x404) = &g_AnmGameSpeed;
+            *timerFlags |= 1u;
         }
-        *reinterpret_cast<unsigned int *>(bullet + 0x3fc) = 0;
-        *reinterpret_cast<unsigned int *>(bullet + 0x400) = 0;
-        *reinterpret_cast<unsigned int *>(bullet + 0x3f8) = 0xffffffffu;
+        *reinterpret_cast<int *>(bullet + 0x3fc) = zero;
+        *reinterpret_cast<float *>(bullet + 0x400) = 0.0f;
+        *reinterpret_cast<int *>(bullet + 0x3f8) = -1;
         return 1;
     }
     *reinterpret_cast<unsigned int *>(bullet) |= 8;

@@ -6,7 +6,7 @@
 // owners/private register ABIs are still open reconstruction work.
 extern float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 extern void BulletApplySprite(BulletRuntimeView *bullet, int bulletType, int color);
-extern void BulletBeginDespawn(BulletRuntimeView *bullet);
+extern unsigned int EnemyCancelBulletRecord(unsigned char *bullet);
 extern void BulletQueueSoundAtPosition(int soundId, float positionX);
 extern void BulletSpawnChildPattern(BulletSpawnDescriptorView *pattern);
 
@@ -127,7 +127,7 @@ nextRecord:
         break;
 
     case BULLET_TRANSFORM_DESPAWN:
-        BulletBeginDespawn(this);
+        EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
         break;
 
     case BULLET_TRANSFORM_PLAY_SOUND:
@@ -183,7 +183,7 @@ nextRecord:
             BulletSpawnChildPattern(&pattern);
             ++this->transformIndex;
             if (fadeParent != 0)
-                BulletBeginDespawn(this);
+                EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
             goto nextRecord;
         }
 

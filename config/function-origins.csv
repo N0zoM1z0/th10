@@ -83,7 +83,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00407DA0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00407E40,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00407EF0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
-0x00408030,authored_game,GameUnassigned,authored,medium,target-authored-call-sandwich-2026-09-17
+0x00408030,authored_game,BulletManager,authored,high,target-bullet-cancel-record-2026-09-25
 0x00408100,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x00408210,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00408660,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
