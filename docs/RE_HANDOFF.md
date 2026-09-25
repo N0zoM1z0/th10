@@ -377,9 +377,10 @@ Before a checkpoint:
     scripts/repo-python scripts/ci.py
     git diff --check
 
-Checkpoint commits follow the active operator's prefix instruction. The active
-operator has requested pushes for substantive progress in this session; other
-sessions must follow their current operator authorization and repository rules.
+Checkpoint commits follow the active operator's prefix instruction. For this
+reconstruction the required local checkpoint prefix is `gpt-web: ...`. Factory
+Git push is unavailable; do not describe a local checkpoint as pushed or
+published.
 
 ## Local analysis retention
 
@@ -402,9 +403,16 @@ Delete after a checkpoint:
 - interrupted/zero-byte outputs;
 - negative experiments invalidated by later source/call-graph changes.
 
-The 2026-09-23 audit found no retained file artifacts under `.analysis/`.
-Historical probe/layout names above and in KNOWLEDGE_BASE are provenance, not
-files to open or baselines to trust without a fresh source-bound replay.
+The 2026-09-25 cleanup intentionally prunes `build/` and `.analysis/` after
+the conclusions needed for handoff are compacted into tracked source, ledgers
+and docs. Historical probe/layout names above and in KNOWLEDGE_BASE are
+provenance labels, not files to open or baselines to trust without a fresh
+source-bound replay.
+
+The cleanup deliberately retains `.tools/`, `resources/th10.exe`, and
+`ghidra-project/`: they are respectively the pinned compiler/toolchain, the
+canonical private target, and the target-attested private Ghidra project. They
+are ignored/private dependencies, not disposable probe output.
 
 Historical paths named by KNOWLEDGE_BASE are provenance labels and may be absent
 after their conclusions have been compacted into tracked evidence. Do not treat
