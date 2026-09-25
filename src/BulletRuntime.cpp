@@ -22,7 +22,6 @@ struct BulletPositionView
 
 extern void *g_EnemyBulletManager;
 extern unsigned char g_MainSoundOwner[];
-extern void BulletUpdateBoundaryBounce(BulletRuntimeView *bullet);
 extern int BulletCheckPlayerCollision(
     PlayerFloat3 *position, Player *player, const float *collisionSize);
 
@@ -98,7 +97,7 @@ __declspec(noinline) int __stdcall BulletUpdateRuntime(BulletRuntimeView *bullet
             if ((bullet->activeTransformFlags & 0x00000080u) != 0)
                 bullet->UpdateAimedDirectionChange();
             if ((bullet->activeTransformFlags & 0x08000c00u) != 0)
-                BulletUpdateBoundaryBounce(bullet);
+                bullet->UpdateBoundaryBounce();
             if ((bullet->activeTransformFlags & 0x04000000u) != 0)
                 bullet->UpdateState8();
             if ((bullet->activeTransformFlags & 0x00008000u) != 0) {
