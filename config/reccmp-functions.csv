@@ -368,3 +368,4 @@ CSound::SetVolume,0x0044D4E0,function
 CSound::Stop,0x0044D550,function
 CWaveFile::Reopen,0x0044DCA0,function
 CWaveFile::ResetFile,0x0044DD40,function
+EnemyEnableBombShield,0x0040CEA0,function

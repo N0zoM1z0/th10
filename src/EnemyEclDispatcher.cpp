@@ -498,11 +498,13 @@ __declspec(noinline) void EnemyMarkPendingInterrupt(int *id)
 }
 
 extern void EnemyEndSpell(EnemyGameStateView *gameState);
-static __declspec(noinline) void EnemyEnableBombShield(
+__declspec(noinline) void EnemyEnableBombShield(
     EnemyGameStateView *gameState)
 {
-    gameState->flags378C |= 0x10;
-    g_AnmRenderManagerView->MarkVmForDeletion(gameState->managedVmId);
+    unsigned int *flags = &gameState->flags378C;
+    *flags |= 0x10;
+    g_AnmRenderManagerView->MarkVmForDeletion(
+        *reinterpret_cast<AnmVmIdView *>(&gameState->managedVmId));
     gameState->managedVmId = 0;
 }
 extern void EnemyInitializeLaserConfig(EnemyLaserRequestScratch *config);
