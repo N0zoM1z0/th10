@@ -247,9 +247,12 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
         if (state.int2 >= state.int1)
             activeTransformFlags &= ~BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE;
 
-        angle = state.value1;
-        speed = state.value0;
-        nextSpeed = speed;
+        int nextAngleBits =
+            *reinterpret_cast<int *>(&state.value1);
+        float newSpeed = state.value0;
+        speed = newSpeed;
+        *reinterpret_cast<int *>(&angle) = nextAngleBits;
+        nextSpeed = newSpeed;
         state.timer.SetCurrent(0);
     }
     else {
