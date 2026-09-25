@@ -366,6 +366,36 @@ void BulletRuntimeView::UpdateBoundaryBounce()
 }
 
 
+// Target 0x00407DA0. Retail LTCG keeps the BulletRuntimeView owner in EBX.
+void BulletRuntimeView::UpdateHorizontalWrap()
+{
+    AnmSpriteView *sprite = vm.loadedSprite;
+    if (reinterpret_cast<BulletWrapPositionView *>(&position)->
+            IsOutsidePlayfield(sprite->width, sprite->height) == 0)
+        return;
+
+    if (position.x < g_BulletCullLeft) {
+        position.x += sprite->width + 384.0f;
+    }
+    else if (position.x > g_BulletCullRight) {
+        position.x -= sprite->width + 384.0f;
+    }
+    else {
+        goto checkTimer;
+    }
+
+    exStates[6].timer.Add(-1.0f);
+    if (transformSound >= 0) {
+        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+            QueueSoundSample(transformSound, 0);
+    }
+
+checkTimer:
+    if (exStates[6].timer.current <= 0)
+        activeTransformFlags ^= BULLET_TRANSFORM_WRAP_X;
+}
+
+
 // Target 0x004065C0. Retail LTCG keeps the manager in private ESI.
 int BulletManagerView::UpdateBullets()
 {

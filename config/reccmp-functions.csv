@@ -396,3 +396,4 @@ BulletRuntimeView::UpdateAbsoluteDirectionChange,0x004078E0,function
 BulletRuntimeView::UpdateAimedDirectionChange,0x00407A30,function
 BulletAngleDifference,0x00408660,function
 BulletRuntimeView::UpdateBoundaryBounce,0x00407BE0,function
+BulletRuntimeView::UpdateHorizontalWrap,0x00407DA0,function

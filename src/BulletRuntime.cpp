@@ -23,7 +23,6 @@ struct BulletPositionView
 extern void *g_EnemyBulletManager;
 extern unsigned char g_MainSoundOwner[];
 extern void BulletUpdateBoundaryBounce(BulletRuntimeView *bullet);
-extern void BulletUpdateHorizontalWrap(BulletRuntimeView *bullet);
 extern void BulletUpdateVerticalWrap(BulletRuntimeView *bullet);
 extern void BulletUpdateState8(BulletRuntimeView *bullet);
 extern int BulletCheckPlayerCollision(
@@ -145,7 +144,7 @@ __declspec(noinline) int __stdcall BulletUpdateRuntime(BulletRuntimeView *bullet
 
     if (bullet->vm.loadedSprite != 0) {
         if ((bullet->activeTransformFlags & 0x00100000u) != 0)
-            BulletUpdateHorizontalWrap(bullet);
+            bullet->UpdateHorizontalWrap();
         if ((bullet->activeTransformFlags & 0x00200000u) != 0)
             BulletUpdateVerticalWrap(bullet);
         if (bullet->offscreenCullDelayFrames <= 0 &&
