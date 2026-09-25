@@ -360,6 +360,10 @@ PlayerAngleToPoint,0x00426610,function
 EnemyAngleFromPlayer,0x00426660,function
 StartSoundLoadThread,0x0043D0F0,function
 ItemManagerView::OnDraw,0x0041BA30,function
+MidiOutputView::StopPlayback,0x0043AE20,function
+MidiOutputView::UnprepareHeader,0x0043AEB0,function
+FrontEndUpdateCallback,0x0042D2E0,function
+FrontEndDrawCallback,0x0042D2F0,function
 CSound::RestoreBuffer,0x0044D300,function
 CSound::GetFreeBuffer,0x0044D370,function
 CSound::Play,0x0044D440,function
@@ -369,3 +373,6 @@ CSound::Stop,0x0044D550,function
 CWaveFile::Reopen,0x0044DCA0,function
 CWaveFile::ResetFile,0x0044DD40,function
 EnemyEnableBombShield,0x0040CEA0,function
+SoundPlayerView::ReopenBgm,0x0043D790,function
+SoundPlayerView::StopBgm,0x0043DAB0,function
+CSound::Unpause,0x0044D5D0,function

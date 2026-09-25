@@ -4014,6 +4014,56 @@ linkages = [
 ]
 
 
+[units.midi-unprepare-header]
+artifact_kind = "linked-pe"
+source = "src/Midi.cpp"
+output_dir = "build/match-linked/MidiUnprepareHeader"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StopPlayback@MidiOutputView@@QAEHXZ"
+functions = ["MidiOutputView::UnprepareHeader"]
+symbol = "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z"
+target_address = 0x0043AEB0
+size = 79
+linkages = [
+  { offset = 0x2A, type = "DIR32", symbol = "__imp__midiOutUnprepareHeader@12", target = 0x00466284 },
+  { offset = 0x36, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x45, type = "REL32", symbol = "_free", target = 0x00452422 },
+]
+
+[units.frontend-draw-callback]
+artifact_kind = "linked-pe"
+source = "src/FrontEnd.cpp"
+output_dir = "build/match-linked/FrontEndDrawCallback"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?FrontEndDrawCallback@@YIHPAUFrontEndControllerView@@@Z"
+functions = ["FrontEndDrawCallback"]
+symbol = "?FrontEndDrawCallback@@YIHPAUFrontEndControllerView@@@Z"
+target_address = 0x0042D2F0
+size = 7
+linkages = [
+  { offset = 0x03, type = "REL32", symbol = "?Draw@FrontEndControllerView@@QAEHXZ", target = 0x0042D260 },
+]
+
+[units.frontend-update-callback]
+artifact_kind = "linked-pe"
+source = "src/FrontEnd.cpp"
+output_dir = "build/match-linked/FrontEndUpdateCallback"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?FrontEndUpdateCallback@@YIHPAUFrontEndControllerView@@@Z"
+functions = ["FrontEndUpdateCallback"]
+symbol = "?FrontEndUpdateCallback@@YIHPAUFrontEndControllerView@@@Z"
+target_address = 0x0042D2E0
+size = 7
+linkages = [
+  { offset = 0x03, type = "REL32", symbol = "?Update@FrontEndControllerView@@QAEHXZ", target = 0x0042CDF0 },
+]
+
 [units.player-option-trail-callback]
 artifact_kind = "linked-pe"
 source = "src/Player.cpp"

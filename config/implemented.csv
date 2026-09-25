@@ -359,6 +359,10 @@ PlayerAngleToPoint
 EnemyAngleFromPlayer
 StartSoundLoadThread
 ItemManagerView::OnDraw
+MidiOutputView::StopPlayback
+MidiOutputView::UnprepareHeader
+FrontEndUpdateCallback
+FrontEndDrawCallback
 CSound::RestoreBuffer
 CSound::GetFreeBuffer
 CSound::Play
@@ -368,3 +372,6 @@ CSound::Stop
 CWaveFile::Reopen
 CWaveFile::ResetFile
 EnemyEnableBombShield
+SoundPlayerView::ReopenBgm
+SoundPlayerView::StopBgm
+CSound::Unpause

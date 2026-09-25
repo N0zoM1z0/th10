@@ -810,20 +810,23 @@ int FrontEndControllerView::Update()
     return 1;
 }
 
+// TH10_FRONTEND_FUNCTION: 0x0042D2E0 FrontEndUpdateCallback
+int __fastcall FrontEndUpdateCallback(FrontEndControllerView *controller)
+{
+    return controller->Update();
+}
+
 
 // TH10_FRONTEND_FUNCTION: 0x0042D260 FrontEndControllerView::Draw
 int FrontEndControllerView::Draw()
 {
     switch (screen)
     {
-    case FRONT_END_SCREEN_STAGE:
-        DrawStageScores();
+    case FRONT_END_SCREEN_REPLAY:
+        DrawReplay(this);
         break;
     case FRONT_END_SCREEN_PRACTICE:
         DrawPractice();
-        break;
-    case FRONT_END_SCREEN_REPLAY:
-        DrawReplay(this);
         break;
     case FRONT_END_SCREEN_SCORE_ENTRY:
         DrawScoreEntry(this);
@@ -831,8 +834,17 @@ int FrontEndControllerView::Draw()
     case FRONT_END_SCREEN_RESULT:
         FrontEndDrawResult(this);
         break;
+    case FRONT_END_SCREEN_STAGE:
+        DrawStageScores();
+        break;
     }
     return 1;
+}
+
+// TH10_FRONTEND_FUNCTION: 0x0042D2F0 FrontEndDrawCallback
+int __fastcall FrontEndDrawCallback(FrontEndControllerView *controller)
+{
+    return controller->Draw();
 }
 
 

@@ -569,8 +569,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043AA60,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0043AAD0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0043ACE0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x0043AE20,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
-0x0043AEB0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
+0x0043AE20,authored_game,Midi,authored,high,target-midilib-owner-recovery-2026-09-24
+0x0043AEB0,authored_game,Midi,authored,high,target-midilib-owner-recovery-2026-09-24
 0x0043AF30,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0043B110,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0043B7A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
@@ -600,10 +600,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043D2A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
 0x0043D390,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0043D690,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
-0x0043D790,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0043D790,authored_game,Sound,authored,high,target-sound-reopen-caller-2026-09-25
 0x0043D7D0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
 0x0043D950,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
-0x0043DAB0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
+0x0043DAB0,authored_game,Sound,authored,high,target-sound-stop-caller-2026-09-25
 0x0043DB60,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0043DC90,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
 0x0043DD10,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
@@ -795,7 +795,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044D4E0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D550,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D5B0,authored_game,ZWave,authored,high,target-zwave-source-family-exact-2026-09-24
-0x0044D5D0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0044D5D0,authored_game,ZWave,authored,high,target-zwave-unpause-2026-09-25
 0x0044D600,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D6A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044D710,compiler_generated,GameCxx,exclude,high,target-vc71-scalar-deleting-destructor-2026-09-17
