@@ -128,28 +128,37 @@ struct BulletRuntimeView
 {
     unsigned int flags;                         // +0x000
     int cancelBehavior;                         // +0x004
-    unsigned char vm[0x3ac];                    // +0x008
+    AnmVmView vm;                               // +0x008
     PlayerFloat3 position;                      // +0x3B4
     PlayerFloat3 velocity;                      // +0x3C0
     unsigned char unknown3CC[0x0c];             // +0x3CC
     float speed;                                // +0x3D8
     unsigned char unknown3DC[0x08];             // +0x3DC
     float angle;                                // +0x3E4
-    unsigned char unknown3E8[0x38];             // +0x3E8
+    unsigned char unknown3E8[0x08];             // +0x3E8
+    float collisionWidth;                       // +0x3F0
+    float collisionHeight;                      // +0x3F4
+    AnmVmTimerView stateTimer;                   // +0x3F8
+    AnmVmTimerView activeTimer;                  // +0x40C
     int ownerTag;                               // +0x420
     unsigned char unknown424[0x10];             // +0x424
     int offscreenCullDelayFrames;               // +0x434
-    unsigned char unknown438[0x04];             // +0x438
+    int effectScript;                           // +0x438
     unsigned int activeTransformFlags;          // +0x43C
-    unsigned char unknown440[0x06];             // +0x440
+    unsigned int transformFlags;                // +0x440
+    unsigned short unknown444;                  // +0x444
     unsigned short state;                       // +0x446
-    unsigned char unknown448[0x10];             // +0x448
+    unsigned char unknown448[0x0c];             // +0x448
+    int value454;                               // +0x454
     int transformSound;                         // +0x458
     int transformIndex;                         // +0x45C
-    unsigned int unknown460;                    // +0x460
+    int drawBucketIndex;                        // +0x460
     BulletTransformRecordView transforms[18];   // +0x464
     BulletExStateView exStates[9];               // +0x614
-    unsigned char trailing7E8[0x08];             // +0x7E8
+    unsigned char unknown7E8[0x02];              // +0x7E8
+    short bulletType;                           // +0x7EA
+    short color;                                // +0x7EC
+    unsigned char unknown7EE[0x02];              // +0x7EE
 
     void AdvanceTransformProgram();
 };
@@ -162,12 +171,22 @@ typedef char BulletRuntimeSpeedAt3D8[
     (offsetof(BulletRuntimeView, speed) == 0x3d8) ? 1 : -1];
 typedef char BulletRuntimeAngleAt3E4[
     (offsetof(BulletRuntimeView, angle) == 0x3e4) ? 1 : -1];
+typedef char BulletRuntimeCollisionAt3F0[
+    (offsetof(BulletRuntimeView, collisionWidth) == 0x3f0 &&
+     offsetof(BulletRuntimeView, collisionHeight) == 0x3f4) ? 1 : -1];
+typedef char BulletRuntimeTimersAt3F8[
+    (offsetof(BulletRuntimeView, stateTimer) == 0x3f8 &&
+     offsetof(BulletRuntimeView, activeTimer) == 0x40c) ? 1 : -1];
 typedef char BulletRuntimeOwnerTagAt420[
     (offsetof(BulletRuntimeView, ownerTag) == 0x420) ? 1 : -1];
 typedef char BulletRuntimeCullDelayAt434[
     (offsetof(BulletRuntimeView, offscreenCullDelayFrames) == 0x434) ? 1 : -1];
 typedef char BulletRuntimeActiveTransformsAt43C[
     (offsetof(BulletRuntimeView, activeTransformFlags) == 0x43c) ? 1 : -1];
+typedef char BulletRuntimeTransformFlagsAt440[
+    (offsetof(BulletRuntimeView, transformFlags) == 0x440) ? 1 : -1];
+typedef char BulletRuntimeEffectScriptAt438[
+    (offsetof(BulletRuntimeView, effectScript) == 0x438) ? 1 : -1];
 typedef char BulletRuntimeStateAt446[
     (offsetof(BulletRuntimeView, state) == 0x446) ? 1 : -1];
 typedef char BulletRuntimeTransformSoundAt458[
@@ -178,3 +197,31 @@ typedef char BulletRuntimeTransformsAt464[
     (offsetof(BulletRuntimeView, transforms) == 0x464) ? 1 : -1];
 typedef char BulletRuntimeExStatesAt614[
     (offsetof(BulletRuntimeView, exStates) == 0x614) ? 1 : -1];
+typedef char BulletRuntimeTypeColorAt7EA[
+    (offsetof(BulletRuntimeView, bulletType) == 0x7ea &&
+     offsetof(BulletRuntimeView, color) == 0x7ec) ? 1 : -1];
+
+
+typedef char BulletRuntimeVmAt008[
+    (offsetof(BulletRuntimeView, vm) == 0x008) ? 1 : -1];
+
+struct BulletManagerView
+{
+    unsigned char unknown000[0x10];
+    BulletRuntimeView *bulletCursor;             // +0x000010
+    unsigned char unknown014[0x4c];
+    BulletRuntimeView bullets[2001];             // +0x000060
+    AnmLoadedView *bulletAnm;                    // +0x3E0B50
+
+    int SpawnSingleBullet(
+        BulletSpawnDescriptorView *descriptor,
+        int index1, int index2, float angleToPlayer);
+    int SpawnBulletPattern(BulletSpawnDescriptorView *descriptor);
+};
+
+typedef char BulletManagerCursorAt10[
+    (offsetof(BulletManagerView, bulletCursor) == 0x10) ? 1 : -1];
+typedef char BulletManagerBulletsAt60[
+    (offsetof(BulletManagerView, bullets) == 0x60) ? 1 : -1];
+typedef char BulletManagerAnmAt3E0B50[
+    (offsetof(BulletManagerView, bulletAnm) == 0x3e0b50) ? 1 : -1];

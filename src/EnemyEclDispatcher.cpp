@@ -3,6 +3,12 @@
 #include "Main.hpp"
 #include "Rng.hpp"
 
+struct BulletSpawnDescriptorView;
+struct BulletManagerView
+{
+    int SpawnBulletPattern(BulletSpawnDescriptorView *descriptor);
+};
+
 #include <math.h>
 #include <new>
 #include <string.h>
@@ -303,7 +309,6 @@ static __declspec(noinline) void EnemyInitializePositionInterpolation(
     words[0x38 / 4] = 0;
     words[0x30 / 4] = static_cast<unsigned int>(-1);
 }
-extern unsigned int EnemyFireBulletPattern(int manager, int pattern, int owner);
 extern void EnemySpawnItem(
     const PlayerFloat3 *position, int itemType, int owner,
     float angle, float speed);
@@ -1939,7 +1944,9 @@ dispatch_difficulty_float_index_4_a:
        fVar10 = *(float *)(iVar26 + 0x2c8) - *(float *)(reinterpret_cast<int>(g_Player) + 0x3c0),
        fVar9 = fVar9 * fVar9 + fVar10 * fVar10,
        *(float *)((int)runtimeAddress + 0x1454) <= fVar9)) {
-      EnemyFireBulletPattern(reinterpret_cast<int>(g_EnemyBulletManager),iVar26,reinterpret_cast<int>(g_EnemyBulletManager));
+      reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
+          SpawnBulletPattern(reinterpret_cast<BulletSpawnDescriptorView *>(
+              iVar26 + 0x2c4));
       return 0;
     }
     break;

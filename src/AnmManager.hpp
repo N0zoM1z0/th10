@@ -465,6 +465,8 @@ struct AnmVmView
     void StartPrimaryAlphaInterpolation(
         int duration, unsigned char mode,
         unsigned char initial, unsigned char final);
+    void InitializeForLoadedScript(
+        AnmLoadedView *loaded, int scriptIndex);
 
     int id;
     AnmVmLayerNodeView managerNode;

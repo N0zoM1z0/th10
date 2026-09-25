@@ -2749,6 +2749,22 @@ void AnmLoadedView::SetAndExecuteScriptIndex(
     }
 }
 
+// Target 0x00404F30 prepares a reusable embedded VM for one loaded script.
+// The private LTCG ABI keeps the VM in ESI and the script index in EAX while
+// the AnmLoadedView pointer remains the sole stack argument.
+void AnmVmView::InitializeForLoadedScript(
+    AnmLoadedView *loaded, int newScriptIndex)
+{
+    Initialize();
+    positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    position = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    alternatePosition = AnmFloat3View(0.0f, 0.0f, 0.0f);
+    glyphWidth = 0x10;
+    glyphHeight = 0x10;
+    scriptIndex = static_cast<short>(newScriptIndex);
+    loaded->InitializeAndExecuteScriptIndex(this, newScriptIndex);
+}
+
 // Target 0x0043E710 is the allocating-spawn counterpart of the binder above.
 // It preserves the caller-selected position and layer through Initialize,
 // then installs and starts the requested script.

@@ -378,3 +378,6 @@ CSound::Unpause
 AnmVmTimerView::SetCurrent
 BulletRuntimeView::AdvanceTransformProgram
 EnemyCancelBulletRecord
+AnmVmView::InitializeForLoadedScript
+BulletManagerView::SpawnSingleBullet
+BulletManagerView::SpawnBulletPattern

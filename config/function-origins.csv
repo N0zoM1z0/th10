@@ -42,7 +42,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00404DA0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x00404E10,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x00404ED0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
-0x00404F30,authored_game,GameUnassigned,authored,medium,target-authored-call-sandwich-2026-09-17
+0x00404F30,authored_game,AnmManager,authored,high,target-anm-vm-loaded-script-init-2026-09-25
 0x00405040,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x004050D0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00405300,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
@@ -70,9 +70,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004065C0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x004066E0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0040678E,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
-0x004067D0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x004067D0,authored_game,BulletManager,authored,high,target-bullet-spawn-single-2026-09-25
 0x00406D90,authored_game,BulletManager,authored,high,target-bullet-transform-owner-2026-09-25
-0x004073E0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x004073E0,authored_game,BulletManager,authored,high,target-bullet-spawn-pattern-2026-09-25
 0x004074B0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x00407560,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
 0x004076A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17

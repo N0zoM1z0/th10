@@ -1,14 +1,32 @@
 #include "BulletManager.hpp"
 
+#include <math.h>
 #include <string.h>
 
 // These seams are named only for target-observed behavior. Their original
 // owners/private register ABIs are still open reconstruction work.
 extern float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
-extern void BulletApplySprite(BulletRuntimeView *bullet, int bulletType, int color);
+extern int g_BulletSpriteScriptBase[];
+extern int g_BulletEffectMode[];
+extern int g_BulletEffectScriptByColor[];
+extern int g_BulletDrawBucket[];
+extern float g_BulletCollisionSize[];
 extern unsigned int EnemyCancelBulletRecord(unsigned char *bullet);
+extern void *g_EnemyBulletManager;
 extern void BulletQueueSoundAtPosition(int soundId, float positionX);
-extern void BulletSpawnChildPattern(BulletSpawnDescriptorView *pattern);
+
+
+struct EnemySoundQueueView
+{
+    unsigned char unknown000[0x408];
+    int cueValues[134];
+    int activeSoundIds[12];
+    int sampleCounts[12];
+    int samples[12][128];
+
+    void QueueSoundCue(int soundId, float positionX);
+};
+extern unsigned char g_MainSoundOwner[];
 
 static float BulletResolveTransformAngle(
     BulletRuntimeView *bullet, float requestedAngle)
@@ -117,8 +135,14 @@ nextRecord:
         goto nextRecord;
 
     case BULLET_TRANSFORM_SET_SPRITE:
-        BulletApplySprite(
-            this, record->payload.int0, record->payload.int1);
+        {
+            int scriptIndex =
+                g_BulletSpriteScriptBase[record->payload.int0] +
+                record->payload.int1;
+            vm.InitializeForLoadedScript(
+                reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm,
+                scriptIndex);
+        }
         break;
 
     case BULLET_TRANSFORM_WAIT:
@@ -180,7 +204,8 @@ nextRecord:
                 this->transforms,
                 sizeof(pattern.transforms));
 
-            BulletSpawnChildPattern(&pattern);
+            reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->
+                SpawnBulletPattern(&pattern);
             ++this->transformIndex;
             if (fadeParent != 0)
                 EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));
@@ -210,4 +235,233 @@ nextRecord:
 
     ++this->transformIndex;
     goto nextRecord;
+}
+
+
+#pragma var_order(speed, scanned, bullet, angle, transformFlags, this)
+int BulletManagerView::SpawnSingleBullet(
+    BulletSpawnDescriptorView *descriptor,
+    int index1, int index2, float angleToPlayer)
+{
+    float speed;
+    int scanned;
+    BulletRuntimeView *bullet;
+    float angle;
+    unsigned int transformFlags;
+
+    scanned = 0;
+    bullet = bulletCursor;
+    for (scanned = 0; scanned < 2000; ++scanned)
+    {
+        if (bullet->state == 0)
+            break;
+        ++bullet;
+        if (bullet->state == 5)
+            bullet = &bullets[0];
+    }
+    if (scanned >= 2000)
+        return 1;
+
+    angle = 0.0f;
+    if (descriptor->count2 > 1)
+    {
+        speed = descriptor->speed1 -
+            (descriptor->speed1 - descriptor->speed2) *
+                static_cast<float>(index2) /
+                static_cast<float>(descriptor->count2);
+    }
+    else
+    {
+        speed = descriptor->speed1;
+    }
+
+    switch (descriptor->aimMode)
+    {
+    case 0:
+    case 1:
+        if ((descriptor->count1 & 1) != 0)
+            angle += static_cast<float>((index1 + 1) / 2) *
+                descriptor->angleStep;
+        else
+            angle += static_cast<float>(index1 / 2) *
+                descriptor->angleStep + descriptor->angleStep * 0.5f;
+        if ((index1 & 1) != 0)
+            angle *= -1.0f;
+        if (descriptor->aimMode == 0)
+            angle += angleToPlayer;
+        angle += descriptor->angle;
+        break;
+
+    case 2:
+        angle = angleToPlayer;
+    case 3:
+        angle += static_cast<float>(index1) * 6.2831855f /
+            static_cast<float>(descriptor->count1);
+        angle += static_cast<float>(index2) * descriptor->angleStep +
+            descriptor->angle;
+        break;
+
+    case 4:
+        angle = angleToPlayer;
+    case 5:
+        angle += 3.1415927f / static_cast<float>(descriptor->count1);
+        angle += static_cast<float>(index1) * 6.2831855f /
+            static_cast<float>(descriptor->count1);
+        angle += descriptor->angle;
+        break;
+
+    case 6:
+        angle = g_RngView.GetRandomF32InRange(
+            descriptor->angle - descriptor->angleStep) +
+            descriptor->angleStep;
+        break;
+
+    case 7:
+        speed = g_RngView.GetRandomF32InRange(
+            descriptor->speed1 - descriptor->speed2) +
+            descriptor->speed2;
+        angle += static_cast<float>(index1) * 6.2831855f /
+            static_cast<float>(descriptor->count1);
+        angle += static_cast<float>(index2) * descriptor->angleStep +
+            descriptor->angle;
+        break;
+
+    case 8:
+        angle = g_RngView.GetRandomF32InRange(
+            descriptor->angle - descriptor->angleStep) +
+            descriptor->angleStep;
+        speed = g_RngView.GetRandomF32InRange(
+            descriptor->speed1 - descriptor->speed2) +
+            descriptor->speed2;
+        break;
+
+    default:
+        break;
+    }
+
+    bullet->flags |= 1;
+    bullet->state = 1;
+    bullet->stateTimer.SetCurrent(0);
+    bullet->activeTimer.SetCurrent(0);
+    bullet->speed = speed;
+    bullet->angle = AddNormalizeAngle(angle, 0.0f);
+    bullet->position = descriptor->position;
+    bullet->position.z = 0.1f;
+    reinterpret_cast<AnmFloat3View *>(&bullet->velocity)->
+        FromAngleMagnitude(angle, speed);
+
+    bullet->activeTransformFlags = descriptor->transformFlags;
+    bullet->color = descriptor->color;
+    bullet->bulletType = descriptor->bulletType;
+    bullet->flags = (bullet->flags & ~0x0cu) | 2u;
+    bullet->value454 = 0;
+
+    bullet->vm.InitializeForLoadedScript(
+        bulletAnm,
+        g_BulletSpriteScriptBase[descriptor->bulletType] + descriptor->color);
+
+    switch (g_BulletEffectMode[descriptor->bulletType])
+    {
+    case 0:
+        bullet->effectScript = descriptor->color * 2 + 0x11;
+        break;
+    case 1:
+        bullet->effectScript = g_BulletEffectScriptByColor[descriptor->color];
+        break;
+    case 2:
+        bullet->effectScript = -1;
+        break;
+    case 3:
+        bullet->effectScript = 0x1d;
+        break;
+    case 4:
+        bullet->effectScript = 0x13;
+        break;
+    default:
+        break;
+    }
+
+    bullet->drawBucketIndex = g_BulletDrawBucket[descriptor->bulletType];
+    bullet->transformSound = descriptor->transformSound;
+    bullet->offscreenCullDelayFrames = 10;
+    bullet->collisionWidth = g_BulletCollisionSize[descriptor->bulletType];
+    bullet->collisionHeight = bullet->collisionWidth;
+
+    transformFlags = descriptor->transformFlags;
+    if ((transformFlags & 2u) != 0)
+    {
+        bullet->vm.pendingInterrupt = 7;
+        bullet->state = 2;
+    }
+    else if ((transformFlags & 4u) != 0)
+    {
+        bullet->vm.pendingInterrupt = 8;
+        bullet->state = 2;
+    }
+    else if ((transformFlags & 8u) != 0)
+    {
+        bullet->vm.pendingInterrupt = 9;
+        bullet->state = 2;
+    }
+    else
+    {
+        bullet->vm.pendingInterrupt = 2;
+    }
+
+    if (bullet->state == 2)
+    {
+        bullet->position.x -= bullet->velocity.x * 4.0f;
+        bullet->position.y -= bullet->velocity.y * 4.0f;
+        bullet->position.z -= bullet->velocity.z * 4.0f;
+    }
+
+    memcpy(
+        bullet->transforms, descriptor->transforms,
+        sizeof(descriptor->transforms));
+    bullet->transformFlags = descriptor->transformFlags;
+    bullet->activeTransformFlags = 0;
+    bullet->transformIndex = descriptor->transformStartIndex;
+    bullet->AdvanceTransformProgram();
+    AnmRenderManagerView::ExecuteScript(&bullet->vm);
+
+    ++bullet;
+    if (bullet->state == 5)
+        bulletCursor = &bullets[0];
+    else
+        bulletCursor = bullet;
+
+    return 0;
+}
+
+
+int BulletManagerView::SpawnBulletPattern(BulletSpawnDescriptorView *descriptor)
+{
+    int index2;
+    int index1;
+    float angleToPlayer;
+    float dx = g_Player->drawPosition.x - descriptor->position.x;
+    float dy = g_Player->drawPosition.y - descriptor->position.y;
+
+    if (dy == 0.0f && dx == 0.0f)
+        angleToPlayer = 1.5707964f;
+    else
+        angleToPlayer = (float)atan2(dy, dx);
+
+    for (index2 = 0; index2 < descriptor->count2; ++index2)
+    {
+        for (index1 = 0; index1 < descriptor->count1; ++index1)
+        {
+            if (SpawnSingleBullet(
+                    descriptor, index1, index2, angleToPlayer) != 0)
+                goto doneSpawning;
+        }
+    }
+
+doneSpawning:
+    if ((descriptor->transformFlags & 0x200u) != 0)
+    {
+        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+            QueueSoundCue(descriptor->spawnSound, descriptor->position.x);
+    }
+    return 0;
 }
