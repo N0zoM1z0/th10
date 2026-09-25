@@ -385,3 +385,6 @@ BulletRuntimeView::Deactivate
 BulletPositionView::IsOutsidePlayfield
 BulletUpdateRuntime
 BulletManagerView::UpdateBullets
+BulletRuntimeView::UpdateDeceleration
+BulletRuntimeView::UpdateVectorAcceleration
+BulletRuntimeView::UpdatePolarAcceleration

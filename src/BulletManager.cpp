@@ -50,9 +50,6 @@ extern float g_BulletCullTop;
 extern float g_BulletCullBottom;
 extern BulletUpdateGateView *g_BulletUpdateGate;
 
-extern void BulletUpdateDeceleration(BulletRuntimeView *bullet);
-extern void BulletUpdateVectorAcceleration(BulletRuntimeView *bullet);
-extern void BulletUpdatePolarAcceleration(BulletRuntimeView *bullet);
 extern void BulletUpdateRelativeDirectionChange(BulletRuntimeView *bullet);
 extern void BulletUpdateAbsoluteDirectionChange(BulletRuntimeView *bullet);
 extern void BulletUpdateAimedDirectionChange(BulletRuntimeView *bullet);
@@ -62,6 +59,14 @@ extern void BulletUpdateVerticalWrap(BulletRuntimeView *bullet);
 extern void BulletUpdateState8(BulletRuntimeView *bullet);
 extern int BulletCheckPlayerCollision(
     PlayerFloat3 *position, Player *player, const float *collisionSize);
+
+struct AnmOpcodeVectorView
+{
+    float x;
+    float y;
+    float z;
+    void FromAngleMagnitude(float angle, float magnitude);
+};
 
 __declspec(noinline) int BulletPositionView::IsOutsidePlayfield(
     float width, float height)
@@ -84,6 +89,80 @@ void BulletRuntimeView::Deactivate()
     state = 0;
     stateTimer.SetCurrent(0);
     activeTimer.SetCurrent(0);
+}
+
+void BulletRuntimeView::UpdateDeceleration()
+{
+    BulletExStateView &state = exStates[0];
+    if (state.timer.current <= 16) {
+        reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
+            FromAngleMagnitude(
+                angle,
+                (5.0f - state.timer.subframe * 0.3125f) + speed);
+    }
+    else {
+        activeTransformFlags ^= BULLET_TRANSFORM_DECELERATE;
+    }
+    state.timer.previous = state.timer.current;
+    if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
+        ++state.timer.current;
+        state.timer.subframe += 1.0f;
+    }
+    else {
+        state.timer.subframe += *state.timer.scale;
+        state.timer.current = static_cast<int>(state.timer.subframe);
+    }
+}
+
+void BulletRuntimeView::UpdateVectorAcceleration()
+{
+    BulletExStateView &state = exStates[1];
+    if (state.timer.current < state.int0) {
+        speed += g_AnmGameSpeed * state.value0;
+        velocity.x += g_AnmGameSpeed * state.vector.x;
+        velocity.y += g_AnmGameSpeed * state.vector.y;
+        velocity.z += g_AnmGameSpeed * state.vector.z;
+        if (fabsf(velocity.x) > 0.0001f ||
+            fabsf(velocity.y) > 0.0001f) {
+            angle = static_cast<float>(atan2(velocity.y, velocity.x));
+        }
+    }
+    else {
+        activeTransformFlags &= ~BULLET_TRANSFORM_ACCELERATE_VECTOR;
+    }
+    state.timer.previous = state.timer.current;
+    if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
+        ++state.timer.current;
+        state.timer.subframe += 1.0f;
+    }
+    else {
+        state.timer.subframe += *state.timer.scale;
+        state.timer.current = static_cast<int>(state.timer.subframe);
+    }
+}
+
+void BulletRuntimeView::UpdatePolarAcceleration()
+{
+    BulletExStateView &state = exStates[2];
+    if (state.timer.current < state.int0) {
+        angle = AddNormalizeAngle(
+            angle, g_AnmGameSpeed * state.value1);
+        speed += g_AnmGameSpeed * state.value0;
+        reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
+            FromAngleMagnitude(angle, speed);
+    }
+    else {
+        activeTransformFlags &= ~BULLET_TRANSFORM_ACCELERATE_POLAR;
+    }
+    state.timer.previous = state.timer.current;
+    if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
+        ++state.timer.current;
+        state.timer.subframe += 1.0f;
+    }
+    else {
+        state.timer.subframe += *state.timer.scale;
+        state.timer.current = static_cast<int>(state.timer.subframe);
+    }
 }
 
 // Target 0x00406240. TH10 passes the bullet as one callee-clean stack argument.
@@ -112,24 +191,23 @@ __declspec(noinline) int __stdcall BulletUpdateRuntime(BulletRuntimeView *bullet
 updateActive:
         bullet->AdvanceTransformProgram();
         if (bullet->activeTransformFlags != 0) {
-            unsigned int active = bullet->activeTransformFlags;
-            if ((active & 0x00000001u) != 0)
-                BulletUpdateDeceleration(bullet);
-            if ((active & 0x00000010u) != 0)
-                BulletUpdateVectorAcceleration(bullet);
-            if ((active & 0x00000020u) != 0)
-                BulletUpdatePolarAcceleration(bullet);
-            if ((active & 0x00000040u) != 0)
+            if ((bullet->activeTransformFlags & 0x00000001u) != 0)
+                bullet->UpdateDeceleration();
+            if ((bullet->activeTransformFlags & 0x00000010u) != 0)
+                bullet->UpdateVectorAcceleration();
+            if ((bullet->activeTransformFlags & 0x00000020u) != 0)
+                bullet->UpdatePolarAcceleration();
+            if ((bullet->activeTransformFlags & 0x00000040u) != 0)
                 BulletUpdateRelativeDirectionChange(bullet);
-            if ((active & 0x00000100u) != 0)
+            if ((bullet->activeTransformFlags & 0x00000100u) != 0)
                 BulletUpdateAbsoluteDirectionChange(bullet);
-            if ((active & 0x00000080u) != 0)
+            if ((bullet->activeTransformFlags & 0x00000080u) != 0)
                 BulletUpdateAimedDirectionChange(bullet);
-            if ((active & 0x08000c00u) != 0)
+            if ((bullet->activeTransformFlags & 0x08000c00u) != 0)
                 BulletUpdateBoundaryBounce(bullet);
-            if ((active & 0x04000000u) != 0)
+            if ((bullet->activeTransformFlags & 0x04000000u) != 0)
                 BulletUpdateState8(bullet);
-            if ((active & 0x00008000u) != 0) {
+            if ((bullet->activeTransformFlags & 0x00008000u) != 0) {
                 if (bullet->exStates[5].timer.current <= 0)
                     bullet->activeTransformFlags ^= 0x00008000u;
                 else

@@ -164,6 +164,9 @@ struct BulletRuntimeView
 
     void AdvanceTransformProgram();
     void Deactivate();
+    void UpdateDeceleration();
+    void UpdateVectorAcceleration();
+    void UpdatePolarAcceleration();
 };
 
 typedef char BulletRuntimeViewSizeIs7F0[
