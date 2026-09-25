@@ -308,15 +308,16 @@ struct AnmVmTimerView
     int Tick()
     {
         previous = current;
-        if (*scale <= 0.99f || *scale >= 1.01f)
-        {
-            subframe += *scale;
-            current = static_cast<int>(subframe);
-        }
-        else
+        if (*scale > 0.99f && *scale < 1.01f)
         {
             ++current;
             subframe += 1.0f;
+        }
+        else
+        {
+            subframe =
+                *reinterpret_cast<volatile float *>(&subframe) + *scale;
+            current = static_cast<int>(subframe);
         }
         return current;
     }
