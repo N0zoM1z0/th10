@@ -39,6 +39,16 @@ struct BulletPositionView
     __declspec(noinline) int IsOutsidePlayfield(float width, float height);
 };
 
+
+struct BulletWrapPositionView
+{
+    float x;
+    float y;
+    float z;
+
+    __declspec(noinline) int IsOutsidePlayfield(float width, float height);
+};
+
 struct BulletUpdateGateView
 {
     unsigned char unknown000[0x58];
@@ -80,6 +90,24 @@ __declspec(noinline) int BulletPositionView::IsOutsidePlayfield(
     }
     return 1;
 }
+
+// Target 0x004061D0. Wrap transforms use the visible playfield top (Y=0)
+// rather than the wider -64 culling margin used by 0x00406160.
+__declspec(noinline) int BulletWrapPositionView::IsOutsidePlayfield(
+    float width, float height)
+{
+    float halfWidth = width * 0.5f;
+    if (!(x + halfWidth <= g_BulletCullLeft) &&
+        !(x - halfWidth >= g_BulletCullRight)) {
+        float halfHeight = height * 0.5f;
+        if (!(y + halfHeight <= 0.0f) &&
+            !(y - halfHeight >= g_BulletCullBottom)) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
 
 // Target 0x00405BE0. The retail helper receives the bullet in private EAX.
 void BulletRuntimeView::Deactivate()

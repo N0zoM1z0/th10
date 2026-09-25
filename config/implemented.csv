@@ -334,6 +334,7 @@ EnemyLaserVectorView::IsOutsidePlayfield
 GameScoreStateView::AddFaith
 ItemVectorView::FromAngleMagnitude
 EnemyBulletPositionView::IsOutsidePlayfield
+BulletWrapPositionView::IsOutsidePlayfield
 EnemySetChapter
 EnemySetLaserPosition
 EnemyFindLaser
