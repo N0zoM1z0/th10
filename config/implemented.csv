@@ -375,3 +375,5 @@ EnemyEnableBombShield
 SoundPlayerView::ReopenBgm
 SoundPlayerView::StopBgm
 CSound::Unpause
+AnmVmTimerView::SetCurrent
+BulletRuntimeView::AdvanceTransformProgram

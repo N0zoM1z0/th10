@@ -376,3 +376,5 @@ EnemyEnableBombShield,0x0040CEA0,function
 SoundPlayerView::ReopenBgm,0x0043D790,function
 SoundPlayerView::StopBgm,0x0043DAB0,function
 CSound::Unpause,0x0044D5D0,function
+AnmVmTimerView::SetCurrent,0x00405410,function
+BulletRuntimeView::AdvanceTransformProgram,0x00406D90,function

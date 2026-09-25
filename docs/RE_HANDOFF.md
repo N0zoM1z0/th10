@@ -50,8 +50,8 @@ equal selector bytes, or source/semantic coverage is not exactness.
 
 | Owner | Target | Last recorded diagnostic context (replay required) | Status |
 | --- | ---: | --- | --- |
-| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,228 bytes; pre-table 13,572/13,760; 746/11,556 normalized comparable bytes; selector 181/181; physical order matches; typed 0x1A8 speed fields, rank-float shared tails and target 0x119 positive-value tests retained | non-exact |
-| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | selected source-shape diagnostic: contribution 9,960 with pre-table 9,584/9,588 and 705/8,608 agreement; exact-creator split context separately yields 10,040 with pre-table 9,664 | non-exact; context-sensitive |
+| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | fresh 2026-09-25 selected four-source replay: 14,228 bytes; pre-table 13,572/13,760; 755/11,556 normalized comparable bytes; selector 181/181; physical order matches | non-exact |
+| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | fresh 2026-09-25 direct-entry /GL /GS replay: 9,752-byte contribution with 388/8,392 normalized comparable bytes; historical creator-split contexts remain diagnostic only | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | 7,020/7,020; pre-table 6,692/6,692; 945/6,264 normalized agreement, normalization incomplete | non-exact |
 
 Use the per-owner sections below for the selected context and open problems. Do
@@ -69,9 +69,11 @@ production translation unit. Do not collect unrelated helpers in a generic
 
 | Completed | `EnemyFindLaser / EnemySetLaserPosition / EnemyConfigureInterrupt / EnemyWaitForEffect / EnemyApplyBulletClear` | Five maintained Enemy leaf helpers at `0x0040CF90 / 0x0040CF60 / 0x00412720 / 0x0041C7D0 / 0x0041C850` compile as independent relocation-free normal-COFF COMDATs of 22/23/48/44/44 bytes, exactly matching their target extents. The first three remain origin-indeterminate because TH10 does not prove source-written versus optimizer-outlined ownership; exact codegen is recorded without changing that provenance. The two effect-list helpers remain authored Enemy based on dispatcher-owned list semantics. |
 | Completed | EnemyEnableBombShield @ 0x0040CEA0 | The unique dispatcher callsite loads g_EnemyGameState into ESI for opcode ENEMY_ECL_ENABLE_BOMB_SHIELD. Re-audit corrected two source-shape details: pass the established four-byte managedVmId storage directly as AnmVmIdView instead of creating an implicit conversion temporary, then take the address of flags378C before *flags |= 0x10; a pinned VC7.1 micro-probe proves this pointer spelling is what emits the target direct memory OR. The real dispatcher /GL /GS contribution improves 48 -> 44 -> 36 bytes and canonical comparison is exact with the manager and MarkVmForDeletion fields resolved. Maintained non-static visibility only exposes a stable PDB symbol and does not establish original linkage. All 14 exact units sourced from EnemyEclDispatcher.cpp remain exact in focused replay. |
+| Completed | `AnmVmTimerView::SetCurrent @ 0x00405410` | Re-audit shows this 57-byte physical helper is shared by 15 direct callers across Bullet, Enemy, Player, ANM and other owners. A standalone wrapper has the wrong stack ABI; the existing inline timer member naturally materializes under the real `AnmRenderManagerView::ExecuteScript` /GL /GS graph with target-private EAX=timer, stack value and RET 4. Two cold canonical linked-PE replays reproduce all 57 bytes with only the `g_AnmGameSpeed` DIR32 linkage varying by image. |
+| Active | `BulletRuntimeView::AdvanceTransformProgram @ 0x00406D90` | TH10-local re-audit supersedes the older ANM VM opcode-handler interpretation. The 1,454-byte target walks up to 18 0x18-byte transform records at runtime +0x464, updates active flags +0x43C/cursor +0x45C and nine 0x34-byte extension states from +0x614. Maintained `src/BulletManager.cpp` is now source-mapped. Replacing artificial timer-wrapper calls with natural member SetCurrent improves the fresh /GL /GS candidate from 1,544 bytes and 140/1,338 comparable bytes to 1,520 bytes and 161/1,338; it remains non-exact. |
 | Completed | `MainSupervisorView::SetNextGameMode @ 0x0040AC90` | Six target call sites all preload EAX=`0x00491C28`, whose +0x04 D3D interface proves it is the MainSupervisor base. The helper writes +0x390, the same slot maintained FrontEnd source calls next game mode, unless supervisor flags +0x3CC has bit 0x1000, in which case it forces mode 2. Replacing the GUI placeholder `GuiSetGameMode` with the natural MainSupervisor member and compiling under real `GuiMessageVmView::Run` /GL context reproduces all 37 bytes raw-equal. |
 | Completed | `Lzss::DeleteString @ 0x00436210` | `src/Lzss.cpp`; exact linked-PE replay covers the complete 80-byte PDB extent and all seven linkage fields. Original production owner remains unknown. |
-| Completed | `AnmOpcodeVectorView::FromAngleMagnitude @ 0x00408750` | Maintained in `src/AnmManager.cpp`; caller `0x00406D90` is the ANM VM opcode handler. Exact body replay covers all 30 relocation-free bytes. |
+| Completed | `AnmOpcodeVectorView::FromAngleMagnitude @ 0x00408750` | Maintained historical view name in `src/AnmManager.cpp`; fresh TH10 re-audit identifies caller `0x00406D90` as the bullet transform interpreter, where this helper builds the vector-acceleration state. Exact body replay covers all 30 relocation-free bytes; the view name does not claim original ownership. |
 | Completed | `AnmScriptVectorView::FromAngleMagnitude @ 0x00441EF0` | Maintained in `src/AnmManager.cpp`; direct caller `0x0043EE30` is the ANM script executor. Exact body replay covers all 30 relocation-free bytes. |
 | Completed | `EnemyRuntimeVectorView::FromAngleMagnitude @ 0x0044C5D0` | Maintained in `src/Enemy.cpp`; called by `EnemyRuntimeUpdate @ 0x0040DC80`. Exact body replay covers all 30 relocation-free bytes. |
 | Completed | `PlayerShotBoundsView::IsOutsidePlayfield @ 0x00428D70` | Maintained in `src/Player.cpp`; called from `PlayerUpdateShots @ 0x00428280`. Exact linked-PE replay covers all 91 bytes and four bounds references; target values are X `(-192, 192)` and Y `(0, 448)`. |
@@ -148,17 +150,18 @@ close the whole-product Windows i386 build gate.
 
 Use the maintained source at HEAD. Historical Enemy measurements in
 KNOWLEDGE_BASE and Git explain how the source got here; they are not alternate
-baselines to restore. The 14,228-byte typed-field measurement below is the last
-recorded result for its selected four-source linked graph, not a fresh replay
-of the later all-real-caller graph. Its named scratch reports were pruned.
-Linked-PE probe reports have no exactness authority.
+baselines to restore. A fresh 2026-09-25 replay of the selected four-source
+graph reproduces the 14,228-byte contribution and measures 755/11,556
+normalized comparable bytes. Expanded all-real-laser caller graphs remain
+separate contexts and must not be mixed with this baseline. Linked-PE probe
+reports have no exactness authority.
 
 | Measure | Selected candidate | Target |
 | --- | ---: | ---: |
 | Complete contribution | 14,228 | 14,416 |
 | Pre-table span | 13,572 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 746 / 11,556 | 11,556 / 11,556 |
+| Normalized comparable bytes | 755 / 11,556 | 11,556 / 11,556 |
 | Selector bytes | 181 / 181 | 181 / 181 |
 | Physical selector-group order | matches | matches |
 | Suffix | 43 | 43 |
@@ -297,17 +300,17 @@ rather than silently incorporating dirty source.
 
 ## ANM executor: recovery point
 
-The maintained source covers opcodes -1..92 and remains non-exact. Two
-diagnostic contexts are intentionally kept distinct:
+The maintained source covers opcodes -1..92 and remains non-exact. A fresh
+2026-09-25 direct-entry /GL /GS replay emits a 9,752-byte contribution against
+the 9,587-byte target, with 388/8,392 normalized comparable bytes and complete
+normalization. This supersedes the old 9,960-byte value as the current
+single-source diagnostic. Historical creator-split graphs, including the
+10,040-byte context, remain useful only for caller/TU sensitivity and must not
+be compared as if they were the same link graph.
 
-- the selected source-shape checkpoint is contribution 9,960 with pre-table
-  9,584 versus target 9,588 and 705/8,608 agreement;
-- the exact-creator split ExecuteScript context is 10,040 bytes with pre-table
-  9,664. It is useful for understanding caller/TU effects, not as a replacement
-  baseline.
-
-Both retain all 92 physical groups in target order. Do not compare their total
-sizes as if they were the same link graph.
+The same fresh graph naturally materializes `AnmVmTimerView::SetCurrent` as
+a target-exact 57-byte private-EAX helper. Preserve that natural member path
+while changing executor lifetime, block placement, or helper ownership.
 
 The four render-layer creators Variant0/2/1/3 are independently canonical
 exact 73-byte units with the target EDI hidden-return ABI. Variant0 remains a
