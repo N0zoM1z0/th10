@@ -4114,3 +4114,18 @@ linkages = [
   { offset = 0x39, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
   { offset = 0x42, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
 ]
+
+[units.zwave-csound-stop]
+artifact_kind = "linked-pe"
+source = "src/ZWave.cpp"
+support_sources = ["src/Sound.cpp"]
+output_dir = "build/match-linked/ZWaveStop"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StopBgm@SoundPlayerView@@QAEXXZ"
+functions = ["CSound::Stop"]
+symbol = "?Stop@CSound@@QAEJXZ"
+target_address = 0x0044D550
+size = 82
+linkages = []
