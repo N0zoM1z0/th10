@@ -253,6 +253,21 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
     state.timer.Tick();
 }
 
+// Target 0x00408660. Returns the shortest signed angular difference
+// between two already-normalized angles. The sole target caller is the
+// TH10-only transform-state helper at 0x00407EF0.
+__declspec(noinline) float __stdcall BulletAngleDifference(
+    float angle, float reference)
+{
+    float difference = angle - reference;
+    if (difference > 3.1415927f)
+        return angle - (reference + 6.2831855f);
+    if (reference - angle > 3.1415927f)
+        difference = angle - (reference - 6.2831855f);
+    return difference;
+}
+
+
 void BulletRuntimeView::UpdateAimedDirectionChange()
 {
     BulletExStateView &state = exStates[3];

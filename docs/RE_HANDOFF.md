@@ -1,6 +1,6 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-09-25. This is a current recovery snapshot, not a chronological
+Updated 2026-09-26. This is a current recovery snapshot, not a chronological
 session log. Historical target facts belong in docs/KNOWLEDGE_BASE.md and
 accepted implementation history belongs in Git.
 
@@ -81,6 +81,7 @@ production translation unit. Do not collect unrelated helpers in a generic
 | Completed | `Lzss::DeleteString @ 0x00436210` | `src/Lzss.cpp`; exact linked-PE replay covers the complete 80-byte PDB extent and all seven linkage fields. Original production owner remains unknown. |
 | Completed | `BulletPositionView::IsOutsidePlayfield @ 0x00406160` | The target computes width/height half-extents lazily: width is multiplied by 0.5, both X comparisons consume that x87 lifetime, then height is multiplied by 0.5 for the Y pair. Moving the maintained height calculation into the X-success branch changes the real `UpdateBullets` `/GL /GS` contribution from 115/109 with 9/85 normalized agreement to 109/109 with 85/85. Canonical comparison is exact with two 0.5f constant DIR32 fields and four playfield-bound DIR32 fields declared. |
 | Completed | `BulletWrapPositionView::IsOutsidePlayfield @ 0x004061D0` | Re-audit of the horizontal/vertical wrap callers shows this is a distinct 109-byte bounds owner using visible-top Y=0 rather than the -64 culling margin of `0x00406160`. The same lazy half-width/half-height source shape reproduces the complete target extent. Canonical linked-PE comparison is 109/109 with six declared linkage fields. |
+| Completed | `BulletAngleDifference @ 0x00408660` | TH10-local decompile/disassembly identifies the sole caller as the state-8 transform helper at 0x00407EF0. The body computes angle-reference and folds values outside +/-pi through 2*pi. A normal VC7.1 COFF build is 80/80 exact; four DIR32 fields at 0x0A/0x1D/0x32/0x45 resolve to the target pi/2*pi constants. |
 | Completed | `AnmOpcodeVectorView::FromAngleMagnitude @ 0x00408750` | Maintained historical view name in `src/AnmManager.cpp`; fresh TH10 re-audit identifies caller `0x00406D90` as the bullet transform interpreter, where this helper builds the vector-acceleration state. Exact body replay covers all 30 relocation-free bytes; the view name does not claim original ownership. |
 | Completed | `AnmScriptVectorView::FromAngleMagnitude @ 0x00441EF0` | Maintained in `src/AnmManager.cpp`; direct caller `0x0043EE30` is the ANM script executor. Exact body replay covers all 30 relocation-free bytes. |
 | Completed | `EnemyRuntimeVectorView::FromAngleMagnitude @ 0x0044C5D0` | Maintained in `src/Enemy.cpp`; called by `EnemyRuntimeUpdate @ 0x0040DC80`. Exact body replay covers all 30 relocation-free bytes. |

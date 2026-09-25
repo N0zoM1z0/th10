@@ -393,3 +393,4 @@ BulletManagerUpdateCallback
 BulletRuntimeView::UpdateRelativeDirectionChange
 BulletRuntimeView::UpdateAbsoluteDirectionChange
 BulletRuntimeView::UpdateAimedDirectionChange
+BulletAngleDifference
