@@ -382,3 +382,7 @@ EnemyCancelBulletRecord,0x00408030,function
 AnmVmView::InitializeForLoadedScript,0x00404F30,function
 BulletManagerView::SpawnSingleBullet,0x004067D0,function
 BulletManagerView::SpawnBulletPattern,0x004073E0,function
+BulletRuntimeView::Deactivate,0x00405BE0,function
+BulletPositionView::IsOutsidePlayfield,0x00406160,function
+BulletUpdateRuntime,0x00406240,function
+BulletManagerView::UpdateBullets,0x004065C0,function

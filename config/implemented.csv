@@ -381,3 +381,7 @@ EnemyCancelBulletRecord
 AnmVmView::InitializeForLoadedScript
 BulletManagerView::SpawnSingleBullet
 BulletManagerView::SpawnBulletPattern
+BulletRuntimeView::Deactivate
+BulletPositionView::IsOutsidePlayfield
+BulletUpdateRuntime
+BulletManagerView::UpdateBullets

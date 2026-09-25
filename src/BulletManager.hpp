@@ -148,7 +148,9 @@ struct BulletRuntimeView
     unsigned int transformFlags;                // +0x440
     unsigned short unknown444;                  // +0x444
     unsigned short state;                       // +0x446
-    unsigned char unknown448[0x0c];             // +0x448
+    unsigned char unknown448[0x04];             // +0x448
+    BulletRuntimeView *nextInDrawBucket;         // +0x44C
+    unsigned int unknown450;                    // +0x450
     int value454;                               // +0x454
     int transformSound;                         // +0x458
     int transformIndex;                         // +0x45C
@@ -161,6 +163,7 @@ struct BulletRuntimeView
     unsigned char unknown7EE[0x02];              // +0x7EE
 
     void AdvanceTransformProgram();
+    void Deactivate();
 };
 
 typedef char BulletRuntimeViewSizeIs7F0[
@@ -209,7 +212,10 @@ struct BulletManagerView
 {
     unsigned char unknown000[0x10];
     BulletRuntimeView *bulletCursor;             // +0x000010
-    unsigned char unknown014[0x4c];
+    BulletRuntimeView *drawBucketHeads[6];       // +0x000014
+    BulletRuntimeView *drawBucketTails[6];       // +0x00002C
+    unsigned char unknown044[0x18];              // +0x000044
+    int activeBulletCount;                       // +0x00005C
     BulletRuntimeView bullets[2001];             // +0x000060
     AnmLoadedView *bulletAnm;                    // +0x3E0B50
 
@@ -217,6 +223,7 @@ struct BulletManagerView
         BulletSpawnDescriptorView *descriptor,
         int index1, int index2, float angleToPlayer);
     int SpawnBulletPattern(BulletSpawnDescriptorView *descriptor);
+    int UpdateBullets();
 };
 
 typedef char BulletManagerCursorAt10[
@@ -225,3 +232,12 @@ typedef char BulletManagerBulletsAt60[
     (offsetof(BulletManagerView, bullets) == 0x60) ? 1 : -1];
 typedef char BulletManagerAnmAt3E0B50[
     (offsetof(BulletManagerView, bulletAnm) == 0x3e0b50) ? 1 : -1];
+
+int __stdcall BulletUpdateRuntime(BulletRuntimeView *bullet);
+
+typedef char BulletRuntimeDrawLinkAt44C[
+    (offsetof(BulletRuntimeView, nextInDrawBucket) == 0x44c) ? 1 : -1];
+typedef char BulletManagerDrawBucketsAt14[
+    (offsetof(BulletManagerView, drawBucketHeads) == 0x14 &&
+     offsetof(BulletManagerView, drawBucketTails) == 0x2c &&
+     offsetof(BulletManagerView, activeBulletCount) == 0x5c) ? 1 : -1];
