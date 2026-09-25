@@ -319,8 +319,9 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
         state.timer.SetCurrent(0);
     }
     else {
-        nextSpeed =
-            speed - (speed * state.timer.subframe) /
+        nextSpeed = speed;
+        nextSpeed -=
+            (nextSpeed * state.timer.subframe) /
                 static_cast<float>(state.int0);
     }
 
