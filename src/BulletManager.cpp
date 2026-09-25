@@ -306,6 +306,66 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
     state.timer.Tick();
 }
 
+// Target 0x00407BE0. Retail LTCG keeps the BulletRuntimeView owner in ESI.
+void BulletRuntimeView::UpdateBoundaryBounce()
+{
+    BulletExStateView &state = exStates[4];
+
+    if (position.x <= g_BulletCullLeft ||
+        position.x >= g_BulletCullRight ||
+        position.y <= 0.0f ||
+        position.y >= g_BulletCullBottom) {
+        int soundId = transformSound;
+        int bounced = 0;
+
+        if (soundId >= 0) {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(soundId, 0);
+        }
+
+        if (position.x < g_BulletCullLeft ||
+            position.x >= g_BulletCullRight) {
+            angle = AddNormalizeAngle(-angle - 3.1415927f, 0.0f);
+            bounced = 1;
+            if (position.x < g_BulletCullLeft)
+                position.x = -384.0f - position.x;
+            else
+                position.x = 384.0f - position.x;
+        }
+
+        if ((activeTransformFlags & BULLET_TRANSFORM_BOUNCE_VARIANT) == 0 &&
+            (position.y < 0.0f ||
+             (position.y >= g_BulletCullBottom &&
+              (activeTransformFlags &
+               BULLET_TRANSFORM_BOUNCE_ALL_EDGES) != 0))) {
+            bounced = 1;
+            angle = -angle;
+            if (position.y < 0.0f)
+                position.y = -position.y;
+            else
+                position.y =
+                    (g_BulletCullBottom - position.y) +
+                    g_BulletCullBottom;
+        }
+
+        if (state.value0 > -990.0f)
+            speed = state.value0;
+
+        reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
+            FromAngleMagnitude(angle, speed);
+
+        if (bounced != 0)
+            ++state.int0;
+        if (state.int0 >= state.int1) {
+            activeTransformFlags &=
+                ~(BULLET_TRANSFORM_BOUNCE_ALL_EDGES |
+                  BULLET_TRANSFORM_BOUNCE_EXCEPT_BOTTOM |
+                  BULLET_TRANSFORM_BOUNCE_VARIANT);
+        }
+    }
+}
+
+
 // Target 0x004065C0. Retail LTCG keeps the manager in private ESI.
 int BulletManagerView::UpdateBullets()
 {

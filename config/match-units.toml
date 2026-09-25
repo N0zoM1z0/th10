@@ -4389,3 +4389,40 @@ linkages = [
   { offset = 0x01, type = "DIR32", symbol = "?g_BulletUpdateGate@@3PAUBulletUpdateGateView@@A", target = 0x00477810 },
   { offset = 0x22, type = "REL32", symbol = "?UpdateBullets@BulletManagerView@@QAEHXZ", target = 0x004065C0 },
 ]
+
+
+[units.bullet-update-boundary-bounce]
+artifact_kind = "linked-pe"
+source = "src/BulletManager.cpp"
+support_sources = ["src/EnemyEclDispatcher.cpp"]
+output_dir = "build/match-linked/BulletBoundaryBounce"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?BulletManagerUpdateCallback@@YIHPAUBulletManagerView@@@Z"
+functions = ["BulletRuntimeView::UpdateBoundaryBounce"]
+symbol = "?UpdateBoundaryBounce@BulletRuntimeView@@QAEXXZ"
+target_address = 0x00407BE0
+size = 446
+linkages = [
+  { offset = 0x08, type = "DIR32", symbol = "?g_BulletCullLeft@@3MA", target = 0x00470B40 },
+  { offset = 0x1B, type = "DIR32", symbol = "?g_BulletCullRight@@3MA", target = 0x00470B3C },
+  { offset = 0x2E, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x41, type = "DIR32", symbol = "?g_BulletCullBottom@@3MA", target = 0x00470B38 },
+  { offset = 0x60, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590 },
+  { offset = 0x65, type = "REL32", symbol = "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z", target = 0x0043DC90 },
+  { offset = 0x71, type = "DIR32", symbol = "?g_BulletCullLeft@@3MA", target = 0x00470B40 },
+  { offset = 0x84, type = "DIR32", symbol = "?g_BulletCullRight@@3MA", target = 0x00470B3C },
+  { offset = 0x9C, type = "DIR32", symbol = "__real@40490fdb", target = 0x00470B18 },
+  { offset = 0xA4, type = "REL32", symbol = "?AddNormalizeAngle@@YGMMM@Z", target = 0x0044BC10 },
+  { offset = 0xBB, type = "DIR32", symbol = "?g_BulletCullLeft@@3MA", target = 0x00470B40 },
+  { offset = 0xC8, type = "DIR32", symbol = "__real@c3c00000", target = 0x00470B58 },
+  { offset = 0xD0, type = "DIR32", symbol = "__real@43c00000", target = 0x00470B54 },
+  { offset = 0xF6, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x109, type = "DIR32", symbol = "?g_BulletCullBottom@@3MA", target = 0x00470B38 },
+  { offset = 0x134, type = "DIR32", symbol = "__real@00000000", target = 0x00470B04 },
+  { offset = 0x14B, type = "DIR32", symbol = "?g_BulletCullBottom@@3MA", target = 0x00470B38 },
+  { offset = 0x157, type = "DIR32", symbol = "?g_BulletCullBottom@@3MA", target = 0x00470B38 },
+  { offset = 0x169, type = "DIR32", symbol = "__real@c4778000", target = 0x00470B50 },
+  { offset = 0x195, type = "REL32", symbol = "?FromAngleMagnitude@AnmOpcodeVectorView@@QAEXMM@Z", target = 0x00408750 },
+]

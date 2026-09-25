@@ -394,3 +394,4 @@ BulletRuntimeView::UpdateRelativeDirectionChange
 BulletRuntimeView::UpdateAbsoluteDirectionChange
 BulletRuntimeView::UpdateAimedDirectionChange
 BulletAngleDifference
+BulletRuntimeView::UpdateBoundaryBounce
