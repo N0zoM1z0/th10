@@ -1240,6 +1240,7 @@ extern AnmRenderVertexNoDiffuseView g_AnmQuadVerticesNoDiffuse[4];
 extern AnmRenderVertexNoDiffuseView g_AnmBackgroundQuadVertices[4];
 extern AnmViewportOwnerView *g_AnmViewportOwner;
 extern AnmFloat3View g_AnmBackgroundCameraPosition;
+extern AnmFloat3View g_AnmZeroVector491C14;
 extern AnmFloat3View g_AnmPosition491DA0;
 extern AnmFloat3View g_AnmPositionOffsetDelta;
 extern AnmPhotoBlendView g_AnmPhotoBlend;

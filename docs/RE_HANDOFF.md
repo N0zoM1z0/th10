@@ -163,21 +163,28 @@ After any ECL edit:
 
 ## ANM executor: current recovery point
 
-ANM-066 is the retained source-shape checkpoint:
+ANM-067 is the retained source-shape checkpoint:
 
-- selected direct-entry `/GL /GS` graph with `RandomMath.cpp` support;
-- 9,960-byte PDB contribution versus the 9,587-byte target executable owner;
-- 812/8,608 normalized comparable bytes;
-- pre-table span 9,584/9,588;
-- 92/92 physical selector groups in target order;
-- all 85 target `OR EDI,-1` restores reproduced;
-- shared advance tail emits target order `MOVZX size; ADD; STORE; OR EDI,-1`;
-- POSITION is 171/171 and the following NOP/interrupt-plus-alternate region is
-  184/184;
-- expanding the POSITION_TIME initial-position ternary into explicit `if/else`
-  is the allocator change that moved the pre-table deficit from 36 bytes to 4;
-- POSITION_TIME is still 347/344 and the following COLOR1_TIME region 159/173,
-  so the remaining four-byte aggregate deficit is not padding evidence.
+- selected direct-entry /GL /GS graph with RandomMath.cpp support;
+- 9,980-byte PDB contribution versus the 9,587-byte target executable owner;
+- 521/8,603 normalized comparable bytes;
+- pre-table span 9,604/9,588 (+16);
+- 92/92 physical selector groups remain in target order;
+- all 85 target OR EDI,-1 restores and the recovered shared-tail order remain;
+- POSITION remains 171/171 and NOP/interrupt-plus-alternate remains 184/184;
+- COLOR1_TIME and COLOR2_TIME are now 173/173 by preserving target RGB-only
+  initial temporaries and B/G/R evaluation order;
+- ROTATION_TIME is now 290/290 by evaluating final Z/Y/X before duration and
+  copying both tangents from target-observed zero-vector storage at 0x491C14;
+- COMMIT_POSITION is 66/66 and the following ALLOC_VERTICES is 76/76 after
+  clearing positionOffset fields directly instead of constructing a zero
+  Float3 temporary;
+- SCALE_TIME improves from 139/153 to 145/153. Its remaining eight bytes are a
+  stack-home mismatch (target saved-Y at ESP+0xA0, candidate +0x4C), not an
+  arithmetic/semantic gap;
+- POSITION_TIME is still 347/344 and ALPHA1_TIME 81/84. Continue by recovering
+  neighboring lifetime/coloring; do not revert target-sized groups merely to
+  raise the transient whole-owner byte score.
 
 Do not regress VM-id semantics or exact render-layer creators to raw integer
 APIs just to change layout. The current open classes are POSITION/interpolation

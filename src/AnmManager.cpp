@@ -3286,12 +3286,17 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
         case ANM_OP_COLOR1_TIME:
         {
-            AnmColorView initialColor = vm->primaryColor;
+            AnmColorView initialColor;
+            initialColor.red = vm->primaryColor.red;
+            initialColor.green = vm->primaryColor.green;
+            initialColor.blue = vm->primaryColor.blue;
+            const int finalBlue = GET_INT_VAR(4);
+            const int finalGreen = GET_INT_VAR(3);
+            const int finalRed = GET_INT_VAR(2);
             AnmColorView finalColor;
-            finalColor.value = 0;
-            finalColor.red = static_cast<unsigned char>(GET_INT_VAR(2));
-            finalColor.green = static_cast<unsigned char>(GET_INT_VAR(3));
-            finalColor.blue = static_cast<unsigned char>(GET_INT_VAR(4));
+            finalColor.blue = static_cast<unsigned char>(finalBlue);
+            finalColor.green = static_cast<unsigned char>(finalGreen);
+            finalColor.red = static_cast<unsigned char>(finalRed);
             vm->StartPrimaryColorInterpolation(
                 &initialColor, &finalColor, GET_INT_VAR(0),
                 currentInstruction->byteArgs[4]);
@@ -3305,12 +3310,17 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
         case ANM_OP_COLOR2_TIME:
         {
-            AnmColorView initialColor = vm->secondaryColor;
+            AnmColorView initialColor;
+            initialColor.red = vm->secondaryColor.red;
+            initialColor.green = vm->secondaryColor.green;
+            initialColor.blue = vm->secondaryColor.blue;
+            const int finalBlue = GET_INT_VAR(4);
+            const int finalGreen = GET_INT_VAR(3);
+            const int finalRed = GET_INT_VAR(2);
             AnmColorView finalColor;
-            finalColor.value = 0;
-            finalColor.red = static_cast<unsigned char>(GET_INT_VAR(2));
-            finalColor.green = static_cast<unsigned char>(GET_INT_VAR(3));
-            finalColor.blue = static_cast<unsigned char>(GET_INT_VAR(4));
+            finalColor.blue = static_cast<unsigned char>(finalBlue);
+            finalColor.green = static_cast<unsigned char>(finalGreen);
+            finalColor.red = static_cast<unsigned char>(finalRed);
             vm->StartSecondaryColorInterpolation(
                 &initialColor, &finalColor, GET_INT_VAR(0),
                 currentInstruction->byteArgs[4]);
@@ -3323,24 +3333,27 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 static_cast<unsigned char>(GET_INT_VAR(2)));
             break;
         case ANM_OP_ROTATION_TIME:
+        {
+            const AnmFloat3View finalRotation(
+                GET_FLOAT_VAR(2), GET_FLOAT_VAR(3), GET_FLOAT_VAR(4));
             vm->rotationInterpolation.duration = GET_INT_VAR(0);
             vm->rotationInterpolation.initialTangent =
-                AnmFloat3View(0.0f, 0.0f, 0.0f);
+                g_AnmZeroVector491C14;
             vm->rotationInterpolation.finalTangent =
-                AnmFloat3View(0.0f, 0.0f, 0.0f);
+                g_AnmZeroVector491C14;
             vm->rotationInterpolation.mode = currentInstruction->byteArgs[4];
             vm->rotationInterpolation.initial = vm->rotation;
-            vm->rotationInterpolation.final.x = GET_FLOAT_VAR(2);
-            vm->rotationInterpolation.final.y = GET_FLOAT_VAR(3);
-            vm->rotationInterpolation.final.z = GET_FLOAT_VAR(4);
+            vm->rotationInterpolation.final = finalRotation;
             vm->rotationInterpolation.timer.SetCurrent(0);
             vm->updateRotation = 1;
             break;
+        }
         case ANM_OP_SCALE_TIME:
         {
+            const float finalScaleY = GET_FLOAT_VAR(3);
             AnmFloat2View finalScale;
             finalScale.x = GET_FLOAT_VAR(2);
-            finalScale.y = GET_FLOAT_VAR(3);
+            finalScale.y = finalScaleY;
             vm->StartScaleInterpolation(
                 reinterpret_cast<AnmFloat2View *>(&vm->scaleX),
                 &finalScale,
@@ -3356,7 +3369,9 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
         case ANM_OP_COMMIT_POSITION:
             vm->position = vm->positionOffset;
-            vm->positionOffset = AnmFloat3View(0.0f, 0.0f, 0.0f);
+            vm->positionOffset.x = 0.0f;
+            vm->positionOffset.y = 0.0f;
+            vm->positionOffset.z = 0.0f;
             break;
         case ANM_OP_ALLOC_VERTICES:
             vm->renderMode = 9;
