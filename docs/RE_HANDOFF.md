@@ -186,9 +186,17 @@ END/fallback `-1` comparisons, and resets it at the shared instruction-advance
 tail. VC7.1 naturally tail-duplicates that assignment into exactly 85 EDI
 restores while preserving all 92 physical selector groups. The pre-table span
 moves from 9,328/9,588 to 9,568/9,588, leaving only a 20-byte pre-table deficit.
-The linked owner is still non-exact (9,944 versus 9,587; 444/8,592 normalized
-comparable bytes), so do not optimize toward total contribution size at the
-expense of pre-table/group structure. The 0xFC-byte stack frame still matches
+The linked owner is still non-exact. A follow-up layout checkpoint routes
+NOP/interrupt-label through the same shared instruction-advance tail. That
+recovers the target physical split around POSITION exactly: POSITION is
+171/171 bytes and the following NOP/interrupt-plus-alternate-position region is
+184/184, while all 85 EDI restores and all 92 physical selector groups remain.
+The selected contribution is 9,928 versus target 9,587, with 391/8,576
+normalized comparable bytes and a 9,552/9,588 pre-table span. The shared tail
+still schedules `OR EDI,-1` before ADD/STORE in the candidate while target does
+ADD/STORE first; POSITION float temporary stack homes also remain different.
+Do not optimize toward total contribution size at the expense of these physical
+group and instruction-order facts. The 0xFC-byte stack frame still matches
 target size, while saved game speed remains ESP+0x60 versus target +0x98.
 
 A 2026-09-26 support-graph check added `AnmVmCreate.cpp` and then

@@ -3187,10 +3187,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
         case ANM_OP_NOP:
         case ANM_OP_INTERRUPT_LABEL:
-            vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
-                reinterpret_cast<unsigned char *>(currentInstruction) +
-                currentInstruction->size);
-            continue;
+            break;
         case ANM_OP_WAIT:
             vm->scriptTimer.Decrement(GET_INT_VAR(0));
             break;
