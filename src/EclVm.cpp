@@ -607,9 +607,9 @@ int EclVmContext::StartSubroutine(
     destination->stack.Push(
         0, sizeof(*callerInstruction), callerInstruction);
 
+    EclVmContext *const previousContext = caller->host->activeContext;
+    caller->host->activeContext = destination;
     EclVmHost *const host = caller->host;
-    EclVmContext *const previousContext = host->activeContext;
-    host->activeContext = destination;
     host->activeContext->instruction = host->scriptDatabase->FindSubroutine(
         reinterpret_cast<const char *>(*callerInstruction) + 0x14);
     host->activeContext->currentTime = 0.0f;

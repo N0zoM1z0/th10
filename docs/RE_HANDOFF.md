@@ -53,7 +53,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 | --- | ---: | --- | --- |
 | EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,232 bytes and 720/11,556 comparable bytes in the selected four-source graph **before** ECL support changed at `57099cf`; refresh before comparing HEAD | non-exact |
 | AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | current ANM-066 checkpoint: 9,960-byte PDB contribution, 812/8,608 comparable bytes; 9,584/9,588 pre-table span; POSITION 171/171 and NOP/interrupt+alternate region 184/184; all 85 target `OR EDI,-1` restores reproduced; 92 physical selector groups retain target order | non-exact; context-sensitive |
-| EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | current `57099cf` diagnostic: 7,020/7,020; pre-table 6,692/6,692; 946/6,264 comparable bytes, normalization incomplete | non-exact |
+| EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | current ECLVM-036 checkpoint: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 comparable bytes, normalization incomplete; SpawnThread is now canonical exact 142/142 | non-exact |
 
 Use the per-owner sections below for the selected context and open problems. Do
 not mix measurements from different LTCG support graphs.
@@ -264,12 +264,12 @@ In the selected real-host /GL diagnostic:
 | --- | ---: | ---: |
 | Complete Run contribution | 7,020 | 7,020 |
 | Pre-table span | 6,692 | 6,692 |
-| Normalized comparable bytes | 946 / 6,264 | 6,264 / 6,264 |
+| Normalized comparable bytes | 975 / 6,264 | 6,264 / 6,264 |
 | Physical opcode-group order | matches | matches |
 
 Normalization is still incomplete, so equal contribution/pre-table/order is
-not exactness. StartSubroutine itself remains 522/550 and SpawnThread remains
-close but non-exact. The open classes are x87 arithmetic stack homes, format
+not exactness. StartSubroutine is now 533/550, while SpawnThread is canonical
+exact at 142/142 after recovering the target private receiver seam. The open classes are x87 arithmetic stack homes, format
 opcode 0x1E metadata/cursor registers, and remaining private register choices
 around ReadInt/stack operations. Fresh HEAD experiments show these are coupled:
 a target-shaped positive null guard plus do/while around the format parser makes
@@ -283,25 +283,20 @@ rewrites materially regress the helper and Run. All accepted EclVm exact units
 must continue to replay zero-difference while iterating on Run.
 
 At the `StartSubroutine` seam, target `Run` and `SpawnThread` move their
-destination context from ESI into EAX before calling the 550-byte helper. The
-selected candidate passes ESI directly to its 522-byte helper, accounting for
-the two-byte `SpawnThread` size deficit. Refactoring the member into a natural
-three-argument `__stdcall` free function preserved the candidate callee and
-both callers byte-for-byte; it was reverted. Reopen this seam with evidence
-about destination lifetime and register allocation, not another declaration
-change.
-A controlled split-TU probe also moved only `StartSubroutine` into a separate
-`/GL` support input. The helper stayed 522 bytes with an ESI destination receiver,
-and `SpawnThread` stayed 140 bytes with a direct call and no `MOV EAX,ESI`; merely
-changing the LTCG translation-unit boundary is therefore closed as an explanation.
+destination context from ESI into EAX before calling the 550-byte helper. ECLVM-036
+recovers this seam naturally: save `previousContext` and publish `destination`
+through `caller->host` before materializing the local `host` cache. VC7.1 then
+assigns the helper receiver to EAX, saves ESI and emits `MOV ESI,EAX`; both caller
+sites emit the target `MOV EAX,ESI`. SpawnThread closes completely at 142/142,
+while StartSubroutine improves to 533/550 and remains non-exact. Earlier free-function
+and split-TU experiments did not recover this seam and remain closed directions.
 
 Do not use the tempting 1,169/6,264 `Run` diagnostic produced by moving
 `argumentIndex` initialization before `StartSubroutine`'s initial stack-reservation
 branch. That lifetime change makes the callee a 500-byte `RET 4` private-argument
-variant and `SpawnThread` 139 bytes, contradicting the target's `RET 8` helper
-and 142-byte caller. The same wrong ABI persists in a wider Enemy-dispatcher
-`/GL /GS` support graph. The retained ABI-correct frontier remains 522-byte
-`StartSubroutine`, 140-byte `SpawnThread`, and 7,020-byte `Run` at 946/6,264.
+variant and `SpawnThread` 139 bytes, contradicting the target. The retained
+ABI-correct ECLVM-036 frontier is 533-byte `StartSubroutine`, exact 142-byte
+`SpawnThread`, and 7,020-byte `Run` at 975/6,264.
 
 A source refinement in `StartSubroutine` now indexes the integer operand
 words with an unsigned byte offset divided by four. The target uses `SHR 2`
