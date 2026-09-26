@@ -86,6 +86,17 @@ Current retained source facts:
 - Format opcode 0x1E and the four float arithmetic cases are allocator-coupled.
   Target-shaped format guards can make all four arithmetic spans target-sized
   while worsening the total owner; do not tune those cases independently.
+- Fresh stack-slot tracing shows the current runner mismatch is a whole-function
+  coloring chain: target 0x0D uses `ESP+0xFC` while the candidate uses `+0xF4`,
+  and the displaced local sequence propagates through arithmetic, comparisons
+  and trig cases. Arithmetic interleaving improves byte agreement but breaks
+  target physical handler order, so it is diagnostic only.
+- `StartSubroutine`'s remaining register frontier is now explicit: target uses
+  EDI=callerInstruction, EBP=metadataOffset, EBX=argumentIndex; retained source
+  uses EDI plus EBX/EBP in the opposite long-lived roles. `volatile
+  firstArgument` reaches 550 bytes but the wrong register roles and is a false
+  frontier. Signedness, identifier names, declaration order and a wider
+  Dispatcher support graph do not solve it.
 
 Closed ECL directions that should not be repeated without new evidence:
 
@@ -96,6 +107,12 @@ Closed ECL directions that should not be repeated without new evidence:
   not recover the private receiver seam;
 - guarded/do-while/goto rewrites of the StartSubroutine argument loop shrink the
   helper toward ~521 bytes and regress it;
+- `volatile firstArgument` and `argumentOffset += 4` are diagnostic-only:
+  volatile reaches a misleading 550-byte helper with the wrong EBP/EBX/EDI
+  roles, while the offset rewrite over-optimizes the helper to 517 bytes;
+- signed `firstArgument`, local identifier renames, declaration-only moves and
+  adding `EnemyEclDispatcher.cpp` to the ECL `/GL` support graph leave the
+  retained register blocker unchanged;
 - stack-object aliases and explicit/specialized `ReadInt` pop expansions cause
   major codegen regressions;
 - format-parser declaration permutations and direct arithmetic-local ordering
