@@ -72,7 +72,7 @@ Current retained source facts:
 - `Run` remains 7,020/7,020 with a 6,692/6,692 pre-table span and target physical
   opcode-group order.
 - `EclVmContext::StartSubroutine @ 0x0044DF70` is now 551/550 with
-  157/534 normalized comparable bytes in the selected graph. Delaying the local
+  151/534 normalized comparable bytes in the selected graph. Delaying the local
   host cache still restores the target private receiver seam and reloading the
   host through `caller` still reproduces the target ten-byte success tail.
   Reversing only the integer-source destination-type test (`!= 'f'`) prevents
@@ -104,7 +104,23 @@ Current retained source facts:
   firstArgument` reaches 550 bytes with the wrong register roles and remains a
   false frontier.
 
+- Fresh target review proves the final saved return-instruction is NULL when the
+  destination stack was empty on entry; only the non-empty path saves the
+  caller instruction. The retained final Push selects the already-zero
+  preservedValue storage versus callerInstruction, restoring this behavior
+  while preserving the EAX destination receiver, stack caller ABI, 7,020-byte
+  Run and exact 142-byte SpawnThread.
+- StartSubroutine is therefore retained at 551/550 and 151/534 comparable bytes.
+  The remaining open work is the one-byte extent/block-order mismatch plus the
+  EBP=metadataOffset / EBX=argumentIndex coloring; do not trade the corrected
+  zero-stack return semantics for the older 157/534 diagnostic score.
+
 Closed ECL directions that should not be repeated without new evidence:
+
+- An explicit scalar returnInstruction local, or repurposing preservedValue to
+  hold the scalar caller instruction after the branch, is a false WPO frontier:
+  Run rises to 1,163/6,264, but StartSubroutine collapses and exact SpawnThread
+  regresses to 145 bytes because caller is promoted into ESI.
 
 - moving `argumentIndex` before the initial stack-reservation branch creates a
   tempting 1,169/6,264 `Run` score but breaks the target helper ABI (`RET 4`,

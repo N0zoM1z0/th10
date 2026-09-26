@@ -605,7 +605,10 @@ int EclVmContext::StartSubroutine(
             0, sizeof(caller->currentTime), &caller->currentTime);
     }
     destination->stack.Push(
-        0, sizeof(*callerInstruction), callerInstruction);
+        0, sizeof(*callerInstruction),
+        previousTop == 0
+            ? static_cast<const void *>(&preservedValue)
+            : static_cast<const void *>(callerInstruction));
 
     EclVmContext *const previousContext = caller->host->activeContext;
     caller->host->activeContext = destination;
