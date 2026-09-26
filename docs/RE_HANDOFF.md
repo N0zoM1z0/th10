@@ -342,6 +342,18 @@ Opcode 41 also uses an ESP+0x10 float temporary where the target uses +0x14.
 Reconcile loop EDI lifetime and stack frame from target-supported source
 shape before claiming either opcode or the executor exact.
 
+The selected pre-table spans decode completely. Target has 85 `or edi, -1`
+instructions; candidate has two. The 83 missing three-byte resets account
+arithmetically for 249 of the 260-byte pre-table deficit. Target restores EDI
+at many opcode tails before jumping to the script-loop head, whereas candidate
+usually jumps there directly. Its 0xFC-byte stack frame matches target size,
+but saved game speed is held at ESP+0x60 versus target +0x98. Simply moving
+that local declaration has no codegen effect. Hoisting a `-1` fallback-label
+local raises normalized agreement to 488/8,368, and using the same local for
+the END check gives 457/8,368, but neither produces the target EDI resets;
+both experiments were reverted. Reconstruct the actual interrupt/loop
+variable lifetime before changing the source again.
+
 The attempted `--source src/AnmManager.cpp` cold replay stopped at the
 `anm-set-vm-script-index-and-execute` link because Wine crashed before an image
 was produced. A standalone retry of that unit and the executor-entry
