@@ -3275,8 +3275,10 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 AnmFloat3View(0.0f, 0.0f, 0.0f);
             vm->positionInterpolation.mode =
                 currentInstruction->byteArgs[4];
-            vm->positionInterpolation.initial = vm->useAlternatePosition
-                ? vm->alternatePosition : vm->position;
+            if (!vm->useAlternatePosition)
+                vm->positionInterpolation.initial = vm->position;
+            else
+                vm->positionInterpolation.initial = vm->alternatePosition;
             vm->positionInterpolation.final.x = GET_FLOAT_VAR(2);
             vm->positionInterpolation.final.y = GET_FLOAT_VAR(3);
             vm->positionInterpolation.final.z = GET_FLOAT_VAR(4);
