@@ -52,7 +52,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 | Owner | Target | Last recorded diagnostic context (replay required) | Status |
 | --- | ---: | --- | --- |
 | EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,232 bytes and 720/11,556 comparable bytes in the selected four-source graph **before** ECL support changed at `57099cf`; refresh before comparing HEAD | non-exact |
-| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | direct-entry `/GL /GS` with RandomMath `/GL`: 9,704-byte PDB contribution, 345/8,352 comparable bytes; 92 physical selector groups retain target order | non-exact; context-sensitive |
+| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | current EDI-tail checkpoint: 9,944-byte PDB contribution, 444/8,592 comparable bytes; 9,568/9,588 pre-table span; all 85 target `OR EDI,-1` restores reproduced; 92 physical selector groups retain target order | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | current `57099cf` diagnostic: 7,020/7,020; pre-table 6,692/6,692; 946/6,264 comparable bytes, normalization incomplete | non-exact |
 
 Use the per-owner sections below for the selected context and open problems. Do
@@ -180,16 +180,16 @@ Reconcile loop EDI lifetime and stack frame from target-supported source
 shape before claiming either opcode or the executor exact.
 
 The selected pre-table spans decode completely. Target has 85 `or edi, -1`
-instructions; candidate has two. The 83 missing three-byte resets account
-arithmetically for 249 of the 260-byte pre-table deficit. Target restores EDI
-at many opcode tails before jumping to the script-loop head, whereas candidate
-usually jumps there directly. Its 0xFC-byte stack frame matches target size,
-but saved game speed is held at ESP+0x60 versus target +0x98. Simply moving
-that local declaration has no codegen effect. Hoisting a `-1` fallback-label
-local raises normalized agreement to 488/8,368, and using the same local for
-the END check gives 457/8,368, but neither produces the target EDI resets;
-both experiments were reverted. Reconstruct the actual interrupt/loop
-variable lifetime before changing the source again.
+instructions; the old baseline had two. A 2026-09-26 TH10-local source-shape
+checkpoint now keeps one loop-carried interrupt sentinel, uses it for both
+END/fallback `-1` comparisons, and resets it at the shared instruction-advance
+tail. VC7.1 naturally tail-duplicates that assignment into exactly 85 EDI
+restores while preserving all 92 physical selector groups. The pre-table span
+moves from 9,328/9,588 to 9,568/9,588, leaving only a 20-byte pre-table deficit.
+The linked owner is still non-exact (9,944 versus 9,587; 444/8,592 normalized
+comparable bytes), so do not optimize toward total contribution size at the
+expense of pre-table/group structure. The 0xFC-byte stack frame still matches
+target size, while saved game speed remains ESP+0x60 versus target +0x98.
 
 A 2026-09-26 support-graph check added `AnmVmCreate.cpp` and then
 `AnmVmId.cpp` to the selected ANM/RandomMath graph. Both variants emitted a
@@ -200,12 +200,11 @@ compares the fallback argument against EDI; those are actual uses of the
 reset value. Treat the wider graph as a separate diagnostic from the selected
 9,704-byte graph.
 
-The attempted `--source src/AnmManager.cpp` cold replay stopped at the
-`anm-set-vm-script-index-and-execute` link because Wine crashed before an image
-was produced. A standalone retry of that unit and the executor-entry
-`anm-vm-timer-set-current` unit both replay exact. The full ANM source-scope
-replay remains unconfirmed for this checkpoint; do not interpret the Wine
-failure as a target-byte mismatch.
+A fresh source-scope cold replay at the EDI-tail checkpoint reports `exact`
+for all 92 canonical units sourced from `src/AnmManager.cpp`, across 17 linked
+artifacts and 17,331 matched bytes. This supersedes the earlier Wine-crash-only
+source replay note for regression coverage; the large executor itself remains
+non-exact and is not part of those canonical exact units.
 
 The same fresh graph naturally materializes `AnmVmTimerView::SetCurrent` as
 a target-exact 57-byte private-EAX helper. Preserve that natural member path
