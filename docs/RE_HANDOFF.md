@@ -284,6 +284,14 @@ both callers byte-for-byte; it was reverted. Reopen this seam with evidence
 about destination lifetime and register allocation, not another declaration
 change.
 
+Do not use the tempting 1,169/6,264 `Run` diagnostic produced by moving
+`argumentIndex` initialization before `StartSubroutine`'s initial stack-reservation
+branch. That lifetime change makes the callee a 500-byte `RET 4` private-argument
+variant and `SpawnThread` 139 bytes, contradicting the target's `RET 8` helper
+and 142-byte caller. The same wrong ABI persists in a wider Enemy-dispatcher
+`/GL /GS` support graph. The retained ABI-correct frontier remains 522-byte
+`StartSubroutine`, 140-byte `SpawnThread`, and 7,020-byte `Run` at 946/6,264.
+
 A source refinement in `StartSubroutine` now indexes the integer operand
 words with an unsigned byte offset divided by four. The target uses `SHR 2`
 and a scaled dword load; the earlier byte-mask expression used `AND -4` in
