@@ -244,8 +244,16 @@ Normalization is still incomplete, so equal contribution/pre-table/order is
 not exactness. StartSubroutine itself remains 522/550 and SpawnThread remains
 close but non-exact. The open classes are x87 arithmetic stack homes, format
 opcode 0x1E metadata/cursor registers, and remaining private register choices
-around ReadInt/stack operations. All accepted EclVm exact units must continue
-to replay zero-difference while iterating on Run.
+around ReadInt/stack operations. Fresh HEAD experiments show these are coupled:
+a target-shaped positive null guard plus do/while around the format parser makes
+all four float arithmetic case spans target-sized, but grows the owner to 7,024
+bytes; changing the conversion branch toward the target shrinks the format case
+while flipping the float stack homes back. Treat the format parser's lexical
+lifetime as a whole-function allocator input rather than tuning the arithmetic
+cases independently. ReadInt remains 144/144 with only four ordinary register-
+encoding bytes open; stack aliases are codegen-neutral while mutable/inline pop
+rewrites materially regress the helper and Run. All accepted EclVm exact units
+must continue to replay zero-difference while iterating on Run.
 
 At the `StartSubroutine` seam, target `Run` and `SpawnThread` move their
 destination context from ESI into EAX before calling the 550-byte helper. The
