@@ -52,7 +52,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 | Owner | Target | Last recorded diagnostic context (replay required) | Status |
 | --- | ---: | --- | --- |
 | EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,232 bytes and 720/11,556 comparable bytes in the selected four-source graph **before** ECL support changed at `57099cf`; refresh before comparing HEAD | non-exact |
-| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | current EDI-tail checkpoint: 9,944-byte PDB contribution, 444/8,592 comparable bytes; 9,568/9,588 pre-table span; all 85 target `OR EDI,-1` restores reproduced; 92 physical selector groups retain target order | non-exact; context-sensitive |
+| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | current ANM-064 checkpoint: 9,928-byte PDB contribution, 391/8,576 comparable bytes; 9,552/9,588 pre-table span; POSITION 171/171 and NOP/interrupt+alternate region 184/184; all 85 target `OR EDI,-1` restores reproduced; 92 physical selector groups retain target order | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | current `57099cf` diagnostic: 7,020/7,020; pre-table 6,692/6,692; 946/6,264 comparable bytes, normalization incomplete | non-exact |
 
 Use the per-owner sections below for the selected context and open problems. Do
@@ -158,26 +158,30 @@ silently incorporating dirty source.
 
 ## ANM executor: recovery point
 
-The maintained source covers opcodes -1..92 and remains non-exact. The current
-direct-entry /GL /GS graph with RandomMath.cpp /GL support emits a 9,704-byte
-PDB contribution against the 9,587-byte target executable owner, with
-345/8,352 normalized comparable bytes and complete normalization. The 92
-physical selector groups retain target order, but pre-table code is 9,328
-versus target 9,588 bytes. The older single-source graph remains a separate
-diagnostic: 9,752-byte contribution, 388/8,392 normalized comparable bytes,
-and 9,376-byte pre-table code. Do not compare their scores as one link graph.
+The maintained source covers opcodes -1..92 and remains non-exact. At current
+ANM-064 (`8ded98a`), the selected direct-entry /GL /GS graph with
+RandomMath.cpp /GL support emits a 9,928-byte PDB contribution against the
+9,587-byte target executable owner, with 391/8,576 normalized comparable bytes
+and complete normalization. The 92 physical selector groups retain target
+order, pre-table code is 9,552 versus target 9,588 bytes, and all 85 target
+`OR EDI,-1` restores are present. The older 9,704-byte / 345/8,352 /
+9,328-byte-pre-table result is the pre-sentinel baseline, not a current
+measurement. The older single-source 9,752-byte result is another historical
+graph. Do not compare scores across those checkpoints as if they were one link
+graph.
 
 Opcode 40 now calls a maintained `AnmRandomU32InRange` helper whose two
 `GetRandomU16` calls reproduce target `0x0043CB80` raw-equal (88/88 bytes) in
 two independent canonical cold builds with RandomMath.cpp /GL support. The
 source placement and free-function name are descriptive; original class/TU
-remain unknown. In this same graph, integer-random opcode 40 is 102 versus
-target 105 bytes and float-random opcode 41 is 127 versus target 130. Both
-otherwise follow the target local instruction sequence through the variable
-write, then omit the target's three-byte `or edi, -1` at the shared loop tail.
-Opcode 41 also uses an ESP+0x10 float temporary where the target uses +0x14.
-Reconcile loop EDI lifetime and stack frame from target-supported source
-shape before claiming either opcode or the executor exact.
+remain unknown. At the pre-sentinel baseline, integer-random opcode 40 was 102 versus target
+105 bytes and float-random opcode 41 was 127 versus target 130; the three-byte
+difference in each was the then-missing `OR EDI,-1` at the loop tail. ANM-063
+superseded that lifetime diagnosis by restoring all 85 target EDI resets.
+The old per-opcode sizes are therefore historical and must be refreshed before
+reuse. Opcode 41's float-temporary stack home was ESP+0x10 versus target +0x14
+in that baseline and remains an open stack-coloring class, not an exactness
+claim.
 
 The selected pre-table spans decode completely. Target has 85 `or edi, -1`
 instructions; the old baseline had two. A 2026-09-26 TH10-local source-shape
@@ -199,22 +203,24 @@ Do not optimize toward total contribution size at the expense of these physical
 group and instruction-order facts. The 0xFC-byte stack frame still matches
 target size, while saved game speed remains ESP+0x60 versus target +0x98.
 
-A 2026-09-26 support-graph check added `AnmVmCreate.cpp` and then
-`AnmVmId.cpp` to the selected ANM/RandomMath graph. Both variants emitted a
-10,040-byte executor and retained only two EDI resets, so expanding those
-callee sources does not explain the sentinel lifetime. Target interrupt search
+Before ANM-063, a 2026-09-26 support-graph check added `AnmVmCreate.cpp` and
+then `AnmVmId.cpp` to the pre-sentinel ANM/RandomMath graph. Both variants
+emitted a 10,040-byte executor and retained only two EDI resets, so merely
+expanding those callee sources did not explain the missing lifetime. This is a
+historical negative experiment, not a current two-reset state. Target interrupt search
 at `0x0043F646` compares the scanned opcode against DI and at `0x0043F651`
 compares the fallback argument against EDI; those are actual uses of the
-reset value. Treat the wider graph as a separate diagnostic from the selected
+reset value. Treat the wider graph as a separate diagnostic from the pre-sentinel
 9,704-byte graph.
 
-A fresh source-scope cold replay at the EDI-tail checkpoint reports `exact`
-for all 92 canonical units sourced from `src/AnmManager.cpp`, across 17 linked
-artifacts and 17,331 matched bytes. This supersedes the earlier Wine-crash-only
-source replay note for regression coverage; the large executor itself remains
-non-exact and is not part of those canonical exact units.
+At ANM-063, a source-scope cold replay reported `exact` for all 92 canonical
+units sourced from `src/AnmManager.cpp`, across 17 linked artifacts and 17,331
+matched bytes. ANM-064 subsequently revalidated the 10 nearest exact seams
+(variable helpers, script binder, primary/secondary update, script-index
+executor, timer and RNG) at 1,503 matched bytes. The large executor itself
+remains non-exact and is not one of those canonical exact units.
 
-The same fresh graph naturally materializes `AnmVmTimerView::SetCurrent` as
+The ANM-063 graph naturally materializes `AnmVmTimerView::SetCurrent` as
 a target-exact 57-byte private-EAX helper. Preserve that natural member path
 while changing executor lifetime, block placement, or helper ownership.
 
@@ -229,6 +235,13 @@ END/stop ownership, and child/helper private ABI effects. FindVm/VM-id value
 semantics should not be regressed to raw integer APIs merely to change layout.
 After a focused probe, use scripts/report-anm-execute-table.py and compare
 physical groups, not just contribution size.
+
+Current-session `.analysis/gpt-web` scratch was pruned after ANM-064. Retained
+files are the compact JSON/replay evidence named by the knowledge rows above;
+superseded executables, source snapshots, patches, failed zero-byte outputs and
+unreferenced probe variants were removed. Historical conclusions remain in Git
+and `docs/KNOWLEDGE_BASE.md`; do not assume deleted scratch can be replayed by
+filename without regenerating it.
 
 ## Generic ECL runner: recovery point
 
