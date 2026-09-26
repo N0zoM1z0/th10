@@ -618,7 +618,7 @@ int EclVmContext::StartSubroutine(
         *callerInstruction = NULL;
         return -1;
     }
-    host->activeContext = previousContext;
+    caller->host->activeContext = previousContext;
     return 0;
 }
 

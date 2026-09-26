@@ -60,7 +60,7 @@ normalized byte score is not exactness.
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Target owner is 14,416 bytes. **No current candidate score is retained** because ECL support changed after the last selected dispatcher graph. Rebuild before work resumes. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-066: 9,960-byte PDB contribution; 812/8,608 normalized comparable bytes; pre-table 9,584/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. |
-| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-036: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. |
+| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-037: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. |
 
 The compact local summaries are under `.analysis/gpt-web/current/`. They are
 convenience snapshots, not acceptance authority.
@@ -71,10 +71,12 @@ Current retained source facts:
 
 - `Run` remains 7,020/7,020 with a 6,692/6,692 pre-table span and target physical
   opcode-group order.
-- `EclVmContext::StartSubroutine @ 0x0044DF70` is 533/550 in the selected graph.
+- `EclVmContext::StartSubroutine @ 0x0044DF70` is 543/550 in the selected graph.
   Delaying the local host cache until after saving/publishing `activeContext`
   naturally restores the target private receiver seam: destination arrives in
-  EAX, the helper saves ESI and begins `MOV ESI,EAX`.
+  EAX, the helper saves ESI and begins `MOV ESI,EAX`. Reloading the host through
+  `caller` on the successful restore path reproduces the target ten-byte tail
+  sequence instead of reusing the cached host register.
 - Both target callers consequently emit `MOV EAX,ESI` before `StartSubroutine`.
   `EclVmHost::SpawnThread @ 0x004500D0` is now canonical exact at 142/142 and
   must be protected.
