@@ -50,8 +50,8 @@ equal selector bytes, or source/semantic coverage is not exactness.
 
 | Owner | Target | Last recorded diagnostic context (replay required) | Status |
 | --- | ---: | --- | --- |
-| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | fresh 2026-09-25 selected four-source replay: 14,228 bytes; pre-table 13,572/13,760; 755/11,556 normalized comparable bytes; selector 181/181; physical order matches | non-exact |
-| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | fresh 2026-09-25 direct-entry /GL /GS replay: 9,752-byte contribution with 388/8,392 normalized comparable bytes; historical creator-split contexts remain diagnostic only | non-exact; context-sensitive |
+| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | fresh 2026-09-26 selected four-source probe: 14,232 bytes and 720/11,556 normalized comparable bytes; the detailed 2026-09-25 layout below needs refreshing | non-exact |
+| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | fresh 2026-09-26 direct-entry /GL /GS probe: 9,752-byte contribution with 388/8,392 normalized comparable bytes; 92 physical selector groups remain in target order | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | 7,020/7,020; pre-table 6,692/6,692; 945/6,264 normalized agreement, normalization incomplete | non-exact |
 
 Use the per-owner sections below for the selected context and open problems. Do
@@ -118,7 +118,7 @@ production translation unit. Do not collect unrelated helpers in a generic
 | Completed | `AnmSetVmScriptIndexAndExecute @ 0x004496D0` | The old 42/36 and 40/36 diagnostics are superseded. All three target calls are inside maintained EnemyRuntimeUpdate and pass &enemy->managedVmIds[0] plus one script index. Treating the four-byte id storage as the established AnmVmIdView avoids the implicit-conversion temporary, and declaring the natural helper __stdcall lets VC7.1 /GL promote the first argument to target EAX while retaining the one stack script argument and RET 4. Canonical linked replay under the real EnemyRuntimeUpdate entry reproduces all 36 bytes and all three g_AnmRenderManagerView/FindVm/SetAndExecuteScriptIdx fields. Full source-scope regressions remain exact: Enemy.cpp 26 units / 1000 bytes and AnmManager.cpp 90 units / 17186 bytes. |
 | Defer | `PlayerCreate @ 0x00425020` | The selected natural `/GL` candidate is 66 bytes versus the 69-byte target (12/49 comparable bytes; five differing fields). Its direct caller `0x00417870` is a large startup/system-initialization sequence with no maintained source owner; map that path before changing this constructor. |
 | Defer | `EnemyEclResourceView::LoadFile @ 0x0040CD20` | The target calls `0x0044B360` with filename in EAX, `sizeOut/mode` on the stack, and `RET 8`; `Enemy.cpp` keeps a three-value logical declaration without claiming that private ABI. The real same-TU `EnemyManagerView::Initialize` `/GL` candidate is 97 bytes versus 95 (50/79 normalized comparable bytes; four linkages). The helper's source convention and production context remain unknown, so keep the current abstraction and exactness open. |
-| Defer | `AnmVmView::StartPrimaryAlphaInterpolation @ 0x00442300` | The actual `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` context emits 128 bytes versus 130 (14/126 comparable bytes), although the adjacent primary/secondary color interpolation helpers are exact. Do not infer alpha source shape from those siblings. |
+| Defer | `AnmVmView::StartPrimaryAlphaInterpolation @ 0x00442300` | The actual `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` context emits 128 bytes versus 130 (14/126 comparable bytes). Both target calls pass `mode` as a zero-extended stack byte; the target helper receives EAX=VM, ECX=duration and three stack arguments, ending in `RET 12`. The maintained candidate instead receives mode in EDX and ends in `RET 8`. A `__stdcall` member declaration compiles to identical candidate bytes. Do not infer alpha source shape from exact color-interpolation siblings. |
 | Defer | `AnmRenderManagerView::ReleaseAnm @ 0x004477D0` | A semantic implementation already exists in `src/AnmManager.cpp`; do not add a duplicate. The 55-byte target uses private EBX manager and ESI index state, while the fixed normal-COFF member candidate is 62 bytes with 3/47 comparable bytes and two REL32 fields. Its only direct caller, ECL worker `0x0040BD80`, remains source-unmapped. Keep exactness open until that caller/compiler context is mapped; do not force the private register ABI. |
 | Defer | `OnDrawHighPriority @ 0x00401520` | Target is exactly 10 bytes and preserves the callback receiver in EBX before calling AsciiManagerDrawGuiStrings @ 0x00401A50. Three natural VC7.1 contexts were tested: wrapper-as-entry /GL, real AsciiManagerView::Initialize /GL, and the existing Initialize /GL /GS text-render graph. All three emit a 10-byte contribution with 7/10 bytes matching and the same sole difference: candidate saves EDI where target saves EBX (push/mov/pop register bytes). This is now a stable register-coloring blocker, not a source-logic uncertainty. Do not retry equivalent wrapper spellings; reopen only with new optimizer-lifetime evidence that can justify the EBX coloring. |
 | Defer | `AsciiManagerCreate @ 0x00401440` | Target is 69 bytes; the real AsciiManagerFactory /GL graph emits a 70-byte contribution. Target moves ESI to EAX before calling Initialize @ 0x00401110, while the candidate calls Initialize without that move. On rollback, target pushes ESI directly to the stack-this destroy body @ 0x00401260; the candidate instead saves EDI and moves ESI to EDI around the C++ destructor call. Explicit destructor + operator delete was already byte-identical to the 70-byte baseline, and adding __stdcall to the destructor declaration was ignored by VC7.1 (same decorated symbol/code). The target destroy body itself consumes the owner from the stack and returns RET 4, so the remaining issue is lifecycle/private-ABI modeling, not allocation logic. Do not repeat destructor spelling changes without new target-supported lifetime evidence. |
@@ -170,15 +170,16 @@ close the whole-product Windows i386 build gate.
 
 Use the maintained source at HEAD. Historical Enemy measurements in
 KNOWLEDGE_BASE and Git explain how the source got here; they are not alternate
-baselines to restore. A fresh 2026-09-25 replay of the selected four-source
-graph reproduces the 14,228-byte contribution and measures 755/11,556
-normalized comparable bytes. Expanded all-real-laser caller graphs remain
-separate contexts and must not be mixed with this baseline. Linked-PE probe
-reports have no exactness authority.
+baselines to restore. A fresh 2026-09-26 probe of the selected four-source
+graph measures 14,232 bytes and 720/11,556 normalized comparable bytes. The
+2026-09-25 detailed layout below belongs to an earlier source checkpoint and
+has not yet been refreshed; do not combine its case offsets with the current
+whole-owner measurement. Expanded all-real-laser caller graphs remain separate
+contexts. Linked-PE probe reports have no exactness authority.
 
 | Measure | Selected candidate | Target |
 | --- | ---: | ---: |
-| Complete contribution | 14,228 | 14,416 |
+| Complete contribution (2026-09-25) | 14,228 | 14,416 |
 | Pre-table span | 13,572 | 13,760 |
 | Stack frame allocation | 0x2C4 | 0x2C4 |
 | Normalized comparable bytes | 755 / 11,556 | 11,556 / 11,556 |
@@ -321,12 +322,14 @@ rather than silently incorporating dirty source.
 ## ANM executor: recovery point
 
 The maintained source covers opcodes -1..92 and remains non-exact. A fresh
-2026-09-25 direct-entry /GL /GS replay emits a 9,752-byte contribution against
-the 9,587-byte target, with 388/8,392 normalized comparable bytes and complete
-normalization. This supersedes the old 9,960-byte value as the current
-single-source diagnostic. Historical creator-split graphs, including the
-10,040-byte context, remain useful only for caller/TU sensitivity and must not
-be compared as if they were the same link graph.
+2026-09-26 direct-entry /GL /GS probe emits a 9,752-byte contribution against
+the 9,587-byte target executable owner, with 388/8,392 normalized comparable
+bytes and complete normalization. The candidate's 92 physical selector groups
+retain the target order; its pre-table span is 9,376 versus target 9,588 bytes.
+This supersedes the old 9,960-byte value as the current single-source
+diagnostic. Historical creator-split graphs, including the 10,040-byte
+context, remain useful only for caller/TU sensitivity and must not be compared
+as if they were the same link graph.
 
 The same fresh graph naturally materializes `AnmVmTimerView::SetCurrent` as
 a target-exact 57-byte private-EAX helper. Preserve that natural member path
