@@ -7,6 +7,17 @@
 #include <stdlib.h>
 #include <string.h>
 
+unsigned int __fastcall AnmRandomU32InRange(RngView *rng, unsigned int range)
+{
+    if (range == 0)
+        return 0;
+
+    const unsigned short upper = rng->GetRandomU16();
+    const unsigned short lower = rng->GetRandomU16();
+
+    return ((static_cast<unsigned int>(upper) << 16) | lower) % range;
+}
+
 AsciiManagerView *g_AsciiManagerView;
 
 struct MainSupervisorView;
@@ -3423,8 +3434,8 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 
         case ANM_OP_I_SET_RANDOM:
             *GET_INT_VAR_PTR(0) = vm->useAlternateRng
-                ? g_AlternateRngView.GetRandomU32InRange(GET_INT_VAR(1))
-                : g_RngView.GetRandomU32InRange(GET_INT_VAR(1));
+                ? AnmRandomU32InRange(&g_AlternateRngView, GET_INT_VAR(1))
+                : AnmRandomU32InRange(&g_RngView, GET_INT_VAR(1));
             break;
         case ANM_OP_F_SET_RANDOM:
             *GET_FLOAT_VAR_PTR(0) = vm->useAlternateRng

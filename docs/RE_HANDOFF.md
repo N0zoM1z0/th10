@@ -51,7 +51,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 | Owner | Target | Last recorded diagnostic context (replay required) | Status |
 | --- | ---: | --- | --- |
 | EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | fresh 2026-09-26 selected four-source probe: 14,232 bytes and 720/11,556 normalized comparable bytes; the detailed 2026-09-25 layout below needs refreshing | non-exact |
-| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | fresh 2026-09-26 direct-entry /GL /GS probe: 9,752-byte contribution with 388/8,392 normalized comparable bytes; 92 physical selector groups remain in target order | non-exact; context-sensitive |
+| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | direct-entry /GL /GS with RandomMath.cpp /GL support: 9,704-byte PDB contribution, 345/8,352 normalized comparable bytes; 92 physical selector groups remain in target order, but pre-table code is 9,328 versus target 9,588 bytes | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | 7,020/7,020; pre-table 6,692/6,692; 945/6,264 normalized agreement, normalization incomplete | non-exact |
 
 Use the per-owner sections below for the selected context and open problems. Do
@@ -321,15 +321,33 @@ rather than silently incorporating dirty source.
 
 ## ANM executor: recovery point
 
-The maintained source covers opcodes -1..92 and remains non-exact. A fresh
-2026-09-26 direct-entry /GL /GS probe emits a 9,752-byte contribution against
-the 9,587-byte target executable owner, with 388/8,392 normalized comparable
-bytes and complete normalization. The candidate's 92 physical selector groups
-retain the target order; its pre-table span is 9,376 versus target 9,588 bytes.
-This supersedes the old 9,960-byte value as the current single-source
-diagnostic. Historical creator-split graphs, including the 10,040-byte
-context, remain useful only for caller/TU sensitivity and must not be compared
-as if they were the same link graph.
+The maintained source covers opcodes -1..92 and remains non-exact. The current
+direct-entry /GL /GS graph with RandomMath.cpp /GL support emits a 9,704-byte
+PDB contribution against the 9,587-byte target executable owner, with
+345/8,352 normalized comparable bytes and complete normalization. The 92
+physical selector groups retain target order, but pre-table code is 9,328
+versus target 9,588 bytes. The older single-source graph remains a separate
+diagnostic: 9,752-byte contribution, 388/8,392 normalized comparable bytes,
+and 9,376-byte pre-table code. Do not compare their scores as one link graph.
+
+Opcode 40 now calls a maintained `AnmRandomU32InRange` helper whose two
+`GetRandomU16` calls reproduce target `0x0043CB80` raw-equal (88/88 bytes) in
+two independent canonical cold builds with RandomMath.cpp /GL support. The
+source placement and free-function name are descriptive; original class/TU
+remain unknown. In this same graph, integer-random opcode 40 is 102 versus
+target 105 bytes and float-random opcode 41 is 127 versus target 130. Both
+otherwise follow the target local instruction sequence through the variable
+write, then omit the target's three-byte `or edi, -1` at the shared loop tail.
+Opcode 41 also uses an ESP+0x10 float temporary where the target uses +0x14.
+Reconcile loop EDI lifetime and stack frame from target-supported source
+shape before claiming either opcode or the executor exact.
+
+The attempted `--source src/AnmManager.cpp` cold replay stopped at the
+`anm-set-vm-script-index-and-execute` link because Wine crashed before an image
+was produced. A standalone retry of that unit and the executor-entry
+`anm-vm-timer-set-current` unit both replay exact. The full ANM source-scope
+replay remains unconfirmed for this checkpoint; do not interpret the Wine
+failure as a target-byte mismatch.
 
 The same fresh graph naturally materializes `AnmVmTimerView::SetCurrent` as
 a target-exact 57-byte private-EAX helper. Preserve that natural member path

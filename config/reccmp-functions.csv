@@ -400,3 +400,4 @@ BulletRuntimeView::UpdateHorizontalWrap,0x00407DA0,function
 BulletRuntimeView::UpdateVerticalWrap,0x00407E40,function
 BulletRuntimeView::UpdateState8,0x00407EF0,function
 PlayerCollisionPositionView::CheckPlayerCollision,0x004266B0,function
+AnmRandomU32InRange,0x0043CB80,function
