@@ -551,7 +551,7 @@ int EclVmContext::StartSubroutine(
     }
 
     int argumentIndex = firstArgument + 1;
-    int valueOffset = metadataOffset + 4;
+    unsigned int valueOffset = metadataOffset + 4;
     unsigned char *argument = destination->stack.data + argumentOffset;
     while (argumentIndex < (*callerInstruction)->operandCount)
     {
@@ -561,8 +561,8 @@ int EclVmContext::StartSubroutine(
         if (sourceType == 'f' || sourceType == 'g')
         {
             EclVmScalar value;
-            value.integer = *reinterpret_cast<const int *>(
-                (*callerInstruction)->operands + (valueOffset & ~3));
+            value.integer = reinterpret_cast<const int *>(
+                (*callerInstruction)->operands)[valueOffset / 4];
             value.real = caller->ReadFloatValue(argumentIndex, value.real);
             if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')
                 *reinterpret_cast<float *>(argument) = value.real;
@@ -573,8 +573,8 @@ int EclVmContext::StartSubroutine(
         else
         {
             EclVmScalar value;
-            value.integer = *reinterpret_cast<const int *>(
-                (*callerInstruction)->operands + (valueOffset & ~3));
+            value.integer = reinterpret_cast<const int *>(
+                (*callerInstruction)->operands)[valueOffset / 4];
             value.integer = caller->ReadIntValue(
                 argumentIndex, value.integer);
             if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')

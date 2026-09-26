@@ -240,6 +240,12 @@ Open problems (independent; select one bounded experiment):
    per tree; the second join also changes the owner register lifetime. The
    retained group is 140/151 bytes. Several locally closer 128..226-byte source
    variants worsen whole-owner agreement and are superseded.
+   A 2026-09-26 direct-call branch form made the group 214 bytes and moved
+   whole-owner agreement from 720/11,556 to 718/11,540; changing only this
+   case's `return` to `break` kept its 140-byte group but shrank the owner
+   from 14,232 to 14,184 bytes and agreement to 657/11,564. Both were
+   reverted. Target branch-local `PUSH` instructions alone are not enough to
+   justify either source form.
 4. **FireLaser cross-owner LTCG ABI.** Target EnemyFireLaser @ 0x0041C510
    receives ESI=manager, EDI=request, plus one stack type argument and RET 4
    across ten calls in six owners. The entire caller topology is now
@@ -354,6 +360,15 @@ the END check gives 457/8,368, but neither produces the target EDI resets;
 both experiments were reverted. Reconstruct the actual interrupt/loop
 variable lifetime before changing the source again.
 
+A 2026-09-26 support-graph check added `AnmVmCreate.cpp` and then
+`AnmVmId.cpp` to the selected ANM/RandomMath graph. Both variants emitted a
+10,040-byte executor and retained only two EDI resets, so expanding those
+callee sources does not explain the sentinel lifetime. Target interrupt search
+at `0x0043F646` compares the scanned opcode against DI and at `0x0043F651`
+compares the fallback argument against EDI; those are actual uses of the
+reset value. Treat the wider graph as a separate diagnostic from the selected
+9,704-byte graph.
+
 The attempted `--source src/AnmManager.cpp` cold replay stopped at the
 `anm-set-vm-script-index-and-execute` link because Wine crashed before an image
 was produced. A standalone retry of that unit and the executor-entry
@@ -409,6 +424,16 @@ three-argument `__stdcall` free function preserved the candidate callee and
 both callers byte-for-byte; it was reverted. Reopen this seam with evidence
 about destination lifetime and register allocation, not another declaration
 change.
+
+A source refinement in `StartSubroutine` now indexes the integer operand
+words with an unsigned byte offset divided by four. The target uses `SHR 2`
+and a scaled dword load; the earlier byte-mask expression used `AND -4` in
+the candidate. The selected diagnostic stays 522/550 bytes and `Run` stays
+7,020/7,020, while helper comparable agreement rises from 73/534 to 77/534.
+Declaring `StartSubroutine` no-inline made no codegen difference and was
+reverted. All 14 canonical exact units from `src/EclVm.cpp` cold-replay
+zero-difference (1,331 bytes across three artifacts). The helper is still
+non-exact.
 
 ## Exact regression gates
 
