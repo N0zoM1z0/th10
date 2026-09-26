@@ -65,8 +65,6 @@ extern void BulletUpdateBoundaryBounce(BulletRuntimeView *bullet);
 extern void BulletUpdateHorizontalWrap(BulletRuntimeView *bullet);
 extern void BulletUpdateVerticalWrap(BulletRuntimeView *bullet);
 extern void BulletUpdateState8(BulletRuntimeView *bullet);
-extern int BulletCheckPlayerCollision(
-    PlayerFloat3 *position, Player *player, const float *collisionSize);
 
 struct AnmOpcodeVectorView
 {

@@ -398,3 +398,4 @@ BulletRuntimeView::UpdateBoundaryBounce
 BulletRuntimeView::UpdateHorizontalWrap
 BulletRuntimeView::UpdateVerticalWrap
 BulletRuntimeView::UpdateState8
+PlayerCollisionPositionView::CheckPlayerCollision

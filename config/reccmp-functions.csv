@@ -399,3 +399,4 @@ BulletRuntimeView::UpdateBoundaryBounce,0x00407BE0,function
 BulletRuntimeView::UpdateHorizontalWrap,0x00407DA0,function
 BulletRuntimeView::UpdateVerticalWrap,0x00407E40,function
 BulletRuntimeView::UpdateState8,0x00407EF0,function
+PlayerCollisionPositionView::CheckPlayerCollision,0x004266B0,function

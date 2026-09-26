@@ -22,8 +22,15 @@ struct BulletPositionView
 
 extern void *g_EnemyBulletManager;
 extern unsigned char g_MainSoundOwner[];
-extern int BulletCheckPlayerCollision(
-    PlayerFloat3 *position, Player *player, const float *collisionSize);
+
+struct PlayerCollisionPositionView
+{
+    float x;
+    float y;
+    float z;
+
+    int __fastcall CheckPlayerCollision(Player *player, const float *collisionSize);
+};
 
 struct BulletVectorView
 {
@@ -113,8 +120,8 @@ __declspec(noinline) int __stdcall BulletUpdateRuntime(BulletRuntimeView *bullet
             * g_AnmGameSpeed;
 
         if ((bullet->flags & 2u) != 0) {
-            int collision = BulletCheckPlayerCollision(
-                &bullet->position, g_Player, &bullet->collisionWidth);
+            int collision = reinterpret_cast<PlayerCollisionPositionView *>(&bullet->position)->
+                CheckPlayerCollision(g_Player, &bullet->collisionWidth);
             if (collision == 1) {
                 bullet->state = 3;
                 bullet->vm.pendingInterrupt = 1;
