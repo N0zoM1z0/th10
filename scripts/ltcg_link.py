@@ -202,6 +202,7 @@ def cold_link(
     environment: dict[str, str],
     profile: list[str] | None = None,
     support_sources: list[Path] | None = None,
+    normal_support_sources: list[Path] | None = None,
 ) -> dict[str, object]:
     if profile is None:
         profile = LTCG_PROFILE
@@ -221,8 +222,25 @@ def cold_link(
         raise ValueError("LTCG support sources must be unique")
     if source.resolve() in resolved_support_sources:
         raise ValueError("LTCG primary source cannot also be a support source")
+    if normal_support_sources is None:
+        normal_support_sources = []
+    resolved_normal_support_sources = {
+        support.resolve() for support in normal_support_sources
+    }
+    unknown_normal_supports = (
+        resolved_normal_support_sources - set(resolved_support_sources)
+    )
+    if unknown_normal_supports:
+        raise ValueError(
+            "normal support source is not present in support_sources: "
+            + ", ".join(str(path) for path in sorted(unknown_normal_supports))
+        )
     support_objects = [
-        directory / f"support-{index:02d}-{support.stem}.ltcg.obj"
+        directory / (
+            f"support-{index:02d}-{support.stem}.normal.obj"
+            if support in resolved_normal_support_sources
+            else f"support-{index:02d}-{support.stem}.ltcg.obj"
+        )
         for index, support in enumerate(resolved_support_sources)
     ]
     image = directory / "source.exe"
@@ -247,10 +265,18 @@ def cold_link(
         ]
     )
     compile_source(source, ltcg_object, list(profile))
+    normal_support_profile = [
+        flag for flag in profile if flag.lower() != "/gl"
+    ]
     for support_source, support_object in zip(
         resolved_support_sources, support_objects
     ):
-        compile_source(support_source, support_object, list(profile))
+        support_profile = (
+            normal_support_profile
+            if support_source in resolved_normal_support_sources
+            else list(profile)
+        )
+        compile_source(support_source, support_object, list(support_profile))
     source_objects = [ltcg_object, *support_objects]
     symbols: list[str] = []
     bindings: dict[str, str] = {}
@@ -301,6 +327,7 @@ def cold_link(
         "object": ltcg_object,
         "objects": source_objects,
         "support_sources": resolved_support_sources,
+        "normal_support_sources": sorted(resolved_normal_support_sources),
         "image": image,
         "map": map_path,
         "pdb": pdb,

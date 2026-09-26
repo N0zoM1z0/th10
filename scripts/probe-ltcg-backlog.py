@@ -73,6 +73,16 @@ def parse_args() -> argparse.Namespace:
         ),
     )
     parser.add_argument(
+        "--normal-support",
+        action="append",
+        default=[],
+        metavar="SOURCE=SUPPORT_SOURCE",
+        help=(
+            "compile one already-selected support source without /GL while "
+            "keeping the primary and other supports under LTCG (repeatable)"
+        ),
+    )
+    parser.add_argument(
         "--profile-flag",
         action="append",
         default=[],
@@ -285,6 +295,7 @@ def probe_source(
     environment: dict[str, str],
     entry_name: str | None = None,
     support_source_names: list[str] | None = None,
+    normal_support_source_names: list[str] | None = None,
     profile_flags: list[str] | None = None,
 ) -> dict[str, object]:
     source = (ROOT / source_name).resolve()
@@ -330,6 +341,17 @@ def probe_source(
         support_source.relative_to(ROOT.resolve())
         if not support_source.is_file():
             raise ValueError(f"missing LTCG support source: {support_source}")
+    if normal_support_source_names is None:
+        normal_support_source_names = []
+    normal_support_sources = [
+        (ROOT / name).resolve() for name in normal_support_source_names
+    ]
+    for normal_support_source in normal_support_sources:
+        if normal_support_source not in support_sources:
+            raise ValueError(
+                f"normal support is not selected with --support: "
+                f"{normal_support_source}"
+            )
     linked = cold_link(
         source,
         directory,
@@ -338,6 +360,7 @@ def probe_source(
         environment,
         profile=ltcg_profile,
         support_sources=support_sources,
+        normal_support_sources=normal_support_sources,
     )
     linked_report = linked_functions(linked["image"], linked["map"], linked["pdb"])
     publics = map_publics(linked["map"])
@@ -411,6 +434,7 @@ def probe_source(
         "entry_symbol": entry_symbol,
         "entry_selection": entry_selection,
         "support_sources": support_source_names,
+        "normal_support_sources": normal_support_source_names,
         "normal_profile": normal_profile,
         "ltcg_profile": ltcg_profile,
         "link_harness": HARNESS_KIND,
@@ -468,6 +492,7 @@ def main() -> int:
             by_source[str(item["source"])].append(item)
         entry_overrides = parse_entry_overrides(args.entry)
         support_sources = parse_support_sources(args.support)
+        normal_support_sources = parse_support_sources(args.normal_support)
         unknown_entry_sources = sorted(set(entry_overrides) - set(by_source))
         if unknown_entry_sources:
             raise ValueError(
@@ -480,6 +505,22 @@ def main() -> int:
                 "--support source is absent from the selected authored backlog: "
                 + ", ".join(unknown_support_sources)
             )
+        unknown_normal_support_sources = sorted(
+            set(normal_support_sources) - set(by_source)
+        )
+        if unknown_normal_support_sources:
+            raise ValueError(
+                "--normal-support source is absent from the selected authored backlog: "
+                + ", ".join(unknown_normal_support_sources)
+            )
+        for source, names in normal_support_sources.items():
+            selected = set(support_sources.get(source, []))
+            missing = [name for name in names if name not in selected]
+            if missing:
+                raise ValueError(
+                    "--normal-support requires matching --support for "
+                    f"{source}: {', '.join(missing)}"
+                )
         target = verified_target()
         with TOOLS_LOCK.open("rb") as stream:
             decoder_identity = verify_capstone(tomllib.load(stream)["capstone"])
@@ -493,6 +534,7 @@ def main() -> int:
                 environment,
                 entry_overrides.get(source),
                 support_sources.get(source, []),
+                normal_support_sources.get(source, []),
                 args.profile_flag,
             )
             for source, items in sorted(by_source.items())
@@ -508,6 +550,7 @@ def main() -> int:
             "artifact_kind": "anchored-linked-pe-diagnostic",
             "entry_overrides": entry_overrides,
             "support_sources": support_sources,
+            "normal_support_sources": normal_support_sources,
             "profile_flags": args.profile_flag,
             "decoder": {"name": "capstone", **decoder_identity},
             "source_count": len(source_reports),
