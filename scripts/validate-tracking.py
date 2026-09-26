@@ -17,12 +17,28 @@ CONFIG = ROOT / "config"
 
 def rows(name: str) -> list[dict[str, str]]:
     with (CONFIG / name).open(newline="", encoding="utf-8") as stream:
-        return list(csv.DictReader(stream))
+        reader = csv.DictReader(stream)
+        if not reader.fieldnames:
+            raise ValueError(f"{name}: missing CSV header")
+        if len(reader.fieldnames) != len(set(reader.fieldnames)):
+            raise ValueError(f"{name}: duplicate CSV column name")
+        result = []
+        for row in reader:
+            if None in row or any(value is None for value in row.values()):
+                raise ValueError(f"{name}:{reader.line_num}: wrong CSV column count")
+            result.append(row)
+        return result
 
 
 def one_column(name: str) -> list[str]:
     with (CONFIG / name).open(newline="", encoding="utf-8") as stream:
-        return [row[0] for row in csv.reader(stream) if row and row[0]]
+        result = []
+        for line_number, row in enumerate(csv.reader(stream), 1):
+            if len(row) != 1:
+                raise ValueError(f"{name}:{line_number}: expected one CSV column")
+            if row[0]:
+                result.append(row[0])
+        return result
 
 
 def validate() -> dict[str, int]:

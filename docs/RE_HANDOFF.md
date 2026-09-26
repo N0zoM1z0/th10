@@ -14,11 +14,12 @@ accepted implementation history belongs in Git.
 - Treat the repository Git HEAD as the current source checkpoint; do not
   rely on a commit hash copied into this handoff. Check it with
   `git log -1 --oneline` before editing.
-- Earlier giant-owner measurements below belong to explicitly selected LTCG
-  support graphs. The associated `.analysis/` files are no longer present;
-  regenerate a focused probe before using a measurement as live feedback.
+- Giant-owner diagnostics below belong to explicitly selected LTCG support
+  graphs and source checkpoints. Regenerate a focused probe before using an
+  old measurement as live feedback.
 - Commit substantive checkpoints with the operator-specified prefix; use
-  `gpt-web: ...` only when the operator has not supplied one. Do not push.
+  `gpt-web: ...` only when the operator has not supplied one. Push when the
+  operator has authorized it for the active work.
 - Decompiler output, adjacent games, ignored build products and .analysis/
   artifacts are hypothesis/evidence only. They never establish exactness by
   themselves. `build/` and `.analysis/` are disposable scratch and may be
@@ -50,266 +51,92 @@ equal selector bytes, or source/semantic coverage is not exactness.
 
 | Owner | Target | Last recorded diagnostic context (replay required) | Status |
 | --- | ---: | --- | --- |
-| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | fresh 2026-09-26 selected four-source probe: 14,232 bytes and 720/11,556 normalized comparable bytes; the detailed 2026-09-25 layout below needs refreshing | non-exact |
-| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | direct-entry /GL /GS with RandomMath.cpp /GL support: 9,704-byte PDB contribution, 345/8,352 normalized comparable bytes; 92 physical selector groups remain in target order, but pre-table code is 9,328 versus target 9,588 bytes | non-exact; context-sensitive |
-| EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | 7,020/7,020; pre-table 6,692/6,692; 945/6,264 normalized agreement, normalization incomplete | non-exact |
+| EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,232 bytes and 720/11,556 comparable bytes in the selected four-source graph **before** ECL support changed at `57099cf`; refresh before comparing HEAD | non-exact |
+| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | direct-entry `/GL /GS` with RandomMath `/GL`: 9,704-byte PDB contribution, 345/8,352 comparable bytes; 92 physical selector groups retain target order | non-exact; context-sensitive |
+| EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | current `57099cf` diagnostic: 7,020/7,020; pre-table 6,692/6,692; 946/6,264 comparable bytes, normalization incomplete | non-exact |
 
 Use the per-owner sections below for the selected context and open problems. Do
 not mix measurements from different LTCG support graphs.
 
-Fresh Bullet re-audit maps the surrounding spawn graph as well as `BulletRuntimeView::AdvanceTransformProgram @ 0x00406D90`. The spawn owners remain non-exact (`SpawnSingleBullet @ 0x004067D0` 1,500/1,413 and `SpawnBulletPattern @ 0x004073E0` 195/194 in the expanded all-/GL diagnostic). Production-partition recovery has since moved the 1,454-byte transform owner to `src/BulletTransform.cpp` and shown that it must be hidden from runtime WPO via a normal non-/GL object; the older 1,548/1,454 transform number is therefore only a historical all-/GL body diagnostic, not the current caller partition. A fresh transform-body replay under the recovered partition remains open.
+The Bullet runtime/collision pair is canonical exact in a mixed profile; the
+spawn and transform owners remain separate non-exact work. Do not reuse old
+all-`/GL` Bullet measurements after the normal non-`/GL` transform partition.
 
-## Small-function roadmap
+## Backlog routing
 
-Keep each helper in a source module supported by its TH10 caller path. Local
-view names describe maintained code and do not establish the original class or
-production translation unit. Do not collect unrelated helpers in a generic
-`GameSmallFunctions.cpp`.
+The canonical exact register is `config/matches.csv` plus
+`config/match-units.toml`; source presence and boundary/origin claims live in
+`config/functions.csv` and their separate ledgers. Do not maintain a second
+"completed helper" list here. At the 2026-09-26 preflight the ledgers contain
+1,320 reviewed candidates, 402 source mappings, and 250 exact units; regenerate
+these counts with `report-reconstruction-status.py` on every new session.
 
-| Priority | Candidate | Evidence and next step |
-| --- | --- | --- |
+Select open authored, source-present work with
+`scripts/repo-python scripts/report-exact-backlog.py`. These families are
+currently useful routing points, not an exhaustive or size-ranked task list:
 
-| Completed | `EnemyFindLaser / EnemySetLaserPosition / EnemyConfigureInterrupt / EnemyWaitForEffect / EnemyApplyBulletClear` | Five maintained Enemy leaf helpers at `0x0040CF90 / 0x0040CF60 / 0x00412720 / 0x0041C7D0 / 0x0041C850` compile as independent relocation-free normal-COFF COMDATs of 22/23/48/44/44 bytes, exactly matching their target extents. The first three remain origin-indeterminate because TH10 does not prove source-written versus optimizer-outlined ownership; exact codegen is recorded without changing that provenance. The two effect-list helpers remain authored Enemy based on dispatcher-owned list semantics. |
-| Completed | EnemyEnableBombShield @ 0x0040CEA0 | The unique dispatcher callsite loads g_EnemyGameState into ESI for opcode ENEMY_ECL_ENABLE_BOMB_SHIELD. Re-audit corrected two source-shape details: pass the established four-byte managedVmId storage directly as AnmVmIdView instead of creating an implicit conversion temporary, then take the address of flags378C before *flags |= 0x10; a pinned VC7.1 micro-probe proves this pointer spelling is what emits the target direct memory OR. The real dispatcher /GL /GS contribution improves 48 -> 44 -> 36 bytes and canonical comparison is exact with the manager and MarkVmForDeletion fields resolved. Maintained non-static visibility only exposes a stable PDB symbol and does not establish original linkage. All 14 exact units sourced from EnemyEclDispatcher.cpp remain exact in focused replay. |
-| Completed | `AnmVmTimerView::SetCurrent @ 0x00405410` | Re-audit shows this 57-byte physical helper is shared by 15 direct callers across Bullet, Enemy, Player, ANM and other owners. A standalone wrapper has the wrong stack ABI; the existing inline timer member naturally materializes under the real `AnmRenderManagerView::ExecuteScript` /GL /GS graph with target-private EAX=timer, stack value and RET 4. Two cold canonical linked-PE replays reproduce all 57 bytes with only the `g_AnmGameSpeed` DIR32 linkage varying by image. |
-| Completed | `BulletRuntimeView::Deactivate @ 0x00405BE0` | TH10 target clears state +0x446 and resets the two timer objects at +0x3F8/+0x40C. In the newly recovered `UpdateBullets` graph, the natural member source emits 158/158 bytes with 150/150 normalized comparable bytes; canonical linked-PE comparison is exact with only two `g_AnmGameSpeed` DIR32 fields. |
-| Completed | `BulletRuntimeView::UpdateDeceleration @ 0x004074B0` | TH10 target uses transform state 0, the exact 5.0 - subframe*0.3125 curve, exact `AnmOpcodeVectorView::FromAngleMagnitude @ 0x00408750`, and an inlined positive-range timer tick. Rewriting `current < 17` as target-shaped `current <= 16` and spelling the timer branch as `0.99 < scale && scale < 1.01` closes the final five normalized byte differences. Canonical `UpdateBullets` linked replay reproduces all 164 bytes with seven declared linkage fields. |
-| Completed | `BulletManagerView::UpdateBullets @ 0x004065C0` | Re-audit first corrected the registered calc-chain callback boundary to the complete `0x00406770-0x00406797` owner, then used that exact callback as the real `/GL /GS` entry. Moving `BulletUpdateRuntime` into its own maintained TU restores the target-visible stack-call seam instead of allowing same-TU LTCG reshaping. The target-proven bucket-clear order, three-part update gate, repeated draw-bucket reload and positive-range timer tick are retained; an ordered volatile read of timer subframe gives VC7.1 the target x87 lifetime. Canonical linked-PE replay reproduces all 249 bytes with six declared linkage fields. |
-| Completed | `BulletUpdateRuntime @ 0x00406240` | EnemyRuntimeUpdate now calls the same maintained collision callee seen in TH10. Expressing the collision rectangle as two-dimensional min/max bounds gives VC7.1 the target private call ABI: ECX=position, EDX=Player, EAX=size. The selected graph keeps BulletRuntime, BulletManager, PlayerCollision, ANM, EnemyEclDispatcher and Enemy under /GL /GS, with BulletTransform as normal non-/GL support. Canonical linked-PE replay reproduces the full 885-byte PDB contribution with 39 declared fields and 729/729 comparable code bytes. |
-| Completed | `PlayerCollisionPositionView::CheckPlayerCollision @ 0x004266B0` | Factory-attested xrefs give two direct callers, BulletUpdateRuntime and EnemyRuntimeUpdate. The natural two-dimensional rectangle source reproduces the target 0x10 stack frame, hit/graze control flow, and private ECX/EDX/EAX ABI. Canonical linked-PE replay under the real BulletUpdateRuntime caller reproduces all 316 bytes and eight declared fields. The descriptive view name does not establish original class or TU. |
-| Active | `BulletRuntimeView::UpdateVerticalWrap @ 0x00407E40` | TH10 target calls the exact wrap-bounds helper, compares Y against a double 0.0 constant and the visible bottom bound, wraps by sprite height plus bottom, then uses exact timer Add and private-EDI sound queue helpers before clearing bit 0x200000 on timer expiry. The full real-caller graph emits 166/172 bytes with 38/140 normalized comparable bytes; connecting the seam improves the 885-byte runtime owner from 80/733 to 83/733. |
-| Completed | `BulletRuntimeView::UpdateRelativeDirectionChange @ 0x00407780` | Re-audit recovered the retail expiry-first CFG, int2>=int1 comparison, speed-first x87 spill lifetime, target-shaped interpolation, and explicit timer tick. Canonical linked-PE replay is 338/338 exact with eight declared linkage fields. |
-| Completed | `BulletRuntimeView::UpdateAimedDirectionChange @ 0x00407A30` | Re-audit recovered expiry-first direction-state CFG and speed-first unexpired interpolation. Matching the exact relative-direction interpolation spelling closes the remaining local x87 gap; canonical linked-PE replay is 431/431 exact with twelve declared linkage fields. |
-| Active | BulletRuntimeView::UpdateAbsoluteDirectionChange @ 0x004078E0 | The semantic/CFG shape is now target-sized 335/335. Integer-bit lifetime for value1 plus the target speed/interpolation/timer spelling reaches 299/303 normalized comparable bytes; a focused linked replay matches 331/335 total bytes after eight linkage fields. The sole remaining mismatch is four register-encoding bytes at +0xD4/+0xD7/+0xDC/+0xDD before FromAngleMagnitude: candidate EAX/ECX versus target ECX/EDX. Real BulletUpdateRuntime entry and pointer/reference/local spelling experiments reproduce the same coloring, so continue from this 4-byte blocker rather than reopening the state machine. |
-| Completed | `BulletRuntimeView::UpdateState8 @ 0x00407EF0` | TH10 uses exStates[8], player draw-position aiming, exact `BulletAngleDifference`, two AddNormalizeAngle calls, polar velocity rebuild, expiry clear and a timer tick. Reversing the top-level branch to expiry-first and spelling the slow tick as `*scale + subframe` closes the final codegen gap. Canonical linked-PE replay is 306/306 exact with twelve declared linkage fields. |
-| Active | `BulletRuntimeView::AdvanceTransformProgram @ 0x00406D90` | TH10-local re-audit supersedes the older ANM VM opcode-handler interpretation. The 1,454-byte target walks up to 18 0x18-byte transform records at runtime +0x464, updates active flags +0x43C/cursor +0x45C and nine 0x34-byte extension states from +0x614. The owner and its private angle resolver live in `src/BulletTransform.cpp`; compiling that TU outside the runtime /GL domain is required by the now-exact BulletUpdateRuntime caller graph. The transform body itself remains non-exact and needs a fresh dedicated replay under the recovered partition. |
-| Completed | `MainSupervisorView::SetNextGameMode @ 0x0040AC90` | Six target call sites all preload EAX=`0x00491C28`, whose +0x04 D3D interface proves it is the MainSupervisor base. The helper writes +0x390, the same slot maintained FrontEnd source calls next game mode, unless supervisor flags +0x3CC has bit 0x1000, in which case it forces mode 2. Replacing the GUI placeholder `GuiSetGameMode` with the natural MainSupervisor member and compiling under real `GuiMessageVmView::Run` /GL context reproduces all 37 bytes raw-equal. |
-| Completed | `Lzss::DeleteString @ 0x00436210` | `src/Lzss.cpp`; exact linked-PE replay covers the complete 80-byte PDB extent and all seven linkage fields. Original production owner remains unknown. |
-| Completed | `BulletPositionView::IsOutsidePlayfield @ 0x00406160` | The target computes width/height half-extents lazily: width is multiplied by 0.5, both X comparisons consume that x87 lifetime, then height is multiplied by 0.5 for the Y pair. Moving the maintained height calculation into the X-success branch changes the real `UpdateBullets` `/GL /GS` contribution from 115/109 with 9/85 normalized agreement to 109/109 with 85/85. Canonical comparison is exact with two 0.5f constant DIR32 fields and four playfield-bound DIR32 fields declared. |
-| Completed | `BulletWrapPositionView::IsOutsidePlayfield @ 0x004061D0` | Re-audit of the horizontal/vertical wrap callers shows this is a distinct 109-byte bounds owner using visible-top Y=0 rather than the -64 culling margin of `0x00406160`. The same lazy half-width/half-height source shape reproduces the complete target extent. Canonical linked-PE comparison is 109/109 with six declared linkage fields. |
-| Completed | `BulletAngleDifference @ 0x00408660` | TH10-local decompile/disassembly identifies the sole caller as the state-8 transform helper at 0x00407EF0. The body computes angle-reference and folds values outside +/-pi through 2*pi. A normal VC7.1 COFF build is 80/80 exact; four DIR32 fields at 0x0A/0x1D/0x32/0x45 resolve to the target pi/2*pi constants. |
-| Completed | `BulletRuntimeView::UpdateBoundaryBounce @ 0x00407BE0` | Target outer activation comparisons use <= at left/top while inner reflection stays strict. Linking exact QueueSoundSample support restores the private EDI sound-id ABI. Canonical linked-PE replay reproduces all 446 bytes with 20 declared linkage fields. |
-| Completed | `AnmOpcodeVectorView::FromAngleMagnitude @ 0x00408750` | Maintained historical view name in `src/AnmManager.cpp`; fresh TH10 re-audit identifies caller `0x00406D90` as the bullet transform interpreter, where this helper builds the vector-acceleration state. Exact body replay covers all 30 relocation-free bytes; the view name does not claim original ownership. |
-| Completed | `AnmScriptVectorView::FromAngleMagnitude @ 0x00441EF0` | Maintained in `src/AnmManager.cpp`; direct caller `0x0043EE30` is the ANM script executor. Exact body replay covers all 30 relocation-free bytes. |
-| Completed | `EnemyRuntimeVectorView::FromAngleMagnitude @ 0x0044C5D0` | Maintained in `src/Enemy.cpp`; called by `EnemyRuntimeUpdate @ 0x0040DC80`. Exact body replay covers all 30 relocation-free bytes. |
-| Completed | `PlayerShotBoundsView::IsOutsidePlayfield @ 0x00428D70` | Maintained in `src/Player.cpp`; called from `PlayerUpdateShots @ 0x00428280`. Exact linked-PE replay covers all 91 bytes and four bounds references; target values are X `(-192, 192)` and Y `(0, 448)`. |
-| Completed | `PlayerAngleToPoint @ 0x00426610` | The sole target call is in `PlayerUpdateCallbackBody` at 0x00425B22. Immediately before it, target code forms the temporary target at [ESP+0x14] into EAX and keeps the Player owner in ECX; maintained source has the same `PlayerAngleToPoint(player, &target)` call in that state-transition block. The helper subtracts Player drawPosition +0x3C0/+0x3C4, returns π/2 for a zero delta, otherwise uses x87 `FPATAN`. Natural `atan2(dy, dx)` source under the real Player update `/GL` graph reproduces all 67 bytes and the two zero-float plus π/2 fields exactly. |
-| Completed | `EnemyAngleFromPlayer @ 0x00426660` | TH10 Player construction writes the live Player object to `0x00477834`; all five target calls use that Player in ECX and a position pointer in EAX. Three calls lie inside maintained `EnemyFullObjectView::ReadFloatOperand`, where source already calls `EnemyAngleFromPlayer(g_Player, &runtime.*Motion.position)`. The helper computes Player-minus-point dx/dy, returns π/2 for a zero vector and otherwise uses x87 `FPATAN`. Natural `atan2(dy, dx)` source under the real ReadFloatOperand `/GL` graph reproduces all 67 bytes and all three float fields exactly. |
-| In progress | `EnemyCancelBulletRecord @ 0x00408030` | Fresh TH10 re-audit identifies the 199-byte helper shared by the bullet transform interpreter and CancelBulletPattern. The target uses private ESI=bullet. Re-running the typed `AnmVmTimerView::SetCurrent(0)` source shape corrects a stale handoff value: the current candidate is 200/199 bytes with 131/183 normalized comparable bytes under the real CancelBulletPattern /GL /GS caller graph, not 199/199. Full byte exactness remains open; no new exactness claim is made by this checkpoint. |
-| Active | `BulletManagerView::SpawnSingleBullet @ 0x004067D0` | TH10 target proves the 2,000-live-plus-sentinel 0x7F0-byte pool, manager cursor +0x10, bullets +0x60, loaded ANM +0x3E0B50, aim modes 0..8, two timer resets, effect/collision tables, transform copy, `AdvanceTransformProgram`, ANM execution and cursor advance. TH08/TH095 are used only as source-shape corroboration; TH10 constants/fields come from the target. Fresh expanded /GL /GS replay is 1,500/1,413 bytes with 74/1,293 normalized comparable bytes. |
-| Active | `BulletManagerView::SpawnBulletPattern @ 0x004073E0` | TH10 target computes the player-facing angle from descriptor position, performs the count2/count1 nested fanout through `0x004067D0`, and queues the positioned spawn sound when transformFlags has bit 0x200. Fresh expanded /GL /GS replay is 195/194 bytes with 6/170 normalized comparable bytes. |
-| Active | `AnmVmView::InitializeForLoadedScript @ 0x00404F30` | Descriptive maintained name only; original class/TU identity is open. TH10 proves this path is physically distinct from `AnmLoadedView::InitializeVm @ 0x00449870`: it first calls `AnmVmView::Initialize @ 0x00401DE0`, clears three vectors, writes 16x16 glyph dimensions/script index, then calls `AnmLoadedView::InitializeAndExecuteScriptIndex @ 0x0043E710`. Direct-entry /GL /GS replay is 202/202 bytes with 47/194 normalized comparable bytes. |
-| Completed | `EnemyLaserVectorView::IsOutsidePlayfield @ 0x0041F7A0` | Maintained in `src/EnemyLaser.cpp`; two callers are the mapped type-0/type-1 collision owners at `0x0041D880` and `0x0041EB00`. The third caller `0x0041D3D0` remains unassigned. Exact linked-PE replay covers 91 bytes and four bounds references. |
-| Completed | `AnmRenderManagerView::FindVm @ 0x004491C0` | Maintained in `src/AnmManager.cpp`; Ghidra reports 43 direct callers, including `MarkVmForDeletion @ 0x004492A0`. Two canonical LTCG builds replay the complete 73-byte PDB contribution exactly, with no link fields. Original production TU remains unknown. |
-| Completed | `AnmVmIdView::{GetVm, SetFlag2, ClearFlag2, Release} @ 0x00449450, 0x00449590, 0x004495E0, 0x00449630` | Grouped in `src/AnmVmId.cpp` by their TH10 class declaration and caller paths. TH095 has an analogous `AnmVmId.cpp`; TH08 keeps its older grouping in `AnmManager.cpp`. Two independent canonical linked-PE builds reproduce their complete 21/67/67/21-byte PDB contributions and both linkage fields for each method. This maintained placement does not claim either game as the original production TU. |
-| Completed | `AnmVmIdView::SetInterrupt @ 0x00449470` | Added to `src/AnmVmId.cpp`; FrontEnd and GUI interrupt helpers call it. Two independent canonical linked-PE builds reproduce its complete 65-byte PDB contribution, including the internal alignment gap and both linkage fields. The maintained class/source placement does not establish the original production TU. |
-| Completed | `AnmVmIdView::SetSprite @ 0x00449670` / `SetSpriteWithAnm @ 0x004496A0` | These 36/34-byte wrappers continue the target AnmVmId family after Release. The first resolves the id and uses `vm->anmFile`; the second resolves the id and uses an explicit `AnmLoadedView*`. `GuiMessageVmView::Run` is a real caller for both. Natural maintained wrappers plus the target-shaped GUI portrait routing reproduce both complete linked contributions and all manager/FindVm/SetSprite fields zero-difference. |
-| Completed | `EnemyRuntimeView::ResolveIntArgument @ 0x00412A10` | Maintained in `src/EnemyEclDispatcher.cpp` with the ECL dispatcher caller. Two cold canonical linked-PE replays under the real `DispatchEclInstruction` entry and ECL/ANM support inputs reproduce the complete 75-byte target extent, with full decoding, raw equality, and no linked fields. This codegen exactness is scoped to the declared compiler context; original source/outlining origin and production TU remain unknown. |
-| Completed | `EnemySetChapter @ 0x00412ED0` | The maintained helper already sat beside the `ENEMY_ECL_SET_CHAPTER` opcode and target caller passes `ReadIntArgument(0)`. The body stores chapter at +0x44 and clears chapterTimer +0x4C only when the chapter changes. Pinned VC7.1 normal COFF emits an independent relocation-free 16-byte COMDAT exactly matching the target; canonical `enemy-set-chapter` cold replay now closes the ledger entry. |
-| Completed | `PlayerUpdateCallback @ 0x00426500` | The seven-byte registered update adapter is colocated in `src/Player.cpp` with `PlayerUpdateCallbackBody` and the paired draw-chain callback. Two cold canonical normal-COFF replays reproduce the full extent and its sole REL32 to `0x00425730`. Codegen exactness does not determine whether the target wrapper was authored or emitted by LTCG; original origin and production TU remain unknown. |
-| Completed | `PlayerOptionTrailCallback @ 0x00427950` / `PlayerOptionSpecialCallback @ 0x00427AD0` | Re-audit recovers the retail wrapper/body split instead of treating each callback as one normal-COFF body. Both wrappers are 12 bytes: Trail preserves ESI and calls `0x00427960`; Special preserves EDI and calls `0x00427AE0`; each then forces EAX=0 and returns. Special target body proves the transition operation is `AnmVmIdView::SetInterrupt(6/3)`, not the older delete-state placeholder. Natural noinline void bodies plus fastcall wrappers, linked under real `RebuildPlayerOptions` with ANM support, reproduce both wrappers raw-equal in two independent cold builds. Wrapper provenance and adjacent-body exactness remain open. |
-| Completed | AnmRenderManagerView::GetVmPosition @ 0x004493C0 | The canonical normal-COFF unit anm-manager-get-vm-position reproduces all 27 bytes and its FindVm REL32 in two cold builds. Ghidra does not mark a function at this address; the accepted boundary and match rows already close this helper. |
-| Defer | `CMemoryPbgFile::Seek @ 0x004364F0` | Keep the natural virtual method in `src/ResFile.cpp`. Target uses `ECX this`, two stack arguments, and `RET 8`; its 107-byte body dispatches `FILE_BEGIN/CURRENT/END` and shares the current/end pointer update. The if-chain candidate was 125 bytes with 6/107 comparable bytes. A switch over the target seek origin emits 117 bytes with 12/107 comparable bytes in the selected linked probe. Reordering its `case` labels to `FILE_END`, `FILE_CURRENT`, `FILE_BEGIN` leaves the fixed normal-COFF output identical at 117 bytes and 12/107 comparable. Single-result and shared-base refactors emitted 118 and 122 bytes, respectively, and were reverted. Current backlog ranking remains 117 bytes versus target 107, with 12/107 comparable bytes; repeated syntax/order changes have not improved it. Reopen only with new source/control-flow/compiler evidence. |
-| Completed | `CMemoryPbgFile::Open @ 0x00436400` | Re-audit supersedes the old 51/46 `/GL` diagnostic: it came from declaring the two archive-or-disk helpers as cdecl free functions even though the target Open body itself passes filename in ECX to both entries. A descriptive `ArchiveOrDiskPathView` models that observed physical ABI. With `return m_Current = m_Data;`, pinned VC7.1 normal COFF emits the retail `MOV [current],EAX; TEST EAX,EAX; SETNE AL` tail. The resulting 46-byte COMDAT is structural-exact with both REL32 fields at 0x00435800/0x004358E0. |
-| Defer | `ReplayManager::Destroy @ 0x004297B0` | Target is an 18-byte null-safe destroy seam with the object already live in ESI; it pushes ESI to the stack-bound non-deleting destructor at 0x004294A0, pushes ESI again to free at 0x004524A1, and returns with plain RET. Both direct callers (0x004236F0 and 0x00433570) remain source-unmapped, so their ESI lifetime cannot yet be reproduced naturally. Normal COFF and selected /GL builds of the maintained wrapper are 27 bytes (2/14 comparable). An explicit manager->~ReplayManager(); operator delete(manager); spelling was also tested and still emitted the same 27-byte shape; do not repeat that source rewrite. Reopen only after a real caller owner/context is recovered. |
-| Completed | `GuiSetLivesDisplayCount @ 0x00413790` | Its complete 77-byte PDB-owned contribution from maintained `src/Gui.cpp` is raw-equal and fully decoded, with zero linked fields, in two independent cold VC7.1 SP1 replays. The canonical graph uses `PlayerResetRuntimeState @ 0x00424D90` as primary entry and `Gui.cpp` as support; target references are three calls and one tail jump. Other callers `0x004188A0` and `0x004269D0` remain unmapped. Exactness is scoped to this declared compiler context; original physical TU remains unknown. |
-| Defer | `EclVmHost::SpawnThread @ 0x004500D0` | Its unique target caller is `EclVmContext::Run @ 0x0044E1A0`, which calls it twice. Target `SpawnThread` is 142 bytes and passes the new context in EAX to `StartSubroutine`; the caller-supported natural `/GL` candidate is 140 bytes with 122/130 comparable bytes, and retains the context in ESI. The all-source ranking's 142-byte/129-of-130 candidate used a different default link entry, so it is not the target caller context. Keep semantic source in `src/EclVm.cpp`; don't force the private register ABI. Reopen with new source-expression or optimizer-lifetime evidence. |
-| Defer | `EclVmContext::ReadInt @ 0x0044FDB0` | Factory-attested xrefs show 116 direct calls: 9 from `EclVmContext::Run`, 106 from `EnemyRuntimeView::DispatchEclInstruction`, and 1 from `EnemyRuntimeView::ReadIntArgument`. The target entry is EDX=context plus one stack index and `RET 4`; representative paths include Run moving ESI to EDX, dispatcher paths loading the context from runtime `+4` and pushing indices 0 or 0xB, and the argument adapter following runtime to ECL state `+0x14D8` to context `+4`. The selected `/GL /GS` graph emits all 144 bytes; 136/140 comparable bytes match with the `__ftol2` displacement treated as a linkage field, while three register-choice fields differ (candidate ECX, target ESI). A mutable local-output test emitted 115/144 and regressed `Run` to 7024/7020 bytes; it was reverted. The separate `poppedValue` rewrite that changed the entry/return ABI is also closed. Keep the current 144-byte candidate diagnostic-only; reopen only with new target-supported source-expression or register-lifetime evidence. |
-| Completed | `AnmSetVmScriptIndexAndExecute @ 0x004496D0` | The old 42/36 and 40/36 diagnostics are superseded. All three target calls are inside maintained EnemyRuntimeUpdate and pass &enemy->managedVmIds[0] plus one script index. Treating the four-byte id storage as the established AnmVmIdView avoids the implicit-conversion temporary, and declaring the natural helper __stdcall lets VC7.1 /GL promote the first argument to target EAX while retaining the one stack script argument and RET 4. Canonical linked replay under the real EnemyRuntimeUpdate entry reproduces all 36 bytes and all three g_AnmRenderManagerView/FindVm/SetAndExecuteScriptIdx fields. Full source-scope regressions remain exact: Enemy.cpp 26 units / 1000 bytes and AnmManager.cpp 90 units / 17186 bytes. |
-| Defer | `PlayerCreate @ 0x00425020` | The selected natural `/GL` candidate is 66 bytes versus the 69-byte target (12/49 comparable bytes; five differing fields). Its direct caller `0x00417870` is a large startup/system-initialization sequence with no maintained source owner; map that path before changing this constructor. |
-| Defer | `EnemyEclResourceView::LoadFile @ 0x0040CD20` | The target calls `0x0044B360` with filename in EAX, `sizeOut/mode` on the stack, and `RET 8`; `Enemy.cpp` keeps a three-value logical declaration without claiming that private ABI. The real same-TU `EnemyManagerView::Initialize` `/GL` candidate is 97 bytes versus 95 (50/79 normalized comparable bytes; four linkages). The helper's source convention and production context remain unknown, so keep the current abstraction and exactness open. |
-| Defer | `AnmVmView::StartPrimaryAlphaInterpolation @ 0x00442300` | The actual `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` context emits 128 bytes versus 130 (14/126 comparable bytes). Both target calls pass `mode` as a zero-extended stack byte; the target helper receives EAX=VM, ECX=duration and three stack arguments, ending in `RET 12`. The maintained candidate instead receives mode in EDX and ends in `RET 8`. `__stdcall` and `__fastcall` member declarations both compile to identical candidate bytes. Do not infer alpha source shape from exact color-interpolation siblings. |
-| Defer | `AnmRenderManagerView::ReleaseAnm @ 0x004477D0` | A semantic implementation already exists in `src/AnmManager.cpp`; do not add a duplicate. The 55-byte target uses private EBX manager and ESI index state, while the fixed normal-COFF member candidate is 62 bytes with 3/47 comparable bytes and two REL32 fields. Its only direct caller, ECL worker `0x0040BD80`, remains source-unmapped. Keep exactness open until that caller/compiler context is mapped; do not force the private register ABI. |
-| Defer | `OnDrawHighPriority @ 0x00401520` | Target is exactly 10 bytes and preserves the callback receiver in EBX before calling AsciiManagerDrawGuiStrings @ 0x00401A50. Three natural VC7.1 contexts were tested: wrapper-as-entry /GL, real AsciiManagerView::Initialize /GL, and the existing Initialize /GL /GS text-render graph. All three emit a 10-byte contribution with 7/10 bytes matching and the same sole difference: candidate saves EDI where target saves EBX (push/mov/pop register bytes). This is now a stable register-coloring blocker, not a source-logic uncertainty. Do not retry equivalent wrapper spellings; reopen only with new optimizer-lifetime evidence that can justify the EBX coloring. |
-| Defer | `AsciiManagerCreate @ 0x00401440` | Target is 69 bytes; the real AsciiManagerFactory /GL graph emits a 70-byte contribution. Target moves ESI to EAX before calling Initialize @ 0x00401110, while the candidate calls Initialize without that move. On rollback, target pushes ESI directly to the stack-this destroy body @ 0x00401260; the candidate instead saves EDI and moves ESI to EDI around the C++ destructor call. Explicit destructor + operator delete was already byte-identical to the 70-byte baseline, and adding __stdcall to the destructor declaration was ignored by VC7.1 (same decorated symbol/code). The target destroy body itself consumes the owner from the stack and returns RET 4, so the remaining issue is lifecycle/private-ABI modeling, not allocation logic. Do not repeat destructor spelling changes without new target-supported lifetime evidence. |
-| Defer | `AnmLoadedView::CreateVmAtScreenVariant0 @ 0x00448D50` | Natural normal COFF is 97 bytes versus the 95-byte target but only 6/75 comparable bytes match, with five linkage fields, so the close size is misleading. Factory caller review finds four direct callers at 0x0040B560/0x0040C540/0x00417C80/0x0041FDD0; all four owners are still source-unmapped. Do not repeat normal-COFF spelling experiments or clone the same experiment across screen variants 1/2/3 until a real caller /GL context is source-recovered. |
-| Defer | `SetVmPendingInterrupt @ 0x00449210` | Its sole direct caller is `PlayerUpdateMovementAndOptions @ 0x004250B0`; target checks the ID, then calls this helper with the ID and interrupt 1. Current Player source performs the corresponding check and state update through `FindPlayerVm` and `PlayerSetManagedVmDeleteState(&player->modeVmId, 1)`. A direct call through `g_AnmRenderManagerView` was tried and reverted; with the real Player support source, `/GL` emitted 67 bytes versus 54 with 3/50 comparable bytes. Preserve the helper in `src/AnmManager.cpp`; reopen for target-supported private-ABI evidence. |
-| Defer | `AnmRenderManagerView::SetVmPendingInterruptAndExecute @ 0x00449250` | Target has 15 call sites across nine callers, six mapped to FrontEnd owners. `/GL` builds with `FrontEnd.cpp` support under direct `UpdateDifficulty` and `UpdateOptions` entries both emit a 72-byte PDB contribution versus 76 target bytes. Target places a four-byte `LEA ESP,[ESP]` at `0x0044927C` before the child loop; a natural guarded do/while rewrite still emits 72 bytes. Keep the source semantic and exactness open; don't add manual padding. |
-| Defer | `SetVmPosition @ 0x004492F0` | Five callers include `GuiMessageVmView::Run`, `PlayerUpdateMovementAndOptions`, and `EnemyRuntimeUpdate`. `Gui.cpp` reaches the method through `SetMessageSide`, but a `/GL` graph with GUI support emits 102/90 bytes and only 5/86 comparable bytes. Keep it in `src/AnmManager.cpp`; do not reshape the natural manager call without better lowering evidence. |
-| Defer | `MarkLoadedVmsForDeletion @ 0x004493E0` | Eight callers include maintained FrontEnd and ANM-release paths. The natural list traversal in `src/AnmManager.cpp`, with `FrontEnd.cpp` support, emits 82/92 bytes and 18/92 comparable bytes. Revisit after compiler-context evidence explains the register and loop-shape differences. |
-| Completed | EnemyBulletPositionView::IsOutsidePlayfield @ 0x004086B0 | Re-audit resolves the old owner ambiguity: both callers are TH10 bullet-cancel paths over the same 2000-row, 0x7F0-stride pool, and the maintained helper already lives with those paths in src/EnemyEclDispatcher.cpp. The target 91-byte body is byte-identical to exact laser sibling 0x0041F7A0. Reusing the sibling-proven negated-boundary source shape changes the prior 69/75 comparable normal-COFF result to 75/75 with all four DIR32 playfield fields correct. A canonical /GL /GS linked-PE replay under real EnemyCancelManagerView::CancelBulletPattern then reproduces all 91 bytes and four fields exactly; a seven-unit focused EnemyEclDispatcher.cpp replay passes 627/627 bytes. |
-| Completed | FrontEndCursorView::Push @ 0x0044BE20 and Pop @ 0x0044BE70 | Factory-attested caller sets contain 10 and 12 direct callers respectively, dominated by maintained FrontEnd update owners. The target uses a private EAX cursor receiver and plain RET. Natural maintained methods in src/FrontEnd.cpp, linked under the real FrontEndControllerView::UpdateDifficulty /GL entry, reproduce the complete relocation-free 66-byte and 47-byte PDB contributions. Each unit passed two independent cold replays. |
-| Completed | FrontEndCursorView::Move @ 0x0044BEA0 | Target disassembly exposes the missing boundary case directly: count is loaded into ESI at entry and count <= 0 returns current before EBX/EBP/EDI are saved. Adding exactly that natural early return changes the selected UpdateDifficulty /GL contribution from 78/128 raw agreement to 128/128 raw-equal, with the target private EAX cursor receiver, one stack delta and RET 4. Canonical cold replay is required before final promotion. |
-| Completed | `FrontEndCursorSetCurrent @ 0x0040AD20` | Re-audit corrects the old generic frame-timer label. The 33-byte target consumes requested value in ECX and cursor in EDX, clamps against cursor count and returns the stored current value. A descriptive free fastcall helper using the target control-flow lifetime is 33/33 relocation-free normal-COFF exact; the existing member `SetCurrent` delegates to it. The linked Push/Pop/Move family remains exact, so this closes the physical helper without sacrificing the maintained class API or claiming an original symbol/signature. |
-| Completed | `FrontEndInputView::IsRepeated @ 0x0040ACE0` | The old collision-mask label was wrong. Twenty-two target calls in six FrontEnd owners pass the shared input object 0x00474E30 in ECX and masks in EAX; the body tests pressed +0x6, then repeated +0x4. The existing `FrontEndInputView` layout already matches those offsets. A natural member spelling that returns zero only when both tests miss produces the complete 33-byte relocation-free body raw-equal under the real UpdateDifficulty /GL graph; `InputRepeated(mask)` now delegates to it. |
-| Completed | `StartSoundLoadThread @ 0x0043D0F0` | TH10 retains `.\src\core\sound.cpp`; the 34-byte target wrapper uses one local thread-id DWORD, calls imported `CreateThread` with worker `0x0043D080` and `g_MainSoundOwner @ 0x00492590`, stores the HANDLE at `0x004977AC`, and returns it. Natural `src/Sound.cpp` source emits the complete normal-COFF body with all four DIR32 fields exact in two cold builds. Keep the worker ABI unresolved: its target body uses plain RET, so the launcher only casts its address to `LPTHREAD_START_ROUTINE`. |
-| Completed | `CSound::Pause @ 0x0044D5B0` | TH10 retains `.\src\core\zwave.cpp`; natural Pause remains a 29-byte relocation-free normal-COFF exact match. The old note that Reset was blocked at 62/61 is superseded by the real Play-context `/GL` graph below. |
-| Completed | `CSound::RestoreBuffer @ 0x0044D300` / `GetFreeBuffer @ 0x0044D370` / `Reset @ 0x0044D600` | Re-audit identifies Play @ 0x0044D440 as their real shared caller. Natural source under Play as `/GL` entry yields the target private ESI/EBX RestoreBuffer contract and EDI receiver for GetFreeBuffer/Reset. Two independent cold links reproduce 98/98, 103/103 and 61/61 bytes; only Sleep IAT and rand REL32 are linked fields. This supersedes the old standalone Reset 62/61 result. |
-| Completed | `CSound::SetVolume @ 0x0044D4E0` | TH10 FrontEnd writes `g_MainSupervisorView.bgmVolume` to 0x00497854; SetVolume reads that exact scalar and applies the target `1-(1-v/100)^2` attenuation before DirectSound SetVolume. In the real Play `/GL` graph, natural source reproduces all 106 bytes and all six declared global/constant/__ftol2 fields in two independent cold builds. |
-| Completed | CSound::Stop @ 0x0044D550 | Re-audit follows the real caller rather than the standalone member ABI: target 0x0043DAB0 is recovered as SoundPlayerView::StopBgm and directly calls Stop. Under StopBgm as the /GL entry with src/ZWave.cpp support, VC7.1 naturally keeps the CSound receiver in EDI and emits the complete target 82-byte relocation-free contribution. Two independent cold builds are raw-equal; this supersedes the old 84/82 standalone diagnostic. |
-| Completed | CWaveFile::Reopen @ 0x0044DCA0 | The newly recovered SoundPlayerView::ReopenBgm @ 0x0043D790 is the real small caller. Under ReopenBgm as /GL entry with src/ZWave.cpp support, VC7.1 naturally selects target ESI=this and ECX=format, producing the complete 78-byte PDB contribution. Two independent cold builds replay exactly after declaring the BGM-file-base DIR32 at +0x27 and SetFilePointer IAT DIR32 at +0x35. |
-| Completed | CWaveFile::ResetFile @ 0x0044DD40 | Target behavior identifies the full disk/memory reset helper and its private ESI receiver plus AL loop flag. The same ReopenBgm /GL graph that closes Reopen retains ResetFile as an independent 194-byte contribution; target and candidate instruction streams are identical after replaying two BGM-base DIR32 and two SetFilePointer IAT DIR32 fields. Two independent cold builds are exact. |
-| Defer | `SoundPlayerView::StopBgm @ 0x0043DAB0` / `ReopenBgm @ 0x0043D790` | Both real caller sources are now maintained in `src/Sound.cpp` and are proven useful compiler contexts: StopBgm closes `CSound::Stop`, while ReopenBgm closes `CWaveFile::Reopen` and `ResetFile`. Do not mistake those child exact results for caller exactness. Fixed normal COFF remains 177/176 for StopBgm and 64/55 for ReopenBgm; keep their own codegen open. |
-| Defer | `CSound::Unpause @ 0x0044D5D0` | TH10 directly proves the 41-byte behavior: EAX is the CSound receiver, +0x30 is set to playing, and the primary buffer is started with stored priority/flags +0x20/+0x24. Natural `src/ZWave.cpp` source is also 41 bytes but only 32/41 bytes agree because fixed normal COFF uses ECX this. Its sole target caller `0x0043DDF0` is still source-unmapped; do not force the EAX receiver. |
-| Defer | `CSound::Play @ 0x0044D440` | With RestoreBuffer/GetFreeBuffer/SetVolume/Reset present naturally in the same ZWave TU, the selected `/GL` contribution has the exact 145-byte target extent and the SetVolume call now uses target EAX receiver setup. Exactness remains open only at the function entry (candidate ECX, target EAX) and the `FillBufferWithSound` receiver setup. Reopen with the real external Play caller or FillBuffer owner context; do not force registers in source. |
-| Completed | `CStreamingSound::~CStreamingSound @ 0x0044D730` | The 11-byte target body writes vtable 0x004705D4 and tail-jumps `CSound::~CSound @ 0x0044D080`. After completing the ZWave class layout (`CSound` 0x5C, `CStreamingSound` 0x78), an empty maintained derived destructor produces the exact 11-byte normal-COFF contribution with both relocation fields correct. Keep origin indeterminate: the target does not distinguish an explicit empty source destructor from an implicitly generated lifecycle body. |
-| Completed | `CSound::~CSound @ 0x0044D080` | The TH10 ZWave base destructor is a standard-ECX 136-byte lifecycle body. Completing `CWaveFile` to the target-observed 0x94-byte layout makes the natural SDK-style release/delete sequence reproduce all 136 bytes with exact CSound-vtable, two operator-delete, and CloseHandle relocation fields. Keep origin indeterminate because exact machine code cannot distinguish an explicitly written destructor from compiler-synthesized lifecycle source. |
-| Completed | `ItemVectorView::FromAngleMagnitude @ 0x0041BEB0` | TH10-local ownership is now established: `0x0041AED0` allocates `0x21CEC0` bytes and vector-constructs `0x896` records of `0x3F0` bytes from manager `+0x14`; `0x0041AD90` registers update/draw callbacks, while `0x0041AFD0` iterates those records and `0x0041BB00` creates them. The maintained x87 helper reproduces all 30 bytes in normal COFF and in two independent canonical linked-PE cold replays. `ItemVectorView` is descriptive, not a recovered original symbol. |
-| Completed | `GuiScoreView::Add @ 0x00409D90` | The target adds `amount / 10` to `this+4`, stores the sum, and caps values at or above `1000000000` to `999999999`. `GuiMessageVmView::Run` is a real caller, and the pre-existing `GuiScoreView::Add` in `src/Gui.cpp` becomes target-shaped when the equivalent comparison is spelled `score >= 1000000000`. Two independent canonical linked-PE cold replays in that real `/GL` caller context reproduce all 46 relocation-free bytes raw-equal. Maintained placement does not prove the original production TU. |
-| Completed | `GameScoreStateView::AddFaith @ 0x0041BE80` | The target updates global state `0x00474C40+0xC` by signed `amount / 10` and caps at `99999`. TH10 itself identifies the maintained semantics: item-update paths pass 10, 100, and difficulty-scaled 5000/8000/10000; the GUI renders the same stored value as five digits and uses it in stage-clear score; the separate Enemy timeout path directly subtracts 3000 with a floor of 5000, while the Player decay helper is called with 3000 and applies /10 so that path lowers stored faith by 300. In the adjacent polar-helper `/GL` context the helper becomes exactly 46 bytes; two independent canonical cold replays reproduce all bytes raw-equal. The maintained type/method names are descriptive. |
-| Completed | `GameScoreStateView::DecayFaith @ 0x00412E70` | Re-audit identifies the shared state receiver directly: the sole call at 0x00425A1F loads ECX=`0x00474C40` and pushes 3000, and the helper updates +0x0C, the same faith field established by AddFaith. The body computes `amount / -10`, adds that signed result, and floors stored faith at 5000; therefore this helper path decreases faith by 300; independently, the Enemy timeout path at 0x00412932 directly subtracts 3000 before applying the same 5000 floor. Natural source in `src/ItemManager.cpp` is 48 bytes in normal COFF but becomes the exact 46-byte relocation-free target contribution in the existing ItemHelpers `/GL` graph. |
-| Completed | `GameScoreStateView::SetFaith @ 0x00418B80` | All three target callers use global state `0x00474C40`. Startup passes 50000, yielding the 5000 initial faith value; Replay restore passes stage header +0x14 multiplied by 10, restoring the recorded faith. The helper also lazily initializes the embedded timer at +0x14..+0x24 and resets it to current=0, previous=-1, subframe=0. Moving the shared layout to `GameScoreState.hpp` and calling this method directly from `ReplayManager::Initialize` yields a canonical 73-byte `/GL` contribution with the sole `g_PlayerTimerScale` DIR32 field exact. |
-| Completed | `GameScoreStateView::SetTimerCurrent @ 0x0042A930` | The sole out-of-line target call is Replay restore at 0x0042930E: EAX=`0x00474C40` and the recorded timer value is pushed. The helper lazily initializes the same +0x14 timer, then stores current=value, previous=value-1 and subframe=float(value). Source-absent replay helper 0x0042A6A0 independently contains the same assignment inline. In the real `ReplayManager::Initialize` `/GL` graph, VC7.1 naturally selects the target private EAX receiver and the full 59-byte body plus scale linkage replays exact. |
-| Completed | `GameScoreStateView::AddRank @ 0x00405B60` | Re-audit disproves the old “effect-coordinate clamp” label. Five calls inside `ItemManager update @ 0x0041AFD0` load EAX=`0x00474C40` and pass deltas -4/+12/+8/+24/+256; the helper updates +0x58 = target `0x00474C98`, the independently established rank scalar, and clamps it to -0x400..+0x400. The maintained `GameScoreStateView::AddRank` produces the complete 42-byte relocation-free target body raw-equal in the existing ItemHelpers /GL graph. |
-| Completed | `ItemManagerView::OnDraw @ 0x0041BA30` | Rechecking current maintained source supersedes the old 31/29 external-call diagnostic. With `ItemManagerView::Draw` present in the same `/GL` TU, VC7.1 naturally keeps callback ECX long enough to move it to the draw core target-private EAX receiver and emits the target tail jump. Two cold canonical linked-PE builds reproduce all 29 bytes plus the `g_FpsSampleGateView` DIR32 and Draw REL32 fields exactly. |
-| Defer | `ItemManagerUpdateCallback @ 0x0041BA00` | The 48-byte target callback still depends on the update-core register lifetime: with the verified `__stdcall` core and target-equivalent `((flags >> 2) | flags)` gate logic, current normal COFF and item `/GL` probes emit 42 bytes. Target uniquely saves manager ECX in ESI and reuses ECX for the bit-test temporary. Do not force this adapter before the real `0x0041AFD0` update-core source context is recovered. |
-| Completed | `AnmRenderManagerView::PreloadAnm @ 0x00447280` | The same-TU `AsciiManagerView::Initialize @ 0x00401110` entry reproduces the complete 81-byte PDB contribution and all three linked fields in two independent canonical linked-PE cold builds. Directly testing the stop byte's `0x80` bit naturally emits the target `JS` branch; an equivalent `while` rewrite leaves codegen unchanged. Ten other target callers remain source-unmapped, and original source ownership stays unknown. |
-| Defer | `AnmRenderManagerView::ServicePreloadedAnms @ 0x00447700` | The sole observed caller `0x0041FF80` pushes the manager pointer, and the target callee consumes it with `RET 4`; a pinned VC7.1 ABI smoke supports a nonstatic `__stdcall` member. The maintained source now expresses that ABI and the observed 33-slot scan, release sequence, and post-clear null-slot write. Its selected `/GL` image is the correct 135-byte extent with 83/123 comparable bytes and three resolved linkage fields, but target and candidate use different registers for manager base and entry. Exact neighbors `FindVm` and `GetVmPosition` replayed cleanly after the header change. Reopen only with new caller/compiler evidence; do not force register allocation. |
-| Defer | AnmLoadedView::SetAndExecuteScriptIdx @ 0x0043E8B0 | Its sole target caller is AnmSetVmScriptIndexAndExecute @ 0x004496D0. Selecting that direct same-TU caller as /GL entry still emits 287 bytes with 249/271 comparable bytes and four linkages; target keeps script index in EDI and script pointer in ESI, while the natural candidate swaps them. Keep source natural and exactness open. |
-| Defer | AnmRenderManagerView::SetVmWorldPosition @ 0x00449350 | Four target callers contribute five call sites. Its body keeps the position input in ESI. The 114-byte same-TU candidate (18/91 comparable bytes, five linkages) used AsciiManagerView::Initialize as entry, which is not a direct caller. Keep it diagnostic and revisit after the real caller graph or private-register evidence improves. |
+- Bullet: `AdvanceTransformProgram @ 0x00406D90` (1,454 target bytes),
+  `SpawnSingleBullet @ 0x004067D0` (1,413), `SpawnBulletPattern @ 0x004073E0`
+  (194), `UpdateAbsoluteDirectionChange @ 0x004078E0` (335), and
+  `UpdateVerticalWrap @ 0x00407E40` (172). Their source mappings remain
+  non-exact. The 885-byte `BulletUpdateRuntime` and 316-byte Player collision
+  callee are already canonical exact; older diagnostic comparisons of those
+  two are superseded. Read the relevant `BULLET-*` knowledge rows and ledger
+  notes before changing any shared support graph.
+- Enemy: `EnemyCancelBulletRecord @ 0x00408030` (199 target bytes) and the
+  dispatcher below remain non-exact. The 16-byte `ReadIntArgument @ 0x00412A00`
+  is origin-indeterminate and has a private-register mismatch in the selected
+  diagnostic; do not label it authored merely because source is present.
+- ANM: `AnmVmView::InitializeForLoadedScript @ 0x00404F30` (202) and the
+  executor below remain non-exact. Adjacent small helpers have their own
+  canonical status in the match register.
+- ECL: `StartSubroutine @ 0x0044DF70` (550), `SpawnThread @ 0x004500D0`
+  (142), `ReadInt @ 0x0044FDB0` (144), and the runner below remain non-exact.
 
-| Completed | `MidiOutputView::UnprepareHeader @ 0x0043AEB0` | TH10 retains `.\src\core\midilib.cpp` diagnostics. The 79-byte helper searches 32 pending MIDIHDR slots, clears the matching slot, calls imported `midiOutUnprepareHeader`, frees `lpData` when present, then frees the header. `MidiOutputView::StopPlayback @ 0x0043AE20` is the maintained same-TU caller; two independent cold /GL builds reproduce all 79 bytes plus the MIDI IAT and two `_free` fields exactly. |
-| Defer | `MidiOutputView::StopPlayback @ 0x0043AE20` | Source is present and provides the real compiler context for exact `UnprepareHeader`, but its own target body remains non-exact. Keep the semantic source and exactness open; do not infer that a child exact result makes the caller exact. |
-| Completed | `FrontEndUpdateCallback @ 0x0042D2E0` / `FrontEndDrawCallback @ 0x0042D2F0` | Target callback registration at `0x0042CAA2/0x0042CACA` stores these two seven-byte adapters. Each moves the callback receiver from ECX to EAX and tail-jumps to the corresponding internal `Update @ 0x0042CDF0` or `Draw @ 0x0042D260` owner. Natural fastcall wrappers in `src/FrontEnd.cpp`, selected as their own /GL entries, reproduce all seven bytes plus the sole REL32 field in two cold canonical linked-PE builds. Keep origin indeterminate: exact codegen does not distinguish source-written wrappers from LTCG adapters. |
-| Defer | `FrontEndControllerView::Draw @ 0x0042D260` | Direct target table review proves physical case-block order Replay, Practice, ScoreEntry, Result, Stage. Reordering only the maintained switch cases to that order reduces a direct-entry /GL contribution from 120 to the exact 116-byte target extent, but the body remains non-exact: callback-entry context still emits 120 bytes and uses different saved-register/callee ABIs. Keep the source-order correction; do not force EDI or private child-call conventions without new caller-lifetime evidence. |
-
-These are bounded exact-reconstruction tasks only. Exact helper replay does not
-close the whole-product Windows i386 build gate.
+Historical candidate lengths and failed source variants are in
+`docs/KNOWLEDGE_BASE.md` and Git. Regenerate one focused, source-bound probe
+before treating any old diagnostic as a live baseline. A near match is not an
+exact match.
 
 ## Enemy dispatcher: current recovery point
 
-Use the maintained source at HEAD. Historical Enemy measurements in
-KNOWLEDGE_BASE and Git explain how the source got here; they are not alternate
-baselines to restore. A fresh 2026-09-26 probe of the selected four-source
-graph measures 14,232 bytes and 720/11,556 normalized comparable bytes. The
-2026-09-25 detailed layout below belongs to an earlier source checkpoint and
-has not yet been refreshed; do not combine its case offsets with the current
-whole-owner measurement. Expanded all-real-laser caller graphs remain separate
-contexts. Linked-PE probe reports have no exactness authority.
+`EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` covers the target
+14,416-byte executable owner and opcodes 0x100..0x1B4. Maintained source is
+present, but exact codegen is open. In the selected four-source `/GL /GS`
+graph run before the ECL operand-index refinement at commit `57099cf`, the
+candidate was 14,232 bytes with 720/11,556 normalized comparable bytes. Its
+pre-table span was 13,576 versus target 13,760; selector bytes were 181/181
+and physical case order matched. **This is a historical graph checkpoint, not
+a fresh measurement of HEAD:** `src/EclVm.cpp` is a support input and changed
+at `57099cf`. Rebuild the graph before using candidate offsets or scores.
 
-| Measure | Selected candidate | Target |
-| --- | ---: | ---: |
-| Complete contribution (2026-09-25) | 14,228 | 14,416 |
-| Pre-table span | 13,572 | 13,760 |
-| Stack frame allocation | 0x2C4 | 0x2C4 |
-| Normalized comparable bytes | 755 / 11,556 | 11,556 / 11,556 |
-| Selector bytes | 181 / 181 | 181 / 181 |
-| Physical selector-group order | matches | matches |
-| Suffix | 43 | 43 |
-| START_SPELL physical group | 214 | 219 |
+Target-backed source facts to preserve:
 
-Retained source facts:
+- Float arguments call generic `EclVmContext::ReadFloat`; the 0x00412A60
+  adapter is unreferenced in the target. Rank-float selection has two shared
+  ResolveFloat/store tails, including the path reached from opcode 0x1AE.
+- Opcode 0x1A8 stores two speeds through the typed 0x210-byte
+  `EnemyBulletPatternView` row at offsets +0x18/+0x1C. Its current source
+  keeps natural case-local float operands; target and candidate still differ
+  in rank-factor lifetime and whole-function stack homes.
+- The target `ReadIntArgument @ 0x00412A00` adapter takes EAX=runtime and
+  ECX=index; the selected candidate reverses them. This private ABI is a
+  cross-case register-coloring issue, not a reason to invent a wrapper.
+- Target opcode 0x1B4 has two difficulty-index selection trees and one
+  generic integer-reader join per tree. Branch-local direct-call and
+  `return`-to-`break` variants worsened the whole owner and were reverted.
+- The target central `EnemyFireLaser @ 0x0041C510` uses ESI=manager,
+  EDI=request, and one stack type argument with `RET 4`. All ten caller sites
+  are source-mapped, but the selected natural source still has a private ABI
+  mismatch. Constructor lifetime/register allocation remains open.
+- Entry spill homes and large scratch lifetimes differ despite a matching
+  0x2C4 frame in the recorded graph. Do not add dummy locals, padding,
+  forced volatile reads, or false dependencies to manufacture alignment.
 
-- Dispatcher float reads use the generic `EclVmContext::ReadFloat` boundary;
-  target `0x00412A60` is an unreferenced adapter. Do not restore the older
-  explicit `EclVmContext *context` local merely because it scored 696/11,536;
-  that variant introduced false adapter calls.
-- Opcode `0x1A8` writes through the recovered `EnemyBulletPatternView` array.
-  Its four float operands have natural case-local source lifetimes, and target
-  stores prove typed float speed fields at pattern `+0x18` and `+0x1C`.
-  Maintaining those fields as an overlay on the existing 0x210-byte words view
-  makes VC7.1 form the destination in the target shape (`LEA` of scaled index
-  plus runtime, then stores at `+0x2DC/+0x2E0`). Under the selected linked
-  context this keeps the owner at 14,228/14,416, changes the case from 171 to
-  173 bytes versus target 206, and raises normalized agreement from 735 to
-  746/11,556. The target still homes the three saved float operands at
-  ESP+0x10/+0x30/+0x18 while the candidate uses +0x18/+0x40/+0x38; it also
-  consumes and rematerializes the rank factor where the candidate keeps it live
-  on x87. This remains a non-exact checkpoint. The raw-offset spelling is
-  superseded.
-- Rank-float selection uses the two target-observed shared
-  ReadFloat/ResolveFloat/store tails. Do not restore a private third 0x15E tail.
-- Opcode `0x119` uses the target's strict-positive tests (`0.0 < value`). This
-  changed the broad heuristic score from the preceding rank-tail checkpoint's
-  731 to 730/11,556 at that checkpoint while fixing unordered/NaN behavior and
-  branch shape. The later retained 0x1A8 source work supersedes that whole-owner
-  score; the old 731 score is not a better checkpoint.
-
-Canonical exact dependencies already protected around this owner include
-`EnemyMarkPendingInterrupt` (65 bytes), `EnemySoundQueueView::QueueSoundSample`
-(123), `QueueSoundCue` (149), `EnemyDropVectorView::FromAngleRadii` (30), and
-`EnemyRuntimeView::EnemyRuntimeView` (145). The ANM render-layer creator family
-also remains independently exact in its canonical context. Re-run the focused
-exact-unit gate after changing this translation unit; giant-owner diagnostics do
-not override accepted small exact units.
-
-Open problems (independent; select one bounded experiment):
-
-1. **Private integer-reader ABI.** Target `ReadIntArgument @ 0x00412A00` is a
-   16-byte adapter with private `EAX=runtime`, `ECX=index`. The maintained
-   callgraph has the target-observed 30 direct adapter calls and a 16-byte
-   candidate adapter, but its private registers are reversed. This difference
-   propagates into rank/difficulty integer cases and whole-function coloring.
-2. **Shared-tail physical ownership.** `AIM_BULLET_AT_PLAYER 0x1AE` reaches the
-   same float Resolve/store tail as rank/difficulty selection in the target;
-   semantic routing is recovered, but VC7.1 still places the shared block under
-   the wrong physical group. Moving equivalent C labels alone does not change
-   this.
-3. **`SET_BULLET_COUNT_BY_DIFFICULTY 0x1B4`.** Target has two local difficulty
-   trees whose branches select immediate indices before one generic ReadInt join
-   per tree; the second join also changes the owner register lifetime. The
-   retained group is 140/151 bytes. Several locally closer 128..226-byte source
-   variants worsen whole-owner agreement and are superseded.
-   A 2026-09-26 direct-call branch form made the group 214 bytes and moved
-   whole-owner agreement from 720/11,556 to 718/11,540; changing only this
-   case's `return` to `break` kept its 140-byte group but shrank the owner
-   from 14,232 to 14,184 bytes and agreement to 657/11,564. Both were
-   reverted. Target branch-local `PUSH` instructions alone are not enough to
-   justify either source form.
-4. **FireLaser cross-owner LTCG ABI.** Target EnemyFireLaser @ 0x0041C510
-   receives ESI=manager, EDI=request, plus one stack type argument and RET 4
-   across ten calls in six owners. The entire caller topology is now
-   source-present: the dispatcher supplies four calls, while src/EnemyLaser.cpp
-   supplies EnemyLaserBoundaryStateView::UpdateBoundary @ 0x0041CFD0,
-   type-0 box/circle collision @ 0x0041D880/0x0041DD80, and type-1 box/circle
-   collision @ 0x0041EB00/0x0041EFA0. The independently exact
-   EnemyLaserVectorView::FromAngleMagnitude @ 0x0041F800 remains 30/30.
-   The type-1 owners preserve the target 256-byte hit bitmap and 12-unit scan;
-   they keep the leading unhit prefix in the current laser and respawn later
-   gaps through zero-initialized 0x77-dword type-0 requests carrying angle,
-   width, terminal-distance, type/color and speed 8.0f.
-   In the first complete all-real-caller graph, central EnemyFireLaser remains
-   154/153 with 29/137 normalized agreement and the dispatcher remains
-   14,320/14,416 with 699/11,556. Therefore missing caller coverage is no
-   longer a viable explanation for the private ABI mismatch. Free-function
-   parameter-order variants keep the wrong ESI=manager/EAX=type/stack-request
-   ABI. Member-method variants recover RET 4 but still keep type in EAX and
-   request on the stack. Rewriting the central type selection as switch(type)
-   reproduces the target sub/dec branch shape and leaves type on the stack, but
-   rotates the remaining registers to EDI=manager/ESI=laser/stack-request.
-   The next frontier is the Type0/Type1 constructor private ABI: target
-   constructors keep the allocated object in EBX and use ESI=-2, whereas the
-   the recorded diagnostic constructors keep object in EDX and use EBX=-2. Do not
-   fake EDI=request with synthetic dependencies; recover the constructor/source
-   lifetime that naturally produces the target register coloring.
-
-5. **Whole-function spill/stack coloring.** Large laser/spawn scratch objects are
-   uniformly eight bytes below target stack offsets despite the correct 0x2C4
-   frame and understood object sizes/order. At dispatcher entry the target
-   homes runtime/current-instruction/opcode state at ESP+0x30/+0x1C/+0x10,
-   whereas the recorded candidate uses +0x40/+0x14/+0x1C. In 0x1A8 the target
-   later reuses the runtime's +0x30 home for a saved float operand; the
-   case-local checkpoint similarly reuses the candidate runtime's +0x40 home.
-   This ties the remaining rank-speed stack mismatch directly to whole-owner
-   lifetime allocation. Treat it as a lifetime/spill symptom, not missing
-   padding or dummy locals. Simple declaration permutations and `#pragma
-   var_order` are byte-identical to the baseline and are closed directions.
-   The PLAY_ANM 0x107 three-byte gap is another symptom of the same
-   entry-register state problem.
-
-Known negative/superseded experiment classes that should not be repeated without
-new target evidence:
-
-- volatile/dummy owner reloads, fake dependencies, padding, or dummy locals;
-- direct exposure of recovered Spawn/EndSpell/screen-effect bodies to the
-  dispatcher solely to steer LTCG;
-- the 2026-09-22 EndSpell/GUI full-seam experiments, which produced only
-  14,180/14,416 and at best 669/11,568 (later variants also had incomplete
-  normalization), well below the retained checkpoint;
-- changing `EnemyRuntimeView::owner` from the full host pointer to the base ECL
-  host type solely for alias coloring; it produced byte-identical owner metrics;
-- source-order-only moves of spawn cases or shared-tail labels;
-- replacing all ReadInt calls with direct generic reads, or forcing a synthetic
-  local/static/private wrapper ABI;
-- memcpy/aggregate rewrites chosen only because a short local sequence looks
-  closer; several caused unrelated cross-case folding and worse whole-owner
-  diagnostics;
-- changing accepted exact ANM creator ABI/TU shape to improve this giant owner.
-
-Useful supporting owners remain non-exact: `EnemySpawn @ 0x0040CFB0` is
-577/577 in its focused diagnostic but not byte-exact, and
-`EnemyFullObjectView::EnemyFullObjectView @ 0x0040D830` is 672/673 with
-137/653 normalized comparable bytes.
+Accepted exact units sourced from `EnemyEclDispatcher.cpp` and the
+independent 145-byte `EnemyRuntimeView` constructor must be protected by
+focused canonical replay after edits. Historical case sizes and failed
+variants are in `ENEMY-*` knowledge rows; they are not alternate baselines.
 
 ### Focused Enemy probe
 
@@ -406,7 +233,7 @@ In the selected real-host /GL diagnostic:
 | --- | ---: | ---: |
 | Complete Run contribution | 7,020 | 7,020 |
 | Pre-table span | 6,692 | 6,692 |
-| Normalized comparable bytes | 945 / 6,264 | 6,264 / 6,264 |
+| Normalized comparable bytes | 946 / 6,264 | 6,264 / 6,264 |
 | Physical opcode-group order | matches | matches |
 
 Normalization is still incomplete, so equal contribution/pre-table/order is
@@ -454,47 +281,25 @@ Before a checkpoint:
     scripts/repo-python scripts/ci.py
     git diff --check
 
-Checkpoint commits follow the active operator's prefix instruction. Use
-`gpt-web: ...` only when the operator has not supplied a prefix. Push only when
-the operator explicitly requests it, and distinguish a local checkpoint from a
-remote update.
-
 ## Local analysis retention
 
-.analysis/ is disposable scratch and is never exactness authority.
-KNOWLEDGE_BASE.md may retain historical .analysis/... provenance paths even
-after those local files are pruned.
+The 2026-09-26 maintenance pass classified the existing `build/` contents as
+reproducible compiler/PDB/map/PE products and Python caches. It also classified
+the `.analysis/gpt-web/` and `.analysis/gpt-6-sol/` campaigns as completed or
+superseded session scratch: their current conclusions are in source, ledgers,
+`docs/KNOWLEDGE_BASE.md`, and Git. Those generated outputs were pruned after
+review. The four root-level `gpt-web-ecl-base*.cpp` and
+`gpt-web-timer-dirty.hpp` files were old source snapshots; the
+`factory-native-ghidra/` scratch directory was empty. No TH10 build or replay
+process owned these paths at cleanup. There is no retained live candidate image
+or trusted baseline in either campaign directory. Historical `.analysis/...`
+paths in knowledge rows are provenance
+labels and may no longer exist; regenerate a source-bound probe before using
+them as feedback.
 
-Keep only:
-
-- one current probe/layout pair per active giant owner;
-- scratch needed for an unresolved experiment that will be resumed immediately;
-- small provider/boundary caches that are expensive to regenerate locally.
-
-Delete after a checkpoint:
-
-- superseded probe/layout JSON and duplicate whole-owner scans;
-- copied source snapshots, temporary support TUs, patches and disassembly dumps
-  whose conclusion is already in tracked docs or Git;
-- old PDB/map/PE/COFF products and historical linked-image snapshots;
-- interrupted/zero-byte outputs;
-- negative experiments invalidated by later source/call-graph changes.
-
-The 2026-09-25 cleanup intentionally prunes `build/` and `.analysis/` after
-the conclusions needed for handoff are compacted into tracked source, ledgers
-and docs. Historical probe/layout names above and in KNOWLEDGE_BASE are
-provenance labels, not files to open or baselines to trust without a fresh
-source-bound replay.
-
-The cleanup deliberately retains `.tools/`, `resources/th10.exe`, and
-`ghidra-project/`: they are respectively the pinned compiler/toolchain, the
-canonical private target, and the target-attested private Ghidra project. They
-are ignored/private dependencies, not disposable probe output.
-
-Historical paths named by KNOWLEDGE_BASE are provenance labels and may be absent
-after their conclusions have been compacted into tracked evidence. Do not treat
-a missing historical scratch file as loss of exactness authority.
-
-Do not preserve scratch merely because an old KNOWLEDGE_BASE row names it.
-Accepted exactness lives in config/match-units.toml, config/matches.csv,
-tracked ledgers, and successful canonical replay, not in .analysis/.
+Future experiments should create a campaign manifest before large outputs,
+record source HEAD, target identity, compiler context, and cleanup disposition,
+and retain only a minimal current failure reproducer when compact tracked
+conclusions are insufficient. Do not treat ignored scratch as exactness
+authority. The private target `resources/th10.exe`, pinned `.tools/` surface,
+and `ghidra-project/` are operator/provider state and were deliberately retained.
