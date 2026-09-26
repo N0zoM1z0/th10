@@ -52,7 +52,7 @@ equal selector bytes, or source/semantic coverage is not exactness.
 | Owner | Target | Last recorded diagnostic context (replay required) | Status |
 | --- | ---: | --- | --- |
 | EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770 | 14,416 bytes | 14,232 bytes and 720/11,556 comparable bytes in the selected four-source graph **before** ECL support changed at `57099cf`; refresh before comparing HEAD | non-exact |
-| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | current ANM-064 checkpoint: 9,928-byte PDB contribution, 391/8,576 comparable bytes; 9,552/9,588 pre-table span; POSITION 171/171 and NOP/interrupt+alternate region 184/184; all 85 target `OR EDI,-1` restores reproduced; 92 physical selector groups retain target order | non-exact; context-sensitive |
+| AnmRenderManagerView::ExecuteScript @ 0x0043EE30 | 9,587-byte executable owner | current ANM-065 checkpoint: 9,928-byte PDB contribution, 409/8,576 comparable bytes; 9,552/9,588 pre-table span; POSITION 171/171 and NOP/interrupt+alternate region 184/184; all 85 target `OR EDI,-1` restores reproduced; shared advance tails now order ADD/STORE before the EDI reset like target; 92 physical selector groups retain target order | non-exact; context-sensitive |
 | EclVmContext::Run @ 0x0044E1A0 | 7,020 bytes | current `57099cf` diagnostic: 7,020/7,020; pre-table 6,692/6,692; 946/6,264 comparable bytes, normalization incomplete | non-exact |
 
 Use the per-owner sections below for the selected context and open problems. Do
@@ -159,16 +159,16 @@ silently incorporating dirty source.
 ## ANM executor: recovery point
 
 The maintained source covers opcodes -1..92 and remains non-exact. At current
-ANM-064 (`8ded98a`), the selected direct-entry /GL /GS graph with
-RandomMath.cpp /GL support emits a 9,928-byte PDB contribution against the
-9,587-byte target executable owner, with 391/8,576 normalized comparable bytes
-and complete normalization. The 92 physical selector groups retain target
-order, pre-table code is 9,552 versus target 9,588 bytes, and all 85 target
-`OR EDI,-1` restores are present. The older 9,704-byte / 345/8,352 /
-9,328-byte-pre-table result is the pre-sentinel baseline, not a current
-measurement. The older single-source 9,752-byte result is another historical
-graph. Do not compare scores across those checkpoints as if they were one link
-graph.
+ANM-065, the selected direct-entry /GL /GS graph with RandomMath.cpp /GL
+support emits a 9,928-byte PDB contribution against the 9,587-byte target
+executable owner, with 409/8,576 normalized comparable bytes and complete
+normalization. The 92 physical selector groups retain target order, pre-table
+code is 9,552 versus target 9,588 bytes, and all 85 target `OR EDI,-1` restores
+are present. ANM-064's 391/8,576 result is the immediately preceding checkpoint;
+the older 9,704-byte / 345/8,352 / 9,328-byte-pre-table result is the
+pre-sentinel baseline, not a current measurement. The older single-source
+9,752-byte result is another historical graph. Do not compare scores across
+those checkpoints as if they were one link graph.
 
 Opcode 40 now calls a maintained `AnmRandomU32InRange` helper whose two
 `GetRandomU16` calls reproduce target `0x0043CB80` raw-equal (88/88 bytes) in
@@ -195,12 +195,15 @@ NOP/interrupt-label through the same shared instruction-advance tail. That
 recovers the target physical split around POSITION exactly: POSITION is
 171/171 bytes and the following NOP/interrupt-plus-alternate-position region is
 184/184, while all 85 EDI restores and all 92 physical selector groups remain.
-The selected contribution is 9,928 versus target 9,587, with 391/8,576
-normalized comparable bytes and a 9,552/9,588 pre-table span. The shared tail
-still schedules `OR EDI,-1` before ADD/STORE in the candidate while target does
-ADD/STORE first; POSITION float temporary stack homes also remain different.
-Do not optimize toward total contribution size at the expense of these physical
-group and instruction-order facts. The 0xFC-byte stack frame still matches
+The selected contribution is 9,928 versus target 9,587, with 409/8,576
+normalized comparable bytes and a 9,552/9,588 pre-table span. Rechecking the
+shared tail on current HEAD disproves the older assumption that source assignment
+order was codegen-neutral: writing `currentInstruction` before resetting the
+loop-carried sentinel makes VC7.1 emit the target order `MOVZX size; ADD; STORE;
+OR EDI,-1` across the duplicated tails. The owner size, 85 reset count, 92-group
+order and POSITION/NOP split stay unchanged. POSITION float temporary stack
+homes remain different. Do not optimize toward total contribution size at the
+expense of these physical group facts. The 0xFC-byte stack frame still matches
 target size, while saved game speed remains ESP+0x60 versus target +0x98.
 
 Before ANM-063, a 2026-09-26 support-graph check added `AnmVmCreate.cpp` and

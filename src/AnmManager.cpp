@@ -3538,10 +3538,10 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 #undef GET_FLOAT_VAR
 #undef GET_INT_VAR
 
-        interruptSentinel = -1;
         vm->currentInstruction = reinterpret_cast<AnmRawInstructionView *>(
             reinterpret_cast<unsigned char *>(currentInstruction) +
             currentInstruction->size);
+        interruptSentinel = -1;
         continue;
     }
 
