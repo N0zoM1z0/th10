@@ -577,11 +577,11 @@ int EclVmContext::StartSubroutine(
                 (*callerInstruction)->operands)[valueOffset / 4];
             value.integer = caller->ReadIntValue(
                 argumentIndex, value.integer);
-            if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')
+            if ((*callerInstruction)->operands[metadataOffset + 1] != 'f')
+                *reinterpret_cast<int *>(argument) = value.integer;
+            else
                 *reinterpret_cast<float *>(argument) =
                     static_cast<float>(value.integer);
-            else
-                *reinterpret_cast<int *>(argument) = value.integer;
         }
 
         argument += 4;

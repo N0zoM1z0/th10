@@ -71,12 +71,16 @@ Current retained source facts:
 
 - `Run` remains 7,020/7,020 with a 6,692/6,692 pre-table span and target physical
   opcode-group order.
-- `EclVmContext::StartSubroutine @ 0x0044DF70` is 543/550 in the selected graph.
-  Delaying the local host cache until after saving/publishing `activeContext`
-  naturally restores the target private receiver seam: destination arrives in
-  EAX, the helper saves ESI and begins `MOV ESI,EAX`. Reloading the host through
-  `caller` on the successful restore path reproduces the target ten-byte tail
-  sequence instead of reusing the cached host register.
+- `EclVmContext::StartSubroutine @ 0x0044DF70` is now 551/550 with
+  157/534 normalized comparable bytes in the selected graph. Delaying the local
+  host cache still restores the target private receiver seam and reloading the
+  host through `caller` still reproduces the target ten-byte success tail.
+  Reversing only the integer-source destination-type test (`!= 'f'`) prevents
+  VC7.1 from tail-merging two target-distinct integer writeback blocks, nearly
+  doubling helper agreement from the prior 78/534 while leaving `Run`
+  unchanged. The candidate is still non-exact: its integer writeback block is
+  physically before the float-conversion block whereas the target uses the
+  opposite order, and the owned extent is one byte too long.
 - Both target callers consequently emit `MOV EAX,ESI` before `StartSubroutine`.
   `EclVmHost::SpawnThread @ 0x004500D0` is now canonical exact at 142/142 and
   must be protected.
@@ -91,12 +95,14 @@ Current retained source facts:
   and the displaced local sequence propagates through arithmetic, comparisons
   and trig cases. Arithmetic interleaving improves byte agreement but breaks
   target physical handler order, so it is diagnostic only.
-- `StartSubroutine`'s remaining register frontier is now explicit: target uses
-  EDI=callerInstruction, EBP=metadataOffset, EBX=argumentIndex; retained source
-  uses EDI plus EBX/EBP in the opposite long-lived roles. `volatile
-  firstArgument` reaches 550 bytes but the wrong register roles and is a false
-  frontier. Signedness, identifier names, declaration order and a wider
-  Dispatcher support graph do not solve it.
+- `StartSubroutine`'s remaining register frontier is still explicit: target
+  uses EDI=callerInstruction, EBP=metadataOffset, EBX=argumentIndex; retained
+  source keeps EDI but assigns the two long-lived loop roles differently. The
+  new split-writeback source shape closes most of the loop-body structural gap,
+  so the next work is the final one-byte extent/block-order mismatch plus this
+  EBP/EBX coloring, not the already-recovered writeback duplication. `volatile
+  firstArgument` reaches 550 bytes with the wrong register roles and remains a
+  false frontier.
 
 Closed ECL directions that should not be repeated without new evidence:
 
