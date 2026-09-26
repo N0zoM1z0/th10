@@ -1,4 +1,5 @@
 #include "Enemy.hpp"
+#include "PlayerCollision.hpp"
 
 #include <math.h>
 #include <new>
@@ -285,8 +286,6 @@ void EnemyRunCallbackEcl(
 void EnemyInstallCallbackEcl(
     EnemyFullObjectView *owner, const unsigned char *callbackName);
 void EnemyAddScoreReward(int value);
-void EnemyCheckPlayerCollision(
-    const PlayerFloat3 *position, const EnemyFloat2 *size, Player *player);
 void EnemySetManagedVmPositionWithOffset(
     unsigned int vmId, const PlayerFloat3 *position);
 void EnemySetManagedVmPositionExact(
@@ -929,8 +928,9 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     if ((enemy->flags & 0x12u) == 0 &&
         enemy->playerCollisionTimer.current < 1)
     {
-        EnemyCheckPlayerCollision(
-            &enemy->worldMotion.position, &enemy->playerCollisionHitbox, g_Player);
+        reinterpret_cast<PlayerCollisionPositionView *>(
+            &enemy->worldMotion.position)->CheckPlayerCollision(
+                g_Player, &enemy->playerCollisionHitbox.x);
     }
 
     if ((enemy->flags & 0x1000u) != 0)

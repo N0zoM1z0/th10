@@ -165,8 +165,16 @@ def compare_unit(name: str) -> dict[str, object]:
             raise ValueError(
                 f"linked unit pdb_source {pdb_source!r} is not its primary or support source"
             ) from exc
+        support_kind = (
+            "normal"
+            if pdb_source in {
+                str(value).replace("\\", "/")
+                for value in unit.get("normal_support_sources", [])
+            }
+            else "ltcg"
+        )
         expected_object = (
-            f"support-{support_index:02d}-{Path(pdb_source).stem}.ltcg.obj"
+            f"support-{support_index:02d}-{Path(pdb_source).stem}.{support_kind}.obj"
         )
 
     source_matches = []

@@ -1,4 +1,5 @@
 #include "BulletManager.hpp"
+#include "PlayerCollision.hpp"
 
 struct EnemySoundQueueView
 {
@@ -22,15 +23,6 @@ struct BulletPositionView
 
 extern void *g_EnemyBulletManager;
 extern unsigned char g_MainSoundOwner[];
-
-struct PlayerCollisionPositionView
-{
-    float x;
-    float y;
-    float z;
-
-    int __fastcall CheckPlayerCollision(Player *player, const float *collisionSize);
-};
 
 struct BulletVectorView
 {

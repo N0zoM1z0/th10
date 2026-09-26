@@ -136,6 +136,24 @@ def load() -> dict[str, object]:
             raise ValueError(
                 f"unit {name!r} repeats its primary source as a support source"
             )
+        normal_support_sources_raw = unit.get("normal_support_sources", [])
+        if (
+            not isinstance(normal_support_sources_raw, list)
+            or not all(
+                isinstance(value, str) and value
+                for value in normal_support_sources_raw
+            )
+        ):
+            raise ValueError(f"unit {name!r} has invalid normal_support_sources")
+        normal_support_sources = tuple(
+            (ROOT / value).resolve() for value in normal_support_sources_raw
+        )
+        if len(set(normal_support_sources)) != len(normal_support_sources):
+            raise ValueError(f"unit {name!r} repeats a normal support source")
+        if not set(normal_support_sources).issubset(support_sources):
+            raise ValueError(
+                f"unit {name!r} normal support source is not a support source"
+            )
         pdb_source_raw = unit.get("pdb_source", unit["source"])
         if not isinstance(pdb_source_raw, str) or not pdb_source_raw:
             raise ValueError(f"unit {name!r} has an invalid pdb_source")
@@ -167,6 +185,8 @@ def load() -> dict[str, object]:
                 raise ValueError(f"unit {name!r} COFF pdb_source must equal source")
             if support_sources:
                 raise ValueError(f"unit {name!r} gives a COFF unit support sources")
+            if normal_support_sources:
+                raise ValueError(f"unit {name!r} gives a COFF unit normal support sources")
             if has_gl:
                 raise ValueError(f"unit {name!r} requests LTCG for a COFF artifact")
             output = build_path(unit.get("object", ""), f"unit {name!r} object")
@@ -220,6 +240,7 @@ def load() -> dict[str, object]:
                 tuple(link_profile),
                 HARNESS_KIND,
                 support_sources,
+                normal_support_sources,
             )
         previous_output = compile_groups.setdefault(group, output)
         if previous_output != output:
@@ -283,6 +304,7 @@ def main() -> int:
                 environment,
                 list(unit["profile"]),
                 [ROOT / str(value) for value in unit.get("support_sources", [])],
+                [ROOT / str(value) for value in unit.get("normal_support_sources", [])],
             )
             if Path(linked["object"]).read_bytes()[:8] != bytes.fromhex(
                 "0000ffff01004c01"

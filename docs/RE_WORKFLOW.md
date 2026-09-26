@@ -64,8 +64,10 @@ identity differs.
    that LTCG lowers the candidate only inside a particular maintained caller,
    add `--entry SOURCE=SOURCE_NAME`; the report records and validates that
    explicit context. If cross-translation-unit inlining needs another recovered
-   `/GL` input, add one or more `--support SOURCE=SUPPORT_SOURCE` arguments;
-   canonical linked units preserve that ordered list as `support_sources`.
+   input, add one or more `--support SOURCE=SUPPORT_SOURCE` arguments. When
+   target evidence supports a normal non-`/GL` partition for a support TU,
+   select it with `--normal-support SOURCE=SUPPORT_SOURCE`. Canonical linked
+   units preserve both lists as `support_sources` and `normal_support_sources`.
    `rank-exact-backlog.py` accepts the same entry override. A canonical linked
    unit must declare `artifact_kind = "linked-pe"`, the fixed compiler/link
    profiles and harness, its unique PDB-owned symbol extent, and every semantic
