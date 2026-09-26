@@ -145,12 +145,16 @@ its manifest before writing these outputs, per the Factory artifact policy.
 
     scripts/repo-python scripts/probe-ltcg-backlog.py --source src/EnemyEclDispatcher.cpp --entry 'src/EnemyEclDispatcher.cpp=EnemyRuntimeView::DispatchEclInstruction' --support 'src/EnemyEclDispatcher.cpp=src/EclVm.cpp' --support 'src/EnemyEclDispatcher.cpp=src/AnmManager.cpp' --support 'src/EnemyEclDispatcher.cpp=src/AnmVmCreate.cpp' --profile-flag=/GS --json > "$analysis_dir/enemy-probe.json"
 
+Read `sources[].functions[]` in `enemy-probe.json`. Find the entry whose
+`address` is `0x0040E770` and set `candidate_address` to its
+`candidate_address` value. Require that field to be present; an unresolved
+probe cannot supply the candidate layout. Then run:
+
     scripts/repo-python scripts/report-ecl-dispatch-table.py --candidate build/probe-ltcg/src_EnemyEclDispatcher.cpp/source.exe --candidate-function-address "$candidate_address" --json > "$analysis_dir/enemy-layout.json"
 
-After the probe, set `candidate_address` to the linked entry address from its
-JSON; do not hard-code an old candidate address. When the worktree contains
-unrelated edits, use committed HEAD snapshots for support translation units
-rather than silently incorporating dirty source.
+Do not hard-code an old candidate address. When the worktree contains unrelated
+edits, use committed HEAD snapshots for support translation units rather than
+silently incorporating dirty source.
 
 ## ANM executor: recovery point
 
@@ -293,9 +297,8 @@ review. The four root-level `gpt-web-ecl-base*.cpp` and
 `factory-native-ghidra/` scratch directory was empty. No TH10 build or replay
 process owned these paths at cleanup. There is no retained live candidate image
 or trusted baseline in either campaign directory. Historical `.analysis/...`
-paths in knowledge rows are provenance
-labels and may no longer exist; regenerate a source-bound probe before using
-them as feedback.
+paths in knowledge rows are provenance labels and may no longer exist;
+regenerate a source-bound probe before using them as feedback.
 
 Future experiments should create a campaign manifest before large outputs,
 record source HEAD, target identity, compiler context, and cleanup disposition,
