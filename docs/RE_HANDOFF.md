@@ -286,6 +286,10 @@ three-argument `__stdcall` free function preserved the candidate callee and
 both callers byte-for-byte; it was reverted. Reopen this seam with evidence
 about destination lifetime and register allocation, not another declaration
 change.
+A controlled split-TU probe also moved only `StartSubroutine` into a separate
+`/GL` support input. The helper stayed 522 bytes with an ESI destination receiver,
+and `SpawnThread` stayed 140 bytes with a direct call and no `MOV EAX,ESI`; merely
+changing the LTCG translation-unit boundary is therefore closed as an explanation.
 
 Do not use the tempting 1,169/6,264 `Run` diagnostic produced by moving
 `argumentIndex` initialization before `StartSubroutine`'s initial stack-reservation
