@@ -1,6 +1,6 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-09-26. This file is the live recovery snapshot for ongoing exact
+Updated 2026-09-27. This file is the live recovery snapshot for ongoing exact
 reconstruction. It is deliberately short: chronological experiments and durable
 negative results belong in `docs/KNOWLEDGE_BASE.md` and Git history.
 
@@ -59,8 +59,8 @@ normalized byte score is not exactness.
 | Owner | Current live frontier |
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Target owner is 14,416 bytes. **No current candidate score is retained** because ECL support changed after the last selected dispatcher graph. Rebuild before work resumes. |
-| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-066: 9,960-byte PDB contribution; 812/8,608 normalized comparable bytes; pre-table 9,584/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. |
-| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-037: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. |
+| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-070 selected diagnostic graph: 9,964-byte PDB contribution; 1,676/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. |
+| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-041: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 151/534. |
 
 The compact local summaries are under `.analysis/gpt-web/current/`. They are
 convenience snapshots, not acceptance authority.
@@ -132,7 +132,8 @@ Closed ECL directions that should not be repeated without new evidence:
 - `volatile firstArgument` and `argumentOffset += 4` are diagnostic-only:
   volatile reaches a misleading 550-byte helper with the wrong EBP/EBX/EDI
   roles, while the offset rewrite over-optimizes the helper to 517 bytes;
-- signed `firstArgument`, local identifier renames, declaration-only moves and
+- signed `firstArgument`, local identifier renames, declaration-only moves,
+  `register argumentIndex`, pre-increment spelling for `firstArgument`, and
   adding `EnemyEclDispatcher.cpp` to the ECL `/GL` support graph leave the
   retained register blocker unchanged;
 - stack-object aliases and explicit/specialized `ReadInt` pop expansions cause
@@ -142,20 +143,20 @@ Closed ECL directions that should not be repeated without new evidence:
 
 Focused ECL diagnostic:
 
-    analysis_dir=.analysis/gpt-web/current-run
+    analysis_dir=.analysis/gpt-web/current
     mkdir -p "$analysis_dir"
     scripts/repo-python scripts/probe-ltcg-backlog.py \
       --source src/EclVm.cpp \
       --entry 'src/EclVm.cpp=EclVmHost::Run' \
       --support 'src/EclVm.cpp=src/Enemy.cpp' \
-      --json > "$analysis_dir/probe.json"
+      --json > "$analysis_dir/ecl-run-probe.json"
 
 Read the fresh `candidate_address` for target `0x0044E1A0`, then run:
 
     scripts/repo-python scripts/report-ecl-vm-table.py \
       --candidate build/probe-ltcg/src_EclVm.cpp/source.exe \
       --candidate-function-address "$candidate_address" \
-      --json > "$analysis_dir/layout.json"
+      --json > "$analysis_dir/ecl-run-layout.json"
 
 After any ECL edit:
 
@@ -163,18 +164,23 @@ After any ECL edit:
 
 ## ANM executor: current recovery point
 
-ANM-069 is the retained source-shape checkpoint:
+ANM-069 is the retained **source/TU partition** checkpoint. ANM-070 is the
+selected **diagnostic graph** and supersedes ANM-069's 1,723-byte agreement
+score:
 
-- selected direct-entry /GL /GS graph uses AnmManager.cpp as the primary TU
-  with RandomMath.cpp and AnmVmCreate.cpp as support;
+- the retained source/TU partition uses AnmManager.cpp as the primary TU with
+  RandomMath.cpp and AnmVmCreate.cpp as support; the selected ANM-070 diagnostic
+  graph additionally includes AnmVmId.cpp to preserve the exact GetVm private
+  receiver;
 - AnmLoadedView::CreateVmVariant0 at 0x00448D00 remains in AnmManager.cpp,
   while AnmLoadedView::InitializeVm at 0x00449870 is split to
   AnmVmCreate.cpp; maintained TU names are descriptive only;
 - ExecuteScript keeps the target 0xFC stack frame and exact 9,588/9,588
   pre-table span; the PDB contribution remains 9,964 bytes including the
   376-byte absolute jump table;
-- normalized comparable agreement rises sharply from ANM-068's 910/8,599 to
-  1,723/8,599 with no change to owner size;
+- the retained source/TU partition can produce 1,723/8,599 in an incomplete
+  graph, but that number is not a valid baseline because it omits the
+  target-exact AnmVmIdView::GetVm private-ABI context;
 - 92/92 physical selector groups remain in target order and all 85 target
   OR EDI,-1 loop-tail restores remain present;
 - a fresh source-scope cold replay remains exact at 92/92 configured
@@ -184,13 +190,11 @@ ANM-069 is the retained source-shape checkpoint:
 - ANM-068's target-observed SCALE_TIME Y-before-X source form remains retained.
   The TU/WPO split improves whole-owner allocation rather than changing script
   semantics;
-- ANM-070 corrects the diagnostic graph: target-exact AnmVmIdView::GetVm uses
-  a private ESI receiver. The 1,723/8,599 probe omitted AnmVmId.cpp and emitted
-  the wrong ECX receiver at child-creator call sites. Include AnmVmId.cpp as
-  /GL support for allocator work; the ABI-correct graph is 1,676/8,599 while
-  preserving the 9,964-byte owner, 0xFC frame, 9,588/9,588 pre-table and 92/92
-  selector order. Prefer the target-backed ESI ABI over the higher transient
-  1,723 score;
+- ANM-070 adds AnmVmId.cpp to the diagnostic graph because target-exact
+  AnmVmIdView::GetVm uses a private ESI receiver. The ABI-correct graph is
+  1,676/8,599 while preserving the 9,964-byte owner, 0xFC frame,
+  9,588/9,588 pre-table and 92/92 selector order. This is the only score to use
+  for further allocator work;
 - remaining open work is allocator coloring. Rebuild the saved-game-speed and
   F_MOD/F_COS/POSITION/SCALE slot map from the ABI-correct graph.
 
@@ -209,7 +213,7 @@ Recent negative ANM experiments that are closed absent new evidence include:
 
 Focused ANM diagnostic:
 
-    analysis_dir=.analysis/gpt-web/current-anm
+    analysis_dir=.analysis/gpt-web/current
     mkdir -p "$analysis_dir"
     scripts/repo-python scripts/probe-ltcg-backlog.py \
       --source src/AnmManager.cpp \
@@ -218,7 +222,7 @@ Focused ANM diagnostic:
       --support 'src/AnmManager.cpp=src/AnmVmCreate.cpp' \
       --support 'src/AnmManager.cpp=src/AnmVmId.cpp' \
       --profile-flag=/GS \
-      --json > "$analysis_dir/probe.json"
+      --json > "$analysis_dir/anm-execute-probe.json"
 
 Read the fresh candidate address for target `0x0043EE30`, then use
 `scripts/report-anm-execute-table.py` on the fresh linked image. Compare physical
@@ -250,7 +254,7 @@ Target-backed constraints to preserve when the dispatcher campaign resumes:
 
 Fresh dispatcher diagnostic:
 
-    analysis_dir=.analysis/gpt-web/current-enemy
+    analysis_dir=.analysis/gpt-web/current
     mkdir -p "$analysis_dir"
     scripts/repo-python scripts/probe-ltcg-backlog.py \
       --source src/EnemyEclDispatcher.cpp \
@@ -258,8 +262,9 @@ Fresh dispatcher diagnostic:
       --support 'src/EnemyEclDispatcher.cpp=src/EclVm.cpp' \
       --support 'src/EnemyEclDispatcher.cpp=src/AnmManager.cpp' \
       --support 'src/EnemyEclDispatcher.cpp=src/AnmVmCreate.cpp' \
+      --support 'src/EnemyEclDispatcher.cpp=src/AnmVmId.cpp' \
       --profile-flag=/GS \
-      --json > "$analysis_dir/probe.json"
+      --json > "$analysis_dir/enemy-dispatch-probe.json"
 
 Use the fresh candidate address with `scripts/report-ecl-dispatch-table.py`.
 Never hard-code an address from an old linked image.
@@ -302,21 +307,30 @@ Commit substantive, verified progress promptly with `gpt-web: ...`.
 
 ## Local analysis retention
 
-`.analysis/` is disposable scratch. The cleanup on 2026-09-26 reduced the
-current `gpt-web` campaign from 106 experiment directories / ~27MB to compact
-current-frontier summaries under:
+`.analysis/` is disposable scratch. On 2026-09-27 the active
+`.analysis/gpt-web/` campaign was compacted from roughly 63 MiB of one-off
+experiments (85 non-current directories plus 225 root snapshots/scripts) to a
+single `.analysis/gpt-web/current/` directory of about 1.2 MiB.
 
-- `.analysis/gpt-web/current/anm-execute.json`
-- `.analysis/gpt-web/current/ecl-run.json`
-- `.analysis/gpt-web/current/README.txt`
+The supported current entry point contains:
 
-Those summaries record metrics and regeneration commands only. They are not
-exactness authority. Reproducible PE/PDB/MAP files, source snapshots, permutation
-matrices and superseded negative probes were removed after their conclusions had
-been committed to Git/KNOWLEDGE_BASE.
+- `README.txt`
+- `ecl-run.json`, `ecl-run-probe.json`, `ecl-run-layout.json`,
+  `ecl-exact-replay.json`
+- `anm-execute.json`, `anm-execute-probe.json`,
+  `anm-execute-layout.json`, `anm-exact-replay.json`
+
+The compact JSON files identify the selected graph and frontier; the raw files
+preserve the corresponding probe/layout/replay evidence. They are still not
+exactness authority: canonical exactness lives in the tracked ledgers and
+replayable match units.
 
 Historical `.analysis/...` paths in `docs/KNOWLEDGE_BASE.md` are provenance
 labels and may no longer exist. If an old result becomes relevant again,
-regenerate it from current source rather than relying on the old candidate image.
-Do not delete the canonical target, pinned toolchain or provider-owned Ghidra
-state as part of scratch cleanup.
+regenerate it from current source rather than relying on an old candidate image.
+Do not preserve `*-before.cpp`, ad-hoc slot-map scripts, rejected permutation
+matrices or stale candidate PE/PDB/MAP files merely because an old note mentions
+them.
+
+Do not delete the canonical target, pinned toolchain, tracked build/config files
+or provider-owned Ghidra state as part of scratch cleanup.
