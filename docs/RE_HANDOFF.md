@@ -163,31 +163,30 @@ After any ECL edit:
 
 ## ANM executor: current recovery point
 
-ANM-068 is the retained source-shape checkpoint:
+ANM-069 is the retained source-shape checkpoint:
 
-- selected direct-entry /GL /GS graph with RandomMath.cpp support;
-- ExecuteScript now uses the target 0xFC stack frame rather than the prior
-  candidate 0x100 frame;
-- PDB contribution is 9,964 bytes: an exact 9,588/9,588 pre-table span plus the
+- selected direct-entry /GL /GS graph uses AnmManager.cpp as the primary TU
+  with RandomMath.cpp and AnmVmCreate.cpp as support;
+- AnmLoadedView::CreateVmVariant0 at 0x00448D00 remains in AnmManager.cpp,
+  while AnmLoadedView::InitializeVm at 0x00449870 is split to
+  AnmVmCreate.cpp; maintained TU names are descriptive only;
+- ExecuteScript keeps the target 0xFC stack frame and exact 9,588/9,588
+  pre-table span; the PDB contribution remains 9,964 bytes including the
   376-byte absolute jump table;
-- normalized comparable agreement rises from ANM-067's 521/8,603 to
-  910/8,599;
-- 92/92 physical selector groups remain in target order;
-- all 85 target OR EDI,-1 restores and the recovered shared-tail order remain;
-- the source-scope exact gate remains closed at 92/92 units across 17 artifacts,
-  17,331 matched bytes;
-- the frame recovery comes from removing the standalone finalScaleY source
-  scalar while retaining target-observed Y-before-X evaluation:
-  finalScale.y = GET_FLOAT_VAR(3) followed by
-  finalScale.x = GET_FLOAT_VAR(2);
-- COLOR1_TIME/COLOR2_TIME, ROTATION_TIME and COMMIT_POSITION source-shape
-  recoveries from ANM-067 remain retained. Individual physical interval lengths
-  can shift under the corrected whole-function coloring, so do not trade the
-  target frame/pre-table recovery away merely to preserve one previous local
-  interval;
-- remaining open work is stack/register coloring. In particular the target
-  saved game-speed lane and the F_MOD/F_COS/POSITION/SCALE temporary homes still
-  differ even though their high-level case semantics are already target-backed.
+- normalized comparable agreement rises sharply from ANM-068's 910/8,599 to
+  1,723/8,599 with no change to owner size;
+- 92/92 physical selector groups remain in target order and all 85 target
+  OR EDI,-1 loop-tail restores remain present;
+- a fresh source-scope cold replay remains exact at 92/92 configured
+  src/AnmManager.cpp units across 17 artifacts, 17,331 matched bytes; the
+  four 73-byte CreateVmVariant0/1/2/3 exact units are included;
+- tracking validation closes with 251 exact mappings;
+- ANM-068's target-observed SCALE_TIME Y-before-X source form remains retained.
+  The TU/WPO split improves whole-owner allocation rather than changing script
+  semantics;
+- remaining open work is allocator coloring. Rebuild the saved-game-speed and
+  F_MOD/F_COS/POSITION/SCALE slot map from this 1,723-byte-agreement graph;
+  do not guide new edits from the older 910-byte-agreement candidate.
 
 
 Do not regress VM-id semantics or exact render-layer creators to raw integer
@@ -210,6 +209,7 @@ Focused ANM diagnostic:
       --source src/AnmManager.cpp \
       --entry 'src/AnmManager.cpp=AnmRenderManagerView::ExecuteScript' \
       --support 'src/AnmManager.cpp=src/RandomMath.cpp' \
+      --support 'src/AnmManager.cpp=src/AnmVmCreate.cpp' \
       --profile-flag=/GS \
       --json > "$analysis_dir/probe.json"
 
