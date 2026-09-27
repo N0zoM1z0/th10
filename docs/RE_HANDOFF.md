@@ -184,9 +184,15 @@ ANM-069 is the retained source-shape checkpoint:
 - ANM-068's target-observed SCALE_TIME Y-before-X source form remains retained.
   The TU/WPO split improves whole-owner allocation rather than changing script
   semantics;
+- ANM-070 corrects the diagnostic graph: target-exact AnmVmIdView::GetVm uses
+  a private ESI receiver. The 1,723/8,599 probe omitted AnmVmId.cpp and emitted
+  the wrong ECX receiver at child-creator call sites. Include AnmVmId.cpp as
+  /GL support for allocator work; the ABI-correct graph is 1,676/8,599 while
+  preserving the 9,964-byte owner, 0xFC frame, 9,588/9,588 pre-table and 92/92
+  selector order. Prefer the target-backed ESI ABI over the higher transient
+  1,723 score;
 - remaining open work is allocator coloring. Rebuild the saved-game-speed and
-  F_MOD/F_COS/POSITION/SCALE slot map from this 1,723-byte-agreement graph;
-  do not guide new edits from the older 910-byte-agreement candidate.
+  F_MOD/F_COS/POSITION/SCALE slot map from the ABI-correct graph.
 
 
 Do not regress VM-id semantics or exact render-layer creators to raw integer
@@ -210,6 +216,7 @@ Focused ANM diagnostic:
       --entry 'src/AnmManager.cpp=AnmRenderManagerView::ExecuteScript' \
       --support 'src/AnmManager.cpp=src/RandomMath.cpp' \
       --support 'src/AnmManager.cpp=src/AnmVmCreate.cpp' \
+      --support 'src/AnmManager.cpp=src/AnmVmId.cpp' \
       --profile-flag=/GS \
       --json > "$analysis_dir/probe.json"
 
