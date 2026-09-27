@@ -3350,10 +3350,9 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         }
         case ANM_OP_SCALE_TIME:
         {
-            const float finalScaleY = GET_FLOAT_VAR(3);
             AnmFloat2View finalScale;
+            finalScale.y = GET_FLOAT_VAR(3);
             finalScale.x = GET_FLOAT_VAR(2);
-            finalScale.y = finalScaleY;
             vm->StartScaleInterpolation(
                 reinterpret_cast<AnmFloat2View *>(&vm->scaleX),
                 &finalScale,

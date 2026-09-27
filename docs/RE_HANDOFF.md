@@ -163,28 +163,32 @@ After any ECL edit:
 
 ## ANM executor: current recovery point
 
-ANM-067 is the retained source-shape checkpoint:
+ANM-068 is the retained source-shape checkpoint:
 
 - selected direct-entry /GL /GS graph with RandomMath.cpp support;
-- 9,980-byte PDB contribution versus the 9,587-byte target executable owner;
-- 521/8,603 normalized comparable bytes;
-- pre-table span 9,604/9,588 (+16);
+- ExecuteScript now uses the target 0xFC stack frame rather than the prior
+  candidate 0x100 frame;
+- PDB contribution is 9,964 bytes: an exact 9,588/9,588 pre-table span plus the
+  376-byte absolute jump table;
+- normalized comparable agreement rises from ANM-067's 521/8,603 to
+  910/8,599;
 - 92/92 physical selector groups remain in target order;
 - all 85 target OR EDI,-1 restores and the recovered shared-tail order remain;
-- POSITION remains 171/171 and NOP/interrupt-plus-alternate remains 184/184;
-- COLOR1_TIME and COLOR2_TIME are now 173/173 by preserving target RGB-only
-  initial temporaries and B/G/R evaluation order;
-- ROTATION_TIME is now 290/290 by evaluating final Z/Y/X before duration and
-  copying both tangents from target-observed zero-vector storage at 0x491C14;
-- COMMIT_POSITION is 66/66 and the following ALLOC_VERTICES is 76/76 after
-  clearing positionOffset fields directly instead of constructing a zero
-  Float3 temporary;
-- SCALE_TIME improves from 139/153 to 145/153. Its remaining eight bytes are a
-  stack-home mismatch (target saved-Y at ESP+0xA0, candidate +0x4C), not an
-  arithmetic/semantic gap;
-- POSITION_TIME is still 347/344 and ALPHA1_TIME 81/84. Continue by recovering
-  neighboring lifetime/coloring; do not revert target-sized groups merely to
-  raise the transient whole-owner byte score.
+- the source-scope exact gate remains closed at 92/92 units across 17 artifacts,
+  17,331 matched bytes;
+- the frame recovery comes from removing the standalone finalScaleY source
+  scalar while retaining target-observed Y-before-X evaluation:
+  finalScale.y = GET_FLOAT_VAR(3) followed by
+  finalScale.x = GET_FLOAT_VAR(2);
+- COLOR1_TIME/COLOR2_TIME, ROTATION_TIME and COMMIT_POSITION source-shape
+  recoveries from ANM-067 remain retained. Individual physical interval lengths
+  can shift under the corrected whole-function coloring, so do not trade the
+  target frame/pre-table recovery away merely to preserve one previous local
+  interval;
+- remaining open work is stack/register coloring. In particular the target
+  saved game-speed lane and the F_MOD/F_COS/POSITION/SCALE temporary homes still
+  differ even though their high-level case semantics are already target-backed.
+
 
 Do not regress VM-id semantics or exact render-layer creators to raw integer
 APIs just to change layout. The current open classes are POSITION/interpolation
