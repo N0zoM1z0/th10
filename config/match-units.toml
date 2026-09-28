@@ -4625,3 +4625,21 @@ linkages = [
   { offset = 0xDD, type = "DIR32", symbol = "__real@41c00000", target = 0x00470BE8 },
   { offset = 0xE6, type = "DIR32", symbol = "__real@41c00000", target = 0x00470BE8 },
 ]
+
+[units.ascii-manager-ensure-selection-vm]
+artifact_kind = "linked-pe"
+source = "src/FrontEnd.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp"]
+pdb_source = "src/FrontEnd.cpp"
+output_dir = "build/match-linked/AsciiManagerEnsureSelectionVm"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateShotType@FrontEndControllerView@@SGHPAU1@@Z"
+functions = ["AsciiManagerView::EnsureSelectionVm"]
+symbol = "?EnsureSelectionVm@AsciiManagerView@@QAEHMM@Z"
+target_address = 0x0040C540
+size = 75
+linkages = [
+  { offset = 0x38, type = "REL32", symbol = "?CreateVmAtScreenVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z", target = 0x00448D50 },
+]

@@ -800,6 +800,7 @@ struct AsciiManagerView
     void AddFormatText(AnmFloat3View *position, const char *format, ...);
     void AddSmallFormatText(AnmFloat3View *position, const char *format, ...);
     int AddGuiFormatText(AnmFloat3View *position, const char *format, ...);
+    int EnsureSelectionVm(float x, float y);
 
     unsigned int flags004;
     int unknown008;

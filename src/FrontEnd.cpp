@@ -366,17 +366,6 @@ static void DisableChildVmTree(
         FindChildVmId(&controller->vmIds[rootIndex], scriptIndex));
 }
 
-static void EnsureAsciiSelectionVm(float x, float y)
-{
-    if (g_AsciiManagerView->auxiliaryVm89A4 == 0)
-    {
-        AnmFloat3View position(x, y, 0.0f);
-        g_AsciiManagerView->auxiliaryVm89A4 =
-            g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(
-                6, &position).value;
-    }
-}
-
 static FrontEndStageScoreRecordView *GetFrontEndStageScoreRecord(int stage)
 {
     int shotGroup = g_ReplayShotType + g_ReplayCharacter * 3;
@@ -740,6 +729,18 @@ static void RotateDemoReplay(FrontEndControllerView *controller)
 }
 
 } // namespace
+
+int AsciiManagerView::EnsureSelectionVm(float x, float y)
+{
+    AnmFloat3View position(x, y, 0.0f);
+    int vmId = auxiliaryVm89A4;
+    if (vmId == 0)
+    {
+        vmId = asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
+        auxiliaryVm89A4 = vmId;
+    }
+    return vmId;
+}
 
 
 // TH10_FRONTEND_FUNCTION: 0x0042CDF0 FrontEndControllerView::Update
@@ -1555,7 +1556,7 @@ int __stdcall FrontEndControllerView::UpdateShotType(
         {
             if ((g_FrontEndSupervisorFlags & 0x10) == 0)
             {
-                EnsureAsciiSelectionVm(480.0f, 392.0f);
+                g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
                 FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
             }
             else
@@ -1668,7 +1669,7 @@ int __stdcall FrontEndControllerView::UpdateStage(
     case FRONT_END_SELECTION_CONFIRMED:
         if (controller->stateTimer.current == 10)
         {
-            EnsureAsciiSelectionVm(480.0f, 392.0f);
+            g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
             FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
         }
 
@@ -1904,7 +1905,7 @@ int __stdcall FrontEndControllerView::UpdateReplay(
         if (controller->stateTimer.current == 2)
         {
             FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b);
-            EnsureAsciiSelectionVm(480.0f, 392.0f);
+            g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
         }
 
         if (controller->stateTimer.current >= 32)

@@ -1,6 +1,6 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-09-27. This file is the live recovery snapshot for ongoing exact
+Updated 2026-09-28. This file is the live recovery snapshot for ongoing exact
 reconstruction. It is deliberately short: chronological experiments and durable
 negative results belong in `docs/KNOWLEDGE_BASE.md` and Git history.
 
@@ -50,6 +50,21 @@ Use this order unless new target evidence changes the dependency graph:
 4. **Close smaller Bullet/ECL backlog in parallel.** Exact leaves are useful when
    they constrain a giant owner, but do not avoid the giant owners. After a batch,
    run focused exact replays; at milestones run full replay/CI.
+
+## Recent focused exact closure
+
+- `AsciiManagerView::EnsureSelectionVm @ 0x0040C540` is now canonical exact at
+  75/75 bytes under the real `FrontEndControllerView::UpdateShotType` `/GL`
+  entry. The maintained source is a value-returning ASCII-manager member; this
+  recovers the target private ESI receiver and replaces the earlier 85-byte
+  anonymous global helper.
+- The unit `ascii-manager-ensure-selection-vm` was cold-built twice and replays
+  its sole REL32 field to `CreateVmAtScreenVariant0 @ 0x00448D50`
+  zero-difference. Tracking now closes with 252 exact mappings.
+- The four `CreateVmAtScreenVariant0/1/2/3` screen-position creators remain
+  non-exact at 93/95 bytes in the same real FrontEnd caller graph. Do not
+  promote them from the caller result; their target EDI position, EBP hidden
+  return and EBX script-index allocation remains unrecovered.
 
 ## Active giant-owner frontiers
 

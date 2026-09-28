@@ -133,6 +133,7 @@ AsciiManagerView::AddString,0x00401530,function
 AsciiManagerView::AddGuiString,0x004015C0,function
 AsciiManagerView::AddFormatText,0x00401630,function
 AsciiManagerView::AddSmallFormatText,0x00401690,function
+AsciiManagerView::EnsureSelectionVm,0x0040C540,function
 AsciiManagerView::AddGuiFormatText,0x00401700,function
 AsciiManagerDrawStrings,0x00401760,function
 AsciiManagerDrawGuiStrings,0x00401A50,function

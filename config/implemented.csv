@@ -124,6 +124,7 @@ AsciiManagerView::AddGuiString
 AsciiManagerView::AddFormatText
 AsciiManagerView::AddSmallFormatText
 AsciiManagerView::AddGuiFormatText
+AsciiManagerView::EnsureSelectionVm
 AsciiManagerDrawStrings
 AsciiManagerDrawGuiStrings
 AsciiManagerView::Initialize
