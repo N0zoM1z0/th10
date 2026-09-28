@@ -3082,6 +3082,22 @@ linkages = [
   { offset = 0x3D, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x0043EE30 },
 ]
 
+[units.anm-manager-set-vm-position]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmManagerInterrupt"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ServicePreloadedAnms@AnmRenderManagerView@@QAGHXZ"
+functions = ["AnmRenderManagerView::SetVmPosition"]
+symbol = "?SetVmPosition@AnmRenderManagerView@@QAGXUAnmVmIdView@@PBUAnmFloat3View@@@Z"
+target_address = 0x004492F0
+size = 90
+linkages = [
+  { offset = 0x06, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z", target = 0x004491C0 },
+]
+
 [units.anm-manager-mark-vm-for-deletion]
 artifact_kind = "coff"
 source = "src/AnmManager.cpp"

@@ -749,8 +749,8 @@ void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)
 }
 
 // Target 0x004492F0 updates the screen-space offset of a VM tree.
-void AnmRenderManagerView::SetVmPosition(
-    int id, const AnmFloat3View *position)
+void __stdcall AnmRenderManagerView::SetVmPosition(
+    AnmVmIdView id, const AnmFloat3View *position)
 {
     AnmVmView *vm = FindVm(id);
     if (vm == NULL)

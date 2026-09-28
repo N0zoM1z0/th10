@@ -1076,7 +1076,8 @@ struct AnmRenderManagerView
     TH10_ANM_NOINLINE void __stdcall SetVmPendingInterruptAndExecute(
         AnmVmIdView id, short interrupt);
     TH10_ANM_NOINLINE void MarkVmForDeletion(AnmVmIdView id);
-    void SetVmPosition(int id, const AnmFloat3View *position);
+    TH10_ANM_NOINLINE void __stdcall SetVmPosition(
+        AnmVmIdView id, const AnmFloat3View *position);
     void SetVmWorldPosition(int id, const AnmFloat3View *position);
     AnmFloat3View *GetVmPosition(AnmVmIdView id);
     void MarkLoadedVmsForDeletion(AnmLoadedView *loaded);
