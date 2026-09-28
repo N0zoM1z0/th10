@@ -693,8 +693,8 @@ void __stdcall AnmRenderManagerView::SetVmPendingInterrupt(
 
 // Target 0x00449250 performs the same propagation and immediately advances
 // each affected VM through the ANM executor.
-void AnmRenderManagerView::SetVmPendingInterruptAndExecute(
-    int id, short interrupt)
+void __stdcall AnmRenderManagerView::SetVmPendingInterruptAndExecute(
+    AnmVmIdView id, short interrupt)
 {
     AnmVmView *vm = FindVm(id);
     if (vm == NULL)
@@ -708,9 +708,9 @@ void AnmRenderManagerView::SetVmPendingInterruptAndExecute(
     AnmVmLayerNodeView *node = vm->layerNode.next;
     while (node != NULL)
     {
-        AnmVmView *child = static_cast<AnmVmView *>(node->owner);
-        child->pendingInterrupt = interrupt;
-        AnmRenderManagerView::ExecuteScript(child);
+        static_cast<AnmVmView *>(node->owner)->pendingInterrupt = interrupt;
+        AnmRenderManagerView::ExecuteScript(
+            static_cast<AnmVmView *>(node->owner));
         node = node->next;
     }
 }
