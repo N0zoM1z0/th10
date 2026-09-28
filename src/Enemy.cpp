@@ -311,7 +311,7 @@ void EnemyReportResourceLoadError();
 // Target 0x0044B360 receives filename in EAX plus stack sizeOut/mode; this
 // logical declaration preserves all three source values without claiming that
 // private register assignment.
-void *EnemyLoadFileBytes(
+void * __stdcall EnemyLoadFileBytes(
     const char *filename, unsigned int *sizeOut, int mode);
 void EnemyManagerClear(EnemyManagerView *manager);
 
