@@ -770,8 +770,8 @@ void __stdcall AnmRenderManagerView::SetVmPosition(
 
 // Target 0x00449350 applies TH10's playfield origin before propagating the
 // position through the same VM tree.
-void AnmRenderManagerView::SetVmWorldPosition(
-    int id, const AnmFloat3View *position)
+void __stdcall AnmRenderManagerView::SetVmWorldPosition(
+    AnmVmIdView id, const AnmFloat3View *position)
 {
     AnmVmView *vm = FindVm(id);
     if (vm == NULL)
@@ -786,10 +786,11 @@ void AnmRenderManagerView::SetVmWorldPosition(
     AnmVmLayerNodeView *node = vm->layerNode.next;
     while (node != NULL)
     {
-        AnmVmView *child = static_cast<AnmVmView *>(node->owner);
-        child->positionOffset.x = position->x + 224.0f;
-        child->positionOffset.y = position->y + 16.0f;
-        child->positionOffset.z = position->z;
+        AnmFloat3View *childPosition =
+            &static_cast<AnmVmView *>(node->owner)->positionOffset;
+        childPosition->x = position->x + 224.0f;
+        childPosition->y = position->y + 16.0f;
+        childPosition->z = position->z;
         node = node->next;
     }
 }

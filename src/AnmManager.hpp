@@ -1078,7 +1078,8 @@ struct AnmRenderManagerView
     TH10_ANM_NOINLINE void MarkVmForDeletion(AnmVmIdView id);
     TH10_ANM_NOINLINE void __stdcall SetVmPosition(
         AnmVmIdView id, const AnmFloat3View *position);
-    void SetVmWorldPosition(int id, const AnmFloat3View *position);
+    TH10_ANM_NOINLINE void __stdcall SetVmWorldPosition(
+        AnmVmIdView id, const AnmFloat3View *position);
     AnmFloat3View *GetVmPosition(AnmVmIdView id);
     void MarkLoadedVmsForDeletion(AnmLoadedView *loaded);
     void ClearVertexBuffer();
