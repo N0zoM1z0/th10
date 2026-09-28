@@ -23,6 +23,7 @@ CPbgFile::GetSize
 CPbgFile::Seek
 CPbgFile::ReadWholeFile
 CPbgFile::GetFullFilePath
+IPbgFile::~IPbgFile
 CMemoryPbgFile::Write
 CMemoryPbgFile::CMemoryPbgFile
 CMemoryPbgFile::~CMemoryPbgFile

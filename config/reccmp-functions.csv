@@ -33,6 +33,7 @@ CPbgFile::GetSize,0x00435530,function
 CPbgFile::Seek,0x00435550,function
 CPbgFile::ReadWholeFile,0x00435580,function
 CPbgFile::GetFullFilePath,0x00435610,function
+IPbgFile::~IPbgFile,0x00435690,function
 CMemoryPbgFile::Write,0x00436370,function
 CMemoryPbgFile::CMemoryPbgFile,0x00436380,function
 CMemoryPbgFile::~CMemoryPbgFile,0x004363C0,function
