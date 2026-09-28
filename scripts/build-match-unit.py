@@ -41,13 +41,21 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
         width = int(field.get("width", SUPPORTED_FIELDS.get(kind, 0)))
         if kind not in SUPPORTED_FIELDS or width != SUPPORTED_FIELDS[kind]:
             raise ValueError(f"unit {name!r} has an unsupported linkage type/width")
+        local = bool(field.get("local", False))
+        if local and kind != "DIR32":
+            raise ValueError(f"unit {name!r} local linkage fields must be DIR32")
         offset = int(field["offset"])
         extent = set(range(offset, offset + width))
         if offset < 0 or offset + width > compare_size or occupied & extent:
             raise ValueError(f"unit {name!r} has an invalid linkage extent")
         occupied.update(extent)
         symbol = field.get("symbol")
-        if (
+        if local:
+            if symbol is not None or int(field.get("addend", 0)) != 0:
+                raise ValueError(
+                    f"unit {name!r} local linkage fields cannot name a symbol/addend"
+                )
+        elif (
             not isinstance(symbol, str)
             or not symbol
             or symbol.startswith("_th10_ltcg_probe_anchor_")
@@ -57,6 +65,37 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
         addend = int(field.get("addend", 0))
         if not 0 <= target <= 0xFFFFFFFF or not -0x80000000 <= addend <= 0x7FFFFFFF:
             raise ValueError(f"unit {name!r} has an invalid linkage target/addend")
+
+    raw_spans = unit.get("data_spans", [])
+    if not isinstance(raw_spans, list):
+        raise ValueError(f"unit {name!r} data_spans must be a list")
+    spans: list[tuple[int, int]] = []
+    for span in raw_spans:
+        if not isinstance(span, dict):
+            raise ValueError(f"unit {name!r} has an invalid data span")
+        offset = int(span["offset"])
+        width = int(span["width"])
+        extent = set(range(offset, offset + width))
+        if (
+            width <= 0
+            or offset < 0
+            or offset + width > compare_size
+            or occupied & extent
+        ):
+            raise ValueError(f"unit {name!r} has an invalid data-span extent")
+        occupied.update(extent)
+        spans.append((offset, width))
+    spans.sort()
+    if spans:
+        cursor = compare_size - sum(width for _, width in spans)
+        for offset, width in spans:
+            if offset != cursor:
+                raise ValueError(
+                    f"unit {name!r} data spans must form one contiguous trailing extent"
+                )
+            cursor += width
+        if cursor != compare_size:
+            raise ValueError(f"unit {name!r} data spans leave a trailing gap")
 
 
 def load() -> dict[str, object]:
@@ -189,6 +228,8 @@ def load() -> dict[str, object]:
                 raise ValueError(f"unit {name!r} gives a COFF unit normal support sources")
             if has_gl:
                 raise ValueError(f"unit {name!r} requests LTCG for a COFF artifact")
+            if unit.get("data_spans"):
+                raise ValueError(f"unit {name!r} COFF artifacts cannot declare data spans")
             output = build_path(unit.get("object", ""), f"unit {name!r} object")
             relocations = unit.get("relocations", [])
             if not isinstance(relocations, list):

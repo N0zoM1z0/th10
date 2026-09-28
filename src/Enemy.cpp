@@ -6,6 +6,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 struct EnemyManagedVmView;
 struct EnemyManagedVmListNodeView
 {
@@ -1396,9 +1399,10 @@ EnemyFullObjectView::EnemyFullObjectView(const char *eclSubroutineName)
 // Maintained source for target 0x0040CFB0 plus its compiler-owned alignment and
 // switch tables through 0x0040D1F0. The target machine boundary uses EAX for the
 // 0x40-byte request and two stack arguments (manager, ECL subroutine name), then
-// RET 8. The ordinary signature below preserves logical values without claiming
-// that private register assignment.
-EnemyFullObjectView *EnemySpawn(
+// RET 8. The maintained __stdcall declaration preserves the callee-cleanup
+// contract and the LTCG entry symbol; the private EAX request assignment remains
+// a target-observed optimizer seam rather than a source-level parameter claim.
+EnemyFullObjectView *__stdcall EnemySpawn(
     EnemyManagerView *manager,
     const char *eclSubroutineName,
     const EnemySpawnRequestView *request)
@@ -1413,12 +1417,17 @@ EnemyFullObjectView *EnemySpawn(
     enemy->runtime.flags =
         (enemy->runtime.flags & ~0x800u) |
         ((static_cast<unsigned int>(request->setFlag0800) & 1u) << 11);
+    _ReadWriteBarrier();
     enemy->spawnLayerMask =
         static_cast<unsigned char>(1u << g_EnemySpawnLayerIndex);
 
     // Spawn and the operand lvalue family share the exact 0x20-byte variable
     // block. Aggregate copy preserves all four integer and four float values.
-    enemy->runtime.eclVariables = request->eclVariables;
+    memcpy(
+        &enemy->runtime.eclVariables,
+        &request->eclVariables,
+        sizeof(enemy->runtime.eclVariables));
+    _ReadWriteBarrier();
 
     if ((enemy->runtime.damageReductionTimer.flags & 1u) == 0)
     {
@@ -1430,7 +1439,10 @@ EnemyFullObjectView *EnemySpawn(
     }
     enemy->runtime.damageReductionTimer.current = 2;
     enemy->runtime.damageReductionTimer.subframe = 2.0f;
-    enemy->runtime.damageReductionTimer.previous = 1;
+    _ReadWriteBarrier();
+    *reinterpret_cast<volatile int *>(
+        &enemy->runtime.damageReductionTimer.previous) = 1;
+    _ReadWriteBarrier();
 
     enemy->runtime.flags =
         (enemy->runtime.flags & ~0x40000u) |
@@ -1464,15 +1476,15 @@ EnemyFullObjectView *EnemySpawn(
         case 50:
             enemy->runtime.deathEffectScript = 0x164;
             break;
-        case 10:
-        case 30:
-        case 51:
-            enemy->runtime.deathEffectScript = 0x16a;
-            break;
         case 15:
         case 35:
         case 52:
             enemy->runtime.deathEffectScript = 0x16d;
+            break;
+        case 10:
+        case 30:
+        case 51:
+            enemy->runtime.deathEffectScript = 0x16a;
             break;
         default:
             break;

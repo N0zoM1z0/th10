@@ -1217,6 +1217,37 @@ target_address = 0x0040D260
 size = 29
 linkages = [{ offset = 21, type = "DIR32", symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A", target = 0x00477704 }]
 
+[units.enemy-spawn]
+artifact_kind = "linked-pe"
+source = "src/Enemy.cpp"
+output_dir = "build/match-linked/Enemy"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadFile@EnemyEclResourceView@@UAEHPBD@Z"
+functions = ["EnemySpawn"]
+symbol = "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+target_address = 0x0040CFB0
+size = 577
+# The final selector-table byte is compiler-owned data in the PDB contribution;
+# Capstone decodes the preceding 576 bytes and the comparator checks this tail
+# explicitly as part of the complete physical extent.
+data_spans = [{ offset = 576, width = 1 }]
+linkages = [
+  { offset = 12, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 31, type = "REL32", symbol = "??0EnemyFullObjectView@@QAE@PBD@Z", target = 0x0040D830 },
+  { offset = 124, type = "DIR32", symbol = "?g_EnemySpawnLayerIndex@@3HA", target = 0x00474C74 },
+  { offset = 197, type = "DIR32", symbol = "?g_PlayerTimerScale@@3MA", target = 0x00476F78 },
+  { offset = 275, type = "REL32", symbol = "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z", target = 0x0040DC80 },
+  { offset = 375, type = "DIR32", local = true, target = 0x0040D1BC },
+  { offset = 382, type = "DIR32", local = true, target = 0x0040D1A8 },
+  { offset = 504, type = "DIR32", local = true, target = 0x0040D132 },
+  { offset = 508, type = "DIR32", local = true, target = 0x0040D13A },
+  { offset = 512, type = "DIR32", local = true, target = 0x0040D152 },
+  { offset = 516, type = "DIR32", local = true, target = 0x0040D146 },
+  { offset = 520, type = "DIR32", local = true, target = 0x0040D15C },
+]
+
 [units.enemy-ecl-resource-constructor]
 artifact_kind = "linked-pe"
 source = "src/Enemy.cpp"
@@ -1383,7 +1414,7 @@ output_dir = "build/match-linked/EnemyRuntimeCtor"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?EnemySpawn@@YAPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+entry_symbol = "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
 functions = ["EnemyRuntimeView::EnemyRuntimeView"]
 symbol = "??0EnemyRuntimeView@@QAE@XZ"
 target_address = 0x0040CC70

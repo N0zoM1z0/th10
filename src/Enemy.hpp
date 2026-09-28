@@ -467,10 +467,10 @@ typedef char EnemySpawnRequestViewSizeIs40[
 typedef char EnemySpawnRequestEclVariablesAt20[
     (offsetof(EnemySpawnRequestView, eclVariables) == 0x20) ? 1 : -1];
 
-// Descriptive maintained interfaces for the reviewed lifecycle packet. Private
-// target register ABIs that cannot be stated honestly in ordinary C++ are
-// recorded beside each function in config/functions.csv.
-EnemyFullObjectView *EnemySpawn(
+// Descriptive maintained interfaces for the reviewed lifecycle packet. The
+// __stdcall declaration records callee cleanup; the target's LTCG promotion of
+// the request into EAX remains recorded beside the function in the ledger.
+EnemyFullObjectView *__stdcall EnemySpawn(
     EnemyManagerView *manager,
     const char *eclSubroutineName,
     const EnemySpawnRequestView *request);

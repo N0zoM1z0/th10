@@ -86,12 +86,49 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
                 "offset": int(raw["offset"]),
                 "width": width,
                 "type": kind,
-                "symbol": str(raw["symbol"]),
+                "symbol": "<local>" if bool(raw.get("local", False)) else str(raw["symbol"]),
+                "local": bool(raw.get("local", False)),
                 "target": int(raw["target"]),
                 "addend": int(raw.get("addend", 0)),
             }
         )
     return sorted(result, key=lambda row: (int(row["offset"]), str(row["type"])))
+
+
+def expected_data_spans(
+    unit: dict[str, object], compare_size: int, occupied: set[int]
+) -> list[dict[str, int]]:
+    raw_spans = unit.get("data_spans", [])
+    if not isinstance(raw_spans, list):
+        raise ValueError("linked unit data_spans must be a list")
+    result: list[dict[str, int]] = []
+    for raw in raw_spans:
+        if not isinstance(raw, dict):
+            raise ValueError("linked unit contains an invalid data span")
+        offset = int(raw["offset"])
+        width = int(raw["width"])
+        extent = set(range(offset, offset + width))
+        if (
+            width <= 0
+            or offset < 0
+            or offset + width > compare_size
+            or occupied & extent
+        ):
+            raise ValueError("linked unit contains an invalid data-span extent")
+        occupied.update(extent)
+        result.append({"offset": offset, "width": width})
+    result.sort(key=lambda row: int(row["offset"]))
+    if result:
+        cursor = compare_size - sum(int(row["width"]) for row in result)
+        for row in result:
+            if int(row["offset"]) != cursor:
+                raise ValueError(
+                    "linked unit data spans must form one contiguous trailing extent"
+                )
+            cursor += int(row["width"])
+        if cursor != compare_size:
+            raise ValueError("linked unit data spans leave a trailing gap")
+    return result
 
 
 def pack_linked_value(
@@ -205,12 +242,36 @@ def compare_unit(name: str) -> dict[str, object]:
     field_report = linked_code_fields(
         candidate_image, publics, candidate_address, compared_size
     )
-    if not field_report["normalization_complete"]:
-        raise ValueError(
-            f"Capstone decoded {field_report['decoded_bytes']} of {compared_size} bytes"
-        )
     actual = list(field_report["fields"])
     expected = expected_fields(unit)
+    occupied = {
+        offset
+        for row in expected
+        for offset in range(int(row["offset"]), int(row["offset"]) + int(row["width"]))
+    }
+    data_spans = expected_data_spans(unit, compared_size, occupied)
+    if field_report["normalization_complete"]:
+        if data_spans:
+            raise ValueError(
+                "linked unit declares data spans despite complete Capstone normalization"
+            )
+    else:
+        decoded = int(field_report["decoded_bytes"])
+        cursor = decoded
+        if not data_spans:
+            raise ValueError(
+                f"Capstone decoded {decoded} of {compared_size} bytes"
+            )
+        for span in data_spans:
+            if int(span["offset"]) != cursor:
+                raise ValueError(
+                    "declared data spans do not cover the undecoded trailing extent"
+                )
+            cursor += int(span["width"])
+        if cursor != compared_size:
+            raise ValueError(
+                "declared data spans do not cover the complete undecoded trailing extent"
+            )
     actual_key = sorted(
         (int(row["offset"]), str(row["type"]), int(row["width"])) for row in actual
     )
@@ -241,18 +302,26 @@ def compare_unit(name: str) -> dict[str, object]:
         key = (int(field["offset"]), str(field["type"]), int(field["width"]))
         observed = actual_by_key[key]
         semantic = str(field["symbol"])
-        linked_symbol = aliases.get(semantic, semantic)
-        if linked_symbol.startswith(ANCHOR_PREFIX) and aliases.get(semantic) != linked_symbol:
-            raise ValueError("manifest cannot name a diagnostic anchor directly")
         expected_candidate_address = int(observed["candidate_target"]) - int(
             field["addend"]
         )
-        addresses = public_addresses.get(linked_symbol, set())
-        if addresses != {expected_candidate_address}:
-            raise ValueError(
-                f"linked field {key!r} does not resolve uniquely through {semantic!r}: "
-                f"publics={sorted(addresses)!r} expected={expected_candidate_address:#x}"
-            )
+        if bool(field["local"]):
+            if not candidate_address <= expected_candidate_address < candidate_address + compared_size:
+                raise ValueError(
+                    f"local linked field {key!r} leaves the candidate contribution: "
+                    f"target={expected_candidate_address:#x}"
+                )
+            linked_symbol = "<local>"
+        else:
+            linked_symbol = aliases.get(semantic, semantic)
+            if linked_symbol.startswith(ANCHOR_PREFIX) and aliases.get(semantic) != linked_symbol:
+                raise ValueError("manifest cannot name a diagnostic anchor directly")
+            addresses = public_addresses.get(linked_symbol, set())
+            if addresses != {expected_candidate_address}:
+                raise ValueError(
+                    f"linked field {key!r} does not resolve uniquely through {semantic!r}: "
+                    f"publics={sorted(addresses)!r} expected={expected_candidate_address:#x}"
+                )
         encoded = pack_linked_value(
             candidate,
             field,
@@ -273,6 +342,7 @@ def compare_unit(name: str) -> dict[str, object]:
                 "width": field["width"],
                 "symbol": semantic,
                 "linked_symbol": linked_symbol,
+                "local": bool(field["local"]),
                 "candidate_target": f"0x{int(observed['candidate_target']):08X}",
                 "target": f"0x{int(field['target']):08X}",
                 "addend": int(field["addend"]),
@@ -306,6 +376,8 @@ def compare_unit(name: str) -> dict[str, object]:
         "extent_source": function["extent_source"],
         "pdb_module_index": function["pdb_module_index"],
         "decoded_bytes": field_report["decoded_bytes"],
+        "normalization_complete": field_report["normalization_complete"],
+        "data_spans": data_spans,
         "linkages": replayed,
         "raw_equal": candidate_image.read_address(candidate_address, compared_size)
         == original,
