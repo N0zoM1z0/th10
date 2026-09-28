@@ -1,4 +1,5 @@
 #include "Enemy.hpp"
+#include "EclVm.hpp"
 #include "PlayerCollision.hpp"
 
 #include <math.h>
@@ -142,44 +143,33 @@ typedef char EnemyCallbackNodeViewSelfAt14[
 typedef char EnemyCallbackNodeViewOwnerAt20[
     (offsetof(EnemyCallbackNodeView, owner) == 0x20) ? 1 : -1];
 
-struct EnemyConstructorDwordView
+// TH10's 0x1098-byte Enemy ECL resource is the concrete owner of the shared
+// EclVmScriptDatabase layout. Its slot-zero AddScriptData implementation is the
+// target-local EclVm.cpp body at 0x00450220, while this derived type contributes
+// LoadPackage and LoadFile in the following vtable slots. The old two-slot base
+// vtable remains a real target artifact at 0x0046D0F0, so keep its default
+// package entry and lifecycle members while deriving from the shared database.
+struct EnemyEclResourceBaseView : EclVmScriptDatabase
 {
-    unsigned int value;
-    EnemyConstructorDwordView() : value(0) {}
-};
-typedef char EnemyConstructorDwordViewSizeIs04[
-    (sizeof(EnemyConstructorDwordView) == 0x04) ? 1 : -1];
+    EnemyEclResourceBaseView()
+    {
+        volatile unsigned int *const tail = reinterpret_cast<volatile unsigned int *>(
+            reinterpret_cast<unsigned char *>(this) + 0x1090);
+        tail[0] = 0;
+        tail[1] = 0;
+        memset(this, 0, sizeof(*this));
+    }
 
-// Target allocation at 0x40D28D is exactly 0x1098 bytes. The resource has a
-// two-slot base vtable and a three-slot derived vtable: slot 0 is inherited,
-// slot 1 is overridden by target 0x40D400, and slot 2 is added at 0x40CD20.
-// The names below describe behavior only; original type identifiers are unknown.
-struct EnemyEclResourceBaseView
-{
-    virtual int AddScriptData(void *scriptData);
     virtual int LoadPackage(const unsigned char *packageData);
 
     void *GetScriptData(int index);
 
-    int loadedScriptCount;
-    int lookupCount;
-    void *scriptData[32];
-    void *lookupTable;
-    unsigned char unknown090[0x1000];
-    EnemyConstructorDwordView tailState1090;
-    EnemyConstructorDwordView tailState1094;
-
-    EnemyEclResourceBaseView()
-    {
-        memset(this, 0, sizeof(*this));
-    }
-
     ~EnemyEclResourceBaseView()
     {
-        if (lookupTable != NULL)
+        if (subroutines != NULL)
         {
-            free(lookupTable);
-            lookupTable = NULL;
+            free(subroutines);
+            subroutines = NULL;
         }
     }
 };
@@ -187,13 +177,9 @@ struct EnemyEclResourceBaseView
 typedef char EnemyEclResourceBaseViewSizeIs1098[
     (sizeof(EnemyEclResourceBaseView) == 0x1098) ? 1 : -1];
 typedef char EnemyEclResourceBaseScriptDataAt00C[
-    (offsetof(EnemyEclResourceBaseView, scriptData) == 0x0c) ? 1 : -1];
+    (offsetof(EnemyEclResourceBaseView, files) == 0x0c) ? 1 : -1];
 typedef char EnemyEclResourceBaseLookupTableAt08C[
-    (offsetof(EnemyEclResourceBaseView, lookupTable) == 0x8c) ? 1 : -1];
-typedef char EnemyEclResourceBaseTailState1090[
-    (offsetof(EnemyEclResourceBaseView, tailState1090) == 0x1090) ? 1 : -1];
-typedef char EnemyEclResourceBaseTailState1094[
-    (offsetof(EnemyEclResourceBaseView, tailState1094) == 0x1094) ? 1 : -1];
+    (offsetof(EnemyEclResourceBaseView, subroutines) == 0x8c) ? 1 : -1];
 
 struct EnemyEclResourceView : EnemyEclResourceBaseView
 {
@@ -424,7 +410,7 @@ int EnemyEclResourceBaseView::LoadPackage(const unsigned char *packageData)
 // Target 0x0040C820-0x0040C824 indexes the target-proven 32-entry script table.
 void *EnemyEclResourceBaseView::GetScriptData(int index)
 {
-    return scriptData[index];
+    return files[index];
 }
 
 // Target 0x0040E760-0x0040E76A is the primary Enemy vtable slot-zero entry.
@@ -1099,7 +1085,7 @@ int EnemyEclResourceView::LoadFile(const char *filename)
 
     void *scriptData = EnemyLoadFileBytes(
         g_EnemyEclFilenameBuffer, NULL, 0);
-    const int result = AddScriptData(scriptData);
+    const int result = EclVmScriptDatabase::AddScriptData(scriptData);
     return result < 0 ? -1 : 0;
 }
 
@@ -1229,8 +1215,8 @@ EnemyManagerView::~EnemyManagerView()
     EnemyEclResourceView *resource = manager->scriptDatabase;
     for (int i = 0; i < 32; ++i)
     {
-        if (resource->scriptData[i] != NULL)
-            free(resource->scriptData[i]);
+        if (resource->files[i] != NULL)
+            free(resource->files[i]);
     }
 
     if (resource != NULL)
