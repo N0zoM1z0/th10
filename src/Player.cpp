@@ -545,23 +545,37 @@ __declspec(noinline) void PlayerOptionSpecialCallbackBody(
 {
     Player *player = g_Player;
     const int optionMode = player->optionMode;
+    // The retail EDI body performs each replay-coordinate load/store pair in
+    // sequence; retain that target-observed field order in the VC7.1 LTCG
+    // lowering instead of allowing the two coordinates to be batched.
+    volatile int *previousMode = &option->previousMode;
 
     if (optionMode == 0)
     {
-        if (option->previousMode != 0)
+        if (*previousMode != 0)
             reinterpret_cast<AnmVmIdView *>(&option->primaryVmId)->SetInterrupt(6);
 
-        option->replayPair3 = option->replayPair1;
-        option->previousMode = 0;
+        volatile int *replayPair3 =
+            reinterpret_cast<volatile int *>(&option->replayPair3);
+        const volatile int *replayPair1 =
+            reinterpret_cast<const volatile int *>(&option->replayPair1);
+        replayPair3[0] = replayPair1[0];
+        replayPair3[1] = replayPair1[1];
     }
     else
     {
-        if (option->previousMode == 0)
+        if (*previousMode == 0)
             reinterpret_cast<AnmVmIdView *>(&option->primaryVmId)->SetInterrupt(3);
 
-        option->replayPair0 = option->replayPair3;
-        option->previousMode = optionMode;
+        volatile int *replayPair0 =
+            reinterpret_cast<volatile int *>(&option->replayPair0);
+        const volatile int *replayPair3 =
+            reinterpret_cast<const volatile int *>(&option->replayPair3);
+        replayPair0[0] = replayPair3[0];
+        replayPair0[1] = replayPair3[1];
     }
+
+    *previousMode = optionMode;
 }
 
 // Maintained source for the Player constructor/reset/factory/destructor seam.

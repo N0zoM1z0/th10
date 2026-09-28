@@ -59,6 +59,7 @@ ReplayManager::BeginStage
 RebuildPlayerOptions
 PlayerOptionTrailCallback
 PlayerOptionSpecialCallback
+PlayerOptionSpecialCallbackBody
 PlayerDrawCallback
 PlayerUpdateCallback
 PlayerUpdateMovementAndOptions
