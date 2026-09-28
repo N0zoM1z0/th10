@@ -811,19 +811,21 @@ void AnmRenderManagerView::MarkLoadedVmsForDeletion(AnmLoadedView *loaded)
     AnmVmLayerNodeView *node = primaryVmListHead;
     while (node != NULL)
     {
+        AnmVmLayerNodeView *nextNode = node->next;
         AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
         if (vm->anmFile == loaded)
             vm->flags35C |= deletionFlag;
-        node = node->next;
+        node = nextNode;
     }
 
     node = secondaryVmListHead;
     while (node != NULL)
     {
+        AnmVmLayerNodeView *nextNode = node->next;
         AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
         if (vm->anmFile == loaded)
             vm->flags35C |= deletionFlag;
-        node = node->next;
+        node = nextNode;
     }
 }
 

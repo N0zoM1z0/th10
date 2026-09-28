@@ -3129,6 +3129,20 @@ linkages = [
   { offset = 0x58, type = "DIR32", symbol = "__real@41800000", target = 0x00470B48 },
 ]
 
+[units.anm-manager-mark-loaded-vms-for-deletion]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmManagerRelease"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Release@AnmLoadedView@@QAEXXZ"
+functions = ["AnmRenderManagerView::MarkLoadedVmsForDeletion"]
+symbol = "?MarkLoadedVmsForDeletion@AnmRenderManagerView@@QAEXPAUAnmLoadedView@@@Z"
+target_address = 0x004493E0
+size = 92
+linkages = []
+
 [units.anm-manager-get-vm-position]
 artifact_kind = "coff"
 source = "src/AnmManager.cpp"
