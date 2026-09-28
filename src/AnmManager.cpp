@@ -672,7 +672,8 @@ AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)
 
 // Target 0x00449210 sends one interrupt to a VM and, for a root VM, to every
 // following node in its child layer chain.
-void AnmRenderManagerView::SetVmPendingInterrupt(int id, short interrupt)
+void __stdcall AnmRenderManagerView::SetVmPendingInterrupt(
+    AnmVmIdView id, short interrupt)
 {
     AnmVmView *vm = FindVm(id);
     if (vm == NULL)

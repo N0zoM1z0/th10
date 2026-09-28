@@ -3048,6 +3048,22 @@ target_address = 0x004491C0
 size = 73
 linkages = []
 
+[units.anm-manager-set-vm-pending-interrupt]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmManagerInterrupt"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ServicePreloadedAnms@AnmRenderManagerView@@QAGHXZ"
+functions = ["AnmRenderManagerView::SetVmPendingInterrupt"]
+symbol = "?SetVmPendingInterrupt@AnmRenderManagerView@@QAGXUAnmVmIdView@@F@Z"
+target_address = 0x00449210
+size = 54
+linkages = [
+  { offset = 0x06, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z", target = 0x004491C0 },
+]
+
 [units.anm-manager-mark-vm-for-deletion]
 artifact_kind = "coff"
 source = "src/AnmManager.cpp"
