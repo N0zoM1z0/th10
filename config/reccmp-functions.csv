@@ -74,6 +74,9 @@ PlayerUpdateCallback,0x00426500,function
 PlayerUpdateMovementAndOptions,0x004250B0,function
 PlayerInitialize,0x004247F0,function
 Player::Player,0x004246C0,function
+PlayerTimerView::PlayerTimerView,0x004247C0,function
+PlayerOptionRuntime::PlayerOptionRuntime,0x004247D0,function
+PlayerEffectRowView::PlayerEffectRowView,0x004247E0,function
 PlayerResetRuntimeState,0x00424D90,function
 Player::~Player,0x00424ED0,function
 PlayerCreate,0x00425020,function

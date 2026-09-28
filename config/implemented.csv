@@ -64,6 +64,9 @@ PlayerUpdateCallback
 PlayerUpdateMovementAndOptions
 PlayerInitialize
 Player::Player
+PlayerTimerView::PlayerTimerView
+PlayerOptionRuntime::PlayerOptionRuntime
+PlayerEffectRowView::PlayerEffectRowView
 PlayerResetRuntimeState
 Player::~Player
 PlayerCreate
