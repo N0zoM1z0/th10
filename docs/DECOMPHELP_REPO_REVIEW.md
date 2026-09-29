@@ -35,7 +35,7 @@ TH10 接收 contract 是：
 
 | 路径 | 文件数 | 决定 |
 | --- | ---: | --- |
-| `src/` | 25（12 个 `.cpp`，含 `th_pch.cpp`；12 个 `.hpp`；`th_pch.h`） | 逐文件检查；目前四个 non-leaf 函数和 leaf 子集通过 canonical exact gate；其余逐文件结论如下 |
+| `src/` | 25（12 个 `.cpp`，含 `th_pch.cpp`；12 个 `.hpp`；`th_pch.h`） | 逐文件检查；目前五个 non-leaf 函数和 leaf 子集通过 canonical exact gate；其余逐文件结论如下 |
 | `docs/unverified/` | 537（含 510 个 `r2ghidra/pdg_*.c`） | 全部 hypothesis，不进入 canonical source |
 | `docs/compare-evidence/` | 8 | 机器报告/triage；不直接进入 `matches.csv` |
 | `portable/` | 27（12 source、14 headers、1 tool） | 语义/可移植阶段材料，exact 阶段拒绝 |
@@ -159,6 +159,24 @@ target boundary、linkage 和 origin 独立记录在 [`DECOMPHELP_AUDIT.md`](DEC
 假设，不能复制进 canonical source；这条规则也适用于外部其他文件里的 naked
 functions。
 
+### 已接收：`src/GameManager.cpp` 的 `OnDraw`
+
+外部 `GameManager.cpp` 中的 `OnDraw @ 0x004187D0` 是少数完整的自然 C++ 小函数。
+直接 IDA Pro MCP 复核得到 31-byte 边界：测试 `GameManager + 0x58` 的 bit 2，清零
+`0x00491C10` ANM manager 的 `+0x50/+0x54/+0x4C/+0x58` 四个字段，并返回 `1`。
+外部文件的其它 GameManager 行（尤其 `MainThread`/`OnUpdate` 的 volatile stub）不随
+本函数接收。
+
+本地接收文件为 [`src/GameManager.cpp`](../src/GameManager.cpp)，unit 为
+`decomphelp-game-manager-on-draw`。自然 `ZunBool`/`__fastcall` 形状和一个
+`extern "C"` ANM-manager pointer 产生完整 31-byte `/GL` PDB contribution；唯一
+`g_AnmManagerPtr` DIR32 linkage replay 到 target `0x00491C10`。两次独立 pinned VC7.1
+SP1 build6030 cold linked-PE replay 的 image SHA-256 分别为
+`d85fe054c68ddda8a1e165595895f6657193af13858126385f30135fd2c423ad` 和
+`8e5c4f7a6f3cec3a696f42d37ba42ac2c8e4bab3b217fc415af8b011afda1887`，均为 31/31、
+zero-difference。这个 exact 结论只
+确认维护 source/context 的 codegen，不声称原始 GameManager TU 或作者归属。
+
 ### 其它 `.cpp`：逐文件拒绝或保留为 open hypothesis
 
 | 文件 | 观察 | 决定/原因 |
@@ -166,7 +184,7 @@ functions。
 | `AnmManager.cpp` | 大部分目标函数是 naked 转写；含若干地址注释和全局假设 | 不吸收 naked/未闭合 TU；已有 leaf/Anm exact 必须走本地 source/unit，不继承外部命名或 owner |
 | `AsciiManager.cpp` | `RegisterChain`、`OnUpdate`、draw wrappers 多为 naked；`OnDrawLowPrioImpl @ 0x401760`、`OnDrawHighPrioImpl @ 0x401A50` 是 volatile-read/`return 0` stub，外部 report 均 0 | stub 不是 faithful source；拒绝 |
 | `GameErrorContext.cpp` | `Log @ 0x44B810` 与 `Fatal @ 0x44B8E0` 是自然 C++；后者目标为 EDI 私有 receiver | 两者均已接收并进入 canonical ledgers；`Fatal` 保留 source-local natural entry context，但不宣称公开 EDI ABI |
-| `GameManager.cpp` | `MainThread @ 0x417870`、`OnUpdate @ 0x418190` 是保持调用存活的 volatile stub；大量其它函数 naked | report `MainThread=0`；未闭合，拒绝 |
+| `GameManager.cpp` | `OnDraw @ 0x4187D0` 是自然 C++；`MainThread @ 0x417870`、`OnUpdate @ 0x418190` 是保持调用存活的 volatile stub；大量其它函数 naked | `OnDraw` 已按直接 IDA 边界和两次 linked-PE replay 接收；stub/naked rows 仍拒绝 |
 | `GameWindow.cpp` | WindowProc 和 helper 多为 naked；`InitD3DRendering @ 0x439890` 是 stub；`SetupSystemParameters @ 0x4392E0` 与 `RestoreSystemParameters @ 0x439350` 是自然 C++ | 两个 system-parameter helper 已由本地 `MainInitializeSystemParameters`/`MainRestoreSystemParameters` 在同一 target extent 上 exact，外部版本不重复吸收。WindowProc/CreateGameWindow/CheckForRunningGameInstance 仍受私有 ABI 或 report 低分限制；`InitD3DRendering=0`，拒绝 |
 | `SmollScore.cpp` | 主要 lifecycle/update/draw 都是 naked，包括地址化的原始指令 | 即使外部 report 多行 `1.0`，仍不是自然可移植 source；拒绝 |
 | `TitleScreen.cpp` | `SetState @ 0x42C5C0`、`SetSubState @ 0x42C620`、callbacks @ `0x42D2E0/0x42D2F0` 与 canonical FrontEnd rows 重叠；`PlaySoundEffectImpl @ 0x42C670`、大状态机/draw 有低分或 stub | 不重复吸收：canonical 已有 `FrontEndControllerView::SetScreenTarget`、`SetScreenStateTarget`、`FrontEndUpdateCallback`、`FrontEndDrawCallback` exact。直接 IDA 显示 `RegisterChain @ 0x42CAA0` 为 192 bytes、receiver live-in EBX，且 `AddToCalc/DrawChain` 使用 ESI/EDI + stack 的私有 seam；自然 `/GL` probes 仍保留标准 receiver 或 stack cleanup 差异，不能 exact。`PlaySoundEffectImpl` 的 target 95-byte body 同样使用 stack title + live-in EDI sound id 和 private ANM helper seams，外部 report 为 0，未吸收。`RegisterChain`（`0.5979`）、`SetState`（`0.8125`）、大 update/draw（`0.278/0.3284/0`）仍 open |
@@ -231,13 +249,16 @@ exact proof。全部拒绝直接吸收；只保留算法/负面线索。
 - `GameErrorContext::Fatal @ 0x0044B8E0`：201 bytes，两个独立 cold linked-PE replay
   exact，已进入 match unit 和全部 tracking ledgers；其 EDI receiver 仍只作为
   target-observed private context 记录。
+- `GameManager::OnDraw @ 0x004187D0`：31 bytes，两个独立 cold linked-PE replay
+  exact，唯一 ANM-manager DIR32 linkage replay 到 `0x00491C10`，已进入 match unit
+  和全部 tracking ledgers。
 - leaf 方面：此前九批的 311 个/2,103 bytes 已全部 canonical exact；完整逐行结果
   仍以 leaf CSV 为准。
 - 其它外部材料：Chain 的其余候选以及其它 `.cpp`、naked、PDG、portable、port、
   salvage 材料仍没有同时满足“直接 IDA boundary + natural source + 完整 pinned
   VC7.1 replay + exhaustive linkage”的证据，不能以 external reccmp `1.0` 批量提升。
 
-本次对 `src/Chain.cpp` 和 `src/GameErrorContext.cpp` 做了 focused replay；没有宣称
+本次对 `src/Chain.cpp`、`src/GameErrorContext.cpp` 和 `src/GameManager.cpp` 做了 focused replay；没有宣称
 whole-product cold replay、native product closure、runtime closure 或 portability 已
 完成。后续若继续处理 Chain/Title/Anm/GameManager/Player 候选，仍按单函数或小批
 focused replay，积累一批后再跑完整 cold/product gate。

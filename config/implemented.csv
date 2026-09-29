@@ -41,6 +41,7 @@ FileSystem::Encrypt
 FileSystem::CloseWriteFile
 GameErrorContext::Log
 GameErrorContext::Fatal
+GameManager::OnDraw
 CompressData
 Lzss::InitTree
 Lzss::InitEncoderState

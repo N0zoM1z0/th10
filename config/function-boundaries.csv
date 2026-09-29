@@ -389,6 +389,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004180E0,0x0041814A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00418150,0x00418161,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x00418190,0x00418797,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x4187c1 to entry; independent IDA MCP extent agrees"
+0x004187D0,0x004187EE,reviewed,high,ida-pro-mcp-direct-boundary-2026-09-29,Direct IDA Pro MCP decode is a complete 31-byte body ending in retn; no interior branch or overlap.
 0x00418810,0x0041884F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004188A0,0x0041892C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00418930,0x004189D5,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
