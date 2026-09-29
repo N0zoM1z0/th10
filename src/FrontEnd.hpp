@@ -215,6 +215,11 @@ struct FrontEndControllerView
     int DrawPractice();
     static int __stdcall UpdateScoreEntry(FrontEndControllerView *controller);
     static int __stdcall DrawScoreEntry(FrontEndControllerView *controller);
+
+    // Target 0x0042C620 keeps the screen-state/timer reset as a private
+    // controller seam.  The descriptive suffix avoids claiming the original
+    // source identifier while preserving a callable owner for replay probes.
+    void SetScreenStateTarget(int state);
 };
 
 typedef char FrontEndControllerStateAt1C[

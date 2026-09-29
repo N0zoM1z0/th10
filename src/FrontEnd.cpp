@@ -730,6 +730,13 @@ static void RotateDemoReplay(FrontEndControllerView *controller)
 
 } // namespace
 
+__declspec(noinline) void FrontEndControllerView::SetScreenStateTarget(
+    int state)
+{
+    screenState = state;
+    stateTimer.SetCurrent(0);
+}
+
 int AsciiManagerView::EnsureSelectionVm(float x, float y)
 {
     AnmFloat3View position(x, y, 0.0f);
@@ -2397,7 +2404,8 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
         }
 
         CreateVm(controller, 0x68);
-        SetScreenState(controller, FRONT_END_SCORE_ENTRY_OPENING);
+        controller->SetScreenStateTarget(
+            FRONT_END_SCORE_ENTRY_OPENING);
         CreateVm(controller, 0x98 + g_ReplayCharacter);
         int shot = g_ReplayShotType + g_ReplayCharacter * 3;
         CreateVm(controller, 0x9a + shot);
@@ -2448,7 +2456,8 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
     case FRONT_END_SCORE_ENTRY_OPENING:
         if (controller->stateTimer.current > 6)
         {
-            SetScreenState(controller, FRONT_END_SCORE_ENTRY_ACTIVE);
+            controller->SetScreenStateTarget(
+                FRONT_END_SCORE_ENTRY_ACTIVE);
             return 1;
         }
         break;
@@ -2547,14 +2556,14 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
                         reinterpret_cast<char *>(
                             g_FrontEndProfileData + 0x1d878),
                         controller->scoreEntryName);
-                    SetScreenState(
-                        controller, FRONT_END_SCORE_ENTRY_CLOSING);
+                    controller->SetScreenStateTarget(
+                        FRONT_END_SCORE_ENTRY_CLOSING);
                 }
             }
             else
             {
-                SetScreenState(
-                    controller, FRONT_END_SCORE_ENTRY_CLOSING);
+                controller->SetScreenStateTarget(
+                    FRONT_END_SCORE_ENTRY_CLOSING);
             }
             FrontEndPlaySound(FRONT_END_SOUND_SELECT);
         }
@@ -2563,8 +2572,8 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
         {
             if (controller->scoreEntryUnavailable != 0)
             {
-                SetScreenState(
-                    controller, FRONT_END_SCORE_ENTRY_CLOSING);
+                controller->SetScreenStateTarget(
+                    FRONT_END_SCORE_ENTRY_CLOSING);
                 FrontEndPlaySound(FRONT_END_SOUND_SELECT);
                 return 1;
             }
