@@ -6,7 +6,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 struct PlayerVm;
+struct AnmRenderManagerView;
+extern AnmRenderManagerView *g_AnmRenderManagerView;
 
 struct PlayerVmListNode
 {
@@ -281,7 +286,7 @@ void PlayerSetManagedVmDeleteState(unsigned int *vmId, unsigned short state);
 extern unsigned int g_PlayerLifecycleFlags;
 struct GuiView;
 extern GuiView *g_GuiView;
-extern int g_PlayerLivesDisplayCount;
+extern volatile int g_PlayerLivesDisplayCount;
 extern unsigned char g_PlayerCallbackLockDepth;
 struct PlayerCriticalSectionView { unsigned char storage[0x18]; };
 extern PlayerCriticalSectionView g_PlayerCallbackCriticalSection;
@@ -290,7 +295,10 @@ extern "C" void __stdcall LeaveCriticalSection(PlayerCriticalSectionView *sectio
 void __fastcall PlayerUnlinkCallbackNode(
     PlayerCallbackNodeView *node, void *manager);
 void PlayerMarkManagedVmPending(unsigned int vmId);
+void PlayerMarkManagedVmPendingWithManager(
+    AnmRenderManagerView *manager, unsigned int vmId);
 void GuiSetLivesDisplayCount(GuiView *gui, int count);
+void GuiSetLivesDisplayCountMember(GuiView *gui, int count);
 void PlayerMarkResourceVmsPending(void *resource);
 void PlayerDestroyAnimationCacheContents(void *cache);
 
@@ -589,7 +597,9 @@ Player::Player()
 
 void PlayerResetRuntimeState(Player *player)
 {
-    player->runtimeState = 1;
+    AnmRenderManagerView *manager;
+    volatile int *runtimeState = &player->runtimeState;
+    *runtimeState = 1;
 
     if ((player->updateTimer0.flags & 1) == 0)
     {
@@ -602,6 +612,7 @@ void PlayerResetRuntimeState(Player *player)
     player->updateTimer0.current = -1;
     player->updateTimer0.subframe = -1.0f;
     player->updateTimer0.previous = -2;
+    _ReadWriteBarrier();
 
     if ((player->updateTimer1.flags & 1) == 0)
     {
@@ -614,6 +625,7 @@ void PlayerResetRuntimeState(Player *player)
     player->updateTimer1.current = 0;
     player->updateTimer1.subframe = 0.0f;
     player->updateTimer1.previous = -1;
+    _ReadWriteBarrier();
 
     if ((player->updateTimer2.flags & 1) == 0)
     {
@@ -623,13 +635,18 @@ void PlayerResetRuntimeState(Player *player)
         player->updateTimer2.scale = &g_PlayerTimerScale;
         player->updateTimer2.flags |= 1;
     }
+    manager = g_AnmRenderManagerView;
     player->updateTimer2.current = 0;
     player->updateTimer2.subframe = 0.0f;
     player->updateTimer2.previous = -1;
+    _ReadWriteBarrier();
 
-    PlayerMarkManagedVmPending(player->modeVmId);
-    player->modeVmId = 0;
-    GuiSetLivesDisplayCount(g_GuiView, g_PlayerLivesDisplayCount);
+    GuiView *gui = g_GuiView;
+    volatile unsigned int *modeVmId = &player->modeVmId;
+    PlayerMarkManagedVmPendingWithManager(manager, *modeVmId);
+    *modeVmId = 0;
+    *modeVmId = 0;
+    GuiSetLivesDisplayCountMember(gui, g_PlayerLivesDisplayCount);
 }
 
 static void RemovePlayerCallbackNode(PlayerCallbackNodeView *node)

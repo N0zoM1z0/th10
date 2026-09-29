@@ -748,6 +748,21 @@ void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)
     }
 }
 
+// PlayerResetRuntimeState reaches the same manager operation through this
+// small owner-local bridge.  Keeping the bridge here lets the LTCG caller
+// inline the lookup while retaining the manager's natural implementation.
+void PlayerMarkManagedVmPending(unsigned int vmId)
+{
+    g_AnmRenderManagerView->MarkVmForDeletion(
+        AnmVmIdView(static_cast<int>(vmId)));
+}
+
+void PlayerMarkManagedVmPendingWithManager(
+    AnmRenderManagerView *manager, unsigned int vmId)
+{
+    manager->MarkVmForDeletion(AnmVmIdView(static_cast<int>(vmId)));
+}
+
 // Target 0x004492F0 updates the screen-space offset of a VM tree.
 void __stdcall AnmRenderManagerView::SetVmPosition(
     AnmVmIdView id, const AnmFloat3View *position)

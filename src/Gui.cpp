@@ -790,6 +790,16 @@ void GuiSetLivesDisplayCount(GuiView *gui, int count)
         gui->displayVms2[i].flags35C &= ~2u;
 }
 
+void GuiView::SetLivesDisplayCount(int count)
+{
+    GuiSetLivesDisplayCount(this, count);
+}
+
+void GuiSetLivesDisplayCountMember(GuiView *gui, int count)
+{
+    gui->SetLivesDisplayCount(count);
+}
+
 int __stdcall GuiView::UpdateStageElements(GuiView *gui)
 {
     int i;

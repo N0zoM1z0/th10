@@ -1,6 +1,6 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-09-28. This file is the live recovery snapshot for ongoing exact
+Updated 2026-09-29. This file is the live recovery snapshot for ongoing exact
 reconstruction. It is deliberately short: chronological experiments and durable
 negative results belong in `docs/KNOWLEDGE_BASE.md` and Git history.
 
@@ -65,6 +65,11 @@ Use this order unless new target evidence changes the dependency graph:
   non-exact at 93/95 bytes in the same real FrontEnd caller graph. Do not
   promote them from the caller result; their target EDI position, EBP hidden
   return and EBX script-index allocation remains unrecovered.
+- `PlayerResetRuntimeState @ 0x00424D90` is now canonical exact: the linked-PE
+  unit rooted at the `Player::Player` `/GL` entry reproduces all 273 bytes and
+  six declared DIR32/REL32 fields, including the private ESI reset ABI and the
+  tail jump into `GuiSetLivesDisplayCount`. The unit is focused-replayed after
+  the source/manifest change; no full cold replay is required for this batch.
 
 ## Active giant-owner frontiers
 

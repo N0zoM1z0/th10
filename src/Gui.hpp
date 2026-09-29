@@ -135,6 +135,7 @@ struct GuiView
     AnmLoadedView *frontAnm;
     int endingCounter;
 
+    void SetLivesDisplayCount(int count);
     static int __stdcall UpdateStageElements(GuiView *gui);
 };
 
