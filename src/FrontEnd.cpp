@@ -169,6 +169,30 @@ extern void * __stdcall FrontEndBeginSelectionTransition(
     int chainPriority);
 extern int __stdcall FrontEndFinalizeGameSelection(float value);
 
+// Target 0x0042C6D0 is a repeated front-end VM retirement seam.  It is kept
+// as a TU-visible helper so LTCG can retain the target's private EDI/ESI
+// controller/index inputs while selecting the established manager FindVm
+// receiver ABI.
+void DeleteVm(FrontEndControllerView *controller, int index)
+{
+    AnmVmIdView *id = &controller->vmIds[index];
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*id);
+    if (vm != NULL)
+    {
+        vm->pendingInterrupt = 1;
+        if (vm->layerNode.previous == NULL)
+        {
+            AnmVmLayerNodeView *node = vm->layerNode.next;
+            while (node != NULL)
+            {
+                static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 1;
+                node = node->next;
+            }
+        }
+    }
+    id->value = 0;
+}
+
 
 namespace
 {
@@ -285,15 +309,6 @@ static void InterruptVm(
 static void InterruptVmId(int id, short interrupt)
 {
     g_AnmRenderManagerView->SetVmPendingInterrupt(id, interrupt);
-}
-
-static void DeleteVm(
-    FrontEndControllerView *controller, int index)
-{
-    AnmVmIdView *id = &controller->vmIds[index];
-    if (g_AnmRenderManagerView->FindVm(id->value) != NULL)
-        InterruptVmId(id->value, 1);
-    id->value = 0;
 }
 
 static int InputRepeated(unsigned short mask)

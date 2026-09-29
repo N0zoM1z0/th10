@@ -282,6 +282,7 @@ GameWindowView::CalcExecutableChecksum
 FrontEndControllerView::Update
 FrontEndControllerView::SetScreenTarget
 FrontEndControllerView::SetScreenStateTarget
+FrontEndDeleteVm
 FrontEndControllerView::UpdateOptions
 FrontEndControllerView::RefreshOptionsDisplay
 FrontEndControllerView::UpdateKeyConfig
