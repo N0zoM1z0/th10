@@ -52,7 +52,7 @@
 | 外部 census 没有 size | 7 | 不能比较完整 extent |
 | 直接 IDA boundary + raw-exact + size 一致 | 337 / 2,549 bytes | 可进入 canonical source/replay 队列 |
 | 初始尚未进入 canonical function ledger | 311 / 2,103 bytes | 审计开始时的待吸纳候选总量 |
-| 前五批吸纳后仍未进入 canonical ledger | 150 / 1,068 bytes | 161 个 / 1,035 bytes 已通过 focused replay 并移入 canonical exact |
+| 前六批吸纳后仍未进入 canonical ledger | 115 / 779 bytes | 196 个 / 1,324 bytes 已通过 focused replay 并移入 canonical exact |
 
 逐行状态、canonical 现状和失败理由见 CSV；因此 606 个 leaf 没有被“整体
 认可”，每个地址都有可检索的审计行。
@@ -102,6 +102,11 @@ origin `unknown/indeterminate`，data-only 引用不提升 owner 结论。
 只有一个 data xref，其余没有 entry xref，因此仍保持 `module` 空、origin
 `unknown/indeterminate`，不把地址区间标签当作 owner 结论。
 
+第六批 focused replay 吸纳了 Anm 地址区间的 35 个 leaf（
+`0x00434B70`–`0x0043E570` 的稀疏地址），合计 289 bytes；同一完整 TU 下
+35/35 个 PDB contribution 逐字节 exact。全部没有 code/data entry xref，仍保持
+`module` 空、origin `unknown/indeterminate`，不把地址区间标签当作 owner 结论。
+
 后续候选会按模块和可复现批次逐步进入 `DecomphelpLeafAccessors.cpp`
 的完整 TU，并分别建立 canonical match unit；未通过的候选保留在 CSV，不得
 写入 `matches.csv`。
@@ -121,8 +126,8 @@ origin `unknown/indeterminate`，data-only 引用不提升 owner 结论。
 
 ## 5. 待处理队列
 
-当前机器清单中，扣除前五批已吸纳的 161 个后，尚未 canonical 化但已满足“直接 IDA
-boundary + 完整外部 leaf TU raw-exact”triage 的 150 个候选（1,068 bytes）按
+当前机器清单中，扣除前六批已吸纳的 196 个后，尚未 canonical 化但已满足“直接 IDA
+boundary + 完整外部 leaf TU raw-exact”triage 的 115 个候选（779 bytes）按
 地址区间分布如下：
 
 | 分类 | 候选数 | 候选字节 |
@@ -130,7 +135,7 @@ boundary + 完整外部 leaf TU raw-exact”triage 的 150 个候选（1,068 byt
 | early/ASCII | 93 | 638 |
 | Enemy-ish (remaining) | 0 | 0 |
 | Player/FrontEnd | 0 | 0 |
-| Anm | 35 | 289 |
+| Anm | 0 | 0 |
 | Anm/ECL | 22 | 141 |
 
 上表按原始区间汇总，当前 Enemy 区间已从队列扣除；下一批转向
