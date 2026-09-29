@@ -50,6 +50,7 @@ FileSystem::Decrypt,0x0044B0D0,function
 FileSystem::Encrypt,0x0044B220,function
 FileSystem::CloseWriteFile,0x0044B7E0,function
 GameErrorContext::Log,0x0044B810,function
+GameErrorContext::Fatal,0x0044B8E0,function
 CompressData,0x004359B0,function
 Lzss::InitTree,0x00435FA0,function
 Lzss::InitEncoderState,0x00435FD0,function

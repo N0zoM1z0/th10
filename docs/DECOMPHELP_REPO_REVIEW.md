@@ -35,7 +35,7 @@ TH10 接收 contract 是：
 
 | 路径 | 文件数 | 决定 |
 | --- | ---: | --- |
-| `src/` | 25（12 个 `.cpp`，含 `th_pch.cpp`；12 个 `.hpp`；`th_pch.h`） | 逐文件检查；目前三个 non-leaf 函数和 leaf 子集通过 canonical exact gate；其余逐文件结论如下 |
+| `src/` | 25（12 个 `.cpp`，含 `th_pch.cpp`；12 个 `.hpp`；`th_pch.h`） | 逐文件检查；目前四个 non-leaf 函数和 leaf 子集通过 canonical exact gate；其余逐文件结论如下 |
 | `docs/unverified/` | 537（含 510 个 `r2ghidra/pdg_*.c`） | 全部 hypothesis，不进入 canonical source |
 | `docs/compare-evidence/` | 8 | 机器报告/triage；不直接进入 `matches.csv` |
 | `portable/` | 27（12 source、14 headers、1 tool） | 语义/可移植阶段材料，exact 阶段拒绝 |
@@ -72,7 +72,7 @@ callback 字段，并在 flags bit 0 置位时调用 `j__free @ 0x004524A1`。ID
 | cold replay 2 | PE SHA-256 `03ca769e677177c401e3fd96529d7b9c2d3c35be8888f108f1424d5bdc8726d0`，114/114 |
 | ledger | `config/functions.csv`、`reccmp-functions.csv`、`implemented.csv`、`matches.csv` 和 `match-units.toml` 已接通 |
 
-这是本次 repo review 中新增的三个 non-leaf canonical exact 之一。origin 仍保持原有
+这是本次 repo review 中新增的四个 non-leaf canonical exact 之一。origin 仍保持原有
 target ledger 的 `authored_game / GameUnassigned` 结论；exact replay 不被用来推断
 原始作者或生产 TU。
 
@@ -125,14 +125,26 @@ unit 为 `decomphelp-game-error-log`。为得到 target-observed register lifeti
 | entry context | `GameErrorContext::Fatal`（目标 `Log` 的 201-byte WPO contribution 在该同 TU context 下闭合；直接以 `Log` 为 entry 会得到不同 extent） |
 | PDB contribution | 完整 201 bytes，Capstone 5.0.6 解码完整 extent |
 | declared linkage | 12 fields：`__chkstk`、cookie、critical-section `DIR32 +0x48`（两次）、Enter/LeaveCriticalSection、`g_LogLockDepth`（四次）、`_vsprintf`、cookie check |
-| cold replay 1 | PE SHA-256 `1c4acd39506c75a6a9b8d4b635984f43804e296222f564ae8d460722db7e856e`，201/201 |
-| cold replay 2 | PE SHA-256 `0ae6d9be91eb311a5056d47b889d98c1db5bf29efd2e97c7262dccccddb7fed6`，201/201 |
+| cold replay 1 | PE SHA-256 `b59502d2cf755cdd239d6772d956a2220caef72d041dfb4b4ad6efac4c873ace`，201/201 |
+| cold replay 2 | PE SHA-256 `3e7f8b7b4e4dd5a9f2614366de2410a4fde073229c53e5e49442d0f683427965`，201/201 |
 | ledger | `functions.csv`、`reccmp-functions.csv`、`implemented.csv`、`matches.csv` 和 `match-units.toml` 已接通 |
 
-同一外部文件的 `Fatal @ 0x0044B8E0` 仍不接收：直接 IDA 显示它同样是 201-byte
-`/GS` body，但目标保留 EDI 私有 receiver；当前自然 `Fatal` source 在 tested context
-为 210 bytes，尚未闭合目标 ABI、边界和 codegen，故只记录为 open，不以 `Log` 的 exact
-结果推断它。
+同一外部文件的 `Fatal @ 0x0044B8E0` 也已接收。直接 IDA 显示它是完整 201-byte
+`/GS` body，目标保留 EDI 私有 receiver、在 `+0x2004` 写 fatal flag，并返回 format
+指针。将外部 `void` 草稿改为自然 `char *` 返回，在同一 TU 加入只用于 entry-context
+的自然调用根后，pinned VC7.1 linked-PE 贡献闭合为完整 201 bytes；目标体的十一条
+import/global/runtime linkage 均已显式 replay。这个 entry root 不是 target mapping，也
+不把 EDI 私有寄存器提升为公开 source calling convention。
+
+| 项目 | 结果 |
+| --- | --- |
+| unit | `decomphelp-game-error-fatal` |
+| entry context | source-local `ProbeFatalRoot`（自然地调用全局 `GameErrorContext::Fatal`；仅用于 WPO register lifetime） |
+| PDB contribution | 完整 201 bytes，Capstone 5.0.6 解码完整 extent |
+| declared linkage | 11 fields：cookie、critical-section `DIR32 +0x48`（两次）、Enter/LeaveCriticalSection、`g_LogLockDepth`（四次）、`_vsprintf`、cookie check |
+| cold replay 1 | PE SHA-256 `eed84de81ca1e0e7f4152062532eb886213684f0e8850aab958c0f83ec741821`，201/201 |
+| cold replay 2 | PE SHA-256 `8c05a9314240bad2e55e1e2113515c34f675d0c27ca3e99e649f6625ea006f03`，201/201 |
+| ledger | `functions.csv`、`reccmp-functions.csv`、`implemented.csv`、`matches.csv` 和 `match-units.toml` 已接通 |
 
 ### Leaf source：局部接收、其余逐行保留
 
@@ -153,11 +165,11 @@ functions。
 | --- | --- | --- |
 | `AnmManager.cpp` | 大部分目标函数是 naked 转写；含若干地址注释和全局假设 | 不吸收 naked/未闭合 TU；已有 leaf/Anm exact 必须走本地 source/unit，不继承外部命名或 owner |
 | `AsciiManager.cpp` | `RegisterChain`、`OnUpdate`、draw wrappers 多为 naked；`OnDrawLowPrioImpl @ 0x401760`、`OnDrawHighPrioImpl @ 0x401A50` 是 volatile-read/`return 0` stub，外部 report 均 0 | stub 不是 faithful source；拒绝 |
-| `GameErrorContext.cpp` | `Log @ 0x44B810` 与 `Fatal @ 0x44B8E0` 是自然 C++；前者目标 201 bytes、后者目标为 EDI 私有 receiver | `Log` 已接收并进入 canonical ledgers；`Fatal` 当前自然 source 为 210 bytes 且 ABI/context 未闭合，保持 open |
+| `GameErrorContext.cpp` | `Log @ 0x44B810` 与 `Fatal @ 0x44B8E0` 是自然 C++；后者目标为 EDI 私有 receiver | 两者均已接收并进入 canonical ledgers；`Fatal` 保留 source-local natural entry context，但不宣称公开 EDI ABI |
 | `GameManager.cpp` | `MainThread @ 0x417870`、`OnUpdate @ 0x418190` 是保持调用存活的 volatile stub；大量其它函数 naked | report `MainThread=0`；未闭合，拒绝 |
 | `GameWindow.cpp` | WindowProc 和 helper 多为 naked；`InitD3DRendering @ 0x439890` 是 stub | 外部自然 helper 没有完整 target source/ABI；`InitD3DRendering=0`，拒绝 |
 | `SmollScore.cpp` | 主要 lifecycle/update/draw 都是 naked，包括地址化的原始指令 | 即使外部 report 多行 `1.0`，仍不是自然可移植 source；拒绝 |
-| `TitleScreen.cpp` | `SetState @ 0x42C5C0`、`SetSubState @ 0x42C620`、callbacks @ `0x42D2E0/0x42D2F0` 与 canonical FrontEnd rows 重叠；大状态机/draw 有低分或 stub | 不重复吸收：canonical 已有 `FrontEndControllerView::SetScreenTarget`、`SetScreenStateTarget`、`FrontEndUpdateCallback`、`FrontEndDrawCallback` exact。`RegisterChain`（`0.5979`）、`SetState`（`0.8125`）、大 update/draw（`0.278/0.3284/0`）仍 open |
+| `TitleScreen.cpp` | `SetState @ 0x42C5C0`、`SetSubState @ 0x42C620`、callbacks @ `0x42D2E0/0x42D2F0` 与 canonical FrontEnd rows 重叠；大状态机/draw 有低分或 stub | 不重复吸收：canonical 已有 `FrontEndControllerView::SetScreenTarget`、`SetScreenStateTarget`、`FrontEndUpdateCallback`、`FrontEndDrawCallback` exact。直接 IDA 显示 `RegisterChain @ 0x42CAA0` 为 192 bytes、receiver live-in EBX，且 `AddToCalc/DrawChain` 使用 ESI/EDI + stack 的私有 seam；自然 `/GL` probes 仍保留标准 receiver 或 stack cleanup 差异，不能 exact。`RegisterChain`（`0.5979`）、`SetState`（`0.8125`）、大 update/draw（`0.278/0.3284/0`）仍 open |
 | `main.cpp` | WinMain 周边多为 opaque/volatile stub；不是完整 game TU | 仅作调用图/全局假设参考，拒绝 |
 | `th_pch.cpp`, `th_pch.h`, `*.hpp`, `ZunBool.hpp`, `ZunResult.hpp`, `inttypes.hpp`, `diffbuild.hpp` | PCH、声明、类型和构建宏 | 不产生独立 target exact，不能作为 canonical absorption |
 
@@ -215,14 +227,17 @@ exact proof。全部拒绝直接吸收；只保留算法/负面线索。
 - `Chain::UnregisterElem @ 0x00449F60`：114 bytes，两个独立 cold linked-PE replay
   exact，已进入 match unit 和全部 tracking ledgers。
 - `GameErrorContext::Log @ 0x0044B810`：201 bytes，两个独立 cold linked-PE replay
-  exact，已进入 match unit 和全部 tracking ledgers；`Fatal` 仍 open。
+  exact，已进入 match unit 和全部 tracking ledgers。
+- `GameErrorContext::Fatal @ 0x0044B8E0`：201 bytes，两个独立 cold linked-PE replay
+  exact，已进入 match unit 和全部 tracking ledgers；其 EDI receiver 仍只作为
+  target-observed private context 记录。
 - leaf 方面：此前九批的 311 个/2,103 bytes 已全部 canonical exact；完整逐行结果
   仍以 leaf CSV 为准。
 - 其它外部材料：Chain 的其余候选以及其它 `.cpp`、naked、PDG、portable、port、
   salvage 材料仍没有同时满足“直接 IDA boundary + natural source + 完整 pinned
   VC7.1 replay + exhaustive linkage”的证据，不能以 external reccmp `1.0` 批量提升。
 
-本次只做了 `src/Chain.cpp` 的 focused replay；没有宣称 whole-product cold replay、
-native product closure、runtime closure 或 portability 已完成。后续若继续处理
-Chain/Title/Anm/GameManager/Player 候选，仍按单函数或小批 focused replay，积累一批
-后再跑完整 cold/product gate。
+本次对 `src/Chain.cpp` 和 `src/GameErrorContext.cpp` 做了 focused replay；没有宣称
+whole-product cold replay、native product closure、runtime closure 或 portability 已
+完成。后续若继续处理 Chain/Title/Anm/GameManager/Player 候选，仍按单函数或小批
+focused replay，积累一批后再跑完整 cold/product gate。

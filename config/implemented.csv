@@ -40,6 +40,7 @@ FileSystem::Decrypt
 FileSystem::Encrypt
 FileSystem::CloseWriteFile
 GameErrorContext::Log
+GameErrorContext::Fatal
 CompressData
 Lzss::InitTree
 Lzss::InitEncoderState
