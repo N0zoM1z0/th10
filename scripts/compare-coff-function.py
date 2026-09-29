@@ -271,9 +271,9 @@ def compare_unit(name: str) -> dict[str, object]:
     if not isinstance(units, dict) or name not in units or not isinstance(units[name], dict):
         raise ValueError(f"unknown match unit {name!r}")
     unit = units[name]
-    if unit.get("artifact_kind") != "coff":
+    if unit.get("artifact_kind") not in {"coff", "coff-archive"}:
         raise ValueError(
-            "this comparator requires an explicit normal-COFF artifact kind"
+            "this comparator requires an explicit normal-COFF or archive-COFF artifact kind"
         )
     size = int(unit["size"])
     compared_size = int(unit.get("compare_size", size))
@@ -342,7 +342,7 @@ def compare_unit(name: str) -> dict[str, object]:
     )
     return {
         "unit": name,
-        "artifact_kind": "coff",
+        "artifact_kind": unit["artifact_kind"],
         "result": "exact" if not differences else "mismatch",
         "symbol": unit["symbol"],
         "target_address": f"0x{address:08X}",

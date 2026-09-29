@@ -55,12 +55,19 @@ def select_units(
         wanted = set(args.unit)
         return [name for name in units if name in wanted]
     if args.source:
-        available = {str(unit["source"]) for unit in units.values()}
+        available = {
+            str(unit.get("source", unit.get("archive", "")))
+            for unit in units.values()
+        }
         unknown = sorted(set(args.source) - available)
         if unknown:
             raise ValueError(f"unknown source(s): {unknown}")
         wanted = set(args.source)
-        return [name for name, unit in units.items() if unit["source"] in wanted]
+        return [
+            name
+            for name, unit in units.items()
+            if str(unit.get("source", unit.get("archive", ""))) in wanted
+        ]
     return list(units)
 
 
@@ -88,6 +95,14 @@ def replay(
                 tuple(str(flag) for flag in unit["profile"]),
                 str(unit["object"]),
             )
+        elif kind == "coff-archive":
+            key = (
+                kind,
+                str(unit["archive"]),
+                str(unit["member"]),
+                str(unit["symbol"]),
+                str(unit["object"]),
+            )
         elif kind == "linked-pe":
             key = (
                 kind,
@@ -107,11 +122,17 @@ def replay(
     reports = []
     total_bytes = 0
     for key, group_names in groups.items():
-        kind, source, profile, artifact_name = key[:4]
+        kind = str(key[0])
+        if kind == "coff-archive":
+            archive, member, symbol, artifact_name = key[1:5]
+            source = f"{archive}!{member}"
+            profile = []
+        else:
+            _, source, profile, artifact_name = key[:4]
         artifact_path = (ROOT / str(artifact_name)).resolve()
         artifact_path.relative_to((ROOT / "build").resolve())
         removed = []
-        if kind == "coff":
+        if kind in {"coff", "coff-archive"}:
             for path in (artifact_path, artifact_path.with_suffix(".pdb")):
                 if path.exists():
                     if not path.is_file():
@@ -132,7 +153,7 @@ def replay(
             "build_returncode": built.returncode,
             "units": [],
         }
-        if kind == "coff":
+        if kind in {"coff", "coff-archive"}:
             group_report["cold_removed"] = removed
         else:
             group_report["cold_driver"] = "scripts/ltcg_link.py:cold_link"
@@ -147,7 +168,7 @@ def replay(
         for name in group_names:
             comparator = (
                 "scripts/compare-coff-function.py"
-                if kind == "coff"
+                if kind in {"coff", "coff-archive"}
                 else "scripts/compare-linked-function.py"
             )
             compared = run(
@@ -180,7 +201,10 @@ def replay(
     return {
         "result": "exact",
         "unit_count": len(names),
-        "source_count": len({str(units[name]["source"]) for name in names}),
+        "source_count": len({
+            str(units[name].get("source", units[name].get("archive", "")))
+            for name in names
+        }),
         "artifact_count": len(groups),
         "matched_bytes": total_bytes,
         "groups": reports,

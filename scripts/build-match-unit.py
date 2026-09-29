@@ -11,12 +11,13 @@ import sys
 import tomllib
 
 from ltcg_link import HARNESS_KIND, LINK_PROFILE, cold_link, tool_environment
+from runtime_archive import extract_member, verified_archive
 
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "config" / "match-units.toml"
 TARGET = ROOT / "config" / "target.toml"
-SUPPORTED_ARTIFACTS = {"coff", "linked-pe"}
+SUPPORTED_ARTIFACTS = {"coff", "coff-archive", "linked-pe"}
 SUPPORTED_FIELDS = {"DIR32": 4, "REL8": 1, "REL16": 2, "REL32": 4}
 
 
@@ -121,21 +122,71 @@ def load() -> dict[str, object]:
     for name, unit in units.items():
         if not isinstance(unit, dict):
             raise ValueError(f"unit {name!r} must be a table")
-        required = (
-            "artifact_kind",
-            "source",
-            "profile",
-            "functions",
-            "symbol",
-            "target_address",
-            "size",
-        )
+        required = ("artifact_kind", "functions", "symbol", "target_address", "size")
         missing = [field for field in required if field not in unit]
         if missing:
             raise ValueError(f"unit {name!r} lacks {', '.join(missing)}")
         kind = str(unit["artifact_kind"])
         if kind not in SUPPORTED_ARTIFACTS:
             raise ValueError(f"unit {name!r} has unsupported artifact_kind {kind!r}")
+        functions = unit["functions"]
+        if (
+            not isinstance(functions, list)
+            or not functions
+            or not all(isinstance(function, str) and function for function in functions)
+        ):
+            raise ValueError(f"unit {name!r} must contain functions")
+        if not isinstance(unit["symbol"], str) or not unit["symbol"]:
+            raise ValueError(f"unit {name!r} has an invalid symbol")
+        address = int(unit["target_address"])
+        size = int(unit["size"])
+        compare_size = int(unit.get("compare_size", size))
+        if size <= 0 or compare_size < size:
+            raise ValueError(f"unit {name!r} has an invalid comparison extent")
+        if address < text_start or address + compare_size - 1 > text_end:
+            raise ValueError(f"unit {name!r} comparison extent leaves target .text")
+        target_extents.append((address, address + compare_size, name))
+        if kind == "coff-archive":
+            archive = unit.get("archive")
+            member = unit.get("member")
+            if not isinstance(archive, str) or not archive:
+                raise ValueError(f"unit {name!r} lacks a runtime archive")
+            if not isinstance(member, str) or not member:
+                raise ValueError(f"unit {name!r} lacks a runtime archive member")
+            verified_archive(archive)
+            if "source" in unit or "profile" in unit:
+                raise ValueError(f"unit {name!r} archive artifacts cannot declare source/profile")
+            output = build_path(unit.get("object", ""), f"unit {name!r} object")
+            if output == ROOT:
+                raise ValueError(f"unit {name!r} lacks an archive object output")
+            relocations = unit.get("relocations", [])
+            if not isinstance(relocations, list):
+                raise ValueError(f"unit {name!r} relocations must be a list")
+            relocation_offsets: set[int] = set()
+            for relocation in relocations:
+                if not isinstance(relocation, dict):
+                    raise ValueError(f"unit {name!r} has an invalid relocation row")
+                offset = int(relocation["offset"])
+                if offset in relocation_offsets or not 0 <= offset <= compare_size - 4:
+                    raise ValueError(f"unit {name!r} has an invalid relocation offset")
+                relocation_offsets.add(offset)
+                if relocation.get("type") not in {"DIR32", "REL32"}:
+                    raise ValueError(f"unit {name!r} has an unsupported relocation type")
+                if not isinstance(relocation.get("symbol"), str) or not relocation["symbol"]:
+                    raise ValueError(f"unit {name!r} has an invalid relocation symbol")
+                target_value = int(relocation["target"])
+                if not 0 <= target_value <= 0xFFFFFFFF:
+                    raise ValueError(f"unit {name!r} has an invalid relocation target")
+            if unit.get("linkages"):
+                raise ValueError(f"unit {name!r} archive artifacts cannot declare linkages")
+            group = (kind, str(archive), str(member), str(unit["symbol"]), output)
+            previous_output = compile_groups.setdefault(group, output)
+            if previous_output != output:
+                raise ValueError(f"units with build group {group!r} must share one output")
+            previous_group = artifact_groups.setdefault(output, group)
+            if previous_group != group:
+                raise ValueError(f"build artifact {output.relative_to(ROOT)!s} has two owners")
+            continue
         profile = unit["profile"]
         if not isinstance(profile, list) or not profile or not all(
             isinstance(flag, str) and flag for flag in profile
@@ -201,24 +252,6 @@ def load() -> dict[str, object]:
             raise ValueError(
                 f"unit {name!r} pdb_source must be its primary or a support source"
             )
-        functions = unit["functions"]
-        if (
-            not isinstance(functions, list)
-            or not functions
-            or not all(isinstance(function, str) and function for function in functions)
-        ):
-            raise ValueError(f"unit {name!r} must contain functions")
-        if not isinstance(unit["symbol"], str) or not unit["symbol"]:
-            raise ValueError(f"unit {name!r} has an invalid symbol")
-        address = int(unit["target_address"])
-        size = int(unit["size"])
-        compare_size = int(unit.get("compare_size", size))
-        if size <= 0 or compare_size < size:
-            raise ValueError(f"unit {name!r} has an invalid comparison extent")
-        if address < text_start or address + compare_size - 1 > text_end:
-            raise ValueError(f"unit {name!r} comparison extent leaves target .text")
-        target_extents.append((address, address + compare_size, name))
-
         if kind == "coff":
             if pdb_source != source:
                 raise ValueError(f"unit {name!r} COFF pdb_source must equal source")
@@ -319,8 +352,12 @@ def main() -> int:
         if args.unit not in units:
             raise ValueError(f"unknown match unit: {args.unit}")
         unit = units[args.unit]
-        source = ROOT / str(unit["source"])
-        if unit["artifact_kind"] == "coff":
+        if unit["artifact_kind"] == "coff-archive":
+            output = ROOT / str(unit["object"])
+            extract_member(str(unit["archive"]), str(unit["member"]), output)
+            print(f"built {args.unit}: {output.relative_to(ROOT)} from pinned runtime archive")
+        elif unit["artifact_kind"] == "coff":
+            source = ROOT / str(unit["source"])
             output = ROOT / str(unit["object"])
             subprocess.run(
                 [

@@ -31,6 +31,15 @@ derives each candidate function extent from a COFF function-definition record
 or a single-function COMDAT code section; a caller-supplied target size cannot
 widen the candidate past its own section.
 
+The `artifact_kind = "coff-archive"` lane is reserved for source-less static
+runtime bodies whose complete normal-COFF member is independently hash-attested
+from the pinned VC7.1 archive. Its unit records the exact archive member,
+symbol extent, every COFF relocation and the target address resolved for each
+relocation; cold replay extracts the member afresh and applies those target
+values before comparing the full extent. This grants byte exactness only for
+that bounded library body. It does not create a maintained source mapping,
+change the library/excluded origin, or establish whole-product closure.
+
 The LTCG diagnostic compiles one selected maintained source and may also
 compile explicitly named support sources before linking them together. Support
 sources use the same `/GL` profile unless a reviewed production partition

@@ -62,6 +62,14 @@ def validate() -> dict[str, int]:
     mappings = rows("reccmp-functions.csv")
     matches = rows("matches.csv")
     implemented = set(one_column("implemented.csv"))
+    configured_units = units.get("units", {})
+    if not isinstance(configured_units, dict):
+        raise ValueError("match units must be a table")
+    archive_exact_addresses = {
+        int(row["address"], 0)
+        for row in matches
+        if configured_units.get(row["unit"], {}).get("artifact_kind") == "coff-archive"
+    }
     starts: list[int] = []
     text_start, text_end = int(pe["text_start"], 0), int(pe["text_end"], 0)
     for row in functions:
@@ -106,8 +114,10 @@ def validate() -> dict[str, int]:
     for row in origins:
         if row["origin"] not in allowed_origins or row["disposition"] not in allowed_dispositions:
             raise ValueError(f"invalid origin state at {row['address']}")
-        function = functions_by_address[int(row["address"], 0)]
-        if (row["disposition"] == "exclude") != (function["status"] == "excluded"):
+        address = int(row["address"], 0)
+        function = functions_by_address[address]
+        archive_exact = address in archive_exact_addresses and function["status"] == "exact"
+        if not archive_exact and (row["disposition"] == "exclude") != (function["status"] == "excluded"):
             raise ValueError(f"exclusion state differs from function inventory at {row['address']}")
         if row["disposition"] == "indeterminate":
             if (row["origin"] != "unknown" or row["confidence"] != "unknown"
@@ -135,9 +145,6 @@ def validate() -> dict[str, int]:
         raise ValueError("implemented.csv contains an unmapped source name")
     if implemented != mapped_names:
         raise ValueError("implemented.csv must cover every mapped source name")
-    configured_units = units.get("units", {})
-    if not isinstance(configured_units, dict):
-        raise ValueError("match units must be a table")
     matched_units: set[str] = set()
     if len(match_addresses) != len(matches):
         raise ValueError("exact match addresses must be unique")
@@ -158,15 +165,25 @@ def validate() -> dict[str, int]:
         if row["name"] not in unit["functions"]:
             raise ValueError(f"exact ledger name differs from unit {unit_name!r}")
         mapping = mappings_by_address.get(address)
-        if mapping is None or mapping["name"] != row["name"]:
+        if unit.get("artifact_kind") == "coff-archive":
+            if mapping is not None:
+                raise ValueError(f"archive exact unit {unit_name!r} unexpectedly has a source mapping")
+        elif mapping is None or mapping["name"] != row["name"]:
             raise ValueError(f"exact unit {unit_name!r} lacks its source mapping")
         function = functions_by_address[address]
         if (function["status"] != "exact" or function["match_percent"] != "100.00"
                 or function["proposed_name"] != row["name"]):
             raise ValueError(f"exact match differs from function inventory at {row['address']}")
-        expected_source = unit.get("pdb_source", unit["source"])
-        if function["source_file"] != expected_source:
-            raise ValueError(f"exact unit {unit_name!r} differs from source ledger")
+        archive_unit = unit.get("artifact_kind") == "coff-archive"
+        if archive_unit:
+            if function["source_file"] or mapping is not None:
+                raise ValueError(
+                    f"archive exact unit {unit_name!r} must remain source-less"
+                )
+        else:
+            expected_source = unit.get("pdb_source", unit["source"])
+            if function["source_file"] != expected_source:
+                raise ValueError(f"exact unit {unit_name!r} differs from source ledger")
         if boundaries_by_address[address]["state"] != "reviewed":
             raise ValueError(f"exact unit {unit_name!r} lacks a reviewed boundary")
     if matched_units != set(configured_units):

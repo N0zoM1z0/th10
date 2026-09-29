@@ -80,6 +80,12 @@ identity differs.
    `scripts/repo-python scripts/probe-exact-backlog.py --source SOURCE` performs the fixed
    normal-COFF batch diagnostic after deriving symbols and extents from the
    object itself; it grants no exactness credit.
+   Source-less VC7.1 static-runtime members use the separate
+   `artifact_kind = "coff-archive"` lane. A unit must pin the archive hash and
+   member, record the complete COFF symbol extent and every relocation's
+   target, and cold-extract that member before the ordinary comparator runs.
+   Such a unit may close a library body in the overall byte ledger while its
+   origin remains `library/exclude` and its source mapping stays empty.
 8. Add a canonical match unit and exact ledger row only after repeatable zero
    difference against the verified target.
 9. Cold-replay affected accepted units with
