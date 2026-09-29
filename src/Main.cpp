@@ -545,16 +545,16 @@ int GameWindowView::CreateGameWindow(HINSTANCE instance)
     windowClass.hCursor = LoadCursorA(NULL, IDC_ARROW);
     windowClass.hInstance = instance;
     windowClass.lpfnWndProc = WindowProc;
-    windowClass.lpszClassName = "BASE";
     g_GameWindowView.windowIsActive = TRUE;
     g_GameWindowView.windowIsInactive = FALSE;
+    windowClass.lpszClassName = "BASE";
     RegisterClassA(&windowClass);
 
     if (g_MainSupervisorView.windowed == 0)
     {
         width = 640;
         height = 480;
-        g_MainSupervisorView.gameWindow = CreateWindowExA(
+        g_GameWindowView.window = CreateWindowExA(
             0, "BASE", g_MainWindowTitle, WS_OVERLAPPEDWINDOW,
             0, 0, width, height, NULL, NULL, instance, NULL);
     }
@@ -563,14 +563,14 @@ int GameWindowView::CreateGameWindow(HINSTANCE instance)
         width = GetSystemMetrics(SM_CXDLGFRAME) * 2 + 640;
         height = GetSystemMetrics(SM_CYDLGFRAME) * 2 +
                  GetSystemMetrics(SM_CYCAPTION) + 480;
-        g_MainSupervisorView.gameWindow = CreateWindowExA(
+        g_GameWindowView.window = CreateWindowExA(
             0, "BASE", g_MainWindowTitle,
             WS_VISIBLE | WS_MINIMIZEBOX | WS_SYSMENU,
             CW_USEDEFAULT, CW_USEDEFAULT, width, height,
             NULL, NULL, instance, NULL);
     }
 
-    g_GameWindowView.window = g_MainSupervisorView.gameWindow;
+    g_MainSupervisorView.gameWindow = g_GameWindowView.window;
     if (g_GameWindowView.window == NULL)
         return 1;
 

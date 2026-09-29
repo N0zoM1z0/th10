@@ -18,7 +18,7 @@ negative results belong in `docs/KNOWLEDGE_BASE.md` and Git history.
   match ledger plus its replayable units.
 - Never use an old candidate address or normalized score after a support source
   changes. Regenerate the selected link graph first.
-- Commit substantive progress with `gpt-web: ...`.
+- Commit substantive progress with `gpt-5.6-luna-max: ...`.
 
 Before reconstruction work:
 
@@ -31,6 +31,12 @@ Before reconstruction work:
 
 For target disassembly/decompilation, also require a passing Factory
 `th10-ghidra` check for the registered target.
+
+Current ledger checkpoint (2026-09-29): 1,636 reviewed candidates, 740 source
+mappings, 939 canonical exact functions, and 97,849 canonical exact `.text`
+bytes. The authored source-present backlog is 134 functions; the Windows i386
+product build remains open. This checkpoint adds only the focused
+`main-create-game-window` linked-PE replay; it does not claim a full cold replay.
 
 ## Current roadmap
 
@@ -78,6 +84,11 @@ Use this order unless new target evidence changes the dependency graph:
 - `CompressData @ 0x004359B0` is now canonical exact in the same LZSS owner:
   its target `__stdcall` entry and `matchLength <= 2` break-even spelling
   reproduce all 1,029 bytes plus 37 malloc/ring/tree/helper link fields.
+- `GameWindowView::CreateGameWindow @ 0x00439730` is now canonical exact:
+  the target-bound linked-PE unit rooted at `GameWindowView::WindowProc`
+  reproduces all 341 bytes and 20 DIR32 fields twice. Natural source preserves
+  the target's private EBX HINSTANCE seam and writes
+  `g_GameWindowView.window` before `g_MainSupervisorView.gameWindow`.
 
 ## Active giant-owner frontiers
 

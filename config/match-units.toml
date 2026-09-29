@@ -3393,6 +3393,41 @@ relocations = [
   { offset = 0x5E, type = "DIR32", symbol = "__imp__QueryPerformanceCounter@4", target = 0x004660FC },
 ]
 
+[units.main-create-game-window]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+output_dir = "build/match-linked/MainCreateGameWindow"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z"
+functions = ["GameWindowView::CreateGameWindow"]
+symbol = "?CreateGameWindow@GameWindowView@@SAHPAUHINSTANCE__@@@Z"
+target_address = 0x00439730
+size = 341
+linkages = [
+  { offset = 0x31, type = "DIR32", symbol = "__imp__GetStockObject@4", target = 0x00466010 },
+  { offset = 0x42, type = "DIR32", symbol = "__imp__LoadCursorA@8", target = 0x00466260 },
+  { offset = 0x57, type = "DIR32", symbol = "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z", target = 0x004390E0 },
+  { offset = 0x5D, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x0C },
+  { offset = 0x67, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0, addend = 0x10 },
+  { offset = 0x73, type = "DIR32", symbol = "??_C@_04NLLCBHDK@BASE?$AA@", target = 0x0046F698 },
+  { offset = 0x79, type = "DIR32", symbol = "__imp__RegisterClassA@4", target = 0x004661F8 },
+  { offset = 0x7E, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x13D },
+  { offset = 0xA1, type = "DIR32", symbol = "?g_MainWindowTitle@@3QBDB", target = 0x0046F66C },
+  { offset = 0xA6, type = "DIR32", symbol = "??_C@_04NLLCBHDK@BASE?$AA@", target = 0x0046F698 },
+  { offset = 0xAE, type = "DIR32", symbol = "__imp__CreateWindowExA@48", target = 0x00466238 },
+  { offset = 0xB6, type = "DIR32", symbol = "__imp__GetSystemMetrics@4", target = 0x0046625C },
+  { offset = 0xF1, type = "DIR32", symbol = "?g_MainWindowTitle@@3QBDB", target = 0x0046F66C },
+  { offset = 0xF6, type = "DIR32", symbol = "??_C@_04NLLCBHDK@BASE?$AA@", target = 0x0046F698 },
+  { offset = 0xFE, type = "DIR32", symbol = "__imp__CreateWindowExA@48", target = 0x00466238 },
+  { offset = 0x107, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0 },
+  { offset = 0x10C, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 0x00491C28, addend = 0x48 },
+  { offset = 0x11E, type = "DIR32", symbol = "__imp__SendMessageA@16", target = 0x00466228 },
+  { offset = 0x135, type = "DIR32", symbol = "__imp__Sleep@4", target = 0x004660AC },
+  { offset = 0x13B, type = "DIR32", symbol = "?g_GameWindowView@@3UGameWindowView@@A", target = 0x004924F0 },
+]
+
 [units.main-restore-system-parameters]
 artifact_kind = "coff"
 source = "src/Main.cpp"
