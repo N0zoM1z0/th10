@@ -162,7 +162,7 @@ extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
 extern int FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
 extern int FrontEndUpdateResult(FrontEndControllerView *controller);
-extern int FrontEndDrawResult(FrontEndControllerView *controller);
+extern int __stdcall FrontEndDrawResult(FrontEndControllerView *controller);
 extern void FrontEndUnlockPracticeRecords();
 extern void * __stdcall FrontEndBeginSelectionTransition(
     int type, int duration, int parameter2, int parameter3, int parameter4,
