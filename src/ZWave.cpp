@@ -41,6 +41,7 @@ public:
 
     __declspec(noinline) HRESULT Reopen(ThBgmFormat *format);
     HRESULT ResetFile(bool loop);
+    HRESULT Read(BYTE *buffer, DWORD bytesToRead, DWORD *bytesRead);
 
     ~CWaveFile()
     {
@@ -86,6 +87,15 @@ public:
     HRESULT Unpause();
     HRESULT Reset();
 };
+
+// Diagnostic-only natural entry context for the target's private Play ABI.
+// The target body is reached through a whole-program call graph where the
+// receiver arrives in EAX; this ordinary forwarding root lets VC7.1 expose
+// that optimizer context without changing CSound's public declaration.
+HRESULT ProbePlayRoot(CSound *sound, DWORD priority, DWORD flags)
+{
+    return sound->Play(priority, flags);
+}
 
 class CStreamingSound : public CSound
 {
@@ -167,6 +177,45 @@ HRESULT CWaveFile::ResetFile(bool loop)
     return S_OK;
 }
 
+// TH10 0x0044DE10. Reads from the in-memory wave view or the backing file;
+// the target's private LTCG receiver is recovered by the real FillBuffer graph.
+HRESULT CWaveFile::Read(
+    BYTE *buffer,
+    DWORD bytesToRead,
+    DWORD *bytesRead)
+{
+    if (m_bIsReadingFromMemory)
+    {
+        if (m_pbDataCur == NULL)
+            return CO_E_NOTINITIALIZED;
+        if (bytesRead != NULL)
+            *bytesRead = 0;
+        if (m_pbDataCur + bytesToRead > m_pbData + m_ulDataSize)
+            bytesToRead = m_ulDataSize - (DWORD)(m_pbDataCur - m_pbData);
+        CopyMemory(buffer, m_pbDataCur, bytesToRead);
+        m_pbDataCur += bytesToRead;
+        if (bytesRead != NULL)
+            *bytesRead = bytesToRead;
+        return S_OK;
+    }
+
+    if (m_hWaveFile == NULL)
+        return CO_E_NOTINITIALIZED;
+    if (buffer == NULL || bytesRead == NULL)
+        return E_INVALIDARG;
+
+    UINT bytesIn = bytesToRead;
+    if (bytesIn > m_ck.cksize)
+        bytesIn = m_ck.cksize;
+    m_ck.cksize -= bytesIn;
+
+    DWORD size;
+    ReadFile(m_hWaveFile, buffer, bytesIn, &size, NULL);
+    if (bytesRead != NULL)
+        *bytesRead = size;
+    return S_OK;
+}
+
 // TH10 0x0044D080. The target releases each DirectSound buffer, deletes the
 // buffer-pointer array, inlines the owned CWaveFile close/destruction path and
 // clears both owned pointers.
@@ -192,6 +241,75 @@ CSound::~CSound()
         delete m_pWaveFile;
         m_pWaveFile = NULL;
     }
+}
+
+// TH10 0x0044D110. Fills a DirectSound buffer from the current wave stream,
+// repeating or silencing a short read according to the caller's flag.
+HRESULT CSound::FillBufferWithSound(
+    LPDIRECTSOUNDBUFFER soundBuffer,
+    BOOL repeatIfLarger)
+{
+    HRESULT hr;
+    VOID *lockedBuffer = NULL;
+    DWORD lockedSize = 0;
+    DWORD waveBytesRead = 0;
+
+    if (soundBuffer == NULL)
+        return CO_E_NOTINITIALIZED;
+    if (FAILED(hr = RestoreBuffer(soundBuffer, NULL)))
+        return hr;
+    if (FAILED(hr = soundBuffer->Lock(
+            0,
+            m_dwDSBufferSize,
+            &lockedBuffer,
+            &lockedSize,
+            NULL,
+            NULL,
+            0)))
+        return hr;
+
+    m_pWaveFile->ResetFile(false);
+    if (FAILED(hr = m_pWaveFile->Read(
+            (BYTE *)lockedBuffer, lockedSize, &waveBytesRead)))
+        return hr;
+
+    if (waveBytesRead == 0)
+    {
+        FillMemory(
+            (BYTE *)lockedBuffer,
+            lockedSize,
+            (BYTE)(m_pWaveFile->m_pzwf->format.wBitsPerSample == 8 ? 128 : 0));
+    }
+    else if (waveBytesRead < lockedSize)
+    {
+        if (repeatIfLarger)
+        {
+            DWORD readSoFar = waveBytesRead;
+            while (readSoFar < lockedSize)
+            {
+                if (FAILED(hr = m_pWaveFile->ResetFile(false)))
+                    return hr;
+                hr = m_pWaveFile->Read(
+                    (BYTE *)lockedBuffer + readSoFar,
+                    lockedSize - readSoFar,
+                    &waveBytesRead);
+                if (FAILED(hr))
+                    return hr;
+                readSoFar += waveBytesRead;
+            }
+        }
+        else
+        {
+            FillMemory(
+                (BYTE *)lockedBuffer + waveBytesRead,
+                lockedSize - waveBytesRead,
+                (BYTE)(
+                    m_pWaveFile->m_pzwf->format.wBitsPerSample == 8 ? 128 : 0));
+        }
+    }
+
+    soundBuffer->Unlock(lockedBuffer, lockedSize, NULL, 0);
+    return S_OK;
 }
 
 

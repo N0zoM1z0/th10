@@ -32,11 +32,12 @@ Before reconstruction work:
 For target disassembly/decompilation, also require a passing Factory
 `th10-ghidra` check for the registered target.
 
-Current ledger checkpoint (2026-09-29): 1,636 reviewed candidates, 740 source
-mappings, 939 canonical exact functions, and 97,849 canonical exact `.text`
-bytes. The authored source-present backlog is 134 functions; the Windows i386
-product build remains open. This checkpoint adds only the focused
-`main-create-game-window` linked-PE replay; it does not claim a full cold replay.
+Current ledger checkpoint (2026-09-29): 1,636 reviewed candidates, 742 source
+mappings, 940 canonical exact functions, and 97,994 canonical exact `.text`
+bytes. The authored source-present backlog is 135 functions; the Windows i386
+product build remains open. This checkpoint adds the focused
+`main-create-game-window` and `zwave-csound-play` linked-PE replays; it does not
+claim a full cold replay.
 
 ## Current roadmap
 
@@ -89,6 +90,13 @@ Use this order unless new target evidence changes the dependency graph:
   reproduces all 341 bytes and 20 DIR32 fields twice. Natural source preserves
   the target's private EBX HINSTANCE seam and writes
   `g_GameWindowView.window` before `g_MainSupervisorView.gameWindow`.
+- `CSound::Play @ 0x0044D440` is now canonical exact at 145 bytes. Direct IDA
+  confirms its private EAX receiver and five helper calls; natural
+  `CWaveFile::Read` and `CSound::FillBufferWithSound` bodies restore the real
+  callee graph. The linked unit is rooted at source-local `ProbePlayRoot`,
+  reproduces all five target-bound REL32 edges, and passes two cold replays.
+  `Read` and `FillBufferWithSound` remain source-present/non-exact; the root is
+  compiler-context evidence rather than a retail-entry ownership claim.
 
 ## Active giant-owner frontiers
 

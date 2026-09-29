@@ -378,12 +378,14 @@ FrontEndUpdateCallback
 FrontEndDrawCallback
 CSound::RestoreBuffer
 CSound::GetFreeBuffer
+CSound::FillBufferWithSound
 CSound::Play
 CSound::Reset
 CSound::SetVolume
 CSound::Stop
 CWaveFile::Reopen
 CWaveFile::ResetFile
+CWaveFile::Read
 EnemyEnableBombShield
 SoundPlayerView::ReopenBgm
 SoundPlayerView::StopBgm

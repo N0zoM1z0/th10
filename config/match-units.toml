@@ -4449,6 +4449,26 @@ linkages = [
   { offset = 0x55, type = "REL32", symbol = "_rand", target = 0x0045371B },
 ]
 
+[units.zwave-csound-play]
+artifact_kind = "linked-pe"
+source = "src/ZWave.cpp"
+output_dir = "build/match-linked/ZWavePlayRoot"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ProbePlayRoot@@YAJPAVCSound@@KK@Z"
+functions = ["CSound::Play"]
+symbol = "?Play@CSound@@QAEJKK@Z"
+target_address = 0x0044D440
+size = 145
+linkages = [
+  { offset = 0x1B, type = "REL32", symbol = "?GetFreeBuffer@CSound@@QAEPAUIDirectSoundBuffer@@XZ", target = 0x0044D370 },
+  { offset = 0x37, type = "REL32", symbol = "?RestoreBuffer@CSound@@QAEJPAUIDirectSoundBuffer@@PAH@Z", target = 0x0044D300 },
+  { offset = 0x4B, type = "REL32", symbol = "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z", target = 0x0044D110 },
+  { offset = 0x54, type = "REL32", symbol = "?Reset@CSound@@QAEJXZ", target = 0x0044D600 },
+  { offset = 0x65, type = "REL32", symbol = "?SetVolume@CSound@@QAEJH@Z", target = 0x0044D4E0 },
+]
+
 [units.zwave-csound-reset]
 artifact_kind = "linked-pe"
 source = "src/ZWave.cpp"

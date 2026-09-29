@@ -382,12 +382,14 @@ FrontEndUpdateCallback,0x0042D2E0,function
 FrontEndDrawCallback,0x0042D2F0,function
 CSound::RestoreBuffer,0x0044D300,function
 CSound::GetFreeBuffer,0x0044D370,function
+CSound::FillBufferWithSound,0x0044D110,function
 CSound::Play,0x0044D440,function
 CSound::Reset,0x0044D600,function
 CSound::SetVolume,0x0044D4E0,function
 CSound::Stop,0x0044D550,function
 CWaveFile::Reopen,0x0044DCA0,function
 CWaveFile::ResetFile,0x0044DD40,function
+CWaveFile::Read,0x0044DE10,function
 EnemyEnableBombShield,0x0040CEA0,function
 SoundPlayerView::ReopenBgm,0x0043D790,function
 SoundPlayerView::StopBgm,0x0043DAB0,function
