@@ -3,82 +3,82 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x004014D0,Fn004014D0,1048,True,sub_4014D0,26,26,26,isolated-raw-exact,exact,src/AnmManager.cpp,AsciiManagerView::ResetStrings,False,isolated-raw-exact
 0x00401C90,Fn00401C90,1609,True,sub_401C90,6,6,6,isolated-raw-exact,exact,src/AnmManager.cpp,AsciiManagerView::GetSize,False,isolated-raw-exact
 0x00401CA0,Fn00401CA0,3441,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00401CB0,Fn00401CB0,1472,True,sub_401CB0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401CC0,Fn00401CC0,1478,True,sub_401CC0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401CD0,Fn00401CD0,1210,True,sub_401CD0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401D10,Fn00401D10,1484,True,sub_401D10,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401D90,Fn00401D90,1216,True,sub_401D90,15,15,15,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401DB0,Fn00401DB0,1615,True,nullsub_6,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00401CB0,Fn00401CB0,1472,True,sub_401CB0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401CB0,False,canonical linked replay exact
+0x00401CC0,Fn00401CC0,1478,True,sub_401CC0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401CC0,False,canonical linked replay exact
+0x00401CD0,Fn00401CD0,1210,True,sub_401CD0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401CD0,False,canonical linked replay exact
+0x00401D10,Fn00401D10,1484,True,sub_401D10,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401D10,False,canonical linked replay exact
+0x00401D90,Fn00401D90,1216,True,sub_401D90,15,15,15,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401D90,False,canonical linked replay exact
+0x00401DB0,Fn00401DB0,1615,True,nullsub_6,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401DB0,False,canonical linked replay exact
 0x00401F00,Fn00401F00,1621,False,,,55,55,isolated-raw-exact,exact,src/AnmManager.cpp,AnmMatrixView::SetIdentity,False,boundary unavailable in direct IDA
 0x00401F40,Fn00401F40,1643,True,sub_401F40,15,15,15,isolated-raw-exact,exact,src/AnmManager.cpp,AnmVmTimerView::Initialize,False,isolated-raw-exact
-0x00401F60,Fn00401F60,1223,True,sub_401F60,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401F70,Fn00401F70,1229,True,sub_401F70,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401F80,Fn00401F80,1235,True,sub_401F80,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401F90,Fn00401F90,1652,True,sub_401F90,11,11,11,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00401F60,Fn00401F60,1223,True,sub_401F60,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401F60,False,canonical linked replay exact
+0x00401F70,Fn00401F70,1229,True,sub_401F70,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401F70,False,canonical linked replay exact
+0x00401F80,Fn00401F80,1235,True,sub_401F80,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401F80,False,canonical linked replay exact
+0x00401F90,Fn00401F90,1652,True,sub_401F90,11,11,11,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401F90,False,canonical linked replay exact
 0x00401FA0,Fn00401FA0,1661,True,sub_401FA0,3,3,1,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
-0x00401FB0,Fn00401FB0,1490,True,sub_401FB0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00401FC0,Fn00401FC0,1667,True,nullsub_7,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00401FB0,Fn00401FB0,1490,True,sub_401FB0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401FB0,False,canonical linked replay exact
+0x00401FC0,Fn00401FC0,1667,True,nullsub_7,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401FC0,False,canonical linked replay exact
 0x00402050,Fn00402050,3752,True,sub_402050,88,88,150,isolated-codegen-size-mismatch,exact,src/AnmManager.cpp,AnmVmView::AnmVmView,False,isolated-codegen-size-mismatch
-0x004020B0,Fn004020B0,2556,True,sub_4020B0,56,56,56,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x004020F0,Fn004020F0,1673,True,sub_4020F0,5,5,5,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00402100,Fn00402100,1680,True,sub_402100,5,5,5,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00402110,Fn00402110,1687,True,sub_402110,5,5,5,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00402120,Fn00402120,1694,True,nullsub_8,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00402130,Fn00402130,1700,True,sub_402130,5,5,5,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00402140,Fn00402140,1707,True,nullsub_9,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00402150,Fn00402150,1713,True,nullsub_10,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00402220,Fn00402220,1719,True,sub_402220,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x004020B0,Fn004020B0,2556,True,sub_4020B0,56,56,56,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004020B0,False,canonical linked replay exact
+0x004020F0,Fn004020F0,1673,True,sub_4020F0,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004020F0,False,canonical linked replay exact
+0x00402100,Fn00402100,1680,True,sub_402100,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00402100,False,canonical linked replay exact
+0x00402110,Fn00402110,1687,True,sub_402110,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00402110,False,canonical linked replay exact
+0x00402120,Fn00402120,1694,True,nullsub_8,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00402120,False,canonical linked replay exact
+0x00402130,Fn00402130,1700,True,sub_402130,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00402130,False,canonical linked replay exact
+0x00402140,Fn00402140,1707,True,nullsub_9,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00402140,False,canonical linked replay exact
+0x00402150,Fn00402150,1713,True,nullsub_10,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00402150,False,canonical linked replay exact
+0x00402220,Fn00402220,1719,True,sub_402220,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00402220,False,canonical linked replay exact
 0x004043D0,Fn004043D0,2978,False,,,59,65,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
-0x00404410,Fn00404410,220,True,sub_404410,11,11,11,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00404410,Fn00404410,220,True,sub_404410,11,11,11,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404410,False,canonical linked replay exact
 0x004045B0,Fn004045B0,4523,True,sub_4045B0,92,23,100,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x00404990,Fn00404990,38,True,sub_404990,4,4,8,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00404C60,Fn00404C60,3775,False,,,16,41,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
-0x00404C90,Fn00404C90,44,True,sub_404C90,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00404C90,Fn00404C90,44,True,sub_404C90,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404C90,False,canonical linked replay exact
 0x00404CA0,Fn00404CA0,4541,False,,,56,56,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00404CE0,Fn00404CE0,226,True,sub_404CE0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00404D30,Fn00404D30,50,True,sub_404D30,11,11,11,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00404CE0,Fn00404CE0,226,True,sub_404CE0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404CE0,False,canonical linked replay exact
+0x00404D30,Fn00404D30,50,True,sub_404D30,11,11,11,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404D30,False,canonical linked replay exact
 0x00404EC0,Fn00404EC0,3449,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00404F20,Fn00404F20,56,True,sub_404F20,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00404F20,Fn00404F20,56,True,sub_404F20,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404F20,False,canonical linked replay exact
 0x00405000,Fn00405000,2569,True,sub_405000,20,20,21,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00405020,Fn00405020,2577,True,sub_405020,20,20,21,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x004050D0,Fn004050D0,4558,True,sub_4050D0,50,50,50,isolated-raw-exact,unclassified,,,False,isolated-raw-exact
 0x00405110,Fn00405110,3782,True,sub_405110,20,20,18,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00405130,Fn00405130,2586,True,sub_405130,17,17,20,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
-0x00405150,Fn00405150,62,True,sub_405150,4,4,4,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00405160,Fn00405160,232,True,sub_405160,4,4,4,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x004051B0,Fn004051B0,238,True,sub_4051B0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00405150,Fn00405150,62,True,sub_405150,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405150,False,canonical linked replay exact
+0x00405160,Fn00405160,232,True,sub_405160,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405160,False,canonical linked replay exact
+0x004051B0,Fn004051B0,238,True,sub_4051B0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004051B0,False,canonical linked replay exact
 0x004051C0,Fn004051C0,2861,False,,,14,14,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
 0x004051F0,Fn004051F0,6005,False,,,41,37,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x00405260,Fn00405260,3457,False,,,25,25,isolated-byte-diff,absent,,,False,boundary unavailable in direct IDA
-0x00405340,Fn00405340,244,True,sub_405340,17,17,17,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00405360,Fn00405360,251,True,sub_405360,4,4,4,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00405340,Fn00405340,244,True,sub_405340,17,17,17,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405340,False,canonical linked replay exact
+0x00405360,Fn00405360,251,True,sub_405360,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405360,False,canonical linked replay exact
 0x00405380,Fn00405380,3478,False,,,3,3,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00405390,Fn00405390,257,True,sub_405390,4,4,4,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x004053A0,Fn004053A0,263,True,sub_4053A0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x004053D0,Fn004053D0,269,True,sub_4053D0,4,4,4,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x004053E0,Fn004053E0,2161,True,nullsub_11,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x004053F0,Fn004053F0,2167,True,nullsub_12,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00405390,Fn00405390,257,True,sub_405390,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405390,False,canonical linked replay exact
+0x004053A0,Fn004053A0,263,True,sub_4053A0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004053A0,False,canonical linked replay exact
+0x004053D0,Fn004053D0,269,True,sub_4053D0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004053D0,False,canonical linked replay exact
+0x004053E0,Fn004053E0,2161,True,nullsub_11,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004053E0,False,canonical linked replay exact
+0x004053F0,Fn004053F0,2167,True,nullsub_12,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004053F0,False,canonical linked replay exact
 0x00405400,Fn00405400,1726,True,sub_405400,3,3,1,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00405410,Fn00405410,5333,True,sub_405410,57,57,55,isolated-codegen-size-mismatch,exact,src/AnmManager.cpp,AnmVmTimerView::SetCurrent,False,isolated-codegen-size-mismatch
 0x00405450,Fn00405450,5350,False,,,57,55,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x00405490,Fn00405490,3486,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x004054A0,Fn004054A0,275,True,sub_4054A0,6,6,6,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00405560,Fn00405560,281,True,sub_405560,10,10,10,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x004054A0,Fn004054A0,275,True,sub_4054A0,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004054A0,False,canonical linked replay exact
+0x00405560,Fn00405560,281,True,sub_405560,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405560,False,canonical linked replay exact
 0x00405570,Fn00405570,2867,False,,,15,15,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00405580,Fn00405580,287,True,sub_405580,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00405590,Fn00405590,293,True,sub_405590,5,5,5,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00405580,Fn00405580,287,True,sub_405580,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405580,False,canonical linked replay exact
+0x00405590,Fn00405590,293,True,sub_405590,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405590,False,canonical linked replay exact
 0x004055A0,Fn004055A0,3799,False,,,29,70,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
-0x00405850,Fn00405850,299,True,sub_405850,6,6,6,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00405850,Fn00405850,299,True,sub_405850,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405850,False,canonical linked replay exact
 0x004059F0,Fn004059F0,4288,True,sub_4059F0,202,10,223,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x00405B60,Fn00405B60,4324,True,sub_405B60,42,26,36,isolated-codegen-size-mismatch,exact,src/ItemManager.cpp,GameScoreStateView::AddRank,False,isolated-codegen-size-mismatch
-0x00405B90,Fn00405B90,305,True,sub_405B90,5,5,5,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00405B90,Fn00405B90,305,True,sub_405B90,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405B90,False,canonical linked replay exact
 0x00405BA0,Fn00405BA0,3494,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00405BB0,Fn00405BB0,311,True,sub_405BB0,4,4,4,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00405BC0,Fn00405BC0,2174,True,nullsub_13,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00405BB0,Fn00405BB0,311,True,sub_405BB0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405BB0,False,canonical linked replay exact
+0x00405BC0,Fn00405BC0,2174,True,nullsub_13,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405BC0,False,canonical linked replay exact
 0x00405BE0,Fn00405BE0,4575,True,sub_405BE0,158,158,158,isolated-byte-diff,exact,src/BulletManager.cpp,BulletRuntimeView::Deactivate,False,isolated-byte-diff
 0x00405C80,Fn00405C80,3809,False,,,28,26,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
-0x00405CA0,Fn00405CA0,317,True,sub_405CA0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00405CB0,Fn00405CB0,3005,True,sub_405CB0,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00405CA0,Fn00405CA0,317,True,sub_405CA0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405CA0,False,canonical linked replay exact
+0x00405CB0,Fn00405CB0,3005,True,sub_405CB0,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405CB0,False,canonical linked replay exact
 0x00405D00,Fn00405D00,5471,True,sub_405D00,215,215,308,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x00405E10,Fn00405E10,2395,True,sub_405E10,7,7,5,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00406160,Fn00406160,5392,True,sub_406160,109,99,268,isolated-codegen-size-mismatch,exact,src/BulletManager.cpp,BulletPositionView::IsOutsidePlayfield,False,isolated-codegen-size-mismatch
@@ -86,24 +86,24 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00408660,Fn00408660,6021,True,sub_408660,80,40,84,isolated-codegen-size-mismatch,exact,src/BulletManager.cpp,BulletAngleDifference,False,isolated-codegen-size-mismatch
 0x004086B0,Fn004086B0,4917,True,sub_4086B0,91,83,234,isolated-codegen-size-mismatch,exact,src/EnemyEclDispatcher.cpp,EnemyBulletPositionView::IsOutsidePlayfield,False,isolated-codegen-size-mismatch
 0x00408730,Fn00408730,3502,False,,,25,25,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00408780,Fn00408780,323,True,sub_408780,10,10,10,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00408790,Fn00408790,68,True,sub_408790,14,14,14,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x004087C0,Fn004087C0,77,True,sub_4087C0,9,9,9,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x004087D0,Fn004087D0,83,True,sub_4087D0,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00408780,Fn00408780,323,True,sub_408780,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408780,False,canonical linked replay exact
+0x00408790,Fn00408790,68,True,sub_408790,14,14,14,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408790,False,canonical linked replay exact
+0x004087C0,Fn004087C0,77,True,sub_4087C0,9,9,9,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004087C0,False,canonical linked replay exact
+0x004087D0,Fn004087D0,83,True,sub_4087D0,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004087D0,False,canonical linked replay exact
 0x004087E0,Fn004087E0,3523,False,,,25,25,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00408800,Fn00408800,125,True,nullsub_14,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00408810,Fn00408810,2180,True,nullsub_15,1,1,1,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00408820,Fn00408820,89,True,sub_408820,6,6,6,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00408830,Fn00408830,95,True,sub_408830,5,5,5,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00408840,Fn00408840,101,True,sub_408840,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00408850,Fn00408850,107,True,sub_408850,8,8,8,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00408800,Fn00408800,125,True,nullsub_14,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408800,False,canonical linked replay exact
+0x00408810,Fn00408810,2180,True,nullsub_15,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408810,False,canonical linked replay exact
+0x00408820,Fn00408820,89,True,sub_408820,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408820,False,canonical linked replay exact
+0x00408830,Fn00408830,95,True,sub_408830,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408830,False,canonical linked replay exact
+0x00408840,Fn00408840,101,True,sub_408840,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408840,False,canonical linked replay exact
+0x00408850,Fn00408850,107,True,sub_408850,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408850,False,canonical linked replay exact
 0x00408860,Fn00408860,2491,False,,,21,21,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
 0x00408880,Fn00408880,2498,False,,,21,21,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
 0x004088A0,Fn004088A0,113,False,,,11,11,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x004088B0,Fn004088B0,329,True,sub_4088B0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x004088B0,Fn004088B0,329,True,sub_4088B0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004088B0,False,canonical linked replay exact
 0x004088C0,Fn004088C0,5119,True,sub_4088C0,75,75,69,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
-0x00408AA0,Fn00408AA0,119,True,sub_408AA0,3,3,3,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
-0x00408AB0,Fn00408AB0,335,True,sub_408AB0,3,3,3,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
+0x00408AA0,Fn00408AA0,119,True,sub_408AA0,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408AA0,False,canonical linked replay exact
+0x00408AB0,Fn00408AB0,335,True,sub_408AB0,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408AB0,False,canonical linked replay exact
 0x00409DC0,Fn00409DC0,1241,True,sub_409DC0,4,4,4,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
 0x00409DD0,Fn00409DD0,1247,True,sub_409DD0,4,4,4,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
 0x00409DE0,Fn00409DE0,1253,True,sub_409DE0,7,7,7,isolated-raw-exact,absent,,,True,eligible for canonical source/replay
