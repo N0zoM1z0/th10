@@ -7368,6 +7368,20 @@ target_address = 0x00427D70
 size = 6
 linkages = []
 
+[units.game-decomphelp-fulltu-00427d80]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00427D80"]
+symbol = "?Fn00427D80@leaf@th10@@YAPAEPAE0I@Z"
+target_address = 0x00427D80
+size = 21
+linkages = []
+
 [units.game-decomphelp-fulltu-00427df0]
 artifact_kind = "linked-pe"
 source = "src/DecomphelpLeafAccessors.cpp"

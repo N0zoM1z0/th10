@@ -408,7 +408,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00427D30,Fn00427D30,4245,False,,,12,18,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x00427D50,Fn00427D50,3197,True,sub_427D50,24,24,24,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427D50,False,canonical linked replay exact
 0x00427D70,Fn00427D70,2698,True,sub_427D70,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427D70,False,canonical linked replay exact
-0x00427D80,Fn00427D80,3215,False,,,21,21,isolated-raw-exact,unclassified,,,False,boundary unavailable in direct IDA
+0x00427D80,Fn00427D80,3215,False,,,21,21,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427D80,False,canonical linked replay exact; direct IDA byte review confirms the 21-byte physical extent
 0x00427DC0,Fn00427DC0,3229,True,sub_427DC0,16,16,24,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00427DF0,Fn00427DF0,815,True,sub_427DF0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427DF0,False,canonical linked replay exact
 0x00427E00,Fn00427E00,2237,True,nullsub_46,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427E00,False,canonical linked replay exact
