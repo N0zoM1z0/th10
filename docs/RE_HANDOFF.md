@@ -75,6 +75,9 @@ Use this order unless new target evidence changes the dependency graph:
   `g_DecompressionRing`/`g_LzssTree` DIR32 fields. The maintained static member
   uses the target-proved `__stdcall` callee-pop surface, recovering EDX
   `newNode` plus the stack `matchPosition` without byte-level tricks.
+- `CompressData @ 0x004359B0` is now canonical exact in the same LZSS owner:
+  its target `__stdcall` entry and `matchLength <= 2` break-even spelling
+  reproduce all 1,029 bytes plus 37 malloc/ring/tree/helper link fields.
 
 ## Active giant-owner frontiers
 

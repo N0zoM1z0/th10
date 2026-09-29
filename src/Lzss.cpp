@@ -43,7 +43,8 @@ typedef char LzssTreeSizeIs1800C[
         bitfieldMask >>= 1; \
     }
 
-unsigned char *CompressData(unsigned char *input, int inputSize, int *outputSize)
+unsigned char *__stdcall CompressData(unsigned char *input, int inputSize,
+                                      int *outputSize)
 {
     unsigned char outputBitMask = 0x80;
     unsigned int outputBits = 0;
@@ -83,7 +84,7 @@ unsigned char *CompressData(unsigned char *input, int inputSize, int *outputSize
             matchLength = maxMatchLength;
 
         int bytesToCopyToDictionary;
-        if (matchLength < LZSS_BREAKEVEN)
+        if (matchLength <= 2)
         {
             bytesToCopyToDictionary = 1;
             ENCODE_PACK_BIT(1);

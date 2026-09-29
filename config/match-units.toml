@@ -1987,7 +1987,7 @@ output_dir = "build/match-linked/Lzss"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?CompressData@@YAPAEPAEHPAH@Z"
+entry_symbol = "?CompressData@@YGPAEPAEHPAH@Z"
 functions = ["Lzss::InitTree"]
 symbol = "?InitTree@Lzss@@SAXH@Z"
 target_address = 0x00435FA0
@@ -2006,7 +2006,7 @@ output_dir = "build/match-linked/Lzss"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?CompressData@@YAPAEPAEHPAH@Z"
+entry_symbol = "?CompressData@@YGPAEPAEHPAH@Z"
 functions = ["Lzss::AddString"]
 symbol = "?AddString@Lzss@@SGHHPAH@Z"
 target_address = 0x00436000
@@ -2041,6 +2041,58 @@ linkages = [
   { offset = 501, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 4 },
 ]
 
+[units.lzss-compress-data]
+artifact_kind = "linked-pe"
+source = "src/Lzss.cpp"
+output_dir = "build/match-linked/Lzss"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CompressData@@YGPAEPAEHPAH@Z"
+functions = ["CompressData"]
+symbol = "?CompressData@@YGPAEPAEHPAH@Z"
+target_address = 0x004359B0
+size = 1029
+linkages = [
+  { offset = 25, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 72, type = "DIR32", symbol = "?g_DecompressionRing@@3PAEA", target = 0x0048F868 },
+  { offset = 89, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 4 },
+  { offset = 110, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 0x18010 },
+  { offset = 156, type = "DIR32", symbol = "?g_DecompressionRing@@3PAEA", target = 0x0048F868, addend = 1 },
+  { offset = 180, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 0x18008 },
+  { offset = 190, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 0xC },
+  { offset = 200, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 0x14 },
+  { offset = 206, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 0x10 },
+  { offset = 294, type = "DIR32", symbol = "?g_DecompressionRing@@3PAEA", target = 0x0048F868 },
+  { offset = 550, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858 },
+  { offset = 558, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858 },
+  { offset = 570, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 578, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 4 },
+  { offset = 590, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858 },
+  { offset = 604, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 612, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 623, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 4 },
+  { offset = 642, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858 },
+  { offset = 656, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 664, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 675, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 4 },
+  { offset = 692, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 701, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 715, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 724, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 733, type = "REL32", symbol = "?DeleteString@Lzss@@SIXH@Z", target = 0x00436210 },
+  { offset = 747, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 4 },
+  { offset = 755, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 4 },
+  { offset = 763, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 775, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858 },
+  { offset = 803, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 4 },
+  { offset = 813, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858 },
+  { offset = 819, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858, addend = 8 },
+  { offset = 829, type = "DIR32", symbol = "?g_LzssTree@@3PAULzssTreeNode@@A", target = 0x00477858 },
+  { offset = 887, type = "DIR32", symbol = "?g_DecompressionRing@@3PAEA", target = 0x0048F868 },
+  { offset = 922, type = "REL32", symbol = "?AddString@Lzss@@SGHHPAH@Z", target = 0x00436000 },
+]
+
 [units.lzss-contract-node]
 artifact_kind = "linked-pe"
 source = "src/Lzss.cpp"
@@ -2048,7 +2100,7 @@ output_dir = "build/match-linked/Lzss"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?CompressData@@YAPAEPAEHPAH@Z"
+entry_symbol = "?CompressData@@YGPAEPAEHPAH@Z"
 functions = ["Lzss::ContractNode"]
 symbol = "?ContractNode@Lzss@@SAXHH@Z"
 target_address = 0x00436260
@@ -2071,7 +2123,7 @@ output_dir = "build/match-linked/Lzss"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?CompressData@@YAPAEPAEHPAH@Z"
+entry_symbol = "?CompressData@@YGPAEPAEHPAH@Z"
 functions = ["Lzss::ReplaceNode"]
 symbol = "?ReplaceNode@Lzss@@SAXHH@Z"
 target_address = 0x004362B0
@@ -2095,7 +2147,7 @@ output_dir = "build/match-linked/Lzss"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?CompressData@@YAPAEPAEHPAH@Z"
+entry_symbol = "?CompressData@@YGPAEPAEHPAH@Z"
 functions = ["Lzss::FindNextNode"]
 symbol = "?FindNextNode@Lzss@@SAHH@Z"
 target_address = 0x00436330
@@ -2113,7 +2165,7 @@ output_dir = "build/match-linked/Lzss"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?CompressData@@YAPAEPAEHPAH@Z"
+entry_symbol = "?CompressData@@YGPAEPAEHPAH@Z"
 functions = ["Lzss::DeleteString"]
 symbol = "?DeleteString@Lzss@@SIXH@Z"
 target_address = 0x00436210

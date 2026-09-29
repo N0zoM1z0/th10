@@ -11,7 +11,8 @@ typedef char LzssTreeNodeSizeIs0C[(sizeof(LzssTreeNode) == 0x0c) ? 1 : -1];
 
 extern LzssTreeNode g_LzssTree[0x2001];
 
-unsigned char *CompressData(unsigned char *input, int inputSize, int *outputSize);
+unsigned char *__stdcall CompressData(unsigned char *input, int inputSize,
+                                      int *outputSize);
 
 class Lzss
 {
