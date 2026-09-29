@@ -151,7 +151,7 @@ void Lzss::InitEncoderState()
     }
 }
 
-int Lzss::AddString(int newNode, int *matchPosition)
+int __stdcall Lzss::AddString(int newNode, int *matchPosition)
 {
     if (newNode == 0)
         return 0;

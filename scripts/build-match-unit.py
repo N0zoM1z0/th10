@@ -373,6 +373,7 @@ def main() -> int:
                 raise ValueError(f"unit {args.unit!r} did not produce normal i386 COFF")
             print(f"built {args.unit}: {output.relative_to(ROOT)}")
         else:
+            source = ROOT / str(unit["source"])
             linker, environment = tool_environment()
             linked = cold_link(
                 source,

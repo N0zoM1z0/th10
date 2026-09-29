@@ -18,7 +18,7 @@ class Lzss
   public:
     static void InitTree(int root);
     static void InitEncoderState();
-    static int AddString(int newNode, int *matchPosition);
+    static int __stdcall AddString(int newNode, int *matchPosition);
     static void __fastcall DeleteString(int node);
     static void ContractNode(int oldNode, int newNode);
     static void ReplaceNode(int oldNode, int newNode);

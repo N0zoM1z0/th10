@@ -70,6 +70,11 @@ Use this order unless new target evidence changes the dependency graph:
   six declared DIR32/REL32 fields, including the private ESI reset ABI and the
   tail jump into `GuiSetLivesDisplayCount`. The unit is focused-replayed after
   the source/manifest change; no full cold replay is required for this batch.
+- `Lzss::AddString @ 0x00436000` is now canonical exact: the linked-PE unit
+  rooted at `CompressData` reproduces all 516 bytes and 27 declared
+  `g_DecompressionRing`/`g_LzssTree` DIR32 fields. The maintained static member
+  uses the target-proved `__stdcall` callee-pop surface, recovering EDX
+  `newNode` plus the stack `matchPosition` without byte-level tricks.
 
 ## Active giant-owner frontiers
 
