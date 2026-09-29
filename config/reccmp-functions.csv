@@ -637,6 +637,15 @@ th10::leaf::Fn0044DF30,0x0044DF30,function
 th10::leaf::Fn0044DF40,0x0044DF40,function
 th10::leaf::Fn0044DF50,0x0044DF50,function
 th10::leaf::Fn0044DF60,0x0044DF60,function
+th10::leaf::Fn004050D0,0x004050D0,function
+th10::leaf::Fn0040CF40,0x0040CF40,function
+th10::leaf::Fn00412DB0,0x00412DB0,function
+th10::leaf::Fn00417800,0x00417800,function
+th10::leaf::Fn00424EB0,0x00424EB0,function
+th10::leaf::Fn00424EC0,0x00424EC0,function
+th10::leaf::Fn00436640,0x00436640,function
+th10::leaf::Fn004452E0,0x004452E0,function
+th10::leaf::Fn004458A0,0x004458A0,function
 th10::leaf::Fn00401CB0,0x00401CB0,function
 th10::leaf::Fn00401CC0,0x00401CC0,function
 th10::leaf::Fn00401CD0,0x00401CD0,function
