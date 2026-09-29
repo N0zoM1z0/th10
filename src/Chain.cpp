@@ -1,5 +1,5 @@
 // Natural C++ candidate adapted from th10-decomphelp-forN0/src/Chain.cpp.
-// Only Chain::UnregisterElem is canonical exact so far; see
+// Chain::UnregisterElem and Chain::RemoveAllFromList are canonical exact; see
 // docs/DECOMPHELP_REPO_REVIEW.md and config/match-units.toml.
 #include <windows.h>
 #include <stdlib.h>
@@ -43,7 +43,7 @@ struct Chain
     __declspec(noinline) static i32 AddToCalcChain(ChainElem *elem, u32 prio, Chain *chain);
     __declspec(noinline) static i32 AddToDrawChain(ChainElem *elem, u32 prio, Chain *chain);
     static void UnregisterElem(ChainElem *elem, Chain *chain);
-    static void RemoveAllFromList(u8 *listBase, Chain *chain);
+    static void __stdcall RemoveAllFromList(u8 *listBase, Chain *chain);
     static ChainElem *RegisterCalc(ChainCallback callback, u32 prio, void *arg);
     static ChainElem *RegisterDraw(ChainCallback callback, u32 prio, void *arg);
 };
@@ -184,7 +184,7 @@ found:
     }
 }
 
-void Chain::RemoveAllFromList(u8 *listBase, Chain *chain)
+void __stdcall Chain::RemoveAllFromList(u8 *listBase, Chain *chain)
 {
     ListNode *node;
     node = *(ListNode **)(listBase + 0x18);

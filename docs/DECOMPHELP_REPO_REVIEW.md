@@ -50,7 +50,7 @@ TH10 接收 contract 是：
 
 ## `src/` 的逐文件决定
 
-### 已接收：`src/Chain.cpp` 的一个函数
+### 已接收：`src/Chain.cpp` 的两个函数
 
 外部 Chain TU 提供了自然 C++ 的 list/element 结构和 callback 语义。直接 IDA
 Pro MCP 复核 `0x00449F60`：完整边界为 114 bytes，函数先搜索 `chain+0x14` 的
@@ -72,9 +72,25 @@ callback 字段，并在 flags bit 0 置位时调用 `j__free @ 0x004524A1`。ID
 | cold replay 2 | PE SHA-256 `03ca769e677177c401e3fd96529d7b9c2d3c35be8888f108f1424d5bdc8726d0`，114/114 |
 | ledger | `config/functions.csv`、`reccmp-functions.csv`、`implemented.csv`、`matches.csv` 和 `match-units.toml` 已接通 |
 
-这是唯一在本次 repo review 中新增的 non-leaf canonical exact。origin 仍保持原有
+这是本次 repo review 中新增的两个 non-leaf canonical exact 之一。origin 仍保持原有
 target ledger 的 `authored_game / GameUnassigned` 结论；exact replay 不被用来推断
 原始作者或生产 TU。
+
+同一 TU 的 `RemoveAllFromList @ 0x00449E50` 也在直接 IDA 和 canonical replay 后接收。
+IDA 的物理边界是 82 bytes，输入为 EAX=`listBase`、栈上的 `Chain*`，尾部为
+`retn 4`；函数在目标 critical section 内遍历 `listBase + 0x18`，对每个节点调用
+`UnregisterElem`，最后递减 `g_ChainNestCounter`。外部草稿的语义保留，但普通 cdecl
+声明不能得到目标尾部；将声明校正为 target-observed `__stdcall` 后，保留同一个
+`Chain::AllocElem` `/GL` entry context，在 7 个 target-resolved linkage fields 下
+复现完整 82-byte PDB contribution：
+
+| 项目 | 结果 |
+| --- | --- |
+| unit | `decomphelp-chain-remove-all`，同一 `Chain.cpp` / `Chain::AllocElem` entry context |
+| linkage | `EnterCriticalSection`/`LeaveCriticalSection` IAT、两次 critical-section global、两次 chain-nest global、`UnregisterElem` REL32 |
+| cold replay 1 | PE SHA-256 `504bbc25207e386663398dfa5bf5b30be13337249eff1865c69379cac30ddb7f`，82/82 |
+| cold replay 2 | PE SHA-256 `b64af223e34abde5b9afac28c39b64e5423af1ca24d29b507fdcc70dc8671399`，82/82 |
+| ledger | `functions.csv`、`reccmp-functions.csv`、`implemented.csv`、`matches.csv` 和 `match-units.toml` 已接通 |
 
 同一外部 Chain TU 的其它候选没有吸收：
 
@@ -83,7 +99,7 @@ target ledger 的 `authored_game / GameUnassigned` 结论；exact replay 不被�
 | `AllocElem @ 0x449ED0` | reccmp `0.7917`；malloc/flags 形状合理 | `/GL` probe 在 tested context 为 69 bytes，target 为 74；ABI/TU context 未闭合，保留 open |
 | `AddToCalcChain @ 0x449AE0` | reccmp `0.1111` | natural helper 被折叠/分裂为 wrapper（25 或 8 bytes），target 为 131；拒绝 exact |
 | `AddToDrawChain @ 0x449B70` | reccmp `0.1111` | 同上，拒绝 exact |
-| `RemoveAllFromList @ 0x449E50` | 外部 reccmp `1.0` | 本地自然 source 的 tested `/GL` contribution 为 80/89 bytes，target boundary 为 82；外部百分比不是本地 acceptance，保持 open |
+| `RemoveAllFromList @ 0x449E50` | 外部 reccmp `1.0` | 已接收：直接 IDA 确认 82-byte `retn 4` 边界；自然 source 声明改为 `__stdcall` 后，`decomphelp-chain-remove-all` 在 AllocElem `/GL` context 下两次 82/82 exact replay |
 | `RegisterCalc @ 0x44A000`、`RegisterDraw @ 0x44A030` | 外部各 `0.6` | context-dependent 34–50 bytes，target 各 43；未闭合 linkage/TU，拒绝 exact |
 | `Chain::Remove` | source 有自然实现，但没有可独立绑定的 target address/ledger row | 不建立 target mapping |
 
@@ -163,13 +179,15 @@ exact proof。全部拒绝直接吸收；只保留算法/负面线索。
 
 本次 repo-wide review 的实际 canonical 增量是：
 
+- `Chain::RemoveAllFromList @ 0x00449E50`：82 bytes，两个独立 cold linked-PE replay
+  exact，已进入 match unit 和全部 tracking ledgers。
 - `Chain::UnregisterElem @ 0x00449F60`：114 bytes，两个独立 cold linked-PE replay
-  exact，已进入 1 个 match unit 和全部 tracking ledgers。
+  exact，已进入 match unit 和全部 tracking ledgers。
 - leaf 方面：此前九批的 311 个/2,103 bytes 已全部 canonical exact；完整逐行结果
   仍以 leaf CSV 为准。
-- 其它外部材料：没有第二个同时满足“直接 IDA boundary + natural source + 完整
-  pinned VC7.1 replay + exhaustive linkage”的新 non-leaf exact。它们都在上面的
-  open/rejected 分类中，不能以 external reccmp `1.0` 批量提升。
+- 其它外部材料：Chain 的其余候选以及其它 `.cpp`、naked、PDG、portable、port、
+  salvage 材料仍没有同时满足“直接 IDA boundary + natural source + 完整 pinned
+  VC7.1 replay + exhaustive linkage”的证据，不能以 external reccmp `1.0` 批量提升。
 
 本次只做了 `src/Chain.cpp` 的 focused replay；没有宣称 whole-product cold replay、
 native product closure、runtime closure 或 portability 已完成。后续若继续处理

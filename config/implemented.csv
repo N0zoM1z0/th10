@@ -619,6 +619,7 @@ th10::leaf::Fn00442170
 th10::leaf::Fn00442390
 th10::leaf::Fn004423A0
 th10::leaf::Fn00449A20
+Chain::RemoveAllFromList
 Chain::UnregisterElem
 th10::leaf::Fn0044C0E0
 th10::leaf::Fn0044C250
