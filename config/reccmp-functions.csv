@@ -290,6 +290,7 @@ GameWindowView::ResetRenderState,0x00439D20,function
 GameWindowView::CheckForRunningGameInstance,0x00439FF0,function
 GameWindowView::CalcExecutableChecksum,0x0043A1C0,function
 FrontEndControllerView::Update,0x0042CDF0,function
+FrontEndControllerView::SetScreenTarget,0x0042C5C0,function
 FrontEndControllerView::SetScreenStateTarget,0x0042C620,function
 FrontEndControllerView::UpdateOptions,0x0042D920,function
 FrontEndControllerView::RefreshOptionsDisplay,0x0042E5A0,function

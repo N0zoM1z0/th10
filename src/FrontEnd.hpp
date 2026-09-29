@@ -220,6 +220,7 @@ struct FrontEndControllerView
     // controller seam.  The descriptive suffix avoids claiming the original
     // source identifier while preserving a callable owner for replay probes.
     void SetScreenStateTarget(int state);
+    void SetScreenTarget(int screen);
 };
 
 typedef char FrontEndControllerStateAt1C[

@@ -737,6 +737,13 @@ __declspec(noinline) void FrontEndControllerView::SetScreenStateTarget(
     stateTimer.SetCurrent(0);
 }
 
+__declspec(noinline) void FrontEndControllerView::SetScreenTarget(int screen)
+{
+    this->screen = screen;
+    screenState = 0;
+    stateTimer.SetCurrent(0);
+}
+
 int AsciiManagerView::EnsureSelectionVm(float x, float y)
 {
     AnmFloat3View position(x, y, 0.0f);
@@ -2598,7 +2605,7 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
                 controller,
                 0x9a + g_ReplayShotType + g_ReplayCharacter * 3);
             DeleteVm(controller, 0xa0 + g_ReplayDifficulty);
-            SetScreen(controller, FRONT_END_SCREEN_RESULT);
+        controller->SetScreenTarget(FRONT_END_SCREEN_RESULT);
         }
         break;
     }

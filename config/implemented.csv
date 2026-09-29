@@ -280,6 +280,7 @@ GameWindowView::ResetRenderState
 GameWindowView::CheckForRunningGameInstance
 GameWindowView::CalcExecutableChecksum
 FrontEndControllerView::Update
+FrontEndControllerView::SetScreenTarget
 FrontEndControllerView::SetScreenStateTarget
 FrontEndControllerView::UpdateOptions
 FrontEndControllerView::RefreshOptionsDisplay
