@@ -122,6 +122,10 @@ EnemyEclResourceBaseView::LoadPackage,0x0040C810,function
 EnemyEclResourceBaseView::GetScriptData,0x0040C820,function
 EnemyEclResourceBaseView::EnemyEclResourceBaseView,0x0040C830,function
 EnemyEclResourceBaseView::~EnemyEclResourceBaseView,0x0040C860,function
+th10::leaf::Fn0040CC10,0x0040CC10,function
+th10::leaf::Fn0040CC20,0x0040CC20,function
+th10::leaf::Fn0040CC30,0x0040CC30,function
+th10::leaf::Fn0040CC40,0x0040CC40,function
 AnmVmView::~AnmVmView,0x00401FF0,function
 AnmVmView::AnmVmView,0x00402050,function
 AnmVmView::Initialize,0x00401DE0,function

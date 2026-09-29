@@ -409,3 +409,7 @@ BulletRuntimeView::UpdateVerticalWrap
 BulletRuntimeView::UpdateState8
 PlayerCollisionPositionView::CheckPlayerCollision
 AnmRandomU32InRange
+th10::leaf::Fn0040CC10
+th10::leaf::Fn0040CC20
+th10::leaf::Fn0040CC30
+th10::leaf::Fn0040CC40

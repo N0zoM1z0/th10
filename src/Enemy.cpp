@@ -1682,3 +1682,36 @@ float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position)
         return 1.5707964f;
     return (float)atan2(dy, dx);
 }
+
+// Small Enemy-zone accessors independently reconstructed in
+// th10-decomphelp-forN0 and rechecked against the TH10 target.  Keep these
+// late in the TU so they do not perturb compiler-local layout of earlier
+// canonical Enemy units.
+#pragma optimize("gty", on)
+namespace th10
+{
+namespace leaf
+{
+
+__declspec(noinline) unsigned char *Fn0040CC10(unsigned char *pThis)
+{
+    return pThis + 0x2c;
+}
+
+__declspec(noinline) unsigned char *Fn0040CC20(unsigned char *pThis)
+{
+    return pThis + 0x13c0;
+}
+
+__declspec(noinline) unsigned char *Fn0040CC30(unsigned char *pThis)
+{
+    return pThis + 0x23fc;
+}
+
+__declspec(noinline) unsigned int Fn0040CC40(unsigned char *pThis)
+{
+    return *(unsigned int *)(*(unsigned char **)(pThis + 4) + 4);
+}
+
+}
+}

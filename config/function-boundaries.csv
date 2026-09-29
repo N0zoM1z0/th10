@@ -145,6 +145,10 @@ address,span_end,state,confidence,evidence_id,notes
 0x0040C860,0x0040C883,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 36/36, tail ret"
 0x0040C9A0,0x0040C9CF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040C9D0,0x0040CBC6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
+0x0040CC10,0x0040CC13,reviewed,high,target-boundary-audit-2026-09-29,Complete direct IDA decode ends in ret; no overlap or external interior branch
+0x0040CC20,0x0040CC25,reviewed,high,target-boundary-audit-2026-09-29,Complete direct IDA decode ends in ret; no overlap or external interior branch
+0x0040CC30,0x0040CC35,reviewed,high,target-boundary-audit-2026-09-29,Complete direct IDA decode ends in ret; no overlap or external interior branch
+0x0040CC40,0x0040CC46,reviewed,high,target-boundary-audit-2026-09-29,Complete direct IDA decode ends in ret; no overlap or external interior branch
 0x0040CC50,0x0040CC6E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0040CC70,0x0040CD00,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040CD20,0x0040CD7E,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 95/95, tail ret"
