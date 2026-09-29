@@ -2086,7 +2086,7 @@ int __stdcall AnmRenderManagerView::ServicePreloadedAnms()
         }
         else if (loaded->pendingLoadCount != 0)
         {
-            return PostloadAnmEntry(loaded) == NULL ? -1 : 0;
+            return PostloadAnmEntry(loadedAnms[i]) == NULL ? -1 : 0;
         }
     }
     return 0;

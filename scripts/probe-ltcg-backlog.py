@@ -407,15 +407,35 @@ def probe_source(
             )
             continue
         function = linked_matches[0]
-        comparison = structural_compare(
-            candidate_image,
-            publics,
-            int(str(function["address"]), 0),
-            int(function["size"]),
-            target,
-            int(str(item["address"]), 0),
-            int(item["size"]),
-        )
+        try:
+            comparison = structural_compare(
+                candidate_image,
+                publics,
+                int(str(function["address"]), 0),
+                int(function["size"]),
+                target,
+                int(str(item["address"]), 0),
+                int(item["size"]),
+            )
+        except LinkedImageError as exc:
+            # A malformed/incomplete PDB contribution is diagnostic evidence,
+            # not a reason to discard every other function in this source TU.
+            # Keep the function unresolved and fail closed: no comparison or
+            # exactness credit can be derived from an invalid linked extent.
+            reports.append(
+                {
+                    **base,
+                    "result": "unresolved",
+                    "reason": f"invalid linked contribution: {exc}",
+                    "symbol": symbol,
+                    "candidate_address": function["address"],
+                    "candidate_size": function["size"],
+                    "extent_source": function["extent_source"],
+                    "pdb_module_index": function["pdb_module_index"],
+                    "acceptance_authority": "none",
+                }
+            )
+            continue
         reports.append(
             {
                 **base,
