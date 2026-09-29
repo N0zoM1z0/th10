@@ -11,6 +11,10 @@
 边界、ABI 和 VC7.1 replay。逐函数机器结果保存在
 [`DECOMPHELP_LEAF_AUDIT.csv`](DECOMPHELP_LEAF_AUDIT.csv)。
 
+目录级全仓库接收/拒绝矩阵（包括 Chain、TitleScreen、portable、port、salvage、
+scripts 和 tests）见 [`DECOMPHELP_REPO_REVIEW.md`](DECOMPHELP_REPO_REVIEW.md)。
+本文件继续作为 leaf 逐地址审计的详细记录。
+
 ## 1. 来源清单和证据等级
 
 | 外部材料 | 当前数量 | canonical 处理 | 原因 |

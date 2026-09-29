@@ -620,6 +620,7 @@ th10::leaf::Fn00442170,0x00442170,function
 th10::leaf::Fn00442390,0x00442390,function
 th10::leaf::Fn004423A0,0x004423A0,function
 th10::leaf::Fn00449A20,0x00449A20,function
+Chain::UnregisterElem,0x00449F60,function
 th10::leaf::Fn0044C0E0,0x0044C0E0,function
 th10::leaf::Fn0044C250,0x0044C250,function
 th10::leaf::Fn0044C600,0x0044C600,function
