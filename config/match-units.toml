@@ -16216,6 +16216,572 @@ relocations = [
   { offset = 0x31, type = "REL32", symbol = "__ld12tod", target = 0x0045D5CE },
   { offset = 0x3F, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
 ]
+[units.runtime-crt-00452493]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\new.obj"
+symbol = "??2@YAPAXI@Z"
+functions = ["??2@YAPAXI@Z"]
+object = "build/match-runtime/runtime-crt-00452493.obj"
+target_address = 0x00452493
+size = 14
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "__nh_malloc", target = 0x004526DA },
+]
+
+[units.runtime-crt-00452706]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\malloc.obj"
+symbol = "_malloc"
+functions = ["_malloc"]
+object = "build/match-runtime/runtime-crt-00452706.obj"
+target_address = 0x00452706
+size = 18
+relocations = [
+  { offset = 0x2, type = "DIR32", symbol = "__newmode", target = 0x00477364 },
+  { offset = 0xB, type = "REL32", symbol = "__nh_malloc", target = 0x004526DA },
+]
+
+[units.runtime-crt-00452930]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\strrchr.obj"
+symbol = "_strrchr"
+functions = ["_strrchr"]
+object = "build/match-runtime/runtime-crt-00452930.obj"
+target_address = 0x00452930
+size = 45
+relocations = [
+]
+
+[units.runtime-crt-004537dc]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\wincrt0.obj"
+symbol = "_WinMainCRTStartup"
+functions = ["_WinMainCRTStartup"]
+object = "build/match-runtime/runtime-crt-004537dc.obj"
+target_address = 0x004537DC
+size = 469
+relocations = [
+  { offset = 0x3, type = "DIR32", symbol = "$T20649", target = 0x0046A770 },
+  { offset = 0x8, type = "REL32", symbol = "__SEH_prolog", target = 0x00454BBC },
+  { offset = 0x14, type = "REL32", symbol = "__alloca_probe", target = 0x00458EC0 },
+  { offset = 0x22, type = "DIR32", symbol = "__imp__GetVersionExA@4", target = 0x0046612C },
+  { offset = 0x2B, type = "DIR32", symbol = "__osplatform", target = 0x00477470 },
+  { offset = 0x33, type = "DIR32", symbol = "__winmajor", target = 0x0047747C },
+  { offset = 0x3C, type = "DIR32", symbol = "__winminor", target = 0x00477480 },
+  { offset = 0x4B, type = "DIR32", symbol = "__osver", target = 0x00477474 },
+  { offset = 0x5C, type = "DIR32", symbol = "__osver", target = 0x00477474 },
+  { offset = 0x66, type = "DIR32", symbol = "__winver", target = 0x00477478 },
+  { offset = 0x6F, type = "DIR32", symbol = "__imp__GetModuleHandleA@4", target = 0x00466198 },
+  { offset = 0xCA, type = "REL32", symbol = "__heap_init", target = 0x004539CB },
+  { offset = 0xD6, type = "REL32", symbol = "_fast_error_exit", target = 0x00453762 },
+  { offset = 0xDC, type = "REL32", symbol = "__mtinit", target = 0x0045654A },
+  { offset = 0xE7, type = "REL32", symbol = "_fast_error_exit", target = 0x00453762 },
+  { offset = 0xED, type = "REL32", symbol = "__RTC_Initialize", target = 0x00459776 },
+  { offset = 0xF5, type = "REL32", symbol = "__ioinit", target = 0x0045952C },
+  { offset = 0x100, type = "REL32", symbol = "__amsg_exit", target = 0x0045373D },
+  { offset = 0x107, type = "DIR32", symbol = "__imp__GetCommandLineA@0", target = 0x00466194 },
+  { offset = 0x10C, type = "DIR32", symbol = "__acmdln", target = 0x00499348 },
+  { offset = 0x111, type = "REL32", symbol = "___crtGetEnvironmentStringsA", target = 0x0045940A },
+  { offset = 0x116, type = "DIR32", symbol = "__aenvptr", target = 0x00477204 },
+  { offset = 0x11B, type = "REL32", symbol = "__setargv", target = 0x00459368 },
+  { offset = 0x126, type = "REL32", symbol = "__amsg_exit", target = 0x0045373D },
+  { offset = 0x12C, type = "REL32", symbol = "__setenvp", target = 0x00459135 },
+  { offset = 0x137, type = "REL32", symbol = "__amsg_exit", target = 0x0045373D },
+  { offset = 0x13F, type = "REL32", symbol = "__cinit", target = 0x004575BF },
+  { offset = 0x14D, type = "REL32", symbol = "__amsg_exit", target = 0x0045373D },
+  { offset = 0x15B, type = "DIR32", symbol = "__imp__GetStartupInfoA@4", target = 0x00466108 },
+  { offset = 0x160, type = "REL32", symbol = "__wincmdln", target = 0x004590D8 },
+  { offset = 0x180, type = "REL32", symbol = "_WinMain@16", target = 0x00438AD0 },
+  { offset = 0x190, type = "REL32", symbol = "_exit", target = 0x004576EC },
+  { offset = 0x195, type = "REL32", symbol = "__cexit", target = 0x0045770E },
+  { offset = 0x1A8, type = "REL32", symbol = "__XcptFilter", target = 0x004577CE },
+  { offset = 0x1BD, type = "REL32", symbol = "__exit", target = 0x004576FD },
+  { offset = 0x1C2, type = "REL32", symbol = "__c_exit", target = 0x0045771D },
+  { offset = 0x1D0, type = "REL32", symbol = "__SEH_epilog", target = 0x00454BF7 },
+]
+
+[units.runtime-crt-0045631e]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\tidtable.obj"
+symbol = "___crtTlsAlloc@4"
+functions = ["___crtTlsAlloc@4"]
+object = "build/match-runtime/runtime-crt-0045631e.obj"
+target_address = 0x0045631E
+size = 9
+relocations = [
+  { offset = 0x2, type = "DIR32", symbol = "__imp__TlsAlloc@0", target = 0x00466170 },
+]
+
+[units.runtime-crt-00456a8c]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\fpinit.obj"
+symbol = "__cfltcvt_init"
+functions = ["__cfltcvt_init"]
+object = "build/match-runtime/runtime-crt-00456a8c.obj"
+target_address = 0x00456A8C
+size = 56
+relocations = [
+  { offset = 0x1, type = "DIR32", symbol = "__cfltcvt", target = 0x0045DF97 },
+  { offset = 0x6, type = "DIR32", symbol = "__cfltcvt_tab", target = 0x004739C0 },
+  { offset = 0xC, type = "DIR32", symbol = "__cfltcvt_tab", target = 0x004739C0 },
+  { offset = 0x10, type = "DIR32", symbol = "__cropzeros", target = 0x0045DC17 },
+  { offset = 0x16, type = "DIR32", symbol = "__cfltcvt_tab", target = 0x004739C0 },
+  { offset = 0x1A, type = "DIR32", symbol = "__fassign", target = 0x0045DC7C },
+  { offset = 0x20, type = "DIR32", symbol = "__cfltcvt_tab", target = 0x004739C0 },
+  { offset = 0x24, type = "DIR32", symbol = "__forcdecpt", target = 0x0045DBDB },
+  { offset = 0x2A, type = "DIR32", symbol = "__cfltcvt_tab", target = 0x004739C0 },
+  { offset = 0x2E, type = "DIR32", symbol = "__positive", target = 0x0045DC62 },
+  { offset = 0x33, type = "DIR32", symbol = "__cfltcvt_tab", target = 0x004739C0 },
+]
+
+[units.runtime-crt-00456af2]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\dosmap.obj"
+symbol = "__errno"
+functions = ["__errno"]
+object = "build/match-runtime/runtime-crt-00456af2.obj"
+target_address = 0x00456AF2
+size = 9
+relocations = [
+  { offset = 0x1, type = "REL32", symbol = "__getptd", target = 0x00456357 },
+]
+
+[units.runtime-crt-00456afb]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\dosmap.obj"
+symbol = "___doserrno"
+functions = ["___doserrno"]
+object = "build/match-runtime/runtime-crt-00456afb.obj"
+target_address = 0x00456AFB
+size = 9
+relocations = [
+  { offset = 0x1, type = "REL32", symbol = "__getptd", target = 0x00456357 },
+]
+
+[units.runtime-crt-0045770e]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\crt0dat.obj"
+symbol = "__cexit"
+functions = ["__cexit"]
+object = "build/match-runtime/runtime-crt-0045770e.obj"
+target_address = 0x0045770E
+size = 15
+relocations = [
+  { offset = 0x7, type = "REL32", symbol = "_doexit", target = 0x00457629 },
+]
+
+[units.runtime-crt-00458ea5]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\secchk.obj"
+symbol = "@__security_check_cookie@4"
+functions = ["@__security_check_cookie@4"]
+object = "build/match-runtime/runtime-crt-00458ea5.obj"
+target_address = 0x00458EA5
+size = 14
+relocations = [
+  { offset = 0x2, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0xA, type = "REL32", symbol = "_report_failure", target = 0x00458E74 },
+]
+
+[units.runtime-crt-00459969]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\exsup.obj"
+symbol = "__NLG_Notify1"
+functions = ["__NLG_Notify1"]
+object = "build/match-runtime/runtime-crt-00459969.obj"
+target_address = 0x00459969
+size = 9
+relocations = [
+  { offset = 0x3, type = "DIR32", symbol = "__NLG_Destination", target = 0x0047372C },
+]
+
+[units.runtime-crt-0045bd80]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\strcat.obj"
+symbol = "_strcpy"
+functions = ["_strcpy"]
+object = "build/match-runtime/runtime-crt-0045bd80.obj"
+target_address = 0x0045BD80
+size = 7
+relocations = [
+]
+
+[units.runtime-crt-0045ed70]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\fpctrl.obj"
+symbol = "__statfp"
+functions = ["__statfp"]
+object = "build/match-runtime/runtime-crt-0045ed70.obj"
+target_address = 0x0045ED70
+size = 11
+relocations = [
+]
+
+[units.runtime-crt-0045fdaf]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\crt0fp.obj"
+symbol = "__fptrap"
+functions = ["__fptrap"]
+object = "build/match-runtime/runtime-crt-0045fdaf.obj"
+target_address = 0x0045FDAF
+size = 9
+relocations = [
+  { offset = 0x3, type = "REL32", symbol = "__amsg_exit", target = 0x0045373D },
+]
+
+[units.runtime-crt-0046054e]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "build\\intel\\mt_obj\\stricmp.obj"
+symbol = "__stricmp"
+functions = ["__stricmp"]
+object = "build/match-runtime/runtime-crt-0046054e.obj"
+target_address = 0x0046054E
+size = 105
+relocations = [
+  { offset = 0x6, type = "REL32", symbol = "__getptd", target = 0x00456357 },
+  { offset = 0xF, type = "DIR32", symbol = "___ptlocinfo", target = 0x0047320C },
+  { offset = 0x16, type = "REL32", symbol = "___updatetlocinfo", target = 0x00455ADE },
+  { offset = 0x29, type = "REL32", symbol = "___ascii_stricmp", target = 0x004603D0 },
+  { offset = 0x3F, type = "REL32", symbol = "___tolower_mt", target = 0x00460C26 },
+  { offset = 0x4D, type = "REL32", symbol = "___tolower_mt", target = 0x00460C26 },
+]
+
+[units.runtime-crteh-00462706]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\trnsctrl.obj"
+symbol = "?_CallMemberFunction0@@YGXPAX0@Z"
+functions = ["?_CallMemberFunction0@@YGXPAX0@Z"]
+object = "build/match-runtime/runtime-crteh-00462706.obj"
+target_address = 0x00462706
+size = 7
+relocations = [
+]
+
+[units.runtime-crteh-0046270d]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\trnsctrl.obj"
+symbol = "?_CallMemberFunction1@@YGXPAX00@Z"
+functions = ["?_CallMemberFunction1@@YGXPAX00@Z"]
+object = "build/match-runtime/runtime-crteh-0046270d.obj"
+target_address = 0x0046270D
+size = 7
+relocations = [
+]
+
+[units.runtime-crteh-00462714]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\trnsctrl.obj"
+symbol = "?_CallMemberFunction2@@YGXPAX00H@Z"
+functions = ["?_CallMemberFunction2@@YGXPAX00H@Z"]
+object = "build/match-runtime/runtime-crteh-00462714.obj"
+target_address = 0x00462714
+size = 7
+relocations = [
+]
+
+[units.runtime-cxx-00462301]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"
+functions = ["??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z"]
+object = "build/match-runtime/runtime-cxx-00462301.obj"
+target_address = 0x00462301
+size = 38
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Eos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEXI@Z", target = 0x00438590 },
+  { offset = 0x1C, type = "REL32", symbol = "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@ABV12@II@Z", target = 0x00438260 },
+]
+
+[units.runtime-cxx-00462327]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z"
+functions = ["??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z"]
+object = "build/match-runtime/runtime-cxx-00462327.obj"
+target_address = 0x00462327
+size = 60
+relocations = [
+  { offset = 0x1, type = "DIR32", symbol = "__ehhandler$??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z", target = 0x00465198 },
+  { offset = 0x6, type = "REL32", symbol = "__EH_prolog", target = 0x00462ADC },
+  { offset = 0x12, type = "REL32", symbol = "??0exception@@QAE@XZ", target = 0x00462C01 },
+  { offset = 0x22, type = "DIR32", symbol = "??_7logic_error@std@@6B@", target = 0x0046C9E8 },
+  { offset = 0x27, type = "REL32", symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@ABV01@@Z", target = 0x00462301 },
+  { offset = 0x34, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+]
+
+[units.runtime-cxx-00462371]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??1logic_error@std@@UAE@XZ"
+functions = ["??1logic_error@std@@UAE@XZ"]
+object = "build/match-runtime/runtime-cxx-00462371.obj"
+target_address = 0x00462371
+size = 29
+relocations = [
+  { offset = 0xC, type = "DIR32", symbol = "??_7logic_error@std@@6B@", target = 0x0046C9E8 },
+  { offset = 0x11, type = "REL32", symbol = "?_Tidy@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEX_NI@Z", target = 0x00438380 },
+  { offset = 0x19, type = "REL32", symbol = "??1exception@@UAE@XZ", target = 0x00462CAC },
+]
+
+[units.runtime-cxx-0046238e]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??_Glogic_error@std@@UAEPAXI@Z"
+functions = ["??_Glogic_error@std@@UAEPAXI@Z"]
+object = "build/match-runtime/runtime-cxx-0046238e.obj"
+target_address = 0x0046238E
+size = 28
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1logic_error@std@@UAE@XZ", target = 0x00462371 },
+  { offset = 0x11, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
+[units.runtime-cxx-004623c2]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??_Glength_error@std@@UAEPAXI@Z"
+functions = ["??_Glength_error@std@@UAEPAXI@Z"]
+object = "build/match-runtime/runtime-cxx-004623c2.obj"
+target_address = 0x004623C2
+size = 28
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1length_error@std@@UAE@XZ", target = 0x004623DE },
+  { offset = 0x11, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
+[units.runtime-cxx-004623de]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??1length_error@std@@UAE@XZ"
+functions = ["??1length_error@std@@UAE@XZ"]
+object = "build/match-runtime/runtime-cxx-004623de.obj"
+target_address = 0x004623DE
+size = 11
+relocations = [
+  { offset = 0x2, type = "DIR32", symbol = "??_7length_error@std@@6B@", target = 0x0046C9F4 },
+  { offset = 0x7, type = "REL32", symbol = "??1logic_error@std@@UAE@XZ", target = 0x00462371 },
+]
+
+[units.runtime-cxx-00462401]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??_Gout_of_range@std@@UAEPAXI@Z"
+functions = ["??_Gout_of_range@std@@UAEPAXI@Z"]
+object = "build/match-runtime/runtime-cxx-00462401.obj"
+target_address = 0x00462401
+size = 28
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1out_of_range@std@@UAE@XZ", target = 0x0046241D },
+  { offset = 0x11, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
+[units.runtime-cxx-0046241d]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??1out_of_range@std@@UAE@XZ"
+functions = ["??1out_of_range@std@@UAE@XZ"]
+object = "build/match-runtime/runtime-cxx-0046241d.obj"
+target_address = 0x0046241D
+size = 11
+relocations = [
+  { offset = 0x2, type = "DIR32", symbol = "??_7out_of_range@std@@6B@", target = 0x0046CA00 },
+  { offset = 0x7, type = "REL32", symbol = "??1logic_error@std@@UAE@XZ", target = 0x00462371 },
+]
+
+[units.runtime-cxx-00462428]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "?_Xran@_String_base@std@@QBEXXZ"
+functions = ["?_Xran@_String_base@std@@QBEXXZ"]
+object = "build/match-runtime/runtime-cxx-00462428.obj"
+target_address = 0x00462428
+size = 63
+compare_size = 64
+relocations = [
+  { offset = 0x1, type = "DIR32", symbol = "__ehhandler$?_Xran@_String_base@std@@QBEXXZ", target = 0x004651AA },
+  { offset = 0x6, type = "REL32", symbol = "__EH_prolog", target = 0x00462ADC },
+  { offset = 0xE, type = "DIR32", symbol = "??_C@_0BI@CFPLBAOH@invalid?5string?5position?$AA@", target = 0x0046CA08 },
+  { offset = 0x16, type = "REL32", symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z", target = 0x004624C3 },
+  { offset = 0x26, type = "REL32", symbol = "??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z", target = 0x00462327 },
+  { offset = 0x2B, type = "DIR32", symbol = "__TI3?AVout_of_range@std@@", target = 0x004711BC },
+  { offset = 0x36, type = "DIR32", symbol = "??_7out_of_range@std@@6B@", target = 0x0046CA00 },
+  { offset = 0x3B, type = "REL32", symbol = "__CxxThrowException@8", target = 0x00462AFB },
+]
+
+[units.runtime-cxx-004624c3]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"
+functions = ["??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z"]
+object = "build/match-runtime/runtime-cxx-004624c3.obj"
+target_address = 0x004624C3
+size = 34
+relocations = [
+  { offset = 0xD, type = "REL32", symbol = "?_Eos@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@IAEXI@Z", target = 0x00438590 },
+  { offset = 0x18, type = "REL32", symbol = "?assign@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAEAAV12@PBD@Z", target = 0x00438350 },
+]
+
+[units.runtime-cxx-004624e5]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcpmt.lib"
+member = "build\\intel\\mt_obj\\string.obj"
+symbol = "?_Xlen@_String_base@std@@QBEXXZ"
+functions = ["?_Xlen@_String_base@std@@QBEXXZ"]
+object = "build/match-runtime/runtime-cxx-004624e5.obj"
+target_address = 0x004624E5
+size = 63
+compare_size = 64
+relocations = [
+  { offset = 0x1, type = "DIR32", symbol = "__ehhandler$?_Xlen@_String_base@std@@QBEXXZ", target = 0x004651CE },
+  { offset = 0x6, type = "REL32", symbol = "__EH_prolog", target = 0x00462ADC },
+  { offset = 0xE, type = "DIR32", symbol = "??_C@_0BA@JFNIOLAK@string?5too?5long?$AA@", target = 0x0046CA20 },
+  { offset = 0x16, type = "REL32", symbol = "??0?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@QAE@PBD@Z", target = 0x004624C3 },
+  { offset = 0x26, type = "REL32", symbol = "??0logic_error@std@@QAE@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@@Z", target = 0x00462327 },
+  { offset = 0x2B, type = "DIR32", symbol = "__TI3?AVlength_error@std@@", target = 0x00471240 },
+  { offset = 0x36, type = "DIR32", symbol = "??_7length_error@std@@6B@", target = 0x0046C9F4 },
+  { offset = 0x3B, type = "REL32", symbol = "__CxxThrowException@8", target = 0x00462AFB },
+]
+
+[units.runtime-cxx-00462b7b]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\typinfo.obj"
+symbol = "??_Gtype_info@@UAEPAXI@Z"
+functions = ["??_Gtype_info@@UAEPAXI@Z"]
+object = "build/match-runtime/runtime-cxx-00462b7b.obj"
+target_address = 0x00462B7B
+size = 28
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1type_info@@UAE@XZ", target = 0x00462B35 },
+  { offset = 0x11, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
+[units.runtime-cxx-00462d00]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\stdexcpt.obj"
+symbol = "??1bad_cast@@UAE@XZ"
+functions = ["??1bad_cast@@UAE@XZ"]
+object = "build/match-runtime/runtime-cxx-00462d00.obj"
+target_address = 0x00462D00
+size = 11
+relocations = [
+  { offset = 0x2, type = "DIR32", symbol = "??_7bad_cast@@6B@", target = 0x0046CA88 },
+  { offset = 0x7, type = "REL32", symbol = "??1exception@@UAE@XZ", target = 0x00462CAC },
+]
+
+[units.runtime-cxx-00462d3c]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\stdexcpt.obj"
+symbol = "??1bad_typeid@@UAE@XZ"
+functions = ["??1bad_typeid@@UAE@XZ"]
+object = "build/match-runtime/runtime-cxx-00462d3c.obj"
+target_address = 0x00462D3C
+size = 11
+relocations = [
+  { offset = 0x2, type = "DIR32", symbol = "??_7bad_typeid@@6B@", target = 0x0046CA94 },
+  { offset = 0x7, type = "REL32", symbol = "??1exception@@UAE@XZ", target = 0x00462CAC },
+]
+
+[units.runtime-cxx-00462d77]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\stdexcpt.obj"
+symbol = "??1bad_typeid@@UAE@XZ"
+functions = ["??1bad_typeid@@UAE@XZ"]
+object = "build/match-runtime/runtime-cxx-00462d77.obj"
+target_address = 0x00462D77
+size = 11
+relocations = [
+  { offset = 0x2, type = "DIR32", symbol = "??_7bad_typeid@@6B@", target = 0x0046CA94 },
+  { offset = 0x7, type = "REL32", symbol = "??1exception@@UAE@XZ", target = 0x00462CAC },
+]
+
+[units.runtime-cxx-00462d82]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\stdexcpt.obj"
+symbol = "??_Gexception@@UAEPAXI@Z"
+functions = ["??_Gexception@@UAEPAXI@Z"]
+object = "build/match-runtime/runtime-cxx-00462d82.obj"
+target_address = 0x00462D82
+size = 28
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1exception@@UAE@XZ", target = 0x00462CAC },
+  { offset = 0x11, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
+[units.runtime-cxx-00462dbd]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\stdexcpt.obj"
+symbol = "??_Gbad_cast@@UAEPAXI@Z"
+functions = ["??_Gbad_cast@@UAEPAXI@Z"]
+object = "build/match-runtime/runtime-cxx-00462dbd.obj"
+target_address = 0x00462DBD
+size = 28
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1bad_cast@@UAE@XZ", target = 0x00462D00 },
+  { offset = 0x11, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
+[units.runtime-cxx-00462dd9]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\stdexcpt.obj"
+symbol = "??_Gbad_typeid@@UAEPAXI@Z"
+functions = ["??_Gbad_typeid@@UAEPAXI@Z"]
+object = "build/match-runtime/runtime-cxx-00462dd9.obj"
+target_address = 0x00462DD9
+size = 28
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1bad_typeid@@UAE@XZ", target = 0x00462D3C },
+  { offset = 0x11, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
+[units.runtime-cxx-00462df5]
+artifact_kind = "coff-archive"
+archive = ".tools/msvc710-sp1/Vc7/lib/libcmt.lib"
+member = "..\\build\\intel\\mt_obj\\stdexcpt.obj"
+symbol = "??_Gbad_typeid@@UAEPAXI@Z"
+functions = ["??_Gbad_typeid@@UAEPAXI@Z"]
+object = "build/match-runtime/runtime-cxx-00462df5.obj"
+target_address = 0x00462DF5
+size = 28
+relocations = [
+  { offset = 0x4, type = "REL32", symbol = "??1bad_typeid@@UAE@XZ", target = 0x00462D77 },
+  { offset = 0x11, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]
+
 
 [units.runtime-crt-0045d701]
 artifact_kind = "coff-archive"

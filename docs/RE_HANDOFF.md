@@ -32,12 +32,12 @@ Before reconstruction work:
 For target disassembly/decompilation, also require a passing Factory
 `th10-ghidra` check for the registered target.
 
-Current ledger checkpoint (2026-09-29): 1,636 reviewed candidates, 742 source
-mappings, 940 canonical exact functions, and 97,994 canonical exact `.text`
+Current ledger checkpoint (2026-09-29): 1,636 reviewed candidates, 743 source
+mappings, 978 canonical exact functions, and 99,401 canonical exact `.text`
 bytes. The authored source-present backlog is 135 functions; the Windows i386
-product build remains open. This checkpoint adds the focused
-`main-create-game-window` and `zwave-csound-play` linked-PE replays; it does not
-claim a full cold replay.
+product build remains open. This checkpoint adds 37 source-less VC7.1
+`libcmt.lib`/`libcpmt.lib` archive units covering 1,386 exact bytes, replayed
+through the archive comparator; it does not claim a full product cold replay.
 
 ## Current roadmap
 
@@ -59,6 +59,13 @@ Use this order unless new target evidence changes the dependency graph:
    run focused exact replays; at milestones run full replay/CI.
 
 ## Recent focused exact closure
+
+- A direct IDA Pro MCP review identified 37 previously excluded source-less
+  runtime bodies: CRT startup/wrappers, C++ EH member-call adapters, and the
+  `std::string`/standard-exception family at `0x00462301-0x00462DF5`.
+  Hash-attested VC7.1 `libcmt.lib`/`libcpmt.lib` members reproduce all 1,386
+  target bytes and every declared DIR32/REL32 field in focused cold replays;
+  these remain `library/exclude` and add no source mappings.
 
 - `AsciiManagerView::EnsureSelectionVm @ 0x0040C540` is now canonical exact at
   75/75 bytes under the real `FrontEndControllerView::UpdateShotType` `/GL`
@@ -350,7 +357,7 @@ At a broader milestone run:
     scripts/repo-python scripts/ci.py
     git diff --check
 
-Commit substantive, verified progress promptly with `gpt-web: ...`.
+Commit substantive, verified progress promptly with `gpt-5.6-luna-max: ...`.
 
 ## Local analysis retention
 
