@@ -38,6 +38,8 @@ TH10 接收 contract 是：
 | `src/` | 25（12 个 `.cpp`，含 `th_pch.cpp`；12 个 `.hpp`；`th_pch.h`） | 逐文件检查；目前五个 non-leaf 函数和 leaf 子集通过 canonical exact gate；其余逐文件结论如下 |
 | `docs/unverified/` | 537（含 510 个 `r2ghidra/pdg_*.c`） | 全部 hypothesis，不进入 canonical source |
 | `docs/compare-evidence/` | 8 | 机器报告/triage；不直接进入 `matches.csv` |
+| `docs/screenshots/` | 4 | 展示图片，不是 source 或 target-bound evidence |
+| `docs/` 根文档 | 3（`ANM_VM_INTERP.md`、`GHIDRA.md`、`LEAF_CPP_DECOMP.md`） | 方法/说明资料；只保留作背景，不授予 exact |
 | `portable/` | 27（12 source、14 headers、1 tool） | 语义/可移植阶段材料，exact 阶段拒绝 |
 | `port/` | 55 | Switch/Linux/SDL2 层，不能证明 Windows i386 codegen |
 | `salvage/` | 48（9 pipeline、5 support、33 state、README） | 未闭合的中间流水线，拒绝作为 source 或 exact evidence |
@@ -72,7 +74,7 @@ callback 字段，并在 flags bit 0 置位时调用 `j__free @ 0x004524A1`。ID
 | cold replay 2 | PE SHA-256 `03ca769e677177c401e3fd96529d7b9c2d3c35be8888f108f1424d5bdc8726d0`，114/114 |
 | ledger | `config/functions.csv`、`reccmp-functions.csv`、`implemented.csv`、`matches.csv` 和 `match-units.toml` 已接通 |
 
-这是本次 repo review 中新增的四个 non-leaf canonical exact 之一。origin 仍保持原有
+这是本次 repo review 中新增的两个 Chain non-leaf canonical exact 之一。origin 仍保持原有
 target ledger 的 `authored_game / GameUnassigned` 结论；exact replay 不被用来推断
 原始作者或生产 TU。
 
@@ -181,15 +183,34 @@ zero-difference。这个 exact 结论只
 
 | 文件 | 观察 | 决定/原因 |
 | --- | --- | --- |
-| `AnmManager.cpp` | 大部分目标函数是 naked 转写；含若干地址注释和全局假设 | 不吸收 naked/未闭合 TU；已有 leaf/Anm exact 必须走本地 source/unit，不继承外部命名或 owner |
+| `AnmManager.cpp` | 大部分目标函数是 naked 转写；`LoadAnmFile @ 0x4470C0` 是直接 `return 0` 的 loader stub；含若干地址注释和全局假设 | 不吸收 naked/stub/未闭合 TU；`LoadAnmFile` 外部 report 仅 `15.38%`，已有 leaf/Anm exact 必须走本地 source/unit，不继承外部命名或 owner |
 | `AsciiManager.cpp` | `RegisterChain`、`OnUpdate`、draw wrappers 多为 naked；`OnDrawLowPrioImpl @ 0x401760`、`OnDrawHighPrioImpl @ 0x401A50` 是 volatile-read/`return 0` stub，外部 report 均 0 | stub 不是 faithful source；拒绝 |
 | `GameErrorContext.cpp` | `Log @ 0x44B810` 与 `Fatal @ 0x44B8E0` 是自然 C++；后者目标为 EDI 私有 receiver | 两者均已接收并进入 canonical ledgers；`Fatal` 保留 source-local natural entry context，但不宣称公开 EDI ABI |
-| `GameManager.cpp` | `OnDraw @ 0x4187D0` 是自然 C++；`MainThread @ 0x417870`、`OnUpdate @ 0x418190` 是保持调用存活的 volatile stub；大量其它函数 naked | `OnDraw` 已按直接 IDA 边界和两次 linked-PE replay 接收；stub/naked rows 仍拒绝 |
-| `GameWindow.cpp` | WindowProc 和 helper 多为 naked；`InitD3DRendering @ 0x439890` 是 stub；`SetupSystemParameters @ 0x4392E0` 与 `RestoreSystemParameters @ 0x439350` 是自然 C++ | 两个 system-parameter helper 已由本地 `MainInitializeSystemParameters`/`MainRestoreSystemParameters` 在同一 target extent 上 exact，外部版本不重复吸收。WindowProc/CreateGameWindow/CheckForRunningGameInstance 仍受私有 ABI 或 report 低分限制；`InitD3DRendering=0`，拒绝 |
+| `GameManager.cpp` | `OnDraw @ 0x4187D0` 是自然 C++；`MainThread @ 0x417870`、`ThreadProc @ 0x417C70`、`OnUpdate @ 0x418190`、`OnUpdateCb @ 0x4187C0` 是 stub/wrapper；大量其它函数 naked | `OnDraw` 已按直接 IDA 边界和两次 linked-PE replay 接收；wrapper 的外部 report 为 0 或依赖未实现的 stub，naked rows 仍拒绝 |
+| `GameWindow.cpp` | WindowProc 和 helper 多为 naked；`CreateGameWindow @ 0x439730`、`CheckForRunningGameInstance @ 0x439FF0` 是自然但依赖外部 opaque/window context；`InitD3DRendering @ 0x439890` 是 stub；`SetupSystemParameters @ 0x4392E0` 与 `RestoreSystemParameters @ 0x439350` 是自然 C++ | 两个 system-parameter helper 已由本地 `MainInitializeSystemParameters`/`MainRestoreSystemParameters` 在同一 target extent 上 exact，外部版本不重复吸收。WindowProc/CreateGameWindow/CheckForRunningGameInstance 仍受私有 ABI、opaque calls 或 report 低分限制；`InitD3DRendering=0`，拒绝 |
 | `SmollScore.cpp` | 主要 lifecycle/update/draw 都是 naked，包括地址化的原始指令 | 即使外部 report 多行 `1.0`，仍不是自然可移植 source；拒绝 |
 | `TitleScreen.cpp` | `SetState @ 0x42C5C0`、`SetSubState @ 0x42C620`、callbacks @ `0x42D2E0/0x42D2F0` 与 canonical FrontEnd rows 重叠；`PlaySoundEffectImpl @ 0x42C670`、大状态机/draw 有低分或 stub | 不重复吸收：canonical 已有 `FrontEndControllerView::SetScreenTarget`、`SetScreenStateTarget`、`FrontEndUpdateCallback`、`FrontEndDrawCallback` exact。直接 IDA 显示 `RegisterChain @ 0x42CAA0` 为 192 bytes、receiver live-in EBX，且 `AddToCalc/DrawChain` 使用 ESI/EDI + stack 的私有 seam；自然 `/GL` probes 仍保留标准 receiver 或 stack cleanup 差异，不能 exact。`PlaySoundEffectImpl` 的 target 95-byte body 同样使用 stack title + live-in EDI sound id 和 private ANM helper seams，外部 report 为 0，未吸收。`RegisterChain`（`0.5979`）、`SetState`（`0.8125`）、大 update/draw（`0.278/0.3284/0`）仍 open |
 | `main.cpp` | WinMain 周边多为 opaque/volatile stub；不是完整 game TU | 仅作调用图/全局假设参考，拒绝 |
 | `th_pch.cpp`, `th_pch.h`, `*.hpp`, `ZunBool.hpp`, `ZunResult.hpp`, `inttypes.hpp`, `diffbuild.hpp` | PCH、声明、类型和构建宏 | 不产生独立 target exact，不能作为 canonical absorption |
+
+### 自然候选逐函数矩阵
+
+下面把外部 `.cpp` 中不是 naked 的主要函数逐一列出；外部 report 只作 triage，
+最终决定仍以 TH10-local IDA boundary、source 形状和 canonical replay 为准。
+
+| 外部候选 | 本地审计决定 |
+| --- | --- |
+| `AnmManager::LoadAnmFile @ 0x004470C0` | 外部实现是 `return 0` loader stub，report `15.38%`；拒绝，不能代表 target loader。 |
+| `AsciiManager::OnDrawLowPrioImpl @ 0x00401760`、`OnDrawHighPrioImpl @ 0x00401A50` | volatile-read/`return 0` stubs，report `0%`；拒绝。 |
+| `Chain::AllocElem @ 0x00449ED0`、`AddToCalcChain @ 0x00449AE0`、`AddToDrawChain @ 0x00449B70`、`RegisterCalc @ 0x0044A000`、`RegisterDraw @ 0x0044A030`、`Remove` | 分别因 size/context、wrapper folding、私有 ABI/linkage 或缺少可独立绑定 target row 保留 open/拒绝；`RemoveAllFromList` 与 `UnregisterElem` 已在上文 exact 接收。 |
+| `GameErrorContext::Log @ 0x0044B810`、`Fatal @ 0x0044B8E0` | 两个自然 body 均经直接 IDA 和双冷 replay exact 接收；外部 `void` 返回按 target `char *` ABI 修正。 |
+| `GameManager::MainThread @ 0x00417870`、`ThreadProc @ 0x00417C70`、`OnUpdate @ 0x00418190`、`OnUpdateCb @ 0x004187C0` | volatile store 或 wrapper，外部 report `0%` 且依赖未实现 body；拒绝。`OnDraw @ 0x004187D0` 是唯一通过的 GameManager bounded body。`InitGameSubState @ 0x00418C40` 为 naked，拒绝。 |
+| `GameWindow::SetupSystemParameters @ 0x004392E0`、`RestoreSystemParameters @ 0x00439350` | 外部自然实现与 canonical `MainInitializeSystemParameters`/`MainRestoreSystemParameters` 重叠，不重复吸收；本地已有 target-bound exact。 |
+| `GameWindow::CreateGameWindow @ 0x00439730`、`CheckForRunningGameInstance @ 0x00439FF0` | 自然语义候选，但依赖 opaque Win32/private ABI 与未闭合 error/window graph；未通过 exact gate，保留 open。`InitD3DRendering @ 0x00439890` 是 `return success` stub，拒绝。 |
+| `TitleScreen::SetState @ 0x0042C5C0`、`SetSubState @ 0x0042C620`、`OnUpdate @ 0x0042D2E0`、`OnDraw @ 0x0042D2F0` | 前两个与 canonical FrontEnd state setters 重叠，后两个与 canonical callbacks 重叠，不重复吸收。 |
+| `TitleScreen::PlaySoundEffectImpl @ 0x0042C670`、`RegisterChain @ 0x0042CAA0`、`TitleScreenOnUpdateImpl`/`TitleScreenOnDrawImpl` | 前者 report `0%` 且使用 live-in EDI/ANM 私有 seam；`RegisterChain` report `0.5979` 且 receiver/stack cleanup 不闭合；大状态机含 stubs/低分；保留 open/拒绝。 |
+| `SmollScore::Initialize`、`Register`、`Cleanup`、`RegisterChain`、`OnUpdate`、`OnDraw` | 外部 report 虽有多行 `1.0`，实现仍是 naked opcode transcription；全部拒绝为 natural source。 |
+| `main.cpp` 的 `WinMain` 与 helper rows | WinMain 周边依赖大量 opaque/volatile stubs，不能作为 bounded faithful TU；拒绝。 |
 
 ## 非 source 目录
 
@@ -206,6 +227,17 @@ zero-difference。这个 exact 结论只
 - `ANM_VM_INTERP.md`、`GHIDRA.md`、`LEAF_CPP_DECOMP.md`、screenshots 和根文档是
   方法/语义/展示资料；`LEAF_CPP_DECOMP.md` 还记录过 CI artifact 下载失败，因此
   外部 `verify_leaves` 不能替代本地 compiler Oracle。
+
+### 覆盖核对
+
+在外部 HEAD `649147241f6a931c849d905ca9badc264049db5b` 上，
+`git ls-files | wc -l` 为 797；按 tracked 路径计数为
+`src=25, docs=552 (unverified=537, compare-evidence=8, screenshots=4, 根文档=3),
+portable=27, port=55, salvage=48, config=9, scripts=50, tests=8, bridge=5,
+resources=5, .github=5, tools=1, 根文件=7`，总和仍为 797。外部 worktree 无 dirty
+改动，且没有 tracked game binary/data。上述每个类别均在本文件有接收、拒绝或保留为
+hypothesis 的决定；唯一进入 canonical source/ledger 的外部代码是前述五个 bounded
+non-leaf 函数和 leaf 审计中明确列出的 exact rows。
 
 ### `portable/` 与 `port/`
 
@@ -226,7 +258,7 @@ exact proof。全部拒绝直接吸收；只保留算法/负面线索。
 - 外部 `config/reccmp-functions.csv` 有 2,285 data rows（加 header 为 2,286），
   `census.json` 的 conservative denominator 是 1,705 functions / 94,481 bytes，
   discovered game upper bound 是 2,948 / 162,213 bytes。它们是外部 inventory，不能
-  覆盖本地 1,635-row boundary/origin ledger；globals/floats/strings/milestones 也
+  覆盖本地 1,636-row boundary/origin ledger；globals/floats/strings/milestones 也
   只作候选和语义参考。
 - 50 个 scripts 可以帮助理解 external census、leaf conversion、port progress 和
   salvage，但它们默认不同的 target/input 路径，且 `verify_leaves` 偏向 semantic
