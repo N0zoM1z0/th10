@@ -7,6 +7,9 @@
 // for the same trick.
 #pragma optimize("gty", on)
 
+extern "C" void _ReadWriteBarrier();
+#pragma intrinsic(_ReadWriteBarrier)
+
 // LEAF_GLOB addresses an absolute image VA. The verifier (scripts/verify_leaves.py)
 // remaps it into its mmap via leaf_img_base; in the real rebuild the image
 // base is 0x400000, so the mapping is the identity.
@@ -2538,12 +2541,13 @@ __declspec(noinline) u8 * Fn0040CF90(u8 *p0, u32 p1)
     return 0;
 }
 // 0x00418a90: generated
-__declspec(noinline) void Fn00418A90(u8 *p0)
+__declspec(noinline) u8 * Fn00418A90(u8 *p0)
 {
     u32 v = *(u32 *)(p0 + 0x50) + 1;
     *(u32 *)(p0 + 0x50) = v;
     if ((i32)v >= 0xa)
         *(u32 *)(p0 + 0x50) = 9;
+    return p0;
 }
 // 0x004423c0: generated
 __declspec(noinline) u32 Fn004423C0(u32 p0, u32 p1)
@@ -4620,7 +4624,7 @@ __declspec(noinline) void Fn00412DB0(u8 *p0)
 __declspec(noinline) void Fn004175E0(u8 *p0)
 {
     u32 p0_ = (u32)(uintptr_t)p0;
-    if ((*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) < 7) {
+    if ((i32)(*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) < 7) {
         (*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) = (*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) + 1;
     }
     (*(u32 *)LEAF_GLOB(0x477848u)) = (*(u32 *)(uintptr_t)(u32)(p0_ + 0x3c)) * 0x30 + 0x474788;
@@ -5702,6 +5706,7 @@ __declspec(noinline) u32 Fn0041C030(u32 p0, u8 *p1)
     i32 iVar2;
     u32 puVar3;
     (*(u32 *)(uintptr_t)(u32)(p1_)) = 0x46dab0;
+    _ReadWriteBarrier();
     (*(u32 *)(uintptr_t)(u32)(p1_ + 0x20)) = (*(u32 *)(uintptr_t)(u32)(p1_ + 0x20)) & 0xfffffffe;
     puVar1 = p1_ + 0x68;
     iVar2 = 0x12;

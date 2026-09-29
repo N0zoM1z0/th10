@@ -474,6 +474,7 @@ th10::leaf::Fn004175A0,0x004175A0,function
 th10::leaf::Fn004175B0,0x004175B0,function
 th10::leaf::Fn004175C0,0x004175C0,function
 th10::leaf::Fn004175D0,0x004175D0,function
+th10::leaf::Fn004175E0,0x004175E0,function
 th10::leaf::Fn00417630,0x00417630,function
 th10::leaf::Fn00417640,0x00417640,function
 th10::leaf::Fn00417650,0x00417650,function
@@ -491,6 +492,7 @@ th10::leaf::Fn004177C0,0x004177C0,function
 th10::leaf::Fn004177E0,0x004177E0,function
 th10::leaf::Fn004189E0,0x004189E0,function
 th10::leaf::Fn004189F0,0x004189F0,function
+th10::leaf::Fn00418A90,0x00418A90,function
 th10::leaf::Fn00418AB0,0x00418AB0,function
 th10::leaf::Fn00418AC0,0x00418AC0,function
 th10::leaf::Fn00418B10,0x00418B10,function
@@ -526,6 +528,7 @@ th10::leaf::Fn0041BFF0,0x0041BFF0,function
 th10::leaf::Fn0041C000,0x0041C000,function
 th10::leaf::Fn0041C010,0x0041C010,function
 th10::leaf::Fn0041C020,0x0041C020,function
+th10::leaf::Fn0041C030,0x0041C030,function
 th10::leaf::Fn0041D870,0x0041D870,function
 th10::leaf::Fn0041EAF0,0x0041EAF0,function
 th10::leaf::Fn0041F820,0x0041F820,function
