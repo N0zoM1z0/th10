@@ -112,12 +112,13 @@ normalized byte score is not exactness.
 
 | Owner | Current live frontier |
 | --- | --- |
-| `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Target owner is 14,416 bytes. **No current candidate score is retained** because ECL support changed after the last selected dispatcher graph. Rebuild before work resumes. |
+| `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Fresh 2026-10-01 four-source `/GS` graph: target 14,416 bytes, candidate 14,232 bytes, 720/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,576, suffix 43/43. The owner remains non-exact. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-070 selected diagnostic graph: 9,964-byte PDB contribution; 1,676/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. |
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-041: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 151/534. |
 
-The compact local summaries are under `.analysis/gpt-web/current/`. They are
-convenience snapshots, not acceptance authority.
+The current campaign artifacts are under
+`.analysis/gpt-web/20261001-ecl-readint/`. They are convenience snapshots, not
+acceptance authority.
 
 ## ECL runner: current recovery point
 
@@ -195,6 +196,12 @@ Closed ECL directions that should not be repeated without new evidence:
 - format-parser declaration permutations and direct arithmetic-local ordering
   probes do not independently solve the whole-function allocator problem.
 
+- spelling the zero-stack argument offset as `sizeof(preservedValue) + 8` is also
+  closed: the helper fell to 541/550 and 137/534 normalized comparable bytes,
+  versus the retained 551/550 and 151/534, while `Run` and `ReadInt` were
+  unchanged. The edit was reverted; the target's `0x0C` constant is not by
+  itself a source-shape solution.
+
 Focused ECL diagnostic:
 
     analysis_dir=.analysis/gpt-web/current
@@ -264,6 +271,10 @@ Recent negative ANM experiments that are closed absent new evidence include:
 - explicit POSITION `z/y/x` locals;
 - introducing a noinline interpolation `ResetTimer` helper;
 - aggregate final-position temporaries that expand the pre-table past target.
+- direct flag-mask writes for FLIP X/Y (`(flags ^ mask) | 8`) are also closed:
+  the local block became target-like, but the selected graph fell to 9,948
+  bytes, 9,572/9,588 pre-table bytes and 1,280/8,584 normalized comparable
+  bytes. The natural bitfield source is retained.
 
 Focused ANM diagnostic:
 
@@ -286,11 +297,12 @@ After any ANM edit:
 
     scripts/repo-python scripts/replay-exact-units.py --source src/AnmManager.cpp
 
-## Enemy dispatcher: rebuild before judging
+## Enemy dispatcher: current recovery point
 
 The target owner is `0x0040E770`, 14,416 bytes. Maintained source covers the
-0x100..0x1B4 dispatcher, but the previously recorded candidate score used older
-ECL support and is intentionally omitted from the live frontier.
+0x100..0x1B4 dispatcher. A fresh selected graph now exists; its remaining gap
+is coupled to entry scratch lifetime and per-case layout rather than a missing
+dispatcher boundary.
 
 Target-backed constraints to preserve when the dispatcher campaign resumes:
 
@@ -306,9 +318,22 @@ Target-backed constraints to preserve when the dispatcher campaign resumes:
 - entry scratch and stack-home lifetime are whole-owner problems. Do not use
   dummy padding, fake volatile dependencies or byte patches.
 
+Fresh 2026-10-01 evidence:
+
+- the `/GS` graph with `EclVm.cpp`, `AnmManager.cpp` and `AnmVmCreate.cpp` as
+  support emits 14,232 bytes against the 14,416-byte target and matches
+  720/11,556 normalized comparable bytes (1,003 raw bytes); selector equality
+  is 181/181 and all 108 physical case groups retain target order;
+- the target pre-table is 13,760 bytes versus 13,576 in the candidate, while
+  both suffixes are 43 bytes. The first material layout divergences are the
+  CREATE_ENEMY and CREATE_ENEMY_ABSOLUTE bodies, so no one-line reader or
+  difficulty-case edit is currently justified. The fresh raw/layout reports
+  are `enemy-dispatch-probe-current.json` and
+  `enemy-dispatch-layout-current.json` in the campaign artifact directory.
+
 Fresh dispatcher diagnostic:
 
-    analysis_dir=.analysis/gpt-web/current
+    analysis_dir=.analysis/gpt-web/20261001-ecl-readint
     mkdir -p "$analysis_dir"
     scripts/repo-python scripts/probe-ltcg-backlog.py \
       --source src/EnemyEclDispatcher.cpp \
@@ -316,9 +341,8 @@ Fresh dispatcher diagnostic:
       --support 'src/EnemyEclDispatcher.cpp=src/EclVm.cpp' \
       --support 'src/EnemyEclDispatcher.cpp=src/AnmManager.cpp' \
       --support 'src/EnemyEclDispatcher.cpp=src/AnmVmCreate.cpp' \
-      --support 'src/EnemyEclDispatcher.cpp=src/AnmVmId.cpp' \
       --profile-flag=/GS \
-      --json > "$analysis_dir/enemy-dispatch-probe.json"
+      --json > "$analysis_dir/enemy-dispatch-probe-current.json"
 
 Use the fresh candidate address with `scripts/report-ecl-dispatch-table.py`.
 Never hard-code an address from an old linked image.
