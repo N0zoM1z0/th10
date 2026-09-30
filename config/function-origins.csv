@@ -1,5 +1,6 @@
 address,origin,subsystem,disposition,confidence,evidence_id
 0x00401000,authored_game,AsciiManager,authored,high,ascii-manager-owner-2026-09-14
+0x00401100,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00401110,authored_game,AsciiManager,authored,high,ascii-manager-owner-2026-09-14
 0x00401260,authored_game,AsciiManager,authored,high,ascii-manager-owner-2026-09-14
 0x00401440,authored_game,AsciiManager,authored,high,ascii-manager-owner-2026-09-14
@@ -29,6 +30,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00401F70,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00401F80,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00401F90,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x00401FA0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00401FB0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00401FC0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00401FF0,authored_game,AnmManager,authored,high,anm-vm-lifecycle-2026-09-14
@@ -82,6 +84,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004053D0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004053E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004053F0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x00405400,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00405410,authored_game,ZunTimer,authored,high,target-shared-zuntimer-2026-09-25
 0x004054A0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004054B0,authored_game,GameUnassigned,authored,medium,target-authored-call-sandwich-2026-09-17
@@ -335,6 +338,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004131B0,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004131F0,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00413200,authored_game,AnmManager,authored,high,anm-script-executor-2026-09-15
+0x00413240,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00413270,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x00413350,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x00413450,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
@@ -622,6 +626,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00427D80,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00427DF0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00427E00,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x00427E10,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00427E90,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00428160,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x004281D0,authored_game,GameUnassigned,authored,medium,target-authored-call-sandwich-2026-09-17
@@ -819,6 +824,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00438260,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
 0x00438350,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
 0x00438380,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
+0x00438400,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00438420,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
 0x00438510,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
 0x00438590,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
@@ -872,6 +878,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043BC40,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
 0x0043BCD0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0043BDA0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
+0x0043BF90,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0043BFA0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0043C1A0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0043C2C0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
@@ -968,7 +975,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00445880,authored_game,AnmManager,authored,high,anm-pulsing-radial-trail-2026-09-15
 0x004458A0,unknown,AnmManager,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x004458B0,authored_game,AnmManager,authored,high,anm-pulsing-radial-trail-2026-09-15
+0x004458D0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x004458E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x004458F0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00445900,authored_game,AnmManager,authored,high,anm-manager-setup-2026-09-15
+0x00446210,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00446220,authored_game,AnmManager,authored,high,anm-manager-update-lifecycle-2026-09-15
 0x004462F0,authored_game,AnmManager,authored,high,anm-manager-setup-2026-09-15
 0x004465B0,authored_game,AnmManager,authored,high,anm-manager-setup-2026-09-15

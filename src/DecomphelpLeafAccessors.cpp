@@ -1602,10 +1602,18 @@ __declspec(noinline) void Fn00442170(u8 *pObj, u32 value)
 // scripts/verify_leaves.py --from-exe; any that fail will be removed.
 // -----------------------------------------------------------------
 
-// 0x000000401100: generated
-__declspec(noinline) u32 Fn00401100(u32 p0, u32 p1)
+// 0x000000401100: target is a one-argument __thiscall identity helper.
+// The original owner is not identified; the address-based view keeps the
+// member ABI explicit without claiming a semantic class name.
+class LeafIdentity00401100View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity00401100View::Get()
+{
+    return (u32)this;
 }
 
 // 0x000000401c90: generated
@@ -1660,10 +1668,18 @@ __declspec(noinline) u8 * Fn00401F90(u8 *p0, u32 p1)
     return (u8*)(p0);
 }
 
-// 0x000000401fa0: generated
-__declspec(noinline) u32 Fn00401FA0(u32 p0, u32 p1)
+// 0x000000401fa0: target is a one-argument __thiscall identity helper.
+// The original owner is not identified; the address-based view keeps the
+// member ABI explicit without claiming a semantic class name.
+class LeafIdentity00401FA0View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity00401FA0View::Get()
+{
+    return (u32)this;
 }
 
 // 0x000000401fc0: generated
@@ -1725,10 +1741,16 @@ __declspec(noinline) u8 * Fn00402220(u8 *p0)
     return (u8*)(p0);
 }
 
-// 0x000000405400: generated
-__declspec(noinline) u32 Fn00405400(u32 p0, u32 p1)
+// 0x000000405400: target is a one-argument __thiscall identity helper.
+class LeafIdentity00405400View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity00405400View::Get()
+{
+    return (u32)this;
 }
 
 
@@ -1772,10 +1794,16 @@ __declspec(noinline) void Fn004131B0(void)
 
 }
 
-// 0x000000413240: generated
-__declspec(noinline) u32 Fn00413240(u32 p0, u32 p1)
+// 0x000000413240: target is a one-argument __thiscall identity helper.
+class LeafIdentity00413240View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity00413240View::Get()
+{
+    return (u32)this;
 }
 
 // 0x0000004136b0: generated
@@ -1977,10 +2005,16 @@ __declspec(noinline) void Fn0041F840(void)
 
 
 
-// 0x000000427e10: generated
-__declspec(noinline) u32 Fn00427E10(u32 p0, u32 p1)
+// 0x000000427e10: target is a one-argument __thiscall identity helper.
+class LeafIdentity00427E10View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity00427E10View::Get()
+{
+    return (u32)this;
 }
 
 
@@ -2054,40 +2088,76 @@ __declspec(noinline) u8 * Fn00436640(u8 *p0, u32 p1)
     return (u8*)(p0);
 }
 
-// 0x000000438400: generated
-__declspec(noinline) u32 Fn00438400(u32 p0, u32 p1)
+// 0x000000438400: target is a one-argument __thiscall identity helper.
+class LeafIdentity00438400View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity00438400View::Get()
+{
+    return (u32)this;
 }
 
-// 0x00000043bf90: generated
-__declspec(noinline) u32 Fn0043BF90(u32 p0, u32 p1)
+// 0x00000043bf90: target is a one-argument __thiscall identity helper.
+class LeafIdentity0043BF90View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity0043BF90View::Get()
+{
+    return (u32)this;
 }
 
-// 0x0000004458d0: generated
-__declspec(noinline) u32 Fn004458D0(u32 p0, u32 p1)
+// 0x0000004458d0: target is a one-argument __thiscall identity helper.
+class LeafIdentity004458D0View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity004458D0View::Get()
+{
+    return (u32)this;
 }
 
-// 0x0000004458e0: generated
-__declspec(noinline) u32 Fn004458E0(u32 p0, u32 p1)
+// 0x0000004458e0: target is a one-argument __thiscall identity helper.
+class LeafIdentity004458E0View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity004458E0View::Get()
+{
+    return (u32)this;
 }
 
-// 0x0000004458f0: generated
-__declspec(noinline) u32 Fn004458F0(u32 p0, u32 p1)
+// 0x0000004458f0: target is a one-argument __thiscall identity helper.
+class LeafIdentity004458F0View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity004458F0View::Get()
+{
+    return (u32)this;
 }
 
-// 0x000000446210: generated
-__declspec(noinline) u32 Fn00446210(u32 p0, u32 p1)
+// 0x000000446210: target is a one-argument __thiscall identity helper.
+class LeafIdentity00446210View
 {
-    return p1;
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafIdentity00446210View::Get()
+{
+    return (u32)this;
 }
 
 // 0x00000044c0e0: generated

@@ -1,5 +1,6 @@
 address,span_end,state,confidence,evidence_id,notes
 0x00401000,0x004010FA,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 251/251, tail ret"
+0x00401100,0x00401102,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x00401110,0x00401259,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 330/330, tail ret"
 0x00401260,0x00401432,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 467/467, tail ret"
 0x00401440,0x00401484,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 69/69, tail ret"
@@ -29,6 +30,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00401F70,0x00401F77,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00401F80,0x00401F87,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00401F90,0x00401F9A,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x00401FA0,0x00401FA2,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x00401FB0,0x00401FB6,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00401FC0,0x00401FC0,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00401FF0,0x00402011,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 34/34, tail ret"
@@ -82,6 +84,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004053D0,0x004053D3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x004053E0,0x004053E0,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x004053F0,0x004053F0,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x00405400,0x00405402,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x00405410,0x00405448,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=61; no overlap or external interior branch
 0x004054A0,0x004054A5,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x004054B0,0x004054FE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
@@ -335,6 +338,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004131B0,0x004131B0,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x004131F0,0x004131F3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x00413200,0x00413216,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 23/23, tail ret"
+0x00413240,0x00413242,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x00413270,0x0041328D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00413350,0x004133E6,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x420207 to entry; independent IDA MCP extent agrees"
 0x00413450,0x004134A3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -622,6 +626,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00427D80,0x00427D94,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; target-local RET/CC separator and neighboring code establish the contiguous extent; no independent entry reference observed"
 0x00427DF0,0x00427DF3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00427E00,0x00427E00,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x00427E10,0x00427E12,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x00427E90,0x0042815C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00428160,0x004281C8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004281D0,0x0042827D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -819,6 +824,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00438260,0x00438342,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00438350,0x00438374,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00438380,0x004383D2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x00438400,0x00438402,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x00438420,0x00438509,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00438510,0x00438584,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00438590,0x004385AE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -872,6 +878,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043BC40,0x0043BCC6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043BCD0,0x0043BD3B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043BDA0,0x0043BF82,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=11; no overlap or external interior branch
+0x0043BF90,0x0043BF92,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x0043BFA0,0x0043C194,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x0043C1A0,0x0043C225,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0043C2C0,0x0043C303,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
@@ -968,7 +975,11 @@ address,span_end,state,confidence,evidence_id,notes
 0x00445880,0x00445898,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 25/25, tail ret"
 0x004458A0,0x004458A6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail ret"
 0x004458B0,0x004458CD,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 30/30, tail ret"
+0x004458D0,0x004458D2,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
+0x004458E0,0x004458E2,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
+0x004458F0,0x004458F2,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x00445900,0x0044620A,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 2315/2315, tail ret"
+0x00446210,0x00446212,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x00446220,0x004462ED,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 206/206, tail ret"
 0x004462F0,0x004464C7,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 472/472, tail ret"
 0x004465B0,0x00446B66,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 1463/1463; owned indirect control table at 0x00446B3C

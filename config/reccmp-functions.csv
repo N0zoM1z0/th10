@@ -662,10 +662,12 @@ th10::leaf::Fn00401CD0,0x00401CD0,function
 th10::leaf::Fn00401D10,0x00401D10,function
 th10::leaf::Fn00401D90,0x00401D90,function
 th10::leaf::Fn00401DB0,0x00401DB0,function
+th10::leaf::LeafIdentity00401100View::Get,0x00401100,function
 th10::leaf::Fn00401F60,0x00401F60,function
 th10::leaf::Fn00401F70,0x00401F70,function
 th10::leaf::Fn00401F80,0x00401F80,function
 th10::leaf::Fn00401F90,0x00401F90,function
+th10::leaf::LeafIdentity00401FA0View::Get,0x00401FA0,function
 th10::leaf::Fn00401FB0,0x00401FB0,function
 th10::leaf::Fn00401FC0,0x00401FC0,function
 th10::leaf::Fn004020B0,0x004020B0,function
@@ -749,3 +751,12 @@ th10::leaf::Fn0040B500,0x0040B500,function
 th10::leaf::Fn0040B510,0x0040B510,function
 th10::leaf::Fn0040B520,0x0040B520,function
 th10::leaf::Fn0040BA80,0x0040BA80,function
+th10::leaf::LeafIdentity00405400View::Get,0x00405400,function
+th10::leaf::LeafIdentity00413240View::Get,0x00413240,function
+th10::leaf::LeafIdentity00427E10View::Get,0x00427E10,function
+th10::leaf::LeafIdentity00438400View::Get,0x00438400,function
+th10::leaf::LeafIdentity0043BF90View::Get,0x0043BF90,function
+th10::leaf::LeafIdentity004458D0View::Get,0x004458D0,function
+th10::leaf::LeafIdentity004458E0View::Get,0x004458E0,function
+th10::leaf::LeafIdentity004458F0View::Get,0x004458F0,function
+th10::leaf::LeafIdentity00446210View::Get,0x00446210,function

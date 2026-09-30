@@ -661,10 +661,12 @@ th10::leaf::Fn00401CD0
 th10::leaf::Fn00401D10
 th10::leaf::Fn00401D90
 th10::leaf::Fn00401DB0
+th10::leaf::LeafIdentity00401100View::Get
 th10::leaf::Fn00401F60
 th10::leaf::Fn00401F70
 th10::leaf::Fn00401F80
 th10::leaf::Fn00401F90
+th10::leaf::LeafIdentity00401FA0View::Get
 th10::leaf::Fn00401FB0
 th10::leaf::Fn00401FC0
 th10::leaf::Fn004020B0
@@ -748,3 +750,12 @@ th10::leaf::Fn0040B500
 th10::leaf::Fn0040B510
 th10::leaf::Fn0040B520
 th10::leaf::Fn0040BA80
+th10::leaf::LeafIdentity00405400View::Get
+th10::leaf::LeafIdentity00413240View::Get
+th10::leaf::LeafIdentity00427E10View::Get
+th10::leaf::LeafIdentity00438400View::Get
+th10::leaf::LeafIdentity0043BF90View::Get
+th10::leaf::LeafIdentity004458D0View::Get
+th10::leaf::LeafIdentity004458E0View::Get
+th10::leaf::LeafIdentity004458F0View::Get
+th10::leaf::LeafIdentity00446210View::Get
