@@ -2349,10 +2349,43 @@ __declspec(noinline) void Fn004352F0(void)
 }
 
 
-// 0x438250: cloned shape of th10::leaf::Fn004364E0 (verify_leaves --from-exe)
-__declspec(noinline) u8 * Fn00438250(u32 p0, u8 *p1)
+// 0x00438250: direct IDA identifies a __thiscall dword getter; retain an
+// address-based member view because no owner or caller evidence is present.
+class LeafGetter00438250View
 {
-    return (u8*)(*(u32*)((u8*)((uintptr_t)p1+0x14)));
+public:
+    __declspec(noinline) u32 Get();
+};
+
+__declspec(noinline) u32 LeafGetter00438250View::Get()
+{
+    return *(u32 *)((u8 *)this + 0x14);
+}
+
+// 0x004383F0 and 0x00438410: target member identity helpers with one stack
+// argument and a callee pop; the original owner remains unknown.
+class LeafIdentity004383F0View
+{
+public:
+    __declspec(noinline) u8 * Get(u32 unused);
+};
+
+__declspec(noinline) u8 * LeafIdentity004383F0View::Get(u32 unused)
+{
+    (void)unused;
+    return (u8 *)this;
+}
+
+class LeafIdentity00438410View
+{
+public:
+    __declspec(noinline) u8 * Get(u32 unused);
+};
+
+__declspec(noinline) u8 * LeafIdentity00438410View::Get(u32 unused)
+{
+    (void)unused;
+    return (u8 *)this;
 }
 
 
@@ -2464,11 +2497,17 @@ __declspec(noinline) u8 * Fn00413800(u8 *p0)
 {
     return (u8*)(((u32)(uintptr_t)(~(u32)((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)+0x2480))))) & 0x1));
 }
-// 0x00405e10: generated
-__declspec(noinline) u8 * Fn00405E10(u8 *p0, u8 *p1)
+// 0x00405e10: target is a one-argument __thiscall flag-clear helper.
+class LeafFlag00405E10View
 {
-    *(u32*)((uintptr_t)((u32)(uintptr_t)(p1))+0x10) = (u32)(*(u32*)((uintptr_t)((u32)(uintptr_t)(p1))+0x10) & 0xfffffffe);
-    return (u8*)((u32)(uintptr_t)(p1));
+public:
+    __declspec(noinline) u8 * Clear();
+};
+
+__declspec(noinline) u8 * LeafFlag00405E10View::Clear()
+{
+    *(u32 *)((u8 *)this + 0x10) &= ~1u;
+    return (u8 *)this;
 }
 // 0x004247c0: generated
 __declspec(noinline) u8 * Fn004247C0(u8 *p0, u8 *p1)
@@ -2664,6 +2703,98 @@ __declspec(noinline) u8 * Fn00405130(u8 *p0, u8 *p1, u32 p2)
     *(u32*)((uintptr_t)(p1)+0x8) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)+0x8))) & 0xffffffff));
     return (u8*)(*(u32*)(((uintptr_t)(p0)+0x8)));
 }
+
+// 0x00405370: target __thiscall receiver plus one stack value; return value.
+class LeafValueSetter00405370View
+{
+public:
+    __declspec(noinline) u32 Set(u32 value);
+};
+
+__declspec(noinline) u32 LeafValueSetter00405370View::Set(u32 value)
+{
+    *(u32 *)this = value;
+    return value;
+}
+
+// 0x00412F10 and 0x00412F20: target __thiscall value setters. The original
+// owner is not identified, so keep the two observed offsets as separate
+// address-based member views.
+class LeafValueSetter00412F10View
+{
+public:
+    __declspec(noinline) u32 Set(u32 value);
+};
+
+__declspec(noinline) u32 LeafValueSetter00412F10View::Set(u32 value)
+{
+    *(u32 *)((u8 *)this + 0x10) = value;
+    return value;
+}
+
+class LeafValueSetter00412F20View
+{
+public:
+    __declspec(noinline) u32 Set(u32 value);
+};
+
+__declspec(noinline) u32 LeafValueSetter00412F20View::Set(u32 value)
+{
+    *(u32 *)((u8 *)this + 0x0c) = value;
+    return value;
+}
+
+// 0x0040CF00, 0x0040CF10, 0x0040CF20 and 0x0040CF80: target __thiscall
+// setters over the Enemy record's observed fields. Their original owner is
+// not identified; each method therefore remains an address-based view.
+class LeafValueSetter0040CF00View
+{
+public:
+    __declspec(noinline) u32 Set(u32 value);
+};
+
+__declspec(noinline) u32 LeafValueSetter0040CF00View::Set(u32 value)
+{
+    *(u32 *)((u8 *)this + 0x3c) = value;
+    return value;
+}
+
+class LeafValueSetter0040CF10View
+{
+public:
+    __declspec(noinline) u32 Set(u32 value);
+};
+
+__declspec(noinline) u32 LeafValueSetter0040CF10View::Set(u32 value)
+{
+    *(u32 *)((u8 *)this + 0x44) = value;
+    return value;
+}
+
+class LeafValueSetter0040CF20View
+{
+public:
+    __declspec(noinline) u32 Set(u32 value);
+};
+
+__declspec(noinline) u32 LeafValueSetter0040CF20View::Set(u32 value)
+{
+    *(u32 *)((u8 *)this + 0x48) = value;
+    return value;
+}
+
+class LeafValueSetter0040CF80View
+{
+public:
+    __declspec(noinline) u32 Set(u32 value);
+};
+
+__declspec(noinline) u32 LeafValueSetter0040CF80View::Set(u32 value)
+{
+    *(u32 *)((u8 *)this + 0x440) = value;
+    return value;
+}
+
 // 0x00409e10: generated
 __declspec(noinline) u8 * Fn00409E10(u8 *p0, u8 *p1, u32 p2)
 {

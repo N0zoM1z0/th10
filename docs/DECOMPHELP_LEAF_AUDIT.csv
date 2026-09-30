@@ -80,7 +80,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00405CA0,Fn00405CA0,317,True,sub_405CA0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405CA0,False,canonical linked replay exact
 0x00405CB0,Fn00405CB0,3005,True,sub_405CB0,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405CB0,False,canonical linked replay exact
 0x00405D00,Fn00405D00,5471,True,sub_405D00,215,215,308,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
-0x00405E10,Fn00405E10,2395,True,sub_405E10,7,7,5,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
+0x00405E10,Fn00405E10,2500,True,sub_405E10,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafFlag00405E10View::Clear,False,canonical linked replay exact
 0x00406160,Fn00406160,5392,True,sub_406160,109,99,268,isolated-codegen-size-mismatch,exact,src/BulletManager.cpp,BulletPositionView::IsOutsidePlayfield,False,isolated-codegen-size-mismatch
 0x004061D0,Fn004061D0,5406,True,sub_4061D0,109,99,268,isolated-codegen-size-mismatch,exact,src/BulletManager.cpp,BulletWrapPositionView::IsOutsidePlayfield,False,isolated-codegen-size-mismatch
 0x00408660,Fn00408660,6021,True,sub_408660,80,40,84,isolated-codegen-size-mismatch,exact,src/BulletManager.cpp,BulletAngleDifference,False,isolated-codegen-size-mismatch
@@ -500,7 +500,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00436DA0,Fn00436DA0,4961,True,sub_436DA0,946,515,875,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x004381E0,Fn004381E0,199,True,sub_4381E0,16,16,16,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004381E0,False,canonical linked replay exact
 0x00438240,Fn00438240,4475,False,,,10,14,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
-0x00438250,Fn00438250,2280,True,sub_438250,4,4,4,isolated-byte-diff,absent,,,False,isolated-byte-diff
+0x00438250,Fn00438250,2352,True,sub_438250,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafGetter00438250View::Get,False,canonical linked replay exact
 0x004383E0,Fn004383E0,4485,True,unknown_libname_2,14,10,14,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00438400,Fn00438400,2098,True,sub_438400,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafIdentity00438400View::Get,False,canonical linked replay exact
 0x00438590,Fn00438590,5608,True,sub_438590,31,23,29,isolated-codegen-size-mismatch,excluded,,,False,isolated-codegen-size-mismatch
@@ -605,3 +605,12 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00450690,Fn00450690,5305,True,sub_450690,64,,64,target-size-missing,exact,src/EclVm.cpp,EclVmStackView::EnterFrame,False,target-size-missing
 0x004506D0,Fn004506D0,6464,True,sub_4506D0,41,,44,target-size-missing,exact,src/EclVm.cpp,EclVmStackView::LeaveFrame,False,target-size-missing
 0x0045E3A0,Fn0045E3A0,2111,True,sub_45E3A0,3,,3,target-size-missing,excluded,,,False,target-size-missing
+0x00405370,Fn00405370,2707,True,sub_405370,9,9,9,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafValueSetter00405370View::Set,False,canonical linked replay exact
+0x0040CF00,Fn0040CF00,2747,True,sub_40CF00,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafValueSetter0040CF00View::Set,False,canonical linked replay exact
+0x0040CF10,Fn0040CF10,2762,True,sub_40CF10,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafValueSetter0040CF10View::Set,False,canonical linked replay exact
+0x0040CF20,Fn0040CF20,2774,True,sub_40CF20,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafValueSetter0040CF20View::Set,False,canonical linked replay exact
+0x0040CF80,Fn0040CF80,2786,True,sub_40CF80,13,13,13,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafValueSetter0040CF80View::Set,False,canonical linked replay exact
+0x00412F10,Fn00412F10,2720,True,sub_412F10,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafValueSetter00412F10View::Set,False,canonical linked replay exact
+0x00412F20,Fn00412F20,2735,True,sub_412F20,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafValueSetter00412F20View::Set,False,canonical linked replay exact
+0x004383F0,Fn004383F0,2365,True,sub_4383F0,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafIdentity004383F0View::Get,False,canonical linked replay exact
+0x00438410,Fn00438410,2379,True,sub_438410,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafIdentity00438410View::Get,False,canonical linked replay exact

@@ -79,6 +79,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00405300,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x00405340,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00405360,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x00405370,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00405390,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004053A0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004053D0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
@@ -109,6 +110,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00405CB0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00405D00,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00405DE0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x00405E10,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00405E20,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00405ED0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00405F70,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
@@ -278,8 +280,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040CE90,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040CEA0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0040CED0,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x0040CF00,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x0040CF10,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x0040CF20,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0040CF40,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0040CF60,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x0040CF80,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0040CF90,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0040CFB0,authored_game,Enemy,authored,high,enemy-lifecycle-2026-09-14
 0x0040D260,authored_game,Enemy,authored,high,enemy-manager-resource-lifecycle-2026-09-14
@@ -325,6 +331,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00412E00,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00412E70,authored_game,ItemManager,authored,high,target-item-faith-decay-exact-2026-09-24
 0x00412ED0,authored_game,Enemy,authored,high,target-enemy-set-chapter-owner-2026-09-24
+0x00412F10,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x00412F20,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00412F50,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00412F60,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00412FA0,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
@@ -821,10 +829,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00437FE0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
 0x004381E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004381F0,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
+0x00438250,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00438260,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
 0x00438350,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
 0x00438380,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
+0x004383F0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00438400,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x00438410,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00438420,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
 0x00438510,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17
 0x00438590,library,CxxRuntime,exclude,medium,target-vc71-string-implementation-2026-09-17

@@ -760,3 +760,14 @@ th10::leaf::LeafIdentity004458D0View::Get,0x004458D0,function
 th10::leaf::LeafIdentity004458E0View::Get,0x004458E0,function
 th10::leaf::LeafIdentity004458F0View::Get,0x004458F0,function
 th10::leaf::LeafIdentity00446210View::Get,0x00446210,function
+th10::leaf::LeafValueSetter00405370View::Set,0x00405370,function
+th10::leaf::LeafFlag00405E10View::Clear,0x00405E10,function
+th10::leaf::LeafValueSetter0040CF00View::Set,0x0040CF00,function
+th10::leaf::LeafValueSetter0040CF10View::Set,0x0040CF10,function
+th10::leaf::LeafValueSetter0040CF20View::Set,0x0040CF20,function
+th10::leaf::LeafValueSetter0040CF80View::Set,0x0040CF80,function
+th10::leaf::LeafValueSetter00412F10View::Set,0x00412F10,function
+th10::leaf::LeafValueSetter00412F20View::Set,0x00412F20,function
+th10::leaf::LeafGetter00438250View::Get,0x00438250,function
+th10::leaf::LeafIdentity004383F0View::Get,0x004383F0,function
+th10::leaf::LeafIdentity00438410View::Get,0x00438410,function

@@ -17050,3 +17050,157 @@ relocations = [
   { offset = 0x31, type = "REL32", symbol = "__ld12tod", target = 0x0045D5E4 },
   { offset = 0x3F, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
 ]
+
+[units.game-decomphelp-setter-00405370]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafSetter00405370"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Set@LeafValueSetter00405370View@leaf@th10@@QAEII@Z"
+functions = ["th10::leaf::LeafValueSetter00405370View::Set"]
+symbol = "?Set@LeafValueSetter00405370View@leaf@th10@@QAEII@Z"
+target_address = 0x00405370
+size = 9
+linkages = []
+
+[units.game-decomphelp-flag-00405e10]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafFlag00405E10"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Clear@LeafFlag00405E10View@leaf@th10@@QAEPAEXZ"
+functions = ["th10::leaf::LeafFlag00405E10View::Clear"]
+symbol = "?Clear@LeafFlag00405E10View@leaf@th10@@QAEPAEXZ"
+target_address = 0x00405E10
+size = 7
+linkages = []
+
+[units.game-decomphelp-setter-0040cf00]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafSetter0040CF00"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Set@LeafValueSetter0040CF00View@leaf@th10@@QAEII@Z"
+functions = ["th10::leaf::LeafValueSetter0040CF00View::Set"]
+symbol = "?Set@LeafValueSetter0040CF00View@leaf@th10@@QAEII@Z"
+target_address = 0x0040CF00
+size = 10
+linkages = []
+
+[units.game-decomphelp-setter-0040cf10]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafSetter0040CF10"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Set@LeafValueSetter0040CF10View@leaf@th10@@QAEII@Z"
+functions = ["th10::leaf::LeafValueSetter0040CF10View::Set"]
+symbol = "?Set@LeafValueSetter0040CF10View@leaf@th10@@QAEII@Z"
+target_address = 0x0040CF10
+size = 10
+linkages = []
+
+[units.game-decomphelp-setter-0040cf20]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafSetter0040CF20"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Set@LeafValueSetter0040CF20View@leaf@th10@@QAEII@Z"
+functions = ["th10::leaf::LeafValueSetter0040CF20View::Set"]
+symbol = "?Set@LeafValueSetter0040CF20View@leaf@th10@@QAEII@Z"
+target_address = 0x0040CF20
+size = 10
+linkages = []
+
+[units.game-decomphelp-setter-0040cf80]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafSetter0040CF80"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Set@LeafValueSetter0040CF80View@leaf@th10@@QAEII@Z"
+functions = ["th10::leaf::LeafValueSetter0040CF80View::Set"]
+symbol = "?Set@LeafValueSetter0040CF80View@leaf@th10@@QAEII@Z"
+target_address = 0x0040CF80
+size = 13
+linkages = []
+
+[units.game-decomphelp-setter-00412f10]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafSetter00412F10"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Set@LeafValueSetter00412F10View@leaf@th10@@QAEII@Z"
+functions = ["th10::leaf::LeafValueSetter00412F10View::Set"]
+symbol = "?Set@LeafValueSetter00412F10View@leaf@th10@@QAEII@Z"
+target_address = 0x00412F10
+size = 10
+linkages = []
+
+[units.game-decomphelp-setter-00412f20]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafSetter00412F20"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Set@LeafValueSetter00412F20View@leaf@th10@@QAEII@Z"
+functions = ["th10::leaf::LeafValueSetter00412F20View::Set"]
+symbol = "?Set@LeafValueSetter00412F20View@leaf@th10@@QAEII@Z"
+target_address = 0x00412F20
+size = 10
+linkages = []
+
+[units.game-decomphelp-getter-00438250]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafGetter00438250"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Get@LeafGetter00438250View@leaf@th10@@QAEIXZ"
+functions = ["th10::leaf::LeafGetter00438250View::Get"]
+symbol = "?Get@LeafGetter00438250View@leaf@th10@@QAEIXZ"
+target_address = 0x00438250
+size = 4
+linkages = []
+
+[units.game-decomphelp-identity-004383f0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafIdentity004383F0"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Get@LeafIdentity004383F0View@leaf@th10@@QAEPAEI@Z"
+functions = ["th10::leaf::LeafIdentity004383F0View::Get"]
+symbol = "?Get@LeafIdentity004383F0View@leaf@th10@@QAEPAEI@Z"
+target_address = 0x004383F0
+size = 5
+linkages = []
+
+[units.game-decomphelp-identity-00438410]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafIdentity00438410"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Get@LeafIdentity00438410View@leaf@th10@@QAEPAEI@Z"
+functions = ["th10::leaf::LeafIdentity00438410View::Get"]
+symbol = "?Get@LeafIdentity00438410View@leaf@th10@@QAEPAEI@Z"
+target_address = 0x00438410
+size = 5
+linkages = []

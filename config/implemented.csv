@@ -759,3 +759,14 @@ th10::leaf::LeafIdentity004458D0View::Get
 th10::leaf::LeafIdentity004458E0View::Get
 th10::leaf::LeafIdentity004458F0View::Get
 th10::leaf::LeafIdentity00446210View::Get
+th10::leaf::LeafValueSetter00405370View::Set
+th10::leaf::LeafFlag00405E10View::Clear
+th10::leaf::LeafValueSetter0040CF00View::Set
+th10::leaf::LeafValueSetter0040CF10View::Set
+th10::leaf::LeafValueSetter0040CF20View::Set
+th10::leaf::LeafValueSetter0040CF80View::Set
+th10::leaf::LeafValueSetter00412F10View::Set
+th10::leaf::LeafValueSetter00412F20View::Set
+th10::leaf::LeafGetter00438250View::Get
+th10::leaf::LeafIdentity004383F0View::Get
+th10::leaf::LeafIdentity00438410View::Get
