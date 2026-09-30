@@ -2,7 +2,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00401100,Fn00401100,1614,True,sub_401100,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafIdentity00401100View::Get,False,canonical linked replay exact
 0x004014D0,Fn004014D0,1048,True,sub_4014D0,26,26,26,isolated-raw-exact,exact,src/AnmManager.cpp,AsciiManagerView::ResetStrings,False,isolated-raw-exact
 0x00401C90,Fn00401C90,1609,True,sub_401C90,6,6,6,isolated-raw-exact,exact,src/AnmManager.cpp,AsciiManagerView::GetSize,False,isolated-raw-exact
-0x00401CA0,Fn00401CA0,3441,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00401CA0,Fn00401CA0,3441,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401CA0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00401CB0,Fn00401CB0,1472,True,sub_401CB0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401CB0,False,canonical linked replay exact
 0x00401CC0,Fn00401CC0,1478,True,sub_401CC0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401CC0,False,canonical linked replay exact
 0x00401CD0,Fn00401CD0,1210,True,sub_401CD0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00401CD0,False,canonical linked replay exact
@@ -37,7 +37,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00404CA0,Fn00404CA0,4541,False,,,56,56,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404CA0,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
 0x00404CE0,Fn00404CE0,226,True,sub_404CE0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404CE0,False,canonical linked replay exact
 0x00404D30,Fn00404D30,50,True,sub_404D30,11,11,11,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404D30,False,canonical linked replay exact
-0x00404EC0,Fn00404EC0,3449,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00404EC0,Fn00404EC0,3449,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404EC0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00404F20,Fn00404F20,56,True,sub_404F20,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00404F20,False,canonical linked replay exact
 0x00405000,Fn00405000,2569,True,sub_405000,20,20,21,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00405020,Fn00405020,2577,True,sub_405020,20,20,21,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
@@ -52,7 +52,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00405260,Fn00405260,3457,False,,,25,25,isolated-byte-diff,absent,,,False,boundary unavailable in direct IDA
 0x00405340,Fn00405340,244,True,sub_405340,17,17,17,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405340,False,canonical linked replay exact
 0x00405360,Fn00405360,251,True,sub_405360,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405360,False,canonical linked replay exact
-0x00405380,Fn00405380,3478,False,,,3,3,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00405380,Fn00405380,3478,False,,,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405380,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00405390,Fn00405390,257,True,sub_405390,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405390,False,canonical linked replay exact
 0x004053A0,Fn004053A0,263,True,sub_4053A0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004053A0,False,canonical linked replay exact
 0x004053D0,Fn004053D0,269,True,sub_4053D0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004053D0,False,canonical linked replay exact
@@ -61,7 +61,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00405400,Fn00405400,1751,True,sub_405400,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafIdentity00405400View::Get,False,canonical linked replay exact
 0x00405410,Fn00405410,5333,True,sub_405410,57,57,55,isolated-codegen-size-mismatch,exact,src/AnmManager.cpp,AnmVmTimerView::SetCurrent,False,isolated-codegen-size-mismatch
 0x00405450,Fn00405450,5350,False,,,57,55,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
-0x00405490,Fn00405490,3486,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00405490,Fn00405490,3486,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405490,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x004054A0,Fn004054A0,275,True,sub_4054A0,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004054A0,False,canonical linked replay exact
 0x00405560,Fn00405560,281,True,sub_405560,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405560,False,canonical linked replay exact
 0x00405570,Fn00405570,2867,False,,,15,15,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405570,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
@@ -72,7 +72,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x004059F0,Fn004059F0,4288,True,sub_4059F0,202,10,223,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x00405B60,Fn00405B60,4324,True,sub_405B60,42,26,36,isolated-codegen-size-mismatch,exact,src/ItemManager.cpp,GameScoreStateView::AddRank,False,isolated-codegen-size-mismatch
 0x00405B90,Fn00405B90,305,True,sub_405B90,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405B90,False,canonical linked replay exact
-0x00405BA0,Fn00405BA0,3494,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00405BA0,Fn00405BA0,3494,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405BA0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00405BB0,Fn00405BB0,311,True,sub_405BB0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405BB0,False,canonical linked replay exact
 0x00405BC0,Fn00405BC0,2174,True,nullsub_13,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00405BC0,False,canonical linked replay exact
 0x00405BE0,Fn00405BE0,4575,True,sub_405BE0,158,158,158,isolated-byte-diff,exact,src/BulletManager.cpp,BulletRuntimeView::Deactivate,False,isolated-byte-diff
@@ -99,7 +99,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00408850,Fn00408850,107,True,sub_408850,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408850,False,canonical linked replay exact
 0x00408860,Fn00408860,2491,False,,,21,21,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408860,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
 0x00408880,Fn00408880,2498,False,,,21,21,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408880,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
-0x004088A0,Fn004088A0,113,False,,,11,11,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x004088A0,Fn004088A0,113,False,,,11,11,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004088A0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x004088B0,Fn004088B0,329,True,sub_4088B0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004088B0,False,canonical linked replay exact
 0x004088C0,Fn004088C0,5119,True,sub_4088C0,75,75,69,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x00408AA0,Fn00408AA0,119,True,sub_408AA0,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00408AA0,False,canonical linked replay exact
@@ -122,8 +122,8 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0040A040,Fn0040A040,5506,True,sub_40A040,234,234,293,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x0040AC00,Fn0040AC00,341,True,sub_40AC00,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040AC00,False,canonical linked replay exact
 0x0040AC10,Fn0040AC10,347,True,sub_40AC10,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040AC10,False,canonical linked replay exact
-0x0040ACC0,Fn0040ACC0,130,False,,,7,7,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x0040ACD0,Fn0040ACD0,353,False,,,7,7,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x0040ACC0,Fn0040ACC0,130,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040ACC0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
+0x0040ACD0,Fn0040ACD0,353,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040ACD0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x0040AD10,Fn0040AD10,136,True,sub_40AD10,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040AD10,False,canonical linked replay exact
 0x0040AD20,Fn0040AD20,6115,True,sub_40AD20,33,15,30,isolated-codegen-size-mismatch,exact,src/FrontEnd.cpp,FrontEndCursorSetCurrent,False,isolated-codegen-size-mismatch
 0x0040AD50,Fn0040AD50,359,True,sub_40AD50,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040AD50,False,canonical linked replay exact
@@ -151,7 +151,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0040BA80,Fn0040BA80,4077,True,sub_40BA80,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040BA80,False,canonical linked replay exact
 0x0040C460,Fn0040C460,431,True,sub_40C460,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C460,False,canonical linked replay exact
 0x0040C520,Fn0040C520,437,True,sub_40C520,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C520,False,canonical linked replay exact
-0x0040C530,Fn0040C530,443,False,,,6,6,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x0040C530,Fn0040C530,443,False,,,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C530,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x0040C5B0,Fn0040C5B0,449,True,sub_40C5B0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C5B0,False,canonical linked replay exact
 0x0040C5C0,Fn0040C5C0,455,True,sub_40C5C0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C5C0,False,canonical linked replay exact
 0x0040C5D0,Fn0040C5D0,154,True,sub_40C5D0,15,15,15,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C5D0,False,canonical linked replay exact
@@ -225,21 +225,21 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00412E30,Fn00412E30,3544,False,,,16,16,isolated-byte-diff,absent,,,False,boundary unavailable in direct IDA
 0x00412E60,Fn00412E60,3560,False,,,16,16,isolated-byte-diff,absent,,,False,boundary unavailable in direct IDA
 0x00412ED0,Fn00412ED0,2513,True,sub_412ED0,16,16,18,isolated-codegen-size-mismatch,exact,src/EnemyEclDispatcher.cpp,EnemySetChapter,False,isolated-codegen-size-mismatch
-0x00412F30,Fn00412F30,3576,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00412F40,Fn00412F40,3584,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00412F30,Fn00412F30,3576,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412F30,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
+0x00412F40,Fn00412F40,3584,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412F40,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00412F50,Fn00412F50,623,True,sub_412F50,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412F50,False,canonical linked replay exact
 0x00412F60,Fn00412F60,629,True,sub_412F60,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412F60,False,canonical linked replay exact
-0x00412F90,Fn00412F90,3592,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00412F90,Fn00412F90,3592,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412F90,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00412FA0,Fn00412FA0,635,True,sub_412FA0,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412FA0,False,canonical linked replay exact
-0x00412FB0,Fn00412FB0,3600,False,,,7,7,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00412FC0,Fn00412FC0,3610,False,,,7,7,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00412FD0,Fn00412FD0,3620,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00412FB0,Fn00412FB0,3600,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412FB0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
+0x00412FC0,Fn00412FC0,3610,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412FC0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
+0x00412FD0,Fn00412FD0,3620,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412FD0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00412FE0,Fn00412FE0,2207,True,nullsub_22,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412FE0,False,canonical linked replay exact
 0x004130A0,Fn004130A0,1502,True,sub_4130A0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004130A0,False,canonical linked replay exact
 0x004130C0,Fn004130C0,1308,True,sub_4130C0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004130C0,False,canonical linked replay exact
 0x004130D0,Fn004130D0,1508,True,sub_4130D0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004130D0,False,canonical linked replay exact
-0x004130F0,Fn004130F0,3628,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00413110,Fn00413110,3636,False,,,3,3,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x004130F0,Fn004130F0,3628,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004130F0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
+0x00413110,Fn00413110,3636,False,,,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00413110,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00413120,Fn00413120,3894,True,sub_413120,20,20,18,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x00413190,Fn00413190,3911,False,,,14,3,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x004131A0,Fn004131A0,2385,True,sub_4131A0,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004131A0,False,canonical linked replay exact
@@ -267,8 +267,8 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x004175D0,Fn004175D0,1520,True,sub_4175D0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004175D0,False,canonical linked replay exact
 0x004175E0,Fn004175E0,4620,True,sub_4175E0,32,32,32,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004175E0,False,canonical linked replay exact
 0x00417600,Fn00417600,2375,True,sub_417600,10,,10,target-size-missing,absent,,,False,target-size-missing
-0x00417610,Fn00417610,1350,False,,,7,7,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
-0x00417620,Fn00417620,1356,False,,,7,7,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00417610,Fn00417610,1350,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417610,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
+0x00417620,Fn00417620,1356,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417620,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00417630,Fn00417630,1362,True,sub_417630,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417630,False,canonical linked replay exact
 0x00417640,Fn00417640,1368,True,sub_417640,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417640,False,canonical linked replay exact
 0x00417650,Fn00417650,1374,True,sub_417650,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417650,False,canonical linked replay exact
@@ -363,7 +363,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00421CA0,Fn00421CA0,665,True,sub_421CA0,13,13,13,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00421CA0,False,canonical linked replay exact
 0x00421CB0,Fn00421CB0,671,True,sub_421CB0,13,13,13,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00421CB0,False,canonical linked replay exact
 0x00421CC0,Fn00421CC0,677,True,sub_421CC0,12,12,12,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00421CC0,False,canonical linked replay exact
-0x00421CD0,Fn00421CD0,181,False,,,8,8,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00421CD0,Fn00421CD0,181,False,,,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00421CD0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00421CE0,Fn00421CE0,683,True,sub_421CE0,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00421CE0,False,canonical linked replay exact
 0x00421CF0,Fn00421CF0,689,True,sub_421CF0,13,13,13,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00421CF0,False,canonical linked replay exact
 0x00421D40,Fn00421D40,2225,True,nullsub_44,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00421D40,False,canonical linked replay exact
@@ -421,7 +421,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00428AD0,Fn00428AD0,4895,True,sub_428AD0,53,53,40,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x00428C20,Fn00428C20,6587,True,sub_428C20,125,125,82,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x00428CE0,Fn00428CE0,6039,True,sub_428CE0,80,40,84,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
-0x00428D60,Fn00428D60,3644,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00428D60,Fn00428D60,3644,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00428D60,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00428D70,Fn00428D70,4941,True,sub_428D70,91,83,234,isolated-codegen-size-mismatch,exact,src/Player.cpp,PlayerShotBoundsView::IsOutsidePlayfield,False,isolated-codegen-size-mismatch
 0x00428DF0,Fn00428DF0,3263,False,,,17,23,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x00428E10,Fn00428E10,6280,True,sub_428E10,83,5,115,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
@@ -429,7 +429,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00428EC0,Fn00428EC0,2905,False,,,24,24,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00428EC0,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
 0x00428EE0,Fn00428EE0,2913,False,,,24,24,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00428EE0,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
 0x00428F00,Fn00428F00,2921,False,,,24,24,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00428F00,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
-0x00428F20,Fn00428F20,3652,False,,,4,4,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00428F20,Fn00428F20,3652,False,,,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00428F20,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00429A30,Fn00429A30,4157,False,,,58,50,isolated-codegen-size-mismatch,unclassified,,,False,boundary unavailable in direct IDA
 0x0042A3E0,Fn0042A3E0,4451,True,sub_42A3E0,68,62,54,isolated-codegen-size-mismatch,unclassified,,,False,isolated-codegen-size-mismatch
 0x0042A810,Fn0042A810,187,True,sub_42A810,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0042A810,False,canonical linked replay exact
@@ -567,7 +567,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00447790,Fn00447790,5978,False,,,58,62,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x00449770,Fn00449770,6355,False,,,8,52,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x004497B0,Fn004497B0,6562,False,,,28,31,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
-0x00449860,Fn00449860,207,False,,,10,10,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x00449860,Fn00449860,207,False,,,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00449860,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00449A00,Fn00449A00,4271,False,,,23,25,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x00449A20,Fn00449A20,2955,True,sub_449A20,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00449A20,False,canonical linked replay exact
 0x00449A30,Fn00449A30,4062,False,,,16,16,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00449A30,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
@@ -580,7 +580,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0044BB90,Fn0044BB90,6082,True,sub_44BB90,115,115,99,isolated-codegen-size-mismatch,exact,src/RandomMath.cpp,RngView::GetRandomF32Signed,False,isolated-codegen-size-mismatch
 0x0044BC10,Fn0044BC10,4772,True,sub_44BC10,94,94,151,isolated-codegen-size-mismatch,exact,src/AnmManager.cpp,AddNormalizeAngle,False,isolated-codegen-size-mismatch
 0x0044BC70,Fn0044BC70,4798,True,sub_44BC70,94,61,151,isolated-codegen-size-mismatch,exact,src/EnemyEclDispatcher.cpp,EnemyWrapAngle,False,isolated-codegen-size-mismatch
-0x0044BFF0,Fn0044BFF0,3692,False,,,6,6,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x0044BFF0,Fn0044BFF0,3692,False,,,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044BFF0,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x0044C0E0,Fn0044C0E0,2091,True,sub_44C0E0,21,21,21,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044C0E0,False,canonical linked replay exact
 0x0044C250,Fn0044C250,1003,True,sub_44C250,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044C250,False,canonical linked replay exact
 0x0044C600,Fn0044C600,1009,True,sub_44C600,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044C600,False,canonical linked replay exact
@@ -590,7 +590,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0044C660,Fn0044C660,2324,False,,,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044C660,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
 0x0044C670,Fn0044C670,2442,False,,,52,52,isolated-byte-diff,absent,,,False,boundary unavailable in direct IDA
 0x0044C6D0,Fn0044C6D0,1182,False,,,12,12,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044C6D0,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
-0x0044C760,Fn0044C760,1015,False,,,7,7,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
+0x0044C760,Fn0044C760,1015,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044C760,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x0044D3E0,Fn0044D3E0,4505,False,,,15,19,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x0044DBB0,Fn0044DBB0,1191,True,sub_44DBB0,17,17,17,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044DBB0,False,canonical linked replay exact
 0x0044DD30,Fn0044DD30,1021,True,sub_44DD30,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044DD30,False,canonical linked replay exact
