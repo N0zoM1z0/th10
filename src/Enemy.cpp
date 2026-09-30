@@ -1102,9 +1102,9 @@ int EnemyEclResourceView::LoadPackage(const unsigned char *packageData)
     if (header[0] != ANIM_MAGIC)
         return 0;
 
-    unsigned int animationCount = header[1];
     const char *cursor = reinterpret_cast<const char *>(packageData + 8);
-    for (unsigned int i = 0; i < animationCount; ++i)
+    unsigned int i = 0;
+    while (i < header[1])
     {
         void *loaded = EnemyLoadAnimationResource(
             static_cast<int>(i + 9), g_EnemyAnimationOwner, cursor);
@@ -1115,6 +1115,7 @@ int EnemyEclResourceView::LoadPackage(const unsigned char *packageData)
             return -1;
         }
         cursor += strlen(cursor) + 1;
+        ++i;
     }
 
     const unsigned int offset = static_cast<unsigned int>(
@@ -1123,15 +1124,17 @@ int EnemyEclResourceView::LoadPackage(const unsigned char *packageData)
     if (remainder != 0)
         cursor += 4u - remainder;
 
-    header = reinterpret_cast<const unsigned int *>(cursor);
-    if (header[0] == ECLI_MAGIC)
+    const unsigned int *ecliHeader =
+        reinterpret_cast<const unsigned int *>(cursor);
+    if (ecliHeader[0] == ECLI_MAGIC)
     {
-        const unsigned int eclCount = header[1];
         cursor += 8;
-        for (unsigned int i = 0; i < eclCount; ++i)
+        unsigned int i = 0;
+        while (i < ecliHeader[1])
         {
             LoadFile(cursor);
             cursor += strlen(cursor) + 1;
+            ++i;
         }
     }
 
