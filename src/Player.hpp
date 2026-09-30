@@ -102,6 +102,8 @@ struct PlayerTimerView
         subframe = static_cast<float>(value);
         previous = value - 1;
     }
+
+    __declspec(noinline) int HasIntervalTick(int interval) const;
 };
 typedef char PlayerTimerViewSizeIs14[
     (sizeof(PlayerTimerView) == 0x14) ? 1 : -1];

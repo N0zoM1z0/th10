@@ -69,6 +69,7 @@ PlayerUpdateMovementAndOptions
 PlayerInitialize
 Player::Player
 PlayerTimerView::PlayerTimerView
+PlayerTimerView::HasIntervalTick
 PlayerOptionRuntime::PlayerOptionRuntime
 PlayerEffectRowView::PlayerEffectRowView
 PlayerResetRuntimeState

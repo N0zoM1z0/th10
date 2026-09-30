@@ -245,8 +245,12 @@ void PlayerSetShotVmDeleteState3(unsigned int *vmId);
 PlayerVm *PlayerResolveShotVmAndClearMissing(unsigned int *vmId);
 void PlayerMarkShotVmPendingAndClear(unsigned int *vmId);
 void PlayerMarkShotVmPending(unsigned int vmId);
-int PlayerTimerHasIntervalTick(const PlayerTimerView *timer, int interval);
 int PlayerGetAuxiliaryDamageAtPosition(const PlayerFloat3 *position);
+
+__declspec(noinline) int PlayerTimerView::HasIntervalTick(int interval) const
+{
+    return current != previous && (current % interval) == 0;
+}
 
 struct PlayerOptionPosition
 {
@@ -1340,7 +1344,7 @@ int Player::CalculateDamageToTarget(
         shot->collidedThisFrame = 1;
 
         if (descriptor->type != PLAYER_SHOT_TYPE_3 ||
-            PlayerTimerHasIntervalTick(&shot->timer, 4) != 0)
+            shot->timer.HasIntervalTick(4) != 0)
         {
             damage += descriptor->damage;
         }
