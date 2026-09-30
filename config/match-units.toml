@@ -74,6 +74,370 @@ symbol = "?ResolveInt@EclVmContext@@QAEPAHI@Z"
 target_address = 0x00450030
 size = 58
 linkages = []
+[units.game-decomphelp-fulltu-004088a0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn004088A0"]
+symbol = "?Fn004088A0@leaf@th10@@YAPAEHPAE@Z"
+target_address = 0x004088A0
+size = 11
+linkages = []
+
+[units.game-decomphelp-fulltu-0040acc0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn0040ACC0"]
+symbol = "?Fn0040ACC0@leaf@th10@@YAIPAEI@Z"
+target_address = 0x0040ACC0
+size = 7
+linkages = []
+
+[units.game-decomphelp-fulltu-00421cd0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00421CD0"]
+symbol = "?Fn00421CD0@leaf@th10@@YAIPAE@Z"
+target_address = 0x00421CD0
+size = 8
+linkages = []
+
+[units.game-decomphelp-fulltu-00449860]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00449860"]
+symbol = "?Fn00449860@leaf@th10@@YAHPAE0@Z"
+target_address = 0x00449860
+size = 10
+linkages = []
+
+[units.game-decomphelp-fulltu-0040acd0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn0040ACD0"]
+symbol = "?Fn0040ACD0@leaf@th10@@YAIPAEI@Z"
+target_address = 0x0040ACD0
+size = 7
+linkages = []
+
+[units.game-decomphelp-fulltu-0040c530]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn0040C530"]
+symbol = "?Fn0040C530@leaf@th10@@YAIPAEI@Z"
+target_address = 0x0040C530
+size = 6
+linkages = []
+
+[units.game-decomphelp-fulltu-00424610]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00424610"]
+symbol = "?Fn00424610@leaf@th10@@YAPAEPAE@Z"
+target_address = 0x00424610
+size = 6
+linkages = []
+
+[units.game-decomphelp-fulltu-0044c760]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn0044C760"]
+symbol = "?Fn0044C760@leaf@th10@@YAXPAE@Z"
+target_address = 0x0044C760
+size = 7
+linkages = []
+
+[units.game-decomphelp-fulltu-00409f60]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00409F60"]
+symbol = "?Fn00409F60@leaf@th10@@YAIPAE@Z"
+target_address = 0x00409F60
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00417610]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00417610"]
+symbol = "?Fn00417610@leaf@th10@@YAIPAEI@Z"
+target_address = 0x00417610
+size = 7
+linkages = []
+
+[units.game-decomphelp-fulltu-00417620]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00417620"]
+symbol = "?Fn00417620@leaf@th10@@YAIPAEI@Z"
+target_address = 0x00417620
+size = 7
+linkages = []
+
+[units.game-decomphelp-fulltu-00401ca0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00401CA0"]
+symbol = "?Fn00401CA0@leaf@th10@@YAMPAE@Z"
+target_address = 0x00401CA0
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00405380]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00405380"]
+symbol = "?Fn00405380@leaf@th10@@YAMPAE@Z"
+target_address = 0x00405380
+size = 3
+linkages = []
+
+[units.game-decomphelp-fulltu-00405490]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00405490"]
+symbol = "?Fn00405490@leaf@th10@@YAMPAE@Z"
+target_address = 0x00405490
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00405ba0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00405BA0"]
+symbol = "?Fn00405BA0@leaf@th10@@YAMPAE@Z"
+target_address = 0x00405BA0
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00412f30]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00412F30"]
+symbol = "?Fn00412F30@leaf@th10@@YAMPAE@Z"
+target_address = 0x00412F30
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00412f40]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00412F40"]
+symbol = "?Fn00412F40@leaf@th10@@YAMPAE@Z"
+target_address = 0x00412F40
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00412f90]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00412F90"]
+symbol = "?Fn00412F90@leaf@th10@@YAMPAE@Z"
+target_address = 0x00412F90
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00412fb0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00412FB0"]
+symbol = "?Fn00412FB0@leaf@th10@@YAMPAE@Z"
+target_address = 0x00412FB0
+size = 7
+linkages = []
+
+[units.game-decomphelp-fulltu-00412fc0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00412FC0"]
+symbol = "?Fn00412FC0@leaf@th10@@YAMPAE@Z"
+target_address = 0x00412FC0
+size = 7
+linkages = []
+
+[units.game-decomphelp-fulltu-00412fd0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00412FD0"]
+symbol = "?Fn00412FD0@leaf@th10@@YAMPAE@Z"
+target_address = 0x00412FD0
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-004130f0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn004130F0"]
+symbol = "?Fn004130F0@leaf@th10@@YAMPAE@Z"
+target_address = 0x004130F0
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00413110]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00413110"]
+symbol = "?Fn00413110@leaf@th10@@YAMPAE@Z"
+target_address = 0x00413110
+size = 3
+linkages = []
+
+[units.game-decomphelp-fulltu-00428d60]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00428D60"]
+symbol = "?Fn00428D60@leaf@th10@@YAMPAE@Z"
+target_address = 0x00428D60
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-00428f20]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00428F20"]
+symbol = "?Fn00428F20@leaf@th10@@YAMPAE@Z"
+target_address = 0x00428F20
+size = 4
+linkages = []
+
+[units.game-decomphelp-fulltu-0044bff0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn0044BFF0"]
+symbol = "?Fn0044BFF0@leaf@th10@@YAMPAE@Z"
+target_address = 0x0044BFF0
+size = 6
+linkages = []
+
 
 [units.ecl-vm-resolve-float]
 artifact_kind = "linked-pe"
@@ -5190,6 +5554,35 @@ functions = ["th10::leaf::Fn0040CC30"]
 symbol = "?Fn0040CC30@leaf@th10@@YAPAEPAE@Z"
 target_address = 0x0040CC30
 size = 6
+linkages = []
+
+[units.game-decomphelp-compare-00404e90]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::LeafCompare00404E90View::Compare"]
+symbol = "?Compare@LeafCompare00404E90View@leaf@th10@@QAEHH@Z"
+target_address = 0x00404E90
+size = 15
+compare_size = 17
+linkages = []
+
+[units.game-decomphelp-float-get-00404ec0]
+artifact_kind = "linked-pe"
+source = "src/DecomphelpLeafAccessors.cpp"
+output_dir = "build/match-linked/DecomphelpLeafAccessors"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
+functions = ["th10::leaf::Fn00404EC0"]
+symbol = "?Fn00404EC0@leaf@th10@@YAMPAE@Z"
+target_address = 0x00404EC0
+size = 4
 linkages = []
 
 [units.game-decomphelp-fulltu-0040cc40]

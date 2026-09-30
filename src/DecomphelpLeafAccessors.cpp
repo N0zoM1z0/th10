@@ -37,6 +37,22 @@ namespace th10
 namespace leaf
 {
 
+// 0x00404E90: signed comparison of the word at +0x04 against one stack
+// operand. The target's member ABI is represented by a natural address view;
+// ownership and original authorship remain indeterminate.
+class LeafCompare00404E90View
+{
+public:
+    __declspec(noinline) i32 Compare(i32 value);
+};
+
+__declspec(noinline) i32 LeafCompare00404E90View::Compare(i32 value)
+{
+    i32 rhs = value;
+    i32 lhs = *(i32 *)((u8 *)this + 4);
+    return lhs >= rhs;
+}
+
 // 0x404990: return this->field_44
 __declspec(noinline) u32 Fn00404990(u8 *pThis)
 {
