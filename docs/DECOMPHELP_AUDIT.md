@@ -136,6 +136,13 @@ origin `unknown/indeterminate`，data-only 引用不提升 owner 结论。
 `0x0040B050`、`0x0040B060`、`0x0040BA80` 各只有 data xref，仍保持
 `module` 空、origin `unknown/indeterminate`。
 
+第十批 focused replay 处理了一个此前仅差寄存器分配的 leaf：
+`Fn00427E20 @ 0x00427E20`（23 bytes）。直接 IDA Pro MCP 复核了完整的
+`EDX → ECX → EAX` 两个 dword pair-copy 边界；把外部标量临时变量改为两个自然
+`Pair` aggregate assignments 后，完整 `DecomphelpLeafAccessors.cpp` `/GL` TU
+产生与目标逐字节相同的 23-byte PDB contribution。该 leaf 没有 code caller，
+因此 origin 仍为 `unknown/indeterminate`。
+
 另一个独立的 32-leaf batch（674 bytes）处理了审计 CSV 中仍标为 absent、但没有
 IDA function boundary 的地址。每个地址都先经直接 IDA Pro MCP 字节/tail 与 entry
 xref review，再在完整 leaf TU 的 canonical linked-PE context 中逐字节 replay；

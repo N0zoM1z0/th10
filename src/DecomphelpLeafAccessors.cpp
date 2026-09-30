@@ -3465,18 +3465,17 @@ __declspec(noinline) u8 * Fn00427DC0(u8 * p0, u8 * p1, u8 * p2)
 // 0x00427e20: generated2
 __declspec(noinline) u8 * Fn00427E20(u8 * p0, u8 * p1, u8 * p2)
 {
-    u32 t1;
-    u32 t2;
-    u32 t3;
-    u32 t4;
-    t1 = *(u32*)((u8*)((uintptr_t)(u32)(uintptr_t)p2*1));
-    *(u32*)(u8*)((uintptr_t)(u32)(uintptr_t)p1*1) = (u32)(t1);
-    t2 = *(u32*)((u8*)((uintptr_t)(u32)(uintptr_t)p2*1+0x4));
-    *(u32*)(u8*)((uintptr_t)(u32)(uintptr_t)p1*1+0x4) = (u32)(t2);
-    t3 = t1;
-    *(u32*)(u8*)((uintptr_t)(u32)(uintptr_t)p0*1) = (u32)(t3);
-    t4 = *(u32*)((u8*)((uintptr_t)(u32)(uintptr_t)p1*1+0x4));
-    *(u32*)(u8*)((uintptr_t)(u32)(uintptr_t)p0*1+0x4) = (u32)(t4);
+    struct Pair {
+        u32 first;
+        u32 second;
+    };
+    Pair *out = (Pair *)p0;
+    Pair *middle = (Pair *)p1;
+    Pair *in = (Pair *)p2;
+    // The two natural aggregate copies preserve the target's pair-copy order
+    // and VC7.1 register schedule without encoding target instructions.
+    *middle = *in;
+    *out = *middle;
     return (u8*)(p0);
 }
 

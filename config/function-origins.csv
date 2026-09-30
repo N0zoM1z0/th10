@@ -672,6 +672,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00427DF0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00427E00,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00427E10,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x00427E20,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00427E40,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00427E90,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00428160,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17

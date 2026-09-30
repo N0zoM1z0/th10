@@ -413,7 +413,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00427DF0,Fn00427DF0,815,True,sub_427DF0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427DF0,False,canonical linked replay exact
 0x00427E00,Fn00427E00,2237,True,nullsub_46,1,1,1,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427E00,False,canonical linked replay exact
 0x00427E10,Fn00427E10,2015,True,sub_427E10,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::LeafIdentity00427E10View::Get,False,canonical linked replay exact
-0x00427E20,Fn00427E20,3245,True,sub_427E20,23,23,23,isolated-byte-diff,absent,,,False,isolated-byte-diff
+0x00427E20,Fn00427E20,3245,True,sub_427E20,23,23,23,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427E20,False,canonical linked replay exact; natural Pair aggregate copies preserve the target register schedule
 0x00427E40,Fn00427E40,2469,False,,,14,14,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00427E40,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
 0x00427E50,Fn00427E50,4431,False,,,20,26,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
 0x00427E70,Fn00427E70,4441,False,,,20,26,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
