@@ -488,12 +488,12 @@ AnmFloat2View *AnmVmFloat2InterpolationView::Evaluate(AnmFloat2View *output)
         {
             timer.SetCurrent(duration);
             duration = 0;
-            if (mode == ANM_INTERPOLATION_ADD)
+            if (mode != ANM_INTERPOLATION_ADD)
             {
-                *output = initial;
+                *output = final;
                 return output;
             }
-            *output = final;
+            *output = initial;
             return output;
         }
     }

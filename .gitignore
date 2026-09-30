@@ -5,6 +5,7 @@
 /.analysis/
 /.tools/
 /ghidra-project/
+/_reference/
 *.exe
 *.dll
 *.dat
