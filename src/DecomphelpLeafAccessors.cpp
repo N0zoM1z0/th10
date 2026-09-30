@@ -2855,30 +2855,42 @@ __declspec(noinline) u8 * Fn0040CF60(u8 *p0, u8 *p1, u32 p2)
 // 0x00412d60: generated
 __declspec(noinline) u8 * Fn00412D60(u8 *p0, u8 *p1, u32 p2)
 {
-    *(u32*)((uintptr_t)(p1)) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)))) & 0xffffffff));
-    *(u32*)((uintptr_t)(p1)+0x4) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)+0x4))) & 0xffffffff));
-    return (u8*)(*(u32*)(((uintptr_t)(p0)+0x4)));
+    u32 first = *(u32 *)p0;
+    *(u32 *)p1 = first;
+    _ReadWriteBarrier();
+    u32 second = *(u32 *)(p0 + 4);
+    *(u32 *)(p1 + 4) = second;
+    return (u8 *)(uintptr_t)second;
 }
 // 0x00412d70: generated
 __declspec(noinline) u8 * Fn00412D70(u8 *p0, u8 *p1, u32 p2)
 {
-    *(u32*)((uintptr_t)(p1)+0x8) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)))) & 0xffffffff));
-    *(u32*)((uintptr_t)(p1)+0xc) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)+0x4))) & 0xffffffff));
-    return (u8*)(*(u32*)(((uintptr_t)(p0)+0x4)));
+    u32 first = *(u32 *)p0;
+    *(u32 *)(p1 + 8) = first;
+    _ReadWriteBarrier();
+    u32 second = *(u32 *)(p0 + 4);
+    *(u32 *)(p1 + 0xc) = second;
+    return (u8 *)(uintptr_t)second;
 }
 // 0x00412d80: generated
 __declspec(noinline) u8 * Fn00412D80(u8 *p0, u8 *p1, u32 p2)
 {
-    *(u32*)((uintptr_t)(p1)+0x10) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)))) & 0xffffffff));
-    *(u32*)((uintptr_t)(p1)+0x14) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)+0x4))) & 0xffffffff));
-    return (u8*)(*(u32*)(((uintptr_t)(p0)+0x4)));
+    u32 first = *(u32 *)p0;
+    *(u32 *)(p1 + 0x10) = first;
+    _ReadWriteBarrier();
+    u32 second = *(u32 *)(p0 + 4);
+    *(u32 *)(p1 + 0x14) = second;
+    return (u8 *)(uintptr_t)second;
 }
 // 0x00412d90: generated
 __declspec(noinline) u8 * Fn00412D90(u8 *p0, u8 *p1, u32 p2)
 {
-    *(u32*)((uintptr_t)(p1)+0x18) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)))) & 0xffffffff));
-    *(u32*)((uintptr_t)(p1)+0x1c) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)+0x4))) & 0xffffffff));
-    return (u8*)(*(u32*)(((uintptr_t)(p0)+0x4)));
+    u32 first = *(u32 *)p0;
+    *(u32 *)(p1 + 0x18) = first;
+    _ReadWriteBarrier();
+    u32 second = *(u32 *)(p0 + 4);
+    *(u32 *)(p1 + 0x1c) = second;
+    return (u8 *)(uintptr_t)second;
 }
 // 0x00413120: generated
 // 0x00413220: generated
@@ -2904,16 +2916,22 @@ __declspec(noinline) u8 * Fn00418B10(u8 *p0, u32 p1, u32 p2)
 // 0x0041ac20: generated
 __declspec(noinline) u8 * Fn0041AC20(u8 *p0, u8 *p1, u32 p2)
 {
-    *(u32*)((uintptr_t)(p1)) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)))) & 0xffffffff));
-    *(u32*)((uintptr_t)(p1)+0x4) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)+0x4))) & 0xffffffff));
-    return (u8*)(*(u32*)(((uintptr_t)(p0)+0x4)));
+    u32 first = *(u32 *)p0;
+    *(u32 *)p1 = first;
+    _ReadWriteBarrier();
+    u32 second = *(u32 *)(p0 + 4);
+    *(u32 *)(p1 + 4) = second;
+    return (u8 *)(uintptr_t)second;
 }
 // 0x0041ac30: generated
 __declspec(noinline) u8 * Fn0041AC30(u8 *p0, u8 *p1, u32 p2)
 {
-    *(u32*)((uintptr_t)(p1)+0x8) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)))) & 0xffffffff));
-    *(u32*)((uintptr_t)(p1)+0xc) = (u32)(((u32)(uintptr_t)(*(u32*)(((uintptr_t)(p0)+0x4))) & 0xffffffff));
-    return (u8*)(*(u32*)(((uintptr_t)(p0)+0x4)));
+    u32 first = *(u32 *)p0;
+    *(u32 *)(p1 + 8) = first;
+    _ReadWriteBarrier();
+    u32 second = *(u32 *)(p0 + 4);
+    *(u32 *)(p1 + 0xc) = second;
+    return (u8 *)(uintptr_t)second;
 }
 // 0x00427d70: generated
 __declspec(noinline) u8 * Fn00427D70(u8 *p0, u32 p1, u32 p2)

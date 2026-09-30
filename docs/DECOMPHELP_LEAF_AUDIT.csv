@@ -214,10 +214,10 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00412790,Fn00412790,2899,True,sub_412790,12,12,12,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412790,False,canonical linked replay exact
 0x004127A0,Fn004127A0,6135,True,sub_4127A0,593,67,615,isolated-codegen-size-mismatch,unclassified,src/EnemyCallback.cpp,EnemyResolveRuntimeCallback,False,isolated-codegen-size-mismatch
 0x00412D50,Fn00412D50,1496,True,sub_412D50,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412D50,False,canonical linked replay exact
-0x00412D60,Fn00412D60,2635,True,sub_412D60,11,11,14,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
-0x00412D70,Fn00412D70,2642,True,sub_412D70,12,12,15,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
-0x00412D80,Fn00412D80,2649,True,sub_412D80,12,12,15,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
-0x00412D90,Fn00412D90,2656,True,sub_412D90,12,12,15,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
+0x00412D60,Fn00412D60,2635,True,sub_412D60,11,11,11,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412D60,False,canonical linked replay exact; natural scalar loads/stores plus compiler barrier preserve target order
+0x00412D70,Fn00412D70,2642,True,sub_412D70,12,12,12,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412D70,False,canonical linked replay exact; natural scalar loads/stores plus compiler barrier preserve target order
+0x00412D80,Fn00412D80,2649,True,sub_412D80,12,12,12,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412D80,False,canonical linked replay exact; natural scalar loads/stores plus compiler barrier preserve target order
+0x00412D90,Fn00412D90,2656,True,sub_412D90,12,12,12,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412D90,False,canonical linked replay exact; natural scalar loads/stores plus compiler barrier preserve target order
 0x00412DA0,Fn00412DA0,605,True,sub_412DA0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412DA0,False,canonical linked replay exact
 0x00412DB0,Fn00412DB0,4603,True,sub_412DB0,50,50,50,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412DB0,False,canonical linked replay exact
 0x00412DF0,Fn00412DF0,611,True,sub_412DF0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412DF0,False,canonical linked replay exact
@@ -321,8 +321,8 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0041AB70,Fn0041AB70,5673,True,sub_41AB70,136,136,134,isolated-codegen-size-mismatch,exact,src/AnmManager.cpp,AnmVmView::StartScaleInterpolation,False,isolated-codegen-size-mismatch
 0x0041AC00,Fn0041AC00,1568,True,sub_41AC00,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0041AC00,False,canonical linked replay exact
 0x0041AC10,Fn0041AC10,1574,True,sub_41AC10,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0041AC10,False,canonical linked replay exact
-0x0041AC20,Fn0041AC20,2684,True,sub_41AC20,11,11,14,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
-0x0041AC30,Fn0041AC30,2691,True,sub_41AC30,12,12,15,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
+0x0041AC20,Fn0041AC20,2684,True,sub_41AC20,11,11,11,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0041AC20,False,canonical linked replay exact; natural scalar loads/stores plus compiler barrier preserve target order
+0x0041AC30,Fn0041AC30,2691,True,sub_41AC30,12,12,12,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0041AC30,False,canonical linked replay exact; natural scalar loads/stores plus compiler barrier preserve target order
 0x0041AC40,Fn0041AC40,4687,False,,,50,50,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0041AC40,False,canonical linked replay exact; direct IDA Pro MCP byte/tail review
 0x0041ACA0,Fn0041ACA0,1429,True,sub_41ACA0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0041ACA0,False,canonical linked replay exact
 0x0041ACF0,Fn0041ACF0,3941,True,sub_41ACF0,104,104,166,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch

@@ -347,6 +347,10 @@ address,span_end,state,confidence,evidence_id,notes
 0x00412AA0,0x00412AB9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=13; no overlap or external interior branch
 0x00412AC0,0x00412D4B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x00412D50,0x00412D53,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
+0x00412D60,0x00412D6A,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x00412D70,0x00412D7B,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x00412D80,0x00412D8B,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x00412D90,0x00412D9B,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00412DA0,0x00412DA3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x00412DB0,0x00412DE1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x00412DF0,0x00412DF3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
@@ -487,6 +491,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041AB70,0x0041ABF7,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 136/136, tail ret"
 0x0041AC00,0x0041AC03,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0041AC10,0x0041AC13,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x0041AC20,0x0041AC2A,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x0041AC30,0x0041AC3B,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0041AC40,0x0041AC71,reviewed,medium,target-ida-leaf-review-2026-09-30,Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence.
 0x0041ACA0,0x0041ACA6,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0041AD60,0x0041AD81,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=3; no overlap or external interior branch

@@ -149,6 +149,13 @@ leaf：`Fn00417600 @ 0x00417600`（10 bytes）与 `Fn004501E0 @ 0x004501E0`
 无 code caller；完整 leaf TU replay 对两者均 raw-equal。另同步了已有 canonical
 `Fn00409F60` 的 stale audit row；三者 origin 都保持 `unknown/indeterminate`。
 
+第十二批 focused replay 关闭了六个此前仅差自然 copy 顺序的 decomphelp leaf：
+`Fn00412D60/70/80/90` 与 `Fn0041AC20/30`，合计 70 bytes。直接 IDA Pro MCP
+确认六个完整 ret 边界且均无 code caller；以标量局部、首个 store 后的
+`_ReadWriteBarrier()`、第二次 load/store 与返回值的自然 C++ 形状，完整 leaf TU
+的六个 canonical linked-PE replay 均 raw-equal。六者 origin 仍为
+`unknown/indeterminate`，exactness 不被提升为 authorship 或 owner 结论。
+
 另一个独立的 32-leaf batch（674 bytes）处理了审计 CSV 中仍标为 absent、但没有
 IDA function boundary 的地址。每个地址都先经直接 IDA Pro MCP 字节/tail 与 entry
 xref review，再在完整 leaf TU 的 canonical linked-PE context 中逐字节 replay；
