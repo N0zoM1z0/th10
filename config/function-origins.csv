@@ -414,6 +414,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004175C0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004175D0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004175E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
+0x00417600,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00417610,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00417620,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00417630,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
@@ -1221,6 +1222,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00450160,authored_game,EclVm,authored,high,ecl-vm-thread-control-2026-09-16
 0x00450190,authored_game,EclVm,authored,high,ecl-vm-thread-control-2026-09-16
 0x004501B0,authored_game,EclVm,authored,high,ecl-vm-polar-helper-2026-09-18
+0x004501E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00450220,authored_game,EclVm,authored,high,ecl-vm-script-loader-2026-09-16
 0x00450470,authored_game,EclVm,authored,high,ecl-vm-thread-control-2026-09-16
 0x004505B0,authored_game,EclVm,authored,high,ecl-vm-stack-core-2026-09-16

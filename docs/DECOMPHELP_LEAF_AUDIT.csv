@@ -116,7 +116,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x00409F30,Fn00409F30,1265,True,sub_409F30,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00409F30,False,canonical linked replay exact
 0x00409F40,Fn00409F40,3021,True,sub_409F40,10,10,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00409F40,False,canonical linked replay exact
 0x00409F50,Fn00409F50,3826,False,,,16,52,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
-0x00409F60,Fn00409F60,1271,True,sub_409F60,4,,4,target-size-missing,absent,,,False,target-size-missing
+0x00409F60,Fn00409F60,1271,True,sub_409F60,4,,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00409F60,False,canonical linked replay exact; direct IDA boundary review
 0x00409F70,Fn00409F70,1277,True,sub_409F70,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00409F70,False,canonical linked replay exact
 0x00409F80,Fn00409F80,1283,True,sub_409F80,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00409F80,False,canonical linked replay exact
 0x0040A040,Fn0040A040,5506,True,sub_40A040,234,234,293,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
@@ -266,7 +266,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x004175C0,Fn004175C0,1813,True,sub_4175C0,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004175C0,False,canonical linked replay exact
 0x004175D0,Fn004175D0,1520,True,sub_4175D0,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004175D0,False,canonical linked replay exact
 0x004175E0,Fn004175E0,4620,True,sub_4175E0,32,32,32,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004175E0,False,canonical linked replay exact
-0x00417600,Fn00417600,2375,True,sub_417600,10,,10,target-size-missing,absent,,,False,target-size-missing
+0x00417600,Fn00417600,2375,True,sub_417600,10,,10,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417600,False,canonical linked replay exact; direct IDA boundary review
 0x00417610,Fn00417610,1350,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417610,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00417620,Fn00417620,1356,False,,,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417620,False,canonical linked replay exact; direct IDA Pro MCP raw-byte/tail review
 0x00417630,Fn00417630,1362,True,sub_417630,6,6,6,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00417630,False,canonical linked replay exact
@@ -600,7 +600,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0044DF40,Fn0044DF40,1027,True,sub_44DF40,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044DF40,False,canonical linked replay exact
 0x0044DF50,Fn0044DF50,1033,True,sub_44DF50,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044DF50,False,canonical linked replay exact
 0x0044DF60,Fn0044DF60,1039,True,sub_44DF60,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0044DF60,False,canonical linked replay exact
-0x004501E0,Fn004501E0,2103,True,sub_4501E0,7,,7,target-size-missing,absent,,,False,target-size-missing
+0x004501E0,Fn004501E0,2103,True,sub_4501E0,7,,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn004501E0,False,canonical linked replay exact; direct IDA boundary review
 0x004505B0,Fn004505B0,5268,True,sub_4505B0,96,,112,target-size-missing,exact,src/EclVm.cpp,EclVmStackView::Push,False,target-size-missing
 0x00450690,Fn00450690,5305,True,sub_450690,64,,64,target-size-missing,exact,src/EclVm.cpp,EclVmStackView::EnterFrame,False,target-size-missing
 0x004506D0,Fn004506D0,6464,True,sub_4506D0,41,,44,target-size-missing,exact,src/EclVm.cpp,EclVmStackView::LeaveFrame,False,target-size-missing

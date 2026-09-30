@@ -143,6 +143,12 @@ origin `unknown/indeterminate`，data-only 引用不提升 owner 结论。
 产生与目标逐字节相同的 23-byte PDB contribution。该 leaf 没有 code caller，
 因此 origin 仍为 `unknown/indeterminate`。
 
+第十一批 focused replay 关闭了两个此前仅因 audit census 缺失 target size 而未登记的
+leaf：`Fn00417600 @ 0x00417600`（10 bytes）与 `Fn004501E0 @ 0x004501E0`
+（7 bytes）。直接 IDA Pro MCP 分别确认 bit-test 与 EAX/ECX setter 的完整 ret 边界、
+无 code caller；完整 leaf TU replay 对两者均 raw-equal。另同步了已有 canonical
+`Fn00409F60` 的 stale audit row；三者 origin 都保持 `unknown/indeterminate`。
+
 另一个独立的 32-leaf batch（674 bytes）处理了审计 CSV 中仍标为 absent、但没有
 IDA function boundary 的地址。每个地址都先经直接 IDA Pro MCP 字节/tail 与 entry
 xref review，再在完整 leaf TU 的 canonical linked-PE context 中逐字节 replay；

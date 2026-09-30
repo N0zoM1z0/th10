@@ -329,6 +329,7 @@ EclVmStackView::Pop,0x00450610,function
 EclVmStackView::EnterFrame,0x00450690,function
 EclVmStackView::LeaveFrame,0x004506D0,function
 EclVmPolarVectorView::FromAngleMagnitude,0x004501B0,function
+th10::leaf::Fn004501E0,0x004501E0,function
 FpsCounterView::CalculateFps,0x004134B0,function
 FpsCounterView::DrawFpsCounter,0x004135D0,function
 EnemySetMotionAngle,0x00413170,function
@@ -481,6 +482,7 @@ th10::leaf::Fn004175B0,0x004175B0,function
 th10::leaf::Fn004175C0,0x004175C0,function
 th10::leaf::Fn004175D0,0x004175D0,function
 th10::leaf::Fn004175E0,0x004175E0,function
+th10::leaf::Fn00417600,0x00417600,function
 th10::leaf::Fn00417630,0x00417630,function
 th10::leaf::Fn00417640,0x00417640,function
 th10::leaf::Fn00417650,0x00417650,function
