@@ -3019,7 +3019,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
     AnmRawInstructionView *fallbackInterrupt;
     AnmVmView *createdChild;
     float savedGameSpeed;
-    int interruptSentinel;
+    short interruptSentinel;
 
     if (vm->currentInstruction == NULL)
         return 1;

@@ -113,7 +113,7 @@ normalized byte score is not exactness.
 | Owner | Current live frontier |
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Fresh 2026-10-01 four-source `/GS` graph: target 14,416 bytes, candidate 14,232 bytes, 720/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,576, suffix 43/43. The owner remains non-exact. |
-| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-070 selected diagnostic graph: 9,964-byte PDB contribution; 1,676/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. |
+| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-082 selected diagnostic graph: 9,964-byte PDB contribution; 2,839/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. The retained `short interruptSentinel` reproduces the target's direct 16-bit opcode comparison; the remaining fallback comparison sign-extends that short against the target's 32-bit interrupt argument lane. |
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-041: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 152/534 after the retained natural for-loop update clause. |
 
 The current campaign artifacts are under
