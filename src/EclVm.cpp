@@ -553,7 +553,9 @@ int EclVmContext::StartSubroutine(
     int argumentIndex = firstArgument + 1;
     unsigned int valueOffset = metadataOffset + 4;
     unsigned char *argument = destination->stack.data + argumentOffset;
-    while (argumentIndex < (*callerInstruction)->operandCount)
+    for (; argumentIndex < (*callerInstruction)->operandCount;
+         argument += 4, ++argumentIndex, valueOffset += 8,
+         metadataOffset += 8)
     {
         const char sourceType =
             (*callerInstruction)->operands[metadataOffset];
@@ -584,10 +586,6 @@ int EclVmContext::StartSubroutine(
                     static_cast<float>(value.integer);
         }
 
-        argument += 4;
-        ++argumentIndex;
-        valueOffset += 8;
-        metadataOffset += 8;
     }
 
     if (previousTop == 0)

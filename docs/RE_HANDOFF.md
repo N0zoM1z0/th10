@@ -1,6 +1,6 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-09-29. This file is the live recovery snapshot for ongoing exact
+Updated 2026-10-01. This file is the live recovery snapshot for ongoing exact
 reconstruction. It is deliberately short: chronological experiments and durable
 negative results belong in `docs/KNOWLEDGE_BASE.md` and Git history.
 
@@ -114,7 +114,7 @@ normalized byte score is not exactness.
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Fresh 2026-10-01 four-source `/GS` graph: target 14,416 bytes, candidate 14,232 bytes, 720/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,576, suffix 43/43. The owner remains non-exact. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-070 selected diagnostic graph: 9,964-byte PDB contribution; 1,676/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. |
-| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-041: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 151/534. |
+| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-041: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 152/534 after the retained natural for-loop update clause. |
 
 The current campaign artifacts are under
 `.analysis/gpt-web/20261001-ecl-readint/`. They are convenience snapshots, not
@@ -127,7 +127,10 @@ Current retained source facts:
 - `Run` remains 7,020/7,020 with a 6,692/6,692 pre-table span and target physical
   opcode-group order.
 - `EclVmContext::StartSubroutine @ 0x0044DF70` is now 551/550 with
-  151/534 normalized comparable bytes in the selected graph. Delaying the local
+  152/534 normalized comparable bytes in the selected graph. The natural
+  for-loop update clause keeps the four loop-state updates in the compiler's
+  update expression and recovers one additional comparable byte without
+  changing the target-sized caller or exact SpawnThread seam. Delaying the local
   host cache still restores the target private receiver seam and reloading the
   host through `caller` still reproduces the target ten-byte success tail.
   Reversing only the integer-source destination-type test (`!= 'f'`) prevents
