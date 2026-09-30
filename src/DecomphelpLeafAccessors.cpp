@@ -6491,26 +6491,21 @@ __declspec(noinline) u32 Fn004506D0(u8 *p0)
 // ---------------------------------------------------------------------------
 
 // 0x00417010: ghidra (inventoried as FUN_00417010)
-__declspec(noinline) u32 Fn00417010(u8 *p0)
+__declspec(noinline) u8 * Fn00417010(u8 *p0)
 {
-    u32 p0_ = (u32)(uintptr_t)p0;
-    u8 uVar1;
-    u8 uVar2;
-    i8 cVar3;
-    u32 puVar4;
-    /* regs: p0=eax */
-    cVar3 = '\a';
-    puVar4 = ((u32)(uintptr_t)LEAF_GLOB(0x497d40u));
-    uVar2 = 0x77;
+    u8 key = 0x77;
+    u8 increment = 7;
+    u8 *output = LEAF_GLOB(0x497d40u);
+    u8 decoded;
     do {
-        uVar1 = (*(u8 *)(uintptr_t)(u32)(p0_)) ^ uVar2;
-        (*(u8 *)(uintptr_t)(u32)(puVar4)) = uVar1;
-        puVar4 = puVar4 + 1;
-        uVar2 = uVar2 + cVar3;
-        p0_ = p0_ + 1;
-        cVar3 = cVar3 + '\x10';
-    } while (uVar1 != 0);
-    return 0x497d40;
+        decoded = static_cast<u8>(key ^ *p0);
+        *output++ = decoded;
+        _ReadWriteBarrier();
+        key = static_cast<u8>(key + increment);
+        ++p0;
+        increment = static_cast<u8>(increment + 0x10);
+    } while (decoded != 0);
+    return LEAF_GLOB(0x497d40u);
 }
 
 // 0x00435fd0: ghidra (inventoried as FUN_00435FD0)
