@@ -70,6 +70,7 @@ PlayerInitialize
 Player::Player
 PlayerTimerView::PlayerTimerView
 PlayerTimerView::HasIntervalTick
+PlayerFloor
 PlayerOptionRuntime::PlayerOptionRuntime
 PlayerEffectRowView::PlayerEffectRowView
 PlayerResetRuntimeState

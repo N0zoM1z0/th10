@@ -5485,6 +5485,19 @@ target_address = 0x00427C70
 size = 29
 relocations = []
 
+[units.player-floor]
+artifact_kind = "coff"
+source = "src/Player.cpp"
+object = "build/match/PlayerUpdateCallback.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["PlayerFloor"]
+symbol = "?PlayerFloor@@YGNM@Z"
+target_address = 0x00427C50
+size = 21
+relocations = [
+  { offset = 0x0B, type = "REL32", symbol = "_floor", target = 0x00452FF0 },
+]
+
 [units.player-option-constructor]
 artifact_kind = "coff"
 source = "src/Player.cpp"

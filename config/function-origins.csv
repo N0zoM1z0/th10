@@ -664,7 +664,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00427AE0,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00427B50,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x00427C40,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
-0x00427C50,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x00427C50,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00427C70,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00427D50,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00427D70,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29

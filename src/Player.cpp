@@ -247,6 +247,11 @@ void PlayerMarkShotVmPendingAndClear(unsigned int *vmId);
 void PlayerMarkShotVmPending(unsigned int vmId);
 int PlayerGetAuxiliaryDamageAtPosition(const PlayerFloat3 *position);
 
+__declspec(noinline) double __stdcall PlayerFloor(float value)
+{
+    return floor(value);
+}
+
 __declspec(noinline) int PlayerTimerView::HasIntervalTick(int interval) const
 {
     return current != previous && (current % interval) == 0;
@@ -1847,12 +1852,12 @@ int __fastcall PlayerDrawCallback(Player *player)
             g_PlayerAuxiliaryDrawSpan != 0)
         {
             float bounds[4];
-            bounds[0] = (float)floor(
-                (double)(player->drawPosition.x + 225.0f - 16.0f));
+            bounds[0] = static_cast<float>(PlayerFloor(
+                player->drawPosition.x + 225.0f - 16.0f));
             bounds[2] = bounds[0] +
                 (float)g_PlayerAuxiliaryDrawSpan * 0.29230770468711853f;
-            bounds[1] = (float)floor(
-                (double)(player->drawPosition.y + 17.0f - 24.0f));
+            bounds[1] = static_cast<float>(PlayerFloor(
+                player->drawPosition.y + 17.0f - 24.0f));
             bounds[3] = bounds[1] + 2.0f;
 
             PlayerDrawAuxiliaryRectangle(bounds, 0x80000000u);
