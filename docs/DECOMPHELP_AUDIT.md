@@ -55,11 +55,19 @@ scripts 和 tests）见 [`DECOMPHELP_REPO_REVIEW.md`](DECOMPHELP_REPO_REVIEW.md)
 | size mismatch | 172 | 保留为 ABI/TU/边界或 source-shape mismatch |
 | 外部 census 没有 size | 7 | 不能比较完整 extent |
 | 直接 IDA boundary + raw-exact + size 一致 | 337 / 2,549 bytes | 可进入 canonical source/replay 队列 |
+| 无 IDA function boundary、但直接字节/tail/no-xref review + 完整 TU raw-exact | 32 / 674 bytes | 作为 boundary-indeterminate leaf 单独登记；不把外部 size 当作 owner 证据 |
 | 初始尚未进入 canonical function ledger | 311 / 2,103 bytes | 审计开始时的待吸纳候选总量 |
 | 前九批吸纳后仍未进入 canonical ledger | 0 / 0 bytes | 311 个 / 2,103 bytes 已通过 focused replay 并移入 canonical exact |
 
 逐行状态、canonical 现状和失败理由见 CSV；因此 606 个 leaf 没有被“整体
 认可”，每个地址都有可检索的审计行。
+
+在上述有 IDA boundary 的队列清空后，另有 32 个原始 leaf 没有 IDA-created
+function boundary，但直接 IDA Pro MCP 的完整字节/tail review（尾部 `ret` 后为
+`CC`，且没有 entry xref）与完整 `DecomphelpLeafAccessors.cpp` 的 pinned VC7.1
+linked-PE replay 同时闭合。这批共 674 bytes，已逐地址建立 canonical linked unit
+并写入 ledger；它们的 `origin=unknown, disposition=indeterminate` 保持不变，不能
+据此推断 target owner，也不代表外部 606 个 leaf 可以整体吸收。
 
 一个重要的上下文验证是 `Fn00401CB0`：在完整 606-function TU 中生成目标的
 7-byte private ABI；把它抽成只有 20 个函数的小 TU 后变成 15-byte stack ABI，
@@ -128,6 +136,12 @@ origin `unknown/indeterminate`，data-only 引用不提升 owner 结论。
 `0x0040B050`、`0x0040B060`、`0x0040BA80` 各只有 data xref，仍保持
 `module` 空、origin `unknown/indeterminate`。
 
+另一个独立的 32-leaf batch（674 bytes）处理了审计 CSV 中仍标为 absent、但没有
+IDA function boundary 的地址。每个地址都先经直接 IDA Pro MCP 字节/tail 与 entry
+xref review，再在完整 leaf TU 的 canonical linked-PE context 中逐字节 replay；
+32/32 units 均 raw-equal。该 batch 只证明 exact codegen，不改变 source presence、
+owner 或 origin 结论。
+
 后续候选会按模块和可复现批次逐步进入 `DecomphelpLeafAccessors.cpp`
 的完整 TU，并分别建立 canonical match unit；未通过的候选保留在 CSV，不得
 写入 `matches.csv`。
@@ -159,5 +173,6 @@ boundary + 完整外部 leaf TU raw-exact”triage 的 0 个候选（0 bytes）�
 | Anm | 0 | 0 |
 | Anm/ECL | 0 | 0 |
 
-上表按原始区间汇总，当前 Enemy 区间已从队列扣除；下一批转向
+上表按原始区间汇总，当前 Enemy 区间已从队列扣除；32 个 boundary-indeterminate
+leaf 已另行登记，不计入这张“有 IDA boundary”队列。下一批转向
 AnmManager/FrontEnd/Player 区域，并在每个批次的 commit 中更新本文件和 CSV。
