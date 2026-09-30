@@ -1175,6 +1175,16 @@ symbol = "??0AnmVmView@@QAE@XZ"
 target_address = 0x00402050
 size = 88
 
+[units.anm-vm-initialize-private]
+artifact_kind = "coff"
+source = "src/AnmManager.cpp"
+object = "build/match/AnmManager.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["AnmVmView::Initialize"]
+symbol = "?Initialize@AnmVmView@@SIXPAXPAU1@@Z"
+target_address = 0x00401DE0
+size = 273
+
 [units.anm-matrix-set-identity]
 artifact_kind = "linked-pe"
 source = "src/AnmManager.cpp"

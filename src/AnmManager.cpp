@@ -3858,17 +3858,13 @@ AnmVmView::~AnmVmView()
 // externally owned pointers at +0x20 and +0x340..+0x348.
 void AnmVmView::Initialize()
 {
-    float savedX = positionOffset.x;
-    float savedY = positionOffset.y;
-    float savedZ = positionOffset.z;
+    AnmFloat3View savedPosition = positionOffset;
     unsigned int savedLayer = renderLayer;
 
     memset(this, 0, sizeof(AnmVmView));
 
-    positionOffset.x = savedX;
-    positionOffset.y = savedY;
+    positionOffset = savedPosition;
     renderLayer = savedLayer;
-    positionOffset.z = savedZ;
 
     primaryColor.value = 0xffffffff;
     scaleX = 1.0f;
@@ -3891,6 +3887,46 @@ void AnmVmView::Initialize()
     layerNode.owner = this;
     layerNode.next = NULL;
     layerNode.previous = NULL;
+}
+
+// Target 0x00401DE0's private-ABI reset view. The target callers keep an
+// unrelated context value in ECX and pass the VM in EDX; this natural static
+// overload models that observed two-register call without patching bytes.
+__declspec(noinline) void __fastcall AnmVmView::Initialize(
+    void *unused, AnmVmView *vm)
+{
+    (void)unused;
+    AnmFloat3View savedPosition = vm->positionOffset;
+    unsigned int savedLayer = vm->renderLayer;
+
+    memset(vm, 0, sizeof(AnmVmView));
+
+    vm->renderLayer = savedLayer;
+    vm->positionOffset = savedPosition;
+
+    vm->primaryColor.value = 0xffffffff;
+    vm->scaleX = 1.0f;
+    vm->scaleY = 1.0f;
+    vm->matrix23C.SetIdentity();
+    *reinterpret_cast<unsigned short *>(&vm->flags35C) = 7;
+    vm->scriptTimer.Initialize();
+
+    vm->positionInterpolation.duration = 0;
+    vm->primaryColorInterpolation.duration = 0;
+    vm->primaryAlphaInterpolation.duration = 0;
+    vm->rotationInterpolation.duration = 0;
+    vm->scaleInterpolation.duration = 0;
+    vm->secondaryColorInterpolation.duration = 0;
+    vm->secondaryAlphaInterpolation.duration = 0;
+
+    AnmVmLayerNodeView *managerNode = &vm->managerNode;
+    managerNode->owner = vm;
+    managerNode->next = NULL;
+    managerNode->previous = NULL;
+    AnmVmLayerNodeView *layerNode = &vm->layerNode;
+    layerNode->owner = vm;
+    layerNode->next = NULL;
+    layerNode->previous = NULL;
 }
 
 // Target 0x00401000-0x004010FA receives this through a private ESI register.
