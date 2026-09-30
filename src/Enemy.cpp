@@ -7,6 +7,15 @@
 #include <stdlib.h>
 #include <string.h>
 
+namespace th10
+{
+struct GameErrorContext
+{
+    char * __fastcall Log(char *format, ...);
+};
+extern GameErrorContext g_GameErrorContext;
+}
+
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
 
@@ -307,7 +316,9 @@ void * __fastcall EnemyLoadAnimationResource(
     int resourceIndex, EnemyAnimationOwnerView *owner, const char *filename);
 void EnemyDestroyAnimationResource(
     EnemyAnimationOwnerView *owner, void *resource);
-void EnemyReportResourceLoadError();
+char g_EnemyResourceLoadErrorFormat[] =
+    "\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea\x82\xc4"
+    "\x82\xa2\x82\xdc\x82\xb7\x0d\x0a";
 // Target 0x0044B360 receives filename in EAX plus stack sizeOut/mode; this
 // logical declaration preserves all three source values without claiming that
 // private register assignment.
@@ -1102,27 +1113,25 @@ int EnemyEclResourceView::LoadPackage(const unsigned char *packageData)
     if (header[0] != ANIM_MAGIC)
         return 0;
 
-    const char *cursor = reinterpret_cast<const char *>(packageData + 8);
+    const unsigned char *cursor = packageData + 8;
     unsigned int i = 0;
     while (i < header[1])
     {
         void *loaded = EnemyLoadAnimationResource(
-            static_cast<int>(i + 9), g_EnemyAnimationOwner, cursor);
+            static_cast<int>(i + 9), g_EnemyAnimationOwner,
+            reinterpret_cast<const char *>(cursor));
         g_EnemyManager->effectResources[i + 1] = loaded;
         if (loaded == NULL)
         {
-            EnemyReportResourceLoadError();
+            th10::g_GameErrorContext.Log(g_EnemyResourceLoadErrorFormat);
             return -1;
         }
-        cursor += strlen(cursor) + 1;
+        cursor += strlen(reinterpret_cast<const char *>(cursor)) + 1;
         ++i;
     }
 
-    const unsigned int offset = static_cast<unsigned int>(
-        cursor - reinterpret_cast<const char *>(packageData));
-    const unsigned int remainder = offset & 3u;
-    if (remainder != 0)
-        cursor += 4u - remainder;
+    if ((cursor - packageData) % 4 != 0)
+        cursor += 4u - (cursor - packageData) % 4;
 
     const unsigned int *ecliHeader =
         reinterpret_cast<const unsigned int *>(cursor);
@@ -1132,8 +1141,8 @@ int EnemyEclResourceView::LoadPackage(const unsigned char *packageData)
         unsigned int i = 0;
         while (i < ecliHeader[1])
         {
-            LoadFile(cursor);
-            cursor += strlen(cursor) + 1;
+            LoadFile(reinterpret_cast<const char *>(cursor));
+            cursor += strlen(reinterpret_cast<const char *>(cursor)) + 1;
             ++i;
         }
     }
