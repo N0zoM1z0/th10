@@ -251,6 +251,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040C900,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040C910,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040C940,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
+0x0040C950,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0040C980,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040C990,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040C9A0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
@@ -263,6 +264,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040CC70,authored_game,Enemy,authored,high,enemy-runtime-constructor-2026-09-21
 0x0040CD10,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040CD20,authored_game,Enemy,authored,high,enemy-manager-resource-lifecycle-2026-09-14
+0x0040CD90,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0040CDA0,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040CDB0,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040CDE0,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
@@ -304,6 +306,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00412350,authored_game,Enemy,authored,high,enemy-ecl-operands-2026-09-14
 0x004126D0,authored_game,Enemy,authored,high,enemy-ecl-operands-2026-09-14
 0x00412720,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x00412790,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x004127A0,authored_game,Enemy,authored,high,enemy-runtime-callback-2026-09-15
 0x00412A00,unknown,Enemy,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00412A10,unknown,Enemy,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18

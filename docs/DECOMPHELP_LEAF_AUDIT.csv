@@ -174,7 +174,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0040C920,Fn0040C920,2873,True,sub_40C920,9,9,7,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch
 0x0040C930,Fn0040C930,2881,False,,,10,10,isolated-raw-exact,absent,,,False,boundary unavailable in direct IDA
 0x0040C940,Fn0040C940,161,True,sub_40C940,11,11,11,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C940,False,canonical linked replay exact
-0x0040C950,Fn0040C950,2607,True,sub_40C950,4,4,4,isolated-byte-diff,absent,,,False,isolated-byte-diff
+0x0040C950,Fn0040C950,2607,True,sub_40C950,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C950,False,canonical linked replay exact
 0x0040C980,Fn0040C980,521,True,sub_40C980,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C980,False,canonical linked replay exact
 0x0040C990,Fn0040C990,527,True,sub_40C990,3,3,3,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040C990,False,canonical linked replay exact
 0x0040CBD0,Fn0040CBD0,3843,False,,,25,60,isolated-codegen-size-mismatch,absent,,,False,boundary unavailable in direct IDA
@@ -185,7 +185,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0040CC40,Fn0040CC40,169,True,sub_40CC40,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040CC40,False,canonical linked replay exact
 0x0040CC70,Fn0040CC70,4340,True,sub_40CC70,145,145,183,isolated-codegen-size-mismatch,exact,src/Enemy.cpp,EnemyRuntimeView::EnemyRuntimeView,False,isolated-codegen-size-mismatch
 0x0040CD10,Fn0040CD10,551,True,sub_40CD10,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040CD10,False,canonical linked replay exact
-0x0040CD90,Fn0040CD90,2613,True,sub_40CD90,5,5,5,isolated-byte-diff,absent,,,False,isolated-byte-diff
+0x0040CD90,Fn0040CD90,2613,True,sub_40CD90,5,5,5,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040CD90,False,canonical linked replay exact
 0x0040CDA0,Fn0040CDA0,557,True,sub_40CDA0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040CDA0,False,canonical linked replay exact
 0x0040CDB0,Fn0040CDB0,563,True,sub_40CDB0,7,7,7,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040CDB0,False,canonical linked replay exact
 0x0040CDE0,Fn0040CDE0,569,True,sub_40CDE0,8,8,8,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn0040CDE0,False,canonical linked replay exact
@@ -211,7 +211,7 @@ address,name,source_line,ida_known,ida_name,ida_size,census_size,candidate_size,
 0x0040D820,Fn0040D820,1760,True,sub_40D820,6,6,6,isolated-raw-exact,exact,src/Enemy.cpp,EnemyManagerDrawCallback,False,isolated-raw-exact
 0x00412300,Fn00412300,4192,False,,,21,64,isolated-codegen-size-mismatch,exact,src/Enemy.cpp,EnemyFullObjectView::ResolveIntOperand,False,boundary unavailable in direct IDA
 0x004126D0,Fn004126D0,4209,False,,,21,64,isolated-codegen-size-mismatch,exact,src/Enemy.cpp,EnemyFullObjectView::ResolveFloatOperand,False,boundary unavailable in direct IDA
-0x00412790,Fn00412790,2899,True,sub_412790,12,12,12,isolated-byte-diff,absent,,,False,isolated-byte-diff
+0x00412790,Fn00412790,2899,True,sub_412790,12,12,12,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412790,False,canonical linked replay exact
 0x004127A0,Fn004127A0,6135,True,sub_4127A0,593,67,615,isolated-codegen-size-mismatch,unclassified,src/EnemyCallback.cpp,EnemyResolveRuntimeCallback,False,isolated-codegen-size-mismatch
 0x00412D50,Fn00412D50,1496,True,sub_412D50,4,4,4,isolated-raw-exact,exact,src/DecomphelpLeafAccessors.cpp,th10::leaf::Fn00412D50,False,canonical linked replay exact
 0x00412D60,Fn00412D60,2635,True,sub_412D60,11,11,14,isolated-codegen-size-mismatch,absent,,,False,isolated-codegen-size-mismatch

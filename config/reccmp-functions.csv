@@ -434,9 +434,11 @@ th10::leaf::Fn0040C8F0,0x0040C8F0,function
 th10::leaf::Fn0040C900,0x0040C900,function
 th10::leaf::Fn0040C910,0x0040C910,function
 th10::leaf::Fn0040C940,0x0040C940,function
+th10::leaf::Fn0040C950,0x0040C950,function
 th10::leaf::Fn0040C980,0x0040C980,function
 th10::leaf::Fn0040C990,0x0040C990,function
 th10::leaf::Fn0040CD10,0x0040CD10,function
+th10::leaf::Fn0040CD90,0x0040CD90,function
 th10::leaf::Fn0040CDA0,0x0040CDA0,function
 th10::leaf::Fn0040CDB0,0x0040CDB0,function
 th10::leaf::Fn0040CDE0,0x0040CDE0,function
@@ -449,6 +451,7 @@ th10::leaf::Fn0040CED0,0x0040CED0,function
 th10::leaf::Fn0040D4F0,0x0040D4F0,function
 th10::leaf::Fn0040D500,0x0040D500,function
 th10::leaf::Fn0040D800,0x0040D800,function
+th10::leaf::Fn00412790,0x00412790,function
 th10::leaf::Fn00412D50,0x00412D50,function
 th10::leaf::Fn00412DA0,0x00412DA0,function
 th10::leaf::Fn00412DF0,0x00412DF0,function

@@ -2608,15 +2608,15 @@ __declspec(noinline) u8 * Fn0040B370(u8 *p0, u8 *p1, u32 p2)
     return (u8*)(*(u32*)(((uintptr_t)(p0)+0x8)));
 }
 // 0x0040c950: generated
-__declspec(noinline) u8 * Fn0040C950(u8 *p0, u32 p1, u32 p2)
+__declspec(noinline) u8 * Fn0040C950(u8 *p0, u32 index, u32 value)
 {
-    *(u32*)((uintptr_t)(p0)+((uintptr_t)(p2)*4)) = (u32)(((u32)(uintptr_t)(p1) & 0xffffffff));
+    *(u32*)((uintptr_t)(p0)+((uintptr_t)(index)*4)) = (u32)(((u32)(uintptr_t)(value) & 0xffffffff));
     return (u8*)(p0);
 }
 // 0x0040cd90: generated
-__declspec(noinline) u8 * Fn0040CD90(u8 *p0, u32 p1, u32 p2)
+__declspec(noinline) u8 * Fn0040CD90(u8 *p0, u32 index, u32 value)
 {
-    *(u32*)((uintptr_t)(p0)+((uintptr_t)(p2)*4)+0x10) = (u32)(((u32)(uintptr_t)(p1) & 0xffffffff));
+    *(u32*)((uintptr_t)(p0)+((uintptr_t)(index)*4)+0x10) = (u32)(((u32)(uintptr_t)(value) & 0xffffffff));
     return (u8*)(p0);
 }
 // 0x0040cee0: generated
@@ -2900,7 +2900,7 @@ __declspec(noinline) u32 Fn0040CE80(u8 *pThis)
 }
 
 // 0x412790: arr[(idx+0x24a)<<4] = value
-__declspec(noinline) void Fn00412790(u32 index, u8 *pThis, u32 value)
+__declspec(noinline) void Fn00412790(u32 index, u32 value, u8 *pThis)
 {
     *(u32 *)(pThis + ((index + 0x24a) << 4)) = value;
 }

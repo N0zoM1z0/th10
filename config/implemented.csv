@@ -433,9 +433,11 @@ th10::leaf::Fn0040C8F0
 th10::leaf::Fn0040C900
 th10::leaf::Fn0040C910
 th10::leaf::Fn0040C940
+th10::leaf::Fn0040C950
 th10::leaf::Fn0040C980
 th10::leaf::Fn0040C990
 th10::leaf::Fn0040CD10
+th10::leaf::Fn0040CD90
 th10::leaf::Fn0040CDA0
 th10::leaf::Fn0040CDB0
 th10::leaf::Fn0040CDE0
@@ -448,6 +450,7 @@ th10::leaf::Fn0040CED0
 th10::leaf::Fn0040D4F0
 th10::leaf::Fn0040D500
 th10::leaf::Fn0040D800
+th10::leaf::Fn00412790
 th10::leaf::Fn00412D50
 th10::leaf::Fn00412DA0
 th10::leaf::Fn00412DF0
