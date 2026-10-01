@@ -315,8 +315,7 @@ struct AnmVmTimerView
         }
         else
         {
-            subframe =
-                *reinterpret_cast<volatile float *>(&subframe) + *scale;
+            subframe = *scale + subframe;
             current = static_cast<int>(subframe);
         }
         return current;
