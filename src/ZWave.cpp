@@ -289,8 +289,10 @@ HRESULT CSound::FillBufferWithSound(
             DWORD readSoFar = waveBytesRead;
             while (readSoFar < lockedSize)
             {
+#pragma inline_depth(0)
                 if (FAILED(hr = m_pWaveFile->ResetFile(false)))
                     return hr;
+#pragma inline_depth(16)
                 hr = m_pWaveFile->Read(
                     (BYTE *)lockedBuffer + readSoFar,
                     lockedSize - readSoFar,

@@ -105,8 +105,13 @@ Use this order unless new target evidence changes the dependency graph:
   `CWaveFile::Read` and `CSound::FillBufferWithSound` bodies restore the real
   callee graph. The linked unit is rooted at source-local `ProbePlayRoot`,
   reproduces all five target-bound REL32 edges, and passes two cold replays.
-  `Read` and `FillBufferWithSound` remain source-present/non-exact; the root is
-  compiler-context evidence rather than a retail-entry ownership claim.
+- `CSound::FillBufferWithSound @ 0x0044D110` is now canonical exact at 483
+  bytes. In the same target-bound `/GL /GS` graph, a scoped `inline_depth(0)`
+  around only the repeat-loop `ResetFile(false)` call preserves the target's
+  first-reset inline and repeat-reset direct-call shape. The new linked unit
+  reproduces the complete PDB extent and six target-bound linkage fields in two
+  independent cold replays. `ProbePlayRoot` remains compiler-context evidence,
+  not a retail-entry ownership claim.
 - `SoundPlayerView::StopBgm @ 0x0043DAB0` is now canonical exact at 176 bytes.
   The maintained null-guarded destruction form recovers the target's final
   branch shape. The linked unit uses the real `ReopenBgm` `/GL` entry with
