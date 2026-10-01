@@ -33,10 +33,12 @@ For target disassembly/decompilation, also require a passing Factory
 `th10-ghidra` check for the registered target.
 
 Current ledger checkpoint (2026-10-01): 1,730 reviewed candidates, 843 source
-mappings, 1,081 canonical exact functions, and 101,426 canonical exact `.text`
+mappings, 1,082 canonical exact functions, and 101,628 canonical exact `.text`
 bytes. Confirmed authored code is 265,662 bytes; the authored source-present
-exact backlog is 132 functions, and the Windows i386 product build remains
-open. This checkpoint adds 37 source-less VC7.1
+exact backlog is 131 functions, and the Windows i386 product build remains
+open. This checkpoint also promotes the 202-byte `CWaveFile::Read` linked-PE
+unit after two cold exact replays and a 13-unit ZWave regression replay. The
+same broader checkpoint adds 37 source-less VC7.1
 `libcmt.lib`/`libcpmt.lib` archive units covering 1,386 exact bytes, replayed
 through the archive comparator; it does not claim a full product cold replay.
 
@@ -110,6 +112,12 @@ Use this order unless new target evidence changes the dependency graph:
   branch shape. The linked unit uses the real `ReopenBgm` `/GL` entry with
   `src/ZWave.cpp` support and reproduces the complete body plus its `CSound::Stop`
   and three Win32 import linkage fields in two independent cold replays.
+- `CWaveFile::Read @ 0x0044DE10` is now canonical exact at 202 bytes. The
+  maintained file-mode `else` branch and direct post-`ReadFile` `bytesRead`
+  store reproduce the target's shared-epilogue CFG under the real
+  `CSound::FillBufferWithSound` `/GL` entry. Two independent cold replays
+  reproduce the complete body and its imported `ReadFile` DIR32 field; a
+  source-scoped cold replay keeps all 13 configured ZWave units exact.
 
 ## Active giant-owner frontiers
 

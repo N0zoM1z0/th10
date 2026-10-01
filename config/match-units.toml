@@ -5001,6 +5001,22 @@ linkages = [
   { offset = 0xAE, type = "DIR32", symbol = "__imp__SetFilePointer@16", target = 0x004660C8 },
 ]
 
+[units.zwave-wave-file-read]
+artifact_kind = "linked-pe"
+source = "src/ZWave.cpp"
+output_dir = "build/match-linked/ZWaveRead"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?FillBufferWithSound@CSound@@QAEJPAUIDirectSoundBuffer@@H@Z"
+functions = ["CWaveFile::Read"]
+symbol = "?Read@CWaveFile@@QAEJPAEKPAK@Z"
+target_address = 0x0044DE10
+size = 202
+linkages = [
+  { offset = 0xAD, type = "DIR32", symbol = "__imp__ReadFile@20", target = 0x004660D0 },
+]
+
 [units.enemy-enable-shield]
 artifact_kind = "linked-pe"
 source = "src/EnemyEclDispatcher.cpp"

@@ -199,21 +199,23 @@ HRESULT CWaveFile::Read(
         return S_OK;
     }
 
-    if (m_hWaveFile == NULL)
-        return CO_E_NOTINITIALIZED;
-    if (buffer == NULL || bytesRead == NULL)
-        return E_INVALIDARG;
+    else
+    {
+        if (m_hWaveFile == NULL)
+            return CO_E_NOTINITIALIZED;
+        if (buffer == NULL || bytesRead == NULL)
+            return E_INVALIDARG;
 
-    UINT bytesIn = bytesToRead;
-    if (bytesIn > m_ck.cksize)
-        bytesIn = m_ck.cksize;
-    m_ck.cksize -= bytesIn;
+        UINT bytesIn = bytesToRead;
+        if (bytesIn > m_ck.cksize)
+            bytesIn = m_ck.cksize;
+        m_ck.cksize -= bytesIn;
 
-    DWORD size;
-    ReadFile(m_hWaveFile, buffer, bytesIn, &size, NULL);
-    if (bytesRead != NULL)
+        DWORD size;
+        ReadFile(m_hWaveFile, buffer, bytesIn, &size, NULL);
         *bytesRead = size;
-    return S_OK;
+        return S_OK;
+    }
 }
 
 // TH10 0x0044D080. The target releases each DirectSound buffer, deletes the
