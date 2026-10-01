@@ -1073,15 +1073,6 @@ int EnemyRuntimeView::DispatchEclInstruction()
   iVar27 = reinterpret_cast<int>(owner->activeEclContext->currentInstruction);
   opcode = *(short *)(iVar27 + 4);
   switch(opcode) {
-  case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
-dispatch_create_enemy_absolute:
-  iVar26 = *(int *)(iVar27 + 0x10) + 4;
-  memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-  iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
-  fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
-  local_90.spawnRequest.position.x = (float)fVar19;
-  fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
-  goto dispatch_finish_spawn_position;
   case ENEMY_ECL_CREATE_ENEMY_IF_NO_BOSS:
     if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
       return 0;
@@ -1132,7 +1123,15 @@ dispatch_spawn_enemy:
     if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {
       return 0;
     }
-    goto dispatch_create_enemy_absolute;
+  case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
+dispatch_create_enemy_absolute:
+    iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
+    iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
+    fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
+    local_90.spawnRequest.position.x = (float)fVar19;
+    fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
+    goto dispatch_finish_spawn_position;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
 dispatch_create_enemy_global:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;

@@ -126,7 +126,7 @@ normalized byte score is not exactness.
 
 | Owner | Current live frontier |
 | --- | --- |
-| `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Fresh 2026-10-01 four-source `/GS` graph: target 14,416 bytes, candidate 14,232 bytes, 720/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,576, suffix 43/43. The owner remains non-exact. |
+| `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Retained 2026-10-01 four-source `/GS` case-order graph: target 14,416 bytes, candidate 14,228 bytes, 820/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,572, suffix 43/43. The owner remains non-exact. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-082 selected diagnostic graph: 9,964-byte PDB contribution; 2,839/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. The retained `short interruptSentinel` reproduces the target's direct 16-bit opcode comparison; the remaining fallback comparison sign-extends that short against the target's 32-bit interrupt argument lane. |
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-041: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 152/534 after the retained natural for-loop update clause. |
 
@@ -338,19 +338,21 @@ Target-backed constraints to preserve when the dispatcher campaign resumes:
 Fresh 2026-10-01 evidence:
 
 - the `/GS` graph with `EclVm.cpp`, `AnmManager.cpp` and `AnmVmCreate.cpp` as
-  support emits 14,232 bytes against the 14,416-byte target and matches
-  720/11,556 normalized comparable bytes (1,003 raw bytes); selector equality
-  is 181/181 and all 108 physical case groups retain target order;
-- the target pre-table is 13,760 bytes versus 13,576 in the candidate, while
-  both suffixes are 43 bytes. The first material layout divergences are the
+  support, with the retained spawn-case order, emits 14,228 bytes against the
+  14,416-byte target and matches 820/11,556 normalized comparable bytes
+  (1,087 raw bytes); selector equality is 181/181 and all 108 physical case
+  groups retain target order;
+- the target pre-table is 13,760 bytes versus 13,572 in the candidate, while
+  both suffixes are 43 bytes. The first material layout divergences remain the
   CREATE_ENEMY and CREATE_ENEMY_ABSOLUTE bodies, so no one-line reader or
-  difficulty-case edit is currently justified. The fresh raw/layout reports
-  are `enemy-dispatch-probe-current.json` and
-  `enemy-dispatch-layout-current.json` in the campaign artifact directory.
+  difficulty-case edit is currently justified. The fresh raw/layout reports are
+  `20261001-enemy-dispatch-case-order-current.json` and
+  `20261001-enemy-dispatch-case-order-current-table.json` under
+  `.analysis/gpt-web/`.
 
 Fresh dispatcher diagnostic:
 
-    analysis_dir=.analysis/gpt-web/20261001-ecl-readint
+    analysis_dir=.analysis/gpt-web
     mkdir -p "$analysis_dir"
     scripts/repo-python scripts/probe-ltcg-backlog.py \
       --source src/EnemyEclDispatcher.cpp \
@@ -359,7 +361,7 @@ Fresh dispatcher diagnostic:
       --support 'src/EnemyEclDispatcher.cpp=src/AnmManager.cpp' \
       --support 'src/EnemyEclDispatcher.cpp=src/AnmVmCreate.cpp' \
       --profile-flag=/GS \
-      --json > "$analysis_dir/enemy-dispatch-probe-current.json"
+      --json > "$analysis_dir/20261001-enemy-dispatch-case-order-current.json"
 
 Use the fresh candidate address with `scripts/report-ecl-dispatch-table.py`.
 Never hard-code an address from an old linked image.
