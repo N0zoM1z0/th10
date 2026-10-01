@@ -33,12 +33,12 @@ For target disassembly/decompilation, also require a passing Factory
 `th10-ghidra` check for the registered target.
 
 Current ledger checkpoint (2026-10-01): 1,730 reviewed candidates, 843 source
-mappings, 1,082 canonical exact functions, and 101,628 canonical exact `.text`
+mappings, 1,084 canonical exact functions, and 102,583 canonical exact `.text`
 bytes. Confirmed authored code is 265,662 bytes; the authored source-present
-exact backlog is 131 functions, and the Windows i386 product build remains
-open. This checkpoint also promotes the 202-byte `CWaveFile::Read` linked-PE
-unit after two cold exact replays and a 13-unit ZWave regression replay. The
-same broader checkpoint adds 37 source-less VC7.1
+exact backlog is 129 functions, and the Windows i386 product build remains
+open. This checkpoint promotes the 472-byte `SetupVertexBuffer` linked-PE unit
+after two independent cold exact replays, in addition to the 202-byte
+`CWaveFile::Read` closure. The same broader checkpoint adds 37 source-less VC7.1
 `libcmt.lib`/`libcpmt.lib` archive units covering 1,386 exact bytes, replayed
 through the archive comparator; it does not claim a full product cold replay.
 
@@ -123,6 +123,13 @@ Use this order unless new target evidence changes the dependency graph:
   `CSound::FillBufferWithSound` `/GL` entry. Two independent cold replays
   reproduce the complete body and its imported `ReadFile` DIR32 field; a
   source-scoped cold replay keeps all 13 configured ZWave units exact.
+- `AnmRenderManagerView::SetupVertexBuffer @ 0x004462F0` is now canonical
+  exact at 472 bytes. The maintained natural source uses target-supported
+  three-float/raw-dword views for the independent background-vertex mirror and
+  the target initialization order. The linked unit uses the ABI-correct
+  `ExecuteScript` `/GL /GS` graph with `RandomMath.cpp`, `AnmVmCreate.cpp` and
+  `AnmVmId.cpp` support, reproduces all 22 target-bound DIR32 fields, and
+  passes two independent cold replays.
 
 ## Active giant-owner frontiers
 

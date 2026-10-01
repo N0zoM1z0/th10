@@ -1284,31 +1284,52 @@ void AnmRenderManagerView::SetupVertexBuffer()
     void *lockedVertices;
 
     untexturedVertices[0].x = untexturedVertices[2].x = -128.0f;
-    untexturedVertices[1].x = untexturedVertices[3].x = 128.0f;
+    untexturedVertices[3].x = 128.0f;
+    untexturedVertices[1].x = 128.0f;
     untexturedVertices[0].y = untexturedVertices[1].y = -128.0f;
-    untexturedVertices[2].y = untexturedVertices[3].y = 128.0f;
-    untexturedVertices[0].z = untexturedVertices[1].z =
-        untexturedVertices[2].z = untexturedVertices[3].z = 0.0f;
+    untexturedVertices[3].y = 128.0f;
+    untexturedVertices[2].y = 128.0f;
+    untexturedVertices[3].z = 0.0f;
+    untexturedVertices[2].z = 0.0f;
+    untexturedVertices[1].z = 0.0f;
+    untexturedVertices[0].z = 0.0f;
+    untexturedVertices[2].u = 0.0f;
     untexturedVertices[0].u = 0.0f;
-    untexturedVertices[0].v = 0.0f;
+    untexturedVertices[3].u = 1.0f;
     untexturedVertices[1].u = 1.0f;
     untexturedVertices[1].v = 0.0f;
-    untexturedVertices[2].u = 0.0f;
-    untexturedVertices[2].v = 1.0f;
-    untexturedVertices[3].u = 1.0f;
+    untexturedVertices[0].v = 0.0f;
     untexturedVertices[3].v = 1.0f;
+    untexturedVertices[2].v = 1.0f;
 
-    for (int i = 0; i < 4; ++i)
-    {
-        g_AnmBackgroundQuadVertices[i].x = untexturedVertices[i].x;
-        g_AnmBackgroundQuadVertices[i].y = untexturedVertices[i].y;
-        g_AnmBackgroundQuadVertices[i].z = untexturedVertices[i].z;
-        g_AnmBackgroundQuadVertices[i].u = untexturedVertices[i].u;
-        g_AnmBackgroundQuadVertices[i].v = untexturedVertices[i].v;
-    }
+    *reinterpret_cast<AnmFloat3View *>(&g_AnmBackgroundQuadVertices[0]) =
+        *reinterpret_cast<AnmFloat3View *>(&untexturedVertices[0]);
+    *reinterpret_cast<AnmFloat3View *>(&g_AnmBackgroundQuadVertices[1]) =
+        *reinterpret_cast<AnmFloat3View *>(&untexturedVertices[1]);
+    *reinterpret_cast<AnmFloat3View *>(&g_AnmBackgroundQuadVertices[2]) =
+        *reinterpret_cast<AnmFloat3View *>(&untexturedVertices[2]);
+    *reinterpret_cast<AnmFloat3View *>(&g_AnmBackgroundQuadVertices[3]) =
+        *reinterpret_cast<AnmFloat3View *>(&untexturedVertices[3]);
+    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[0].u) =
+        *reinterpret_cast<unsigned int *>(&untexturedVertices[0].u);
+    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[0].v) =
+        *reinterpret_cast<unsigned int *>(&untexturedVertices[0].v);
+    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[1].u) =
+        *reinterpret_cast<unsigned int *>(&untexturedVertices[1].u);
+    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[1].v) =
+        *reinterpret_cast<unsigned int *>(&untexturedVertices[1].v);
+    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[2].u) =
+        *reinterpret_cast<unsigned int *>(&untexturedVertices[2].u);
+    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[2].v) =
+        *reinterpret_cast<unsigned int *>(&untexturedVertices[2].v);
+    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[3].u) =
+        *reinterpret_cast<unsigned int *>(&untexturedVertices[3].u);
+    *reinterpret_cast<unsigned int *>(&g_AnmBackgroundQuadVertices[3].v) =
+        *reinterpret_cast<unsigned int *>(&untexturedVertices[3].v);
 
-    g_Direct3DDevice->vtable->CreateVertexBuffer(
-        g_Direct3DDevice, sizeof(untexturedVertices), 0,
+    D3d9DeviceView *device = g_Direct3DDevice;
+    device->vtable->CreateVertexBuffer(
+        device, sizeof(untexturedVertices), 0,
         D3D9_VIEW_FVF_XYZ | D3D9_VIEW_FVF_TEX1,
         D3D9_VIEW_POOL_MANAGED, &quadVertexBuffer, NULL);
     quadVertexBuffer->vtable->Lock(
