@@ -32,10 +32,11 @@ Before reconstruction work:
 For target disassembly/decompilation, also require a passing Factory
 `th10-ghidra` check for the registered target.
 
-Current ledger checkpoint (2026-09-29): 1,636 reviewed candidates, 743 source
-mappings, 978 canonical exact functions, and 99,401 canonical exact `.text`
-bytes. The authored source-present backlog is 135 functions; the Windows i386
-product build remains open. This checkpoint adds 37 source-less VC7.1
+Current ledger checkpoint (2026-10-01): 1,730 reviewed candidates, 843 source
+mappings, 1,081 canonical exact functions, and 101,426 canonical exact `.text`
+bytes. Confirmed authored code is 265,662 bytes; the authored source-present
+exact backlog is 132 functions, and the Windows i386 product build remains
+open. This checkpoint adds 37 source-less VC7.1
 `libcmt.lib`/`libcpmt.lib` archive units covering 1,386 exact bytes, replayed
 through the archive comparator; it does not claim a full product cold replay.
 
@@ -104,6 +105,11 @@ Use this order unless new target evidence changes the dependency graph:
   reproduces all five target-bound REL32 edges, and passes two cold replays.
   `Read` and `FillBufferWithSound` remain source-present/non-exact; the root is
   compiler-context evidence rather than a retail-entry ownership claim.
+- `SoundPlayerView::StopBgm @ 0x0043DAB0` is now canonical exact at 176 bytes.
+  The maintained null-guarded destruction form recovers the target's final
+  branch shape. The linked unit uses the real `ReopenBgm` `/GL` entry with
+  `src/ZWave.cpp` support and reproduces the complete body plus its `CSound::Stop`
+  and three Win32 import linkage fields in two independent cold replays.
 
 ## Active giant-owner frontiers
 

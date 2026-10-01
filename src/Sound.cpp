@@ -82,8 +82,11 @@ void SoundPlayerView::StopBgm()
         bgmThreadHandle = NULL;
     }
 
-    delete bgm;
-    bgm = NULL;
+    if (bgm != NULL)
+    {
+        delete bgm;
+        bgm = NULL;
+    }
 }
 
 

@@ -4943,6 +4943,26 @@ target_address = 0x0044D550
 size = 82
 linkages = []
 
+[units.sound-player-stop-bgm]
+artifact_kind = "linked-pe"
+source = "src/Sound.cpp"
+support_sources = ["src/ZWave.cpp"]
+output_dir = "build/match-linked/SoundStopBgm"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ReopenBgm@SoundPlayerView@@QAEHPBD@Z"
+functions = ["SoundPlayerView::StopBgm"]
+symbol = "?StopBgm@SoundPlayerView@@QAEXXZ"
+target_address = 0x0043DAB0
+size = 176
+linkages = [
+  { offset = 0x10, type = "REL32", symbol = "?Stop@CSound@@QAEJXZ", target = 0x0044D550 },
+  { offset = 0x26, type = "DIR32", symbol = "__imp__PostThreadMessageA@16", target = 0x00466210 },
+  { offset = 0x3C, type = "DIR32", symbol = "__imp__WaitForSingleObject@8", target = 0x0046611C },
+  { offset = 0x79, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+]
+
 [units.zwave-wave-file-reopen]
 artifact_kind = "linked-pe"
 source = "src/ZWave.cpp"
