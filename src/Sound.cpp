@@ -51,6 +51,8 @@ public:
 class CSoundManager
 {
 public:
+    LPDIRECTSOUND directSound;
+
     HRESULT CreateStreamingFromMemory(
         CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
         DWORD creationFlags, GUID algorithm, DWORD bufferCount,

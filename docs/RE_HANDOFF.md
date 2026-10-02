@@ -34,12 +34,12 @@ MCP. Attest the read-only local project with
 `scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
 focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-02): 1,732 reviewed candidates, 864 source
-mappings, 1,090 canonical exact functions and 102,948 canonical exact `.text`
+Current ledger checkpoint (2026-10-02): 1,732 reviewed candidates, 866 source
+mappings, 1,091 canonical exact functions and 103,003 canonical exact `.text`
 bytes. Confirmed authored ownership is 265,810 bytes; authored exact bytes are
-37,235 (14.0%). The authored source backlog is144 functions. The two Item record
-lifecycle exact units add138 overall bytes but have indeterminate origin. The
-latest drop-helper mappings add551 authored source-present bytes without exact
+37,290 (14.0%). The authored source backlog is 145 functions. The two Item
+record lifecycle exact units add 138 overall bytes but have indeterminate
+origin. The drop-helper mappings add 551 authored source-present bytes without exact
 credit. Windows i386 product/runtime closure remains open; these bounded claims
 do not imply a full product build or runtime.
 
@@ -132,11 +132,11 @@ Use this order unless new target evidence changes the dependency graph:
   `0x0043DDF0`. The non-streaming branch of `0x0043D950`
   tail-jumps to `ReopenBgm` with EAX owner and ECX path from the indexed
   `+0x4108` name buffer. This corrects the old unresolved path ABI in the
-  ledger. The selected `/GL` graph still emits lookup 216/227 and ReopenBgm
-  63/55 bytes, so their caller/WPO context remains open. Five affected
-  existing exact units cold-replay 564/564 bytes; the next useful Sound routes
-  are its source-absent 1419-byte queue caller and 651-byte memory-stream
-  helper; the indexed-BGM source is described below. The unresolved selected
+  ledger. The earlier `/GL` graph without `/GS /EHsc` emitted lookup 216/227 and
+  ReopenBgm 63/55 bytes. The corrected profile and caller graph now close
+  ReopenBgm exactly, as described below. The next useful Sound ABI route
+  is its source-absent 1419-byte queue caller; the indexed-BGM and stream
+  helper sources are described below. The unresolved selected
   PE/map/PDB are frozen below
   `build/analysis-sound-getfmt-selected/` (PE SHA-256
   `ca003b9d664915a3ce7a40ce002618e3c43b6f8cb88aacf59f565d236c0ba122`).
@@ -150,14 +150,29 @@ Use this order unless new target evidence changes the dependency graph:
   format, GUID, 16 notifications, aligned notify size and event inputs.
   Source layout assertions cover all used offsets. A selected `/GL` graph
   rooted at `LoadBgm` with ZWave support emits 317/298 bytes for this owner;
-  lookup and ReopenBgm remain 216/227 and 63/55. The source-absent 1419-byte
-  queue caller `0x0043DDF0` and 651-byte stream helper `0x0044CBF0` still
-  prevent a target-shaped private ABI graph. No new exact bytes were credited.
+  lookup and ReopenBgm were 216/227 and 63/55 in that earlier graph.
+  The source-absent 1419-byte queue caller `0x0043DDF0` and the still
+  non-exact stream helper `0x0044CBF0` prevent a target-shaped private ABI
+  graph. That earlier graph earned no new exact bytes.
   The same five affected existing exact units cold-replay 564/564 bytes. The
   focused diagnostic and replay reports are under
   `.analysis/gpt-6.1-sol/20261002-sound-getfmt/`; the frozen selected
   PE/map/PDB are below `build/analysis-sound-loadbgm-selected/` (PE SHA-256
   `46d5668b37a751a76468d7e2496098db266b350f44f196269138302d7fcfdc65`).
+- `SoundPlayerView::ReopenBgm @ 0x0043D790` is now canonical exact at 55
+  bytes. A real `LoadBgm` entry with `src/ZWave.cpp` support under pinned
+  `/GL /GS /EHsc` reproduces its full PDB extent and both target-bound
+  REL32 calls to GetFmtIndexByName and CWaveFile::Reopen in two cold builds.
+  The lookup remains non-exact at 236/227 in this profile. Natural
+  `CSoundManager::CreateStreamingFromMemory @ 0x0044CBF0` is now source-mapped
+  in `src/ZWave.cpp` with target-observed memory WAV, DirectSound buffer and
+  notification handling. It is still non-exact: 648/651 bytes as an isolated
+  `/GL /GS /EHsc` entry and 647/651 in the real LoadBgm support graph.
+  The latter graph is frozen under `build/analysis-sound-stream-selected/`
+  (PE SHA-256 `d7a16e784edf8f87b8d142b0774cbc9c412e027b407f626bf29ab5da508b7c8b`).
+  Focused Sound/ZWave cold replay passes all 17 accepted units, 2034/2034
+  bytes across nine compiler artifacts. The 1419-byte queue caller remains
+  source-absent and is the next Sound ABI dependency.
 - `AnmRenderManagerView::SetupVertexBuffer @ 0x004462F0` is now canonical
   exact at 472 bytes. The maintained natural source uses target-supported
   three-float/raw-dword views for the independent background-vertex mirror and

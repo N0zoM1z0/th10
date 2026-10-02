@@ -395,6 +395,7 @@ EnemyEnableBombShield
 SoundPlayerView::GetFmtIndexByName
 SoundPlayerView::ReopenBgm
 SoundPlayerView::LoadBgm
+CSoundManager::CreateStreamingFromMemory
 SoundPlayerView::StopBgm
 CSound::Unpause
 AnmVmTimerView::SetCurrent

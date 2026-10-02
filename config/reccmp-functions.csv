@@ -400,6 +400,7 @@ EnemyEnableBombShield,0x0040CEA0,function
 SoundPlayerView::GetFmtIndexByName,0x0043D2A0,function
 SoundPlayerView::ReopenBgm,0x0043D790,function
 SoundPlayerView::LoadBgm,0x0043D950,function
+CSoundManager::CreateStreamingFromMemory,0x0044CBF0,function
 SoundPlayerView::StopBgm,0x0043DAB0,function
 CSound::Unpause,0x0044D5D0,function
 AnmVmTimerView::SetCurrent,0x00405410,function

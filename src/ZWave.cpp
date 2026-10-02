@@ -6,7 +6,17 @@
 #include "SoundFormat.hpp"
 
 
-class CSoundManager;
+class CSound;
+class CSoundManager
+{
+public:
+    LPDIRECTSOUND directSound;
+
+    HRESULT CreateStreamingFromMemory(
+        CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
+        DWORD creationFlags, GUID algorithm, DWORD bufferCount,
+        DWORD notifySize, HANDLE notifyEvent);
+};
 extern int g_FrontEndSoundBgmVolume;
 
 // TH10's wave-file fields are independently visible in the streaming read,
@@ -28,6 +38,27 @@ public:
     ULONG m_ulDataSize;
     HANDLE m_hWaveFile;
     ThBgmFormat *m_pzwf;
+
+    CWaveFile()
+    {
+        m_pzwf = NULL;
+        m_hmmio = NULL;
+        m_dwSize = 0;
+        m_bIsReadingFromMemory = FALSE;
+    }
+
+    HRESULT OpenFromMemory(
+        BYTE *data, ULONG dataSize, ThBgmFormat *format, DWORD flags)
+    {
+        m_pzwf = format;
+        m_ulDataSize = dataSize;
+        m_pbData = data;
+        m_pbDataCur = data;
+        m_bIsReadingFromMemory = TRUE;
+        if (flags != 0)
+            return E_NOTIMPL;
+        return S_OK;
+    }
 
     HRESULT Close()
     {
@@ -110,6 +141,9 @@ public:
     HANDLE m_hNotifyEvent;
     BOOL m_bIsLocked;
 
+    CStreamingSound(
+        LPDIRECTSOUNDBUFFER buffer, DWORD bufferSize,
+        CWaveFile *waveFile, DWORD notifySize);
     virtual ~CStreamingSound();
 };
 
@@ -117,6 +151,74 @@ typedef char CWaveFileSizeIs94[(sizeof(CWaveFile) == 0x94) ? 1 : -1];
 typedef char CSoundSizeIs5C[(sizeof(CSound) == 0x5c) ? 1 : -1];
 typedef char CStreamingSoundSizeIs78[
     (sizeof(CStreamingSound) == 0x78) ? 1 : -1];
+
+HRESULT CSoundManager::CreateStreamingFromMemory(
+    CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
+    DWORD creationFlags, GUID algorithm, DWORD bufferCount,
+    DWORD notifySize, HANDLE notifyEvent)
+{
+    if (directSound == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    LPDIRECTSOUNDBUFFER soundBuffer = NULL;
+    LPDIRECTSOUNDNOTIFY notify = NULL;
+    DSBPOSITIONNOTIFY *notifications = NULL;
+    CWaveFile *waveFile = new CWaveFile();
+    waveFile->OpenFromMemory(data, dataSize, format, 0);
+
+    DWORD bufferSize = notifySize * bufferCount;
+    DSBUFFERDESC description;
+    ZeroMemory(&description, sizeof(description));
+    description.dwSize = sizeof(description);
+    description.dwFlags = creationFlags | DSBCAPS_CTRLPOSITIONNOTIFY |
+        DSBCAPS_GLOBALFOCUS | DSBCAPS_GETCURRENTPOSITION2 |
+        DSBCAPS_CTRLVOLUME | DSBCAPS_LOCSOFTWARE;
+    description.dwBufferBytes = bufferSize;
+    description.guid3DAlgorithm = algorithm;
+    description.lpwfxFormat = &waveFile->m_pzwf->format;
+
+    if (FAILED(directSound->CreateSoundBuffer(
+            &description, &soundBuffer, NULL)) ||
+        FAILED(soundBuffer->QueryInterface(
+            IID_IDirectSoundNotify, reinterpret_cast<void **>(&notify))))
+        return E_FAIL;
+
+    notifications = new DSBPOSITIONNOTIFY[bufferCount];
+    if (notifications == NULL)
+        return E_OUTOFMEMORY;
+
+    for (DWORD i = 0; i < bufferCount; ++i)
+    {
+        notifications[i].dwOffset = notifySize * i + notifySize - 1;
+        notifications[i].hEventNotify = notifyEvent;
+    }
+
+    HRESULT result = notify->SetNotificationPositions(bufferCount, notifications);
+    if (FAILED(result))
+    {
+        if (notify != NULL)
+        {
+            notify->Release();
+            notify = NULL;
+        }
+        delete[] notifications;
+        return E_FAIL;
+    }
+
+    if (notify != NULL)
+    {
+        notify->Release();
+        notify = NULL;
+    }
+    delete[] notifications;
+
+    *sound = new CStreamingSound(soundBuffer, bufferSize, waveFile, notifySize);
+    CopyMemory(&(*sound)->m_dsbd, &description, sizeof(description));
+    (*sound)->m_pSoundManager = this;
+    static_cast<CStreamingSound *>(*sound)->m_hNotifyEvent = notifyEvent;
+    static_cast<CStreamingSound *>(*sound)->m_bIsLocked = FALSE;
+    return S_OK;
+}
 
 
 

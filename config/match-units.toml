@@ -5044,6 +5044,24 @@ linkages = [
   { offset = 0x79, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
 ]
 
+[units.sound-player-reopen-bgm]
+artifact_kind = "linked-pe"
+source = "src/Sound.cpp"
+support_sources = ["src/ZWave.cpp"]
+output_dir = "build/match-linked/SoundReopenBgm"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadBgm@SoundPlayerView@@QAEHH@Z"
+functions = ["SoundPlayerView::ReopenBgm"]
+symbol = "?ReopenBgm@SoundPlayerView@@QAEHPBD@Z"
+target_address = 0x0043D790
+size = 55
+linkages = [
+  { offset = 0x14, type = "REL32", symbol = "?GetFmtIndexByName@SoundPlayerView@@QAEHPBD@Z", target = 0x0043D2A0 },
+  { offset = 0x2F, type = "REL32", symbol = "?Reopen@CWaveFile@@QAEJPAUThBgmFormat@@@Z", target = 0x0044DCA0 },
+]
+
 [units.zwave-wave-file-reopen]
 artifact_kind = "linked-pe"
 source = "src/ZWave.cpp"
