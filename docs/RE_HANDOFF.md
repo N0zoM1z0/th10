@@ -142,6 +142,7 @@ normalized byte score is not exactness.
 | Owner | Current live frontier |
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | ENEMY-073 six-source `/GL /GS` graph with the real Spawn/GetVm seams and integer spell-name length: candidate 14,384/14,416 bytes, frame 0x2BC/0x2C4, whole-owner 580/11,544 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,728/13,760, suffix 43/43. Case-aligned diagnostics are 2,475/11,135, with 36 target-sized spans and absolute gap sum 740. The frame gap remains unresolved; no exactness follows. |
+| `EnemyBeginSpell @ 0x00409280` | ENEMY-082 current six-TU `/GL /GS` graph: 2,448/2,432 bytes and 520/2,016 structural agreement. Target statistics index reloads and first name-copy loop shape are restored through the existing partial receiver view. Seven-entry table, RET 0x10 and all eight direct-call kinds/counts agree. Initializer private ABIs and allocation remain open; no canonical exactness follows. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-083 selected diagnostic graph: 9,964-byte PDB contribution; 1,646/8,599 whole-owner normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. An int sentinel with an explicit short cast only at the opcode comparison restores both interrupt comparison widths. The 203-byte STOP span agrees on all 187 structural comparable bytes; case-aligned agreement improves to 5,324/8,069. Neither interior result grants canonical exactness. |
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-047: 7,020/7,020; pre-table 6,692/6,692; 931/6,264 normalized comparable bytes; all 59 physical groups retain target order and 56 have target-sized spans. Sum of absolute case-gap deltas falls from 154 to 10 bytes. Case-aligned diagnostics improve from 4,021/5,769 to 5,359/5,730; these are not exact bytes. `StartSubroutine` stays 551/550 and 329/534. |
 
@@ -556,7 +557,7 @@ it is rejected. All source trials are restored. The instruction-sequence ESP
 diagnostic pairs only cookie loads in this graph and does not locate a missing
 source local. Callee name copies do not prove dispatcher buffer capacity.
 
-Current spell checkpoint evidence under `20261002-spell-inline/`:
+Earlier spell checkpoint evidence under `20261002-spell-inline/`:
 
 - the previous body used `chapter +0x44` for both the bonus stage and stage
   selector. This was wrong despite its normalized structural diagnostics.
@@ -607,7 +608,7 @@ Current spell checkpoint evidence under `20261002-spell-inline/`:
   allocation and original class/TU/data ownership remain unresolved. No new
   canonical matches, runtime validation or whole-product closure are claimed.
 
-The current reset/context checkpoint is retained under
+The preceding reset/context checkpoint is retained under
 `20261002-spell-anm-abi/`:
 
 - ANM-085 supersedes the old separate reset overload model. Target reset
@@ -653,6 +654,61 @@ The current reset/context checkpoint is retained under
   source, so canonical exact totals remain unchanged. It does not prove
   original source ownership, native product closure or runtime behavior.
 
+The current scalar/binder checkpoint is retained under
+`20261002-anm-initializer-binders/`:
+
+- ENEMY-082 places the spell bonus input and two statistics indices at
+  +0x0C/+0x28/+0x2C in the existing partial receiver view at 0x00474C40.
+  Their old independent global aliases let the compiler retain the first
+  record pointer across strcpy. The target reads both indices again after
+  that copy; the maintained view restores those reads and the target's
+  two-pointer-increment copy loop. Offset assertions retain the existing
+  stage/chapter/timer layout; original data/class ownership remains unknown;
+- the current spell emits 2,448/2,432 bytes, 520/2,016 structural agreement,
+  seven-entry table and RET 0x10. All eight direct-call kinds/counts agree.
+  The parent retains the 14,384-byte, 0x2BC-frame frontier above. These are
+  diagnostic measurements with no exactness promotion;
+- `selected-input-hashes.json` binds all seven source/header inputs.
+  EnemyEclDispatcher.cpp is
+  `92da4c27a2105399d482374b08d94196d698e70c4db23a4c701f899ba4827b55`;
+  the frozen selected image is `build/analysis-anm-binder-selected/source.exe`,
+  SHA-256 `4c7078b7043dab527a4209df0320b8816d316205cda6cb5d3f1b2378aef3464b`.
+  Role-aware scalar reviews are necessary because four-byte diagnostic data
+  anchors can overlap large member addends. Eight complete existing canonical
+  seam declarations pass 1,444/1,444 bytes in this graph, including the ordinary
+  reset member and SetAndExecuteScriptIndex;
+- ANM-086 closes flags-first and member-shaped-spell controls as raw-neutral
+  across seven complete contributions. Separate reset and loaded-initializer
+  TUs, retaining /GL for every input, do not improve helper ABIs or the owner
+  frontier. One missing-include compile rejection is recorded separately;
+  all trial partitions are restored. Fresh complete target decoding corrects
+  InitializeVm's old ledger note: four base creators call 0x00449870, while
+  eight screen/world-position creators call 0x0043E710. The existing creator
+  /GL graph gives InitializeVm a standard incoming ABI but still 207/217 bytes;
+- BULLET-016 repairs two pre-existing canonical failures discovered by the
+  affected-source replay. Cold old-source controls also yield 424/431 bytes in
+  UpdateAimedDirectionChange and 247/249 in UpdateBullets: shared Tick loads
+  scale before subframe, while these target owners load subframe first.
+  Direct aimed expansion and a plain local remain mismatched. Ordered reads
+  of the actual subframe input scoped to these owners' scaled paths restore
+  all 431 and 249 bytes with twelve and six existing linkage fields in first
+  cold builds. The shared header is unchanged; original volatile qualification
+  and source factoring remain unknown;
+- final focused protection covers 31 distinct canonical units across eleven
+  artifacts, 4,676/4,676 bytes. After the fail-fast manager discovery, eighteen
+  successful cold-prefix units are replayed against unchanged dependencies;
+  only the thirteen Bullet-dependent units are rebuilt after its repair.
+  `final-protection.json` binds both sets and avoids repeating unrelated builds.
+  Each repaired timer owner passes two independent cold builds against the
+  final BulletManager.cpp source, SHA-256
+  `f8411f6f85ffafef638aef607d774d2e057635942320932f4e8ba24c6525d24a`;
+  see `timer-repair-two-cold-builds.json` for the separate receipts.
+  No full TH10 cold replay or new canonical byte promotion is performed;
+- `build-selected.py`, `inspect-selected.py`, `score-selected.py`,
+  `review-selected-bindings.py` and `replay-selected-seams.py` reproduce the
+  selected graph/reviews. Initializer ABIs, later allocation, original
+  production partition and native product/runtime closure remain open.
+
 The focused target-bound boundary replay passes and the fresh inventory now
 assigns the seven-entry spell table to its caller, eliminating the 29-byte gap.
 The unmodified global `report-boundary-inventory.py --check-ledger` already
@@ -660,7 +716,7 @@ failed before this correction at `0x00401100` because historical manual ledger
 evidence text differs from regenerated audit text. No broad ledger rewrite is
 performed; unrelated reviews and existing global audit diagnostics remain.
 The next coupled route is the existing spell-start body's remaining ANM
-initializer private ABIs and statistics allocation, with the corrected physical
+initializer private ABIs and later allocation, with the corrected scalar and physical
 boundary. Canonical exact totals are
 unchanged and the 95% objective remains open.
 

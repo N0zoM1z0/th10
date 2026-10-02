@@ -616,13 +616,22 @@ static __declspec(noinline) void EnemyInitializeScalarInterpolation(
 }
 struct EnemyChapterStateView
 {
-    unsigned char unknown000[0x3c];
+    unsigned char unknown000[0x0c];
+    int spellBonusBase;
+    unsigned char unknown010[0x18];
+    int statisticsGroupA;
+    int statisticsGroupB;
+    unsigned char unknown030[0x0c];
     int stage;
     unsigned char unknown040[4];
     int chapter;
     int unknown048;
     int chapterTimer;
 };
+typedef char EnemySpellStatisticsStateOffsets[
+    (offsetof(EnemyChapterStateView, spellBonusBase) == 0x0c &&
+     offsetof(EnemyChapterStateView, statisticsGroupA) == 0x28 &&
+     offsetof(EnemyChapterStateView, statisticsGroupB) == 0x2c) ? 1 : -1];
 typedef char EnemyStageAndChapterOffsets[
     (offsetof(EnemyChapterStateView, stage) == 0x3c &&
      offsetof(EnemyChapterStateView, chapter) == 0x44 &&
@@ -831,14 +840,11 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
 
 extern float __stdcall EnemyWrapAngle(float angle);
 
-// These aliases describe observed scalar/table inputs; original data owners
-// remain unknown. Target bindings: 477838, 47783C, 474C68, 474C6C,
-// and 474C4C respectively. Stage/chapter use the partial view at 474C40.
+// Target pointer slots: playback at 477838 and statistics at 47783C.
+// Statistics indices and bonus input use receiver-relative slots in the
+// partial view at 474C40 above; original data/class owners remain unknown.
 extern unsigned char *g_EnemySpellPlaybackState;
 extern unsigned char *g_EnemySpellStatistics;
-extern int g_EnemySpellStatisticsGroupA;
-extern int g_EnemySpellStatisticsGroupB;
-extern int g_EnemySpellBonusBase;
 
 // Complete maintained body for target 0x00409280, including every stage arm.
 // The four-stack-argument stdcall surface is target-proven; original source
@@ -856,11 +862,13 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         unsigned char *statistics = g_EnemySpellStatistics;
         int spellOffset = spellId * 0x90;
         unsigned char *record = statistics +
-            (g_EnemySpellStatisticsGroupA * 3 + g_EnemySpellStatisticsGroupB) *
+            (g_EnemyChapterState.statisticsGroupA * 3 +
+             g_EnemyChapterState.statisticsGroupB) *
                 0x437c + spellOffset + 0x5a4;
         strcpy(reinterpret_cast<char *>(record), name);
         record = statistics +
-            (g_EnemySpellStatisticsGroupA * 3 + g_EnemySpellStatisticsGroupB) *
+            (g_EnemyChapterState.statisticsGroupA * 3 +
+             g_EnemyChapterState.statisticsGroupB) *
                 0x437c + spellOffset + 0x5a4;
         int count = *reinterpret_cast<int *>(record + 0x84);
         if (count < 99999) {
@@ -934,7 +942,7 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
     child->intVar2 = value;
     state->spellValue = value;
     int bonus = (g_EnemyChapterState.stage * 3 + 10) *
-        g_EnemySpellBonusBase * 10;
+        g_EnemyChapterState.spellBonusBase * 10;
     state->initialSpellBonus = bonus;
     state->spellBonus = bonus;
     if (bonus >= 100000000) {

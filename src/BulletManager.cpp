@@ -325,7 +325,21 @@ void BulletRuntimeView::UpdateAimedDirectionChange()
 
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
         FromAngleMagnitude(angle, nextSpeed);
-    state.timer.Tick();
+    // Target 0x00407BC4 loads subframe before adding the timer scale.
+    // The relative-direction sibling uses the opposite x87 operand order.
+    state.timer.previous = state.timer.current;
+    if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
+        ++state.timer.current;
+        state.timer.subframe += 1.0f;
+    }
+    else {
+        // Preserve the target's ordered subframe read on the scaled path.
+        float nextSubframe =
+            *reinterpret_cast<volatile float *>(&state.timer.subframe);
+        nextSubframe += *state.timer.scale;
+        state.timer.subframe = nextSubframe;
+        state.timer.current = static_cast<int>(nextSubframe);
+    }
 }
 
 // Target 0x00407BE0. Retail LTCG keeps the BulletRuntimeView owner in ESI.
@@ -528,7 +542,20 @@ int BulletManagerView::UpdateBullets()
         drawBucketTails[bullet->drawBucketIndex] = bullet;
         bullet->nextInDrawBucket = 0;
         ++activeBulletCount;
-        bullet->stateTimer.Tick();
+        AnmVmTimerView &timer = bullet->stateTimer;
+        timer.previous = timer.current;
+        if (*timer.scale > 0.99f && *timer.scale < 1.01f) {
+            ++timer.current;
+            timer.subframe += 1.0f;
+        }
+        else {
+            // Target 0x00406686 reads subframe before adding the scale.
+            float nextSubframe =
+                *reinterpret_cast<volatile float *>(&timer.subframe);
+            nextSubframe += *timer.scale;
+            timer.subframe = nextSubframe;
+            timer.current = static_cast<int>(nextSubframe);
+        }
     }
     return 1;
 }

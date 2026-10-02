@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Review target spell stage/chapter addresses independently of source names."""
+"""Review target spell scalar addresses independently of source names."""
 
 from __future__ import annotations
 
@@ -55,16 +55,43 @@ def review() -> dict[str, object]:
     if [(instruction.mnemonic, instruction.op_str) for instruction in setter] != expected:
         raise ValueError("chapter setter offsets or conditional timer reset changed")
 
+    spell = decode(0x00409280, 2403)
     references = []
-    for instruction in decode(0x00409280, 2403):
+    statistics_references = []
+    for instruction in spell:
         for operand in instruction.operands:
             if (operand.type == X86_OP_MEM and operand.mem.base == 0
                     and operand.mem.index == 0 and operand.mem.disp in (0x00474C7C, 0x00474C84)):
                 references.append({"address": hex(instruction.address), "instruction": instruction.mnemonic,
                                    "operands": instruction.op_str, "global": hex(operand.mem.disp)})
+            if (operand.type == X86_OP_MEM and operand.mem.base == 0
+                    and operand.mem.index == 0
+                    and operand.mem.disp in (0x00474C68, 0x00474C6C, 0x00474C4C)):
+                if operand.size != 4:
+                    raise ValueError("spell statistics/bonus scalar width changed")
+                statistics_references.append({"address": hex(instruction.address),
+                                              "instruction": instruction.mnemonic,
+                                              "operands": instruction.op_str,
+                                              "global": hex(operand.mem.disp)})
     if receiver_address != 0x00474C40 or [row["global"] for row in references] != [
             "0x474c7c", "0x474c7c", "0x474c84"]:
         raise ValueError("target stage/chapter scalar relationship changed")
+    expected_statistics = [
+        (0x0040931C, "mov", "edx, dword ptr [0x474c68]"),
+        (0x0040932B, "mov", "edi, dword ptr [0x474c6c]"),
+        (0x0040935A, "mov", "edx, dword ptr [0x474c68]"),
+        (0x00409360, "mov", "esi, dword ptr [0x474c6c]"),
+        (0x0040987D, "imul", "eax, dword ptr [0x474c4c]"),
+    ]
+    if [(int(row["address"], 16), row["instruction"], row["operands"])
+            for row in statistics_references] != expected_statistics:
+        raise ValueError("target statistics reload or bonus scalar relationship changed")
+    copy = decode(0x00409350, 10)
+    if [(instruction.mnemonic, instruction.op_str) for instruction in copy] != [
+            ("mov", "dl, byte ptr [esi]"), ("inc", "esi"),
+            ("mov", "byte ptr [edi], dl"), ("inc", "edi"),
+            ("test", "dl, dl"), ("jne", "0x409350")]:
+        raise ValueError("statistics name-copy loop changed")
     return {"result": "passed", "target_sha256": observed["sha256"],
             "acceptance_authority": "target scalar/address constraints only; no codegen or ownership claim",
             "set_chapter_call": hex(caller[calls[0]].address),
@@ -72,7 +99,13 @@ def review() -> dict[str, object]:
             "stage": {"global": "0x474c7c", "view_offset": "0x3c"},
             "chapter": {"global": "0x474c84", "view_offset": "0x44"},
             "chapter_timer": {"global": "0x474c8c", "view_offset": "0x4c"},
-            "spell_references": references}
+            "spell_references": references,
+            "statistics_group_a": {"global": "0x474c68", "view_offset": "0x28"},
+            "statistics_group_b": {"global": "0x474c6c", "view_offset": "0x2c"},
+            "spell_bonus_base": {"global": "0x474c4c", "view_offset": "0xc"},
+            "statistics_references": statistics_references,
+            "statistics_name_copy": {"start": "0x409350", "size": 10},
+            "limitations": "Address relationships and reload order; original object/data ownership and runtime aliasing unknown"}
 
 
 def main() -> int:
@@ -87,7 +120,7 @@ def main() -> int:
     if args.json:
         print(json.dumps(report, indent=2))
     else:
-        print("spell-state target review passed: stage +0x3C and chapter +0x44 are distinct")
+        print("spell-state target review passed: statistics +0x28/+0x2C, bonus +0x0C, stage +0x3C and chapter +0x44")
     return 0
 
 
