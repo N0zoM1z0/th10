@@ -147,7 +147,8 @@ normalized byte score is not exactness.
 Current campaign artifacts are under `.analysis/gpt-6.1-sol/` in
 `20261002-enemy-spell/`, `20261002-enemy-tail/`, `20261002-enemy-frame/`,
 `20261002-anm-execute/`
-and `20261002-ecl-start/`.
+and `20261002-ecl-start/`; the focused follow-up is
+`20261002-ecl-run-next/`.
 They are convenience snapshots, not acceptance authority.
 
 ## ECL runner: current recovery point
@@ -221,8 +222,8 @@ Current retained source facts:
   wrong return-state CFG and must not be selected solely for their 550 bytes.
 - Campaign state is **active-incomplete**. Canonical exact totals have not
   increased; the 95% objective remains open. The next bounded route is Run's
-  format-state allocation and shared advance cursor lifetime, followed by the
-  remaining StartSubroutine integer-conversion and return-state gaps.
+  coupled format/stack live ranges and shared advance cursor lifetime, followed
+  by the remaining StartSubroutine integer-conversion and return-state gaps.
 
 Closed ECL directions that should not be repeated without new evidence:
 
@@ -250,6 +251,14 @@ Closed ECL directions that should not be repeated without new evidence:
   major codegen regressions;
 - format-parser declaration permutations and direct arithmetic-local ordering
   probes do not independently solve the whole-function allocator problem.
+- ECLVM-050 current-source controls: conversion `switch` preserves7,020
+  bytes but moves a byte from FORMAT into TERMINATE and only raises comparable
+  agreement to5,772/6,264; nested switch and int conversion grow the owner.
+  Capturing the old advance pointer gives5,769/6,264 with unchanged span gaps;
+  direct member assignment grows the owner. Both ReadInt output-local/wrapper
+  variants shrink it to122/144 and regress Run to7,036. Reversing ADD_FLOAT
+  declaration order leaves the seven observed stack-field differences intact.
+  The source-shape matrix binds every trial to its cold image and target hash.
 - On ECLVM-049, reading both JUMP operands through instructionCursor shrinks
   Run to 6,956 bytes; a scoped jumpInstruction pointer shrinks it to 6,948.
   The target-sized result requires the asymmetric time-from-cursor and
