@@ -142,7 +142,7 @@ normalized byte score is not exactness.
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | ENEMY-073 six-source `/GL /GS` graph with the real Spawn/GetVm seams and integer spell-name length: candidate 14,384/14,416 bytes, frame 0x2BC/0x2C4, whole-owner 580/11,544 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,728/13,760, suffix 43/43. Case-aligned diagnostics are 2,475/11,135, with 36 target-sized spans and absolute gap sum 740. The frame gap remains unresolved; no exactness follows. |
 | `EnemyBeginSpell @ 0x00409280` | ENEMY-083 current seven-TU `/GL /GS` graph with real Player creation callees: 2,476/2,432 bytes and 771/2,032 structural agreement. Statistics reload/copy and all eight call kinds/counts remain correct. InitializeVm now has target incoming RET 8 but remains 207/217 bytes. Other helper private ABIs, copy scheduling and allocation remain open; no canonical exactness follows. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-083 selected diagnostic graph: 9,964-byte PDB contribution; 1,646/8,599 whole-owner normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. An int sentinel with an explicit short cast only at the opcode comparison restores both interrupt comparison widths. The 203-byte STOP span agrees on all 187 structural comparable bytes; case-aligned agreement improves to 5,324/8,069. Neither interior result grants canonical exactness. |
-| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-047: 7,020/7,020; pre-table 6,692/6,692; 931/6,264 normalized comparable bytes; all 59 physical groups retain target order and 56 have target-sized spans. Sum of absolute case-gap deltas falls from 154 to 10 bytes. Case-aligned diagnostics improve from 4,021/5,769 to 5,359/5,730; these are not exact bytes. `StartSubroutine` stays 551/550 and 329/534. |
+| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-049: 7,020/7,020; pre-table 6,692/6,692; 5,767/6,264 normalized comparable bytes in both Host and real Enemy entry graphs. All 59 physical groups retain target order; 57 have target-sized spans and aligned destinations. JUMP now has target size; FORMAT is +4 and shared NOP/advance is -2. Normalization remains incomplete and no exact credit follows. `StartSubroutine` stays 551/550 and 329/534. |
 
 Current campaign artifacts are under `.analysis/gpt-6.1-sol/` in
 `20261002-enemy-spell/`, `20261002-enemy-tail/`, `20261002-enemy-frame/`,
@@ -155,15 +155,16 @@ They are convenience snapshots, not acceptance authority.
 Current retained source facts:
 
 - `Run` remains 7,020/7,020 with a 6,692/6,692 pre-table span and target physical
-  opcode-group order. ECLVM-047 retains the target-observed guarded format loop
-  and directly reads float operands instead of materializing a union temporary.
-  This repairs the large arithmetic/comparison span drift: 56/59 case spans
-  now have target lengths, with only JUMP -2, FORMAT +6 and shared NOP/advance
-  -2 remaining. The full-owner diagnostic decreases from 975 to 931/6,264
-  because most middle destinations remain displaced by two bytes; independently
-  aligning physical cases improves diagnostic agreement from 4,021/5,769 to
-  5,359/5,730. Neither diagnostic grants exactness. The table reporter now
-  exposes aggregate span and destination counts alongside its existing rows.
+  opcode-group order. ECLVM-049 reads JUMP's time operand through the live
+  instruction cursor and its offset through the captured current pointer.
+  This natural equivalent source makes the JUMP span target-sized, raises the
+  full-owner normalized diagnostic from 931 to 5,767/6,264, and aligns 57/59
+  case destinations. FORMAT is +4 bytes and shared NOP/advance is -2; the
+  absolute case-gap sum is 6. Both Host and actual Enemy caller entry graphs
+  reproduce these results. The 355 paired ESP operands still have 94 encoded
+  displacement differences. Focused cold replay passes all15 existing EclVm
+  canonical units/1,473 bytes across three artifacts. All Run scores remain
+  diagnostic, not exact credit.
 - `EclVmContext::StartSubroutine @ 0x0044DF70` is now 551/550 with
   329/534 normalized comparable bytes in the selected graph (fresh starting
   HEAD was 151/534). An argument-count guard scopes both loop locals to the
@@ -220,7 +221,7 @@ Current retained source facts:
   wrong return-state CFG and must not be selected solely for their 550 bytes.
 - Campaign state is **active-incomplete**. Canonical exact totals have not
   increased; the 95% objective remains open. The next bounded route is Run's
-  format-state allocation and JUMP/advance cursor lifetimes, followed by the
+  format-state allocation and shared advance cursor lifetime, followed by the
   remaining StartSubroutine integer-conversion and return-state gaps.
 
 Closed ECL directions that should not be repeated without new evidence:
@@ -249,11 +250,11 @@ Closed ECL directions that should not be repeated without new evidence:
   major codegen regressions;
 - format-parser declaration permutations and direct arithmetic-local ordering
   probes do not independently solve the whole-function allocator problem.
-- On ECLVM-047, refreshing current at JUMP or using a scoped cursor local
-  shrinks Run to 6,948 bytes; reading both operands through instructionCursor
-  gives 6,956. All retain SpawnThread's diagnostic ABI seam but regress the
-  runner and are reverted. The prior jump-reload rejection remains valid for
-  these newly tested combinations too.
+- On ECLVM-049, reading both JUMP operands through instructionCursor shrinks
+  Run to 6,956 bytes; a scoped jumpInstruction pointer shrinks it to 6,948.
+  The target-sized result requires the asymmetric time-from-cursor and
+  offset-from-current spelling. Older blanket rejection of JUMP cursor reads
+  is superseded only for that selected one-operand form.
 - Primitive-to-union arithmetic storage is byte-neutral. Format byte/char
   counters, early cursor advancement, mutable cursor parsing, outer percent
   scope and a prefix helper do not improve the retained combined candidate.

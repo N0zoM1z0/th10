@@ -821,7 +821,7 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_JUMP:
 jump_instruction:
-                currentTime = static_cast<float>(OperandInt(current, 1));
+                currentTime = static_cast<float>(OperandInt(*instructionCursor, 1));
                 instructionOffset = OperandInt(current, 0);
                 goto advance_instruction;
 
