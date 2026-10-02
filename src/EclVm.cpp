@@ -540,60 +540,58 @@ int EclVmContext::StartSubroutine(
     EclVmInstruction *const call = *callerInstruction;
     const int inlineBytes = OperandInt(call, 0);
     int metadataOffset = inlineBytes + firstArgument * 4 + 4;
+    int preservedValue = 0;
     const int previousTop = destination->stack.stackTop;
     int argumentOffset = previousTop + 8;
-    int preservedValue = 0;
 
     if (previousTop == 0)
     {
         destination->stack.Push(0, sizeof(preservedValue), &preservedValue);
-        argumentOffset = destination->stack.stackTop + 8;
+        argumentOffset = 12;
     }
 
     int argumentIndex = firstArgument + 1;
-    unsigned int valueOffset = metadataOffset + 4;
-    unsigned char *argument = destination->stack.data + argumentOffset;
-    for (; argumentIndex < (*callerInstruction)->operandCount;
-         argument += 4, ++argumentIndex, valueOffset += 8,
-         metadataOffset += 8)
+    if (argumentIndex < (*callerInstruction)->operandCount)
     {
-        const char sourceType =
-            (*callerInstruction)->operands[metadataOffset];
-
-        if (sourceType == 'f' || sourceType == 'g')
+        unsigned int valueOffset = metadataOffset + 4;
+        unsigned char *argument = destination->stack.data + argumentOffset;
+        for (; argumentIndex < (*callerInstruction)->operandCount;
+             argument += 4, ++argumentIndex, valueOffset += 8,
+             metadataOffset += 8)
         {
-            EclVmScalar value;
-            value.integer = reinterpret_cast<const int *>(
-                (*callerInstruction)->operands)[valueOffset / 4];
-            value.real = caller->ReadFloatValue(argumentIndex, value.real);
-            if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')
-                *reinterpret_cast<float *>(argument) = value.real;
-            else
-                *reinterpret_cast<int *>(argument) =
-                    static_cast<int>(value.real);
-        }
-        else
-        {
-            EclVmScalar value;
-            value.integer = reinterpret_cast<const int *>(
-                (*callerInstruction)->operands)[valueOffset / 4];
-            value.integer = caller->ReadIntValue(
-                argumentIndex, value.integer);
-            if ((*callerInstruction)->operands[metadataOffset + 1] != 'f')
-                *reinterpret_cast<int *>(argument) = value.integer;
-            else
-                *reinterpret_cast<float *>(argument) =
-                    static_cast<float>(value.integer);
-        }
+            const char sourceType =
+                (*callerInstruction)->operands[metadataOffset];
 
+            if (sourceType == 'f' || sourceType == 'g')
+            {
+                EclVmScalar value;
+                value.integer = reinterpret_cast<const int *>(
+                    (*callerInstruction)->operands)[valueOffset / 4];
+                value.real = caller->ReadFloatValue(argumentIndex, value.real);
+                if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')
+                    *reinterpret_cast<float *>(argument) = value.real;
+                else
+                    *reinterpret_cast<int *>(argument) =
+                        static_cast<int>(value.real);
+            }
+            else
+            {
+                EclVmScalar value;
+                value.integer = reinterpret_cast<const int *>(
+                    (*callerInstruction)->operands)[valueOffset / 4];
+                value.integer = caller->ReadIntValue(
+                    argumentIndex, value.integer);
+                if ((*callerInstruction)->operands[metadataOffset + 1] != 'f')
+                    *reinterpret_cast<int *>(argument) = value.integer;
+                else
+                    *reinterpret_cast<float *>(argument) =
+                        static_cast<float>(value.integer);
+            }
+
+        }
     }
 
-    if (previousTop == 0)
-    {
-        destination->stack.stackTop = 4;
-        destination->stack.Push(0, sizeof(preservedValue), &preservedValue);
-    }
-    else
+    if (previousTop != 0)
     {
         destination->stack.Pop(0, sizeof(preservedValue), &preservedValue);
         destination->stack.stackTop = previousTop;
@@ -601,12 +599,16 @@ int EclVmContext::StartSubroutine(
             destination->stack.data + previousTop - 4) = preservedValue;
         destination->stack.Push(
             0, sizeof(caller->currentTime), &caller->currentTime);
+        destination->stack.Push(
+            0, sizeof(*callerInstruction), callerInstruction);
     }
-    destination->stack.Push(
-        0, sizeof(*callerInstruction),
-        previousTop == 0
-            ? static_cast<const void *>(&preservedValue)
-            : static_cast<const void *>(callerInstruction));
+    else
+    {
+        preservedValue = 0;
+        destination->stack.stackTop = 4;
+        destination->stack.Push(0, sizeof(preservedValue), &preservedValue);
+        destination->stack.Push(0, sizeof(preservedValue), &preservedValue);
+    }
 
     EclVmContext *const previousContext = caller->host->activeContext;
     caller->host->activeContext = destination;

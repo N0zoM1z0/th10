@@ -1,6 +1,6 @@
 # TH10 exact reconstruction handoff
 
-Updated 2026-10-01. This file is the live recovery snapshot for ongoing exact
+Updated 2026-10-02. This file is the live recovery snapshot for ongoing exact
 reconstruction. It is deliberately short: chronological experiments and durable
 negative results belong in `docs/KNOWLEDGE_BASE.md` and Git history.
 
@@ -18,7 +18,7 @@ negative results belong in `docs/KNOWLEDGE_BASE.md` and Git history.
   match ledger plus its replayable units.
 - Never use an old candidate address or normalized score after a support source
   changes. Regenerate the selected link graph first.
-- Commit substantive progress with `gpt-5.6-luna-max: ...`.
+- Commit substantive progress with `gpt-6.1-sol: ...`.
 
 Before reconstruction work:
 
@@ -29,10 +29,12 @@ Before reconstruction work:
     scripts/repo-python scripts/validate-tracking.py --require-target
     scripts/repo-python scripts/report-reconstruction-status.py
 
-For target disassembly/decompilation, also require a passing Factory
-`th10-ghidra` check for the registered target.
+For this campaign, the operator selects direct Bash/Ghidra instead of Factory
+MCP. Attest the read-only local project with
+`scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
+focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-01): 1,730 reviewed candidates, 843 source
+Current ledger checkpoint (2026-10-02): 1,730 reviewed candidates, 843 source
 mappings, 1,084 canonical exact functions, and 102,583 canonical exact `.text`
 bytes. Confirmed authored code is 265,662 bytes; the authored source-present
 exact backlog is 129 functions, and the Windows i386 product build remains
@@ -140,10 +142,10 @@ normalized byte score is not exactness.
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Retained 2026-10-01 four-source `/GS` case-order graph: target 14,416 bytes, candidate 14,228 bytes, 820/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,572, suffix 43/43. The owner remains non-exact. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-082 selected diagnostic graph: 9,964-byte PDB contribution; 2,839/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. The retained `short interruptSentinel` reproduces the target's direct 16-bit opcode comparison; the remaining fallback comparison sign-extends that short against the target's 32-bit interrupt argument lane. |
-| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-041: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 152/534 after the retained natural for-loop update clause. |
+| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-046: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 329/534 after recovering the target loop-register lifetimes. |
 
 The current campaign artifacts are under
-`.analysis/gpt-web/20261001-ecl-readint/`. They are convenience snapshots, not
+`.analysis/gpt-6.1-sol/20261002-ecl-start/`. They are convenience snapshots, not
 acceptance authority.
 
 ## ECL runner: current recovery point
@@ -153,18 +155,14 @@ Current retained source facts:
 - `Run` remains 7,020/7,020 with a 6,692/6,692 pre-table span and target physical
   opcode-group order.
 - `EclVmContext::StartSubroutine @ 0x0044DF70` is now 551/550 with
-  152/534 normalized comparable bytes in the selected graph. The natural
-  for-loop update clause keeps the four loop-state updates in the compiler's
-  update expression and recovers one additional comparable byte without
-  changing the target-sized caller or exact SpawnThread seam. Delaying the local
-  host cache still restores the target private receiver seam and reloading the
-  host through `caller` still reproduces the target ten-byte success tail.
-  Reversing only the integer-source destination-type test (`!= 'f'`) prevents
-  VC7.1 from tail-merging two target-distinct integer writeback blocks, nearly
-  doubling helper agreement from the prior 78/534 while leaving `Run`
-  unchanged. The candidate is still non-exact: its integer writeback block is
-  physically before the float-conversion block whereas the target uses the
-  opposite order, and the owned extent is one byte too long.
+  329/534 normalized comparable bytes in the selected graph (fresh starting
+  HEAD was 151/534). An argument-count guard scopes both loop locals to the
+  non-empty argument path and restores EDI=callerInstruction,
+  EBP=metadataOffset and EBX=argumentIndex. The initial empty-stack argument
+  offset is the target-observed 12. Non-empty return-state saving precedes the
+  empty branch; the empty branch explicitly pushes two zero words. Initializing
+  preservedValue before previousTop recovers the target initialization order.
+  This is a source/codegen checkpoint, not an exact promotion.
 - Both target callers consequently emit `MOV EAX,ESI` before `StartSubroutine`.
   `EclVmHost::SpawnThread @ 0x004500D0` is now canonical exact at 142/142 and
   must be protected.
@@ -179,25 +177,25 @@ Current retained source facts:
   and the displaced local sequence propagates through arithmetic, comparisons
   and trig cases. Arithmetic interleaving improves byte agreement but breaks
   target physical handler order, so it is diagnostic only.
-- `StartSubroutine`'s remaining register frontier is still explicit: target
-  uses EDI=callerInstruction, EBP=metadataOffset, EBX=argumentIndex; retained
-  source keeps EDI but assigns the two long-lived loop roles differently. The
-  new split-writeback source shape closes most of the loop-body structural gap,
-  so the next work is the final one-byte extent/block-order mismatch plus this
-  EBP/EBX coloring, not the already-recovered writeback duplication. `volatile
-  firstArgument` reaches 550 bytes with the wrong register roles and remains a
-  false frontier.
-
-- Fresh target review proves the final saved return-instruction is NULL when the
-  destination stack was empty on entry; only the non-empty path saves the
-  caller instruction. The retained final Push selects the already-zero
-  preservedValue storage versus callerInstruction, restoring this behavior
-  while preserving the EAX destination receiver, stack caller ABI, 7,020-byte
-  Run and exact 142-byte SpawnThread.
-- StartSubroutine is therefore retained at 551/550 and 151/534 comparable bytes.
-  The remaining open work is the one-byte extent/block-order mismatch plus the
-  EBP=metadataOffset / EBX=argumentIndex coloring; do not trade the corrected
-  zero-stack return semantics for the older 157/534 diagnostic score.
+- The remaining StartSubroutine gaps are now localized: argument/value-offset
+  initialization scheduling, integer-source conversion block order, float-argument
+  load register, and post-loop EBP=caller / EDX=4 versus target EDX=caller /
+  EBX=4. The extra extent byte is the time-word load at +0x163: candidate
+  `MOV ECX,[EBP+0]` is three bytes, target `MOV ECX,[EDX]` is two.
+  The loop's formerly open EBP/EBX roles are recovered in the retained
+  graph. A pointer-first initialization alternative reproduces all first 100
+  raw bytes but falls to 303/534 overall; its compact patch remains in the
+  campaign for further coupled allocation work.
+- Target zero-stack return semantics stay correct: explicit branch-local Push
+  calls save two zero words for the empty destination, and caller time plus
+  instruction for the non-empty destination. A new scalar return-instruction
+  local remains a false WPO frontier (523-byte helper, Run 1,163/6,264, caller
+  promoted to ESI). Equal-sized pointer-slot/ternary alternatives retain the
+  wrong return-state CFG and must not be selected solely for their 550 bytes.
+- Campaign state is **active-incomplete**. Canonical exact totals have not
+  increased; the 95% objective remains open. The next bounded route is the
+  integer-conversion and return-state allocation gaps above, then the Run x87
+  stack-coloring chain.
 
 Closed ECL directions that should not be repeated without new evidence:
 
@@ -211,8 +209,9 @@ Closed ECL directions that should not be repeated without new evidence:
   500-byte helper) and regresses `SpawnThread`;
 - merely splitting `StartSubroutine` into another `/GL` translation unit does
   not recover the private receiver seam;
-- guarded/do-while/goto rewrites of the StartSubroutine argument loop shrink the
-  helper toward ~521 bytes and regress it;
+- earlier guarded/do-while/goto rewrites shrank the helper toward ~521 bytes.
+  ECLVM-046 supersedes the blanket guard rejection only for its scoped guarded
+  `for`: the new guarded `do/while` still regresses Run to 793/6,264;
 - `volatile firstArgument` and `argumentOffset += 4` are diagnostic-only:
   volatile reaches a misleading 550-byte helper with the wrong EBP/EBX/EDI
   roles, while the offset rewrite over-optimizes the helper to 517 bytes;
@@ -225,15 +224,16 @@ Closed ECL directions that should not be repeated without new evidence:
 - format-parser declaration permutations and direct arithmetic-local ordering
   probes do not independently solve the whole-function allocator problem.
 
-- spelling the zero-stack argument offset as `sizeof(preservedValue) + 8` is also
-  closed: the helper fell to 541/550 and 137/534 normalized comparable bytes,
+- the earlier unguarded-loop `sizeof(preservedValue) + 8` probe is a
+  context-specific negative: the helper fell to 541/550 and 137/534 normalized
+  comparable bytes,
   versus the retained 551/550 and 151/534, while `Run` and `ReadInt` were
-  unchanged. The edit was reverted; the target's `0x0C` constant is not by
-  itself a source-shape solution.
+  unchanged. ECLVM-046 now retains 12 with the recovered loop-local lifetimes;
+  the earlier negative does not prohibit that new combination.
 
 Focused ECL diagnostic:
 
-    analysis_dir=.analysis/gpt-web/current
+    analysis_dir=.analysis/gpt-6.1-sol/20261002-ecl-start
     mkdir -p "$analysis_dir"
     scripts/repo-python scripts/probe-ltcg-backlog.py \
       --source src/EclVm.cpp \
@@ -412,7 +412,7 @@ At a broader milestone run:
     scripts/repo-python scripts/ci.py
     git diff --check
 
-Commit substantive, verified progress promptly with `gpt-5.6-luna-max: ...`.
+Commit substantive, verified progress promptly with `gpt-6.1-sol: ...`.
 
 ## Local analysis retention
 
@@ -421,7 +421,7 @@ Commit substantive, verified progress promptly with `gpt-5.6-luna-max: ...`.
 experiments (85 non-current directories plus 225 root snapshots/scripts) to a
 single `.analysis/gpt-web/current/` directory of about 1.2 MiB.
 
-The supported current entry point contains:
+The legacy `.analysis/gpt-web/current/` snapshot contains:
 
 - `README.txt`
 - `ecl-run.json`, `ecl-run-probe.json`, `ecl-run-layout.json`,
@@ -433,6 +433,12 @@ The compact JSON files identify the selected graph and frontier; the raw files
 preserve the corresponding probe/layout/replay evidence. They are still not
 exactness authority: canonical exactness lives in the tracked ledgers and
 replayable match units.
+
+The active ECL checkpoint is `.analysis/gpt-6.1-sol/20261002-ecl-start/`.
+Its retained probe, layout and focused replay bind to this source checkpoint;
+`target-prologue-alternative.diff` preserves the unresolved pointer-first
+initialization alternative. Do not trust the last experiment's mutable build
+image: regenerate the retained graph before using addresses.
 
 Historical `.analysis/...` paths in `docs/KNOWLEDGE_BASE.md` are provenance
 labels and may no longer exist. If an old result becomes relevant again,
