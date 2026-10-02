@@ -189,6 +189,18 @@ Current retained source facts:
   flagIndex, EBP for valueWord, and stack homes +0x10/+0x14/+0x18 for percent,
   scratch and metadataOffset. The candidate instead retains percent in EBP,
   valueWord in EBX and spills flagIndex at +0x34; this is the next allocator gap.
+- ECLVM-048 adds a reproducible encoded-ESP diagnostic. On the retained graph,
+  56 cases have identical instruction layouts; 355 paired stack operands contain
+  94 displacement differences. These are instruction fields, not 94 distinct
+  locals or exactness credit. For float ADD, the first-pop home is +0x60 in both
+  images, but the second-pop home is target +0x30 versus candidate +0x24, with
+  seven differing ESP operands. Other pairs differ by +4, +8, +12 or reverse
+  direction; there is no uniform frame-offset correction. Irregular JUMP,
+  FORMAT and advance spans are excluded rather than paired heuristically.
+- A fresh canonical EnemyRuntimeUpdate-rooted build emits the same runner,
+  StartSubroutine and ReadInt diagnostics as the selected Host::Run root;
+  Host::Run and SpawnThread independently replay exact in that artifact. The
+  remaining gaps are not explained by choosing between these two entry roots.
 - The remaining StartSubroutine gaps are now localized: argument/value-offset
   initialization scheduling, integer-source conversion block order, float-argument
   load register, and post-loop EBP=caller / EDX=4 versus target EDX=caller /
@@ -245,6 +257,18 @@ Closed ECL directions that should not be repeated without new evidence:
   scope and a prefix helper do not improve the retained combined candidate.
   StartSubroutine conversion continues, return-state inline helpers and
   argument-index declarations inside the guard do not improve ECLVM-046.
+- ECLVM-048 rechecks arithmetic wrappers under the new format lifetime shape:
+  left/both PopFloat wrappers shrink Run to 6,848 bytes, the right wrapper grows
+  it to 7,036, and PushInt/PushFloat arithmetic wrappers regress the owner.
+  Shared accumulator locals, arithmetic helpers, a Run-wide stack alias,
+  pointer/reference cursor rewrites and format for-loop variants also regress
+  or remain neutral. Retain the explicit case-local Pop/mutate/Push source.
+  Across 54 serialized compiler probes including the baseline, no source
+  variant improves the retained owner.
+  A context-only formatter argument raises whole-owner agreement to 947/6,264
+  but lowers case-aligned agreement to 5,334/5,730, so it is reverted. The final
+  scoped replay still passes all 15 configured EclVm exact units across three
+  artifacts for 1,473/1,473 bytes; this batch adds no canonical exact bytes.
 
 - the earlier unguarded-loop `sizeof(preservedValue) + 8` probe is a
   context-specific negative: the helper fell to 541/550 and 137/534 normalized
@@ -269,6 +293,13 @@ Read the fresh `candidate_address` for target `0x0044E1A0`, then run:
       --candidate build/probe-ltcg/src_EclVm.cpp/source.exe \
       --candidate-function-address "$candidate_address" \
       --json > "$analysis_dir/ecl-run-layout.json"
+
+Add `--stack-displacements` to diagnose literal ESP offsets in matching
+instruction layouts. The report pins Capstone and carries
+`acceptance_authority=none`; it identifies neither source locals nor dataflow.
+Its target self-comparison pairs 58 cases with zero differences and skips the
+final TERMINATE span because candidate gap measurement includes two alignment
+bytes that the target code-gap measurement excludes.
 
 After any ECL edit:
 

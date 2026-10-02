@@ -9,8 +9,9 @@ from pathlib import Path
 import re
 import struct
 import sys
+import tomllib
 
-from linked_image import LinkedImageError, PEImage
+from linked_image import LinkedImageError, PEImage, verify_capstone
 from target_identity import pe_bytes_at, resolve_target, verify_target
 
 
@@ -182,6 +183,96 @@ def candidate_case_layout(
     }
 
 
+def stack_displacement_diagnostics(
+    target: bytes, candidate_path: Path, rows: list[dict[str, object]]
+) -> dict[str, object]:
+    """Compare encoded ESP offsets, without identifying locals or dataflow."""
+    from capstone import Cs, CS_ARCH_X86, CS_MODE_32
+    from capstone.x86 import X86_OP_MEM, X86_REG_ESP
+
+    lock = tomllib.loads((ROOT / "config" / "tools.lock.toml").read_text())
+    decoder_identity = verify_capstone(lock["capstone"])
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    decoder.detail = True
+    candidate = PEImage(candidate_path)
+    cases = []
+    for row in rows:
+        target_address = int(row["target_destination"], 16)
+        candidate_address = int(row["candidate_destination"], 16)
+        target_size = row["target_next_destination_gap"]
+        candidate_size = row["candidate_next_destination_gap"]
+        target_instructions = list(decoder.disasm(
+            pe_bytes_at(target, target_address, target_size), target_address
+        ))
+        candidate_instructions = list(decoder.disasm(
+            candidate.read_address(candidate_address, candidate_size),
+            candidate_address,
+        ))
+
+        def shape(instructions, start):
+            return [
+                (instruction.address - start, instruction.size, instruction.id,
+                 tuple((operand.type, operand.size)
+                       for operand in instruction.operands))
+                for instruction in instructions
+            ]
+
+        layout_matches = (
+            sum(instruction.size for instruction in target_instructions)
+            == target_size
+            and sum(instruction.size for instruction in candidate_instructions)
+            == candidate_size
+            and shape(target_instructions, target_address)
+            == shape(candidate_instructions, candidate_address)
+        )
+        compared = 0
+        differences = []
+        if layout_matches:
+            for original, rebuilt in zip(
+                target_instructions, candidate_instructions
+            ):
+                for index, (left, right) in enumerate(zip(
+                    original.operands, rebuilt.operands
+                )):
+                    if not (
+                        left.type == right.type == X86_OP_MEM
+                        and left.mem.base == right.mem.base == X86_REG_ESP
+                        and left.mem.index == right.mem.index == 0
+                    ):
+                        continue
+                    compared += 1
+                    if left.mem.disp != right.mem.disp:
+                        differences.append({
+                            "instruction_offset": (
+                                f"0x{original.address - target_address:X}"
+                            ),
+                            "mnemonic": original.mnemonic,
+                            "operand_index": index,
+                            "target_displacement": left.mem.disp,
+                            "candidate_displacement": right.mem.disp,
+                        })
+        cases.append({
+            "opcode": row["opcode"],
+            "name": row["name"],
+            "instruction_layout_matches": layout_matches,
+            "stack_operands_compared": compared,
+            "differences": differences,
+        })
+    return {
+        "acceptance_authority": "none",
+        "method": "encoded ESP offsets within identical instruction layouts",
+        "decoder": decoder_identity,
+        "aligned_case_count": sum(
+            case["instruction_layout_matches"] for case in cases
+        ),
+        "stack_operands_compared": sum(
+            case["stack_operands_compared"] for case in cases
+        ),
+        "difference_count": sum(len(case["differences"]) for case in cases),
+        "cases": cases,
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("executable", nargs="?", type=Path)
@@ -192,11 +283,17 @@ def main() -> int:
     )
     parser.add_argument("--json", action="store_true")
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--stack-displacements", action="store_true",
+        help="diagnose ESP offsets in cases with identical instruction layouts",
+    )
     args = parser.parse_args()
     if (args.candidate is None) != (args.candidate_function_address is None):
         parser.error(
             "--candidate and --candidate-function-address must be supplied together"
         )
+    if args.stack_displacements and args.candidate is None:
+        parser.error("--stack-displacements requires --candidate")
 
     target = resolve_target(args.executable)
     if not target.is_file():
@@ -218,6 +315,7 @@ def main() -> int:
         following_padding = pe_bytes_at(image, OWNER_END_ADDRESS + 1, 4)
         enum_values, case_names, source_problems = parse_source(args.source)
         candidate_layout = None
+        stack_diagnostics = None
         if args.candidate is not None:
             candidate_layout = candidate_case_layout(
                 args.candidate,
@@ -226,6 +324,10 @@ def main() -> int:
                 jump_table,
                 enum_values,
             )
+            if args.stack_displacements:
+                stack_diagnostics = stack_displacement_diagnostics(
+                    image, args.candidate, candidate_layout["case_rows"]
+                )
     except (
         OSError,
         UnicodeError,
@@ -309,6 +411,7 @@ def main() -> int:
         "source_case_labels": len(case_names),
         "active_opcode_values": [f"0x{value:02X}" for value in active_opcodes],
         "candidate_case_layout": candidate_layout,
+        "stack_displacement_diagnostics": stack_diagnostics,
         "problems": problems,
     }
     if args.json:
@@ -333,6 +436,13 @@ def main() -> int:
             f"{len(case_names)} case labels"
         )
         if candidate_layout is not None:
+            if stack_diagnostics is not None:
+                print(
+                    "ESP displacement diagnostic (no exactness credit): "
+                    f"{stack_diagnostics['difference_count']} differences / "
+                    f"{stack_diagnostics['stack_operands_compared']} operands / "
+                    f"{stack_diagnostics['aligned_case_count']} aligned cases"
+                )
             print(
                 "candidate tables: "
                 f"{candidate_layout['jump_table_address']} / "
