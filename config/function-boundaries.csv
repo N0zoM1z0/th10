@@ -664,7 +664,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004267F0,0x004269C6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004269D0,0x00426CEB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00426CF0,0x00426F62,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00426F70,0x0042792D,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 2494/2494, tail ret"
+0x00426F70,0x00427947,reviewed,high,target-player-option-table-2026-10-02,"Complete target ownership: 2494-byte executable body with RET4, two-byte MOV EDI,EDI alignment, six-slot jump table at 0x00427930-0x00427947 with domain0..5 and internal instruction destinations. Unique indexed read at 0x0042704E; no other table-slot xrefs. Ghidra reachable body2471 plus three unreachable sleds23; next independent entry0x00427950 follows eight CC bytes. No exactness promotion."
 0x00427950,0x0042795B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 12/12, tail ret"
 0x00427960,0x00427AC6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 359/359, tail ret"
 0x00427AD0,0x00427ADB,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 12/12, tail ret"

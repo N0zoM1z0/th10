@@ -709,7 +709,7 @@ The preceding six-TU scalar/binder checkpoint is retained under
   selected graph/reviews. Initializer ABIs, later allocation, original
   production partition and native product/runtime closure remain open.
 
-The selected Player-coupled checkpoint is now
+The previous Player-coupled checkpoint is
 `20261002-spell-vector-initialization/` (PLAYER-028, ANM-087, ENEMY-083):
 
 - Complete InitializeVm xrefs contain 46 calls; the earlier 40-reference query
@@ -748,15 +748,61 @@ The selected Player-coupled checkpoint is now
   were not run. TH095's plain vector source is hypothesis material only;
   its compiler-storage padding is not adopted.
 
+The selected graph is now `20261002-player-options-branches/`
+(PLAYER-029/030, ENEMY-084), superseding the preceding image while preserving
+its corrected ANM receiver bindings:
+
+- RebuildPlayerOptions owns 2,520 bytes through 0x427947: its 2,494-byte
+  executable body, two-byte MOV EDI,EDI alignment and six-slot jump table.
+  Fresh target decoding and table xrefs close this ownership; eight CC bytes
+  precede the independent callback. Both focused ledger rows are corrected.
+- Power and power/20 are captured before external calls. The high-power branch
+  marks, clears and recreates four secondary VMs using actual CreateVmVariant1,
+  rereading character/shot in each iteration. The low-power branch only sets
+  deletion state 1, without clearing IDs or creation. The previous source
+  incorrectly recreated secondary VMs on both paths.
+- Six primary arms now use real creation triples without the extra allocator
+  null check; local returned AnmVmIdView values preserve all six registration
+  calls. Target global history ownership, SetInterrupt(3) and shared FindVm
+  lookup/child contracts are restored. Invalid selectors still reach the
+  unconditional option-state store. The separate movement-mode placeholder
+  has no SetInterrupt target edge and remains unknown.
+- Frozen seven-TU /GL /GS graph:
+  `build/analysis-player-options-id-local/source.exe`, SHA-256
+  `6a29d68deef90e8c51fdbc6650ebb9efac7f5d85bbfaf779c91be4266d0cf61d`.
+  Player.cpp physical SHA-256 is
+  `c71b870b29239c03068a028354f8cfaf2054d608dbcc9de8438092b5fbd00584`.
+  `retained-input-hashes.json` and `build-selected.py` guard the final inputs.
+- Rebuild owns 2,404/2,520 bytes with frame 0x38 and all six primary triples,
+  five secondary creator calls, one interrupt and sixteen float conversions.
+  Structural agreement is 167/2,152 with complete address normalization;
+  plain RET versus target RET 4 remains unresolved. These diagnostic scores
+  carry no promotion authority and are not canonical byte gains.
+- Six completed natural-source/context trials leave the spell at
+  2,476/2,432 bytes and 771/2,032, the parent at 14,384/14,416 and 580/11,544,
+  and InitializeVm at 207/217 with its restored ECX/stack/RET 8 ABI.
+  Spell direct-call/scalar constraints and eight complete existing seams
+  pass, 1,444/1,444 bytes. Thirteen affected Player units pass across six
+  cold-built artifacts, 712/712 bytes; no full TH10 cold replay is performed.
+- Real ReplayManager support is a restored negative control, leaving this
+  frontier unchanged. The indexed-field hypothesis was falsified by existing
+  displacement counts before a trial and was not run. Fresh Rebuild callers
+  comprise five maintained calls and four calls in two source-absent owners,
+  0x418190 and 0x41AFD0. Their declarations/context are still unknown.
+- `REPRODUCE.md` records the guarded build, focused canonical replay, boundary
+  evidence and independent controls. Original source partition, private ABIs,
+  whole-owner exactness and native product/runtime closure remain open.
+
 The focused target-bound boundary replay passes and the fresh inventory now
 assigns the seven-entry spell table to its caller, eliminating the 29-byte gap.
 The unmodified global `report-boundary-inventory.py --check-ledger` already
 failed before this correction at `0x00401100` because historical manual ledger
 evidence text differs from regenerated audit text. No broad ledger rewrite is
 performed; unrelated reviews and existing global audit diagnostics remain.
-The next coupled route is the existing spell-start body's remaining ANM
-initializer private ABIs and later allocation, with the corrected scalar and physical
-boundary. Canonical exact totals are
+The next coupled routes are the two source-absent Player callers and the
+spell-start body's remaining ANM initializer private ABIs/later allocation.
+Keep the corrected Player power/creation dataflow and complete table boundary.
+Canonical exact totals are
 unchanged and the 95% objective remains open.
 
 Query the target spell block directly:

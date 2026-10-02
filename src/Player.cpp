@@ -367,21 +367,8 @@ enum
 
 static PlayerVm *FindPlayerVm(unsigned int id)
 {
-    if (id == 0 || g_PlayerVmManager == NULL)
-        return NULL;
-
-    PlayerVmListNode *node;
-    for (node = g_PlayerVmManager->primaryHead; node != NULL; node = node->next)
-    {
-        if (node->value != NULL && node->value->id == id)
-            return node->value;
-    }
-    for (node = g_PlayerVmManager->secondaryHead; node != NULL; node = node->next)
-    {
-        if (node->value != NULL && node->value->id == id)
-            return node->value;
-    }
-    return NULL;
+    return reinterpret_cast<PlayerVm *>(
+        g_AnmRenderManagerView->FindVm(AnmVmIdView(id)));
 }
 
 static void MarkPlayerVmFlag(unsigned int id)
@@ -396,8 +383,7 @@ static void MarkPlayerVmFlag(unsigned int id)
         PlayerVmListNode *node;
         for (node = vm->children; node != NULL; node = node->next)
         {
-            if (node->value != NULL)
-                node->value->flags |= PLAYER_VM_PENDING_FLAG;
+            node->value->flags |= PLAYER_VM_PENDING_FLAG;
         }
     }
 }
@@ -414,8 +400,7 @@ static void MarkPlayerVmDeleteState(unsigned int id, unsigned short state)
         PlayerVmListNode *node;
         for (node = vm->children; node != NULL; node = node->next)
         {
-            if (node->value != NULL)
-                node->value->deleteState = state;
+            node->value->deleteState = state;
         }
     }
 }
@@ -438,55 +423,6 @@ static void LoadPlayerOptionPair(
 {
     pair->x = ScalePlayerOptionCoordinate(position->x);
     pair->y = ScalePlayerOptionCoordinate(position->y);
-}
-
-static unsigned int CreatePrimaryPlayerOptionVm(Player *player, int scriptIndex)
-{
-    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(player->resource);
-    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
-
-    if (vm == NULL)
-        return 0;
-
-    vm->renderLayer = PLAYER_VM_LAYER;
-    vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
-    loaded->InitializeVm(
-        vm, scriptIndex);
-    AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
-    return id.value;
-}
-
-static int GetPrimaryPlayerOptionScript()
-{
-    switch (g_PlayerShotType)
-    {
-    case 0:
-        return PLAYER_OPTION_PRIMARY_SCRIPT_0;
-    case 1:
-        return PLAYER_OPTION_PRIMARY_SCRIPT_1;
-    case 2:
-        return PLAYER_OPTION_PRIMARY_SCRIPT_2;
-    default:
-        return -1;
-    }
-}
-
-static int GetSecondaryPlayerOptionScript()
-{
-    switch (g_PlayerShotType + g_PlayerCharacter * 3)
-    {
-    case 0:
-    case 3:
-        return PLAYER_OPTION_SECONDARY_SCRIPT_0;
-    case 1:
-    case 4:
-        return PLAYER_OPTION_SECONDARY_SCRIPT_1;
-    case 2:
-    case 5:
-        return PLAYER_OPTION_SECONDARY_SCRIPT_2;
-    default:
-        return -1;
-    }
 }
 
 // Maintained spelling of the observed ECX-bound option callback boundary. This
@@ -1876,28 +1812,64 @@ int __fastcall PlayerDrawCallback(Player *player)
 void RebuildPlayerOptions(Player *player)
 {
     int i;
-    const bool highPowerCleanup = g_PlayerPower >= 100;
-    const int secondaryScript = GetSecondaryPlayerOptionScript();
+    const short power = g_PlayerPower;
+    int optionCount = (int)power / 20;
 
-    for (i = 0; i < 4; ++i)
+    if (power >= 100)
     {
-        PlayerOptionRuntime &option = player->options[i];
-        if (highPowerCleanup)
-            MarkPlayerVmFlag(option.secondaryVmId);
-        else
-            MarkPlayerVmDeleteState(option.secondaryVmId, 1);
-
-        option.secondaryVmId = 0;
-        if (secondaryScript >= 0)
+        for (i = 0; i < 4; ++i)
         {
-            PlayerVm *vm = PlayerCreateManagedVm(
-                player->resource, secondaryScript, PLAYER_VM_LAYER);
-            if (vm != NULL)
-                option.secondaryVmId = vm->id;
+            PlayerOptionRuntime &option = player->options[i];
+            MarkPlayerVmFlag(option.secondaryVmId);
+            option.secondaryVmId = 0;
+
+            switch (g_PlayerShotType + g_PlayerCharacter * 3)
+            {
+            case 0:
+                option.secondaryVmId =
+                    static_cast<AnmLoadedView *>(player->resource)->
+                        CreateVmVariant1(
+                            PLAYER_OPTION_SECONDARY_SCRIPT_0, PLAYER_VM_LAYER).value;
+                break;
+            case 1:
+                option.secondaryVmId =
+                    static_cast<AnmLoadedView *>(player->resource)->
+                        CreateVmVariant1(
+                            PLAYER_OPTION_SECONDARY_SCRIPT_1, PLAYER_VM_LAYER).value;
+                break;
+            case 2:
+                option.secondaryVmId =
+                    static_cast<AnmLoadedView *>(player->resource)->
+                        CreateVmVariant1(
+                            PLAYER_OPTION_SECONDARY_SCRIPT_2, PLAYER_VM_LAYER).value;
+                break;
+            case 3:
+                option.secondaryVmId =
+                    static_cast<AnmLoadedView *>(player->resource)->
+                        CreateVmVariant1(
+                            PLAYER_OPTION_SECONDARY_SCRIPT_0, PLAYER_VM_LAYER).value;
+                break;
+            case 4:
+                option.secondaryVmId =
+                    static_cast<AnmLoadedView *>(player->resource)->
+                        CreateVmVariant1(
+                            PLAYER_OPTION_SECONDARY_SCRIPT_1, PLAYER_VM_LAYER).value;
+                break;
+            case 5:
+                option.secondaryVmId =
+                    static_cast<AnmLoadedView *>(player->resource)->
+                        CreateVmVariant1(
+                            PLAYER_OPTION_SECONDARY_SCRIPT_2, PLAYER_VM_LAYER).value;
+                break;
+            }
         }
     }
+    else
+    {
+        for (i = 0; i < 4; ++i)
+            MarkPlayerVmDeleteState(player->options[i].secondaryVmId, 1);
+    }
 
-    int optionCount = (int)g_PlayerPower / 20;
     if (optionCount > 4)
         optionCount = 4;
     if (player->optionCount == optionCount)
@@ -1928,9 +1900,45 @@ void RebuildPlayerOptions(Player *player)
             option.replayPair0.y = player->positionY + spawnOffset->y;
             option.replayPair1 = option.replayPair0;
 
-            int script = GetPrimaryPlayerOptionScript();
-            if (script >= 0)
-                option.primaryVmId = CreatePrimaryPlayerOptionVm(player, script);
+            switch (g_PlayerShotType)
+            {
+            case 0:
+            {
+                AnmLoadedView *loaded =
+                    static_cast<AnmLoadedView *>(player->resource);
+                AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+                vm->renderLayer = PLAYER_VM_LAYER;
+                vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+                loaded->InitializeVm(vm, PLAYER_OPTION_PRIMARY_SCRIPT_0);
+                AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+                option.primaryVmId = id.value;
+            }
+                break;
+            case 1:
+            {
+                AnmLoadedView *loaded =
+                    static_cast<AnmLoadedView *>(player->resource);
+                AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+                vm->renderLayer = PLAYER_VM_LAYER;
+                vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+                loaded->InitializeVm(vm, PLAYER_OPTION_PRIMARY_SCRIPT_1);
+                AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+                option.primaryVmId = id.value;
+            }
+                break;
+            case 2:
+            {
+                AnmLoadedView *loaded =
+                    static_cast<AnmLoadedView *>(player->resource);
+                AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+                vm->renderLayer = PLAYER_VM_LAYER;
+                vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+                loaded->InitializeVm(vm, PLAYER_OPTION_PRIMARY_SCRIPT_2);
+                AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+                option.primaryVmId = id.value;
+            }
+                break;
+            }
         }
         else if (g_PlayerCharacter == 1)
         {
@@ -1948,7 +1956,7 @@ void RebuildPlayerOptions(Player *player)
                 }
                 LoadPlayerOptionPair(&option.replayPair3, position1);
 
-                option.replayPair0 = player->replayPositionHistory[(i + 1) * 8];
+                option.replayPair0 = g_Player->replayPositionHistory[(i + 1) * 8];
                 if (player->optionMode != 0 && option.state == 0)
                 {
                     if (i == 0)
@@ -1958,8 +1966,16 @@ void RebuildPlayerOptions(Player *player)
                 }
 
                 option.updateCallback = PlayerOptionTrailCallback;
-                option.primaryVmId = CreatePrimaryPlayerOptionVm(
-                    player, PLAYER_OPTION_PRIMARY_SCRIPT_0);
+                {
+                    AnmLoadedView *loaded =
+                        static_cast<AnmLoadedView *>(player->resource);
+                    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+                    vm->renderLayer = PLAYER_VM_LAYER;
+                    vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+                    loaded->InitializeVm(vm, PLAYER_OPTION_PRIMARY_SCRIPT_0);
+                    AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+                    option.primaryVmId = id.value;
+                }
                 option.replayPair1 = player->replayPositionHistory[i * 8];
                 break;
             }
@@ -1976,8 +1992,16 @@ void RebuildPlayerOptions(Player *player)
                     player->optionMode != 0 ? &option.replayPair3 : &option.replayPair2;
                 option.replayPair0.x = player->positionX + spawnOffset->x;
                 option.replayPair0.y = player->positionY + spawnOffset->y;
-                option.primaryVmId = CreatePrimaryPlayerOptionVm(
-                    player, PLAYER_OPTION_PRIMARY_SCRIPT_1);
+                {
+                    AnmLoadedView *loaded =
+                        static_cast<AnmLoadedView *>(player->resource);
+                    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+                    vm->renderLayer = PLAYER_VM_LAYER;
+                    vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+                    loaded->InitializeVm(vm, PLAYER_OPTION_PRIMARY_SCRIPT_1);
+                    AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+                    option.primaryVmId = id.value;
+                }
                 break;
             }
             case 2:
@@ -1992,10 +2016,19 @@ void RebuildPlayerOptions(Player *player)
                     option.replayPair3 = option.replayPair0;
                 }
 
-                option.primaryVmId = CreatePrimaryPlayerOptionVm(
-                    player, PLAYER_OPTION_PRIMARY_SCRIPT_2);
+                {
+                    AnmLoadedView *loaded =
+                        static_cast<AnmLoadedView *>(player->resource);
+                    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+                    vm->renderLayer = PLAYER_VM_LAYER;
+                    vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+                    loaded->InitializeVm(vm, PLAYER_OPTION_PRIMARY_SCRIPT_2);
+                    AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+                    option.primaryVmId = id.value;
+                }
                 if (player->optionMode != 0)
-                    PlayerSetManagedVmDeleteState(&option.primaryVmId, 3);
+                    reinterpret_cast<AnmVmIdView *>(
+                        &option.primaryVmId)->SetInterrupt(3);
                 option.updateCallback = PlayerOptionSpecialCallback;
                 break;
             }
