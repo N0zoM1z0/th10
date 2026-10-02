@@ -124,7 +124,8 @@ comparison cannot establish an LTCG-owned function. See
   lock.
 - [`docs/RE_WORKFLOW.md`](docs/RE_WORKFLOW.md) — reconstruction loop and gates.
 - [`docs/ORACLES.md`](docs/ORACLES.md) — claim-specific falsification rules.
-- [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — current state and next work.
+- [`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md) — paused handoff, live state, and recovery checks.
+- [`docs/RE_CAMPAIGN_NOTES_2026-10-02.md`](docs/RE_CAMPAIGN_NOTES_2026-10-02.md) — archived experiment details.
 - [`docs/KNOWLEDGE_BASE.md`](docs/KNOWLEDGE_BASE.md) — TH10-only knowledge.
 - [Touhou Reconstruction Factory](https://github.com/N0zoM1z0/touhou-reconstruction-factory) — shared ontology and workflow.
 

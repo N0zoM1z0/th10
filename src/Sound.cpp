@@ -88,6 +88,7 @@ public:
     unsigned char unknown05C[0x74 - 0x5c];
     BOOL isLocked;
 
+    // These queue callees have not yet been recovered as source bodies.
     HRESULT InitSoundBuffers();
     HRESULT Reset();
 };
@@ -101,6 +102,20 @@ public:
         CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
         DWORD creationFlags, GUID algorithm, DWORD bufferCount,
         DWORD notifySize, HANDLE notifyEvent);
+};
+
+// Values are read from the target queue switch; the names are descriptive.
+enum SoundPlayerCommandOpcode
+{
+    SOUND_COMMAND_NONE = 0,
+    SOUND_COMMAND_PRELOAD_BGM = 1,
+    SOUND_COMMAND_LOAD_BGM = 2,
+    SOUND_COMMAND_STOP_BGM = 3,
+    SOUND_COMMAND_RELEASE_BGM = 4,
+    SOUND_COMMAND_FADE_BGM = 5,
+    SOUND_COMMAND_PAUSE_BGM = 6,
+    SOUND_COMMAND_UNPAUSE_BGM = 7,
+    SOUND_COMMAND_SET_BGM_VOLUME = 8
 };
 
 struct SoundPlayerCommand
@@ -121,6 +136,7 @@ extern SoundCueMetadata g_SoundCueMetadata[];
 
 struct SoundPlayerView
 {
+    // Partial target-offset view. Unnamed fields retain unresolved ownership.
     void *directSound;
     unsigned char unknown004[4];
     LPDIRECTSOUNDBUFFER soundBuffers[128];
@@ -290,7 +306,7 @@ process_command:
     bool processNext = false;
     switch (command->opcode)
     {
-    case 1: // Preload BGM.
+    case SOUND_COMMAND_PRELOAD_BGM:
         if ((g_MainSupervisorView.options & 0x10) != 0)
         {
             if (command->step != 0)
@@ -304,7 +320,7 @@ process_command:
         processNext = true;
         goto remove_command;
 
-    case 2: // Load BGM.
+    case SOUND_COMMAND_LOAD_BGM:
         if ((g_MainSupervisorView.options & 0x10) != 0 &&
             command->argument >= 0)
         {
@@ -372,7 +388,7 @@ process_command:
         ++command->step;
         break;
 
-    case 3: // Stop BGM.
+    case SOUND_COMMAND_STOP_BGM:
         if (bgm == NULL)
             goto remove_command;
         if (command->step == 0)
@@ -382,7 +398,7 @@ process_command:
         ++command->step;
         break;
 
-    case 4: // Release BGM.
+    case SOUND_COMMAND_RELEASE_BGM:
         if (bgm == NULL)
             goto remove_command;
         if (command->step == 0)
@@ -419,13 +435,13 @@ process_command:
         ++command->step;
         break;
 
-    case 5: // Fade BGM.
+    case SOUND_COMMAND_FADE_BGM:
         if (reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->bgm != NULL)
             reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->bgm->FadeOut(
                 static_cast<float>(command->argument));
         goto remove_command;
 
-    case 6: // Pause BGM.
+    case SOUND_COMMAND_PAUSE_BGM:
         if (g_MainSupervisorView.configUnknown13B[0] == 1)
         {
             if (static_cast<CStreamingSound *>(bgm)->isLocked)
@@ -435,7 +451,7 @@ process_command:
         }
         goto remove_command;
 
-    case 7: // Unpause BGM.
+    case SOUND_COMMAND_UNPAUSE_BGM:
         if (g_MainSupervisorView.configUnknown13B[0] == 1)
         {
             if (static_cast<CStreamingSound *>(bgm)->isLocked)
@@ -445,7 +461,7 @@ process_command:
         }
         goto remove_command;
 
-    case 8: // Set BGM volume.
+    case SOUND_COMMAND_SET_BGM_VOLUME:
         if (bgm != NULL)
             bgm->SetVolume(bgmVolume);
         goto remove_command;
@@ -456,7 +472,7 @@ process_command:
     remove_command:
         for (int i = 0; i < 31; ++i, ++command)
         {
-            if (command->opcode == 0)
+            if (command->opcode == SOUND_COMMAND_NONE)
                 break;
             memcpy(command, command + 1, sizeof(*command));
         }

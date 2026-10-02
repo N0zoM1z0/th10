@@ -4,10 +4,11 @@ This file stores durable TH10-scoped facts and important negative results.
 Rows are time-scoped observations, including rows that say "current" or give
 counts from an earlier checkpoint. Use the tracked ledgers and generated
 docs/PROGRESS.md for present state; newer rows and docs/RE_HANDOFF.md identify
-which older measurements were superseded. Historical `.analysis/...` paths are provenance labels; `.analysis/` is
-disposable and referenced scratch may have been pruned after its conclusion was
-recorded here. Live recovery state belongs in `docs/RE_HANDOFF.md`; compact
-current local metrics, when retained, live under `.analysis/gpt-web/current/`.
+which older measurements were superseded. Historical `.analysis/...` paths are
+provenance labels; `.analysis/` is disposable and referenced scratch may have
+been pruned after its conclusion was recorded here. Live recovery state belongs
+in `docs/RE_HANDOFF.md`; archived campaign detail is in
+`docs/RE_CAMPAIGN_NOTES_2026-10-02.md`.
 
 Cross-game promotion is a later Factory review, never an automatic game action.
 
