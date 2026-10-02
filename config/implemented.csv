@@ -394,6 +394,7 @@ CWaveFile::Read
 EnemyEnableBombShield
 SoundPlayerView::GetFmtIndexByName
 SoundPlayerView::ReopenBgm
+SoundPlayerView::LoadBgm
 SoundPlayerView::StopBgm
 CSound::Unpause
 AnmVmTimerView::SetCurrent

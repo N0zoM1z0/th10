@@ -129,16 +129,35 @@ Use this order unless new target evidence changes the dependency graph:
   the sound owner on the stack, uses the last `/` (or last `\\` if no slash),
   compares a 128-byte basename against 0x34-byte format rows, and falls back
   to index zero. Three direct callers are `0x0043D790`, `0x0043D7D0`, and
-  `0x0043DDF0`. The non-streaming branch of source-absent `0x0043D950`
+  `0x0043DDF0`. The non-streaming branch of `0x0043D950`
   tail-jumps to `ReopenBgm` with EAX owner and ECX path from the indexed
   `+0x4108` name buffer. This corrects the old unresolved path ABI in the
   ledger. The selected `/GL` graph still emits lookup 216/227 and ReopenBgm
   63/55 bytes, so their caller/WPO context remains open. Five affected
-  existing exact units cold-replay 564/564 bytes; the next useful Sound route
-  is its source-absent 298-byte indexed-BGM caller, not another standalone
-  ReopenBgm profile probe. The unresolved selected PE/map/PDB are frozen below
+  existing exact units cold-replay 564/564 bytes; the next useful Sound routes
+  are its source-absent 1419-byte queue caller and 651-byte memory-stream
+  helper; the indexed-BGM source is described below. The unresolved selected
+  PE/map/PDB are frozen below
   `build/analysis-sound-getfmt-selected/` (PE SHA-256
   `ca003b9d664915a3ce7a40ce002618e3c43b6f8cb88aacf59f565d236c0ba122`).
+- Indexed BGM `SoundPlayerView::LoadBgm @ 0x0043D950` now has a natural
+  maintained source candidate and a tracking mapping. Hash-attested target
+  code receives the manager in ESI and index in EAX, checks the manager,
+  supervisor byte at +0x13B and DirectSound handle, then either tail-jumps to
+  `ReopenBgm` with the indexed +0x4108 name or creates an event/thread and a
+  stream from the +0x1E80/+0x1EC0/+0x1F00/+0x1F40 preload arrays. The
+  0x0044CBF0 helper's own target body confirms memory-data, allocation-size,
+  format, GUID, 16 notifications, aligned notify size and event inputs.
+  Source layout assertions cover all used offsets. A selected `/GL` graph
+  rooted at `LoadBgm` with ZWave support emits 317/298 bytes for this owner;
+  lookup and ReopenBgm remain 216/227 and 63/55. The source-absent 1419-byte
+  queue caller `0x0043DDF0` and 651-byte stream helper `0x0044CBF0` still
+  prevent a target-shaped private ABI graph. No new exact bytes were credited.
+  The same five affected existing exact units cold-replay 564/564 bytes. The
+  focused diagnostic and replay reports are under
+  `.analysis/gpt-6.1-sol/20261002-sound-getfmt/`; the frozen selected
+  PE/map/PDB are below `build/analysis-sound-loadbgm-selected/` (PE SHA-256
+  `46d5668b37a751a76468d7e2496098db266b350f44f196269138302d7fcfdc65`).
 - `AnmRenderManagerView::SetupVertexBuffer @ 0x004462F0` is now canonical
   exact at 472 bytes. The maintained natural source uses target-supported
   three-float/raw-dword views for the independent background-vertex mirror and
