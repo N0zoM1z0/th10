@@ -1,5 +1,6 @@
 #include "Enemy.hpp"
 #include "EclVm.hpp"
+#include "GameScoreState.hpp"
 #include "PlayerCollision.hpp"
 
 #include <math.h>
@@ -300,9 +301,8 @@ void EnemySpawnDeathEffect(
     const PlayerFloat3 *position, void *resource, int scriptId);
 void EnemySpawnItem(
     const PlayerFloat3 *position, int itemType, int owner, float angle, float speed);
-void EnemyDropItemCounts(
+void EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock);
-void EnemyPlaySound(int soundId);
 
 extern "C" void __stdcall EnterCriticalSection(EnemyCriticalSectionView *section);
 extern "C" void __stdcall LeaveCriticalSection(EnemyCriticalSectionView *section);
@@ -1678,9 +1678,9 @@ int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy)
             2.2f);
     }
 
-    EnemyDropItemCounts(&runtime->worldMotion.position, &runtime->itemDropType);
+    EnemyDropItemCountsCore(&runtime->worldMotion.position, &runtime->itemDropType);
     runtime->itemDropType = 0;
-    EnemyPlaySound(10);
+    g_GameScoreState.ExtendFaithTimer(10);
     return 1;
 }
 

@@ -860,3 +860,5 @@ ItemManagerView::~ItemManagerView,0x0041ADF0,function
 GameCreateItemManager,0x0041AED0,function
 ItemManagerView::ConvertPowerItems,0x0041BA50,function
 ItemManagerView::Spawn,0x0041BB00,function
+EnemyDropItemCounts,0x0040C9A0,function
+EnemyDropItemCountsCore,0x0040C9D0,function

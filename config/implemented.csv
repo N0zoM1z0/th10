@@ -859,3 +859,5 @@ ItemManagerView::~ItemManagerView
 GameCreateItemManager
 ItemManagerView::ConvertPowerItems
 ItemManagerView::Spawn
+EnemyDropItemCounts
+EnemyDropItemCountsCore

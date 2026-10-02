@@ -1100,7 +1100,7 @@ struct EnemyDropVectorView
     }
 };
 
-static __declspec(noinline) void EnemyDropItemCountsCore(
+__declspec(noinline) void EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock)
 {
     int *counts = itemDropBlock + 1;

@@ -34,14 +34,14 @@ MCP. Attest the read-only local project with
 `scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
 focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-02): 1,731 reviewed candidates, 855 source
-mappings, 1,088 canonical exact functions and 102,810 canonical exact `.text`
-bytes. Confirmed authored ownership is 265,784 bytes; authored exact bytes are
-37,235. The authored source-present exact backlog is137 functions. The latest
-Item dependency batch adds four complete helper sources and172 exact bytes.
-Shared state+8 is now a signed short power field, correcting the unsupported
-highScore label. Windows i386 product/runtime closure remains open; these
-bounded claims do not imply a full product build or runtime.
+Current ledger checkpoint (2026-10-02): 1,732 reviewed candidates, 863 source
+mappings, 1,090 canonical exact functions and 102,948 canonical exact `.text`
+bytes. Confirmed authored ownership is 265,810 bytes; authored exact bytes are
+37,235 (14.0%). The authored source backlog is143 functions. The two Item record
+lifecycle exact units add138 overall bytes but have indeterminate origin. The
+latest drop-helper mappings add551 authored source-present bytes without exact
+credit. Windows i386 product/runtime closure remains open; these bounded claims
+do not imply a full product build or runtime.
 
 ## Current roadmap
 
@@ -931,13 +931,32 @@ The current Item lifecycle checkpoint is
   controls; do not use their guards or live addresses as current production
   evidence. Native product/runtime gates remain open; semantic/port not started.
 
-Next review the13 real Spawn target call sites and restore the missing manager
-argument currently hidden behind opaque EnemySpawnItem contracts before using
-an expanded caller graph to investigate Spawn/ConvertPowerItems ABI and ANM
-creator inlining. Allocation registration outlining and Game teardown are
-separate unresolved context seams. Current totals:1732 candidates,861 mappings,
-1090 canonical exact units,102948 overall exact bytes; authored exact37235 /
-265810 reviewed authored bytes. The95% objective remains active.
+The latest Item caller/drop checkpoint is
+`.analysis/gpt-6.1-sol/20261002-item-spawn-branch/` (ITEM-018):
+
+- The 13 direct Spawn target calls are spread across Bullet (2), the Enemy ECL
+  drop wrapper/core (2), Enemy finalization (1), Item conversion (1),
+  EnemyLaser collision owners (6), and Player update (1). The old handoff
+  claim that all were hidden behind EnemySpawnItem was incorrect.
+- The 48-byte ECL wrapper0x40C9A0 has one ECL caller and calls the503-byte core
+  at0x40C9D0. EnemyFinalizeDeath directly calls that core after its own first
+  Spawn, then calls exact GameScoreStateView::ExtendFaithTimer(10), not sound10.
+  Maintained source and two ledger mappings now reflect that target graph.
+  Both helpers remain non-exact, with unknown private ABI/TU ownership.
+- A source-copy Spawn branch trial with normal-slot early return and separated
+  script/color tails reaches823/819 bytes and306/747 comparable agreement,
+  with four target-like returns. Timer::Initialize lowers that agreement to
+  182/748. Neither is canonical; retained trial sources and reports identify
+  the remaining ANM call-register and scheduling differences.
+- Focused exact replay passes all45 affected units/2692 bytes across12
+  artifacts for changed Enemy/EnemyEclDispatcher sources. The two normal COFF
+  operand resolvers retain byte/relocation equality after compiler-local label
+  renumbering. See affected-replay.json for full result.
+
+Next resolve the remaining Spawn ANM call setup and natural source shape using
+the target call sites, then expand the true Item/Enemy/Bullet/EnemyLaser/Player
+graph only where it changes codegen. Allocation registration outlining and
+Game teardown are separate context seams. The95% objective remains active.
 
 The previous Item dependency checkpoint is
 `.analysis/gpt-6.1-sol/20261002-item-dependencies/` (ITEM-011/012/013/014):
