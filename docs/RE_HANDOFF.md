@@ -141,7 +141,7 @@ normalized byte score is not exactness.
 | Owner | Current live frontier |
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Retained 2026-10-01 four-source `/GS` case-order graph: target 14,416 bytes, candidate 14,228 bytes, 820/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,572, suffix 43/43. The owner remains non-exact. |
-| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-082 selected diagnostic graph: 9,964-byte PDB contribution; 2,839/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. The retained `short interruptSentinel` reproduces the target's direct 16-bit opcode comparison; the remaining fallback comparison sign-extends that short against the target's 32-bit interrupt argument lane. |
+| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-083 selected diagnostic graph: 9,964-byte PDB contribution; 1,646/8,599 whole-owner normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. An int sentinel with an explicit short cast only at the opcode comparison restores both interrupt comparison widths. The 203-byte STOP span agrees on all 187 structural comparable bytes; case-aligned agreement improves to 5,324/8,069. Neither interior result grants canonical exactness. |
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-047: 7,020/7,020; pre-table 6,692/6,692; 931/6,264 normalized comparable bytes; all 59 physical groups retain target order and 56 have target-sized spans. Sum of absolute case-gap deltas falls from 154 to 10 bytes. Case-aligned diagnostics improve from 4,021/5,769 to 5,359/5,730; these are not exact bytes. `StartSubroutine` stays 551/550 and 329/534. |
 
 The current campaign artifacts are under
@@ -307,9 +307,44 @@ After any ECL edit:
 
 ## ANM executor: current recovery point
 
+ANM-083 supersedes ANM-082's short-only sentinel checkpoint. Fresh read-only
+Ghidra and target bytes show `CMP CX,DI` for the opcode and
+`CMP [ESI+8],EDI` for the 32-bit fallback argument. The maintained sentinel is
+now int, with an explicit short cast only in the opcode comparison. This removes
+the candidate's fallback MOV/load/sign-extension sequence and recovers the
+complete 203-byte STOP physical span: all 187 normalized structural comparable
+bytes agree, and the interior scanner `0x0043F635-0x0043F65F` reproduces all 43
+raw bytes. These interior diagnostics have no exactness acceptance authority.
+
+The selected graph remains 9,964 bytes with a `0xFC` frame, 9,588-byte pre-table,
+92 physical groups in target order and 85 EDI restores. Whole-owner agreement
+falls from 2,839 to 1,646/8,599 because following destinations move by five
+bytes; case-aligned agreement improves from 5,188/8,073 to 5,324/8,069, and the
+sum of absolute physical-span deltas drops from 298 to 288. Preserve the recovered
+comparison widths instead of choosing solely by the whole-owner score.
+
+The final source-scoped cold replay passes all 103 configured AnmManager units
+across 20 artifacts for 18,879/18,879 bytes. Reusing its fresh canonical
+SetupVertexBuffer artifact reproduces the same non-exact ExecuteScript frontier.
+The pinned encoded-ESP diagnostic pairs 68 complete instruction layouts and 66
+stack operands, with 51 literal displacement differences; these are fields, not
+distinct locals or a dataflow claim. A target self-comparison pairs all 92
+layouts with zero differences. The separate 21-byte GetVm private-ABI seam also
+passes a focused cold replay. Canonical coverage is unchanged.
+
+New negative probes under this mixed-width shape: boolean-not FLIP assignments
+and const/mutable F_SET value locals are byte-neutral. Raw FLIP masks still
+shrink the pre-table by 16 bytes and reduce case-aligned agreement, so they are
+reverted. F_SET's three stack accesses use target +0x58 versus candidate +0x98;
+the longer displacement encodings account for its 84/75-byte span. A named
+value alone does not move that home. The next ANM route is coupled float-local
+lifetimes and interpolation homes, while retaining both interrupt comparisons.
+
+Current artifacts: `.analysis/gpt-6.1-sol/20261002-anm-execute/`.
+
 ANM-069 is the retained **source/TU partition** checkpoint. ANM-070 is the
-selected **diagnostic graph** and supersedes ANM-069's 1,723-byte agreement
-score:
+historical **diagnostic graph**, before ANM-082/083, and supersedes ANM-069's
+1,723-byte agreement score:
 
 - the retained source/TU partition uses AnmManager.cpp as the primary TU with
   RandomMath.cpp and AnmVmCreate.cpp as support; the selected ANM-070 diagnostic
@@ -336,8 +371,8 @@ score:
 - ANM-070 adds AnmVmId.cpp to the diagnostic graph because target-exact
   AnmVmIdView::GetVm uses a private ESI receiver. The ABI-correct graph is
   1,676/8,599 while preserving the 9,964-byte owner, 0xFC frame,
-  9,588/9,588 pre-table and 92/92 selector order. This is the only score to use
-  for further allocator work;
+  9,588/9,588 pre-table and 92/92 selector order. This is a historical score;
+  use the fresh ANM-083 frontier above for further allocator work;
 - remaining open work is allocator coloring. Rebuild the saved-game-speed and
   F_MOD/F_COS/POSITION/SCALE slot map from the ABI-correct graph.
 

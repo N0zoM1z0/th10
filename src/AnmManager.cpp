@@ -3040,7 +3040,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
     AnmRawInstructionView *fallbackInterrupt;
     AnmVmView *createdChild;
     float savedGameSpeed;
-    short interruptSentinel;
+    int interruptSentinel;
 
     if (vm->currentInstruction == NULL)
         return 1;
@@ -3243,7 +3243,8 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             while (!((currentInstruction->opcode == ANM_OP_INTERRUPT_LABEL) &&
                      (vm->pendingInterrupt ==
                       currentInstruction->intArgs[0])) &&
-                   currentInstruction->opcode != interruptSentinel)
+                   currentInstruction->opcode !=
+                       static_cast<short>(interruptSentinel))
             {
                 if (currentInstruction->opcode == ANM_OP_INTERRUPT_LABEL &&
                     currentInstruction->intArgs[0] == interruptSentinel)
