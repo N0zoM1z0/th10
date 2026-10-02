@@ -253,47 +253,40 @@ static __forceinline void EvaluateFormatOperands(
     char *scratch = static_cast<char *>(malloc(0x400));
     scratch[0] = '\0';
 
-    int flagIndex = 1;
-    int metadataOffset = 0;
-    int valueWord = 6;
-    while (cursor != NULL) {
-        const char *percent = strchr(cursor, '%');
-        if (percent == NULL)
-            break;
+    if (cursor != NULL) {
+        int flagIndex = 1;
+        int metadataOffset = 0;
+        int valueWord = 6;
+        do {
+            const char *percent = strchr(cursor, '%');
+            if (percent == NULL)
+                break;
 
-        strcpy(scratch, cursor);
-        scratch[percent - cursor] = '\0';
-        const char conversion = percent[1];
-        switch (conversion) {
-        case '%':
-            cursor = percent + 2;
-            continue;
-        case 'd':
-        case 'f': {
-            const int inlineBytes = OperandInt(context->instruction, 0);
-            const char argumentType = *(
-                reinterpret_cast<const char *>(context->instruction)
-                + 0x14 + inlineBytes + metadataOffset);
-            if (argumentType == 'f' || argumentType == 'g') {
-                EclVmScalar value;
-                value.integer = reinterpret_cast<const int *>(context->instruction)[
-                    inlineBytes / 4 + valueWord];
-                context->ReadFloatValue(flagIndex, value.real);
-            } else {
-                context->ReadIntValue(
-                    flagIndex,
-                    reinterpret_cast<const int *>(context->instruction)[
-                        inlineBytes / 4 + valueWord]);
+            strcpy(scratch, cursor);
+            scratch[percent - cursor] = '\0';
+            const char conversion = percent[1];
+            if (conversion != '%' && (conversion == 'd' || conversion == 'f')) {
+                const int inlineBytes = OperandInt(context->instruction, 0);
+                const char argumentType = *(
+                    reinterpret_cast<const char *>(context->instruction)
+                    + 0x14 + inlineBytes + metadataOffset);
+                if (argumentType == 'f' || argumentType == 'g') {
+                    context->ReadFloatValue(
+                        flagIndex,
+                        reinterpret_cast<const float *>(context->instruction)[
+                            inlineBytes / 4 + valueWord]);
+                } else {
+                    context->ReadIntValue(
+                        flagIndex,
+                        reinterpret_cast<const int *>(context->instruction)[
+                            inlineBytes / 4 + valueWord]);
+                }
+                metadataOffset += 8;
+                valueWord += 2;
+                ++flagIndex;
             }
-            metadataOffset += 8;
-            valueWord += 2;
-            ++flagIndex;
-            break;
-        }
-        default:
-            break;
-        }
-        cursor = percent + 2;
+            cursor = percent + 2;
+        } while (cursor != NULL);
     }
     free(scratch);
 }

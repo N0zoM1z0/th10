@@ -142,7 +142,7 @@ normalized byte score is not exactness.
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Retained 2026-10-01 four-source `/GS` case-order graph: target 14,416 bytes, candidate 14,228 bytes, 820/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,572, suffix 43/43. The owner remains non-exact. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-082 selected diagnostic graph: 9,964-byte PDB contribution; 2,839/8,599 normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. The retained `short interruptSentinel` reproduces the target's direct 16-bit opcode comparison; the remaining fallback comparison sign-extends that short against the target's 32-bit interrupt argument lane. |
-| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-046: 7,020/7,020; pre-table 6,692/6,692; 975/6,264 normalized comparable bytes; target physical group order retained. `StartSubroutine` is 551/550 and 329/534 after recovering the target loop-register lifetimes. |
+| `EclVmContext::Run @ 0x0044E1A0` | ECLVM-047: 7,020/7,020; pre-table 6,692/6,692; 931/6,264 normalized comparable bytes; all 59 physical groups retain target order and 56 have target-sized spans. Sum of absolute case-gap deltas falls from 154 to 10 bytes. Case-aligned diagnostics improve from 4,021/5,769 to 5,359/5,730; these are not exact bytes. `StartSubroutine` stays 551/550 and 329/534. |
 
 The current campaign artifacts are under
 `.analysis/gpt-6.1-sol/20261002-ecl-start/`. They are convenience snapshots, not
@@ -153,7 +153,15 @@ acceptance authority.
 Current retained source facts:
 
 - `Run` remains 7,020/7,020 with a 6,692/6,692 pre-table span and target physical
-  opcode-group order.
+  opcode-group order. ECLVM-047 retains the target-observed guarded format loop
+  and directly reads float operands instead of materializing a union temporary.
+  This repairs the large arithmetic/comparison span drift: 56/59 case spans
+  now have target lengths, with only JUMP -2, FORMAT +6 and shared NOP/advance
+  -2 remaining. The full-owner diagnostic decreases from 975 to 931/6,264
+  because most middle destinations remain displaced by two bytes; independently
+  aligning physical cases improves diagnostic agreement from 4,021/5,769 to
+  5,359/5,730. Neither diagnostic grants exactness. The table reporter now
+  exposes aggregate span and destination counts alongside its existing rows.
 - `EclVmContext::StartSubroutine @ 0x0044DF70` is now 551/550 with
   329/534 normalized comparable bytes in the selected graph (fresh starting
   HEAD was 151/534). An argument-count guard scopes both loop locals to the
@@ -169,14 +177,18 @@ Current retained source facts:
 - `ReadInt @ 0x0044FDB0` remains 144/144 with four ordinary comparable bytes
   open. The target reuses ESI for the second typed-stack decrement; the current
   candidate materializes ECX instead.
-- Format opcode 0x1E and the four float arithmetic cases are allocator-coupled.
-  Target-shaped format guards can make all four arithmetic spans target-sized
-  while worsening the total owner; do not tune those cases independently.
-- Fresh stack-slot tracing shows the current runner mismatch is a whole-function
-  coloring chain: target 0x0D uses `ESP+0xFC` while the candidate uses `+0xF4`,
-  and the displaced local sequence propagates through arithmetic, comparisons
-  and trig cases. Arithmetic interleaving improves byte agreement but breaks
-  target physical handler order, so it is diagnostic only.
+- Format opcode 0x1E and the arithmetic/comparison cases are allocator-coupled.
+  ECLVM-047 supersedes the old guard rejection for the combined guarded loop,
+  conversion conditional and direct float read. A guard alone still regresses.
+  The former ECLVM-038 displaced stack-home chain is largely repaired in this
+  combination; remaining ordinary stack/register differences stay open.
+  Arithmetic interleaving still breaks target physical handler order.
+- New target machine-code review corrects Ghidra's provisional byte-sized format
+  counter: the target initializes EBX=1, increments EBX, and passes the full
+  register. Keep the source counter as int. Target format state uses EBX for
+  flagIndex, EBP for valueWord, and stack homes +0x10/+0x14/+0x18 for percent,
+  scratch and metadataOffset. The candidate instead retains percent in EBP,
+  valueWord in EBX and spills flagIndex at +0x34; this is the next allocator gap.
 - The remaining StartSubroutine gaps are now localized: argument/value-offset
   initialization scheduling, integer-source conversion block order, float-argument
   load register, and post-loop EBP=caller / EDX=4 versus target EDX=caller /
@@ -193,9 +205,9 @@ Current retained source facts:
   promoted to ESI). Equal-sized pointer-slot/ternary alternatives retain the
   wrong return-state CFG and must not be selected solely for their 550 bytes.
 - Campaign state is **active-incomplete**. Canonical exact totals have not
-  increased; the 95% objective remains open. The next bounded route is the
-  integer-conversion and return-state allocation gaps above, then the Run x87
-  stack-coloring chain.
+  increased; the 95% objective remains open. The next bounded route is Run's
+  format-state allocation and JUMP/advance cursor lifetimes, followed by the
+  remaining StartSubroutine integer-conversion and return-state gaps.
 
 Closed ECL directions that should not be repeated without new evidence:
 
@@ -223,6 +235,16 @@ Closed ECL directions that should not be repeated without new evidence:
   major codegen regressions;
 - format-parser declaration permutations and direct arithmetic-local ordering
   probes do not independently solve the whole-function allocator problem.
+- On ECLVM-047, refreshing current at JUMP or using a scoped cursor local
+  shrinks Run to 6,948 bytes; reading both operands through instructionCursor
+  gives 6,956. All retain SpawnThread's diagnostic ABI seam but regress the
+  runner and are reverted. The prior jump-reload rejection remains valid for
+  these newly tested combinations too.
+- Primitive-to-union arithmetic storage is byte-neutral. Format byte/char
+  counters, early cursor advancement, mutable cursor parsing, outer percent
+  scope and a prefix helper do not improve the retained combined candidate.
+  StartSubroutine conversion continues, return-state inline helpers and
+  argument-index declarations inside the guard do not improve ECLVM-046.
 
 - the earlier unguarded-loop `sizeof(preservedValue) + 8` probe is a
   context-specific negative: the helper fell to 541/550 and 137/534 normalized

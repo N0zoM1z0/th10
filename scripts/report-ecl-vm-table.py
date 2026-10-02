@@ -173,6 +173,11 @@ def candidate_case_layout(
         ),
         "target_physical_order": target_physical_order,
         "candidate_physical_order": candidate_physical_order,
+        "absolute_case_gap_delta": sum(abs(row["gap_delta"]) for row in rows),
+        "equal_case_span_count": sum(row["gap_delta"] == 0 for row in rows),
+        "aligned_destination_count": sum(
+            row["relative_delta"] == 0 for row in rows
+        ),
         "case_rows": rows,
     }
 
