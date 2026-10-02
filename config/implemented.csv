@@ -853,3 +853,9 @@ ItemPowerDisplayOwnerView::UpdatePowerDisplay
 GameScoreStateView::ExtendFaithTimer
 ItemPopupOwnerView::EmitValuePopup
 GameScoreStateView::AddPower
+ItemRecordView::ItemRecordView
+ItemRecordView::~ItemRecordView
+ItemManagerView::~ItemManagerView
+GameCreateItemManager
+ItemManagerView::ConvertPowerItems
+ItemManagerView::Spawn

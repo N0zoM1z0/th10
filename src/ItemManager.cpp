@@ -1,5 +1,7 @@
 #include <stddef.h>
 #include <math.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "AnmManager.hpp"
 #include "GameScoreState.hpp"
@@ -116,11 +118,14 @@ struct FpsSampleGateView
 
 struct ItemRecordView
 {
+    ItemRecordView() {}
+    ~ItemRecordView() {}
+
     AnmVmView vm;
     AnmFloat3View worldPosition;
     ItemVectorView velocity;
-    unsigned char unknown3C4[4];
-    GameScoreTimerView timer;
+    int unknown3C4;
+    AnmVmTimerView timer;
     int active;
     int kind;
     int spriteKind;
@@ -131,17 +136,22 @@ struct ItemRecordView
 struct ItemChainElementView;
 struct ItemManagerView
 {
-    unsigned char unknown000[0x08];
+    unsigned int flags;
+    unsigned char unknown004[4];
     ItemChainElementView *updateCallbackNode;
     ItemChainElementView *drawCallbackNode;
     unsigned char unknown010[4];
     ItemRecordView items[0x896];
     int animatedItemCount;
-    int unknown21CEB8;
-    int value21CEBC;
+    int delayedItemCursor;
+    int delayedSpawnRequests;
 
+    ItemManagerView();
+    ~ItemManagerView();
     int Draw();
     int ConvertPowerItems();
+    int Spawn(const AnmFloat3View *position, int kind, unsigned int color,
+        float angle, float magnitude);
     static int __fastcall OnUpdate(ItemManagerView *manager);
     static int __fastcall OnDraw(ItemManagerView *manager);
 };
@@ -171,6 +181,9 @@ typedef char ItemRecordDelayAt3EC[
     (offsetof(ItemRecordView, delayFrames) == 0x3ec) ? 1 : -1];
 typedef char ItemManagerAnimatedCountAt21CEB4[
     (offsetof(ItemManagerView, animatedItemCount) == 0x21ceb4) ? 1 : -1];
+typedef char ItemManagerDelayedCursorAt21CEB8[
+    (offsetof(ItemManagerView, delayedItemCursor) == 0x21ceb8 &&
+     offsetof(ItemManagerView, delayedSpawnRequests) == 0x21cebc) ? 1 : -1];
 typedef char ItemManagerViewSizeIs21CEC0[
     (sizeof(ItemManagerView) == 0x21cec0) ? 1 : -1];
 
@@ -373,7 +386,7 @@ int __stdcall ItemManagerUpdateBody(ItemManagerView *manager)
     int convertPowerItems = 0;
     int pickupScore;
     int rankDelta;
-    manager->value21CEBC = 0;
+    manager->delayedSpawnRequests = 0;
     manager->animatedItemCount = 0;
     ItemRecordView *item = &manager->items[0];
     for (int remaining = 0x896; remaining != 0; --remaining, ++item)
@@ -744,4 +757,202 @@ int __fastcall ItemManagerView::OnDraw(ItemManagerView *manager)
     if (gate != NULL && (gate->flags58 & 4) != 0)
         return 1;
     return manager->Draw();
+}
+
+// The allocation at0x41AED0 constructs every record before clearing the
+// complete manager. This intentionally also clears the timer flags just
+// initialized by the member constructors. No original class name is claimed.
+ItemManagerView *g_ItemManager;
+
+ItemManagerView::ItemManagerView()
+{
+    memset(this, 0, sizeof(ItemManagerView));
+    flags |= 2u;
+    g_ItemManager = this;
+}
+
+struct ItemCriticalSectionView { unsigned char storage[0x18]; };
+extern ItemCriticalSectionView g_ItemCallbackCriticalSection; // 0x492274
+extern unsigned char g_ItemCallbackLockDepth; // 0x49231C
+extern void ItemUnlinkCallbackNode(ItemChainElementView *node, void *owner);
+
+static void RemoveItemCallbackNode(ItemChainElementView *node)
+{
+    void *owner = g_ItemCallbackChainOwner;
+    if (node == NULL)
+        return;
+    EnterCriticalSection(&g_ItemCallbackCriticalSection);
+    ++g_ItemCallbackLockDepth;
+    ItemUnlinkCallbackNode(node, owner);
+    LeaveCriticalSection(&g_ItemCallbackCriticalSection);
+    --g_ItemCallbackLockDepth;
+}
+
+// Target0x41ADF0 removes both callbacks, clears the published manager and
+// destroys all896 records. The caller owns the allocation release.
+ItemManagerView::~ItemManagerView()
+{
+    RemoveItemCallbackNode(updateCallbackNode);
+    RemoveItemCallbackNode(drawCallbackNode);
+    g_ItemManager = NULL;
+}
+
+void *GameCreateItemManager()
+{
+    ItemManagerView *manager = new ItemManagerView;
+    // The target calls registration even if operator new returns NULL.
+    if (ItemManagerRegisterCallbacks(manager) != 0)
+    {
+        if (manager != NULL)
+        {
+            manager->~ItemManagerView();
+            free(manager);
+        }
+        return NULL;
+    }
+    return manager;
+}
+
+int ItemManagerView::ConvertPowerItems()
+{
+    ItemRecordView *item = &items[0];
+    for (int remaining = 150; remaining != 0; --remaining, ++item)
+    {
+        if (item->active == 0 || (item->kind != 1 && item->kind != 4))
+            continue;
+        item->active = 0;
+        int kind = item->kind;
+        if (kind == 1)
+            kind = 9;
+        else if (kind == 4)
+            kind = 9;
+        else if (kind == 10 || kind == 11)
+            kind = 5;
+        else
+            continue;
+        // The last conversion arm is retained in the target despite the
+        // preceding predicate excluding those values.
+        Spawn(&item->worldPosition, kind, 0xffffffffu, -1.5707964f, 2.2f);
+        g_EnemyPrimaryResourceOwner->primaryEnemyResource->
+            CreateVmAtWorldVariant0(0x189, &item->worldPosition);
+    }
+    return 0;
+}
+
+// Complete0x41BB00 owner:793 body bytes plus26 bytes of table alignment,
+// three absolute jump slots and the eleven-byte kind selector. The normal
+// pool is150 records; kind8 uses the following2048-record ring.
+int ItemManagerView::Spawn(const AnmFloat3View *position, int kind,
+    unsigned int color, float angle, float magnitude)
+{
+    if (kind == 8)
+    {
+        ItemRecordView *item = &items[150 + delayedItemCursor];
+        ++delayedSpawnRequests;
+        if (item->active == 0)
+        {
+            if (delayedSpawnRequests >= 1024)
+                item->delayFrames = delayedItemCursor % 32 + 16;
+            else if (delayedSpawnRequests >= 512)
+                item->delayFrames = delayedItemCursor % 16 + 8;
+            else if (delayedSpawnRequests >= 256)
+                item->delayFrames = delayedItemCursor % 8 + 4;
+            else
+                item->delayFrames = delayedItemCursor % 4;
+            item->kind = 8;
+            item->spriteKind = 8;
+            item->active = 5;
+            item->worldPosition = *position;
+            item->velocity.FromAngleMagnitude(angle, magnitude);
+            item->velocity.z = 0.0f;
+            if ((item->timer.flags & 1u) == 0)
+            {
+                item->timer.current = 0;
+                item->timer.previous = -999999;
+                item->timer.subframe = 0.0f;
+                item->timer.scale = &g_PlayerTimerScale;
+                item->timer.flags |= 1u;
+            }
+            item->timer.current = 0;
+            item->timer.subframe = 0.0f;
+            item->timer.previous = -1;
+            item->unknown3C4 = 0;
+        }
+        delayedItemCursor = (delayedItemCursor + 1) % 2048;
+        return 0;
+    }
+
+    ItemRecordView *item = &items[0];
+    int index = 0;
+    while (item->active != 0)
+    {
+        ++index;
+        ++item;
+        if (index >= 150)
+            return 0;
+    }
+    item->active = 1;
+    item->worldPosition = *position;
+    if (item->worldPosition.x < -192.0f)
+        item->worldPosition.x = -192.0f;
+    else if (item->worldPosition.x >= 192.0f)
+        item->worldPosition.x = 192.0f;
+    item->velocity.FromAngleMagnitude(angle, magnitude);
+    item->velocity.z = 0.0f;
+    if ((item->timer.flags & 1u) == 0)
+    {
+        item->timer.current = 0;
+        item->timer.previous = -999999;
+        item->timer.subframe = 0.0f;
+        item->timer.scale = &g_PlayerTimerScale;
+        item->timer.flags |= 1u;
+    }
+    item->timer.current = 0;
+    item->timer.subframe = 0.0f;
+    item->timer.previous = -1;
+    item->unknown3C4 = 0;
+    if (g_PlayerPower >= 100)
+    {
+        switch (kind)
+        {
+        case 1:
+        case 4:
+            kind = 9;
+            break;
+        case 10:
+        case 11:
+            kind = 5;
+            break;
+        }
+    }
+    // This tests the inactive record's old kind, before installing the new
+    // kind. Both target call sites use the real world-position VM creator.
+    if (item->kind == 3)
+    {
+        g_EnemyPrimaryResourceOwner->primaryEnemyResource->
+            CreateVmAtWorldVariant0(0x189, &item->worldPosition);
+    }
+    item->kind = kind;
+    item->spriteKind = kind;
+    if (kind == 10)
+    {
+        item->spriteKind = 1;
+        item->vm.InitializeForLoadedScript(
+            g_EnemyPrimaryResourceOwner->primaryEnemyResource, 0x177);
+    }
+    else
+    {
+        int script;
+        if (kind == 11)
+        {
+            item->spriteKind = 4;
+            script = 0x17a;
+        }
+        else
+            script = kind + 0x176;
+        item->vm.InitializeForLoadedScript(
+            g_EnemyPrimaryResourceOwner->primaryEnemyResource, script);
+    }
+    item->vm.primaryColor.value = color;
+    return 0;
 }

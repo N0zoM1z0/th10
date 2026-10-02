@@ -885,7 +885,61 @@ The preceding ItemManager checkpoint is `.analysis/gpt-6.1-sol/20261002-item-upd
   296/281. These complete-owner diagnostics grant no exactness. Do not infer
   target ownership from an equal-sized window or force register conventions.
 
-The current Item dependency checkpoint is
+The current Item lifecycle checkpoint is
+`.analysis/gpt-6.1-sol/20261002-item-codegen/` (ITEM-015/016/017):
+
+- Full natural source now covers allocation185, manager destructor216,
+  ConvertPowerItems165 and Spawn819, plus the record constructor/destructor.
+  ItemManager source completeness passes15/15 authored owners and4443/4443
+  bytes. Original declarations/TU and runtime remain independent.
+- Spawn has150 normal slots and2048 delayed kind8 slots. Delayed request
+  count/cursor advance even on a busy row; signed modulo and delay thresholds
+  256/512/1024 are retained. Normal rows clamp X; full-power conversion,
+  old-kind3 effect, actual world-VM creator and script/color paths are restored.
+- Complete Spawn physical ownership is793 body +3 alignment +12 jump table
+  +11 selector =819 bytes through0x41BE32. All three destinations are internal;
+  thirteen CC bytes precede independent code0x41BE40. The newly inventoried
+  constructor104 ends0x41AD57, with eight CC bytes before the existing dtor.
+  The unreferenced code at41BE40/41BE70 has not received origin/exact credit.
+- Real AnmVmTimerView member construction gives record ctor104 raw-equal;
+  manual body flag clearing gives86/104 diagnostic agreement because the
+  invalid-sprite store moves. Record dtor34 is exact with free REL32 offsetF
+  bound directly to0x452422. Both pass two independent pinned /GL cold links
+  rooted at actual GameCreateItemManager with AnmManager support. Omitted
+  relocation and shortened extent negative controls fail closed.
+- Canonical item-record-constructor/destructor add138 overall exact bytes.
+  Authorship remains indeterminate, so authored exact bytes do not increase.
+  The two image hashes are
+  e53bbb8d8cca459d7d79449e6da5ebe3a3b4c8b6253e40b6de51b087d628c21a and
+  150cb4042bffa0f4c3d48d8fab19acceff7b513a9a991273067bfa2c760b2cbc,
+  with distinct PDB GUIDs. Canonical output is
+  build/match-linked/ItemRecordLifecycle-cold-2.
+- Ten prior affected canonical units across five artifacts pass545/545 bytes
+  under final physical source. Only ItemManager.cpp changes physically among
+  code/header inputs; no whole-TH10 cold replay is performed. Use
+  affected-replay.json and final-lifecycle-input-hashes.json for current hashes.
+- Full Item-plus-Anm diagnostic: Spawn795/819 naturally has EAX manager,
+  ECX position and RET16, but its branch/tail layout differs; allocation122/185
+  outlines construction and folds registration's known-zero return; manager
+  dtor197/216 uses private EBX/plain RET; conversion289/165 uses stack owner/
+  RET4 and inlines world-VM creation. Update2228/2320, power224/166, popup171/167
+  and world creator116/118 remain non-exact. Source presence is not ABI closure.
+- Guarded-do popup controls do not change existing geometry. Power-notice
+  pointer capture changes two diagnostic bytes; /Ob1 gives163/166 with wrong
+  geometry. These are negative controls, retained as reports and source patches.
+- Previous coupled images bind older Item source. They remain historical
+  controls; do not use their guards or live addresses as current production
+  evidence. Native product/runtime gates remain open; semantic/port not started.
+
+Next review the13 real Spawn target call sites and restore the missing manager
+argument currently hidden behind opaque EnemySpawnItem contracts before using
+an expanded caller graph to investigate Spawn/ConvertPowerItems ABI and ANM
+creator inlining. Allocation registration outlining and Game teardown are
+separate unresolved context seams. Current totals:1732 candidates,861 mappings,
+1090 canonical exact units,102948 overall exact bytes; authored exact37235 /
+265810 reviewed authored bytes. The95% objective remains active.
+
+The previous Item dependency checkpoint is
 `.analysis/gpt-6.1-sol/20261002-item-dependencies/` (ITEM-011/012/013/014):
 
 - Full source now covers power digit display0x4054B0, capped faith timer
@@ -934,12 +988,10 @@ The current Item dependency checkpoint is
   controls. Use the current `final-input-hashes.json` and refreshed PDB/map for
   live addresses, rather than invoking an old guard against changed inputs.
 
-Next investigate AddPower's source declaration/VM-creator inlining and popup
-branch/counter lifetimes in real caller context, or recover Item spawn/cleanup
-owners. Current exact totals are1,088 units,102,810 overall and37,235 authored
-bytes out of265,784 reviewed authored bytes; source mappings total855. The95%
-objective remains open. Native product/runtime, semantic and port gates remain
-open/not started.
+Historical dependency checkpoint totals were1,088 exact units,102,810 overall
+and37,235 authored exact bytes out of265,784 reviewed authored bytes, with855
+source mappings. The lifecycle checkpoint above supersedes these source hashes
+and totals; AddPower/popup exactness remains open.
 
 Query the target spell block directly:
 

@@ -496,6 +496,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041AC30,0x0041AC3B,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0041AC40,0x0041AC71,reviewed,medium,target-ida-leaf-review-2026-09-30,Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence.
 0x0041ACA0,0x0041ACA6,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
+0x0041ACF0,0x0041AD57,reviewed,high,target-item-lifecycle-extent-review-2026-10-02,Complete104-byte dense raw decode endsRET; vector-constructor callback pointer at0x41AF0C; eight CC bytes precede independent destructor0x41AD60.
 0x0041AD60,0x0041AD81,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=3; no overlap or external interior branch
 0x0041AD90,0x0041ADE3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041ADF0,0x0041AEC7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -505,7 +506,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041BA00,0x0041BA2F,reviewed,high,target-raw-gap-review-2026-09-24,Raw dense 48-byte decode ends in RET; entry is stored by callback registration at 0x0041AD92.
 0x0041BA30,0x0041BA4C,reviewed,high,target-raw-gap-review-2026-09-24,Raw dense 29-byte decode has early RET and tail JMP to 0x0041B8E0; entry is stored at 0x0041ADB5; followed by CC padding.
 0x0041BA50,0x0041BAF4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0041BB00,0x0041BE18,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=13; no overlap or external interior branch
+0x0041BB00,0x0041BE32,reviewed,high,target-item-lifecycle-extent-review-2026-10-02,"Complete793-byte executable body through0x41BE18 plus3-byte LEA alignment, three absolute jump slots0x41BE1C..27 and eleven selector bytes0x41BE28..32. Unsigned(kind-1)<=10 bounds selector values0/1/2; all slots reach internal instruction starts. Thirteen CC bytes precede independent code0x41BE40; no competing table ownership observed."
 0x0041BE80,0x0041BEAD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x0041BEB0,0x0041BECD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0041BEE0,0x0041BEE6,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

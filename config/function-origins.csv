@@ -496,9 +496,10 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041AC30,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0041AC40,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0041ACA0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
-0x0041AD60,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x0041ACF0,unknown,ItemManager,indeterminate,unknown,target-item-record-lifecycle-origin-indeterminate-2026-10-02
+0x0041AD60,unknown,ItemManager,indeterminate,unknown,target-item-record-lifecycle-origin-indeterminate-2026-10-02
 0x0041AD90,authored_game,ItemManager,authored,high,target-itemmanager-owner-recovery-2026-09-24
-0x0041ADF0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
+0x0041ADF0,authored_game,ItemManager,authored,high,target-item-manager-destructor-owner-2026-10-02
 0x0041AED0,authored_game,ItemManager,authored,high,target-itemmanager-owner-recovery-2026-09-24
 0x0041AFD0,authored_game,ItemManager,authored,high,target-itemmanager-owner-recovery-2026-09-24
 0x0041B8E0,authored_game,ItemManager,authored,high,target-raw-gap-review-2026-09-24

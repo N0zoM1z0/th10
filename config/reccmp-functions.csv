@@ -854,3 +854,9 @@ ItemPowerDisplayOwnerView::UpdatePowerDisplay,0x004054B0,function
 GameScoreStateView::ExtendFaithTimer,0x00412FF0,function
 ItemPopupOwnerView::EmitValuePopup,0x0042B9C0,function
 GameScoreStateView::AddPower,0x00418930,function
+ItemRecordView::ItemRecordView,0x0041ACF0,function
+ItemRecordView::~ItemRecordView,0x0041AD60,function
+ItemManagerView::~ItemManagerView,0x0041ADF0,function
+GameCreateItemManager,0x0041AED0,function
+ItemManagerView::ConvertPowerItems,0x0041BA50,function
+ItemManagerView::Spawn,0x0041BB00,function
