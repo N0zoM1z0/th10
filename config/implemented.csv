@@ -849,3 +849,7 @@ ItemManagerRegisterCallbacks
 ItemManagerUpdateBody
 ItemManagerView::Draw
 ItemManagerView::OnUpdate
+ItemPowerDisplayOwnerView::UpdatePowerDisplay
+GameScoreStateView::ExtendFaithTimer
+ItemPopupOwnerView::EmitValuePopup
+GameScoreStateView::AddPower

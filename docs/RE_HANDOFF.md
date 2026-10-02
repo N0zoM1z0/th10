@@ -34,14 +34,14 @@ MCP. Attest the read-only local project with
 `scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
 focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-02): 1,731 reviewed candidates, 851 source
-mappings, 1,086 canonical exact functions and 102,638 canonical exact `.text`
-bytes. Confirmed authored ownership is 265,784 bytes after complete switch and
-alignment reviews; authored exact bytes are 37,063. The authored source-present
-exact backlog is135 functions. This Item checkpoint adds four source mappings
-and48 exact callback bytes; the earlier seven-byte GameManager adapter remains
-origin-indeterminate. Windows i386 product closure remains open. These bounded
-claims do not imply a full product build or runtime.
+Current ledger checkpoint (2026-10-02): 1,731 reviewed candidates, 855 source
+mappings, 1,088 canonical exact functions and 102,810 canonical exact `.text`
+bytes. Confirmed authored ownership is 265,784 bytes; authored exact bytes are
+37,235. The authored source-present exact backlog is137 functions. The latest
+Item dependency batch adds four complete helper sources and172 exact bytes.
+Shared state+8 is now a signed short power field, correcting the unsupported
+highScore label. Windows i386 product/runtime closure remains open; these
+bounded claims do not imply a full product build or runtime.
 
 ## Current roadmap
 
@@ -839,7 +839,7 @@ The unmodified global `report-boundary-inventory.py --check-ledger` already
 failed before this correction at `0x00401100` because historical manual ledger
 evidence text differs from regenerated audit text. No broad ledger rewrite is
 performed; unrelated reviews and existing global audit diagnostics remain.
-The current ItemManager checkpoint is `.analysis/gpt-6.1-sol/20261002-item-update/`
+The preceding ItemManager checkpoint is `.analysis/gpt-6.1-sol/20261002-item-update/`
 (ITEM-007/008/009/010, PLAYER-032):
 
 - Full natural source now covers ItemManager update at `0x41AFD0`, its actual
@@ -885,15 +885,61 @@ The current ItemManager checkpoint is `.analysis/gpt-6.1-sol/20261002-item-updat
   296/281. These complete-owner diagnostics grant no exactness. Do not infer
   target ownership from an equal-sized window or force register conventions.
 
-The next bounded routes are the source-absent shared power/faith/popup callees
-and Item allocation/spawn/cleanup owners, or investigation of actual source
-partition and declaration evidence for Rebuild/ANM initialization. Keep the
-corrected Player dataflow and complete switch boundaries. Canonical exact
-credit increases by **48 bytes** in this checkpoint: 1,086 exact units,
-102,638 overall exact bytes and 37,063 authored exact bytes out of 265,784
-reviewed authored bytes. Source mappings total 851. The 95% objective remains
-open; native Windows i386 product/runtime closure, semantic and port gates
-remain open/not started.
+The current Item dependency checkpoint is
+`.analysis/gpt-6.1-sol/20261002-item-dependencies/` (ITEM-011/012/013/014):
+
+- Full source now covers power digit display0x4054B0, capped faith timer
+  extension0x412FF0, AddPower0x418930 and value popups0x42B9C0. Actual Item
+  calls use maintained member interfaces and real ANM SetSprite/Add/
+  MarkVmForDeletion/CreateVmVariant0 definitions. Original class/TU identities
+  and global data ownership remain unknown.
+- Shared score state+8 is signed short power, independently proved by the
+  target AddPower and Item reads. The old highScore label was unsupported and
+  unused; it is replaced with power and a neutral two-byte unknown at+0xA.
+  All reviewed faith/timer/rank offsets and the0x5C view size remain unchanged.
+- `item-power-display` and `game-score-extend-faith-timer` are newly canonical
+  exact: **79+93=172 bytes**, with three SetSprite REL32 fields and Add REL32/
+  game-speed DIR32 fields. Both pass two independent pinned `/GL` cold links
+  of Item plus real AnmManager, using actual registration as the entry. Natural
+  member declarations produce target RET4 and private receivers; no private
+  register annotation or compiler-profile workaround is used.
+- The two independent image hashes are
+  `1c78f0396d45c24f12f2c218b26d00fa91f0a502d0e82ae4578d786b6e220391`
+  and `c204ccf8975d753af065c8b4fb0e2be953bba55bb655d91631b1e3d76b76abc0`.
+  `helper-two-cold.json` and `retained-input-hashes.json` bind the receipts.
+- The changed header reaches only ItemManager, GameManager and ReplayManager
+  directly. Ten prior canonical units across six affected compiler artifacts
+  cold-replay **411/411 bytes**, including Replay support and both registered
+  callbacks. No whole TH10 cold replay is performed.
+- AddPower rejects power>=100, adds the signed short amount, clamps an
+  overshoot and replaces the managed power-notice VM, then compares the final
+  and reconstructed previous power/20 values. Its Item-plus-Anm candidate is
+  224/166 and RET8 with stack owner/amount; CreateVmVariant0 is inlined where
+  the target calls it. The expanded real graph is221/166. This is non-exact.
+- Value popups write a720-row0x40-byte pool beginning at owner+0x3C4, with
+  cursor+0x14, reversed decimal digits, negative sentinel10, color/position,
+  active/count bytes and timer reset. The maintained candidate is171/167 and
+  RET4 with42/163 diagnostic agreement. A separate positive-branch control
+  emits176/167 and73/163, changing loop/branch layout without closing the
+  owner; it is not adopted. No digit-prefix original array type is claimed.
+- The refreshed ten-TU `/GL /GS` control is
+  `build/analysis-item-dependencies-coupled/source.exe`, SHA
+  `01629c0fa5d4ebd40a2424776dae8b36442b2d799e5c1ca0662afa599ac82af6`.
+  Item update2244/2320, Rebuild2372/2520 plain RET, InitializeVm201/217 RET4,
+  spell2448/2432 and520/2016, and dispatcher14384/14416 and580/11544 remain
+  non-exact. Eight complete coupled seams still pass1444/1444 bytes, and the
+  spell call-count/scalar constraints pass. Helper structural scores remain
+  diagnostics; only the two strict canonical declarations grant new bytes.
+- The previous graph receipts bind older header/source hashes and are historical
+  controls. Use the current `final-input-hashes.json` and refreshed PDB/map for
+  live addresses, rather than invoking an old guard against changed inputs.
+
+Next investigate AddPower's source declaration/VM-creator inlining and popup
+branch/counter lifetimes in real caller context, or recover Item spawn/cleanup
+owners. Current exact totals are1,088 units,102,810 overall and37,235 authored
+bytes out of265,784 reviewed authored bytes; source mappings total855. The95%
+objective remains open. Native product/runtime, semantic and port gates remain
+open/not started.
 
 Query the target spell block directly:
 

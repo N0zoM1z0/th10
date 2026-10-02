@@ -19,7 +19,8 @@ struct GameScoreStateView
 {
     int unknown00;
     int score;
-    int highScore;
+    short power;
+    unsigned short unknown0A;
     int faith;
     int unknown10;
     GameScoreTimerView timer;
@@ -31,10 +32,14 @@ struct GameScoreStateView
     void SetFaith(int amount);
     void SetTimerCurrent(int value);
     void AddRank(int amount);
+    void ExtendFaithTimer(int amount);
+    int AddPower(short amount);
 };
 
 typedef char GameScoreStateFaithAt0C[
     (offsetof(GameScoreStateView, faith) == 0x0c) ? 1 : -1];
+typedef char GameScoreStatePowerAt08[
+    (offsetof(GameScoreStateView, power) == 0x08) ? 1 : -1];
 typedef char GameScoreStateTimerAt14[
     (offsetof(GameScoreStateView, timer) == 0x14) ? 1 : -1];
 typedef char GameScoreStateRankAt58[

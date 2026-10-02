@@ -216,7 +216,22 @@ struct ItemAutoCollectGateView
     int value28;
 };
 struct ItemPopupOwnerView;
-struct ItemPowerDisplayOwnerView;
+struct ItemPowerDisplayOwnerView
+{
+    unsigned char unknown0000[0x6a8c];
+    AnmVmView powerVms[4];
+    unsigned char unknown793C[0x9e18 - 0x793c];
+    AnmVmIdView powerNoticeVmId;
+    unsigned char unknown9E1C[0x9ec8 - 0x9e1c];
+    AnmLoadedView *frontAnm;
+    void UpdatePowerDisplay(int value, int percent);
+};
+typedef char ItemPowerVmsAt6A8C[
+    (offsetof(ItemPowerDisplayOwnerView, powerVms) == 0x6a8c) ? 1 : -1];
+typedef char ItemPowerFrontAnmAt9EC8[
+    (offsetof(ItemPowerDisplayOwnerView, frontAnm) == 0x9ec8) ? 1 : -1];
+typedef char ItemPowerNoticeVmAt9E18[
+    (offsetof(ItemPowerDisplayOwnerView, powerNoticeVmId) == 0x9e18) ? 1 : -1];
 extern ItemAutoCollectGateView *g_ItemAutoCollectGate;
 extern ItemPopupOwnerView *g_ItemPopupOwner;
 extern ItemPowerDisplayOwnerView *g_ItemPowerDisplayOwner; // 0x47770C
@@ -227,14 +242,129 @@ extern int g_EnemyDifficulty;
 
 // TH10-local call contracts for still source-absent callees. Their target
 // private register assignments are evidence, not imposed source conventions.
-extern int ItemAddPower(GameScoreStateView *state, short amount); // 0x418930
 extern void ItemAddLives(GameScoreStateView *state, int amount); // 0x4188A0
-extern void ItemExtendFaithTimer(GameScoreStateView *state, int amount); // 0x412FF0
-extern void ItemEmitValuePopup(ItemPopupOwnerView *owner,
-    const AnmFloat3View *position, int value, unsigned int color); // 0x42B9C0
-extern void ItemUpdatePowerDisplay(ItemPowerDisplayOwnerView *owner,
-    int value, int percent); // 0x4054B0: ESI owner, EDX value, stack percent
 extern float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
+
+// Target 0x4054B0 binds sprites for the integer and two fractional power
+// digits. The intervening VM is not changed by this helper.
+void ItemPowerDisplayOwnerView::UpdatePowerDisplay(int value, int percent)
+{
+    frontAnm->SetSprite(&powerVms[0], value + 8);
+    frontAnm->SetSprite(&powerVms[2], percent / 10 + 8);
+    frontAnm->SetSprite(&powerVms[3], percent % 10 + 8);
+}
+
+// The target calls the same 0x44BF40 timer implementation as the ANM
+// executor. Both independently reviewed storage views have the same layout.
+void GameScoreStateView::ExtendFaithTimer(int amount)
+{
+    if (timer.current < 130)
+    {
+        AnmVmTimerView *sharedTimer =
+            reinterpret_cast<AnmVmTimerView *>(&timer);
+        sharedTimer->Add(static_cast<float>(amount));
+        if (timer.current > 130)
+            sharedTimer->SetCurrent(130);
+    }
+}
+
+// Target 0x418930 consumes signed short power. Only an overshoot, rather
+// than an exact arrival at100, replaces the managed power-notice VM.
+int GameScoreStateView::AddPower(short amount)
+{
+    if (power >= 100)
+        return 0;
+    power += amount;
+    if (power > 100)
+    {
+        power = 100;
+        ItemPowerDisplayOwnerView *gui = g_ItemPowerDisplayOwner;
+        g_AnmRenderManagerView->MarkVmForDeletion(gui->powerNoticeVmId);
+        gui->powerNoticeVmId.value = 0;
+        gui->powerNoticeVmId = gui->frontAnm->CreateVmVariant0(0x49, 15);
+    }
+    return (static_cast<int>(power) - static_cast<int>(amount)) / 20 !=
+        static_cast<int>(power) / 20;
+}
+
+// Maintained views of target 0x42B9C0's popup storage. The digit prefix
+// reserves the observed span before position; its original array type and
+// unused bytes remain unknown.
+struct ItemPopupRecordView
+{
+    unsigned char digits[0x0c];
+    AnmFloat3View position;
+    unsigned int color;
+    GameScoreTimerView timer;
+    unsigned char unknown030[8];
+    unsigned char active;
+    unsigned char digitCount;
+    unsigned char unknown03A[6];
+};
+struct ItemPopupOwnerView
+{
+    unsigned char unknown000[0x14];
+    int nextIndex;
+    unsigned char unknown018[0x3c4 - 0x18];
+    ItemPopupRecordView records[0x2d0];
+    void EmitValuePopup(const AnmFloat3View *position,
+        int value, unsigned int color);
+};
+typedef char ItemPopupRecordSizeIs40[
+    (sizeof(ItemPopupRecordView) == 0x40) ? 1 : -1];
+typedef char ItemPopupPositionAt0C[
+    (offsetof(ItemPopupRecordView, position) == 0x0c) ? 1 : -1];
+typedef char ItemPopupTimerAt1C[
+    (offsetof(ItemPopupRecordView, timer) == 0x1c) ? 1 : -1];
+typedef char ItemPopupActiveAt38[
+    (offsetof(ItemPopupRecordView, active) == 0x38 &&
+     offsetof(ItemPopupRecordView, digitCount) == 0x39) ? 1 : -1];
+typedef char ItemPopupPoolAt3C4[
+    (offsetof(ItemPopupOwnerView, records) == 0x3c4) ? 1 : -1];
+
+void ItemPopupOwnerView::EmitValuePopup(
+    const AnmFloat3View *position, int value, unsigned int color)
+{
+    if (nextIndex >= 0x2d0)
+        nextIndex = 0;
+    ItemPopupRecordView *row = &records[nextIndex];
+    int count = 0;
+    row->active = 1;
+    if (value < 0)
+        goto negativeValue;
+    while (value != 0)
+    {
+        row->digits[count] = static_cast<unsigned char>(value % 10);
+        value /= 10;
+        ++count;
+    }
+    if (count != 0)
+        goto storePopup;
+    row->digits[0] = 0;
+singleDigit:
+    count = 1;
+storePopup:
+    row->digitCount = static_cast<unsigned char>(count);
+    row->color = color;
+    if ((row->timer.flags & 1u) == 0)
+    {
+        row->timer.current = 0;
+        row->timer.previous = -999999;
+        row->timer.subframe = 0.0f;
+        row->timer.scale = &g_PlayerTimerScale;
+        row->timer.flags |= 1u;
+    }
+    row->timer.current = 0;
+    row->timer.subframe = 0.0f;
+    row->timer.previous = -1;
+    row->position = *position;
+    ++nextIndex;
+    return;
+
+negativeValue:
+    row->digits[0] = 10;
+    goto singleDigit;
+}
 
 // Complete update body 0x41AFD0-0x41B89C; its two selector tables extend
 // physical ownership through 0x41B8DF. Names remain descriptive views.
@@ -375,14 +505,14 @@ attract:
         case 1:
         case 10:
         {
-            int changed = ItemAddPower(&g_GameScoreState, 1);
+            int changed = g_GameScoreState.AddPower(1);
             int power = g_PlayerPower;
-            ItemUpdatePowerDisplay(g_ItemPowerDisplayOwner, power / 20,
+            g_ItemPowerDisplayOwner->UpdatePowerDisplay(power / 20,
                 ((power % 20) * 100) / 20);
             if (changed != 0)
             {
                 RebuildPlayerOptions(g_Player);
-                ItemEmitValuePopup(g_ItemPopupOwner, &item->worldPosition,
+                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
                     -1, 0xffffff40);
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                     QueueSoundCue(29, item->worldPosition.x);
@@ -392,10 +522,10 @@ attract:
             }
             else
             {
-                ItemEmitValuePopup(g_ItemPopupOwner, &item->worldPosition,
+                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
                     g_PlayerPower / 2, 0xffff4040);
             }
-            ItemExtendFaithTimer(&g_GameScoreState, 60);
+            g_GameScoreState.ExtendFaithTimer(60);
             break;
         }
         case 2:
@@ -413,7 +543,7 @@ attract:
                     (g_GameScoreState.faith * 0.5f - 5000.0f));
                 pickupScore = g_GameScoreState.faith * 10 / 2 - reduction;
                 pickupScore -= pickupScore % 10;
-                ItemEmitValuePopup(g_ItemPopupOwner, &item->worldPosition,
+                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
                     pickupScore, 0xffffffff);
                 rankDelta = 1;
                 goto addScore;
@@ -421,13 +551,13 @@ attract:
         case 5:
             pickupScore = g_GameScoreState.faith * 10;
 maximumScore:
-            ItemEmitValuePopup(g_ItemPopupOwner, &item->worldPosition,
+            g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
                 pickupScore, 0xffffff00);
             rankDelta = 8;
 addScore:
             g_GameScoreState.AddRank(rankDelta);
             reinterpret_cast<GuiScoreView *>(&g_GameScoreState)->Add(pickupScore);
-            ItemExtendFaithTimer(&g_GameScoreState, 100);
+            g_GameScoreState.ExtendFaithTimer(100);
             break;
         case 3:
         {
@@ -438,25 +568,25 @@ addScore:
             case 2: amount = 8000; break;
             case 3: case 4: amount = 10000; break;
             }
-            ItemEmitValuePopup(g_ItemPopupOwner, &item->worldPosition,
+            g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
                 amount, 0xff00ff00);
             g_GameScoreState.AddFaith(amount);
-            ItemExtendFaithTimer(&g_GameScoreState, 120);
+            g_GameScoreState.ExtendFaithTimer(120);
             break;
         }
         case 4:
         case 11:
         {
-            int changed = ItemAddPower(&g_GameScoreState, 20);
+            int changed = g_GameScoreState.AddPower(20);
             int power = g_PlayerPower;
-            ItemUpdatePowerDisplay(g_ItemPowerDisplayOwner, power / 20,
+            g_ItemPowerDisplayOwner->UpdatePowerDisplay(power / 20,
                 ((power % 20) * 100) / 20);
             if (changed != 0)
             {
                 RebuildPlayerOptions(g_Player);
                 reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
                     QueueSoundCue(29, item->worldPosition.x);
-                ItemEmitValuePopup(g_ItemPopupOwner, &item->worldPosition,
+                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
                     -1, 0xffffff40);
                 g_GameScoreState.AddRank(24);
                 if (g_PlayerPower >= 100)
@@ -464,10 +594,10 @@ addScore:
             }
             else
             {
-                ItemEmitValuePopup(g_ItemPopupOwner, &item->worldPosition,
+                g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
                     g_PlayerPower / 2, 0xffff4040);
             }
-            ItemExtendFaithTimer(&g_GameScoreState, 20);
+            g_GameScoreState.ExtendFaithTimer(20);
             break;
         }
         case 7:
@@ -476,14 +606,14 @@ addScore:
             break;
         case 8:
             g_GameScoreState.AddFaith(10);
-            ItemExtendFaithTimer(&g_GameScoreState, 3);
+            g_GameScoreState.ExtendFaithTimer(3);
             reinterpret_cast<GuiScoreView *>(&g_GameScoreState)->Add(10);
             break;
         case 9:
-            ItemEmitValuePopup(g_ItemPopupOwner, &item->worldPosition,
+            g_ItemPopupOwner->EmitValuePopup(&item->worldPosition,
                 100, 0xff00ff00);
             g_GameScoreState.AddFaith(100);
-            ItemExtendFaithTimer(&g_GameScoreState, 60);
+            g_GameScoreState.ExtendFaithTimer(60);
             break;
         }
         item->active = 0;

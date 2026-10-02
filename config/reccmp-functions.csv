@@ -850,3 +850,7 @@ ItemManagerRegisterCallbacks,0x0041AD90,function
 ItemManagerUpdateBody,0x0041AFD0,function
 ItemManagerView::Draw,0x0041B8E0,function
 ItemManagerView::OnUpdate,0x0041BA00,function
+ItemPowerDisplayOwnerView::UpdatePowerDisplay,0x004054B0,function
+GameScoreStateView::ExtendFaithTimer,0x00412FF0,function
+ItemPopupOwnerView::EmitValuePopup,0x0042B9C0,function
+GameScoreStateView::AddPower,0x00418930,function
