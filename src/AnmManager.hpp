@@ -1074,7 +1074,7 @@ struct AnmRenderManagerView
     TH10_ANM_NOINLINE AnmVmIdView AddVmVariant2(AnmVmView *vm);
     TH10_ANM_NOINLINE AnmVmIdView AddVmVariant3(AnmVmView *vm);
     int RemoveVm(AnmVmView *vm);
-    TH10_ANM_NOINLINE AnmVmView *FindVm(AnmVmIdView id);
+    AnmVmView *FindVm(AnmVmIdView id);
     TH10_ANM_NOINLINE void __stdcall SetVmPendingInterrupt(
         AnmVmIdView id, short interrupt);
     TH10_ANM_NOINLINE void __stdcall SetVmPendingInterruptAndExecute(

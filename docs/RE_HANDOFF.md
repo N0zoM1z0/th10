@@ -556,42 +556,56 @@ it is rejected. All source trials are restored. The instruction-sequence ESP
 diagnostic pairs only cookie loads in this graph and does not locate a missing
 source local. Callee name copies do not prove dispatcher buffer capacity.
 
-Current spell implementation evidence under `20261002-enemy-spell/`:
+Current spell checkpoint evidence under `20261002-spell-inline/`:
 
-- source SHA-256 `5d45bbf1d54311df2c0db16128511ccd06ef803fcafeb8e7e126a7cf898d763a`
-  replaces the missing callee declaration with timer/name/flag setup, two
-  capped statistics records, 8+5 embedded VM initializations, ASCII/name/effect
-  creation, sound id 14, world position and child-script values, capped bonus,
-  and every stage arm. Neutral scalar aliases do not establish original data
-  owners. The partial state view does not establish full object ownership or
-  size, and its name span does not establish the dispatcher's buffer capacity;
-- stage setup uses VM receivers at state+0x10/+0x3BC and the ANM resource at
-  manager+0x38. Stage 7 below counter 24 initializes only the first embedded
-  VM. The final VM is allocated separately in every stage/conditional arm;
-- in the same six-TU `/GL /GS` graph, the complete spell contribution is
-  2,360/2,432 bytes, with structural agreement 240/1,996. It owns a seven-entry
-  table and has the target four-argument `RET 0x10`. Static call counts agree
-  at 14 AllocateVm, six InitializeVm and 15 InitializeForLoadedScript sites;
-  these are static sites, not fourteen allocations per invocation;
-- exactness still needs the target's three inline VM searches, out-of-line
-  final AddVmVariant0 call, statistics reload/copy-loop shape, and ANM private
-  register conventions. The candidate retains three FindVm calls and inlines
-  the final AddVmVariant0. FindVm currently carries TH10_ANM_NOINLINE in the
-  shared header; reconcile that policy with affected exact units before a
-  global change. Do not duplicate helpers or invent ABI shims for this score;
+- the previous body used `chapter +0x44` for both the bonus stage and stage
+  selector. This was wrong despite its normalized structural diagnostics.
+  Target ECL opcode 0x158 supplies receiver `0x00474C40` to `EnemySetChapter`,
+  which writes +0x44 and conditionally resets +0x4C. Spell bonus and stage
+  selection instead read `0x00474C7C` (+0x3C); stage 7 compares
+  `0x00474C84` (+0x44) with 24. The source now separates stage and chapter,
+  with offset assertions. `report-enemy-spell-state.py` reproduces these
+  target-only relationships; full object/data ownership remains unknown;
+- remove the blanket FindVm noinline declaration so the spell's three searches
+  can inline. Preserve target calls with scopes at seven manager and six VM-id
+  call sites, and retain the spell's final AddVmVariant0 call with its own
+  scope. These compiler controls do not prove original source settings;
+- a blanket declaration-only removal broke an existing interrupt unit at
+  116/54 bytes. A scope around EnemyMarkPendingInterrupt's whole initializer
+  also stopped its temporary VM-id constructor from inlining, producing
+  82/65 bytes. That unnecessary scope is removed; its natural body replays
+  65/65. Keep these negative controls when changing the policy;
+- source SHA-256
+  `94cc84a6af620f0848e5e7faed54b3c71c70a97b0e2cced8c44d3ef9062c3f11`, with
+  all seven input hashes in `final-input-hashes.json`, emits 2,416/2,432 spell
+  bytes in the fresh six-TU `/GL /GS` graph, structural agreement 245/2,004.
+  Its complete owner has the seven-entry table and `RET 0x10`. All eight
+  static direct-call kinds/counts now agree, including zero FindVm calls and
+  one final AddVmVariant0. Static sites include alternative arms;
+- the two stage reads and chapter comparison are checked by their arithmetic
+  and control roles against the resolved partial-view anchor. Diagnostic data
+  anchors are four bytes each; large view addends can overlap other anchors,
+  so absolute candidate-address filtering alone is ambiguous. Normalized
+  structural agreement is not a source-global binding proof;
 - the parent retains 14,384 bytes, frame 0x2BC, 580/11,544 whole-owner agreement,
   2,475/11,135 case-aligned agreement, 181 selectors and all 108 physical groups.
-  Three Spawn and five GetVm calls remain. Its frame/home/tail issues are open;
-- frozen `build/analysis-enemy-spell-selected/source.exe` has SHA-256
-  `48731b1b1ae6614be1f324a60072a91e88cc18cea44212468f5731e15244e369`.
-  Existing seam declarations replay Spawn/GetVm/QueueSoundSample at
-  577/577, 21/21 and 123/123 bytes in this diagnostic graph. Fresh canonical
-  source cold replay protects 14 units across three artifacts, 860/860 bytes;
-- `selected-probe.json`, `selected-callee-review.json`, `selected-summary.json`,
-  `selected-exact-replay.json` and `retained-seam-replay.json` retain the checks;
-  `inspect-selected.py`, `score-selected.py` and `replay-selected-seams.py`
-  reproduce the focused review against the frozen image. No new canonical
-  matches, runtime validation or whole-product closure are claimed.
+  Three Spawn and five GetVm calls remain. Whole-owner address normalization
+  is incomplete in this size-mismatched parent; the score has no acceptance
+  authority. Frame/home/tail issues remain open;
+- frozen `build/analysis-spell-inline-final/source.exe` has SHA-256
+  `1c81ba0efece75531089a189f27321855e8f397a71b014cdd51bb45a110d1818`.
+  Six existing complete canonical seam declarations replay 977/977 bytes in
+  this graph: Spawn, GetVm, QueueSoundSample, FindVm, EnemyMarkPendingInterrupt
+  and AddVmVariant0. Canonical source cold replay passes 14 dispatcher units
+  across three artifacts, 860/860; focused lookup-dependent replays protect
+  16 units, 971/971 bytes. These sets overlap at EnemyMarkPendingInterrupt.
+  A final replay also protects VM-id Release (21 bytes), for 30 unique existing
+  units/1,787 bytes;
+- `build-final.py`, `inspect-final.py`, `score-final.py`,
+  `review-final-bindings.py` and `replay-final-seams.py` reproduce the selected
+  graph/reviews. ANM initialization private ABIs, statistics reload/copy-loop
+  allocation and original class/TU/data ownership remain unresolved. No new
+  canonical matches, runtime validation or whole-product closure are claimed.
 
 The focused target-bound boundary replay passes and the fresh inventory now
 assigns the seven-entry spell table to its caller, eliminating the 29-byte gap.

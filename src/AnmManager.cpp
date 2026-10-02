@@ -675,7 +675,13 @@ AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)
 void __stdcall AnmRenderManagerView::SetVmPendingInterrupt(
     AnmVmIdView id, short interrupt)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = FindVm(id);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -696,7 +702,13 @@ void __stdcall AnmRenderManagerView::SetVmPendingInterrupt(
 void __stdcall AnmRenderManagerView::SetVmPendingInterruptAndExecute(
     AnmVmIdView id, short interrupt)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = FindVm(id);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -720,8 +732,14 @@ void __stdcall AnmRenderManagerView::SetVmPendingInterruptAndExecute(
 void __stdcall AnmSetVmScriptIndexAndExecute(
     const unsigned int *vmId, int scriptIndex)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *const vm = g_AnmRenderManagerView->FindVm(
         *reinterpret_cast<const AnmVmIdView *>(vmId));
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -731,7 +749,13 @@ void __stdcall AnmSetVmScriptIndexAndExecute(
 // Target 0x004492A0 marks a VM tree for removal during the manager update.
 void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = FindVm(id);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -767,7 +791,13 @@ void PlayerMarkManagedVmPendingWithManager(
 void __stdcall AnmRenderManagerView::SetVmPosition(
     AnmVmIdView id, const AnmFloat3View *position)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = FindVm(id);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -788,7 +818,13 @@ void __stdcall AnmRenderManagerView::SetVmPosition(
 void __stdcall AnmRenderManagerView::SetVmWorldPosition(
     AnmVmIdView id, const AnmFloat3View *position)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = FindVm(id);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -812,7 +848,13 @@ void __stdcall AnmRenderManagerView::SetVmWorldPosition(
 
 AnmFloat3View *AnmRenderManagerView::GetVmPosition(AnmVmIdView id)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = FindVm(id);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm != NULL)
         return &vm->positionOffset;
     return NULL;

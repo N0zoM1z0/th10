@@ -4,7 +4,13 @@
 // VM is no longer present in either list.
 AnmVmView *AnmVmIdView::GetVm()
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         value = 0;
     return vm;
@@ -14,7 +20,13 @@ AnmVmView *AnmVmIdView::GetVm()
 void AnmVmIdView::SetInterrupt(short interrupt)
 {
     AnmVmIdView vmId(value);
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(vmId);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -34,7 +46,13 @@ void AnmVmIdView::SetInterrupt(short interrupt)
 // Target 0x00449590 sets flag bit 2 on the VM and, for a root VM, its children.
 void AnmVmIdView::SetFlag2()
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -54,7 +72,13 @@ void AnmVmIdView::SetFlag2()
 // Target 0x004495E0 clears flag bit 2 on the VM and, for a root VM, its children.
 void AnmVmIdView::ClearFlag2()
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm == NULL)
         return;
 
@@ -81,7 +105,13 @@ void AnmVmIdView::Release()
 // Target 0x00449670 resolves this id and sets a sprite using the VM's own ANM.
 void AnmVmIdView::SetSprite(int spriteIndex)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm != NULL)
         vm->anmFile->SetSprite(vm, spriteIndex);
 }
@@ -89,7 +119,13 @@ void AnmVmIdView::SetSprite(int spriteIndex)
 // Target 0x004496A0 resolves this id and sets a sprite from an explicit ANM.
 void AnmVmIdView::SetSpriteWithAnm(AnmLoadedView *loaded, int spriteIndex)
 {
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     AnmVmView *vm = g_AnmRenderManagerView->FindVm(*this);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
     if (vm != NULL)
         loaded->SetSprite(vm, spriteIndex);
 }

@@ -616,11 +616,17 @@ static __declspec(noinline) void EnemyInitializeScalarInterpolation(
 }
 struct EnemyChapterStateView
 {
-    unsigned char unknown000[0x44];
+    unsigned char unknown000[0x3c];
+    int stage;
+    unsigned char unknown040[4];
     int chapter;
     int unknown048;
     int chapterTimer;
 };
+typedef char EnemyStageAndChapterOffsets[
+    (offsetof(EnemyChapterStateView, stage) == 0x3c &&
+     offsetof(EnemyChapterStateView, chapter) == 0x44 &&
+     offsetof(EnemyChapterStateView, chapterTimer) == 0x4c) ? 1 : -1];
 
 extern EnemyChapterStateView g_EnemyChapterState;
 
@@ -827,13 +833,12 @@ extern float __stdcall EnemyWrapAngle(float angle);
 
 // These aliases describe observed scalar/table inputs; original data owners
 // remain unknown. Target bindings: 477838, 47783C, 474C68, 474C6C,
-// 474C4C and 474C84 respectively.
+// and 474C4C respectively. Stage/chapter use the partial view at 474C40.
 extern unsigned char *g_EnemySpellPlaybackState;
 extern unsigned char *g_EnemySpellStatistics;
 extern int g_EnemySpellStatisticsGroupA;
 extern int g_EnemySpellStatisticsGroupB;
 extern int g_EnemySpellBonusBase;
-extern int g_EnemySpellExtraCounter;
 
 // Complete maintained body for target 0x00409280, including every stage arm.
 // The four-stack-argument stdcall surface is target-proven; original source
@@ -928,7 +933,7 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
     }
     child->intVar2 = value;
     state->spellValue = value;
-    int bonus = (g_EnemyChapterState.chapter * 3 + 10) *
+    int bonus = (g_EnemyChapterState.stage * 3 + 10) *
         g_EnemySpellBonusBase * 10;
     state->initialSpellBonus = bonus;
     state->spellBonus = bonus;
@@ -941,7 +946,7 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
     AnmLoadedView *stageResource;
     AnmVmView *stageVm;
     int stageScript;
-    switch (g_EnemyChapterState.chapter) {
+    switch (g_EnemyChapterState.stage) {
     case 1:
         stageResource = reinterpret_cast<AnmLoadedView *>(
             g_EnemyManager->effectResources[2]);
@@ -1025,7 +1030,7 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
     case 7:
         stageResource = reinterpret_cast<AnmLoadedView *>(
             g_EnemyManager->effectResources[2]);
-        if (g_EnemySpellExtraCounter < 24) {
+        if (g_EnemyChapterState.chapter < 24) {
             state->stageVms[0].InitializeForLoadedScript(stageResource, 0x26);
             stageResource = reinterpret_cast<AnmLoadedView *>(
                 g_EnemyManager->effectResources[2]);
@@ -1049,7 +1054,15 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
     stageVm->flags35C |= 0x40000000u;
     stageVm->renderLayer = 15;
     stageResource->InitializeVm(stageVm, stageScript);
+    // Target keeps this final insertion out of line after the initial creations.
+    // This scoped compiler policy does not establish original TU/settings.
+#if defined(_MSC_VER)
+#pragma inline_depth(0)
+#endif
     g_AnmRenderManagerView->AddVmVariant0(stageVm);
+#if defined(_MSC_VER)
+#pragma inline_depth(16)
+#endif
 }
 
 struct EnemyDropVectorView
