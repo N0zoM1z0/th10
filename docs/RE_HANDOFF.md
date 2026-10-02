@@ -368,6 +368,22 @@ still reproduce their source hashes and frontier. Do not repeat these shapes
 without new coupled allocation evidence. Compact matrix/reproducers are in
 `float-lifetimes/` under the current artifact root.
 
+The reusable `scripts/report-anm-execute-cases.py PROBE_JSON --json` now
+recomputes case-aligned structural diagnostics from a current linked `/GL`
+probe image and map, with target SHA and candidate image SHA in its output.
+Its fresh ANM-083 baseline reproduces 5,324/8,069 comparable bytes, 76/92
+target-sized physical groups, and an absolute span-gap sum of 288; it has no
+exactness acceptance authority. Rebuilding the selected graph is required
+after a source experiment because `build/probe-ltcg/` is overwritten. New
+controls confirm the earlier raw-FLIP regression: combined raw flags shorten
+the pre-table by 16 bytes, with FLIP_Y locally target-sized but FLIP_X still
+one byte long. In `InitializePulsingRadialTrail`, a named current-velocity
+local lowers agreement from 623/631 to 619/631, and explicit reversed-Y
+vector construction lowers it to 621/631; both are reverted. The last eight
+ordinary bytes remain a load scheduled across an x87 multiply and Y-add
+operand order. No source or exact-ledger promotion follows. Current artifacts:
+`.analysis/gpt-6.1-sol/20261002-anm-execute-next/`.
+
 ANM-069 is the retained **source/TU partition** checkpoint. ANM-070 is the
 historical **diagnostic graph**, before ANM-082/083, and supersedes ANM-069's
 1,723-byte agreement score:
