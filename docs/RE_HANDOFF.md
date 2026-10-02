@@ -342,6 +342,20 @@ lifetimes and interpolation homes, while retaining both interrupt comparisons.
 
 Current artifacts: `.analysis/gpt-6.1-sol/20261002-anm-execute/`.
 
+ANM-084 closes seven new float-lifetime comparisons plus one compile rejection
+under the mixed-width checkpoint. A SCALE_TIME value-returning vector factory
+grows the frame to `0x108` and pre-table by 16 bytes. Constructor/output-parameter
+forms keep the 9,964-byte owner but grow the frame to `0x100`, despite raising
+target-sized spans from 76 to 79; reject that geometry-only frontier. A constructor
+on the shared Float2 view first fails VC7.1 C2620 in the vertex UV union; separating
+that probe's raw UV pair permits compilation but still gives the wrong `0x100`
+frame. This is compiler evidence, not original type/ownership evidence. Generic
+float-reader helpers shrink Run to 8,596 bytes and break physical case order.
+All source and header edits are reverted; the retained ANM-083 Oracle artifacts
+still reproduce their source hashes and frontier. Do not repeat these shapes
+without new coupled allocation evidence. Compact matrix/reproducers are in
+`float-lifetimes/` under the current artifact root.
+
 ANM-069 is the retained **source/TU partition** checkpoint. ANM-070 is the
 historical **diagnostic graph**, before ANM-082/083, and supersedes ANM-069's
 1,723-byte agreement score:
