@@ -607,14 +607,61 @@ Current spell checkpoint evidence under `20261002-spell-inline/`:
   allocation and original class/TU/data ownership remain unresolved. No new
   canonical matches, runtime validation or whole-product closure are claimed.
 
+The current reset/context checkpoint is retained under
+`20261002-spell-anm-abi/`:
+
+- ANM-085 supersedes the old separate reset overload model. Target reset
+  `0x00401DE0` uses EDX for the VM, overwrites ECX before using it, and writes
+  the low flag word. The ordinary `AnmVmView::Initialize()` now owns the
+  complete reset body; the static unused-context overload is removed.
+  `/GL` naturally emits the target EDX ABI without a forced declaration;
+- `anm-vm-initialize-private` keeps its existing unit ID and target extent,
+  but now proves the actual member in the ExecuteScript `/GL /GS` graph.
+  Two independent cold canonical replays pass the complete raw-equal
+  273-byte member with no link fields and preserve SetupVertexBuffer's
+  472 bytes. Focused caller replay preserves RemoveVm and four base creators,
+  560 bytes. The target's nine direct reset calls span seven owners; only
+  RemoveVm is already canonical exact among those direct caller bodies;
+- the six canonical units rooted at the ordinary reset member and all
+  fourteen dispatcher-owned units also cold-replay exact: twenty units,
+  four artifacts, 1,310 bytes. Combined with the reset/setup/caller subset,
+  this protects 27 distinct canonical units and 2,615 bytes; no full-game
+  cold replay is performed;
+- the final current-source six-TU Enemy image is
+  `build/analysis-spell-anm-final/source.exe`, SHA-256
+  `691abb1b73fd14663e395fba81bbf268f32e779e894b366c205152eb2a18ebb1`.
+  Seven complete existing seam declarations pass 1,250/1,250 bytes, including
+  the actual reset member. All source/header hashes are in
+  `final-input-hashes.json`; AnmManager.cpp is
+  `a28276a33b0400d85578fc5e7a4e43ccce1c9cb9101faa0546008b40851e9f8e`
+  and AnmManager.hpp is
+  `d5449aee1016df88ad3ff297a0cc7150f3c855f9a2776ce14caba989d900cc5e`;
+- EnemyBeginSpell still emits 2,416/2,432 bytes with 245/2,004 structural
+  agreement; its eight direct-call kinds/counts agree. The parent still
+  emits 14,384 bytes with frame 0x2BC, 181 selectors/108 physical groups,
+  three Spawn/five GetVm calls and 2,475/11,135 case-aligned agreement.
+  Whole-owner address normalization remains incomplete;
+- real RandomMath and BulletManager/BulletTransform support, all retained
+  `/GL`, and a typed spell receiver leave the measured frontier unchanged.
+  Rooting InitializeVm restores its incoming public ABI but emits 207/217
+  bytes; natural flag forms and `/G6` do not improve it, and `/G7` emits 204.
+  Do not infer normal-COFF ownership from its standard incoming ABI. The
+  initializer private binder conventions and statistics reload/copy shape
+  remain the next coupled route. `matrix.json` distinguishes completed
+  controls from unrun branches in retained trial drivers;
+- this checkpoint replaces an existing exact proof and removes duplicate
+  source, so canonical exact totals remain unchanged. It does not prove
+  original source ownership, native product closure or runtime behavior.
+
 The focused target-bound boundary replay passes and the fresh inventory now
 assigns the seven-entry spell table to its caller, eliminating the 29-byte gap.
 The unmodified global `report-boundary-inventory.py --check-ledger` already
 failed before this correction at `0x00401100` because historical manual ledger
 evidence text differs from regenerated audit text. No broad ledger rewrite is
 performed; unrelated reviews and existing global audit diagnostics remain.
-The next coupled route is the missing spell-start implementation and its ANM
-dependencies, with the corrected physical boundary. Canonical exact totals are
+The next coupled route is the existing spell-start body's remaining ANM
+initializer private ABIs and statistics allocation, with the corrected physical
+boundary. Canonical exact totals are
 unchanged and the 95% objective remains open.
 
 Query the target spell block directly:

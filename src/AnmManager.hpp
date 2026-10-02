@@ -441,11 +441,6 @@ struct AnmVmView
     AnmVmView();
     ~AnmVmView();
     void Initialize();
-    // Target reset uses a private two-register ABI: ECX is an unused context
-    // value and EDX carries the VM. Keep that overload distinct from the
-    // ordinary source-facing member used by the rest of the reconstruction.
-    static __declspec(noinline) void __fastcall Initialize(
-        void *unused, AnmVmView *vm);
     int InitializePulsingRadialTrail();
     float GetFloatVar(float variable);
     int GetIntVar(int variable);

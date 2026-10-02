@@ -3918,48 +3918,12 @@ AnmVmView::~AnmVmView()
     generatedVertices = NULL;
 }
 
-// Target 0x00401DE0-0x00401EF0 resets the reusable VM while retaining the
-// externally owned pointers at +0x20 and +0x340..+0x348.
+// Target 0x00401DE0-0x00401EF0 preserves renderLayer (+0x20) and
+// positionOffset (+0x340..+0x348) while resetting the reusable VM.
+// In the real /GL caller graph the compiler carries this in EDX.
 void AnmVmView::Initialize()
 {
-    AnmFloat3View savedPosition = positionOffset;
-    unsigned int savedLayer = renderLayer;
-
-    memset(this, 0, sizeof(AnmVmView));
-
-    positionOffset = savedPosition;
-    renderLayer = savedLayer;
-
-    primaryColor.value = 0xffffffff;
-    scaleX = 1.0f;
-    scaleY = 1.0f;
-    matrix23C.SetIdentity();
-    flags35C = 7;
-    scriptTimer.Initialize();
-
-    positionInterpolation.duration = 0;
-    primaryColorInterpolation.duration = 0;
-    primaryAlphaInterpolation.duration = 0;
-    rotationInterpolation.duration = 0;
-    scaleInterpolation.duration = 0;
-    secondaryColorInterpolation.duration = 0;
-    secondaryAlphaInterpolation.duration = 0;
-
-    managerNode.owner = this;
-    managerNode.next = NULL;
-    managerNode.previous = NULL;
-    layerNode.owner = this;
-    layerNode.next = NULL;
-    layerNode.previous = NULL;
-}
-
-// Target 0x00401DE0's private-ABI reset view. The target callers keep an
-// unrelated context value in ECX and pass the VM in EDX; this natural static
-// overload models that observed two-register call without patching bytes.
-__declspec(noinline) void __fastcall AnmVmView::Initialize(
-    void *unused, AnmVmView *vm)
-{
-    (void)unused;
+    AnmVmView *vm = this;
     AnmFloat3View savedPosition = vm->positionOffset;
     unsigned int savedLayer = vm->renderLayer;
 
