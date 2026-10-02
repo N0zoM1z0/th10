@@ -142,7 +142,7 @@ normalized byte score is not exactness.
 | Owner | Current live frontier |
 | --- | --- |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | ENEMY-073 six-source `/GL /GS` graph with the real Spawn/GetVm seams and integer spell-name length: candidate 14,384/14,416 bytes, frame 0x2BC/0x2C4, whole-owner 580/11,544 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,728/13,760, suffix 43/43. Case-aligned diagnostics are 2,475/11,135, with 36 target-sized spans and absolute gap sum 740. The frame gap remains unresolved; no exactness follows. |
-| `EnemyBeginSpell @ 0x00409280` | ENEMY-082 current six-TU `/GL /GS` graph: 2,448/2,432 bytes and 520/2,016 structural agreement. Target statistics index reloads and first name-copy loop shape are restored through the existing partial receiver view. Seven-entry table, RET 0x10 and all eight direct-call kinds/counts agree. Initializer private ABIs and allocation remain open; no canonical exactness follows. |
+| `EnemyBeginSpell @ 0x00409280` | ENEMY-083 current seven-TU `/GL /GS` graph with real Player creation callees: 2,476/2,432 bytes and 771/2,032 structural agreement. Statistics reload/copy and all eight call kinds/counts remain correct. InitializeVm now has target incoming RET 8 but remains 207/217 bytes. Other helper private ABIs, copy scheduling and allocation remain open; no canonical exactness follows. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-083 selected diagnostic graph: 9,964-byte PDB contribution; 1,646/8,599 whole-owner normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. An int sentinel with an explicit short cast only at the opcode comparison restores both interrupt comparison widths. The 203-byte STOP span agrees on all 187 structural comparable bytes; case-aligned agreement improves to 5,324/8,069. Neither interior result grants canonical exactness. |
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-047: 7,020/7,020; pre-table 6,692/6,692; 931/6,264 normalized comparable bytes; all 59 physical groups retain target order and 56 have target-sized spans. Sum of absolute case-gap deltas falls from 154 to 10 bytes. Case-aligned diagnostics improve from 4,021/5,769 to 5,359/5,730; these are not exact bytes. `StartSubroutine` stays 551/550 and 329/534. |
 
@@ -654,7 +654,7 @@ The preceding reset/context checkpoint is retained under
   source, so canonical exact totals remain unchanged. It does not prove
   original source ownership, native product closure or runtime behavior.
 
-The current scalar/binder checkpoint is retained under
+The preceding six-TU scalar/binder checkpoint is retained under
 `20261002-anm-initializer-binders/`:
 
 - ENEMY-082 places the spell bonus input and two statistics indices at
@@ -708,6 +708,45 @@ The current scalar/binder checkpoint is retained under
   `review-selected-bindings.py` and `replay-selected-seams.py` reproduce the
   selected graph/reviews. Initializer ABIs, later allocation, original
   production partition and native product/runtime closure remain open.
+
+The selected Player-coupled checkpoint is now
+`20261002-spell-vector-initialization/` (PLAYER-028, ANM-087, ENEMY-083):
+
+- Complete InitializeVm xrefs contain 46 calls; the earlier 40-reference query
+  was truncated. Seven reviewed Player sites expose the old omitted receiver:
+  six load Player +0x10, while the mode-animation site loads the shared manager
+  at 0x4776F0 +0x3E0B50. Each reads its resource before allocation.
+- Player.cpp now calls the actual AllocateVm, InitializeVm and AddVmVariant0
+  members. Two duplicate C critical-section declarations are removed to use
+  the shared header's ABI-compatible declarations. Only Player.cpp changes;
+  old independent Player creation placeholders are removed.
+- Unchanged Player support is a neutral control. Binding its real initializer
+  callers restores InitializeVm's incoming ECX/two-stack-argument/RET 8 ABI in
+  the ordinary Enemy-rooted graph, still 207/217 bytes. Full creation binding
+  retains that ABI and the 2,476-byte spell. No extra entry root, fake context
+  parameter or normal-COFF reclassification is used.
+- The final seven-TU /GL /GS image is
+  `build/analysis-spell-vector-player-all-bound/source.exe`, SHA-256
+  `010b6b8b61b40830c6262c2cfa21922d88e2ac29ebd9a2674711e1b03930f7da`.
+  Player.cpp physical SHA-256 is
+  `c836b01a8a65079d1c189cc4a5c31968fa678907643b340a32c8faf8639188dd`;
+  `retained-input-hashes.json` binds selected/support sources and headers.
+- The spell has 771/2,032 structural agreement, complete address normalization,
+  seven-entry table, RET 0x10, all eight call kinds/counts, and the prior scalar
+  reload/copy constraints. The parent stays at 14,384/14,416 bytes and
+  580/11,544 with incomplete normalization. Scores have no promotion authority.
+- Focused protection passes all thirteen Player canonical units across six
+  cold-built artifacts, 712/712 bytes, and eight existing complete seams in
+  the selected graph, 1,444/1,444 bytes. No full TH10 cold replay is performed.
+- Rebuild still has one direct creation triple plus three static-helper calls,
+  versus six target direct triples, and plain RET versus target RET 4.
+  The helper's extra null check and remaining unresolved Player interfaces
+  are explicit unknowns. Candidate Player PDB sizes include tables/alignment
+  and must not be compared as exact target body-only extents.
+- Height-before-width stores are a restored negative control: sizes/ABIs and
+  owner scores stay unchanged. Named-vector and constructor-list branches
+  were not run. TH095's plain vector source is hypothesis material only;
+  its compiler-storage padding is not adopted.
 
 The focused target-bound boundary replay passes and the fresh inventory now
 assigns the seven-entry spell table to its caller, eliminating the 29-byte gap.

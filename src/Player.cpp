@@ -1,5 +1,6 @@
 #include "Player.hpp"
 #include "AnmVmId.hpp"
+#include "BulletManager.hpp"
 
 #include <stddef.h>
 #include <math.h>
@@ -285,9 +286,8 @@ extern float g_PlayerExtent2ByCharacter[2];
 // own original identifiers, source conventions, and physical owners remain
 // unproven by this packet.
 PlayerVm *PlayerCreateManagedVm(void *resource, int scriptIndex, int layer);
-PlayerVm *PlayerAllocateManagedVm();
-void PlayerInitializeManagedVmScript(PlayerVm *vm, int scriptIndex);
-void PlayerRegisterManagedVm(PlayerVm *vm, unsigned int *idOut);
+struct EnemyPrimaryResourceOwnerView;
+extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 void PlayerSetManagedVmDeleteState(unsigned int *vmId, unsigned short state);
 
 // Neutral lifecycle globals and interfaces recovered around Player creation,
@@ -299,8 +299,6 @@ extern volatile int g_PlayerLivesDisplayCount;
 extern unsigned char g_PlayerCallbackLockDepth;
 struct PlayerCriticalSectionView { unsigned char storage[0x18]; };
 extern PlayerCriticalSectionView g_PlayerCallbackCriticalSection;
-extern "C" void __stdcall EnterCriticalSection(PlayerCriticalSectionView *section);
-extern "C" void __stdcall LeaveCriticalSection(PlayerCriticalSectionView *section);
 void __fastcall PlayerUnlinkCallbackNode(
     PlayerCallbackNodeView *node, void *manager);
 void PlayerMarkManagedVmPending(unsigned int vmId);
@@ -444,17 +442,18 @@ static void LoadPlayerOptionPair(
 
 static unsigned int CreatePrimaryPlayerOptionVm(Player *player, int scriptIndex)
 {
-    PlayerVm *vm = PlayerAllocateManagedVm();
-    unsigned int id = 0;
+    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(player->resource);
+    AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
 
     if (vm == NULL)
         return 0;
 
-    vm->layer = PLAYER_VM_LAYER;
-    vm->flags |= PLAYER_VM_RUNTIME_FLAG;
-    PlayerInitializeManagedVmScript(vm, scriptIndex);
-    PlayerRegisterManagedVm(vm, &id);
-    return id;
+    vm->renderLayer = PLAYER_VM_LAYER;
+    vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+    loaded->InitializeVm(
+        vm, scriptIndex);
+    AnmVmIdView id = g_AnmRenderManagerView->AddVmVariant0(vm);
+    return id.value;
 }
 
 static int GetPrimaryPlayerOptionScript()
@@ -911,11 +910,14 @@ int PlayerUpdateMovementAndOptions(Player *player)
     {
         if (player->modeVmId == 0)
         {
-            PlayerVm *vm = PlayerAllocateManagedVm();
-            vm->layer = PLAYER_MODE_VM_LAYER;
-            vm->flags |= PLAYER_VM_RUNTIME_FLAG;
-            PlayerInitializeManagedVmScript(vm, PLAYER_MODE_VM_SCRIPT);
-            PlayerRegisterManagedVm(vm, &player->modeVmId);
+            AnmLoadedView *loaded = reinterpret_cast<BulletManagerView *>(
+                g_EnemyPrimaryResourceOwner)->bulletAnm;
+            AnmVmView *vm = g_AnmRenderManagerView->AllocateVm();
+            vm->renderLayer = PLAYER_MODE_VM_LAYER;
+            vm->flags35C |= PLAYER_VM_RUNTIME_FLAG;
+            loaded->InitializeVm(
+                vm, PLAYER_MODE_VM_SCRIPT);
+            player->modeVmId = g_AnmRenderManagerView->AddVmVariant0(vm).value;
         }
 
         // Lexical order follows the target's mode-1 switch body order. The
