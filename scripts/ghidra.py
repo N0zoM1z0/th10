@@ -235,7 +235,9 @@ def inventory_args(pe: dict[str, object]) -> list[str]:
     ]
 
 
-def run_headless(arguments: list[str], required_marker: str) -> None:
+def run_headless(
+    arguments: list[str], required_marker: str, completion_marker: str | None = None
+) -> None:
     ghidra_home, analyzer = find_analyzer()
     command = [
         str(analyzer),
@@ -265,10 +267,14 @@ def run_headless(arguments: list[str], required_marker: str) -> None:
         )
     if completed.returncode != 0:
         raise subprocess.CalledProcessError(completed.returncode, command)
+    if "ERROR REPORT SCRIPT ERROR:" in completed.stdout + completed.stderr:
+        raise RuntimeError("Ghidra reported a script error despite its process exit status")
     if required_marker not in completed.stdout:
         raise RuntimeError(
             "Ghidra did not emit the exact target-attestation success marker"
         )
+    if completion_marker is not None and completion_marker not in completed.stdout:
+        raise RuntimeError("Ghidra query did not emit its completion marker")
 
 
 def project_exists() -> bool:
@@ -394,7 +400,11 @@ def main() -> int:
                         *query_script_args(args.operation, args.query_args),
                     ]
                 )
-            run_headless(base, marker)
+            run_headless(
+                base,
+                marker,
+                f"TH10_QUERY_COMPLETE_V1:{args.operation}" if args.command == "query" else None,
+            )
     except (
         OSError,
         KeyError,

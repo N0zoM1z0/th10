@@ -140,13 +140,13 @@ normalized byte score is not exactness.
 
 | Owner | Current live frontier |
 | --- | --- |
-| `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Retained 2026-10-01 four-source `/GS` case-order graph: target 14,416 bytes, candidate 14,228 bytes, 820/11,556 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,760 vs 13,572, suffix 43/43. The owner remains non-exact. |
+| `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | ENEMY-073 six-source `/GL /GS` graph with the real Spawn/GetVm seams and integer spell-name length: candidate 14,384/14,416 bytes, frame 0x2BC/0x2C4, whole-owner 580/11,544 normalized comparable bytes; selector 181/181, physical case order 108/108, pre-table 13,728/13,760, suffix 43/43. Case-aligned diagnostics are 2,475/11,135, with 36 target-sized spans and absolute gap sum 740. The frame gap remains unresolved; no exactness follows. |
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | ANM-083 selected diagnostic graph: 9,964-byte PDB contribution; 1,646/8,599 whole-owner normalized comparable bytes; target `0xFC` frame; pre-table 9,588/9,588; 92/92 physical groups in target order; all 85 `OR EDI,-1` restores present. An int sentinel with an explicit short cast only at the opcode comparison restores both interrupt comparison widths. The 203-byte STOP span agrees on all 187 structural comparable bytes; case-aligned agreement improves to 5,324/8,069. Neither interior result grants canonical exactness. |
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-047: 7,020/7,020; pre-table 6,692/6,692; 931/6,264 normalized comparable bytes; all 59 physical groups retain target order and 56 have target-sized spans. Sum of absolute case-gap deltas falls from 154 to 10 bytes. Case-aligned diagnostics improve from 4,021/5,769 to 5,359/5,730; these are not exact bytes. `StartSubroutine` stays 551/550 and 329/534. |
 
-The current campaign artifacts are under
-`.analysis/gpt-6.1-sol/20261002-ecl-start/`. They are convenience snapshots, not
-acceptance authority.
+Current campaign artifacts are under `.analysis/gpt-6.1-sol/` in
+`20261002-enemy-tail/`, `20261002-anm-execute/` and `20261002-ecl-start/`.
+They are convenience snapshots, not acceptance authority.
 
 ## ECL runner: current recovery point
 
@@ -434,7 +434,10 @@ The target owner is `0x0040E770`, 14,416 bytes. Maintained source covers the
 0x100..0x1B4 dispatcher. The 2026-10-02 source checkpoint connects its spawn
 calls to the existing `EnemySpawn` implementation, computes signed spawn
 argument indices before clearing the request, and stores projected Y directly
-before loading Z. The owner remains non-exact.
+before loading Z. The later ENEMY-073 checkpoint corrects the spell-name length
+to an integer load and restores the source-pointer decode and difficulty switch
+shape. Its frame is now eight bytes short; the earlier float conversion must
+not be restored merely to recover frame size. The owner remains non-exact.
 
 Target-backed constraints to preserve:
 
@@ -463,15 +466,23 @@ Target-backed constraints to preserve:
   integer-reader join per tree;
 - central `EnemyFireLaser @ 0x0041C510` uses ESI=manager, EDI=request and one
   stack type argument (`RET 4`);
+- spell-start variants load the signed length directly from instruction+0x1C,
+  test it with `JLE`, and decode bytes from instruction+0x20. No x87 conversion
+  is present. Target destination is `ESP+0x248`; a named source pointer lets
+  VC7.1 recover the target source-minus-destination addressing shape;
+- spell difficulty dispatch sign-extends the opcode and uses `SUB 0x165` and
+  two `DEC` tests. The retained inner switch recovers this shape. Operand 2 is
+  still read before operand 1; its observed spill does not establish a fifth
+  `EnemyBeginSpell` argument. Preserve the call without inventing a parameter;
 - entry scratch and stack-home lifetime remain whole-owner problems. Do not
   use dummy padding, fake volatile dependencies or target-byte patches.
 
-Fresh evidence under `.analysis/gpt-6.1-sol/20261002-enemy-dispatch/`:
+Prior evidence under `.analysis/gpt-6.1-sol/20261002-enemy-dispatch/`:
 
 - the prior four-TU graph is reproducible from starting HEAD `2ce82ff`:
   14,228 bytes, 820/11,556 normalized comparable bytes, 181/181 selector
   entries and all 108 physical groups in target order;
-- the selected six-TU `/GL /GS` graph emits 14,340 bytes, frame `0x2C4`,
+- the ENEMY-071 six-TU `/GL /GS` graph emits 14,340 bytes, frame `0x2C4`,
   677/11,540 whole-owner normalized comparable bytes, 13,684/13,760 pre-table
   bytes, 181/181 selector entries and all 108 physical groups in target order;
   both suffixes remain 43 bytes. All three spawn calls have the target private
@@ -493,9 +504,41 @@ Fresh evidence under `.analysis/gpt-6.1-sol/20261002-enemy-dispatch/`:
   No dispatcher or additional canonical bytes are promoted. The diagnostic
   graph does not replace the existing exact-unit manifests.
 
+Current evidence under `.analysis/gpt-6.1-sol/20261002-enemy-tail/`:
+
+- source SHA-256 `a8daaa62869a65467ceac8b1dd5f334368d9b3f5ea99b59af5899a8747fc35a6`
+  emits 14,384 bytes in the same six-TU graph. Candidate frame is `0x2BC`
+  versus target `0x2C4`; whole-owner agreement is 580/11,544, pre-table
+  13,728/13,760, selector 181/181, physical order 108/108 and suffix 43/43;
+- case-aligned diagnostics are 2,475/11,135, 36 target-sized spans and absolute
+  gap sum 740. Spell start is 222/219 bytes without an x87 conversion. Name
+  and spawn-request bases are now candidate `ESP+0x238` versus target
+  `ESP+0x248`; register/home allocation and shared-tail placement remain open;
+- three Spawn and five GetVm calls remain. The frozen selected image is
+  `build/analysis-enemy-tail-selected/source.exe`, SHA-256
+  `32d9fa527002341194415c6e7fd9f0b3249c950bea5a5eaacc00a64fbde90a09`.
+  Existing canonical seam declarations replay 577/577 and 21/21 bytes;
+- focused canonical source cold replay passes 14 units across three artifacts,
+  860/860 bytes. No new canonical matches or bytes are promoted;
+- scoped/reused integer locals, cursor variants and a shared-word union do
+  not recover the frame. The union has no independent TH10 ownership evidence
+  and is discarded. Compact trial results and reproducible drivers remain;
+- `ghidra.py query OUTPUT disassemble_from COUNT ADDRESS...` starts at an
+  instruction boundary inside its containing function. Existing `disassemble`
+  still starts at the function entry. The wrapper requires a query completion
+  marker and rejects Ghidra script errors even when Ghidra exits zero. Actual
+  checks pass for an interior spell query and the legacy operation, and reject
+  a middle-of-instruction address and an address without a function.
+
+Query the target spell block directly:
+
+    scripts/repo-python scripts/ghidra.py query \
+      .analysis/gpt-6.1-sol/20261002-enemy-tail/from-spell.txt \
+      disassemble_from 70 0x00410E7B
+
 Rebuild the selected diagnostic:
 
-    analysis_dir=.analysis/gpt-6.1-sol/20261002-enemy-dispatch
+    analysis_dir=.analysis/gpt-6.1-sol/20261002-enemy-tail
     mkdir -p "$analysis_dir"
     scripts/repo-python scripts/probe-ltcg-backlog.py \
       --source src/EnemyEclDispatcher.cpp \

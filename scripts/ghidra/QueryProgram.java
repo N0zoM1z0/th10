@@ -78,17 +78,26 @@ public class QueryProgram extends GhidraScript
         output.printf("is_external: %s%n%n", function.isExternal());
     }
 
-    private void writeDisassembly(PrintWriter output, Address address, int maximum)
+    private void writeDisassembly(
+        PrintWriter output, Address address, int maximum, boolean fromAddress)
         throws Exception
     {
         Function function = functionFor(address);
         if (function == null)
         {
+            if (fromAddress)
+                throw new IllegalArgumentException(
+                    "disassemble_from requires a function: " + formattedAddress(address));
             output.printf("no function contains %s%n", formattedAddress(address));
             return;
         }
+        if (fromAddress && currentProgram.getListing().getInstructionAt(address) == null)
+            throw new IllegalArgumentException(
+                "disassemble_from requires an instruction boundary: " + formattedAddress(address));
         output.printf("function: %s @ %s%n", function.getName(true),
             formattedAddress(function.getEntryPoint()));
+        if (fromAddress)
+            output.printf("start: %s%n", formattedAddress(address));
         InstructionIterator iterator =
             currentProgram.getListing().getInstructions(function.getBody(), true);
         int count = 0;
@@ -96,6 +105,8 @@ public class QueryProgram extends GhidraScript
         {
             monitor.checkCancelled();
             Instruction instruction = iterator.next();
+            if (fromAddress && instruction.getAddress().compareTo(address) < 0)
+                continue;
             byte[] bytes = instruction.getBytes();
             StringBuilder encoded = new StringBuilder();
             for (byte value : bytes)
@@ -271,13 +282,14 @@ public class QueryProgram extends GhidraScript
                 for (int i = 2; i < args.length; ++i)
                     writeFunction(output, toAddr(args[i]));
             }
-            else if (operation.equals("disassemble"))
+            else if (operation.equals("disassemble") || operation.equals("disassemble_from"))
             {
                 if (args.length < 4)
                     throw new IllegalArgumentException("disassemble requires COUNT ADDRESS...");
                 int maximum = positive(args[2], "instruction count");
                 for (int i = 3; i < args.length; ++i)
-                    writeDisassembly(output, toAddr(args[i]), maximum);
+                    writeDisassembly(output, toAddr(args[i]), maximum,
+                        operation.equals("disassemble_from"));
             }
             else if (operation.equals("callers") || operation.equals("callees"))
             {
@@ -320,5 +332,6 @@ public class QueryProgram extends GhidraScript
             else
                 throw new IllegalArgumentException("unsupported query operation: " + operation);
         }
+        println("TH10_QUERY_COMPLETE_V1:" + args[1]);
     }
 }

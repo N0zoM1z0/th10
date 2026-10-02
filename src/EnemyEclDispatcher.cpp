@@ -2278,42 +2278,40 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_START_SPELL_DIFFICULTY:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
   case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
-    // Preserve the target's shared float scratch lifetime for this field.
-    // Normalizing it to an unsigned-int temporary changes the VC7.1 frame.
-    local_2a8 = *(float *)(iVar27 + 0x1c);
+  {
+    const unsigned char *encryptedName =
+        reinterpret_cast<const unsigned char *>(iVar27 + 0x20);
+    const int spellNameLength = *(int *)(iVar27 + 0x1c);
     iVar17 = 0;
     bVar3 = 0x77;
     local_29d = '\a';
-    iVar11 = iVar27 + 0x20;
-    if (0 < (int)local_2a8) {
+    if (0 < spellNameLength) {
       do {
         local_90.bytes[iVar17] =
-            reinterpret_cast<const unsigned char *>(iVar27 + 0x20)[iVar17] ^ bVar3;
+            encryptedName[iVar17] ^ bVar3;
         bVar3 = bVar3 + local_29d;
         local_29d = local_29d + '\x10';
         iVar17 = iVar17 + 1;
-        iVar11 = (int)local_2a8;
-      } while (iVar17 < (int)local_2a8);
+      } while (iVar17 < spellNameLength);
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    opcode = *(short *)(iVar27 + 4);
-    if (opcode == 0x165) {
-      iVar26 = iVar26 + g_EnemyDifficulty;
-    }
-    else if (opcode == 0x166) {
-      iVar26 = iVar26 + -1 + g_EnemyDifficulty;
-      iVar27 = g_EnemyDifficulty;
-    }
-    else {
-      if (opcode == 0x167) {
-        iVar26 = iVar26 + -2 + g_EnemyDifficulty;
-      }
+    switch (*(short *)(iVar27 + 4)) {
+    case ENEMY_ECL_START_SPELL_DIFFICULTY:
+      iVar26 += g_EnemyDifficulty;
+      break;
+    case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_1:
+      iVar26 += g_EnemyDifficulty - 1;
+      break;
+    case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:
+      iVar26 += g_EnemyDifficulty - 2;
+      break;
     }
     ENEMY_READ_INT_DIRECT(2);
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     EnemyBeginSpell(reinterpret_cast<int>(g_EnemyGameState),iVar26,reinterpret_cast<char *>(local_90.bytes),(int)uVar22);
     return 0;
+  }
   case ENEMY_ECL_END_SPELL:
     EnemyEndSpell(g_EnemyGameState);
     return 0;
