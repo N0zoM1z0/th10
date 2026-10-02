@@ -34,16 +34,16 @@ MCP. Attest the read-only local project with
 `scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
 focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-02): 1,730 reviewed candidates, 844 source
-mappings, 1,084 canonical exact functions, and 102,583 canonical exact `.text`
-bytes. Confirmed authored physical ownership is 265,691 bytes after the
-29-byte spell-start table/alignment boundary correction; the authored source-present
-exact backlog is 130 functions, and the Windows i386 product build remains
-open. This checkpoint promotes the 472-byte `SetupVertexBuffer` linked-PE unit
-after two independent cold exact replays, in addition to the 202-byte
-`CWaveFile::Read` closure. The same broader checkpoint adds 37 source-less VC7.1
-`libcmt.lib`/`libcpmt.lib` archive units covering 1,386 exact bytes, replayed
-through the archive comparator; it does not claim a full product cold replay.
+Current ledger checkpoint (2026-10-02): 1,731 reviewed candidates, 847 source
+mappings, 1,085 canonical exact functions and 102,590 canonical exact `.text`
+bytes. Confirmed authored ownership is 265,717 bytes after the spell and Player
+table/alignment corrections. The authored source-present exact backlog is132
+functions; recovering the two GameManager cores adds two non-exact owners to
+that queue. The new seven-byte registered update adapter has indeterminate
+origin, so authored exact bytes remain37,015. Windows i386 product closure
+remains open. Earlier checkpoints closed SetupVertexBuffer472, CWaveFile::Read202
+and 37 source-less pinned archive units covering1,386 bytes; these bounded
+claims do not imply a full product build or runtime.
 
 ## Current roadmap
 
@@ -792,6 +792,48 @@ its corrected ANM receiver bindings:
 - `REPRODUCE.md` records the guarded build, focused canonical replay, boundary
   evidence and independent controls. Original source partition, private ABIs,
   whole-owner exactness and native product/runtime closure remain open.
+
+The current GameManager diagnostic checkpoint is
+`20261002-player-callers/` (GAME-001/002/003, PLAYER-031):
+
+- Full natural source is restored for GameManager startup at0x417870
+  (1,009 target bytes) and update core at0x418190 (1,544 bytes). The startup
+  path includes both callback registrations, waits, state initialization,
+  ordered owner creation, music and complete success/failure behavior.
+  Original source factoring/types/data owners and opaque private callees stay
+  unknown. The two stage reset copies are represented by an inline helper.
+- The omitted registered adapter at0x4187C0 is now inventoried with a reviewed
+  seven-byte boundary and indeterminate origin. Target registration passes it
+  at0x4179FB. Restoring the full actual startup path preserves callback ECX,
+  naturally yielding push ECX / call update core / RET; the earlier isolated
+  source control lowered it to EAX. No artificial escape wrapper is used.
+- `game-manager-update-callback` is newly canonical exact: seven complete
+  bytes plus its sole REL32 to0x418190 pass two independent cold pinned /GL
+  links. Existing GameManager draw31 bytes pass a focused cold replay, and
+  eight existing complete seams in the expanded graph pass1,444/1,444 bytes.
+  Player source/headers are unchanged, so its previous thirteen-unit712-byte
+  source-bound receipt is retained without another unrelated cold rebuild.
+- The final real nine-TU Enemy /GL /GS graph adds GameManager and ReplayManager
+  to the preceding seven inputs. Its frozen image is
+  `build/analysis-player-caller-final/source.exe`, SHA-256
+  `b4accd3a04a105d75da81314b87381c4bdc103451591624c4e79c8ae3145078c`.
+  GameManager.cpp physical SHA-256 is
+  `473a4535d53a35290e6ec50f4f891a7d98c5b9f275547c9874089322a2a794b1`;
+  `final-input-hashes.json` binds all final sources/headers.
+- GameManager update/startup contributions are1,590/1,544 and1,037/1,009 bytes,
+  both RET4; update frame0x40 and its two Rebuild/BeginStage/EnemySpawn calls
+  agree. Rebuild remains2,404/2,520 with plain RET, InitializeVm207/217 RET8,
+  spell2,476/2,432 and771/2,032, parent14,384/14,416 and580/11,544.
+  Spell call-count/scalar checks remain passing. The actual parent diagnostic
+  normalization flag is true in both the prior and current probes; earlier
+  prose saying incomplete was wrong. This flag is not an exactness claim.
+- Source presence now covers seven of nine Rebuild calls. The two remaining
+  source-absent calls belong to ItemManager0x41AFD0. Recover this real owner or
+  investigate the remaining dependency/private ABI/source partition evidence;
+  simply adding GameManager/Replay callers did not repair Player RET4.
+- `REPRODUCE.md`, `build-final-coupled.py`, `inspect-final.py`, selected reviews
+  and callback cold receipts reproduce the bounded claims. Both large cores
+  remain non-exact; native product/runtime, semantic and port gates stay open.
 
 The focused target-bound boundary replay passes and the fresh inventory now
 assigns the seven-entry spell table to its caller, eliminating the 29-byte gap.

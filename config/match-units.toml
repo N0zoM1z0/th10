@@ -18327,3 +18327,19 @@ symbol = "?Fn0044C6D0@leaf@th10@@YAPAEPAEI@Z"
 target_address = 0x0044C6D0
 size = 12
 linkages = []
+
+[units.game-manager-update-callback]
+artifact_kind = "linked-pe"
+source = "src/GameManager.cpp"
+output_dir = "build/match-linked/GameManagerUpdateCallback-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?OnUpdate@GameManager@@SIIPAU1@@Z"
+functions = ["GameManager::OnUpdate"]
+symbol = "?OnUpdate@GameManager@@SIIPAU1@@Z"
+target_address = 0x004187C0
+size = 7
+linkages = [
+  { offset = 0x02, type = "REL32", symbol = "?GameManagerUpdateBody@@YGIPAUGameManager@@@Z", target = 0x00418190 },
+]

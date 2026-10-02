@@ -438,11 +438,12 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004177C0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004177E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00417800,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x00417870,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
+0x00417870,authored_game,GameManager,authored,high,target-game-startup-registration-2026-10-02
 0x00417C80,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x004180E0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x00418150,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
-0x00418190,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
+0x00418190,authored_game,GameManager,authored,high,target-game-update-owner-2026-10-02
+0x004187C0,unknown,GameManager,indeterminate,unknown,target-game-update-adapter-2026-10-02
 0x004187D0,authored_game,GameManager,authored,medium,ida-pro-mcp-direct-body-and-decomphelp-replay-2026-09-29
 0x00418810,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x004188A0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17

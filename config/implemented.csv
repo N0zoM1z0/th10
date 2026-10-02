@@ -41,6 +41,9 @@ FileSystem::Encrypt
 FileSystem::CloseWriteFile
 GameErrorContext::Log
 GameErrorContext::Fatal
+GameManagerInitialize
+GameManagerUpdateBody
+GameManager::OnUpdate
 GameManager::OnDraw
 CompressData
 Lzss::InitTree

@@ -51,6 +51,9 @@ FileSystem::Encrypt,0x0044B220,function
 FileSystem::CloseWriteFile,0x0044B7E0,function
 GameErrorContext::Log,0x0044B810,function
 GameErrorContext::Fatal,0x0044B8E0,function
+GameManagerInitialize,0x00417870,function
+GameManagerUpdateBody,0x00418190,function
+GameManager::OnUpdate,0x004187C0,function
 GameManager::OnDraw,0x004187D0,function
 CompressData,0x004359B0,function
 Lzss::InitTree,0x00435FA0,function
