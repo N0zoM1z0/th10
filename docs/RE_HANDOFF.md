@@ -431,12 +431,29 @@ After any ANM edit:
 ## Enemy dispatcher: current recovery point
 
 The target owner is `0x0040E770`, 14,416 bytes. Maintained source covers the
-0x100..0x1B4 dispatcher. A fresh selected graph now exists; its remaining gap
-is coupled to entry scratch lifetime and per-case layout rather than a missing
-dispatcher boundary.
+0x100..0x1B4 dispatcher. The 2026-10-02 source checkpoint connects its spawn
+calls to the existing `EnemySpawn` implementation, computes signed spawn
+argument indices before clearing the request, and stores projected Y directly
+before loading Z. The owner remains non-exact.
 
-Target-backed constraints to preserve when the dispatcher campaign resumes:
+Target-backed constraints to preserve:
 
+- the three calls to `EnemySpawn @ 0x0040CFB0` pass the request in EAX and
+  manager/name on the stack; the callee returns with `RET 8`. The former
+  ordinary-C `EnemySpawnFromEclInstruction` declaration had no implementation
+  and was a different unresolved symbol, so its caller graph was insufficient;
+- include `Enemy.cpp` as LTCG support to observe the real spawn seam. Its
+  maintained `__stdcall` prototype lets LTCG select the private EAX argument;
+  do not encode a false source calling convention or write a shim;
+- target spawn length bias precedes `REP STOSD`, with the final shift after it.
+  Natural signed division before clearing restores three separate spawn calls
+  in the selected graph. The candidate still shifts before clearing and keeps
+  instruction/index in ESI/EDI versus target EDI/ESI;
+- target projected Y uses one memory `FADD` and one vector store before Z.
+  The retained direct assignment removes the extra candidate `FLD`/`FSTP ST(0)`;
+- target has five calls to `AnmVmIdView::GetVm @ 0x00449450`, using ESI. Include
+  `AnmVmId.cpp` to recover that callee ABI. The selected six-TU graph keeps
+  all five calls; the unchanged-source five-TU control inlines one;
 - float cases call generic `EclVmContext::ReadFloat`; the old 0x00412A60 adapter
   is not a dispatcher call seam;
 - rank-float selection uses shared ResolveFloat/store tails;
@@ -446,27 +463,39 @@ Target-backed constraints to preserve when the dispatcher campaign resumes:
   integer-reader join per tree;
 - central `EnemyFireLaser @ 0x0041C510` uses ESI=manager, EDI=request and one
   stack type argument (`RET 4`);
-- entry scratch and stack-home lifetime are whole-owner problems. Do not use
-  dummy padding, fake volatile dependencies or byte patches.
+- entry scratch and stack-home lifetime remain whole-owner problems. Do not
+  use dummy padding, fake volatile dependencies or target-byte patches.
 
-Fresh 2026-10-01 evidence:
+Fresh evidence under `.analysis/gpt-6.1-sol/20261002-enemy-dispatch/`:
 
-- the `/GS` graph with `EclVm.cpp`, `AnmManager.cpp` and `AnmVmCreate.cpp` as
-  support, with the retained spawn-case order, emits 14,228 bytes against the
-  14,416-byte target and matches 820/11,556 normalized comparable bytes
-  (1,087 raw bytes); selector equality is 181/181 and all 108 physical case
-  groups retain target order;
-- the target pre-table is 13,760 bytes versus 13,572 in the candidate, while
-  both suffixes are 43 bytes. The first material layout divergences remain the
-  CREATE_ENEMY and CREATE_ENEMY_ABSOLUTE bodies, so no one-line reader or
-  difficulty-case edit is currently justified. The fresh raw/layout reports are
-  `20261001-enemy-dispatch-case-order-current.json` and
-  `20261001-enemy-dispatch-case-order-current-table.json` under
-  `.analysis/gpt-web/`.
+- the prior four-TU graph is reproducible from starting HEAD `2ce82ff`:
+  14,228 bytes, 820/11,556 normalized comparable bytes, 181/181 selector
+  entries and all 108 physical groups in target order;
+- the selected six-TU `/GL /GS` graph emits 14,340 bytes, frame `0x2C4`,
+  677/11,540 whole-owner normalized comparable bytes, 13,684/13,760 pre-table
+  bytes, 181/181 selector entries and all 108 physical groups in target order;
+  both suffixes remain 43 bytes. All three spawn calls have the target private
+  argument contract; existing canonical field/data declarations replay the
+  linked Spawn and GetVm contributions at 577/577 and 21/21 bytes;
+- separate case-aligned diagnostics compare 2,574/11,125 bytes, with 34 spans
+  having target sizes and an absolute span-gap sum of 754. These scores have
+  no acceptance authority. The shared position/life tail is still after the
+  absolute-create block instead of before it; request base is candidate
+  `ESP+0x240` versus target `ESP+0x248`;
+- the smaller real-spawn/direct-Y candidate merges three spawn calls into two
+  and is superseded despite its 14,148-byte extent. Repeated-tail variants
+  reduce some aggregate gaps but duplicate the target shared-tail topology;
+  absolute-first source order breaks the physical group order. Extra spawn
+  locals do not recover register roles. Retained patches/matrix distinguish
+  these negative results from the current checkpoint;
+- focused canonical source replay protects all 14 existing dispatcher units
+  across three artifacts, 860/860 bytes.
+  No dispatcher or additional canonical bytes are promoted. The diagnostic
+  graph does not replace the existing exact-unit manifests.
 
-Fresh dispatcher diagnostic:
+Rebuild the selected diagnostic:
 
-    analysis_dir=.analysis/gpt-web
+    analysis_dir=.analysis/gpt-6.1-sol/20261002-enemy-dispatch
     mkdir -p "$analysis_dir"
     scripts/repo-python scripts/probe-ltcg-backlog.py \
       --source src/EnemyEclDispatcher.cpp \
@@ -474,11 +503,14 @@ Fresh dispatcher diagnostic:
       --support 'src/EnemyEclDispatcher.cpp=src/EclVm.cpp' \
       --support 'src/EnemyEclDispatcher.cpp=src/AnmManager.cpp' \
       --support 'src/EnemyEclDispatcher.cpp=src/AnmVmCreate.cpp' \
+      --support 'src/EnemyEclDispatcher.cpp=src/AnmVmId.cpp' \
+      --support 'src/EnemyEclDispatcher.cpp=src/Enemy.cpp' \
       --profile-flag=/GS \
-      --json > "$analysis_dir/20261001-enemy-dispatch-case-order-current.json"
+      --json > "$analysis_dir/retained-probe.json"
 
-Use the fresh candidate address with `scripts/report-ecl-dispatch-table.py`.
-Never hard-code an address from an old linked image.
+Use the fresh candidate address/extent with `report-ecl-dispatch-table.py`.
+Never reuse an address from an overwritten image. Retained artifact bindings,
+seam assembly and trial summaries are recorded in the campaign manifest.
 
 ## Smaller backlog routing
 

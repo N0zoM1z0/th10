@@ -552,9 +552,6 @@ static __declspec(noinline) int EnemyFindLaser(
     }
     return 0;
 }
-extern int EnemySpawnFromEclInstruction(
-    EnemyManagerView *manager, const void *subroutineName,
-    const EnemySpawnRequestView *request);
 extern void __stdcall EnemyKillAll(EnemyManagerView *manager);
 static __declspec(noinline) void __stdcall EnemyConfigureInterrupt(
     EnemyFullObjectView *owner, int slot, int lifeThreshold,
@@ -1079,8 +1076,8 @@ int EnemyRuntimeView::DispatchEclInstruction()
     }
   case ENEMY_ECL_CREATE_ENEMY:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-    iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
     if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x40000) == 0) {
       fVar9 = *(float *)((int)runtimeAddress + 0x2c);
       fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
@@ -1094,9 +1091,9 @@ int EnemyRuntimeView::DispatchEclInstruction()
       fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
       fVar10 = *(float *)((int)runtimeAddress + 0x30);
       vectorScratch.x = (float)(fVar19 + fVar9);
-      fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
+      vectorScratch.y = ReadRawFloatArgument(
+          2, *(float *)(iVar27 + 0x14 + iVar26 * 4)) + fVar10;
       vectorScratch.z = *(float *)((int)runtimeAddress + 0x34);
-      vectorScratch.y = (float)(fVar19 + fVar10);
       EnemyPrepareProjection(&g_MainSupervisorView, 0);
       D3DXVec3Project(&local_90.spawnRequest.position, &vectorScratch,
                       &g_EnemyViewport, &g_EnemyProjectionMatrix,
@@ -1115,8 +1112,8 @@ dispatch_finish_spawn_position:
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
 dispatch_spawn_enemy:
-    EnemySpawnFromEclInstruction(
-        g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
+    EnemySpawn(
+        g_EnemyManager, reinterpret_cast<const char *>(iVar27 + 0x14),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_IF_NO_BOSS:
@@ -1126,8 +1123,8 @@ dispatch_spawn_enemy:
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE:
 dispatch_create_enemy_absolute:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-    iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
     fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
     local_90.spawnRequest.position.x = (float)fVar19;
     fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
@@ -1135,8 +1132,8 @@ dispatch_create_enemy_absolute:
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET:
 dispatch_create_enemy_global:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;
+    iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-    iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
     local_90.spawnRequest.position.x =
         ReadRawFloatArgument(
             1, *(float *)(iVar27 + 0x10 + iVar26 * 4)) +
@@ -1156,8 +1153,8 @@ dispatch_create_enemy_global:
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag40000 = local_90.spawnRequest.setFlag40000 | 1;
-    EnemySpawnFromEclInstruction(
-        g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
+    EnemySpawn(
+        g_EnemyManager, reinterpret_cast<const char *>(iVar27 + 0x14),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_AT_GLOBAL_OFFSET_IF_NO_BOSS:
@@ -1167,8 +1164,8 @@ dispatch_create_enemy_global:
 dispatch_create_enemy_mirrored:
     iVar26 = *(int *)(iVar27 + 0x10) + 4;
     fVar9 = *(float *)((int)runtimeAddress + 0x2c);
+    iVar26 /= 4;
     memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-    iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
     local_90.spawnRequest.position.x =
         ReadRawFloatArgument(
             1, *(float *)(iVar27 + 0x10 + iVar26 * 4)) + fVar9;
@@ -1184,8 +1181,8 @@ dispatch_create_enemy_mirrored:
     local_90.spawnRequest.itemDropType = uVar22;
     local_90.spawnRequest.eclVariables = eclVariables;
     local_90.spawnRequest.setFlag0800 = 1;
-    EnemySpawnFromEclInstruction(
-        g_EnemyManager, reinterpret_cast<const void *>(iVar27 + 0x14),
+    EnemySpawn(
+        g_EnemyManager, reinterpret_cast<const char *>(iVar27 + 0x14),
         &local_90.spawnRequest);
     return 0;
   case ENEMY_ECL_CREATE_ENEMY_ABSOLUTE_MIRRORED:
@@ -2736,8 +2733,8 @@ dispatch_complete:
   return 0;
 dispatch_create_enemy_absolute_mirrored:
   iVar26 = *(int *)(iVar27 + 0x10) + 4;
+  iVar26 /= 4;
   memset(local_90.floatWords, 0, sizeof(local_90.floatWords));
-  iVar26 = (int)(iVar26 + (iVar26 >> 0x1f & 3U)) >> 2;
   fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));
   local_90.spawnRequest.position.x = (float)fVar19;
   fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));
