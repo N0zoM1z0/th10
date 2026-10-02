@@ -397,6 +397,7 @@ CWaveFile::Reopen,0x0044DCA0,function
 CWaveFile::ResetFile,0x0044DD40,function
 CWaveFile::Read,0x0044DE10,function
 EnemyEnableBombShield,0x0040CEA0,function
+SoundPlayerView::GetFmtIndexByName,0x0043D2A0,function
 SoundPlayerView::ReopenBgm,0x0043D790,function
 SoundPlayerView::StopBgm,0x0043DAB0,function
 CSound::Unpause,0x0044D5D0,function

@@ -1,4 +1,5 @@
 #include <windows.h>
+#include <string.h>
 
 #include "SoundFormat.hpp"
 
@@ -89,6 +90,31 @@ void SoundPlayerView::StopBgm()
     }
 }
 
+
+int SoundPlayerView::GetFmtIndexByName(const char *path)
+{
+    char basename[128];
+    const char *separator = strrchr(path, '/');
+    if (separator == NULL)
+        separator = strrchr(path, '\\');
+
+    if (separator == NULL)
+        strcpy(basename, path);
+    else
+        strcpy(basename, separator + 1);
+
+    int index = 0;
+    while (bgmFormats[index].name[0] != '\0')
+    {
+        if (strcmp(bgmFormats[index].name, basename) == 0)
+            break;
+        ++index;
+    }
+
+    if (bgmFormats[index].name[0] == '\0')
+        index = 0;
+    return index;
+}
 
 int SoundPlayerView::ReopenBgm(const char *path)
 {

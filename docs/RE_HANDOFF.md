@@ -34,10 +34,10 @@ MCP. Attest the read-only local project with
 `scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
 focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-02): 1,732 reviewed candidates, 863 source
+Current ledger checkpoint (2026-10-02): 1,732 reviewed candidates, 864 source
 mappings, 1,090 canonical exact functions and 102,948 canonical exact `.text`
 bytes. Confirmed authored ownership is 265,810 bytes; authored exact bytes are
-37,235 (14.0%). The authored source backlog is143 functions. The two Item record
+37,235 (14.0%). The authored source backlog is144 functions. The two Item record
 lifecycle exact units add138 overall bytes but have indeterminate origin. The
 latest drop-helper mappings add551 authored source-present bytes without exact
 credit. Windows i386 product/runtime closure remains open; these bounded claims
@@ -124,6 +124,21 @@ Use this order unless new target evidence changes the dependency graph:
   `CSound::FillBufferWithSound` `/GL` entry. Two independent cold replays
   reproduce the complete body and its imported `ReadFile` DIR32 field; a
   source-scoped cold replay keeps all 13 configured ZWave units exact.
+- Sound lookup `0x0043D2A0` now has a maintained 227-byte source owner in
+  `Sound.cpp`, without exact credit. Target code receives the path in ECX and
+  the sound owner on the stack, uses the last `/` (or last `\\` if no slash),
+  compares a 128-byte basename against 0x34-byte format rows, and falls back
+  to index zero. Three direct callers are `0x0043D790`, `0x0043D7D0`, and
+  `0x0043DDF0`. The non-streaming branch of source-absent `0x0043D950`
+  tail-jumps to `ReopenBgm` with EAX owner and ECX path from the indexed
+  `+0x4108` name buffer. This corrects the old unresolved path ABI in the
+  ledger. The selected `/GL` graph still emits lookup 216/227 and ReopenBgm
+  63/55 bytes, so their caller/WPO context remains open. Five affected
+  existing exact units cold-replay 564/564 bytes; the next useful Sound route
+  is its source-absent 298-byte indexed-BGM caller, not another standalone
+  ReopenBgm profile probe. The unresolved selected PE/map/PDB are frozen below
+  `build/analysis-sound-getfmt-selected/` (PE SHA-256
+  `ca003b9d664915a3ce7a40ce002618e3c43b6f8cb88aacf59f565d236c0ba122`).
 - `AnmRenderManagerView::SetupVertexBuffer @ 0x004462F0` is now canonical
   exact at 472 bytes. The maintained natural source uses target-supported
   three-float/raw-dword views for the independent background-vertex mirror and
@@ -259,6 +274,11 @@ Closed ECL directions that should not be repeated without new evidence:
   variants shrink it to122/144 and regress Run to7,036. Reversing ADD_FLOAT
   declaration order leaves the seven observed stack-field differences intact.
   The source-shape matrix binds every trial to its cold image and target hash.
+- Moving `flagIndex`'s increment from the shared FORMAT tail into postfix
+  increments on both typed-reader calls grows Run to 7,028 bytes; FORMAT
+  remains four bytes long, the pre-table grows by eight, and only 55 physical
+  spans retain target size. The trial is reverted. Its fresh baseline and
+  rejected probe/layout are under `.analysis/gpt-6.1-sol/20261002-ecl-format-next/`.
 - On ECLVM-049, reading both JUMP operands through instructionCursor shrinks
   Run to 6,956 bytes; a scoped jumpInstruction pointer shrinks it to 6,948.
   The target-sized result requires the asymmetric time-from-cursor and

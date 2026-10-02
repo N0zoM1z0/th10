@@ -392,6 +392,7 @@ CWaveFile::Reopen
 CWaveFile::ResetFile
 CWaveFile::Read
 EnemyEnableBombShield
+SoundPlayerView::GetFmtIndexByName
 SoundPlayerView::ReopenBgm
 SoundPlayerView::StopBgm
 CSound::Unpause
