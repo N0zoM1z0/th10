@@ -34,15 +34,13 @@ MCP. Attest the read-only local project with
 `scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
 focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-02): 1,731 reviewed candidates, 847 source
-mappings, 1,085 canonical exact functions and 102,590 canonical exact `.text`
-bytes. Confirmed authored ownership is 265,717 bytes after the spell and Player
-table/alignment corrections. The authored source-present exact backlog is132
-functions; recovering the two GameManager cores adds two non-exact owners to
-that queue. The new seven-byte registered update adapter has indeterminate
-origin, so authored exact bytes remain37,015. Windows i386 product closure
-remains open. Earlier checkpoints closed SetupVertexBuffer472, CWaveFile::Read202
-and 37 source-less pinned archive units covering1,386 bytes; these bounded
+Current ledger checkpoint (2026-10-02): 1,731 reviewed candidates, 851 source
+mappings, 1,086 canonical exact functions and 102,638 canonical exact `.text`
+bytes. Confirmed authored ownership is 265,784 bytes after complete switch and
+alignment reviews; authored exact bytes are 37,063. The authored source-present
+exact backlog is135 functions. This Item checkpoint adds four source mappings
+and48 exact callback bytes; the earlier seven-byte GameManager adapter remains
+origin-indeterminate. Windows i386 product closure remains open. These bounded
 claims do not imply a full product build or runtime.
 
 ## Current roadmap
@@ -793,7 +791,7 @@ its corrected ANM receiver bindings:
   evidence and independent controls. Original source partition, private ABIs,
   whole-owner exactness and native product/runtime closure remain open.
 
-The current GameManager diagnostic checkpoint is
+The preceding GameManager diagnostic checkpoint is
 `20261002-player-callers/` (GAME-001/002/003, PLAYER-031):
 
 - Full natural source is restored for GameManager startup at0x417870
@@ -841,11 +839,61 @@ The unmodified global `report-boundary-inventory.py --check-ledger` already
 failed before this correction at `0x00401100` because historical manual ledger
 evidence text differs from regenerated audit text. No broad ledger rewrite is
 performed; unrelated reviews and existing global audit diagnostics remain.
-The next coupled routes are the two source-absent Player callers and the
-spell-start body's remaining ANM initializer private ABIs/later allocation.
-Keep the corrected Player power/creation dataflow and complete table boundary.
-Canonical exact totals are
-unchanged and the 95% objective remains open.
+The current ItemManager checkpoint is `.analysis/gpt-6.1-sol/20261002-item-update/`
+(ITEM-007/008/009/010, PLAYER-032):
+
+- Full natural source now covers ItemManager update at `0x41AFD0`, its actual
+  callback registration at `0x41AD90`, and the update adapter at `0x41BA00`.
+  The already maintained Draw body at `0x41B8E0` is reconciled with source
+  mappings. No whole-module, original-class/TU or runtime closure is claimed.
+- Complete update ownership is **2,320 bytes**, rather than the old 2,253-byte
+  body-only extent: RET4 body, three-byte LEA alignment, an eleven-slot item-kind
+  table and a five-slot difficulty table, ending at `0x41B8DF`. All sixteen
+  destinations reach body instructions. Fresh Ghidra reachable body is 2,245
+  bytes because the eight-byte internal alignment at `0x41B008` is unreachable.
+- The source restores movement/attraction states, delay activation, both Player
+  Rebuild calls, item rewards, popup owner/position/value/color, sound cues,
+  faith timer updates and the animation-count path. Opaque dependency interfaces
+  remain natural source hypotheses with separately observed private machine ABIs.
+  TH08 ItemManager was consulted only for source-shape hypotheses; its distinct
+  linked pool, layouts, states and rewards are not TH10 evidence.
+- `item-manager-update-callback` is newly canonical exact: **48 bytes**, with
+  exhaustive FPS DIR32 and update-core REL32 fields, pass two independent pinned
+  `/GL` cold builds. The observed pause expression tests flags bits 0, 2 and 10,
+  unlike the draw callback's bit 2. Actual callback registration makes the
+  address escape; no synthetic wrapper or altered compiler ABI is used.
+  The two image hashes are `f468e5e4a76a9fd9b99ef5bcdc3f1dc85c35e87af59ffbd110c9b304bb723359`
+  and `43bd8da8f75d2bbc731e62a438f957a4ad505128dd72f61c002823071a491061`.
+- The seven prior affected Item units pass **325/325 bytes** across three cold
+  artifacts. All other source files and headers are physically unchanged;
+  their earlier source-bound receipts remain controls. No whole TH10 cold
+  replay is performed.
+- All **nine** target Rebuild calls now have maintained callers. Adding real
+  ItemManager as the tenth `/GL /GS` TU is a negative compiler-context control:
+  Rebuild becomes 2,372/2,520 but still plain RET, InitializeVm becomes 201/217
+  and RET4, spell becomes 2,448/2,432 with 520/2,016 diagnostic agreement, and
+  the dispatcher remains 14,384/14,416 with 580/11,544. The changed masks make
+  these scores unsuitable as byte gains. All eight complete coupled seams
+  still compare 1,444/1,444 bytes; spell call-count/scalar constraints pass.
+  Original declaration/production partition and private ABI causes remain open.
+- The frozen expanded control is `build/analysis-item-update-coupled/source.exe`,
+  SHA `a89709e83553322ac335912ca0a20746e369872140e176c0de8a227fdf4f85c4`.
+  `final-input-hashes.json` binds it to ten source files and every current header.
+  The unchanged nine-TU graph above remains the earlier selected control.
+- Item-only registered source emits update/register/Draw contributions at
+  2,248/2,320, 97/84 and 291/281; the expanded graph emits 2,260/2,320, 91/84 and
+  296/281. These complete-owner diagnostics grant no exactness. Do not infer
+  target ownership from an equal-sized window or force register conventions.
+
+The next bounded routes are the source-absent shared power/faith/popup callees
+and Item allocation/spawn/cleanup owners, or investigation of actual source
+partition and declaration evidence for Rebuild/ANM initialization. Keep the
+corrected Player dataflow and complete switch boundaries. Canonical exact
+credit increases by **48 bytes** in this checkpoint: 1,086 exact units,
+102,638 overall exact bytes and 37,063 authored exact bytes out of 265,784
+reviewed authored bytes. Source mappings total 851. The 95% objective remains
+open; native Windows i386 product/runtime closure, semantic and port gates
+remain open/not started.
 
 Query the target spell block directly:
 

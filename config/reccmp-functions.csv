@@ -846,3 +846,7 @@ th10::leaf::Fn0044C640,0x0044C640,function
 th10::leaf::Fn0044C660,0x0044C660,function
 th10::leaf::Fn0044C6D0,0x0044C6D0,function
 EnemyBeginSpell,0x00409280,function
+ItemManagerRegisterCallbacks,0x0041AD90,function
+ItemManagerUpdateBody,0x0041AFD0,function
+ItemManagerView::Draw,0x0041B8E0,function
+ItemManagerView::OnUpdate,0x0041BA00,function
