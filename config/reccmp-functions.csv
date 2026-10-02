@@ -865,3 +865,4 @@ ItemManagerView::ConvertPowerItems,0x0041BA50,function
 ItemManagerView::Spawn,0x0041BB00,function
 EnemyDropItemCounts,0x0040C9A0,function
 EnemyDropItemCountsCore,0x0040C9D0,function
+SoundPlayerView::ProcessQueues,0x0043DDF0,function

@@ -34,10 +34,10 @@ MCP. Attest the read-only local project with
 `scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
 focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-02): 1,732 reviewed candidates, 866 source
+Current ledger checkpoint (2026-10-02): 1,732 reviewed candidates, 867 source
 mappings, 1,091 canonical exact functions and 103,003 canonical exact `.text`
 bytes. Confirmed authored ownership is 265,810 bytes; authored exact bytes are
-37,290 (14.0%). The authored source backlog is 145 functions. The two Item
+37,290 (14.0%). The authored source backlog is 146 functions. The two Item
 record lifecycle exact units add 138 overall bytes but have indeterminate
 origin. The drop-helper mappings add 551 authored source-present bytes without exact
 credit. Windows i386 product/runtime closure remains open; these bounded claims
@@ -134,8 +134,8 @@ Use this order unless new target evidence changes the dependency graph:
   `+0x4108` name buffer. This corrects the old unresolved path ABI in the
   ledger. The earlier `/GL` graph without `/GS /EHsc` emitted lookup 216/227 and
   ReopenBgm 63/55 bytes. The corrected profile and caller graph now close
-  ReopenBgm exactly, as described below. The next useful Sound ABI route
-  is its source-absent 1419-byte queue caller; the indexed-BGM and stream
+  ReopenBgm exactly, as described below. At that checkpoint the 1419-byte
+  queue caller was the next Sound ABI route; the indexed-BGM and stream
   helper sources are described below. The unresolved selected
   PE/map/PDB are frozen below
   `build/analysis-sound-getfmt-selected/` (PE SHA-256
@@ -151,8 +151,8 @@ Use this order unless new target evidence changes the dependency graph:
   Source layout assertions cover all used offsets. A selected `/GL` graph
   rooted at `LoadBgm` with ZWave support emits 317/298 bytes for this owner;
   lookup and ReopenBgm were 216/227 and 63/55 in that earlier graph.
-  The source-absent 1419-byte queue caller `0x0043DDF0` and the still
-  non-exact stream helper `0x0044CBF0` prevent a target-shaped private ABI
+  The then-source-absent 1419-byte queue caller `0x0043DDF0` and the then
+  non-exact stream helper `0x0044CBF0` prevented a target-shaped private ABI
   graph. That earlier graph earned no new exact bytes.
   The same five affected existing exact units cold-replay 564/564 bytes. The
   focused diagnostic and replay reports are under
@@ -171,8 +171,20 @@ Use this order unless new target evidence changes the dependency graph:
   The latter graph is frozen under `build/analysis-sound-stream-selected/`
   (PE SHA-256 `d7a16e784edf8f87b8d142b0774cbc9c412e027b407f626bf29ab5da508b7c8b`).
   Focused Sound/ZWave cold replay passes all 17 accepted units, 2034/2034
-  bytes across nine compiler artifacts. The 1419-byte queue caller remains
-  source-absent and is the next Sound ABI dependency.
+  bytes across nine compiler artifacts. The queue caller is now source-mapped
+  below and remains non-exact.
+- `SoundPlayerView::ProcessQueues @ 0x0043DDF0` now has a natural maintained
+  source mapping for its eight BGM commands and 12-slot SFX queue. The target
+  has a 1419-byte decoded code body ending in RET 4 at `0x0043E37A`; a NOP
+  precedes its eight-entry switch table at `0x0043E37C-0x0043E39B`, and four
+  CC bytes precede the next function. All eight table targets lie inside the
+  queue body. The table is adjacent switch data, not currently part of the
+  reviewed 1419-byte code extent. The first `/GL /GS /EHsc` Sound+ZWave
+  linked diagnostic has 1348 bytes of code plus a 32-byte switch table in its
+  1380-byte PDB contribution; the target has 1419 code bytes, a NOP and then
+  the 32-byte table. It is non-exact. Focused Sound/ZWave cold replay keeps all
+  17 accepted units exact, 2034/2034 bytes. The remaining queue/streaming helper ABIs
+  and original production partition are open.
 - `AnmRenderManagerView::SetupVertexBuffer @ 0x004462F0` is now canonical
   exact at 472 bytes. The maintained natural source uses target-supported
   three-float/raw-dword views for the independent background-vertex mirror and

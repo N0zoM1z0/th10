@@ -864,3 +864,4 @@ ItemManagerView::ConvertPowerItems
 ItemManagerView::Spawn
 EnemyDropItemCounts
 EnemyDropItemCountsCore
+SoundPlayerView::ProcessQueues
