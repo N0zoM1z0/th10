@@ -176,7 +176,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004091C0,0x0040921E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00409230,0x00409261,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 50/50, tail ret"
 0x00409270,0x00409279,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
-0x00409280,0x00409BE2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x00409280,0x00409BFF,reviewed,high,target-spell-switch-owner-2026-10-02,"Complete 2403-byte executable decode ends in RET 0x10; one-byte NOP alignment and seven-entry absolute switch table extend physical ownership through 0x00409BFF. Index guard, all seven internal instruction-boundary destinations, table xref and next independent 0x00409C00 entry reviewed; no overlap or external interior branch."
 0x00409C00,0x00409D8E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00409D90,0x00409DBD,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=13; no overlap or external interior branch
 0x00409DC0,0x00409DC3,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

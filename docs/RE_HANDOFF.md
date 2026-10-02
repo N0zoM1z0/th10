@@ -36,7 +36,8 @@ focused cold replays scoped to the changed source and its exact caller seams.
 
 Current ledger checkpoint (2026-10-02): 1,730 reviewed candidates, 843 source
 mappings, 1,084 canonical exact functions, and 102,583 canonical exact `.text`
-bytes. Confirmed authored code is 265,662 bytes; the authored source-present
+bytes. Confirmed authored physical ownership is 265,691 bytes after the
+29-byte spell-start table/alignment boundary correction; the authored source-present
 exact backlog is 129 functions, and the Windows i386 product build remains
 open. This checkpoint promotes the 472-byte `SetupVertexBuffer` linked-PE unit
 after two independent cold exact replays, in addition to the 202-byte
@@ -145,7 +146,8 @@ normalized byte score is not exactness.
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-047: 7,020/7,020; pre-table 6,692/6,692; 931/6,264 normalized comparable bytes; all 59 physical groups retain target order and 56 have target-sized spans. Sum of absolute case-gap deltas falls from 154 to 10 bytes. Case-aligned diagnostics improve from 4,021/5,769 to 5,359/5,730; these are not exact bytes. `StartSubroutine` stays 551/550 and 329/534. |
 
 Current campaign artifacts are under `.analysis/gpt-6.1-sol/` in
-`20261002-enemy-tail/`, `20261002-anm-execute/` and `20261002-ecl-start/`.
+`20261002-enemy-tail/`, `20261002-enemy-frame/`, `20261002-anm-execute/`
+and `20261002-ecl-start/`.
 They are convenience snapshots, not acceptance authority.
 
 ## ECL runner: current recovery point
@@ -474,6 +476,13 @@ Target-backed constraints to preserve:
   two `DEC` tests. The retained inner switch recovers this shape. Operand 2 is
   still read before operand 1; its observed spill does not establish a fifth
   `EnemyBeginSpell` argument. Preserve the call without inventing a parameter;
+- `EnemyBeginSpell @ 0x00409280` remains declaration-only. Its corrected
+  physical owner is 2,432 bytes through `0x00409BFF`: 2,403 executable bytes,
+  one NOP and a seven-entry switch table at `0x00409BE4`. The table is indexed
+  by the global at `0x00474C7C` minus one after an unsigned upper guard of six;
+  all destinations are internal instruction boundaries. The next independent
+  owner begins at `0x00409C00`. Future callee reconstruction must include the
+  table in a complete linked comparison;
 - entry scratch and stack-home lifetime remain whole-owner problems. Do not
   use dummy padding, fake volatile dependencies or target-byte patches.
 
@@ -529,6 +538,27 @@ Current evidence under `.analysis/gpt-6.1-sol/20261002-enemy-tail/`:
   marker and rejects Ghidra script errors even when Ghidra exits zero. Actual
   checks pass for an interior spell query and the legacy operation, and reject
   a middle-of-instruction address and an address without a function.
+
+Further frame investigation under `20261002-enemy-frame/` reproduces the
+retained frontier from `7aac8a6`. Unsigned-short opcode forms, a scoped decode
+for-loop and scoped cipher locals leave the measured frontier unchanged. A signed-int opcode raises
+whole-owner agreement to 920/11,544 but lowers case-aligned agreement to
+2,431/11,135 and retains the wrong frame. Separating the name buffer from the
+request overlay, while preserving its current 0x84 capacity, recovers the
+219-byte spell span but grows the frame to 0x304 and the parent to 14,432 bytes;
+it is rejected. All source trials are restored. The instruction-sequence ESP
+diagnostic pairs only cookie loads in this graph and does not locate a missing
+source local. Callee name copies do not prove dispatcher buffer capacity.
+
+The focused target-bound boundary replay passes and the fresh inventory now
+assigns the seven-entry spell table to its caller, eliminating the 29-byte gap.
+The unmodified global `report-boundary-inventory.py --check-ledger` already
+failed before this correction at `0x00401100` because historical manual ledger
+evidence text differs from regenerated audit text. No broad ledger rewrite is
+performed; unrelated reviews and existing global audit diagnostics remain.
+The next coupled route is the missing spell-start implementation and its ANM
+dependencies, with the corrected physical boundary. Canonical exact totals are
+unchanged and the 95% objective remains open.
 
 Query the target spell block directly:
 
