@@ -34,11 +34,11 @@ MCP. Attest the read-only local project with
 `scripts/repo-python scripts/ghidra.py check` before target analysis. Keep
 focused cold replays scoped to the changed source and its exact caller seams.
 
-Current ledger checkpoint (2026-10-02): 1,730 reviewed candidates, 843 source
+Current ledger checkpoint (2026-10-02): 1,730 reviewed candidates, 844 source
 mappings, 1,084 canonical exact functions, and 102,583 canonical exact `.text`
 bytes. Confirmed authored physical ownership is 265,691 bytes after the
 29-byte spell-start table/alignment boundary correction; the authored source-present
-exact backlog is 129 functions, and the Windows i386 product build remains
+exact backlog is 130 functions, and the Windows i386 product build remains
 open. This checkpoint promotes the 472-byte `SetupVertexBuffer` linked-PE unit
 after two independent cold exact replays, in addition to the 202-byte
 `CWaveFile::Read` closure. The same broader checkpoint adds 37 source-less VC7.1
@@ -146,7 +146,8 @@ normalized byte score is not exactness.
 | `EclVmContext::Run @ 0x0044E1A0` | ECLVM-047: 7,020/7,020; pre-table 6,692/6,692; 931/6,264 normalized comparable bytes; all 59 physical groups retain target order and 56 have target-sized spans. Sum of absolute case-gap deltas falls from 154 to 10 bytes. Case-aligned diagnostics improve from 4,021/5,769 to 5,359/5,730; these are not exact bytes. `StartSubroutine` stays 551/550 and 329/534. |
 
 Current campaign artifacts are under `.analysis/gpt-6.1-sol/` in
-`20261002-enemy-tail/`, `20261002-enemy-frame/`, `20261002-anm-execute/`
+`20261002-enemy-spell/`, `20261002-enemy-tail/`, `20261002-enemy-frame/`,
+`20261002-anm-execute/`
 and `20261002-ecl-start/`.
 They are convenience snapshots, not acceptance authority.
 
@@ -476,13 +477,18 @@ Target-backed constraints to preserve:
   two `DEC` tests. The retained inner switch recovers this shape. Operand 2 is
   still read before operand 1; its observed spill does not establish a fifth
   `EnemyBeginSpell` argument. Preserve the call without inventing a parameter;
-- `EnemyBeginSpell @ 0x00409280` remains declaration-only. Its corrected
-  physical owner is 2,432 bytes through `0x00409BFF`: 2,403 executable bytes,
+- `EnemyBeginSpell @ 0x00409280` now has a complete maintained body in
+  `EnemyEclDispatcher.cpp`, including all seven stage arms; it remains non-exact.
+  Its physical owner is 2,432 bytes through `0x00409BFF`: 2,403 executable bytes,
   one NOP and a seven-entry switch table at `0x00409BE4`. The table is indexed
   by the global at `0x00474C7C` minus one after an unsigned upper guard of six;
   all destinations are internal instruction boundaries. The next independent
-  owner begins at `0x00409C00`. Future callee reconstruction must include the
-  table in a complete linked comparison;
+  owner begins at `0x00409C00`. Future exact comparison must include the table;
+- the spell helper takes four stack arguments and ends in `RET 0x10`.
+  Ghidra omits private arguments at several calls: sound id 14 is live in EDI,
+  and loaded-script setup consumes the explicit VM receiver and script index.
+  Neither missing decompiler arguments nor the caller's extra operand read
+  justify inventing a fifth parameter;
 - entry scratch and stack-home lifetime remain whole-owner problems. Do not
   use dummy padding, fake volatile dependencies or target-byte patches.
 
@@ -549,6 +555,43 @@ request overlay, while preserving its current 0x84 capacity, recovers the
 it is rejected. All source trials are restored. The instruction-sequence ESP
 diagnostic pairs only cookie loads in this graph and does not locate a missing
 source local. Callee name copies do not prove dispatcher buffer capacity.
+
+Current spell implementation evidence under `20261002-enemy-spell/`:
+
+- source SHA-256 `5d45bbf1d54311df2c0db16128511ccd06ef803fcafeb8e7e126a7cf898d763a`
+  replaces the missing callee declaration with timer/name/flag setup, two
+  capped statistics records, 8+5 embedded VM initializations, ASCII/name/effect
+  creation, sound id 14, world position and child-script values, capped bonus,
+  and every stage arm. Neutral scalar aliases do not establish original data
+  owners. The partial state view does not establish full object ownership or
+  size, and its name span does not establish the dispatcher's buffer capacity;
+- stage setup uses VM receivers at state+0x10/+0x3BC and the ANM resource at
+  manager+0x38. Stage 7 below counter 24 initializes only the first embedded
+  VM. The final VM is allocated separately in every stage/conditional arm;
+- in the same six-TU `/GL /GS` graph, the complete spell contribution is
+  2,360/2,432 bytes, with structural agreement 240/1,996. It owns a seven-entry
+  table and has the target four-argument `RET 0x10`. Static call counts agree
+  at 14 AllocateVm, six InitializeVm and 15 InitializeForLoadedScript sites;
+  these are static sites, not fourteen allocations per invocation;
+- exactness still needs the target's three inline VM searches, out-of-line
+  final AddVmVariant0 call, statistics reload/copy-loop shape, and ANM private
+  register conventions. The candidate retains three FindVm calls and inlines
+  the final AddVmVariant0. FindVm currently carries TH10_ANM_NOINLINE in the
+  shared header; reconcile that policy with affected exact units before a
+  global change. Do not duplicate helpers or invent ABI shims for this score;
+- the parent retains 14,384 bytes, frame 0x2BC, 580/11,544 whole-owner agreement,
+  2,475/11,135 case-aligned agreement, 181 selectors and all 108 physical groups.
+  Three Spawn and five GetVm calls remain. Its frame/home/tail issues are open;
+- frozen `build/analysis-enemy-spell-selected/source.exe` has SHA-256
+  `48731b1b1ae6614be1f324a60072a91e88cc18cea44212468f5731e15244e369`.
+  Existing seam declarations replay Spawn/GetVm/QueueSoundSample at
+  577/577, 21/21 and 123/123 bytes in this diagnostic graph. Fresh canonical
+  source cold replay protects 14 units across three artifacts, 860/860 bytes;
+- `selected-probe.json`, `selected-callee-review.json`, `selected-summary.json`,
+  `selected-exact-replay.json` and `retained-seam-replay.json` retain the checks;
+  `inspect-selected.py`, `score-selected.py` and `replay-selected-seams.py`
+  reproduce the focused review against the frozen image. No new canonical
+  matches, runtime validation or whole-product closure are claimed.
 
 The focused target-bound boundary replay passes and the fresh inventory now
 assigns the seven-entry spell table to its caller, eliminating the 29-byte gap.

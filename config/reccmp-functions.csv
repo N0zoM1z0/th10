@@ -842,3 +842,4 @@ th10::leaf::Fn00449A30,0x00449A30,function
 th10::leaf::Fn0044C640,0x0044C640,function
 th10::leaf::Fn0044C660,0x0044C660,function
 th10::leaf::Fn0044C6D0,0x0044C6D0,function
+EnemyBeginSpell,0x00409280,function

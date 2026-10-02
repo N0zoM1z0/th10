@@ -2,6 +2,7 @@
 #include "EclVm.hpp"
 #include "Main.hpp"
 #include "Rng.hpp"
+#include "Gui.hpp"
 
 struct BulletSpawnDescriptorView;
 struct BulletManagerView
@@ -148,11 +149,38 @@ enum EnemyEclOpcode
 
 struct EnemyGameStateView
 {
-    unsigned char unknown000[0x774];
+    unsigned char unknown000[0x10];
+    AnmVmView stageVms[2];
+    AnmVmIdView asciiVmId;
+    AnmVmIdView nameVmId;
+    AnmVmIdView stageVmId;
     int managedVmId;
-    unsigned char unknown778[0x378c - 0x778];
+    AnmVmView frontVms[8];
+    AnmVmView secondaryFrontVms[5];
+    AnmVmTimerView spellTimer;
+    char spellName[0x40];
+    int spellId;
     unsigned int flags378C;
+    int initialSpellBonus;
+    int spellBonus;
+    int spellValue;
+    AnmFloat3View effectPosition;
 };
+typedef char EnemySpellEmbeddedVmsAt10[
+    (offsetof(EnemyGameStateView, stageVms) == 0x10) ? 1 : -1];
+typedef char EnemySpellFrontVmsAt778[
+    (offsetof(EnemyGameStateView, frontVms) == 0x778 &&
+     offsetof(EnemyGameStateView, secondaryFrontVms) == 0x24d8) ? 1 : -1];
+typedef char EnemySpellTimerAt3734[
+    (offsetof(EnemyGameStateView, spellTimer) == 0x3734) ? 1 : -1];
+typedef char EnemySpellNameAt3748[
+    (offsetof(EnemyGameStateView, spellName) == 0x3748 &&
+     offsetof(EnemyGameStateView, spellId) == 0x3788) ? 1 : -1];
+typedef char EnemySpellValuesAt3790[
+    (offsetof(EnemyGameStateView, initialSpellBonus) == 0x3790 &&
+     offsetof(EnemyGameStateView, spellBonus) == 0x3794 &&
+     offsetof(EnemyGameStateView, spellValue) == 0x3798 &&
+     offsetof(EnemyGameStateView, effectPosition) == 0x379c) ? 1 : -1];
 typedef char EnemyGameStateVmIdAt774[
     (offsetof(EnemyGameStateView, managedVmId) == 0x774) ? 1 : -1];
 typedef char EnemyGameStateFlagsAt378C[
@@ -796,6 +824,233 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
 }
 
 extern float __stdcall EnemyWrapAngle(float angle);
+
+// These aliases describe observed scalar/table inputs; original data owners
+// remain unknown. Target bindings: 477838, 47783C, 474C68, 474C6C,
+// 474C4C and 474C84 respectively.
+extern unsigned char *g_EnemySpellPlaybackState;
+extern unsigned char *g_EnemySpellStatistics;
+extern int g_EnemySpellStatisticsGroupA;
+extern int g_EnemySpellStatisticsGroupB;
+extern int g_EnemySpellBonusBase;
+extern int g_EnemySpellExtraCounter;
+
+// Complete maintained body for target 0x00409280, including every stage arm.
+// The four-stack-argument stdcall surface is target-proven; original source
+// class, filename and declaration shape remain unknown.
+void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value)
+{
+    EnemyGameStateView *state =
+        reinterpret_cast<EnemyGameStateView *>(gameState);
+    state->spellTimer.SetCurrent(0);
+    state->spellId = spellId;
+    strcpy(state->spellName, name);
+    state->flags378C = (state->flags378C & ~0x18u) | 3u;
+
+    if (*reinterpret_cast<int *>(g_EnemySpellPlaybackState + 0x10) != 1) {
+        unsigned char *statistics = g_EnemySpellStatistics;
+        int spellOffset = spellId * 0x90;
+        unsigned char *record = statistics +
+            (g_EnemySpellStatisticsGroupA * 3 + g_EnemySpellStatisticsGroupB) *
+                0x437c + spellOffset + 0x5a4;
+        strcpy(reinterpret_cast<char *>(record), name);
+        record = statistics +
+            (g_EnemySpellStatisticsGroupA * 3 + g_EnemySpellStatisticsGroupB) *
+                0x437c + spellOffset + 0x5a4;
+        int count = *reinterpret_cast<int *>(record + 0x84);
+        if (count < 99999) {
+            *reinterpret_cast<int *>(record + 0x84) = count + 1;
+        }
+        record = statistics + spellOffset + 0x19a8c;
+        strcpy(reinterpret_cast<char *>(record), name);
+        if (*reinterpret_cast<int *>(record + 0x84) < 99999) {
+            ++*reinterpret_cast<int *>(record + 0x84);
+        }
+    }
+
+    for (int i = 0; i < 8; ++i) {
+        g_GuiView->frontAnm->InitializeAndExecuteScriptIndex(
+            &state->frontVms[i], i + 0x3a);
+    }
+    for (int i = 0; i < 5; ++i) {
+        g_GuiView->frontAnm->InitializeAndExecuteScriptIndex(
+            &state->secondaryFrontVms[i], i + 0x42);
+    }
+
+    state->asciiVmId = g_AsciiManagerView->asciiAnm->CreateVmVariant0(1, 15);
+    state->nameVmId = g_AsciiManagerView->textAnm->CreateVmVariant0(0x48, 15);
+    state->stageVmId = g_AsciiManagerView->asciiAnm->CreateVmVariant0(2, 15);
+    AnmVmView *nameVm = g_AnmRenderManagerView->FindVm(state->nameVmId);
+    if (nameVm == 0) {
+        state->nameVmId.value = 0;
+    }
+    g_AnmRenderManagerView->DrawTextRight(nameVm, 0x00ffffffu, name);
+    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+        QueueSoundSample(14, 0);
+    state->managedVmId = g_EnemyPrimaryResourceOwner->primaryEnemyResource->
+        CreateVmVariant0(0x1a1, 15).value;
+    state->effectPosition = *reinterpret_cast<AnmFloat3View *>(
+        reinterpret_cast<unsigned char *>(g_EnemyManager->specialEnemySlots[0]) +
+        0x1068);
+    g_AnmRenderManagerView->SetVmWorldPosition(
+        AnmVmIdView(state->managedVmId), &state->effectPosition);
+
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(
+        AnmVmIdView(state->managedVmId));
+    if (vm == 0) {
+        state->managedVmId = 0;
+    }
+    AnmVmLayerNodeView *node = &vm->layerNode;
+    AnmVmView *child = 0;
+    while (node != 0) {
+        AnmVmView *candidate = static_cast<AnmVmView *>(node->owner);
+        if (candidate->scriptIndex == 0x19f) {
+            child = candidate;
+            break;
+        }
+        node = node->next;
+    }
+    child->intVar2 = value;
+
+    vm = g_AnmRenderManagerView->FindVm(AnmVmIdView(state->managedVmId));
+    if (vm == 0) {
+        state->managedVmId = 0;
+    }
+    node = &vm->layerNode;
+    child = 0;
+    while (node != 0) {
+        AnmVmView *candidate = static_cast<AnmVmView *>(node->owner);
+        if (candidate->scriptIndex == 0x1a0) {
+            child = candidate;
+            break;
+        }
+        node = node->next;
+    }
+    child->intVar2 = value;
+    state->spellValue = value;
+    int bonus = (g_EnemyChapterState.chapter * 3 + 10) *
+        g_EnemySpellBonusBase * 10;
+    state->initialSpellBonus = bonus;
+    state->spellBonus = bonus;
+    if (bonus >= 100000000) {
+        state->spellBonus = 99999999;
+    }
+    g_EnemyPrimaryResourceOwner->primaryEnemyResource->
+        CreateVmVariant0(0x1ab, 15);
+
+    AnmLoadedView *stageResource;
+    AnmVmView *stageVm;
+    int stageScript;
+    switch (g_EnemyChapterState.chapter) {
+    case 1:
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0c);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0b);
+        if (spellId < 2) {
+            stageResource = reinterpret_cast<AnmLoadedView *>(
+                g_EnemyManager->effectResources[2]);
+            stageVm = g_AnmRenderManagerView->AllocateVm();
+            stageScript = 0x0f;
+        }
+        else {
+            stageResource = reinterpret_cast<AnmLoadedView *>(
+                g_EnemyManager->effectResources[2]);
+            stageVm = g_AnmRenderManagerView->AllocateVm();
+            stageScript = 0x0e;
+        }
+        break;
+    case 2:
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0e);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0f);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        stageVm = g_AnmRenderManagerView->AllocateVm();
+        stageScript = 0x11;
+        break;
+    case 3:
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x12);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x13);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        stageVm = g_AnmRenderManagerView->AllocateVm();
+        stageScript = 0x15;
+        break;
+    case 4:
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x13);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x14);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        stageVm = g_AnmRenderManagerView->AllocateVm();
+        stageScript = 0x16;
+        break;
+    case 5:
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x0c);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x0d);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        stageVm = g_AnmRenderManagerView->AllocateVm();
+        stageScript = 0x0f;
+        break;
+    case 6:
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[0].InitializeForLoadedScript(stageResource, 0x21);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        state->stageVms[1].InitializeForLoadedScript(stageResource, 0x22);
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        stageVm = g_AnmRenderManagerView->AllocateVm();
+        stageScript = 0x24;
+        break;
+    case 7:
+        stageResource = reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[2]);
+        if (g_EnemySpellExtraCounter < 24) {
+            state->stageVms[0].InitializeForLoadedScript(stageResource, 0x26);
+            stageResource = reinterpret_cast<AnmLoadedView *>(
+                g_EnemyManager->effectResources[2]);
+            stageVm = g_AnmRenderManagerView->AllocateVm();
+            stageScript = 0x28;
+        }
+        else {
+            state->stageVms[0].InitializeForLoadedScript(stageResource, 0x1b);
+            stageResource = reinterpret_cast<AnmLoadedView *>(
+                g_EnemyManager->effectResources[2]);
+            state->stageVms[1].InitializeForLoadedScript(stageResource, 0x1c);
+            stageResource = reinterpret_cast<AnmLoadedView *>(
+                g_EnemyManager->effectResources[2]);
+            stageVm = g_AnmRenderManagerView->AllocateVm();
+            stageScript = 0x1e;
+        }
+        break;
+    default:
+        return;
+    }
+    stageVm->flags35C |= 0x40000000u;
+    stageVm->renderLayer = 15;
+    stageResource->InitializeVm(stageVm, stageScript);
+    g_AnmRenderManagerView->AddVmVariant0(stageVm);
+}
 
 struct EnemyDropVectorView
 {
