@@ -282,6 +282,7 @@ GameWindowView::WindowProc
 GameWindowView::Present
 GameWindowView::Render
 GameWindowView::GetTimestamp
+GameWindowView::InitD3DInterface
 GameWindowView::CreateGameWindow
 GameWindowView::InitD3DRendering
 GameWindowView::ResetRenderState

@@ -164,12 +164,8 @@ int WINAPI WinMain(
 
 restart:
     g_MainCallbackOwner = MainCreateCallbackOwner();
-    g_MainSupervisorView.d3dInterface = Direct3DCreate9(MAIN_D3D_SDK_VERSION);
-    if (g_MainSupervisorView.d3dInterface == NULL)
-    {
-        MainFatal(g_MainD3dCreateError);
+    if (GameWindowView::InitD3DInterface() != 0)
         goto stop;
-    }
 
     if (GameWindowView::CreateGameWindow(instance) != 0)
         goto stop;
@@ -579,6 +575,20 @@ int GameWindowView::CreateGameWindow(HINSTANCE instance)
     Sleep(16);
     SendMessageA(
         g_GameWindowView.window, WM_SYSCOMMAND, SC_RESTORE, 0);
+    return 0;
+}
+
+// TH10_MAIN_FUNCTION: 0x00439700 GameWindowView::InitD3DInterface
+// The target keeps this externally visible helper while WinMain contains the
+// same sequence inline. Its logger call uses a private LTCG register seam.
+int GameWindowView::InitD3DInterface()
+{
+    g_MainSupervisorView.d3dInterface = Direct3DCreate9(MAIN_D3D_SDK_VERSION);
+    if (g_MainSupervisorView.d3dInterface == NULL)
+    {
+        MainFatal(g_MainD3dCreateError);
+        return 1;
+    }
     return 0;
 }
 

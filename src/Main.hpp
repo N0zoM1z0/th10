@@ -199,6 +199,7 @@ struct GameWindowView
     static int __stdcall Render(GameWindowView *window);
     static double GetTimestamp();
     static int CreateGameWindow(HINSTANCE instance);
+    static int InitD3DInterface();
     static int InitD3DRendering();
     static void ResetRenderState();
     static int CheckForRunningGameInstance();

@@ -296,6 +296,7 @@ GameWindowView::WindowProc,0x004390E0,function
 GameWindowView::Present,0x004391F0,function
 GameWindowView::Render,0x00439390,function
 GameWindowView::GetTimestamp,0x00439540,function
+GameWindowView::InitD3DInterface,0x00439700,function
 GameWindowView::CreateGameWindow,0x00439730,function
 GameWindowView::InitD3DRendering,0x00439890,function
 GameWindowView::ResetRenderState,0x00439D20,function
