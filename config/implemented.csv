@@ -36,6 +36,8 @@ CMemoryPbgFile::Seek
 CWin32ResourcePbgFile::Open
 PbgArchive::LoadFromResource
 DecompressData
+ReplayFile::Open
+ReplayFile::Read
 FileSystem::LoadArchive
 FileSystem::Decrypt
 FileSystem::Encrypt

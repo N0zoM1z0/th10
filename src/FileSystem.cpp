@@ -12,9 +12,57 @@ extern unsigned char gReplayFileOpenCount;
 extern PbgArchive g_PbgArchives[20];
 extern int g_PbgArchiveCount;
 
-// Maintained reconstruction source. The namespace/function name is retained as
-// an adjacent-supported descriptive name after TH10 target behavior recovery;
-// original TU and physical compiler ownership remain unknown.
+// Maintained reconstruction source. The namespace/function names are retained
+// after TH10 target behavior recovery; original TU and physical compiler
+// ownership remain unknown.
+namespace ReplayFile
+{
+// TH10_FILESYSTEM_FUNCTION: 0x0044B6B0 ReplayFile::Open
+int Open(const char *path)
+{
+    EnterCriticalSection(&gReplayFileCriticalSection);
+    ++gReplayFileOpenCount;
+    gReplayFileHandle = CreateFileA(
+        path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+        FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+    if (gReplayFileHandle == INVALID_HANDLE_VALUE)
+    {
+        LPSTR errorMessage;
+        FormatMessageA(
+            FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
+                FORMAT_MESSAGE_IGNORE_INSERTS,
+            NULL, GetLastError(), 0x400,
+            reinterpret_cast<LPSTR>(&errorMessage), 0, NULL);
+        LocalFree(errorMessage);
+        LeaveCriticalSection(&gReplayFileCriticalSection);
+        --gReplayFileOpenCount;
+        return -1;
+    }
+    return 0;
+}
+
+// TH10_FILESYSTEM_FUNCTION: 0x0044B790 ReplayFile::Read
+// The target receives size through private EDI after LTCG; the maintained
+// source keeps the ordinary source-level parameter.
+void *Read(unsigned int size)
+{
+    DWORD bytesRead;
+
+    if (gReplayFileHandle == INVALID_HANDLE_VALUE)
+        return NULL;
+
+    void *data = malloc(size);
+    if (data == NULL)
+    {
+        CloseHandle(gReplayFileHandle);
+        return NULL;
+    }
+
+    ReadFile(gReplayFileHandle, data, size, &bytesRead, NULL);
+    return data;
+}
+}
+
 namespace FileSystem
 {
 // TH10_FILESYSTEM_FUNCTION: 0x004357D0 FileSystem::LoadArchive

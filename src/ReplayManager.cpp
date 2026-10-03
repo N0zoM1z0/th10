@@ -22,15 +22,6 @@ int OpenWriteFile(const char *filename);
 void WriteToOpenFile(const void *data, unsigned int size);
 }
 
-namespace ReplayFile
-{
-// Descriptive source-level interfaces for the target-observed stateful replay
-// read seam. The original TH10 identifiers and translation-unit owner remain
-// unproven.
-int Open(const char *path);
-void *Read(unsigned int size);
-}
-
 #pragma pack(push, 4)
 struct ReplayTimingSource
 {

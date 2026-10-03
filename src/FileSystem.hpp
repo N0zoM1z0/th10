@@ -1,5 +1,11 @@
 #pragma once
 
+namespace ReplayFile
+{
+int Open(const char *path);
+void *Read(unsigned int size);
+}
+
 namespace FileSystem
 {
 unsigned char *OpenFile(const char *path, int *sizeOut, int mode);
