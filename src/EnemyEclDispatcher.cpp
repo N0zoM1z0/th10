@@ -229,7 +229,6 @@ typedef char EnemyCancelManagerResourceAt3E0B50[
     (offsetof(EnemyCancelManagerView, primaryEnemyResource) == 0x3e0b50) ? 1 : -1];
 
 extern int g_EnemyDifficulty;
-extern int g_EnemyRank;
 extern EnemyManagerView *g_EnemyManager;
 extern EnemyGameStateView *g_EnemyGameState;
 extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
@@ -627,6 +626,8 @@ struct EnemyChapterStateView
     int chapter;
     int unknown048;
     int chapterTimer;
+    unsigned char unknown050[8];
+    int rank;
 };
 typedef char EnemySpellStatisticsStateOffsets[
     (offsetof(EnemyChapterStateView, spellBonusBase) == 0x0c &&
@@ -637,6 +638,7 @@ typedef char EnemyStageAndChapterOffsets[
      offsetof(EnemyChapterStateView, chapter) == 0x44 &&
      offsetof(EnemyChapterStateView, chapterTimer) == 0x4c) ? 1 : -1];
 
+typedef char EnemyRankOffsetIs58[(offsetof(EnemyChapterStateView, rank) == 0x58) ? 1 : -1];
 extern EnemyChapterStateView g_EnemyChapterState;
 
 static __declspec(noinline) void EnemySetChapter(
@@ -2330,7 +2332,7 @@ dispatch_difficulty_float_index_4_a:
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_3:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    if (g_EnemyRank >= 0x200) {
+    if (g_EnemyChapterState.rank >= 0x200) {
 dispatch_bullet_speed_high:
       iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
       fVar19 = (ReadFloatArgument(5));
@@ -2339,12 +2341,12 @@ dispatch_bullet_speed_high:
       *(float *)(iVar26 + 0x2e0) = (float)fVar19;
       return 0;
     }
-    iVar27 = g_EnemyRank + 0x200;
+    iVar27 = g_EnemyChapterState.rank + 0x200;
     goto dispatch_select_bullet_speed_low;
   case ENEMY_ECL_SET_BULLET_SPEED_BY_RANK_5:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    if (g_EnemyRank >= 600) {
+    if (g_EnemyChapterState.rank >= 600) {
       iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
       fVar19 = (ReadFloatArgument(9));
       *(float *)(iVar26 + 0x2dc) = (float)fVar19;
@@ -2352,7 +2354,7 @@ dispatch_bullet_speed_high:
       *(float *)(iVar26 + 0x2e0) = (float)fVar19;
       return 0;
     }
-    if (g_EnemyRank >= 200) {
+    if (g_EnemyChapterState.rank >= 200) {
       iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
       fVar19 = (ReadFloatArgument(7));
       *(float *)(iVar26 + 0x2dc) = (float)fVar19;
@@ -2360,8 +2362,8 @@ dispatch_bullet_speed_high:
       *(float *)(iVar26 + 0x2e0) = (float)fVar19;
       return 0;
     }
-    if (g_EnemyRank >= -200) goto dispatch_bullet_speed_high;
-    iVar27 = g_EnemyRank + 600;
+    if (g_EnemyChapterState.rank >= -200) goto dispatch_bullet_speed_high;
+    iVar27 = g_EnemyChapterState.rank + 600;
 dispatch_select_bullet_speed_low:
     iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
     if (0 <= iVar27) {
@@ -2385,17 +2387,17 @@ dispatch_bullet_speed_lowest:
     float highSpeedA = ReadFloatArgument(3);
     float highSpeedB = ReadFloatArgument(4);
     bulletPatterns[patternIndex].fields.speedA =
-         (highSpeedA - lowSpeedA) * ((float)g_EnemyRank + 1024.0f) *
+         (highSpeedA - lowSpeedA) * ((float)g_EnemyChapterState.rank + 1024.0f) *
          0.00048828125f + lowSpeedA;
     bulletPatterns[patternIndex].fields.speedB =
-         (highSpeedB - lowSpeedB) * ((float)g_EnemyRank + 1024.0f) *
+         (highSpeedB - lowSpeedB) * ((float)g_EnemyChapterState.rank + 1024.0f) *
          0.00048828125f + lowSpeedB;
     return 0;
   }
   case ENEMY_ECL_SET_BULLET_COUNT_BY_RANK_3:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    if (g_EnemyRank >= 0x200) {
+    if (g_EnemyChapterState.rank >= 0x200) {
 dispatch_bullet_count_high:
       iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
       uVar22 = ENEMY_READ_INT_DIRECT(5);
@@ -2404,12 +2406,12 @@ dispatch_bullet_count_high:
       *(short *)(iVar26 + 0x4ba) = (short)uVar22;
       return 0;
     }
-    iVar27 = g_EnemyRank + 0x200;
+    iVar27 = g_EnemyChapterState.rank + 0x200;
     goto dispatch_select_bullet_count_low;
   case ENEMY_ECL_SET_BULLET_COUNT_BY_RANK_5:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     iVar26 = (int)uVar22;
-    if (g_EnemyRank >= 600) {
+    if (g_EnemyChapterState.rank >= 600) {
       iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
       uVar22 = ENEMY_READ_INT_DIRECT(9);
       *(short *)(iVar26 + 0x4b8) = (short)uVar22;
@@ -2421,7 +2423,7 @@ dispatch_bullet_count_high:
       *(short *)(iVar26 + 0x4ba) = (short)uVar22;
       return 0;
     }
-    if (g_EnemyRank >= 200) {
+    if (g_EnemyChapterState.rank >= 200) {
       iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
       uVar22 = ENEMY_READ_INT_DIRECT(7);
       *(short *)(iVar26 + 0x4b8) = (short)uVar22;
@@ -2433,8 +2435,8 @@ dispatch_bullet_count_high:
       *(short *)(iVar26 + 0x4ba) = (short)uVar22;
       return 0;
     }
-    if (g_EnemyRank >= -200) goto dispatch_bullet_count_high;
-    iVar27 = g_EnemyRank + 600;
+    if (g_EnemyChapterState.rank >= -200) goto dispatch_bullet_count_high;
+    iVar27 = g_EnemyChapterState.rank + 600;
 dispatch_select_bullet_count_low:
     iVar11 = *(int *)((int)runtimeAddress + 0x14d8);
     iVar26 = iVar26 * 0x210 + (int)runtimeAddress;
@@ -2457,12 +2459,12 @@ dispatch_select_bullet_count_low:
     uVar24 = ENEMY_READ_INT_DIRECT(3);
     uVar25 = ENEMY_READ_INT_DIRECT(4);
     iVar27 = (int)uVar22 * 0x210;
-    iVar26 = ((int)uVar24 - (int)uVar23) * (g_EnemyRank + 0x400);
+    iVar26 = ((int)uVar24 - (int)uVar23) * (g_EnemyChapterState.rank + 0x400);
     *(short *)(iVar27 + 0x4b8 + (int)runtimeAddress) =
-         (short)((int)(iVar26 + (iVar26 >> 0x1f & 0x7ffU)) >> 0xb) + (short)uVar23;
-    iVar26 = ((int)uVar25 - secondLowBulletCount) * (g_EnemyRank + 0x400);
+         (short)(iVar26 / 2048) + (short)uVar23;
+    iVar26 = ((int)uVar25 - secondLowBulletCount) * (g_EnemyChapterState.rank + 0x400);
     *(short *)(iVar27 + (int)runtimeAddress + 0x4ba) =
-         (short)((int)(iVar26 + (iVar26 >> 0x1f & 0x7ffU)) >> 0xb) +
+         (short)(iVar26 / 2048) +
          (short)secondLowBulletCount;
     return 0;
   case ENEMY_ECL_SET_BULLET_AIM_MODE:
@@ -2863,25 +2865,25 @@ dispatch_select_bullet_count_low:
     EnemySetChapter(&g_EnemyChapterState, (int)uVar22);
     return 0;
   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_3:
-    if (g_EnemyRank >= 0x200) {
+    if (g_EnemyChapterState.rank >= 0x200) {
       iVar27 = 2;
       goto dispatch_rank_float_tail_b;
     }
     iVar27 = 0;
-    if (g_EnemyRank > -0x200) goto dispatch_rank_float_tail_b;
+    if (g_EnemyChapterState.rank > -0x200) goto dispatch_rank_float_tail_b;
     goto dispatch_rank_float_tail_a;
   case ENEMY_ECL_SELECT_FLOAT_BY_RANK_5:
-    if (g_EnemyRank >= 600) {
+    if (g_EnemyChapterState.rank >= 600) {
       goto dispatch_difficulty_float_index_4_a;
     }
-    if (g_EnemyRank >= 200) {
+    if (g_EnemyChapterState.rank >= 200) {
       goto dispatch_difficulty_float_index_3;
     }
-    if (g_EnemyRank >= -200) {
+    if (g_EnemyChapterState.rank >= -200) {
       iVar27 = 2;
       goto dispatch_rank_float_tail_a;
     }
-    if (g_EnemyRank < -400) {
+    if (g_EnemyChapterState.rank < -400) {
       iVar27 = 0;
       goto dispatch_rank_float_tail_a;
     }
@@ -2908,11 +2910,11 @@ dispatch_store_float_result_a:
     fVar21 = (ReadFloatArgument(2));
     local_2a8 = (float)fVar21;
     pfVar15 = (float *)((int)ResolveFloatArgument(0));
-    *pfVar15 = (local_2a8 - (float)fVar19) * ((float)g_EnemyRank + 1024.0f) * 0.00048828125f +
+    *pfVar15 = (local_2a8 - (float)fVar19) * ((float)g_EnemyChapterState.rank + 1024.0f) * 0.00048828125f +
                (float)fVar19;
     return 0;
   case ENEMY_ECL_SELECT_INT_BY_RANK_3:
-    if (0x1ff < g_EnemyRank) {
+    if (0x1ff < g_EnemyChapterState.rank) {
 dispatch_rank_int_high:
       puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
       uVar22 = ReadIntArgument(2);
@@ -2921,20 +2923,20 @@ dispatch_rank_int_high:
     }
     goto dispatch_rank_int_low;
   case ENEMY_ECL_SELECT_INT_BY_RANK_5:
-    if (599 < g_EnemyRank) {
+    if (599 < g_EnemyChapterState.rank) {
       puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
       uVar22 = ReadIntArgument(4);
       *puVar5 = (int)uVar22;
       return 0;
     }
-    if (199 < g_EnemyRank) {
+    if (199 < g_EnemyChapterState.rank) {
       puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
       uVar22 = ReadIntArgument(3);
       *puVar5 = (int)uVar22;
       return 0;
     }
-    if (-0xc9 < g_EnemyRank) goto dispatch_rank_int_high;
-    if (-0x191 < g_EnemyRank) {
+    if (-0xc9 < g_EnemyChapterState.rank) goto dispatch_rank_int_high;
+    if (-0x191 < g_EnemyChapterState.rank) {
       puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
       uVar22 = ReadIntArgument(1);
       *puVar5 = (int)uVar22;
@@ -2949,8 +2951,8 @@ dispatch_rank_int_low:
     uVar22 = ReadIntArgument(1);
     uVar23 = ReadIntArgument(2);
     piVar7 = (int *)((int)ResolveIntArgument(0));
-    iVar26 = ((int)uVar23 - (int)uVar22) * (g_EnemyRank + 0x400);
-    *piVar7 = ((int)(iVar26 + (iVar26 >> 0x1f & 0x7ffU)) >> 0xb) + (int)uVar22;
+    iVar26 = ((int)uVar23 - (int)uVar22) * (g_EnemyChapterState.rank + 0x400);
+    *piVar7 = (iVar26 / 2048) + (int)uVar22;
     return 0;
   case ENEMY_ECL_SET_SPELL_TIMEOUT:
     uVar22 = ReadIntArgument(0);
