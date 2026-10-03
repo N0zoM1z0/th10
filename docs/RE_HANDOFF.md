@@ -1,9 +1,10 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-03. The operator has paused reconstruction. This is a clean
-handoff, not a claim that exact reconstruction, the Windows product, or runtime
-validation is complete. Do not start another reconstruction batch until the
-operator explicitly resumes it. The detailed 2026-10-02 campaign record is in
+Updated 2026-10-03. The operator explicitly resumed TH10 through Factory and
+authorized proceeding without Ghidra. Use the hash-attested disk target, pinned
+compiler, full extent and relocation Oracles. Do not bypass or alter the broken
+Ghidra provider binding, and do not claim a new Ghidra attestation. This checkpoint
+does not claim whole-product or runtime completion. The detailed 2026-10-02 campaign record is in
 [RE_CAMPAIGN_NOTES_2026-10-02.md](RE_CAMPAIGN_NOTES_2026-10-02.md); its older
 "next" statements are history, not current instructions.
 
@@ -16,15 +17,15 @@ operator explicitly resumes it. The detailed 2026-10-02 campaign record is in
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 867
-  maintained source mappings, 1,091 canonical exact functions and 103,003
+  maintained source mappings, 1,092 canonical exact functions and 103,171
   canonical exact `.text` bytes. Confirmed authored ownership is 265,810 bytes;
-  authored exact code is 37,290 bytes (14.0%). The authored source-present,
-  non-exact backlog has 146 functions. These figures come from the live ledgers
+  authored exact code is 37,458 bytes (14.1%). The authored source-present,
+  non-exact backlog has 145 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
   not establish a buildable or working game.
-- Local commits use `gpt-6.1-sol: ...`; do not push. Check `git status` on
+- Local commits use `gpt-dots: ...`; do not push. Check `git status` on
   resume rather than assuming the handoff worktree stayed clean.
 
 ## Recovery and verification
@@ -43,9 +44,8 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
-This operator selected direct repository Bash and local Ghidra rather than
-Factory MCP for the campaign. Before new target analysis, attest the local
-read-only project with `scripts/repo-python scripts/ghidra.py check`. For
+The current operator selected Factory MCP repository shell and explicitly waived
+Ghidra for this session. Target and executable toolchain preflight passed. For
 source edits, cold-replay every affected accepted unit with
 `scripts/repo-python scripts/replay-exact-units.py --source src/FILE.cpp`.
 Finish a bounded change with `verify-toolchain.py --check`,
@@ -63,7 +63,7 @@ Finish a bounded change with `verify-toolchain.py --check`,
 | `EnemyBeginSpell @ 0x00409280` | Source-present, non-exact. ENEMY-083's seven-TU graph is 2,476/2,432 bytes; statistics storage and call counts are constrained, but helper private ABIs and scheduling remain open. |
 | `SoundPlayerView::ProcessQueues @ 0x0043DDF0` | The 1,419-byte authored code body is now source-mapped in `src/Sound.cpp`, still non-exact. The eight-entry jump table follows a one-byte NOP and is separate from the reviewed code extent. A `/GL /GS /EHsc` Sound+ZWave diagnostic has 1,348 code bytes plus a 32-byte table. See SOUND-019. Streaming reset/initialization helpers remain source-absent. |
 
-These are engineering routes, not a request to continue them during the pause.
+These are open engineering routes for the resumed reconstruction.
 The earlier, much larger handoff is archived for detailed negative probes,
 commands, source-shape constraints, and artifact locations. Per-claim durable
 findings live in `docs/KNOWLEDGE_BASE.md`; current status and denominators live
@@ -98,3 +98,12 @@ native build closure, runtime behavior, semantics, and port status remain
 independent. The intended phase order is exact reconstruction, faithful
 Windows i386 product and runtime closure, semantic reconstruction with both
 target and native Oracles, then portability.
+
+## Latest resumed checkpoint
+
+`CWin32ResourcePbgFile::Open @ 0x004366C0` is a 168-byte canonical normal-COFF
+match after natural shared failure cleanup. Two cold builds and all seven
+independently reviewed link fields pass; all nine ResFile accepted units remain
+exact. See RESFILE-007/008 for the positive source hypothesis and rejected Seek
+controls. Factory acceptance is a separate replay boundary; ledger figures above
+are local canonical results and must not be confused with accepted Factory facts.

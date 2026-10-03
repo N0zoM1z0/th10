@@ -131,34 +131,32 @@ bool CWin32ResourcePbgFile::Open(const char *resourceName, char *mode)
 {
     (void)mode;
 
+    HRSRC resourceInfo;
+    HGLOBAL resourceData;
+    BYTE *lockedData;
+
     Close();
 
-    HRSRC resourceInfo = FindResourceA(NULL, resourceName, RT_RCDATA);
+    resourceInfo = FindResourceA(NULL, resourceName, RT_RCDATA);
     if (resourceInfo == NULL)
-    {
-        Close();
-        return true;
-    }
+        goto failure;
 
-    HGLOBAL resourceData = LoadResource(NULL, resourceInfo);
+    resourceData = LoadResource(NULL, resourceInfo);
     if (resourceData == NULL)
-    {
-        Close();
-        return true;
-    }
+        goto failure;
 
-    BYTE *lockedData = (BYTE *)LockResource(resourceData);
+    lockedData = (BYTE *)LockResource(resourceData);
     if (lockedData == NULL)
     {
         FreeResource((HGLOBAL)lockedData);
-        Close();
-        return true;
+        goto failure;
     }
 
     m_Size = SizeofResource(NULL, resourceInfo);
     m_Data = (BYTE *)malloc(m_Size);
     if (m_Data == NULL)
     {
+    failure:
         Close();
         return true;
     }
