@@ -1,9 +1,10 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-03. The operator explicitly resumed TH10 through Factory and
-authorized proceeding without Ghidra. Use the hash-attested disk target, pinned
-compiler, full extent and relocation Oracles. Do not bypass or alter the broken
-Ghidra provider binding, and do not claim a new Ghidra attestation. This checkpoint
+Updated 2026-10-03. The Factory MCP was repaired and hot-switched behind the
+existing public transport without a client refresh or reconnect. The native
+`th10-ghidra` `check {}` operation now passes for `target:th10-main` with
+`attestation.provider_transport=factory-native-command`. Use the hash-attested
+disk target, pinned compiler, full-extent and relocation Oracles. This checkpoint
 does not claim whole-product or runtime completion. The detailed 2026-10-02 campaign record is in
 [RE_CAMPAIGN_NOTES_2026-10-02.md](RE_CAMPAIGN_NOTES_2026-10-02.md); its older
 "next" statements are history, not current instructions.
@@ -16,16 +17,16 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 867
-  maintained source mappings, 1,093 canonical exact functions and 103,646
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 871
+  maintained source mappings, 1,094 canonical exact functions and 103,720
   canonical exact `.text` bytes. Confirmed authored ownership is 265,810 bytes;
-  authored exact code is 37,933 bytes (14.3%). The authored source-present,
-  non-exact backlog has 144 functions. These figures come from the live ledgers
+  authored exact code is 38,007 bytes (14.3%). The authored source-present,
+  non-exact backlog has 147 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
   not establish a buildable or working game.
-- Local commits use `gpt-dots: ...`; do not push. Check `git status` on
+- Local Web commits use `gpt-web: ...`; do not push. Check `git status` on
   resume rather than assuming the handoff worktree stayed clean.
 
 ## Recovery and verification
@@ -44,8 +45,8 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
-The current operator selected Factory MCP repository shell and explicitly waived
-Ghidra for this session. Target and executable toolchain preflight passed. For
+The current Factory MCP repository shell, target preflight, executable
+toolchain, and Factory-native Ghidra attestation all pass. For
 source edits, cold-replay every affected accepted unit with
 `scripts/repo-python scripts/replay-exact-units.py --source src/FILE.cpp`.
 Finish a bounded change with `verify-toolchain.py --check`,
@@ -99,7 +100,7 @@ independent. The intended phase order is exact reconstruction, faithful
 Windows i386 product and runtime closure, semantic reconstruction with both
 target and native Oracles, then portability.
 
-## Latest resumed checkpoint
+## Earlier resumed checkpoint
 
 `CWin32ResourcePbgFile::Open @ 0x004366C0` is a 168-byte canonical normal-COFF
 match after natural shared failure cleanup. Two cold builds and all seven
@@ -116,3 +117,33 @@ PbgArchive Release constructor-versus-destructor helper manifest error was
 independently diagnosed with an old-header control and narrowly repaired. See
 COMPRESSION-003 and ARCHIVE-004. These checks preserve the complete comparator;
 no ordinary bytes were masked and no Ghidra attestation was claimed.
+
+## Latest Factory hot-deploy and dogfood checkpoint
+
+The Factory repair is live behind the existing public MCP transport. The green
+service and worker use Factory commits `78dce53` and `c83452f`; the latter keeps
+TH10 linked-artifact routing from changing TH095 behavior. Full live validation
+passed for all configured repositories/providers, and the old service was
+retired only after the unchanged public route answered on the green service.
+No Web client refresh or MCP reconnect was needed.
+
+Three bounded TH10 source batches were performed entirely through that public
+Factory MCP:
+
+- `bd3bbb2` recovers `GameWindowView::InitD3DInterface`; its pinned `/GL`
+  diagnostic is 38/45 bytes and remains non-exact.
+- `7cbd96e` recovers `FileSystem::LoadArchive`; its pinned `/GL` diagnostic is
+  39/36 bytes and remains non-exact.
+- `11b62e7` recovers `ReplayFile::Open` and `ReplayFile::Read`. Open remains a
+  135/137-byte mismatch. Read is canonical exact across its complete 74-byte
+  PDB extent and six exhaustive linked fields in unit `replay-file-read`.
+
+Factory replay job `job:18f7dafaeff6498f9a6a26b16946408a` completed on its
+first attempt with receipt
+`receipt:270b3cd8476bf1867fe08be88a39e21df9ec74f14294af50f4fcadf0f9c045fb`;
+the receipt verdict passed and strict-live acceptance accepted the claim bound
+to commit `11b62e7`. Earlier negative probes also established that the remaining
+four ordinary bytes in `UpdateAbsoluteDirectionChange` are register-coloring
+only, and that natural `EclVmContext::ReadInt` cursor-specialization variants
+regress codegen. Those variants were reverted and summarized in the knowledge
+base.
