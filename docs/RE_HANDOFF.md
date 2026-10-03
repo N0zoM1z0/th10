@@ -17,10 +17,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 867
-  maintained source mappings, 1,092 canonical exact functions and 103,171
+  maintained source mappings, 1,093 canonical exact functions and 103,646
   canonical exact `.text` bytes. Confirmed authored ownership is 265,810 bytes;
-  authored exact code is 37,458 bytes (14.1%). The authored source-present,
-  non-exact backlog has 145 functions. These figures come from the live ledgers
+  authored exact code is 37,933 bytes (14.3%). The authored source-present,
+  non-exact backlog has 144 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -107,3 +107,12 @@ independently reviewed link fields pass; all nine ResFile accepted units remain
 exact. See RESFILE-007/008 for the positive source hypothesis and rejected Seek
 controls. Factory acceptance is a separate replay boundary; ledger figures above
 are local canonical results and must not be confused with accepted Factory facts.
+
+`DecompressData @ 0x00435DC0` adds 475 canonical exact bytes after correcting
+the actual callee-clean ABI and trailing macro-loop scope, then matching natural
+post-allocation initialization. Two cold decoder builds and all thirteen
+affected PbgArchive/PbgFile/GameScore support-context units pass. A preexisting
+PbgArchive Release constructor-versus-destructor helper manifest error was
+independently diagnosed with an old-header control and narrowly repaired. See
+COMPRESSION-003 and ARCHIVE-004. These checks preserve the complete comparator;
+no ordinary bytes were masked and no Ghidra attestation was claimed.

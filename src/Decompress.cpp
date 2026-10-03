@@ -51,14 +51,14 @@ typedef char DecompressionRingSizeIs2000[
     g_DecompressionRing[dictionaryHead] = (unsigned char)(data); \
     dictionaryHead = LZSS_DICTPOS_MOD(dictionaryHead, 1);
 
-unsigned char *DecompressData(unsigned char *input, int inputSize,
+unsigned char *__stdcall DecompressData(unsigned char *input, int inputSize,
                               unsigned char *output, int outputSize)
 {
     unsigned char inBitMask = 0x80;
     unsigned int currByte = 0;
-    unsigned char *inputCursor = input;
+    unsigned char *inputCursor;
     unsigned char *outputCursor;
-    unsigned int dictionaryHead = 1;
+    unsigned int dictionaryHead;
     unsigned int inputBits;
     unsigned int outputBitMask;
     int matchOffset;
@@ -72,7 +72,9 @@ unsigned char *DecompressData(unsigned char *input, int inputSize,
             return NULL;
     }
 
+    inputCursor = input;
     outputCursor = output;
+    dictionaryHead = 1;
 
     for (;;)
     {
@@ -101,7 +103,9 @@ unsigned char *DecompressData(unsigned char *input, int inputSize,
     }
 
     while (inBitMask != 0x80)
+    {
         DECODE_UNPACK_BIT;
+    }
 
     return output;
 }
