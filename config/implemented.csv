@@ -36,6 +36,7 @@ CMemoryPbgFile::Seek
 CWin32ResourcePbgFile::Open
 PbgArchive::LoadFromResource
 DecompressData
+FileSystem::LoadArchive
 FileSystem::Decrypt
 FileSystem::Encrypt
 FileSystem::CloseWriteFile

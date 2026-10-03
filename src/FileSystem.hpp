@@ -4,6 +4,7 @@ namespace FileSystem
 {
 unsigned char *OpenFile(const char *path, int *sizeOut, int mode);
 int CheckIfFileAlreadyExists(const char *path);
+bool LoadArchive(const char *filename);
 int CloseWriteFile();
 
 unsigned char *Decrypt(unsigned char *data, int size, unsigned char xorValue,

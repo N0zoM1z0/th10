@@ -1,4 +1,5 @@
 #include "FileSystem.hpp"
+#include "PbgArchive.hpp"
 
 #include <windows.h>
 #include <stdlib.h>
@@ -8,11 +9,25 @@ extern HANDLE gReplayFileHandle;
 extern CRITICAL_SECTION gReplayFileCriticalSection;
 extern unsigned char gReplayFileOpenCount;
 
+extern PbgArchive g_PbgArchives[20];
+extern int g_PbgArchiveCount;
+
 // Maintained reconstruction source. The namespace/function name is retained as
 // an adjacent-supported descriptive name after TH10 target behavior recovery;
 // original TU and physical compiler ownership remain unknown.
 namespace FileSystem
 {
+// TH10_FILESYSTEM_FUNCTION: 0x004357D0 FileSystem::LoadArchive
+// The retained target body receives its filename through a private LTCG EAX
+// seam. This source signature records the behavior without claiming that ABI.
+bool LoadArchive(const char *filename)
+{
+    if (!g_PbgArchives[g_PbgArchiveCount].Load(filename))
+        return false;
+    ++g_PbgArchiveCount;
+    return true;
+}
+
 unsigned char *Decrypt(unsigned char *data, int size, unsigned char xorValue,
                        unsigned char xorValueIncrement, int chunkSize,
                        int maxBytes)
