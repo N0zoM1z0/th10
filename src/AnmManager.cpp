@@ -3072,6 +3072,17 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant3(
     return g_AnmRenderManagerView->AddVmVariant3(vm);
 }
 
+struct AnmFloat2OperandView : AnmFloat2View
+{
+    AnmFloat2OperandView(float first, float second)
+    {
+        x = first;
+        y = second;
+    }
+};
+typedef char AnmFloat2OperandViewSizeIs08[
+    (sizeof(AnmFloat2OperandView) == 0x08) ? 1 : -1];
+
 // Target 0x0043EE30 is TH10's complete variable-length ANM instruction
 // executor. The adjacent TH095 source supplies control-flow hypotheses; every
 // opcode, VM offset, interpolation call and frame-end update below is checked
@@ -3349,18 +3360,17 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         case ANM_OP_POSITION_TIME:
             vm->positionInterpolation.duration = GET_INT_VAR(0);
             vm->positionInterpolation.initialTangent =
-                AnmFloat3View(0.0f, 0.0f, 0.0f);
+                g_AnmZeroVector491C14;
             vm->positionInterpolation.finalTangent =
-                AnmFloat3View(0.0f, 0.0f, 0.0f);
+                g_AnmZeroVector491C14;
             vm->positionInterpolation.mode =
-                currentInstruction->byteArgs[4];
+                currentInstruction->intArgs[1];
             if (!vm->useAlternatePosition)
                 vm->positionInterpolation.initial = vm->position;
             else
                 vm->positionInterpolation.initial = vm->alternatePosition;
-            vm->positionInterpolation.final.x = GET_FLOAT_VAR(2);
-            vm->positionInterpolation.final.y = GET_FLOAT_VAR(3);
-            vm->positionInterpolation.final.z = GET_FLOAT_VAR(4);
+            vm->positionInterpolation.final = AnmFloat3View(
+                GET_FLOAT_VAR(2), GET_FLOAT_VAR(3), GET_FLOAT_VAR(4));
             vm->positionInterpolation.timer.SetCurrent(0);
             break;
         case ANM_OP_COLOR1_TIME:
@@ -3420,7 +3430,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 g_AnmZeroVector491C14;
             vm->rotationInterpolation.finalTangent =
                 g_AnmZeroVector491C14;
-            vm->rotationInterpolation.mode = currentInstruction->byteArgs[4];
+            vm->rotationInterpolation.mode = currentInstruction->intArgs[1];
             vm->rotationInterpolation.initial = vm->rotation;
             vm->rotationInterpolation.final = finalRotation;
             vm->rotationInterpolation.timer.SetCurrent(0);
@@ -3429,9 +3439,8 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         }
         case ANM_OP_SCALE_TIME:
         {
-            AnmFloat2View finalScale;
-            finalScale.y = GET_FLOAT_VAR(3);
-            finalScale.x = GET_FLOAT_VAR(2);
+            const AnmFloat2OperandView finalScale(
+                GET_FLOAT_VAR(2), GET_FLOAT_VAR(3));
             vm->StartScaleInterpolation(
                 reinterpret_cast<AnmFloat2View *>(&vm->scaleX),
                 &finalScale,
