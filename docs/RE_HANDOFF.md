@@ -300,10 +300,27 @@ handler/unwind association. Two cold canonical normal-COFF builds pass; all elev
 related existing units also pass 382/382 bytes across four artifacts. The new
 object/profile is distinct and preserves Release's repaired iterator binding.
 EH-support code/data exactness, original production ownership/profile and runtime
-remain independent; Factory acceptance of the new primary owner is still pending.
+remain independent; the new primary owner is Factory accepted as recorded below.
 
 Local canonical authored exact is 42,163 / 266,187 (15.84%), with the same 500
 indeterminate origins. No source mappings, boundaries or denominator changed.
 The next prepared medium candidate is the 589-byte ECL script-table loader;
 its old 547-byte result must be refreshed and its missing final target tail
 captured before testing validation CFG and pointer-cursor lifetime hypotheses.
+
+## Accepted archive owner and ECL loader checkpoint
+
+The 327-byte archive entry allocator is Factory PASS and ACCEPTED on its first
+attempt at 591a1cafc6070ac8a65048f5b917cbeb7c78ea17, job
+e68143fb5e414c8e8cfbca7bf4b63d45, receipt
+8f93b69ab556b96d347c1cb90c1ff7fd082bc8dc5e59586a9ceafa8c6789827b.
+
+ECLVM-053 completes the 589-byte ECL loader's raw target tail review and
+freshly reproduces its 547-byte normal/linked candidate. Bounded validation,
+cursor, loop, label and reference controls do not close the 0x0C/0x10 frame and
+CFG differences; /Og- regresses to 944 bytes. All are restored, preserving the
+complete EclVm source and every existing exact unit. No exact credit changed.
+The current next medium owner is the 338-byte sound-buffer initializer, whose
+real ProcessQueues caller and ZWave layouts are maintained. Full target review
+must preserve its asymmetric failure cleanup, including live Release blocks
+that the provisional decompiler omitted.
