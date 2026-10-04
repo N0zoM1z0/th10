@@ -349,6 +349,7 @@ struct AnmVmFloat3InterpolationView
     int duration;
     int mode;
 
+    void ResetTimer();
     AnmFloat3View *Evaluate(AnmFloat3View *output);
 };
 

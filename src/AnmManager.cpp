@@ -306,6 +306,11 @@ float CalculateAnmInterpolation(int mode, float current, float duration)
     }
 }
 
+void AnmVmFloat3InterpolationView::ResetTimer()
+{
+    timer.SetCurrent(0);
+}
+
 // Target 0x00404610 evaluates TH10's 0x4C-byte three-component
 // interpolation object. The same body serves ANM position/rotation and two
 // earlier engine users; modes 7 and 17 update their stored state each tick.
@@ -3226,14 +3231,12 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
 
         case ANM_OP_FLIP_X:
-            vm->flipX ^= 1;
+            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;
             vm->scaleX *= -1.0f;
-            vm->updateScale = 1;
             break;
         case ANM_OP_FLIP_Y:
-            vm->flipY ^= 1;
+            vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;
             vm->scaleY *= -1.0f;
-            vm->updateScale = 1;
             break;
 
         case ANM_OP_ROTATION:
@@ -3359,10 +3362,10 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 
         case ANM_OP_POSITION_TIME:
             vm->positionInterpolation.duration = GET_INT_VAR(0);
-            vm->positionInterpolation.initialTangent =
-                g_AnmZeroVector491C14;
-            vm->positionInterpolation.finalTangent =
-                g_AnmZeroVector491C14;
+            memcpy(&vm->positionInterpolation.initialTangent, &g_AnmZeroVector491C14,
+                   sizeof(vm->positionInterpolation.initialTangent));
+            memcpy(&vm->positionInterpolation.finalTangent, &g_AnmZeroVector491C14,
+                   sizeof(vm->positionInterpolation.finalTangent));
             vm->positionInterpolation.mode =
                 currentInstruction->intArgs[1];
             if (!vm->useAlternatePosition)
@@ -3371,7 +3374,7 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 vm->positionInterpolation.initial = vm->alternatePosition;
             vm->positionInterpolation.final = AnmFloat3View(
                 GET_FLOAT_VAR(2), GET_FLOAT_VAR(3), GET_FLOAT_VAR(4));
-            vm->positionInterpolation.timer.SetCurrent(0);
+            vm->positionInterpolation.ResetTimer();
             break;
         case ANM_OP_COLOR1_TIME:
         {
@@ -3426,14 +3429,14 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             const AnmFloat3View finalRotation(
                 GET_FLOAT_VAR(2), GET_FLOAT_VAR(3), GET_FLOAT_VAR(4));
             vm->rotationInterpolation.duration = GET_INT_VAR(0);
-            vm->rotationInterpolation.initialTangent =
-                g_AnmZeroVector491C14;
-            vm->rotationInterpolation.finalTangent =
-                g_AnmZeroVector491C14;
+            memcpy(&vm->rotationInterpolation.initialTangent, &g_AnmZeroVector491C14,
+                   sizeof(vm->rotationInterpolation.initialTangent));
+            memcpy(&vm->rotationInterpolation.finalTangent, &g_AnmZeroVector491C14,
+                   sizeof(vm->rotationInterpolation.finalTangent));
             vm->rotationInterpolation.mode = currentInstruction->intArgs[1];
             vm->rotationInterpolation.initial = vm->rotation;
             vm->rotationInterpolation.final = finalRotation;
-            vm->rotationInterpolation.timer.SetCurrent(0);
+            vm->rotationInterpolation.ResetTimer();
             vm->updateRotation = 1;
             break;
         }
