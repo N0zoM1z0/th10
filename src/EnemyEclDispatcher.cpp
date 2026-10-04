@@ -1644,10 +1644,10 @@ dispatch_update_primary_anm_bounds:
     }
     fVar19 = (ReadFloatArgument(0));
     fVar21 = (ReadFloatArgument(1));
-    if (0.0 < (float)fVar19) {
+    if (-999999.0 < (float)fVar19) {
       selectedMotion->position.x = (float)fVar19;
     }
-    if (0.0 < fVar21) {
+    if (-999999.0 < fVar21) {
       selectedMotion->position.y = (float)fVar21;
     }
     selectedMotion->flags &= 0xfffffffe;
@@ -1691,13 +1691,13 @@ dispatch_update_primary_anm_bounds:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     positionInterpolation->mode = uVar22;
     positionInterpolation->initial = selectedMotion->position;
-    if (0.0 < local_2c4) {
+    if (-999999.0 < local_2c4) {
       vectorScratch.y = local_2c4;
     }
     else {
       vectorScratch.y = selectedMotion->position.y;
     }
-    if (0.0 < local_2c8) {
+    if (-999999.0 < local_2c8) {
       vectorScratch.x = local_2c8;
     }
     else {
@@ -1717,7 +1717,7 @@ dispatch_update_primary_anm_bounds:
     fVar19 = (ReadFloatArgument(0));
     local_2bc = (float)fVar19;
     fVar19 = (ReadFloatArgument(1));
-    if (0.0 < local_2bc) {
+    if (-999999.0 < local_2bc) {
       if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x800) != 0) {
         fVar21 = EnemyWrapAngle(local_2bc - 1.5707964f);
         fVar21 = EnemyWrapAngle((float)(1.5707964f - fVar21));
@@ -1725,7 +1725,7 @@ dispatch_update_primary_anm_bounds:
       }
       EnemySetMotionAngle(selectedMotion, local_2bc);
     }
-    if (0.0 < (float)fVar19) {
+    if (-999999.0 < (float)fVar19) {
       selectedMotion->value18 = (float)fVar19;
     }
     selectedMotion->flags &= 0xfffffffe;
@@ -1751,16 +1751,16 @@ dispatch_update_primary_anm_bounds:
 
     if (uVar22 == 7) {
       local_29c = local_2c8;
-      if (local_29c <= 0.0) {
+      if (!(-999999.0 < local_29c)) {
         local_29c = 0.0;
       }
       local_298 = local_2c4;
-      if (local_298 <= 0.0) {
+      if (!(-999999.0 < local_298)) {
         local_298 = 0.0;
       }
     }
     else {
-      if (local_2c8 <= 0.0) {
+      if (!(-999999.0 < local_2c8)) {
         local_29c = selectedMotion->value1C;
       }
       else {
@@ -1770,7 +1770,7 @@ dispatch_update_primary_anm_bounds:
           local_29c = (float)EnemyWrapAngle((float)(1.5707964f - fVar19));
         }
       }
-      if (local_2c4 <= 0.0) {
+      if (!(-999999.0 < local_2c4)) {
         local_298 = selectedMotion->value18;
       }
       else {
@@ -1782,10 +1782,10 @@ dispatch_update_primary_anm_bounds:
     local_2a4 = selectedMotion->value18;
     if (3.1415927f <= static_cast<float>(fabs(local_2a8 - local_29c))) {
       if (local_29c <= local_2a8) {
-        local_29c = local_29c + -3.1415927f;
+        local_29c = local_29c + 6.2831855f;
       }
       else {
-        local_2a8 = local_2a8 + -3.1415927f;
+        local_2a8 = local_2a8 + 6.2831855f;
       }
     }
     local_2c8 = local_29c;
@@ -1811,16 +1811,16 @@ dispatch_update_primary_anm_bounds:
     if ((selectedMotion->flags & 1) == 0) {
       selectedMotion->velocity = selectedMotion->position;
     }
-    if (0.0 < (float)fVar19) {
+    if (-999999.0 < (float)fVar19) {
       EnemySetMotionAngle(selectedMotion, (float)fVar19);
     }
-    if (0.0 < (float)fVar21) {
+    if (-999999.0 < (float)fVar21) {
       selectedMotion->value18 = (float)fVar21;
     }
-    if (0.0 < local_2a8) {
+    if (-999999.0 < local_2a8) {
       selectedMotion->value20 = local_2a8;
     }
-    if (0.0 < (float)fVar20) {
+    if (-999999.0 < (float)fVar20) {
       selectedMotion->value24 = (float)fVar20;
     }
     selectedMotion->flags |= 1;
@@ -1847,30 +1847,30 @@ dispatch_update_primary_anm_bounds:
     local_2bc = (float)fVar19;
     fVar19 = (ReadFloatArgument(5));
 
-    if (local_2c4 <= 0.0) {
-      local_298 = selectedMotion->value18;
-    }
-    else {
+    if (-999999.0 < local_2c4) {
       local_298 = local_2c4;
     }
-    if (local_2c8 <= 0.0) {
-      local_29c = selectedMotion->value1C;
+    else {
+      local_298 = selectedMotion->value18;
+    }
+    if (-999999.0 < local_2c8) {
+      local_29c = local_2c8;
     }
     else {
-      local_29c = local_2c8;
+      local_29c = selectedMotion->value1C;
     }
 
     local_2a4 = selectedMotion->value18;
     local_2a8 = selectedMotion->value1C;
 
-    if (fVar19 <= 0.0) {
+    if (!(-999999.0 < fVar19)) {
       fVar19 = selectedMotion->value24;
     }
-    if (local_2bc <= 0.0) {
-      vectorScratch.x = selectedMotion->value20;
+    if (-999999.0 < local_2bc) {
+      vectorScratch.x = local_2bc;
     }
     else {
-      vectorScratch.x = local_2bc;
+      vectorScratch.x = selectedMotion->value20;
     }
     vectorScratch.y = (float)fVar19;
     uVar6 = *reinterpret_cast<unsigned int *>(&selectedMotion->value24);
@@ -1909,10 +1909,10 @@ dispatch_update_primary_anm_bounds:
     }
     fVar19 = (ReadFloatArgument(0));
     fVar21 = (ReadFloatArgument(1));
-    if (0.0 < (float)fVar19) {
+    if (-999999.0 < (float)fVar19) {
       *(float *)(iVar26 + 0xc) = (float)fVar19;
     }
-    if (0.0 < fVar21) {
+    if (-999999.0 < fVar21) {
       *(float *)(iVar26 + 0x10) = (float)fVar21;
     }
     goto dispatch_copy_player_to_motion;
