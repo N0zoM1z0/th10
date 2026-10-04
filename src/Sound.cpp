@@ -1,6 +1,7 @@
 #include <windows.h>
 #include <dsound.h>
 #include <string.h>
+#include <stdlib.h>
 
 #include "Main.hpp"
 #include "SoundFormat.hpp"
@@ -192,6 +193,8 @@ typedef char SoundPlayerBgmOffsets[
      offsetof(SoundPlayerView, bgmPreloadAllocations) == 0x1ec0 &&
      offsetof(SoundPlayerView, bgmPreloadData) == 0x1f00 &&
      offsetof(SoundPlayerView, bgmPreloadAllocSizes) == 0x1f40 &&
+     offsetof(SoundPlayerView, bgmFormats) == 0x1f84 &&
+     offsetof(SoundPlayerView, unknownNameSlot) == 0x5108 &&
      offsetof(SoundPlayerView, loadedBgmSlot) == 0x1f80 &&
      offsetof(SoundPlayerView, commandQueue) == 0x1f88 &&
      offsetof(SoundPlayerView, bgmFileNames) == 0x4108 &&
@@ -256,6 +259,54 @@ int SoundPlayerView::ReopenBgm(const char *path)
     ThBgmFormat *format = &bgmFormats[index];
     CWaveFile *waveFile = bgm->GetWaveFile();
     waveFile->Reopen(format);
+    return 0;
+}
+
+// Target 0x0043D7D0. Comparison uses this owner, but the filename copy uses
+// the global sound owner. Seek/read/close results are intentionally unchecked.
+int SoundPlayerView::PreloadBgm(int index, const char *path)
+{
+    if (bgmPreloadAllocations[index] != NULL &&
+        strcmp(path, bgmFileNames[index]) == 0)
+        return 0;
+
+    strcpy(reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)
+               ->bgmFileNames[index], path);
+    if ((g_MainSupervisorView.options & 0x10) == 0 || manager == NULL)
+        return 0;
+
+    if (bgmPreloadAllocations[index] != NULL)
+    {
+        free(bgmPreloadAllocations[index]);
+        bgmPreloadAllocations[index] = NULL;
+    }
+    HANDLE file = CreateFileA(
+        unknownNameSlot, GENERIC_READ, FILE_SHARE_READ, NULL,
+        OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN,
+        NULL);
+    if (file == INVALID_HANDLE_VALUE)
+        return -1;
+
+    const int formatIndex = GetFmtIndexByName(path);
+    SetFilePointer(file, bgmFormats[formatIndex].startOffset,
+                   NULL, FILE_BEGIN);
+    BYTE *allocation = static_cast<BYTE *>(
+        malloc(bgmFormats[formatIndex].preloadAllocSize));
+    if (allocation == NULL)
+    {
+        CloseHandle(file);
+        return -1;
+    }
+
+    DWORD bytesRead;
+    ReadFile(file, allocation, bgmFormats[formatIndex].preloadAllocSize,
+             &bytesRead, NULL);
+    CloseHandle(file);
+
+    bgmPreloadFormats[index] = &bgmFormats[formatIndex];
+    bgmPreloadAllocations[index] = allocation;
+    bgmPreloadData[index] = allocation;
+    bgmPreloadAllocSizes[index] = bgmPreloadFormats[index]->preloadAllocSize;
     return 0;
 }
 

@@ -877,3 +877,4 @@ TextRenderBufferView::ReleaseBuffer,0x00436A30,function
 TextRenderBufferView::TryAllocateBuffer,0x00436AF0,function
 TextHelperView::CreateTextBuffer,0x00437A00,function
 CStreamingSound::InitSoundBuffers,0x0044CF20,function
+SoundPlayerView::PreloadBgm,0x0043D7D0,function

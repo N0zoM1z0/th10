@@ -17,11 +17,11 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 878
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 879
   maintained source mappings, 1,102 canonical exact functions and 108,214
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
   authored exact code is 42,501 bytes (15.97% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 146 functions. These figures come from the live ledgers
+  non-exact backlog has 147 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -62,7 +62,7 @@ Finish a bounded change with `verify-toolchain.py --check`,
 | `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | Source-present, non-exact. ANM-089 establishes the full 9,964-byte owner. ANM-090/091 retain interpolation operand order/widths, typed timer-reset calls, six-load global tangent copies and packed flips. Two fresh four-TU `/GL /GS` cold builds give identical 9,948/9,964-byte candidates, frame 0xFC, all 92 groups ordered and 87 target-sized spans; there is no partial exact credit. All 136 affected canonical units remain exact, 23,456 bytes across 36 artifacts. ANM-092 records restored CFG/type/profile controls; shared-tail placement, helper private ABIs and aggregate lifetimes remain open. |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Source-present, non-exact. ENEMY-086/087 correct 20 movement sentinel guards (-999999.0, including NaN fallback), two polar +2pi additions and a random-angle pi*0.5 multiplier from raw target literals. Rank storage/signed division fidelity remains. Selected seven-TU graph is 14,416/14,416 bytes, still non-exact with frame 0x2BC/0x2C4. Candidate has 20 sentinel compares versus target 19; polar CFG, private ABIs and x87 homes remain useful trials. All 14 affected canonical units pass 860/860. Normalized byte scores do not validate constant values. Regenerate from current source before comparison. |
 | `EnemyBeginSpell @ 0x00409280` | Source-present, non-exact. ENEMY-083's seven-TU graph is 2,476/2,432 bytes; statistics storage and call counts are constrained, but helper private ABIs and scheduling remain open. |
-| `SoundPlayerView::ProcessQueues @ 0x0043DDF0` | The 1,419-byte authored code body is now source-mapped in `src/Sound.cpp`, still non-exact. The eight-entry jump table follows a one-byte NOP and is separate from the reviewed code extent. A `/GL /GS /EHsc` Sound+ZWave diagnostic has 1,348 code bytes plus a 32-byte table. See SOUND-019. Streaming reset/initialization helpers remain source-absent. |
+| `SoundPlayerView::ProcessQueues @ 0x0043DDF0` | The 1,419-byte authored code body is now source-mapped in `src/Sound.cpp`, still non-exact. The eight-entry jump table follows a one-byte NOP and is separate from the reviewed code extent. A `/GL /GS /EHsc` Sound+ZWave diagnostic has 1,348 code bytes plus a 32-byte table. See SOUND-019. The 338-byte streaming initializer is now exact under SOUND-020; the reset/refill frontier remains open. |
 
 These are open engineering routes for the resumed reconstruction.
 The earlier, much larger handoff is archived for detailed negative probes,
@@ -338,7 +338,30 @@ preserved, including both Release paths absent from provisional decompilation.
 
 Local canonical authored exact is 42,501 / 266,187 (15.97%), with the same 500
 indeterminate origins and no boundary/denominator change. Factory acceptance of
-this new owner remains pending. Original production ownership, full caller and
-data-owner closure, and runtime remain open. The next prepared medium candidate
-is the 369-byte BGM preloader; verify its existing format/header fields and raw
-binding evidence before implementing the receiver/global filename asymmetry.
+this new owner is recorded below. Original production ownership, full caller and
+data-owner closure, and runtime remain open. At the initializer checkpoint, the
+next prepared medium candidate was the 369-byte BGM preloader. Its completed
+source recovery and bounded non-exact controls are recorded below.
+
+## Accepted sound initializer and BGM preload checkpoint
+
+The 338-byte sound initializer is Factory PASS and ACCEPTED on its first attempt
+at ecc113a5fde5d21f31119017f67e086ba5ad425d, job
+853383083a5a41c797f7354c1fdec16c, receipt
+4e4af1506325f466367557a5ee4275bae627e6f42dbf80e2165b4cd23ec38384.
+
+SOUND-021 retains natural source for the complete 369-byte BGM preload owner,
+with no exact credit. The real ProcessQueues Sound+ZWave graph emits 369 bytes
+and matches 323/329 ordinary bytes; six ReadFile argument-setup register bytes
+remain different. Three read-local controls are byte-neutral; a late format-
+pointer local regresses the owner to 367 bytes. All four are restored. The
+source preserves global-versus-receiver filename asymmetry, unchecked reads and
+requested-size publication. All seven affected exact units pass 957/957 bytes
+across six canonical artifacts with the selected source.
+
+Source mappings increase to 879 and authored source-present non-exact backlog
+to 147. Canonical authored exact remains 42,501 / 266,187 (15.97%), with 500
+indeterminate origins and no changed boundary, denominator or exact ledger row.
+The next medium lane is the 637-byte streaming refill owner and its real
+189-byte worker caller; recover full raw tail and ordinary source context
+before testing codegen. The small worker is a dependency, not a tiny-owner queue.
