@@ -17,11 +17,11 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 874
-  maintained source mappings, 1,097 canonical exact functions and 106,240
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 877
+  maintained source mappings, 1,099 canonical exact functions and 107,128
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 40,527 bytes (15.23% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 147 functions. These figures come from the live ledgers
+  authored exact code is 41,415 bytes (15.56% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 148 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -225,3 +225,26 @@ The latest request remains medium authored owners of several hundred to about
 rasterizer and the 781-byte font initializer with its 421-byte allocation
 helper. Treat the alternate path's shared stack-home risk and the allocation
 helpers' private EAX/ESI contracts explicitly; no new exactness is assumed.
+
+## Text-buffer lifecycle closure
+
+TEXT-003 adds the complete 781-byte font initializer and its required 107-byte
+cleanup dependency as canonical exact units. Two cold linked builds have distinct
+PE hashes/PDB GUIDs and zero differences over all 888 bytes after all 43 linked
+fields are independently verified. The existing 946-byte text bleed unit also
+cold-replays exact. This raises local canonical authored exact from 40,527 to
+41,415 / 266,187 (15.56%); the denominator and 500 indeterminate origins are
+unchanged. Factory acceptance remains a separate receipt gate.
+
+The initializer tries 1024x64 format 0x1A then 0x15, fills the 256-byte prefix
+from the existing RNG and creates all 15 font heights. The pooled CP932 font-face
+literal matches the target. Do not bind RNG generationCount references to the
+neighboring diagnostic font anchor: their semantic owner is g_RngView+4.
+
+The coherent 421-byte allocator is source-present but non-exact, with 33 ordinary
+bytes open in its final state-store scheduling. Its natural member source and
+the cleanup member recover the private EAX/ESI contracts through the real caller
+graph; no explicit private ABI is fabricated. Three allocator controls were
+restored. The 554-byte rasterizer retains its known stack-home/failure-path
+caveat. Original class ownership, physical TU/profile and runtime behavior remain
+independent. Frozen evidence is in the ignored 20261004-text-allocation directory.

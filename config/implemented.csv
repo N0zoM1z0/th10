@@ -872,3 +872,6 @@ SoundPlayerView::ProcessQueues
 FileSystem::CheckIfFileAlreadyExists
 TextRenderBufferApplyAlphaBleed
 TextHelperView::RenderTextToTexture
+TextRenderBufferView::ReleaseBuffer
+TextRenderBufferView::TryAllocateBuffer
+TextHelperView::CreateTextBuffer

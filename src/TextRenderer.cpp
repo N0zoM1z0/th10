@@ -1,5 +1,6 @@
 #include "TextRenderer.hpp"
 #include "D3d9View.hpp"
+#include "Rng.hpp"
 
 #include <string.h>
 
@@ -234,3 +235,176 @@ void __stdcall TextHelperView::RenderTextToTexture(
     if (surface != NULL)
         surface->vtable->Release(surface);
 }
+
+struct TextRenderFormatInfo
+{
+    int format;
+    int bitCount;
+    unsigned int alphaMask;
+    unsigned int redMask;
+    unsigned int greenMask;
+    unsigned int blueMask;
+};
+typedef char TextRenderFormatInfoSizeIs18[
+    sizeof(TextRenderFormatInfo) == 0x18 ? 1 : -1];
+extern TextRenderFormatInfo g_TextRenderFormats[];
+
+static TextRenderFormatInfo *FindTextRenderFormat(int format)
+{
+    unsigned int index = 0;
+    while (g_TextRenderFormats[index].format != -1 &&
+           g_TextRenderFormats[index].format != format)
+        ++index;
+    // TH10 rejects an explicit -1 request, but otherwise returns the row
+    // reached by the search, including the sentinel for unsupported formats.
+    if (format == -1)
+        return NULL;
+    return &g_TextRenderFormats[index];
+}
+
+// Target 0x00436A30 is a dependency of the allocation owner below. Its ESI
+// receiver is a private compiler contract, not a source calling convention.
+bool TextRenderBufferView::ReleaseBuffer()
+{
+    if (deviceContext != NULL)
+    {
+        SelectObject(deviceContext, previousBitmap);
+        DeleteDC(deviceContext);
+        DeleteObject(bitmap);
+        width = 0;
+        height = 0;
+        deviceContext = NULL;
+        bitmap = NULL;
+        previousBitmap = NULL;
+        pixels = NULL;
+        format = static_cast<unsigned int>(-1);
+        return true;
+    }
+    return false;
+}
+
+// Target 0x00436AF0. The 108-byte scratch object is the SDK's real V4 DIB
+// header, not a padded BITMAPINFO. Signed divisions and the extra DIB row are
+// observed target behavior; only the requested rows are cleared afterward.
+bool TextRenderBufferView::TryAllocateBuffer(
+    int requestedWidth, int requestedHeight, int requestedFormat)
+{
+    ReleaseBuffer();
+    BITMAPV4HEADER info;
+    memset(&info, 0, sizeof(info));
+    TextRenderFormatInfo *formatInfo = FindTextRenderFormat(requestedFormat);
+    if (formatInfo == NULL)
+        return false;
+
+    int rowPitch = ((requestedWidth * formatInfo->bitCount / 8 + 3) / 4) * 4;
+    info.bV4Size = sizeof(info);
+    info.bV4Width = requestedWidth;
+    info.bV4Height = -(requestedHeight + 1);
+    info.bV4Planes = 1;
+    info.bV4BitCount = static_cast<WORD>(formatInfo->bitCount);
+    info.bV4SizeImage = rowPitch * requestedHeight;
+    if (requestedFormat != 0x18 && requestedFormat != 0x16)
+    {
+        info.bV4V4Compression = BI_BITFIELDS;
+        info.bV4RedMask = formatInfo->redMask;
+        info.bV4GreenMask = formatInfo->greenMask;
+        info.bV4BlueMask = formatInfo->blueMask;
+        info.bV4AlphaMask = formatInfo->alphaMask;
+    }
+
+    void *newPixels;
+    HBITMAP newBitmap = CreateDIBSection(
+        NULL, reinterpret_cast<const BITMAPINFO *>(&info), DIB_RGB_COLORS,
+        &newPixels, NULL, 0);
+    if (newBitmap == NULL)
+        return false;
+    memset(newPixels, 0, info.bV4SizeImage);
+    HDC newContext = CreateCompatibleDC(NULL);
+    previousBitmap = SelectObject(newContext, newBitmap);
+    pitch = rowPitch;
+    pixels = newPixels;
+    imageSize = info.bV4SizeImage;
+    deviceContext = newContext;
+    bitmap = newBitmap;
+    width = requestedWidth;
+    height = requestedHeight;
+    format = requestedFormat;
+    return true;
+}
+
+// CreateFontA expects the target's CP932 face name: fullwidth MS Gothic.
+#define TEXT_FONT_FACE_CP932 \
+    "\x82\x6c\x82\x72 \x83\x53\x83\x56\x83\x62\x83\x4e"
+
+// Target 0x00437A00. Failure of both DIB attempts does not skip the observed
+// RNG-prefix initialization or the fifteen individual font creations.
+void TextHelperView::CreateTextBuffer()
+{
+    if (!g_TextRenderBuffer.TryAllocateBuffer(1024, 64, 0x1a))
+        g_TextRenderBuffer.TryAllocateBuffer(1024, 64, 0x15);
+    for (unsigned int i = 0; i < 256; ++i)
+        g_TextRenderBuffer.unknown000[i] =
+            static_cast<unsigned char>(g_RngView.GetRandomU16() >> 9);
+    g_TextFont17 = CreateFontA(
+        32, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont18 = CreateFontA(
+        34, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont19 = CreateFontA(
+        36, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont20 = CreateFontA(
+        38, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont21 = CreateFontA(
+        40, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont22 = CreateFontA(
+        42, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont23 = CreateFontA(
+        44, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont24 = CreateFontA(
+        46, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont25 = CreateFontA(
+        48, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont26 = CreateFontA(
+        50, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont27 = CreateFontA(
+        52, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont28 = CreateFontA(
+        54, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont29 = CreateFontA(
+        56, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont30 = CreateFontA(
+        58, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+    g_TextFont31 = CreateFontA(
+        60, 0, 0, 0, FW_NORMAL, FALSE, FALSE, FALSE, SHIFTJIS_CHARSET,
+        OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, ANTIALIASED_QUALITY,
+        FIXED_PITCH | FF_ROMAN, TEXT_FONT_FACE_CP932);
+}
+
+#undef TEXT_FONT_FACE_CP932

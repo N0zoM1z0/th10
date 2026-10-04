@@ -873,3 +873,6 @@ SoundPlayerView::ProcessQueues,0x0043DDF0,function
 FileSystem::CheckIfFileAlreadyExists,0x0044B4D0,function
 TextRenderBufferApplyAlphaBleed,0x00436DA0,function
 TextHelperView::RenderTextToTexture,0x00437DB0,function
+TextRenderBufferView::ReleaseBuffer,0x00436A30,function
+TextRenderBufferView::TryAllocateBuffer,0x00436AF0,function
+TextHelperView::CreateTextBuffer,0x00437A00,function

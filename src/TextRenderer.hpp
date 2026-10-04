@@ -15,10 +15,13 @@ struct TextRenderBufferView
     unsigned int imageSize;
     int pitch;
     HDC deviceContext;
-    unsigned char unknown118[8];
+    HGDIOBJ previousBitmap;
+    HBITMAP bitmap;
     void *pixels;
 
     bool InvertAlpha(int processedRows);
+    bool ReleaseBuffer();
+    bool TryAllocateBuffer(int width, int height, int format);
 };
 
 typedef char TextBufferFormatAt100[
@@ -33,6 +36,10 @@ typedef char TextBufferImageSizeAt10c[
     offsetof(TextRenderBufferView, imageSize) == 0x10c ? 1 : -1];
 typedef char TextBufferDeviceContextAt114[
     offsetof(TextRenderBufferView, deviceContext) == 0x114 ? 1 : -1];
+typedef char TextBufferPreviousBitmapAt118[
+    offsetof(TextRenderBufferView, previousBitmap) == 0x118 ? 1 : -1];
+typedef char TextBufferBitmapAt11c[
+    offsetof(TextRenderBufferView, bitmap) == 0x11c ? 1 : -1];
 typedef char TextBufferPixelsAt120[
     offsetof(TextRenderBufferView, pixels) == 0x120 ? 1 : -1];
 
@@ -45,6 +52,7 @@ struct D3d9RectView;
 struct D3d9TextureView;
 namespace TextHelperView
 {
+void CreateTextBuffer();
 void __stdcall RenderTextToTexture(
     const D3d9RectView *rectangle, int x, int glyphWidth,
     unsigned int color, const char *text, D3d9TextureView *texture);

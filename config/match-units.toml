@@ -18566,3 +18566,78 @@ linkages = [
   { offset = 0x594, type = "DIR32", local = true, target = 0x0044695E, width = 4, addend = 0 },
   { offset = 0x598, type = "DIR32", local = true, target = 0x00446B1D, width = 4, addend = 0 },
 ]
+
+[units.text-create-buffer]
+artifact_kind = "linked-pe"
+source = "src/TextRenderer.cpp"
+support_sources = ["src/RandomMath.cpp"]
+output_dir = "build/match-linked/TextBufferLifecycle"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CreateTextBuffer@TextHelperView@@YAXXZ"
+functions = ["TextHelperView::CreateTextBuffer"]
+symbol = "?CreateTextBuffer@TextHelperView@@YAXXZ"
+target_address = 0x00437A00
+size = 781
+linkages = [
+  { offset = 0xA, type = "DIR32", symbol = "?g_TextRenderBuffer@@3UTextRenderBufferView@@A", target = 0x00474CB0, addend = 0, width = 4 },
+  { offset = 0xF, type = "REL32", symbol = "?TryAllocateBuffer@TextRenderBufferView@@QAE_NHHH@Z", target = 0x00436AF0, addend = 0, width = 4 },
+  { offset = 0x21, type = "DIR32", symbol = "?g_TextRenderBuffer@@3UTextRenderBufferView@@A", target = 0x00474CB0, addend = 0, width = 4 },
+  { offset = 0x26, type = "REL32", symbol = "?TryAllocateBuffer@TextRenderBufferView@@QAE_NHHH@Z", target = 0x00436AF0, addend = 0, width = 4 },
+  { offset = 0x2D, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0, addend = 4, width = 4 },
+  { offset = 0x34, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0, addend = 0, width = 4 },
+  { offset = 0x53, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0, addend = 0, width = 4 },
+  { offset = 0x5E, type = "DIR32", symbol = "?g_TextRenderBuffer@@3UTextRenderBufferView@@A", target = 0x00474CB0, addend = 0, width = 4 },
+  { offset = 0x6C, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x90, type = "DIR32", symbol = "?g_RngView@@3URngView@@A", target = 0x004918B0, addend = 4, width = 4 },
+  { offset = 0x96, type = "DIR32", symbol = "__imp__CreateFontA@56", target = 0x00466034, addend = 0, width = 4 },
+  { offset = 0x9F, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0xC4, type = "DIR32", symbol = "?g_TextFont17@@3PAUHFONT__@@A", target = 0x004918A0, addend = 0, width = 4 },
+  { offset = 0xCB, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0xF0, type = "DIR32", symbol = "?g_TextFont18@@3PAUHFONT__@@A", target = 0x0049189C, addend = 0, width = 4 },
+  { offset = 0xF7, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x11C, type = "DIR32", symbol = "?g_TextFont19@@3PAUHFONT__@@A", target = 0x00491898, addend = 0, width = 4 },
+  { offset = 0x123, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x148, type = "DIR32", symbol = "?g_TextFont20@@3PAUHFONT__@@A", target = 0x00491894, addend = 0, width = 4 },
+  { offset = 0x14F, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x174, type = "DIR32", symbol = "?g_TextFont21@@3PAUHFONT__@@A", target = 0x00491890, addend = 0, width = 4 },
+  { offset = 0x17B, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x1A0, type = "DIR32", symbol = "?g_TextFont22@@3PAUHFONT__@@A", target = 0x0049188C, addend = 0, width = 4 },
+  { offset = 0x1A7, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x1CC, type = "DIR32", symbol = "?g_TextFont23@@3PAUHFONT__@@A", target = 0x00491888, addend = 0, width = 4 },
+  { offset = 0x1D3, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x1F8, type = "DIR32", symbol = "?g_TextFont24@@3PAUHFONT__@@A", target = 0x00491884, addend = 0, width = 4 },
+  { offset = 0x1FF, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x224, type = "DIR32", symbol = "?g_TextFont25@@3PAUHFONT__@@A", target = 0x00491880, addend = 0, width = 4 },
+  { offset = 0x22B, type = "DIR32", symbol = "?g_TextFont26@@3PAUHFONT__@@A", target = 0x0049187C, addend = 0, width = 4 },
+  { offset = 0x230, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x257, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x27C, type = "DIR32", symbol = "?g_TextFont27@@3PAUHFONT__@@A", target = 0x00491878, addend = 0, width = 4 },
+  { offset = 0x283, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x2A8, type = "DIR32", symbol = "?g_TextFont28@@3PAUHFONT__@@A", target = 0x00491874, addend = 0, width = 4 },
+  { offset = 0x2AF, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x2D4, type = "DIR32", symbol = "?g_TextFont29@@3PAUHFONT__@@A", target = 0x00491870, addend = 0, width = 4 },
+  { offset = 0x2DB, type = "DIR32", symbol = "??_C@_0O@LAEHDGPN@?$ICl?$ICr?5?$IDS?$IDV?$IDb?$IDN?$AA@", target = 0x0046F36C, addend = 0, width = 4 },
+  { offset = 0x300, type = "DIR32", symbol = "?g_TextFont30@@3PAUHFONT__@@A", target = 0x0049186C, addend = 0, width = 4 },
+  { offset = 0x307, type = "DIR32", symbol = "?g_TextFont31@@3PAUHFONT__@@A", target = 0x00491868, addend = 0, width = 4 },
+]
+
+[units.text-release-buffer]
+artifact_kind = "linked-pe"
+source = "src/TextRenderer.cpp"
+support_sources = ["src/RandomMath.cpp"]
+output_dir = "build/match-linked/TextBufferLifecycle"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CreateTextBuffer@TextHelperView@@YAXXZ"
+functions = ["TextRenderBufferView::ReleaseBuffer"]
+symbol = "?ReleaseBuffer@TextRenderBufferView@@QAE_NXZ"
+target_address = 0x00436A30
+size = 107
+linkages = [
+  { offset = 0x17, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0046602C, addend = 0, width = 4 },
+  { offset = 0x24, type = "DIR32", symbol = "__imp__DeleteDC@4", target = 0x00466028, addend = 0, width = 4 },
+  { offset = 0x31, type = "DIR32", symbol = "__imp__DeleteObject@4", target = 0x00466030, addend = 0, width = 4 },
+]
