@@ -18,10 +18,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 873
-  maintained source mappings, 1,096 canonical exact functions and 104,777
+  maintained source mappings, 1,097 canonical exact functions and 106,240
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 39,064 bytes (14.68% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 147 functions. These figures come from the live ledgers
+  authored exact code is 40,527 bytes (15.23% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 146 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -167,19 +167,41 @@ commits use the operator-requested gpt-dots prefix, with no push.
 
 ANM-093 preserves an unapplied seven-TU source-order candidate that removes the
 misplaced 87-byte shared block and restores the color helper private ABI. It
-remains 9,948/9,964 and non-exact. The canonical ANM source is unchanged from
-86a43a8; frozen candidate/artifacts and negative controls remain in the ignored
-ANM analysis directory. Resume the medium inventory from fresh full-owner
+remains 9,948/9,964 and non-exact. The earlier canonical ANM baseline was 86a43a8; ANM-094 now adds the
+texture closure. Frozen large-owner candidates and negative controls remain
+in the ignored ANM directory; apply only the texture-preserving rebase. Resume the medium inventory from fresh full-owner
 measurements rather than treating old diagnostic residuals as current proof.
 
 The first medium closure is TextRenderBufferApplyAlphaBleed at 0x00436DA0,
 946 complete relocation-free bytes. Two canonical normal-COFF cold builds and
 a /GL linked diagnostic agree raw-equal; see TEXT-001 for the target quirks and
 negative controls. No existing unit depends on the new TextRenderer TU/header.
-The canonical authored total is 39,064 / 266,187, with the same 500 unknown
-origins. Its Factory receipt must still be checked before reporting accepted
-credit. The previous 111-byte closure was accepted at a2e371a by job
+That checkpoint raised local canonical authored exact to 39,064 / 266,187,
+with the same 500 unknown origins. Its Factory acceptance is recorded below. The previous 111-byte closure was accepted at a2e371a by job
 2f3b73cefa0245f98ef192fbd8c5a03d, receipt
 cab880166d2e9fbf281aff8f592c1298fc5ba6cc195043b4d211336c66b2113b.
-The next coherent medium target is the 1,463-byte Anm texture alpha-bleed owner;
-it recomputes row bases and does not share the text helper's 16-bit halving.
+The coherent second medium target was the 1,463-byte Anm texture alpha-bleed
+owner, now covered by ANM-094. It recomputes row bases and does not share the
+text helper's 16-bit halving.
+
+## Latest medium texture closure
+
+ANM-094 closes the complete 1,463-byte texture alpha-bleed owner. Two canonical
+cold links pass all six independently bound local fields, all 43 table bytes
+and three alignment bytes. The full affected cohort passes 136 units and
+23,456 bytes across 36 artifacts. The new local canonical authored total is
+40,527 / 266,187 (15.23%); 500 origins remain indeterminate and no boundary or
+denominator changed. Its Factory acceptance is still a separate pending gate.
+
+The 946-byte text helper was accepted at 56f825c by job
+0dcf22b0af294418b5cad21fd35560de, receipt
+1d6720aec0c15ef9090d41eb6c1abcf9d2cc4f33c96359259854345ef9b65bb2.
+Both exact medium owners preserve the observed format-specific distinctions.
+
+ExecuteScript and the 803-byte radial initializer retain their prior diagnostic
+residuals under this source change. The old ANM-093 source-order candidate
+predates the texture closure and must not overwrite it. A merged candidate is
+preserved as post56-texture-rgb-order-unbuilt.cpp in the ANM analysis directory;
+it has not been built or accepted. The old trial-v3 driver intentionally rejects
+the new canonical source. Preserve that guard and create a new baseline-bound
+driver before resuming large-owner experiments.

@@ -18544,3 +18544,25 @@ symbol = "?TextRenderBufferApplyAlphaBleed@@YG_NPAUTextRenderBufferView@@I@Z"
 target_address = 0x00436DA0
 size = 946
 relocations = []
+
+[units.anm-texture-alpha-bleed]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+support_sources = ["src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/Enemy.cpp", "src/EclVm.cpp", "src/Player.cpp"]
+output_dir = "build/match-linked/AnmTextureAlphaBleed"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+functions = ["AnmRenderManagerView::ApplyTextureAlphaBleed"]
+symbol = "?ApplyTextureAlphaBleed@AnmRenderManagerView@@QAEXPAUAnmTextureEntryView@@@Z"
+target_address = 0x004465B0
+size = 1463
+linkages = [
+  { offset = 0x48, type = "DIR32", local = true, target = 0x00446B4C, width = 4, addend = 0 },
+  { offset = 0x52, type = "DIR32", local = true, target = 0x00446B3C, width = 4, addend = 0 },
+  { offset = 0x58C, type = "DIR32", local = true, target = 0x00446606, width = 4, addend = 0 },
+  { offset = 0x590, type = "DIR32", local = true, target = 0x00446798, width = 4, addend = 0 },
+  { offset = 0x594, type = "DIR32", local = true, target = 0x0044695E, width = 4, addend = 0 },
+  { offset = 0x598, type = "DIR32", local = true, target = 0x00446B1D, width = 4, addend = 0 },
+]

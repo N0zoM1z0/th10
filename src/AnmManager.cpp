@@ -1465,13 +1465,14 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
         {
             unsigned int *pixel = reinterpret_cast<unsigned int *>(
                 static_cast<unsigned char *>(locked.bits) + locked.pitch * y);
-            for (unsigned int x = 0; x < description.width; ++x, ++pixel)
+            for (unsigned int x = 0; x < description.width; ++pixel, ++x)
             {
                 unsigned char *components =
                     reinterpret_cast<unsigned char *>(pixel);
                 if (components[3] == 0)
                 {
-                    unsigned int sums[3] = {0, 0, 0};
+                    unsigned int sums[3];
+                    sums[0] = sums[1] = sums[2] = 0;
                     unsigned int neighborCount = 0;
                     if (x > 0)
                         AccumulateArgb8888Neighbor(
@@ -1483,13 +1484,13 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
                             &neighborCount);
                     if (y > 0)
                         AccumulateArgb8888Neighbor(
-                            sums, reinterpret_cast<unsigned char *>(pixel) -
-                                locked.pitch,
+                            sums, reinterpret_cast<unsigned char *>(
+                                pixel - locked.pitch / 4),
                             &neighborCount);
                     if (y < description.height - 1)
                         AccumulateArgb8888Neighbor(
-                            sums, reinterpret_cast<unsigned char *>(pixel) +
-                                locked.pitch,
+                            sums, reinterpret_cast<unsigned char *>(
+                                pixel + locked.pitch / 4),
                             &neighborCount);
                     if (neighborCount > 1)
                     {
@@ -1512,11 +1513,12 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
                 reinterpret_cast<AnmArgb1555PixelView *>(
                     static_cast<unsigned char *>(locked.bits) +
                     locked.pitch * y);
-            for (unsigned int x = 0; x < description.width; ++x, ++pixel)
+            for (unsigned int x = 0; x < description.width; ++pixel, ++x)
             {
                 if (pixel->alpha == 0)
                 {
-                    unsigned int sums[3] = {0, 0, 0};
+                    unsigned int sums[3];
+                    sums[0] = sums[1] = sums[2] = 0;
                     unsigned int neighborCount = 0;
                     if (x > 0)
                         AccumulateArgb1555Neighbor(
@@ -1526,15 +1528,11 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
                             sums, pixel + 1, &neighborCount);
                     if (y > 0)
                         AccumulateArgb1555Neighbor(
-                            sums, reinterpret_cast<AnmArgb1555PixelView *>(
-                                reinterpret_cast<unsigned char *>(pixel) -
-                                locked.pitch),
+                            sums, pixel - locked.pitch / 2,
                             &neighborCount);
                     if (y < description.height - 1)
                         AccumulateArgb1555Neighbor(
-                            sums, reinterpret_cast<AnmArgb1555PixelView *>(
-                                reinterpret_cast<unsigned char *>(pixel) +
-                                locked.pitch),
+                            sums, pixel + locked.pitch / 2,
                             &neighborCount);
                     if (neighborCount > 1)
                     {
@@ -1542,9 +1540,9 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
                         sums[1] /= neighborCount;
                         sums[2] /= neighborCount;
                     }
-                    pixel->red = static_cast<unsigned short>(sums[0]);
-                    pixel->green = static_cast<unsigned short>(sums[1]);
-                    pixel->blue = static_cast<unsigned short>(sums[2]);
+                    pixel->red = static_cast<unsigned char>(sums[0]);
+                    pixel->green = static_cast<unsigned char>(sums[1]);
+                    pixel->blue = static_cast<unsigned char>(sums[2]);
                 }
             }
         }
@@ -1557,11 +1555,12 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
                 reinterpret_cast<AnmArgb4444PixelView *>(
                     static_cast<unsigned char *>(locked.bits) +
                     locked.pitch * y);
-            for (unsigned int x = 0; x < description.width; ++x, ++pixel)
+            for (unsigned int x = 0; x < description.width; ++pixel, ++x)
             {
                 if (pixel->alpha == 0)
                 {
-                    unsigned int sums[3] = {0, 0, 0};
+                    unsigned int sums[3];
+                    sums[0] = sums[1] = sums[2] = 0;
                     unsigned int neighborCount = 0;
                     if (x > 0)
                         AccumulateArgb4444Neighbor(
@@ -1571,15 +1570,11 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
                             sums, pixel + 1, &neighborCount);
                     if (y > 0)
                         AccumulateArgb4444Neighbor(
-                            sums, reinterpret_cast<AnmArgb4444PixelView *>(
-                                reinterpret_cast<unsigned char *>(pixel) -
-                                locked.pitch),
+                            sums, pixel - locked.pitch / 2,
                             &neighborCount);
                     if (y < description.height - 1)
                         AccumulateArgb4444Neighbor(
-                            sums, reinterpret_cast<AnmArgb4444PixelView *>(
-                                reinterpret_cast<unsigned char *>(pixel) +
-                                locked.pitch),
+                            sums, pixel + locked.pitch / 2,
                             &neighborCount);
                     if (neighborCount > 1)
                     {
@@ -1587,9 +1582,9 @@ void AnmRenderManagerView::ApplyTextureAlphaBleed(
                         sums[1] /= neighborCount;
                         sums[2] /= neighborCount;
                     }
-                    pixel->red = static_cast<unsigned short>(sums[0]);
-                    pixel->green = static_cast<unsigned short>(sums[1]);
-                    pixel->blue = static_cast<unsigned short>(sums[2]);
+                    pixel->red = static_cast<unsigned char>(sums[0]);
+                    pixel->green = static_cast<unsigned char>(sums[1]);
+                    pixel->blue = static_cast<unsigned char>(sums[2]);
                 }
             }
         }
