@@ -877,3 +877,5 @@ TextRenderBufferView::TryAllocateBuffer
 TextHelperView::CreateTextBuffer
 CStreamingSound::InitSoundBuffers
 SoundPlayerView::PreloadBgm
+CStreamingSound::HandleWaveStreamNotification
+SoundPlayerView::BgmPlayerThread

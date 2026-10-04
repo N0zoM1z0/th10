@@ -51,7 +51,9 @@ public:
     int fadeProgress;
     int fadeTotal;
     int fadeType;
-    unsigned char unknown020[0x5c - 0x20];
+    unsigned char unknown020[0x30 - 0x20];
+    BOOL m_bIsPlaying;
+    unsigned char unknown034[0x5c - 0x34];
 
     virtual ~CSound();
     HRESULT Stop();
@@ -89,9 +91,9 @@ public:
     unsigned char unknown05C[0x74 - 0x5c];
     BOOL isLocked;
 
-    // These queue callees have not yet been recovered as source bodies.
     HRESULT InitSoundBuffers();
     HRESULT Reset();
+    HRESULT HandleWaveStreamNotification(BOOL loopedPlay);
 };
 
 class CSoundManager
@@ -182,6 +184,8 @@ typedef char SoundPlayerViewSizeIs52D0[
 typedef char SoundPlayerBgmOffsets[
     (sizeof(CSound) == 0x5c &&
      sizeof(CStreamingSound) == 0x78 &&
+     offsetof(CSound, m_bIsPlaying) == 0x30 &&
+     offsetof(CStreamingSound, isLocked) == 0x74 &&
      sizeof(SoundPlayerCommand) == 0x10c &&
      sizeof(SoundCueMetadata) == 8 &&
      offsetof(SoundPlayerView, duplicateSoundBuffers) == 0x208 &&
@@ -198,6 +202,8 @@ typedef char SoundPlayerBgmOffsets[
      offsetof(SoundPlayerView, loadedBgmSlot) == 0x1f80 &&
      offsetof(SoundPlayerView, commandQueue) == 0x1f88 &&
      offsetof(SoundPlayerView, bgmFileNames) == 0x4108 &&
+     offsetof(SoundPlayerView, bgm) == 0x5208 &&
+     offsetof(SoundPlayerView, bgmUpdateEvent) == 0x520c &&
      offsetof(SoundPlayerView, bgmVolume) == 0x52c4) ? 1 : -1];
 
 void SoundPlayerView::StopBgm()
@@ -578,4 +584,41 @@ process_command:
         buffer->Play(0, 0, 0);
     }
     return commandQueue[0].opcode;
+}
+
+// Target 0x0043E3A0. The thread argument is ignored. Each notification reloads
+// the global BGM pointer, including after the refill call.
+DWORD WINAPI SoundPlayerView::BgmPlayerThread(LPVOID)
+{
+    SoundPlayerView *owner = reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner);
+    BOOL done = FALSE;
+    MSG message;
+    do
+    {
+        const DWORD waitResult = MsgWaitForMultipleObjects(
+            1, &owner->bgmUpdateEvent, FALSE, INFINITE,
+            QS_KEY | QS_MOUSE | QS_POSTMESSAGE | QS_TIMER | QS_PAINT | QS_HOTKEY);
+        if (owner->bgm == NULL)
+            done = TRUE;
+        switch (waitResult)
+        {
+        case WAIT_OBJECT_0:
+            if (owner->bgm != NULL && owner->bgm->m_bIsPlaying)
+            {
+                static_cast<CStreamingSound *>(owner->bgm)->isLocked = TRUE;
+                static_cast<CStreamingSound *>(owner->bgm)
+                    ->HandleWaveStreamNotification(TRUE);
+                static_cast<CStreamingSound *>(owner->bgm)->isLocked = FALSE;
+            }
+            break;
+        case WAIT_OBJECT_0 + 1:
+            while (PeekMessageA(&message, NULL, 0, 0, PM_REMOVE))
+            {
+                if (message.message == WM_QUIT)
+                    done = TRUE;
+            }
+            break;
+        }
+    } while (!done);
+    return 0;
 }

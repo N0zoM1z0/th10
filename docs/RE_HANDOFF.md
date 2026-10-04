@@ -17,11 +17,11 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 879
-  maintained source mappings, 1,102 canonical exact functions and 108,214
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 881
+  maintained source mappings, 1,103 canonical exact functions and 108,403
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 42,501 bytes (15.97% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 147 functions. These figures come from the live ledgers
+  authored exact code is 42,690 bytes (16.04% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 148 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -362,6 +362,28 @@ across six canonical artifacts with the selected source.
 Source mappings increase to 879 and authored source-present non-exact backlog
 to 147. Canonical authored exact remains 42,501 / 266,187 (15.97%), with 500
 indeterminate origins and no changed boundary, denominator or exact ledger row.
-The next medium lane is the 637-byte streaming refill owner and its real
-189-byte worker caller; recover full raw tail and ordinary source context
-before testing codegen. The small worker is a dependency, not a tiny-owner queue.
+At the preload checkpoint, the next medium lane was the 637-byte streaming
+refill owner and its real 189-byte worker caller. That bounded lane is recorded
+below; the small worker is a dependency, not a tiny-owner queue.
+
+## Streaming refill source and real worker closure
+
+SOUND-022 retains the complete streaming refill source with target-supported
+separate cursor lifetimes. The selected linked owner remains 634/637 and gets
+no exact credit. Five bounded CFG controls are restored, including two 637-byte
+layouts that still misplace the middle fill blocks. All target error/unchecked
+paths and the private stack receiver are preserved without ABI tricks.
+
+SOUND-023 closes the required real 189-byte worker caller through all seven
+independently reviewed bindings and two canonical cold links. The worker uses
+the existing ProcessQueues Sound+ZWave graph and shares its existing
+SoundInitBuffers artifact. All 18 affected old exact units pass 2372/2372 bytes
+across 10 artifacts under the selected source. No old recipe, boundary, origin
+or denominator changes; the 637-byte refill remains entirely non-exact.
+
+Local canonical authored exact is 42,690 / 266,187 (16.04%), with 500 indeterminate
+origins,881 source mappings and 148 authored source-present non-exact owners.
+The new worker's Factory receipt is still pending; imported canonical totals
+must not be described as universally fresh Factory acceptance. The next medium
+candidate is the 360-byte FileSystem::OpenFile owner. Its caller count and
+archive/disk mode behavior require fresh verification before source recovery.

@@ -146,6 +146,7 @@ public:
         CWaveFile *waveFile, DWORD notifySize);
     virtual ~CStreamingSound();
     HRESULT InitSoundBuffers();
+    HRESULT HandleWaveStreamNotification(BOOL loopedPlay);
 };
 
 typedef char CWaveFileSizeIs94[(sizeof(CWaveFile) == 0x94) ? 1 : -1];
@@ -658,5 +659,99 @@ HRESULT CStreamingSound::InitSoundBuffers()
         }
         delete[] notifications;
     }
+    return S_OK;
+}
+
+// Target 0x0044D850. First cursor query and Unlock results are unchecked;
+// failures after locking intentionally do not introduce rollback cleanup.
+HRESULT CStreamingSound::HandleWaveStreamNotification(BOOL loopedPlay)
+{
+    if (m_apDSBuffer == NULL || m_pWaveFile == NULL)
+        return CO_E_NOTINITIALIZED;
+
+    DWORD playPosition;
+    DWORD writePosition;
+    m_apDSBuffer[0]->GetCurrentPosition(&playPosition, &writePosition);
+    if (m_dwNextWriteOffset >= writePosition - m_dwNotifySize &&
+        m_dwNextWriteOffset < writePosition)
+        return CO_E_NOTINITIALIZED;
+
+    HRESULT hr;
+    BOOL restored;
+    if (FAILED(hr = RestoreBuffer(m_apDSBuffer[0], &restored)))
+        return hr;
+    if (restored)
+    {
+        if (FAILED(hr = FillBufferWithSound(m_apDSBuffer[0], FALSE)))
+            return hr;
+        return S_OK;
+    }
+
+    VOID *lockedBuffer = NULL;
+    VOID *lockedBuffer2 = NULL;
+    DWORD lockedSize;
+    DWORD lockedSize2;
+    if (FAILED(hr = m_apDSBuffer[0]->Lock(
+            m_dwNextWriteOffset, m_dwNotifySize,
+            &lockedBuffer, &lockedSize, &lockedBuffer2, &lockedSize2, 0)))
+        return hr;
+    if (lockedBuffer2 != NULL)
+        return E_UNEXPECTED;
+
+    DWORD bytesRead;
+    if (!m_bFillNextNotificationWithSilence)
+    {
+        if (FAILED(hr = m_pWaveFile->Read(
+                static_cast<BYTE *>(lockedBuffer), lockedSize, &bytesRead)))
+            return hr;
+        if (bytesRead < lockedSize)
+        {
+            if (loopedPlay)
+            {
+                DWORD readSoFar = bytesRead;
+                while (readSoFar < lockedSize)
+                {
+                    if (FAILED(hr = m_pWaveFile->ResetFile(true)))
+                        return hr;
+                    if (FAILED(hr = m_pWaveFile->Read(
+                            static_cast<BYTE *>(lockedBuffer) + readSoFar,
+                            lockedSize - readSoFar, &bytesRead)))
+                        return hr;
+                    readSoFar += bytesRead;
+                }
+            }
+            else
+            {
+                FillMemory(static_cast<BYTE *>(lockedBuffer) + bytesRead,
+                           lockedSize - bytesRead,
+                           static_cast<BYTE>(m_pWaveFile->m_pzwf->format.wBitsPerSample == 8 ? 128 : 0));
+                m_bFillNextNotificationWithSilence = TRUE;
+            }
+        }
+    }
+    else
+    {
+        FillMemory(lockedBuffer, lockedSize,
+                   static_cast<BYTE>(m_pWaveFile->m_pzwf->format.wBitsPerSample == 8 ? 128 : 0));
+    }
+
+    m_apDSBuffer[0]->Unlock(lockedBuffer, lockedSize, NULL, 0);
+    DWORD currentPlayPosition;
+    if (FAILED(hr = m_apDSBuffer[0]->GetCurrentPosition(&currentPlayPosition, NULL)))
+        return hr;
+
+    DWORD playDelta;
+    if (currentPlayPosition < m_dwLastPlayPos)
+        playDelta = m_dwDSBufferSize - m_dwLastPlayPos + currentPlayPosition;
+    else
+        playDelta = currentPlayPosition - m_dwLastPlayPos;
+    m_dwPlayProgress += playDelta;
+    m_dwLastPlayPos = currentPlayPosition;
+    if (m_bFillNextNotificationWithSilence &&
+        m_dwPlayProgress >= m_pWaveFile->m_dwSize)
+        m_apDSBuffer[0]->Stop();
+
+    m_dwNextWriteOffset += lockedSize;
+    m_dwNextWriteOffset %= m_dwDSBufferSize;
     return S_OK;
 }
