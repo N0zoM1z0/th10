@@ -17,10 +17,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 872
-  maintained source mappings, 1,095 canonical exact functions and 103,831
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 873
+  maintained source mappings, 1,096 canonical exact functions and 104,777
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 38,118 bytes (14.32% of reviewed owned bytes). The authored source-present,
+  authored exact code is 39,064 bytes (14.68% of reviewed owned bytes). The authored source-present,
   non-exact backlog has 147 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
@@ -171,3 +171,15 @@ remains 9,948/9,964 and non-exact. The canonical ANM source is unchanged from
 86a43a8; frozen candidate/artifacts and negative controls remain in the ignored
 ANM analysis directory. Resume the medium inventory from fresh full-owner
 measurements rather than treating old diagnostic residuals as current proof.
+
+The first medium closure is TextRenderBufferApplyAlphaBleed at 0x00436DA0,
+946 complete relocation-free bytes. Two canonical normal-COFF cold builds and
+a /GL linked diagnostic agree raw-equal; see TEXT-001 for the target quirks and
+negative controls. No existing unit depends on the new TextRenderer TU/header.
+The canonical authored total is 39,064 / 266,187, with the same 500 unknown
+origins. Its Factory receipt must still be checked before reporting accepted
+credit. The previous 111-byte closure was accepted at a2e371a by job
+2f3b73cefa0245f98ef192fbd8c5a03d, receipt
+cab880166d2e9fbf281aff8f592c1298fc5ba6cc195043b4d211336c66b2113b.
+The next coherent medium target is the 1,463-byte Anm texture alpha-bleed owner;
+it recomputes row bases and does not share the text helper's 16-bit halving.

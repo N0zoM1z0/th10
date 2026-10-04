@@ -870,3 +870,4 @@ EnemyDropItemCounts
 EnemyDropItemCountsCore
 SoundPlayerView::ProcessQueues
 FileSystem::CheckIfFileAlreadyExists
+TextRenderBufferApplyAlphaBleed

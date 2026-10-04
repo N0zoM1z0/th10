@@ -18533,3 +18533,14 @@ linkages = [
   { offset = 0x60, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
   { offset = 0x66, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
 ]
+
+[units.text-buffer-apply-alpha-bleed]
+artifact_kind = "coff"
+source = "src/TextRenderer.cpp"
+object = "build/match/TextRenderer.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc"]
+functions = ["TextRenderBufferApplyAlphaBleed"]
+symbol = "?TextRenderBufferApplyAlphaBleed@@YG_NPAUTextRenderBufferView@@I@Z"
+target_address = 0x00436DA0
+size = 946
+relocations = []
