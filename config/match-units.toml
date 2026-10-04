@@ -18664,3 +18664,25 @@ linkages = [
   { offset = 0x138, type = "DIR32", symbol = "__imp__CreateCompatibleDC@4", target = 0x00466020, addend = 0, width = 4 },
   { offset = 0x142, type = "DIR32", symbol = "__imp__SelectObject@8", target = 0x0046602C, addend = 0, width = 4 },
 ]
+
+[units.pbgarchive-alloc-entries]
+artifact_kind = "coff"
+source = "src/PbgArchive.cpp"
+object = "build/match/PbgArchiveEntriesEh.obj"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/EHsc"]
+functions = ["PbgArchive::AllocEntries"]
+symbol = "?AllocEntries@PbgArchive@@QAEPAUPbgArchiveEntry@@PAXHI@Z"
+target_address = 0x004350D0
+size = 327
+relocations = [
+  { offset = 3, type = "DIR32", symbol = "__ehhandler$?AllocEntries@PbgArchive@@QAEPAUPbgArchiveEntry@@PAXHI@Z", target = 0x004653CB },
+  { offset = 9, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 17, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 44, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 68, type = "DIR32", symbol = "??1PbgArchiveEntry@@QAE@XZ", target = 0x00435250 },
+  { offset = 73, type = "DIR32", symbol = "??0PbgArchiveEntry@@QAE@XZ", target = 0x004352C0 },
+  { offset = 91, type = "REL32", symbol = "??_L@YGXPAXIHP6EX0@Z1@Z", target = 0x0045252D },
+  { offset = 111, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+  { offset = 161, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 317, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
+]

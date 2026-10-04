@@ -18,10 +18,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 877
-  maintained source mappings, 1,100 canonical exact functions and 107,549
+  maintained source mappings, 1,101 canonical exact functions and 107,876
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 41,836 bytes (15.72% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 147 functions. These figures come from the live ledgers
+  authored exact code is 42,163 bytes (15.84% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 146 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -289,3 +289,21 @@ match exact target payloads. Two bounded lifetime/aggregate controls each add
 four differing displacement bytes and are restored. Source and accepted texture
 closure remain unchanged, with no added exact credit. Continue the medium
 inventory rather than expanding another repeated profile/context sweep here.
+
+## Archive entry-array closure
+
+ARCHIVE-007 closes the complete 327-byte PbgArchive::AllocEntries primary body
+without changing its natural source: the target-supported /EHsc profile restores
+its missing exception/vector-construction setup. Independent review covers all
+ten fields, including the CRT-defined __except_list ABS0 identity and generated
+handler/unwind association. Two cold canonical normal-COFF builds pass; all eleven
+related existing units also pass 382/382 bytes across four artifacts. The new
+object/profile is distinct and preserves Release's repaired iterator binding.
+EH-support code/data exactness, original production ownership/profile and runtime
+remain independent; Factory acceptance of the new primary owner is still pending.
+
+Local canonical authored exact is 42,163 / 266,187 (15.84%), with the same 500
+indeterminate origins. No source mappings, boundaries or denominator changed.
+The next prepared medium candidate is the 589-byte ECL script-table loader;
+its old 547-byte result must be refreshed and its missing final target tail
+captured before testing validation CFG and pointer-cursor lifetime hypotheses.
