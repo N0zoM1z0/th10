@@ -18686,3 +18686,26 @@ relocations = [
   { offset = 161, type = "REL32", symbol = "_malloc", target = 0x00452706 },
   { offset = 317, type = "DIR32", symbol = "__except_list", target = 0x00000000 },
 ]
+
+[units.streaming-sound-init-buffers]
+artifact_kind = "linked-pe"
+source = "src/Sound.cpp"
+support_sources = ["src/ZWave.cpp"]
+pdb_source = "src/ZWave.cpp"
+output_dir = "build/match-linked/SoundInitBuffers"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHsc"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ProcessQueues@SoundPlayerView@@QAEHXZ"
+functions = ["CStreamingSound::InitSoundBuffers"]
+symbol = "?InitSoundBuffers@CStreamingSound@@QAEJXZ"
+target_address = 0x0044CF20
+size = 338
+linkages = [
+  { offset = 0x03E, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x054, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x0A1, type = "DIR32", symbol = "_IID_IDirectSoundNotify", target = 0x0046743C },
+  { offset = 0x0B6, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x109, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x141, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]

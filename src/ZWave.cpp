@@ -145,6 +145,7 @@ public:
         LPDIRECTSOUNDBUFFER buffer, DWORD bufferSize,
         CWaveFile *waveFile, DWORD notifySize);
     virtual ~CStreamingSound();
+    HRESULT InitSoundBuffers();
 };
 
 typedef char CWaveFileSizeIs94[(sizeof(CWaveFile) == 0x94) ? 1 : -1];
@@ -597,4 +598,65 @@ HRESULT CSound::Unpause()
 // written or implicitly emitted remains origin-indeterminate.
 CStreamingSound::~CStreamingSound()
 {
+}
+
+
+// Target 0x0044CF20. Recreate every buffer and its sixteen notifications.
+// Early failures intentionally retain the target's partial state and leaks;
+// only SetNotificationPositions failure performs the notify/array cleanup.
+HRESULT CStreamingSound::InitSoundBuffers()
+{
+    m_bIsPlaying = FALSE;
+    for (DWORD releaseIndex = 0; releaseIndex < m_dwNumBuffers; ++releaseIndex)
+    {
+        if (m_apDSBuffer[releaseIndex] != NULL)
+        {
+            m_apDSBuffer[releaseIndex]->Release();
+            m_apDSBuffer[releaseIndex] = NULL;
+        }
+    }
+    if (m_apDSBuffer != NULL)
+    {
+        delete[] m_apDSBuffer;
+        m_apDSBuffer = NULL;
+    }
+
+    LPDIRECTSOUNDNOTIFY notify = NULL;
+    m_apDSBuffer = new LPDIRECTSOUNDBUFFER[m_dwNumBuffers];
+    for (DWORD bufferIndex = 0; bufferIndex < m_dwNumBuffers; ++bufferIndex)
+    {
+        if (FAILED(m_pSoundManager->directSound->CreateSoundBuffer(
+                &m_dsbd, &m_apDSBuffer[bufferIndex], NULL)))
+            return E_FAIL;
+        if (FAILED(m_apDSBuffer[bufferIndex]->QueryInterface(
+                IID_IDirectSoundNotify, reinterpret_cast<void **>(&notify))))
+            return E_FAIL;
+
+        DSBPOSITIONNOTIFY *notifications = new DSBPOSITIONNOTIFY[16];
+        if (notifications == NULL)
+            return E_OUTOFMEMORY;
+        for (DWORD notifyIndex = 0; notifyIndex < 16; ++notifyIndex)
+        {
+            notifications[notifyIndex].dwOffset =
+                m_dwNotifySize * (notifyIndex + 1) - 1;
+            notifications[notifyIndex].hEventNotify = m_hNotifyEvent;
+        }
+        if (FAILED(notify->SetNotificationPositions(16, notifications)))
+        {
+            if (notify != NULL)
+            {
+                notify->Release();
+                notify = NULL;
+            }
+            delete[] notifications;
+            return E_FAIL;
+        }
+        if (notify != NULL)
+        {
+            notify->Release();
+            notify = NULL;
+        }
+        delete[] notifications;
+    }
+    return S_OK;
 }

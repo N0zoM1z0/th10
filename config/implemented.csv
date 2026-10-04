@@ -875,3 +875,4 @@ TextHelperView::RenderTextToTexture
 TextRenderBufferView::ReleaseBuffer
 TextRenderBufferView::TryAllocateBuffer
 TextHelperView::CreateTextBuffer
+CStreamingSound::InitSoundBuffers

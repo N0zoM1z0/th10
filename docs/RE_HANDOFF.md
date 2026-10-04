@@ -17,10 +17,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 877
-  maintained source mappings, 1,101 canonical exact functions and 107,876
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 878
+  maintained source mappings, 1,102 canonical exact functions and 108,214
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 42,163 bytes (15.84% of reviewed owned bytes). The authored source-present,
+  authored exact code is 42,501 bytes (15.97% of reviewed owned bytes). The authored source-present,
   non-exact backlog has 146 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
@@ -320,7 +320,25 @@ freshly reproduces its 547-byte normal/linked candidate. Bounded validation,
 cursor, loop, label and reference controls do not close the 0x0C/0x10 frame and
 CFG differences; /Og- regresses to 944 bytes. All are restored, preserving the
 complete EclVm source and every existing exact unit. No exact credit changed.
-The current next medium owner is the 338-byte sound-buffer initializer, whose
-real ProcessQueues caller and ZWave layouts are maintained. Full target review
+At the ECL checkpoint, the next medium owner was the 338-byte sound-buffer
+initializer, whose real ProcessQueues caller and ZWave layouts are maintained. Full target review
 must preserve its asymmetric failure cleanup, including live Release blocks
 that the provisional decompiler omitted.
+
+## Sound-buffer initialization closure
+
+SOUND-020 closes the complete 338-byte sound-buffer initializer using its real
+ProcessQueues caller graph and ordinary C++ member declaration. Independent
+review verifies every terminal path, all six fields and the unique ZWave support
+contribution. Both canonical cold links pass, and all seventeen related old
+Sound/ZWave units remain exact at 2,034/2,034 bytes across nine artifacts. The
+canonical recipe uses pdb_source for support ownership without changing tooling.
+The target's asymmetric failure cleanup and unchecked new pointer array are
+preserved, including both Release paths absent from provisional decompilation.
+
+Local canonical authored exact is 42,501 / 266,187 (15.97%), with the same 500
+indeterminate origins and no boundary/denominator change. Factory acceptance of
+this new owner remains pending. Original production ownership, full caller and
+data-owner closure, and runtime remain open. The next prepared medium candidate
+is the 369-byte BGM preloader; verify its existing format/header fields and raw
+binding evidence before implementing the receiver/global filename asymmetry.
