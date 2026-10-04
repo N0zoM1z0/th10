@@ -94,3 +94,19 @@ and compiler context.
 If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent
 completion.
+
+## TH10 authored-byte metric
+
+The existing progress metric sums `functions.csv.size` for authored rows and
+`matches.csv.size` for authored exact rows. These are reviewed owned `.text`
+extents, not an instruction-only count: a switch table and internal alignment
+are included when target-local ownership review assigns them to that function.
+The four exact ANM operand helpers, EclVm Run, Enemy dispatch, and the
+ENEMY-076/PLAYER-029/ITEM-007 boundary corrections use this convention. A nearby
+table with unresolved ownership remains outside the function until reviewed.
+
+Keep executable-code and owned-data portions explicit in the evidence.
+`compare_size` can cover a larger compiler artifact without crediting every
+compared byte to one claim; its current TH10 uses are excluded runtime units or
+an indeterminate leaf, not an instruction-only authored-byte policy. A boundary
+correction can increase the authored denominator with zero exact credit.

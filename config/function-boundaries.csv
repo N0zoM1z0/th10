@@ -993,7 +993,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043EC70,0x0043ECFF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 143/144; owned indirect control table at 0x0043ECD8; automated diagnostic: external-interior-branch
 0x0043ED00,0x0043ED9B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 155/156; owned indirect control table at 0x0043ED6C
 0x0043EDA0,0x0043EE23,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 92/132; owned indirect control table at 0x0043EDFC
-0x0043EE30,0x004413A2,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 9587/9587, tail ret"
+0x0043EE30,0x0044151B,reviewed,high,anm-dispatch-owned-table-2026-10-04,"Complete owned code 9587 + one NOP + 94-slot absolute dispatch table 376; target selector bound, all case instruction boundaries and fresh table/slot xrefs reviewed; four CC separate following unclassified code. No exactness claim."
 0x00441600,0x00441933,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 820/820, tail ret"
 0x00441940,0x00441943,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00441950,0x00441AC1,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 370/370, tail jmp"

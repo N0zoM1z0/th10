@@ -19,8 +19,8 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 871
   maintained source mappings, 1,094 canonical exact functions and 103,720
-  canonical exact `.text` bytes. Confirmed authored ownership is 265,810 bytes;
-  authored exact code is 38,007 bytes (14.3%). The authored source-present,
+  canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
+  authored exact code is 38,007 bytes (14.28% of reviewed owned bytes). The authored source-present,
   non-exact backlog has 147 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
@@ -59,7 +59,7 @@ Finish a bounded change with `verify-toolchain.py --check`,
 | Owner | Last retained evidence and unresolved issue |
 | --- | --- |
 | `EclVmContext::Run @ 0x0044E1A0` | Source-present, non-exact. ECLVM-052 freshly reproduces the selected `/GL` (no added `/GS`) 7,020/7,020-byte owner, frame 0x108 and 94/355 differing ESP fields. Five new factoring/type/profile controls are restored. FORMAT/shared advance and x87 homes remain open. `StartSubroutine` is 551/550; `ReadInt` is 144/144 with four ordinary bytes open. Host-rooted Host::Run151 is distinct from its Enemy-rooted146 canonical context. Regenerate before comparison. |
-| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | Source-present, non-exact. ANM-083 retains 92 physical groups in target order and 85 EDI restores; the selected PDB contribution is 9,964 bytes, with 5,324/8,069 case-aligned diagnostic agreement. Float-local lifetimes and interpolation homes remain open. |
+| `AnmRenderManagerView::ExecuteScript @ 0x0043EE30` | Source-present, non-exact. ANM-089 corrects the reviewed full owner to 9,964 bytes: 9,587 code + one NOP + 94-slot owned table. Fresh four-TU `/GL /GS` candidate is 9,964/9,964 with all 92 physical groups ordered. Stack/interpolation homes and case spans remain open; equal size is not exactness. The +377 denominator correction adds zero exact credit. |
 | `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770` | Source-present, non-exact. ENEMY-086/087 correct 20 movement sentinel guards (-999999.0, including NaN fallback), two polar +2pi additions and a random-angle pi*0.5 multiplier from raw target literals. Rank storage/signed division fidelity remains. Selected seven-TU graph is 14,416/14,416 bytes, still non-exact with frame 0x2BC/0x2C4. Candidate has 20 sentinel compares versus target 19; polar CFG, private ABIs and x87 homes remain useful trials. All 14 affected canonical units pass 860/860. Normalized byte scores do not validate constant values. Regenerate from current source before comparison. |
 | `EnemyBeginSpell @ 0x00409280` | Source-present, non-exact. ENEMY-083's seven-TU graph is 2,476/2,432 bytes; statistics storage and call counts are constrained, but helper private ABIs and scheduling remain open. |
 | `SoundPlayerView::ProcessQueues @ 0x0043DDF0` | The 1,419-byte authored code body is now source-mapped in `src/Sound.cpp`, still non-exact. The eight-entry jump table follows a one-byte NOP and is separate from the reviewed code extent. A `/GL /GS /EHsc` Sound+ZWave diagnostic has 1,348 code bytes plus a 32-byte table. See SOUND-019. Streaming reset/initialization helpers remain source-absent. |
@@ -147,3 +147,8 @@ four ordinary bytes in `UpdateAbsoluteDirectionChange` are register-coloring
 only, and that natural `EclVmContext::ReadInt` cursor-specialization variants
 regress codegen. Those variants were reverted and summarized in the knowledge
 base.
+
+The 2026-10-04 ANM ownership correction changes reviewed authored owned bytes
+from 265,810 to 266,187; authored exact stays 38,007. This is the existing TH10
+full-owned-extent metric, with 500 origins still indeterminate, and no coverage
+gain. See ANM-089 and the metric note in ORACLES.md.
