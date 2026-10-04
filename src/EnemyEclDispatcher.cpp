@@ -1962,7 +1962,7 @@ dispatch_update_primary_anm_bounds:
           goto dispatch_random_angle_ready;
         }
         fVar19 = EnemyRandomAngle();
-        fVar19 = fVar19 * 3.1415927f * 2.0f;
+        fVar19 = fVar19 * 3.1415927f * 0.5f;
       }
       else {
         fVar19 = EnemyRandomAngle();
