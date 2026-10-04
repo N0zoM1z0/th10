@@ -17,16 +17,16 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 871
-  maintained source mappings, 1,094 canonical exact functions and 103,720
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 872
+  maintained source mappings, 1,095 canonical exact functions and 103,831
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 38,007 bytes (14.28% of reviewed owned bytes). The authored source-present,
+  authored exact code is 38,118 bytes (14.32% of reviewed owned bytes). The authored source-present,
   non-exact backlog has 147 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
   not establish a buildable or working game.
-- Local Web commits use `gpt-web: ...`; do not push. Check `git status` on
+- Current operator-requested local commits use `gpt-dots: ...`; do not push. Check `git status` on
   resume rather than assuming the handoff worktree stayed clean.
 
 ## Recovery and verification
@@ -152,3 +152,22 @@ The 2026-10-04 ANM ownership correction changes reviewed authored owned bytes
 from 265,810 to 266,187; authored exact stays 38,007. This is the existing TH10
 full-owned-extent metric, with 500 origins still indeterminate, and no coverage
 gain. See ANM-089 and the metric note in ORACLES.md.
+
+## Current medium-function priority and preserved large checkpoint
+
+The current operator request prioritizes whole authored functions of several
+hundred to about 2,000 bytes, then returns to large owners. Do not expand the
+tiny-function queue. The already near-verified 111-byte CheckIfFileAlreadyExists
+closure has two independent cold proofs and all 13 affected existing units
+passing 2,387 bytes; see FILESYSTEM-009. Local canonical authored exact rises
+from 38,007 to 38,118 bytes without changing the 266,187-byte denominator or
+resolving any of the 500 indeterminate origins. Factory receipt acceptance is
+separate and must be checked before reporting accepted credit. Current local
+commits use the operator-requested gpt-dots prefix, with no push.
+
+ANM-093 preserves an unapplied seven-TU source-order candidate that removes the
+misplaced 87-byte shared block and restores the color helper private ABI. It
+remains 9,948/9,964 and non-exact. The canonical ANM source is unchanged from
+86a43a8; frozen candidate/artifacts and negative controls remain in the ignored
+ANM analysis directory. Resume the medium inventory from fresh full-owner
+measurements rather than treating old diagnostic residuals as current proof.

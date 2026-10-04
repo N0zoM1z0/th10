@@ -65,6 +65,26 @@ void *Read(unsigned int size)
 
 namespace FileSystem
 {
+// TH10_FILESYSTEM_FUNCTION: 0x0044B4D0 FileSystem::CheckIfFileAlreadyExists
+int __stdcall CheckIfFileAlreadyExists(const char *path)
+{
+    EnterCriticalSection(&gReplayFileCriticalSection);
+    ++gReplayFileOpenCount;
+    HANDLE handle = CreateFileA(
+        path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+        FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+    if (handle != INVALID_HANDLE_VALUE)
+    {
+        CloseHandle(handle);
+        LeaveCriticalSection(&gReplayFileCriticalSection);
+        --gReplayFileOpenCount;
+        return 1;
+    }
+    LeaveCriticalSection(&gReplayFileCriticalSection);
+    --gReplayFileOpenCount;
+    return 0;
+}
+
 // TH10_FILESYSTEM_FUNCTION: 0x004357D0 FileSystem::LoadArchive
 // The retained target body receives its filename through a private LTCG EAX
 // seam. This source signature records the behavior without claiming that ABI.
