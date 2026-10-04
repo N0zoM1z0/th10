@@ -18,10 +18,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 877
-  maintained source mappings, 1,099 canonical exact functions and 107,128
+  maintained source mappings, 1,100 canonical exact functions and 107,549
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 41,415 bytes (15.56% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 148 functions. These figures come from the live ledgers
+  authored exact code is 41,836 bytes (15.72% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 147 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -241,10 +241,33 @@ from the existing RNG and creates all 15 font heights. The pooled CP932 font-fac
 literal matches the target. Do not bind RNG generationCount references to the
 neighboring diagnostic font anchor: their semantic owner is g_RngView+4.
 
-The coherent 421-byte allocator is source-present but non-exact, with 33 ordinary
-bytes open in its final state-store scheduling. Its natural member source and
+At the TEXT-003 checkpoint the coherent 421-byte allocator was source-present
+but non-exact, with 33 ordinary bytes open in its final state-store scheduling. Its natural member source and
 the cleanup member recover the private EAX/ESI contracts through the real caller
 graph; no explicit private ABI is fabricated. Three allocator controls were
 restored. The 554-byte rasterizer retains its known stack-home/failure-path
 caveat. Original class ownership, physical TU/profile and runtime behavior remain
 independent. Frozen evidence is in the ignored 20261004-text-allocation directory.
+
+## Text allocation closure
+
+TEXT-004 closes the full 421-byte allocator using ordinary HGDIOBJ staging and
+coherent successful-resource publication. Independent review binds all seven
+fields from the target import table, format records and cleanup callee, then
+reproduces all 421 bytes. Two canonical cold links pass the allocator and both
+781/107 dependencies; the first pass also protects the normal-COFF 946-byte
+helper, for 2,255/2,255 affected bytes. The local-only temporary control was
+neutral. No field type, API order, signature, failure path or padding changed.
+Local canonical authored exact is 41,836 / 266,187 (15.72%), with the same 500
+indeterminate origins. Factory acceptance of this allocator is a separate gate.
+
+The preceding initializer and cleanup are both Factory PASS and ACCEPTED at
+84d7d7d32f9878edb891f1da85ddb11f9dc6f13f on their first attempts:
+- initializer job 0bb5341e57a14235b50a6ded12320dea, receipt
+  5f3471d73c5d2f804e0f128f6fdaf4dd966ab5640b49e7ac03ee6f13527c2dbc
+- cleanup job 66d80b2ce08f4fb78ca75c3b02e5049e, receipt
+  82f968e3b061c9035eda3ed919910d86f24a04d97f0735e6027c6f7919136af9
+
+The 554-byte renderer still has its known stack-home difference; no partial
+credit is assigned. Frozen allocator controls, selected inputs and two cold
+PE/map/PDB triples are in the ignored 20261004-text-allocation-tail directory.

@@ -320,15 +320,16 @@ bool TextRenderBufferView::TryAllocateBuffer(
         return false;
     memset(newPixels, 0, info.bV4SizeImage);
     HDC newContext = CreateCompatibleDC(NULL);
-    previousBitmap = SelectObject(newContext, newBitmap);
-    pitch = rowPitch;
-    pixels = newPixels;
-    imageSize = info.bV4SizeImage;
+    HGDIOBJ oldBitmap = SelectObject(newContext, newBitmap);
     deviceContext = newContext;
     bitmap = newBitmap;
+    pixels = newPixels;
+    imageSize = info.bV4SizeImage;
+    previousBitmap = oldBitmap;
     width = requestedWidth;
     height = requestedHeight;
     format = requestedFormat;
+    pitch = rowPitch;
     return true;
 }
 
