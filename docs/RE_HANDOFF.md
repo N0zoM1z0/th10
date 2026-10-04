@@ -259,7 +259,7 @@ reproduces all 421 bytes. Two canonical cold links pass the allocator and both
 helper, for 2,255/2,255 affected bytes. The local-only temporary control was
 neutral. No field type, API order, signature, failure path or padding changed.
 Local canonical authored exact is 41,836 / 266,187 (15.72%), with the same 500
-indeterminate origins. Factory acceptance of this allocator is a separate gate.
+indeterminate origins. Its accepted Factory receipt is recorded below.
 
 The preceding initializer and cleanup are both Factory PASS and ACCEPTED at
 84d7d7d32f9878edb891f1da85ddb11f9dc6f13f on their first attempts:
@@ -271,3 +271,21 @@ The preceding initializer and cleanup are both Factory PASS and ACCEPTED at
 The 554-byte renderer still has its known stack-home difference; no partial
 credit is assigned. Frozen allocator controls, selected inputs and two cold
 PE/map/PDB triples are in the ignored 20261004-text-allocation-tail directory.
+
+## Accepted allocator and bounded radial controls
+
+The 421-byte allocator is Factory PASS and ACCEPTED on its first attempt at
+3677e763c26a921f625acff55ebbf8136ec68f30, job
+fc4d0c8e84e4482899415c04c0e34f43, receipt
+bf09cbefc48424a68e902f0787bd4c1a7844dafb21e84f8ad8b439040ae36f67.
+Canonical authored exact remains 41,836 / 266,187 (15.72%); the imported ledger
+baseline is not a claim that all old functions have fresh accepted receipts.
+
+ANM-095 corrects the radial initializer's old masked-score interpretation. A
+fresh current-graph compile reproduces its complete 803-byte non-exact candidate;
+diagnostic semantic address normalization leaves twelve differing positions,
+not eight ordinary residual bytes. All nineteen floating-literal occurrences
+match exact target payloads. Two bounded lifetime/aggregate controls each add
+four differing displacement bytes and are restored. Source and accepted texture
+closure remain unchanged, with no added exact credit. Continue the medium
+inventory rather than expanding another repeated profile/context sweep here.
