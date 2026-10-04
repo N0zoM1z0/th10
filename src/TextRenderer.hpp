@@ -2,6 +2,7 @@
 #define TH10_TEXT_RENDERER_HPP
 
 #include <stddef.h>
+#include <windows.h>
 
 // Partial view of the TH10 text bitmap owner. Unobserved storage is opaque;
 // this does not assert the original class layout or full allocation size.
@@ -11,10 +12,13 @@ struct TextRenderBufferView
     unsigned int format;
     unsigned int width;
     unsigned int height;
-    unsigned char unknown10c[4];
+    unsigned int imageSize;
     int pitch;
-    unsigned char unknown114[0x0c];
+    HDC deviceContext;
+    unsigned char unknown118[8];
     void *pixels;
+
+    bool InvertAlpha(int processedRows);
 };
 
 typedef char TextBufferFormatAt100[
@@ -25,6 +29,10 @@ typedef char TextBufferHeightAt108[
     offsetof(TextRenderBufferView, height) == 0x108 ? 1 : -1];
 typedef char TextBufferPitchAt110[
     offsetof(TextRenderBufferView, pitch) == 0x110 ? 1 : -1];
+typedef char TextBufferImageSizeAt10c[
+    offsetof(TextRenderBufferView, imageSize) == 0x10c ? 1 : -1];
+typedef char TextBufferDeviceContextAt114[
+    offsetof(TextRenderBufferView, deviceContext) == 0x114 ? 1 : -1];
 typedef char TextBufferPixelsAt120[
     offsetof(TextRenderBufferView, pixels) == 0x120 ? 1 : -1];
 
@@ -32,5 +40,14 @@ typedef char TextBufferPixelsAt120[
 // models that machine contract, not an original-source convention claim.
 bool __stdcall TextRenderBufferApplyAlphaBleed(
     TextRenderBufferView *buffer, unsigned int processedRows);
+
+struct D3d9RectView;
+struct D3d9TextureView;
+namespace TextHelperView
+{
+void __stdcall RenderTextToTexture(
+    const D3d9RectView *rectangle, int x, int glyphWidth,
+    unsigned int color, const char *text, D3d9TextureView *texture);
+}
 
 #endif

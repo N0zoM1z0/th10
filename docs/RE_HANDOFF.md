@@ -17,11 +17,11 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 873
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 874
   maintained source mappings, 1,097 canonical exact functions and 106,240
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
   authored exact code is 40,527 bytes (15.23% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 146 functions. These figures come from the live ledgers
+  non-exact backlog has 147 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -191,7 +191,7 @@ cold links pass all six independently bound local fields, all 43 table bytes
 and three alignment bytes. The full affected cohort passes 136 units and
 23,456 bytes across 36 artifacts. The new local canonical authored total is
 40,527 / 266,187 (15.23%); 500 origins remain indeterminate and no boundary or
-denominator changed. Its Factory acceptance is still a separate pending gate.
+denominator changed. Its Factory acceptance is recorded in the latest checkpoint below.
 
 The 946-byte text helper was accepted at 56f825c by job
 0dcf22b0af294418b5cad21fd35560de, receipt
@@ -205,3 +205,23 @@ preserved as post56-texture-rgb-order-unbuilt.cpp in the ANM analysis directory;
 it has not been built or accepted. The old trial-v3 driver intentionally rejects
 the new canonical source. Preserve that guard and create a new baseline-bound
 driver before resuming large-owner experiments.
+
+## Shadow-text source checkpoint
+
+The complete 554-byte shadow-text rasterizer now has maintained source in
+TextRenderer.cpp, but remains non-exact. Its normal and linked candidates have
+the correct extent with 24 ordinary stack-location differences, as recorded in
+TEXT-002. Thirteen bounded source/interface/profile/context controls did not
+close the parameter-home reuse difference. Do not force an int/surface alias
+or count partial bytes. The existing 946-byte helper cold-replays exact after
+the changes; canonical authored exact remains 40,527 / 266,187.
+
+The 1,463-byte texture closure was Factory PASS and ACCEPTED on its first
+attempt at bd84d4438dd9ee0d83b7619d8ede4eaa086226be, job
+291fe2aaf4814d508f59966d430715a4, receipt
+9af32afc19a22719f61beb2d443c07e77bbdce60caae504aedca999b29f2d609.
+The latest request remains medium authored owners of several hundred to about
+2,000 bytes. Other target-reviewed text candidates are the 509-byte alternate
+rasterizer and the 781-byte font initializer with its 421-byte allocation
+helper. Treat the alternate path's shared stack-home risk and the allocation
+helpers' private EAX/ESI contracts explicitly; no new exactness is assumed.

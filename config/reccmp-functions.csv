@@ -872,3 +872,4 @@ EnemyDropItemCountsCore,0x0040C9D0,function
 SoundPlayerView::ProcessQueues,0x0043DDF0,function
 FileSystem::CheckIfFileAlreadyExists,0x0044B4D0,function
 TextRenderBufferApplyAlphaBleed,0x00436DA0,function
+TextHelperView::RenderTextToTexture,0x00437DB0,function
