@@ -879,3 +879,4 @@ CStreamingSound::InitSoundBuffers
 SoundPlayerView::PreloadBgm
 CStreamingSound::HandleWaveStreamNotification
 SoundPlayerView::BgmPlayerThread
+FileSystem::OpenFile

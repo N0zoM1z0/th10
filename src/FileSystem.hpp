@@ -8,7 +8,7 @@ void *Read(unsigned int size);
 
 namespace FileSystem
 {
-unsigned char *OpenFile(const char *path, int *sizeOut, int mode);
+unsigned char *__stdcall OpenFile(const char *path, int *sizeOut, int mode);
 int __stdcall CheckIfFileAlreadyExists(const char *path);
 bool LoadArchive(const char *filename);
 int CloseWriteFile();

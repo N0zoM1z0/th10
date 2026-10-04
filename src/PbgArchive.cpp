@@ -118,7 +118,11 @@ unsigned char *PbgArchive::ReadDecompressEntry(const char *filename,
     if (m_FileAbstraction == NULL)
         return NULL;
 
+// Reconstructed call context: the target outlines this lookup.
+// The original compiler-control spelling is unknown; restore the default after it.
+#pragma inline_depth(0)
     PbgArchiveEntry *entry = FindEntry(filename);
+#pragma inline_depth()
     if (entry == NULL)
         goto read_error;
 
@@ -136,15 +140,20 @@ unsigned char *PbgArchive::ReadDecompressEntry(const char *filename,
         compressedData = outBuffer;
     }
 
-    if (!m_FileAbstraction->Seek(entry->dataOffset, g_PbgFileSeekModes[0]))
+    if (!m_FileAbstraction->Seek(entry->dataOffset, FILE_BEGIN))
         goto read_error;
     if (m_FileAbstraction->Read(compressedData, compressedSize) == 0)
         goto read_error;
 
     u8 filenameChecksum = 0;
-    for (const u8 *cursor = (const u8 *)entry->filename; *cursor != 0; cursor++)
+    const u8 *cursor = (const u8 *)entry->filename;
+    for (size_t remaining = strlen(entry->filename); remaining != 0;
+         --remaining, ++cursor)
+    {
         filenameChecksum = (u8)(filenameChecksum + *cursor);
-    PbgDecryptProfile &profile = g_PbgDecryptProfiles[filenameChecksum % 8];
+    }
+    filenameChecksum %= 8;
+    PbgDecryptProfile &profile = g_PbgDecryptProfiles[filenameChecksum];
     FileSystem::Decrypt(compressedData, compressedSize, profile.xorValue,
                         profile.xorValueIncrement, profile.chunkSize,
                         profile.maxBytes);

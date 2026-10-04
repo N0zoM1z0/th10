@@ -11,6 +11,8 @@ extern unsigned char gReplayFileOpenCount;
 
 extern PbgArchive g_PbgArchives[20];
 extern int g_PbgArchiveCount;
+// Distinct target storage at 0x00497990; original global name is unknown.
+extern PbgArchive g_MainPbgArchive;
 
 // Maintained reconstruction source. The namespace/function names are retained
 // after TH10 target behavior recovery; original TU and physical compiler
@@ -65,6 +67,60 @@ void *Read(unsigned int size)
 
 namespace FileSystem
 {
+// Target 0x0044B360. Mode zero reads only the main archive; other modes
+// read only disk. The archive basename fallback deliberately keeps the path.
+unsigned char *__stdcall OpenFile(const char *path, int *sizeOut, int mode)
+{
+    EnterCriticalSection(&gReplayFileCriticalSection);
+    ++gReplayFileOpenCount;
+
+    DWORD size;
+    unsigned char *data;
+    if (mode == 0)
+    {
+        const char *backslash = strrchr(path, '\\');
+        const char *name = strrchr(backslash == NULL ? path : backslash + 1, '/');
+        name = name == NULL ? path : name + 1;
+        size = g_MainPbgArchive.GetEntryDecompressedSize(name);
+        if (sizeOut != NULL)
+            *sizeOut = size;
+        if (size == 0)
+            goto openError;
+        data = static_cast<unsigned char *>(malloc(size));
+        if (data == NULL)
+            goto openError;
+        g_MainPbgArchive.ReadDecompressEntry(name, data);
+    }
+    else
+    {
+        HANDLE file = CreateFileA(
+            path, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+            FILE_ATTRIBUTE_NORMAL | FILE_FLAG_SEQUENTIAL_SCAN, NULL);
+        if (file == INVALID_HANDLE_VALUE)
+            goto openError;
+        size = GetFileSize(file, NULL);
+        data = static_cast<unsigned char *>(malloc(size));
+        if (data == NULL)
+        {
+            CloseHandle(file);
+            goto openError;
+        }
+        ReadFile(file, data, size, &size, NULL);
+        if (sizeOut != NULL)
+            *sizeOut = size;
+        CloseHandle(file);
+    }
+
+    LeaveCriticalSection(&gReplayFileCriticalSection);
+    --gReplayFileOpenCount;
+    return data;
+
+openError:
+    LeaveCriticalSection(&gReplayFileCriticalSection);
+    --gReplayFileOpenCount;
+    return NULL;
+}
+
 // TH10_FILESYSTEM_FUNCTION: 0x0044B4D0 FileSystem::CheckIfFileAlreadyExists
 int __stdcall CheckIfFileAlreadyExists(const char *path)
 {

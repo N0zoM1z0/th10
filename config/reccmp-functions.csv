@@ -880,3 +880,4 @@ CStreamingSound::InitSoundBuffers,0x0044CF20,function
 SoundPlayerView::PreloadBgm,0x0043D7D0,function
 CStreamingSound::HandleWaveStreamNotification,0x0044D850,function
 SoundPlayerView::BgmPlayerThread,0x0043E3A0,function
+FileSystem::OpenFile,0x0044B360,function

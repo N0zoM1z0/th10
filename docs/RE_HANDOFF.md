@@ -17,10 +17,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
   Never substitute another edition or commit the target.
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
-- At this handoff: 1,732 reviewed candidate boundaries and origins, 881
-  maintained source mappings, 1,103 canonical exact functions and 108,403
+- At this handoff: 1,732 reviewed candidate boundaries and origins, 882
+  maintained source mappings, 1,104 canonical exact functions and 108,763
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 42,690 bytes (16.04% of reviewed owned bytes). The authored source-present,
+  authored exact code is 43,050 bytes (16.17% of reviewed owned bytes). The authored source-present,
   non-exact backlog has 148 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
@@ -383,7 +383,37 @@ or denominator changes; the 637-byte refill remains entirely non-exact.
 
 Local canonical authored exact is 42,690 / 266,187 (16.04%), with 500 indeterminate
 origins,881 source mappings and 148 authored source-present non-exact owners.
-The new worker's Factory receipt is still pending; imported canonical totals
+The worker's accepted Factory receipt is recorded below; imported canonical totals
 must not be described as universally fresh Factory acceptance. The next medium
 candidate is the 360-byte FileSystem::OpenFile owner. Its caller count and
 archive/disk mode behavior require fresh verification before source recovery.
+
+
+## File loader closure and reader fidelity checkpoint
+
+FILESYSTEM-010 closes the complete 360-byte FileSystem::OpenFile owner. Both
+canonical cold links pass all 26 independently reviewed fields with distinct
+PE/PDB identities. All 161 existing affected units pass 27,909/27,909 bytes
+across 49 cold artifacts, including the transitive shared-header closure.
+The selected real Main checksum graph uses natural three-parameter __stdcall
+source and target-supported lookup outlining with a tested bare inline_depth()
+reset. Original pragma spelling, production TU/profile and runtime remain open.
+
+The distinct main archive is at 0x00497990, separate from the twenty-pack array
+at 0x004923B0; entry count is main archive+4. ARCHIVE-008 restores the reader's
+two-pass checksum, literal-zero seek and byte index, but its complete candidate
+remains 284/281 and receives no exact credit. Preserve the frozen source/context
+negative controls rather than repeating the old ABI/TU sweep.
+
+Local canonical authored exact is 43,050 / 266,187 (16.17%), with 500 origins
+still indeterminate. There are 882 source mappings, 1,104 canonical exact
+functions, 108,763 exact .text bytes and 148 authored source-present non-exact
+owners. The new OpenFile Factory receipt is pending; imported canonical totals
+are not universally fresh accepted receipts. The prepared next medium lane is
+the 433-byte ReadAnmEntries owner, starting from fresh current-source evidence.
+
+The preceding 189-byte sound worker is Factory PASS and ACCEPTED at
+57c0e9d6262fe1290909fc5c52e1fa11ca15a705, job
+dddc9ea267fc4abd9646c018aeb7b890, receipt
+21cbf5415a72bb3e9e51ccc42207afe167abfbe85ab3b3692dd3a24a198a9c93.
+The saved acceptance packet is in the ignored 20261004-stream-refill directory.

@@ -18732,3 +18732,47 @@ linkages = [
   { offset = 0x096, type = "REL32", symbol = "?HandleWaveStreamNotification@CStreamingSound@@QAEJH@Z", target = 0x0044D850 },
   { offset = 0x09B, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x00492590, addend = 0x5208 },
 ]
+
+# FILESYSTEM-010: complete caller-bound owner; support reader remains non-exact.
+[units.file-system-open-file]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/FileSystem.cpp", "src/PbgArchive.cpp"]
+pdb_source = "src/FileSystem.cpp"
+output_dir = "build/match-linked/FileSystemOpen"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?CalcExecutableChecksum@GameWindowView@@SAHXZ"
+functions = ["FileSystem::OpenFile"]
+symbol = "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z"
+target_address = 0x0044B360
+size = 360
+linkages = [
+  { offset = 0x009, type = "DIR32", symbol = "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A", target = 0x004922A4 },
+  { offset = 0x011, type = "DIR32", symbol = "__imp__EnterCriticalSection@4", target = 0x004660B0 },
+  { offset = 0x017, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0x025, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0x033, type = "REL32", symbol = "_strrchr", target = 0x00452930 },
+  { offset = 0x047, type = "REL32", symbol = "_strrchr", target = 0x00452930 },
+  { offset = 0x05B, type = "DIR32", symbol = "?g_MainPbgArchive@@3VPbgArchive@@A", target = 0x00497990 },
+  { offset = 0x065, type = "DIR32", symbol = "?g_MainPbgArchive@@3VPbgArchive@@A", target = 0x00497990, addend = 0x4 },
+  { offset = 0x075, type = "REL32", symbol = "__stricmp", target = 0x0046054E },
+  { offset = 0x09B, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0x0AA, type = "DIR32", symbol = "?g_MainPbgArchive@@3VPbgArchive@@A", target = 0x00497990 },
+  { offset = 0x0B1, type = "REL32", symbol = "?ReadDecompressEntry@PbgArchive@@QAEPAEPBDPAE@Z", target = 0x00434DD0 },
+  { offset = 0x0D4, type = "DIR32", symbol = "__imp__CreateFileA@28", target = 0x004660C4 },
+  { offset = 0x0E4, type = "DIR32", symbol = "__imp__GetFileSize@8", target = 0x004660D8 },
+  { offset = 0x0EE, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0x0FE, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+  { offset = 0x103, type = "DIR32", symbol = "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A", target = 0x004922A4 },
+  { offset = 0x109, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x10E, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0x118, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0x132, type = "DIR32", symbol = "__imp__ReadFile@20", target = 0x004660D0 },
+  { offset = 0x144, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+  { offset = 0x149, type = "DIR32", symbol = "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A", target = 0x004922A4 },
+  { offset = 0x14F, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x154, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0x15C, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+]
