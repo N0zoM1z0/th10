@@ -186,9 +186,9 @@ def candidate_case_layout(
 def stack_displacement_diagnostics(
     target: bytes, candidate_path: Path, rows: list[dict[str, object]]
 ) -> dict[str, object]:
-    """Compare encoded ESP offsets, without identifying locals or dataflow."""
+    """Compare stack homes and private register choices in aligned cases."""
     from capstone import Cs, CS_ARCH_X86, CS_MODE_32
-    from capstone.x86 import X86_OP_MEM, X86_REG_ESP
+    from capstone.x86 import X86_OP_MEM, X86_OP_REG, X86_REG_ESP
 
     lock = tomllib.loads((ROOT / "config" / "tools.lock.toml").read_text())
     decoder_identity = verify_capstone(lock["capstone"])
@@ -227,6 +227,9 @@ def stack_displacement_diagnostics(
         )
         compared = 0
         differences = []
+        register_compared = 0
+        register_differences = []
+        x87_register_differences = []
         if layout_matches:
             for original, rebuilt in zip(
                 target_instructions, candidate_instructions
@@ -234,6 +237,50 @@ def stack_displacement_diagnostics(
                 for index, (left, right) in enumerate(zip(
                     original.operands, rebuilt.operands
                 )):
+                    if left.type == right.type == X86_OP_REG:
+                        register_compared += 1
+                        if left.reg != right.reg:
+                            difference = {
+                                "instruction_offset": (
+                                    f"0x{original.address - target_address:X}"
+                                ),
+                                "mnemonic": original.mnemonic,
+                                "operand_index": index,
+                                "kind": "register",
+                                "target_register": original.reg_name(left.reg),
+                                "candidate_register": rebuilt.reg_name(right.reg),
+                            }
+                            register_differences.append(difference)
+                            if (
+                                difference["target_register"].startswith("st")
+                                or difference["candidate_register"].startswith("st")
+                            ):
+                                x87_register_differences.append(difference)
+                    if left.type == right.type == X86_OP_MEM:
+                        for kind, left_reg, right_reg in (
+                            ("memory-base", left.mem.base, right.mem.base),
+                            ("memory-index", left.mem.index, right.mem.index),
+                        ):
+                            if left_reg == 0 and right_reg == 0:
+                                continue
+                            register_compared += 1
+                            if left_reg != right_reg:
+                                register_differences.append({
+                                    "instruction_offset": (
+                                        f"0x{original.address - target_address:X}"
+                                    ),
+                                    "mnemonic": original.mnemonic,
+                                    "operand_index": index,
+                                    "kind": kind,
+                                    "target_register": (
+                                        original.reg_name(left_reg)
+                                        if left_reg else "none"
+                                    ),
+                                    "candidate_register": (
+                                        rebuilt.reg_name(right_reg)
+                                        if right_reg else "none"
+                                    ),
+                                })
                     if not (
                         left.type == right.type == X86_OP_MEM
                         and left.mem.base == right.mem.base == X86_REG_ESP
@@ -256,11 +303,17 @@ def stack_displacement_diagnostics(
             "name": row["name"],
             "instruction_layout_matches": layout_matches,
             "stack_operands_compared": compared,
+            "register_operands_compared": register_compared,
             "differences": differences,
+            "register_differences": register_differences,
+            "x87_register_differences": x87_register_differences,
         })
     return {
         "acceptance_authority": "none",
-        "method": "encoded ESP offsets within identical instruction layouts",
+        "method": (
+            "encoded ESP offsets and register identities within identical "
+            "instruction layouts"
+        ),
         "decoder": decoder_identity,
         "aligned_case_count": sum(
             case["instruction_layout_matches"] for case in cases
@@ -269,6 +322,15 @@ def stack_displacement_diagnostics(
             case["stack_operands_compared"] for case in cases
         ),
         "difference_count": sum(len(case["differences"]) for case in cases),
+        "register_operands_compared": sum(
+            case["register_operands_compared"] for case in cases
+        ),
+        "register_difference_count": sum(
+            len(case["register_differences"]) for case in cases
+        ),
+        "x87_register_difference_count": sum(
+            len(case["x87_register_differences"]) for case in cases
+        ),
         "cases": cases,
     }
 
