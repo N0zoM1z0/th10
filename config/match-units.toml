@@ -1974,11 +1974,11 @@ symbol = "?ResolveIntOperand@EnemyFullObjectView@@UAEPAHH@Z"
 target_address = 0x00412300
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L4418", target = 0x00412340 },
-  { offset = 64, type = "DIR32", symbol = "$L3676", target = 0x00412315 },
-  { offset = 68, type = "DIR32", symbol = "$L3677", target = 0x0041231E },
-  { offset = 72, type = "DIR32", symbol = "$L3678", target = 0x00412327 },
-  { offset = 76, type = "DIR32", symbol = "$L3679", target = 0x00412330 },
+  { offset = 17, type = "DIR32", symbol = "$L4424", target = 0x00412340 },
+  { offset = 64, type = "DIR32", symbol = "$L3682", target = 0x00412315 },
+  { offset = 68, type = "DIR32", symbol = "$L3683", target = 0x0041231E },
+  { offset = 72, type = "DIR32", symbol = "$L3684", target = 0x00412327 },
+  { offset = 76, type = "DIR32", symbol = "$L3685", target = 0x00412330 },
 ]
 
 [units.enemy-ecl-float-lvalue-resolver]
@@ -1991,11 +1991,11 @@ symbol = "?ResolveFloatOperand@EnemyFullObjectView@@UAEPAMH@Z"
 target_address = 0x004126D0
 size = 80
 relocations = [
-  { offset = 17, type = "DIR32", symbol = "$L4421", target = 0x00412710 },
-  { offset = 64, type = "DIR32", symbol = "$L3754", target = 0x004126E5 },
-  { offset = 68, type = "DIR32", symbol = "$L3755", target = 0x004126EE },
-  { offset = 72, type = "DIR32", symbol = "$L3756", target = 0x004126F7 },
-  { offset = 76, type = "DIR32", symbol = "$L3757", target = 0x00412700 },
+  { offset = 17, type = "DIR32", symbol = "$L4427", target = 0x00412710 },
+  { offset = 64, type = "DIR32", symbol = "$L3760", target = 0x004126E5 },
+  { offset = 68, type = "DIR32", symbol = "$L3761", target = 0x004126EE },
+  { offset = 72, type = "DIR32", symbol = "$L3762", target = 0x004126F7 },
+  { offset = 76, type = "DIR32", symbol = "$L3763", target = 0x00412700 },
 ]
 
 [units.pbgfile-constructor]
@@ -18775,4 +18775,63 @@ linkages = [
   { offset = 0x14F, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
   { offset = 0x154, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
   { offset = 0x15C, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+]
+
+# ANM resource loader: full reviewed owners; original physical TU remains unknown.
+[units.anm-resource-read-entries]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+support_sources = ["src/FileSystem.cpp", "src/PbgArchive.cpp", "src/GameErrorContext.cpp"]
+output_dir = "build/match-linked/AnmResourceLoader"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z"
+functions = ["AnmRenderManagerView::ReadAnmEntries"]
+symbol = "?ReadAnmEntries@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z"
+target_address = 0x004470C0
+size = 433
+linkages = [
+  { offset = 0x007, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x035, type = "DIR32", symbol = "??_C@_0BP@OEKHLLLN@?$IDe?$IDN?$IDX?$ID?$GA?$ID?$ID?$IKi?$JE?$FL?$JA?f?$IC?$KK?$JB?$KL?$IC?h?$IC?$NM?$IC?$LJ?$IC?q?$AN?6?$AA@", target = 0x00470384 },
+  { offset = 0x03A, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 0x00474F70 },
+  { offset = 0x03F, type = "REL32", symbol = "?Fatal@GameErrorContext@th10@@QAAPADPADZZ", target = 0x0044B8E0 },
+  { offset = 0x055, type = "DIR32", symbol = "??_C@_02DKCKIIND@?$CFs?$AA@", target = 0x0046E1C8 },
+  { offset = 0x05B, type = "REL32", symbol = "_sprintf", target = 0x00452AE8 },
+  { offset = 0x06B, type = "REL32", symbol = "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z", target = 0x0044B360 },
+  { offset = 0x07F, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
+  { offset = 0x105, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0x130, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0x143, type = "REL32", symbol = "_malloc", target = 0x00452706 },
+  { offset = 0x162, type = "REL32", symbol = "?LoadExternalTextureData@AnmRenderManagerView@@QAEHPAUAnmLoadedView@@HPAH1PAUAnmRawEntryView@@@Z", target = 0x004472E0 },
+  { offset = 0x188, type = "REL32", symbol = "?LoadExternalTextureData@AnmRenderManagerView@@QAEHPAUAnmLoadedView@@HPAH1PAUAnmRawEntryView@@@Z", target = 0x004472E0 },
+  { offset = 0x1A4, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
+]
+
+[units.anm-resource-load-external-texture]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+support_sources = ["src/FileSystem.cpp", "src/PbgArchive.cpp", "src/GameErrorContext.cpp"]
+output_dir = "build/match-linked/AnmResourceLoader"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z"
+functions = ["AnmRenderManagerView::LoadExternalTextureData"]
+symbol = "?LoadExternalTextureData@AnmRenderManagerView@@QAEHPAUAnmLoadedView@@HPAH1PAUAnmRawEntryView@@@Z"
+target_address = 0x004472E0
+size = 214
+linkages = [
+  { offset = 0x007, type = "DIR32", symbol = "___security_cookie", target = 0x00473660 },
+  { offset = 0x026, type = "DIR32", symbol = "??_C@_0DL@DMPDJCAB@?$IDA?$IDj?$ID?$IB?$IC?$KK?$JD?G?$IC?$NN?$IN?$JO?$IC?$NP?$IC?$NM?$IC?$LJ?$IC?q?$IBB?$IDf?$IB?$FL?$ID?$FO?$IC?$KK@", target = 0x00470274 },
+  { offset = 0x033, type = "DIR32", symbol = "??_C@_0BP@JIJGIFBO@?$IDA?$IDj?$ID?$IB?$IC?L?$IDo?$IB?$FL?$IDW?$ID?$IH?$ID?$JD?$IC?$KK?$II?a?$IC?$KC?$IC?$NM?$IC?$LH?$AN?6?$AA@", target = 0x00470254 },
+  { offset = 0x038, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 0x00474F70 },
+  { offset = 0x03D, type = "REL32", symbol = "?Fatal@GameErrorContext@th10@@QAAPADPADZZ", target = 0x0044B8E0 },
+  { offset = 0x061, type = "DIR32", symbol = "??_C@_02DKCKIIND@?$CFs?$AA@", target = 0x0046E1C8 },
+  { offset = 0x067, type = "REL32", symbol = "_sprintf", target = 0x00452AE8 },
+  { offset = 0x07A, type = "REL32", symbol = "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z", target = 0x0044B360 },
+  { offset = 0x084, type = "DIR32", symbol = "??_C@_0ED@LCLAHICL@?$IDe?$IDN?$IDX?$ID?$GA?$ID?$ID?5?$CFs?5?$IC?$KK?$JD?G?$IC?$NN?$IN?$JO?$IC?$NP?$IC?$NM?$IC?$LJ?$IC?q?$IBB@", target = 0x00470210 },
+  { offset = 0x089, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 0x00474F70 },
+  { offset = 0x08E, type = "REL32", symbol = "?Fatal@GameErrorContext@th10@@QAAPADPADZZ", target = 0x0044B8E0 },
+  { offset = 0x0C9, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
 ]

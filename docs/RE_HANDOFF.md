@@ -1,6 +1,6 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-04. The Factory MCP was repaired and hot-switched behind the
+Updated 2026-10-05. The Factory MCP was repaired and hot-switched behind the
 existing public transport without a client refresh or reconnect. The native
 `th10-ghidra` `check {}` operation now passes for `target:th10-main` with
 `attestation.provider_transport=factory-native-command`. Use the hash-attested
@@ -18,10 +18,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 882
-  maintained source mappings, 1,104 canonical exact functions and 108,763
+  maintained source mappings, 1,106 canonical exact functions and 109,410
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 43,050 bytes (16.17% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 148 functions. These figures come from the live ledgers
+  authored exact code is 43,697 bytes (16.42% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 146 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -408,7 +408,7 @@ negative controls rather than repeating the old ABI/TU sweep.
 Local canonical authored exact is 43,050 / 266,187 (16.17%), with 500 origins
 still indeterminate. There are 882 source mappings, 1,104 canonical exact
 functions, 108,763 exact .text bytes and 148 authored source-present non-exact
-owners. The new OpenFile Factory receipt is pending; imported canonical totals
+owners. The accepted OpenFile Factory receipt is recorded below; imported canonical totals
 are not universally fresh accepted receipts. The prepared next medium lane is
 the 433-byte ReadAnmEntries owner, starting from fresh current-source evidence.
 
@@ -417,3 +417,51 @@ The preceding 189-byte sound worker is Factory PASS and ACCEPTED at
 dddc9ea267fc4abd9646c018aeb7b890, receipt
 21cbf5415a72bb3e9e51ccc42207afe167abfbe85ab3b3692dd3a24a198a9c93.
 The saved acceptance packet is in the ignored 20261004-stream-refill directory.
+
+
+## ANM resource-read pair closure
+
+ANM-096 closes the complete 433-byte ReadAnmEntries owner and its required
+214-byte LoadExternalTextureData dependency. Two canonical cold links reproduce
+647/647 bytes and all 26 independently reviewed fields with distinct PE/PDB
+identities. All 231 prior affected units pass 33,550/33,550 bytes across 81
+cold artifacts. This includes the full transitive AnmManager.hpp and new
+GameErrorContext.hpp closure, the accepted OpenFile context, and both existing
+error-context proofs. No new claim is made for the standalone constructor16.
+
+Natural source uses the real Fatal definition, coherent shared class declaration,
+two target-supported 260-byte path arrays, the existing counter initialized
+before allocation and incremented before the terminal offset test, and one real
+zeroing constructor instead of separate caller memset. Original constructor
+ownership and MAX_PATH spelling remain unknown. The target failure/publication
+quirks remain unchanged. In this new graph Fatal200/201, OpenFile358/360 and
+Preload85/81 remain non-exact; their old canonical contexts are not replaced.
+
+The first Enemy normal replay failed on compiler-local labels. Independent
+COFF definition and full table replay proved pure renumbering; exactly ten
+name-only manifest updates in two resolver units were applied. Relocation
+positions/types/addends/targets, extents and profiles stayed unchanged. The
+full Enemy.obj cold retry passes all nine units and 204 bytes. The original
+failure is retained as regression-02-before-label-review.*. See ANM-097.
+
+Local canonical authored exact is 43,697 / 266,187 (16.42%): 1,106 exact
+functions, 109,410 canonical .text bytes, 882 source mappings and 146 authored
+source-present non-exact owners. All 500 indeterminate origins remain; no
+boundary, origin or denominator changed. Factory acceptance for the new pair
+is still pending and must be reported separately from the local ledger.
+
+The older post56-texture-rgb-order-unbuilt.cpp candidate preserves the earlier
+texture closure but predates this resource-loader source/header change. Do not copy it over
+current AnmManager.cpp or relax its old hash guards. Rebase only its reviewed
+intended source-order delta onto the current source/header baseline, preserving
+the new constructor, Fatal calls, capacities and all prior exact closures.
+The prepared next medium candidates are LoadTextureData650 and LoadSurface576;
+verify their own target calls and buffer spans before transferring hypotheses.
+
+The preceding OpenFile360 closure is Factory PASS and ACCEPTED at
+a129047295043db56e391dca585775008597c182 on its first attempt, job
+de160cebc24d46f6bb09657a36783fec, receipt
+8d2ac1e0ab4a90b6ab9b3ce20098f035b31f4679730cfb8260efda8b416c72b6.
+The complete acceptance envelope is in the ignored 20261004-filesystem-open
+analysis directory. Imported canonical totals are not a claim of universally
+fresh accepted Factory receipts.

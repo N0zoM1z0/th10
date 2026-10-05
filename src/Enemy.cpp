@@ -1,3 +1,4 @@
+#include "GameErrorContext.hpp"
 #include "Enemy.hpp"
 #include "EclVm.hpp"
 #include "GameScoreState.hpp"
@@ -8,14 +9,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-namespace th10
-{
-struct GameErrorContext
-{
-    char * __fastcall Log(char *format, ...);
-};
-extern GameErrorContext g_GameErrorContext;
-}
 
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)

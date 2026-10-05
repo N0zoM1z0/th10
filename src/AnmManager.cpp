@@ -1,3 +1,4 @@
+#include "GameErrorContext.hpp"
 #include "AnmManager.hpp"
 #include "FileSystem.hpp"
 
@@ -1808,12 +1809,17 @@ AnmLoadedView *AnmRenderManagerView::LoadAnm(
     return loaded;
 }
 
+AnmLoadedView::AnmLoadedView()
+{
+    memset(this, 0, sizeof(*this));
+}
+
 // Target 0x004470C0 reads and inventories all linked version-four raw ANM
 // entries, then allocates the three aggregate tables consumed by postload.
 AnmLoadedView *AnmRenderManagerView::ReadAnmEntries(
     int index, const char *path)
 {
-    char filePath[256];
+    char filePath[260];
     AnmRawEntryView *rawData;
     AnmRawEntryView *entry;
     AnmLoadedView *loaded;
@@ -1823,7 +1829,7 @@ AnmLoadedView *AnmRenderManagerView::ReadAnmEntries(
 
     if (index >= 33)
     {
-        g_AnmErrorLoggerView.Log(
+        th10::g_GameErrorContext.Fatal(
             "\x83\x65\x83\x4e\x83\x58\x83\x60\x83\x83\x8a\x69"
             "\x94\x5b\x90\xe6\x82\xaa\x91\xab\x82\xe8\x82\xdc"
             "\x82\xb9\x82\xf1\r\n");
@@ -1833,9 +1839,8 @@ AnmLoadedView *AnmRenderManagerView::ReadAnmEntries(
     sprintf(filePath, "%s", path);
     rawData = reinterpret_cast<AnmRawEntryView *>(
         FileSystem::OpenFile(filePath, NULL, 0));
+    int entryNumber = 0;
     loaded = new AnmLoadedView;
-    if (loaded != NULL)
-        memset(loaded, 0, sizeof(*loaded));
     loadedAnms[index] = loaded;
     if (rawData == NULL)
         return NULL;
@@ -1869,7 +1874,7 @@ AnmLoadedView *AnmRenderManagerView::ReadAnmEntries(
     loaded->totalSprites = totalSprites;
 
     entry = rawData;
-    for (int entryNumber = 0;; ++entryNumber)
+    for (;;)
     {
         if (LoadExternalTextureData(
                 loaded, entryNumber, &totalSprites, &totalScripts,
@@ -1877,6 +1882,7 @@ AnmLoadedView *AnmRenderManagerView::ReadAnmEntries(
         {
             return NULL;
         }
+        ++entryNumber;
         if (entry->nextOffset == 0)
             break;
         entry = reinterpret_cast<AnmRawEntryView *>(
@@ -1916,7 +1922,7 @@ int AnmRenderManagerView::LoadExternalTextureData(
     AnmLoadedView *loaded, int entryNumber, int *spriteCount,
     int *scriptCount, AnmRawEntryView *rawEntry)
 {
-    char filePath[256];
+    char filePath[260];
     const char *texturePath;
     unsigned char *fileData;
     int fileSize;
@@ -1925,7 +1931,7 @@ int AnmRenderManagerView::LoadExternalTextureData(
     (void)scriptCount;
     if (rawEntry == NULL)
     {
-        g_AnmErrorLoggerView.Log(
+        th10::g_GameErrorContext.Fatal(
             "\x83\x41\x83\x6a\x83\x81\x82\xaa\x93\xc7\x82\xdd"
             "\x8d\x9e\x82\xdf\x82\xdc\x82\xb9\x82\xf1\x81\x42"
             "\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8e\xb8\x82\xed"
@@ -1935,7 +1941,7 @@ int AnmRenderManagerView::LoadExternalTextureData(
     }
     if (rawEntry->version != 4)
     {
-        g_AnmErrorLoggerView.Log(
+        th10::g_GameErrorContext.Fatal(
             "\x83\x41\x83\x6a\x83\x81\x82\xcc\x83\x6f\x81\x5b"
             "\x83\x57\x83\x87\x83\x93\x82\xaa\x88\xe1\x82\xa2"
             "\x82\xdc\x82\xb7\r\n");
@@ -1952,7 +1958,7 @@ int AnmRenderManagerView::LoadExternalTextureData(
             fileData = FileSystem::OpenFile(filePath, &fileSize, 1);
             if (fileData == NULL)
             {
-                g_AnmErrorLoggerView.Log(
+                th10::g_GameErrorContext.Fatal(
                     "\x83\x65\x83\x4e\x83\x58\x83\x60\x83\x83 %s "
                     "\x82\xaa\x93\xc7\x82\xdd\x8d\x9e\x82\xdf\x82\xdc"
                     "\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e"

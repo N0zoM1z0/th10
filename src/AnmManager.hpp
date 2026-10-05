@@ -702,6 +702,8 @@ typedef char AnmTextureHeaderViewSizeIs10[
 
 struct AnmLoadedView
 {
+    AnmLoadedView();
+
     int anmFileIndex;
     char path[0x104];
     void *rawData;
