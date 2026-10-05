@@ -608,7 +608,30 @@ The ignored evidence packet is
 selected inputs, focused review and scope/cancellation records. Local canonical
 authored exact rises from 44,923 to 45,253 / 266,187 (17.00%); the denominator and
 500 indeterminate origins are unchanged. The previous local-canonical baseline
-was 44,923 bytes; the new 330-byte Factory receipt is pending at this source
-checkpoint. Imported ledger totals are not universally fresh accepted Factory
-receipts. Native product, runtime, semantic and port gates remain open.
+was 44,923 bytes; the new 330-byte Factory receipt passed and was accepted on
+2026-10-05 at 07:37 UTC, as recorded below. Imported ledger totals are not
+universally fresh accepted Factory receipts. Native product, runtime, semantic and port gates remain open.
 No push is performed.
+
+
+### ASCII Factory acceptance (2026-10-05)
+
+The complete Initialize330 claim passed Factory replay and was accepted at
+07:37:08 UTC against clean source commit
+`466804f828dc1336020fb3b7fc7aef0331f524ec`:
+
+- Job: `job:6d6a1ee87a9b4e959b27d3512d498846`
+- Receipt: `receipt:e0b410f7e8806d34908d6cb9d88511aee9732f0bf1ac7349f2985cb3e83d9af9`
+- Driver: `th10-vc71sp1-linked-pe-function-v1`, forced recompile
+- Result: `receipt_verdict=pass`, `acceptance_decision=accepted`
+
+Two earlier submissions failed before execution because the service reported a
+configuration mismatch; they produced no compiler result or receipt. After
+backoff, public metadata exposed an explicit worker-configuration binding and
+an unrelated successful replay. The third explicit submission used that normal
+published binding and passed on its first executed attempt. No private
+configuration was read or changed, and no rejection was bypassed. Full failed
+and accepted envelopes, public binding metadata and focused proof are retained
+in the ignored Ascii evidence packet. This confirms the330-byte increment to
+45,253 /266,187 (17.00%) local canonical authored bytes. No Create/Chain helper
+credit, broad-cohort pass, whole-product/runtime closure or push is claimed.
