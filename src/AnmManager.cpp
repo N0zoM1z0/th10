@@ -1,6 +1,7 @@
 #include "GameErrorContext.hpp"
 #include "AnmManager.hpp"
 #include "FileSystem.hpp"
+#include "Chain.hpp"
 
 #include <stdarg.h>
 #include <math.h>
@@ -4010,48 +4011,59 @@ AsciiManagerView *AsciiManagerCreate()
 
 int AsciiManagerView::Initialize()
 {
-    AnmChainElementView *element;
+    th10::ChainElem *element;
 
-    asciiAnm = AnmLoadResource(2, g_AnmFileSystemView, "ascii.anm");
+    asciiAnm = g_AnmRenderManagerView->PreloadAnm(2, "ascii.anm");
     if (asciiAnm == NULL)
         goto fail;
-    textAnm = AnmLoadResource(0, g_AnmFileSystemView, "text.anm");
+    textAnm = g_AnmRenderManagerView->PreloadAnm(0, "text.anm");
     if (textAnm == NULL)
         goto fail;
-    captureAnm = AnmLoadResource(3, g_AnmFileSystemView, "capture.anm");
+    captureAnm = g_AnmRenderManagerView->PreloadAnm(3, "capture.anm");
     if (captureAnm == NULL)
         goto fail;
 
-    element = AnmCreateChainElement(OnUpdate);
+    element = th10::Chain::AllocElem(
+        reinterpret_cast<th10::ChainCallback>(OnUpdate));
     element->flags &= ~2u;
-    element->argument = this;
-    AnmAddCalcChainElement(element, 4, g_AnmChainView);
+    element->arg = this;
+    th10::Chain::AddToCalcChain(element, 4, th10::g_Chain);
     calcChainElement = element;
 
-    element = AnmCreateChainElement(OnDrawLowPriority);
+    element = th10::Chain::AllocElem(
+        reinterpret_cast<th10::ChainCallback>(OnDrawLowPriority));
+    element->arg = this;
     element->flags &= ~2u;
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x30, g_AnmChainView);
+    th10::Chain::AddToDrawChain(element, 0x30, th10::g_Chain);
     drawChainElement0 = element;
 
-    element = AnmCreateChainElement(OnDrawHighPriority);
+    element = th10::Chain::AllocElem(
+        reinterpret_cast<th10::ChainCallback>(OnDrawHighPriority));
+    element->arg = this;
     element->flags &= ~2u;
-    element->argument = this;
-    AnmAddDrawChainElement(element, 0x26, g_AnmChainView);
+    th10::Chain::AddToDrawChain(element, 0x26, th10::g_Chain);
     drawChainElement = element;
 
-    primaryVm014.Initialize();
-    primaryVm014.anmFile = asciiAnm;
-    AnmLoadedSetScript(asciiAnm, &primaryVm014, 0);
+    {
+        AnmLoadedView *loaded = asciiAnm;
+        AnmVmView *vm = &primaryVm014;
+        vm->Initialize();
+        vm->anmFile = loaded;
+        loaded->SetSprite(vm, 0);
+    }
 
-    secondaryVm3C0.Initialize();
-    secondaryVm3C0.anmFile = asciiAnm;
-    AnmLoadedSetScript(asciiAnm, &secondaryVm3C0, 0x62);
+    {
+        AnmVmView *vm = &secondaryVm3C0;
+        AnmLoadedView *loaded = asciiAnm;
+        vm->Initialize();
+        vm->anmFile = loaded;
+        loaded->SetSprite(vm, 0x62);
+    }
     return 0;
 
 fail:
     // CP932: "data is corrupted" followed by CRLF.
-    g_AnmErrorLoggerView.Log(
+    th10::g_GameErrorContext.Log(
         "\x83\x66\x81\x5b\x83\x5e\x82\xaa\x89\xf3\x82\xea"
         "\x82\xc4\x82\xa2\x82\xdc\x82\xb7\r\n");
     return -1;

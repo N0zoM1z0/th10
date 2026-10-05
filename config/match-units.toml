@@ -18908,3 +18908,47 @@ linkages = [
   { offset = 0x21C, type = "REL32", symbol = "_free", target = 0x00452422 },
   { offset = 0x233, type = "REL32", symbol = "@__security_check_cookie@4", target = 0x00458EA5 },
 ]
+
+[units.ascii-manager-initialize]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/Chain.cpp"]
+output_dir = "build/match-linked/AsciiManagerInitialize"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?AsciiManagerCreate@@YAPAUAsciiManagerView@@XZ"
+functions = ["AsciiManagerView::Initialize"]
+symbol = "?Initialize@AsciiManagerView@@QAEHXZ"
+target_address = 0x00401110
+size = 330
+linkages = [
+  { offset = 0x2, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x8, type = "DIR32", symbol = "??_C@_09OLLOAFOI@ascii?4anm?$AA@", target = 0x0046CB80 },
+  { offset = 0x14, type = "REL32", symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z", target = 0x00447280 },
+  { offset = 0x24, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x29, type = "DIR32", symbol = "??_C@_08MPHPEAP@text?4anm?$AA@", target = 0x0046CB5C },
+  { offset = 0x30, type = "REL32", symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z", target = 0x00447280 },
+  { offset = 0x40, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x45, type = "DIR32", symbol = "??_C@_0M@LJLFOLAN@capture?4anm?$AA@", target = 0x0046CB50 },
+  { offset = 0x4F, type = "REL32", symbol = "?PreloadAnm@AnmRenderManagerView@@QAEPAUAnmLoadedView@@HPBD@Z", target = 0x00447280 },
+  { offset = 0x5E, type = "DIR32", symbol = "??_C@_0BH@JNGBGENB@?$IDf?$IB?$FL?$ID?$FO?$IC?$KK?$IJ?s?$IC?j?$IC?D?$IC?$KC?$IC?$NM?$IC?$LH?$AN?6?$AA@", target = 0x0046CB68 },
+  { offset = 0x63, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 0x00474F70 },
+  { offset = 0x68, type = "REL32", symbol = "?Log@GameErrorContext@th10@@QAAPADPADZZ", target = 0x0044B810 },
+  { offset = 0x77, type = "DIR32", symbol = "?OnUpdate@AsciiManagerView@@SIHPAU1@@Z", target = 0x004014F0 },
+  { offset = 0x7C, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0x86, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0x9A, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x00449AE0 },
+  { offset = 0x9F, type = "DIR32", symbol = "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z", target = 0x00401510 },
+  { offset = 0xA7, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0xAD, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0xC6, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x00449B70 },
+  { offset = 0xCB, type = "DIR32", symbol = "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z", target = 0x00401520 },
+  { offset = 0xD3, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 0x00449ED0 },
+  { offset = 0xD9, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 0x00491BE4 },
+  { offset = 0xF2, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 0x00449B70 },
+  { offset = 0x108, type = "REL32", symbol = "?Initialize@AnmVmView@@QAEXXZ", target = 0x00401DE0 },
+  { offset = 0x119, type = "REL32", symbol = "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z", target = 0x0043E5A0 },
+  { offset = 0x12C, type = "REL32", symbol = "?Initialize@AnmVmView@@QAEXXZ", target = 0x00401DE0 },
+  { offset = 0x140, type = "REL32", symbol = "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z", target = 0x0043E5A0 },
+]

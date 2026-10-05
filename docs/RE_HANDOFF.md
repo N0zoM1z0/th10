@@ -18,10 +18,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 882
-  maintained source mappings, 1,108 canonical exact functions and 110,636
+  maintained source mappings, 1,109 canonical exact functions and 110,966
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 44,923 bytes (16.88% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 144 functions. These figures come from the live ledgers
+  authored exact code is 45,253 bytes (17.00% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 143 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -46,9 +46,12 @@ scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
 The current Factory MCP repository shell, target preflight, executable
-toolchain, and Factory-native Ghidra attestation all pass. For
-source edits, cold-replay every affected accepted unit with
-`scripts/repo-python scripts/replay-exact-units.py --source src/FILE.cpp`.
+toolchain, and Factory-native Ghidra attestation all pass. The operator's
+2026-10-05 accelerated scope validates only modified function bodies/interfaces,
+with explicit `replay-exact-units.py --unit UNIT` cold proofs for modified exact
+units and new claims. Do not automatically rerun every prior or support-context
+function. Complete owner/binding and Factory acceptance proof is still required;
+record partial completed checks and cancelled broader work accurately.
 Finish a bounded change with `verify-toolchain.py --check`,
 `validate-tracking.py`, `progress.py`, `ci.py`, and `git diff --check`.
 `config/matches.csv` and the canonical match units are the exactness boundary;
@@ -568,3 +571,44 @@ Its error path calls Log (201 bytes) at 0x44B810 with ECX=0x474F70, not Fatal. T
 Log expression with GameErrorContext visible is independently supported; other
 resource, chain-registration and SetSprite call seams are still unresolved.
 Do not predict a full closure from the Log change alone.
+
+
+## Latest medium closure: ASCII initialization (2026-10-05)
+
+ANM-101 records the complete 330-byte Initialize owner at 0x00401110. Real
+PreloadAnm, Chain allocation/insertion, SetSprite and Log calls replace thin
+aliases. Separate file/VM lifetimes recover the target EAX receiver naturally;
+both explicit post-reset anmFile stores and the CP932 error literal remain.
+The shared Chain declaration preserves layout and existing attributes. Allocation
+uses the observed operator new, priorities are signed, insertion methods have
+standard callee cleanup and direct list-field accesses, and the depth decrement
+follows LeaveCriticalSection. The five modified Chain helpers remain nonexact;
+RegisterCalc/RegisterDraw retain their existing unresolved RET versus target
+RET4 issue, and are not called by Initialize. No helper exact credit is added.
+
+Both canonical cold triples independently reproduce all 330 bytes and all 28
+fields. Source/interface review covers the six modified runtime definitions and
+the shared layout. All 1,108 old unit dictionaries are unchanged. At the
+operator's explicit acceleration request, broad regression groups 12-39 were
+cancelled. Already completed groups 00-11 pass 87 units / 17,478 bytes across
+12 artifacts; this is partial historical evidence, not a full 143-unit pass.
+Earlier duplicate-risk approval rejections and their idle-state reconciliations
+are preserved; the cancelled regression-12 action was not rerouted or retried
+under the new scope. Source and both cold proofs were unchanged on resumption.
+
+An isolated wider import-header variant also matched the 69-byte Create owner.
+That variant is deferred: the selected canonical-header graph emits Create70,
+and no Create credit is added. Region319/320 and the Chain helper residuals
+remain open. The next medium queue prioritizes DrawMode6 (643), DrawStrings
+(738) and DrawGuiStrings (570), then ProcessQueues (1,419), using current retained
+artifacts before new trials; old diagnostic sizes are not fresh residuals.
+
+The ignored evidence packet is
+`.analysis/gpt-dots/20261005-ascii-initialize-final/`, with both cold triples,
+selected inputs, focused review and scope/cancellation records. Local canonical
+authored exact rises from 44,923 to 45,253 / 266,187 (17.00%); the denominator and
+500 indeterminate origins are unchanged. The previous local-canonical baseline
+was 44,923 bytes; the new 330-byte Factory receipt is pending at this source
+checkpoint. Imported ledger totals are not universally fresh accepted Factory
+receipts. Native product, runtime, semantic and port gates remain open.
+No push is performed.

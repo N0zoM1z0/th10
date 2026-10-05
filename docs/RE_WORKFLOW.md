@@ -88,11 +88,17 @@ identity differs.
    origin remains `library/exclude` and its source mapping stays empty.
 8. Add a canonical match unit and exact ledger row only after repeatable zero
    difference against the verified target.
-9. Cold-replay affected accepted units with
-   `scripts/repo-python scripts/replay-exact-units.py --source SOURCE`; use the unfiltered
-   command at integration checkpoints. Then regenerate progress, update the
-   handoff and per-game knowledge, inspect the final diff, and commit one
-   coherent local checkpoint.
+9. Under the operator-authorized accelerated scope (2026-10-05), validate the
+   functions whose bodies or interfaces were modified. Cold-replay modified
+   canonical units and new exact candidates with explicit `--unit` selectors;
+   review changed nonexact dependencies without granting them exact credit.
+   Do not routinely replay all prior functions or all consumers of a shared
+   source/header merely because they share a build graph. Full owned extents,
+   independent target bindings, cold reproducibility and Factory acceptance
+   requirements for each claimed exact function remain unchanged. Record the
+   actual completed validation scope and any cancelled broader checks. Then
+   regenerate progress, update the handoff and per-game knowledge, inspect the
+   final diff, and commit one coherent local checkpoint.
 
 ## Product and semantic gates
 

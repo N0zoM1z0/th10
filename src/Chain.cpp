@@ -1,56 +1,19 @@
 // Natural C++ candidate adapted from th10-decomphelp-forN0/src/Chain.cpp.
 // Chain::UnregisterElem and Chain::RemoveAllFromList are canonical exact; see
 // docs/DECOMPHELP_REPO_REVIEW.md and config/match-units.toml.
+#include "Chain.hpp"
 #include <windows.h>
 #include <stdlib.h>
 
 typedef unsigned char u8;
 typedef unsigned int u32;
 typedef int i32;
-typedef i32 (__fastcall *ChainCallback)(void *arg);
 
 namespace th10
 {
 
-struct ChainElem
-{
-    u32 prio;
-    u32 flags;
-    ChainCallback callback;
-    ChainCallback addedCallback;
-    ChainCallback deletedCallback;
-    ChainElem *self;
-    ChainElem *next;
-    ChainElem *prev;
-    void *arg;
-};
-
-struct ListNode
-{
-    ChainElem *elem;
-    ListNode *next;
-    ListNode *prev;
-};
-
-struct Chain
-{
-    u8 unk0000[0x14];
-    ListNode calcList;
-    u8 unk0020[0x18];
-    ListNode drawList;
-
-    __declspec(noinline) static ChainElem * __stdcall AllocElem(ChainCallback callback);
-    __declspec(noinline) static i32 AddToCalcChain(ChainElem *elem, u32 prio, Chain *chain);
-    __declspec(noinline) static i32 AddToDrawChain(ChainElem *elem, u32 prio, Chain *chain);
-    static void UnregisterElem(ChainElem *elem, Chain *chain);
-    static void __stdcall RemoveAllFromList(u8 *listBase, Chain *chain);
-    static ChainElem *RegisterCalc(ChainCallback callback, u32 prio, void *arg);
-    static ChainElem *RegisterDraw(ChainCallback callback, u32 prio, void *arg);
-};
-
 extern CRITICAL_SECTION g_CriticalSections[7];
 extern u8 g_ChainNestCounter;
-extern Chain *g_Chain;
 
 __declspec(noinline) ChainElem * __stdcall Chain::AllocElem(ChainCallback callback)
 {
@@ -60,7 +23,7 @@ __declspec(noinline) ChainElem * __stdcall Chain::AllocElem(ChainCallback callba
     u32 flagsMasked;
     u32 flagsOrOne;
 
-    elem = (ChainElem *)malloc(0x24);
+    elem = new ChainElem;
     if (elem != NULL)
     {
         flags = *(u32 *)((u8 *)elem + 0x4);
@@ -88,7 +51,8 @@ __declspec(noinline) ChainElem * __stdcall Chain::AllocElem(ChainCallback callba
     return elem;
 }
 
-static i32 FireAddedAndInsert(ChainElem *elem, u32 prio, ListNode *head)
+
+__declspec(noinline) i32 __stdcall Chain::AddToCalcChain(ChainElem *elem, i32 prio, Chain *chain)
 {
     i32 result;
     result = 0;
@@ -101,41 +65,63 @@ static i32 FireAddedAndInsert(ChainElem *elem, u32 prio, ListNode *head)
     g_ChainNestCounter++;
     {
         ListNode *cur;
-        ListNode *first;
         ListNode *node;
         elem->prio = prio;
-        cur = head;
+        cur = &chain->calcList;
         while (cur->next != NULL)
         {
-            ListNode *n;
-            n = cur->next;
-            if (n->elem->prio >= prio)
+            if (cur->next->elem->prio >= prio)
                 break;
-            cur = n;
+            cur = cur->next;
         }
-        first = cur->next;
         node = (ListNode *)&elem->self;
-        if (first != NULL)
+        if (cur->next != NULL)
         {
-            node->next = first;
-            first->prev = node;
+            node->next = cur->next;
+            cur->next->prev = node;
         }
         cur->next = node;
         node->prev = cur;
     }
-    g_ChainNestCounter--;
     LeaveCriticalSection(&g_CriticalSections[0]);
+    g_ChainNestCounter--;
     return result;
 }
 
-__declspec(noinline) i32 Chain::AddToCalcChain(ChainElem *elem, u32 prio, Chain *chain)
+__declspec(noinline) i32 __stdcall Chain::AddToDrawChain(ChainElem *elem, i32 prio, Chain *chain)
 {
-    return FireAddedAndInsert(elem, prio, &chain->calcList);
-}
-
-__declspec(noinline) i32 Chain::AddToDrawChain(ChainElem *elem, u32 prio, Chain *chain)
-{
-    return FireAddedAndInsert(elem, prio, &chain->drawList);
+    i32 result;
+    result = 0;
+    if (elem->addedCallback != NULL)
+    {
+        result = elem->addedCallback(elem->arg);
+        elem->addedCallback = NULL;
+    }
+    EnterCriticalSection(&g_CriticalSections[0]);
+    g_ChainNestCounter++;
+    {
+        ListNode *cur;
+        ListNode *node;
+        elem->prio = prio;
+        cur = &chain->drawList;
+        while (cur->next != NULL)
+        {
+            if (cur->next->elem->prio >= prio)
+                break;
+            cur = cur->next;
+        }
+        node = (ListNode *)&elem->self;
+        if (cur->next != NULL)
+        {
+            node->next = cur->next;
+            cur->next->prev = node;
+        }
+        cur->next = node;
+        node->prev = cur;
+    }
+    LeaveCriticalSection(&g_CriticalSections[0]);
+    g_ChainNestCounter--;
+    return result;
 }
 
 void Chain::UnregisterElem(ChainElem *elem, Chain *chain)
@@ -206,7 +192,7 @@ void __stdcall Chain::RemoveAllFromList(u8 *listBase, Chain *chain)
     }
 }
 
-ChainElem *Chain::RegisterCalc(ChainCallback callback, u32 prio, void *arg)
+ChainElem *Chain::RegisterCalc(ChainCallback callback, i32 prio, void *arg)
 {
     ChainElem *elem;
     elem = Chain::AllocElem(callback);
@@ -216,7 +202,7 @@ ChainElem *Chain::RegisterCalc(ChainCallback callback, u32 prio, void *arg)
     return elem;
 }
 
-ChainElem *Chain::RegisterDraw(ChainCallback callback, u32 prio, void *arg)
+ChainElem *Chain::RegisterDraw(ChainCallback callback, i32 prio, void *arg)
 {
     ChainElem *elem;
     elem = Chain::AllocElem(callback);
