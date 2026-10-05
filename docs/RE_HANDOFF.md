@@ -548,3 +548,23 @@ and all 38 regression artifacts are preserved in the ignored
 20261005-anm-texture-surface-final packet. The next medium lane begins with fresh
 LoadTextureRegion evidence against this source; existing artifacts may be
 inspected before another build when all inputs match.
+
+
+## Restored medium region controls
+
+ANM-100 corrects LoadTextureRegion's incoming ABI from complete raw bytes and
+preserves four source-restoring controls. The current baseline is 321/320 with
+frame 0x54; real branch-local aggregates recover frame 0x34, and delaying the
+surface-pointer initialization recovers the target private input registers.
+The best candidate is 319/320 with the embedded-header address/register segment
+still open. Two further pointer-scope/indexed-address controls are byte-neutral.
+All source is restored; authored exact stays 44,923/266,187 (16.88%) and the
+500 indeterminate origins remain. No partial exact credit or new regression
+is claimed. Preserve the candidates and genuinely rebase any future delta
+onto the then-current source.
+
+The next medium control is Ascii Initialize (330 bytes) through its real Create caller.
+Its error path calls Log (201 bytes) at 0x44B810 with ECX=0x474F70, not Fatal. The shared
+Log expression with GameErrorContext visible is independently supported; other
+resource, chain-registration and SetSprite call seams are still unresolved.
+Do not predict a full closure from the Log change alone.
