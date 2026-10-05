@@ -505,8 +505,8 @@ capacity spelling, production ownership and runtime remain unknown.
 Local canonical authored exact is 44,923/266,187 (16.88%), up 1,226 from 43,697,
 with 1,108 exact functions, 110,636 canonical .text bytes, 882 mappings and 144
 authored source-present non-exact owners. All 500 indeterminate origins remain.
-At this source checkpoint both new Factory receipts are pending; do not report
-their 1,226 bytes as newly accepted until terminal PASS+ACCEPTED is observed.
+Both new claims are Factory PASS and ACCEPTED on their first attempts at
+b2dbb473187b564e4238227e56010487f0eff265; receipt details follow below.
 Imported canonical totals are not universally fresh accepted Factory receipts.
 
 The prior scoped 401 output read paused dependent work. After an explicit user
@@ -526,3 +526,25 @@ its current source, full target, real caller and retained artifacts before a
 bounded trial; the existing exact alpha-bleed helper is a useful dependency.
 Old large-ANM whole-file candidates are still stale: rebase only intended deltas
 onto this source, preserving every reviewed resource/texture/surface closure.
+
+
+## Accepted ANM texture and surface pair
+
+Both complete owners were accepted at source checkpoint b2dbb473187b564e4238227e56010487f0eff265:
+
+- LoadTextureData, 650 bytes: job e699c1c9694a41ee94c4b99dc49c9299, receipt
+  b6eec439f684eae9b2d1a4031e07a40421cf8bf40da141c22d2873106d9ccc46
+- LoadSurface, 576 bytes: job 9c95845a501c46fd9b42018eff070fad, receipt
+  2b1dc81773dc70dff55e5620f94a7e2231dd39240379fa892fc61fdbac2b586b
+
+Both first attempts are terminal PASS+ACCEPTED under strict-live-v1 with forced
+recompilation. This accepts the full 1,226-byte batch, bringing authored exact to
+44,923/266,187 (16.88%), with the same 500 indeterminate origins. The source
+checkpoint is local; this lane issued no push. Native product/runtime gates remain
+open, and imported totals are not universally fresh accepted Factory receipts.
+
+Full accepted job envelopes, the complete independent audit, both cold triples
+and all 38 regression artifacts are preserved in the ignored
+20261005-anm-texture-surface-final packet. The next medium lane begins with fresh
+LoadTextureRegion evidence against this source; existing artifacts may be
+inspected before another build when all inputs match.
