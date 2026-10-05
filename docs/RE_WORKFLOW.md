@@ -124,4 +124,4 @@ dual-Oracle semantic baseline, in a distinct product configuration.
 commands, and outputs needed for unresolved evidence; convert reusable logic to
 scripts and accepted facts to tracked ledgers/docs. Remove superseded dumps,
 duplicate decompilations, stale logs, and obsolete build artifacts at each
-checkpoint. Never delete unexplained artifacts from a recovered dirty session.
+checkpoint. Inspect unexplained artifacts from a recovered dirty session first; once their retained work is preserved in source or durable notes, remove the disposable copies instead of carrying them forward indefinitely.

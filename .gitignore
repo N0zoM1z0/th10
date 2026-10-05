@@ -11,6 +11,15 @@
 *.dat
 *.cfg
 *.log
+*.obj
+*.lib
+*.exp
+*.pdb
+*.ilk
+*.map
+*.res
+*.tmp
+*~
 *.gpr
 *.rep/
 *.i64

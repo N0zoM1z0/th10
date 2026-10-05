@@ -23,7 +23,7 @@ also appear in `docs/KNOWLEDGE_BASE.md` and Git history.
   match ledger plus its replayable units.
 - Never use an old candidate address or normalized score after a support source
   changes. Regenerate the selected link graph first.
-- Commit substantive progress with `gpt-6.1-sol: ...`.
+- Historical commits in this archived campaign used `gpt-6.1-sol: ...`; use the current prefix documented in `RE_HANDOFF.md` for new work.
 
 Before reconstruction work:
 
@@ -1168,7 +1168,7 @@ At a broader milestone run:
     scripts/repo-python scripts/ci.py
     git diff --check
 
-Commit substantive, verified progress promptly with `gpt-6.1-sol: ...`.
+During this archived campaign, substantive verified checkpoints used `gpt-6.1-sol: ...`; new work follows the prefix in `RE_HANDOFF.md`.
 
 ## Local analysis retention
 
