@@ -447,8 +447,8 @@ failure is retained as regression-02-before-label-review.*. See ANM-097.
 Local canonical authored exact is 43,697 / 266,187 (16.42%): 1,106 exact
 functions, 109,410 canonical .text bytes, 882 source mappings and 146 authored
 source-present non-exact owners. All 500 indeterminate origins remain; no
-boundary, origin or denominator changed. Factory acceptance for the new pair
-is still pending and must be reported separately from the local ledger.
+boundary, origin or denominator changed. Both new claims are Factory PASS and ACCEPTED on their first attempts at
+19875ae5609685952bf0282e296153ef797c0531; receipts are recorded below.
 
 The older post56-texture-rgb-order-unbuilt.cpp candidate preserves the earlier
 texture closure but predates this resource-loader source/header change. Do not copy it over
@@ -465,3 +465,19 @@ de160cebc24d46f6bb09657a36783fec, receipt
 The complete acceptance envelope is in the ignored 20261004-filesystem-open
 analysis directory. Imported canonical totals are not a claim of universally
 fresh accepted Factory receipts.
+
+
+## Accepted ANM resource pair
+
+Both claims at 19875ae are terminal PASS+ACCEPTED:
+- ReadAnmEntries433: job b755f9802998423684d7392fc42cefff, receipt
+  b122790df83fa3d70e9223eb0d655d07fca8fef5a4e82aa0cf98f4e0ec1efd5f
+- LoadExternalTextureData214: job d18c097ac5724fc3bb3b67561a79a2f8, receipt
+  ccc637a19e448a022392543cd2d1a338aad6d2ff24af2459391f0654fa9896dc
+
+Full raw envelopes are retained in the ignored ANM resource-loader directory.
+The first checkpoint attempt did not execute because the automatic approval
+reviewer was at capacity. After backoff and unchanged-status reconciliation,
+the same request passed normal approval and committed cleanly; no review was
+bypassed. Both actual Factory replay jobs then passed on their first attempts.
+Authored exact remains 43,697/266,187 (16.42%), with 500 unknown origins.
