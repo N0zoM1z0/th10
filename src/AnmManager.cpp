@@ -3141,6 +3141,14 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 
         switch (currentInstruction->opcode)
         {
+        case ANM_OP_END:
+        case ANM_OP_DELETE:
+            vm->visible = 0;
+        case ANM_OP_STATIC:
+            vm->currentInstruction = NULL;
+            g_AnmGameSpeed = savedGameSpeed;
+            return 1;
+
         case ANM_OP_UNIT_SPEED:
             vm->useUnitSpeed = GET_INT_VAR(0);
             break;
@@ -3633,14 +3641,6 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 reinterpret_cast<unsigned char *>(vm->beginningOfScript) +
                 currentInstruction->intArgs[2]);
             continue;
-
-        case ANM_OP_END:
-        case ANM_OP_DELETE:
-            vm->visible = 0;
-        case ANM_OP_STATIC:
-            vm->currentInstruction = NULL;
-            g_AnmGameSpeed = savedGameSpeed;
-            return 1;
 
         default:
             break;
