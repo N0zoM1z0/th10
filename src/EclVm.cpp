@@ -255,8 +255,8 @@ static __forceinline void EvaluateFormatOperands(
 
     if (cursor != NULL) {
         int valueWord = 6;
-        int metadataOffset = 0;
         int flagIndex = 1;
+        int metadataOffset = 0;
         do {
             const char *percent = strchr(cursor, '%');
             if (percent == NULL)
