@@ -714,12 +714,12 @@ void EclVmHost::StopAllThreads()
 int EclVmContext::Run(float timeDelta)
 {
     EclVmInstruction **const instructionCursor = &instruction;
-    int instructionOffset;
 
     if (*instructionCursor == NULL)
         return -1;
 
     while (static_cast<float>((*instructionCursor)->time) <= currentTime) {
+        int instructionOffset;
         EclVmInstruction *current = *instructionCursor;
 
         if ((difficultyMask & current->difficultyMask) != 0) {
