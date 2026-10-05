@@ -5073,71 +5073,66 @@ int AnmRenderManagerView::DrawCameraFacingQuad(AnmVmView *vm)
     return DrawInner(vm, 0);
 }
 
-struct AnmPhotoBlendDrawLocals
-{
-    AnmFloat3View cameraDelta;
-    AnmColorView color;
-    float distanceRange;
-    float distance;
-};
-
 // Target 0x00443FB0-0x00444232 is render mode 6. It first places a
 // camera-facing quad, then fades its color and alpha across the configured
 // camera-distance interval before asking DrawInner to preserve that color.
 int AnmRenderManagerView::DrawMode6(AnmVmView *vm)
 {
-    AnmPhotoBlendDrawLocals draw;
+    AnmFloat3View cameraDelta;
+    AnmColorView color;
+    float distanceRange;
+    float distance;
 
     if (ProjectCameraFacingQuad(vm) != 0)
         return -1;
 
-    draw.distanceRange =
+    distanceRange =
         g_AnmPhotoBlend.nearDistance - g_AnmPhotoBlend.farDistance;
-    draw.color.value = vm->useSecondaryColor
+    color.value = vm->useSecondaryColor
         ? vm->secondaryColor.value : vm->primaryColor.value;
-    draw.cameraDelta =
+    cameraDelta =
         vm->position + vm->positionOffset + vm->alternatePosition -
         g_AnmBackgroundCameraPosition;
-    draw.distance = AnmFloat3Length(draw.cameraDelta);
+    distance = AnmFloat3Length(cameraDelta);
 
     if (useMixColor)
     {
-        draw.color.red = MixAnmColor(draw.color.red, mixColor.red);
-        draw.color.green = MixAnmColor(draw.color.green, mixColor.green);
-        draw.color.blue = MixAnmColor(draw.color.blue, mixColor.blue);
-        draw.color.alpha = MixAnmColor(draw.color.alpha, mixColor.alpha);
+        color.red = MixAnmColor(color.red, mixColor.red);
+        color.green = MixAnmColor(color.green, mixColor.green);
+        color.blue = MixAnmColor(color.blue, mixColor.blue);
+        color.alpha = MixAnmColor(color.alpha, mixColor.alpha);
     }
 
-    if (g_AnmPhotoBlend.nearDistance < draw.distance)
+    if (g_AnmPhotoBlend.nearDistance < distance)
     {
-        draw.distance =
-            (g_AnmPhotoBlend.nearDistance - draw.distance) /
-            draw.distanceRange;
-        if (draw.distance >= 1.0f)
+        distance =
+            (g_AnmPhotoBlend.nearDistance - distance) /
+            distanceRange;
+        if (distance >= 1.0f)
             return -1;
 
         reinterpret_cast<AnmColorView *>(&g_AnmQuadVertices[0].color)->blue =
-            draw.color.blue - static_cast<unsigned char>(
-                (draw.color.blue -
+            color.blue - static_cast<unsigned char>(
+                (color.blue -
                  static_cast<int>(g_AnmPhotoBlend.blue)) *
-                draw.distance);
+                distance);
         reinterpret_cast<AnmColorView *>(&g_AnmQuadVertices[0].color)->green =
-            draw.color.green - static_cast<unsigned char>(
-                (draw.color.green -
+            color.green - static_cast<unsigned char>(
+                (color.green -
                  static_cast<int>(g_AnmPhotoBlend.green)) *
-                draw.distance);
+                distance);
         reinterpret_cast<AnmColorView *>(&g_AnmQuadVertices[0].color)->red =
-            draw.color.red - static_cast<unsigned char>(
-                (draw.color.red -
+            color.red - static_cast<unsigned char>(
+                (color.red -
                  static_cast<int>(g_AnmPhotoBlend.red)) *
-                draw.distance);
+                distance);
         reinterpret_cast<AnmColorView *>(&g_AnmQuadVertices[0].color)->alpha =
             static_cast<unsigned char>(
-                draw.color.alpha * (1.0f - draw.distance));
+                color.alpha * (1.0f - distance));
     }
     else
     {
-        g_AnmQuadVertices[0].color = draw.color.value;
+        g_AnmQuadVertices[0].color = color.value;
     }
 
     g_AnmQuadVertices[1].color = g_AnmQuadVertices[0].color;

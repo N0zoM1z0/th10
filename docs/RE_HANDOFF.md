@@ -18,10 +18,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 882
-  maintained source mappings, 1,109 canonical exact functions and 110,966
+  maintained source mappings, 1,110 canonical exact functions and 111,609
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 45,253 bytes (17.00% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 143 functions. These figures come from the live ledgers
+  authored exact code is 45,896 bytes (17.24% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 142 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -635,3 +635,27 @@ and accepted envelopes, public binding metadata and focused proof are retained
 in the ignored Ascii evidence packet. This confirms the330-byte increment to
 45,253 /266,187 (17.00%) local canonical authored bytes. No Create/Chain helper
 credit, broad-cohort pass, whole-product/runtime closure or push is claimed.
+
+
+## Latest medium closure: DrawMode6 (2026-10-05)
+
+ANM-102 records the complete643-byte owner at0x00443FB0. Its real retained
+AnmRendererDispatch graph already had the target's166-instruction order; the
+remaining differences were stack homes and the0x34 frame. Replacing one
+sole-use aggregate with its same four typed local variables naturally recovers
+the target0x20 frame and both shorter color stores. No arithmetic, branch,
+conversion, signature, helper, header or compiler-profile change is involved.
+Both canonical cold triples reproduce every byte after30 independently bound
+fields, including true owner-base/addend handling for overlapping diagnostic
+anchors and exact1.0 constants. Seven ftol2 calls and int-before-subtract color
+semantics remain intact. Only DrawMode6 was modified and replayed; no broad
+old-function or support-context sweep was run or claimed.
+
+The ignored packet `.analysis/gpt-dots/20261005-drawmode6-final/` preserves both
+cold triples, selected59 source hashes, old1109 unit dictionaries, focused scope
+and review. The local canonical authored total moves from45,253 to45,896 of
+266,187 bytes (17.24%); origins, boundaries,882 mappings and500 indeterminate
+origins are unchanged. The new643-byte Factory receipt is pending at this
+source checkpoint. The preceding Ascii330 PASS+ACCEPTED receipt remains recorded
+above; imported baseline totals are not universally fresh Factory receipts.
+Native product, runtime, semantic and portability gates remain open. No push.
