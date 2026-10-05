@@ -246,50 +246,6 @@ static __forceinline int PushFloat(EclVmContext *context, float value)
 }
 #pragma inline_depth(16)
 
-static __forceinline void EvaluateFormatOperands(
-    EclVmContext *context, const char *format)
-{
-    const char *cursor = format;
-    char *scratch = static_cast<char *>(malloc(0x400));
-    scratch[0] = '\0';
-
-    if (cursor != NULL) {
-        int valueWord = 6;
-        int flagIndex = 1;
-        int metadataOffset = 0;
-        do {
-            const char *percent = strchr(cursor, '%');
-            if (percent == NULL)
-                break;
-
-            strcpy(scratch, cursor);
-            scratch[percent - cursor] = '\0';
-            const char conversion = percent[1];
-            if (conversion != '%' && (conversion == 'd' || conversion == 'f')) {
-                const int inlineBytes = OperandInt(context->instruction, 0);
-                const char argumentType = *(
-                    reinterpret_cast<const char *>(context->instruction)
-                    + 0x14 + inlineBytes + metadataOffset);
-                if (argumentType == 'f' || argumentType == 'g') {
-                    context->ReadFloatValue(
-                        flagIndex,
-                        reinterpret_cast<const float *>(context->instruction)[
-                            inlineBytes / 4 + valueWord]);
-                } else {
-                    context->ReadIntValue(
-                        flagIndex,
-                        reinterpret_cast<const int *>(context->instruction)[
-                            inlineBytes / 4 + valueWord]);
-                }
-                metadataOffset += 8;
-                valueWord += 2;
-                ++flagIndex;
-            }
-            cursor = percent + 2;
-        } while (cursor != NULL);
-    }
-    free(scratch);
-}
 
 } // namespace
 
@@ -1165,9 +1121,52 @@ jump_instruction:
             }
 
             case ECL_VM_EVALUATE_FORMAT_OPERANDS:
-                EvaluateFormatOperands(
-                    this, reinterpret_cast<const char *>(current) + 0x14);
+            {
+                const char *cursor =
+                    reinterpret_cast<const char *>(current) + 0x14;
+                char *scratch = static_cast<char *>(malloc(0x400));
+                scratch[0] = '\0';
+
+                if (cursor != NULL) {
+                    int valueWord = 6;
+                    int flagIndex = 1;
+                    int metadataOffset = 0;
+                    const char *percent;
+                    do {
+                        percent = strchr(cursor, '%');
+                        if (percent == NULL)
+                            break;
+
+                        strcpy(scratch, cursor);
+                        scratch[percent - cursor] = '\0';
+                        const char conversion = percent[1];
+                        if (conversion != '%' &&
+                            (conversion == 'd' || conversion == 'f')) {
+                            const int inlineBytes = OperandInt(instruction, 0);
+                            const char argumentType = *(
+                                reinterpret_cast<const char *>(instruction)
+                                + 0x14 + inlineBytes + metadataOffset);
+                            if (argumentType == 'f' || argumentType == 'g') {
+                                ReadFloatValue(
+                                    flagIndex,
+                                    reinterpret_cast<const float *>(instruction)[
+                                        inlineBytes / 4 + valueWord]);
+                            } else {
+                                ReadIntValue(
+                                    flagIndex,
+                                    reinterpret_cast<const int *>(instruction)[
+                                        inlineBytes / 4 + valueWord]);
+                            }
+                            metadataOffset += 8;
+                            valueWord += 2;
+                            ++flagIndex;
+                        }
+                        cursor = percent + 2;
+                    } while (cursor != NULL);
+                }
+                free(scratch);
                 break;
+            }
 
             default:
                 if (host->DispatchEclInstruction() == -1)
