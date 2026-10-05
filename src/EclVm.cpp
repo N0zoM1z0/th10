@@ -1178,9 +1178,10 @@ jump_instruction:
 
         instructionOffset = (*instructionCursor)->size;
 advance_instruction:
-        *instructionCursor = reinterpret_cast<EclVmInstruction *>(
-            reinterpret_cast<unsigned char *>(*instructionCursor)
-            + instructionOffset);
+        unsigned char *advanceBytes =
+            reinterpret_cast<unsigned char *>(*instructionCursor);
+        advanceBytes += instructionOffset;
+        *instructionCursor = reinterpret_cast<EclVmInstruction *>(advanceBytes);
     }
 
     currentTime += timeDelta;
