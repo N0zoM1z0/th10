@@ -2035,7 +2035,7 @@ int AnmRenderManagerView::LoadTextureData(
 
     if (rawEntry == NULL)
     {
-        g_AnmErrorLoggerView.Log(
+        th10::g_GameErrorContext.Fatal(
             "\x83\x41\x83\x6a\x83\x81\x82\xaa\x93\xc7\x82\xdd"
             "\x8d\x9e\x82\xdf\x82\xdc\x82\xb9\x82\xf1\x81\x42"
             "\x83\x66\x81\x5b\x83\x5e\x82\xaa\x8e\xb8\x82\xed"
@@ -2045,7 +2045,7 @@ int AnmRenderManagerView::LoadTextureData(
     }
     if (rawEntry->version != 4)
     {
-        g_AnmErrorLoggerView.Log(
+        th10::g_GameErrorContext.Fatal(
             "\x83\x41\x83\x6a\x83\x81\x82\xcc\x83\x6f\x81\x5b"
             "\x83\x57\x83\x87\x83\x93\x82\xaa\x88\xe1\x82\xa2"
             "\x82\xdc\x82\xb7\r\n");
@@ -2067,7 +2067,7 @@ int AnmRenderManagerView::LoadTextureData(
                      rawEntry->colorKey, rawEntry->width,
                      rawEntry->height) != 0)
         {
-            g_AnmErrorLoggerView.Log(
+            th10::g_GameErrorContext.Fatal(
                 "\x83\x65\x83\x4e\x83\x58\x83\x60\x83\x83 %s "
                 "\x82\xaa\x8d\xec\x90\xac\x82\xc5\x82\xab\x82\xdc"
                 "\x82\xb9\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e"
@@ -2085,7 +2085,7 @@ int AnmRenderManagerView::LoadTextureData(
                  rawEntry->format, rawEntry->width,
                  rawEntry->height) != 0)
     {
-        g_AnmErrorLoggerView.Log(
+        th10::g_GameErrorContext.Fatal(
             "\x83\x65\x83\x4e\x83\x58\x83\x60\x83\x83\x82\xaa"
             "\x93\xc7\x82\xdd\x8d\x9e\x82\xdf\x82\xdc\x82\xb9"
             "\x82\xf1\x81\x42\x83\x66\x81\x5b\x83\x5e\x82\xaa"
@@ -2095,10 +2095,12 @@ int AnmRenderManagerView::LoadTextureData(
         return -1;
     }
 
-    D3d9TextureView *texture = loaded->textures[entryNumber].texture;
-    texture->vtable->SetPriority(texture, rawEntry->priority);
-    texture->vtable->PreLoad(texture);
-    texture->vtable->GetLevelDesc(texture, 0, &description);
+    loaded->textures[entryNumber].texture->vtable->SetPriority(
+        loaded->textures[entryNumber].texture, rawEntry->priority);
+    loaded->textures[entryNumber].texture->vtable->PreLoad(
+        loaded->textures[entryNumber].texture);
+    loaded->textures[entryNumber].texture->vtable->GetLevelDesc(
+        loaded->textures[entryNumber].texture, 0, &description);
 
     offset = reinterpret_cast<unsigned int *>(rawEntry + 1);
     for (int i = 0; i < rawEntry->numSprites; ++i, ++offset)
@@ -2107,7 +2109,7 @@ int AnmRenderManagerView::LoadTextureData(
             reinterpret_cast<AnmRawSpriteView *>(
                 reinterpret_cast<unsigned char *>(rawEntry) + *offset);
         sprite.anmFileIndex = loaded->anmFileIndex;
-        sprite.texture = texture;
+        sprite.texture = loaded->textures[entryNumber].texture;
         sprite.horizontalScale =
             static_cast<float>(description.width) / rawEntry->width;
         sprite.verticalScale =
@@ -2362,7 +2364,7 @@ void AnmRenderManagerView::DrawTextCentered(
 // a render-target-capable primary surface and an offscreen backup surface.
 int AnmRenderManagerView::LoadSurface(int surfaceIndex, const char *path)
 {
-    char filePath[256];
+    char filePath[260];
     unsigned char *fileData;
     int fileSize;
     D3d9SurfaceView *surface;
@@ -2376,7 +2378,7 @@ int AnmRenderManagerView::LoadSurface(int surfaceIndex, const char *path)
         fileData = FileSystem::OpenFile(filePath, &fileSize, 0);
         if (fileData == NULL)
         {
-            g_AnmErrorLoggerView.Log(
+            th10::g_GameErrorContext.Fatal(
                 "%s\x82\xaa\x93\xc7\x82\xdd\x8d\x9e\x82\xdf"
                 "\x82\xc8\x82\xa2\x82\xc5\x82\xb7\x81\x42\r\n",
                 path);
@@ -2444,7 +2446,8 @@ int AnmRenderManagerView::LoadSurface(int surfaceIndex, const char *path)
         surface->vtable->Release(surface);
         surface = NULL;
     }
-    free(fileData);
+    if (fileData != NULL)
+        free(fileData);
     return 0;
 
 error:
@@ -2453,7 +2456,8 @@ error:
         surface->vtable->Release(surface);
         surface = NULL;
     }
-    free(fileData);
+    if (fileData != NULL)
+        free(fileData);
     return -1;
 }
 

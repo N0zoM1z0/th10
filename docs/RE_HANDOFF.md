@@ -18,10 +18,10 @@ does not claim whole-product or runtime completion. The detailed 2026-10-02 camp
 - The pinned compiler is VC7.1 SP1 build 6030. Use `scripts/repo-python` for
   repository Python; it verifies the exact Capstone installation first.
 - At this handoff: 1,732 reviewed candidate boundaries and origins, 882
-  maintained source mappings, 1,106 canonical exact functions and 109,410
+  maintained source mappings, 1,108 canonical exact functions and 110,636
   canonical exact `.text` bytes. Confirmed authored ownership is 266,187 bytes;
-  authored exact code is 43,697 bytes (16.42% of reviewed owned bytes). The authored source-present,
-  non-exact backlog has 146 functions. These figures come from the live ledgers
+  authored exact code is 44,923 bytes (16.88% of reviewed owned bytes). The authored source-present,
+  non-exact backlog has 144 functions. These figures come from the live ledgers
   and [PROGRESS.md](PROGRESS.md), not diagnostic byte scores.
 - Native Windows i386 product closure and runtime validation are open. Semantic
   reconstruction and portability have not started. Exact functions alone do
@@ -481,3 +481,48 @@ reviewer was at capacity. After backoff and unchanged-status reconciliation,
 the same request passed normal approval and committed cleanly; no review was
 bypassed. Both actual Factory replay jobs then passed on their first attempts.
 Authored exact remains 43,697/266,187 (16.42%), with 500 unknown origins.
+
+
+## ANM texture and surface loading closure
+
+ANM-098/099 close LoadTextureData (650 bytes) and LoadSurface (576 bytes). Two canonical cold
+links reproduce all 1,226 bytes and all 38 independently reviewed bindings with
+distinct PE/map/PDB identities. All 139 existing affected units pass 25,566 bytes
+across 38 cold artifacts, including the 33 consumers where AnmManager is support.
+The source and recipe changes are confined to AnmManager.cpp and two new units;
+all old recipe dictionaries,
+headers, source mappings, boundaries, origins and the denominator stay unchanged.
+
+Texture loading uses real Fatal and the target's repeated texture-field reads
+across COM calls and sprite publication. Surface loading uses its real Fatal
+call, target-supported 260-byte path and two observed null-guarded frees. The first
+COM failure's cleanup bypass and other unchecked/ownership behavior remain.
+No private ABI annotation or synthetic caller was introduced. Postload is the
+real texture caller; for Surface it is only the declared whole-TU context.
+Direct incoming references were not found, and indirect reachability, original
+capacity spelling, production ownership and runtime remain unknown.
+
+Local canonical authored exact is 44,923/266,187 (16.88%), up 1,226 from 43,697,
+with 1,108 exact functions, 110,636 canonical .text bytes, 882 mappings and 144
+authored source-present non-exact owners. All 500 indeterminate origins remain.
+At this source checkpoint both new Factory receipts are pending; do not report
+their 1,226 bytes as newly accepted until terminal PASS+ACCEPTED is observed.
+Imported canonical totals are not universally fresh accepted Factory receipts.
+
+The prior scoped 401 output read paused dependent work. After an explicit user
+retry request, the identical normal-tool call recovered the final 11,380 bytes,
+completing the 60,532-byte review without rerunning its command. The cause is
+unknown; the denied envelope and successful retry are both retained. A separate
+transient Ghidra discovery UNAVAILABLE retried normally and attestation passed.
+
+During regression, origin/main advanced to the unchanged HEAD 64b8b8f. Its
+reflog records an update by push at 03:43:20 UTC; the actor is unverified and
+this lane issued no push. All 58 source/header hashes, the selected manifest
+hash and the same two dirty paths were rechecked unchanged before continuing;
+no completed build was repeated for the ref-only change.
+
+The next prepared medium owner is LoadTextureRegion (320 bytes) at 0x00446D70. Inspect
+its current source, full target, real caller and retained artifacts before a
+bounded trial; the existing exact alpha-bleed helper is a useful dependency.
+Old large-ANM whole-file candidates are still stale: rebase only intended deltas
+onto this source, preserving every reviewed resource/texture/surface closure.
