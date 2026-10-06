@@ -675,8 +675,8 @@ int EclVmContext::Run(float timeDelta)
         return -1;
 
     while (static_cast<float>((*instructionCursor)->time) <= currentTime) {
-        int instructionOffset;
         EclVmInstruction *current = *instructionCursor;
+        int instructionOffset;
 
         if ((difficultyMask & current->difficultyMask) != 0) {
             switch (current->opcode) {
