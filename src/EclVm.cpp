@@ -1128,9 +1128,9 @@ jump_instruction:
                 scratch[0] = '\0';
 
                 if (cursor != NULL) {
-                    int valueWord = 6;
                     int flagIndex = 1;
-                    int metadataOffset = 0;
+                    volatile int metadataOffset = 0;
+                    int valueWord = 6;
                     const char *percent;
                     do {
                         percent = strchr(cursor, '%');
