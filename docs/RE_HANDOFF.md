@@ -33,6 +33,7 @@ scratch paths, or build hashes into this file.
    - Concentrate on x87/stack homes, FORMAT/shared-tail instruction shape,
      operand lifetimes, and private register allocation.
    - Replay only the canonical exact units actually affected by a bounded edit.
+   - EclVmContext::ReadInt @ 0x0044FDB0 is now canonical exact at 144/144; treat its fixed typed-pop ESI lifetime as a closed constraint when changing Run or the Enemy dispatcher.
 
 2. **ANM ExecuteScript — `AnmRenderManagerView::ExecuteScript @ 0x0043EE30`**
    - Preserve the reviewed 92 physical dispatch groups in target order.

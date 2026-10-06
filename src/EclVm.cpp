@@ -282,7 +282,16 @@ int EclVmContext::ReadInt(unsigned int index)
                 stack.data + stack.frameBase + value);
         if (value == -1)
         {
-            stack.Pop('i', sizeof(index), &index);
+            if (stack.stackTop - 4 >= 0)
+            {
+                stack.stackTop -= 4;
+                index = *reinterpret_cast<unsigned int *>(
+                    stack.data + stack.stackTop);
+                stack.stackTop -= 4;
+                if (stack.data[stack.stackTop] == 'f')
+                    return static_cast<int>(
+                        *reinterpret_cast<float *>(&index));
+            }
             return static_cast<int>(index);
         }
         return host->ReadEclInt(value);
