@@ -260,8 +260,11 @@ void BulletRuntimeView::UpdateAbsoluteDirectionChange()
                 static_cast<float>(state.int0);
     }
 
+    int angleBits = *reinterpret_cast<int *>(&angle);
     reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
-        FromAngleMagnitude(angle, nextSpeed);
+        FromAngleMagnitude(
+            *reinterpret_cast<float *>(&angleBits),
+            nextSpeed);
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
         ++state.timer.current;
