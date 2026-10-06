@@ -1131,7 +1131,7 @@ jump_instruction:
                     int flagIndex = 1;
                     volatile int metadataOffset = 0;
                     int valueWord = 6;
-                    const char *percent;
+                    const char * volatile percent;
                     do {
                         percent = strchr(cursor, '%');
                         if (percent == NULL)
