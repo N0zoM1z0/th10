@@ -1,78 +1,59 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-06. This file is the current resume brief, not an experiment
-journal. Durable claim details belong in
-[`KNOWLEDGE_BASE.md`](KNOWLEDGE_BASE.md), generated totals in
-[`PROGRESS.md`](PROGRESS.md), and older experiment history in
-[`RE_CAMPAIGN_NOTES_2026-10-02.md`](RE_CAMPAIGN_NOTES_2026-10-02.md).
-Historical `.analysis/...` paths are provenance labels only; the referenced
-scratch may be pruned after its conclusion is recorded in tracked state.
+Updated 2026-10-06. This is a concise resume brief, not an experiment journal.
+Keep live totals in the generated [`PROGRESS.md`](PROGRESS.md), durable target
+facts and negative results in [`KNOWLEDGE_BASE.md`](KNOWLEDGE_BASE.md), and
+experiment chronology in Git history. Do not copy transient probe scores,
+scratch paths, or build hashes into this file.
 
-## Authority and current state
+## Authority and recovery
 
 - Target only the original Japanese TH10 v1.00a executable at the ignored
-  `resources/th10.exe`. Required SHA-256:
+  `resources/th10.exe`, SHA-256
   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
-- The historical compiler candidate is VC7.1 SP1 build 6030. Use
-  `scripts/repo-python` for repository Python commands and keep target,
-  toolchain, boundary, origin, source-presence, codegen-exactness, whole-product,
-  runtime, semantic, and portability claims separate.
-- Current generated ledgers contain 1,732 reviewed candidates, 882 source
-  mappings, 1,110 canonical exact functions / 111,609 exact code bytes,
-  266,187 confirmed authored bytes, 45,896 authored exact bytes, and 142
-  authored source-present non-exact functions. These numbers come from
-  `docs/PROGRESS.md`; do not copy older checkpoint totals forward.
-- Native Windows i386 product closure and runtime validation remain open.
-  Semantic reconstruction and portability remain later phases. Exact functions
-  alone do not establish a complete or runnable game.
+- Use `scripts/repo-python` for repository Python commands and keep target
+  identity, boundary, origin, source presence, exact codegen, whole-product
+  closure, runtime validation, semantics, and portability as separate claims.
+- Work from the live worktree, including dirty changes. Inspect and continue,
+  deliberately supersede, or reject existing work; do not create a clean side
+  tree merely to avoid understanding it.
 - Operator-requested commits use `gpt-web: ...`. Do not push from this worktree.
-- Work from the live worktree, including dirty changes. Do not assume an
-  unexplained dirty edit belongs to another session: inspect it, finish or
-  deliberately reject it, and checkpoint substantive retained progress.
-- Current source checkpoint `3c70981` retains the ANM ExecuteScript shutdown
-  dispatch placement improvement recorded as ANM-103. ExecuteScript remains
-  non-exact and receives no partial exact credit.
+- Treat Ghidra, decompiler output, adjacent games, compiler diagnostics, and
+  similarity scores as evidence or hypotheses according to their Oracle
+  boundary. Only canonical replay can grant exact-codegen credit.
+- Read current repository-wide counts from `docs/PROGRESS.md` or regenerate
+  them. Do not reuse counts copied from an older commit or experiment.
 
-## Active roadmap
+## Active reconstruction order
 
 1. **ECL Run — `EclVmContext::Run @ 0x0044E1A0`**
-   - Source-present and non-exact.
-   - Fresh current-source rebuilding retains 7,020/7,020 bytes and the exact
-     6,692-byte pre-table extent. The spawn operand-index lifetime refinement
-     recorded as ECLVM-058 raises normalized comparable agreement to
-     5,863/6,264 (5,969 raw), keeps 58 active destinations aligned, and retains
-     the FORMAT +2 / NOP -2 / TERMINATE +2 residual spans. Run remains non-exact.
-   - Continue on x87/ESP home placement, the remaining FORMAT/shared-tail
-     shape, and private general-register choices. Rebuild diagnostics from
-     current source for each trial and replay only canonical exact units actually
-     affected by the edit.
+   - Keep the full target-owned 7,020-byte function in scope; do not reduce the
+     problem to nearby leaf functions.
+   - Rebuild diagnostics from the current source before judging a change.
+   - Concentrate on x87/stack homes, FORMAT/shared-tail instruction shape,
+     operand lifetimes, and private register allocation.
+   - Replay only the canonical exact units actually affected by a bounded edit.
 
 2. **ANM ExecuteScript — `AnmRenderManagerView::ExecuteScript @ 0x0043EE30`**
-   - Source-present and non-exact.
-   - Current retained linked contribution is 9,948/9,964 bytes with all 92
-     dispatch groups in target physical order. ANM-103 moved the
-     END/DELETE/STATIC group to its better source position without disturbing
-     the accepted exact cohort.
-   - Next investigate the loop-tail EDI reset/private register state and local
-     or aggregate lifetimes. Preserve the 92-group ordering instead of
-     re-sorting the switch around score changes.
+   - Preserve the reviewed 92 physical dispatch groups in target order.
+   - Investigate loop-tail EDI reset/private register state and local/aggregate
+     lifetimes rather than sorting the switch around a transient score.
+   - Rebuild the linked diagnostic after support-source changes.
 
 3. **Enemy dispatcher — `EnemyRuntimeView::DispatchEclInstruction @ 0x0040E770`**
-   - Source-present and non-exact.
-   - Rebuild the diagnostic baseline from current source before making changes.
-     Do not steer from an old linked image or normalized score.
-   - Prioritize ECL private calling conventions, laser construction, stack/frame
-     layout, rank arithmetic, and x87 homes.
+   - Always regenerate the diagnostic baseline from current source first.
+   - Prioritize ECL private calling conventions, laser construction,
+     stack/frame layout, rank arithmetic, and x87 homes.
 
 4. **Batch closure**
-   - Interleave smaller non-exact Bullet/ECL functions with the large owners;
-     do not turn the project into a tiny-leaf-only queue.
+   - Interleave smaller non-exact Bullet/ECL functions when they constrain the
+     large owners, but do not turn the project into a leaf-only queue.
    - After a coherent batch, run the broader tracking/progress/CI checks and the
      required focused exact replays.
 
 ## Recovery and verification
 
-Start by recovering the real worktree and attesting the local prerequisites:
+Start every resumed session by recovering the real worktree:
 
 ```sh
 git status --short --branch
@@ -84,10 +65,7 @@ scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
 For a bounded source change, use the narrowest relevant diagnostic first.
-Diagnostics such as `probe-ltcg-backlog.py` have no exactness authority. A
-modified canonical exact source must be protected by the corresponding cold
-`replay-exact-units.py --unit ...` or `--source ...` scope. Before committing a
-coherent batch, run:
+Before committing a coherent batch, run:
 
 ```sh
 scripts/repo-python scripts/verify-toolchain.py --check
@@ -97,23 +75,20 @@ scripts/repo-python scripts/ci.py
 git diff --check
 ```
 
-Factory receipt acceptance is a separate boundary from local canonical replay.
-Do not report a diagnostic size, similarity score, successful compile, or Git
-commit as exactness.
+Factory receipt acceptance is separate from a local replay or Git commit.
+Never report a diagnostic size, similarity score, successful compile, or
+checkpoint commit as exactness.
 
 ## Scratch and cleanup policy
 
-- `.analysis/` and `build/` are disposable working state. They are not a
-  journal and must not be the sole home of a durable conclusion.
-- Before deleting scratch from a dirty recovery, identify what it belongs to.
-  Preserve retained source changes in Git and move durable conclusions into
-  source, ledgers, scripts, or `KNOWLEDGE_BASE.md`; then remove superseded
-  probes, dumps, logs, generated PE/PDB/OBJ files, and stale build trees.
-- `ghidra-project/` is private analysis database state, not ordinary compiler
-  output. Keep it unless deliberately rebuilding the local database.
-- `.tools/`, `_reference/`, and `resources/th10.exe` are not generic cleanup
-  targets. They contain the pinned tool environment, reference material, and
-  private target respectively.
-- Historical documentation may retain `.analysis/...` names as provenance even
-  after the disposable files are removed. Such paths are not promises that the
-  scratch still exists.
+- `.analysis/` and `build/` are disposable working state, not durable records.
+  Keep scratch only while an unresolved claim needs it.
+- Before pruning scratch, preserve retained source edits in Git and move durable
+  conclusions into source, ledgers, reusable scripts, or `KNOWLEDGE_BASE.md`.
+- Remove superseded probes, decompiler dumps, logs, generated PE/PDB/OBJ files,
+  stale build trees, and Python caches after a bounded batch.
+- Historical evidence rows may name deleted `.analysis/...` or `build/...`
+  paths as provenance. Those paths are not promised to exist.
+- Keep `ghidra-project/`, `.tools/`, `_reference/`, and `resources/th10.exe`;
+  they are private analysis state, pinned tools/reference material, and the
+  canonical private target rather than generic build debris.
