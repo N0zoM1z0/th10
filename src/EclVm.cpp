@@ -713,14 +713,10 @@ int EclVmContext::Run(float timeDelta)
 
             case ECL_VM_SPAWN_THREAD_WITH_ID:
             {
+                const unsigned int operandIndex =
+                    static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;
                 host->SpawnThread(
-                    ReadIntValue(
-                        1,
-                        OperandInt(
-                            current,
-                            static_cast<unsigned int>(
-                                OperandInt(current, 0) + 4) >> 2)),
-                    1);
+                    ReadIntValue(1, OperandInt(current, operandIndex)), 1);
                 break;
             }
 

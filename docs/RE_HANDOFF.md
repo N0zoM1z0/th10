@@ -38,10 +38,10 @@ scratch may be pruned after its conclusion is recorded in tracked state.
 1. **ECL Run — `EclVmContext::Run @ 0x0044E1A0`**
    - Source-present and non-exact.
    - Fresh current-source rebuilding retains 7,020/7,020 bytes and the exact
-     6,692-byte pre-table extent. The FORMAT lifetime/home refinement recorded
-     as ECLVM-057 raises normalized comparable agreement to 5,861/6,264
-     (5,967 raw), aligns 58 active destinations, and reduces FORMAT from +4
-     to +2 bytes while preserving target physical order. Run remains non-exact.
+     6,692-byte pre-table extent. The spawn operand-index lifetime refinement
+     recorded as ECLVM-058 raises normalized comparable agreement to
+     5,863/6,264 (5,969 raw), keeps 58 active destinations aligned, and retains
+     the FORMAT +2 / NOP -2 / TERMINATE +2 residual spans. Run remains non-exact.
    - Continue on x87/ESP home placement, the remaining FORMAT/shared-tail
      shape, and private general-register choices. Rebuild diagnostics from
      current source for each trial and replay only canonical exact units actually
