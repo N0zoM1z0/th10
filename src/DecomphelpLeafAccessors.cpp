@@ -1,5 +1,7 @@
-// Reconstructed C++ leaf candidates imported from th10-decomphelp-forN0.
-// Exactness is granted only by canonical target-bound replay; see docs/DECOMPHELP_AUDIT.md.
+// Reconstructed C++ leaf candidates adapted from external commit
+// 649147241f6a931c849d905ca9badc264049db5b.
+// Exactness is granted only by canonical target-bound replay; see
+// docs/KNOWLEDGE_BASE.md and config/match-units.toml.
 #include "DecomphelpLeafTypes.hpp"
 
 // The /Yu PCH swallows the command line optimization flags, so the original

@@ -1,6 +1,7 @@
-// Natural C++ candidate adapted from th10-decomphelp-forN0/src/Chain.cpp.
+// Natural C++ candidate adapted from external commit
+// 649147241f6a931c849d905ca9badc264049db5b.
 // Chain::UnregisterElem and Chain::RemoveAllFromList are canonical exact; see
-// docs/DECOMPHELP_REPO_REVIEW.md and config/match-units.toml.
+// docs/KNOWLEDGE_BASE.md and config/match-units.toml.
 #include "Chain.hpp"
 #include <windows.h>
 #include <stdlib.h>

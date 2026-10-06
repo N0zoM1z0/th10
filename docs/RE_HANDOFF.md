@@ -1,6 +1,6 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-06. This is a concise resume brief, not an experiment journal.
+Updated 2026-10-07. This is a concise resume brief, not an experiment journal.
 Keep live totals in the generated [`PROGRESS.md`](PROGRESS.md), durable target
 facts and negative results in [`KNOWLEDGE_BASE.md`](KNOWLEDGE_BASE.md), and
 experiment chronology in Git history. Do not copy transient probe scores,
@@ -90,6 +90,9 @@ checkpoint commit as exactness.
   stale build trees, and Python caches after a bounded batch.
 - Historical evidence rows may name deleted `.analysis/...` or `build/...`
   paths as provenance. Those paths are not promised to exist.
+- Point-in-time audit snapshots belong in Git history once their durable accepted
+  conclusions have been absorbed into source, ledgers, and `KNOWLEDGE_BASE.md`;
+  do not keep obsolete snapshot reports on the live documentation surface.
 - Keep `ghidra-project/`, `.tools/`, `_reference/`, and `resources/th10.exe`;
   they are private analysis state, pinned tools/reference material, and the
   canonical private target rather than generic build debris.
