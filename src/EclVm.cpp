@@ -235,7 +235,7 @@ static __forceinline float PopFloat(EclVmContext *context)
 // Target Run expands these scalar wrappers but retains calls to the separate
 // EclVmStackView::Push owner.  Limit nested inlining only across this pair.
 #pragma inline_depth(1)
-static __forceinline int PushInt(EclVmContext *context, int value)
+static __forceinline int PushInt(EclVmContext *context, const int &value)
 {
     return context->stack.Push('i', sizeof(value), &value);
 }
