@@ -3558,10 +3558,15 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
                 : AnmRandomU32InRange(&g_RngView, GET_INT_VAR(1));
             break;
         case ANM_OP_F_SET_RANDOM:
-            *GET_FLOAT_VAR_PTR(0) = vm->useAlternateRng
-                ? g_AlternateRngView.GetRandomF32InRange(GET_FLOAT_VAR(1))
-                : g_RngView.GetRandomF32InRange(GET_FLOAT_VAR(1));
+        {
+            RngView *rng = vm->useAlternateRng
+                ? &g_AlternateRngView
+                : &g_RngView;
+            float randomValue = GET_FLOAT_VAR(1);
+            randomValue *= rng->GetRandomF32();
+            *GET_FLOAT_VAR_PTR(0) = randomValue;
             break;
+        }
         case ANM_OP_F_SIN:
             *GET_FLOAT_VAR_PTR(0) = sinf(GET_FLOAT_VAR(1));
             break;
