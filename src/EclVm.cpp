@@ -70,13 +70,15 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
     if (stackTop - size < 0)
         return -1;
 
+    unsigned char *const stackData = data;
     stackTop -= size;
-    memcpy(value, data + stackTop, size);
+    unsigned char *const valueAddress = stackData + stackTop;
+    memcpy(value, valueAddress, size);
 
     if (type != 0)
     {
         stackTop -= 4;
-        const unsigned char *const typeAddress = data + stackTop;
+        const unsigned char *const typeAddress = stackData + stackTop;
         const unsigned char storedType = *typeAddress;
         if (storedType != 'f')
         {
