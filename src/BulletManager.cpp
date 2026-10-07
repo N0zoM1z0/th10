@@ -443,6 +443,9 @@ void BulletRuntimeView::UpdateVerticalWrap()
             IsOutsidePlayfield(sprite->width, sprite->height) == 0)
         return;
 
+    BulletExStateView &state = exStates[7];
+    int &soundId = transformSound;
+
     if (position.y < 0.0) {
         position.y += sprite->height + g_BulletCullBottom;
     }
@@ -453,10 +456,10 @@ void BulletRuntimeView::UpdateVerticalWrap()
         goto checkTimer;
     }
 
-    exStates[7].timer.Add(-1.0f);
-    if (transformSound >= 0) {
+    state.timer.Add(-1.0f);
+    if (soundId >= 0) {
         reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-            QueueSoundSample(transformSound, 0);
+            QueueSoundSample(soundId, 0);
     }
 
 checkTimer:
