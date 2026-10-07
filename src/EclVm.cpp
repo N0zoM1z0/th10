@@ -227,9 +227,9 @@ static __forceinline int PopInt(EclVmContext *context)
 
 static __forceinline float PopFloat(EclVmContext *context)
 {
-    float value;
-    context->stack.Pop('f', sizeof(value), &value);
-    return value;
+    EclVmScalar value;
+    context->stack.Pop('f', sizeof(value.real), &value.real);
+    return value.real;
 }
 
 // Target Run expands these scalar wrappers but retains calls to the separate
