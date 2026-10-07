@@ -415,21 +415,21 @@ void BulletRuntimeView::UpdateHorizontalWrap()
 
     if (position.x < g_BulletCullLeft) {
         position.x += sprite->width + 384.0f;
+        exStates[6].timer.Add(-1.0f);
+        if (transformSound >= 0) {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(transformSound, 0);
+        }
     }
     else if (position.x > g_BulletCullRight) {
         position.x -= sprite->width + 384.0f;
-    }
-    else {
-        goto checkTimer;
-    }
-
-    exStates[6].timer.Add(-1.0f);
-    if (transformSound >= 0) {
-        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-            QueueSoundSample(transformSound, 0);
+        exStates[6].timer.Add(-1.0f);
+        if (transformSound >= 0) {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                QueueSoundSample(transformSound, 0);
+        }
     }
 
-checkTimer:
     if (exStates[6].timer.current <= 0)
         activeTransformFlags ^= BULLET_TRANSFORM_WRAP_X;
 }
