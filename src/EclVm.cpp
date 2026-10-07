@@ -734,8 +734,9 @@ int EclVmContext::Run(float timeDelta)
             {
                 const unsigned int operandIndex =
                     static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;
-                host->SpawnThread(
-                    ReadIntValue(1, OperandInt(current, operandIndex)), 1);
+                const int threadId =
+                    ReadIntValue(1, OperandInt(current, operandIndex));
+                host->SpawnThread(threadId, 1);
                 break;
             }
 
