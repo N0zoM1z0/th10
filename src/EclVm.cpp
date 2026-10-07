@@ -1159,9 +1159,10 @@ jump_instruction:
                     int valueWord = 6;
                     const char * volatile percent;
                     do {
-                        percent = strchr(cursor, '%');
-                        if (percent == NULL)
+                        const char *found = strchr(cursor, '%');
+                        if (found == NULL)
                             break;
+                        percent = found;
 
                         strcpy(scratch, cursor);
                         scratch[percent - cursor] = '\0';
@@ -1204,12 +1205,14 @@ jump_instruction:
             }
         }
 
-        instructionOffset = (*instructionCursor)->size;
+        current = *instructionCursor;
+        instructionOffset = current->size;
 advance_instruction:
         unsigned char *advanceBytes =
-            reinterpret_cast<unsigned char *>(*instructionCursor);
+            reinterpret_cast<unsigned char *>(current);
         advanceBytes += instructionOffset;
-        *instructionCursor = reinterpret_cast<EclVmInstruction *>(advanceBytes);
+        current = reinterpret_cast<EclVmInstruction *>(advanceBytes);
+        *instructionCursor = current;
     }
 
     currentTime += timeDelta;
