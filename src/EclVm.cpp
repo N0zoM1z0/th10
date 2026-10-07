@@ -76,7 +76,8 @@ int EclVmStackView::Pop(unsigned char type, int size, void *value)
     if (type != 0)
     {
         stackTop -= 4;
-        const unsigned char storedType = data[stackTop];
+        const unsigned char *const typeAddress = data + stackTop;
+        const unsigned char storedType = *typeAddress;
         if (storedType != 'f')
         {
             if (storedType == 'i' && type == 'f')
