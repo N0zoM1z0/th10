@@ -694,6 +694,7 @@ int EclVmContext::Run(float timeDelta)
 
         if ((difficultyMask & current->difficultyMask) != 0) {
             int floatResult;
+            int logicalResult;
             switch (current->opcode) {
             case ECL_VM_NOP:
                 break;
@@ -1034,7 +1035,8 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                PushInt(this, left != 0 || right != 0);
+                logicalResult = left != 0 || right != 0;
+                PushInt(this, logicalResult);
                 break;
             }
 
@@ -1042,7 +1044,8 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                PushInt(this, left != 0 && right != 0);
+                logicalResult = left != 0 && right != 0;
+                PushInt(this, logicalResult);
                 break;
             }
 
