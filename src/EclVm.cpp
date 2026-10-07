@@ -693,6 +693,7 @@ int EclVmContext::Run(float timeDelta)
         int instructionOffset;
 
         if ((difficultyMask & current->difficultyMask) != 0) {
+            int floatResult;
             switch (current->opcode) {
             case ECL_VM_NOP:
                 break;
@@ -974,7 +975,8 @@ jump_instruction:
             {
                 const float right = PopFloat(this);
                 const float left = PopFloat(this);
-                PushInt(this, left == right);
+                floatResult = left == right;
+                PushInt(this, floatResult);
                 break;
             }
 
@@ -982,7 +984,8 @@ jump_instruction:
             {
                 const float right = PopFloat(this);
                 const float left = PopFloat(this);
-                PushInt(this, left != right);
+                floatResult = left != right;
+                PushInt(this, floatResult);
                 break;
             }
 
@@ -990,7 +993,8 @@ jump_instruction:
             {
                 const float right = PopFloat(this);
                 const float left = PopFloat(this);
-                PushInt(this, left < right);
+                floatResult = left < right;
+                PushInt(this, floatResult);
                 break;
             }
 
@@ -998,7 +1002,8 @@ jump_instruction:
             {
                 const float right = PopFloat(this);
                 const float left = PopFloat(this);
-                PushInt(this, left <= right);
+                floatResult = left <= right;
+                PushInt(this, floatResult);
                 break;
             }
 
@@ -1006,7 +1011,8 @@ jump_instruction:
             {
                 const float right = PopFloat(this);
                 const float left = PopFloat(this);
-                PushInt(this, left > right);
+                floatResult = left > right;
+                PushInt(this, floatResult);
                 break;
             }
 
@@ -1014,19 +1020,22 @@ jump_instruction:
             {
                 const float right = PopFloat(this);
                 const float left = PopFloat(this);
-                PushInt(this, left >= right);
+                floatResult = left >= right;
+                PushInt(this, floatResult);
                 break;
             }
 
             case ECL_VM_NOT_FLOAT:
-                PushInt(this, PopFloat(this) == 0.0f);
+                floatResult = PopFloat(this) == 0.0f;
+                PushInt(this, floatResult);
                 break;
 
             case ECL_VM_LOGICAL_OR:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                PushInt(this, left != 0 || right != 0);
+                floatResult = left != 0 || right != 0;
+                PushInt(this, floatResult);
                 break;
             }
 
@@ -1034,7 +1043,8 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                PushInt(this, left != 0 && right != 0);
+                floatResult = left != 0 && right != 0;
+                PushInt(this, floatResult);
                 break;
             }
 
