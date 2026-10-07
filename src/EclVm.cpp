@@ -693,7 +693,6 @@ int EclVmContext::Run(float timeDelta)
         int instructionOffset;
 
         if ((difficultyMask & current->difficultyMask) != 0) {
-            int floatResult;
             switch (current->opcode) {
             case ECL_VM_NOP:
                 break;
@@ -923,8 +922,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left == right;
-                PushInt(this, floatResult);
+                PushInt(this, left == right);
                 break;
             }
 
@@ -932,8 +930,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left != right;
-                PushInt(this, floatResult);
+                PushInt(this, left != right);
                 break;
             }
 
@@ -941,8 +938,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left < right;
-                PushInt(this, floatResult);
+                PushInt(this, left < right);
                 break;
             }
 
@@ -950,8 +946,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left <= right;
-                PushInt(this, floatResult);
+                PushInt(this, left <= right);
                 break;
             }
 
@@ -959,8 +954,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left > right;
-                PushInt(this, floatResult);
+                PushInt(this, left > right);
                 break;
             }
 
@@ -968,8 +962,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left >= right;
-                PushInt(this, floatResult);
+                PushInt(this, left >= right);
                 break;
             }
 
@@ -1026,16 +1019,14 @@ jump_instruction:
             }
 
             case ECL_VM_NOT_FLOAT:
-                floatResult = PopFloat(this) == 0.0f;
-                PushInt(this, floatResult);
+                PushInt(this, PopFloat(this) == 0.0f);
                 break;
 
             case ECL_VM_LOGICAL_OR:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left != 0 || right != 0;
-                PushInt(this, floatResult);
+                PushInt(this, left != 0 || right != 0);
                 break;
             }
 
@@ -1043,8 +1034,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left != 0 && right != 0;
-                PushInt(this, floatResult);
+                PushInt(this, left != 0 && right != 0);
                 break;
             }
 
@@ -1153,10 +1143,9 @@ jump_instruction:
                     int valueWord = 6;
                     const char * volatile percent;
                     do {
-                        const char *found = strchr(cursor, '%');
-                        if (found == NULL)
+                        percent = strchr(cursor, '%');
+                        if (percent == NULL)
                             break;
-                        percent = found;
 
                         strcpy(scratch, cursor);
                         scratch[percent - cursor] = '\0';
