@@ -1034,8 +1034,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left != 0 || right != 0;
-                PushInt(this, floatResult);
+                PushInt(this, left != 0 || right != 0);
                 break;
             }
 
@@ -1043,8 +1042,7 @@ jump_instruction:
             {
                 const int right = PopInt(this);
                 const int left = PopInt(this);
-                floatResult = left != 0 && right != 0;
-                PushInt(this, floatResult);
+                PushInt(this, left != 0 && right != 0);
                 break;
             }
 
