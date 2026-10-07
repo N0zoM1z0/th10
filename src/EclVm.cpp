@@ -1150,8 +1150,11 @@ jump_instruction:
                         strcpy(scratch, cursor);
                         scratch[percent - cursor] = '\0';
                         const char conversion = percent[1];
-                        if (conversion != '%' &&
-                            (conversion == 'd' || conversion == 'f')) {
+                        if (conversion == '%') {
+                            cursor = percent + 2;
+                            continue;
+                        }
+                        if (conversion == 'd' || conversion == 'f') {
                             const int inlineBytes = OperandInt(instruction, 0);
                             const char argumentType = *(
                                 reinterpret_cast<const char *>(instruction)
