@@ -231,7 +231,8 @@ static __forceinline int PopInt(EclVmContext *context)
 static __forceinline float PopFloat(EclVmContext *context)
 {
     EclVmScalar value;
-    context->stack.Pop('f', sizeof(value.real), &value.real);
+    EclVmStackView *const stackView = &context->stack;
+    stackView->Pop('f', sizeof(value.real), &value.real);
     return value.real;
 }
 
