@@ -33,7 +33,7 @@ scratch paths, or build hashes into this file.
    - Concentrate on x87/stack homes, FORMAT/shared-tail instruction shape,
      operand lifetimes, and private register allocation.
    - Replay only the canonical exact units actually affected by a bounded edit.
-   - EclVmContext::ReadInt @ 0x0044FDB0 is now canonical exact at 144/144; treat its fixed typed-pop ESI lifetime as a closed constraint when changing Run or the Enemy dispatcher.
+   - The six operand/read/resolve helpers at `0x0044FDB0-0x004500CC`, plus `SpawnThread`, `FindThread`, `StopAllThreads`, `Push`, `Pop`, `EnterFrame` and `LeaveFrame`, are canonical exact constraints; do not trade them away for a runner score.
 
 2. **ANM ExecuteScript — `AnmRenderManagerView::ExecuteScript @ 0x0043EE30`**
    - Preserve the reviewed 92 physical dispatch groups in target order.
@@ -47,6 +47,9 @@ scratch paths, or build hashes into this file.
      stack/frame layout, rank arithmetic, and x87 homes.
 
 4. **Batch closure**
+   - `BulletRuntimeView::UpdateHorizontalWrap @ 0x00407DA0` is canonical exact
+     (148 bytes); `UpdateVerticalWrap @ 0x00407E40` is target-sized but remains
+     non-exact. Preserve the full `BulletManager.cpp` exact gate when refining it.
    - Interleave smaller non-exact Bullet/ECL functions when they constrain the
      large owners, but do not turn the project into a leaf-only queue.
    - After a coherent batch, run the broader tracking/progress/CI checks and the
