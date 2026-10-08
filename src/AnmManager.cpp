@@ -3083,17 +3083,6 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant3(
     return g_AnmRenderManagerView->AddVmVariant3(vm);
 }
 
-struct AnmFloat2OperandView : AnmFloat2View
-{
-    AnmFloat2OperandView(float first, float second)
-    {
-        x = first;
-        y = second;
-    }
-};
-typedef char AnmFloat2OperandViewSizeIs08[
-    (sizeof(AnmFloat2OperandView) == 0x08) ? 1 : -1];
-
 // Target 0x0043EE30 is TH10's complete variable-length ANM instruction
 // executor. The adjacent TH095 source supplies control-flow hypotheses; every
 // opcode, VM offset, interpolation call and frame-end update below is checked

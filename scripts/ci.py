@@ -40,6 +40,7 @@ def main() -> int:
     try:
         validate_public_tree()
         run("Compile workflow Python", [sys.executable, "-m", "py_compile", *tracked("scripts/*.py")])
+        run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])
         run(
             "Validate ANM/ECL core source completeness",
