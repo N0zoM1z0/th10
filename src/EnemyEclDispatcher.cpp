@@ -458,12 +458,14 @@ __declspec(noinline) unsigned int EnemyCancelBulletRecord(
 
         unsigned int *timerFlags =
             reinterpret_cast<unsigned int *>(bullet + 0x408);
-        if ((*timerFlags & 1u) == 0) {
+        unsigned int timerFlagValue = *timerFlags;
+        if ((timerFlagValue & 1u) == 0) {
+            timerFlagValue |= 1u;
             *reinterpret_cast<int *>(bullet + 0x3fc) = zero;
             *reinterpret_cast<int *>(bullet + 0x3f8) = -999999;
             *reinterpret_cast<float *>(bullet + 0x400) = 0.0f;
             *reinterpret_cast<float **>(bullet + 0x404) = &g_AnmGameSpeed;
-            *timerFlags |= 1u;
+            *timerFlags = timerFlagValue;
         }
         *reinterpret_cast<int *>(bullet + 0x3fc) = zero;
         *reinterpret_cast<float *>(bullet + 0x400) = 0.0f;
