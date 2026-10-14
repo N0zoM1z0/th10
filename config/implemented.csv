@@ -881,3 +881,4 @@ CStreamingSound::HandleWaveStreamNotification
 SoundPlayerView::BgmPlayerThread
 FileSystem::OpenFile
 SoundDataLoaderThread
+MainJoinSoundThread

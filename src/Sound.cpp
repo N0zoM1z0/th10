@@ -212,7 +212,10 @@ struct SoundPlayerView
     char unknownNameSlot[256];
     CSound *bgm;
     HANDLE bgmUpdateEvent;
-    unsigned char unknown5210[0x5224 - 0x5210];
+    unsigned char unknown5210[8];
+    HANDLE soundSetupThreadHandle;
+    HANDLE soundDataThreadHandle;
+    unsigned char unknown5220[4];
     int soundDataLoadState;
     unsigned char unknown5228[8];
     unsigned char *soundFileData[37];
@@ -254,6 +257,8 @@ typedef char SoundPlayerBgmOffsets[
      offsetof(SoundPlayerView, bgmFileNames) == 0x4108 &&
      offsetof(SoundPlayerView, bgm) == 0x5208 &&
      offsetof(SoundPlayerView, bgmUpdateEvent) == 0x520c &&
+     offsetof(SoundPlayerView, soundSetupThreadHandle) == 0x5218 &&
+     offsetof(SoundPlayerView, soundDataThreadHandle) == 0x521c &&
      offsetof(SoundPlayerView, soundDataLoadState) == 0x5224 &&
      offsetof(SoundPlayerView, soundFileData) == 0x5230 &&
      offsetof(SoundPlayerView, bgmVolume) == 0x52c4) ? 1 : -1];
@@ -278,6 +283,34 @@ void SoundDataLoaderThread()
     }
     while (owner->soundDataLoadState == 0)
         Sleep(1);
+}
+
+// Existing Main shutdown seam: target 0x00438DDA stores cancellation state2.
+// This source helper has no separate target owner or exact-byte claim.
+void MainRequestSoundThreadStop(unsigned char *soundOwner)
+{
+    reinterpret_cast<SoundPlayerView *>(soundOwner)->soundDataLoadState = 2;
+}
+
+// Target 0x0043CC40-0x0043CCEE: private ESI owner, zero result, plain RET.
+// A missing first handle skips even the state transition and second handle.
+int MainJoinSoundThread(unsigned char *soundOwner)
+{
+    SoundPlayerView *owner = reinterpret_cast<SoundPlayerView *>(soundOwner);
+    if (owner->soundSetupThreadHandle != NULL)
+    {
+        if (owner->soundDataLoadState == 0)
+            owner->soundDataLoadState = 1;
+        while (WaitForSingleObject(owner->soundSetupThreadHandle, 100) == WAIT_TIMEOUT)
+            Sleep(1);
+        while (WaitForSingleObject(owner->soundDataThreadHandle, 100) == WAIT_TIMEOUT)
+            Sleep(1);
+        CloseHandle(owner->soundSetupThreadHandle);
+        CloseHandle(owner->soundDataThreadHandle);
+        owner->soundSetupThreadHandle = NULL;
+        owner->soundDataThreadHandle = NULL;
+    }
+    return 0;
 }
 
 void SoundPlayerView::StopBgm()

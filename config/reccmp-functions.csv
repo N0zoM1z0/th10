@@ -882,3 +882,4 @@ CStreamingSound::HandleWaveStreamNotification,0x0044D850,function
 SoundPlayerView::BgmPlayerThread,0x0043E3A0,function
 FileSystem::OpenFile,0x0044B360,function
 SoundDataLoaderThread,0x0043D080,function
+MainJoinSoundThread,0x0043CC40,function

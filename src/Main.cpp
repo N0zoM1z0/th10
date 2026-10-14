@@ -98,7 +98,7 @@ extern void MainTakeScreenshot(MainSupervisorView *supervisor, const char *path)
 extern void MainStartSoundThread(unsigned char *soundOwner, HWND window);
 extern int MainProcessSoundQueues(unsigned char *soundOwner);
 extern void MainRequestSoundThreadStop(unsigned char *soundOwner);
-extern void MainJoinSoundThread(unsigned char *soundOwner);
+extern int MainJoinSoundThread(unsigned char *soundOwner);
 extern void MainReleaseSound(unsigned char *soundOwner);
 extern void MainMusicHandleMessage(void *musicOwner, LPARAM messageData);
 extern void MainStopMusic(void *musicOwner);

@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import re
 import subprocess
+import struct
 import tomllib
 
 
@@ -194,6 +195,48 @@ def write_anchors(
     return output, aliases, bindings
 
 
+def reject_unresolved_entry(entry: str, unresolved: list[str]) -> None:
+    # VC7 may prefix a C entry spelling with an underscore. Neither spelling
+    # may be satisfied by the data-anchor harness.
+    forbidden = {entry, "_" + entry}
+    if forbidden.intersection(unresolved):
+        raise ValueError("requested LTCG entry is unresolved; refusing data anchor: " + entry)
+
+
+def validate_link_entry(
+    image_path: Path, map_path: Path, pdb_path: Path,
+    entry: str, source_objects: list[Path],
+) -> dict[str, object]:
+    from linked_image import PEImage, linked_functions, map_publics
+
+    image = PEImage(image_path)
+    pe_offset = struct.unpack_from("<I", image.data, 0x3C)[0]
+    entry_rva = struct.unpack_from("<I", image.data, pe_offset + 24 + 16)[0]
+    address = image.image_base + entry_rva
+    allowed_objects = {path.name.lower() for path in source_objects}
+    publics = [item for item in map_publics(map_path)
+               if item["symbol"] in {entry, "_" + entry}]
+    if len(publics) != 1:
+        raise ValueError("requested LTCG entry has no unique linker-map identity: " + entry)
+    public = publics[0]
+    owner = str(public["object"]).replace("\\", "/").rsplit("/", 1)[-1].lower()
+    if public["address"] != address or "f" not in public["flags"] or owner not in allowed_objects:
+        raise ValueError("PE entry does not identify requested maintained code: " + entry)
+    section = image.section(int(public["section_number"]))
+    if not section.characteristics & 0x20000000:
+        raise ValueError("requested LTCG entry is not in an executable section")
+    functions = [item for item in linked_functions(image_path, map_path, pdb_path)["functions"]
+                 if item["symbol"] == public["symbol"] and int(str(item["address"]), 0) == address]
+    if len(functions) != 1 or int(functions[0]["size"]) <= 0:
+        raise ValueError("requested LTCG entry has no unique complete PDB contribution")
+    pdb_owner = str(functions[0]["pdb_object"]).replace("\\", "/").rsplit("/", 1)[-1].lower()
+    if pdb_owner != owner:
+        raise ValueError("requested LTCG entry map/PDB owners disagree")
+    return {"requested": entry, "symbol": public["symbol"],
+            "address": f"0x{address:08X}", "rva": entry_rva,
+            "object": owner, "size": int(functions[0]["size"])}
+
+
 def cold_link(
     source: Path,
     directory: Path,
@@ -307,6 +350,7 @@ def cold_link(
         if linked.returncode == 0:
             break
         observed = unresolved_symbols(linked.stdout)
+        reject_unresolved_entry(entry, observed)
         new_symbols = sorted(set(observed) - set(symbols))
         if not observed:
             raise ValueError(
@@ -323,7 +367,9 @@ def cold_link(
         raise ValueError("anchored LTCG link exceeded eight resolution attempts")
     if not all(path.is_file() for path in (image, map_path, pdb)):
         raise ValueError("LTCG link did not produce image, map, and PDB")
+    entry_identity = validate_link_entry(image, map_path, pdb, entry, source_objects)
     return {
+        "entry_identity": entry_identity,
         "object": ltcg_object,
         "objects": source_objects,
         "support_sources": resolved_support_sources,

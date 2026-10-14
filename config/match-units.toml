@@ -19102,3 +19102,23 @@ linkages = [
   { offset = 0xA4, type = "DIR32", symbol = "__real@3f800000", target = 0x00470AFC },
   { offset = 0xC5, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
 ]
+
+# Complete 175-byte sound cleanup owner, in its genuine WinMain caller graph.
+[units.sound-join-worker-threads]
+artifact_kind = "linked-pe"
+source = "src/Sound.cpp"
+support_sources = ["src/Main.cpp"]
+output_dir = "build/match-linked/SoundJoinRealMain"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "WinMain@16"
+functions = ["MainJoinSoundThread"]
+symbol = "?MainJoinSoundThread@@YAHPAE@Z"
+target_address = 0x0043CC40
+size = 175
+linkages = [
+  { offset = 0x26, type = "DIR32", symbol = "__imp__WaitForSingleObject@8", target = 0x0046611C },
+  { offset = 0x36, type = "DIR32", symbol = "__imp__Sleep@4", target = 0x004660AC },
+  { offset = 0x86, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+]
