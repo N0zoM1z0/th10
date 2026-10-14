@@ -1,6 +1,6 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-08. This is a concise resume brief, not an experiment journal.
+Updated 2026-10-14. This is a concise resume brief, not an experiment journal.
 Keep live totals in the generated [`PROGRESS.md`](PROGRESS.md), durable target
 facts and negative results in [`KNOWLEDGE_BASE.md`](KNOWLEDGE_BASE.md), and
 experiment chronology in Git history. Only explicitly dated, scoped
@@ -32,9 +32,20 @@ ledger entries. Rebuild each probe after changing a supporting translation unit.
 
 | Owner | Last checked source context | Observed candidate / target | Open work |
 | --- | --- | --- | --- |
-| ECL `EclVmContext::Run` | `7d77b95`, EclVmStack linked /GL Run probe | 7,020 / 7,020 owned bytes; 59 / 59 dispatch destinations aligned; 6,209 / 6,264 raw comparable bytes | Remaining register, stack-home, and opcode byte differences; non-exact |
+| ECL `EclVmContext::Run` | `7d77b95`, EclVmStack linked /GL Run probe | 7,020 / 7,020 owned bytes; 59 / 59 dispatch destinations aligned; historical 6,209 raw matches must not be divided by the 6,264 comparable-byte denominator | Remaining register, stack-home, and opcode byte differences; non-exact |
 | ANM `ExecuteScript` | `d2cddda`, ANM /GL /GS probe | 9,964 / 9,964 bytes, 0xFC target frame, 92 physical groups in order, 84 of 92 spans target-sized; 2,986 / 8,572 raw comparable bytes | Eight non-equal group spans and aggregate/RNG private ABI; non-exact |
 | Enemy `DispatchEclInstruction` | `d2cddda`, selected ECL + ANM support graph | 14,384 / 14,416 bytes; target-sized 181-byte selector, all 108 group destinations in physical order; 0x2BC vs 0x2C4 stack allocation | ECL argument adapters, spawn/laser group lifetimes, stack allocation; non-exact |
+
+The 2026-10-14 bounded Run refinement nests `ReadIntValue` in the
+`SpawnThread` call, restoring target argument-push scheduling. Two cold
+`EclVmHost::Run` entry probes reproduce 7,020 owned bytes, all 59 aligned
+dispatch destinations, 6,223 / 7,020 raw matches and 6,115 / 6,264
+matched-comparable bytes (baseline 6,210 and 6,102 respectively).
+`normalization_complete=false`: the final 88-byte selector table is neither
+decoded code nor DIR32 relocation data. The current checker deliberately
+rejects that suffix; no checker or policy change was made. Register, stack-home
+and FORMAT differences also remain. This is zero new exact credit.
+Only Run was modified and cold-probed; prior helper units were not replayed.
 
 The later `62b0980` change is restricted to the non-exact
 `EnemyCancelBulletRecord` timer-flag dataflow (200 / 199 candidate/target
