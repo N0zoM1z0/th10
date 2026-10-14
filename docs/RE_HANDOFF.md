@@ -94,6 +94,18 @@ These attest that source snapshot only; imported ledger totals are not a
 fresh replay of every historical function. No unchanged historical unit was
 replayed in the Bullet batch.
 
+## Recent bounded negative controls (2026-10-14)
+
+- The ECL percent-qualifier-only and conversion-switch-only controls each
+  grew the owner to 7,024 bytes and worsened matching. Both were reverted;
+  keep the isolated store-before-check refinement and stop that FORMAT branch.
+- Radial initializer `0x004452F0` is a stronger medium-owner follow-up:
+  the existing ExecuteScript /GL /GS graph with RandomMath, AnmVmCreate and
+  AnmVmId yields 803 / 803 bytes, complete normalization and 623 / 631
+  comparable matches. Three targeted source controls regressed and were
+  reverted. Eight instruction/scheduling bytes remain; no exact credit.
+  Do not reuse the unrelated service-entry 571-byte probe as its baseline.
+
 ## Active reconstruction order
 
 1. **ECL Run — `EclVmContext::Run @ 0x0044E1A0`**
