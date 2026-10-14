@@ -5,6 +5,53 @@
 
 #include "Main.hpp"
 #include "SoundFormat.hpp"
+#include "FileSystem.hpp"
+#include "GameErrorContext.hpp"
+
+// Target pointer table 0x00474B40, in load order. Pointer slots are mutable.
+const char *g_SoundFileNames[37] =
+{
+    "se_plst00.wav",
+    "se_enep00.wav",
+    "se_pldead00.wav",
+    "se_power0.wav",
+    "se_power1.wav",
+    "se_tan00.wav",
+    "se_tan01.wav",
+    "se_tan02.wav",
+    "se_ok00.wav",
+    "se_cancel00.wav",
+    "se_select00.wav",
+    "se_gun00.wav",
+    "se_cat00.wav",
+    "se_lazer00.wav",
+    "se_lazer01.wav",
+    "se_enep01.wav",
+    "se_damage00.wav",
+    "se_item00.wav",
+    "se_kira00.wav",
+    "se_kira01.wav",
+    "se_kira02.wav",
+    "se_timeout.wav",
+    "se_graze.wav",
+    "se_powerup.wav",
+    "se_pause.wav",
+    "se_cardget.wav",
+    "se_option.wav",
+    "se_damage01.wav",
+    "se_timeout2.wav",
+    "se_invalid.wav",
+    "se_slash.wav",
+    "se_ch00.wav",
+    "se_ch01.wav",
+    "se_hint00.wav",
+    "se_extend.wav",
+    "se_bonus3.wav",
+    "se_water.wav",
+};
+// Target 0x0046FDD4: CP932 sound-file read failure diagnostic.
+char g_SoundDataLoadErrorFormat[] =
+    "error : Sound \x83\x74\x83\x40\x83\x43\x83\x8b\x82\xaa\x93\xc7\x82\xdd\x8d\x9e\x82\xdf\x82\xc8\x82\xa2\x20\x83\x66\x81\x5b\x83\x5e\x82\xf0\x8a\x6d\x94\x46 %s\r\n";
 
 // TH10 retains ".\src\core\sound.cpp" source-path strings.  These names
 // are maintained/descriptive; the original symbols are not recovered.
@@ -165,7 +212,10 @@ struct SoundPlayerView
     char unknownNameSlot[256];
     CSound *bgm;
     HANDLE bgmUpdateEvent;
-    unsigned char unknown5210[0x52c4 - 0x5210];
+    unsigned char unknown5210[0x5224 - 0x5210];
+    int soundDataLoadState;
+    unsigned char unknown5228[8];
+    unsigned char *soundFileData[37];
     int bgmVolume;
     int sfxVolume;
     int unknown52CC;
@@ -204,7 +254,31 @@ typedef char SoundPlayerBgmOffsets[
      offsetof(SoundPlayerView, bgmFileNames) == 0x4108 &&
      offsetof(SoundPlayerView, bgm) == 0x5208 &&
      offsetof(SoundPlayerView, bgmUpdateEvent) == 0x520c &&
+     offsetof(SoundPlayerView, soundDataLoadState) == 0x5224 &&
+     offsetof(SoundPlayerView, soundFileData) == 0x5230 &&
      offsetof(SoundPlayerView, bgmVolume) == 0x52c4) ? 1 : -1];
+
+// Target 0x0043D080-0x0043D0EA. The launcher passes an unused argument;
+// the observed body has no explicit arguments, no stable result, and plain RET.
+// State 2 cancels before the next read. Each archive allocation (including NULL)
+// is published before testing failure. Ownership remains with the sound owner.
+void SoundDataLoaderThread()
+{
+    SoundPlayerView *owner = reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner);
+    for (int i = 0; i < 37; ++i)
+    {
+        if (owner->soundDataLoadState == 2)
+            return;
+        owner->soundFileData[i] = FileSystem::OpenFile(g_SoundFileNames[i], NULL, 0);
+        if (owner->soundFileData[i] == NULL)
+        {
+            th10::g_GameErrorContext.Log(g_SoundDataLoadErrorFormat, g_SoundFileNames[i]);
+            return;
+        }
+    }
+    while (owner->soundDataLoadState == 0)
+        Sleep(1);
+}
 
 void SoundPlayerView::StopBgm()
 {
