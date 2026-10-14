@@ -47,6 +47,12 @@ rejects that suffix; no checker or policy change was made. Register, stack-home
 and FORMAT differences also remain. This is zero new exact credit.
 Only Run was modified and cold-probed; prior helper units were not replayed.
 
+A later isolated FORMAT store-before-null-check move is also reproduced by
+two cold real-host probes: 6,233 / 7,020 raw matches and 6,125 / 6,264
+matched-comparable bytes, with every dispatch offset still aligned. The
+percent/scratch stack homes remain swapped and normalization remains
+incomplete. This scheduling improvement adds zero exact credit.
+
 The later `62b0980` change is restricted to the non-exact
 `EnemyCancelBulletRecord` timer-flag dataflow (200 / 199 candidate/target
 bytes; 131 / 183 comparable bytes), with all 14 source-scope canonical exact
@@ -70,7 +76,10 @@ normalization. The retained changes restore the expired-duration-first branch
 and scale-before-subframe x87 load order, including FST before conversion.
 Only this owner was modified and replayed. `UpdateVerticalWrap` remains
 non-exact; the duplicated-branch control was reverted. Factory acceptance
-for this new unit is a separate next step.
+for this unit passed at commit `b6fadac1f786801dbc4cdbd9b5e4558844e02b17`:
+receipt `6c364031e1979cc5647b8d4b4b39e98c425d783307df6c4f1dc60a45c29ce364`,
+verdict pass and decision accepted, bound to snapshot
+`8d6643829b54e3d8744f18c81decaef505a876130cbf656d4ed93172b91d27f3`.
 
 ### Prior ANM receipt bindings
 

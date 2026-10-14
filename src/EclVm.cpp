@@ -1159,9 +1159,9 @@ jump_instruction:
                     const char * volatile percent;
                     do {
                         const char *found = strchr(cursor, '%');
+                        percent = found;
                         if (found == NULL)
                             break;
-                        percent = found;
 
                         strcpy(scratch, cursor);
                         scratch[percent - cursor] = '\0';
