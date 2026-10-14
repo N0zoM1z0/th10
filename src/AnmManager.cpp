@@ -2190,15 +2190,16 @@ void AnmLoadedView::Release()
     g_AnmRenderManagerView->MarkLoadedVmsForDeletion(this);
     for (int i = 0; i < totalEntries; ++i)
     {
-        if (textures[i].texture != NULL)
+        AnmTextureEntryView *entry = &textures[i];
+        if (entry->texture != NULL)
         {
-            textures[i].texture->vtable->Release(textures[i].texture);
-            textures[i].texture = NULL;
+            entry->texture->vtable->Release(entry->texture);
+            entry->texture = NULL;
         }
-        if (textures[i].rawData != NULL)
+        if (entry->rawData != NULL)
         {
-            free(textures[i].rawData);
-            textures[i].rawData = NULL;
+            free(entry->rawData);
+            entry->rawData = NULL;
         }
     }
 

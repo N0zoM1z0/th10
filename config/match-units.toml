@@ -19037,3 +19037,44 @@ linkages = [
   { offset = 0x26F, type = "DIR32", symbol = "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A", target = 0x004978C0, addend = 0x64 },
   { offset = 0x27A, type = "REL32", symbol = "?DrawInner@AnmRenderManagerView@@QAEHPAUAnmVmView@@H@Z", target = 0x00442670 },
 ]
+
+[units.anm-resource-service-preloaded]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmManagerInterrupt"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ServicePreloadedAnms@AnmRenderManagerView@@QAGHXZ"
+functions = ["AnmRenderManagerView::ServicePreloadedAnms"]
+symbol = "?ServicePreloadedAnms@AnmRenderManagerView@@QAGHXZ"
+target_address = 0x00447700
+size = 135
+linkages = [
+  { offset = 0x2A, type = "REL32", symbol = "?Release@AnmLoadedView@@QAEXXZ", target = 0x00447810 },
+  { offset = 0x32, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x76, type = "REL32", symbol = "?PostloadAnmEntry@AnmRenderManagerView@@QAEPAUAnmLoadedView@@PAU2@@Z", target = 0x004473C0 },
+]
+
+[units.anm-loaded-release]
+artifact_kind = "linked-pe"
+source = "src/AnmManager.cpp"
+output_dir = "build/match-linked/AnmManagerInterrupt"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ServicePreloadedAnms@AnmRenderManagerView@@QAGHXZ"
+functions = ["AnmLoadedView::Release"]
+symbol = "?Release@AnmLoadedView@@QAEXXZ"
+target_address = 0x00447810
+size = 242
+linkages = [
+  { offset = 0x13, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x1A, type = "REL32", symbol = "?MarkLoadedVmsForDeletion@AnmRenderManagerView@@QAEXPAUAnmLoadedView@@@Z", target = 0x004493E0 },
+  { offset = 0x50, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x7E, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x97, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0xB0, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0xC9, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0xE2, type = "REL32", symbol = "_free", target = 0x00452422 },
+]

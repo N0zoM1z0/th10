@@ -53,6 +53,15 @@ bytes; 131 / 183 comparable bytes), with all 14 source-scope canonical exact
 units passing. The dispatcher-size checkpoint above predates this adjacent
 source change and must be regenerated before making a dispatcher-size claim.
 
+## Bounded ANM closure (2026-10-14)
+
+`AnmLoadedView::Release` (242 bytes) and `ServicePreloadedAnms` (135 bytes)
+pass two focused cold canonical linked-PE replays with all 11 fields bound.
+The source change preserves one texture-entry pointer across COM Release/free,
+matching target side effects and recovering both private-register allocations.
+The local ledger gains 377 authored bytes; these local passes are not Factory
+receipt acceptance. The broader historical ANM regression was not run.
+
 ## Active reconstruction order
 
 1. **ECL Run — `EclVmContext::Run @ 0x0044E1A0`**
