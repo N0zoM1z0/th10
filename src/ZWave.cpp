@@ -21,6 +21,24 @@ public:
         }
     }
 
+    CSoundManager() : directSound(NULL) {}
+
+    HRESULT Initialize(HWND window, DWORD cooperativeLevel)
+    {
+        if (directSound != NULL)
+        {
+            directSound->Release();
+            directSound = NULL;
+        }
+        HRESULT result = DirectSoundCreate(NULL, &directSound, NULL);
+        if (FAILED(result))
+            return result;
+        result = directSound->SetCooperativeLevel(window, cooperativeLevel);
+        return result;
+    }
+
+    HRESULT SetPrimaryBufferFormat(DWORD channels, DWORD samplesPerSecond, DWORD bitsPerSample);
+
     HRESULT CreateStreamingFromMemory(
         CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
         DWORD creationFlags, GUID algorithm, DWORD bufferCount,
@@ -762,5 +780,39 @@ HRESULT CStreamingSound::HandleWaveStreamNotification(BOOL loopedPlay)
 
     m_dwNextWriteOffset += lockedSize;
     m_dwNextWriteOffset %= m_dwDSBufferSize;
+    return S_OK;
+}
+
+// Target 0x0044C7E0-0x0044C8E3. SDK-derived origin is suspected and unresolved;
+// this semantic prerequisite carries no new authored-exact claim.
+HRESULT CSoundManager::SetPrimaryBufferFormat(
+    DWORD channels, DWORD samplesPerSecond, DWORD bitsPerSample)
+{
+    LPDIRECTSOUNDBUFFER primary = NULL;
+    if (directSound == NULL)
+        return CO_E_NOTINITIALIZED;
+    DSBUFFERDESC description;
+    ZeroMemory(&description, sizeof(description));
+    description.dwSize = sizeof(description);
+    description.dwFlags = DSBCAPS_PRIMARYBUFFER;
+    description.dwBufferBytes = 0;
+    description.lpwfxFormat = NULL;
+    HRESULT result = directSound->CreateSoundBuffer(&description, &primary, NULL);
+    if (FAILED(result))
+        return result;
+    WAVEFORMATEX format;
+    ZeroMemory(&format, sizeof(format));
+    format.wFormatTag = WAVE_FORMAT_PCM;
+    format.nChannels = static_cast<WORD>(channels);
+    format.nSamplesPerSec = samplesPerSecond;
+    format.wBitsPerSample = static_cast<WORD>(bitsPerSample);
+    format.nBlockAlign = static_cast<WORD>((format.wBitsPerSample / 8) * format.nChannels);
+    format.nAvgBytesPerSec = format.nSamplesPerSec * format.nBlockAlign;
+    result = primary->SetFormat(&format);
+    // Target returns immediately on SetFormat failure without releasing primary.
+    if (FAILED(result))
+        return result;
+    if (primary != NULL)
+        primary->Release();
     return S_OK;
 }

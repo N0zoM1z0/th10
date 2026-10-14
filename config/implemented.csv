@@ -883,3 +883,6 @@ FileSystem::OpenFile
 SoundDataLoaderThread
 MainJoinSoundThread
 MainReleaseSound
+SoundPlayerView::Initialize
+SoundSetupThread
+CSoundManager::SetPrimaryBufferFormat

@@ -157,6 +157,24 @@ public:
         }
     }
 
+    CSoundManager() : directSound(NULL) {}
+
+    HRESULT Initialize(HWND window, DWORD cooperativeLevel)
+    {
+        if (directSound != NULL)
+        {
+            directSound->Release();
+            directSound = NULL;
+        }
+        HRESULT result = DirectSoundCreate(NULL, &directSound, NULL);
+        if (FAILED(result))
+            return result;
+        result = directSound->SetCooperativeLevel(window, cooperativeLevel);
+        return result;
+    }
+
+    HRESULT SetPrimaryBufferFormat(DWORD channels, DWORD samplesPerSecond, DWORD bitsPerSample);
+
     HRESULT CreateStreamingFromMemory(
         CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
         DWORD creationFlags, GUID algorithm, DWORD bufferCount,
@@ -224,14 +242,19 @@ struct SoundPlayerView
     unsigned char unknown5210[8];
     HANDLE soundSetupThreadHandle;
     HANDLE soundDataThreadHandle;
-    unsigned char unknown5220[4];
+    DWORD soundSetupThreadId;
     int soundDataLoadState;
-    unsigned char unknown5228[8];
+    HWND soundSetupWindow;
+    int soundSetupFinished;
     unsigned char *soundFileData[37];
     int bgmVolume;
     int sfxVolume;
     int unknown52CC;
 
+    int Initialize(HWND window);
+    // Target 0x0043D390 remains source-absent. This ordinary source declaration
+    // does not claim its observed private EDX-owner/ECX-index ABI is recovered.
+    int LoadSoundSample(int index, const char *path);
     int GetFmtIndexByName(const char *path);
     int ReopenBgm(const char *path);
     int LoadBgm(int index);
@@ -268,9 +291,105 @@ typedef char SoundPlayerBgmOffsets[
      offsetof(SoundPlayerView, bgmUpdateEvent) == 0x520c &&
      offsetof(SoundPlayerView, soundSetupThreadHandle) == 0x5218 &&
      offsetof(SoundPlayerView, soundDataThreadHandle) == 0x521c &&
+     offsetof(SoundPlayerView, soundSetupThreadId) == 0x5220 &&
+     offsetof(SoundPlayerView, soundSetupWindow) == 0x5228 &&
+     offsetof(SoundPlayerView, soundSetupFinished) == 0x522c &&
      offsetof(SoundPlayerView, soundDataLoadState) == 0x5224 &&
      offsetof(SoundPlayerView, soundFileData) == 0x5230 &&
      offsetof(SoundPlayerView, bgmVolume) == 0x52c4) ? 1 : -1];
+
+char g_SoundInitSuccessFormat[] = "\x44\x69\x72\x65\x63\x74\x53\x6f\x75\x6e\x64\x20\x82\xcd\x90\xb3\x8f\xed\x82\xc9\x8f\x89\x8a\xfa\x89\xbb\x82\xb3\x82\xea\x82\xdc\x82\xb5\x82\xbd\x0d\x0a";
+char g_SoundInitFailureFormat[] = "\x44\x69\x72\x65\x63\x74\x53\x6f\x75\x6e\x64\x20\x83\x49\x83\x75\x83\x57\x83\x46\x83\x4e\x83\x67\x82\xcc\x8f\x89\x8a\xfa\x89\xbb\x82\xaa\x8e\xb8\x94\x73\x82\xb5\x82\xbd\x82\xe6\x0d\x0a";
+
+// Target 0x0043CD30-0x0043D041. Partial source recovery: the sample-loader
+// implementation/private ABI is still unresolved, so no codegen credit.
+int SoundPlayerView::Initialize(HWND window)
+{
+    memset(unconsumedSoundMetadata, 0xff, sizeof(unconsumedSoundMetadata));
+    for (int i = 0; i < 12; ++i)
+        soundQueue[i] = -1;
+    CSoundManager *createdManager = new CSoundManager;
+    manager = createdManager;
+    if (FAILED(createdManager->Initialize(window, DSSCL_PRIORITY)))
+    {
+        th10::g_GameErrorContext.Log(g_SoundInitFailureFormat);
+        if (manager != NULL)
+        {
+            delete manager;
+            manager = NULL;
+        }
+        return -1;
+    }
+    createdManager->SetPrimaryBufferFormat(2, 44100, 16);
+    directSound = manager->directSound;
+    WAVEFORMATEX format;
+    DSBUFFERDESC description;
+    ZeroMemory(&format, sizeof(format));
+    ZeroMemory(&description, sizeof(description));
+    format.wFormatTag = WAVE_FORMAT_PCM;
+    format.nChannels = 2;
+    format.nSamplesPerSec = 44100;
+    format.nAvgBytesPerSec = 176400;
+    format.nBlockAlign = 4;
+    format.wBitsPerSample = 16;
+    description.dwSize = sizeof(description);
+    description.dwFlags = DSBCAPS_LOCSOFTWARE | DSBCAPS_GLOBALFOCUS;
+    description.dwBufferBytes = 0x8000;
+    description.lpwfxFormat = &format;
+    bgmThreadHandle = NULL;
+    if (FAILED(static_cast<LPDIRECTSOUND>(directSound)->CreateSoundBuffer(
+            &description, &initialSoundBuffer, NULL)))
+        return -1;
+    void *firstData;
+    void *secondData;
+    DWORD firstSize;
+    DWORD secondSize;
+    if (FAILED(initialSoundBuffer->Lock(0, 0x8000, &firstData, &firstSize,
+                                       &secondData, &secondSize, 0)))
+        return -1;
+    // Target clears the requested fixed length, not the returned firstSize.
+    memset(firstData, 0, 0x8000);
+    initialSoundBuffer->Unlock(firstData, firstSize, secondData, secondSize);
+    initialSoundBuffer->Play(0, 0, DSBPLAY_LOOPING);
+    bgmVolume = 100;
+    sfxVolume = 100;
+    SetTimer(window, 0, 250, NULL);
+    gameWindow = window;
+    SoundPlayerView *globalOwner = reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner);
+    for (int i = 0; i < 37; ++i)
+    {
+        if (globalOwner->soundDataLoadState == 2)
+            return -1;
+        if (globalOwner->LoadSoundSample(i, g_SoundFileNames[i]) != 0)
+        {
+            th10::g_GameErrorContext.Log(g_SoundDataLoadErrorFormat, g_SoundFileNames[i]);
+            return -1;
+        }
+    }
+    th10::g_GameErrorContext.Log(g_SoundInitSuccessFormat);
+    return 0;
+}
+
+// Target 0x0043CCF0-0x0043CD28 ignores the CreateThread argument and returns
+// with plain RET. It publishes completion even when Initialize fails.
+void SoundSetupThread()
+{
+    SoundPlayerView *owner = reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner);
+    owner->Initialize(owner->soundSetupWindow);
+    while (owner->soundDataLoadState == 0)
+        Sleep(1);
+    owner->soundSetupFinished = 1;
+}
+
+// Existing WinMain seam. Its caller already clears the entire owner.
+void MainStartSoundThread(unsigned char *soundOwner, HWND window)
+{
+    SoundPlayerView *owner = reinterpret_cast<SoundPlayerView *>(soundOwner);
+    owner->soundSetupWindow = window;
+    owner->soundSetupThreadHandle = CreateThread(NULL, 0,
+        reinterpret_cast<LPTHREAD_START_ROUTINE>(SoundSetupThread), owner, 0,
+        &owner->soundSetupThreadId);
+}
 
 // Target 0x0043D080-0x0043D0EA. The launcher passes an unused argument;
 // the observed body has no explicit arguments, no stable result, and plain RET.

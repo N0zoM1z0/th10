@@ -188,3 +188,19 @@ checkpoint commit as exactness.
 - Keep `ghidra-project/`, `.tools/`, `_reference/`, and `resources/th10.exe`;
   they are private analysis state, pinned tools/reference material, and the
   canonical private target rather than generic build debris.
+
+## Scoped sound checkpoint receipts (2026-10-14)
+
+- Worker join175 bytes: Factory PASS/ACCEPTED receipt
+  `1f8cc90920a046710d4b10fe7d1be9a3eeb374cdb568eea4d74a1f39131f0ac4`,
+  source commit `ff61a67382296b2502cb95f84096946621867a31`.
+- Owner release301 bytes: Factory PASS/ACCEPTED receipt
+  `4e18ec3886d85cb999ae4432033b6ada2c1bd1d2696426f90e6be4d120dbaa3a`,
+  source commit `4bc97d04f93d405e1894ee75aba13474ea52e291`.
+- These are immutable source-bound results, not fresh acceptance of later
+  source snapshots. The setup-thread57-byte owner has local canonical evidence;
+  its separate Factory acceptance is pending at this checkpoint.
+- Initializer786 and loader107 remain non-exact. The260-byte primary-format
+  helper has official SDK lineage evidence; do not add authored exact credit
+  or silently change denominator/classification. Sample-loader684-byte source
+  and private ABI remain the next prerequisite, not a validated anchor contract.
