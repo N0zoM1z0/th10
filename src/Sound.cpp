@@ -148,6 +148,15 @@ class CSoundManager
 public:
     LPDIRECTSOUND directSound;
 
+    ~CSoundManager()
+    {
+        if (directSound != NULL)
+        {
+            directSound->Release();
+            directSound = NULL;
+        }
+    }
+
     HRESULT CreateStreamingFromMemory(
         CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
         DWORD creationFlags, GUID algorithm, DWORD bufferCount,
@@ -309,6 +318,70 @@ int MainJoinSoundThread(unsigned char *soundOwner)
         CloseHandle(owner->soundDataThreadHandle);
         owner->soundSetupThreadHandle = NULL;
         owner->soundDataThreadHandle = NULL;
+    }
+    return 0;
+}
+
+// Target 0x0043D120-0x0043D24C. Each null-store follows its releasing call;
+// pointers used by later operations are deliberately reloaded from the owner.
+int MainReleaseSound(unsigned char *soundOwner)
+{
+    SoundPlayerView *owner = reinterpret_cast<SoundPlayerView *>(soundOwner);
+    if (owner->bgmFormats != NULL)
+    {
+        free(owner->bgmFormats);
+        owner->bgmFormats = NULL;
+    }
+    for (int i = 0; i < 128; ++i)
+    {
+        if (owner->duplicateSoundBuffers[i] != NULL)
+        {
+            owner->duplicateSoundBuffers[i]->Release();
+            owner->duplicateSoundBuffers[i] = NULL;
+        }
+        if (owner->soundBuffers[i] != NULL)
+        {
+            owner->soundBuffers[i]->Release();
+            owner->soundBuffers[i] = NULL;
+        }
+    }
+    for (int i = 0; i < 37; ++i)
+    {
+        if (owner->soundFileData[i] != NULL)
+        {
+            free(owner->soundFileData[i]);
+            owner->soundFileData[i] = NULL;
+        }
+    }
+    if (owner->manager != NULL)
+    {
+        KillTimer(owner->gameWindow, 1);
+        owner->StopBgm();
+        owner->directSound = NULL;
+        owner->initialSoundBuffer->Stop();
+        if (owner->initialSoundBuffer != NULL)
+        {
+            owner->initialSoundBuffer->Release();
+            owner->initialSoundBuffer = NULL;
+        }
+        if (owner->bgm != NULL)
+        {
+            delete owner->bgm;
+            owner->bgm = NULL;
+        }
+        if (owner->manager != NULL)
+        {
+            delete owner->manager;
+            owner->manager = NULL;
+        }
+        for (int i = 0; i < 16; ++i)
+        {
+            if (owner->bgmPreloadAllocations[i] != NULL)
+            {
+                free(owner->bgmPreloadAllocations[i]);
+                owner->bgmPreloadAllocations[i] = NULL;
+            }
+        }
     }
     return 0;
 }

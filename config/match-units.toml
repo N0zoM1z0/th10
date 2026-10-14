@@ -19122,3 +19122,25 @@ linkages = [
   { offset = 0x36, type = "DIR32", symbol = "__imp__Sleep@4", target = 0x004660AC },
   { offset = 0x86, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
 ]
+
+[units.sound-release-owner]
+artifact_kind = "linked-pe"
+source = "src/Sound.cpp"
+support_sources = ["src/Main.cpp"]
+output_dir = "build/match-linked/SoundJoinRealMain"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "WinMain@16"
+functions = ["MainReleaseSound"]
+symbol = "?MainReleaseSound@@YAHPAE@Z"
+target_address = 0x0043D120
+size = 301
+linkages = [
+  { offset = 0x13, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x6D, type = "REL32", symbol = "_free", target = 0x00452422 },
+  { offset = 0x94, type = "DIR32", symbol = "__imp__KillTimer@8", target = 0x00466214 },
+  { offset = 0x99, type = "REL32", symbol = "?StopBgm@SoundPlayerView@@QAEXXZ", target = 0x0043DAB0 },
+  { offset = 0xF1, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x118, type = "REL32", symbol = "_free", target = 0x00452422 },
+]

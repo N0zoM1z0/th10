@@ -12,6 +12,15 @@ class CSoundManager
 public:
     LPDIRECTSOUND directSound;
 
+    ~CSoundManager()
+    {
+        if (directSound != NULL)
+        {
+            directSound->Release();
+            directSound = NULL;
+        }
+    }
+
     HRESULT CreateStreamingFromMemory(
         CSound **sound, BYTE *data, ULONG dataSize, ThBgmFormat *format,
         DWORD creationFlags, GUID algorithm, DWORD bufferCount,
