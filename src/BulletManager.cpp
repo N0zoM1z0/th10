@@ -168,15 +168,15 @@ void BulletRuntimeView::UpdateVectorAcceleration()
 void BulletRuntimeView::UpdatePolarAcceleration()
 {
     BulletExStateView &state = exStates[2];
-    if (state.timer.current < state.int0) {
+    if (state.timer.current >= state.int0) {
+        activeTransformFlags &= ~BULLET_TRANSFORM_ACCELERATE_POLAR;
+    }
+    else {
         angle = AddNormalizeAngle(
             angle, g_AnmGameSpeed * state.value1);
         speed += g_AnmGameSpeed * state.value0;
         reinterpret_cast<AnmOpcodeVectorView *>(&velocity)->
             FromAngleMagnitude(angle, speed);
-    }
-    else {
-        activeTransformFlags &= ~BULLET_TRANSFORM_ACCELERATE_POLAR;
     }
     state.timer.previous = state.timer.current;
     if (*state.timer.scale > 0.99f && *state.timer.scale < 1.01f) {
@@ -184,7 +184,11 @@ void BulletRuntimeView::UpdatePolarAcceleration()
         state.timer.subframe += 1.0f;
     }
     else {
-        state.timer.subframe += *state.timer.scale;
+        // The target reads scale before adding the stored subframe.
+        float nextSubframe =
+            *reinterpret_cast<volatile float *>(state.timer.scale);
+        nextSubframe += state.timer.subframe;
+        state.timer.subframe = nextSubframe;
         state.timer.current = static_cast<int>(state.timer.subframe);
     }
 }

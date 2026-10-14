@@ -62,6 +62,29 @@ matching target side effects and recovering both private-register allocations.
 The local ledger gains 377 authored bytes; these local passes are not Factory
 receipt acceptance. The broader historical ANM regression was not run.
 
+## Bounded Bullet closure (2026-10-14)
+
+`UpdatePolarAcceleration` at `0x004076A0` passes two focused canonical
+cold /GL /GS replays: 209 bytes and all eight linkage fields, complete
+normalization. The retained changes restore the expired-duration-first branch
+and scale-before-subframe x87 load order, including FST before conversion.
+Only this owner was modified and replayed. `UpdateVerticalWrap` remains
+non-exact; the duplicated-branch control was reverted. Factory acceptance
+for this new unit is a separate next step.
+
+### Prior ANM receipt bindings
+
+Both prior ANM units received pass/accepted Factory receipts at clean commit
+`11a9ab346a81341ce37ca7d823630e1f467a461d`, source snapshot
+`850fff77f0604b27e516465989888b857232331f3aa18baa079a8bf8ba7e5f28`:
+
+- Service: `receipt:5caf3240ab78421312f231b5fc2101b80520b8dd0108eff9cc3fde582e5bd30c`.
+- Release: `receipt:134b6af1da960c7d23a71b3f14e6333609b57a1b2a7f328a693536368a0447e3`.
+
+These attest that source snapshot only; imported ledger totals are not a
+fresh replay of every historical function. No unchanged historical unit was
+replayed in the Bullet batch.
+
 ## Active reconstruction order
 
 1. **ECL Run — `EclVmContext::Run @ 0x0044E1A0`**
