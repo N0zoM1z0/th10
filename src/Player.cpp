@@ -67,6 +67,14 @@ typedef char PlayerVmFlagsAt35C[
 typedef char PlayerVmSpriteAt394[
     (offsetof(PlayerVm, sprite) == 0x394) ? 1 : -1];
 
+// Bounded shot-hit seam into the maintained full ANM VM and four-byte ID.
+// Reinterpreting the legacy ID storage remains an explicit partial lifetime view.
+typedef char PlayerShotHitVmLayoutMatchesAnm[
+    (sizeof(AnmVmView) == 0x3ac && sizeof(AnmVmIdView) == sizeof(unsigned int) &&
+     offsetof(PlayerVm, angle2C) == offsetof(AnmVmView, rotation) +
+         offsetof(AnmFloat3View, z) &&
+     offsetof(PlayerVm, flags) == offsetof(AnmVmView, flags35C)) ? 1 : -1];
+
 struct PlayerVmManager
 {
     unsigned char unknown000[0x3ad08c];
@@ -242,8 +250,6 @@ void PlayerAdvanceShotMotion(PlayerShotMotionView *motion);
 void PlayerSetShotVmDeleteState1(unsigned int *vmId);
 void PlayerSetShotVmDeleteState2(unsigned int *vmId);
 void PlayerSetShotVmDeleteState3(unsigned int *vmId);
-PlayerVm *PlayerResolveShotVmAndClearMissing(unsigned int *vmId);
-void PlayerMarkShotVmPendingAndClear(unsigned int *vmId);
 void PlayerMarkShotVmPending(unsigned int vmId);
 int PlayerGetAuxiliaryDamageAtPosition(const PlayerFloat3 *position);
 
@@ -284,7 +290,6 @@ extern float g_PlayerExtent2ByCharacter[2];
 // Descriptive interfaces for independently observed VM-manager callees. Their
 // own original identifiers, source conventions, and physical owners remain
 // unproven by this packet.
-PlayerVm *PlayerCreateManagedVm(void *resource, int scriptIndex, int layer);
 struct EnemyPrimaryResourceOwnerView;
 extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 void PlayerSetManagedVmDeleteState(unsigned int *vmId, unsigned short state);
@@ -1295,19 +1300,20 @@ int Player::CalculateDamageToTarget(
 
         if (collisionType != PLAYER_SHOT_TYPE_3)
         {
-            PlayerVm *vm =
-                PlayerResolveShotVmAndClearMissing(&shot->primaryVmId);
-            const float savedAngle = vm->angle2C;
+            AnmVmIdView *const vmId =
+                reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId);
+            AnmVmView *vm = vmId->GetVm();
+            const float savedAngle = vm->rotation.z;
 
-            PlayerMarkShotVmPendingAndClear(&shot->primaryVmId);
+            vmId->Release();
 
-            PlayerVm *createdVm = PlayerCreateManagedVm(
-                resource, shot->descriptor->hitAnimationScript + 5, PLAYER_VM_LAYER);
-            shot->primaryVmId = createdVm->id;
-            PlayerVm *hitVm =
-                PlayerResolveShotVmAndClearMissing(&shot->primaryVmId);
-            hitVm->angle2C = savedAngle;
-            hitVm->flags |= PLAYER_VM_SHOT_ANGLE_DIRTY;
+            const AnmVmIdView createdId =
+                static_cast<AnmLoadedView *>(resource)->CreateVmVariant0(
+                    shot->descriptor->hitAnimationScript + 5, PLAYER_VM_LAYER);
+            shot->primaryVmId = createdId.value;
+            AnmVmView *hitVm = vmId->GetVm();
+            hitVm->rotation.z = savedAngle;
+            hitVm->flags35C |= PLAYER_VM_SHOT_ANGLE_DIRTY;
 
             shot->motion.position.z = 0.1f;
             shot->state = PLAYER_SHOT_HIT_TRANSITION;

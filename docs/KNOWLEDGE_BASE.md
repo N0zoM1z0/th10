@@ -1168,3 +1168,7 @@ ItemManagerUpdateBody's three QueueSoundCue calls target immediate owner0x492590
 ### Player damage callback descriptor lifetimes (2026-10-15)
 
 CalculateDamageToTarget0x428630 reloads shot->descriptor after collision/delete-state callbacks, caches its type across HasIntervalTick, reloads the hit-animation script after VM removal, then reloads type/damage after VM creation/resolution. A single descriptor captured before the mutable collision callback loses observable state changes. The maintained correction is native-verified at these boundaries and source-extracted regression distinguishes it from the saved old source (old compiles, then assertion fails). The interval mutation fixture is adversarial only; real HasIntervalTick is read-only. Fullowner1148/1170 remains nonexact, with unresolved helper ABI/storage and no new credit.
+
+### Player damage ANM returned identity (2026-10-15)
+
+Target448D00 returns AnmVmIdView through hidden aggregate storage. The damage caller publishes that ID and resolves it through449450; it does not receive a VM pointer from the factory. The maintained damage path now uses existing CreateVmVariant0/GetVm/Release definitions with native EDI-return/ESI-ID evidence and preserved descriptor lifetimes. The full1170-byte damage owner remains1148/nonexact; unsigned-ID reinterpretation and unresolved damage prerequisites prevent lifetime/runtime closure. No helper credit is added.
