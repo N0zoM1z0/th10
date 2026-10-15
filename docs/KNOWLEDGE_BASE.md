@@ -1160,3 +1160,7 @@ owns a real object behind a synthetic byte pointer; it does not prove production
 array storage/alias lifetimes. Player selection and dangerous null-gated paths
 are not fully covered, and host tests do not establish x87 equivalence.
 No exact numerator/denominator changes.
+
+### Item collection sound receiver identity (2026-10-15)
+
+ItemManagerUpdateBody's three QueueSoundCue calls target immediate owner0x492590 (0x41B446/0x41B68C/0x41B72D, cues29/29/20). Declaring g_MainSoundOwner as a pointer incorrectly dereferences its first word; the existing0x52D0 array declaration restores target addressing. Focused real-registration/queue-source diagnostic confirms all three immediate ESI loads. Full owner remains2272/2320 nonexact; global diagnostic anchor is only four bytes, not owned production storage. Source-extracted tests validate the collection arms/common sound and reject the old declaration through an array-definition type conflict. No new authored exact credit or broad ODR/storage closure.

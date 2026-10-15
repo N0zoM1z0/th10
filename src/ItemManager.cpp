@@ -229,7 +229,7 @@ typedef char ItemPowerNoticeVmAt9E18[
 extern ItemAutoCollectGateView *g_ItemAutoCollectGate;
 extern ItemPopupOwnerView *g_ItemPopupOwner;
 extern ItemPowerDisplayOwnerView *g_ItemPowerDisplayOwner; // 0x47770C
-extern unsigned char *g_MainSoundOwner;
+extern unsigned char g_MainSoundOwner[0x52d0];
 extern unsigned int g_PlayerInputBits;
 extern short g_PlayerPower;
 extern int g_EnemyDifficulty;
