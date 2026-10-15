@@ -1164,3 +1164,7 @@ No exact numerator/denominator changes.
 ### Item collection sound receiver identity (2026-10-15)
 
 ItemManagerUpdateBody's three QueueSoundCue calls target immediate owner0x492590 (0x41B446/0x41B68C/0x41B72D, cues29/29/20). Declaring g_MainSoundOwner as a pointer incorrectly dereferences its first word; the existing0x52D0 array declaration restores target addressing. Focused real-registration/queue-source diagnostic confirms all three immediate ESI loads. Full owner remains2272/2320 nonexact; global diagnostic anchor is only four bytes, not owned production storage. Source-extracted tests validate the collection arms/common sound and reject the old declaration through an array-definition type conflict. No new authored exact credit or broad ODR/storage closure.
+
+### Player damage callback descriptor lifetimes (2026-10-15)
+
+CalculateDamageToTarget0x428630 reloads shot->descriptor after collision/delete-state callbacks, caches its type across HasIntervalTick, reloads the hit-animation script after VM removal, then reloads type/damage after VM creation/resolution. A single descriptor captured before the mutable collision callback loses observable state changes. The maintained correction is native-verified at these boundaries and source-extracted regression distinguishes it from the saved old source (old compiles, then assertion fails). The interval mutation fixture is adversarial only; real HasIntervalTick is read-only. Fullowner1148/1170 remains nonexact, with unresolved helper ABI/storage and no new credit.

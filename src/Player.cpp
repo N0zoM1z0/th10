@@ -1283,15 +1283,17 @@ int Player::CalculateDamageToTarget(
             PlayerSetShotVmDeleteState2(&shot->primaryVmId);
             shot->collisionVmTransitionPending = 1;
         }
+        descriptor = shot->descriptor;
         shot->collidedThisFrame = 1;
+        const unsigned char collisionType = descriptor->type;
 
-        if (descriptor->type != PLAYER_SHOT_TYPE_3 ||
+        if (collisionType != PLAYER_SHOT_TYPE_3 ||
             shot->timer.HasIntervalTick(4) != 0)
         {
             damage += descriptor->damage;
         }
 
-        if (descriptor->type != PLAYER_SHOT_TYPE_3)
+        if (collisionType != PLAYER_SHOT_TYPE_3)
         {
             PlayerVm *vm =
                 PlayerResolveShotVmAndClearMissing(&shot->primaryVmId);
@@ -1300,7 +1302,7 @@ int Player::CalculateDamageToTarget(
             PlayerMarkShotVmPendingAndClear(&shot->primaryVmId);
 
             PlayerVm *createdVm = PlayerCreateManagedVm(
-                resource, descriptor->hitAnimationScript + 5, PLAYER_VM_LAYER);
+                resource, shot->descriptor->hitAnimationScript + 5, PLAYER_VM_LAYER);
             shot->primaryVmId = createdVm->id;
             PlayerVm *hitVm =
                 PlayerResolveShotVmAndClearMissing(&shot->primaryVmId);
@@ -1312,6 +1314,7 @@ int Player::CalculateDamageToTarget(
             shot->motion.speedOrAngleStep *= 0.125f;
         }
 
+        descriptor = shot->descriptor;
         if (descriptor->type == 2)
         {
             PlayerSpawnEffectRow(
