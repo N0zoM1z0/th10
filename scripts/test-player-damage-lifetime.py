@@ -1,9 +1,22 @@
 #!/usr/bin/env python3
 """Actual damage shot loop with mutable callback and explicit boundary-stub tests."""
 from pathlib import Path
-import shutil,subprocess,tempfile,unittest
+import shutil,struct,subprocess,tempfile,unittest
+from fractions import Fraction
 ROOT=Path(__file__).resolve().parents[1]
 class DamageLifetime(unittest.TestCase):
+ def test_precision_model_witness(self):
+  # Exact dyadic model of the reviewed x87 instructions, not host execution proof.
+  half_extent=Fraction(3,2**26)
+  extended_min=Fraction(1)-half_extent
+  rounded_min=Fraction.from_float(struct.unpack('<f',struct.pack('<f',float(extended_min)))[0])
+  target_y=Fraction(1)-Fraction(1,2**24)
+  self.assertEqual(rounded_min,target_y)
+  self.assertGreater(extended_min,target_y)
+  # Target/repaired spill-reload accepts equality; old retained minY rejects it.
+  self.assertFalse(rounded_min>target_y)
+  self.assertTrue(extended_min>target_y)
+
  @unittest.skipUnless(shutil.which('c++'),'host C++ compiler unavailable')
  def test_actual_descriptor_lifetimes(self):
   text=(ROOT/'src/Player.cpp').read_text();a=text.index('int Player::CalculateDamageToTarget(');b=text.index('    damage += g_PlayerUpdateGate28->GetDamageAtPosition',a)
@@ -12,6 +25,8 @@ class DamageLifetime(unittest.TestCase):
 #include <cassert>
 #include <cstddef>
 #include <vector>
+#include <cmath>
+#include <limits>
 struct PlayerFloat3{float x,y,z;};struct Player;struct PlayerShotRuntimeView;
 struct PlayerShotDescriptorView{float hitboxExtentX,hitboxExtentY;unsigned char type;short damage,hitAnimationScript;int(*collisionCallback)(Player*,PlayerShotRuntimeView*,const PlayerFloat3*);};
 struct PlayerTimerView{int current,previous;int HasIntervalTick(int)const;};
@@ -44,6 +59,19 @@ int main(){int hit=99;
  setup(1);player.shots[0].timer.current=5;assert(player.CalculateDamageToTarget(&position,&size,NULL)==0);assert(events==std::vector<int>({1,2,3}));
  setup(1);player.shots[0].collisionVmTransitionPending=1;assert(player.CalculateDamageToTarget(&position,&size,NULL)==21);assert(events==std::vector<int>({1,3}));
  setup(1);player.updateTimer1.previous=1;hit=99;assert(player.CalculateDamageToTarget(&position,&size,&hit)==0&&hit==99&&events.empty());
+ // Actual maintained source under the host compiler: validates the finite fixture,
+ // not pinned x87 equivalence (the old scalar source can also pass on SSE hosts).
+ setup(1);a.type=3;a.collisionCallback=NULL;a.damage=21;a.hitboxExtentX=10;
+ a.hitboxExtentY=std::ldexp(3.0f,-25);player.shots[0].motion.position={0,1,0};
+ position={0,1.0f-std::ldexp(1.0f,-24),0};size={0,0,0};
+ assert(player.CalculateDamageToTarget(&position,&size,NULL)==21);assert(events==std::vector<int>({2,3}));
+ events.clear();player.shots[0].collisionVmTransitionPending=0;
+ position.y=std::nextafter(position.y,0.0f);
+ assert(player.CalculateDamageToTarget(&position,&size,NULL)==0&&events.empty());
+ // Unordered comparisons do not reject a type-3 shot in these four bound tests.
+ position.y=std::numeric_limits<float>::quiet_NaN();
+ assert(player.CalculateDamageToTarget(&position,&size,NULL)==21);assert(events==std::vector<int>({2,3}));
+
 }
 '''
   (ROOT/'build').mkdir(exist_ok=True)

@@ -1180,3 +1180,24 @@ Target448D00 returns AnmVmIdView through hidden aggregate storage. The damage ca
 ### Auxiliary Player damage owner (2026-10-15)
 
 0x4059F0 reads owner4776EC active28/position30/radius3C/mode44, game flag4776F4+378C bit0,477704+10 and474C68. Strict XY circle inside/outside selects the recovered damage return table; equality/NaNs are outside. The maintained helper naturally receives ECX/EAX in its real damage caller and reproduces the target retained-x87 numeric sequence. Helper189/202 and full damage1145/1170 remain nonexact. Shared EnemyGameState.hpp is a narrow Enemy/Player view only, with broader ODR/global storage still open; no new exact credit.
+
+### Player shot bounds storage precision (2026-10-15)
+
+The target damage loop rounds shot minX/minY/maxX through float32 storage,
+retains maxY on x87 until its comparison, and retains both half extents. Scalar
+locals lost the first three boundaries in the pinned candidate. One ordinary
+paired min/max aggregate restores all three spill/reloads without rounding
+maxY or changing comparison order/NaN masks. Target 0x4286D7/0x4286E9/0x4286F2
+correspond to candidate 0x40297E/0x402987/0x402990; candidate maxY remains on
+x87 from 0x402994 to 0x4029BD. This is a native precision correction, not an
+exact owner claim: 1151/1170 bytes, 53 raw and 48/1074 comparable, normalization
+and full instruction decode complete; RET8 versus target RET12 remains open.
+
+A dyadic precision model distinguishes shotY=1, extentY=3*2^-25, pointY=1-2^-24,
+pointSizeY=0: rounded minY equals the point and accepts overlap; the old retained
+minimum is greater and rejects it. The actual-source host fixture checks that
+finite case, the next lower point and an unordered type-3 case; it does not
+prove pinned x87 execution, nor claim the old source fails on SSE hosts.
+Target outer-bound half extents still have different spill placement, and the
+remaining effect geometry/full owner have not gained numeric or ABI closure.
+No authored exact credit is added.

@@ -1328,6 +1328,10 @@ int Player::CalculateDamageToTarget(
     if (optionalHitFlag != NULL)
         *optionalHitFlag = 0;
 
+    // The shot bounds are paired aggregates: the pinned target rounds min X/Y
+    // and max X to float storage, while retaining max Y until its comparison.
+    struct DamageBounds2 { float x; float y; };
+
     for (i = 0; i < 128; ++i)
     {
         PlayerShotRuntimeView *shot = &shots[i];
@@ -1340,18 +1344,20 @@ int Player::CalculateDamageToTarget(
         const PlayerShotDescriptorView *descriptor = shot->descriptor;
         const float shotHalfX = descriptor->hitboxExtentX * 0.5f;
         const float shotHalfY = descriptor->hitboxExtentY * 0.5f;
-        const float shotMinX = shot->motion.position.x - shotHalfX;
-        const float shotMinY = shot->motion.position.y - shotHalfY;
-        const float shotMaxX = shot->motion.position.x + shotHalfX;
-        const float shotMaxY = shot->motion.position.y + shotHalfY;
+        DamageBounds2 shotMin;
+        DamageBounds2 shotMax;
+        shotMin.x = shot->motion.position.x - shotHalfX;
+        shotMin.y = shot->motion.position.y - shotHalfY;
+        shotMax.x = shot->motion.position.x + shotHalfX;
+        shotMax.y = shot->motion.position.y + shotHalfY;
 
-        if (shotMinY > targetMaxY || shotMinX > targetMaxX ||
-            shotMaxY < targetMinY || shotMaxX < targetMinX)
+        if (shotMin.y > targetMaxY || shotMin.x > targetMaxX ||
+            shotMax.y < targetMinY || shotMax.x < targetMinX)
         {
             continue;
         }
 
-        if (descriptor->type != PLAYER_SHOT_TYPE_3 && shotMinY < 0.0f)
+        if (descriptor->type != PLAYER_SHOT_TYPE_3 && shotMin.y < 0.0f)
             continue;
         if (descriptor->type == PLAYER_SHOT_TYPE_3 && targetMaxY < 0.0f)
             continue;
