@@ -166,4 +166,7 @@ typedef char GuiViewTailAt9E60[
 
 extern GuiView *g_GuiView;
 
+// Complete stage-display reset owner at target 0x00413BC0.
+void GameResetGui(GuiView *gui);
+
 #endif

@@ -42,6 +42,7 @@ def main() -> int:
         run("Compile workflow Python", [sys.executable, "-m", "py_compile", *tracked("scripts/*.py")])
         run("Validate LTCG entry identity guards", [sys.executable, "scripts/test-ltcg-entry.py"])
         run("Validate replay payload order", [sys.executable, "scripts/test-replay-payload-order.py"])
+        run("Validate GUI reset event order", [sys.executable, "scripts/test-gui-reset-order.py"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])
         run(

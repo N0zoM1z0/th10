@@ -865,3 +865,111 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
     gui->frameTimer.Tick();
     return 1;
 }
+
+
+// Stage/session fields read by the complete reset owner. Existing game globals
+// retain their shared names; this partial owner view exposes only target +0x5C.
+struct GuiResetSessionView
+{
+    unsigned char unknown000[0x5c];
+    int value5C;
+};
+extern GuiResetSessionView *g_GuiResetSession; // target 0x00477810
+extern volatile int g_PlayerLivesDisplayCount; // target 0x00474C70
+extern int g_GameTransitionState; // target 0x00491FB8
+extern unsigned int g_GameRuntimeFlags; // target 0x00474CA0
+extern int g_GameNewSession; // target 0x00491FC4
+extern int g_GameStartingStage; // target 0x00474C74
+extern int g_GameStartupMode; // target 0x00474C7C
+extern int g_GameStartupValue474C90;
+
+struct GuiResetCallbackView
+{
+    unsigned int unknown000;
+    unsigned int flags;
+};
+typedef char GuiResetCallbackFlagsAt004[
+    (offsetof(GuiResetCallbackView, flags) == 4) ? 1 : -1];
+typedef char GuiResetSpecialIdsAt9E50[
+    (offsetof(GuiView, specialVmId9E50) == 0x9e50 &&
+     offsetof(GuiView, specialVmId9E54) == 0x9e54 &&
+     offsetof(GuiView, specialVmId9E58) == 0x9e58 &&
+     offsetof(GuiView, specialVmId9E5C) == 0x9e5c &&
+     offsetof(GuiView, bossGaugeSegmentCount) == 0x9e90) ? 1 : -1];
+
+// Target 0x00413BC0-0x0041436C, called by both real stage-reset paths in
+// GameManagerUpdateBody. The target uses EDI for gui and plain RET. No game
+// callbacks, resource loads, or allocation side effects are executed by tests.
+void GameResetGui(GuiView *gui)
+{
+    if (gui->updateCallback != NULL)
+        static_cast<GuiResetCallbackView *>(gui->updateCallback)->flags |= 2;
+    if (gui->drawCallback != NULL)
+        static_cast<GuiResetCallbackView *>(gui->drawCallback)->flags |= 2;
+
+    if (gui->specialVmId9E58.value == 0)
+        gui->specialVmId9E58 = gui->frontAnm->CreateVmVariant0(0, 15);
+    if (gui->specialVmId9E5C.value == 0)
+    {
+        // The target discards this returned ID. Do not silently repair the
+        // missing +0x9E5C publication or suppress repeated future allocation.
+        gui->frontAnm->CreateVmVariant0(1, 15);
+    }
+
+    if ((gui->displayVms0[0].flags35C & 1) == 0)
+    {
+        for (int i = 0; i < 10; ++i)
+        {
+            gui->frontAnm->InitializeAndExecuteScriptIndex(
+                &gui->displayVms0[i], i + 10);
+            gui->frontAnm->InitializeAndExecuteScriptIndex(
+                &gui->displayVms1[i], i + 20);
+        }
+        for (int i = 0; i < 9; ++i)
+            gui->frontAnm->InitializeAndExecuteScriptIndex(
+                &gui->displayVms2[i], i + 30);
+        for (int i = 0; i < 4; ++i)
+            gui->frontAnm->InitializeAndExecuteScriptIndex(
+                &gui->displayVms3[i], i + 47);
+        for (int i = 0; i < 2; ++i)
+            gui->frontAnm->InitializeAndExecuteScriptIndex(
+                &gui->displayVms4[i], i + 80);
+        for (int i = 0; i < 7; ++i)
+            gui->frontAnm->InitializeAndExecuteScriptIndex(
+                &gui->displayVms5[i], i + 51);
+    }
+
+    // The target does not clamp the life count to the nine-element array.
+    gui->SetLivesDisplayCount(g_PlayerLivesDisplayCount);
+    int power = g_GuiPower;
+    int fraction = (power % 20) * 100 / 20;
+    gui->frontAnm->SetSprite(&gui->displayVms3[0], power / 20 + 8);
+    gui->frontAnm->SetSprite(&gui->displayVms3[2], fraction / 10 + 8);
+    gui->frontAnm->SetSprite(&gui->displayVms3[3], fraction % 10 + 8);
+
+    if (g_GameTransitionState != 8 && (g_GameRuntimeFlags & 0x20) == 0)
+    {
+        gui->stageUiAnm->CreateVmVariant0(0, 15);
+        gui->stageUiAnm->CreateVmVariant0(1, 15);
+    }
+    if ((g_GameRuntimeFlags & 0x20) != 0)
+        gui->frontAnm->CreateVmVariant0(0x71, 15);
+
+    g_AsciiManagerView->asciiAnm->InitializeAndExecuteScriptIndex(
+        &gui->bossPositionVm, 0);
+    if (g_GameStartupMode == 1 && g_GuiResetSession->value5C == 0 &&
+        g_GameStartupValue474C90 == 0)
+        gui->frontAnm->CreateVmVariant0(0x4f, 15);
+
+    if (g_GameNewSession != 0)
+    {
+        gui->specialVmId9E50 = gui->frontAnm->CreateVmVariant0(
+            g_GameStartingStage + 0x66, 15);
+        gui->specialVmId9E50.SetInterrupt(3);
+    }
+    gui->specialVmId9E54 = gui->frontAnm->CreateVmVariant0(
+        g_GameStartingStage + 0x6b, 15);
+    // Both target interrupt walks select +0x9E50, including this final walk.
+    gui->specialVmId9E50.SetInterrupt(3);
+    gui->bossGaugeSegmentCount = 0;
+}

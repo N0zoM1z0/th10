@@ -330,3 +330,38 @@ Focused existing EnemyLaser canonical units (polar/bounds) still replay exact,
 121/121 bytes across two artifacts. Tracking, pinned toolchain declarations,
 progress, CI (including entry and replay-payload regressions), and whitespace
 checks passed. This is regression evidence only, with no new Factory claim.
+
+## Large missing-owner checkpoint: GameResetGui (2026-10-15)
+
+Complete1965-byte reset owner413BC0-41436C is now maintained in Gui.cpp and
+connected to both existing GameManager reset paths. Independent source/ABI
+review passed. Existing GuiView supplies all six VM arrays and ID/resource
+fields; creation/ID/interrupt dependencies use maintained ANM source.
+The target discards the second front-VM ID (no9E5C write) and interrupts9E50
+again after creating9E54. Both quirks are preserved explicitly. Lives are not
+clamped and signed power division remains target-faithful.
+
+Cold graph Gui+GameManager+AnmManager+AnmVmCreate+AnmVmId, pinned /GL /GS,
+guarded GameManagerUpdateBody entry402EA0: new owner402540 is1786/1965,
+421 raw and399/1745 comparable, normalization_complete=true, EDI/plain RET.
+No exact bytes or Factory claim added. External data storage/runtime and
+full dependency codegen remain open. Initial signed-return entry misspelling
+was rejected before anchoring; the corrected unsigned symbol is verified.
+Evidence: .analysis/gpt-dots-gui-reset/recovered-entry-fixed.json, target.txt,
+synthetic-test.log; distinct build/probe-ltcg/GuiReset-recovered-entry-fixed.
+The full-body synthetic test runs with actual source and stub dependency
+sinks, covering event order, resource/array/sprite destination identity, ID
+quirks, signed digits, and independent startup/global short-circuit gates.
+It is wired into CI; no game code/resource IO is run.
+
+Parked core audits: Enemy laser natural-lifetime closure still lacks full
+contracts for slots0/8/9-18. Target manager calls slot4, unlinks and directly
+deletes; derived slot4 is only xor eax,eax/ret, with no AnmVm destruction.
+Do not introduce a virtual destructor or fabricate19 method signatures.
+Read-only inventory lives under .analysis/gpt-dots-enemy-laser/.
+Fresh ECL source/target audit found no new semantic gap in return/thread,
+argument/control or dispatch paths. Current source equals retained store
+snapshot. Generic binary was overwritten: old report401CD0 is stale; actual
+map401CC0 matches all60 relative destinations and88 literal selector bytes.
+This historical readdressing is not fresh codegen authority. Do not repeat
+rejected FORMAT/volatile/switch spelling controls.

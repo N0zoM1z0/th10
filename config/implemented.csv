@@ -893,3 +893,4 @@ FileSystem::OpenWriteFile
 EnemyFireLaser
 EnemyInitializeLaserType0
 EnemyInitializeLaserType1
+GameResetGui

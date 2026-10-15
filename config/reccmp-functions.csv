@@ -894,3 +894,4 @@ FileSystem::OpenWriteFile,0x0044B620,function
 EnemyFireLaser,0x0041C510,function
 EnemyInitializeLaserType0,0x0041C5B0,function
 EnemyInitializeLaserType1,0x0041C680,function
+GameResetGui,0x00413BC0,function

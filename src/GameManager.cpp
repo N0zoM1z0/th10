@@ -5,6 +5,7 @@
 #include "ReplayManager.hpp"
 #include "Enemy.hpp"
 #include "GameScoreState.hpp"
+#include "Gui.hpp"
 
 // Natural source candidate adapted from th10-decomphelp-forN0.  The bounded
 // OnDraw body is retained here only after direct TH10 IDA boundary review;
@@ -150,7 +151,6 @@ extern void GameResetAnimationSlots(GameChainOwnerView *owner);
 extern void GameResetAnimationOwner(GameChainOwnerView *owner);
 extern void __stdcall GameClearEnemyVms(EnemyManagerView *manager);
 extern void GameClearLinkedObjects(GameChainOwnerView *owner);
-extern void GameResetGui(GameGuiUpdateView *gui);
 extern void __stdcall GamePlayStageMusic(int channel, int musicIndex);
 extern void GameAssignMusic(unsigned char *music, const char *name, int mode, int value);
 extern void __stdcall GameDestroyMenu(GameMenuView *menu);
@@ -182,7 +182,7 @@ static __forceinline void ResetGameStage()
     EnemySpawnRequestView request;
     memset(&request, 0, sizeof(request));
     EnemySpawn(g_EnemyManager, g_GameInitialEclName, &request);
-    GameResetGui(g_GameGuiUpdate);
+    GameResetGui(reinterpret_cast<GuiView *>(g_GameGuiUpdate));
     MarkGameChains(g_GameOwner477830);
     GameChainOwnerView *playerChains = reinterpret_cast<GameChainOwnerView *>(g_Player);
     playerChains->updateChain->flags |= 2;
