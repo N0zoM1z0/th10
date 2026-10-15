@@ -12,9 +12,9 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def reset_source():
-    source = (ROOT / 'src/Gui.cpp').read_text()
-    start = source.index('void GameResetGui(GuiView *gui)\n')
+def function_source(path, signature):
+    source = (ROOT / path).read_text()
+    start = source.index(signature)
     brace = source.index('{', start)
     depth, end = 1, brace + 1
     while depth:
@@ -23,7 +23,28 @@ def reset_source():
     return source[start:end]
 
 
+def interrupt_blocks():
+    source = (ROOT / 'src/Gui.cpp').read_text()
+    blocks = []
+    for region in (1, 2):
+        start = source.index('// Reset interrupt region ' + str(region))
+        brace = source.index('{', start)
+        depth, end = 1, brace + 1
+        while depth:
+            depth += (source[end] == '{') - (source[end] == '}')
+            end += 1
+        blocks.append(source[brace:end])
+    return blocks
+
+
+def reset_source():
+    return function_source('src/AnmManager.cpp', 'AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)') + "\n" + function_source('src/Gui.cpp', 'void GameResetGui(GuiView *gui)') + "\nstatic void ExerciseResetInterrupt(AnmVmIdView id) { GuiView storage{}; GuiView *gui=&storage; gui->specialVmId9E50=id;\n" + interrupt_blocks()[0] + "\n}\n"
+
+
 class GuiResetOrder(unittest.TestCase):
+    def test_both_target_local_walks_agree(self):
+        self.assertEqual(*interrupt_blocks())
+
     @unittest.skipUnless(shutil.which('c++'), 'host C++ compiler unavailable')
     def test_actual_owner_with_synthetic_dependencies(self):
         program = r'''
@@ -31,20 +52,45 @@ class GuiResetOrder(unittest.TestCase):
 #include <cstddef>
 #include <vector>
 #include <utility>
-struct Id {
-    unsigned value;
-    void SetInterrupt(short value);
-};
-struct Vm { unsigned flags35C; };
+struct Id { unsigned value; };
+typedef Id AnmVmIdView;
 static std::vector<std::pair<int,int> > events;
 static std::vector<unsigned> interrupted;
 static unsigned nextId;
 static std::vector<std::pair<const void *, const void *> > initializationTargets, spriteTargets;
-void Id::SetInterrupt(short n) { assert(n == 3); interrupted.push_back(value); events.push_back({4, int(value)}); }
+struct PendingInterrupt {
+    unsigned owner; short value;
+    PendingInterrupt &operator=(short n) { assert(n==3); value=n; interrupted.push_back(owner); events.push_back({4,int(owner)}); return *this; }
+};
+struct AnmVmLayerNodeView { void *owner; AnmVmLayerNodeView *next, *previous; };
+struct Vm {
+    unsigned flags35C, id;
+    PendingInterrupt pendingInterrupt;
+    AnmVmLayerNodeView layerNode, managerNode;
+};
+typedef Vm AnmVmView;
+struct AnmRenderManagerView {
+    AnmVmLayerNodeView *primaryVmListHead, *secondaryVmListHead;
+    AnmVmView *FindVm(AnmVmIdView id);
+};
+static AnmRenderManagerView manager{};
+static AnmRenderManagerView *g_AnmRenderManagerView=&manager;
+static Vm allocated[2048];
+static void RegisterVm(unsigned id) {
+    assert(id<2048); Vm &vm=allocated[id]; vm.id=id; vm.flags35C=0x55;
+    vm.pendingInterrupt.owner=id; vm.pendingInterrupt.value=0;
+    vm.layerNode={&vm,NULL,NULL};
+    vm.managerNode={&vm,manager.primaryVmListHead,NULL};
+    manager.primaryVmListHead=&vm.managerNode;
+}
+static void ResetLists(unsigned existing=0) {
+    manager.primaryVmListHead=manager.secondaryVmListHead=NULL;
+    if(existing) RegisterVm(existing);
+}
 struct Loaded {
     int tag;
     Id CreateVmVariant0(int script, unsigned layer) {
-        assert(layer == 15); events.push_back({tag, script}); return Id{++nextId};
+        assert(layer == 15); events.push_back({tag, script}); RegisterVm(++nextId); return Id{nextId};
     }
     void InitializeAndExecuteScriptIndex(Vm *vm, int script) { initializationTargets.push_back({this,vm}); events.push_back({2, script}); }
     void SetSprite(Vm *vm, int sprite) { spriteTargets.push_back({this,vm}); events.push_back({3, sprite}); }
@@ -131,7 +177,7 @@ int main() {
     assert(gui.bossGaugeSegmentCount==0);
     for(int i=0;i<9;++i) assert((gui.displayVms2[i].flags35C&2)==(i<2?2u:0u));
     // Distinguish the final old-ID interrupt from publication of the new ID.
-    events.clear(); interrupted.clear(); initializationTargets.clear(); spriteTargets.clear(); nextId=100;
+    events.clear(); interrupted.clear(); initializationTargets.clear(); spriteTargets.clear(); nextId=100; ResetLists(900);
     gui.specialVmId9E58.value=700; gui.specialVmId9E5C.value=800;
     gui.specialVmId9E50.value=900; gui.displayVms0[0].flags35C=1;
     gui.updateCallback=gui.drawCallback=NULL;
@@ -149,6 +195,56 @@ int main() {
     assert(initializationTargets==expectedTargets);
     assert(spriteTargets==expectedSpriteTargets);
 
+    // Independent startup suppressors. A null session pointer in mode 0 makes
+    // an accidental loss of short-circuit evaluation fail observably.
+    g_GameTransitionState=8; g_GameRuntimeFlags=0; g_GameNewSession=0;
+    for (int gate=0;gate<4;++gate) {
+        events.clear(); interrupted.clear(); initializationTargets.clear(); spriteTargets.clear();
+        ResetLists(900);
+        g_GameStartupMode = gate==0 ? 0 : 1;
+        g_GuiResetSession = gate==0 ? NULL : &session;
+        session.value5C = gate==1 ? 1 : 0;
+        g_GameStartupValue474C90 = gate==2 ? 1 : 0;
+        GameResetGui(&gui);
+        const std::vector<int> expectedFront = gate==3 ? std::vector<int>({0x4f,0x6d}) : std::vector<int>({0x6d});
+        assert(values(10)==expectedFront); assert(values(11).empty());
+        assert(interrupted==std::vector<unsigned>({900}));
+        assert(initializationTargets==expectedTargets); assert(spriteTargets==expectedSpriteTargets);
+    }
+    // All four independent transition-state/runtime-flag combinations.
+    g_GameStartupMode=0; g_GuiResetSession=NULL;
+    for (int mode=0;mode<2;++mode) for(int flagged=0;flagged<2;++flagged) {
+        events.clear(); interrupted.clear(); initializationTargets.clear(); spriteTargets.clear();
+        ResetLists(900);
+        g_GameTransitionState=mode ? 8 : 0;
+        g_GameRuntimeFlags=flagged ? 0x20 : 0;
+        GameResetGui(&gui);
+        const std::vector<int> expectedStage = !mode && !flagged ? std::vector<int>({0,1}) : std::vector<int>();
+        const std::vector<int> expectedFront = flagged ? std::vector<int>({0x71,0x6d}) : std::vector<int>({0x6d});
+        assert(values(11)==expectedStage); assert(values(10)==expectedFront);
+        assert(interrupted==std::vector<unsigned>({900}));
+        assert(initializationTargets==expectedTargets); assert(spriteTargets==expectedSpriteTargets);
+    }
+
+    // Execute the actual local walk and actual maintained two-list FindVm.
+    events.clear(); interrupted.clear(); ResetLists();
+    Vm primary{}, secondary{}, childA{}, childB{};
+    primary.id=501; primary.pendingInterrupt.owner=501; primary.flags35C=0x12;
+    secondary.id=502; secondary.pendingInterrupt.owner=502; secondary.flags35C=0x34;
+    childA.id=503; childA.pendingInterrupt.owner=503; childA.flags35C=0x56;
+    childB.id=504; childB.pendingInterrupt.owner=504; childB.flags35C=0x78;
+    primary.managerNode={&primary,NULL,NULL}; secondary.managerNode={&secondary,NULL,NULL};
+    manager.primaryVmListHead=&primary.managerNode; manager.secondaryVmListHead=&secondary.managerNode;
+    childA.layerNode={&childA,&childB.layerNode,&secondary.layerNode};
+    childB.layerNode={&childB,NULL,&childA.layerNode};
+    secondary.layerNode={&secondary,&childA.layerNode,NULL};
+    ExerciseResetInterrupt(Id{0}); ExerciseResetInterrupt(Id{999}); assert(interrupted.empty());
+    ExerciseResetInterrupt(Id{502}); assert(interrupted==std::vector<unsigned>({502,503,504}));
+    interrupted.clear(); primary.layerNode={&primary,&childA.layerNode,&secondary.layerNode};
+    ExerciseResetInterrupt(Id{501}); assert(interrupted==std::vector<unsigned>({501}));
+    interrupted.clear(); secondary.id=501; // primary-list lookup wins
+    ExerciseResetInterrupt(Id{501}); assert(interrupted==std::vector<unsigned>({501}));
+    assert(primary.flags35C==0x12 && secondary.flags35C==0x34 && childA.flags35C==0x56 && childB.flags35C==0x78);
     return 0;
 }
 '''

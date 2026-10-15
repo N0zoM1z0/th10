@@ -965,11 +965,43 @@ void GameResetGui(GuiView *gui)
     {
         gui->specialVmId9E50 = gui->frontAnm->CreateVmVariant0(
             g_GameStartingStage + 0x66, 15);
-        gui->specialVmId9E50.SetInterrupt(3);
+        // Reset interrupt region 1: target-local two-list/root-child walk.
+    {
+        AnmVmView *vm = g_AnmRenderManagerView->FindVm(gui->specialVmId9E50);
+        if (vm != NULL)
+        {
+            vm->pendingInterrupt = 3;
+            if (vm->layerNode.previous == NULL)
+            {
+                AnmVmLayerNodeView *node = vm->layerNode.next;
+                while (node != NULL)
+                {
+                    static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 3;
+                    node = node->next;
+                }
+            }
+        }
+    }
     }
     gui->specialVmId9E54 = gui->frontAnm->CreateVmVariant0(
         g_GameStartingStage + 0x6b, 15);
     // Both target interrupt walks select +0x9E50, including this final walk.
-    gui->specialVmId9E50.SetInterrupt(3);
+    // Reset interrupt region 2: target-local two-list/root-child walk.
+    {
+        AnmVmView *vm = g_AnmRenderManagerView->FindVm(gui->specialVmId9E50);
+        if (vm != NULL)
+        {
+            vm->pendingInterrupt = 3;
+            if (vm->layerNode.previous == NULL)
+            {
+                AnmVmLayerNodeView *node = vm->layerNode.next;
+                while (node != NULL)
+                {
+                    static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 3;
+                    node = node->next;
+                }
+            }
+        }
+    }
     gui->bossGaugeSegmentCount = 0;
 }

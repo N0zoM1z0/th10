@@ -365,3 +365,25 @@ snapshot. Generic binary was overwritten: old report401CD0 is stale; actual
 map401CC0 matches all60 relative destinations and88 literal selector bytes.
 This historical readdressing is not fresh codegen authority. Do not repeat
 rejected FORMAT/volatile/switch spelling controls.
+
+GameResetGui interrupt structure refinement: target contains two expanded
+lookup/root-child walks rather than calls to the general ID helper. A local
+helper control stayed out-of-line (1761bytes), so it was rejected. Direct
+lexical blocks restore28 direct calls and both in-owner walks. Latest full
+owner1981/1965,217 raw,198/1753 comparable, normalization complete; no exact
+credit. Prefix1560/1541 and first-region120/123 are LENGTHS; final140-byte
+raw-equal tail is only a diagnostic subregion, not an independent owner.
+Independent semantic/test review passed. Tests execute actual reset blocks
+and actual FindVm on synthetic primary/secondary/root/child cases.
+
+Test audit correction: independent startup/transition combination fixtures
+claimed at26fceebb were absent because a text-insertion assertion failed and
+the shell still ran the old test. Do not rely on that historical coverage
+claim. Current fail-fast source verification, focused test, full CI and
+independent read confirmation establish all four startup gates and all four
+transition/runtime-flag combinations, with resource/destination assertions.
+No historical commit was rewritten. Source/tests now use fail-fast commands
+and inspect exit/stderr before reporting success.
+Evidence: .analysis/gpt-dots-gui-reset/lexical-interrupt.json, lexical-regions.json,
+lexical-interrupt-test.log, lexical-ci.log; distinct GuiReset-lexical-interrupt
+build image SHA b015b9de780232313e4b9eac18797fbbb988d81c1ee617f787cc8dc5c899591f.
