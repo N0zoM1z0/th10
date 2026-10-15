@@ -6,6 +6,7 @@
 #include "Enemy.hpp"
 #include "GameScoreState.hpp"
 #include "Gui.hpp"
+#include "StageScript.hpp"
 
 // Natural source candidate adapted from th10-decomphelp-forN0.  The bounded
 // OnDraw body is retained here only after direct TH10 IDA boundary review;
@@ -347,7 +348,6 @@ extern int g_GameWorkerReady;                            // 0x492260
 extern int g_GameWorkerCancelled;                        // 0x492264
 extern int g_GameStartupCounter;                         // 0x4918A4
 extern "C" __declspec(dllimport) void __stdcall Sleep(unsigned long milliseconds);
-extern void *__stdcall GameCreateMenu(const char *path, int mode);
 extern void *GameCreateGui();
 extern void *GameCreateProjectilePool();
 extern void *GameCreateItemManager();
@@ -439,7 +439,7 @@ int __stdcall GameManagerInitialize(GameManager *manager)
     if ((g_GameRuntimeFlags & 2) == 0)
     {
         if (ReplayManager::Create(manager->initializationMode, g_GameDefaultReplayPath) == NULL ||
-            GameCreateMenu(g_GameStageUpdate->menuPath, 0) == NULL ||
+            StageCreate(g_GameStageUpdate->menuPath, 0) == NULL ||
             GameCreateGui() == NULL || PlayerCreate() == NULL ||
             GameCreateProjectilePool() == NULL || GameCreateItemManager() == NULL ||
             GameCreateOwner41C290() == NULL || GameCreateController() == NULL ||
@@ -450,7 +450,7 @@ int __stdcall GameManagerInitialize(GameManager *manager)
     {
         GameRestoreReplayState(g_ReplayManager);
         GameReloadGui(g_GameGuiUpdate);
-        if (GameCreateMenu(g_GameStageUpdate->menuPath, 0) == NULL)
+        if (StageCreate(g_GameStageUpdate->menuPath, 0) == NULL)
             goto failed;
     }
     if ((g_GameRuntimeFlags & 9) == 0)

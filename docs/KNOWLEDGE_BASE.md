@@ -950,3 +950,31 @@ metadata initially mislabeled the primary source as StageDraw.cpp; it now
 names StageLifecycle.cpp, regenerated against the unchanged PE/map/PDB and
 all ten contributions verified equal. No compiler rerun was needed for that
 metadata-only repair. Required source/storage caveats remain explicit.
+
+
+## 2026-10-15 Genuine GameManager-to-Stage source binding
+
+GameManagerInitialize0x417870/1009 now calls maintained StageCreate through
+its shared header at the two target call sites0x417A9E/0x417B17. Previously
+both called the unresolved GameCreateMenu alias. Path and zero priority,
+short-circuit order, replay branch and failure destinations are unchanged.
+The unrelated zero-argument GameCreateStageOwner (target0x419090) is untouched.
+This is a caller identity/source graph repair, not a new startup logic claim.
+
+Fresh GameManager-entry graph: image
+86160b10e99afdb1326ed8e534a2da4ad23a1270bf85e9635a199cdabe1a3946,
+guarded entry0x4018B0, full initializer1037/1009. The 14 complete contributions
+are saved in .analysis/gpt-dots-stage-draw/game-stage.json with matching
+PE/map/PDB under build/probe-ltcg/StageDraw-game-stage. Stage body sizes remain
+unchanged. StageExecuteScript1972physical compares with provisional1868
+(1806 ledger code plus separately audited padding/table); this does not change
+ledger ownership or denominator. No exact credit is claimed.
+
+Context-qualified ABI finding: actual callback registration now makes both
+draw adapters push ECX, and update adapter convert ECX to EAX before tail jump,
+as in the target. This already held in the lifecycle image3cdb24...b564 and is
+retained here. The earlier EAX late-adapter mismatch belonged to the draw-only
+imagecfbcb2...1c33; it is not a property of this current graph. Other private
+ABIs, constructor/destructor EH, global aliases/storage, external dependencies
+and runtime closure remain unresolved. Independent full caller binding and
+14-contribution/entry review passed. No further Stage spelling controls planned.
