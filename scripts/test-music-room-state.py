@@ -142,6 +142,11 @@ int main() {
     events.clear();g_FrontEndInput.pressed=0x1001;FrontEndUpdateMusicRoom(&c);
     assert(c.musicWarning==1&&c.musicSelectedTrack==1&&c.musicCommentLine==0);
     assert(events==std::vector<std::string>({"command:3"}));
+    // The alternate first-confirm arm queues exactly mode4, with no playback.
+    c.musicWarning=0;c.stateTimer.current=1;g_FrontEndSupervisorFlags=0x10;events.clear();
+    FrontEndUpdateMusicRoom(&c);assert(c.musicWarning==1&&c.musicCommentLine==0&&c.stateTimer.current==0);
+    assert(events==std::vector<std::string>({"command:4"}));
+    g_FrontEndSupervisorFlags=0;
     // Warning rendering uses the selected comment VM and warning color.
     g_FrontEndInput.pressed=0;drawn.clear();colors.clear();drawReceivers.clear();
     c.stateTimer.current=0;FrontEndUpdateMusicRoom(&c);

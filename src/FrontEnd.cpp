@@ -3051,10 +3051,18 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
             if (g_FrontEndProfileData[0x1d892 + controller->musicSelectedTrack] == 0 &&
                 controller->musicWarning == 0)
             {
-                FrontEndQueueSoundCommand("dummy",
-                    (g_FrontEndSupervisorFlags & 0x10) != 0 ? 4 : 3, 0);
-                controller->musicWarning = 1;
-                return 0;
+                if ((g_FrontEndSupervisorFlags & 0x10) != 0)
+                {
+                    FrontEndQueueSoundCommand("dummy", 4, 0);
+                    controller->musicWarning = 1;
+                    return 0;
+                }
+                else
+                {
+                    FrontEndQueueSoundCommand("dummy", 3, 0);
+                    controller->musicWarning = 1;
+                    return 0;
+                }
             }
             FrontEndLoadMusic(0, controller->musicPaths[controller->cursor.current]);
             if ((g_FrontEndSupervisorFlags & 0x10) != 0)

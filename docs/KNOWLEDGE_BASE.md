@@ -709,3 +709,18 @@ Evidence .analysis/gpt-dots-music-room/prerequisites.json,
 prerequisite-table-audit.json, prerequisite-owners.json, prerequisites-tests.log,
 clean-root-test.log. Image SHA
 3bc0a6b50cc32d84b4d8b3180ee6789142bfe27274d63a4cda5e6296516a4835.
+
+MusicRoom final warning structure control: replace arithmetic ternary mode
+selection with target-observed separate mode4 and mode3 queue/publication/return
+arms. This is semantic-neutral structural fidelity, not a bug fix. Independent
+review verifies both call roles and actual-source fixtures (one command, no
+playback, warning/timer publication). Full physical2804/2796, code2787/2778,
+padding1/2 andtable16/16;454raw and412/2384comparable, normalization complete.
+All state call counts now agree; candidate/target region lengths1082/1080,
+213/213,1334/1331,128/124. These lengths are not exact-byte counts. Residual
+state3+4 includes unresolved EnemyMarkPendingInterrupt call ABI; no additional
+graph expansion or register/size spelling control is justified here. Park
+remaining near-match shape; zero exact credit and table ownership unchanged.
+Evidence warning-arms.json, warning-table-audit.json, warning-regions.json,
+warning-arms-tests.log under .analysis/gpt-dots-music-room; image SHA
+7da9a53933bae764948b3ccb1fc30c68b2d731b07661e8d868bd5201646dee6b.
