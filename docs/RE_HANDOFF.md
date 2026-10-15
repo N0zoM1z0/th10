@@ -477,3 +477,45 @@ remaining near-match shape; zero exact credit and table ownership unchanged.
 Evidence warning-arms.json, warning-table-audit.json, warning-regions.json,
 warning-arms-tests.log under .analysis/gpt-dots-music-room; image SHA
 7da9a53933bae764948b3ccb1fc30c68b2d731b07661e8d868bd5201646dee6b.
+
+Stage timed-script recovery (2026-10-15): new StageScript.cpp/.hpp implement
+all15 commands at403C80, real callback402720, active-object updater403990 and
+fog-value constructor405040. Signed opcode/record-size semantics, time-relative
+jump, opcode0 yield without pointer consumption/timer tick, direction-before-
+position-before-fog evaluation and rocking behavior are preserved. Opcode14
+uses actual maintained ANM initialization; negative script index only clears
+flag1. Layout assertions bind two Float3 interpolators,0x8C fog interpolation,
+eight script VMs,three auxiliary VMs and280-byte camera state. Callback gates,
+normalization, object VM update, dispatcher,8 VMs,optional3 at game speed1,
+speed restore, auxiliary clear, camera publication and frame increment follow
+target source order. Object updater reads post-execution instruction state.
+Fog evaluator688 remains a declared unresolved seam; no private ABI validation
+from that declaration. Published camera is an extern-only overlapping aggregate
+view of target491D7C; existing smaller ANM aliases are not closed ownership.
+No source/byte claim for a complete stage registration/rendering subsystem.
+
+Ledger dispatcher1806 ends40438D;2-byte8BFF alignment and15-slot table404390-
+4043CB imply provisional physical1868. Literal table and destinations saved;
+no boundary/origin/denominator edits. Guarded callback entry401AA0 belongs to
+maintained source. Dispatcher2192=2129code+3pad+60table; physical92raw89/1804
+comparable, normalization complete. Callback294/304,175raw170/268comparable.
+Updater154/154150/150comparable and fogctor94/9478/78 are diagnostic only, no
+standalone credit. Native dispatcher is EBX/plainRET versus target stack/RET4;
+native callback is ECX versus target EAX. Native callback copies camera before
+clearing auxiliaryActive and hoists frame read, unlike target machine order.
+Source order is correct but no emitted-order/ABI closure is claimed. Rocking
+x87 sequence independently reviewed; host tests do not prove x87 equivalence.
+
+Independent source and strengthened-test review passed. Test compiles actual
+stage source plus actual shared timer source against synthetic ANM/interpolation
+and normalization sinks. It checks signed backward record size in allocated
+fixtures, jump/yield/time, setup selection and all Float3 components, object
+inactive/zero-count/empty primitives/VM-driven termination, and dependent
+normalize/object/dispatcher/8+3 VM/camera-publication behavior. Fog initial/end/
+all channels are not exhaustively asserted. Publication after VM mutations is
+observed; relative ordering among final clear/copy/frame/speed-restoration is
+not independently established by host sinks. No invalid-index/overflow safety,
+standard object lifetime, x87, target ABI, real game IO or runtime claim.
+Evidence .analysis/gpt-dots-stage-script/attested-decompile.json,
+layout-corrected.json, owner-table-audit.json, strengthened-test.log; image SHA
+aa87fbff37b064f94ceb8699304af55caaca7c41401e37212f8923daec8da645.

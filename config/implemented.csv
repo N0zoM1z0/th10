@@ -902,3 +902,7 @@ FrontEndMarkVmInterrupt
 FrontEndLoadMusic
 FrontEndPlayMusic
 SoundPlayerView::QueueCommand
+StageExecuteScript
+StageScriptView::Update
+StageScriptView::UpdateObjectVms
+StageFogView::StageFogView
