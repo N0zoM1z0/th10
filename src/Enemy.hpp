@@ -73,6 +73,8 @@ typedef char EnemyPositionInterpolationDurationAt44[
 
 struct EnemyScalarInterpolationView
 {
+    EnemyFloat2 *Evaluate(EnemyFloat2 *output);
+
     EnemyFloat2 initial;
     EnemyFloat2 final;
     EnemyFloat2 initialTangent;

@@ -943,3 +943,42 @@ with distinct returned versus output pointers and lookup-side position mutation.
 These are synthetic seam witnesses, not full interpolation arithmetic or complete
 Enemy runtime tests. Existing 46-byte score exactness is not newly credited.
 All helpers and the full2412-byte owner receive zero new exact credit.
+
+
+## 2026-10-15 Enemy movement prerequisites, provisional numeric source
+
+Recovered the complete652-byte target two-component evaluator412AC0 and171-byte
+motion updater44C2A0 in their real EnemyRuntimeUpdate2412 graph. Four scalar
+interpolation calls now use the declared member; three motion calls have real
+source. Timer completion/lazy initialization, additive and acceleration modes,
+Hermite/shared easing, Cartesian/polar state and floor-to-hundredths are covered.
+The target returns the evaluator output pointer. No new subsystem/leaf credit.
+
+Pinned final PE bed76ceb85d0d6f6e67f57317f110073be54da3c21df23723c4517c9dc7faab5,
+real EnemyManagerUpdateCallback entry403270. Full runtime2326/2412 raw206,
+194/2152 comparable; scalar551/652 raw26,26/612; motion160/171 raw75,73/143.
+All three complete candidate extents decode and normalize, but all mismatch.
+Reports/native/raw target and precision classification are saved under
+.analysis/gpt-dots-enemy-runtime/movement-components*,
+motion-interpolation-target.txt and movement-precision.txt.
+
+Native timer FST retains the sum before __ftol2; Hermite t-minus-one float32
+spill/reload and3-(t+t) grouping match target. Motion preserves QWORD floor
+arguments after multiply100, then float0.01 multiply/store, including negatives.
+Known numerical mismatch remains: candidate removes target Hermite term-product
+spills and reassociates weighted sums, and removes eased-Y delta/product float32
+boundaries. Target locations412C85/8C/95/9B/CA4/CBA/CC8 and412D16/D22 are recorded
+against candidate401C00..C3F and401C75..C7D. No equivalence or precision closure
+claim. Candidate scalar receiverEAX differs from targetESI; motionESI agrees.
+Earlier aggregate control807/652 introduced extra roundings; no more spelling,
+volatile/barrier or flag controls pursued. Global aliases/storage remain open.
+
+Independent provisional source/native/test review passed. Actual-source host
+fixtures test completion modes0..17 (not active coverage of all easing curves),
+fractional and lazy-completion timers, repeatedADD/ACCEL and returned pointers,
+nonbinary Hermite both components, Cartesian and nonzero-angle polar motion,
+extra flag bits and positive/negative floor behavior. These do not prove x87,
+precise threshold/alias behavior or host trig/native equivalence. The fixture
+uses a static zero-initialized interpolation seed copied before setup, avoiding
+indeterminate flag reads by the maintained constructor; production is unchanged.
+CI includes the test. No exact numerator or denominator change.

@@ -922,3 +922,5 @@ StageScriptView::~StageScriptView,0x00402440,function
 StageCreate,0x00402640,function
 StageScriptView::LoadData,0x00403850,function
 EnemyEclHostBaseView::SetSubroutine,0x00450700,function
+EnemyScalarInterpolationView::Evaluate,0x00412AC0,function
+EnemyAdvanceMotion,0x0044C2A0,function

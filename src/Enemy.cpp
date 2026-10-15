@@ -288,10 +288,7 @@ extern EnemyVisualStateView *g_EnemyVisualState;
 // Descriptive interfaces for target-observed callees. Several target machine
 // boundaries use EAX/ESI/EDI live-ins; these declarations deliberately express
 // logical source values instead of claiming those private conventions.
-void EnemyEvaluateScalarInterpolation(
-    EnemyScalarInterpolationView *interpolation, EnemyFloat2 *out);
 float __stdcall EnemyWrapAngle(float angle);
-void EnemyAdvanceMotion(EnemyMotionView *motion);
 void __stdcall AnmSetVmScriptIndexAndExecute(
     const unsigned int *vmId, int scriptIndex);
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
@@ -697,6 +694,120 @@ void EnemyRuntimeVectorView::FromAngleMagnitude(
 #endif
 }
 
+// Target 0x00412AC0: two-component interpolation shared by four motion slots.
+EnemyFloat2 *EnemyScalarInterpolationView::Evaluate(EnemyFloat2 *output)
+{
+    if (duration > 0)
+    {
+        timer.previous = timer.current;
+        if (*timer.scale > 0.99f && *timer.scale < 1.01f)
+        {
+            ++timer.current;
+            timer.subframe += 1.0f;
+        }
+        else
+        {
+            timer.subframe = *timer.scale + timer.subframe;
+            timer.current = static_cast<int>(timer.subframe);
+        }
+        if (timer.current >= duration)
+        {
+            const int end = duration;
+            if ((timer.flags & 1u) == 0)
+            {
+                timer.current = 0;
+                timer.previous = -999999;
+                timer.subframe = 0.0f;
+                timer.scale = &g_AnmGameSpeed;
+                timer.flags |= 1u;
+            }
+            timer.current = end;
+            timer.subframe = static_cast<float>(end);
+            timer.previous = end - 1;
+            duration = 0;
+            *output = mode == ANM_INTERPOLATION_ADD ? initial : final;
+            return output;
+        }
+    }
+    if (mode == ANM_INTERPOLATION_ADD)
+    {
+        EnemyFloat2 next;
+        next.x = initial.x + final.x;
+        next.y = initial.y + final.y;
+        initial = next;
+        *output = next;
+        return output;
+    }
+    if (mode == ANM_INTERPOLATION_ACCELERATE)
+    {
+        EnemyFloat2 next;
+        next.x = initial.x + finalTangent.x;
+        next.y = initial.y + finalTangent.y;
+        initial = next;
+        finalTangent.x = finalTangent.x + final.x;
+        finalTangent.y = final.y + finalTangent.y;
+        *output = next;
+        return output;
+    }
+    if (mode == ANM_INTERPOLATION_HERMITE)
+    {
+        float value = timer.subframe / static_cast<float>(duration);
+        float twice = value + value;
+        float minusOne = value - 1.0f;
+        float initialWeight = (1.0f + twice) * minusOne * minusOne;
+        float finalWeight = (3.0f - twice) * value * value;
+        float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
+        float finalTangentWeight = minusOne * value * value;
+        const float finalTangentX = finalTangentWeight * finalTangent.x;
+        const float finalTangentY = finalTangentWeight * finalTangent.y;
+        const float initialTangentX = initialTangentWeight * initialTangent.x;
+        const float initialTangentY = initialTangentWeight * initialTangent.y;
+        const float finalX = finalWeight * final.x;
+        const float finalY = finalWeight * final.y;
+        const float initialY = initialWeight * initial.y;
+        const float sumY = initialY + finalY;
+        EnemyFloat2 result;
+        result.x = initialWeight * initial.x + finalX + initialTangentX + finalTangentX;
+        result.y = sumY + initialTangentY + finalTangentY;
+        *output = result;
+        return output;
+    }
+    float value = CalculateAnmInterpolation(mode, timer.subframe,
+        static_cast<float>(duration));
+    const float differenceY = final.y - initial.y;
+    const float scaledY = differenceY * value;
+    EnemyFloat2 result;
+    result.x = (final.x - initial.x) * value + initial.x;
+    result.y = scaledY + initial.y;
+    *output = result;
+    return output;
+}
+
+// Target 0x0044C2A0: polar mode replaces the position, Cartesian mode adds
+// velocity. X/Y are then floored to hundredths, including negative values.
+void EnemyAdvanceMotion(EnemyMotionView *motion)
+{
+    if ((motion->flags & 1u) == 0)
+    {
+        motion->position.x = motion->position.x + motion->velocity.x;
+        motion->position.y = motion->velocity.y + motion->position.y;
+        motion->position.z = motion->velocity.z + motion->position.z;
+    }
+    else
+    {
+        EnemyRuntimeVectorView polar;
+        polar.FromAngleMagnitude(motion->value1C, motion->value20);
+        polar.z = 0.0f;
+        PlayerFloat3 position;
+        position.x = polar.x + motion->velocity.x;
+        position.y = polar.y + motion->velocity.y;
+        position.z = motion->velocity.z;
+        motion->position = position;
+    }
+    motion->position.x = static_cast<float>(floor(motion->position.x * 100.0f) * 0.01f);
+    motion->position.y = static_cast<float>(floor(motion->position.y * 100.0f) * 0.01f);
+}
+
 // Maintained source for the reviewed 0x0040DC80-0x0040E5EB hostile runtime
 // update owner. Allocation/constructor evidence proves that the sole target
 // argument points to the 0x14DC-byte tail at full object +0x103C. The target
@@ -712,29 +823,25 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     EnemyFloat2 interpolation;
     if (enemy->scalarInterpolation0.duration != 0)
     {
-        EnemyEvaluateScalarInterpolation(
-            &enemy->scalarInterpolation0, &interpolation);
+        enemy->scalarInterpolation0.Evaluate(&interpolation);
         enemy->offsetMotion.value1C = EnemyWrapAngle(interpolation.x);
         enemy->offsetMotion.value18 = interpolation.y;
     }
     if (enemy->scalarInterpolation2.duration != 0)
     {
-        EnemyEvaluateScalarInterpolation(
-            &enemy->scalarInterpolation2, &interpolation);
+        enemy->scalarInterpolation2.Evaluate(&interpolation);
         enemy->offsetMotion.value20 = interpolation.x;
         enemy->offsetMotion.value24 = interpolation.y;
     }
     if (enemy->scalarInterpolation1.duration != 0)
     {
-        EnemyEvaluateScalarInterpolation(
-            &enemy->scalarInterpolation1, &interpolation);
+        enemy->scalarInterpolation1.Evaluate(&interpolation);
         enemy->baseMotion.value1C = EnemyWrapAngle(interpolation.x);
         enemy->baseMotion.value18 = interpolation.y;
     }
     if (enemy->scalarInterpolation3.duration != 0)
     {
-        EnemyEvaluateScalarInterpolation(
-            &enemy->scalarInterpolation3, &interpolation);
+        enemy->scalarInterpolation3.Evaluate(&interpolation);
         enemy->baseMotion.value20 = interpolation.x;
         enemy->baseMotion.value24 = interpolation.y;
     }
