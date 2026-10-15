@@ -1221,3 +1221,27 @@ Player/position/size, RET12. Real caller4054F9 pushes size, position and owner,
 then zeros ECX. Prior shot min/max boundaries remain intact. Full owner remains
 1162/1170 nonexact, raw70 and68/1066 comparable, complete decode/normalization.
 Other geometry rounding/order, helper conventions and storage remain open.
+
+### Player shot update descriptor lifetimes (2026-10-15)
+
+PlayerUpdateShots0x428280/876 reloads its descriptor after each interrupt pair,
+before subsequent type/update-callback selection, and after mutable update and
+motion before culling (target4284AD). The maintained source formerly retained
+the entry descriptor, so an update callback replacing type1 with type3 could
+incorrectly cull the shot, and the reverse could incorrectly preserve it.
+Explicit target-observed reloads restore these boundaries. Actual-source tests
+exercise both replacements, null callbacks, and adversarial interrupt-boundary
+replacement for source-index clearing/current callback selection. The real
+interrupt helpers are not claimed to replace descriptors. Saved old source
+compiles then fails the first callback/culling assertion; corrected source passes.
+
+The real Player update caller remains in the guarded Enemy-rooted graph.
+Shot owner738/876 and caller2808/3089 remain nonexact; motion/interrupt aliases,
+manager lifetime and full helper ABI/storage are still open. No new exact credit.
+
+Parked damage geometry detail: axis-aligned effect Y half extent is computed
+and retained only after X gates in target428919 onward; current candidate
+402BB6 spills it before X gates. A difference from multiplying by0.5 requires
+subnormal underflow rather than ordinary normal finite values. This residual
+was documented without another source-shape experiment; rotation/circle/full
+numeric closure remains unclaimed.

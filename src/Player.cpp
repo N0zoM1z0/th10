@@ -1183,10 +1183,12 @@ int PlayerUpdateShots(Player *player)
         {
             PlayerSetShotVmDeleteState1(&shot->primaryVmId);
             PlayerSetShotVmDeleteState1(&shot->secondaryVmId);
+            descriptor = shot->descriptor;
             shot->state = PLAYER_SHOT_HIT_TRANSITION;
             player->shotSourceActive[(int)descriptor->sourceIndex - 1] = 0;
         }
 
+        descriptor = shot->descriptor;
         if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
             shot->state == PLAYER_SHOT_ACTIVE &&
             ((g_PlayerDrawGate9EB8 != NULL &&
@@ -1196,9 +1198,11 @@ int PlayerUpdateShots(Player *player)
             shot->state = PLAYER_SHOT_HIT_TRANSITION;
             PlayerSetShotVmDeleteState1(&shot->primaryVmId);
             PlayerSetShotVmDeleteState1(&shot->secondaryVmId);
+            descriptor = shot->descriptor;
             player->shotSourceActive[(int)descriptor->sourceIndex - 1] = 0;
         }
 
+        descriptor = shot->descriptor;
         if (descriptor->type == PLAYER_SHOT_TYPE_3 &&
             shot->collidedThisFrame == 0 &&
             shot->state == PLAYER_SHOT_ACTIVE &&
@@ -1207,6 +1211,7 @@ int PlayerUpdateShots(Player *player)
             PlayerSetShotVmDeleteState3(&shot->primaryVmId);
             shot->collisionVmTransitionPending = 0;
         }
+        descriptor = shot->descriptor;
         shot->collidedThisFrame = 0;
 
         if (descriptor->updateCallback != NULL)
@@ -1240,6 +1245,8 @@ int PlayerUpdateShots(Player *player)
             continue;
         }
 
+        // Reload after update callbacks and motion, as in the target.
+        descriptor = shot->descriptor;
         if (descriptor->type != PLAYER_SHOT_TYPE_3 &&
             shot->timer.current >= 10)
         {
