@@ -1,3 +1,4 @@
+#include "GuiScore.hpp"
 #include <stddef.h>
 #include <math.h>
 #include <stdlib.h>
@@ -198,18 +199,7 @@ extern float g_ItemAlphaFull;
 
 // Shared maintained definitions used by the independently reconstructed Gui
 // and Enemy owners. These views do not establish original class/TU identities.
-struct GuiScoreView
-{
-    int unknown00;
-    int score;
 
-    void Add(int amount)
-    {
-        score += amount / 10;
-        if (score >= 1000000000)
-            score = 999999999;
-    }
-};
 
 struct EnemySoundQueueView
 {

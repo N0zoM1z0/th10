@@ -908,3 +908,38 @@ and no additional ECL execution. Lookup mutation is a synthetic lifetime witness
 not a claim that the maintained lookup normally mutates the host. No host test
 proves native x87/ABI or observes a mutation between the two plain stores.
 No exact credit, helper promotion, or denominator change.
+
+
+## 2026-10-15 Enemy interpolation and score caller identities
+
+EnemyRuntimeUpdate now calls the maintained AnmVmFloat3InterpolationView::Evaluate
+at both target404610 seams, consumes its returned pointer, and calls the existing
+GuiScoreView::Add at death publication before EnemyFinalizeDeath. Target score
+receiver is474C40. The two undefined free-function aliases are removed. The exact
+existing GuiScoreView class is shared via GuiScore.hpp by Enemy, Gui and Item;
+Item's token-identical duplicate was also removed and its TU compiled with the
+pinned toolchain. Score arithmetic, including existing signed-overflow limits,
+is unchanged. ANM header inclusion replaces conflicting local C critical-section
+prototypes with its existing void-pointer declarations; actual imports/calls and
+Enemy critical-section storage are unchanged.
+
+Enemy and ANM position interpolation views have asserted matching size and all
+member offsets. The two reinterpret call seams remain partial object-lifetime/
+alias views, not a complete type unification. No dispatcher assignment rewrite.
+The diagnostic now links actual EnemyCallback, EclVm, AnmManager and Gui sources.
+Fresh same-graph baseline2374/2412 (raw189,174/2156 comparable) becomes2358/2412
+(raw178,158/2152 comparable), complete normalization/instruction decode. This
+is meaningful source binding recovery, not a byte-match improvement. Final PE
+SHA256 dd9cbf04c54a7d9f58c00abdd19150d3817202cc430a65b26313e25c0aa53ac9;
+.analysis/gpt-dots-enemy-runtime/connected-identities.json and connected-native.txt
+retain full owner/PDB evidence. Both Evaluate calls use EAX receiver/EDI output,
+then consume returned EAX. Score uses ECX receiver and RET4; callback resolver
+is the real606-byte EnemyCallback contribution, not an anchor. g_GuiScore still
+has diagnostic-only anchor storage; no global alias/runtime closure claimed.
+
+Independent review passed. Actual-source tests retain all callback/scale paths,
+check score is already updated at death, and test both interpolation call bodies
+with distinct returned versus output pointers and lookup-side position mutation.
+These are synthetic seam witnesses, not full interpolation arithmetic or complete
+Enemy runtime tests. Existing 46-byte score exactness is not newly credited.
+All helpers and the full2412-byte owner receive zero new exact credit.

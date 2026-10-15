@@ -20,6 +20,8 @@ class EnemyRuntimeScale(unittest.TestCase):
 #include <cassert>
 #include <vector>
 #include <string>
+#include "GuiScore.hpp"
+GuiScoreView g_GuiScore;
 #define __stdcall
 struct PlayerFloat3 {float x,y,z;};
 struct Timer {float *scale;int current;};
@@ -50,8 +52,7 @@ static EnemyEclInstructionView instruction,oldInstruction;
 static bool replaceContext=false,nullLookup=false;
 EnemyEclInstructionView*Database::FindSubroutine(const char*n){assert(this==&database&&n==reinterpret_cast<const char*>(&name));events.push_back("callback");if(mutation==1)*active->updateTimer.scale=0.25f;else if(mutation==2)active->updateTimer.scale=&replacementScale;if(replaceContext){active->owner->activeEclContext=&replacementContext;active->owner->scriptDatabase=&replacementDatabase;}return nullLookup?nullptr:&instruction;}
 '''+method+r'''
-void EnemyAddScoreReward(int n){assert(n==active->scoreReward);events.push_back("score");}
-int EnemyFinalizeDeath(Owner*o){assert(o==active->owner);events.push_back("death");return deathResult;}
+int EnemyFinalizeDeath(Owner*o){assert(o==active->owner&&g_GuiScore.score==120);events.push_back("death");return deathResult;}
 static int runAffectedSource(EnemyRuntimeView*enemy){
 '''+block+r'''
  return 0;
@@ -62,7 +63,7 @@ static int runSecondCheckpoint(EnemyRuntimeView*enemy){
 }
 static Owner owner;
 static EnemyRuntimeView enemy;
-static void setup(){originalContext={77,&oldInstruction};replacementContext={88,&oldInstruction};owner.activeEclContext=&originalContext;owner.scriptDatabase=&database;replaceContext=nullLookup=false;events.clear();scales.clear();initialScale=1;replacementScale=0.5f;enemy={};enemy.updateTimer.scale=&initialScale;enemy.owner=&owner;enemy.life=100;enemy.scoreReward=200;active=&enemy;game.flags378C=0;player.runtimeState=1;damage=10;mutation=0;firstResult=secondResult=deathResult=0;hasCallback=true;g_EnemyDamageProcessedFlag=0;}
+static void setup(){g_GuiScore.score=100;originalContext={77,&oldInstruction};replacementContext={88,&oldInstruction};owner.activeEclContext=&originalContext;owner.scriptDatabase=&database;replaceContext=nullLookup=false;events.clear();scales.clear();initialScale=1;replacementScale=0.5f;enemy={};enemy.updateTimer.scale=&initialScale;enemy.owner=&owner;enemy.life=100;enemy.scoreReward=200;active=&enemy;game.flags378C=0;player.runtimeState=1;damage=10;mutation=0;firstResult=secondResult=deathResult=0;hasCallback=true;g_EnemyDamageProcessedFlag=0;}
 int main(){
  setup();replaceContext=true;assert(runSecondCheckpoint(&enemy)==0);assert(events==std::vector<std::string>({"resolve","release","reset","callback"})&&scales.empty());assert(originalContext.value00==77&&originalContext.currentInstruction==&oldInstruction);assert(replacementContext.value00==0&&replacementContext.currentInstruction==&instruction&&owner.scriptDatabase==&replacementDatabase);
  setup();nullLookup=true;assert(runSecondCheckpoint(&enemy)==0);assert(originalContext.value00==0&&originalContext.currentInstruction==nullptr&&scales.empty());
@@ -76,11 +77,52 @@ int main(){
  setup();hasCallback=false;assert(runAffectedSource(&enemy)==0);assert(events==std::vector<std::string>({"run1","damage","resolve"})&&scales.size()==1);
  setup();damage=0;assert(runAffectedSource(&enemy)==0);assert(events==std::vector<std::string>({"run1","damage"})&&scales.size()==1&&g_EnemyDamageProcessedFlag==1);
  setup();enemy.flags=1;assert(runAffectedSource(&enemy)==0);assert(events==std::vector<std::string>({"run1"})&&g_EnemyDamageProcessedFlag==0);
- setup();enemy.life=1;mutation=1;deathResult=1;assert(runAffectedSource(&enemy)==1);assert(scales==std::vector<float>({1,0.25f}));assert(events[events.size()-2]=="score"&&events.back()=="death"&&g_EnemyDamageProcessedFlag==0);
+ setup();enemy.life=1;mutation=1;deathResult=1;assert(runAffectedSource(&enemy)==1);assert(scales==std::vector<float>({1,0.25f}));assert(events.back()=="death"&&g_GuiScore.score==120&&g_EnemyDamageProcessedFlag==0);
 }
 '''
   (ROOT/'build').mkdir(exist_ok=True)
   with tempfile.TemporaryDirectory(dir=ROOT/'build',prefix='enemy-scale-') as d:
+   p=Path(d);(p/'test.cpp').write_text(program)
+   subprocess.run(['c++','-std=c++17','-O0','-I'+str(ROOT/'src'),str(p/'test.cpp'),'-o',str(p/'test')],check=True)
+   subprocess.run([str(p/'test')],check=True)
+ @unittest.skipUnless(shutil.which('c++'),'host C++ compiler unavailable')
+ def test_actual_interpolation_call_seams(self):
+  text=(ROOT/'src/Enemy.cpp').read_text()
+  blocks=[];offset=0
+  for n in range(2):
+   a=text.index('        AnmFloat3View output;',offset)
+   b=text.index('\n    }',a);blocks.append(text[a:b]);offset=b
+  program=r'''
+#include <cassert>
+#include <vector>
+struct AnmFloat3View {float x,y,z;};
+struct AnmVmFloat3InterpolationView {AnmFloat3View *Evaluate(AnmFloat3View*);};
+struct Motion {AnmFloat3View position,velocity;};
+struct Enemy {AnmVmFloat3InterpolationView positionInterpolation0,positionInterpolation1;Motion offsetMotion,baseMotion;} enemy;
+static std::vector<int> calls;
+static AnmFloat3View returned;
+AnmFloat3View*AnmVmFloat3InterpolationView::Evaluate(AnmFloat3View*out){
+ int n=this==&enemy.positionInterpolation0?0:1;
+ assert(this==&enemy.positionInterpolation0||this==&enemy.positionInterpolation1);
+ calls.push_back(n);*out={-100,-200,-300};returned={float(10+n),float(20+n),float(30+n)};
+ Motion&m=n?enemy.baseMotion:enemy.offsetMotion;m.position={float(1+n),float(2+n),float(3+n)};
+ return &returned;
+}
+static void first(Enemy*enemy){
+'''+blocks[0]+r'''
+}
+static void second(Enemy*enemy){
+'''+blocks[1]+r'''
+}
+int main(){
+ enemy.offsetMotion.position={100,200,300};enemy.baseMotion.position={400,500,600};
+ first(&enemy);second(&enemy);assert(calls==std::vector<int>({0,1}));
+ assert(enemy.offsetMotion.velocity.x==9&&enemy.offsetMotion.velocity.y==18&&enemy.offsetMotion.velocity.z==27);
+ assert(enemy.baseMotion.velocity.x==9&&enemy.baseMotion.velocity.y==18&&enemy.baseMotion.velocity.z==27);
+}
+'''
+  (ROOT/'build').mkdir(exist_ok=True)
+  with tempfile.TemporaryDirectory(dir=ROOT/'build',prefix='enemy-interpolation-') as d:
    p=Path(d);(p/'test.cpp').write_text(program)
    subprocess.run(['c++','-std=c++17','-O0',str(p/'test.cpp'),'-o',str(p/'test')],check=True)
    subprocess.run([str(p/'test')],check=True)

@@ -3,6 +3,8 @@
 #include "EclVm.hpp"
 #include "GameScoreState.hpp"
 #include "PlayerCollision.hpp"
+#include "AnmManager.hpp"
+#include "GuiScore.hpp"
 
 #include <math.h>
 #include <new>
@@ -12,6 +14,18 @@
 
 extern "C" void _ReadWriteBarrier();
 #pragma intrinsic(_ReadWriteBarrier)
+
+// The target shares 0x00404610 with ANM. These are partial layout views,
+// not a claim that the broader Enemy/ANM object lifetimes have been unified.
+typedef char EnemyPositionInterpolationMatchesAnm[
+    (sizeof(EnemyPositionInterpolationView) == sizeof(AnmVmFloat3InterpolationView) &&
+     offsetof(EnemyPositionInterpolationView, initial) == offsetof(AnmVmFloat3InterpolationView, initial) &&
+     offsetof(EnemyPositionInterpolationView, final) == offsetof(AnmVmFloat3InterpolationView, final) &&
+     offsetof(EnemyPositionInterpolationView, initialTangent) == offsetof(AnmVmFloat3InterpolationView, initialTangent) &&
+     offsetof(EnemyPositionInterpolationView, finalTangent) == offsetof(AnmVmFloat3InterpolationView, finalTangent) &&
+     offsetof(EnemyPositionInterpolationView, timer) == offsetof(AnmVmFloat3InterpolationView, timer) &&
+     offsetof(EnemyPositionInterpolationView, duration) == offsetof(AnmVmFloat3InterpolationView, duration) &&
+     offsetof(EnemyPositionInterpolationView, mode) == offsetof(AnmVmFloat3InterpolationView, mode)) ? 1 : -1];
 
 struct EnemyManagedVmView;
 struct EnemyManagedVmListNodeView
@@ -274,8 +288,6 @@ extern EnemyVisualStateView *g_EnemyVisualState;
 // Descriptive interfaces for target-observed callees. Several target machine
 // boundaries use EAX/ESI/EDI live-ins; these declarations deliberately express
 // logical source values instead of claiming those private conventions.
-void EnemyEvaluatePositionInterpolation(
-    EnemyPositionInterpolationView *interpolation, PlayerFloat3 *out);
 void EnemyEvaluateScalarInterpolation(
     EnemyScalarInterpolationView *interpolation, EnemyFloat2 *out);
 float __stdcall EnemyWrapAngle(float angle);
@@ -285,7 +297,6 @@ void __stdcall AnmSetVmScriptIndexAndExecute(
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
 const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     EnemyFullObjectView *owner);
-void EnemyAddScoreReward(int value);
 void EnemySetManagedVmPositionWithOffset(
     unsigned int vmId, const PlayerFloat3 *position);
 void EnemySetManagedVmPositionExact(
@@ -305,8 +316,6 @@ void EnemySpawnItem(
 void EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock);
 
-extern "C" void __stdcall EnterCriticalSection(EnemyCriticalSectionView *section);
-extern "C" void __stdcall LeaveCriticalSection(EnemyCriticalSectionView *section);
 void __fastcall EnemyUnlinkCallbackNode(
     EnemyCallbackNodeView *node, void *manager);
 void EnemyRegisterUpdateCallbackNode(
@@ -749,12 +758,13 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
     else
     {
-        PlayerFloat3 target;
-        EnemyEvaluatePositionInterpolation(
-            &enemy->positionInterpolation0, &target);
-        enemy->offsetMotion.velocity.x = target.x - enemy->offsetMotion.position.x;
-        enemy->offsetMotion.velocity.y = target.y - enemy->offsetMotion.position.y;
-        enemy->offsetMotion.velocity.z = target.z - enemy->offsetMotion.position.z;
+        AnmFloat3View output;
+        const AnmFloat3View *target =
+            reinterpret_cast<AnmVmFloat3InterpolationView *>(
+                &enemy->positionInterpolation0)->Evaluate(&output);
+        enemy->offsetMotion.velocity.x = target->x - enemy->offsetMotion.position.x;
+        enemy->offsetMotion.velocity.y = target->y - enemy->offsetMotion.position.y;
+        enemy->offsetMotion.velocity.z = target->z - enemy->offsetMotion.position.z;
     }
 
     if (enemy->positionInterpolation1.duration == 0)
@@ -776,12 +786,13 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     }
     else
     {
-        PlayerFloat3 target;
-        EnemyEvaluatePositionInterpolation(
-            &enemy->positionInterpolation1, &target);
-        enemy->baseMotion.velocity.x = target.x - enemy->baseMotion.position.x;
-        enemy->baseMotion.velocity.y = target.y - enemy->baseMotion.position.y;
-        enemy->baseMotion.velocity.z = target.z - enemy->baseMotion.position.z;
+        AnmFloat3View output;
+        const AnmFloat3View *target =
+            reinterpret_cast<AnmVmFloat3InterpolationView *>(
+                &enemy->positionInterpolation1)->Evaluate(&output);
+        enemy->baseMotion.velocity.x = target->x - enemy->baseMotion.position.x;
+        enemy->baseMotion.velocity.y = target->y - enemy->baseMotion.position.y;
+        enemy->baseMotion.velocity.z = target->z - enemy->baseMotion.position.z;
     }
 
     EnemyAdvanceMotion(&enemy->offsetMotion);
@@ -911,7 +922,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
 
             if (enemy->life < 1 && (enemy->flags & 0x40u) == 0)
             {
-                EnemyAddScoreReward(enemy->scoreReward);
+                g_GuiScore.Add(enemy->scoreReward);
                 if (EnemyFinalizeDeath(enemy->owner) != 0)
                     return 1;
             }

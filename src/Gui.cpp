@@ -1,3 +1,4 @@
+#include "GuiScore.hpp"
 #include "Main.hpp"
 #include "Gui.hpp"
 
@@ -48,18 +49,7 @@ struct GuiModeOwnerView
     int state;
 };
 
-struct GuiScoreView
-{
-    int unknown00;
-    int score;
 
-    void Add(int amount)
-    {
-        score += amount / 10;
-        if (score >= 1000000000)
-            score = 999999999;
-    }
-};
 
 typedef char GuiPlayerPositionAt3C0[
     (offsetof(GuiPlayerView, positionX) == 0x3c0) ? 1 : -1];
@@ -80,7 +70,6 @@ extern GuiGameOwnerView *g_GuiGameOwner;
 extern GuiModeOwnerView *g_GuiModeOwner;
 extern unsigned char *g_GuiPersistentData;
 
-extern GuiScoreView g_GuiScore;
 extern int g_GuiHighScore;
 extern short g_GuiPower;
 extern int g_GuiCounter4C4C;
