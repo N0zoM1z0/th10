@@ -296,3 +296,37 @@ free by-value factory compiled but introduced an extra aggregate copy, frame
 Both controls are reverted. Retain the reviewed9948-byte/83-group source.
 Select a fresh major-owner structural/semantic gap rather than extend this
 aggregate spelling search.
+
+## Enemy major-owner laser prerequisite checkpoint (2026-10-15)
+
+Recovered the missing factory and bounded construction seam behind four laser
+dispatch groups (1485 target bytes), sharing request definitions across the
+dispatcher and six external caller owners. Target object sizes/VM offsets are
+asserted and actual timer/AnmVm constructors are used. Independent review
+approved partial semantic retention, with zero new exact bytes.
+
+Fresh full owner baseline14384/14416 became14480/14416; frame remains2BC/2C4.
+Raw/comparable scores894 and625/11584; normalization complete. All181 selectors
+and108 ordered destinations match. Table reporter still has the preexisting
+nested-case duplicate warning; do not call its overall result a pass.
+
+The153-byte factory still has stack request/type and plain RET rather than
+target EDI request/RET4. Placement construction adds null checks and leaves VM
+calls out-of-line. External19-slot tables remain diagnostic anchors. Raw-storage
+lifetime and the non-instantiated virtual-prefix cast are explicitly partial.
+No runnable closure or recovered full19-method C++ interface is claimed.
+Existing exact initializer leaves40CF40/41C030 retain their provenance; the
+23-byte request initializer is raw-equal here but adds no credit. Constructor
+origin remains indeterminate. Next work should establish a defensible natural
+object-lifetime graph from real virtual contracts, not padding/register controls.
+
+Reproduction artifacts: .analysis/gpt-dots-enemy-laser/probe.py, baseline.json,
+integrated.json and matching -table.json; distinct guarded image/map/PDB under
+build/probe-ltcg/EnemyLaser-{baseline,integrated}. The integrated image SHA256 is
+24f23d99e94b570d3e399c993c77e21f159237e94115f1a57ff9e8c99ef56139.
+The compiler rejects nonmember __thiscall pointers (C4234); do not repeat that
+representation control or infer a portable ABI from the virtual-prefix view.
+Focused existing EnemyLaser canonical units (polar/bounds) still replay exact,
+121/121 bytes across two artifacts. Tracking, pinned toolchain declarations,
+progress, CI (including entry and replay-payload regressions), and whitespace
+checks passed. This is regression evidence only, with no new Factory claim.

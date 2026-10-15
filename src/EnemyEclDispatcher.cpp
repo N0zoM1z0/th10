@@ -1,4 +1,5 @@
 #include "Enemy.hpp"
+#include "EnemyLaser.hpp"
 #include "EclVm.hpp"
 #include "Main.hpp"
 #include "Rng.hpp"
@@ -198,7 +199,6 @@ struct EnemyVisualStateView
     void *activeDialog;
     unsigned char *dialogTable;
 };
-struct EnemyLaserRequestScratch;
 struct EnemyBulletPatternCopyView
 {
     unsigned int words[0x84];
@@ -542,7 +542,6 @@ __declspec(noinline) void EnemyEnableBombShield(
         *reinterpret_cast<AnmVmIdView *>(&gameState->managedVmId));
     gameState->managedVmId = 0;
 }
-extern void EnemyInitializeLaserConfig(EnemyLaserRequestScratch *config);
 static __declspec(noinline) void EnemySetLaserPosition(
     int laser, const PlayerFloat3 *position)
 {
@@ -686,8 +685,6 @@ static __declspec(noinline) AnmFloat3View *EnemyGetAnmPosition(
     result.z = position->z;
     return &result;
 }
-extern unsigned int EnemyFireLaser(
-    void *manager, EnemyLaserRequestScratch *request, int type);
 struct EnemyEffectWaitNode
 {
     virtual void UnknownVirtual0();
@@ -1161,76 +1158,6 @@ static __declspec(noinline) void EnemyDropItemCounts(
 }
 
 extern float EnemyRandomAngle();
-
-// TH10's two laser constructors and request-apply virtuals prove two
-// overlapping request layouts. Type 0 copies 0x77 dwords and consumes a
-// 0x2C-byte prefix before its 0x6C-dword pattern payload. Type 1 copies 0x7E
-// dwords, initializes +0x2C to 8.0f, and consumes its pattern payload at +0x48.
-// Names below stay neutral where target-local semantics are not established.
-struct EnemyLaserType0RequestView
-{
-    PlayerFloat3 position;
-    float value0C;
-    float value10;
-    float value14;
-    float value18;
-    float value1C;
-    float value20;
-    short value24;
-    short value26;
-    unsigned int flags28;
-    unsigned int patternWords[0x6c];
-};
-typedef char EnemyLaserType0RequestViewSizeIs1DC[
-    (sizeof(EnemyLaserType0RequestView) == 0x1dc) ? 1 : -1];
-typedef char EnemyLaserType0Value24At024[
-    (offsetof(EnemyLaserType0RequestView, value24) == 0x24) ? 1 : -1];
-typedef char EnemyLaserType0FlagsAt028[
-    (offsetof(EnemyLaserType0RequestView, flags28) == 0x28) ? 1 : -1];
-typedef char EnemyLaserType0PatternAt02C[
-    (offsetof(EnemyLaserType0RequestView, patternWords) == 0x2c) ? 1 : -1];
-
-struct EnemyLaserType1RequestView
-{
-    PlayerFloat3 position;
-    unsigned char unknown00C[0x18 - 0x0c];
-    float value18;
-    float value1C;
-    float value20;
-    float value24;
-    float value28;
-    float fixed2C;
-    unsigned int value30;
-    unsigned int value34;
-    unsigned int value38;
-    unsigned int value3C;
-    short value40;
-    short value42;
-    unsigned int flags44;
-    unsigned int patternWords[0x6c];
-};
-typedef char EnemyLaserType1RequestViewSizeIs1F8[
-    (sizeof(EnemyLaserType1RequestView) == 0x1f8) ? 1 : -1];
-typedef char EnemyLaserType1FixedAt02C[
-    (offsetof(EnemyLaserType1RequestView, fixed2C) == 0x2c) ? 1 : -1];
-typedef char EnemyLaserType1Value40At040[
-    (offsetof(EnemyLaserType1RequestView, value40) == 0x40) ? 1 : -1];
-typedef char EnemyLaserType1FlagsAt044[
-    (offsetof(EnemyLaserType1RequestView, flags44) == 0x44) ? 1 : -1];
-typedef char EnemyLaserType1PatternAt048[
-    (offsetof(EnemyLaserType1RequestView, patternWords) == 0x48) ? 1 : -1];
-
-struct EnemyLaserRequestScratch
-{
-    union
-    {
-        unsigned int words[0x7e];
-        EnemyLaserType0RequestView type0;
-        EnemyLaserType1RequestView type1;
-    };
-};
-typedef char EnemyLaserRequestScratchSizeIs1F8[
-    (sizeof(EnemyLaserRequestScratch) == 0x1f8) ? 1 : -1];
 
 static float EnemyAbsoluteFloat(float value)
 {

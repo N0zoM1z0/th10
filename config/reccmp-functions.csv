@@ -891,3 +891,6 @@ FindWaveChunk,0x0043D250,function
 SoundPlayerView::LoadSoundSample,0x0043D390,function
 FileSystem::WriteFile,0x0044B540,function
 FileSystem::OpenWriteFile,0x0044B620,function
+EnemyFireLaser,0x0041C510,function
+EnemyInitializeLaserType0,0x0041C5B0,function
+EnemyInitializeLaserType1,0x0041C680,function

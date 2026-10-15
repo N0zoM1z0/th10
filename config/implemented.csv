@@ -890,3 +890,6 @@ FindWaveChunk
 SoundPlayerView::LoadSoundSample
 FileSystem::WriteFile
 FileSystem::OpenWriteFile
+EnemyFireLaser
+EnemyInitializeLaserType0
+EnemyInitializeLaserType1
