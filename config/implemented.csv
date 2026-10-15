@@ -906,3 +906,7 @@ StageExecuteScript
 StageScriptView::Update
 StageScriptView::UpdateObjectVms
 StageFogView::StageFogView
+StageFogInterpolationView::Evaluate
+StageFogView::operator-
+StageFogView::operator*
+StageFogView::operator+

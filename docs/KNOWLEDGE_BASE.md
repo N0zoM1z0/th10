@@ -766,3 +766,40 @@ standard object lifetime, x87, target ABI, real game IO or runtime claim.
 Evidence .analysis/gpt-dots-stage-script/attested-decompile.json,
 layout-corrected.json, owner-table-audit.json, strengthened-test.log; image SHA
 aa87fbff37b064f94ceb8699304af55caaca7c41401e37212f8923daec8da645.
+
+Stage fog dependency recovery and precision correction (2026-10-15):
+The0x1C aggregate is six float channels(start,end,B,G,R,A) plus derived packed
+BGRA, not seven independent floats. Target arithmetic constructors retain
+extended x87 color results after FST stores and __ftol2 consumes those results;
+low bytes wrap without saturation. Storedfloat1 can therefore coexist with
+packed0 for an extended result1-2^-26. Tests describe that representation
+witness separately and never claim ordinary host operators reproduce x87.
+Recovered evaluator modes7 additive,17 acceleration,8 Hermite and maintained
+CalculateAnmInterpolation easing, with positive-duration tick/completion and
+unmodified zero/negative-duration behavior. Completion returns initial only
+for mode7, otherwise final, copying packed dword rather than repacking.
+Real dispatcher call recovers EBX/output-stack/RET4 for evaluator, no anchor
+ABI assertion. Full evaluator664/688,234raw228/600comparable, normalization
+complete.92/101/92 arithmetic structural matches are diagnostic prerequisites,
+not independent credits. No new canonical replay/Factory acceptance attempted.
+
+Independent review found initial Hermite expressions lost target's(t-1)float32
+spill and used sequential3-t-t. One natural shared twice=t+t correction restores
+both: candidate401DF9 FSTP and401E05/09 memory FMUL match target404B34/40/44,
+with retained doubled-t grouping and subtraction. No volatile/flags/coercion.
+This verified numerical improvement is distinct from remaining whole-owner
+nonexactness. Two source tests pass: dispatcher keeps explicit fog sink;
+separate actual fog/timer/easing bodies cover all six arithmetic channels,
+packed finite boundaries, linear/ease-in/Hermite/add/acceleration/constants/
+default, scaled timer and completion modes0..17. That completion loop does
+not test all easing curves. Nonbinaryt0.1 differentiates grouped/sequential
+subtraction in the host model; native equivalence comes from PE instruction
+review. Invalid/out-of-range conversion, ABI and alias/lifetime proof excluded.
+
+With real fog source, full stage dispatcher2052=1991code+1pad+60table versus
+provisional1868=1806+2+60;162raw155/1788comparable, normalization complete.
+Camera aggregate storage, callback native publication ordering and full stage
+ABI remain open; ownership/denominator unchanged. Evidence fog-hermite-grouped.json,
+fog-grouped-owner.json,fog-grouped-candidate.txt,fog-grouped-table-audit.json,
+fog-grouped-tests.log under .analysis/gpt-dots-stage-script. Retained image SHA
+f4b4a878cbf3aa992d1b80fb42f4888e711427c5904446e6e4ee9758365688cb.

@@ -233,3 +233,81 @@ int StageScriptView::Update()
     ++frame;
     return 1;
 }
+
+// Six float channels plus a derived packed-color dword, not seven independent
+// floats. Every arithmetic result repacks truncating low bytes with no clamp.
+StageFogView StageFogView::operator-(const StageFogView &other) const
+{
+    return StageFogView(start - other.start, end - other.end,
+        blue - other.blue, green - other.green, red - other.red, alpha - other.alpha);
+}
+StageFogView StageFogView::operator+(const StageFogView &other) const
+{
+    return StageFogView(start + other.start, end + other.end,
+        blue + other.blue, green + other.green, red + other.red, alpha + other.alpha);
+}
+StageFogView StageFogView::operator*(float scale) const
+{
+    return StageFogView(start * scale, end * scale,
+        blue * scale, green * scale, red * scale, alpha * scale);
+}
+
+// Target0x004049A0. Positive durations tick before completion; additive mode7
+// returns its accumulated initial value on completion, other modes return final.
+// Zero/negative-duration arithmetic retains the original unchecked semantics.
+StageFogView *StageFogInterpolationView::Evaluate(
+    StageFogView *output)
+{
+    if (duration > 0)
+    {
+        timer.Tick();
+        if (timer.current >= duration)
+        {
+            timer.SetCurrent(duration);
+            duration = 0;
+            if (mode == ANM_INTERPOLATION_ADD)
+            {
+                *output = initial;
+                return output;
+            }
+            *output = final;
+            return output;
+        }
+    }
+
+    if (mode == ANM_INTERPOLATION_ADD)
+    {
+        initial = initial + final;
+        *output = initial;
+        return output;
+    }
+
+    if (mode == ANM_INTERPOLATION_ACCELERATE)
+    {
+        initial = initial + finalTangent;
+        finalTangent = finalTangent + final;
+        *output = initial;
+        return output;
+    }
+
+    if (mode == ANM_INTERPOLATION_HERMITE)
+    {
+        float value = timer.subframe / static_cast<float>(duration);
+        float twice = value + value;
+        float minusOne = value - 1.0f;
+        float initialWeight = (1.0f + twice) * minusOne * minusOne;
+        float finalWeight = (3.0f - twice) * value * value;
+        float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
+        float finalTangentWeight = minusOne * value * value;
+
+        *output = initial * initialWeight + final * finalWeight +
+            initialTangent * initialTangentWeight +
+            finalTangent * finalTangentWeight;
+        return output;
+    }
+
+    float value = CalculateAnmInterpolation(
+        mode, timer.subframe, static_cast<float>(duration));
+    *output = (final - initial) * value + initial;
+    return output;
+}

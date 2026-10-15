@@ -18,6 +18,8 @@ class StageScriptState(unittest.TestCase):
         header=header.replace('#pragma once','').replace('#include "AnmManager.hpp"','')
         header=header[:header.index('typedef char StageScriptLayoutChecks[')]
         source=(ROOT/'src/StageScript.cpp').read_text().replace('#include "StageScript.hpp"','')
+        # This dispatcher test keeps an explicit fog sink; the second test runs real fog arithmetic.
+        source=source.split('// Six float channels plus a derived packed-color dword')[0]
         timer_source=(ROOT/'src/AnmManager.hpp').read_text()
         timer_start=timer_source.index('struct AnmVmTimerView\n{')
         timer_end=timer_source.index('\n};',timer_start)+3
@@ -191,6 +193,87 @@ int main(){
 '''
         (ROOT/'build').mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(prefix='stage-script-',dir=ROOT/'build') as directory:
+            src=Path(directory)/'test.cpp';binary=Path(directory)/'test';src.write_text(program)
+            subprocess.run([shutil.which('c++'),'-std=c++11','-O0',str(src),'-o',str(binary)],check=True)
+            subprocess.run([str(binary)],check=True)
+
+    @unittest.skipUnless(shutil.which('c++'), 'host C++ compiler unavailable')
+    def test_actual_fog_arithmetic_and_evaluation(self):
+        anm_header=(ROOT/'src/AnmManager.hpp').read_text()
+        stage_header=(ROOT/'src/StageScript.hpp').read_text()
+        def struct_text(text,name):
+            start=text.index(name+'\n{');end=text.index('\n};',start)+3
+            return text[start:end]
+        def body(filename,signature):
+            text=(ROOT/filename).read_text();start=text.index(signature);brace=text.index('{',start);end=brace+1;depth=1
+            while depth:
+                depth+=(text[end]=='{')-(text[end]=='}');end+=1
+            return text[start:end]
+        program=r'''
+#include <cassert>
+#include <cmath>
+#include <cstring>
+static float g_AnmGameSpeed=1.0f;
+'''
+        program+=struct_text(anm_header,'enum AnmInterpolationModeView')
+        program+=struct_text(anm_header,'struct AnmVmTimerView')
+        program+=struct_text(stage_header,'struct StageFogView')
+        program+=struct_text(stage_header,'struct StageFogInterpolationView')
+        program+=body('src/AnmManager.cpp','float CalculateAnmInterpolation(')
+        for signature in ['StageFogView::StageFogView(float','StageFogView StageFogView::operator-(', 'StageFogView StageFogView::operator+(', 'StageFogView StageFogView::operator*(', 'StageFogView *StageFogInterpolationView::Evaluate(']:
+            program+=body('src/StageScript.cpp',signature)
+        program+=r'''
+static void check(const StageFogView &v,float start,float end,float b,float g,float r,float a){
+    assert(fabs(v.start-start)<0.0001f&&fabs(v.end-end)<0.0001f&&fabs(v.blue-b)<0.0001f&&fabs(v.green-g)<0.0001f&&fabs(v.red-r)<0.0001f&&fabs(v.alpha-a)<0.0001f);
+}
+static void reset(StageFogInterpolationView &v,int mode,int duration){
+    v.initial=StageFogView(10,20,30,40,50,60);v.final=StageFogView(18,28,38,48,58,68);
+    v.initialTangent=StageFogView(4,4,4,4,4,4);v.finalTangent=StageFogView(8,8,8,8,8,8);
+    v.mode=mode;v.duration=duration;v.timer.flags=0;v.timer.SetCurrent(0);
+}
+int main(){
+    StageFogView boundaries(1,2,255.99f,256.01f,-1.9f,-0.9f);
+    assert(boundaries.color==0x00ff00ff);
+    StageFogView below(1,2,std::nextafter(1.0f,0.0f),1.0f,std::nextafter(1.0f,2.0f),2.75f);
+    assert(below.color==0x02010100);
+    StageFogView a(2,4,6.5f,8.5f,10.5f,12.5f),b(1,2,1.25f,2.25f,3.25f,4.25f);
+    StageFogView add=a+b;check(add,3,6,7.75f,10.75f,13.75f,16.75f);assert(add.color==0x100d0a07);
+    StageFogView sub=a-b;check(sub,1,2,5.25f,6.25f,7.25f,8.25f);assert(sub.color==0x08070605);
+    StageFogView mul=a*2;check(mul,4,8,13,17,21,25);assert(mul.color==0x1915110d);
+    StageFogInterpolationView v{};StageFogView out;
+    reset(v,0,4);assert(v.Evaluate(&out)==&out);check(out,12,22,32,42,52,62);assert(out.color==0x3e342a20&&v.timer.current==1);
+    reset(v,1,4);v.Evaluate(&out);check(out,10.5f,20.5f,30.5f,40.5f,50.5f,60.5f);assert(out.color==0x3c32281e);
+    reset(v,8,4);v.timer.SetCurrent(1);v.Evaluate(&out);check(out,13.5f,23.5f,33.5f,43.5f,53.5f,63.5f);assert(out.color==0x3f352b21);
+    // Nonbinary t exposes grouped 3-(t+t) versus sequential subtraction in the host model.
+    // Native x87 spill/reload equivalence is established by instruction review, not this host test.
+    reset(v,8,10);v.initial=StageFogView(0,0,0,0,0,0);v.final=StageFogView(1000000,2000000,100,200,300,400);
+    v.initialTangent=StageFogView(0,0,0,0,0,0);v.finalTangent=v.initialTangent;
+    v.Evaluate(&out);float t=v.timer.subframe/10.0f;float twice=t+t;
+    float groupedWeight=(3.0f-twice)*t*t;float sequentialWeight=(3.0f-t-t)*t*t;
+    assert(groupedWeight!=sequentialWeight&&out.start==1000000*groupedWeight&&out.start!=1000000*sequentialWeight);
+    assert(out.end==2000000*groupedWeight&&out.blue==100*groupedWeight&&out.green==200*groupedWeight&&out.red==300*groupedWeight&&out.alpha==400*groupedWeight);
+    // Explanatory representation witness: target arithmetic FST stores rounded1,
+    // then __ftol2 consumes the retained value below1 and packs0. This is not an
+    // assertion that the host-compiled StageFog operator preserves x87 precision.
+    long double retained=1.0L-std::ldexp(1.0L,-26);float stored=static_cast<float>(retained);
+    assert(stored==1.0f&&static_cast<int>(retained)==0&&static_cast<int>(stored)==1);
+    reset(v,7,0);v.Evaluate(&out);check(out,28,48,68,88,108,128);check(v.initial,28,48,68,88,108,128);assert(v.timer.current==0&&out.color==0x806c5844);
+    reset(v,17,0);v.Evaluate(&out);check(out,18,28,38,48,58,68);check(v.finalTangent,26,36,46,56,66,76);assert(v.timer.current==0);
+    v.Evaluate(&out);check(out,44,64,84,104,124,144);
+    for(int mode=0;mode<=17;++mode){
+        reset(v,mode,1);v.initial.color=0x11223344;v.final.color=0xaabbccdd;
+        v.Evaluate(&out);assert(v.duration==0&&v.timer.current==1&&v.timer.previous==0&&v.timer.subframe==1);
+        if(mode==7){check(out,10,20,30,40,50,60);assert(out.color==0x11223344);}else{check(out,18,28,38,48,58,68);assert(out.color==0xaabbccdd);}
+    }
+    reset(v,0,4);float slow=0.5f;v.timer.scale=&slow;v.Evaluate(&out);check(out,11,21,31,41,51,61);assert(v.timer.current==0&&v.timer.subframe==0.5f&&v.timer.scale==&slow);
+    reset(v,15,4);v.Evaluate(&out);check(out,10,20,30,40,50,60);
+    reset(v,16,4);v.Evaluate(&out);check(out,18,28,38,48,58,68);
+    reset(v,99,4);v.Evaluate(&out);check(out,12,22,32,42,52,62);
+    return 0;
+}
+'''
+        (ROOT/'build').mkdir(exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='stage-fog-',dir=ROOT/'build') as directory:
             src=Path(directory)/'test.cpp';binary=Path(directory)/'test';src.write_text(program)
             subprocess.run([shutil.which('c++'),'-std=c++11','-O0',str(src),'-o',str(binary)],check=True)
             subprocess.run([str(binary)],check=True)

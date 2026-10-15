@@ -16,14 +16,17 @@ struct StageFogView
     unsigned int color;
     StageFogView() {}
     StageFogView(float start, float end, float blue, float green, float red, float alpha);
+    StageFogView operator-(const StageFogView &other) const;
+    StageFogView operator+(const StageFogView &other) const;
+    StageFogView operator*(float scale) const;
 };
 struct StageFogInterpolationView
 {
     StageFogView initial, final, initialTangent, finalTangent;
     AnmVmTimerView timer;
     int duration, mode;
-    // Target 0x004049A0: EBX receiver, stack output, RET4. Declaration alone
-    // does not validate the private ABI or establish implementation closure.
+    // Target 0x004049A0: EBX receiver, stack output, RET4. Emitted ABI and
+    // extended-precision conversion behavior require independent comparison.
     StageFogView *Evaluate(StageFogView *output);
 };
 struct StageCameraStateView
