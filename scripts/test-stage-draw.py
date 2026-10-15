@@ -86,13 +86,14 @@ int main(){
  assert(cull(c,o,p,0)==0);
  float nan=std::numeric_limits<float>::quiet_NaN();
  assert(cull(c,o,p,nan)==0); // unordered distance comparison does not reject
- // No depth-valid vertices; exact far depth 1 is excluded, near depth 0 included.
- for(int i=0;i<8;++i)fixture[i].z=1;assert(cull(c,o,p,0)==1);
+ // Both exact depth boundaries are included; the next float above1 is excluded.
+ for(int i=0;i<8;++i)fixture[i].z=1;assert(cull(c,o,p,0)==0);
+ for(int i=0;i<8;++i)fixture[i].z=std::nextafter(1.0f,std::numeric_limits<float>::infinity());assert(cull(c,o,p,0)==1);
  for(int i=0;i<8;++i)fixture[i].z=-0.1f;assert(cull(c,o,p,0)==1);
  for(int i=0;i<8;++i)fixture[i].z=nan;assert(cull(c,o,p,0)==1);
  for(int i=0;i<8;++i)fixture[i].z=0;assert(cull(c,o,p,0)==0);
  // The original else-if extrema means a lone point only updates minima.
- for(int i=0;i<8;++i)fixture[i].z=1;fixture[0].z=0;assert(cull(c,o,p,0)==1);
+ for(int i=0;i<8;++i)fixture[i].z=std::nextafter(1.0f,std::numeric_limits<float>::infinity());fixture[0].z=0;assert(cull(c,o,p,0)==1);
  visible();
  for(float x: {32.0f,416.0f}){for(int i=0;i<8;++i)fixture[i].x=x;assert(cull(c,o,p,0)==0);}
  for(float x: {31.999f,416.001f}){for(int i=0;i<8;++i)fixture[i].x=x;assert(cull(c,o,p,0)==1);}
@@ -100,6 +101,21 @@ int main(){
  for(float y: {16.0f,464.0f}){for(int i=0;i<8;++i)fixture[i].y=y;assert(cull(c,o,p,0)==0);}
  for(float y: {15.999f,464.001f}){for(int i=0;i<8;++i)fixture[i].y=y;assert(cull(c,o,p,0)==1);}
  visible();for(int i=0;i<8;++i)fixture[i].x=nan;assert(cull(c,o,p,0)==1);
+ // Precision witnesses are models, not execution of the original or pinned image.
+ // The actual host source also checks the float32 center-rounding expectation.
+ StageCameraStateView savedC=c;StageObjectView savedO=o;AnmFloat3View savedP=p;
+ c={};c.position.x=16777216.0f;o.position=AnmFloat3View(16777216.0f,0,0);p=AnmFloat3View(1,0,0);visible();
+ assert(cull(c,o,p,0)==0);
+ long double wideCenter=16777216.0L+1.0L;
+ float roundedCenter=static_cast<float>(wideCenter);
+ assert(roundedCenter==16777216.0f&&wideCenter-16777216.0L==1.0L);
+ // x87 64-significand-bit accumulation distinguishes (Z2+Y2)+X2 from (X2+Y2)+Z2.
+ if(std::numeric_limits<long double>::digits==64){
+  long double big=18446744073709551616.0L,one=1.0L;
+  long double targetSum=(one+one)+big,oldSum=(big+one)+one;
+  assert(targetSum>big&&oldSum==big);
+ }
+ c=savedC;o=savedO;p=savedP;
  // Actual caller: signed layer, per-instance culling, primitive order, fog and draw counters.
  ObjectData data={};data.layer=255;data.extent=AnmFloat3View(2,4,6);data.end.type=-1;
  for(int i=0;i<3;++i){data.p[i].header.type=0;data.p[i].header.byteSize=sizeof(StageQuadPrimitiveView);data.p[i].header.vmIndex=i;data.p[i].position=AnmFloat3View(1+i,2+i,3+i);}

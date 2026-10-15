@@ -60,12 +60,17 @@ int StageBoundsCulled(const StageCameraStateView *camera,
     const StageObjectView *object, const AnmFloat3View *position,
     float distanceSquared)
 {
-    AnmFloat3View center = object->position + *position;
+    // Reuse the aggregate: pinned VC7.1 must round center and delta XYZ
+    // through float storage before the distance test (target 0x40309E..0x403139).
+    AnmFloat3View delta;
+    delta = object->position + *position;
     AnmFloat3View eye(camera->position.x + camera->rockingOffset,
         camera->position.y + camera->rockingOffsetY,
         camera->position.z + camera->rockingOffsetZ);
-    AnmFloat3View delta = center - eye;
-    if (delta.z * delta.z + delta.y * delta.y + delta.x * delta.x > distanceSquared)
+    delta = delta - eye;
+    // In this pinned graph the ordinary XYZ dot expression evaluates Z,Y,X,
+    // matching the target x87 accumulation; host reassociation is not proof.
+    if (delta.x * delta.x + delta.y * delta.y + delta.z * delta.z > distanceSquared)
         return 1;
 
     AnmFloat3View half = object->extent * 0.5f;
@@ -92,7 +97,7 @@ int StageBoundsCulled(const StageCameraStateView *camera,
     float minimumY = 472.0f, maximumY = 8.0f;
     for (int i = 0; i < 8; ++i)
     {
-        if (projected[i].z >= 0.0f && projected[i].z < 1.0f)
+        if (projected[i].z >= 0.0f && projected[i].z <= 1.0f)
         {
             if (projected[i].x < minimumX)
                 minimumX = projected[i].x;

@@ -840,7 +840,7 @@ scale alias storage, other private dependencies and product runtime remain open.
 0x403090/1984 is projected stage-object visibility, not player collision.
 Camera EAX, object ECX, instance XYZ EDX, stack squared limit/RET4. Eight
 half-extent corners use instance translation and camera view/projection/viewport.
-Depth0<=z<1, original else-if extrema and inclusive overlap32..416,16..464 are
+Depth0<=z<=1, original else-if extrema and inclusive overlap32..416,16..464 are
 preserved; unordered distance does not early-reject. 0x403A30/592 takes stage and
 signed layer on stack/RET8, walks16-byte instances until negative index, culls
 then draws type0 primitives. Render-mode bits>=0x1000000 enable position and
@@ -857,3 +857,11 @@ by normalized direction-cross-up and post-call renderer reload/shake publication
 Native unsigned aspect conversion uses FILD plus2^32 correction and divides
 before float spill. Actual-source host fixtures establish bounded call/state
 behavior only; D3DX math, alias storage and product runtime remain open.
+
+Stage bounds correction: target depth interval is inclusive0<=Z<=1. Earlier
+strict-upper-bound interpretation was wrong; TEST AH,41 / JP after FCOMP1 accepts
+equality and rejects unordered. All eight candidate checks now reproduce it.
+Target rounds center and delta XYZ separately through float32 before its native
+(Z²+Y²)+X² distance comparison. Reused ordinary aggregate assignments and XYZ
+source dot expression restore those boundaries/order in the pinned compiler.
+Independent actual-PE review passed; whole1925/1984 owner still nonexact.

@@ -622,7 +622,7 @@ full authored owners0x403090/1984 and0x403A30/592 in StageDraw.cpp. Fresh raw
 hash-checked target decode, not the stack-corrupted decompile, establishes the
 camera/object/instance contracts. Bounds compares center displacement with
 squared distance, projects eight corners in binary XYZ sign order, admits only
-0<=z<1, preserves original else-if extrema and inclusive32..416/16..464 overlap.
+0<=z<=1, preserves original else-if extrema and inclusive32..416/16..464 overlap.
 NaN distance does not early-reject; NaN projected depth is excluded. Return0 is
 visible. Natural source/host fixtures do not close all x87 spill precision.
 
@@ -689,3 +689,38 @@ guarded draw entry0x401940. Camera330/330,260raw250/290comparable; bounds1855/19
 complete and full decode; all nonexact. No separate helper credit or Factory
 promotion. Evidence .analysis/gpt-dots-stage-draw/camera.json, camera-target.txt,
 camera-candidate.txt, camera-test-reviewed.log, camera-stage-tests.log.
+
+Stage bounds precision and depth correction (2026-10-15, gpt-dots): independent
+native review exposed two substantive gaps in the first source, now corrected.
+Target rounds all center XYZ sums and all delta XYZ differences through float32
+storage before the squared-distance test. Reusing one ordinary Float3 aggregate
+for center then delta restores those six boundaries; an ordinary XYZ dot-product
+expression emits the target native (Z*Z+Y*Y)+X*X accumulation in this pinned graph.
+Two bounded controls only, no volatile, forced calls, flag or padding changes.
+Geometry prefix through projection return was845target/702firstcandidate; the
+other143-byte gap was not all register coloring. Corner identities and extrema
+behavior remain unchanged. Full code still differs, so no exact claim.
+
+Precision witnesses are explicitly models: center16777216+1 rounded tofloat
+before subtracting16777216 yields0 rather than retained1; with squared X=2^64
+and Y=Z=1, x87 64-significand-bit target grouping yields2^64+2 while the old
+ordering can yield2^64. Host tests illustrate these distinctions and actual
+host center behavior, not execution of the pinned binary. Native decoded
+instructions, independently reviewed, establish the retained target sequence.
+
+Correction to earlier notes/review: depth upper bound is INCLUSIVE1.0, not
+strictly less than1. After FCOMP1, target TEST AH,41 / JP skip admits equality
+(AH=40 has odd parity). The previous strict-depth conclusion and fixture were
+wrong. Current source uses0<=Z<=1; all eight native checks now match the target
+branch semantics, including NaN exclusion. Fixtures accept1 and reject the next
+representable float above1; invalid/lone-point fixtures use that latter value.
+Historical commits were not rewritten; current documentation is corrected.
+
+Final image18ee0f848d0e8eefd57bbe745b4c28f32638505d31272a690f03151a83fe93e6,
+guarded draw entry0x401990. Bounds1925/1984,146raw144/1864comparable; caller564/592,
+57raw53/520; camera330/330,260raw250/290. Normalization complete/full decode but
+nonexact, target bounds RET4 versus candidate RET remains open. All six round
+boundaries and native sum order survive the depth correction. Evidence under
+.analysis/gpt-dots-stage-draw: aggregate-delta.json, aggregate-xyz.json,
+inclusive-depth.json, inclusive-native.txt, depth-test.log. Final independent
+review passed; zero exact credit and all prior closure caveats remain.
