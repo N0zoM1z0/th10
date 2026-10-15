@@ -31,6 +31,7 @@ class StageScriptState(unittest.TestCase):
 #include <string>
 #include <cmath>
 #include <cstddef>
+#define __fastcall
 #define __stdcall
 static float g_AnmGameSpeed=1.0f;
 struct AnmMatrixView {float values[16];};

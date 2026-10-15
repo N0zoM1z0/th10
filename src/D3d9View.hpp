@@ -96,6 +96,10 @@ typedef long (__stdcall *D3d9SetRenderState)(
     D3d9DeviceView *device,
     unsigned int state,
     unsigned int value);
+struct D3d9ClearRectView { int left, top, right, bottom; };
+typedef long (__stdcall *D3d9Clear)(D3d9DeviceView *device,
+    unsigned int count, const D3d9ClearRectView *rectangles, unsigned int flags,
+    unsigned int color, float z, unsigned int stencil);
 typedef long (__stdcall *D3d9SetViewport)(
     D3d9DeviceView *device, const void *viewport);
 typedef long (__stdcall *D3d9SetTransform)(
@@ -152,7 +156,8 @@ struct D3d9DeviceVtableView
     D3d9UpdateSurface UpdateSurface;             // +0x078
     void *slots07CTo08C[5];
     D3d9CreateOffscreenPlainSurface CreateOffscreenPlainSurface; // +0x090
-    void *slots094To0AC[7];
+    void *slots094To0A8[6];
+    D3d9Clear Clear;                            // +0x0AC
     D3d9SetTransform SetTransform;               // +0x0B0
     void *slots0B4To0B8[2];
     D3d9SetViewport SetViewport;                 // +0x0BC
@@ -353,3 +358,6 @@ enum D3d9ViewConstants
 
 typedef char D3d9SetViewportAt0BC[
     (offsetof(D3d9DeviceVtableView, SetViewport) == 0xbc) ? 1 : -1];
+
+typedef char D3d9ClearAt0AC[
+    (offsetof(D3d9DeviceVtableView, Clear) == 0xac && sizeof(D3d9ClearRectView) == 16) ? 1 : -1];

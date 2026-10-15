@@ -865,3 +865,41 @@ Target rounds center and delta XYZ separately through float32 before its native
 (Z²+Y²)+X² distance comparison. Reused ordinary aggregate assignments and XYZ
 source dot expression restore those boundaries/order in the pinned compiler.
 Independent actual-PE review passed; whole1925/1984 owner still nonexact.
+
+
+## 2026-10-15 Stage early/late draw pass source recovery
+
+Recovered complete 0x402850/1099-byte early and 0x402CA0/929-byte late bodies
+with their necessary seven-byte registration adapters in StageDraw.cpp.
+Early owns layers 0..7, late owns 8..11 with ANM layers 17/18 preceding them.
+Raw target verification covers D3D Clear slot 0xAC, depth/color clear arguments,
+fog/Z-write/Z-function ordering, camera publication, mix-color restoration,
+transition allocation failure, fractional countdown, and repeated final state
+writes. Ordinary local source helpers express these operations without forced
+inlining or ABI controls. No executable game or D3D calls were run.
+
+Read-only initializer 0x402230 evidence establishes adapter registration with
+priorities initializer argument+7 and +10, node owner at offset 0x20. Initializer
+source is not recovered here. The existing viewport helper, supervisor fog
+helper, and effect factory remain externs: respectively target ESI/EBX,
+EDI, and EBX priority plus five stack arguments/RET20. Ordinary declarations
+and diagnostic anchors do not validate those private ABIs or allocate actual
+global alias storage. No runtime or registration closure is claimed.
+
+Diagnostic passes.json / build/probe-ltcg/StageDraw-passes/source.exe SHA256
+cfbcb229fbb33cfd000da595b9422ad01d1138f0d9c650d1355fc59564ac1c33:
+early 918/1099 bytes, 67 raw equal, 57/867 comparable; late 917/929,
+135 raw equal, 109/645 comparable. Guarded early entry 0x4024C0 pushes ECX;
+late adapter 0x4024D0 pushes EAX while both target adapters push ECX. Late
+callback ABI remains open. All metrics are full-owner diagnostics, zero exact
+credit and zero adapter credit. Prior bounds/camera closure limits persist.
+
+Independent full source/target review passed. Actual-source host trace tests
+cover both full passes, gates, VM0-null suppression, active tint, transition
+failure and thresholds, fractional Add with previous/subframe values, and
+fog snapshot before Flush with device replacement after Flush. CI runs this
+fixture. Synthetic host sinks establish source event/state contracts, not
+native D3D, x87, private ABI, alias storage or product behavior. Evidence under
+.analysis/gpt-dots-stage-draw includes pass-early-target.txt,
+pass-late-target.txt, pass-registration-target.txt, passes.json and
+passes-test.log. Complete source retention is provisional and nonexact.

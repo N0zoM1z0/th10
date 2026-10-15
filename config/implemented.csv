@@ -913,3 +913,5 @@ StageFogView::operator+
 StageBoundsCulled
 StageDrawInstances
 StageConfigureCamera
+StageDrawEarly
+StageDrawLate

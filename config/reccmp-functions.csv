@@ -914,3 +914,5 @@ StageFogView::operator+,0x00404E10,function
 StageBoundsCulled,0x00403090,function
 StageDrawInstances,0x00403A30,function
 StageConfigureCamera,0x004215A0,function
+StageDrawEarly,0x00402850,function
+StageDrawLate,0x00402CA0,function

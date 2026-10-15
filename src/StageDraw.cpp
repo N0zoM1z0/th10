@@ -177,3 +177,195 @@ int __stdcall StageDrawInstances(StageScriptView *stage, int layer)
     }
     return 0;
 }
+
+// Target0x405300: ESI supervisor, EBX viewport index. Existing Main spelling
+// retains the logical index; an ordinary extern does not close its private ABI.
+void MainConfigureGameplayViewport(int viewportIndex);
+struct MainSupervisorView;
+extern MainSupervisorView g_MainSupervisorView;
+// Target0x420CD0: EDI supervisor, clears the full-dword fog cache if necessary.
+void StageDisableSupervisorFog(MainSupervisorView *supervisor);
+// Target0x43C8B0: EBX draw priority plus five stack arguments, RET20. The
+// allocation/registration implementation remains external; the caller ignores
+// allocation failure and still proceeds with its transition state writes.
+void *StageCreateTransitionEffect(int drawPriority, int kind, int frames,
+    unsigned int value0, unsigned int value1, unsigned int value2);
+
+static void StageSetRenderState(unsigned int state, unsigned int value)
+{
+    g_AnmRenderManagerView->FlushVertexBuffer();
+    g_Direct3DDevice->vtable->SetRenderState(g_Direct3DDevice, state, value);
+}
+static void StageSetFogState(int value)
+{
+    if (g_StageFogEnabled != value)
+    {
+        g_AnmRenderManagerView->FlushVertexBuffer();
+        g_StageFogEnabled = value;
+        g_Direct3DDevice->vtable->SetRenderState(g_Direct3DDevice, 28, value);
+    }
+}
+static void StageInstallPublishedCamera()
+{
+    g_AnmViewportOwner = reinterpret_cast<AnmViewportOwnerView *>(&g_StagePublishedCamera);
+    StageConfigureCamera(&g_StagePublishedCamera);
+    g_Direct3DDevice->vtable->SetViewport(g_Direct3DDevice, &g_AnmViewportOwner->viewport);
+    g_StageViewportConfigured = 0;
+}
+static unsigned int StageFloatBits(float value)
+{
+    union { float value; unsigned int bits; } converted;
+    converted.value = value;
+    return converted.bits;
+}
+static void StagePublishFog(StageScriptView *stage)
+{
+    StageSetRenderState(34, stage->camera.fog.color);
+    StageSetRenderState(36, StageFloatBits(stage->camera.fog.start));
+    StageSetRenderState(37, StageFloatBits(stage->camera.fog.end));
+}
+static void StageRestoreMixColor(StageScriptView *stage)
+{
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    manager->useMixColor = 0;
+    manager->mixColor.value = 0x80808080;
+    if (stage->auxiliaryActive != 0)
+    {
+        manager->useMixColor = 1;
+        manager->mixColor.value = 0xff404040;
+    }
+}
+
+// Target0x402850/1099, stack owner/RET4. Registered through the real ECX
+// adapter0x403060. This early draw pass owns instance layers0 through7.
+int __stdcall StageDrawEarly(StageScriptView *stage)
+{
+    if ((stage->flags & 8) != 0)
+        return 1;
+    if ((stage->flags & 4) == 0 || stage->transitionTimer.current < 60)
+    {
+        g_AnmRenderManagerView->FlushVertexBuffer();
+        stage->camera.value0E8 = g_StagePublishedCamera.value0E8;
+        stage->camera.value0EC = g_StagePublishedCamera.value0EC;
+        g_StagePublishedCamera = stage->camera;
+        StageInstallPublishedCamera();
+        StageSetRenderState(14, 1);
+        StageSetRenderState(23, 4);
+        StagePublishFog(stage);
+        g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 0, NULL, 2, 0, 1.0f, 0);
+        D3d9ClearRectView rectangle = {32, 16, 416, 464};
+        if ((stage->flags & 4) != 0 && stage->frame < 34)
+            g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 1, &rectangle, 1, 0, 1.0f, 0);
+        else
+            g_Direct3DDevice->vtable->Clear(g_Direct3DDevice, 1, &rectangle, 1,
+                stage->camera.fog.color & 0xffffff, 1.0f, 0);
+    }
+    if ((stage->flags & 4) != 0)
+    {
+        if (stage->transitionTimer.current < 30)
+        {
+            StageCreateTransitionEffect(15, 3, 30, 0, 0, 0);
+            stage->flags |= 1;
+            stage->transitionTimer.SetCurrent(1);
+        }
+        else
+        {
+            stage->tint &= 0x00ffffff;
+            stage->flags &= ~1u;
+        }
+    }
+    if ((stage->tint >> 24) != 0)
+    {
+        g_AnmRenderManagerView->useMixColor = 1;
+        g_AnmRenderManagerView->mixColor.value = stage->tint;
+    }
+    stage->visibleObjectCount = 0;
+    stage->culledObjectCount = 0;
+    stage->drawCount = 0;
+    if ((stage->flags & 1) != 0)
+    {
+        if (stage->scriptVms[0].loadedSprite != NULL)
+        {
+            MainConfigureGameplayViewport(0);
+            StageDisableSupervisorFog(&g_MainSupervisorView);
+            g_AnmRenderManagerView->FlushVertexBuffer();
+            StageSetRenderState(14, 0);
+            for (int i = 0; i < 8; ++i)
+                if (stage->scriptVms[i].loadedSprite != NULL)
+                    g_AnmRenderManagerView->Draw(&stage->scriptVms[i]);
+            StageSetRenderState(14, 1);
+            StageInstallPublishedCamera();
+        }
+        StageSetFogState(1);
+        for (int layer = 0; layer < 8; ++layer)
+            StageDrawInstances(stage, layer);
+        g_AnmRenderManagerView->FlushVertexBuffer();
+        if (stage->unknown1EE4 != 0)
+            ++stage->unknown1EE4;
+    }
+    StageRestoreMixColor(stage);
+    StageSetRenderState(14, 0);
+    StageSetRenderState(23, 8);
+    return 1;
+}
+
+// Target0x402CA0/929, stack owner/RET4; registered ECX adapter0x403070.
+int __stdcall StageDrawLate(StageScriptView *stage)
+{
+    if ((stage->flags & 8) != 0)
+        return 1;
+    if ((stage->flags & 4) == 0 || stage->transitionTimer.current < 60)
+    {
+        g_AnmRenderManagerView->FlushVertexBuffer();
+        stage->camera.value0E8 = g_StagePublishedCamera.value0E8;
+        stage->camera.value0EC = g_StagePublishedCamera.value0EC;
+        g_StagePublishedCamera = stage->camera;
+        StageInstallPublishedCamera();
+        StageSetFogState(1);
+        StageSetRenderState(14, 0);
+        StageSetRenderState(23, 8);
+        g_AnmRenderManagerView->DrawLayer(17);
+        StageSetRenderState(23, 4);
+        StageSetFogState(0);
+        g_AnmRenderManagerView->DrawLayer(18);
+        StageSetRenderState(23, 4);
+        StagePublishFog(stage);
+    }
+    if ((stage->flags & 4) != 0 && stage->transitionTimer.current >= 30)
+        stage->tint &= 0x00ffffff;
+    if ((stage->flags & 1) != 0)
+    {
+        StageSetRenderState(14, 0);
+        StageSetFogState(1);
+        for (int layer = 8; layer < 12; ++layer)
+            StageDrawInstances(stage, layer);
+        g_AnmRenderManagerView->FlushVertexBuffer();
+    }
+    StageRestoreMixColor(stage);
+    StageSetRenderState(14, 0);
+    StageSetRenderState(23, 8);
+    if (stage->transitionTimer.current > 0)
+    {
+        stage->transitionTimer.Add(-1.0f);
+        if (stage->transitionTimer.current <= 0)
+        {
+            stage->tint |= 0xff000000;
+            if ((stage->flags & 2) != 0)
+                stage->flags |= 8;
+            stage->tint = 0x00ffffff;
+            stage->flags &= ~6u;
+        }
+    }
+    StageSetRenderState(14, 0);
+    StageSetRenderState(23, 8);
+    StageSetFogState(0);
+    return 1;
+}
+int __fastcall StageDrawEarlyCallback(StageScriptView *stage)
+{
+    return StageDrawEarly(stage);
+}
+int __fastcall StageDrawLateCallback(StageScriptView *stage)
+{
+    return StageDrawLate(stage);
+}

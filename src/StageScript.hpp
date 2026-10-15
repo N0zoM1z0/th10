@@ -110,6 +110,10 @@ int __stdcall StageExecuteScript(StageScriptView *stage);
 int StageBoundsCulled(const StageCameraStateView *camera,
     const StageObjectView *object, const AnmFloat3View *position, float distanceSquared);
 int __stdcall StageDrawInstances(StageScriptView *stage, int layer);
+int __stdcall StageDrawEarly(StageScriptView *stage);
+int __stdcall StageDrawLate(StageScriptView *stage);
+int __fastcall StageDrawEarlyCallback(StageScriptView *stage);
+int __fastcall StageDrawLateCallback(StageScriptView *stage);
 
 typedef char StageScriptLayoutChecks[
     (offsetof(StageInstructionView, args) == 8 &&
