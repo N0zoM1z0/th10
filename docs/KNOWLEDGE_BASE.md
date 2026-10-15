@@ -1176,3 +1176,7 @@ Target448D00 returns AnmVmIdView through hidden aggregate storage. The damage ca
 ### Player pending interrupt and effect-row prerequisites (2026-10-15)
 
 0x40C480 is pending interrupt2 publication to a resolved VM/root children, not deletion. It leaves the ID unchanged and does not execute ANM. Recovered PlayerSetShotVmInterrupt2 replaces the misleading delete-state declaration. Effect spawner0x427B50 selects the first inactive of32 rows, preserves full-clear/prefix-clear/sequential-copy order and returns row32 unchanged when full. Existing Player storage has33 rows. These source prerequisites support damage1170/update3089; diagnostics and tests are reviewed but no new exact credit. Effect ABI remains plainRET versus targetRET20, and the auxiliary202-byte damage owner remains unresolved.
+
+### Auxiliary Player damage owner (2026-10-15)
+
+0x4059F0 reads owner4776EC active28/position30/radius3C/mode44, game flag4776F4+378C bit0,477704+10 and474C68. Strict XY circle inside/outside selects the recovered damage return table; equality/NaNs are outside. The maintained helper naturally receives ECX/EAX in its real damage caller and reproduces the target retained-x87 numeric sequence. Helper189/202 and full damage1145/1170 remain nonexact. Shared EnemyGameState.hpp is a narrow Enemy/Player view only, with broader ODR/global storage still open; no new exact credit.

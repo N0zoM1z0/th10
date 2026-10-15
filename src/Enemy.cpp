@@ -1,3 +1,4 @@
+#include "EnemyGameState.hpp"
 #include "GameErrorContext.hpp"
 #include "Enemy.hpp"
 #include "EclVm.hpp"
@@ -282,18 +283,12 @@ struct EnemyAnimationModeView
     unsigned char unknown000[0x28];
     int value28;
 };
-struct EnemyGameStateView
-{
-    unsigned char unknown000[0x378c];
-    unsigned int flags378C;
-};
 struct EnemyVisualStateView
 {
     unsigned char unknown000[0x9da4];
     unsigned int flags9DA4;
 };
 extern EnemyAnimationModeView *g_EnemyAnimationMode;
-extern EnemyGameStateView *g_EnemyGameState;
 extern EnemyVisualStateView *g_EnemyVisualState;
 
 // Descriptive interfaces for target-observed callees. Several target machine

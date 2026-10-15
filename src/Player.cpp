@@ -1,3 +1,4 @@
+#include "EnemyGameState.hpp"
 #include "Player.hpp"
 #include "AnmVmId.hpp"
 #include "BulletManager.hpp"
@@ -140,7 +141,19 @@ struct PlayerUpdateGate28
 {
     unsigned char unknown000[0x28];
     int value28;
+    unsigned char unknown02C[4];
+    PlayerFloat3 position;
+    float radius;
+    unsigned char unknown040[4];
+    int mode;
+
+    int GetDamageAtPosition(const PlayerFloat3 *targetPosition);
 };
+typedef char PlayerAuxiliaryDamageOffsets[
+    (offsetof(PlayerUpdateGate28, position) == 0x30 &&
+     offsetof(PlayerUpdateGate28, radius) == 0x3c &&
+     offsetof(PlayerUpdateGate28, mode) == 0x44 &&
+     sizeof(PlayerUpdateGate28) == 0x48) ? 1 : -1];
 
 struct PlayerUpdateGate10
 {
@@ -292,7 +305,32 @@ void PlayerSetShotVmInterrupt2(unsigned int *vmId)
 }
 void PlayerSetShotVmDeleteState3(unsigned int *vmId);
 void PlayerMarkShotVmPending(unsigned int vmId);
-int PlayerGetAuxiliaryDamageAtPosition(const PlayerFloat3 *position);
+extern int g_GameStatisticsIndex0; // target 0x474C68, shared GameManager identity
+
+// Target 0x4059F0: read-only auxiliary damage, private ECX owner/EAX position.
+int PlayerUpdateGate28::GetDamageAtPosition(const PlayerFloat3 *targetPosition)
+{
+    if (value28 == 0)
+        return 0;
+    const float dy = targetPosition->y - position.y;
+    const float dx = targetPosition->x - position.x;
+    if (dx * dx + dy * dy < radius * radius)
+    {
+        if ((g_EnemyGameState->flags378C & 1u) != 0)
+            return mode == 0 ? 3 : 38;
+        return g_PlayerDrawGate10->value10 != 0 ? 38 : 5;
+    }
+    if ((g_EnemyGameState->flags378C & 1u) != 0)
+    {
+        if (mode == 1)
+            return g_GameStatisticsIndex0 != 0 ? 23 : 26;
+    }
+    else if (g_PlayerDrawGate10->value10 != 0 && mode == 0)
+    {
+        return g_GameStatisticsIndex0 == 0 ? 20 : 16;
+    }
+    return 0;
+}
 
 __declspec(noinline) double __stdcall PlayerFloor(float value)
 {
@@ -1370,7 +1408,7 @@ int Player::CalculateDamageToTarget(
         }
     }
 
-    damage += PlayerGetAuxiliaryDamageAtPosition(targetPosition);
+    damage += g_PlayerUpdateGate28->GetDamageAtPosition(targetPosition);
 
     for (i = 0; i < 32; ++i)
     {

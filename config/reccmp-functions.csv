@@ -926,3 +926,4 @@ EnemyScalarInterpolationView::Evaluate,0x00412AC0,function
 EnemyAdvanceMotion,0x0044C2A0,function
 PlayerSetShotVmInterrupt2,0x0040C480,function
 PlayerSpawnEffectRow,0x00427B50,function
+PlayerUpdateGate28::GetDamageAtPosition,0x004059F0,function

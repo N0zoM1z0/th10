@@ -925,3 +925,4 @@ EnemyScalarInterpolationView::Evaluate
 EnemyAdvanceMotion
 PlayerSetShotVmInterrupt2
 PlayerSpawnEffectRow
+PlayerUpdateGate28::GetDamageAtPosition

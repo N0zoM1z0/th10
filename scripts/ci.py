@@ -55,6 +55,7 @@ def main() -> int:
         run("Validate item sound owner", [sys.executable, "scripts/test-item-sound-owner.py"])
         run("Validate player damage lifetimes", [sys.executable, "scripts/test-player-damage-lifetime.py"])
         run("Validate player damage prerequisites", [sys.executable, "scripts/test-player-damage-prerequisites.py"])
+        run("Validate auxiliary player damage", [sys.executable, "scripts/test-player-auxiliary-damage.py"])
         run("Validate Player power-state transitions", [sys.executable, "scripts/test-player-update-state.py"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])

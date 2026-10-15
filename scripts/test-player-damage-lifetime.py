@@ -6,7 +6,7 @@ ROOT=Path(__file__).resolve().parents[1]
 class DamageLifetime(unittest.TestCase):
  @unittest.skipUnless(shutil.which('c++'),'host C++ compiler unavailable')
  def test_actual_descriptor_lifetimes(self):
-  text=(ROOT/'src/Player.cpp').read_text();a=text.index('int Player::CalculateDamageToTarget(');b=text.index('    damage += PlayerGetAuxiliaryDamageAtPosition',a)
+  text=(ROOT/'src/Player.cpp').read_text();a=text.index('int Player::CalculateDamageToTarget(');b=text.index('    damage += g_PlayerUpdateGate28->GetDamageAtPosition',a)
   function=text[a:b]+'    return damage;\n}\n'
   program=r'''
 #include <cassert>
