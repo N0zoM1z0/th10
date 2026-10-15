@@ -76,8 +76,6 @@ extern void MainFlushLog();
 extern void MainInitializeSystemParameters();
 extern int MainLoadConfiguration(
     const char *path, MainSupervisorView *supervisor);
-extern void MainSaveConfiguration(
-    const char *path, const void *data, int size);
 extern INT_PTR CALLBACK MainConfigurationDialogProc(
     HWND dialog, UINT message, WPARAM wparam, LPARAM lparam);
 extern void *MainCreateCallbackOwner();
@@ -297,7 +295,7 @@ stop:
         goto restart;
     }
 
-    MainSaveConfiguration(
+    FileSystem::WriteFile(
         "th10.cfg", g_MainSupervisorView.serializedConfiguration, 0x34);
     if (g_MainSupervisorView.musicOwner != NULL)
     {

@@ -889,3 +889,4 @@ SoundSetupThread,0x0043CCF0,function
 CSoundManager::SetPrimaryBufferFormat,0x0044C7E0,function
 FindWaveChunk,0x0043D250,function
 SoundPlayerView::LoadSoundSample,0x0043D390,function
+FileSystem::WriteFile,0x0044B540,function

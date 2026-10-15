@@ -141,6 +141,41 @@ int __stdcall CheckIfFileAlreadyExists(const char *path)
     return 0;
 }
 
+// Target 0x0044B540-0x0044B619. WriteFile's BOOL is deliberately ignored;
+// only the returned byte count selects the short-write error.
+int __stdcall WriteFile(const char *path, const void *data, unsigned int size)
+{
+    EnterCriticalSection(&gReplayFileCriticalSection);
+    ++gReplayFileOpenCount;
+    HANDLE handle = CreateFileA(path, GENERIC_WRITE, FILE_SHARE_READ, NULL,
+                                CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (handle == INVALID_HANDLE_VALUE)
+    {
+        LPSTR errorMessage;
+        FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
+                           FORMAT_MESSAGE_IGNORE_INSERTS,
+                       NULL, GetLastError(), 0x400,
+                       reinterpret_cast<LPSTR>(&errorMessage), 0, NULL);
+        LocalFree(errorMessage);
+        LeaveCriticalSection(&gReplayFileCriticalSection);
+        --gReplayFileOpenCount;
+        return -1;
+    }
+    DWORD bytesWritten;
+    ::WriteFile(handle, data, size, &bytesWritten, NULL);
+    if (size != bytesWritten)
+    {
+        CloseHandle(handle);
+        LeaveCriticalSection(&gReplayFileCriticalSection);
+        --gReplayFileOpenCount;
+        return -2;
+    }
+    CloseHandle(handle);
+    LeaveCriticalSection(&gReplayFileCriticalSection);
+    --gReplayFileOpenCount;
+    return 0;
+}
+
 // TH10_FILESYSTEM_FUNCTION: 0x004357D0 FileSystem::LoadArchive
 // The retained target body receives its filename through a private LTCG EAX
 // seam. This source signature records the behavior without claiming that ABI.

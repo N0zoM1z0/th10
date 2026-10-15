@@ -228,3 +228,16 @@ normalization. No partial exact credit. The negative-increment control is
 byte-neutral and reverted; the remaining eight-byte ADD/SUB and argument-setup
 scheduling cluster is parked. Helper71 and setup57 remain structurally equal
 in this diagnostic graph, without a fresh Factory receipt for this later source.
+
+## File writer checkpoint (2026-10-15)
+
+FileSystem::WriteFile at 0x0044B540 now has natural source and the genuine
+maintained WinMain configuration-save caller. Two canonical cold replays match
+all 218 bytes and 20 fields after independent review. Factory acceptance is
+pending at this checkpoint. The second target log-flush call remains an
+unresolved MainFlushLog seam; filesystem storage and runnable closure remain
+open. No file-writing runtime side effects were executed.
+
+The adjacent BGM setup241 candidate is parked because its StartupThread caller
+and 702-byte streaming helper both lack source. The213-byte streaming reset
+has likely SDK lineage requiring origin scrutiny; it was not implemented.

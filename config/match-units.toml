@@ -19185,3 +19185,39 @@ size = 71
 linkages = [
   { offset = 0x1A, type = "REL32", symbol = "_strncmp", target = 0x00452F80 },
 ]
+
+[units.filesystem-write-file]
+artifact_kind = "linked-pe"
+source = "src/FileSystem.cpp"
+support_sources = ["src/Main.cpp"]
+output_dir = "build/match-linked/FileWriteRealMain"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "WinMain@16"
+functions = ["FileSystem::WriteFile"]
+symbol = "?WriteFile@FileSystem@@YGHPBDPBXI@Z"
+target_address = 0x0044B540
+size = 218
+linkages = [
+  { offset = 0x03, type = "DIR32", symbol = "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A", target = 0x004922A4 },
+  { offset = 0x09, type = "DIR32", symbol = "__imp__EnterCriticalSection@4", target = 0x004660B0 },
+  { offset = 0x0E, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0x22, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0x32, type = "DIR32", symbol = "__imp__CreateFileA@28", target = 0x004660C4 },
+  { offset = 0x4D, type = "DIR32", symbol = "__imp__GetLastError@0", target = 0x0046610C },
+  { offset = 0x5B, type = "DIR32", symbol = "__imp__FormatMessageA@28", target = 0x00466124 },
+  { offset = 0x66, type = "DIR32", symbol = "__imp__LocalFree@4", target = 0x00466128 },
+  { offset = 0x6B, type = "DIR32", symbol = "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A", target = 0x004922A4 },
+  { offset = 0x71, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0x77, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0x90, type = "DIR32", symbol = "__imp__WriteFile@20", target = 0x004660D4 },
+  { offset = 0x9D, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+  { offset = 0xA2, type = "DIR32", symbol = "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A", target = 0x004922A4 },
+  { offset = 0xA8, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0xAE, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+  { offset = 0xBE, type = "DIR32", symbol = "__imp__CloseHandle@4", target = 0x004660CC },
+  { offset = 0xC3, type = "DIR32", symbol = "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A", target = 0x004922A4 },
+  { offset = 0xC9, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
+  { offset = 0xCF, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
+]

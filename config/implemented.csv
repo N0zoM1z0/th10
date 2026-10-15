@@ -888,3 +888,4 @@ SoundSetupThread
 CSoundManager::SetPrimaryBufferFormat
 FindWaveChunk
 SoundPlayerView::LoadSoundSample
+FileSystem::WriteFile
