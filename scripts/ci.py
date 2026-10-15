@@ -51,6 +51,7 @@ def main() -> int:
         run("Validate stage lifecycle ownership", [sys.executable, "scripts/test-stage-lifecycle.py"])
         run("Validate enemy callback scale reload", [sys.executable, "scripts/test-enemy-runtime-scale.py"])
         run("Validate enemy motion and interpolation", [sys.executable, "scripts/test-enemy-motion.py"])
+        run("Validate enemy runtime tail", [sys.executable, "scripts/test-enemy-runtime-tail.py"])
         run("Validate Player power-state transitions", [sys.executable, "scripts/test-player-update-state.py"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])

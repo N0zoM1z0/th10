@@ -5,6 +5,7 @@
 #include "PlayerCollision.hpp"
 #include "AnmManager.hpp"
 #include "GuiScore.hpp"
+#include "EnemySoundQueue.hpp"
 
 #include <math.h>
 #include <new>
@@ -26,6 +27,14 @@ typedef char EnemyPositionInterpolationMatchesAnm[
      offsetof(EnemyPositionInterpolationView, timer) == offsetof(AnmVmFloat3InterpolationView, timer) &&
      offsetof(EnemyPositionInterpolationView, duration) == offsetof(AnmVmFloat3InterpolationView, duration) &&
      offsetof(EnemyPositionInterpolationView, mode) == offsetof(AnmVmFloat3InterpolationView, mode)) ? 1 : -1];
+
+typedef char EnemyTimerMatchesAnm[
+    (sizeof(PlayerTimerView) == sizeof(AnmVmTimerView) &&
+     offsetof(PlayerTimerView, previous) == offsetof(AnmVmTimerView, previous) &&
+     offsetof(PlayerTimerView, current) == offsetof(AnmVmTimerView, current) &&
+     offsetof(PlayerTimerView, subframe) == offsetof(AnmVmTimerView, subframe) &&
+     offsetof(PlayerTimerView, scale) == offsetof(AnmVmTimerView, scale) &&
+     offsetof(PlayerTimerView, flags) == offsetof(AnmVmTimerView, flags)) ? 1 : -1];
 
 struct EnemyManagedVmView;
 struct EnemyManagedVmListNodeView
@@ -242,6 +251,8 @@ struct EnemyCriticalSectionView
     unsigned char storage[0x18];
 };
 
+// Same target storage declaration as Main.hpp and Sound.cpp.
+extern unsigned char g_MainSoundOwner[0x52d0];
 extern PlayerFloat3 g_EnemyGlobalPositionOffset;
 extern float g_EnemyPlayfieldMinX;
 extern float g_EnemyPlayfieldMaxX;
@@ -294,15 +305,8 @@ void __stdcall AnmSetVmScriptIndexAndExecute(
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
 const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     EnemyFullObjectView *owner);
-void EnemySetManagedVmPositionWithOffset(
-    unsigned int vmId, const PlayerFloat3 *position);
-void EnemySetManagedVmPositionExact(
-    unsigned int vmId, const PlayerFloat3 *position);
-EnemyManagedVmView *EnemyResolveManagedVm(unsigned int vmId);
 EnemyManagedVmView *EnemyResolveManagedVmId(unsigned int *vmId);
 float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
-void EnemySpawnDamageEffect(int kind, float positionX);
-void EnemyAdvanceTimer(PlayerTimerView *timer, float amount);
 EnemyEclInstructionView *EnemyLookupEclSubroutine(
     EnemyEclResourceView *scriptDatabase, const char *name);
 void EnemyPlayDeathSound(int soundId, float positionX);
@@ -1087,18 +1091,20 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         }
     }
 
+    // Target keeps this manager across the selected loop and the later lookup.
+    AnmRenderManagerView *const manager = g_AnmRenderManagerView;
     int i;
     if ((enemy->flags & 0x40000u) == 0)
     {
         for (i = 0; i < 8; ++i)
-            EnemySetManagedVmPositionWithOffset(
-                enemy->managedVmIds[i], &enemy->worldMotion.position);
+            manager->SetVmWorldPosition(AnmVmIdView(enemy->managedVmIds[i]),
+                reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position));
     }
     else
     {
         for (i = 0; i < 8; ++i)
-            EnemySetManagedVmPositionExact(
-                enemy->managedVmIds[i], &enemy->worldMotion.position);
+            manager->SetVmPosition(AnmVmIdView(enemy->managedVmIds[i]),
+                reinterpret_cast<const AnmFloat3View *>(&enemy->worldMotion.position));
     }
 
     if ((enemy->flags & 0x11u) == 0 &&
@@ -1116,7 +1122,8 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         }
     }
 
-    EnemyManagedVmView *primaryVm = EnemyResolveManagedVm(enemy->managedVmIds[0]);
+    EnemyManagedVmView *primaryVm = reinterpret_cast<EnemyManagedVmView *>(
+        manager->FindVm(AnmVmIdView(enemy->managedVmIds[0])));
     if (primaryVm == NULL)
         enemy->managedVmIds[0] = 0;
 
@@ -1133,7 +1140,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
         primaryVm->flags |= 0x8000u;
         enemy->damageFlashFrames = 4;
 
-        int effectKind = 0x13;
+        int soundId = 0x13;
         if ((enemy->flags & 0x8000u) != 0)
         {
             const unsigned int gameFlags = g_EnemyGameState->flags378C;
@@ -1142,21 +1149,22 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                 if ((gameFlags & 1u) == 0)
                 {
                     if (enemy->value13C8 < 900)
-                        effectKind = 0x23;
+                        soundId = 0x23;
                 }
                 else if (enemy->value13C8 < 300)
                 {
-                    effectKind = 0x23;
+                    soundId = 0x23;
                 }
             }
         }
-        EnemySpawnDamageEffect(effectKind, enemy->worldMotion.position.x);
+        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+            QueueSoundCue(soundId, enemy->worldMotion.position.x);
     }
 
     if (enemy->damageReductionTimer.current > 0)
-        EnemyAdvanceTimer(&enemy->damageReductionTimer, -1.0f);
+        reinterpret_cast<AnmVmTimerView *>(&enemy->damageReductionTimer)->Add(-1.0f);
     if (enemy->playerCollisionTimer.current > 0)
-        EnemyAdvanceTimer(&enemy->playerCollisionTimer, -1.0f);
+        reinterpret_cast<AnmVmTimerView *>(&enemy->playerCollisionTimer)->Add(-1.0f);
 
     enemy->updateTimer.previous = enemy->updateTimer.current;
     const float updateScale = *enemy->updateTimer.scale;

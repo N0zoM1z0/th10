@@ -1,3 +1,4 @@
+#include "EnemySoundQueue.hpp"
 #include "Enemy.hpp"
 #include "EnemyLaser.hpp"
 #include "EclVm.hpp"
@@ -768,17 +769,7 @@ struct EnemySoundCueMetadataView
     short cueValue;
 };
 
-struct EnemySoundQueueView
-{
-    unsigned char unknown000[0x408];
-    int cueValues[134];
-    int activeSoundIds[12];
-    int sampleCounts[12];
-    int samples[12][128];
 
-    __declspec(noinline) void QueueSoundCue(int soundId, float positionX);
-    __declspec(noinline) void QueueSoundSample(int soundId, int sample);
-};
 
 extern EnemySoundCueMetadataView g_EnemySoundCueMetadata[];
 

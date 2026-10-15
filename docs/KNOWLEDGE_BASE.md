@@ -1117,3 +1117,46 @@ precise threshold/alias behavior or host trig/native equivalence. The fixture
 uses a static zero-initialized interpolation seed copied before setup, avoiding
 indeterminate flag reads by the maintained constructor; production is unchanged.
 CI includes the test. No exact numerator or denominator change.
+
+
+## 2026-10-15 Enemy runtime tail receiver identities
+
+The two eight-VM loops now call existing ANM world/screen-position setters and
+reuse the same cached manager through the later FindVm, matching target EBX
+lifetime after loading491C10. The falsely named EnemySpawnDamageEffect alias
+is replaced with the actual sound QueueSoundCue call on492590; sound selection
+and publication precede both existing ANM timer Add(-1) calls. Null VM clears
+stored id, but flash/damage gates still require a valid VM just as target;
+this is not a blanket null-safety repair. Partial VM/timer reinterpret views
+and global aliases/storage remain unclosed.
+
+Existing queue class is shared among Enemy, EnemyEclDispatcher and Item via
+EnemySoundQueue.hpp, with no method implementation change. This is not repo-wide
+ODR closure: EnemyLaser/BulletManager/BulletRuntime retain distinct preexisting
+views outside this graph. Item also retains its preexisting pointer declaration
+for g_MainSoundOwner while Main/Sound/Enemy use array storage; this important
+identity risk is queued for its own target audit, not silently repaired here.
+The header therefore shares only the class. Item's affected TU compiles pinned.
+
+Real graph now includes EnemyEclDispatcher for sound/angle helpers in addition
+to EclVm, EnemyCallback, AnmManager and Gui. Same-context baseline2326/2412
+(raw205,193/2152 comparable), final2356/2412 (raw187,175/2144 comparable).
+Full decode/normalization complete, no exact claim. Final PE
+b66b83e834400966e44baa02a3353e8923b2b099b2baaf38d915889d39f68056,
+guarded EnemyManagerUpdateCallback entry4032A0. Evidence is
+.analysis/gpt-dots-enemy-runtime/tail-final.json and tail-final-native.txt.
+Actual native calls retain EDX manager/ESI position/stack-id setters and FindVm,
+ESI sound-owner/EBX sound-id/stack-position queue, and ESI timer/stack-delta Add.
+Existing helper exact status is not new credit. Earlier interpolation numeric
+mismatches remain open; adding real sources does not establish runnable closure.
+
+Independent full owner/source/native/test review passed. Actual tail, maintained
+setter bodies and timer Add are tested with synthetic lookup/sound boundaries:
+first lookup replaces the global manager yet all nine calls use the captured
+receiver; root-child propagation, non-root suppression, both position spaces,
+missing VM with mutation gates off, sound thresholds and timer gating, and sound
+mutating timer before fractional decrement are exercised. The sound fixture
+owns a real object behind a synthetic byte pointer; it does not prove production
+array storage/alias lifetimes. Player selection and dangerous null-gated paths
+are not fully covered, and host tests do not establish x87 equivalence.
+No exact numerator/denominator changes.

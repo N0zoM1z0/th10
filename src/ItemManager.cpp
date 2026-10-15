@@ -1,3 +1,4 @@
+#include "EnemySoundQueue.hpp"
 #include "GuiScore.hpp"
 #include <stddef.h>
 #include <math.h>
@@ -201,17 +202,7 @@ extern float g_ItemAlphaFull;
 // and Enemy owners. These views do not establish original class/TU identities.
 
 
-struct EnemySoundQueueView
-{
-    unsigned char unknown000[0x408];
-    int cueValues[134];
-    int activeSoundIds[12];
-    int sampleCounts[12];
-    int samples[12][128];
 
-    __declspec(noinline) void QueueSoundCue(int soundId, float positionX);
-    __declspec(noinline) void QueueSoundSample(int soundId, int sample);
-};
 
 struct ItemAutoCollectGateView
 {
