@@ -1201,3 +1201,23 @@ prove pinned x87 execution, nor claim the old source fails on SSE hosts.
 Target outer-bound half extents still have different spill placement, and the
 remaining effect geometry/full owner have not gained numeric or ABI closure.
 No authored exact credit is added.
+
+### Rotated effect target-size lifetime (2026-10-15)
+
+The damage owner's rotated-effect branch reloads targetSize after shot callbacks
+(target pointer428956, X428996, Y4289D8 after X tests). Reusing the entry-time
+half extents was a semantic stale-read error when a mutable callback changes
+the underlying non-const size object. The corrected branch reads X and Y at
+their separate use points, while axis-aligned effects intentionally retain the
+original rounded min/max bounds. There are no opaque calls between the X/Y
+reads; FSIN/FCOS precede both. Actual-source host fixtures use a valid global
+alias, distinguish rotated versus axis-aligned results, and the saved old source
+compiles then fails the rotated assertion. This proves the source lifetime
+contract, not that a particular production callback performs this mutation.
+
+The changed lifetime naturally removes initial half-extent spills and restores
+the observed target private boundary in this graph: ECX optional flag, stack
+Player/position/size, RET12. Real caller4054F9 pushes size, position and owner,
+then zeros ECX. Prior shot min/max boundaries remain intact. Full owner remains
+1162/1170 nonexact, raw70 and68/1066 comparable, complete decode/normalization.
+Other geometry rounding/order, helper conventions and storage remain open.

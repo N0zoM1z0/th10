@@ -1456,12 +1456,19 @@ int Player::CalculateDamageToTarget(
             const float cosine = (float)cos(-(double)row->angle);
             const float rotatedX = cosine * dx - sine * dy;
             const float rotatedY = cosine * dy + sine * dx;
+            // Unlike the cached axis-aligned bounds, rotated collision reads
+            // the current target size after the shot callbacks have run.
+            const float rotatedTargetHalfX = targetSize->x * 0.5f;
             const float halfExtentX = row->extentX * 0.5f;
+            if (-halfExtentX > rotatedTargetHalfX + rotatedX ||
+                halfExtentX < rotatedX - rotatedTargetHalfX)
+            {
+                continue;
+            }
+            const float rotatedTargetHalfY = targetSize->y * 0.5f;
             const float halfExtentY = row->extentY * 0.5f;
-            if (-halfExtentX > targetHalfX + rotatedX ||
-                halfExtentX < rotatedX - targetHalfX ||
-                -halfExtentY > targetHalfY + rotatedY ||
-                halfExtentY < rotatedY - targetHalfY)
+            if (-halfExtentY > rotatedTargetHalfY + rotatedY ||
+                halfExtentY < rotatedY - rotatedTargetHalfY)
             {
                 continue;
             }
