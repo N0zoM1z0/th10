@@ -35,14 +35,14 @@ struct StageCameraStateView
     AnmFloat3View direction;
     AnmFloat3View up;
     AnmFloat3View normalizedDirection;
-    unsigned char unknown030[0x0c];
+    AnmFloat3View cameraRight;
     float rockingOffset;
     float rockingOffsetY, rockingOffsetZ;
     float value048;
     AnmMatrixView viewMatrix, projectionMatrix;
     AnmViewportView viewport;
     unsigned char unknown0E4[4];
-    int value0E8, value0EC;
+    float value0E8, value0EC;
     AnmFloat3View positionDelta;
     StageFogView fog;
 };
@@ -118,6 +118,9 @@ typedef char StageScriptLayoutChecks[
      offsetof(StageFogInterpolationView, timer) == 0x70 &&
      offsetof(StageFogInterpolationView, duration) == 0x84 &&
      sizeof(StageCameraStateView) == 0x118 &&
+     offsetof(StageCameraStateView, cameraRight) == 0x30 &&
+     offsetof(StageCameraStateView, value0E8) == 0xe8 &&
+     offsetof(StageCameraStateView, value0EC) == 0xec &&
      offsetof(StageCameraStateView, viewMatrix) == 0x4c &&
      offsetof(StageCameraStateView, projectionMatrix) == 0x8c &&
      offsetof(StageCameraStateView, viewport) == 0xcc &&

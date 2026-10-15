@@ -848,3 +848,12 @@ nonzero dimension scaling; mode0x2000000 enables fog, with flush before changed
 full-dword state. Camera setup0x4215A0, globals/view alias storage and native
 x87/D3DX precision remain open. Independently reviewed source and synthetic
 projection fixtures receive zero exact credit; complete diagnostics mismatch.
+
+Stage camera setup0x4215A0/330 is now maintained and connected to the real draw
+caller: EDI/plainRET naturally recovered, but complete comparison nonexact.
+Eye=position+rocking, at=position+direction, left-handed LookAt and perspective,
+FOV+48, unsigned viewport width/height, near30/far1800, transforms2 then3, followed
+by normalized direction-cross-up and post-call renderer reload/shake publication.
+Native unsigned aspect conversion uses FILD plus2^32 correction and divides
+before float spill. Actual-source host fixtures establish bounded call/state
+behavior only; D3DX math, alias storage and product runtime remain open.

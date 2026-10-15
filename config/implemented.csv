@@ -912,3 +912,4 @@ StageFogView::operator*
 StageFogView::operator+
 StageBoundsCulled
 StageDrawInstances
+StageConfigureCamera

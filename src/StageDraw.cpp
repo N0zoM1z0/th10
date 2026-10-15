@@ -15,8 +15,44 @@ extern int g_StageViewportConfigured; // 0x491FB0, same storage as Main +0x388
 // Target accesses a full dword. Main's existing byte view at this address is
 // not widened here; neither extern supplies allocated/alias-coherent storage.
 extern int g_StageFogEnabled; // 0x492378
-// Target 0x4215A0 uses EDI camera; this ordinary declaration is not ABI proof.
-void StageConfigureCamera(StageCameraStateView *camera);
+extern "C" AnmMatrixView *__stdcall D3DXMatrixLookAtLH(
+    AnmMatrixView *output, const AnmFloat3View *eye,
+    const AnmFloat3View *at, const AnmFloat3View *up);
+extern "C" AnmMatrixView *__stdcall D3DXMatrixPerspectiveFovLH(
+    AnmMatrixView *output, float fieldOfView, float aspect, float nearZ, float farZ);
+extern "C" AnmFloat3View *__stdcall D3DXVec3Normalize(
+    AnmFloat3View *output, const AnmFloat3View *input);
+
+// Target 0x4215A0-0x4216E9 uses EDI camera, plain RET. Genuine draw caller
+// visibility is retained; source alone does not establish private ABI equality.
+void StageConfigureCamera(StageCameraStateView *camera)
+{
+    if (g_AnmRenderManagerView != NULL)
+        g_AnmRenderManagerView->FlushVertexBuffer();
+    AnmFloat3View at = camera->direction + camera->position;
+    AnmFloat3View eye(camera->rockingOffset + camera->position.x,
+        camera->rockingOffsetY + camera->position.y,
+        camera->rockingOffsetZ + camera->position.z);
+    D3DXMatrixLookAtLH(&camera->viewMatrix, &eye, &at, &camera->up);
+    D3DXMatrixPerspectiveFovLH(&camera->projectionMatrix, camera->value048,
+        static_cast<float>(camera->viewport.width) /
+            static_cast<float>(camera->viewport.height), 30.0f, 1800.0f);
+    g_Direct3DDevice->vtable->SetTransform(g_Direct3DDevice, 2, &camera->viewMatrix);
+    g_Direct3DDevice->vtable->SetTransform(g_Direct3DDevice, 3, &camera->projectionMatrix);
+    AnmFloat3View right(
+        camera->up.z * camera->direction.y - camera->up.y * camera->direction.z,
+        camera->up.x * camera->direction.z - camera->up.z * camera->direction.x,
+        camera->up.y * camera->direction.x - camera->up.x * camera->direction.y);
+    camera->cameraRight = right;
+    D3DXVec3Normalize(&camera->cameraRight, &camera->cameraRight);
+    // Reload the renderer after external calls, as the target does.
+    if (g_AnmRenderManagerView != NULL)
+    {
+        g_AnmRenderManagerView->screenShakeX = camera->value0E8;
+        g_AnmRenderManagerView->screenShakeY = camera->value0EC;
+    }
+}
+
 
 // Target 0x403090-0x40384F. Camera EAX, object ECX, position EDX, distance
 // on stack, RET4. Natural source below does not impose that private convention.

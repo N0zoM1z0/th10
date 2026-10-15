@@ -11,6 +11,10 @@ class StageDraw(unittest.TestCase):
  @unittest.skipUnless(shutil.which('c++'),'host C++ compiler unavailable')
  def test_actual_source(self):
   source=(ROOT/'src/StageDraw.cpp').read_text().replace('#include "StageScript.hpp"','')
+  # The drawing fixture keeps a camera sink; a separate test runs that actual body.
+  a=source.index('void StageConfigureCamera(StageCameraStateView *camera)\n{')
+  b=source.index('// Target 0x403090',a)
+  source=source[:a]+source[b:]
   h=(ROOT/'src/AnmManager.hpp').read_text();a=h.index('struct AnmFloat3View\n{');b=h.index('\n};',a)+3;vector=h[a:b]
   program=r"""
 #include <cassert>

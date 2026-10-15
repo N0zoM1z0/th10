@@ -659,3 +659,33 @@ Main retains its byte view, while this graph uses a documented extern dword,
 not a new allocation. No ownership/denominator changes, helper credit or Factory
 promotion. Native exact remains47733/266187. The preceding Item2320 read-only
 audit found no new justified semantic correction and was parked without build.
+
+Stage camera prerequisite connected (2026-10-15, gpt-dots): StageConfigureCamera
+0x4215A0/330 now has maintained source in the real StageDrawInstances graph,
+replacing its private-ABI-only anchor. Target and native candidate both use EDI
+camera/plainRET. It flushes an existing renderer, builds LookAtLH from eye
+(position+rocking), at(position+direction), up; builds PerspectiveFovLH using
+FOV+48, unsigned viewport width/height, near30/far1800; publishes view then
+projection; normalizes direction-cross-up into cameraRight+30; reloads renderer
+before copying float shake offsets+E8/+EC. Existing camera280 layout is preserved
+with static assertions; these fields replace previously unnamed/int views.
+D3DX signatures were checked against Microsoft documentation:
+https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixlookatlh
+https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixperspectivefovlh
+
+Independent raw/native review passed. Aspect native instructions preserve target
+FILD unsigned-correction(+2^32), FDIVP, then float store after division; the host
+high-dimension fixture uses exactly representable inputs and is not precision
+proof. Actual-body tests verify arguments/order and renderer/device replacement,
+including a renderer appearing during an initially-null call and disappearance
+before publication. D3DX is mocked, not a native implementation test. Existing
+bounds/draw tests retain a camera sink; the separate new test executes actual
+camera body. Global camera/view aliases and actual D3DX/import storage still
+remain unclosed; recovered helper source is not executable product closure.
+
+Fresh /GL /GS image SHA83fb28bceb10c28a35a491d8fdcf8079cfd413d149558a3ac97f1e0c1f6f5ee9,
+guarded draw entry0x401940. Camera330/330,260raw250/290comparable; bounds1855/1984,
+167raw158/1864comparable; caller564/592,57raw53/520comparable. All normalization
+complete and full decode; all nonexact. No separate helper credit or Factory
+promotion. Evidence .analysis/gpt-dots-stage-draw/camera.json, camera-target.txt,
+camera-candidate.txt, camera-test-reviewed.log, camera-stage-tests.log.
