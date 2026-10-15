@@ -886,3 +886,5 @@ MainReleaseSound
 SoundPlayerView::Initialize
 SoundSetupThread
 CSoundManager::SetPrimaryBufferFormat
+FindWaveChunk
+SoundPlayerView::LoadSoundSample

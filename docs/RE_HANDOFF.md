@@ -198,9 +198,24 @@ checkpoint commit as exactness.
   `4e18ec3886d85cb999ae4432033b6ada2c1bd1d2696426f90e6be4d120dbaa3a`,
   source commit `4bc97d04f93d405e1894ee75aba13474ea52e291`.
 - These are immutable source-bound results, not fresh acceptance of later
-  source snapshots. The setup-thread57-byte owner has local canonical evidence;
-  its separate Factory acceptance is pending at this checkpoint.
+  source snapshots. Setup-thread57 bytes received Factory PASS/ACCEPTED at commit
+  `755a568ac5fdb07368dd031180b40366e0b7d843`, receipt
+  `f51e5a704c099135eaf4463d53d35506d44b9631aa67401193294fc81f32dcbb`.
 - Initializer786 and loader107 remain non-exact. The260-byte primary-format
   helper has official SDK lineage evidence; do not add authored exact credit
   or silently change denominator/classification. Sample-loader684-byte source
-  and private ABI remain the next prerequisite, not a validated anchor contract.
+  and private ABI were subsequently recovered; see the next checkpoint.
+
+## WAV sample reconstruction (2026-10-15)
+
+The 684-byte sample-loader now has maintained source and target-derived private
+EDX/ECX/RET4 ABI under real Initialize and guarded WinMain visibility. Its
+679-byte diagnostic remains non-exact. The necessary 71-byte chunk scanner
+passes two canonical cold replays including its strncmp binding. Independent
+source/ABI review passed; Factory acceptance for this new helper is pending at
+this checkpoint. No loader or initializer partial exact credit is assigned.
+
+Recovery found unchanged clean 755a568 with upstream parity (ahead/behind 0);
+this was observed external state, with no ref change or push by this batch.
+The former memcmp draft and cdecl helper control were corrected from target
+callee identity and both observed callee-clean call sites, not retained.

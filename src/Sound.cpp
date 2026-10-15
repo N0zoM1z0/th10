@@ -252,8 +252,6 @@ struct SoundPlayerView
     int unknown52CC;
 
     int Initialize(HWND window);
-    // Target 0x0043D390 remains source-absent. This ordinary source declaration
-    // does not claim its observed private EDX-owner/ECX-index ABI is recovered.
     int LoadSoundSample(int index, const char *path);
     int GetFmtIndexByName(const char *path);
     int ReopenBgm(const char *path);
@@ -302,7 +300,8 @@ char g_SoundInitSuccessFormat[] = "\x44\x69\x72\x65\x63\x74\x53\x6f\x75\x6e\x64\
 char g_SoundInitFailureFormat[] = "\x44\x69\x72\x65\x63\x74\x53\x6f\x75\x6e\x64\x20\x83\x49\x83\x75\x83\x57\x83\x46\x83\x4e\x83\x67\x82\xcc\x8f\x89\x8a\xfa\x89\xbb\x82\xaa\x8e\xb8\x94\x73\x82\xb5\x82\xbd\x82\xe6\x0d\x0a";
 
 // Target 0x0043CD30-0x0043D041. Partial source recovery: the sample-loader
-// implementation/private ABI is still unresolved, so no codegen credit.
+// source and private ABI are recovered below; byte mismatches remain, so no
+// codegen credit is claimed for this initializer.
 int SoundPlayerView::Initialize(HWND window)
 {
     memset(unconsumedSoundMetadata, 0xff, sizeof(unconsumedSoundMetadata));
@@ -367,6 +366,112 @@ int SoundPlayerView::Initialize(HWND window)
         }
     }
     th10::g_GameErrorContext.Log(g_SoundInitSuccessFormat);
+    return 0;
+}
+
+
+// Target 0x0043D250. The serialized chunk length is used literally: no RIFF
+// padding adjustment or malformed-input bounds repair is present in the game.
+unsigned char *__stdcall FindWaveChunk(unsigned char *data, unsigned int remaining,
+                             const char *tag, unsigned int *chunkSize)
+{
+    while (remaining > 0)
+    {
+        *chunkSize = *reinterpret_cast<unsigned int *>(data + 4);
+        if (strncmp(reinterpret_cast<const char *>(data), tag, 4) == 0)
+            return data + 8;
+        remaining -= *chunkSize + 8;
+        data += *chunkSize + 8;
+    }
+    return NULL;
+}
+
+char g_SoundNotRiffFormat[] = "Wav \x83\x74\x83\x40\x83\x43\x83\x8b\x82\xb6\x82\xe1\x82\xc8\x82\xa2 %s\r\n";
+char g_SoundInvalidWaveFormat[] = "Wav \x83\x74\x83\x40\x83\x43\x83\x8b\x82\xb6\x82\xe1\x82\xc8\x82\xa2? %s\r\n";
+
+// Target 0x0043D390-0x0043D63B. Consumes one loader-owned allocation.
+// API failure retains the published DirectSound buffer; cancellation before
+// acquisition leaves the archive slot untouched and returns zero.
+int SoundPlayerView::LoadSoundSample(int index, const char *path)
+{
+    if (manager == NULL)
+        return 0;
+    LPDIRECTSOUNDBUFFER *buffer = &soundBuffers[index];
+    if (*buffer != NULL)
+    {
+        (*buffer)->Release();
+        *buffer = NULL;
+    }
+    while (soundFileData[index] == NULL)
+    {
+        Sleep(10);
+        if (reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->soundDataLoadState == 2)
+            return 0;
+    }
+    unsigned char *allocation = soundFileData[index];
+    soundFileData[index] = NULL;
+    if (allocation == NULL)
+        return -1;
+    if (strncmp(reinterpret_cast<const char *>(allocation), "RIFF", 4) != 0)
+    {
+        th10::g_GameErrorContext.Log(g_SoundNotRiffFormat, path);
+        free(allocation);
+        return -1;
+    }
+    unsigned int remaining = *reinterpret_cast<unsigned int *>(allocation + 4);
+    unsigned char *data = allocation + 8;
+    if (strncmp(reinterpret_cast<const char *>(data), "WAVE", 4) != 0)
+    {
+        th10::g_GameErrorContext.Log(g_SoundInvalidWaveFormat, path);
+        free(allocation);
+        return -1;
+    }
+    data += 4;
+    remaining -= 12;
+    unsigned int chunkSize;
+    WAVEFORMATEX format;
+    unsigned char *formatData = FindWaveChunk(data, remaining, "fmt ", &chunkSize);
+    unsigned char *samples = NULL;
+    if (formatData != NULL)
+    {
+        format = *reinterpret_cast<WAVEFORMATEX *>(formatData);
+        samples = FindWaveChunk(data, remaining, "data", &chunkSize);
+    }
+    if (samples == NULL)
+    {
+        th10::g_GameErrorContext.Log(g_SoundInvalidWaveFormat, path);
+        free(allocation);
+        return -1;
+    }
+    LPDIRECTSOUND device = static_cast<LPDIRECTSOUND>(directSound);
+    unsigned int sampleSize = chunkSize;
+    DSBUFFERDESC description;
+    ZeroMemory(&description, sizeof(description));
+    description.dwSize = sizeof(description);
+    description.dwFlags = DSBCAPS_LOCSOFTWARE | DSBCAPS_GLOBALFOCUS |
+                          DSBCAPS_CTRLPAN | DSBCAPS_CTRLVOLUME;
+    description.dwBufferBytes = sampleSize;
+    description.lpwfxFormat = &format;
+    if (FAILED(device->CreateSoundBuffer(&description, buffer, NULL)))
+    {
+        free(allocation);
+        return -1;
+    }
+    void *firstData;
+    void *secondData;
+    DWORD firstSize;
+    DWORD secondSize;
+    if (FAILED((*buffer)->Lock(0, sampleSize, &firstData, &firstSize,
+                               &secondData, &secondSize, 0)))
+    {
+        free(allocation);
+        return -1;
+    }
+    memcpy(firstData, samples, firstSize);
+    if (secondSize != 0)
+        memcpy(secondData, samples + firstSize, secondSize);
+    (*buffer)->Unlock(firstData, firstSize, secondData, secondSize);
+    free(allocation);
     return 0;
 }
 

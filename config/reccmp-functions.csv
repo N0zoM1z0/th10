@@ -887,3 +887,5 @@ MainReleaseSound,0x0043D120,function
 SoundPlayerView::Initialize,0x0043CD30,function
 SoundSetupThread,0x0043CCF0,function
 CSoundManager::SetPrimaryBufferFormat,0x0044C7E0,function
+FindWaveChunk,0x0043D250,function
+SoundPlayerView::LoadSoundSample,0x0043D390,function
