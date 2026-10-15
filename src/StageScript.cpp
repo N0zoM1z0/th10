@@ -74,7 +74,9 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             continue;
         case 2:
             stage->camera.positionDelta = stage->camera.position;
-            stage->camera.position = AnmFloat3View(values[0], values[1], values[2]);
+            stage->camera.position.x = values[0];
+            stage->camera.position.y = values[1];
+            stage->camera.position.z = values[2];
             stage->camera.positionDelta = stage->camera.position - stage->camera.positionDelta;
             break;
         case 3:
@@ -88,7 +90,9 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             break;
         }
         case 4:
-            stage->camera.direction = AnmFloat3View(values[0], values[1], values[2]);
+            stage->camera.direction.x = values[0];
+            stage->camera.direction.y = values[1];
+            stage->camera.direction.z = values[2];
             break;
         case 5:
         {
@@ -101,7 +105,9 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             break;
         }
         case 6:
-            stage->camera.up = AnmFloat3View(values[0], values[1], values[2]);
+            stage->camera.up.x = values[0];
+            stage->camera.up.y = values[1];
+            stage->camera.up.z = values[2];
             break;
         case 7:
             stage->camera.value048 = values[0];

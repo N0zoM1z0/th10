@@ -803,3 +803,20 @@ ABI remain open; ownership/denominator unchanged. Evidence fog-hermite-grouped.j
 fog-grouped-owner.json,fog-grouped-candidate.txt,fog-grouped-table-audit.json,
 fog-grouped-tests.log under .analysis/gpt-dots-stage-script. Retained image SHA
 f4b4a878cbf3aa992d1b80fb42f4888e711427c5904446e6e4ee9758365688cb.
+
+Stage direct XYZ setter refinement: opcodes2/4/6 now perform target-observed
+sequential field reads/stores rather than snapshotting constructor temporaries.
+Opcode2 preserves old-position capture and subsequent x87 delta computation;
+its residual4 ordinary-byte differences are a cached EBX constant, not camera
+arithmetic. Independent native review verifies target load/store order and
+retained fog precision fix. Region spans113/113,32/32,32/32 with105/109,28/28,
+28/28 comparable are not independent owners or credits. Full1972physical=
+1911code+1padding+60table versus1868target;203raw193/1776comparable,
+normalization_complete=true. Physical instruction decoder reports1971/1972:
+normalization completeness does not imply every table byte is an instruction.
+Actual code ends RET4 before padding/table, each table remains literal evidence.
+No valid runtime overlapping-record/camera alias is claimed; no artificial
+undefined-overlap fixture added. Both prior actual-source tests pass unchanged.
+Evidence direct-setters.json,direct-table-audit.json,direct-cases.json,
+direct-dispatcher.txt,direct-setters-tests.log under .analysis/gpt-dots-stage-script;
+image SHA75a3aae387723d53b70c5b22e0fef0c347b5925620189a07092ce7da27135a13.
