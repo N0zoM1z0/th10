@@ -895,7 +895,9 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
                 enemy->owner->ReleaseEclAllocations();
                 enemy->owner->ResetEclState();
                 EnemyRunCallbackEcl(enemy->owner, callback);
-                if (EnemyRunEcl(enemy->owner, timerScale) != 0)
+                // Target reloads both the timer's selected pointer and its value
+                // after callback setup; either may have changed during that call.
+                if (EnemyRunEcl(enemy->owner, *enemy->updateTimer.scale) != 0)
                     return -1;
             }
 

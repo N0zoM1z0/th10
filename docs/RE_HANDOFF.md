@@ -843,3 +843,31 @@ imagecfbcb2...1c33; it is not a property of this current graph. Other private
 ABIs, constructor/destructor EH, global aliases/storage, external dependencies
 and runtime closure remain unresolved. Independent full caller binding and
 14-contribution/entry review passed. No further Stage spelling controls planned.
+
+
+## 2026-10-15 Enemy runtime callback scale lifetime correction
+
+Full EnemyRuntimeUpdate0x40DC80/2412 audit found a substantive callback-state
+mismatch: source reused the scale cached before the first ECL run when invoking
+ECL again after ReleaseEclAllocations, ResetEclState and EnemyRunCallbackEcl.
+Target0x40E1F0..0x40E205 reloads both runtime+0x128 scale pointer and its pointed
+value after those calls. Only the second argument expression is corrected;
+first-run capture/order, bounds, damage and all other logic remain unchanged.
+
+Fresh same-context pinned baselines use the real EnemyManagerUpdateCallback
+entry and existing canonical profile. Full owner2358/2412 remains nonexact;
+raw-equal191→201, comparable174→182 of2156. Corrected image
+97960b3c91145ea44e2a0ff888d2f4d65d49c4677c14175b4f1a14799f631f83
+loads [EBP+0x128] then [EDX] at0x401F6D/0x401F73 immediately after callback and
+before second ECL call. Complete instructions/normalization checked; ECL helper
+calls still use ordinary declarations/data anchors, so private callee ABI and
+runnable closure are not established. No exact credit.
+
+Independent source/native review passed. The host regression extracts the
+actual affected ECL/damage block and distinguishes pointed-value mutation from
+pointer replacement, verifies first-scale ordering, both ECL failure returns,
+no-callback/no-damage/gated paths and death return. Movement, collision, VM and
+common timer tail are deliberately outside this fixture; host behavior does
+not prove native x87 or ABI. CI includes it. Evidence is retained under
+.analysis/gpt-dots-enemy-runtime: target.txt, baseline.json, scale-reload.json,
+scale-native.txt and scale-test.log. No repeated register-spelling experiment.
