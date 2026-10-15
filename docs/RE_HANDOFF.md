@@ -616,3 +616,46 @@ respawn-call-contexts.txt, test-reviewed.log. Zero new exact credit.
 Stage tail is parked: remaining318-vs220-byte region includes candidate-inlined
 timer methods versus target calls. No genuine semantic/context cause was found
 that justifies forcing an inline boundary; no new spelling/flag controls ran.
+
+Stage projected bounds and instance drawing (2026-10-15, gpt-dots): recovered
+full authored owners0x403090/1984 and0x403A30/592 in StageDraw.cpp. Fresh raw
+hash-checked target decode, not the stack-corrupted decompile, establishes the
+camera/object/instance contracts. Bounds compares center displacement with
+squared distance, projects eight corners in binary XYZ sign order, admits only
+0<=z<1, preserves original else-if extrema and inclusive32..416/16..464 overlap.
+NaN distance does not early-reject; NaN projected depth is excluded. Return0 is
+visible. Natural source/host fixtures do not close all x87 spill precision.
+
+The real caller publishes the camera, calls the still external EDI-private
+0x4215A0 setup contract, sets viewport/current camera mode, compares signed
+layer, and preserves VM position/scaling, fog flush/state order, flags and
+visible/culled/draw counters. Instance stride16, quad position+8, dimensions
++14/+18; existing280-byte camera now names matrices+4C/+8C, viewport+CC and
+three rocking components without changing layout. D3D viewport slot+BC is typed
+and asserted. Official D3DX9 declaration references:
+https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxvec3projectarray
+https://learn.microsoft.com/en-us/windows/win32/direct3d9/d3dxmatrixtranslation
+No upstream1099/929 draw owners expanded. No D3D/game IO executes.
+
+Independent source/layout/target review passed. Actual-source fixtures verify
+corners/projection arguments, distance threshold/NaN, depth/clipping boundaries,
+lone-point extrema quirk, signed layer, primitive selection, VM mutations and
+negative-path sentinel preservation, full-dword fog, Flush/state/Draw order and
+counters. Projection/rendering are controlled sinks, not native D3DX or lifetime
+proof. Prior stage tests remain intact. Pinned /GL /GS real-caller graph:
+bounds1855/1984,167raw158/1864comparable; caller565/592,58raw53/516comparable.
+Both normalization_complete=true and fully decoded, neither exact. Candidate
+bounds plainRET differs from targetRET4; callerRET8 remains. Guarded entry
+0x4017F0; image SHAe54792ed0a112f6af36a27dafe3eb406172def2407509b4fbbd89f0bff72ae42.
+Evidence .analysis/gpt-dots-stage-draw: attested.json, bounds-target.txt,
+draw-target.txt, loaded-sprite.json, test-reviewed.log, prior-tests.log.
+Initial compile used an incorrect member name sprite; corrected to existing
+loadedSprite before the successful diagnostic, without compiler controls.
+
+Camera setup, actual D3DX imports and shared globals remain nonrunnable anchors.
+Camera/view-prefix reinterpretation and Main/ANM globals do not establish C++
+lifetime, alias or allocated-storage closure. Target fog0x492378 is a dword;
+Main retains its byte view, while this graph uses a documented extern dword,
+not a new allocation. No ownership/denominator changes, helper credit or Factory
+promotion. Native exact remains47733/266187. The preceding Item2320 read-only
+audit found no new justified semantic correction and was parked without build.

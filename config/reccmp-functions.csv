@@ -911,3 +911,5 @@ StageFogInterpolationView::Evaluate,0x004049A0,function
 StageFogView::operator-,0x00404D40,function
 StageFogView::operator*,0x00404DA0,function
 StageFogView::operator+,0x00404E10,function
+StageBoundsCulled,0x00403090,function
+StageDrawInstances,0x00403A30,function

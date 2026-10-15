@@ -910,3 +910,5 @@ StageFogInterpolationView::Evaluate
 StageFogView::operator-
 StageFogView::operator*
 StageFogView::operator+
+StageBoundsCulled
+StageDrawInstances

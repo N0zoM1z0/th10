@@ -834,3 +834,17 @@ post-effect draw vector. Source now preserves these contracts. Actual-source
 switch tests and independently reviewed native diagnostics support these
 bounded corrections; full owner remains nonexact and callback/body ABI, global
 scale alias storage, other private dependencies and product runtime remain open.
+
+### Stage projection and instance drawing (2026-10-15)
+
+0x403090/1984 is projected stage-object visibility, not player collision.
+Camera EAX, object ECX, instance XYZ EDX, stack squared limit/RET4. Eight
+half-extent corners use instance translation and camera view/projection/viewport.
+Depth0<=z<1, original else-if extrema and inclusive overlap32..416,16..464 are
+preserved; unordered distance does not early-reject. 0x403A30/592 takes stage and
+signed layer on stack/RET8, walks16-byte instances until negative index, culls
+then draws type0 primitives. Render-mode bits>=0x1000000 enable position and
+nonzero dimension scaling; mode0x2000000 enables fog, with flush before changed
+full-dword state. Camera setup0x4215A0, globals/view alias storage and native
+x87/D3DX precision remain open. Independently reviewed source and synthetic
+projection fixtures receive zero exact credit; complete diagnostics mismatch.

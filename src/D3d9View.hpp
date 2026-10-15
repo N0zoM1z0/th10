@@ -96,6 +96,8 @@ typedef long (__stdcall *D3d9SetRenderState)(
     D3d9DeviceView *device,
     unsigned int state,
     unsigned int value);
+typedef long (__stdcall *D3d9SetViewport)(
+    D3d9DeviceView *device, const void *viewport);
 typedef long (__stdcall *D3d9SetTransform)(
     D3d9DeviceView *device,
     unsigned int state,
@@ -152,7 +154,9 @@ struct D3d9DeviceVtableView
     D3d9CreateOffscreenPlainSurface CreateOffscreenPlainSurface; // +0x090
     void *slots094To0AC[7];
     D3d9SetTransform SetTransform;               // +0x0B0
-    void *slots0B4To0E0[12];
+    void *slots0B4To0B8[2];
+    D3d9SetViewport SetViewport;                 // +0x0BC
+    void *slots0C0To0E0[9];
     D3d9SetRenderState SetRenderState;           // +0x0E4
     void *slots0E8To100[7];
     D3d9SetTexture SetTexture;                   // +0x104
@@ -346,3 +350,6 @@ enum D3d9ViewConstants
     D3D9_VIEW_FMT_A1R5G5B5 = 25,
     D3D9_VIEW_FMT_A4R4G4B4 = 26
 };
+
+typedef char D3d9SetViewportAt0BC[
+    (offsetof(D3d9DeviceVtableView, SetViewport) == 0xbc) ? 1 : -1];

@@ -37,9 +37,11 @@ struct StageCameraStateView
     AnmFloat3View normalizedDirection;
     unsigned char unknown030[0x0c];
     float rockingOffset;
-    unsigned char unknown040[8];
+    float rockingOffsetY, rockingOffsetZ;
     float value048;
-    unsigned char unknown04C[0x9c];
+    AnmMatrixView viewMatrix, projectionMatrix;
+    AnmViewportView viewport;
+    unsigned char unknown0E4[4];
     int value0E8, value0EC;
     AnmFloat3View positionDelta;
     StageFogView fog;
@@ -56,12 +58,23 @@ struct StageObjectView
     StageObjectPrimitiveView firstPrimitive;
 };
 struct StageDataHeaderView { short objectCount; };
+struct StageInstanceView
+{
+    short objectIndex, unknown002;
+    AnmFloat3View position;
+};
+struct StageQuadPrimitiveView
+{
+    StageObjectPrimitiveView header;
+    AnmFloat3View position;
+    float width, height;
+};
 struct StageScriptView
 {
     unsigned char unknown000[0x10];
     StageDataHeaderView *data;
     StageObjectView **objects;
-    void *instances;
+    StageInstanceView *instances;
     unsigned char *scriptBase;
     unsigned char rockingMode;
     unsigned char unknown021[3];
@@ -94,6 +107,9 @@ struct StageScriptView
     int Update();
 };
 int __stdcall StageExecuteScript(StageScriptView *stage);
+int StageBoundsCulled(const StageCameraStateView *camera,
+    const StageObjectView *object, const AnmFloat3View *position, float distanceSquared);
+int __stdcall StageDrawInstances(StageScriptView *stage, int layer);
 
 typedef char StageScriptLayoutChecks[
     (offsetof(StageInstructionView, args) == 8 &&
@@ -102,6 +118,14 @@ typedef char StageScriptLayoutChecks[
      offsetof(StageFogInterpolationView, timer) == 0x70 &&
      offsetof(StageFogInterpolationView, duration) == 0x84 &&
      sizeof(StageCameraStateView) == 0x118 &&
+     offsetof(StageCameraStateView, viewMatrix) == 0x4c &&
+     offsetof(StageCameraStateView, projectionMatrix) == 0x8c &&
+     offsetof(StageCameraStateView, viewport) == 0xcc &&
+     sizeof(StageInstanceView) == 0x10 &&
+     offsetof(StageInstanceView, position) == 4 &&
+     offsetof(StageQuadPrimitiveView, position) == 8 &&
+     offsetof(StageQuadPrimitiveView, width) == 0x14 &&
+     sizeof(StageQuadPrimitiveView) == 0x1c &&
      offsetof(StageCameraStateView, fog) == 0xfc &&
      offsetof(StageObjectView, firstPrimitive) == 0x1c &&
      offsetof(StageScriptView, instruction) == 0x4c &&

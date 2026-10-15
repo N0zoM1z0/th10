@@ -33,6 +33,8 @@ class StageScriptState(unittest.TestCase):
 #include <cstddef>
 #define __stdcall
 static float g_AnmGameSpeed=1.0f;
+struct AnmMatrixView {float values[16];};
+struct AnmViewportView {unsigned x,y,width,height;float minZ,maxZ;};
 struct AnmFloat3View {float x,y,z;AnmFloat3View(){} AnmFloat3View(float a,float b,float c):x(a),y(b),z(c){} AnmFloat3View operator-(const AnmFloat3View &b)const{return AnmFloat3View(x-b.x,y-b.y,z-b.z);} };
 '''+timer_source+r'''
 static std::vector<const void *> evaluations;
@@ -214,6 +216,8 @@ int main(){
 #include <cmath>
 #include <cstring>
 static float g_AnmGameSpeed=1.0f;
+struct AnmMatrixView {float values[16];};
+struct AnmViewportView {unsigned x,y,width,height;float minZ,maxZ;};
 '''
         program+=struct_text(anm_header,'enum AnmInterpolationModeView')
         program+=struct_text(anm_header,'struct AnmVmTimerView')

@@ -45,6 +45,7 @@ def main() -> int:
         run("Validate GUI reset event order", [sys.executable, "scripts/test-gui-reset-order.py"])
         run("Validate music-room state and parsers", [sys.executable, "scripts/test-music-room-state.py"])
         run("Validate stage script state and callback", [sys.executable, "scripts/test-stage-script-state.py"])
+        run("Validate stage projected bounds and draw", [sys.executable, "scripts/test-stage-draw.py"])
         run("Validate Player power-state transitions", [sys.executable, "scripts/test-player-update-state.py"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])
