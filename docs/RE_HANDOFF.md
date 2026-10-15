@@ -288,3 +288,11 @@ Nine size gaps remain: opcode61 +1,48 +9,63 +1,58 -3,60 -14,27 -9,9 +9,
 11 -9,2 -1. Next bounded hypothesis is SCALE_TIME60 aggregate materialization:
 target preserves decodedY separately, retainsX on x87, then builds/copies XY.
 Do not blindly restore older rejected scalar/spelling controls.
+
+SCALE_TIME follow-up controls are now parked: a natural constructor on the
+existing Float2 failed VC7 C2620 because of its vertex-union use. A constructor-
+free by-value factory compiled but introduced an extra aggregate copy, frame
+0x104, owner9980/9964,81 same-sized groups and6073/8008 case-aligned matches.
+Both controls are reverted. Retain the reviewed9948-byte/83-group source.
+Select a fresh major-owner structural/semantic gap rather than extend this
+aggregate spelling search.
