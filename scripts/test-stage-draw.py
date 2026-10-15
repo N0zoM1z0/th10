@@ -77,7 +77,7 @@ static void visible(){for(int i=0;i<8;++i)fixture[i]=AnmFloat3View(100,100,0.5f)
 static int cull(StageCameraStateView &c,StageObjectView &o,const AnmFloat3View &p,float distance){expectedCamera=&c;return StageBoundsCulled(&c,&o,&p,distance);}
 struct ObjectData {short id;unsigned char layer,flags;AnmFloat3View position,extent;StageQuadPrimitiveView p[3];StageObjectPrimitiveView end;};
 int main(){
- StageCameraStateView c={};StageObjectView o={};o.position=AnmFloat3View(1,2,3);o.extent=AnmFloat3View(2,4,6);AnmFloat3View p(10,20,30);
+ StageCameraStateView c={};memset(&c,0,sizeof(c));StageObjectView o={};o.position=AnmFloat3View(1,2,3);o.extent=AnmFloat3View(2,4,6);AnmFloat3View p(10,20,30);
  visible();assert(cull(c,o,p,1694)==0&&projects==1&&translations==1);
  for(int i=0;i<8;++i){assert(seenCorners[i].x==((i&4)?0:2));assert(seenCorners[i].y==((i&2)?0:4));assert(seenCorners[i].z==((i&1)?0:6));}
  assert(translation.x==10&&translation.y==20&&translation.z==30);
@@ -105,7 +105,7 @@ int main(){
  // Precision witnesses are models, not execution of the original or pinned image.
  // The actual host source also checks the float32 center-rounding expectation.
  StageCameraStateView savedC=c;StageObjectView savedO=o;AnmFloat3View savedP=p;
- c={};c.position.x=16777216.0f;o.position=AnmFloat3View(16777216.0f,0,0);p=AnmFloat3View(1,0,0);visible();
+ memset(&c,0,sizeof(c));c.position.x=16777216.0f;o.position=AnmFloat3View(16777216.0f,0,0);p=AnmFloat3View(1,0,0);visible();
  assert(cull(c,o,p,0)==0);
  long double wideCenter=16777216.0L+1.0L;
  float roundedCenter=static_cast<float>(wideCenter);
@@ -118,7 +118,7 @@ int main(){
  }
  c=savedC;o=savedO;p=savedP;
  // Actual caller: signed layer, per-instance culling, primitive order, fog and draw counters.
- ObjectData data={};data.layer=255;data.extent=AnmFloat3View(2,4,6);data.end.type=-1;
+ ObjectData data={};memset(&data,0,sizeof(data));data.layer=255;data.extent=AnmFloat3View(2,4,6);data.end.type=-1;
  for(int i=0;i<3;++i){data.p[i].header.type=0;data.p[i].header.byteSize=sizeof(StageQuadPrimitiveView);data.p[i].header.vmIndex=i;data.p[i].position=AnmFloat3View(1+i,2+i,3+i);}
  data.p[0].width=20;data.p[0].height=12;
  data.p[1].width=0;data.p[1].height=0;data.p[2].width=70;data.p[2].height=90;

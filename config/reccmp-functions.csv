@@ -916,3 +916,8 @@ StageDrawInstances,0x00403A30,function
 StageConfigureCamera,0x004215A0,function
 StageDrawEarly,0x00402850,function
 StageDrawLate,0x00402CA0,function
+StageScriptView::StageScriptView,0x00402160,function
+StageScriptView::Initialize,0x00402230,function
+StageScriptView::~StageScriptView,0x00402440,function
+StageCreate,0x00402640,function
+StageScriptView::LoadData,0x00403850,function

@@ -762,3 +762,56 @@ native D3D, x87, private ABI, alias storage or product behavior. Evidence under
 .analysis/gpt-dots-stage-draw includes pass-early-target.txt,
 pass-late-target.txt, pass-registration-target.txt, passes.json and
 passes-test.log. Complete source retention is provisional and nonexact.
+
+
+## 2026-10-15 Stage lifecycle supporting the full draw/script graph
+
+StageLifecycle.cpp recovers the coherent five-owner graph: constructor
+0x402160/188, Initialize0x402230/522, destructor0x402440/499,
+StageCreate0x402640/151, and LoadData0x403850/308. Header layout exposes the
+three chain slots, original cache/size, 0x90 STD header and mutable tables.
+Existing maintained Stage, ANM, FileSystem and Chain types are reused.
+Constructor origin remains indeterminate; no ownership/denominator change.
+
+Target contracts: 0x2B64 allocation; eight plus three real VM constructors
+before whole-object zeroing; separately cached original and mutable relocated
+file copies; ANM slot (startupMode&1)+4; raw object-VM malloc; camera defaults;
+three callback registrations with base+12/+7/+10 priorities and owner+0x20;
+three unregister operations caching the chain before lock entry; data/cache/VM
+free order; runtime flag-gated ANM Release followed by slot reload/delete;
+matching global-pointer clears; then automatic reverse 3+8 VM destruction.
+Target unchecked allocation, path, counts and null-new Initialize behavior is
+preserved and documented, not recommended or made safe by the host fixtures.
+Factory failure invokes normal destructor/delete and returns null.
+
+Fresh pinned image3cdb24e01a358885578ed92411778638098f0720547ad565e9769d25bad9b564
+has genuine StageCreate entry0x401770. Complete sizes: factory85/151,
+constructor291/188, initializer478/522, loader308/308, destructor451/499.
+Raw/comparable pairs respectively2 and0/131;15 and15/188;48 and43/438;
+263 and252/264;20 and12/351. All mismatch; zero exact credit. Native constructor
+EBX and destructor EAX differ from target stack/RET4; exception handling also
+remains open. The full graph retains early918/1099, late917/929 and the prior
+bounds/camera mismatch limits. Ordinary declarations, typed alias externs and
+anchors do not establish global storage, full caller ABI or executable closure.
+
+Independent source/target and retained-image review passed. Actual-source host
+fixtures cover source construction before clear, pre-captured reverse member
+addresses, successful/failing factory, cached reload, relocated pointers,
+callback priorities/owner flags, null raw-VM allocation, conditional ANM retain,
+replacement-slot deletion identity, and chain capture across lock mutation.
+The dispatcher-only fixture explicitly isolates lifecycle; native layout and
+EH/x87/private ABI are not host-test claims. Unsafe null factory allocation,
+negative counts and malformed input are not executed. CI includes the new test.
+
+Evidence .analysis/gpt-dots-stage-draw/lifecycle-*-target.txt,
+lifecycle-attested.json, lifecycle.json, lifecycle-test.log. Corrected report
+metadata initially mislabeled the primary source as StageDraw.cpp; it now
+names StageLifecycle.cpp, regenerated against the unchanged PE/map/PDB and
+all ten contributions verified equal. No compiler rerun was needed for that
+metadata-only repair. Required source/storage caveats remain explicit.
+
+Final CI also exposed an older nondeterministic bounds host fixture: actual
+Float3 default construction leaves components unspecified. Synthetic camera
+aggregates (including the precision witness) and object data are now explicitly
+zeroed before chosen values are assigned. No maintained behavior changed.
+Focused checks and all 22 CI tests pass without skips after this fixture repair.

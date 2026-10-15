@@ -17,6 +17,8 @@ class StageScriptState(unittest.TestCase):
         header=(ROOT/'src/StageScript.hpp').read_text()
         header=header.replace('#pragma once','').replace('#include "AnmManager.hpp"','')
         header=header[:header.index('typedef char StageScriptLayoutChecks[')]
+        # Lifecycle is separately tested; this dispatcher fixture owns stack state only.
+        header=header.replace('    StageScriptView();','').replace('    ~StageScriptView();','')
         source=(ROOT/'src/StageScript.cpp').read_text().replace('#include "StageScript.hpp"','')
         # This dispatcher test keeps an explicit fog sink; the second test runs real fog arithmetic.
         source=source.split('// Six float channels plus a derived packed-color dword')[0]

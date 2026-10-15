@@ -915,3 +915,8 @@ StageDrawInstances
 StageConfigureCamera
 StageDrawEarly
 StageDrawLate
+StageScriptView::StageScriptView
+StageScriptView::Initialize
+StageScriptView::~StageScriptView
+StageCreate
+StageScriptView::LoadData

@@ -57,7 +57,13 @@ struct StageObjectView
     AnmFloat3View position, extent;
     StageObjectPrimitiveView firstPrimitive;
 };
-struct StageDataHeaderView { short objectCount; };
+struct StageDataHeaderView
+{
+    short objectCount, objectVmCount;
+    unsigned int instancesOffset, scriptOffset, unknown00C;
+    char anmPath[0x80];
+};
+namespace th10 { struct ChainElem; }
 struct StageInstanceView
 {
     short objectIndex, unknown002;
@@ -71,7 +77,8 @@ struct StageQuadPrimitiveView
 };
 struct StageScriptView
 {
-    unsigned char unknown000[0x10];
+    unsigned int lifecycleFlags, unknown004;
+    th10::ChainElem *updateChain, *earlyDrawChain;
     StageDataHeaderView *data;
     StageObjectView **objects;
     StageInstanceView *instances;
@@ -100,12 +107,21 @@ struct StageScriptView
     AnmVmTimerView transitionTimer;
     int unknown2A30;
     int frame;
-    unsigned char unknown2A38[0x14];
+    unsigned int unknown2A38, unknown2A3C;
+    th10::ChainElem *lateDrawChain;
+    unsigned char *originalData;
+    int originalDataSize;
     StageCameraStateView camera;
 
+    StageScriptView();
+    ~StageScriptView();
+    int Initialize(const char *path, int priorityOffset);
+    int LoadData(const char *path);
     int UpdateObjectVms();
     int Update();
 };
+StageScriptView *__stdcall StageCreate(const char *path, int priorityOffset);
+int __fastcall StageUpdateCallback(StageScriptView *stage);
 int __stdcall StageExecuteScript(StageScriptView *stage);
 int StageBoundsCulled(const StageCameraStateView *camera,
     const StageObjectView *object, const AnmFloat3View *position, float distanceSquared);
@@ -146,4 +162,10 @@ typedef char StageScriptLayoutChecks[
      offsetof(StageScriptView, flags) == 0x2a18 &&
      offsetof(StageScriptView, frame) == 0x2a34 &&
      offsetof(StageScriptView, camera) == 0x2a4c &&
+     sizeof(StageDataHeaderView) == 0x90 &&
+     offsetof(StageScriptView, updateChain) == 8 &&
+     offsetof(StageScriptView, earlyDrawChain) == 0xc &&
+     offsetof(StageScriptView, lateDrawChain) == 0x2a40 &&
+     offsetof(StageScriptView, originalData) == 0x2a44 &&
+     offsetof(StageScriptView, originalDataSize) == 0x2a48 &&
      sizeof(StageScriptView) == 0x2b64) ? 1 : -1];

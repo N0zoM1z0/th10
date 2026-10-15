@@ -48,6 +48,7 @@ def main() -> int:
         run("Validate stage projected bounds and draw", [sys.executable, "scripts/test-stage-draw.py"])
         run("Validate stage camera setup", [sys.executable, "scripts/test-stage-camera.py"])
         run("Validate stage draw passes", [sys.executable, "scripts/test-stage-draw-passes.py"])
+        run("Validate stage lifecycle ownership", [sys.executable, "scripts/test-stage-lifecycle.py"])
         run("Validate Player power-state transitions", [sys.executable, "scripts/test-player-update-state.py"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])
