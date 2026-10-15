@@ -13,6 +13,7 @@ int __stdcall CheckIfFileAlreadyExists(const char *path);
 int __stdcall WriteFile(const char *path, const void *data, unsigned int size);
 bool LoadArchive(const char *filename);
 int __stdcall OpenWriteFile(const char *path);
+void WriteToOpenFile(const void *data, unsigned int size);
 int CloseWriteFile();
 
 unsigned char *Decrypt(unsigned char *data, int size, unsigned char xorValue,

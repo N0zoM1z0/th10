@@ -247,7 +247,26 @@ has likely SDK lineage requiring origin scrutiny; it was not implemented.
 
 OpenWriteFile137 now also passes two full canonical cold checks with12 fields
 and independent source/ABI review. Factory acceptance is pending at this
-checkpoint. Its guarded SaveReplay entry inlines the source call; the separate
+checkpoint; it subsequently received Factory PASS/ACCEPTED at commit
+`c5a3892199599cfd240ff6e499006af3030d833b`, receipt
+`4eee7896a5f8bf2e5d60c001e0243bea7627d0afb782c7bbf669f396af0f90a0`,
+snapshot `7a4fed5d558eddf6d4a97c18b6476174026d5edd2028c205048723daacc26c6e`.
+Its guarded SaveReplay entry inlines the source call; the separate
 137-byte owner remains naturally emitted under the existing pinned harness.
 SaveReplay itself remains1511/1681 nonexact, and persistent storage plus the
 WriteToOpenFile seam remain open. No runtime file IO was executed.
+
+## Replay serialization correction and priority (2026-10-15)
+
+SaveReplay now serializes each stage's complete records stream before its FPS
+stream, correcting the previous per-node interleave. Four target-observed inline
+write protocols now have source; no separate owner boundary or byte credit was
+created. The synthetic source-extracted copy-loop regression distinguishes the
+old format and passes on the available host compiler. Full caller remains
+1748/1681 bytes and nonexact; shared storage/runtime closure remain open.
+
+The user reprioritized important large functions. Do not resume a small-owner
+queue. Next work should select a concrete missing semantic/structural component
+in ECL Run, ANM ExecuteScript, Enemy dispatch or a similarly important owner.
+Small prerequisites are allowed only to support that selected major owner.
+Keep parked FORMAT, radial and sample-loader spelling controls parked.

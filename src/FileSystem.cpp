@@ -313,6 +313,23 @@ int __stdcall OpenWriteFile(const char *path)
     return 0;
 }
 
+// Recovered from the four inline write sequences inside SaveReplay. No
+// independent target function boundary or exact-byte claim is assigned.
+void WriteToOpenFile(const void *data, unsigned int size)
+{
+    if (gReplayFileHandle == INVALID_HANDLE_VALUE)
+        return;
+    DWORD bytesWritten;
+    ::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);
+    if (size != bytesWritten)
+    {
+        // Reload the handle after the API call, but do not recheck or reset it.
+        CloseHandle(gReplayFileHandle);
+        LeaveCriticalSection(&gReplayFileCriticalSection);
+        --gReplayFileOpenCount;
+    }
+}
+
 int CloseWriteFile()
 {
     if (gReplayFileHandle != INVALID_HANDLE_VALUE)

@@ -12,13 +12,6 @@
 #include <string.h>
 #include <time.h>
 
-namespace FileSystem
-{
-// Descriptive source-level interfaces for replay writing.
-// WriteToOpenFile remains a caller-facing seam whose target boundary and
-// original owner are unknown. Open/CloseWriteFile use FileSystem.hpp.
-void WriteToOpenFile(const void *data, unsigned int size);
-}
 
 #pragma pack(push, 4)
 struct ReplayTimingSource
@@ -637,7 +630,13 @@ int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
             memcpy(uncompressedData + uncompressedSize, frameData->records,
                    recordBytes);
             uncompressedSize += recordBytes;
+        }
 
+        // Target writes every node's records before any node's FPS samples.
+        for (ReplayListNode *link = stageFrameLists[stage].next;
+             link != NULL; link = link->next)
+        {
+            ReplayFrameData *frameData = (ReplayFrameData *)link->value;
             int fpsBytes = frameData->fpsEnd - frameData->fpsSamples;
             memcpy(uncompressedData + uncompressedSize, frameData->fpsSamples,
                    fpsBytes);
