@@ -366,6 +366,7 @@ struct EnemyEclHostBaseView
 
     void ReleaseEclAllocations();
     void ResetEclState();
+    int SetSubroutine(const char *name);
 
     EnemyEclContextView *activeEclContext;
     EnemyEclContextView embeddedEclContext;

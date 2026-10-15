@@ -1006,3 +1006,40 @@ common timer tail are deliberately outside this fixture; host behavior does
 not prove native x87 or ABI. CI includes it. Evidence is retained under
 .analysis/gpt-dots-enemy-runtime: target.txt, baseline.json, scale-reload.json,
 scale-native.txt and scale-test.log. No repeated register-spelling experiment.
+
+
+## 2026-10-15 Enemy callback installation source identity
+
+Both EnemyRuntimeUpdate callback checkpoints now use shared
+EnemyEclHostBaseView::SetSubroutine, target0x450700/30 and inline40E29C..40E2B7.
+This resolves the two disconnected RunCallback/InstallCallback aliases: lookup
+through the pre-call database, then reload active context for instruction and
+again for time zero. Installation does not execute ECL. An explicit lookup-result
+local enforces sequencing; the initial assignment-only expression failed the
+host context-replacement fixture despite matching the pinned reload sequence.
+The retained local preserves the same complete native owner contribution hash.
+Existing shared Enemy/Ecl database declaration is reused; no new layout or ODR
+view is introduced. The old ledger renderer-state description was incorrect.
+
+Real EclVm.cpp support changes the context baseline from2358 anchor-only bytes
+to2367; compare the retained change only against that fresh real-source baseline.
+Final owner2375/2412, raw196, comparable181/2156, normalization complete and all
+2375 candidate instruction bytes decoded. Entry0x402F50 is the genuine maintained
+EnemyManagerUpdateCallback. Final PE SHA256
+b3ae1242ec6a15cf79365d5daa7bf9f170c25b045e57143d99a681b9ca5fa409;
+reports/probe and native decode are under .analysis/gpt-dots-enemy-runtime/
+subroutine-sequenced.json and subroutine-sequenced-native.txt, with separate
+ECL-context baseline and earlier expression control retained. Actual Run and
+FindSubroutine contributions come from EclVm.cpp, not diagnostic anchors.
+First installation is out of line, second naturally inline; both post-lookup
+context reloads and prior scale fix survive. The 30-byte installer takes name
+in EAX versus target ECX, so private ABI/exactness is open. Other externs,
+partial runtime views, global storage and product closure remain open.
+
+Independent source/native/entry review passed. Actual-source host fixtures
+retain earlier scale/return tests and add both installation checkpoints,
+lookup-side context/database replacement, null lookup and absent callback,
+and no additional ECL execution. Lookup mutation is a synthetic lifetime witness,
+not a claim that the maintained lookup normally mutates the host. No host test
+proves native x87/ABI or observes a mutation between the two plain stores.
+No exact credit, helper promotion, or denominator change.

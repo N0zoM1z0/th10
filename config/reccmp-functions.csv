@@ -921,3 +921,4 @@ StageScriptView::Initialize,0x00402230,function
 StageScriptView::~StageScriptView,0x00402440,function
 StageCreate,0x00402640,function
 StageScriptView::LoadData,0x00403850,function
+EnemyEclHostBaseView::SetSubroutine,0x00450700,function

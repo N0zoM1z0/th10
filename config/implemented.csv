@@ -920,3 +920,4 @@ StageScriptView::Initialize
 StageScriptView::~StageScriptView
 StageCreate
 StageScriptView::LoadData
+EnemyEclHostBaseView::SetSubroutine

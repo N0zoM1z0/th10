@@ -195,6 +195,18 @@ struct EnemyEclResourceView : EnemyEclResourceBaseView
 typedef char EnemyEclResourceViewSizeIs1098[
     (sizeof(EnemyEclResourceView) == 0x1098) ? 1 : -1];
 
+// 0x00450700: install a named instruction stream without executing it.
+// Resolve the name before reading the active context; the target reloads that
+// pointer for both instruction publication and the subsequent time reset.
+int EnemyEclHostBaseView::SetSubroutine(const char *name)
+{
+    EnemyEclInstructionView *const instruction =
+        reinterpret_cast<EnemyEclInstructionView *>(scriptDatabase->FindSubroutine(name));
+    activeEclContext->currentInstruction = instruction;
+    activeEclContext->value00 = 0;
+    return 0;
+}
+
 struct EnemyAnimationOwnerView
 {
     unsigned char unknown000000[0x3ad090];
@@ -273,10 +285,6 @@ void __stdcall AnmSetVmScriptIndexAndExecute(
 int EnemyRunEcl(EnemyFullObjectView *owner, float scale);
 const unsigned char *__fastcall EnemyResolveRuntimeCallback(
     EnemyFullObjectView *owner);
-void EnemyRunCallbackEcl(
-    EnemyFullObjectView *owner, const unsigned char *callbackName);
-void EnemyInstallCallbackEcl(
-    EnemyFullObjectView *owner, const unsigned char *callbackName);
 void EnemyAddScoreReward(int value);
 void EnemySetManagedVmPositionWithOffset(
     unsigned int vmId, const PlayerFloat3 *position);
@@ -894,7 +902,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
             {
                 enemy->owner->ReleaseEclAllocations();
                 enemy->owner->ResetEclState();
-                EnemyRunCallbackEcl(enemy->owner, callback);
+                enemy->owner->SetSubroutine(reinterpret_cast<const char *>(callback));
                 // Target reloads both the timer's selected pointer and its value
                 // after callback setup; either may have changed during that call.
                 if (EnemyRunEcl(enemy->owner, *enemy->updateTimer.scale) != 0)
@@ -917,7 +925,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     {
         enemy->owner->ReleaseEclAllocations();
         enemy->owner->ResetEclState();
-        EnemyInstallCallbackEcl(enemy->owner, callback);
+        enemy->owner->SetSubroutine(reinterpret_cast<const char *>(callback));
     }
 
     if ((enemy->flags & 0x12u) == 0 &&
