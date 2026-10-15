@@ -154,8 +154,8 @@ extern FrontEndControllerMappingView g_FrontEndSavedControllerMapping;
 extern void FrontEndQueueSoundCommand(
     const char *command, int parameter0, int parameter1);
 extern void FrontEndPlaySound(int soundId);
-extern void FrontEndLoadMusic(int slot, const char *path);
-extern void FrontEndPlayMusic(int slot, int loopStart);
+int __stdcall FrontEndLoadMusic(int slot, const char *path);
+int __stdcall FrontEndPlayMusic(int slot, int trackIndex);
 extern void FrontEndResetAsciiAuxiliary(int *state);
 extern signed char *__fastcall FrontEndGetControllerState(int controllerIndex);
 extern int FrontEndReadKeyboardState(unsigned char *keyboardState);
@@ -2818,6 +2818,52 @@ void AnmVmView::StartPositionInterpolation(
     positionInterpolation.timer.SetCurrent(0);
 }
 
+// Target 0x00420A90. The original assumes a dot and a bounded path; it
+// overwrites three extension bytes without truncating a longer extension.
+int __stdcall FrontEndLoadMusic(int slot, const char *path)
+{
+    char name[256];
+    strcpy(name, path);
+    char *extension = strrchr(name, '.');
+    extension[1] = 'w';
+    extension[2] = 'a';
+    extension[3] = 'v';
+    FrontEndQueueSoundCommand(name, 1, slot);
+    return 1;
+}
+
+// Target 0x00420B10. Playback is queued; profile publication is immediate
+// even if the command queue has no free slot. The second argument is a track.
+int __stdcall FrontEndPlayMusic(int slot, int trackIndex)
+{
+    if ((g_FrontEndSupervisorFlags & 0x10) != 0)
+        FrontEndQueueSoundCommand("dummy", 4, 0);
+    FrontEndQueueSoundCommand("dummy", 2, slot);
+    g_FrontEndProfileData[0x1d892 + trackIndex] = 1;
+    return 0;
+}
+
+// Target 0x0042C770 marks pending interrupts only; ANM execution is deferred.
+// Other historical InterruptVmNow callers have not been audited in this batch.
+void FrontEndMarkVmInterrupt(
+    FrontEndControllerView *controller, int index, short interrupt)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(controller->vmIds[index]);
+    if (vm != NULL)
+    {
+        vm->pendingInterrupt = interrupt;
+        if (vm->layerNode.previous == NULL)
+        {
+            AnmVmLayerNodeView *node = vm->layerNode.next;
+            while (node != NULL)
+            {
+                static_cast<AnmVmView *>(node->owner)->pendingInterrupt = interrupt;
+                node = node->next;
+            }
+        }
+    }
+}
+
 // Four-state music-room owner at 0x00433EF0. The current ledger's 2778-byte
 // code extent ends at RET4; its four-entry table at 0x004349CC is separately
 // retained target evidence pending an ownership audit. No exact claim here.
@@ -3058,8 +3104,8 @@ closeMusicRoom:
         if (controller->stateTimer.current >= 10)
         {
             DeleteVm(controller, 0x67);
-            InterruptVmNow(controller, 0x5a, 8);
-            InterruptVmNow(controller, 0x5b, 8);
+            FrontEndMarkVmInterrupt(controller, 0x5a, 8);
+            FrontEndMarkVmInterrupt(controller, 0x5b, 8);
             DeleteVm(controller, 0x5f);
             EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
             controller->SetScreenTarget(2);

@@ -25,6 +25,9 @@ def function_source(signature, filename="src/FrontEnd.cpp"):
 
 
 class MusicRoomState(unittest.TestCase):
+    def setUp(self):
+        (ROOT / 'build').mkdir(exist_ok=True)
+
     @unittest.skipUnless(shutil.which('c++'), 'host C++ compiler unavailable')
     def test_actual_owner_and_parser_bodies(self):
         program = r'''
@@ -72,6 +75,8 @@ static AnmFloat3View g_AnmZeroVector491C14;
 struct Ascii {Loaded *asciiAnm;} ascii;
 static Ascii *g_AsciiManagerView=&ascii;
 static Loaded *g_FrontEndMusicCommentAnm;
+static int executeCount=0;
+static void ExecuteScript(AnmVmView *vm){assert(vm);++executeCount;}
 static std::vector<std::string> events,drawn;
 static std::vector<unsigned> colors; static std::vector<AnmVmView *> drawReceivers;
 struct AnmRenderManagerView {
@@ -98,11 +103,11 @@ static void FrontEndLoadMusic(int slot,const char *path){assert(slot==0);events.
 static void FrontEndPlayMusic(int slot,int loop){assert(slot==0&&loop==0);events.push_back("play");}
 static void EnemyMarkPendingInterrupt(int *id){if(*id)pool[*id].pendingInterrupt=1;}
 static void DeleteVm(FrontEndControllerView *c,int n){c->vmIds[n].SetInterrupt(1);c->vmIds[n].value=0;}
-static void InterruptVmNow(FrontEndControllerView *c,int n,short interrupt){c->vmIds[n].SetInterrupt(interrupt);events.push_back("interrupt:"+std::to_string(n)+":"+std::to_string(interrupt));}
+static void InterruptVmNow(FrontEndControllerView *c,int n,short interrupt){c->vmIds[n].SetInterrupt(interrupt);ExecuteScript(c->vmIds[n].GetVm());events.push_back("interrupt:"+std::to_string(n)+":"+std::to_string(interrupt));}
 '''
         for signature in ['AnmVmView *AnmRenderManagerView::FindVm(']:
             program += '\n' + function_source(signature, 'src/AnmManager.cpp') + '\n'
-        for signature in ['static char *FrontEndMusicSkipLine(', 'static char *__stdcall FrontEndMusicCopyLine(', 'void AnmVmView::StartPositionInterpolation(', 'int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)\n{']:
+        for signature in ['static char *FrontEndMusicSkipLine(', 'static char *__stdcall FrontEndMusicCopyLine(', 'void AnmVmView::StartPositionInterpolation(', 'void FrontEndMarkVmInterrupt(', 'int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)\n{']:
             program += '\n' + function_source(signature) + '\n'
         program += r'''
 int main() {
@@ -154,9 +159,17 @@ int main() {
     assert(c.musicText==NULL&&c.screenState==3&&c.cursor.pops==1);
     assert(c.musicRowVmIds[0].value==rowId&&pool[rowId].pendingInterrupt==1);
     assert(events==std::vector<std::string>({"sound:11"}));
+    c.vmIds[0x5a]=front.CreateVmVariant0(0,15);c.vmIds[0x5b]=front.CreateVmVariant0(0,15);
+    AnmVmView &closingRoot=pool[c.vmIds[0x5a].value], &closingNonroot=pool[c.vmIds[0x5b].value];
+    AnmVmView closingChild,unaffectedChild;AnmVmLayerNodeView closingNode,unaffectedNode;
+    closingNode.owner=&closingChild;closingRoot.layerNode.next=&closingNode;
+    unaffectedNode.owner=&unaffectedChild;closingNonroot.layerNode.next=&unaffectedNode;closingNonroot.layerNode.previous=&closingNode;
     c.stateTimer.current=10;events.clear();FrontEndUpdateMusicRoom(&c);
+    assert(executeCount==0&&closingRoot.pendingInterrupt==8&&closingChild.pendingInterrupt==8&&closingNonroot.pendingInterrupt==8&&unaffectedChild.pendingInterrupt==0);
+    // Only an explicit later synthetic normal tick executes the already marked VM.
+    ExecuteScript(&closingRoot);assert(executeCount==1);
     assert(c.screen==2&&c.screenState==0&&c.cursor.pops==2);
-    assert(events==std::vector<std::string>({"interrupt:90:8","interrupt:91:8","load:bgm/th10_02.wav","play"}));
+    assert(events==std::vector<std::string>({"load:bgm/th10_02.wav","play"}));
     // Twelve rows distinguish both scroll boundaries and visible-window flags.
     FrontEndControllerView scrolling;scrolling.frontAnm=&front;scrolling.screenState=2;
     scrolling.stateTimer.current=1;scrolling.musicTrackCount=12;scrolling.cursor.count=12;scrolling.cursor.current=9;
@@ -209,6 +222,55 @@ int main() {
 '''
         (ROOT / 'build').mkdir(exist_ok=True)
         with tempfile.TemporaryDirectory(prefix='music-room-', dir=ROOT / 'build') as directory:
+            source=Path(directory)/'test.cpp';binary=Path(directory)/'test';source.write_text(program)
+            subprocess.run([shutil.which('c++'),'-std=c++11','-O0',str(source),'-o',str(binary)],check=True)
+            subprocess.run([str(binary)],check=True)
+
+    @unittest.skipUnless(shutil.which('c++'), 'host C++ compiler unavailable')
+    def test_actual_music_queue_prerequisites(self):
+        program = r'''
+#include <cassert>
+#include <cstring>
+#include <string>
+#define __stdcall
+struct SoundPlayerCommand {int opcode,argument,step;char path[256];};
+struct SoundPlayerView {SoundPlayerCommand commandQueue[32];void QueueCommand(const char *,int,int);};
+alignas(SoundPlayerView) unsigned char g_MainSoundOwner[sizeof(SoundPlayerView)];
+static unsigned g_FrontEndSupervisorFlags;
+static unsigned char profile[0x20000];static unsigned char *g_FrontEndProfileData=profile;
+'''
+        for signature in ['void SoundPlayerView::QueueCommand(', 'void FrontEndQueueSoundCommand(']:
+            program += '\n' + function_source(signature, 'src/Sound.cpp') + '\n'
+        for signature in ['int __stdcall FrontEndLoadMusic(int slot, const char *path)\n{', 'int __stdcall FrontEndPlayMusic(int slot, int trackIndex)\n{']:
+            program += '\n' + function_source(signature) + '\n'
+        program += r'''
+int main(){
+    SoundPlayerView &owner=*reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner);
+    memset(&owner,0,sizeof(owner));
+    owner.commandQueue[0].opcode=7;owner.commandQueue[1].step=99;
+    FrontEndQueueSoundCommand("first",5,13);
+    assert(owner.commandQueue[0].opcode==7&&owner.commandQueue[1].opcode==5&&owner.commandQueue[1].argument==13&&owner.commandQueue[1].step==0&&std::string(owner.commandQueue[1].path)=="first");
+    for(int i=0;i<31;++i)owner.commandQueue[i].opcode=1;
+    owner.commandQueue[31].step=123;strcpy(owner.commandQueue[31].path,"reserved");
+    SoundPlayerView before=owner;FrontEndQueueSoundCommand("drop",2,88);assert(memcmp(&before,&owner,sizeof(owner))==0);
+    owner.commandQueue[30].opcode=0;FrontEndQueueSoundCommand("last",6,-4);
+    assert(owner.commandQueue[30].opcode==6&&owner.commandQueue[30].argument==-4&&owner.commandQueue[31].step==123);
+    memset(&owner,0,sizeof(owner));char path[]="dir.with.dot/music.midtail";
+    assert(FrontEndLoadMusic(3,path)==1);
+    assert(std::string(path)=="dir.with.dot/music.midtail"&&std::string(owner.commandQueue[0].path)=="dir.with.dot/music.wavtail");
+    assert(owner.commandQueue[0].opcode==1&&owner.commandQueue[0].argument==3);
+    assert(FrontEndLoadMusic(0,"bgm/test.mid")==1&&std::string(owner.commandQueue[1].path)=="bgm/test.wav");
+    memset(&owner,0,sizeof(owner));g_FrontEndSupervisorFlags=0;
+    assert(FrontEndPlayMusic(4,6)==0&&owner.commandQueue[0].opcode==2&&owner.commandQueue[0].argument==4&&profile[0x1d898]==1&&profile[0x1d892]==0);
+    memset(&owner,0,sizeof(owner));g_FrontEndSupervisorFlags=0x10;
+    FrontEndPlayMusic(2,7);assert(owner.commandQueue[0].opcode==4&&owner.commandQueue[0].argument==0&&owner.commandQueue[1].opcode==2&&owner.commandQueue[1].argument==2);
+    assert(std::string(owner.commandQueue[0].path)=="dummy"&&std::string(owner.commandQueue[1].path)=="dummy");
+    for(int i=0;i<31;++i)owner.commandQueue[i].opcode=8;
+    before=owner;assert(FrontEndPlayMusic(9,8)==0&&profile[0x1d89a]==1&&memcmp(&before,&owner,sizeof(owner))==0);
+    return 0;
+}
+'''
+        with tempfile.TemporaryDirectory(prefix='music-queue-', dir=ROOT / 'build') as directory:
             source=Path(directory)/'test.cpp';binary=Path(directory)/'test';source.write_text(program)
             subprocess.run([shutil.which('c++'),'-std=c++11','-O0',str(source),'-o',str(binary)],check=True)
             subprocess.run([str(binary)],check=True)

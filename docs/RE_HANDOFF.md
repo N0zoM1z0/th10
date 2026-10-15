@@ -431,3 +431,34 @@ All previous parser/state/warning/scroll/NaN/precedence fixtures remain.
 Evidence .analysis/gpt-dots-music-room/lexical-interrupt.json,
 lexical-table-audit.json, lexical-regions.json, lexical-tests.log; retained
 image SHA d676ad755efb8203d8956c406fa4320884ea023c391244c9e9d88339c0032c7d.
+
+MusicRoom closing semantic correction and bounded prerequisites (2026-10-15):
+Target42C770 only resolves/marks pending interrupts and root children. Historical
+InterruptVmNow instead executes scripts immediately. Only the two MusicRoom
+closing calls now use recovered FrontEndMarkVmInterrupt; other callers are
+explicitly unaudited. Tests observe zero immediate ExecuteScript calls, pending
+root/child and nonroot suppression before an explicit later synthetic tick.
+Load420A90 copies into256-byte local buffer, finds last dot, overwrites exactly
+three extension bytes without truncating a longer suffix, queues mode1/slot,
+returns1/RET8. Play420B10 optionally queues4 then2/slot, publishes the specified
+profile-track byte even on full queue, returns0/RET8. No invalid-input repair.
+Queue43E460 uses the existing SoundPlayerView:32 physical slots at1F88, stride10C,
+but admission scans only31. Opcode/argument/step/path offsets0/4/8/12 asserted.
+It writes opcode/argument, unbounded-copies name then clears step; full queue
+silently drops. Global sound-owner storage remains extern-only. Natural real
+caller graph recovers EAX owner/EDX path/RET8, not an anchor ABI assertion.
+Six-TU guarded diagnostic: MusicRoom2772=2755code+1padding+16table versus target
+2796=2778+2+16. Physical329raw,300/2380comparable, normalization complete. Table
+ownership remains provisional with no denominator change. Mark65/65 has50/57
+comparable; queue90/104 has3/104. Load120 and play73 structural matches are only
+diagnostic with open bindings/storage and no standalone exact credit.
+Independent semantic review passed. Existing MusicRoom synthetic test still
+mocks music calls; a separate test extracts actual load/play/queue bodies and
+checks holes/full queue/reserved slot31, last-dot/long suffix preservation,
+input immutability, command order and profile publication despite dropped
+commands. Both tests pass from a fresh temporary root without build directory
+via shared setUp; no game IO or actual audio execution.
+Evidence .analysis/gpt-dots-music-room/prerequisites.json,
+prerequisite-table-audit.json, prerequisite-owners.json, prerequisites-tests.log,
+clean-root-test.log. Image SHA
+3bc0a6b50cc32d84b4d8b3180ee6789142bfe27274d63a4cda5e6296516a4835.

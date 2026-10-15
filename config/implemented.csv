@@ -898,3 +898,7 @@ FrontEndUpdateMusicRoom
 FrontEndMusicSkipLine
 FrontEndMusicCopyLine
 AnmVmView::StartPositionInterpolation
+FrontEndMarkVmInterrupt
+FrontEndLoadMusic
+FrontEndPlayMusic
+SoundPlayerView::QueueCommand

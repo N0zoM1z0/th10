@@ -258,6 +258,7 @@ struct SoundPlayerView
     int LoadBgm(int index);
     int PreloadBgm(int index, const char *path);
     int ProcessQueues();
+    void QueueCommand(const char *path, int opcode, int argument);
     void StopBgm();
     static DWORD WINAPI BgmPlayerThread(LPVOID parameter);
 };
@@ -270,6 +271,10 @@ typedef char SoundPlayerBgmOffsets[
      offsetof(CSound, m_bIsPlaying) == 0x30 &&
      offsetof(CStreamingSound, isLocked) == 0x74 &&
      sizeof(SoundPlayerCommand) == 0x10c &&
+     offsetof(SoundPlayerCommand, opcode) == 0 &&
+     offsetof(SoundPlayerCommand, argument) == 4 &&
+     offsetof(SoundPlayerCommand, step) == 8 &&
+     offsetof(SoundPlayerCommand, path) == 12 &&
      sizeof(SoundCueMetadata) == 8 &&
      offsetof(SoundPlayerView, duplicateSoundBuffers) == 0x208 &&
      offsetof(SoundPlayerView, manager) == 0x610 &&
@@ -1026,4 +1031,29 @@ DWORD WINAPI SoundPlayerView::BgmPlayerThread(LPVOID)
         }
     } while (!done);
     return 0;
+}
+
+// Target 0x0043E460: only slots 0..30 are available despite 32-slot storage.
+// Original unbounded copy and silent full-queue drop are intentionally retained.
+void SoundPlayerView::QueueCommand(const char *path, int opcode, int argument)
+{
+    int index = 0;
+    while (commandQueue[index].opcode != 0)
+    {
+        ++index;
+        if (index >= 31)
+            return;
+    }
+    SoundPlayerCommand *command = &commandQueue[index];
+    command->opcode = opcode;
+    command->argument = argument;
+    strcpy(command->path, path);
+    command->step = 0;
+}
+
+// Global target owner is 0x00492590; its storage remains extern-only.
+void FrontEndQueueSoundCommand(const char *path, int opcode, int argument)
+{
+    reinterpret_cast<SoundPlayerView *>(g_MainSoundOwner)->QueueCommand(
+        path, opcode, argument);
 }

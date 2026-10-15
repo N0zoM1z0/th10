@@ -899,3 +899,7 @@ FrontEndUpdateMusicRoom,0x00433EF0,function
 FrontEndMusicSkipLine,0x004349E0,function
 FrontEndMusicCopyLine,0x00434A20,function
 AnmVmView::StartPositionInterpolation,0x00434A80,function
+FrontEndMarkVmInterrupt,0x0042C770,function
+FrontEndLoadMusic,0x00420A90,function
+FrontEndPlayMusic,0x00420B10,function
+SoundPlayerView::QueueCommand,0x0043E460,function
