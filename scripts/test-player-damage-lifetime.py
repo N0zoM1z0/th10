@@ -25,7 +25,7 @@ enum{PLAYER_SHOT_INACTIVE=0,PLAYER_SHOT_HIT_TRANSITION=2,PLAYER_SHOT_TYPE_3=3,PL
 static Player player;static PlayerShotDescriptorView a,b,c,d,e;static AnmVmView oldVm,newVm;static int mode,resolveCount,effectDamage;static std::vector<int> events;
 static PlayerFloat3 position={0,10,0},size={10,10,0};
 int collision(Player*p,PlayerShotRuntimeView*s,const PlayerFloat3*t){assert(p==&player&&s==&player.shots[0]&&t==&position);events.push_back(1);s->descriptor=&b;return mode==4;}
-void PlayerSetShotVmDeleteState2(unsigned*id){assert(id==&player.shots[0].primaryVmId);events.push_back(2);if(mode==2)player.shots[0].descriptor=&c;}
+void PlayerSetShotVmInterrupt2(unsigned*id){assert(id==&player.shots[0].primaryVmId);events.push_back(2);if(mode==2)player.shots[0].descriptor=&c;}
 int PlayerTimerView::HasIntervalTick(int n)const{assert(n==4&&this==&player.shots[0].timer);events.push_back(3);
  // Mode5 is deliberately an adversarial boundary stub. The real interval helper does not mutate descriptors.
  if(mode==5){b.type=1;b.damage=99;player.shots[0].descriptor=&c;}return current!=previous&&current%n==0;}

@@ -229,9 +229,35 @@ void PlayerSpawnDirectionalEffect(
     float angle, float scale);
 void PlayerRequestRuntimeTransition(int value);
 void PlayerFallbackRuntimeTransition();
+// Target 0x427B50 scans 32 usable rows; exhaustion returns row 32 unchanged.
 PlayerEffectRowView *PlayerSpawnEffectRow(
     Player *player, const PlayerFloat3 *position,
-    float radius, float radiusDelta, int frames, int damage);
+    float radius, float radiusDelta, int frames, int damage)
+{
+    PlayerEffectRowView *row = player->effectRows;
+    for (int i = 0; i < 32; ++i, ++row)
+    {
+        if ((row->motion.activeFlags & 1u) != 0)
+            continue;
+
+        memset(row, 0, sizeof(*row));
+        row->motion.activeFlags |= 3u;
+        // Preserve the target's second clear before reading possibly overlapping XYZ.
+        memset(&row->position, 0, 0x2c);
+        row->position.x = position->x;
+        row->position.y = position->y;
+        row->position.z = position->z;
+        row->radius = radius;
+        row->radiusDelta = radiusDelta;
+        row->motion.timer.SetCurrent(frames);
+        row->motion.damage = damage;
+        row->motion.hitAccumulator = 0;
+        row->motion.hitCap = 999999;
+        row->motion.collisionInterval = 4;
+        return row;
+    }
+    return row;
+}
 void PlayerSetEffectVelocityFromPolar(
     PlayerFloat3 *velocity, float angularStep, float angle);
 float PlayerWrapEffectAngle(float value);
@@ -248,7 +274,22 @@ void PlayerSetShotVelocityFromPolar(
     PlayerFloat3 *velocity, float angle, float magnitude);
 void PlayerAdvanceShotMotion(PlayerShotMotionView *motion);
 void PlayerSetShotVmDeleteState1(unsigned int *vmId);
-void PlayerSetShotVmDeleteState2(unsigned int *vmId);
+// Target 0x40C480 publishes pending interrupt 2 without executing or clearing ID.
+void PlayerSetShotVmInterrupt2(unsigned int *vmId)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(AnmVmIdView(*vmId));
+    if (vm == NULL)
+        return;
+    vm->pendingInterrupt = 2;
+    if (vm->layerNode.previous != NULL)
+        return;
+    AnmVmLayerNodeView *node = vm->layerNode.next;
+    while (node != NULL)
+    {
+        static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 2;
+        node = node->next;
+    }
+}
 void PlayerSetShotVmDeleteState3(unsigned int *vmId);
 void PlayerMarkShotVmPending(unsigned int vmId);
 int PlayerGetAuxiliaryDamageAtPosition(const PlayerFloat3 *position);
@@ -1285,7 +1326,7 @@ int Player::CalculateDamageToTarget(
 
         if (shot->collisionVmTransitionPending == 0)
         {
-            PlayerSetShotVmDeleteState2(&shot->primaryVmId);
+            PlayerSetShotVmInterrupt2(&shot->primaryVmId);
             shot->collisionVmTransitionPending = 1;
         }
         descriptor = shot->descriptor;

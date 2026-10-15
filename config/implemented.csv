@@ -923,3 +923,5 @@ StageScriptView::LoadData
 EnemyEclHostBaseView::SetSubroutine
 EnemyScalarInterpolationView::Evaluate
 EnemyAdvanceMotion
+PlayerSetShotVmInterrupt2
+PlayerSpawnEffectRow
