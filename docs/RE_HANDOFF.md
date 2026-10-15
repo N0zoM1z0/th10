@@ -573,3 +573,46 @@ undefined-overlap fixture added. Both prior actual-source tests pass unchanged.
 Evidence direct-setters.json,direct-table-audit.json,direct-cases.json,
 direct-dispatcher.txt,direct-setters-tests.log under .analysis/gpt-dots-stage-script;
 image SHA75a3aae387723d53b70c5b22e0fef0c347b5925620189a07092ce7da27135a13.
+
+Player update state fidelity (2026-10-15, gpt-dots): fresh target-attested audit
+of the maintained 3,089-byte owner 0x425730 corrects five misidentified calls to
+0x405410. They are existing PlayerTimerView::SetCurrent, not sound playback:
+state 1 highlightTimer=270; state 4 updateTimer1=60 then highlightTimer=200;
+respawn highlightTimer=280 then updateTimer1=0. All five native candidate calls
+now supply the target-observed timer offset in EAX. State 4 also restores the
+missing RebuildPlayerOptions after subtracting 20 power and before the display
+update. Respawn drawPosition.y is 480.0 (target bits 43F00000), matching the
+fixed-point positionY=48000; the old source used 240.0. The obsolete sole-use
+PlayerPlaySound declaration was removed. Other descriptive extern contracts,
+including PlayerStartPowerDisplayTimer, were not independently recovered here.
+
+Independent review passed the affected state paths and native call evidence.
+The new CI regression extracts the actual state switch and actual timer setter;
+it covers all five receiver/value pairs, 19/20 power thresholds, option/display
+order, independent suppression paths, timer lazy initialization/custom scale,
+and effect-mutated XYZ saved before respawn position replacement. The time-8
+fixture observes the transition-helper call only; its stub leaves a quiet
+state-2 time and does not independently prove fallthrough. Tests stop at switch
+exit, before the common tail decrements highlight and increments update timers.
+They are not whole-callback, x87, ABI, or runtime proof. Candidate/test globals
+for g_PlayerTimerScale and g_AnmGameSpeed remain separate even though the target
+aliases both at 0x476F78; speed-reset/alias closure is explicitly unproved.
+
+Focused /GL baseline and corrected graph retain the genuine registered
+PlayerUpdateCallback entry with guarded PE/map/PDB identity. Baseline physical
+contribution 2776, raw184/comparable152 of2693; corrected physical2808,
+raw166/comparable146 of2697. Both normalization_complete=true, both nonexact.
+Corrected image SHA714b89a04b39b035cb524a22c1a721b1802759e6ea1d1dc0ccfbe580189ad674:
+body0x402B00, 2786 code bytes through RET, two alignment bytes, five-entry20-byte
+table at0x4035E4. Target remains3089 code bytes through RET4, three alignment
+bytes and separate20-byte table at0x426344, provisional physical3112. Candidate
+private body EAX/RET differs from target stack receiver/RET4; the callback is
+real source visibility, not target ABI closure. Normalization is not full
+instruction decoding or binding acceptance. Tables/layout remain explicit in
+.analysis/gpt-dots-player-update/ownership.json; no ledger extent/denominator
+change. Other evidence: attested.json, baseline.json, respawn.json,
+respawn-call-contexts.txt, test-reviewed.log. Zero new exact credit.
+
+Stage tail is parked: remaining318-vs220-byte region includes candidate-inlined
+timer methods versus target calls. No genuine semantic/context cause was found
+that justifies forcing an inline boundary; no new spelling/flag controls ran.

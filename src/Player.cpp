@@ -199,7 +199,6 @@ void PlayerSetManagedVmScreenPosition(
 
 // Descriptive interfaces for target-observed Player update callees. Their
 // original identifiers and private register conventions remain unproven.
-void PlayerPlaySound(int soundId);
 void PlayerNotifyPowerTransition(PlayerUpdateGate28 *gate);
 void PlayerUpdatePowerDisplay(int value, int valueAgain, int percent);
 void PlayerStartPowerDisplayTimer(int frames);
@@ -1475,7 +1474,7 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
             g_PlayerPower / 20 != 0 &&
             (g_PlayerInputBits & 2) != 0)
         {
-            PlayerPlaySound(0x10e);
+            player->highlightTimer.SetCurrent(0x10e);
             PlayerNotifyPowerTransition(g_PlayerUpdateGate28);
             g_PlayerPower -= 20;
             RebuildPlayerOptions(player);
@@ -1514,10 +1513,11 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
                 g_PlayerPower / 20 != 0 &&
                 (g_PlayerInputBits & 2) != 0)
             {
-                PlayerPlaySound(0x3c);
-                PlayerPlaySound(200);
+                player->updateTimer1.SetCurrent(0x3c);
+                player->highlightTimer.SetCurrent(200);
                 PlayerNotifyPowerTransition(g_PlayerUpdateGate28);
                 g_PlayerPower -= 20;
+                RebuildPlayerOptions(player);
                 int power = g_PlayerPower;
                 PlayerUpdatePowerDisplay(
                     power / 20, power / 20, ((power % 20) * 100) / 20);
@@ -1574,9 +1574,9 @@ int __stdcall PlayerUpdateCallbackBody(Player *player)
                 player->positionX = 0;
                 player->positionY = 48000;
                 player->drawPosition.x = 0.0f;
-                player->drawPosition.y = 240.0f;
-                PlayerPlaySound(0x118);
-                PlayerPlaySound(0);
+                player->drawPosition.y = 480.0f;
+                player->highlightTimer.SetCurrent(0x118);
+                player->updateTimer1.SetCurrent(0);
             }
         }
         break;

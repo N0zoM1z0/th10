@@ -820,3 +820,17 @@ undefined-overlap fixture added. Both prior actual-source tests pass unchanged.
 Evidence direct-setters.json,direct-table-audit.json,direct-cases.json,
 direct-dispatcher.txt,direct-setters-tests.log under .analysis/gpt-dots-stage-script;
 image SHA75a3aae387723d53b70c5b22e0fef0c347b5925620189a07092ce7da27135a13.
+
+### Player update power/respawn timer contracts (2026-10-15)
+
+Target PlayerUpdateCallbackBody 0x425730 calls shared timer SetCurrent0x405410,
+private EAX receiver plus stack value/RET4, at five sites:4259C9 highlight+430C
+270;425C28 update+474 60;425C38 highlight200;425D12 highlight280;425D1E update0.
+The prior descriptive PlayerPlaySound declarations/calls were semantically
+wrong. State-4 successful transition calls RebuildPlayerOptions0x426F70 at
+425C4C after the power-word subtraction425C43 and before display425C7F.
+Respawn425D08 writes43F00000 (480.0), not43700000 (240.0), after saving the
+post-effect draw vector. Source now preserves these contracts. Actual-source
+switch tests and independently reviewed native diagnostics support these
+bounded corrections; full owner remains nonexact and callback/body ABI, global
+scale alias storage, other private dependencies and product runtime remain open.
