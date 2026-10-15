@@ -182,7 +182,18 @@ struct FrontEndControllerView
     unsigned char unknown524[0x0ac];
     AnmVmIdView difficultyAuxVmId;
     AnmVmIdView practiceRowVmIds[10];
-    unsigned char unknown5FC[0x52e0];
+    unsigned char unknown5FC[0x18];
+    AnmVmIdView musicRowVmIds[20];
+    AnmVmIdView musicCommentVmIds[8];
+    int unknown684;
+    int musicTrackCount;
+    int musicCommentLine;
+    int musicSelectedTrack;
+    int musicWarning;
+    char musicPaths[32][0x40];
+    char musicTitles[32][0x42];
+    char musicComments[32][8][0x42];
+    int musicListOffset;
     char scoreEntryName[9];
     unsigned char unknown58E5[3];
     int scoreEntryNameCursor;
@@ -195,6 +206,7 @@ struct FrontEndControllerView
     int selectedReplay;
     int selectedReplayStage;
     ReplayManager *replayFiles[50];
+    char *musicText;
 
     int Update();
     int Draw();
@@ -262,5 +274,18 @@ typedef char FrontEndControllerPracticeRowsAt5D4[
 typedef char FrontEndControllerReplayFilesEndAt5AAC[
     (offsetof(FrontEndControllerView, replayFiles) +
          sizeof(ReplayManager *) * 50 == 0x5aac) ? 1 : -1];
+
+typedef char FrontEndMusicLayout[
+    (offsetof(FrontEndControllerView, musicRowVmIds) == 0x614 &&
+     offsetof(FrontEndControllerView, musicCommentVmIds) == 0x664 &&
+     offsetof(FrontEndControllerView, musicTrackCount) == 0x688 &&
+     offsetof(FrontEndControllerView, musicCommentLine) == 0x68c &&
+     offsetof(FrontEndControllerView, musicSelectedTrack) == 0x690 &&
+     offsetof(FrontEndControllerView, musicWarning) == 0x694 &&
+     offsetof(FrontEndControllerView, musicPaths) == 0x698 &&
+     offsetof(FrontEndControllerView, musicTitles) == 0xe98 &&
+     offsetof(FrontEndControllerView, musicComments) == 0x16d8 &&
+     offsetof(FrontEndControllerView, musicListOffset) == 0x58d8 &&
+     offsetof(FrontEndControllerView, musicText) == 0x5aac) ? 1 : -1];
 
 #endif

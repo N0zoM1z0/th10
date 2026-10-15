@@ -895,3 +895,7 @@ EnemyFireLaser,0x0041C510,function
 EnemyInitializeLaserType0,0x0041C5B0,function
 EnemyInitializeLaserType1,0x0041C680,function
 GameResetGui,0x00413BC0,function
+FrontEndUpdateMusicRoom,0x00433EF0,function
+FrontEndMusicSkipLine,0x004349E0,function
+FrontEndMusicCopyLine,0x00434A20,function
+AnmVmView::StartPositionInterpolation,0x00434A80,function

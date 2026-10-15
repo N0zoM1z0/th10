@@ -1,6 +1,9 @@
 #include "Main.hpp"
 #include "FrontEnd.hpp"
 #include "ReplayManager.hpp"
+#include "FileSystem.hpp"
+#include <stdlib.h>
+#include <math.h>
 
 #include <direct.h>
 #include <stdio.h>
@@ -160,7 +163,7 @@ extern int FrontEndReadKeyboardState(unsigned char *keyboardState);
 extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
-extern int FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
+int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
 extern int FrontEndUpdateResult(FrontEndControllerView *controller);
 extern int __stdcall FrontEndDrawResult(FrontEndControllerView *controller);
 extern void FrontEndUnlockPracticeRecords();
@@ -2733,4 +2736,304 @@ int __stdcall FrontEndControllerView::DrawScoreEntry(
         ascii->color = 0xffffffffu;
     }
     return 1;
+}
+
+// Original Japanese CP932 text, preserved as byte-valued C++ string literals.
+static const char g_MusicLockedTitleFormat[] = "No.%d  \201H\201H\201H\201H\201H\201H\201H\201H\201H\201H\201H";
+static const char *g_MusicWarningLines[8] = {
+    "\201@",
+    "\201@\201@\201\226\201\226\221I\221\360\202\265\202\275\213\310\202\315\202\334\202\276\203Q\201[\203\200\222\206\202\305\215\304\220\266\202\263\202\352\202\304\202\242\202\334\202\271\202\361\201\226\201\226",
+    " ",
+    "\201@\201@\201@\201@\213\310\202\314\203R\203\201\203\223\203g\202\252\203l\203^\203o\203\214\202\311\202\310\202\351\213\260\202\352\202\252\202\240\202\350\202\334\202\267\201B",
+    "\201@\201@\201@\201@\201@\201@\201@\201@\201@\202\273\202\352\202\305\202\340\215\304\220\266\202\265\202\334\202\267\202\251\201H",
+    "\201@",
+    "\201@\201@\201@\215\304\220\266\202\265\202\275\202\242\225\373\202\315\202\340\202\244\210\352\223x\214\210\222\350\203{\203^\203\223\202\360\211\237\202\265\202\304\202\255\202\276\202\263\202\242",
+    "\201@\201@\201@\215\304\220\266\202\265\202\275\202\255\202\310\202\242\225\373\202\315\201A\203J\201[\203\134\203\213\202\360\210\332\223\256\202\265\202\304\202\255\202\276\202\263\202\242",
+};
+
+extern AnmLoadedView *g_FrontEndMusicCommentAnm; // target 0x00491FEC
+extern void EnemyMarkPendingInterrupt(int *vmId);
+
+// These parsers deliberately retain the target's read-before-count check,
+// destructive delimiter replacement and unbounded copy. They are not safe
+// general-purpose text parsers. Only synthetic tests supply sentinel padding;
+// production OpenFile mode 0 allocates exactly size bytes, so padding is unproved.
+static char *FrontEndMusicSkipLine(char *cursor, int *remaining)
+{
+    while (*cursor != '\n' && *cursor != '\r')
+    {
+        if (*remaining == 0)
+            return cursor;
+        ++cursor;
+        --*remaining;
+    }
+    if (*remaining != 0)
+    {
+        while ((*cursor == '\n' || *cursor == '\r') && *remaining != 0)
+        {
+            ++cursor;
+            --*remaining;
+        }
+    }
+    return cursor;
+}
+
+static char *__stdcall FrontEndMusicCopyLine(
+    char *cursor, char *destination, int *remaining)
+{
+    char *end = cursor;
+    while (*end != '\n' && *end != '\r')
+    {
+        if (*remaining == 0)
+            return end;
+        ++end;
+        --*remaining;
+    }
+    if (*remaining != 0)
+    {
+        *end = '\0';
+        strcpy(destination, cursor);
+        ++end;
+        --*remaining;
+        while ((*end == '\n' || *end == '\r') && *remaining != 0)
+        {
+            ++end;
+            --*remaining;
+        }
+    }
+    return end;
+}
+
+// Target 0x00434A80, used by both music-room row animation sites.
+void AnmVmView::StartPositionInterpolation(
+    const AnmFloat3View *initial, const AnmFloat3View *final,
+    int duration, unsigned char mode)
+{
+    positionInterpolation.duration = duration;
+    positionInterpolation.initialTangent = g_AnmZeroVector491C14;
+    positionInterpolation.finalTangent = g_AnmZeroVector491C14;
+    positionInterpolation.mode = mode;
+    positionInterpolation.initial = *initial;
+    positionInterpolation.final = *final;
+    positionInterpolation.timer.SetCurrent(0);
+}
+
+// Four-state music-room owner at 0x00433EF0. The current ledger's 2778-byte
+// code extent ends at RET4; its four-entry table at 0x004349CC is separately
+// retained target evidence pending an ownership audit. No exact claim here.
+int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case 0:
+        if (controller->stateTimer.current == 1)
+        {
+            controller->cursor.count = 6;
+            controller->cursor.SetCurrent(0);
+            if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x5f]) == NULL)
+            {
+                CreateVm(controller, 0x5f);
+                controller->difficultyAuxVmId =
+                    g_AsciiManagerView->asciiAnm->CreateVmVariant0(8, 15);
+            }
+            CreateVm(controller, 0x67);
+            int remaining;
+            int count = 0;
+            char *cursor = reinterpret_cast<char *>(
+                FileSystem::OpenFile("musiccmt.txt", &remaining, 0));
+            controller->musicText = cursor;
+            if (cursor == NULL)
+                goto closeMusicRoom;
+            char *path = &controller->musicPaths[0][0];
+            char *title = &controller->musicTitles[0][0];
+            char *comment = &controller->musicComments[0][0][0];
+            while (remaining > 0)
+            {
+                if (*cursor == '#'
+                    || *cursor != '@')
+                    cursor = FrontEndMusicSkipLine(cursor, &remaining);
+                else
+                {
+                    // Target advances past '@' without decrementing remaining.
+                    cursor = FrontEndMusicCopyLine(cursor + 1, path, &remaining);
+                    cursor = FrontEndMusicCopyLine(cursor, title, &remaining);
+                    for (int line = 0; line < 8; ++line)
+                    {
+                        cursor = FrontEndMusicCopyLine(cursor, comment, &remaining);
+                        comment += 0x42;
+                    }
+                    ++count;
+                    path += 0x40;
+                    title += 0x42;
+                }
+            }
+            controller->cursor.count = count;
+            controller->cursor.SetCurrent(0);
+            controller->musicListOffset = 0;
+            controller->musicTrackCount = count;
+            for (int i = 0; i < 8; ++i)
+                controller->musicCommentVmIds[i] =
+                    g_FrontEndMusicCommentAnm->CreateVmVariant0(i + 0x27, 15);
+            controller->musicCommentLine = 0;
+            controller->musicSelectedTrack = 0;
+            controller->musicWarning = 0;
+        }
+        if (controller->stateTimer.current < 10)
+        {
+            AnmFloat3View position(64.0f,
+                (96.0f - controller->musicListOffset * 20.0f) +
+                    static_cast<float>(controller->stateTimer.current * 40 - 40),
+                0.0f);
+            for (int i = controller->stateTimer.current * 2 - 2;
+                 i < controller->stateTimer.current * 2; ++i)
+            {
+                if (i >= controller->musicTrackCount)
+                    break;
+                controller->musicRowVmIds[i] =
+                    controller->frontAnm->CreateVmVariant0(i + 0xad, 15);
+                AnmVmView *vm = ResolveVm(&controller->musicRowVmIds[i]);
+                if (g_FrontEndProfileData[0x1d892 + i] != 0)
+                    g_AnmRenderManagerView->DrawTextLeft(
+                        vm, 0xffffff, controller->musicTitles[i]);
+                else
+                    g_AnmRenderManagerView->DrawTextLeft(
+                        vm, 0xffffff, g_MusicLockedTitleFormat, i + 1);
+                if (i >= controller->musicListOffset &&
+                    i < controller->musicListOffset + 10)
+                    vm->flags35C |= 2;
+                else
+                    vm->flags35C &= ~2u;
+                if (i == controller->cursor.current)
+                    position.x = static_cast<float>(position.x - 4.0);
+                vm->StartPositionInterpolation(&vm->position, &position, 4, 0);
+                if (i == controller->cursor.current)
+                    position.x = static_cast<float>(position.x + 4.0);
+                position.y += 20.0f;
+                vm->pendingInterrupt = i != controller->cursor.current ? 3 : 2;
+            }
+        }
+        if (controller->stateTimer.current >= 10)
+            SetScreenState(controller, 1);
+        break;
+    case 1:
+        if (controller->stateTimer.current % 2 == 0 && controller->musicCommentLine < 8)
+        {
+            AnmVmView *vm = controller->musicCommentVmIds[controller->musicCommentLine].GetVm();
+            if (g_FrontEndProfileData[0x1d892 + controller->musicSelectedTrack] == 0 &&
+                controller->musicWarning != 0)
+                g_AnmRenderManagerView->DrawTextLeft(vm, 0x8080ff,
+                    g_MusicWarningLines[controller->musicCommentLine]);
+            else
+                g_AnmRenderManagerView->DrawTextLeft(vm, 0xffffff,
+                    controller->musicComments[controller->musicSelectedTrack][controller->musicCommentLine]);
+            vm->pendingInterrupt = 2;
+            ++controller->musicCommentLine;
+        }
+        if (controller->stateTimer.current > 4)
+            controller->SetScreenStateTarget(2);
+        break;
+    case 2:
+        if (controller->stateTimer.current % 2 == 0 && controller->musicCommentLine < 8)
+        {
+            AnmVmView *vm = controller->musicCommentVmIds[controller->musicCommentLine].GetVm();
+            if (g_FrontEndProfileData[0x1d892 + controller->musicSelectedTrack] == 0 &&
+                controller->musicWarning != 0)
+                g_AnmRenderManagerView->DrawTextLeft(vm, 0x8080ff,
+                    g_MusicWarningLines[controller->musicCommentLine]);
+            else
+                g_AnmRenderManagerView->DrawTextLeft(vm, 0xffffff,
+                    controller->musicComments[controller->musicSelectedTrack][controller->musicCommentLine]);
+            vm->pendingInterrupt = 2;
+            ++controller->musicCommentLine;
+        }
+        controller->cursor.previous = controller->cursor.current;
+        if (InputRepeated(0x10)) controller->cursor.Move(-1);
+        if (InputRepeated(0x20)) controller->cursor.Move(1);
+        if (controller->cursor.previous != controller->cursor.current)
+        {
+            FrontEndPlaySound(12);
+            if (controller->cursor.current < controller->musicListOffset)
+                controller->musicListOffset = controller->cursor.current;
+            else if (controller->cursor.current >= controller->musicListOffset + 10)
+                controller->musicListOffset = controller->cursor.current - 9;
+            AnmFloat3View position(64.0f, 96.0f - controller->musicListOffset * 20.0f, 0.0f);
+            for (int i = 0; i < controller->musicTrackCount; ++i)
+            {
+                AnmVmView *vm = ResolveVm(&controller->musicRowVmIds[i]);
+                if (i >= controller->musicListOffset && i < controller->musicListOffset + 10)
+                    vm->flags35C |= 2;
+                else
+                    vm->flags35C &= ~2u;
+                if (i == controller->cursor.current)
+                    position.x = static_cast<float>(position.x - 4.0);
+                // JP after the target x87 status test includes unordered.
+                if (!(fabs(vm->position.y - position.y) < 40.0f))
+                    vm->position = position;
+                else
+                    vm->StartPositionInterpolation(&vm->position, &position, 4, 0);
+                if (i == controller->cursor.current)
+                    position.x = static_cast<float>(position.x + 4.0);
+                position.y += 20.0f;
+                vm->pendingInterrupt = i != controller->cursor.current ? 3 : 2;
+            }
+            controller->musicWarning = 0;
+        }
+        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        {
+            for (int i = 0; i < 8; ++i)
+                controller->musicCommentVmIds[i].SetInterrupt(3);
+            controller->musicSelectedTrack = controller->cursor.current;
+            controller->musicCommentLine = 0;
+            ResetStateTimer(controller);
+            if (g_FrontEndProfileData[0x1d892 + controller->musicSelectedTrack] == 0 &&
+                controller->musicWarning == 0)
+            {
+                FrontEndQueueSoundCommand("dummy",
+                    (g_FrontEndSupervisorFlags & 0x10) != 0 ? 4 : 3, 0);
+                controller->musicWarning = 1;
+                return 0;
+            }
+            FrontEndLoadMusic(0, controller->musicPaths[controller->cursor.current]);
+            if ((g_FrontEndSupervisorFlags & 0x10) != 0)
+                FrontEndQueueSoundCommand("dummy", 4, 0);
+            FrontEndQueueSoundCommand("dummy", 2, 0);
+            // Target marks byte zero, not musicSelectedTrack's byte.
+            g_FrontEndProfileData[0x1d892] = 1;
+            controller->musicWarning = 0;
+            return 0;
+        }
+        if ((g_FrontEndInput.pressed & 0x0a) != 0)
+        {
+closeMusicRoom:
+            if (controller->musicText != NULL)
+            {
+                free(controller->musicText);
+                controller->musicText = NULL;
+            }
+            controller->musicText = NULL;
+            controller->cursor.Pop();
+            for (int i = 0; i < controller->musicTrackCount; ++i)
+                EnemyMarkPendingInterrupt(&controller->musicRowVmIds[i].value);
+            for (int i = 0; i < 8; ++i)
+                controller->musicCommentVmIds[i].SetInterrupt(1);
+            FrontEndPlaySound(11);
+            SetScreenState(controller, 3);
+        }
+        break;
+    case 3:
+        if (controller->stateTimer.current >= 10)
+        {
+            DeleteVm(controller, 0x67);
+            InterruptVmNow(controller, 0x5a, 8);
+            InterruptVmNow(controller, 0x5b, 8);
+            DeleteVm(controller, 0x5f);
+            EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
+            controller->SetScreenTarget(2);
+            FrontEndLoadMusic(0, "bgm/th10_02.wav");
+            FrontEndPlayMusic(0, 0);
+            controller->cursor.Pop();
+        }
+        break;
+    }
+    return 0;
 }

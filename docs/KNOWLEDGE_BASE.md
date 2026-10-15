@@ -631,3 +631,32 @@ target and maintained source before using it as an implementation constraint.
 | GUI-005 | observed / complete-source / non-exact | GameResetGui at413BC0-41436C owns1965 bytes, with real calls4182A4/4184A4 in maintained GameManagerUpdateBody. Source uses existing exact-size GuiView arrays/IDs/frontAnm and real ANM allocation, initialization, list/ID and interrupt contracts. Callback flags are ORed2 when present. Missing front IDs trigger creation; target publishes only9E58 and discards the second returned ID without writing9E5C. Conditional six-array initialization uses paired10/20 ranges then30,47,80,51 ranges, and retains resource reloads. Lives remain unclamped; signed power digits bind VM indices0/2/3. Stage/front overlays and ASCII boss VM follow original global-condition order. New-session ID9E50 and unconditional9E54 are published, but both interrupt walks use9E50; no repair is added. Guarded five-TU Gui+GameManager+AnmManager+AnmVmCreate+AnmVmId cold link selects real GameManager entry402EA0 and1786-byte owner402540 with EDI/plain RET,421 raw and399/1745 comparable, normalization complete. No exact credit. Independent review confirms source/control/ABI. Host test compiles actual extracted body with synthetic dependency sinks and checks event ordering, resource/VM receiver identities, signed digits, discarded/repeated IDs, skipped arrays and separate short-circuit gates; this is not game IO or runtime closure. External storage and nonexact dependencies remain open. | Fresh target attestation and independent review2026-10-15; guarded image SHA c078903d122af5b67aa5031e6a5c46e0fb3e2164dfbd656e441e612d368cfd40; scripts/test-gui-reset-order.py |
 
 | GUI-006 | observed / target-local-interrupt-structure / non-exact | The initial1786-byte reset used two general AnmVmIdView::SetInterrupt calls; target instead expands both complete two-list lookups and root-child walks. A local helper control remained out-of-line (1761/1965) and was rejected. Two direct lexical blocks, with unchanged general helpers/compiler flags, restore target28-call topology and emit1981/1965 bytes. Complete owner217 raw and198/1753 comparable, normalization_complete=true; shifted whole-owner score is lower and no byte gain is claimed. Diagnostic regions: prefix1560/1541 bytes, first publication/walk120/123 bytes (lengths, not matching-byte counts), final creation/walk301/301 with273/285 comparable, final old-ID tail140 raw-equal bytes. These are subregions of one1965-byte owner, never separate exact credit. Independent review passed semantic/order/ABI changes and verified both lexical blocks plus actual maintained FindVm in synthetic tests, including primary/secondary preference, invalid/missing IDs, root children and nonroot suppression. Audit correction:26fceebb did not actually contain the independently claimed startup/transition combination fixtures; an insertion assertion failed before an old test passed. Current fail-fast edit and independent source/log inspection confirm those fixtures are now present and passing. | Full guarded lexical-interrupt.json and lexical-regions.json; image SHA b015b9de780232313e4b9eac18797fbbb988d81c1ee617f787cc8dc5c899591f; independent review2026-10-15 |
+
+## Music-room state recovery
+
+
+Music-room full source recovery (2026-10-15): FrontEndUpdateMusicRoom at433EF0
+now covers all four states and its necessary59/92-byte line parsers and206-byte
+position initializer. Independent target/source and strengthened-test review
+passed. Guarded maintained FrontEnd::Update entry RVA2320; full candidate2560
+versus ledger2778,135 raw and118/2378 comparable, normalization complete.
+Target code ends4349C9, then8BFF alignment and four-entry table4349CC-4349DB;
+physical2796-byte comparison118/2396. Literal table0e3f4300464343001b4443004e494300
+and ordered dispatch identity are audited separately. Existing ownership rows
+and denominator remain unchanged; no exact claim or Factory promotion.
+Position initializer206-byte structural comparison178/178 is only diagnostic:
+component anchor symbols do not prove coherent zero-vector aggregate storage.
+Music command/load/play and other storage externs leave runtime closure open.
+Preserve original count/@/unbounded-copy quirks, null-path closing, track-zero
+profile write, confirm precedence, double cursor pop and unordered position
+copy. These are fidelity observations, not safe parser/API recommendations.
+Only synthetic fixtures have sentinel padding; actual OpenFile mode0 allocates
+exact file size. Zero-count output tests cannot establish read-before-check.
+Actual-source fixtures cover four states, CP932 copying, warnings and receivers,
+12-track scroll visibility,39.999/40/40.001/NaN and simultaneous confirm/cancel.
+Dependency/test strings are stubs; separate target audit verifies all9 actual
+CP932 literals, not these stubs. Full runtime/precision equivalence is unproved.
+Artifacts: .analysis/gpt-dots-music-room/unordered-fixed.json,
+owner-table-audit.json, strengthened-test.log; image retained separately in
+build/probe-ltcg/MusicRoom-unordered-fixed/source.exe, SHA256
+33b28b51989b47dac155571524b93ba3f60f995ad19759ea378f9c786ca951bd.

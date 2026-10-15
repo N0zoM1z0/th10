@@ -894,3 +894,7 @@ EnemyFireLaser
 EnemyInitializeLaserType0
 EnemyInitializeLaserType1
 GameResetGui
+FrontEndUpdateMusicRoom
+FrontEndMusicSkipLine
+FrontEndMusicCopyLine
+AnmVmView::StartPositionInterpolation

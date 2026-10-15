@@ -451,6 +451,9 @@ struct AnmVmView
     int *GetIntVarPtr(
         int *value, unsigned short variableMask,
         unsigned int argumentNumber);
+    void StartPositionInterpolation(
+        const AnmFloat3View *initial, const AnmFloat3View *final,
+        int duration, unsigned char mode);
     void StartScaleInterpolation(
         const AnmFloat2View *initial, const AnmFloat2View *final,
         int duration, unsigned char mode);

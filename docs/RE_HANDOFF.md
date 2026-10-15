@@ -387,3 +387,29 @@ and inspect exit/stderr before reporting success.
 Evidence: .analysis/gpt-dots-gui-reset/lexical-interrupt.json, lexical-regions.json,
 lexical-interrupt-test.log, lexical-ci.log; distinct GuiReset-lexical-interrupt
 build image SHA b015b9de780232313e4b9eac18797fbbb988d81c1ee617f787cc8dc5c899591f.
+
+Music-room full source recovery (2026-10-15): FrontEndUpdateMusicRoom at433EF0
+now covers all four states and its necessary59/92-byte line parsers and206-byte
+position initializer. Independent target/source and strengthened-test review
+passed. Guarded maintained FrontEnd::Update entry RVA2320; full candidate2560
+versus ledger2778,135 raw and118/2378 comparable, normalization complete.
+Target code ends4349C9, then8BFF alignment and four-entry table4349CC-4349DB;
+physical2796-byte comparison118/2396. Literal table0e3f4300464343001b4443004e494300
+and ordered dispatch identity are audited separately. Existing ownership rows
+and denominator remain unchanged; no exact claim or Factory promotion.
+Position initializer206-byte structural comparison178/178 is only diagnostic:
+component anchor symbols do not prove coherent zero-vector aggregate storage.
+Music command/load/play and other storage externs leave runtime closure open.
+Preserve original count/@/unbounded-copy quirks, null-path closing, track-zero
+profile write, confirm precedence, double cursor pop and unordered position
+copy. These are fidelity observations, not safe parser/API recommendations.
+Only synthetic fixtures have sentinel padding; actual OpenFile mode0 allocates
+exact file size. Zero-count output tests cannot establish read-before-check.
+Actual-source fixtures cover four states, CP932 copying, warnings and receivers,
+12-track scroll visibility,39.999/40/40.001/NaN and simultaneous confirm/cancel.
+Dependency/test strings are stubs; separate target audit verifies all9 actual
+CP932 literals, not these stubs. Full runtime/precision equivalence is unproved.
+Artifacts: .analysis/gpt-dots-music-room/unordered-fixed.json,
+owner-table-audit.json, strengthened-test.log; image retained separately in
+build/probe-ltcg/MusicRoom-unordered-fixed/source.exe, SHA256
+33b28b51989b47dac155571524b93ba3f60f995ad19759ea378f9c786ca951bd.
