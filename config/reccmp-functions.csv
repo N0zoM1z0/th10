@@ -935,3 +935,4 @@ ResultMenuPendingSix,0x004243F0,function
 ResultMenuPendingThree,0x0040C4D0,function
 ResultMenuFindScript,0x004497D0,function
 ResultMenuSynchronizeScore,0x00421F60,function
+FrontEndInsertScore,0x00421FA0,function

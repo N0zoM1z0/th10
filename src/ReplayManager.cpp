@@ -13,18 +13,7 @@
 #include <time.h>
 
 
-#pragma pack(push, 4)
-struct ReplayTimingSource
-{
-    unsigned char unknown000[0x24];
-    double lagNumerator;
-    double lagDenominator;
-};
-#pragma pack(pop)
-typedef char ReplayTimingSourceNumeratorAt24[
-    (offsetof(ReplayTimingSource, lagNumerator) == 0x24) ? 1 : -1];
-typedef char ReplayTimingSourceDenominatorAt2C[
-    (offsetof(ReplayTimingSource, lagDenominator) == 0x2c) ? 1 : -1];
+#include "ReplayTimingSource.hpp"
 
 struct ReplayUserDataHeader
 {
@@ -38,7 +27,6 @@ typedef char ReplayUserDataHeaderSizeIs0C[
 
 // Maintained descriptive external names. Their physical data owners are not
 // established by this packet.
-extern ReplayTimingSource *g_ReplayTimingSource;
 extern int g_ReplayScore;
 extern const char *g_ReplayCharacterNames[];
 extern const char *g_ReplayDifficultyNames[];

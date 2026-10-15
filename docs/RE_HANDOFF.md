@@ -1140,3 +1140,33 @@ in KNOWLEDGE_BASE, including failure replacement and simultaneous inputs. Tests
 run no game or file IO and cannot prove x87, ABI or lifetime/storage closure.
 Next coherent dependency to scope is existing unresolved InsertScore421FA0/316,
 which serves both this large controller and maintained FrontEnd score entry.
+
+## Connect shared score insertion (2026-10-15)
+
+Recovered316-byte FrontEndInsertScore421FA0 as a coherent prerequisite to both
+large result and score-entry controllers. The first diagnostic exposed a genuine
+namespace identity error: existing declaration was in the unnamed namespace,
+initial new definition was global, so the two callers still reached an anchor.
+That control is retained as score.json/ResultMenu-score. The corrected definition
+uses the existing namespace; no InsertScore alias remains in link-aliases.rsp.
+Actual calls406707 and4050CD both prepare EDI and enter4073F0; full native helper
+also preserves EDI/RET. This is source/caller closure, not byte exactness.
+
+Corrected evidence `.analysis/gpt-dots-result-menu/score-connected.json`,
+score-report.json, score-*-native.txt and target-00421fa0.txt. PE SHA256
+453a732847e5092c6d335725463f4c871395b982b6439360cfb66f488edc7a30 has guarded
+ResultMenuUpdate entryRVA7310. Helper263/316, raw18 and17/260 comparable,
+complete decode/normalization. PrepareScore372/377; score-entry physical1276/1400;
+result physical2752/3260. Large physical contributions contain table data, so
+normalization_complete is not complete instruction decoding. No new exact credit.
+
+Shared ReplayTimingSource.hpp is the unchanged existing packed double view moved
+from ReplayManager.cpp; both affected TUs compile in the real graph. SaveReplay
+algorithm is unchanged. Independent review confirmed signed ranking,24-byte
+copy order, name-padding preservation, time-call reloads, native precision and
+actual two-caller binding. New actual-body tests cover mixed signs, equal/last/
+rejected rows, full-record copies, difficulty isolation, low-byte casts,
+time-mutated difficulty/timing and a dyadic precision witness. Host IEEE
+zero-denominator checks are explicitly not target exception/rounding proof.
+Focused final test output is score-test-final.log; result fixture control remains
+passing. All owners remain decompiled/nonexact, exact authored bytes47733.

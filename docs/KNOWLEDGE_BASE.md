@@ -1312,3 +1312,29 @@ insertion stage mutation, time-field reload, root/child pending propagation,
 negative score-row cancel and complete/incomplete exit. Synthetic types/dependency
 sinks establish source contracts, not original callback behavior, x87/native
 precision, allocation safety, external storage or whole runtime closure.
+
+### Shared high-score insertion prerequisite (2026-10-15)
+
+The preceding result batch's unresolved InsertScore421FA0/316 is now maintained
+and genuinely called by both ResultMenuPrepareScore and the1400-byte FrontEnd
+score-entry owner. Signed ties insert ahead of equal scores; lower-than-all
+returns-1 without writes. Rows shift downward as complete24-byte records.
+Stage/suffix publish their low bytes, time writes the original selected record,
+then fresh difficulty selects the blank-name/slowdown destinations. Exactly9
+name bytes are written, preserving the tenth byte. A time-boundary fixture
+changes difficulty and the timing pointer to distinguish these lifetimes; this
+is a contract control, not a claim that real time() mutates game globals.
+
+Native helper4073F0 uses target EDI/RET and one FLD64/FDIV64/FMUL/FSUBR/FSTP32
+chain. Its100 constants use64-bit operands rather than target32-bit operands,
+but both encode exactly100 and introduce no intermediate rounding. The test
+ratio67108863/67108864 distinguishes the retained double quotient from an
+incorrect float quotient: correct final float is100/67108864, premature rounding
+gives0. Host tests are not pinned x87 execution. Zero denominator/NaN cases
+assume the host default IEEE environment and do not prove target FPU masks.
+
+ReplayTimingSource's existing packed+24/+2C double view is now shared by header;
+ReplayManager's save arithmetic is unchanged. No duplicate timing class or new
+storage allocation is introduced. Profile-record pointer views and generic
+storage anchors remain incomplete lifetime/runtime models. Helper263/316 and
+both large callers are nonexact; no new authored exact credit.

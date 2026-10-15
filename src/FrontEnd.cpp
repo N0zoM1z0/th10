@@ -3575,3 +3575,46 @@ int ResultMenuUpdate(ResultMenuView *menu)
         menu->timer.current = static_cast<int>(menu->timer.subframe += *menu->timer.scale);
     return 1;
 }
+
+#include "ReplayTimingSource.hpp"
+extern int g_GameStartupValue474C90;
+
+namespace
+{
+
+// Target 0x421FA0. The table is a legacy view into profile-backed records;
+// this pointer arithmetic does not claim complete table storage/lifetime closure.
+// Equal signed scores insert ahead of the existing row; no qualifying row
+// returns -1 without writing. Copy assignment preserves all24 record bytes.
+int FrontEndInsertScore(FrontEndScoreTableView *table)
+{
+    FrontEndScoreRecordView *records = reinterpret_cast<FrontEndScoreRecordView *>(
+        reinterpret_cast<unsigned char *>(table) + 0x10);
+    int row = 0;
+    while (row < 10)
+    {
+        if (records[g_ReplayDifficulty * 10 + row].score <= g_GameScoreState.score)
+            break;
+        ++row;
+    }
+    if (row >= 10)
+        return -1;
+    for (int index = 9; index > row; --index)
+        records[g_ReplayDifficulty * 10 + index] =
+            records[g_ReplayDifficulty * 10 + index - 1];
+    records[g_ReplayDifficulty * 10 + row].score = g_GameScoreState.score;
+    records[g_ReplayDifficulty * 10 + row].scoreSuffix =
+        static_cast<signed char>(g_GameStartupValue474C90);
+    records[g_ReplayDifficulty * 10 + row].stageNameIndex =
+        static_cast<signed char>(g_FrontEndSelectedStage);
+    time(&records[g_ReplayDifficulty * 10 + row].timestamp);
+    // The target reloads difficulty after time(), then writes exactly9 bytes,
+    // leaving the tenth name byte untouched. There is no denominator guard.
+    strcpy(records[g_ReplayDifficulty * 10 + row].name, "        ");
+    records[g_ReplayDifficulty * 10 + row].slowdownRate = static_cast<float>(
+        100.0 - (g_ReplayTimingSource->lagNumerator /
+                 g_ReplayTimingSource->lagDenominator) * 100.0);
+    return row;
+}
+
+} // namespace
