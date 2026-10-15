@@ -210,12 +210,21 @@ checkpoint commit as exactness.
 
 The 684-byte sample-loader now has maintained source and target-derived private
 EDX/ECX/RET4 ABI under real Initialize and guarded WinMain visibility. Its
-679-byte diagnostic remains non-exact. The necessary 71-byte chunk scanner
+684-byte diagnostic remains non-exact, with eight ordinary bytes differing. The necessary 71-byte chunk scanner
 passes two canonical cold replays including its strncmp binding. Independent
-source/ABI review passed; Factory acceptance for this new helper is pending at
-this checkpoint. No loader or initializer partial exact credit is assigned.
+source/ABI review passed; Factory PASS/ACCEPTED for this helper is bound to
+commit `da5c5c2974d89d09345b4ffc500b9c88c5e69987`, source snapshot
+`27c79c62286fa9e3fc29cd406a537c68572b767ee7f493543db290a949b89db0`,
+receipt `fcf98ab2d8bfcdc910c5f79a75cadb93a7635d07bc398b43e9150c2d3543071b`. No loader or initializer partial exact credit is assigned.
 
 Recovery found unchanged clean 755a568 with upstream parity (ahead/behind 0);
 this was observed external state, with no ref change or push by this batch.
 The former memcmp draft and cdecl helper control were corrected from target
 callee identity and both observed callee-clean call sites, not retained.
+
+The subsequent advancing-cursor refinement is reproduced in two cold real-entry
+diagnostics: loader 684/684 bytes, 605 raw and 576/584 comparable, complete
+normalization. No partial exact credit. The negative-increment control is
+byte-neutral and reverted; the remaining eight-byte ADD/SUB and argument-setup
+scheduling cluster is parked. Helper71 and setup57 remain structurally equal
+in this diagnostic graph, without a fresh Factory receipt for this later source.

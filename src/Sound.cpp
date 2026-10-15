@@ -418,8 +418,9 @@ int SoundPlayerView::LoadSoundSample(int index, const char *path)
         free(allocation);
         return -1;
     }
-    unsigned int remaining = *reinterpret_cast<unsigned int *>(allocation + 4);
-    unsigned char *data = allocation + 8;
+    unsigned char *data = allocation + 4;
+    unsigned int remaining = *reinterpret_cast<unsigned int *>(data);
+    data += 4;
     if (strncmp(reinterpret_cast<const char *>(data), "WAVE", 4) != 0)
     {
         th10::g_GameErrorContext.Log(g_SoundInvalidWaveFormat, path);
