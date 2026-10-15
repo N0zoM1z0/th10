@@ -289,6 +289,30 @@ unsigned char *Encrypt(unsigned char *data, int size, unsigned char xorValue,
     return data;
 }
 
+// Target 0x0044B620-0x0044B6A8. Success deliberately retains both the
+// critical section and count until CloseWriteFile; the handle is published
+// even on failure, with no close/reset added to the failure path.
+int __stdcall OpenWriteFile(const char *path)
+{
+    EnterCriticalSection(&gReplayFileCriticalSection);
+    ++gReplayFileOpenCount;
+    gReplayFileHandle = CreateFileA(path, GENERIC_WRITE, FILE_SHARE_READ, NULL,
+                                   CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, NULL);
+    if (gReplayFileHandle == INVALID_HANDLE_VALUE)
+    {
+        LPSTR errorMessage;
+        FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM |
+                           FORMAT_MESSAGE_IGNORE_INSERTS,
+                       NULL, GetLastError(), 0x400,
+                       reinterpret_cast<LPSTR>(&errorMessage), 0, NULL);
+        LocalFree(errorMessage);
+        LeaveCriticalSection(&gReplayFileCriticalSection);
+        --gReplayFileOpenCount;
+        return -1;
+    }
+    return 0;
+}
+
 int CloseWriteFile()
 {
     if (gReplayFileHandle != INVALID_HANDLE_VALUE)

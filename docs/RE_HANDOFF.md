@@ -234,10 +234,20 @@ in this diagnostic graph, without a fresh Factory receipt for this later source.
 FileSystem::WriteFile at 0x0044B540 now has natural source and the genuine
 maintained WinMain configuration-save caller. Two canonical cold replays match
 all 218 bytes and 20 fields after independent review. Factory acceptance is
-pending at this checkpoint. The second target log-flush call remains an
+PASS/ACCEPTED at commit `1efe88f2d728f1c0aeabc0bd2b92952fe7bf83dd`,
+receipt `a4b2598934f011e58c2b8fdc858119d80bf117236c1e4a13856f235ea6d2199c`,
+snapshot `e59404205a5694d15a1d5bd7f92a743f73c09db19c189c6644b7d69920d8deec`.
+The second target log-flush call remains an
 unresolved MainFlushLog seam; filesystem storage and runnable closure remain
 open. No file-writing runtime side effects were executed.
 
 The adjacent BGM setup241 candidate is parked because its StartupThread caller
 and 702-byte streaming helper both lack source. The213-byte streaming reset
 has likely SDK lineage requiring origin scrutiny; it was not implemented.
+
+OpenWriteFile137 now also passes two full canonical cold checks with12 fields
+and independent source/ABI review. Factory acceptance is pending at this
+checkpoint. Its guarded SaveReplay entry inlines the source call; the separate
+137-byte owner remains naturally emitted under the existing pinned harness.
+SaveReplay itself remains1511/1681 nonexact, and persistent storage plus the
+WriteToOpenFile seam remain open. No runtime file IO was executed.

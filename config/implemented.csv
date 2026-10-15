@@ -889,3 +889,4 @@ CSoundManager::SetPrimaryBufferFormat
 FindWaveChunk
 SoundPlayerView::LoadSoundSample
 FileSystem::WriteFile
+FileSystem::OpenWriteFile

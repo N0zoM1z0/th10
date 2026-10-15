@@ -890,3 +890,4 @@ CSoundManager::SetPrimaryBufferFormat,0x0044C7E0,function
 FindWaveChunk,0x0043D250,function
 SoundPlayerView::LoadSoundSample,0x0043D390,function
 FileSystem::WriteFile,0x0044B540,function
+FileSystem::OpenWriteFile,0x0044B620,function
