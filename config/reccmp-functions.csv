@@ -927,3 +927,11 @@ EnemyAdvanceMotion,0x0044C2A0,function
 PlayerSetShotVmInterrupt2,0x0040C480,function
 PlayerSpawnEffectRow,0x00427B50,function
 PlayerUpdateGate28::GetDamageAtPosition,0x004059F0,function
+ResultMenuUpdate,0x004223F0,function
+ResultMenuUpdateResult,0x004236F0,function
+ResultMenuPrepareScore,0x00423570,function
+ResultMenuClose,0x00423510,function
+ResultMenuPendingSix,0x004243F0,function
+ResultMenuPendingThree,0x0040C4D0,function
+ResultMenuFindScript,0x004497D0,function
+ResultMenuSynchronizeScore,0x00421F60,function

@@ -1101,3 +1101,42 @@ Fresh evidence `.analysis/gpt-dots-player-movement/ownership.json` corrects a mi
 Corrected PE82d6ce838bfbb89166c703a3b78e0576c8e2e191984949d94e656a2b9bba48a6 has guarded entryRVA6570, movement401F40 and real source helper contributions. Native option calls402504/40250F preserve cached manager and fresh ID. Script helper40B110/197 has candidateESI-resource/EDX-VM/EAX-script versus targetECX/EAX/EBX; true source identity does not prove private ABI equivalence. Caller PlayerUpdateCallbackBody remains2808/3089 nonexact. Linear decoding covers2804/2808 candidate physical bytes with complete address normalization, not full instruction closure. Independent review split caller code2786+2padding+20table bytes; its corrected-versus-baseline code is2414/2414 comparable and all5 relative dispatch destinations agree. This is only bounded unchanged-caller control, not target exactness.
 
 The extracted complete movement-owner body host fixture uses synthetic types and dependencies, plus maintained position/interrupt method bodies. It checks scripts1–4/resource/embedded receiver, pending interrupt/root-child propagation, mode position, world-coordinate offsets, and a lookup sink that swaps the global manager and second ID between option calls. Both calls retain the original manager and use the updated second ID. It does not compile the complete production TU, prove native math or object lifetime, or establish real callback behavior/runtime closure. Independent full native/source/test review passed. Zero new exact credit; the semantic integration supports the large Player graph rather than standalone helper harvesting.
+
+## Result/replay-name source recovery (2026-10-15)
+
+Reviewed coherent eight-owner batch: ResultMenuUpdateResult4236F0/3227, real
+ResultMenuUpdate4223F0/179, PrepareScore423570/377, Close423510/89,
+SynchronizeScore421F60/28, FindScript4497D0/70, PendingSix4243F0/65 and
+PendingThree40C4D0/65. Total4100 ledger code bytes now source-present, all
+nonexact0%; no independent helper credit and exact numerator unchanged47733.
+Source is in FrontEnd.cpp with ResultMenu.hpp layout assertions. This location
+shares existing cursor/input definitions without claiming original TU ownership.
+
+Durable local evidence `.analysis/gpt-dots-result-menu/`: attested decompiles,
+full target raw text, target-tables.json, alphabet.txt, probe.py/initial.json,
+ownership.py/ownership.json, all eight native disassemblies, test-final.log.
+Pinned PE b8d03590562f254d46388c3772600626a5c17c7a3d4ba94814f65886cb44c75c,
+guarded entry ResultMenuUpdate RVA7320. Result at406840 code2719+1NOP+32table=2752;
+target3227+1+32=3260. Dispatcher407320 code186+2padding+12table+14selectors=214;
+target179+1+12+14=206. ownership.json compares code against code and records all
+contribution hashes, literal table destinations and selector equality. Initial
+report mixed scopes are diagnostic only. Whole instruction code decodes and
+normalization pass; source result states11/12 share one case body and therefore
+remain structurally far from target. No spelling/flag sweep was attempted.
+
+Helper diagnostics: score preparation388/377, close89/89 (73/73 comparable),
+pending helpers65/65, script selection68/70, score synchronization30/28.
+These are not acceptance or exact claims. Real dispatcher stack receiver differs
+from target ESI; result retains stack receiver/RET4. Replay Load/Destroy/Save,
+ANM FindVm/ID methods and sound QueueSoundSample are actual source in the graph.
+InsertScore421FA0, pause owners422AB0/422C80, supervisor call and global storage
+remain anchors; a four-byte generic anchor does not allocate full owner arrays.
+Target data/table ownership remains supplemental, ledger denominator unchanged.
+
+Independent full source/native/ownership review passed, followed by confirmation
+of the strengthened target-sized grid fixtures without production source changes.
+The actual extracted bodies test the important mutation/order contracts described
+in KNOWLEDGE_BASE, including failure replacement and simultaneous inputs. Tests
+run no game or file IO and cannot prove x87, ABI or lifetime/storage closure.
+Next coherent dependency to scope is existing unresolved InsertScore421FA0/316,
+which serves both this large controller and maintained FrontEnd score entry.

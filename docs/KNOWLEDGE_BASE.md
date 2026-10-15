@@ -1270,3 +1270,45 @@ maintained setter bodies. First lookup replaces the global manager and changes
 the second ID, yet both calls use the captured manager and updated ID. Root
 children receive the transformed coordinates. Synthetic boundaries do not prove
 native math, embedded-object lifetime, real callback registration or whole runtime.
+
+### Result and replay-name controller (2026-10-15)
+
+Recovered the complete 3227-byte result controller at 4236F0 and its real
+179-byte state dispatcher at 4223F0, with six coherent prerequisites (377-byte
+score preparation, 89-byte close, 28-byte score synchronization, 70-byte VM-tree
+script selection and two 65-byte pending-interrupt helpers). The maintained
+0x2C4 prefix exposes two D8 cursors, 25 replay pointers, eight-character name
+plus NUL, completion/rank state and saved speed. Original allocation/constructor
+and runtime storage remain unresolved. The existing 316-byte InsertScore seam
+and two other pause owners (382/1338 bytes) remain declarations.
+
+Confirm and cancel are independent continuations in states8/11/12, while state10
+confirm returns before cancel. Saving destroys the previous slot, ignores the
+SaveReplay result, reloads the selection, and loads a replacement even on save
+failure; a failed load publishes NULL. Cancel from the list deletes all25
+non-null owners then clears each slot. Opaque save selection mutation can leave
+an old dangling slot; tests clear that synthetic artifact only during teardown,
+not in production. This documents original behavior, not a safety guarantee.
+Score preparation publishes stage8/format then rechecks stage7 after insertion.
+Time publication retains the replay-data pointer field address, then reloads
+that field for completion state. Script selection returns an ID aggregate and
+has the target's valid-VM precondition even after clearing a missing input ID.
+
+Target result physical3260 comprises3227 code+1NOP+32 table bytes; dispatcher
+physical206 comprises179 code+1NOP+12 table+14 selector bytes. Candidate physical
+2752/214 has code2719/186. Same-scope code comparisons are135 raw103/2655 comparable
+and3 raw1/127; both complete code decodes and normalization pass, but no owner is
+exact. Preliminary initial.json mixes physical candidate/code target and must
+not be used as a full-owner ratio. The raw selector matches; states11/12 share a
+candidate body whereas target has separate bodies. Native dispatcher takes a
+stack owner versus target ESI; result preserves stack/RET4. No ABI/runtime or
+helper exact promotion follows from successful diagnostic linking.
+
+Actual-source host tests use the verified91-byte ASCII alphabet (seven13-key
+rows; special indexes88/89/90). They cover grid wraps, eight-character overwrite,
+backspace/finish, all25 occupied or mixed-null slots, save/load failures and
+mutation order, simultaneous inputs, timer gates, practice-score maximum,
+insertion stage mutation, time-field reload, root/child pending propagation,
+negative score-row cancel and complete/incomplete exit. Synthetic types/dependency
+sinks establish source contracts, not original callback behavior, x87/native
+precision, allocation safety, external storage or whole runtime closure.

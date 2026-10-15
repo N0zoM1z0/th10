@@ -926,3 +926,11 @@ EnemyAdvanceMotion
 PlayerSetShotVmInterrupt2
 PlayerSpawnEffectRow
 PlayerUpdateGate28::GetDamageAtPosition
+ResultMenuUpdate
+ResultMenuUpdateResult
+ResultMenuPrepareScore
+ResultMenuClose
+ResultMenuPendingSix
+ResultMenuPendingThree
+ResultMenuFindScript
+ResultMenuSynchronizeScore

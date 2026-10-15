@@ -3125,3 +3125,453 @@ closeMusicRoom:
     }
     return 0;
 }
+
+// Result/replay-name controller: maintained here with the existing cursor/input
+// source, not a claim about original translation-unit ownership. All external
+// storage aliases and the two other pause-controller owners remain unresolved.
+#include "ResultMenu.hpp"
+#include "Gui.hpp"
+#include "GameScoreState.hpp"
+#include "EnemySoundQueue.hpp"
+extern unsigned char g_MainSoundOwner[0x52d0];
+extern unsigned int g_GameRuntimeFlags;
+extern unsigned int g_GameConfigurationFlags;
+extern int g_GameTransitionState;
+struct ResultGameChainView { unsigned int unknown00; unsigned int flags; };
+struct ResultGameManagerView
+{
+    unsigned char unknown000[8];
+    ResultGameChainView *updateChain;
+    void *drawChain;
+    AnmVmTimerView timer;
+};
+extern ResultGameManagerView *g_ResultGameManager; // pointer alias at 0x477810
+extern void __stdcall ResultMenuOpenPause(ResultMenuView *menu); // 0x422AB0
+extern void __stdcall ResultMenuUpdatePause(ResultMenuView *menu); // 0x422C80
+
+static void ResultMenuSound(int soundId)
+{
+    reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(soundId, 0);
+}
+
+// Target 0x4243F0 and 0x40C4D0. Pending publication only, no script execution.
+void ResultMenuPendingSix(AnmVmIdView *id)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id->value);
+    if (vm != NULL)
+    {
+        vm->pendingInterrupt = 6;
+        if (vm->layerNode.previous == NULL)
+            for (AnmVmLayerNodeView *node = vm->layerNode.next; node != NULL; node = node->next)
+                static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 6;
+    }
+}
+void ResultMenuPendingThree(AnmVmIdView *id)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id->value);
+    if (vm != NULL)
+    {
+        vm->pendingInterrupt = 3;
+        if (vm->layerNode.previous == NULL)
+            for (AnmVmLayerNodeView *node = vm->layerNode.next; node != NULL; node = node->next)
+                static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 3;
+    }
+}
+
+// Target 0x4497D0 returns an ID aggregate, not a VM pointer. The target clears
+// an unresolved input ID but still walks vm+0x10: a valid VM is a precondition.
+AnmVmIdView ResultMenuFindScript(AnmVmIdView *id, int scriptIndex)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id->value);
+    if (vm == NULL)
+        id->value = 0;
+    for (AnmVmLayerNodeView *node = &vm->layerNode; node != NULL; node = node->next)
+    {
+        AnmVmView *entry = static_cast<AnmVmView *>(node->owner);
+        if (entry->scriptIndex == scriptIndex)
+            return AnmVmIdView(entry->id);
+    }
+    return AnmVmIdView(0);
+}
+
+// Target 0x421F60, GUI receiver in EAX; shared maintained score/storage views.
+void ResultMenuSynchronizeScore(GuiView *gui)
+{
+    gui->value9E78 = g_GameScoreState.score;
+    if (g_GameScoreState.unknown00 < g_GameScoreState.score)
+        g_GameScoreState.unknown00 = g_GameScoreState.score;
+}
+
+// Target 0x423510 does not deallocate the controller or replay list.
+void ResultMenuClose(ResultMenuView *menu)
+{
+    menu->state = 13;
+    menu->timer.SetCurrent(0);
+    EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
+    EnemyMarkPendingInterrupt(&menu->mainVm.value);
+    g_AnmGameSpeed = menu->savedSpeed;
+}
+
+// Target 0x423570. Preserve the second stage read after the opaque insertion;
+// it is not an unconditional restoration of the temporary stage/format values.
+void __stdcall ResultMenuPrepareScore(ResultMenuView *menu)
+{
+    if (g_FrontEndSelectedStage == 7 && menu->completed != 0)
+    {
+        g_FrontEndScoreFormatTable = g_FrontEndScoreEntryFormatTable;
+        g_FrontEndSelectedStage = 8;
+        g_FrontEndSelectedStageMirror = 8;
+    }
+    int row = FrontEndInsertScore(GetFrontEndScoreTable(g_ReplayCharacter * 3 + g_ReplayShotType));
+    if (g_FrontEndSelectedStage == 7 && menu->completed != 0)
+    {
+        g_FrontEndScoreFormatTable = g_FrontEndDefaultScoreFormatTable;
+        g_FrontEndSelectedStage = 7;
+        g_FrontEndSelectedStageMirror = 7;
+    }
+    if (row < 0)
+    {
+        menu->scoreUnavailable = 1;
+        return;
+    }
+    menu->cursor.count = 25;
+    menu->cursor.wraps = 1;
+    menu->cursor.SetCurrent(row);
+    menu->keyboard.SetCurrent(0);
+    menu->keyboard.count = strlen(g_FrontEndScoreEntryAlphabet);
+    menu->keyboard.wraps = 1;
+    strcpy(menu->name, reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
+    menu->nameIndex = 0;
+    if (strcmp(menu->name, "        ") != 0)
+        menu->keyboard.Move(-1);
+    int length = 8;
+    while (menu->name[length - 1] == ' ')
+    {
+        --length;
+        if (length <= 0)
+            break;
+    }
+    menu->nameIndex = length;
+    menu->scoreUnavailable = 0;
+}
+
+// Target 0x4236F0: 3227 code bytes plus separately audited jump-table data.
+void __stdcall ResultMenuUpdateResult(ResultMenuView *menu)
+{
+    char replayPath[64];
+    const int entryState = menu->state;
+    switch (entryState)
+    {
+    case 6:
+        if (menu->timer.current >= 10 && (g_FrontEndInput.pressed & 0x1001) != 0)
+        {
+            ResultMenuSound(10);
+            menu->state = 7;
+            menu->mainVm.SetInterrupt(2);
+            menu->timer.SetCurrent(0);
+        }
+        break;
+    case 7:
+        if (menu->timer.current < 10)
+            break;
+        ResultMenuSynchronizeScore(g_GuiView);
+        if ((g_GameRuntimeFlags & 0x10) != 0)
+        {
+            int *record = reinterpret_cast<int *>(g_FrontEndProfileData +
+                (g_ReplayCharacter * 3 + g_ReplayShotType) * 0x437c + 0x4dc +
+                (g_FrontEndSelectedStage + g_ReplayDifficulty * 6) * 8);
+            if (g_GameScoreState.score > *record)
+                *record = g_GameScoreState.score;
+        }
+        else
+        {
+            ResultMenuPrepareScore(menu);
+            menu->timer.SetCurrent(0);
+            if (menu->scoreUnavailable == 0)
+            {
+                menu->state = 12;
+                menu->mainVm.ClearFlag2();
+                return;
+            }
+        }
+        menu->state = 8;
+        menu->cursor.count = 3;
+        menu->cursor.wraps = 1;
+        menu->cursor.SetCurrent(2);
+        ResultMenuPendingThree(&menu->mainVm);
+        menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+        break;
+    case 8:
+        menu->cursor.previous = menu->cursor.current;
+        if ((g_FrontEndInput.pressed & 0x10) != 0 || (g_FrontEndInput.repeated & 0x10) != 0)
+            menu->cursor.Move(-1);
+        if ((g_FrontEndInput.pressed & 0x20) != 0 || (g_FrontEndInput.repeated & 0x20) != 0)
+            menu->cursor.Move(1);
+        if (menu->cursor.previous != menu->cursor.current)
+        {
+            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+            ResultMenuSound(12);
+        }
+        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        {
+            AnmVmIdView selected = ResultMenuFindScript(&menu->mainVm, menu->cursor.current + 0x7c);
+            ResultMenuPendingSix(&selected);
+            ResultMenuSound(10);
+            menu->state = 13;
+            menu->timer.SetCurrent(0);
+            ResultMenuSynchronizeScore(g_GuiView);
+            if (menu->cursor.current == 1)
+            {
+                menu->state = 10;
+                menu->timer.SetCurrent(0);
+                menu->mainVm.ClearFlag2();
+                menu->cursor.Push();
+                menu->cursor.count = 25;
+                menu->cursor.wraps = 1;
+                menu->cursor.SetCurrent(0);
+                for (int slot = 1; slot <= 25; ++slot)
+                {
+                    sprintf(replayPath, "th10_%.2d.rpy", slot);
+                    menu->replayFiles[slot - 1] = ReplayManager::Load(replayPath);
+                }
+            }
+            else if (menu->cursor.current == 2)
+            {
+                menu->state = 13;
+                menu->timer.SetCurrent(0);
+                ResultMenuSound(10);
+            }
+        }
+        // Independent test: simultaneous confirm/cancel also reaches this path.
+        if ((g_FrontEndInput.pressed & 0x0a) != 0)
+        {
+            ResultMenuSound(11);
+            if (menu->cursor.current != 2)
+            {
+                menu->cursor.SetCurrent(2);
+                menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+            }
+        }
+        break;
+    case 10:
+        if (menu->timer.current < 10)
+            break;
+        menu->cursor.previous = menu->cursor.current;
+        if (g_FrontEndInput.IsRepeated(0x10)) menu->cursor.Move(-1);
+        if (g_FrontEndInput.IsRepeated(0x20)) menu->cursor.Move(1);
+        if (menu->cursor.previous != menu->cursor.current) ResultMenuSound(12);
+        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        {
+            menu->state = 11;
+            menu->timer.SetCurrent(0);
+            menu->keyboard.SetCurrent(0);
+            menu->keyboard.count = strlen(g_FrontEndScoreEntryAlphabet);
+            menu->keyboard.wraps = 1;
+            // Target retains the replay-data pointer field's address across time().
+            ReplayDataHeader **data = &g_ReplayManager->replayData;
+            if (menu->completed != 0 && (g_GameRuntimeFlags & 0x10) == 0)
+            {
+                time(reinterpret_cast<time_t *>(&(*data)->timestamp));
+                (*data)->completionState = 8;
+            }
+            else
+            {
+                time(reinterpret_cast<time_t *>(&(*data)->timestamp));
+                (*data)->completionState = g_FrontEndSelectedStage;
+            }
+            strcpy(menu->name, reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
+            menu->nameIndex = 0;
+            if (strcmp(menu->name, "        ") != 0) menu->keyboard.Move(-1);
+            int length = 8;
+            while (menu->name[length - 1] == ' ')
+            {
+                --length;
+                if (length <= 0) break;
+            }
+            menu->nameIndex = length;
+            ResultMenuSound(10);
+            return;
+        }
+        if ((g_FrontEndInput.pressed & 0x0a) != 0)
+        {
+            menu->state = 8;
+            menu->timer.SetCurrent(0);
+            menu->mainVm.SetFlag2();
+            menu->cursor.Pop();
+            menu->cursor.count = 3;
+            menu->cursor.wraps = 1;
+            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+            for (int slot = 0; slot < 25; ++slot)
+            {
+                if (menu->replayFiles[slot] != NULL) delete menu->replayFiles[slot];
+                menu->replayFiles[slot] = NULL;
+            }
+            menu->state = 8;
+            menu->timer.SetCurrent(0);
+            ResultMenuSound(11);
+        }
+        break;
+    case 11:
+    case 12:
+        if (menu->timer.current < 10) break;
+        // These two target states have separate dispatch bodies. The lexical
+        // common navigation below preserves each state's gate and input order.
+        if (entryState == 11 || menu->scoreUnavailable == 0)
+        {
+            menu->keyboard.previous = menu->keyboard.current;
+            if (g_FrontEndInput.IsRepeated(0x10)) menu->keyboard.Move(-13);
+            if (g_FrontEndInput.IsRepeated(0x20)) menu->keyboard.Move(13);
+            if (g_FrontEndInput.IsRepeated(0x40))
+                menu->keyboard.Move(menu->keyboard.current % 13 == 0 ? 12 : -1);
+            if (g_FrontEndInput.IsRepeated(0x80))
+                menu->keyboard.Move(menu->keyboard.current % 13 == 12 ? -12 : 1);
+            if (menu->keyboard.previous != menu->keyboard.current) ResultMenuSound(12);
+        }
+        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        {
+            if (entryState == 11 || menu->scoreUnavailable == 0)
+            {
+                int length = strlen(g_FrontEndScoreEntryAlphabet);
+                int key = menu->keyboard.current;
+                if (key < length - 3 || key == length - 3)
+                {
+                    char value = key < length - 3 ? g_FrontEndScoreEntryAlphabet[key] : ' ';
+                    if (menu->nameIndex < 8)
+                    {
+                        menu->name[menu->nameIndex] = value;
+                        ++menu->nameIndex;
+                        if (menu->nameIndex >= 8) menu->keyboard.SetCurrent(length - 1);
+                    }
+                    else menu->name[menu->nameIndex - 1] = value;
+                }
+                else if (key == length - 2)
+                {
+                    if (menu->nameIndex == 0) return;
+                    --menu->nameIndex;
+                    menu->name[menu->nameIndex] = ' ';
+                    if (entryState == 11)
+                    {
+                        ResultMenuSound(11);
+                        return;
+                    }
+                }
+                else if (key == length - 1)
+                {
+                    if (entryState == 11)
+                    {
+                        ResultMenuSound(44);
+                        sprintf(replayPath, "th10_%.2d.rpy", menu->cursor.current + 1);
+                        ReplayManager::Destroy(menu->replayFiles[menu->cursor.current]);
+                        g_ReplayManager->SaveReplay(replayPath, menu->name);
+                        // Save failure is deliberately ignored, and the selected
+                        // index is reloaded after SaveReplay before loading.
+                        int slot = menu->cursor.current;
+                        menu->replayFiles[slot] = ReplayManager::Load(replayPath);
+                        menu->state = 10;
+                        menu->timer.SetCurrent(0);
+                        strcpy(reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878), menu->name);
+                        return;
+                    }
+                    unsigned char *profile = g_FrontEndProfileData;
+                    strcpy(reinterpret_cast<char *>(profile +
+                        (g_ReplayCharacter * 3 + g_ReplayShotType) * 0x437c + 0x1e +
+                        (menu->cursor.current + g_ReplayDifficulty * 10) * 0x18), menu->name);
+                    strcpy(reinterpret_cast<char *>(profile + 0x1d878), menu->name);
+                    menu->mainVm.SetFlag2();
+                    menu->state = 8;
+                    menu->cursor.count = 3;
+                    menu->cursor.wraps = 1;
+                    menu->cursor.SetCurrent(0);
+                    ResultMenuPendingThree(&menu->mainVm);
+                    menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+                }
+                ResultMenuSound(10);
+            }
+            else
+            {
+                menu->mainVm.SetFlag2();
+                menu->state = 8;
+                menu->cursor.count = 3;
+                menu->cursor.wraps = 1;
+                menu->cursor.SetCurrent(0);
+                ResultMenuPendingThree(&menu->mainVm);
+                menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+            }
+        }
+        if ((g_FrontEndInput.pressed & 0x0a) != 0)
+        {
+            // The dispatch state at entry, rather than a state changed by the
+            // confirmation arm, chooses this target continuation.
+            if (entryState == 11)
+            {
+                ResultMenuSound(11);
+                if (menu->nameIndex != 0)
+                {
+                    --menu->nameIndex;
+                    menu->name[menu->nameIndex] = ' ';
+                    return;
+                }
+                menu->state = 10;
+                menu->timer.SetCurrent(0);
+                return;
+            }
+            if (menu->cursor.current < 0)
+            {
+                menu->state = 8;
+                menu->cursor.count = 3;
+                menu->cursor.SetCurrent(0);
+                menu->timer.SetCurrent(0);
+                ResultMenuSound(10);
+                return;
+            }
+            if (menu->nameIndex != 0)
+            {
+                ResultMenuSound(11);
+                --menu->nameIndex;
+                menu->name[menu->nameIndex] = ' ';
+            }
+        }
+        break;
+    case 13:
+        if (menu->timer.current < 12) break;
+        ResultMenuClose(menu);
+        menu->state = 21;
+        if (menu->cursor.current == 0)
+            g_GameTransitionState = menu->completed != 0 ? 10 : 13;
+        else if (menu->cursor.current == 1 || menu->cursor.current == 2)
+            g_MainSupervisorView.SetNextGameMode(4);
+        break;
+    }
+}
+
+// Target 0x4223F0, real result-controller caller. Timer scale must already be
+// initialized here, unlike SetCurrent's lazy initialization contract.
+int ResultMenuUpdate(ResultMenuView *menu)
+{
+    switch (menu->state)
+    {
+    case 0:
+        if ((g_GameRuntimeFlags & 0x20) == 0 &&
+            ((g_FrontEndInput.pressed & 8) != 0 || (g_GameConfigurationFlags & 0x10) != 0) &&
+            g_ResultGameManager->updateChain != NULL &&
+            (g_ResultGameManager->updateChain->flags & 2) != 0 &&
+            g_ResultGameManager->timer.current >= 30)
+            ResultMenuOpenPause(menu);
+        break;
+    case 1: case 2: case 3: case 4: case 5:
+        ResultMenuUpdatePause(menu);
+        break;
+    case 6: case 7: case 8: case 9: case 10: case 11: case 12: case 13:
+        ResultMenuUpdateResult(menu);
+        break;
+    }
+    menu->timer.previous = menu->timer.current;
+    if (*menu->timer.scale > 0.99f && *menu->timer.scale < 1.01f)
+    {
+        ++menu->timer.current;
+        menu->timer.subframe += 1.0f;
+    }
+    else
+        menu->timer.current = static_cast<int>(menu->timer.subframe += *menu->timer.scale);
+    return 1;
+}
