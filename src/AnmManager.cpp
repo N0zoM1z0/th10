@@ -3088,6 +3088,18 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant3(
 // executor. The adjacent TH095 source supplies control-flow hypotheses; every
 // opcode, VM offset, interpolation call and frame-end update below is checked
 // against the TH10 v1.00a target.
+struct AnmScriptVectorView
+{
+    float x;
+    float y;
+    float z;
+
+    void FromAngleMagnitude(float angle, float magnitude);
+};
+typedef char AnmScriptVectorViewSizeIs0C[
+    (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];
+
+
 int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
 {
     AnmRawInstructionView *currentInstruction;
@@ -3550,11 +3562,17 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             break;
         case ANM_OP_F_SET_RANDOM:
         {
-            RngView *rng = vm->useAlternateRng
-                ? &g_AlternateRngView
-                : &g_RngView;
-            float randomValue = GET_FLOAT_VAR(1);
-            randomValue *= rng->GetRandomF32();
+            float randomValue;
+            if (vm->useAlternateRng)
+            {
+                randomValue = GET_FLOAT_VAR(1);
+                randomValue *= g_AlternateRngView.GetRandomF32();
+            }
+            else
+            {
+                randomValue = GET_FLOAT_VAR(1);
+                randomValue *= g_RngView.GetRandomF32();
+            }
             *GET_FLOAT_VAR_PTR(0) = randomValue;
             break;
         }
@@ -3763,7 +3781,7 @@ stop:
             vertex[0].diffuse.value = vm->primaryColor.value;
             vertex[0].u = vm->loadedSprite->uStart + vm->uvScrollX;
             vertex[0].v = textureV + vm->uvScrollY;
-            reinterpret_cast<AnmFloat3View *>(&vertex[0].x)
+            reinterpret_cast<AnmScriptVectorView *>(&vertex[0].x)
                 ->FromAngleMagnitude(
                     angleValue, vm->scaleX * 0.5f + vm->scaleY);
             vertex[0].z = 0.0f;
@@ -3775,7 +3793,7 @@ stop:
             vertex[0].diffuse.value = vm->primaryColor.value;
             vertex[0].u = vm->loadedSprite->uEnd + vm->uvScrollX;
             vertex[0].v = textureV + vm->uvScrollY;
-            reinterpret_cast<AnmFloat3View *>(&vertex[0].x)
+            reinterpret_cast<AnmScriptVectorView *>(&vertex[0].x)
                 ->FromAngleMagnitude(
                     angleValue, vm->scaleY - vm->scaleX * 0.5f);
             vertex[0].z = 0.0f;
@@ -3855,16 +3873,6 @@ void AnmOpcodeVectorView::FromAngleMagnitude(float angle, float magnitude)
 #endif
 }
 
-struct AnmScriptVectorView
-{
-    float x;
-    float y;
-    float z;
-
-    void FromAngleMagnitude(float angle, float magnitude);
-};
-typedef char AnmScriptVectorViewSizeIs0C[
-    (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];
 
 void AnmScriptVectorView::FromAngleMagnitude(float angle, float magnitude)
 {

@@ -270,3 +270,21 @@ queue. Next work should select a concrete missing semantic/structural component
 in ECL Run, ANM ExecuteScript, Enemy dispatch or a similarly important owner.
 Small prerequisites are allowed only to support that selected major owner.
 Keep parked FORMAT, radial and sample-loader spelling controls parked.
+
+## Active large-owner ANM checkpoint (2026-10-15)
+
+Fresh ExecuteScript baseline was 9900/9964 with79/92 target-sized groups, not
+the earlier historical9964/84-group checkpoint. Two target-backed changes are
+retained: mode9 calls now bind the established script polar owner, and the
+F_SET_RANDOM branches decode operands before selecting each concrete RNG
+receiver. The latter recovers the complete130-byte group and removes the
+unsupported RNG-pointer lifetime across GetFloatVar.
+
+Two cold diagnostics and independent review reproduce9948/9964 full owner,
+9572/9588 pre-table span,0xF8 vs target0xFC frame,94 selectors/92 groups in
+order,83 target-sized groups and6331/8000 case-aligned comparable bytes.
+Full-owner comparison remains1212/8564 comparable (1386 raw); zero exact credit.
+Nine size gaps remain: opcode61 +1,48 +9,63 +1,58 -3,60 -14,27 -9,9 +9,
+11 -9,2 -1. Next bounded hypothesis is SCALE_TIME60 aggregate materialization:
+target preserves decodedY separately, retainsX on x87, then builds/copies XY.
+Do not blindly restore older rejected scalar/spelling controls.
