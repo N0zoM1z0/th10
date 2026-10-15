@@ -213,10 +213,6 @@ extern PlayerUpdateGate10 *g_PlayerUpdateGate10;
 // maintained source spellings, not original ABI claims.
 void PlayerDrawManagedVm(PlayerDrawVmView *vm);
 void PlayerDrawAuxiliaryRectangle(const float *bounds, unsigned int color);
-void PlayerSetMainVmMovementScript(Player *player, int scriptIndex);
-void PlayerSetManagedVmPosition(unsigned int vmId, const PlayerFloat3 *position);
-void PlayerSetManagedVmScreenPosition(
-    unsigned int vmId, const PlayerFloat3 *position);
 
 // Descriptive interfaces for target-observed Player update callees. Their
 // original identifiers and private register conventions remain unproven.
@@ -371,7 +367,6 @@ extern float g_PlayerExtent2ByCharacter[2];
 // unproven by this packet.
 struct EnemyPrimaryResourceOwnerView;
 extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
-void PlayerSetManagedVmDeleteState(unsigned int *vmId, unsigned short state);
 
 // Neutral lifecycle globals and interfaces recovered around Player creation,
 // reset and teardown. Private register contracts are deliberately hidden here.
@@ -882,6 +877,11 @@ int PlayerInitialize(Player *player)
 // The target body receives Player in live-in EDI from its sole caller. This
 // ordinary source parameter is a maintainable spelling of that behavior, not a
 // claim about the original declaration or the optimizer-owned machine ABI.
+// Explicit embedded-storage ABI view; this assertion does not establish C++
+// object-lifetime/aliasing closure between the legacy draw view and AnmVmView.
+typedef char PlayerMovementVmAt14[(offsetof(Player, drawVm) == 0x14) ? 1 : -1];
+typedef char PlayerMovementVmSize[(sizeof(PlayerDrawVmView) == sizeof(AnmVmView)) ? 1 : -1];
+
 int PlayerUpdateMovementAndOptions(Player *player)
 {
     int horizontalSpeed = 0;
@@ -978,7 +978,8 @@ int PlayerUpdateMovementAndOptions(Player *player)
     else
     {
         if (FindPlayerVm(player->modeVmId) != NULL)
-            PlayerSetManagedVmDeleteState(&player->modeVmId, 1);
+            g_AnmRenderManagerView->SetVmPendingInterrupt(
+                AnmVmIdView(player->modeVmId), 1);
         player->modeVmId = 0;
 
         // Same target-observed lexical block order as the mode-1 switch.
@@ -1018,13 +1019,25 @@ int PlayerUpdateMovementAndOptions(Player *player)
     }
 
     if (horizontalSpeed < 0 && player->previousHorizontalSpeed >= 0)
-        PlayerSetMainVmMovementScript(player, PLAYER_MAIN_VM_MOVE_LEFT);
+        static_cast<AnmLoadedView *>(player->resource)->
+            InitializeAndExecuteScriptIndex(
+                reinterpret_cast<AnmVmView *>(&player->drawVm),
+                PLAYER_MAIN_VM_MOVE_LEFT);
     else if (horizontalSpeed > 0 && player->previousHorizontalSpeed <= 0)
-        PlayerSetMainVmMovementScript(player, PLAYER_MAIN_VM_MOVE_RIGHT);
+        static_cast<AnmLoadedView *>(player->resource)->
+            InitializeAndExecuteScriptIndex(
+                reinterpret_cast<AnmVmView *>(&player->drawVm),
+                PLAYER_MAIN_VM_MOVE_RIGHT);
     else if (horizontalSpeed == 0 && player->previousHorizontalSpeed < 0)
-        PlayerSetMainVmMovementScript(player, PLAYER_MAIN_VM_STOP_LEFT);
+        static_cast<AnmLoadedView *>(player->resource)->
+            InitializeAndExecuteScriptIndex(
+                reinterpret_cast<AnmVmView *>(&player->drawVm),
+                PLAYER_MAIN_VM_STOP_LEFT);
     else if (horizontalSpeed == 0 && player->previousHorizontalSpeed > 0)
-        PlayerSetMainVmMovementScript(player, PLAYER_MAIN_VM_STOP_RIGHT);
+        static_cast<AnmLoadedView *>(player->resource)->
+            InitializeAndExecuteScriptIndex(
+                reinterpret_cast<AnmVmView *>(&player->drawVm),
+                PLAYER_MAIN_VM_STOP_RIGHT);
 
     player->previousHorizontalSpeed = horizontalSpeed;
     player->previousVerticalSpeed = verticalSpeed;
@@ -1051,11 +1064,12 @@ int PlayerUpdateMovementAndOptions(Player *player)
     }
     else
     {
-        PlayerFloat3 position;
+        AnmFloat3View position;
         position.x = player->drawPosition.x + 224.0f;
         position.y = player->drawPosition.y + 16.0f;
         position.z = player->drawPosition.z;
-        PlayerSetManagedVmPosition(player->modeVmId, &position);
+        g_AnmRenderManagerView->SetVmPosition(
+            AnmVmIdView(player->modeVmId), &position);
     }
 
     if (player->optionMode == 0 &&
@@ -1114,12 +1128,13 @@ int PlayerUpdateMovementAndOptions(Player *player)
             option.replayPair1 = option.replayPair0;
         }
 
-        PlayerFloat3 optionPosition;
+        AnmFloat3View optionPosition;
         optionPosition.x = (float)option.replayPair1.x * 0.01f;
         optionPosition.y = (float)option.replayPair1.y * 0.01f;
         optionPosition.z = 0.0f;
-        PlayerSetManagedVmScreenPosition(option.primaryVmId, &optionPosition);
-        PlayerSetManagedVmScreenPosition(option.secondaryVmId, &optionPosition);
+        AnmRenderManagerView *manager = g_AnmRenderManagerView;
+        manager->SetVmWorldPosition(AnmVmIdView(option.primaryVmId), &optionPosition);
+        manager->SetVmWorldPosition(AnmVmIdView(option.secondaryVmId), &optionPosition);
     }
 
     return 0;

@@ -1245,3 +1245,28 @@ and retained only after X gates in target428919 onward; current candidate
 subnormal underflow rather than ordinary normal finite values. This residual
 was documented without another source-shape experiment; rotation/circle/full
 numeric closure remains unclaimed.
+
+### Player movement/options ANM identities (2026-10-15)
+
+The1591-byte movement/options code now calls maintained SetVmPendingInterrupt,
+SetVmPosition, SetVmWorldPosition and InitializeAndExecuteScriptIndex instead
+of disconnected descriptive aliases. Target449350 adds224/16 to world position;
+the former ScreenPosition label was misleading. The option pair captures the
+manager once but reads the secondary ID after the first call. Main scripts1–4
+use Player resource+10 and embedded VM+14 with an explicit size/offset-asserted
+partial storage view; object lifetime and broader alias closure remain open.
+
+Target code4250B0–4256E6 is1591 bytes, followed by one alignment byte and two
+8-slot jump tables4256E8–425727 (physical1656). Candidate physical1588 is1522 code,
+two alignment bytes and64 table bytes. Same-scope code comparison is214 raw,
+202/1455 comparable, complete normalization/decoding. Earlier comparison in the
+local corrected.json is mixed physical/code scope and must not be used as a
+full-owner exactness ratio. Both literal tables and all16 destinations are
+recorded separately; ledger ownership/denominator is unchanged, zero credit.
+
+The extracted complete movement-owner body host fixture covers scripts/receiver/resource,
+mode pending interrupt and position, and option world-position calls using the
+maintained setter bodies. First lookup replaces the global manager and changes
+the second ID, yet both calls use the captured manager and updated ID. Root
+children receive the transformed coordinates. Synthetic boundaries do not prove
+native math, embedded-object lifetime, real callback registration or whole runtime.

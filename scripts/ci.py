@@ -57,6 +57,7 @@ def main() -> int:
         run("Validate player damage prerequisites", [sys.executable, "scripts/test-player-damage-prerequisites.py"])
         run("Validate auxiliary player damage", [sys.executable, "scripts/test-player-auxiliary-damage.py"])
         run("Validate player shot update lifetimes", [sys.executable, "scripts/test-player-shot-update.py"])
+        run("Validate player movement ANM identities", [sys.executable, "scripts/test-player-movement-anm.py"])
         run("Validate Player power-state transitions", [sys.executable, "scripts/test-player-update-state.py"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])
