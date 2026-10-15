@@ -660,3 +660,21 @@ Artifacts: .analysis/gpt-dots-music-room/unordered-fixed.json,
 owner-table-audit.json, strengthened-test.log; image retained separately in
 build/probe-ltcg/MusicRoom-unordered-fixed/source.exe, SHA256
 33b28b51989b47dac155571524b93ba3f60f995ad19759ea378f9c786ca951bd.
+
+Music-room interrupt refinement: the general ID helper stayed out of line in
+both paths. A manager-wrapper control still retained the confirm wrapper call
+and was rejected. Direct lexical bodies naturally produce target call depths:
+confirm calls FindVm then walks root children; close expands both two-list
+lookup and root-child walk. General helpers/compiler flags are unchanged.
+Latest contribution2808 =2791 code +1NOP at406467 +16 table, versus target
+2796 =2778 code +2alignment +16 table. Whole physical comparison309 raw,
+286/2396 comparable, normalization complete; no exact credit. Code-region
+lengths candidate/target: entry30/30, state0 1082/1080, state1 213/213,
+state2 1302/1331, state3/shared epilogue164/124. Original table ownership
+remains provisional; no denominator/boundary edits. Independent delta review
+passed actual source/list tests for both paths, primary/secondary precedence,
+zero/missing IDs, root children/nonroot suppression and unchanged IDs/flags.
+All previous parser/state/warning/scroll/NaN/precedence fixtures remain.
+Evidence .analysis/gpt-dots-music-room/lexical-interrupt.json,
+lexical-table-audit.json, lexical-regions.json, lexical-tests.log; retained
+image SHA d676ad755efb8203d8956c406fa4320884ea023c391244c9e9d88339c0032c7d.

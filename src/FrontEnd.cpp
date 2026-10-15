@@ -2980,8 +2980,25 @@ int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)
         }
         if ((g_FrontEndInput.pressed & 0x1001) != 0)
         {
+            // Target confirm path resolves each ID then walks only root children.
             for (int i = 0; i < 8; ++i)
-                controller->musicCommentVmIds[i].SetInterrupt(3);
+            {
+                AnmVmView *vm = g_AnmRenderManagerView->FindVm(
+                    controller->musicCommentVmIds[i]);
+                if (vm != NULL)
+                {
+                    vm->pendingInterrupt = 3;
+                    if (vm->layerNode.previous == NULL)
+                    {
+                        AnmVmLayerNodeView *node = vm->layerNode.next;
+                        while (node != NULL)
+                        {
+                            static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 3;
+                            node = node->next;
+                        }
+                    }
+                }
+            }
             controller->musicSelectedTrack = controller->cursor.current;
             controller->musicCommentLine = 0;
             ResetStateTimer(controller);
@@ -3014,8 +3031,25 @@ closeMusicRoom:
             controller->cursor.Pop();
             for (int i = 0; i < controller->musicTrackCount; ++i)
                 EnemyMarkPendingInterrupt(&controller->musicRowVmIds[i].value);
+            // Target close path expands the two-list lookup and root-child walk.
             for (int i = 0; i < 8; ++i)
-                controller->musicCommentVmIds[i].SetInterrupt(1);
+            {
+                AnmVmView *vm = g_AnmRenderManagerView->FindVm(
+                    controller->musicCommentVmIds[i]);
+                if (vm != NULL)
+                {
+                    vm->pendingInterrupt = 1;
+                    if (vm->layerNode.previous == NULL)
+                    {
+                        AnmVmLayerNodeView *node = vm->layerNode.next;
+                        while (node != NULL)
+                        {
+                            static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 1;
+                            node = node->next;
+                        }
+                    }
+                }
+            }
             FrontEndPlaySound(11);
             SetScreenState(controller, 3);
         }

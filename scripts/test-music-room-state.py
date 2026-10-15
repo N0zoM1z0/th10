@@ -13,8 +13,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def function_source(signature):
-    source = (ROOT / 'src/FrontEnd.cpp').read_text()
+def function_source(signature, filename="src/FrontEnd.cpp"):
+    source = (ROOT / filename).read_text()
     start = source.index(signature)
     brace = source.index('{', start)
     depth, end = 1, brace + 1
@@ -39,13 +39,16 @@ class MusicRoomState(unittest.TestCase):
 struct AnmFloat3View { float x,y,z; AnmFloat3View(float a=0,float b=0,float c=0):x(a),y(b),z(c){} };
 struct Timer { int current=0, previous=-1; void SetCurrent(int n) {previous=n-1;current=n;} };
 struct Interpolation { int duration=0, mode=0; AnmFloat3View initialTangent,finalTangent,initial,final; Timer timer; };
+struct AnmVmLayerNodeView { void *owner=NULL; AnmVmLayerNodeView *next=NULL,*previous=NULL; };
 struct AnmVmView {
+    int id=0; AnmVmLayerNodeView layerNode;
     unsigned flags35C=0; short pendingInterrupt=0; AnmFloat3View position; Interpolation positionInterpolation;
     void StartPositionInterpolation(const AnmFloat3View *,const AnmFloat3View *,int,unsigned char);
 };
 static AnmVmView pool[512]; static int nextId;
+static AnmVmLayerNodeView poolNodes[512];static AnmVmLayerNodeView *primaryHead=NULL;
 struct AnmVmIdView { int value=0; AnmVmView *GetVm() {return value?&pool[value]:NULL;} void SetInterrupt(short n) {if(value)pool[value].pendingInterrupt=n;} };
-struct Loaded { AnmVmIdView CreateVmVariant0(int,unsigned layer) { assert(layer==15); AnmVmIdView id;id.value=++nextId;assert(nextId<512);pool[nextId]=AnmVmView();return id;} };
+struct Loaded { AnmVmIdView CreateVmVariant0(int,unsigned layer) { assert(layer==15); AnmVmIdView id;id.value=++nextId;assert(nextId<512);pool[nextId]=AnmVmView();pool[nextId].id=nextId;poolNodes[nextId].owner=&pool[nextId];poolNodes[nextId].next=primaryHead;primaryHead=&poolNodes[nextId];return id;} };
 struct Cursor {
     int count=0,current=0,previous=0,pops=0;
     void SetCurrent(int n) {current=count==0?0:(n>=count?count-1:(n<0?0:n));}
@@ -71,11 +74,12 @@ static Ascii *g_AsciiManagerView=&ascii;
 static Loaded *g_FrontEndMusicCommentAnm;
 static std::vector<std::string> events,drawn;
 static std::vector<unsigned> colors; static std::vector<AnmVmView *> drawReceivers;
-struct Render {
-    AnmVmView *FindVm(AnmVmIdView id) {return id.GetVm();}
+struct AnmRenderManagerView {
+    AnmVmLayerNodeView *&primaryVmListHead=primaryHead; AnmVmLayerNodeView *secondaryVmListHead=NULL;
+    AnmVmView *FindVm(AnmVmIdView);
     void DrawTextLeft(AnmVmView *vm,unsigned color,const char *text,...) {assert(vm);drawn.push_back(text);colors.push_back(color);drawReceivers.push_back(vm);}
 } render;
-static Render *g_AnmRenderManagerView=&render;
+static AnmRenderManagerView *g_AnmRenderManagerView=&render;
 static const char g_MusicLockedTitleFormat[]="locked %d";
 static const char *g_MusicWarningLines[8]={"w0","w1","w2","w3","w4","w5","w6","w7"};
 static std::string fileText; static bool fileFail;
@@ -96,6 +100,8 @@ static void EnemyMarkPendingInterrupt(int *id){if(*id)pool[*id].pendingInterrupt
 static void DeleteVm(FrontEndControllerView *c,int n){c->vmIds[n].SetInterrupt(1);c->vmIds[n].value=0;}
 static void InterruptVmNow(FrontEndControllerView *c,int n,short interrupt){c->vmIds[n].SetInterrupt(interrupt);events.push_back("interrupt:"+std::to_string(n)+":"+std::to_string(interrupt));}
 '''
+        for signature in ['AnmVmView *AnmRenderManagerView::FindVm(']:
+            program += '\n' + function_source(signature, 'src/AnmManager.cpp') + '\n'
         for signature in ['static char *FrontEndMusicSkipLine(', 'static char *__stdcall FrontEndMusicCopyLine(', 'void AnmVmView::StartPositionInterpolation(', 'int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller)\n{']:
             program += '\n' + function_source(signature) + '\n'
         program += r'''
@@ -170,6 +176,30 @@ int main() {
         if(n==0){assert(vm.positionInterpolation.duration==4&&vm.position.y==originalY);assert(vm.positionInterpolation.final.x==60&&vm.positionInterpolation.final.y==116);}
         else {assert(vm.positionInterpolation.duration==77&&vm.position.x==60&&vm.position.y==116&&vm.position.z==0);}
     }
+    // Both actual state paths exercise maintained lookup/root-child bodies.
+    AnmVmLayerNodeView *savedPrimary=primaryHead;
+    for(int closing=0;closing<2;++closing){
+        FrontEndControllerView walk;walk.frontAnm=&front;walk.screenState=2;walk.stateTimer.current=1;walk.cursor.count=1;
+        AnmVmView root,child,nonroot,blockedChild,secondary,duplicate;
+        root.id=100;nonroot.id=101;secondary.id=102;duplicate.id=100;
+        root.flags35C=0x91;child.flags35C=0x92;
+        AnmVmLayerNodeView first,second,other,duplicateNode,children,blocked;
+        first.owner=&root;first.next=&second;second.owner=&nonroot;
+        other.owner=&secondary;other.next=&duplicateNode;duplicateNode.owner=&duplicate;
+        children.owner=&child;root.layerNode.next=&children;
+        blocked.owner=&blockedChild;nonroot.layerNode.next=&blocked;nonroot.layerNode.previous=&first;
+        primaryHead=&first;render.secondaryVmListHead=&other;
+        walk.musicCommentVmIds[0].value=100;walk.musicCommentVmIds[1].value=101;walk.musicCommentVmIds[2].value=102;
+        walk.musicCommentVmIds[3].value=999; // missing plus four zero IDs
+        profile[0x1d892]=0;g_FrontEndInput.pressed=closing?0x0a:0x1001;
+        FrontEndUpdateMusicRoom(&walk);int expected=closing?1:3;
+        assert(root.pendingInterrupt==expected&&child.pendingInterrupt==expected&&nonroot.pendingInterrupt==expected&&secondary.pendingInterrupt==expected);
+        assert(blockedChild.pendingInterrupt==0&&duplicate.pendingInterrupt==0);
+        assert(root.flags35C==0x91&&child.flags35C==0x92);
+        assert(walk.musicCommentVmIds[3].value==999&&walk.musicCommentVmIds[4].value==0);
+        assert(closing?walk.screenState==3:walk.musicWarning==1);
+    }
+    primaryHead=savedPrimary;render.secondaryVmListHead=NULL;
     FrontEndControllerView failed;failed.frontAnm=&front;failed.stateTimer.current=1;fileFail=true;events.clear();
     FrontEndUpdateMusicRoom(&failed);assert(failed.screenState==3&&failed.musicText==NULL&&failed.cursor.pops==1);
     assert(events==std::vector<std::string>({"sound:11"}));
