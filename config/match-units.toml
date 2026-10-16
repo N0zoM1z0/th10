@@ -19473,3 +19473,22 @@ symbol = "?FrontEndUnlockPracticeRecords@@YAXPAE@Z"
 target_address = 0x42C8C0
 size = 93
 linkages = []
+
+[units.hint-clear-lists]
+artifact_kind = "linked-pe"
+source = "src/Hint.cpp"
+support_sources = ["src/FileSystem.cpp"]
+pdb_source = "src/Hint.cpp"
+output_dir = "build/match-linked/HintLoad"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z"
+functions = ["ClearHintLists"]
+symbol = "?ClearHintLists@@YAXPAUHintOwnerView@@@Z"
+target_address = 0x00419040
+size = 79
+linkages = [
+  { offset = 0x1E, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+  { offset = 0x38, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
+]

@@ -145,3 +145,275 @@ int __stdcall ExportAutomaticHints(HintOwnerView *owner, const char *path)
     free(buffer);
     return 0;
 }
+
+// Target418D00. Constructor-shaped source does not resolve the ledger's
+// authored-versus-generated origin. The original declaration remains unknown.
+HintEntryView::HintEntryView()
+{
+    memset(this, 0, sizeof(*this));
+    link.next = 0;
+    link.previous = 0;
+    link.entry = this;
+    blue = green = red = alpha = 255;
+    remaining = -1;
+    time = 300;
+    scale = 1.0f;
+}
+
+// Target41A0A0. Shift the terminating NUL along with each leading byte.
+static char *HintTrimWhitespace(char *text)
+{
+    while (*text == ' ' || *text == '\t' || *text == '\n' || *text == '\r')
+    {
+        int length = static_cast<int>(strlen(text));
+        for (int i = 0; i < length; ++i)
+            text[i] = text[i + 1];
+    }
+    int last = static_cast<int>(strlen(text)) - 1;
+    while (last >= 0 && (text[last] == ' ' || text[last] == '\t' ||
+                         text[last] == '\n' || text[last] == '\r'))
+        text[last--] = 0;
+    return text;
+}
+
+// Target419F40. The unbounded input scans and uncapped final copy are native
+// quirks. No sentinel, delimiter normalization, or final-tail trim is invented.
+static char *HintReadLine(char *cursor, char *line, int *remaining,
+                          unsigned int capacity)
+{
+    memset(line, 0, capacity);
+    while (*line == 0)
+    {
+        char *end = strchr(cursor, '\n');
+        if (end == 0)
+            end = strchr(cursor, '\r');
+        if (end == 0)
+        {
+            memcpy(line, cursor, *remaining);
+            *remaining = 0;
+            break;
+        }
+        int copySize = static_cast<int>(end - cursor);
+        if (copySize >= static_cast<int>(capacity - 1))
+            copySize = capacity - 1;
+        memcpy(line, cursor, copySize);
+        *remaining -= static_cast<int>(end - cursor);
+        cursor = end;
+        while (*cursor == '\n' || *cursor == '\r')
+        {
+            ++cursor;
+            --*remaining;
+        }
+        char *comment = strchr(line, '#');
+        if (comment != 0)
+        {
+            memset(comment, 0, capacity - (comment - line));
+            *comment = 0;
+        }
+        HintTrimWhitespace(line);
+    }
+    return cursor;
+}
+
+// Target41A050. A colonless directive does not reset the value buffer.
+static void HintSplitLine(const char *line, char *key, char *value)
+{
+    strcpy(key, line);
+    char *colon = strchr(key, ':');
+    if (colon != 0)
+    {
+        strcpy(value, colon + 1);
+        *colon = 0;
+        HintTrimWhitespace(key);
+        HintTrimWhitespace(value);
+    }
+    else
+        HintTrimWhitespace(key);
+}
+
+// Target4198C0. An unmatched token selects value zero.
+static int HintLookupValue(const char *name, const HintNameValue *table, int count)
+{
+    for (int i = 0; i < count; ++i)
+        if (strcmp(name, table[i].name) == 0)
+            return table[i].value;
+    return 0;
+}
+
+// Target41AB10. Preserve the final next-pointer recheck and both link updates.
+static void HintAppendLink(HintLinkView *head, HintLinkView *node)
+{
+    while (head->next != 0)
+        head = head->next;
+    if (head->next != 0)
+    {
+        node->next = head->next;
+        head->next->previous = node;
+    }
+    head->next = node;
+    node->previous = head;
+}
+
+// Target419040. Entries have trivial destruction; the target call4524A1 is a
+// free-tail runtime wrapper, whose original delete/free symbol is unresolved.
+// Natural deletion is a lifetime candidate, not a new runtime identity claim.
+void ClearHintLists(HintOwnerView *owner)
+{
+    for (int stage = 0; stage < 8; ++stage)
+    {
+        HintLinkView *node = owner->loadedStageLists[stage].next;
+        while (node != 0)
+        {
+            HintLinkView *next = node->next;
+            delete node->entry;
+            node = next;
+        }
+        node = owner->exportStageLists[stage].next;
+        while (node != 0)
+        {
+            HintLinkView *next = node->next;
+            delete node->entry;
+            node = next;
+        }
+    }
+}
+
+int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode)
+{
+    int stage = -1;
+    int entries = 0;
+    int remaining;
+    char *file = reinterpret_cast<char *>(FileSystem::OpenFile(path, &remaining, 1));
+    if (file == 0)
+        return -1;
+
+    char *line = static_cast<char *>(malloc(4096));
+    char *key = static_cast<char *>(malloc(4096));
+    char *value = static_cast<char *>(malloc(4096));
+    char *cursor = file;
+    while (remaining > 0)
+    {
+        cursor = HintReadLine(cursor, line, &remaining, 4096);
+        // Both passes are present in the native outer loop.
+        HintSplitLine(line, key, value);
+        HintSplitLine(line, key, value);
+        if (strcmp(key, "Version") == 0)
+        {
+            if (strcmp(value, "0.0") != 0)
+            {
+                ClearHintLists(owner);
+                break;
+            }
+        }
+        else if (strcmp(key, "Stage") == 0)
+        {
+            stage = atol(value);
+            entries = 0;
+            if (stage < 1 || stage > 7)
+                stage = -1;
+        }
+        else if (strcmp(key, "StageEnd") == 0)
+            stage = -1;
+        else if (strcmp(key, "Tips") == 0 && stage > 0)
+        {
+            if (entries >= 255)
+            {
+                stage = -1;
+                continue;
+            }
+            HintEntryView *entry = new HintEntryView;
+            ++entries;
+            memset(entry->unknown18, 0, sizeof(entry->unknown18));
+            while (remaining > 0)
+            {
+                cursor = HintReadLine(cursor, line, &remaining, 4096);
+                HintSplitLine(line, key, value);
+                if (strcmp(key, "Pos") == 0)
+                {
+                    char *comma = strchr(value, ',');
+                    if (comma != 0)
+                    {
+                        *comma = 0;
+                        ++comma;
+                        HintTrimWhitespace(value);
+                        HintTrimWhitespace(comma);
+                        entry->position[0] = static_cast<float>(atol(value));
+                        entry->position[1] = static_cast<float>(atol(comma));
+                    }
+                }
+                else if (strcmp(key, "Text") == 0)
+                {
+                    char *first = strchr(value, '"');
+                    if (first != 0)
+                    {
+                        ++first;
+                        char *last = strrchr(first, '"');
+                        if (last == 0)
+                            break;
+                        *last = 0;
+                        strncpy(entry->text, first, 65);
+                    }
+                }
+                else if (strcmp(key, "Count") == 0)
+                    entry->count = atol(value);
+                else if (strcmp(key, "Time") == 0)
+                    entry->time = atol(value);
+                else if (strcmp(key, "Base") == 0)
+                    entry->base = HintLookupValue(value, baseNames, 61);
+                else if (strcmp(key, "Align") == 0)
+                    entry->alignment = HintLookupValue(value, alignmentNames, 3);
+                else if (strcmp(key, "Remain") == 0)
+                    entry->remaining = atol(value);
+                else if (strcmp(key, "Scale") == 0)
+                {
+                    double parsedScale = atof(value);
+                    entry->scale = static_cast<float>(parsedScale);
+                    if (parsedScale > 4.0)
+                        entry->scale = 4.0f;
+                    else if (parsedScale < -4.0)
+                        entry->scale = -4.0f;
+                }
+                else if (strcmp(key, "Color") == 0)
+                {
+                    char *first = strchr(value, ',');
+                    if (first != 0)
+                    {
+                        *first = 0;
+                        ++first;
+                        HintTrimWhitespace(value);
+                        entry->red = static_cast<unsigned char>(atol(value));
+                        char *second = strchr(first, ',');
+                        if (second != 0)
+                        {
+                            *second = 0;
+                            HintTrimWhitespace(first);
+                            entry->green = static_cast<unsigned char>(atol(first));
+                            entry->blue = static_cast<unsigned char>(atol(HintTrimWhitespace(second + 1)));
+                        }
+                    }
+                }
+                else if (strcmp(key, "Alpha") == 0)
+                    entry->alpha = static_cast<unsigned char>(atol(value));
+                else if (strcmp(key, "End") == 0)
+                    break;
+            }
+            // Preserve multiplication until the final float destination store.
+            entry->textWidth = static_cast<float>(static_cast<double>(strlen(entry->text)) * entry->scale * 7.5);
+            HintAppendLink(&owner->loadedStageLists[stage], &entry->link);
+            if (mode == 0)
+            {
+                HintEntryView *copy = new HintEntryView;
+                memcpy(copy, entry, sizeof(*copy));
+                copy->link.entry = copy;
+                copy->link.next = 0;
+                copy->link.previous = 0;
+                HintAppendLink(&owner->exportStageLists[stage], &copy->link);
+            }
+        }
+    }
+    free(line);
+    free(key);
+    free(value);
+    free(file);
+    return 0;
+}

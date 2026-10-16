@@ -1457,3 +1457,17 @@ diagnostic compiles, but its 2669-byte owner is nonexact. No exact credit.
 The source-absent loader 0x00419960 is the next coherent owner; its observed
 65-byte text copy requires a reviewed storage-view extension before use.
 Keep the real initializer/cleanup caller graph and physical storage open.
+
+
+## Hint loader and bounded cleanup checkpoint (2026-10-16)
+
+LoadHintFile419960 and seven coherent parser/list/entry dependencies are now
+source-present. The text view is68bytes including observed zeroed padding;
+65-byte copies and field offsets are preserved. Both full host suites pass
+normal/Python-O (22loader +12export mutations). See HINT_LOAD.md for the
+defined input domain, conditional FP model and retained native hazards.
+The real loader-entry diagnostic is1556/1498 and nonexact. ClearHintLists79
+bytes replay exact twice in canonical hint-clear-lists, with only two release
+REL32 fields; Factory acceptance must bind the final committed snapshot.
+Next substantial owners: hint update419650/571 and entry rendering419120/1317,
+then genuine lifecycle/factory graph. Never add inert callback placeholders.

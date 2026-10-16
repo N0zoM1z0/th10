@@ -47,6 +47,7 @@ def main() -> int:
         run("Validate HUD boss-gauge selection", [sys.executable, "scripts/test-gui-boss-gauge-selector.py"])
         run("Validate HUD lifetimes and countdown sounds", [sys.executable, "scripts/test-gui-hud-lifetimes.py"])
         run("Validate automatic hint export", [sys.executable, "scripts/test-hint-export.py", "--skip-mutations"])
+        run("Validate hint loading and parsing", [sys.executable, "scripts/test-hint-load.py", "--skip-mutations"])
         run("Validate GUI reset event order", [sys.executable, "scripts/test-gui-reset-order.py"])
         run("Validate music-room state and parsers", [sys.executable, "scripts/test-music-room-state.py"])
         run("Validate stage script state and callback", [sys.executable, "scripts/test-stage-script-state.py"])

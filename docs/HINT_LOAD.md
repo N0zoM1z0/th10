@@ -1,0 +1,169 @@
+# Hint input reconstruction
+
+## Scope and native evidence
+
+`LoadHintFile` is a descriptive source name for the complete native owner
+`0x00419960–0x00419F39` (1,498 bytes). Its main return at `0x00419AEF`
+and open-failure return at `0x00419995` pop 12 bytes. The final jump at
+`0x00419F35` returns to shared cleanup within that owner; six `CC` bytes follow.
+The three-argument free-function declaration is a natural source candidate,
+not a recovered original identifier or class declaration.
+
+All addresses refer to `resources/th10.exe`, SHA-256
+`2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
+The initializer at `0x00418E30` checks hint mode `0x00491D6A` at
+`0x00418E8B–0x00418E94`. A nonzero mode permits two calls whose results are
+ignored: `0x00418E9E` loads `hint/hint_auto.txt` with mode 0, and
+`0x00418EAB` loads `hint/hint_user.txt` with mode 1. The path strings are at
+`0x0046D6D8` and `0x0046D6C4`, respectively. The initializer and its scheduler
+registration remain outside this source patch.
+
+The coherent dependency set is:
+
+| Target | Source candidate | Native extent | Ledger origin |
+| --- | --- | ---: | --- |
+| `0x00419960` | `LoadHintFile` | 1,498 | authored |
+| `0x00418D00` | `HintEntryView::HintEntryView` | 51 | indeterminate |
+| `0x00419F40` | `HintReadLine` | 260 | authored |
+| `0x0041A050` | `HintSplitLine` | 75 | authored |
+| `0x0041A0A0` | `HintTrimWhitespace` | 114 | authored |
+| `0x004198C0` | `HintLookupValue` | 98 | authored |
+| `0x0041AB10` | `HintAppendLink` | 52 | authored |
+| `0x00419040` | `ClearHintLists` | 79 | authored |
+
+Source presence does not change these origin classifications. Private helper
+register conventions are not forced into source. Loader/parser exact native code generation, original ownership declarations,
+and the wider lifecycle caller graph remain unresolved. The bounded cleanup
+unit below has separate canonical replay evidence.
+
+## Observed storage and lifetime
+
+The 32-bit entry is `0x88` bytes: position at `+0x00`, embedded link at
+`+0x0C`, text storage at `+0x1C`, count at `+0x60`, alignment at `+0x64`,
+base at `+0x68`, time at `+0x6C`, remaining at `+0x70`, scale at `+0x7C`,
+text width at `+0x80`, and BGRA bytes at `+0x84`. The constructor clears the
+entry, sets the link payload to itself, sets all color bytes to 255, and sets
+remaining to -1, time to 300, and scale to 1.
+
+The observed `strncpy` count is **65** at `0x00419C99–0x00419CA3`. The view
+uses `char text[68]` through `+0x5F`, including constructor-zeroed bytes after
+that copy. This makes the later string access well-defined for 65-byte text;
+it does not establish the original array declaration. Count remains at `+0x60`.
+
+The loader appends entries to `owner + 0x18 + stage*12`, establishing the
+first group's payload type. Mode 0 alone allocates a separate entry, copies
+all 136 bytes, resets the copied link to self/null/null, and appends it to
+`owner + 0x78 + stage*12`. Nonzero modes do not clone. The owner view remains
+partial; its size is `0x1A8` with unresolved surrounding storage.
+
+Cleanup `0x00419040` visits stages 0 through 7, first the loaded list and then
+the export list for each stage. It saves next before releasing the payload
+and leaves sentinel pointers unchanged. Do not traverse or clean those
+retained dangling pointers again. The native release target `0x004524A1`
+tail-jumps to `_free` at `0x00452422`; its original delete/free identity is
+unresolved. Natural `delete` with a trivial destructor is the source candidate,
+not additional symbol provenance. The fixture uses matching `malloc`, placement
+construction, explicit trivial destruction, and `free`, with release deferred
+until reset so retained pointer values can be checked safely.
+
+## Preserved parsing behavior
+
+- `OpenFile(path, &size, 1)` at `0x0041997F` failing returns -1 before scratch
+  allocation. Success allocates three 4,096-byte buffers and frees all three
+  plus the original file buffer. A successful zero-size input still performs
+  this allocation/free sequence and returns 0. No allocation-failure recovery
+  is added.
+- Outer directives use a colon and perform two split passes. A recognized
+  `Version` other than `0.0` clears both groups and returns 0 after freeing
+  input and scratch. The exporter's `Version = 0.0` is not recognized as that
+  directive. Colonless directives retain the previous value buffer.
+- Only stages 1 through 7 accept `Tips`. A new `Stage` resets the entry count;
+  `StageEnd` invalidates the stage. After 255 entries, a further `Tips`
+  invalidates the stage until another `Stage` directive.
+- The line helper searches for LF anywhere before considering CR. Delimited
+  lines cap the copy at capacity minus one, consume the whole original line
+  and subsequent CR/LF run, strip `#`, and trim literal space/tab/LF/CR only.
+  It skips blank results. VT and FF are preserved.
+- A final undelimited tail copies all remaining bytes without a capacity cap,
+  does no comment removal or trim, sets remaining to zero, and returns the
+  original tail cursor unchanged.
+- `Pos` parses signed integer text and converts to float. Other integer fields
+  stay integers. Name lookup is exact and case-sensitive; unknown names map
+  to zero. The verified 61 base names and three alignment names are reused.
+- Text uses the first and last quotes. A missing opening quote ignores the
+  field; a missing closing quote after an opening quote finalizes the partial
+  entry. EOF also finalizes an entry. Unknown inner directives are ignored.
+- Colors and alpha wrap to an unsigned byte. One comma updates red even if the
+  second comma is absent; green and blue require that second comma.
+- Scale is stored as float but bounded using the live parsed value against
+  -4 and 4. Unordered comparisons allow NaN to survive. Width is length times
+  stored scale times 7.5, with a final float destination store. The candidate
+  uses a double intermediate to avoid an invented float-rounding step.
+  Length 3 and scale `1.829711675643921f` yield `41.168514251708984f`, whereas
+  a float intermediate yields `41.16851043701172f`. Native x87 precision and
+  control-word assumptions are not fully established; universal floating-point
+  runtime equality is not claimed.
+
+## Host verification and limits
+
+Run from the repository root:
+
+```
+python scripts/test-hint-load.py
+python -O scripts/test-hint-load.py
+python scripts/test-hint-export.py
+python -O scripts/test-hint-export.py
+```
+
+Both runners support `--skip-mutations` for lightweight CI. Default runs use
+UBSan and execute 22 loader controls or 12 exporter controls. Mutation success
+requires exit status 1, exactly one labeled CHECK diagnostic, and no UBSan
+message. Python checks remain active under `-O`. The exporter fixture retains
+source-extracted, unchanged void FileSystem writer/close effects; its added
+OpenFile stub fails immediately if the loader is unexpectedly called.
+
+The loader fixture compiles the maintained source, substituting only its two
+entry allocation and two release call sites with tracking dependencies. It
+executes the actual constructor, parser, list insertion, cleanup and loader.
+It checks 183 base/alignment pairs, boundary stages/counts, clone independence,
+missing/empty input, partial entries, stale values, 65-byte strings, cleanup
+order, final-tail cursor/copy behavior, NaN comparisons, and width rounding.
+
+These are defined-domain synthetic fixtures, not execution of the game or its
+input files. Inputs have accessible NUL padding; helper capacity is at least
+one and remaining is nonnegative and consistent with accessible input.
+Oversized final-tail behavior is tested using sufficient physical destination
+storage. Real OpenFile allocates the file size without adding a sentinel, so
+arbitrary native files do not acquire this fixture guarantee. Signed integer
+fixtures stay within 32-bit range because host `atol` may be 64-bit. CRT
+integer overflow, locale/NaN text parsing, allocation failure, malformed input
+that overflows buffers, and repeated cleanup of dangling heads are excluded.
+NaN is injected at the atof dependency, without claiming the target CRT accepts
+that textual spelling. No original executable, Windows API, real hint-file IO,
+or native compiler build is used by these host tests.
+
+
+## Native diagnostic and bounded cleanup replay
+
+The genuine LoadHintFile entry with Hint.cpp and FileSystem.cpp, using the
+normal pinned LTCG profile, compiled successfully. Initial PE SHA-256:
+9f760846528c1461a10e4c8ecc4adbcf35641a0476706956460fa6daf383a5f3.
+The loader contribution is 1,556 bytes versus the 1,498-byte target; the entry
+constructor is 72 versus 51. Neither is exact.
+
+ClearHintLists is a complete 79-byte contribution with all 71 nonlinkage bytes
+equal to target 0x00419040. Its only two REL32 fields at offsets 0x1E and 0x38
+bind candidate operator delete to target 0x004524A1, the observed free-tail
+wrapper, not directly to 0x00452422. This is a per-edge relocation binding,
+not recovery of the original runtime identifier. The real loader calls it
+on version rejection; no synthetic retention wrapper was introduced.
+
+Canonical unit hint-clear-lists preserves that actual loader entry and source
+graph. Two independent cold links replay all 79 bytes exactly, with PE hashes:
+- 3b3890af2be5c40a30e88cf0dcb120e708b22fd9cc7189b3c6335a55a1df390b
+- 36299cee151807049b5483945e60bd862ef262515bea16a826865264e3d39b6e
+
+Factory acceptance is checked separately against the committed snapshot;
+local replay and manifest registration alone are not an accepted receipt.
+The constructor's origin remains indeterminate. No native runtime, original
+translation-unit ownership, or entire-loader exactness follows from cleanup.

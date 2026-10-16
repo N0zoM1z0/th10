@@ -941,3 +941,11 @@ ResultMenuUpdatePause
 AnmRenderManagerView::RequestCaptureRectangle
 FrontEndUnlockPracticeRecords
 ExportAutomaticHints
+HintEntryView::HintEntryView
+ClearHintLists
+HintLookupValue
+LoadHintFile
+HintReadLine
+HintSplitLine
+HintTrimWhitespace
+HintAppendLink

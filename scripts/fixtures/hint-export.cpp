@@ -61,6 +61,8 @@ static bool WriteFile(int handle,const void *p,unsigned n,DWORD *written,void *)
 static int CloseHandle(int h) {events.push_back("close");closes.push_back(h);return 0;}
 static void LeaveCriticalSection(int *p) {CHECK(p==&gReplayFileCriticalSection);events.push_back("leave");}
 namespace FileSystem {
+ // Loader is linked from the same maintained unit but must never run here.
+ unsigned char *OpenFile(const char *, int *, int) {CHECK(false);return 0;}
  int OpenWriteFile(const char *path) {
   CHECK(string(path)=="synthetic-output");events.push_back("open");
   gReplayFileHandle=failOpen?-1:7;gReplayFileOpenCount=failOpen?0:1;

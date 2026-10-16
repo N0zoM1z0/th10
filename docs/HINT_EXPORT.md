@@ -24,16 +24,17 @@ separate input loader is `0x00419960`.
 
 `HintOwnerView` preserves a constructor-observed size of `0x1A8`. Export walks
 eight intrusive-list sentinels beginning at `+0x78`, with next pointers at
-`+0x7C` and a 12-byte stride. The first list group and other unneeded owner
-storage remain unnamed.
+`+0x7C` and a 12-byte stride. Loader reconstruction now types the first list group as well; remaining
+owner storage is still partial. See HINT_LOAD.md.
 
 `HintEntryView` is `0x88` bytes. Relevant fields are position at `+0x00/+0x04`,
 an embedded entry/next/previous link at `+0x0C`, text beginning at `+0x1C`,
 count/alignment/base/time/remaining at `+0x60/+0x64/+0x68/+0x6C/+0x70`, scale
 at `+0x7C`, and BGRA bytes at `+0x84–+0x87`. i386 assertions guard the layout.
 This is an exporter view, not a claim that every field or original class is
-recovered. In particular, future loader work must review its 65-byte text-copy
-operation before expanding the current descriptive text field.
+recovered. Loader review established a 65-byte copy and subsequent string read. The
+current text[68] view includes constructor-zeroed trailing storage without
+claiming the original array declaration; see HINT_LOAD.md.
 
 ## Preserved serialization behavior
 

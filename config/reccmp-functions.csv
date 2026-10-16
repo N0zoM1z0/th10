@@ -942,3 +942,11 @@ ResultMenuUpdatePause,0x00422C80,function
 AnmRenderManagerView::RequestCaptureRectangle,0x00424480,function
 FrontEndUnlockPracticeRecords,0x0042C8C0,function
 ExportAutomaticHints,0x0041A200,function
+HintEntryView::HintEntryView,0x00418D00,function
+ClearHintLists,0x00419040,function
+HintLookupValue,0x004198C0,function
+LoadHintFile,0x00419960,function
+HintReadLine,0x00419F40,function
+HintSplitLine,0x0041A050,function
+HintTrimWhitespace,0x0041A0A0,function
+HintAppendLink,0x0041AB10,function

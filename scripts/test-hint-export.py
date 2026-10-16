@@ -15,14 +15,14 @@ MUTATIONS = [
  ('one_based_stage','Hint.cpp','"Stage : %d\\r\\n\\r\\n", stage','"Stage : %d\\r\\n\\r\\n", stage + 1'),
  ('limit_254','Hint.cpp','emitted >= 255','emitted >= 254'),
  ('limit_256','Hint.cpp','emitted >= 255','emitted >= 256'),
- ('late_next_read','Hint.cpp','node = next;','node = node->next;'),
+ ('late_next_read','Hint.cpp','                node = next;','                node = node->next;'),
  ('swap_red_blue','Hint.cpp','static_cast<int>(entry->red),','static_cast<int>(entry->blue),'),
  ('insert_card11','Hint.cpp','{"boss_card_12",53}','{"boss_card_11",53}'),
  ('reset_failed_handle','FileSystemWrite.inc','--gReplayFileOpenCount;\n    }\n}\n\nint CloseWriteFile','--gReplayFileOpenCount;\n        gReplayFileHandle = INVALID_HANDLE_VALUE;\n    }\n}\n\nint CloseWriteFile'),
  ('trust_bool','FileSystemWrite.inc','::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);','if (!::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL)) bytesWritten = 0;'),
  ('cached_failed_handle','FileSystemWrite.inc','::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);','int savedHandle = gReplayFileHandle;\n    ::WriteFile(gReplayFileHandle, data, size, &bytesWritten, NULL);\n    gReplayFileHandle = savedHandle;'),
  ('unknown_empty','Hint.cpp','const char *baseName = 0;','const char *baseName = "";'),
- ('skip_stage7','Hint.cpp','stage < 8','stage < 7'),
+ ('skip_stage7','Hint.cpp','        for (int stage = 0; stage < 8; ++stage)','        for (int stage = 0; stage < 7; ++stage)'),
 ]
 
 def require(condition, message):
