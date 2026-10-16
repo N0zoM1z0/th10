@@ -178,8 +178,11 @@ struct FrontEndControllerView
     FrontEndCursorView practicePageCursor;
     int practiceDisplayedEntries;
     AnmVmTimerView stateTimer;
-    AnmVmIdView vmIds[0x98];
-    unsigned char unknown524[0x0ac];
+    // Native CreateVm/DeleteVm index from +0x2c4 through the practice
+    // script slot 0xac at +0x574. This is a minimum reviewed extent;
+    // consume anonymous padding without moving any following field.
+    AnmVmIdView vmIds[0xad];
+    unsigned char unknown578[0x058];
     AnmVmIdView difficultyAuxVmId;
     AnmVmIdView practiceRowVmIds[10];
     unsigned char unknown5FC[0x18];
@@ -249,7 +252,11 @@ typedef char FrontEndControllerVmIdsAt2C4[
     (offsetof(FrontEndControllerView, vmIds) == 0x2c4 &&
      offsetof(FrontEndControllerView, vmIds) + sizeof(AnmVmIdView) == 0x2c8 &&
      offsetof(FrontEndControllerView, vmIds) +
-         sizeof(AnmVmIdView) * 0x97 == 0x520) ? 1 : -1];
+         sizeof(AnmVmIdView) * 0x97 == 0x520 &&
+     offsetof(FrontEndControllerView, vmIds) +
+         sizeof(AnmVmIdView) * 0xac == 0x574 &&
+     sizeof(((FrontEndControllerView *)0)->vmIds) == 0x2b4 &&
+     offsetof(FrontEndControllerView, unknown578) == 0x578) ? 1 : -1];
 typedef char FrontEndControllerSelectionFields[
     (offsetof(FrontEndControllerView, difficultyAuxVmId) == 0x5d0 &&
      offsetof(FrontEndControllerView, savedDifficulty) == 0x58f0) ? 1 : -1];

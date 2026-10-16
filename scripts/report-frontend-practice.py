@@ -187,7 +187,7 @@ def source_report(source: Path, header: Path) -> tuple[dict[str, object], list[s
         "controller->RefreshPracticeRecords()",
         "g_FrontEndPracticeSecretKeys[",
         "g_FrontEndPracticeSecretIdleFrames > 300",
-        "FrontEndUnlockPracticeRecords()",
+        "FrontEndUnlockPracticeRecords(g_FrontEndProfileData)",
         "InterruptPracticeRows(controller)",
         "g_FrontEndProfileData + 0x19a8c + record * 0x90",
         "g_FrontEndProfileData + shot * 0x437c + 0x624 + record * 0x90",

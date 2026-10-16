@@ -161,7 +161,7 @@ def source_report(source: Path, header: Path) -> tuple[dict[str, object], list[s
         "g_FrontEndProfileData + 0x1d888 + g_ReplayCharacter * 3",
         "g_ReplayCharacter * 0x329d + g_ReplayDifficulty",
         "g_ReplayCharacter * 3 + 0x3f",
-        "EnsureAsciiSelectionVm(480.0f, 392.0f)",
+        "g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f)",
         "FrontEndBeginSelectionTransition(5, 0x20, 0, 0, 0, 0x2b)",
         "g_FrontEndStageRecords[6]",
         "FrontEndFinalizeGameSelection(6.0f)",
@@ -171,7 +171,7 @@ def source_report(source: Path, header: Path) -> tuple[dict[str, object], list[s
             problems.append(f"source is missing reviewed behavior token: {token}")
 
     required_layout = (
-        "AnmVmIdView vmIds[0x98]",
+        "AnmVmIdView vmIds[0xad]",
         "offsetof(FrontEndControllerView, difficultyAuxVmId) == 0x5d0",
         "offsetof(FrontEndControllerView, savedDifficulty) == 0x58f0",
         "offsetof(FrontEndControllerView, keyConfigBindings) == 0x59cc",

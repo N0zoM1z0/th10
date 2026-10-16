@@ -939,3 +939,4 @@ ResultMenuOpenPause
 ResultMenuResume
 ResultMenuUpdatePause
 AnmRenderManagerView::RequestCaptureRectangle
+FrontEndUnlockPracticeRecords

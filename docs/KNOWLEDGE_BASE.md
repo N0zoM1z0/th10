@@ -1863,3 +1863,69 @@ Current-source OptionsRefresh cold regression remains3999/3999, PE
 77c02488a30e2cf3e23bc4320bebc0f7babc92221442e3f1bdf626b8bcdb73d7.
 The exact ledger registers this canonical candidate; fresh Factory acceptance
 is pending the committed checkpoint and is not implied by registration.
+
+
+## 2026-10-16 Practice controller and explicit profile-unlock contract
+
+Native UpdatePractice owns 431EE0-43268F (1,968 bytes, including its state
+table). Three target/source discrepancies are corrected:
+- The initial FindVm at 431FB7 tests slot 5E without clearing a stale ID before
+  CreateVm at 431FC6. The source now performs that direct existence check.
+- Final initialization CreateVm at 432090 falls directly into the opening
+  timer comparison at 432095. The source preserves that fallthrough, including
+  when a creation callback has changed timer/state. Opening is strictly >6;
+  closing is >=6.
+- Secret progress at 432447/43244A uses CMP 22 / unsigned JB. Negative signed
+  bit patterns therefore take completion rather than indexing before the key
+  table. The source uses an explicit unsigned comparison at this boundary.
+
+The completion path reloads profile slot 47783C at 43244C and passes it to
+42C8C0 at 432451, then queues sound 44, then resets progress. The old unresolved
+zero-argument declaration omitted this receiver. A natural unsigned-char*
+argument and maintained body now expose the dependency. The 93-byte target
+42C8C0-42C91C has no calls or global rereads and writes exactly 160 bytes to 1:
+16 at [1D882,1D892), plus 6 groups x 4 difficulties x 6 stages at
+4E9 + group*437C + (difficulty*6+stage)*8. All other bytes remain unchanged.
+Its original authored/library/outlined origin remains indeterminate; source
+presence and a compiler match do not change that classification.
+
+The fixture extracts actual cursor, count, row-interrupt, secret, unlock and
+controller bodies. Twenty-five scenarios pass in plain and instrumented UBSan
+builds; twelve mutations fail by explicit functional assertions. It covers
+four states, callback reload ordering, confirm/cancel coexistence, row ID
+retention, keyboard transitions, timeout boundaries, full unlock write-set,
+fresh profile identity, and sound-before-reset. A checked proxy rejects the
+historical negative key index before memory access; crashes or sanitizer
+failures never count as mutation detection. Host dependency mocks and synthetic
+callback mutations are not claims about reachable game behavior or native ABI.
+
+A related C++ view-bound defect is also corrected without shifting storage.
+CreateVm 42C6C3 stores [controller + script*4 + 2C4]; DeleteVm reads/clears the
+same address. Practice consumes slots 98-AC at +524..+574. These lie inside the
+previous anonymous unknown524[AC] region, before difficultyAuxVmId at +5D0.
+The minimum attested vmIds[AD] now consumes that region through +578, leaving
+unknown578[58]. Assertions retain every subsequent field and check slot AC,
+array byte size 2B4, and remaining padding start. Constructor 42C920 clears a
+5ACC-byte allocation, but does not prove a larger individual VM-array bound.
+
+The first actual Update caller diagnostic remains nonexact for UpdatePractice:
+1,540/1,968 candidate/target bytes versus the previous 1,556-byte candidate.
+This is a semantic recovery, not a similarity improvement claim. Both display
+owners retain their complete structural matches. The explicit unlock helper
+naturally emits all 93 target bytes raw-equal, including EAX receiver/plain RET,
+without ABI annotations or artificial padding. Its target extent SHA-256 is
+819a3df48392e782e0c6da243a93c3423461f1ed18edcb60e2c3774e4b64742e.
+Canonical replay and Factory acceptance remain separate required steps.
+
+Two canonical cold shared-producer replays after the view-bound correction
+reproduce 93/93 raw-equal unlock bytes and 2,452/2,452 KeyConfig bytes. Images:
+4dfbb5a9df7ab9fff38987e959a9adda3a80b3126327f4c356b22b4a7c186abe and
+e7eca6f2491fc7cb5bdda744476f8f4bdbf2fa5ce55d41e1227e90382fcf0db2.
+The shared producer requires the same output directory as KeyConfig; no
+additional context or source sweep was introduced. Registration imports a
+candidate; fresh Factory pass/accepted verification is pending this checkpoint.
+
+Bounded primary-source regression: all14 canonical units whose primary source
+is FrontEnd.cpp pass, totaling7,186 bytes including the new93-byte dependency.
+This is not a replay of every transitive repository unit or runtime closure.
+The complete public CI and source-extracted checks pass at this checkpoint.

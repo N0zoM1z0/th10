@@ -19457,3 +19457,19 @@ linkages = [
   { offset = 0x8AD, type = "REL32", symbol = "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z", target = 0x004491C0 },
   { offset = 0x8D9, type = "REL32", symbol = "?SetSprite@AnmLoadedView@@QAEHPAUAnmVmView@@H@Z", target = 0x0043E5A0 },
 ]
+
+[units.frontend-practice-unlock]
+artifact_kind = "linked-pe"
+source = "src/FrontEnd.cpp"
+support_sources = ["src/ReplayManager.cpp","src/AnmManager.cpp","src/AnmVmCreate.cpp","src/AnmVmId.cpp","src/RandomMath.cpp","src/EnemyEclDispatcher.cpp","src/Sound.cpp"]
+pdb_source = "src/FrontEnd.cpp"
+output_dir = "build/match-linked/FrontEndKeyConfigDisplay"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL","/GS"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Update@FrontEndControllerView@@QAEHXZ"
+functions = ["FrontEndUnlockPracticeRecords"]
+symbol = "?FrontEndUnlockPracticeRecords@@YAXPAE@Z"
+target_address = 0x42C8C0
+size = 93
+linkages = []

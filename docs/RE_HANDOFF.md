@@ -1391,3 +1391,20 @@ regression also passes its existing 3,999-byte canonical unit. See the durable
 knowledge note for native contract and evidence limits. Retain code, tests and
 manifest; generated artifacts remain ignored. Do not repeat earlier root/flag
 sweeps or credit diagnostic structural equality as acceptance.
+
+
+## Practice controller checkpoint (2026-10-16)
+
+UpdatePractice preserves native initialization fallthrough, stale-ID existence
+checks and unsigned secret completion. Its VM slot view now includes the
+minimum attested slot AC without moving subsequent fields. The source-extracted
+fixture passes 25 plain and 25 instrumented UBSan scenarios and 12 functional
+mutation controls. The controller itself remains nonexact (1,540/1,968 in the
+selected real Update graph); no similarity improvement is claimed.
+
+The explicit profile-unlock dependency at 42C8C0 now has maintained source.
+Two canonical cold replays reproduce its complete 93 bytes raw-equal, alongside
+the existing KeyConfig unit. Original origin remains indeterminate; do not
+count these bytes as newly confirmed authored game code. Fresh Factory
+acceptance is required after this checkpoint. See the knowledge note for
+write-set, field-layout evidence, regression scope and host-fixture limits.

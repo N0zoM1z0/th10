@@ -169,7 +169,24 @@ extern int FrontEndBeginGame();
 int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
 extern int FrontEndUpdateResult(FrontEndControllerView *controller);
 extern int __stdcall FrontEndDrawResult(FrontEndControllerView *controller);
-extern void FrontEndUnlockPracticeRecords();
+// TH10 practice unlock helper: 0x0042C8C0, reviewed 93-byte extent.
+// The source signature preserves the observed explicit profile receiver;
+// The target passes it in EAX; source-to-native ABI correspondence and
+// original authorship remain unproved.
+void FrontEndUnlockPracticeRecords(unsigned char *profile)
+{
+    for (int entry = 0; entry < 16; ++entry)
+        profile[0x1d882 + entry] = 1;
+    for (int group = 0; group < 6; ++group)
+    {
+        for (int difficulty = 0; difficulty < 4; ++difficulty)
+        {
+            for (int stage = 0; stage < 6; ++stage)
+                profile[0x4e9 + group * 0x437c +
+                    (difficulty * 6 + stage) * 8] = 1;
+        }
+    }
+}
 extern void * __stdcall FrontEndBeginSelectionTransition(
     int type, int duration, int parameter2, int parameter3, int parameter4,
     int chainPriority);
@@ -454,9 +471,9 @@ static void UpdatePracticeSecretSequence()
             g_FrontEndKeyboardState[key];
     }
 
-    if (g_FrontEndPracticeSecretProgress >= 22)
+    if (static_cast<unsigned int>(g_FrontEndPracticeSecretProgress) >= 22u)
     {
-        FrontEndUnlockPracticeRecords();
+        FrontEndUnlockPracticeRecords(g_FrontEndProfileData);
         FrontEndPlaySound(FRONT_END_SOUND_UNLOCK);
         g_FrontEndPracticeSecretProgress = 0;
     }
@@ -2321,7 +2338,8 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         controller->practicePageCursor.SetCurrent(0);
         controller->practicePageCursor.wraps = 1;
 
-        if (ResolveVm(&controller->vmIds[0x5e]) == NULL)
+        if (g_AnmRenderManagerView->FindVm(
+                controller->vmIds[0x5e]) == NULL)
         {
             CreateVm(controller, 0x5e);
             controller->difficultyAuxVmId =
@@ -2344,7 +2362,7 @@ int __stdcall FrontEndControllerView::UpdatePractice(
         CreateVm(controller, 0xa6);
         CreateVm(controller, 0xa7);
         CreateVm(controller, 0xac);
-        break;
+        // Fall through: creation callbacks can advance the opening timer.
 
     case FRONT_END_PRACTICE_OPENING:
         if (controller->stateTimer.current > 6)
