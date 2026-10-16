@@ -1618,3 +1618,32 @@ For the selected color-expansion image, the controller is3228 physical bytes,
 It has76 direct call instructions versus78 target; Refresh has84 observed calls
 in both images. Matching call counts alone are not semantic or exact proof.
 Store generated reports locally, not in Git.
+
+
+## 2026-10-16 Options close-path ownership
+
+Remove the invented BeginOptionsClose abstraction and place its three existing
+statements at the three actual owner sites. Target cancel tail42E27B calls
+mark6 at42C770, then queues sound11 and sets state4. Select42E4F6 calls mark6,
+selects sound10 and joins the sound/state tail at42E291. No global noinline
+annotation or changes to other interrupt callers are needed.
+
+Actual-caller PE043f372e6b8341f9e9f0e2897f799fe941d4a4a90315b5eee0660fc14233578b
+now retains all five direct mark-helper calls and seven sound calls naturally;
+the close wrapper is gone. It has78 direct call instructions, matching the
+target total but not every boundary: three target interrupt adapters remain
+expanded into direct manager calls, and input/timer wrappers differ.
+Do not infer full graph equivalence from that count.
+
+UpdateOptions grows3228 to3280 physical bytes versus3188 target
+(3260 decoded prefix plus20 validated table bytes at4031EC). Structural
+diagnostic falls241/2661 to208/2664; retain the source for independently observed
+call ownership, not a monotonic score. Refresh stays3945/3999 and1566/3551.
+Both owners remain nonexact, zero new credit.
+
+The actual-source fixture supports historical helper and current lexical
+forms; its close-sound mutation selects exactly the key-config close site,
+excluding defaults. Current2909 cases and all13 mutation controls pass;
+historical baseline retains108 expected failures in2139 safe cases.
+Full CI passes. Focused existing setter replay remains163/163,
+PE3e4ca90636d4beb15873fde6be8ae83d70e46bfbd9abb57e56e383fde37e25db.

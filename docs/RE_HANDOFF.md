@@ -1308,3 +1308,19 @@ behavior. Fresh canonical4497D0 corroborates typed aggregate return; scalar-retu
 is not supported. Target reloads node->owner in cold successful matches while
 candidate retains owner; investigate natural source ownership without volatile.
 Keep builds serialized/low priority and math paused.
+
+
+## 2026-10-16 Options close-path checkpoint
+
+Closure statements now live directly in UpdateOptions. Native replay restores
+the five target mark-helper callsites without global inline controls. Latest
+PE043f372e6b8341f9e9f0e2897f799fe941d4a4a90315b5eee0660fc14233578b:
+controller3280/3188 physical, refresh3945/3999, both nonexact. The structural
+score declined; call-ownership evidence, not size/score, justifies this source.
+Tests2909,13 mutations, full CI and existing setter163-byte replay pass.
+
+Remaining input/timer and immediate-interrupt adapter boundaries are not
+resolved by equal total78 calls. Prefer existing target-attested owner bindings
+over artificial wrapper/ABI changes. Refresh still has target owner reloads in
+cold ID-return blocks and opposite attenuation-arm order. Preserve typed IDs,
+avoid scalar/volatile/register sweeps. Math remains paused.

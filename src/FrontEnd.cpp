@@ -591,13 +591,6 @@ static __forceinline void SetColorModeSprites(
     }
 }
 
-static void BeginOptionsClose(FrontEndControllerView *controller, int soundId)
-{
-    FrontEndMarkVmInterrupt(controller, FRONT_END_ROOT_VM, 6);
-    QueueOptionsSound(soundId);
-    controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
-}
-
 static void CopyKeyConfigBindingsFromGlobal(
     FrontEndControllerView *controller)
 {
@@ -954,7 +947,9 @@ int __stdcall FrontEndControllerView::UpdateOptions(
                     static_cast<short>(static_cast<short>(controller->cursor.current) + 7));
                 return 1;
             }
-            BeginOptionsClose(controller, FRONT_END_SOUND_CANCEL);
+            FrontEndMarkVmInterrupt(controller, FRONT_END_ROOT_VM, 6);
+            QueueOptionsSound(FRONT_END_SOUND_CANCEL);
+            controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
             return 1;
         }
 
@@ -1027,7 +1022,9 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             switch (controller->cursor.current)
             {
             case 3:
-                BeginOptionsClose(controller, FRONT_END_SOUND_SELECT);
+                FrontEndMarkVmInterrupt(controller, FRONT_END_ROOT_VM, 6);
+                QueueOptionsSound(FRONT_END_SOUND_SELECT);
+                controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
                 return 1;
             case 4:
                 g_MainSupervisorView.bgmVolume = 100;
@@ -1038,7 +1035,9 @@ int __stdcall FrontEndControllerView::UpdateOptions(
                 QueueOptionsSound(FRONT_END_SOUND_SELECT);
                 return 1;
             case 5:
-                BeginOptionsClose(controller, FRONT_END_SOUND_CANCEL);
+                FrontEndMarkVmInterrupt(controller, FRONT_END_ROOT_VM, 6);
+                QueueOptionsSound(FRONT_END_SOUND_CANCEL);
+                controller->SetScreenStateTarget(FRONT_END_OPTIONS_CLOSING);
                 return 1;
             }
         }

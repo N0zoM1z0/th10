@@ -165,6 +165,8 @@ int main(){vector<Case> cases;
 
 def build_code(source,support_source,cursor_header):
     s=source.read_text();owner=extract(s,'FrontEndControllerView::UpdateOptions')
+    # Discover only called helpers: historical owners include BeginOptionsClose;
+    # lexical owners execute their close statements directly in the extracted owner.
     names=['ResolveVm','FindChildVmId','FindChildVm','SetChildSprite','FindOptionsChildId','FindOptionsChildVm','SetColorModeSprites','QueueOptionsSound','BeginOptionsClose']
     selected={};todo=owner
     while True:
@@ -182,6 +184,18 @@ def build_code(source,support_source,cursor_header):
     helper=extract(s,'FrontEndMarkVmInterrupt')
     actual='\n'.join(selected[n] for n in names if n in selected)+'\n'+helper+'\n'+owner
     return PREFIX+cursor+bodies+FIXTURE,actual
+
+def mutate_close_sound(actual):
+    # Mutate the key-config close only, never the defaults/select sound. Match
+    # either historical helper ownership or the current lexical sound/state tail.
+    pattern=(r'\bBeginOptionsClose\(controller,\s*(?P<helper>FRONT_END_SOUND_SELECT)\s*\)'
+             r'|\b(?:QueueOptionsSound|FrontEndPlaySound)\(\s*(?P<lexical>FRONT_END_SOUND_SELECT)\s*\);'
+             r'\s*controller->SetScreenStateTarget\(FRONT_END_OPTIONS_CLOSING\)')
+    hits=list(re.finditer(pattern,mask(actual)))
+    if len(hits)!=1:
+        raise ValueError(f'wrong-close-sound: expected one select-close site, got {len(hits)}')
+    hit=hits[0];a,b=hit.span('helper' if hit.group('helper') else 'lexical')
+    return actual[:a]+'FRONT_END_SOUND_CANCEL'+actual[b:]
 
 def run(prefix,actual,safe=False,capture=False):
     with tempfile.TemporaryDirectory(prefix='options-controller-') as td:
@@ -201,7 +215,7 @@ def main():
     if args.mutation_controls:
         sound_call='QueueOptionsSound' if 'QueueOptionsSound' in actual else 'FrontEndPlaySound'
         mutations={
-          'wrong-close-sound':actual.replace('BeginOptionsClose(controller, FRONT_END_SOUND_SELECT)','BeginOptionsClose(controller, FRONT_END_SOUND_CANCEL)'),
+          'wrong-close-sound':mutate_close_sound(actual),
           'unsigned-right-color-lost':actual.replace('static_cast<unsigned char>(g_MainSupervisorView.colorMode) < 2','g_MainSupervisorView.colorMode < 2'),
           'left-volume-wrap-first':actual.replace('if (g_MainSupervisorView.bgmVolume < 5)','g_MainSupervisorView.bgmVolume -= 5;\n                if (g_MainSupervisorView.bgmVolume < 0)').replace('g_MainSupervisorView.bgmVolume -= 5;\n                controller','g_MainSupervisorView.bgmVolume = g_MainSupervisorView.bgmVolume;\n                controller'),
           'cancel-skips-clamp':actual.replace('controller->cursor.SetCurrent(5);','controller->cursor.current = 5;'),
