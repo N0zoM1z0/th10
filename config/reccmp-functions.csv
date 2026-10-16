@@ -936,3 +936,7 @@ ResultMenuPendingThree,0x0040C4D0,function
 ResultMenuFindScript,0x004497D0,function
 ResultMenuSynchronizeScore,0x00421F60,function
 FrontEndInsertScore,0x00421FA0,function
+ResultMenuOpenPause,0x00422AB0,function
+ResultMenuResume,0x00422C30,function
+ResultMenuUpdatePause,0x00422C80,function
+AnmRenderManagerView::RequestCaptureRectangle,0x00424480,function

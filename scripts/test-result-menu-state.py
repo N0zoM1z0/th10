@@ -38,6 +38,7 @@ void EnemyMarkPendingInterrupt(int*id){events.push_back("pending1:"+std::to_stri
 struct ReplayDataHeader{time_t timestamp;int completionState;};
 struct ReplayManager{int identity;ReplayDataHeader*replayData;ReplayManager(int i=0):identity(i),replayData(NULL){}~ReplayManager(){events.push_back("delete"+std::to_string(identity));}static ReplayManager*Load(const char*);static void Destroy(ReplayManager*p){if(p)delete p;}int SaveReplay(const char*,const char*);};
 static ReplayManager currentReplay;static ReplayManager*g_ReplayManager=&currentReplay;
+struct AnmLoadedView;
 struct FrontEndCursorView;int FrontEndCursorSetCurrent(int,FrontEndCursorView*);
 '''+cursor+'\n'+menu+r'''
 struct FrontEndInputView{unsigned current;unsigned short repeated,pressed;int IsRepeated(unsigned short);};static FrontEndInputView g_FrontEndInput;

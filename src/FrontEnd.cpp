@@ -3128,7 +3128,7 @@ closeMusicRoom:
 
 // Result/replay-name controller: maintained here with the existing cursor/input
 // source, not a claim about original translation-unit ownership. All external
-// storage aliases and the two other pause-controller owners remain unresolved.
+// storage aliases remain unresolved; pause and result bodies share this view.
 #include "ResultMenu.hpp"
 #include "Gui.hpp"
 #include "GameScoreState.hpp"
@@ -3144,7 +3144,11 @@ struct ResultGameManagerView
     ResultGameChainView *updateChain;
     void *drawChain;
     AnmVmTimerView timer;
+    unsigned char unknown024[0x34];
+    unsigned int flags58;
+    int initializationMode;
 };
+typedef char ResultGameManagerPauseFields[(offsetof(ResultGameManagerView,flags58)==0x58 && offsetof(ResultGameManagerView,initializationMode)==0x5c)?1:-1];
 extern ResultGameManagerView *g_ResultGameManager; // pointer alias at 0x477810
 extern void __stdcall ResultMenuOpenPause(ResultMenuView *menu); // 0x422AB0
 extern void __stdcall ResultMenuUpdatePause(ResultMenuView *menu); // 0x422C80
@@ -3618,3 +3622,231 @@ int FrontEndInsertScore(FrontEndScoreTableView *table)
 }
 
 } // namespace
+
+// Target 0x424480. The receiver is the cached capture manager, while lookup
+// deliberately uses the current global manager. Sprite/ANM pointers must exist.
+// All four conversions precede the availability test, as in the target.
+int AnmRenderManagerView::RequestCaptureRectangle(
+    int id, int x, int y, int width, int height)
+{
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id);
+    AnmSpriteView *sprite = vm->loadedSprite;
+    int sourceHeight = static_cast<int>(sprite->height);
+    int sourceWidth = static_cast<int>(sprite->width);
+    int sourceY = static_cast<int>(sprite->sourceY);
+    int sourceX = static_cast<int>(sprite->sourceX);
+    if (captureSurfaceIndex >= 0)
+        return -1;
+    captureSurfaceIndex = vm->anmFile->anmFileIndex;
+    captureDestinationX = x;
+    captureSourceX = sourceX;
+    captureDestinationY = y;
+    captureDestinationWidth = width;
+    captureSourceHeight = sourceHeight;
+    captureSourceY = sourceY;
+    captureDestinationHeight = height;
+    captureSourceWidth = sourceWidth;
+    captureRequestState = 0;
+    return 0;
+}
+
+// Target 0x422AB0. Allocation failure is not checked by the original path.
+void __stdcall ResultMenuOpenPause(ResultMenuView *menu)
+{
+    menu->state = 1;
+    menu->timer.SetCurrent(0);
+    g_ResultGameManager->flags58 |= 0x10;
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmLoadedView *resource = g_AsciiManagerView->captureAnm;
+    AnmVmView *vm = manager->AllocateVm();
+    vm->renderLayer = 15;
+    vm->flags35C |= 0x40000000;
+    resource->InitializeVm(vm, 0);
+    manager = g_AnmRenderManagerView;
+    menu->secondaryVm = manager->AddVmVariant1(vm);
+    manager->RequestCaptureRectangle(menu->secondaryVm.value, 32, 16, 384, 448);
+    resource = g_GuiView->frontAnm;
+    menu->frontAnm = resource;
+    vm = manager->AllocateVm();
+    vm->renderLayer = 15;
+    vm->flags35C |= 0x40000000;
+    resource->InitializeVm(vm, 121);
+    menu->mainVm = g_AnmRenderManagerView->AddVmVariant1(vm);
+    ResultMenuPendingThree(&menu->mainVm);
+    ResultMenuSound(32);
+    FrontEndQueueSoundCommand("Pause", 6, 0);
+    if (g_ResultGameManager->initializationMode != 0)
+    {
+        AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 117);
+        g_AnmRenderManagerView->MarkVmForDeletion(id);
+        id.value = 0;
+    }
+    menu->savedSpeed = g_AnmGameSpeed;
+    g_AnmGameSpeed = 1.0f;
+}
+
+// Target 0x422C30. This does not change state or clear the two primary IDs.
+void ResultMenuResume(ResultMenuView *menu)
+{
+    g_ResultGameManager->flags58 &= ~0x10;
+    FrontEndQueueSoundCommand("UnPause", 7, 0);
+    g_AnmRenderManagerView->MarkVmForDeletion(menu->auxiliaryVm);
+    menu->auxiliaryVm.value = 0;
+    g_AnmGameSpeed = menu->savedSpeed;
+}
+
+// Target 0x422C80. Confirm, shortcut and cancel checks intentionally remain
+// independent: later pressed bits may override earlier transitions this tick.
+void __stdcall ResultMenuUpdatePause(ResultMenuView *menu)
+{
+    switch (menu->state)
+    {
+    case 1:
+        if (menu->timer.current < 10) return;
+        menu->state = 2;
+        menu->cursor.count = g_ResultGameManager->initializationMode != 0 ? 2 : 3;
+        menu->cursor.wraps = 1;
+        menu->cursor.SetCurrent(0);
+        menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+        return;
+    case 2:
+        menu->cursor.previous = menu->cursor.current;
+        if ((g_FrontEndInput.pressed & 0x10) != 0 || (g_FrontEndInput.repeated & 0x10) != 0)
+            menu->cursor.Move(-1);
+        if ((g_FrontEndInput.pressed & 0x20) != 0 || (g_FrontEndInput.repeated & 0x20) != 0)
+            menu->cursor.Move(1);
+        if (menu->cursor.previous != menu->cursor.current)
+        {
+            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+            ResultMenuSound(12);
+        }
+        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        {
+            ResultMenuSound(10);
+            switch (menu->cursor.current)
+            {
+            case 0:
+                EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
+                EnemyMarkPendingInterrupt(&menu->mainVm.value);
+                EnemyMarkPendingInterrupt(&menu->auxiliaryVm.value);
+                menu->state = 3;
+                break;
+            case 1:
+                {
+                    AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 116);
+                    ResultMenuPendingSix(&id);
+                    menu->state = g_ResultGameManager->initializationMode != 0 ? 3 : 4;
+                }
+                break;
+            case 2:
+                {
+                    AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 117);
+                    ResultMenuPendingSix(&id);
+                    menu->state = 4;
+                }
+                break;
+            }
+            menu->timer.SetCurrent(0);
+        }
+        if ((g_FrontEndInput.pressed & 0x4000) != 0)
+        {
+            ResultMenuSound(10);
+            AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 117);
+            ResultMenuPendingSix(&id);
+            menu->state = 3;
+            menu->timer.SetCurrent(0);
+            menu->cursor.SetCurrent(2);
+            EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
+        }
+        if ((g_FrontEndInput.pressed & 0x200) != 0)
+        {
+            ResultMenuSound(10);
+            AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, 116);
+            ResultMenuPendingSix(&id);
+            menu->state = 3;
+            menu->timer.SetCurrent(0);
+            menu->cursor.SetCurrent(1);
+        }
+        break;
+    case 4:
+        if (menu->timer.current < 20) return;
+        if (menu->timer.current == 20)
+        {
+            menu->cursor.Push();
+            menu->cursor.count = 2;
+            menu->cursor.wraps = 1;
+            menu->cursor.SetCurrent(1);
+            menu->mainVm.SetInterrupt(14);
+        }
+        if (menu->timer.current < 30) return;
+        if (menu->timer.current == 30)
+            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 15));
+        menu->cursor.previous = menu->cursor.current;
+        if (g_FrontEndInput.IsRepeated(0x10)) menu->cursor.Move(-1);
+        if (g_FrontEndInput.IsRepeated(0x20)) menu->cursor.Move(1);
+        if (menu->cursor.previous != menu->cursor.current)
+        {
+            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 15));
+            ResultMenuSound(12);
+        }
+        if ((g_FrontEndInput.pressed & 0x1001) != 0)
+        {
+            ResultMenuSound(10);
+            if (menu->cursor.current == 0 || menu->cursor.current == 1)
+            {
+                AnmVmIdView id = ResultMenuFindScript(&menu->mainVm, menu->cursor.current == 0 ? 119 : 120);
+                ResultMenuPendingSix(&id);
+                menu->state = 5;
+            }
+            menu->timer.SetCurrent(0);
+        }
+        break;
+    case 5:
+        if (menu->timer.current < 20) return;
+        if (menu->cursor.current == 0)
+        {
+            EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
+            EnemyMarkPendingInterrupt(&menu->mainVm.value);
+            menu->state = 3;
+            menu->cursor.Pop();
+        }
+        else if (menu->cursor.current == 1)
+        {
+            menu->cursor.Pop();
+            menu->mainVm.SetInterrupt(static_cast<short>(menu->cursor.current + 7));
+            menu->state = 2;
+        }
+        menu->timer.SetCurrent(0);
+        return;
+    case 3:
+        if (menu->timer.current < 12) return;
+        menu->state = 0;
+        switch (menu->cursor.current)
+        {
+        case 0:
+            ResultMenuResume(menu);
+            break;
+        case 1:
+            EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
+            EnemyMarkPendingInterrupt(&menu->mainVm.value);
+            g_MainSupervisorView.SetNextGameMode(4);
+            break;
+        case 2:
+            EnemyMarkPendingInterrupt(&menu->mainVm.value);
+            g_GameTransitionState = 10;
+            break;
+        }
+        return;
+    default:
+        return;
+    }
+    if ((g_FrontEndInput.pressed & 8) != 0)
+    {
+        menu->cursor.SetCurrent(0);
+        EnemyMarkPendingInterrupt(&menu->secondaryVm.value);
+        EnemyMarkPendingInterrupt(&menu->mainVm.value);
+        EnemyMarkPendingInterrupt(&menu->auxiliaryVm.value);
+        menu->state = 3;
+        menu->timer.SetCurrent(0);
+    }
+}

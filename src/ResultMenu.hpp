@@ -2,7 +2,7 @@
 #define TH10_RESULT_MENU_HPP
 #include "FrontEnd.hpp"
 
-// Target-observed prefix through saved speed; allocation/constructor remain open.
+// Target-observed prefix through the pause ANM resource; allocation/constructor remain open.
 struct ResultMenuView
 {
     int unknown000;
@@ -13,7 +13,7 @@ struct ResultMenuView
     FrontEndCursorView keyboard;
     AnmVmIdView mainVm;
     AnmVmIdView secondaryVm;
-    int unknown1DC;
+    AnmVmIdView auxiliaryVm;
     int nameIndex;
     int completed;
     int scoreUnavailable;
@@ -22,6 +22,7 @@ struct ResultMenuView
     char name[9];
     unsigned char unknown2BD[3];
     float savedSpeed;
+    AnmLoadedView *frontAnm;
 };
 typedef char ResultMenuTimerAt10[(offsetof(ResultMenuView, timer)==0x10)?1:-1];
 typedef char ResultMenuCursorsAt24FC[(offsetof(ResultMenuView,cursor)==0x24 && offsetof(ResultMenuView,keyboard)==0xfc)?1:-1];
@@ -29,6 +30,7 @@ typedef char ResultMenuIdsAt1D4[(offsetof(ResultMenuView,mainVm)==0x1d4 && offse
 typedef char ResultMenuFlagsAt1E0[(offsetof(ResultMenuView,nameIndex)==0x1e0 && offsetof(ResultMenuView,completed)==0x1e4 && offsetof(ResultMenuView,scoreUnavailable)==0x1e8)?1:-1];
 typedef char ResultMenuFilesAt1EC[(offsetof(ResultMenuView,replayFiles)==0x1ec)?1:-1];
 typedef char ResultMenuNameAt2B4[(offsetof(ResultMenuView,name)==0x2b4 && offsetof(ResultMenuView,savedSpeed)==0x2c0)?1:-1];
+typedef char ResultMenuPauseFields[(offsetof(ResultMenuView,auxiliaryVm)==0x1dc && offsetof(ResultMenuView,frontAnm)==0x2c4 && sizeof(ResultMenuView)==0x2c8)?1:-1];
 void __stdcall ResultMenuUpdateResult(ResultMenuView *menu);
 int ResultMenuUpdate(ResultMenuView *menu);
 #endif

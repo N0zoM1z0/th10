@@ -958,7 +958,16 @@ struct AnmRenderManagerView
 {
     int captureAnmIndex;
     int captureSurfaceIndex;
-    unsigned char unknown008[0x044];
+    int captureDestinationX;
+    int captureDestinationY;
+    int captureDestinationWidth;
+    int captureDestinationHeight;
+    int captureSourceX;
+    int captureSourceY;
+    int captureSourceWidth;
+    int captureSourceHeight;
+    int captureRequestState;
+    unsigned char unknown02C[0x020];
     unsigned int scriptsStartedThisFrame;
     unsigned char unknown050[0x004];
     unsigned int renderStateChangesThisFrame;
@@ -1069,6 +1078,7 @@ struct AnmRenderManagerView
     int UpdatePrimaryVms();
     int UpdateSecondaryVms();
     int DrawLayer(int layer);
+    int RequestCaptureRectangle(int id, int x, int y, int width, int height);
     AnmVmView *AllocateVm();
     AnmVmIdView AddVmVariant0(AnmVmView *vm);
     AnmVmIdView AddVmVariant1(AnmVmView *vm);
@@ -1155,6 +1165,14 @@ typedef char AnmRenderVmPoolAt068[
     (offsetof(AnmRenderManagerView, vmPool) == 0x068 &&
      offsetof(AnmRenderManagerView, vmPoolUsed) == 0x3ac068 &&
      offsetof(AnmRenderManagerView, nextVmPoolIndex) == 0x3ad068) ? 1 : -1];
+typedef char AnmCaptureRectangleOffsets[(
+    offsetof(AnmRenderManagerView,captureSurfaceIndex)==4 &&
+    offsetof(AnmRenderManagerView,captureDestinationX)==8 &&
+    offsetof(AnmRenderManagerView,captureDestinationHeight)==0x14 &&
+    offsetof(AnmRenderManagerView,captureSourceX)==0x18 &&
+    offsetof(AnmRenderManagerView,captureSourceHeight)==0x24 &&
+    offsetof(AnmRenderManagerView,captureRequestState)==0x28)?1:-1];
+
 typedef char AnmRenderSpritesToDrawAt3ADAC8[
     (offsetof(AnmRenderManagerView, spritesToDraw) == 0x3adac8) ? 1 : -1];
 typedef char AnmRenderVertexBufferAt3ADACC[

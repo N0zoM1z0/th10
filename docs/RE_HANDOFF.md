@@ -1170,3 +1170,33 @@ time-mutated difficulty/timing and a dyadic precision witness. Host IEEE
 zero-denominator checks are explicitly not target exception/rounding proof.
 Focused final test output is score-test-final.log; result fixture control remains
 passing. All owners remain decompiled/nonexact, exact authored bytes47733.
+
+
+## 2026-10-16 Pause/capture draft recovery
+
+Recovered and independently reviewed the four pending pause/capture bodies in
+FrontEnd.cpp and their existing layout additions, rather than bypassing dirty
+work. Fresh target instruction comparison and one serialized cold baseline
+completed. New actual-source synthetic tests cover the four bodies; the older
+result test had stubbed the pause handlers and did not cover these additions.
+
+One behavior-preserving case3 relocation gives target physical order1,2,4,5,3.
+It is a topology hypothesis only: candidate code1271/1338 and physical1292/1360
+remain nonexact, and the size gap increased by4. Code-only diagnostic70raw,
+55/1042 comparable is worse than the preceding80/67; no exact-byte gain is
+claimed. Final PE d1b47e60e85c75e1191d5370882074eac5325672a74caa29224e0044a03102bf,
+real ResultMenuUpdate entry407300. Other draft owners remain nonexact. Existing
+ledger code boundaries are unchanged; the20-byte outer table is supplemental
+physical evidence only. See the knowledge note for source and test scope.
+
+Evidence is in `.analysis/gpt-web/th10-resume-20261016/`: initial status/draft
+patch, input manifest, baseline and case-order diagnostics, code-only comparison,
+target/table audits and focused test outputs. Two historical builds were run
+serially at nice10 with180-second caps; no parallel sweep or prefix clone.
+
+Resume the reference-inspired major-owner audit after this recovery checkpoint:
+ANM color Hermite evaluator441600 feeding ExecuteScript43EE30. Inspect its own
+x87 grouping/spill/return-pointer evidence before any source change. Preserve
+the exact Int3-scale unit and parked SCALE_TIME/FORMAT controls. The reference
+clone is research-only; our natural historical-toolchain and90% byte-exact goal
+remain unchanged. Math stays paused.

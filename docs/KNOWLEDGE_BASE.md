@@ -1338,3 +1338,51 @@ ReplayManager's save arithmetic is unchanged. No duplicate timing class or new
 storage allocation is introduced. Profile-record pointer views and generic
 storage anchors remain incomplete lifetime/runtime models. Helper263/316 and
 both large callers are nonexact; no new authored exact credit.
+
+
+## 2026-10-16 Pause/capture draft recovery
+
+Four existing dirty bodies are retained as source-present/nonexact: OpenPause
+422AB0/382, Resume422C30/74, UpdatePause422C80/1338, and capture request
+424480/162. Fresh pinned decoding reproduces every reviewed instruction in
+those extents; Resume's old listing also showed four out-of-owner INT3 bytes,
+which remain excluded. Natural declarations do not establish private ABI.
+
+OpenPause preserves cached manager/resource identities through allocation and
+reloads the global manager only at the observed boundaries. Capture lookup
+uses the current global manager while writes use the cached receiver; all four
+float conversions precede busy rejection in the target. Resume restores speed
+after sound/deletion and clears only the auxiliary ID, not state or primary IDs.
+Pause confirm, shortcuts and cancel are independent checks. Confirmation setup
+occurs only at timer20, and input activation at30; jumping past20 skips setup.
+Original unchecked allocation/null behavior is retained, not repaired.
+
+Target UpdatePause code ends at4231BA, followed by8BFF alignment and the five
+entries at4231BC..4231CF. All destinations are valid instruction starts; physical
+case order is1,2,4,5,3. A single intact lexical case3 move aftercase5 reproduces
+this order without altering behavior. This remains a source-order hypothesis,
+not proof of original source. Candidate code1275->1271 and physical1296->1292
+remain smaller than target1338/1360: the gap increases by4. Code-only diagnostic
+matches are80raw/67of1042 comparable before,70raw/55of1042 after. No byte gain
+or exact credit is claimed; the new order is retained for observed topology.
+
+The final guarded ResultMenuUpdate entry is407300 in PE
+`d1b47e60e85c75e1191d5370882074eac5325672a74caa29224e0044a03102bf`.
+Other draft contributions remain OpenPause465/382, Resume74/74 and capture
+168/162, all nonexact. The dispatcher214/179 comparison mixes a physical
+contribution with the old code-only ledger and is not an exactness ratio.
+Global storage, complete calling conventions and product/runtime closure stay
+open. No boundary denominator or exact numerator changes were made.
+
+`scripts/test-pause-menu-state.py` extracts the actual four bodies, cursor
+methods and input helper. It tests state/timer boundaries, simultaneous input,
+manager/resource replacements, returned VM identity, ID/sentinel preservation
+and speed order. Timer and pending/script internals are mocked; finite host
+casts do not prove x87 conversion timing or exceptions. The test runs no game
+or file IO. It is wired into the existing serial public CI.
+
+Reference review is pinned to
+[levzzz5154/th10-decomp eb02753](https://github.com/levzzz5154/th10-decomp/tree/eb027539e55372735db1d60ae5da781a9d1caa8a).
+It supplies hypotheses only: assembly fallback, equivalent-region scores,
+alternate compilers and context-only steering cannot grant our exact credit.
+No upstream code was imported; explicit reuse licensing was not found.

@@ -935,3 +935,7 @@ ResultMenuPendingThree
 ResultMenuFindScript
 ResultMenuSynchronizeScore
 FrontEndInsertScore
+ResultMenuOpenPause
+ResultMenuResume
+ResultMenuUpdatePause
+AnmRenderManagerView::RequestCaptureRectangle
