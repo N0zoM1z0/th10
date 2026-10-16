@@ -71,10 +71,16 @@ def source_inputs(root):
     bodies = '\n\n'.join(extract_function(filesystem, signature) for signature in [
         'void WriteToOpenFile(const void *data, unsigned int size)',
         'int CloseWriteFile()'])
+    complete = (root/'src/Hint.cpp').read_text()
+    marker = '// Target418D40.'
+    require(complete.count(marker) == 1, 'Expected unique owner constructor marker')
+    # Preserve the actual constructor without pulling in other lifecycle owners.
+    hint = complete.split(marker, 1)[0] + extract_function(complete, 'HintOwnerView::HintOwnerView()') + '\n'
     return {
-        # Frame owners are exercised separately by test-hint-frame.py.
-        'Hint.cpp': (root/'src/Hint.cpp').read_text().split('// Target419120.', 1)[0],
+        'Hint.cpp': hint,
         'Hint.hpp': (root/'src/Hint.hpp').read_text(),
+        'Chain.hpp': (root/'src/Chain.hpp').read_text(),
+        'Main.hpp': '#pragma once\n// Selected loader/export/constructor bodies use no Main dependencies.\n',
         'AnmVmId.hpp': (root/'src/AnmVmId.hpp').read_text(),
         # Extract the actual vector declaration; do not substitute production headers.
         'AnmManager.hpp': vector_dependency_header(root),
@@ -84,7 +90,7 @@ def source_inputs(root):
         'direct.h': '// _mkdir is replaced by the fixture mock.\n',
     }
 
-def run(inputs, mutation=None):
+def run(inputs, mutation=None, optimization='O1'):
     if mutation:
         require(mutation[1] in inputs, 'Mutation source missing: '+mutation[1])
     with tempfile.TemporaryDirectory(prefix='hint-export-') as td:
@@ -98,7 +104,7 @@ def run(inputs, mutation=None):
                 text = text.replace(old, new)
             (root/name).write_text(text)
         compiled = subprocess.run([
-            'g++','-std=c++11','-O1','-g','-fsanitize=undefined',
+            'g++','-std=c++11','-'+optimization,'-g','-fsanitize=undefined',
             '-fno-sanitize-recover=all','-I',str(root),
             str(root/'host-test.cpp'),'-o',str(root/'test')],
             capture_output=True,text=True,timeout=60)
@@ -111,9 +117,10 @@ def main():
     parser.add_argument('--repo-root',type=Path,default=SCRIPT.parents[1])
     parser.add_argument('--skip-mutations',action='store_true',
                         help='Run only the baseline effect fixtures for lightweight CI')
+    parser.add_argument('--optimization', choices=['O0', 'O1', 'O2'], default='O1')
     args=parser.parse_args()
     inputs=source_inputs(args.repo_root)
-    result=run(inputs)
+    result=run(inputs, optimization=args.optimization)
     require(result.returncode == 0 and result.stderr == '',
             'Baseline fixture failed\n'+result.stdout+result.stderr)
     print(result.stdout.strip())
@@ -121,7 +128,7 @@ def main():
         print('PASS: baseline only; mutation controls explicitly skipped')
         return
     for mutation in MUTATIONS:
-        result=run(inputs,mutation)
+        result=run(inputs,mutation,args.optimization)
         require_mutation_failure(result, mutation[0])
         print('MUTATION KILLED:',mutation[0])
     print('PASS:',len(MUTATIONS),'functional mutations; actual void file helper extracted')

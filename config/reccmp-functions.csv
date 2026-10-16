@@ -530,7 +530,7 @@ th10::leaf::Fn00418C00,0x00418C00,function
 th10::leaf::Fn00418C10,0x00418C10,function
 th10::leaf::Fn00418C20,0x00418C20,function
 th10::leaf::Fn00419890,0x00419890,function
-th10::leaf::Fn004198B0,0x004198B0,function
+HintOwnerView::OnDraw,0x004198B0,function
 th10::leaf::Fn0041AB50,0x0041AB50,function
 th10::leaf::Fn0041AB60,0x0041AB60,function
 th10::leaf::Fn0041AC00,0x0041AC00,function
@@ -952,3 +952,8 @@ HintTrimWhitespace,0x0041A0A0,function
 HintAppendLink,0x0041AB10,function
 HintOwnerView::ConsumeEntries,0x00419120,function
 HintOwnerView::Update,0x00419650,function
+HintOwnerView::HintOwnerView,0x00418D40,function
+HintOwnerView::Initialize,0x00418E30,function
+CleanupHintOwner,0x00418EE0,function
+CreateHintOwner,0x00419090,function
+HintOwnerView::OnUpdate,0x004198A0,function

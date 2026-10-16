@@ -1,3 +1,4 @@
+#include "Hint.hpp"
 #include "GameEffectUpdate.hpp"
 #include <stddef.h>
 #include <stdlib.h>
@@ -116,7 +117,7 @@ extern GameChainOwnerView *g_GameOwner4776FC;
 extern GameChainOwnerView *g_GameOwner4776EC;
 extern GameChainOwnerView *g_GameOwner477840;
 extern GameAdditionalChainView *g_GameOwner4776F4;
-extern GameChainOwnerView *g_GameOwner477814;
+// Target477814 uses the canonical g_GameOwner477814 declaration in Hint.hpp.
 extern EnemyManagerView *g_EnemyManager;
 extern GameGuiUpdateView *g_GameGuiUpdate;              // 0x47770C
 extern GameStageUpdateView *g_GameStageUpdate;          // 0x477848
@@ -194,7 +195,10 @@ static __forceinline void ResetGameStage()
     g_GameOwner477840->drawChain->flags |= 2;
     MarkGameChains(&g_GameOwner4776F4->chains);
     g_GameOwner4776F4->extraChain->flags |= 2;
-    MarkGameChains(g_GameOwner477814);
+    if (g_GameOwner477814->updateChain != NULL)
+        g_GameOwner477814->updateChain->flags |= 2;
+    if (g_GameOwner477814->drawChain != NULL)
+        g_GameOwner477814->drawChain->flags |= 2;
 }
 
 // The registered ECX adapter pushes its owner and the target core returns RET4.
@@ -347,7 +351,6 @@ extern void *GameCreateProjectilePool();
 extern void *GameCreateItemManager();
 extern void *GameCreateOwner41C290();
 extern void *GameCreateController();
-extern void *GameCreateStageOwner();
 extern void *GameCreateOwner42B660();
 extern void GameRestoreReplayState(ReplayManager *replay);
 extern void __stdcall GameReloadGui(GameGuiUpdateView *gui);
@@ -437,7 +440,7 @@ int __stdcall GameManagerInitialize(GameManager *manager)
             GameCreateGui() == NULL || PlayerCreate() == NULL ||
             GameCreateProjectilePool() == NULL || GameCreateItemManager() == NULL ||
             GameCreateOwner41C290() == NULL || GameCreateController() == NULL ||
-            GameCreateStageOwner() == NULL || GameCreateOwner42B660() == NULL)
+            CreateHintOwner() == NULL || GameCreateOwner42B660() == NULL)
             goto failed;
     }
     else

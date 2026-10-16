@@ -10,8 +10,13 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <new>
 #define __stdcall
+#define __fastcall
+#define __declspec(x)
 #include "Hint.hpp"
+// Canonical global storage supplied by the host harness, as at the game link boundary.
+HintOwnerView *g_GameOwner477814;
 #include "FileSystem.hpp"
 // Explicit failure survives NDEBUG and produces one recognized diagnostic.
 #define CHECK(condition) do { if (!(condition)) { \
@@ -92,9 +97,17 @@ static HintEntryView entry(int remain=3) {
  e.position.x=-3.75f;e.position.y=9.9f;
  e.blue=255;e.green=0;e.red=128;e.alpha=254;strcpy(e.text,"quoted \"text\"");return e;
 }
+static void ResetOwner(HintOwnerView &owner) {
+ owner.~HintOwnerView();new (&owner) HintOwnerView;
+ CHECK(g_GameOwner477814==&owner);
+ for(int stage=0;stage<8;++stage) {
+  CHECK(owner.loadedStageLists[stage].payload==&owner);
+  CHECK(owner.exportStageLists[stage].payload==&owner);
+ }
+}
 static void attach(HintOwnerView &o,vector<HintEntryView> &es,int stage) {
  o.exportStageLists[stage].next=es.empty()?0:&es[0].link;
- for(size_t i=0;i<es.size();++i){es[i].link.entry=&es[i];es[i].link.next=i+1<es.size()?&es[i+1].link:0;}
+ for(size_t i=0;i<es.size();++i){es[i].link.payload=&es[i];es[i].link.next=i+1<es.size()?&es[i+1].link:0;}
 }
 static void run(HintOwnerView &o) {CHECK(ExportAutomaticHints(&o,"synthetic-output")==0);CHECK(events[0]=="alloc"&&events[1]=="mkdir"&&events[2]=="open");CHECK(events.back()=="free");}
 static const char expectedHeader[] = "\x23\x20\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x3d\x20\x0d\x0a\x23\x20\x93\x8c\x95\xfb\x95\x97\x90\x5f\x98\x5e\x81\x40\x8d\x55\x97\xaa\x83\x71\x83\x93\x83\x67\x83\x74\x83\x40\x83\x43\x83\x8b\x20\x0d\x0a\x23\x0d\x0a\x23\x20\x82\xb1\x82\xcc\x83\x74\x83\x40\x83\x43\x83\x8b\x82\xcd\x81\x41\x8e\xa9\x93\xae\x93\x49\x82\xc9\x90\xb6\x90\xac\x81\x41\x8f\xe3\x8f\x91\x82\xab\x82\xb3\x82\xea\x82\xdc\x82\xb7\x20\x0d\x0a\x23\x20\x8e\xa9\x95\xaa\x82\xc5\x8d\x55\x97\xaa\x83\x71\x83\x93\x83\x67\x82\xf0\x8d\x5c\x90\xac\x82\xb5\x82\xbd\x82\xa2\x8f\xea\x8d\x87\x82\xcd\x81\x41\x95\xca\x82\xcc\x83\x74\x83\x40\x83\x43\x83\x8b\x82\xf0\x8e\x67\x97\x70\x82\xb5\x82\xc4\x82\xad\x82\xbe\x82\xb3\x82\xa2\x20\x0d\x0a\x23\x0d\x0a\x23\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20\x54\x69\x6d\x65\x2d\x73\x74\x61\x6d\x70\x3a\x20\x3c\x32\x30\x32\x36\x2f\x31\x30\x2f\x31\x36\x20\x30\x33\x3a\x30\x34\x3e\x0d\x0a\x0d\x0a\x0d\x0a\x56\x65\x72\x73\x69\x6f\x6e\x20\x3d\x20\x30\x2e\x30\x0d\x0a\x0d\x0a";
@@ -111,7 +124,7 @@ int main() {
  es[0].remaining=0;reset();run(o);CHECK(stream()==expectedHeader);
  es[0].remaining=-1;reset();run(o);CHECK(stream().find("Tips\r\nTips\r\n")!=string::npos);CHECK(stream().find("Remain")==string::npos);
  for(int stage=0;stage<8;++stage) {
-  o=HintOwnerView();attach(o,es,stage);reset();run(o);
+  ResetOwner(o);attach(o,es,stage);reset();run(o);
   char label[40];std::sprintf(label,"Stage : %d\r\n",stage);CHECK(stream().find(label)!=string::npos);
   CHECK(occurrences(stream(),"Stage : ")==1);
  }
@@ -130,14 +143,14 @@ int main() {
  es[0].base=-1;es[0].alignment=3;reset();run(o);CHECK(nullFormats==2);
  // Bound emitted entries, not examined links: alternate zero/surviving entries.
  for(int count=254;count<=256;++count) {
-  o=HintOwnerView();vector<HintEntryView> many(2*count,entry(0));
+  ResetOwner(o);vector<HintEntryView> many(2*count,entry(0));
   for(int i=0;i<count;++i)many[2*i+1].remaining=1;
   attach(o,many,3);reset();run(o);
   CHECK(occurrences(stream(),"\tRemain\t: ")==static_cast<size_t>(std::min(count,255)));
   CHECK(occurrences(stream(),"StageEnd")==1);
  }
  // Snapshot next before first formatting/write callback modifies the current link.
- o=HintOwnerView();es=vector<HintEntryView>(2,entry());attach(o,es,2);
+ ResetOwner(o);es=vector<HintEntryView>(2,entry());attach(o,es,2);
  reset();cutLink=&es[0].link;run(o);CHECK(occurrences(stream(),"\tRemain\t: ")==2);
  // Invalidated global skips every subsequent API write and final close.
  attach(o,es,2);reset();invalidateAfterFirst=true;run(o);CHECK(writes.size()==1&&closes.empty());

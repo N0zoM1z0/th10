@@ -1,3 +1,4 @@
+#include "Main.hpp" // Must shield ANM imports before the Windows SDK.
 #include "Hint.hpp"
 #include "FileSystem.hpp"
 #include <stdio.h>
@@ -76,7 +77,7 @@ int __stdcall ExportAutomaticHints(HintOwnerView *owner, const char *path)
             for (HintLinkView *node = owner->exportStageLists[stage].next; node; )
             {
                 HintLinkView *next = node->next;
-                HintEntryView *entry = node->entry;
+                HintEntryView *entry = static_cast<HintEntryView *>(node->payload);
                 if (entry->remaining != 0)
                 {
                     if (emitted == 0)
@@ -153,7 +154,7 @@ HintEntryView::HintEntryView()
     memset(this, 0, sizeof(*this));
     link.next = 0;
     link.previous = 0;
-    link.entry = this;
+    link.payload = this;
     blue = green = red = alpha = 255;
     remaining = -1;
     time = 300;
@@ -265,14 +266,14 @@ void ClearHintLists(HintOwnerView *owner)
         while (node != 0)
         {
             HintLinkView *next = node->next;
-            delete node->entry;
+            delete static_cast<HintEntryView *>(node->payload);
             node = next;
         }
         node = owner->exportStageLists[stage].next;
         while (node != 0)
         {
             HintLinkView *next = node->next;
-            delete node->entry;
+            delete static_cast<HintEntryView *>(node->payload);
             node = next;
         }
     }
@@ -404,7 +405,7 @@ int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode)
             {
                 HintEntryView *copy = new HintEntryView;
                 memcpy(copy, entry, sizeof(*copy));
-                copy->link.entry = copy;
+                copy->link.payload = copy;
                 copy->link.next = 0;
                 copy->link.previous = 0;
                 HintAppendLink(&owner->exportStageLists[stage], &copy->link);
@@ -418,6 +419,105 @@ int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode)
     return 0;
 }
 
+
+// Target418D40. Sentinel payloads carry the owner, never a fake entry.
+HintOwnerView::HintOwnerView()
+{
+    memset(this, 0, sizeof(*this));
+    flags |= 2;
+    for (int stage = 0; stage < 8; ++stage)
+    {
+        loadedStageLists[stage].payload = this;
+        exportStageLists[stage].payload = this;
+    }
+    g_GameOwner477814 = this;
+}
+
+// Target418E30. Register the actual callbacks, preserving bit-2 clearing.
+int HintOwnerView::Initialize()
+{
+    th10::ChainElem *element = th10::Chain::AllocElem(OnUpdate);
+    element->arg = this;
+    element->flags &= ~2u;
+    th10::Chain::AddToCalcChain(element, 25, th10::g_Chain);
+    updateChain = element;
+    element = th10::Chain::AllocElem(OnDraw);
+    element->arg = this;
+    element->flags &= ~2u;
+    th10::Chain::AddToDrawChain(element, 44, th10::g_Chain);
+    drawChain = element;
+    counter10 = 0;
+    if (g_MainSupervisorView.hintMode != 0)
+    {
+        LoadHintFile(this, "hint/hint_auto.txt", 0);
+        LoadHintFile(this, "hint/hint_user.txt", 1);
+    }
+    return 0;
+}
+
+// Target418EE0. Chain pointers and freed sentinels are intentionally not reset.
+void __stdcall CleanupHintOwner(HintOwnerView *owner)
+{
+    th10::ChainElem *element = owner->updateChain;
+    th10::Chain *chain = th10::g_Chain;
+    if (element != NULL)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        th10::Chain::UnregisterElem(element, chain);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    element = owner->drawChain;
+    chain = th10::g_Chain;
+    if (element != NULL)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        th10::Chain::UnregisterElem(element, chain);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    for (int index = 0; index < 10; ++index)
+    {
+        if (owner->vmIds[index].value != 0)
+            manager->MarkVmForDeletion(owner->vmIds[index]);
+        owner->vmIds[index].value = 0;
+    }
+    if (g_MainSupervisorView.hintMode == 2)
+        ExportAutomaticHints(owner, "hint/hint_auto.txt");
+    ClearHintLists(owner);
+    g_GameOwner477814 = NULL;
+}
+
+// Target419090. No extra null-allocation recovery is invented.
+// Allocation-failure ABI/exception behavior remains outside source-test scope.
+HintOwnerView *CreateHintOwner()
+{
+    HintOwnerView *owner = new HintOwnerView;
+    if (owner->Initialize() != 0)
+    {
+        if (owner != NULL)
+        {
+            CleanupHintOwner(owner);
+            delete owner;
+        }
+        return NULL;
+    }
+    return owner;
+}
+
+// Target4198A0 and4198B0: genuine ChainCallback address escapes.
+int __fastcall HintOwnerView::OnUpdate(void *owner)
+{
+    return static_cast<HintOwnerView *>(owner)->Update();
+}
+
+int __fastcall HintOwnerView::OnDraw(void *)
+{
+    return 1;
+}
 
 // Target419120. Natural member boundary; no forced private EAX/stack ABI.
 #include "AnmManager.hpp"
@@ -435,7 +535,7 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
     for (HintLinkView *node = first; node != 0; )
     {
         HintLinkView *next = node->next;
-        HintEntryView *entry = node->entry;
+        HintEntryView *entry = static_cast<HintEntryView *>(node->payload);
         if (entry->base == 0 || entry->base == g_GameFrameRestorePending)
             --entry->count;
         if (entry->count > 0)
@@ -450,10 +550,10 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
         entry->position.y = static_cast<float>(
             static_cast<double>(entry->scale) * 8.0 + entry->position.y);
         // Ordered comparisons intentionally route NaN to the final scale case.
-        bool small = entry->scale <= 1.0f;
-        bool medium = !small && entry->scale <= 2.0f;
+        bool smallScale = entry->scale <= 1.0f;
+        bool medium = !smallScale && entry->scale <= 2.0f;
         AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
-            nextVmSlot + (small ? 2 : 12), &entry->position);
+            nextVmSlot + (smallScale ? 2 : 12), &entry->position);
         slot = nextVmSlot;
         vmIds[slot] = created;
         manager = g_AnmRenderManagerView;
@@ -462,7 +562,7 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
             vmIds[slot].value = 0;
         // Native continues to dereference vm even after failed resolution.
         AnmFloat2View initial, final;
-        if (small)
+        if (smallScale)
         {
             vm->glyphWidth = vm->glyphHeight = 15;
             initial.x = static_cast<float>(static_cast<double>(entry->scale) * 1.5);

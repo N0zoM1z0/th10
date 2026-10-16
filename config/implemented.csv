@@ -528,7 +528,7 @@ th10::leaf::Fn00418C00
 th10::leaf::Fn00418C10
 th10::leaf::Fn00418C20
 th10::leaf::Fn00419890
-th10::leaf::Fn004198B0
+HintOwnerView::OnDraw
 th10::leaf::Fn0041AB50
 th10::leaf::Fn0041AB60
 th10::leaf::Fn0041AC00
@@ -951,3 +951,8 @@ HintTrimWhitespace
 HintAppendLink
 HintOwnerView::ConsumeEntries
 HintOwnerView::Update
+HintOwnerView::HintOwnerView
+HintOwnerView::Initialize
+CleanupHintOwner
+CreateHintOwner
+HintOwnerView::OnUpdate

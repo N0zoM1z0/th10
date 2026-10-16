@@ -1484,3 +1484,17 @@ Actual i386 headers compile. Same-graph owners1222/539 remain nonexact.
 All3 affected canonical units still replay117/117 bytes. No new exact credit.
 Next: real owner constructor/init/terminal cleanup/factory and registered
 callbacks. Keep Main/Chain storage aliases coherent; no fake callback roots.
+
+
+## Genuine hint lifecycle checkpoint (2026-10-16)
+
+Owner construction, registration, terminal cleanup, factory and callbacks
+now have target-backed source. GameManager uses the genuine factory and one
+canonical typed owner pointer. Sentinel payloads are void pointers; only real
+entry nodes are cast to HintEntryView. See HINT_LIFECYCLE.md.
+Factory67 bytes replay exactly twice; existing draw6 is migrated to the real
+registration graph without duplicate credit. Full Factory acceptance must
+bind the final committed snapshot. Prior3 units retain117/117 bytes. Other
+lifecycle owners remain nonexact, including same-sized Initialize131.
+Next bounded control: target-backed three lexical scale branches in
+ConsumeEntries, after this checkpoint is accepted; no flags or ABI sweeps.

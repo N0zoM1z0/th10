@@ -1,6 +1,7 @@
 // Actual-source host contract fixture. The runner includes the lexical tail of
-// Hint.cpp, replacing only its delete dependency with a live-observation seam;
-// Hint.hpp, AnmVmId.hpp and the shared effect view are included unchanged.
+// Hint.cpp and genuine entry/owner constructors, replacing only the delete
+// dependency with a live-observation seam; Hint.hpp, Chain.hpp, AnmVmId.hpp
+// and the shared effect view are included unchanged.
 // The large ANM and Player dependencies are instrumented declaration seams, not
 // engine emulation or native ABI/layout proof; their called signatures are audited
 // against canonical headers by the runner. Draw methods never expand a format.
@@ -13,6 +14,8 @@
 #include <cstdint>
 #include <type_traits>
 #define __stdcall
+#define __fastcall
+#define __declspec(x)
 #include "AnmVmId.hpp"
 
 #define CHECK(expression) do { if (!(expression)) { \
@@ -50,6 +53,8 @@ struct AnmRenderManagerView {
 struct PlayerFloat3 { float x, y, z; };
 struct Player { PlayerFloat3 drawPosition; };
 #include "Hint.hpp"
+// Canonical global storage supplied by the host harness, as at the game link boundary.
+HintOwnerView *g_GameOwner477814;
 #include "GameEffectUpdate.hpp"
 static_assert(std::is_trivially_copyable<HintEntryView>::value, "entry snapshot requires trivial copying");
 AnmRenderManagerView *g_AnmRenderManagerView;
@@ -144,7 +149,14 @@ void Reset(HintOwnerView &value) {
     // Release entries retained by freeEntries==0 using matching ordinary delete.
     for (int i = 0; i < recordCount; ++i) if (!records[i].deleted) delete records[i].pointer;
     recordCount = vmCount = eventCount = 0;
-    value = HintOwnerView(); owner = &value;
+    value.~HintOwnerView();
+    new (&value) HintOwnerView;
+    owner = &value;
+    CHECK(g_GameOwner477814 == &value);
+    for (int stage = 0; stage < 8; ++stage) {
+        CHECK(value.loadedStageLists[stage].payload == &value);
+        CHECK(value.exportStageLists[stage].payload == &value);
+    }
     g_AnmRenderManagerView = &manager; g_Player = &player; g_GameEffectUpdate = &effect;
     effect.loadedResource = &loaded;
     player.drawPosition = PlayerFloat3{0, 0, 0};
@@ -166,7 +178,7 @@ HintEntryView *Entry(int count = 0, int base = 0) {
     HintEntryView *entry = new HintEntryView;
     EntryRecord &record = records[recordCount++];
     record.pointer = entry; record.link = &entry->link; record.deleted = false;
-    entry->link.entry = entry;
+    entry->link.payload = entry;
     entry->count = count; entry->base = base;
     entry->position.x = 3; entry->position.y = 5; entry->position.z = 7;
     entry->scale = 1; entry->textWidth = 40;
@@ -211,7 +223,6 @@ void DeleteEntryObserved(HintEntryView *entry) {
     CHECK(false && "deletion target not registered");
 }
 }
-HintEntryView::HintEntryView() { std::memset(this, 0, sizeof(*this)); }
 
 AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant0(int scriptIndex, const AnmFloat3View *position) {
     using namespace fixture;

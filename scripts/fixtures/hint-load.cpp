@@ -14,7 +14,11 @@
 #include <vector>
 #include <algorithm>
 #define __stdcall
+#define __fastcall
+#define __declspec(x)
 #include "Hint.hpp"
+// Canonical global storage supplied by the host harness, as at the game link boundary.
+HintOwnerView *g_GameOwner477814;
 #include "FileSystem.hpp"
 #define CHECK(condition) do { if (!(condition)) { \
     std::fprintf(stderr,"HINT_LOAD_CHECK_FAILED line %d: %s\n",__LINE__,#condition); \
@@ -137,6 +141,16 @@ static HintEntryView *MockNewEntry()
     events.push_back("new-entry");
     return p;
 }
+static void ResetOwner(HintOwnerView &owner)
+{
+    owner.~HintOwnerView();
+    new (&owner) HintOwnerView;
+    CHECK(g_GameOwner477814 == &owner);
+    for (int stage = 0; stage < 8; ++stage) {
+        CHECK(owner.loadedStageLists[stage].payload == &owner);
+        CHECK(owner.exportStageLists[stage].payload == &owner);
+    }
+}
 static void load(HintOwnerView &owner, const string &text, int mode = 1)
 {
     unsigned beforeAllocations = scratchAllocations;
@@ -156,9 +170,10 @@ static vector<HintEntryView *> entries(HintLinkView &head)
     for (HintLinkView *node = head.next; node; node = node->next) {
         CHECK(result.size()<1024);
         CHECK(node->previous == prev);
-        CHECK(node->entry != 0);
-        CHECK(&node->entry->link == node);
-        result.push_back(node->entry);
+        HintEntryView *entry = static_cast<HintEntryView *>(node->payload);
+        CHECK(entry != 0);
+        CHECK(&entry->link == node);
+        result.push_back(entry);
         prev = node;
     }
     return result;
@@ -176,7 +191,7 @@ int main()
 {
     // Constructor and source helper contracts, exercised directly.
     HintEntryView initial;
-    CHECK(initial.link.entry == &initial && initial.link.next == 0 && initial.link.previous == 0);
+    CHECK(initial.link.payload == &initial && initial.link.next == 0 && initial.link.previous == 0);
     CHECK(initial.remaining == -1 && initial.time == 300 && initial.scale == 1.0f);
     CHECK(initial.blue == 255 && initial.green == 255 && initial.red == 255 && initial.alpha == 255);
     CHECK(initial.text[64] == 0 && initial.text[65] == 0 && initial.text[67] == 0);
@@ -232,7 +247,7 @@ int main()
     load(owner, "");
     CHECK(allocated.empty());
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Version : 0.0\r\nStage : 1\r\n"+item(
     "Pos : -12, 34\r\nText : \"ab\"cd\"\r\nCount : -27\r\nTime : 41\r\nBase : boss_card_12\r\nAlign : right\r\nRemain : 5\r\nScale : 2\r\nColor : -1, 256, 258\r\nAlpha : 511\r\n"), 0);
     HintEntryView *e = one(owner);
@@ -247,25 +262,25 @@ int main()
     e->remaining = 0;
     CHECK(copies[0]->remaining == 5);
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item(), 1);
     CHECK(entries(owner.exportStageLists[1]).empty());
     e = one(owner);
     CHECK(e->remaining == -1 && e->time == 300 && e->scale == 1 && e->textWidth == 0);
 
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item("Count : 1\n"), 0);
     load(owner, "Stage : 1\n"+item("Count : 2\n"), 1);
     CHECK(entries(owner.loadedStageLists[1]).size() == 2 && entries(owner.exportStageLists[1]).size() == 1);
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item(), 2);
     CHECK(allocated.size() == 1 && entries(owner.exportStageLists[1]).empty());
     // All stages including rejected boundaries.
     for (int stage = -1; stage <= 8; ++stage) {
         reset();
-        owner = HintOwnerView();
+        ResetOwner(owner);
         char number[20];
         std::sprintf(number, "%d", stage);
         load(owner, string("Stage : ")+number+"\n"+item());
@@ -273,13 +288,13 @@ int main()
         if (stage >= 1 && stage <= 7) CHECK(one(owner, stage)->count == 0);
     }
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item()+"StageEnd\n"+item());
     CHECK(allocated.size() == 1);
     // New Stage resets the 255-entry counter; missing stage values reuse prior value.
     for (int count = 254; count <= 256; ++count) {
         reset();
-        owner = HintOwnerView();
+        ResetOwner(owner);
         string text = "Stage : 1\n";
         for (int i = 0; i<count; ++i) text += item();
         text += "Stage : 2\n"+item();
@@ -288,24 +303,24 @@ int main()
         CHECK(entries(owner.loadedStageLists[2]).size() == 1);
     }
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     string sameStage = "Stage : 1\n";
     for (int i = 0; i < 255; ++i) sameStage += item();
     sameStage += "Stage : 1\n"+item();
     load(owner, sameStage);
     CHECK(entries(owner.loadedStageLists[1]).size() == 256);
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 2\nStageEnd\nStage\n"+item());
     CHECK(one(owner, 2) != 0);
 
     // The equals-sign line emitted by exporter is not a Version directive.
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Version = WRONG\nStage : 1\n"+item());
     CHECK(one(owner) != 0 && deleted.empty());
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item()+"Stage : 2\n"+item()+"Version : wrong\nStage : 3\n"+item(), 0);
     CHECK(allocated.size() == 4 && deleted.size() == 4);
     CHECK(deleted[0] == allocated[0] && deleted[1] == allocated[1] && deleted[2] == allocated[2] && deleted[3] == allocated[3]);
@@ -315,7 +330,7 @@ int main()
     // Quoted spans cover the 65th copy byte and constructor-zeroed trailing storage.
     for (int count = 63; count <= 65; ++count) {
         reset();
-        owner = HintOwnerView();
+        ResetOwner(owner);
         string text(count, 'q');
         load(owner, "Stage : 1\n"+item("Text : \""+text+"\"\n"));
         e = one(owner);
@@ -332,32 +347,32 @@ int main()
 
     }
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\nTips\nText : \"unfinished\nCount : 99\nEnd\n");
     e = one(owner);
     CHECK(e->count == 0 && e->text[0] == 0);
     // A partial entry is appended.
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\nTips\nCount : 8");
     CHECK(one(owner)->count == 8);
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item("Color : 17,22\n"));
     e = one(owner);
     CHECK(e->red == 17 && e->green == 255 && e->blue == 255);
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item("Color : 17\n"));
     CHECK(one(owner)->red == 255);
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item("Pos : 9\nText : no quotes\nUnknown : x\n"));
     e = one(owner);
     CHECK(e->position.x == 0 && e->text[0] == 0);
 
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item("Pos : 12,34\nCount\nColor : 7,8,9\nTime\nStage : 2\n"));
     e = one(owner);
     CHECK(e->count == 12 && e->time == 7 && entries(owner.loadedStageLists[2]).empty());
@@ -377,13 +392,13 @@ int main()
     for (int base = 0; base < 61; ++base)
     for (int a = 0; a < 3; ++a) {
         reset();
-        owner = HintOwnerView();
+        ResetOwner(owner);
         load(owner, "Stage : 1\n"+item("Base : "+names[base]+"\nAlign : "+align[a]+"\n"));
         e = one(owner);
         CHECK(e->base == base && e->alignment == a);
     }
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item("Base : unknown\nAlign : unknown\n"));
     e = one(owner);
     CHECK(e->base == 0 && e->alignment == 0);
@@ -391,19 +406,19 @@ int main()
     const float expectedScale[] = {-4, -4, -3.999f, 0, 3.999f, 4, 4, 0};
     for (int i = 0; i < 8; ++i) {
         reset();
-        owner = HintOwnerView();
+        ResetOwner(owner);
         load(owner, "Stage : 1\n"+item(string("Scale : ")+scaleText[i]+"\nText : \"xx\"\n"));
         e = one(owner);
         if (i == 7) CHECK(std::isnan(e->scale) && std::isnan(e->textWidth));
         else CHECK(e->scale == expectedScale[i] && e->textWidth == expectedScale[i]*15);
     }
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     load(owner, "Stage : 1\n"+item("Text : \"abc\"\nScale : 1.829711675643921\n"));
     CHECK(one(owner)->textWidth == 41.168514251708984f);
     // Actual append/cleanup walks across every stage and both groups.
     reset();
-    owner = HintOwnerView();
+    ResetOwner(owner);
     vector<HintEntryView*> expectedDeletes;
     for (int stage = 0; stage < 8; ++stage) {
         for (int group = 0; group < 2; ++group)

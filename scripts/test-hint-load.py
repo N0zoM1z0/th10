@@ -18,7 +18,7 @@ MUTATIONS = [('wrong_open_mode',
  ('allow_256', 'entries >= 255', 'entries >= 256'),
  ('no_stage_reset', '            entries = 0;', '            entries += 0;'),
  ('clone_user_instead', 'if (mode == 0)', 'if (mode == 1)'),
- ('clone_wrong_self', 'copy->link.entry = copy;', 'copy->link.entry = entry;'),
+ ('clone_wrong_self', 'copy->link.payload = copy;', 'copy->link.payload = entry;'),
  ('version_failure_minus1',
   'ClearHintLists(owner);\n                break;',
   'ClearHintLists(owner);\n                return -1;'),
@@ -74,6 +74,19 @@ def require(condition, message):
     if not condition:
         raise RuntimeError(message)
 
+def extract_function(source, signature):
+    require(source.count(signature) == 1, 'Missing or duplicate function: ' + signature)
+    start = source.index(signature)
+    opening = source.find('{', start)
+    require(opening != -1, 'Missing function body: ' + signature)
+    depth, cursor = 1, opening + 1
+    while depth:
+        require(cursor < len(source), 'Unclosed function body: ' + signature)
+        depth += (source[cursor] == '{') - (source[cursor] == '}')
+        cursor += 1
+    return source[start:cursor]
+
+
 def check_failure(result, label):
     output = result.stdout + result.stderr
     require(result.returncode == 1,
@@ -83,9 +96,13 @@ def check_failure(result, label):
     require(re.fullmatch('HINT_LOAD_CHECK_FAILED line [0-9]+: [^\\r\\n]+\\n', result.stderr) is not None,
             label + ': missing exact CHECK diagnostic\n' + output)
 
-def run(root, header, mutation=None):
-    source = (root / 'src/Hint.cpp').read_text().split('// Target419120.', 1)[0]
-    # This fixture tests loader/exporter; the frame owner has its own fixture.
+def run(root, header, mutation=None, optimization='O1'):
+    complete = (root / 'src/Hint.cpp').read_text()
+    marker = '// Target418D40.'
+    require(complete.count(marker) == 1, 'Expected unique owner constructor marker')
+    # Preserve loader/exporter code and the genuine owner constructor; other
+    # lifecycle and frame owners have their own fixtures.
+    source = complete.split(marker, 1)[0] + extract_function(complete, 'HintOwnerView::HintOwnerView()') + '\n'
     if mutation:
         label, old, new = mutation
         require(source.count(old) == 1, label + ': mutation token count ' + str(source.count(old)))
@@ -93,12 +110,14 @@ def run(root, header, mutation=None):
     # Substitute only allocation/deallocation dependency boundaries.
     # The maintained constructor and list/cleanup bodies still execute.
     require(source.count('new HintEntryView;') == 2, 'Expected two entry allocations')
-    require(source.count('delete node->entry;') == 2, 'Expected two entry deletion sites')
+    require(source.count('delete static_cast<HintEntryView *>(node->payload);') == 2, 'Expected two entry deletion sites')
     source = source.replace('new HintEntryView;', 'MockNewEntry();')
-    source = source.replace('delete node->entry;', 'MockDelete(node->entry);')
+    source = source.replace('delete static_cast<HintEntryView *>(node->payload);', 'MockDelete(static_cast<HintEntryView *>(node->payload));')
     files = {
         'Hint.cpp': source,
         'Hint.hpp': (root / 'src/Hint.hpp').read_text(),
+        'Chain.hpp': (root / 'src/Chain.hpp').read_text(),
+        'Main.hpp': '#pragma once\n// Selected loader/export/constructor bodies use no Main dependencies.\n',
         'AnmVmId.hpp': (root / 'src/AnmVmId.hpp').read_text(),
         # Extract the actual vector declaration; do not substitute production headers.
         'AnmManager.hpp': vector_dependency_header(root),
@@ -111,7 +130,7 @@ def run(root, header, mutation=None):
         for name, text in files.items():
             (directory / name).write_text(text)
         compiled = subprocess.run([
-            'g++', '-std=c++11', '-O1', '-g', '-fsanitize=undefined',
+            'g++', '-std=c++11', '-' + optimization, '-g', '-fsanitize=undefined',
             '-fno-sanitize-recover=all', '-I', td,
             str(directory / 'fixture.cpp'), '-o', str(directory / 'fixture'),
         ], capture_output=True, text=True, timeout=60)
@@ -124,9 +143,10 @@ def main():
     parser.add_argument('--repo-root', type=Path, default=SCRIPT.parents[1])
     parser.add_argument('--file-system-header', type=Path)
     parser.add_argument('--skip-mutations', action='store_true')
+    parser.add_argument('--optimization', choices=['O0', 'O1', 'O2'], default='O1')
     args = parser.parse_args()
     header = args.file_system_header or args.repo_root / 'src/FileSystem.hpp'
-    result = run(args.repo_root, header)
+    result = run(args.repo_root, header, optimization=args.optimization)
     require(result.returncode == 0 and not result.stderr,
             'Baseline failure\n' + result.stdout + result.stderr)
     print(result.stdout.strip(), flush=True)
@@ -134,7 +154,7 @@ def main():
         print('PASS: baseline only; mutation controls explicitly skipped')
         return
     for mutation in MUTATIONS:
-        result = run(args.repo_root, header, mutation)
+        result = run(args.repo_root, header, mutation, args.optimization)
         check_failure(result, mutation[0])
         print('MUTATION KILLED:', mutation[0], flush=True)
     print('PASS:', len(MUTATIONS), 'functional controls, exact exit1 CHECK and no sanitizer diagnostic')

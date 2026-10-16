@@ -3,8 +3,9 @@
 
 This host fixture proves bounded source contracts, not target execution, original
 class layout on this host, native FP control word, registration ABI, or codegen
-identity. Hint.hpp, AnmVmId.hpp, GameEffectUpdate.hpp and the entire source tail
-starting at // Target419120. are copied into an isolated build. The only source
+identity. Hint.hpp, Chain.hpp, AnmVmId.hpp, GameEffectUpdate.hpp and the source tail
+starting at // Target419120. are copied into an isolated build, together with
+the source-extracted genuine entry and owner constructors. The only source
 substitution maps the single delete entry; dependency to a live observer that
 checks/snapshots the entry before invoking the matching real delete. Mutations
 apply first, so relocated deletion is observed at its relocated site. The
@@ -89,6 +90,19 @@ def require(condition, message):
         raise RuntimeError(message)
 
 
+def extract_function(source, signature):
+    require(source.count(signature) == 1, 'Missing or duplicate function: ' + signature)
+    start = source.index(signature)
+    opening = source.find('{', start)
+    require(opening != -1, 'Missing function body: ' + signature)
+    depth, cursor = 1, opening + 1
+    while depth:
+        require(cursor < len(source), 'Unclosed function body: ' + signature)
+        depth += (source[cursor] == '{') - (source[cursor] == '}')
+        cursor += 1
+    return source[start:cursor]
+
+
 def declaration(source, start):
     offset = source.index(start)
     brace = source.index('{', offset)
@@ -162,8 +176,8 @@ def mutations(source):
         ('interior-alpha-shift-before-byte', 'static_cast<unsigned char>(alpha) >> 2', 'static_cast<unsigned char>(alpha >> 2)'),
         ('unsigned-fade-quotient', '(3 * alpha) / 4', 'static_cast<unsigned int>(3 * alpha) / 4', 2),
         ('reverse-scale-vectors', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&final, &initial, 8, 4)'),
-        ('wrong-small-script-base', '(small ? 2 : 12)', '(small ? 3 : 12)'),
-        ('wrong-large-script-base', '(small ? 2 : 12)', '(small ? 2 : 13)'),
+        ('wrong-small-script-base', '(smallScale ? 2 : 12)', '(smallScale ? 3 : 12)'),
+        ('wrong-large-script-base', '(smallScale ? 2 : 12)', '(smallScale ? 2 : 13)'),
         ('safe-format-substitution', 'vm, 0x00FFFFFF, entry->text)', 'vm, 0x00FFFFFF, "%s", entry->text)', 3),
         ('invalid-alignment-centered', 'entry->alignment >= 0 && entry->alignment <= 2', 'true'),
         ('base-gated-emission', 'if (entry->count > 0)', 'if (entry->count > 0 || (entry->base != 0 && entry->base != g_GameFrameRestorePending))'),
@@ -238,10 +252,12 @@ def verify_classifier():
         raise RuntimeError('classifier accepted invalid control %r' % ((code, out, err),))
 
 
-def run(root, compiler, selected, sanitize, skip_mutations=False):
+def run(root, compiler, selected, sanitize, skip_mutations=False, optimization='O1'):
     source = (root / 'src/Hint.cpp').read_text()
     require(source.count(MARKER) == 1, 'expected exactly one Hint owner source marker')
-    source = source[source.index(MARKER):]
+    source = '\n\n'.join(extract_function(source, signature) for signature in [
+        'HintEntryView::HintEntryView()', 'HintOwnerView::HintOwnerView()'
+    ]) + '\n\n' + source[source.index(MARKER):]
     fixture = audit_dependencies(root)
     verify_classifier()
     env = dict(os.environ)
@@ -251,13 +267,13 @@ def run(root, compiler, selected, sanitize, skip_mutations=False):
     env['UBSAN_OPTIONS'] = 'halt_on_error=1:print_stacktrace=1'
     with tempfile.TemporaryDirectory(prefix='hint-frame-') as temporary:
         work = Path(temporary)
-        for name in ['Hint.hpp', 'GameEffectUpdate.hpp']:
+        for name in ['Hint.hpp', 'Chain.hpp', 'GameEffectUpdate.hpp']:
             shutil.copyfile(root / 'src' / name, work / name)
         shutil.copyfile(root / 'src/AnmVmId.hpp', work / 'AnmVmId.hpp')
         (work / 'AnmManager.hpp').write_text('#pragma once\n// Audited declaration seams live in fixture.cpp before Hint.hpp.\n')
         (work / 'Player.hpp').write_text('#pragma once\n// Audited Player.drawPosition seam lives in fixture.cpp.\n')
         (work / 'fixture.cpp').write_text(fixture)
-        flags = ['-std=c++17', '-O1', '-g', '-fno-omit-frame-pointer', '-fno-fast-math', '-ffp-contract=off', '-no-pie']
+        flags = ['-std=c++17', '-' + optimization, '-g', '-fno-omit-frame-pointer', '-fno-fast-math', '-ffp-contract=off', '-no-pie']
         if sanitize:
             flags += ['-fsanitize=address,undefined,float-cast-overflow', '-fno-sanitize-recover=all']
         candidates = [('baseline', source)]
@@ -299,9 +315,10 @@ def main():
     selection.add_argument('--mutation', action='append', help='run only named mutation(s), plus baseline')
     selection.add_argument('--skip-mutations', action='store_true', help='run only the actual-source baseline fixture')
     parser.add_argument('--no-sanitize', action='store_true', help='omit sanitizers (all strict CHECK requirements remain)')
+    parser.add_argument('--optimization', choices=['O0', 'O1', 'O2'], default='O1')
     args = parser.parse_args()
     try:
-        run(args.source_root.resolve(), args.compiler, args.mutation, not args.no_sanitize, args.skip_mutations)
+        run(args.source_root.resolve(), args.compiler, args.mutation, not args.no_sanitize, args.skip_mutations, args.optimization)
     except (RuntimeError, OSError, subprocess.TimeoutExpired) as error:
         print('HINT_FRAME_HARNESS_ERROR: %s' % error, file=sys.stderr)
         return 2

@@ -1,13 +1,14 @@
 #pragma once
 #include <stddef.h>
 #include "AnmManager.hpp"
+#include "Chain.hpp"
 
 // Descriptive reconstruction views, not recovered original class names.
 // Fields are established by the exporter, loader, constructor and frame owners.
 struct HintEntryView;
 struct HintLinkView
 {
-    HintEntryView *entry;
+    void *payload; // Entry on real nodes; HintOwnerView on list sentinels.
     HintLinkView *next;
     HintLinkView *previous;
 };
@@ -32,9 +33,16 @@ struct HintEntryView
 };
 struct HintOwnerView
 {
+    HintOwnerView();
+    int Initialize();
+    static int __fastcall OnUpdate(void *owner);
+    static int __fastcall OnDraw(void *owner);
     int ConsumeEntries(HintLinkView *first, int freeEntries);
     int Update();
-    unsigned char unknown00[0x10];
+    unsigned int flags;
+    unsigned char unknown04[4];
+    th10::ChainElem *updateChain;
+    th10::ChainElem *drawChain;
     int counter10;
     int counter14;
     HintLinkView loadedStageLists[8]; // Loader appends the same entry type here.
@@ -62,6 +70,10 @@ typedef char HintEntryLayoutCheck[
     offsetof(HintEntryView, alpha) == 0x87 ? 1 : -1];
 typedef char HintOwnerLayoutCheck[
     sizeof(HintOwnerView) == 0x1A8 &&
+    offsetof(HintOwnerView, flags) == 0x00 &&
+    offsetof(HintOwnerView, unknown04) == 0x04 &&
+    offsetof(HintOwnerView, updateChain) == 0x08 &&
+    offsetof(HintOwnerView, drawChain) == 0x0C &&
     offsetof(HintOwnerView, counter10) == 0x10 &&
     offsetof(HintOwnerView, counter14) == 0x14 &&
     offsetof(HintOwnerView, currentBase) == 0xD8 &&
@@ -71,7 +83,10 @@ typedef char HintOwnerLayoutCheck[
     offsetof(HintOwnerView, nextVmSlot) == 0x1A4 &&
     offsetof(HintOwnerView, loadedStageLists) == 0x18 &&
     offsetof(HintOwnerView, exportStageLists) == 0x78 &&
-    sizeof(HintLinkView) == 12 ? 1 : -1];
+    sizeof(HintLinkView) == 12 &&
+    offsetof(HintLinkView, payload) == 0 &&
+    offsetof(HintLinkView, next) == 4 &&
+    offsetof(HintLinkView, previous) == 8 ? 1 : -1];
 #endif
 
 // Target41A200: two stack arguments, RET8. No forced private register ABI.
@@ -81,3 +96,9 @@ int __stdcall ExportAutomaticHints(HintOwnerView *owner, const char *path);
 int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode);
 // Target 0x00419040: both list groups are freed; sentinel pointers are not cleared.
 void ClearHintLists(HintOwnerView *owner);
+
+// Single canonical binding for target 0x00477814; no independent alias storage.
+extern HintOwnerView *g_GameOwner477814;
+HintOwnerView *CreateHintOwner(); // Target 0x00419090.
+// Terminal cleanup, target 0x00418EE0: does not free the owner itself.
+void __stdcall CleanupHintOwner(HintOwnerView *owner);
