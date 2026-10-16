@@ -544,7 +544,7 @@ static void QueueOptionsSound(int soundId)
 // Options owners keep the parent-lookup manager across label operations.
 // Failed parent lookup clears its id but retains the target's unchecked list
 // contract. Return the typed child id so each caller selects its resolution seam.
-static AnmVmIdView FindOptionsChildId(
+static __forceinline AnmVmIdView FindOptionsChildId(
     FrontEndControllerView *controller, AnmRenderManagerView *manager,
     short scriptIndex)
 {
@@ -554,28 +554,24 @@ static AnmVmIdView FindOptionsChildId(
         parentId->value = 0;
 
     AnmVmLayerNodeView *node = &parent->layerNode;
-    AnmVmIdView childId;
     while (node != NULL)
     {
         AnmVmView *child = static_cast<AnmVmView *>(node->owner);
         if (child->scriptIndex == scriptIndex)
-        {
-            childId.value = child->id;
-            break;
-        }
+            return AnmVmIdView(child->id);
         node = node->next;
     }
-    return childId;
+    return AnmVmIdView();
 }
 
-static AnmVmView *FindOptionsChildVm(
+static __forceinline AnmVmView *FindOptionsChildVm(
     FrontEndControllerView *controller, AnmRenderManagerView *manager,
     short scriptIndex)
 {
     return manager->FindVm(FindOptionsChildId(controller, manager, scriptIndex));
 }
 
-static void SetColorModeSprites(
+static __forceinline void SetColorModeSprites(
     FrontEndControllerView *controller, AnmRenderManagerView *manager)
 {
     if (g_MainSupervisorView.colorMode == 0)

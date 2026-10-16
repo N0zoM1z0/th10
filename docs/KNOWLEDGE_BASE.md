@@ -1538,3 +1538,66 @@ focused replays were serialized at nice10, with bounded timeouts. A completed
 sound-bound build was recovered by reading its complete JSON/empty stderr after
 transport timeout rather than recompiling. Reference implementation/context was
 not imported; source changes follow TH10-local instructions and existing owners.
+
+
+## 2026-10-16 Options lookup and color expansion controls
+
+This batch investigates source expansion boundaries, not a recovered historical
+keyword or a change of ABI/profile. The production link graph is still unknown.
+All controls use the existing eight maintained TUs, UpdateOptions entry,
+historical VC7.1 /GL /GS profile, one low-priority bounded build at a time.
+No upstream code or synthetic reference context is imported.
+
+Independent target evidence:
+- RefreshOptionsDisplay42E5A0/3999 has 70 FindVm call instructions and twelve
+  AnmLoaded::SetSprite calls, plus QueueCommand and conversion calls. The prior
+  source graph emitted24 FindVm and22 outlined visibility lookup calls.
+- Lookup failure produces zero after traversal; successful matches branch to
+  separate ID-load blocks. A typed early return on match and default typed
+  return on exhaustion expresses that topology without changing list traversal,
+  manager/root-ID lifetimes or null/failure contracts.
+- UpdateOptions42D920/3188 expands the full three-way color choice at all four
+  sites: opening42D9BD-42DB91, left42DDA7-42DFBA, right42E082-42E250,
+  reset42E2FF-42E4C1. Across them are24 parent FindVm calls and16 typed SetSprite
+  call instructions after tail sharing. Reset still resamples color after
+  Refresh; it is not a constant-color specialization.
+- Parent lookup retains the cached manager; typed SetSprite449670 reloads the
+  current global manager. Keep that typed setter boundary.
+
+Three scoped controls:
+1. Add __forceinline only to the two real options lookup helpers:
+   PE87438bc7da1a4c7294069cc67349595c353648b5c85b8a2c4864282a6733a138,
+   Refresh3590, Update1112.
+2. Return the typed ID immediately on match/default after exhaustion:
+   PEa761085daba03249f895796a74302893db7d7eef83e6a5ad9f55a7d5e6ce9c40,
+   Refresh3945, Update1136.
+3. Expand SetColorModeSprites at its four observed owner sites:
+   PE2f2c92b0e8e27d08dbd4d65c1ab362c373dfbc13504dee4a319301b33a01940c,
+   Refresh3945/3999, Update3228/3188. These are physical extents, not matched
+   byte totals. Refresh structural diagnostic1566/3551 and controller241/2661
+   remain mismatches; structural normalization is not canonical acceptance.
+
+The annotations are explicit, reversible reconstruction hypotheses supported
+by native call topology and independently tested source contracts. They are
+not evidence that the original author used __forceinline. No broad annotation,
+register/ABI coercion, padding, source/TU sweep or alternative compiler profile
+is justified. Remaining close-wrapper/marking boundaries and internal branch
+layout require their own evidence; do not blindly inline all helpers.
+
+Actual-source semantic gates pass2909 controller cases under UBSan and122
+instrumented plus122 plain-byte refresh cases. Full target-independent CI
+passes. Focused canonical setter replay remains163/163 bytes, single artifact
+PEe76b8dd3cf6d68082b8d7e0bd1e0793f09fa026950603d2546a082c354e2ee91.
+These are existing accepted bytes, not new credit. No ledger, boundary or
+denominator change is made. Large native artifacts stay local and regenerable.
+
+Fresh target helper4497D0 corroborates aggregate ID ownership: both branches
+write through hidden output EDI and return that pointer. Its success path,
+like refresh cold blocks42ED23 onward, reloads node->owner before reading ID.
+The candidate keeps the previously loaded owner. Do not replace the aggregate
+with a scalar merely to obtain EAX or add volatile. Target has29 more two-byte
+MOVs and26 more padding bytes, with offsetting instruction differences; the
+54-byte extent gap alone establishes no missing semantic effect.
+
+All thirteen controller and seven refresh mutation controls were re-run after
+the final expansion source and detected functional failures as intended.

@@ -20,7 +20,7 @@ def mask(s):
     return re.sub(r'//[^\n]*|/\*[\s\S]*?\*/|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'',lambda m: ''.join('\n' if c=='\n' else ' ' for c in m[0]),s)
 def extract(s,name,optional=False):
     m=mask(s)
-    pattern=r'^\s*(?:static\s+)?(?:inline\s+)?(?:void|int|AnmVmIdView|AnmVmView\s*\*)\s*(?:(?:__stdcall|__fastcall)\s+)?'+re.escape(name)+r'\s*\([^;{}]*\)\s*\{'
+    pattern=r'^\s*(?:static\s+)?(?:(?:inline|__forceinline)\s+)?(?:void|int|AnmVmIdView|AnmVmView\s*\*)\s*(?:(?:__stdcall|__fastcall)\s+)?'+re.escape(name)+r'\s*\([^;{}]*\)\s*\{'
     hits=list(re.finditer(pattern,m,re.M))
     if optional and not hits:return ''
     if len(hits)!=1:raise ValueError(f'{name}: expected one definition, got {len(hits)}')
@@ -48,6 +48,9 @@ PREFIX=r'''
 #include <cassert>
 #define __stdcall
 #define __fastcall
+#ifndef __forceinline
+#define __forceinline inline
+#endif
 using namespace std;
 vector<string> trace; function<void(string)> hook;
 void event(string s) {trace.push_back(s);if(hook)hook(s);}

@@ -1283,3 +1283,28 @@ inline-expansion experiment must be target-backed, scoped and reversible; do
 not claim an original keyword, alter ABI/profile, or import the reference's
 synthetic context. Keep semantic correctness gates and full-owner diagnostics
 separate from canonical acceptance. Math remains paused.
+
+
+## 2026-10-16 Options expansion checkpoint
+
+The two lookup helpers now use a scoped native-evidenced expansion hypothesis;
+matched child IDs return directly, with the default ID produced on exhaustion.
+SetColorModeSprites expands at all four independently attested controller
+sites. This retains the typed SetSprite current-global-manager seam.
+Do not describe the annotations as recovered original keywords.
+
+Eight-TU actual-caller diagnostic PE2f2c92b0e8e27d08dbd4d65c1ab362c373dfbc13504dee4a319301b33a01940c
+has Refresh3945/3999 and Update3228/3188 physical bytes, both nonexact.
+All source contract tests and full CI pass; existing setter replay163/163
+still passes. No new exact credit. Detailed control evidence is in the dated
+knowledge note; regenerable artifacts are local only.
+
+Next inspect the close-wrapper boundary: native controller directly invokes
+mark6 then sound11/10 then state4, whereas candidate retains BeginOptionsClose.
+Natural lexical restoration of those statements is a supported control;
+global noinline or broad helper expansion is not implied. Refresh's54-byte
+extent gap includes padding and register-move topology, not proven missing
+behavior. Fresh canonical4497D0 corroborates typed aggregate return; scalar-return tuning
+is not supported. Target reloads node->owner in cold successful matches while
+candidate retains owner; investigate natural source ownership without volatile.
+Keep builds serialized/low priority and math paused.

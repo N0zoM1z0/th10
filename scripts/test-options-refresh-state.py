@@ -20,7 +20,7 @@ def mask(s):
 
 def extract(s, name, optional=False):
     m = mask(s)
-    pat = r'^\s*(?:static\s+)?(?:inline\s+)?(?:void|int|AnmVmIdView|AnmVmView\s*\*)\s*' + re.escape(name) + r'\s*\([^;{}]*\)\s*\{'
+    pat = r'^\s*(?:static\s+)?(?:(?:inline|__forceinline)\s+)?(?:void|int|AnmVmIdView|AnmVmView\s*\*)\s*' + re.escape(name) + r'\s*\([^;{}]*\)\s*\{'
     matches = list(re.finditer(pat, m, re.M))
     if optional and not matches:
         return ''
@@ -42,6 +42,9 @@ PREFIX = r'''
 #include <map>
 #include <cassert>
 #include <cstdint>
+#ifndef __forceinline
+#define __forceinline inline
+#endif
 using namespace std;
 vector<string> trace;
 function<void(string)> hook;
