@@ -89,7 +89,7 @@ static size_t occurrences(const string &s,const string &needle) {
 }
 static HintEntryView entry(int remain=3) {
  HintEntryView e={};e.remaining=remain;e.scale=1.5f;e.time=300;e.count=-5;
- e.position[0]=-3.75f;e.position[1]=9.9f;
+ e.position.x=-3.75f;e.position.y=9.9f;
  e.blue=255;e.green=0;e.red=128;e.alpha=254;strcpy(e.text,"quoted \"text\"");return e;
 }
 static void attach(HintOwnerView &o,vector<HintEntryView> &es,int stage) {

@@ -236,7 +236,7 @@ int main()
     load(owner, "Version : 0.0\r\nStage : 1\r\n"+item(
     "Pos : -12, 34\r\nText : \"ab\"cd\"\r\nCount : -27\r\nTime : 41\r\nBase : boss_card_12\r\nAlign : right\r\nRemain : 5\r\nScale : 2\r\nColor : -1, 256, 258\r\nAlpha : 511\r\n"), 0);
     HintEntryView *e = one(owner);
-    CHECK(e->position[0] == -12 && e->position[1] == 34);
+    CHECK(e->position.x == -12 && e->position.y == 34);
     CHECK(string(e->text) == "ab\"cd" && e->count == -27 && e->time == 41 && e->base == 53 && e->alignment == 2);
     CHECK(e->remaining == 5 && e->scale == 2 && e->red == 255 && e->green == 0 && e->blue == 2 && e->alpha == 255);
     CHECK(e->textWidth == 75);
@@ -354,7 +354,7 @@ int main()
     owner = HintOwnerView();
     load(owner, "Stage : 1\n"+item("Pos : 9\nText : no quotes\nUnknown : x\n"));
     e = one(owner);
-    CHECK(e->position[0] == 0 && e->text[0] == 0);
+    CHECK(e->position.x == 0 && e->text[0] == 0);
 
     reset();
     owner = HintOwnerView();

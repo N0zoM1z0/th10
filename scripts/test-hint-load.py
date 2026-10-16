@@ -60,6 +60,16 @@ MUTATIONS = [('wrong_open_mode',
  ('no_partial_red', 'entry->red = static_cast<unsigned char>(atol(value));', 'entry->red = 255;'),
  ('default_remaining_zero', 'remaining = -1;', 'remaining = 0;')]
 
+def vector_dependency_header(root):
+    source = (root / 'src/AnmManager.hpp').read_text()
+    start = 'struct AnmFloat3View'
+    end = 'struct AnmFloat4View'
+    require(source.count(start) == 1 and source.count(end) == 1,
+            'Expected unique maintained vector declarations')
+    vector = start + source.split(start, 1)[1].split(end, 1)[0]
+    return '#pragma once\n#include "AnmVmId.hpp"\n' + vector
+
+
 def require(condition, message):
     if not condition:
         raise RuntimeError(message)
@@ -74,7 +84,8 @@ def check_failure(result, label):
             label + ': missing exact CHECK diagnostic\n' + output)
 
 def run(root, header, mutation=None):
-    source = (root / 'src/Hint.cpp').read_text()
+    source = (root / 'src/Hint.cpp').read_text().split('// Target419120.', 1)[0]
+    # This fixture tests loader/exporter; the frame owner has its own fixture.
     if mutation:
         label, old, new = mutation
         require(source.count(old) == 1, label + ': mutation token count ' + str(source.count(old)))
@@ -88,6 +99,9 @@ def run(root, header, mutation=None):
     files = {
         'Hint.cpp': source,
         'Hint.hpp': (root / 'src/Hint.hpp').read_text(),
+        'AnmVmId.hpp': (root / 'src/AnmVmId.hpp').read_text(),
+        # Extract the actual vector declaration; do not substitute production headers.
+        'AnmManager.hpp': vector_dependency_header(root),
         'FileSystem.hpp': header.read_text(),
         'fixture.cpp': (SCRIPT.parent / 'fixtures/hint-load.cpp').read_text(),
         'direct.h': '// _mkdir is mocked; no original runtime IO.\n',

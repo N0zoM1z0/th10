@@ -1471,3 +1471,16 @@ bytes replay exact twice in canonical hint-clear-lists, with only two release
 REL32 fields; Factory acceptance must bind the final committed snapshot.
 Next substantial owners: hint update419650/571 and entry rendering419120/1317,
 then genuine lifecycle/factory graph. Never add inert callback placeholders.
+
+
+## Hint frame-owner checkpoint (2026-10-16)
+
+ConsumeEntries419120/1317 and Update419650/571 now have target-backed source,
+canonical shared effect/global declarations and actual ANM calls. The entry
+position uses the real vector type so creation receives the original pointer.
+49 strict frame controls plus22 loader/12 exporter controls pass; see
+HINT_FRAME.md for conditional FP and valid-domain/lifetime qualifications.
+Actual i386 headers compile. Same-graph owners1222/539 remain nonexact.
+All3 affected canonical units still replay117/117 bytes. No new exact credit.
+Next: real owner constructor/init/terminal cleanup/factory and registered
+callbacks. Keep Main/Chain storage aliases coherent; no fake callback roots.

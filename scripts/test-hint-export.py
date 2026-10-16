@@ -25,6 +25,16 @@ MUTATIONS = [
  ('skip_stage7','Hint.cpp','        for (int stage = 0; stage < 8; ++stage)','        for (int stage = 0; stage < 7; ++stage)'),
 ]
 
+def vector_dependency_header(root):
+    source = (root / 'src/AnmManager.hpp').read_text()
+    start = 'struct AnmFloat3View'
+    end = 'struct AnmFloat4View'
+    require(source.count(start) == 1 and source.count(end) == 1,
+            'Expected unique maintained vector declarations')
+    vector = start + source.split(start, 1)[1].split(end, 1)[0]
+    return '#pragma once\n#include "AnmVmId.hpp"\n' + vector
+
+
 def require(condition, message):
     if not condition:
         raise RuntimeError(message)
@@ -62,8 +72,12 @@ def source_inputs(root):
         'void WriteToOpenFile(const void *data, unsigned int size)',
         'int CloseWriteFile()'])
     return {
-        'Hint.cpp': (root/'src/Hint.cpp').read_text(),
+        # Frame owners are exercised separately by test-hint-frame.py.
+        'Hint.cpp': (root/'src/Hint.cpp').read_text().split('// Target419120.', 1)[0],
         'Hint.hpp': (root/'src/Hint.hpp').read_text(),
+        'AnmVmId.hpp': (root/'src/AnmVmId.hpp').read_text(),
+        # Extract the actual vector declaration; do not substitute production headers.
+        'AnmManager.hpp': vector_dependency_header(root),
         'FileSystem.hpp': header,
         'FileSystemWrite.inc': 'namespace FileSystem\n{\n'+bodies+'\n}\n',
         'host-test.cpp': (SCRIPT.parent/'fixtures/hint-export.cpp').read_text(),

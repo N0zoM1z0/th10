@@ -949,3 +949,5 @@ HintReadLine
 HintSplitLine
 HintTrimWhitespace
 HintAppendLink
+HintOwnerView::ConsumeEntries
+HintOwnerView::Update

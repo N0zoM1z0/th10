@@ -95,7 +95,7 @@ int __stdcall ExportAutomaticHints(HintOwnerView *owner, const char *path)
                     sprintf(buffer, "\tText\t: \"%s\"\r\n", entry->text);
                     FileSystem::WriteToOpenFile(buffer, strlen(buffer));
                     sprintf(buffer, "\tPos\t\t: %d, %d\r\n",
-                            static_cast<int>(entry->position[0]), static_cast<int>(entry->position[1]));
+                            static_cast<int>(entry->position.x), static_cast<int>(entry->position.y));
                     FileSystem::WriteToOpenFile(buffer, strlen(buffer));
                     sprintf(buffer, "\tCount\t: %d\r\n", entry->count);
                     FileSystem::WriteToOpenFile(buffer, strlen(buffer));
@@ -337,8 +337,8 @@ int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode)
                         ++comma;
                         HintTrimWhitespace(value);
                         HintTrimWhitespace(comma);
-                        entry->position[0] = static_cast<float>(atol(value));
-                        entry->position[1] = static_cast<float>(atol(comma));
+                        entry->position.x = static_cast<float>(atol(value));
+                        entry->position.y = static_cast<float>(atol(comma));
                     }
                 }
                 else if (strcmp(key, "Text") == 0)
@@ -416,4 +416,165 @@ int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode)
     free(value);
     free(file);
     return 0;
+}
+
+
+// Target419120. Natural member boundary; no forced private EAX/stack ABI.
+#include "AnmManager.hpp"
+#include "GameEffectUpdate.hpp"
+#include "Player.hpp"
+#include <math.h>
+
+// Canonical shared storage. In this owner these are stage index and base match.
+extern int g_GameStartupMode;          // 0x474C7C
+extern int g_GameFrameRestorePending;  // 0x474C84
+
+int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
+{
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    for (HintLinkView *node = first; node != 0; )
+    {
+        HintLinkView *next = node->next;
+        HintEntryView *entry = node->entry;
+        if (entry->base == 0 || entry->base == g_GameFrameRestorePending)
+            --entry->count;
+        if (entry->count > 0)
+        {
+            node = next;
+            continue;
+        }
+        int slot = nextVmSlot;
+        if (vmIds[slot].value != 0)
+            manager->MarkVmForDeletion(vmIds[slot]);
+        vmIds[slot].value = 0;
+        entry->position.y = static_cast<float>(
+            static_cast<double>(entry->scale) * 8.0 + entry->position.y);
+        // Ordered comparisons intentionally route NaN to the final scale case.
+        bool small = entry->scale <= 1.0f;
+        bool medium = !small && entry->scale <= 2.0f;
+        AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
+            nextVmSlot + (small ? 2 : 12), &entry->position);
+        slot = nextVmSlot;
+        vmIds[slot] = created;
+        manager = g_AnmRenderManagerView;
+        AnmVmView *vm = manager->FindVm(vmIds[slot]);
+        if (vm == 0)
+            vmIds[slot].value = 0;
+        // Native continues to dereference vm even after failed resolution.
+        AnmFloat2View initial, final;
+        if (small)
+        {
+            vm->glyphWidth = vm->glyphHeight = 15;
+            initial.x = static_cast<float>(static_cast<double>(entry->scale) * 1.5);
+            final.x = final.y = entry->scale;
+        }
+        else
+        {
+            unsigned char glyphSize = 30;
+            if (medium)
+                glyphSize = static_cast<unsigned char>(
+                    static_cast<int>(static_cast<double>(entry->scale) * 15.0));
+            vm->glyphWidth = vm->glyphHeight = glyphSize;
+            initial.x = static_cast<float>(static_cast<double>(entry->scale) * 0.75);
+            final.x = final.y = static_cast<float>(static_cast<double>(entry->scale) * 0.5);
+        }
+        initial.y = 0.0f;
+        vm->StartScaleInterpolation(&initial, &final, 8, 4);
+        if (medium)
+            manager = g_AnmRenderManagerView;
+        slot = nextVmSlot;
+        if (entry->alignment >= 0 && entry->alignment <= 2)
+        {
+            cachedPositions[slot][0] = vm->positionOffset.x;
+            cachedPositions[slot][1] = vm->positionOffset.y;
+            cachedPositions[slot][2] = vm->positionOffset.z;
+            cachedWidths[slot] = entry->textWidth;
+            if (entry->alignment == 2)
+            {
+                cachedPositions[slot][0] = static_cast<float>(
+                    static_cast<double>(cachedPositions[slot][0]) - entry->textWidth * 0.5);
+                manager->DrawTextRight(vm, 0x00FFFFFF, entry->text);
+                vm->flags35C = (vm->flags35C & ~0x00040000) | 0x00080000;
+            }
+            else if (entry->alignment == 1)
+            {
+                cachedPositions[slot][0] = static_cast<float>(
+                    static_cast<double>(cachedPositions[slot][0]) + entry->textWidth * 0.5);
+                manager->DrawTextLeft(vm, 0x00FFFFFF, entry->text);
+                vm->flags35C = (vm->flags35C & ~0x00080000) | 0x00040000;
+            }
+            else
+                manager->DrawTextCentered(vm, 0x00FFFFFF, entry->text);
+            manager = g_AnmRenderManagerView;
+        }
+        vm->primaryColor.blue = entry->blue;
+        vm->primaryColor.green = entry->green;
+        vm->primaryColor.red = entry->red;
+        vm->primaryColor.alpha = 0;
+        vm->intVar0 = entry->time;
+        vm->intVar1 = entry->alpha;
+        nextVmSlot = (nextVmSlot + 1) % 10;
+        if (entry->link.next != 0)
+            entry->link.next->previous = entry->link.previous;
+        if (entry->link.previous != 0)
+            entry->link.previous->next = entry->link.next;
+        entry->link.next = 0;
+        entry->link.previous = 0;
+        if (freeEntries != 0)
+        {
+            delete entry;
+            manager = g_AnmRenderManagerView;
+        }
+        node = next;
+    }
+    return 0;
+}
+
+// Target419650. Widened expressions represent retained x87 temporaries; the
+// native control word is unknown. This is not a universal host/native FP claim.
+int HintOwnerView::Update()
+{
+    if (currentBase != g_GameFrameRestorePending)
+        counter14 = 0;
+    ConsumeEntries(loadedStageLists[g_GameStartupMode].next, 1);
+    const double playerX = static_cast<double>(g_Player->drawPosition.x) + 224.0;
+    const double playerY = static_cast<double>(g_Player->drawPosition.y) + 16.0;
+    for (int slot = 0; slot < 10; ++slot)
+    {
+        if (vmIds[slot].value == 0)
+            continue;
+        AnmVmView *vm = g_AnmRenderManagerView->FindVm(vmIds[slot]);
+        if (vm == 0)
+        {
+            vmIds[slot].value = 0;
+            continue;
+        }
+        if (vm->primaryAlphaInterpolation.duration != 0)
+            continue;
+        const double dx = fabs(playerX - cachedPositions[slot][0]);
+        const float dy = static_cast<float>(fabs(playerY - cachedPositions[slot][1]));
+        const double h = static_cast<double>(vm->spriteHeight) * vm->scaleY * 0.5;
+        const float w = static_cast<float>(static_cast<double>(cachedWidths[slot]) * 0.5);
+        const float outerW = static_cast<float>(static_cast<double>(w) + 32.0);
+        const int alpha = vm->intVar1;
+        if (dx < w && dy < h)
+            vm->primaryColor.alpha = static_cast<unsigned char>(alpha) >> 2;
+        else if (dx < outerW && dy < h)
+        {
+            const int q = (3 * alpha) / 4;
+            vm->primaryColor.alpha = static_cast<unsigned char>(static_cast<int>(
+                alpha - (outerW - dx) * q * 0.03125));
+        }
+        else if (dx < w && dy < h + 32.0)
+        {
+            const int q = (3 * alpha) / 4;
+            vm->primaryColor.alpha = static_cast<unsigned char>(static_cast<int>(
+                alpha - ((h + 32.0) - dy) * q * 0.03125));
+        }
+        else
+            vm->primaryColor.alpha = static_cast<unsigned char>(alpha);
+    }
+    ++counter10;
+    ++counter14;
+    return 1;
 }

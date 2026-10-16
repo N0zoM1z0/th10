@@ -950,3 +950,5 @@ HintReadLine,0x00419F40,function
 HintSplitLine,0x0041A050,function
 HintTrimWhitespace,0x0041A0A0,function
 HintAppendLink,0x0041AB10,function
+HintOwnerView::ConsumeEntries,0x00419120,function
+HintOwnerView::Update,0x00419650,function

@@ -1,3 +1,4 @@
+#include "GameEffectUpdate.hpp"
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
@@ -87,12 +88,6 @@ struct GameStageUpdateView
     u8 unknown018[0x0c];
     int musicIndex;
 };
-struct GameEffectUpdateView
-{
-    u8 unknown0000[0x89a0];
-    int firstVmId;
-    int secondVmId;
-};
 struct GameAdditionalChainView
 {
     GameChainOwnerView chains;
@@ -125,7 +120,6 @@ extern GameChainOwnerView *g_GameOwner477814;
 extern EnemyManagerView *g_EnemyManager;
 extern GameGuiUpdateView *g_GameGuiUpdate;              // 0x47770C
 extern GameStageUpdateView *g_GameStageUpdate;          // 0x477848
-extern GameEffectUpdateView *g_GameEffectUpdate;        // 0x4776E0
 extern GameStatisticsRowView *g_GameStatisticsRows;     // 0x47783C
 extern unsigned char g_GameWorkerState[];              // 0x492254
 extern unsigned char g_GameMusicState[];               // 0x492590

@@ -1,8 +1,9 @@
 #pragma once
 #include <stddef.h>
+#include "AnmManager.hpp"
 
 // Descriptive reconstruction views, not recovered original class names.
-// Only fields established by the exporter, loader and constructor are named.
+// Fields are established by the exporter, loader, constructor and frame owners.
 struct HintEntryView;
 struct HintLinkView
 {
@@ -13,7 +14,7 @@ struct HintLinkView
 struct HintEntryView
 {
     HintEntryView(); // Constructor-shaped target 0x00418D00; origin remains indeterminate.
-    float position[3];
+    AnmFloat3View position;
     HintLinkView link;
     unsigned char unknown18[4];
     // Storage through +0x5F includes constructor-zeroed bytes after the 65-byte copy.
@@ -31,23 +32,43 @@ struct HintEntryView
 };
 struct HintOwnerView
 {
-    unsigned char unknown00[0x18];
+    int ConsumeEntries(HintLinkView *first, int freeEntries);
+    int Update();
+    unsigned char unknown00[0x10];
+    int counter10;
+    int counter14;
     HintLinkView loadedStageLists[8]; // Loader appends the same entry type here.
     HintLinkView exportStageLists[8];
-    unsigned char unknownD8[0xD0];
+    int currentBase;
+    AnmVmIdView vmIds[10];
+    float cachedPositions[10][3];
+    float cachedWidths[10];
+    int nextVmSlot;
 };
 #if defined(_M_IX86)
 typedef char HintEntryLayoutCheck[
     sizeof(HintEntryView) == 0x88 &&
+    offsetof(HintEntryView, position) == 0x00 &&
     offsetof(HintEntryView, link) == 0x0C &&
     offsetof(HintEntryView, text) == 0x1C &&
     offsetof(HintEntryView, count) == 0x60 &&
+    offsetof(HintEntryView, alignment) == 0x64 &&
+    offsetof(HintEntryView, base) == 0x68 &&
+    offsetof(HintEntryView, time) == 0x6C &&
     offsetof(HintEntryView, remaining) == 0x70 &&
     offsetof(HintEntryView, scale) == 0x7C &&
     offsetof(HintEntryView, textWidth) == 0x80 &&
-    offsetof(HintEntryView, blue) == 0x84 ? 1 : -1];
+    offsetof(HintEntryView, blue) == 0x84 &&
+    offsetof(HintEntryView, alpha) == 0x87 ? 1 : -1];
 typedef char HintOwnerLayoutCheck[
     sizeof(HintOwnerView) == 0x1A8 &&
+    offsetof(HintOwnerView, counter10) == 0x10 &&
+    offsetof(HintOwnerView, counter14) == 0x14 &&
+    offsetof(HintOwnerView, currentBase) == 0xD8 &&
+    offsetof(HintOwnerView, vmIds) == 0xDC &&
+    offsetof(HintOwnerView, cachedPositions) == 0x104 &&
+    offsetof(HintOwnerView, cachedWidths) == 0x17C &&
+    offsetof(HintOwnerView, nextVmSlot) == 0x1A4 &&
     offsetof(HintOwnerView, loadedStageLists) == 0x18 &&
     offsetof(HintOwnerView, exportStageLists) == 0x78 &&
     sizeof(HintLinkView) == 12 ? 1 : -1];
