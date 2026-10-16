@@ -1408,3 +1408,15 @@ the existing KeyConfig unit. Original origin remains indeterminate; do not
 count these bytes as newly confirmed authored game code. Fresh Factory
 acceptance is required after this checkpoint. See the knowledge note for
 write-set, field-layout evidence, regression scope and host-fixture limits.
+
+
+## Stage-HUD semantic checkpoint (2026-10-16)
+
+The stage-7 gauge selector and countdown sound IDs now agree with native
+branches. Counter, message and post-countdown boss lifetimes follow target
+load order; source-extracted UBSan fixtures distinguish these contracts without
+claiming synthetic mutations are reachable gameplay bugs. HUD remains nonexact
+(682/3,836 in the fresh direct-entry diagnostic). Major boss-gauge, message
+cleanup and spell phases are still outlined; any later lexical recovery must
+be one bounded native phase with its own source-extracted tests and replay.
+Do not change canonical wrapper pragmas or sweep compiler profiles.

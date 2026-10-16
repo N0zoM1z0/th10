@@ -1,4 +1,5 @@
 #include "GuiScore.hpp"
+#include "EnemySoundQueue.hpp"
 #include "Main.hpp"
 #include "Gui.hpp"
 
@@ -372,7 +373,7 @@ static int BossGaugeScript()
         script = 0x8c;
         break;
     case 7:
-        script = g_GuiMessageState > 0x17 ? 0x8e : 0x8d;
+        script = g_GuiMessageState > 0x17 ? 0x8d : 0x8c;
         break;
     }
     return script;
@@ -466,12 +467,12 @@ static void FinishMessage(GuiView *gui)
 
 static void UpdateSpellAndBossPosition(GuiView *gui)
 {
-    GuiEnemyView *boss = g_GuiEnemyManager == NULL
-        ? NULL : g_GuiEnemyManager->activeBoss;
-    if (boss == NULL)
+    GuiEnemyManagerView *manager = g_GuiEnemyManager;
+    if (manager == NULL)
         return;
 
-    if (gui->spellSeconds >= 0 && gui->message == NULL)
+    if (gui->spellSeconds >= 0 && manager->activeBoss != NULL &&
+        gui->message == NULL)
     {
         if (gui->spellSeconds < gui->previousSpellSeconds)
         {
@@ -479,13 +480,15 @@ static void UpdateSpellAndBossPosition(GuiView *gui)
             {
                 gui->displayVms4[0].pendingInterrupt = 9;
                 gui->displayVms4[1].pendingInterrupt = 9;
-                GuiPlaySound(0);
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                    QueueSoundSample(0x24, 0);
             }
             else if (gui->spellSeconds < 11)
             {
                 gui->displayVms4[0].pendingInterrupt = 8;
                 gui->displayVms4[1].pendingInterrupt = 8;
-                GuiPlaySound(0);
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                    QueueSoundSample(0x1b, 0);
             }
         }
         else if (gui->spellSeconds > gui->previousSpellSeconds)
@@ -500,8 +503,15 @@ static void UpdateSpellAndBossPosition(GuiView *gui)
             gui->frontAnm->SetSprite(
                 &gui->displayVms4[1], gui->spellSeconds % 10 + 8);
         }
+        manager = g_GuiEnemyManager;
         gui->previousSpellSeconds = gui->spellSeconds;
     }
+
+    // Select the live boss after countdown calls, then retain it across the
+    // boss marker's ExecuteScript, matching the target's ESI lifetime.
+    GuiEnemyView *boss = manager->activeBoss;
+    if (boss == NULL)
+        return;
 
     if ((boss->flags & 0x11) != 0)
         return;
@@ -826,8 +836,9 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
         }
     }
 
-    AnmRenderManagerView::ExecuteScript(&gui->displayVms5[0]);
+    // The target latches the counter before executing the first panel VM.
     int value = g_GuiCounter4C4C;
+    AnmRenderManagerView::ExecuteScript(&gui->displayVms5[0]);
     int divisor = 10000;
     for (i = 1; i < 6; ++i)
     {
@@ -842,10 +853,12 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
 
     UpdateBossGauge(gui);
 
-    if (gui->message != NULL)
+    GuiMessageVmView *message = gui->message;
+    if (message != NULL)
     {
-        if (GuiMessageVmView::Run(gui->message) == 0)
-            gui->message->lifetimeTimer.Tick();
+        // Success ticks the entry message; failure resolves the current owner.
+        if (GuiMessageVmView::Run(message) == 0)
+            message->lifetimeTimer.Tick();
         else
             FinishMessage(gui);
     }

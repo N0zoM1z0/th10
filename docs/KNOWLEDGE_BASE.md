@@ -1929,3 +1929,62 @@ Bounded primary-source regression: all14 canonical units whose primary source
 is FrontEnd.cpp pass, totaling7,186 bytes including the new93-byte dependency.
 This is not a replay of every transitive repository unit or runtime closure.
 The complete public CI and source-extracted checks pass at this checkpoint.
+
+
+## 2026-10-16 Stage-HUD selector, sounds and receiver lifetimes
+
+The 3,836-byte UpdateStageElements owner has two concrete input corrections.
+The seven-way table at4157E0 maps stage7 to414E71: signed state CMP24/SETGE
+plus8C chooses script8C below24 and8D otherwise. The previous source used
+8D/8E. The selector fixture extracts the maintained helper and checks96
+stage/state combinations, including signed endpoints and out-of-range stages;
+three compiling mutations are rejected by explicit functional diagnostics.
+
+Countdown decreases to0..5 set both pending interrupts9, then queue sound24
+(sample0) through owner492590 at415501. Decreases to6..10 set interrupts8 and
+queue sound1B at415534. At11 and above no sound is queued; increasing seconds
+sets interrupts7, while unchanged seconds do not update sprites or sound.
+The old GuiPlaySound(0) placeholder lost this identity. HUD now uses the
+existing EnemySoundQueueView::QueueSoundSample contract and shared sound owner;
+the unrelated message WAIT placeholder is unchanged.
+
+Three native lifetime contracts are preserved without claiming a demonstrated
+reachable gameplay bug from synthetic callbacks:
+- Counter474C4C is captured at414A60 before ExecuteScript at414A72. The five
+  digit calculations consume that retained value, not a post-call global read.
+- Message is captured at41513C. Run success ticks this same object at415154
+  onward; failure deliberately reloads gui->message at4151A5 before cleanup.
+- Enemy manager is initially selected at41549A. Countdown gates require a
+  live boss and absent message; after sprite calls,4155AE reloads the manager,
+  then4155BA selects the boss retained across marker execution4156D5. The
+  player is read after that execution. Existing null/valid-state assumptions
+  are preserved, with no invented post-callback null-manager guard.
+
+Native SetSprite and QueueSoundSample are call-free. Their maintained writes
+are to supplied VM fields and sound queue state; no real manager/counter
+replacement was established. Run still has unresolved transition/text/effect
+seams. Tests deliberately vary these identities to distinguish source ordering,
+not to establish arbitrary callbacks as valid game executions. The full-source
+HUD and spell helper fixture also checks fresh sprite resources/seconds,
+message replacement/nulling on both outcomes, countdown thresholds/gates,
+and boss retention. Nine compiling mutations require normal exit1 plus a
+CHECK diagnostic; crashes and UBSan failures are not accepted as detection.
+Both test suites compile under UBSan and preserve explicit scope limits.
+
+A first fresh diagnostic uses the maintained UpdateStageElements entry with
+Gui primary and actual ANM/create/ID/RNG/sound/Main definitions under the
+existing GUI LTCG profile. PE5fa379aa59af8ce9e137fa643bde3bc33674cc66641d988e22077cc9f2210c0f
+emits HUD682/3836 and message Run1296/4480, both nonexact. Major source helper
+boundaries still remain emitted where target phases are lexical. This is a
+baseline for bounded ownership work, not a flag/TU sweep or exact claim.
+The external raw callback415AE0 is not newly reconstructed by this diagnostic.
+
+The malformed functions.csv owner field at4496A0 is repaired to authored,
+as already independently recorded in function-origins.csv. Progress derives
+origin from that authoritative table, so this fixes metadata consistency
+without changing any counts or bytes. No origin classification is promoted.
+
+Focused canonical regressions pass four existing units totaling153 bytes:
+GuiScore::Add46, the two ID sprite wrappers36+34, and Main next-mode setter37.
+This is a bounded dependency check, not all transitive units or a new exact
+claim. Full public CI and both source-extracted UBSan fixtures pass.
