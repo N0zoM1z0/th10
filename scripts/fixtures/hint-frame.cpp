@@ -29,7 +29,10 @@ union AnmColorView {
     struct { unsigned char blue, green, red, alpha; };
 };
 struct AnmVmAlphaInterpolationView { int duration; };
+@ANM_LAYER_NODE@
 struct AnmVmView {
+    int id;
+    AnmVmLayerNodeView layerNode;
     float scaleX, scaleY, spriteWidth, spriteHeight;
     AnmVmAlphaInterpolationView primaryAlphaInterpolation;
     AnmColorView primaryColor;
@@ -45,7 +48,7 @@ struct AnmLoadedView {
 };
 struct AnmRenderManagerView {
     AnmVmView *FindVm(AnmVmIdView id);
-    void MarkVmForDeletion(AnmVmIdView id);
+    AnmVmLayerNodeView *primaryVmListHead, *secondaryVmListHead;
     void DrawTextLeft(AnmVmView *vm, unsigned int color, const char *format, ...);
     void DrawTextRight(AnmVmView *vm, unsigned int color, const char *format, ...);
     void DrawTextCentered(AnmVmView *vm, unsigned int color, const char *format, ...);
@@ -63,7 +66,7 @@ GameEffectUpdateView *g_GameEffectUpdate;
 int g_GameStartupMode, g_GameFrameRestorePending;
 
 namespace fixture {
-enum Kind { Mark, Create, Lookup, Scale, TextLeft, TextRight, TextCenter, Delete };
+enum Kind { Create, Lookup, Scale, TextLeft, TextRight, TextCenter, Delete };
 struct Event {
     Kind kind;
     int value;
@@ -84,7 +87,7 @@ struct EntryRecord {
 };
 EntryRecord records[128];
 int recordCount;
-struct VmRecord { int id; AnmVmView vm; };
+struct VmRecord { int id; AnmVmView vm; AnmVmLayerNodeView listNodes[6]; };
 VmRecord vms[128];
 int vmCount, nextId;
 HintOwnerView *owner;
@@ -101,6 +104,14 @@ int afterCreateSlot, afterScaleSlot, afterTextSlot;
 AnmRenderManagerView *afterCreateManager, *afterScaleManager, *afterTextManager, *afterDeleteManager;
 bool changeScaleOnCreate;
 float scaleAfterCreate;
+AnmVmView *watchedVms[5];
+unsigned int watchedFlags[5];
+int watchedCount;
+void WatchFlags(AnmVmView &vm, unsigned int expected) {
+    CHECK(watchedCount < 5);
+    watchedVms[watchedCount] = &vm;
+    watchedFlags[watchedCount++] = expected;
+}
 
 Event &Record(Kind kind, int value = 0, const void *pointer = 0, const void *receiver = 0) {
     CHECK(eventCount < 1024);
@@ -128,7 +139,14 @@ AnmVmView &AddVm(int id) {
     CHECK(vmCount < 128);
     VmRecord &record = vms[vmCount++];
     std::memset(&record, 0, sizeof(record));
-    record.id = id;
+    record.id = record.vm.id = id;
+    record.vm.layerNode.owner = &record.vm;
+    for (int i = 0; i < 6; ++i) {
+        AnmRenderManagerView *target = i == 0 ? &manager : &alternateManagers[i - 1];
+        record.listNodes[i].owner = &record.vm;
+        record.listNodes[i].next = target->primaryVmListHead;
+        target->primaryVmListHead = &record.listNodes[i];
+    }
     record.vm.scaleX = record.vm.scaleY = 1;
     record.vm.spriteWidth = record.vm.spriteHeight = 20;
     record.vm.primaryColor.alpha = 171;
@@ -148,7 +166,10 @@ void Reset(HintOwnerView &value) {
     // Deleted objects are represented only by a live snapshot/record index.
     // Release entries retained by freeEntries==0 using matching ordinary delete.
     for (int i = 0; i < recordCount; ++i) if (!records[i].deleted) delete records[i].pointer;
+    watchedCount = 0;
     recordCount = vmCount = eventCount = 0;
+    manager = AnmRenderManagerView{};
+    for (auto &alternate : alternateManagers) alternate = AnmRenderManagerView{};
     value.~HintOwnerView();
     new (&value) HintOwnerView;
     owner = &value;
@@ -228,6 +249,8 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant0(int scriptIndex, const AnmFlo
     using namespace fixture;
     CHECK(this == &loaded);
     if (mustBeClearedSlot >= 0) CHECK(owner->vmIds[mustBeClearedSlot].value == 0);
+    for (int i = 0; i < watchedCount; ++i)
+        CHECK(watchedVms[i]->flags35C == watchedFlags[i]);
     Event &event = Record(Create, scriptIndex, position, this); event.position = *position;
     AnmVmView &vm = AddVm(nextId);
     vm.position = AnmFloat3View{-900, -800, -700};
@@ -244,13 +267,7 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant0(int scriptIndex, const AnmFlo
     }
     return AnmVmIdView(nextId++);
 }
-AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id) {
-    fixture::Record(fixture::Lookup, id.value, 0, this);
-    return fixture::Vm(id.value);
-}
-void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id) {
-    fixture::Record(fixture::Mark, id.value, 0, this);
-}
+@ANM_FIND_VM@
 void AnmVmView::StartScaleInterpolation(const AnmFloat2View *initial,
     const AnmFloat2View *final, int duration, unsigned char mode) {
     fixture::Event &event = fixture::Record(fixture::Scale, 0, this);
@@ -281,6 +298,56 @@ void AnmRenderManagerView::DrawTextCentered(AnmVmView *vm, unsigned int color, c
 
 using namespace fixture;
 
+// Observe owned marking before creation can hide an omitted write. Every node,
+// including the nonroot predecessor and deeper descendant, is a live object.
+static void OldVmMarking() {
+    HintOwnerView owner;
+    for (int scenario = 0; scenario < 7; ++scenario) {
+        Reset(owner);
+        initialFlags = 0x81234567u; // The deletion bit starts clear.
+        AnmVmView &old = AddVm(87), &child1 = AddVm(88), &child2 = AddVm(89);
+        AnmVmView &deeper = AddVm(90), &duplicate = AddVm(87);
+        old.flags35C = 0x00080001u;
+        child1.flags35C = 0x00040002u;
+        child2.flags35C = scenario == 6 ? 0x84000004u : 0x80000004u;
+        // Independent list nodes allow duplicate-ID priority and child ownership
+        // to be tested without overloading the same node into incompatible chains.
+        AnmVmLayerNodeView primary = {&old, 0, 0};
+        AnmVmLayerNodeView secondary = {&duplicate, 0, 0};
+        manager.primaryVmListHead = scenario == 5 ? 0 : &primary;
+        manager.secondaryVmListHead = scenario == 5 ? &primary : &secondary;
+        if (scenario == 3 || scenario == 4 || scenario == 6) {
+            old.layerNode.next = &child1.layerNode;
+            child1.layerNode.next = &child2.layerNode;
+            child1.layerNode.previous = &old.layerNode;
+            child2.layerNode.previous = &child1.layerNode;
+            // The unrelated VM remains outside the flat child chain.
+            child2.layerNode.next = 0;
+            deeper.layerNode.previous = &child1.layerNode;
+        }
+        if (scenario == 4) old.layerNode.previous = &deeper.layerNode;
+        const bool resolved = scenario >= 2;
+        WatchFlags(old, old.flags35C | (resolved ? 0x04000000u : 0));
+        WatchFlags(child1, child1.flags35C | ((scenario == 3 || scenario == 6) ? 0x04000000u : 0));
+        WatchFlags(child2, child2.flags35C | ((scenario == 3 || scenario == 6) ? 0x04000000u : 0));
+        WatchFlags(deeper, deeper.flags35C);
+        WatchFlags(duplicate, duplicate.flags35C);
+        owner.nextVmSlot = 4;
+        owner.vmIds[4] = AnmVmIdView(scenario == 0 ? 0 : scenario == 1 ? 999 : 87);
+        mustBeClearedSlot = 4;
+        HintEntryView *entry = Entry(1);
+        Append(owner.loadedStageLists[0], entry);
+        CHECK(owner.ConsumeEntries(owner.loadedStageLists[0].next, 0) == 0);
+        CHECK(Count(Lookup) == (scenario == 0 ? 1 : 2));
+        if (scenario != 0) {
+            CHECK(Nth(Lookup).value == (scenario == 1 ? 999 : 87));
+            CHECK(Nth(Lookup).receiver == &manager);
+            CHECK(Index(Lookup) < Index(Create));
+        }
+        CHECK(owner.vmIds[4].value == 100 && owner.nextVmSlot == 5);
+    }
+}
+
 static void ConsumeEligibilityAndLinks() {
     HintOwnerView owner;
     Reset(owner);
@@ -296,7 +363,7 @@ static void ConsumeEligibilityAndLinks() {
     CHECK(due->count == 0); CHECK(held->count == 1); CHECK(mismatch->count == 1);
     CHECK(already->count == 0); CHECK(negative->count == -3);
     CHECK(Count(Create) == 3); CHECK(Count(Delete) == 0);
-    CHECK(Count(Mark) == 0);
+    CHECK(Count(Lookup) == Count(Create));
     CHECK(head.next == &held->link); CHECK(held->link.previous == &head);
     CHECK(held->link.next == &mismatch->link); CHECK(mismatch->link.previous == &held->link);
     CHECK(mismatch->link.next == 0);
@@ -342,10 +409,10 @@ static void ConsumeScalesAndAlignment() {
         const float expectedY = static_cast<float>(5.0L + static_cast<long double>(scale) * 8.0L);
         useCreatedOffset = true; createdOffset = AnmFloat3View{101, 202, 303};
         CHECK(owner.ConsumeEntries(owner.loadedStageLists[0].next, 0) == 0);
-        CHECK(Count(Mark) == 1 && Nth(Mark).value == 87);
-        CHECK(Index(Mark) < Index(Create));
-        CHECK(Index(Create) < Index(Lookup));
-        CHECK(Index(Lookup) < Index(Scale));
+        CHECK(Count(Lookup) == 2 && Nth(Lookup).value == 87);
+        CHECK(Index(Lookup) < Index(Create));
+        CHECK(Index(Create) < Index(Lookup, 1));
+        CHECK(Index(Lookup, 1) < Index(Scale));
         CHECK(Count(Create) == 1 && Count(Scale) == 1);
         CHECK(EqualFloat(Nth(Create).position.y, expectedY));
         CHECK(EqualFloat(entry->position.y, expectedY));
@@ -502,7 +569,7 @@ static void CallbackReloadContracts() {
     CHECK(Nth(Create).value == 3);
     CHECK(Nth(Create).pointer == reinterpret_cast<std::uintptr_t>(&entry->position));
     CHECK(owner.vmIds[1].value == 0 && owner.vmIds[2].value == 100);
-    CHECK(Nth(Lookup).receiver == &alternateManagers[0]);
+    CHECK(Nth(Lookup, 1).receiver == &alternateManagers[0]);
     CHECK(owner.cachedWidths[2] == -4002 && owner.cachedWidths[3] == 40);
     CHECK(owner.nextVmSlot == 5);
 
@@ -533,8 +600,8 @@ static void CallbackReloadContracts() {
     owner.vmIds[0] = AnmVmIdView(80); owner.vmIds[1] = AnmVmIdView(81);
     afterTextManager = &alternateManagers[2];
     CHECK(owner.ConsumeEntries(owner.loadedStageLists[0].next, 0) == 0);
-    CHECK(Nth(Mark, 0).receiver == &manager);
-    CHECK(Nth(Mark, 1).receiver == &alternateManagers[2]);
+    CHECK(Nth(Lookup, 0).receiver == &manager);
+    CHECK(Nth(Lookup, 2).receiver == &alternateManagers[2]);
 
     Reset(owner);
     first = Entry(); second = Entry(); first->alignment = second->alignment = 7;
@@ -542,8 +609,8 @@ static void CallbackReloadContracts() {
     owner.vmIds[0] = AnmVmIdView(80); owner.vmIds[1] = AnmVmIdView(81);
     allowDelete = true; afterDeleteManager = &alternateManagers[3];
     CHECK(owner.ConsumeEntries(owner.loadedStageLists[0].next, 1) == 0);
-    CHECK(Nth(Mark, 0).receiver == &manager);
-    CHECK(Nth(Mark, 1).receiver == &alternateManagers[3]);
+    CHECK(Nth(Lookup, 0).receiver == &manager);
+    CHECK(Nth(Lookup, 2).receiver == &alternateManagers[3]);
 }
 
 static void ZeroIdGates() {
@@ -561,6 +628,7 @@ static void ZeroIdGates() {
 
 static void PrecisionWitnesses();
 int main() {
+    OldVmMarking();
     ConsumeEligibilityAndLinks();
     ConsumeScalesAndAlignment();
     ZeroIdGates();

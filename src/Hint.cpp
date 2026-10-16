@@ -545,43 +545,82 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
         }
         int slot = nextVmSlot;
         if (vmIds[slot].value != 0)
-            manager->MarkVmForDeletion(vmIds[slot]);
+        {
+            AnmVmView *oldVm = manager->FindVm(vmIds[slot]);
+            if (oldVm != NULL)
+            {
+                oldVm->flags35C |= 0x04000000u;
+                if (oldVm->layerNode.previous == NULL)
+                {
+                    AnmVmLayerNodeView *child = oldVm->layerNode.next;
+                    while (child != NULL)
+                    {
+                        static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;
+                        child = child->next;
+                    }
+                }
+            }
+        }
         vmIds[slot].value = 0;
         entry->position.y = static_cast<float>(
             static_cast<double>(entry->scale) * 8.0 + entry->position.y);
-        // Ordered comparisons intentionally route NaN to the final scale case.
-        bool smallScale = entry->scale <= 1.0f;
-        bool medium = !smallScale && entry->scale <= 2.0f;
-        AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
-            nextVmSlot + (smallScale ? 2 : 12), &entry->position);
-        slot = nextVmSlot;
-        vmIds[slot] = created;
-        manager = g_AnmRenderManagerView;
-        AnmVmView *vm = manager->FindVm(vmIds[slot]);
-        if (vm == 0)
-            vmIds[slot].value = 0;
-        // Native continues to dereference vm even after failed resolution.
-        AnmFloat2View initial, final;
-        if (smallScale)
+        // Ordered comparisons select the branch before creation; NaN takes else.
+        // Native continues into VM writes even after failed resolution.
+        AnmVmView *vm;
+        if (entry->scale <= 1.0f)
         {
+            AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
+                nextVmSlot + 2, &entry->position);
+            slot = nextVmSlot;
+            vmIds[slot] = created;
+            manager = g_AnmRenderManagerView;
+            vm = manager->FindVm(vmIds[slot]);
+            if (vm == 0)
+                vmIds[slot].value = 0;
             vm->glyphWidth = vm->glyphHeight = 15;
+            AnmFloat2View initial, final;
             initial.x = static_cast<float>(static_cast<double>(entry->scale) * 1.5);
+            initial.y = 0.0f;
             final.x = final.y = entry->scale;
+            vm->StartScaleInterpolation(&initial, &final, 8, 4);
+        }
+        else if (entry->scale <= 2.0f)
+        {
+            AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
+                nextVmSlot + 12, &entry->position);
+            slot = nextVmSlot;
+            vmIds[slot] = created;
+            manager = g_AnmRenderManagerView;
+            vm = manager->FindVm(vmIds[slot]);
+            if (vm == 0)
+                vmIds[slot].value = 0;
+            unsigned char glyphSize = static_cast<unsigned char>(
+                static_cast<int>(static_cast<double>(entry->scale) * 15.0));
+            vm->glyphWidth = vm->glyphHeight = glyphSize;
+            AnmFloat2View initial, final;
+            initial.x = static_cast<float>(static_cast<double>(entry->scale) * 0.75);
+            initial.y = 0.0f;
+            final.x = final.y = static_cast<float>(static_cast<double>(entry->scale) * 0.5);
+            vm->StartScaleInterpolation(&initial, &final, 8, 4);
+            manager = g_AnmRenderManagerView;
         }
         else
         {
-            unsigned char glyphSize = 30;
-            if (medium)
-                glyphSize = static_cast<unsigned char>(
-                    static_cast<int>(static_cast<double>(entry->scale) * 15.0));
-            vm->glyphWidth = vm->glyphHeight = glyphSize;
-            initial.x = static_cast<float>(static_cast<double>(entry->scale) * 0.75);
-            final.x = final.y = static_cast<float>(static_cast<double>(entry->scale) * 0.5);
-        }
-        initial.y = 0.0f;
-        vm->StartScaleInterpolation(&initial, &final, 8, 4);
-        if (medium)
+            AnmVmIdView created = g_GameEffectUpdate->loadedResource->CreateVmAtWorldVariant0(
+                nextVmSlot + 12, &entry->position);
+            slot = nextVmSlot;
+            vmIds[slot] = created;
             manager = g_AnmRenderManagerView;
+            vm = manager->FindVm(vmIds[slot]);
+            if (vm == 0)
+                vmIds[slot].value = 0;
+            vm->glyphWidth = vm->glyphHeight = 30;
+            AnmFloat2View initial, final;
+            initial.x = static_cast<float>(static_cast<double>(entry->scale) * 0.75);
+            initial.y = 0.0f;
+            final.x = final.y = static_cast<float>(static_cast<double>(entry->scale) * 0.5);
+            vm->StartScaleInterpolation(&initial, &final, 8, 4);
+        }
         slot = nextVmSlot;
         if (entry->alignment >= 0 && entry->alignment <= 2)
         {

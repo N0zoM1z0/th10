@@ -5,12 +5,14 @@ This host fixture proves bounded source contracts, not target execution, origina
 class layout on this host, native FP control word, registration ABI, or codegen
 identity. Hint.hpp, Chain.hpp, AnmVmId.hpp, GameEffectUpdate.hpp and the source tail
 starting at // Target419120. are copied into an isolated build, together with
-the source-extracted genuine entry and owner constructors. The only source
+the source-extracted genuine entry and owner constructors. The only Hint source
 substitution maps the single delete entry; dependency to a live observer that
 checks/snapshots the entry before invoking the matching real delete. Mutations
 apply first, so relocated deletion is observed at its relocated site. The
-actual AnmFloat3View declaration is extracted from the audited ANM header. Large
-ANM/Player headers are replaced by instrumented, exact called-signature seams.
+actual AnmFloat3View and AnmVmLayerNodeView declarations are extracted from the
+audited ANM header. FindVm is extracted from the maintained implementation with
+one lookup-entry observation inserted; its primary/secondary searches are real.
+Large ANM/Player headers are replaced by audited signature/field seams.
 
 No draw format is expanded; no failed-VM/null dereference, negative array index,
 overflowing count/3*A, or invalid float-to-integer conversion is executed. Every
@@ -33,7 +35,14 @@ DIAGNOSTIC = re.compile(r'HINT_FRAME_CHECK_FAILED line ([1-9][0-9]*): ([^\r\n]+)
 
 
 # Each mutation must fail its intended contract, not merely any assertion.
-EXPECTED_FAILURES = {'zero-id-mark-not-skipped': 'Count(Mark) == 0',
+EXPECTED_FAILURES = {
+ 'old-vm-self-flag-omitted': 'watchedVms[i]->flags35C == watchedFlags[i]',
+ 'old-vm-nonroot-children-marked': 'watchedVms[i]->flags35C == watchedFlags[i]',
+ 'old-vm-root-gate-reversed': 'watchedVms[i]->flags35C == watchedFlags[i]',
+ 'old-vm-child-flag-omitted': 'watchedVms[i]->flags35C == watchedFlags[i]',
+ 'old-vm-only-first-child': 'watchedVms[i]->flags35C == watchedFlags[i]',
+ 'old-vm-clobbered-flags': 'watchedVms[i]->flags35C == watchedFlags[i]',
+'zero-id-mark-not-skipped': 'Count(Lookup) == (scenario == 0 ? 1 : 2)',
  'zero-id-lookup-not-skipped': 'Count(Lookup) == 0',
  'delete-before-unlink': 'entry->link.next == 0',
  'unsigned-slot-modulo': 'owner.nextVmSlot == -1',
@@ -41,13 +50,13 @@ EXPECTED_FAILURES = {'zero-id-mark-not-skipped': 'Count(Mark) == 0',
  'cached-slot-after-scale': 'owner.cachedWidths[2] == -4002 && owner.cachedWidths[3] == 40',
  'cached-slot-after-text': 'owner.nextVmSlot == 5',
  'medium-recomputed-after-create': 'Vm(100)->glyphWidth == expectedGlyphs[i]',
- 'manager-not-refreshed-after-create': 'Nth(Lookup).receiver == &alternateManagers[0]',
+ 'manager-not-refreshed-after-create': 'Nth(Lookup, 1).receiver == &alternateManagers[0]',
  'manager-always-refreshed-after-scale': 'Nth(TextCenter).receiver == (i == 1 ? &alternateManagers[1] : '
                                          '&manager)',
  'manager-not-refreshed-after-scale': 'Nth(TextCenter).receiver == (i == 1 ? &alternateManagers[1] : '
                                       '&manager)',
- 'manager-not-refreshed-after-text': 'Nth(Mark, 1).receiver == &alternateManagers[2]',
- 'manager-not-refreshed-after-delete': 'Nth(Mark, 1).receiver == &alternateManagers[3]',
+ 'manager-not-refreshed-after-text': 'Nth(Lookup, 2).receiver == &alternateManagers[2]',
+ 'manager-not-refreshed-after-delete': 'Nth(Lookup, 2).receiver == &alternateManagers[3]',
  'cached-next-not-used': 'held->count == 1',
  'old-id-not-cleared': 'owner->vmIds[mustBeClearedSlot].value == 0',
  'fade-rounded-instead-of-truncated': 'Vm(61)->primaryColor.alpha == test.expected255',
@@ -127,7 +136,7 @@ def audit_dependencies(root):
         'void StartScaleInterpolation(const AnmFloat2View *initial, const AnmFloat2View *final, int duration, unsigned char mode);',
         'AnmVmIdView CreateVmAtWorldVariant0(int scriptIndex, const AnmFloat3View *position);',
         'AnmVmView *FindVm(AnmVmIdView id);',
-        'void MarkVmForDeletion(AnmVmIdView id);',
+
         'void DrawTextLeft(AnmVmView *vm, unsigned int color, const char *format, ...);',
         'void DrawTextRight(AnmVmView *vm, unsigned int color, const char *format, ...);',
         'void DrawTextCentered(AnmVmView *vm, unsigned int color, const char *format, ...);',
@@ -145,7 +154,16 @@ def audit_dependencies(root):
     require('PlayerFloat3drawPosition;' in normalize(player), 'audited Player.drawPosition type changed')
     require('externPlayer*g_Player;' in normalize(player), 'audited Player global changed')
     require('externAnmRenderManagerView*g_AnmRenderManagerView;' in compact, 'audited ANM global changed')
-    return fixture.replace('@ANM_FLOAT3@', declaration(anm, 'struct AnmFloat3View\n'))
+    require('intid;' in normalize(declaration(anm, 'struct AnmVmView\n')), 'audited VM id changed')
+    require('AnmVmLayerNodeViewlayerNode;' in compact, 'audited layer node changed')
+    require('AnmVmLayerNodeView*primaryVmListHead;' in compact, 'audited primary list changed')
+    require('AnmVmLayerNodeView*secondaryVmListHead;' in compact, 'audited secondary list changed')
+    find = extract_function((canonical / 'AnmManager.cpp').read_text(),
+        'AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)')
+    find = find.replace('{', '{\n    fixture::Record(fixture::Lookup, id.value, 0, this);', 1)
+    return (fixture.replace('@ANM_FLOAT3@', declaration(anm, 'struct AnmFloat3View\n'))
+            .replace('@ANM_LAYER_NODE@', declaration(anm, 'struct AnmVmLayerNodeView\n'))
+            .replace('@ANM_FIND_VM@', find))
 
 
 def checked_mutant(name, source, needle, replacement, expected=1):
@@ -158,26 +176,32 @@ def mutations(source):
     # This list is intentionally lexical and fail-closed. Source evolution must
     # update a mutation explicitly, not silently turn it into an ineffective test.
     specs = [
-        ('zero-id-mark-not-skipped', 'if (vmIds[slot].value != 0)\n            manager->MarkVmForDeletion', 'manager->MarkVmForDeletion'),
+        ('old-vm-self-flag-omitted', 'oldVm->flags35C |= 0x04000000u;', 'oldVm->flags35C |= 0u;'),
+        ('old-vm-nonroot-children-marked', 'if (oldVm->layerNode.previous == NULL)', 'if (true)'),
+        ('old-vm-root-gate-reversed', 'oldVm->layerNode.previous == NULL', 'oldVm->layerNode.previous != NULL'),
+        ('old-vm-child-flag-omitted', 'static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;', 'static_cast<AnmVmView *>(child->owner)->flags35C |= 0u;'),
+        ('old-vm-only-first-child', 'child = child->next;', 'child = NULL;'),
+        ('old-vm-clobbered-flags', 'oldVm->flags35C |= 0x04000000u;', 'oldVm->flags35C = 0x04000000u;'),
+        ('zero-id-mark-not-skipped', 'if (vmIds[slot].value != 0)', 'if (true)'),
         ('zero-id-lookup-not-skipped', 'if (vmIds[slot].value == 0)\n            continue;', 'if (false)\n            continue;'),
         ('unsigned-slot-modulo', '(nextVmSlot + 1) % 10', 'static_cast<unsigned int>(nextVmSlot + 1) % 10'),
-        ('cached-slot-after-create', 'slot = nextVmSlot;\n        vmIds[slot] = created;', 'vmIds[slot] = created;'),
+        ('cached-slot-after-create', 'slot = nextVmSlot;\n            vmIds[slot] = created;', 'vmIds[slot] = created;', 3),
         ('cached-slot-after-scale', 'slot = nextVmSlot;\n        if (entry->alignment', 'if (entry->alignment'),
         ('cached-slot-after-text', '(nextVmSlot + 1) % 10', '(slot + 1) % 10'),
-        ('medium-recomputed-after-create', 'if (medium)\n                glyphSize', 'if (entry->scale <= 2.0f)\n                glyphSize'),
-        ('manager-not-refreshed-after-create', 'manager = g_AnmRenderManagerView;\n        AnmVmView *vm = manager->FindVm', 'AnmVmView *vm = manager->FindVm'),
-        ('manager-always-refreshed-after-scale', 'if (medium)\n            manager = g_AnmRenderManagerView;', 'manager = g_AnmRenderManagerView;'),
-        ('manager-not-refreshed-after-scale', 'if (medium)\n            manager = g_AnmRenderManagerView;', ''),
+        ('medium-recomputed-after-create', 'unsigned char glyphSize = static_cast<unsigned char>(\n                static_cast<int>(static_cast<double>(entry->scale) * 15.0));', 'unsigned char glyphSize = entry->scale <= 2.0f ? static_cast<unsigned char>(\n                static_cast<int>(static_cast<double>(entry->scale) * 15.0)) : 30;'),
+        ('manager-not-refreshed-after-create', 'manager = g_AnmRenderManagerView;\n            vm = manager->FindVm', 'vm = manager->FindVm', 3),
+        ('manager-always-refreshed-after-scale', '        slot = nextVmSlot;\n        if (entry->alignment', '        manager = g_AnmRenderManagerView;\n        slot = nextVmSlot;\n        if (entry->alignment'),
+        ('manager-not-refreshed-after-scale', 'vm->StartScaleInterpolation(&initial, &final, 8, 4);\n            manager = g_AnmRenderManagerView;', 'vm->StartScaleInterpolation(&initial, &final, 8, 4);'),
         ('manager-not-refreshed-after-text', '            manager = g_AnmRenderManagerView;\n        }\n        vm->primaryColor', '        }\n        vm->primaryColor'),
         ('manager-not-refreshed-after-delete', 'delete entry;\n            manager = g_AnmRenderManagerView;', 'delete entry;'),
         ('cached-next-not-used', '        node = next;\n    }\n    return 0;', '        node = entry->link.next;\n    }\n    return 0;'),
-        ('old-id-not-cleared', 'manager->MarkVmForDeletion(vmIds[slot]);\n        vmIds[slot].value = 0;', 'manager->MarkVmForDeletion(vmIds[slot]);'),
+        ('old-id-not-cleared', '        vmIds[slot].value = 0;\n        entry->position.y', '        entry->position.y'),
         ('fade-rounded-instead-of-truncated', 'static_cast<unsigned char>(static_cast<int>(\n                alpha -', 'static_cast<unsigned char>(std::lround(\n                alpha -', 2),
         ('interior-alpha-shift-before-byte', 'static_cast<unsigned char>(alpha) >> 2', 'static_cast<unsigned char>(alpha >> 2)'),
         ('unsigned-fade-quotient', '(3 * alpha) / 4', 'static_cast<unsigned int>(3 * alpha) / 4', 2),
-        ('reverse-scale-vectors', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&final, &initial, 8, 4)'),
-        ('wrong-small-script-base', '(smallScale ? 2 : 12)', '(smallScale ? 3 : 12)'),
-        ('wrong-large-script-base', '(smallScale ? 2 : 12)', '(smallScale ? 2 : 13)'),
+        ('reverse-scale-vectors', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&final, &initial, 8, 4)', 3),
+        ('wrong-small-script-base', 'nextVmSlot + 2, &entry->position', 'nextVmSlot + 3, &entry->position'),
+        ('wrong-large-script-base', 'nextVmSlot + 12, &entry->position', 'nextVmSlot + 13, &entry->position', 2),
         ('safe-format-substitution', 'vm, 0x00FFFFFF, entry->text)', 'vm, 0x00FFFFFF, "%s", entry->text)', 3),
         ('invalid-alignment-centered', 'entry->alignment >= 0 && entry->alignment <= 2', 'true'),
         ('base-gated-emission', 'if (entry->count > 0)', 'if (entry->count > 0 || (entry->base != 0 && entry->base != g_GameFrameRestorePending))'),
@@ -190,8 +214,8 @@ def mutations(source):
         ('wrong-width-cache', 'cachedWidths[slot] = entry->textWidth;', 'cachedWidths[slot] = entry->scale;'),
         ('skip-y-mutation', 'static_cast<double>(entry->scale) * 8.0 + entry->position.y', 'entry->position.y'),
         ('wrong-small-glyph', 'vm->glyphWidth = vm->glyphHeight = 15;', 'vm->glyphWidth = vm->glyphHeight = 14;'),
-        ('wrong-scale-duration', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&initial, &final, 7, 4)'),
-        ('wrong-scale-mode', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&initial, &final, 8, 3)'),
+        ('wrong-scale-duration', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&initial, &final, 7, 4)', 3),
+        ('wrong-scale-mode', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&initial, &final, 8, 3)', 3),
         ('wrong-time', 'vm->intVar0 = entry->time;', 'vm->intVar0 = entry->remaining;'),
         ('signed-entry-alpha', 'vm->intVar1 = entry->alpha;', 'vm->intVar1 = static_cast<signed char>(entry->alpha);'),
         ('missing-id-not-cleared', 'if (vm == 0)\n        {\n            vmIds[slot].value = 0;\n            continue;', 'if (vm == 0)\n        {\n            continue;'),
