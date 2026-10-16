@@ -532,12 +532,6 @@ static void SetChildSprite(
         vm->anmFile->SetSprite(vm, spriteIndex);
 }
 
-static void SetChildDrawEnabled(
-    FrontEndControllerView *controller, short scriptIndex, int enabled)
-{
-    FindChildVm(controller, scriptIndex)->drawEnabled = enabled != 0;
-}
-
 static void SetColorModeSprites(FrontEndControllerView *controller)
 {
     static const short sprites[3][2] = {
@@ -550,28 +544,31 @@ static void SetColorModeSprites(FrontEndControllerView *controller)
     SetChildSprite(controller, 0x20, sprites[colorMode][1]);
 }
 
-static void SetVolumeDigitSprites(
-    FrontEndControllerView *controller, int value,
-    short normalFirst, short selectedFirst)
+// Options refresh keeps the manager across all label operations. A failed
+// parent lookup clears its id but retains the target's unchecked parent/list
+// contract; digit lookups alone permit a null resolved child VM.
+static AnmVmView *FindOptionsChildVm(
+    FrontEndControllerView *controller, AnmRenderManagerView *manager,
+    short scriptIndex)
 {
-    SetChildSprite(controller, normalFirst + 0, value / 100 + 0x33);
-    SetChildSprite(controller, normalFirst + 1, value / 10 % 10 + 0x33);
-    SetChildSprite(controller, normalFirst + 2, value % 10 + 0x33);
-    SetChildSprite(controller, selectedFirst + 0, value / 100 + 0x3d);
-    SetChildSprite(controller, selectedFirst + 1, value / 10 % 10 + 0x3d);
-    SetChildSprite(controller, selectedFirst + 2, value % 10 + 0x3d);
-}
+    AnmVmIdView *parentId = &controller->vmIds[FRONT_END_ROOT_VM];
+    AnmVmView *parent = manager->FindVm(*parentId);
+    if (parent == NULL)
+        parentId->value = 0;
 
-static void SetVolumeLeadingDigitVisibility(
-    FrontEndControllerView *controller, int value,
-    short normalFirst, short selectedFirst)
-{
-    int showHundreds = value >= 100;
-    int showTens = value >= 10;
-    SetChildDrawEnabled(controller, normalFirst + 0, showHundreds);
-    SetChildDrawEnabled(controller, normalFirst + 1, showTens);
-    SetChildDrawEnabled(controller, selectedFirst + 0, showHundreds);
-    SetChildDrawEnabled(controller, selectedFirst + 1, showTens);
+    AnmVmLayerNodeView *node = &parent->layerNode;
+    AnmVmIdView childId;
+    while (node != NULL)
+    {
+        AnmVmView *child = static_cast<AnmVmView *>(node->owner);
+        if (child->scriptIndex == scriptIndex)
+        {
+            childId.value = child->id;
+            break;
+        }
+        node = node->next;
+    }
+    return manager->FindVm(childId);
 }
 
 static void BeginOptionsClose(FrontEndControllerView *controller)
@@ -1070,12 +1067,102 @@ void FrontEndControllerView::RefreshOptionsDisplay()
             -5000 - static_cast<int>(-5000.0f * volume);
     }
 
-    SetVolumeDigitSprites(this, g_MainSupervisorView.bgmVolume, 0x25, 0x29);
-    SetVolumeDigitSprites(this, g_MainSupervisorView.sfxVolume, 0x2d, 0x31);
-    SetVolumeLeadingDigitVisibility(
-        this, g_MainSupervisorView.bgmVolume, 0x25, 0x29);
-    SetVolumeLeadingDigitVisibility(
-        this, g_MainSupervisorView.sfxVolume, 0x2d, 0x31);
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *vm;
+
+    vm = FindOptionsChildVm(this, manager, 0x25);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.bgmVolume / 100 + 0x33);
+    vm = FindOptionsChildVm(this, manager, 0x26);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.bgmVolume / 10 % 10 + 0x33);
+    vm = FindOptionsChildVm(this, manager, 0x27);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.bgmVolume % 10 + 0x33);
+    vm = FindOptionsChildVm(this, manager, 0x29);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.bgmVolume / 100 + 0x3d);
+    vm = FindOptionsChildVm(this, manager, 0x2a);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.bgmVolume / 10 % 10 + 0x3d);
+    vm = FindOptionsChildVm(this, manager, 0x2b);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.bgmVolume % 10 + 0x3d);
+
+    vm = FindOptionsChildVm(this, manager, 0x2d);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.sfxVolume / 100 + 0x33);
+    vm = FindOptionsChildVm(this, manager, 0x2e);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.sfxVolume / 10 % 10 + 0x33);
+    vm = FindOptionsChildVm(this, manager, 0x2f);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.sfxVolume % 10 + 0x33);
+    vm = FindOptionsChildVm(this, manager, 0x31);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.sfxVolume / 100 + 0x3d);
+    vm = FindOptionsChildVm(this, manager, 0x32);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.sfxVolume / 10 % 10 + 0x3d);
+    vm = FindOptionsChildVm(this, manager, 0x33);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, g_MainSupervisorView.sfxVolume % 10 + 0x3d);
+
+    if (g_MainSupervisorView.bgmVolume < 10)
+    {
+        FindOptionsChildVm(this, manager, 0x25)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x26)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x29)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x2a)->drawEnabled = 0;
+    }
+    else if (g_MainSupervisorView.bgmVolume < 100)
+    {
+        FindOptionsChildVm(this, manager, 0x25)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x26)->drawEnabled = 1;
+        FindOptionsChildVm(this, manager, 0x29)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x2a)->drawEnabled = 1;
+    }
+    else
+    {
+        FindOptionsChildVm(this, manager, 0x25)->drawEnabled = 1;
+        FindOptionsChildVm(this, manager, 0x26)->drawEnabled = 1;
+        FindOptionsChildVm(this, manager, 0x29)->drawEnabled = 1;
+        FindOptionsChildVm(this, manager, 0x2a)->drawEnabled = 1;
+    }
+
+    if (g_MainSupervisorView.sfxVolume < 10)
+    {
+        FindOptionsChildVm(this, manager, 0x2d)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x2e)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x31)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x32)->drawEnabled = 0;
+    }
+    else if (g_MainSupervisorView.sfxVolume < 100)
+    {
+        FindOptionsChildVm(this, manager, 0x2d)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x2e)->drawEnabled = 1;
+        FindOptionsChildVm(this, manager, 0x31)->drawEnabled = 0;
+        FindOptionsChildVm(this, manager, 0x32)->drawEnabled = 1;
+    }
+    else
+    {
+        FindOptionsChildVm(this, manager, 0x2d)->drawEnabled = 1;
+        FindOptionsChildVm(this, manager, 0x2e)->drawEnabled = 1;
+        FindOptionsChildVm(this, manager, 0x31)->drawEnabled = 1;
+        FindOptionsChildVm(this, manager, 0x32)->drawEnabled = 1;
+    }
 }
 
 

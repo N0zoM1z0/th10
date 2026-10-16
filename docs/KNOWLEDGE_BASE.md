@@ -1400,3 +1400,74 @@ runtime FPU state nor reachable game-state behavior is established. Two
 isolated natural-source controls were reverted after failing target topology;
 all canonical exact metrics remain unchanged. The reproducible model does not
 replace actual-source tests or native acceptance.
+
+
+## 2026-10-16 Options display lookup and value lifetimes
+
+The 3999-byte RefreshOptionsDisplay owner at0x42E5A0 was reviewed directly
+against the pinned TH10 target after reference-inspired questions. Source was
+independently written; no reference implementation or synthetic context was
+imported. The old generic digit helper sampled a volume once, before lookups,
+and shared lookup helpers reread the manager. Those did not preserve the
+target-observed value/owner lifetimes.
+
+The corrected owner snapshots the manager after queueing and attenuation;
+re-resolves the root ID for each label, searches its layer-node chain, obtains
+the child ID and resolves that ID through the same manager. Existing typed
+AnmVmIdView storage is passed by value rather than stripped into constructor
+temporaries. Failed parent lookup clears the root ID but retains the observed
+unchecked parent traversal. Sprite operations guard a null resolved child;
+visibility operations retain their unchecked child contract. These invalid
+states are not exercised by the host fixture. Other owners' shared lookup
+helper and null behavior are unchanged.
+
+Twelve sprite updates preserve label order25/26/27,29/2a/2b (BGM), then
+2d/2e/2f,31/32/33 (SFX). Each successful resolution precedes a fresh signed
+volume-byte read and its /100, /10%10 or %10 arithmetic. Normal/selected bases
+remain0x33/0x3d. Visibility then samples BGM at its branch boundary and selects
+<10, <100 or else; the four writes are0000,0101 or1111. SFX is sampled only
+after all four BGM writes. Both fields are signed chars in Main.hpp; drawEnabled
+is bit1 of flags35C. All other flags and color/alpha fields are preserved.
+
+The unchanged attenuation source was also checked in the selected native
+image: its division spelling compiles to FMUL by the same float0.01 bits
+0ad7233c as target, with matching x87 grouping through __ftol2 and no intervening
+binary32 stores. Constants1.0 and-5000.0 agree too. This narrow arithmetic
+observation does not establish full-owner/runtime equivalence; external
+storage, diagnostic anchors, private ABI and the remaining native topology
+still require closure.
+
+The synthetic actual-source fixture scripts/test-options-refresh-state.py
+passes122 cases with read instrumentation and122 with plain signed-char fields.
+The previous source has55 functional mismatches even after read logging is
+excluded. Seven deliberate mutations fail through observable state/events:
+cached digit volume, early SFX visibility sample, manager reload, cached root
+ID, unsigned digits, alpha corruption and visibility resampling. The fixture
+does not execute the game, prove layout/ABI, model invalid null states, or
+establish native attenuation precision. It is part of the serial public CI.
+
+The native graph is rooted at the actual UpdateOptions caller, with FrontEnd
+plus ReplayManager, AnmManager, AnmVmCreate, AnmVmId, RandomMath,
+EnemyEclDispatcher and Sound under the established /GL /GS profile.
+Baseline refresh is201 bytes with outlined digit helpers, not a target-sized
+owner. Lifetime correction initially emits1381 bytes and outlines the label lookup.
+A single ordinary inline hint emits the same1381-byte owner; the hint was
+reverted. Preserving the existing typed ID value then removes constructor
+argument temporaries and naturally inlines all12 digit lookups. The selected
+owner is2124/3999 bytes, with24 direct FindVm calls,12 SetSprite calls and22
+remaining outlined visibility lookups. It is still nonexact:227 raw and218/3647
+diagnostic comparable bytes. Selected PE SHA256:
+61b21ad1564eca88bdb5c0ea4d95f09ec9fdbc2f8f30baf2cc601110d831ebe2.
+The real UpdateOptions entry is402370; its948-byte contribution remains
+nonexact against3188. The typed-ID tool request timed out after the work
+completed; complete JSON, empty stderr, PE/PDB contribution and source state
+were read back before proceeding, without repeating the build. No forced-inline/noinline/profile or artificial-context sweep was used.
+The target has70 static FindVm calls; the candidate's distinct helper calls
+cannot be counted as byte-exact target code. All native results are diagnostic,
+with zero new exact credit. Exact numerator/denominator and canonical manifests
+remain unchanged.
+
+Local-only evidence: .analysis/gpt-web/th10-resume-20261016/options-*.json,
+options-refresh-target.txt, options-lifetimes-native.txt, options-lookup-native.txt,
+baseline source snapshot and test logs. Retain only core source, tests and
+conclusions in Git; binaries and generated dumps are reproducible.

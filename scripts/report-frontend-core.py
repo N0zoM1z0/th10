@@ -174,8 +174,8 @@ def source_report(
         "g_FrontEndDemoFrames < 900",
         "ReplayManager::Load(g_FrontEndDemoPath)",
         "controller->RefreshOptionsDisplay()",
-        "value / 100 + 0x33",
-        "value / 100 + 0x3d",
+        "g_MainSupervisorView.bgmVolume / 100 + 0x33",
+        "g_MainSupervisorView.sfxVolume / 100 + 0x3d",
         "-5000 - static_cast<int>(-5000.0f * volume)",
         "TimerReachedMultiple(&controller->stateTimer, 60)",
     )

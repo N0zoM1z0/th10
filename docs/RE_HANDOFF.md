@@ -1227,3 +1227,29 @@ the topology gap; do not sweep further roots/TUs without new target evidence.
 The whole-product build graph remains unconfigured. Next use the existing
 case-aligned diagnostic to inspect unresolved ExecuteScript source semantics,
 without reopening parked SCALE_TIME/FORMAT controls.
+
+
+## 2026-10-16 Options display lifetime correction
+
+RefreshOptionsDisplay42E5A0/3999 now preserves target-observed cached manager,
+root/child-ID re-resolution, per-successful-lookup signed volume reads and
+explicit leading-digit visibility branches. Other owners' common lookup is
+unchanged. Actual-source tests pass122 instrumented and122 plain-byte cases;
+old source has55 functional failures. Seven mutation controls are detected.
+See the dated knowledge note for contract/invalid-state/native-precision limits.
+
+Selected typed-ID native graph rooted at UpdateOptions402370 emits2124/3999
+refresh bytes, still with22 outlined visibility lookups; twelve digit lookups
+now naturally inline. PE61b21ad1564eca88bdb5c0ea4d95f09ec9fdbc2f8f30baf2cc601110d831ebe2.
+No exact credit or canonical changes. Ordinary inline-only control was neutral
+and reverted. Do not import the reference's force-inline/synthetic context.
+A helper/source-ownership gap remains; further changes need target evidence,
+not an arbitrary ABI, flag or padding sweep.
+
+ANM ExecuteScript remains9948/9964,83/92 equal-sized physical groups.
+Focused pairs9,11,27,48 differ in length only through three disp8/disp32
+stack-home encodings each (+9,-9,-9,+9); instruction and call order agree.
+FLIP_X61 differs by EAX/EDX immediate encoding; STOP63 contains one additional
+compiler NOP; ALPHA1_TIME58 retains the documented helper ABI gap. This is
+slice diagnosis, not normalized exact acceptance. SCALE_TIME/FORMAT/sample
+spelling controls remain parked. Math remains paused.
