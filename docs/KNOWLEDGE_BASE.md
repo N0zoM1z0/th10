@@ -1601,3 +1601,20 @@ MOVs and26 more padding bytes, with offsetting instruction differences; the
 
 All thirteen controller and seven refresh mutation controls were re-run after
 the final expansion source and detected functional failures as intended.
+
+### Reproducible Options call topology
+
+Use scripts/repo-python scripts/report-options-owner-topology.py with --image,
+--map and --pdb pointing to an existing candidate. It checks the exact target
+SHA256 and pinned decoder, resolves private map symbols, and emits JSON call
+inventories without building or accepting exactness. Physical contributions,
+decoded spans and known code spans are separate. A candidate five-entry tail
+is excluded only when bound/guard/index-preservation/table-target evidence
+passes the narrow recognizer; unknown spans stay explicitly untrusted.
+Twenty synthetic recognizer tests run in public CI without the private target.
+
+For the selected color-expansion image, the controller is3228 physical bytes,
+3208 decoded bytes plus20 table bytes at403218, compared with target3188/3168.
+It has76 direct call instructions versus78 target; Refresh has84 observed calls
+in both images. Matching call counts alone are not semantic or exact proof.
+Store generated reports locally, not in Git.

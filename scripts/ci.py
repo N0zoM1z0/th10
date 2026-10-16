@@ -62,6 +62,7 @@ def main() -> int:
         run("Validate pause/capture controller", [sys.executable, "scripts/test-pause-menu-state.py"])
         run("Validate options-refresh lifetimes", [sys.executable, "scripts/test-options-refresh-state.py"])
         run("Validate options controller state", [sys.executable, "scripts/test-options-controller-state.py"])
+        run("Validate options topology recognizer", [sys.executable, "scripts/test-options-owner-topology.py"])
         run("Validate score insertion and publication", [sys.executable, "scripts/test-score-insertion.py"])
         run("Validate Player power-state transitions", [sys.executable, "scripts/test-player-update-state.py"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
