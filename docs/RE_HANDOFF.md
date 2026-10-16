@@ -1372,3 +1372,22 @@ sweeps. Next large candidate is key-config display42F8B0/2452: wrong root slot,
 uncached manager and eager binding snapshots are independently verified bugs.
 Its local proposal/tests are prepared but not yet applied. Preserve refresh's
 canonical regression. Math remains paused.
+
+
+## Key-configuration display checkpoint (2026-10-16)
+
+RefreshKeyConfigDisplay now uses root slot 2, one retained manager, typed child
+ID re-resolution, and late signed-short binding reads. Its complete 2,452-byte
+extent includes 15 internal alignment bytes. Two canonical cold linked-PE
+replays in the maintained FrontEnd::Update eight-TU graph reproduce every byte
+with 61 reviewed linkage fields. Registration is a replay candidate until a
+fresh Factory receipt reports pass and accepted. Whole-product/storage/runtime
+closure remains open. UpdateKeyConfig itself remains nonexact.
+
+The source-extracted host fixture passes 244 instrumented and 244 plain-short
+cases, including callback-driven identity/file remapping and signed endpoints;
+all 11 mutation controls fail functionally. Current-source OptionsRefresh
+regression also passes its existing 3,999-byte canonical unit. See the durable
+knowledge note for native contract and evidence limits. Retain code, tests and
+manifest; generated artifacts remain ignored. Do not repeat earlier root/flag
+sweeps or credit diagnostic structural equality as acceptance.

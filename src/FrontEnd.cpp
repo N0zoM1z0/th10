@@ -622,14 +622,34 @@ static void CommitKeyConfigBindings(FrontEndControllerView *controller)
     g_FrontEndSavedControllerMapping = g_FrontEndControllerMapping;
 }
 
-static void SetKeyBindingDigitSprites(
-    FrontEndControllerView *controller, short binding,
-    short normalFirst, short selectedFirst)
+// Key-config display retains its manager, but samples root slot 2 per label.
+// __forceinline is a scoped expansion hypothesis, not a recovered source keyword.
+// Failed parent lookup preserves the target's unchecked parent-list precondition.
+static __forceinline AnmVmIdView FindKeyConfigChildId(
+    FrontEndControllerView *controller, AnmRenderManagerView *manager,
+    short scriptIndex)
 {
-    SetChildSprite(controller, normalFirst + 0, binding / 10 + 0x33);
-    SetChildSprite(controller, normalFirst + 1, binding % 10 + 0x33);
-    SetChildSprite(controller, selectedFirst + 0, binding / 10 + 0x33);
-    SetChildSprite(controller, selectedFirst + 1, binding % 10 + 0x33);
+    AnmVmIdView *parentId = &controller->vmIds[FRONT_END_KEY_CONFIG_ROOT_VM];
+    AnmVmView *parent = manager->FindVm(*parentId);
+    if (parent == NULL)
+        parentId->value = 0;
+
+    AnmVmLayerNodeView *node = &parent->layerNode;
+    while (node != NULL)
+    {
+        AnmVmView *child = static_cast<AnmVmView *>(node->owner);
+        if (child->scriptIndex == scriptIndex)
+            return AnmVmIdView(static_cast<AnmVmView *>(node->owner)->id);
+        node = node->next;
+    }
+    return AnmVmIdView();
+}
+
+static __forceinline AnmVmView *FindKeyConfigChildVm(
+    FrontEndControllerView *controller, AnmRenderManagerView *manager,
+    short scriptIndex)
+{
+    return manager->FindVm(FindKeyConfigChildId(controller, manager, scriptIndex));
 }
 
 static void InitializeFrontEndScreen(FrontEndControllerView *controller)
@@ -1304,16 +1324,108 @@ int __stdcall FrontEndControllerView::UpdateKeyConfig(
 // TH10_FRONTEND_FUNCTION: 0x0042F8B0 FrontEndControllerView::RefreshKeyConfigDisplay
 void FrontEndControllerView::RefreshKeyConfigDisplay()
 {
-    SetKeyBindingDigitSprites(
-        this, keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT], 0x43, 0x4d);
-    SetKeyBindingDigitSprites(
-        this, keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB], 0x45, 0x4f);
-    SetKeyBindingDigitSprites(
-        this, keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS], 0x47, 0x51);
-    SetKeyBindingDigitSprites(
-        this, keyConfigBindings[FRONT_END_KEY_CONFIG_MENU], 0x49, 0x53);
-    SetKeyBindingDigitSprites(
-        this, keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP], 0x4b, 0x55);
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *vm;
+
+    vm = FindKeyConfigChildVm(this, manager, 0x43);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x44);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x4d);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x4e);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_SHOT] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x45);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x46);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x4f);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x50);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_BOMB] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x47);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x48);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x51);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x52);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_FOCUS] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x49);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x4a);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x53);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x54);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_MENU] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x4b);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x4c);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] % 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x55);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] / 10 + 0x33);
+
+    vm = FindKeyConfigChildVm(this, manager, 0x56);
+    if (vm != NULL)
+        vm->anmFile->SetSprite(
+            vm, keyConfigBindings[FRONT_END_KEY_CONFIG_SKIP] % 10 + 0x33);
 }
 
 

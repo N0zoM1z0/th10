@@ -1807,3 +1807,59 @@ serialized producer groups; including corrected refresh, ten units7695/7695.
 The wider manifest scan finds83 named-global symbols and no inconsistent
 same-symbol base. Public checks retain this invariant, while compiler-generated
 literal pools are deliberately outside that named-global rule.
+
+
+## 2026-10-16 Key-configuration digit display reconstruction
+
+Native owner 42F8B0-430243 covers2452 bytes, including15 interior alignment
+bytes; the following12 CC bytes are excluded. The EAX receiver and retained
+manager in EDI are observed private compiler context, not a guessed public ABI.
+The owner reads manager491C10 once, then performs twenty label operations:
+43/44/4D/4E for shot,45/46/4F/50 for bomb,47/48/51/52 for focus,
+49/4A/53/54 for menu, and4B/4C/55/56 for skip. All digit bases are33.
+Each row alternates signed-short division by10 and signed remainder by10;
+there is no clamp, unsigned conversion, or added one.
+
+Every operation resamples root slot2 (+2CC), resolves its typed ID, traverses
+from the parent node, selects the first matching signed script index, rereads
+that node's owner for its ID, and resolves the child through the retained
+manager. An exhausted list still resolves zero ID. Missing resolved children
+skip their digit write. Parent resolution failure clears the root ID but is
+followed by unchecked parent traversal in the target; invalid parent/list/file
+states remain outside the host fixture's valid-state contract.
+
+Only after successful child resolution does each operation read its binding
+(short fields59CC through59D4) and current resolved VM's anmFile. Native code
+contains40 FindVm calls,19 SetSprite calls and one final SetSprite tail jump.
+The historical source used root1 and cached binding arguments too early.
+The replacement uses explicit guarded operations and separate typed lookup
+helpers. Their scoped __forceinline markers are target-observed expansion
+hypotheses, not claims about original spelling. No external code was copied.
+
+Source-extracted tests cover244 instrumented and244 plain-short cases,
+including all callback positions for root/manager/binding changes, child-ID
+remapping, resolved-file replacement, shared children, signed endpoints,
+missing/unresolved children, parent-first matching and duplicate-first choice.
+Eleven deliberate mutations fail functionally. These tests prove the scoped
+host behavior only; native layout, private ABI, call topology and exactness
+require independent target and compiler evidence.
+
+The first cold probe under the actual enclosing FrontEnd::Update caller and
+maintained eight-TU /GL /GS graph reproduces2452 bytes with2208/2208 nonfield
+bytes equal. Independent linkage review covers all61 fields: forty FindVm
+REL32 to4491C0, twenty SetSprite REL32 to43E5A0 (including the tail jump), and
+one manager DIR32 to491C10. Target extent SHA-256:
+1c8190ce6d9917294072ae0c8f07ae588851c615e2130d2b9f4ffb51d1eb25c3.
+The same diagnostic preserves the3999-byte OptionsRefresh structure.
+UpdateKeyConfig remains nonexact (536/880 in this context); it receives no
+exact credit. Nonruntime unresolved data anchors, whole-product linkage,
+resource ownership, actual runtime and portability remain separate open work.
+
+Two subsequent cold canonical builds reproduce all2452/2452 bytes with complete
+normalization and61 reviewed fields. PE hashes are
+7b4145567a202878148f96db9f71b98f753f3ef1ed51a95350e8dc2662b051b4 and
+ed25ac8be4930ca208db41ba626d67aed43f6dae0405b9f83ab76c8089fc8997.
+Current-source OptionsRefresh cold regression remains3999/3999, PE
+77c02488a30e2cf3e23bc4320bebc0f7babc92221442e3f1bdf626b8bcdb73d7.
+The exact ledger registers this canonical candidate; fresh Factory acceptance
+is pending the committed checkpoint and is not implied by registration.
