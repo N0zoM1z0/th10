@@ -1471,3 +1471,70 @@ Local-only evidence: .analysis/gpt-web/th10-resume-20261016/options-*.json,
 options-refresh-target.txt, options-lifetimes-native.txt, options-lookup-native.txt,
 baseline source snapshot and test logs. Retain only core source, tests and
 conclusions in Git; binaries and generated dumps are reproducible.
+
+
+## 2026-10-16 Options controller protocol and owner bindings
+
+UpdateOptions42D920 is a3188-byte physical owner (3168 pre-table bytes plus
+five dispatch entries). Independent full-target review identified behavior and
+binding gaps, not just compiler-register differences. Left volume now checks
+the signed byte against5 before subtracting; this matters for-128..-124. Right
+volume intentionally retains byte-wrap-before-signed-cap behavior, including
+123->-128 and127->-124. Color-right compares the byte unsigned; color lookup
+uses0,1,else branches rather than an unchecked three-row array.
+
+Color-left queues sound12 after its sprite pair. Color-right queues12 before
+choosing the pair, so mode is re-read after the call. Defaults similarly read
+mode after RefreshOptionsDisplay. Each selected pair retains its branch across
+its two callbacks. Key-configuration confirmation closes with sound10; return
+and cancel close with11. Cancel-to-return uses the actual cursor setter, then
+reads cursor.current after the immediate interrupt to form the deferred code.
+The low16-bit cast precedes+7/+0x11, preserving native word arithmetic even for
+an adversarial INT_MAX callback without signed-int overflow. Initialization
+also uses the existing cursor setter. Closing immediate interrupts2 are unchanged.
+
+The parent lookup manager is captured after the left-input getter in the active
+state and retained through right/default processing. Opening captures it after
+its immediate interrupt. Child lookup now returns the existing AnmVmIdView;
+color sprites call its canonical SetSprite seam, which separately resolves each
+ID through the current global manager. This distinction is tested with different
+parent/child managers and callback mutations. The shared ID-search helper also
+serves RefreshOptionsDisplay; that owner's122+122 cases still pass.
+
+Deferred calls now name the existing FrontEndMarkVmInterrupt owner at42C770.
+That helper already propagates pending interrupts through root children; no
+new propagation behavior is claimed. Screen/state transitions call the existing
+canonical members at42C5C0/42C620 instead of duplicate descriptive helpers.
+A scoped QueueOptionsSound bridge binds the already-implemented/canonical
+EnemySoundQueueView::QueueSoundSample43DC90 to the proven shared sound owner
+at492590 with sample0. This removes an unresolved FrontEndPlaySound diagnostic
+anchor from this owner. Other FrontEndPlaySound callers remain unchanged. No new storage, owner layout or target body was invented.
+
+scripts/test-options-controller-state.py extracts the actual owner, transitive
+helpers, cursor/input bodies and cursor declaration from repository sources.
+Its2909 cases pass under UBSan. Thirteen semantic mutation controls are
+detected through functional differences, and a separate sample-zero guard passes. Historical source has108 functional failures
+in2139 safe cases; its unsafe color-table indices and overflowing INT_MAX paths
+are excluded from that baseline run. Creation, refresh, timer, sound and immediate
+callbacks remain explicit mocks, and invalid null parents plus native ABI/runtime
+are excluded. There is no private snapshot dependency. Tests verify call/state
+contracts, not actual audio output or execution of the retail game.
+
+The final unchanged-profile eight-source UpdateOptions-root diagnostic emits
+1128/3188 for UpdateOptions and2124/3999 for RefreshOptionsDisplay. Color/lookup
+helpers remain partly outlined; both owners stay nonexact. Selected PE SHA256:
+94650c98f68b5a88bfcf86788f2ecc65abcfaf6ab64aeab533fcb40d24e9e04a.
+This supersedes the earlier source-batch native context, not its historical
+observations. The two existing canonical setter owners pass a final focused cold regression
+replay:80+83=163/163 bytes and both linkage fields, in one canonical artifact
+with image SHA93184d3943e1e30df364fada75c26a75b8711dd7d0afb445b40c680258dba8ce.
+Those are existing bytes, not new credit. No match-unit,
+boundary, origin, exact numerator or denominator changed.
+
+Evidence is local-only in the existing campaign: options-update-target.txt,
+options-update-helpers.txt, options-controller*.json, source/test snapshots,
+final setter replay and CI logs. Three source/call-binding diagnostics and the
+focused replays were serialized at nice10, with bounded timeouts. A completed
+sound-bound build was recovered by reading its complete JSON/empty stderr after
+transport timeout rather than recompiling. Reference implementation/context was
+not imported; source changes follow TH10-local instructions and existing owners.

@@ -1253,3 +1253,33 @@ FLIP_X61 differs by EAX/EDX immediate encoding; STOP63 contains one additional
 compiler NOP; ALPHA1_TIME58 retains the documented helper ABI gap. This is
 slice diagnosis, not normalized exact acceptance. SCALE_TIME/FORMAT/sample
 spelling controls remain parked. Math remains paused.
+
+
+## 2026-10-16 Options controller contract recovery
+
+UpdateOptions42D920/3188 now follows target signed-byte left-volume clamping,
+intentional right wrap, unsigned right-color comparison and0/1/fallback sprites.
+Left color sound12 follows the pair; right12 precedes it. Key-config confirm
+uses10, return/cancel11. Cursor clamp and deferred low-word interrupt sampling
+preserve the observed callback boundaries. Typed child IDs route through the
+existing SetSprite wrapper, whose manager lifetime differs from cached parent
+lookups. Defaults resample color after refresh. See the dated knowledge note.
+
+New actual-source controller fixture passes2909 cases under UBSan; thirteen
+mutations are detected. Baseline has108 functional failures in2139 safe cases.
+Refresh's122 instrumented+122 plain-byte cases also pass after shared lookup
+factoring. Public tests read repository sources/header and have no private
+snapshot dependency; timer/audio/creation/runtime internals remain excluded.
+
+Selected actual-caller PE94650c98f68b5a88bfcf86788f2ecc65abcfaf6ab64aeab533fcb40d24e9e04a
+emits UpdateOptions1128/3188 and RefreshOptionsDisplay2124/3999, both nonexact.
+Sound now binds the real canonical QueueSoundSample owner instead of a probe
+anchor, and screen/state calls bind existing canonical members. Final focused
+setter replay remains163/163 exact; no new credit or ledger-boundary changes.
+
+A remaining question is the verified helper's expansion boundary: target label
+lookups are inlined while some source helpers remain outlined. Any separate
+inline-expansion experiment must be target-backed, scoped and reversible; do
+not claim an original keyword, alter ABI/profile, or import the reference's
+synthetic context. Keep semantic correctness gates and full-owner diagnostics
+separate from canonical acceptance. Math remains paused.

@@ -20,7 +20,7 @@ def mask(s):
 
 def extract(s, name, optional=False):
     m = mask(s)
-    pat = r'^\s*(?:static\s+)?(?:inline\s+)?(?:void|int|AnmVmView\s*\*)\s*' + re.escape(name) + r'\s*\([^;{}]*\)\s*\{'
+    pat = r'^\s*(?:static\s+)?(?:inline\s+)?(?:void|int|AnmVmIdView|AnmVmView\s*\*)\s*' + re.escape(name) + r'\s*\([^;{}]*\)\s*\{'
     matches = list(re.finditer(pat, m, re.M))
     if optional and not matches:
         return ''
@@ -189,7 +189,7 @@ static AnmVmView *Probe(int x) { const char *s = "}"; return 0; }
     assert 'const char' in extract(probe,'Probe')
     assert extract(probe,'Missing',optional=True)==''
     owner=extract(s,'FrontEndControllerView::RefreshOptionsDisplay')
-    names=['ResolveVm','FindChildVmId','FindChildVm','SetChildSprite','SetChildDrawEnabled','SetVolumeDigitSprites','SetVolumeLeadingDigitVisibility','FindOptionsChildVm']
+    names=['ResolveVm','FindChildVmId','FindChildVm','SetChildSprite','SetChildDrawEnabled','SetVolumeDigitSprites','SetVolumeLeadingDigitVisibility','FindOptionsChildId','FindOptionsChildVm']
     # Include only transitive helper dependencies used by the extracted owner.
     selected={}; todo=owner
     while True:
@@ -214,7 +214,7 @@ static AnmVmView *Probe(int x) { const char *s = "}"; return 0; }
         controls = {
             'cache-digit-volume': code.replace('AnmVmView *vm;','AnmVmView *vm; int cachedBgm = g_MainSupervisorView.bgmVolume;').replace('g_MainSupervisorView.bgmVolume /','cachedBgm /').replace('g_MainSupervisorView.bgmVolume %','cachedBgm %'),
             'early-sfx-visibility': code.replace('    if (g_MainSupervisorView.bgmVolume < 10)', '    int earlySfx = g_MainSupervisorView.sfxVolume;\n    if (g_MainSupervisorView.bgmVolume < 10)').replace('if (g_MainSupervisorView.sfxVolume <', 'if (earlySfx <'),
-            'reload-manager': code.replace('return manager->FindVm(childId);', 'return g_AnmRenderManagerView->FindVm(childId);'),
+            'reload-manager': code.replace('return manager->FindVm(childId);', 'return g_AnmRenderManagerView->FindVm(childId);').replace('return manager->FindVm(FindOptionsChildId(', 'return g_AnmRenderManagerView->FindVm(FindOptionsChildId('),
             'cache-root-id': code.replace('manager->FindVm(parentId->value)', 'manager->FindVm(1)').replace('manager->FindVm(*parentId)', 'manager->FindVm(1)'),
             'unsigned-volume': code.replace('g_MainSupervisorView.bgmVolume /', 'static_cast<unsigned char>(g_MainSupervisorView.bgmVolume) /').replace('g_MainSupervisorView.bgmVolume %', 'static_cast<unsigned char>(g_MainSupervisorView.bgmVolume) %'),
             'clobber-alpha': re.sub(r'(vm = FindOptionsChildVm\(this, manager, 0x[0-9a-f]+\);)', r'\1 if (vm) vm->alpha = 0;', code),

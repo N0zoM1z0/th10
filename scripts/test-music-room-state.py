@@ -7,24 +7,56 @@ these output tests do not prove that ordering or production input safety.
 """
 from pathlib import Path
 import shutil
+import re
 import subprocess
 import tempfile
 import unittest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def function_source(signature, filename="src/FrontEnd.cpp"):
-    source = (ROOT / filename).read_text()
-    start = source.index(signature)
-    brace = source.index('{', start)
-    depth, end = 1, brace + 1
-    while depth:
-        depth += (source[end] == '{') - (source[end] == '}')
-        end += 1
-    return source[start:end]
+def extract_function(source, signature):
+    # Preserve offsets while hiding comments and literal braces. A declaration
+    # ending in ';' before a body is not the function definition.
+    hidden = re.sub(
+        r'//[^\n]*|/\*[\s\S]*?\*/|"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'',
+        lambda match: ''.join('\n' if char == '\n' else ' ' for char in match[0]),
+        source)
+    definitions = []
+    for match in re.finditer(re.escape(signature), hidden):
+        start = match.start()
+        brace = hidden.find('{', start)
+        semicolon = hidden.find(';', start)
+        if brace < 0 or (semicolon >= 0 and semicolon < brace):
+            continue
+        depth, end = 1, brace + 1
+        while depth and end < len(hidden):
+            depth += (hidden[end] == '{') - (hidden[end] == '}')
+            end += 1
+        if depth:
+            raise ValueError('unclosed function: ' + signature)
+        definitions.append(source[start:end])
+    if len(definitions) != 1:
+        raise ValueError('expected one definition: ' + signature)
+    return definitions[0]
 
+
+def function_source(signature, filename="src/FrontEnd.cpp"):
+    return extract_function((ROOT / filename).read_text(), signature)
 
 class MusicRoomState(unittest.TestCase):
+    def test_definition_extraction_skips_prototypes_and_literal_braces(self):
+        source = ('// void Probe(int x) { fake }\n'
+                  'void Probe(int x);\n'
+                  '/* void Probe(int x) { fake } */\n'
+                  'void Probe(int x) { const char *text = "}"; '
+                  'if (x) { ++x; } }\n')
+        result = extract_function(source, 'void Probe(')
+        self.assertIn('const char *text', result)
+        self.assertNotIn('fake', result)
+        self.assertTrue(result.endswith('}'))
+        with self.assertRaises(ValueError):
+            extract_function('void Probe(int x);', 'void Probe(')
+
     def setUp(self):
         (ROOT / 'build').mkdir(exist_ok=True)
 
