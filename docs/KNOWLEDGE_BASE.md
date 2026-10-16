@@ -1713,8 +1713,9 @@ differences. The target extent SHA256 is
 These are canonical code-generation results, not raw whole-image equality.
 
 The112 fields comprise84 REL32 calls (70 FindVm,12 SetSprite,QueueCommand and
-__ftol2) and28 DIR32 data references. Supervisor reads bind the actual
-g_MainSupervisorView base491C30 with offsets138/139. The diagnostic anchor's
+__ftol2) and28 DIR32 data references. The initial per-owner recipe used
+g_MainSupervisorView base491C30 with offsets138/139; the shared-owner audit
+below supersedes that decomposition with491C28+140/141. The diagnostic anchor's
 nearest-public Sleep label is incidental and is not used as semantic identity.
 Other destinations are manager491C10, sound owner492590, volume slots497854/
 497858, attenuation49785C, SetVol46ECE8, and float constants470B00/470AFC/470B80.
@@ -1747,3 +1748,62 @@ Final toolchain verification, tracking validation and full public CI pass.
 The two previously accepted screen/state setters remain163/163 under focused
 canonical replay, PE2f6c35c544d6d7f71475f8098371dca0735ca66f8acf755969fc620022f21220.
 This existing-byte regression check adds no new credit.
+
+
+## 2026-10-16 Supervisor storage identity and hint-field correction
+
+A cross-unit check exposed a real integration defect after the first Options
+codegen acceptance. That result compared3999 bytes correctly, but its
+491C30+138/139 base/addend decomposition was inconsistent with the shared
+supervisor owner used by the other nine units. Per-owner symbolic codegen
+equality alone did not establish shared runtime storage identity.
+
+Independent native evidence fixes the owner at491C28:
+- Initializer4658F1 loads ESI=491C28 and calls421F00; destructor4659F0 uses
+  the same base. Constructor421F01 forms configuration pointer ESI+120.
+- Constructor421F30-421F37 clears1E1 DWORDs (784 bytes); this is an observed
+  clear extent, not proof that the current partial C++ view models every field.
+- Instance storage438B51 uses491C28; Direct3DCreate9 result438BCA uses491C2C;
+  the device is491C30. These corroborate existing source offsets0/4/8.
+- Configuration initialization/copy at420876 and42089F-4208AA use491D48,
+  thirteen DWORDs; shutdown438EFA-438F09 saves the same34-byte record.
+- Default initializer418C40 writes record+20/+21/+22 at418CB3/418CB7/418CB0:
+  BGM100, SFX80 and front-end option0.
+
+Correct retained layout:
+- D3D colorMode: +13A, address491D62, used by Main.cpp format selection
+  (4398DE/4398E7/439902).
+- windowed +13D and frameskip +13E remain unchanged.
+- bgmVolume +140 (491D68), sfxVolume +141 (491D69).
+- hintMode +142 (491D6A), separate from D3D depth. At419009 this byte gates
+  loading hint/hint_auto.txt (string46D6D8); no individual mode-label meaning
+  beyond the audited byte protocol is assumed.
+- serializedConfiguration +120 and options +150, and all later offsets,
+  remain unchanged. Only configuration padding is repartitioned.
+
+FrontEnd now uses hintMode and SetHintModeSprites; Main.cpp's colorMode uses
+are untouched. Refresh's16 supervisor linkages now use the common491C28 base
+with eight140 and eight141 addends, leaving every target operand unchanged.
+No guessed pointer aliases, moved whole object, volatile or ABI changes are
+introduced. The corrected refresh canonical replay is again3999/3999 with
+112 fields, PE438159b932caf465fec4dc6463c2c33645178cda5779d26fb031642393cb3aa3.
+
+The controller fixture now gives D3D colorMode its own untouched canary:
+2909 cases pass; all14 mutations are detected, including wrong-field access
+(903 functional and865 canary failures). A target-independent cross-unit
+check covers all72 exact-symbol bindings and requires one constructor-attested
+base; four failure controls reject shifted base or missing/obsolete addends.
+Old source field conflation is rejected rather than silently aliased by tests.
+All nine existing supervisor-referencing units were replayed separately from
+the corrected refresh; see the bounded regression summary below.
+
+This repairs shared declaration consistency, not complete product/runtime
+closure. Existing Options codegen acceptance at a3e075b is historical evidence;
+the corrected checkpoint requires a new fresh Factory receipt. No new exact
+bytes are added by this repair.
+
+Affected-unit regression totals: nine existing units3696/3696 bytes in six
+serialized producer groups; including corrected refresh, ten units7695/7695.
+The wider manifest scan finds83 named-global symbols and no inconsistent
+same-symbol base. Public checks retain this invariant, while compiler-generated
+literal pools are deliberately outside that named-global rule.

@@ -64,6 +64,7 @@ def main() -> int:
         run("Validate options controller state", [sys.executable, "scripts/test-options-controller-state.py"])
         run("Validate options topology recognizer", [sys.executable, "scripts/test-options-owner-topology.py"])
         run("Validate options timer predicate", [sys.executable, "scripts/test-options-timer-predicate.py"])
+        run("Validate supervisor binding identity", [sys.executable, "scripts/test-main-supervisor-bindings.py"])
         run("Validate score insertion and publication", [sys.executable, "scripts/test-score-insertion.py"])
         run("Validate Player power-state transitions", [sys.executable, "scripts/test-player-update-state.py"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])

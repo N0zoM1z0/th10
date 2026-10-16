@@ -6,6 +6,7 @@ from that source (or explicit --support-source) and the actual cursor header. In
 options-update-target.txt and helper disassembly 449670/42C770. Timer, creation,
 refresh, immediate interrupt, screen setters and sound are explicit event mocks.
 Invalid null parents, native layouts/resources and real callbacks are excluded.
+D3D colorMode is a distinct untouched canary; options use hintMode.
 Historical --expect-failure uses only safe 0..2 color indices (its table is unsafe
 outside those values); all signed-byte colors are tested on proposed source.
 Baseline also excludes INT_MAX callbacks because its int addition is undefined;
@@ -61,7 +62,7 @@ FIXTURE=r'''
 enum {FRONT_END_ROOT_VM=1,FRONT_END_OPTIONS_INITIALIZE=0,FRONT_END_OPTIONS_OPENING=1,FRONT_END_OPTIONS_ACTIVE=2,FRONT_END_OPTIONS_UNUSED=3,FRONT_END_OPTIONS_CLOSING=4};
 enum {FRONT_END_INPUT_UP=1,FRONT_END_INPUT_DOWN=2,FRONT_END_INPUT_LEFT=4,FRONT_END_INPUT_RIGHT=8,FRONT_END_INPUT_CANCEL=16,FRONT_END_INPUT_CONFIRM=32};
 enum {FRONT_END_SOUND_MOVE=12,FRONT_END_SOUND_SELECT=10,FRONT_END_SOUND_CANCEL=11,FRONT_END_SOUND_PREVIEW=4,FRONT_END_SCREEN_KEY_CONFIG=100,FRONT_END_SCREEN_MAIN_MENU_RETURN=101};
-struct Supervisor {signed char colorMode=0,bgmVolume=100,sfxVolume=80;} g_MainSupervisorView;
+struct Supervisor {signed char colorMode=85,hintMode=0,bgmVolume=100,sfxVolume=80;} g_MainSupervisorView;
 struct AnmVmView;
 struct AnmLoadedView {int identity;void SetSprite(AnmVmView*,int);};
 struct AnmVmLayerNodeView {void* owner=nullptr;AnmVmLayerNodeView* next=nullptr;AnmVmLayerNodeView* previous=nullptr;};
@@ -97,7 +98,7 @@ int signedByte(int n){n&=255;return n>=128?n-256:n;}
 short lowWord(int n,int add){return static_cast<short>((static_cast<unsigned>(n)+add)&65535);}
 void targetDeferred(int index,short n){auto* v=g_AnmRenderManagerView->FindVm(controller.vmIds[index]);if(!v)return;v->pendingInterrupt=n;if(!v->layerNode.previous)for(auto* node=v->layerNode.next;node;node=node->next)static_cast<AnmVmView*>(node->owner)->pendingInterrupt=n;}
 int targetChild(AnmRenderManagerView* m,int label){auto* root=m->FindVm(controller.vmIds[1]);assert(root);for(auto* p=&root->layerNode;p;p=p->next){auto* v=static_cast<AnmVmView*>(p->owner);if(v->scriptIndex==label)return v->id;}return 0;}
-void targetColors(AnmRenderManagerView* m){int mode=g_MainSupervisorView.colorMode;int sprite=mode==0?46:mode==1?48:44;for(int i=0;i<2;++i){int id=targetChild(m,31+i);auto* v=g_AnmRenderManagerView->FindVm(AnmVmIdView(id));if(v)v->anmFile->SetSprite(v,sprite+i);}}
+void targetColors(AnmRenderManagerView* m){int mode=g_MainSupervisorView.hintMode;int sprite=mode==0?46:mode==1?48:44;for(int i=0;i<2;++i){int id=targetChild(m,31+i);auto* v=g_AnmRenderManagerView->FindVm(AnmVmIdView(id));if(v)v->anmFile->SetSprite(v,sprite+i);}}
 void targetClose(int sound){targetDeferred(1,6);FrontEndPlaySound(sound);SetScreenState(&controller,4);}
 void target(){auto& c=controller;auto& p=c.cursor;auto& s=g_MainSupervisorView;
  if(c.screenState==0){p.count=6;p.SetCurrent(0);CreateVm(&c,1);c.RefreshOptionsDisplay();SetScreenState(&c,1);}
@@ -111,19 +112,19 @@ void target(){auto& c=controller;auto& p=c.cursor;auto& s=g_MainSupervisorView;
  if(p.current==2 && TimerReachedMultiple(&c.stateTimer,60))FrontEndPlaySound(4);
  int left=InputRepeated(4);auto* manager=g_AnmRenderManagerView;
  for(int direction=0;direction<2;++direction){int active=direction?InputRepeated(8):left;if(!active)continue;int row=p.current;
-  if(row==0){int old=s.colorMode;s.colorMode=direction?((old&255)<2?old+1:0):(old==0?2:signedByte(old-1));if(direction)FrontEndPlaySound(12);targetColors(manager);if(!direction)FrontEndPlaySound(12);}
+  if(row==0){int old=s.hintMode;s.hintMode=direction?((old&255)<2?old+1:0):(old==0?2:signedByte(old-1));if(direction)FrontEndPlaySound(12);targetColors(manager);if(!direction)FrontEndPlaySound(12);}
   else if(row==1||row==2){auto& v=row==1?s.bgmVolume:s.sfxVolume;int next=direction?signedByte(int(v)+5):(v<5?0:int(v)-5);if(direction&&next>100)next=100;v=next;c.RefreshOptionsDisplay();}
  }
- if(g_FrontEndInput.pressed&32){if(p.current==3||p.current==5){targetClose(p.current==3?10:11);return;}if(p.current==4){s.bgmVolume=100;s.sfxVolume=80;s.colorMode=0;c.RefreshOptionsDisplay();targetColors(manager);FrontEndPlaySound(10);}}
+ if(g_FrontEndInput.pressed&32){if(p.current==3||p.current==5){targetClose(p.current==3?10:11);return;}if(p.current==4){s.bgmVolume=100;s.sfxVolume=80;s.hintMode=0;c.RefreshOptionsDisplay();targetColors(manager);FrontEndPlaySound(10);}}
 }
 struct Case {string name;int state=2,row=0,timer=1,pressed=0,repeated=0,volume=100,color=0,count=6;string trigger="";int change=0;int missing=0;};
 AnmVmView roots[2][2],nodes[2][2][2],resolved[2][4];AnmLoadedView files[2];
-void reset(const Case& x){hook=nullptr;trace.clear();controller={};controller.screenState=x.state;controller.cursor.count=x.count;controller.cursor.current=x.row;controller.cursor.previous=-8;controller.cursor.wraps=1;controller.cursor.saveDepth=1;controller.cursor.savedCurrent[0]=4;controller.cursor.savedCount[0]=7;controller.stateTimer.current=x.timer;controller.vmIds[1]=1;g_MainSupervisorView.colorMode=x.color;g_MainSupervisorView.bgmVolume=x.volume;g_MainSupervisorView.sfxVolume=x.volume;g_FrontEndInput.pressed=x.pressed;g_FrontEndInput.repeated=x.repeated;g_AnmRenderManagerView=&managers[0];
+void reset(const Case& x){hook=nullptr;trace.clear();controller={};controller.screenState=x.state;controller.cursor.count=x.count;controller.cursor.current=x.row;controller.cursor.previous=-8;controller.cursor.wraps=1;controller.cursor.saveDepth=1;controller.cursor.savedCurrent[0]=4;controller.cursor.savedCount[0]=7;controller.stateTimer.current=x.timer;controller.vmIds[1]=1;g_MainSupervisorView.colorMode=85;g_MainSupervisorView.hintMode=x.color;g_MainSupervisorView.bgmVolume=x.volume;g_MainSupervisorView.sfxVolume=x.volume;g_FrontEndInput.pressed=x.pressed;g_FrontEndInput.repeated=x.repeated;g_AnmRenderManagerView=&managers[0];
  for(int m=0;m<2;++m){managers[m].identity=m;managers[m].vms.clear();files[m].identity=m;for(int i=0;i<4;++i){auto& v=resolved[m][i];v={};v.id=100+i;v.anmFile=&files[m];managers[m].vms[v.id]=x.missing==2&&i==0?nullptr:&v;}
  for(int r=0;r<2;++r){auto& root=roots[m][r];root={};root.id=r+1;root.layerNode.owner=&root;root.layerNode.next=&nodes[m][r][0].layerNode;managers[m].vms[r+1]=&root;for(int i=0;i<2;++i){auto& v=nodes[m][r][i];v={};v.id=100+r*2+i;v.scriptIndex=x.missing==1&&i==0?-1:31+i;v.layerNode.owner=&v;v.layerNode.next=i==0?&nodes[m][r][1].layerNode:nullptr;}}}
- hook=[x, fired=false](string e) mutable {if(fired||x.trigger.empty()||e.rfind(x.trigger,0)!=0)return;fired=true;switch(x.change){case 1:g_AnmRenderManagerView=&managers[1];break;case 2:controller.vmIds[1]=2;break;case 3:g_MainSupervisorView.colorMode=2;break;case 4:controller.cursor.current=INT_MAX;break;case 5:controller.cursor.current=2;break;case 6:controller.stateTimer.current=7;break;}};
+ hook=[x, fired=false](string e) mutable {if(fired||x.trigger.empty()||e.rfind(x.trigger,0)!=0)return;fired=true;switch(x.change){case 1:g_AnmRenderManagerView=&managers[1];break;case 2:controller.vmIds[1]=2;break;case 3:g_MainSupervisorView.hintMode=2;break;case 4:controller.cursor.current=INT_MAX;break;case 5:controller.cursor.current=2;break;case 6:controller.stateTimer.current=7;break;}};
 }
-vector<string> finish(){hook=nullptr;auto& p=controller.cursor;trace.push_back("final:"+to_string(controller.screenState)+":"+to_string(controller.screen)+":"+to_string(controller.stateTimer.current)+":"+to_string(p.current)+":"+to_string(p.previous)+":"+to_string(p.count)+":"+to_string(p.saveDepth)+":"+to_string(p.disabledEntryCount)+":"+to_string(controller.vmIds[1].value)+":"+to_string(int(g_MainSupervisorView.bgmVolume))+":"+to_string(int(g_MainSupervisorView.sfxVolume))+":"+to_string(int(g_MainSupervisorView.colorMode)));
+vector<string> finish(){hook=nullptr;auto& p=controller.cursor;trace.push_back("final:"+to_string(controller.screenState)+":"+to_string(controller.screen)+":"+to_string(controller.stateTimer.current)+":"+to_string(p.current)+":"+to_string(p.previous)+":"+to_string(p.count)+":"+to_string(p.saveDepth)+":"+to_string(p.disabledEntryCount)+":"+to_string(controller.vmIds[1].value)+":"+to_string(int(g_MainSupervisorView.bgmVolume))+":"+to_string(int(g_MainSupervisorView.sfxVolume))+":"+to_string(int(g_MainSupervisorView.hintMode))+":"+to_string(int(g_MainSupervisorView.colorMode)));
  for(int i=0;i<16;++i)trace.push_back("saved:"+to_string(p.savedCurrent[i])+":"+to_string(p.savedCount[i]));
  for(int m=0;m<2;++m){for(int r=0;r<2;++r){trace.push_back("pending-root:"+to_string(roots[m][r].pendingInterrupt));for(int i=0;i<2;++i)trace.push_back("pending-child:"+to_string(nodes[m][r][i].pendingInterrupt));}for(auto& v:resolved[m])trace.push_back("sprite-final:"+to_string(v.sprite));}return trace;}
 int main(){vector<Case> cases;
@@ -143,7 +144,7 @@ int main(){vector<Case> cases;
 #endif
  Case c{"post-immediate-cursor",state,0,7,state==2?16:0};c.trigger="now:1:3";c.change=change;cases.push_back(c);}
  Case fall{"initialize-fallthrough",0};fall.trigger="state:1";fall.change=6;cases.push_back(fall);
- int failed=0;
+ int failed=0,canaryFailed=0;
  // Directly exercise the typed child VM helper, including lookup of a found ID
  // (the list node itself is deliberately different from the resolved VM).
  for(int missing:{0,1,2})for(int change:{0,1,2}){
@@ -158,8 +159,8 @@ int main(){vector<Case> cases;
   prepare();targetDeferred(1,37);auto expected=finish();prepare();FrontEndMarkVmInterrupt(&controller,1,37);auto actual=finish();
   if(expected!=actual){++failed;cerr<<"FAIL standalone deferred helper scenario="<<scenario<<"\n";}
  }
- for(auto& c:cases){reset(c);target();auto expected=finish();reset(c);int ret=controller.UpdateOptions(&controller);auto actual=finish();if(expected!=actual||ret!=1){++failed;if(failed<=10){size_t i=0;while(i<expected.size()&&i<actual.size()&&expected[i]==actual[i])++i;cerr<<"FAIL "<<c.name<<" row="<<c.row<<" value="<<c.volume<<" color="<<c.color<<" inputs="<<c.pressed<<" event="<<i<<" expected="<<(i<expected.size()?expected[i]:"<end>")<<" actual="<<(i<actual.size()?actual[i]:"<end>")<<"\n";}}}
- cout<<"cases="<<cases.size()+12<<" passed="<<cases.size()+12-failed<<" functional_failures="<<failed<<"\n";
+ for(auto& c:cases){reset(c);target();auto expected=finish();reset(c);int ret=controller.UpdateOptions(&controller);if(g_MainSupervisorView.colorMode!=85)++canaryFailed;auto actual=finish();if(expected!=actual||ret!=1){++failed;if(failed<=10){size_t i=0;while(i<expected.size()&&i<actual.size()&&expected[i]==actual[i])++i;cerr<<"FAIL "<<c.name<<" row="<<c.row<<" value="<<c.volume<<" color="<<c.color<<" inputs="<<c.pressed<<" event="<<i<<" expected="<<(i<expected.size()?expected[i]:"<end>")<<" actual="<<(i<actual.size()?actual[i]:"<end>")<<"\n";}}}
+ cout<<"cases="<<cases.size()+12<<" passed="<<cases.size()+12-failed<<" functional_failures="<<failed<<" canary_failures="<<canaryFailed<<"\n";
  cout<<"Scope: extracted owner/helpers/cursor/input; synthetic target-order model, plain signed bytes and typed IDs; excludes ABI/native runtime, invalid null parents; creation/refresh/timer/sound/immediate callbacks mocked.\n";return failed?1:0;}
 '''
 
@@ -167,7 +168,7 @@ def build_code(source,support_source,cursor_header):
     s=source.read_text();owner=extract(s,'FrontEndControllerView::UpdateOptions')
     # Discover only called helpers: historical owners include BeginOptionsClose;
     # lexical owners execute their close statements directly in the extracted owner.
-    names=['ResolveVm','FindChildVmId','FindChildVm','SetChildSprite','FindOptionsChildId','FindOptionsChildVm','SetColorModeSprites','QueueOptionsSound','BeginOptionsClose']
+    names=['ResolveVm','FindChildVmId','FindChildVm','SetChildSprite','FindOptionsChildId','FindOptionsChildVm','SetHintModeSprites','QueueOptionsSound','BeginOptionsClose']
     selected={};todo=owner
     while True:
         added=False
@@ -183,6 +184,8 @@ def build_code(source,support_source,cursor_header):
     bodies='\n'.join(extract(s,n,optional=True) or extract(support,n) for n in cursor_names)
     helper=extract(s,'FrontEndMarkVmInterrupt')
     actual='\n'.join(selected[n] for n in names if n in selected)+'\n'+helper+'\n'+owner
+    if re.search(r'\bg_MainSupervisorView\s*\.\s*colorMode\b',mask(actual)):
+        raise ValueError('Options controller must use hintMode; colorMode is the independent D3D field')
     return PREFIX+cursor+bodies+FIXTURE,actual
 
 def mutate_close_sound(actual):
@@ -215,17 +218,18 @@ def main():
     if args.mutation_controls:
         sound_call='QueueOptionsSound' if 'QueueOptionsSound' in actual else 'FrontEndPlaySound'
         mutations={
+          'wrong-config-field':actual.replace('g_MainSupervisorView.hintMode','g_MainSupervisorView.colorMode'),
           'wrong-close-sound':mutate_close_sound(actual),
-          'unsigned-right-color-lost':actual.replace('static_cast<unsigned char>(g_MainSupervisorView.colorMode) < 2','g_MainSupervisorView.colorMode < 2'),
+          'unsigned-right-color-lost':actual.replace('static_cast<unsigned char>(g_MainSupervisorView.hintMode) < 2','g_MainSupervisorView.hintMode < 2'),
           'left-volume-wrap-first':actual.replace('if (g_MainSupervisorView.bgmVolume < 5)','g_MainSupervisorView.bgmVolume -= 5;\n                if (g_MainSupervisorView.bgmVolume < 0)').replace('g_MainSupervisorView.bgmVolume -= 5;\n                controller','g_MainSupervisorView.bgmVolume = g_MainSupervisorView.bgmVolume;\n                controller'),
           'cancel-skips-clamp':actual.replace('controller->cursor.SetCurrent(5);','controller->cursor.current = 5;'),
           'cancel-hardcoded-deferred':actual.replace('static_cast<short>(static_cast<short>(controller->cursor.current) + 7)','static_cast<short>(12)'),
           'reload-parent-manager':actual.replace('manager->FindVm(*parentId)','g_AnmRenderManagerView->FindVm(*parentId)'),
           'cache-root-id':actual.replace('manager->FindVm(*parentId)','manager->FindVm(AnmVmIdView(1))'),
-          'resample-mode-between-labels':actual.replace('manager, 0x20).SetSprite(0x2f)', 'manager, 0x20).SetSprite(g_MainSupervisorView.colorMode == 0 ? 0x2f : 0x2d)'),
-          'read-default-mode-before-refresh':actual.replace('controller->RefreshOptionsDisplay();\n                SetColorModeSprites(controller, manager);','SetColorModeSprites(controller, manager);\n                controller->RefreshOptionsDisplay();'),
+          'resample-mode-between-labels':actual.replace('manager, 0x20).SetSprite(0x2f)', 'manager, 0x20).SetSprite(g_MainSupervisorView.hintMode == 0 ? 0x2f : 0x2d)'),
+          'read-default-mode-before-refresh':actual.replace('controller->RefreshOptionsDisplay();\n                SetHintModeSprites(controller, manager);','SetHintModeSprites(controller, manager);\n                controller->RefreshOptionsDisplay();'),
           'cache-manager-before-left-getter':actual.replace('int leftRepeated = InputRepeated(FRONT_END_INPUT_LEFT);\n        AnmRenderManagerView *manager = g_AnmRenderManagerView;', 'AnmRenderManagerView *manager = g_AnmRenderManagerView;\n        int leftRepeated = InputRepeated(FRONT_END_INPUT_LEFT);'),
-          'right-sound-after-pair':actual.replace(sound_call+'(FRONT_END_SOUND_MOVE);\n                SetColorModeSprites(controller, manager);','SetColorModeSprites(controller, manager);\n                '+sound_call+'(FRONT_END_SOUND_MOVE);'),
+          'right-sound-after-pair':actual.replace(sound_call+'(FRONT_END_SOUND_MOVE);\n                SetHintModeSprites(controller, manager);','SetHintModeSprites(controller, manager);\n                '+sound_call+'(FRONT_END_SOUND_MOVE);'),
           'return-list-node-instead-of-relookup':actual.replace('return manager->FindVm(FindOptionsChildId(controller, manager, scriptIndex));', 'AnmVmView *root = manager->FindVm(controller->vmIds[FRONT_END_ROOT_VM]); for (AnmVmLayerNodeView *node = &root->layerNode; node; node = node->next) { AnmVmView *v = static_cast<AnmVmView *>(node->owner); if (v->scriptIndex == scriptIndex) return v; } return NULL;'),
           'drop-child-propagation':actual.replace('if (vm->layerNode.previous == NULL)','if (false)'),
         }
@@ -234,5 +238,8 @@ def main():
             r=run(prefix,broken,capture=True)
             failures=re.search(r'functional_failures=(\d+)',r.stdout)
             if r.returncode!=1 or not failures or int(failures[1])==0:raise SystemExit('Mutation failed to produce semantic failure: '+name+'\n'+r.stdout+r.stderr)
-            print('DETECTED '+name+' functional_failures='+failures[1])
+            canary=re.search(r'canary_failures=(\d+)',r.stdout)
+            if name=='wrong-config-field' and (not canary or int(canary[1])==0):
+                raise SystemExit('Wrong-field mutation did not corrupt the independent D3D canary')
+            print('DETECTED '+name+' functional_failures='+failures[1]+' canary_failures='+canary[1])
 if __name__=='__main__':main()

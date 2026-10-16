@@ -238,14 +238,16 @@ struct MainSupervisorView
         unsigned char serializedConfiguration[0x34]; // +0x120
         struct
         {
-            unsigned char configUnknown120[0x018];
-            signed char bgmVolume;              // +0x138
-            signed char sfxVolume;              // +0x139
-            signed char colorMode;              // +0x13A
+            unsigned char configUnknown120[0x01A];
+            signed char colorMode;              // +0x13A; D3D color depth
             unsigned char configUnknown13B[2];
             unsigned char windowed;             // +0x13D
             unsigned char frameskip;            // +0x13E
-            unsigned char configUnknown13F[0x011];
+            unsigned char configUnknown13F;
+            signed char bgmVolume;              // +0x140
+            signed char sfxVolume;              // +0x141
+            signed char hintMode;               // +0x142; front-end hint setting
+            unsigned char configUnknown143[0x00D];
             unsigned int options;               // +0x150
         };
     };
@@ -283,9 +285,10 @@ typedef char MainSupervisorPresentationAt0E4[
     (offsetof(MainSupervisorView, presentParameters) == 0x0e4) ? 1 : -1];
 typedef char MainSupervisorConfigurationOffsets[
     (offsetof(MainSupervisorView, serializedConfiguration) == 0x120 &&
-     offsetof(MainSupervisorView, bgmVolume) == 0x138 &&
-     offsetof(MainSupervisorView, sfxVolume) == 0x139 &&
+     offsetof(MainSupervisorView, bgmVolume) == 0x140 &&
+     offsetof(MainSupervisorView, sfxVolume) == 0x141 &&
      offsetof(MainSupervisorView, colorMode) == 0x13a &&
+     offsetof(MainSupervisorView, hintMode) == 0x142 &&
      offsetof(MainSupervisorView, windowed) == 0x13d &&
      offsetof(MainSupervisorView, frameskip) == 0x13e &&
      offsetof(MainSupervisorView, options) == 0x150) ? 1 : -1];

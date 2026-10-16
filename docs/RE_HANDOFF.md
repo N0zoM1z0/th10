@@ -1347,3 +1347,28 @@ adapter ownership gaps remain. UpdateOptions remains3276/3188 and nonexact.
 Public timer tests now exercise the actual predicate (6716 defined cases,
 three mutations) without private data. Keep only source, manifests, tests and
 compact analysis in Git; generated artifacts stay local. Math remains paused.
+
+
+## 2026-10-16 Supervisor/hint layout repair
+
+The common supervisor base is constructor-attested491C28. Keep D3D colorMode
+at13A, windowed13D, frameskip13E and options150. Corrected BGM/SFX offsets are
+140/141; front-end hintMode is a separate byte142. Main.cpp remains unchanged;
+FrontEnd uses hintMode/SetHintModeSprites. The earlier per-owner491C30+138/139
+decomposition matched code operands but was not a consistent shared owner.
+Do not reuse it.
+
+Corrected refresh again passes canonical3999/3999,112fields. All72 same-symbol
+manifest references now use491C28; public checks and a distinct D3D canary
+guard this integration boundary. No extra exact credit. Finish the current
+checkpoint, then rerun Factory codegen_exact and verify a fresh accepted fact;
+the prior a3e075b receipt is historical once source changes.
+
+Options controller's remaining input/timer/adapter knowledge gap is parked:
+the actual enclosing Update root control leaves both native owners raw-identical,
+and the right-side lookup reduction is safe interprocedural common-prefix
+hoisting with no demonstrated missing helper semantics. Avoid spelling/TU/ABI
+sweeps. Next large candidate is key-config display42F8B0/2452: wrong root slot,
+uncached manager and eager binding snapshots are independently verified bugs.
+Its local proposal/tests are prepared but not yet applied. Preserve refresh's
+canonical regression. Math remains paused.

@@ -571,15 +571,15 @@ static __forceinline AnmVmView *FindOptionsChildVm(
     return manager->FindVm(FindOptionsChildId(controller, manager, scriptIndex));
 }
 
-static __forceinline void SetColorModeSprites(
+static __forceinline void SetHintModeSprites(
     FrontEndControllerView *controller, AnmRenderManagerView *manager)
 {
-    if (g_MainSupervisorView.colorMode == 0)
+    if (g_MainSupervisorView.hintMode == 0)
     {
         FindOptionsChildId(controller, manager, 0x1f).SetSprite(0x2e);
         FindOptionsChildId(controller, manager, 0x20).SetSprite(0x2f);
     }
-    else if (g_MainSupervisorView.colorMode == 1)
+    else if (g_MainSupervisorView.hintMode == 1)
     {
         FindOptionsChildId(controller, manager, 0x1f).SetSprite(0x30);
         FindOptionsChildId(controller, manager, 0x20).SetSprite(0x31);
@@ -910,7 +910,7 @@ int __stdcall FrontEndControllerView::UpdateOptions(
         {
             controller->SetScreenStateTarget(FRONT_END_OPTIONS_ACTIVE);
             InterruptVmNow(controller, FRONT_END_ROOT_VM, 3);
-            SetColorModeSprites(controller, g_AnmRenderManagerView);
+            SetHintModeSprites(controller, g_AnmRenderManagerView);
             FrontEndMarkVmInterrupt(
                 controller, FRONT_END_ROOT_VM,
                 static_cast<short>(static_cast<short>(controller->cursor.current) + 0x11));
@@ -966,11 +966,11 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             switch (controller->cursor.current)
             {
             case 0:
-                if (g_MainSupervisorView.colorMode == 0)
-                    g_MainSupervisorView.colorMode = 2;
+                if (g_MainSupervisorView.hintMode == 0)
+                    g_MainSupervisorView.hintMode = 2;
                 else
-                    --g_MainSupervisorView.colorMode;
-                SetColorModeSprites(controller, manager);
+                    --g_MainSupervisorView.hintMode;
+                SetHintModeSprites(controller, manager);
                 QueueOptionsSound(FRONT_END_SOUND_MOVE);
                 break;
             case 1:
@@ -995,12 +995,12 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             switch (controller->cursor.current)
             {
             case 0:
-                if (static_cast<unsigned char>(g_MainSupervisorView.colorMode) < 2)
-                    ++g_MainSupervisorView.colorMode;
+                if (static_cast<unsigned char>(g_MainSupervisorView.hintMode) < 2)
+                    ++g_MainSupervisorView.hintMode;
                 else
-                    g_MainSupervisorView.colorMode = 0;
+                    g_MainSupervisorView.hintMode = 0;
                 QueueOptionsSound(FRONT_END_SOUND_MOVE);
-                SetColorModeSprites(controller, manager);
+                SetHintModeSprites(controller, manager);
                 break;
             case 1:
                 g_MainSupervisorView.bgmVolume += 5;
@@ -1029,9 +1029,9 @@ int __stdcall FrontEndControllerView::UpdateOptions(
             case 4:
                 g_MainSupervisorView.bgmVolume = 100;
                 g_MainSupervisorView.sfxVolume = 80;
-                g_MainSupervisorView.colorMode = 0;
+                g_MainSupervisorView.hintMode = 0;
                 controller->RefreshOptionsDisplay();
-                SetColorModeSprites(controller, manager);
+                SetHintModeSprites(controller, manager);
                 QueueOptionsSound(FRONT_END_SOUND_SELECT);
                 return 1;
             case 5:
