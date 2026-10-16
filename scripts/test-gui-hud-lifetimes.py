@@ -27,6 +27,17 @@ def extract(source, signature):
 
 def owner_source():
     source = SOURCE.read_text()
+    if '// HUD boss-gauge phase begin:' in source:
+        # Keep the existing dependency seam for these unrelated HUD checks.
+        # The complete current lexical phase is executed independently by
+        # test-gui-boss-gauge-phase.py; no historical phase copy is substituted.
+        start = source.index('// HUD boss-gauge phase begin:')
+        brace = source.index('{', start)
+        depth, end = 1, brace + 1
+        while depth:
+            depth += (source[end] == '{') - (source[end] == '}')
+            end += 1
+        source = source[:brace] + 'UpdateBossGauge(gui);' + source[end:]
     return '\n'.join(extract(source, signature) for signature in (
         'static void UpdateSpellAndBossPosition(GuiView *gui)',
         'int __stdcall GuiView::UpdateStageElements(GuiView *gui)'))

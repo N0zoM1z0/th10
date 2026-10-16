@@ -19,6 +19,12 @@ SOURCE = ROOT / 'src/Gui.cpp'
 
 def function_source():
     source = SOURCE.read_text()
+    marker = '// HUD boss-gauge stage selector begin.'
+    if marker in source:
+        start = source.index(marker) + len(marker)
+        end = source.index('// HUD boss-gauge stage selector end.', start)
+        return ('static int BossGaugeScript() {\n' + source[start:end] +
+                '\nreturn script;\n}')
     start = source.index('static int BossGaugeScript()')
     brace = source.index('{', start)
     depth, end = 1, brace + 1

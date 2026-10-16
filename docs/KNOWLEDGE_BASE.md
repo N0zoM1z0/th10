@@ -1988,3 +1988,57 @@ Focused canonical regressions pass four existing units totaling153 bytes:
 GuiScore::Add46, the two ID sprite wrappers36+34, and Main next-mode setter37.
 This is a bounded dependency check, not all transitive units or a new exact
 claim. Full public CI and both source-extracted UBSan fixtures pass.
+
+
+## 2026-10-16 Lexical ownership of the HUD boss-gauge phase
+
+The fresh HUD baseline still emitted UpdateBossGauge, SetBossGaugeInterrupt,
+BossGaugeScript and CreateGuiVm calls that do not exist in native
+414ACF-41513B. One bounded control restores this phase directly in its owner,
+leaving canonical ANM wrappers, compiler profile, support graph, message cleanup
+and spell-marker phase unchanged. No inline directive or ABI annotation is added.
+
+The phase owns six primary-before-secondary lookup/root-child interrupt walks,
+its seven-stage selector, and two creation/publication expansions. Manager ESI
+is captured at414B60 and retained through side transitions and allocation.
+Front ANM is captured before AllocateVm at414E8B/414F59; after InitializeVm,
+414EBA/414F83 reload the manager for list insertion, ID allocation and later
+segment allocations. Node owner/next/previous, head/tail insertion including
+successor splicing, modulo-32-bit ID increment with zero skipped, VM ID and GUI
+ID publication follow target order. The shared wrapper definitions are untouched.
+
+Native active-boss paths require a live player and ANM owner; creation also
+requires a live resource and successful VM allocation. The former helper's
+extra null-player/resource suppression is not reproduced. Traversed node owners
+must be valid. Side-transition loops use signed segmentCount with no invented
+clamp; upkeep visits exactly ten slots and removes excess IDs. Tests keep
+positive counts within the ten-slot storage domain. Hidden paths preserve
+segment IDs, life, target and flags while clearing displayed gauge and only
+the four interleaved value fields, matching415132's final+9EAC store.
+
+The new source-extracted phase fixture covers list priority, root/child and
+nonroot propagation, successful removal and ID clearing, missing/zero IDs,
+empty and nonempty insertion, preserved successor splice links, manager/resource
+capture and reload, ID wrap, count boundaries, stage gates, position thresholds
+and interpolation clamp. Twelve compiling mutations require explicit exit1
+CHECK diagnostics without UBSan failure. Existing counter/message/countdown
+checks retain a declared phase seam; this new suite executes the actual current
+lexical block. Selector tests also extract the current lexical selector. No old
+helper copy substitutes for the candidate. Synthetic pointer changes establish
+ordering only, not game reachability, native floating precision or runtime safety.
+
+One fresh same-graph build yields PE
+a46288358999aab3382e7d9e082afbe4490c080a9b684bd8d8e5e6f83a8cc119.
+HUD is2,388/3,836 bytes, with boss phase4020D4-402747 at1,652 bytes versus
+native1,645. Its only phase calls are AllocateVm at4024AB/402587 and InitializeVm
+at4024CF/4025AE. The complete seven-entry selector at402838-402853 lies inside
+its PDB contribution, ending402854 exclusive. Former phase helper calls are gone.
+This is topology/ownership evidence, not a match percentage or exact claim.
+FinishMessage102 and spell helper587 remain outlined. Message Run remains1,296
+bytes and is separate future work. Diagnostic table-tail decoding is incomplete;
+only complete canonical replay can grant codegen credit.
+
+After lexical recovery, the same four focused canonical dependency units
+again pass153/153 bytes. All three UBSan suites (12 phase,9 lifetime and3
+selector mutation controls), target GUI report and full public CI pass.
+No exact ledger or origin count is changed by this owner-boundary checkpoint.

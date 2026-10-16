@@ -1420,3 +1420,14 @@ claiming synthetic mutations are reachable gameplay bugs. HUD remains nonexact
 cleanup and spell phases are still outlined; any later lexical recovery must
 be one bounded native phase with its own source-extracted tests and replay.
 Do not change canonical wrapper pragmas or sweep compiler profiles.
+
+
+## HUD boss-phase ownership checkpoint (2026-10-16)
+
+One lexical phase now replaces the artificial boss-gauge helper boundaries.
+Its six interrupt walks, selector and creation/publication operations are
+independently target-audited and source-tested. Same-graph HUD size is now
+2,388/3,836; only four genuine allocation/initialization calls remain inside
+this phase. This is not exact credit. Message cleanup and spell-marker phases
+remain outlined and are the next bounded ownership targets. Keep canonical
+wrappers/profile unchanged, and retain native preconditions and test limits.

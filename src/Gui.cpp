@@ -344,116 +344,6 @@ static void CompleteStageFromMessage()
     }
 }
 
-static int BossGaugeScript()
-{
-    int script = 0x85;
-    switch (g_GuiStage)
-    {
-    case 1:
-        if (g_GuiMessageState > 0x17)
-            script = 0x86;
-        break;
-    case 2:
-        if (g_GuiMessageState < 0x18)
-            return -1;
-        script = 0x87;
-        break;
-    case 3:
-        if (g_GuiMessageState < 0x18)
-            return -1;
-        script = 0x88;
-        break;
-    case 4:
-        script = g_GuiMessageState > 0x17 ? 0x8a : 0x89;
-        break;
-    case 5:
-        script = 0x8b;
-        break;
-    case 6:
-        script = 0x8c;
-        break;
-    case 7:
-        script = g_GuiMessageState > 0x17 ? 0x8d : 0x8c;
-        break;
-    }
-    return script;
-}
-
-static void SetBossGaugeInterrupt(GuiView *gui, short interrupt)
-{
-    int i;
-    for (i = 0; i < gui->bossGaugeSegmentCount; ++i)
-        InterruptVm(&gui->bossGaugeSegmentVmIds[i], interrupt);
-    InterruptVm(&gui->bossGaugeVmId, interrupt);
-}
-
-static void UpdateBossGauge(GuiView *gui)
-{
-    GuiEnemyView *boss = g_GuiEnemyManager == NULL
-        ? NULL : g_GuiEnemyManager->activeBoss;
-    if (boss == NULL || gui->message != NULL)
-    {
-        InterruptVm(&gui->bossGaugeVmId, 1);
-        gui->bossGaugeVmId.value = 0;
-        gui->bossGaugeDisplayed = 0.0f;
-        int i;
-        for (i = 0; i < 4; ++i)
-            gui->bossGaugeValues[i].value = 0.0f;
-        return;
-    }
-
-    gui->bossLife = boss->life;
-    gui->bossGaugeTarget = static_cast<float>(boss->life) /
-        static_cast<float>(boss->maximumLife);
-    if (gui->bossGaugeDisplayed < gui->bossGaugeTarget)
-        gui->bossGaugeDisplayed += 0.025f;
-    if (gui->bossGaugeDisplayed > gui->bossGaugeTarget)
-        gui->bossGaugeDisplayed = gui->bossGaugeTarget;
-
-    if (g_GuiPlayer != NULL)
-    {
-        if ((gui->guiFlags & 8) == 0 &&
-            g_GuiPlayer->positionY <= 64.0f &&
-            g_GuiPlayer->positionX < -64.0f)
-        {
-            SetBossGaugeInterrupt(gui, 3);
-            gui->guiFlags |= 8;
-        }
-        else if ((gui->guiFlags & 8) != 0 &&
-                 (g_GuiPlayer->positionY >= 80.0f ||
-                  g_GuiPlayer->positionX > 0.0f))
-        {
-            SetBossGaugeInterrupt(gui, 2);
-            gui->guiFlags &= ~8u;
-        }
-    }
-
-    if (gui->bossGaugeVmId.value == 0)
-    {
-        const int script = BossGaugeScript();
-        if (script >= 0)
-            gui->bossGaugeVmId.value = CreateGuiVm(gui->frontAnm, script);
-    }
-
-    int i;
-    for (i = 0; i < 10; ++i)
-    {
-        if (i < gui->bossGaugeSegmentCount)
-        {
-            if (gui->bossGaugeSegmentVmIds[i].value == 0)
-            {
-                gui->bossGaugeSegmentVmIds[i].value =
-                    CreateGuiVm(gui->frontAnm, i + 0x5b);
-            }
-        }
-        else
-        {
-            InterruptVm(&gui->bossGaugeSegmentVmIds[i], 1);
-            gui->bossGaugeSegmentVmIds[i].value = 0;
-        }
-    }
-}
-
 static void FinishMessage(GuiView *gui)
 {
     if (gui->message == NULL)
@@ -851,7 +741,371 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
     }
     AnmRenderManagerView::ExecuteScript(&gui->displayVms5[6]);
 
-    UpdateBossGauge(gui);
+    // HUD boss-gauge phase begin: target 0x00414ACF-0x0041513B.
+    {
+        GuiEnemyView *boss = g_GuiEnemyManager == NULL
+            ? NULL : g_GuiEnemyManager->activeBoss;
+        if (boss != NULL && gui->message == NULL)
+        {
+            gui->bossLife = boss->life;
+            gui->bossGaugeTarget = static_cast<float>(boss->life) /
+                static_cast<float>(boss->maximumLife);
+            if (gui->bossGaugeDisplayed < gui->bossGaugeTarget)
+                gui->bossGaugeDisplayed += 0.025f;
+            if (gui->bossGaugeDisplayed > gui->bossGaugeTarget)
+                gui->bossGaugeDisplayed = gui->bossGaugeTarget;
+
+            // The native active-boss path requires a live player and ANM owner.
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            if ((gui->guiFlags & 8) != 0)
+            {
+                if (g_GuiPlayer->positionY >= 80.0f ||
+                    g_GuiPlayer->positionX > 0.0f)
+                {
+                    for (int segment = 0; segment < gui->bossGaugeSegmentCount; ++segment)
+                    {
+                        const int id = gui->bossGaugeSegmentVmIds[segment].value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->pendingInterrupt = 2;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 2;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    {
+                        const int id = gui->bossGaugeVmId.value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->pendingInterrupt = 2;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 2;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    gui->guiFlags &= ~8u;
+                }
+            }
+            else if (g_GuiPlayer->positionY <= 64.0f &&
+                     g_GuiPlayer->positionX < -64.0f)
+            {
+                for (int segment = 0; segment < gui->bossGaugeSegmentCount; ++segment)
+                {
+                    const int id = gui->bossGaugeSegmentVmIds[segment].value;
+                    if (id != 0)
+                    {
+                        AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                        while (node != NULL &&
+                               static_cast<AnmVmView *>(node->owner)->id != id)
+                            node = node->next;
+                        if (node == NULL)
+                        {
+                            node = manager->secondaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                        }
+                        if (node != NULL)
+                        {
+                            AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                            if (vm != NULL)
+                            {
+                                vm->pendingInterrupt = 3;
+                                if (vm->layerNode.previous == NULL)
+                                {
+                                    node = vm->layerNode.next;
+                                    while (node != NULL)
+                                    {
+                                        static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 3;
+                                        node = node->next;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                {
+                    const int id = gui->bossGaugeVmId.value;
+                    if (id != 0)
+                    {
+                        AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                        while (node != NULL &&
+                               static_cast<AnmVmView *>(node->owner)->id != id)
+                            node = node->next;
+                        if (node == NULL)
+                        {
+                            node = manager->secondaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                        }
+                        if (node != NULL)
+                        {
+                            AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                            if (vm != NULL)
+                            {
+                                vm->pendingInterrupt = 3;
+                                if (vm->layerNode.previous == NULL)
+                                {
+                                    node = vm->layerNode.next;
+                                    while (node != NULL)
+                                    {
+                                        static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 3;
+                                        node = node->next;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                gui->guiFlags |= 8;
+            }
+
+            if (gui->bossGaugeVmId.value == 0)
+            {
+                // HUD boss-gauge stage selector begin.
+                int script = 0x85;
+                switch (g_GuiStage)
+                {
+                case 1:
+                    if (g_GuiMessageState > 0x17)
+                        script = 0x86;
+                    break;
+                case 2:
+                    if (g_GuiMessageState < 0x18)
+                        script = -1;
+                    else
+                        script = 0x87;
+                    break;
+                case 3:
+                    if (g_GuiMessageState < 0x18)
+                        script = -1;
+                    else
+                        script = 0x88;
+                    break;
+                case 4:
+                    script = g_GuiMessageState > 0x17 ? 0x8a : 0x89;
+                    break;
+                case 5:
+                    script = 0x8b;
+                    break;
+                case 6:
+                    script = 0x8c;
+                    break;
+                case 7:
+                    script = g_GuiMessageState > 0x17 ? 0x8d : 0x8c;
+                    break;
+                }
+
+                // HUD boss-gauge stage selector end.
+                if (script >= 0)
+                {
+                    // Allocate using the retained manager, initialize using the captured resource,
+                    // then publish through the freshly loaded global manager.
+                    AnmLoadedView *loaded = gui->frontAnm;
+                    AnmVmView *vm = manager->AllocateVm();
+                    vm->flags35C |= 0x40000000u;
+                    vm->renderLayer = GUI_VM_RENDER_LAYER;
+                    loaded->InitializeVm(vm, script);
+                    manager = g_AnmRenderManagerView;
+                    AnmVmLayerNodeView *node = &vm->managerNode;
+                    node->owner = vm;
+                    node->next = NULL;
+                    node->previous = NULL;
+                    if (manager->primaryVmListHead == NULL)
+                        manager->primaryVmListHead = node;
+                    else
+                    {
+                        AnmVmLayerNodeView *tail = manager->primaryVmListTail;
+                        if (tail->next != NULL)
+                        {
+                            node->next = tail->next;
+                            tail->next->previous = node;
+                        }
+                        tail->next = node;
+                        node->previous = tail;
+                    }
+                    manager->primaryVmListTail = node;
+                    manager->nextVmId.value = static_cast<int>(
+                        static_cast<unsigned int>(manager->nextVmId.value) + 1u);
+                    if (manager->nextVmId.value == 0)
+                        ++manager->nextVmId.value;
+                    vm->id = manager->nextVmId.value;
+                    gui->bossGaugeVmId.value = manager->nextVmId.value;
+                }
+            }
+            for (int segment = 0; segment < 10; ++segment)
+            {
+                if (segment < gui->bossGaugeSegmentCount)
+                {
+                    if (gui->bossGaugeSegmentVmIds[segment].value == 0)
+                    {
+                        // Allocate using the retained manager, initialize using the captured resource,
+                        // then publish through the freshly loaded global manager.
+                        AnmLoadedView *loaded = gui->frontAnm;
+                        AnmVmView *vm = manager->AllocateVm();
+                        vm->flags35C |= 0x40000000u;
+                        vm->renderLayer = GUI_VM_RENDER_LAYER;
+                        loaded->InitializeVm(vm, segment + 0x5b);
+                        manager = g_AnmRenderManagerView;
+                        AnmVmLayerNodeView *node = &vm->managerNode;
+                        node->owner = vm;
+                        node->next = NULL;
+                        node->previous = NULL;
+                        if (manager->primaryVmListHead == NULL)
+                            manager->primaryVmListHead = node;
+                        else
+                        {
+                            AnmVmLayerNodeView *tail = manager->primaryVmListTail;
+                            if (tail->next != NULL)
+                            {
+                                node->next = tail->next;
+                                tail->next->previous = node;
+                            }
+                            tail->next = node;
+                            node->previous = tail;
+                        }
+                        manager->primaryVmListTail = node;
+                        manager->nextVmId.value = static_cast<int>(
+                            static_cast<unsigned int>(manager->nextVmId.value) + 1u);
+                        if (manager->nextVmId.value == 0)
+                            ++manager->nextVmId.value;
+                        vm->id = manager->nextVmId.value;
+                        gui->bossGaugeSegmentVmIds[segment].value = manager->nextVmId.value;
+                    }
+                }
+                else
+                {
+                    {
+                        const int id = gui->bossGaugeSegmentVmIds[segment].value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->pendingInterrupt = 1;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 1;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    gui->bossGaugeSegmentVmIds[segment].value = 0;
+                }
+            }
+        }
+        else
+        {
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            {
+                const int id = gui->bossGaugeVmId.value;
+                if (id != 0)
+                {
+                    AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                    while (node != NULL &&
+                           static_cast<AnmVmView *>(node->owner)->id != id)
+                        node = node->next;
+                    if (node == NULL)
+                    {
+                        node = manager->secondaryVmListHead;
+                        while (node != NULL &&
+                               static_cast<AnmVmView *>(node->owner)->id != id)
+                            node = node->next;
+                    }
+                    if (node != NULL)
+                    {
+                        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                        if (vm != NULL)
+                        {
+                            vm->pendingInterrupt = 1;
+                            if (vm->layerNode.previous == NULL)
+                            {
+                                node = vm->layerNode.next;
+                                while (node != NULL)
+                                {
+                                    static_cast<AnmVmView *>(node->owner)->pendingInterrupt = 1;
+                                    node = node->next;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            gui->bossGaugeVmId.value = 0;
+            gui->bossGaugeDisplayed = 0.0f;
+            for (int value = 0; value < 4; ++value)
+                gui->bossGaugeValues[value].value = 0.0f;
+        }
+    }
+    // HUD boss-gauge phase end.
 
     GuiMessageVmView *message = gui->message;
     if (message != NULL)
