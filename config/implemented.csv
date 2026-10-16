@@ -940,3 +940,4 @@ ResultMenuResume
 ResultMenuUpdatePause
 AnmRenderManagerView::RequestCaptureRectangle
 FrontEndUnlockPracticeRecords
+ExportAutomaticHints

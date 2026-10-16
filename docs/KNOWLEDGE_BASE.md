@@ -1776,7 +1776,7 @@ Correct retained layout:
 - windowed +13D and frameskip +13E remain unchanged.
 - bgmVolume +140 (491D68), sfxVolume +141 (491D69).
 - hintMode +142 (491D6A), separate from D3D depth. At419009 this byte gates
-  loading hint/hint_auto.txt (string46D6D8); no individual mode-label meaning
+  automatic export/overwrite of hint/hint_auto.txt when equal to 2 (string46D6D8); no individual mode-label meaning
   beyond the audited byte protocol is assumed.
 - serializedConfiguration +120 and options +150, and all later offsets,
   remain unchanged. Only configuration padding is repartitioned.

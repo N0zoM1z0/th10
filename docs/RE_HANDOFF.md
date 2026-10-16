@@ -1445,3 +1445,15 @@ sweeps. Preserve the conditional PC53/PC64 witness; runtime FP control is unknow
 All seven configured Gui.cpp primary/support units revalidate568 bytes.
 The next independent source-presence opportunity is the audited automatic hint
 exporter; keep its original caller/storage/codegen closure separate.
+
+
+## Automatic hint exporter checkpoint (2026-10-16)
+
+Target 0x0041A200 (2247 bytes) now has maintained source and host contract
+fixtures in Hint.cpp / Hint.hpp. See HINT_EXPORT.md for layout, native quirks
+and limits. Full 12 mutation controls pass normally and with Python -O;
+public CI runs the baseline. FileSystem source/API is unchanged. The native
+diagnostic compiles, but its 2669-byte owner is nonexact. No exact credit.
+The source-absent loader 0x00419960 is the next coherent owner; its observed
+65-byte text copy requires a reviewed storage-view extension before use.
+Keep the real initializer/cleanup caller graph and physical storage open.

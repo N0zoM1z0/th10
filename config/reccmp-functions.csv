@@ -941,3 +941,4 @@ ResultMenuResume,0x00422C30,function
 ResultMenuUpdatePause,0x00422C80,function
 AnmRenderManagerView::RequestCaptureRectangle,0x00424480,function
 FrontEndUnlockPracticeRecords,0x0042C8C0,function
+ExportAutomaticHints,0x0041A200,function
