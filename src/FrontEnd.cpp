@@ -558,7 +558,7 @@ static __forceinline AnmVmIdView FindOptionsChildId(
     {
         AnmVmView *child = static_cast<AnmVmView *>(node->owner);
         if (child->scriptIndex == scriptIndex)
-            return AnmVmIdView(child->id);
+            return AnmVmIdView(static_cast<AnmVmView *>(node->owner)->id);
         node = node->next;
     }
     return AnmVmIdView();
@@ -1078,11 +1078,7 @@ void FrontEndControllerView::RefreshOptionsDisplay()
     FrontEndQueueSoundCommand("SetVol", 8, 0);
     g_FrontEndSoundSfxVolume = g_MainSupervisorView.sfxVolume;
 
-    if (g_FrontEndSoundSfxVolume == 0)
-    {
-        g_FrontEndSoundBgmAttenuation = -10000;
-    }
-    else
+    if (g_FrontEndSoundSfxVolume != 0)
     {
         volume = static_cast<float>(g_FrontEndSoundBgmVolume) / 100.0f;
         volume = 1.0f - volume;
@@ -1091,6 +1087,10 @@ void FrontEndControllerView::RefreshOptionsDisplay()
         volume = 1.0f - volume;
         g_FrontEndSoundBgmAttenuation =
             -5000 - static_cast<int>(-5000.0f * volume);
+    }
+    else
+    {
+        g_FrontEndSoundBgmAttenuation = -10000;
     }
 
     AnmRenderManagerView *manager = g_AnmRenderManagerView;

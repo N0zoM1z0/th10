@@ -1647,3 +1647,103 @@ excluding defaults. Current2909 cases and all13 mutation controls pass;
 historical baseline retains108 expected failures in2139 safe cases.
 Full CI passes. Focused existing setter replay remains163/163,
 PE3e4ca90636d4beb15873fde6be8ae83d70e46bfbd9abb57e56e383fde37e25db.
+
+
+## 2026-10-16 Options remaining dependency audit and rejected input control
+
+Complete native target-to-candidate inspection, using target SHA256
+2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040 and lexical
+candidate043f372e6b8341f9e9f0e2897f799fe941d4a4a90315b5eee0660fc14233578b,
+finds no missing helper semantics in these extents:
+
+- CreateVm42C670/95 versus candidate4013F0/93 captures frontAnm before allocation,
+  allocates through the current manager, sets layer15 and flag40000000,
+  initializes using captured loaded ANM and original script index, reloads the
+  manager, adds variant0 and publishes the returned ID. Instruction streams
+  agree apart from linkages and final RET versus RET4.
+- Timer427C70/29 versus candidate4014D0/25 reads signed current+4/previous+0,
+  skips division when equal, otherwise performs signed IDIV and returns the
+  zero-remainder predicate. Two RET/RET4 differences and branch displacement
+  account for the four-byte gap; there is no missing comparison.
+- Immediate adapters42C730/27 and42C750/27 read the selected ID, load the manager,
+  preserve EDI, supply interrupt2/3, call449250 and restore EDI. Source behavior
+  agrees. The target places adapters only at cancel-to-row5 (42DCA4) and the two
+  closing calls (42E531/42E53D); opening and cursor-change execute directly.
+  Uniform wrapper insertion or expansion would not restore this asymmetry.
+- Input40ACE0/33 tests pressed+6 before repeated+4. The private wrapper4014A0/38
+  specializes the global object; even its wider repeated load tests only the
+  relevant low16 bits. Ordinary predicate semantics agree.
+
+A single direct-member control replaced the four UpdateOptions InputRepeated
+uses with g_FrontEndInput.IsRepeated, without attributes/profile/TU changes.
+PE89d5b2ffd1c30db872a8e2b552ad2b35ce9f6caba63204e049bc39b93607ed02 emits
+controller3296 physical bytes and inlines all four input calls, losing the two
+target call boundaries (76 total calls rather than78). Refresh stays3945.
+The source and fixture changes were reverted exactly to the lexical checkpoint;
+the bounded patch/report remain local evidence. Do not force partial inlining
+with arbitrary annotations.
+
+PlayerTimerView::HasIntervalTick is the genuine existing canonical29-byte
+normal-COFF owner, but the options field is a separate AnmVmTimerView. Shared
+20-byte field layout alone does not justify reinterpret-casting whole timer
+objects or duplicating a forced member; their maintained Add APIs differ.
+A sound binding needs shared type/owner evidence and an appropriate producer
+graph. Current controller tests explicitly mock creation, timer and immediate
+execution; they do not certify those bodies. No exactness credit is claimed.
+
+
+## 2026-10-16 Options refresh canonical code-generation candidate
+
+Two further independently evidenced source expressions close the native gap:
+successful child-ID return repeats node->owner (as target cold return blocks
+and helper4497D0 do), rather than retaining the earlier comparison pointer;
+attenuation's nonzero arm precedes its zero arm. The arithmetic, typed ID
+ownership and all audited state/read contracts are unchanged. No volatile,
+register annotations, padding, ABI changes or profile changes were introduced.
+
+The complete3999-byte RefreshOptionsDisplay extent42E5A0-42F53E, including its
+169 bytes of interior compiler alignment, now passes two independent canonical
+cold links using frontend-options-refresh:
+- PE5ebd74baa0c338d98d9aab2b840e6866caf66c57a7a9319d466b80e90bcc854b
+- PEf39f571d4734c3215db0d0a4f7431d2b4c38fba6190da8a32b99809b5051658a
+Both are3999/3999 with112 exhaustively decoded and semantically resolved fields,
+unique source.ltcg.obj PDB ownership, complete Capstone normalization and no
+differences. The target extent SHA256 is
+7bdfa912c5ce94c888313ef961b788ec6a2f47a074d9534ba251776601cb9c6b.
+These are canonical code-generation results, not raw whole-image equality.
+
+The112 fields comprise84 REL32 calls (70 FindVm,12 SetSprite,QueueCommand and
+__ftol2) and28 DIR32 data references. Supervisor reads bind the actual
+g_MainSupervisorView base491C30 with offsets138/139. The diagnostic anchor's
+nearest-public Sleep label is incidental and is not used as semantic identity.
+Other destinations are manager491C10, sound owner492590, volume slots497854/
+497858, attenuation49785C, SetVol46ECE8, and float constants470B00/470AFC/470B80.
+SetVol's seven bytes and the three float32 encodings independently match;
+__ftol2 is already supported by canonical runtime-crt-00463b2c's117-byte
+libcmt.lib member. The harness remains nonruntime data anchors: live storage
+identity, whole-product linking, startup and gameplay are not established.
+
+Producer context is the maintained UpdateOptions caller and the same ordered
+eight real TUs used for the diagnostics, historical VC7.1 /GL /GS, and the
+standard linked-PE link profile. The112-field manifest, source and tests are
+the retained reproducible evidence; private images/PDBs/dumps remain ignored.
+No upstream code or reference synthetic context was imported.
+
+Final source gates pass2909 controller cases,122 instrumented plus122 plain
+refresh cases, all13+7 mutation controls, and20 topology recognizer cases.
+New exact-source TimerReachedMultiple tests add6716 defined UBSan cases in
+normal and Python-O modes, with three deliberate mutations rejected. They
+cover unchanged-state short circuit, backwards transitions and signed
+divisibility, while excluding undefined changed-state divisions. They prove
+the predicate separately; controller creation/immediate-execution mocks and
+native ABI/runtime limitations remain explicit.
+
+The exact ledger row registers an imported Factory replay candidate based on
+these local canonical results. At this checkpoint, fresh Factory receipt
+acceptance is still pending; it must report pass plus accepted before a live
+accepted-fact claim. UpdateOptions itself remains nonexact (latest3276/3188).
+
+Final toolchain verification, tracking validation and full public CI pass.
+The two previously accepted screen/state setters remain163/163 under focused
+canonical replay, PE2f6c35c544d6d7f71475f8098371dca0735ca66f8acf755969fc620022f21220.
+This existing-byte regression check adds no new credit.

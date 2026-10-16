@@ -1324,3 +1324,26 @@ resolved by equal total78 calls. Prefer existing target-attested owner bindings
 over artificial wrapper/ABI changes. Refresh still has target owner reloads in
 cold ID-return blocks and opposite attenuation-arm order. Preserve typed IDs,
 avoid scalar/volatile/register sweeps. Math remains paused.
+
+
+## 2026-10-16 Options refresh canonical candidate awaiting Factory receipt
+
+RefreshOptionsDisplay42E5A0/3999 passes two independent canonical cold links
+under frontend-options-refresh, all112 semantic fields and complete physical
+extent, with unique PDB ownership and zero differences. See the dated knowledge
+note for hashes, data identities and evidence limitations. Exact registration
+is now a replay candidate; submit its returned codegen_exact claim through
+Factory after this checkpoint, freeze the repository, and require receipt pass,
+acceptance accepted and a fresh accepted-fact check. Do not equate the local
+result or ledger alone with Factory acceptance.
+
+Source only repeats the target's successful node-owner read and puts the
+attenuation nonzero arm first. Typed IDs, manager lifetimes and x87 arithmetic
+remain unchanged. Direct-input binding was tested and reverted because it
+inlined all four sites instead of preserving the target two-call boundary.
+Timer/create/interrupt audits show no omitted helper effects, but cleanup and
+adapter ownership gaps remain. UpdateOptions remains3276/3188 and nonexact.
+
+Public timer tests now exercise the actual predicate (6716 defined cases,
+three mutations) without private data. Keep only source, manifests, tests and
+compact analysis in Git; generated artifacts stay local. Math remains paused.
