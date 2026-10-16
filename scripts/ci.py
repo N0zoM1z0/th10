@@ -42,6 +42,7 @@ def main() -> int:
         run("Compile workflow Python", [sys.executable, "-m", "py_compile", *tracked("scripts/*.py")])
         run("Validate LTCG entry identity guards", [sys.executable, "scripts/test-ltcg-entry.py"])
         run("Validate replay payload order", [sys.executable, "scripts/test-replay-payload-order.py"])
+        run("Validate lexical HUD message phase", [sys.executable, "scripts/test-gui-message-phase.py"])
         run("Validate lexical HUD boss-gauge phase", [sys.executable, "scripts/test-gui-boss-gauge-phase.py"])
         run("Validate HUD boss-gauge selection", [sys.executable, "scripts/test-gui-boss-gauge-selector.py"])
         run("Validate HUD lifetimes and countdown sounds", [sys.executable, "scripts/test-gui-hud-lifetimes.py"])

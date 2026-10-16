@@ -1431,3 +1431,17 @@ independently target-audited and source-tested. Same-graph HUD size is now
 this phase. This is not exact credit. Message cleanup and spell-marker phases
 remain outlined and are the next bounded ownership targets. Keep canonical
 wrappers/profile unchanged, and retain native preconditions and test limits.
+
+
+## Complete HUD workflow checkpoint (2026-10-16)
+
+Message cleanup and spell/marker phases now reside in the HUD owner, including
+target-backed lifetime/precondition corrections and immediate threshold
+branches. Latest same-graph extent is3,772/3,836, not a matching percentage.
+All21 call identities/counts agree, but complete byte equality is still open.
+Do not add exact credit or hide the remaining compiler visibility, scheduling,
+constant-width and exceptional-FP differences with forced reloads or flag/TU
+sweeps. Preserve the conditional PC53/PC64 witness; runtime FP control is unknown.
+All seven configured Gui.cpp primary/support units revalidate568 bytes.
+The next independent source-presence opportunity is the audited automatic hint
+exporter; keep its original caller/storage/codegen closure separate.

@@ -2042,3 +2042,76 @@ After lexical recovery, the same four focused canonical dependency units
 again pass153/153 bytes. All three UBSan suites (12 phase,9 lifetime and3
 selector mutation controls), target GUI report and full public CI pass.
 No exact ledger or origin count is changed by this owner-boundary checkpoint.
+
+
+## 2026-10-16 Complete lexical HUD workflow and remaining codegen gaps
+
+Message cleanup is now owned directly by UpdateStageElements. Entry message
+41513C is retained for Run and the success timer. Failure reloads the current
+message once at4151A5 and manager once at4151B8, then processes six slots
++40 through+54. Each primary-before-secondary lookup marks the selected VM and,
+only for a root, its flat child chain with deletion bit04000000; unrelated
+flags are preserved. Each ID clears after its walk. Captured message is freed
+at415488 after the final clear, and the GUI owner clears unconditionally on
+failure at415490. Null post-Run owner skips walks/free but still clears owner.
+Source-extracted tests cover valid doubly linked lists, stale/zero IDs, both
+lists, root/nonroot behavior, captured free and owner clear. Sixteen compiling
+mutations fail by explicit assertions. Manager retention and intra-walk order
+are native/source evidence, not invented production callbacks.
+
+Spell/countdown and marker operations are also lexical. Every native skip
+reaches the existing GUI frame timer at415764. Active marker paths require
+nonnull game/player owners, matching4155EB and415702; former unsupported null
+fallbacks are removed. Countdown sound IDs, sprite reloads, post-countdown
+manager selection and retained boss remain as previously audited. Four marker
+phases use strict thresholds and preserve unrelated flag bits. A first full
+build genuinely emitted three artificial threshold/interrupt data tables, so
+one bounded control replaces them with target-observed mode-first immediate
+branches. Deep-crossing tests prove at most one transition per call.
+
+The fade expression separately widens before subtracting. Target sequence is
+FLD, FSUB415702, FABS415708, FCOM qword64, FMUL dword(-191/64), then integer
+conversion415728, with no intermediate single-precision store. The current
+candidate also has no F32 spill. A defined field-value witness is boss64 and
+player2^-20: distance64-2^-20 and scaled product-191+191/2^26 give alpha254
+with round-to-nearest PC53/PC64. PC24 can round subtraction to64 and give255
+without a store. Runtime precision/rounding control is not established; host
+double tests are a conditional model, not observed gameplay, historical source
+type inference, or all-mode/NaN equivalence. The prior VC7 expression's spill
+behavior was not used as evidence of a runtime bug.
+
+One final native/source audit removes only the counter loop's extra frontAnm
+null guard: target414A87-414A98 unconditionally calls SetSprite. Full-owner
+fixtures now provide a valid front resource; no null-member crash is tested
+as success. The other player-overlap branch factoring remains unchanged.
+
+Reproduction uses the maintained UpdateStageElements entry, Gui.cpp primary,
+and ordered AnmManager.cpp, AnmVmCreate.cpp, AnmVmId.cpp, RandomMath.cpp,
+EnemyEclDispatcher.cpp, Main.cpp supports, with the public LTCG_PROFILE and
+standard cold-link profile/harness. There was no graph/profile sweep.
+Progression in that same context: message recovery3,112 bytes; complete spell
+recovery3,668; immediate branches3,772; direct counter call remains3,772,
+versus native3,836. Final PE:
+fdc95d2154daeb930cd4ae08db3ae8ee996b3a81f036dcb14973fa0aa5b216e1.
+These are extent sizes, not matching percentages. All21 native call identities
+and counts are represented; private phase helpers are gone. The reviewed
+seven-entry table remains inside the PDB owner. Linear instruction decoding
+alone is not a table proof; the existing comparator accounts for authoritative
+PE DIR32 relocations, and a future canonical claim must bind every field.
+
+Remaining differences are explicitly open: register/branch scheduling and
+alignment; qword versus dword multiplication of the same exactly representable
+coefficient; ordered versus unordered comparison paths; and an optimizer-held
+manager value where native reloads the global. Maintained queue and SetSprite
+bodies do not mutate that manager, so do not manufacture volatile or opaque
+callee effects to force a reload. No further source-contract mismatch was
+established in this bounded pass. HUD remains nonexact, with zero new credit;
+Run1296/4480 remains separate work. Preserve this reviewed workflow rather than
+launch an unbounded spelling, register or translation-unit sweep.
+
+Final serialized regression covers all seven configured canonical units whose
+primary or support source is Gui.cpp:568/568 bytes across their declared
+producer groups. This does not grant exactness to the HUD owner. Four UBSan
+suites and55 explicit-failure controls, target GUI report and full public CI
+pass. All source, tests and compact notes are retained; generated builds stay
+local and ignored.

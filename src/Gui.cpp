@@ -344,109 +344,6 @@ static void CompleteStageFromMessage()
     }
 }
 
-static void FinishMessage(GuiView *gui)
-{
-    if (gui->message == NULL)
-        return;
-    int i;
-    for (i = 0; i < GUI_MESSAGE_VM_COUNT; ++i)
-        DeleteVm(&gui->message->vmIds[i]);
-    free(gui->message);
-    gui->message = NULL;
-}
-
-static void UpdateSpellAndBossPosition(GuiView *gui)
-{
-    GuiEnemyManagerView *manager = g_GuiEnemyManager;
-    if (manager == NULL)
-        return;
-
-    if (gui->spellSeconds >= 0 && manager->activeBoss != NULL &&
-        gui->message == NULL)
-    {
-        if (gui->spellSeconds < gui->previousSpellSeconds)
-        {
-            if (gui->spellSeconds < 6)
-            {
-                gui->displayVms4[0].pendingInterrupt = 9;
-                gui->displayVms4[1].pendingInterrupt = 9;
-                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                    QueueSoundSample(0x24, 0);
-            }
-            else if (gui->spellSeconds < 11)
-            {
-                gui->displayVms4[0].pendingInterrupt = 8;
-                gui->displayVms4[1].pendingInterrupt = 8;
-                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
-                    QueueSoundSample(0x1b, 0);
-            }
-        }
-        else if (gui->spellSeconds > gui->previousSpellSeconds)
-        {
-            gui->displayVms4[0].pendingInterrupt = 7;
-            gui->displayVms4[1].pendingInterrupt = 7;
-        }
-        if (gui->spellSeconds != gui->previousSpellSeconds)
-        {
-            gui->frontAnm->SetSprite(
-                &gui->displayVms4[0], gui->spellSeconds / 10 + 8);
-            gui->frontAnm->SetSprite(
-                &gui->displayVms4[1], gui->spellSeconds % 10 + 8);
-        }
-        manager = g_GuiEnemyManager;
-        gui->previousSpellSeconds = gui->spellSeconds;
-    }
-
-    // Select the live boss after countdown calls, then retain it across the
-    // boss marker's ExecuteScript, matching the target's ESI lifetime.
-    GuiEnemyView *boss = manager->activeBoss;
-    if (boss == NULL)
-        return;
-
-    if ((boss->flags & 0x11) != 0)
-        return;
-
-    unsigned int phase = (gui->guiFlags >> 1) & 3;
-    const bool alternate =
-        g_GuiGameOwner != NULL && (g_GuiGameOwner->flags378C & 1) != 0;
-    static const int normalThresholds[4] = {700, 400, 200, 200};
-    static const int alternateThresholds[4] = {2000, 1000, 400, 400};
-    const int threshold = alternate
-        ? alternateThresholds[phase] : normalThresholds[phase];
-    const bool crossesThreshold = phase < 3
-        ? boss->gaugeThresholdValue < threshold
-        : boss->gaugeThresholdValue > threshold;
-    if (crossesThreshold)
-    {
-        static const short interrupts[4] = {7, 8, 9, 10};
-        gui->bossPositionVm.pendingInterrupt = interrupts[phase];
-        if (phase == 0)
-            gui->guiFlags = (gui->guiFlags & ~4u) | 2;
-        else if (phase == 1)
-            gui->guiFlags = (gui->guiFlags & ~2u) | 4;
-        else if (phase == 2)
-            gui->guiFlags |= 6;
-        else
-            gui->guiFlags &= ~6u;
-    }
-
-    AnmRenderManagerView::ExecuteScript(&gui->bossPositionVm);
-    gui->bossPositionVm.positionOffset.x = boss->positionX + 224.0f;
-    gui->bossPositionVm.positionOffset.y = 480.0f;
-    if (g_GuiPlayer == NULL)
-        return;
-
-    const double distance = fabs(
-        static_cast<double>(boss->positionX - g_GuiPlayer->positionX));
-    if (distance < 64.0)
-        gui->bossPositionVm.primaryColor.alpha =
-            static_cast<unsigned char>(
-                64 - static_cast<int>(distance * -2.984375f));
-    else
-        gui->bossPositionVm.primaryColor.alpha = 0xff;
-    if (boss->positionX < -192.0f || boss->positionX > 192.0f)
-        gui->bossPositionVm.primaryColor.alpha = 0;
-}
 
 }
 
@@ -734,8 +631,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
     {
         const int digit = value / divisor;
         value %= divisor;
-        if (gui->frontAnm != NULL)
-            gui->frontAnm->SetSprite(&gui->displayVms5[i], digit + 0x1e);
+        gui->frontAnm->SetSprite(&gui->displayVms5[i], digit + 0x1e);
         divisor /= 10;
         AnmRenderManagerView::ExecuteScript(&gui->displayVms5[i]);
     }
@@ -1107,17 +1003,373 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
     }
     // HUD boss-gauge phase end.
 
-    GuiMessageVmView *message = gui->message;
-    if (message != NULL)
+    // HUD message phase begin: target 0x0041513C-0x00415499.
     {
-        // Success ticks the entry message; failure resolves the current owner.
-        if (GuiMessageVmView::Run(message) == 0)
-            message->lifetimeTimer.Tick();
-        else
-            FinishMessage(gui);
+        GuiMessageVmView *message = gui->message;
+        if (message != NULL)
+        {
+            if (GuiMessageVmView::Run(message) == 0)
+                message->lifetimeTimer.Tick();
+            else
+            {
+                // Run may replace the owner; retain this cleanup receiver through free.
+                GuiMessageVmView *finishedMessage = gui->message;
+                if (finishedMessage != NULL)
+                {
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    {
+                        const int id = finishedMessage->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->flags35C |= GUI_ANM_DELETE_FLAG;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->flags35C |= GUI_ANM_DELETE_FLAG;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        finishedMessage->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = 0;
+                    }
+                    {
+                        const int id = finishedMessage->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->flags35C |= GUI_ANM_DELETE_FLAG;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->flags35C |= GUI_ANM_DELETE_FLAG;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        finishedMessage->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = 0;
+                    }
+                    {
+                        const int id = finishedMessage->vmIds[GUI_MESSAGE_TEXT_BOX].value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->flags35C |= GUI_ANM_DELETE_FLAG;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->flags35C |= GUI_ANM_DELETE_FLAG;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        finishedMessage->vmIds[GUI_MESSAGE_TEXT_BOX].value = 0;
+                    }
+                    {
+                        const int id = finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_0].value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->flags35C |= GUI_ANM_DELETE_FLAG;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->flags35C |= GUI_ANM_DELETE_FLAG;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_0].value = 0;
+                    }
+                    {
+                        const int id = finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_1].value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->flags35C |= GUI_ANM_DELETE_FLAG;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->flags35C |= GUI_ANM_DELETE_FLAG;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        finishedMessage->vmIds[GUI_MESSAGE_TEXT_LINE_1].value = 0;
+                    }
+                    {
+                        const int id = finishedMessage->vmIds[GUI_MESSAGE_ENEMY_NAME].value;
+                        if (id != 0)
+                        {
+                            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+                            while (node != NULL &&
+                                   static_cast<AnmVmView *>(node->owner)->id != id)
+                                node = node->next;
+                            if (node == NULL)
+                            {
+                                node = manager->secondaryVmListHead;
+                                while (node != NULL &&
+                                       static_cast<AnmVmView *>(node->owner)->id != id)
+                                    node = node->next;
+                            }
+                            if (node != NULL)
+                            {
+                                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                                if (vm != NULL)
+                                {
+                                    vm->flags35C |= GUI_ANM_DELETE_FLAG;
+                                    if (vm->layerNode.previous == NULL)
+                                    {
+                                        node = vm->layerNode.next;
+                                        while (node != NULL)
+                                        {
+                                            static_cast<AnmVmView *>(node->owner)->flags35C |= GUI_ANM_DELETE_FLAG;
+                                            node = node->next;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        finishedMessage->vmIds[GUI_MESSAGE_ENEMY_NAME].value = 0;
+                    }
+                    free(finishedMessage);
+                }
+                gui->message = NULL;
+            }
+        }
     }
+    // HUD message phase end.
 
-    UpdateSpellAndBossPosition(gui);
+    // HUD spell-countdown and boss-marker phase begin: target 0x0041549A.
+    {
+        GuiEnemyManagerView *manager = g_GuiEnemyManager;
+        if (manager != NULL)
+        {
+            if (gui->spellSeconds >= 0 && manager->activeBoss != NULL &&
+                gui->message == NULL)
+            {
+                if (gui->spellSeconds < gui->previousSpellSeconds)
+                {
+                    if (gui->spellSeconds < 6)
+                    {
+                        gui->displayVms4[0].pendingInterrupt = 9;
+                        gui->displayVms4[1].pendingInterrupt = 9;
+                        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                            QueueSoundSample(0x24, 0);
+                    }
+                    else if (gui->spellSeconds < 11)
+                    {
+                        gui->displayVms4[0].pendingInterrupt = 8;
+                        gui->displayVms4[1].pendingInterrupt = 8;
+                        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
+                            QueueSoundSample(0x1b, 0);
+                    }
+                }
+                else if (gui->spellSeconds > gui->previousSpellSeconds)
+                {
+                    gui->displayVms4[0].pendingInterrupt = 7;
+                    gui->displayVms4[1].pendingInterrupt = 7;
+                }
+                if (gui->spellSeconds != gui->previousSpellSeconds)
+                {
+                    gui->frontAnm->SetSprite(
+                        &gui->displayVms4[0], gui->spellSeconds / 10 + 8);
+                    gui->frontAnm->SetSprite(
+                        &gui->displayVms4[1], gui->spellSeconds % 10 + 8);
+                }
+                manager = g_GuiEnemyManager;
+                gui->previousSpellSeconds = gui->spellSeconds;
+            }
+
+            // Select the live boss after countdown calls, then retain it across the
+            // boss marker's ExecuteScript, matching the target's ESI lifetime.
+            GuiEnemyView *boss = manager->activeBoss;
+            if (boss != NULL && (boss->flags & 0x11) == 0)
+            {
+                unsigned int phase = (gui->guiFlags >> 1) & 3;
+                if ((g_GuiGameOwner->flags378C & 1) != 0)
+                {
+                    if (phase == 0)
+                    {
+                        if (boss->gaugeThresholdValue < 2000)
+                        {
+                            gui->bossPositionVm.pendingInterrupt = 7;
+                            gui->guiFlags = (gui->guiFlags & ~4u) | 2;
+                        }
+                    }
+                    else if (phase == 1)
+                    {
+                        if (boss->gaugeThresholdValue < 1000)
+                        {
+                            gui->bossPositionVm.pendingInterrupt = 8;
+                            gui->guiFlags = (gui->guiFlags & ~2u) | 4;
+                        }
+                    }
+                    else if (phase == 2)
+                    {
+                        if (boss->gaugeThresholdValue < 400)
+                        {
+                            gui->bossPositionVm.pendingInterrupt = 9;
+                            gui->guiFlags |= 6;
+                        }
+                    }
+                    else if (phase == 3)
+                    {
+                        if (boss->gaugeThresholdValue > 400)
+                        {
+                            gui->bossPositionVm.pendingInterrupt = 10;
+                            gui->guiFlags &= ~6u;
+                        }
+                    }
+                }
+                else
+                {
+                    if (phase == 0)
+                    {
+                        if (boss->gaugeThresholdValue < 700)
+                        {
+                            gui->bossPositionVm.pendingInterrupt = 7;
+                            gui->guiFlags = (gui->guiFlags & ~4u) | 2;
+                        }
+                    }
+                    else if (phase == 1)
+                    {
+                        if (boss->gaugeThresholdValue < 400)
+                        {
+                            gui->bossPositionVm.pendingInterrupt = 8;
+                            gui->guiFlags = (gui->guiFlags & ~2u) | 4;
+                        }
+                    }
+                    else if (phase == 2)
+                    {
+                        if (boss->gaugeThresholdValue < 200)
+                        {
+                            gui->bossPositionVm.pendingInterrupt = 9;
+                            gui->guiFlags |= 6;
+                        }
+                    }
+                    else if (phase == 3)
+                    {
+                        if (boss->gaugeThresholdValue > 200)
+                        {
+                            gui->bossPositionVm.pendingInterrupt = 10;
+                            gui->guiFlags &= ~6u;
+                        }
+                    }
+                }
+
+                AnmRenderManagerView::ExecuteScript(&gui->bossPositionVm);
+                gui->bossPositionVm.positionOffset.x = boss->positionX + 224.0f;
+                gui->bossPositionVm.positionOffset.y = 480.0f;
+                const double distance = fabs(
+                    static_cast<double>(boss->positionX) - g_GuiPlayer->positionX);
+                if (distance < 64.0)
+                    gui->bossPositionVm.primaryColor.alpha =
+                        static_cast<unsigned char>(
+                            64 - static_cast<int>(distance * -2.984375f));
+                else
+                    gui->bossPositionVm.primaryColor.alpha = 0xff;
+                if (boss->positionX < -192.0f || boss->positionX > 192.0f)
+                    gui->bossPositionVm.primaryColor.alpha = 0;
+            }
+        }
+    }
+    // HUD spell-countdown and boss-marker phase end: target 0x00415764.
     gui->frameTimer.Tick();
     return 1;
 }
