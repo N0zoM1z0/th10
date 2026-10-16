@@ -1200,3 +1200,30 @@ x87 grouping/spill/return-pointer evidence before any source change. Preserve
 the exact Int3-scale unit and parked SCALE_TIME/FORMAT controls. The reference
 clone is research-only; our natural historical-toolchain and90% byte-exact goal
 remain unchanged. Math stays paused.
+
+
+## 2026-10-16 ANM color precision and bounded controls
+
+See [ANM_COLOR_ROUNDING.md](ANM_COLOR_ROUNDING.md) and the small stdlib
+`scripts/check-anm-color-rounding-model.py --scan` reproducer. Fresh genuine
+ExecuteScript-context links expose a conditional x87 integer-output difference:
+for elapsed4/duration5, initial125, zero other terms, target12 versus baseline13
+under RN-even PC53/64; PC24 agrees. This is a model with calls bound to target
+__ftol2, not execution of a diagnostic anchor or a proved runtime bug.
+
+Group/order-only and aggregate-return-only controls failed to restore target
+spill/call/stack-result topology; both were saved locally and reverted. Color
+extents794/788/807 remain nonexact against820; ExecuteScript stays9948/9964.
+No source/header, ledger, receipt or exact-credit changes. The scale leaf is
+raw-identical across the three links. Do not repeat these controls or force
+noinline. Next inspect real ANM caller-root/LTCG context, with original TU
+ownership still unknown. Builds remain serial nice10 with bounded timeouts.
+Math stays paused.
+
+A subsequent unchanged-source UpdatePrimaryVms-entry control, using the same
+four TUs/profile, leaves color794, scale56 and ExecuteScript9948 raw-identical
+to the baseline. The exposed root body itself changes. This does not resolve
+the topology gap; do not sweep further roots/TUs without new target evidence.
+The whole-product build graph remains unconfigured. Next use the existing
+case-aligned diagnostic to inspect unresolved ExecuteScript source semantics,
+without reopening parked SCALE_TIME/FORMAT controls.

@@ -1386,3 +1386,17 @@ Reference review is pinned to
 It supplies hypotheses only: assembly fallback, equivalent-region scores,
 alternate compilers and context-only steering cannot grant our exact credit.
 No upstream code was imported; explicit reuse licensing was not found.
+
+
+## 2026-10-16 ANM color x87 context audit
+
+[Conditional precision model and negative controls](ANM_COLOR_ROUNDING.md)
+separate the pause-linked graph from the genuine ExecuteScript-entry graph.
+For the same maintained source, the former retains four scale calls and the
+latter inlines them; they have different intermediate precision boundaries.
+Small exact-rational witnesses distinguish target and candidate arithmetic
+under RN-even PC53/64, conditioned on target conversion-helper binding. Neither
+runtime FPU state nor reachable game-state behavior is established. Two
+isolated natural-source controls were reverted after failing target topology;
+all canonical exact metrics remain unchanged. The reproducible model does not
+replace actual-source tests or native acceptance.
