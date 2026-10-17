@@ -187,3 +187,75 @@ Independent local static review confirms that opcode 2 removes exactly the earli
 Whole Run is 4020 bytes: 3845 executable, three padding bytes and four tables totalling 172 bytes. All 43 table destinations preserve their semantic roles, and all 163 HIGHLOW fields are checked as address operands or table words. GNU independently agrees with the retained candidate and target executable-span instruction boundaries. The production source change is confined to opcode 2. Beyond opcode 2, native code-generation differences are confined to an added ECX copy in opcode 3 and scratch-register/address-calculation scheduling in opcodes 7/8; reviewed resource/field reads, call order, arguments and publication effects are preserved. Every other physical opcode region, including opcode 13/19/20 and the common tail, retains instruction bytes and referents after masking only validated address/relative fields. Run's executable span shrinks by ten bytes; padding grows by two, for an eight-byte owner reduction.
 
 Updater-to-Run stack receiver and RET4 remain intact, as do the creation call's stack arguments/EDI return temporary, real creation callee RET12 and both completion-route EDI receivers. These are bounded static code-generation findings. No generated PE was executed. Existing anchor/storage/runtime, private-ABI, null-callee and nonexact whole-owner limitations remain; no aggregate-progress claim follows from this observation.
+
+## Canonical ReplayManager Run owner: source and host evidence
+
+The replay-owner proposal replaces the local GuiModeOwnerView/g_GuiModeOwner shadow with the existing complete ReplayManager class and g_ReplayManager->mode at both Run completion-route reads. Gui.cpp adds ReplayManager.hpp; production headers are unchanged. Both equality-to-1 comparisons remain at their original post-score source evaluation points, with the same live-owner assumption. There is no null fallback, extra capture/reload, unrelated-object cast or code-generation control. HUD and the rest of the Run body, including portrait topology and floating-point expressions, are unchanged.
+
+Gui.cpp SHA-256 changes from `dde1c03602d80e3616fe3d42c0befe186d3078723128db1c6d89fc1a598a8241` to `b571c647306049ebcbc17b101d49887e5bc00059e1da6fc49184206f0cfcc36f`. The separately retained nine-file source/test patch is SHA-256 `c25dabe3e75dc5f62dc46e5ddd20e467fcfbf60f7c336a970a4cbafc5f22d30a`.
+
+Target identity is established by complete factory/initializer/destructor evidence, rather than a source-name inference: allocation 0x2D4 at 0x429627 flows through ESI and EBX to the initializer; 0x428F67 stores incoming mode at object+0x10; mode-0 and mode-1 paths publish that same object to 0x477838 at 0x428F77/0x429251. The destructor compares its receiver to this slot at 0x4295CB and clears only its own pointer at 0x4295D3. Run loads 0x477838 at 0x416D66/0x416E43 after the score calls and compares +0x10 with 1 at 0x416D6C/0x416E49. Retained target lifecycle evidence SHA-256 is `7fe7d8fcc1a229bec474f2927f5b2b56a8b590e5302763856bd00f4a4c3bd5ec`. Canonical symbol spelling is `?g_ReplayManager@@3PAVReplayManager@@A`.
+
+Host fixtures retain complete actual ReplayManager/ReplayStageState declarations and construct valid objects through explicit member-initializing host constructor/destructor seams. These seams do not implement replay initialization, publication, resource ownership or cleanup. The new portable scripts/test-gui-replay-mode.py covers twelve actual-owner mode cases and 24 synthetic post-score replacement cases, plus twelve strict controls across both read sites. Nonzero/constant predicates, wrong actual owner, stale pointer and stale mode are rejected by predeclared exact failure status/stdout/stderr; compilation errors, signals, unrelated assertions and timeouts are not accepted. Its compile/run bounds are 120/15 seconds. Structural negatives reject the retired shadow and a missing canonical read; existing output is rejected without overwrite. The score replacement callback is an explicitly synthetic arithmetic-plus-callback dependency, not evidence that actual score calls replace the replay global.
+
+All twelve replay controls, the retained 28 interpreter, 32 transition, 15 portrait, eleven name and fifty focused HUD/gauge controls pass. Lifecycle, constructor, message-phase and selector checks also pass. Interpreter, replay and message-lifecycle positives pass under ASan/UBSan with maintained leak-checking limits. Compact local results SHA-256: `2b599c715e276b5da27506e448bee8953c73ce3eb4de0367bc69b5747a73ebf1`.
+
+```sh
+work=$(mktemp -d)
+scripts/repo-python scripts/test-gui-replay-mode.py --root . --out "$work/replay"
+scripts/repo-python scripts/test-gui-replay-mode.py --root . --out "$work/sanitized" --sanitize --no-mutations
+```
+
+CI uses a temporary parent and a nonexistent child output path, retaining the driver's fresh-output contract. This section records source/target correspondence and bounded host evidence only. The subsequent native observation below records compilation, linked class-symbol identity, full Run ownership, include closure and canonical-unit replay; physical target storage and private-ABI/runtime closure remain unproven. No generated PE was executed; prior native observations and eleven exact regressions receive no new exactness or aggregate-progress credit from these host results.
+
+## Canonical replay-owner native observation
+
+The subsequent frozen replay preserves eleven exact units across seven producers
+(912 matched bytes). This regression credit is separate from whole-Run/HUD
+exactness. It binds `Gui.cpp` SHA-256
+`b571c647306049ebcbc17b101d49887e5bc00059e1da6fc49184206f0cfcc36f`,
+PE `2be4022460bfcb4159a8028d0fe1e43da525b874da8c948c47b2ebec198342d0`
+(PDB GUID `5cc8d5682d5309408057eca739d0a86f`, age 1), evidence
+`a92b9393f6d999cda5519784cb60ced6ad363f875cfd23893be54c47a4aa71ad`,
+replay `60cb49dffb29826e33cb231d6ac2c330082e64171cfa976f282e5c8261ae86b2`
+and input freeze
+`8c1e424e57f619a014728a9b1bb6a46fb000a0f1cd97d0060f447bd7144274e9`.
+
+Against the preceding player-migration artifact, whole Run remains 4,020 bytes
+(3,845 executable, three padding, 172 table bytes), with owner SHA-256
+`29a5e59f699c39eb1cfe287b4c2d62aaf2419687a2df79a482143356431e8336`.
+Only two normalized operand roles change, both in opcode 20: loads at
+`0x401DEA/0x401ECD` now use the unique canonical class-symbol `g_ReplayManager`
+MAP identity at `0x42B6CC`; the retired shadow MAP identity is absent. Both loads
+remain immediately after the score calls at `0x401DE5/0x401EC8`, followed by
+the mode field at owner+0x10 compared with 1 at `0x401DEF/0x401ED3`. No guard or earlier capture
+was introduced. All 43 table destination roles, 163 validated HIGHLOW fields,
+111 call identities/order, intrafunction direct jumps, padding and ABI instruction
+forms remain intact. The complete raw delta is 49 instructions / 51 bytes:
+two canonical-owner substitutions and 47 same-role address shifts.
+
+HUD remains 3,772 bytes, owner SHA-256
+`b83b7fff55ff4e6cd3c0c30e21b24b6435339558f5b7e507004de37cedfe7611`.
+It has no normalized code, table or branch-role changes: eleven instructions /
+eleven bytes change through seven same-role absolute address shifts and four
+same-original-symbol CALL shifts. All 21 call identities, seven table destinations,
+padding and other bytes are preserved. Canonical enemy/player identities, three
+player-read phases, retained boss, float field accesses and FP instructions remain
+unchanged. GNU independently agrees with complete Run/HUD executable instruction
+boundaries; owner-local table/padding boundaries are checked separately.
+
+Independent provenance review checks 125 frozen inputs, fourteen full-path
+objects, 47 required whole owners and twelve callbacks. All 1,076 contribution
+starts/sizes remain unchanged (910 raw-identical, 166 changed); this campaign
+introduces no ordinary-byte scheduling delta. The all-field review retains 224
+broader unresolved original-base/addend cases outside the bounded Run/HUD,
+required-owner and registered callback scopes. Observed MAP labels alone do not
+clear those cases or establish whole-producer equivalence.
+
+The existing HUD captured-manager reuse and less-versus-unordered alpha residual
+remain. Neither these static observations nor the synthetic score dependency
+witnesses prove actual callback replacement, physical target storage/alias behavior,
+private-ABI/runtime closure, x87 exception/conversion behavior or gameplay
+reachability. No new whole-owner exactness, whole-producer equivalence or aggregate
+completion credit is claimed. Logs and binary evidence remain outside repository
+documentation.

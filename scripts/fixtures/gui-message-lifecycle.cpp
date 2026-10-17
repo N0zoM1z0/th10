@@ -81,7 +81,18 @@ int g_EnemyDialogIndex, g_EnemyDialogState;
 GuiView *g_GuiView;
 Player *g_Player;
 GuiGameOwnerView *g_GuiGameOwner;
-GuiModeOwnerView *g_GuiModeOwner;
+// Host replay lifecycle seams: complete header declaration retained; no replay
+// initialization, resource cleanup, or runtime lifecycle claim.
+ReplayStageState::ReplayStageState() : recordStart(nullptr), recordCursor(nullptr),
+    fpsStart(nullptr), fpsCursor(nullptr), header(nullptr), recordIndex(0), link{} {}
+ReplayStageState::~ReplayStageState() {}
+ReplayManager::ReplayManager() : unknown000{}, updateChain(nullptr), drawChain(nullptr),
+    mode(REPLAY_MANAGER_RECORD), fileHeader(nullptr), replayData(nullptr), stageHeaders{},
+    stageFrameLists{}, currentFrameLink(nullptr), stageStates{}, decompressedPayload(nullptr),
+    replayFps(0), unknown1C5{}, frameCounter(0), playbackChain(nullptr), activeStage(0), replayPath{} {}
+ReplayManager::~ReplayManager() {}
+static ReplayManager replayOwner;
+ReplayManager *g_ReplayManager = &replayOwner;
 unsigned char *g_GuiPersistentData;
 int g_GuiHighScore, g_GuiCounter4C4C, g_GuiState4C58, g_GuiCharacter;
 int g_GuiShotType, g_GuiPowerLevel, g_GuiDifficulty, g_GuiStage;

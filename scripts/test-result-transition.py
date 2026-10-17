@@ -221,7 +221,11 @@ def main():
     gui = source('Gui.cpp').read_text()
     if len(re.findall(r'extern\s+GameChainOwnerView\s*\*\s*g_GameOwner477830\s*;',gui)) != 1:
         raise RuntimeError('Canonical g_GameOwner477830 declaration is absent or changed')
-    fixture = args.fixture.read_text()
+    replay_header = source('ReplayManager.hpp').read_text()
+    # Omit only target-width layout checks for this portable host fixture.
+    replay_header = re.sub(r'typedef\s+char\s+\w+\s*\[[\s\S]*?\]\s*;', '// HOST: target layout assertion omitted.', replay_header)
+    replay_header = replay_header.replace('#pragma once', '')
+    fixture = args.fixture.read_text().replace('// @ACTUAL_REPLAY_HEADER@', replay_header)
     def assemble(parts):
         return fixture.replace('// @ACTUAL_STRUCTURES@',structures).replace('// @ACTUAL_BODIES@','\n'.join(parts.values()))
     base = assemble(bodies)
@@ -231,7 +235,7 @@ def main():
         def run(label, code, mutant=False):
             cpp,binary = directory/(label+'.cpp'),directory/label
             cpp.write_text(code)
-            build = subprocess.run([args.cxx,'-std=c++17','-Wall','-Wextra','-Werror','-O0',str(cpp),'-o',str(binary)],capture_output=True,text=True)
+            build = subprocess.run([args.cxx,'-std=c++17','-Wall','-Wextra','-Werror','-O0',str(cpp),'-o',str(binary)],capture_output=True,text=True,timeout=120)
             if build.returncode:
                 raise RuntimeError(f'COMPILE_ERROR (not a mutation kill): {label}\n{build.stdout}{build.stderr}')
             result = subprocess.run([str(binary)],capture_output=True,text=True,timeout=15)

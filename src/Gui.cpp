@@ -7,6 +7,7 @@
 #include "Enemy.hpp"
 #include "GameStageDescriptor.hpp"
 #include "ResultMenu.hpp"
+#include "ReplayManager.hpp"
 
 #include <math.h>
 #include <stdlib.h>
@@ -19,14 +20,6 @@ struct GuiGameOwnerView
     unsigned char unknown000[0x378c];
     unsigned int flags378C;
 };
-
-struct GuiModeOwnerView
-{
-    unsigned char unknown000[0x10];
-    int state;
-};
-
-
 
 typedef char GuiCanonicalPlayerDrawPosition[
     (offsetof(Player, drawPosition) + offsetof(PlayerFloat3, x) == 0x3c0 &&
@@ -47,7 +40,6 @@ extern EnemyManagerView *g_EnemyManager;
 // Existing full stage-state byte storage contract at target 0x474c40.
 extern unsigned char g_GameStageState[];
 extern GuiGameOwnerView *g_GuiGameOwner;
-extern GuiModeOwnerView *g_GuiModeOwner;
 extern unsigned char *g_GuiPersistentData;
 
 extern int g_GuiHighScore;
@@ -716,7 +708,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
                     break;
                 }
-                if (g_GuiModeOwner->state == 1)
+                if (g_ReplayManager->mode == 1)
                 {
                     g_MainSupervisorView.SetNextGameMode(4);
                     break;
@@ -744,7 +736,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 g_GuiScore.Add(g_GuiCounter4C4C * 1000);
                 g_GuiScore.Add(g_GuiPowerLevel * 40000000);
                 g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
-                if (g_GuiModeOwner->state == 1)
+                if (g_ReplayManager->mode == 1)
                 {
                     g_MainSupervisorView.SetNextGameMode(4);
                     break;

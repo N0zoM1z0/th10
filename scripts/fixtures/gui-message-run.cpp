@@ -18,12 +18,23 @@
 #include <functional>
 #include <new>
 #include <climits>
+#ifdef HOST_SYNTHETIC_SCORE_REPLACEMENT
+static std::function<void()> syntheticAfterScore;
+#endif
 #include "owner.inc"
+#include "ReplayManager.hpp"
+// HOST LIFETIME SEAMS: complete canonical classes, all scalar/pointer members
+// initialized without allocation, publication, resource ownership or cleanup.
+ReplayStageState::ReplayStageState():recordStart(nullptr),recordCursor(nullptr),fpsStart(nullptr),fpsCursor(nullptr),header(nullptr),recordIndex(0),link{} {}
+ReplayStageState::~ReplayStageState() {}
+ReplayManager::ReplayManager():unknown000{},updateChain(nullptr),drawChain(nullptr),mode(0),fileHeader(nullptr),replayData(nullptr),stageHeaders{},stageFrameLists{},currentFrameLink(nullptr),stageStates{},decompressedPayload(nullptr),replayFps(0),unknown1C5{},frameCounter(0),playbackChain(nullptr),activeStage(0),replayPath{} {}
+ReplayManager::~ReplayManager() {}
+
 #include "Player.hpp"
 #include "Enemy.hpp"
 static void Check(bool x,const char*n){if(!x){std::fprintf(stderr,"CHECK %s\n",n);std::exit(1);}}
 float g_AnmGameSpeed=1;AnmRenderManagerView *g_AnmRenderManagerView;
-GuiView *g_GuiView;GuiGameOwnerView *g_GuiGameOwner;GuiModeOwnerView *g_GuiModeOwner;unsigned char *g_GuiPersistentData;
+GuiView *g_GuiView;GuiGameOwnerView *g_GuiGameOwner;ReplayManager *g_ReplayManager;unsigned char *g_GuiPersistentData;
 int g_GuiHighScore,g_GuiCounter4C4C,g_GuiState4C58,g_GuiCharacter,g_GuiShotType,g_GuiPowerLevel,g_GuiDifficulty,g_GuiStage,g_GuiMessageState,g_GuiMessageStateAux,g_GuiValue4C90,g_GuiValue4C94,g_GuiValue4C9C,g_GuiGlobalMode;
 short g_GuiPower;unsigned int g_GuiGameFlags,g_GuiInputCurrent,g_GuiInputEdges,g_GuiSupervisorFlags;GuiScoreView g_GuiScore;MainSupervisorView g_MainSupervisorView;
 Player *g_Player;EnemyManagerView *g_EnemyManager;GameStageUpdateView *g_GameStageUpdate;
@@ -53,8 +64,8 @@ int __stdcall GameQueueScaledSoundCommand(float v){host.effects.push_back(v);hos
 void *StageCreateTransitionEffect(int priority,int kind,int frames,unsigned a,unsigned b,unsigned c){host.screen.push_back({priority,kind,frames,static_cast<int>(a),static_cast<int>(b),static_cast<int>(c)});host.order.push_back("screen");if(host.afterEffect)host.afterEffect();return &gameOwner;}
 void FrontEndQueueSoundCommand(const char*n,int cmd,int slot){Check(!std::strcmp(n,"dummy"),"music.command_name");host.music.push_back({cmd,slot});host.order.push_back("music");}
 struct Fixture{
- std::unique_ptr<AnmRenderManagerView>manager,alternate;std::unique_ptr<GuiView>gui;AnmLoadedView playerResource,enemyResource,otherResource;GuiModeOwnerView mode;EnemyManagerView enemy;GameStageUpdateView descriptor;AnmVmView vms[16];GuiMessageVmView message;std::vector<unsigned char>bytes,profile;std::size_t first=0,future=0;
- Fixture():manager(new AnmRenderManagerView),alternate(new AnmRenderManagerView),gui(new GuiView),message(nullptr),profile(0x20000,0xa5){host=Host();g_AnmGameSpeed=1;g_AnmRenderManagerView=manager.get();g_GuiView=gui.get();g_GuiModeOwner=&mode;g_GuiPersistentData=profile.data();g_Player=&playerOwner;g_EnemyManager=&enemy;playerOwner.resource=&playerResource;enemy.effectResources[2]=&enemyResource;g_GameStageUpdate=&descriptor;descriptor.musicIndex=41;descriptor.value28=23;g_GameOwner477830=reinterpret_cast<GameChainOwnerView *>(&gameOwner);g_FrontEndSupervisorFlags=0;g_FrontEndProfileData=profile.data();new(g_MainSoundOwner)EnemySoundQueueView{};for(int i=0;i<12;++i)reinterpret_cast<EnemySoundQueueView*>(g_MainSoundOwner)->activeSoundIds[i]=-1;g_EnemySoundCueMetadata[0].cueValue=37;g_MainSupervisorView.flags=0;g_MainSupervisorView.nextGameMode=-99;mode.state=0;gui->frontAnm=gui->stageUiAnm=&otherResource;gui->guiFlags=0;gui->endingCounter=47;gui->specialVmId9E14.value=115;
+ std::unique_ptr<AnmRenderManagerView>manager,alternate;std::unique_ptr<GuiView>gui;AnmLoadedView playerResource,enemyResource,otherResource;ReplayManager mode;EnemyManagerView enemy;GameStageUpdateView descriptor;AnmVmView vms[16];GuiMessageVmView message;std::vector<unsigned char>bytes,profile;std::size_t first=0,future=0;
+ Fixture():manager(new AnmRenderManagerView),alternate(new AnmRenderManagerView),gui(new GuiView),message(nullptr),profile(0x20000,0xa5){host=Host();g_AnmGameSpeed=1;g_AnmRenderManagerView=manager.get();g_GuiView=gui.get();g_ReplayManager=&mode;g_GuiPersistentData=profile.data();g_Player=&playerOwner;g_EnemyManager=&enemy;playerOwner.resource=&playerResource;enemy.effectResources[2]=&enemyResource;g_GameStageUpdate=&descriptor;descriptor.musicIndex=41;descriptor.value28=23;g_GameOwner477830=reinterpret_cast<GameChainOwnerView *>(&gameOwner);g_FrontEndSupervisorFlags=0;g_FrontEndProfileData=profile.data();new(g_MainSoundOwner)EnemySoundQueueView{};for(int i=0;i<12;++i)reinterpret_cast<EnemySoundQueueView*>(g_MainSoundOwner)->activeSoundIds[i]=-1;g_EnemySoundCueMetadata[0].cueValue=37;g_MainSupervisorView.flags=0;g_MainSupervisorView.nextGameMode=-99;mode.mode=0;gui->frontAnm=gui->stageUiAnm=&otherResource;gui->guiFlags=0;gui->endingCounter=47;gui->specialVmId9E14.value=115;
   g_GuiStage=2;g_GuiCharacter=g_GuiShotType=g_GuiDifficulty=0;g_GuiPower=2;g_GuiPowerLevel=1;g_GuiCounter4C4C=3;g_GuiScore.score=0;g_GuiGameFlags=g_GuiInputCurrent=g_GuiInputEdges=0;g_GuiMessageState=3;g_GuiMessageStateAux=5;
   for(int i=0;i<16;++i){vms[i].id=101+i;vms[i].managerNode.owner=&vms[i];vms[i].managerNode.previous=i?&vms[i-1].managerNode:nullptr;vms[i].managerNode.next=i<15?&vms[i+1].managerNode:nullptr;vms[i].layerNode.owner=&vms[i];vms[i].layerNode.next=vms[i].layerNode.previous=nullptr;vms[i].pendingInterrupt=-12;vms[i].positionOffset=AnmFloat3View(-7,-8,-9);vms[i].flags35C=0;vms[i].scriptIndex=0;vms[i].anmFile=&playerResource;if(i<6)message.vmIds[i].value=101+i;}
   for(auto*m:{manager.get(),alternate.get()}){m->primaryVmListHead=&vms[0].managerNode;m->primaryVmListTail=&vms[15].managerNode;m->secondaryVmListHead=m->secondaryVmListTail=nullptr;}}
@@ -129,12 +140,12 @@ static void Names(){
 }
 static void Complete(){
  const int bonuses[5]={20000000,25000000,35000000,40000000,40000000},power[5]={100000,100000,200000,300000,400000};
- for(int stage:{6,7})for(int difficulty:{0,1,2,3,4})for(int count:{-1,99998,99999,100000})for(int mode:{0,1}){Fixture f;g_GuiStage=stage;g_GuiDifficulty=difficulty;g_GuiCharacter=1;g_GuiShotType=2;f.mode.state=mode;f.Counter(count);auto before=f.profile;f.Program(20);Normal(f);Check((f.gui->guiFlags&0x20)!=0,"complete.clear_flag");Check(g_GuiScore.score==300+(stage==7?40000000:bonuses[difficulty])/10+(stage==7?400000:power[difficulty])*2/10,"complete.score");if(mode)Check(g_MainSupervisorView.nextGameMode==4&&host.transitions.empty()&&host.screen.empty()&&f.gui->endingCounter==47&&(f.gui->guiFlags&0x10)==0&&f.Counter()==count,"complete.mode_skip");else{Check(f.Counter()==(count<99999?count+1:count),"complete.capped_counter");if(stage==6)Check(host.screen==std::vector<std::vector<int>>{{0x31,5,120,0,0,0}}&&f.gui->endingCounter==0&&(f.gui->guiFlags&0x10)&&host.transitions.empty(),"complete.stage6_ending");else Check(host.transitions==std::vector<int>{0}&&host.screen.empty()&&f.gui->endingCounter==47&&(f.gui->guiFlags&0x10)==0,"complete.stage7_no_ending");}auto unlock=5*0x437c+0x4e0+(stage+difficulty*6)*8;if(difficulty!=4){Check(f.profile[unlock]==1&&f.profile[unlock+1]==1,"complete.unlock");before[unlock]=before[unlock+1]=1;}if(!mode){int n=count<99999?count+1:count;std::memcpy(before.data()+f.Offset(),&n,4);}Check(f.profile==before,"complete.profile_sentinels");}
+ for(int stage:{6,7})for(int difficulty:{0,1,2,3,4})for(int count:{-1,99998,99999,100000})for(int mode:{INT_MIN,-1,0,1,2,INT_MAX}){Fixture f;g_GuiStage=stage;g_GuiDifficulty=difficulty;g_GuiCharacter=1;g_GuiShotType=2;f.mode.mode=mode;f.Counter(count);auto before=f.profile;f.Program(20);Normal(f);Check((f.gui->guiFlags&0x20)!=0,"complete.clear_flag");Check(g_GuiScore.score==300+(stage==7?40000000:bonuses[difficulty])/10+(stage==7?400000:power[difficulty])*2/10,"complete.score");if(mode==1)Check(g_MainSupervisorView.nextGameMode==4&&host.transitions.empty()&&host.screen.empty()&&f.gui->endingCounter==47&&(f.gui->guiFlags&0x10)==0&&f.Counter()==count,"complete.mode_skip");else{Check(f.Counter()==(count<99999?count+1:count),"complete.capped_counter");if(stage==6)Check(host.screen==std::vector<std::vector<int>>{{0x31,5,120,0,0,0}}&&f.gui->endingCounter==0&&(f.gui->guiFlags&0x10)&&host.transitions.empty(),"complete.stage6_ending");else Check(host.transitions==std::vector<int>{0}&&host.screen.empty()&&f.gui->endingCounter==47&&(f.gui->guiFlags&0x10)==0,"complete.stage7_no_ending");}auto unlock=5*0x437c+0x4e0+(stage+difficulty*6)*8;if(difficulty!=4){Check(f.profile[unlock]==1&&f.profile[unlock+1]==1,"complete.unlock");before[unlock]=before[unlock+1]=1;}if(mode!=1){int n=count<99999?count+1:count;std::memcpy(before.data()+f.Offset(),&n,4);}Check(f.profile==before,"complete.profile_sentinels");}
  {Fixture f;g_GuiStage=7;g_GuiPower=-2;f.Counter(2);f.Program(20);Normal(f);Check(g_GuiScore.score==3920300,"complete.signed_power");}
  {Fixture f;g_GuiStage=6;g_GuiGameFlags=0x10;f.Counter(8);f.Program(20);Normal(f);Check(host.transitions==std::vector<int>{0}&&g_MainSupervisorView.nextGameMode==-99&&host.screen.empty()&&g_GuiScore.score==0&&f.Counter()==8&&f.gui->guiFlags==0,"complete.early_transition");Check(f.profile[0x4e0+48]==1&&f.profile[0x4e1+48]==1,"complete.unlock_before_early");}
  for(int stage:{6,7})for(int diff:{-1,5}){Fixture f;g_GuiStage=stage;g_GuiDifficulty=diff;f.Counter(8);f.Program(20);Normal(f);Check(g_GuiScore.score==(stage==6?300:4080300)&&f.Counter()==9,"complete.invalid_difficulty");}
  {Fixture f;g_GuiStage=7;f.gui->guiFlags=0x10;f.Counter(8);f.Program(20);Normal(f);Check(f.gui->guiFlags==0x30&&f.gui->endingCounter==47,"complete.stage7_preserve_ending_flag");}
- {Fixture f;g_GuiStage=6;f.mode.state=1;g_MainSupervisorView.flags=0x1000;f.Counter(8);f.Program(20);Normal(f);Check(g_MainSupervisorView.nextGameMode==2&&f.Counter()==8,"complete.supervisor_override");}
+ {Fixture f;g_GuiStage=6;f.mode.mode=1;g_MainSupervisorView.flags=0x1000;f.Counter(8);f.Program(20);Normal(f);Check(g_MainSupervisorView.nextGameMode==2&&f.Counter()==8,"complete.supervisor_override");}
  for(int stage:{6,7}){Fixture f;std::vector<unsigned char>other(0x20000,0xa5);std::unique_ptr<GuiView>otherGui(new GuiView);otherGui->guiFlags=0x40;otherGui->endingCounter=99;g_GuiStage=stage;f.Counter(8);int count=77;std::size_t offset=5*0x437c+0x4d0+12;std::memcpy(other.data()+offset,&count,4);auto swap=[&](){g_GuiPersistentData=other.data();g_GuiCharacter=1;g_GuiShotType=2;g_GuiDifficulty=3;g_GuiView=otherGui.get();};if(stage==6)host.afterEffect=swap;else host.afterTransition=swap;f.Program(20);Normal(f);std::memcpy(&count,other.data()+offset,4);int original;std::memcpy(&original,f.profile.data()+0x4d0,4);Check(count==78&&original==8,"complete.reload_profile_scalars");Check(f.gui->guiFlags==0x20&&f.gui->endingCounter==47&&otherGui->guiFlags==(stage==6?0x50u:0x40u)&&otherGui->endingCounter==(stage==6?0:99),"complete.reload_gui");}
  for(int stage:{1,2,3,4,5}){Fixture f;g_GuiStage=stage;f.Program(20);Normal(f);Check((f.vms[14].flags35C&0x04000000u)&&f.gui->specialVmId9E14.value==host.id,"complete.replace_special");Check(host.creations.size()==1&&host.creations[0].resource==&f.otherResource&&host.creations[0].script==0x4c&&g_MainSupervisorView.nextGameMode==0x0b,"complete.ordinary_ui_mode");Check(host.advances.size()==1&&host.advances[0]==g_GameStageState,"complete.advance_owner");Check(host.order==std::vector<std::string>{"create","advance"}&&host.advanceMode==0x0b,"complete.advance_order");}}
 static void Effects(){for(int stage:{1,6,7}){Fixture f;g_GuiStage=stage;f.Program(21);Normal(f);Check(host.effects==std::vector<float>{stage==6?8.f:2.f},"effects.magnitude");}}
@@ -149,4 +160,25 @@ static void Control(){
  {Fixture f;f.first=f.Append(3);f.Append(11);auto other=f.Append(24);f.future=f.Append(0,{},100);f.message.currentInstruction=f.Instruction();host.afterCreate=[&](){f.message.currentInstruction=f.bytes.data()+other;};Normal(f);Check(f.message.inputCooldown==0,"dispatch.tail_reload");}
  {Fixture f;f.Program(11);f.message.instructionTimer.SetCurrent(-1);f.message.inputCooldown=-2;Check(GuiMessageVmView::Run(&f.message)==0&&f.message.currentInstruction==f.Instruction()&&f.message.instructionTimer.current==0&&f.message.inputCooldown==-2,"timer.signed_current");}
  for(float scale:{.99f,1.f,1.01f}){Fixture f;g_AnmGameSpeed=scale;f.Program(24);Check(GuiMessageVmView::Run(&f.message)==0,"timer.result");Check(f.message.instructionTimer.current==static_cast<int>(scale)&&f.message.instructionTimer.subframe==scale,"timer.strict_bounds");}}
-int main(int argc,char**argv){Check(CHAR_BIT==8&&sizeof(unsigned short)==2&&sizeof(int)==4,"host.scalar_widths");unsigned n=1;Check(*reinterpret_cast<unsigned char*>(&n)==1,"host.endian");Check(argc==2,"selection.required");std::string s=argv[1];if(s=="control")Control();else if(s=="portraits")Portraits();else if(s=="sides")Sides();else if(s=="hides")Hides();else if(s=="flags")Flags();else if(s=="wait")Wait();else if(s=="sprites")Sprites();else if(s=="text")Text();else if(s=="music")Music();else if(s=="names")Names();else if(s=="complete")Complete();else if(s=="effects")Effects();else if(s=="exit")Exit();else Check(false,"selection.unknown");return 0;}
+// Bounded canonical identity and equality controls. The replacement callback
+// below is a SYNTHETIC score dependency, not behavior of actual GuiScore::Add.
+static void ReplayModes(){
+ for(int stage:{6,7}) for(int mode:{INT_MIN,-1,0,1,2,INT_MAX}) {
+  Fixture f; ReplayManager alternate; alternate.mode=mode; f.mode.mode=mode==1?0:1;
+  g_ReplayManager=&alternate;g_GuiStage=stage;f.Counter(8);f.Program(20);Normal(f);
+  Check((g_MainSupervisorView.nextGameMode==4)==(mode==1),"replay.canonical_mode");
+  Check(f.Counter()==(mode==1?8:9),"replay.counter");
+ }
+#ifdef HOST_SYNTHETIC_SCORE_REPLACEMENT
+ for(int stage:{6,7}) for(int finalMode:{0,1,2,-1}) for(int at:{1,2,3}) {
+  Fixture f; ReplayManager alternate; alternate.mode=finalMode;f.mode.mode=finalMode==1?0:1;
+  g_GuiStage=stage;g_GuiDifficulty=0;f.Counter(8);f.Program(20);int calls=0;
+  syntheticAfterScore=[&](){if(++calls==at)g_ReplayManager=&alternate;};
+  Normal(f);syntheticAfterScore={};
+  Check(calls==3,"replay.synthetic_score_count");
+  Check((g_MainSupervisorView.nextGameMode==4)==(finalMode==1),stage==6?"replay.synthetic_post_score6":"replay.synthetic_post_score7");
+  Check(f.Counter()==(finalMode==1?8:9),"replay.synthetic_counter");
+ }
+#endif
+}
+int main(int argc,char**argv){Check(CHAR_BIT==8&&sizeof(unsigned short)==2&&sizeof(int)==4,"host.scalar_widths");unsigned n=1;Check(*reinterpret_cast<unsigned char*>(&n)==1,"host.endian");Check(argc==2,"selection.required");std::string s=argv[1];if(s=="replay")ReplayModes();else if(s=="control")Control();else if(s=="portraits")Portraits();else if(s=="sides")Sides();else if(s=="hides")Hides();else if(s=="flags")Flags();else if(s=="wait")Wait();else if(s=="sprites")Sprites();else if(s=="text")Text();else if(s=="music")Music();else if(s=="names")Names();else if(s=="complete")Complete();else if(s=="effects")Effects();else if(s=="exit")Exit();else Check(false,"selection.unknown");return 0;}

@@ -26,7 +26,14 @@ struct FrontEndCursorView;
 int FrontEndCursorSetCurrent(int,FrontEndCursorView*);
 struct AnmLoadedView;
 struct AnmVmView;
-class ReplayManager {};
+// @ACTUAL_REPLAY_HEADER@
+// HOST LIFETIME SEAMS: complete canonical classes, all scalar/pointer members
+// initialized without allocation, publication, resource ownership or cleanup.
+ReplayStageState::ReplayStageState():recordStart(nullptr),recordCursor(nullptr),fpsStart(nullptr),fpsCursor(nullptr),header(nullptr),recordIndex(0),link{} {}
+ReplayStageState::~ReplayStageState() {}
+ReplayManager::ReplayManager():unknown000{},updateChain(nullptr),drawChain(nullptr),mode(0),fileHeader(nullptr),replayData(nullptr),stageHeaders{},stageFrameLists{},currentFrameLink(nullptr),stageStates{},decompressedPayload(nullptr),replayFps(0),unknown1C5{},frameCounter(0),playbackChain(nullptr),activeStage(0),replayPath{} {}
+ReplayManager::~ReplayManager() {}
+
 using LPDIRECTSOUNDBUFFER=void*;
 using HWND=void*;
 using HANDLE=void*;
@@ -89,12 +96,13 @@ GameChainOwnerView* g_GameOwner477830=nullptr;
 int g_GuiDifficulty=4,g_GuiShotType=0,g_GuiCharacter=0,g_GuiStage=1;
 unsigned char* g_GuiPersistentData=profile;
 unsigned g_GuiGameFlags=0;
-struct ModeOwner { int state=0; } modeOwner;
-ModeOwner* g_GuiModeOwner=&modeOwner;
+ReplayManager modeOwner;
+ReplayManager* g_ReplayManager=&modeOwner;
 struct Supervisor { void SetNextGameMode(int mode) { event("mode:"+std::to_string(mode)); } } g_MainSupervisorView;
 void* StageCreateTransitionEffect(int a,int b,int c,unsigned d,unsigned e,unsigned f) {
  CHECK(a==0x31 && b==5 && c==120 && d==0 && e==0 && f==0,"transition-effect-arguments");event("transition-effect");return nullptr;
 }
+// SYNTHETIC score event seam; does not execute real GuiScoreView::Add.
 struct Score { void Add(int value) { event("score:"+std::to_string(value)); } } g_GuiScore;
 int g_GuiCounter4C4C=0,g_GuiPowerLevel=0;
 short g_GuiPower=0;
@@ -148,7 +156,7 @@ void reset(int mode=0,bool active=false) {
  for(auto& command:sound.commandQueue) { command.argument=901;command.step=902;std::strcpy(command.path,"untouched"); }
  g_GameOwner477830=reinterpret_cast<GameChainOwnerView*>(&menu);
  g_GuiDifficulty=4;g_GuiShotType=0;g_GuiCharacter=0;g_GuiStage=1;g_GuiPersistentData=profile;g_GuiGameFlags=0;
- modeOwner.state=0;g_GuiCounter4C4C=0;g_GuiPowerLevel=0;g_GuiPower=0;
+ modeOwner.mode=0;g_ReplayManager=&modeOwner;g_GuiCounter4C4C=0;g_GuiPowerLevel=0;g_GuiPower=0;
  std::memcpy(menuBefore.data(),&menu,sizeof(menu));
 }
 void queueAt(int index,int opcode,int argument,const char* path,const char* id) {
