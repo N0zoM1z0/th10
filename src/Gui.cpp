@@ -14,7 +14,7 @@
 
 
 // These views expose only fields read by the two reviewed GUI cores.  The
-// containing Player, Enemy and game-state owners remain separate campaigns.
+// containing Player and game-state owners remain separate campaigns.
 struct GuiPlayerView
 {
     unsigned char unknown000[0x10];
@@ -22,26 +22,6 @@ struct GuiPlayerView
     unsigned char unknown014[0x3ac];
     float positionX;
     float positionY;
-};
-
-struct GuiEnemyView
-{
-    unsigned char unknown000[0x1068];
-    float positionX;
-    unsigned char unknown106C[0x1390];
-    int life;
-    int maximumLife;
-    int gaugeThresholdValue;
-    unsigned char unknown2408[0x78];
-    unsigned int flags;
-};
-
-struct GuiEnemyManagerView
-{
-    unsigned char unknown000[0x10];
-    GuiEnemyView *activeBoss;
-    unsigned char unknown014[0x24];
-    AnmLoadedView *portraitAnm;
 };
 
 struct GuiGameOwnerView
@@ -60,22 +40,22 @@ struct GuiModeOwnerView
 
 typedef char GuiPlayerPositionAt3C0[
     (offsetof(GuiPlayerView, positionX) == 0x3c0) ? 1 : -1];
-typedef char GuiEnemyFieldsAt1068[
-    (offsetof(GuiEnemyView, positionX) == 0x1068 &&
-     offsetof(GuiEnemyView, life) == 0x23fc &&
-     offsetof(GuiEnemyView, maximumLife) == 0x2400 &&
-     offsetof(GuiEnemyView, gaugeThresholdValue) == 0x2404 &&
-     offsetof(GuiEnemyView, flags) == 0x2480) ? 1 : -1];
-typedef char GuiEnemyManagerFieldsAt10[
-    (offsetof(GuiEnemyManagerView, activeBoss) == 0x10 &&
-     offsetof(GuiEnemyManagerView, portraitAnm) == 0x38) ? 1 : -1];
+typedef char GuiCanonicalEnemyFields[
+    (offsetof(EnemyFullObjectView, runtime) +
+         offsetof(EnemyRuntimeView, worldMotion) +
+         offsetof(EnemyMotionView, position) + offsetof(PlayerFloat3, x) == 0x1068 &&
+     offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, life) == 0x23fc &&
+     offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, unknown13C4) == 0x2400 &&
+     offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, value13C8) == 0x2404 &&
+     offsetof(EnemyFullObjectView, runtime) + offsetof(EnemyRuntimeView, flags) == 0x2480) ? 1 : -1];
+typedef char GuiCanonicalEnemyManagerSlotAt10[
+    (offsetof(EnemyManagerView, specialEnemySlots) == 0x10) ? 1 : -1];
 
 
 extern EnemyManagerView *g_EnemyManager;
 // Existing full stage-state byte storage contract at target 0x474c40.
 extern unsigned char g_GameStageState[];
 extern GuiPlayerView *g_GuiPlayer;
-extern GuiEnemyManagerView *g_GuiEnemyManager;
 extern GuiGameOwnerView *g_GuiGameOwner;
 extern GuiModeOwnerView *g_GuiModeOwner;
 extern unsigned char *g_GuiPersistentData;
@@ -909,13 +889,13 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
 
     // HUD boss-gauge phase begin: target 0x00414ACF-0x0041513B.
     {
-        GuiEnemyView *boss = g_GuiEnemyManager == NULL
-            ? NULL : g_GuiEnemyManager->activeBoss;
+        EnemyFullObjectView *boss = g_EnemyManager == NULL
+            ? NULL : g_EnemyManager->specialEnemySlots[0];
         if (boss != NULL && gui->message == NULL)
         {
-            gui->bossLife = boss->life;
-            gui->bossGaugeTarget = static_cast<float>(boss->life) /
-                static_cast<float>(boss->maximumLife);
+            gui->bossLife = boss->runtime.life;
+            gui->bossGaugeTarget = static_cast<float>(boss->runtime.life) /
+                static_cast<float>(boss->runtime.unknown13C4);
             if (gui->bossGaugeDisplayed < gui->bossGaugeTarget)
                 gui->bossGaugeDisplayed += 0.025f;
             if (gui->bossGaugeDisplayed > gui->bossGaugeTarget)
@@ -1507,10 +1487,10 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
 
     // HUD spell-countdown and boss-marker phase begin: target 0x0041549A.
     {
-        GuiEnemyManagerView *manager = g_GuiEnemyManager;
+        EnemyManagerView *manager = g_EnemyManager;
         if (manager != NULL)
         {
-            if (gui->spellSeconds >= 0 && manager->activeBoss != NULL &&
+            if (gui->spellSeconds >= 0 && manager->specialEnemySlots[0] != NULL &&
                 gui->message == NULL)
             {
                 if (gui->spellSeconds < gui->previousSpellSeconds)
@@ -1542,21 +1522,21 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     gui->frontAnm->SetSprite(
                         &gui->displayVms4[1], gui->spellSeconds % 10 + 8);
                 }
-                manager = g_GuiEnemyManager;
+                manager = g_EnemyManager;
                 gui->previousSpellSeconds = gui->spellSeconds;
             }
 
             // Select the live boss after countdown calls, then retain it across the
             // boss marker's ExecuteScript, matching the target's ESI lifetime.
-            GuiEnemyView *boss = manager->activeBoss;
-            if (boss != NULL && (boss->flags & 0x11) == 0)
+            EnemyFullObjectView *boss = manager->specialEnemySlots[0];
+            if (boss != NULL && (boss->runtime.flags & 0x11) == 0)
             {
                 unsigned int phase = (gui->guiFlags >> 1) & 3;
                 if ((g_GuiGameOwner->flags378C & 1) != 0)
                 {
                     if (phase == 0)
                     {
-                        if (boss->gaugeThresholdValue < 2000)
+                        if (boss->runtime.value13C8 < 2000)
                         {
                             gui->bossPositionVm.pendingInterrupt = 7;
                             gui->guiFlags = (gui->guiFlags & ~4u) | 2;
@@ -1564,7 +1544,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 1)
                     {
-                        if (boss->gaugeThresholdValue < 1000)
+                        if (boss->runtime.value13C8 < 1000)
                         {
                             gui->bossPositionVm.pendingInterrupt = 8;
                             gui->guiFlags = (gui->guiFlags & ~2u) | 4;
@@ -1572,7 +1552,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 2)
                     {
-                        if (boss->gaugeThresholdValue < 400)
+                        if (boss->runtime.value13C8 < 400)
                         {
                             gui->bossPositionVm.pendingInterrupt = 9;
                             gui->guiFlags |= 6;
@@ -1580,7 +1560,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 3)
                     {
-                        if (boss->gaugeThresholdValue > 400)
+                        if (boss->runtime.value13C8 > 400)
                         {
                             gui->bossPositionVm.pendingInterrupt = 10;
                             gui->guiFlags &= ~6u;
@@ -1591,7 +1571,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                 {
                     if (phase == 0)
                     {
-                        if (boss->gaugeThresholdValue < 700)
+                        if (boss->runtime.value13C8 < 700)
                         {
                             gui->bossPositionVm.pendingInterrupt = 7;
                             gui->guiFlags = (gui->guiFlags & ~4u) | 2;
@@ -1599,7 +1579,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 1)
                     {
-                        if (boss->gaugeThresholdValue < 400)
+                        if (boss->runtime.value13C8 < 400)
                         {
                             gui->bossPositionVm.pendingInterrupt = 8;
                             gui->guiFlags = (gui->guiFlags & ~2u) | 4;
@@ -1607,7 +1587,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 2)
                     {
-                        if (boss->gaugeThresholdValue < 200)
+                        if (boss->runtime.value13C8 < 200)
                         {
                             gui->bossPositionVm.pendingInterrupt = 9;
                             gui->guiFlags |= 6;
@@ -1615,7 +1595,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     }
                     else if (phase == 3)
                     {
-                        if (boss->gaugeThresholdValue > 200)
+                        if (boss->runtime.value13C8 > 200)
                         {
                             gui->bossPositionVm.pendingInterrupt = 10;
                             gui->guiFlags &= ~6u;
@@ -1624,17 +1604,17 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                 }
 
                 AnmRenderManagerView::ExecuteScript(&gui->bossPositionVm);
-                gui->bossPositionVm.positionOffset.x = boss->positionX + 224.0f;
+                gui->bossPositionVm.positionOffset.x = boss->runtime.worldMotion.position.x + 224.0f;
                 gui->bossPositionVm.positionOffset.y = 480.0f;
                 const double distance = fabs(
-                    static_cast<double>(boss->positionX) - g_GuiPlayer->positionX);
+                    static_cast<double>(boss->runtime.worldMotion.position.x) - g_GuiPlayer->positionX);
                 if (distance < 64.0)
                     gui->bossPositionVm.primaryColor.alpha =
                         static_cast<unsigned char>(
                             64 - static_cast<int>(distance * -2.984375f));
                 else
                     gui->bossPositionVm.primaryColor.alpha = 0xff;
-                if (boss->positionX < -192.0f || boss->positionX > 192.0f)
+                if (boss->runtime.worldMotion.position.x < -192.0f || boss->runtime.worldMotion.position.x > 192.0f)
                     gui->bossPositionVm.primaryColor.alpha = 0;
             }
         }
