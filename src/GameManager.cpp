@@ -1,6 +1,10 @@
+#include "Main.hpp" // Shield ANM imports before the Windows SDK.
+#include "ItemManager.hpp"
+#include "ReplayChain.hpp"
 #include "Hint.hpp"
 #include "GameEffectUpdate.hpp"
 #include <stddef.h>
+#include <new>
 #include <stdlib.h>
 #include <string.h>
 #include "Player.hpp"
@@ -490,4 +494,208 @@ failed:
     g_GameWorkerReady = 1;
     MarkGameChains(reinterpret_cast<GameChainOwnerView *>(manager));
     return -1;
+}
+
+// Genuine unresolved dependencies: no native substitute implementations.
+// Private target EBX/EAX receiver assignments are not source ABI declarations.
+extern int GameFinalizeStatistics42B1E0(GameStatisticsRowView *statistics);
+extern void __stdcall GameCleanupController422220(GameChainOwnerView *owner);
+extern void __stdcall GameCleanupGui4145F0(GameGuiUpdateView *owner);
+extern void __stdcall GameCleanupAnimation405F70(GameChainOwnerView *owner);
+extern void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner);
+extern void __stdcall GameCleanupOwner42B570(GameChainOwnerView *owner);
+extern void GamePrepareGuiReuse414570(GameGuiUpdateView *owner);
+extern void __stdcall GameCleanupOwner40AF00(GameChainOwnerView *owner);
+extern void __stdcall GameCleanupLoader405620(GameChainOwnerView *owner);
+extern void __stdcall GameCleanupOwner408AF0(GameAdditionalChainView *owner);
+extern void FrontEndQueueSoundCommand(const char *path, int opcode, int argument);
+extern GameManager *g_GameManager;                         // 0x477810
+extern int g_GameComparison474C80;
+extern int g_StageScriptGlobal4923A8;
+namespace th10 { namespace leaf {
+    unsigned char *Fn00418A90(unsigned char *owner);
+} }
+
+// Target417C80. Complete terminal/reuse transition owner, not an allocation release.
+// Existing GameManager pointer aliases remain target-storage obligations. The
+// typed casts below select already-maintained real owners, not new storage.
+void __stdcall GameManagerCleanup(GameManager *manager)
+{
+    GameFinalizeStatistics42B1E0(g_GameStatisticsRows);
+    g_GameRuntimeFlags &= ~3u;
+    int transition = g_GameTransitionState;
+    g_PlayerTimerScale = 1.0f;
+    if (transition == 10)
+    {
+        AsciiManagerView *ascii = g_AsciiManagerView;
+        if (ascii->auxiliaryVm89A4 == 0)
+        {
+            AnmFloat3View position(480.0f, 392.0f, 0.0f);
+            ascii->auxiliaryVm89A4 =
+                ascii->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
+            transition = g_GameTransitionState;
+        }
+        if (g_GameComparison474C80 == g_GameStartupMode)
+            g_GameRuntimeFlags |= 1u;
+    }
+    else if (transition == 11)
+    {
+        g_AsciiManagerView->EnsureSelectionVm(224.0f, 416.0f);
+        g_GameRuntimeFlags |= 2u;
+        transition = g_GameTransitionState;
+    }
+    else if (transition == 4 || transition == 15)
+    {
+        g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
+        transition = g_GameTransitionState;
+    }
+    else if (transition == 13)
+    {
+        g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
+        if (g_GameComparison474C80 != g_GameStartupMode)
+        {
+            th10::leaf::Fn00418A90(g_GameStageState);
+            g_GameRuntimeFlags |= 8u;
+        }
+        g_GameRuntimeFlags |= 1u;
+        transition = g_GameTransitionState;
+    }
+
+    if ((g_GameRuntimeFlags & 2u) == 0)
+    {
+        if (transition != 14 && transition != 15)
+        {
+            ReplayManager *replay = g_ReplayManager;
+            if (replay != NULL)
+                delete replay;
+        }
+        StageScriptView *stage = reinterpret_cast<StageScriptView *>(g_GameAnimationSlots);
+        if (stage != NULL)
+            delete stage;
+        stage = reinterpret_cast<StageScriptView *>(g_GameMenu);
+        if (stage != NULL)
+            delete stage;
+        GameChainOwnerView *controller = g_GameOwner477830;
+        if (controller != NULL)
+        {
+            GameCleanupController422220(controller);
+            ::operator delete(controller);
+        }
+        GameGuiUpdateView *gui = g_GameGuiUpdate;
+        if (gui != NULL)
+        {
+            GameCleanupGui4145F0(gui);
+            ::operator delete(gui);
+        }
+        Player *player = g_Player;
+        if (player != NULL)
+            delete player;
+        GameChainOwnerView *animation = g_GameOwner4776F0;
+        if (animation != NULL)
+        {
+            GameCleanupAnimation405F70(animation);
+            ::operator delete(animation);
+        }
+        ItemManagerView *items = reinterpret_cast<ItemManagerView *>(g_GameOwner477818);
+        if (items != NULL)
+            delete items;
+        GameChainOwnerView *linked = g_GameOwner47781C;
+        if (linked != NULL)
+        {
+            GameCleanupLinked41C1C0(linked);
+            ::operator delete(linked);
+        }
+        HintOwnerView *hint = g_GameOwner477814;
+        if (hint != NULL)
+        {
+            CleanupHintOwner(hint);
+            delete hint;
+        }
+        GameChainOwnerView *owner42B570 = g_GameOwner477840;
+        if (owner42B570 != NULL)
+        {
+            GameCleanupOwner42B570(owner42B570);
+            ::operator delete(owner42B570);
+        }
+    }
+    else
+    {
+        GamePrepareGuiReuse414570(g_GameGuiUpdate);
+        StageScriptView *stage = reinterpret_cast<StageScriptView *>(g_GameMenu);
+        if (stage != NULL)
+            delete stage;
+        g_GameMenu = reinterpret_cast<GameMenuView *>(g_GameAnimationSlots);
+        GameChainOwnerView *controller = g_GameOwner477830;
+        if (controller->updateChain != NULL)
+            controller->updateChain->flags &= ~2u;
+        if (controller->drawChain != NULL)
+            controller->drawChain->flags &= ~2u;
+        GameChainOwnerView *animation = g_GameOwner4776F0;
+        if (animation->updateChain != NULL)
+            animation->updateChain->flags &= ~2u;
+        if (animation->drawChain != NULL)
+            animation->drawChain->flags &= ~2u;
+        ReplayManager *replay = g_ReplayManager;
+        if (replay->playbackChain != NULL)
+            replay->playbackChain->unknownFlag1 = 0;
+        if (replay->drawChain != NULL)
+            replay->drawChain->unknownFlag1 = 0;
+        ItemManagerView *items = reinterpret_cast<ItemManagerView *>(g_GameOwner477818);
+        memset(items->items, 0, 0x21cea0);
+    }
+
+    if ((g_GameRuntimeFlags & 9u) == 0)
+    {
+        EnemyManagerView *enemy = g_EnemyManager;
+        if (enemy != NULL)
+            delete enemy;
+    }
+    else
+        GameClearEnemyVms(g_EnemyManager);
+    GameChainOwnerView *owner40AF00 = g_GameOwner4776FC;
+    if (owner40AF00 != NULL)
+    {
+        GameCleanupOwner40AF00(owner40AF00);
+        ::operator delete(owner40AF00);
+    }
+    GameChainOwnerView *loader = g_GameOwner4776EC;
+    if (loader != NULL)
+    {
+        GameCleanupLoader405620(loader);
+        ::operator delete(loader);
+    }
+    GameAdditionalChainView *owner408AF0 = g_GameOwner4776F4;
+    if (owner408AF0 != NULL)
+    {
+        GameCleanupOwner408AF0(owner408AF0);
+        ::operator delete(owner408AF0);
+    }
+
+    GameChainElementView *element = manager->updateChain;
+    th10::Chain *chain = th10::g_Chain;
+    if (element != NULL)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        th10::Chain::UnregisterElem(reinterpret_cast<th10::ChainElem *>(element), chain);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    element = manager->drawChain;
+    chain = th10::g_Chain;
+    if (element != NULL)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        th10::Chain::UnregisterElem(reinterpret_cast<th10::ChainElem *>(element), chain);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    g_GameManager = NULL;
+    if ((g_GameRuntimeFlags & 0x22u) == 0)
+        FrontEndQueueSoundCommand("dummy",
+            (g_GameConfigurationFlags491D78 & 0x10u) != 0 ? 4 : 3, 0);
+    unsigned int finalFlags = g_GameRuntimeFlags;
+    g_GameStartupCounter = 1;
+    g_StageScriptGlobal4923A8 = (finalFlags & 1u) != 0 ? 0 : static_cast<int>(0xff000000u);
 }
