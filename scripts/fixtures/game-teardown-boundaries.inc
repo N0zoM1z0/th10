@@ -11,7 +11,7 @@ void fixture::ClearPublishedOwner(Id id) {
     case PlayerId: g_Player = NULL; break;
     case Owner6F0: g_GameOwner4776F0 = NULL; break;
     case Item: g_GameOwner477818 = NULL; break;
-    case Owner81C: g_GameOwner47781C = NULL; break;
+    case Owner81C: g_EnemyLaserManager = NULL; break;
     case Hint: g_GameOwner477814 = NULL; break;
     case Owner840: g_GameOwner477840 = NULL; break;
     case Enemy: g_EnemyManager = NULL; break;

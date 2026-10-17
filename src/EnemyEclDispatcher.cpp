@@ -1,8 +1,8 @@
+#include "Main.hpp"
 #include "EnemySoundQueue.hpp"
 #include "Enemy.hpp"
 #include "EnemyLaser.hpp"
 #include "EclVm.hpp"
-#include "Main.hpp"
 #include "Rng.hpp"
 #include "Gui.hpp"
 
@@ -548,27 +548,6 @@ static __declspec(noinline) void EnemySetLaserPosition(
 {
     *reinterpret_cast<PlayerFloat3 *>(laser + 0x430) = *position;
 }
-struct EnemyLaserNodeView
-{
-    unsigned char unknown000[0x08];
-    EnemyLaserNodeView *next;
-    unsigned char unknown00C[0x54 - 0x0c];
-    int id;
-};
-struct EnemyLaserManagerView
-{
-    unsigned char unknown000[0x18];
-    EnemyLaserNodeView *head;
-};
-typedef char EnemyLaserNodeNextAt08[
-    (offsetof(EnemyLaserNodeView, next) == 0x08) ? 1 : -1];
-typedef char EnemyLaserNodeIdAt54[
-    (offsetof(EnemyLaserNodeView, id) == 0x54) ? 1 : -1];
-typedef char EnemyLaserManagerHeadAt18[
-    (offsetof(EnemyLaserManagerView, head) == 0x18) ? 1 : -1];
-
-extern EnemyLaserManagerView *g_EnemyLaserManager;
-
 static __declspec(noinline) int EnemyFindLaser(
     EnemyLaserManagerView *manager, int id)
 {
@@ -686,36 +665,6 @@ static __declspec(noinline) AnmFloat3View *EnemyGetAnmPosition(
     result.z = position->z;
     return &result;
 }
-struct EnemyEffectWaitNode
-{
-    virtual void UnknownVirtual0();
-    virtual void UnknownVirtual1();
-    virtual void UnknownVirtual2();
-    virtual void UnknownVirtual3();
-    virtual void UnknownVirtual4();
-    virtual unsigned int ApplyClear(int mode);
-    virtual void UnknownVirtual6();
-    virtual unsigned int ApplyPatternCancel(
-        const PlayerFloat3 *position, float radius, int mode);
-
-    unsigned int unknown004;
-    EnemyEffectWaitNode *next;
-    int state;
-    unsigned char unknown010[0x40];
-    unsigned char flag50;
-};
-
-struct EnemyEffectWaitManager
-{
-    unsigned char unknown000[0x18];
-    EnemyEffectWaitNode *head;
-    unsigned char unknown01C[0x440 - 0x1c];
-    PlayerFloat3 cancelPosition;
-
-    __declspec(noinline) unsigned int ApplyPatternCancel(
-        const PlayerFloat3 *position, float radius, int mode);
-};
-
 static __declspec(noinline) unsigned int EnemyWaitForEffect(
     EnemyEffectWaitManager *manager)
 {
@@ -2436,7 +2385,7 @@ dispatch_select_bullet_count_low:
   case ENEMY_ECL_CANCEL_ALL_BULLETS:
     reinterpret_cast<EnemyCancelManagerView *>(
         g_EnemyPrimaryResourceOwner)->CancelAllBullets(1);
-    EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager), 1);
+    EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager), 1);
     return 0;
   case ENEMY_ECL_PLAY_SOUND:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
@@ -2457,7 +2406,7 @@ dispatch_select_bullet_count_low:
     EnemyReadDialog(g_EnemyVisualState, (int)uVar22);
     reinterpret_cast<EnemyCancelManagerView *>(
         g_EnemyPrimaryResourceOwner)->CancelAllBullets(0);
-    EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager), 0);
+    EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager), 0);
     EnemyKillAll(g_EnemyManager);
     return 0;
   case ENEMY_ECL_WAIT_DIALOG:
@@ -2562,7 +2511,7 @@ dispatch_select_bullet_count_low:
     fVar19 = (ReadFloatArgument(7));
     reinterpret_cast<float *>(&local_288)[7] = (float)fVar19;
     reinterpret_cast<unsigned int *>(&local_288)[10] |= 1;
-    EnemyFireLaser(g_EnemyBulletManager, &local_288, 0);
+    EnemyFireLaser(g_EnemyLaserManager, &local_288, 0);
     return 0;
   case ENEMY_ECL_FIRE_STRAIGHT_LASER:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_WITH_PATTERN:
@@ -2608,7 +2557,7 @@ dispatch_select_bullet_count_low:
     reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(0xb);
     reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 | 2;
-    uVar6 = EnemyFireLaser(g_EnemyBulletManager, &local_288, 1);
+    uVar6 = EnemyFireLaser(g_EnemyLaserManager, &local_288, 1);
     if (puVar5 != (unsigned int *)0x0) {
       *puVar5 = uVar6;
       return 0;
@@ -2650,7 +2599,7 @@ dispatch_select_bullet_count_low:
     fVar19 = (ReadFloatArgument(7));
     reinterpret_cast<float *>(&local_288)[7] = (float)fVar19;
     reinterpret_cast<unsigned int *>(&local_288)[10] &= 0xfffffffe;
-    EnemyFireLaser(g_EnemyBulletManager, &local_288, 0);
+    EnemyFireLaser(g_EnemyLaserManager, &local_288, 0);
     return 0;
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2:
   case ENEMY_ECL_FIRE_STRAIGHT_LASER_2_WITH_PATTERN:
@@ -2693,7 +2642,7 @@ dispatch_select_bullet_count_low:
     reinterpret_cast<float *>(&local_288)[10] = (float)fVar19;
     uVar22 = ReadIntArgument(0xb);
     reinterpret_cast<unsigned int *>(&local_288)[17] = (unsigned int)uVar22 & 0xfffffffd;
-    uVar6 = EnemyFireLaser(g_EnemyBulletManager, &local_288, 1);
+    uVar6 = EnemyFireLaser(g_EnemyLaserManager, &local_288, 1);
     if (puVar5 != (unsigned int *)0x0) {
       *puVar5 = uVar6;
       return 0;
@@ -2768,7 +2717,7 @@ dispatch_select_bullet_count_low:
         g_EnemyPrimaryResourceOwner)->CancelBulletPattern(
             &worldMotion.position, (float)fVar19, 1, 0);
     reinterpret_cast<EnemyEffectWaitManager *>(
-        g_EnemyBulletManager)->ApplyPatternCancel(
+        g_EnemyLaserManager)->ApplyPatternCancel(
             &worldMotion.position, (float)fVar19, 1);
     return 0;
   case ENEMY_ECL_CLEAR_BULLET_PATTERN:
@@ -2777,7 +2726,7 @@ dispatch_select_bullet_count_low:
         g_EnemyPrimaryResourceOwner)->CancelBulletPattern(
             &worldMotion.position, (float)fVar19, 0, 0);
     reinterpret_cast<EnemyEffectWaitManager *>(
-        g_EnemyBulletManager)->ApplyPatternCancel(
+        g_EnemyLaserManager)->ApplyPatternCancel(
             &worldMotion.position, (float)fVar19, 0);
     return 0;
   case ENEMY_ECL_SET_CHAPTER:
@@ -2880,7 +2829,7 @@ dispatch_rank_int_low:
     return 0;
   case ENEMY_ECL_WAIT_FOR_EFFECT:
     EnemyWaitForEffect(
-        reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyBulletManager));
+        reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager));
     return 0;
   case ENEMY_ECL_SET_ANM_MODE:
     uVar22 = ReadIntArgument(0);

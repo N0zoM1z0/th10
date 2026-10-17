@@ -1,6 +1,117 @@
 #ifndef TH10_RECONSTRUCTION_ENEMY_LASER_HPP
 #define TH10_RECONSTRUCTION_ENEMY_LASER_HPP
+#include "AnmManager.hpp"
+#include "Player.hpp"
 #include <stddef.h>
+
+// These are explicit views of the single target47781C allocation. The narrow
+// lookup and known-slot virtual views preserve existing call boundaries; they
+// are not separate owners or replacement concrete vtables.
+struct EnemyLaserNodeView
+{
+    unsigned char unknown000[0x08];
+    EnemyLaserNodeView *next;
+    unsigned char unknown00C[0x54 - 0x0c];
+    int id;
+};
+struct EnemyLaserManagerView
+{
+    unsigned char unknown000[0x18];
+    EnemyLaserNodeView *head;
+};
+typedef char EnemyLaserNodeNextAt08[
+    (offsetof(EnemyLaserNodeView, next) == 0x08) ? 1 : -1];
+typedef char EnemyLaserNodeIdAt54[
+    (offsetof(EnemyLaserNodeView, id) == 0x54) ? 1 : -1];
+typedef char EnemyLaserManagerHeadAt18[
+    (offsetof(EnemyLaserManagerView, head) == 0x18) ? 1 : -1];
+
+extern EnemyLaserManagerView *g_EnemyLaserManager;
+
+struct EnemyEffectWaitNode
+{
+    virtual void UnknownVirtual0();
+    virtual void UnknownVirtual1();
+    virtual void UnknownVirtual2();
+    virtual void UnknownVirtual3();
+    virtual void UnknownVirtual4();
+    virtual unsigned int ApplyClear(int mode);
+    virtual void UnknownVirtual6();
+    virtual unsigned int ApplyPatternCancel(
+        const PlayerFloat3 *position, float radius, int mode);
+
+    unsigned int unknown004;
+    EnemyEffectWaitNode *next;
+    int state;
+    unsigned char unknown010[0x40];
+    unsigned char flag50;
+};
+
+struct EnemyEffectWaitManager
+{
+    unsigned char unknown000[0x18];
+    EnemyEffectWaitNode *head;
+    unsigned char unknown01C[0x440 - 0x1c];
+    PlayerFloat3 cancelPosition;
+
+    __declspec(noinline) unsigned int ApplyPatternCancel(
+        const PlayerFloat3 *position, float radius, int mode);
+};
+
+struct EnemyLaserPatternRecordView
+{
+    AnmVmTimerView timer;
+    unsigned char unknown014[0x34 - 0x14];
+};
+struct EnemyLaserCommonStorageView
+{
+    const void **vtable;
+    EnemyLaserCommonStorageView *previous;
+    EnemyLaserCommonStorageView *next;
+    unsigned int unknown00C;
+    AnmVmTimerView timer;
+    unsigned char unknown024[0x54 - 0x24];
+    unsigned int id;
+    EnemyLaserPatternRecordView patterns[18];
+    unsigned char unknown400[0x410 - 0x400];
+    AnmVmTimerView finalTimer;
+};
+typedef char EnemyLaserCommonSizeIs424[
+    (sizeof(EnemyLaserCommonStorageView) == 0x424) ? 1 : -1];
+typedef char EnemyLaserCommonIdAt054[
+    (offsetof(EnemyLaserCommonStorageView, id) == 0x54) ? 1 : -1];
+typedef char EnemyLaserPatternSizeIs034[
+    (sizeof(EnemyLaserPatternRecordView) == 0x34) ? 1 : -1];
+// Complete storage view: +18 is sentinel.next, while +434 is the append tail.
+// The callback-chain prefix remains opaque here; GameManager keeps its existing
+// separately typed chain-prefix view at that boundary.
+struct EnemyLaserManagerStorageView
+{
+    unsigned char unknown000[0x10];
+    EnemyLaserCommonStorageView sentinel;
+    EnemyLaserCommonStorageView *tail;
+    int count;
+    unsigned int nextId;
+    PlayerFloat3 cancelPosition;
+    unsigned char unknown44C[0x458 - 0x44c];
+    AnmLoadedView *effectResource;
+};
+typedef char EnemyLaserManagerStorageLayout[
+    (sizeof(EnemyLaserManagerStorageView) == 0x45c &&
+     offsetof(EnemyLaserManagerStorageView, sentinel) == 0x10 &&
+     offsetof(EnemyLaserManagerStorageView, sentinel) +
+         offsetof(EnemyLaserCommonStorageView, next) == 0x18 &&
+     offsetof(EnemyLaserManagerStorageView, tail) == 0x434 &&
+     offsetof(EnemyLaserManagerStorageView, count) == 0x438 &&
+     offsetof(EnemyLaserManagerStorageView, nextId) == 0x43c &&
+     offsetof(EnemyLaserManagerStorageView, cancelPosition) == 0x440 &&
+     offsetof(EnemyLaserManagerStorageView, effectResource) == 0x458) ? 1 : -1];
+typedef char EnemyEffectWaitViewLayout[
+    (offsetof(EnemyEffectWaitNode, next) == 0x08 &&
+     offsetof(EnemyEffectWaitNode, state) == 0x0c &&
+     offsetof(EnemyEffectWaitNode, flag50) == 0x50 &&
+     offsetof(EnemyEffectWaitManager, head) == 0x18 &&
+     offsetof(EnemyEffectWaitManager, cancelPosition) == 0x440) ? 1 : -1];
 
 // Shared target-backed request views. These definitions are identical in the
 // dispatcher and all six real laser-factory caller owners.

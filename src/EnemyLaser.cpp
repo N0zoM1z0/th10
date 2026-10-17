@@ -62,7 +62,6 @@ extern float g_EnemyPlayfieldMaxX;
 extern float g_EnemyPlayfieldMinY;
 extern float g_EnemyPlayfieldMaxY;
 extern float g_EnemyPi;
-extern void *g_EnemyBulletManager;
 
 struct EnemyLaserBoundaryStateView
 {
@@ -127,7 +126,7 @@ void EnemyLaserBoundaryStateView::UpdateBoundary()
         requestWords[2] = projected.z;
         requestWords[3] = EnemyWrapAngle(-angle - g_EnemyPi);
         reinterpret_cast<int *>(&request)[0x20 / 4] = requestOwner;
-        EnemyFireLaser(g_EnemyBulletManager, &request, 0);
+        EnemyFireLaser(g_EnemyLaserManager, &request, 0);
         fired = 1;
     }
 
@@ -144,7 +143,7 @@ void EnemyLaserBoundaryStateView::UpdateBoundary()
         requestWords[2] = projected.z;
         requestWords[3] = -angle;
         reinterpret_cast<int *>(&request)[0x20 / 4] = requestOwner;
-        EnemyFireLaser(g_EnemyBulletManager, &request, 0);
+        EnemyFireLaser(g_EnemyLaserManager, &request, 0);
     }
 
     flags &= 0xf7fff3ffu;
@@ -275,7 +274,7 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
 
             EnemyLaserManagerResourceView *manager =
                 reinterpret_cast<EnemyLaserManagerResourceView *>(
-                    g_EnemyBulletManager);
+                    g_EnemyLaserManager);
             manager->effectResource->CreateVmAtWorldVariant0(
                 static_cast<int>(request.color) * 2 + 0x11,
                 reinterpret_cast<const AnmFloat3View *>(&sample));
@@ -364,7 +363,7 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
             args.position.y = originalPosition.y + step.y * start;
             args.position.z = originalPosition.z + step.z * start;
             EnemyFireLaser(
-                g_EnemyBulletManager,
+                g_EnemyLaserManager,
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args),
                 0);
         }
@@ -422,7 +421,7 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
 
             EnemyLaserManagerResourceView *manager =
                 reinterpret_cast<EnemyLaserManagerResourceView *>(
-                    g_EnemyBulletManager);
+                    g_EnemyLaserManager);
             manager->effectResource->CreateVmAtWorldVariant0(
                 static_cast<int>(request.color) * 2 + 0x11,
                 reinterpret_cast<const AnmFloat3View *>(&sample));
@@ -510,7 +509,7 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
             args.position.y = originalPosition.y + step.y * start;
             args.position.z = originalPosition.z + step.z * start;
             EnemyFireLaser(
-                g_EnemyBulletManager,
+                g_EnemyLaserManager,
                 reinterpret_cast<EnemyLaserRequestScratch *>(&args),
                 0);
         }
@@ -623,7 +622,7 @@ int EnemyLaserType1CollisionView::CheckCollisionBox(
 
             EnemyLaserManagerResourceView *manager =
                 reinterpret_cast<EnemyLaserManagerResourceView *>(
-                    g_EnemyBulletManager);
+                    g_EnemyLaserManager);
             manager->effectResource->CreateVmAtWorldVariant0(
                 static_cast<int>(color) * 2 + 0x11,
                 reinterpret_cast<const AnmFloat3View *>(&sample));
@@ -694,7 +693,7 @@ int EnemyLaserType1CollisionView::CheckCollisionBox(
         args.color = color;
 
         EnemyFireLaser(
-            g_EnemyBulletManager,
+            g_EnemyLaserManager,
             reinterpret_cast<EnemyLaserRequestScratch *>(&args),
             0);
     }
@@ -750,7 +749,7 @@ int EnemyLaserType1CollisionView::CheckCollisionCircle(
 
             EnemyLaserManagerResourceView *manager =
                 reinterpret_cast<EnemyLaserManagerResourceView *>(
-                    g_EnemyBulletManager);
+                    g_EnemyLaserManager);
             manager->effectResource->CreateVmAtWorldVariant0(
                 static_cast<int>(color) * 2 + 0x11,
                 reinterpret_cast<const AnmFloat3View *>(&sample));
@@ -821,7 +820,7 @@ int EnemyLaserType1CollisionView::CheckCollisionCircle(
         args.color = color;
 
         EnemyFireLaser(
-            g_EnemyBulletManager,
+            g_EnemyLaserManager,
             reinterpret_cast<EnemyLaserRequestScratch *>(&args),
             0);
     }
@@ -841,24 +840,6 @@ extern const void *g_EnemyLaserBaseVtable[19];   // target 0x0046DAB0
 extern const void *g_EnemyLaserType0Vtable[19];  // target 0x0046DA60
 extern const void *g_EnemyLaserType1Vtable[19];  // target 0x0046DA10
 
-struct EnemyLaserPatternRecordView
-{
-    AnmVmTimerView timer;
-    unsigned char unknown014[0x34 - 0x14];
-};
-struct EnemyLaserCommonStorageView
-{
-    const void **vtable;
-    EnemyLaserCommonStorageView *previous;
-    EnemyLaserCommonStorageView *next;
-    unsigned int unknown00C;
-    AnmVmTimerView timer;
-    unsigned char unknown024[0x54 - 0x24];
-    unsigned int id;
-    EnemyLaserPatternRecordView patterns[18];
-    unsigned char unknown400[0x410 - 0x400];
-    AnmVmTimerView finalTimer;
-};
 struct EnemyLaserType0StorageView
 {
     EnemyLaserCommonStorageView common;
@@ -873,19 +854,6 @@ struct EnemyLaserType1StorageView
     AnmVmView primaryVm;
     AnmVmView secondaryVm;
 };
-struct EnemyLaserManagerStorageView
-{
-    unsigned char unknown000[0x434];
-    EnemyLaserCommonStorageView *head;
-    int count;
-    unsigned int nextId;
-};
-typedef char EnemyLaserCommonSizeIs424[
-    (sizeof(EnemyLaserCommonStorageView) == 0x424) ? 1 : -1];
-typedef char EnemyLaserCommonIdAt054[
-    (offsetof(EnemyLaserCommonStorageView, id) == 0x54) ? 1 : -1];
-typedef char EnemyLaserPatternSizeIs034[
-    (sizeof(EnemyLaserPatternRecordView) == 0x34) ? 1 : -1];
 typedef char EnemyLaserType0Layout[
     (sizeof(EnemyLaserType0StorageView) == 0xd58 &&
      offsetof(EnemyLaserType0StorageView, request) == 0x424 &&
@@ -946,7 +914,7 @@ static EnemyLaserCommonStorageView *EnemyInitializeLaserType1(
 
 // Target 0x0041C510. Allocation failure still reaches the target's null write;
 // no new failure recovery is invented. Unknown types consume an ID but do not
-// allocate or insert. The existing head is a required sentinel/list node.
+// allocate or insert. The existing tail is a required sentinel/list node.
 unsigned int EnemyFireLaser(
     void *managerStorage, EnemyLaserRequestScratch *request, int type)
 {
@@ -979,10 +947,10 @@ unsigned int EnemyFireLaser(
         return manager->nextId;
     }
     laser->id = manager->nextId;
-    laser->previous = manager->head;
-    manager->head->next = laser;
+    laser->previous = manager->tail;
+    manager->tail->next = laser;
     ++manager->count;
-    manager->head = laser;
+    manager->tail = laser;
     reinterpret_cast<EnemyLaserApplyPrefixView *>(laser)->ApplyRequest(request);
     return manager->nextId;
 }

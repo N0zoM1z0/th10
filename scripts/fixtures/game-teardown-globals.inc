@@ -1,3 +1,5 @@
+struct EnemyLaserManagerView;
+EnemyLaserManagerView *g_EnemyLaserManager;
 // All storage below is local diagnostic host state, never native bindings.
 namespace th10 { Chain *g_Chain; namespace leaf { unsigned char *Fn00418A90(unsigned char *owner); } }
 MainSupervisorView g_MainSupervisorView;
@@ -5,7 +7,7 @@ AsciiManagerView *g_AsciiManagerView;
 GameManager *g_GameManager;
 ReplayManager *g_ReplayManager;
 GameChainOwnerView *g_GameAnimationSlots, *g_GameOwner477830, *g_GameOwner4776F0,
-    *g_GameOwner477818, *g_GameOwner47781C, *g_GameOwner477840,
+    *g_GameOwner477818, *g_GameOwner477840,
     *g_GameOwner4776FC, *g_GameOwner4776EC;
 GameAdditionalChainView *g_GameOwner4776F4;
 GameMenuView *g_GameMenu;

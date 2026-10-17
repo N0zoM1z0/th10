@@ -42,7 +42,7 @@ void Reset(const Scenario &s) {
     saved6F0 = g_GameOwner4776F0 = s.missing == Owner6F0 ? NULL : Allocate<GameChainOwnerView>(Owner6F0);
     savedItem = s.missing == Item ? NULL : Allocate<ItemManagerView>(Item);
     g_GameOwner477818 = reinterpret_cast<GameChainOwnerView *>(savedItem);
-    g_GameOwner47781C = s.missing == Owner81C ? NULL : Allocate<GameChainOwnerView>(Owner81C);
+    g_EnemyLaserManager = s.missing == Owner81C ? NULL : reinterpret_cast<EnemyLaserManagerView *>(Allocate<GameChainOwnerView>(Owner81C));
     savedHint = g_GameOwner477814 = s.missing == Hint ? NULL : Allocate<HintOwnerView>(Hint);
     g_GameOwner477840 = s.missing == Owner840 ? NULL : Allocate<GameChainOwnerView>(Owner840);
     g_EnemyManager = s.missing == Enemy ? NULL : Allocate<EnemyManagerView>(Enemy);

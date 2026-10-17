@@ -112,6 +112,12 @@ def audit_seams(root, source, fixture):
     require('offsetof(GuiView,specialVmId9E14)==0x9e14' in normalized(source),
             'transition VM ID canonical offset audit drift')
     require('g_GuiView->message==NULL' in normalized(source), 'message pointer gate drift')
+    laser = canonical(root, 'EnemyLaser.hpp')
+    require('externEnemyLaserManagerView*g_EnemyLaserManager;' in normalized(laser),
+            'canonical laser declaration drift')
+    require('g_GameOwner47781C' not in source, 'obsolete independent laser alias remains')
+    require(source.count('reinterpret_cast<GameChainOwnerView *>(g_EnemyLaserManager)') == 3,
+            'laser chain-prefix caller bindings drift')
     game_types = ['GameManager', 'GameChainElementView', 'GameChainOwnerView', 'GameMenuView',
                   'GameAdditionalChainView']
     fixture = fixture.replace('@GAME_DECLARATIONS@', 'struct GameChainElementView;\n' + '\n'.join(

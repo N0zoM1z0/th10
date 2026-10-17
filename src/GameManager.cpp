@@ -10,6 +10,7 @@
 #include "Player.hpp"
 #include "ReplayManager.hpp"
 #include "Enemy.hpp"
+#include "EnemyLaser.hpp"
 #include "GameScoreState.hpp"
 #include "GameStatistics.hpp"
 #include "Gui.hpp"
@@ -103,7 +104,6 @@ extern GameChainOwnerView *g_GameAnimationSlots;       // 0x4776E8
 extern GameChainOwnerView *g_GameOwner4776F0;
 extern GameChainOwnerView *g_GameOwner477830;
 extern GameChainOwnerView *g_GameOwner477818;
-extern GameChainOwnerView *g_GameOwner47781C;
 extern GameChainOwnerView *g_GameOwner4776FC;
 extern GameChainOwnerView *g_GameOwner4776EC;
 extern GameChainOwnerView *g_GameOwner477840;
@@ -161,7 +161,7 @@ static __forceinline void ResetGameStage()
     PlayerResetRuntimeState(g_Player);
     memset(reinterpret_cast<u8 *>(g_GameOwner477818) + 0x14, 0, 0x21cea0);
     GameClearEnemyVms(g_EnemyManager);
-    GameClearLinkedObjects(g_GameOwner47781C);
+    GameClearLinkedObjects(reinterpret_cast<GameChainOwnerView *>(g_EnemyLaserManager));
     g_GameFrameCounter0 = 0;
     g_GameFrameCounter1 = 0;
     g_ReplayManager->BeginStage();
@@ -177,7 +177,7 @@ static __forceinline void ResetGameStage()
     MarkGameChains(g_GameOwner4776F0);
     MarkGameChains(reinterpret_cast<GameChainOwnerView *>(g_EnemyManager));
     MarkGameChains(g_GameOwner477818);
-    MarkGameChains(g_GameOwner47781C);
+    MarkGameChains(reinterpret_cast<GameChainOwnerView *>(g_EnemyLaserManager));
     g_GameOwner4776FC->updateChain->flags |= 2;
     g_GameOwner4776FC->drawChain->flags |= 2;
     MarkGameChains(g_GameOwner4776EC);
@@ -573,7 +573,7 @@ void __stdcall GameManagerCleanup(GameManager *manager)
         ItemManagerView *items = reinterpret_cast<ItemManagerView *>(g_GameOwner477818);
         if (items != NULL)
             delete items;
-        GameChainOwnerView *linked = g_GameOwner47781C;
+        GameChainOwnerView *linked = reinterpret_cast<GameChainOwnerView *>(g_EnemyLaserManager);
         if (linked != NULL)
         {
             GameCleanupLinked41C1C0(linked);
