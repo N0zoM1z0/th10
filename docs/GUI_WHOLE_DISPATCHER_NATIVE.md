@@ -79,3 +79,67 @@ destruction integration with its strict deletion control, and32 transition mutan
 with12 classifier rejection controls plus a separate transition UBSan baseline.
 Generated artifacts remain ignored; maintained source, tests and concise evidence
 are sufficient to reconstruct the observations.
+
+## Opcode 19 source correction (2026-10-17; native verification pending)
+
+This addendum records a later source correction; the historical observations above remain unchanged. In the subsequent effect diagnostic, the still-guarded Run owner is 4,128 bytes at `0x401120`, compared with target 4,480 bytes at `0x415E90`. Target opcode 19 spans `[0x416AC3,0x416BD3)`: stage-minus-one is bounded by 6 before any manager access, then seven arms load the manager member at `+0x38`, create with layer 15 and scripts `0x0D,0x10,0x14,0x15,0x0E,0x23,0x1D`, and publish the returned ID at message `+0x54`. The existing candidate span `[0x401B6A,0x401CD8)` instead tests the manager before dispatch and adds resource-null-to-zero alternatives. The retained target/candidate Run raw-byte SHA-256 identities for this observation are, respectively, listed below; these identify the pre-correction evidence, not a new binary.
+
+- Target Run: `13c80eaec4d7e90718b107f1e37ea8de7bd57d8ac3f86f0af4b6269644614c35`
+- Pre-correction candidate Run: `50f9dfc6fbcc081a3dcca86dfa85cb70007f164fbd640448a6aa20f08107592c`
+
+The correction removes only that outer manager guard and the seven resource fallback expressions. It retains the seven separate case arms/resource loads, scripts, layer and ID publication; unsupported stages remain no-ops within the opcode. No source bytes outside this opcode change. Source and maintained fixture retain CRLF. No flags, translation-unit composition, ABI, attributes, volatile operations, numerical constants or layouts are tuned.
+
+Supported stages assume a live message, a live enemy manager and a valid `AnmLoadedView` resource object. This is the C++ valid-object precondition used by the host fixture, not proof that every engine state meets it. The target's behavior for a null resource is not established or claimed. No null-member call is executed in any control, including sanitizer runs. Unsupported stages do not access the enemy resource within this opcode.
+
+The maintained Names selection checks all seven scripts, exact resource, layer 15, one creation and returned-ID publication, plus unrelated message IDs, profile/message/GUI fields and VM sentinels. Unsupported cases `INT_MIN,-123,-1,0,8,123,INT_MAX` check no creation and unchanged enemy-name ID. Normal dispatcher advance/tick checks remain in the shared fixture. The separate `test-gui-enemy-name.py` checks source structure, rejects a guard-bearing negative control, and uses the maintained driver/fixture for 11 safe strict mutants: seven script substitutions, wrong layer, wrong resource, wrong publication destination, and unsupported-stage ID overwrite. Valid-owner behavioral tests alone cannot detect removal of redundant guards, hence the separate structural check.
+
+Reproduce from a complete repository checkout containing the correction, using fresh output directories:
+
+```sh
+python3 scripts/test-gui-message-run.py --root . --out build/enemy-name-run
+python3 scripts/test-gui-message-run.py --root . --sanitize --no-mutations --out build/enemy-name-run-sanitize
+python3 scripts/test-gui-message-lifecycle.py --root . --out build/enemy-name-lifecycle
+python3 scripts/test-gui-message-lifecycle.py --root . --sanitize --out build/enemy-name-lifecycle-sanitize
+python3 scripts/test-result-transition.py --root . --mutations --manifest build/enemy-name-transition.json
+python3 scripts/test-gui-enemy-name.py --root . --out build/enemy-name-controls
+```
+
+Local partial-snapshot verification used the maintained drivers' existing explicit source fallback to the canonical `50b971f` snapshot; no fallback semantics or canonical headers were changed. For equivalent partial-snapshot reproduction, add the relevant driver's existing `--fallback-root` source-directory option or transition driver's `--baseline-root` repository option. A complete checkout needs neither. Host compiler/SDK/timer/external-call seams remain those documented by the maintained drivers. Normal interpreter: 13 selections and 28 strict mutants passed; ASan/UBSan interpreter: 13 selections passed; lifecycle normal and sanitized: baseline plus one strict control each passed; transition: 32 strict mutants passed; separate Names: baseline plus 11 strict mutants passed. Structural guard rejection passed. Sanitizer drivers retain their documented leak-check limitation.
+
+Raw Gui.cpp SHA-256 changes from `67beb1343d9a190a89328b070de8e1da3ef353122149013c3b6ad2dbcd086c42` to `0264d2a32bab3b5c359d8e9d8aba02f9ff1eaa67e0e0f1cd619f729c9e954ce1`. The source/test-only patch SHA-256 is `12a2d694ed7220ebdb5192d5f0af07e3f298c35f1c83d2b02ffc87433f52fc44`; it is separate from this documentation/control-script addendum.
+
+No native build or target execution was performed for this correction. Host outcomes do not establish emitted code size, private ABI, runtime ownership or native equivalence. A separately reviewed fresh native observation and canonical regression receipts remain pending; preserve the historical driver/map pins rather than rewriting them to bypass preflight.
+
+## Opcode19 correction: shared canonical native observation
+
+The reviewed opcode19 packet changes Gui.cpp to stage-first dispatch with seven direct resource-create/publish arms. Gui.cpp SHA256 is `0264d2a32bab3b5c359d8e9d8aba02f9ff1eaa67e0e0f1cd619f729c9e954ce1`. The parent replay passed **7 producers / 11 existing units / 912 replayed bytes**. This is regression evidence, not new accepted credit. The four historical Factory receipts belong to checkpoint `8a634cb8eb9eb9780e0e744ab62f0196eb74ca59`; their freshness for this changed source has not been established. Fresh-fact and aggregate snapshot queries returned INVALID_ARGUMENT even at that historical checkpoint; no aggregate accepted total is asserted here.
+
+No eighth diagnostic compilation was performed. Full Run evidence comes from the required canonical `build/match-linked/GuiTransitionEffectCallbacks` producer: the same fourteen TUs, actual updater entry, `/GL` profile, link flags and unresolved-data-anchor harness as the preceding effect observation. The separate diagnostic map remains provisional/unexecuted.
+
+### Complete-owner findings
+
+Run `[401120,4020DC)` is **4028 physical bytes = 3855 executable  + 1 NOP  + 172 table bytes**, versus prior 4128 and target 4480. These sizes are not a completion percentage or exact-byte award. All 1076 executable contributions have verified full raw hashes/extents/nonoverlap; GNU objdump independently agrees with all 59 selected/target code spans. The four tables at `402030/402090/4020AC/4020C8` contain 24/7/7/5 entries: all 43 destinations are owned instruction starts. All 163 Run HIGHLOW fields classify as 43 table words and 120 complete instruction address fields.
+
+Opcode19 `[401B6A,401C77)` is 269 bytes versus prior 366 and target 272. Its 75 instructions retain stage 1–7 dispatch, seven real `CreateVmVariant0` calls to 408640, scripts `0D/10/14/15/0E/23/1D`, layer 15 and returned-ID publication at message+54. The unsupported null-success branches are gone. Target/candidate abstract instruction sequences agree after explicit linkage/branch/result-slot interpretation; this is not byte equality, and target behavior for null resources remains unclaimed.
+
+The remaining one executable byte reduction is opcode20 register allocation: old `401CE9: 8B15CCB54200` loaded shot type into EDX, followed by `LEA EAX,[EDX+ECX*2]`; new `401C88: A1CCB54200` loads the same global into EAX, followed by `LEA EAX,[EAX+ECX*2]`. The five-byte accumulator load replaces a six-byte load. Read order is unchanged; EDX is overwritten before subsequent use. Every other non-opcode19 instruction byte agrees after individually mapped address/relative fields, retaining opcode widths, register/stack operands and literals. Total reduction 100 = opcode19−97, opcode20−1, alignment−2.
+
+Updater `[402150,40300C)` remains 3772 bytes. Its PUSH ESI at 4029AC and CALL Run at 4029AD feed Run’s stack receiver; exits 402006/40202C use RET4. Both completion routes load EDI and call the real 413-byte transition at 41F3C0 (calls 401CDA/401EFA). Full-path MAP/PDB/module joins establish all 47 required real owners against 14 actual objects, with no retired interface. All twelve callbacks remain naturally retained; factory/initializer and chain/rectangle/RNG dependencies are real. Factory plain-RET versus target RET20, timer prezero/lifetime, nothrow allocation, x87 precision/conversion/control-word, storage/alias and 440 unresolved-anchor limits remain open. No helper-size sum, forced retention or ABI/profile tuning is used.
+
+### Reproduction and provenance
+
+From the integrated checkout, with pinned repository tools/target and no concurrent native job, replay the seven shared producers serially through maintained tools:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 nice -n 10 scripts/repo-python -B scripts/replay-exact-units.py --json \
+ --unit anm-vm-id-set-interrupt --unit gui-set-lives-display-count \
+ --unit player-reset-runtime-state --unit gui-score-add \
+ --unit anm-vm-id-set-sprite-own --unit anm-vm-id-set-sprite-explicit \
+ --unit main-set-next-game-mode --unit transition-draw-screen \
+ --unit transition-draw-playfield --unit transition-draw-dim-playfield \
+ --unit transition-draw-pulse
+```
+
+Preserve prior artifacts before replay; never execute the generated PE. The completed replay JSON SHA is `62e5d69451e7a298061fc2cc6e97f7d7604cb88905125e492dcdc834bd501ba8`; immutable 58-input freeze SHA is `f4c978c538bab0b315c1f64403854204765a3f36fa6e0ec3e9b775e8fc1f73c5`. `config/target.toml` was separately bound **after the build** to unchanged checkpoint bytes, SHA `385ecdeac9ac89bf9706a7db766ef1ad2d6d33b2f50ee360c72eae3d67932789`; it was not retroactively added to that freeze. The target executable identity remained independently checked.
+
+Read-only collection `161538f38a9d46769fbfe0c12918a1c8` used maintained `ltcg_link.validate_link_entry`, `linked_image` PE/MAP/PDB readers/object-path rules and the actual 14 object fingerprints, plus resolution logs/aliases. PE SHA is `be9170319f40e534a154ef8985dc44d81bd98c8e89a9f658a889ba70f3fd251b`; PDB GUID `3896145b0fa939449fe955807ddbd711`, age 1. Complete external evidence SHA is `55b2a547dfbba581583c1bd7793623cb667d17e07044894f1da270d8f96e61ac`. Large binary/log/certificate bundles and failed collector revisions are not committed. A future observation must recapture actual hashes and full ownership; canonical callback replay alone does not prove whole-Run equivalence.

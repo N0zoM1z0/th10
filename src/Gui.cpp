@@ -654,53 +654,50 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 
         case GUI_MSG_ENEMY_NAME:
         {
-            if (g_EnemyManager != NULL)
+            switch (g_GuiStage)
             {
-                switch (g_GuiStage)
-                {
-                    case 1:
-                        {
-                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0xd, GUI_VM_RENDER_LAYER).value;
-                        }
-                        break;
-                    case 2:
-                        {
-                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x10, GUI_VM_RENDER_LAYER).value;
-                        }
-                        break;
-                    case 3:
-                        {
-                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x14, GUI_VM_RENDER_LAYER).value;
-                        }
-                        break;
-                    case 4:
-                        {
-                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x15, GUI_VM_RENDER_LAYER).value;
-                        }
-                        break;
-                    case 5:
-                        {
-                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0xe, GUI_VM_RENDER_LAYER).value;
-                        }
-                        break;
-                    case 6:
-                        {
-                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x23, GUI_VM_RENDER_LAYER).value;
-                        }
-                        break;
-                    case 7:
-                        {
-                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
-                        }
-                        break;
-                }
+                case 1:
+                    {
+                        AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded->CreateVmVariant0(0xd, GUI_VM_RENDER_LAYER).value;
+                    }
+                    break;
+                case 2:
+                    {
+                        AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded->CreateVmVariant0(0x10, GUI_VM_RENDER_LAYER).value;
+                    }
+                    break;
+                case 3:
+                    {
+                        AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded->CreateVmVariant0(0x14, GUI_VM_RENDER_LAYER).value;
+                    }
+                    break;
+                case 4:
+                    {
+                        AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded->CreateVmVariant0(0x15, GUI_VM_RENDER_LAYER).value;
+                    }
+                    break;
+                case 5:
+                    {
+                        AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded->CreateVmVariant0(0xe, GUI_VM_RENDER_LAYER).value;
+                    }
+                    break;
+                case 6:
+                    {
+                        AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded->CreateVmVariant0(0x23, GUI_VM_RENDER_LAYER).value;
+                    }
+                    break;
+                case 7:
+                    {
+                        AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
+                    }
+                    break;
             }
             break;
         }
