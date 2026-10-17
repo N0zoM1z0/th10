@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "hash_format": "sha256_utf8_canonical_lf",
+  "files": {
+    "components/button_masks.cpp": "a9391fea1f0861d3f576c4ce080c56fc6c720b34bfcba4f28b8b1c3e3b1df41e",
+    "components/button_masks.hpp": "f5e537b945cd362b16e10a48ce47d6931691604c550598d1306c7df286989199",
+    "components/input_transition.cpp": "be57d8fb4bf8897e652c0f076d0512e63e83d23fc0dff731feedec8a700b5efa",
+    "components/input_transition.hpp": "c59ea1f95285b65d2d4128512faec213d5b404a50a7091f666b91c33edc563a3",
+    "components/key_masks.cpp": "bb72fd398bb6f560c39c85aa5cd8f03e144ebf7347db6580b90db7a509a04989",
+    "components/key_masks.hpp": "691daacab934913670a57b6200f448ef03d1fe15f891cc953aace2938c109200",
+    "di_axes.cpp": "bdf53b54f3927a1189a5e2b59517a785d0b5511bf2624b1263490108439f86b9",
+    "di_axes.hpp": "dc164292477760c018d840ddcf6a864cf47e28890a8badbe704e188418dbbe88",
+    "input_owner.cpp": "26c1a02358aaed4d4442a4179f8c74752489e3767fdd43ce2963302f412ddd15",
+    "input_owner.hpp": "8211a0df96b8da9f9ff3b0438cbec1b29cf1ab0c97baedb89e25d5cc9c4d080b",
+    "run_tests.py": "449c7817c0854c306fa47ef5275aff224d49f2a25fd486b07a904413964f14a9",
+    "test_cases.json": "53a499a3e6b3809380f68ada6e93bf26502a899237819d754aab31925dfc604b",
+    "tests/key_weights.hpp": "145d4f4f02e4af1602ff4a0dbc3a87f1959cccbaa1bda1f2f6d198db993abff4",
+    "tests/test_button_masks.cpp": "8e3e98b0387bddad2dbdabd694a7dcf6e1102b881b4df3e8ce77ac67a04faa84",
+    "tests/test_di_axes.cpp": "77dc5abf7cef7776905d3a4e07441fe3b90be0e973be6c6e54af6bf8c5987895",
+    "tests/test_input_owner.cpp": "c9406448abb56f923fe4c51fde8a025502012377ec8977a9467dc8d36c36e823",
+    "tests/test_input_transition.cpp": "7d511146d7b2dc5ee8be11a436e031876c28c1419101067b0307bc46707e9a91",
+    "tests/test_key_masks.cpp": "544ea31fef994e4a415a05ac2966f2c46983473d15beb938c9c5f89303531e3c",
+    "tests/test_winmm_axes.cpp": "4b9cf123c70b1506205b5b47a220588912047050decfab0559aada722727a2c0",
+    "winmm_axes.cpp": "014b40c772f9d36dd5de3e28df9c2a913c13fb948b4082c726b7fa448609233f",
+    "winmm_axes.hpp": "745bf15598100fae308c95477fde2190bf35b8732f05d3dd15181a9972b72dab"
+  }
+}

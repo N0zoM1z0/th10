@@ -1,0 +1,510 @@
+[
+  {
+    "name": "keys",
+    "source": "components/key_masks.cpp",
+    "test": "tests/test_key_masks.cpp",
+    "cases": 270848,
+    "mismatch_exit": 1,
+    "mismatch_prefix": "MISMATCH ",
+    "mutations": [
+      [
+        "low_bits_count",
+        "(key & 0x80u) != 0",
+        "key != 0",
+        1,
+        1
+      ],
+      [
+        "wrong_high_bit",
+        "(key & 0x80u) != 0",
+        "(key & 0x40u) != 0",
+        1,
+        1
+      ],
+      [
+        "win32_wrong_action",
+        "mask |= 0x0001;",
+        "mask |= 0x0002;",
+        2,
+        1
+      ],
+      [
+        "win32_missing_alternative",
+        " || IsDown(keys[0x68])",
+        "",
+        1,
+        1
+      ],
+      [
+        "di_missing_alternative",
+        " || IsDown(keys[0xD0])",
+        "",
+        1,
+        1
+      ],
+      [
+        "win32_wrong_diagonal",
+        "IsDown(keys[0x69])) mask |= 0x0090",
+        "IsDown(keys[0x69])) mask |= 0x0010",
+        1,
+        1
+      ],
+      [
+        "di_wrong_diagonal",
+        "IsDown(keys[0x49])) mask |= 0x0090",
+        "IsDown(keys[0x49])) mask |= 0x0080",
+        1,
+        1
+      ],
+      [
+        "overlap_xor",
+        "mask |=",
+        "mask ^=",
+        38,
+        38
+      ],
+      [
+        "bit15_leak",
+        "return mask;",
+        "return static_cast<unsigned short>(mask | 0x8000u);",
+        2,
+        1
+      ],
+      [
+        "wrong_unmapped_key",
+        "IsDown(keys[0x5A])",
+        "IsDown(keys[0x5B])",
+        1,
+        1
+      ]
+    ]
+  },
+  {
+    "name": "transition",
+    "source": "components/input_transition.cpp",
+    "test": "tests/test_input_transition.cpp",
+    "cases": 1378304,
+    "mismatch_exit": 10,
+    "mismatch_prefix": "SEMANTIC_MISMATCH ",
+    "mutations": [
+      [
+        "no_word_wrap",
+        "unsigned short count = static_cast<unsigned short>(state.counters[i] + 1u);",
+        "unsigned int count = state.counters[i] + 1u;",
+        1,
+        1
+      ],
+      [
+        "threshold_25",
+        "count >= 26u",
+        "count >= 25u",
+        1,
+        1
+      ],
+      [
+        "threshold_27",
+        "count >= 26u",
+        "count >= 27u",
+        1,
+        1
+      ],
+      [
+        "subtract_7",
+        "count - 8u",
+        "count - 7u",
+        1,
+        1
+      ],
+      [
+        "omit_bit15",
+        "i < 16",
+        "i < 15",
+        1,
+        1
+      ],
+      [
+        "stale_repeat",
+        "state.repeated = 0;",
+        "state.repeated = state.repeated;",
+        1,
+        1
+      ],
+      [
+        "stale_unheld",
+        "state.counters[i] = 0;",
+        "state.counters[i] = state.counters[i];",
+        1,
+        1
+      ],
+      [
+        "wrong_previous",
+        "state.previous = old;",
+        "state.previous = now;",
+        1,
+        1
+      ],
+      [
+        "wrong_current",
+        "state.current = now;",
+        "state.current = old;",
+        1,
+        1
+      ],
+      [
+        "wrong_pressed",
+        "changed & now",
+        "changed & old",
+        1,
+        1
+      ],
+      [
+        "wrong_released",
+        "changed & static_cast<unsigned short>(~now)",
+        "changed & now",
+        1,
+        1
+      ],
+      [
+        "wrong_return",
+        "return now;",
+        "return old;",
+        1,
+        1
+      ],
+      [
+        "wrong_repeat_bit",
+        "state.repeated | bit",
+        "state.repeated | 1u",
+        1,
+        1
+      ]
+    ]
+  },
+  {
+    "name": "buttons",
+    "source": "components/button_masks.cpp",
+    "test": "tests/test_button_masks.cpp",
+    "cases": 804864,
+    "mismatch_exit": 10,
+    "mismatch_prefix": "SEMANTIC_MISMATCH ",
+    "mutations": [
+      [
+        "swap_action4_8",
+        "{1u, 2u, 4u, 8u, 256u}",
+        "{1u, 2u, 8u, 4u, 256u}",
+        2,
+        2
+      ],
+      [
+        "swap_action1_2",
+        "{1u, 2u, 4u, 8u, 256u}",
+        "{2u, 1u, 4u, 8u, 256u}",
+        2,
+        2
+      ],
+      [
+        "wrong_action256",
+        "{1u, 2u, 4u, 8u, 256u}",
+        "{1u, 2u, 4u, 8u, 512u}",
+        2,
+        2
+      ],
+      [
+        "omit_zero_binding",
+        "indices[i] >= 0",
+        "indices[i] > 0",
+        2,
+        2
+      ],
+      [
+        "lose_incoming",
+        "unsigned int result = incoming;",
+        "unsigned int result = incoming & 0u;",
+        2,
+        2
+      ],
+      [
+        "truncate_incoming",
+        "unsigned int result = incoming;",
+        "unsigned int result = incoming & 65535u;",
+        2,
+        2
+      ],
+      [
+        "xor_instead_or",
+        "result |= actions[i];",
+        "result ^= actions[i];",
+        2,
+        2
+      ],
+      [
+        "di_any_bit",
+        "(buttons[indices[i]] & 0x80u) != 0",
+        "buttons[indices[i]] != 0",
+        1,
+        1
+      ],
+      [
+        "di_wrong_bit",
+        "(buttons[indices[i]] & 0x80u) != 0",
+        "(buttons[indices[i]] & 0x40u) != 0",
+        1,
+        1
+      ],
+      [
+        "winmm_reverse_index",
+        "1u << indices[i]",
+        "1u << (31 - indices[i])",
+        1,
+        1
+      ],
+      [
+        "omit_last_action",
+        "i < 5",
+        "i < 4",
+        2,
+        2
+      ]
+    ]
+  },
+  {
+    "name": "di_axes",
+    "source": "di_axes.cpp",
+    "test": "tests/test_di_axes.cpp",
+    "cases": 10878976,
+    "mismatch_exit": 10,
+    "mismatch_prefix": "SEMANTIC_MISMATCH ",
+    "mutations": [
+      [
+        "inclusive_x",
+        "x < -tx",
+        "x <= -tx",
+        1,
+        1
+      ],
+      [
+        "inclusive_y",
+        "y > ty",
+        "y >= ty",
+        1,
+        1
+      ],
+      [
+        "narrow_negation",
+        "x < -tx",
+        "x < static_cast<short>(-tx)",
+        1,
+        1
+      ],
+      [
+        "unsigned_x",
+        "x > tx",
+        "static_cast<unsigned int>(x) > static_cast<unsigned int>(tx)",
+        1,
+        1
+      ],
+      [
+        "swap_x_bits",
+        "result | 0x40u",
+        "result | 0x80u",
+        1,
+        1
+      ],
+      [
+        "wrong_y_threshold",
+        "y < -ty",
+        "y < -tx",
+        1,
+        1
+      ],
+      [
+        "overlap_else_if",
+        "if (x > tx)",
+        "else if (x > tx)",
+        1,
+        1
+      ],
+      [
+        "lose_mask",
+        "unsigned short result = incoming;",
+        "unsigned short result = static_cast<unsigned short>(incoming & 0u);",
+        1,
+        1
+      ]
+    ]
+  },
+  {
+    "name": "winmm_axes",
+    "source": "winmm_axes.cpp",
+    "test": "tests/test_winmm_axes.cpp",
+    "cases": 827560,
+    "mismatch_exit": 10,
+    "mismatch_prefix": "SEMANTIC_MISMATCH ",
+    "mutations": [
+      [
+        "inclusive_x",
+        "x < xLower",
+        "x <= xLower",
+        1,
+        1
+      ],
+      [
+        "inclusive_y",
+        "y > yUpper",
+        "y >= yUpper",
+        1,
+        1
+      ],
+      [
+        "signed_x",
+        "x > xUpper",
+        "static_cast<int>(x) > static_cast<int>(xUpper)",
+        1,
+        1
+      ],
+      [
+        "quarter_shift",
+        "(xMax - xMin) >> 2",
+        "(xMax - xMin) >> 1",
+        1,
+        1
+      ],
+      [
+        "divide_before_add",
+        "(xMin + xMax) >> 1",
+        "(xMin >> 1) + (xMax >> 1)",
+        1,
+        1
+      ],
+      [
+        "widen_midpoint",
+        "(xMin + xMax) >> 1",
+        "static_cast<unsigned int>((static_cast<unsigned long>(xMin) + xMax) >> 1)",
+        1,
+        1
+      ],
+      [
+        "wrong_subtraction",
+        "xMid - xQuarter",
+        "xMid + xQuarter",
+        1,
+        1
+      ],
+      [
+        "swapped_direction",
+        "result | 0x40u",
+        "result | 0x80u",
+        1,
+        1
+      ],
+      [
+        "overlap_else_if",
+        "if (x > xUpper)",
+        "else if (x > xUpper)",
+        1,
+        1
+      ],
+      [
+        "wrong_y_bounds",
+        "y < yLower",
+        "y < (xLower + (yLower & 0u))",
+        1,
+        1
+      ],
+      [
+        "lose_mask",
+        "unsigned short result = incoming;",
+        "unsigned short result = static_cast<unsigned short>(incoming & 0u);",
+        1,
+        1
+      ]
+    ]
+  },
+  {
+    "name": "owner",
+    "source": "input_owner.cpp",
+    "test": "tests/test_input_owner.cpp",
+    "cases": 65578,
+    "mismatch_exit": 10,
+    "mismatch_prefix": "MISMATCH ",
+    "mutations": [
+      [
+        "key_negative_only",
+        "environment.keyboard.GetDeviceState(sizeof(state), state) != 0",
+        "environment.keyboard.GetDeviceState(sizeof(state), state) < 0",
+        1,
+        1
+      ],
+      [
+        "honor_win32_bool",
+        "environment.win32.GetKeyboardState(state);",
+        "if (environment.win32.GetKeyboardState(state) == 0) return 0;",
+        1,
+        1
+      ],
+      [
+        "disable_skips_mapper",
+        "unsigned short keyboardMask = 0;",
+        "if (!environment.keyboardEnabled) return 0;\n    unsigned short keyboardMask = 0;",
+        1,
+        1
+      ],
+      [
+        "retry399",
+        "retry < 400u",
+        "retry < 399u",
+        1,
+        1
+      ],
+      [
+        "retry401",
+        "retry < 400u",
+        "retry < 401u",
+        1,
+        1
+      ],
+      [
+        "retry_all_nonzero",
+        "static_cast<unsigned int>(status) == 0x8007001eu",
+        "status != 0",
+        1,
+        1
+      ],
+      [
+        "raw_winmm_id",
+        "rawPad != 0 ? 1u : 0u",
+        "rawPad",
+        1,
+        1
+      ],
+      [
+        "boolean_caps",
+        "environment.capabilities[rawPad]",
+        "environment.capabilities[rawPad != 0 ? 1u : 0u]",
+        1,
+        1
+      ],
+      [
+        "wrong_record",
+        "environment.records[bindingIndex].transition",
+        "environment.records[0].transition",
+        1,
+        1
+      ],
+      [
+        "poll_nonzero",
+        "device.Poll() < 0",
+        "device.Poll() != 0",
+        1,
+        1
+      ],
+      [
+        "state_nonzero",
+        "device.GetDeviceState(sizeof(state), state) < 0",
+        "device.GetDeviceState(sizeof(state), state) != 0",
+        1,
+        1
+      ]
+    ]
+  }
+]
