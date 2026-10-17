@@ -18,8 +18,8 @@ SOURCE = Path(__file__).resolve().parents[1] / 'src/Gui.cpp'
 
 
 # Retain complete maintained Enemy.hpp and Player.hpp declarations. Only the
-# 32-bit layout assertions and two read-before-initialization timer constructors
-# are adapted for a pointer-wide host. No enemy fields or HUD expressions are
+# 32-bit layout assertions and read-before-initialization member constructors
+# are adapted for a pointer-wide host. No enemy/player fields or HUD expressions are
 # substituted. Host construction/vtables below are explicit dependency seams.
 def prepare_enemy_headers(folder):
     for name, timer in [('Player.hpp', 'PlayerTimerView'),
@@ -32,6 +32,15 @@ def prepare_enemy_headers(folder):
         if text.count(before) != 1:
             raise AssertionError('canonical timer constructor inventory changed: ' + name)
         text = text.replace(before, timer + '() : flags(0) {}')
+        if name == 'Player.hpp':
+            # Actual Player construction also reaches these raw flag ctors.
+            # Host-only initialization, not coverage of native construction.
+            for ctor, field in [('PlayerOptionRuntime', 'flags80'),
+                                ('PlayerConstructorFlagView', 'flags')]:
+                old = ctor + '() { ' + field + ' &= ~1u; }'
+                if text.count(old) != 1:
+                    raise AssertionError('canonical player constructor inventory changed: ' + ctor)
+                text = text.replace(old, ctor + '() : ' + field + '(0) {}')
         (Path(folder) / name).write_text(text)
 
 def validate_canonical_source(source):
@@ -39,10 +48,13 @@ def validate_canonical_source(source):
     # declaration anywhere in Gui.cpp is disallowed, even if HUD stops using it.
     if re.search(r'\b(?:GuiEnemyView|GuiEnemyManagerView|g_GuiEnemyManager)\b', source):
         raise AssertionError('obsolete HUD enemy shadow declaration or use')
+    if re.search(r'\b(?:GuiPlayerView|g_GuiPlayer)\b', source):
+        raise AssertionError('obsolete HUD player shadow declaration or use')
     owner = source[source.index('int __stdcall GuiView::UpdateStageElements'):]
     for token in ('g_EnemyManager', 'specialEnemySlots[0]', 'runtime.life',
                   'runtime.unknown13C4', 'runtime.value13C8',
-                  'runtime.flags', 'runtime.worldMotion.position.x'):
+                  'runtime.flags', 'runtime.worldMotion.position.x',
+                  'g_Player', 'drawPosition.x', 'drawPosition.y'):
         if token not in owner:
             raise AssertionError('canonical HUD source missing: ' + token)
 
@@ -72,6 +84,10 @@ float EnemyFullObjectView::ReadFloatOperand(int) { return 0; }
 float *EnemyFullObjectView::ResolveFloatOperand(int) { return nullptr; }
 EnemyManagerView::EnemyManagerView() : flags(0), specialEnemySlots(), effectResources() {}
 EnemyManagerView::~EnemyManagerView() {}
+// Only accessed Player fields are initialized; member ctor seams above avoid
+// raw flag reads before initialization. No native constructor/destructor claim.
+Player::Player() : drawPosition(), positionX(12345), positionY(-23456) {}
+Player::~Player() {}
 '''
 
 def extract(source, signature):
@@ -138,10 +154,9 @@ struct GuiView {
     int spellSeconds=-1,previousSpellSeconds=-1; Timer frameTimer;
     static int UpdateStageElements(GuiView *);
 };
-struct GuiPlayerView { float positionX=0,positionY=0; };
 struct GuiGameOwnerView { unsigned flags378C=0; };
 static EnemyManagerView *g_EnemyManager=nullptr;
-static GuiPlayerView *g_GuiPlayer=nullptr;
+Player *g_Player=nullptr;
 static GuiGameOwnerView *g_GuiGameOwner=nullptr;
 static int g_GuiCounter4C4C=0,g_GuiGlobalMode=0;
 static unsigned g_GuiSupervisorFlags=0;
@@ -154,19 +169,21 @@ static GuiView *activeGui;
 static EnemyManagerView *replacementManager,*markerReplacementManager;
 static GuiMessageVmView *replacementMessage,*runArgument,*finishedMessage;
 static Loaded *replacementAnm;
+static Player *panelReplacementPlayer,*markerReplacementPlayer;
 static bool changeCounter,changeSpriteOwner,changeMarkerOwner,replaceMessage;
 static int runResult;
 static bool soundArgumentsValid;
 static GuiGameOwnerView defaultGame;
-static GuiPlayerView defaultPlayer;
+static Player defaultPlayer;
 // The full HUD counter phase requires a live front ANM resource.
 static Loaded defaultAnm{0};
 static void Reset(GuiView &gui) {
     gui=GuiView(); gui.frontAnm=&defaultAnm; activeGui=&gui; events.clear();
-    g_EnemyManager=nullptr; g_GuiPlayer=&defaultPlayer; g_GuiGameOwner=&defaultGame;
+    g_EnemyManager=nullptr; g_Player=&defaultPlayer; g_GuiGameOwner=&defaultGame;
     replacementManager=markerReplacementManager=nullptr;
     replacementMessage=runArgument=finishedMessage=nullptr;
-    replacementAnm=nullptr;
+    replacementAnm=nullptr;panelReplacementPlayer=markerReplacementPlayer=nullptr;
+    defaultPlayer.drawPosition={0,0,0};
     changeCounter=changeSpriteOwner=changeMarkerOwner=replaceMessage=false;
     runResult=0; soundArgumentsValid=true; g_GuiCounter4C4C=0; g_GuiGlobalMode=0;g_GuiSupervisorFlags=0;
 }
@@ -186,6 +203,8 @@ void Loaded::SetSprite(Vm *vm,int sprite) {
 }
 struct AnmRenderManagerView { static int ExecuteScript(Vm *vm) {
     events.push_back({3,0,nullptr,vm});
+    if(panelReplacementPlayer && vm==&activeGui->displayVms4[1]) g_Player=panelReplacementPlayer;
+    if(markerReplacementPlayer && vm==&activeGui->bossPositionVm) g_Player=markerReplacementPlayer;
     if(changeCounter && vm==&activeGui->displayVms5[0]) g_GuiCounter4C4C=99999;
     if(changeMarkerOwner && vm==&activeGui->bossPositionVm)
         g_EnemyManager=markerReplacementManager;
@@ -272,12 +291,12 @@ static int CountdownContracts() {
     return 0;
 }
 static int BossReloadContract() {
-    GuiView gui;Loaded first{1},second{2};GuiPlayerView player;
+    GuiView gui;Loaded first{1},second{2};Player player;
     EnemyFullObjectView oldBoss{nullptr},newBoss{nullptr},laterBoss{nullptr};
     oldBoss.runtime.flags=0x11;newBoss.runtime.worldMotion.position.x=32;laterBoss.runtime.worldMotion.position.x=100;
     EnemyManagerView oldManager,newManager,laterManager;
     oldManager.specialEnemySlots[0]=&oldBoss;newManager.specialEnemySlots[0]=&newBoss;laterManager.specialEnemySlots[0]=&laterBoss;
-    Reset(gui);gui.frontAnm=&first;g_EnemyManager=&oldManager;g_GuiPlayer=&player;
+    Reset(gui);gui.frontAnm=&first;g_EnemyManager=&oldManager;g_Player=&player;
     gui.spellSeconds=5;gui.previousSpellSeconds=6;
     changeSpriteOwner=true;replacementManager=&newManager;replacementAnm=&second;
     changeMarkerOwner=true;markerReplacementManager=&laterManager;
@@ -297,16 +316,16 @@ static int BossReloadContract() {
 }
 
 static int MarkerBoundaryContracts() {
-    GuiView gui; Loaded anm{1}; EnemyFullObjectView boss{nullptr}; GuiPlayerView player;
+    GuiView gui; Loaded anm{1}; EnemyFullObjectView boss{nullptr}; Player player;
     GuiGameOwnerView game; EnemyManagerView manager;manager.specialEnemySlots[0]=&boss;
     const int thresholds[2][4]={{700,400,200,200},{2000,1000,400,400}};
     for(int alternate=0;alternate<2;++alternate) for(unsigned phase=0;phase<4;++phase)
     for(int delta=-1;delta<=1;++delta) {
         Reset(gui);gui.frontAnm=&anm;g_EnemyManager=&manager;
-        g_GuiPlayer=&player;g_GuiGameOwner=&game;game.flags378C=alternate;
+        g_Player=&player;g_GuiGameOwner=&game;game.flags378C=alternate;
         gui.guiFlags=0x81|(phase<<1);gui.bossPositionVm.pendingInterrupt=13;
         boss.runtime.flags=0;boss.runtime.value13C8=thresholds[alternate][phase]+delta;
-        boss.runtime.worldMotion.position.x=0;player.positionX=0;
+        boss.runtime.worldMotion.position.x=0;player.drawPosition.x=0;
         UpdateSpellAndBossPosition(&gui);
         const bool change=phase<3?delta<0:delta>0;
         CHECK(gui.bossPositionVm.pendingInterrupt==(change?7+phase:13));
@@ -318,7 +337,7 @@ static int MarkerBoundaryContracts() {
     }
     // Crossing multiple numerical thresholds still advances exactly one phase.
     for(int alternate=0;alternate<2;++alternate) {
-        Reset(gui);g_EnemyManager=&manager;g_GuiPlayer=&player;g_GuiGameOwner=&game;
+        Reset(gui);g_EnemyManager=&manager;g_Player=&player;g_GuiGameOwner=&game;
         game.flags378C=alternate;gui.guiFlags=0x81;boss.runtime.flags=0;boss.runtime.value13C8=0;
         UpdateSpellAndBossPosition(&gui);
         CHECK(gui.bossPositionVm.pendingInterrupt==7);CHECK(gui.guiFlags==0x83);
@@ -326,22 +345,22 @@ static int MarkerBoundaryContracts() {
     const float distances[]={0,1,32,63,64,65,-1,-32,-63,-64,-65};
     const int alphas[]={64,66,159,252,255,255,66,159,252,255,255};
     for(unsigned i=0;i<sizeof(distances)/sizeof(*distances);++i) {
-        Reset(gui);g_EnemyManager=&manager;g_GuiGameOwner=&game;g_GuiPlayer=&player;
-        boss.runtime.worldMotion.position.x=0;player.positionX=distances[i];boss.runtime.flags=0;
+        Reset(gui);g_EnemyManager=&manager;g_GuiGameOwner=&game;g_Player=&player;
+        boss.runtime.worldMotion.position.x=0;player.drawPosition.x=distances[i];boss.runtime.flags=0;
         UpdateSpellAndBossPosition(&gui);
         CHECK(gui.bossPositionVm.primaryColor.alpha==alphas[i]);
     }
     // Finite field-value witness, not observed gameplay. Host widened math
     // models x87 PC53/PC64; PC24 can round to64 even without a store. Runtime
     // x87 control is unknown: this does not prove native alpha or precision.
-    Reset(gui);g_EnemyManager=&manager;g_GuiGameOwner=&game;g_GuiPlayer=&player;
-    boss.runtime.flags=0;boss.runtime.worldMotion.position.x=64.0f;player.positionX=1.0f/1048576.0f;
+    Reset(gui);g_EnemyManager=&manager;g_GuiGameOwner=&game;g_Player=&player;
+    boss.runtime.flags=0;boss.runtime.worldMotion.position.x=64.0f;player.drawPosition.x=1.0f/1048576.0f;
     UpdateSpellAndBossPosition(&gui);
     CHECK(gui.bossPositionVm.primaryColor.alpha==254);
     const float positions[]={-193,-192,192,193};
     for(unsigned i=0;i<4;++i) {
-        Reset(gui);g_EnemyManager=&manager;g_GuiGameOwner=&game;g_GuiPlayer=&player;
-        boss.runtime.worldMotion.position.x=positions[i];player.positionX=positions[i];
+        Reset(gui);g_EnemyManager=&manager;g_GuiGameOwner=&game;g_Player=&player;
+        boss.runtime.worldMotion.position.x=positions[i];player.drawPosition.x=positions[i];
         UpdateSpellAndBossPosition(&gui);
         CHECK(gui.bossPositionVm.positionOffset.x==positions[i]+224);
         CHECK(gui.bossPositionVm.primaryColor.alpha==((i==0||i==3)?0:64));
@@ -349,7 +368,7 @@ static int MarkerBoundaryContracts() {
     // Every native skip path must continue to the owner's GUI frame timer.
     for(int gate=0;gate<6;++gate) {
         Reset(gui);gui.frontAnm=&anm;g_EnemyManager=&manager;
-        g_GuiPlayer=&player;g_GuiGameOwner=&game;
+        g_Player=&player;g_GuiGameOwner=&game;
         manager.specialEnemySlots[0]=&boss;boss.runtime.flags=0;boss.runtime.worldMotion.position.x=0;
         gui.bossPositionVm.primaryColor.alpha=123;
         if(gate==0) g_EnemyManager=nullptr;
@@ -367,11 +386,59 @@ static int MarkerBoundaryContracts() {
     }
     return 0;
 }
+static int PlayerPanelBoundaryContracts() {
+    GuiView gui;Player player;
+    // Independent X/Y boundaries; unrelated integer coordinates stay opposite.
+    const float xs[]={-128,-129,-129,-112,-111,-129};
+    const float ys[]={417,416,417,400,400,399};
+    const unsigned before[]={0,0,0,1,1,1},after[]={0,0,1,1,0,0};
+    for(int i=0;i<6;++i) {
+        Reset(gui);g_Player=&player;player.drawPosition={xs[i],ys[i],0};gui.guiFlags=before[i];
+        CHECK(GuiView::UpdateStageElements(&gui)==1);
+        CHECK((gui.guiFlags&1)==after[i]);
+        CHECK(player.positionX==12345 && player.positionY==-23456);
+    }
+    for(unsigned before=0;before<2;++before) {
+        Reset(gui);g_Player=nullptr;gui.guiFlags=before;
+        CHECK(GuiView::UpdateStageElements(&gui)==1);
+        CHECK((gui.guiFlags&1)==before);
+        CHECK(gui.displayVms5[0].pendingInterrupt==0);
+    }
+    return 0;
+}
+static int PlayerReloadContracts() {
+    GuiView gui; Player initial,replacement;
+    Reset(gui);g_Player=&initial;initial.drawPosition={0,100,0};
+    replacement.drawPosition={-129,417,0};panelReplacementPlayer=&replacement;
+    CHECK(GuiView::UpdateStageElements(&gui)==1);
+    CHECK((gui.guiFlags&1)==1);
+    for(int i=0;i<7;++i) CHECK(gui.displayVms5[i].pendingInterrupt==3);
+    // Exit is also a current-player read, with deliberately opposite integers.
+    Reset(gui);g_Player=&initial;gui.guiFlags=1;initial.drawPosition={-129,417,0};
+    replacement.drawPosition={0,100,0};panelReplacementPlayer=&replacement;
+    CHECK(GuiView::UpdateStageElements(&gui)==1);
+    CHECK((gui.guiFlags&1)==0);
+    for(int i=0;i<7;++i) CHECK(gui.displayVms5[i].pendingInterrupt==2);
+    // Marker must retain the selected boss but reload player after ExecuteScript.
+    EnemyFullObjectView boss{nullptr},otherBoss{nullptr};EnemyManagerView manager,otherManager;
+    boss.runtime.worldMotion.position.x=32;otherBoss.runtime.worldMotion.position.x=100;
+    manager.specialEnemySlots[0]=&boss;otherManager.specialEnemySlots[0]=&otherBoss;
+    Reset(gui);g_EnemyManager=&manager;g_Player=&initial;initial.drawPosition={0,100,0};
+    replacement.drawPosition={16,200,0};markerReplacementPlayer=&replacement;
+    changeMarkerOwner=true;markerReplacementManager=&otherManager;
+    UpdateSpellAndBossPosition(&gui);
+    CHECK(gui.bossPositionVm.positionOffset.x==256);
+    CHECK(gui.bossPositionVm.primaryColor.alpha==111);
+    CHECK(g_Player==&replacement && g_EnemyManager==&otherManager);
+    return 0;
+}
 int main() {
     if(CounterAndMessageContracts()) return 1;
     if(CountdownContracts()) return 1;
     if(BossReloadContract()) return 1;
     if(MarkerBoundaryContracts()) return 1;
+    if(PlayerReloadContracts()) return 1;
+    if(PlayerPanelBoundaryContracts()) return 1;
     return 0;
 }
 '''
@@ -380,6 +447,11 @@ int main() {
 # Predeclared intended failure sites; line numbers are derived from each built
 # fixture, not learned from the failing process output.
 EXPECTED_CHECKS = {
+    'panel-integer-x': ('(gui.guiFlags&1)==1', '    CHECK((gui.guiFlags&1)==1);'),
+    'panel-integer-y': ('(gui.guiFlags&1)==1', '    CHECK((gui.guiFlags&1)==1);'),
+    'stale-panel-player': ('(gui.guiFlags&1)==1', '    CHECK((gui.guiFlags&1)==1);'),
+    'stale-marker-player': ('gui.bossPositionVm.primaryColor.alpha==111', '    CHECK(gui.bossPositionVm.primaryColor.alpha==111);'),
+    'marker-integer-x': ('gui.bossPositionVm.primaryColor.alpha==159', '    CHECK(gui.bossPositionVm.primaryColor.alpha==159);'),
     'canonical-boss-slot': ('gui.previousSpellSeconds==seconds[k]', '        CHECK(gui.previousSpellSeconds==seconds[k]);'),
     'canonical-threshold-field': ('gui.bossPositionVm.pendingInterrupt==(change?7+phase:13)', '        CHECK(gui.bossPositionVm.pendingInterrupt==(change?7+phase:13));'),
     'counter-after-call': ('event.value==0x1e + digit', '        CHECK(event.value==0x1e + digit);++digit;'),
@@ -450,9 +522,14 @@ class HudLifetimeContracts(unittest.TestCase):
             with self.subTest(shadow=shadow):
                 with self.assertRaisesRegex(AssertionError, 'obsolete HUD enemy shadow'):
                     validate_canonical_source(source + '\nstruct ' + shadow + ';\n')
+        for shadow in ('GuiPlayerView', 'g_GuiPlayer'):
+            with self.subTest(shadow=shadow):
+                with self.assertRaisesRegex(AssertionError, 'obsolete HUD player shadow'):
+                    validate_canonical_source(source + '\nstruct ' + shadow + ';\n')
         for canonical in ('g_EnemyManager', 'specialEnemySlots[0]', 'runtime.life',
                           'runtime.unknown13C4', 'runtime.value13C8',
-                          'runtime.flags', 'runtime.worldMotion.position.x'):
+                          'runtime.flags', 'runtime.worldMotion.position.x',
+                  'g_Player', 'drawPosition.x', 'drawPosition.y'):
             with self.subTest(canonical=canonical):
                 with self.assertRaisesRegex(AssertionError, 'canonical HUD source missing'):
                     validate_canonical_source(source.replace(canonical, 'wrong_canonical_member'))
@@ -483,6 +560,23 @@ class HudLifetimeContracts(unittest.TestCase):
         result = self.run_owner(source[:start] + owner)
         assert_mutation(self, result, CANONICAL_ENEMY + PROGRAM.replace('@OWNERS@', source[:start] + owner), 'owner-continuation')
 
+    def test_player_mutations(self):
+        source = owner_source()
+        helper, owner = source.split('int __stdcall GuiView::UpdateStageElements', 1)
+        changes = [
+            ('panel-integer-x', helper, owner.replace('g_Player->drawPosition.x', 'g_Player->positionX')),
+            ('panel-integer-y', helper, owner.replace('g_Player->drawPosition.y', 'g_Player->positionY')),
+            ('stale-panel-player', helper, owner.replace('    int i;', '    Player *panelPlayer = g_Player;\n    int i;').replace('g_Player->drawPosition', 'panelPlayer->drawPosition')),
+            ('stale-marker-player', helper.replace('AnmRenderManagerView::ExecuteScript(&gui->bossPositionVm);', 'Player *markerPlayer = g_Player;\n    AnmRenderManagerView::ExecuteScript(&gui->bossPositionVm);').replace('g_Player->drawPosition.x', 'markerPlayer->drawPosition.x'), owner),
+            ('marker-integer-x', helper.replace('g_Player->drawPosition.x', 'g_Player->positionX'), owner),
+        ]
+        for name, changed_helper, changed_owner in changes:
+            with self.subTest(mutation=name):
+                candidate = changed_helper + 'int __stdcall GuiView::UpdateStageElements' + changed_owner
+                self.assertNotEqual(candidate, source)
+                result = self.run_owner(candidate)
+                assert_mutation(self, result, CANONICAL_ENEMY + PROGRAM.replace('@OWNERS@', candidate), name)
+
     def test_mutation_controls(self):
         source=owner_source()
         replacements=[
@@ -512,7 +606,7 @@ class HudLifetimeContracts(unittest.TestCase):
             ('marker-interrupt-seven','gui->bossPositionVm.pendingInterrupt = 7;','gui->bossPositionVm.pendingInterrupt = 8;'),
             ('marker-preserve-flags','gui->guiFlags &= ~6u;','gui->guiFlags = 0;'),
             ('marker-no-double-transition','else if (phase == 1)','if (((gui->guiFlags >> 1) & 3) == 1)'),
-            ('rounded-distance','static_cast<double>(boss->runtime.worldMotion.position.x) - g_GuiPlayer->positionX','static_cast<double>(boss->runtime.worldMotion.position.x - g_GuiPlayer->positionX)'),
+            ('rounded-distance','static_cast<double>(boss->runtime.worldMotion.position.x) - g_Player->drawPosition.x','static_cast<double>(boss->runtime.worldMotion.position.x - g_Player->drawPosition.x)'),
         ]
         for name,old,new in replacements:
             with self.subTest(mutation=name):

@@ -1,6 +1,6 @@
-# GUI HUD canonical enemy ownership
+# GUI HUD canonical ownership
 
-## Scope and status
+## Enemy migration: scope and status
 
 `GuiView::UpdateStageElements` must read the enemy manager shared with the
 canonical enemy producers. This recovery replaces its local shadow views and
@@ -50,7 +50,7 @@ The pre-change candidate reuses its shadow manager despite the source reload.
 Canonical ownership neither proves callback mutation nor guarantees a native
 reload. Do not add volatile, aliasing casts, ABI controls, or forced reloads.
 
-## Validation and regression boundary
+## Enemy migration: validation and regression boundary
 
 [`test-gui-boss-gauge-phase.py`](../scripts/test-gui-boss-gauge-phase.py) and [`test-gui-hud-lifetimes.py`](../scripts/test-gui-hud-lifetimes.py)
 use canonical nested fields and retain callback-replacement and retained-boss
@@ -76,7 +76,7 @@ scripts/repo-python scripts/test-gui-boss-gauge-phase.py --source src/Gui.cpp
 scripts/repo-python scripts/test-gui-hud-lifetimes.py --source src/Gui.cpp
 ```
 
-They include 41 mutation controls with predeclared intended CHECK expressions,
+The enemy-migration checkpoint used 41 mutation controls with predeclared intended CHECK expressions,
 unique generated-source line anchors, exact diagnostics, empty stdout and exit
 status 1. Wrong assertions, compile failures, signals, sanitizer diagnostics and
 timeouts cannot count as successful mutation detection. Compiler/execution
@@ -93,7 +93,7 @@ Normal NaN branching assumes masked invalid exceptions. Reachability, conversion
 outcome, and a runtime bug are unproved; C++ NaN-to-integer conversion is outside
 its defined domain. A predicate change alone is not a complete nonfinite fix.
 
-## Fresh canonical native observation
+## Enemy-migration canonical native observation
 
 Source Gui.cpp SHA-256: `7a7942a2b8027fa4779232768c0e57a23c5ed853c9b76075dc3ebc461bd8cd93`.
 PE SHA-256: `85ac5e8b2464096dd28f57bbc2414957932696a49999306cfc9acf75520db2f5`.
@@ -132,3 +132,108 @@ and all x87 precision, invalid-exception, conversion and reachability qualificat
 therefore remain. Canonical identity does not establish target physical storage,
 alias behavior, private-ABI/runtime closure, a recovered reload or target execution.
 Logs and binary evidence remain external to the repository documentation.
+
+## Player ownership follow-up: native observation recorded
+
+The separate player follow-up replaces HUD's `GuiPlayerView` / `g_GuiPlayer`
+with the existing `Player` / `g_Player`. Production scope remains `Gui.cpp`;
+Run and the floating-point expressions are unchanged. Bounded player native
+results are recorded below. The enemy-migration native results above are historical evidence
+for that change only and are not player-follow-up native results.
+
+Target HUD loads player pointer `0x477834`. Four existing DIR32 linkage recipes
+in `config/match-units.toml` bind `?g_Player@@3PAUPlayer@@A` to that address:
+`player-option-special-body` (+0x01), `bullet-update-state8` (+0x1F),
+`bullet-update-aimed-direction` (+0x53), and `bullet-runtime-update` (+0x250).
+The enemy-migration baseline still anchors `g_GuiPlayer` at `0x42B5B0` separately
+from canonical `g_Player` at `0x42B644`; these are candidate addresses, not proof
+of physical target storage. Player construction/destruction publishes/clears
+`g_Player`, and movement/reset paths produce the float draw position.
+
+The shadow float X/Y at `+0x3C0/+0x3C4` map to `Player::drawPosition.x/y`.
+Do not substitute `Player::positionX/Y`: those are distinct integer fields at
+`+0x3CC/+0x3D0`. The old portrait resource member at `+0x10` maps to `resource`
+(`void*`), already used canonically by Run; HUD has no resource read to migrate.
+`Player.hpp` supplies the complete member declarations and target layout checks.
+
+Preserve three callback-separated player-read phases:
+
+- Panel visibility: target load `0x4149A6`, after `displayVms2`, `displayVms3`
+  and `displayVms4` callbacks; preserve the existing null gate.
+- Gauge positioning: target load `0x414B5A`, after `displayVms5[0..6]` callbacks
+  and gauge boss/life setup; preserve the active-path live-player assumption.
+- Marker alpha: target reload `0x4156E6`, after marker `ExecuteScript` at
+  `0x4156D5`. Retain the previously selected boss and read its X afterward at
+  `0x4156DA`, while using the newly read player for subtraction at `0x415702`.
+
+Do not capture one player at function entry, reselect the boss after the marker
+callback, or cache boss X before it. Separate fixture replacements at
+`displayVms4[1]`, `displayVms5[6]`, and `bossPositionVm` can distinguish these
+contracts. Use valid actual Player objects with different float/integer position
+sentinels. The author confirms two additional inventory-checked temporary-host
+constructor seams: `PlayerOptionRuntime::flags80` and
+`PlayerConstructorFlagView::flags` initialize to zero instead of reading an
+uninitialized flag. Existing timer seams remain; production `Player.hpp` is
+unchanged. Host Player constructor/destructor definitions are dependency seams,
+not production lifecycle coverage.
+
+The same two reproduction commands above now run six lifetime tests and five
+gauge tests, including 50 strictly classified mutation controls: all 41 prior
+controls plus nine player-specific controls. Distinct callback replacements
+exercise the actual owner prefix through gauge work and the retained-boss /
+current-player marker path; wrong integer-field and stale-player controls must
+fail at their predeclared CHECK. Exact diagnostics and 120/15-second compiler /
+execution limits remain. Independent ASan/UBSan positive runs supplement these
+bounded host contracts; they do not establish target lifecycle behavior.
+Reuse the 14-TU graph and recheck the seven-producer/eleven-unit source closure
+for this separate change. Preserve the enemy lifetime controls and all existing
+exact units. No whole-owner match or completion credit is claimed.
+
+## Player follow-up: bounded native observation
+
+The separate replay retains all eleven canonical units across seven producers
+(912 exact bytes). The reviewed source and artifact identities are:
+
+- `Gui.cpp`: `dde1c03602d80e3616fe3d42c0befe186d3078723128db1c6d89fc1a598a8241`
+- PE: `a062c8295ef581332799b57f165fef4c8374cb2279a8e76972d34c8b8643b855`
+- Evidence: `527b61f1af8a4e4f06b4cbe8b09777854aa13e06b3a21887b14052b2a05328ef`
+- Replay: `bb5752721d8ed7b7a6de1a2d70a7ac47fa9b255f30440004809d4d88e21327d4`
+- Input freeze: `973ff6bee86549638d54ab2f6cd14bf0dc67f283268fc44897492f1777a099b7`
+
+Against the enemy-migration baseline evidence `243aa3c5...`, HUD remains
+3,772 bytes: 3,741 executable bytes, three padding bytes and seven table words.
+Its owner SHA-256 is
+`1ac04b5802d9845c7ee1e99ea13d4fda2e8d21a13a3ca8eeacd9af31d054d593`.
+The three loads at `0x4021EF`, `0x4023A8` and `0x402EF6` now reference the single
+canonical `g_Player` MAP identity at `0x42B640`, replacing shadow address
+`0x42B5B0`; the shadow MAP identity is absent. These are the only three semantic
+operand-role changes within HUD. The complete raw delta is eleven instructions /
+fourteen bytes: these three corrections, four same-role HIGHLOW address shifts,
+and four same-identity external CALL address shifts. All other HUD bytes,
+including padding and table words, remain unchanged.
+
+The three callback-separated reads retain their panel, gauge and post-marker
+positions. All float accesses remain at `+0x3C0/+0x3C4`; no integer
+`+0x3CC/+0x3D0` substitution occurs. Marker `ExecuteScript` at `0x402EE5` still
+precedes the retained-boss X read at `0x402EEA` and player reload at `0x402EF6`.
+Canonical enemy identity remains `g_EnemyManager` at `0x42B470`. All 21 call
+identities/order, seven table destinations, intrafunction direct jump destinations,
+and ABI instruction forms including `RET 4` are preserved. Eight comparator
+branch-window notices have identical branch bytes/target indices and merely
+include a corrected player referent in their destination windows.
+
+The countdown still reuses its captured manager (`MOV ECX,ESI` at `0x402DD6`):
+the missing target-style post-countdown reload is not recovered. The unchanged
+`TEST AH,5 / JP` alpha predicate retains the earlier less-versus-unordered
+residual, with the same x87 precision, invalid-exception, conversion and
+reachability limits. Canonical identities and host callback witnesses do not
+establish target physical storage, alias behavior, private-ABI/runtime closure
+or actual callback replacement behavior. This bounded HUD review grants no new
+exactness/completion credit and makes no whole-producer equivalence claim.
+The separate provenance review passes the bounded HUD/Run, 47 required owners
+and eleven registered units. It also records an unrelated `DrawScoreEntry`
+scheduling change: two independent stack-slot MOV reloads exchange order
+within the same eight-byte span; the loop enters at the pair start, with no
+decoded direct jump to its interior. This observation does not extend equivalence
+to whole producers; 218 broader base/addend cases remain unresolved.
+Logs and binary artifacts remain outside the repository documentation.

@@ -10,8 +10,8 @@ import argparse, shutil, subprocess, tempfile, unittest
 SOURCE=Path(__file__).resolve().parents[1]/'src/Gui.cpp'
 
 # Retain complete maintained Enemy.hpp and Player.hpp declarations. Only the
-# 32-bit layout assertions and two read-before-initialization timer constructors
-# are adapted for a pointer-wide host. No enemy fields or HUD expressions are
+# 32-bit layout assertions and read-before-initialization member constructors
+# are adapted for a pointer-wide host. No enemy/player fields or HUD expressions are
 # substituted. Host construction/vtables below are explicit dependency seams.
 def prepare_enemy_headers(folder):
     for name, timer in [('Player.hpp', 'PlayerTimerView'),
@@ -24,6 +24,15 @@ def prepare_enemy_headers(folder):
         if text.count(before) != 1:
             raise AssertionError('canonical timer constructor inventory changed: ' + name)
         text = text.replace(before, timer + '() : flags(0) {}')
+        if name == 'Player.hpp':
+            # Actual Player construction also reaches these raw flag ctors.
+            # Host-only initialization, not coverage of native construction.
+            for ctor, field in [('PlayerOptionRuntime', 'flags80'),
+                                ('PlayerConstructorFlagView', 'flags')]:
+                old = ctor + '() { ' + field + ' &= ~1u; }'
+                if text.count(old) != 1:
+                    raise AssertionError('canonical player constructor inventory changed: ' + ctor)
+                text = text.replace(old, ctor + '() : ' + field + '(0) {}')
         (Path(folder) / name).write_text(text)
 
 def validate_canonical_source(source):
@@ -31,10 +40,13 @@ def validate_canonical_source(source):
     # declaration anywhere in Gui.cpp is disallowed, even if HUD stops using it.
     if re.search(r'\b(?:GuiEnemyView|GuiEnemyManagerView|g_GuiEnemyManager)\b', source):
         raise AssertionError('obsolete HUD enemy shadow declaration or use')
+    if re.search(r'\b(?:GuiPlayerView|g_GuiPlayer)\b', source):
+        raise AssertionError('obsolete HUD player shadow declaration or use')
     owner = source[source.index('int __stdcall GuiView::UpdateStageElements'):]
     for token in ('g_EnemyManager', 'specialEnemySlots[0]', 'runtime.life',
                   'runtime.unknown13C4', 'runtime.value13C8',
-                  'runtime.flags', 'runtime.worldMotion.position.x'):
+                  'runtime.flags', 'runtime.worldMotion.position.x',
+                  'g_Player', 'drawPosition.x', 'drawPosition.y'):
         if token not in owner:
             raise AssertionError('canonical HUD source missing: ' + token)
 
@@ -64,6 +76,10 @@ float EnemyFullObjectView::ReadFloatOperand(int) { return 0; }
 float *EnemyFullObjectView::ResolveFloatOperand(int) { return nullptr; }
 EnemyManagerView::EnemyManagerView() : flags(0), specialEnemySlots(), effectResources() {}
 EnemyManagerView::~EnemyManagerView() {}
+// Only accessed Player fields are initialized; member ctor seams above avoid
+// raw flag reads before initialization. No native constructor/destructor claim.
+Player::Player() : drawPosition(), positionX(12345), positionY(-23456) {}
+Player::~Player() {}
 '''
 
 def phase_source():
@@ -71,6 +87,21 @@ def phase_source():
     b=s.index('{',start);d=1;e=b+1
     while d:d+=(s[e]=='{')-(s[e]=='}');e+=1
     return s[b:e]
+def owner_prefix():
+    source = SOURCE.read_text()
+    validate_canonical_source(source)
+    start = source.index('int __stdcall GuiView::UpdateStageElements')
+    brace = source.index('{', start)
+    end = source.index('// HUD boss-gauge phase begin:', brace)
+    # Actual prefix includes all panel scripts/counter work before gauge entry.
+    return source[brace:end]
+
+def assembled_program(phase, prefix=None):
+    if prefix is None:
+        prefix = owner_prefix()
+    return CANONICAL_ENEMY + PROGRAM.replace('@PHASE@', phase).replace(
+        '@OWNER@', prefix + phase + '\n}')
+
 PROGRAM=r'''
 #include <cstdio>
 #include <cmath>
@@ -81,19 +112,21 @@ struct AnmVmView;
 struct AnmVmLayerNodeView { void *owner; AnmVmLayerNodeView *next,*previous; };
 struct AnmVmIdView { int value; };
 struct AnmVmView { int id; unsigned flags35C,renderLayer; short pendingInterrupt; AnmVmLayerNodeView managerNode,layerNode; };
-struct Loaded { int tag; void InitializeVm(AnmVmView *,int); };
+struct Loaded { int tag; void InitializeVm(AnmVmView *,int); void SetSprite(AnmVmView *,int) {} };
 typedef Loaded AnmLoadedView;
-struct GuiPlayerView { float positionX,positionY; };
 struct GaugeValue { float value,untouched; };
 struct GuiView { void *message; int bossLife; float bossGaugeTarget,bossGaugeDisplayed; unsigned guiFlags;
+    int endingCounter;AnmVmView displayVms2[9],displayVms3[4],displayVms4[2],displayVms5[7];
     int bossGaugeSegmentCount; AnmVmIdView bossGaugeVmId,bossGaugeSegmentVmIds[10]; GaugeValue bossGaugeValues[4]; Loaded *frontAnm;
 };
 struct AnmRenderManagerView { int tag;AnmVmLayerNodeView *primaryVmListHead,*primaryVmListTail,*secondaryVmListHead;
-    AnmVmIdView nextVmId;AnmVmView *AllocateVm(); };
+    AnmVmIdView nextVmId;AnmVmView *AllocateVm();static int ExecuteScript(AnmVmView *); };
 static EnemyManagerView *g_EnemyManager;
-static GuiPlayerView *g_GuiPlayer;
+Player *g_Player;
 static AnmRenderManagerView *g_AnmRenderManagerView;
-static int g_GuiStage,g_GuiMessageState;
+static int g_GuiStage,g_GuiMessageState,g_GuiGlobalMode,g_GuiCounter4C4C;
+static unsigned g_GuiSupervisorFlags;
+static Player *panelReplacement,*gaugeReplacement;
 static const unsigned GUI_VM_RENDER_LAYER=15;
 static AnmVmView storage[128];static int used;
 struct Event { int kind,owner,script;AnmVmView *vm; };
@@ -111,11 +144,18 @@ void Loaded::InitializeVm(AnmVmView *vm,int script) {
     if(vm->renderLayer!=15 || vm->flags35C!=0x40000055u) initValid=false;
     if(mutateInitialize) {g_AnmRenderManagerView=newManager;activeGui->bossGaugeSegmentCount=2;mutateInitialize=false;}
 }
+int AnmRenderManagerView::ExecuteScript(AnmVmView *vm) {
+    if(panelReplacement && vm==&activeGui->displayVms4[1]) g_Player=panelReplacement;
+    if(gaugeReplacement && vm==&activeGui->displayVms5[6]) g_Player=gaugeReplacement;
+    return 0;
+}
 static void Exercise(GuiView *gui) @PHASE@
-static void Reset(GuiView &gui,EnemyManagerView &enemy,EnemyFullObjectView &boss,GuiPlayerView &player,AnmRenderManagerView &manager,Loaded &loaded) {
-    gui=GuiView();boss.runtime.life=50;boss.runtime.unknown13C4=100;enemy.specialEnemySlots[0]=&boss;player={0,100};manager=AnmRenderManagerView();manager.tag=1;loaded.tag=1;
-    gui.frontAnm=&loaded;g_EnemyManager=&enemy;g_GuiPlayer=&player;g_AnmRenderManagerView=&manager;
+static void ExerciseOwnerThroughGauge(GuiView *gui) @OWNER@
+static void Reset(GuiView &gui,EnemyManagerView &enemy,EnemyFullObjectView &boss,Player &player,AnmRenderManagerView &manager,Loaded &loaded) {
+    gui=GuiView();boss.runtime.life=50;boss.runtime.unknown13C4=100;enemy.specialEnemySlots[0]=&boss;player.drawPosition={0,100,0};manager=AnmRenderManagerView();manager.tag=1;loaded.tag=1;
+    gui.frontAnm=&loaded;g_EnemyManager=&enemy;g_Player=&player;g_AnmRenderManagerView=&manager;
     g_GuiStage=1;g_GuiMessageState=0;used=0;events.clear();activeGui=&gui;
+    panelReplacement=gaugeReplacement=nullptr;g_GuiGlobalMode=g_GuiCounter4C4C=0;g_GuiSupervisorFlags=0;
     mutateAllocate=mutateInitialize=false;newManager=nullptr;newResource=nullptr;initValid=true;
 }
 static void AddPrimary(AnmRenderManagerView &manager,AnmVmView &vm,int id) {
@@ -124,7 +164,7 @@ static void AddPrimary(AnmRenderManagerView &manager,AnmVmView &vm,int id) {
     manager.primaryVmListTail=&vm.managerNode;
 }
 static int CreationAndLifetime() {
-    GuiView gui;EnemyManagerView enemy;EnemyFullObjectView boss{nullptr};GuiPlayerView player;AnmRenderManagerView manager,other;Loaded loaded,otherLoaded{2};
+    GuiView gui;EnemyManagerView enemy;EnemyFullObjectView boss{nullptr};Player player;AnmRenderManagerView manager,other;Loaded loaded,otherLoaded{2};
     Reset(gui,enemy,boss,player,manager,loaded);other=AnmRenderManagerView();other.tag=2;other.nextVmId.value=200;
     manager.nextVmId.value=100;newManager=&other;newResource=&otherLoaded;mutateAllocate=mutateInitialize=true;
     Exercise(&gui);CHECK(initValid);CHECK(events.size()==6);
@@ -166,7 +206,7 @@ static int CreationAndLifetime() {
     return 0;
 }
 static int InterruptsAndGates() {
-    GuiView gui;EnemyManagerView enemy;EnemyFullObjectView boss{nullptr};GuiPlayerView player;AnmRenderManagerView manager;Loaded loaded;
+    GuiView gui;EnemyManagerView enemy;EnemyFullObjectView boss{nullptr};Player player;AnmRenderManagerView manager;Loaded loaded;
     for(int action=0;action<4;++action) {
         Reset(gui,enemy,boss,player,manager,loaded);
         AnmVmView primary,duplicate,segment,child,nonroot,suppressed,parent;
@@ -178,8 +218,8 @@ static int InterruptsAndGates() {
         nonroot.layerNode.previous=&parent.layerNode;nonroot.layerNode.next=&suppressed.layerNode;
         gui.bossGaugeVmId.value=10;gui.bossGaugeSegmentCount=2;
         gui.bossGaugeSegmentVmIds[0].value=20;gui.bossGaugeSegmentVmIds[1].value=30;gui.bossGaugeSegmentVmIds[2].value=987;
-        if(action==0) {player={-65,64};} // Enter side: interrupts3 then remove slot2.
-        if(action==1) {gui.guiFlags=8;player={0,80};} // Exit side: interrupts2.
+        if(action==0) {player.drawPosition={-65,64,0};} // Enter side: interrupts3 then remove slot2.
+        if(action==1) {gui.guiFlags=8;player.drawPosition={0,80,0};} // Exit side: interrupts2.
         if(action==2) {gui.message=&gui;} // Hide only main; segment IDs preserved.
         if(action==3) {enemy.specialEnemySlots[0]=nullptr;}
         gui.bossGaugeTarget=0.66f;gui.bossLife=1234;
@@ -202,7 +242,7 @@ static int InterruptsAndGates() {
     const unsigned after[]={0,8,0,8,0,0};
     for(int i=0;i<6;++i) {
         Reset(gui,enemy,boss,player,manager,loaded);gui.guiFlags=before[i];
-        gui.bossGaugeVmId.value=999;player={xs[i],ys[i]};Exercise(&gui);
+        gui.bossGaugeVmId.value=999;player.drawPosition={xs[i],ys[i],0};Exercise(&gui);
         CHECK((gui.guiFlags&8)==after[i]);CHECK(events.empty());
     }
     // Secondary-only lookup and zero/missing IDs have no manufactured invalidation.
@@ -211,7 +251,7 @@ static int InterruptsAndGates() {
     secondary.layerNode={&secondary,&removedChild.layerNode,nullptr};
     removedChild.layerNode={&removedChild,nullptr,&secondary.layerNode};
     manager.secondaryVmListHead=&secondary.managerNode;gui.bossGaugeVmId.value=70;gui.bossGaugeSegmentCount=0;
-    gui.bossGaugeSegmentVmIds[0].value=70;player={0,100};Exercise(&gui);
+    gui.bossGaugeSegmentVmIds[0].value=70;player.drawPosition={0,100,0};Exercise(&gui);
     CHECK(secondary.pendingInterrupt==1 && gui.bossGaugeSegmentVmIds[0].value==0 && gui.bossGaugeVmId.value==70);
     CHECK(removedChild.pendingInterrupt==1);
     CHECK(secondary.layerNode.next==&removedChild.layerNode && removedChild.layerNode.previous==&secondary.layerNode);
@@ -229,7 +269,7 @@ static int InterruptsAndGates() {
     return 0;
 }
 static int StagesAndInterpolation() {
-    GuiView gui;EnemyManagerView enemy;EnemyFullObjectView boss{nullptr};GuiPlayerView player;AnmRenderManagerView manager;Loaded loaded;
+    GuiView gui;EnemyManagerView enemy;EnemyFullObjectView boss{nullptr};Player player;AnmRenderManagerView manager;Loaded loaded;
     const int low[]={0x85,0x85,-1,-1,0x89,0x8b,0x8c,0x8c,0x85};
     const int high[]={0x85,0x86,0x87,0x88,0x8a,0x8b,0x8c,0x8d,0x85};
     for(int stage=0;stage<=8;++stage)for(int state=23;state<=24;++state) {
@@ -247,11 +287,34 @@ static int StagesAndInterpolation() {
     Reset(gui,enemy,boss,player,manager,loaded);gui.bossGaugeVmId.value=999;gui.bossGaugeDisplayed=0.8f;Exercise(&gui);CHECK(gui.bossGaugeDisplayed==0.5f);
     return 0;
 }
-int main() {if(CreationAndLifetime() || InterruptsAndGates() || StagesAndInterpolation())return 1;return 0;}
+static int PlayerOwnerReload() {
+    GuiView gui;EnemyManagerView enemy;EnemyFullObjectView boss{nullptr};
+    Player initial,panelPlayer,gaugePlayer;AnmRenderManagerView manager;Loaded loaded;
+    Reset(gui,enemy,boss,initial,manager,loaded);
+    initial.drawPosition={0,100,0};panelPlayer.drawPosition={-129,417,0};gaugePlayer.drawPosition={-65,64,0};
+    panelReplacement=&panelPlayer;gaugeReplacement=&gaugePlayer;
+    gui.bossGaugeVmId.value=999;
+    ExerciseOwnerThroughGauge(&gui);
+    CHECK((gui.guiFlags&9)==9);
+    CHECK(gui.displayVms5[0].pendingInterrupt==3);
+    CHECK(g_Player==&gaugePlayer);
+    // The gauge exit also sees the later callback's new player.
+    Reset(gui,enemy,boss,initial,manager,loaded);gui.guiFlags=8;
+    initial.drawPosition={-65,64,0};panelPlayer.drawPosition={-65,64,0};gaugePlayer.drawPosition={1,79,0};
+    panelReplacement=&panelPlayer;gaugeReplacement=&gaugePlayer;gui.bossGaugeVmId.value=999;
+    ExerciseOwnerThroughGauge(&gui);
+    CHECK((gui.guiFlags&8)==0);
+    return 0;
+}
+int main() {if(CreationAndLifetime() || InterruptsAndGates() || StagesAndInterpolation() || PlayerOwnerReload())return 1;return 0;}
 '''
 # Predeclared intended failure sites; line numbers are derived from each built
 # fixture, not learned from the failing process output.
 EXPECTED_CHECKS = {
+    'gauge-integer-x': ('primary.pendingInterrupt==(action==0?3:action==1?2:1)', '        CHECK(primary.pendingInterrupt==(action==0?3:action==1?2:1));CHECK(child.pendingInterrupt==primary.pendingInterrupt);'),
+    'gauge-integer-y': ('primary.pendingInterrupt==(action==0?3:action==1?2:1)', '        CHECK(primary.pendingInterrupt==(action==0?3:action==1?2:1));CHECK(child.pendingInterrupt==primary.pendingInterrupt);'),
+    'stale-gauge-player': ('(gui.guiFlags&9)==9', '    CHECK((gui.guiFlags&9)==9);'),
+    'stale-panel-to-gauge-player': ('(gui.guiFlags&9)==9', '    CHECK((gui.guiFlags&9)==9);'),
     'canonical-boss-slot': ('events.size()==6', '    Exercise(&gui);CHECK(initValid);CHECK(events.size()==6);'),
     'canonical-life-field': ('gui.bossLife==50 && gui.bossGaugeTarget==0.5f && gui.bossGaugeDisplayed==0.025f', '        CHECK(gui.bossLife==50 && gui.bossGaugeTarget==0.5f && gui.bossGaugeDisplayed==0.025f);'),
     'canonical-maximum-field': ('gui.bossLife==50 && gui.bossGaugeTarget==0.5f && gui.bossGaugeDisplayed==0.025f', '        CHECK(gui.bossLife==50 && gui.bossGaugeTarget==0.5f && gui.bossGaugeDisplayed==0.025f);'),
@@ -311,24 +374,53 @@ class BossGaugePhase(unittest.TestCase):
             with self.subTest(shadow=shadow):
                 with self.assertRaisesRegex(AssertionError, 'obsolete HUD enemy shadow'):
                     validate_canonical_source(source + '\nstruct ' + shadow + ';\n')
+        for shadow in ('GuiPlayerView', 'g_GuiPlayer'):
+            with self.subTest(shadow=shadow):
+                with self.assertRaisesRegex(AssertionError, 'obsolete HUD player shadow'):
+                    validate_canonical_source(source + '\nstruct ' + shadow + ';\n')
         for canonical in ('g_EnemyManager', 'specialEnemySlots[0]', 'runtime.life',
                           'runtime.unknown13C4', 'runtime.value13C8',
-                          'runtime.flags', 'runtime.worldMotion.position.x'):
+                          'runtime.flags', 'runtime.worldMotion.position.x',
+                  'g_Player', 'drawPosition.x', 'drawPosition.y'):
             with self.subTest(canonical=canonical):
                 with self.assertRaisesRegex(AssertionError, 'canonical HUD source missing'):
                     validate_canonical_source(source.replace(canonical, 'wrong_canonical_member'))
 
-    def run_phase(self,source):
+    def run_phase(self,source,prefix=None,program=None):
         compiler=shutil.which('c++')
         if not compiler:self.skipTest('host C++ compiler unavailable')
         with tempfile.TemporaryDirectory(prefix='th10-gauge-') as tmp:
             prepare_enemy_headers(tmp)
-            p=Path(tmp)/'test.cpp';exe=Path(tmp)/'test';p.write_text(CANONICAL_ENEMY + PROGRAM.replace('@PHASE@',source))
+            p=Path(tmp)/'test.cpp';exe=Path(tmp)/'test';p.write_text(assembled_program(source,prefix) if program is None else program)
             built=subprocess.run([compiler,'-std=c++11','-O0','-fsanitize=undefined','-fno-sanitize-recover=undefined',str(p),'-o',str(exe)],capture_output=True,text=True,timeout=120)
             self.assertEqual(built.returncode,0,built.stderr)
             return subprocess.run([str(exe)],capture_output=True,text=True,timeout=15)
     def test_actual_phase(self):
         r=self.run_phase(phase_source());self.assertEqual(r.returncode,0,r.stdout+r.stderr)
+    def test_player_mutations(self):
+        source = phase_source()
+        for name, member in [('gauge-integer-x', 'x'), ('gauge-integer-y', 'y')]:
+            with self.subTest(mutation=name):
+                old = 'g_Player->drawPosition.' + member
+                self.assertIn(old, source)
+                candidate = source.replace(old, 'g_Player->position' + member.upper())
+                result = self.run_phase(candidate)
+                assert_mutation(self, result, assembled_program(candidate), name)
+        # Isolate a stale owner-entry player and a stale post-initial-panel player.
+        # Direct phase calls cache at entry; only the real owner-prefix witness
+        # has intervening callbacks and must observe their replacement player.
+        stale_phase = source.replace('g_Player->drawPosition', 'gaugePlayer->drawPosition')
+        direct = '{ Player *gaugePlayer = g_Player;' + stale_phase + '}'
+        for name, anchor in [('stale-gauge-player', '    int i;'),
+                             ('stale-panel-to-gauge-player', '    int value = g_GuiCounter4C4C;')]:
+            with self.subTest(mutation=name):
+                prefix = owner_prefix()
+                self.assertEqual(prefix.count(anchor), 1)
+                prefix = prefix.replace(anchor, '    Player *gaugePlayer = g_Player;\n' + anchor)
+                program = CANONICAL_ENEMY + PROGRAM.replace('@PHASE@', direct).replace('@OWNER@', prefix + stale_phase + '\n}')
+                result = self.run_phase(source, program=program)
+                assert_mutation(self, result, program, name)
+
     def test_mutations(self):
         s=phase_source()
         changes=[
@@ -354,7 +446,7 @@ class BossGaugePhase(unittest.TestCase):
                 # Do not alter the manager declaration when testing post-init reload.
                 candidate=s.replace('    '+old,'    '+new) if name=='manager-reload' else s.replace(old,new,1) if name in ('removed-root','removed-child') else s.replace(old,new)
                 r=self.run_phase(candidate)
-                assert_mutation(self, r, CANONICAL_ENEMY + PROGRAM.replace('@PHASE@', candidate), name)
+                assert_mutation(self, r, assembled_program(candidate), name)
 if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--source',type=Path,default=SOURCE)
     args,rest=p.parse_known_args();SOURCE=args.source;unittest.main(argv=[__file__]+rest)

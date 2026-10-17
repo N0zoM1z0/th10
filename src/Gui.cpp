@@ -13,17 +13,7 @@
 #include <new>
 
 
-// These views expose only fields read by the two reviewed GUI cores.  The
-// containing Player and game-state owners remain separate campaigns.
-struct GuiPlayerView
-{
-    unsigned char unknown000[0x10];
-    AnmLoadedView *portraitAnm;
-    unsigned char unknown014[0x3ac];
-    float positionX;
-    float positionY;
-};
-
+// These views expose game-state fields read by the reviewed GUI cores.
 struct GuiGameOwnerView
 {
     unsigned char unknown000[0x378c];
@@ -38,8 +28,9 @@ struct GuiModeOwnerView
 
 
 
-typedef char GuiPlayerPositionAt3C0[
-    (offsetof(GuiPlayerView, positionX) == 0x3c0) ? 1 : -1];
+typedef char GuiCanonicalPlayerDrawPosition[
+    (offsetof(Player, drawPosition) + offsetof(PlayerFloat3, x) == 0x3c0 &&
+     offsetof(Player, drawPosition) + offsetof(PlayerFloat3, y) == 0x3c4) ? 1 : -1];
 typedef char GuiCanonicalEnemyFields[
     (offsetof(EnemyFullObjectView, runtime) +
          offsetof(EnemyRuntimeView, worldMotion) +
@@ -55,7 +46,6 @@ typedef char GuiCanonicalEnemyManagerSlotAt10[
 extern EnemyManagerView *g_EnemyManager;
 // Existing full stage-state byte storage contract at target 0x474c40.
 extern unsigned char g_GameStageState[];
-extern GuiPlayerView *g_GuiPlayer;
 extern GuiGameOwnerView *g_GuiGameOwner;
 extern GuiModeOwnerView *g_GuiModeOwner;
 extern unsigned char *g_GuiPersistentData;
@@ -853,19 +843,19 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
     for (i = 0; i < 2; ++i)
         AnmRenderManagerView::ExecuteScript(&gui->displayVms4[i]);
 
-    if (g_GuiPlayer != NULL)
+    if (g_Player != NULL)
     {
         if ((gui->guiFlags & 1) == 0 &&
-            g_GuiPlayer->positionY > 416.0f &&
-            g_GuiPlayer->positionX < -128.0)
+            g_Player->drawPosition.y > 416.0f &&
+            g_Player->drawPosition.x < -128.0)
         {
             for (i = 0; i < 7; ++i)
                 gui->displayVms5[i].pendingInterrupt = 3;
             gui->guiFlags |= 1;
         }
         else if ((gui->guiFlags & 1) != 0 &&
-                 (g_GuiPlayer->positionY < 400.0f ||
-                  g_GuiPlayer->positionX > -112.0))
+                 (g_Player->drawPosition.y < 400.0f ||
+                  g_Player->drawPosition.x > -112.0))
         {
             for (i = 0; i < 7; ++i)
                 gui->displayVms5[i].pendingInterrupt = 2;
@@ -905,8 +895,8 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
             AnmRenderManagerView *manager = g_AnmRenderManagerView;
             if ((gui->guiFlags & 8) != 0)
             {
-                if (g_GuiPlayer->positionY >= 80.0f ||
-                    g_GuiPlayer->positionX > 0.0f)
+                if (g_Player->drawPosition.y >= 80.0f ||
+                    g_Player->drawPosition.x > 0.0f)
                 {
                     for (int segment = 0; segment < gui->bossGaugeSegmentCount; ++segment)
                     {
@@ -980,8 +970,8 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                     gui->guiFlags &= ~8u;
                 }
             }
-            else if (g_GuiPlayer->positionY <= 64.0f &&
-                     g_GuiPlayer->positionX < -64.0f)
+            else if (g_Player->drawPosition.y <= 64.0f &&
+                     g_Player->drawPosition.x < -64.0f)
             {
                 for (int segment = 0; segment < gui->bossGaugeSegmentCount; ++segment)
                 {
@@ -1607,7 +1597,7 @@ int __stdcall GuiView::UpdateStageElements(GuiView *gui)
                 gui->bossPositionVm.positionOffset.x = boss->runtime.worldMotion.position.x + 224.0f;
                 gui->bossPositionVm.positionOffset.y = 480.0f;
                 const double distance = fabs(
-                    static_cast<double>(boss->runtime.worldMotion.position.x) - g_GuiPlayer->positionX);
+                    static_cast<double>(boss->runtime.worldMotion.position.x) - g_Player->drawPosition.x);
                 if (distance < 64.0)
                     gui->bossPositionVm.primaryColor.alpha =
                         static_cast<unsigned char>(

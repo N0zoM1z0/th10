@@ -80,7 +80,6 @@ EnemyLaserManagerView *g_EnemyLaserManager;
 int g_EnemyDialogIndex, g_EnemyDialogState;
 GuiView *g_GuiView;
 Player *g_Player;
-GuiPlayerView *g_GuiPlayer;
 GuiGameOwnerView *g_GuiGameOwner;
 GuiModeOwnerView *g_GuiModeOwner;
 unsigned char *g_GuiPersistentData;
