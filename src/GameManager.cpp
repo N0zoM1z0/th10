@@ -15,6 +15,7 @@
 #include "GameStatistics.hpp"
 #include "Gui.hpp"
 #include "StageScript.hpp"
+#include "GameStageDescriptor.hpp"
 
 // Natural source candidate adapted from th10-decomphelp-forN0.  The bounded
 // OnDraw body is retained here only after direct TH10 IDA boundary review;
@@ -77,16 +78,6 @@ struct GameMenuView
 {
     u8 unknown000[0x2a18];
     u8 flags2A18;
-};
-struct GameStageUpdateView
-{
-    int resourceIndex;
-    const char *menuPath;
-    u32 unknown008;
-    const char *enemyPath;
-    const char *musicPaths[2];
-    u8 unknown018[0x0c];
-    int musicIndex;
 };
 struct GameAdditionalChainView
 {

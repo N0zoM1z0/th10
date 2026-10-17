@@ -55,6 +55,8 @@ def main() -> int:
         run("Validate statistics save contract", [sys.executable, "scripts/test-game-statistics-save.py", "--baseline-only"])
         run("Validate GUI lifecycle contract", [sys.executable, "scripts/test-gui-lifecycle.py", "--baseline-only"])
         run("Validate GUI message construction and unwind contracts", [sys.executable, "scripts/test-gui-message-constructor.py", "--no-mutations"])
+        run("Validate GUI message Run baseline", [sys.executable, "scripts/test-gui-message-run.py", "--no-mutations", "--out", "build/host-tests/gui-message-run-ci"])
+        run("Validate GUI message construction-Run-destruction baseline", [sys.executable, "scripts/test-gui-message-lifecycle.py", "--no-mutations", "--out", "build/host-tests/gui-message-lifecycle-ci"])
         run("Validate GUI draw contracts", [sys.executable, "scripts/test-gui-draw.py"])
         run("Validate laser owner bindings", [sys.executable, "scripts/test-laser-owner-binding.py", "--opt", "O2", "--no-mutations"])
         run("Validate rectangle contracts and strict mutations", [sys.executable, "scripts/test-anm-rectangle.py"])

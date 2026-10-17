@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Compile complete maintained types under GNU i386 for layout/source diagnostics.
 
-No target VC7.1 ABI/codegen claim: attribute macros and two declaration-only C
-headers are supplied to avoid host multilib libc dependency. Every production
+No target VC7.1 ABI/codegen claim: attribute macros and declaration-only C headers
+plus the compiler byte-width macro are supplied to avoid host multilib libc dependency. Every production
 size/offset assertion stays active; no game declaration is replaced or removed.
 """
 from pathlib import Path
@@ -23,7 +23,8 @@ def main():
         temp=Path(temp)
         include=temp/'include'; include.mkdir()
         (include/'stddef.h').write_text('#pragma once\ntypedef __SIZE_TYPE__ size_t;\n#define NULL 0\n#define offsetof(T, m) __builtin_offsetof(T, m)\n')
-        (include/'string.h').write_text('#pragma once\n#include <stddef.h>\nextern "C" void *memset(void *, int, size_t);\n')
+        (include/'string.h').write_text('#pragma once\n#include <stddef.h>\nextern "C" void *memset(void *, int, size_t);\nextern "C" void *memcpy(void *, const void *, size_t);\n')
+        (include/'limits.h').write_text('#pragma once\n#define CHAR_BIT __CHAR_BIT__\n')
         (include/'compiler.hpp').write_text('#define __cdecl __attribute__((cdecl))\n#define __stdcall __attribute__((stdcall))\n#define __fastcall __attribute__((fastcall))\n#define __thiscall __attribute__((thiscall))\n#define __declspec(x)\n#define __forceinline inline\n')
         # Prefer proposal files, fall back only to byte-verified snapshots of
         # unchanged production headers when running this local proposal packet.

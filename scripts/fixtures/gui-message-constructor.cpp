@@ -531,7 +531,7 @@ static void TestConstructor(bool emptyLasers, bool useCaller = false,
     enemyOwner->enemyListHead = &enemyNode;
     // The table and record are distinct live subobjects in one real host file.
     // The caller's int offset read is aligned and addresses an actual int.
-    struct HostDialogFile { int table[8]; GuiMessageInstructionView record; } file = {};
+    struct HostDialogFile { int table[8]; unsigned char record[4]; } file = {};
     const int dialogIndex = 2;
     file.table[1 + dialogIndex * 2] = offsetof(HostDialogFile, record);
     Live<GuiView> gui;
@@ -612,7 +612,7 @@ static void TestConstructor(bool emptyLasers, bool useCaller = false,
     CheckAnmTimer(message->lifetimeTimer); CheckAnmTimer(message->instructionTimer); CheckAnmTimer(message->waitTimer);
     Check(message->messageIndex == (useCaller ? dialogIndex : 0) && message->unknown58 == 0 && message->inputCooldown == 0 &&
           message->flags == 0 && message->alternatingLine == 0 && message->activeSide == 0 &&
-          message->currentInstruction == &file.record, "message.fields");
+          message->currentInstruction == file.record, "message.fields");
     Check(message->textPositions[0].x == 8 && message->textPositions[1].x == 24 &&
           message->textPositions[0].y == 0 && message->textPositions[0].z == 0 &&
           message->textPositions[1].y == 0 && message->textPositions[1].z == 0,

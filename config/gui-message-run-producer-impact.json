@@ -1,0 +1,593 @@
+{
+  "schema_version": 1,
+  "repository_id": "th10",
+  "baseline_checkpoint": "50b971feb9999a14d75461f238f059b2970fa690",
+  "config": "config/match-units.toml",
+  "config_sha256": "2a0a98cb1963bf6d8daea859a8d4f06b1e87badfa64ccb166ed59ef3bae1beed",
+  "snapshot_sha256": "7bc9a6d3018d01bceb25469fabd0174621b222ee1ee578e60799b709104c860f",
+  "candidate_manifest_sha256": "f8fa8f095d5ab2af644371367f4c16796a7b5b59656cd83e034f32353c44b8e4",
+  "candidate_patch_sha256": "bf0d7404b116e55b37546a92a6feccd10a804e6e64fd39f94b9089681b71987d",
+  "method": "Conservative transitive union of old and proposed quoted-include graphs; no preprocessor conditions pruned. Check each primary/support/normal_support source. Group linked-PE by canonical output_dir and COFF by source/profile; retain every unit sharing each impacted producer.",
+  "scope": "Inventory only. No builds, replay results, runtime closure, or exactness claims.",
+  "changed_files": [
+    {
+      "path": "src/GameManager.cpp",
+      "canonical_before_sha256": "d8f0dd77c1bb8b07db20d23e62cea0bce17d5dce2fd203165b1ae1663ac4de4f",
+      "manifest_baseline_sha256": "d8f0dd77c1bb8b07db20d23e62cea0bce17d5dce2fd203165b1ae1663ac4de4f",
+      "proposal_sha256": "e17146be734750f2d43fd16513be981dba3a025bcc5ea05b64ca6dcaff8c603c",
+      "expected_git_applied_sha256": "2a09b328a64e45f9f027bfe84b25b5800e21c5e59b7759a97d63925760ed9433"
+    },
+    {
+      "path": "src/GameStageDescriptor.hpp",
+      "canonical_before_sha256": null,
+      "manifest_baseline_sha256": null,
+      "proposal_sha256": "b9e03884d82ee00b113e821f835e5c017c7a861daf163aa858d288d33e5234de",
+      "expected_git_applied_sha256": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3"
+    },
+    {
+      "path": "src/Gui.cpp",
+      "canonical_before_sha256": "aa41dd432caf60b1992fddafa3353b9c9acacfc43831e334cbad70266e210c65",
+      "manifest_baseline_sha256": "aa41dd432caf60b1992fddafa3353b9c9acacfc43831e334cbad70266e210c65",
+      "proposal_sha256": "a40049671bce356ab130af52677c821c8e3dce41e706f4ceebf95a4a78751139",
+      "expected_git_applied_sha256": "21521d0855eca25827e088ff08924d91d7647ed7cf2951757cd02b081180118c"
+    },
+    {
+      "path": "src/Gui.hpp",
+      "canonical_before_sha256": "21c98062547c469a649adeb065408cc8c1402c84f91be6ad1b580ba87716bceb",
+      "manifest_baseline_sha256": "21c98062547c469a649adeb065408cc8c1402c84f91be6ad1b580ba87716bceb",
+      "proposal_sha256": "bc6db49db4f9f3c180b1f3e89215cd2bb87bd767ea81539c77812afbfeb17361",
+      "expected_git_applied_sha256": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030"
+    }
+  ],
+  "group_count": 40,
+  "unit_count": 89,
+  "audit_sha256": "cf5a3076969735383abe610b137d12eb1ea7371c1b84f16deca6926e71bd8274",
+  "settings_authority": "Pinned canonical manifest; selection only, no copied or overridden build settings",
+  "groups": [
+    {
+      "index": 1,
+      "producer": "build/match-linked/EclVmHostRunEnemy",
+      "artifact_kind": "linked-pe",
+      "representative": "ecl-vm-host-run",
+      "units": [
+        "ecl-vm-host-run",
+        "ecl-vm-spawn-thread"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 2,
+      "producer": "build/match-linked/EclVmPolar",
+      "artifact_kind": "linked-pe",
+      "representative": "ecl-vm-polar-from-angle-magnitude",
+      "units": [
+        "ecl-vm-polar-from-angle-magnitude"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 3,
+      "producer": "build/match-linked/Enemy",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-manager-constructor",
+      "units": [
+        "enemy-manager-constructor",
+        "enemy-spawn",
+        "enemy-ecl-resource-constructor",
+        "enemy-ecl-resource-destructor",
+        "enemy-ecl-release-allocations",
+        "enemy-ecl-host-constructor",
+        "enemy-ecl-host-destructor",
+        "enemy-ecl-context-constructor",
+        "enemy-ecl-resource-base-load-package",
+        "enemy-ecl-resource-base-get-script-data",
+        "enemy-ecl-resource-base-constructor",
+        "enemy-ecl-resource-base-destructor"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 4,
+      "producer": "build/match-linked/EnemyLoadPackage",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-ecl-resource-load-package",
+      "units": [
+        "enemy-ecl-resource-load-package"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 5,
+      "producer": "build/match-linked/EnemyResetEclState",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-ecl-reset-state",
+      "units": [
+        "enemy-ecl-reset-state"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 6,
+      "producer": "build/match/Enemy.obj",
+      "artifact_kind": "coff",
+      "representative": "enemy-ecl-host-dispatch-default",
+      "units": [
+        "enemy-ecl-host-dispatch-default",
+        "enemy-ecl-host-read-int-default",
+        "enemy-ecl-host-resolve-int-default",
+        "enemy-ecl-host-read-float-default",
+        "enemy-ecl-host-resolve-float-default",
+        "enemy-manager-draw-callback",
+        "enemy-ecl-dispatch-forwarder",
+        "enemy-ecl-int-lvalue-resolver",
+        "enemy-ecl-float-lvalue-resolver"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 7,
+      "producer": "build/match-linked/EnemyRuntimeCtor",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-runtime-constructor",
+      "units": [
+        "enemy-runtime-constructor"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 8,
+      "producer": "build/match-linked/EnemyManagerUpdate",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-manager-update",
+      "units": [
+        "enemy-manager-update",
+        "enemy-manager-update-callback"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 9,
+      "producer": "build/match-linked/EnemyRuntimeVector",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-runtime-vector",
+      "units": [
+        "enemy-runtime-vector"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 10,
+      "producer": "build/match-linked/AnmVmIdSetInterrupt",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-vm-id-set-interrupt",
+      "units": [
+        "anm-vm-id-set-interrupt"
+      ],
+      "affected": [
+        "src/GameStageDescriptor.hpp",
+        "src/Gui.cpp",
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 11,
+      "producer": "build/match-linked/AnmVmIdOperations",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-vm-id-set-flag2",
+      "units": [
+        "anm-vm-id-set-flag2",
+        "anm-vm-id-clear-flag2",
+        "anm-vm-id-release"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 12,
+      "producer": "build/match/EnemyEclDispatcher.obj",
+      "artifact_kind": "coff",
+      "representative": "enemy-wrap-angle",
+      "units": [
+        "enemy-wrap-angle",
+        "enemy-set-chapter",
+        "enemy-set-laser-position",
+        "enemy-find-laser",
+        "enemy-configure-interrupt",
+        "enemy-wait-for-effect",
+        "enemy-apply-bullet-clear"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 13,
+      "producer": "build/match-linked/EnemyDispatcherHelpers",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-mark-pending-interrupt",
+      "units": [
+        "enemy-mark-pending-interrupt",
+        "enemy-sound-queue-sample",
+        "enemy-sound-queue-cue",
+        "enemy-drop-vector-from-angle-radii",
+        "enemy-resolve-int-argument",
+        "enemy-enable-shield"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 14,
+      "producer": "build/match-linked/GuiLivesDisplayCount",
+      "artifact_kind": "linked-pe",
+      "representative": "gui-set-lives-display-count",
+      "units": [
+        "gui-set-lives-display-count"
+      ],
+      "affected": [
+        "src/GameStageDescriptor.hpp",
+        "src/Gui.cpp",
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 15,
+      "producer": "build/match-linked/PlayerResetRuntimeState",
+      "artifact_kind": "linked-pe",
+      "representative": "player-reset-runtime-state",
+      "units": [
+        "player-reset-runtime-state"
+      ],
+      "affected": [
+        "src/GameStageDescriptor.hpp",
+        "src/Gui.cpp",
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 16,
+      "producer": "build/match-linked/GuiScoreAdd",
+      "artifact_kind": "linked-pe",
+      "representative": "gui-score-add",
+      "units": [
+        "gui-score-add"
+      ],
+      "affected": [
+        "src/GameStageDescriptor.hpp",
+        "src/Gui.cpp",
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 17,
+      "producer": "build/match-linked/EnemyBulletBounds",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-bullet-playfield-bounds",
+      "units": [
+        "enemy-bullet-playfield-bounds"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 18,
+      "producer": "build/match-linked/FrontEndCursorPush",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-cursor-push",
+      "units": [
+        "frontend-cursor-push",
+        "frontend-cursor-pop",
+        "frontend-cursor-move",
+        "frontend-input-repeated"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 19,
+      "producer": "build/match/FrontEnd.obj",
+      "artifact_kind": "coff",
+      "representative": "frontend-cursor-set-current",
+      "units": [
+        "frontend-cursor-set-current"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 20,
+      "producer": "build/match-linked/AnmVmIdSetSprite",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-vm-id-set-sprite-own",
+      "units": [
+        "anm-vm-id-set-sprite-own",
+        "anm-vm-id-set-sprite-explicit"
+      ],
+      "affected": [
+        "src/GameStageDescriptor.hpp",
+        "src/Gui.cpp",
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 21,
+      "producer": "build/match-linked/MainNextGameMode",
+      "artifact_kind": "linked-pe",
+      "representative": "main-set-next-game-mode",
+      "units": [
+        "main-set-next-game-mode"
+      ],
+      "affected": [
+        "src/GameStageDescriptor.hpp",
+        "src/Gui.cpp",
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 22,
+      "producer": "build/match-linked/EnemyAngleFromPlayer",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-angle-from-player",
+      "units": [
+        "enemy-angle-from-player"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 23,
+      "producer": "build/match-linked/AnmSetVmScriptIndex",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-set-vm-script-index-and-execute",
+      "units": [
+        "anm-set-vm-script-index-and-execute"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 24,
+      "producer": "build/match-linked/FrontEndDrawCallback",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-draw-callback",
+      "units": [
+        "frontend-draw-callback"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 25,
+      "producer": "build/match-linked/FrontEndUpdateCallback",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-update-callback",
+      "units": [
+        "frontend-update-callback"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 26,
+      "producer": "build/match-linked/BulletRuntimeDeactivate",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-runtime-deactivate",
+      "units": [
+        "bullet-runtime-deactivate",
+        "bullet-position-bounds",
+        "bullet-update-deceleration"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 27,
+      "producer": "build/match-linked/BulletHorizontalWrap",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-update-horizontal-wrap",
+      "units": [
+        "bullet-update-horizontal-wrap",
+        "bullet-update-polar-acceleration"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 28,
+      "producer": "build/match-linked/BulletBoundaryBounce",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-update-boundary-bounce",
+      "units": [
+        "bullet-update-boundary-bounce"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 29,
+      "producer": "build/match-linked/BulletState8",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-update-state8",
+      "units": [
+        "bullet-update-state8",
+        "bullet-update-relative-direction",
+        "bullet-update-aimed-direction"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 30,
+      "producer": "build/match-linked/BulletRuntimeUpdate",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-runtime-update",
+      "units": [
+        "bullet-runtime-update",
+        "player-collision-check"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 31,
+      "producer": "build/match-linked/AsciiManagerEnsureSelectionVm",
+      "artifact_kind": "linked-pe",
+      "representative": "ascii-manager-ensure-selection-vm",
+      "units": [
+        "ascii-manager-ensure-selection-vm"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 32,
+      "producer": "build/match-linked/FrontEndSetScreenState",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-set-screen-state",
+      "units": [
+        "frontend-set-screen-state",
+        "frontend-set-screen"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 33,
+      "producer": "build/match-linked/FrontEndDeleteVm",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-delete-vm",
+      "units": [
+        "frontend-delete-vm"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 34,
+      "producer": "build/match-linked/EnemyLeafAccessors",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-decomphelp-leaf-cc10",
+      "units": [
+        "enemy-decomphelp-leaf-cc10",
+        "enemy-decomphelp-leaf-cc20",
+        "enemy-decomphelp-leaf-cc30"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 35,
+      "producer": "build/match-linked/GameManagerOnDraw",
+      "artifact_kind": "linked-pe",
+      "representative": "decomphelp-game-manager-on-draw",
+      "units": [
+        "decomphelp-game-manager-on-draw"
+      ],
+      "affected": [
+        "src/GameManager.cpp",
+        "src/GameStageDescriptor.hpp",
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 36,
+      "producer": "build/match-linked/GameManagerUpdateCallback-cold-2",
+      "artifact_kind": "linked-pe",
+      "representative": "game-manager-update-callback",
+      "units": [
+        "game-manager-update-callback"
+      ],
+      "affected": [
+        "src/GameManager.cpp",
+        "src/GameStageDescriptor.hpp",
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 37,
+      "producer": "build/match-linked/AnmTextureAlphaBleed",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-texture-alpha-bleed",
+      "units": [
+        "anm-texture-alpha-bleed"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 38,
+      "producer": "build/match-linked/FrontEndOptionsRefresh",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-options-refresh",
+      "units": [
+        "frontend-options-refresh"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 39,
+      "producer": "build/match-linked/FrontEndKeyConfigDisplay",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-keyconfig-display",
+      "units": [
+        "frontend-keyconfig-display",
+        "frontend-practice-unlock"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    },
+    {
+      "index": 40,
+      "producer": "build/match-linked/HintLifecycle",
+      "artifact_kind": "linked-pe",
+      "representative": "hint-create-owner",
+      "units": [
+        "hint-create-owner",
+        "hint-draw-callback"
+      ],
+      "affected": [
+        "src/Gui.hpp"
+      ]
+    }
+  ]
+}

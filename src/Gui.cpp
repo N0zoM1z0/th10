@@ -3,6 +3,9 @@
 #include "Main.hpp"
 #include "Gui.hpp"
 #include "Chain.hpp"
+#include "Player.hpp"
+#include "Enemy.hpp"
+#include "GameStageDescriptor.hpp"
 
 #include <math.h>
 #include <stdlib.h>
@@ -67,6 +70,9 @@ typedef char GuiEnemyManagerFieldsAt10[
      offsetof(GuiEnemyManagerView, portraitAnm) == 0x38) ? 1 : -1];
 
 
+extern EnemyManagerView *g_EnemyManager;
+// Existing full stage-state byte storage contract at target 0x474c40.
+extern unsigned char g_GameStageState[];
 extern GuiPlayerView *g_GuiPlayer;
 extern GuiEnemyManagerView *g_GuiEnemyManager;
 extern GuiGameOwnerView *g_GuiGameOwner;
@@ -93,13 +99,24 @@ extern unsigned int g_GuiInputEdges;
 extern unsigned int g_GuiSupervisorFlags;
 extern int g_GuiGlobalMode;
 
-extern char *GuiDecryptMessageText(const unsigned char *encrypted);
-extern void GuiPlaySound(int soundId);
-extern void GuiBeginStageTransition(int kind);
-extern void GuiCreateScreenEffect(
-    int type, int duration, int color, int p3, int p4);
-extern void GuiRecordStageEvent(void *owner, int value);
-extern void GuiCreateRandomStageEffect(float magnitude);
+// Existing maintained global definitions, retained in their original TUs.
+extern void EnemyMarkPendingInterrupt(int *id);
+extern void PlayerSetShotVmInterrupt2(unsigned int *id);
+extern void ResultMenuPendingThree(AnmVmIdView *id);
+extern AnmVmIdView ResultMenuFindScript(AnmVmIdView *parent, int script);
+extern int __stdcall FrontEndPlayMusic(int channel, int value);
+namespace th10 { namespace leaf {
+unsigned char *Fn00417010(unsigned char *payload);
+void Fn004175E0(unsigned char *scoreState);
+} }
+// Target-derived logical interfaces; implementations/private ABI remain open.
+struct GameChainOwnerView;
+extern GameChainOwnerView *g_GameOwner477830;
+extern void GameCompleteStageTransition(GameChainOwnerView *owner);
+extern void *StageCreateTransitionEffect(int priority, int kind, int frames,
+    unsigned int p3, unsigned int p4, unsigned int p5);
+extern int __stdcall GameQueueScaledSoundCommand(float magnitude);
+
 
 
 namespace
@@ -150,7 +167,13 @@ static int CreateGuiVm(AnmLoadedView *loaded, int scriptIndex)
 
 static void InterruptVm(AnmVmIdView *id, short interrupt)
 {
-    if (id->value != 0)
+    if (interrupt == 1)
+        EnemyMarkPendingInterrupt(&id->value);
+    else if (interrupt == 2)
+        PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&id->value));
+    else if (interrupt == 3)
+        ResultMenuPendingThree(id);
+    else
         id->SetInterrupt(interrupt);
 }
 
@@ -169,42 +192,29 @@ static AnmVmView *ResolveVm(AnmVmIdView *id)
     return vm;
 }
 
-static int FindChildVmId(
-    AnmVmIdView *parentId, short scriptIndex)
-{
-    AnmVmView *parent = ResolveVm(parentId);
-    if (parent == NULL)
-        return 0;
-
-    AnmVmLayerNodeView *node = &parent->layerNode;
-    while (node != NULL)
-    {
-        AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
-        if (vm != NULL && vm->scriptIndex == scriptIndex)
-            return vm->id;
-        node = node->next;
-    }
-    return 0;
-}
-
-static void SetChildSprite(
-    AnmVmIdView *parentId, short childSpriteIndex,
-    AnmLoadedView *spriteOwner, int spriteIndex)
-{
-    AnmVmIdView childId(FindChildVmId(parentId, childSpriteIndex));
-    childId.SetSpriteWithAnm(spriteOwner, spriteIndex);
-}
-
-static void DrawMessageText(
-    GuiMessageVmView *message, AnmVmIdView *lineId,
+static void DrawMessageText(GuiMessageVmView *message, AnmVmIdView *lineId,
     const char *text)
 {
-    AnmVmView *line = ResolveVm(lineId);
-    if (line != NULL)
-    {
-        g_AnmRenderManagerView->DrawTextLeft(
-            line, message->textColors[message->activeSide], text);
-    }
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *line = manager->FindVm(lineId->value);
+    if (line == NULL)
+        lineId->value = 0;
+    manager->DrawTextLeft(line, message->textColors[message->activeSide], text);
+}
+
+static void DrawDecodedMessageText(GuiMessageVmView *message,
+    AnmVmIdView *lineId, bool reloadManager)
+{
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmVmView *line = manager->FindVm(lineId->value);
+    if (line == NULL)
+        lineId->value = 0;
+    unsigned char *text = th10::leaf::Fn00417010(
+        GuiMessageInstructionPayload(message->currentInstruction));
+    if (reloadManager)
+        manager = g_AnmRenderManagerView;
+    manager->DrawTextLeft(line, message->textColors[message->activeSide],
+        reinterpret_cast<const char *>(text));
 }
 
 static void SetMessageSide(GuiMessageVmView *message, int side)
@@ -221,64 +231,61 @@ static void SetMessageSide(GuiMessageVmView *message, int side)
     }
 
     message->activeSide = side;
-    g_AnmRenderManagerView->SetVmPosition(
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    manager->SetVmPosition(
         message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value,
         &message->textPositions[side]);
-    g_AnmRenderManagerView->SetVmPosition(
+    manager->SetVmPosition(
         message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value,
-        &message->textPositions[1 - side]);
+        &message->textPositions[message->activeSide]);
     message->alternatingLine = 0;
 }
 
-static void SetPlayerPortraitSprites(
-    GuiMessageVmView *message, int baseSprite)
+static void SetPlayerPortraitSprites(GuiMessageVmView *message)
 {
-    const int firstOffset = g_GuiCharacter == 0 ? 0x34 : 0x2d;
-    const int secondOffset = g_GuiCharacter == 0 ? 0x3c : 0x35;
-    AnmVmIdView child0(FindChildVmId(
-        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17));
-    AnmVmIdView child1(FindChildVmId(
-        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a));
-    child0.SetSprite(baseSprite + firstOffset);
-    child1.SetSprite(baseSprite + secondOffset);
+    const int character = g_GuiCharacter;
+    if (character != 0 && character != 1)
+        return;
+    const int first = GuiMessageInstructionIntArgument(message->currentInstruction)
+        + (character == 0 ? 0x34 : 0x2d);
+    AnmVmIdView child0 = ResultMenuFindScript(
+        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17);
+    child0.SetSprite(first);
+    const int second = GuiMessageInstructionIntArgument(message->currentInstruction)
+        + (character == 0 ? 0x3c : 0x35);
+    AnmVmIdView child1 = ResultMenuFindScript(
+        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a);
+    child1.SetSprite(second);
 }
 
-static void SetEnemyPortraitSprites(
-    GuiMessageVmView *message, int baseSprite)
+static void SetEnemyPortraitSprites(GuiMessageVmView *message)
 {
-    static const unsigned char spriteOffsets[7][2] = {
-        {0x0f, 0x17}, {0x15, 0x1e}, {0x22, 0x2b}, {0x25, 0x2e},
-        {0x16, 0x1f}, {0x30, 0x39}, {0x44, 0x4d}
+    static const unsigned char offsets[7][2] = {
+        {0x0f,0x17}, {0x15,0x1e}, {0x22,0x2b}, {0x25,0x2e},
+        {0x16,0x1f}, {0x30,0x39}, {0x44,0x4d}
     };
-    static const unsigned char childIndices[7][2] = {
-        {0x18, 0x1b}, {0x18, 0x1b}, {0x18, 0x1b}, {0x18, 0x1b},
-        {0x18, 0x1b}, {0x1c, 0x1f}, {0x21, 0x24}
+    static const unsigned char children[7][2] = {
+        {0x18,0x1b}, {0x18,0x1b}, {0x18,0x1b}, {0x18,0x1b},
+        {0x18,0x1b}, {0x1c,0x1f}, {0x21,0x24}
     };
-
-    if (g_GuiStage < 1 || g_GuiStage > 7 || g_GuiEnemyManager == NULL)
+    if (g_GuiStage < 1 || g_GuiStage > 7)
         return;
-
-    int row = g_GuiStage - 1;
-    int offset0 = spriteOffsets[row][0];
-    int offset1 = spriteOffsets[row][1];
-    int child0 = childIndices[row][0];
-    int child1 = childIndices[row][1];
-    if (g_GuiStage == 7 && message->messageIndex >= 1)
-    {
-        offset0 = 0x2e;
-        offset1 = 0x37;
-        child0 = 0x18;
-        child1 = 0x1b;
-    }
-
-    SetChildSprite(
-        &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT],
-        static_cast<short>(child0), g_GuiEnemyManager->portraitAnm,
-        baseSprite + offset0);
-    SetChildSprite(
-        &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT],
-        static_cast<short>(child1), g_GuiEnemyManager->portraitAnm,
-        baseSprite + offset1);
+    const int row = g_GuiStage - 1;
+    if (g_GuiCharacter != 0 && g_GuiCharacter != 1)
+        return;
+    const bool alternate = row == 6 && message->messageIndex >= 1;
+    const int first = GuiMessageInstructionIntArgument(message->currentInstruction)
+        + (alternate ? 0x2e : offsets[row][0]);
+    AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+    AnmVmIdView child0 = ResultMenuFindScript(
+        &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], alternate ? 0x18 : children[row][0]);
+    child0.SetSpriteWithAnm(resource, first);
+    resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+    const int second = GuiMessageInstructionIntArgument(message->currentInstruction)
+        + (alternate ? 0x37 : offsets[row][1]);
+    AnmVmIdView child1 = ResultMenuFindScript(
+        &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], alternate ? 0x1b : children[row][1]);
+    child1.SetSpriteWithAnm(resource, second);
 }
 
 static void AddStageClearScore()
@@ -291,60 +298,84 @@ static void AddStageClearScore()
     };
 
     g_GuiScore.Add(g_GuiCounter4C4C * 1000);
-    if (g_GuiDifficulty >= 0 && g_GuiDifficulty < 5)
+    const int difficulty = g_GuiDifficulty;
+    if (difficulty >= 0 && difficulty < 5)
     {
-        g_GuiScore.Add(g_GuiPowerLevel * powerBonuses[g_GuiDifficulty]);
-        g_GuiScore.Add(static_cast<int>(g_GuiPower) * itemBonuses[g_GuiDifficulty]);
+        g_GuiScore.Add(g_GuiPowerLevel * powerBonuses[difficulty]);
+        g_GuiScore.Add(static_cast<int>(g_GuiPower) * itemBonuses[difficulty]);
+    }
+}
+
+static void IncrementStageClearCount()
+{
+    unsigned char *counter = g_GuiPersistentData +
+        (g_GuiCharacter * 3 + g_GuiShotType) * 0x437c + 0x4d0 +
+        g_GuiDifficulty * 4;
+    int value;
+    memcpy(&value, counter, sizeof(value));
+    if (value < 99999)
+    {
+        ++value;
+        memcpy(counter, &value, sizeof(value));
     }
 }
 
 static void CompleteStageFromMessage()
 {
-    if (g_GuiDifficulty != 4 && g_GuiPersistentData != NULL)
+    if (g_GuiDifficulty != 4)
     {
+        unsigned char *profile = g_GuiPersistentData;
         const int shot = g_GuiShotType + g_GuiCharacter * 3;
-        g_GuiPersistentData[shot * 0x437c + 0x4e1 +
+        profile[shot * 0x437c + 0x4e1 +
             (g_GuiStage + g_GuiDifficulty * 6) * 8] = 1;
-        g_GuiPersistentData[shot * 0x437c +
-            (g_GuiStage + (g_GuiDifficulty * 3 + 0x4e) * 2) * 8] = 1;
+        profile[(g_GuiShotType + g_GuiCharacter * 3) * 0x437c + 0x4e0 +
+            (g_GuiStage + g_GuiDifficulty * 6) * 8] = 1;
     }
-
     if ((g_GuiGameFlags & 0x10) != 0)
     {
-        GuiBeginStageTransition(0);
+        GameCompleteStageTransition(g_GameOwner477830);
         return;
     }
-
-    if (g_GuiStage == 6 || g_GuiStage == 7)
+    if (g_GuiStage == 6)
     {
-        if (g_GuiView != NULL)
-            g_GuiView->guiFlags |= 0x20;
+        g_GuiView->guiFlags |= 0x20;
         AddStageClearScore();
-        if (g_GuiModeOwner != NULL && g_GuiModeOwner->state == 1)
+        if (g_GuiModeOwner->state == 1)
         {
             g_MainSupervisorView.SetNextGameMode(4);
             return;
         }
-
-        if (g_GuiStage == 6)
-            GuiCreateScreenEffect(5, 120, 0, 0, 0);
-        else
-            GuiBeginStageTransition(0);
-
-        if (g_GuiView != NULL)
-        {
-            g_GuiView->endingCounter = 0;
-            g_GuiView->guiFlags |= 0x10;
-        }
+        StageCreateTransitionEffect(0x31, 5, 120, 0, 0, 0);
+        GuiView *gui = g_GuiView;
+        gui->endingCounter = 0;
+        gui->guiFlags |= 0x10;
+        IncrementStageClearCount();
     }
-    else if (g_GuiView != NULL)
+    else if (g_GuiStage == 7)
     {
-        DeleteVm(&g_GuiView->specialVmId9E14);
-        g_GuiView->specialVmId9E14.value =
-            CreateGuiVm(g_GuiView->frontAnm, 0x4c);
+        g_GuiView->guiFlags |= 0x20;
+        g_GuiScore.Add(g_GuiCounter4C4C * 1000);
+        g_GuiScore.Add(g_GuiPowerLevel * 40000000);
+        g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
+        if (g_GuiModeOwner->state == 1)
+        {
+            g_MainSupervisorView.SetNextGameMode(4);
+            return;
+        }
+        GameCompleteStageTransition(g_GameOwner477830);
+        IncrementStageClearCount();
+    }
+    else
+    {
+        GuiView *gui = g_GuiView;
+        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14.value);
+        gui->specialVmId9E14.value = 0;
+        gui->specialVmId9E14.value = CreateGuiVm(gui->frontAnm, 0x4c);
         g_MainSupervisorView.SetNextGameMode(0x0b);
+        th10::leaf::Fn004175E0(g_GameStageState);
     }
 }
+
 
 
 }
@@ -362,15 +393,14 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
     if ((message->flags & 1) != 0 &&
         (g_GuiInputCurrent & GUI_INPUT_ADVANCE) != 0)
     {
-        message->instructionTimer.SetCurrent(message->currentInstruction->time);
+        message->instructionTimer.SetCurrent(GuiMessageInstructionTime(message->currentInstruction));
     }
 
-    while (message->currentInstruction->time <=
+    while (GuiMessageInstructionTime(message->currentInstruction) <=
            message->instructionTimer.current)
     {
         GuiMessageInstructionView *instruction = message->currentInstruction;
-        const int argument = instruction->IntArgument();
-        switch (instruction->opcode)
+        switch (GuiMessageInstructionOpcode(instruction))
         {
         case GUI_MSG_END:
             if (g_GuiMessageState != 0)
@@ -379,24 +409,31 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             return -1;
 
         case GUI_MSG_SHOW_PLAYER_PORTRAIT:
-            if (g_GuiPlayer != NULL &&
+            if (g_Player != NULL &&
                 (g_GuiCharacter == 0 || g_GuiCharacter == 1))
             {
                 message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value =
-                    CreateGuiVm(g_GuiPlayer->portraitAnm, 0x1d);
+                    CreateGuiVm(static_cast<AnmLoadedView *>(g_Player->resource), 0x1d);
             }
             break;
 
         case GUI_MSG_SHOW_ENEMY_PORTRAIT:
-            if (g_GuiEnemyManager != NULL &&
-                (g_GuiCharacter == 0 || g_GuiCharacter == 1))
+            if (g_GuiCharacter == 0 || g_GuiCharacter == 1)
             {
-                AnmLoadedView *anm = g_GuiEnemyManager->portraitAnm;
+                AnmLoadedView *anm;
                 int script = 0x1e;
                 if (g_GuiStage == 6)
+                {
+                    anm = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                     script = 0x20;
+                }
                 else if (g_GuiStage == 7 && message->messageIndex < 1)
+                {
+                    anm = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
                     script = 0x25;
+                }
+                else
+                    anm = static_cast<AnmLoadedView *>(g_Player->resource);
                 message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value =
                     CreateGuiVm(anm, script);
             }
@@ -437,12 +474,12 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 
         case GUI_MSG_SET_SKIPPABLE:
             message->flags ^= (static_cast<unsigned int>(
-                instruction->payload[0]) ^ message->flags) & 1;
+                GuiMessageInstructionPayload(instruction)[0]) ^ message->flags) & 1;
             break;
 
         case GUI_MSG_WAIT:
             if (message->waitTimer.current < 1)
-                message->waitTimer.SetCurrent(argument);
+                message->waitTimer.SetCurrent(GuiMessageInstructionIntArgument(instruction));
             message->waitTimer.Add(-1.0f);
             if ((g_GuiInputEdges & GUI_INPUT_CANCEL_MASK) == 0 &&
                 message->waitTimer.current > 0)
@@ -458,7 +495,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             }
             else
             {
-                GuiPlaySound(0);
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(0, 0);
                 message->waitTimer.SetCurrent(0);
                 message->alternatingLine = 0;
             }
@@ -469,45 +506,35 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
 
         case GUI_MSG_PLAYER_PORTRAIT_SPRITES:
-            SetPlayerPortraitSprites(message, argument);
+            SetPlayerPortraitSprites(message);
             break;
 
         case GUI_MSG_ENEMY_PORTRAIT_SPRITES:
-            SetEnemyPortraitSprites(message, argument);
+            SetEnemyPortraitSprites(message);
             break;
 
         case GUI_MSG_TEXT_LINE_0:
         case GUI_MSG_TEXT_LINE_1:
         {
-            const int line = instruction->opcode - GUI_MSG_TEXT_LINE_0;
-            char *text = GuiDecryptMessageText(instruction->payload);
-            DrawMessageText(
-                message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0 + line],
-                text);
-            InterruptVm(
-                &message->vmIds[GUI_MESSAGE_TEXT_LINE_0 + line], 2);
+            const int line = GuiMessageInstructionOpcode(instruction) - GUI_MSG_TEXT_LINE_0;
+            AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0 + line];
+            DrawDecodedMessageText(message, id, false);
+            InterruptVm(id, 2);
             break;
         }
-
         case GUI_MSG_TEXT_LINE_ALTERNATING:
             if (message->alternatingLine == 0)
             {
-                DrawMessageText(
-                    message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0], " ");
-                DrawMessageText(
-                    message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1], " ");
-                DrawMessageText(
-                    message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0],
-                    GuiDecryptMessageText(instruction->payload));
+                DrawMessageText(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0], " ");
+                DrawMessageText(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1], " ");
+                DrawDecodedMessageText(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0], true);
                 InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0], 2);
                 InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1], 3);
                 ++message->alternatingLine;
             }
             else
             {
-                DrawMessageText(
-                    message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1],
-                    GuiDecryptMessageText(instruction->payload));
+                DrawDecodedMessageText(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1], false);
                 InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1], 2);
                 message->alternatingLine = 0;
             }
@@ -519,20 +546,20 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
 
         case GUI_MSG_EVENT_18:
-            GuiRecordStageEvent(g_GuiPersistentData, 1);
+            FrontEndPlayMusic(1, g_GameStageUpdate->value28);
             if (g_GuiView != NULL)
                 CreateGuiVm(g_GuiView->stageUiAnm, 2);
             break;
 
         case GUI_MSG_ENEMY_NAME:
-            if (g_GuiEnemyManager != NULL && g_GuiStage >= 1 && g_GuiStage <= 7)
+            if (g_EnemyManager != NULL && g_GuiStage >= 1 && g_GuiStage <= 7)
             {
                 static const unsigned char scripts[7] = {
                     0x0d, 0x10, 0x14, 0x15, 0x0e, 0x23, 0x1d
                 };
                 message->vmIds[GUI_MESSAGE_ENEMY_NAME].value =
                     CreateGuiVm(
-                        g_GuiEnemyManager->portraitAnm,
+                        static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]),
                         scripts[g_GuiStage - 1]);
             }
             break;
@@ -542,7 +569,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
 
         case GUI_MSG_EVENT_21:
-            GuiCreateRandomStageEffect(g_GuiStage == 6 ? 8.0f : 2.0f);
+            GameQueueScaledSoundCommand(g_GuiStage == 6 ? 8.0f : 2.0f);
             break;
 
         case GUI_MSG_PLAYER_PORTRAIT_EXIT:
@@ -554,7 +581,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
         }
 
-        message->currentInstruction = instruction->Next();
+        message->currentInstruction = GuiMessageInstructionNext(message->currentInstruction);
     }
 
     message->instructionTimer.Tick();

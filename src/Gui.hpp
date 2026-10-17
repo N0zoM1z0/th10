@@ -4,31 +4,42 @@
 #include "AnmManager.hpp"
 
 #include <stddef.h>
+#include <limits.h>
+#include <string.h>
 
 
 // TH10 message records are variable sized.  The byte at +3 measures the
 // payload beginning at +4; the next record is therefore payload + size.
-struct GuiMessageInstructionView
+// Records are serialized bytes in a live byte buffer, not C++ struct objects.
+// Valid records contain a four-byte header and their declared payload; integer
+// operands require four payload bytes. Target scalar format is little-endian.
+typedef unsigned char GuiMessageInstructionView;
+typedef char GuiMessageScalarWidths[
+    (CHAR_BIT == 8 && sizeof(unsigned short) == 2 && sizeof(int) == 4) ? 1 : -1];
+inline unsigned short GuiMessageInstructionTime(const GuiMessageInstructionView *p)
 {
-    unsigned short time;
-    unsigned char opcode;
-    unsigned char payloadSize;
-    unsigned char payload[1];
-
-    GuiMessageInstructionView *Next()
-    {
-        return reinterpret_cast<GuiMessageInstructionView *>(
-            payload + payloadSize);
-    }
-
-    int IntArgument() const
-    {
-        return *reinterpret_cast<const int *>(payload);
-    }
-};
-
-typedef char GuiMessageInstructionPayloadAt04[
-    (offsetof(GuiMessageInstructionView, payload) == 0x04) ? 1 : -1];
+    unsigned short value;
+    memcpy(&value, p, sizeof(value));
+    return value;
+}
+inline unsigned char GuiMessageInstructionOpcode(const GuiMessageInstructionView *p)
+{
+    return p[2];
+}
+inline unsigned char *GuiMessageInstructionPayload(GuiMessageInstructionView *p)
+{
+    return p + 4;
+}
+inline int GuiMessageInstructionIntArgument(const GuiMessageInstructionView *p)
+{
+    int value;
+    memcpy(&value, p + 4, sizeof(value));
+    return value;
+}
+inline GuiMessageInstructionView *GuiMessageInstructionNext(GuiMessageInstructionView *p)
+{
+    return p + 4 + p[3];
+}
 
 
 enum GuiMessageVmIdSlot
