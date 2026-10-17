@@ -6,7 +6,7 @@ and external calls have explicit host seams. Real message construction is exclud
 """
 from pathlib import Path
 import argparse,hashlib,json,re,subprocess,sys,os,shutil
-from gui_message_run_mutations import MUTATIONS
+from gui_message_run_mutations import MUTATIONS, EXPECTED_MUTATION_COUNT
 ROOT=Path(__file__).resolve().parents[1]
 FALLBACK=Path('/workspace/shared/th10-baseline-50b971f/src')
 SEAMS={'AnmManager.hpp':('AnmVmTimerView() { flags &= ~1u; }','AnmVmTimerView() : flags(0) {}'),'Player.hpp':('PlayerTimerView() { flags &= ~1u; }','PlayerTimerView() : flags(0) {}'),'Enemy.hpp':('EnemyInterpolationTimerView() { flags &= ~1u; }','EnemyInterpolationTimerView() : flags(0) {}')}
@@ -85,12 +85,14 @@ def compile_command(out,fixture,sanitize):
  if sanitize:c[7:7]=['-fsanitize=address,undefined', '-fno-sanitize-recover=all', '-fno-pie', '-no-pie']
  return c
 def main():
+ if len(MUTATIONS) != EXPECTED_MUTATION_COUNT or len({row[0] for row in MUTATIONS}) != EXPECTED_MUTATION_COUNT:
+  raise RuntimeError("strict mutation catalog must contain all 28 unique controls")
  here=Path(__file__).resolve().parent;p=argparse.ArgumentParser(description=__doc__)
  p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--fallback-root',type=Path,default=FALLBACK if FALLBACK.exists() else None);p.add_argument('--out',type=Path,default=here/'evidence');p.add_argument('--fixture',type=Path);p.add_argument('--sanitize',action='store_true');p.add_argument('--no-mutations',action='store_true');a=p.parse_args();classifier()
  fixture=a.fixture or next((p for p in [here/'gui-message-run.cpp',here/'fixtures/gui-message-run.cpp'] if p.exists()),here/'gui-message-run.cpp')
  out=a.out.resolve();m=prepare(a.root.resolve(),a.fallback_root,out,False);c=compile_command(out,fixture,a.sanitize)
  r=subprocess.run(c,text=True,capture_output=True,timeout=180);(out/'compile.stdout').write_text(r.stdout);(out/'compile.stderr').write_text(r.stderr)
- m.update(compile_command=c,compile_returncode=r.returncode,driver_sha256=sha(Path(__file__)),fixture_sha256=sha(fixture),mutation_catalog_sha256=sha(here/'gui_message_run_mutations.py'),sanitize=a.sanitize,asan_options='detect_leaks=0: host ptrace excludes LeakSanitizer; no leak claim')
+ m.update(compile_command=c,compile_returncode=r.returncode,driver_sha256=sha(Path(__file__)),fixture_sha256=sha(fixture),mutation_catalog_sha256=sha(here/'gui_message_run_mutations.py'),mutation_catalog_count=len(MUTATIONS),sanitize=a.sanitize,asan_options='detect_leaks=0: host ptrace excludes LeakSanitizer; no leak claim')
  if r.returncode:raise RuntimeError('compile error is not evidence: '+str(out/'compile.stderr'))
  runs=[]
  for case in ['control','portraits','sides','hides','flags','wait','sprites','text','music','names','complete','effects','exit']:
@@ -113,6 +115,9 @@ def main():
    results.append(dict(name=name,target=target,selection=selection,expected_check=check,compile_returncode=0,returncode=r.returncode,stdout=r.stdout,stderr=r.stderr,accepted=intended_failure(r,check)))
    (out/'mutations.json').write_text(json.dumps(results,indent=2)+'\n')
    if not results[-1]['accepted']:raise RuntimeError(name+': incorrect mutation outcome')
- m['mutations']=results;(out/'manifest.json').write_text(json.dumps(m,indent=2)+'\n')
+ m['mutations']=results
+ m['source_hashes_still_current']=all(sha(Path(path))==digest for path,digest in m['source_inputs_sha256'].items())
+ (out/'manifest.json').write_text(json.dumps(m,indent=2)+'\n')
+ if not m['source_hashes_still_current']:raise RuntimeError('source changed during test; rerun required')
  print('Fresh repaired suite verified: 13 selections pass; '+str(len(results))+' strict mutants detected.')
 if __name__=='__main__':main()

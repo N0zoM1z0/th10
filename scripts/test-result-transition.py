@@ -44,6 +44,32 @@ def extract(path, name, struct=False):
     return found[0]
 
 
+def extract_gui_completion(path):
+    """Host-only extraction of the actual lexical opcode-20 region, unchanged.
+
+    The do/while wrapper supplies the enclosing break target. This executes
+    neither the whole Run walker nor its common advance/tick tail.
+    """
+    run = extract(path, 'GuiMessageVmView::Run')
+    mask = lexical_mask(run)
+    labels = list(re.finditer(r'\bcase\s+GUI_MSG_COMPLETE_STAGE\s*:', mask))
+    if len(labels) != 1:
+        raise RuntimeError('Expected exactly one Run completion opcode arm')
+    opening = labels[0].end()
+    while opening < len(mask) and mask[opening].isspace(): opening += 1
+    if opening >= len(mask) or mask[opening] != '{':
+        raise RuntimeError('Run completion arm must be a lexical braced region')
+    depth, end = 1, opening + 1
+    while end < len(mask) and depth:
+        depth += (mask[end] == '{') - (mask[end] == '}')
+        end += 1
+    if depth or not re.match(r'\s*case\s+GUI_MSG_EVENT_21\s*:', mask[end:]):
+        raise RuntimeError('Run completion arm boundary changed')
+    region = run[opening:end]
+    return ('// HOST-ONLY wrapper of actual Run opcode-20 region; not whole Run.\n'
+            'static void HostRunCompleteStageCase()\n{\n    do\n' + region + '\n    while (false);\n}\n')
+
+
 # Every mutation is applied to exactly one occurrence in one extracted body.
 # No mutation creates a null dereference, out-of-bounds access, zero division,
 # nonfinite conversion, or dependence on an unrelated object lifetime.
@@ -79,7 +105,7 @@ MUTATIONS = [
  ('capture-busy', 'AnmRenderManagerView::RequestCaptureRectangle', 'captureSurfaceIndex >= 0', 'captureSurfaceIndex > 0'),
  ('queue-capacity', 'SoundPlayerView::QueueCommand', 'index >= 31', 'index >= 32'),
  ('queue-step', 'SoundPlayerView::QueueCommand', 'command->step = 0;', 'command->step = 1;'),
- ('gui-early-condition', 'CompleteStageFromMessage', 'g_GuiGameFlags & 0x10', 'g_GuiGameFlags & 0x20'),
+ ('gui-early-condition', 'Run::GUI_MSG_COMPLETE_STAGE', 'g_GuiGameFlags & 0x10', 'g_GuiGameFlags & 0x20'),
 ]
 
 # Explicit, predeclared failure IDs. A different check or additional diagnostic
@@ -189,9 +215,9 @@ def main():
         ('FrontEnd.cpp', 'FrontEndLoadMusic'), ('FrontEnd.cpp', 'FrontEndPlayMusic'),
         ('FrontEnd.cpp', 'GameQueueScaledSoundCommand'),
         ('FrontEnd.cpp', 'GameCompleteStageTransition'),
-        ('Sound.cpp', 'SoundPlayerView::QueueCommand'),
-        ('Gui.cpp', 'CompleteStageFromMessage')]
+        ('Sound.cpp', 'SoundPlayerView::QueueCommand')]
     bodies = {name:extract(source(file),name) for file,name in names}
+    bodies['Run::GUI_MSG_COMPLETE_STAGE'] = extract_gui_completion(source('Gui.cpp'))
     gui = source('Gui.cpp').read_text()
     if len(re.findall(r'extern\s+GameChainOwnerView\s*\*\s*g_GameOwner477830\s*;',gui)) != 1:
         raise RuntimeError('Canonical g_GameOwner477830 declaration is absent or changed')
@@ -234,6 +260,8 @@ def main():
             'status':'pass','compiler':compiler,'compiler_options':['-std=c++17','-Wall','-Wextra','-Werror','-O0'],
             'baseline':'pass','classifier_negative_controls':negatives,'mutation_count':len(results),
             'mutation_results':results,'native_abi_storage_x87_proof':False,
+            'gui_execution_scope':'actual lexical Run opcode-20 region in host-only do/while wrapper; whole Run and common advance/tick not executed',
+            'gui_region_wrapper_sha256':hashlib.sha256(bodies['Run::GUI_MSG_COMPLETE_STAGE'].encode()).hexdigest(),
             'inputs':[{'path':str(path),'sha256':hashlib.sha256(path.read_bytes()).hexdigest()} for path in sorted(tracked)],
         },indent=2)+'\n')
     print('EXTRACTED INPUTS:')

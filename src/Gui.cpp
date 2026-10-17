@@ -160,25 +160,6 @@ enum
     GUI_ANM_DELETE_FLAG = 0x04000000
 };
 
-static int CreateGuiVm(AnmLoadedView *loaded, int scriptIndex)
-{
-    if (loaded == NULL)
-        return 0;
-    return loaded->CreateVmVariant0(scriptIndex, GUI_VM_RENDER_LAYER).value;
-}
-
-static void InterruptVm(AnmVmIdView *id, short interrupt)
-{
-    if (interrupt == 1)
-        EnemyMarkPendingInterrupt(&id->value);
-    else if (interrupt == 2)
-        PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&id->value));
-    else if (interrupt == 3)
-        ResultMenuPendingThree(id);
-    else
-        id->SetInterrupt(interrupt);
-}
-
 static void DeleteVm(AnmVmIdView *id)
 {
     if (id->value != 0)
@@ -192,192 +173,6 @@ static AnmVmView *ResolveVm(AnmVmIdView *id)
     if (vm == NULL)
         id->value = 0;
     return vm;
-}
-
-static void DrawMessageText(GuiMessageVmView *message, AnmVmIdView *lineId,
-    const char *text)
-{
-    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-    AnmVmView *line = manager->FindVm(lineId->value);
-    if (line == NULL)
-        lineId->value = 0;
-    manager->DrawTextLeft(line, message->textColors[message->activeSide], text);
-}
-
-static void DrawDecodedMessageText(GuiMessageVmView *message,
-    AnmVmIdView *lineId, bool reloadManager)
-{
-    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-    AnmVmView *line = manager->FindVm(lineId->value);
-    if (line == NULL)
-        lineId->value = 0;
-    unsigned char *text = th10::leaf::Fn00417010(
-        GuiMessageInstructionPayload(message->currentInstruction));
-    if (reloadManager)
-        manager = g_AnmRenderManagerView;
-    manager->DrawTextLeft(line, message->textColors[message->activeSide],
-        reinterpret_cast<const char *>(text));
-}
-
-static void SetMessageSide(GuiMessageVmView *message, int side)
-{
-    if (side == 0)
-    {
-        InterruptVm(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 3);
-        InterruptVm(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 2);
-    }
-    else
-    {
-        InterruptVm(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 3);
-        InterruptVm(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 2);
-    }
-
-    message->activeSide = side;
-    AnmRenderManagerView *manager = g_AnmRenderManagerView;
-    manager->SetVmPosition(
-        message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value,
-        &message->textPositions[side]);
-    manager->SetVmPosition(
-        message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value,
-        &message->textPositions[message->activeSide]);
-    message->alternatingLine = 0;
-}
-
-static void SetPlayerPortraitSprites(GuiMessageVmView *message)
-{
-    const int character = g_GuiCharacter;
-    if (character != 0 && character != 1)
-        return;
-    const int first = GuiMessageInstructionIntArgument(message->currentInstruction)
-        + (character == 0 ? 0x34 : 0x2d);
-    AnmVmIdView child0 = ResultMenuFindScript(
-        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17);
-    child0.SetSprite(first);
-    const int second = GuiMessageInstructionIntArgument(message->currentInstruction)
-        + (character == 0 ? 0x3c : 0x35);
-    AnmVmIdView child1 = ResultMenuFindScript(
-        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a);
-    child1.SetSprite(second);
-}
-
-static void SetEnemyPortraitSprites(GuiMessageVmView *message)
-{
-    static const unsigned char offsets[7][2] = {
-        {0x0f,0x17}, {0x15,0x1e}, {0x22,0x2b}, {0x25,0x2e},
-        {0x16,0x1f}, {0x30,0x39}, {0x44,0x4d}
-    };
-    static const unsigned char children[7][2] = {
-        {0x18,0x1b}, {0x18,0x1b}, {0x18,0x1b}, {0x18,0x1b},
-        {0x18,0x1b}, {0x1c,0x1f}, {0x21,0x24}
-    };
-    if (g_GuiStage < 1 || g_GuiStage > 7)
-        return;
-    const int row = g_GuiStage - 1;
-    if (g_GuiCharacter != 0 && g_GuiCharacter != 1)
-        return;
-    const bool alternate = row == 6 && message->messageIndex >= 1;
-    const int first = GuiMessageInstructionIntArgument(message->currentInstruction)
-        + (alternate ? 0x2e : offsets[row][0]);
-    AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-    AnmVmIdView child0 = ResultMenuFindScript(
-        &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], alternate ? 0x18 : children[row][0]);
-    child0.SetSpriteWithAnm(resource, first);
-    resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-    const int second = GuiMessageInstructionIntArgument(message->currentInstruction)
-        + (alternate ? 0x37 : offsets[row][1]);
-    AnmVmIdView child1 = ResultMenuFindScript(
-        &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], alternate ? 0x1b : children[row][1]);
-    child1.SetSpriteWithAnm(resource, second);
-}
-
-static void AddStageClearScore()
-{
-    static const int powerBonuses[5] = {
-        20000000, 25000000, 35000000, 40000000, 40000000
-    };
-    static const int itemBonuses[5] = {
-        100000, 100000, 200000, 300000, 400000
-    };
-
-    g_GuiScore.Add(g_GuiCounter4C4C * 1000);
-    const int difficulty = g_GuiDifficulty;
-    if (difficulty >= 0 && difficulty < 5)
-    {
-        g_GuiScore.Add(g_GuiPowerLevel * powerBonuses[difficulty]);
-        g_GuiScore.Add(static_cast<int>(g_GuiPower) * itemBonuses[difficulty]);
-    }
-}
-
-static void IncrementStageClearCount()
-{
-    unsigned char *counter = g_GuiPersistentData +
-        (g_GuiCharacter * 3 + g_GuiShotType) * 0x437c + 0x4d0 +
-        g_GuiDifficulty * 4;
-    int value;
-    memcpy(&value, counter, sizeof(value));
-    if (value < 99999)
-    {
-        ++value;
-        memcpy(counter, &value, sizeof(value));
-    }
-}
-
-static void CompleteStageFromMessage()
-{
-    if (g_GuiDifficulty != 4)
-    {
-        unsigned char *profile = g_GuiPersistentData;
-        const int shot = g_GuiShotType + g_GuiCharacter * 3;
-        profile[shot * 0x437c + 0x4e1 +
-            (g_GuiStage + g_GuiDifficulty * 6) * 8] = 1;
-        profile[(g_GuiShotType + g_GuiCharacter * 3) * 0x437c + 0x4e0 +
-            (g_GuiStage + g_GuiDifficulty * 6) * 8] = 1;
-    }
-    if ((g_GuiGameFlags & 0x10) != 0)
-    {
-        GameCompleteStageTransition(
-            reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
-        return;
-    }
-    if (g_GuiStage == 6)
-    {
-        g_GuiView->guiFlags |= 0x20;
-        AddStageClearScore();
-        if (g_GuiModeOwner->state == 1)
-        {
-            g_MainSupervisorView.SetNextGameMode(4);
-            return;
-        }
-        StageCreateTransitionEffect(0x31, 5, 120, 0, 0, 0);
-        GuiView *gui = g_GuiView;
-        gui->endingCounter = 0;
-        gui->guiFlags |= 0x10;
-        IncrementStageClearCount();
-    }
-    else if (g_GuiStage == 7)
-    {
-        g_GuiView->guiFlags |= 0x20;
-        g_GuiScore.Add(g_GuiCounter4C4C * 1000);
-        g_GuiScore.Add(g_GuiPowerLevel * 40000000);
-        g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
-        if (g_GuiModeOwner->state == 1)
-        {
-            g_MainSupervisorView.SetNextGameMode(4);
-            return;
-        }
-        GameCompleteStageTransition(
-            reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
-        IncrementStageClearCount();
-    }
-    else
-    {
-        GuiView *gui = g_GuiView;
-        g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14.value);
-        gui->specialVmId9E14.value = 0;
-        gui->specialVmId9E14.value = CreateGuiVm(gui->frontAnm, 0x4c);
-        g_MainSupervisorView.SetNextGameMode(0x0b);
-        th10::leaf::Fn004175E0(g_GameStageState);
-    }
 }
 
 
@@ -416,8 +211,10 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             if (g_Player != NULL &&
                 (g_GuiCharacter == 0 || g_GuiCharacter == 1))
             {
-                message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value =
-                    CreateGuiVm(static_cast<AnmLoadedView *>(g_Player->resource), 0x1d);
+                {
+                    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_Player->resource);
+                    message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
+                }
             }
             break;
 
@@ -438,43 +235,71 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 }
                 else
                     anm = static_cast<AnmLoadedView *>(g_Player->resource);
-                message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value =
-                    CreateGuiVm(anm, script);
+                {
+                    AnmLoadedView *loaded = anm;
+                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(script, GUI_VM_RENDER_LAYER).value;
+                }
             }
             break;
 
         case GUI_MSG_SHOW_TEXT_BOX:
             if (g_GuiView != NULL)
             {
-                message->vmIds[GUI_MESSAGE_TEXT_BOX].value =
-                    CreateGuiVm(g_GuiView->frontAnm, 0x5a);
+                {
+                    AnmLoadedView *loaded = g_GuiView->frontAnm;
+                    message->vmIds[GUI_MESSAGE_TEXT_BOX].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x5a, GUI_VM_RENDER_LAYER).value;
+                }
             }
             break;
 
         case GUI_MSG_HIDE_PLAYER_PORTRAIT:
-            InterruptVm(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 1);
+            EnemyMarkPendingInterrupt(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value);
             message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = 0;
             break;
 
         case GUI_MSG_HIDE_ENEMY_PORTRAIT:
-            InterruptVm(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 1);
+            EnemyMarkPendingInterrupt(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value);
             message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = 0;
-            InterruptVm(&message->vmIds[GUI_MESSAGE_ENEMY_NAME], 1);
+            EnemyMarkPendingInterrupt(&message->vmIds[GUI_MESSAGE_ENEMY_NAME].value);
             break;
 
         case GUI_MSG_HIDE_TEXT:
-            InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_BOX], 1);
-            InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0], 1);
-            InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1], 1);
+            EnemyMarkPendingInterrupt(&message->vmIds[GUI_MESSAGE_TEXT_BOX].value);
+            EnemyMarkPendingInterrupt(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value);
+            EnemyMarkPendingInterrupt(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value);
             break;
 
         case GUI_MSG_SET_SIDE_0:
-            SetMessageSide(message, 0);
+        {
+            ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT]);
+            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value));
+            message->activeSide = 0;
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            manager->SetVmPosition(
+                message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value,
+                &message->textPositions[0]);
+            manager->SetVmPosition(
+                message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value,
+                &message->textPositions[message->activeSide]);
+            message->alternatingLine = 0;
             break;
+        }
 
         case GUI_MSG_SET_SIDE_1:
-            SetMessageSide(message, 1);
+        {
+            ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT]);
+            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value));
+            message->activeSide = 1;
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            manager->SetVmPosition(
+                message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value,
+                &message->textPositions[1]);
+            manager->SetVmPosition(
+                message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value,
+                &message->textPositions[message->activeSide]);
+            message->alternatingLine = 0;
             break;
+        }
 
         case GUI_MSG_SET_SKIPPABLE:
             message->flags ^= (static_cast<unsigned int>(
@@ -510,78 +335,493 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
 
         case GUI_MSG_PLAYER_PORTRAIT_SPRITES:
-            SetPlayerPortraitSprites(message);
+        {
+            switch (g_GuiCharacter)
+            {
+                case 0:
+                {
+                    const int first = GuiMessageInstructionIntArgument(message->currentInstruction)
+                        + 0x34;
+                    AnmVmIdView child0 = ResultMenuFindScript(
+                        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17);
+                    child0.SetSprite(first);
+                    const int second = GuiMessageInstructionIntArgument(message->currentInstruction)
+                        + 0x3c;
+                    AnmVmIdView child1 = ResultMenuFindScript(
+                        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a);
+                    child1.SetSprite(second);
+                    break;
+                }
+                case 1:
+                {
+                    const int first = GuiMessageInstructionIntArgument(message->currentInstruction)
+                        + 0x2d;
+                    AnmVmIdView child0 = ResultMenuFindScript(
+                        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x17);
+                    child0.SetSprite(first);
+                    const int second = GuiMessageInstructionIntArgument(message->currentInstruction)
+                        + 0x35;
+                    AnmVmIdView child1 = ResultMenuFindScript(
+                        &message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 0x1a);
+                    child1.SetSprite(second);
+                    break;
+                }
+            }
             break;
+        }
 
         case GUI_MSG_ENEMY_PORTRAIT_SPRITES:
-            SetEnemyPortraitSprites(message);
+        {
+            switch (g_GuiStage)
+            {
+                case 1:
+                {
+                    switch (g_GuiCharacter)
+                    {
+                    case 0:
+                    case 1:
+                    {
+                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0xf;
+                        AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        AnmVmIdView child0 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18);
+                        child0.SetSpriteWithAnm(resource, first);
+                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int second = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x17;
+                        AnmVmIdView child1 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b);
+                        child1.SetSpriteWithAnm(resource, second);
+                        break;
+                    }
+                    }
+                    break;
+                }
+                case 2:
+                {
+                    switch (g_GuiCharacter)
+                    {
+                    case 0:
+                    case 1:
+                    {
+                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x15;
+                        AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        AnmVmIdView child0 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18);
+                        child0.SetSpriteWithAnm(resource, first);
+                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int second = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x1e;
+                        AnmVmIdView child1 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b);
+                        child1.SetSpriteWithAnm(resource, second);
+                        break;
+                    }
+                    }
+                    break;
+                }
+                case 3:
+                {
+                    switch (g_GuiCharacter)
+                    {
+                    case 0:
+                    case 1:
+                    {
+                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x22;
+                        AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        AnmVmIdView child0 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18);
+                        child0.SetSpriteWithAnm(resource, first);
+                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int second = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x2b;
+                        AnmVmIdView child1 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b);
+                        child1.SetSpriteWithAnm(resource, second);
+                        break;
+                    }
+                    }
+                    break;
+                }
+                case 4:
+                {
+                    switch (g_GuiCharacter)
+                    {
+                    case 0:
+                    case 1:
+                    {
+                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x25;
+                        AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        AnmVmIdView child0 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18);
+                        child0.SetSpriteWithAnm(resource, first);
+                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int second = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x2e;
+                        AnmVmIdView child1 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b);
+                        child1.SetSpriteWithAnm(resource, second);
+                        break;
+                    }
+                    }
+                    break;
+                }
+                case 5:
+                {
+                    switch (g_GuiCharacter)
+                    {
+                    case 0:
+                    case 1:
+                    {
+                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x16;
+                        AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        AnmVmIdView child0 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18);
+                        child0.SetSpriteWithAnm(resource, first);
+                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int second = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x1f;
+                        AnmVmIdView child1 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b);
+                        child1.SetSpriteWithAnm(resource, second);
+                        break;
+                    }
+                    }
+                    break;
+                }
+                case 6:
+                {
+                    switch (g_GuiCharacter)
+                    {
+                    case 0:
+                    case 1:
+                    {
+                        const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x30;
+                        AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        AnmVmIdView child0 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1c);
+                        child0.SetSpriteWithAnm(resource, first);
+                        resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                        const int second = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x39;
+                        AnmVmIdView child1 = ResultMenuFindScript(
+                            &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1f);
+                        child1.SetSpriteWithAnm(resource, second);
+                        break;
+                    }
+                    }
+                    break;
+                }
+                case 7:
+                {
+                    if (message->messageIndex >= 1)
+                    {
+                        switch (g_GuiCharacter)
+                        {
+                        case 0:
+                        case 1:
+                        {
+                            const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x2e;
+                            AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            AnmVmIdView child0 = ResultMenuFindScript(
+                                &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x18);
+                            child0.SetSpriteWithAnm(resource, first);
+                            resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            const int second = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x37;
+                            AnmVmIdView child1 = ResultMenuFindScript(
+                                &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x1b);
+                            child1.SetSpriteWithAnm(resource, second);
+                            break;
+                        }
+                        }
+                    }
+                    else
+                    {
+                        switch (g_GuiCharacter)
+                        {
+                        case 0:
+                        case 1:
+                        {
+                            const int first = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x44;
+                            AnmLoadedView *resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            AnmVmIdView child0 = ResultMenuFindScript(
+                                &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x21);
+                            child0.SetSpriteWithAnm(resource, first);
+                            resource = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            const int second = GuiMessageInstructionIntArgument(message->currentInstruction) + 0x4d;
+                            AnmVmIdView child1 = ResultMenuFindScript(
+                                &message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 0x24);
+                            child1.SetSpriteWithAnm(resource, second);
+                            break;
+                        }
+                        }
+                    }
+                    break;
+                }
+            }
             break;
+        }
 
         case GUI_MSG_TEXT_LINE_0:
+        {
+            AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            AnmVmView *line = manager->FindVm(id->value);
+            if (line == NULL)
+                id->value = 0;
+            unsigned char *text = th10::leaf::Fn00417010(
+                GuiMessageInstructionPayload(message->currentInstruction));
+            manager->DrawTextLeft(line, message->textColors[message->activeSide],
+                reinterpret_cast<const char *>(text));
+            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&id->value));
+            break;
+        }
         case GUI_MSG_TEXT_LINE_1:
         {
-            const int line = GuiMessageInstructionOpcode(instruction) - GUI_MSG_TEXT_LINE_0;
-            AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0 + line];
-            DrawDecodedMessageText(message, id, false);
-            InterruptVm(id, 2);
+            AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
+            AnmRenderManagerView *manager = g_AnmRenderManagerView;
+            AnmVmView *line = manager->FindVm(id->value);
+            if (line == NULL)
+                id->value = 0;
+            unsigned char *text = th10::leaf::Fn00417010(
+                GuiMessageInstructionPayload(message->currentInstruction));
+            manager->DrawTextLeft(line, message->textColors[message->activeSide],
+                reinterpret_cast<const char *>(text));
+            PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&id->value));
             break;
         }
         case GUI_MSG_TEXT_LINE_ALTERNATING:
             if (message->alternatingLine == 0)
             {
-                DrawMessageText(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0], " ");
-                DrawMessageText(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1], " ");
-                DrawDecodedMessageText(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_0], true);
-                InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0], 2);
-                InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1], 3);
+                {
+                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *line = manager->FindVm(id->value);
+                    if (line == NULL)
+                        id->value = 0;
+                    manager->DrawTextLeft(line, message->textColors[message->activeSide], " ");
+                }
+                {
+                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *line = manager->FindVm(id->value);
+                    if (line == NULL)
+                        id->value = 0;
+                    manager->DrawTextLeft(line, message->textColors[message->activeSide], " ");
+                }
+                {
+                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_0];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *line = manager->FindVm(id->value);
+                    if (line == NULL)
+                        id->value = 0;
+                    unsigned char *text = th10::leaf::Fn00417010(
+                        GuiMessageInstructionPayload(message->currentInstruction));
+                    manager = g_AnmRenderManagerView;
+                    manager->DrawTextLeft(line, message->textColors[message->activeSide],
+                        reinterpret_cast<const char *>(text));
+                }
+                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0].value));
+                ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
                 ++message->alternatingLine;
             }
             else
             {
-                DrawDecodedMessageText(message, &message->vmIds[GUI_MESSAGE_TEXT_LINE_1], false);
-                InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1], 2);
+                {
+                    AnmVmIdView *id = &message->vmIds[GUI_MESSAGE_TEXT_LINE_1];
+                    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+                    AnmVmView *line = manager->FindVm(id->value);
+                    if (line == NULL)
+                        id->value = 0;
+                    unsigned char *text = th10::leaf::Fn00417010(
+                        GuiMessageInstructionPayload(message->currentInstruction));
+                    manager->DrawTextLeft(line, message->textColors[message->activeSide],
+                        reinterpret_cast<const char *>(text));
+                }
+                PlayerSetShotVmInterrupt2(reinterpret_cast<unsigned int *>(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1].value));
                 message->alternatingLine = 0;
             }
             break;
 
         case GUI_MSG_HIDE_TEXT_LINES:
-            InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0], 3);
-            InterruptVm(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1], 3);
+            ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_0]);
+            ResultMenuPendingThree(&message->vmIds[GUI_MESSAGE_TEXT_LINE_1]);
             break;
 
         case GUI_MSG_EVENT_18:
             FrontEndPlayMusic(1, g_GameStageUpdate->value28);
             if (g_GuiView != NULL)
-                CreateGuiVm(g_GuiView->stageUiAnm, 2);
+                {
+                    AnmLoadedView *loaded = g_GuiView->stageUiAnm;
+                    if (loaded != NULL)
+                        loaded->CreateVmVariant0(2, GUI_VM_RENDER_LAYER).value;
+                }
             break;
 
         case GUI_MSG_ENEMY_NAME:
-            if (g_EnemyManager != NULL && g_GuiStage >= 1 && g_GuiStage <= 7)
+        {
+            if (g_EnemyManager != NULL)
             {
-                static const unsigned char scripts[7] = {
-                    0x0d, 0x10, 0x14, 0x15, 0x0e, 0x23, 0x1d
-                };
-                message->vmIds[GUI_MESSAGE_ENEMY_NAME].value =
-                    CreateGuiVm(
-                        static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]),
-                        scripts[g_GuiStage - 1]);
+                switch (g_GuiStage)
+                {
+                    case 1:
+                        {
+                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0xd, GUI_VM_RENDER_LAYER).value;
+                        }
+                        break;
+                    case 2:
+                        {
+                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x10, GUI_VM_RENDER_LAYER).value;
+                        }
+                        break;
+                    case 3:
+                        {
+                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x14, GUI_VM_RENDER_LAYER).value;
+                        }
+                        break;
+                    case 4:
+                        {
+                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x15, GUI_VM_RENDER_LAYER).value;
+                        }
+                        break;
+                    case 5:
+                        {
+                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0xe, GUI_VM_RENDER_LAYER).value;
+                        }
+                        break;
+                    case 6:
+                        {
+                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x23, GUI_VM_RENDER_LAYER).value;
+                        }
+                        break;
+                    case 7:
+                        {
+                            AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                            message->vmIds[GUI_MESSAGE_ENEMY_NAME].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
+                        }
+                        break;
+                }
             }
             break;
+        }
 
         case GUI_MSG_COMPLETE_STAGE:
-            CompleteStageFromMessage();
+        {
+            if (g_GuiDifficulty != 4)
+            {
+                unsigned char *profile = g_GuiPersistentData;
+                const int shot = g_GuiShotType + g_GuiCharacter * 3;
+                profile[shot * 0x437c + 0x4e1 +
+                    (g_GuiStage + g_GuiDifficulty * 6) * 8] = 1;
+                profile[(g_GuiShotType + g_GuiCharacter * 3) * 0x437c + 0x4e0 +
+                    (g_GuiStage + g_GuiDifficulty * 6) * 8] = 1;
+            }
+            if ((g_GuiGameFlags & 0x10) != 0)
+            {
+                GameCompleteStageTransition(
+                    reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
+                break;
+            }
+            if (g_GuiStage == 6)
+            {
+                g_GuiView->guiFlags |= 0x20;
+                g_GuiScore.Add(g_GuiCounter4C4C * 1000);
+                switch (g_GuiDifficulty)
+                {
+                case 0:
+                    g_GuiScore.Add(g_GuiPowerLevel * 20000000);
+                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 100000);
+                    break;
+                case 1:
+                    g_GuiScore.Add(g_GuiPowerLevel * 25000000);
+                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 100000);
+                    break;
+                case 2:
+                    g_GuiScore.Add(g_GuiPowerLevel * 35000000);
+                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 200000);
+                    break;
+                case 3:
+                    g_GuiScore.Add(g_GuiPowerLevel * 40000000);
+                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 300000);
+                    break;
+                case 4:
+                    g_GuiScore.Add(g_GuiPowerLevel * 40000000);
+                    g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
+                    break;
+                }
+                if (g_GuiModeOwner->state == 1)
+                {
+                    g_MainSupervisorView.SetNextGameMode(4);
+                    break;
+                }
+                StageCreateTransitionEffect(0x31, 5, 120, 0, 0, 0);
+                GuiView *gui = g_GuiView;
+                gui->endingCounter = 0;
+                gui->guiFlags |= 0x10;
+                {
+                    unsigned char *counter = g_GuiPersistentData +
+                        (g_GuiCharacter * 3 + g_GuiShotType) * 0x437c + 0x4d0 +
+                        g_GuiDifficulty * 4;
+                    int value;
+                    memcpy(&value, counter, sizeof(value));
+                    if (value < 99999)
+                    {
+                        ++value;
+                        memcpy(counter, &value, sizeof(value));
+                    }
+                }
+            }
+            else if (g_GuiStage == 7)
+            {
+                g_GuiView->guiFlags |= 0x20;
+                g_GuiScore.Add(g_GuiCounter4C4C * 1000);
+                g_GuiScore.Add(g_GuiPowerLevel * 40000000);
+                g_GuiScore.Add(static_cast<int>(g_GuiPower) * 400000);
+                if (g_GuiModeOwner->state == 1)
+                {
+                    g_MainSupervisorView.SetNextGameMode(4);
+                    break;
+                }
+                GameCompleteStageTransition(
+                    reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
+                {
+                    unsigned char *counter = g_GuiPersistentData +
+                        (g_GuiCharacter * 3 + g_GuiShotType) * 0x437c + 0x4d0 +
+                        g_GuiDifficulty * 4;
+                    int value;
+                    memcpy(&value, counter, sizeof(value));
+                    if (value < 99999)
+                    {
+                        ++value;
+                        memcpy(counter, &value, sizeof(value));
+                    }
+                }
+            }
+            else
+            {
+                GuiView *gui = g_GuiView;
+                g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14.value);
+                gui->specialVmId9E14.value = 0;
+                {
+                    AnmLoadedView *loaded = gui->frontAnm;
+                    gui->specialVmId9E14.value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x4c, GUI_VM_RENDER_LAYER).value;
+                }
+                g_MainSupervisorView.SetNextGameMode(0x0b);
+                th10::leaf::Fn004175E0(g_GameStageState);
+            }
             break;
+        }
 
         case GUI_MSG_EVENT_21:
             GameQueueScaledSoundCommand(g_GuiStage == 6 ? 8.0f : 2.0f);
             break;
 
         case GUI_MSG_PLAYER_PORTRAIT_EXIT:
-            InterruptVm(&message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT], 7);
+            message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].SetInterrupt(7);
             break;
 
         case GUI_MSG_ENEMY_PORTRAIT_EXIT:
-            InterruptVm(&message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT], 7);
+            message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].SetInterrupt(7);
             break;
         }
 

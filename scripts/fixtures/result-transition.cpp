@@ -42,7 +42,7 @@ struct ThBgmFormat;
 // These are explicit dependency seams: ANM allocation, initialization and
 // publication are not claimed to execute the real allocator/script engine.
 struct AnmSpriteView { float height=47.9f,width=31.2f,sourceY=-5.8f,sourceX=3.7f; };
-struct AnmLoadedView { int anmFileIndex=71; string tag; void InitializeVm(AnmVmView*,int); };
+struct AnmLoadedView { int anmFileIndex=71; string tag; void InitializeVm(AnmVmView*,int); AnmVmIdView CreateVmVariant0(int,int); };
 struct AnmVmView { int renderLayer=0; unsigned flags35C=0x21; AnmSpriteView* loadedSprite=nullptr; AnmLoadedView* anmFile=nullptr; };
 struct AnmRenderManagerView {
  string tag; AnmVmView* vm=nullptr; AnmVmView* lastAdded=nullptr; int nextId=0;
@@ -92,15 +92,18 @@ unsigned g_GuiGameFlags=0;
 struct ModeOwner { int state=0; } modeOwner;
 ModeOwner* g_GuiModeOwner=&modeOwner;
 struct Supervisor { void SetNextGameMode(int mode) { event("mode:"+std::to_string(mode)); } } g_MainSupervisorView;
-void AddStageClearScore() { event("clear-score"); }
-void IncrementStageClearCount() { event("clear-count"); }
 void* StageCreateTransitionEffect(int a,int b,int c,unsigned d,unsigned e,unsigned f) {
  CHECK(a==0x31 && b==5 && c==120 && d==0 && e==0 && f==0,"transition-effect-arguments");event("transition-effect");return nullptr;
 }
 struct Score { void Add(int value) { event("score:"+std::to_string(value)); } } g_GuiScore;
 int g_GuiCounter4C4C=0,g_GuiPowerLevel=0;
-float g_GuiPower=0;
-int CreateGuiVm(AnmLoadedView*,int script) { event("create-gui:"+std::to_string(script));return 555; }
+short g_GuiPower=0;
+enum { GUI_VM_RENDER_LAYER = 15 };
+AnmVmIdView AnmLoadedView::CreateVmVariant0(int script,int layer) {
+ CHECK(layer==15,"gui-creation-render-layer");event("create-gui:"+std::to_string(script));return AnmVmIdView(555);
+}
+// Live byte count storage, accessed with the production memcpy contract.
+int guiClearCount() { int value;std::memcpy(&value,g_GuiPersistentData+0x4e0,sizeof(value));return value; }
 unsigned char stageState[1];unsigned char* g_GameStageState=stageState;
 namespace th10 { namespace leaf { void Fn004175E0(unsigned char*) { event("advance-stage"); } } }
 // @ACTUAL_BODIES@
@@ -281,17 +284,27 @@ void testScaledSound() {
  CHECK(GameQueueScaledSoundCommand(2)==0,"scaled-full-queue-return");
  CHECK(sound.commandQueue[31].opcode==0,"scaled-full-queue-drop");
 }
-void testActualGuiCaller() {
- reset();g_GuiGameFlags=0x10;CompleteStageFromMessage();checkCompleted(false);
+void setGuiClearCount() { const int value=37;std::memcpy(g_GuiPersistentData+0x4e0,&value,sizeof(value)); }
+// Executes the extracted completion region, not the complete Run caller.
+void testActualGuiCompletionRegion() {
+ reset();setGuiClearCount();g_GuiGameFlags=0x10;HostRunCompleteStageCase();checkCompleted(false);
  CHECK(menu.mainVm.value==101 && menu.secondaryVm.value==101,"gui-real-live-menu-receiver");
- CHECK(std::find(events.begin(),events.end(),"clear-count")==events.end(),"gui-early-return-after-owner");
- reset(1);g_GuiGameFlags=0x10;g_GameConfigurationFlags=0x1000;CompleteStageFromMessage();
- checkUntouchedMenu();CHECK(g_GameTransitionState==2 && events.empty(),"gui-owner-preserves-game-early-mode");
- reset();g_GuiStage=7;CompleteStageFromMessage();checkCompleted(false);
- CHECK(gui.guiFlags==0x20 && events.back()=="clear-count","gui-stage-seven-calls-owner-then-count");
+ CHECK(guiClearCount()==37,"gui-early-return-after-owner");
+ reset(1);setGuiClearCount();g_GuiGameFlags=0x10;g_GameConfigurationFlags=0x1000;HostRunCompleteStageCase();
+ checkUntouchedMenu();CHECK(g_GameTransitionState==2 && events.empty() && guiClearCount()==37,"gui-owner-preserves-game-early-mode");
+ reset();setGuiClearCount();g_GuiStage=7;
+ bool transitionObserved=false;
+ callback=[&](const string& text) {
+  if(text.rfind("queue:",0)==0) {
+   transitionObserved=true;
+   CHECK(guiClearCount()==37,"gui-stage-seven-calls-owner-then-count");
+  }
+ };
+ HostRunCompleteStageCase();checkCompleted(false);
+ CHECK(gui.guiFlags==0x20 && transitionObserved && guiClearCount()==38,"gui-stage-seven-calls-owner-then-count");
  CHECK(events[0]=="score:0" && events[1]=="score:0" && events[2]=="score:0","gui-stage-seven-score-precedes-owner");
 }
 int main() {
- testEarly();testNormal();testSupervisorReload();testCaptureBusy();testQueueCapacity();testMusicHelpers();testScaledSound();testActualGuiCaller();
+ testEarly();testNormal();testSupervisorReload();testCaptureBusy();testQueueCapacity();testMusicHelpers();testScaledSound();testActualGuiCompletionRegion();
  std::cout << "PASS: actual-body result-transition/scaled-sound host contracts; native ABI/storage/x87 remain unresolved\n";
 }

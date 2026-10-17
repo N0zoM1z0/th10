@@ -38,7 +38,7 @@ bytes receive no credit from these decompiled owners.
 ## Actual definitions executed
 
 - `GameCompleteStageTransition` and `GameQueueScaledSoundCommand` from proposal `FrontEnd.cpp`
-- `CompleteStageFromMessage` from proposal `Gui.cpp`, including both real calls to the transition owner
+- The actual braced `GUI_MSG_COMPLETE_STAGE` region extracted from `GuiMessageVmView::Run` in proposal `Gui.cpp`, including both real calls to the transition owner. A named host-only `HostRunCompleteStageCase` do/while(false) wrapper supplies the enclosing break target without changing the extracted region. The whole Run walker, instruction advance and tick tail are not executed by this suite.
 - `AnmRenderManagerView::RequestCaptureRectangle`, `FrontEndLoadMusic`, and `FrontEndPlayMusic` from proposal `FrontEnd.cpp`
 - `AnmVmTimerView`, including its actual constructor and inline `SetCurrent`, from unchanged `AnmManager.hpp`
 - Actual `ResultMenuView`, `FrontEndCursorView`, `AnmVmIdView`, `ResultGameChainView`, and `ResultGameManagerView` definitions
@@ -50,7 +50,7 @@ The transition itself keeps its direct queue calls. The separately executed `Fro
 
 - ANM manager allocation, resource initialization, ID publication, deletion, and lookup are observational stubs. They operate on valid live host VMs and can change selected global pointers at defined callback boundaries. Allocation failure and invalid sprite/resource preconditions are outside the tests.
 - `FrontEndQueueSoundCommand` is an observation/forwarding seam: it records the call and runs a callback, then invokes the actual queue method on a live `SoundPlayerView`. The production raw global-storage wrapper is not executed. This seam makes music-time supervisor changes, profile-pointer reload, completion ordering, and speed sampling observable without pretending the real queue has callbacks.
-- GUI score accumulation, stage-clear counters, mode publication, transition effect creation, and the alternate next-stage helper are stubs. The two relevant GUI-to-transition calls execute the real transition body; unrelated GUI paths are not presented as covered runtime integration.
+- GUI score accumulation, VM creation, mode publication, transition effect creation, and the alternate next-stage helper are stubs. The inline stage-clear count memcpy operations execute on bounded live profile bytes; the fixture initializes count 37, checks early completion leaves it unchanged, checks transition queue callbacks still see 37, and checks stage-seven completion finally publishes 38. The two relevant GUI-to-transition calls execute the real transition body; unrelated GUI paths are not presented as covered runtime integration.
 - ANM sprite/VM/manager/GUI/ASCII views are field-minimal host fixtures, not target-sized objects. Windows/DirectSound pointer/scalar names in the actual SoundPlayerView are host aliases or forward declarations. Target offset/size assertions are deliberately not extracted.
 - `g_GameOwner477830` retains the production pointer-to-incomplete-`GameChainOwnerView` declaration. The fixture stores a round-trip cast of a pointer to a live `ResultMenuView`; it never dereferences that pointer as a `GameChainOwnerView`. This avoids testing unrelated object lifetime or invented inheritance, but proves no production alias/storage legality.
 - All real timer-containing objects have static storage, so their bytes are zero-initialized before the actual constructor reads and clears its flags bit. Reset is fieldwise on those existing live objects; no uninitialized automatic timer is constructed. GCC's generic constructor `-Wuninitialized` warning is suppressed only around that extracted declaration, with the actual body unchanged. Other warnings remain errors.
@@ -68,7 +68,7 @@ The cached game pointer is source-reviewed, but no artificial callback is insert
 - Byte snapshots verify all ResultMenuView bytes outside explicitly mutable host members remain unchanged. Early-return cases permit no menu byte changes. This is host object-representation coverage, not a target-layout claim.
 - Real first-free queue behavior, exact path/opcode/argument/step, holes, occupancy 29/30/31, reserved slot 31, and full-queue drops while completion/profile publication continues.
 - Scaled-sound selected finite samples: signed zero speed, fractional/unit/above-unit/negative speeds, positive/negative/fractional/zero inputs, truncation, queue drop, empty path/opcode/return, and a sample distinguishing a premature float intermediate from the current double expression.
-- Actual GUI early completion route, game-mode early return through that route, and stage-seven caller ordering around score updates/transition/count publication.
+- Actual lexical GUI early completion route, game-mode early return through that route, and stage-seven region ordering around score updates/transition/count publication. These are region-level host contracts, not a claim that whole Run executed.
 
 ## Floating-point limit
 
@@ -90,3 +90,7 @@ Native builds and target execution are outside this host campaign. Record fresh 
 Based on checkpoint 2a254c553ec53c1b2945351237fcece3662aaa82. The current Run/lifecycle drivers were reconciled with only ResultMenu.hpp header-copy additions and matching fixture signatures. Non-PIE sanitizer options and truthful --no-mutations summaries remain intact. The follow-up adds one baseline-only result-transition hook to the existing scripts/ci.py, beside the result/pause tests, preserving all other CI and portability changes. The two recovered FrontEnd.cpp owners remain decompiled at 0.00; host results confer no native match credit.
 
 423370 target receiver is EDI with plain RET; the natural ResultMenuView* source interface is not native ABI closure. 420C30 numerical width/order/conversion and physical storage bindings require native inspection. No effect-family implementation or whole-Run closure is claimed.
+
+## Whole-dispatcher compatibility
+
+The maintained suite no longer extracts the removed CompleteStageFromMessage helper. It finds exactly one GuiMessageVmView::Run definition and exactly one braced completion case, verifies its next outer case is GUI_MSG_EVENT_21, and copies that region unchanged into an explicitly host-only wrapper. The gui-early-condition mutation changes exactly one mask occurrence inside that extracted region and retains the original result-state-six assertion. All 32 controls and all 12 rejected classifier negatives remain. The manifest records execution scope and the extracted-wrapper hash. Missing or ambiguous source boundaries fail closed. No artificial production helper is restored.
