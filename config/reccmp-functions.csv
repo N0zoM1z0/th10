@@ -962,3 +962,5 @@ HintOwnerView::Initialize,0x00418E30,function
 CleanupHintOwner,0x00418EE0,function
 CreateHintOwner,0x00419090,function
 HintOwnerView::OnUpdate,0x004198A0,function
+GuiView::DrawStageElements,0x00415800,function
+DrawColoredRectangle,0x0043BDA0,function

@@ -87,8 +87,14 @@ typedef char GuiMessageVmControlAt78[
 struct GuiBossGaugeValueView
 {
     float value;
-    float unknown04;
+    unsigned int color;
 };
+
+
+// Target 0x0040FC8B writes packed color bits; draw 0x00415A00 reads them.
+typedef char GuiBossGaugeValueLayoutIs08[
+    (sizeof(GuiBossGaugeValueView) == 0x08 &&
+     offsetof(GuiBossGaugeValueView, color) == 0x04) ? 1 : -1];
 
 
 // Exact-size maintained view of the TH10 stage GUI owner.  Construction at
@@ -139,6 +145,7 @@ struct GuiView
     ~GuiView();
     void SetLivesDisplayCount(int count);
     static int __stdcall UpdateStageElements(GuiView *gui);
+    static int __stdcall DrawStageElements(GuiView *gui);
 };
 
 typedef char GuiViewSizeIs9ED0[

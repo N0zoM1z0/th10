@@ -1,0 +1,236 @@
+{
+  "head": "a3aafea0a8fba4e4daf2d5b9b9751152bcb624a4",
+  "config_sha256": "6379c4d2b0ef4bc4d636d0ecefebc8cc37ff1375bfe2b69984a8712b9ebc413f",
+  "baseline_gui_header_sha256": "c11e2d1cba86a7d91768e696db12286ddca23c1fd1e1dbcf62eb010394021530",
+  "changed_headers": [
+    "src/Gui.hpp"
+  ],
+  "new_header": "src/AnmRectangle.hpp",
+  "units": [
+    "anm-vm-id-clear-flag2",
+    "anm-vm-id-release",
+    "anm-vm-id-set-flag2",
+    "anm-vm-id-set-interrupt",
+    "anm-vm-id-set-sprite-explicit",
+    "anm-vm-id-set-sprite-own",
+    "ascii-manager-ensure-selection-vm",
+    "bullet-position-bounds",
+    "bullet-runtime-deactivate",
+    "bullet-runtime-update",
+    "bullet-update-aimed-direction",
+    "bullet-update-boundary-bounce",
+    "bullet-update-deceleration",
+    "bullet-update-horizontal-wrap",
+    "bullet-update-polar-acceleration",
+    "bullet-update-relative-direction",
+    "bullet-update-state8",
+    "decomphelp-game-manager-on-draw",
+    "ecl-vm-polar-from-angle-magnitude",
+    "enemy-apply-bullet-clear",
+    "enemy-bullet-playfield-bounds",
+    "enemy-configure-interrupt",
+    "enemy-drop-vector-from-angle-radii",
+    "enemy-enable-shield",
+    "enemy-find-laser",
+    "enemy-mark-pending-interrupt",
+    "enemy-resolve-int-argument",
+    "enemy-set-chapter",
+    "enemy-set-laser-position",
+    "enemy-sound-queue-cue",
+    "enemy-sound-queue-sample",
+    "enemy-wait-for-effect",
+    "enemy-wrap-angle",
+    "frontend-cursor-move",
+    "frontend-cursor-pop",
+    "frontend-cursor-push",
+    "frontend-cursor-set-current",
+    "frontend-delete-vm",
+    "frontend-draw-callback",
+    "frontend-input-repeated",
+    "frontend-keyconfig-display",
+    "frontend-options-refresh",
+    "frontend-practice-unlock",
+    "frontend-set-screen",
+    "frontend-set-screen-state",
+    "frontend-update-callback",
+    "game-manager-update-callback",
+    "gui-score-add",
+    "gui-set-lives-display-count",
+    "hint-create-owner",
+    "hint-draw-callback",
+    "main-set-next-game-mode",
+    "player-collision-check",
+    "player-reset-runtime-state"
+  ],
+  "producer_groups": [
+    {
+      "units": [
+        "anm-vm-id-clear-flag2",
+        "anm-vm-id-release",
+        "anm-vm-id-set-flag2"
+      ]
+    },
+    {
+      "units": [
+        "anm-vm-id-set-interrupt"
+      ]
+    },
+    {
+      "units": [
+        "anm-vm-id-set-sprite-explicit",
+        "anm-vm-id-set-sprite-own"
+      ]
+    },
+    {
+      "units": [
+        "ascii-manager-ensure-selection-vm"
+      ]
+    },
+    {
+      "units": [
+        "bullet-position-bounds",
+        "bullet-runtime-deactivate",
+        "bullet-update-deceleration"
+      ]
+    },
+    {
+      "units": [
+        "bullet-runtime-update",
+        "player-collision-check"
+      ]
+    },
+    {
+      "units": [
+        "bullet-update-aimed-direction",
+        "bullet-update-relative-direction",
+        "bullet-update-state8"
+      ]
+    },
+    {
+      "units": [
+        "bullet-update-boundary-bounce"
+      ]
+    },
+    {
+      "units": [
+        "bullet-update-horizontal-wrap",
+        "bullet-update-polar-acceleration"
+      ]
+    },
+    {
+      "units": [
+        "decomphelp-game-manager-on-draw"
+      ]
+    },
+    {
+      "units": [
+        "ecl-vm-polar-from-angle-magnitude"
+      ]
+    },
+    {
+      "units": [
+        "enemy-apply-bullet-clear",
+        "enemy-configure-interrupt",
+        "enemy-find-laser",
+        "enemy-set-chapter",
+        "enemy-set-laser-position",
+        "enemy-wait-for-effect",
+        "enemy-wrap-angle"
+      ]
+    },
+    {
+      "units": [
+        "enemy-bullet-playfield-bounds"
+      ]
+    },
+    {
+      "units": [
+        "enemy-drop-vector-from-angle-radii",
+        "enemy-enable-shield",
+        "enemy-mark-pending-interrupt",
+        "enemy-resolve-int-argument",
+        "enemy-sound-queue-cue",
+        "enemy-sound-queue-sample"
+      ]
+    },
+    {
+      "units": [
+        "frontend-cursor-move",
+        "frontend-cursor-pop",
+        "frontend-cursor-push",
+        "frontend-input-repeated"
+      ]
+    },
+    {
+      "units": [
+        "frontend-cursor-set-current"
+      ]
+    },
+    {
+      "units": [
+        "frontend-delete-vm"
+      ]
+    },
+    {
+      "units": [
+        "frontend-draw-callback"
+      ]
+    },
+    {
+      "units": [
+        "frontend-keyconfig-display",
+        "frontend-practice-unlock"
+      ]
+    },
+    {
+      "units": [
+        "frontend-options-refresh"
+      ]
+    },
+    {
+      "units": [
+        "frontend-set-screen",
+        "frontend-set-screen-state"
+      ]
+    },
+    {
+      "units": [
+        "frontend-update-callback"
+      ]
+    },
+    {
+      "units": [
+        "game-manager-update-callback"
+      ]
+    },
+    {
+      "units": [
+        "gui-score-add"
+      ]
+    },
+    {
+      "units": [
+        "gui-set-lives-display-count"
+      ]
+    },
+    {
+      "units": [
+        "hint-create-owner",
+        "hint-draw-callback"
+      ]
+    },
+    {
+      "units": [
+        "main-set-next-game-mode"
+      ]
+    },
+    {
+      "units": [
+        "player-reset-runtime-state"
+      ]
+    }
+  ],
+  "verified_current_unit_set": true,
+  "qualification": "Current configuration SHA256 and54-unit set match full audited snapshot. Group metadata preserves all canonical profiles/source-support/normal-support/harness/entry identities; relocation lists remain in pinned config/match-units.toml. No fresh build or receipt.",
+  "reproduce": "Use scripts/replay-exact-units.py --unit for each named unit, keeping each listed producer group together. Resolve all profiles, sources, support sources, harnesses and output paths from config/match-units.toml at config_sha256; this file intentionally avoids duplicating reconstructible metadata."
+}

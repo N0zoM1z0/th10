@@ -1,0 +1,189 @@
+// Host source contract only. No native layout, calling convention, GPU, or x87 proof.
+#include <cmath>
+#include <cstdint>
+#include <cstring>
+#include <cstdlib>
+#include <cstdio>
+#include <functional>
+#include <string>
+#include <vector>
+#include <type_traits>
+#define __stdcall
+#define __fastcall
+struct AnmVmView { struct { unsigned char blue=0, green=0, red=0, alpha=0; } primaryColor; };
+struct AnmVmIdView { unsigned value=0; };
+struct AnmVmTimerView { int value=0; };
+struct AnmLoadedView {};
+struct GuiMessageVmView {};
+@GAUGE@
+@GUI@
+GuiView::~GuiView() {}
+@RECTANGLE@
+struct EnemyFullObjectView { struct { unsigned flags=0; } runtime; };
+struct EnemyManagerView { EnemyFullObjectView *specialEnemySlots[1] = {}; };
+struct AnmRenderManagerView { int identity; int Draw(AnmVmView *); };
+AnmRenderManagerView *g_AnmRenderManagerView;
+EnemyManagerView *g_EnemyManager;
+int g_GuiState4C58;
+struct Event { AnmVmView *vm; AnmRenderManagerView *manager; @RECTTYPE@ rectangle; unsigned color; };
+std::vector<Event> events;
+std::function<void(AnmVmView *)> drawHook;
+std::function<void(@RECTTYPE@ *)> rectHook;
+int AnmRenderManagerView::Draw(AnmVmView *vm) {
+    events.push_back({vm,this,{},0});
+    if(drawHook) drawHook(vm);
+    return -97;
+}
+void DrawColoredRectangle(@RECTTYPE@ *r, unsigned color) {
+    events.push_back({nullptr,nullptr,*r,color});
+    if(rectHook) rectHook(r);
+}
+@OWNER@
+@CALLBACK@
+#define CHECK(id, expression) do { if(!(expression)) { std::fprintf(stderr,"CHECK|%s|%d|%s\n",id,__LINE__,#expression); std::exit(41); } } while(0)
+struct Fixture {
+    GuiView gui{};
+    AnmRenderManagerView a{1}, b{2};
+    EnemyManagerView enemy{}, other{};
+    EnemyFullObjectView boss{};
+    GuiMessageVmView message{};
+    Fixture() {
+        events.clear(); drawHook={}; rectHook={};
+        g_AnmRenderManagerView=&a; g_EnemyManager=nullptr; g_GuiState4C58=0;
+        gui.spellSeconds=-1;
+    }
+    void run() { CHECK("return", GuiDrawCallback(&gui)==1); }
+    void active() { g_EnemyManager=&enemy; enemy.specialEnemySlots[0]=&boss; }
+};
+bool rect(size_t i,float l,float t,float r,float b,unsigned c) {
+    if(i>=events.size()) return false;
+    const Event &e=events[i];
+    return !e.vm && e.rectangle.left==l && e.rectangle.top==t && e.rectangle.right==r && e.rectangle.bottom==b && e.color==c;
+}
+void unconditional() {
+    Fixture f;
+    drawHook=[&](AnmVmView *) {g_AnmRenderManagerView=g_AnmRenderManagerView==&f.a?&f.b:&f.a;};
+    f.run();
+    CHECK("base_count", events.size()==40);
+    std::vector<AnmVmView *> expected;
+    for(int i=0;i<10;i++) {expected.push_back(&f.gui.displayVms0[i]);expected.push_back(&f.gui.displayVms1[i]);}
+    for(auto &v:f.gui.displayVms2) expected.push_back(&v);
+    for(auto &v:f.gui.displayVms3) expected.push_back(&v);
+    for(auto &v:f.gui.displayVms5) expected.push_back(&v);
+    for(size_t i=0;i<expected.size();i++) {
+        CHECK("base_vm_order", events[i].vm==expected[i]);
+        CHECK("base_manager_reload", events[i].manager==(i%2?&f.b:&f.a));
+    }
+}
+void horizontal() {
+    Fixture f; g_GuiState4C58=-1; f.gui.displayVms5[0].primaryColor.alpha=0x12;
+    rectHook=[&](@RECTTYPE@ *r) {if(events.size()==41) {r->right=80.5f;f.gui.displayVms5[0].primaryColor.alpha=0xAB;g_GuiState4C58=999;}};
+    f.run();
+    CHECK("horizontal_signed_count", events.size()==42);
+    CHECK("horizontal_first", rect(40,51,461,50.707691192626953125f,463,0x12000000u));
+    CHECK("horizontal_reload", rect(41,50,460,79.5f,462,0xABFFFFFFu));
+}
+void horizontal_positive() {
+    Fixture f; g_GuiState4C58=65; f.gui.displayVms5[0].primaryColor.alpha=0xFF; f.run();
+    CHECK("horizontal_positive_count", events.size()==42);
+    CHECK("horizontal_positive_rect", rect(40,51,461,70,463,0xFF000000u));
+    CHECK("horizontal_positive_second", rect(41,50,460,69,462,0xFFFFFFFFu));
+}
+void gauge_gate() {
+    for(float v: {0.f,-0.f,-1.f,NAN}) {Fixture f; f.gui.bossGaugeDisplayed=v; f.run(); CHECK("gauge_ordered_gate", events.size()==40);}
+}
+void gauge() {
+    Fixture f; f.gui.bossGaugeDisplayed=.5f;
+    f.gui.bossGaugeValues[0]={.25f,0x12345678u};
+    f.gui.bossGaugeValues[1]={.75f,0x98765432u};
+    f.gui.bossGaugeValues[2]={-0.25f,0x10203040u};
+    f.gui.bossGaugeValues[3]={NAN,0xFFEEDDCCu}; f.run();
+    CHECK("gauge_count", events.size()==46);
+    CHECK("gauge_background", rect(40,41,23,212,25,0xFF000000u));
+    CHECK("gauge_white", rect(41,40,22,211,24,0xFFFFFFFFu));
+    CHECK("segment_less", rect(42,40,22,125.5f,24,0x12345678u));
+    CHECK("segment_clamp", rect(43,40,22,211,24,0x98765432u));
+    CHECK("segment_negative", rect(44,40,22,-45.5f,24,0x10203040u));
+    CHECK("segment_nan", rect(45,40,22,211,24,0xFFEEDDCCu));
+}
+void gauge_reload() {
+    Fixture f; f.gui.bossGaugeDisplayed=.5f;
+    f.gui.bossGaugeValues[0]={.5f,0x12345678u};
+    rectHook=[&](@RECTTYPE@ *r) {
+        if(events.size()==41) {r->right=99.5f;f.gui.bossGaugeDisplayed=.25f;}
+        if(events.size()==42) {f.gui.bossGaugeValues[0]={.125f,0xABCDEF01u};}
+        if(events.size()==43) {f.gui.bossGaugeDisplayed=.5f;f.gui.bossGaugeValues[1]={.75f,0x10203040u};}
+    }; f.run();
+    CHECK("gauge_reload_count", events.size()==44);
+    CHECK("gauge_right_reload", rect(41,40,22,98.5f,24,0xFFFFFFFFu));
+    CHECK("gauge_value_reload", rect(42,40,22,82.75f,24,0xABCDEF01u));
+    CHECK("gauge_displayed_reload", rect(43,40,22,211,24,0x10203040u));
+}
+void segment_zero() {
+    Fixture f; f.gui.bossGaugeDisplayed=.5f;
+    f.gui.bossGaugeValues[0].value=-0.f; f.run();
+    CHECK("segment_zero_count", events.size()==42);
+}
+void marker() {
+    for(unsigned flags: {0u,1u,0x10u,0x11u,2u,0x80000000u}) {
+        Fixture f; f.active();f.boss.runtime.flags=flags;f.run();
+        const bool allow=flags==0||flags==2||flags==0x80000000u;
+        CHECK("marker_flags", events.size()==(allow?41u:40u));
+        if(allow) CHECK("marker_vm", events[40].vm==&f.gui.bossPositionVm);
+    }
+    Fixture f;g_EnemyManager=&f.enemy;f.run(); CHECK("marker_null_boss", events.size()==40);
+}
+void final_pair() {
+    for(int timer: {-1,0,1}) {Fixture f;f.active();f.boss.runtime.flags=0x11;f.gui.spellSeconds=timer; f.run(); CHECK("pair_timer", events.size()==(timer<0?40u:42u));}
+    {Fixture f;f.gui.spellSeconds=0;f.run(); CHECK("pair_null_manager", events.size()==40);}
+    {Fixture f;g_EnemyManager=&f.enemy;f.gui.spellSeconds=0;f.run(); CHECK("pair_null_boss", events.size()==40);}
+    {Fixture f;f.active();f.boss.runtime.flags=0x11;f.gui.spellSeconds=0;f.gui.message=&f.message;f.run(); CHECK("pair_message", events.size()==40);}
+}
+void pair_reload() {
+    Fixture f; f.active();f.gui.spellSeconds=0;
+    drawHook=[&](AnmVmView *v) {
+        if(v==&f.gui.bossPositionVm) {g_EnemyManager=&f.other;f.other.specialEnemySlots[0]=&f.boss; g_AnmRenderManagerView=&f.b;}
+        if(v==&f.gui.displayVms4[0]) {g_EnemyManager=nullptr;f.gui.spellSeconds=-1;f.gui.message=&f.message;g_AnmRenderManagerView=&f.a;}
+    }; f.run();
+    CHECK("pair_once_count", events.size()==43);
+    CHECK("pair_first_identity", events[41].vm==&f.gui.displayVms4[0] && events[41].manager==&f.b);
+    CHECK("pair_second_identity", events[42].vm==&f.gui.displayVms4[1] && events[42].manager==&f.a);
+}
+void enemy_reload() {
+    Fixture f;f.active();f.gui.spellSeconds=0;
+    drawHook=[&](AnmVmView *v) {if(v==&f.gui.bossPositionVm) g_EnemyManager=&f.other;};f.run();
+    CHECK("enemy_reload_count", events.size()==41);
+}
+void post_marker_gates() {
+    for(int mode=0;mode<3;mode++) {
+        Fixture f;f.active();f.gui.spellSeconds=0;
+        drawHook=[&](AnmVmView *v) {if(v==&f.gui.bossPositionVm) {
+            if(mode==0) g_EnemyManager=nullptr;
+            if(mode==1) f.gui.spellSeconds=-1;
+            if(mode==2) f.gui.message=&f.message;
+        }};f.run();CHECK("post_marker_gates", events.size()==41);
+    }
+}
+void segment_dynamic_gate() {
+    for(float v: {-0.25f,NAN}) {
+        Fixture f;f.gui.bossGaugeDisplayed=.5f;f.gui.bossGaugeValues[0]={.25f,0x12345678u};
+        rectHook=[&](@RECTTYPE@ *) {if(events.size()==42) f.gui.bossGaugeDisplayed=v;};f.run();
+        CHECK("dynamic_gauge_count", events.size()==43);
+        if(std::isnan(v)) {
+            CHECK("dynamic_gauge_nan", std::isnan(events[42].rectangle.right) && events[42].color==0x12345678u);
+        } else {CHECK("dynamic_gauge_negative", rect(42,40,22,-45.5f,24,0x12345678u));}
+    }
+}
+int main(int argc,char **argv) {
+    if(argc!=2) return 2;
+    std::string s=argv[1];
+    if(s=="unconditional") unconditional(); else if(s=="horizontal") horizontal();
+    else if(s=="horizontal_positive") horizontal_positive(); else if(s=="gauge_gate") gauge_gate();
+    else if(s=="gauge") gauge(); else if(s=="gauge_reload") gauge_reload();
+    else if(s=="segment_zero") segment_zero(); else if(s=="marker") marker();
+    else if(s=="final_pair") final_pair(); else if(s=="pair_reload") pair_reload();
+    else if(s=="enemy_reload") enemy_reload();
+    else if(s=="post_marker_gates") post_marker_gates();
+    else if(s=="segment_dynamic_gate") segment_dynamic_gate(); else return 3;
+    std::puts("PASS");
+}
