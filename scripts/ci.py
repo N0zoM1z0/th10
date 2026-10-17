@@ -60,6 +60,8 @@ def main() -> int:
         run("Validate GUI message Run baseline", [sys.executable, "scripts/test-gui-message-run.py", "--no-mutations", "--out", "build/host-tests/gui-message-run-ci"])
         with tempfile.TemporaryDirectory(prefix="gui-enemy-name-ci-") as output:
             run("Validate enemy-name dispatch controls", [sys.executable, "scripts/test-gui-enemy-name.py", "--out", output])
+        with tempfile.TemporaryDirectory(prefix="gui-portrait-creation-ci-") as output:
+            run("Validate portrait creation controls", [sys.executable, "scripts/test-gui-portrait-creation.py", "--out", str(Path(output) / "run")])
         run("Validate GUI message construction-Run-destruction baseline", [sys.executable, "scripts/test-gui-message-lifecycle.py", "--no-mutations", "--out", "build/host-tests/gui-message-lifecycle-ci"])
         run("Validate GUI draw contracts", [sys.executable, "scripts/test-gui-draw.py"])
         run("Validate laser owner bindings", [sys.executable, "scripts/test-laser-owner-binding.py", "--opt", "O2", "--no-mutations"])

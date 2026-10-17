@@ -237,7 +237,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                     anm = static_cast<AnmLoadedView *>(g_Player->resource);
                 {
                     AnmLoadedView *loaded = anm;
-                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(script, GUI_VM_RENDER_LAYER).value;
+                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded->CreateVmVariant0(script, GUI_VM_RENDER_LAYER).value;
                 }
             }
             break;

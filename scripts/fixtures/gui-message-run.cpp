@@ -70,7 +70,21 @@ static std::vector<int>Sounds(){auto*s=reinterpret_cast<EnemySoundQueueView*>(g_
 static bool Same(const AnmFloat3View&a,const AnmFloat3View&b){return a.x==b.x&&a.y==b.y&&a.z==b.z;}
 static void Normal(Fixture&f){Check(GuiMessageVmView::Run(&f.message)==0,"normal.result");Check(f.message.currentInstruction==f.Future(),"normal.advance");Check(f.message.instructionTimer.current==1&&f.message.instructionTimer.previous==0,"normal.tick");Check(f.message.lifetimeTimer.current==0,"normal.lifetime");}
 static void Portraits(){
- for(int c:{0,1,2,-1})for(int s:{1,2,3,4,5,6,7})for(int index:{-1,0,1}){Fixture f;g_GuiCharacter=c;g_GuiStage=s;f.message.messageIndex=index;f.Program(2);Normal(f);if(c==0||c==1){bool special=s==6||(s==7&&index<1);Check(host.creations.size()==1&&host.creations[0].resource==(special?&f.enemyResource:&f.playerResource),"portrait.enemy_resource");Check(host.creations[0].script==(s==6?0x20:s==7&&index<1?0x25:0x1e)&&host.creations[0].layer==15,"portrait.enemy_script_layer");Check(f.message.vmIds[1].value==host.id,"portrait.enemy_id");}else Check(host.creations.empty()&&f.message.vmIds[1].value==102,"portrait.character_guard");}
+ for(int c:{INT_MIN,-123,-1,0,1,2,123,INT_MAX})for(int s:{INT_MIN,-1,0,1,2,3,4,5,6,7,8,INT_MAX})for(int index:{INT_MIN,-123,-1,0,1,2,123,INT_MAX}){
+  Fixture f;g_GuiCharacter=c;g_GuiStage=s;f.message.messageIndex=index;f.Program(2);auto profile=f.profile;
+  f.message.unknown58=0x1357;f.message.flags=0x40;f.message.activeSide=1;f.message.alternatingLine=2;
+  Normal(f);
+  if(c==0||c==1){
+   bool special=s==6||(s==7&&index<1);
+   Check(host.creations.size()==1&&host.creations[0].resource==(special?&f.enemyResource:&f.playerResource),"portrait.enemy_resource");
+   Check(host.creations[0].script==(s==6?0x20:s==7&&index<1?0x25:0x1e)&&host.creations[0].layer==15,"portrait.enemy_script_layer");
+   Check(host.order==std::vector<std::string>{"create"},"portrait.once_create");
+   Check(f.message.vmIds[1].value==host.id,"portrait.enemy_id");
+  }else Check(host.creations.empty()&&host.order.empty()&&f.message.vmIds[1].value==102,"portrait.character_guard");
+  for(int i=0;i<6;++i)if(i!=1)Check(f.message.vmIds[i].value==101+i,"portrait.other_ids");
+  Check(f.message.messageIndex==index&&f.message.unknown58==0x1357&&f.message.flags==0x40&&f.message.activeSide==1&&f.message.alternatingLine==2&&f.profile==profile&&f.gui->guiFlags==0&&f.gui->endingCounter==47,"portrait.sentinels");
+  for(auto&v:f.vms)Check(v.pendingInterrupt==-12&&v.flags35C==0&&Same(v.positionOffset,AnmFloat3View(-7,-8,-9)),"portrait.vm_sentinels");
+ }
  for(int c:{0,1,2,-1}){Fixture f;g_GuiCharacter=c;f.Program(1);Normal(f);if(c==0||c==1)Check(host.creations.size()==1&&host.creations[0].resource==&f.playerResource&&host.creations[0].script==0x1d&&host.creations[0].layer==15,"portrait.player_create");else Check(host.creations.empty(),"portrait.player_guard");}
  {Fixture f;f.Program(3);Normal(f);Check(host.creations.size()==1&&host.creations[0].resource==&f.otherResource&&host.creations[0].script==0x5a&&f.message.vmIds[2].value==host.id,"portrait.box");}}
 static void Sides(){for(int s:{0,1}){Fixture f;f.Program(7+s);f.message.alternatingLine=7;Normal(f);Check(f.message.activeSide==s&&f.message.alternatingLine==0,"side.state");Check(f.vms[0].pendingInterrupt==(s?3:2)&&f.vms[1].pendingInterrupt==(s?2:3),"side.interrupts");Check(Same(f.vms[3].positionOffset,f.message.textPositions[s])&&Same(f.vms[4].positionOffset,f.message.textPositions[s]),"side.both_selected");}}

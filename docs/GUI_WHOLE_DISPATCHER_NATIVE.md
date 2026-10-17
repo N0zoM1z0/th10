@@ -143,3 +143,47 @@ PYTHONDONTWRITEBYTECODE=1 nice -n 10 scripts/repo-python -B scripts/replay-exact
 Preserve prior artifacts before replay; never execute the generated PE. The completed replay JSON SHA is `62e5d69451e7a298061fc2cc6e97f7d7604cb88905125e492dcdc834bd501ba8`; immutable 58-input freeze SHA is `f4c978c538bab0b315c1f64403854204765a3f36fa6e0ec3e9b775e8fc1f73c5`. `config/target.toml` was separately bound **after the build** to unchanged checkpoint bytes, SHA `385ecdeac9ac89bf9706a7db766ef1ad2d6d33b2f50ee360c72eae3d67932789`; it was not retroactively added to that freeze. The target executable identity remained independently checked.
 
 Read-only collection `161538f38a9d46769fbfe0c12918a1c8` used maintained `ltcg_link.validate_link_entry`, `linked_image` PE/MAP/PDB readers/object-path rules and the actual 14 object fingerprints, plus resolution logs/aliases. PE SHA is `be9170319f40e534a154ef8985dc44d81bd98c8e89a9f658a889ba70f3fd251b`; PDB GUID `3896145b0fa939449fe955807ddbd711`, age 1. Complete external evidence SHA is `55b2a547dfbba581583c1bd7793623cb667d17e07044894f1da270d8f96e61ac`. Large binary/log/certificate bundles and failed collector revisions are not committed. A future observation must recapture actual hashes and full ownership; canonical callback replay alone does not prove whole-Run equivalence.
+
+## Opcode2 portrait creation: source contract
+
+Opcode 2 now directly calls CreateVmVariant0 on its selected live resource and publishes the returned ID to the enemy-portrait slot. The only production edit removes `loaded == NULL ? 0 : `. Exact character acceptance (0 or 1), stage routing, signed message-index comparison, resource loads, scripts, layer and publication destination are unchanged. All source bytes outside opcode 2, including target-supported opcode 13 guards and the preceding opcode 19 correction, remain identical. No build-profile, ABI, translation-unit, attribute, volatile, floating-point or padding changes were made.
+
+Existing target evidence at 0x416127..0x41623B contains six unguarded calls to 0x448D00: 0x416154/0x416177 use enemy resource +0x38 and script 0x20 for stage 6; 0x4161B4/0x4161D8 use that resource and script 0x25 for stage 7 with signed messageIndex < 1; 0x416209/0x41622D otherwise use player resource +0x10 and script 0x1E. Each accepts only characters 0/1, passes layer 15 and publishes to message +0x44. The earlier native candidate contains the unsupported null-resource skip-create/zero path at 0x40124D..0x401254. This existing native evidence is not a new build of this proposal.
+
+The maintained portrait test matrix covers 768 combinations: both supported characters and six invalid/extreme characters, twelve stage values, and eight signed message indices including INT_MIN/INT_MAX. It checks all three routes, exact scripts/resources/layer, exactly one creation, returned-ID publication, invalid-character no-op behavior, other IDs and message/profile/GUI/VM sentinels. Existing common advance/timer checks remain active. The unchanged opcode 1/3 and opcode 13 tests remain in the suite. A separate structural contract rejects the original null-fallback source; valid-object behavioral tests alone cannot distinguish that guard.
+
+All execution assumes live owner, message and selected resource objects. No null-member C++ call is tested, and no claim is made about the target callee's behavior for a null resource. Host extraction and sanitizer tests validate only their documented semantic seams, not native ABI, exact bytes, function sizes or target execution; sanitizer leak checking is disabled by the maintained driver.
+
+This correction is based on checkpoint b50600da8fc2adb86cddcd95f7befd2b70c313d7. The preceding opcode19 native observation belongs to its stated source hash; it is not a new native result for this correction. This section records source and host-test evidence only. Whole-owner native validation and canonical-unit replay remain separate requirements.
+
+Validation: all 13 interpreter selections pass normally and under ASan/UBSan; all 28 existing strict mutation controls, 11 opcode 19 controls and 15 additional portrait controls are detected. Original-guard structural negative control, isolated patch application and raw output comparisons pass. Both changed files retain CRLF with zero bare LF.
+
+src/Gui.cpp before: 0264d2a32bab3b5c359d8e9d8aba02f9ff1eaa67e0e0f1cd619f729c9e954ce1
+
+src/Gui.cpp after: 5d6c8b4826177eb6680df37ecb75dbcfab4a57fbb6eb69dcdb2293eca1f0864c
+
+scripts/fixtures/gui-message-run.cpp before: 4a63d766200298dfab4d0dcaf5b485c800600de58b0a5a1639cac697db94162e
+
+scripts/fixtures/gui-message-run.cpp after: 39ef1e0ef1224e3fe9dc95c1ef421205a64edc14989c04b7990821f3a4d09f1d
+
+The portable structural and mutation control is maintained in scripts/test-gui-portrait-creation.py. Its output path must not already exist. For a fresh run:
+
+```sh
+work=$(mktemp -d)
+scripts/repo-python scripts/test-gui-portrait-creation.py --out "$work/portrait"
+scripts/repo-python scripts/test-gui-portrait-creation.py --sanitize --no-mutations --out "$work/sanitized"
+```
+
+Both commands use the maintained interpreter extraction and fixture. The CI wrapper uses its own temporary parent with a fresh child path, without replacing existing output.
+
+## Opcode 2 native observation
+
+The subsequent canonical replay records eleven exact units across seven producers (912 matched bytes); this does not confer whole-Run exactness. Replay SHA-256: `a1c8b1a1ebfb3e13e9879b805120f4b70031a81219fb799dae18d3bf37e6a8e6`. Immutable input freeze SHA-256: `8a9cc1ae7fcaa0f5fbceeaaa2edc702080255b47095f6f08aff34b29e4b922e1`. Retained native evidence SHA-256: `e4e47690e0f6ea46b8dc0111dd85492c968f38c79a6a8b95028e7f30b88d01c9`. The observation binds Gui.cpp SHA-256 `5d6c8b4826177eb6680df37ecb75dbcfab4a57fbb6eb69dcdb2293eca1f0864c`; the PE SHA-256 is `15808f2a2e67ff28b39ac65e50e229a0c138fcf394784b13646bdf9495d6a551` (PDB GUID `3d9e3063e250ad438727bad6191fc759`, age 1).
+
+Independent provenance review accounts for all 113 frozen inputs, fourteen full-path objects, 47 required whole owners, twelve referenced callbacks and 1076 code contributions. All 1075 non-Run contributions and all 36 selected non-Run owners retain identical raw bytes and starts; 440 anchors are unchanged.
+
+Independent local static review confirms that opcode 2 removes exactly the earlier 12-byte resource-null skip/zero-publication alternative. Its real creation call is now at 0x401258 and full-dword enemy-portrait publication at 0x40125F. Exact character 0/1 acceptance, stage 6 enemy +0x38/script 0x20, stage 7 signed messageIndex < 1 enemy +0x38/script 0x25, otherwise player +0x10/script 0x1E, layer 15 and common-tail routing are retained. The target's six separately emitted creation arms remain distinct from the candidate's single merged call; no byte-exact equivalence is claimed.
+
+Whole Run is 4020 bytes: 3845 executable, three padding bytes and four tables totalling 172 bytes. All 43 table destinations preserve their semantic roles, and all 163 HIGHLOW fields are checked as address operands or table words. GNU independently agrees with the retained candidate and target executable-span instruction boundaries. The production source change is confined to opcode 2. Beyond opcode 2, native code-generation differences are confined to an added ECX copy in opcode 3 and scratch-register/address-calculation scheduling in opcodes 7/8; reviewed resource/field reads, call order, arguments and publication effects are preserved. Every other physical opcode region, including opcode 13/19/20 and the common tail, retains instruction bytes and referents after masking only validated address/relative fields. Run's executable span shrinks by ten bytes; padding grows by two, for an eight-byte owner reduction.
+
+Updater-to-Run stack receiver and RET4 remain intact, as do the creation call's stack arguments/EDI return temporary, real creation callee RET12 and both completion-route EDI receivers. These are bounded static code-generation findings. No generated PE was executed. Existing anchor/storage/runtime, private-ABI, null-callee and nonexact whole-owner limitations remain; no aggregate-progress claim follows from this observation.
