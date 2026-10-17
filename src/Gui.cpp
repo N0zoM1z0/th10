@@ -864,7 +864,7 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
                 gui->specialVmId9E14.value = 0;
                 {
                     AnmLoadedView *loaded = gui->frontAnm;
-                    gui->specialVmId9E14.value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x4c, GUI_VM_RENDER_LAYER).value;
+                    gui->specialVmId9E14.value = loaded->CreateVmVariant0(0x4c, GUI_VM_RENDER_LAYER).value;
                 }
                 g_MainSupervisorView.SetNextGameMode(0x0b);
                 th10::leaf::Fn004175E0(g_GameStageState);

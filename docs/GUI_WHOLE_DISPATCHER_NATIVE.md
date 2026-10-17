@@ -687,3 +687,134 @@ Use a different nonexistent leaf for each run and inspect nested proof status;
 diagnostic exit0 alone is not acceptance. Detailed code, binaries and receipts
 remain ignored; the final checkpoint contains only the four reviewed source,
 focused-test, CI and documentation paths.
+
+## Isolated opcode20 ordinary-stage creation: source proposal
+
+This separate proposal starts from accepted checkpoint
+`7aa6a10a05015d2541018fa26be2b178b4fd8018`, including the conditional opcode18
+review above. It does not use either archived HOLD experiment. Only opcode20's
+ordinary-stage creation expression changes: remove the resource-null ternary
+around `CreateVmVariant0(0x4c, GUI_VM_RENDER_LAYER)`. The existing stage6/7 paths,
+difficulty table, target layer15 and dispatcher control flow are retained.
+
+The source preserves the target's ordering and owner captures: capture the GUI,
+mark its existing special VM for deletion, zero that captured GUI's slot, then
+load its front resource and create script0x4c at layer15. Publish the complete
+returned ID to that same captured slot, select mode0x0b, then advance the stage
+using the game-state owner. This requires a live resource; it does not specify
+behavior for a null member-call receiver or arbitrary invalid objects.
+
+The focused driver uses the existing complete Run fixture with generated live
+creation/advance callbacks. It checks stages1–5, full-width returned IDs, captured
+GUI publication despite callback replacement, zero/deletion ordering, resource,
+script/layer, mode-before-advance and dispatcher continuation. The deletion flag
+is a state witness, not an exact deletion-call-count proof. Deletion-to-resource
+load ordering is checked structurally; no deletion callback seam is introduced.
+It also exercises the accepted guarded form on the same valid-object domain. Null-skip changes are
+structural controls only; no null C++ member call is executed. The existing Run
+mutation catalogue receives literal anchor updates only, retaining its original
+mutation names, selections, order and strict expected outcomes.
+
+CI invokes `scripts/test-gui-stage-complete20.py` exactly once with a fresh child
+output directory. Reproduce with
+`python scripts/test-gui-stage-complete20.py --out NEW_OUTPUT`; use
+`--sanitize --no-mutations` for positive sanitizer checks. Test results require
+their terminal receipts; this source proposal alone makes no test-pass claim.
+Native validation was pending at source-proposal freeze; the bounded findings
+below supersede that status. Final exact-file verification and complete CI remain
+required before committing. The earlier opcode18 domain remains conditional.
+
+## Isolated opcode20: conditional native review
+
+This comparison uses accepted opcode18 evidence directly. Gui.cpp remains
+`f65128ba8708668362dc6f6cb98a30afdd7faf0e20431fe312e1375147f1c251`;
+fresh evidence JSON is
+`efa40c08ea81d66eef0b7e7383aab5f99caaaa670815298d5da1229cd134fefb`;
+Run owner is
+`9fbd2aae14db60aec712a8c3064ba64ab68b82c7231582dc760240d10e240fdd`.
+Campaign bindings are freeze
+`9eb5aa13380e29eaf9d29df46b344a408950aa4e7e1b0a0af615fa04fd666ed6`,
+plan `81123def44e2594908343bb64cf4ad6dd207c95746da271014d4534e1976bb41`,
+replay `240af78efc6589f7bdb6ba1a6ada2c8ada34cc3831ab1e0302f97ac8f45057de`,
+and PE/PDB artifact manifest
+`a6761a7cdb495cfde08d3d4d72b78d61658b6102262b378fc60cdcd2e9b23d4f`.
+Complete owners and operands were checked remotely with pinned GNU and Capstone;
+no fresh native bytes were exported or native runtime executed.
+
+Only opcode20 and collateral opcode21 have normalized Run changes. Opcode20's
+157-instruction strict prefix leads to the ordinary-stage suffix. Four paired
+call snapshots retain all eight GPRs, explicit stack/output cells and ordered
+memory events. Complete current deletion, creator, mode and advance contracts
+qualify the differing inputs. Creator output-pointer correspondence is conditional;
+it does not assert return EAX equals entry EDI or universal nested EBP/EDI
+preservation. Mode and advance preserve the differing EDX; three common-loop
+instructions kill it before read and rejoin data/register state. Advance's final
+ADD defines all arithmetic flags. Both native versions load the resource before
+zeroing the captured slot; this identical compiler order is distinct from the
+source's zero-then-load ordering and is explicitly modeled.
+
+On both opcode21 stage routes, changed EAX/EDX scratch values remain unread through
+the scaled helper's related x87 computations and branches until the exact intended
+117-byte CRT conversion body. Its complete 37-instruction proof establishes full
+EAX/EDX kills before any incoming-alias read and no incoming/undefined arithmetic
+flag consumption, with the prior private-frame proof rebound to the same body.
+The qualified queue helper then gives related GPR/memory/x87 exits. Undefined AF
+is retained until the common-loop CMP, with seven instructions checked before
+all flags rejoin. The exact intended CRT implementation is an explicit external
+premise: actual executable CRT dispatch and probe-anchor storage are not proved.
+
+The accepted live-owner/resource domain, related entry memory and private frames,
+matched stack/output cells, equal nonarithmetic flags and coupled normal external
+calls/callbacks/allocation remain required. Callees must not inspect differing
+return addresses or unpassed caller frames. The added x87 proof requires related
+initial stack/control/status and floating-point memory, and only normal successful
+x87-store paths; exceptions, no-store continuations, faults and asynchronous
+interference are excluded. These are conditional premises, not runtime guarantees.
+
+All remaining normalized Run regions, 43 table-destination roles, 148 bound call
+roles, frame216 and two returns retain correspondence. HUD remains 3,772 bytes
+with normalized code/table roles unchanged. Run is 4,484 bytes: 4,310 executable,
+two padding and 172 table bytes, with 1,157 instructions and 182 relocation fields.
+It remains nonexact versus target4,480; no size-based or new exact credit follows.
+The registered 11-unit/seven-producer/912-byte regression is a separate scope.
+Broader 195 unresolved referents, 427 operand-boundary cases and one relative-owner
+observation remain outside bounded provenance. No whole-program or unconditional
+runtime equivalence follows; earlier failed/HOLD experiments remain preserved.
+
+Conditional composition report:
+`57b5f30fc70b490f6524e640134af9e43ab0d2d0f6dcc5ab0633098aa5df8633`.
+Bounded provenance report:
+`432d3fc5e2609259278c370c5c22e363175e8d05c0390b84855976a843d19b16`.
+The composition binds the actual ordinary-call and scaled/CRT receipts; initial
+model-layer obligations are not substituted for the completed helper proofs.
+The reviewed narrow decoder corrections retain undefined IMUL SF and shift OF,
+and admit only the exact CRT FSUBP implicit-ST0 spelling with unchanged semantics.
+Intel SDM sources: [IMUL undefined flags](https://cdrdv2-public.intel.com/868140/253666-089-sdm-vol-2a.pdf),
+[SHL undefined overflow for counts greater than one](https://cdrdv2-public.intel.com/789581/325383-sdm-vol-2abcd.pdf),
+and [FSUBP DE E9 subtraction/pop semantics](https://cdrdv2-public.intel.com/868137/325462-089-sdm-vol-1-2abcd-3abcd-4.pdf).
+
+Native reproduction requires the pinned campaign sources/tools and matching
+pre-update documentation SHA
+`a185bc9f5ee08bf49a14008e597ebc5266e201b3290586e3c70cc8e770925604`.
+This frozen text is preserved as `native-doc-before.md`; native scripts pin those
+bytes, while maintained host tests and final CI use the final documented source.
+With all pinned campaign inputs and proof modules verified in that matching frozen
+snapshot, set
+`STRUCTURAL_TOOLS="$PWD/.analysis/gui-opcode20-stage-complete/semantic-review-tools"`.
+Run `scripts/repo-python -B "$STRUCTURAL_TOOLS/verify.py" --root "$PWD"
+--config "$STRUCTURAL_TOOLS/binding.actual.json"
+--config-sha256 e1cfdfe483c3879054c8a4df7949f6867d6248c85b2dcbeaf02b5f80db164457
+--work "$PWD/.analysis/gui-opcode20-stage-complete/NEW_STRUCTURAL_LEAF"`.
+The actual ordinary and scaled runners are respectively
+`.analysis/gui-opcode20-stage-complete/call-v3-tools/run_v4.py` and
+`.analysis/gui-opcode20-stage-complete/scaled-proof-tools/run.py`;
+invoke each with `scripts/repo-python -B RUNNER` and required arguments
+`--root "$PWD" --tools "$STRUCTURAL_TOOLS" --work
+"$PWD/.analysis/gui-opcode20-stage-complete/NEW_UNUSED_LEAF"`.
+Use a distinct nonexistent leaf for every invocation, and inspect nested proof
+statuses rather than treating diagnostic exit0 as acceptance. These are verified
+campaign reproductions with matching frozen inputs, not permission to bypass
+source pins after the documentation update. Native proof tools, raw code and
+detailed receipts remain ignored artifacts. The checkpoint contains only the five
+reviewed source, focused-test, mutation-anchor, CI and documentation paths; this
+update changes documentation only.
