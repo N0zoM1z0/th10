@@ -170,12 +170,11 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             return -1;
 
         case GUI_MSG_SHOW_PLAYER_PORTRAIT:
-            if (g_Player != NULL &&
-                (g_GuiCharacter == 0 || g_GuiCharacter == 1))
+            if (g_GuiCharacter == 0 || g_GuiCharacter == 1)
             {
                 {
                     AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_Player->resource);
-                    message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
+                    message->vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = loaded->CreateVmVariant0(0x1d, GUI_VM_RENDER_LAYER).value;
                 }
             }
             break;
@@ -238,11 +237,10 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
 
         case GUI_MSG_SHOW_TEXT_BOX:
-            if (g_GuiView != NULL)
             {
                 {
                     AnmLoadedView *loaded = g_GuiView->frontAnm;
-                    message->vmIds[GUI_MESSAGE_TEXT_BOX].value = loaded == NULL ? 0 : loaded->CreateVmVariant0(0x5a, GUI_VM_RENDER_LAYER).value;
+                    message->vmIds[GUI_MESSAGE_TEXT_BOX].value = loaded->CreateVmVariant0(0x5a, GUI_VM_RENDER_LAYER).value;
                 }
             }
             break;

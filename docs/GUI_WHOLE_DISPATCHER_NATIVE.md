@@ -512,3 +512,59 @@ live-owner/resource assumptions, physical storage/alias limits, HUD countdown
 reload and nonfinite/FP residuals persist. No whole-producer/runtime equivalence,
 new exact credit or whole-Run target equality is established. Logs, binaries and
 route-model artifacts remain outside Git.
+
+## Opcodes 1/3: direct creation within the supported live-object domain
+
+The bounded Gui.cpp change removes exactly four unsupported alternatives: opcode 1's player-owner-null skip, opcode 3's GUI-owner-null skip, and each opcode's resource-null zero-ID fallback. Opcode1 still rejects every character except 0/1 before owner access; its character arms remain grouped. Opcodes 2/13 and all other production bytes are unchanged.
+
+Complete target caller and CreateVmVariant0/Initialize/script-helper evidence supports direct calls with player resource+0x10/script0x1D or GUI resource+0x9EC8/script0x5A, layer 15, and one returned-ID publication to the retained message+0x40/+0x48. The caller has no owner/resource-null alternative. Complete bounded callee exports have SHA-256 `a63289b495601b3ad2f15ac7fe5719d881e8ebe979032e8bbe212be4790a60dc`, `8fb3c8bf482f96408de806340ccdcc7c7c283acb1b4fdba38ba3fd84f909e916` and `a8629fa85232015feb67cd0e665054e99a611c65fe0e0055fefb567f0d6d89a6`. The script helper reads resource+0x11C at 0x43E7E2 and the selected table entry at 0x43E7E8 before its first conditional. Readable table slots for 0x1D/0x5A remain prerequisites even when an entry is null. Later null-script VM clearing is distinct from a null-resource zero-ID fallback.
+
+Selected paths require complete live owner/resource/message objects, a readable script table and index domain, and the downstream allocation/render-manager/lifecycle prerequisites. The host tests use complete live C++ objects behind a recording/return creation seam; they do not establish fully initialized runtime ANM resources or real table readiness. No null C++ member call is executed, and no invalid-pointer fault/return outcome, gameplay bug fix or all-input/native exactness is claimed.
+
+The maintained `scripts/test-gui-direct-creation.py` passes 2,800 live-object combinations and 50 synthetic live-owner callback witnesses, plus 31 exact intended-CHECK controls. Direct and old-guarded forms both pass that positive matrix in ordinary and ASan/UBSan runs; old guards are rejected structurally only, never counted as semantic mutation kills. Callbacks test retained receiver/resource selection and publication ordering without claiming actual callee effects. Five 560-case returned-ID batches plus one callback batch retain 120-second compile/15-second run bounds. Whole-Run 13 selections/28 controls and sanitized positives also pass with the current chain helpers. CI uses a fresh temporary child output directory for the new driver without altering existing helpers/catalogs.
+
+The preceding source/host evidence is retained historically. Fresh bounded native verification is recorded below. A final complete CI pass is required before committing this checkpoint.
+
+## Opcodes 1/3: bounded native verification
+
+The current source `c653c01c37fc5c6a31293e124cd78e5532de13f5ff30e1c2c6a248269c6708ad`
+passed the canonical 11-unit/seven-producer/912-byte regression. Provenance checks
+cover 129 frozen inputs, all 83 source inventory entries, 14 full-path objects,
+47 required whole owners and 12 callbacks. Four exact binding JSON hashes:
+- replay `f78963a7d47d5bea5d6e33964a7f3348e2c18615a671267dd8ec4acf70a60c30`;
+- freeze `a84c91ffa463982176d70b1d906f3640c8c97c80b5ad493c47a86624e58d2255`;
+- plan `9710746b4c2824a104d0f66f7d563ab9ef43585e4b1576a0bac7c4add1c7d6ab`;
+- artifacts `7994ac5489a345aa435be465f94a430d9043466b4e86a5def2a1382885f6d306`.
+Decoded evidence: `7946828836073228389c3f187c8e5a8f6ef77e67e72574c878ad9c4d3d447123`.
+
+Fresh machine bytes remained remote. Parent-executed, hash-pinned verifier V4
+returned PASS_BOUNDED; local review used its complete compact receipt, not fresh
+raw-byte inspection. Sixteen decoded direct-path cases (ten accepted) retain
+opcode1's exact 0/1 gate and opcode3's ungated path, resource/script/layer roles,
+one returned-ID publication and common completion, with no owner/resource branch.
+The complete unchanged 73-byte creator and 118-byte insertion helper establish
+EDI hidden output, stack resource/script/layer, RET 12 and the delegated ID write.
+The guarded baseline separately passes valid-domain interpretation and is rejected
+at the specific OWNER_RESOURCE_BRANCH check. These are static models, not gameplay.
+
+The original strict comparator proves 22/24 collateral regions and retains its
+MANUAL_NEEDED result. A separately reviewed, fail-closed value-flow proof closes
+only opcode2/7 (12 and one symbolic paths), checking fixed live-ins, ordered calls
+and writes, implicit helper ABI, flags/edges, exact local/aggregate slots and
+live-outs. This is not blanket register masking. All 43 table destinations retain
+their roles; the combined proofs close all 24 collateral regions. Frame/private
+ABI checks retain 16 slot correspondences without slot renaming. HUD remains
+3,772 bytes with all 21 calls, seven table roles and normalized code unchanged.
+Whole Run is 4,504 bytes: 4,329 executable, three padding and 172 table bytes;
+182 HIGHLOW fields are accounted for. It remains nonexact against the 4,480-byte target.
+
+Semantic report `23770e40da12e5a2880d72821ef11a8560173c9c7deaa08ec53c54b9bd6aa9ae`;
+compact receipt `b77b3c86a343fdb99e1019be8a079618ff7cc53d18de9a3ea096cc6e4348e778`;
+provenance report `71ec8df78dd4a47fc3bde39bedb0d54dcaf163bdc4e5e0f35626b282bff5bb1f`.
+Earlier V1/V2 verifier bugs were corrected and their failed checks superseded;
+these were verifier repairs, not production changes. Detailed artifacts remain ignored.
+The 198 broader unresolved referents and 159 unqualified operand boundaries remain
+outside the required-owner/HUD/shared-producer registered-unit scope; these are
+separate unresolved categories. Live-object,
+physical storage/alias, private ABI and prior FP/nonfinite/reload limits persist.
+No whole-producer/runtime equivalence, null-safety or new exact credit follows.
