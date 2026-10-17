@@ -24,7 +24,7 @@ void fixture::ClearPublishedOwner(Id id) {
     default: CHECK(false && "unrecognized cleanup owner");
     }
 }
-int GameFinalizeStatistics42B1E0(GameStatisticsRowView *statistics) {
+int GameFinalizeStatistics42B1E0(GameStatisticsOwner *statistics) {
     using namespace fixture;
     CHECK(statistics == g_GameStatisticsRows);
     CHECK(g_GameRuntimeFlags == expectedInitialFlags);

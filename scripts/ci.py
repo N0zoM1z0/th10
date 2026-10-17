@@ -52,6 +52,7 @@ def main() -> int:
         run("Validate conditional hint arithmetic", [sys.executable, "scripts/test-hint-frame-arithmetic.py"])
         run("Validate hint lifecycle contracts", [sys.executable, "scripts/test-hint-lifecycle.py", "--skip-mutations"])
         run("Validate GameManager cleanup contract", [sys.executable, "scripts/test-game-manager-teardown.py", "--baseline-only"])
+        run("Validate statistics save contract", [sys.executable, "scripts/test-game-statistics-save.py", "--baseline-only"])
         run("Validate GUI reset event order", [sys.executable, "scripts/test-gui-reset-order.py"])
         run("Validate music-room state and parsers", [sys.executable, "scripts/test-music-room-state.py"])
         run("Validate stage script state and callback", [sys.executable, "scripts/test-stage-script-state.py"])

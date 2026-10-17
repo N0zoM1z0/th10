@@ -64,7 +64,6 @@ def audit_seams(root, source, fixture):
     hint = canonical(root, 'Hint.hpp')
 
     for signature in [
-        'int GameFinalizeStatistics42B1E0(GameStatisticsRowView *statistics);',
         'void __stdcall GameCleanupController422220(GameChainOwnerView *owner);',
         'void __stdcall GameCleanupGui4145F0(GameGuiUpdateView *owner);',
         'void __stdcall GameCleanupAnimation405F70(GameChainOwnerView *owner);',
@@ -97,9 +96,20 @@ def audit_seams(root, source, fixture):
                                  ('ItemManager.hpp', '~ItemManagerView();')]:
         require(destructor in canonical(root, filename), 'genuine destructor boundary absent: ' + filename)
     game_types = ['GameManager', 'GameChainElementView', 'GameChainOwnerView', 'GameMenuView',
-                  'GameGuiUpdateView', 'GameAdditionalChainView', 'GameStatisticsRowView']
+                  'GameGuiUpdateView', 'GameAdditionalChainView']
     fixture = fixture.replace('@GAME_DECLARATIONS@', 'struct GameChainElementView;\n' + '\n'.join(
         balanced(source, 'struct ' + name + '\n', True) for name in game_types))
+    statistics = canonical(root, 'GameStatistics.hpp')
+    require('intGameFinalizeStatistics42B1E0(GameStatisticsOwner*statistics);' in normalized(statistics),
+            'statistics save declaration drift')
+    require('externGameStatisticsOwner*g_GameStatisticsRows;' in normalized(statistics),
+            'statistics canonical slot declaration drift')
+    begin = '// GAME_STATISTICS_X86_LAYOUT_BEGIN'
+    end = '// GAME_STATISTICS_X86_LAYOUT_END'
+    require(statistics.count(begin) == 1 and statistics.count(end) == 1, 'statistics host seam drift')
+    statistics = statistics[:statistics.index(begin)] + statistics[statistics.index(end) + len(end):]
+    statistics = statistics.replace('#pragma once', '')
+    fixture = statistics + '\n' + fixture
     fixture = fixture.replace('@CHAIN_DECLARATIONS@', canonical(root, 'Chain.hpp'))
     fixture = fixture.replace('@VM_ID_DECLARATIONS@', canonical(root, 'AnmVmId.hpp').replace('#pragma once', '/* amalgamated header: pragma once removed */'))
     fixture = fixture.replace('@FLOAT3_DECLARATION@', balanced(anm, 'struct AnmFloat3View\n', True))

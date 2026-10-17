@@ -11,6 +11,7 @@
 #include "ReplayManager.hpp"
 #include "Enemy.hpp"
 #include "GameScoreState.hpp"
+#include "GameStatistics.hpp"
 #include "Gui.hpp"
 #include "StageScript.hpp"
 
@@ -99,16 +100,8 @@ struct GameAdditionalChainView
     u8 unknown0010[0x379c];
     GameChainElementView *extraChain;
 };
-struct GameStatisticsRowView
-{
-    u8 unknown000[0x4c8];
-    int sessionStarts;
-    int activeFrames;
-    u8 unknown4D0[0x3eac];
-};
 typedef char GameManagerTimerAt10[(offsetof(GameManager, stageTimer) == 0x10) ? 1 : -1];
 typedef char GameManagerFlagsAt58[(offsetof(GameManager, m_Flags) == 0x58) ? 1 : -1];
-typedef char GameStatisticsStride437C[(sizeof(GameStatisticsRowView) == 0x437c) ? 1 : -1];
 typedef char GameAdditionalChainAt37AC[(offsetof(GameAdditionalChainView, extraChain) == 0x37ac) ? 1 : -1];
 
 extern GameMenuView *g_GameMenu;                       // 0x4776E4
@@ -125,7 +118,6 @@ extern GameAdditionalChainView *g_GameOwner4776F4;
 extern EnemyManagerView *g_EnemyManager;
 extern GameGuiUpdateView *g_GameGuiUpdate;              // 0x47770C
 extern GameStageUpdateView *g_GameStageUpdate;          // 0x477848
-extern GameStatisticsRowView *g_GameStatisticsRows;     // 0x47783C
 extern unsigned char g_GameWorkerState[];              // 0x492254
 extern unsigned char g_GameMusicState[];               // 0x492590
 extern unsigned char g_GameSoundState[];               // 0x491C28
@@ -287,8 +279,8 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
 
     if (g_ReplayManager->mode != REPLAY_MANAGER_PLAYBACK)
     {
-        GameStatisticsRowView &row =
-            g_GameStatisticsRows[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
+        GameStatisticsRecord &row =
+            g_GameStatisticsRows->records[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
         if (row.activeFrames < 215999999)
             ++row.activeFrames;
     }
@@ -302,14 +294,6 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
     return 1;
 }
 
-struct GameStageStatisticView
-{
-    u8 unknown000[0x18];
-    int initialScore;
-    u8 unknown01C;
-    signed char startupValue1D;
-    u8 unknown01E[0xd2];
-};
 // The target clears these two eight-byte spans through floating zero stores;
 // their original member types are not established by this partial storage view.
 struct GameFpsResetView
@@ -318,7 +302,6 @@ struct GameFpsResetView
     double pair24;
     double pair2C;
 };
-typedef char GameStageStatisticStrideF0[(sizeof(GameStageStatisticView) == 0xf0) ? 1 : -1];
 typedef char GameManagerModeAt5C[(offsetof(GameManager, initializationMode) == 0x5c) ? 1 : -1];
 typedef char GameChainOwnerAt20[(offsetof(GameChainElementView, owner) == 0x20) ? 1 : -1];
 
@@ -391,13 +374,12 @@ int __stdcall GameManagerInitialize(GameManager *manager)
     {
         if (g_GameStartupMode == 7)
             g_GameStartingStage = 4;
-        GameStatisticsRowView *statistics = g_GameStatisticsRows;
-        GameStatisticsRowView &row =
-            statistics[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
-        GameStageStatisticView &stage =
-            reinterpret_cast<GameStageStatisticView *>(&row)[g_GameStartingStage];
-        g_GameScoreState.unknown00 = stage.initialScore;
-        g_GameStartupValue474C94 = stage.startupValue1D;
+        GameStatisticsOwner *statistics = g_GameStatisticsRows;
+        GameStatisticsRecord &row =
+            statistics->records[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
+        int startingStage = g_GameStartingStage;
+        g_GameScoreState.unknown00 = row.StageInitialScore(startingStage);
+        g_GameStartupValue474C94 = row.StageStartupValue(startingStage);
         if ((g_GameRuntimeFlags & 8) == 0)
             g_GameStartupValue474C90 = 0;
         g_GameScoreState.score = 0;
@@ -412,8 +394,8 @@ int __stdcall GameManagerInitialize(GameManager *manager)
         g_GameRuntimeFlags &= ~4;
         if (manager->initializationMode == 0)
         {
-            GameStatisticsRowView &startRow =
-                statistics[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
+            GameStatisticsRecord &startRow =
+                statistics->records[g_GameStatisticsIndex1 + g_GameStatisticsIndex0 * 3];
             if (startRow.sessionStarts < 99999)
                 ++startRow.sessionStarts;
         }
@@ -498,7 +480,6 @@ failed:
 
 // Genuine unresolved dependencies: no native substitute implementations.
 // Private target EBX/EAX receiver assignments are not source ABI declarations.
-extern int GameFinalizeStatistics42B1E0(GameStatisticsRowView *statistics);
 extern void __stdcall GameCleanupController422220(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupGui4145F0(GameGuiUpdateView *owner);
 extern void __stdcall GameCleanupAnimation405F70(GameChainOwnerView *owner);

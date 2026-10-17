@@ -24,7 +24,7 @@ void Reset(const Scenario &s) {
     g_MainSupervisorView.options = s.options;
     g_MainSupervisorView.criticalSectionLockCounts[0] = initialDepth;
     for (int i = 0; i < 7; ++i) g_MainSupervisorView.criticalSections[i].tag = i;
-    static GameStatisticsRowView statistics;
+    static GameStatisticsOwner statistics;
     g_GameStatisticsRows = &statistics;
     ascii.asciiAnm = &loaded;
     ascii.auxiliaryVm89A4 = s.existingVm ? 712 : 0;
