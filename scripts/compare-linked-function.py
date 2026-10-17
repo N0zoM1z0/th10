@@ -14,6 +14,7 @@ from linked_image import (
     PEImage,
     linked_code_fields,
     linked_functions,
+    static_owner_selector,
     map_publics,
     verify_capstone,
 )
@@ -179,6 +180,8 @@ def compare_unit(name: str) -> dict[str, object]:
     if unit.get("artifact_kind") != "linked-pe":
         raise ValueError("this comparator requires an explicit linked-PE artifact kind")
 
+    static_owner = static_owner_selector(unit)
+
     with TOOLS_LOCK.open("rb") as stream:
         decoder_identity = verify_capstone(tomllib.load(stream)["capstone"])
 
@@ -186,7 +189,8 @@ def compare_unit(name: str) -> dict[str, object]:
     image_path = directory / "source.exe"
     map_path = directory / "source.map"
     pdb_path = directory / "source.pdb"
-    linked = linked_functions(image_path, map_path, pdb_path)
+    linked = (linked_functions(image_path, map_path, pdb_path) if static_owner is None
+              else linked_functions(image_path, map_path, pdb_path, static_owner=static_owner))
     primary_source = str(unit["source"]).replace("\\", "/")
     pdb_source = str(unit.get("pdb_source", primary_source)).replace("\\", "/")
     if pdb_source == primary_source:
@@ -375,6 +379,13 @@ def compare_unit(name: str) -> dict[str, object]:
         "candidate_address": f"0x{candidate_address:08X}",
         "extent_source": function["extent_source"],
         "pdb_module_index": function["pdb_module_index"],
+        **({"owner_selection": {
+            "visibility": "static", "pdb_source": pdb_source,
+            "expected_object": static_owner["object"],
+            "map_object": function["map_object"], "pdb_object": function["pdb_object"],
+            "section_number": function["section_number"],
+            "section_offset": function["section_offset"],
+        }} if static_owner is not None else {}),
         "decoded_bytes": field_report["decoded_bytes"],
         "normalization_complete": field_report["normalization_complete"],
         "data_spans": data_spans,

@@ -1,0 +1,64 @@
+{
+  "provenance": {
+    "map_sha256": "4a1d794ca989c85957f58ed2acb2b9360050bdfee628cb6b67b93f3d4a300806",
+    "map_read_command": "repository-command:4d5a2a2e32f545ca9da0c6ba7bc3b51a",
+    "image_sha256": "be43ae4683089b2b3ad9f11070cd71cf6580d5c4c79559d781c935f608a3b6c3",
+    "pdb_guid": "94849ba15da1bc4d85376c4865c26645",
+    "pdb_age": 1,
+    "scope": "Four real MAP rows and PDB contribution metadata only; no target or native binary bytes."
+  },
+  "image_path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/diagnostic-effect-67ced17fff5d-b9d7aabf42b1/source.exe",
+  "map_lines": [
+    " Timestamp is 6ad32c94 (Sat Oct 17 08:06:44 2026)",
+    " Preferred load address is 00400000",
+    " Static symbols",
+    " 0001:00027510       ?TransitionDrawScreen@@YIHPAX@Z 00428510 f   support-09-TransitionEffect.ltcg.obj",
+    " 0001:00027620       ?TransitionDrawPlayfield@@YIHPAX@Z 00428620 f   support-09-TransitionEffect.ltcg.obj",
+    " 0001:00027770       ?TransitionDrawDimPlayfield@@YIHPAX@Z 00428770 f   support-09-TransitionEffect.ltcg.obj",
+    " 0001:00027860       ?TransitionDrawPulse@@YIHPAX@Z 00428860 f   support-09-TransitionEffect.ltcg.obj"
+  ],
+  "contributions": [
+    {
+      "section_number": 1,
+      "section_offset": 161040,
+      "size": 134,
+      "characteristics": 1615859744,
+      "module_index": 8,
+      "module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj",
+      "object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj"
+    },
+    {
+      "section_number": 1,
+      "section_offset": 161312,
+      "size": 68,
+      "characteristics": 1615859744,
+      "module_index": 8,
+      "module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj",
+      "object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj"
+    },
+    {
+      "section_number": 1,
+      "section_offset": 161648,
+      "size": 68,
+      "characteristics": 1615859744,
+      "module_index": 8,
+      "module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj",
+      "object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj"
+    },
+    {
+      "section_number": 1,
+      "section_offset": 161888,
+      "size": 74,
+      "characteristics": 1615859744,
+      "module_index": 8,
+      "module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj",
+      "object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj"
+    }
+  ],
+  "module": {
+    "index": 8,
+    "module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj",
+    "object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\diagnostic-effect-67ced17fff5d-b9d7aabf42b1\\support-09-TransitionEffect.ltcg.obj",
+    "debug_stream": 17
+  }
+}

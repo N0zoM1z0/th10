@@ -12,6 +12,7 @@ MSF7_SIGNATURE = b"Microsoft C/C++ MSF 7.00\r\n\x1aDS\0\0\0"
 DBI_SECTION_CONTRIB_V60 = 0xEFFE0000 + 19970605
 DBI_SECTION_CONTRIB_V2 = 0xEFFE0000 + 20140516
 IMAGE_SCN_CNT_CODE = 0x00000020
+IMAGE_SCN_MEM_EXECUTE = 0x20000000
 IMAGE_REL_BASED_HIGHLOW = 3
 
 
@@ -418,6 +419,168 @@ def map_publics(path: Path | str) -> list[dict[str, object]]:
     return result
 
 
+def static_owner_selector(unit: dict[str, object]) -> dict[str, object] | None:
+    """Validate the opt-in selector without changing legacy public selection.
+
+    The object is derived from the fixed producer graph, never supplied as an
+    arbitrary manifest override. This is selection only, not retention/linkage.
+    """
+    visibility = unit.get("owner_visibility", "public")
+    if not isinstance(visibility, str) or visibility not in ("public", "static"):
+        raise LinkedImageError("owner_visibility must be public or static")
+    if "owner_visibility" in unit and unit.get("artifact_kind") != "linked-pe":
+        raise LinkedImageError("owner_visibility requires a linked-pe artifact")
+    if visibility == "public":
+        return None
+
+    def source_path(value: object) -> str:
+        if (not isinstance(value, str) or not value or "\\" in value
+                or ":" in value or any(part in ("", ".", "..") for part in value.split("/"))):
+            raise LinkedImageError("static owner requires canonical repository-relative source paths")
+        return value
+
+    primary = source_path(unit.get("source"))
+    owner = source_path(unit.get("pdb_source"))
+    supports = unit.get("support_sources", [])
+    normals = unit.get("normal_support_sources", [])
+    if not isinstance(supports, list) or not isinstance(normals, list):
+        raise LinkedImageError("static owner source lists must be arrays")
+    supports = [source_path(value) for value in supports]
+    normals = [source_path(value) for value in normals]
+    if (len(set(supports)) != len(supports) or primary in supports
+            or len(set(normals)) != len(normals) or not set(normals).issubset(supports)):
+        raise LinkedImageError("static owner has an ambiguous producer source graph")
+    if owner == primary:
+        object_name = "source.ltcg.obj"
+    elif owner in supports:
+        kind = "normal" if owner in normals else "ltcg"
+        object_name = f"support-{supports.index(owner):02d}-{Path(owner).stem}.{kind}.obj"
+    else:
+        raise LinkedImageError("static owner pdb_source must be its primary or support source")
+    symbol = unit.get("symbol")
+    size = unit.get("size")
+    if not isinstance(symbol, str) or not symbol or any(char.isspace() for char in symbol):
+        raise LinkedImageError("static owner requires one exact symbol")
+    if (type(size) is not int or size <= 0
+            or type(unit.get("compare_size", size)) is not int
+            or unit.get("compare_size", size) != size):
+        raise LinkedImageError("static owner requires one exact whole positive extent")
+    if unit.get("data_spans"):
+        raise LinkedImageError("static owner cannot declare data spans")
+    return {"symbol": symbol, "object": object_name, "size": size}
+
+
+def map_statics(path: Path | str) -> list[dict[str, object]]:
+    """Read only the actual Static symbols section; never reinterpret publics."""
+    in_statics = False
+    seen_header = False
+    result = []
+    for line in Path(path).read_text(encoding="cp1252", errors="replace").splitlines():
+        if line.strip() == "Static symbols":
+            if seen_header:
+                raise LinkedImageError("duplicate linker-map Static symbols section")
+            in_statics = seen_header = True
+            continue
+        if not in_statics or not line.strip():
+            continue
+        match = MAP_PUBLIC_RE.match(line)
+        if match is None:
+            # No subsequent MAP section is supported by this narrow selector.
+            raise LinkedImageError("invalid line in linker-map Static symbols section")
+        section, offset, symbol, address, remainder = match.groups()
+        tokens = remainder.split()
+        result.append({
+            "section_number": int(section, 16), "section_offset": int(offset, 16),
+            "symbol": symbol, "address": int(address, 16),
+            "flags": tokens[:-1], "object": tokens[-1],
+        })
+    return result
+
+
+def _object_basename(value: object) -> str:
+    return str(value).replace("\\", "/").rsplit("/", 1)[-1].lower()
+
+
+def _object_path(value: object) -> str:
+    # The maintained driver passes absolute winepath names. Support its Z:
+    # root mapping only; other drive mappings require independently known paths.
+    path = str(value).replace("\\", "/")
+    if path[:3].lower() == "z:/":
+        path = path[2:]
+    if not path.startswith("/") or any(part in (".", "..") for part in path.split("/")):
+        raise LinkedImageError("static PDB owner requires an absolute supported object path")
+    return path.lower()
+
+
+def _static_function(image: PEImage, publics: list[dict[str, object]],
+                     statics: list[dict[str, object]], pdb: dict[str, object],
+                     selector: dict[str, object]) -> dict[str, object]:
+    """Join one qualified MAP static to exactly one same-start PDB owner."""
+    if (set(selector) != {"symbol", "object", "size"}
+            or not isinstance(selector["symbol"], str) or not selector["symbol"]
+            or not isinstance(selector["object"], str) or not selector["object"]
+            or _object_basename(selector["object"]) != selector["object"].lower()
+            or type(selector["size"]) is not int or selector["size"] <= 0):
+        raise LinkedImageError("invalid qualified static owner selector")
+    expected = _object_basename(selector["object"])
+    matches = [row for row in statics if row["symbol"] == selector["symbol"]
+               and _object_basename(row["object"]) == expected]
+    if len(matches) != 1:
+        raise LinkedImageError(f"expected one qualified MAP static, found {len(matches)}")
+    selected = matches[0]
+    start = (selected["section_number"], selected["section_offset"])
+    collisions = [row for row in publics + statics
+                  if (row["section_number"], row["section_offset"]) == start]
+    if len(collisions) != 1:
+        raise LinkedImageError("static owner has a colliding MAP start")
+    contributions = [row for row in pdb["contributions"]
+                     if (row["section_number"], row["section_offset"]) == start]
+    if len(contributions) != 1:
+        raise LinkedImageError("static owner requires one unique same-start PDB contribution")
+    contribution = contributions[0]
+    modules = [row for row in pdb["modules"] if _object_basename(row["object"]) == expected]
+    if (len(modules) != 1 or modules[0]["index"] != contribution["module_index"]
+            or _object_basename(contribution["object"]) != expected):
+        raise LinkedImageError("static owner PDB object is wrong or ambiguous")
+    expected_path = _object_path(image.path.resolve().parent / str(selector["object"]))
+    if (_object_path(contribution["object"]) != expected_path
+            or _object_path(modules[0]["object"]) != expected_path):
+        raise LinkedImageError("static PDB object leaves its producer output directory")
+    # A MAP basename is normal; a qualified MAP owner must agree in full.
+    if any(char in str(selected["object"]) for char in ("/", "\\", ":")):
+        if _object_path(selected["object"]) != expected_path:
+            raise LinkedImageError("static MAP object leaves its producer output directory")
+    section_number, section_offset = map(int, start)
+    section = image.section(section_number)
+    required = IMAGE_SCN_CNT_CODE | IMAGE_SCN_MEM_EXECUTE
+    if ("f" not in selected["flags"]
+            or int(contribution["characteristics"]) & required != required
+            or section.characteristics & required != required):
+        raise LinkedImageError("static owner is not executable code")
+    size = int(contribution["size"])
+    if size != selector["size"]:
+        raise LinkedImageError("static owner PDB extent differs from manifest")
+    for other in pdb["contributions"]:
+        if other is contribution or other["section_number"] != section_number:
+            continue
+        other_start, other_size = int(other["section_offset"]), int(other["size"])
+        if other_size > 0 and other_start < section_offset + size and section_offset < other_start + other_size:
+            raise LinkedImageError("static owner overlaps another PDB contribution")
+    address = image.image_base + section.rva + section_offset
+    if selected["address"] != address:
+        raise LinkedImageError("linker map static VA disagrees with PE section layout")
+    code = image.read_section(section_number, section_offset, size)
+    return {
+        "symbol": selected["symbol"], "address": f"0x{address:08X}", "size": size,
+        "extent_source": "pdb-section-contribution", "owner_visibility": "static",
+        "section": section.name, "section_number": section_number,
+        "section_offset": section_offset, "map_object": selected["object"],
+        "pdb_module_index": contribution["module_index"],
+        "pdb_module": contribution["module"], "pdb_object": contribution["object"],
+        "sha256": hashlib.sha256(code).hexdigest(),
+    }
+
+
 def linked_code_fields(
     image: PEImage,
     publics: list[dict[str, object]],
@@ -522,7 +685,8 @@ def linked_code_fields(
 
 
 def linked_functions(
-    image_path: Path | str, map_path: Path | str, pdb_path: Path | str
+    image_path: Path | str, map_path: Path | str, pdb_path: Path | str,
+    *, static_owner: dict[str, object] | None = None,
 ) -> dict[str, object]:
     image = PEImage(image_path)
     publics = map_publics(map_path)
@@ -580,6 +744,12 @@ def linked_functions(
                     "sha256": hashlib.sha256(code).hexdigest(),
                 }
             )
+    if static_owner is not None:
+        selected = _static_function(image, publics, map_statics(map_path), pdb, static_owner)
+        functions.append(selected)
+        unowned = [row for row in unowned if
+                   (row["section_number"], row["section_offset"]) !=
+                   (selected["section_number"], selected["section_offset"])]
     functions.sort(
         key=lambda item: (int(str(item["address"]), 0), str(item["symbol"]))
     )

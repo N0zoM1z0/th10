@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from linked_image import static_owner_selector
+
 import argparse
 from collections import defaultdict
 import json
@@ -42,6 +44,8 @@ def load_units() -> dict[str, dict[str, object]]:
         raise ValueError("match-units.toml [units] must be a table")
     if not all(isinstance(unit, dict) for unit in units.values()):
         raise ValueError("every match unit must be a table")
+    for unit in units.values():
+        static_owner_selector(unit)
     return units
 
 
@@ -87,6 +91,7 @@ def replay(
     groups: dict[tuple[object, ...], list[str]] = defaultdict(list)
     for name in names:
         unit = units[name]
+        static_owner_selector(unit)
         kind = str(unit["artifact_kind"])
         if kind == "coff":
             key = (

@@ -41,6 +41,7 @@ def main() -> int:
         validate_public_tree()
         run("Compile workflow Python", [sys.executable, "-m", "py_compile", *tracked("scripts/*.py")])
         run("Validate LTCG entry identity guards", [sys.executable, "scripts/test-ltcg-entry.py"])
+        run("Validate qualified static owners", [sys.executable, "scripts/test-static-owner-selection.py"])
         run("Validate replay payload order", [sys.executable, "scripts/test-replay-payload-order.py"])
         run("Validate lexical HUD message phase", [sys.executable, "scripts/test-gui-message-phase.py"])
         run("Validate lexical HUD boss-gauge phase", [sys.executable, "scripts/test-gui-boss-gauge-phase.py"])

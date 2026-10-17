@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+from linked_image import static_owner_selector
+
 import argparse
 from collections import Counter
 from pathlib import Path
@@ -126,6 +128,7 @@ def load() -> dict[str, object]:
         missing = [field for field in required if field not in unit]
         if missing:
             raise ValueError(f"unit {name!r} lacks {', '.join(missing)}")
+        static_owner_selector(unit)
         kind = str(unit["artifact_kind"])
         if kind not in SUPPORTED_ARTIFACTS:
             raise ValueError(f"unit {name!r} has unsupported artifact_kind {kind!r}")
