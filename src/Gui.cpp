@@ -709,12 +709,10 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
 
         case GUI_MSG_EVENT_18:
             FrontEndPlayMusic(1, g_GameStageUpdate->value28);
-            if (g_GuiView != NULL)
-                {
-                    AnmLoadedView *loaded = g_GuiView->stageUiAnm;
-                    if (loaded != NULL)
-                        loaded->CreateVmVariant0(2, GUI_VM_RENDER_LAYER).value;
-                }
+            {
+                AnmLoadedView *loaded = g_GuiView->stageUiAnm;
+                loaded->CreateVmVariant0(2, GUI_VM_RENDER_LAYER).value;
+            }
             break;
 
         case GUI_MSG_ENEMY_NAME:

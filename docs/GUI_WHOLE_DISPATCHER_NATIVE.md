@@ -568,3 +568,122 @@ outside the required-owner/HUD/shared-producer registered-unit scope; these are
 separate unresolved categories. Live-object,
 physical storage/alias, private ABI and prior FP/nonfinite/reload limits persist.
 No whole-producer/runtime equivalence, null-safety or new exact credit follows.
+
+
+## Archived opcode12 and combined opcode1 experiment; isolated opcode18 proposal
+
+The later standalone opcode12 receiver-chain experiment remains HOLD. Its valid
+local call/capture checks did not close cross-region private-slot aliases, saved
+values, nested-callee stack behavior or the remaining runtime contracts. The
+combined opcode1/opcode12 experiment also remains HOLD: Run was 4,496 bytes with
+frame220, versus target4,480/frame216. Local creation models and bounded
+provenance passed, but these did not establish whole-Run equivalence. All43 table
+entries were examined; five opcode20 destination blocks shared five-instruction
+mnemonic sequences while strict/shape blocks and successor identities differed.
+All43 target block correspondences remained unresolved. No size-based acceptance,
+new exact credit or transitive acceptance through the held opcode12 followed.
+Broader197 unresolved referents and209 unqualified operand boundaries remain
+separate categories, outside the qualified required-owner/registered/HUD scope.
+
+Both experiments were archived and the accepted c6a249 checkpoint restored by
+command3ba6e0bc4c914632ab746c6b0a784ec6. The ignored archive is
+`.analysis/gui-opcode1-character-arms/rollback-combined-20261017`: all seven raw
+candidate files survive, five tracked files were restored and two new drivers
+moved into the archive. All124 other frozen inputs remained unchanged; Git was
+clean at the same accepted HEAD. Native evidence and prior HOLD records remain
+ignored, with no history rewrite or artifact staging.
+
+The isolated opcode18 source proposal starts from accepted raw Gui.cpp c653c01c,
+not either held candidate. It removes only the two GUI/resource null skips after
+music. Target416A91–416ABE captures the music argument, calls music, reloads the
+GUI and stageUiAnm+0x9E80 afterward, then creates script2/layer15 and discards the
+returned ID. Valid live GUI/resource/manager/VM and readable script-table
+preconditions remain explicit; null-member calls are not tested or justified.
+
+The new `scripts/test-gui-stage-event18.py` uses complete extracted Run with
+existing host seams and synthetic music/creation callbacks. Fifteen live-object
+cases per form exercise callback replacement and returned IDs, and both candidate
+and accepted guarded forms pass these valid-domain cases. Three structural
+controls distinguish removed skips;13 mutants require exact intended CHECK
+termination. Compile errors, crashes, sanitizer diagnostics and timeouts fail.
+ASan/UBSan positives and the existing Run13 selections/28 controls passed in the
+local source packet. CI invokes the focused driver once with a fresh temporary
+child output directory. Native validation was pending at the source-proposal
+stage; the bounded results below supersede that pending status. A final complete
+CI pass is required before committing this checkpoint. Existing private-ABI,
+storage/alias and FP limitations persist.
+
+## Isolated opcode18: conditional native review
+
+This checkpoint compares directly with accepted guard evidence, not either held
+experiment. Gui.cpp SHA-256 is
+`0fe90ced01f0b69e84d98d3ce1c78ce0cf506e8f50da8ae3b5c55a7984e4ec8d`.
+Fresh evidence JSON: `1c2a378a0d5cfc123d5f8c5aad116b680d3f4b3c27853aacac7d1945d3832a53`;
+Run owner: `8f438eb8b449009768ecd1b0cc94b56f809e61f1a0fd609af7b148b0c4ea6c9b`.
+Exact campaign bindings are freeze
+`e325ab06de883ae5fbfed8c176381493b87dd5a81ee1dba438ec3f6f3f6b125f`, plan
+`94d4f0ae6c7ee37f7becdf63b09d78c2257ebe12d057d7aa7997a234e6434f97`, replay
+`8bad1474a936c0c4204899f55208bb95b5fd7412cfc5eb359489eb4d05209421`, and PE/PDB artifact manifest
+`b6a01ad1d3d265156e981b69a265937234c9e9238f7ba36e7efe8737b3cd9153`.
+All 130 frozen inputs, 83 source members, 14 objects, 47 real owners and 12 callbacks
+passed; the existing 11-unit/seven-producer/912-byte regression passed separately.
+
+Fresh machine bytes stayed remote. Reviewed, hash-bound scripts checked complete
+owners, GNU/locked-decoder agreement and operand roles, returning compact receipts.
+Opcode18 has 13 instructions versus the guard's 17: music arguments and ordering,
+post-call GUI/resource reload, script2/layer15, discarded ID and continuation agree.
+Call snapshots agree except creator-entry EAX/ECX; separate fresh helper proofs
+kill those inputs and incoming arithmetic flags before use. Snapshot comparison
+alone does not qualify flags or establish arbitrary EBP/EDI preservation.
+
+Only opcode19/20 have collateral normalized changes. All seven opcode19 table
+arms retain ordered arguments, exact output-cell aliases and memory-read traces.
+Their actual per-arm ECX/EDX differences are bound to a separate fresh kill proof;
+conditional publication and common-loop rejoin close all seven arms. Opcode20
+rejoins all eight registers, data and ordered reads at instruction9, with 172
+strictly unchanged suffix instructions. Its undefined PF/AF/ZF/SF dependencies
+are killed before use on both paths: caller CMP or the first three instructions
+of the complete 413-byte transition helper. No later runtime call graph is expanded.
+
+These compose only under live valid objects/resources, disjoint private frames,
+related entry memory and matched explicit stack/output aliases, normal sequential
+nonfaulting execution, equal nonarithmetic flags, and coupled normal external
+call/callback/allocation behavior. Callees must not inspect differing control-return
+addresses or unpassed caller frames. EBP/EDI outcomes follow relationally under
+these premises; the premises are not discovered runtime or storage guarantees.
+
+All other Run regions, all 43 table-destination roles, frame216 and private
+entry/return structure retain their qualified correspondence. HUD remains 3,772
+bytes with normalized code and table roles unchanged. Run is 4,488 bytes:
+4,314 code, two padding and 172 table bytes, with 182 relocation fields and two
+returns. It remains nonexact versus target4,480; no size-based or new exact credit.
+Broader 197 unresolved referents and 209 unclassified operand boundaries remain
+separate categories outside the qualified owner/HUD/shared registered-unit scope.
+Probe-anchor storage, invalid-input, exception/concurrency and prior FP limitations
+remain open; no unconditional runtime or whole-producer equivalence follows.
+
+Composition report: `b6308eedcad6fa303a79a8c09551bcd4e0a268adabb9e442959b525f9e4ee7b8`.
+Provenance report: `709a667b97aa636b2a64e1d60248ad4b0b9ee134889badfb2d10a1aa868de42e`.
+Earlier failed/HOLD receipts remain preserved; the initial flags failure was a
+historical helper-body pin mismatch, followed by a separately reviewed fresh-body
+binding and proof. Neither archived source experiment is promoted by this result.
+
+For reproduction, run the maintained host driver with a fresh output path:
+`python scripts/test-gui-stage-event18.py --out NEW_OUTPUT`
+(and `--sanitize --no-mutations` for positive sanitizer checks), then complete CI.
+Native proof tools and receipts are ignored campaign artifacts, not Git sources.
+Native verification requires the matching frozen pre-append source snapshot,
+including documentation SHA `70a16d132536415bd9d881bc78362ba2a3040e087511c6d689a6ae1f8cd3f325`
+(saved as `native-doc-before.md`); maintained host tests use the final source.
+With the reviewed manifests/source/evidence pins verified, run each tool with
+`--root "$PWD" --work "$PWD/.analysis/gui-opcode18-stage-event/NEW_UNUSED_LEAF"`:
+`verify.py`, `verify_snapshots.py`, `verify_flags_v2.py`,
+`verify_volatile_dependency.py`, `verify_collateral_symbolic.py`,
+`verify_opcode19_volatile_dependency.py`, and `verify_opcode20_flag_suffix.py`.
+For `verify.py` and `verify_snapshots.py`, also pass
+`--config ABS_TOOL_DIRECTORY/binding.actual.json --config-sha256 b1ba3e87462534878a7f60235b6a22e4d9ac6796a16373b631e087a8ad74731b`;
+the other tools load that exact pinned configuration beside their scripts.
+Use a different nonexistent leaf for each run and inspect nested proof status;
+diagnostic exit0 alone is not acceptance. Detailed code, binaries and receipts
+remain ignored; the final checkpoint contains only the four reviewed source,
+focused-test, CI and documentation paths.

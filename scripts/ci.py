@@ -64,6 +64,8 @@ def main() -> int:
             run("Validate canonical replay mode controls", [sys.executable, "scripts/test-gui-replay-mode.py", "--root", str(ROOT), "--out", str(Path(output) / "run")])
         with tempfile.TemporaryDirectory(prefix="gui-enemy-portrait-sprites-ci-") as output:
             run("Validate enemy portrait sprite controls", [sys.executable, "scripts/test-gui-enemy-portrait-sprites.py", "--root", str(ROOT), "--out", str(Path(output) / "run")])
+        with tempfile.TemporaryDirectory(prefix="gui-stage-event18-ci-") as output:
+            run("Validate stage event18 controls", [sys.executable, "scripts/test-gui-stage-event18.py", "--root", str(ROOT), "--out", str(Path(output) / "run")])
         with tempfile.TemporaryDirectory(prefix="gui-direct-creation-ci-") as output:
             run("Validate direct creation caller controls", [sys.executable, "scripts/test-gui-direct-creation.py", "--root", str(ROOT), "--out", str(Path(output) / "run")])
         with tempfile.TemporaryDirectory(prefix="gui-portrait-creation-ci-") as output:
