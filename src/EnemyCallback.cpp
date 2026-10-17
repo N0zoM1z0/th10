@@ -1,23 +1,7 @@
 #include "Enemy.hpp"
-
-// Keep the global's type identical to its established Enemy.cpp declaration.
-struct EnemyVisualStateView
-{
-    unsigned char unknown000[0x9da4];
-    unsigned int flags9DA4;
-};
-
-struct EnemyCallbackVisualStateView
-{
-    unsigned char unknown000[0x9ec0];
-    int phaseCountdownSeconds;
-};
-typedef char EnemyVisualPhaseCountdownAt9EC0[
-    (offsetof(EnemyCallbackVisualStateView, phaseCountdownSeconds) == 0x9ec0)
-        ? 1 : -1];
+#include "Gui.hpp"
 
 extern float g_PlayerTimerScale;
-extern EnemyVisualStateView *g_EnemyVisualState;
 extern int g_EnemyTimeoutValue;
 
 // Target 0x004127A0-0x004129F0 is called from both callback checkpoints in
@@ -110,8 +94,7 @@ const unsigned char *__fastcall EnemyResolveRuntimeCallback(
                 60;
             if (seconds > 99)
                 seconds = 99;
-            reinterpret_cast<EnemyCallbackVisualStateView *>(
-                g_EnemyVisualState)->phaseCountdownSeconds = seconds;
+            g_GuiView->spellSeconds = seconds;
 
             if (enemy->updateTimer.current <
                 enemy->callbackThresholds[callbackIndex].timerThreshold)

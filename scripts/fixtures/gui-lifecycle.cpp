@@ -14,6 +14,20 @@ struct AnmVmTimerView {int previous,current;float subframe;};
 struct AnmFloat3View {float x,y,z;};
 struct GuiMessageInstructionView {};
 @GUI_DECLARATIONS@
+// HOST CONSTRUCTION SEAM (one definition): parameter matches the copied real
+// declaration. This creates a live fixture object and initializes test state;
+// it does not execute or validate the production message constructor/effects.
+// The complete source-extracted message destructor below remains unchanged.
+static unsigned char hostMessageRecord;
+static int hostMessageConstructorCalls;
+GuiMessageVmView::GuiMessageVmView(const unsigned char *record)
+    : messageIndex(0), lifetimeTimer(), instructionTimer(), waitTimer(),
+      vmIds(), unknown58(0), currentInstruction(NULL), textPositions(),
+      inputCooldown(0), flags(0), alternatingLine(0), activeSide(0), textColors()
+{
+    CHECK(record==&hostMessageRecord);
+    ++hostMessageConstructorCalls;
+}
 namespace th10 {
 struct ChainElem {int prio;unsigned flags;};
 struct Chain {int tag;static void UnregisterElem(ChainElem *,Chain *);};
@@ -159,7 +173,9 @@ static void Initialize(unsigned flags,int callbackMask,bool haveMessage,bool hav
  active->specialVmId9E14.value=201;active->specialVmId9E18.value=202;active->bossGaugeVmId.value=203;active->specialVmId9E50.value=204;
  for(int i=0;i<10;++i) {active->bossGaugeSegmentVmIds[i].value=300+i;}active->bossGaugeSegmentCount=10;
  active->messageFile=haveFile?Alloc(900):NULL;g_GuiRetainedMessageFile491BE8=&oldLoaded;
- messageAllocation=haveMessage?new GuiMessageVmView():NULL;active->message=messageAllocation;
+ hostMessageConstructorCalls=0;
+ messageAllocation=haveMessage?new GuiMessageVmView(&hostMessageRecord):NULL;active->message=messageAllocation;
+ CHECK(hostMessageConstructorCalls==(haveMessage?1:0));
  if(messageAllocation){Remember(messageAllocation,950);for(int i=0;i<6;++i)messageAllocation->vmIds[i].value=600+i;}
  memberTags.clear();memberDestructors.clear();
  int tag=0;for(auto &v:active->displayVms0) {memberTags[&v]=tag;v.generatedVertices=Alloc(tag++);}for(auto &v:active->displayVms1) {memberTags[&v]=tag;v.generatedVertices=Alloc(tag++);}

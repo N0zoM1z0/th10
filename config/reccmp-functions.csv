@@ -964,3 +964,6 @@ CreateHintOwner,0x00419090,function
 HintOwnerView::OnUpdate,0x004198A0,function
 GuiView::DrawStageElements,0x00415800,function
 DrawColoredRectangle,0x0043BDA0,function
+GuiMessageVmView::GuiMessageVmView,0x00415B00,function
+EnemyKillAll,0x0040E6A0,function
+EnemyReadDialog,0x00415DB0,function

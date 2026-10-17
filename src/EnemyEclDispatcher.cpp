@@ -194,12 +194,6 @@ struct EnemyPrimaryResourceOwnerView
 };
 
 struct EnemyManagedVmView;
-struct EnemyVisualStateView
-{
-    unsigned char unknown000[0x9eb8];
-    void *activeDialog;
-    unsigned char *dialogTable;
-};
 struct EnemyBulletPatternCopyView
 {
     unsigned int words[0x84];
@@ -233,7 +227,6 @@ extern int g_EnemyDifficulty;
 extern EnemyManagerView *g_EnemyManager;
 extern EnemyGameStateView *g_EnemyGameState;
 extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
-extern EnemyVisualStateView *g_EnemyVisualState;
 extern void *g_EnemyBulletManager;
 extern PlayerFloat3 g_EnemyGlobalPositionOffset;
 extern PlayerFloat3 g_EnemyInterpolationOrigin;
@@ -633,28 +626,23 @@ static __declspec(noinline) void EnemySetChapter(
     state->chapterTimer = 0;
 }
 extern void __stdcall EnemySetMotionAngle(EnemyMotionView *motion, float angle);
-extern void *__stdcall EnemyInitializeDialog(
-    void *storage, const unsigned char *record);
 extern int g_EnemyDialogIndex;
 extern int g_EnemyDialogState;
 
-static __declspec(noinline) void EnemyReadDialog(
-    EnemyVisualStateView *visualState, int index)
+static void EnemyReadDialog(GuiView *gui, int index)
 {
-    void *storage = ::operator new(0x90);
-    void *dialog = 0;
-    if (storage != 0) {
-        unsigned char *table = visualState->dialogTable;
-        int offset = *reinterpret_cast<int *>(table + 4 + index * 8);
-        dialog = EnemyInitializeDialog(storage, table + offset);
-    }
-    visualState->activeDialog = dialog;
-    *reinterpret_cast<int *>(dialog) = index;
+    GuiMessageVmView *dialog = new GuiMessageVmView(
+        static_cast<unsigned char *>(gui->messageFile) +
+        *reinterpret_cast<int *>(static_cast<unsigned char *>(gui->messageFile) +
+            4 + index * 8));
+    gui->message = dialog;
+    dialog->messageIndex = index;
     int nextIndex = index + 1;
-    if (g_EnemyDialogIndex != nextIndex) {
+    int previousIndex = g_EnemyDialogIndex;
+    g_EnemyDialogIndex = nextIndex;
+    if (previousIndex != nextIndex) {
         g_EnemyDialogState = 0;
     }
-    g_EnemyDialogIndex = nextIndex;
 }
 static __declspec(noinline) AnmFloat3View *EnemyGetAnmPosition(
     const AnmFloat3View *position)
@@ -1882,9 +1870,8 @@ dispatch_initialize_polar_interpolation:
     local_2a8 = (float)fVar19;
     iVar26 = *(int *)((int)runtimeAddress + 0x13c4);
     uVar23 = ENEMY_READ_INT_DIRECT(0);
-    iVar27 = reinterpret_cast<int>(g_EnemyVisualState);
-    *(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9e98 + (int)uVar23 * 8) = (int)uVar22;
-    *(float *)(iVar27 + 0x9e94 + (int)uVar23 * 8) = local_2a8 / (float)iVar26;
+    g_GuiView->bossGaugeValues[(int)uVar23].color = (unsigned int)uVar22;
+    g_GuiView->bossGaugeValues[(int)uVar23].value = local_2a8 / (float)iVar26;
     return 0;
   case ENEMY_ECL_SET_DAMAGE_HITBOX:
     fVar19 = (ReadFloatArgument(0));
@@ -1962,15 +1949,14 @@ dispatch_initialize_polar_interpolation:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     *(int *)((int)runtimeAddress + 0x13c0) = (int)uVar22;
     *(int *)((int)runtimeAddress + 0x13c4) = (int)uVar22;
-    iVar26 = reinterpret_cast<int>(g_EnemyVisualState);
-    *(unsigned int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9e94) = 0;
-    *(unsigned int *)(iVar26 + 0x9e98) = 0;
-    *(unsigned int *)(iVar26 + 0x9e9c) = 0;
-    *(unsigned int *)(iVar26 + 0x9ea0) = 0;
-    *(unsigned int *)(iVar26 + 0x9ea4) = 0;
-    *(unsigned int *)(iVar26 + 0x9ea8) = 0;
-    *(unsigned int *)(iVar26 + 0x9eac) = 0;
-    *(unsigned int *)(iVar26 + 0x9eb0) = 0;
+    g_GuiView->bossGaugeValues[0].value = 0.0f;
+    g_GuiView->bossGaugeValues[0].color = 0;
+    g_GuiView->bossGaugeValues[1].value = 0.0f;
+    g_GuiView->bossGaugeValues[1].color = 0;
+    g_GuiView->bossGaugeValues[2].value = 0.0f;
+    g_GuiView->bossGaugeValues[2].color = 0;
+    g_GuiView->bossGaugeValues[3].value = 0.0f;
+    g_GuiView->bossGaugeValues[3].color = 0;
     *(unsigned int *)((int)runtimeAddress + 0x13c8) = *(unsigned int *)((int)runtimeAddress + 0x13c0);
     return 0;
   case ENEMY_ECL_SET_BOSS_SLOT:
@@ -2403,15 +2389,15 @@ dispatch_select_bullet_count_low:
     return 0;
   case ENEMY_ECL_READ_DIALOG:
     uVar22 = ENEMY_READ_INT_DIRECT(0);
-    EnemyReadDialog(g_EnemyVisualState, (int)uVar22);
+    EnemyReadDialog(g_GuiView, (int)uVar22);
     reinterpret_cast<EnemyCancelManagerView *>(
         g_EnemyPrimaryResourceOwner)->CancelAllBullets(0);
     EnemyApplyBulletClear(reinterpret_cast<EnemyEffectWaitManager *>(g_EnemyLaserManager), 0);
     EnemyKillAll(g_EnemyManager);
     return 0;
   case ENEMY_ECL_WAIT_DIALOG:
-    if ((*(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9eb8) != 0) &&
-       (*(int *)(*(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9eb8) + 0x78) == 0)) {
+    if (g_GuiView->message != 0 &&
+       g_GuiView->message->inputCooldown == 0) {
       return 0xffffffff;
     }
     break;
@@ -2825,7 +2811,7 @@ dispatch_rank_int_low:
     return 0;
   case ENEMY_ECL_SET_SPELL_TIMEOUT:
     uVar22 = ReadIntArgument(0);
-    *(int *)(reinterpret_cast<int>(g_EnemyVisualState) + 0x9e90) = (int)uVar22;
+    g_GuiView->bossGaugeSegmentCount = (int)uVar22;
     return 0;
   case ENEMY_ECL_WAIT_FOR_EFFECT:
     EnemyWaitForEffect(

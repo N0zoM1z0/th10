@@ -963,3 +963,6 @@ GuiCleanupResources
 GuiView::~GuiView
 GuiView::DrawStageElements
 DrawColoredRectangle
+GuiMessageVmView::GuiMessageVmView
+EnemyKillAll
+EnemyReadDialog

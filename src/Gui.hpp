@@ -62,6 +62,7 @@ struct GuiMessageVmView
     int activeSide;
     unsigned int textColors[2];
 
+    explicit GuiMessageVmView(const unsigned char *record);
     ~GuiMessageVmView();
     static int __stdcall Run(GuiMessageVmView *message);
 };

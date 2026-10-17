@@ -6,6 +6,7 @@
 #include "PlayerCollision.hpp"
 #include "AnmManager.hpp"
 #include "GuiScore.hpp"
+#include "Gui.hpp"
 #include "EnemySoundQueue.hpp"
 
 #include <math.h>
@@ -283,13 +284,7 @@ struct EnemyAnimationModeView
     unsigned char unknown000[0x28];
     int value28;
 };
-struct EnemyVisualStateView
-{
-    unsigned char unknown000[0x9da4];
-    unsigned int flags9DA4;
-};
 extern EnemyAnimationModeView *g_EnemyAnimationMode;
-extern EnemyVisualStateView *g_EnemyVisualState;
 
 // Descriptive interfaces for target-observed callees. Several target machine
 // boundaries use EAX/ESI/EDI live-ins; these declarations deliberately express
@@ -1126,7 +1121,7 @@ int __stdcall EnemyRuntimeUpdate(EnemyRuntimeView *enemy)
     {
         primaryVm->flags &= ~0x8000u;
         if ((enemy->flags & 0x8000u) != 0)
-            g_EnemyVisualState->flags9DA4 &= ~0x8000u;
+            g_GuiView->bossPositionVm.flags35C &= ~0x8000u;
         enemy->damageFlashFrames--;
     }
     else if ((enemy->flags & 0x2000u) != 0)

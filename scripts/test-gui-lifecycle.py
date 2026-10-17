@@ -2,6 +2,8 @@
 """Execute complete extracted GUI lifecycle bodies with real C++ member teardown.
 Host contracts only: copied complete GuiView/GuiMessage declarations, pointer-width
 neutral ANM/Win32 seams, real extracted Find/Mark and AnmVm destructor bodies.
+One explicit record-constructor host seam supplies lifecycle fixture setup only.
+The production message constructor body is not exercised by this suite.
 No target ABI/layout, SEH equivalence, native execution or byte-exactness claim.
 """
 from pathlib import Path
@@ -26,6 +28,8 @@ def material(root):
     declarations='\n'.join(block(h,k,True) for k in ['enum GuiMessageVmIdSlot\n','struct GuiMessageVmView\n','struct GuiBossGaugeValueView\n','struct GuiView\n'])
     for f in ['AnmVmView displayVms0[10];','AnmVmView displayVms1[10];','AnmVmView displayVms2[9];','AnmVmView displayVms3[4];','AnmVmView displayVms4[2];','AnmVmView displayVms5[7];','AnmVmView bossPositionVm;','~GuiView();','~GuiMessageVmView();']:
         need(f in declarations,'declaration drift '+f)
+    need(declarations.count('explicit GuiMessageVmView(const unsigned char *record);')==1,
+         'record-constructor declaration drift; lifecycle uses one explicit host seam')
     for f in ['void *generatedVertices;','AnmLoadedView *loadedAnms[33];','AnmVmLayerNodeView *primaryVmListHead;','AnmVmLayerNodeView *secondaryVmListHead;']:
         need(f in ah,'ANM seam field drift '+f)
     deps='\n'.join(block(a,k) for k in ['AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)','void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)','void AnmRenderManagerView::MarkLoadedVmsForDeletion(AnmLoadedView *loaded)','AnmVmView::~AnmVmView()'])
@@ -134,5 +138,8 @@ def main():
                 expected_line=check_line(candidate,expected)
                 need(p.returncode==1 and not p.stdout and p.stderr==f'GUI_LIFECYCLE_CHECK_FAILED line {expected_line}: {expected}\n','invalid declaration kill '+name+'\n'+p.stdout+p.stderr)
                 print('PASS intended CHECK header mutant '+name,flush=True)
+    print('HOST SEAM: 1 explicit GuiMessageVmView(record) constructor definition; setup only, no production construction coverage')
+    if not args.baseline_only:
+        print(f'PASS {len(MUTANTS)} strict body mutants + 2 strict header mutants; all existing controls retained')
     print('PASS complete extracted GUI lifecycle host contracts; no native/ABI/exactness credit')
 if __name__=='__main__': main()

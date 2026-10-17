@@ -27,7 +27,7 @@ struct EnemyFullObjectView;
 struct EnemyRuntimeView {unsigned flags,managedVmIds[8];struct{PlayerFloat3 position;}worldMotion;EnemyFullObjectView*owner;int damageFlashFrames,value13C8;AnmVmTimerView damageReductionTimer,playerCollisionTimer,updateTimer;};
 struct EnemyFullObjectView {EnemyRuntimeView runtime;};
 struct Player {EnemyFullObjectView*trackedEnemy;PlayerFloat3 drawPosition;unsigned char trackedEnemyValid;} player;Player*g_Player=&player;
-struct Visual{unsigned flags9DA4;}visual;Visual*g_EnemyVisualState=&visual;
+struct GuiView{struct{unsigned flags35C;}bossPositionVm;}gui;GuiView*g_GuiView=&gui;
 struct Game{unsigned flags378C;}game;Game*g_EnemyGameState=&game;
 struct EnemySoundQueueView{void QueueSoundCue(int,float);};
 static EnemySoundQueueView soundOwner;
@@ -41,7 +41,7 @@ void EnemySoundQueueView::QueueSoundCue(int id,float x){assert(reinterpret_cast<
 static void runTail(EnemyRuntimeView*enemy){
 '''+block+r'''
 }
-static void setup(){owner={};player={};visual={};game={};lookups.clear();sound=-1;missing=false;g_AnmRenderManagerView=&original;scale=0.5f;child={};
+static void setup(){owner={};player={};gui={};game={};lookups.clear();sound=-1;missing=false;g_AnmRenderManagerView=&original;scale=0.5f;child={};
  auto&e=owner.runtime;e.owner=&owner;e.flags=1;e.worldMotion.position={10,20,30};
  for(int i=0;i<8;++i){e.managedVmIds[i]=i+1;vms[i]={};vms[i].positionOffset={-1,-2,-3};}
  vms[0].layerNode.next=&child.layerNode;child.layerNode.owner=&child;
@@ -56,7 +56,7 @@ int main(){
  setup();owner.runtime.flags|=0xa000;game.flags378C=1;owner.runtime.value13C8=300;runTail(&owner.runtime);assert(sound==0x13);
  setup();owner.runtime.flags|=0xa000;game.flags378C=1;owner.runtime.value13C8=299;runTail(&owner.runtime);assert(sound==0x23);
  setup();owner.runtime.flags|=0xa000;game.flags378C=9;runTail(&owner.runtime);assert(sound==0x13);
- setup();owner.runtime.damageFlashFrames=2;owner.runtime.flags|=0xa000;vms[0].flags=0x8000;visual.flags9DA4=0x8000;runTail(&owner.runtime);assert(sound==-1&&owner.runtime.damageFlashFrames==1&&vms[0].flags==0&&visual.flags9DA4==0);
+ setup();owner.runtime.damageFlashFrames=2;owner.runtime.flags|=0xa000;vms[0].flags=0x8000;gui.bossPositionVm.flags35C=0x8000;runTail(&owner.runtime);assert(sound==-1&&owner.runtime.damageFlashFrames==1&&vms[0].flags==0&&gui.bossPositionVm.flags35C==0);
  setup();owner.runtime.damageReductionTimer.current=0;owner.runtime.playerCollisionTimer.current=-1;runTail(&owner.runtime);assert(owner.runtime.damageReductionTimer.subframe==3&&owner.runtime.playerCollisionTimer.subframe==4);
 }
 '''

@@ -54,6 +54,7 @@ def main() -> int:
         run("Validate GameManager cleanup contract", [sys.executable, "scripts/test-game-manager-teardown.py", "--baseline-only"])
         run("Validate statistics save contract", [sys.executable, "scripts/test-game-statistics-save.py", "--baseline-only"])
         run("Validate GUI lifecycle contract", [sys.executable, "scripts/test-gui-lifecycle.py", "--baseline-only"])
+        run("Validate GUI message construction and unwind contracts", [sys.executable, "scripts/test-gui-message-constructor.py", "--no-mutations"])
         run("Validate GUI draw contracts", [sys.executable, "scripts/test-gui-draw.py"])
         run("Validate laser owner bindings", [sys.executable, "scripts/test-laser-owner-binding.py", "--opt", "O2", "--no-mutations"])
         run("Validate rectangle contracts and strict mutations", [sys.executable, "scripts/test-anm-rectangle.py"])

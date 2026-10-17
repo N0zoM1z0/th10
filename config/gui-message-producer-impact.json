@@ -1,0 +1,396 @@
+{
+  "schema_version": 1,
+  "config": "config/match-units.toml",
+  "config_sha256": "2a0a98cb1963bf6d8daea859a8d4f06b1e87badfa64ccb166ed59ef3bae1beed",
+  "reviewed_member_patch_sha256": "a5083ce9e128fe6ca46f6af865f56cf6b11df25be1f46e315db88eaffae3ca22",
+  "source_inventory_sha256": "2aa6d0cc349b54038e8d7200eba0087d72e485841011e9359476d7b3c49dcee8",
+  "method": "Conservative transitive quoted-include closure over each source/support/normal_support; grouped by configured output directory (or object source/profile); archival units with no source excluded. New GuiMessage.cpp isolated diagnostic separate.",
+  "replay_policy": "Serial cold build once per group using the canonical representative, then compare every listed unit. Canonical config owns all source/profile/entry/linkage settings. The isolated GuiMessage member diagnostic is separate. Inventory only; no replay result is asserted.",
+  "group_count": 41,
+  "unit_count": 90,
+  "groups": [
+    {
+      "producer": "build/match-linked/EclVmHostRunEnemy",
+      "artifact_kind": "linked-pe",
+      "representative": "ecl-vm-host-run",
+      "units": [
+        "ecl-vm-host-run",
+        "ecl-vm-spawn-thread"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EclVmPolar",
+      "artifact_kind": "linked-pe",
+      "representative": "ecl-vm-polar-from-angle-magnitude",
+      "units": [
+        "ecl-vm-polar-from-angle-magnitude"
+      ]
+    },
+    {
+      "producer": "build/match-linked/Enemy",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-manager-constructor",
+      "units": [
+        "enemy-manager-constructor",
+        "enemy-spawn",
+        "enemy-ecl-resource-constructor",
+        "enemy-ecl-resource-destructor",
+        "enemy-ecl-release-allocations",
+        "enemy-ecl-host-constructor",
+        "enemy-ecl-host-destructor",
+        "enemy-ecl-context-constructor",
+        "enemy-ecl-resource-base-load-package",
+        "enemy-ecl-resource-base-get-script-data",
+        "enemy-ecl-resource-base-constructor",
+        "enemy-ecl-resource-base-destructor"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyLoadPackage",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-ecl-resource-load-package",
+      "units": [
+        "enemy-ecl-resource-load-package"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyResetEclState",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-ecl-reset-state",
+      "units": [
+        "enemy-ecl-reset-state"
+      ]
+    },
+    {
+      "producer": "build/match/Enemy.obj",
+      "artifact_kind": "coff",
+      "representative": "enemy-ecl-host-dispatch-default",
+      "units": [
+        "enemy-ecl-host-dispatch-default",
+        "enemy-ecl-host-read-int-default",
+        "enemy-ecl-host-resolve-int-default",
+        "enemy-ecl-host-read-float-default",
+        "enemy-ecl-host-resolve-float-default",
+        "enemy-manager-draw-callback",
+        "enemy-ecl-dispatch-forwarder",
+        "enemy-ecl-int-lvalue-resolver",
+        "enemy-ecl-float-lvalue-resolver"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyRuntimeCtor",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-runtime-constructor",
+      "units": [
+        "enemy-runtime-constructor"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyManagerUpdate",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-manager-update",
+      "units": [
+        "enemy-manager-update",
+        "enemy-manager-update-callback"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyRuntimeVector",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-runtime-vector",
+      "units": [
+        "enemy-runtime-vector"
+      ]
+    },
+    {
+      "producer": "build/match-linked/AnmVmIdSetInterrupt",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-vm-id-set-interrupt",
+      "units": [
+        "anm-vm-id-set-interrupt"
+      ]
+    },
+    {
+      "producer": "build/match-linked/AnmVmIdOperations",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-vm-id-set-flag2",
+      "units": [
+        "anm-vm-id-set-flag2",
+        "anm-vm-id-clear-flag2",
+        "anm-vm-id-release"
+      ]
+    },
+    {
+      "producer": "build/match/EnemyMotion.obj",
+      "artifact_kind": "coff",
+      "representative": "enemy-set-motion-angle",
+      "units": [
+        "enemy-set-motion-angle"
+      ]
+    },
+    {
+      "producer": "build/match/EnemyEclDispatcher.obj",
+      "artifact_kind": "coff",
+      "representative": "enemy-wrap-angle",
+      "units": [
+        "enemy-wrap-angle",
+        "enemy-set-chapter",
+        "enemy-set-laser-position",
+        "enemy-find-laser",
+        "enemy-configure-interrupt",
+        "enemy-wait-for-effect",
+        "enemy-apply-bullet-clear"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyDispatcherHelpers",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-mark-pending-interrupt",
+      "units": [
+        "enemy-mark-pending-interrupt",
+        "enemy-sound-queue-sample",
+        "enemy-sound-queue-cue",
+        "enemy-drop-vector-from-angle-radii",
+        "enemy-resolve-int-argument",
+        "enemy-enable-shield"
+      ]
+    },
+    {
+      "producer": "build/match-linked/GuiLivesDisplayCount",
+      "artifact_kind": "linked-pe",
+      "representative": "gui-set-lives-display-count",
+      "units": [
+        "gui-set-lives-display-count"
+      ]
+    },
+    {
+      "producer": "build/match-linked/PlayerResetRuntimeState",
+      "artifact_kind": "linked-pe",
+      "representative": "player-reset-runtime-state",
+      "units": [
+        "player-reset-runtime-state"
+      ]
+    },
+    {
+      "producer": "build/match-linked/GuiScoreAdd",
+      "artifact_kind": "linked-pe",
+      "representative": "gui-score-add",
+      "units": [
+        "gui-score-add"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyBulletBounds",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-bullet-playfield-bounds",
+      "units": [
+        "enemy-bullet-playfield-bounds"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndCursorPush",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-cursor-push",
+      "units": [
+        "frontend-cursor-push",
+        "frontend-cursor-pop",
+        "frontend-cursor-move",
+        "frontend-input-repeated"
+      ]
+    },
+    {
+      "producer": "build/match/FrontEnd.obj",
+      "artifact_kind": "coff",
+      "representative": "frontend-cursor-set-current",
+      "units": [
+        "frontend-cursor-set-current"
+      ]
+    },
+    {
+      "producer": "build/match-linked/AnmVmIdSetSprite",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-vm-id-set-sprite-own",
+      "units": [
+        "anm-vm-id-set-sprite-own",
+        "anm-vm-id-set-sprite-explicit"
+      ]
+    },
+    {
+      "producer": "build/match-linked/MainNextGameMode",
+      "artifact_kind": "linked-pe",
+      "representative": "main-set-next-game-mode",
+      "units": [
+        "main-set-next-game-mode"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyAngleFromPlayer",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-angle-from-player",
+      "units": [
+        "enemy-angle-from-player"
+      ]
+    },
+    {
+      "producer": "build/match-linked/AnmSetVmScriptIndex",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-set-vm-script-index-and-execute",
+      "units": [
+        "anm-set-vm-script-index-and-execute"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndDrawCallback",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-draw-callback",
+      "units": [
+        "frontend-draw-callback"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndUpdateCallback",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-update-callback",
+      "units": [
+        "frontend-update-callback"
+      ]
+    },
+    {
+      "producer": "build/match-linked/BulletRuntimeDeactivate",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-runtime-deactivate",
+      "units": [
+        "bullet-runtime-deactivate",
+        "bullet-position-bounds",
+        "bullet-update-deceleration"
+      ]
+    },
+    {
+      "producer": "build/match-linked/BulletHorizontalWrap",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-update-horizontal-wrap",
+      "units": [
+        "bullet-update-horizontal-wrap",
+        "bullet-update-polar-acceleration"
+      ]
+    },
+    {
+      "producer": "build/match-linked/BulletBoundaryBounce",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-update-boundary-bounce",
+      "units": [
+        "bullet-update-boundary-bounce"
+      ]
+    },
+    {
+      "producer": "build/match-linked/BulletState8",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-update-state8",
+      "units": [
+        "bullet-update-state8",
+        "bullet-update-relative-direction",
+        "bullet-update-aimed-direction"
+      ]
+    },
+    {
+      "producer": "build/match-linked/BulletRuntimeUpdate",
+      "artifact_kind": "linked-pe",
+      "representative": "bullet-runtime-update",
+      "units": [
+        "bullet-runtime-update",
+        "player-collision-check"
+      ]
+    },
+    {
+      "producer": "build/match-linked/AsciiManagerEnsureSelectionVm",
+      "artifact_kind": "linked-pe",
+      "representative": "ascii-manager-ensure-selection-vm",
+      "units": [
+        "ascii-manager-ensure-selection-vm"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndSetScreenState",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-set-screen-state",
+      "units": [
+        "frontend-set-screen-state",
+        "frontend-set-screen"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndDeleteVm",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-delete-vm",
+      "units": [
+        "frontend-delete-vm"
+      ]
+    },
+    {
+      "producer": "build/match-linked/EnemyLeafAccessors",
+      "artifact_kind": "linked-pe",
+      "representative": "enemy-decomphelp-leaf-cc10",
+      "units": [
+        "enemy-decomphelp-leaf-cc10",
+        "enemy-decomphelp-leaf-cc20",
+        "enemy-decomphelp-leaf-cc30"
+      ]
+    },
+    {
+      "producer": "build/match-linked/GameManagerOnDraw",
+      "artifact_kind": "linked-pe",
+      "representative": "decomphelp-game-manager-on-draw",
+      "units": [
+        "decomphelp-game-manager-on-draw"
+      ]
+    },
+    {
+      "producer": "build/match-linked/GameManagerUpdateCallback-cold-2",
+      "artifact_kind": "linked-pe",
+      "representative": "game-manager-update-callback",
+      "units": [
+        "game-manager-update-callback"
+      ]
+    },
+    {
+      "producer": "build/match-linked/AnmTextureAlphaBleed",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-texture-alpha-bleed",
+      "units": [
+        "anm-texture-alpha-bleed"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndOptionsRefresh",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-options-refresh",
+      "units": [
+        "frontend-options-refresh"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndKeyConfigDisplay",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-keyconfig-display",
+      "units": [
+        "frontend-keyconfig-display",
+        "frontend-practice-unlock"
+      ]
+    },
+    {
+      "producer": "build/match-linked/HintLifecycle",
+      "artifact_kind": "linked-pe",
+      "representative": "hint-create-owner",
+      "units": [
+        "hint-create-owner",
+        "hint-draw-callback"
+      ]
+    }
+  ],
+  "original_config_sha256": "6379c4d2b0ef4bc4d636d0ecefebc8cc37ff1375bfe2b69984a8712b9ebc413f",
+  "config_binding_migration": {
+    "patch_sha256": "ed35441111450b03a3494b3a418391fd61765bcd0f35e294b4e094a52fce951e",
+    "scope": "Ten compiler-local COFF label names only in existing int/float resolver relocation bindings; all profiles, extents, target addresses and producer membership unchanged. Original group6 failure retained.",
+    "acceptance_note": "Canonical replay must use the resulting binding identities; independent byte/offset/addend audit does not replace strict replay."
+  }
+}

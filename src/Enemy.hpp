@@ -9,7 +9,6 @@ struct EnemyFullObjectView;
 struct EnemyEclHostBaseView;
 struct EnemyListNodeView;
 struct EnemyManagerView;
-struct EnemyVisualStateView;
 
 struct EnemyFloat2
 {
