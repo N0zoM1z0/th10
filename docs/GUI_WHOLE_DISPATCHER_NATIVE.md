@@ -259,3 +259,110 @@ private-ABI/runtime closure, x87 exception/conversion behavior or gameplay
 reachability. No new whole-owner exactness, whole-producer equivalence or aggregate
 completion credit is claimed. Logs and binary evidence remain outside repository
 documentation.
+
+## Opcode 2 branch-structure hypothesis: source and host evidence
+
+The next bounded proposal changes only opcode 2 production source. Target
+0x416127..0x41623C has three outer stage/index branches, each with separate
+character 0/1 creation and message +0x44 publication leaves: stage 6 selects enemy
+resource +0x38/script 0x20; stage 7 with signed messageIndex < 1 selects the same
+resource/script 0x25; otherwise player resource +0x10/script 0x1E. All use layer 15
+and join the common loop at 0x416F09. Unsupported characters neither create nor
+publish. Ordinary nested C++ switches express six static alternative leaves,
+with exactly one runtime creation on each accepted path and direct resource
+assumptions retained. Opcode 1, opcode 13 and all other production bytes are unchanged.
+
+This is a target-CFG-supported source hypothesis, not proof of original lexical
+source. There are no compiler controls, wrappers, forced registers/temporaries,
+volatile, padding or type tricks; ordinary return-value expressions remain.
+The compiler may merge equivalent leaves. Six emitted calls, native CFG retention
+and improved byte matching are not guaranteed. Gui.cpp changes from SHA-256
+`b571c647306049ebcbc17b101d49887e5bc00059e1da6fc49184206f0cfcc36f` to
+`7ee6a5dbefff663040c0c0e5b6e2415436391f6344b0ea982933d32b1385d202`.
+The separate three-file source/test patch is SHA-256
+`8bafaa2fd0d90442e050212e39d2b6bdf56224377cc728ca6455b29703cde3d4`.
+
+The unchanged 768-case portrait matrix and all 15 strict portrait controls pass;
+all 13 interpreter selections and 28 strict Run controls remain covered and pass.
+Run and portrait positives pass ASan/UBSan within the maintained host-seam and
+leak-checking limits. The maintained portrait driver also deterministically
+creates a separate fixture with six synthetic callback witnesses, covering each
+accepted leaf while creation changes stage/character/resources and the result
+slot. Selected call arguments and subsequent returned-ID publication are preserved.
+These six witnesses pass normally and under sanitizers; they do not establish
+that the real callee changes those globals. The checked-in 768-case fixture stays
+unchanged. The existing portrait commands/CI hook reproduce these checks without
+an additional helper or retained generated fixture.
+
+The previously collapsed, semantically equivalent source separately compiles
+and passes the positive runtime fixture, normally and under sanitizers. Its
+rejection is solely a source-structure negative, never a functional mutant
+detection. Null-guard rejection is also structural. Functional controls require
+successful compilation, exit 1, empty stdout and the exact intended CHECK stderr;
+compile failures, signals, timeouts and unrelated failures are not accepted.
+
+### Native validation status for branch structure
+
+The preceding canonical replay-owner observation applies to its own frozen
+source. The fresh frozen replay and bounded whole-owner review for this branch
+proposal are recorded below, including actual call/argument/publication paths
+and adjacent-region changes. Host results and source leaf counts confer no new exactness,
+size-ratio/helper-sum credit, whole-producer equivalence or aggregate progress.
+No generated PE was executed for this proposal. Binary evidence stays outside Git.
+
+### Branch-preserving opcode 2: bounded native observation
+
+The fresh replay preserves eleven exact units across seven producers (912 matched
+bytes), separately from whole-Run exactness. Identities are:
+
+- `Gui.cpp`: `7ee6a5dbefff663040c0c0e5b6e2415436391f6344b0ea982933d32b1385d202`
+- PE: `383eb4d3ee7625143b54d98c30ecefe30e5ba2b89925884dd8cca98c085e2685`
+- PDB GUID: `e3e3a3ecdfd5fa4d9979dd6f1c116e90`, age 1
+- Evidence: `39e9b44d5fd978d8927e33ce90a83ec8dc186d400743cdda3e5261725ada3f71`
+- Replay: `c6b1734a7e4f2476214a83ab53cac104d724869385d68b41ed0a9fa2d352f918`
+- Input freeze: `ee2e0dc72bd53bbdbd484c7b517e1de4b4fa3e3b228aa8df03a1adfe59656a77`
+
+Actual opcode 2 contains six direct creation calls at
+`0x401229/0x40124D/0x40128C/0x4012B0/0x4012E5/0x401308`.
+The first pair uses enemy resource `+0x38`, script `0x20` for stage 6; the next
+uses that resource and script `0x25` for stage 7 with signed message index less
+than 1; the last uses player resource `+0x10`, script `0x1E` otherwise. Each
+pair accepts exactly characters 0/1, passes layer 15 and a local aggregate-result
+address in EDI, reads the returned dword through EAX, publishes to message+0x44,
+and jumps to common tail `0x40207C`. Other characters create nothing and retain
+the existing ID. A decoded static route model checks 1,536 combinations including
+zero/full-width returned IDs and invalid-character sentinels; this is not native
+runtime execution or proof of null-resource callee behavior.
+
+Whole Run is 4,196 bytes: 4,021 executable, three padding, and 172 table bytes.
+Opcode 2 changes from 31 instructions / 110 bytes to 82 / 286; its address fields
+increase from five to ten and whole-Run calls from 111 to 116. All 43 table
+destination roles and 168 validated HIGHLOW fields are accounted for. These
+sizes and counts confer no ratio, helper-sum, exactness or completion credit.
+
+Adjacent changes are explicit rather than hidden by relocation masking: the
+private frame grows from 0x88 to 0x9C, the incoming receiver load after two saved
+register pushes moves from `[ESP+0x94]` to `[ESP+0xA8]`, and both epilogues restore
+0x9C before `RET 4`. Twenty-seven aggregate-temporary LEAs in opcodes 3/12/13/19/20
+move within the local frame with their producer/consumer relationships retained.
+Opcode 3 uses EDX instead of ECX for the resource-load scratch value, which is
+dead afterward. Opcode 7 computes an address through EAX instead of EDX, then
+resets both registers before the next call. Every non-opcode-2
+intrafunction direct control edge retains its semantic region/instruction target.
+GNU independently agrees with complete executable instruction boundaries.
+
+HUD remains 3,772 bytes with zero normalized code, table or internal-branch
+changes and the same 21 call identities and seven table roles. Existing canonical
+owners, captured-manager reload limitation and nonfinite alpha residual remain.
+Independent provenance review checks 127 frozen inputs, fourteen full-path
+objects, 47 required whole owners, twelve callbacks and 1,076 contributions.
+Only Run changes size; all 1,075 non-Run contributions retain ordinary bytes after separately
+accounting for validated absolute and relative address operands. The all-field review
+retains 196 broader unresolved referents outside the reviewed Run/HUD,
+required-owner and registered-callback scopes. Correspondence is not typed
+ownership; 79 baseline unowned contributions remain unowned.
+
+These static observations do not establish original physical storage/alias behavior,
+private-ABI/runtime closure, x87 exception/conversion behavior or gameplay
+reachability. No generated PE was executed and no whole-producer equivalence is
+claimed; logs and binary evidence remain outside repository documentation.

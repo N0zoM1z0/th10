@@ -181,25 +181,58 @@ int __stdcall GuiMessageVmView::Run(GuiMessageVmView *message)
             break;
 
         case GUI_MSG_SHOW_ENEMY_PORTRAIT:
-            if (g_GuiCharacter == 0 || g_GuiCharacter == 1)
+            if (g_GuiStage == 6)
             {
-                AnmLoadedView *anm;
-                int script = 0x1e;
-                if (g_GuiStage == 6)
+                switch (g_GuiCharacter)
                 {
-                    anm = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                    script = 0x20;
+                case 0:
+                {
+                    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded->CreateVmVariant0(0x20, GUI_VM_RENDER_LAYER).value;
+                    break;
                 }
-                else if (g_GuiStage == 7 && message->messageIndex < 1)
+                case 1:
                 {
-                    anm = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
-                    script = 0x25;
+                    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded->CreateVmVariant0(0x20, GUI_VM_RENDER_LAYER).value;
+                    break;
                 }
-                else
-                    anm = static_cast<AnmLoadedView *>(g_Player->resource);
+                }
+            }
+            else if (g_GuiStage == 7 && message->messageIndex < 1)
+            {
+                switch (g_GuiCharacter)
                 {
-                    AnmLoadedView *loaded = anm;
-                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded->CreateVmVariant0(script, GUI_VM_RENDER_LAYER).value;
+                case 0:
+                {
+                    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded->CreateVmVariant0(0x25, GUI_VM_RENDER_LAYER).value;
+                    break;
+                }
+                case 1:
+                {
+                    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_EnemyManager->effectResources[2]);
+                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded->CreateVmVariant0(0x25, GUI_VM_RENDER_LAYER).value;
+                    break;
+                }
+                }
+            }
+            else
+            {
+                switch (g_GuiCharacter)
+                {
+                case 0:
+                {
+                    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_Player->resource);
+                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded->CreateVmVariant0(0x1e, GUI_VM_RENDER_LAYER).value;
+                    break;
+                }
+                case 1:
+                {
+                    AnmLoadedView *loaded = static_cast<AnmLoadedView *>(g_Player->resource);
+                    message->vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = loaded->CreateVmVariant0(0x1e, GUI_VM_RENDER_LAYER).value;
+                    break;
+                }
                 }
             }
             break;
