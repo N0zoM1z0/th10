@@ -90,3 +90,24 @@ regression was claimed or run for the new-files-only production addition. The
 hashes remained unchanged through host/tracking/documentation integration.
 Seven full callback shapes are candidates only; static canonical selection and
 independent acceptance remain outstanding. No new exact bytes are credited.
+
+## Four-callback canonical bookkeeping (2026-10-17)
+
+This section supersedes the earlier static-selector limitation and potential-candidate status only for DrawScreen 43C1A0/134, DrawPlayfield 43C2C0/68, DrawDimPlayfield 43C410/68 and DrawPulse 43C500/74. Their existing reviewed boundaries, authored origins and source mappings are unchanged. FadeOut and DrawDimScreen remain outside this claim; Delete remains indeterminate.
+
+The separately reviewed opt-in static selector is committed at e86ac7a00bb8aecfd8a516f1cdb18f8a0a1da548. The additive canonical configuration has SHA-256 8811679fb37ab220216a8926a9ce46b8637335e47cea7cd8d5d8a78b6004cc88. It preserves every old unit and uses one new GuiTransitionEffectCallbacks producer: Gui.cpp, the actual UpdateStageElements entry, the same ordered thirteen support TUs, profiles and harness as the fixed observation. No source, ABI, retention, target, or oracle adjustment is part of this claim.
+
+Two serial cold replays through the maintained replay-exact-units.py completed with exit zero and unchanged 54-input freezes. Each covers the same four complete static/PDB-owned extents, 344 bytes total and twelve explicit linkage fields, with zero differences. Viewport fields use the declared viewport base plus 0/4/8/12; complete operand re-encoding preserves every other byte. Manager/device use sites, the complete Flush ESI interface and real rectangle callee corroborate these field roles. Frozen source/helper/config inputs remain unchanged across the runs. Build/comparator reports and PE/MAP/PDB identities are retained separately with each run. Cold A was recovered by repository command b4a8484207a74f208eab757d518232e8; cold B by 7fa548cec3364562900e1bf030862659. Their owner/size/address/complete-field reports are identical while artifact identities are fresh.
+
+- A PE: 4d22f1480a27a3f059e4d2342a0b9b8f3d162d63035f2e70c34bbf765b38c737
+- A MAP: 635414c27db082008080e8540fbf0364d21a201947b0d65ce8a10ef5218b7da3
+- A PDB: e62b03815dbd4a05b59cb0344f2cc7676cf0f893700c7cae40bb637c436dca7d
+- B PE: 7fe604006b9b12a2b83fe328668e20f5187eab17ccf6333ac236ce7d2432398c
+- B MAP: be454dc7f38a37f4628351eda6eac939c6a7a814ce2adb77d6c883848be089aa
+- B PDB: 66fc5ead0208ed9281a9c07e352cde6361772f1bb7bbfa2c6ce6a9aea8af6987
+
+Representative old-unit cold regression command 44e6a2d7e3c94fa8b259179af8dd0d04 also passed public linked gui-score-add (46 bytes) and COFF frontend-cursor-set-current (33 bytes), with all 54 frozen inputs unchanged. This is a two-unit regression check, not a complete prior-cohort replay.
+
+The exact/100.00 entries are repository-local replay-backed codegen claims prepared for independent Factory verification. They are not Factory-accepted credit; accepted receipt totals remain unchanged until a successful terminal receipt bound to the committed candidate establishes them. Generated progress counts these local ledger claims, not an accepted Factory snapshot. Independent Factory compatibility with static owners remains a gate.
+
+Global storage, viewport minZ/maxZ, actual pointer/object values, lifetime, scheduler and indirect device behavior remain unproven. Other effect-family ABI and floating-point gaps remain unchanged. No helper sizes or other callback bytes are included.

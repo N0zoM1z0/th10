@@ -19517,3 +19517,90 @@ symbol = "?OnDraw@HintOwnerView@@SIHPAX@Z"
 target_address = 0x004198B0
 size = 6
 linkages = []
+
+# LOCAL-ONLY, CONDITIONAL PROPOSAL. Not replayable until static-map selection is supported and reviewed.
+# Append to current manifest only after gates in PROPOSAL.md; no existing producer or unit edits.
+
+[units.transition-draw-screen]
+artifact_kind = "linked-pe"
+owner_visibility = "static"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectCallbacks"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["TransitionDrawScreen"]
+symbol = "?TransitionDrawScreen@@YIHPAX@Z"
+target_address = 0x43c1a0
+size = 134
+linkages = [
+  { offset = 0x7, type = "DIR32", symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A", target = 0x00491C10 },
+  { offset = 0x2F, type = "REL32", symbol = "?FlushVertexBuffer@AnmRenderManagerView@@QAEXXZ", target = 0x00442F50 },
+  { offset = 0x36, type = "DIR32", symbol = "?g_TransitionViewport@@3UAnmViewportView@@A", target = 0x00491CF4 },
+  { offset = 0x3B, type = "DIR32", symbol = "?g_TransitionViewport@@3UAnmViewportView@@A", target = 0x00491CF4, addend = 0x4 },
+  { offset = 0x40, type = "DIR32", symbol = "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A", target = 0x00491C30 },
+  { offset = 0x45, type = "DIR32", symbol = "?g_TransitionViewport@@3UAnmViewportView@@A", target = 0x00491CF4 },
+  { offset = 0x4B, type = "DIR32", symbol = "?g_TransitionViewport@@3UAnmViewportView@@A", target = 0x00491CF4, addend = 0x8 },
+  { offset = 0x55, type = "DIR32", symbol = "?g_TransitionViewport@@3UAnmViewportView@@A", target = 0x00491CF4, addend = 0xC },
+  { offset = 0x76, type = "REL32", symbol = "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z", target = 0x0043BDA0 },
+]
+
+[units.transition-draw-playfield]
+artifact_kind = "linked-pe"
+owner_visibility = "static"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectCallbacks"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["TransitionDrawPlayfield"]
+symbol = "?TransitionDrawPlayfield@@YIHPAX@Z"
+target_address = 0x43c2c0
+size = 68
+linkages = [
+  { offset = 0x35, type = "REL32", symbol = "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z", target = 0x0043BDA0 },
+]
+
+[units.transition-draw-dim-playfield]
+artifact_kind = "linked-pe"
+owner_visibility = "static"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectCallbacks"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["TransitionDrawDimPlayfield"]
+symbol = "?TransitionDrawDimPlayfield@@YIHPAX@Z"
+target_address = 0x43c410
+size = 68
+linkages = [
+  { offset = 0x35, type = "REL32", symbol = "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z", target = 0x0043BDA0 },
+]
+
+[units.transition-draw-pulse]
+artifact_kind = "linked-pe"
+owner_visibility = "static"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectCallbacks"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["TransitionDrawPulse"]
+symbol = "?TransitionDrawPulse@@YIHPAX@Z"
+target_address = 0x43c500
+size = 74
+linkages = [
+  { offset = 0x3B, type = "REL32", symbol = "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z", target = 0x0043BDA0 },
+]
