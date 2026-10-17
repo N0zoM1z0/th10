@@ -967,3 +967,5 @@ DrawColoredRectangle,0x0043BDA0,function
 GuiMessageVmView::GuiMessageVmView,0x00415B00,function
 EnemyKillAll,0x0040E6A0,function
 EnemyReadDialog,0x00415DB0,function
+GameQueueScaledSoundCommand,0x00420C30,function
+GameCompleteStageTransition,0x00423370,function

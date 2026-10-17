@@ -3086,6 +3086,19 @@ int __stdcall FrontEndPlayMusic(int slot, int trackIndex)
     return 0;
 }
 
+// Target 0x00420C30..0x00420C83. Ordinary-domain source hypothesis only:
+// portable C++ does not establish x87 precision, unordered or overflow behavior
+// of runtime 0x463B2C. Even finite in-range quotients can round differently.
+// The double intermediate avoids a premature float round, not all x87 gaps.
+int __stdcall GameQueueScaledSoundCommand(float magnitude)
+{
+    double value = magnitude;
+    if (g_AnmGameSpeed != 0.0f && g_AnmGameSpeed <= 1.0f)
+        value /= g_AnmGameSpeed;
+    FrontEndQueueSoundCommand("", 5, static_cast<int>(value));
+    return 0;
+}
+
 // Target 0x0042C770 marks pending interrupts only; ANM execution is deferred.
 // Other historical InterruptVmNow callers have not been audited in this batch.
 void FrontEndMarkVmInterrupt(
@@ -3924,6 +3937,46 @@ void __stdcall ResultMenuOpenPause(ResultMenuView *menu)
         g_AnmRenderManagerView->MarkVmForDeletion(id);
         id.value = 0;
     }
+    menu->savedSpeed = g_AnmGameSpeed;
+    g_AnmGameSpeed = 1.0f;
+}
+
+// Target 0x00423370..0x0042350A. Logical source receiver only: the
+// target's EDI receiver/plain RET private ABI is not expressed by this boundary.
+// Allocation and capture inputs are unchecked, as in the original path.
+void GameCompleteStageTransition(ResultMenuView *menu)
+{
+    ResultGameManagerView *game = g_ResultGameManager;
+    if (game->initializationMode == 1)
+    {
+        g_GameTransitionState = (g_GameConfigurationFlags & 0x1000) != 0 ? 2 : 4;
+        return;
+    }
+    menu->state = 6;
+    menu->timer.SetCurrent(0);
+    game->flags58 |= 0x10;
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    AnmLoadedView *resource = g_AsciiManagerView->captureAnm;
+    AnmVmView *vm = manager->AllocateVm();
+    vm->renderLayer = 15;
+    vm->flags35C |= 0x40000000;
+    resource->InitializeVm(vm, 0);
+    manager = g_AnmRenderManagerView;
+    menu->secondaryVm = manager->AddVmVariant1(vm);
+    manager->RequestCaptureRectangle(menu->secondaryVm.value, 32, 16, 384, 448);
+    resource = g_GuiView->frontAnm;
+    menu->frontAnm = resource;
+    vm = manager->AllocateVm();
+    vm->renderLayer = 15;
+    vm->flags35C |= 0x40000000;
+    resource->InitializeVm(vm, 129);
+    menu->mainVm = g_AnmRenderManagerView->AddVmVariant1(vm);
+    FrontEndLoadMusic(0, "bgm/th10_17.wav");
+    if ((g_FrontEndSupervisorFlags & 0x10) != 0)
+        FrontEndQueueSoundCommand("dummy", 4, 0);
+    FrontEndQueueSoundCommand("dummy", 2, 0);
+    g_FrontEndProfileData[0x1d8a3] = 1;
+    menu->completed = 1;
     menu->savedSpeed = g_AnmGameSpeed;
     g_AnmGameSpeed = 1.0f;
 }

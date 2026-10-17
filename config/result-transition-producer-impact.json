@@ -1,0 +1,226 @@
+{
+  "settings_authority": "canonical match manifest only; this is a selection inventory, not a build plan",
+  "current_run_commit": "2a254c553ec53c1b2945351237fcece3662aaa82",
+  "config_sha256": "2a0a98cb1963bf6d8daea859a8d4f06b1e87badfa64ccb166ed59ef3bae1beed",
+  "method": "Old graph is baseline plus verified current Run candidate; union with packet graph, all transitive quoted includes without preprocessor pruning, primary/support/normal roots and all units sharing each affected producer.",
+  "changed_files": [
+    {
+      "path": "src/FrontEnd.cpp",
+      "current_run_applied_sha256": "1b3fe924ed4072807350e208b4a5169acf24f997ceb43c1acd614182fb5df7bf",
+      "candidate_applied_sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+      "expected_git_applied_sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d"
+    },
+    {
+      "path": "src/Gui.cpp",
+      "current_run_applied_sha256": "21521d0855eca25827e088ff08924d91d7647ed7cf2951757cd02b081180118c",
+      "candidate_applied_sha256": "611562a64452af0fffe25583edfa2e5cbaa77dce4afaab792ccb002ab8bf5e97",
+      "expected_git_applied_sha256": "611562a64452af0fffe25583edfa2e5cbaa77dce4afaab792ccb002ab8bf5e97"
+    },
+    {
+      "path": "src/ResultMenu.hpp",
+      "current_run_applied_sha256": "7b227d663fdb07bc8dc963aa1c1a3377137ee405a4107255227cf7dae3c147ec",
+      "candidate_applied_sha256": "4ae174c48a3ec3d2e8d7292294d3ee18e625de08774996556828fb160ad70610",
+      "expected_git_applied_sha256": "4ae174c48a3ec3d2e8d7292294d3ee18e625de08774996556828fb160ad70610"
+    }
+  ],
+  "group_count": 15,
+  "unit_count": 21,
+  "kind_counts": {
+    "linked-pe": 14,
+    "coff": 1
+  },
+  "groups": [
+    {
+      "producer": "build/match-linked/AnmVmIdSetInterrupt",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-vm-id-set-interrupt",
+      "units": [
+        "anm-vm-id-set-interrupt"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/Gui.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/GuiLivesDisplayCount",
+      "artifact_kind": "linked-pe",
+      "representative": "gui-set-lives-display-count",
+      "units": [
+        "gui-set-lives-display-count"
+      ],
+      "affected": [
+        "src/Gui.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/PlayerResetRuntimeState",
+      "artifact_kind": "linked-pe",
+      "representative": "player-reset-runtime-state",
+      "units": [
+        "player-reset-runtime-state"
+      ],
+      "affected": [
+        "src/Gui.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/GuiScoreAdd",
+      "artifact_kind": "linked-pe",
+      "representative": "gui-score-add",
+      "units": [
+        "gui-score-add"
+      ],
+      "affected": [
+        "src/Gui.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndCursorPush",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-cursor-push",
+      "units": [
+        "frontend-cursor-push",
+        "frontend-cursor-pop",
+        "frontend-cursor-move",
+        "frontend-input-repeated"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match/FrontEnd.obj",
+      "artifact_kind": "coff",
+      "representative": "frontend-cursor-set-current",
+      "units": [
+        "frontend-cursor-set-current"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/AnmVmIdSetSprite",
+      "artifact_kind": "linked-pe",
+      "representative": "anm-vm-id-set-sprite-own",
+      "units": [
+        "anm-vm-id-set-sprite-own",
+        "anm-vm-id-set-sprite-explicit"
+      ],
+      "affected": [
+        "src/Gui.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/MainNextGameMode",
+      "artifact_kind": "linked-pe",
+      "representative": "main-set-next-game-mode",
+      "units": [
+        "main-set-next-game-mode"
+      ],
+      "affected": [
+        "src/Gui.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndDrawCallback",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-draw-callback",
+      "units": [
+        "frontend-draw-callback"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndUpdateCallback",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-update-callback",
+      "units": [
+        "frontend-update-callback"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/AsciiManagerEnsureSelectionVm",
+      "artifact_kind": "linked-pe",
+      "representative": "ascii-manager-ensure-selection-vm",
+      "units": [
+        "ascii-manager-ensure-selection-vm"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndSetScreenState",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-set-screen-state",
+      "units": [
+        "frontend-set-screen-state",
+        "frontend-set-screen"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndDeleteVm",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-delete-vm",
+      "units": [
+        "frontend-delete-vm"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndOptionsRefresh",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-options-refresh",
+      "units": [
+        "frontend-options-refresh"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    },
+    {
+      "producer": "build/match-linked/FrontEndKeyConfigDisplay",
+      "artifact_kind": "linked-pe",
+      "representative": "frontend-keyconfig-display",
+      "units": [
+        "frontend-keyconfig-display",
+        "frontend-practice-unlock"
+      ],
+      "affected": [
+        "src/FrontEnd.cpp",
+        "src/ResultMenu.hpp"
+      ]
+    }
+  ],
+  "canonical_manifest": "config/match-units.toml",
+  "candidate_patch_sha256": "89d4ccc325a02e72e0e4dd720bfe493d36a0b16109ccb5d59a880e119a4968c0",
+  "candidate_manifest_sha256": "2994fcffcfe9039cf3a863bba57f6fc849da69d3692da41fd299a219fd69ef54",
+  "full_local_inventory_sha256": "f07896d4f5c9dbb46bea8a5390fb9c2c22d62117763739fe959142ca9f8e415f",
+  "scope": "Selection only; no settings override, replay result, acceptance receipt or exactness credit."
+}

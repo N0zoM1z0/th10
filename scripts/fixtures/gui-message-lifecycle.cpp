@@ -219,7 +219,7 @@ int AnmLoadedView::SetSprite(AnmVmView *, int) { Check(false, "unused.sprite"); 
 void AnmRenderManagerView::DrawTextLeft(AnmVmView *, unsigned, const char *, ...)
 { Check(false, "unused.draw"); }
 void FrontEndQueueSoundCommand(const char *, int, int) { Check(false, "unused.music"); }
-void GameCompleteStageTransition(GameChainOwnerView *) { Check(false, "unused.transition"); }
+void GameCompleteStageTransition(ResultMenuView *) { Check(false, "unused.transition"); }
 int GameQueueScaledSoundCommand(float) { Check(false, "unused.scaled_sound"); return 0; }
 void *StageCreateTransitionEffect(int, int, int, unsigned, unsigned, unsigned)
 { Check(false, "unused.effect"); return nullptr; }

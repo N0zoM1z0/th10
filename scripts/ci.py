@@ -79,6 +79,7 @@ def main() -> int:
         run("Validate player shot update lifetimes", [sys.executable, "scripts/test-player-shot-update.py"])
         run("Validate player movement ANM identities", [sys.executable, "scripts/test-player-movement-anm.py"])
         run("Validate result/replay-name controller", [sys.executable, "scripts/test-result-menu-state.py"])
+        run("Validate result-transition and scaled-sound baseline", [sys.executable, "scripts/test-result-transition.py"])
         run("Validate pause/capture controller", [sys.executable, "scripts/test-pause-menu-state.py"])
         run("Validate practice controller state", [sys.executable, "scripts/test-frontend-practice-state.py", "--skip-mutations"])
         run("Validate key-config display lifetimes", [sys.executable, "scripts/test-keyconfig-display-state.py"])

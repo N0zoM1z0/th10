@@ -80,7 +80,7 @@ def prepare(out):
     inputs, owners = {}, {}
     pending = ['Gui.hpp', 'GuiScore.hpp', 'EnemySoundQueue.hpp', 'Main.hpp',
                'Chain.hpp', 'Player.hpp', 'Enemy.hpp', 'EnemyLaser.hpp',
-               'BulletManager.hpp', 'GameStageDescriptor.hpp']
+               'BulletManager.hpp', 'GameStageDescriptor.hpp', 'ResultMenu.hpp']
     copied, applied = set(), set()
     while pending:
         name = pending.pop()

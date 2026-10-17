@@ -6,6 +6,7 @@
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "GameStageDescriptor.hpp"
+#include "ResultMenu.hpp"
 
 #include <math.h>
 #include <stdlib.h>
@@ -112,7 +113,8 @@ void Fn004175E0(unsigned char *scoreState);
 // Target-derived logical interfaces; implementations/private ABI remain open.
 struct GameChainOwnerView;
 extern GameChainOwnerView *g_GameOwner477830;
-extern void GameCompleteStageTransition(GameChainOwnerView *owner);
+// 0x477830 is the existing GameManager chain-prefix alias for this menu.
+// The target passes this same pointer to 0x423370 in EDI.
 extern void *StageCreateTransitionEffect(int priority, int kind, int frames,
     unsigned int p3, unsigned int p4, unsigned int p5);
 extern int __stdcall GameQueueScaledSoundCommand(float magnitude);
@@ -333,7 +335,8 @@ static void CompleteStageFromMessage()
     }
     if ((g_GuiGameFlags & 0x10) != 0)
     {
-        GameCompleteStageTransition(g_GameOwner477830);
+        GameCompleteStageTransition(
+            reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
         return;
     }
     if (g_GuiStage == 6)
@@ -362,7 +365,8 @@ static void CompleteStageFromMessage()
             g_MainSupervisorView.SetNextGameMode(4);
             return;
         }
-        GameCompleteStageTransition(g_GameOwner477830);
+        GameCompleteStageTransition(
+            reinterpret_cast<ResultMenuView *>(g_GameOwner477830));
         IncrementStageClearCount();
     }
     else

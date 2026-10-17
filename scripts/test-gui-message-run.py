@@ -36,7 +36,7 @@ def source_path(root,fallback,name):
 def prepare(root,fallback,out,baseline=True):
  out.mkdir(parents=True,exist_ok=True);inputs={};copied=[]
  pending=['Gui.hpp','GuiScore.hpp','EnemySoundQueue.hpp','Main.hpp','Chain.hpp','Player.hpp','Enemy.hpp']
- if not baseline:pending.append('GameStageDescriptor.hpp')
+ if not baseline:pending.extend(['GameStageDescriptor.hpp', 'ResultMenu.hpp'])
  while pending:
   name=pending.pop()
   if name in copied:continue
