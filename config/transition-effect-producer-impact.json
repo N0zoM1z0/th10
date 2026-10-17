@@ -1,0 +1,47 @@
+{
+  "baseline_commit": "67ced17fff5dfe758a33000b3f83c92002187373",
+  "canonical_manifest_sha256": "2a0a98cb1963bf6d8daea859a8d4f06b1e87badfa64ccb166ed59ef3bae1beed",
+  "packet_manifest_sha256": "a93aa366f11bc5bb1e04e9c551a43bb02794aa9c28ca9a99f17af4b2eaeb2283",
+  "packet_patch_sha256": "b9d7aabf42b197e7297ac99953d4827f99fc0e515ba2006e453c08d936a82168",
+  "candidate_file_sha256": {
+    "src/TransitionEffect.hpp": "28f133dad71a4055bb6ed741e1a8bb27eb606be15ccbc5c0bc06b213dd07e7f8",
+    "src/TransitionEffect.cpp": "fed2d9f86eb17c1b4aa39b5e34ab68e2fe823f2b3ef0e49ad720a01074ce6591",
+    "scripts/transition_effect_host_test.py": "020d291fe2c073e5004ec56c874b12171cee7244349618af61569467cff63f49",
+    "scripts/transition_effect_mutations.py": "be678b4c1b1657ca3d4fef23b978bea0f55f0588be1c84ecad320fb2258ef051",
+    "scripts/fixtures/transition-effect.cpp": "3e66acf22b2fed314407b0f24f47a8dc5a16d0db8e6c746be66ea289e20b0d39",
+    "docs/TRANSITION_EFFECT_TARGET_MATRIX.md": "1198e249384003d734ae6ce35d0025a2820e454c50808331913abc158734fffc",
+    "docs/TRANSITION_EFFECT_CONTRACTS.md": "bc202bb81de1fc514263e2f609d16ab19f0d4278341d29e8b5995125f8a1dc0e",
+    "docs/TRANSITION_EFFECT_HOST_TESTS.md": "f7c9d12f089dd278d659fc2485be4ed1ca9ef72dbc824e407cbd63c0149520bb",
+    "config/transition-effect-host-inputs.json": "ed1b8f4f7d286caa11837684c9b75ebe61ea69d873bd1c7579f173ccdd0b48c1"
+  },
+  "added_translation_units": [
+    "src/TransitionEffect.cpp",
+    "src/Chain.cpp",
+    "src/RandomMath.cpp",
+    "src/AnmRectangle.cpp"
+  ],
+  "native_TU_count": 14,
+  "graph_path_count": 41,
+  "new_graph_paths": [
+    "src/AnmRectangle.cpp",
+    "src/AnmRectangle.hpp",
+    "src/Chain.cpp",
+    "src/RandomMath.cpp",
+    "src/TransitionEffect.cpp",
+    "src/TransitionEffect.hpp"
+  ],
+  "new_TU_header_only_existing_canonical_impact": {
+    "group_count": 0,
+    "unit_count": 0,
+    "groups": []
+  },
+  "full_inventory_sha256": "2387bd1cb15ae45dfe4b2eff68c365976fea87487027c19258a56547bef90159",
+  "settings_authority": "Canonical match-units.toml only; additions touch no existing configured roots or includes. Diagnostic graph widening is separate, not canonical replay.",
+  "candidate_pin_scope": "Historical source packet as executed; later host-only EOL delta is separately recorded, with no native/canonical input change.",
+  "host_eol_delta": {
+    "patch_sha256": "08f17f85d1655971989c70c464c53f3000f2f42530bd61257f7892502ab5ce8e",
+    "canonical_group_count": 0,
+    "canonical_unit_count": 0,
+    "native_input_changes": []
+  }
+}

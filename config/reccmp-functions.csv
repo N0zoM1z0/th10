@@ -969,3 +969,11 @@ EnemyKillAll,0x0040E6A0,function
 EnemyReadDialog,0x00415DB0,function
 GameQueueScaledSoundCommand,0x00420C30,function
 GameCompleteStageTransition,0x00423370,function
+TransitionDrawScreen,0x0043C1A0,function
+TransitionDrawPlayfield,0x0043C2C0,function
+TransitionDrawDimPlayfield,0x0043C410,function
+TransitionDrawPulse,0x0043C500,function
+TransitionDelete,0x0043C870,function
+StageCreateTransitionEffect,0x0043C8B0,function
+TransitionEffectView::Initialize,0x0043C970,function
+TransitionEffectView::Cleanup,0x0043CB00,function

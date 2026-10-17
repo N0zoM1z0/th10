@@ -968,3 +968,11 @@ EnemyKillAll
 EnemyReadDialog
 GameCompleteStageTransition
 GameQueueScaledSoundCommand
+TransitionDrawScreen
+TransitionDrawPlayfield
+TransitionDrawDimPlayfield
+TransitionDrawPulse
+TransitionDelete
+StageCreateTransitionEffect
+TransitionEffectView::Initialize
+TransitionEffectView::Cleanup

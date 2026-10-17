@@ -1,0 +1,34 @@
+{
+  "schema_version": 2,
+  "normalization": "crlf-to-lf-only",
+  "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",
+  "sha256_lf": {
+    "src/Chain.cpp": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
+    "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+    "src/AnmManager.cpp": "617dc8e960d781a5a15f2a4d92467ee5d06550731a61680cd99e729a9218ee7e",
+    "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+    "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
+    "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
+    "src/RandomMath.cpp": "88af248abd6b7e5732ae9c34eadbd3fb524ff35d5740432762c23dd9e35466c4",
+    "src/Rng.hpp": "fac62da48e3fc475d488c987e32ff6856c1d2776b7e311565231ae59bbd70f3d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FrontEnd.cpp": "157f07385d912b81a6dccfcd18b3bda7388d7c4fde92f194610b770bf8bfc661",
+    "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03"
+  },
+  "observed_raw_sha256": {
+    "src/Chain.cpp": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
+    "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+    "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+    "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+    "src/AnmRectangle.cpp": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/RandomMath.cpp": "88af248abd6b7e5732ae9c34eadbd3fb524ff35d5740432762c23dd9e35466c4",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FrontEnd.cpp": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+    "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03"
+  },
+  "verification_receipt": "repository-command:f7df7c806136414e9a5dbccd9f8afa8e"
+}
