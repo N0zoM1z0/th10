@@ -366,3 +366,149 @@ These static observations do not establish original physical storage/alias behav
 private-ABI/runtime closure, x87 exception/conversion behavior or gameplay
 reachability. No generated PE was executed and no whole-producer equivalence is
 claimed; logs and binary evidence remain outside repository documentation.
+
+## Opcode 13 separate character arms: source and host evidence
+
+This proposal expresses the existing eight opcode13 character-0/character-1 groups as ordinary separate case bodies. Each new body is an exact duplicate of its prior grouped body; collapsing the pairs reproduces the original opcode13 bytes. Gui.cpp SHA-256 changes from `7ee6a5dbefff663040c0c0e5b6e2415436391f6344b0ea982933d32b1385d202` to `79caef3b134bb04db78baa0d90a8e373bfe1cecdce44185f3da18a565573394b`. All source bytes outside opcode13, including opcode2 and the replay-owner reads, remain unchanged. No header, ABI/profile, floating-point, compiler-control, forced-temporary or padding change is made. The separate three-file source/test patch is SHA-256 `7412fbb9c793d1ab3b532bcec580d60e718851d4d7eb5a09c13d9b3ecc01bc17`.
+
+The independently audited target region 0x416408..0x416A07 contains eight pairs of separate character arms. Each pair's complete caller instruction sequence is identical after normalizing only the two local aggregate-output addresses. Target whole-Run SHA-256 is `13c80eaec4d7e90718b107f1e37ea8de7bd57d8ac3f86f0af4b6269644614c35`; contract-audit SHA-256 is `8180fdf2a21031f05edf48415cf5e86dbd93103c4d936f338e6e092c96db7d5b`. This supports a source-topology hypothesis, not an original-lexical-source proof or demonstrated runtime defect. Compiler merging remains permissible.
+
+Stages 1..7 and characters 0/1 retain the same eight script/offset contexts, including the signed stage7 message-index threshold at 1. Every accepted path performs FindScript/SetSpriteWithAnm/FindScript/SetSpriteWithAnm once. Each setter's resource and sprite argument are captured before its own finder; the second pair reloads canonical enemy manager/resource and currentInstruction/payload after the first setter. Both finders retain the same parent-ID address, while later lookup can observe changed ID/child-chain state. Returned child IDs are immediate setter receivers, not new portrait-ID publications. No callback redispatch or null-success alternative is added.
+
+The portable `scripts/test-gui-enemy-portrait-sprites.py` retains complete existing declarations and maintained finder traversal/setter resolution, adding explicit host observers and synthetic callbacks. Its 1,216 cases comprise 112 value cases, 896 guard/signed-boundary cases and 208 callback cases. They cover both characters in all contexts, child/parent identity, resource and argument capture, canonical-manager and instruction replacement, parent-ID/chain changes, second-finder capture retention, call order and absence of Run-level ID publication. All cases pass normally and under ASan/UBSan, with maintained leak-checking limits. The grouped source also passes the same complete runtime matrix; its source-shape rejection is separate and never counted as a behavioral mutant kill.
+
+All 25 predeclared strict controls pass with successful compilation, exit 1, empty stdout and exact intended CHECK stderr. Crashes, compile failures, timeouts, unrelated assertions and extra output are rejected; new-driver compile/run bounds are 120/15 seconds. Classifier self-controls and fresh-output refusal pass. The original Run fixture is unchanged; only three existing mutation tuples adapt anchors/counts, preserving all 28 names, selections and expected checks. Retained Run28, portrait15, replay12, name11 and fifty focused HUD/gauge controls pass, as do message lifecycle and normal/sanitized Run positives. Compact local results SHA-256: `a13b8e9f957f3c83dfa1d33d4e5529d0d9372cc926c3a8749d9c1ff9ad6d94eb`.
+
+```sh
+work=$(mktemp -d)
+scripts/repo-python scripts/test-gui-enemy-portrait-sprites.py --root . --out "$work/opcode13"
+scripts/repo-python scripts/test-gui-enemy-portrait-sprites.py --root . --out "$work/sanitized" --sanitize --no-mutations
+```
+
+CI uses a temporary parent with a nonexistent child output path. These are bounded source/target-contract and host results; callback effects are synthetic, not claims about actual callee side effects. Valid parent/resource, single-threaded and defined signed-arithmetic prerequisites remain. The following section records native compilation and canonical replay for this source snapshot; linked storage, helper private ABI/aggregate lifetime and full owner equivalence remain open. No generated PE was executed and no new native exactness or aggregate-progress credit follows from these tests.
+
+### Split-only opcode 13: negative native experiment
+
+The fixed seven-producer replay preserves eleven existing exact units (912 bytes),
+but the split-only source `79caef3b134bb04db78baa0d90a8e373bfe1cecdce44185f3da18a565573394b`
+does not converge to the target whole Run. The complete candidate owner is 5,148
+bytes (4,976 executable, no padding, 172 table bytes), versus target 4,480 bytes.
+Opcode 13 emits sixteen accepted leaves and 64 finder/setter calls, yet each leaf
+has 33 instructions rather than the target's 23. Four spill stores, four reloads
+and two receiver transfers per leaf account for ten additional instructions;
+opcode 13 is 2,111 bytes versus target 1,535. The frame is 0xDC versus target 0xD8.
+Matching branch or call counts is therefore not byte-exactness progress.
+
+This observation binds PE `9cc50fc79159dd40ac1e561827d53c470f105163114db1a825bdbcb0320fc5a9`,
+evidence `ad6ff2787ee9a6e9dfdb84eb13d6c89b8129ee118024c742d747fc1d91a857a5`,
+replay `37444b6f5fe9c35641c2eaa0463dab5214026f96797901790d74da21c895d652`
+and 128-input freeze `718dc7c0300129a9224aff03b3ea612eb7a7bb45df89b0ff835ddb3b44b7ad9a`.
+Bounded static models retain both pre-finder captures, the second reload,
+parent-ID address, immediate child-ID consumption and all 43 table meanings.
+Collateral frame, register, flag-write and bonus-control changes were reviewed;
+HUD has no normalized code/table/control-flow change. Fourteen objects, 47
+required whole owners and twelve callbacks remain verified. The broader image
+still has 198 unresolved referent cases outside this scope and 79
+function-inventory-unowned contributions. No whole-producer equivalence follows.
+The split-only snapshot and its evidence are retained as a negative experiment,
+not a separately committed production success.
+
+### Immediate returned-handle receiver hypothesis
+
+The target stages the outer setter's captured arguments before the finder and
+immediately consumes its returned handle. One subsequent ordinary-source
+hypothesis writes `ResultMenuFindScript(...).SetSpriteWithAnm(resource, first)`
+(and the corresponding second call) instead of assigning named child handles
+before separate setter statements. The explicit first/resource/second captures,
+second-pair reload, sixteen branch arms and all other production bytes remain.
+This changes Gui.cpp to
+`34483bcbc5bc90e502a4173af4f350fd84da8151871609551ed88cee6795dd3b`.
+It does not change any helper declaration, calling convention, profile or TU,
+and introduces no forced register, temporary layout, inlining control or padding.
+
+The complete AnmVmIdView declaration contains one integer and an implicit trivial
+destructor. The finder returns a value; the setter copies the ID by value into
+FindVm, then forwards only the resolved VM, resource and sprite index. The
+receiver address does not escape through those maintained bodies. Shortening the
+handle lifetime to its full expression therefore has no observed maintained-source
+side effect. Retained explicit captures make callback-sensitive values independent
+of host argument-evaluation order. This is a source/dataflow hypothesis, not proof
+of original lexical syntax or a prediction about the target compiler's allocation.
+
+The actual chained source passes all 1,216 caller cases normally and under
+ASan/UBSan, including the same synthetic callback cases. All 25 predeclared
+controls mutate that actual source and require successful compilation, exit 1,
+empty stdout and the exact intended CHECK. Where a wrong recapture/reuse requires
+explicit sequencing, only the selected mutant expression materializes a local
+handle; ordinary source is not normalized before mutation. Correct named and
+grouped forms separately pass the same positive matrix, while their representation
+rejections are structural only. Thirteen whole-Run selections, all 28 retained
+controls and sanitized Run positives also pass. The original fixture and control
+names/expected checks are retained; only necessary source anchors change.
+Compile/run limits remain 120/15 seconds. These are host-seam and caller-contract
+results, not native ABI or real callback-side-effect proof. Results SHA-256:
+`b9940d8d0b44a29d1b13ee2de27a192e46e16d18ea5212e782cff08dc175db3f`.
+The existing portable sprite-driver commands and CI hook reproduce these checks.
+
+The fresh frozen replay and complete bounded owner review for this new source
+are recorded below. The split-only result above remains a separate receipt.
+
+### Receiver-chain native observation
+
+The fresh fixed replay for Gui source
+`34483bcbc5bc90e502a4173af4f350fd84da8151871609551ed88cee6795dd3b`
+preserves all eleven registered exact units across seven producers (912 bytes).
+The 128 frozen inputs, fourteen full-path objects, 47 required whole owners and
+twelve referenced callbacks pass the bounded collection/review gates. This receipt
+is separate from the failed split-only experiment above.
+
+Complete Run is 4,548 bytes: 4,376 executable bytes, no padding and 172 table bytes.
+The committed grouped baseline is 4,196, the named split experiment 5,148, and
+the target 4,480; these sizes confer no exactness or progress credit. Opcode 13
+has sixteen 23-instruction leaves, 414 instructions and 1,532 bytes, versus target
+414 instructions and 1,535 bytes. Each of its 32 finder calls now immediately
+feeds a setter call, with resource and sprite arguments already pushed. The named
+experiment's extra spill/reload and receiver-transfer instructions are absent.
+
+Complete current helper bodies establish ESI parent, EDI script and EBX aggregate
+output for the finder, returning that output address in EAX. The target uses EBX
+script and EDI output instead. Both setters consume the returned EAX receiver;
+the explicit-resource setter consumes its two stack arguments with RET 8. This
+private finder-register mismatch remains. First captures precede the finder;
+second instruction/payload and resource loads occur after the first setter and
+before the second finder. Pure load order differs from target without an
+intervening call. No caller ID publication or callback-driven redispatch is added.
+
+All 1,536 decoded-static route/callback cases pass; these are model evaluations,
+not native execution. Ninety-seven collateral static paths per image match both
+baselines, with remaining blocks and sixteen complete direct callees checked.
+All 43 table destinations retain their semantic roles, including expanded stage
+leaves and the difficulty cases. Frame 0xD8, incoming receiver at ESP+0xE4, saved
+registers, both restores and RET 4 agree with the target frame contract; aggregate
+slots remain valid but do not establish original lexical layout. Opcode 20 retains
+the reviewed memory-OR/score routes; relocated entry/opcode-21 scratch storage
+preserves FP operations. HUD remains 3,772 bytes with unchanged normalized
+code/jump/table roles and all 21 call identities.
+
+Evidence SHA-256:
+`7495e25e18e1b28fcc8e03616121d2af358d52c713a0c24687b3c87d664adad9`.
+PE: `36eb4f9ecccffa51ff6b8ba80fdea888f64377f2262ac4500fbba90138d35522`;
+PDB GUID `387395d9cc65e547b20f8834eb46e7b1`, age 1. Four exact binding JSONs:
+- replay `46bf0a9e1e881e06bd50da62b838da657a806ed6d76bdb3f019accbe7d06e7dc`;
+- freeze `1e890048b006cb31858c4cfc391bdc77cd22a70ac4b5afd6b1d1707351ade039`;
+- plan `1a9c1e559bdf728ccd566b85ed52a40d4819ab0300411ee3356b85af7d23eba8`;
+- artifacts `a8afb54b8bffa8fec6ff85c9f610880efde94e1ce83a9d193afbe51c7e064169`.
+
+Semantic report:
+`1bba05ae4dadf3e4368ba3b6f2413de0fa6ec4a76268524c924140cf84d82e7f`;
+provenance report:
+`b1d324130542020804006480373fe4e6d370f5c450d93012013b4590d11c7e63`.
+The separate read-time target-helper export
+`fd31969b35e695cdf3955681b51c8e0f6d18176d35372cd1b75fc13d66bbbee0`
+is not a retroactive freeze input. All 1,075 non-Run contributions retain ordinary
+bytes after validated absolute and relative address operands are accounted for;
+198 broader unresolved referent cases remain outside the reviewed scope. Existing
+live-owner/resource assumptions, physical storage/alias limits, HUD countdown
+reload and nonfinite/FP residuals persist. No whole-producer/runtime equivalence,
+new exact credit or whole-Run target equality is established. Logs, binaries and
+route-model artifacts remain outside Git.
