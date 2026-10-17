@@ -9,7 +9,7 @@ GameChainOwnerView *g_GameAnimationSlots, *g_GameOwner477830, *g_GameOwner4776F0
     *g_GameOwner4776FC, *g_GameOwner4776EC;
 GameAdditionalChainView *g_GameOwner4776F4;
 GameMenuView *g_GameMenu;
-GameGuiUpdateView *g_GameGuiUpdate;
+GuiView *g_GuiView;
 GameStatisticsOwner *g_GameStatisticsRows;
 Player *g_Player;
 EnemyManagerView *g_EnemyManager;

@@ -62,6 +62,7 @@ struct GuiMessageVmView
     int activeSide;
     unsigned int textColors[2];
 
+    ~GuiMessageVmView();
     static int __stdcall Run(GuiMessageVmView *message);
 };
 
@@ -135,6 +136,7 @@ struct GuiView
     AnmLoadedView *frontAnm;
     int endingCounter;
 
+    ~GuiView();
     void SetLivesDisplayCount(int count);
     static int __stdcall UpdateStageElements(GuiView *gui);
 };
@@ -165,6 +167,9 @@ typedef char GuiViewTailAt9E60[
 
 
 extern GuiView *g_GuiView;
+
+// Complete GUI resource/message cleanup owner at target 0x00414370.
+void __stdcall GuiCleanupResources(GuiView *gui);
 
 // Complete stage-display reset owner at target 0x00413BC0.
 void GameResetGui(GuiView *gui);

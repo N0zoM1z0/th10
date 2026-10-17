@@ -37,7 +37,7 @@ void Reset(const Scenario &s) {
     g_GameAnimationSlots = reinterpret_cast<GameChainOwnerView *>(savedPrimary);
     g_GameMenu = reinterpret_cast<GameMenuView *>(savedSecondary);
     saved830 = g_GameOwner477830 = s.missing == Owner830 ? NULL : Allocate<GameChainOwnerView>(Owner830);
-    g_GameGuiUpdate = s.missing == Gui ? NULL : Allocate<GameGuiUpdateView>(Gui);
+    g_GuiView = s.missing == Gui ? NULL : AllocateGui();
     g_Player = s.missing == PlayerId ? NULL : Allocate<Player>(PlayerId);
     saved6F0 = g_GameOwner4776F0 = s.missing == Owner6F0 ? NULL : Allocate<GameChainOwnerView>(Owner6F0);
     savedItem = s.missing == Item ? NULL : Allocate<ItemManagerView>(Item);

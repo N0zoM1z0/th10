@@ -25,6 +25,8 @@ typedef unsigned int ZunBool;
 @FLOAT3_DECLARATION@
 struct PlayerTimerView { int previous, current; float subframe; float *scale; unsigned int flags; };
 @GAME_DECLARATIONS@
+// Opaque native type only; the host does not construct or destroy GuiView.
+struct GuiView;
 @REPLAY_DECLARATIONS@
 struct StageScriptView { ~StageScriptView(); };
 struct Player { ~Player(); };
@@ -123,8 +125,12 @@ template<class T> T *Allocate(Id id) {
         [](void *storage) { delete static_cast<T *>(storage); }};
     return pointer;
 }
+// Trivial allocation identity for the opaque GUI boundary, not a GUI layout.
+struct GuiAllocationToken { unsigned char unused; };
+GuiView *AllocateGui() { return reinterpret_cast<GuiView *>(Allocate<GuiAllocationToken>(Gui)); }
 void Record(Kind kind, Id id = NoId) { events.push_back(Event{kind, id}); }
 void ClearPublishedOwner(Id id);
+void ObserveGuiDestructor(GuiView *owner);
 void Clean(void *pointer) {
     if (finalizing) return;
     Allocation &allocation = Find(pointer);
@@ -167,6 +173,8 @@ template<class T> void HostFree(T *pointer) {
     allocation.pointer = NULL;
     ::operator delete(pointer);
 }
+// Recover the genuine host allocation type without invoking a GUI destructor.
+void HostFree(GuiView *pointer) { HostFree(reinterpret_cast<GuiAllocationToken *>(pointer)); }
 void Finish() {
     finalizing = true;
     for (int i = 0; i < allocationCount; ++i)

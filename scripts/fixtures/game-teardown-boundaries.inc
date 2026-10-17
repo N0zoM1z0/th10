@@ -7,7 +7,7 @@ void fixture::ClearPublishedOwner(Id id) {
         break;
     case Secondary: g_GameMenu = NULL; break;
     case Owner830: g_GameOwner477830 = NULL; break;
-    case Gui: g_GameGuiUpdate = NULL; break;
+    case Gui: g_GuiView = NULL; break;
     case PlayerId: g_Player = NULL; break;
     case Owner6F0: g_GameOwner4776F0 = NULL; break;
     case Item: g_GameOwner477818 = NULL; break;
@@ -68,7 +68,9 @@ unsigned char *th10::leaf::Fn00418A90(unsigned char *owner) {
     return owner;
 }
 void __stdcall GameCleanupController422220(GameChainOwnerView *owner) { fixture::Clean(owner); }
-void __stdcall GameCleanupGui4145F0(GameGuiUpdateView *owner) { fixture::Clean(owner); }
+// Audited host-only observation of the actual GuiView destructor expression.
+// This intentionally does not execute the GUI destructor or construct a fake GuiView.
+void fixture::ObserveGuiDestructor(GuiView *owner) { fixture::Clean(owner); }
 void __stdcall GameCleanupAnimation405F70(GameChainOwnerView *owner) { fixture::Clean(owner); }
 void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner) { fixture::Clean(owner); }
 void __stdcall CleanupHintOwner(HintOwnerView *owner) {
@@ -77,9 +79,9 @@ void __stdcall CleanupHintOwner(HintOwnerView *owner) {
     Clean(owner); // Only boundary observation: this is NOT the real Hint body.
 }
 void __stdcall GameCleanupOwner42B570(GameChainOwnerView *owner) { fixture::Clean(owner); }
-void GamePrepareGuiReuse414570(GameGuiUpdateView *owner) {
+void GamePrepareGuiReuse414570(GuiView *owner) {
     using namespace fixture;
-    CHECK(owner == g_GameGuiUpdate && owner != NULL);
+    CHECK(owner == g_GuiView && owner != NULL);
     CHECK((g_GameRuntimeFlags & 2u) != 0);
     CHECK(!criticalHeld);
     Record(ResetGui);

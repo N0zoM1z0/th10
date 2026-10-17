@@ -2,9 +2,11 @@
 #include "EnemySoundQueue.hpp"
 #include "Main.hpp"
 #include "Gui.hpp"
+#include "Chain.hpp"
 
 #include <math.h>
 #include <stdlib.h>
+#include <new>
 
 
 // These views expose only fields read by the two reviewed GUI cores.  The
@@ -1513,3 +1515,180 @@ void GameResetGui(GuiView *gui)
     }
     gui->bossGaugeSegmentCount = 0;
 }
+
+
+
+// GUI lifecycle begin: complete owners 0x4136C0, 0x414370 and 0x4145F0.
+// This is the observed shared message-file retention slot, not a new allocation.
+extern void *g_GuiRetainedMessageFile491BE8;
+
+// Target 0x004136C0-0x00413720. The owning caller releases the allocation.
+GuiMessageVmView::~GuiMessageVmView()
+{
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_PLAYER_PORTRAIT]);
+    vmIds[GUI_MESSAGE_PLAYER_PORTRAIT].value = 0;
+    manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_ENEMY_PORTRAIT]);
+    vmIds[GUI_MESSAGE_ENEMY_PORTRAIT].value = 0;
+    manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_TEXT_BOX]);
+    vmIds[GUI_MESSAGE_TEXT_BOX].value = 0;
+    manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_TEXT_LINE_0]);
+    vmIds[GUI_MESSAGE_TEXT_LINE_0].value = 0;
+    manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_TEXT_LINE_1]);
+    vmIds[GUI_MESSAGE_TEXT_LINE_1].value = 0;
+    manager->MarkVmForDeletion(vmIds[GUI_MESSAGE_ENEMY_NAME]);
+    vmIds[GUI_MESSAGE_ENEMY_NAME].value = 0;
+}
+
+// Target 0x00414370-0x0041454B. This also serves live GUI resource teardown.
+void __stdcall GuiCleanupResources(GuiView *gui)
+{
+    if ((g_GuiGameFlags & 9u) == 0)
+    {
+        AnmLoadedView **slot = &g_AnmRenderManagerView->loadedAnms[28];
+        if (*slot != NULL)
+        {
+            (*slot)->Release();
+            ::operator delete(*slot);
+            *slot = NULL;
+        }
+    }
+    else
+        g_AnmRenderManagerView->MarkLoadedVmsForDeletion(gui->stageUiAnm);
+
+    GuiMessageVmView *message = gui->message;
+    gui->stageUiAnm = NULL;
+    if (message != NULL)
+    {
+        delete message;
+        gui->message = NULL;
+    }
+    if ((g_GuiGameFlags & 9u) == 0)
+    {
+        if (gui->messageFile != NULL)
+        {
+            free(gui->messageFile);
+            gui->messageFile = NULL;
+        }
+        gui->messageFile = NULL;
+        g_GuiRetainedMessageFile491BE8 = NULL;
+    }
+    else
+        g_GuiRetainedMessageFile491BE8 = gui->messageFile;
+
+    th10::ChainElem *update = static_cast<th10::ChainElem *>(gui->updateCallback);
+    if (update != NULL)
+        update->flags &= ~2u;
+    g_AnmRenderManagerView->MarkVmForDeletion(gui->specialVmId9E14);
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    gui->specialVmId9E14.value = 0;
+    manager->MarkVmForDeletion(gui->specialVmId9E18);
+    gui->specialVmId9E18.value = 0;
+    manager->MarkVmForDeletion(gui->bossGaugeVmId);
+    gui->bossGaugeVmId.value = 0;
+    for (int i = 0; i < 10; ++i)
+        gui->bossGaugeSegmentVmIds[i].value = 0;
+    for (int i = 0; i < 8; ++i)
+    {
+        const int id = gui->valueVmIds[i].value;
+        if (id != 0)
+        {
+            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+            while (node != NULL && static_cast<AnmVmView *>(node->owner)->id != id)
+                node = node->next;
+            if (node == NULL)
+            {
+                node = manager->secondaryVmListHead;
+                while (node != NULL && static_cast<AnmVmView *>(node->owner)->id != id)
+                    node = node->next;
+            }
+            if (node != NULL)
+            {
+                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                if (vm != NULL)
+                {
+                    vm->flags35C |= 0x04000000u;
+                    if (vm->layerNode.previous == NULL)
+                    {
+                        AnmVmLayerNodeView *child = vm->layerNode.next;
+                        while (child != NULL)
+                        {
+                            static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;
+                            child = child->next;
+                        }
+                    }
+                }
+            }
+        }
+        gui->valueVmIds[i].value = 0;
+    }
+    gui->bossGaugeSegmentCount = 0;
+}
+
+// Target 0x004145F0-0x0041482D. Member destruction follows this body naturally:
+// bossPositionVm, then displayVms5..displayVms0, each array in reverse order.
+GuiView::~GuiView()
+{
+    GuiCleanupResources(this);
+    th10::ChainElem *element = static_cast<th10::ChainElem *>(updateCallback);
+    th10::Chain *chain = th10::g_Chain;
+    if (element != NULL)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        th10::Chain::UnregisterElem(element, chain);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    element = static_cast<th10::ChainElem *>(drawCallback);
+    chain = th10::g_Chain;
+    if (element != NULL)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        th10::Chain::UnregisterElem(element, chain);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    AnmRenderManagerView *manager = g_AnmRenderManagerView;
+    updateCallback = NULL;
+    manager->MarkVmForDeletion(specialVmId9E50);
+    specialVmId9E50.value = 0;
+    for (int i = 0; i < 8; ++i)
+    {
+        const int id = valueVmIds[i].value;
+        if (id != 0)
+        {
+            AnmVmLayerNodeView *node = manager->primaryVmListHead;
+            while (node != NULL && static_cast<AnmVmView *>(node->owner)->id != id)
+                node = node->next;
+            if (node == NULL)
+            {
+                node = manager->secondaryVmListHead;
+                while (node != NULL && static_cast<AnmVmView *>(node->owner)->id != id)
+                    node = node->next;
+            }
+            if (node != NULL)
+            {
+                AnmVmView *vm = static_cast<AnmVmView *>(node->owner);
+                if (vm != NULL)
+                {
+                    vm->flags35C |= 0x04000000u;
+                    if (vm->layerNode.previous == NULL)
+                    {
+                        AnmVmLayerNodeView *child = vm->layerNode.next;
+                        while (child != NULL)
+                        {
+                            static_cast<AnmVmView *>(child->owner)->flags35C |= 0x04000000u;
+                            child = child->next;
+                        }
+                    }
+                }
+            }
+        }
+        valueVmIds[i].value = 0;
+    }
+    manager->MarkLoadedVmsForDeletion(frontAnm);
+    g_GuiView = NULL;
+}
+// GUI lifecycle end.

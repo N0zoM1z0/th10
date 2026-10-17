@@ -7,6 +7,8 @@ prove x86 layout/ABI, prove byte exactness, or establish Hint exporter retention
 Platform and subsystem seams are mocks used ONLY by this host test. Every delete
 expression is observed through HostDelete after mutations have been applied;
 HostDelete preserves destruction followed by matching allocation release.
+The real GuiView destructor expression is mapped after mutation to an explicitly
+audited host mock; this checks its caller boundary, not GUI member lifetimes.
 Mutation success requires compilation and exactly the intended CHECK diagnostic;
 compiler failure, signals, sanitizer reports, and timeouts are harness errors.
 """
@@ -65,11 +67,10 @@ def audit_seams(root, source, fixture):
 
     for signature in [
         'void __stdcall GameCleanupController422220(GameChainOwnerView *owner);',
-        'void __stdcall GameCleanupGui4145F0(GameGuiUpdateView *owner);',
         'void __stdcall GameCleanupAnimation405F70(GameChainOwnerView *owner);',
         'void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner);',
         'void __stdcall GameCleanupOwner42B570(GameChainOwnerView *owner);',
-        'void GamePrepareGuiReuse414570(GameGuiUpdateView *owner);',
+        'void GamePrepareGuiReuse414570(GuiView *owner);',
         'void __stdcall GameCleanupOwner40AF00(GameChainOwnerView *owner);',
         'void __stdcall GameCleanupLoader405620(GameChainOwnerView *owner);',
         'void __stdcall GameCleanupOwner408AF0(GameAdditionalChainView *owner);',
@@ -95,8 +96,24 @@ def audit_seams(root, source, fixture):
                                  ('Player.hpp', '~Player();'), ('Enemy.hpp', '~EnemyManagerView();'),
                                  ('ItemManager.hpp', '~ItemManagerView();')]:
         require(destructor in canonical(root, filename), 'genuine destructor boundary absent: ' + filename)
+    gui = canonical(root, 'Gui.hpp')
+    gui_owner = balanced(gui, 'struct GuiView\n', True)
+    require('~GuiView();' in gui_owner, 'genuine GUI destructor declaration absent')
+    require('GuiView::~GuiView()' in canonical(root, 'Gui.cpp'),
+            'genuine GUI destructor definition absent')
+    require('#include "Gui.hpp"' in source, 'caller must consume canonical GUI declaration')
+    require('GameCleanupGui4145F0' not in source, 'obsolete GUI raw boundary remains')
+    require(source.count('gui->~GuiView();') == 1,
+            'GUI destructor caller expression changed')
+    require('GameGuiUpdateView' not in source and 'g_GameGuiUpdate' not in source,
+            'obsolete GUI partial-view slot remains')
+    require('externGuiView*g_GuiView;' in normalized(gui), 'canonical GUI slot declaration drift')
+    require('GuiView*gui=g_GuiView;' in normalized(source), 'caller must save canonical GUI owner')
+    require('offsetof(GuiView,specialVmId9E14)==0x9e14' in normalized(source),
+            'transition VM ID canonical offset audit drift')
+    require('g_GuiView->message==NULL' in normalized(source), 'message pointer gate drift')
     game_types = ['GameManager', 'GameChainElementView', 'GameChainOwnerView', 'GameMenuView',
-                  'GameGuiUpdateView', 'GameAdditionalChainView']
+                  'GameAdditionalChainView']
     fixture = fixture.replace('@GAME_DECLARATIONS@', 'struct GameChainElementView;\n' + '\n'.join(
         balanced(source, 'struct ' + name + '\n', True) for name in game_types))
     statistics = canonical(root, 'GameStatistics.hpp')
@@ -140,6 +157,12 @@ def extract(root):
 def instrument(region):
     # Applied only after mutation. Observe all candidate delete operands, including
     # an intentionally wrong global operand, without replacing caller control flow.
+    # GuiView remains forward-declared in this caller-only fixture. Its opaque
+    # pointer identifies a separate host allocation token, never a fake GuiView
+    # or storage on which we invoke GUI lifetime operations. Audit the real
+    # declaration/body above; observe the expression after mutation here.
+    region = re.sub(r'\b([A-Za-z_]\w*)->~GuiView\(\);',
+                    r'fixture::ObserveGuiDestructor(\1);', region)
     region = re.sub(r'::operator delete\(([A-Za-z_]\w*)\);', r'fixture::HostFree(\1);', region)
     return re.sub(r'\bdelete\s+([A-Za-z_]\w*)\s*;', r'fixture::HostDelete(\1);', region)
 
@@ -181,15 +204,15 @@ MUTATIONS = [
             GameCleanupController422220(controller);
             ::operator delete(controller);
         }
-        GameGuiUpdateView *gui = g_GameGuiUpdate;
+        GuiView *gui = g_GuiView;
         if (gui != NULL)
         {
-            GameCleanupGui4145F0(gui);
+            gui->~GuiView();
             ::operator delete(gui);
-        }''', '''GameGuiUpdateView *gui = g_GameGuiUpdate;
+        }''', '''GuiView *gui = g_GuiView;
         if (gui != NULL)
         {
-            GameCleanupGui4145F0(gui);
+            gui->~GuiView();
             ::operator delete(gui);
         }
         GameChainOwnerView *controller = g_GameOwner477830;

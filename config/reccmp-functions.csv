@@ -1,4 +1,7 @@
 name,address,type
+GuiMessageVmView::~GuiMessageVmView,0x004136C0,function
+GuiCleanupResources,0x00414370,function
+GuiView::~GuiView,0x004145F0,function
 GameScoreStateView::AddFaith,0x0041BE80,function
 ItemVectorView::FromAngleMagnitude,0x0041BEB0,function
 GameFinalizeStatistics42B1E0,0x0042B1E0,function

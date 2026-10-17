@@ -77,13 +77,6 @@ struct GameMenuView
     u8 unknown000[0x2a18];
     u8 flags2A18;
 };
-struct GameGuiUpdateView
-{
-    u8 unknown000[0x9e14];
-    int transitionVmId;
-    u8 unknown9E18[0xa0];
-    int dialogueState;
-};
 struct GameStageUpdateView
 {
     int resourceIndex;
@@ -100,6 +93,7 @@ struct GameAdditionalChainView
     u8 unknown0010[0x379c];
     GameChainElementView *extraChain;
 };
+typedef char GameGuiTransitionIdAt9E14[(offsetof(GuiView, specialVmId9E14) == 0x9e14) ? 1 : -1];
 typedef char GameManagerTimerAt10[(offsetof(GameManager, stageTimer) == 0x10) ? 1 : -1];
 typedef char GameManagerFlagsAt58[(offsetof(GameManager, m_Flags) == 0x58) ? 1 : -1];
 typedef char GameAdditionalChainAt37AC[(offsetof(GameAdditionalChainView, extraChain) == 0x37ac) ? 1 : -1];
@@ -116,7 +110,7 @@ extern GameChainOwnerView *g_GameOwner477840;
 extern GameAdditionalChainView *g_GameOwner4776F4;
 // Target477814 uses the canonical g_GameOwner477814 declaration in Hint.hpp.
 extern EnemyManagerView *g_EnemyManager;
-extern GameGuiUpdateView *g_GameGuiUpdate;              // 0x47770C
+// Target47770C uses the canonical g_GuiView declaration in Gui.hpp.
 extern GameStageUpdateView *g_GameStageUpdate;          // 0x477848
 extern unsigned char g_GameWorkerState[];              // 0x492254
 extern unsigned char g_GameMusicState[];               // 0x492590
@@ -148,7 +142,7 @@ extern void GameAssignMusic(unsigned char *music, const char *name, int mode, in
 extern void __stdcall GameDestroyMenu(GameMenuView *menu);
 extern void GameEmitDemoEffect(int script, int type, int duration, int x, int y, int z);
 extern void GameQueueSound(unsigned char *sound, int soundId);
-extern void GameUpdateGui(GameGuiUpdateView *gui);
+extern void GameUpdateGui(GuiView *gui);
 extern void GameUpdateFaithDecay(unsigned char *state);
 extern void GameAdvanceTimer(PlayerTimerView *timer);
 extern void EnemyMarkPendingInterrupt(int *vmId);
@@ -174,7 +168,7 @@ static __forceinline void ResetGameStage()
     EnemySpawnRequestView request;
     memset(&request, 0, sizeof(request));
     EnemySpawn(g_EnemyManager, g_GameInitialEclName, &request);
-    GameResetGui(reinterpret_cast<GuiView *>(g_GameGuiUpdate));
+    GameResetGui(g_GuiView);
     MarkGameChains(g_GameOwner477830);
     GameChainOwnerView *playerChains = reinterpret_cast<GameChainOwnerView *>(g_Player);
     playerChains->updateChain->flags |= 2;
@@ -223,7 +217,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
             GameEnterMenuState(g_GameMenu);
             GameResetAnimationSlots(g_GameAnimationSlots);
             manager->m_Flags |= 0x800;
-            EnemyMarkPendingInterrupt(&g_GameGuiUpdate->transitionVmId);
+            EnemyMarkPendingInterrupt(&g_GuiView->specialVmId9E14.value);
         }
         else
         {
@@ -272,7 +266,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
         else if (manager->stageTimer.current == 3000)
             GameQueueSound(g_GameSoundState, 4);
     }
-    GameUpdateGui(g_GameGuiUpdate);
+    GameUpdateGui(g_GuiView);
     if ((manager->m_Flags & 0x10) != 0 || (manager->m_Flags & 0x20) != 0 ||
         (manager->m_Flags & 0x40) != 0)
         return 3;
@@ -285,7 +279,7 @@ ZunBool __stdcall GameManagerUpdateBody(GameManager *manager)
             ++row.activeFrames;
     }
     if (*reinterpret_cast<int *>(reinterpret_cast<u8 *>(g_EnemyManager) + 0x10) == 0 &&
-        g_GameGuiUpdate->dialogueState == 0 &&
+        g_GuiView->message == NULL &&
         manager->stageTimer.current >= 90)
         GameUpdateFaithDecay(g_GameStageState);
     ++g_GameFrameCounter0;
@@ -340,7 +334,7 @@ extern void *GameCreateOwner41C290();
 extern void *GameCreateController();
 extern void *GameCreateOwner42B660();
 extern void GameRestoreReplayState(ReplayManager *replay);
-extern void __stdcall GameReloadGui(GameGuiUpdateView *gui);
+extern void __stdcall GameReloadGui(GuiView *gui);
 extern void *GameCreateOwner40AF90();
 extern void *GameCreateLoaderOwner();
 extern void *GameCreateOwner408C90();
@@ -432,7 +426,7 @@ int __stdcall GameManagerInitialize(GameManager *manager)
     else
     {
         GameRestoreReplayState(g_ReplayManager);
-        GameReloadGui(g_GameGuiUpdate);
+        GameReloadGui(g_GuiView);
         if (StageCreate(g_GameStageUpdate->menuPath, 0) == NULL)
             goto failed;
     }
@@ -481,11 +475,10 @@ failed:
 // Genuine unresolved dependencies: no native substitute implementations.
 // Private target EBX/EAX receiver assignments are not source ABI declarations.
 extern void __stdcall GameCleanupController422220(GameChainOwnerView *owner);
-extern void __stdcall GameCleanupGui4145F0(GameGuiUpdateView *owner);
 extern void __stdcall GameCleanupAnimation405F70(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupLinked41C1C0(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupOwner42B570(GameChainOwnerView *owner);
-extern void GamePrepareGuiReuse414570(GameGuiUpdateView *owner);
+extern void GamePrepareGuiReuse414570(GuiView *owner);
 extern void __stdcall GameCleanupOwner40AF00(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupLoader405620(GameChainOwnerView *owner);
 extern void __stdcall GameCleanupOwner408AF0(GameAdditionalChainView *owner);
@@ -562,10 +555,10 @@ void __stdcall GameManagerCleanup(GameManager *manager)
             GameCleanupController422220(controller);
             ::operator delete(controller);
         }
-        GameGuiUpdateView *gui = g_GameGuiUpdate;
+        GuiView *gui = g_GuiView;
         if (gui != NULL)
         {
-            GameCleanupGui4145F0(gui);
+            gui->~GuiView();
             ::operator delete(gui);
         }
         Player *player = g_Player;
@@ -601,7 +594,7 @@ void __stdcall GameManagerCleanup(GameManager *manager)
     }
     else
     {
-        GamePrepareGuiReuse414570(g_GameGuiUpdate);
+        GamePrepareGuiReuse414570(g_GuiView);
         StageScriptView *stage = reinterpret_cast<StageScriptView *>(g_GameMenu);
         if (stage != NULL)
             delete stage;

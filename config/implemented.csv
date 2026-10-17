@@ -958,3 +958,6 @@ CreateHintOwner
 HintOwnerView::OnUpdate
 GameManagerCleanup
 GameFinalizeStatistics42B1E0
+GuiMessageVmView::~GuiMessageVmView
+GuiCleanupResources
+GuiView::~GuiView
