@@ -2115,3 +2115,14 @@ producer groups. This does not grant exactness to the HUD owner. Four UBSan
 suites and55 explicit-failure controls, target GUI report and full public CI
 pass. All source, tests and compact notes are retained; generated builds stay
 local and ignored.
+
+### 2026-10-18: Radial initializer signed-RNG local canonical closure
+
+The signed RNG conversion now uses one explicit float local before the unchanged division/subtraction. One candidate cold link in the genuine four-TU ExecuteScript /GL /GS graph supplied the complete 803-byte radial owner; canonical replay matched 803/803 bytes, and all 29 affected existing canonical units were preserved. Factory-controlled acceptance remains pending. ExecuteScript remains 9948 bytes against target 9964; no runtime semantic or physical diagnostic-anchor storage proof is claimed.
+
+- Candidate RandomMath.cpp SHA256: `5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1`.
+- Complete radial owner SHA256: `397b4d342d864ceb7c6d94b4da09a486c7337184f9c951f3ba2e616893796f08`.
+- Private binding inventory SHA256: `4342ab97b08e082719bdd0f6e00f2c88521350b98ee10dbc9a9576dcfe2e9e58`.
+- Actual complete canonical replay: `fc309434dbb1496aad942db711ef2761`; additional 23-guard finalization completing all 29 guards: `3f15976898af4bbd951471e67e66a12e`.
+
+See [Radial signed-RNG local evidence](evidence/radial-rng-local/README.md) for source/tool/graph identities, reviewed compile-address binding scope, reproduction limits and the pending Factory handoff.

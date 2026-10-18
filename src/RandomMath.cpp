@@ -28,6 +28,6 @@ float RngView::GetRandomF32()
 // Target 0x0044BB90-0x0044BC02 maps the unsigned result to [-1, 1].
 float RngView::GetRandomF32Signed()
 {
-    return static_cast<float>(GetRandomU32()) /
-        static_cast<float>(INT_MAX) - 1.0f;
+    const float roll = static_cast<float>(GetRandomU32());
+    return roll / static_cast<float>(INT_MAX) - 1.0f;
 }

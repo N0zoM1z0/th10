@@ -19604,3 +19604,319 @@ size = 74
 linkages = [
   { offset = 0x3B, type = "REL32", symbol = "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z", target = 0x0043BDA0 },
 ]
+
+[units.anm-initialize-pulsing-radial-trail]
+source = "src/AnmManager.cpp"
+support_sources = ["src/RandomMath.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp"]
+output_dir = "build/match-linked/AnmSetupVertexBuffer"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+artifact_kind = "linked-pe"
+symbol = "?InitializePulsingRadialTrail@AnmVmView@@QAEHXZ"
+target_address = 4477680
+size = 803
+compare_size = 803
+functions = ["AnmVmView::InitializePulsingRadialTrail"]
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 15
+width = 4
+type = "REL32"
+symbol = "_free"
+target = 4531234
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 41
+width = 4
+type = "REL32"
+symbol = "_malloc"
+target = 4531974
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 51
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 67
+width = 4
+type = "DIR32"
+symbol = "?UpdatePulsingRadialTrail@@YIHPAUAnmVmView@@@Z"
+target = 4478496
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 77
+width = 4
+type = "DIR32"
+symbol = "?DrawPulsingRadialTrail@@YIHPAUAnmVmView@@@Z"
+target = 4479104
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 82
+width = 4
+type = "REL32"
+symbol = "?GetRandomF32Signed@RngView@@QAEMXZ"
+target = 4504464
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 88
+width = 4
+type = "DIR32"
+symbol = "__real@3c088889"
+target = 4656252
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 93
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 104
+width = 4
+type = "REL32"
+symbol = "?GetRandomF32Signed@RngView@@QAEMXZ"
+target = 4504464
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 110
+width = 4
+type = "DIR32"
+symbol = "__real@3c088889"
+target = 4656252
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 214
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 225
+width = 4
+type = "REL32"
+symbol = "?GetRandomF32Signed@RngView@@QAEMXZ"
+target = 4504464
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 231
+width = 4
+type = "DIR32"
+symbol = "__real@3d888889"
+target = 4656248
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 262
+width = 4
+type = "DIR32"
+symbol = "__real@40490fdb"
+target = 4655896
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 279
+width = 4
+type = "DIR32"
+symbol = "__real@40c90fdb"
+target = 4655892
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 309
+width = 4
+type = "REL32"
+symbol = "?FromAngleMagnitude@AnmFloat3View@@QAEXMM@Z"
+target = 4479152
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 319
+width = 4
+type = "DIR32"
+symbol = "__real@3f000000"
+target = 4655884
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 341
+width = 4
+type = "DIR32"
+symbol = "__real@3f000000"
+target = 4655884
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 349
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 375
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 4
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 384
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 389
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 424
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 444
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 4
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 456
+width = 4
+type = "DIR32"
+symbol = "__real@4f800000"
+target = 4656024
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 466
+width = 4
+type = "DIR32"
+symbol = "__real@30000000"
+target = 4656108
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 480
+width = 4
+type = "DIR32"
+symbol = "__real@3f800000"
+target = 4655868
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 486
+width = 4
+type = "DIR32"
+symbol = "__real@41000000"
+target = 4656080
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 492
+width = 4
+type = "DIR32"
+symbol = "__real@42a00000"
+target = 4656168
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 499
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 525
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 4
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 534
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 539
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 574
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 594
+width = 4
+type = "DIR32"
+symbol = "?g_RngView@@3URngView@@A"
+target = 4790448
+addend = 4
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 606
+width = 4
+type = "DIR32"
+symbol = "__real@4f800000"
+target = 4656024
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 612
+width = 4
+type = "DIR32"
+symbol = "__real@30000000"
+target = 4656108
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 618
+width = 4
+type = "DIR32"
+symbol = "__real@3f800000"
+target = 4655868
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 624
+width = 4
+type = "DIR32"
+symbol = "__real@3d088889"
+target = 4656244
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 638
+width = 4
+type = "DIR32"
+symbol = "__real@bd888889"
+target = 4656240
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 665
+width = 4
+type = "DIR32"
+symbol = "__real@3d888889"
+target = 4656248
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 691
+width = 4
+type = "REL32"
+symbol = "?FromAngleMagnitude@AnmFloat3View@@QAEXMM@Z"
+target = 4479152
+addend = 0
+[[units.anm-initialize-pulsing-radial-trail.linkages]]
+offset = 780
+width = 4
+type = "DIR32"
+symbol = "__real@3e4f8c3d"
+target = 4655980
+addend = 0
