@@ -4,7 +4,7 @@ import hashlib,json,sys
 from pathlib import Path
 if sys.flags.optimize:raise SystemExit('optimized Python')
 FACTS_FILE='facts.json'
-FACTS_SHA='6aab86de639c8ac1a20bf5cc3c12772d02d4d4e91fe0593989239806a52b0eaa'
+FACTS_SHA='05cd066bae8217c05dbd270ef53ea7cd07e838af18dbbc40fbbcc264ce74d1bf'
 
 def load_contract():
  raw=Path(__file__).with_name(FACTS_FILE).read_bytes()
@@ -37,9 +37,24 @@ def guarded_projection_satisfies(is_zero, inventory, facts):
  forbidden={'return_1','return_unresolved'} if is_zero else {'return_4','return_unresolved'}
  return required<=set(inventory) and not forbidden&set(inventory)
 
+def prefix_projection_satisfies(events,facts):
+ """Required recognized prefix projection, conditional on reaching direct dispatch."""
+ return set(facts['predispatch_analysis']['recognized_prefix_events_required'])<=set(events)
+
+def receiver_projection_valid(obligations):
+ return {x['api']:x['argument_origin_proved'] for x in obligations}=={'EnterCriticalSection':True,'LeaveCriticalSection':True}
+
 def run_tests():
  c=load_contract();checks=0;mutants=0
  facts=json.loads(Path(__file__).with_name(FACTS_FILE).read_bytes())
+ prefix=facts['predispatch_analysis'];required=set(prefix['recognized_prefix_events_required'])
+ assert all(prefix['fixed_hypotheses'].values()) and len(required)==4
+ assert prefix_projection_satisfies(required,facts)
+ for event in required:assert not prefix_projection_satisfies(required-{event},facts)
+ assert receiver_projection_valid(facts['critical_receiver_analysis']['obligations'])
+ for api in ('EnterCriticalSection','LeaveCriticalSection'):
+  changed=[dict(x,argument_origin_proved=not x['argument_origin_proved']) if x['api']==api else x for x in facts['critical_receiver_analysis']['obligations']]
+  assert not receiver_projection_valid(changed)
  guard=facts['mode0_guard_obligations']
  for key in ('single_41fd00_call_site','unique_guard','guard_required_after_mode0_dispatch','zero_result_failure_obligations_proved','nonzero_result_normal_return_obligations_proved'):assert guard[key] is True
  guard_cases=0;guard_mutants=0
@@ -67,5 +82,5 @@ def run_tests():
     expected=(result,enter,leave) in ((1,0,0),(1,1,1),(4,1,0))
     assert direct_critical_count_satisfies(result,enter,leave)==expected;checks+=1
  assert not direct_critical_count_satisfies(4,1,1) # Do not insert a speculative unlock fix.
- print(json.dumps({'status':'PASS','finite_inventory_and_count_cases':checks,'projection_schema_and_membership_mutants_killed':mutants,'guard_projection_cases':guard_cases,'guard_projection_mutants_killed':guard_mutants,'native_or_body_acceptance':False,'feasibility_or_order_acceptance':False}))
+ print(json.dumps({'status':'PASS','finite_inventory_and_count_cases':checks,'projection_schema_and_membership_mutants_killed':mutants,'guard_projection_cases':guard_cases,'guard_projection_mutants_killed':guard_mutants,'prefix_and_receiver_projection_cases':2,'prefix_and_receiver_projection_mutants_killed':6,'native_or_body_acceptance':False,'feasibility_or_order_acceptance':False}))
 if __name__=='__main__':run_tests()

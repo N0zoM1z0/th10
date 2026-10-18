@@ -27,7 +27,7 @@ The public high-level model is consistent with this structure, but does not esta
 
 ## Remaining body-level obligations
 
-1. Pre-dispatch store effects and critical-section argument/depth-update roles.
+1. Complete pre-dispatch ordering/effects and critical-section lifecycle/ownership. The fixed prefix effects and both API arguments below are established conditionally.
 2. Exact guards for optional helpers and failure paths; ordering and reload points around opaque calls.
 3. Mode 10 and 15 unresolved effects; the mode 0 +0x768 value origin is now proved, without an inferred pointer type. The mode 0 zero/nonzero result guard is also proved, but source ordering remains open.
 4. Meaningful helper source declarations and native ABI evidence. The existing natural int(context*) baseline remains conditional.
@@ -36,7 +36,7 @@ A faithful executable source body is not yet justified. The supplied fixture che
 
 ## Evidence
 
-Latest guard proof HEAD 0821ec6ed83fabc2559d3cdca5b6aff86b708ec9; the preceding proof checkpoint was 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receipts used raw-identical production/target files at 6892fa5. Owner SHA 219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e.
+Latest prefix proof HEAD b33c5f9cd893b75a44f69e2d58124f6d1c34f1f5; guard proof HEAD 0821ec6ed83fabc2559d3cdca5b6aff86b708ec9; the preceding proof checkpoint was 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receipts used raw-identical production/target files at 6892fa5. Owner SHA 219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e.
 
 - Dispatch: actual 51430a881fd14a3cae4459db4f574a15.
 - Selector origins: actual 2be7243f79154d44b2212480e00e0acb.
@@ -63,7 +63,7 @@ From repository root:
 
     python3 probes/main-mode-transition/check_obligations.py
 
-Expected: PASS, 34 finite inventory/count checks, 95 recognized-projection schema/membership mutation rejections, 2 guard projection checks and 10 guard projection mutation rejections. These are bookkeeping checks against recorded facts, not semantic body-equivalence tests or a new native-target proof. They do not execute the game, read its executable, build native code, or establish feasibility/order.
+Expected: PASS, 34 finite inventory/count checks, 95 recognized-projection schema/membership mutation rejections, 2 guard projection checks and 10 guard projection mutation rejections, plus 2 prefix/receiver projection checks and 6 mutation rejections. These are bookkeeping checks against recorded facts, not semantic body-equivalence tests or a new native-target proof. They do not execute the game, read its executable, build native code, or establish feasibility/order.
 
 Optimized assertions must be rejected:
 
@@ -80,3 +80,19 @@ Expected: nonzero exit with `optimized Python`. The facts digest is checked befo
 - The code owner and all separately pinned auxiliary dispatch tables remain immutable.
 
 The per-mode event facts begin at the direct dispatch case target. Pre-dispatch effects are excluded. These facts neither preserve pointed-to memory across calls nor establish complete effects, event ordering, stack restoration or helper-internal behavior.
+
+
+## Conditional pre-dispatch effects and critical API arguments
+
+Actual 638f869cfa9946dfa77d2be7b990c0c4 establishes four required recognized effects on modeled normal entry continuations that reach the direct dispatch:
+
+- EnterCriticalSection is called.
+- Context +0x394 receives a value with a +0x38C load-site origin.
+- Context +0x780 receives 0xFF000000.
+- Byte context +0x6F9 receives its proved byte-load snapshot plus one modulo 256.
+
+The byte theorem requires a matching low-byte load and INC, unique dense CFG predecessors, and no intervening calls, control boundaries, stores or lane clobbers. It does not assert equality with later field contents. The prefix projection is unordered, excludes equality-return and post-dispatch effects, and does not establish feasibility or complete effects.
+
+Actual 036054aaf763438890eaef25af546f0b proves that both Enter and Leave top stack arguments originate at entry EAX context +0x6C4. The normal valid nonwrapping stack must be disjoint from the full context object, including the live pushed argument and CALL return slots. The maintained layout suggests critical-section slot 5.
+
+The Leave proof permits exactly one intervening dword context +0x38C store whose source has the +0x390 load-site origin. That store has no register or flag writes; PUSH, store and CALL have unique dense predecessors. Its effect remains in the case inventory. The earlier unresolved Leave result was a recognition limitation, now superseded. These argument facts do not establish critical-section initialization, ownership, helper-internal behavior or complete source ABI.

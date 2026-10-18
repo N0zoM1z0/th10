@@ -308,7 +308,7 @@
     "code_owner": "0x4218D0",
     "code_bytes": 572,
     "code_sha256": "219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e",
-    "head_at_latest_proof": "0821ec6ed83fabc2559d3cdca5b6aff86b708ec9",
+    "head_at_latest_proof": "b33c5f9cd893b75a44f69e2d58124f6d1c34f1f5",
     "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
     "dispatch_run": "51430a881fd14a3cae4459db4f574a15",
     "selector_run": "2be7243f79154d44b2212480e00e0acb",
@@ -321,7 +321,11 @@
     "guard_interval_run": "4e190410333641a79d6a636f52dae13b",
     "guard_interval_collector_sha256": "bc39a1d5b78df61480fce6d9dcd389a63b8701cdd51112a229116d0b3c7743d5",
     "head_at_guard_interval_proof": "0821ec6ed83fabc2559d3cdca5b6aff86b708ec9",
-    "head_at_case_result_proof": "1d55297d317574a0b0b18cb7b2738682a5b79e24"
+    "head_at_case_result_proof": "1d55297d317574a0b0b18cb7b2738682a5b79e24",
+    "predispatch_depth_run": "638f869cfa9946dfa77d2be7b990c0c4",
+    "predispatch_depth_collector_sha256": "27dfb41783836e6a0e7fa115a67a5566c6f6ed237ebcecb0ea755cce7550877a",
+    "critical_receiver_store_run": "036054aaf763438890eaef25af546f0b",
+    "critical_receiver_store_collector_sha256": "18e3d6529b1597ce989f089be512431573635ff0165553dc6a5037ad31681c63"
   },
   "interpretation": {
     "may": "CFG-possible overapproximation, not feasible execution",
@@ -351,5 +355,54 @@
       "call_LeaveCriticalSection",
       "return_1"
     ]
-  }
+  },
+  "predispatch_analysis": {
+    "condition": "modeled normal entry continuations that reach the direct dispatch; equality-return and post-dispatch effects excluded",
+    "depth_byte_store_required": true,
+    "fixed_hypotheses": {
+      "depth_increment_required": true,
+      "enter_api_required": true,
+      "fade_color_store_required": true,
+      "previous_field_store_origin_required": true
+    },
+    "recognized_prefix_events_cfg_possible": [
+      "call_EnterCriticalSection",
+      "store_context_0x394_load_site_origin_field_0x38c",
+      "store_context_0x6f9_load_snapshot_plus_one_modulo256",
+      "store_context_0x780_constant_0xff000000"
+    ],
+    "recognized_prefix_events_required": [
+      "call_EnterCriticalSection",
+      "store_context_0x394_load_site_origin_field_0x38c",
+      "store_context_0x6f9_load_snapshot_plus_one_modulo256",
+      "store_context_0x780_constant_0xff000000"
+    ],
+    "scope": "unordered recognized effects only; no feasibility or complete-effect claim; field-store role identifies load-site origin, not later field equality; depth increment denotes the proved byte-load snapshot plus one modulo256",
+    "status": "BOUNDED_PREDISPATCH_OBLIGATIONS",
+    "unresolved_effect_categories": []
+  },
+  "critical_receiver_analysis": {
+    "both_api_sites_present": true,
+    "layout_hypothesis": "maintained criticalSections starts+64C with24-byte stride, so+6C4 is index5",
+    "obligations": [
+      {
+        "api": "EnterCriticalSection",
+        "argument_origin_proved": true,
+        "candidate_argument": "entry EAX context +0x6C4"
+      },
+      {
+        "api": "LeaveCriticalSection",
+        "argument_origin_proved": true,
+        "candidate_argument": "entry EAX context +0x6C4"
+      }
+    ],
+    "scope": "top stack argument provenance only; permits one exact context+38C store of +390 load-site origin; normal valid nonwrapping stack disjoint from the full context object; no critical-section initialization, ownership or complete ABI proof"
+  },
+  "prefix_proof_premises": [
+    "valid memory and normal opaque-call return",
+    "normal unchanged IAT bindings",
+    "immutable code and auxiliary tables",
+    "opaque calls preserve EBX ESI EDI EBP; volatile registers and ESP origins discarded",
+    "Normal valid nonwrapping stack disjoint from the full context object, including the argument and CALL return slots, for both critical receiver proofs."
+  ]
 }
