@@ -11,8 +11,11 @@ struct Mock : Hooks {
     std::vector<unsigned> calls;
     bool first = true;
     std::uint32_t scalarAfterCleanup = 0;
+    std::uint32_t initializationModeSnapshot = 0;
     Mock(unsigned m, unsigned r, unsigned f): mode(m),request(r),factoryResult(f) {}
-    void enter(Context& s, Globals&) override {
+    void enter(Context& s, Globals& g) override {
+        initializationModeSnapshot=(request*13u)^0xa5a55a5au;
+        g.gameManagerInitializationMode=initializationModeSnapshot;
         calls.push_back(1); s.field390=mode; s.field38c=request;
         s.field6f9=250; s.field394=0; s.field780=0;
     }
@@ -32,6 +35,7 @@ struct Mock : Hooks {
     void mutate(unsigned event, Context& s, Globals& g) {
         s.field390=event+500u; s.field38c=event+700u; s.field39c=91;
         s.field768=88; s.field6f9=77;
+        g.gameManagerInitializationMode=event*31u+0x12345678u;
         g.data474c80=event*17u+0xfffffff0u; g.data474c7c=123; g.data477848=456; g.data491c00=99;
         if(event==0x418150) scalarAfterCleanup=g.data474c80;
     }
@@ -45,7 +49,12 @@ struct Mock : Hooks {
     HOOK(call4203f0,0x4203f0) HOOK(call421c50,0x421c50)
     HOOK(call42cd50,0x42cd50) HOOK(call418150,0x418150)
     HOOK(call40b9d0,0x40b9d0) HOOK(call42cdb0,0x42cdb0)
-    HOOK(call4180e0,0x4180e0) HOOK(call40b940,0x40b940)
+    void call4180e0(Context& s,Globals& g,std::uint32_t initializationMode) override {
+        const std::uint32_t expectedArgument=mode==11?initializationModeSnapshot:(mode==12?1u:0u);
+        assert(initializationMode==expectedArgument);
+        observe(0x4180e0,s,g);mutate(0x4180e0,s,g);
+    }
+    HOOK(call40b940,0x40b940)
 #undef HOOK
 };
 // Independent fixed call-obligation oracle. This is authored host behavior,

@@ -1,0 +1,141 @@
+--- Main.cpp
++++ Main.cpp
+@@ -1,6 +1,8 @@
+ #include "Main.hpp"
+ #include "FileSystem.hpp"
+ #include "Input.hpp"
++#include "GameStageDescriptor.hpp"
++#include "GameManager.hpp"
+ 
+ #include <direct.h>
+ #include <mmsystem.h>
+@@ -1185,3 +1187,129 @@
+         g_GameWindowView.timeOrigin = timestamp;
+     return timestamp - g_GameWindowView.timeOrigin;
+ }
++
++// Conditional native compiler experiment. These natural opaque helper
++// interfaces remain hypotheses; the 4180E0 scalar has proved caller transport.
++// No private ABI
++// adapter or ambient-register parameter is introduced.
++extern unsigned int MainOpaque41FD00();
++extern void MainOpaque4203F0();
++extern void MainOpaque421C50();
++extern void MainOpaque42CD50();
++extern void MainOpaque418150();
++extern void MainOpaque40B9D0();
++extern void MainOpaque42CDB0();
++extern void __stdcall MainOpaque4180E0(unsigned int initializationMode);
++extern void MainOpaque40B940();
++extern int g_GameStartupMode;
++extern int g_GameComparison474C80;
++extern int g_MainTransitionState491C00;
++// Typed array/valid index is a source-domain hypothesis; no extent recovered.
++extern GameStageUpdateView g_MainStageRecords474788[];
++
++// TH10_MAIN_FUNCTION: 0x004218D0 MainOpaqueUpdate4218D0
++int MainOpaqueUpdate4218D0(MainSupervisorView *supervisor) {
++    const int equalityRequest = supervisor->transitionState38c;
++    const int equalityCurrent = supervisor->nextGameMode;
++    if (equalityRequest == equalityCurrent) return 1;
++
++    EnterCriticalSection(&supervisor->criticalSections[5]);
++    const int dispatchCurrent = supervisor->nextGameMode; // Fresh before the prefix stores.
++    const int previousRequest = supervisor->transitionState38c; // Independent fresh post-Enter read.
++    supervisor->criticalSectionLockCounts[5] = static_cast<unsigned char>(supervisor->criticalSectionLockCounts[5] + 1u);
++    supervisor->transitionPrevious394 = previousRequest;
++    supervisor->transitionColor780 = 0xff000000u;
++    switch (dispatchCurrent) {
++    case 0: {
++        supervisor->nextGameMode = 1;
++        const unsigned int result = MainOpaque41FD00();
++        supervisor->transitionResult768 = result; // Unconstrained machine-value model, not pointer inference.
++        if (result == 0) {
++            supervisor->nextGameMode = 3;
++            MainOpaque4203F0();
++            MainOpaque421C50();
++            return 4;
++        }
++        break;
++    }
++    case 3:
++        MainOpaque4203F0();
++        MainOpaque421C50();
++        return 4;
++    case 4: {
++        const int request = supervisor->transitionState38c;
++        switch (request) {
++        case 1: case 2:
++            MainOpaque42CD50();
++            break;
++        case 7:
++            MainOpaque418150();
++            MainOpaque42CD50();
++            break;
++        case 14:
++            MainOpaque40B9D0();
++            MainOpaque42CD50();
++            break;
++        default: break;
++        }
++        break;
++    }
++    case 7:
++        if (supervisor->transitionState38c == 4) MainOpaque42CDB0();
++        supervisor->transitionVariant39c = 1;
++        MainOpaque4180E0(0u);
++        break;
++    case 10: {
++        MainOpaque418150();
++        supervisor->transitionVariant39c = 1;
++        supervisor->nextGameMode = 7;
++        const int scalar = g_GameComparison474C80;
++        g_GameStartupMode = scalar;
++        g_GameStageUpdate = &g_MainStageRecords474788[scalar];
++        MainOpaque4180E0(0u);
++        break;
++    }
++    case 11: {
++        const int request = supervisor->transitionState38c;
++        const unsigned int initializationMode =
++            static_cast<unsigned int>(g_GameManager->initializationMode);
++        supervisor->transitionVariant39c = 0;
++        if (request == 7) MainOpaque418150();
++        supervisor->nextGameMode = 7;
++        MainOpaque4180E0(initializationMode);
++        break;
++    }
++    case 12:
++        if (supervisor->transitionState38c == 4) MainOpaque42CDB0();
++        supervisor->nextGameMode = 7;
++        supervisor->transitionVariant39c = 1;
++        MainOpaque4180E0(1u);
++        break;
++    case 13:
++        MainOpaque418150();
++        supervisor->transitionVariant39c = 1;
++        supervisor->nextGameMode = 7;
++        MainOpaque4180E0(0u);
++        break;
++    case 14:
++        if (supervisor->transitionState38c == 7) MainOpaque418150();
++        MainOpaque40B940();
++        break;
++    case 15: {
++        const int request = supervisor->transitionState38c;
++        if (request == 2 || request == 7 || request == 14) {
++            if (request == 7) MainOpaque418150();
++            if (request == 14) MainOpaque40B9D0();
++            supervisor->nextGameMode = 4;
++            g_MainTransitionState491C00 = 3;
++            MainOpaque42CD50();
++        }
++        break;
++    }
++    default: break;
++    }
++    supervisor->transitionState38c = supervisor->nextGameMode; // Fresh after all mode-specific hooks.
++    LeaveCriticalSection(&supervisor->criticalSections[5]);
++    supervisor->criticalSectionLockCounts[5] = static_cast<unsigned char>(supervisor->criticalSectionLockCounts[5] - 1u);
++    return 1;
++}

@@ -10,7 +10,7 @@ struct Context {
     std::uint8_t field6f9{};
 };
 struct Globals {
-    std::uint32_t data474c80{}, data474c7c{}, data477848{}, data491c00{};
+    std::uint32_t data474c80{}, data474c7c{}, data477848{}, data491c00{}, gameManagerInitializationMode{};
 };
 struct Hooks {
     virtual ~Hooks() = default;
@@ -23,7 +23,7 @@ struct Hooks {
     virtual void call418150(Context&, Globals&) = 0;
     virtual void call40b9d0(Context&, Globals&) = 0;
     virtual void call42cdb0(Context&, Globals&) = 0;
-    virtual void call4180e0(Context&, Globals&) = 0;
+    virtual void call4180e0(Context&, Globals&, std::uint32_t initializationMode) = 0;
     virtual void call40b940(Context&, Globals&) = 0;
 };
 
@@ -76,7 +76,7 @@ int transition(Context& state, Globals& globals, Hooks& hooks) {
     case 7:
         if (state.field38c == 4) hooks.call42cdb0(state, globals);
         state.field39c = 1;
-        hooks.call4180e0(state, globals);
+        hooks.call4180e0(state, globals, 0u);
         break;
     case 10: {
         hooks.call418150(state, globals);
@@ -85,28 +85,29 @@ int transition(Context& state, Globals& globals, Hooks& hooks) {
         const auto scalar = globals.data474c80;
         globals.data474c7c = scalar;
         globals.data477848 = 0x474788u + 0x30u * scalar;
-        hooks.call4180e0(state, globals);
+        hooks.call4180e0(state, globals, 0u);
         break;
     }
     case 11: {
         const auto request = state.field38c;
+        const auto initializationMode = globals.gameManagerInitializationMode;
         state.field39c = 0;
         if (request == 7) hooks.call418150(state, globals);
         state.field390 = 7;
-        hooks.call4180e0(state, globals);
+        hooks.call4180e0(state, globals, initializationMode);
         break;
     }
     case 12:
         if (state.field38c == 4) hooks.call42cdb0(state, globals);
         state.field390 = 7;
         state.field39c = 1;
-        hooks.call4180e0(state, globals);
+        hooks.call4180e0(state, globals, 1u);
         break;
     case 13:
         hooks.call418150(state, globals);
         state.field39c = 1;
         state.field390 = 7;
-        hooks.call4180e0(state, globals);
+        hooks.call4180e0(state, globals, 0u);
         break;
     case 14:
         if (state.field38c == 7) hooks.call418150(state, globals);

@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "purpose": "conditional source experiment reconstruction; no accepted target body or ABI",
+  "base_head": "7233e71903c63ea9d401dcbb2f6262e01f5a0f34",
+  "a003_inputs": {
+    "src/Input.cpp": "b50a3cf8884f128b9df4e9b93606dc798fbfaea4fa8d35e63f82db25172039fc",
+    "src/Input.hpp": "d7b04e8641cd9dd8565b3426b5592edcd0c3c18b39ae0e9e7f2355937bed3e7b",
+    "src/InputState.hpp": "0ef9b9903be076a06946ecef23a024489be2dd28af99c7e459019b4e753a6139",
+    "src/Main.cpp": "9035190b5eff8665fec60ef1cbb40ad4850a13826457c5025579878819ea1a89",
+    "src/Main.hpp": "973c294a3ae9142a701a1e591b1055650039e4881ee7ef3f72047892453a1fad"
+  },
+  "production_inputs": {
+    "src/GameManager.cpp": "2a09b328a64e45f9f027bfe84b25b5800e21c5e59b7759a97d63925760ed9433"
+  },
+  "overlays": {
+    "src/Input.cpp": "b50a3cf8884f128b9df4e9b93606dc798fbfaea4fa8d35e63f82db25172039fc",
+    "src/Input.hpp": "d7b04e8641cd9dd8565b3426b5592edcd0c3c18b39ae0e9e7f2355937bed3e7b",
+    "src/InputState.hpp": "0ef9b9903be076a06946ecef23a024489be2dd28af99c7e459019b4e753a6139",
+    "src/Main.cpp": "3a6ca6dd986fde2bc745135033b861469c2da7581cd2c21c654ba91e0a375d6f",
+    "src/Main.hpp": "e553900558b9a0ea5601da2cb9c4a83d1ec9ebf3f77cf49ccec0abd8832103a8",
+    "src/GameManager.cpp": "055fc6bae4ced258ea2dcde5e2b5afbc334b3a96d9150c6b12826c1497b0301e",
+    "src/GameManager.hpp": "eca0eec68317b286c98a6ec767015c2f1862b36f4657d96b391c0cc5a9b2614b"
+  },
+  "output_newlines": {
+    "src/Input.cpp": "CRLF",
+    "src/Input.hpp": "CRLF",
+    "src/InputState.hpp": "CRLF",
+    "src/Main.cpp": "LF",
+    "src/Main.hpp": "CRLF",
+    "src/GameManager.cpp": "CRLF",
+    "src/GameManager.hpp": "CRLF"
+  },
+  "files": {
+    ".gitattributes": "6ca91d77900f42c4cd80f176c499772d6436ac98cd9ee6b87ea4958fe0e9e242",
+    "CONTRACTS.md": "800b4f3f777c57a3e46beada76a0046605c99048d8730d144b1c91877a41eeb9",
+    "README.md": "c931e88b3245c8b7b3fc136ed4cdf9f2c3bdc829da6a3ede57c289c396c3940d",
+    "RESULTS.json": "06942dcb0b501f70145b25ddaf828703fa038e13531c1f19a134b149afda208b",
+    "check_shared_layout.py": "7bb982f40ba24e310d9bd47a6ed83b607351f014238bc049e3dfb81a4579b86c",
+    "patches/GameManager.cpp.patch": "9eeb4e758f98aecb3da888c26b818f423a4895ef6aee14bd9c6df3f7182cd1d4",
+    "patches/Main.cpp.patch": "2ea6de7ccc8b95dd1bfed7b1ab3b769847ca1a3b330fc549f86d56e3b90ba0cc",
+    "patches/Main.hpp.patch": "6daddccff3448c97e26f654a6991eca9687b1eafc7af1ec417bb9d2d046e4926",
+    "reconstruct.py": "adced6c304ba7d68ca6897caeb92b45d069878a3ec4c98412029897f8b4ef0e5",
+    "src/GameManager.hpp": "eca0eec68317b286c98a6ec767015c2f1862b36f4657d96b391c0cc5a9b2614b",
+    "test_reconstruct.py": "a7e718d44b0d129ebfc0cf8f94870311d51d49b695cff754e13d528d268a71ae"
+  }
+}

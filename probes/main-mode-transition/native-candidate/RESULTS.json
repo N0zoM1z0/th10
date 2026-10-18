@@ -1,0 +1,60 @@
+{
+  "experiment": "a004",
+  "execution": "compiled successfully under the one fixed Main.cpp primary + Input.cpp support /GL /GS graph",
+  "head": "7233e71903c63ea9d401dcbb2f6262e01f5a0f34",
+  "repository_clean_before_after": true,
+  "initial_owner_attribution": "Initially unresolved because the reader eagerly normalized unrelated module paths; all selected-owner gates subsequently passed.",
+  "exactness_credit": false,
+  "runtime_execution": false,
+  "receipt_sha256": "67df6823adb489549b47c4f6a22834eb851ebe8dfe8633bf50593980fc2a3104",
+  "recovery": "One corrected read-only measurement of the same pinned compiler artifacts; no compiler retry, rebuild or source change.",
+  "measurement_command_id": "repository-command:27b6c7edd44c47b29c8924e98a830d59",
+  "measurement_receipt_sha256": "427b6d4244918ee1c482413f874e719dfcd9e466a660927930547b851d67025b",
+  "measurement": {
+    "artifact_sha256": {
+      "source.exe": "36daa2a257b45bf278f5650e926408f1e86c7163294142f6897c6cb42521f3cb",
+      "source.map": "70b85a3a39f2c99cf1f585fcbcebdf4ec17839e9104cc923b8ffa136b52b8392",
+      "source.pdb": "7f0471a155b3dd5de438dcdc8a5e638abb378a6b3bf81d2ed9f2b6a617bdf78d"
+    },
+    "collector_sha256": "b5fb13689b03910a1f9bad979f636a48cfcfd25d460a5d4c4f455a50feb33911",
+    "exact_match_acceptance": false,
+    "exactness_credit": "none",
+    "owner_attribution_complete": true,
+    "owners": {
+      "caller": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "3ca5ad7d88e191a979e9179bef1911cbcc0dd4b6fcdd3344a1980c50728b742a",
+        "size": 101,
+        "size_equal": false,
+        "target_size": 113
+      },
+      "keyboard": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "feb40c70d1da668f4f87ed0042d5204cb36ec3d48c03833390796b99010ad2d2",
+        "size": 745,
+        "size_equal": false,
+        "target_size": 850
+      },
+      "mapper": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "a483a73d839469713fb5b7fbbab7dce9ab1c4755c400d2d913b031320fd46e4e",
+        "size": 709,
+        "size_equal": false,
+        "target_size": 833
+      },
+      "mode_transition": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "9ab32dab9db6e5c021c1e09264e9fc921a3f8c094e05c4c580a9488382bac94f",
+        "size": 630,
+        "size_equal": false,
+        "target_size": 572
+      }
+    },
+    "runtime_executed": false,
+    "state": "complete"
+  }
+}

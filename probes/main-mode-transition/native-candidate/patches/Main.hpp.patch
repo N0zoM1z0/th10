@@ -1,0 +1,51 @@
+--- Main.hpp
++++ Main.hpp
+@@ -263,9 +263,12 @@
+     unsigned char unknown350[0x034];
+     AnmViewportOwnerView *activeViewport;       // +0x384
+     int viewportConfigured;                     // +0x388
+-    unsigned char unknown38C[0x004];
++    int transitionState38c;                     // +0x38C; neutral transition state
+     int nextGameMode;                           // +0x390
+-    unsigned char unknown394[0x018];
++    int transitionPrevious394;                 // +0x394; copied load snapshot
++    unsigned char unknown398[4];
++    int transitionVariant39c;                  // +0x39C
++    unsigned char unknown3A0[0x00C];
+     int screenTransitionCountdown;              // +0x3AC
+     unsigned char unknown3B0[0x004];
+     int disableVsync;                           // +0x3B4
+@@ -284,8 +287,11 @@
+     unsigned char criticalSectionLockCounts[7]; // +0x6F4
+     unsigned char unknown6FB[0x055];
+     unsigned char cachedRenderState;            // +0x750
+-    unsigned char unknown751[0x027];
++    unsigned char unknown751[0x017];
++    unsigned int transitionResult768;           // +0x768; opaque raw result
++    unsigned char unknown76C[0x00C];
+     double lastFrameDuration;                   // +0x778
++    unsigned int transitionColor780;            // +0x780
+ };
+ 
+ typedef char MainSupervisorD3dAt004[
+@@ -335,6 +341,20 @@
+ typedef char MainSupervisorFrameDurationAt778[
+     (offsetof(MainSupervisorView, lastFrameDuration) == 0x778) ? 1 : -1];
+ 
++typedef char MainSupervisorTransitionFields[
++    (offsetof(MainSupervisorView, transitionState38c) == 0x38c &&
++     offsetof(MainSupervisorView, transitionPrevious394) == 0x394 &&
++     offsetof(MainSupervisorView, transitionVariant39c) == 0x39c &&
++     offsetof(MainSupervisorView, transitionResult768) == 0x768 &&
++     offsetof(MainSupervisorView, transitionColor780) == 0x780 &&
++     sizeof(((MainSupervisorView *)0)->transitionState38c) == 4 &&
++     sizeof(((MainSupervisorView *)0)->transitionPrevious394) == 4 &&
++     sizeof(((MainSupervisorView *)0)->transitionVariant39c) == 4 &&
++     sizeof(((MainSupervisorView *)0)->transitionResult768) == 4 &&
++     sizeof(((MainSupervisorView *)0)->transitionColor780) == 4 &&
++     offsetof(MainSupervisorView, criticalSections) + 5 * sizeof(CRITICAL_SECTION) == 0x6c4 &&
++     offsetof(MainSupervisorView, criticalSectionLockCounts) + 5 == 0x6f9) ? 1 : -1];
++
+ struct MainAllocationRegistryView
+ {
+     void *entries[0x2800];

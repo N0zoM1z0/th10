@@ -1,0 +1,45 @@
+--- GameManager.cpp
++++ GameManager.cpp
+@@ -1,4 +1,5 @@
+ #include "Main.hpp" // Shield ANM imports before the Windows SDK.
++#include "GameManager.hpp"
+ #include "ItemManager.hpp"
+ #include "ReplayChain.hpp"
+ #include "Hint.hpp"
+@@ -21,28 +22,9 @@
+ // OnDraw body is retained here only after direct TH10 IDA boundary review;
+ // the other GameManager rows in that repository are not part of this source.
+ 
+-typedef unsigned int ZunBool;
+-typedef unsigned char u8;
+-typedef unsigned int u32;
+ 
+ extern "C" void *g_AnmManagerPtr;
+ 
+-struct GameChainElementView;
+-
+-struct GameManager
+-{
+-    u32 unknown000;
+-    int stageResourceIndex;
+-    GameChainElementView *updateChain;
+-    GameChainElementView *drawChain;
+-    PlayerTimerView stageTimer;
+-    u32 configuration[13];
+-    u32 m_Flags;
+-    int initializationMode;
+-
+-    ZunBool __fastcall OnDraw();
+-    static ZunBool __fastcall OnUpdate(GameManager *manager);
+-};
+ 
+ ZunBool __fastcall GameManager::OnDraw()
+ {
+@@ -474,7 +456,6 @@
+ extern void __stdcall GameCleanupLoader405620(GameChainOwnerView *owner);
+ extern void __stdcall GameCleanupOwner408AF0(GameAdditionalChainView *owner);
+ extern void FrontEndQueueSoundCommand(const char *path, int opcode, int argument);
+-extern GameManager *g_GameManager;                         // 0x477810
+ extern int g_GameComparison474C80;
+ extern int g_StageScriptGlobal4923A8;
+ namespace th10 { namespace leaf {

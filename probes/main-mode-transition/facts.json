@@ -1137,5 +1137,33 @@
     "status": "BOUNDED_MODE10_PURE_TRANSFORM",
     "unclassified_transform_count": 1,
     "flags_scope": "EFLAGS writes included; no flag liveness, elimination or complete source-equivalence proof"
+  },
+  "helper4180e0_argument_projection": {
+    "scope": "caller live top-stack dword; one-dword callee formal signature remains a conditional hypothesis",
+    "constant_arguments": {
+      "7": 0,
+      "10": 0,
+      "12": 1,
+      "13": 0
+    },
+    "mode11": {
+      "pointer_data_cell": "0x477810",
+      "field_offset": 92,
+      "width": 4,
+      "same_single_load_snapshot_at_push": true,
+      "load_precedes_optional_cleanup": true,
+      "reload_after_cleanup_allowed": false
+    },
+    "premises": [
+      "normal valid aligned private stack disjoint from context and exact publication stores",
+      "immutable code and auxiliary tables",
+      "normal opaque calls preserve nonvolatile register values, not pointee memory",
+      "acyclic owner CFG and unique full32 field load; no dynamic reload equality"
+    ],
+    "evidence": {
+      "actual": "a5c977ce9d6e4c01bf72e7923ded5802",
+      "head": "7233e71903c63ea9d401dcbb2f6262e01f5a0f34",
+      "receipt_sha256": "248e80487447144a19298556544654367a54f257be7822ee733073bf248be873"
+    }
   }
 }

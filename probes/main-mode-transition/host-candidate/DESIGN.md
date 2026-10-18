@@ -22,10 +22,18 @@ Normal-model premises: valid, distinct ordinary fields; no asynchronous mutation
 
 ## Reproduction and evidence
 
-Run `python run_tests.py` with Python 3 and g++ available. It compiles only this authored host model in a temporary directory. The fixture covers 666 scenarios, including post-Enter mode/request changes, zero/nonzero creation results, equality returns, uint32 boundary values, arbitrary mutations by each selected helper, and a Leave mutation that forces the decrement to use its new byte value. Twelve independently compiled source mutations are rejected. The call oracle is an independently authored finite obligation model; it is not native trace data or a complete semantic-equivalence oracle.
+Run `python run_tests.py` with Python 3 and g++ available. It compiles only this authored host model in a temporary directory. The fixture covers 666 scenarios, including post-Enter mode/request changes, zero/nonzero creation results, equality returns, uint32 boundary values, arbitrary mutations by each selected helper, and a Leave mutation that forces the decrement to use its new byte value. Fifteen independently compiled source mutations are rejected. The call oracle is an independently authored finite obligation model; it is not native trace data or a complete semantic-equivalence oracle.
 
 One important mutation consequence is retained: in mode 11, the variant-zero store precedes helper 418150. That helper may overwrite the variant before 4180E0 observes it. The model must not restore zero after the helper simply because the earlier store was required.
 
 Evidence is the frozen actual snapshot-identity result b5a1a97b70394ce0a2569706956059b2 and the 42-pair precedence result cdf65acecace450daa337fd9ce092825, together with the committed finite partitions checkpoint at cc60c9d667ca26f368bff9b0882c251f2199f52e. The manifest records receipt hashes without embedding their full payloads.
 
 The local `.gitattributes` fixes LF checkout endings for these two authored host C++ files only. Manifest and delivery identities remain raw byte hashes; the repository-wide production C++ policy is unchanged.
+
+## Meaningful scalar at helper 4180E0
+
+Actual a5c977ce9d6e4c01bf72e7923ded5802 proves the live caller stack dword for modes 7, 10, 12 and 13 is respectively 0, 0, 1 and 0. Mode 11 carries the single full-width field observation from the pointer loaded at data cell 477810, offset 5C. That observation precedes optional helper 418150 and survives both paths as a nonvolatile register value under the normal-call premise. It is not reread after cleanup. The maintained source calls this g_GameManager->initializationMode.
+
+The host hook now receives this explicit uint32 scalar. Its Globals field stands for the observed GameManager field without implementing target layout or pointer ownership. Enter initializes a nontrivial value, and every opaque hook may replace it. Three additional compiled mutations reject a zeroed mode-12 argument, a zeroed mode-11 argument, and a mode-11 reload after cleanup. The mode-11 snapshot and supervisor request observation are independent ordinary reads; no relative ordering of those reads is claimed. Normal-model distinct object/field and no asynchronous mutation premises still apply.
+
+The 107-byte helper has a closed RET 4, but complete consumed-parameter recovery remains unresolved. A one-uint32 __stdcall native declaration is a conditional source experiment, not a recovered original signature. The host interface does not model that ABI.

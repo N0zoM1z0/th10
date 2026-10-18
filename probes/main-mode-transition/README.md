@@ -160,6 +160,17 @@ Actual cdf65acecace450daa337fd9ce092825 verifies 42 fixed precedence pairs. Each
 
 Actual 690ab76987ed463ea94b74f247ad4ea5 classifies the one remaining mode 10 instruction category as a fixed full32 register left shift in the record-scale expression. The classification includes EFLAGS writes. It does not prove flags dead, permit arbitrary effect elimination, or establish full source equivalence.
 
-The `host-candidate` subdirectory contains an independently authored ordinary C++ semantic candidate with neutral state fields and mutable abstract hooks. Its hook signatures are host interfaces, not native declarations. Run `python host-candidate/run_tests.py` to compile the model with g++ and check 666 scenarios and 12 compiled mutation rejections. The model exercises opaque memory mutation across Enter, lifecycle helpers and Leave, including the mode 11 variant store that a later helper may overwrite. The ordinary obligation fixture remains runnable separately with `python check_obligations.py`.
+The `host-candidate` subdirectory contains an independently authored ordinary C++ semantic candidate with neutral state fields and mutable abstract hooks. Its hook signatures are host interfaces, not native declarations. Run `python host-candidate/run_tests.py` to compile the model with g++ and check 666 scenarios and 15 compiled mutation rejections. The model exercises opaque memory mutation across Enter, lifecycle helpers and Leave, including the mode 11 variant store that a later helper may overwrite. The ordinary obligation fixture remains runnable separately with `python check_obligations.py`.
 
 The host model remains partial: complete target effects, full frame/stack behavior, helper argument/ABI closure, runtime layout ownership and native comparison are not accepted. No production source is changed by this checkpoint.
+
+
+## Helper arguments and conditional native source
+
+Actual a5c977ce9d6e4c01bf72e7923ded5802 establishes caller stack values for helper 4180E0: mode 7 passes 0, mode 10 passes 0, mode 12 passes 1 and mode 13 passes 0. Mode 11 passes the single dword snapshot at offset 5C of the pointer loaded from data cell 477810. This matches the maintained g_GameManager->initializationMode view. The snapshot is taken before optional cleanup 418150 and survives both branches as a nonvolatile value under the normal-call premise. The source must not replace it with a constant or reread the field after cleanup.
+
+The host hook now carries that scalar and allows cleanup to change the backing field. Three additional compiled mutations test the mode-12 constant, the mode-11 dynamic value and its snapshot timing. The bookkeeping fixture checks the five compact argument records separately.
+
+The native-candidate directory preserves a natural C++ proposal as patches against the input-native a003 checkpoint, a shared GameManager declaration, reconstruction/layout tests and compact compiler results. Follow its README for reconstruction into a separate source-only directory. The one-uint32 __stdcall helper declaration is an explicit conditional hypothesis supported by caller transport and the helper's RET 4, not complete parameter-use recovery. Production integration, original declaration recovery and exactness remain unaccepted.
+
+The one a004 compiler baseline now has complete owner attribution: candidate/target byte sizes are 630/572 for the mode transition, 101/113 for the callback, 745/850 for keyboard input and 709/833 for the mapper. No owner is exact. An initial attribution-reader path-normalization bug was corrected by read-only measurement of the same artifacts, without rebuilding. See native-candidate/RESULTS.json.

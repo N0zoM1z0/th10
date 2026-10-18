@@ -6,6 +6,9 @@ if sys.flags.optimize:raise SystemExit('optimized Python is unsupported')
 root=Path(__file__).resolve().parent
 source=(root/'transition.cpp').read_text();test=(root/'test_transition.cpp').read_text()
 mutants={
+ 'mode12_scalar_zero':('hooks.call4180e0(state, globals, 1u);','hooks.call4180e0(state, globals, 0u);'),
+ 'mode11_scalar_zero':('const auto initializationMode = globals.gameManagerInitializationMode;','const auto initializationMode = 0u;'),
+ 'mode11_reload_after_cleanup':('const auto initializationMode = globals.gameManagerInitializationMode;\n        state.field39c = 0;\n        if (request == 7) hooks.call418150(state, globals);','state.field39c = 0;\n        if (request == 7) hooks.call418150(state, globals);\n        const auto initializationMode = globals.gameManagerInitializationMode;'),
  'stale_dispatch':('const auto dispatchCurrent = state.field390;', 'const auto dispatchCurrent = equalityCurrent;'),
  'stale_previous':('const auto previousRequest = state.field38c;', 'const auto previousRequest = equalityRequest;'),
  'stale_normal_copy':('state.field38c = state.field390;', 'state.field38c = equalityCurrent;'),

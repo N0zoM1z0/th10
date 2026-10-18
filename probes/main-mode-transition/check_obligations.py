@@ -4,7 +4,7 @@ import hashlib,json,sys
 from pathlib import Path
 if sys.flags.optimize:raise SystemExit('optimized Python')
 FACTS_FILE='facts.json'
-FACTS_SHA='6653d41b20552b88bf5a44f67028dae74152fea0f7087197c9f792102fb4322a'
+FACTS_SHA='f72eeacd8d3e27734a112264abbd645fe352eff7b5b6262175f2a3775d5ffdb4'
 
 def load_contract():
  raw=Path(__file__).with_name(FACTS_FILE).read_bytes()
@@ -94,6 +94,10 @@ def run_tests():
   for event in required:
    assert not required<=allowed-{event};mode4_mutants+=1
   assert not (allowed|{'unproved_helper'})<=allowed;mode4_mutants+=1
+ arguments=facts['helper4180e0_argument_projection']
+ assert arguments['constant_arguments']=={'7':0,'10':0,'12':1,'13':0}
+ snapshot=arguments['mode11'];assert snapshot=={'pointer_data_cell':'0x477810','field_offset':92,'width':4,'same_single_load_snapshot_at_push':True,'load_precedes_optional_cleanup':True,'reload_after_cleanup_allowed':False}
+ assert len(arguments['premises'])==4
  identity=facts['snapshot_identity_analysis']['identity_obligations']
  assert identity=={'normal_copy_uses_distinct_current_load':True,'previous_copy_reuses_equality_request':False,'selector_reuses_equality_current':False}
  order=facts['fixed_source_precedence']['obligations'];prefix_order=facts['prefix_load_order']['obligations']
@@ -126,5 +130,5 @@ def run_tests():
     expected=(result,enter,leave) in ((1,0,0),(1,1,1),(4,1,0))
     assert direct_critical_count_satisfies(result,enter,leave)==expected;checks+=1
  assert not direct_critical_count_satisfies(4,1,1) # Do not insert a speculative unlock fix.
- print(json.dumps({'status':'PASS','finite_inventory_and_count_cases':checks,'projection_schema_and_membership_mutants_killed':mutants,'guard_projection_cases':guard_cases,'guard_projection_mutants_killed':guard_mutants,'prefix_and_receiver_projection_cases':2,'prefix_and_receiver_projection_mutants_killed':6,'mode15_projection_cases':mode15_cases,'mode15_projection_mutants_killed':mode15_mutants,'optional_helper_projection_cases':optional_cases,'optional_helper_membership_mutants_killed':optional_mutants,'mode4_projection_cases':mode4_cases,'mode4_membership_mutants_killed':mode4_mutants,'fixed_precedence_records_checked':42,'prefix_load_order_records_checked':5,'snapshot_and_mode10_classification_checks':4,'native_or_body_acceptance':False,'feasibility_or_order_acceptance':False}))
+ print(json.dumps({'status':'PASS','finite_inventory_and_count_cases':checks,'projection_schema_and_membership_mutants_killed':mutants,'guard_projection_cases':guard_cases,'guard_projection_mutants_killed':guard_mutants,'prefix_and_receiver_projection_cases':2,'prefix_and_receiver_projection_mutants_killed':6,'mode15_projection_cases':mode15_cases,'mode15_projection_mutants_killed':mode15_mutants,'optional_helper_projection_cases':optional_cases,'optional_helper_membership_mutants_killed':optional_mutants,'mode4_projection_cases':mode4_cases,'mode4_membership_mutants_killed':mode4_mutants,'fixed_precedence_records_checked':42,'prefix_load_order_records_checked':5,'snapshot_and_mode10_classification_checks':4,'helper_argument_projection_records_checked':5,'native_or_body_acceptance':False,'feasibility_or_order_acceptance':False}))
 if __name__=='__main__':run_tests()
