@@ -1,0 +1,116 @@
+{
+  "acceptance_authority": "none",
+  "artifact_sha256": {
+    "image": "20cc22b102634f6b7f657aa6145a7ab0c4301e0289db6208364d9dd2a59d1120",
+    "map": "fb126866aa714c4557f0f703a7f8cd519527537675bcb94b02a4b96cf544dc0e",
+    "pdb": "c09b8ce0a21fade20c1f5f63a9f4c7a84e20d7e1927ffe380e8f5b839651490f"
+  },
+  "canonical_config_sha256": "8811679fb37ab220216a8926a9ce46b8637335e47cea7cd8d5d8a78b6004cc88",
+  "cold_link_calls": 1,
+  "command_finished_at": "2026-10-18T06:18:30.151001+00:00",
+  "command_id": "repository-command:ce709107cc9a4d9bbe127bd446ce05cd",
+  "command_started_at": "2026-10-18T06:17:07.514575+00:00",
+  "driver_files": {
+    "config/target.toml": "385ecdeac9ac89bf9706a7db766ef1ad2d6d33b2f50ee360c72eae3d67932789",
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/compare-linked-function.py": "17ee69930847bc7b94ae3b5ab8a49eb8d5cc49358ae93515c6a6e57f97114095",
+    "scripts/compile-probe.sh": "775132a592ef142a8cc6ac9e3c23aee08e0f0d370caac14f4d3693eb62a0f9a4",
+    "scripts/linked_image.py": "58583c6241e0979288b0c4ce0a0e55f1ae2a178762d93743475d05518eff0354",
+    "scripts/ltcg_link.py": "3c7728e58d452760baa2ab076c16169e6b8a45fabbc35692b60493f08921f98b",
+    "scripts/run-headless-wine.sh": "e5c522260a1804bfbcdf52b88319d2c7a36e4f25548c24870dfb137ac0e16606"
+  },
+  "elapsed_seconds": 74.824,
+  "guard": {
+    "compared_size": 885,
+    "exit_ok": true,
+    "image_sha256": "20cc22b102634f6b7f657aa6145a7ab0c4301e0289db6208364d9dd2a59d1120",
+    "matched_bytes": 885,
+    "matched_compared_bytes": 885,
+    "normalization_complete": true,
+    "raw_equal": false,
+    "result": "exact",
+    "size": 885
+  },
+  "head_commit": "e94559cc95d583b702660b72bbc605e5dfc5743a",
+  "interpretation": {
+    "cropping_permitted": false,
+    "excess_bytes": 22,
+    "guard_normalized_exact": true,
+    "raw_size_equality_is_exactness": false,
+    "target_whole_owner_bytes": 1454,
+    "transform_exactness_credit": 0,
+    "transform_whole_contribution_bytes": 1476,
+    "whole_extent_includes_inline_data": true
+  },
+  "kind": "source-and-result-checkpoint-no-native-payload",
+  "manifest_sha256": "7b3371074d056d98438a7a9641dce1748c81c7c3aef29a804a27bc5a78d41a75",
+  "next_step_superseded_by": "BULLET_TRANSFORM_NATIVE_EXPERIMENTS.md: terminal A003 not-adopted result",
+  "object_sha256": {
+    "source.ltcg.obj": "4623800fc4dadc9b9c1cdc1a924bf827af8bfafc43127bfeaaf17113320d0ca7",
+    "support-00-BulletManager.ltcg.obj": "f8c89f88829927774b61ed3ea6092dc68213b285b267b0f53ab79421a780b78a",
+    "support-01-BulletTransform.normal.obj": "6f8476b0641451c88f8f9738d0e3a5b1b1edd315a3116592be8f654ed31e5c73",
+    "support-02-PlayerCollision.ltcg.obj": "bccb9d65fc554dd1ca8fb5592136deda26e2a117371e0c1dce49fbe0bffae6c8",
+    "support-03-AnmManager.ltcg.obj": "bd0b703027b493d59d9c6be77e84c919c63d9bfbd32844fa6d0230708899a5e6",
+    "support-04-EnemyEclDispatcher.ltcg.obj": "c97fecffc945b6e5d93c670eb558a18885b4a6f887c4f4cfd8e8f909966e19fb",
+    "support-05-Enemy.ltcg.obj": "48af7bb39676f7c92206364bc7093f6a3a8d99b2015fbf061d786a1e23f8cae8"
+  },
+  "original_baseline_document_sha256": "34f26d2d9388330ba6fd8877fa41b9bdd58cf2de40b354c6ef58f11b58b19005",
+  "owner_selectors": {
+    "runtime_guard": {
+      "object": "source.ltcg.obj",
+      "symbol": "?BulletUpdateRuntime@@YGHPAUBulletRuntimeView@@@Z",
+      "target_address": 4219456,
+      "target_size": 885
+    },
+    "transform": {
+      "object": "support-01-BulletTransform.normal.obj",
+      "symbol": "?AdvanceTransformProgram@BulletRuntimeView@@QAEXXZ",
+      "target_address": 4222352,
+      "target_size": 1454
+    }
+  },
+  "owners": {
+    "runtime_guard": {
+      "all_required_attribution_gates": true,
+      "complete": true,
+      "sha256": "d14e4c66089a4b9e739cbaca48a887d3acc8864617dd67b4df854b36d71bd57c",
+      "size": 885,
+      "size_equal": true,
+      "target_size": 885
+    },
+    "transform": {
+      "all_required_attribution_gates": true,
+      "complete": true,
+      "sha256": "50069d8ccc62600962eb65d0f3cdd57ee55e4811c05551334b673f439263e8a8",
+      "size": 1476,
+      "size_equal": false,
+      "target_size": 1454
+    }
+  },
+  "postrun_pins_valid": true,
+  "production_clean": true,
+  "receipt_sha256": "a9efda90df0aef74a1da162caa160f37f71ea423b778d8167b5f5df963540932",
+  "recovery_evidence": {
+    "command_id": "repository-command:966ed0bf9bb246fcaf70f715da385829",
+    "interpretation": "Remove the introduced virtual-address-space cap. This is an operational resource correction, not a source, compiler flag, TU graph or exactness hypothesis change; no resident-memory measurement is claimed.",
+    "observation": "Same existing-prefix winepath conversion fails with 2 GiB RLIMIT_AS and succeeds with inherited unlimited address space; registry hashes unchanged and wineserver counts zero before/after each probe."
+  },
+  "resource_policy": {
+    "address_space": "inherit_unlimited_without_setrlimit",
+    "cpu_affinity_count": 1,
+    "cpu_seconds": 120,
+    "nice_increment": 10,
+    "wall_seconds": 150
+  },
+  "run_directory": ".analysis/bullet1454-native-baseline-20261018-a002",
+  "runner_sha256": "c7d2b976c4d6794b24ecf8cedbf8dd82dfa1d4eb387b5a0bd11c40313aea05bf",
+  "runtime_executed": false,
+  "schema": 1,
+  "shared_input_references": {
+    "canonical_unit": "../../../probes/bullet-transform/native-experiment/a003/manifest.proposed.json#canonical_unit",
+    "source_files": "../../../probes/bullet-transform/native-experiment/a003/manifest.proposed.json#source_files",
+    "source_include_closure": "../../../probes/bullet-transform/native-experiment/a003/manifest.proposed.json#source_include_closure"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "transform_exactness_tested": false
+}

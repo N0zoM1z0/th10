@@ -1,0 +1,13 @@
+{
+  "base_manifest_sha256": "a064b5422d3ef131d138523db44991a6e581447b6cd65066bfa0f90b65fe8bce",
+  "remove": [
+    "experiment",
+    "overlays",
+    "production_source_changes"
+  ],
+  "replace": {
+    "review_disposition": "Independent review approved runner c7d2b976c4d6794b24ecf8cedbf8dd82dfa1d4eb387b5a0bd11c40313aea05bf for one fresh operational-recovery baseline. Parent-only execution; A001 remains terminal and untouched.",
+    "source_changes": false
+  },
+  "result_manifest_sha256": "7b3371074d056d98438a7a9641dce1748c81c7c3aef29a804a27bc5a78d41a75"
+}

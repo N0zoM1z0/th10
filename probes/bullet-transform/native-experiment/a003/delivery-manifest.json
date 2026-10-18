@@ -1,0 +1,26 @@
+{
+  "EXPERIMENT.md": {
+    "sha256": "8818144f3b8934a6beb50f574b0c7635e838f0050d4efe6333b379ace5b9f1e2",
+    "size": 2846
+  },
+  "manifest.proposed.json": {
+    "sha256": "a064b5422d3ef131d138523db44991a6e581447b6cd65066bfa0f90b65fe8bce",
+    "size": 24658
+  },
+  "run.py": {
+    "sha256": "265f014afd96ff452b4d025d65481554daa26f2ec81e60051103ee2b8b3d5c46",
+    "size": 25840
+  },
+  "src/BulletTransform.cpp": {
+    "sha256": "da1d560622c704618397099410ec680d08349f891dc2a87cc3d46bcea653af3f",
+    "size": 8103
+  },
+  "test_owner.py": {
+    "sha256": "b3f3b8d691059fa7f9090dfeff988da0c89ffcb9fef045c9326ef65a79138fd1",
+    "size": 3032
+  },
+  "test_runner.py": {
+    "sha256": "199800b9d32677867c3235595adbf3c54bcc972b78a56fd20c3e2df0884b7638",
+    "size": 16580
+  }
+}

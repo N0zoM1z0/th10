@@ -9,7 +9,7 @@ struct PlayerFloat3 { float x,y,z; };
 struct AnmFloat3View {float x,y,z; void FromAngleMagnitude(float a,float m){x=std::cos(a)*m;y=std::sin(a)*m;}};
 struct AnmVmTimerView {int current, calls; void SetCurrent(int n){current=n;++calls;}};
 struct AnmLoadedView {};
-struct AnmVmView { void InitializeForLoadedScript(AnmLoadedView*,int){} };
+struct AnmVmView { int calls, script; AnmLoadedView *loaded; void InitializeForLoadedScript(AnmLoadedView *a,int n){++calls;loaded=a;script=n;} };
 Player player; Player *g_Player=&player;
 #include "extracted_header.hpp"
 #include "extracted_source.cpp"
@@ -20,8 +20,9 @@ static BulletRuntimeView *parent;
 static BulletSpawnDescriptorView captured;
 static int spawns,cancels,callbackMode,aimCalls;
 static std::vector<int> events;
+static std::vector<float> soundPositions;
 float EnemyAngleFromPlayer(Player*,const PlayerFloat3*) {++aimCalls;return 0.75f;}
-void BulletQueueSoundAtPosition(int n,float) {events.push_back(n);}
+void BulletQueueSoundAtPosition(int n,float x) {events.push_back(n);soundPositions.push_back(x);}
 unsigned int EnemyCancelBulletRecord(unsigned char*) {++cancels;events.push_back(-99);return 0;}
 int BulletManagerView::SpawnBulletPattern(BulletSpawnDescriptorView *p) {
  captured=*p;++spawns;events.push_back(-88);
@@ -31,7 +32,7 @@ int BulletManagerView::SpawnBulletPattern(BulletSpawnDescriptorView *p) {
 }
 static void check(bool b,const char *s){if(!b){std::fprintf(stderr,"FAIL: %s\n",s);std::exit(31);}}
 static BulletRuntimeView b;
-static void reset(){std::memset(&b,0,sizeof(b));parent=&b;spawns=cancels=callbackMode=aimCalls=0;events.clear();b.angle=0.25f;b.speed=4.5f;b.transformSound=-1;}
+static void reset(){std::memset(&b,0,sizeof(b));parent=&b;spawns=cancels=callbackMode=aimCalls=0;events.clear();soundPositions.clear();b.angle=0.25f;b.speed=4.5f;b.transformSound=-1;}
 static void rec(int i,unsigned k,int a=0,int c=0,float f=0,float g=0,int allow=1){b.transforms[i]={{f,g,a,c},k,allow};}
 static void child(int mode,bool fade){
  reset();callbackMode=mode;b.position={11,22,33};
@@ -81,4 +82,47 @@ static void angles(){
  for(int i=0;i<6;++i){reset();rec(0,0x10,2,0,3,values[i]);b.AdvanceTransformProgram();check(b.exStates[1].value1==expected[i],"angle sentinels including NaN aim");check(aimCalls==(i>=4?1:0),"aim helper branch");}
  reset();rec(0,0x40,2,3,0,std::numeric_limits<float>::quiet_NaN());b.AdvanceTransformProgram();check(b.exStates[3].value0==4.5f,"NaN direction speed preserves speed");
 }
-int main(){child(0,false);child(0,true);child(1,true);child(2,false);controls();timers();angles();std::puts("PASS authored-source protocol checks");}
+static void bounceAndCancel(){
+ const unsigned kinds[]={0x400,0x800,0x08000000};
+ for(unsigned kind:kinds){
+  reset();b.activeTransformFlags=0x10;
+  for(auto &state:b.exStates){state.timer.current=73;state.timer.calls=4;state.value0=12;state.value1=13;state.int0=17;state.int1=18;state.int2=19;}
+  BulletExStateView expected[9];std::memcpy(expected,b.exStates,sizeof(expected));
+  expected[4].value0=1.25f;expected[4].int1=-7;expected[4].int0=0;
+  rec(0,kind,-7,61,1.25f,2.75f);rec(1,0x00020000,91,0,0,0,0);
+  b.AdvanceTransformProgram();
+  check(b.activeTransformFlags==(0x10|kind),"bounce preserves existing flags and adds selected kind");
+  check(std::memcmp(expected,b.exStates,sizeof(expected))==0,"bounce writes slot4 value0/int1/int0 only");
+  check(b.transformIndex==1&&events.empty(),"bounce startup gates following action");
+ }
+ for(int value:{-7,4}){
+  reset();b.cancelBehavior=99;rec(0,0x1000,value,61);rec(1,0x00020000,92,0,0,0,0);
+  b.AdvanceTransformProgram();
+  check(b.cancelBehavior==value,"cancel behavior uses payload int0");
+  check(b.activeTransformFlags==0&&b.transformIndex==2&&events==std::vector<int>{92}&&cancels==0,"cancel behavior only assigns and continues");
+ }
+}
+static void spriteArguments(){
+ for(int offset:{-4,7}){
+  reset();AnmLoadedView loaded;manager.bulletAnm=&loaded;g_BulletSpriteScriptBase[3]=120;
+  rec(0,0x4000,3,offset);rec(1,0x01000000,49);
+  b.AdvanceTransformProgram();
+  check(b.vm.calls==1&&b.vm.loaded==&loaded,"sprite initializes parent vm with manager anm");
+  check(b.vm.script==120+offset,"sprite script is indexed base plus signed offset");
+  check(b.transformIndex==2&&b.ownerTag==49&&b.activeTransformFlags==0,"sprite continues without active flag");
+  manager.bulletAnm=nullptr;
+ }
+}
+static void transformSounds(){
+ for(unsigned kind:{0x10u,0x20u})for(int index:{0,1})for(int sound:{-1,0,27}){
+  reset();b.position.x=123;b.transformSound=sound;b.transformIndex=index;
+  rec(index,kind,7,8,2,0.5f);b.AdvanceTransformProgram();
+  const bool shouldPlay=index==1&&sound>=0;
+  check(b.transformIndex==index+1&&b.activeTransformFlags==kind,"acceleration sound fixture executes action");
+  check(events.size()==(shouldPlay?1u:0u)&&soundPositions.size()==(shouldPlay?1u:0u),"vector and polar sound require later index and nonnegative id");
+  if(shouldPlay){check(events[0]==sound,"transform sound uses configured id");check(soundPositions[0]==0,"transform sound uses zero position");}
+ }
+ reset();b.position.x=123;rec(0,0x20000,41);b.AdvanceTransformProgram();
+ check(events==std::vector<int>{41}&&soundPositions==std::vector<float>{123},"explicit sound uses bullet position");
+}
+int main(){child(0,false);child(0,true);child(1,true);child(2,false);controls();timers();angles();bounceAndCancel();spriteArguments();transformSounds();std::puts("PASS authored-source protocol checks");}

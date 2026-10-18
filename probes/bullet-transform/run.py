@@ -20,6 +20,20 @@ MUTATIONS={
  'wait_zero':('this->exStates[5].timer.SetCurrent(record->payload.int0);','this->exStates[5].timer.SetCurrent(0);'),
  'nan_literal':('if (requestedAngle < 990.0f)','if (!(requestedAngle >= 990.0f))'),
  'omit_second_index':('++record;\n            ++this->transformIndex;','++record;'),
+ 'bounce_payload':('this->exStates[4].int1 = record->payload.int0;', 'this->exStates[4].int1 = record->payload.int1;'),
+ 'bounce_counter':('this->exStates[4].int0 = 0;', 'this->exStates[4].int0 = 1;'),
+ 'bounce_flags':('case BULLET_TRANSFORM_BOUNCE_VARIANT:\n        this->activeTransformFlags |= kind;', 'case BULLET_TRANSFORM_BOUNCE_VARIANT:\n        this->activeTransformFlags = kind;'),
+ 'cancel_payload':('this->cancelBehavior = record->payload.int0;', 'this->cancelBehavior = record->payload.int1;'),
+ 'sprite_offset':('g_BulletSpriteScriptBase[record->payload.int0] +\n                record->payload.int1;', 'g_BulletSpriteScriptBase[record->payload.int0];'),
+ 'sprite_manager':('reinterpret_cast<BulletManagerView *>(g_EnemyBulletManager)->bulletAnm,', 'nullptr,'),
+ 'vector_sound_index':('            this->exStates[1].value1, this->exStates[1].value0);\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '            this->exStates[1].value1, this->exStates[1].value0);\n        if (this->transformSound >= 0)'),
+ 'vector_sound_zero':('            this->exStates[1].value1, this->exStates[1].value0);\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '            this->exStates[1].value1, this->exStates[1].value0);\n        if (this->transformIndex != 0 && this->transformSound > 0)'),
+ 'vector_sound_negative':('            this->exStates[1].value1, this->exStates[1].value0);\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '            this->exStates[1].value1, this->exStates[1].value0);\n        if (this->transformIndex != 0)'),
+ 'vector_sound_position':('            this->exStates[1].value1, this->exStates[1].value0);\n        if (this->transformIndex != 0 && this->transformSound >= 0)\n            BulletQueueSoundAtPosition(this->transformSound, 0.0f);', '            this->exStates[1].value1, this->exStates[1].value0);\n        if (this->transformIndex != 0 && this->transformSound >= 0)\n            BulletQueueSoundAtPosition(this->transformSound, this->position.x);'),
+ 'polar_sound_index':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformSound >= 0)'),
+ 'polar_sound_zero':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound > 0)'),
+ 'polar_sound_negative':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0)'),
+ 'polar_sound_position':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)\n            BulletQueueSoundAtPosition(this->transformSound, 0.0f);', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)\n            BulletQueueSoundAtPosition(this->transformSound, this->position.x);'),
 }
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--source-dir',type=pathlib.Path,default=DEFAULT);ap.add_argument('--mutations',action='store_true');args=ap.parse_args()

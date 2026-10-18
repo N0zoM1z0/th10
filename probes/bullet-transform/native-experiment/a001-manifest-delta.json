@@ -1,0 +1,16 @@
+{
+  "base_manifest_sha256": "a064b5422d3ef131d138523db44991a6e581447b6cd65066bfa0f90b65fe8bce",
+  "remove": [
+    "experiment",
+    "overlays",
+    "production_source_changes",
+    "recovery_evidence",
+    "recovery_of",
+    "resource_policy"
+  ],
+  "replace": {
+    "review_disposition": "Independent review approved exact fixed-graph runner after bounded git operations; execution remains parent-only and requires the explicit frozen runner/manifest hashes.",
+    "source_changes": false
+  },
+  "result_manifest_sha256": "ad2804e76ac89c79a66ad13870d383fa1bb6f080163dfb07a98fe6ad74dc7776"
+}

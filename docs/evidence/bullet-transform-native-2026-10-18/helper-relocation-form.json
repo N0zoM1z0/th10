@@ -1,0 +1,44 @@
+{
+  "command_finished_at": "2026-10-18T06:25:36.602849+00:00",
+  "command_id": "repository-command:0da4384edc6d4f1b90a6feeb50682ddf",
+  "command_started_at": "2026-10-18T06:25:36.477726+00:00",
+  "receipt_sha256": "1d4a1294d58e04f5540d9df358eba79c61251477bd91ede22f6025343aedf46c",
+  "result": {
+    "artifact_sha256": {
+      "source.exe": "20cc22b102634f6b7f657aa6145a7ab0c4301e0289db6208364d9dd2a59d1120",
+      "source.map": "fb126866aa714c4557f0f703a7f8cd519527537675bcb94b02a4b96cf544dc0e",
+      "source.pdb": "c09b8ce0a21fade20c1f5f63a9f4c7a84e20d7e1927ffe380e8f5b839651490f"
+    },
+    "callform_definition": "REL32 relocation resolves exactly to helper entry; preceding E8 byte and complete nonoverlapping operand are within the single-function code COMDAT. This does not prove instruction boundaries or control flow; data or other immediates can contain the same form.",
+    "collector_sha256": "a710f4b8f6a88c7f67453cdcbeae53840f9a648a3158973e77e65b9cb55fad4e",
+    "control_flow_proved": false,
+    "exactness_credit": "none",
+    "helper_named_other_reference_count": 0,
+    "helper_named_reference_count": 2,
+    "helper_named_rel32_e8_callform_count": 2,
+    "helper_rel32_e8_form_present": true,
+    "helper_section_alias_rel32_e8_callform_count": 0,
+    "helper_section_other_reference_count": 0,
+    "instruction_boundary_proved": false,
+    "native_payload_exported": false,
+    "object_sha256": "6f8476b0641451c88f8f9738d0e3a5b1b1edd315a3116592be8f654ed31e5c73",
+    "owner_relocation_count": 29,
+    "production_clean": true,
+    "whole_coff_owners": {
+      "helper": {
+        "complete": true,
+        "expected_storage_class": true,
+        "sha256": "6a4fefcc3e411e50544b4e287f9cafbca8f84285759ce0e33ab5a7ddfddbf849",
+        "size": 68,
+        "unique_function_comdat": true
+      },
+      "transform": {
+        "complete": true,
+        "expected_storage_class": true,
+        "sha256": "464b9aa0271588922bee7a6d5fa06073a032f4090ae24bdaa0e100571cefb1f8",
+        "size": 1476,
+        "unique_function_comdat": true
+      }
+    }
+  }
+}
