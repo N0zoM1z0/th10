@@ -1,0 +1,63 @@
+#!/usr/bin/env python3
+"""Compile the exact authored implementation against instrumented host dependencies."""
+import argparse, hashlib, json, pathlib, re, subprocess, tempfile, sys
+ROOT=pathlib.Path(__file__).resolve().parent
+DEFAULT=ROOT.parents[1]/'src'
+HASHES={'BulletTransform.cpp':'49142d9f3329defafa29e53f1993fcaec17c1042142f010576e00ecf5d5b27ee','BulletManager.hpp':'3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1'}
+def require(ok,msg):
+    if not ok: raise RuntimeError(msg)
+def replace_once(s,old,new):
+    require(s.count(old)==1,'mutation anchor not unique: '+old)
+    return s.replace(old,new,1)
+MUTATIONS={
+ 'unsigned_color':('static_cast<signed char>((packedPattern >> 8) & 0xff)','static_cast<unsigned char>((packedPattern >> 8) & 0xff)'),
+ 'copy_17':('sizeof(pattern.transforms));','sizeof(pattern.transforms) - sizeof(pattern.transforms[0]));'),
+ 'skip_second_record':('++record;','/* deliberately retain first record */'),
+ 'early_spawn_increment':('SpawnBulletPattern(&pattern);\n            ++this->transformIndex;','SpawnBulletPattern(&pattern);\n            this->transformIndex = 2;'),
+ 'drop_fade':('if (fadeParent != 0)','if (false)'),
+ 'despawn_stops':('EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));\n        break;','EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));\n        return;'),
+ 'ungate_skip':('record->allowWhileActive == 0 && this->activeTransformFlags != 0','record->allowWhileActive == 0 && this->activeTransformFlags != 0 && kind != BULLET_TRANSFORM_SKIP'),
+ 'wait_zero':('this->exStates[5].timer.SetCurrent(record->payload.int0);','this->exStates[5].timer.SetCurrent(0);'),
+ 'nan_literal':('if (requestedAngle < 990.0f)','if (!(requestedAngle >= 990.0f))'),
+ 'omit_second_index':('++record;\n            ++this->transformIndex;','++record;'),
+}
+def main():
+    ap=argparse.ArgumentParser();ap.add_argument('--source-dir',type=pathlib.Path,default=DEFAULT);ap.add_argument('--mutations',action='store_true');args=ap.parse_args()
+    manifest=json.loads((ROOT/'manifest.json').read_text())
+    require(set(manifest)=={'source_identity','sources','artifacts_raw_sha256'}, 'unexpected manifest keys')
+    require(set(manifest['artifacts_raw_sha256'])=={'run.py','harness.cpp','README.md','.gitattributes'}, 'unexpected artifact keys')
+    require(manifest['source_identity']=='sha256 after CRLF-to-LF only; reject remaining CR', 'unsupported source identity policy')
+    require(manifest['sources']==HASHES, 'manifest source pins differ from runner')
+    for name,digest in manifest['artifacts_raw_sha256'].items():
+        require(hashlib.sha256((ROOT/name).read_bytes()).hexdigest()==digest, 'artifact hash mismatch: '+name)
+    source={}
+    for name,digest in HASHES.items():
+        data=(args.source_dir/name).read_bytes().replace(b'\r\n',b'\n')
+        require(b'\r' not in data,'unsupported bare CR in source: '+name)
+        require(hashlib.sha256(data).hexdigest()==digest,'input hash mismatch: '+name)
+        source[name]=data.decode()
+    # Only dependency includes and ABI-only typedef assertions are removed.
+    # Every declaration, enum value, and method body otherwise stays verbatim.
+    hdr=re.sub(r'^#include "(?:AnmManager|Player)\.hpp"\n','',source['BulletManager.hpp'],flags=re.M)
+    hdr,n=re.subn(r'typedef char \w+\[\s*.*?\];','',hdr,flags=re.S)
+    require(n==36,'unexpected ABI assertion count: '+str(n))
+    hdr=hdr.replace('__stdcall','')
+    cpp=replace_once(source['BulletTransform.cpp'],'#include "BulletManager.hpp"','')
+    cases={'baseline':cpp}
+    if args.mutations:
+        for name,(old,new) in MUTATIONS.items():cases[name]=replace_once(cpp,old,new)
+    with tempfile.TemporaryDirectory(prefix='build-',dir=ROOT) as tmp:
+        d=pathlib.Path(tmp);(d/'extracted_header.hpp').write_text(hdr)
+        (d/'harness.cpp').write_text((ROOT/'harness.cpp').read_text())
+        for name,body in cases.items():
+            (d/'extracted_source.cpp').write_text(body)
+            result=subprocess.run(['g++','-std=c++17','-O0','-fno-strict-aliasing','-Wall','-Wextra',str(d/'harness.cpp'),'-o',str(d/'test')],capture_output=True,text=True,timeout=30)
+            require(result.returncode==0,name+' COMPILE FAILURE (not a mutation kill):\n'+result.stderr)
+            result=subprocess.run([str(d/'test')],capture_output=True,text=True,timeout=5)
+            if name=='baseline':require(result.returncode==0,result.stdout+result.stderr)
+            else:require(result.returncode==31 and result.stderr.startswith('FAIL: '),name+' survived or failed non-semantically: '+str(result.returncode)+result.stderr)
+            print(name+': '+('PASS' if name=='baseline' else 'KILLED by semantic assertion')+' '+result.stderr.strip())
+    print('Completed actual-source extraction/compilation; no target-binary equivalence claim.')
+if __name__=='__main__':
+    try:main()
+    except Exception as e:print('ERROR:',e,file=sys.stderr);sys.exit(1)

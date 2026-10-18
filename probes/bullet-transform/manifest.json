@@ -1,0 +1,13 @@
+{
+  "source_identity": "sha256 after CRLF-to-LF only; reject remaining CR",
+  "sources": {
+    "BulletTransform.cpp": "49142d9f3329defafa29e53f1993fcaec17c1042142f010576e00ecf5d5b27ee",
+    "BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1"
+  },
+  "artifacts_raw_sha256": {
+    "run.py": "d9f5575796c0d9506af867c94c8fb5416a3daa0409655c407ad2a3ef1d8fdfb9",
+    "harness.cpp": "7395eda7f58e130948ea5700232c82dc5440ffb441dcd2051dd157e7bf5c76ba",
+    "README.md": "a29ce589c9d6ddcff0df05a98fd747f2addb492a908f9ebb81e7cb6a9a676c65",
+    ".gitattributes": "df29ed0dab6de040a422667cdfd75f283b430e8e170491b5404f9caf27071b62"
+  }
+}
