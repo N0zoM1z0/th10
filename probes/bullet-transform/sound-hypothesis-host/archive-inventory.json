@@ -1,0 +1,38 @@
+{
+  "purpose": "Frozen host-only replay for the unadopted A007 source hypothesis",
+  "frozen_file_names": [
+    "run.py",
+    "harness.cpp",
+    "README.md",
+    "manifest.json",
+    ".gitattributes"
+  ],
+  "files_raw_sha256": {
+    "run.py": "2ede42d8373eabda23c545099f267611a0be5f0cd2574fac011ee4306c0e0fcd",
+    "harness.cpp": "f4faf55000a8ec80520ef18f49bc380e7cdf32eb3dbe3a3a6bdf5b8bc9d32448",
+    "README.md": "312d26760a7071ab9f58468a13e7e93e50ff87bb0917c11318d2bb187fb0de43",
+    "manifest.json": "55435723ced8b38502d0e0e3bd2a7ff57cdd09a7828117723c185dafbb77dc1d",
+    ".gitattributes": "df29ed0dab6de040a422667cdfd75f283b430e8e170491b5404f9caf27071b62",
+    "replay.py": "a0c632d465ba143b2ff1277ceb081fcf39d850d60dfcb7775e31e4b46d8b0978",
+    "test_replay.py": "077fa13e9cbd71defae3a20adb1b81c32fb19adc0ee03a7eb9cf4d4101d8442c",
+    "ARCHIVE.md": "106fe129865642f1175c39b4e9037385a7efd2ef5fe9b68fff1c38306b4c9117"
+  },
+  "immutable_dependencies_raw_sha256": {
+    "probes/bullet-transform/native-experiment/a003/run.py": "265f014afd96ff452b4d025d65481554daa26f2ec81e60051103ee2b8b3d5c46",
+    "probes/bullet-transform/native-experiment/a003/manifest.proposed.json": "a064b5422d3ef131d138523db44991a6e581447b6cd65066bfa0f90b65fe8bce",
+    "probes/bullet-transform/native-experiment/a003/src/BulletTransform.cpp": "da1d560622c704618397099410ec680d08349f891dc2a87cc3d46bcea653af3f",
+    "probes/bullet-transform/native-experiment/recovery-history/reconstruct.py": "beb77a37b328983924f441b9a4c97c3f41e413b78ad5279efdf9bdb1318ffa79",
+    "probes/bullet-transform/native-experiment/recovery-history/recipes.json": "27301494b01940d637745bd8458ba967ad8eabb03663e34a95188f30eadd3b53"
+  },
+  "production_headers_sha256_after_crlf_to_lf_only": {
+    "BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+    "EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8"
+  },
+  "header_policy": "Only CRLF-to-LF for identity; reject bare CR; materialize original bytes in temporary workspace.",
+  "overlay_sha256": "824eb6a3a14fe140168ed1146f4aff7ece5bbc914639934ae35850f0ecdacccc",
+  "replay_command": "python3 probes/bullet-transform/sound-hypothesis-host/replay.py --mutations",
+  "historical_runner_default_source_path_used": false,
+  "native_runner_executed": false,
+  "production_transform_read_or_adopted": false,
+  "duplicated_production_source_or_headers_in_archive": false
+}

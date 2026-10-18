@@ -1,0 +1,13 @@
+{
+  "executed_receipt": "repository-command:f2a8ea6629ab4a28a994ce72734c0b7e",
+  "files": {
+    "AUDIT.md": "9d3c478b657c478fb8437f17087421061186f2f3f700dc92e46dd1e3e79800df",
+    "README.md": "62faba6e4e430e550837db24ad18745515c2887b75149b906adf66b621ea5331",
+    "requirements.txt": "0b5b462726d0bc46a83cca7da256f0fc609d110f52ccf82cfbcc295e9e5b941a",
+    "test_synthetic.py": "348dde3ca61d7d78ddc56063b1e643c0125b066d3be6bfd1426b86b439e82772",
+    "verify_sound_contracts.py": "e867419b99c72bed9558bb67a9df9a8bf656a1e9d44e9f7b14dfdc097eeb0cf8"
+  },
+  "production_source_changed": false,
+  "schema": 1,
+  "target_payload_included": false
+}

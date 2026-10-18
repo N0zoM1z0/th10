@@ -1,0 +1,25 @@
+{
+  "format": "source-only-bounded-cue-preparation-v1",
+  "members": {
+    "FINDINGS.md": {
+      "bytes": 4099,
+      "sha256": "57d00bf415e5ffbd00ebe82ee7a9e3c72afe60ea7c2a1a8628a1d736f04a1e2b"
+    },
+    "PLAN.md": {
+      "bytes": 5204,
+      "sha256": "7f07fb2a78756e5bcb21c65ca75d54e5287e31e7d0e71914f08173206c31ea3e"
+    },
+    "inspect_cue_preparation.py": {
+      "bytes": 73864,
+      "sha256": "2c493306e1dfb983fbc00b23eadf21ffbe1562c7801d3c189f78504900c9cd49"
+    },
+    "remote-cue-preparation-receipt.json": {
+      "bytes": 15738,
+      "sha256": "820fc611a53c0c79419cb2e224fa4189ce67cf227ca04cbec462134443c6bae7"
+    },
+    "test_cue_preparation.py": {
+      "bytes": 62098,
+      "sha256": "241c897b7d6ccef492b4fc87691b51688dc15f7b0aed1021c8c0c097a9ff7221"
+    }
+  }
+}

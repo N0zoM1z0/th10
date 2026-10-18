@@ -1,0 +1,25 @@
+{
+  "format": "source-only-bounded-replay-v1",
+  "members": {
+    "FINDINGS.md": {
+      "bytes": 3535,
+      "sha256": "eaebca96448e0bfe36c9c4b7c362709fe8da6664e4069d15e8900c9fd6376580"
+    },
+    "SCOPE.md": {
+      "bytes": 4243,
+      "sha256": "a4213ea95f3f74217f76a7712fdcdee722fb41a51d8be32d7c90353d6937e126"
+    },
+    "remote-final-receipt.json": {
+      "bytes": 7901,
+      "sha256": "7b46b15fd2271e4dc04546cd98f7b26a6b8ce1dbe6db2e12b6bb53e56b8e4882"
+    },
+    "replay_a006_structure.py": {
+      "bytes": 52884,
+      "sha256": "b976fe6593498d473877f245f5e1f9f7b7aa41d4bd0c4d34041663a84a257f01"
+    },
+    "test_replay_a006_structure.py": {
+      "bytes": 46432,
+      "sha256": "cd063e087ac10131eaee23caf68c8c9c34bd209f52405624f1eaf91fbbcb9eb7"
+    }
+  }
+}

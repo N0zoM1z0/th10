@@ -406,6 +406,1749 @@
         }
       ]
     },
+    "a006": {
+      "manifest_remove": [],
+      "manifest_replace": {
+        "base_commit": "75536f63312688610002392067ab8604cd33844b",
+        "experiment": {
+          "authorized_build_count": 1,
+          "evidence_scope": "Parent-confirmed A005 whole owner1540 comprises1392code plus148trailing tables; one direct helper CALL and separate68-byte helper owner. Target1454code plus2gap plus148aux suggests potential1604 public full comparison, not current acceptance.",
+          "harness_delta": "None from A005 beyond HEAD/base-source/overlay pins; retain approved candidate-only exact nonempty windows_path validation.",
+          "host_evidence": "Exact two-edit source reproduction independently reviewed; actual-source baseline and32 compiled semantic mutant kills plus vector/direction signed-zero controls pass.",
+          "name": "remaining vector-helper ownership expansion",
+          "source_policy": "Expand only remaining vector helper call with ordered NaN/lazy evaluation preserved; remove then-unused helper; no direction/profile/graph/entry/normal-support change."
+        },
+        "overlays": {
+          "src/BulletTransform.cpp": "e698e713a6f3f7e069970090e09c515ce9d64b3011bdfdd73ca046ea82b65f9e"
+        },
+        "review_disposition": "Independent source/mechanics review approved runner3b839cd2ea2421b73b0b9ff98663924894f73aa196a56e21df3c8f298d51bee6 and overlaye698e713a6f3f7e069970090e09c515ce9d64b3011bdfdd73ca046ea82b65f9e;26 source-only runner/owner/adapter tests pass. One fresh parent-only A006 after final identity check, no production integration or new comparator/config/exactness authority.",
+        "source_files": {
+          "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+          "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+          "src/AnmRectangle.cpp": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b",
+          "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+          "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+          "src/BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+          "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+          "src/BulletTransform.cpp": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+          "src/Chain.cpp": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
+          "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/DecomphelpLeafAccessors.cpp": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+          "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+          "src/Decompress.cpp": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc",
+          "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+          "src/EclVm.cpp": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+          "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+          "src/Enemy.cpp": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+          "src/Enemy.hpp": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+          "src/EnemyCallback.cpp": "8d96765576c94e631db6c76178afa4c556b9a8d40cadb5f108f9cd5297103e4d",
+          "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+          "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+          "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+          "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+          "src/EnemyMotion.cpp": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+          "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+          "src/FrontEnd.cpp": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+          "src/FrontEnd.hpp": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+          "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+          "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameManager.cpp": "2a09b328a64e45f9f027bfe84b25b5800e21c5e59b7759a97d63925760ed9433",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+          "src/GameStatistics.cpp": "60eb7f57910372a78e6d6bba45c22af8e758bc5114aaa8bb00faf7a43eb1f13b",
+          "src/GameStatistics.hpp": "ae615e9a3982449e970883e2409ca1ef045192086ca9a84ad0ab94aadc6a20b6",
+          "src/Gui.cpp": "f65128ba8708668362dc6f6cb98a30afdd7faf0e20431fe312e1375147f1c251",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiDraw.cpp": "6ff7fd7d108ba74aa98ed5210592fbfc916a542f85fb12f5a75075c3ca3a03d7",
+          "src/GuiMessage.cpp": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Hint.cpp": "da5f937bf27a6424814a9aeacc67b09796c4b909870ba9f40258b6142d1133f3",
+          "src/Hint.hpp": "34c36f65efd6b23091b07dd1e3ed87429a21fbea00c6492b9f7d3ef47de90f2f",
+          "src/ItemManager.cpp": "373ea005be2a6dd7dbe25193afc803e52078a4dcdf51172b2d0bdf1b66d67faa",
+          "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+          "src/Lzss.cpp": "6a066b4eac947b11cd120a3daf5f43a659995af4048ea58836650b30657d6aaa",
+          "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+          "src/Main.cpp": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+          "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+          "src/Midi.cpp": "159f3732b76a005abf72f3f26aef19d6a851ead016c5a70d3e967804efa3ae77",
+          "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+          "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+          "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+          "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+          "src/Player.cpp": "a5a59afec4ebc184109e2afc5fdd19489029eff15279b349ac4d586d722a4407",
+          "src/Player.hpp": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+          "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/RandomMath.cpp": "88af248abd6b7e5732ae9c34eadbd3fb524ff35d5740432762c23dd9e35466c4",
+          "src/ReplayChain.hpp": "ef270dea5745516565e0cfb533976f1cc71b9fad4b152780f43c8e3815774aa9",
+          "src/ReplayManager.cpp": "4c9a5d49461fdaccab569458248ac7f9aac84e288436412a00659aedf64226f3",
+          "src/ReplayManager.hpp": "d49d3e955be6fc0888cfef0fc38b7f94bbc838dc9c1c3f3dca4517799efeb17c",
+          "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+          "src/ResFile.cpp": "0488cd5bf7846eaf592abf00558c93d797a7aa759aefae4cf773855a06d4fb8b",
+          "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+          "src/ResultMenu.hpp": "4ae174c48a3ec3d2e8d7292294d3ee18e625de08774996556828fb160ad70610",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+          "src/Sound.cpp": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+          "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+          "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+          "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+          "src/StageScript.cpp": "247be01c76616dc2ec7d97f370b6e8d3ffa643cdd45c113d493f8b6c73c1f061",
+          "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+          "src/TextRenderer.cpp": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b",
+          "src/TextRenderer.hpp": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa",
+          "src/TransitionEffect.cpp": "fed2d9f86eb17c1b4aa39b5e34ab68e2fe823f2b3ef0e49ad720a01074ce6591",
+          "src/TransitionEffect.hpp": "28f133dad71a4055bb6ed741e1a8bb27eb606be15ccbc5c0bc06b213dd07e7f8",
+          "src/ZWave.cpp": "8a0eafe895d9e4d7feb2b768907379890e96168a4bbcd85743791aeeab0935f3"
+        },
+        "source_include_closure": {
+          "edges": {
+            "src/AnmManager.cpp": [
+              "src/AnmManager.hpp",
+              "src/Chain.hpp",
+              "src/FileSystem.hpp",
+              "src/GameErrorContext.hpp"
+            ],
+            "src/AnmManager.hpp": [
+              "src/AnmVmId.hpp",
+              "src/D3d9View.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/AnmVmId.hpp": [],
+            "src/BulletManager.cpp": [
+              "src/BulletManager.hpp"
+            ],
+            "src/BulletManager.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/BulletRuntime.cpp": [
+              "src/BulletManager.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/BulletTransform.cpp": [
+              "src/BulletManager.hpp"
+            ],
+            "src/Chain.hpp": [],
+            "src/D3d9View.hpp": [],
+            "src/EclVm.hpp": [],
+            "src/Enemy.cpp": [
+              "src/AnmManager.hpp",
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyGameState.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/GameErrorContext.hpp",
+              "src/GameScoreState.hpp",
+              "src/Gui.hpp",
+              "src/GuiScore.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/Enemy.hpp": [
+              "src/Player.hpp"
+            ],
+            "src/EnemyEclDispatcher.cpp": [
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyLaser.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/Gui.hpp",
+              "src/Main.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/EnemyGameState.hpp": [],
+            "src/EnemyLaser.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/EnemySoundQueue.hpp": [],
+            "src/FileSystem.hpp": [],
+            "src/GameErrorContext.hpp": [],
+            "src/GameScoreState.hpp": [],
+            "src/Gui.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/GuiScore.hpp": [],
+            "src/Main.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/Player.hpp": [],
+            "src/PlayerCollision.cpp": [
+              "src/Player.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/PlayerCollision.hpp": [],
+            "src/Rng.hpp": []
+          },
+          "external_toolchain_headers": [
+            "limits.h",
+            "math.h",
+            "new",
+            "stdarg.h",
+            "stddef.h",
+            "stdio.h",
+            "stdlib.h",
+            "string.h",
+            "windows.h"
+          ],
+          "files": {
+            "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+            "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+            "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+            "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+            "src/BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+            "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+            "src/BulletTransform.cpp": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+            "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+            "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+            "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+            "src/Enemy.cpp": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+            "src/Enemy.hpp": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+            "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+            "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+            "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+            "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+            "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+            "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+            "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+            "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+            "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+            "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+            "src/Player.hpp": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+            "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+            "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+            "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+          },
+          "scope": "All literal project includes, including conditional branches. SDK header closure remains toolchain identity, not project-source closure."
+        }
+      },
+      "manifest_sha256": "62c65f42d5d3b62803025712b41012f15576a86e81bee8bdb82c211567840328",
+      "overlay_sha256": "e698e713a6f3f7e069970090e09c515ce9d64b3011bdfdd73ca046ea82b65f9e",
+      "overlay_splices": [
+        {
+          "end": 1709,
+          "replacement": "            float requestedAngle = record->payload.float1;\n            if (requestedAngle <= -990.0f)\n",
+          "start": 1595
+        },
+        {
+          "end": 1899,
+          "replacement": "            else if (requestedAngle >= 990.0f)\n",
+          "start": 1765
+        },
+        {
+          "end": 2011,
+          "replacement": "            else\n                this->exStates[1].value1 = requestedAngle;\n",
+          "start": 2011
+        },
+        {
+          "end": 3212,
+          "replacement": "            float requestedAngle = record->payload.float0;\n            if (requestedAngle <= -990.0f)\n",
+          "start": 3092
+        },
+        {
+          "end": 3408,
+          "replacement": "            else if (requestedAngle >= 990.0f)\n",
+          "start": 3268
+        },
+        {
+          "end": 3520,
+          "replacement": "            else\n                this->exStates[3].value1 = requestedAngle;\n",
+          "start": 3520
+        }
+      ],
+      "runner_sha256": "3b839cd2ea2421b73b0b9ff98663924894f73aa196a56e21df3c8f298d51bee6",
+      "runner_splices": [
+        {
+          "end": 312,
+          "replacement": "HEAD='75536f63312688610002392067ab8604cd33844b'\n",
+          "start": 264
+        },
+        {
+          "end": 1417,
+          "replacement": "OVERLAYS={'src/BulletTransform.cpp':'e698e713a6f3f7e069970090e09c515ce9d64b3011bdfdd73ca046ea82b65f9e'}\nBASE_TRANSFORM_SHA='72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1'\n",
+          "start": 1227
+        },
+        {
+          "end": 12044,
+          "replacement": "def checked_windows_path(path,environment):\n require(not any(k in os.environ for k in ('WINE','WINESERVER','WINELOADER')),'Wine override')\n wp=P('/usr/bin/winepath');require(str(wp.resolve())=='/usr/lib/wine/wineapploader' and sha(wp.resolve())=='3e3fa1050f95b39cf90e21f03e6e8cda4415a480db696719ef137e3c7a86bb54','winepath identity')\n # Keep wrapper argv0; bound output on disk instead of exposing it.\n import tempfile\n with tempfile.TemporaryFile() as output:\n  done=subprocess.run([str(wp),'-w',str(path.resolve())],env=environment,stdout=output,stderr=subprocess.DEVNULL,timeout=5)\n  output.seek(0);raw=output.read(8193)\n require(done.returncode==0 and len(raw)<=8192,'winepath failure')\n value=raw.decode('ascii').strip().replace('\\r','');expected='Z:'+str(path.resolve()).replace('/','\\\\')\n require(bool(value) and '\\n' not in value and '\\x00' not in value and value.lower()==expected.lower(),'winepath empty or wrong path')\n return value\n\n\n",
+          "start": 12044
+        },
+        {
+          "end": 13844,
+          "replacement": "  previous_windows_path=l.windows_path\n  try:\n   l.windows_path=checked_windows_path\n   built=l.cold_link(tree/'src/BulletRuntime.cpp',tree/'build/match-linked/BulletRuntimeUpdate',ENTRY,linker,environment,list(PROFILE),[tree/x for x in SUPPORT],[tree/'src/BulletTransform.cpp'])\n  finally:l.windows_path=previous_windows_path\n",
+          "start": 13650
+        }
+      ]
+    },
+    "a007": {
+      "manifest_remove": [],
+      "manifest_replace": {
+        "base_commit": "75536f63312688610002392067ab8604cd33844b",
+        "candidate_source_include_closure": {
+          "edges": {
+            "src/AnmManager.cpp": [
+              "src/AnmManager.hpp",
+              "src/Chain.hpp",
+              "src/FileSystem.hpp",
+              "src/GameErrorContext.hpp"
+            ],
+            "src/AnmManager.hpp": [
+              "src/AnmVmId.hpp",
+              "src/D3d9View.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/AnmVmId.hpp": [],
+            "src/BulletManager.cpp": [
+              "src/BulletManager.hpp"
+            ],
+            "src/BulletManager.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/BulletRuntime.cpp": [
+              "src/BulletManager.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/BulletTransform.cpp": [
+              "src/BulletManager.hpp",
+              "src/EnemySoundQueue.hpp"
+            ],
+            "src/Chain.hpp": [],
+            "src/D3d9View.hpp": [],
+            "src/EclVm.hpp": [],
+            "src/Enemy.cpp": [
+              "src/AnmManager.hpp",
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyGameState.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/GameErrorContext.hpp",
+              "src/GameScoreState.hpp",
+              "src/Gui.hpp",
+              "src/GuiScore.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/Enemy.hpp": [
+              "src/Player.hpp"
+            ],
+            "src/EnemyEclDispatcher.cpp": [
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyLaser.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/Gui.hpp",
+              "src/Main.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/EnemyGameState.hpp": [],
+            "src/EnemyLaser.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/EnemySoundQueue.hpp": [],
+            "src/FileSystem.hpp": [],
+            "src/GameErrorContext.hpp": [],
+            "src/GameScoreState.hpp": [],
+            "src/Gui.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/GuiScore.hpp": [],
+            "src/Main.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/Player.hpp": [],
+            "src/PlayerCollision.cpp": [
+              "src/Player.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/PlayerCollision.hpp": [],
+            "src/Rng.hpp": []
+          },
+          "external_toolchain_headers": [
+            "limits.h",
+            "math.h",
+            "new",
+            "stdarg.h",
+            "stddef.h",
+            "stdio.h",
+            "stdlib.h",
+            "string.h",
+            "windows.h"
+          ],
+          "files": {
+            "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+            "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+            "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+            "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+            "src/BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+            "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+            "src/BulletTransform.cpp": "824eb6a3a14fe140168ed1146f4aff7ece5bbc914639934ae35850f0ecdacccc",
+            "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+            "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+            "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+            "src/Enemy.cpp": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+            "src/Enemy.hpp": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+            "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+            "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+            "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+            "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+            "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+            "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+            "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+            "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+            "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+            "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+            "src/Player.hpp": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+            "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+            "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+            "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+          },
+          "scope": "All literal project includes, including conditional branches. SDK header closure remains toolchain identity, not project-source closure."
+        },
+        "experiment": {
+          "authorized_build_count": 1,
+          "evidence_scope": "Bounded target Sample ID/signed/index predicates and Cue current-record+8 freshness pass. Sufficient for one isolated same-graph diagnostic experiment only; action-entry/order/callee-clobber and generated-semantics limits remain. Measure actual interface linkage and complete owner with mandatory exact885; no private ABI or exactness presumption.",
+          "harness_delta": "Only overlay hash differs from A006 runner.",
+          "name": "A007 typed sound interface, same canonical normal-object graph",
+          "source_policy": "Relative to isolated A006 only: include existing EnemySoundQueue.hpp; replace unsupported free sound declaration with existing sound owner declaration; two QueueSoundSample(id,0) member calls and one QueueSoundCue(id,position.x) member call. Production remains 72aa."
+        },
+        "overlays": {
+          "src/BulletTransform.cpp": "824eb6a3a14fe140168ed1146f4aff7ece5bbc914639934ae35850f0ecdacccc"
+        },
+        "review_disposition": "Independent source/mechanics and bounded target evidence approved for one fresh parent-only A007, pending final identity verification. No adoption, new unit/config, exact credit or generated execution.",
+        "source_files": {
+          "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+          "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+          "src/AnmRectangle.cpp": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b",
+          "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+          "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+          "src/BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+          "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+          "src/BulletTransform.cpp": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+          "src/Chain.cpp": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
+          "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/DecomphelpLeafAccessors.cpp": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+          "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+          "src/Decompress.cpp": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc",
+          "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+          "src/EclVm.cpp": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+          "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+          "src/Enemy.cpp": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+          "src/Enemy.hpp": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+          "src/EnemyCallback.cpp": "8d96765576c94e631db6c76178afa4c556b9a8d40cadb5f108f9cd5297103e4d",
+          "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+          "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+          "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+          "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+          "src/EnemyMotion.cpp": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+          "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+          "src/FrontEnd.cpp": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+          "src/FrontEnd.hpp": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+          "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+          "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameManager.cpp": "2a09b328a64e45f9f027bfe84b25b5800e21c5e59b7759a97d63925760ed9433",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+          "src/GameStatistics.cpp": "60eb7f57910372a78e6d6bba45c22af8e758bc5114aaa8bb00faf7a43eb1f13b",
+          "src/GameStatistics.hpp": "ae615e9a3982449e970883e2409ca1ef045192086ca9a84ad0ab94aadc6a20b6",
+          "src/Gui.cpp": "f65128ba8708668362dc6f6cb98a30afdd7faf0e20431fe312e1375147f1c251",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiDraw.cpp": "6ff7fd7d108ba74aa98ed5210592fbfc916a542f85fb12f5a75075c3ca3a03d7",
+          "src/GuiMessage.cpp": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Hint.cpp": "da5f937bf27a6424814a9aeacc67b09796c4b909870ba9f40258b6142d1133f3",
+          "src/Hint.hpp": "34c36f65efd6b23091b07dd1e3ed87429a21fbea00c6492b9f7d3ef47de90f2f",
+          "src/ItemManager.cpp": "373ea005be2a6dd7dbe25193afc803e52078a4dcdf51172b2d0bdf1b66d67faa",
+          "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+          "src/Lzss.cpp": "6a066b4eac947b11cd120a3daf5f43a659995af4048ea58836650b30657d6aaa",
+          "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+          "src/Main.cpp": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+          "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+          "src/Midi.cpp": "159f3732b76a005abf72f3f26aef19d6a851ead016c5a70d3e967804efa3ae77",
+          "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+          "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+          "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+          "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+          "src/Player.cpp": "a5a59afec4ebc184109e2afc5fdd19489029eff15279b349ac4d586d722a4407",
+          "src/Player.hpp": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+          "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/RandomMath.cpp": "88af248abd6b7e5732ae9c34eadbd3fb524ff35d5740432762c23dd9e35466c4",
+          "src/ReplayChain.hpp": "ef270dea5745516565e0cfb533976f1cc71b9fad4b152780f43c8e3815774aa9",
+          "src/ReplayManager.cpp": "4c9a5d49461fdaccab569458248ac7f9aac84e288436412a00659aedf64226f3",
+          "src/ReplayManager.hpp": "d49d3e955be6fc0888cfef0fc38b7f94bbc838dc9c1c3f3dca4517799efeb17c",
+          "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+          "src/ResFile.cpp": "0488cd5bf7846eaf592abf00558c93d797a7aa759aefae4cf773855a06d4fb8b",
+          "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+          "src/ResultMenu.hpp": "4ae174c48a3ec3d2e8d7292294d3ee18e625de08774996556828fb160ad70610",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+          "src/Sound.cpp": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+          "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+          "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+          "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+          "src/StageScript.cpp": "247be01c76616dc2ec7d97f370b6e8d3ffa643cdd45c113d493f8b6c73c1f061",
+          "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+          "src/TextRenderer.cpp": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b",
+          "src/TextRenderer.hpp": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa",
+          "src/TransitionEffect.cpp": "fed2d9f86eb17c1b4aa39b5e34ab68e2fe823f2b3ef0e49ad720a01074ce6591",
+          "src/TransitionEffect.hpp": "28f133dad71a4055bb6ed741e1a8bb27eb606be15ccbc5c0bc06b213dd07e7f8",
+          "src/ZWave.cpp": "8a0eafe895d9e4d7feb2b768907379890e96168a4bbcd85743791aeeab0935f3"
+        },
+        "source_include_closure": {
+          "edges": {
+            "src/AnmManager.cpp": [
+              "src/AnmManager.hpp",
+              "src/Chain.hpp",
+              "src/FileSystem.hpp",
+              "src/GameErrorContext.hpp"
+            ],
+            "src/AnmManager.hpp": [
+              "src/AnmVmId.hpp",
+              "src/D3d9View.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/AnmVmId.hpp": [],
+            "src/BulletManager.cpp": [
+              "src/BulletManager.hpp"
+            ],
+            "src/BulletManager.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/BulletRuntime.cpp": [
+              "src/BulletManager.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/BulletTransform.cpp": [
+              "src/BulletManager.hpp"
+            ],
+            "src/Chain.hpp": [],
+            "src/D3d9View.hpp": [],
+            "src/EclVm.hpp": [],
+            "src/Enemy.cpp": [
+              "src/AnmManager.hpp",
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyGameState.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/GameErrorContext.hpp",
+              "src/GameScoreState.hpp",
+              "src/Gui.hpp",
+              "src/GuiScore.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/Enemy.hpp": [
+              "src/Player.hpp"
+            ],
+            "src/EnemyEclDispatcher.cpp": [
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyLaser.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/Gui.hpp",
+              "src/Main.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/EnemyGameState.hpp": [],
+            "src/EnemyLaser.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/EnemySoundQueue.hpp": [],
+            "src/FileSystem.hpp": [],
+            "src/GameErrorContext.hpp": [],
+            "src/GameScoreState.hpp": [],
+            "src/Gui.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/GuiScore.hpp": [],
+            "src/Main.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/Player.hpp": [],
+            "src/PlayerCollision.cpp": [
+              "src/Player.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/PlayerCollision.hpp": [],
+            "src/Rng.hpp": []
+          },
+          "external_toolchain_headers": [
+            "limits.h",
+            "math.h",
+            "new",
+            "stdarg.h",
+            "stddef.h",
+            "stdio.h",
+            "stdlib.h",
+            "string.h",
+            "windows.h"
+          ],
+          "files": {
+            "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+            "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+            "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+            "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+            "src/BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+            "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+            "src/BulletTransform.cpp": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+            "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+            "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+            "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+            "src/Enemy.cpp": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+            "src/Enemy.hpp": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+            "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+            "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+            "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+            "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+            "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+            "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+            "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+            "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+            "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+            "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+            "src/Player.hpp": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+            "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+            "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+            "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+          },
+          "scope": "All literal project includes, including conditional branches. SDK header closure remains toolchain identity, not project-source closure."
+        },
+        "source_include_closure_scope": "source_include_closure describes unchanged production baseline; candidate_source_include_closure describes sole overlay. EnemySoundQueue.hpp is unchanged, already among all83 source pins and existing26-file closure.",
+        "target_sound_evidence": {
+          "command_id": "repository-command:0331816d58e84464b04f13c4772f43b2",
+          "receipt_sha256": "1c54e0cdf4aa8ef8a431a134e08833d42c1c6af72ae7a858d632a4303e3203da",
+          "remaining_limits": [
+            "No universal action-entry or whole-function equivalence proof.",
+            "Ordering and callee-clobber obligations remain.",
+            "No generated-machine sound/NaN semantic proof or execution.",
+            "Ordinary normal-TU member linkage does not establish target private ABI."
+          ],
+          "scope": "Sample ID/signed/index predicates and Cue current-record+8 freshness; bounded evidence sufficient for isolated experiment only"
+        }
+      },
+      "manifest_sha256": "96173fc5ade759831d2489fd0e34e8d756169381cdfe7c1f7eea714e8b021f1b",
+      "overlay_sha256": "824eb6a3a14fe140168ed1146f4aff7ece5bbc914639934ae35850f0ecdacccc",
+      "overlay_splices": [
+        {
+          "end": 23,
+          "replacement": ".hpp\"\n#include \"EnemySoundQueue",
+          "start": 23
+        },
+        {
+          "end": 283,
+          "replacement": "uns",
+          "start": 281
+        },
+        {
+          "end": 284,
+          "replacement": "gne",
+          "start": 284
+        },
+        {
+          "end": 297,
+          "replacement": "char g_Main",
+          "start": 286
+        },
+        {
+          "end": 311,
+          "replacement": "Ow",
+          "start": 302
+        },
+        {
+          "end": 321,
+          "replacement": "er[0x52",
+          "start": 312
+        },
+        {
+          "end": 342,
+          "replacement": "0]",
+          "start": 322
+        },
+        {
+          "end": 1628,
+          "replacement": "",
+          "start": 1622
+        },
+        {
+          "end": 1691,
+          "replacement": "",
+          "start": 1685
+        },
+        {
+          "end": 1801,
+          "replacement": "",
+          "start": 1795
+        },
+        {
+          "end": 1808,
+          "replacement": ">=",
+          "start": 1807
+        },
+        {
+          "end": 1898,
+          "replacement": "",
+          "start": 1816
+        },
+        {
+          "end": 2009,
+          "replacement": ";\n            else\n                this->exStates[1].value1 = requestedAngle",
+          "start": 2009
+        },
+        {
+          "end": 2325,
+          "replacement": "reinterpr",
+          "start": 2321
+        },
+        {
+          "end": 2327,
+          "replacement": "_cast<EnemySoundQueueView *>(g_MainSoundOwner)->\n                ",
+          "start": 2327
+        },
+        {
+          "end": 2347,
+          "replacement": "Sample",
+          "start": 2337
+        },
+        {
+          "end": 2374,
+          "replacement": "",
+          "start": 2371
+        },
+        {
+          "end": 2814,
+          "replacement": "reinterpr",
+          "start": 2810
+        },
+        {
+          "end": 2816,
+          "replacement": "_cast<EnemySoundQueueView *>(g_MainSoundOwner)->\n                ",
+          "start": 2816
+        },
+        {
+          "end": 2836,
+          "replacement": "Sample",
+          "start": 2826
+        },
+        {
+          "end": 2863,
+          "replacement": "",
+          "start": 2860
+        },
+        {
+          "end": 3128,
+          "replacement": "",
+          "start": 3119
+        },
+        {
+          "end": 3194,
+          "replacement": "",
+          "start": 3185
+        },
+        {
+          "end": 3307,
+          "replacement": "",
+          "start": 3298
+        },
+        {
+          "end": 3314,
+          "replacement": ">=",
+          "start": 3313
+        },
+        {
+          "end": 3407,
+          "replacement": "",
+          "start": 3322
+        },
+        {
+          "end": 3518,
+          "replacement": ";\n            else\n                this->exStates[3].value1 = requestedAngle",
+          "start": 3518
+        },
+        {
+          "end": 5349,
+          "replacement": "reinterpr",
+          "start": 5345
+        },
+        {
+          "end": 5351,
+          "replacement": "_cast<EnemySound",
+          "start": 5351
+        },
+        {
+          "end": 5356,
+          "replacement": "View *>(g_Main",
+          "start": 5356
+        },
+        {
+          "end": 5370,
+          "replacement": "Ow",
+          "start": 5361
+        },
+        {
+          "end": 5372,
+          "replacement": "er)->",
+          "start": 5371
+        },
+        {
+          "end": 5385,
+          "replacement": "QueueSoundCue(",
+          "start": 5385
+        }
+      ],
+      "runner_sha256": "2295ff01c72658b4f2f731c764f3422560d9db9f9e7a64d60bf37b1cca17e631",
+      "runner_splices": [
+        {
+          "end": 273,
+          "replacement": "7",
+          "start": 270
+        },
+        {
+          "end": 282,
+          "replacement": "36f633126",
+          "start": 275
+        },
+        {
+          "end": 286,
+          "replacement": "86100",
+          "start": 283
+        },
+        {
+          "end": 288,
+          "replacement": "3920",
+          "start": 288
+        },
+        {
+          "end": 289,
+          "replacement": "7ab8",
+          "start": 289
+        },
+        {
+          "end": 291,
+          "replacement": "4cd33844",
+          "start": 291
+        },
+        {
+          "end": 310,
+          "replacement": "",
+          "start": 292
+        },
+        {
+          "end": 1265,
+          "replacement": "824eb6a3",
+          "start": 1264
+        },
+        {
+          "end": 1267,
+          "replacement": "4fe140168e",
+          "start": 1267
+        },
+        {
+          "end": 1277,
+          "replacement": "11",
+          "start": 1268
+        },
+        {
+          "end": 1279,
+          "replacement": "f4aff7ece5bbc9",
+          "start": 1279
+        },
+        {
+          "end": 1281,
+          "replacement": "46",
+          "start": 1280
+        },
+        {
+          "end": 1284,
+          "replacement": "934ae3585",
+          "start": 1283
+        },
+        {
+          "end": 1289,
+          "replacement": "f",
+          "start": 1285
+        },
+        {
+          "end": 1295,
+          "replacement": "",
+          "start": 1292
+        },
+        {
+          "end": 1308,
+          "replacement": "",
+          "start": 1296
+        },
+        {
+          "end": 1311,
+          "replacement": "",
+          "start": 1309
+        },
+        {
+          "end": 1318,
+          "replacement": "",
+          "start": 1313
+        },
+        {
+          "end": 1328,
+          "replacement": "c",
+          "start": 1319
+        },
+        {
+          "end": 1351,
+          "replacement": "72aa",
+          "start": 1351
+        },
+        {
+          "end": 1352,
+          "replacement": "6821fdae7f35482a30fcfe8abbd48b075a7548",
+          "start": 1352
+        },
+        {
+          "end": 1356,
+          "replacement": "f593",
+          "start": 1353
+        },
+        {
+          "end": 1359,
+          "replacement": "22e9ad2ab1",
+          "start": 1358
+        },
+        {
+          "end": 1363,
+          "replacement": "1",
+          "start": 1360
+        },
+        {
+          "end": 1375,
+          "replacement": "",
+          "start": 1364
+        },
+        {
+          "end": 1415,
+          "replacement": "",
+          "start": 1376
+        },
+        {
+          "end": 12048,
+          "replacement": "checked_windows_path(path,environment):\n require(not any(k in os.environ for k in ('WINE','WINESERVER','WINELOADER')),'Wine override')\n wp=P('/usr/bin/winepath');require(str(wp.resolve())=='/usr/lib/wine/wineapploader' and sha(wp.resolve())=='3e3fa1050f95b39cf90e21f03e6e8cda4415a480db696719ef137e3c7a86bb54','winepath identity')\n # Keep wrapper argv0; bound output on disk instead of exposing it.\n import tempfile\n with tempfile.TemporaryFile() as output:\n  done=subprocess.run([str(wp),'-w',str(path.resolve())],env=environment,stdout=output,stderr=subprocess.DEVNULL,timeout=5)\n  output.seek(0);raw=output.read(8193)\n require(done.returncode==0 and len(raw)<=8192,'winepath failure')\n value=raw.decode('ascii').strip().replace('\\r','');expected='Z:'+str(path.resolve()).replace('/','\\\\')\n require(bool(value) and '\\n' not in value and '\\x00' not in value and value.lower()==expected.lower(),'winepath empty or wrong path')\n return value\n\n\ndef ",
+          "start": 12048
+        },
+        {
+          "end": 13652,
+          "replacement": "previous_windows_path=l.windows_path\n  try:\n   l.windows_path=checked_windows_path\n   ",
+          "start": 13652
+        },
+        {
+          "end": 13843,
+          "replacement": "\n  finally:l.windows_path=previous_windows_path",
+          "start": 13843
+        }
+      ]
+    },
+    "a008": {
+      "manifest_remove": [],
+      "manifest_replace": {
+        "base_commit": "75536f63312688610002392067ab8604cd33844b",
+        "boundary_evidence": {
+          "command_id": "repository-command:be76b7ea9cff49059734cbb0205457a7",
+          "limits": "X origin, formal ABI, callee clobbers and complete seven-byte regression cause unproved.",
+          "observation": "Bounded runtime Cue preparation changes from ESI receiver/EBX28/one prepared word in A006 to ECX receiver/two prepared words in A007 after normal-object sound references.",
+          "receipt_sha256": "820fc611a53c0c79419cb2e224fa4189ce67cf227ca04cbec462134443c6bae7"
+        },
+        "candidate_source_include_closure": {
+          "edges": {
+            "src/AnmManager.cpp": [
+              "src/AnmManager.hpp",
+              "src/Chain.hpp",
+              "src/FileSystem.hpp",
+              "src/GameErrorContext.hpp"
+            ],
+            "src/AnmManager.hpp": [
+              "src/AnmVmId.hpp",
+              "src/D3d9View.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/AnmVmId.hpp": [],
+            "src/BulletManager.cpp": [
+              "src/BulletManager.hpp"
+            ],
+            "src/BulletManager.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/BulletRuntime.cpp": [
+              "src/BulletManager.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/BulletTransform.cpp": [
+              "src/BulletManager.hpp",
+              "src/EnemySoundQueue.hpp"
+            ],
+            "src/Chain.hpp": [],
+            "src/D3d9View.hpp": [],
+            "src/EclVm.hpp": [],
+            "src/Enemy.cpp": [
+              "src/AnmManager.hpp",
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyGameState.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/GameErrorContext.hpp",
+              "src/GameScoreState.hpp",
+              "src/Gui.hpp",
+              "src/GuiScore.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/Enemy.hpp": [
+              "src/Player.hpp"
+            ],
+            "src/EnemyEclDispatcher.cpp": [
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyLaser.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/Gui.hpp",
+              "src/Main.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/EnemyGameState.hpp": [],
+            "src/EnemyLaser.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/EnemySoundQueue.hpp": [],
+            "src/FileSystem.hpp": [],
+            "src/GameErrorContext.hpp": [],
+            "src/GameScoreState.hpp": [],
+            "src/Gui.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/GuiScore.hpp": [],
+            "src/Main.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/Player.hpp": [],
+            "src/PlayerCollision.cpp": [
+              "src/Player.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/PlayerCollision.hpp": [],
+            "src/Rng.hpp": []
+          },
+          "external_toolchain_headers": [
+            "limits.h",
+            "math.h",
+            "new",
+            "stdarg.h",
+            "stddef.h",
+            "stdio.h",
+            "stdlib.h",
+            "string.h",
+            "windows.h"
+          ],
+          "files": {
+            "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+            "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+            "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+            "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+            "src/BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+            "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+            "src/BulletTransform.cpp": "824eb6a3a14fe140168ed1146f4aff7ece5bbc914639934ae35850f0ecdacccc",
+            "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+            "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+            "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+            "src/Enemy.cpp": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+            "src/Enemy.hpp": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+            "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+            "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+            "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+            "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+            "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+            "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+            "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+            "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+            "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+            "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+            "src/Player.hpp": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+            "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+            "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+            "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+          },
+          "scope": "All literal project includes, including conditional branches. SDK header closure remains toolchain identity, not project-source closure."
+        },
+        "experiment": {
+          "authorized_build_count": 1,
+          "graph_delta": "Only remove Transform from normal_support_sources; all ordered sources, profile, primary and entry unchanged.",
+          "interpretation": "Full885 comparison on fresh experimental artifacts cannot confer canonical acceptance under original normal-support graph. Missing/inlined/split/ambiguous complete Transform owner is unresolved; no sums/cropping/retention changes.",
+          "name": "A008 sole Transform normal-to-LTCG boundary hypothesis",
+          "source_policy": "Identical824e overlay to A007, production unchanged72aa."
+        },
+        "experimental_comparison_scope": "Same full885 descriptor and normalization on experimental artifacts only; original canonical config remains pinned and unchanged.",
+        "experimental_graph": {
+          "entry_symbol": "?BulletUpdateRuntime@@YGHPAUBulletRuntimeView@@@Z",
+          "link_profile": [
+            "/ltcg",
+            "/nodefaultlib",
+            "/subsystem:console",
+            "/incremental:no",
+            "/fixed:no",
+            "/base:0x00400000",
+            "/debug",
+            "/debugtype:cv",
+            "/opt:noref",
+            "/opt:noicf",
+            "/safeseh:no"
+          ],
+          "normal_support_sources": [],
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "source": "src/BulletRuntime.cpp",
+          "support_sources": [
+            "src/BulletManager.cpp",
+            "src/BulletTransform.cpp",
+            "src/PlayerCollision.cpp",
+            "src/AnmManager.cpp",
+            "src/EnemyEclDispatcher.cpp",
+            "src/Enemy.cpp"
+          ]
+        },
+        "overlays": {
+          "src/BulletTransform.cpp": "824eb6a3a14fe140168ed1146f4aff7ece5bbc914639934ae35850f0ecdacccc"
+        },
+        "owners": {
+          "runtime_guard": {
+            "object": "source.ltcg.obj",
+            "symbol": "?BulletUpdateRuntime@@YGHPAUBulletRuntimeView@@@Z",
+            "target_address": 4219456,
+            "target_size": 885
+          },
+          "transform": {
+            "object": "support-01-BulletTransform.ltcg.obj",
+            "symbol": "?AdvanceTransformProgram@BulletRuntimeView@@QAEXXZ",
+            "target_address": 4222352,
+            "target_size": 1454
+          }
+        },
+        "review_disposition": "Independent mechanics approved exact runner cb12e386. Parent authorized exactly one fresh A008 sole-boundary build; final identity review required. No canonical acceptance/adoption/config migration or exact credit.",
+        "source_files": {
+          "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+          "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+          "src/AnmRectangle.cpp": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b",
+          "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+          "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+          "src/BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+          "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+          "src/BulletTransform.cpp": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+          "src/Chain.cpp": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
+          "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/DecomphelpLeafAccessors.cpp": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+          "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+          "src/Decompress.cpp": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc",
+          "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+          "src/EclVm.cpp": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+          "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+          "src/Enemy.cpp": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+          "src/Enemy.hpp": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+          "src/EnemyCallback.cpp": "8d96765576c94e631db6c76178afa4c556b9a8d40cadb5f108f9cd5297103e4d",
+          "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+          "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+          "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+          "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+          "src/EnemyMotion.cpp": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+          "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+          "src/FrontEnd.cpp": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+          "src/FrontEnd.hpp": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+          "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+          "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameManager.cpp": "2a09b328a64e45f9f027bfe84b25b5800e21c5e59b7759a97d63925760ed9433",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+          "src/GameStatistics.cpp": "60eb7f57910372a78e6d6bba45c22af8e758bc5114aaa8bb00faf7a43eb1f13b",
+          "src/GameStatistics.hpp": "ae615e9a3982449e970883e2409ca1ef045192086ca9a84ad0ab94aadc6a20b6",
+          "src/Gui.cpp": "f65128ba8708668362dc6f6cb98a30afdd7faf0e20431fe312e1375147f1c251",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiDraw.cpp": "6ff7fd7d108ba74aa98ed5210592fbfc916a542f85fb12f5a75075c3ca3a03d7",
+          "src/GuiMessage.cpp": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Hint.cpp": "da5f937bf27a6424814a9aeacc67b09796c4b909870ba9f40258b6142d1133f3",
+          "src/Hint.hpp": "34c36f65efd6b23091b07dd1e3ed87429a21fbea00c6492b9f7d3ef47de90f2f",
+          "src/ItemManager.cpp": "373ea005be2a6dd7dbe25193afc803e52078a4dcdf51172b2d0bdf1b66d67faa",
+          "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+          "src/Lzss.cpp": "6a066b4eac947b11cd120a3daf5f43a659995af4048ea58836650b30657d6aaa",
+          "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+          "src/Main.cpp": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+          "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+          "src/Midi.cpp": "159f3732b76a005abf72f3f26aef19d6a851ead016c5a70d3e967804efa3ae77",
+          "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+          "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+          "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+          "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+          "src/Player.cpp": "a5a59afec4ebc184109e2afc5fdd19489029eff15279b349ac4d586d722a4407",
+          "src/Player.hpp": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+          "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/RandomMath.cpp": "88af248abd6b7e5732ae9c34eadbd3fb524ff35d5740432762c23dd9e35466c4",
+          "src/ReplayChain.hpp": "ef270dea5745516565e0cfb533976f1cc71b9fad4b152780f43c8e3815774aa9",
+          "src/ReplayManager.cpp": "4c9a5d49461fdaccab569458248ac7f9aac84e288436412a00659aedf64226f3",
+          "src/ReplayManager.hpp": "d49d3e955be6fc0888cfef0fc38b7f94bbc838dc9c1c3f3dca4517799efeb17c",
+          "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+          "src/ResFile.cpp": "0488cd5bf7846eaf592abf00558c93d797a7aa759aefae4cf773855a06d4fb8b",
+          "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+          "src/ResultMenu.hpp": "4ae174c48a3ec3d2e8d7292294d3ee18e625de08774996556828fb160ad70610",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+          "src/Sound.cpp": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+          "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+          "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+          "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+          "src/StageScript.cpp": "247be01c76616dc2ec7d97f370b6e8d3ffa643cdd45c113d493f8b6c73c1f061",
+          "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+          "src/TextRenderer.cpp": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b",
+          "src/TextRenderer.hpp": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa",
+          "src/TransitionEffect.cpp": "fed2d9f86eb17c1b4aa39b5e34ab68e2fe823f2b3ef0e49ad720a01074ce6591",
+          "src/TransitionEffect.hpp": "28f133dad71a4055bb6ed741e1a8bb27eb606be15ccbc5c0bc06b213dd07e7f8",
+          "src/ZWave.cpp": "8a0eafe895d9e4d7feb2b768907379890e96168a4bbcd85743791aeeab0935f3"
+        },
+        "source_include_closure": {
+          "edges": {
+            "src/AnmManager.cpp": [
+              "src/AnmManager.hpp",
+              "src/Chain.hpp",
+              "src/FileSystem.hpp",
+              "src/GameErrorContext.hpp"
+            ],
+            "src/AnmManager.hpp": [
+              "src/AnmVmId.hpp",
+              "src/D3d9View.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/AnmVmId.hpp": [],
+            "src/BulletManager.cpp": [
+              "src/BulletManager.hpp"
+            ],
+            "src/BulletManager.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/BulletRuntime.cpp": [
+              "src/BulletManager.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/BulletTransform.cpp": [
+              "src/BulletManager.hpp"
+            ],
+            "src/Chain.hpp": [],
+            "src/D3d9View.hpp": [],
+            "src/EclVm.hpp": [],
+            "src/Enemy.cpp": [
+              "src/AnmManager.hpp",
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyGameState.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/GameErrorContext.hpp",
+              "src/GameScoreState.hpp",
+              "src/Gui.hpp",
+              "src/GuiScore.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/Enemy.hpp": [
+              "src/Player.hpp"
+            ],
+            "src/EnemyEclDispatcher.cpp": [
+              "src/EclVm.hpp",
+              "src/Enemy.hpp",
+              "src/EnemyLaser.hpp",
+              "src/EnemySoundQueue.hpp",
+              "src/Gui.hpp",
+              "src/Main.hpp",
+              "src/Rng.hpp"
+            ],
+            "src/EnemyGameState.hpp": [],
+            "src/EnemyLaser.hpp": [
+              "src/AnmManager.hpp",
+              "src/Player.hpp"
+            ],
+            "src/EnemySoundQueue.hpp": [],
+            "src/FileSystem.hpp": [],
+            "src/GameErrorContext.hpp": [],
+            "src/GameScoreState.hpp": [],
+            "src/Gui.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/GuiScore.hpp": [],
+            "src/Main.hpp": [
+              "src/AnmManager.hpp"
+            ],
+            "src/Player.hpp": [],
+            "src/PlayerCollision.cpp": [
+              "src/Player.hpp",
+              "src/PlayerCollision.hpp"
+            ],
+            "src/PlayerCollision.hpp": [],
+            "src/Rng.hpp": []
+          },
+          "external_toolchain_headers": [
+            "limits.h",
+            "math.h",
+            "new",
+            "stdarg.h",
+            "stddef.h",
+            "stdio.h",
+            "stdlib.h",
+            "string.h",
+            "windows.h"
+          ],
+          "files": {
+            "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+            "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+            "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+            "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+            "src/BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+            "src/BulletRuntime.cpp": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+            "src/BulletTransform.cpp": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+            "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+            "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+            "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+            "src/Enemy.cpp": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+            "src/Enemy.hpp": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+            "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+            "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+            "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+            "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+            "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+            "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+            "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+            "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+            "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+            "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+            "src/Player.hpp": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+            "src/PlayerCollision.cpp": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+            "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+            "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+          },
+          "scope": "All literal project includes, including conditional branches. SDK header closure remains toolchain identity, not project-source closure."
+        },
+        "source_include_closure_scope": "source_include_closure describes unchanged production baseline; candidate_source_include_closure describes sole overlay. EnemySoundQueue.hpp is unchanged, already among all83 source pins and existing26-file closure.",
+        "target_sound_evidence": {
+          "command_id": "repository-command:0331816d58e84464b04f13c4772f43b2",
+          "receipt_sha256": "1c54e0cdf4aa8ef8a431a134e08833d42c1c6af72ae7a858d632a4303e3203da",
+          "remaining_limits": [
+            "No universal action-entry or whole-function equivalence proof.",
+            "Ordering and callee-clobber obligations remain.",
+            "No generated-machine sound/NaN semantic proof or execution.",
+            "Ordinary normal-TU member linkage does not establish target private ABI."
+          ],
+          "scope": "Sample ID/signed/index predicates and Cue current-record+8 freshness; bounded evidence sufficient for isolated experiment only"
+        }
+      },
+      "manifest_sha256": "0bf27bd36cf55044bcd12a38f00fa3b3b3698654ebba3532aed95121135114d8",
+      "overlay_sha256": "824eb6a3a14fe140168ed1146f4aff7ece5bbc914639934ae35850f0ecdacccc",
+      "overlay_splices": [
+        {
+          "end": 23,
+          "replacement": ".hpp\"\n#include \"EnemySoundQueue",
+          "start": 23
+        },
+        {
+          "end": 283,
+          "replacement": "uns",
+          "start": 281
+        },
+        {
+          "end": 284,
+          "replacement": "gne",
+          "start": 284
+        },
+        {
+          "end": 297,
+          "replacement": "char g_Main",
+          "start": 286
+        },
+        {
+          "end": 311,
+          "replacement": "Ow",
+          "start": 302
+        },
+        {
+          "end": 321,
+          "replacement": "er[0x52",
+          "start": 312
+        },
+        {
+          "end": 342,
+          "replacement": "0]",
+          "start": 322
+        },
+        {
+          "end": 1628,
+          "replacement": "",
+          "start": 1622
+        },
+        {
+          "end": 1691,
+          "replacement": "",
+          "start": 1685
+        },
+        {
+          "end": 1801,
+          "replacement": "",
+          "start": 1795
+        },
+        {
+          "end": 1808,
+          "replacement": ">=",
+          "start": 1807
+        },
+        {
+          "end": 1898,
+          "replacement": "",
+          "start": 1816
+        },
+        {
+          "end": 2009,
+          "replacement": ";\n            else\n                this->exStates[1].value1 = requestedAngle",
+          "start": 2009
+        },
+        {
+          "end": 2325,
+          "replacement": "reinterpr",
+          "start": 2321
+        },
+        {
+          "end": 2327,
+          "replacement": "_cast<EnemySoundQueueView *>(g_MainSoundOwner)->\n                ",
+          "start": 2327
+        },
+        {
+          "end": 2347,
+          "replacement": "Sample",
+          "start": 2337
+        },
+        {
+          "end": 2374,
+          "replacement": "",
+          "start": 2371
+        },
+        {
+          "end": 2814,
+          "replacement": "reinterpr",
+          "start": 2810
+        },
+        {
+          "end": 2816,
+          "replacement": "_cast<EnemySoundQueueView *>(g_MainSoundOwner)->\n                ",
+          "start": 2816
+        },
+        {
+          "end": 2836,
+          "replacement": "Sample",
+          "start": 2826
+        },
+        {
+          "end": 2863,
+          "replacement": "",
+          "start": 2860
+        },
+        {
+          "end": 3128,
+          "replacement": "",
+          "start": 3119
+        },
+        {
+          "end": 3194,
+          "replacement": "",
+          "start": 3185
+        },
+        {
+          "end": 3307,
+          "replacement": "",
+          "start": 3298
+        },
+        {
+          "end": 3314,
+          "replacement": ">=",
+          "start": 3313
+        },
+        {
+          "end": 3407,
+          "replacement": "",
+          "start": 3322
+        },
+        {
+          "end": 3518,
+          "replacement": ";\n            else\n                this->exStates[3].value1 = requestedAngle",
+          "start": 3518
+        },
+        {
+          "end": 5349,
+          "replacement": "reinterpr",
+          "start": 5345
+        },
+        {
+          "end": 5351,
+          "replacement": "_cast<EnemySound",
+          "start": 5351
+        },
+        {
+          "end": 5356,
+          "replacement": "View *>(g_Main",
+          "start": 5356
+        },
+        {
+          "end": 5370,
+          "replacement": "Ow",
+          "start": 5361
+        },
+        {
+          "end": 5372,
+          "replacement": "er)->",
+          "start": 5371
+        },
+        {
+          "end": 5385,
+          "replacement": "QueueSoundCue(",
+          "start": 5385
+        }
+      ],
+      "runner_sha256": "cb12e386279dcd9b35dddc44cd4ae814759c15ea51cb84ee4be417d70d610700",
+      "runner_splices": [
+        {
+          "end": 273,
+          "replacement": "7",
+          "start": 270
+        },
+        {
+          "end": 282,
+          "replacement": "36f633126",
+          "start": 275
+        },
+        {
+          "end": 286,
+          "replacement": "86100",
+          "start": 283
+        },
+        {
+          "end": 288,
+          "replacement": "3920",
+          "start": 288
+        },
+        {
+          "end": 289,
+          "replacement": "7ab8",
+          "start": 289
+        },
+        {
+          "end": 291,
+          "replacement": "4cd33844",
+          "start": 291
+        },
+        {
+          "end": 310,
+          "replacement": "",
+          "start": 292
+        },
+        {
+          "end": 994,
+          "replacement": "",
+          "start": 989
+        },
+        {
+          "end": 995,
+          "replacement": "tcg",
+          "start": 995
+        },
+        {
+          "end": 1265,
+          "replacement": "824eb6a3",
+          "start": 1264
+        },
+        {
+          "end": 1267,
+          "replacement": "4fe140168e",
+          "start": 1267
+        },
+        {
+          "end": 1277,
+          "replacement": "11",
+          "start": 1268
+        },
+        {
+          "end": 1279,
+          "replacement": "f4aff7ece5bbc9",
+          "start": 1279
+        },
+        {
+          "end": 1281,
+          "replacement": "46",
+          "start": 1280
+        },
+        {
+          "end": 1284,
+          "replacement": "934ae3585",
+          "start": 1283
+        },
+        {
+          "end": 1289,
+          "replacement": "f",
+          "start": 1285
+        },
+        {
+          "end": 1295,
+          "replacement": "",
+          "start": 1292
+        },
+        {
+          "end": 1308,
+          "replacement": "",
+          "start": 1296
+        },
+        {
+          "end": 1311,
+          "replacement": "",
+          "start": 1309
+        },
+        {
+          "end": 1318,
+          "replacement": "",
+          "start": 1313
+        },
+        {
+          "end": 1328,
+          "replacement": "c",
+          "start": 1319
+        },
+        {
+          "end": 1351,
+          "replacement": "72aa",
+          "start": 1351
+        },
+        {
+          "end": 1352,
+          "replacement": "6821fdae7f35482a30fcfe8abbd48b075a7548",
+          "start": 1352
+        },
+        {
+          "end": 1356,
+          "replacement": "f593",
+          "start": 1353
+        },
+        {
+          "end": 1359,
+          "replacement": "22e9ad2ab1",
+          "start": 1358
+        },
+        {
+          "end": 1363,
+          "replacement": "1",
+          "start": 1360
+        },
+        {
+          "end": 1375,
+          "replacement": "",
+          "start": 1364
+        },
+        {
+          "end": 1415,
+          "replacement": "",
+          "start": 1376
+        },
+        {
+          "end": 3404,
+          "replacement": "')\n require(m['experimental_graph']=={'source':'src/BulletRuntime.cpp','support_sources':SUPPORT,'normal_support_sources':[],'entry_symbol':ENTRY,'profile':PROFILE,'link_profile':LINK},'experimental graph drift",
+          "start": 3404
+        },
+        {
+          "end": 12048,
+          "replacement": "checked_windows_path(path,environment):\n require(not any(k in os.environ for k in ('WINE','WINESERVER','WINELOADER')),'Wine override')\n wp=P('/usr/bin/winepath');require(str(wp.resolve())=='/usr/lib/wine/wineapploader' and sha(wp.resolve())=='3e3fa1050f95b39cf90e21f03e6e8cda4415a480db696719ef137e3c7a86bb54','winepath identity')\n # Keep wrapper argv0; bound output on disk instead of exposing it.\n import tempfile\n with tempfile.TemporaryFile() as output:\n  done=subprocess.run([str(wp),'-w',str(path.resolve())],env=environment,stdout=output,stderr=subprocess.DEVNULL,timeout=5)\n  output.seek(0);raw=output.read(8193)\n require(done.returncode==0 and len(raw)<=8192,'winepath failure')\n value=raw.decode('ascii').strip().replace('\\r','');expected='Z:'+str(path.resolve()).replace('/','\\\\')\n require(bool(value) and '\\n' not in value and '\\x00' not in value and value.lower()==expected.lower(),'winepath empty or wrong path')\n return value\n\n\ndef ",
+          "start": 12048
+        },
+        {
+          "end": 13652,
+          "replacement": "previous_windows_path=l.windows_path\n  try:\n   l.windows_path=checked_windows_path\n   ",
+          "start": 13652
+        },
+        {
+          "end": 13811,
+          "replacement": "])\n  finally:l.windows_pa",
+          "start": 13811
+        },
+        {
+          "end": 13812,
+          "replacement": "h=p",
+          "start": 13812
+        },
+        {
+          "end": 13817,
+          "replacement": "viou",
+          "start": 13814
+        },
+        {
+          "end": 13826,
+          "replacement": "_windows_pa",
+          "start": 13818
+        },
+        {
+          "end": 13843,
+          "replacement": "h",
+          "start": 13827
+        },
+        {
+          "end": 14533,
+          "replacement": ",StopIteration",
+          "start": 14533
+        },
+        {
+          "end": 15391,
+          "replacement": "_valid']=False;out['canonical_acceptance']=False\n  out['experimental_graph",
+          "start": 15391
+        },
+        {
+          "end": 17225,
+          "replacement": ",'comparison_scope':'experimental_artifact_full885_only','canonical_acceptance':False",
+          "start": 17225
+        },
+        {
+          "end": 17226,
+          "replacement": "\n require(v.get('canonical_acceptance',False) is False and v.get('baseline_valid',False) is False,'canonical acceptance forbidden for altered graph')",
+          "start": 17226
+        },
+        {
+          "end": 17851,
+          "replacement": "_valid','canonical_acceptance','experimental_graph",
+          "start": 17851
+        }
+      ]
+    },
     "r001": {
       "manifest_remove": [],
       "manifest_replace": {

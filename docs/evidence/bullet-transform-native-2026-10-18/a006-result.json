@@ -1,0 +1,135 @@
+{
+  "code_table_breakdown": "1445 decoded instruction bytes +148 classified table bytes +3 unclassified bytes; static model only",
+  "command_finished_at": "2026-10-18T09:00:22.954048+00:00",
+  "command_id": "repository-command:293309cd283d43b39757be0086b97ac2",
+  "command_started_at": "2026-10-18T08:59:53.368111+00:00",
+  "exactness_credit": false,
+  "receipt_sha256": "4d65203b87d6f8f28fab25c57123a690dd64110b2ff1c97dbc46e7502e3a47db",
+  "result": {
+    "acceptance_authority": "none",
+    "artifact_sha256": {
+      "image": "0c088ba2713a559cccacbe9c94bec8da385226952c8bb11a2cc5a52f561b93e4",
+      "map": "f1cae3e21b663a7c6dc852bb60ccbbbde911ed39f0b989cf6b847dc55eac460e",
+      "pdb": "dbcc5b40358bf070e923150b55bb31043142eca1cdea0a5be2ad8d64de1c4a66"
+    },
+    "base_commit": "75536f63312688610002392067ab8604cd33844b",
+    "baseline_valid": true,
+    "build_success": true,
+    "cold_link_calls": 1,
+    "elapsed_seconds": 25.32,
+    "guard": {
+      "compared_size": 885,
+      "exit_ok": true,
+      "image_sha256": "0c088ba2713a559cccacbe9c94bec8da385226952c8bb11a2cc5a52f561b93e4",
+      "matched_bytes": 885,
+      "matched_compared_bytes": 885,
+      "normalization_complete": true,
+      "raw_equal": false,
+      "result": "exact",
+      "size": 885
+    },
+    "manifest_sha256": "62c65f42d5d3b62803025712b41012f15576a86e81bee8bdb82c211567840328",
+    "object_sha256": {
+      "source.ltcg.obj": "b449f121e347497494198692fb5596a435a44871cffa6442f444de23b908ba35",
+      "support-00-BulletManager.ltcg.obj": "fae7fb1ccf8498998902a1246b6809abda275cd4bcfbcf796018df6df12a378c",
+      "support-01-BulletTransform.normal.obj": "b9799dc2fbf84b15869d0758bc656f650439154a7149a01b2741b5eb89677046",
+      "support-02-PlayerCollision.ltcg.obj": "e775f7316ff9902448548d11f540b369218efde42cd9fb1c6fe759dd08908694",
+      "support-03-AnmManager.ltcg.obj": "f45a7ca85ff498b23ce2c25df57f47e265eebe3137dea31162bb4d6eb1628dac",
+      "support-04-EnemyEclDispatcher.ltcg.obj": "50d6d1e4f24b3807a1554993c2ae1d7447a3db61d10ece19b391fe7ed0815f55",
+      "support-05-Enemy.ltcg.obj": "fb93729564b4d5547aa078c6cb81792f361ab86b833f9c5ab95be5584e70a484"
+    },
+    "overlay_sha256": {
+      "src/BulletTransform.cpp": "e698e713a6f3f7e069970090e09c515ce9d64b3011bdfdd73ca046ea82b65f9e"
+    },
+    "owners": {
+      "runtime_guard": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "d1fe8601b9f3e2d742b5f35a99e88e63a5d7096cb23a28dc92830c1aece47853",
+        "size": 885,
+        "size_equal": true,
+        "target_size": 885
+      },
+      "transform": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "f570270d682599a17e29e90025ff2dd32a3690a66b4d3949bb600fc38048e41e",
+        "size": 1596,
+        "size_equal": false,
+        "target_size": 1454
+      }
+    },
+    "postrun_pins_valid": true,
+    "process_group_terminated": true,
+    "production_clean": true,
+    "resource_policy": {
+      "address_space": "inherit_unlimited_without_setrlimit",
+      "cpu_affinity_count": 1,
+      "cpu_seconds": 120,
+      "nice_increment": 10,
+      "wall_seconds": 150
+    },
+    "restart_allowed": false,
+    "runner_sha256": "3b839cd2ea2421b73b0b9ff98663924894f73aa196a56e21df3c8f298d51bee6",
+    "runtime_executed": false,
+    "stage": "complete",
+    "state": "completed",
+    "transform_exactness_tested": false,
+    "unresolved_count": 203
+  },
+  "runtime_execution": false,
+  "source_status": "isolated-unadopted",
+  "structure": {
+    "alias_census_status": "pending independent alias census",
+    "all_owner_bytes_classified": false,
+    "classified_table_byte_count": 148,
+    "collector_sha256": "454e8e095e052309b47ac561ccd0f1ca4f0a12877eb5b7c7044b85d676ef44a0",
+    "command_id": "repository-command:b5ac45dd9c9d43839fb0ee2cda5f560b",
+    "complete_owner_sha256": "f570270d682599a17e29e90025ff2dd32a3690a66b4d3949bb600fc38048e41e",
+    "decoded_instruction_byte_count": 1445,
+    "direct_callee_census": {
+      "anchor_source_names_resolved": false,
+      "callee_bodies_inspected": false,
+      "direct_call_instruction_count": 16,
+      "exactness_credit": "none",
+      "generated_anchor_direct_call_count": 0,
+      "indirect_call_instruction_count": 0,
+      "literal_map_symbol_call_counts_unordered": {
+        "?EnemyAngleFromPlayer@@YAMPAUPlayer@@PBUPlayerFloat3@@@Z": 2,
+        "?EnemyCancelBulletRecord@@YAIPAE@Z": 2,
+        "?FromAngleMagnitude@AnmFloat3View@@QAEXMM@Z": 1,
+        "?InitializeForLoadedScript@AnmVmView@@QAEXPAUAnmLoadedView@@H@Z": 1,
+        "?SetCurrent@AnmVmTimerView@@QAEXH@Z": 6,
+        "?SpawnBulletPattern@BulletManagerView@@QAEHPAUBulletSpawnDescriptorView@@@Z": 1
+      },
+      "no_call_order_or_sites_exported": true,
+      "status": "PARTIAL_LITERAL_MAP_CENSUS",
+      "unresolved_or_aliased_direct_call_count": 3
+    },
+    "dynamic_reachability_proved": false,
+    "exactness_credit": "none",
+    "full_owner_cfg_closed_under_model": true,
+    "helper_absence_metadata": {
+      "all_same_object_code_contributions_uniquely_map_attributed": true,
+      "attributable_exact_helper_map_pdb_owner_count": 0,
+      "callee_bodies_inspected": false,
+      "callee_identity_census_still_required": true,
+      "caller_and_helper_sizes_not_combined": true,
+      "caller_complete_normal_coff_owner_metadata_agrees": true,
+      "corresponding_named_callee_absence_proved": false,
+      "exact_helper_map_symbol_count": 0,
+      "exact_helper_normal_coff_symbol_count": 0,
+      "exactness_credit": "none",
+      "full_named_pdb_symbol_index_parsed": false,
+      "general_semantic_helper_absence_proved": false,
+      "same_normal_object_code_contribution_count": 1,
+      "status": "QUALIFIED_EXACT_NAMED_HELPER_OWNER_ABSENT"
+    },
+    "owner_attribution_complete": true,
+    "owner_byte_count": 1596,
+    "receipt_sha256": "fe9f2838e56a4903f392841469748b3d0a1de257f3ef482dc90a75ea1aa8f180",
+    "runtime_executed": false,
+    "unclassified_bytes_are_not_assumed_data_or_fill": true,
+    "unclassified_owner_byte_count": 3
+  }
+}

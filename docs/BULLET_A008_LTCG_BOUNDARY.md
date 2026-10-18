@@ -1,0 +1,13 @@
+# A008 LTCG boundary: failed experimental comparison
+
+Actual repository-command:1ac461ce021d419c891856711c933ce2 completed one isolated cold link, but the experimental full885 comparison failed: complete runtime owner884 rather than885; experimental_graph_valid=false, canonical_acceptance=false and baseline_valid=false. Orchestration completed/exit0 records collection completion, not experiment success.
+
+Complete transform owner1612 has authoritative whole-contribution attribution to support-01-BulletTransform.ltcg.obj. No transform exactness comparison, code/table breakdown or generated execution is claimed. Neither1612 nor its proximity to any target span establishes matching. The prospective target1604 span is not a proven whole PDB owner. No size-based acceptance, cropping or owner substitution is permitted.
+
+Source824e is identical to A007. The only compile-graph change removes Transform from normal_support_sources; primary, entry, ordered supports, profile and resources remain fixed. The original canonical config/unit stays pinned separately. The same full885 normalized descriptor was applied to fresh experimental artifacts; even a pass would not confer acceptance under the unchanged canonical normal-support graph. This actual experiment failed that comparison.
+
+The source and graph are unadopted. Production remains75536f63312688610002392067ab8604cd33844b/raw72aa. Clean production and postrun pins passed. Existing A006/A007 packets and source/config are preserved. No further build, profile/TU permutation, functional fix or native analysis is authorized by this archive. The observed runtime884 and transform1612 do not identify a causal instruction, private ABI, semantic equivalence or generated-machine NaN behavior.
+
+Future production source/config adoption requires explicitly reviewed configuration and validation of all four affected units: bullet-runtime-update885 and player-collision-check316 in the RuntimeUpdate graph; bullet-update-horizontal-wrap148 and bullet-update-polar-acceleration209 in the BulletHorizontalWrap graph. No extra builds are authorized now.
+
+The compact sanitized result and hash-checked recovery-history recipe retain reproducibility without native objects/images/PDBs or full duplicated runners/source. Reconstruction uses immutable A003 inputs only, never current production source. Prior five recipes remain unchanged. Historical execution_ready is provenance of a completed one-shot authorization, not permission to rerun. Source/host semantics, bounded target predicates and owner measurements do not prove generated-machine semantics; action-entry/order/callee-clobber limitations remain.

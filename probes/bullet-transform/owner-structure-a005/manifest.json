@@ -1,0 +1,53 @@
+{
+  "capstone_version": "5.0.6",
+  "contains_intermediate_collectors": false,
+  "contains_native_payloads": false,
+  "executed_source_frozen": true,
+  "files": {
+    "FINDINGS.md": {
+      "sha256": "dfab11d0962ba7330a95d87193582761cbf646a8b30645fca8a690df4b0dfb8c",
+      "size": 3550
+    },
+    "SCOPE.md": {
+      "sha256": "47b3200a4bd5bcac94a607baf4f5adc718ecdbad3090fb4cc0c6b92825be1f7a",
+      "size": 3067
+    },
+    "remote-final-receipt.json": {
+      "sha256": "b49e5d59e438ab0b371cd86ac2f4488cff2a8ec60ad1f99ded5784b5d347ee3e",
+      "size": 5561
+    },
+    "replay_owner_structure.py": {
+      "sha256": "192fb613360eb374453a2fbc617b34e0245656eec215ee61160b5fce8cfd8fe8",
+      "size": 39103
+    },
+    "test_replay_owner_structure.py": {
+      "sha256": "d9285dbd749d8edcbd0f4c6e8cc215a2bc49b25db2eccd54f368db039db59578",
+      "size": 33212
+    }
+  },
+  "package_kind": "source-only-final-replay-with-sanitized-receipt",
+  "parent_execution": {
+    "caller_and_helper_sizes_not_combined": true,
+    "classified_table_byte_count": 148,
+    "collector_sha256": "192fb613360eb374453a2fbc617b34e0245656eec215ee61160b5fce8cfd8fe8",
+    "command_id": "repository-command:6d89607bee1146c1a3b09e84078f8193",
+    "exactness_credit": "none",
+    "exit_code": 0,
+    "head": "75536f63312688610002392067ab8604cd33844b",
+    "helper_body_sliced_decoded_or_hashed": false,
+    "helper_complete_owner_byte_count": 68,
+    "helper_reachable_direct_call_instruction_count": 1,
+    "layout_predicates": {
+      "instruction_bytes_form_contiguous_owner_prefix": true,
+      "pointer_table_precedes_remap": true,
+      "table_bytes_form_single_contiguous_trailing_suffix": true,
+      "tables_end_at_owner_end": true
+    },
+    "owner_byte_count": 1540,
+    "reachable_instruction_byte_count": 1392,
+    "state": "completed",
+    "unclassified_owner_byte_count": 0
+  },
+  "remote_execution_by_author": false,
+  "synthetic_test_count": 126
+}

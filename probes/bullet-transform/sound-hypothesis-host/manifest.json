@@ -1,0 +1,19 @@
+{
+  "source_identity": "sha256 after CRLF-to-LF only; reject remaining CR",
+  "sources": {
+    "BulletTransform.cpp": "824eb6a3a14fe140168ed1146f4aff7ece5bbc914639934ae35850f0ecdacccc",
+    "BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+    "EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8"
+  },
+  "artifacts_raw_sha256": {
+    "run.py": "2ede42d8373eabda23c545099f267611a0be5f0cd2574fac011ee4306c0e0fcd",
+    "harness.cpp": "f4faf55000a8ec80520ef18f49bc380e7cdf32eb3dbe3a3a6bdf5b8bc9d32448",
+    "README.md": "312d26760a7071ab9f58468a13e7e93e50ff87bb0917c11318d2bb187fb0de43",
+    ".gitattributes": "df29ed0dab6de040a422667cdfd75f283b430e8e170491b5404f9caf27071b62"
+  },
+  "host_sound_header_policy": {
+    "remove_exact_token": "__declspec(noinline)",
+    "count": 2,
+    "retain_layout_assertion": true
+  }
+}

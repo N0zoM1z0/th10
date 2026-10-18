@@ -1,0 +1,15 @@
+# Final source-only replay contract
+
+Contents: one final collector, one standalone synthetic test module, findings, this contract and a SHA256 manifest. No intermediate collectors, native artifacts, instruction listings, decompilation, ordered traces or native payloads are packaged.
+
+The collector preserves A005 image/MAP/PDB/producing-object/source/manifest/runner/parser/Capstone pins and clean production HEAD 75536f63312688610002392067ab8604cd33844b. It replays the already approved complete 1540-byte owner analysis. The exact 128-byte inline remap can derive a pointer span up to 20 bytes; larger spans produce a bounded proposal without reading pointer contents. All table spans must remain in-owner and disjoint from code and other contributions. Full CFG and dispatch-guard revalidation use all recovered edges. No fill interpretation is performed.
+
+For this final replay, all prior closure counts and table/code hashes must match before the added helper metadata step. Any mismatch or ambiguity fails closed.
+
+The only new question is whether a reached direct near CALL instruction in that closed caller CFG targets the exact static source helper symbol ?BulletResolveTransformAngle@@YAMPAUBulletRuntimeView@@M@Z. The helper must have one static MAP row, no same-start alias or interior function, one complete positive PDB contribution, unique producer-module identity, the same exact pinned normal object as the caller, matching MAP/PE address, full raw/virtual coverage, and no contribution/section overlap. Size is bounded at 4096 bytes for metadata parsing; no helper instruction bytes are sliced, decoded or hashed. Whole-image identity hashing remains the existing input pin, not helper-body analysis. Direct calls into the helper interior fail closed. Indirect calls do not establish helper identity.
+
+Only sanitized fixed symbol/owner metadata, aggregate counts, hashes and gates leave the remote. No addresses, call sites, register/instruction sequences, table values or body bytes leave it. No compiler/linker/profile/TU sweeps, native runtime execution, source changes, owner cropping, helper-size sums or acceptance/scoring changes are permitted.
+
+The parent alone runs the independently reviewed exact source through the pinned repository Python with --repo /home/pentester/coding/codex_ida/th10-reconstruction/th10. The 126 standalone tests use authored synthetic x86 and fabricated metadata only; run them with Capstone 5.0.6 available. They include negative controls for instruction-form false positives, unreachable calls, indirect calls, helper interior calls, symbol/contribution ambiguity, complete owner extents and a helper-body reader that always rejects access.
+
+Four additional layout predicates report whether instruction bytes form a contiguous owner prefix, table bytes form one contiguous trailing suffix, the pointer table precedes the remap, and tables end at the owner end. They are aggregate accounting booleans only, with no addresses or offsets. They do not authorize configuration, normalization or acceptance changes.
