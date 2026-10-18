@@ -1,0 +1,701 @@
+{
+  "base_commit": "d78a14376f89026616d6d3d0f88611ff6ba3531b",
+  "canonical_config_sha256": "43957b39b563ed6f3660dbd32f93d0e879cbe564abb5499ce30f5364520b58cb",
+  "censuses": {
+    "anatomy": {
+      "command_id": "repository-command:1599642966ff4c19aa9eeb4b6d5e340a",
+      "packet": "enemy-spell-anatomy-a001",
+      "probe_sha256": "233757453ebd8df3c66a5820942b6e9fa991d3e0b24591f8c1a91837eece6f6b",
+      "receipt_sha256": "b5f1fe0dc0535a5320717b479806a61ba93adc13acff1f5102a1a445da0080b6"
+    },
+    "control_closure": {
+      "command_id": "repository-command:8e88e6f3c3264165a89cbe46188a5f67",
+      "controls": {
+        "branch_destinations": {
+          "external_helper_unknown": 0,
+          "helper_interval": 0,
+          "internal_start": 81,
+          "other_external": 0,
+          "owner_nonstart": 0
+        },
+        "call_destinations": {
+          "external_helper_unknown": 0,
+          "helper_interval": 0,
+          "internal_start": 0,
+          "other_external": 41,
+          "owner_nonstart": 0
+        },
+        "direct_branches": 81,
+        "direct_calls": 41,
+        "exception_and_return_target_safety_verified": false,
+        "external_call_contracts_verified": false,
+        "gap_unreachable_verified": false,
+        "indirect_calls": 0,
+        "inlining_verified": false,
+        "no_direct_transfer_to_named_helper": true,
+        "ordinary_ret16": 1,
+        "other_indirect_jumps": 0,
+        "relative_field_extra_count": 0,
+        "relative_field_missing_count": 0,
+        "semantic_operation_coverage_verified": false,
+        "syntactic_control_checks_pass": true,
+        "unclassified_instruction_forms": 0,
+        "unsupported_branch_forms": 0,
+        "unsupported_call_forms": 0,
+        "unsupported_other_controls": 0,
+        "unsupported_return_forms": 0,
+        "unvalidated_field_count": 0,
+        "validated_switch_jumps": 1
+      },
+      "helper": {
+        "helper_interval_metadata_bound": true,
+        "helper_size": 75,
+        "named_symbol_count": 1
+      },
+      "packet": "enemy-spell-control-closure-a007",
+      "probe_sha256": "68a6767558eac3c1cf99c1c612ade2669a0640752a9aaa21c962c9ef3907a77d",
+      "receipt_sha256": "c5b901d93879a715eb7a450386db266122b1326d1bdb2d127c528d80906f1d8d"
+    },
+    "lifecycle_inventory": {
+      "command_id": "repository-command:13c8d73310f94aadb7a2d99796d3dd6c",
+      "comparison": {
+        "candidate_only_field_keys": 101,
+        "candidate_validated_field_difference_bytes": 391,
+        "compared_bytes": 2432,
+        "field_key_sets_equal": false,
+        "linkage_binding_complete": false,
+        "mutually_corresponding_field_difference_bytes": 22,
+        "normalization_tested": false,
+        "outside_candidate_validated_field_difference_bytes": 1242,
+        "outside_mutually_corresponding_field_difference_bytes": 1611,
+        "positional_field_classification_complete": false,
+        "raw_different_bytes": 1633,
+        "raw_equal": false,
+        "raw_equal_bytes": 799,
+        "target_only_field_keys": 34,
+        "unvalidated_field_difference_bytes": 0
+      },
+      "helper": {
+        "direct_call_fields_to_named_symbol": 0,
+        "inlining_verified": false,
+        "named_map_symbol_count": 1,
+        "named_symbol_absent": false,
+        "operation_coverage_verified": false,
+        "same_object_contribution_count": 1
+      },
+      "packet": "enemy-spell-lifecycle-inventory-a006",
+      "probe_sha256": "5763a07cd9d344d7edda37448d117128d6cafcc43cbac2ebd2cc7d27f30bbd6a",
+      "receipt_sha256": "fff7d2d0c4acd6f81032387a7c4205f192319697edd3c7d53d173591b7d65226"
+    },
+    "operand": {
+      "command_id": "repository-command:e5de8fb043ae4d179ee08dc48911ca83",
+      "packet": "enemy-spell-operand-shape-a004",
+      "probe_sha256": "46471423e0ac33a67c0d03e9e7b3e9a7999cd5be2f674d28386ce95216ef088e",
+      "receipt_sha256": "a351e5747802da78be0854073b3cb2e9df71b944f416a3542c39b8bf758cbb68"
+    },
+    "prefix": {
+      "command_id": "repository-command:febaf3442bbe45ed892ce0d0ecc2b492",
+      "packet": "enemy-spell-prefix-census-a003",
+      "probe_sha256": "35888edc099815f1104db3b6f8e80c12745c5400a6bcb2574605e5b0105a4a58",
+      "receipt_sha256": "533100fc5975f78d97209423d1bfb4de17aa12d85b4bc8a1302ab989350e4b01"
+    }
+  },
+  "graph": {
+    "artifact_kind": "linked-pe",
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "existing_units": [
+      "enemy-mark-pending-interrupt",
+      "enemy-sound-queue-sample",
+      "enemy-sound-queue-cue",
+      "enemy-drop-vector-from-angle-radii",
+      "enemy-resolve-int-argument",
+      "enemy-enable-shield"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "output_dir": "build/match-linked/EnemyDispatcherHelpers",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp"
+    ]
+  },
+  "hypotheses": {
+    "cursor": {
+      "baseline_artifacts": {
+        "image": "3b53785dc9a996e7d3a84943aae19b3fd0e55802e48f1a620bdbf38ea525f074",
+        "map": "b78d2c611889bc36c1f3a186b16478f543313ebb3eef4e7d3caf6f113b2b1290",
+        "pdb": "5e28b366a458255fc8bf442fa1995e53bbf69313bdffa9b49f11f46b4a7cf1b9",
+        "source_object": "683583d701fcdd438827e31ca5d3e6791d3249e3b8d0d920719e6e27f4eef105",
+        "support_anm": "bb25ee7525089a52ad17e8e994b3d1f03773ac74b99e8bf8a8e49b4d7d82aa76",
+        "support_create": "3d378d7fb7c0bd955dae65267d6ac2a250e275b1e14bb77119f399719e4a604b",
+        "support_ecl": "8557c0943618878016876f94e5263e8c277b3b2954c626b94fee72e1dfd4c24b"
+      },
+      "baseline_owner": {
+        "sha256": "ef12912281cc2b8056dd8302156b32c94be3515206c2675ed2ccee9ecae60e56",
+        "size": 2476
+      },
+      "candidate_artifacts": {
+        "image": "4ea93e678060903038db962a2bad0c7de92e6d22c0ed1340586514622b6ea5f5",
+        "map": "48df01cc3f5e91499a9c567be7d01cc8ac8fed5e1db3e2c192a355e4bf59faff",
+        "pdb": "41b776d217e5ddd3c4270d944c45004ada37d25895fc13709424d328699cd494",
+        "source_object": "60eff27862af41e381bf51305c8add4fd4f242ba5a59f13838d3df4271479cad",
+        "support_anm": "7fa24eec4466f8070513c7de1a2598ff030a12d37a6f8c14a1d4480b2a1135f7",
+        "support_create": "3be74d94b33fbd4a25ce7247482c35880403b699d04dde590334b3ad5de4eb9b",
+        "support_ecl": "fb6e92066a0554381d912b828c13738bcd4d714f97086e9e5acdba76713e35e1"
+      },
+      "candidate_owner": {
+        "sha256": "a8d352e1e65787c3900fe83b2f2ae785a82f705b318458af14efd9b9bd0a8953",
+        "size": 2476
+      },
+      "command_id": "repository-command:ec46f29b0491450a84303262497ad486",
+      "manifest_sha256": "4495f7098694c6a24ce21d2c5bc62be419b76b6f2071a00ea029632203c8effe",
+      "owner_helper_sha256": "803c56bc5621154c3909c7d0d6a7493b9bf3afc512414c543da4715d44e977bc",
+      "packet": "enemy-spell-cursor-build-a004",
+      "raw_positional_differences": 65,
+      "receipt_sha256": "f3a3698bbef0db1f83d191c4dd775668da46cfbddad0f2b6dce3878ecf5eaa4c",
+      "runner_sha256": "d3d628e08829af55ad2b311f5c2d93b31942520e6b1a3dacece85c4a06377e2e",
+      "source_overlay": {
+        "baseline_sha256": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+        "candidate_sha256": "25b1d9b13d12d3a309cdc63fb6635d9be298040da947825c46663f223166dfa3",
+        "patch_sha256": "f18eb083485f6789119da01a9f3775a72d9537219031eed15033264ebb44ff38",
+        "path": "src/EnemyEclDispatcher.cpp"
+      }
+    },
+    "lifecycle": {
+      "baseline_raw_positional_differences": 555,
+      "baseline_unmatched_bytes": 44,
+      "candidate_artifacts": {
+        "image": "82b4f95260cdb979c05edb1652161cfe12c9cd7ff89fb45b8a1cf1576ef8dc5e",
+        "map": "77d4a25da5a16b911d9f01952793a0214cb49fbcf2ee79a64f99adcbbaa2aa4b",
+        "pdb": "9c780344bad57448e7ed3695494f406fdcdfe64f4a35824d10fd0a62c8522ec3",
+        "source_object": "b37091993142a5325744d6612e5c08264fc8060808e685f2553bf22041c92ca4",
+        "support_anm": "f79b22ac293c0dc2f84a39aae381ad2c7534636225cfa25df62f5d07da68225c",
+        "support_create": "289a7825382722f1330b7ae8124254d9356d6416fb0189dbe727379ff3fd9b8d",
+        "support_ecl": "1a8831fc4de2d2fa2a3e82a55e0e09b28091ddc2dbd8952562cc4d2626e6b89a"
+      },
+      "candidate_owner": {
+        "sha256": "7dc649cfb18c27f1e377d6636a0487fd42960855dfe56eecb13ef00f311ece5c",
+        "size": 2432
+      },
+      "command_id": "repository-command:51f6faec6ef14ae9b3d1e657b5eb2b34",
+      "manifest_sha256": "25812a17da09dd75d537d626dcfbb6c806512601de40ae5c0e9448799fb7e6b5",
+      "owner_helper_sha256": "803c56bc5621154c3909c7d0d6a7493b9bf3afc512414c543da4715d44e977bc",
+      "packet": "enemy-spell-stage-animation-build-a005",
+      "receipt_sha256": "d082935d2cea54f3f6fa19d08b7527fdb0cf9ac86128a363912867eb3bb96fed",
+      "runner_sha256": "497e7bb55e3fc7249d0f13fa351240f2c3e8bc30ccbbc0a8c5a59624c2830b6e",
+      "source_overlay": {
+        "baseline_sha256": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+        "candidate_sha256": "9f9c16093cebf99c958536c043a92ddefd7d3890b4179c7ac25ff19bc1cb7ca5",
+        "patch_sha256": "442d9314b009fe5cfd789b0d6ee898231eb24487d166cef85131d96a0bf045fa",
+        "path": "src/EnemyEclDispatcher.cpp"
+      }
+    },
+    "replay": {
+      "baseline_artifacts": {
+        "image": "3b53785dc9a996e7d3a84943aae19b3fd0e55802e48f1a620bdbf38ea525f074",
+        "map": "b78d2c611889bc36c1f3a186b16478f543313ebb3eef4e7d3caf6f113b2b1290",
+        "pdb": "5e28b366a458255fc8bf442fa1995e53bbf69313bdffa9b49f11f46b4a7cf1b9",
+        "source_object": "683583d701fcdd438827e31ca5d3e6791d3249e3b8d0d920719e6e27f4eef105",
+        "support_anm": "bb25ee7525089a52ad17e8e994b3d1f03773ac74b99e8bf8a8e49b4d7d82aa76",
+        "support_create": "3d378d7fb7c0bd955dae65267d6ac2a250e275b1e14bb77119f399719e4a604b",
+        "support_ecl": "8557c0943618878016876f94e5263e8c277b3b2954c626b94fee72e1dfd4c24b"
+      },
+      "baseline_owner": {
+        "sha256": "ef12912281cc2b8056dd8302156b32c94be3515206c2675ed2ccee9ecae60e56",
+        "size": 2476
+      },
+      "candidate_artifacts": {
+        "image": "d624f24ccae00c980ff713d5189297df1a39d9a9f3f69614789cd5eefc3197ec",
+        "map": "7c987740f14ff71bb6cfc211466fbde5b591c037c8c10797d838721f90a191d6",
+        "pdb": "54d9ee754748e7131b372cd1bb0c8bd0db7d33f39f6486b33dd07239fd1dcabc",
+        "source_object": "485b4e8b06e349390830e429f791c5a7d18312ea8c6ee5d2b76cc45ec8390989",
+        "support_anm": "3a818e4ec06c967c46171e52ab01acea13bb26bf4a8e5ff2cf06ebda9f59e3e5",
+        "support_create": "ef76b661a202591b1c1b4ce10c886d29eb3bd92c259ab8bb42aa17db81cc8fe0",
+        "support_ecl": "76119ca3e008686770f12f33646db5990ca2084aa29dd307f811ae006bc2e732"
+      },
+      "candidate_owner": {
+        "sha256": "ccd21fb6c3f58dc8d888ee2c46a414aadc02a3e0b37ffaa6da17e28cc44f24ed",
+        "size": 2476
+      },
+      "command_id": "repository-command:71d6e35bc40b47be93b3f747b95a1847",
+      "manifest_sha256": "d25b6d89307decce62349ecc10a96f907065246f3454f58cc959c3e019de6c57",
+      "owner_helper_sha256": "803c56bc5621154c3909c7d0d6a7493b9bf3afc512414c543da4715d44e977bc",
+      "packet": "enemy-spell-candidate-recovery-a003",
+      "raw_positional_differences": 5,
+      "receipt_sha256": "5a2d7c249f04ead5158ec20ea9adced0c714edf03b9f4c57026d7a5f4628abfa",
+      "runner_sha256": "a6ed7465a07b296a36716bac0a701e0c5bedb9fec3bf92d678b29d6e00b8f25f",
+      "source_overlay": {
+        "baseline_sha256": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+        "candidate_sha256": "252953dd73dc75fe04e2b2ad805de2113e23a9f38dbf76f81f24144f66de565b",
+        "patch_sha256": "1409fbf78a30074335e0c5ea00dae50380bfa9c149ceef72a4e8358a7dc4d3c8",
+        "path": "src/EnemyEclDispatcher.cpp"
+      }
+    }
+  },
+  "operand_limits": {
+    "generated_guard_binding_verified": false,
+    "linkage_classification_complete": false,
+    "semantic_complete": false,
+    "target_exactness_tested": false
+  },
+  "reference_review_sha256": "f14ddba7219e132f0427c4684323efdca2319000808ac71593ed44f01ed5874f",
+  "reproduction_files": {
+    "lifecyclecandidate.patch": "442d9314b009fe5cfd789b0d6ee898231eb24487d166cef85131d96a0bf045fa",
+    "reproduce_source.py": "0c5e1915ad822ffa8cce1e871f71e31ba8f06a200c230afa2bb4e11469dfe58f",
+    "test_source.py": "074d12224c2849b4a423966e283222e692a48fe1370cc4a14c91267d2bb513ee"
+  },
+  "schema": "enemy-spell-investigation-evidence-v1",
+  "source_inventory": {
+    "src/AnmManager.cpp": {
+      "mode": 33152,
+      "sha256": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+      "size": 215830
+    },
+    "src/AnmManager.hpp": {
+      "mode": 33152,
+      "sha256": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+      "size": 45752
+    },
+    "src/AnmRectangle.cpp": {
+      "mode": 33152,
+      "sha256": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b",
+      "size": 2783
+    },
+    "src/AnmRectangle.hpp": {
+      "mode": 33152,
+      "sha256": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+      "size": 894
+    },
+    "src/AnmVmCreate.cpp": {
+      "mode": 33152,
+      "sha256": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "size": 678
+    },
+    "src/AnmVmId.cpp": {
+      "mode": 33188,
+      "sha256": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "size": 3269
+    },
+    "src/AnmVmId.hpp": {
+      "mode": 33152,
+      "sha256": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "size": 894
+    },
+    "src/BulletManager.cpp": {
+      "mode": 33152,
+      "sha256": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+      "size": 25182
+    },
+    "src/BulletManager.hpp": {
+      "mode": 33152,
+      "sha256": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1",
+      "size": 10158
+    },
+    "src/BulletRuntime.cpp": {
+      "mode": 33152,
+      "sha256": "fd80dbabfa90524f4300eeaf7347e59febe5710589192416da2a3a71b6ac2def",
+      "size": 5780
+    },
+    "src/BulletTransform.cpp": {
+      "mode": 33152,
+      "sha256": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+      "size": 8184
+    },
+    "src/Chain.cpp": {
+      "mode": 33188,
+      "sha256": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
+      "size": 5348
+    },
+    "src/Chain.hpp": {
+      "mode": 33152,
+      "sha256": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+      "size": 1224
+    },
+    "src/D3d9View.hpp": {
+      "mode": 33188,
+      "sha256": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "size": 11799
+    },
+    "src/DecomphelpLeafAccessors.cpp": {
+      "mode": 33188,
+      "sha256": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+      "size": 253666
+    },
+    "src/DecomphelpLeafTypes.hpp": {
+      "mode": 33188,
+      "sha256": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+      "size": 1308
+    },
+    "src/Decompress.cpp": {
+      "mode": 33152,
+      "sha256": "bb26102d2b0db297123e7302a7110cb6d320243b8422c269468464d3566c10cc",
+      "size": 3230
+    },
+    "src/Decompress.hpp": {
+      "mode": 33152,
+      "sha256": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+      "size": 234
+    },
+    "src/EclVm.cpp": {
+      "mode": 33152,
+      "sha256": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+      "size": 36941
+    },
+    "src/EclVm.hpp": {
+      "mode": 33152,
+      "sha256": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+      "size": 6321
+    },
+    "src/Enemy.cpp": {
+      "mode": 33152,
+      "sha256": "6f1bea5905ae2f9871f8ae5a0703e3b7309d58689c402614a2f14db4e7a45ee5",
+      "size": 68962
+    },
+    "src/Enemy.hpp": {
+      "mode": 33152,
+      "sha256": "b2ef2f155861082af19c81b186f45c1bcf45496f887c96ca0d3dd5b47f8d5d4d",
+      "size": 20502
+    },
+    "src/EnemyCallback.cpp": {
+      "mode": 33152,
+      "sha256": "8d96765576c94e631db6c76178afa4c556b9a8d40cadb5f108f9cd5297103e4d",
+      "size": 4884
+    },
+    "src/EnemyEclDispatcher.cpp": {
+      "mode": 33152,
+      "sha256": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+      "size": 112944
+    },
+    "src/EnemyGameState.hpp": {
+      "mode": 33152,
+      "sha256": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+      "size": 365
+    },
+    "src/EnemyLaser.cpp": {
+      "mode": 33152,
+      "sha256": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+      "size": 30590
+    },
+    "src/EnemyLaser.hpp": {
+      "mode": 33152,
+      "sha256": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+      "size": 7391
+    },
+    "src/EnemyMotion.cpp": {
+      "mode": 33152,
+      "sha256": "c936446223176d9651f21608d7c3b080e8f9f0f5bbe06b803410a7d8d990fa83",
+      "size": 348
+    },
+    "src/EnemySoundQueue.hpp": {
+      "mode": 33152,
+      "sha256": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "size": 633
+    },
+    "src/FileSystem.cpp": {
+      "mode": 33152,
+      "sha256": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+      "size": 11034
+    },
+    "src/FileSystem.hpp": {
+      "mode": 33152,
+      "sha256": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "size": 882
+    },
+    "src/FrontEnd.cpp": {
+      "mode": 33152,
+      "sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+      "size": 152765
+    },
+    "src/FrontEnd.hpp": {
+      "mode": 33152,
+      "sha256": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+      "size": 11039
+    },
+    "src/GameEffectUpdate.hpp": {
+      "mode": 33152,
+      "sha256": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+      "size": 663
+    },
+    "src/GameErrorContext.cpp": {
+      "mode": 33188,
+      "sha256": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+      "size": 2177
+    },
+    "src/GameErrorContext.hpp": {
+      "mode": 33152,
+      "sha256": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "size": 340
+    },
+    "src/GameManager.cpp": {
+      "mode": 33152,
+      "sha256": "2a09b328a64e45f9f027bfe84b25b5800e21c5e59b7759a97d63925760ed9433",
+      "size": 27344
+    },
+    "src/GameScoreState.hpp": {
+      "mode": 33152,
+      "sha256": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "size": 1342
+    },
+    "src/GameStageDescriptor.hpp": {
+      "mode": 33152,
+      "sha256": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+      "size": 715
+    },
+    "src/GameStatistics.cpp": {
+      "mode": 33152,
+      "sha256": "60eb7f57910372a78e6d6bba45c22af8e758bc5114aaa8bb00faf7a43eb1f13b",
+      "size": 2304
+    },
+    "src/GameStatistics.hpp": {
+      "mode": 33152,
+      "sha256": "ae615e9a3982449e970883e2409ca1ef045192086ca9a84ad0ab94aadc6a20b6",
+      "size": 3679
+    },
+    "src/Gui.cpp": {
+      "mode": 33152,
+      "sha256": "f65128ba8708668362dc6f6cb98a30afdd7faf0e20431fe312e1375147f1c251",
+      "size": 93254
+    },
+    "src/Gui.hpp": {
+      "mode": 33152,
+      "sha256": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "size": 6635
+    },
+    "src/GuiDraw.cpp": {
+      "mode": 33152,
+      "sha256": "6ff7fd7d108ba74aa98ed5210592fbfc916a542f85fb12f5a75075c3ca3a03d7",
+      "size": 4357
+    },
+    "src/GuiMessage.cpp": {
+      "mode": 33152,
+      "sha256": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6",
+      "size": 4388
+    },
+    "src/GuiScore.hpp": {
+      "mode": 33152,
+      "sha256": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "size": 559
+    },
+    "src/Hint.cpp": {
+      "mode": 33152,
+      "sha256": "da5f937bf27a6424814a9aeacc67b09796c4b909870ba9f40258b6142d1133f3",
+      "size": 29288
+    },
+    "src/Hint.hpp": {
+      "mode": 33152,
+      "sha256": "34c36f65efd6b23091b07dd1e3ed87429a21fbea00c6492b9f7d3ef47de90f2f",
+      "size": 4153
+    },
+    "src/ItemManager.cpp": {
+      "mode": 33152,
+      "sha256": "373ea005be2a6dd7dbe25193afc803e52078a4dcdf51172b2d0bdf1b66d67faa",
+      "size": 29117
+    },
+    "src/ItemManager.hpp": {
+      "mode": 33152,
+      "sha256": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "size": 3219
+    },
+    "src/Lzss.cpp": {
+      "mode": 33152,
+      "sha256": "6a066b4eac947b11cd120a3daf5f43a659995af4048ea58836650b30657d6aaa",
+      "size": 7648
+    },
+    "src/Lzss.hpp": {
+      "mode": 33152,
+      "sha256": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+      "size": 730
+    },
+    "src/Main.cpp": {
+      "mode": 33152,
+      "sha256": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+      "size": 41318
+    },
+    "src/Main.hpp": {
+      "mode": 33152,
+      "sha256": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "size": 13194
+    },
+    "src/Midi.cpp": {
+      "mode": 33152,
+      "sha256": "159f3732b76a005abf72f3f26aef19d6a851ead016c5a70d3e967804efa3ae77",
+      "size": 2150
+    },
+    "src/PbgArchive.cpp": {
+      "mode": 33152,
+      "sha256": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+      "size": 8232
+    },
+    "src/PbgArchive.hpp": {
+      "mode": 33152,
+      "sha256": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+      "size": 2093
+    },
+    "src/PbgFile.cpp": {
+      "mode": 33152,
+      "sha256": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+      "size": 3750
+    },
+    "src/PbgFile.hpp": {
+      "mode": 33152,
+      "sha256": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+      "size": 1310
+    },
+    "src/Player.cpp": {
+      "mode": 33188,
+      "sha256": "a5a59afec4ebc184109e2afc5fdd19489029eff15279b349ac4d586d722a4407",
+      "size": 80324
+    },
+    "src/Player.hpp": {
+      "mode": 33152,
+      "sha256": "8969b24cfd14cfcfcdbaa1504968b0e9f56ea8b4972748de1e6bf65fada362ce",
+      "size": 18510
+    },
+    "src/PlayerCollision.cpp": {
+      "mode": 33152,
+      "sha256": "6da70647261562d942adf85ff9c314be809b52531325734705fdee843d767023",
+      "size": 1855
+    },
+    "src/PlayerCollision.hpp": {
+      "mode": 33188,
+      "sha256": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "size": 538
+    },
+    "src/RandomMath.cpp": {
+      "mode": 33188,
+      "sha256": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "size": 961
+    },
+    "src/ReplayChain.hpp": {
+      "mode": 33152,
+      "sha256": "ef270dea5745516565e0cfb533976f1cc71b9fad4b152780f43c8e3815774aa9",
+      "size": 1295
+    },
+    "src/ReplayManager.cpp": {
+      "mode": 33152,
+      "sha256": "4c9a5d49461fdaccab569458248ac7f9aac84e288436412a00659aedf64226f3",
+      "size": 27569
+    },
+    "src/ReplayManager.hpp": {
+      "mode": 33152,
+      "sha256": "d49d3e955be6fc0888cfef0fc38b7f94bbc838dc9c1c3f3dca4517799efeb17c",
+      "size": 8726
+    },
+    "src/ReplayTimingSource.hpp": {
+      "mode": 33152,
+      "sha256": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+      "size": 688
+    },
+    "src/ResFile.cpp": {
+      "mode": 33152,
+      "sha256": "0488cd5bf7846eaf592abf00558c93d797a7aa759aefae4cf773855a06d4fb8b",
+      "size": 3569
+    },
+    "src/ResFile.hpp": {
+      "mode": 33152,
+      "sha256": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+      "size": 1102
+    },
+    "src/ResultMenu.hpp": {
+      "mode": 33152,
+      "sha256": "4ae174c48a3ec3d2e8d7292294d3ee18e625de08774996556828fb160ad70610",
+      "size": 1857
+    },
+    "src/Rng.hpp": {
+      "mode": 33188,
+      "sha256": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "size": 843
+    },
+    "src/Sound.cpp": {
+      "mode": 33152,
+      "sha256": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+      "size": 33801
+    },
+    "src/SoundFormat.hpp": {
+      "mode": 33152,
+      "sha256": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+      "size": 483
+    },
+    "src/StageDraw.cpp": {
+      "mode": 33152,
+      "sha256": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+      "size": 15580
+    },
+    "src/StageLifecycle.cpp": {
+      "mode": 33152,
+      "sha256": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+      "size": 6333
+    },
+    "src/StageScript.cpp": {
+      "mode": 33152,
+      "sha256": "247be01c76616dc2ec7d97f370b6e8d3ffa643cdd45c113d493f8b6c73c1f061",
+      "size": 12616
+    },
+    "src/StageScript.hpp": {
+      "mode": 33152,
+      "sha256": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+      "size": 6312
+    },
+    "src/TextRenderer.cpp": {
+      "mode": 33152,
+      "sha256": "1a774fcace6aa5d5fc12b930d5f418e20bf0a90f6b8409e7ffcd664564b1676b",
+      "size": 16068
+    },
+    "src/TextRenderer.hpp": {
+      "mode": 33152,
+      "sha256": "1ef663d5b3c5e8d2b2e1abfc1090aea72a2fc56fba07228b56808f5a1a272efa",
+      "size": 2123
+    },
+    "src/TransitionEffect.cpp": {
+      "mode": 33152,
+      "sha256": "fed2d9f86eb17c1b4aa39b5e34ab68e2fe823f2b3ef0e49ad720a01074ce6591",
+      "size": 14030
+    },
+    "src/TransitionEffect.hpp": {
+      "mode": 33152,
+      "sha256": "28f133dad71a4055bb6ed741e1a8bb27eb606be15ccbc5c0bc06b213dd07e7f8",
+      "size": 1757
+    },
+    "src/ZWave.cpp": {
+      "mode": 33152,
+      "sha256": "8a0eafe895d9e4d7feb2b768907379890e96168a4bbcd85743791aeeab0935f3",
+      "size": 24851
+    }
+  },
+  "status": "parked-investigation-no-adoption",
+  "target_image_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_owner_sha256": "0a83aa9fdaa2f24183fe8bbb08caee04a6978631c0afba823a2dfcba7acf493e",
+  "tool_pins": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/compile-probe.sh": "775132a592ef142a8cc6ac9e3c23aee08e0f0d370caac14f4d3693eb62a0f9a4",
+    "scripts/linked_image.py": "58583c6241e0979288b0c4ce0a0e55f1ae2a178762d93743475d05518eff0354",
+    "scripts/ltcg_link.py": "3c7728e58d452760baa2ab076c16169e6b8a45fabbc35692b60493f08921f98b",
+    "scripts/run-headless-wine.sh": "e5c522260a1804bfbcdf52b88319d2c7a36e4f25548c24870dfb137ac0e16606"
+  }
+}
