@@ -1,0 +1,7 @@
+{
+  "baseline/manifest.proposed.json": "3756f6c56689cdba2ea9c66c598bacb98aadc8280ce3e2e3732a8416ff56081e",
+  "destination-first-hypothesis/compiled_contract.py": "1062dc3811a27eee227cb02373dac6a6b78654776f42df88f46632f5be7d2471",
+  "destination-first-hypothesis/destination-first.patch": "61d07c4d18bce657cfa85d803f971e08650babb1e08ec7900f74ef5030b30e62",
+  "destination-first-hypothesis/manifest.json": "0f15bf510152e870cb74cc5edf995deb4240d6efbc54e33694a52b2497c64a11",
+  "destination-first-hypothesis/test_contract.py": "4aa0a80f31c0d7b4cabf62611ded9696e73d242adcf7b82f84af97298abdfa07"
+}

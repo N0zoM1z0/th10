@@ -1,0 +1,75 @@
+{
+  "host_only": true,
+  "target_accessed": false,
+  "production_edited": false,
+  "native_vc71_claim": false,
+  "candidate_sha256": "3c91d6beb3428ce9ef8da0dad5046cc6b303e2f2a28d2f07f57dbbd8c245ccf5",
+  "tests": [
+    {
+      "name": "proposed",
+      "compiled": true,
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_diagnostic": "PASS_48",
+      "actual_diagnostic": "PASS_48",
+      "harness_sha256": "f306e596cd1f995d10f1ff1ad04968dff677acc41b78a776d7c6366e9697fd30"
+    },
+    {
+      "name": "baseline_pure_only",
+      "compiled": true,
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "expected_diagnostic": "PASS_48",
+      "actual_diagnostic": "PASS_48",
+      "harness_sha256": "02ddba60e1b8c29eb43bd58976ffbacefa06b37b0e89a87c424c9c6392e1e896"
+    },
+    {
+      "name": "read_first",
+      "compiled": true,
+      "expected_exit": 17,
+      "actual_exit": 17,
+      "expected_diagnostic": "EVENT_ORDER",
+      "actual_diagnostic": "EVENT_ORDER",
+      "harness_sha256": "c054d468d201bb66703d82a4720b75260d4ee5c97c7d97061f1967c5a3b111a1"
+    },
+    {
+      "name": "wrong_destination",
+      "compiled": true,
+      "expected_exit": 17,
+      "actual_exit": 17,
+      "expected_diagnostic": "OTHER_DESTINATION",
+      "actual_diagnostic": "OTHER_DESTINATION",
+      "harness_sha256": "459ad7169ef036ab6b8c8321094c1383226fab324af3a86a5d38dfe3fbb83b0d"
+    },
+    {
+      "name": "duplicate_read",
+      "compiled": true,
+      "expected_exit": 17,
+      "actual_exit": 17,
+      "expected_diagnostic": "CALL_COUNT",
+      "actual_diagnostic": "CALL_COUNT",
+      "harness_sha256": "4135d290c49eaa924b40770ce0b39edf9b943e5c21eae38cbc65ad442c870e84"
+    },
+    {
+      "name": "missing_wrap",
+      "compiled": true,
+      "expected_exit": 17,
+      "actual_exit": 17,
+      "expected_diagnostic": "CALL_COUNT",
+      "actual_diagnostic": "CALL_COUNT",
+      "harness_sha256": "45dde59dfb5df44b62eaa8da2c54c818a857893f9dac8efc9702a8383340b0ff"
+    },
+    {
+      "name": "missing_read",
+      "compiled": true,
+      "expected_exit": 17,
+      "actual_exit": 17,
+      "expected_diagnostic": "CALL_COUNT",
+      "actual_diagnostic": "CALL_COUNT",
+      "harness_sha256": "3a336d542408dca19a5e7dd5d5c0f2d6f34875f807b426fac5cd0bd710c2fecf"
+    }
+  ],
+  "compiler": "g++ (Debian 14.2.0-19) 14.2.0",
+  "base_unchanged": true,
+  "all_passed": true
+}

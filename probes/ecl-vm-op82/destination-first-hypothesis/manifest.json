@@ -1,0 +1,10 @@
+{
+  "base_source_sha256": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+  "hypothetical_source_sha256": "3c91d6beb3428ce9ef8da0dad5046cc6b303e2f2a28d2f07f57dbbd8c245ccf5",
+  "patch_sha256": "61d07c4d18bce657cfa85d803f971e08650babb1e08ec7900f74ef5030b30e62",
+  "source_changed": false,
+  "production_edited": false,
+  "built": false,
+  "replacement_count": 1,
+  "base_head": "a4edda20e434cd40ee99ea3b6b68673a80c3e3be"
+}

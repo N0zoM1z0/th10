@@ -1,0 +1,16 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -1133,8 +1133,11 @@
+             }
+ 
+             case ECL_VM_NORMALIZE_ANGLE:
+-                *ResolveFloat(0) = EnemyWrapAngle(ReadFloat(0));
+-                break;
++            {
++                float *destination = ResolveFloat(0);
++                *destination = EnemyWrapAngle(ReadFloat(0));
++                break;
++            }
+ 
+             case ECL_VM_POINT_ANGLE:
+             {

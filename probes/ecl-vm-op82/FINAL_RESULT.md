@@ -1,0 +1,7 @@
+# Final disposition: sequencing trial parked without a build
+
+Actual baseline read-only command `06685cece34046868105ccc9b146d096` completed successfully. The complete 7020-byte baseline Run owner was pinned as `98f613dc9838da5b5879304e255c32409b8a0dbb9141f24a7c6d1cd66e42ce39`. The 12-instruction selected interval has one nonvacuous escape state and exactly one Resolve, Read and Wrap-labelled call. Conditional local Resolve-before-Read and Read-before-Wrap are true, matching the earlier target local result. All identity, source, artifact and postchecks passed.
+
+There is no observed generated sequencing mismatch supporting this proposed change. Parent canceled the isolated candidate before any candidate build; the patch remains a source hypothesis, with no adoption or exactness credit.
+
+The target result is conditional on its table-derived selected entry and bounded normal-return model. The baseline result additionally uses syntactic suffix-table discovery and a symbol/alias-bound diagnostic data anchor for Wrap. That diagnostic image is non-runnable; the Wrap-labelled syntactic call is given a hypothetical opaque normal-return meaning solely for structural order analysis. This does not establish real Wrap execution, runtime opcode association, instruction-advance continuation, full opcode semantics, runtime equivalence or whole-owner byte equivalence. Valid maintained Enemy/frame resolution is pure; no behavior bug was demonstrated.
