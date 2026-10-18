@@ -1,0 +1,189 @@
+--- a/src/AnmManager.cpp
++++ b/src/AnmManager.cpp
+@@ -1193,6 +1193,39 @@
+ // the reusable state of every pool VM. The callback priorities and layer set
+ // below are direct TH10 observations; TH095 supplied only the source-family
+ // hypothesis for the repeated chain registration shape.
++// Task creation adapted from levzzz5154/th10-decomp, commit
++// 4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a. See ANM_TASK_CREATION_LICENSE.txt.
++// Do not read or initialize reservedFlags. Its representation is unspecified.
++namespace
++{
++struct AnmRenderTask : AnmChainElementView
++{
++    AnmRenderTask()
++    {
++        priority = 0;
++        heapOwned = 0;
++        callback = NULL;
++        addedCallback = NULL;
++        removedCallback = NULL;
++        self = this;
++        next = NULL;
++        previous = NULL;
++    }
++};
++
++typedef char AnmRenderTaskSize24[
++    (sizeof(AnmRenderTask) == 0x24) ? 1 : -1];
++}
++
++static AnmChainElementView *CreateAnmRenderTask(AnmChainCallback callback)
++{
++    AnmChainElementView *element = new AnmRenderTask;
++    element->callback = callback;
++    element->heapOwned = 1;
++    element->registrationFlag = 1;
++    return element;
++}
++
+ AnmRenderManagerView::AnmRenderManagerView()
+ {
+     AnmChainElementView *element;
+@@ -1238,85 +1271,85 @@
+     for (int i = 0; i < 0x1000; ++i)
+         vmPool[i].Initialize();
+ 
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(OnUpdatePrimary));
+     element->argument = this;
+     AnmAddCalcChainElement(element, 0x1a, g_AnmChainView);
+ 
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(OnUpdateSecondary));
+     element->argument = this;
+     AnmAddCalcChainElement(element, 0x08, g_AnmChainView);
+ 
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer0));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x09, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer1));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x0b, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer2));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x0d, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer3));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x0f, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer4));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x10, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer5));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x11, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer6));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x12, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer7));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x13, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer8));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x15, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer9));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x17, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer10));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x18, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer11));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x1a, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer12));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x1c, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer13));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x21, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer14));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x24, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer15));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x29, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer16));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x2a, g_AnmChainView);
+-    element = AnmCreateChainElement(
++    element = CreateAnmRenderTask(
+         reinterpret_cast<AnmChainCallback>(DrawLayer19));
+     element->argument = this;
+     AnmAddDrawChainElement(element, 0x2d, g_AnmChainView);
+--- a/src/AnmManager.hpp
++++ b/src/AnmManager.hpp
+@@ -862,13 +862,35 @@
+ 
+ typedef int (__fastcall *AnmChainCallback)(AsciiManagerView *manager);
+ 
++// Task layout adapted from levzzz5154/th10-decomp, commit
++// 4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a. See ANM_TASK_CREATION_LICENSE.txt.
++// Low flag assignments are a source-family hypothesis, not target-proven.
+ struct AnmChainElementView
+ {
+-    void *unknown000;
+-    unsigned int flags;
+-    unsigned char unknown008[0x018];
++    int priority;
++    unsigned int heapOwned : 1;
++    unsigned int registrationFlag : 1;
++    unsigned int reservedFlags : 30;
++    AnmChainCallback callback;
++    AnmChainCallback addedCallback;
++    AnmChainCallback removedCallback;
++    AnmChainElementView *self;
++    AnmChainElementView *next;
++    AnmChainElementView *previous;
+     void *argument;
+ };
++
++typedef char AnmChainElementSize24[
++    (sizeof(AnmChainElementView) == 0x24) ? 1 : -1];
++typedef char AnmChainElementFieldOffsets[
++    (offsetof(AnmChainElementView, priority) == 0x00 &&
++     offsetof(AnmChainElementView, callback) == 0x08 &&
++     offsetof(AnmChainElementView, addedCallback) == 0x0c &&
++     offsetof(AnmChainElementView, removedCallback) == 0x10 &&
++     offsetof(AnmChainElementView, self) == 0x14 &&
++     offsetof(AnmChainElementView, next) == 0x18 &&
++     offsetof(AnmChainElementView, previous) == 0x1c &&
++     offsetof(AnmChainElementView, argument) == 0x20) ? 1 : -1];
+ 
+ AnmLoadedView * __fastcall AnmLoadResource(
+     int slot, void *fileSystem, const char *path);
