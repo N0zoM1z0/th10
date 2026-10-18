@@ -308,7 +308,7 @@
     "code_owner": "0x4218D0",
     "code_bytes": 572,
     "code_sha256": "219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e",
-    "head_at_latest_proof": "1d55297d317574a0b0b18cb7b2738682a5b79e24",
+    "head_at_latest_proof": "0821ec6ed83fabc2559d3cdca5b6aff86b708ec9",
     "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
     "dispatch_run": "51430a881fd14a3cae4459db4f574a15",
     "selector_run": "2be7243f79154d44b2212480e00e0acb",
@@ -317,7 +317,11 @@
     "case_effect_run": "f3563a1a1e76480f8a93ca9ed0f92274",
     "mode0_result_run": "9191aecb85a94dce99e634212bd23b73",
     "guard_attempt_run": "8e4fe32c2cda4fd4ae1090e282c4ce60",
-    "guard_attempt_status": "single41FD00 call site verified; zero/nonzero guard not recognized; neither guarded outcome proved"
+    "guard_attempt_status": "superseded recognition limitation: original adjacent-only gate did not recognize the guard",
+    "guard_interval_run": "4e190410333641a79d6a636f52dae13b",
+    "guard_interval_collector_sha256": "bc39a1d5b78df61480fce6d9dcd389a63b8701cdd51112a229116d0b3c7743d5",
+    "head_at_guard_interval_proof": "0821ec6ed83fabc2559d3cdca5b6aff86b708ec9",
+    "head_at_case_result_proof": "1d55297d317574a0b0b18cb7b2738682a5b79e24"
   },
   "interpretation": {
     "may": "CFG-possible overapproximation, not feasible execution",
@@ -325,5 +329,27 @@
     "snapshot": "load-site origin only, not later memory or dynamic reload equality",
     "missing_effects": "real effects outside recognized vocabulary may exist",
     "critical_counts": "direct572 calls only under normal loader/opaque-call premises; no lock receiver/ownership proof"
+  },
+  "mode0_guard_obligations": {
+    "candidate": "41FD00 machine EAX result equals zero versus nonzero; no inferred pointer type",
+    "guard_required_after_mode0_dispatch": true,
+    "intervening_move_effects_retained_in_case_packet": true,
+    "nonzero_result_normal_return_obligations_proved": true,
+    "single_41fd00_call_site": true,
+    "source_order_and_complete_effects": "UNRESOLVED",
+    "unique_guard": true,
+    "zero_result_failure_obligations_proved": true
+  },
+  "mode0_guard_fixed_requirements": {
+    "zero": [
+      "call_helper_0x4203f0",
+      "call_helper_0x421c50",
+      "return_4",
+      "store_context_0x390_constant_0x3"
+    ],
+    "nonzero": [
+      "call_LeaveCriticalSection",
+      "return_1"
+    ]
   }
 }

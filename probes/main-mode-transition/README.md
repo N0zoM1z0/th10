@@ -14,7 +14,7 @@ These are unordered required effects or CFG-possible effects after the first dis
 
 - Snapshot modes 1, 2, 5, 6, 8, 9 share the default continuation. Required: Leave, return 1, a +0x38C store whose value originates at a +0x390 load, and byte +0x6F9 decrement modulo 256.
 - Mode 3 requires calls 4203F0 and 421C50 and return 4. No Leave event occurs in its continuation inventory.
-- Mode 0 requires call 41FD00, field +0x390 = 1 and a field +0x768 store of call 41FD00's unconstrained machine EAX result. Other modeled continuations can store +0x390 = 3, execute the two failure hooks and return 4, or use the normal continuation. The return type, result/null guard and effect order are still open.
+- Mode 0 requires call 41FD00, field +0x390 = 1 and a field +0x768 store of call 41FD00's unconstrained machine EAX result. Other modeled continuations can store +0x390 = 3, execute the two failure hooks and return 4, or use the normal continuation. The zero-result guard is now proved as described below. The return type and effect order remain open.
 - Mode 7 requires call 4180E0 and field +0x39C = 1, then the normal continuation membership. Call 42CDB0 is CFG-possible.
 - Mode 10 requires calls 418150 and 4180E0, field +0x390 = 7, field +0x39C = 1, and the normal continuation membership. An extra store/instruction effect remains unclassified.
 - Mode 11 requires call 4180E0, field +0x390 = 7 and field +0x39C = 0. Call 418150 is CFG-possible.
@@ -29,14 +29,14 @@ The public high-level model is consistent with this structure, but does not esta
 
 1. Pre-dispatch store effects and critical-section argument/depth-update roles.
 2. Exact guards for optional helpers and failure paths; ordering and reload points around opaque calls.
-3. Mode 10 and 15 unresolved effects; the mode 0 +0x768 value origin is now proved, without a pointer type or null-result guard.
+3. Mode 10 and 15 unresolved effects; the mode 0 +0x768 value origin is now proved, without an inferred pointer type. The mode 0 zero/nonzero result guard is also proved, but source ordering remains open.
 4. Meaningful helper source declarations and native ABI evidence. The existing natural int(context*) baseline remains conditional.
 
 A faithful executable source body is not yet justified. The supplied fixture checks only recognized-vocabulary projections of proved unordered mode obligations; extra real effects outside its vocabulary are not disproved. It deliberately cannot certify a body that merely rearranges the same effects.
 
 ## Evidence
 
-Current remote HEAD 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receipts used raw-identical production/target files at 6892fa5. Owner SHA 219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e.
+Latest guard proof HEAD 0821ec6ed83fabc2559d3cdca5b6aff86b708ec9; the preceding proof checkpoint was 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receipts used raw-identical production/target files at 6892fa5. Owner SHA 219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e.
 
 - Dispatch: actual 51430a881fd14a3cae4459db4f574a15.
 - Selector origins: actual 2be7243f79154d44b2212480e00e0acb.
@@ -46,9 +46,16 @@ Current remote HEAD 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receip
 - Mode 0 result origin: actual 9191aecb85a94dce99e634212bd23b73.
 
 
-## Latest guard attempt and stop point
+## Mode 0 result guard and superseded limitation
 
-Actual 8e4fe32c2cda4fd4ae1090e282c4ce60 verifies a single 41FD00 call site but does not recognize the proposed zero/nonzero guard. Both guarded outcome predicates remain unproved. This does not disprove the source hypothesis: the gate accepts only a retained register result with an adjacent full 32-bit CMP/TEST and JE/JNE. It does not recover a memory reload or other equivalent form. No unobserved form has been adopted. A bounded categorical diagnostic is needed before any recognition expansion.
+The first adjacent-only attempt, actual 8e4fe32c2cda4fd4ae1090e282c4ce60, did not recognize the guard. This was a recognition limitation rather than a disproof. A later bounded diagnostic found a retained full 32-bit result self-test, one flag-preserving MOV, and a not-equal branch.
+
+Actual 4e190410333641a79d6a636f52dae13b proves the guard after validating both CFG predecessor boundaries, the MOV's exact effects, and a unique 41FD00 call site. The intervening store remains included in the case effects. Every modeled normal continuation from mode 0 encounters this guard:
+
+- Zero machine EAX result requires calls 4203F0 and 421C50, a +0x390 store of 3, and return 4. It does not return 1.
+- Nonzero machine EAX result requires LeaveCriticalSection and return 1. It does not return 4.
+
+The tested result is the same unique call-site origin supplying the required +0x768 store. This does not infer a pointer return type, full source ordering, API argument identity, complete effects or helper-internal behavior. The earlier failed recognition is retained in the evidence metadata as superseded.
 
 ## Reproduce this checkpoint
 
@@ -56,7 +63,7 @@ From repository root:
 
     python3 probes/main-mode-transition/check_obligations.py
 
-Expected: PASS, 34 finite inventory/count checks and 95 recognized-projection schema/membership mutation rejections. These are bookkeeping checks against recorded facts, not semantic body-equivalence tests or a new native-target proof. They do not execute the game, read its executable, build native code, or establish feasibility/order.
+Expected: PASS, 34 finite inventory/count checks, 95 recognized-projection schema/membership mutation rejections, 2 guard projection checks and 10 guard projection mutation rejections. These are bookkeeping checks against recorded facts, not semantic body-equivalence tests or a new native-target proof. They do not execute the game, read its executable, build native code, or establish feasibility/order.
 
 Optimized assertions must be rejected:
 
