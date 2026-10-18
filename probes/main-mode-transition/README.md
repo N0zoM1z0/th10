@@ -21,7 +21,7 @@ These are unordered required effects or CFG-possible effects after the first dis
 - Mode 12 requires call 4180E0, field +0x390 = 7 and field +0x39C = 1. Call 42CDB0 is CFG-possible.
 - Mode 13 requires calls 418150 and 4180E0, field +0x390 = 7 and field +0x39C = 1.
 - Mode 14 requires call 40B940; call 418150 is CFG-possible.
-- Modes 4 and 15 have CFG-possible calls 40B9D0, 418150 and 42CD50 and the normal continuation membership. Mode 15 additionally has CFG-possible stores of 4 to context +0x390 and 3 to data variable 0x491C00. Their requested-mode guard remains unresolved.
+- Modes 4 and 15 have CFG-possible calls 40B9D0, 418150 and 42CD50 and the normal continuation membership. Mode 15 additionally has CFG-possible stores of 4 to context +0x390 and 3 to data variable 0x491C00. Their requested-snapshot guard is now proved in the four-class partition below.
 
 The public high-level model is consistent with this structure, but does not establish helper meanings, guards, or ordering. The default/normal continuation effects above are required membership, not a proposed execution sequence.
 
@@ -29,14 +29,14 @@ The public high-level model is consistent with this structure, but does not esta
 
 1. Complete pre-dispatch ordering/effects and critical-section lifecycle/ownership. The fixed prefix effects and both API arguments below are established conditionally.
 2. Exact guards for optional helpers and failure paths; ordering and reload points around opaque calls.
-3. Mode 10 instruction-effect classification and mode 15 requested-mode guard; the mode 0 +0x768 value origin is now proved, without an inferred pointer type. The mode 0 zero/nonzero result guard is also proved, but source ordering remains open.
+3. Mode 10 instruction-effect classification and remaining conditional helper guards; the mode 0 +0x768 value origin is now proved, without an inferred pointer type. The mode 0 zero/nonzero result guard is also proved, but source ordering remains open.
 4. Meaningful helper source declarations and native ABI evidence. The existing natural int(context*) baseline remains conditional.
 
 A faithful executable source body is not yet justified. The supplied fixture checks only recognized-vocabulary projections of proved unordered mode obligations; extra real effects outside its vocabulary are not disproved. It deliberately cannot certify a body that merely rearranges the same effects.
 
 ## Evidence
 
-Latest store proof HEAD 2fc031bd162c2f9a57c5357ddea3d933c4521150; prefix proof HEAD b33c5f9cd893b75a44f69e2d58124f6d1c34f1f5; guard proof HEAD 0821ec6ed83fabc2559d3cdca5b6aff86b708ec9; the preceding proof checkpoint was 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receipts used raw-identical production/target files at 6892fa5. Owner SHA 219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e.
+Latest mode 15 proof HEAD 5c1f353e9e942fe6490b240a9f2636c9c1607300; store proof HEAD 2fc031bd162c2f9a57c5357ddea3d933c4521150; prefix proof HEAD b33c5f9cd893b75a44f69e2d58124f6d1c34f1f5; guard proof HEAD 0821ec6ed83fabc2559d3cdca5b6aff86b708ec9; the preceding proof checkpoint was 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receipts used raw-identical production/target files at 6892fa5. Owner SHA 219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e.
 
 - Dispatch: actual 51430a881fd14a3cae4459db4f574a15.
 - Selector origins: actual 2be7243f79154d44b2212480e00e0acb.
@@ -63,7 +63,7 @@ From repository root:
 
     python3 probes/main-mode-transition/check_obligations.py
 
-Expected: PASS, 34 finite inventory/count checks, 97 recognized-projection schema/membership mutation rejections, 2 guard projection checks and 10 guard projection mutation rejections, plus 2 prefix/receiver projection checks and 6 mutation rejections. These are bookkeeping checks against recorded facts, not semantic body-equivalence tests or a new native-target proof. They do not execute the game, read its executable, build native code, or establish feasibility/order.
+Expected: PASS, 34 finite inventory/count checks, 97 recognized-projection schema/membership mutation rejections, 2 guard projection checks and 10 guard projection mutation rejections, plus 2 prefix/receiver projection checks and 6 mutation rejections, and 4 mode 15 projection checks with 31 mutation rejections. These are bookkeeping checks against recorded facts, not semantic body-equivalence tests or a new native-target proof. They do not execute the game, read its executable, build native code, or establish feasibility/order.
 
 Optimized assertions must be rejected:
 
@@ -106,4 +106,47 @@ Maintained GameManager.cpp names the destinations g_GameStartupMode and g_GameSt
 
 Actual 29affe0c01ea42e08ad0c85622e306b9 makes both mode 10 stores required on all modeled normal continuations. It recognizes the mode 15 stores context +0x390 = 4 and data variable 0x491C00 = 3 as CFG-possible. The latter global retains a neutral name. Effects remain incomplete and unordered.
 
-The preliminary mode 15 guard attempt, actual 01dc49477b8940fb8eaf314add7d22e4, found three conditional branches but no adjacent exact CMP form. This is a recognizer limitation. The proposed requested-snapshot set {2, 7, 14} has not been proved or disproved.
+The preliminary mode 15 guard attempt, actual 01dc49477b8940fb8eaf314add7d22e4, found three conditional branches but no adjacent exact CMP form. This is a recognizer limitation. That preliminary limitation is superseded by the four-class proof below.
+
+
+## Mode 15 guarded recognized effects
+
+Actual 0df7b7446c7a48ada20791732bf58125 verifies three full-width destructive zero tests against one request load-site snapshot and an acyclic CFG. It establishes these four classes:
+
+- Snapshot 2: required call 42CD50 and the two stores context +0x390 = 4 and data 0x491C00 = 3.
+- Snapshot 7: the same required events, plus call 418150.
+- Snapshot 14: the same required events, plus call 40B9D0.
+- Every other uint32 snapshot value: none of those specific recognized helper/store events appears.
+
+All four classes require the normal-continuation recognized events and return 1. These are unordered memberships; complement absence does not exclude unclassified or aliased writes or opaque helper effects. The proof does not equate later field reloads with the guarded snapshot or establish feasibility.
+
+## Minimum path to a natural C++ candidate
+
+1. The fixed optional-helper guards are now closed for modes 4, 7, 11, 12 and 14 as described below. The next source obligations concern precise snapshot identities and call/store timing.
+2. Verify a compact set of source-order and reload obligations: Enter before prefix stores/dispatch; required lifecycle helpers relative to state stores and successor helpers; failure hooks in their source order; and the normal field-copy, Leave, depth-decrement tail. Avoid a generic instruction trace or claims derived solely from unordered memberships.
+3. Classify the remaining mode 10 instruction-effect category against the already proved pure modular record expression, rather than assuming no extra effect.
+4. Write ordinary C++ with neutral fields and meaningful opaque helper declarations under explicit natural-signature assumptions. Exact private helper ABI, stack/frame restoration, layout ownership and native comparison remain separate acceptance gates. Recovering all nine helper bodies is not a prerequisite for a clearly conditional compiler candidate.
+
+This checkpoint still does not justify a complete executable source body. The next useful work is the small set of guard/order obligations above, rather than further broad inventories.
+
+
+## Conditional helpers and a reference correction
+
+Actual 3d78eb79e60d434a9b92f38c81733be8 closes the four optional-helper partitions. Each mode uses its own exact request-field observation; no equality with earlier or later reloads is assumed.
+
+- Modes 7 and 12: direct helper 42CDB0 is required when that request snapshot equals 4, and absent from the recognized direct calls otherwise.
+- Modes 11 and 14: direct helper 418150 is required when that request snapshot equals 7, and absent from the recognized direct calls otherwise.
+- All eight classes have modeled normal return 1. Mode 11 preserves the real context +0x39C zero store in the flag-preserving interval; the earlier adjacent-comparison limitation is superseded.
+
+Actual 2c379f91afc2497caf3d95776a8a4567 establishes the independent mode 4 request partition:
+
+- Request snapshot 1 or 2: helper 42CD50 is required.
+- Snapshot 7: helpers 418150 and 42CD50 are required.
+- Snapshot 14: helpers 40B9D0 and 42CD50 are required.
+- Every other uint32 snapshot, including zero and high-bit values: none of these recognized direct helper events occurs.
+
+This corrects a specific hypothesis from the [pinned public semantic reference](https://github.com/levzzz5154/th10-decomp/blob/4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a/matching2/reference/legacy_semantic/src/game/game_mode_switch.cpp): its mode 4 model places helper 42CD50 on the default branch instead. Independent remap/default composition checks support the target-derived partition above. No reference body was copied.
+
+These facts quantify modeled CFG continuations and recognized direct helper memberships only. Opaque helper internals, feasible execution, source order, additional aliased effects and full source equivalence remain outside this checkpoint. Normal valid memory, normal opaque-call return, unchanged loader IAT bindings and immutable code/tables remain premises. Nonvolatile register values are preserved under the stated ABI premise; pointed-to memory may change.
+
+The standalone fixture additionally checks 8 optional-helper memberships with 8 membership mutations, and 4 mode 4 projection cases with 9 membership mutations. These are bookkeeping regression controls, not native-body semantic mutants.

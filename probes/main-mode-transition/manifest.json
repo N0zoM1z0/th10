@@ -2,8 +2,8 @@
   "schema": 1,
   "purpose": "partial recognized-event bookkeeping checkpoint; no production source or native acceptance",
   "files": {
-    "README.md": "c70c09f26aadfb217f13790668a3f0dd6ae448ddbea0a0b2b027d0bbacc5a74b",
-    "facts.json": "82592660c9b065a6bbc55996f04cbe3d1204d2bbac84591c0413630222a41772",
-    "check_obligations.py": "48bca8a3204fec6ae4885c6642ba2ef8bf0964da73ba667104a21854bb143fe6"
+    "README.md": "5edc5e3764e24004cbe2fb6a69c0a7267e6b7d33b9a51d93884bb9ea1d77488f",
+    "facts.json": "79686131c9dc13a290a4cad10fe3cf58540c9973bc3df52ebcd36c9f7c7451b2",
+    "check_obligations.py": "7f95bb89030fcbe5c131f5b1e7922dbce58e60ab216bf6e16de703efc6f58621"
   }
 }

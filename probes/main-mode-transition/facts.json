@@ -312,7 +312,7 @@
     "code_owner": "0x4218D0",
     "code_bytes": 572,
     "code_sha256": "219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e",
-    "head_at_latest_proof": "2fc031bd162c2f9a57c5357ddea3d933c4521150",
+    "head_at_latest_proof": "5c1f353e9e942fe6490b240a9f2636c9c1607300",
     "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
     "dispatch_run": "51430a881fd14a3cae4459db4f574a15",
     "selector_run": "2be7243f79154d44b2212480e00e0acb",
@@ -335,7 +335,19 @@
     "mode10_15_stores_run": "29affe0c01ea42e08ad0c85622e306b9",
     "mode10_15_stores_collector_sha256": "52a0f9c74287444801cefd49781cc20a44de7171d7e16dcdf29e7380c6011054",
     "mode15_guard_attempt_run": "01dc49477b8940fb8eaf314add7d22e4",
-    "mode15_guard_attempt_status": "unresolved adjacent-compare recognition; requested-set hypothesis neither proved nor disproved"
+    "mode15_guard_attempt_status": "superseded recognition limitation: destructive SUB zero tests replaced the adjacent-CMP-only hypothesis",
+    "mode15_partition_run": "0df7b7446c7a48ada20791732bf58125",
+    "mode15_partition_collector_sha256": "8d532bc871db599d314c0d57762ee1eacb02738535ccfc2fb2465a78a40499ce",
+    "mode11_interval": {
+      "run": "3d78eb79e60d434a9b92f38c81733be8",
+      "collector_sha256": "5d333f4821f6f5d60db0e0ce58c1f8db96333e0c90bbc242eb0dc07ba848b4e8",
+      "receipt_sha256": "278f6d363b373e2def798c21964e05df4ac012190d4f50972ff58b533bf1a3f6"
+    },
+    "mode4_partition": {
+      "run": "2c379f91afc2497caf3d95776a8a4567",
+      "collector_sha256": "6c09310fa7a9470818538cb4d38feb81285adc05cc88fb84647a83b53e0a89a9",
+      "receipt_sha256": "7f4b5e918dcbca5a7ef86ad8abe2211cec8c462b5c6a9e315ffc87b256a0839a"
+    }
   },
   "interpretation": {
     "may": "CFG-possible overapproximation, not feasible execution",
@@ -425,5 +437,290 @@
     "scalar_store_proved": true,
     "scope": "CFG-possible mode10 stores; machine uint32 modular expression only, no feasibility, table extent/content, reload equality or source field-name proof",
     "status": "FIXED_MODE10_HYPOTHESIS"
+  },
+  "mode15_partition": {
+    "classes": [
+      {
+        "cfg_possible_events": [
+          "call_LeaveCriticalSection",
+          "call_helper_0x42cd50",
+          "return_1",
+          "store_context_0x38c_load_site_origin_field_0x390",
+          "store_context_0x390_constant_0x4",
+          "store_context_0x6f9_dec_modulo256",
+          "store_data_0x491c00_constant_3"
+        ],
+        "effects_complete": false,
+        "fixed_store_outcome_proved": true,
+        "normal_return1_proved": true,
+        "request_snapshot_class": "request_2",
+        "required_events": [
+          "call_LeaveCriticalSection",
+          "call_helper_0x42cd50",
+          "return_1",
+          "store_context_0x38c_load_site_origin_field_0x390",
+          "store_context_0x390_constant_0x4",
+          "store_context_0x6f9_dec_modulo256",
+          "store_data_0x491c00_constant_3"
+        ],
+        "unresolved_categories": []
+      },
+      {
+        "cfg_possible_events": [
+          "call_LeaveCriticalSection",
+          "call_helper_0x418150",
+          "call_helper_0x42cd50",
+          "return_1",
+          "store_context_0x38c_load_site_origin_field_0x390",
+          "store_context_0x390_constant_0x4",
+          "store_context_0x6f9_dec_modulo256",
+          "store_data_0x491c00_constant_3"
+        ],
+        "effects_complete": false,
+        "fixed_store_outcome_proved": true,
+        "normal_return1_proved": true,
+        "request_snapshot_class": "request_7",
+        "required_events": [
+          "call_LeaveCriticalSection",
+          "call_helper_0x418150",
+          "call_helper_0x42cd50",
+          "return_1",
+          "store_context_0x38c_load_site_origin_field_0x390",
+          "store_context_0x390_constant_0x4",
+          "store_context_0x6f9_dec_modulo256",
+          "store_data_0x491c00_constant_3"
+        ],
+        "unresolved_categories": []
+      },
+      {
+        "cfg_possible_events": [
+          "call_LeaveCriticalSection",
+          "call_helper_0x40b9d0",
+          "call_helper_0x42cd50",
+          "return_1",
+          "store_context_0x38c_load_site_origin_field_0x390",
+          "store_context_0x390_constant_0x4",
+          "store_context_0x6f9_dec_modulo256",
+          "store_data_0x491c00_constant_3"
+        ],
+        "effects_complete": false,
+        "fixed_store_outcome_proved": true,
+        "normal_return1_proved": true,
+        "request_snapshot_class": "request_14",
+        "required_events": [
+          "call_LeaveCriticalSection",
+          "call_helper_0x40b9d0",
+          "call_helper_0x42cd50",
+          "return_1",
+          "store_context_0x38c_load_site_origin_field_0x390",
+          "store_context_0x390_constant_0x4",
+          "store_context_0x6f9_dec_modulo256",
+          "store_data_0x491c00_constant_3"
+        ],
+        "unresolved_categories": []
+      },
+      {
+        "cfg_possible_events": [
+          "call_LeaveCriticalSection",
+          "return_1",
+          "store_context_0x38c_load_site_origin_field_0x390",
+          "store_context_0x6f9_dec_modulo256"
+        ],
+        "effects_complete": false,
+        "fixed_store_outcome_proved": true,
+        "normal_return1_proved": true,
+        "request_snapshot_class": "other_request_values",
+        "required_events": [
+          "call_LeaveCriticalSection",
+          "return_1",
+          "store_context_0x38c_load_site_origin_field_0x390",
+          "store_context_0x6f9_dec_modulo256"
+        ],
+        "unresolved_categories": []
+      }
+    ],
+    "scope": "request-load snapshot classes2/7/14 and their exact uint32 complement; acyclic guard-restricted CFG may/must recognized events, not feasibility/full effects/order; complement absence covers these recognized store events only, not other or aliased writes; opaque helper internals excluded and no equality across reloads",
+    "shared_request_load_site_proved": true,
+    "status": "BOUNDED_MODE15_FOUR_CLASS_PARTITION"
+  },
+  "optional_helper_partitions": {
+    "modes": [
+      {
+        "classes": [
+          {
+            "direct_helper_events_cfg_possible": [
+              "call_helper_0x4180e0",
+              "call_helper_0x42cdb0"
+            ],
+            "named_helper_outcome_proved": true,
+            "normal_return1_proved": true,
+            "request_matches": true,
+            "unresolved_categories": []
+          },
+          {
+            "direct_helper_events_cfg_possible": [
+              "call_helper_0x4180e0"
+            ],
+            "named_helper_outcome_proved": true,
+            "normal_return1_proved": true,
+            "request_matches": false,
+            "unresolved_categories": []
+          }
+        ],
+        "mode_snapshot": 7,
+        "named_direct_helper": "call_helper_0x42cdb0",
+        "request_snapshot_equals": 4,
+        "status": "BOUNDED_TWO_CLASS_PARTITION"
+      },
+      {
+        "classes": [
+          {
+            "direct_helper_events_cfg_possible": [
+              "call_helper_0x4180e0",
+              "call_helper_0x42cdb0"
+            ],
+            "named_helper_outcome_proved": true,
+            "normal_return1_proved": true,
+            "request_matches": true,
+            "unresolved_categories": []
+          },
+          {
+            "direct_helper_events_cfg_possible": [
+              "call_helper_0x4180e0"
+            ],
+            "named_helper_outcome_proved": true,
+            "normal_return1_proved": true,
+            "request_matches": false,
+            "unresolved_categories": []
+          }
+        ],
+        "mode_snapshot": 12,
+        "named_direct_helper": "call_helper_0x42cdb0",
+        "request_snapshot_equals": 4,
+        "status": "BOUNDED_TWO_CLASS_PARTITION"
+      },
+      {
+        "classes": [
+          {
+            "direct_helper_events_cfg_possible": [
+              "call_helper_0x4180e0",
+              "call_helper_0x418150"
+            ],
+            "named_helper_outcome_proved": true,
+            "normal_return1_proved": true,
+            "request_matches": true,
+            "unresolved_categories": []
+          },
+          {
+            "direct_helper_events_cfg_possible": [
+              "call_helper_0x4180e0"
+            ],
+            "named_helper_outcome_proved": true,
+            "normal_return1_proved": true,
+            "request_matches": false,
+            "unresolved_categories": []
+          }
+        ],
+        "mode_snapshot": 11,
+        "named_direct_helper": "call_helper_0x418150",
+        "request_snapshot_equals": 7,
+        "status": "BOUNDED_TWO_CLASS_PARTITION"
+      },
+      {
+        "classes": [
+          {
+            "direct_helper_events_cfg_possible": [
+              "call_helper_0x40b940",
+              "call_helper_0x418150"
+            ],
+            "named_helper_outcome_proved": true,
+            "normal_return1_proved": true,
+            "request_matches": true,
+            "unresolved_categories": []
+          },
+          {
+            "direct_helper_events_cfg_possible": [
+              "call_helper_0x40b940"
+            ],
+            "named_helper_outcome_proved": true,
+            "normal_return1_proved": true,
+            "request_matches": false,
+            "unresolved_categories": []
+          }
+        ],
+        "mode_snapshot": 14,
+        "named_direct_helper": "call_helper_0x418150",
+        "request_snapshot_equals": 7,
+        "status": "BOUNDED_TWO_CLASS_PARTITION"
+      }
+    ],
+    "scope": "each mode uses its own exact request snapshot; direct memory CMP is a fresh observation, not equated to earlier loads; named direct helper membership only, no helper-internal effects, feasibility/order or cross-reload equality",
+    "status": "BOUNDED_OPTIONAL_HELPER_PACKET"
+  },
+  "mode4_partition": {
+    "classes": [
+      {
+        "direct_helper_events_cfg_possible": [
+          "call_helper_0x42cd50"
+        ],
+        "direct_helper_events_required": [
+          "call_helper_0x42cd50"
+        ],
+        "effects_complete": false,
+        "normal_return1_proved": true,
+        "request_snapshot_class": "request_1_or_2",
+        "unresolved_categories": []
+      },
+      {
+        "direct_helper_events_cfg_possible": [
+          "call_helper_0x418150",
+          "call_helper_0x42cd50"
+        ],
+        "direct_helper_events_required": [
+          "call_helper_0x418150",
+          "call_helper_0x42cd50"
+        ],
+        "effects_complete": false,
+        "normal_return1_proved": true,
+        "request_snapshot_class": "request_7",
+        "unresolved_categories": []
+      },
+      {
+        "direct_helper_events_cfg_possible": [
+          "call_helper_0x40b9d0",
+          "call_helper_0x42cd50"
+        ],
+        "direct_helper_events_required": [
+          "call_helper_0x40b9d0",
+          "call_helper_0x42cd50"
+        ],
+        "effects_complete": false,
+        "normal_return1_proved": true,
+        "request_snapshot_class": "request_14",
+        "unresolved_categories": []
+      },
+      {
+        "direct_helper_events_cfg_possible": [],
+        "direct_helper_events_required": [],
+        "effects_complete": false,
+        "normal_return1_proved": true,
+        "request_snapshot_class": "other_uint32_requests",
+        "unresolved_categories": []
+      }
+    ],
+    "complement_includes_zero_high_bit_and_all_out_of_range": true,
+    "range_guard_mandatory": true,
+    "scope": "independent +38C load snapshot minus1 modulo32; existing remap groups and both default routes; all unrelated edges retained; helper events only, no feasibility/order/helper-internal effects or equality with later memory",
+    "status": "BOUNDED_MODE4_REMAP_PARTITION"
+  },
+  "conditional_helper_premises": {
+    "normal_domain": [
+      "valid memory and normal opaque-call return",
+      "normal unchanged IAT bindings",
+      "immutable code and auxiliary tables"
+    ],
+    "register_preservation": "opaque calls preserve EBX ESI EDI EBP; volatile registers and ESP origins discarded",
+    "memory_mutation": "opaque helpers may change pointed-to memory; each mode uses its own guarded snapshot",
+    "exclusions": "helper internals, feasibility, complete effects, source order and current-memory equality are not proved"
   }
 }

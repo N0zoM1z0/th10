@@ -4,7 +4,7 @@ import hashlib,json,sys
 from pathlib import Path
 if sys.flags.optimize:raise SystemExit('optimized Python')
 FACTS_FILE='facts.json'
-FACTS_SHA='82592660c9b065a6bbc55996f04cbe3d1204d2bbac84591c0413630222a41772'
+FACTS_SHA='79686131c9dc13a290a4cad10fe3cf58540c9973bc3df52ebcd36c9f7c7451b2'
 
 def load_contract():
  raw=Path(__file__).with_name(FACTS_FILE).read_bytes()
@@ -44,6 +44,14 @@ def prefix_projection_satisfies(events,facts):
 def receiver_projection_valid(obligations):
  return {x['api']:x['argument_origin_proved'] for x in obligations}=={'EnterCriticalSection':True,'LeaveCriticalSection':True}
 
+def mode15_projection_satisfies(case,events):
+ """Recognized events only; other real writes/helper effects remain possible."""
+ return set(case['required_events'])<=set(events)<=set(case['cfg_possible_events'])
+
+def named_helper_projection_satisfies(matches,helper,events):
+ """Membership of one named direct helper only; other effects remain unconstrained."""
+ return (helper in events)==matches
+
 def run_tests():
  c=load_contract();checks=0;mutants=0
  facts=json.loads(Path(__file__).with_name(FACTS_FILE).read_bytes())
@@ -58,6 +66,34 @@ def run_tests():
  expression=facts['mode10_fixed_expression']
  assert all(expression[k] for k in ('scalar_store_proved','record_expression_proved','same_load_site_proved'))
  assert expression['data_identities']=={'scalar_dword_cell':'0x474c80','record_table_base':'0x474788'}
+ partition=facts['mode15_partition'];assert partition['shared_request_load_site_proved']
+ mode15_cases=0;mode15_mutants=0
+ assert {c['request_snapshot_class'] for c in partition['classes']}=={'request_2','request_7','request_14','other_request_values'}
+ for case in partition['classes']:
+  assert case['fixed_store_outcome_proved'] and case['normal_return1_proved'] and not case['effects_complete']
+  allowed=set(case['cfg_possible_events']);assert mode15_projection_satisfies(case,allowed);mode15_cases+=1
+  for event in case['required_events']:
+   assert not mode15_projection_satisfies(case,allowed-{event});mode15_mutants+=1
+  assert not mode15_projection_satisfies(case,allowed|{'unproved_effect'});mode15_mutants+=1
+ optional_cases=0;optional_mutants=0
+ optional=facts['optional_helper_partitions']['modes']
+ assert {(x['mode_snapshot'],x['request_snapshot_equals']) for x in optional}=={(7,4),(12,4),(11,7),(14,7)}
+ for mode in optional:
+  helper=mode['named_direct_helper'];assert {x['request_matches'] for x in mode['classes']}=={True,False}
+  for case in mode['classes']:
+   assert case['named_helper_outcome_proved'] and case['normal_return1_proved']
+   events=set(case['direct_helper_events_cfg_possible']);matches=case['request_matches']
+   assert named_helper_projection_satisfies(matches,helper,events);optional_cases+=1
+   changed=events^{helper};assert not named_helper_projection_satisfies(matches,helper,changed);optional_mutants+=1
+ mode4=facts['mode4_partition'];assert mode4['range_guard_mandatory'] and mode4['complement_includes_zero_high_bit_and_all_out_of_range']
+ expected={'request_1_or_2':{'call_helper_0x42cd50'},'request_7':{'call_helper_0x418150','call_helper_0x42cd50'},'request_14':{'call_helper_0x40b9d0','call_helper_0x42cd50'},'other_uint32_requests':set()}
+ mode4_cases=0;mode4_mutants=0
+ for case in mode4['classes']:
+  allowed=set(case['direct_helper_events_cfg_possible']);required=set(case['direct_helper_events_required'])
+  assert allowed==required==expected[case['request_snapshot_class']] and case['normal_return1_proved'] and not case['effects_complete'];mode4_cases+=1
+  for event in required:
+   assert not required<=allowed-{event};mode4_mutants+=1
+  assert not (allowed|{'unproved_helper'})<=allowed;mode4_mutants+=1
  guard=facts['mode0_guard_obligations']
  for key in ('single_41fd00_call_site','unique_guard','guard_required_after_mode0_dispatch','zero_result_failure_obligations_proved','nonzero_result_normal_return_obligations_proved'):assert guard[key] is True
  guard_cases=0;guard_mutants=0
@@ -85,5 +121,5 @@ def run_tests():
     expected=(result,enter,leave) in ((1,0,0),(1,1,1),(4,1,0))
     assert direct_critical_count_satisfies(result,enter,leave)==expected;checks+=1
  assert not direct_critical_count_satisfies(4,1,1) # Do not insert a speculative unlock fix.
- print(json.dumps({'status':'PASS','finite_inventory_and_count_cases':checks,'projection_schema_and_membership_mutants_killed':mutants,'guard_projection_cases':guard_cases,'guard_projection_mutants_killed':guard_mutants,'prefix_and_receiver_projection_cases':2,'prefix_and_receiver_projection_mutants_killed':6,'native_or_body_acceptance':False,'feasibility_or_order_acceptance':False}))
+ print(json.dumps({'status':'PASS','finite_inventory_and_count_cases':checks,'projection_schema_and_membership_mutants_killed':mutants,'guard_projection_cases':guard_cases,'guard_projection_mutants_killed':guard_mutants,'prefix_and_receiver_projection_cases':2,'prefix_and_receiver_projection_mutants_killed':6,'mode15_projection_cases':mode15_cases,'mode15_projection_mutants_killed':mode15_mutants,'optional_helper_projection_cases':optional_cases,'optional_helper_membership_mutants_killed':optional_mutants,'mode4_projection_cases':mode4_cases,'mode4_membership_mutants_killed':mode4_mutants,'native_or_body_acceptance':False,'feasibility_or_order_acceptance':False}))
 if __name__=='__main__':run_tests()
