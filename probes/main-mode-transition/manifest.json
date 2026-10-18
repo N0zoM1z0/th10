@@ -2,8 +2,14 @@
   "schema": 1,
   "purpose": "partial recognized-event bookkeeping checkpoint; no production source or native acceptance",
   "files": {
-    "README.md": "5edc5e3764e24004cbe2fb6a69c0a7267e6b7d33b9a51d93884bb9ea1d77488f",
-    "facts.json": "79686131c9dc13a290a4cad10fe3cf58540c9973bc3df52ebcd36c9f7c7451b2",
-    "check_obligations.py": "7f95bb89030fcbe5c131f5b1e7922dbce58e60ab216bf6e16de703efc6f58621"
+    "README.md": "f80e5804855af71b8da4e0a0c4009ab51d4198b7884250a179f777f8e1a72a7a",
+    "check_obligations.py": "33010e5014b1a48daa12f8b7f25ee771cc75e0b0625e313e8d9ebaf01af477ea",
+    "facts.json": "6653d41b20552b88bf5a44f67028dae74152fea0f7087197c9f792102fb4322a",
+    "host-candidate/.gitattributes": "2a578f119f11342c2af36d39cf64e8e7c14aea6837f9a2dfc033527c82145ce2",
+    "host-candidate/DESIGN.md": "b80ef76f8c0a132267aab6b4782ef5d3db54ba3c721db518bb5a9d065c52782e",
+    "host-candidate/manifest.json": "02da278e91eb7f0727ea500f8acfa0c59d90e4f38045ce68fe505cbc920a1cb2",
+    "host-candidate/run_tests.py": "c405fcff121155bbcb43cb395dfe3facaae1a3898d9ae6ef2ba31116c56598f6",
+    "host-candidate/test_transition.cpp": "49503d9789868a40d57fbdb46eabee4f2a79489b775c5e100723e5f26bcc95f4",
+    "host-candidate/transition.cpp": "8393aa2e73df1a8cccb9e51e13067d0fd288f1e65d55fff8964e3fde11c1c43a"
   }
 }

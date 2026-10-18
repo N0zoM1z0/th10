@@ -312,7 +312,7 @@
     "code_owner": "0x4218D0",
     "code_bytes": 572,
     "code_sha256": "219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e",
-    "head_at_latest_proof": "5c1f353e9e942fe6490b240a9f2636c9c1607300",
+    "head_at_latest_proof": "cc60c9d667ca26f368bff9b0882c251f2199f52e",
     "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
     "dispatch_run": "51430a881fd14a3cae4459db4f574a15",
     "selector_run": "2be7243f79154d44b2212480e00e0acb",
@@ -347,6 +347,26 @@
       "run": "2c379f91afc2497caf3d95776a8a4567",
       "collector_sha256": "6c09310fa7a9470818538cb4d38feb81285adc05cc88fb84647a83b53e0a89a9",
       "receipt_sha256": "7f4b5e918dcbca5a7ef86ad8abe2211cec8c462b5c6a9e315ffc87b256a0839a"
+    },
+    "snapshot_identity": {
+      "run": "b5a1a97b70394ce0a2569706956059b2",
+      "collector_sha256": "ead78825e1844a908728082984e347b21c3e6f5223b66409f6e5315de4d18f17",
+      "receipt_sha256": "e872cf758bf6f1a76639483d97007fc004bf9c06910abf3a8232eb042f77252e"
+    },
+    "fixed_precedence_extended": {
+      "run": "cdf65acecace450daa337fd9ce092825",
+      "collector_sha256": "24c3e5c4622c530b88eb1664241913e16889d341a61b3c27f197e25a081b2928",
+      "receipt_sha256": "61db9b5cde2b073668f8b3318974ceab8145bd1447509caa268bf274ea04322a"
+    },
+    "prefix_load_order": {
+      "run": "089ae948a8a14785a0ef168e54b6cffe",
+      "collector_sha256": "5d525680489c802e1f24a9b2e5bb94680e147dd7e7647602c87c7383a7cc7ba6",
+      "receipt_sha256": "019f1a7d15afba61be870195330e9616a6af65ae1fd6f46fc484240db5e0edab"
+    },
+    "mode10_pure_transform": {
+      "run": "690ab76987ed463ea94b74f247ad4ea5",
+      "collector_sha256": "3230713fdc34c3b7aab1a94411899415eca7a99822523127d29ddf9d11e340e3",
+      "receipt_sha256": "4070ee36fd2c59dc495f7dfeac2df3297ce381fe6557147ebfd14d482ddef341"
     }
   },
   "interpretation": {
@@ -722,5 +742,400 @@
     "register_preservation": "opaque calls preserve EBX ESI EDI EBP; volatile registers and ESP origins discarded",
     "memory_mutation": "opaque helpers may change pointed-to memory; each mode uses its own guarded snapshot",
     "exclusions": "helper internals, feasibility, complete effects, source order and current-memory equality are not proved"
+  },
+  "snapshot_identity_analysis": {
+    "identity_obligations": {
+      "normal_copy_uses_distinct_current_load": true,
+      "previous_copy_reuses_equality_request": false,
+      "selector_reuses_equality_current": false
+    },
+    "normal_premise": "opaque calls preserve nonvolatile register values only; pointed-to memory may change",
+    "role_status": {
+      "direct_current": "unique_load_site",
+      "equality_current": "unique_load_site",
+      "equality_request": "unique_load_site",
+      "normal_copy_current": "unique_load_site",
+      "previous_copy_request": "unique_load_site"
+    },
+    "scope": "unique static load-site identity on an acyclic entry-reachable CFG; timing is dominance over modeled paths, not feasibility or current-memory equality",
+    "status": "BOUNDED_LOAD_SITE_IDENTITY_AND_DOMINANCE",
+    "timing": {
+      "direct_current": {
+        "EnterCriticalSection": "call_dominates_load",
+        "LeaveCriticalSection": "load_dominates_call"
+      },
+      "equality_current": {
+        "EnterCriticalSection": "load_dominates_call",
+        "LeaveCriticalSection": "load_dominates_call"
+      },
+      "equality_request": {
+        "EnterCriticalSection": "load_dominates_call",
+        "LeaveCriticalSection": "load_dominates_call"
+      },
+      "normal_copy_current": {
+        "EnterCriticalSection": "call_dominates_load",
+        "LeaveCriticalSection": "load_dominates_call"
+      },
+      "previous_copy_request": {
+        "EnterCriticalSection": "call_dominates_load",
+        "LeaveCriticalSection": "load_dominates_call"
+      }
+    }
+  },
+  "fixed_source_precedence": {
+    "columns": [
+      "mode_or_entry",
+      "earlier_role_hypothesis",
+      "later_role_hypothesis",
+      "result"
+    ],
+    "current_memory_equality": "not claimed",
+    "obligations": [
+      [
+        "entry",
+        "enter",
+        "previous",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "enter",
+        "fade",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "enter",
+        "depth_up",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "enter",
+        "dispatch",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "normal_copy",
+        "leave",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "leave",
+        "depth_down",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "4203f0",
+        "421c50",
+        "proved_when_both_occur"
+      ],
+      [
+        0,
+        "mode1",
+        "41fd00",
+        "proved_when_both_occur"
+      ],
+      [
+        0,
+        "41fd00",
+        "result_store",
+        "proved_when_both_occur"
+      ],
+      [
+        0,
+        "mode3",
+        "4203f0",
+        "proved_when_both_occur"
+      ],
+      [
+        7,
+        "variant1",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        7,
+        "42cdb0",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        10,
+        "418150",
+        "variant1",
+        "proved_when_both_occur"
+      ],
+      [
+        10,
+        "418150",
+        "mode7",
+        "proved_when_both_occur"
+      ],
+      [
+        10,
+        "418150",
+        "scalar_load",
+        "proved_when_both_occur"
+      ],
+      [
+        10,
+        "scalar_load",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        10,
+        "mode7",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        11,
+        "variant0",
+        "418150",
+        "proved_when_both_occur"
+      ],
+      [
+        11,
+        "418150",
+        "mode7",
+        "proved_when_both_occur"
+      ],
+      [
+        11,
+        "mode7",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        12,
+        "42cdb0",
+        "mode7",
+        "proved_when_both_occur"
+      ],
+      [
+        12,
+        "mode7",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        12,
+        "variant1",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        13,
+        "418150",
+        "variant1",
+        "proved_when_both_occur"
+      ],
+      [
+        13,
+        "418150",
+        "mode7",
+        "proved_when_both_occur"
+      ],
+      [
+        13,
+        "mode7",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        14,
+        "418150",
+        "40b940",
+        "proved_when_both_occur"
+      ],
+      [
+        4,
+        "418150",
+        "42cd50",
+        "proved_when_both_occur"
+      ],
+      [
+        4,
+        "40b9d0",
+        "42cd50",
+        "proved_when_both_occur"
+      ],
+      [
+        15,
+        "418150",
+        "mode4",
+        "proved_when_both_occur"
+      ],
+      [
+        15,
+        "40b9d0",
+        "mode4",
+        "proved_when_both_occur"
+      ],
+      [
+        15,
+        "mode4",
+        "42cd50",
+        "proved_when_both_occur"
+      ],
+      [
+        15,
+        "exit3",
+        "42cd50",
+        "proved_when_both_occur"
+      ],
+      [
+        7,
+        "42cdb0",
+        "variant1",
+        "proved_when_both_occur"
+      ],
+      [
+        10,
+        "variant1",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        13,
+        "variant1",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        10,
+        "scalar_publish",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        10,
+        "record_publish",
+        "4180e0",
+        "proved_when_both_occur"
+      ],
+      [
+        15,
+        "418150",
+        "exit3",
+        "proved_when_both_occur"
+      ],
+      [
+        15,
+        "40b9d0",
+        "exit3",
+        "proved_when_both_occur"
+      ],
+      [
+        0,
+        "result_store",
+        "4203f0",
+        "proved_when_both_occur"
+      ],
+      [
+        0,
+        "result_store",
+        "leave",
+        "proved_when_both_occur"
+      ]
+    ],
+    "roles": {
+      "40b940": "call_helper_0x40b940",
+      "40b9d0": "call_helper_0x40b9d0",
+      "4180e0": "call_helper_0x4180e0",
+      "418150": "call_helper_0x418150",
+      "41fd00": "call_helper_0x41fd00",
+      "4203f0": "call_helper_0x4203f0",
+      "421c50": "call_helper_0x421c50",
+      "42cd50": "call_helper_0x42cd50",
+      "42cdb0": "call_helper_0x42cdb0",
+      "depth_down": "store_context_0x6f9_dec_modulo256",
+      "depth_up": "store_context_0x6f9_load_snapshot_plus_one_modulo256",
+      "dispatch": "direct current-mode dispatch",
+      "enter": "call_EnterCriticalSection",
+      "exit3": "store_data_0x491c00_constant_3",
+      "fade": "store_context_0x780_constant_0xff000000",
+      "leave": "call_LeaveCriticalSection",
+      "mode1": "store_context_0x390_constant_0x1",
+      "mode3": "store_context_0x390_constant_0x3",
+      "mode4": "store_context_0x390_constant_0x4",
+      "mode7": "store_context_0x390_constant_0x7",
+      "normal_copy": "store_context_0x38c_load_site_origin_field_0x390",
+      "previous": "store_context_0x394_load_site_origin_field_0x38c",
+      "record_publish": "store_data_0x477848_table_0x474788_plus_0x30_times_scalar_load_origin_0x474c80",
+      "result_store": "store_context_0x768_opaque_EAX_result_0x41fd00",
+      "scalar_load": "dword data 0x474C80 load site supplying mode 10 scalar store",
+      "scalar_publish": "store_data_0x474c7c_scalar_load_origin_0x474c80",
+      "variant0": "store_context_0x39c_constant_0x0",
+      "variant1": "store_context_0x39c_constant_0x1"
+    },
+    "scope": "unique event occurrences in acyclic modeled CFG; proved means every path containing both selected events orders them as stated and at least one entry-reachable CFG path through the selected mode contains both and reaches a recognized normal return; does not require both on every path, establish feasibility or classify helper-internal effects",
+    "status": "BOUNDED_FIXED_SOURCE_PRECEDENCE"
+  },
+  "prefix_load_order": {
+    "columns": [
+      "mode_or_entry",
+      "earlier_role_hypothesis",
+      "later_role_hypothesis",
+      "result"
+    ],
+    "current_memory_equality": "not claimed",
+    "obligations": [
+      [
+        "entry",
+        "direct_current_load",
+        "previous",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "direct_current_load",
+        "fade",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "direct_current_load",
+        "depth_up",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "previous_request_load",
+        "depth_up",
+        "proved_when_both_occur"
+      ],
+      [
+        "entry",
+        "previous_request_load",
+        "fade",
+        "proved_when_both_occur"
+      ]
+    ],
+    "roles": {
+      "depth_up": "store_context_0x6f9_load_snapshot_plus_one_modulo256",
+      "direct_current_load": "full dword +390 load supplying direct dispatch",
+      "fade": "store_context_0x780_constant_0xff000000",
+      "previous": "store_context_0x394_load_site_origin_field_0x38c",
+      "previous_request_load": "full dword +38C load supplying previous-field copy"
+    },
+    "scope": "unique event occurrences in acyclic modeled CFG; proved means every path containing both selected events orders them as stated and at least one entry-reachable CFG path through the selected mode contains both and reaches a recognized normal return; does not require both on every path, establish feasibility or classify helper-internal effects",
+    "status": "BOUNDED_FIXED_SOURCE_PRECEDENCE"
+  },
+  "mode10_pure_transform": {
+    "candidate": "remaining unclassified mode 10 instruction effects are full32 register-only transforms in the proved modular record-scale expression",
+    "proved_conditional": true,
+    "recognized_families": [
+      "fixed_left_shift"
+    ],
+    "scope": "closes only this previously unclassified instruction-effect category; no complete-body, frame, helper-internal or native ABI proof",
+    "status": "BOUNDED_MODE10_PURE_TRANSFORM",
+    "unclassified_transform_count": 1,
+    "flags_scope": "EFLAGS writes included; no flag liveness, elimination or complete source-equivalence proof"
   }
 }

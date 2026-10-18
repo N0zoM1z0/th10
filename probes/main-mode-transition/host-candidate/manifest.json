@@ -1,0 +1,18 @@
+{
+  "purpose": "independently authored partial host semantic candidate; no native ABI, layout, complete-effect or body-equivalence acceptance",
+  "files": {
+    ".gitattributes": "2a578f119f11342c2af36d39cf64e8e7c14aea6837f9a2dfc033527c82145ce2",
+    "DESIGN.md": "b80ef76f8c0a132267aab6b4782ef5d3db54ba3c721db518bb5a9d065c52782e",
+    "run_tests.py": "c405fcff121155bbcb43cb395dfe3facaae1a3898d9ae6ef2ba31116c56598f6",
+    "test_transition.cpp": "49503d9789868a40d57fbdb46eabee4f2a79489b775c5e100723e5f26bcc95f4",
+    "transition.cpp": "8393aa2e73df1a8cccb9e51e13067d0fd288f1e65d55fff8964e3fde11c1c43a"
+  },
+  "evidence_receipts": {
+    "remote-helper572-snapshot-identity-receipt.json": "e872cf758bf6f1a76639483d97007fc004bf9c06910abf3a8232eb042f77252e",
+    "remote-helper572-fixed-precedence-extended-receipt.json": "61db9b5cde2b073668f8b3318974ceab8145bd1447509caa268bf274ea04322a",
+    "remote-helper572-mode11-interval-receipt.json": "278f6d363b373e2def798c21964e05df4ac012190d4f50972ff58b533bf1a3f6",
+    "remote-helper572-mode4-partition-receipt.json": "7f4b5e918dcbca5a7ef86ad8abe2211cec8c462b5c6a9e315ffc87b256a0839a",
+    "remote-helper572-prefix-load-order-receipt.json": "019f1a7d15afba61be870195330e9616a6af65ae1fd6f46fc484240db5e0edab",
+    "remote-helper572-mode10-pure-transform-receipt.json": "4070ee36fd2c59dc495f7dfeac2df3297ce381fe6557147ebfd14d482ddef341"
+  }
+}

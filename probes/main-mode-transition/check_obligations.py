@@ -4,7 +4,7 @@ import hashlib,json,sys
 from pathlib import Path
 if sys.flags.optimize:raise SystemExit('optimized Python')
 FACTS_FILE='facts.json'
-FACTS_SHA='79686131c9dc13a290a4cad10fe3cf58540c9973bc3df52ebcd36c9f7c7451b2'
+FACTS_SHA='6653d41b20552b88bf5a44f67028dae74152fea0f7087197c9f792102fb4322a'
 
 def load_contract():
  raw=Path(__file__).with_name(FACTS_FILE).read_bytes()
@@ -94,6 +94,11 @@ def run_tests():
   for event in required:
    assert not required<=allowed-{event};mode4_mutants+=1
   assert not (allowed|{'unproved_helper'})<=allowed;mode4_mutants+=1
+ identity=facts['snapshot_identity_analysis']['identity_obligations']
+ assert identity=={'normal_copy_uses_distinct_current_load':True,'previous_copy_reuses_equality_request':False,'selector_reuses_equality_current':False}
+ order=facts['fixed_source_precedence']['obligations'];prefix_order=facts['prefix_load_order']['obligations']
+ assert len(order)==42 and len(prefix_order)==5 and all(row[3]=='proved_when_both_occur' for row in order+prefix_order)
+ pure=facts['mode10_pure_transform'];assert pure['proved_conditional'] and pure['recognized_families']==['fixed_left_shift'] and pure['unclassified_transform_count']==1
  guard=facts['mode0_guard_obligations']
  for key in ('single_41fd00_call_site','unique_guard','guard_required_after_mode0_dispatch','zero_result_failure_obligations_proved','nonzero_result_normal_return_obligations_proved'):assert guard[key] is True
  guard_cases=0;guard_mutants=0
@@ -121,5 +126,5 @@ def run_tests():
     expected=(result,enter,leave) in ((1,0,0),(1,1,1),(4,1,0))
     assert direct_critical_count_satisfies(result,enter,leave)==expected;checks+=1
  assert not direct_critical_count_satisfies(4,1,1) # Do not insert a speculative unlock fix.
- print(json.dumps({'status':'PASS','finite_inventory_and_count_cases':checks,'projection_schema_and_membership_mutants_killed':mutants,'guard_projection_cases':guard_cases,'guard_projection_mutants_killed':guard_mutants,'prefix_and_receiver_projection_cases':2,'prefix_and_receiver_projection_mutants_killed':6,'mode15_projection_cases':mode15_cases,'mode15_projection_mutants_killed':mode15_mutants,'optional_helper_projection_cases':optional_cases,'optional_helper_membership_mutants_killed':optional_mutants,'mode4_projection_cases':mode4_cases,'mode4_membership_mutants_killed':mode4_mutants,'native_or_body_acceptance':False,'feasibility_or_order_acceptance':False}))
+ print(json.dumps({'status':'PASS','finite_inventory_and_count_cases':checks,'projection_schema_and_membership_mutants_killed':mutants,'guard_projection_cases':guard_cases,'guard_projection_mutants_killed':guard_mutants,'prefix_and_receiver_projection_cases':2,'prefix_and_receiver_projection_mutants_killed':6,'mode15_projection_cases':mode15_cases,'mode15_projection_mutants_killed':mode15_mutants,'optional_helper_projection_cases':optional_cases,'optional_helper_membership_mutants_killed':optional_mutants,'mode4_projection_cases':mode4_cases,'mode4_membership_mutants_killed':mode4_mutants,'fixed_precedence_records_checked':42,'prefix_load_order_records_checked':5,'snapshot_and_mode10_classification_checks':4,'native_or_body_acceptance':False,'feasibility_or_order_acceptance':False}))
 if __name__=='__main__':run_tests()

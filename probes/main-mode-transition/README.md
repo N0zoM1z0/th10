@@ -124,7 +124,7 @@ All four classes require the normal-continuation recognized events and return 1.
 
 1. The fixed optional-helper guards are now closed for modes 4, 7, 11, 12 and 14 as described below. The next source obligations concern precise snapshot identities and call/store timing.
 2. Verify a compact set of source-order and reload obligations: Enter before prefix stores/dispatch; required lifecycle helpers relative to state stores and successor helpers; failure hooks in their source order; and the normal field-copy, Leave, depth-decrement tail. Avoid a generic instruction trace or claims derived solely from unordered memberships.
-3. Classify the remaining mode 10 instruction-effect category against the already proved pure modular record expression, rather than assuming no extra effect.
+3. The mode 10 category is now classified as a fixed register/EFLAGS left shift. Complete effects, flag liveness and full source equivalence remain separate gaps.
 4. Write ordinary C++ with neutral fields and meaningful opaque helper declarations under explicit natural-signature assumptions. Exact private helper ABI, stack/frame restoration, layout ownership and native comparison remain separate acceptance gates. Recovering all nine helper bodies is not a prerequisite for a clearly conditional compiler candidate.
 
 This checkpoint still does not justify a complete executable source body. The next useful work is the small set of guard/order obligations above, rather than further broad inventories.
@@ -150,3 +150,16 @@ This corrects a specific hypothesis from the [pinned public semantic reference](
 These facts quantify modeled CFG continuations and recognized direct helper memberships only. Opaque helper internals, feasible execution, source order, additional aliased effects and full source equivalence remain outside this checkpoint. Normal valid memory, normal opaque-call return, unchanged loader IAT bindings and immutable code/tables remain premises. Nonvolatile register values are preserved under the stated ABI premise; pointed-to memory may change.
 
 The standalone fixture additionally checks 8 optional-helper memberships with 8 membership mutations, and 4 mode 4 projection cases with 9 membership mutations. These are bookkeeping regression controls, not native-body semantic mutants.
+
+
+## Fresh observations and independent host candidate
+
+Actual b5a1a97b70394ce0a2569706956059b2 proves that the direct current-mode selector and previous-request copy use fresh observations after Enter, distinct from the initial equality observations. The normal tail also uses a distinct current-field load. Actual 089ae948a8a14785a0ef168e54b6cffe puts the fresh current load before the three prefix stores, and the fresh previous-request load before the depth and fade stores. The candidate now captures both values immediately after Enter, before those writes; their relative independent read order is not claimed.
+
+Actual cdf65acecace450daa337fd9ce092825 verifies 42 fixed precedence pairs. Each statement is conditional on both selected unique events occurring on a modeled path that reaches a normal return. This is neither a complete execution order nor a claim that both events happen on every path. The facts file preserves the finite source-role table.
+
+Actual 690ab76987ed463ea94b74f247ad4ea5 classifies the one remaining mode 10 instruction category as a fixed full32 register left shift in the record-scale expression. The classification includes EFLAGS writes. It does not prove flags dead, permit arbitrary effect elimination, or establish full source equivalence.
+
+The `host-candidate` subdirectory contains an independently authored ordinary C++ semantic candidate with neutral state fields and mutable abstract hooks. Its hook signatures are host interfaces, not native declarations. Run `python host-candidate/run_tests.py` to compile the model with g++ and check 666 scenarios and 12 compiled mutation rejections. The model exercises opaque memory mutation across Enter, lifecycle helpers and Leave, including the mode 11 variant store that a later helper may overwrite. The ordinary obligation fixture remains runnable separately with `python check_obligations.py`.
+
+The host model remains partial: complete target effects, full frame/stack behavior, helper argument/ABI closure, runtime layout ownership and native comparison are not accepted. No production source is changed by this checkpoint.
