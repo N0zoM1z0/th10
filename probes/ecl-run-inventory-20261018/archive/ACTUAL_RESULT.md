@@ -1,0 +1,7 @@
+# Actual bounded inventory
+
+Parent-executed receipt: repository-command:e8404d04f7554c088119f7331971d970, saved in remote-inventory-receipt.json. Reviewed verifier SHA2567994fd0c444eb909e11acdfa7443ea4f498c8b935b24dc564e82ab6cfe0e1ade. All attribution, input/postpin, decoder and resource gates passed; failure_count0.
+
+Entire7020-byte fixed-position comparison:787 raw differing positions, exactly607 in prefix6692 +180 in table240 +0 in selector88. Recognized candidate linkage-field union covers516 prefix bytes. Its607 prefix differences split into468 inside and139 outside that union. All60 table destinations have equal relative positions when each image's own validated Run origin is subtracted. Complete linear decode and destination-start checks passed.
+
+These are structural counts only. Candidate union recognizes pinned canonical PE DIR32 and external direct-control immediate fields, not every possible linker effect. In particular139 is not a semantic or source-only discrepancy count; target-side linkage effects may remain outside candidate fields. Inside468 need not be explainable by relocation. Raw table180 is not normalized away. Equal relative destination positions are not semantic case equivalence or runtime-dispatch association. Linear decode does not prove code/data partition, reachability, runtime behavior or full-opcode semantics. Diagnostic candidate image remains non-runnable. No exactness/score/adoption authority or source change follows. No op82-specific discrepancy was measured by this inventory.

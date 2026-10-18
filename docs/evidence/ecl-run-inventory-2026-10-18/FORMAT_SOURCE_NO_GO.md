@@ -1,0 +1,29 @@
+# FORMAT source audit: no new justified source trial
+
+Scope: maintained decimal opcode 30 (FORMAT), EclVm.cpp:1148–1200; immutable authored upstream commit 4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a; historical ECLVM-061–064. No target native data, disassembly, builds or maintained-source edits were used. Parent reports current clean HEAD 65e3fd3c; local source pins were independently checked against the supplied source manifest. Full hashes and immutable URLs are in provenance.json.
+
+## Result
+
+No new concrete operand, alias, lifetime or interface defect was found. The localization receipt 632e317d46f84bc188b81bdc916b4400 reports 118 of 139 differences outside recognized candidate fields in the selector-associated physical interval labelled 30. This prioritizes inspection; it does not prove semantic case ownership, a source defect, complete normalization or byte exactness. No candidate or target verifier is proposed from the present comparison.
+
+## Bounded source findings
+
+- Cursor identity: upstream initializes its local scan pointer from the current instruction's operand area plus four bytes; maintained initializes current +0x14. Both headers place operands at +0x10. Both preserve that local scan pointer across operand callbacks, and advance from the found percent by two bytes. Neither silently switches the remaining string to a callback-replaced instruction.
+- Descriptor identity: both obtain each consumed descriptor from the live member instruction, rather than the original scan-pointer base. For the nth consumed d/f conversion (n starts at zero), the type byte is instruction +0x14 + inlineBytes +8*n; the value is whole-instruction word inlineBytes/4 +6 +2*n; the indirect flag index is n+1. Maintained metadataOffset/valueWord/flagIndex are exactly these recurrences. Both use signed integer division for inlineBytes/4. Reusing the single local inlineBytes within one iteration introduces no intervening callback or write between the source loads it replaces.
+- Conversion consumption: only literal d or f consumes a descriptor. Percent-percent and unrecognized conversion characters advance the scan without incrementing descriptor counters. Both accept descriptor types f/g as float and all other types as integer. Conversion letter and descriptor type are deliberately separate decisions.
+- Side effects: both invoke one typed value reader for every consumed descriptor. The helpers preserve direct values, frame reads, tagged stack pops for -1, and host reads for other negative values. Discarding the returned value does not discard those calls. The maintained member ReadFloatValue and upstream static FloatValue receive the same logical context, flag index and value. Upstream context explicitly exists to derive private conventions in its diagnostic link; its static interface is not evidence of an original signature or justification to alter the maintained interface.
+- Scratch lifetime: both allocate 0x400, initialize byte zero, copy the current remaining string, truncate at the percent position, and free once on the ordinary completion path. The found pointer remains into the original instruction string, not the scratch copy. Neither has an allocation-failure check or bounded copy. Those shared hazards are not a new reconstruction gap; speculative hardening would change the contract.
+- Upstream calls an authored empty variadic DebugLog. Maintained omits that inert sink but retains typed operand evaluation. No concrete logging implementation, escaping scratch pointer or retained buffer lifetime appears in this reference. A float-to-double varargs promotion into an empty sink is not evidence to restore an external interface or manufacture a new observable behavior. Floating-environment/exotic host assumptions are not established here.
+- No callback occurs between finding percent, copying/truncating scratch and inspecting its next character. A callback may affect later instruction-member reads in both sources. An arbitrary host that invalidates the retained string would require an external lifetime contract; the reference supplies no such contract and is not a reason to add reloads or copies.
+
+## Historical controls remain closed
+
+ECLVM-061 retains thread-argument scheduling and reports reverted compound FORMAT pointer/switch controls. ECLVM-062 retains percent = found before the null check; maintained source still has precisely that placement. ECLVM-063 reports isolated percent-volatility removal and conversion-switch trials regressing size/matches; this audit found no new lifetime evidence to reopen either. ECLVM-064 rejects a separate typed-copy ordering control and does not justify broad FORMAT spelling searches. Metadata-counter recurrences, scratch homes, volatile declarations, allocator/register coloring and generic spelling are not newly supported hypotheses.
+
+## Evidence and stop condition
+
+Public source was read through the GitHub connector at the immutable commit after web fetch cache misses. Only authored interpreter/header/context sources were inspected, not upstream exact assembly or native artifacts. Upstream identifies its Run as an equivalent recovery and its context as a diagnostic linkage model; it is inspiration, not target authority. provenance.json hashes the fetched UTF-8 source contents without importing them into the maintained tree.
+
+Maintained EclVm.cpp SHA256 8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb; EclVm.hpp SHA256 a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551. Both match manifest.proposed.json source_files. Historical ledger capture is command 342c9b72548a4cfb8897d97858ebb58c, not a fresh code-generation measurement.
+
+Stop: source-only audit complete, honest no-go. Reopening requires independent new operand/lifetime/interface evidence, rather than the large physical difference count alone.

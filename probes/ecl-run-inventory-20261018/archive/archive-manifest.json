@@ -1,0 +1,37 @@
+{
+  "files": {
+    "ACTUAL_LOCALIZATION_RESULT.md": "2bea81b2d3c129d1214950e4d0d9cd6555a6b9a28b816b53e13cfe8bae7ef66c",
+    "ACTUAL_RESULT.md": "c5f46aab35f9a6a8439f77f9f7c6e6a5758abf32e8e8f78c3ed0125fffeac131",
+    "LOCALIZATION_SCOPE_PROPOSED.md": "2e8f612bbab7f754c4c6a3fecf77887e270676efee126aefbfa11d52dc66ce36",
+    "README.md": "47edd8a852ef619a83a0f136c5eff2cc8793dd1161d6ab70aab8d5f790722368",
+    "REPLAY_TESTS.py": "a46ab8497fc3ae98200b0bc98d04054ac247f42da18de808a49098aae35438cf",
+    "SCOPE_PROPOSED.md": "47ef6de5f620972b405783dd9befc0b77a0589df30132cf235d72b54e16f6319",
+    "TEST_REPLAY_WRAPPER.py": "b44a7dda9c85217f4ec3f6e2be3a5ec489b5a697645d1d8e8c1e6734ff22cf02",
+    "inventory.py": "7994fd0c444eb909e11acdfa7443ea4f498c8b935b24dc564e82ab6cfe0e1ade",
+    "localization-output-schema.json": "482fddfdfd533abe047edbcd89ccb004b11f2600065be62d23ce92cdbd1c0299",
+    "localization.py": "e9417b47e2e07afbdd1d1046918ff6edeaed30d864b75524087a3da9ef6746e3",
+    "output-schema.json": "b89b9451c59ca397310fa3d432d389f3b1412ea9b54dc59c7be12b27a8822d10",
+    "remote-inventory-receipt.json": "bba5dc8adefbf4c8f8e2eac2d3b4535f75b9b891330b5312cc8bc05906de1d73",
+    "remote-localization-receipt.json": "3996c7c621fa279934577a8d78ab8a208656a98987a0c22bb28a6138e2267c89",
+    "synthetic-fixtures/op82_baseline_order.py": "782dfc0d32d6b708f158a47e0314725a3148517ddae74c0b40cdc1df50f7c6e5",
+    "synthetic-fixtures/op82_local_order.py": "48d1b68b1986fa3081fa98f0ea80d2cc1e97529a6fcf493722fff4facfa2f91e",
+    "synthetic-fixtures/op82_metadata.py": "e2eabaa83e41d34f15f249fb753a7fad7f082fb1cba4f9a143885887df93f93b",
+    "synthetic-fixtures/run.py": "cb83691809cd57f4e6157987fc81dfd5194b5a426c6fa70cb018e4add3b07755",
+    "synthetic-fixtures/test_op82_baseline_order.py": "585c71fe5509d1215198b79c212474839671513cda7c17a0b850d4029259954b",
+    "synthetic-fixtures/test_op82_local_order.py": "0a4c68603cca937936ad9693255a82eb74f2c63084e8e1009c0583f43a4fa39d",
+    "synthetic-fixtures/test_op82_metadata.py": "bf91821dcc4de64fde037b99968007030c65476ce42965b7b1756fd855e05858",
+    "synthetic-fixtures/test_owner.py": "ea51723b5f2a58089193bd6a4aef77b962cf0964acc293cf7c0f1acd584239ae",
+    "test_inventory.py": "3dea54fa91b141d948d67aa2c8e31e8976cf692d749459b239677a584b3a36bc",
+    "test_localization.py": "00bd73a0930477e6614f95a3d3746b38b427f124c95222352c7ccf24af1a4d8c"
+  },
+  "historical_baseline_head": "a4edda20e434cd40ee99ea3b6b68673a80c3e3be",
+  "kind": "source_only_inventory_localization_archive",
+  "localization_head": "65e3fd3c127c7efe190ed9ac2cd9b82d31bd2725",
+  "native_artifacts_included": false,
+  "portable_replay_passed": {
+    "inventory_tests": 36,
+    "localization_tests": 48,
+    "wrapper_safety_tests": 5
+  },
+  "remote_operation_performed_for_archiving": false
+}

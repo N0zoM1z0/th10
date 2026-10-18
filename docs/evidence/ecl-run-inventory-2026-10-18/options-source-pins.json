@@ -1,0 +1,48 @@
+{
+  "manifest": "/workspace/shared/ecl-run-baseline-plan-v2/manifest.proposed.json",
+  "snapshot_root": "/workspace/shared/gui-opcode20-isolated/candidate",
+  "files": [
+    {
+      "path": "src/FrontEnd.cpp",
+      "sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+      "manifest_match": true
+    },
+    {
+      "path": "src/FrontEnd.hpp",
+      "sha256": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+      "manifest_match": true
+    },
+    {
+      "path": "src/AnmVmId.cpp",
+      "sha256": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "manifest_match": true
+    },
+    {
+      "path": "src/AnmVmId.hpp",
+      "sha256": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "manifest_match": true
+    },
+    {
+      "path": "src/AnmManager.cpp",
+      "sha256": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+      "manifest_match": true
+    },
+    {
+      "path": "src/AnmManager.hpp",
+      "sha256": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+      "manifest_match": true
+    },
+    {
+      "path": "src/EnemySoundQueue.hpp",
+      "sha256": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "manifest_match": true
+    },
+    {
+      "path": "src/Main.hpp",
+      "sha256": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "manifest_match": true
+    }
+  ],
+  "config_path": "/workspace/shared/effect-canonical-bookkeeping/tree/config/match-units.toml",
+  "config_sha256": "8811679fb37ab220216a8926a9ce46b8637335e47cea7cd8d5d8a78b6004cc88"
+}

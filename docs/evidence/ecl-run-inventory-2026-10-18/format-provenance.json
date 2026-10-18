@@ -1,0 +1,31 @@
+{
+  "upstream": [
+    {
+      "name": "Run",
+      "url": "https://github.com/levzzz5154/th10-decomp/blob/4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a/matching2/msvc/src/script/sptcmd/ecl_core_interpreter.cpp",
+      "sha256_utf8": "6ca63ad7cdb6898bf4fef38d05386d64023bd8944286bc8b99c0f7feda6782cb",
+      "line_count": 411
+    },
+    {
+      "name": "Header",
+      "url": "https://github.com/levzzz5154/th10-decomp/blob/4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a/matching2/msvc/include/th10/runtime/script/sptcmd/ecl_core_interpreter.hpp",
+      "sha256_utf8": "7464824d02f3771578b91385a56b342c80c573c6bd87ddff240eb0e35bb4838b",
+      "line_count": 111
+    },
+    {
+      "name": "Context",
+      "url": "https://github.com/levzzz5154/th10-decomp/blob/4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a/matching2/msvc/src/script/sptcmd/ecl_core_interpreter_context.cpp",
+      "sha256_utf8": "26b66dea7f178d09662af3716928bdd282c09e46c40b137be4eabbee0896e8ed",
+      "line_count": 259
+    }
+  ],
+  "local": {
+    "src/EclVm.cpp": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+    "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+    "/workspace/shared/ecl-vm-source-notes.json": "ce5845745357790489cc3c08745dbfb5537c00c3de8e0f055c199d1050b2c315",
+    "/workspace/shared/ecl-run-difference-inventory/remote-localization-receipt.json": "3996c7c621fa279934577a8d78ab8a208656a98987a0c22bb28a6138e2267c89"
+  },
+  "scope": "authored-source-only; no native target or build access",
+  "maintained_manifest_pins_verified": true,
+  "parent_reported_current_head_prefix": "65e3fd3c"
+}
