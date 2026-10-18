@@ -1,17 +1,15 @@
-# A004 and R001 archival recipes
+# A004, R001 and A005 archival recipes
 
-recipes.json stores hash-checked text splices and manifest deltas against the exact existing a003 runner/manifest. It reproduces A004 and R001 without duplicating the full runner or83-source inventory. The overlay comes from the now-reviewed production BulletTransform.cpp only if its raw hash still matches; --overlay can name a preserved matching source fixture later.
+recipes.json stores hash-checked runner/source text splices and manifest deltas against the exact existing A003 archived runner, manifest and overlay. Historical b635 direction-only source and72aa vector-corrected source are reconstructed from archived da1 source bytes. Current production source is never read, so later source corrections and normal CRLF checkouts cannot break old packet replay.
 
 Offline reconstruction, from repository root:
 
-    python3 probes/bullet-transform/native-experiment/recovery-history/reconstruct.py r001 --output /tmp/new-r001-archive
+    python3 probes/bullet-transform/native-experiment/recovery-history/reconstruct.py a005 --output /tmp/new-a005-archive
 
-The output directory must not already exist. This writes three source/config files and never runs them. Historical execution_ready fields preserve original packet identity; approvals have already been consumed. Reconstruction gives no authority for a new build/relink or historical directory reuse. Original environment paths and HEAD pins intentionally remain historical.
+The output directory must not exist and must be outside the repository. This writes three files and never executes them. Historical execution_ready fields preserve original packet identity; approvals were consumed. Reconstruction gives no authority for another build or relink. Original paths, HEAD pins and A004/R001 packets remain exactly reproducible, without full source or runner copies.
 
 Pure tests:
 
     python3 -m unittest discover -s probes/bullet-transform/native-experiment/recovery-history -p 'test_*.py'
 
-See docs/BULLET_DIRECTION_CORRECTION.md and evidence for separate A004 failure and R001 recovery. The R001 recipe retains fail-closed complete attribution, immutable-input checks, exact canonical885 guard, zero compilation/cold_link and one linker invocation. Native artifacts, logs and argv are absent from this archive.
-
-Production source attributes remain unchanged. Existing C++ checkout rules may yield CRLF; host checks canonicalize line endings independently. Historical native reconstruction requires exact raw LF overlay bytes. If the current checkout is CRLF, extract the integrated source Git blob to a temporary file and supply --overlay with that file. The reconstructor deliberately rejects an unpinned raw checkout rather than normalizing it silently.
+The immutable A003 overlay is preserved raw by its existing archive attributes. Production source attributes remain unchanged; C++ checkout may use CRLF and host checks canonicalize that separately. No normalization is performed on pinned archival inputs. See docs/BULLET_VECTOR_CORRECTION.md and the earlier direction note for results and limits. Native artifacts/logs/argv remain absent.

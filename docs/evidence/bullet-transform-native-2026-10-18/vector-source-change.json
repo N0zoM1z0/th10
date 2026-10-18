@@ -1,0 +1,12 @@
+{
+  "baseline_raw_sha256": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0",
+  "proposal_raw_sha256": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+  "proposal_canonical_lf_sha256": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1",
+  "replacement_count": 1,
+  "old_block": "    if (requestedAngle < 990.0f)\n        return requestedAngle;\n    return EnemyAngleFromPlayer(g_Player, &bullet->position);",
+  "new_block": "    if (requestedAngle >= 990.0f)\n        return EnemyAngleFromPlayer(g_Player, &bullet->position);\n    return requestedAngle;",
+  "outside_replacement_bytes_unchanged": true,
+  "crlf_line_count": 0,
+  "lf_line_count": 226,
+  "raw_native_pin_policy": "Exact raw LF bytes; host canonical LF normalization is separate."
+}

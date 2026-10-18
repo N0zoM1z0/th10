@@ -3,23 +3,22 @@
 import argparse, hashlib, json, pathlib, re, subprocess, tempfile, sys
 ROOT=pathlib.Path(__file__).resolve().parent
 DEFAULT=ROOT.parents[1]/'src'
-HASHES={'BulletTransform.cpp':'b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0','BulletManager.hpp':'3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1'}
+HASHES={'BulletTransform.cpp':'72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1','BulletManager.hpp':'3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1'}
 def require(ok,msg):
     if not ok: raise RuntimeError(msg)
 def replace_once(s,old,new):
     require(s.count(old)==1,'mutation anchor not unique: '+old)
     return s.replace(old,new,1)
 MUTATIONS={
- 'unsigned_color':('static_cast<signed char>((packedPattern >> 8) & 0xff)','static_cast<unsigned char>((packedPattern >> 8) & 0xff)'),
- 'copy_17':('sizeof(pattern.transforms));','sizeof(pattern.transforms) - sizeof(pattern.transforms[0]));'),
- 'skip_second_record':('++record;','/* deliberately retain first record */'),
- 'early_spawn_increment':('SpawnBulletPattern(&pattern);\n            ++this->transformIndex;','SpawnBulletPattern(&pattern);\n            this->transformIndex = 2;'),
- 'drop_fade':('if (fadeParent != 0)','if (false)'),
- 'despawn_stops':('EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));\n        break;','EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));\n        return;'),
- 'ungate_skip':('record->allowWhileActive == 0 && this->activeTransformFlags != 0','record->allowWhileActive == 0 && this->activeTransformFlags != 0 && kind != BULLET_TRANSFORM_SKIP'),
- 'wait_zero':('this->exStates[5].timer.SetCurrent(record->payload.int0);','this->exStates[5].timer.SetCurrent(0);'),
- 'nan_literal':('if (requestedAngle < 990.0f)','if (!(requestedAngle >= 990.0f))'),
- 'omit_second_index':('++record;\n            ++this->transformIndex;','++record;'),
+ 'unsigned_color':('static_cast<signed char>((packedPattern >> 8) & 0xff)', 'static_cast<unsigned char>((packedPattern >> 8) & 0xff)'),
+ 'copy_17':('sizeof(pattern.transforms));', 'sizeof(pattern.transforms) - sizeof(pattern.transforms[0]));'),
+ 'skip_second_record':('++record;', '/* deliberately retain first record */'),
+ 'early_spawn_increment':('SpawnBulletPattern(&pattern);\n            ++this->transformIndex;', 'SpawnBulletPattern(&pattern);\n            this->transformIndex = 2;'),
+ 'drop_fade':('if (fadeParent != 0)', 'if (false)'),
+ 'despawn_stops':('EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));\n        break;', 'EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(this));\n        return;'),
+ 'ungate_skip':('record->allowWhileActive == 0 && this->activeTransformFlags != 0', 'record->allowWhileActive == 0 && this->activeTransformFlags != 0 && kind != BULLET_TRANSFORM_SKIP'),
+ 'wait_zero':('this->exStates[5].timer.SetCurrent(record->payload.int0);', 'this->exStates[5].timer.SetCurrent(0);'),
+ 'omit_second_index':('++record;\n            ++this->transformIndex;', '++record;'),
  'bounce_payload':('this->exStates[4].int1 = record->payload.int0;', 'this->exStates[4].int1 = record->payload.int1;'),
  'bounce_counter':('this->exStates[4].int0 = 0;', 'this->exStates[4].int0 = 1;'),
  'bounce_flags':('case BULLET_TRANSFORM_BOUNCE_VARIANT:\n        this->activeTransformFlags |= kind;', 'case BULLET_TRANSFORM_BOUNCE_VARIANT:\n        this->activeTransformFlags = kind;'),
@@ -34,11 +33,17 @@ MUTATIONS={
  'polar_sound_zero':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound > 0)'),
  'polar_sound_negative':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0)'),
  'polar_sound_position':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)\n            BulletQueueSoundAtPosition(this->transformSound, 0.0f);', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)\n            BulletQueueSoundAtPosition(this->transformSound, this->position.x);'),
- 'direction_shared_helper':('        {\n            float requestedAngle = record->payload.float0;\n            if (requestedAngle <= -990.0f)\n                this->exStates[3].value1 = this->angle;\n            else if (requestedAngle >= 990.0f)\n                this->exStates[3].value1 =\n                    EnemyAngleFromPlayer(g_Player, &this->position);\n            else\n                this->exStates[3].value1 = requestedAngle;\n        }', '        this->exStates[3].value1 =\n            BulletResolveTransformAngle(this, record->payload.float0);'),
  'direction_lower_equality':('if (requestedAngle <= -990.0f)\n                this->exStates[3].value1', 'if (requestedAngle < -990.0f)\n                this->exStates[3].value1'),
  'direction_upper_equality':('else if (requestedAngle >= 990.0f)', 'else if (requestedAngle > 990.0f)'),
  'direction_eager_aim':('float requestedAngle = record->payload.float0;', 'float requestedAngle = record->payload.float0;\n            EnemyAngleFromPlayer(g_Player, &this->position);'),
+ 'vector_nan_aim':('    if (requestedAngle >= 990.0f)\n        return EnemyAngleFromPlayer(g_Player, &bullet->position);\n    return requestedAngle;', '    if (requestedAngle < 990.0f)\n        return requestedAngle;\n    return EnemyAngleFromPlayer(g_Player, &bullet->position);'),
+ 'direction_nan_aim':('else if (requestedAngle >= 990.0f)', 'else if (!(requestedAngle < 990.0f))'),
+ 'vector_lower_equality':('if (requestedAngle <= -990.0f)\n        return bullet->angle;', 'if (requestedAngle < -990.0f)\n        return bullet->angle;'),
+ 'vector_upper_equality':('if (requestedAngle >= 990.0f)\n        return EnemyAngleFromPlayer', 'if (requestedAngle > 990.0f)\n        return EnemyAngleFromPlayer'),
+ 'vector_eager_aim':('    if (requestedAngle <= -990.0f)\n        return bullet->angle;', '    EnemyAngleFromPlayer(g_Player, &bullet->position);\n    if (requestedAngle <= -990.0f)\n        return bullet->angle;'),
+ 'ungate_vector':('record->allowWhileActive == 0 && this->activeTransformFlags != 0', 'record->allowWhileActive == 0 && this->activeTransformFlags != 0 && kind != BULLET_TRANSFORM_ACCELERATE_VECTOR'),
 }
+
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--source-dir',type=pathlib.Path,default=DEFAULT);ap.add_argument('--mutations',action='store_true');args=ap.parse_args()
     manifest=json.loads((ROOT/'manifest.json').read_text())

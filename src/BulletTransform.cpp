@@ -15,9 +15,9 @@ static float BulletResolveTransformAngle(
     // >= 990 means aim at the player; values in between are literal angles.
     if (requestedAngle <= -990.0f)
         return bullet->angle;
-    if (requestedAngle < 990.0f)
-        return requestedAngle;
-    return EnemyAngleFromPlayer(g_Player, &bullet->position);
+    if (requestedAngle >= 990.0f)
+        return EnemyAngleFromPlayer(g_Player, &bullet->position);
+    return requestedAngle;
 }
 
 // Target 0x00406D90-0x0040733D. TH08/TH095 were consulted only after the

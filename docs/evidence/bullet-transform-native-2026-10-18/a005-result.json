@@ -1,0 +1,79 @@
+{
+  "command_finished_at": "2026-10-18T08:29:59.400092+00:00",
+  "command_id": "repository-command:23e13cd48e2e40069a852073dce3d2c0",
+  "command_started_at": "2026-10-18T08:29:31.447096+00:00",
+  "production_source_decision": "Retain minimal vector helper semantic correction; no transform exactness credit.",
+  "receipt_sha256": "4a62729e853eb8f56f84a62b779d19c5dd16953974a98ad2bdc2959c199a8094",
+  "result": {
+    "acceptance_authority": "none",
+    "artifact_sha256": {
+      "image": "90abfeda00eb3e8e72a47494dd5dc62a09844556262099f51ff985fe41ee1f8f",
+      "map": "b871fd5e8cd2a6f905b8ba0a730cb78f43f8bfd40a7a1612ac7c5fe4e349edc8",
+      "pdb": "889220cc6025e47b95d974c5202e2df72fd70563c24595a891d47f83487b5085"
+    },
+    "base_commit": "1ace9bb5c34811a6d5911864cbe75599b47966f2",
+    "baseline_valid": true,
+    "build_success": true,
+    "cold_link_calls": 1,
+    "elapsed_seconds": 23.695,
+    "guard": {
+      "compared_size": 885,
+      "exit_ok": true,
+      "image_sha256": "90abfeda00eb3e8e72a47494dd5dc62a09844556262099f51ff985fe41ee1f8f",
+      "matched_bytes": 885,
+      "matched_compared_bytes": 885,
+      "normalization_complete": true,
+      "raw_equal": false,
+      "result": "exact",
+      "size": 885
+    },
+    "manifest_sha256": "44405c372589be571824b9e51e107462d3b706465ab04137a7411258b5d655b0",
+    "object_sha256": {
+      "source.ltcg.obj": "fc5d4bec309d66e4463d10cc5c6cc135c03d3fc4ac4827f1bca3ed9879385def",
+      "support-00-BulletManager.ltcg.obj": "b3ccd46c8a25498e4bc0c9d57088a388427fa7e82067379a8890a8038d5698dd",
+      "support-01-BulletTransform.normal.obj": "4da6109ef273ee2d6973b55296e44ad5d1ff8c751581ff3279f5f00632665ae0",
+      "support-02-PlayerCollision.ltcg.obj": "5eecb79caa3433622b2199c94263683922b24161546b27bb8e06a57e8145f2e7",
+      "support-03-AnmManager.ltcg.obj": "47bb81aa750c71a74fcab5d41b525a073244d24182d7e7dbc5947cdab94b611f",
+      "support-04-EnemyEclDispatcher.ltcg.obj": "68fb0af9804464d388d5bf7b9b353555d13487f23eb41d0ff1876e6be4825e85",
+      "support-05-Enemy.ltcg.obj": "6417c9d4d515f4cc09fbf85924bce80c84c5095ac2a2d2e9b198f0c151f56cfa"
+    },
+    "overlay_sha256": {
+      "src/BulletTransform.cpp": "72aa46821fdae7f35482a30fcfe8abbd48b075a75489f593d922e9ad2ab131d1"
+    },
+    "owners": {
+      "runtime_guard": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "d14e4c66089a4b9e739cbaca48a887d3acc8864617dd67b4df854b36d71bd57c",
+        "size": 885,
+        "size_equal": true,
+        "target_size": 885
+      },
+      "transform": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "72917a0ae941e4e20a0418c93db0bf9810446934d2acf38c7df03d9bc552fb52",
+        "size": 1540,
+        "size_equal": false,
+        "target_size": 1454
+      }
+    },
+    "postrun_pins_valid": true,
+    "process_group_terminated": true,
+    "production_clean": true,
+    "resource_policy": {
+      "address_space": "inherit_unlimited_without_setrlimit",
+      "cpu_affinity_count": 1,
+      "cpu_seconds": 120,
+      "nice_increment": 10,
+      "wall_seconds": 150
+    },
+    "restart_allowed": false,
+    "runner_sha256": "30beed535bda0d3f6819bca0fd973c5c7a6e1306f055ecdea1308e4126c28341",
+    "runtime_executed": false,
+    "stage": "complete",
+    "state": "completed",
+    "transform_exactness_tested": false,
+    "unresolved_count": 203
+  }
+}

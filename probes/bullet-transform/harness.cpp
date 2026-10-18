@@ -83,8 +83,16 @@ static void angles(){
  const float expected[]={.25f,.25f,.25f,-989,989,.75f,.75f,.75f,.75f};
  for(int i=0;i<9;++i){
   reset();rec(0,0x10,2,0,3,values[i]);b.AdvanceTransformProgram();
-  check(b.exStates[1].value1==expected[i],"vector angle sentinels including NaN aim unchanged");
-  check(aimCalls==(i>=5?1:0),"vector aim is lazy and called once only for aim cases");
+  if(i==8)check(std::isnan(b.exStates[1].value1),"vector NaN angle remains NaN");
+  else check(b.exStates[1].value1==expected[i],"vector finite and infinite angle sentinels");
+  check(aimCalls==((i>=5&&i<=7)?1:0),"vector aim is lazy; NaN never calls aim");
+ }
+ for(float angle:{inf,nan}){
+  reset();b.activeTransformFlags=1;b.exStates[1].value1=17;
+  BulletRuntimeView before;std::memcpy(&before,&b,sizeof(before));
+  rec(0,0x10,2,3,2,angle,0);std::memcpy(before.transforms,b.transforms,sizeof(b.transforms));
+  b.AdvanceTransformProgram();
+  check(aimCalls==0&&std::memcmp(&before,&b,sizeof(b))==0,"gated vector neither calls aim nor writes state");
  }
  for(unsigned kind:{0x40u,0x80u,0x100u}){
   for(int i=0;i<9;++i){
