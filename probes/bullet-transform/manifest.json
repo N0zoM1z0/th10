@@ -1,13 +1,13 @@
 {
   "source_identity": "sha256 after CRLF-to-LF only; reject remaining CR",
   "sources": {
-    "BulletTransform.cpp": "49142d9f3329defafa29e53f1993fcaec17c1042142f010576e00ecf5d5b27ee",
+    "BulletTransform.cpp": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0",
     "BulletManager.hpp": "3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1"
   },
   "artifacts_raw_sha256": {
-    "run.py": "26bae9fb3782dcd7cd09fb050008bb70a25824a58c7b3aa22cc13b5a2ca191e8",
-    "harness.cpp": "d14ba158cf87c10fa389b9a3a0daf582248afd3afea6d228cd9ccf1732901aea",
-    "README.md": "a3a1c1e9331e72558ef835ecc557432d9e90748f7bb7ad7928bdd8ecc1e6abf5",
+    "run.py": "fbccb8adff7909905be2adc0e9a6c582d899f27180f8ac76ded04c260db87ebf",
+    "harness.cpp": "db8683d60483fe24001cd1d269f910701ab0ea30402b95d3b78d6dae2456b7db",
+    "README.md": "b423cc514e0399d31e117928f0860f068e9b6f5cc3824dd9149c571df4de0270",
     ".gitattributes": "df29ed0dab6de040a422667cdfd75f283b430e8e170491b5404f9caf27071b62"
   }
 }

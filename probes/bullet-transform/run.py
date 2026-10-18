@@ -3,7 +3,7 @@
 import argparse, hashlib, json, pathlib, re, subprocess, tempfile, sys
 ROOT=pathlib.Path(__file__).resolve().parent
 DEFAULT=ROOT.parents[1]/'src'
-HASHES={'BulletTransform.cpp':'49142d9f3329defafa29e53f1993fcaec17c1042142f010576e00ecf5d5b27ee','BulletManager.hpp':'3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1'}
+HASHES={'BulletTransform.cpp':'b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0','BulletManager.hpp':'3eb4b14e48456c4cec49a851e7c4ede0b7c38ef71c40a36ccd5321da622701c1'}
 def require(ok,msg):
     if not ok: raise RuntimeError(msg)
 def replace_once(s,old,new):
@@ -34,6 +34,10 @@ MUTATIONS={
  'polar_sound_zero':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound > 0)'),
  'polar_sound_negative':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0)'),
  'polar_sound_position':('        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)\n            BulletQueueSoundAtPosition(this->transformSound, 0.0f);', '        this->exStates[2].int0 = record->payload.int0;\n        if (this->transformIndex != 0 && this->transformSound >= 0)\n            BulletQueueSoundAtPosition(this->transformSound, this->position.x);'),
+ 'direction_shared_helper':('        {\n            float requestedAngle = record->payload.float0;\n            if (requestedAngle <= -990.0f)\n                this->exStates[3].value1 = this->angle;\n            else if (requestedAngle >= 990.0f)\n                this->exStates[3].value1 =\n                    EnemyAngleFromPlayer(g_Player, &this->position);\n            else\n                this->exStates[3].value1 = requestedAngle;\n        }', '        this->exStates[3].value1 =\n            BulletResolveTransformAngle(this, record->payload.float0);'),
+ 'direction_lower_equality':('if (requestedAngle <= -990.0f)\n                this->exStates[3].value1', 'if (requestedAngle < -990.0f)\n                this->exStates[3].value1'),
+ 'direction_upper_equality':('else if (requestedAngle >= 990.0f)', 'else if (requestedAngle > 990.0f)'),
+ 'direction_eager_aim':('float requestedAngle = record->payload.float0;', 'float requestedAngle = record->payload.float0;\n            EnemyAngleFromPlayer(g_Player, &this->position);'),
 }
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--source-dir',type=pathlib.Path,default=DEFAULT);ap.add_argument('--mutations',action='store_true');args=ap.parse_args()

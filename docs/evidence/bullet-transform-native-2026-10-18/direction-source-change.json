@@ -1,0 +1,12 @@
+{
+  "baseline_raw_sha256": "49142d9f3329defafa29e53f1993fcaec17c1042142f010576e00ecf5d5b27ee",
+  "proposal_raw_sha256": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0",
+  "proposal_canonical_lf_sha256": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0",
+  "replacement_count": 1,
+  "old_block": "        this->exStates[3].value1 =\n            BulletResolveTransformAngle(this, record->payload.float0);",
+  "new_block": "        {\n            float requestedAngle = record->payload.float0;\n            if (requestedAngle <= -990.0f)\n                this->exStates[3].value1 = this->angle;\n            else if (requestedAngle >= 990.0f)\n                this->exStates[3].value1 =\n                    EnemyAngleFromPlayer(g_Player, &this->position);\n            else\n                this->exStates[3].value1 = requestedAngle;\n        }",
+  "outside_replacement_bytes_unchanged": true,
+  "crlf_line_count": 0,
+  "lf_line_count": 226,
+  "raw_native_pin_policy": "Exact raw LF bytes; host canonical LF normalization is separate and does not change the native overlay."
+}

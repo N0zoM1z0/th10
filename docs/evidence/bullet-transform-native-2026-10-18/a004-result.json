@@ -1,0 +1,34 @@
+{
+  "command_finished_at": "2026-10-18T07:42:16.663019+00:00",
+  "command_id": "repository-command:d2912f09ce6047bbb4302212ffd2a563",
+  "command_started_at": "2026-10-18T07:40:45.460839+00:00",
+  "production_source_decision": "Terminal failure preserved; successful recovery is a distinct later run.",
+  "receipt_sha256": "ac815531c281d89a385c0adae070d6b4fb3fadd3801d76ed3ef3e52361baf181",
+  "result": {
+    "acceptance_authority": "none",
+    "base_commit": "ffa436400e8e20898d165cb971e174a870d87190",
+    "cold_link_calls": 1,
+    "elapsed_seconds": 79.697,
+    "error_class": "ValueError",
+    "manifest_sha256": "6b77b520d5b91279d44c5ae70b522569196f3ba664450cdd62a19f771bea29c4",
+    "overlay_sha256": {
+      "src/BulletTransform.cpp": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0"
+    },
+    "postrun_pins_valid": true,
+    "process_group_terminated": true,
+    "production_clean": true,
+    "resource_policy": {
+      "address_space": "inherit_unlimited_without_setrlimit",
+      "cpu_affinity_count": 1,
+      "cpu_seconds": 120,
+      "nice_increment": 10,
+      "wall_seconds": 150
+    },
+    "restart_allowed": false,
+    "runner_sha256": "8db347ed9a025d8db394aa0c13be50b0ee033461b0befb7bfd1e03da0b2e63ba",
+    "runtime_executed": false,
+    "stage": "cold_link",
+    "state": "failed",
+    "transform_exactness_tested": false
+  }
+}

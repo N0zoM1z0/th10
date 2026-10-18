@@ -82,8 +82,16 @@ nextRecord:
     case BULLET_TRANSFORM_CHANGE_DIRECTION_AIMED:
     case BULLET_TRANSFORM_CHANGE_DIRECTION_ABSOLUTE:
         this->activeTransformFlags |= kind;
-        this->exStates[3].value1 =
-            BulletResolveTransformAngle(this, record->payload.float0);
+        {
+            float requestedAngle = record->payload.float0;
+            if (requestedAngle <= -990.0f)
+                this->exStates[3].value1 = this->angle;
+            else if (requestedAngle >= 990.0f)
+                this->exStates[3].value1 =
+                    EnemyAngleFromPlayer(g_Player, &this->position);
+            else
+                this->exStates[3].value1 = requestedAngle;
+        }
         this->exStates[3].value0 =
             record->payload.float1 > -999.0f
                 ? record->payload.float1

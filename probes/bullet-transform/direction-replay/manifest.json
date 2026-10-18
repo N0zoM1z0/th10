@@ -1,0 +1,13 @@
+{
+  "executed_receipt": "repository-command:60bd48b13ede4900971ac1f79441ba59",
+  "files": {
+    "AUDIT.md": "088b67f002e946d75fd21864eda8215b160d0a7b6629be8123041d33e09cda5c",
+    "README.md": "47c89d26a5b2409ce96957c19fd96edf78bc8c032ab7f600746c88facc5f8fc8",
+    "requirements.txt": "0b5b462726d0bc46a83cca7da256f0fc609d110f52ccf82cfbcc295e9e5b941a",
+    "test_synthetic.py": "63c46f9386544f76ae3a9dc7cb45c07bc37fa60ec9f64b4be047a8508e3cad41",
+    "verify_direction_nan.py": "581eb1fdb1e4e2068c901bfea6d402c9aca1bde5f27d48a2192596e5e90da671"
+  },
+  "production_source_changed": false,
+  "schema": 1,
+  "target_payload_included": false
+}

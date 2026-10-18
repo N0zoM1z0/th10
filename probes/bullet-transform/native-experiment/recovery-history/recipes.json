@@ -1,0 +1,377 @@
+{
+  "base_manifest_sha256": "a064b5422d3ef131d138523db44991a6e581447b6cd65066bfa0f90b65fe8bce",
+  "base_runner_sha256": "265f014afd96ff452b4d025d65481554daa26f2ec81e60051103ee2b8b3d5c46",
+  "recipes": {
+    "a004": {
+      "manifest_remove": [],
+      "manifest_replace": {
+        "base_commit": "ffa436400e8e20898d165cb971e174a870d87190",
+        "experiment": {
+          "authorized_build_count": 1,
+          "baseline_run": ".analysis/bullet1454-native-baseline-20261018-a002",
+          "evidence_command": "repository-command:60bd48b13ede4900971ac1f79441ba59",
+          "evidence_scope": "Reviewed entry-aligned direction witnesses cover three kinds; direction predicate input binds current-record float0 with freshness. Explicit proof premises remain applicable.",
+          "host_evidence": "Exact LF overlay source reversal reviewed; final host baseline and 28 compiled semantic mutation kills passed under Python -O. Reviewer independently verified source reversal and host baseline;18 runner plus4 owner tests pass.",
+          "name": "direction-only ordered NaN correction",
+          "rejected_comparison_command": "repository-command:c63842fcba7c410899230148295c07fe",
+          "source_policy": "Only direction callsite expansion; preserve vector helper and all other production source. No forceinline/signature/profile/graph/entry/normal-support changes."
+        },
+        "overlays": {
+          "src/BulletTransform.cpp": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0"
+        },
+        "review_disposition": "Independent review approved source overlay b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0 and runner8db347ed9a025d8db394aa0c13be50b0ee033461b0befb7bfd1e03da0b2e63ba, with only HEAD/overlay pin changes from A003. One fresh parent-only A004 after final manifest hash verification; no production integration or transform acceptance authority."
+      },
+      "manifest_sha256": "6b77b520d5b91279d44c5ae70b522569196f3ba664450cdd62a19f771bea29c4",
+      "overlay_sha256": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0",
+      "runner_sha256": "8db347ed9a025d8db394aa0c13be50b0ee033461b0befb7bfd1e03da0b2e63ba",
+      "runner_splices": [
+        {
+          "end": 270,
+          "replacement": "ffa436400",
+          "start": 270
+        },
+        {
+          "end": 271,
+          "replacement": "8e208",
+          "start": 271
+        },
+        {
+          "end": 272,
+          "replacement": "8d165cb971e17",
+          "start": 272
+        },
+        {
+          "end": 282,
+          "replacement": "a",
+          "start": 273
+        },
+        {
+          "end": 285,
+          "replacement": "",
+          "start": 283
+        },
+        {
+          "end": 290,
+          "replacement": "d8719",
+          "start": 287
+        },
+        {
+          "end": 310,
+          "replacement": "",
+          "start": 291
+        },
+        {
+          "end": 1264,
+          "replacement": "b635",
+          "start": 1264
+        },
+        {
+          "end": 1266,
+          "replacement": "",
+          "start": 1265
+        },
+        {
+          "end": 1274,
+          "replacement": "7c1f7b",
+          "start": 1267
+        },
+        {
+          "end": 1278,
+          "replacement": "",
+          "start": 1276
+        },
+        {
+          "end": 1295,
+          "replacement": "",
+          "start": 1279
+        },
+        {
+          "end": 1323,
+          "replacement": "",
+          "start": 1296
+        },
+        {
+          "end": 1326,
+          "replacement": "8fc7b9fd445",
+          "start": 1326
+        },
+        {
+          "end": 1328,
+          "replacement": "6c32b0e1f90fd6f718a4e6a7460516c0",
+          "start": 1328
+        }
+      ]
+    },
+    "r001": {
+      "manifest_remove": [],
+      "manifest_replace": {
+        "base_commit": "ffa436400e8e20898d165cb971e174a870d87190",
+        "cold_link_calls": 0,
+        "compile_calls": 0,
+        "experiment": {
+          "authorized_build_count": 0,
+          "authorized_relink_count": 1,
+          "baseline_run": ".analysis/bullet1454-native-baseline-20261018-a002",
+          "evidence_command": "repository-command:60bd48b13ede4900971ac1f79441ba59",
+          "evidence_scope": "Reviewed entry-aligned direction witnesses cover three kinds; direction predicate input binds current-record float0 with freshness. Explicit proof premises remain applicable.",
+          "host_evidence": "Exact LF overlay source reversal reviewed; final host baseline and 28 compiled semantic mutation kills passed under Python -O. Reviewer independently verified source reversal and host baseline;18 runner plus4 owner tests pass.",
+          "name": "one-shot existing-object relink recovery",
+          "rejected_comparison_command": "repository-command:c63842fcba7c410899230148295c07fe",
+          "source_policy": "Only direction callsite expansion; preserve vector helper and all other production source. No forceinline/signature/profile/graph/entry/normal-support changes."
+        },
+        "link_calls": 1,
+        "link_recovery": {
+          "cold_link_calls": 0,
+          "compile_calls": 0,
+          "failure": "LNK1181 input .obj; historical argv unknown",
+          "fresh_run": ".analysis/bullet1454-relink-recovery-20261018-r001",
+          "input_validation_command": "repository-command:740aae324e42460d9397120284bea4e2",
+          "link_calls": 1,
+          "original_run": ".analysis/bullet1454-native-baseline-20261018-a004",
+          "preconditions": "All ten input hashes,203 alias lines and12 regenerated nonempty exact paths validated; registry unchanged. No claim of historical empty-argument cause."
+        },
+        "overlays": {
+          "src/BulletTransform.cpp": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0"
+        },
+        "recovery_input_sha256": {
+          "link-aliases.rsp": "7af855ebef42efc8d424897afd358bcfff13b212aacdec1f4f9339920ad30e56",
+          "link-anchors.c": "97d1508d5b5d2d5e0511e73e05adb49178e3424d162f13343896db92c3f2561b",
+          "link-anchors.obj": "eca4985bb3550a6da21e4152a792b1410a9779269eb5c868088412c03d42a9fc",
+          "source.ltcg.obj": "c3f4f64a1887010fcc33e492f0b523eeee2b02d9c69a92d0dc8b6bf6585de405",
+          "support-00-BulletManager.ltcg.obj": "fc907d299c2d1c9cd018025ee51d1fe89e83ecc5ec0b6a681e545b6838f5eca8",
+          "support-01-BulletTransform.normal.obj": "d752ef6315dc601587dee1d9059b6ca61d23b3ab1aed3c4927a0887622925ba5",
+          "support-02-PlayerCollision.ltcg.obj": "75b1da2db133ef7453ec052ae35fe87cee7213df9c231069c211378250503d69",
+          "support-03-AnmManager.ltcg.obj": "75524aec73e162490aab772b03a5e20407be8b6268fe9f2040106b2ff9b8a7fd",
+          "support-04-EnemyEclDispatcher.ltcg.obj": "585212761b47c2b33405c9b1b649e3dfc14d4569a1a73c6ae40d4c7625941ae1",
+          "support-05-Enemy.ltcg.obj": "6c92e2d055f945fff9fb4aebfc3d3f15d697278fdab2c395ffa3dbc08a4f5937"
+        },
+        "recovery_of": ".analysis/bullet1454-native-baseline-20261018-a004",
+        "resource_policy": {
+          "address_space": "inherit_unlimited_without_setrlimit",
+          "cpu_affinity_count": 1,
+          "cpu_seconds": 60,
+          "linker_wall_seconds": 90,
+          "nice_increment": 10,
+          "wall_seconds": 150
+        },
+        "review_disposition": "Independent review approved runner57feaaaea31ca109b71166d982d2180a5ae27186a3f774625633cdd39a17a05e and23 source-only tests for one parent-only fresh r001 relink. Zero compile/cold_link, unchanged graph/profile/entry/aliases, mandatory canonical exact885 and complete owner attribution; no production integration authority."
+      },
+      "manifest_sha256": "76f6333e1ab88f6bbc918fc2dd4428c4d9087de084ae0db08af2c9a6ca15bc46",
+      "overlay_sha256": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0",
+      "runner_sha256": "57feaaaea31ca109b71166d982d2180a5ae27186a3f774625633cdd39a17a05e",
+      "runner_splices": [
+        {
+          "end": 270,
+          "replacement": "ffa436400",
+          "start": 270
+        },
+        {
+          "end": 271,
+          "replacement": "8e208",
+          "start": 271
+        },
+        {
+          "end": 272,
+          "replacement": "8d165cb971e17",
+          "start": 272
+        },
+        {
+          "end": 282,
+          "replacement": "a",
+          "start": 273
+        },
+        {
+          "end": 285,
+          "replacement": "",
+          "start": 283
+        },
+        {
+          "end": 290,
+          "replacement": "d8719",
+          "start": 287
+        },
+        {
+          "end": 310,
+          "replacement": "",
+          "start": 291
+        },
+        {
+          "end": 1264,
+          "replacement": "b635",
+          "start": 1264
+        },
+        {
+          "end": 1266,
+          "replacement": "",
+          "start": 1265
+        },
+        {
+          "end": 1274,
+          "replacement": "7c1f7b",
+          "start": 1267
+        },
+        {
+          "end": 1278,
+          "replacement": "",
+          "start": 1276
+        },
+        {
+          "end": 1295,
+          "replacement": "",
+          "start": 1279
+        },
+        {
+          "end": 1323,
+          "replacement": "",
+          "start": 1296
+        },
+        {
+          "end": 1326,
+          "replacement": "8fc7b9fd445",
+          "start": 1326
+        },
+        {
+          "end": 1328,
+          "replacement": "6c32b0e1f90fd6f718a4e6a7460516c0",
+          "start": 1328
+        },
+        {
+          "end": 1417,
+          "replacement": "OLD_RUN='.analysis/bullet1454-native-baseline-20261018-a004'\nNEW_RUN='.analysis/bullet1454-relink-recovery-20261018-r001'\nRECOVERY_PINS={'link-aliases.rsp': '7af855ebef42efc8d424897afd358bcfff13b212aacdec1f4f9339920ad30e56', 'link-anchors.c': '97d1508d5b5d2d5e0511e73e05adb49178e3424d162f13343896db92c3f2561b', 'link-anchors.obj': 'eca4985bb3550a6da21e4152a792b1410a9779269eb5c868088412c03d42a9fc', 'source.ltcg.obj': 'c3f4f64a1887010fcc33e492f0b523eeee2b02d9c69a92d0dc8b6bf6585de405', 'support-00-BulletManager.ltcg.obj': 'fc907d299c2d1c9cd018025ee51d1fe89e83ecc5ec0b6a681e545b6838f5eca8', 'support-01-BulletTransform.normal.obj': 'd752ef6315dc601587dee1d9059b6ca61d23b3ab1aed3c4927a0887622925ba5', 'support-02-PlayerCollision.ltcg.obj': '75b1da2db133ef7453ec052ae35fe87cee7213df9c231069c211378250503d69', 'support-03-AnmManager.ltcg.obj': '75524aec73e162490aab772b03a5e20407be8b6268fe9f2040106b2ff9b8a7fd', 'support-04-EnemyEclDispatcher.ltcg.obj': '585212761b47c2b33405c9b1b649e3dfc14d4569a1a73c6ae40d4c7625941ae1', 'support-05-Enemy.ltcg.obj': '6c92e2d055f945fff9fb4aebfc3d3f15d697278fdab2c395ffa3dbc08a4f5937'}\n",
+          "start": 1417
+        },
+        {
+          "end": 1459,
+          "replacement": "6",
+          "start": 1457
+        },
+        {
+          "end": 1478,
+          "replacement": "0,'linker_wall_seconds':9",
+          "start": 1478
+        },
+        {
+          "end": 3462,
+          "replacement": "0 and m['compile_calls']==0 and m['link_calls']==",
+          "start": 3462
+        },
+        {
+          "end": 3463,
+          "replacement": " and m['recovery_input_sha256']==RECOVERY_PINS",
+          "start": 3463
+        },
+        {
+          "end": 6744,
+          "replacement": "require(original_inventory(repo)==json.loads((tree.parent/'original-inventory.json').read_text()),'historical run drift')\n ",
+          "start": 6744
+        },
+        {
+          "end": 7053,
+          "replacement": " drift')\n build=tree/'build/match-linked/BulletRuntimeUpdate'\n if build.exists():\n  for n,h in RECOVERY_PINS.items():require(sha(safe(build,n))==h,'recovery copy postcheck",
+          "start": 7053
+        },
+        {
+          "end": 12048,
+          "replacement": "original_inventory(repo):\n old=repo/OLD_RUN;no_symlinks(old);require(old.is_dir(),'missing original run');result={};total=0\n for p in sorted(old.rglob('*')):\n  no_symlinks(p)\n  if p.is_file():\n   require(len(result)<512 and p.stat().st_size<=64*1024*1024,'historical inventory bound');total+=p.stat().st_size;require(total<=256*1024*1024,'historical total bound');result[str(p.relative_to(old))]=sha(p)\n for n,h in RECOVERY_PINS.items():require(result.get('candidate/build/match-linked/BulletRuntimeUpdate/'+n)==h,'original recovery input drift')\n require(result.get('runner.py')=='8db347ed9a025d8db394aa0c13be50b0ee033461b0befb7bfd1e03da0b2e63ba' and result.get('manifest.json')=='6b77b520d5b91279d44c5ae70b522569196f3ba664450cdd62a19f771bea29c4','original packet drift')\n return result\n\ndef response_symbols(raw):\n lines=raw.decode('ascii').splitlines();require(len(lines)==203,'response count drift');symbols=[]\n for i,line in enumerate(lines):\n  m=re.fullmatch(r'/alternatename:([A-Za-z0-9_?@$.]+)=_th10_ltcg_probe_anchor_([0-9]{4})',line)\n  require(m is not None and int(m[2])==i,'response grammar drift');symbols.append(m[1])\n require(len(set(symbols))==len(symbols),'duplicate aliases');return symbols\n\ndef checked_windows_path(path,environment):\n require(not any(k in os.environ for k in ('WINE','WINESERVER','WINELOADER')),'Wine override')\n wp=P('/usr/bin/winepath');require(str(wp.resolve())=='/usr/lib/wine/wineapploader' and sha(wp.resolve())=='3e3fa1050f95b39cf90e21f03e6e8cda4415a480db696719ef137e3c7a86bb54','winepath identity')\n # Keep wrapper argv0; bound output on disk instead of exposing it.\n import tempfile\n with tempfile.TemporaryFile() as output:\n  done=subprocess.run([str(wp),'-w',str(path.resolve())],env=environment,stdout=output,stderr=subprocess.DEVNULL,timeout=5)\n  output.seek(0);raw=output.read(8193)\n require(done.returncode==0 and len(raw)<=8192,'winepath failure')\n value=raw.decode('ascii').strip().replace('\\r','');expected='Z:'+str(path.resolve()).replace('/','\\\\')\n require(bool(value) and '\\n' not in value and '\\x00' not in value and value.lower()==expected.lower(),'winepath empty or wrong path')\n return value\n\ndef relink_existing(repo,tree,run,l,linker,environment,out):\n build=tree/'build/match-linked/BulletRuntimeUpdate';build.mkdir(parents=True,exist_ok=False)\n original=repo/OLD_RUN/'candidate/build/match-linked/BulletRuntimeUpdate'\n for n,h in RECOVERY_PINS.items():\n  src=safe(original,n);require(sha(src)==h,'original object drift');shutil.copyfile(src,build/n);require(sha(build/n)==h,'copied object drift')\n symbols=response_symbols((build/'link-aliases.rsp').read_bytes())\n objects=[build/'source.ltcg.obj']+[build/('support-%02d-'%i+P(s).stem+('.normal.obj' if s=='src/BulletTransform.cpp' else '.ltcg.obj')) for i,s in enumerate(SUPPORT)]\n image=build/'source.exe';map_path=build/'source.map';pdb=build/'source.pdb';anchor=build/'link-anchors.obj';aliases=build/'link-aliases.rsp'\n paths=[map_path,pdb,image,*objects,anchor,aliases];cache={p.resolve():checked_windows_path(p,environment) for p in paths};require(len(cache)==12,'path set drift')\n # Canonical link_command consumes cached validated paths, never reconverts them.\n previous=l.windows_path\n def cached(path,env):require(env is environment and path.resolve() in cache,'unexpected path request');return cache[path.resolve()]\n try:\n  l.windows_path=cached;argv=l.link_command(linker,environment,objects,ENTRY,image,map_path,pdb,anchor,aliases)\n finally:l.windows_path=previous\n expected=[str(tree/'scripts/run-headless-wine.sh'),'wine',str(linker),'/nologo',*LINK,'/entry:'+ENTRY,'/map:'+cache[map_path.resolve()],'/pdb:'+cache[pdb.resolve()],'/out:'+cache[image.resolve()],*[cache[p.resolve()] for p in objects],cache[anchor.resolve()],'@'+cache[aliases.resolve()]]\n require(argv==expected and all(type(a) is str and a and '\\x00' not in a for a in argv),'link argv drift');write(run/'argv-private.json',{'argv':argv})\n out['link_calls']=1\n with (run/'link-private.log').open('xb') as log:\n  linked=subprocess.run(argv,cwd=tree,env=environment,stdout=log,stderr=subprocess.STDOUT,timeout=90)\n require(linked.returncode==0,'single relink failed')\n for n,h in RECOVERY_PINS.items():require(sha(build/n)==h,'copied link input drift')\n require(all(p.is_file() for p in (image,map_path,pdb)),'missing relink artifacts')\n l.validate_link_entry(image,map_path,pdb,ENTRY,objects)\n return {'image':image,'map':map_path,'pdb':pdb,'objects':objects,'unresolved_symbols':symbols}\n\ndef ",
+          "start": 12048
+        },
+        {
+          "end": 12252,
+          "replacement": "link_calls':0,'compile_calls':0,'",
+          "start": 12252
+        },
+        {
+          "end": 12542,
+          "replacement": "6",
+          "start": 12540
+        },
+        {
+          "end": 12546,
+          "replacement": "6",
+          "start": 12544
+        },
+        {
+          "end": 13630,
+          "replacement": "",
+          "start": 13605
+        },
+        {
+          "end": 13644,
+          "replacement": "re",
+          "start": 13639
+        },
+        {
+          "end": 13665,
+          "replacement": "re",
+          "start": 13658
+        },
+        {
+          "end": 13669,
+          "replacement": "_existing",
+          "start": 13669
+        },
+        {
+          "end": 13671,
+          "replacement": "",
+          "start": 13670
+        },
+        {
+          "end": 13695,
+          "replacement": "",
+          "start": 13673
+        },
+        {
+          "end": 13698,
+          "replacement": "o",
+          "start": 13696
+        },
+        {
+          "end": 13731,
+          "replacement": ",r",
+          "start": 13703
+        },
+        {
+          "end": 13744,
+          "replacement": "",
+          "start": 13733
+        },
+        {
+          "end": 13750,
+          "replacement": "l",
+          "start": 13745
+        },
+        {
+          "end": 13773,
+          "replacement": "ou",
+          "start": 13770
+        },
+        {
+          "end": 13842,
+          "replacement": "",
+          "start": 13774
+        },
+        {
+          "end": 16119,
+          "replacement": "==repo/NEW_RUN,'wrong fixed recovery run')\n require(run",
+          "start": 16119
+        },
+        {
+          "end": 17637,
+          "replacement": "re",
+          "start": 17632
+        },
+        {
+          "end": 17975,
+          "replacement": "link_calls','compile_calls','",
+          "start": 17975
+        },
+        {
+          "end": 20879,
+          "replacement": ")\n  write(run/'original-inventory.json',original_inventory(repo)",
+          "start": 20879
+        }
+      ]
+    }
+  },
+  "schema": 1
+}

@@ -2,7 +2,7 @@
 
 Run `python3 run.py --mutations` or `python3 -O run.py --mutations`.
 Requires Python 3 and g++ supporting C++17. No network or external services.
-By default the source pair is read from the repository `src` directory (`ROOT.parents[1]/src`). Use `--source-dir PATH` for another location. Source pins identify canonical LF bytes: only CRLF is converted to LF, and any remaining bare CR is rejected. No other normalization is permitted. The pins equal the original raw LF source hashes; this explicit policy supports the repository CRLF checkout rules.
+By default the source pair is read from the repository `src` directory (`ROOT.parents[1]/src`). Use `--source-dir PATH` for another location. Source pins identify canonical LF bytes: only CRLF is converted to LF, and any remaining bare CR is rejected. No other normalization is permitted. The implementation pin identifies the direction-only correction proposal; the header pin remains unchanged. Canonical LF identity supports the repository CRLF checkout rules.
 
 ## What executes
 
@@ -23,13 +23,13 @@ The oracle is a set of hand-authored concrete expected outcomes, using numeric a
 - All three bounce variants preserve existing flags, write only slot 4 value0/int1/int0, and leave timers/other state intact. Cancel-behavior assigns payload int0 (negative and positive) and continues without cancelling.
 - Sprite initialization calls the parent VM with the manager animation pointer and indexed base plus signed offset; interpretation continues.
 - Vector/polar transform sounds require both a nonzero program index and a nonnegative sound ID; -1, 0, and positive IDs are checked at indices 0 and 1. Transform sounds use position zero; explicit sound uses bullet X.
-- Angle boundaries -990/+990 and NaN; NaN angle takes aim branch while NaN direction speed retains parent speed.
+- Vector 0x10 and direction 0x40/0x80/0x100 matrices cover finite sentinel boundaries, both infinities and quiet NaN. Vector NaN retains authored aim behavior; direction NaN stores NaN without aiming. Each aim branch calls the helper exactly once, all others zero times. All direction kinds preserve speed for NaN speed payload and perform no state write or aim call when gated.
 
 Domain: readable/writable parent with cursor in [0,18]; child records start at most at index 16; jumps remain nonnegative and bounded and have no unbounded cycles. Callbacks are synchronous and do not free parent storage. Tests do not validate or repair malformed scripts, negative cursors, out-of-bounds child index 17, or unbounded jump cycles. Integer narrowing cases assume the host's conventional two's-complement narrowing behavior, as observed in the run. No fast-math.
 
 ## Mutation discipline
 
-Each mutant is a single uniquely anchored edit of the extracted source. Every mutant must compile, execute, and exit with the explicit semantic-check code 31 and a `FAIL:` diagnostic. Compile failure, timeout, signal/crash, or other exit code is an error, never a kill. There are 24 mutations covering the original ten protocol changes plus bounce payload/counter/flag preservation, cancel payload, sprite offset/animation pointer, and each acceleration variant's sound index gate, zero/negative ID boundary and position argument.
+Each mutant is a single uniquely anchored edit of the extracted source. Every mutant must compile, execute, and exit with the explicit semantic-check code 31 and a `FAIL:` diagnostic. Compile failure, timeout, signal/crash, or other exit code is an error, never a kill. There are 28 mutations covering the original ten protocol changes plus bounce payload/counter/flag preservation, cancel payload, sprite offset/animation pointer, and each acceleration variant's sound index gate, zero/negative ID boundary and position argument. Four direction-specific mutants revert the shared helper, change either sentinel equality, or eagerly call aim.
 
 Python validation uses explicit exceptions, and C++ checks use explicit `exit(31)`, so Python `-O` and C++ `NDEBUG` cannot silently remove validation. Compilation currently uses `-O0 -fno-strict-aliasing` to avoid pretending that the authored reinterpret-cast accesses are portable optimized C++.
 
@@ -37,4 +37,10 @@ Python validation uses explicit exceptions, and C++ checks use explicit `exit(31
 
 This suite is not exhaustive action coverage. The helper implementations, target ABI, per-frame transform updates and runtime sprite effects are not checked. Timer startup tests do not check every payload destination. This finite matrix does not exercise every combination of actions or callback mutation. Compilation has a 30-second bound per build; execution has a 5-second bound per case. A timeout is a runner failure, not a semantic kill.
 
-`manifest.json` binds raw bytes of this README, the runner, harness and local `.gitattributes`, plus canonical LF identities of the two baseline source inputs. The runner verifies these identities before compiling. The manifest intentionally does not hash itself. The local attributes override only `harness.cpp` to LF, preserving its raw artifact identity beneath the repository-wide C++ CRLF policy. No production files are included or changed.
+`manifest.json` binds raw bytes of this README, the runner, harness and local `.gitattributes`, plus canonical LF identities of the two pinned source inputs. The runner verifies these identities before compiling. The manifest intentionally does not hash itself. The local attributes override only `harness.cpp` to LF, preserving its raw artifact identity beneath the repository-wide C++ CRLF policy. No production files are included or changed.
+
+## Direction-only correction proposal
+
+The proposed source change snapshots payload.float0 at the previous direction helper call site and applies <= -990 preserve, >= 990 lazy aim, otherwise literal (including NaN). The vector helper and vector call site remain unchanged. These host tests establish proposal behavior, not target equivalence or native code-generation quality. The quiet-NaN check asserts classification only, not payload bits, signaling-NaN handling or unmasked FP exceptions. Any target-path evidence and its execution premises remain separate from this suite.
+
+The native proposal overlay uses exact raw LF bytes, preserved from the raw-pinned baseline outside its single replacement. Host canonical-LF hashing is a separate portability policy and does not authorize changing the native overlay bytes or source attributes.

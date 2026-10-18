@@ -77,10 +77,31 @@ static void timers(){
  }
 }
 static void angles(){
- const float values[]={-991,-990,-989,989,990,std::numeric_limits<float>::quiet_NaN()};
- const float expected[]={.25f,.25f,-989,989,.75f,.75f};
- for(int i=0;i<6;++i){reset();rec(0,0x10,2,0,3,values[i]);b.AdvanceTransformProgram();check(b.exStates[1].value1==expected[i],"angle sentinels including NaN aim");check(aimCalls==(i>=4?1:0),"aim helper branch");}
- reset();rec(0,0x40,2,3,0,std::numeric_limits<float>::quiet_NaN());b.AdvanceTransformProgram();check(b.exStates[3].value0==4.5f,"NaN direction speed preserves speed");
+ const float inf=std::numeric_limits<float>::infinity();
+ const float nan=std::numeric_limits<float>::quiet_NaN();
+ const float values[]={-inf,-991,-990,-989,989,990,991,inf,nan};
+ const float expected[]={.25f,.25f,.25f,-989,989,.75f,.75f,.75f,.75f};
+ for(int i=0;i<9;++i){
+  reset();rec(0,0x10,2,0,3,values[i]);b.AdvanceTransformProgram();
+  check(b.exStates[1].value1==expected[i],"vector angle sentinels including NaN aim unchanged");
+  check(aimCalls==(i>=5?1:0),"vector aim is lazy and called once only for aim cases");
+ }
+ for(unsigned kind:{0x40u,0x80u,0x100u}){
+  for(int i=0;i<9;++i){
+   reset();rec(0,kind,2,3,values[i],2.0f);b.AdvanceTransformProgram();
+   check(b.activeTransformFlags==kind&&b.transformIndex==1,"direction matrix executes selected action");
+   if(i==8)check(std::isnan(b.exStates[3].value1),"direction NaN angle remains NaN");
+   else check(b.exStates[3].value1==expected[i],"direction finite and infinite angle sentinels");
+   check(aimCalls==((i>=5&&i<=7)?1:0),"direction aim is lazy; NaN never calls aim");
+  }
+  reset();rec(0,kind,2,3,0,nan);b.AdvanceTransformProgram();
+  check(b.exStates[3].value0==4.5f&&aimCalls==0,"NaN direction speed preserves speed without aim");
+  reset();b.activeTransformFlags=1;b.exStates[3].value1=17;
+  BulletRuntimeView before;std::memcpy(&before,&b,sizeof(before));
+  rec(0,kind,2,3,inf,2,0);std::memcpy(before.transforms,b.transforms,sizeof(b.transforms));
+  b.AdvanceTransformProgram();
+  check(aimCalls==0&&std::memcmp(&before,&b,sizeof(b))==0,"gated direction neither calls aim nor writes state");
+ }
 }
 static void bounceAndCancel(){
  const unsigned kinds[]={0x400,0x800,0x08000000};

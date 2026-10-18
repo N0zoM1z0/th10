@@ -1,0 +1,82 @@
+{
+  "command_finished_at": "2026-10-18T07:58:25.504363+00:00",
+  "command_id": "repository-command:9f6331a55f0f4bc787dc02be88034162",
+  "command_started_at": "2026-10-18T07:58:19.246413+00:00",
+  "production_source_decision": "Retain direction-only correction for semantic evidence; native result gives no transform exactness credit.",
+  "receipt_sha256": "40980e759bced933d8a03af8b63732393fd09b76d3ff3bbe8e832dcbf372bb96",
+  "result": {
+    "acceptance_authority": "none",
+    "artifact_sha256": {
+      "image": "8cdfbc592fe30726e2e8f59e52eba06d25c8723766f27f63d303a27744224afd",
+      "map": "e275973e025ea627c6538ea15977a90a7da06c2ce71740bbdcb6ab53193d7e0f",
+      "pdb": "5a0a7877d8e15379ac9f4d2366283ed4e94185f0cbb76984900a661953c3a7df"
+    },
+    "base_commit": "ffa436400e8e20898d165cb971e174a870d87190",
+    "baseline_valid": true,
+    "build_success": true,
+    "cold_link_calls": 0,
+    "compile_calls": 0,
+    "elapsed_seconds": 5.389,
+    "guard": {
+      "compared_size": 885,
+      "exit_ok": true,
+      "image_sha256": "8cdfbc592fe30726e2e8f59e52eba06d25c8723766f27f63d303a27744224afd",
+      "matched_bytes": 885,
+      "matched_compared_bytes": 885,
+      "normalization_complete": true,
+      "raw_equal": false,
+      "result": "exact",
+      "size": 885
+    },
+    "link_calls": 1,
+    "manifest_sha256": "76f6333e1ab88f6bbc918fc2dd4428c4d9087de084ae0db08af2c9a6ca15bc46",
+    "object_sha256": {
+      "source.ltcg.obj": "c3f4f64a1887010fcc33e492f0b523eeee2b02d9c69a92d0dc8b6bf6585de405",
+      "support-00-BulletManager.ltcg.obj": "fc907d299c2d1c9cd018025ee51d1fe89e83ecc5ec0b6a681e545b6838f5eca8",
+      "support-01-BulletTransform.normal.obj": "d752ef6315dc601587dee1d9059b6ca61d23b3ab1aed3c4927a0887622925ba5",
+      "support-02-PlayerCollision.ltcg.obj": "75b1da2db133ef7453ec052ae35fe87cee7213df9c231069c211378250503d69",
+      "support-03-AnmManager.ltcg.obj": "75524aec73e162490aab772b03a5e20407be8b6268fe9f2040106b2ff9b8a7fd",
+      "support-04-EnemyEclDispatcher.ltcg.obj": "585212761b47c2b33405c9b1b649e3dfc14d4569a1a73c6ae40d4c7625941ae1",
+      "support-05-Enemy.ltcg.obj": "6c92e2d055f945fff9fb4aebfc3d3f15d697278fdab2c395ffa3dbc08a4f5937"
+    },
+    "overlay_sha256": {
+      "src/BulletTransform.cpp": "b635d17c1f7bc76d3af8fc7b9fd4453f6c32b0e1f90fd6f718a4e6a7460516c0"
+    },
+    "owners": {
+      "runtime_guard": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "d14e4c66089a4b9e739cbaca48a887d3acc8864617dd67b4df854b36d71bd57c",
+        "size": 885,
+        "size_equal": true,
+        "target_size": 885
+      },
+      "transform": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "72917a0ae941e4e20a0418c93db0bf9810446934d2acf38c7df03d9bc552fb52",
+        "size": 1540,
+        "size_equal": false,
+        "target_size": 1454
+      }
+    },
+    "postrun_pins_valid": true,
+    "process_group_terminated": true,
+    "production_clean": true,
+    "resource_policy": {
+      "address_space": "inherit_unlimited_without_setrlimit",
+      "cpu_affinity_count": 1,
+      "cpu_seconds": 60,
+      "linker_wall_seconds": 90,
+      "nice_increment": 10,
+      "wall_seconds": 150
+    },
+    "restart_allowed": false,
+    "runner_sha256": "57feaaaea31ca109b71166d982d2180a5ae27186a3f774625633cdd39a17a05e",
+    "runtime_executed": false,
+    "stage": "complete",
+    "state": "completed",
+    "transform_exactness_tested": false,
+    "unresolved_count": 203
+  }
+}
