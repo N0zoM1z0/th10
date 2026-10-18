@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "base_commit": "6892fa5dbe5cae64c3f6ac4bea187ea83145a5ec",
+  "base_files": {
+    "src/Main.cpp": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03"
+  },
+  "overlays": {
+    "src/Input.cpp": "b50a3cf8884f128b9df4e9b93606dc798fbfaea4fa8d35e63f82db25172039fc",
+    "src/Input.hpp": "d7b04e8641cd9dd8565b3426b5592edcd0c3c18b39ae0e9e7f2355937bed3e7b",
+    "src/InputState.hpp": "0ef9b9903be076a06946ecef23a024489be2dd28af99c7e459019b4e753a6139",
+    "src/Main.cpp": "9035190b5eff8665fec60ef1cbb40ad4850a13826457c5025579878819ea1a89",
+    "src/Main.hpp": "973c294a3ae9142a701a1e591b1055650039e4881ee7ef3f72047892453a1fad"
+  },
+  "output_newlines": {
+    "src/Input.cpp": "CRLF",
+    "src/Input.hpp": "CRLF",
+    "src/InputState.hpp": "CRLF",
+    "src/Main.cpp": "LF",
+    "src/Main.hpp": "CRLF"
+  },
+  "build_inputs": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/compile-probe.sh": "775132a592ef142a8cc6ac9e3c23aee08e0f0d370caac14f4d3693eb62a0f9a4",
+    "scripts/linked_image.py": "58583c6241e0979288b0c4ce0a0e55f1ae2a178762d93743475d05518eff0354",
+    "scripts/ltcg_link.py": "3c7728e58d452760baa2ab076c16169e6b8a45fabbc35692b60493f08921f98b",
+    "scripts/run-headless-wine.sh": "e5c522260a1804bfbcdf52b88319d2c7a36e4f25548c24870dfb137ac0e16606",
+    "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "validation_files": {
+    "config/match-units.toml": "8811679fb37ab220216a8926a9ce46b8637335e47cea7cd8d5d8a78b6004cc88",
+    "resources/th10.exe": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+  },
+  "effective_profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL",
+    "/GS"
+  ],
+  "owners": {
+    "caller": {
+      "object": "source.ltcg.obj",
+      "symbol": "?MainInputCalcCallback@@YIHPAX@Z",
+      "target_size": 113
+    },
+    "keyboard": {
+      "object": "support-00-Input.ltcg.obj",
+      "symbol": "?UpdateInput@@YAGI@Z",
+      "target_size": 850
+    },
+    "mapper": {
+      "object": "support-00-Input.ltcg.obj",
+      "symbol": "?MapJoystickInput@@YAGIII@Z",
+      "target_size": 833
+    }
+  }
+}

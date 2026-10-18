@@ -1,0 +1,84 @@
+--- a/Main.hpp
++++ b/Main.hpp
+@@ -24,6 +24,9 @@
+     MAIN_RENDER_RESTART = 2,
+     MAIN_RENDER_ERROR = -1
+ };
++
++struct IDirectInput8A;
++struct IDirectInputDevice8A;
+ 
+ struct MainD3d9InterfaceView;
+ struct MainD3d9DeviceView;
+@@ -226,7 +229,9 @@
+     HINSTANCE instance;                         // +0x000
+     MainD3d9InterfaceView *d3dInterface;        // +0x004
+     MainD3d9DeviceView *d3dDevice;              // +0x008
+-    unsigned char unknown00C[0x03C];
++    IDirectInput8A *directInput;                 // +0x00C
++    IDirectInputDevice8A *devices[2];            // +0x010, +0x014; two proved cells
++    unsigned char unknown018[0x030];
+     HWND gameWindow;                            // +0x048
+     AnmMatrixView viewMatrix;                   // +0x04C
+     AnmMatrixView projectionMatrix;             // +0x08C
+@@ -238,7 +243,9 @@
+         unsigned char serializedConfiguration[0x34]; // +0x120
+         struct
+         {
+-            unsigned char configUnknown120[0x01A];
++            unsigned char configUnknown120[0x016];
++            signed short controllerThresholdX; // +0x136
++            signed short controllerThresholdY; // +0x138
+             signed char colorMode;              // +0x13A; D3D color depth
+             unsigned char configUnknown13B[2];
+             unsigned char windowed;             // +0x13D
+@@ -269,7 +276,10 @@
+     unsigned int flags;                         // +0x3CC
+     unsigned char unknown3D0[0x008];
+     unsigned char d3dCaps[0x130];               // +0x3D8
+-    unsigned char unknown508[0x144];
++    unsigned char unknown508[0x134];
++    int inputCallbackState63c;                  // +0x63C
++    unsigned char unknown640[8];
++    int inputCallbackState648;                  // +0x648
+     CRITICAL_SECTION criticalSections[7];       // +0x64C
+     unsigned char criticalSectionLockCounts[7]; // +0x6F4
+     unsigned char unknown6FB[0x055];
+@@ -281,10 +291,25 @@
+ typedef char MainSupervisorD3dAt004[
+     (offsetof(MainSupervisorView, d3dInterface) == 0x004 &&
+      offsetof(MainSupervisorView, d3dDevice) == 0x008) ? 1 : -1];
++typedef char MainSupervisorInputAt00C[
++    (offsetof(MainSupervisorView, directInput) == 0x00c &&
++     offsetof(MainSupervisorView, devices) == 0x010 &&
++     sizeof(((MainSupervisorView *)0)->directInput) == 4 &&
++     sizeof(((MainSupervisorView *)0)->devices[0]) == 4 &&
++     sizeof(((MainSupervisorView *)0)->devices) == 8 &&
++     offsetof(MainSupervisorView, devices) + sizeof(((MainSupervisorView *)0)->devices[0]) == 0x014 &&
++     offsetof(MainSupervisorView, unknown018) == 0x018 &&
++     offsetof(MainSupervisorView, gameWindow) == 0x048) ? 1 : -1];
+ typedef char MainSupervisorPresentationAt0E4[
+     (offsetof(MainSupervisorView, presentParameters) == 0x0e4) ? 1 : -1];
+ typedef char MainSupervisorConfigurationOffsets[
+     (offsetof(MainSupervisorView, serializedConfiguration) == 0x120 &&
++     offsetof(MainSupervisorView, controllerThresholdX) == 0x136 &&
++     offsetof(MainSupervisorView, controllerThresholdY) == 0x138 &&
++     sizeof(((MainSupervisorView *)0)->controllerThresholdX) == 2 &&
++     sizeof(((MainSupervisorView *)0)->controllerThresholdY) == 2 &&
++     sizeof(((MainSupervisorView *)0)->serializedConfiguration) == 0x34 &&
++     offsetof(MainSupervisorView, unknown154) == 0x154 &&
+      offsetof(MainSupervisorView, bgmVolume) == 0x140 &&
+      offsetof(MainSupervisorView, sfxVolume) == 0x141 &&
+      offsetof(MainSupervisorView, colorMode) == 0x13a &&
+@@ -299,6 +324,11 @@
+     (offsetof(MainSupervisorView, nextGameMode) == 0x390 &&
+      offsetof(MainSupervisorView, screenTransitionCountdown) == 0x3ac &&
+      offsetof(MainSupervisorView, flags) == 0x3cc) ? 1 : -1];
++typedef char MainSupervisorInputCallbackFields[
++    (offsetof(MainSupervisorView, inputCallbackState63c) == 0x63c &&
++     offsetof(MainSupervisorView, inputCallbackState648) == 0x648 &&
++     sizeof(((MainSupervisorView *)0)->inputCallbackState63c) == 4 &&
++     sizeof(((MainSupervisorView *)0)->inputCallbackState648) == 4) ? 1 : -1];
+ typedef char MainSupervisorCriticalSectionsAt64C[
+     (offsetof(MainSupervisorView, criticalSections) == 0x64c &&
+      offsetof(MainSupervisorView, criticalSectionLockCounts) == 0x6f4) ? 1 : -1];

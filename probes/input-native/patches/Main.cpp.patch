@@ -1,0 +1,41 @@
+--- a/Main.cpp
++++ b/Main.cpp
+@@ -1,5 +1,6 @@
+ #include "Main.hpp"
+ #include "FileSystem.hpp"
++#include "Input.hpp"
+ 
+ #include <direct.h>
+ #include <mmsystem.h>
+@@ -103,6 +104,31 @@
+ extern void MainDestroyMusic(void *musicOwner);
+ extern void MainFreeRegisteredAllocation(void *allocation);
+ 
++// Conditional native-baseline helper declarations. Their natural source types
++// are hypotheses; neither declaration certifies the target private call ABI.
++extern void MainOpaqueTick421E00();
++extern int MainOpaqueUpdate4218D0(MainSupervisorView *context);
++
++// TH10_MAIN_FUNCTION: 0x0041FF80 MainInputCalcCallback
++// Chain callback/context binding assumes the normal registration lifecycle.
++int __fastcall MainInputCalcCallback(void *argument)
++{
++    MainSupervisorView *context = static_cast<MainSupervisorView *>(argument);
++    if ((reinterpret_cast<const unsigned char *>(&context->flags)[0] & 0x80) != 0 &&
++        context->inputCallbackState63c == 0)
++        g_MainSupervisorView.nextGameMode = 3;
++
++    MainOpaqueTick421E00();
++    UpdateInput(0);
++    if (g_AnmRenderManagerView->ServicePreloadedAnms() != 0)
++        return 4;
++
++    const int state = context->inputCallbackState648;
++    if (state != 0)
++        return state == 2 ? 4 : 1;
++    return MainOpaqueUpdate4218D0(context);
++}
++
+ static __forceinline int MainD3dFailed(long result)
+ {
+     return result < 0;

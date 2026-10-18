@@ -1,0 +1,7 @@
+src/Input.cpp -text
+src/Input.hpp -text
+src/InputState.hpp -text
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+patches/*.patch text eol=lf
