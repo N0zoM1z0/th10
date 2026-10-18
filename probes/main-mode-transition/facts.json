@@ -1,0 +1,329 @@
+{
+  "status": "partial recognized-event bookkeeping only",
+  "native_body_or_exactness_acceptance": false,
+  "case_effect_analysis": {
+    "event_vocabulary": [
+      "call_LeaveCriticalSection",
+      "call_helper_0x40b940",
+      "call_helper_0x40b9d0",
+      "call_helper_0x4180e0",
+      "call_helper_0x418150",
+      "call_helper_0x41fd00",
+      "call_helper_0x4203f0",
+      "call_helper_0x421c50",
+      "call_helper_0x42cd50",
+      "call_helper_0x42cdb0",
+      "return_1",
+      "return_4",
+      "store_context_0x38c_load_site_origin_field_0x390",
+      "store_context_0x390_constant_0x1",
+      "store_context_0x390_constant_0x3",
+      "store_context_0x390_constant_0x7",
+      "store_context_0x390_unresolved_value",
+      "store_context_0x39c_constant_0x0",
+      "store_context_0x39c_constant_0x1",
+      "store_context_0x6f9_dec_modulo256",
+      "store_context_0x768_opaque_EAX_result_0x41fd00"
+    ],
+    "cases": [
+      {
+        "mode_snapshot_values": [
+          0
+        ],
+        "cfg_possible_events": [
+          0,
+          5,
+          6,
+          7,
+          10,
+          11,
+          12,
+          13,
+          14,
+          19,
+          20
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          5,
+          13,
+          20
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          1,
+          2,
+          5,
+          6,
+          8,
+          9
+        ],
+        "cfg_possible_events": [
+          0,
+          10,
+          12,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          10,
+          12,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          3
+        ],
+        "cfg_possible_events": [
+          6,
+          7,
+          11
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          6,
+          7,
+          11
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          4
+        ],
+        "cfg_possible_events": [
+          0,
+          2,
+          4,
+          8,
+          10,
+          12,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          10,
+          12,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          7
+        ],
+        "cfg_possible_events": [
+          0,
+          3,
+          9,
+          10,
+          12,
+          18,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          3,
+          10,
+          12,
+          18,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          10
+        ],
+        "cfg_possible_events": [
+          0,
+          3,
+          4,
+          10,
+          12,
+          15,
+          18,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          3,
+          4,
+          10,
+          12,
+          15,
+          18,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": [
+          "unclassified_explicit_store",
+          "unclassified_instruction_effect"
+        ]
+      },
+      {
+        "mode_snapshot_values": [
+          11
+        ],
+        "cfg_possible_events": [
+          0,
+          3,
+          4,
+          10,
+          12,
+          15,
+          17,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          3,
+          10,
+          12,
+          15,
+          17,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          12
+        ],
+        "cfg_possible_events": [
+          0,
+          3,
+          9,
+          10,
+          12,
+          15,
+          18,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          3,
+          10,
+          12,
+          15,
+          18,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          13
+        ],
+        "cfg_possible_events": [
+          0,
+          3,
+          4,
+          10,
+          12,
+          15,
+          18,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          3,
+          4,
+          10,
+          12,
+          15,
+          18,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          14
+        ],
+        "cfg_possible_events": [
+          0,
+          1,
+          4,
+          10,
+          12,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          1,
+          10,
+          12,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": []
+      },
+      {
+        "mode_snapshot_values": [
+          15
+        ],
+        "cfg_possible_events": [
+          0,
+          2,
+          4,
+          8,
+          10,
+          12,
+          16,
+          19
+        ],
+        "required_on_all_modeled_normal_continuations": [
+          0,
+          10,
+          12,
+          19
+        ],
+        "effects_complete": false,
+        "unresolved_effect_categories": [
+          "context_store_value",
+          "unclassified_explicit_store"
+        ]
+      }
+    ],
+    "assumptions": [
+      "Memory accesses complete normally on valid memory and opaque calls return normally.",
+      "Opaque calls preserve EBX, ESI, EDI and EBP register values; pointee memory is not preserved.",
+      "Named IAT slots retain their normal loader-resolved API bindings.",
+      "The code owner and all separately pinned auxiliary dispatch tables remain immutable."
+    ],
+    "scope": "Continuations start at the direct dispatch case target; pre-dispatch effects are excluded. CFG-possible membership is not feasible execution. Event order, complete effects, opaque-helper internals and stack restoration remain unproved."
+  },
+  "evidence": {
+    "code_owner": "0x4218D0",
+    "code_bytes": 572,
+    "code_sha256": "219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e",
+    "head_at_latest_proof": "1d55297d317574a0b0b18cb7b2738682a5b79e24",
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "dispatch_run": "51430a881fd14a3cae4459db4f574a15",
+    "selector_run": "2be7243f79154d44b2212480e00e0acb",
+    "equal_return_run": "4fa8c615097f4e689b943e8690ae6eff",
+    "critical_count_run": "d584c17c59ce49598516898cf667355f",
+    "case_effect_run": "f3563a1a1e76480f8a93ca9ed0f92274",
+    "mode0_result_run": "9191aecb85a94dce99e634212bd23b73",
+    "guard_attempt_run": "8e4fe32c2cda4fd4ae1090e282c4ce60",
+    "guard_attempt_status": "single41FD00 call site verified; zero/nonzero guard not recognized; neither guarded outcome proved"
+  },
+  "interpretation": {
+    "may": "CFG-possible overapproximation, not feasible execution",
+    "must": "membership on all modeled normal continuations from case target",
+    "snapshot": "load-site origin only, not later memory or dynamic reload equality",
+    "missing_effects": "real effects outside recognized vocabulary may exist",
+    "critical_counts": "direct572 calls only under normal loader/opaque-call premises; no lock receiver/ownership proof"
+  }
+}
