@@ -16,12 +16,12 @@ These are unordered required effects or CFG-possible effects after the first dis
 - Mode 3 requires calls 4203F0 and 421C50 and return 4. No Leave event occurs in its continuation inventory.
 - Mode 0 requires call 41FD00, field +0x390 = 1 and a field +0x768 store of call 41FD00's unconstrained machine EAX result. Other modeled continuations can store +0x390 = 3, execute the two failure hooks and return 4, or use the normal continuation. The zero-result guard is now proved as described below. The return type and effect order remain open.
 - Mode 7 requires call 4180E0 and field +0x39C = 1, then the normal continuation membership. Call 42CDB0 is CFG-possible.
-- Mode 10 requires calls 418150 and 4180E0, field +0x390 = 7, field +0x39C = 1, and the normal continuation membership. An extra store/instruction effect remains unclassified.
+- Mode 10 requires calls 418150 and 4180E0, field +0x390 = 7, field +0x39C = 1, and the normal continuation membership. The two data stores below are required. An instruction-effect category remains unclassified.
 - Mode 11 requires call 4180E0, field +0x390 = 7 and field +0x39C = 0. Call 418150 is CFG-possible.
 - Mode 12 requires call 4180E0, field +0x390 = 7 and field +0x39C = 1. Call 42CDB0 is CFG-possible.
 - Mode 13 requires calls 418150 and 4180E0, field +0x390 = 7 and field +0x39C = 1.
 - Mode 14 requires call 40B940; call 418150 is CFG-possible.
-- Modes 4 and 15 have CFG-possible calls 40B9D0, 418150 and 42CD50 and the normal continuation membership. Mode 15 also has an unresolved +0x390 store and an unclassified extra store.
+- Modes 4 and 15 have CFG-possible calls 40B9D0, 418150 and 42CD50 and the normal continuation membership. Mode 15 additionally has CFG-possible stores of 4 to context +0x390 and 3 to data variable 0x491C00. Their requested-mode guard remains unresolved.
 
 The public high-level model is consistent with this structure, but does not establish helper meanings, guards, or ordering. The default/normal continuation effects above are required membership, not a proposed execution sequence.
 
@@ -29,14 +29,14 @@ The public high-level model is consistent with this structure, but does not esta
 
 1. Complete pre-dispatch ordering/effects and critical-section lifecycle/ownership. The fixed prefix effects and both API arguments below are established conditionally.
 2. Exact guards for optional helpers and failure paths; ordering and reload points around opaque calls.
-3. Mode 10 and 15 unresolved effects; the mode 0 +0x768 value origin is now proved, without an inferred pointer type. The mode 0 zero/nonzero result guard is also proved, but source ordering remains open.
+3. Mode 10 instruction-effect classification and mode 15 requested-mode guard; the mode 0 +0x768 value origin is now proved, without an inferred pointer type. The mode 0 zero/nonzero result guard is also proved, but source ordering remains open.
 4. Meaningful helper source declarations and native ABI evidence. The existing natural int(context*) baseline remains conditional.
 
 A faithful executable source body is not yet justified. The supplied fixture checks only recognized-vocabulary projections of proved unordered mode obligations; extra real effects outside its vocabulary are not disproved. It deliberately cannot certify a body that merely rearranges the same effects.
 
 ## Evidence
 
-Latest prefix proof HEAD b33c5f9cd893b75a44f69e2d58124f6d1c34f1f5; guard proof HEAD 0821ec6ed83fabc2559d3cdca5b6aff86b708ec9; the preceding proof checkpoint was 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receipts used raw-identical production/target files at 6892fa5. Owner SHA 219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e.
+Latest store proof HEAD 2fc031bd162c2f9a57c5357ddea3d933c4521150; prefix proof HEAD b33c5f9cd893b75a44f69e2d58124f6d1c34f1f5; guard proof HEAD 0821ec6ed83fabc2559d3cdca5b6aff86b708ec9; the preceding proof checkpoint was 1d55297d317574a0b0b18cb7b2738682a5b79e24; prior proof receipts used raw-identical production/target files at 6892fa5. Owner SHA 219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e.
 
 - Dispatch: actual 51430a881fd14a3cae4459db4f574a15.
 - Selector origins: actual 2be7243f79154d44b2212480e00e0acb.
@@ -63,7 +63,7 @@ From repository root:
 
     python3 probes/main-mode-transition/check_obligations.py
 
-Expected: PASS, 34 finite inventory/count checks, 95 recognized-projection schema/membership mutation rejections, 2 guard projection checks and 10 guard projection mutation rejections, plus 2 prefix/receiver projection checks and 6 mutation rejections. These are bookkeeping checks against recorded facts, not semantic body-equivalence tests or a new native-target proof. They do not execute the game, read its executable, build native code, or establish feasibility/order.
+Expected: PASS, 34 finite inventory/count checks, 97 recognized-projection schema/membership mutation rejections, 2 guard projection checks and 10 guard projection mutation rejections, plus 2 prefix/receiver projection checks and 6 mutation rejections. These are bookkeeping checks against recorded facts, not semantic body-equivalence tests or a new native-target proof. They do not execute the game, read its executable, build native code, or establish feasibility/order.
 
 Optimized assertions must be rejected:
 
@@ -96,3 +96,14 @@ The byte theorem requires a matching low-byte load and INC, unique dense CFG pre
 Actual 036054aaf763438890eaef25af546f0b proves that both Enter and Leave top stack arguments originate at entry EAX context +0x6C4. The normal valid nonwrapping stack must be disjoint from the full context object, including the live pushed argument and CALL return slots. The maintained layout suggests critical-section slot 5.
 
 The Leave proof permits exactly one intervening dword context +0x38C store whose source has the +0x390 load-site origin. That store has no register or flag writes; PUSH, store and CALL have unique dense predecessors. Its effect remains in the case inventory. The earlier unresolved Leave result was a recognition limitation, now superseded. These argument facts do not establish critical-section initialization, ownership, helper-internal behavior or complete source ABI.
+
+
+## Mode 10 scalar/record relation and mode 15 stores
+
+Actual e66657eeffb04567aed708231e59faec proves a shared scalar load-site origin from dword data cell 0x474C80. The mode 10 store to 0x474C7C receives that scalar snapshot. The store to 0x477848 receives 0x474788 + 0x30 times the same snapshot, with uint32 modular arithmetic. The data cell and table-base addresses lie in validated non-executable data sections. No table bytes, record count, allocation bounds or equality across reloads are inferred.
+
+Maintained GameManager.cpp names the destinations g_GameStartupMode and g_GameStageUpdate and the source g_GameComparison474C80; these are source naming observations separate from the address-based target proof. The record view has a maintained size of 0x30. The public model's difficulty terminology is not adopted.
+
+Actual 29affe0c01ea42e08ad0c85622e306b9 makes both mode 10 stores required on all modeled normal continuations. It recognizes the mode 15 stores context +0x390 = 4 and data variable 0x491C00 = 3 as CFG-possible. The latter global retains a neutral name. Effects remain incomplete and unordered.
+
+The preliminary mode 15 guard attempt, actual 01dc49477b8940fb8eaf314add7d22e4, found three conditional branches but no adjacent exact CMP form. This is a recognizer limitation. The proposed requested-snapshot set {2, 7, 14} has not been proved or disproved.

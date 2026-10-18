@@ -18,12 +18,15 @@
       "store_context_0x38c_load_site_origin_field_0x390",
       "store_context_0x390_constant_0x1",
       "store_context_0x390_constant_0x3",
+      "store_context_0x390_constant_0x4",
       "store_context_0x390_constant_0x7",
-      "store_context_0x390_unresolved_value",
       "store_context_0x39c_constant_0x0",
       "store_context_0x39c_constant_0x1",
       "store_context_0x6f9_dec_modulo256",
-      "store_context_0x768_opaque_EAX_result_0x41fd00"
+      "store_context_0x768_opaque_EAX_result_0x41fd00",
+      "store_data_0x474c7c_scalar_load_origin_0x474c80",
+      "store_data_0x477848_table_0x474788_plus_0x30_times_scalar_load_origin_0x474c80",
+      "store_data_0x491c00_constant_3"
     ],
     "cases": [
       {
@@ -139,18 +142,21 @@
         "unresolved_effect_categories": []
       },
       {
-        "mode_snapshot_values": [
-          10
-        ],
         "cfg_possible_events": [
           0,
           3,
           4,
           10,
           12,
-          15,
+          16,
           18,
-          19
+          19,
+          21,
+          22
+        ],
+        "effects_complete": false,
+        "mode_snapshot_values": [
+          10
         ],
         "required_on_all_modeled_normal_continuations": [
           0,
@@ -158,13 +164,13 @@
           4,
           10,
           12,
-          15,
+          16,
           18,
-          19
+          19,
+          21,
+          22
         ],
-        "effects_complete": false,
         "unresolved_effect_categories": [
-          "unclassified_explicit_store",
           "unclassified_instruction_effect"
         ]
       },
@@ -178,7 +184,7 @@
           4,
           10,
           12,
-          15,
+          16,
           17,
           19
         ],
@@ -187,7 +193,7 @@
           3,
           10,
           12,
-          15,
+          16,
           17,
           19
         ],
@@ -204,7 +210,7 @@
           9,
           10,
           12,
-          15,
+          16,
           18,
           19
         ],
@@ -213,7 +219,7 @@
           3,
           10,
           12,
-          15,
+          16,
           18,
           19
         ],
@@ -230,7 +236,7 @@
           4,
           10,
           12,
-          15,
+          16,
           18,
           19
         ],
@@ -240,7 +246,7 @@
           4,
           10,
           12,
-          15,
+          16,
           18,
           19
         ],
@@ -270,9 +276,6 @@
         "unresolved_effect_categories": []
       },
       {
-        "mode_snapshot_values": [
-          15
-        ],
         "cfg_possible_events": [
           0,
           2,
@@ -280,8 +283,13 @@
           8,
           10,
           12,
-          16,
-          19
+          15,
+          19,
+          23
+        ],
+        "effects_complete": false,
+        "mode_snapshot_values": [
+          15
         ],
         "required_on_all_modeled_normal_continuations": [
           0,
@@ -289,11 +297,7 @@
           12,
           19
         ],
-        "effects_complete": false,
-        "unresolved_effect_categories": [
-          "context_store_value",
-          "unclassified_explicit_store"
-        ]
+        "unresolved_effect_categories": []
       }
     ],
     "assumptions": [
@@ -308,7 +312,7 @@
     "code_owner": "0x4218D0",
     "code_bytes": 572,
     "code_sha256": "219ce9d6dfdbe4218b7657910f2bc3d9f8cc2f2b5844953d58908e9bc9c3a56e",
-    "head_at_latest_proof": "b33c5f9cd893b75a44f69e2d58124f6d1c34f1f5",
+    "head_at_latest_proof": "2fc031bd162c2f9a57c5357ddea3d933c4521150",
     "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
     "dispatch_run": "51430a881fd14a3cae4459db4f574a15",
     "selector_run": "2be7243f79154d44b2212480e00e0acb",
@@ -325,7 +329,13 @@
     "predispatch_depth_run": "638f869cfa9946dfa77d2be7b990c0c4",
     "predispatch_depth_collector_sha256": "27dfb41783836e6a0e7fa115a67a5566c6f6ed237ebcecb0ea755cce7550877a",
     "critical_receiver_store_run": "036054aaf763438890eaef25af546f0b",
-    "critical_receiver_store_collector_sha256": "18e3d6529b1597ce989f089be512431573635ff0165553dc6a5037ad31681c63"
+    "critical_receiver_store_collector_sha256": "18e3d6529b1597ce989f089be512431573635ff0165553dc6a5037ad31681c63",
+    "mode10_expression_run": "e66657eeffb04567aed708231e59faec",
+    "mode10_expression_collector_sha256": "7b65215f3a7a9074f178b898d49dd2cf57d6b3921bdf162132cfff5c81f28149",
+    "mode10_15_stores_run": "29affe0c01ea42e08ad0c85622e306b9",
+    "mode10_15_stores_collector_sha256": "52a0f9c74287444801cefd49781cc20a44de7171d7e16dcdf29e7380c6011054",
+    "mode15_guard_attempt_run": "01dc49477b8940fb8eaf314add7d22e4",
+    "mode15_guard_attempt_status": "unresolved adjacent-compare recognition; requested-set hypothesis neither proved nor disproved"
   },
   "interpretation": {
     "may": "CFG-possible overapproximation, not feasible execution",
@@ -404,5 +414,16 @@
     "immutable code and auxiliary tables",
     "opaque calls preserve EBX ESI EDI EBP; volatile registers and ESP origins discarded",
     "Normal valid nonwrapping stack disjoint from the full context object, including the argument and CALL return slots, for both critical receiver proofs."
-  ]
+  ],
+  "mode10_fixed_expression": {
+    "data_identities": {
+      "record_table_base": "0x474788",
+      "scalar_dword_cell": "0x474c80"
+    },
+    "record_expression_proved": true,
+    "same_load_site_proved": true,
+    "scalar_store_proved": true,
+    "scope": "CFG-possible mode10 stores; machine uint32 modular expression only, no feasibility, table extent/content, reload equality or source field-name proof",
+    "status": "FIXED_MODE10_HYPOTHESIS"
+  }
 }

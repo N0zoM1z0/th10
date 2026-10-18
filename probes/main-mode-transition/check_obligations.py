@@ -4,7 +4,7 @@ import hashlib,json,sys
 from pathlib import Path
 if sys.flags.optimize:raise SystemExit('optimized Python')
 FACTS_FILE='facts.json'
-FACTS_SHA='05cd066bae8217c05dbd270ef53ea7cd07e838af18dbbc40fbbcc264ce74d1bf'
+FACTS_SHA='82592660c9b065a6bbc55996f04cbe3d1204d2bbac84591c0413630222a41772'
 
 def load_contract():
  raw=Path(__file__).with_name(FACTS_FILE).read_bytes()
@@ -55,6 +55,9 @@ def run_tests():
  for api in ('EnterCriticalSection','LeaveCriticalSection'):
   changed=[dict(x,argument_origin_proved=not x['argument_origin_proved']) if x['api']==api else x for x in facts['critical_receiver_analysis']['obligations']]
   assert not receiver_projection_valid(changed)
+ expression=facts['mode10_fixed_expression']
+ assert all(expression[k] for k in ('scalar_store_proved','record_expression_proved','same_load_site_proved'))
+ assert expression['data_identities']=={'scalar_dword_cell':'0x474c80','record_table_base':'0x474788'}
  guard=facts['mode0_guard_obligations']
  for key in ('single_41fd00_call_site','unique_guard','guard_required_after_mode0_dispatch','zero_result_failure_obligations_proved','nonzero_result_normal_return_obligations_proved'):assert guard[key] is True
  guard_cases=0;guard_mutants=0
