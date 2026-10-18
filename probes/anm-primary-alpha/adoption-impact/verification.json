@@ -1,0 +1,22 @@
+{
+  "two_different_source_roots": true,
+  "optimized_python_checked": true,
+  "existing_output_symlink_rejected_without_write": true,
+  "results": [
+    {
+      "affected_count": 256,
+      "impact_sha256": "6f1111a4993bac3458c616710d4cca9328aa6105260d78ea65946eea8dc862b6",
+      "recipe_group_count": 93,
+      "source_files": 83,
+      "units_total": 1130
+    },
+    {
+      "affected_count": 256,
+      "impact_sha256": "6f1111a4993bac3458c616710d4cca9328aa6105260d78ea65946eea8dc862b6",
+      "recipe_group_count": 93,
+      "source_files": 83,
+      "units_total": 1130
+    }
+  ],
+  "generator_sha256": "c901be08b4fd813264566027d0cf69ad8756e988b63da1693629940f07fae169"
+}

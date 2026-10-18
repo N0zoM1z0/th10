@@ -1,0 +1,72 @@
+[
+  {
+    "variant": "candidate",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 0,
+    "output": "PASS 781926 cases"
+  },
+  {
+    "variant": "drop_mode_narrowing",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=0 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  },
+  {
+    "variant": "drop_initial_narrowing",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=0 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  },
+  {
+    "variant": "drop_final_narrowing",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=0 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  },
+  {
+    "variant": "narrow_duration",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=0 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  },
+  {
+    "variant": "omit_initial_tangent_zero",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=0 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  },
+  {
+    "variant": "omit_final_tangent_zero",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=0 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  },
+  {
+    "variant": "omit_real_timer_reset",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=0 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  },
+  {
+    "variant": "clobber_unrelated_field",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=0 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  },
+  {
+    "variant": "clobber_initialized_scale",
+    "compiled": true,
+    "compiler_diagnostics": "/tmp/alpha-host-3weohzdx/contract.cpp: In constructor \u2018AnmVmTimerView::AnmVmTimerView()\u2019:\n/tmp/alpha-host-3weohzdx/contract.cpp:12:24: warning: \u2018*this.AnmVmTimerView::flags\u2019 is used uninitialized [-Wuninitialized]\n   12 |     AnmVmTimerView() { flags &= ~1u; }\n      |                        ^~~~~",
+    "exit_code": 1,
+    "output": "contract mismatch flags=1 duration=-2147483648 mode=-2147483648 initial=-2147483648 final=-2147483648"
+  }
+]

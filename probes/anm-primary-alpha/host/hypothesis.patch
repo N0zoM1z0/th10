@@ -1,0 +1,36 @@
+--- a/src/AnmManager.cpp
++++ b/src/AnmManager.cpp
+@@ -624,15 +624,15 @@
+ 
+ // Target 0x00442300 installs the scalar primary-alpha interpolation.
+ void AnmVmView::StartPrimaryAlphaInterpolation(
+-    int duration, unsigned char mode,
+-    unsigned char initial, unsigned char final)
++    int duration, int mode,
++    int initial, int final)
+ {
+     primaryAlphaInterpolation.duration = duration;
+-    primaryAlphaInterpolation.mode = mode;
+-    primaryAlphaInterpolation.initial = initial;
++    primaryAlphaInterpolation.mode = static_cast<unsigned char>(mode);
++    primaryAlphaInterpolation.initial = static_cast<unsigned char>(initial);
+     primaryAlphaInterpolation.initialTangent = 0;
+     primaryAlphaInterpolation.finalTangent = 0;
+-    primaryAlphaInterpolation.final = final;
++    primaryAlphaInterpolation.final = static_cast<unsigned char>(final);
+     primaryAlphaInterpolation.timer.SetCurrent(0);
+ }
+ 
+--- a/src/AnmManager.hpp
++++ b/src/AnmManager.hpp
+@@ -467,8 +467,8 @@
+         const AnmColorView *initial, const AnmColorView *final,
+         int duration, unsigned char mode);
+     void StartPrimaryAlphaInterpolation(
+-        int duration, unsigned char mode,
+-        unsigned char initial, unsigned char final);
++        int duration, int mode,
++        int initial, int final);
+     void InitializeForLoadedScript(
+         AnmLoadedView *loaded, int scriptIndex);
+ 

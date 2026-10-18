@@ -1,0 +1,22 @@
+{
+  "hypothesis": "Fresh reference-inspired int formals with explicit byte storage normalization",
+  "head_context": "e534a6f6c77115017e613721353308a41cde9b6a (docs-only after A008 source inventory)",
+  "sources": {
+    "AnmManager.cpp": {
+      "baseline_sha256": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+      "candidate_sha256": "fb0e43c101e0bdb20f8b52e592c5fc1867c2f8b22a8c8ef1a2cf9c38dc7b96d3",
+      "baseline_bytes": 215830,
+      "candidate_bytes": 215884,
+      "line_endings": "CRLF",
+      "edits_confined_to_helper": true
+    },
+    "AnmManager.hpp": {
+      "baseline_sha256": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+      "candidate_sha256": "4076299b57508c15abab3cac93f26e2313161274d69a108af90aa4ffeea9ce57",
+      "baseline_bytes": 45752,
+      "candidate_bytes": 45722,
+      "line_endings": "LF",
+      "edits_confined_to_helper": true
+    }
+  }
+}

@@ -1,0 +1,891 @@
+{
+  "provenance": {
+    "command_id": "repository-command:721a218a1fc442a084a52decae69e0e0",
+    "receipt_sha256": "65b327767da69ed5aa0d585a0def793678fd4061463ae00707c8c25f850369fa",
+    "head": "e534a6f6c77115017e613721353308a41cde9b6a",
+    "head_relation": "unchanged",
+    "remote_packet": ".analysis/anm-execute-size-diagnostic-20261018-v1",
+    "started_at": "2026-10-18T11:04:37.078243+00:00",
+    "finished_at": "2026-10-18T11:04:37.720029+00:00"
+  },
+  "result": {
+    "acceptance_authority": "none",
+    "artifact_sha256": {
+      "image": "0d354f972c1a554aa98ad0b6ccf28c860d54f757fbbe521594e5213d98c72dff",
+      "map": "5405075777d29b689c75652c16cb249997674fe3c2b3b5865db8755b7d3a2ef9",
+      "pdb": "cd26cff46b2e14feecf04dbd7baf3e4f14340fad265ec4454e2247fc2b3b9698"
+    },
+    "baseline_owner_sha256": "aa000c8ba3d351e877404e9830fbf77ba303fcb02c70923e3a8ae3cb2aeee775",
+    "baseline_owner_size": 9948,
+    "candidate_cfg_reachability_proved": false,
+    "candidate_full_decode_proved": false,
+    "candidate_table_discovery_is_syntactic": true,
+    "cold_link_calls": 0,
+    "complete_owner_verified": true,
+    "decoder_identity_verified": true,
+    "diagnostic_only": true,
+    "measurement": {
+      "baseline_distinct_group_count": 92,
+      "baseline_pre_table_span_size": 9572,
+      "entry_count": 94,
+      "equal_sized_physical_span_count": 83,
+      "physical_group_partition_matches": true,
+      "physical_order_matches": true,
+      "pre_table_span_size_delta": -16,
+      "rows": [
+        {
+          "baseline_physical_span_size": 7,
+          "equal_size": true,
+          "opcodes": [
+            -1,
+            1
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 7
+        },
+        {
+          "baseline_physical_span_size": 184,
+          "equal_size": true,
+          "opcodes": [
+            0,
+            64
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 184
+        },
+        {
+          "baseline_physical_span_size": 1440,
+          "equal_size": false,
+          "opcodes": [
+            2
+          ],
+          "signed_size_delta": -1,
+          "target_physical_span_size": 1441
+        },
+        {
+          "baseline_physical_span_size": 67,
+          "equal_size": true,
+          "opcodes": [
+            3
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 67
+        },
+        {
+          "baseline_physical_span_size": 34,
+          "equal_size": true,
+          "opcodes": [
+            4
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 34
+        },
+        {
+          "baseline_physical_span_size": 80,
+          "equal_size": true,
+          "opcodes": [
+            5
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 80
+        },
+        {
+          "baseline_physical_span_size": 64,
+          "equal_size": true,
+          "opcodes": [
+            6
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 64
+        },
+        {
+          "baseline_physical_span_size": 75,
+          "equal_size": true,
+          "opcodes": [
+            7
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 75
+        },
+        {
+          "baseline_physical_span_size": 64,
+          "equal_size": true,
+          "opcodes": [
+            8
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 64
+        },
+        {
+          "baseline_physical_span_size": 86,
+          "equal_size": false,
+          "opcodes": [
+            9
+          ],
+          "signed_size_delta": 9,
+          "target_physical_span_size": 77
+        },
+        {
+          "baseline_physical_span_size": 64,
+          "equal_size": true,
+          "opcodes": [
+            10
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 64
+        },
+        {
+          "baseline_physical_span_size": 77,
+          "equal_size": false,
+          "opcodes": [
+            11
+          ],
+          "signed_size_delta": -9,
+          "target_physical_span_size": 86
+        },
+        {
+          "baseline_physical_span_size": 69,
+          "equal_size": true,
+          "opcodes": [
+            12
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 69
+        },
+        {
+          "baseline_physical_span_size": 86,
+          "equal_size": true,
+          "opcodes": [
+            13
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 86
+        },
+        {
+          "baseline_physical_span_size": 71,
+          "equal_size": true,
+          "opcodes": [
+            14
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 71
+        },
+        {
+          "baseline_physical_span_size": 86,
+          "equal_size": true,
+          "opcodes": [
+            15
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 86
+        },
+        {
+          "baseline_physical_span_size": 71,
+          "equal_size": true,
+          "opcodes": [
+            16
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 71
+        },
+        {
+          "baseline_physical_span_size": 132,
+          "equal_size": true,
+          "opcodes": [
+            17
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 132
+        },
+        {
+          "baseline_physical_span_size": 89,
+          "equal_size": true,
+          "opcodes": [
+            18
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 89
+        },
+        {
+          "baseline_physical_span_size": 118,
+          "equal_size": true,
+          "opcodes": [
+            19
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 118
+        },
+        {
+          "baseline_physical_span_size": 89,
+          "equal_size": true,
+          "opcodes": [
+            20
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 89
+        },
+        {
+          "baseline_physical_span_size": 118,
+          "equal_size": true,
+          "opcodes": [
+            21
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 118
+        },
+        {
+          "baseline_physical_span_size": 90,
+          "equal_size": true,
+          "opcodes": [
+            22
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 90
+        },
+        {
+          "baseline_physical_span_size": 118,
+          "equal_size": true,
+          "opcodes": [
+            23
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 118
+        },
+        {
+          "baseline_physical_span_size": 94,
+          "equal_size": true,
+          "opcodes": [
+            24
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 94
+        },
+        {
+          "baseline_physical_span_size": 118,
+          "equal_size": true,
+          "opcodes": [
+            25
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 118
+        },
+        {
+          "baseline_physical_span_size": 94,
+          "equal_size": true,
+          "opcodes": [
+            26
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 94
+        },
+        {
+          "baseline_physical_span_size": 125,
+          "equal_size": false,
+          "opcodes": [
+            27
+          ],
+          "signed_size_delta": -9,
+          "target_physical_span_size": 134
+        },
+        {
+          "baseline_physical_span_size": 67,
+          "equal_size": true,
+          "opcodes": [
+            28
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 67
+        },
+        {
+          "baseline_physical_span_size": 89,
+          "equal_size": true,
+          "opcodes": [
+            29
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 89
+        },
+        {
+          "baseline_physical_span_size": 67,
+          "equal_size": true,
+          "opcodes": [
+            30
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 67
+        },
+        {
+          "baseline_physical_span_size": 89,
+          "equal_size": true,
+          "opcodes": [
+            31
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 89
+        },
+        {
+          "baseline_physical_span_size": 67,
+          "equal_size": true,
+          "opcodes": [
+            32
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 67
+        },
+        {
+          "baseline_physical_span_size": 100,
+          "equal_size": true,
+          "opcodes": [
+            33
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 100
+        },
+        {
+          "baseline_physical_span_size": 67,
+          "equal_size": true,
+          "opcodes": [
+            34
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 67
+        },
+        {
+          "baseline_physical_span_size": 100,
+          "equal_size": true,
+          "opcodes": [
+            35
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 100
+        },
+        {
+          "baseline_physical_span_size": 67,
+          "equal_size": true,
+          "opcodes": [
+            36
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 67
+        },
+        {
+          "baseline_physical_span_size": 100,
+          "equal_size": true,
+          "opcodes": [
+            37
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 100
+        },
+        {
+          "baseline_physical_span_size": 63,
+          "equal_size": true,
+          "opcodes": [
+            38
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 63
+        },
+        {
+          "baseline_physical_span_size": 105,
+          "equal_size": true,
+          "opcodes": [
+            39
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 105
+        },
+        {
+          "baseline_physical_span_size": 105,
+          "equal_size": true,
+          "opcodes": [
+            40
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 105
+        },
+        {
+          "baseline_physical_span_size": 130,
+          "equal_size": true,
+          "opcodes": [
+            41
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 130
+        },
+        {
+          "baseline_physical_span_size": 77,
+          "equal_size": true,
+          "opcodes": [
+            42
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 77
+        },
+        {
+          "baseline_physical_span_size": 77,
+          "equal_size": true,
+          "opcodes": [
+            43
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 77
+        },
+        {
+          "baseline_physical_span_size": 79,
+          "equal_size": true,
+          "opcodes": [
+            44
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 79
+        },
+        {
+          "baseline_physical_span_size": 82,
+          "equal_size": true,
+          "opcodes": [
+            45
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 82
+        },
+        {
+          "baseline_physical_span_size": 79,
+          "equal_size": true,
+          "opcodes": [
+            46
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 79
+        },
+        {
+          "baseline_physical_span_size": 83,
+          "equal_size": true,
+          "opcodes": [
+            47
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 83
+        },
+        {
+          "baseline_physical_span_size": 180,
+          "equal_size": false,
+          "opcodes": [
+            48
+          ],
+          "signed_size_delta": 9,
+          "target_physical_span_size": 171
+        },
+        {
+          "baseline_physical_span_size": 112,
+          "equal_size": true,
+          "opcodes": [
+            49
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 112
+        },
+        {
+          "baseline_physical_span_size": 86,
+          "equal_size": true,
+          "opcodes": [
+            50
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 86
+        },
+        {
+          "baseline_physical_span_size": 42,
+          "equal_size": true,
+          "opcodes": [
+            51
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 42
+        },
+        {
+          "baseline_physical_span_size": 86,
+          "equal_size": true,
+          "opcodes": [
+            52
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 86
+        },
+        {
+          "baseline_physical_span_size": 112,
+          "equal_size": true,
+          "opcodes": [
+            53
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 112
+        },
+        {
+          "baseline_physical_span_size": 92,
+          "equal_size": true,
+          "opcodes": [
+            54
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 92
+        },
+        {
+          "baseline_physical_span_size": 62,
+          "equal_size": true,
+          "opcodes": [
+            55
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 62
+        },
+        {
+          "baseline_physical_span_size": 344,
+          "equal_size": true,
+          "opcodes": [
+            56
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 344
+        },
+        {
+          "baseline_physical_span_size": 173,
+          "equal_size": true,
+          "opcodes": [
+            57
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 173
+        },
+        {
+          "baseline_physical_span_size": 81,
+          "equal_size": false,
+          "opcodes": [
+            58
+          ],
+          "signed_size_delta": -3,
+          "target_physical_span_size": 84
+        },
+        {
+          "baseline_physical_span_size": 290,
+          "equal_size": true,
+          "opcodes": [
+            59
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 290
+        },
+        {
+          "baseline_physical_span_size": 139,
+          "equal_size": false,
+          "opcodes": [
+            60
+          ],
+          "signed_size_delta": -14,
+          "target_physical_span_size": 153
+        },
+        {
+          "baseline_physical_span_size": 53,
+          "equal_size": false,
+          "opcodes": [
+            61
+          ],
+          "signed_size_delta": 1,
+          "target_physical_span_size": 52
+        },
+        {
+          "baseline_physical_span_size": 52,
+          "equal_size": true,
+          "opcodes": [
+            62
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 52
+        },
+        {
+          "baseline_physical_span_size": 204,
+          "equal_size": false,
+          "opcodes": [
+            63
+          ],
+          "signed_size_delta": 1,
+          "target_physical_span_size": 203
+        },
+        {
+          "baseline_physical_span_size": 75,
+          "equal_size": true,
+          "opcodes": [
+            65
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 75
+        },
+        {
+          "baseline_physical_span_size": 47,
+          "equal_size": true,
+          "opcodes": [
+            66
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 47
+        },
+        {
+          "baseline_physical_span_size": 75,
+          "equal_size": true,
+          "opcodes": [
+            67
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 75
+        },
+        {
+          "baseline_physical_span_size": 27,
+          "equal_size": true,
+          "opcodes": [
+            68
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 27
+        },
+        {
+          "baseline_physical_span_size": 7,
+          "equal_size": true,
+          "opcodes": [
+            69
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 7
+        },
+        {
+          "baseline_physical_span_size": 72,
+          "equal_size": true,
+          "opcodes": [
+            70
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 72
+        },
+        {
+          "baseline_physical_span_size": 72,
+          "equal_size": true,
+          "opcodes": [
+            71
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 72
+        },
+        {
+          "baseline_physical_span_size": 44,
+          "equal_size": true,
+          "opcodes": [
+            72
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 44
+        },
+        {
+          "baseline_physical_span_size": 50,
+          "equal_size": true,
+          "opcodes": [
+            73
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 50
+        },
+        {
+          "baseline_physical_span_size": 50,
+          "equal_size": true,
+          "opcodes": [
+            74
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 50
+        },
+        {
+          "baseline_physical_span_size": 44,
+          "equal_size": true,
+          "opcodes": [
+            75
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 44
+        },
+        {
+          "baseline_physical_span_size": 86,
+          "equal_size": true,
+          "opcodes": [
+            76
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 86
+        },
+        {
+          "baseline_physical_span_size": 42,
+          "equal_size": true,
+          "opcodes": [
+            77
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 42
+        },
+        {
+          "baseline_physical_span_size": 173,
+          "equal_size": true,
+          "opcodes": [
+            78
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 173
+        },
+        {
+          "baseline_physical_span_size": 81,
+          "equal_size": true,
+          "opcodes": [
+            79
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 81
+        },
+        {
+          "baseline_physical_span_size": 50,
+          "equal_size": true,
+          "opcodes": [
+            80
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 50
+        },
+        {
+          "baseline_physical_span_size": 54,
+          "equal_size": true,
+          "opcodes": [
+            81
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 54
+        },
+        {
+          "baseline_physical_span_size": 51,
+          "equal_size": true,
+          "opcodes": [
+            82
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 51
+        },
+        {
+          "baseline_physical_span_size": 66,
+          "equal_size": true,
+          "opcodes": [
+            83
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 66
+        },
+        {
+          "baseline_physical_span_size": 76,
+          "equal_size": true,
+          "opcodes": [
+            84
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 76
+        },
+        {
+          "baseline_physical_span_size": 51,
+          "equal_size": true,
+          "opcodes": [
+            85
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 51
+        },
+        {
+          "baseline_physical_span_size": 59,
+          "equal_size": true,
+          "opcodes": [
+            86
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 59
+        },
+        {
+          "baseline_physical_span_size": 51,
+          "equal_size": true,
+          "opcodes": [
+            87
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 51
+        },
+        {
+          "baseline_physical_span_size": 44,
+          "equal_size": true,
+          "opcodes": [
+            88
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 44
+        },
+        {
+          "baseline_physical_span_size": 46,
+          "equal_size": true,
+          "opcodes": [
+            89
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 46
+        },
+        {
+          "baseline_physical_span_size": 133,
+          "equal_size": true,
+          "opcodes": [
+            90
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 133
+        },
+        {
+          "baseline_physical_span_size": 47,
+          "equal_size": true,
+          "opcodes": [
+            91
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 47
+        },
+        {
+          "baseline_physical_span_size": 133,
+          "equal_size": true,
+          "opcodes": [
+            92
+          ],
+          "signed_size_delta": 0,
+          "target_physical_span_size": 133
+        }
+      ],
+      "table_ends_at_owner_end": true,
+      "table_extent_contained": true,
+      "target_distinct_group_count": 92,
+      "target_pre_table_span_size": 9588,
+      "unequal_sized_physical_span_count": 9
+    },
+    "new_exact_credit": 0,
+    "normalization_tested": false,
+    "postrun_pins_valid": true,
+    "runtime_executed": false,
+    "source_coverage_verified": true,
+    "source_cpp_sha256": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+    "source_header_sha256": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+    "state": "completed",
+    "target_identity_verified": true,
+    "target_owner_sha256": "7aeb1547ffa662357abe252c29cfb339b57aa60983c48f3557cc49c719218df4",
+    "target_owner_size": 9964,
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "tool_sha256": {
+      "scripts/linked_image.py": "58583c6241e0979288b0c4ce0a0e55f1ae2a178762d93743475d05518eff0354",
+      "scripts/report-anm-execute-table.py": "0ef3bf11bf8d608f3b668441f0f3f5690153cabf66d0a721138c62c3bc3a1599",
+      "scripts/target_identity.py": "c7fefbe43382a0f45e0d30a90b60d938d9622f62e746caf50a3851c98709d663"
+    }
+  }
+}

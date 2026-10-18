@@ -1,0 +1,12 @@
+{
+  "original_files_sha256": {
+    "SUMMARY.md": "f4b6e7ba4dba43d90fc61ad88bb5f6398a6c927be80f50471e45e170ac69f75e",
+    "REPORT.md": "666695d47577fc70eb993bf7491981973bebeb62338c258e5ab3560d0827c7a7",
+    "impact.json": "860c2499b3d29789d5b5fc7a06ee56a2f0523515f8905b6c258e931869c23e6b",
+    "audit.py": "a7ba263a233333ae9928809698f2ab482af3ad36d45cd4004268313a09c1912d"
+  },
+  "units": 256,
+  "recipes": 93,
+  "source_files": 83,
+  "native_replays_authorized": 0
+}

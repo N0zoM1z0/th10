@@ -1,0 +1,18 @@
+{
+  "scope": "Final V2 verifier and manifest unchanged; tests adapted only to explicit environment paths for portable archive; sanitized actual evidence and import failure provenance.",
+  "sha256": {
+    "ACTUAL_COMPARISON.md": "7392ab163285defff880f1a47f3f29df8b037275c05c4d6e2af45f33795d6d26",
+    "ACTUAL_COMPARISON_RESULT.json": "ace829ce679e040192cf48baaf18bec6a5bfdd5fb7b5ea1a908cdf976ec950b1",
+    "FAILURE_DIAGNOSIS.md": "aac0694dc34a5381fd02cf0850deb6b82a1e078819cac7f0105c171ada4ceea0",
+    "FINAL_READY_REVIEW.md": "b177097fe7d08b271f8c4bf2661d718711fa75fc140c66ed3ecef702d190a157",
+    "HOST_TESTS.md": "c9ca99c852bb929c06b266d0c0ac88669b19ae9051ba5f12236119f71af4274a",
+    "INITIAL_FAILURE_PROVENANCE.json": "5bfab11a91006d54cabd236059aacae39f8f03b22a2ef2a3726bff5ab537b756",
+    "PARENT_GATE.md": "95afe91b61c06d1d7cd6379fc736720518785a4871e9ebd2b14e2ebf13304274",
+    "compare.py": "f1e4934e64d8938813d95e9dad00237102f2b6e8b4ace7f1b54392a886909543",
+    "host-tests.txt": "2bdde2cc24b216a360cee81430f129715134fe3edf82d74713fc0014af3aa391",
+    "manifest.json": "bed669e6bbb9c5536fc2ef5110845fbf29370de6688383673ea543823cac5966",
+    "remote-comparison-receipt.json": "8151b2bd570e25f7f282794bb8e757f661e7e076f14af1baa192abb6295c10ab",
+    "test_compare.py": "8fc2a88a45d1618b3e053ea9da5f08c4d64a9d3f021eb201e627035d46ac881f",
+    "test_owner.py": "fd8b5fac441b0a80d1de74bc05d043a64cabf091fd1ed137e77bcf486d9f31a5"
+  }
+}

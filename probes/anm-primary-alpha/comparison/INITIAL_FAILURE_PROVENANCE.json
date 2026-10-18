@@ -1,0 +1,11 @@
+{
+  "command_id": "repository-command:89def609eaef493083e9aa71804bba64",
+  "meaning": "Import-stage failure; no comparison result.",
+  "receipt_sha256": "768be68279cb3a7ea312a3765335d26d11711d139e2ffc4a6ceafcf49bfe89ff",
+  "result": {
+    "acceptance_authority": "none",
+    "error_class": "AttributeError",
+    "normalization_tested": false,
+    "state": "failed"
+  }
+}

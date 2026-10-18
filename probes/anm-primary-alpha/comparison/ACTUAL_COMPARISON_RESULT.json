@@ -1,0 +1,61 @@
+{
+  "command_id": "repository-command:e0b81b4be4214e44a6417b8a7c04ec94",
+  "decision": "Park int-formal hypothesis unadopted. No further helper builds or normalization.",
+  "derived_bound": {
+    "minimum_remaining_mismatched_positions": 32,
+    "proof": "36 raw mismatched positions minus at most4 changeable positions; no normalized comparison performed.",
+    "scope": "Only normalization confined to the four candidate-identified linkage positions"
+  },
+  "limits": [
+    "Equal130 extent is not exactness.",
+    "Zero target identified fields is decoder inventory only, not evidence of no globals.",
+    "No original-formal-type or ABI inference.",
+    "Both canonical guards passed but whole helper remains raw mismatch; Execute remains9948 versus9964."
+  ],
+  "receipt_sha256": "8151b2bd570e25f7f282794bb8e757f661e7e076f14af1baa192abb6295c10ab",
+  "result": {
+    "acceptance_authority": "none",
+    "artifact_sha256": {
+      "image": "d3611acfaccabb02139cb46a77fa36c0d2e703096362268054b27a2516b9d9ae",
+      "map": "bebfca063ca789c5640d70f76f99a4a569cd8358b52d8b8973e0bb269623f185",
+      "pdb": "833388bd5a85b1c8068097e36609bb49547212de9a7bb26baa1adcbb4cf649f3"
+    },
+    "candidate_inventory": {
+      "decode_complete": true,
+      "decoded_bytes": 130,
+      "field_bytes": 4,
+      "field_count": 1,
+      "field_counts": {
+        "DIR32": 1,
+        "REL16": 0,
+        "REL32": 0,
+        "REL8": 0
+      }
+    },
+    "candidate_sha256": "c2fa5a9ad67c59c2a3715fc6748e379679aaee77f6c9c64e493d92062dcbb250",
+    "cold_link_calls": 0,
+    "compared_size": 130,
+    "complete_owner_verified": true,
+    "normalization_tested": false,
+    "production_clean": true,
+    "raw_equal": false,
+    "raw_matched_bytes": 94,
+    "raw_mismatched_bytes": 36,
+    "runtime_executed": false,
+    "size": 130,
+    "state": "completed",
+    "target_inventory": {
+      "decode_complete": true,
+      "decoded_bytes": 130,
+      "field_bytes": 0,
+      "field_count": 0,
+      "field_counts": {
+        "DIR32": 0,
+        "REL16": 0,
+        "REL32": 0,
+        "REL8": 0
+      }
+    },
+    "target_sha256": "f51bedcc749b50577c87aeeb1ef901b72fc08b54e43e5b4837320d817ff482b8"
+  }
+}

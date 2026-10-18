@@ -1,0 +1,14 @@
+[
+  {
+    "direction": "forward",
+    "exit_code": 0,
+    "byte_exact": true,
+    "stdout": "patching file src/AnmManager.cpp\npatching file src/AnmManager.hpp\n"
+  },
+  {
+    "direction": "reverse",
+    "exit_code": 0,
+    "byte_exact": true,
+    "stdout": "patching file src/AnmManager.cpp\npatching file src/AnmManager.hpp\n"
+  }
+]

@@ -1,0 +1,3 @@
+# Reproduce dependency reach without native builds
+
+Run normal Python3 with --source-root /path/to/exact-baseline-repo --config /path/to/repo/config/match-units.toml --manifest /path/to/archive/candidate/manifest.proposed.json --output-dir /fresh/directory/outside-source-root. All83 baseline source pins and fixed config are checked. Two distinct source roots, including a Python-O run, reproduce impact.json SHA6f1111a4993bac3458c616710d4cca9328aa6105260d78ea65946eea8dc862b6. Output directory must be fresh/nonexistent and outside source root, with no symlink in its path; there are no builds or source writes. Full generated inventory is deliberately omitted. Counts256units/93recipes are conservative dependencies, not observed native changes or authorization for93 replays.

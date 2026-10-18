@@ -1,0 +1,97 @@
+{
+  "claim_limits": {
+    "new_exact_credit": 0,
+    "owner_exactness_tested": false,
+    "target_extent_is_not_exactness": true,
+    "whole_owner_comparison": "Completed separately after this build receipt; see probes/anm-primary-alpha/comparison/ACTUAL_COMPARISON_RESULT.json. Full130 raw comparison has94equal/36mismatch; candidate parked/unadopted."
+  },
+  "provenance": {
+    "command_id": "repository-command:aaad5f6ad8b34639bcb1b472fd216908",
+    "created_commits": [],
+    "finished_at": "2026-10-18T10:44:12.642946+00:00",
+    "head_relation": "unchanged",
+    "receipt_sha256": "50ca9c5d4db3d13c30f2328f986b99c4ae94c5e1b3b6b3630f414f8bd8df9501",
+    "remote_script_sha256": "c2ba50d2b73ec8706fcfe32e05df33321c170aa221dd107a0e61964fc3c85fe0",
+    "started_at": "2026-10-18T10:43:58.503307+00:00"
+  },
+  "result": {
+    "acceptance_authority": "none",
+    "artifact_sha256": {
+      "image": "d3611acfaccabb02139cb46a77fa36c0d2e703096362268054b27a2516b9d9ae",
+      "map": "bebfca063ca789c5640d70f76f99a4a569cd8358b52d8b8973e0bb269623f185",
+      "pdb": "833388bd5a85b1c8068097e36609bb49547212de9a7bb26baa1adcbb4cf649f3"
+    },
+    "base_commit": "e534a6f6c77115017e613721353308a41cde9b6a",
+    "build_success": true,
+    "candidate_valid": true,
+    "cold_link_calls": 1,
+    "elapsed_seconds": 9.853,
+    "guards": {
+      "anm-setup-vertex-buffer": {
+        "compared_size": 472,
+        "exit_ok": true,
+        "image_sha256": "d3611acfaccabb02139cb46a77fa36c0d2e703096362268054b27a2516b9d9ae",
+        "matched_bytes": 472,
+        "matched_compared_bytes": 472,
+        "normalization_complete": true,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 472
+      },
+      "anm-vm-initialize-private": {
+        "compared_size": 273,
+        "exit_ok": true,
+        "image_sha256": "d3611acfaccabb02139cb46a77fa36c0d2e703096362268054b27a2516b9d9ae",
+        "matched_bytes": 273,
+        "matched_compared_bytes": 273,
+        "normalization_complete": true,
+        "raw_equal": true,
+        "result": "exact",
+        "size": 273
+      }
+    },
+    "manifest_sha256": "550addeeb5dc774e923a8af9f86e967f66603e57ef8f7330b1f98341f063bd7f",
+    "object_sha256": {
+      "source.ltcg.obj": "9dfd9fd849ce34fe211b5a6f44bf1e1f4fafd696d6b3978ee687db0511663f73",
+      "support-00-RandomMath.ltcg.obj": "1cf799938b1efc49c897a18f1c65d3dbf4e1da8754b72302a3f846f552424bb1",
+      "support-01-AnmVmCreate.ltcg.obj": "8b9a88fd75e1a0ad7be6fd12afbe26d80a09a5b800a391b2919f8cb3f303c04a",
+      "support-02-AnmVmId.ltcg.obj": "d4b568a1de5276bc4efb22f104ddf7d065a3b13128ccbad2d18b8e0106ccc47f"
+    },
+    "owner_exactness_tested": false,
+    "owners": {
+      "execute": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "78a745b8f74a70acaa61df69fda830e14317c8bdd45b5a92e4efdc19668d3140",
+        "size": 9948,
+        "size_equal": false,
+        "target_size": 9964
+      },
+      "primary_alpha": {
+        "all_required_attribution_gates": true,
+        "complete": true,
+        "sha256": "c2fa5a9ad67c59c2a3715fc6748e379679aaee77f6c9c64e493d92062dcbb250",
+        "size": 130,
+        "size_equal": true,
+        "target_size": 130
+      }
+    },
+    "postrun_pins_valid": true,
+    "process_group_terminated": true,
+    "production_clean": true,
+    "resource_policy": {
+      "address_space": "inherit_unlimited_without_setrlimit",
+      "cpu_affinity_count": 1,
+      "cpu_seconds": 120,
+      "nice_increment": 10,
+      "wall_seconds": 150
+    },
+    "restart_allowed": false,
+    "runner_sha256": "440f0071ab7324d9a788b2c31fafa7162e951f8377ca72801ea794c8e92d1ac7",
+    "runtime_executed": false,
+    "stage": "complete",
+    "state": "completed",
+    "unresolved_count": 89
+  },
+  "schema": 1
+}

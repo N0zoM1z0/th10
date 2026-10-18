@@ -1,0 +1,18 @@
+{
+  "acceptance_authority": "none",
+  "artifact_sha256": {
+    "image": "d3611acfaccabb02139cb46a77fa36c0d2e703096362268054b27a2516b9d9ae",
+    "map": "bebfca063ca789c5640d70f76f99a4a569cd8358b52d8b8973e0bb269623f185",
+    "pdb": "833388bd5a85b1c8068097e36609bb49547212de9a7bb26baa1adcbb4cf649f3"
+  },
+  "candidate_run": ".analysis/anm-alpha-int-candidate-20261018-a001",
+  "comparison_scope": "full raw130 and count-only linkage inventory; no normalization or build",
+  "execution_ready": true,
+  "functions_csv_provenance": "Parent verified current remote metadata command1d3dcecf54a74e29be70aa4f8310e510; unique442300 row size130 end442381 nameAnmVmView::StartPrimaryAlphaInterpolation.",
+  "functions_csv_sha256": "19d7e4eb1aab50f97afba28cd7a5c6ed529a771f18bd9ccf4997aee6a1954350",
+  "helper_sha256": "c2fa5a9ad67c59c2a3715fc6748e379679aaee77f6c9c64e493d92062dcbb250",
+  "manifest_sha256": "550addeeb5dc774e923a8af9f86e967f66603e57ef8f7330b1f98341f063bd7f",
+  "runner_sha256": "440f0071ab7324d9a788b2c31fafa7162e951f8377ca72801ea794c8e92d1ac7",
+  "size": 130,
+  "target_address": 4465408
+}

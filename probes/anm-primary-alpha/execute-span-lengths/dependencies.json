@@ -1,0 +1,21 @@
+{
+  "execution_ready": false,
+  "required_remote_metadata_pins": {
+    "scripts/report-anm-execute-table.py": "0ef3bf11bf8d608f3b668441f0f3f5690153cabf66d0a721138c62c3bc3a1599",
+    "scripts/linked_image.py": "58583c6241e0979288b0c4ce0a0e55f1ae2a178762d93743475d05518eff0354",
+    "scripts/target_identity.py": "c7fefbe43382a0f45e0d30a90b60d938d9622f62e746caf50a3851c98709d663"
+  },
+  "additional_remote_metadata_pins": [
+    "config/tools.lock.toml",
+    "config/target.toml",
+    "config/functions.csv",
+    "config/match-units.toml",
+    "frozen baseline runner.py",
+    "frozen baseline manifest.json"
+  ],
+  "source_review_only_not_runtime_dependencies": {
+    "report-anm-execute-cases.py": "557ffa5526bfba445220d96a9a095b5e2b8c4117a87360045528d5aa07da2272",
+    "probe-ltcg-backlog.py": "05b5ee4b21bb0af5d24111dff40fd8aea776c8c0e7656f6012bb71aa63bca26f"
+  },
+  "notes": "Local hashes are comparison candidates, not evidence remote matches. No structural comparator dependency is needed for the minimal layout operation."
+}

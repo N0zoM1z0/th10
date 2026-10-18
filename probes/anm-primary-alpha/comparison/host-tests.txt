@@ -1,0 +1,20 @@
+test_artifact_identity_mismatches (test_compare.Tests.test_artifact_identity_mismatches) ... ok
+test_failed_import_removes_or_restores_registration (test_compare.Tests.test_failed_import_removes_or_restores_registration) ... ok
+test_hash_drift_fails_before_import_or_native_read (test_compare.Tests.test_hash_drift_fails_before_import_or_native_read) ... ok
+test_invalid_inventory_fails (test_compare.Tests.test_invalid_inventory_fails) ... ok
+test_inventory_excludes_native_fields (test_compare.Tests.test_inventory_excludes_native_fields) ... ok
+test_no_all_owner_enumeration (test_compare.Tests.test_no_all_owner_enumeration) ... ok
+test_optimized_python_refused (test_compare.Tests.test_optimized_python_refused) ... ok
+test_raw_full130_only (test_compare.Tests.test_raw_full130_only) ... ok
+test_real_pinned_parser_import_without_native_inputs (test_compare.Tests.test_real_pinned_parser_import_without_native_inputs) ... ok
+test_scope_and_pin_mutations (test_compare.Tests.test_scope_and_pin_mutations) ... ok
+test_target_boundary_unique_and_exact (test_compare.Tests.test_target_boundary_unique_and_exact) ... ok
+test_attribution_mutations (test_owner.Owners.test_attribution_mutations) ... ok
+test_full_extent_includes_table (test_owner.Owners.test_full_extent_includes_table) ... ok
+test_size_mismatch_never_cropped (test_owner.Owners.test_size_mismatch_never_cropped) ... ok
+test_unrelated_unusable_module_paths (test_owner.Owners.test_unrelated_unusable_module_paths) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.209s
+
+OK

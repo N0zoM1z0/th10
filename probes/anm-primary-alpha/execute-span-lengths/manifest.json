@@ -1,0 +1,9 @@
+{
+  "execution_ready": true,
+  "acceptance_authority": "none",
+  "baseline_run": ".analysis/anm-execute-baseline-20261018-a001",
+  "baseline_runner_sha256": "a59bfec32f6f52a5ac722f79ef05736b5ae36fd65f4ef7d95703d672f145cb63",
+  "baseline_manifest_sha256": "9738c814281e531774a97d3700ed5bf865ce5cbe7cd87b210a4a3f7092f71f56",
+  "scope": "physical-span-size-only",
+  "output_limit_bytes": 20480
+}
