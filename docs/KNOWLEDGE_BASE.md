@@ -2126,3 +2126,7 @@ The signed RNG conversion now uses one explicit float local before the unchanged
 - Actual complete canonical replay: `fc309434dbb1496aad942db711ef2761`; additional 23-guard finalization completing all 29 guards: `3f15976898af4bbd951471e67e66a12e`.
 
 See [Radial signed-RNG local evidence](evidence/radial-rng-local/README.md) for source/tool/graph identities, reviewed compile-address binding scope, reproduction limits and the pending Factory handoff.
+
+### 2026-10-18: radial initializer Factory acceptance
+
+The complete 803-byte `anm-initialize-pulsing-radial-trail` claim passed Factory forced-recompile replay and was accepted at clean commit `504539f9fcd1e465f7fd7e902af05c042e5d077d`. Receipt: `dd3a0154fc4a5a6ac0ae07cb3e17cde3bf0326b91382e7abf1bb7a78c8a334b0`; job: `40f82069fb8d46dea5d5441fe851b0e6`. The separate 115-byte signed-RNG claim was also accepted at the same source binding, receipt `64fd20e83b5c945ac8005e3af3977730dd9b5550709a6db3e5deebc32e9bce58`. See [the dated radial acceptance record](evidence/radial-rng-local/README.md#factory-acceptance-at-504539f9-2026-10-18) for exact source binding and limits. Earlier Factory-pending wording is historical; ExecuteScript remains outside this exactness claim.

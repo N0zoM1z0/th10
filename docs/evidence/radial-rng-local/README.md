@@ -1,6 +1,6 @@
 # Radial initializer and signed-RNG checkpoint
 
-The complete radial initializer passed the canonical linked-PE comparison at **803/803 bytes**. All **29 affected existing canonical units**, grouped into **12 recipes**, were preserved. The generated unit is `anm-initialize-pulsing-radial-trail`. Factory-controlled replay/acceptance is **pending**; these authored repository results do not grant Factory credit.
+The complete radial initializer passed the canonical linked-PE comparison at **803/803 bytes**. All **29 affected existing canonical units**, grouped into **12 recipes**, were preserved. The generated unit is `anm-initialize-pulsing-radial-trail`. Factory acceptance was pending at this authored checkpoint; the dated acceptance record below records the later replays.
 
 `ExecuteScript` remains **9948 bytes against a 9964-byte target**, with unchanged owner hash. Its exactness is not established by the radial result. No target runtime was executed.
 
@@ -59,8 +59,22 @@ The planner uses canonical compile/link/comparison tools already in the reposito
 
 `verify-receipt --receipt FILE` accepts a bounded `radial-native-summary-v1` summary tied to the exact emitted plan hash. It requires ordered 12 phases, unique claim hashes, one build call each, prescribed limits, matching pre/post artifact hashes and exact safe comparison summaries for all 30 units. The portable test fixture shows the exact JSON schema. Its result is **receipt consistency only**, always `execution_authenticated: false` and Factory pending. A fabricated internally consistent summary can pass; trusted execution/claim provenance requires the separate runner and its independent receipts.
 
-## Integration handoff
+## Historical integration handoff (before 504539f9)
+
+The following handoff records the pre-acceptance integration requirements.
 
 The docs-only ECL checkpoint is integration base `4068024da61967dbfef3b496c2476ef1e24bfa91`. Historical producers remain recorded at `65e3fd3c127c7efe190ed9ac2cd9b82d31bd2725`; never rewrite those receipts to the new base. Before adoption, prove the unchanged 83-source/tool/config pin bridge across that docs-only commit, then verify the single adopted RandomMath hash and additive unit against this manifest.
 
 The parent-owned integration driver stages all payloads before replacement and requires absent bundle destinations. Source-only bundle verification is not an adopted-source-to-fresh-candidate proof. Complete the separately authorized replay bridge before claiming integration validated. Preserve prior behavioral provenance, regenerate ledger-derived progress with the canonical tool, and retain Factory-pending wording in the existing handoff. Commit subject starts `gpt-dots:` and contains the exact trailer `Co-authored-by: gensokyo-dev <342580529+gensokyo-dev@users.noreply.github.com>`. No push is implied.
+
+## Factory acceptance at 504539f9 (2026-10-18)
+
+After integration and successful source/full-CI validation, Factory's forced-recompile replay for `anm-initialize-pulsing-radial-trail` passed the complete 803-byte claim and was **accepted**. This acceptance is bound to clean commit `504539f9fcd1e465f7fd7e902af05c042e5d077d`, source snapshot `ef6e397bd19ec6cdf74c96508535ceb59cb203db8f08cc95994ed4fc08c4e985`.
+
+- Factory job: `40f82069fb8d46dea5d5441fe851b0e6`.
+- Accepted receipt: `dd3a0154fc4a5a6ac0ae07cb3e17cde3bf0326b91382e7abf1bb7a78c8a334b0`.
+- Claim: `claim:th10-main:function:004452f0:codegen-exact`.
+
+The separate 115-byte signed-RNG claim `claim:th10-main:function:0044bb90:codegen-exact` also passed Factory forced-recompile replay and was **accepted** at the same clean commit and source snapshot. Its job is `8a569d013978419ca0c7f5e8a9aff900`; accepted receipt: `64fd20e83b5c945ac8005e3af3977730dd9b5550709a6db3e5deebc32e9bce58`.
+
+Earlier pending statements describe the pre-acceptance checkpoint. The frozen reproduction manifest and portable verifier's pending output retain their historical/source-only or receipt-consistency scope; they do not query Factory acceptance. Historical producer commits, validation failures and receipts remain unchanged. This accepted radial claim does not establish ExecuteScript exactness or unrestricted RNG/runtime equivalence, and is not automatically rebound to a later documentation commit.
