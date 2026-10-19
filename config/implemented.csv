@@ -1010,3 +1010,4 @@ StageUpdateCallback
 StageDrawEarlyCallback
 StageDrawLateCallback
 AnmVmTimerView::Tick
+GameResetAnimationSlots

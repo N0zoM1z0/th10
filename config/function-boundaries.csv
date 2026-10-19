@@ -63,7 +63,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00404410,0x0040441A,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00404450,0x00404525,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00404530,0x004045A6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x004045B0,0x0040460B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x004045B0,0x0040460B,reviewed,high,target-stage-transition-delay-2026-10-19,Complete92-byte dense target decode ends RET at0x40460B; four CC bytes precede independent0x404610. Fresh read-only hash-attested Ghidra agrees; real caller0x4181FC and primary-stage load0x4181F7 reviewed. No boundary/ownership-size change. See docs/evidence/stage-transition-delay/README.md.
 0x00404610,0x00404986,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 887/887, tail ret"
 0x004049A0,0x00404C4F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00404C90,0x00404C96,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

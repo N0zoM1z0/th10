@@ -160,8 +160,24 @@ scratch paths, or build hashes into this file.
   through a different register chain. Shared initializer197/203 and embedded
   initializer200/202 remain open. Original interprocedural visibility/partition
   is unknown; do not add fake clobbers/arguments or repeat cursor/caller sweeps.
-  Rotate to another complete owner; source-absent GameEnterMenuState4045B0 is
-  a bounded real-GameManager caller opportunity using its observed timer.
+  The subsequent caller review corrects the preliminary route name:
+  GameEnterMenuState is404530/menu4776E4; GameResetAnimationSlots is4045B0,
+  with the distinct primary-stage4776E8 pointer.
+- [Primary-stage transition delay](evidence/stage-transition-delay/README.md)
+  now closes **92 authored exact bytes** in GameManager.cpp. The natural
+  existing timer view sets current60/subframe60/previous59, then ORs flags4.
+  Two cold single-TU real-OnUpdate links pass127 complete bytes/all2 fields,
+  including existing callback7 and static marker28. All20 source/header inputs
+  agree. Their guard recipes share the new canonical output directory without
+  changing profiles or adding duplicate credit. The119-byte menu helper,
+  GameManager update core, storage alias and native product/runtime stay open.
+  Next bounded dependency: StageCreateTransitionEffect82 at43C8B0. Fresh target
+  decoding shows one pushed allocation size0x44, call452493, ADD ESP4, a null
+  branch and RET20. The maintained factory still uses two-argument nothrow
+  allocation and ordinary cdecl; the old14-TU observation reports89/82 and
+  caller cleanup. Review allocator452493/initializer43C970 and actual compiler
+  behavior before correcting those hypotheses; no allocator/exception/runtime
+  equivalence is established merely by the call window.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

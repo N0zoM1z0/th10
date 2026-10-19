@@ -1,0 +1,33 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "address": "0x004045B0",
+  "size": 92,
+  "whole_sha256": "89fe83f31cad66acc8ea63a021fac54ed9a641fd1d26da1af948dda53b5483be",
+  "dense_decode": 92,
+  "padding_after": "cccccccc",
+  "fields": [
+    {
+      "offset": 44,
+      "type": "DIR32",
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592
+    }
+  ],
+  "caller": {
+    "owner": "0x00418190",
+    "menu_load": "0x004181E8",
+    "menu_pointer_global": "0x004776E4",
+    "menu_call": "0x004181F2",
+    "menu_target": "0x00404530",
+    "primary_stage_load": "0x004181F7",
+    "primary_stage_pointer_global": "0x004776E8",
+    "reset_call": "0x004181FC",
+    "reset_target": "0x004045B0"
+  },
+  "field_contract": {
+    "flags": "owner+0x2A18 |=4",
+    "timer": "owner+0x2A1C; current60, subframe float32(60), previous59; lazy scale0x476F78, initial previous-999999"
+  },
+  "boundary_or_origin_change": false,
+  "original_source_class_TU_owner": "unknown"
+}

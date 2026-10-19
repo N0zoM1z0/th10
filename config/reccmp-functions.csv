@@ -1011,3 +1011,4 @@ StageUpdateCallback,0x00403050,function
 StageDrawEarlyCallback,0x00403060,function
 StageDrawLateCallback,0x00403070,function
 AnmVmTimerView::Tick,0x00404ED0,function
+GameResetAnimationSlots,0x004045B0,function

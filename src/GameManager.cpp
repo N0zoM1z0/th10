@@ -138,6 +138,15 @@ extern void GameUpdateFaithDecay(unsigned char *state);
 extern void GameAdvanceTimer(PlayerTimerView *timer);
 extern void EnemyMarkPendingInterrupt(int *vmId);
 
+// Target0x4045B0 starts the primary stage's60-frame transition. The actual
+// GameManager caller supplies4776E8, separately from the menu entry4776E4.
+void GameResetAnimationSlots(GameChainOwnerView *owner)
+{
+    StageScriptView *stage = reinterpret_cast<StageScriptView *>(owner);
+    stage->transitionTimer.SetCurrent(60);
+    stage->flags |= 4;
+}
+
 static inline void MarkGameChains(GameChainOwnerView *owner)
 {
     if (owner->updateChain != NULL)

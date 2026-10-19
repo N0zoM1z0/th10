@@ -2569,3 +2569,21 @@ gap; original physical partition and interprocedural policy remain unknown.
 Link-target identity alone cannot make these unlike interfaces exact. No fake
 argument, artificial clobber, profile sweep, partial credit or runtime claim.
 One minimal baseline image is retained; duplicate controls are removed.
+
+## Primary-stage transition delay closure (2026-10-19)
+
+The [complete helper evidence](evidence/stage-transition-delay/README.md)
+adds92 authored exact bytes at4045B0. Actual GameManagerUpdate loads the primary
+Stage pointer from4776E8 at4181F7 and calls the helper at4181FC; the earlier
+call4181F2 targets404530 with the distinct menu pointer4776E4. This corrects a
+preliminary routing label, without changing prior exact/boundary/origin state.
+
+Natural GameResetAnimationSlots reuses StageScriptView::transitionTimer at2A1C
+and flags at2A18: SetCurrent60 then OR4. The emitted EAX/plainRET helper matches
+all92 bytes and the sole speed-scalar DIR32 at+2C. Two independent cold real
+OnUpdate links use the existing single-TU /GL profile and identical20 inputs;
+existing callback7 and static chain marker28 also pass,127 bytes/all2 fields
+per image. Their recipes share the new output directory with no duplicate
+credit. Original identifiers/TU and complete alias/storage ownership remain
+unknown. Menu helper119, full update core, product/runtime, semantics and port
+remain open.
