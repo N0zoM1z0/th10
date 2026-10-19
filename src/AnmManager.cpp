@@ -627,11 +627,11 @@ void AnmVmView::StartPrimaryAlphaInterpolation(
     int duration, unsigned char mode,
     unsigned char initial, unsigned char final)
 {
+    primaryAlphaInterpolation.initialTangent = 0;
+    primaryAlphaInterpolation.finalTangent = 0;
     primaryAlphaInterpolation.duration = duration;
     primaryAlphaInterpolation.mode = mode;
     primaryAlphaInterpolation.initial = initial;
-    primaryAlphaInterpolation.initialTangent = 0;
-    primaryAlphaInterpolation.finalTangent = 0;
     primaryAlphaInterpolation.final = final;
     primaryAlphaInterpolation.timer.SetCurrent(0);
 }

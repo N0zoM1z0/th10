@@ -53,6 +53,23 @@ scratch paths, or build hashes into this file.
   See [the source model and controls](evidence/ecl-run-jump-lifetime/README.md).
   Rotate next to ANM ExecuteScript or Enemy dispatch; revisit this jump branch
   only with additional alias/lifetime evidence.
+- Primary alpha setup at 0x00442300 now closes **130 authored exact bytes**.
+  Moving its two tangent zeros before endpoints, with unchanged byte formals,
+  naturally restores the target private stack mode/RET12 interface. Two canonical
+  cold four-TU ExecuteScript /GL /GS links pass the complete helper and sole
+  address field; Initialize273 and SetupVertexBuffer472/all22 fields pass in
+  both images. Integer-width controls remain nonexact and are restored.
+  The later successful 2026-10-18 integer experiment superseded the early Wine
+  failures; the knowledge entries now reflect that chronology. Target machine
+  store order does not establish unique C++ statement order.
+  See [the source-order evidence](evidence/anm-primary-alpha-local/README.md).
+- Fresh complete ExecuteScript remains **9948/9964**, frame **0xF8/0xFC**,
+  all92 physical groups in order and84 target-sized spans. Opcodes55/58 align,
+  but eight other spans remain unequal; no parent or partial-case credit.
+  Two retained images reproduce1312/8564 whole-owner and6492/8000 case-aligned
+  comparable positions. Rotate next to the remaining native lifetime/stack
+  frontier or Enemy dispatch; do not repeat integer ABI keywords or parked
+  SCALE_TIME/FORMAT controls without new TH10 evidence.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our
@@ -133,7 +150,7 @@ ledger entries. Rebuild each probe after changing a supporting translation unit.
 | Owner | Last checked source context | Observed candidate / target | Open work |
 | --- | --- | --- | --- |
 | ECL `EclVmContext::Run` | `2f954d0` plus retained scoped jump operands, real Enemy caller /GL graph | 7,020 / 7,020 owned bytes; all 60 table destinations and 88 selector bytes aligned; 6,125 / 6,264 diagnostic comparable matches | 139 ordinary differences, incomplete selector normalization and remaining alias/register/stack structure; non-exact |
-| ANM `ExecuteScript` | `d2cddda`, ANM /GL /GS probe | 9,964 / 9,964 bytes, 0xFC target frame, 92 physical groups in order, 84 of 92 spans target-sized; 2,986 / 8,572 raw comparable bytes | Eight non-equal group spans and aggregate/RNG private ABI; non-exact |
+| ANM `ExecuteScript` | 2026-10-19 tangent-first byte-formal source, pinned in primary-alpha evidence; real four-TU /GL /GS graph | 9,948 / 9,964 bytes, frame 0xF8 / target 0xFC; 92 physical groups ordered, 84 target-sized spans; 1,312 / 8,564 whole-owner and 6,492 / 8,000 case-aligned comparable positions | Eight unequal spans, stack homes, register scheduling and remaining aggregate/RNG context; non-exact |
 | Enemy `DispatchEclInstruction` | `d2cddda`, selected ECL + ANM support graph | 14,384 / 14,416 bytes; target-sized 181-byte selector, all 108 group destinations in physical order; 0x2BC vs 0x2C4 stack allocation | ECL argument adapters, spawn/laser group lifetimes, stack allocation; non-exact |
 
 The 2026-10-14 bounded Run refinement nests `ReadIntValue` in the

@@ -5,7 +5,7 @@
   "sha256_lf": {
     "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
     "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
-    "src/AnmManager.cpp": "617dc8e960d781a5a15f2a4d92467ee5d06550731a61680cd99e729a9218ee7e",
+    "src/AnmManager.cpp": "2fc6c79a188d650e41f3b9c20be87bf05ee31e76561d8a9f22198db78a0fb647",
     "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
@@ -46,5 +46,15 @@
         "new_sha256_lf": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c"
       }
     }
+  },
+  "reviewed_anm_dependency_update": {
+    "date": "2026-10-19",
+    "starting_head": "88d8bb7d61ce024c668096c9348fb665608d3b16",
+    "reason": "Only StartPrimaryAlphaInterpolation tangent stores move before endpoint stores. The host-extracted AnmRandomU32InRange body is byte-identical after the existing CRLF-to-LF normalization; timer and viewport headers and all other host dependencies are unchanged. Pin rejection policy is unchanged.",
+    "evidence": "docs/evidence/anm-primary-alpha-local/README.md",
+    "input": "src/AnmManager.cpp",
+    "old_sha256_lf": "617dc8e960d781a5a15f2a4d92467ee5d06550731a61680cd99e729a9218ee7e",
+    "new_sha256_lf": "2fc6c79a188d650e41f3b9c20be87bf05ee31e76561d8a9f22198db78a0fb647",
+    "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1"
   }
 }
