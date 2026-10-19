@@ -2278,9 +2278,9 @@ annotation or a tested source fix.
 ### 2026-10-19: complete browser Update and native member lifetimes
 
 The [native lifecycle checkpoint](evidence/script-viewer-native-lifecycle/README.md)
-closes complete Update 1,251 at 0x40A450, creator 67 at 0x40A3C0,
-initializer 101 at 0x40A350 and loader 16 at 0x40A340: **1,435 authored exact
-bytes**. Worker destruction 16 at 0x44C130 and six nullable release helpers
+closes complete Update 1,251 at 0x40A450, creator 67 at 0x40A3C0 and
+initializer 101 at 0x40A350: **1,419 authored exact bytes**. Loader 16 at
+0x40A340, worker destruction 16 at 0x44C130 and six nullable release helpers
 (108 bytes) remain origin-indeterminate after exact replay. Six independently
 reviewed release boundaries add 109 indeterminate bytes, including the still
 nonexact Enemy release 19. Both frozen-source cold links pass all 11 new
@@ -2327,3 +2327,39 @@ fixtures cover pre-lock snapshots, changed callbacks, byte-depth wrapping,
 reverse record cleanup, global/member order and exceptional buffer cleanup.
 They do not establish Windows runtime or production storage ownership. Browser
 Draw, larger nonexact destructors, Rebuild and the whole-product gate stay open.
+
+### 2026-10-19: complete browser Draw and owned switch table
+
+The [Draw checkpoint](evidence/script-viewer-draw/README.md) closes complete
+ScriptViewerView::Draw at 0x40A940: **664 authored exact bytes**, plus callback
+10 at 0x40ABF0 with unchanged indeterminate origin. Two frozen-source cold links
+pass both complete owners, all 43 new fields and four existing complete-owner
+guards (RegisterTasks 106, Update 1251, AddSmallFormatText 100, DrawNoRotation
+515). The existing real browser graph and mixed `/GL` profiles are unchanged;
+no assembly, register bridge or code-segment pragma is added. The reference
+contributes a hypothesis; TH10-local target and native Oracles establish the claim.
+
+The old boundary stopped at RET after 647 instruction bytes. A single NOP at
+0x40ABC7 aligns a four-slot absolute table at 0x40ABC8..0x40ABD7. The selector
+bounds unsigned(state-1) to 0..3; slots reach 0x40A9E8, 0x40A988, 0x40AB10 and
+0x40AACC, all internal instruction starts. Fresh Ghidra has only the switch's
+base reference 0x40A981, no competing body, and an eight-CC suffix before the
+separate 0x40ABE0 callback. Thus the full owned extent adds **17 bytes to the
+provisional authored denominator**, without changing authored confidence.
+Ghidra reachable-body size remains 647. The original PE has no base-relocation
+entries; ownership is established by target control flow/pointers, while the
+linked candidate's complete DIR32 fields bind all four entries. No partial
+647-byte match is credited and no boundary-check policy is relaxed.
+
+Draw always emits the SprtView title. States 2 and 4 return after their loading
+or enemy-count text, even with draw flag 2. States 1 and 3 reset the currently
+published ASCII manager to white and may draw the embedded VM at (320,240,0)
+through DrawNoRotation; its return is ignored. The state-3 position text casts
+X/Y to integers. Target reloads the published ASCII/enemy/render pointers
+between relevant calls rather than caching the first publication. Host fixtures
+extract the actual bodies and exercise these state/format/color/position rules,
+manager replacement and draw-flag changes, using finite in-range conversion
+witnesses. They do not establish Windows runtime or x87 edge behavior.
+All nine reviewed authored ScriptViewer owners now have source; only its
+412-byte destructor remains nonexact. Larger manager destruction, Rebuild,
+production owners and the complete product/runtime gate remain open.

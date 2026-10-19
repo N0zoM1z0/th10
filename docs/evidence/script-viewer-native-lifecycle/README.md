@@ -1,6 +1,10 @@
 # Script browser Update and native lifecycle closure
 
-This checkpoint adds **1,435 authored exact bytes** and 124 exact bytes whose
+Follow-up: [the complete Draw checkpoint](../script-viewer-draw/README.md)
+closes Draw 664 and its ten-byte callback, including the previously omitted
+owned switch table. Nonexact sizes below describe this lifecycle source context.
+
+This checkpoint adds **1,419 authored exact bytes** and 140 exact bytes whose
 origin remains indeterminate. Two independent frozen-source VC7.1 SP1
 CL13.10.6030 / LINK7.10.6030 cold links pass all 11 new complete owners,
 all 114 new fields and 17 existing complete-owner guards. No partial region
@@ -10,7 +14,7 @@ of a larger nonexact owner is credited.
 | --- | --- | ---: | ---: | --- |
 | 0x40A3C0 | ScriptViewerCreate | 67 | 5 | authored |
 | 0x40A350 | ScriptViewerView::InitializeManagers | 101 | 10 | authored |
-| 0x40A340 | ScriptViewerLoadThread | 16 | 2 | authored |
+| 0x40A340 | ScriptViewerLoadThread | 16 | 2 | indeterminate |
 | 0x40A450 | ScriptViewerView::Update | 1251 | 83 | authored |
 | 0x44C130 | ScriptViewerWorkerView destructor | 16 | 2 | indeterminate |
 | 0x4148E0 | ScriptViewerReleaseGui | 18 | 2 | indeterminate |
@@ -28,6 +32,11 @@ remain unknown. The six newly reviewed release boundaries add 109 indeterminate
 bytes and no authored denominator bytes. Natural source is also present for
 the browser, Bullet, Bomb and Popup destructors; their larger bodies remain
 nonexact.
+
+Reporting correction: the loader's 16 bytes have always retained indeterminate
+origin in the ledgers. Earlier prose counted them as authored; the generated
+progress totals were correct. This correction changes no source, exact proof,
+origin classification or overall exact-byte total.
 
 ## Coupled compiler context
 

@@ -97,6 +97,7 @@ def main() -> int:
         run("Validate player movement ANM identities", [sys.executable, "scripts/test-player-movement-anm.py"])
         run("Validate result/replay-name controller", [sys.executable, "scripts/test-result-menu-state.py"])
         run("Validate script browser state and event order", [sys.executable, "scripts/test-script-viewer-update.py"])
+        run("Validate script browser display and renderer calls", [sys.executable, "scripts/test-script-viewer-draw.py"])
         run("Validate worker wait and restart order", [sys.executable, "scripts/test-script-viewer-worker.py"])
         run("Validate browser and manager destruction order", [sys.executable, "scripts/test-script-viewer-lifecycle.py"])
         run("Validate manager pool reset order", [sys.executable, "scripts/test-manager-pool-reset.py"])

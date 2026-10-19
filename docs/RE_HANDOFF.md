@@ -85,9 +85,9 @@ scratch paths, or build hashes into this file.
   its original source annotation remains unknown. Fresh review finds ten direct
   calls, including browser0x40A02D beyond the persistent database's nine.
   See [the worker and ABI evidence](evidence/script-viewer-worker/README.md).
-- Complete Update 1,251, creator 67, initializer 101 and loader 16 now pass
-  two independent cold links: **1,435 new authored exact bytes**. The virtual
-  worker destructor and six nullable manager release entries add 124 exact
+- Complete Update 1,251, creator 67 and initializer 101 now pass
+  two independent cold links: **1,419 new authored exact bytes**. Loader 16,
+  the virtual worker destructor and six nullable manager release entries add 140 exact
   bytes with indeterminate origin. All 114 new fields and 17 existing guards
   pass. Six fresh release boundaries add 109 indeterminate bytes and no authored
   denominator bytes. See [the lifecycle evidence](evidence/script-viewer-native-lifecycle/README.md).
@@ -102,9 +102,16 @@ scratch paths, or build hashes into this file.
   member destructor. The delete helper captures pointers by value; the reference
   hypothesis exposed global addresses and regressed Update to 1,296 bytes.
   Item clear is 0x896 = 2,198 records, correcting earlier decimal-896 wording.
-- Next bounded work: browser Draw 647 still lacks source; browser destructor
-  431/412, Player 341/325, GUI 579/574, Popup 240/232 and Rebuild 2408/2520
-  remain nonexact. Bullet 236/236 and Bomb 137/137 each retain four ordinary
+- Complete browser Draw now closes **664 authored exact bytes**, plus callback
+  10 with indeterminate origin, in two frozen-source cold links. Target review
+  corrects the old 647-byte boundary to include one NOP and four switch slots;
+  the provisional authored denominator gains 17 bytes. All 43 new fields and
+  four existing complete-owner guards pass, including ASCII 100 and renderer
+  515 in the same image. All nine reviewed authored ScriptViewer owners have
+  source. See [the complete Draw evidence](evidence/script-viewer-draw/README.md).
+- Next bounded work: the lifecycle probe at `1fd48a2` measured browser destructor
+  431/412, Player 341/325, GUI 579/574, Popup 240/232 and Rebuild 2408/2520;
+  these owners remain nonexact. Bullet 236/236 and Bomb 137/137 each retain four ordinary
   argument-move ordering differences. Neither size agreement nor matching
   fragments earns partial credit. Production ownership and runtime remain open.
 

@@ -1,0 +1,64 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "address": "0x0040A940",
+  "code_bytes": 647,
+  "alignment_bytes": 1,
+  "alignment": "NOP at0x40ABC7",
+  "table_start": "0x0040ABC8",
+  "table_bytes": 16,
+  "full_owned_size": 664,
+  "span_end": "0x0040ABD7",
+  "sha256_full_extent": "b9e9560edfacb7b2f8358c0353a31455a2a5b762c00111aeccbe94484a40eb03",
+  "switch_selector": "unsigned(state-1)<=3",
+  "table_slots": [
+    {
+      "state": 1,
+      "field": "0x0040ABC8",
+      "destination": "0x0040A9E8",
+      "destination_is_instruction_start": true,
+      "absolute_target_pointer": true,
+      "candidate_relocation_type": "DIR32"
+    },
+    {
+      "state": 2,
+      "field": "0x0040ABCC",
+      "destination": "0x0040A988",
+      "destination_is_instruction_start": true,
+      "absolute_target_pointer": true,
+      "candidate_relocation_type": "DIR32"
+    },
+    {
+      "state": 3,
+      "field": "0x0040ABD0",
+      "destination": "0x0040AB10",
+      "destination_is_instruction_start": true,
+      "absolute_target_pointer": true,
+      "candidate_relocation_type": "DIR32"
+    },
+    {
+      "state": 4,
+      "field": "0x0040ABD4",
+      "destination": "0x0040AACC",
+      "destination_is_instruction_start": true,
+      "absolute_target_pointer": true,
+      "candidate_relocation_type": "DIR32"
+    }
+  ],
+  "original_pe_base_relocation_count": 0,
+  "target_table_evidence": "indexed JMP, bounded selector and all four raw absolute destinations; original PE relocation directory is not required or assumed",
+  "table_base_xrefs": [
+    "0x0040A981"
+  ],
+  "suffix": "8 CC bytes before separate callback0x40ABE0",
+  "incoming_draw_call": "0x0040ABF3",
+  "ledger_or_ghidra_overlap": false,
+  "origin": "existing authored/medium classification preserved; no original class/TU claim",
+  "ghidra": "fresh readOnly temporary review; canonical full .text hash matched before/after; metadata rolled back",
+  "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+  "architecture_preflight": "fresh1195 functions and1419 body ranges; historical evidence-text-only boundary check mismatch at0x401100 preserved",
+  "authored_denominator_correction": 17,
+  "physical_interface": "Draw: EDI viewer / plain RET; callback: ECX viewer / plain RET",
+  "raw_table_base_pointer_occurrences": 1,
+  "raw_table_base_pointer_file_offset": "0x9d84",
+  "table_base_operand_address": "0x0040A984"
+}

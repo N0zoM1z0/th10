@@ -207,7 +207,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040A410,unknown,ScriptViewer,indeterminate,unknown,script-viewer-target-gap-2026-10-19
 0x0040A430,unknown,ScriptViewer,indeterminate,unknown,script-viewer-target-gap-2026-10-19
 0x0040A450,authored_game,ScriptViewer,authored,high,script-viewer-target-gap-2026-10-19
-0x0040A940,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x0040A940,authored_game,ScriptViewer,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0040ABE0,unknown,ScriptViewer,indeterminate,unknown,script-viewer-target-gap-2026-10-19
 0x0040ABF0,unknown,ScriptViewer,indeterminate,unknown,script-viewer-target-gap-2026-10-19
 0x0040AC00,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29

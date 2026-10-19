@@ -17,8 +17,8 @@
     "script-viewer-release-items",
     "script-viewer-release-popups"
   ],
-  "new_authored_exact_bytes": 1435,
-  "new_indeterminate_exact_bytes": 124,
+  "new_authored_exact_bytes": 1419,
+  "new_indeterminate_exact_bytes": 140,
   "new_field_count": 114,
   "existing_guard_count": 17,
   "native_jobs": 1,
@@ -1088,5 +1088,6 @@
   "product_gate": "open",
   "runtime_validated": false,
   "semantic_gate": "closed",
-  "portability_gate": "closed"
+  "portability_gate": "closed",
+  "reporting_correction": "Loader0x40A340 has always remained origin-indeterminate. Earlier prose counted its16 bytes as authored; generated progress and ledgers were already correct. No codegen proof or origin classification changes."
 }

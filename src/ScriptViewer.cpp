@@ -330,6 +330,74 @@ int ScriptViewerView::Update()
     return 1;
 }
 
+int ScriptViewerView::Draw()
+{
+    AnmFloat3View textPosition(0.0f, 0.0f, 0.0f);
+    g_AsciiManagerView->AddSmallFormatText(&textPosition, "SprtView\n");
+    switch (state)
+    {
+    case 2:
+        g_AsciiManagerView->color = 0xffff4040;
+        textPosition.x = 32.0f;
+        textPosition.y = 16.0f;
+        textPosition.z = 0.0f;
+        g_AsciiManagerView->AddSmallFormatText(
+            &textPosition, "Loading %s", scriptNames[files.current]);
+        g_AsciiManagerView->color = 0xffffffff;
+        return 1;
+    case 1:
+        textPosition.x = 42.0f;
+        textPosition.y = 16.0f;
+        textPosition.z = 0.0f;
+        if (scriptCount)
+            g_AsciiManagerView->AddSmallFormatText(
+                &textPosition, "File %s", scriptNames[files.current]);
+        else
+            g_AsciiManagerView->AddSmallFormatText(&textPosition, "File not found.");
+        textPosition.y = 26.0f;
+        if (g_EnemyManager)
+            g_AsciiManagerView->AddSmallFormatText(
+                &textPosition, "Ecl %s",
+                reinterpret_cast<EclVmScriptDatabase *>(g_EnemyManager->scriptDatabase)->
+                    subroutines[entries.current].name);
+        else
+            g_AsciiManagerView->AddSmallFormatText(
+                &textPosition, "Ecl %d", entries.current);
+        textPosition.y = 36.0f;
+        g_AsciiManagerView->AddSmallFormatText(&textPosition, "Quit");
+        textPosition.x = 32.0f;
+        textPosition.y = menu.current * 10.0f + 16.0f;
+        g_AsciiManagerView->AddSmallFormatText(&textPosition, ">");
+        g_AsciiManagerView->color = 0xffffffff;
+        break;
+    case 4:
+        textPosition.x = 500.0f;
+        textPosition.y = 240.0f;
+        textPosition.z = 0.0f;
+        g_AsciiManagerView->AddSmallFormatText(
+            &textPosition, "Enemy %d", g_EnemyManager->activeEnemyCount);
+        return 1;
+    case 3:
+        {
+            g_AsciiManagerView->color = 0xffa0a0a0;
+            AnmFloat3View statusPosition(32.0f, 16.0f, 0.0f);
+            g_AsciiManagerView->AddSmallFormatText(
+                &statusPosition, "Pos %.3d %.3d",
+                static_cast<int>(position.x), static_cast<int>(position.y));
+            g_AsciiManagerView->color = 0xffffffff;
+            break;
+        }
+    default:
+        return 1;
+    }
+    if (flags & 2)
+    {
+        vm.position = AnmFloat3View(320.0f, 240.0f, 0.0f);
+        g_AnmRenderManagerView->DrawNoRotation(&vm);
+    }
+    return 1;
+}
+
 int __fastcall ScriptViewerUpdateCallback(void *context)
 {
     return static_cast<ScriptViewerView *>(context)->Update();

@@ -21263,3 +21263,293 @@ offset = 12
 type = "REL32"
 symbol = "??3@YAXPAX@Z"
 target = 4531361
+
+[units.script-viewer-draw]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewer.cpp"
+functions = ["ScriptViewerView::Draw"]
+symbol = "?Draw@ScriptViewerView@@QAEHXZ"
+target_address = 4237632
+size = 664
+
+[[units.script-viewer-draw.linkages]]
+offset = 7
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 12
+type = "DIR32"
+symbol = "??_C@_09KBPLGEHK@SprtView?6?$AA@"
+target = 4640336
+
+[[units.script-viewer-draw.linkages]]
+offset = 45
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 68
+type = "DIR32"
+local = true
+target = 4238280
+
+[[units.script-viewer-draw.linkages]]
+offset = 74
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 102
+type = "DIR32"
+symbol = "??_C@_0L@OKBLGMCB@Loading?5?$CFs?$AA@"
+target = 4640324
+
+[[units.script-viewer-draw.linkages]]
+offset = 135
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 140
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 175
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 223
+type = "DIR32"
+symbol = "??_C@_07NPEDNENG@File?5?$CFs?$AA@"
+target = 4640316
+
+[[units.script-viewer-draw.linkages]]
+offset = 228
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 238
+type = "DIR32"
+symbol = "??_C@_0BA@DOIDIGMK@File?5not?5found?4?$AA@"
+target = 4640300
+
+[[units.script-viewer-draw.linkages]]
+offset = 243
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 251
+type = "DIR32"
+symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+target = 4683524
+
+[[units.script-viewer-draw.linkages]]
+offset = 259
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 297
+type = "DIR32"
+symbol = "??_C@_06DMKEJMOH@Ecl?5?$CFs?$AA@"
+target = 4640292
+
+[[units.script-viewer-draw.linkages]]
+offset = 305
+type = "DIR32"
+symbol = "??_C@_06DJCHBIHB@Ecl?5?$CFd?$AA@"
+target = 4640284
+
+[[units.script-viewer-draw.linkages]]
+offset = 310
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 316
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 324
+type = "DIR32"
+symbol = "??_C@_04GMBKPCGK@Quit?$AA@"
+target = 4640276
+
+[[units.script-viewer-draw.linkages]]
+offset = 341
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 350
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 355
+type = "DIR32"
+symbol = "??_C@_01PPODPGHN@?$DO?$AA@"
+target = 4640272
+
+[[units.script-viewer-draw.linkages]]
+offset = 361
+type = "DIR32"
+symbol = "__real@41200000"
+target = 4656156
+
+[[units.script-viewer-draw.linkages]]
+offset = 375
+type = "DIR32"
+symbol = "__real@41800000"
+target = 4655944
+
+[[units.script-viewer-draw.linkages]]
+offset = 384
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 398
+type = "DIR32"
+symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+target = 4683524
+
+[[units.script-viewer-draw.linkages]]
+offset = 407
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 413
+type = "DIR32"
+symbol = "??_C@_08EOJBGHHO@Enemy?5?$CFd?$AA@"
+target = 4640260
+
+[[units.script-viewer-draw.linkages]]
+offset = 446
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 466
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 511
+type = "REL32"
+symbol = "__ftol2"
+target = 4602668
+
+[[units.script-viewer-draw.linkages]]
+offset = 523
+type = "REL32"
+symbol = "__ftol2"
+target = 4602668
+
+[[units.script-viewer-draw.linkages]]
+offset = 529
+type = "DIR32"
+symbol = "??_C@_0O@LKELLPF@Pos?5?$CF?43d?5?$CF?43d?$AA@"
+target = 4640244
+
+[[units.script-viewer-draw.linkages]]
+offset = 538
+type = "REL32"
+symbol = "?AddSmallFormatText@AsciiManagerView@@QAAXPAUAnmFloat3View@@PBDZZ"
+target = 4200080
+
+[[units.script-viewer-draw.linkages]]
+offset = 546
+type = "DIR32"
+symbol = "?g_AsciiManagerView@@3PAUAsciiManagerView@@A"
+target = 4683488
+
+[[units.script-viewer-draw.linkages]]
+offset = 605
+type = "DIR32"
+symbol = "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A"
+target = 4791312
+
+[[units.script-viewer-draw.linkages]]
+offset = 632
+type = "REL32"
+symbol = "?DrawNoRotation@AnmRenderManagerView@@QAEHPAUAnmVmView@@@Z"
+target = 4468864
+
+[[units.script-viewer-draw.linkages]]
+offset = 648
+type = "DIR32"
+local = true
+target = 4237800
+
+[[units.script-viewer-draw.linkages]]
+offset = 652
+type = "DIR32"
+local = true
+target = 4237704
+
+[[units.script-viewer-draw.linkages]]
+offset = 656
+type = "DIR32"
+local = true
+target = 4238096
+
+[[units.script-viewer-draw.linkages]]
+offset = 660
+type = "DIR32"
+local = true
+target = 4238028
+
+[units.script-viewer-draw-callback]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewer.cpp"
+functions = ["ScriptViewerDrawCallback"]
+symbol = "?ScriptViewerDrawCallback@@YIHPAX@Z"
+target_address = 4238320
+size = 10
+
+[[units.script-viewer-draw-callback.linkages]]
+offset = 4
+type = "REL32"
+symbol = "?Draw@ScriptViewerView@@QAEHXZ"
+target = 4237632

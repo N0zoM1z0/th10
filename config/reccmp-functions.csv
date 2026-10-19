@@ -1006,3 +1006,4 @@ ScriptViewerReleasePlayer,0x00425090,function
 ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView,0x0042B570,function
 ScriptViewerReleasePopups,0x0042B6D0,function
 ScriptViewerWorkerView::~ScriptViewerWorkerView,0x0044C130,function
+ScriptViewerView::Draw,0x0040A940,function
