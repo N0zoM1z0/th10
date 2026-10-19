@@ -16,6 +16,14 @@ The default is repository-local `src`; there is no silent remote or machine-spec
 
 ## Actual bodies and declared seams
 
+The 2026-10-19 dependency refresh changes only the Chain declaration/definition
+pins for the reviewed `UnregisterElem` fastcall spelling. The complete native
+114-byte owner and RemoveAll 82 pass two cold comparisons; see the
+[browser lifecycle evidence](evidence/script-viewer-native-lifecycle/README.md).
+The host fixture already erases `__fastcall`, so its algorithms and seams are
+unchanged. The pin file retains the original raw hashes and receipt as historical
+provenance and records the two reviewed normalized-hash updates separately.
+
 - The proposed source is included completely, with includes removed and only allocation/deletion operations redirected to host instrumentation. The proposed header is included with its 32-bit physical-layout assertion omitted. Host structures have native host pointers. No target ABI or layout is thereby established.
 - Canonical `Chain.cpp` is included. Registration, insertion, and unregistration algorithms remain unchanged. `AllocElem`'s hard-coded 32-bit field lvalues are translated to the same named fields, with pinned exact replacement counts. Its `new ChainElem` and `free(elem)` operations are instrumented. `RemoveAllFromList`'s raw `listBase+0x18` next-pointer read is explicitly adapted to a host ListNode passed by the fixture. No claim is made that this adapted parameter has the original ABI.
 - Canonical `RandomMath.cpp`, `Rng.hpp`, the complete inline `AnmVmTimerView` struct, and the complete `AnmRandomU32InRange` body are extracted from pinned sources. The RNG oracle checks use fixed independently calculated seed/output values. No separate effect reference implementation is used.

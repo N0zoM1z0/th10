@@ -611,6 +611,13 @@ __declspec(noinline) void PlayerOptionSpecialCallbackBody(
 // Maintained source for the Player constructor/reset/factory/destructor seam.
 // The target optimizer uses private ESI/stack/register boundaries for several
 // bodies; these natural C++ declarations do not claim those machine ABIs.
+PlayerDrawVmView::~PlayerDrawVmView()
+{
+    if (ownedData358 != NULL)
+        free(ownedData358);
+    ownedData358 = NULL;
+}
+
 Player::Player()
 {
     memset(this, 0, sizeof(*this));
@@ -710,9 +717,6 @@ Player::~Player()
         g_PlayerSharedOptionData = NULL;
     }
 
-    if (drawVm.ownedData358 != NULL)
-        free(drawVm.ownedData358);
-    drawVm.ownedData358 = NULL;
 }
 
 Player *PlayerCreate()

@@ -237,6 +237,36 @@ def validate_link_entry(
             "object": owner, "size": int(functions[0]["size"])}
 
 
+def support_profile_overrides(
+    supports: list[Path] | tuple[Path, ...],
+    normals: set[Path] | tuple[Path, ...],
+    raw: object,
+) -> dict[Path, list[str]]:
+    """Validate explicit per-TU LTCG profiles; normal COFF keeps its own lane."""
+    if not isinstance(raw, dict):
+        raise ValueError("support_profiles must be a source-to-profile table")
+    selected = {path.resolve() for path in supports}
+    normal = {path.resolve() for path in normals}
+    result = {}
+    for source, flags in raw.items():
+        if not isinstance(source, (str, Path)) or not str(source):
+            raise ValueError("support_profiles requires source paths")
+        path = (ROOT / source).resolve()
+        if path not in selected or path in normal:
+            raise ValueError("profile override must name a selected LTCG support source")
+        if path in result:
+            raise ValueError("support_profiles repeats a resolved source")
+        if (not isinstance(flags, list) or not flags
+                or any(not isinstance(flag, str) or not flag or flag != flag.strip()
+                       for flag in flags)):
+            raise ValueError("support profile must be a nonempty switch array")
+        lowered = [flag.lower() for flag in flags]
+        if lowered.count("/gl") != 1 or "/gl-" in lowered:
+            raise ValueError("support profile override must preserve /GL")
+        result[path] = list(flags)
+    return result
+
+
 def cold_link(
     source: Path,
     directory: Path,
@@ -246,6 +276,7 @@ def cold_link(
     profile: list[str] | None = None,
     support_sources: list[Path] | None = None,
     normal_support_sources: list[Path] | None = None,
+    support_profiles: dict[Path | str, list[str]] | None = None,
 ) -> dict[str, object]:
     if profile is None:
         profile = LTCG_PROFILE
@@ -278,6 +309,10 @@ def cold_link(
             "normal support source is not present in support_sources: "
             + ", ".join(str(path) for path in sorted(unknown_normal_supports))
         )
+    resolved_profiles = support_profile_overrides(
+        resolved_support_sources, resolved_normal_support_sources,
+        support_profiles if support_profiles is not None else {},
+    )
     support_objects = [
         directory / (
             f"support-{index:02d}-{support.stem}.normal.obj"
@@ -319,6 +354,7 @@ def cold_link(
             if support_source in resolved_normal_support_sources
             else list(profile)
         )
+        support_profile = resolved_profiles.get(support_source, support_profile)
         compile_source(support_source, support_object, list(support_profile))
     source_objects = [ltcg_object, *support_objects]
     symbols: list[str] = []
@@ -374,6 +410,7 @@ def cold_link(
         "objects": source_objects,
         "support_sources": resolved_support_sources,
         "normal_support_sources": sorted(resolved_normal_support_sources),
+        "support_profiles": resolved_profiles,
         "image": image,
         "map": map_path,
         "pdb": pdb,

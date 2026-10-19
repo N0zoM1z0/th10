@@ -2,6 +2,7 @@
 
 #include "AnmManager.hpp"
 #include "Player.hpp"
+#include "Chain.hpp"
 
 #include <stddef.h>
 
@@ -220,7 +221,9 @@ typedef char BulletRuntimeVmAt008[
 
 struct BulletManagerView
 {
-    unsigned char unknown000[0x10];
+    unsigned char unknown000[8];
+    th10::ChainElem *updateTask;                 // +0x000008
+    th10::ChainElem *drawTask;                   // +0x00000C
     BulletRuntimeView *bulletCursor;             // +0x000010
     BulletRuntimeView *drawBucketHeads[6];       // +0x000014
     BulletRuntimeView *drawBucketTails[6];       // +0x00002C
@@ -228,6 +231,8 @@ struct BulletManagerView
     int activeBulletCount;                       // +0x00005C
     BulletRuntimeView bullets[2001];             // +0x000060
     AnmLoadedView *bulletAnm;                    // +0x3E0B50
+
+    ~BulletManagerView();
 
     int SpawnSingleBullet(
         BulletSpawnDescriptorView *descriptor,

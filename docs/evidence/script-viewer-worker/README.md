@@ -1,5 +1,10 @@
 # Script browser worker and Player option rebuild interface
 
+Follow-up on 2026-10-19: [the native lifecycle checkpoint](../script-viewer-native-lifecycle/README.md)
+closes complete Update, initialization, creation and loading, plus the virtual
+worker destructor and six nullable release helpers. The nonexact browser sizes
+below describe this earlier source context; Rebuild remains open.
+
 This checkpoint connects the maintained browser to real worker Start/Stop
 bodies and corrects the observed Player option-rebuild calling interface.
 Existing boundary and origin classifications, including the workers' medium

@@ -6,6 +6,11 @@
 // commit c6791d82dc9f02e55eca45a5314f900a85481efd. See docs/licenses/th10-decomp-MIT.txt.
 // This is a descriptive shared worker prefix, not an original class/TU claim.
 
+ScriptViewerWorkerView::~ScriptViewerWorkerView()
+{
+    Stop();
+}
+
 void ScriptViewerWorkerView::Stop()
 {
     if (thread)

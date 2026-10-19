@@ -470,6 +470,29 @@ def static_owner_selector(unit: dict[str, object]) -> dict[str, object] | None:
     return {"symbol": symbol, "object": object_name, "size": size}
 
 
+def static_linkage_selector(
+    unit: dict[str, object], field: dict[str, object]
+) -> dict[str, object] | None:
+    """Opt in to a complete static call target; never infer it from a name."""
+    present = {key for key in ("static_source", "static_size") if key in field}
+    if not present:
+        return None
+    if unit.get("artifact_kind") != "linked-pe":
+        raise LinkedImageError("static linkage requires a linked-pe artifact")
+    if present != {"static_source", "static_size"}:
+        raise LinkedImageError("static linkage requires source and whole size")
+    if (field.get("type") != "REL32" or field.get("local", False)
+            or field.get("addend", 0) != 0):
+        raise LinkedImageError("static linkage requires a direct REL32 entry call")
+    return static_owner_selector({
+        "artifact_kind": "linked-pe", "owner_visibility": "static",
+        "source": unit.get("source"), "pdb_source": field["static_source"],
+        "support_sources": unit.get("support_sources", []),
+        "normal_support_sources": unit.get("normal_support_sources", []),
+        "symbol": field.get("symbol"), "size": field["static_size"],
+    })
+
+
 def map_statics(path: Path | str) -> list[dict[str, object]]:
     """Read only the actual Static symbols section; never reinterpret publics."""
     in_statics = False

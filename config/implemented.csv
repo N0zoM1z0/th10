@@ -993,3 +993,15 @@ EnemyManagerView::SuspendCallbacks
 FrontEndInputView::UpdateDebugRepeat
 ScriptViewerWorkerView::Stop
 ScriptViewerWorkerView::Start
+ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView
+ScriptViewerReleaseBomb
+BulletManagerView::~BulletManagerView
+ScriptViewerReleaseBullets
+ScriptViewerView::~ScriptViewerView
+ScriptViewerReleaseEnemies
+ScriptViewerReleaseGui
+ScriptViewerReleaseItems
+ScriptViewerReleasePlayer
+ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView
+ScriptViewerReleasePopups
+ScriptViewerWorkerView::~ScriptViewerWorkerView

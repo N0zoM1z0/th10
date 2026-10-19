@@ -306,7 +306,7 @@ def main() -> int:
     print('PASS ordinary-new lifecycle: synchronous callback throws free once, skip the complete-message destructor, retain earlier effects, and do not publish/update GUI state.')
     print('PASS strict classifier self-test (signals, crashes, compile errors, other CHECKs and accidental passes rejected).')
     print('Host constructor seams: AnmVmTimerView, PlayerTimerView, EnemyInterpolationTimerView; maintained raw-integer default-construction model validity UNPROVED.')
-    print('Dependency lifecycle stubs: AnmVmView ctor/dtor; AnmLoadedView ctor; AnmRenderManagerView ctor/dtor; AsciiManagerView ctor/dtor; GuiView dtor; GuiMessageVmView counting dtor; EnemyManagerView ctor/dtor; EnemyEclContextView ctor; EnemyBulletPatternView ctor; EnemyEclHostBaseView ctor/dtor; EnemyFullObjectView ctor/dtor. Other dependency methods/virtuals are explicit fixture seams.')
+    print('Dependency lifecycle stubs: AnmVmView ctor/dtor; AnmLoadedView ctor; AnmRenderManagerView ctor/dtor; AsciiManagerView ctor/dtor; GuiView dtor; GuiMessageVmView counting dtor; EnemyManagerView ctor/dtor; BulletManagerView dtor; EnemyEclContextView ctor; EnemyBulletPatternView ctor; EnemyEclHostBaseView ctor/dtor; EnemyFullObjectView ctor/dtor. Other dependency methods/virtuals are explicit fixture seams.')
     print('All instantiated GuiView, AnmVmView and message objects have real host C++ lifetimes. Ordinary global new/delete observation is host-only; no production cleanup is stubbed into the member constructor or caller.')
     print('No target ABI/layout, binary equivalence, target runtime, or product-closure claim.')
     if temporary:

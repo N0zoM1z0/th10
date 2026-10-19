@@ -53,7 +53,7 @@ namespace th10 { struct ChainElem {unsigned flags;}; }
 struct ScriptViewerChainOwnerView { th10::ChainElem *update,*draw; };
 struct Player : ScriptViewerChainOwnerView {};
 struct BulletManagerView : ScriptViewerChainOwnerView {void ResetPool();};
-struct ScriptViewerItemsView : ScriptViewerChainOwnerView {unsigned char slots[0x21cea0];};
+struct ItemManagerView : ScriptViewerChainOwnerView {unsigned char items[0x21cea0];};
 struct FrontEndInputView {
  unsigned short raw=0,repeated=0,pressed=0,previousHeld=0,previousRaw=0,frameMask032=0;
  unsigned mask008=0;
@@ -102,7 +102,7 @@ void FrontEndInputView::UpdateDebugRepeat(){events.push_back("input");}
 static th10::ChainElem tasks[8];
 static Player player; static Player *g_Player=&player;
 static BulletManagerView bullets; static BulletManagerView *g_ScriptViewerBullets=&bullets;
-static ScriptViewerItemsView items; static ScriptViewerItemsView *g_ScriptViewerItems=&items;
+static ItemManagerView items; static ItemManagerView *g_ItemManager=&items;
 static EnemyManagerView enemies; static EnemyManagerView *g_EnemyManager=&enemies;
 static GuiView gui; static GuiView *g_GuiView=&gui;
 static void *g_ScriptViewerBomb=(void *)2,*g_ScriptViewerPopups=(void *)3;
@@ -125,7 +125,7 @@ static void ScriptViewerReleaseGui(GuiView *p){assert(p==g_GuiView);events.push_
 static void ScriptViewerReleasePlayer(Player *p){assert(p==g_Player);events.push_back("release-player");}
 static void ScriptViewerReleaseBullets(BulletManagerView *p){assert(p==g_ScriptViewerBullets);events.push_back("release-bullets");}
 static void ScriptViewerReleaseBomb(void *p){assert(p==g_ScriptViewerBomb);events.push_back("release-bomb");}
-static void ScriptViewerReleaseItems(ScriptViewerItemsView *p){assert(p==g_ScriptViewerItems);events.push_back("release-items");}
+static void ScriptViewerReleaseItems(ItemManagerView *p){assert(p==g_ItemManager);events.push_back("release-items");}
 static void ScriptViewerReleasePopups(void *p){assert(p==g_ScriptViewerPopups);events.push_back("release-popups");}
 static void ScriptViewerReleaseEnemies(EnemyManagerView *p){assert(p==g_EnemyManager);events.push_back("release-enemies");}
 static int ScriptViewerLoadThread(){return 0;}
@@ -139,7 +139,7 @@ static void reset(){
  for(auto &task:tasks)task.flags=4;
  player.update=&tasks[0];player.draw=&tasks[1];bullets.update=&tasks[2];bullets.draw=&tasks[3];
  enemies.update=&tasks[4];enemies.draw=&tasks[5];items.update=&tasks[6];items.draw=&tasks[7];
- memset(items.slots,0xa5,sizeof items.slots);
+ memset(items.items,0xa5,sizeof items.items);
  findFirstCount=findCloseCount=0;
 }
 int main(){
@@ -154,7 +154,7 @@ int main(){
  assert(g_FrontEndInput.previousHeld==0x20&&g_FrontEndInput.previousRaw==0x40&&g_FrontEndInput.frameMask032==8);
  assert(events==std::vector<std::string>({"input","player-reset","bullet-reset","enemy-clear"}));
  for(auto &task:tasks)assert(task.flags==4);
- assert(std::all_of(items.slots,items.slots+sizeof items.slots,[](unsigned char c){return c==0;}));
+ assert(std::all_of(items.items,items.items+sizeof items.items,[](unsigned char c){return c==0;}));
  reset();running.state=4;g_FrontEndInput.pressed=0;running.Update();
  assert(running.state==4&&events==std::vector<std::string>({"input"}));
  // Entry selection uses the selected name and clears the entire spawn packet.

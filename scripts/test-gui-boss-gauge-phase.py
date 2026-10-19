@@ -80,6 +80,8 @@ EnemyManagerView::~EnemyManagerView() {}
 // raw flag reads before initialization. No native constructor/destructor claim.
 Player::Player() : drawPosition(), positionX(12345), positionY(-23456) {}
 Player::~Player() {}
+// Draw-VM cleanup is a dependency seam outside these HUD observations.
+PlayerDrawVmView::~PlayerDrawVmView() {}
 '''
 
 def phase_source():

@@ -85,16 +85,28 @@ scratch paths, or build hashes into this file.
   its original source annotation remains unknown. Fresh review finds ten direct
   calls, including browser0x40A02D beyond the persistent database's nine.
   See [the worker and ABI evidence](evidence/script-viewer-worker/README.md).
-- Update is now1264/1251 with522/923 ordinary diagnostic agreement, and Rebuild
-  remains2408/2520 despite restored RET4; neither receives parent exact credit.
-  Initializer153/101, creator68/67, loader16/16 and Enemy destructor298/300
-  differ. Creator's extra byte is on the unresolved destructor edge (native
-  ECX receiver versus target stack pointer). Next recover browser destructor412,
-  Draw647 and manager release calls; production ownership/runtime stay open.
-- Initializer's extra52 bytes are now localized: target first calls PlayerCreate
-  at0x40A351, while native inlines its allocation/constructor/registration/failure
-  cleanup. The next creator is at native+0x3A versus target+0x06. Test genuine
-  PlayerCreate outlining/context next; no original noinline annotation is proven.
+- Complete Update 1,251, creator 67, initializer 101 and loader 16 now pass
+  two independent cold links: **1,435 new authored exact bytes**. The virtual
+  worker destructor and six nullable manager release entries add 124 exact
+  bytes with indeterminate origin. All 114 new fields and 17 existing guards
+  pass. Six fresh release boundaries add 109 indeterminate bytes and no authored
+  denominator bytes. See [the lifecycle evidence](evidence/script-viewer-native-lifecycle/README.md).
+- The reproduced graph keeps every input `/GL`; Enemy.cpp explicitly retains
+  its earlier profile while other inputs use `/GS /EHs`. This closes the EAX
+  spawn-request edge in Update and preserves the complete EnemySpawn 577 in
+  the same image. Two static calls bind the entire raw-equal 28-byte retirement
+  helper through explicit qualified selectors, without duplicate exact credit.
+  Original production profiles, class names and TU ownership remain unknown.
+- PlayerCreate outlining restores the observed initializer boundary. A true
+  virtual worker owns its compiler vtable; Player draw-VM cleanup is now a real
+  member destructor. The delete helper captures pointers by value; the reference
+  hypothesis exposed global addresses and regressed Update to 1,296 bytes.
+  Item clear is 0x896 = 2,198 records, correcting earlier decimal-896 wording.
+- Next bounded work: browser Draw 647 still lacks source; browser destructor
+  431/412, Player 341/325, GUI 579/574, Popup 240/232 and Rebuild 2408/2520
+  remain nonexact. Bullet 236/236 and Bomb 137/137 each retain four ordinary
+  argument-move ordering differences. Neither size agreement nor matching
+  fragments earns partial credit. Production ownership and runtime remain open.
 
 ## Validated large-owner checkpoints (not exact claims)
 

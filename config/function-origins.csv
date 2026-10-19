@@ -102,8 +102,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00405580,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00405590,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x004055C0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
-0x00405620,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
+0x00405620,authored_game,Bomb,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x004056B0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
+0x00405730,unknown,ScriptViewer,indeterminate,unknown,script-viewer-native-lifecycle-2026-10-19
 0x00405750,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00405850,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00405860,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
@@ -122,8 +123,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00405E10,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00405E20,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00405ED0,authored_game,BulletManager,authored,medium,target-authored-neighbor-and-global-2026-09-17
-0x00405F70,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
+0x00405F70,authored_game,BulletManager,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00406060,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
+0x00406140,unknown,ScriptViewer,indeterminate,unknown,script-viewer-native-lifecycle-2026-10-19
 0x00406160,authored_game,BulletManager,authored,high,target-bullet-sprite-bounds-2026-09-25
 0x004061D0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x00406240,authored_game,BulletManager,authored,high,target-bullet-runtime-update-2026-09-25
@@ -335,6 +337,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0040D680,authored_game,Enemy,authored,high,enemy-manager-resource-lifecycle-2026-09-14
 0x0040D6B0,authored_game,Enemy,authored,high,enemy-manager-resource-lifecycle-2026-09-14
 0x0040D710,compiler_generated,Enemy,exclude,high,enemy-deleting-dtor-compiler-2026-09-14
+0x0040D730,unknown,ScriptViewer,indeterminate,unknown,script-viewer-native-lifecycle-2026-10-19
 0x0040D750,authored_game,Enemy,authored,high,enemy-lifecycle-2026-09-14
 0x0040D800,unknown,Enemy,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0040D810,authored_game,Enemy,authored,high,enemy-lifecycle-2026-09-14
@@ -417,6 +420,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00414570,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x004145F0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00414830,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
+0x004148E0,unknown,ScriptViewer,indeterminate,unknown,script-viewer-native-lifecycle-2026-10-19
 0x00414900,authored_game,Gui,authored,high,gui-core-2026-09-15
 0x00415800,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00415B00,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
@@ -515,6 +519,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041AD90,authored_game,ItemManager,authored,high,target-itemmanager-owner-recovery-2026-09-24
 0x0041ADF0,authored_game,ItemManager,authored,high,target-item-manager-destructor-owner-2026-10-02
 0x0041AED0,authored_game,ItemManager,authored,high,target-itemmanager-owner-recovery-2026-09-24
+0x0041AFB0,unknown,ScriptViewer,indeterminate,unknown,script-viewer-native-lifecycle-2026-10-19
 0x0041AFD0,authored_game,ItemManager,authored,high,target-itemmanager-owner-recovery-2026-09-24
 0x0041B8E0,authored_game,ItemManager,authored,high,target-raw-gap-review-2026-09-24
 0x0041BA00,authored_game,ItemManager,authored,high,target-raw-gap-review-2026-09-24
@@ -755,8 +760,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0042B420,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0042B430,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0042B4D0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
-0x0042B570,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
+0x0042B570,authored_game,Popups,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x0042B660,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
+0x0042B6D0,unknown,ScriptViewer,indeterminate,unknown,script-viewer-native-lifecycle-2026-10-19
 0x0042B6F0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0042B780,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0042B9C0,authored_game,ItemPopup,authored,high,target-item-shared-helper-contracts-2026-10-02
@@ -1185,7 +1191,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044BFF0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0044C0E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0044C100,compiler_generated,GameCxx,exclude,high,target-vc71-scalar-deleting-destructor-2026-09-17
-0x0044C130,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x0044C130,unknown,Worker,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0044C150,authored_game,Worker,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044C1C0,authored_game,Worker,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044C250,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29

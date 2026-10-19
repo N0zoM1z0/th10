@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from linked_image import static_owner_selector
+from linked_image import static_owner_selector, static_linkage_selector
 
 import argparse
 from collections import Counter
@@ -12,7 +12,7 @@ import subprocess
 import sys
 import tomllib
 
-from ltcg_link import HARNESS_KIND, LINK_PROFILE, cold_link, tool_environment
+from ltcg_link import HARNESS_KIND, LINK_PROFILE, cold_link, tool_environment, support_profile_overrides
 from runtime_archive import extract_member, verified_archive
 
 
@@ -40,6 +40,7 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
     for field in fields:
         if not isinstance(field, dict):
             raise ValueError(f"unit {name!r} has an invalid linkage row")
+        static_linkage_selector(unit, field)
         kind = str(field.get("type", ""))
         width = int(field.get("width", SUPPORTED_FIELDS.get(kind, 0)))
         if kind not in SUPPORTED_FIELDS or width != SUPPORTED_FIELDS[kind]:
@@ -130,6 +131,8 @@ def load() -> dict[str, object]:
             raise ValueError(f"unit {name!r} lacks {', '.join(missing)}")
         static_owner_selector(unit)
         kind = str(unit["artifact_kind"])
+        if "support_profiles" in unit and kind != "linked-pe":
+            raise ValueError(f"unit {name!r} support profiles require linked-pe")
         if kind not in SUPPORTED_ARTIFACTS:
             raise ValueError(f"unit {name!r} has unsupported artifact_kind {kind!r}")
         functions = unit["functions"]
@@ -247,6 +250,11 @@ def load() -> dict[str, object]:
             raise ValueError(
                 f"unit {name!r} normal support source is not a support source"
             )
+        support_profiles = support_profile_overrides(
+            support_sources, normal_support_sources, unit.get("support_profiles", {})
+        )
+        if support_profiles and kind != "linked-pe":
+            raise ValueError(f"unit {name!r} support profiles require linked-pe")
         pdb_source_raw = unit.get("pdb_source", unit["source"])
         if not isinstance(pdb_source_raw, str) or not pdb_source_raw:
             raise ValueError(f"unit {name!r} has an invalid pdb_source")
@@ -318,6 +326,7 @@ def load() -> dict[str, object]:
                 HARNESS_KIND,
                 support_sources,
                 normal_support_sources,
+                tuple((path, tuple(flags)) for path, flags in sorted(support_profiles.items())),
             )
         previous_output = compile_groups.setdefault(group, output)
         if previous_output != output:
@@ -387,6 +396,7 @@ def main() -> int:
                 list(unit["profile"]),
                 [ROOT / str(value) for value in unit.get("support_sources", [])],
                 [ROOT / str(value) for value in unit.get("normal_support_sources", [])],
+                unit.get("support_profiles", {}),
             )
             if Path(linked["object"]).read_bytes()[:8] != bytes.fromhex(
                 "0000ffff01004c01"

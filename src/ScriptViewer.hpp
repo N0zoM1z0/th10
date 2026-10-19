@@ -9,7 +9,6 @@
 // by the TH10 constructor, update body and loader, not by the reference project.
 struct ScriptViewerWorkerView
 {
-    const void *vtable;
     void *thread;
     unsigned int threadId;
     int stopRequested;
@@ -18,6 +17,7 @@ struct ScriptViewerWorkerView
     void *entry018;
     unsigned int unknown01C;
     ScriptViewerWorkerView();
+    virtual ~ScriptViewerWorkerView();
     __declspec(noinline) void Stop();
     __declspec(noinline) void Start(void *context, int (*entry)());
 };

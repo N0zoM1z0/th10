@@ -2274,3 +2274,56 @@ construction, registration and failure cleanup. The subsequent creator call
 is native+0x3A versus target+0x06; the remaining sequence retains that52-byte
 offset. This is an outlining/context lead, not proof of an original noinline
 annotation or a tested source fix.
+
+### 2026-10-19: complete browser Update and native member lifetimes
+
+The [native lifecycle checkpoint](evidence/script-viewer-native-lifecycle/README.md)
+closes complete Update 1,251 at 0x40A450, creator 67 at 0x40A3C0,
+initializer 101 at 0x40A350 and loader 16 at 0x40A340: **1,435 authored exact
+bytes**. Worker destruction 16 at 0x44C130 and six nullable release helpers
+(108 bytes) remain origin-indeterminate after exact replay. Six independently
+reviewed release boundaries add 109 indeterminate bytes, including the still
+nonexact Enemy release 19. Both frozen-source cold links pass all 11 new
+owners, 114 new fields and 17 earlier complete-owner guards. These supersede
+older browser diagnostic sizes without promoting original ownership or runtime.
+
+PlayerCreate's observed call at 0x40A351 is retained out of line, removing the
+52-byte initializer expansion. The worker's table 0x4703E4 enters scalar
+cleanup 0x44C100; its +0x10 browser unwind member calls 0x44C130. A true virtual
+destructor reproduces all 16 bytes and preserves constructor 234 with a
+compiler-owned vtable. Player's unwind at 0x465280 calls ANM VM destruction
+0x401FF0 on +0x14. Its draw VM now owns buffer cleanup at VM +0x358 through a
+real member destructor; Player destruction itself remains nonexact. Popup's
+unwind similarly establishes VM +0x18 and buffer +0x370. These are bounded
+lifetime models, not proof of original class declarations or complete sizes.
+
+A nullable explicit destructor/deallocation helper must capture the allocation
+before a destructor can clear its global. The reference's pointer-by-reference
+hypothesis produced Update 1,296/1,251 with extra address exposure/reloads;
+a pointer-by-value parameter recovers the target-sized body. Uniform
+`/GL /GS /EHs` still differs at Update +0x273 (LEA ECX versus target EAX).
+Keeping Enemy.cpp's earlier canonical `/GL` profile closes both Update 1,251
+and EnemySpawn 577 in the same image twice. All inputs retain `/GL`; the
+reproduced per-TU context does not establish original production flags.
+Uniform `/EHa` regresses constructor to 286/234 and creator to 136/67.
+Object order and real-entry controls do not resolve the request edge.
+
+The observed unregister boundary is ECX task, EDX chain, plain RET. Maintained
+`__fastcall` preserves complete unregister 114 and RemoveAll 82 in both images.
+It does not resolve the four ordinary argument-move order differences in each
+of Bullet and Bomb destruction. Declaration/definition/default destructor
+controls all emit QAE symbols under VC7.1; ineffective `__stdcall` annotations
+were removed rather than used as an ABI fix. Item clear uses the existing typed
+manager and exactly **0x896 = 2,198** records of 0x3F0 bytes, total 0x21CEA0
+from +0x14. Earlier decimal-896 lifecycle wording was incorrect.
+
+Two Update calls at fields +0x206/+0x236 enter the existing 28-byte primitive
+0x409E20. Their static source selectors require the complete reviewed callee,
+qualified MAP/PDB owner, dense zero-field decoding, raw full-callee equality
+and a direct CALL to the entry. There is no public-to-static fallback and no
+duplicate credit for the helper. Synthetic controls reject malformed profiles,
+interior/cropped/nonreviewed callees, linked child fields and JMPs. Host lifetime
+fixtures cover pre-lock snapshots, changed callbacks, byte-depth wrapping,
+reverse record cleanup, global/member order and exceptional buffer cleanup.
+They do not establish Windows runtime or production storage ownership. Browser
+Draw, larger nonexact destructors, Rebuild and the whole-product gate stay open.

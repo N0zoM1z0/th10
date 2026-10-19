@@ -121,6 +121,7 @@ GuiMessageVmView::~GuiMessageVmView()
 GuiView::~GuiView() {}
 EnemyManagerView::EnemyManagerView() {}
 EnemyManagerView::~EnemyManagerView() {}
+BulletManagerView::~BulletManagerView() {} // Host dependency sink; manager cleanup is outside this test.
 EnemyEclContextView::EnemyEclContextView() {}
 EnemyBulletPatternView::EnemyBulletPatternView() {}
 EnemyEclHostBaseView::EnemyEclHostBaseView() {}

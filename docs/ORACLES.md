@@ -42,8 +42,12 @@ change the library/excluded origin, or establish whole-product closure.
 
 The LTCG diagnostic compiles one selected maintained source and may also
 compile explicitly named support sources before linking them together. Support
-sources use the same `/GL` profile unless a reviewed production partition
-requires a declared normal non-`/GL` support subset. This lets the linker
+sources use the same `/GL` profile by default. A selected LTCG support can use
+an explicit `support_profiles` source-to-switch-array override; each override
+must retain `/GL`, cannot name a normal support, and participates in build and
+replay grouping. These reproduced profiles do not identify original production
+flags. A reviewed production partition may instead require a declared normal
+non-`/GL` support subset. This lets the linker
 observe real cross-TU definitions and the selected optimizer visibility.
 Remaining external symbols receive unique
 non-runnable data anchors. The linker's PDB
@@ -84,6 +88,16 @@ unit must therefore be raw-equal. Acceptance establishes only reproducibility
 of that bounded function in the declared LTCG context; it does not make the
 anchor image runnable or establish production ownership, translation-unit
 partition, link order, data ownership, or whole-product closure.
+
+A direct REL32 call to a static callee may explicitly declare both
+`static_source` and `static_size`. This opt-in derives the selected object from
+the unit's source/support list and uses the existing qualified MAP/PDB owner
+checks. The callee must have a complete reviewed target boundary, dense
+zero-field decoding and raw equality across its whole extent; the decoded
+caller must CALL its exact entry. Partial bodies, linked child fields, interior
+entries, JMPs and implicit public-to-static fallback are rejected. This binds
+the caller field without adding duplicate credit for the callee. See the
+[script browser lifecycle evidence](evidence/script-viewer-native-lifecycle/README.md).
 
 Target origin is recorded independently from codegen exactness. A canonical
 unit requires a maintained source mapping and reviewed target boundary, but an

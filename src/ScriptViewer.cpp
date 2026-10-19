@@ -1,5 +1,7 @@
 #include "Main.hpp"
 #include "ScriptViewer.hpp"
+#include "ScriptViewerOwners.hpp"
+#include "ItemManager.hpp"
 #include "BulletManager.hpp"
 #include "InputState.hpp"
 #include "Enemy.hpp"
@@ -13,7 +15,6 @@
 // The executable, fresh local Ghidra listing and maintained TH10 interfaces
 // determine these bodies. In particular task registration sets bit 2, whereas
 // that reference's registration candidate sets bit 1.
-extern const unsigned char g_ScriptViewerWorkerVtable[]; // 0x4703E4
 extern void *g_ScriptViewerStageRoute;                  // 0x477848
 extern unsigned char g_ScriptViewerRouteDescriptor[];   // 0x474788
 extern int g_ScriptViewerStage;                        // 0x474C7C
@@ -21,7 +22,6 @@ extern int g_ScriptViewerShownStage;                   // 0x474C80
 
 ScriptViewerWorkerView::ScriptViewerWorkerView()
 {
-    vtable = g_ScriptViewerWorkerVtable;
     thread = NULL;
     threadId = 0;
     stopRequested = 0;
@@ -72,17 +72,7 @@ struct ScriptViewerChainOwnerView
     th10::ChainElem *update;
     th10::ChainElem *draw;
 };
-struct ScriptViewerItemsView
-{
-    ScriptViewerChainOwnerView chains;
-    int unknown10;
-    unsigned char slots[0x21cea0];
-};
-typedef char ScriptViewerInputOffsets[
-    (offsetof(ScriptViewerItemsView, slots) == 0x14) ? 1 : -1];
-
 extern BulletManagerView *g_ScriptViewerBullets;         // 0x4776F0
-extern ScriptViewerItemsView *g_ScriptViewerItems;        // 0x477818
 extern EnemyManagerView *g_EnemyManager;                 // 0x477704
 extern GuiView *g_GuiView;                               // 0x47770C
 extern void *g_ScriptViewerBomb;            // 0x4776EC
@@ -91,7 +81,7 @@ extern void ScriptViewerReleaseGui(GuiView *owner);                         // 0
 extern void ScriptViewerReleasePlayer(Player *owner);                      // 0x425090
 extern void ScriptViewerReleaseBullets(BulletManagerView *owner);          // 0x406140
 extern void ScriptViewerReleaseBomb(void *owner);                          // 0x405730
-extern void ScriptViewerReleaseItems(ScriptViewerItemsView *owner);        // 0x41AFB0
+extern void ScriptViewerReleaseItems(ItemManagerView *owner);              // 0x41AFB0
 extern void ScriptViewerReleasePopups(void *owner);                        // 0x42B6D0
 extern void ScriptViewerReleaseEnemies(EnemyManagerView *owner);           // 0x40D730
 extern int ScriptViewerLoadThread(); // 0x40A340
@@ -100,6 +90,39 @@ extern void *ScriptViewerCreateBomb();    // 0x4056B0
 extern void *GameCreateItemManager();     // 0x41AED0
 extern void *ScriptViewerCreatePopups();  // 0x42B660
 extern void *ScriptViewerCreateGui();     // 0x414830
+
+ScriptViewerView::~ScriptViewerView()
+{
+    ClearScriptNames();
+    th10::ChainElem *task = updateTask;
+    th10::Chain *chain = th10::g_Chain;
+    if (task)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        th10::Chain::UnregisterElem(task, chain);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    task = drawTask;
+    chain = th10::g_Chain;
+    if (task)
+    {
+        EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        ++g_MainSupervisorView.criticalSectionLockCounts[0];
+        th10::Chain::UnregisterElem(task, chain);
+        LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+        --g_MainSupervisorView.criticalSectionLockCounts[0];
+    }
+    ScriptViewerDeleteOwned(g_GuiView);
+    ScriptViewerDeleteOwned(g_Player);
+    ScriptViewerDeleteOwned(g_ScriptViewerBullets);
+    ScriptViewerDeleteOwned(g_EnemyManager);
+    ScriptViewerDeleteOwned(static_cast<ScriptViewerBombOwnerView *>(g_ScriptViewerBomb));
+    ScriptViewerDeleteOwned(g_ItemManager);
+    ScriptViewerDeleteOwned(static_cast<ScriptViewerPopupOwnerView *>(g_ScriptViewerPopups));
+    g_ScriptViewer = NULL;
+}
 
 int ScriptViewerView::InitializeManagers()
 {
@@ -200,8 +223,8 @@ int ScriptViewerView::Update()
             g_ScriptViewerBullets->ResetPool();
             ResumeScriptViewerOwner(g_EnemyManager);
             EnemyManagerClear(g_EnemyManager);
-            ResumeScriptViewerOwner(g_ScriptViewerItems);
-            memset(g_ScriptViewerItems->slots, 0, sizeof(g_ScriptViewerItems->slots));
+            ResumeScriptViewerOwner(g_ItemManager);
+            memset(g_ItemManager->items, 0, sizeof(g_ItemManager->items));
             state = 1;
         }
         break;
@@ -230,11 +253,13 @@ int ScriptViewerView::Update()
                     g_EnemyManager->SuspendCallbacks();
                     EnemyManagerClear(g_EnemyManager);
                     GameResetGui(g_GuiView);
-                    SuspendScriptViewerOwner(g_ScriptViewerItems);
-                    memset(g_ScriptViewerItems->slots, 0, sizeof(g_ScriptViewerItems->slots));
+                    SuspendScriptViewerOwner(g_ItemManager);
+                    memset(g_ItemManager->items, 0, sizeof(g_ItemManager->items));
                     EnemySpawnRequestView request;
                     memset(&request, 0, sizeof(request));
-                    request.position.x = request.position.y = request.position.z = 0.0f;
+                    request.position.x = 0.0f;
+                    request.position.y = 0.0f;
+                    request.position.z = 0.0f;
                     request.life = 10000;
                     EnemySpawn(g_EnemyManager,
                         reinterpret_cast<EclVmScriptDatabase *>(g_EnemyManager->scriptDatabase)->
@@ -254,7 +279,7 @@ int ScriptViewerView::Update()
                 ScriptViewerReleasePlayer(g_Player);
                 ScriptViewerReleaseBullets(g_ScriptViewerBullets);
                 ScriptViewerReleaseBomb(g_ScriptViewerBomb);
-                ScriptViewerReleaseItems(g_ScriptViewerItems);
+                ScriptViewerReleaseItems(g_ItemManager);
                 ScriptViewerReleasePopups(g_ScriptViewerPopups);
                 ScriptViewerReleaseEnemies(g_EnemyManager);
                 flags &= ~2u;

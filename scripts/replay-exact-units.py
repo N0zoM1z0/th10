@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from linked_image import static_owner_selector
+from ltcg_link import support_profile_overrides
 
 import argparse
 from collections import defaultdict
@@ -109,6 +110,11 @@ def replay(
                 str(unit["object"]),
             )
         elif kind == "linked-pe":
+            profiles = support_profile_overrides(
+                [ROOT / value for value in unit.get("support_sources", [])],
+                tuple(ROOT / value for value in unit.get("normal_support_sources", [])),
+                unit.get("support_profiles", {}),
+            )
             key = (
                 kind,
                 str(unit["source"]),
@@ -119,6 +125,7 @@ def replay(
                 str(unit["harness"]),
                 tuple(str(value) for value in unit.get("support_sources", [])),
                 tuple(str(value) for value in unit.get("normal_support_sources", [])),
+                tuple((str(source), tuple(flags)) for source, flags in sorted(profiles.items())),
             )
         else:
             raise ValueError(f"unit {name!r} has an unsupported artifact kind")

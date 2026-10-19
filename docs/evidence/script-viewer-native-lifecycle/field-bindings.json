@@ -1,0 +1,728 @@
+{
+  "script-viewer-create": [
+    {
+      "offset": 7,
+      "type": "REL32",
+      "symbol": "??2@YAPAXI@Z",
+      "target": 4531347
+    },
+    {
+      "offset": 21,
+      "type": "REL32",
+      "symbol": "??0ScriptViewerView@@QAE@XZ",
+      "target": 4235328
+    },
+    {
+      "offset": 32,
+      "type": "REL32",
+      "symbol": "?RegisterTasks@ScriptViewerView@@QAEHXZ",
+      "target": 4235568
+    },
+    {
+      "offset": 46,
+      "type": "REL32",
+      "symbol": "??1ScriptViewerView@@QAE@XZ",
+      "target": 4235680
+    },
+    {
+      "offset": 52,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": 4531361
+    }
+  ],
+  "script-viewer-initialize-managers": [
+    {
+      "offset": 2,
+      "type": "REL32",
+      "symbol": "?PlayerCreate@@YAPAUPlayer@@XZ",
+      "target": 4345888
+    },
+    {
+      "offset": 7,
+      "type": "REL32",
+      "symbol": "?ScriptViewerCreateBullets@@YAPAXXZ",
+      "target": 4218976
+    },
+    {
+      "offset": 12,
+      "type": "REL32",
+      "symbol": "?ScriptViewerCreateBomb@@YAPAXXZ",
+      "target": 4216496
+    },
+    {
+      "offset": 17,
+      "type": "REL32",
+      "symbol": "?GameCreateItemManager@@YAPAXXZ",
+      "target": 4304592
+    },
+    {
+      "offset": 22,
+      "type": "REL32",
+      "symbol": "?ScriptViewerCreatePopups@@YAPAXXZ",
+      "target": 4372064
+    },
+    {
+      "offset": 40,
+      "type": "REL32",
+      "symbol": "?EnemyManagerCreate@@YGPAUEnemyManagerView@@PBD@Z",
+      "target": 4249264
+    },
+    {
+      "offset": 45,
+      "type": "REL32",
+      "symbol": "?ScriptViewerCreateGui@@YAPAXXZ",
+      "target": 4278320
+    },
+    {
+      "offset": 50,
+      "type": "DIR32",
+      "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+      "target": 4683524
+    },
+    {
+      "offset": 77,
+      "type": "REL32",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target": 4505248
+    },
+    {
+      "offset": 86,
+      "type": "REL32",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target": 4505248
+    }
+  ],
+  "script-viewer-load-thread": [
+    {
+      "offset": 3,
+      "type": "DIR32",
+      "symbol": "?g_ScriptViewer@@3PAUScriptViewerView@@A",
+      "target": 4683512
+    },
+    {
+      "offset": 8,
+      "type": "REL32",
+      "symbol": "?InitializeManagers@ScriptViewerView@@QAEHXZ",
+      "target": 4236112
+    }
+  ],
+  "script-viewer-update": [
+    {
+      "offset": 7,
+      "type": "DIR32",
+      "symbol": "___security_cookie",
+      "target": 4666976
+    },
+    {
+      "offset": 62,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072
+    },
+    {
+      "offset": 68,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 44
+    },
+    {
+      "offset": 75,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 44
+    },
+    {
+      "offset": 80,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072
+    },
+    {
+      "offset": 86,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 46
+    },
+    {
+      "offset": 91,
+      "type": "REL32",
+      "symbol": "?UpdateDebugRepeat@FrontEndInputView@@QAEXXZ",
+      "target": 4238368
+    },
+    {
+      "offset": 98,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 6
+    },
+    {
+      "offset": 109,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 50
+    },
+    {
+      "offset": 121,
+      "type": "DIR32",
+      "symbol": "?g_Player@@3PAUPlayer@@A",
+      "target": 4683828
+    },
+    {
+      "offset": 151,
+      "type": "REL32",
+      "symbol": "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z",
+      "target": 4345232
+    },
+    {
+      "offset": 157,
+      "type": "DIR32",
+      "symbol": "?g_ScriptViewerBullets@@3PAUBulletManagerView@@A",
+      "target": 4683504
+    },
+    {
+      "offset": 182,
+      "type": "REL32",
+      "symbol": "?ResetPool@BulletManagerView@@QAEXXZ",
+      "target": 4218576
+    },
+    {
+      "offset": 187,
+      "type": "DIR32",
+      "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+      "target": 4683524
+    },
+    {
+      "offset": 213,
+      "type": "REL32",
+      "symbol": "?EnemyManagerClear@@YGXPAUEnemyManagerView@@@Z",
+      "target": 4235152
+    },
+    {
+      "offset": 219,
+      "type": "DIR32",
+      "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+      "target": 4683800
+    },
+    {
+      "offset": 278,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 6
+    },
+    {
+      "offset": 290,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 4
+    },
+    {
+      "offset": 301,
+      "type": "REL32",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target": 4505248
+    },
+    {
+      "offset": 307,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 6
+    },
+    {
+      "offset": 316,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 4
+    },
+    {
+      "offset": 328,
+      "type": "REL32",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target": 4505248
+    },
+    {
+      "offset": 355,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 6
+    },
+    {
+      "offset": 372,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": 4791336
+    },
+    {
+      "offset": 377,
+      "type": "REL32",
+      "symbol": "?SetNextGameMode@MainSupervisorView@@QAEXH@Z",
+      "target": 4238480
+    },
+    {
+      "offset": 387,
+      "type": "DIR32",
+      "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+      "target": 4683524
+    },
+    {
+      "offset": 420,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072
+    },
+    {
+      "offset": 425,
+      "type": "REL32",
+      "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+      "target": 4238560
+    },
+    {
+      "offset": 439,
+      "type": "REL32",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target": 4505248
+    },
+    {
+      "offset": 449,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072
+    },
+    {
+      "offset": 454,
+      "type": "REL32",
+      "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+      "target": 4238560
+    },
+    {
+      "offset": 468,
+      "type": "REL32",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target": 4505248
+    },
+    {
+      "offset": 474,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 8
+    },
+    {
+      "offset": 489,
+      "type": "DIR32",
+      "symbol": "?g_Player@@3PAUPlayer@@A",
+      "target": 4683828
+    },
+    {
+      "offset": 494,
+      "type": "REL32",
+      "symbol": "?ScriptViewerSuspendPlayer@@YAXPAUPlayer@@@Z",
+      "target": 4235280
+    },
+    {
+      "offset": 500,
+      "type": "DIR32",
+      "symbol": "?g_Player@@3PAUPlayer@@A",
+      "target": 4683828
+    },
+    {
+      "offset": 505,
+      "type": "REL32",
+      "symbol": "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z",
+      "target": 4345232
+    },
+    {
+      "offset": 511,
+      "type": "DIR32",
+      "symbol": "?g_ScriptViewerBullets@@3PAUBulletManagerView@@A",
+      "target": 4683504
+    },
+    {
+      "offset": 518,
+      "type": "REL32",
+      "symbol": "?SuspendScriptViewerOwner@@YAXPAX@Z",
+      "target": 4234784,
+      "static_source": "src/ScriptViewer.cpp",
+      "static_size": 28
+    },
+    {
+      "offset": 523,
+      "type": "REL32",
+      "symbol": "?ResetPool@BulletManagerView@@QAEXXZ",
+      "target": 4218576
+    },
+    {
+      "offset": 529,
+      "type": "DIR32",
+      "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+      "target": 4683524
+    },
+    {
+      "offset": 536,
+      "type": "REL32",
+      "symbol": "?SuspendCallbacks@EnemyManagerView@@QAEXXZ",
+      "target": 4248848
+    },
+    {
+      "offset": 542,
+      "type": "REL32",
+      "symbol": "?EnemyManagerClear@@YGXPAUEnemyManagerView@@@Z",
+      "target": 4235152
+    },
+    {
+      "offset": 548,
+      "type": "DIR32",
+      "symbol": "?g_GuiView@@3PAUGuiView@@A",
+      "target": 4683532
+    },
+    {
+      "offset": 553,
+      "type": "REL32",
+      "symbol": "?GameResetGui@@YAXPAUGuiView@@@Z",
+      "target": 4275136
+    },
+    {
+      "offset": 559,
+      "type": "DIR32",
+      "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+      "target": 4683800
+    },
+    {
+      "offset": 566,
+      "type": "REL32",
+      "symbol": "?SuspendScriptViewerOwner@@YAXPAX@Z",
+      "target": 4234784,
+      "static_source": "src/ScriptViewer.cpp",
+      "static_size": 28
+    },
+    {
+      "offset": 608,
+      "type": "DIR32",
+      "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+      "target": 4683524
+    },
+    {
+      "offset": 639,
+      "type": "REL32",
+      "symbol": "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z",
+      "target": 4247472
+    },
+    {
+      "offset": 672,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 6
+    },
+    {
+      "offset": 684,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 4
+    },
+    {
+      "offset": 695,
+      "type": "REL32",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target": 4505248
+    },
+    {
+      "offset": 701,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 6
+    },
+    {
+      "offset": 713,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 4
+    },
+    {
+      "offset": 724,
+      "type": "REL32",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target": 4505248
+    },
+    {
+      "offset": 730,
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": 4673072,
+      "addend": 6
+    },
+    {
+      "offset": 746,
+      "type": "DIR32",
+      "symbol": "?g_GuiView@@3PAUGuiView@@A",
+      "target": 4683532
+    },
+    {
+      "offset": 751,
+      "type": "REL32",
+      "symbol": "?ScriptViewerReleaseGui@@YAXPAUGuiView@@@Z",
+      "target": 4278496
+    },
+    {
+      "offset": 757,
+      "type": "DIR32",
+      "symbol": "?g_Player@@3PAUPlayer@@A",
+      "target": 4683828
+    },
+    {
+      "offset": 762,
+      "type": "REL32",
+      "symbol": "?ScriptViewerReleasePlayer@@YAXPAUPlayer@@@Z",
+      "target": 4346000
+    },
+    {
+      "offset": 768,
+      "type": "DIR32",
+      "symbol": "?g_ScriptViewerBullets@@3PAUBulletManagerView@@A",
+      "target": 4683504
+    },
+    {
+      "offset": 773,
+      "type": "REL32",
+      "symbol": "?ScriptViewerReleaseBullets@@YAXPAUBulletManagerView@@@Z",
+      "target": 4219200
+    },
+    {
+      "offset": 779,
+      "type": "DIR32",
+      "symbol": "?g_ScriptViewerBomb@@3PAXA",
+      "target": 4683500
+    },
+    {
+      "offset": 784,
+      "type": "REL32",
+      "symbol": "?ScriptViewerReleaseBomb@@YAXPAX@Z",
+      "target": 4216624
+    },
+    {
+      "offset": 790,
+      "type": "DIR32",
+      "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+      "target": 4683800
+    },
+    {
+      "offset": 795,
+      "type": "REL32",
+      "symbol": "?ScriptViewerReleaseItems@@YAXPAUItemManagerView@@@Z",
+      "target": 4304816
+    },
+    {
+      "offset": 801,
+      "type": "DIR32",
+      "symbol": "?g_ScriptViewerPopups@@3PAXA",
+      "target": 4683840
+    },
+    {
+      "offset": 806,
+      "type": "REL32",
+      "symbol": "?ScriptViewerReleasePopups@@YAXPAX@Z",
+      "target": 4372176
+    },
+    {
+      "offset": 812,
+      "type": "DIR32",
+      "symbol": "?g_EnemyManager@@3PAUEnemyManagerView@@A",
+      "target": 4683524
+    },
+    {
+      "offset": 817,
+      "type": "REL32",
+      "symbol": "?ScriptViewerReleaseEnemies@@YAXPAUEnemyManagerView@@@Z",
+      "target": 4249392
+    },
+    {
+      "offset": 835,
+      "type": "DIR32",
+      "symbol": "?ScriptViewerLoadThread@@YAHXZ",
+      "target": 4236096
+    },
+    {
+      "offset": 846,
+      "type": "REL32",
+      "symbol": "?Start@ScriptViewerWorkerView@@QAEXPAXP6AHXZ@Z",
+      "target": 4506048
+    },
+    {
+      "offset": 865,
+      "type": "REL32",
+      "symbol": "?ClearScriptNames@ScriptViewerView@@QAEXXZ",
+      "target": 4234928
+    },
+    {
+      "offset": 871,
+      "type": "DIR32",
+      "symbol": "__imp__FindFirstFileA@8",
+      "target": 4612256
+    },
+    {
+      "offset": 881,
+      "type": "DIR32",
+      "symbol": "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@",
+      "target": 4640424
+    },
+    {
+      "offset": 905,
+      "type": "DIR32",
+      "symbol": "__imp__FindNextFileA@8",
+      "target": 4612260
+    },
+    {
+      "offset": 916,
+      "type": "DIR32",
+      "symbol": "__imp__FindClose@4",
+      "target": 4612264
+    },
+    {
+      "offset": 938,
+      "type": "REL32",
+      "symbol": "_malloc",
+      "target": 4531974
+    },
+    {
+      "offset": 954,
+      "type": "DIR32",
+      "symbol": "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@",
+      "target": 4640424
+    },
+    {
+      "offset": 988,
+      "type": "REL32",
+      "symbol": "_malloc",
+      "target": 4531974
+    },
+    {
+      "offset": 1029,
+      "type": "DIR32",
+      "symbol": "__imp__FindNextFileA@8",
+      "target": 4612260
+    },
+    {
+      "offset": 1045,
+      "type": "DIR32",
+      "symbol": "__imp__FindClose@4",
+      "target": 4612264
+    },
+    {
+      "offset": 1238,
+      "type": "REL32",
+      "symbol": "@__security_check_cookie@4",
+      "target": 4558501
+    }
+  ],
+  "script-viewer-worker-destructor": [
+    {
+      "offset": 5,
+      "type": "DIR32",
+      "symbol": "??_7ScriptViewerWorkerView@@6B@",
+      "target": 4654052
+    },
+    {
+      "offset": 10,
+      "type": "REL32",
+      "symbol": "?Stop@ScriptViewerWorkerView@@QAEXXZ",
+      "target": 4505936
+    }
+  ],
+  "script-viewer-release-gui": [
+    {
+      "offset": 6,
+      "type": "REL32",
+      "symbol": "??1GuiView@@QAE@XZ",
+      "target": 4277744
+    },
+    {
+      "offset": 12,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": 4531361
+    }
+  ],
+  "script-viewer-release-player": [
+    {
+      "offset": 6,
+      "type": "REL32",
+      "symbol": "??1Player@@QAE@XZ",
+      "target": 4345552
+    },
+    {
+      "offset": 12,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": 4531361
+    }
+  ],
+  "script-viewer-release-bullets": [
+    {
+      "offset": 6,
+      "type": "REL32",
+      "symbol": "??1BulletManagerView@@QAE@XZ",
+      "target": 4218736
+    },
+    {
+      "offset": 12,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": 4531361
+    }
+  ],
+  "script-viewer-release-bomb": [
+    {
+      "offset": 6,
+      "type": "REL32",
+      "symbol": "??1ScriptViewerBombOwnerView@@QAE@XZ",
+      "target": 4216352
+    },
+    {
+      "offset": 12,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": 4531361
+    }
+  ],
+  "script-viewer-release-items": [
+    {
+      "offset": 6,
+      "type": "REL32",
+      "symbol": "??1ItemManagerView@@QAE@XZ",
+      "target": 4304368
+    },
+    {
+      "offset": 12,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": 4531361
+    }
+  ],
+  "script-viewer-release-popups": [
+    {
+      "offset": 6,
+      "type": "REL32",
+      "symbol": "??1ScriptViewerPopupOwnerView@@QAE@XZ",
+      "target": 4371824
+    },
+    {
+      "offset": 12,
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": 4531361
+    }
+  ]
+}

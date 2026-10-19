@@ -125,7 +125,7 @@ __declspec(noinline) i32 __stdcall Chain::AddToDrawChain(ChainElem *elem, i32 pr
     return result;
 }
 
-void Chain::UnregisterElem(ChainElem *elem, Chain *chain)
+void __fastcall Chain::UnregisterElem(ChainElem *elem, Chain *chain)
 {
     ListNode *node;
     if (elem == NULL)

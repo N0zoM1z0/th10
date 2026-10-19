@@ -3,8 +3,8 @@
   "normalization": "crlf-to-lf-only",
   "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",
   "sha256_lf": {
-    "src/Chain.cpp": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
-    "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+    "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+    "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
     "src/AnmManager.cpp": "617dc8e960d781a5a15f2a4d92467ee5d06550731a61680cd99e729a9218ee7e",
     "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
@@ -30,5 +30,21 @@
     "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
     "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03"
   },
-  "verification_receipt": "repository-command:f7df7c806136414e9a5dbccd9f8afa8e"
+  "original_verification_receipt": "repository-command:f7df7c806136414e9a5dbccd9f8afa8e",
+  "reviewed_dependency_update": {
+    "date": "2026-10-19",
+    "starting_head": "46853f1c35cc76774a6c33e88f208a38c4646286",
+    "reason": "Only UnregisterElem fastcall spelling changes; target ECX/EDX/RET interface and complete native114-byte owner pass twice. Host fixture explicitly erases __fastcall; algorithms and pin rejection policy unchanged.",
+    "evidence": "docs/evidence/script-viewer-native-lifecycle/README.md",
+    "inputs": {
+      "src/Chain.hpp": {
+        "old_sha256_lf": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
+        "new_sha256_lf": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8"
+      },
+      "src/Chain.cpp": {
+        "old_sha256_lf": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
+        "new_sha256_lf": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c"
+      }
+    }
+  }
 }

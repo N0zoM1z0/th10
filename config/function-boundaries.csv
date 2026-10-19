@@ -104,6 +104,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004055C0,0x00405613,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00405620,0x004056A8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004056B0,0x00405704,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x00405730,0x00405741,reviewed,high,script-viewer-native-lifecycle-2026-10-19,"Complete dense target and temporary Ghidra body; all branches internal; browser caller0x40a75f; RET, CC before/after, no overlap. Fresh architecture export; historical evidence text mismatch at0x401100 preserved."
 0x00405750,0x0040582E,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x405843 to entry; independent IDA MCP extent agrees"
 0x00405850,0x00405855,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; data xrefs only at 0x004055E5
 0x00405860,0x004059EC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
@@ -124,6 +125,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00405ED0,0x00405EFC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00405F70,0x0040605B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00406060,0x00406115,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x00406140,0x00406151,reviewed,high,script-viewer-native-lifecycle-2026-10-19,"Complete dense target and temporary Ghidra body; all branches internal; browser caller0x40a754; RET, CC before/after, no overlap. Fresh architecture export; historical evidence text mismatch at0x401100 preserved."
 0x00406160,0x004061CC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004061D0,0x0040623C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00406240,0x004065B4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -335,6 +337,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0040D680,0x0040D6A3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 36/36, tail ret"
 0x0040D6B0,0x0040D70E,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 95/95, tail ret"
 0x0040D710,0x0040D72B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 28/28, tail ret"
+0x0040D730,0x0040D742,reviewed,high,script-viewer-native-lifecycle-2026-10-19,"Complete dense target and temporary Ghidra body; all branches internal; browser caller0x40a780; RET, CC before/after, no overlap. Fresh architecture export; historical evidence text mismatch at0x401100 preserved."
 0x0040D750,0x0040D7F5,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 166/166, tail ret"
 0x0040D800,0x0040D805,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x0040D810,0x0040D819,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 10/10, tail ret"
@@ -417,6 +420,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00414570,0x004145E8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004145F0,0x0041482D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00414830,0x004148B7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x004148E0,0x004148F1,reviewed,high,script-viewer-native-lifecycle-2026-10-19,"Complete dense target and temporary Ghidra body; all branches internal; browser caller0x40a73e; RET, CC before/after, no overlap. Fresh architecture export; historical evidence text mismatch at0x401100 preserved."
 0x00414900,0x004157FB,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 3835/3836; owned indirect control table at 0x004157E0
 0x00415800,0x00415AD3,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x415af1 to entry; independent IDA MCP extent agrees"
 0x00415B00,0x00415DAA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
@@ -515,6 +519,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041AD90,0x0041ADE3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041ADF0,0x0041AEC7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041AED0,0x0041AF88,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0041AFB0,0x0041AFC1,reviewed,high,script-viewer-native-lifecycle-2026-10-19,"Complete dense target and temporary Ghidra body; all branches internal; browser caller0x40a76a; RET, CC before/after, no overlap. Fresh architecture export; historical evidence text mismatch at0x401100 preserved."
 0x0041AFD0,0x0041B8DF,reviewed,high,target-item-update-complete-owner-2026-10-02,"Reviewed complete2320-byte owner: body2253/RET4, three-byte LEA alignment, adjacent 11-slot item-kind and5-slot difficulty tables. Selectors bound unsigned(kind-1)<=10 and unsigned(difficulty)<=4; all sixteen slots reach body instruction boundaries. Fresh Ghidra table/slot xrefs have no competing owner. Independent Draw starts immediately at0x41B8E0. Ghidra reachable body remains a separate metric."
 0x0041B8E0,0x0041B9F8,reviewed,high,target-raw-gap-review-2026-09-24,"Raw dense decode begins at the 0x0041BA48 tail-jump target, ends in RET at 0x0041B9F8, and is followed by CC padding."
 0x0041BA00,0x0041BA2F,reviewed,high,target-raw-gap-review-2026-09-24,Raw dense 48-byte decode ends in RET; entry is stored by callback registration at 0x0041AD92.
@@ -757,6 +762,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0042B4D0,0x0042B560,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042B570,0x0042B657,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0042B660,0x0042B6A6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0042B6D0,0x0042B6E1,reviewed,high,script-viewer-native-lifecycle-2026-10-19,"Complete dense target and temporary Ghidra body; all branches internal; browser caller0x40a775; RET, CC before/after, no overlap. Fresh architecture export; historical evidence text mismatch at0x401100 preserved."
 0x0042B6F0,0x0042B775,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x42b9a2 to entry; IDA MCP does not define this separate entry; target local extent is independently dense through its terminal instruction"
 0x0042B780,0x0042B99B,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x42b9b3 to entry; independent IDA MCP extent agrees"
 0x0042B9C0,0x0042BA66,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=8; no overlap or external interior branch

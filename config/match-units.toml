@@ -1642,34 +1642,92 @@ linkages = [{ offset = 21, type = "DIR32", symbol = "?g_EnemyManager@@3PAUEnemyM
 
 [units.enemy-spawn]
 artifact_kind = "linked-pe"
-source = "src/Enemy.cpp"
-output_dir = "build/match-linked/Enemy"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?LoadFile@EnemyEclResourceView@@UAEHPBD@Z"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
 functions = ["EnemySpawn"]
 symbol = "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
-target_address = 0x0040CFB0
+target_address = 4247472
 size = 577
-# The final selector-table byte is compiler-owned data in the PDB contribution;
-# Capstone decodes the preceding 576 bytes and the comparator checks this tail
-# explicitly as part of the complete physical extent.
-data_spans = [{ offset = 576, width = 1 }]
-linkages = [
-  { offset = 12, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x00452493 },
-  { offset = 31, type = "REL32", symbol = "??0EnemyFullObjectView@@QAE@PBD@Z", target = 0x0040D830 },
-  { offset = 124, type = "DIR32", symbol = "?g_EnemySpawnLayerIndex@@3HA", target = 0x00474C74 },
-  { offset = 197, type = "DIR32", symbol = "?g_PlayerTimerScale@@3MA", target = 0x00476F78 },
-  { offset = 275, type = "REL32", symbol = "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z", target = 0x0040DC80 },
-  { offset = 375, type = "DIR32", local = true, target = 0x0040D1BC },
-  { offset = 382, type = "DIR32", local = true, target = 0x0040D1A8 },
-  { offset = 504, type = "DIR32", local = true, target = 0x0040D132 },
-  { offset = 508, type = "DIR32", local = true, target = 0x0040D13A },
-  { offset = 512, type = "DIR32", local = true, target = 0x0040D152 },
-  { offset = 516, type = "DIR32", local = true, target = 0x0040D146 },
-  { offset = 520, type = "DIR32", local = true, target = 0x0040D15C },
-]
+data_spans = [{ "offset" = 576, "width" = 1 }]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+pdb_source = "src/Enemy.cpp"
+
+[[units.enemy-spawn.linkages]]
+offset = 12
+type = "REL32"
+symbol = "??2@YAPAXI@Z"
+target = 4531347
+
+[[units.enemy-spawn.linkages]]
+offset = 31
+type = "REL32"
+symbol = "??0EnemyFullObjectView@@QAE@PBD@Z"
+target = 4249648
+
+[[units.enemy-spawn.linkages]]
+offset = 124
+type = "DIR32"
+symbol = "?g_EnemySpawnLayerIndex@@3HA"
+target = 4672628
+
+[[units.enemy-spawn.linkages]]
+offset = 197
+type = "DIR32"
+symbol = "?g_PlayerTimerScale@@3MA"
+target = 4681592
+
+[[units.enemy-spawn.linkages]]
+offset = 275
+type = "REL32"
+symbol = "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z"
+target = 4250752
+
+[[units.enemy-spawn.linkages]]
+offset = 375
+type = "DIR32"
+local = true
+target = 4247996
+
+[[units.enemy-spawn.linkages]]
+offset = 382
+type = "DIR32"
+local = true
+target = 4247976
+
+[[units.enemy-spawn.linkages]]
+offset = 504
+type = "DIR32"
+local = true
+target = 4247858
+
+[[units.enemy-spawn.linkages]]
+offset = 508
+type = "DIR32"
+local = true
+target = 4247866
+
+[[units.enemy-spawn.linkages]]
+offset = 512
+type = "DIR32"
+local = true
+target = 4247890
+
+[[units.enemy-spawn.linkages]]
+offset = 516
+type = "DIR32"
+local = true
+target = 4247878
+
+[[units.enemy-spawn.linkages]]
+offset = 520
+type = "DIR32"
+local = true
+target = 4247900
 
 [units.enemy-ecl-resource-constructor]
 artifact_kind = "linked-pe"
@@ -10683,41 +10741,83 @@ linkages = []
 
 [units.decomphelp-chain-unregister]
 artifact_kind = "linked-pe"
-source = "src/Chain.cpp"
-output_dir = "build/match-linked/DecomphelpChainUnregister"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
 functions = ["Chain::UnregisterElem"]
-symbol = "?UnregisterElem@Chain@th10@@SAXPAUChainElem@2@PAU12@@Z"
-target_address = 0x00449F60
+symbol = "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z"
+target_address = 4497248
 size = 114
-linkages = [
-  { offset = 0x68, type = "REL32", symbol = "_free", target = 0x004524A1 },
-]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+pdb_source = "src/Chain.cpp"
+
+[[units.decomphelp-chain-unregister.linkages]]
+offset = 104
+type = "REL32"
+symbol = "_free"
+target = 4531361
 
 [units.decomphelp-chain-remove-all]
 artifact_kind = "linked-pe"
-source = "src/Chain.cpp"
-output_dir = "build/match-linked/DecomphelpChainUnregister"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
-entry_symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
 functions = ["Chain::RemoveAllFromList"]
 symbol = "?RemoveAllFromList@Chain@th10@@SGXPAEPAU12@@Z"
-target_address = 0x00449E50
+target_address = 4496976
 size = 82
-linkages = [
-  { offset = 0x0A, type = "DIR32", symbol = "__imp__EnterCriticalSection@4", target = 0x004660B0 },
-  { offset = 0x11, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
-  { offset = 0x21, type = "DIR32", symbol = "?g_CriticalSections@th10@@3PAU_RTL_CRITICAL_SECTION@@A", target = 0x00492274 },
-  { offset = 0x29, type = "DIR32", symbol = "?g_ChainNestCounter@th10@@3EA", target = 0x0049231C },
-  { offset = 0x34, type = "REL32", symbol = "?UnregisterElem@Chain@th10@@SAXPAUChainElem@2@PAU12@@Z", target = 0x00449F60 },
-  { offset = 0x39, type = "DIR32", symbol = "?g_CriticalSections@th10@@3PAU_RTL_CRITICAL_SECTION@@A", target = 0x00492274 },
-  { offset = 0x41, type = "DIR32", symbol = "?g_ChainNestCounter@th10@@3EA", target = 0x0049231C },
-]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+pdb_source = "src/Chain.cpp"
+
+[[units.decomphelp-chain-remove-all.linkages]]
+offset = 10
+type = "DIR32"
+symbol = "__imp__EnterCriticalSection@4"
+target = 4612272
+
+[[units.decomphelp-chain-remove-all.linkages]]
+offset = 17
+type = "DIR32"
+symbol = "__imp__LeaveCriticalSection@4"
+target = 4612276
+
+[[units.decomphelp-chain-remove-all.linkages]]
+offset = 33
+type = "DIR32"
+symbol = "?g_CriticalSections@th10@@3PAU_RTL_CRITICAL_SECTION@@A"
+target = 4792948
+
+[[units.decomphelp-chain-remove-all.linkages]]
+offset = 41
+type = "DIR32"
+symbol = "?g_ChainNestCounter@th10@@3EA"
+target = 4793116
+
+[[units.decomphelp-chain-remove-all.linkages]]
+offset = 52
+type = "REL32"
+symbol = "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z"
+target = 4497248
+
+[[units.decomphelp-chain-remove-all.linkages]]
+offset = 57
+type = "DIR32"
+symbol = "?g_CriticalSections@th10@@3PAU_RTL_CRITICAL_SECTION@@A"
+target = 4792948
+
+[[units.decomphelp-chain-remove-all.linkages]]
+offset = 65
+type = "DIR32"
+symbol = "?g_ChainNestCounter@th10@@3EA"
+target = 4793116
 
 [units.decomphelp-game-error-log]
 artifact_kind = "linked-pe"
@@ -19941,9 +20041,9 @@ linkages = []
 [units.script-viewer-constructor]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -19951,11 +20051,12 @@ functions = ["ScriptViewerView::ScriptViewerView"]
 symbol = "??0ScriptViewerView@@QAE@XZ"
 target_address = 4235328
 size = 234
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.script-viewer-constructor.linkages]]
 offset = 3
 type = "DIR32"
-symbol = "?g_ScriptViewerWorkerVtable@@3QBEB"
+symbol = "??_7ScriptViewerWorkerView@@6B@"
 target = 4654052
 
 [[units.script-viewer-constructor.linkages]]
@@ -19967,9 +20068,9 @@ target = 4683512
 [units.script-viewer-register-tasks]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -19977,6 +20078,7 @@ functions = ["ScriptViewerView::RegisterTasks"]
 symbol = "?RegisterTasks@ScriptViewerView@@QAEHXZ"
 target_address = 4235568
 size = 106
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.script-viewer-register-tasks.linkages]]
 offset = 5
@@ -20053,9 +20155,9 @@ target = 4496240
 [units.script-viewer-clear-names]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20063,6 +20165,7 @@ functions = ["ScriptViewerView::ClearScriptNames"]
 symbol = "?ClearScriptNames@ScriptViewerView@@QAEXXZ"
 target_address = 4234928
 size = 86
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.script-viewer-clear-names.linkages]]
 offset = 29
@@ -20079,9 +20182,9 @@ target = 4531234
 [units.script-viewer-update-callback]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20089,6 +20192,7 @@ functions = ["ScriptViewerUpdateCallback"]
 symbol = "?ScriptViewerUpdateCallback@@YIHPAX@Z"
 target_address = 4238304
 size = 7
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.script-viewer-update-callback.linkages]]
 offset = 2
@@ -20099,9 +20203,9 @@ target = 4236368
 [units.bullet-reset-pool]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20110,6 +20214,7 @@ functions = ["BulletManagerView::ResetPool"]
 symbol = "?ResetPool@BulletManagerView@@QAEXXZ"
 target_address = 4218576
 size = 45
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.bullet-reset-pool.linkages]]
 offset = 7
@@ -20126,9 +20231,9 @@ target = 4494304
 [units.enemy-manager-clear]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20137,6 +20242,7 @@ functions = ["EnemyManagerClear"]
 symbol = "?EnemyManagerClear@@YGXPAUEnemyManagerView@@@Z"
 target_address = 4235152
 size = 118
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.enemy-manager-clear.linkages]]
 offset = 3
@@ -20153,9 +20259,9 @@ target = 4494304
 [units.enemy-manager-suspend-callbacks]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20164,14 +20270,15 @@ functions = ["EnemyManagerView::SuspendCallbacks"]
 symbol = "?SuspendCallbacks@EnemyManagerView@@QAEXXZ"
 target_address = 4248848
 size = 28
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 linkages = []
 
 [units.input-debug-repeat]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20180,14 +20287,15 @@ functions = ["FrontEndInputView::UpdateDebugRepeat"]
 symbol = "?UpdateDebugRepeat@FrontEndInputView@@QAEXXZ"
 target_address = 4238368
 size = 109
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 linkages = []
 
 [units.script-viewer-worker-stop]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20196,6 +20304,7 @@ functions = ["ScriptViewerWorkerView::Stop"]
 symbol = "?Stop@ScriptViewerWorkerView@@QAEXXZ"
 target_address = 4505936
 size = 101
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.script-viewer-worker-stop.linkages]]
 offset = 13
@@ -20218,9 +20327,9 @@ target = 4612300
 [units.script-viewer-worker-start]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20229,6 +20338,7 @@ functions = ["ScriptViewerWorkerView::Start"]
 symbol = "?Start@ScriptViewerWorkerView@@QAEXPAXP6AHXZ@Z"
 target_address = 4506048
 size = 56
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.script-viewer-worker-start.linkages]]
 offset = 4
@@ -20245,9 +20355,9 @@ target = 4535939
 [units.script-viewer-suspend-player]
 artifact_kind = "linked-pe"
 source = "src/ScriptViewer.cpp"
-output_dir = "build/match-linked/ScriptViewerWorker-cold-2"
-profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
-support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp"]
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
 entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
@@ -20255,9 +20365,901 @@ functions = ["ScriptViewerSuspendPlayer"]
 symbol = "?ScriptViewerSuspendPlayer@@YAXPAUPlayer@@@Z"
 target_address = 4235280
 size = 36
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
 
 [[units.script-viewer-suspend-player.linkages]]
 offset = 30
 type = "REL32"
 symbol = "?RebuildPlayerOptions@@YGXPAUPlayer@@@Z"
 target = 4353904
+
+
+[units.script-viewer-create]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewer.cpp"
+functions = ["ScriptViewerCreate"]
+symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+target_address = 4236224
+size = 67
+
+[[units.script-viewer-create.linkages]]
+offset = 7
+type = "REL32"
+symbol = "??2@YAPAXI@Z"
+target = 4531347
+
+[[units.script-viewer-create.linkages]]
+offset = 21
+type = "REL32"
+symbol = "??0ScriptViewerView@@QAE@XZ"
+target = 4235328
+
+[[units.script-viewer-create.linkages]]
+offset = 32
+type = "REL32"
+symbol = "?RegisterTasks@ScriptViewerView@@QAEHXZ"
+target = 4235568
+
+[[units.script-viewer-create.linkages]]
+offset = 46
+type = "REL32"
+symbol = "??1ScriptViewerView@@QAE@XZ"
+target = 4235680
+
+[[units.script-viewer-create.linkages]]
+offset = 52
+type = "REL32"
+symbol = "??3@YAXPAX@Z"
+target = 4531361
+
+
+[units.script-viewer-initialize-managers]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewer.cpp"
+functions = ["ScriptViewerView::InitializeManagers"]
+symbol = "?InitializeManagers@ScriptViewerView@@QAEHXZ"
+target_address = 4236112
+size = 101
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 2
+type = "REL32"
+symbol = "?PlayerCreate@@YAPAUPlayer@@XZ"
+target = 4345888
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 7
+type = "REL32"
+symbol = "?ScriptViewerCreateBullets@@YAPAXXZ"
+target = 4218976
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 12
+type = "REL32"
+symbol = "?ScriptViewerCreateBomb@@YAPAXXZ"
+target = 4216496
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 17
+type = "REL32"
+symbol = "?GameCreateItemManager@@YAPAXXZ"
+target = 4304592
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 22
+type = "REL32"
+symbol = "?ScriptViewerCreatePopups@@YAPAXXZ"
+target = 4372064
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 40
+type = "REL32"
+symbol = "?EnemyManagerCreate@@YGPAUEnemyManagerView@@PBD@Z"
+target = 4249264
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 45
+type = "REL32"
+symbol = "?ScriptViewerCreateGui@@YAPAXXZ"
+target = 4278320
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 50
+type = "DIR32"
+symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+target = 4683524
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 77
+type = "REL32"
+symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
+target = 4505248
+
+[[units.script-viewer-initialize-managers.linkages]]
+offset = 86
+type = "REL32"
+symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
+target = 4505248
+
+
+[units.script-viewer-load-thread]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewer.cpp"
+functions = ["ScriptViewerLoadThread"]
+symbol = "?ScriptViewerLoadThread@@YAHXZ"
+target_address = 4236096
+size = 16
+
+[[units.script-viewer-load-thread.linkages]]
+offset = 3
+type = "DIR32"
+symbol = "?g_ScriptViewer@@3PAUScriptViewerView@@A"
+target = 4683512
+
+[[units.script-viewer-load-thread.linkages]]
+offset = 8
+type = "REL32"
+symbol = "?InitializeManagers@ScriptViewerView@@QAEHXZ"
+target = 4236112
+
+
+[units.script-viewer-update]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewer.cpp"
+functions = ["ScriptViewerView::Update"]
+symbol = "?Update@ScriptViewerView@@QAEHXZ"
+target_address = 4236368
+size = 1251
+
+[[units.script-viewer-update.linkages]]
+offset = 7
+type = "DIR32"
+symbol = "___security_cookie"
+target = 4666976
+
+[[units.script-viewer-update.linkages]]
+offset = 62
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+
+[[units.script-viewer-update.linkages]]
+offset = 68
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 44
+
+[[units.script-viewer-update.linkages]]
+offset = 75
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 44
+
+[[units.script-viewer-update.linkages]]
+offset = 80
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+
+[[units.script-viewer-update.linkages]]
+offset = 86
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 46
+
+[[units.script-viewer-update.linkages]]
+offset = 91
+type = "REL32"
+symbol = "?UpdateDebugRepeat@FrontEndInputView@@QAEXXZ"
+target = 4238368
+
+[[units.script-viewer-update.linkages]]
+offset = 98
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 6
+
+[[units.script-viewer-update.linkages]]
+offset = 109
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 50
+
+[[units.script-viewer-update.linkages]]
+offset = 121
+type = "DIR32"
+symbol = "?g_Player@@3PAUPlayer@@A"
+target = 4683828
+
+[[units.script-viewer-update.linkages]]
+offset = 151
+type = "REL32"
+symbol = "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z"
+target = 4345232
+
+[[units.script-viewer-update.linkages]]
+offset = 157
+type = "DIR32"
+symbol = "?g_ScriptViewerBullets@@3PAUBulletManagerView@@A"
+target = 4683504
+
+[[units.script-viewer-update.linkages]]
+offset = 182
+type = "REL32"
+symbol = "?ResetPool@BulletManagerView@@QAEXXZ"
+target = 4218576
+
+[[units.script-viewer-update.linkages]]
+offset = 187
+type = "DIR32"
+symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+target = 4683524
+
+[[units.script-viewer-update.linkages]]
+offset = 213
+type = "REL32"
+symbol = "?EnemyManagerClear@@YGXPAUEnemyManagerView@@@Z"
+target = 4235152
+
+[[units.script-viewer-update.linkages]]
+offset = 219
+type = "DIR32"
+symbol = "?g_ItemManager@@3PAUItemManagerView@@A"
+target = 4683800
+
+[[units.script-viewer-update.linkages]]
+offset = 278
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 6
+
+[[units.script-viewer-update.linkages]]
+offset = 290
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 4
+
+[[units.script-viewer-update.linkages]]
+offset = 301
+type = "REL32"
+symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
+target = 4505248
+
+[[units.script-viewer-update.linkages]]
+offset = 307
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 6
+
+[[units.script-viewer-update.linkages]]
+offset = 316
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 4
+
+[[units.script-viewer-update.linkages]]
+offset = 328
+type = "REL32"
+symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
+target = 4505248
+
+[[units.script-viewer-update.linkages]]
+offset = 355
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 6
+
+[[units.script-viewer-update.linkages]]
+offset = 372
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+
+[[units.script-viewer-update.linkages]]
+offset = 377
+type = "REL32"
+symbol = "?SetNextGameMode@MainSupervisorView@@QAEXH@Z"
+target = 4238480
+
+[[units.script-viewer-update.linkages]]
+offset = 387
+type = "DIR32"
+symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+target = 4683524
+
+[[units.script-viewer-update.linkages]]
+offset = 420
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+
+[[units.script-viewer-update.linkages]]
+offset = 425
+type = "REL32"
+symbol = "?IsRepeated@FrontEndInputView@@QAEHG@Z"
+target = 4238560
+
+[[units.script-viewer-update.linkages]]
+offset = 439
+type = "REL32"
+symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
+target = 4505248
+
+[[units.script-viewer-update.linkages]]
+offset = 449
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+
+[[units.script-viewer-update.linkages]]
+offset = 454
+type = "REL32"
+symbol = "?IsRepeated@FrontEndInputView@@QAEHG@Z"
+target = 4238560
+
+[[units.script-viewer-update.linkages]]
+offset = 468
+type = "REL32"
+symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
+target = 4505248
+
+[[units.script-viewer-update.linkages]]
+offset = 474
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 8
+
+[[units.script-viewer-update.linkages]]
+offset = 489
+type = "DIR32"
+symbol = "?g_Player@@3PAUPlayer@@A"
+target = 4683828
+
+[[units.script-viewer-update.linkages]]
+offset = 494
+type = "REL32"
+symbol = "?ScriptViewerSuspendPlayer@@YAXPAUPlayer@@@Z"
+target = 4235280
+
+[[units.script-viewer-update.linkages]]
+offset = 500
+type = "DIR32"
+symbol = "?g_Player@@3PAUPlayer@@A"
+target = 4683828
+
+[[units.script-viewer-update.linkages]]
+offset = 505
+type = "REL32"
+symbol = "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z"
+target = 4345232
+
+[[units.script-viewer-update.linkages]]
+offset = 511
+type = "DIR32"
+symbol = "?g_ScriptViewerBullets@@3PAUBulletManagerView@@A"
+target = 4683504
+
+[[units.script-viewer-update.linkages]]
+offset = 518
+type = "REL32"
+symbol = "?SuspendScriptViewerOwner@@YAXPAX@Z"
+target = 4234784
+static_source = "src/ScriptViewer.cpp"
+static_size = 28
+
+[[units.script-viewer-update.linkages]]
+offset = 523
+type = "REL32"
+symbol = "?ResetPool@BulletManagerView@@QAEXXZ"
+target = 4218576
+
+[[units.script-viewer-update.linkages]]
+offset = 529
+type = "DIR32"
+symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+target = 4683524
+
+[[units.script-viewer-update.linkages]]
+offset = 536
+type = "REL32"
+symbol = "?SuspendCallbacks@EnemyManagerView@@QAEXXZ"
+target = 4248848
+
+[[units.script-viewer-update.linkages]]
+offset = 542
+type = "REL32"
+symbol = "?EnemyManagerClear@@YGXPAUEnemyManagerView@@@Z"
+target = 4235152
+
+[[units.script-viewer-update.linkages]]
+offset = 548
+type = "DIR32"
+symbol = "?g_GuiView@@3PAUGuiView@@A"
+target = 4683532
+
+[[units.script-viewer-update.linkages]]
+offset = 553
+type = "REL32"
+symbol = "?GameResetGui@@YAXPAUGuiView@@@Z"
+target = 4275136
+
+[[units.script-viewer-update.linkages]]
+offset = 559
+type = "DIR32"
+symbol = "?g_ItemManager@@3PAUItemManagerView@@A"
+target = 4683800
+
+[[units.script-viewer-update.linkages]]
+offset = 566
+type = "REL32"
+symbol = "?SuspendScriptViewerOwner@@YAXPAX@Z"
+target = 4234784
+static_source = "src/ScriptViewer.cpp"
+static_size = 28
+
+[[units.script-viewer-update.linkages]]
+offset = 608
+type = "DIR32"
+symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+target = 4683524
+
+[[units.script-viewer-update.linkages]]
+offset = 639
+type = "REL32"
+symbol = "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+target = 4247472
+
+[[units.script-viewer-update.linkages]]
+offset = 672
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 6
+
+[[units.script-viewer-update.linkages]]
+offset = 684
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 4
+
+[[units.script-viewer-update.linkages]]
+offset = 695
+type = "REL32"
+symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
+target = 4505248
+
+[[units.script-viewer-update.linkages]]
+offset = 701
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 6
+
+[[units.script-viewer-update.linkages]]
+offset = 713
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 4
+
+[[units.script-viewer-update.linkages]]
+offset = 724
+type = "REL32"
+symbol = "?Move@FrontEndCursorView@@QAEHH@Z"
+target = 4505248
+
+[[units.script-viewer-update.linkages]]
+offset = 730
+type = "DIR32"
+symbol = "?g_FrontEndInput@@3UFrontEndInputView@@A"
+target = 4673072
+addend = 6
+
+[[units.script-viewer-update.linkages]]
+offset = 746
+type = "DIR32"
+symbol = "?g_GuiView@@3PAUGuiView@@A"
+target = 4683532
+
+[[units.script-viewer-update.linkages]]
+offset = 751
+type = "REL32"
+symbol = "?ScriptViewerReleaseGui@@YAXPAUGuiView@@@Z"
+target = 4278496
+
+[[units.script-viewer-update.linkages]]
+offset = 757
+type = "DIR32"
+symbol = "?g_Player@@3PAUPlayer@@A"
+target = 4683828
+
+[[units.script-viewer-update.linkages]]
+offset = 762
+type = "REL32"
+symbol = "?ScriptViewerReleasePlayer@@YAXPAUPlayer@@@Z"
+target = 4346000
+
+[[units.script-viewer-update.linkages]]
+offset = 768
+type = "DIR32"
+symbol = "?g_ScriptViewerBullets@@3PAUBulletManagerView@@A"
+target = 4683504
+
+[[units.script-viewer-update.linkages]]
+offset = 773
+type = "REL32"
+symbol = "?ScriptViewerReleaseBullets@@YAXPAUBulletManagerView@@@Z"
+target = 4219200
+
+[[units.script-viewer-update.linkages]]
+offset = 779
+type = "DIR32"
+symbol = "?g_ScriptViewerBomb@@3PAXA"
+target = 4683500
+
+[[units.script-viewer-update.linkages]]
+offset = 784
+type = "REL32"
+symbol = "?ScriptViewerReleaseBomb@@YAXPAX@Z"
+target = 4216624
+
+[[units.script-viewer-update.linkages]]
+offset = 790
+type = "DIR32"
+symbol = "?g_ItemManager@@3PAUItemManagerView@@A"
+target = 4683800
+
+[[units.script-viewer-update.linkages]]
+offset = 795
+type = "REL32"
+symbol = "?ScriptViewerReleaseItems@@YAXPAUItemManagerView@@@Z"
+target = 4304816
+
+[[units.script-viewer-update.linkages]]
+offset = 801
+type = "DIR32"
+symbol = "?g_ScriptViewerPopups@@3PAXA"
+target = 4683840
+
+[[units.script-viewer-update.linkages]]
+offset = 806
+type = "REL32"
+symbol = "?ScriptViewerReleasePopups@@YAXPAX@Z"
+target = 4372176
+
+[[units.script-viewer-update.linkages]]
+offset = 812
+type = "DIR32"
+symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A"
+target = 4683524
+
+[[units.script-viewer-update.linkages]]
+offset = 817
+type = "REL32"
+symbol = "?ScriptViewerReleaseEnemies@@YAXPAUEnemyManagerView@@@Z"
+target = 4249392
+
+[[units.script-viewer-update.linkages]]
+offset = 835
+type = "DIR32"
+symbol = "?ScriptViewerLoadThread@@YAHXZ"
+target = 4236096
+
+[[units.script-viewer-update.linkages]]
+offset = 846
+type = "REL32"
+symbol = "?Start@ScriptViewerWorkerView@@QAEXPAXP6AHXZ@Z"
+target = 4506048
+
+[[units.script-viewer-update.linkages]]
+offset = 865
+type = "REL32"
+symbol = "?ClearScriptNames@ScriptViewerView@@QAEXXZ"
+target = 4234928
+
+[[units.script-viewer-update.linkages]]
+offset = 871
+type = "DIR32"
+symbol = "__imp__FindFirstFileA@8"
+target = 4612256
+
+[[units.script-viewer-update.linkages]]
+offset = 881
+type = "DIR32"
+symbol = "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@"
+target = 4640424
+
+[[units.script-viewer-update.linkages]]
+offset = 905
+type = "DIR32"
+symbol = "__imp__FindNextFileA@8"
+target = 4612260
+
+[[units.script-viewer-update.linkages]]
+offset = 916
+type = "DIR32"
+symbol = "__imp__FindClose@4"
+target = 4612264
+
+[[units.script-viewer-update.linkages]]
+offset = 938
+type = "REL32"
+symbol = "_malloc"
+target = 4531974
+
+[[units.script-viewer-update.linkages]]
+offset = 954
+type = "DIR32"
+symbol = "??_C@_0BB@JGJBIKME@?4?4?1?4?4?1data?1?$CK?4ecl?$AA@"
+target = 4640424
+
+[[units.script-viewer-update.linkages]]
+offset = 988
+type = "REL32"
+symbol = "_malloc"
+target = 4531974
+
+[[units.script-viewer-update.linkages]]
+offset = 1029
+type = "DIR32"
+symbol = "__imp__FindNextFileA@8"
+target = 4612260
+
+[[units.script-viewer-update.linkages]]
+offset = 1045
+type = "DIR32"
+symbol = "__imp__FindClose@4"
+target = 4612264
+
+[[units.script-viewer-update.linkages]]
+offset = 1238
+type = "REL32"
+symbol = "@__security_check_cookie@4"
+target = 4558501
+
+
+[units.script-viewer-worker-destructor]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewerWorker.cpp"
+functions = ["ScriptViewerWorkerView::~ScriptViewerWorkerView"]
+symbol = "??1ScriptViewerWorkerView@@UAE@XZ"
+target_address = 4505904
+size = 16
+
+[[units.script-viewer-worker-destructor.linkages]]
+offset = 5
+type = "DIR32"
+symbol = "??_7ScriptViewerWorkerView@@6B@"
+target = 4654052
+
+[[units.script-viewer-worker-destructor.linkages]]
+offset = 10
+type = "REL32"
+symbol = "?Stop@ScriptViewerWorkerView@@QAEXXZ"
+target = 4505936
+
+
+[units.script-viewer-release-gui]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewerLifecycle.cpp"
+functions = ["ScriptViewerReleaseGui"]
+symbol = "?ScriptViewerReleaseGui@@YAXPAUGuiView@@@Z"
+target_address = 4278496
+size = 18
+
+[[units.script-viewer-release-gui.linkages]]
+offset = 6
+type = "REL32"
+symbol = "??1GuiView@@QAE@XZ"
+target = 4277744
+
+[[units.script-viewer-release-gui.linkages]]
+offset = 12
+type = "REL32"
+symbol = "??3@YAXPAX@Z"
+target = 4531361
+
+
+[units.script-viewer-release-player]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewerLifecycle.cpp"
+functions = ["ScriptViewerReleasePlayer"]
+symbol = "?ScriptViewerReleasePlayer@@YAXPAUPlayer@@@Z"
+target_address = 4346000
+size = 18
+
+[[units.script-viewer-release-player.linkages]]
+offset = 6
+type = "REL32"
+symbol = "??1Player@@QAE@XZ"
+target = 4345552
+
+[[units.script-viewer-release-player.linkages]]
+offset = 12
+type = "REL32"
+symbol = "??3@YAXPAX@Z"
+target = 4531361
+
+
+[units.script-viewer-release-bullets]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewerLifecycle.cpp"
+functions = ["ScriptViewerReleaseBullets"]
+symbol = "?ScriptViewerReleaseBullets@@YAXPAUBulletManagerView@@@Z"
+target_address = 4219200
+size = 18
+
+[[units.script-viewer-release-bullets.linkages]]
+offset = 6
+type = "REL32"
+symbol = "??1BulletManagerView@@QAE@XZ"
+target = 4218736
+
+[[units.script-viewer-release-bullets.linkages]]
+offset = 12
+type = "REL32"
+symbol = "??3@YAXPAX@Z"
+target = 4531361
+
+
+[units.script-viewer-release-bomb]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewerLifecycle.cpp"
+functions = ["ScriptViewerReleaseBomb"]
+symbol = "?ScriptViewerReleaseBomb@@YAXPAX@Z"
+target_address = 4216624
+size = 18
+
+[[units.script-viewer-release-bomb.linkages]]
+offset = 6
+type = "REL32"
+symbol = "??1ScriptViewerBombOwnerView@@QAE@XZ"
+target = 4216352
+
+[[units.script-viewer-release-bomb.linkages]]
+offset = 12
+type = "REL32"
+symbol = "??3@YAXPAX@Z"
+target = 4531361
+
+
+[units.script-viewer-release-items]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewerLifecycle.cpp"
+functions = ["ScriptViewerReleaseItems"]
+symbol = "?ScriptViewerReleaseItems@@YAXPAUItemManagerView@@@Z"
+target_address = 4304816
+size = 18
+
+[[units.script-viewer-release-items.linkages]]
+offset = 6
+type = "REL32"
+symbol = "??1ItemManagerView@@QAE@XZ"
+target = 4304368
+
+[[units.script-viewer-release-items.linkages]]
+offset = 12
+type = "REL32"
+symbol = "??3@YAXPAX@Z"
+target = 4531361
+
+
+[units.script-viewer-release-popups]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+support_profiles = { "src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"] }
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+pdb_source = "src/ScriptViewerLifecycle.cpp"
+functions = ["ScriptViewerReleasePopups"]
+symbol = "?ScriptViewerReleasePopups@@YAXPAX@Z"
+target_address = 4372176
+size = 18
+
+[[units.script-viewer-release-popups.linkages]]
+offset = 6
+type = "REL32"
+symbol = "??1ScriptViewerPopupOwnerView@@QAE@XZ"
+target = 4371824
+
+[[units.script-viewer-release-popups.linkages]]
+offset = 12
+type = "REL32"
+symbol = "??3@YAXPAX@Z"
+target = 4531361

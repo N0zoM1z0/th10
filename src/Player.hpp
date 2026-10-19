@@ -209,6 +209,7 @@ struct PlayerDrawVmView
         memset(this, 0, sizeof(*this));
         unknownWord384 = 0xffff;
     }
+    ~PlayerDrawVmView();
 };
 typedef char PlayerDrawVmViewSizeIs3AC[
     (sizeof(PlayerDrawVmView) == 0x3ac) ? 1 : -1];
@@ -484,7 +485,9 @@ int PlayerInitialize(Player *player);
 // Descriptive maintained lifecycle names for reviewed TH10 Player owners. The
 // target machine ABIs are tracked separately from these natural C++ spellings.
 void PlayerResetRuntimeState(Player *player);
-Player *PlayerCreate();
+// Preserve the observed call boundary from browser initialization (0x40A351).
+// This does not establish the original source annotation or TU partition.
+__declspec(noinline) Player *PlayerCreate();
 
 // Descriptive maintained name for the reviewed 0x00426F70-0x0042792D owner.
 // The target machine boundary is one stack Player* argument with callee pop 4;

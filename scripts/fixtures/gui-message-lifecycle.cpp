@@ -125,6 +125,7 @@ size_t AsciiManagerView::GetSize() { return sizeof(*this); }
 GuiView::~GuiView() {}
 EnemyManagerView::EnemyManagerView() {}
 EnemyManagerView::~EnemyManagerView() {}
+BulletManagerView::~BulletManagerView() {} // Host dependency sink; manager cleanup is outside this test.
 // Vtable/RTTI linkage for the complete canonical node referenced by the full
 // constructor. Its live owner list is empty; no laser callback is executed.
 void EnemyEffectWaitNode::UnknownVirtual0() { Check(false, "unused.laser0"); }

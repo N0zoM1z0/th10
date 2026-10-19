@@ -994,3 +994,15 @@ EnemyManagerView::SuspendCallbacks,0x0040D510,function
 FrontEndInputView::UpdateDebugRepeat,0x0040AC20,function
 ScriptViewerWorkerView::Stop,0x0044C150,function
 ScriptViewerWorkerView::Start,0x0044C1C0,function
+ScriptViewerBombOwnerView::~ScriptViewerBombOwnerView,0x00405620,function
+ScriptViewerReleaseBomb,0x00405730,function
+BulletManagerView::~BulletManagerView,0x00405F70,function
+ScriptViewerReleaseBullets,0x00406140,function
+ScriptViewerView::~ScriptViewerView,0x0040A1A0,function
+ScriptViewerReleaseEnemies,0x0040D730,function
+ScriptViewerReleaseGui,0x004148E0,function
+ScriptViewerReleaseItems,0x0041AFB0,function
+ScriptViewerReleasePlayer,0x00425090,function
+ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView,0x0042B570,function
+ScriptViewerReleasePopups,0x0042B6D0,function
+ScriptViewerWorkerView::~ScriptViewerWorkerView,0x0044C130,function

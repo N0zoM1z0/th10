@@ -1,0 +1,274 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_boundaries": 6,
+  "new_owned_bytes": 109,
+  "new_authored_bytes": 0,
+  "functions": [
+    {
+      "address": "0x00425090",
+      "size": 18,
+      "span_end": "0x004250A1",
+      "name": "ScriptViewerReleasePlayer",
+      "new_boundary": false,
+      "sha256": "3f8c95a7eefa00bf2c947617c13d9e074b571fd208a6d6ae63968ca86b6e2bb3",
+      "incoming_browser_calls": [
+        "0x40a749"
+      ],
+      "origin": "indeterminate; null-tolerant delete shape does not distinguish explicit source helper, inline template instantiation or compiler outlining",
+      "physical_abi": "ESI owner / plain RET; destructor calls bind separately",
+      "destructor_call": "0x424ed0"
+    },
+    {
+      "address": "0x00406140",
+      "size": 18,
+      "span_end": "0x00406151",
+      "name": "ScriptViewerReleaseBullets",
+      "new_boundary": true,
+      "sha256": "f95b6ee81a8246cd1a8dafbc1e89bf0f16694ba19734effce0f2f0aa388e9e85",
+      "incoming_browser_calls": [
+        "0x40a754"
+      ],
+      "origin": "indeterminate; null-tolerant delete shape does not distinguish explicit source helper, inline template instantiation or compiler outlining",
+      "physical_abi": "ESI owner / plain RET; destructor calls bind separately",
+      "destructor_call": "0x405f70"
+    },
+    {
+      "address": "0x00405730",
+      "size": 18,
+      "span_end": "0x00405741",
+      "name": "ScriptViewerReleaseBomb",
+      "new_boundary": true,
+      "sha256": "546db6c21c1e1983c65eb0146cf2b78aa4b9316d036df842825c66b6fc77d355",
+      "incoming_browser_calls": [
+        "0x40a75f"
+      ],
+      "origin": "indeterminate; null-tolerant delete shape does not distinguish explicit source helper, inline template instantiation or compiler outlining",
+      "physical_abi": "ESI owner / plain RET; destructor calls bind separately",
+      "destructor_call": "0x405620"
+    },
+    {
+      "address": "0x0041AFB0",
+      "size": 18,
+      "span_end": "0x0041AFC1",
+      "name": "ScriptViewerReleaseItems",
+      "new_boundary": true,
+      "sha256": "4d1bddfad15299879fca91fffe845f6b2ba10464bf4a4f8c2c3072805685cdb8",
+      "incoming_browser_calls": [
+        "0x40a76a"
+      ],
+      "origin": "indeterminate; null-tolerant delete shape does not distinguish explicit source helper, inline template instantiation or compiler outlining",
+      "physical_abi": "ESI owner / plain RET; destructor calls bind separately",
+      "destructor_call": "0x41adf0"
+    },
+    {
+      "address": "0x0042B6D0",
+      "size": 18,
+      "span_end": "0x0042B6E1",
+      "name": "ScriptViewerReleasePopups",
+      "new_boundary": true,
+      "sha256": "68f2d3d2b10e1d59af8b8f871624b7acdb25dc0829d2d58a4cd05a844957c478",
+      "incoming_browser_calls": [
+        "0x40a775"
+      ],
+      "origin": "indeterminate; null-tolerant delete shape does not distinguish explicit source helper, inline template instantiation or compiler outlining",
+      "physical_abi": "ESI owner / plain RET; destructor calls bind separately",
+      "destructor_call": "0x42b570"
+    },
+    {
+      "address": "0x0040D730",
+      "size": 19,
+      "span_end": "0x0040D742",
+      "name": "ScriptViewerReleaseEnemies",
+      "new_boundary": true,
+      "sha256": "feb777ec956315908feb1b9addca7e291f41a30d04fd5cdeb3abcc2dbf05e599",
+      "incoming_browser_calls": [
+        "0x40a780"
+      ],
+      "origin": "indeterminate; null-tolerant delete shape does not distinguish explicit source helper, inline template instantiation or compiler outlining",
+      "physical_abi": "ESI owner / plain RET; destructor calls bind separately",
+      "destructor_call": "0x40d530"
+    },
+    {
+      "address": "0x004148E0",
+      "size": 18,
+      "span_end": "0x004148F1",
+      "name": "ScriptViewerReleaseGui",
+      "new_boundary": true,
+      "sha256": "19bc1d8f509d3af7af8857226140e8b98fec3ed75741feb987eb5f65018111e2",
+      "incoming_browser_calls": [
+        "0x40a73e"
+      ],
+      "origin": "indeterminate; null-tolerant delete shape does not distinguish explicit source helper, inline template instantiation or compiler outlining",
+      "physical_abi": "ESI owner / plain RET; destructor calls bind separately",
+      "destructor_call": "0x4145f0"
+    }
+  ],
+  "inventory_preflight": "fresh architecture export; preserved historical evidence-text mismatch at0x401100; all new rows independently checked",
+  "evidence_kind": "TH10-local target, temporary readOnly Ghidra and pinned dense decoding; compiler observations are separated below",
+  "ghidra": {
+    "mapped_region_start": "0x00401000",
+    "mapped_region_size": "0x64A80",
+    "mapped_region_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+    "temporary_functions": true,
+    "transaction_rolled_back": true,
+    "mapped_bytes_unchanged": true,
+    "heap_mib": 768,
+    "active_cpus": 1
+  },
+  "target_observations": {
+    "worker_vtable": {
+      "address": "0x004703E4",
+      "entry": "0x0044C100",
+      "entry_kind": "flag-controlled scalar cleanup, 34 bytes",
+      "destructor": "0x0044C130",
+      "destructor_size": 16
+    },
+    "unwind_members": [
+      {
+        "funclet": "0x004657D0",
+        "member_offset": "0x10",
+        "callee": "0x0044C130",
+        "owner": "browser worker"
+      },
+      {
+        "funclet": "0x004657DB",
+        "member_offset": "0x2C8",
+        "callee": "0x00401FF0",
+        "owner": "browser VM"
+      },
+      {
+        "funclet": "0x00465280",
+        "member_offset": "0x14",
+        "callee": "0x00401FF0",
+        "owner": "Player draw VM"
+      },
+      {
+        "funclet": "0x00465230",
+        "member_offset": "0x18",
+        "callee": "0x00401FF0",
+        "owner": "Popup VM"
+      }
+    ],
+    "unregister_interface": "ECX task; EDX chain; plain RET",
+    "initializer_first_call": "0x0040A351 to PlayerCreate 0x00425020",
+    "item_clear": {
+      "array_offset": "0x14",
+      "record_count_hex": "0x896",
+      "record_count_decimal": 2198,
+      "record_size": "0x3F0",
+      "clear_size": "0x21CEA0",
+      "minimum_manager_size": "0x21CEC0"
+    },
+    "browser_delete_order": [
+      "GUI",
+      "Player",
+      "Bullets",
+      "Enemies",
+      "Bomb",
+      "Items",
+      "Popups",
+      "clear browser global",
+      "VM member",
+      "worker member"
+    ]
+  },
+  "compiler_observations": [
+    {
+      "experiment": "real virtual worker destructor",
+      "result": "16-byte complete destructor exact; constructor234 remains exact with compiler-owned vtable"
+    },
+    {
+      "experiment": "Player draw-VM destructor",
+      "result": "normal and exception member cleanup represented by natural C++; larger Player destructor still nonexact"
+    },
+    {
+      "experiment": "delete helper captures pointer by const reference",
+      "result": "Update1296/1251; extra global-address exposure/reloads; not adopted"
+    },
+    {
+      "experiment": "delete helper captures pointer by value",
+      "result": "Update1251/1251 under the declared coupled profile; destructor may clear the source global without losing the allocation pointer"
+    },
+    {
+      "experiment": "uniform /GL /GS /EHs",
+      "result": "Update1251/1251 sized, but request receiver LEA ECX at+0x273 versus target EAX; no exact credit"
+    },
+    {
+      "experiment": "Enemy.cpp keeps its earlier /GL profile",
+      "result": "Update1251 and EnemySpawn577 both complete exact in the same image, twice"
+    },
+    {
+      "experiment": "uniform /EHa",
+      "result": "constructor286/234 and creator136/67; not adopted"
+    },
+    {
+      "experiment": "__stdcall destructor annotations",
+      "result": "three isolated declaration/definition/default controls all emit QAE symbols; ineffective annotation removed"
+    },
+    {
+      "experiment": "unregister __fastcall spelling",
+      "result": "complete114 bytes and RemoveAll82 preserved twice; does not resolve destructor argument-move order"
+    },
+    {
+      "experiment": "object order and real entry controls",
+      "result": "did not solve spawn-request register edge; acceptance_authority none"
+    }
+  ],
+  "inference": [
+    "A true virtual worker and true VM member lifetimes are supported bounded models; original names, inheritance, full class sizes and TU partition remain unknown.",
+    "Value versus reference results are consistent with address-exposure handling by this compiler; original template/macro spelling remains unknown."
+  ],
+  "nonexact_candidates": {
+    "browser_destructor": {
+      "candidate": 431,
+      "target": 412
+    },
+    "Player_destructor": {
+      "candidate": 341,
+      "target": 325
+    },
+    "GUI_destructor": {
+      "candidate": 579,
+      "target": 574
+    },
+    "Popup_destructor": {
+      "candidate": 240,
+      "target": 232
+    },
+    "Bullet_destructor": {
+      "candidate": 236,
+      "target": 236,
+      "ordinary_differences": 4
+    },
+    "Bomb_destructor": {
+      "candidate": 137,
+      "target": 137,
+      "ordinary_differences": 4
+    },
+    "Item_destructor": {
+      "candidate": 232,
+      "target": 216
+    },
+    "Enemy_destructor": {
+      "candidate": 299,
+      "target": 300
+    },
+    "PlayerCreate": {
+      "candidate": 67,
+      "target": 69
+    },
+    "RebuildPlayerOptions": {
+      "candidate": 2408,
+      "target": 2520
+    },
+    "browser_Draw": {
+      "target": 647,
+      "source_present": false
+    }
+  },
+  "unknowns": [
+    "Production data owners and class/TU declarations",
+    "Complete Windows i386 product closure, native runtime paths and original exception behavior",
+    "Origin of the seven nullable release entries and worker destructor"
+  ]
+}

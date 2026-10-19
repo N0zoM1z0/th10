@@ -175,7 +175,8 @@ struct CRITICAL_SECTION { void *DebugInfo; std::int32_t LockCount; std::int32_t 
             'contract': 'Wrapper observes receiver/count/ID order/publication, changes the published manager to a different complete live canonical owner to test receiver caching, and forwards every call to unchanged maintained MarkVmForDeletion. It never substitutes deletion behavior.'},
         'explicit_host_seams': {
             'dependency_lifecycle': ['AnmVmView ctor/dtor', 'AnmLoadedView ctor', 'AnmRenderManagerView ctor/dtor',
-                                     'AsciiManagerView ctor/dtor/GetSize', 'GuiView dtor', 'EnemyManagerView ctor/dtor'],
+                                     'AsciiManagerView ctor/dtor/GetSize', 'GuiView dtor', 'EnemyManagerView ctor/dtor',
+                                     'BulletManagerView dtor'],
             'constructor_callbacks': ['AllocateVm', 'InitializeVm', 'AddVmVariant0'],
             'rejecting_unused_boundaries': ['EnemyCancelBulletRecord', 'CreateVmAtWorldVariant0',
                 'EnemyEffectWaitNode UnknownVirtual0/1/2/3/4/6 and ApplyPatternCancel/ApplyClear',
