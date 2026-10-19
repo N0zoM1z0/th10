@@ -31,6 +31,17 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Loaded-ANM slot ReleaseAnm4477D0 closes **55 authored exact bytes**. Natural
+  post-Release slot reload and sizeof-array upper bound restore the whole body.
+  Two independent eight-TU /GL /GS colds pass297 complete bytes/all10 fields,
+  including actual Release242/all8 fields as an existing guard; all26 inputs
+  agree. OPT:NOREF retains this helper. Its sole target caller40BD80 remains
+  source-absent; incoming topology and original partition are open. Fresh
+  dispatcher14524 and ANM9948 remain nonexact. Target caller review exposes
+  an 18-entry table at40C358 beyond its1494-byte code boundary; review ownership
+  before reconstructing this larger script interpreter. The MIT ending-text
+  source is a hypothesis; do not copy its volatile casts or forced frame slots.
+  See [the complete proofs and scope](evidence/anm-release-slot/README.md).
 - Run follow-up recovers the shared opcode20 mode4 tail and target-observed
   state reload/flag-write ordering, but all source controls are restored.
   Common configuration storage yields4464/4480; six further same-state

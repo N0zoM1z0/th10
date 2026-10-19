@@ -2158,13 +2158,13 @@ int __stdcall AnmRenderManagerView::ServicePreloadedAnms()
 // deletes the 0x130-byte allocation.
 void AnmRenderManagerView::ReleaseAnm(int index)
 {
-    if (index < 0 || index >= 33)
+    if (index < 0 || index >= sizeof(loadedAnms) / sizeof(loadedAnms[0]))
         return;
     AnmLoadedView *loaded = loadedAnms[index];
     if (loaded != NULL)
     {
         loaded->Release();
-        delete loaded;
+        delete loadedAnms[index];
         loadedAnms[index] = NULL;
     }
 }

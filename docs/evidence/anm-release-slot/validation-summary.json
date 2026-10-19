@@ -1,0 +1,71 @@
+{
+  "date": "2026-10-20",
+  "scope": "ReleaseAnm55 new authored exact, actual Release242 existing callee guard",
+  "native": {
+    "canonical_unit": "anm-release-slot",
+    "independent_full_cold_links": 2,
+    "translation_units": 8,
+    "project_inputs": 26,
+    "new_exact_bytes_per_image": 55,
+    "existing_guard_bytes_per_image": 242,
+    "complete_compared_bytes_per_image": 297,
+    "linked_fields_per_image": 10,
+    "incoming_source_caller": "open; helper retained by OPT:NOREF"
+  },
+  "host": {
+    "command": "nice -n 10 scripts/repo-python scripts/test-anm-release-slot.py --sanitize",
+    "returncode": 0,
+    "cached_pointer_mutants_rejected": 1,
+    "sanitizers": "address,undefined,leak detection",
+    "limits": "explicit synthetic owner/Release/destructor roles; no native layout or target runtime claim"
+  },
+  "pin_review": {
+    "whole_file_reversal_verified": true,
+    "extracted_rng_helper_unchanged": true,
+    "normalization_and_rejection_policy": "unchanged",
+    "focused_effect_assertions": 843,
+    "eol_pin_controls": 19
+  },
+  "ci": {
+    "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+    "returncode": 0,
+    "completed_checks": 80,
+    "log_sha256": "be9ff6714b289e5db4ec0eb9aba1b648c2f862a4d1d4a0707553a2fc16981afe",
+    "initial_failure": "Shared AnmManager.cpp LF acceptance pin was stale. Reversed only the two source statements to reproduce the complete old input, confirmed unchanged extracted RNG helper, and updated that normalized pin with a review record; focused tests and fresh full CI pass."
+  },
+  "final_checks": {
+    "focused_canonical_oracle": "exact55/all2 fields",
+    "verify-toolchain --execute": "passed in preflight",
+    "verify-toolchain --check": "passed",
+    "validate-tracking": "passed1178 exact",
+    "progress": "current60789/270076 authored bytes",
+    "source-completeness AnmManager/Enemy": "passed196 authored owners, all source-present",
+    "git diff --check": "passed"
+  },
+  "local_ghidra": {
+    "transport": "local headless readOnly",
+    "target_and_full_mapped_text_attestation": "passed before/after both bounded reviews",
+    "heap_mib": 768,
+    "active_processors": 1
+  },
+  "cleanup": {
+    "removed_items": 12,
+    "removed_bytes": 8161149,
+    "canonical_carrier": "complete new eight-TU AnmReleaseSlot build retained",
+    "first_independent_proof": "PE/MAP/PDB/alias archive retained under build/gpt-6.1-sol/th10-enemy-interface-20261020/proof-one",
+    "analysis_retained": "compact source overlays/slot controls/pin reversal, two proofs, bounded target caller observations and next-owner triage",
+    "preexisting_d3d": "untouched; excluded from staging"
+  },
+  "progress": {
+    "authored_functions": 729,
+    "authored_exact_functions": 350,
+    "authored_owned_bytes": 270076,
+    "authored_exact_bytes": 60789,
+    "percentage": 22.51
+  },
+  "open_gates": [
+    "whole Windows i386 product/runtime",
+    "semantic dual Oracles",
+    "portability"
+  ]
+}

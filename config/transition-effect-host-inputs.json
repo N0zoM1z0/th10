@@ -5,7 +5,7 @@
   "sha256_lf": {
     "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
     "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
-    "src/AnmManager.cpp": "a3952d13f53d5902854ba0fb58e9d126e4ef84a6ef45756831c2eab7f1aed757",
+    "src/AnmManager.cpp": "efafb67f47dbe8dab6ae9c387928053944405a6f0f4a0938fead3bcc286aa052",
     "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
@@ -128,5 +128,17 @@
       }
     },
     "evidence": "docs/evidence/effect-initializer/README.md"
+  },
+  "reviewed_release_slot_update": {
+    "date": "2026-10-20",
+    "starting_head": "3b494cb",
+    "input": "src/AnmManager.cpp",
+    "old_sha256_lf": "a3952d13f53d5902854ba0fb58e9d126e4ef84a6ef45756831c2eab7f1aed757",
+    "new_sha256_lf": "efafb67f47dbe8dab6ae9c387928053944405a6f0f4a0938fead3bcc286aa052",
+    "whole_file_reversal_verified": true,
+    "extracted_rng_helper_unchanged": true,
+    "extracted_rng_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "reason": "Only ReleaseAnm slot deletion re-read and sizeof-array bound change. Reversing both statements reproduces the entire prior input; the extracted AnmRandomU32InRange body, timer/viewport headers, all other dependencies and strict CRLF-to-LF rejection policy are unchanged. Historical raw fingerprints are provenance only.",
+    "evidence": "docs/evidence/anm-release-slot/README.md"
   }
 }
