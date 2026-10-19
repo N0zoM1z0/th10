@@ -1,0 +1,62 @@
+{
+  "reference_url": "https://github.com/levzzz5154/th10-decomp/blob/4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a/matching2/msvc/src/game/title/replay_select_update.cpp",
+  "reference_use": "Documented case-zero fallthrough inspired the original one-line deletion/model; exact reference retrieved for provenance verification; no implementation copied",
+  "license_status": "Resolved source-provenance gate: verified same-commit root MIT notice, no overriding license/notice paths found in exact ancestor inventory, and no file-local licensing notice in directly fetched replay source. Original deletion/model do not copy reference implementation.",
+  "frozen_candidate_manifest_sha256": "f8f83a35f75f8e750c6575f56147d4c6befd775545bd645d2043cf535d16d95e",
+  "preserved_files": {
+    "reconstruct.py": "558da1df3a45f24bb9bea88069fe04988c7cd049891fb914e4f5adfbad884c0a",
+    "model.py": "2d756adb3a5222e47fbb9b026928d547e35d9bad1f240f94a34889961de5e741",
+    "candidate.patch": "8b73712ceb863ae1f92054a63153c77ca67c9bf80af47dc47914dfa7542bdcb2"
+  },
+  "adapted_test_original_sha256": "91d24c5283166b7bd88744e1907777f77f4144b4fa4f74102e009618ac1c0eb2",
+  "adapted_test_change": "Compare reconstructed candidate to pinned hashes instead of distributing full candidate source/header; all other test logic preserved",
+  "local_source_provenance_input_hashes": {
+    "REPLAY_INITIALIZE_FALLTHROUGH.md": "f71e32aa90e4fdbbba5ad323332e238f141801fd9fce2f79908da5ebe8138536",
+    "frontend-replay-current-metadata-receipt.json": "ae0c4464df024cc9ab42c9867fbe26706bafafa7b6146845131045f7359b04dc"
+  },
+  "license_evidence": {
+    "preserved_anm_notice_sha256": "8dba0c16cce6c1ad871d978178a78d92f40ae44eb483443486e65bea5a1cc3db",
+    "root_license_git_blob": "0706df312064fec49fd1a57b311cb92d888acc2d",
+    "root_license_extracted_sha256": "27f6e319fa95b7f939b5fd2154fd2568fa35e1aac8d784940ecb3838e09c60ae",
+    "replay_reference_notice_sha256": "8d11d3855c52e26a94ee7742d53587a8dbbb25b4d341c8e6ec3766864f4046b1",
+    "copyright": "Copyright (c) 2026 levzzz",
+    "same_commit_root_license_verified": true,
+    "replay_path_applicability_verified": true,
+    "applicability_evidence": {
+      "commit": "4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a",
+      "cached_complete_tree_sha256": "f98805e34ef7dae7ea282235e9a469df1a10a3abaa8200ee1ae024eeb4e73744",
+      "tree_entries": 11725,
+      "truncated": false,
+      "ancestor_directories": [
+        "",
+        "matching2",
+        "matching2/msvc",
+        "matching2/msvc/src",
+        "matching2/msvc/src/game",
+        "matching2/msvc/src/game/title"
+      ],
+      "filename_tokens_checked": [
+        "licen",
+        "copying",
+        "copyright",
+        "notice"
+      ],
+      "matching_notice_paths": [
+        {
+          "path": "LICENSE",
+          "git_blob": "0706df312064fec49fd1a57b311cb92d888acc2d"
+        }
+      ],
+      "replay_source_git_blob": "f70d8c4ce048ccc57811a86968a6e7f56cabf808",
+      "replay_source_bytes": 8210,
+      "replay_source_sha256": "acc1548fea383ddce71ac90e6106ac8c6695f17d9ed19547fd6ca1de2c05dca5",
+      "connector_response_sha256": "56af3d5a0ae667a03cfc0ad113164e3108ebdc88b92a5f5c7d2622bb855df9c9",
+      "file_header_inspected": true,
+      "file_local_license_notice_found": false,
+      "result": "Root MIT is the sole license/notice identified in the file and explicit ancestor-path checks; no override found. This is documented source provenance, not a broader legal warranty."
+    },
+    "prior_gate_resolution": "Earlier unverified path applicability and open deployment-licensing language is superseded by this direct source/header and complete cached-tree check. Separate deployment authority remains required.",
+    "reference_notice_historical_caveat": "REFERENCE_LICENSE.txt is retained byte-for-byte; its earlier path-applicability caveat is historical and superseded by this evidence and README."
+  },
+  "archive_authorship": "Original one-line deletion of maintained source and original abstract model/tests; no upstream reference implementation copied. Citation records source inspiration, not copied implementation."
+}

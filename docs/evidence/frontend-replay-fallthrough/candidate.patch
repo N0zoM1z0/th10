@@ -1,0 +1,10 @@
+--- baseline/src/FrontEnd.cpp
++++ candidate/src/FrontEnd.cpp
+@@ -2095,7 +2095,6 @@
+         FindClose(search);
+         _chdir("../");
+         controller->replayListOffset = 0;
+-        break;
+     }
+ 
+     case FRONT_END_REPLAY_OPENING:

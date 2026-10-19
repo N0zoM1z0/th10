@@ -1,0 +1,360 @@
+{
+  "scope": "Sanitized archival summary; not a rerun recipe or authorization",
+  "actual_receipt_sha256": "de0ddb09f203f5caddc830abcf73ccebe392d1d0a1b667c1be53bf8f872e2318",
+  "command_id": "repository-command:18cef197bef94dad84e6ebfa21188d76",
+  "finished_at": "2026-10-18T23:41:26.807597+00:00",
+  "state": "completed",
+  "exit_code": 0,
+  "head_before": "b243844a19da5ac0e61d359a1cef6c5ea0be956b",
+  "head_after": "b243844a19da5ac0e61d359a1cef6c5ea0be956b",
+  "head_relation": "unchanged",
+  "status": "exploratory_complete",
+  "new_cold_link_calls": 2,
+  "baseline_reused": false,
+  "baseline": {
+    "owner": {
+      "complete": true,
+      "sha256": "4fd0c8281e8df732d331ad8909a8f26199990b13a06cd8f21639a44c21a294ac",
+      "size": 1488,
+      "start": 4218112
+    },
+    "entry": {
+      "address": "0x004022D0",
+      "object": "source.ltcg.obj",
+      "requested": "?Update@FrontEndControllerView@@QAEHXZ",
+      "rva": 8912,
+      "size": 368,
+      "symbol": "?Update@FrontEndControllerView@@QAEHXZ"
+    },
+    "dependencies_sha256": "894dc925ca55c58dbdfeff01d7f3970b45fcb4b756e83dc55f5fdd7c48c84326"
+  },
+  "candidate": {
+    "owner": {
+      "complete": true,
+      "sha256": "df0e0c4a0ee65cb732043c8118d8dc7d35bf0b257746c91f276adc81883081f3",
+      "size": 1488,
+      "start": 4218112
+    },
+    "entry": {
+      "address": "0x004022D0",
+      "object": "source.ltcg.obj",
+      "requested": "?Update@FrontEndControllerView@@QAEHXZ",
+      "rva": 8912,
+      "size": 368,
+      "symbol": "?Update@FrontEndControllerView@@QAEHXZ"
+    },
+    "dependencies_sha256": "894dc925ca55c58dbdfeff01d7f3970b45fcb4b756e83dc55f5fdd7c48c84326"
+  },
+  "difference": {
+    "baseline_unmatched_bytes": 0,
+    "candidate_unmatched_bytes": 0,
+    "classification_complete": false,
+    "linkage_difference_bytes": null,
+    "ordinary_difference_bytes": null,
+    "positional_different_bytes": 228,
+    "positional_overlap_bytes": 1488,
+    "raw_equal": false
+  },
+  "source_overlay": {
+    "src/FrontEnd.cpp": {
+      "baseline_sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+      "candidate_sha256": "d50c95e092e8eba62f77ee25f2abf16a812ac1e5f21708edadcb1cb54c2681f7"
+    }
+  },
+  "known_target_physical_owner_bytes": 1492,
+  "cfg_observation": "terminal UNKNOWN; closed; no support for fallthrough",
+  "anatomy": "census_complete; unique structural layouts; linear decode only; no semantic or exactness claim",
+  "retained_image_canonical_guards": "Both exact on retained candidate image; no rebuild; not Replay exactness or Factory acceptance",
+  "adoption_authority": "none",
+  "target_exactness_tested": false,
+  "runtime_executed": false,
+  "restart_allowed": false,
+  "interpretation": "228 baseline/candidate positional differences are unclassified and are not target mismatches or an exactness improvement.",
+  "cfg_receipt": {
+    "command_id": "repository-command:8b5e56435c344af08d2845f493f3154f",
+    "receipt_sha256": "f3df1d6f6390e9be919629d1720c4f016f55d21a20196b22b603e420ac5f1fae",
+    "state": "completed",
+    "exit_code": 0,
+    "status": "observation_complete",
+    "entry0_reaches_entry1": null,
+    "unresolved_reasons": [
+      "unsupported_form"
+    ],
+    "source_state_mapping_verified": false,
+    "initialization_completion_verified": false,
+    "disposition": "terminal UNKNOWN; closed; do not retry; no supporting fallthrough evidence"
+  },
+  "anatomy_receipt": {
+    "command_id": "repository-command:a750eef581a543f28cbb5913d59b6f7b",
+    "receipt_sha256": "580daac0d97793d29af34b1ba6b784fd4323c3a7d2adfca6dcf5564589e671ff",
+    "state": "completed",
+    "exit_code": 0,
+    "head_before": "b243844a19da5ac0e61d359a1cef6c5ea0be956b",
+    "head_after": "b243844a19da5ac0e61d359a1cef6c5ea0be956b",
+    "clean_before_after": true,
+    "result": {
+      "adoption_authority": "none",
+      "failure": "none",
+      "generated_attribution_retained": true,
+      "generated_guard_binding_verified": false,
+      "linear_decode_only": true,
+      "linkage_classification_complete": false,
+      "owners": {
+        "baseline": {
+          "all_table_targets_internal_starts": true,
+          "anatomy": "unique_structural_prefix",
+          "candidate_layout_count": 1,
+          "category_counts_and_bytes": {
+            "address": [
+              21,
+              97
+            ],
+            "branch": [
+              47,
+              156
+            ],
+            "call": [
+              53,
+              268
+            ],
+            "compare": [
+              31,
+              94
+            ],
+            "fpu": [
+              0,
+              0
+            ],
+            "integer": [
+              45,
+              119
+            ],
+            "move": [
+              139,
+              607
+            ],
+            "other": [
+              3,
+              7
+            ],
+            "push_pop": [
+              51,
+              113
+            ],
+            "return": [
+              1,
+              3
+            ]
+          },
+          "complete_prefix_linear_decode": true,
+          "decoded_prefix_bytes": 1464,
+          "fixed_table_bytes": 24,
+          "full_executable_partition_verified": false,
+          "gap_contents_classified": false,
+          "gap_control_flow_safety_verified": false,
+          "indexed_tail_reference_count": 1,
+          "owner_sha256": "4fd0c8281e8df732d331ad8909a8f26199990b13a06cd8f21639a44c21a294ac",
+          "owner_start": 4218112,
+          "prefix_instruction_count": 391,
+          "total_bytes": 1488,
+          "unclassified_gap_bytes": 0
+        },
+        "candidate": {
+          "all_table_targets_internal_starts": true,
+          "anatomy": "unique_structural_prefix",
+          "candidate_layout_count": 1,
+          "category_counts_and_bytes": {
+            "address": [
+              22,
+              104
+            ],
+            "branch": [
+              46,
+              151
+            ],
+            "call": [
+              53,
+              268
+            ],
+            "compare": [
+              31,
+              94
+            ],
+            "fpu": [
+              0,
+              0
+            ],
+            "integer": [
+              45,
+              119
+            ],
+            "move": [
+              138,
+              605
+            ],
+            "other": [
+              3,
+              7
+            ],
+            "push_pop": [
+              51,
+              113
+            ],
+            "return": [
+              1,
+              3
+            ]
+          },
+          "complete_prefix_linear_decode": true,
+          "decoded_prefix_bytes": 1464,
+          "fixed_table_bytes": 24,
+          "full_executable_partition_verified": false,
+          "gap_contents_classified": false,
+          "gap_control_flow_safety_verified": false,
+          "indexed_tail_reference_count": 1,
+          "owner_sha256": "df0e0c4a0ee65cb732043c8118d8dc7d35bf0b257746c91f276adc81883081f3",
+          "owner_start": 4218112,
+          "prefix_instruction_count": 390,
+          "total_bytes": 1488,
+          "unclassified_gap_bytes": 0
+        },
+        "target": {
+          "all_table_targets_internal_starts": true,
+          "anatomy": "unique_structural_prefix",
+          "candidate_layout_count": 1,
+          "category_counts_and_bytes": {
+            "address": [
+              18,
+              88
+            ],
+            "branch": [
+              45,
+              145
+            ],
+            "call": [
+              47,
+              238
+            ],
+            "compare": [
+              30,
+              103
+            ],
+            "fpu": [
+              0,
+              0
+            ],
+            "integer": [
+              36,
+              99
+            ],
+            "move": [
+              143,
+              680
+            ],
+            "other": [
+              2,
+              4
+            ],
+            "push_pop": [
+              49,
+              106
+            ],
+            "return": [
+              1,
+              3
+            ]
+          },
+          "complete_prefix_linear_decode": true,
+          "decoded_prefix_bytes": 1466,
+          "fixed_table_bytes": 24,
+          "full_executable_partition_verified": false,
+          "gap_contents_classified": true,
+          "gap_control_flow_safety_verified": false,
+          "indexed_tail_reference_count": 1,
+          "owner_sha256": "7b1ba7d90d2e21fc556f08f5e43db4491cce2dee51d6a40082d8f4c0ced8d134",
+          "owner_start": 4396480,
+          "prefix_instruction_count": 371,
+          "reviewed_alignment_bytes": 2,
+          "total_bytes": 1492,
+          "unclassified_gap_bytes": 0
+        }
+      },
+      "pins_verified": true,
+      "schema": "replay_owner_anatomy_v1",
+      "semantic_complete": false,
+      "status": "census_complete",
+      "structural_pattern_only": true,
+      "target_exactness_tested": false
+    }
+  },
+  "guard_receipt": {
+    "command_id": "repository-command:7650384f5d4b48ff98e1f4bd106c27c8",
+    "receipt_sha256": "c39c6804ab4f5c520dda7976d2f49df4d8210d595648ac3e7c876eca5ba2c861",
+    "state": "completed",
+    "exit_code": 0,
+    "cold_links": 0,
+    "image_unchanged": true,
+    "guards": [
+      {
+        "decoded_bytes": 2452,
+        "image_sha256": "dcd8ce3e3d6645026a0341625224390bbbdc5d26d48501d571008125f984292f",
+        "linkage_count": 61,
+        "matched_bytes": 2452,
+        "normalization_complete": true,
+        "owner": {
+          "complete": true,
+          "sha256": "b378802a94aae3f5198804ecdd48059bd8146f0ed40b00d7a0d6cd4116bddf0d",
+          "size": 2452,
+          "start": 4211552
+        },
+        "raw_equal": false,
+        "report_sha256": "1495d402486552cdeaf5829dde59fd60f06243bd086ae54d7fc620cbac0419b1",
+        "result": "exact",
+        "size": 2452,
+        "unit": "frontend-keyconfig-display"
+      },
+      {
+        "decoded_bytes": 93,
+        "image_sha256": "dcd8ce3e3d6645026a0341625224390bbbdc5d26d48501d571008125f984292f",
+        "linkage_count": 0,
+        "matched_bytes": 93,
+        "normalization_complete": true,
+        "owner": {
+          "complete": true,
+          "sha256": "819a3df48392e782e0c6da243a93c3423461f1ed18edcb60e2c3774e4b64742e",
+          "size": 93,
+          "start": 4199056
+        },
+        "raw_equal": true,
+        "report_sha256": "69124a84bd988647ec33ad38b4932d31ae47ad05d97858f23cd403e6f1f2b406",
+        "result": "exact",
+        "size": 93,
+        "unit": "frontend-practice-unlock"
+      }
+    ],
+    "primary_failure_phase": null,
+    "postcheck_failure_phase": null,
+    "runtime_executed": false,
+    "adoption_authority": "none",
+    "restart_allowed": false
+  },
+  "operational_note": {
+    "failed_metadata_preflight": {
+      "command_id": "repository-command:f4bcf78af0a04bffb6a1b74053be09f8",
+      "receipt_sha256": "e5845e617ba80b005d8adc89d1891a78a3e8b64c549c89e36dff38b3e8f22e29",
+      "state": "completed",
+      "exit_code": 1
+    },
+    "reported_failure_stage": "finally_postpins; primary cause not established by that receipt",
+    "corrected_metadata_preflight": {
+      "command_id": "repository-command:822830aaab6547069d0dcb5b0ebbb274",
+      "receipt_sha256": "ac32ae6a9c3e7caa46545aca8060cb2ab19aef0b3f03895ac982775eae21d75a",
+      "state": "completed",
+      "exit_code": 0
+    },
+    "local_mechanics_finding": "Original audit rejected the fixed Git subprocess constructor opening /dev/null. Local reproduction justified an exact device/flags/constructor-scope exception and separate primary/postcheck labels; original failed receipt preserved. No target/decoder predicate broadened.",
+    "local_review_sha256": "8710a9898124efa7603e1458c56dc2cda820c3dc2f357ca6e1fc86eca4fec14b"
+  },
+  "disposition": "Parked unadopted hypothesis: no target fallthrough/semantic proof or Replay exactness; independent guards passing do not authorize adoption",
+  "prior_proposal_manifest_sha256": "f739440fb01250bda39941095ea5867a7db6a8511acde9cc3fb7916d126f98ed"
+}
