@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-20",
+  "scope": "Whole Run negative controls; production source and all42 project inputs restored",
+  "new_authored_exact_bytes": 0,
+  "native_controls": {
+    "source_base": "37e94db",
+    "new_control_count": 9,
+    "full_cold_baselines": 2,
+    "diagnostic_cached_controls": 7,
+    "translation_units": 14,
+    "project_inputs": 42,
+    "target_owned_bytes": 4480,
+    "four_configuration_fields_candidate_bytes": 4464,
+    "further_shared_state_candidate_bytes": 4456,
+    "opaque_cursor_raw_equal_to_shared_state": true,
+    "authority": "none; whole parent is nonexact, no partial-case credit"
+  },
+  "target_review": {
+    "tool": "local read-only Ghidra",
+    "target_identity": "passed",
+    "full_mapped_text_hash": "passed",
+    "mapped_bytes_unchanged": "passed",
+    "jvm_heap_mib": 768,
+    "active_processors": 1
+  },
+  "focused_oracle": {
+    "unit": "frontend-find-script",
+    "result": "exact",
+    "complete_bytes": 70,
+    "exhaustive_linked_fields": 2,
+    "new_credit": 0
+  },
+  "preflight_toolchain_execute": "passed normal COFF, LTCG, resources, PE32 link",
+  "final_checks": {
+    "verify-toolchain --check": "passed",
+    "validate-tracking": "passed",
+    "progress": "current",
+    "git diff --check": "passed"
+  },
+  "ci": {
+    "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+    "returncode": 0,
+    "completed_checks": 79,
+    "log_sha256": "a18ca0d0c1d7a359e3c6bac70bcba5d0f583c820fd91eeb4b9d0b99d3fbfeeab",
+    "scope": "Restored production tree; target-independent host/structural checks, no target runtime claim."
+  },
+  "cleanup": {
+    "removed_files": 204,
+    "removed_bytes": 18332503,
+    "retained_native_bytes": 1254730,
+    "retained_native": "typed-stage and shared-all PE/MAP/PDB only; source overlays and bounded analysis evidence retained privately",
+    "canonical_artifacts": "unchanged",
+    "preexisting_d3d": "untouched and excluded from staging"
+  },
+  "unchanged_progress": {
+    "authored_owned_bytes": 270076,
+    "authored_exact_bytes": 60734,
+    "percentage": 22.49
+  }
+}
