@@ -2545,3 +2545,27 @@ closed. EnemyBeginSpell itself remains2476/2432, with771/2032 ordinary comparabl
 positions in that dated context, and receives no credit. Reference
 three-call/rocking/void-timer ideas are corroborative only.
 No draw-core, lifecycle, Fog/easing, fragment, runtime, semantic or port credit.
+
+## Spell lifetime and compiler-visibility review (2026-10-19)
+
+The [fresh review](evidence/enemy-spell-lifetimes/README.md) leaves source,
+boundaries, origins and exact ledgers unchanged. Four-TU ECL and ten-TU Stage
+graphs emit the same normalized2476-byte spell sequence against2432. Ordinary
+child-return and node-owner-return controls emit2472 and2484; the latter models
+the target success-tail re-read and improves diagnostic alignment, but remains
+nonexact and is restored. Moving the shared initializer's flags read before
+short metadata stores is byte-neutral: native already hoists the load. Three
+separately scoped name-copy forms are also neutral and restored. These are
+bounded observations, not an excuse to repeat old uniform-copy or per-arm
+lifecycle source experiments.
+
+Target and native AnmVmView::Initialize match all273 raw bytes, contain no calls
+and no EDX-defining instructions. Current shared initializer callers exploit
+that preservation, holding the VM in EDX and emitting197 bytes; target uses
+EAX/ECX/EBX inputs with three other preserved registers and203 bytes. Embedded
+initializer is likewise200/202, EDX versus target ESI receiver. The full spell
+residual therefore includes a concrete compiler-visibility/register-contract
+gap; original physical partition and interprocedural policy remain unknown.
+Link-target identity alone cannot make these unlike interfaces exact. No fake
+argument, artificial clobber, profile sweep, partial credit or runtime claim.
+One minimal baseline image is retained; duplicate controls are removed.

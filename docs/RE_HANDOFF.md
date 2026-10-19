@@ -151,6 +151,17 @@ scratch paths, or build hashes into this file.
   Factory/constructor/init/loader/destructor, Fog/easing and draw cores remain
   nonexact. Product/runtime, published-camera aliasing, semantics and port stay
   open. Existing source-state tests remain bounded; no full native cohort replay.
+- The [spell lifetime review](evidence/enemy-spell-lifetimes/README.md) leaves
+  source unchanged and adds no exact credit. The genuine four-TU ECL baseline
+  and ten-TU Stage graph have identical normalized2476-byte spell sequences.
+  Child-return controls emit2472/2484 versus2432; flags-read order and distinct
+  copy forms are byte-neutral and restored. Target/native Initialize are both
+  raw-equal273, call-free and preserve EDX, but target callers save the VM
+  through a different register chain. Shared initializer197/203 and embedded
+  initializer200/202 remain open. Original interprocedural visibility/partition
+  is unknown; do not add fake clobbers/arguments or repeat cursor/caller sweeps.
+  Rotate to another complete owner; source-absent GameEnterMenuState4045B0 is
+  a bounded real-GameManager caller opportunity using its observed timer.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our
