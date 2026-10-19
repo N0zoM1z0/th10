@@ -1,5 +1,11 @@
 # Transition-effect fixed native observation
 
+The [2026-10-20 constructor review](evidence/effect-constructor/README.md)
+now closes the complete82-byte factory and both fields through natural
+constructor-owned reset. Two cold links also retain591 existing guard bytes.
+Initializer396 and cleanup127 remain nonexact. Older factory88/82 observations
+below retain their original source binding and are superseded for current state.
+
 The observations below retain their original source binding. The later
 [2026-10-19 allocator/scheduler review](evidence/effect-allocation-abi/README.md)
 supersedes the nothrow/caller-clean hypotheses: ordinary-new factory remains88/82,

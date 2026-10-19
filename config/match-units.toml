@@ -21848,3 +21848,19 @@ target_address = 4441024
 size = 68
 linkages = [{ offset = 53, type = "REL32", symbol = "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z", target = 4439456 }]
 owner_visibility = "static"
+
+[units.transition-effect-factory]
+artifact_kind = "linked-pe"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["StageCreateTransitionEffect"]
+symbol = "?StageCreateTransitionEffect@@YGPAXHHHIII@Z"
+target_address = 4442288
+size = 82
+linkages = [{ offset = 4, type = "REL32", symbol = "??2@YAPAXI@Z", target = 4531347 }, { offset = 72, type = "REL32", symbol = "?Initialize@TransitionEffectView@@QAEXHHHIII@Z", target = 4442480 }]

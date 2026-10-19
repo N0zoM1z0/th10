@@ -2622,3 +2622,36 @@ reversal proof for calling-convention annotations alone. Ordinary-new host
 allocation is an explicit failure/prefill seam, not a native exception Oracle.
 The MIT sparse reference commitc6791d82 suggests hypotheses; target facts and
 canonical comparisons establish acceptance. See [the full scoped evidence](evidence/effect-allocation-abi/README.md).
+
+## Constructor-owned transition reset closes factory (2026-10-20)
+
+StageCreateTransitionEffect43C8B0 now reproduces all82 owned bytes and its two
+REL32 fields in two independent cold14-TU Gui updater links, with42 identical
+CPP/header hashes and different PE/PDB identities. The existing reviewed
+boundary/authored confidence remain unchanged;82 bytes are new exact credit,
+with no denominator or independent constructor credit. Existing eight family
+units retain591 bytes/all24 fields in both images, for673 bytes/all26 fields.
+
+The source simply moves whole-owner zero-fill and flags2 into an ordinary
+out-of-class constructor. Its existing timer member constructor still performs
+the one prezero flags+0x40 read/mask. Factory allocation/null-check/Initialize
+retain all real operands and callee-pop model. This natural new-expression
+construction restores target XOR EAX,EAX before null test, pointer/lifetime
+schedule and one shared RET20. No extra timer write, fake result, forced inline,
+profile change or static-address Oracle relaxation is needed. This supersedes
+factory88/82 at46eddb2, not the initializer396 or cleanup127 nonexact states.
+
+The pinned MIT reference supplied a constructor-ownership hypothesis, not TH10
+proof; its redundant timer statement/noinline controls are not copied. A full
+byte match does not uniquely identify original class/TU/constructor partition.
+Fresh read-only local Ghidra attests all mapped text, complete factory82 and
+nine entry references. The field at+4 binds ordinary allocator452493; +72 binds
+initializer43C970. Allocation exception/failure handling, inherited prezero timer
+object lifetime, global ownership and whole-product/runtime remain open.
+
+Actual-source host843 assertions and the moved constructor-scoped init_flags
+control pass. Header is included only by TransitionEffect.cpp; shared dependency
+pins and their rejection policy do not change. Whole major-owner previews in
+this retained Gui carrier remain nonexact, and are not a basis for changing
+their canonical profiles or granting partial credit. See [the complete scoped
+proof](evidence/effect-constructor/README.md).

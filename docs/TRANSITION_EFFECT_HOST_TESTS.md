@@ -75,3 +75,11 @@ Three dependency LF pins change only for reviewed calling-convention annotations
 full-file reversal proof is recorded. All843 baseline assertions, the focused
 init_flags negative control and all19 unchanged EOL guards pass. This host seam
 does not establish native ordinary-new exception or failure behavior.
+
+The2026-10-20 [constructor-ownership review](evidence/effect-constructor/README.md)
+moves existing zero-fill/flags2 to the real production constructor. The host
+fixture continues to compile that actual body through its unchanged placement
+construction/prefill seam. All843 baseline assertions pass. The existing
+init_flags mutation selects the constructor body and still requires the exact
+FACTORY_ZERO_FLAGS_UNKNOWN assertion/exit86; no new seam or dependency pin is
+introduced. Native82-byte factory equality is independent of host test success.

@@ -183,19 +183,30 @@ scratch paths, or build hashes into this file.
   Source case order0/1/2/3/5/4/6/7/8 matches the actual physical arms. Host843,
   focused flags mutation and19 unchanged EOL controls pass. The two callbacks
   add161 reviewed authored bytes; initializer ownership357+3+36=396 adds39 more
-  denominator bytes and zero parent exact credit. Factory88/82, initializer396
-  scheduling and cleanup127 remain nonexact. Allocation handlers/exceptions,
+  denominator bytes and zero parent exact credit. At that source binding the
+  factory was88/82; the constructor review below supersedes that result.
+  Initializer396 scheduling and cleanup127 remain nonexact. Allocation handlers/exceptions,
   prezero timer lifetime, private compiler context and product/runtime stay open.
   Revisit these owners with new real lifetime/visibility evidence; do not repeat
   nothrow, callback-keyword or case-order controls. The old factory source flow
   change is byte-neutral and does not solve its result-register lifetime.
-  New hypothesis for the next unit: the pinned reference Screen header puts
-  zero-fill/flags2 in its real constructor, while this source still places them
-  in the factory after member construction. Review a natural constructor-owned
-  initialization model against TH10 before adopting it; do not copy its extra
-  timer-flag statement or noinline controls. No such source change is made here.
-  The five other update callbacks remain nonexact in this retained graph; no
-  further callback or partial-body credit is added.
+- [Constructor-owned transition initialization](evidence/effect-constructor/README.md)
+  now closes **82 authored exact bytes** at43C8B0, without changing the existing
+  boundary/origin/denominator. An ordinary out-of-class constructor owns the
+  existing zero-fill/flags2 after timer member construction. This naturally
+  restores early zero-result/null-test lifetime, argument schedule and shared
+  RET20; no extra timer statement, forced outlining/inline or synthetic result.
+  Two independent cold14-TU links with42 identical inputs pass673 complete
+  bytes/all26 fields, including591 existing guard bytes. Host843 and the updated
+  constructor-scoped flags mutation pass; shared pins/dependencies are unchanged.
+  All source bodies and interfaces outside this family remain unchanged.
+  Only TransitionEffect.cpp includes the header; no repeated StageDraw/cohort
+  build is required. No standalone constructor or initializer credit is added.
+  Allocation exceptions, prezero timer lifetime and product/runtime stay open.
+  Same retained carrier previews of Enemy dispatch, ANM ExecuteScript and both
+  large Gui owners remain nonexact; their canonical contexts are unchanged.
+  Rotate next to the ANM/Enemy major-owner frontier with fresh lifetime evidence;
+  do not repeat nothrow, constructor-ownership, case-order or generic caller sweeps.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

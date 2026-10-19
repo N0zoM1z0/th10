@@ -22,6 +22,7 @@ struct TransitionEffectView
     int released;
     AnmVmTimerView timer;
 
+    TransitionEffectView();
     void Initialize(int drawPriority, int effectKind, int duration,
         unsigned int first, unsigned int second, unsigned int third);
     void Release();

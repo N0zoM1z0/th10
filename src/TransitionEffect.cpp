@@ -359,6 +359,14 @@ void TransitionEffectView::Initialize(int drawPriority, int effectKind, int dura
     value2 = third;
 }
 
+// Existing timer member construction precedes the complete observed reset.
+// This natural constructor model does not identify the original class/TU.
+TransitionEffectView::TransitionEffectView()
+{
+    memset(this, 0, sizeof(*this));
+    flags |= 2u;
+}
+
 // Target43C8B0 calls the one-size ordinary allocator at452493.
 // Historical compiler output determines the observed null-return branch;
 // allocation-handler and runtime behavior remain independent obligations.
@@ -368,8 +376,6 @@ void *__stdcall StageCreateTransitionEffect(int drawPriority, int kind, int fram
     TransitionEffectView *effect = new TransitionEffectView;
     if (effect != NULL)
     {
-        memset(effect, 0, sizeof(*effect));
-        effect->flags |= 2u;
         effect->Initialize(drawPriority, kind, frames, value0, value1, value2);
     }
     return effect;

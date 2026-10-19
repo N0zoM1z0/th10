@@ -1,0 +1,102 @@
+{
+  "starting_head": "46eddb2",
+  "completed_utc": "2026-10-19T16:22:54.242257+00:00",
+  "canonical_factory": {
+    "artifact_kind": "linked-pe",
+    "candidate_address": "0x00429110",
+    "capstone_version": "5.0.6",
+    "compared_size": 82,
+    "data_spans": [],
+    "decoded_bytes": 82,
+    "extent_source": "pdb-section-contribution",
+    "first_differences": [],
+    "image": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+    "image_sha256": "372d6cb31d80d5b20dafddc9ca261352cacf103548a1ee3ac808e18d6c2ca010",
+    "linkages": [
+      {
+        "addend": 0,
+        "candidate_target": "0x0042B184",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0002",
+        "local": false,
+        "offset": "0x4",
+        "symbol": "??2@YAPAXI@Z",
+        "target": "0x00452493",
+        "target_encoded_value": "0x00015BDB",
+        "type": "REL32",
+        "width": 4
+      },
+      {
+        "addend": 0,
+        "candidate_target": "0x00428F60",
+        "linked_symbol": "?Initialize@TransitionEffectView@@QAEXHHHIII@Z",
+        "local": false,
+        "offset": "0x48",
+        "symbol": "?Initialize@TransitionEffectView@@QAEXHHHIII@Z",
+        "target": "0x0043C970",
+        "target_encoded_value": "0x00000074",
+        "type": "REL32",
+        "width": 4
+      }
+    ],
+    "matched_bytes": 82,
+    "matched_compared_bytes": 82,
+    "normalization_complete": true,
+    "pdb_age": 1,
+    "pdb_guid": "cce53efa6a6da04cb8b158aa61904a2b",
+    "pdb_module_index": 8,
+    "raw_equal": false,
+    "result": "exact",
+    "size": 82,
+    "symbol": "?StageCreateTransitionEffect@@YGPAXHHHIII@Z",
+    "target_address": "0x0043C8B0",
+    "unit": "transition-effect-factory"
+  },
+  "checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-target.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --execute",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py --require-target",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/ci.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "ci_log_sha256": "f9379c9a79351aad9720f6874b998a6e09be541df8de61bc83623f77145c0ada",
+  "host_eol_controls": "19/19; dependency pins and normalization unchanged",
+  "major_owner_diagnosis": "Complete Enemy, ANM and two Gui owners observed from the retained14-TU carrier remain nonexact; no extra builds or partial credit. Their canonical contexts are unchanged.",
+  "cleanup": {
+    "reason": "Completed first control and unused old callback-group output superseded by durable cold proofs and the current shared canonical PE/MAP/PDB; no active native jobs use these directories.",
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-constructor-20261020/constructor-out-of-line",
+        "bytes": 2136848
+      },
+      {
+        "path": "build/match-linked/GuiTransitionEffectCallbacks",
+        "bytes": 2127964
+      }
+    ],
+    "total_bytes": 4264812
+  },
+  "limits": "No full historical native cohort, independent constructor extent, whole-product or target runtime validation. Pre-existing untracked D3D evidence remains untouched/unadopted."
+}

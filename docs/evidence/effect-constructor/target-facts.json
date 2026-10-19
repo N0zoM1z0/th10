@@ -1,0 +1,41 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "address": "0x0043C8B0",
+  "size": 82,
+  "span_end": "0x0043C901",
+  "sha256": "ca758f1261dda73399a1ba52c8151b1a1e78e4d1a18d39678425666e432eb60d",
+  "fields": [
+    {
+      "offset": 4,
+      "type": "REL32",
+      "target": "0x00452493",
+      "callsite": "0x0043C8B3"
+    },
+    {
+      "offset": 72,
+      "type": "REL32",
+      "target": "0x0043C970",
+      "callsite": "0x0043C8F7"
+    }
+  ],
+  "return_operand": "0x14",
+  "zero_return_before_null_test": true,
+  "phase_order": "one-size allocator -> construct timer flags at+0x40 -> zero17 dwords -> flags2 -> Initialize; one shared RET20",
+  "limits": "Integrated factory observations do not identify a unique original C++ constructor partition, source class/TU or runtime allocation behavior.",
+  "local_ghidra": {
+    "read_only": true,
+    "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+    "bytes_unchanged": true,
+    "entry_references": [
+      "INCOMING From: 004186bd To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT",
+      "INCOMING From: 00404540 To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT",
+      "INCOMING From: 0040c25a To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT",
+      "INCOMING From: 00410dad To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT",
+      "INCOMING From: 00430eb3 To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT",
+      "INCOMING From: 004319d2 To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT",
+      "INCOMING From: 0043134d To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT",
+      "INCOMING From: 00402a61 To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT",
+      "INCOMING From: 00416d85 To: 0043c8b0 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT"
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "baseline": {
+    "command": "scripts/repo-python scripts/transition_effect_host_test.py --out build/host-tests/effect-constructor",
+    "exit_code": 0,
+    "scenarios": 14,
+    "assertions": 843
+  },
+  "focused_mutation": {
+    "category": "runtime_mutation",
+    "name": "init_flags",
+    "scenario": "selector",
+    "expected_assertion": "FACTORY_ZERO_FLAGS_UNKNOWN",
+    "function_occurrences": 1,
+    "anchor_occurrences": 1,
+    "secondary_anchor_occurrences": null,
+    "function_before_sha256": "43f98e7d896894bcb193b5d4a65d5b363e9b48f6a11283bdcbe6c61a9ff70b2a",
+    "source_sha256": "8528a8627e712ded636954e8ccd78429f882a5c36e6978661c67c37e26bd9f28",
+    "status": "EXPECTED_ASSERTION",
+    "compile_returncode": 0,
+    "run_returncode": 86,
+    "stdout": "",
+    "stderr": "ASSERT:FACTORY_ZERO_FLAGS_UNKNOWN\n"
+  },
+  "source_sha256": "8b3865beb98af1f88f62c130505c37610e672ae0f152434d2a984169989904ef",
+  "header_sha256": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e",
+  "scope": "Unchanged actual-source host seams and fixtures; constructor body now owns the existing flags mutation. No target runtime or ordinary-new exception claim; dependency pins unchanged."
+}
