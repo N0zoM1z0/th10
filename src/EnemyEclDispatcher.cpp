@@ -1606,17 +1606,7 @@ dispatch_update_primary_anm_bounds:
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     firstScalarInterpolation->mode = uVar22;
 
-    if (uVar22 == 7) {
-      local_29c = local_2c8;
-      if (!(-999999.0 < local_29c)) {
-        local_29c = 0.0;
-      }
-      local_298 = local_2c4;
-      if (!(-999999.0 < local_298)) {
-        local_298 = 0.0;
-      }
-    }
-    else {
+    if (uVar22 != 7) {
       if (!(-999999.0 < local_2c8)) {
         local_29c = selectedMotion->value1C;
       }
@@ -1632,6 +1622,20 @@ dispatch_update_primary_anm_bounds:
       }
       else {
         local_298 = local_2c4;
+      }
+    }
+    else {
+      if (-999999.0 < local_2c8) {
+        local_29c = local_2c8;
+      }
+      else {
+        local_29c = 0.0;
+      }
+      if (-999999.0 < local_2c4) {
+        local_298 = local_2c4;
+      }
+      else {
+        local_298 = 0.0;
       }
     }
 

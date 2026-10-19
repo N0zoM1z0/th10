@@ -29,17 +29,69 @@ DEFAULT_DESTINATION = 0x00411D18
 ENUM_PATTERN = re.compile(
     r"^\s*(ENEMY_ECL_[A-Z0-9_]+)\s*=\s*(0x[0-9A-Fa-f]+),", re.MULTILINE
 )
-CASE_PATTERN = re.compile(
-    r"^\s*case\s+(ENEMY_ECL_[A-Z0-9_]+):", re.MULTILINE
+SOURCE_TOKENS = re.compile(
+    r'(?P<ignored>//[^\n]*|/\*[\s\S]*?\*/|"(?:\\.|[^"\\])*"'
+    r"|'(?:\\.|[^'\\])*')|[A-Za-z_]\w*|::|[^\s]"
 )
+
+
+def dispatch_case_names(text: str) -> tuple[list[str], list[str]]:
+    """Read named labels owned by the dispatch switch, excluding nested switches.
+
+    This is a bounded lexer for the maintained VC7 source, not a C++ parser.
+    Require one zero-argument method definition and one outer compound switch;
+    ambiguity fails closed. Comments and ordinary string/character literals do
+    not participate in scope tracking.
+    """
+    tokens = [match.group() for match in SOURCE_TOKENS.finditer(text)
+              if match.lastgroup != 'ignored']
+    definition = ['EnemyRuntimeView', '::', 'DispatchEclInstruction', '(', ')', '{']
+    starts = [index + len(definition) - 1
+              for index in range(len(tokens) - len(definition) + 1)
+              if tokens[index:index + len(definition)] == definition]
+    if len(starts) != 1:
+        return [], ['source requires one DispatchEclInstruction method definition']
+    depth = 0
+    switch_scopes: list[int] = []
+    pending_switch = False
+    outer_switches = 0
+    names: list[str] = []
+    for index in range(starts[0], len(tokens)):
+        token = tokens[index]
+        if token == 'switch':
+            pending_switch = True
+        elif token == '{':
+            depth += 1
+            if pending_switch:
+                if not switch_scopes:
+                    outer_switches += 1
+                switch_scopes.append(depth)
+                pending_switch = False
+        elif token == '}':
+            if pending_switch:
+                return [], ['source switch requires a compound body']
+            if switch_scopes and switch_scopes[-1] == depth:
+                switch_scopes.pop()
+            depth -= 1
+            if depth == 0:
+                if outer_switches != 1:
+                    return [], ['source requires one outer dispatch switch']
+                return names, []
+        elif token == ';' and pending_switch:
+            return [], ['source switch requires a compound body']
+        elif token == 'case' and len(switch_scopes) == 1:
+            label = tokens[index + 1:index + 3]
+            if len(label) == 2 and label[1] == ':' and re.fullmatch(
+                    r'ENEMY_ECL_[A-Z0-9_]+', label[0]):
+                names.append(label[0])
+    return [], ['source DispatchEclInstruction body is unbalanced']
 
 
 def parse_source(path: Path) -> tuple[dict[str, int], list[str], list[str]]:
     text = path.read_text(encoding="utf-8")
     enum_pairs = ENUM_PATTERN.findall(text)
     enum_values = {name: int(value, 16) for name, value in enum_pairs}
-    case_names = CASE_PATTERN.findall(text)
-    problems: list[str] = []
+    case_names, problems = dispatch_case_names(text)
     if len(enum_pairs) != len(enum_values):
         problems.append("source has duplicate ECL enum names")
     if len(enum_values.values()) != len(set(enum_values.values())):

@@ -1,0 +1,1013 @@
+{
+  "schema": 1,
+  "base_commit": "29d451a5507becbd20d0b75b543ce6eb608ca214",
+  "scope": "Complete14416-byte Enemy dispatcher; polar0x11D/0x11F setup dataflow and operand adapter diagnostics",
+  "acceptance_authority": "none for dispatcher and its case fragments",
+  "new_exact_bytes": 0,
+  "project_cpp_and_quoted_header_sha256_at_checkpoint": {
+    "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+    "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "2874db8c09ba5d3b3c1e7814528ce43acbc798b63f6b8932c9b988e68ce0efc1",
+    "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+    "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "3508881546d5e035805ef4d8cbe3d3de0dcdf80c10874ebc61aaf0de258df2d1",
+    "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+    "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+    "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/Player.hpp": "1747c454b804c1401365dd31735638600926442750d29351b074dfc6248a8f6a",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "tooling_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/linked_image.py": "5d667184a743874d1728c96a91bc1fd6176249dfd1c8413a2b04325d5f7b53b0",
+    "scripts/compare-linked-function.py": "7962e7b95c77834e19663db3277d0508f9fc143afc6f813553b6afc601430604",
+    "scripts/report-ecl-dispatch-table.py": "8e01114bcf69f74d929b598eb36b1ee68ee9be9b7dbaefd6fe08cbaeb6228618",
+    "scripts/test-ecl-dispatch-table.py": "b5c2520f835ff55f656f9bf2163869671b90574c9cc74b62ebde593391341599"
+  },
+  "variants": {
+    "baseline": {
+      "source_cpp_sha256": {
+        "src/EnemyEclDispatcher.cpp": "9fae2594e13b7e399e7a7b27a3117495f4a54afd08907df9dcc668d5b00a1e30",
+        "src/EclVm.cpp": "2874db8c09ba5d3b3c1e7814528ce43acbc798b63f6b8932c9b988e68ce0efc1",
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1"
+      },
+      "complete_owner": {
+        "candidate_address": "0x00402810",
+        "candidate_size": 14512,
+        "target_address": "0x0040E770",
+        "target_size": 14416,
+        "matched_comparable_bytes": 587,
+        "comparable_bytes": 11572,
+        "normalization_complete": false
+      },
+      "complete_owner_sha256": "45184dd77706ea95bb2391b57ca0cd42d35eafaa2c0007f6626deeec7c221d9a",
+      "other_owner_shapes": {
+        "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z": {
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12
+        },
+        "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z": {
+          "candidate_size": 75,
+          "target_size": 75,
+          "matched_comparable_bytes": 75,
+          "comparable_bytes": 75
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "target_size": 153,
+          "matched_comparable_bytes": 10,
+          "comparable_bytes": 137
+        },
+        "?ReadInt@EclVmContext@@QAEHI@Z": {
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140
+        },
+        "?ReadFloat@EclVmContext@@QAEMI@Z": {
+          "candidate_size": 183,
+          "target_size": 183,
+          "matched_comparable_bytes": 167,
+          "comparable_bytes": 167
+        }
+      },
+      "image_sha256": "5205a6eefb38c4b0a5c2c27bdb99582870ef8300ad4e81339c6f716d6a8ed1fc",
+      "stack_allocations": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2bc"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 20
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 2410,
+        "comparable_bytes": 11129,
+        "absolute_case_gap_delta": 776,
+        "same_sized_cases": 35
+      },
+      "polar_group": {
+        "slot": 21,
+        "opcodes": [
+          "0x11d",
+          "0x11f"
+        ],
+        "target_address": "0x40f460",
+        "candidate_address": "0x403566",
+        "target_size": 405,
+        "candidate_size": 396,
+        "gap_delta": -9,
+        "matched_comparable_bytes": 6,
+        "comparable_bytes": 329,
+        "normalization_complete": true
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 96,
+      "polar_sentinel_compare_sites": {
+        "target": [
+          "0x40f4b5",
+          "0x40f50f",
+          "0x40f54a"
+        ],
+        "candidate": [
+          "0x4035c9",
+          "0x4035e6",
+          "0x403605",
+          "0x40364e"
+        ]
+      }
+    },
+    "unsigned-index": {
+      "source_cpp_sha256": {
+        "src/EnemyEclDispatcher.cpp": "3b0f1fec9af090d484293a9340a0f8b85e3c81123a3dbbc0095e7a9ac69b4c61",
+        "src/EclVm.cpp": "2874db8c09ba5d3b3c1e7814528ce43acbc798b63f6b8932c9b988e68ce0efc1",
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1"
+      },
+      "complete_owner": {
+        "candidate_address": "0x00402810",
+        "candidate_size": 14512,
+        "target_address": "0x0040E770",
+        "target_size": 14416,
+        "matched_comparable_bytes": 587,
+        "comparable_bytes": 11572,
+        "normalization_complete": false
+      },
+      "complete_owner_sha256": "45184dd77706ea95bb2391b57ca0cd42d35eafaa2c0007f6626deeec7c221d9a",
+      "other_owner_shapes": {
+        "?ReadIntArgument@EnemyRuntimeView@@QAEHI@Z": {
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12
+        },
+        "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z": {
+          "candidate_size": 75,
+          "target_size": 75,
+          "matched_comparable_bytes": 75,
+          "comparable_bytes": 75
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "target_size": 153,
+          "matched_comparable_bytes": 10,
+          "comparable_bytes": 137
+        },
+        "?ReadInt@EclVmContext@@QAEHI@Z": {
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140
+        },
+        "?ReadFloat@EclVmContext@@QAEMI@Z": {
+          "candidate_size": 183,
+          "target_size": 183,
+          "matched_comparable_bytes": 167,
+          "comparable_bytes": 167
+        }
+      },
+      "image_sha256": "f131a9f3aea0a8a5fee9d3e9e67d747b5119abd81a9f2f49deb5b6a0506b3785"
+    },
+    "polar-output-lifetime": {
+      "source_cpp_sha256": {
+        "src/EnemyEclDispatcher.cpp": "6c9a2e700af3cba7a0f359cf2dad36c3b1309f8a6565d815a6cb333a7faf41f6",
+        "src/EclVm.cpp": "2874db8c09ba5d3b3c1e7814528ce43acbc798b63f6b8932c9b988e68ce0efc1",
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1"
+      },
+      "complete_owner": {
+        "candidate_address": "0x00402810",
+        "candidate_size": 14500,
+        "target_address": "0x0040E770",
+        "target_size": 14416,
+        "matched_comparable_bytes": 536,
+        "comparable_bytes": 11576,
+        "normalization_complete": true
+      },
+      "complete_owner_sha256": "a0660ca9c22188d8ae4454b76f6384fbd49e4312017e98cc9c89650ff14092f6",
+      "other_owner_shapes": {
+        "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z": {
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12
+        },
+        "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z": {
+          "candidate_size": 75,
+          "target_size": 75,
+          "matched_comparable_bytes": 75,
+          "comparable_bytes": 75
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "target_size": 153,
+          "matched_comparable_bytes": 10,
+          "comparable_bytes": 137
+        },
+        "?ReadInt@EclVmContext@@QAEHI@Z": {
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140
+        },
+        "?ReadFloat@EclVmContext@@QAEMI@Z": {
+          "candidate_size": 183,
+          "target_size": 183,
+          "matched_comparable_bytes": 167,
+          "comparable_bytes": 167
+        }
+      },
+      "image_sha256": "e018e52cb7dcb4d431815e93f6baae5d7af1464206a4731d0c652a74d3fb601e",
+      "stack_allocations": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2bc"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 2423,
+        "comparable_bytes": 11133,
+        "absolute_case_gap_delta": 786,
+        "same_sized_cases": 35
+      },
+      "polar_group": {
+        "slot": 21,
+        "opcodes": [
+          "0x11d",
+          "0x11f"
+        ],
+        "target_address": "0x40f460",
+        "candidate_address": "0x403566",
+        "target_size": 405,
+        "candidate_size": 386,
+        "gap_delta": -19,
+        "matched_comparable_bytes": 7,
+        "comparable_bytes": 333,
+        "normalization_complete": true
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 84,
+      "polar_sentinel_compare_sites": {
+        "target": [
+          "0x40f4b5",
+          "0x40f50f",
+          "0x40f54a"
+        ],
+        "candidate": [
+          "0x4035bd",
+          "0x4035e2",
+          "0x403644"
+        ]
+      }
+    },
+    "polar-normal-first": {
+      "source_cpp_sha256": {
+        "src/EnemyEclDispatcher.cpp": "3508881546d5e035805ef4d8cbe3d3de0dcdf80c10874ebc61aaf0de258df2d1",
+        "src/EclVm.cpp": "2874db8c09ba5d3b3c1e7814528ce43acbc798b63f6b8932c9b988e68ce0efc1",
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1"
+      },
+      "complete_owner": {
+        "candidate_address": "0x00402810",
+        "candidate_size": 14500,
+        "target_address": "0x0040E770",
+        "target_size": 14416,
+        "matched_comparable_bytes": 533,
+        "comparable_bytes": 11576,
+        "normalization_complete": true
+      },
+      "complete_owner_sha256": "9c3f00c564bcdf7566ab68ccadaef3a5277bf821da04637cc202a4afa6bf23b3",
+      "other_owner_shapes": {
+        "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z": {
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12
+        },
+        "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z": {
+          "candidate_size": 75,
+          "target_size": 75,
+          "matched_comparable_bytes": 75,
+          "comparable_bytes": 75
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "target_size": 153,
+          "matched_comparable_bytes": 10,
+          "comparable_bytes": 137
+        },
+        "?ReadInt@EclVmContext@@QAEHI@Z": {
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140
+        },
+        "?ReadFloat@EclVmContext@@QAEMI@Z": {
+          "candidate_size": 183,
+          "target_size": 183,
+          "matched_comparable_bytes": 167,
+          "comparable_bytes": 167
+        }
+      },
+      "image_sha256": "3bbbe982b2f02fa5db7d9b0b5dd546c03354d63074c76724e2228e96a8e38620",
+      "stack_allocations": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2bc"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 2424,
+        "comparable_bytes": 11133,
+        "absolute_case_gap_delta": 786,
+        "same_sized_cases": 35
+      },
+      "polar_group": {
+        "slot": 21,
+        "opcodes": [
+          "0x11d",
+          "0x11f"
+        ],
+        "target_address": "0x40f460",
+        "candidate_address": "0x403566",
+        "target_size": 405,
+        "candidate_size": 386,
+        "gap_delta": -19,
+        "matched_comparable_bytes": 8,
+        "comparable_bytes": 333,
+        "normalization_complete": true
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 84,
+      "polar_sentinel_compare_sites": {
+        "target": [
+          "0x40f4b5",
+          "0x40f50f",
+          "0x40f54a"
+        ],
+        "candidate": [
+          "0x4035bd",
+          "0x40360e",
+          "0x403643"
+        ]
+      }
+    },
+    "polar-final-lifetime": {
+      "source_cpp_sha256": {
+        "src/EnemyEclDispatcher.cpp": "baffb6a567cd2310e9c95c8c3cc724480da41089ebee8f399606b6cb379d89f9",
+        "src/EclVm.cpp": "2874db8c09ba5d3b3c1e7814528ce43acbc798b63f6b8932c9b988e68ce0efc1",
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1"
+      },
+      "complete_owner": {
+        "candidate_address": "0x00402810",
+        "candidate_size": 14484,
+        "target_address": "0x0040E770",
+        "target_size": 14416,
+        "matched_comparable_bytes": 613,
+        "comparable_bytes": 11572,
+        "normalization_complete": true
+      },
+      "complete_owner_sha256": "5f59a8d9515e11f82b61f139790af74a923461ba40e4e2bc2003f1dc96922acd",
+      "other_owner_shapes": {
+        "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z": {
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12
+        },
+        "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z": {
+          "candidate_size": 75,
+          "target_size": 75,
+          "matched_comparable_bytes": 75,
+          "comparable_bytes": 75
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "target_size": 153,
+          "matched_comparable_bytes": 10,
+          "comparable_bytes": 137
+        },
+        "?ReadInt@EclVmContext@@QAEHI@Z": {
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140
+        },
+        "?ReadFloat@EclVmContext@@QAEMI@Z": {
+          "candidate_size": 183,
+          "target_size": 183,
+          "matched_comparable_bytes": 167,
+          "comparable_bytes": 167
+        }
+      },
+      "image_sha256": "b16cb44480af80137119d0769aa1666d56a121952adfe46793d5cf0263b10aa2",
+      "stack_allocations": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2bc"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 2423,
+        "comparable_bytes": 11129,
+        "absolute_case_gap_delta": 802,
+        "same_sized_cases": 35
+      },
+      "polar_group": {
+        "slot": 21,
+        "opcodes": [
+          "0x11d",
+          "0x11f"
+        ],
+        "target_address": "0x40f460",
+        "candidate_address": "0x403566",
+        "target_size": 405,
+        "candidate_size": 370,
+        "gap_delta": -35,
+        "matched_comparable_bytes": 8,
+        "comparable_bytes": 329,
+        "normalization_complete": true
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 68,
+      "polar_sentinel_compare_sites": {
+        "target": [
+          "0x40f4b5",
+          "0x40f50f",
+          "0x40f54a"
+        ],
+        "candidate": [
+          "0x4035bd",
+          "0x403608",
+          "0x403635"
+        ]
+      }
+    },
+    "retained-cold2": {
+      "source_cpp_sha256": {
+        "src/EnemyEclDispatcher.cpp": "3508881546d5e035805ef4d8cbe3d3de0dcdf80c10874ebc61aaf0de258df2d1",
+        "src/EclVm.cpp": "2874db8c09ba5d3b3c1e7814528ce43acbc798b63f6b8932c9b988e68ce0efc1",
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/EnemyLaser.cpp": "d3ba99945c0ef3776796cbff86cfb6f506a699b0d4cdb013becc90c6ff7d59dd",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1"
+      },
+      "complete_owner": {
+        "candidate_address": "0x00402810",
+        "candidate_size": 14500,
+        "target_address": "0x0040E770",
+        "target_size": 14416,
+        "matched_comparable_bytes": 533,
+        "comparable_bytes": 11576,
+        "normalization_complete": true
+      },
+      "complete_owner_sha256": "9c3f00c564bcdf7566ab68ccadaef3a5277bf821da04637cc202a4afa6bf23b3",
+      "other_owner_shapes": {
+        "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z": {
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12
+        },
+        "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z": {
+          "candidate_size": 75,
+          "target_size": 75,
+          "matched_comparable_bytes": 75,
+          "comparable_bytes": 75
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "target_size": 153,
+          "matched_comparable_bytes": 10,
+          "comparable_bytes": 137
+        },
+        "?ReadInt@EclVmContext@@QAEHI@Z": {
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140
+        },
+        "?ReadFloat@EclVmContext@@QAEMI@Z": {
+          "candidate_size": 183,
+          "target_size": 183,
+          "matched_comparable_bytes": 167,
+          "comparable_bytes": 167
+        }
+      },
+      "image_sha256": "dff2c81d606da9f417b86268faae873b4441ca868f5bafdd2f53334fa370e54d",
+      "stack_allocations": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2bc"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 2424,
+        "comparable_bytes": 11133,
+        "absolute_case_gap_delta": 786,
+        "same_sized_cases": 35
+      },
+      "polar_group": {
+        "slot": 21,
+        "opcodes": [
+          "0x11d",
+          "0x11f"
+        ],
+        "target_address": "0x40f460",
+        "candidate_address": "0x403566",
+        "target_size": 405,
+        "candidate_size": 386,
+        "gap_delta": -19,
+        "matched_comparable_bytes": 8,
+        "comparable_bytes": 333,
+        "normalization_complete": true
+      },
+      "selector_equal": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 84,
+      "polar_sentinel_compare_sites": {
+        "target": [
+          "0x40f4b5",
+          "0x40f50f",
+          "0x40f54a"
+        ],
+        "candidate": [
+          "0x4035bd",
+          "0x40360e",
+          "0x403643"
+        ]
+      }
+    }
+  },
+  "retained": "polar-normal-first",
+  "rejected": {
+    "unsigned-index": "Identical complete dispatcher code and adapter bytes; declaration restored.",
+    "polar-final-lifetime": "Smaller14484-byte dispatcher but introduces a second live x87 final value and FSUB ST(2) at the common angle difference; target uses stored float values. Existing missing angle spill is not closed; extra speed lifetime is rejected."
+  },
+  "cold_images": [
+    {
+      "variant": "polar-normal-first",
+      "image_map_pdb_sha256": {
+        "image": "3bbbe982b2f02fa5db7d9b0b5dd546c03354d63074c76724e2228e96a8e38620",
+        "map": "40e67b7cb33109d140769b11f17c80ca3d66d3335b45edd6ad6e4561c268a376",
+        "pdb": "9e4a0d488ec09d91295dfa8c5ff90a5804ef0e505c96c99982d287e0901cd67e"
+      },
+      "object_sha256": {
+        "link-anchors.obj": "fcb67959a237bfb36826b38081e926440f70b0d94f72f135337bba5e2829830a",
+        "source.ltcg.obj": "17da46de7ca349489d1cc44a0dacd62632aa63363d764e34d673716187ce8dd6",
+        "support-00-EclVm.ltcg.obj": "130ea342cd2f4354d5d73241428601ca7d307448e5d94a9b5594ae968e49d273",
+        "support-01-AnmManager.ltcg.obj": "e7790765501b149f3c5c3eda4e1db3a6eb74a08ebdf08e6e358cf0fba043a689",
+        "support-02-AnmVmCreate.ltcg.obj": "bc44bb63aac57098eb7737d711fbeb1c7a9f531c1dfe132040dd65b3d14b2b9d",
+        "support-03-EnemyLaser.ltcg.obj": "b791d5a6adf39ebdb468da5b0a31e92a94aaa8d5da59997474fc33adceeb1b3f",
+        "support-04-Enemy.ltcg.obj": "e6f339b41b7a460334ca56a4f0981408776610548df9284b855b24e2ddb9d3f6",
+        "support-05-AnmVmId.ltcg.obj": "87e4ed460da4236cc58ff55fdc7c4820666ea46e021f62c279e56648097c958e",
+        "support-06-RandomMath.ltcg.obj": "9eade32ae3c4f2e43563adaf76ea65ff4632f7fa4fac4affd979fd3a3d5a8bb0"
+      },
+      "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp"
+      ],
+      "complete_owner_sha256": "9c3f00c564bcdf7566ab68ccadaef3a5277bf821da04637cc202a4afa6bf23b3",
+      "strict_existing_guards": [
+        {
+          "unit": "enemy-resolve-int-argument",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z",
+          "target_address": "0x00412A10",
+          "size": 75,
+          "matched_bytes": 75,
+          "compared_size": 75,
+          "matched_compared_bytes": 75,
+          "image": "build/gpt-6.1-sol/th10-enemy-dispatch-20261019/polar-normal-first/source.exe",
+          "image_sha256": "3bbbe982b2f02fa5db7d9b0b5dd546c03354d63074c76724e2228e96a8e38620",
+          "pdb_guid": "ac13d18f51f7364dba13e9968c3ee5f4",
+          "pdb_age": 1,
+          "candidate_address": "0x00402760",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 75,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [],
+          "raw_equal": true,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?ReadInt@EclVmContext@@QAEHI@Z",
+          "target_address": "0x0044FDB0",
+          "size": 144,
+          "matched_bytes": 144,
+          "compared_size": 144,
+          "matched_compared_bytes": 144,
+          "image": "build/gpt-6.1-sol/th10-enemy-dispatch-20261019/polar-normal-first/source.exe",
+          "image_sha256": "3bbbe982b2f02fa5db7d9b0b5dd546c03354d63074c76724e2228e96a8e38620",
+          "pdb_guid": "ac13d18f51f7364dba13e9968c3ee5f4",
+          "pdb_age": 1,
+          "candidate_address": "0x00406460",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 6,
+          "decoded_bytes": 144,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x6A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0169",
+              "local": false,
+              "candidate_target": "0x004192BC",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x00013D0E"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        {
+          "unit": "ecl-vm-read-float",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?ReadFloat@EclVmContext@@QAEMI@Z",
+          "target_address": "0x0044FE40",
+          "size": 183,
+          "matched_bytes": 183,
+          "compared_size": 183,
+          "matched_compared_bytes": 183,
+          "image": "build/gpt-6.1-sol/th10-enemy-dispatch-20261019/polar-normal-first/source.exe",
+          "image_sha256": "3bbbe982b2f02fa5db7d9b0b5dd546c03354d63074c76724e2228e96a8e38620",
+          "pdb_guid": "ac13d18f51f7364dba13e9968c3ee5f4",
+          "pdb_age": 1,
+          "candidate_address": "0x004065A0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 6,
+          "decoded_bytes": 183,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x21",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@00000000",
+              "linked_symbol": "__real@00000000",
+              "local": false,
+              "candidate_target": "0x00418218",
+              "target": "0x00470B04",
+              "addend": 0,
+              "target_encoded_value": "0x00470B04"
+            },
+            {
+              "offset": "0x31",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0169",
+              "local": false,
+              "candidate_target": "0x004192BC",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x00013CB7"
+            },
+            {
+              "offset": "0x45",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@bf800000",
+              "linked_symbol": "__real@bf800000",
+              "local": false,
+              "candidate_target": "0x0041825C",
+              "target": "0x00470B60",
+              "addend": 0,
+              "target_encoded_value": "0x00470B60"
+            },
+            {
+              "offset": "0xA1",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0169",
+              "local": false,
+              "candidate_target": "0x004192BC",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x00013C47"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      ],
+      "guard_manifest_sha256": "1e4b470f85127f4a426adb87608f93d94852bf7eadbc7348afdfbad618d7d77c"
+    },
+    {
+      "variant": "retained-cold2",
+      "image_map_pdb_sha256": {
+        "image": "dff2c81d606da9f417b86268faae873b4441ca868f5bafdd2f53334fa370e54d",
+        "map": "0fe1acf5e9c1dee8b31dbef8fa8faedf9f0892f4ecd6e1eb3b75f22576cf7654",
+        "pdb": "5c6db4c580df7b8150167e502f3f6fda2fe9a980e40232c95e42d3ced94257e1"
+      },
+      "object_sha256": {
+        "link-anchors.obj": "9271b58c81b6c64d775f5cec9aac16503b35024a58df6600c7f0fc78bde02f05",
+        "source.ltcg.obj": "4e5258d6a4658394f8244c88d0fb98f1f3eadd5f717157d307c1abbd77dea840",
+        "support-00-EclVm.ltcg.obj": "cfe10db8039b0722e9f9e6d886f99219e9c76ac5fee54fde5407835083dea525",
+        "support-01-AnmManager.ltcg.obj": "bab29831558901a3030835f27000b6b81b0d33eabf050156732a68ee99c389b7",
+        "support-02-AnmVmCreate.ltcg.obj": "74a945b98f545fc928082828b9d4baaa36938d821c2dce6d1c72cf22fb057174",
+        "support-03-EnemyLaser.ltcg.obj": "3b6a71808aab72eb094d220aa72e3be3097f7d516555800a4258627a0aea9308",
+        "support-04-Enemy.ltcg.obj": "eae6fd85a2f059cb80c42b0d6bfcb618a003651688536c8df24893d629f6bd5d",
+        "support-05-AnmVmId.ltcg.obj": "04248d42f6a009f087e44b8e586c0ab4ffbdf27df758d31254a214fdb15395f3",
+        "support-06-RandomMath.ltcg.obj": "97562f9fb82d5c45e9fac1c634ef06e0b2e0e101bb6c3fa5613d60ea00b633c8"
+      },
+      "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp"
+      ],
+      "complete_owner_sha256": "9c3f00c564bcdf7566ab68ccadaef3a5277bf821da04637cc202a4afa6bf23b3",
+      "strict_existing_guards": [
+        {
+          "unit": "enemy-resolve-int-argument",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z",
+          "target_address": "0x00412A10",
+          "size": 75,
+          "matched_bytes": 75,
+          "compared_size": 75,
+          "matched_compared_bytes": 75,
+          "image": "build/gpt-6.1-sol/th10-enemy-dispatch-20261019/retained-cold2/source.exe",
+          "image_sha256": "dff2c81d606da9f417b86268faae873b4441ca868f5bafdd2f53334fa370e54d",
+          "pdb_guid": "58bc5d05fd4274438b44fc4dc7efa97b",
+          "pdb_age": 1,
+          "candidate_address": "0x00402760",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 75,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [],
+          "raw_equal": true,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?ReadInt@EclVmContext@@QAEHI@Z",
+          "target_address": "0x0044FDB0",
+          "size": 144,
+          "matched_bytes": 144,
+          "compared_size": 144,
+          "matched_compared_bytes": 144,
+          "image": "build/gpt-6.1-sol/th10-enemy-dispatch-20261019/retained-cold2/source.exe",
+          "image_sha256": "dff2c81d606da9f417b86268faae873b4441ca868f5bafdd2f53334fa370e54d",
+          "pdb_guid": "58bc5d05fd4274438b44fc4dc7efa97b",
+          "pdb_age": 1,
+          "candidate_address": "0x00406460",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 6,
+          "decoded_bytes": 144,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x6A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0169",
+              "local": false,
+              "candidate_target": "0x004192BC",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x00013D0E"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        {
+          "unit": "ecl-vm-read-float",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?ReadFloat@EclVmContext@@QAEMI@Z",
+          "target_address": "0x0044FE40",
+          "size": 183,
+          "matched_bytes": 183,
+          "compared_size": 183,
+          "matched_compared_bytes": 183,
+          "image": "build/gpt-6.1-sol/th10-enemy-dispatch-20261019/retained-cold2/source.exe",
+          "image_sha256": "dff2c81d606da9f417b86268faae873b4441ca868f5bafdd2f53334fa370e54d",
+          "pdb_guid": "58bc5d05fd4274438b44fc4dc7efa97b",
+          "pdb_age": 1,
+          "candidate_address": "0x004065A0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 6,
+          "decoded_bytes": 183,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x21",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@00000000",
+              "linked_symbol": "__real@00000000",
+              "local": false,
+              "candidate_target": "0x00418218",
+              "target": "0x00470B04",
+              "addend": 0,
+              "target_encoded_value": "0x00470B04"
+            },
+            {
+              "offset": "0x31",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0169",
+              "local": false,
+              "candidate_target": "0x004192BC",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x00013CB7"
+            },
+            {
+              "offset": "0x45",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@bf800000",
+              "linked_symbol": "__real@bf800000",
+              "local": false,
+              "candidate_target": "0x0041825C",
+              "target": "0x00470B60",
+              "addend": 0,
+              "target_encoded_value": "0x00470B60"
+            },
+            {
+              "offset": "0xA1",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0169",
+              "local": false,
+              "candidate_target": "0x004192BC",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x00013C47"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      ],
+      "guard_manifest_sha256": "2e05bb49e41ecd160dbc1e4cda6a9982c8b9a9814ba11ba826ece0efd6c69cdc"
+    }
+  ],
+  "current_target_selector_check": {
+    "ok": true,
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "jump_table": {
+      "address": "0x00411D30",
+      "entries": 108,
+      "unique_destinations": 108,
+      "default_destination": "0x00411D18",
+      "default_slots": [
+        107
+      ]
+    },
+    "selector_table": {
+      "address": "0x00411EE0",
+      "entries": 181,
+      "unique_slots": 108,
+      "active_opcodes": 124,
+      "default_opcodes": 57
+    },
+    "source_enum_entries": 124,
+    "source_case_labels": 124,
+    "problems": []
+  },
+  "source_case_parser_controls_passed": 7,
+  "limits": {
+    "whole_owner_exact": false,
+    "partial_case_credit": false,
+    "normalization_is_target_field_acceptance": false,
+    "original_source_spelling_or_TU_proved": false,
+    "x87_numeric_closure": false,
+    "runtime_execution": false,
+    "product_closure": false
+  },
+  "validation": {
+    "focused_owner": "two independent cold14500-byte PDB contributions; complete target14416 remains nonexact",
+    "same_image_strict_existing_guards": "402 bytes and5 fields per cold image pass",
+    "selector_check": "target/retained all181 selector bytes and108 physical groups pass;124 outer source labels",
+    "parser_scope_tests": 7,
+    "toolchain_check": "passed",
+    "tracking": "1752 candidates/boundaries;1008 mappings;1157 exact",
+    "progress": "unchanged/current",
+    "ci_exit_code": 0,
+    "ci_log_sha256": "5761d18876fc3d77d13a7b64bc6336c02e81f256cb74df068de4027c06546a9e",
+    "whitespace": "passed",
+    "new_exact_bytes": 0
+  }
+}

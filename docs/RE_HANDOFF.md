@@ -70,6 +70,20 @@ scratch paths, or build hashes into this file.
   comparable positions. Rotate next to the remaining native lifetime/stack
   frontier or Enemy dispatch; do not repeat integer ABI keywords or parked
   SCALE_TIME/FORMAT controls without new TH10 evidence.
+- Fresh Enemy dispatch now has a pinned eight-TU baseline14512/14416 and
+  retained14500/14416 in two cold links. Polar setup compares saved inputs
+  before publishing additive temporaries, restoring target19 sentinel compares
+  and the shared FCOMP-before-mode-store/CMP/FNSTSW/JZ shape. Stack remains
+  2BC/target2C4; no parent or partial-case credit. Existing402 guard bytes/all5
+  fields pass in both images. Unsigned adapter indices are byte-neutral;
+  smaller14484 ordinary-output deferral adds an unwanted x87 speed lifetime
+  and is rejected. The pre-existing missing angle float32 spill remains open.
+  See [the complete-owner evidence](evidence/enemy-dispatch-polar-lifetime/README.md).
+- Enemy selector coverage now correctly counts124 outer cases; three inner
+  spell cases no longer cause a false duplicate failure. Seven scope/rejection
+  controls pass, as do the target/retained181 selectors and108-group checks.
+  Source coverage does not imply codegen or runtime equivalence. Do not retry
+  the rejected prototype/lifetime models without additional TH10 evidence.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our
@@ -151,7 +165,7 @@ ledger entries. Rebuild each probe after changing a supporting translation unit.
 | --- | --- | --- | --- |
 | ECL `EclVmContext::Run` | `2f954d0` plus retained scoped jump operands, real Enemy caller /GL graph | 7,020 / 7,020 owned bytes; all 60 table destinations and 88 selector bytes aligned; 6,125 / 6,264 diagnostic comparable matches | 139 ordinary differences, incomplete selector normalization and remaining alias/register/stack structure; non-exact |
 | ANM `ExecuteScript` | 2026-10-19 tangent-first byte-formal source, pinned in primary-alpha evidence; real four-TU /GL /GS graph | 9,948 / 9,964 bytes, frame 0xF8 / target 0xFC; 92 physical groups ordered, 84 target-sized spans; 1,312 / 8,564 whole-owner and 6,492 / 8,000 case-aligned comparable positions | Eight unequal spans, stack homes, register scheduling and remaining aggregate/RNG context; non-exact |
-| Enemy `DispatchEclInstruction` | `d2cddda`, selected ECL + ANM support graph | 14,384 / 14,416 bytes; target-sized 181-byte selector, all 108 group destinations in physical order; 0x2BC vs 0x2C4 stack allocation | ECL argument adapters, spawn/laser group lifetimes, stack allocation; non-exact |
+| Enemy `DispatchEclInstruction` | 2026-10-19 polar-input source, pinned eight-TU /GL /GS direct-entry graph | 14,500 / 14,416 bytes; all 181 selector bytes and 108 ordered groups; frame 0x2BC / target 0x2C4; 19 sentinel comparisons | Polar 386/405, missing angle float32 output store, private argument adapters, spawn/laser lifetimes and stack homes; non-exact |
 
 The 2026-10-14 bounded Run refinement nests `ReadIntValue` in the
 `SpawnThread` call, restoring target argument-push scheduling. Two cold
