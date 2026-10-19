@@ -1,0 +1,66 @@
+{
+  "status": "quarantined unadopted source-only hypothesis",
+  "reference_commit": "4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a",
+  "reference_files": [
+    {
+      "path": "LICENSE",
+      "git_blob": "0706df312064fec49fd1a57b311cb92d888acc2d",
+      "bytes": 1063,
+      "sha256": "27f6e319fa95b7f939b5fd2154fd2568fa35e1aac8d784940ecb3838e09c60ae"
+    },
+    {
+      "path": "matching2/msvc/include/th10/game/shot_type_select_update.hpp",
+      "git_blob": "c197b23d588be282df45f574fc157e6089fccfa5",
+      "bytes": 1918,
+      "sha256": "ffac31ee78d23d1a2009a255a549a4db6f724c60efa604c71a7f73961b34f7ce"
+    },
+    {
+      "path": "matching2/msvc/src/game/title/shot_type_select_update.cpp",
+      "git_blob": "9737110a470e62d4313e73060d54fa909c2b25d3",
+      "bytes": 7593,
+      "sha256": "8facb7c487bfdef9595c042ea5c6e51086c0cfab7d59cb98ec94db9673885e54"
+    }
+  ],
+  "proposal_sha256": "9db6856ed55923238d037fbdcb1e4f6b99bf94755797eed7ebc89eeee33eb458",
+  "files": {
+    "src/FrontEnd.cpp": {
+      "baseline_sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+      "candidate_sha256": "dfa7d15b5bc1f11605385c1c31e9f883751ae5162c4a8dc2aa4826aa5b6daa58"
+    },
+    "src/FrontEnd.hpp": {
+      "baseline_sha256": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+      "candidate_sha256": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b"
+    }
+  },
+  "inverse_exact": true,
+  "cpp_length_delta": 6,
+  "all_other_bytes_unchanged": true,
+  "valid_domain_is_premise": true,
+  "target_correctness_proven": false,
+  "upstream_helper_abi_proven": false,
+  "native_execution": false,
+  "frozen_candidate_manifest_sha256": "deada8c67151e862b9976444507f15d8f4f6f9e3772eb200feac7c432d41e9cb",
+  "reference_url": "https://github.com/levzzz5154/th10-decomp/blob/4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a/matching2/msvc/src/game/title/shot_type_select_update.cpp#L110-L116",
+  "archive_test_adaptation": "Only compare reconstructed bytes to frozen candidate/header hashes rather than bundled source copies",
+  "original_test_sha256": "2391207ef7b4bf3c4e86b8fd0228a7b7090e36a7410be8b7d41b459e694deacd",
+  "preserved_files": {
+    "reconstruct.py": "ff3e991b3359837b0e960c423c1575060dded1df611e2c57b6f18bdab65bd384",
+    "model.py": "f9ff206bfb3e1420937f90184ddbd32df69d5ba166e06e9886214febad884016",
+    "candidate.patch": "75256e2d0bf55bee0a0142cd2beb92cb5d1ca707dd4692e3fa92161dc9b3fd1f",
+    "REFERENCE_LICENSE.txt": "1cb37b0034f5223f1a10112b220a1f183d2feb6cd144229d8815348e2a55832b"
+  },
+  "license_provenance": {
+    "root_license_blob": "0706df312064fec49fd1a57b311cb92d888acc2d",
+    "cached_tree_sha256": "f98805e34ef7dae7ea282235e9a469df1a10a3abaa8200ee1ae024eeb4e73744",
+    "tree_entries": 11725,
+    "truncated": false,
+    "ancestor_notice_paths": [
+      {
+        "path": "LICENSE",
+        "blob": "0706df312064fec49fd1a57b311cb92d888acc2d"
+      }
+    ],
+    "file_licensing_tokens_found": [],
+    "scope": "Exact local fetched source and ancestor license/notice filename inventory; full MIT notice retained; no legal warranty"
+  }
+}

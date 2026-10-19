@@ -1,0 +1,11 @@
+--- baseline/src/FrontEnd.cpp
++++ candidate/src/FrontEnd.cpp
+@@ -1816,7 +1816,7 @@
+         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+         {
+             short scriptIndex = static_cast<short>(
+-                g_ReplayCharacter * 3 + 0x3f +
++                (g_ReplayCharacter * 3 + 0x3f) * 2 +
+                 controller->cursor.current);
+             SetScreenState(controller, FRONT_END_SELECTION_CONFIRMED);
+             FrontEndPlaySound(FRONT_END_SOUND_SELECT);

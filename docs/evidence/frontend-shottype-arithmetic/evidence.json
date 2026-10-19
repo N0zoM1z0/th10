@@ -1,0 +1,165 @@
+{
+  "scope": "sanitized historical diagnostic; no execution or deployment authority",
+  "receipt": {
+    "command_id": "repository-command:763d4e9664544aad88f1138b6bacfffe",
+    "sha256": "7c627ae10dc99eb0ab8b636ca7227b43f4cf6ce71f042d66305df54de27917ea",
+    "state": "completed",
+    "exit_code": 0,
+    "head_before": "b243844a19da5ac0e61d359a1cef6c5ea0be956b",
+    "head_after": "b243844a19da5ac0e61d359a1cef6c5ea0be956b",
+    "clean_before_after": true
+  },
+  "status": "exploratory_complete",
+  "new_cold_link_calls": 2,
+  "baseline_reused": false,
+  "difference": {
+    "baseline_unmatched_bytes": 0,
+    "candidate_unmatched_bytes": 4,
+    "classification_complete": false,
+    "linkage_difference_bytes": null,
+    "ordinary_difference_bytes": null,
+    "positional_different_bytes": 415,
+    "positional_overlap_bytes": 1188,
+    "raw_equal": false
+  },
+  "source_overlay": {
+    "src/FrontEnd.cpp": {
+      "baseline_sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+      "candidate_sha256": "dfa7d15b5bc1f11605385c1c31e9f883751ae5162c4a8dc2aa4826aa5b6daa58"
+    }
+  },
+  "current_target_physical_metadata_bytes": 1424,
+  "target_size_evidence": "metadata only; no target bytes or comparison in this pair",
+  "helper75_guards": {
+    "command_id": "repository-command:81736e5bbf8e4f4ea891c0ae83059b74",
+    "receipt_sha256": "f9d609bf97f7bd322bb401348e630fe4deea7f112d1f2bcf59e5b47b61327bbb",
+    "state": "completed",
+    "exit_code": 0,
+    "clean_head_before_after": "b243844a19da5ac0e61d359a1cef6c5ea0be956b",
+    "status": "exact",
+    "guards": [
+      {
+        "arm": "baseline",
+        "decoded_bytes": 75,
+        "image_sha256": "9c3c2df704a2268d2c318a0f7dff465c9ebef46ea939b985881c6608d6da6f72",
+        "linkage_count": 1,
+        "matched_bytes": 75,
+        "normalization_complete": true,
+        "owner": {
+          "complete": true,
+          "sha256": "f51555bb1853da47998d87d8230ba046e4942dd64a3ce4d068d6bafecad17e33",
+          "size": 75,
+          "start": 4203184
+        },
+        "raw_equal": false,
+        "report_sha256": "098be03f237e9a21293a59984ed20c8eb28e29e59b978ff98d10587f9dbff508",
+        "result": "exact",
+        "size": 75,
+        "unit": "ascii-manager-ensure-selection-vm"
+      },
+      {
+        "arm": "candidate",
+        "decoded_bytes": 75,
+        "image_sha256": "110d8df80a51055a8a33dcb1cce91a895eb124ae7f5863d7ba5215ab96ef1ac5",
+        "linkage_count": 1,
+        "matched_bytes": 75,
+        "normalization_complete": true,
+        "owner": {
+          "complete": true,
+          "sha256": "f51555bb1853da47998d87d8230ba046e4942dd64a3ce4d068d6bafecad17e33",
+          "size": 75,
+          "start": 4203184
+        },
+        "raw_equal": false,
+        "report_sha256": "57b1cf3e13fcea8c6a1b1a44c905f4fb749c165054fc0fb274921a7a0a93d480",
+        "result": "exact",
+        "size": 75,
+        "unit": "ascii-manager-ensure-selection-vm"
+      }
+    ],
+    "cold_links": 0,
+    "runtime_executed": false,
+    "primary_failure_phase": null,
+    "postcheck_failure_phase": null,
+    "exclusive_added_input_count": 6,
+    "claim_consumed": true,
+    "restart_allowed": false,
+    "prior_absence_inventory_reusable": false,
+    "scope": "helper75 preservation only; no ShotType exactness or adoption"
+  },
+  "dependency_hash_difference": "Independently preserved. Metadata preflight observed equal own-arm alias-file/binding hashes with170 bindings each; dependency hash inequality remains unexplained and no cause is inferred.",
+  "target_exactness_tested": false,
+  "runtime_executed": false,
+  "adoption_authority": "none",
+  "restart_allowed": false,
+  "generated_switch_table_coverage_verified": false,
+  "baseline": {
+    "owner": {
+      "complete": true,
+      "sha256": "18ca630e79f198a840ee1348a4af23d743359e8051380e88069f867b9f5734d9",
+      "size": 1188,
+      "start": 4215888
+    },
+    "entry": {
+      "address": "0x00405450",
+      "object": "source.ltcg.obj",
+      "requested": "?UpdateShotType@FrontEndControllerView@@SGHPAU1@@Z",
+      "rva": 21584,
+      "size": 1188,
+      "symbol": "?UpdateShotType@FrontEndControllerView@@SGHPAU1@@Z"
+    },
+    "dependencies_sha256": "63577ecfb801af25a49b681fc9309cd53c4a59e676fc63fba804349dce057226",
+    "image_sha256": "9c3c2df704a2268d2c318a0f7dff465c9ebef46ea939b985881c6608d6da6f72",
+    "operational": {
+      "worker_phase": "complete",
+      "returncode_before_cleanup": 0,
+      "primary_reason": "none",
+      "cleanup_reason": "none",
+      "ordinary_client_group_cleanup_complete": true,
+      "shared_runtime_sampling_complete": true,
+      "shared_runtime_residual_count": 8,
+      "availability_grace_counts": {
+        "expired": 0,
+        "pending": 0,
+        "resolved": 0
+      }
+    }
+  },
+  "candidate": {
+    "owner": {
+      "complete": true,
+      "sha256": "892b5faf08f92a1bb017ae879404ab2dd7fe52ccb8332df905e07b1ec347f1b6",
+      "size": 1192,
+      "start": 4215888
+    },
+    "entry": {
+      "address": "0x00405450",
+      "object": "source.ltcg.obj",
+      "requested": "?UpdateShotType@FrontEndControllerView@@SGHPAU1@@Z",
+      "rva": 21584,
+      "size": 1192,
+      "symbol": "?UpdateShotType@FrontEndControllerView@@SGHPAU1@@Z"
+    },
+    "dependencies_sha256": "31024811f64d9e83adb88975f3b20b3d0f5ba16d2473cc1c9b1ed4f53b6a38b5",
+    "image_sha256": "110d8df80a51055a8a33dcb1cce91a895eb124ae7f5863d7ba5215ab96ef1ac5",
+    "operational": {
+      "worker_phase": "complete",
+      "returncode_before_cleanup": 0,
+      "primary_reason": "none",
+      "cleanup_reason": "none",
+      "ordinary_client_group_cleanup_complete": true,
+      "shared_runtime_sampling_complete": true,
+      "shared_runtime_residual_count": 8,
+      "availability_grace_counts": {
+        "expired": 0,
+        "pending": 0,
+        "resolved": 0
+      }
+    }
+  },
+  "further_variants": "Parked per bounded source review; no independently grounded new correction",
+  "source_review": {
+    "note": "SHOTTYPE_POST_FACTOR2_SOURCE_REVIEW.md",
+    "sha256": "a2d3edf733d5db514c92bf29720898dbdeaaef6d143b6a10de41a3a4004c87b8"
+  }
+}
