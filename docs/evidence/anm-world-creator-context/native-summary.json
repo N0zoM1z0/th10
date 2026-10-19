@@ -1,0 +1,1647 @@
+{
+  "schema": 1,
+  "base_commit": "3dc8a1a",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "four complete118-byte world VM creators plus complete203-byte InitializeAndExecuteScriptIndex; no owner or origin change",
+  "new_exact_bytes": 0,
+  "all_source_trials_restored": true,
+  "current_source_freeze": {
+    "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+    "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "resource_policy": {
+    "native_jobs": 1,
+    "nice": 10,
+    "ghidra_heap_mib": 768,
+    "ghidra_cpus": 1
+  },
+  "variants": {
+    "layer-first": {
+      "primary_source": "src/AnmManager.cpp",
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "e61308d888c758abb0df11a9130a37d1c6aefc80f4d0b1b667181a8a272665d8",
+        "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "image_sha256": "a94b85acf1232edf134f2231bb65a7f78c365ef86458bcb571f54c2505e87df3",
+      "functions": {
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405D40",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "c30d1fa0dc5b369e72422431831424f2b46c743ca48d29d2d505a0066441614e"
+        },
+        "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405E70",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "c75999ad5c7e798f21fe4a63911fe0224de1a21128b672492affc4878087aee4"
+        },
+        "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405FA0",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "8f99aeb8eee34d3b97df421b2c1ffad1deaf1ddc7b4ecbad37529adb9191a80f"
+        },
+        "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x004060D0",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "d185164a3230ca1f7910b427d773ed19de2d424183b924f3d085511018017438"
+        },
+        "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "candidate_address": "0x00405AA0",
+          "candidate_size": 197,
+          "target_size": 203,
+          "matched_comparable_bytes": 17,
+          "comparable_bytes": 187,
+          "normalization_complete": true,
+          "complete_code_sha256": "ce7ee52b36d49b12454f919e586cee473838ff98dcbc88cf8fb4afd4905f5b3d"
+        },
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ": {
+          "candidate_address": "0x00402AE0",
+          "candidate_size": 153,
+          "target_size": 161,
+          "matched_comparable_bytes": 20,
+          "comparable_bytes": 145,
+          "normalization_complete": true,
+          "complete_code_sha256": "3bbfb8061f97bdb78348b55a47ecd070a05bdc43ab83676ec1296473f22bf60d"
+        },
+        "?Initialize@AnmVmView@@QAEXXZ": {
+          "candidate_address": "0x00408A10",
+          "candidate_size": 273,
+          "target_size": 273,
+          "matched_comparable_bytes": 273,
+          "comparable_bytes": 273,
+          "normalization_complete": true,
+          "complete_code_sha256": "f32fb0f2f6dee2f4ba11d3f1ffccd497250f5e2b82d18e0a6246ffa4d54fd111"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x00406150",
+          "candidate_size": 9948,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1312,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "complete_code_sha256": "711a36cbb036086ca23adbf440dfc82aa6f1aaa4da5bf641c2d41ee3fb585b0e"
+        }
+      }
+    },
+    "real-caller": {
+      "primary_source": "src/GuiMessage.cpp",
+      "entry_symbol": "?EnemyKillAll@@YGXPAUEnemyManagerView@@@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiMessage.cpp": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6",
+        "src/Player.hpp": "1747c454b804c1401365dd31735638600926442750d29351b074dfc6248a8f6a",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "image_sha256": "1f7d228bc5fe470744420c7b32974cb0b5eb3517479b2e0c10602f5dd9ae2b5e",
+      "functions": {
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x004062A0",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "8e2a9a656ae1e28a9c07a5f91caf2f17487a32906041d915f34bd043423341b3"
+        },
+        "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x004063D0",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "c2f1dc6b3d68ba48a78f059d4116916108b4d43f7aab6c707552dc0c9ad5e29e"
+        },
+        "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00406500",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "93b96d2f6eb137f508e3bc43d1e03557e687098f59827565345d1e6b7b0f1a8f"
+        },
+        "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00406630",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "b6036e117e81f3b7e7800546639a4fe2c5bd72d9882ad4f8609320dfee8a82d7"
+        },
+        "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "candidate_address": "0x00406000",
+          "candidate_size": 197,
+          "target_size": 203,
+          "matched_comparable_bytes": 17,
+          "comparable_bytes": 187,
+          "normalization_complete": true,
+          "complete_code_sha256": "ec69f3c394f9685c2f869a3fd892d33e9318b5dec526042a6fde861133378e23"
+        },
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ": {
+          "candidate_address": "0x00403060",
+          "candidate_size": 153,
+          "target_size": 161,
+          "matched_comparable_bytes": 20,
+          "comparable_bytes": 145,
+          "normalization_complete": true,
+          "complete_code_sha256": "9baf9462fdbee79c9c611eb831552dc486220491249a79f678a803c58800ca9c"
+        },
+        "?Initialize@AnmVmView@@QAEXXZ": {
+          "candidate_address": "0x00408F70",
+          "candidate_size": 273,
+          "target_size": 273,
+          "matched_comparable_bytes": 273,
+          "comparable_bytes": 273,
+          "normalization_complete": true,
+          "complete_code_sha256": "f32fb0f2f6dee2f4ba11d3f1ffccd497250f5e2b82d18e0a6246ffa4d54fd111"
+        },
+        "?SetupVertexBuffer@AnmRenderManagerView@@QAEXXZ": {
+          "candidate_address": "0x00403AE0",
+          "candidate_size": 472,
+          "target_size": 472,
+          "matched_comparable_bytes": 384,
+          "comparable_bytes": 384,
+          "normalization_complete": true,
+          "complete_code_sha256": "9e8239743953af07d90ce10e15a913b424c6dbb6fce4c14e2da431912b8ed732"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x004066B0",
+          "candidate_size": 9948,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1312,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "complete_code_sha256": "f4fd17c806b756649d06d5f14fbe8f4ab89fb4410b132f17ae121d08b2503cfb"
+        },
+        "?EnemyKillAll@@YGXPAUEnemyManagerView@@@Z": {
+          "candidate_address": "0x004010B0",
+          "candidate_size": 404,
+          "target_size": 182,
+          "matched_comparable_bytes": 5,
+          "comparable_bytes": 162,
+          "normalization_complete": true,
+          "complete_code_sha256": "0e30d26156de92286fee3f2d9ba681ba2139e6d78d8658914143a9757e088afe"
+        }
+      }
+    },
+    "outlined-real-caller": {
+      "primary_source": "src/GuiMessage.cpp",
+      "entry_symbol": "?EnemyKillAll@@YGXPAUEnemyManagerView@@@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "e7a84c4960c94b17e17a67e66e81c9d70dfa106e33986eea6a10109cb49cb834",
+        "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiMessage.cpp": "c53ed5ef974a296ecd83e949a50ad48d9f1d7e12b621680849dd465965bde4c6",
+        "src/Player.hpp": "1747c454b804c1401365dd31735638600926442750d29351b074dfc6248a8f6a",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "image_sha256": "fc2c19218f7e3998feee8bd080320e26c113b37e880c1ab84eb21acc9e6d5450",
+      "functions": {
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x004061C0",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "8e2a9a656ae1e28a9c07a5f91caf2f17487a32906041d915f34bd043423341b3"
+        },
+        "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x004062F0",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "c2f1dc6b3d68ba48a78f059d4116916108b4d43f7aab6c707552dc0c9ad5e29e"
+        },
+        "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00406420",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "93b96d2f6eb137f508e3bc43d1e03557e687098f59827565345d1e6b7b0f1a8f"
+        },
+        "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00406550",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "b6036e117e81f3b7e7800546639a4fe2c5bd72d9882ad4f8609320dfee8a82d7"
+        },
+        "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "candidate_address": "0x00405F20",
+          "candidate_size": 197,
+          "target_size": 203,
+          "matched_comparable_bytes": 17,
+          "comparable_bytes": 187,
+          "normalization_complete": true,
+          "complete_code_sha256": "ec69f3c394f9685c2f869a3fd892d33e9318b5dec526042a6fde861133378e23"
+        },
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ": {
+          "candidate_address": "0x00402F80",
+          "candidate_size": 153,
+          "target_size": 161,
+          "matched_comparable_bytes": 20,
+          "comparable_bytes": 145,
+          "normalization_complete": true,
+          "complete_code_sha256": "9cabe9845aba188c5d8b86ae8f280e04966fca85be65d05d3a61568590e7467f"
+        },
+        "?Initialize@AnmVmView@@QAEXXZ": {
+          "candidate_address": "0x00408E90",
+          "candidate_size": 273,
+          "target_size": 273,
+          "matched_comparable_bytes": 273,
+          "comparable_bytes": 273,
+          "normalization_complete": true,
+          "complete_code_sha256": "f32fb0f2f6dee2f4ba11d3f1ffccd497250f5e2b82d18e0a6246ffa4d54fd111"
+        },
+        "?SetupVertexBuffer@AnmRenderManagerView@@QAEXXZ": {
+          "candidate_address": "0x00403A00",
+          "candidate_size": 472,
+          "target_size": 472,
+          "matched_comparable_bytes": 384,
+          "comparable_bytes": 384,
+          "normalization_complete": true,
+          "complete_code_sha256": "9e8239743953af07d90ce10e15a913b424c6dbb6fce4c14e2da431912b8ed732"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x004065D0",
+          "candidate_size": 9948,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1312,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "complete_code_sha256": "ebe6acc4bac0dba7ccf2e7969063b122c5961d6f1ff62eb5ed4de9c81a24dd6d"
+        },
+        "?EnemyKillAll@@YGXPAUEnemyManagerView@@@Z": {
+          "candidate_address": "0x004010B0",
+          "candidate_size": 183,
+          "target_size": 182,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 158,
+          "normalization_complete": true,
+          "complete_code_sha256": "db1d419d1b295637bee3262a0f50907b060817029f8ed4627ddf3a4fa8a8e615"
+        }
+      }
+    },
+    "screen-family": {
+      "primary_source": "src/AnmManager.cpp",
+      "entry_symbol": "?Initialize@AnmVmView@@QAEXXZ",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "support_sources": [],
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+      "functions": {
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405C20",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "a3a46ecf40922b8556b14bb0eb5182856d0f1aefc5968e5a860043dc74334f3a"
+        },
+        "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405D50",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "f2a1d4f66f5f00f5dc6978ce1ef2fdc5ff86795cc9fbe047b8ad824113fe445e"
+        },
+        "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405E80",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "c978522d0d2657ef0fb35346e410d0124ed7b9c6bee07600bcde9556a473a984"
+        },
+        "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405FB0",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "fd1ae940b0f5ce1e67609d490a7ba9ab4dd33df01266603bf6271eed3eb5a2cd"
+        },
+        "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "candidate_address": "0x00405980",
+          "candidate_size": 203,
+          "target_size": 203,
+          "matched_comparable_bytes": 186,
+          "comparable_bytes": 187,
+          "normalization_complete": true,
+          "complete_code_sha256": "86bc32c5ef27920ddc05875430bc8dae3e5ea40b76ac8f714d1faad7ea0762ab"
+        },
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ": {
+          "candidate_address": "0x00402AB0",
+          "candidate_size": 159,
+          "target_size": 161,
+          "matched_comparable_bytes": 94,
+          "comparable_bytes": 145,
+          "normalization_complete": true,
+          "complete_code_sha256": "472133a182eb1d315414ac385770484b1daa620f4823b5e6cb87169e6af3b5eb"
+        },
+        "?Initialize@AnmVmView@@QAEXXZ": {
+          "candidate_address": "0x00408910",
+          "candidate_size": 275,
+          "target_size": 273,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 273,
+          "normalization_complete": true,
+          "complete_code_sha256": "a5f8e89cc9a62606cd4f1cf187d1ee1b0baa7a59320e46ab470b10a4af7a11e2"
+        },
+        "?SetupVertexBuffer@AnmRenderManagerView@@QAEXXZ": {
+          "candidate_address": "0x00403550",
+          "candidate_size": 472,
+          "target_size": 472,
+          "matched_comparable_bytes": 384,
+          "comparable_bytes": 384,
+          "normalization_complete": true,
+          "complete_code_sha256": "d067053617c1d9e4602108ad4126df8682c5eb8d47fb13a04bc726b10eecae28"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x00406030",
+          "candidate_size": 9980,
+          "target_size": 9964,
+          "matched_comparable_bytes": 413,
+          "comparable_bytes": 8584,
+          "normalization_complete": true,
+          "complete_code_sha256": "05d46df7eb943d7cd8fa7ea49a8ffa1b771578c364056ef4d2c885931041ae0f"
+        }
+      }
+    },
+    "screen-family-flags": {
+      "primary_source": "src/AnmManager.cpp",
+      "entry_symbol": "?Initialize@AnmVmView@@QAEXXZ",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "support_sources": [],
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "725c01100e76935ee12ab9a3894d6704b31db6172b28b4ae2d2f57efd7055e8e",
+        "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "image_sha256": "ac314f52a638bbb4d6fd7651f3512416e58526a38c1c6df0e84b722ef791b7e7",
+      "functions": {
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405C20",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "a3a46ecf40922b8556b14bb0eb5182856d0f1aefc5968e5a860043dc74334f3a"
+        },
+        "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405D50",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "f2a1d4f66f5f00f5dc6978ce1ef2fdc5ff86795cc9fbe047b8ad824113fe445e"
+        },
+        "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405E80",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "c978522d0d2657ef0fb35346e410d0124ed7b9c6bee07600bcde9556a473a984"
+        },
+        "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405FB0",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "fd1ae940b0f5ce1e67609d490a7ba9ab4dd33df01266603bf6271eed3eb5a2cd"
+        },
+        "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "candidate_address": "0x00405980",
+          "candidate_size": 203,
+          "target_size": 203,
+          "matched_comparable_bytes": 186,
+          "comparable_bytes": 187,
+          "normalization_complete": true,
+          "complete_code_sha256": "86bc32c5ef27920ddc05875430bc8dae3e5ea40b76ac8f714d1faad7ea0762ab"
+        },
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ": {
+          "candidate_address": "0x00402AB0",
+          "candidate_size": 159,
+          "target_size": 161,
+          "matched_comparable_bytes": 94,
+          "comparable_bytes": 145,
+          "normalization_complete": true,
+          "complete_code_sha256": "472133a182eb1d315414ac385770484b1daa620f4823b5e6cb87169e6af3b5eb"
+        },
+        "?Initialize@AnmVmView@@QAEXXZ": {
+          "candidate_address": "0x00408910",
+          "candidate_size": 275,
+          "target_size": 273,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 273,
+          "normalization_complete": true,
+          "complete_code_sha256": "a5f8e89cc9a62606cd4f1cf187d1ee1b0baa7a59320e46ab470b10a4af7a11e2"
+        },
+        "?SetupVertexBuffer@AnmRenderManagerView@@QAEXXZ": {
+          "candidate_address": "0x00403550",
+          "candidate_size": 472,
+          "target_size": 472,
+          "matched_comparable_bytes": 384,
+          "comparable_bytes": 384,
+          "normalization_complete": true,
+          "complete_code_sha256": "d067053617c1d9e4602108ad4126df8682c5eb8d47fb13a04bc726b10eecae28"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x00406030",
+          "candidate_size": 9980,
+          "target_size": 9964,
+          "matched_comparable_bytes": 413,
+          "comparable_bytes": 8584,
+          "normalization_complete": true,
+          "complete_code_sha256": "05d46df7eb943d7cd8fa7ea49a8ffa1b771578c364056ef4d2c885931041ae0f"
+        }
+      }
+    },
+    "screen-family-bitfield": {
+      "primary_source": "src/AnmManager.cpp",
+      "entry_symbol": "?Initialize@AnmVmView@@QAEXXZ",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "support_sources": [],
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "4f90f97853e6b90c0e00eab029f93422702416d1df75755f3df8426473e51358",
+        "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "image_sha256": "225765267efdafe5395bd2b9bb7647d47adbd310463f12392b27e9debda31e15",
+      "functions": {
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405C20",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "82071ba93d2c095eedf6f57ac2117843e19506666055bf281b4d36fa4c612ac0"
+        },
+        "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405D50",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "2f3e32058b72e5a1de7c80dae2ba0d30e0671110be69173dd4ffa828da26162a"
+        },
+        "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405E80",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "03d3113772ed9c82f3c74c3455c4bd0475e165d1303f2c5d146224f584ec92d1"
+        },
+        "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405FB0",
+          "candidate_size": 118,
+          "target_size": 118,
+          "matched_comparable_bytes": 77,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "5868474272bd6976cdc7c5c21a51dd5648a7eb59a49462607caadcd8cc6b8bf4"
+        },
+        "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "candidate_address": "0x00405980",
+          "candidate_size": 203,
+          "target_size": 203,
+          "matched_comparable_bytes": 186,
+          "comparable_bytes": 187,
+          "normalization_complete": true,
+          "complete_code_sha256": "86bc32c5ef27920ddc05875430bc8dae3e5ea40b76ac8f714d1faad7ea0762ab"
+        },
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ": {
+          "candidate_address": "0x00402AB0",
+          "candidate_size": 159,
+          "target_size": 161,
+          "matched_comparable_bytes": 94,
+          "comparable_bytes": 145,
+          "normalization_complete": true,
+          "complete_code_sha256": "472133a182eb1d315414ac385770484b1daa620f4823b5e6cb87169e6af3b5eb"
+        },
+        "?Initialize@AnmVmView@@QAEXXZ": {
+          "candidate_address": "0x00408910",
+          "candidate_size": 275,
+          "target_size": 273,
+          "matched_comparable_bytes": 13,
+          "comparable_bytes": 273,
+          "normalization_complete": true,
+          "complete_code_sha256": "a5f8e89cc9a62606cd4f1cf187d1ee1b0baa7a59320e46ab470b10a4af7a11e2"
+        },
+        "?SetupVertexBuffer@AnmRenderManagerView@@QAEXXZ": {
+          "candidate_address": "0x00403550",
+          "candidate_size": 472,
+          "target_size": 472,
+          "matched_comparable_bytes": 384,
+          "comparable_bytes": 384,
+          "normalization_complete": true,
+          "complete_code_sha256": "d067053617c1d9e4602108ad4126df8682c5eb8d47fb13a04bc726b10eecae28"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x00406030",
+          "candidate_size": 9980,
+          "target_size": 9964,
+          "matched_comparable_bytes": 413,
+          "comparable_bytes": 8584,
+          "normalization_complete": true,
+          "complete_code_sha256": "05d46df7eb943d7cd8fa7ea49a8ffa1b771578c364056ef4d2c885931041ae0f"
+        }
+      }
+    },
+    "screen-caller": {
+      "primary_source": "src/AnmManager.cpp",
+      "entry_symbol": "?CreateVmAtScreenVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "support_sources": [],
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+        "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "image_sha256": "7695c74aade46b4456be1632d2205d90b3a07e89ca8b515cb26c799ac4d3798c",
+      "functions": {
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405C20",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "ece2571519afa1358ae2e1103b21b3180ee466cd8a2e500836eb21e09bc39c84"
+        },
+        "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405D50",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "db0275d01731ee770a64052f8c55b7c9fe2bab280975d2b1a28bb101b8c8406b"
+        },
+        "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405E80",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "d6d1821926c76b8d36a86b9d17cbd8c13f33ef11e0b314671b721c3f7b9451f2"
+        },
+        "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405FB0",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "8882820ac8b4a9d4a851d618db558a33ecaed599c27f60cd912a0fe9236ab7ed"
+        },
+        "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "candidate_address": "0x00405980",
+          "candidate_size": 197,
+          "target_size": 203,
+          "matched_comparable_bytes": 17,
+          "comparable_bytes": 187,
+          "normalization_complete": true,
+          "complete_code_sha256": "16a0617cc7ed55d14e328efd8bf4a34feb810d6f6f7afeefa5635b407ca5800c"
+        },
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ": {
+          "candidate_address": "0x00402AB0",
+          "candidate_size": 153,
+          "target_size": 161,
+          "matched_comparable_bytes": 20,
+          "comparable_bytes": 145,
+          "normalization_complete": true,
+          "complete_code_sha256": "e9b6da463b0114a3292c5b821fd82aca59c10538e20414eaed0ee98b88feeea4"
+        },
+        "?Initialize@AnmVmView@@QAEXXZ": {
+          "candidate_address": "0x00408910",
+          "candidate_size": 273,
+          "target_size": 273,
+          "matched_comparable_bytes": 273,
+          "comparable_bytes": 273,
+          "normalization_complete": true,
+          "complete_code_sha256": "f32fb0f2f6dee2f4ba11d3f1ffccd497250f5e2b82d18e0a6246ffa4d54fd111"
+        },
+        "?SetupVertexBuffer@AnmRenderManagerView@@QAEXXZ": {
+          "candidate_address": "0x00403550",
+          "candidate_size": 472,
+          "target_size": 472,
+          "matched_comparable_bytes": 384,
+          "comparable_bytes": 384,
+          "normalization_complete": true,
+          "complete_code_sha256": "d067053617c1d9e4602108ad4126df8682c5eb8d47fb13a04bc726b10eecae28"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x00406030",
+          "candidate_size": 9980,
+          "target_size": 9964,
+          "matched_comparable_bytes": 413,
+          "comparable_bytes": 8584,
+          "normalization_complete": true,
+          "complete_code_sha256": "05d46df7eb943d7cd8fa7ea49a8ffa1b771578c364056ef4d2c885931041ae0f"
+        }
+      }
+    },
+    "ordinary-free-helper": {
+      "primary_source": "src/AnmManager.cpp",
+      "entry_symbol": "?CreateVmAtScreenVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "support_sources": [],
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "57c4f90e5d7e59d8fbcd6180e711bdb452b5ac4973b475df813841140f45a53a",
+        "src/AnmManager.hpp": "ea0f2b043897482fea6111e6cdddd24c7ddcb68da730d285928152b80fd0e8e5",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "image_sha256": "57949e788fafd30ab7514976e9fcb6ea64e4d17fbef1675494f7c9148ef1be2d",
+      "functions": {
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405C20",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "ece2571519afa1358ae2e1103b21b3180ee466cd8a2e500836eb21e09bc39c84"
+        },
+        "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405D50",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "db0275d01731ee770a64052f8c55b7c9fe2bab280975d2b1a28bb101b8c8406b"
+        },
+        "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405E80",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "d6d1821926c76b8d36a86b9d17cbd8c13f33ef11e0b314671b721c3f7b9451f2"
+        },
+        "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "candidate_address": "0x00405FB0",
+          "candidate_size": 116,
+          "target_size": 118,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 90,
+          "normalization_complete": true,
+          "complete_code_sha256": "8882820ac8b4a9d4a851d618db558a33ecaed599c27f60cd912a0fe9236ab7ed"
+        },
+        "?AnmInitializeAndExecuteScriptIndex@@YGXPAUAnmLoadedView@@PAUAnmVmView@@H@Z": {
+          "candidate_address": "0x00405980",
+          "candidate_size": 197,
+          "target_size": 203,
+          "matched_comparable_bytes": 17,
+          "comparable_bytes": 187,
+          "normalization_complete": true,
+          "complete_code_sha256": "16a0617cc7ed55d14e328efd8bf4a34feb810d6f6f7afeefa5635b407ca5800c"
+        },
+        "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ": {
+          "candidate_address": "0x00402AB0",
+          "candidate_size": 153,
+          "target_size": 161,
+          "matched_comparable_bytes": 20,
+          "comparable_bytes": 145,
+          "normalization_complete": true,
+          "complete_code_sha256": "e9b6da463b0114a3292c5b821fd82aca59c10538e20414eaed0ee98b88feeea4"
+        },
+        "?Initialize@AnmVmView@@QAEXXZ": {
+          "candidate_address": "0x00408910",
+          "candidate_size": 273,
+          "target_size": 273,
+          "matched_comparable_bytes": 273,
+          "comparable_bytes": 273,
+          "normalization_complete": true,
+          "complete_code_sha256": "f32fb0f2f6dee2f4ba11d3f1ffccd497250f5e2b82d18e0a6246ffa4d54fd111"
+        },
+        "?SetupVertexBuffer@AnmRenderManagerView@@QAEXXZ": {
+          "candidate_address": "0x00403550",
+          "candidate_size": 472,
+          "target_size": 472,
+          "matched_comparable_bytes": 384,
+          "comparable_bytes": 384,
+          "normalization_complete": true,
+          "complete_code_sha256": "d067053617c1d9e4602108ad4126df8682c5eb8d47fb13a04bc726b10eecae28"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_address": "0x00406030",
+          "candidate_size": 9980,
+          "target_size": 9964,
+          "matched_comparable_bytes": 413,
+          "comparable_bytes": 8584,
+          "normalization_complete": true,
+          "complete_code_sha256": "05d46df7eb943d7cd8fa7ea49a8ffa1b771578c364056ef4d2c885931041ae0f"
+        }
+      }
+    }
+  },
+  "layer_order_byte_neutral_in_four_tu_context": [
+    {
+      "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "old_code_sha256": "c30d1fa0dc5b369e72422431831424f2b46c743ca48d29d2d505a0066441614e",
+      "layer_first_code_sha256": "c30d1fa0dc5b369e72422431831424f2b46c743ca48d29d2d505a0066441614e",
+      "raw_equal": true
+    },
+    {
+      "symbol": "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "old_code_sha256": "c75999ad5c7e798f21fe4a63911fe0224de1a21128b672492affc4878087aee4",
+      "layer_first_code_sha256": "c75999ad5c7e798f21fe4a63911fe0224de1a21128b672492affc4878087aee4",
+      "raw_equal": true
+    },
+    {
+      "symbol": "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "old_code_sha256": "8f99aeb8eee34d3b97df421b2c1ffad1deaf1ddc7b4ecbad37529adb9191a80f",
+      "layer_first_code_sha256": "8f99aeb8eee34d3b97df421b2c1ffad1deaf1ddc7b4ecbad37529adb9191a80f",
+      "raw_equal": true
+    },
+    {
+      "symbol": "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "old_code_sha256": "d185164a3230ca1f7910b427d773ed19de2d424183b924f3d085511018017438",
+      "layer_first_code_sha256": "d185164a3230ca1f7910b427d773ed19de2d424183b924f3d085511018017438",
+      "raw_equal": true
+    }
+  ],
+  "free_helper_interface_control": {
+    "claim": "all three logical parameters are used; class ownership is a source hypothesis only; no padding, dead argument or asm interface",
+    "before": {
+      "AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+      "AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+      "Gui.cpp": "f65128ba8708668362dc6f6cb98a30afdd7faf0e20431fe312e1375147f1c251",
+      "EnemyEclDispatcher.cpp": "0bf2353635f2844649361955dd473a5c795bba8107dca60833be3439a377a8f6",
+      "Player.cpp": "495fcd5a453b8908e87f5ef658948ff1d5bb74d2b5d33e650ed3eea0399c05a6"
+    },
+    "after": {
+      "AnmManager.cpp": "57c4f90e5d7e59d8fbcd6180e711bdb452b5ac4973b475df813841140f45a53a",
+      "AnmManager.hpp": "ea0f2b043897482fea6111e6cdddd24c7ddcb68da730d285928152b80fd0e8e5",
+      "Gui.cpp": "6385691080a9f1babb39d1b74f3cd50250464b02fdce5df8b92852057da92585",
+      "EnemyEclDispatcher.cpp": "4c80909b26911a79ccf761896f3a7e421b8e60312243442e644af3c560fc6530",
+      "Player.cpp": "e55836621981df69ba1b75af6c604c3f2a36dc301c2c4f43897dd70c5a6cc671"
+    }
+  },
+  "retained_image_variant": "screen-family",
+  "retained_same_image_guards": {
+    "claim": "existing complete recipes explicitly adapted to this actual diagnostic image as same-image guards, no new credit",
+    "variant": "screen-family",
+    "guard_manifest_sha256": "735a0b2855b525664a174c8192aeffdee80359d136af388d7dc1931a3c6adc22",
+    "results": [
+      {
+        "unit": "anm-create-vm-screen-variant0",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?CreateVmAtScreenVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "target_address": "0x00448D50",
+        "size": 95,
+        "matched_bytes": 95,
+        "compared_size": 95,
+        "matched_compared_bytes": 95,
+        "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+        "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+        "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+        "pdb_age": 1,
+        "candidate_address": "0x00405BC0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 95,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x9",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          },
+          {
+            "offset": "0xE",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+            "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+            "local": false,
+            "candidate_target": "0x00402AB0",
+            "target": "0x00449950",
+            "addend": 0,
+            "target_encoded_value": "0x00000BEE"
+          },
+          {
+            "offset": "0x46",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+            "linked_symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+            "local": false,
+            "candidate_target": "0x00405980",
+            "target": "0x0043E710",
+            "addend": 0,
+            "target_encoded_value": "0xFFFF5976"
+          },
+          {
+            "offset": "0x4C",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          },
+          {
+            "offset": "0x55",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "linked_symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "local": false,
+            "candidate_target": "0x00402B50",
+            "target": "0x004489D0",
+            "addend": 0,
+            "target_encoded_value": "0xFFFFFC27"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      {
+        "unit": "anm-create-vm-screen-variant1",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?CreateVmAtScreenVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "target_address": "0x00448FB0",
+        "size": 95,
+        "matched_bytes": 95,
+        "compared_size": 95,
+        "matched_compared_bytes": 95,
+        "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+        "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+        "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+        "pdb_age": 1,
+        "candidate_address": "0x00405CF0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 95,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x9",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          },
+          {
+            "offset": "0xE",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+            "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+            "local": false,
+            "candidate_target": "0x00402AB0",
+            "target": "0x00449950",
+            "addend": 0,
+            "target_encoded_value": "0x0000098E"
+          },
+          {
+            "offset": "0x46",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+            "linked_symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+            "local": false,
+            "candidate_target": "0x00405980",
+            "target": "0x0043E710",
+            "addend": 0,
+            "target_encoded_value": "0xFFFF5716"
+          },
+          {
+            "offset": "0x4C",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          },
+          {
+            "offset": "0x55",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?AddVmVariant1@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "linked_symbol": "?AddVmVariant1@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "local": false,
+            "candidate_target": "0x00402BD0",
+            "target": "0x00448AC0",
+            "addend": 0,
+            "target_encoded_value": "0xFFFFFAB7"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      {
+        "unit": "anm-create-vm-screen-variant2",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?CreateVmAtScreenVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "target_address": "0x00448E80",
+        "size": 95,
+        "matched_bytes": 95,
+        "compared_size": 95,
+        "matched_compared_bytes": 95,
+        "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+        "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+        "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+        "pdb_age": 1,
+        "candidate_address": "0x00405E20",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 95,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x9",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          },
+          {
+            "offset": "0xE",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+            "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+            "local": false,
+            "candidate_target": "0x00402AB0",
+            "target": "0x00449950",
+            "addend": 0,
+            "target_encoded_value": "0x00000ABE"
+          },
+          {
+            "offset": "0x46",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+            "linked_symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+            "local": false,
+            "candidate_target": "0x00405980",
+            "target": "0x0043E710",
+            "addend": 0,
+            "target_encoded_value": "0xFFFF5846"
+          },
+          {
+            "offset": "0x4C",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          },
+          {
+            "offset": "0x55",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?AddVmVariant2@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "linked_symbol": "?AddVmVariant2@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "local": false,
+            "candidate_target": "0x00402C50",
+            "target": "0x00448A50",
+            "addend": 0,
+            "target_encoded_value": "0xFFFFFB77"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      {
+        "unit": "anm-create-vm-screen-variant3",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?CreateVmAtScreenVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+        "target_address": "0x004490E0",
+        "size": 95,
+        "matched_bytes": 95,
+        "compared_size": 95,
+        "matched_compared_bytes": 95,
+        "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+        "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+        "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+        "pdb_age": 1,
+        "candidate_address": "0x00405F50",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 95,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x9",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          },
+          {
+            "offset": "0xE",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+            "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+            "local": false,
+            "candidate_target": "0x00402AB0",
+            "target": "0x00449950",
+            "addend": 0,
+            "target_encoded_value": "0x0000085E"
+          },
+          {
+            "offset": "0x46",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+            "linked_symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+            "local": false,
+            "candidate_target": "0x00405980",
+            "target": "0x0043E710",
+            "addend": 0,
+            "target_encoded_value": "0xFFFF55E6"
+          },
+          {
+            "offset": "0x4C",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          },
+          {
+            "offset": "0x55",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?AddVmVariant3@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "linked_symbol": "?AddVmVariant3@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "local": false,
+            "candidate_target": "0x00402CC0",
+            "target": "0x00448B40",
+            "addend": 0,
+            "target_encoded_value": "0xFFFFFA07"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      },
+      {
+        "unit": "anm-setup-vertex-buffer",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?SetupVertexBuffer@AnmRenderManagerView@@QAEXXZ",
+        "target_address": "0x004462F0",
+        "size": 472,
+        "matched_bytes": 472,
+        "compared_size": 472,
+        "matched_compared_bytes": 472,
+        "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+        "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+        "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+        "pdb_age": 1,
+        "candidate_address": "0x00403550",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 1,
+        "decoded_bytes": 472,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x9A",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0B4",
+            "target": "0x00497930",
+            "addend": 0,
+            "target_encoded_value": "0x00497930"
+          },
+          {
+            "offset": "0xA3",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0B8",
+            "target": "0x00497930",
+            "addend": 4,
+            "target_encoded_value": "0x00497934"
+          },
+          {
+            "offset": "0xAC",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0BC",
+            "target": "0x00497930",
+            "addend": 8,
+            "target_encoded_value": "0x00497938"
+          },
+          {
+            "offset": "0xB8",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0CC",
+            "target": "0x00497930",
+            "addend": 24,
+            "target_encoded_value": "0x00497948"
+          },
+          {
+            "offset": "0xC4",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0D0",
+            "target": "0x00497930",
+            "addend": 28,
+            "target_encoded_value": "0x0049794C"
+          },
+          {
+            "offset": "0xD0",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0D4",
+            "target": "0x00497930",
+            "addend": 32,
+            "target_encoded_value": "0x00497950"
+          },
+          {
+            "offset": "0xDC",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0E4",
+            "target": "0x00497930",
+            "addend": 48,
+            "target_encoded_value": "0x00497960"
+          },
+          {
+            "offset": "0xE8",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0E8",
+            "target": "0x00497930",
+            "addend": 52,
+            "target_encoded_value": "0x00497964"
+          },
+          {
+            "offset": "0xF4",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0EC",
+            "target": "0x00497930",
+            "addend": 56,
+            "target_encoded_value": "0x00497968"
+          },
+          {
+            "offset": "0x100",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0FC",
+            "target": "0x00497930",
+            "addend": 72,
+            "target_encoded_value": "0x00497978"
+          },
+          {
+            "offset": "0x10C",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E100",
+            "target": "0x00497930",
+            "addend": 76,
+            "target_encoded_value": "0x0049797C"
+          },
+          {
+            "offset": "0x118",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E104",
+            "target": "0x00497930",
+            "addend": 80,
+            "target_encoded_value": "0x00497980"
+          },
+          {
+            "offset": "0x124",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0C4",
+            "target": "0x00497930",
+            "addend": 16,
+            "target_encoded_value": "0x00497940"
+          },
+          {
+            "offset": "0x130",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0C8",
+            "target": "0x00497930",
+            "addend": 20,
+            "target_encoded_value": "0x00497944"
+          },
+          {
+            "offset": "0x13C",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0DC",
+            "target": "0x00497930",
+            "addend": 40,
+            "target_encoded_value": "0x00497958"
+          },
+          {
+            "offset": "0x148",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0E0",
+            "target": "0x00497930",
+            "addend": 44,
+            "target_encoded_value": "0x0049795C"
+          },
+          {
+            "offset": "0x155",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0F4",
+            "target": "0x00497930",
+            "addend": 64,
+            "target_encoded_value": "0x00497970"
+          },
+          {
+            "offset": "0x16A",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E0F8",
+            "target": "0x00497930",
+            "addend": 68,
+            "target_encoded_value": "0x00497974"
+          },
+          {
+            "offset": "0x17B",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E10C",
+            "target": "0x00497930",
+            "addend": 88,
+            "target_encoded_value": "0x00497988"
+          },
+          {
+            "offset": "0x187",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0065",
+            "local": false,
+            "candidate_target": "0x0040E104",
+            "target": "0x00491C30",
+            "addend": 0,
+            "target_encoded_value": "0x00491C30"
+          },
+          {
+            "offset": "0x190",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmBackgroundQuadVertices@@3PAUAnmRenderVertexNoDiffuseView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0045",
+            "local": false,
+            "candidate_target": "0x0040E110",
+            "target": "0x00497930",
+            "addend": 92,
+            "target_encoded_value": "0x0049798C"
+          },
+          {
+            "offset": "0x1C0",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0065",
+            "local": false,
+            "candidate_target": "0x0040E104",
+            "target": "0x00491C30",
+            "addend": 0,
+            "target_encoded_value": "0x00491C30"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6"
+      }
+    ],
+    "matched_bytes": 852,
+    "linkage_count": 42
+  },
+  "tooling_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/linked_image.py": "5d667184a743874d1728c96a91bc1fd6176249dfd1c8413a2b04325d5f7b53b0",
+    "scripts/compare-linked-function.py": "7962e7b95c77834e19663db3277d0508f9fc143afc6f813553b6afc601430604"
+  },
+  "acceptance_authority": "none for candidates, partial matches or private interface assumptions"
+}

@@ -88,6 +88,16 @@ scratch paths, or build hashes into this file.
   controls pass, as do the target/retained181 selectors and108-group checks.
   Source coverage does not imply codegen or runtime equivalence. Do not retry
   the rejected prototype/lifetime models without additional TH10 evidence.
+- ANM world creators118 x4 and shared script starter203 remain nonexact.
+  Existing single-TU screen-family /GL context restores their target extents,
+  but strict complete replay finds13 ordinary bytes per creator and one helper
+  receiver byte; all32 target-bound fields are independently reviewed.
+  The real screen0 entry restores Initialize273 but coalesces helper/worlds
+  to197/116. All source/API/outlining controls are restored. Existing852 guard
+  bytes/all42 fields pass; no exact credit. These flags/bitfield/member/entry
+  controls are closed pending new TH10 alias/lifetime/caller evidence.
+  See [the bounded context review](evidence/anm-world-creator-context/README.md).
+  Rotate to another complete authored owner rather than repeat these controls.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

@@ -1,0 +1,791 @@
+{
+  "claim": "strict complete candidate replay fails, zero exact credit; all32 fields independently target bound",
+  "new_exact_bytes": 0,
+  "manifest_sha256": "791eb204e92e9596591ab3ee6a6e002407d36f923a2a186f777c03943f894622",
+  "results": [
+    {
+      "unit": "candidate-anm-create-vm-world-variant0",
+      "artifact_kind": "linked-pe",
+      "result": "mismatch",
+      "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "target_address": "0x00448DB0",
+      "size": 118,
+      "matched_bytes": 105,
+      "compared_size": 118,
+      "matched_compared_bytes": 105,
+      "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+      "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+      "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+      "pdb_age": 1,
+      "candidate_address": "0x00405C20",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 1,
+      "decoded_bytes": 118,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x9",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0xE",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "local": false,
+          "candidate_target": "0x00402AB0",
+          "target": "0x00449950",
+          "addend": 0,
+          "target_encoded_value": "0x00000B8E"
+        },
+        {
+          "offset": "0x38",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@43600000",
+          "linked_symbol": "__real@43600000",
+          "local": false,
+          "candidate_target": "0x0040D208",
+          "target": "0x00470B4C",
+          "addend": 0,
+          "target_encoded_value": "0x00470B4C"
+        },
+        {
+          "offset": "0x47",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@41800000",
+          "linked_symbol": "__real@41800000",
+          "local": false,
+          "candidate_target": "0x0040D204",
+          "target": "0x00470B48",
+          "addend": 0,
+          "target_encoded_value": "0x00470B48"
+        },
+        {
+          "offset": "0x5D",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "linked_symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "local": false,
+          "candidate_target": "0x00405980",
+          "target": "0x0043E710",
+          "addend": 0,
+          "target_encoded_value": "0xFFFF58FF"
+        },
+        {
+          "offset": "0x63",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0x6C",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+          "linked_symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x00402B50",
+          "target": "0x004489D0",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFFBB0"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [
+        {
+          "offset": "0x22",
+          "linked": 13,
+          "target": 199
+        },
+        {
+          "offset": "0x23",
+          "linked": 0,
+          "target": 70
+        },
+        {
+          "offset": "0x24",
+          "linked": 0,
+          "target": 32
+        },
+        {
+          "offset": "0x26",
+          "linked": 64,
+          "target": 0
+        },
+        {
+          "offset": "0x27",
+          "linked": 137,
+          "target": 0
+        },
+        {
+          "offset": "0x28",
+          "linked": 134,
+          "target": 0
+        },
+        {
+          "offset": "0x29",
+          "linked": 92,
+          "target": 13
+        },
+        {
+          "offset": "0x2A",
+          "linked": 3,
+          "target": 0
+        },
+        {
+          "offset": "0x2D",
+          "linked": 199,
+          "target": 64
+        },
+        {
+          "offset": "0x2E",
+          "linked": 70,
+          "target": 137
+        },
+        {
+          "offset": "0x2F",
+          "linked": 32,
+          "target": 134
+        },
+        {
+          "offset": "0x30",
+          "linked": 0,
+          "target": 92
+        },
+        {
+          "offset": "0x31",
+          "linked": 0,
+          "target": 3
+        }
+      ],
+      "capstone_version": "5.0.6"
+    },
+    {
+      "unit": "candidate-anm-create-vm-world-variant1",
+      "artifact_kind": "linked-pe",
+      "result": "mismatch",
+      "symbol": "?CreateVmAtWorldVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "target_address": "0x00449010",
+      "size": 118,
+      "matched_bytes": 105,
+      "compared_size": 118,
+      "matched_compared_bytes": 105,
+      "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+      "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+      "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+      "pdb_age": 1,
+      "candidate_address": "0x00405D50",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 1,
+      "decoded_bytes": 118,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x9",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0xE",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "local": false,
+          "candidate_target": "0x00402AB0",
+          "target": "0x00449950",
+          "addend": 0,
+          "target_encoded_value": "0x0000092E"
+        },
+        {
+          "offset": "0x38",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@43600000",
+          "linked_symbol": "__real@43600000",
+          "local": false,
+          "candidate_target": "0x0040D208",
+          "target": "0x00470B4C",
+          "addend": 0,
+          "target_encoded_value": "0x00470B4C"
+        },
+        {
+          "offset": "0x47",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@41800000",
+          "linked_symbol": "__real@41800000",
+          "local": false,
+          "candidate_target": "0x0040D204",
+          "target": "0x00470B48",
+          "addend": 0,
+          "target_encoded_value": "0x00470B48"
+        },
+        {
+          "offset": "0x5D",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "linked_symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "local": false,
+          "candidate_target": "0x00405980",
+          "target": "0x0043E710",
+          "addend": 0,
+          "target_encoded_value": "0xFFFF569F"
+        },
+        {
+          "offset": "0x63",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0x6C",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?AddVmVariant1@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+          "linked_symbol": "?AddVmVariant1@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x00402BD0",
+          "target": "0x00448AC0",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFFA40"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [
+        {
+          "offset": "0x22",
+          "linked": 13,
+          "target": 199
+        },
+        {
+          "offset": "0x23",
+          "linked": 0,
+          "target": 70
+        },
+        {
+          "offset": "0x24",
+          "linked": 0,
+          "target": 32
+        },
+        {
+          "offset": "0x26",
+          "linked": 64,
+          "target": 0
+        },
+        {
+          "offset": "0x27",
+          "linked": 137,
+          "target": 0
+        },
+        {
+          "offset": "0x28",
+          "linked": 134,
+          "target": 0
+        },
+        {
+          "offset": "0x29",
+          "linked": 92,
+          "target": 13
+        },
+        {
+          "offset": "0x2A",
+          "linked": 3,
+          "target": 0
+        },
+        {
+          "offset": "0x2D",
+          "linked": 199,
+          "target": 64
+        },
+        {
+          "offset": "0x2E",
+          "linked": 70,
+          "target": 137
+        },
+        {
+          "offset": "0x2F",
+          "linked": 32,
+          "target": 134
+        },
+        {
+          "offset": "0x30",
+          "linked": 0,
+          "target": 92
+        },
+        {
+          "offset": "0x31",
+          "linked": 0,
+          "target": 3
+        }
+      ],
+      "capstone_version": "5.0.6"
+    },
+    {
+      "unit": "candidate-anm-create-vm-world-variant2",
+      "artifact_kind": "linked-pe",
+      "result": "mismatch",
+      "symbol": "?CreateVmAtWorldVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "target_address": "0x00448EE0",
+      "size": 118,
+      "matched_bytes": 105,
+      "compared_size": 118,
+      "matched_compared_bytes": 105,
+      "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+      "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+      "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+      "pdb_age": 1,
+      "candidate_address": "0x00405E80",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 1,
+      "decoded_bytes": 118,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x9",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0xE",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "local": false,
+          "candidate_target": "0x00402AB0",
+          "target": "0x00449950",
+          "addend": 0,
+          "target_encoded_value": "0x00000A5E"
+        },
+        {
+          "offset": "0x38",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@43600000",
+          "linked_symbol": "__real@43600000",
+          "local": false,
+          "candidate_target": "0x0040D208",
+          "target": "0x00470B4C",
+          "addend": 0,
+          "target_encoded_value": "0x00470B4C"
+        },
+        {
+          "offset": "0x47",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@41800000",
+          "linked_symbol": "__real@41800000",
+          "local": false,
+          "candidate_target": "0x0040D204",
+          "target": "0x00470B48",
+          "addend": 0,
+          "target_encoded_value": "0x00470B48"
+        },
+        {
+          "offset": "0x5D",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "linked_symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "local": false,
+          "candidate_target": "0x00405980",
+          "target": "0x0043E710",
+          "addend": 0,
+          "target_encoded_value": "0xFFFF57CF"
+        },
+        {
+          "offset": "0x63",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0x6C",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?AddVmVariant2@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+          "linked_symbol": "?AddVmVariant2@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x00402C50",
+          "target": "0x00448A50",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFFB00"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [
+        {
+          "offset": "0x22",
+          "linked": 13,
+          "target": 199
+        },
+        {
+          "offset": "0x23",
+          "linked": 0,
+          "target": 70
+        },
+        {
+          "offset": "0x24",
+          "linked": 0,
+          "target": 32
+        },
+        {
+          "offset": "0x26",
+          "linked": 64,
+          "target": 0
+        },
+        {
+          "offset": "0x27",
+          "linked": 137,
+          "target": 0
+        },
+        {
+          "offset": "0x28",
+          "linked": 134,
+          "target": 0
+        },
+        {
+          "offset": "0x29",
+          "linked": 92,
+          "target": 13
+        },
+        {
+          "offset": "0x2A",
+          "linked": 3,
+          "target": 0
+        },
+        {
+          "offset": "0x2D",
+          "linked": 199,
+          "target": 64
+        },
+        {
+          "offset": "0x2E",
+          "linked": 70,
+          "target": 137
+        },
+        {
+          "offset": "0x2F",
+          "linked": 32,
+          "target": 134
+        },
+        {
+          "offset": "0x30",
+          "linked": 0,
+          "target": 92
+        },
+        {
+          "offset": "0x31",
+          "linked": 0,
+          "target": 3
+        }
+      ],
+      "capstone_version": "5.0.6"
+    },
+    {
+      "unit": "candidate-anm-create-vm-world-variant3",
+      "artifact_kind": "linked-pe",
+      "result": "mismatch",
+      "symbol": "?CreateVmAtWorldVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "target_address": "0x00449140",
+      "size": 118,
+      "matched_bytes": 105,
+      "compared_size": 118,
+      "matched_compared_bytes": 105,
+      "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+      "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+      "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+      "pdb_age": 1,
+      "candidate_address": "0x00405FB0",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 1,
+      "decoded_bytes": 118,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x9",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0xE",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "linked_symbol": "?AllocateVm@AnmRenderManagerView@@QAEPAUAnmVmView@@XZ",
+          "local": false,
+          "candidate_target": "0x00402AB0",
+          "target": "0x00449950",
+          "addend": 0,
+          "target_encoded_value": "0x000007FE"
+        },
+        {
+          "offset": "0x38",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@43600000",
+          "linked_symbol": "__real@43600000",
+          "local": false,
+          "candidate_target": "0x0040D208",
+          "target": "0x00470B4C",
+          "addend": 0,
+          "target_encoded_value": "0x00470B4C"
+        },
+        {
+          "offset": "0x47",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@41800000",
+          "linked_symbol": "__real@41800000",
+          "local": false,
+          "candidate_target": "0x0040D204",
+          "target": "0x00470B48",
+          "addend": 0,
+          "target_encoded_value": "0x00470B48"
+        },
+        {
+          "offset": "0x5D",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "linked_symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "local": false,
+          "candidate_target": "0x00405980",
+          "target": "0x0043E710",
+          "addend": 0,
+          "target_encoded_value": "0xFFFF556F"
+        },
+        {
+          "offset": "0x63",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        },
+        {
+          "offset": "0x6C",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?AddVmVariant3@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+          "linked_symbol": "?AddVmVariant3@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x00402CC0",
+          "target": "0x00448B40",
+          "addend": 0,
+          "target_encoded_value": "0xFFFFF990"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [
+        {
+          "offset": "0x22",
+          "linked": 13,
+          "target": 199
+        },
+        {
+          "offset": "0x23",
+          "linked": 0,
+          "target": 70
+        },
+        {
+          "offset": "0x24",
+          "linked": 0,
+          "target": 32
+        },
+        {
+          "offset": "0x26",
+          "linked": 64,
+          "target": 0
+        },
+        {
+          "offset": "0x27",
+          "linked": 137,
+          "target": 0
+        },
+        {
+          "offset": "0x28",
+          "linked": 134,
+          "target": 0
+        },
+        {
+          "offset": "0x29",
+          "linked": 92,
+          "target": 13
+        },
+        {
+          "offset": "0x2A",
+          "linked": 3,
+          "target": 0
+        },
+        {
+          "offset": "0x2D",
+          "linked": 199,
+          "target": 64
+        },
+        {
+          "offset": "0x2E",
+          "linked": 70,
+          "target": 137
+        },
+        {
+          "offset": "0x2F",
+          "linked": 32,
+          "target": 134
+        },
+        {
+          "offset": "0x30",
+          "linked": 0,
+          "target": 92
+        },
+        {
+          "offset": "0x31",
+          "linked": 0,
+          "target": 3
+        }
+      ],
+      "capstone_version": "5.0.6"
+    },
+    {
+      "unit": "candidate-anm-initialize-and-execute-script",
+      "artifact_kind": "linked-pe",
+      "result": "mismatch",
+      "symbol": "?InitializeAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+      "target_address": "0x0043E710",
+      "size": 203,
+      "matched_bytes": 202,
+      "compared_size": 203,
+      "matched_compared_bytes": 202,
+      "image": "build/gpt-6.1-sol/th10-anm-world-20261019/screen-family/source.exe",
+      "image_sha256": "96da899322369367287ddcd5206869d7726d1870f03e2e0f3d0aea685fa4b4bb",
+      "pdb_guid": "52d6c8ab694c414fbc76271271926b16",
+      "pdb_age": 1,
+      "candidate_address": "0x00405980",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 1,
+      "decoded_bytes": 203,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x29",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?Initialize@AnmVmView@@QAEXXZ",
+          "linked_symbol": "?Initialize@AnmVmView@@QAEXXZ",
+          "local": false,
+          "candidate_target": "0x00408910",
+          "target": "0x00401DE0",
+          "addend": 0,
+          "target_encoded_value": "0xFFFC36A3"
+        },
+        {
+          "offset": "0x85",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmGameSpeed@@3MA",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+          "local": false,
+          "candidate_target": "0x0040E0CC",
+          "target": "0x00476F78",
+          "addend": 0,
+          "target_encoded_value": "0x00476F78"
+        },
+        {
+          "offset": "0xAA",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x00406030",
+          "target": "0x0043EE30",
+          "addend": 0,
+          "target_encoded_value": "0x00000672"
+        },
+        {
+          "offset": "0xAF",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0059",
+          "local": false,
+          "candidate_target": "0x0040E0EC",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [
+        {
+          "offset": "0x27",
+          "linked": 207,
+          "target": 215
+        }
+      ],
+      "capstone_version": "5.0.6"
+    }
+  ]
+}
