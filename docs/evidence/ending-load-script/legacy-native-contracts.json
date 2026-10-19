@@ -1,0 +1,107 @@
+{
+  "scope": "Audit four Ending creation contracts in native code; grants no exact credit.\n\nThis deliberately checks historical-compiler output as well as the target.\nC++17 host evaluation order cannot prove the destination was read after a call\nin the reconstructed VC7.1 image. Complete-owner exactness is a separate Oracle.\nIt accepts the observed EBP receiver and18-entry table shape; it is not a\ngeneral semantic equivalence checker.\n",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target": {
+    "records": [
+      {
+        "opcode": 8,
+        "creator_call": "0x40c05e",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40c063",
+          "operand_load": "0x40c066",
+          "destination_store": "0x40c06b"
+        }
+      },
+      {
+        "opcode": 15,
+        "creator_call": "0x40c0ab",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40c0b0",
+          "operand_load": "0x40c0b3",
+          "destination_store": "0x40c0b8"
+        }
+      },
+      {
+        "opcode": 16,
+        "creator_call": "0x40c0f8",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40c0fd",
+          "operand_load": "0x40c100",
+          "destination_store": "0x40c105"
+        }
+      },
+      {
+        "opcode": 17,
+        "creator_call": "0x40c145",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40c14a",
+          "operand_load": "0x40c14d",
+          "destination_store": "0x40c152"
+        }
+      }
+    ],
+    "passed": true
+  },
+  "native": {
+    "records": [
+      {
+        "opcode": 8,
+        "creator_call": "0x401f3f",
+        "uses_primary_creator": false,
+        "destination_loaded_after_call": false,
+        "destination": null
+      },
+      {
+        "opcode": 15,
+        "creator_call": "0x401f89",
+        "uses_primary_creator": false,
+        "destination_loaded_after_call": false,
+        "destination": null
+      },
+      {
+        "opcode": 16,
+        "creator_call": "0x401fd3",
+        "uses_primary_creator": false,
+        "destination_loaded_after_call": false,
+        "destination": null
+      },
+      {
+        "opcode": 17,
+        "creator_call": "0x40201d",
+        "uses_primary_creator": false,
+        "destination_loaded_after_call": false,
+        "destination": null
+      }
+    ],
+    "passed": false
+  },
+  "run_owner": {
+    "symbol": "?Run@EndingTextVmView@@QAGHXZ",
+    "address": "0x00401C60",
+    "size": 1552,
+    "extent_source": "pdb-section-contribution",
+    "section": ".text",
+    "section_number": 1,
+    "section_offset": 3168,
+    "map_object": "source.ltcg.obj",
+    "pdb_module_index": 4,
+    "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-ending-script-20261020\\baseline\\source.ltcg.obj",
+    "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-ending-script-20261020\\baseline\\source.ltcg.obj",
+    "sha256": "7b12c397227da0b8c220d319671f004373d4c956696f7ebd12ae9b2758a4d4f0"
+  },
+  "passed": false,
+  "artifact_sha256": {
+    "source.exe": "a90d7d81115bb9d2c06c86b5c46a655f0edabbc39d7ad586e8459e498e68dda5",
+    "source.map": "ea2c64288f1e5301e4f8a726bd5a742f3956c0f43ae495a253b4fd0ed1affeb7",
+    "source.pdb": "9befdf3a3c4f8739e2ee08cf3d4b0d74f0bd0a9ab8343bbb448fb6027f9af2db"
+  },
+  "exactness_authority": "none; complete-owner canonical replay is separate"
+}

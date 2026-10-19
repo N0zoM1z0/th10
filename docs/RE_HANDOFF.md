@@ -31,6 +31,21 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Ending reload LoadScript40B480 closes **106 authored exact bytes**, with its
+  source unchanged. Two full18-TU /GL /GS /EHs colds use the real Main checksum
+  entry plus archive dependency and freeze52 inputs. Each strictly passes943
+  complete bytes/all57 fields, including837 existing guard bytes. This restores
+  OpenFile's target EAX filename + two stack operands; no normal-COFF/flag sweep.
+  Run's four animation branches now call primary-list Variant0 and explicitly
+  sequence creation before the live destination lookup. The former Variant1
+  source and C++17 host shim masked two real recovery errors. Actual creator
+  bodies/distinct host lists, five ASan/UBSan mutants and a native four-case
+  dependency auditor cover the corrections; the old native carrier fails and
+  both new carriers pass. Run1576/1568 and Init584/584 remain nonexact.
+  Auxiliary-reference, scalar and publication-helper controls are not adopted.
+  Next: target-backed remaining Run register/aggregate lifetime or loader tail;
+  preserve the complete contracts and exact guards. See
+  [the exact loader and native correction evidence](evidence/ending-load-script/README.md).
 - Ending controller/text workflow now maps all10 authored owners/3889 bytes.
   Complete Run ownership is1568, including18 table entries and2 tail alignment
   bytes; the corrected denominator gains74 bytes, without partial exact credit.

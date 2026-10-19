@@ -1,0 +1,77 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_base_commit": "b2e7d3b",
+  "completed_checks": [
+    "verify-target; verify-toolchain --execute; validate-tracking --require-target; report-reconstruction-status",
+    "fresh local read-only Ghidra full mapped-text attestation and rollback review",
+    "two independent full18-TU colds;52 source/header inputs agree and remain unchanged",
+    "complete strict comparison943 bytes/all57 fields per image;106 new authored bytes and837 existing guards",
+    "canonical ending-load-script comparator passed",
+    "native Run primary creator and post-call operand dependency audit passes both full cold images; legacy image fails both properties in all4 cases",
+    "actual-source ASan/UBSan/leak detection: positive and5 exact named mutant failures",
+    "failed-open release-current-buffer host scenario",
+    "verify-toolchain --check; validate-tracking; source completeness Ending --require-complete",
+    "progress regenerated; match-unit declarations pass",
+    "complete CI81 groups passed",
+    "final focused doc/ledger/progress/staged whitespace checks"
+  ],
+  "ci": {
+    "exit_code": 0,
+    "groups": 81,
+    "log_sha256": "e3f35876616e7ebb6ac2b3f3750637ac3759c30e8e3f47bcb9da8cd9ff8ffe90"
+  },
+  "new_authored_exact_bytes": 106,
+  "authored_exact_bytes": 61198,
+  "authored_owned_bytes": 270150,
+  "authored_source_present_nonexact": 212,
+  "authored_source_absent": 163,
+  "origin_boundary_denominator_changes": false,
+  "run_exact": false,
+  "native_auditor_sha256": "80f9901158882376ffe61711d28e1893cff468a87fc1c198ca9b41e7a8d20902",
+  "historical_whole_native_cohort_replayed": false,
+  "private_controls_are_cold_proofs": false,
+  "known_boundary_audit_limit": "pre-existing401100 evidence-text-only discrepancy unchanged; no new boundary claim in this batch",
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-codegen-20261020/aux-ref",
+        "bytes": 2225187
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-codegen-20261020/run-phases",
+        "bytes": 2225393
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-codegen-20261020/run-reference",
+        "bytes": 2225637
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-codegen-20261020/run-scalar",
+        "bytes": 2225508
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-codegen-20261020/run-sink",
+        "bytes": 2225602
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-codegen-20261020/file-context",
+        "bytes": 2278702
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-script-20261020/baseline",
+        "bytes": 1528000,
+        "note": "only superseded objects/logs removed; four legacy proof artifacts retained"
+      },
+      {
+        "path": "build/host-tests/ending-state-followup",
+        "bytes": 1339689
+      }
+    ],
+    "total_removed_bytes": 16273718,
+    "retained": "canonical new loader artifact, independent first cold/cache, legacy four-artifact negative control, compact source overlays and proof metadata",
+    "preexisting_d3d": "untouched"
+  },
+  "preexisting_d3d": "untouched and unstaged",
+  "product_runtime_gate": "open",
+  "semantic_port_gates": "not started"
+}

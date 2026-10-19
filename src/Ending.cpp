@@ -340,42 +340,47 @@ int __stdcall EndingTextVmView::Run()
         case 7:
             g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);
             g_AnmRenderManagerView->ReleaseAnm(EndingRecordInt(instruction) + 29);
-            flags |= 4;
             backgroundPath = reinterpret_cast<const char *>(instruction + 8);
+            flags |= 4;
             worker.Start(this, EndingLoadAnimationCallback);
             instruction = EndingRecordNext(instruction);
             return 0;
+        // Creation may change instruction; resolve its destination afterwards.
         case 8:
             {
-                int slot = EndingRecordInt(command);
-                g_AnmRenderManagerView->MarkVmForDeletion(animationIds[slot]);
-                animationIds[slot].value = 0;
-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->
-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);
+                AnmVmIdView &oldId = animationIds[EndingRecordInt(command)];
+                g_AnmRenderManagerView->MarkVmForDeletion(oldId);
+                oldId.value = 0;
+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->
+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);
+                animationIds[EndingRecordInt(instruction)] = created;
             }
             break;
         case 15:
             if (g_GuiDifficulty == 1)
             {
                 animationIds[EndingRecordInt(instruction)].Release();
-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->
-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);
+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->
+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);
+                animationIds[EndingRecordInt(instruction)] = created;
             }
             break;
         case 16:
             if (g_GuiDifficulty == 2)
             {
                 animationIds[EndingRecordInt(instruction)].Release();
-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->
-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);
+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->
+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);
+                animationIds[EndingRecordInt(instruction)] = created;
             }
             break;
         case 17:
             if (g_GuiDifficulty == 3)
             {
                 animationIds[EndingRecordInt(instruction)].Release();
-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->
-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);
+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->
+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);
+                animationIds[EndingRecordInt(instruction)] = created;
             }
             break;
         case 9: color = EndingRecordInt(command); break;

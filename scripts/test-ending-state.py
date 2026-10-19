@@ -65,7 +65,7 @@ extern "C" int CloseHandle(void *);
     ctor=body(source,'EndingTaskView()'); assert ctor.count('flags &= ~1u;')==1
     source=source.replace(ctor,ctor.replace('flags &= ~1u;','flags = 0xa5a5a5a5u & ~1u; // HOST defined node prefill.'))
     source=re.sub(r'^\s*#include[^\n]*\n','',source,flags=re.M)
-    signatures={'AnmManager.cpp':['AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)','void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)','void AnmRenderManagerView::ReleaseAnm(int index)','void AnmVmTimerView::Initialize()','void AnmVmTimerView::Add(float value)'], 'AnmVmId.cpp':['AnmVmView *AnmVmIdView::GetVm()','void AnmVmIdView::Release()'], 'Player.cpp':['void PlayerSetShotVmInterrupt2(unsigned int *vmId)'], 'FrontEnd.cpp':['void ResultMenuPendingThree(AnmVmIdView *id)'], 'EnemyEclDispatcher.cpp':['__declspec(noinline) void EnemyMarkPendingInterrupt(int *id)','void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)'], 'ScriptViewer.cpp':['ScriptViewerWorkerView::ScriptViewerWorkerView()'], 'ScriptViewerWorker.cpp':['ScriptViewerWorkerView::~ScriptViewerWorkerView()','void ScriptViewerWorkerView::Stop()','void ScriptViewerWorkerView::Start(']}
+    signatures={'AnmManager.cpp':['AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)','void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)','void AnmRenderManagerView::ReleaseAnm(int index)','void AnmVmTimerView::Initialize()','void AnmVmTimerView::Add(float value)','AnmVmIdView AnmLoadedView::CreateVmVariant0(','AnmVmIdView AnmLoadedView::CreateVmVariant1('], 'AnmVmId.cpp':['AnmVmView *AnmVmIdView::GetVm()','void AnmVmIdView::Release()'], 'Player.cpp':['void PlayerSetShotVmInterrupt2(unsigned int *vmId)'], 'FrontEnd.cpp':['void ResultMenuPendingThree(AnmVmIdView *id)'], 'EnemyEclDispatcher.cpp':['__declspec(noinline) void EnemyMarkPendingInterrupt(int *id)','void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)'], 'ScriptViewer.cpp':['ScriptViewerWorkerView::ScriptViewerWorkerView()'], 'ScriptViewerWorker.cpp':['ScriptViewerWorkerView::~ScriptViewerWorkerView()','void ScriptViewerWorkerView::Stop()','void ScriptViewerWorkerView::Start(']}
     dependencies=[]
     for name,sigs in signatures.items():
         path=ROOT/'src'/name; text=path.read_text();hashes[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest();dependencies.extend(body(text,s) for s in sigs)
@@ -76,8 +76,10 @@ extern "C" int CloseHandle(void *);
     if not args.no_mutations:
         old='th10::leaf::Fn00417010(instruction + 4)'; assert source.count(old)==1
         variants.append(('stale_text',source.replace(old,'th10::leaf::Fn00417010(command + 4)'),'text-live-cursor'))
-        old='animationIds[EndingRecordInt(instruction)] = resources'; assert source.count(old)==4
-        variants.append(('stale_animation',source.replace(old,'animationIds[EndingRecordInt(command)] = resources'),'animation-live-destination'))
+        old='animationIds[EndingRecordInt(instruction)] = created;'; assert source.count(old)==4
+        variants.append(('stale_animation',source.replace(old,'animationIds[EndingRecordInt(command)] = created;'),'animation-live-destination'))
+        old='CreateVmVariant0(EndingRecordInt(instruction, 2), 15)'; assert source.count(old)==4
+        variants.append(('secondary_chain',source.replace(old,'CreateVmVariant1(EndingRecordInt(instruction, 2), 15)'),'animation-primary-chain'))
         old='flags |= 2;\n                continue;'; assert source.count(old)==1
         variants.append(('reload_skip',source.replace(old,'flags |= 2;\n                break;'),'reload-first-command'))
         old='g_FrontEndInput.pressed & 0x1001'; assert source.count(old)==2

@@ -2822,3 +2822,46 @@ and native layout assertions are omitted in host copies. These explicit seams
 cannot prove native lifetime, scheduling, ABI or target runtime. The known
 global401100 evidence-text-only boundary audit discrepancy remains unchanged.
 See [the target, source, exact and host scope](evidence/ending-script/README.md).
+
+## 2026-10-20 Ending reload exact and native creation corrections
+
+LoadScript40B480..40B4E9 closes106 authored bytes with its maintained source
+unchanged. The former EndingCreate-rooted /GL diagnostic passes file mode0 in
+EBX, producing108 bytes. Target OpenFile instead consumes filenameEAX and
+sizeOut/mode on the stack (RET8). The real maintained Main checksum entry uses
+mode1; with that entry and the actual PbgArchive dependency, the declared18-TU
+/GL /GS /EHs graph restores the complete106-byte loader and target call ABI.
+This is a combined context observation, not proof of minimal graph or original
+production partition; no /GL removal, signature change or flag sweep follows.
+Two independent full colds freeze52 inputs and replay943 complete bytes/all57
+fields each: new106/all5, actual OpenFile360/all26, primary creator73/all5,
+ReleaseAnm55/all2, and six prior Ending owners349/all19. No duplicate guard
+credit or old canonical recipe migration is made.
+
+Raw TH10 creation calls in Run opcodes8/15/16/17 target448D00, the exact
+primary-list CreateVmVariant0. The earlier source used secondary-list Variant1
+448F60, while the old host shim routed that wrong call to the primary list.
+That recovery error is corrected. Target destination operands are read after
+creation. The old VC7.1 output reads them before the call, but the host C++17
+assignment order masked the difference. Explicit ordinary ID temporaries now
+sequence creation before the live destination read. Opcode8 borrows its actual
+old ID; opcode7 publishes the path before its busy-flag store. No fabricated
+return slot, new forced helper, volatile or ABI annotation is introduced.
+
+The host suite now uses both actual production creator bodies and distinct
+primary/secondary insertion roles, checks script/layer/creation flags, and
+rejects the wrong-chain mutant alongside four existing strict mutations.
+ASan/UBSan/leak detection and a failed-load-current-buffer release scenario
+pass. SDK/assets/allocation/list insertion, host vptr preservation, prefill and
+simulated worker startup remain explicit seams, not target runtime proof.
+The native Run auditor independently binds actual creator calls and follows
+the post-call cursor/operand/store register dependency: all four old cases
+fail both contracts; both final carriers pass. Its target-specific contract
+scope gives no parent exactness credit.
+
+Run1576/1568 and initializer584/584 remain nonexact. Auxiliary-ID borrowing,
+named reference/scalar and ordinary publication-helper controls do not close
+the full owners; the helper/scalar forms are discarded. Only the explicit
+aggregate sequencing and TH10-backed behavior corrections are retained.
+Product/runtime, dual-Oracle semantics and port gates remain open. See
+[the complete native, source and host evidence](evidence/ending-load-script/README.md).

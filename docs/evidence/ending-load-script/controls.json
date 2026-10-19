@@ -1,0 +1,303 @@
+{
+  "authority": "none; diagnostics are not exactness claims",
+  "source_base_commit": "b2e7d3b",
+  "controls": [
+    {
+      "name": "aux-ref",
+      "compiled_source_sha256": "dcaee124d6200076935f32133b8be1b9d88be805d8a2cb929efec3dc3ec9311a",
+      "reused_support_objects": 16,
+      "fresh_cold_proof": false,
+      "production_overlay_adopted": false,
+      "results": [
+        {
+          "name": "EndingView::LoadScript",
+          "candidate_size": 108,
+          "target_size": 106,
+          "ordinary_matched": 21,
+          "ordinary_compared": 86,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingView::Initialize",
+          "candidate_size": 590,
+          "target_size": 584,
+          "ordinary_matched": 60,
+          "ordinary_compared": 460,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::Run",
+          "candidate_size": 1552,
+          "target_size": 1568,
+          "ordinary_matched": 537,
+          "ordinary_compared": 1200,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::LoadAnimation",
+          "candidate_size": 131,
+          "target_size": 126,
+          "ordinary_matched": 70,
+          "ordinary_compared": 98,
+          "result": "mismatch"
+        }
+      ],
+      "source_delta": "--- b2e7d3b/src/Ending.cpp\n+++ aux-ref/Ending.cpp\n@@ -428,14 +428,15 @@\n }\n int EndingTextVmView::LoadAnimation()\n {\n+    const char *path = backgroundPath;\n     g_StageFilePath[0] = '\\0';\n-    strcat(g_StageFilePath, backgroundPath);\n+    strcat(g_StageFilePath, path);\n     AnmLoadedView *bank = g_AnmRenderManagerView->PreloadAnm(\n         EndingRecordInt(instruction) + 29, g_StageFilePath);\n-    AsciiManagerView *ascii = g_AsciiManagerView;\n+    int &auxiliaryId = g_AsciiManagerView->auxiliaryVm89A4;\n     resources[EndingRecordInt(instruction)] = bank;\n     flags &= ~4u;\n-    EnemyMarkPendingInterrupt(&ascii->auxiliaryVm89A4);\n-    ascii->auxiliaryVm89A4 = 0;\n+    EnemyMarkPendingInterrupt(&auxiliaryId);\n+    auxiliaryId = 0;\n     return 0;\n }\n",
+      "entry_symbol": "?EndingCreate@@YAPAUEndingView@@XZ",
+      "extra_support_sources": [],
+      "artifact_sha256": {
+        "source.exe": "73e3b3090e447a1e185a9f552196834263140c7be173f00ea6793c2d4b938bd1",
+        "source.map": "1ee5bb1c211c228db8298dd7a78caa8543ae22e9a9e2197d36abd5001c53ecf2",
+        "source.pdb": "2ff1d3feaff4871fd36aede816730c9e4aaac4e5cad097bb1d999e63af9587da"
+      }
+    },
+    {
+      "name": "run-phases",
+      "compiled_source_sha256": "8c3ecfe09c91118ec16961ecf839206c4ef8c65ed6e44892bf8e820d52fe6a1e",
+      "reused_support_objects": 16,
+      "fresh_cold_proof": false,
+      "production_overlay_adopted": false,
+      "results": [
+        {
+          "name": "EndingView::LoadScript",
+          "candidate_size": 108,
+          "target_size": 106,
+          "ordinary_matched": 21,
+          "ordinary_compared": 86,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingView::Initialize",
+          "candidate_size": 590,
+          "target_size": 584,
+          "ordinary_matched": 60,
+          "ordinary_compared": 460,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::Run",
+          "candidate_size": 1576,
+          "target_size": 1568,
+          "ordinary_matched": 571,
+          "ordinary_compared": 1208,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::LoadAnimation",
+          "candidate_size": 131,
+          "target_size": 126,
+          "ordinary_matched": 61,
+          "ordinary_compared": 98,
+          "result": "mismatch"
+        }
+      ],
+      "source_delta": "--- b2e7d3b/src/Ending.cpp\n+++ run-phases/Ending.cpp\n@@ -347,35 +347,39 @@\n             return 0;\n         case 8:\n             {\n-                int slot = EndingRecordInt(command);\n-                g_AnmRenderManagerView->MarkVmForDeletion(animationIds[slot]);\n-                animationIds[slot].value = 0;\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n+                AnmVmIdView &oldId = animationIds[EndingRecordInt(command)];\n+                g_AnmRenderManagerView->MarkVmForDeletion(oldId);\n+                oldId.value = 0;\n+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->\n                     CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 15:\n             if (g_GuiDifficulty == 1)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->\n                     CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 16:\n             if (g_GuiDifficulty == 2)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->\n                     CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 17:\n             if (g_GuiDifficulty == 3)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->\n                     CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 9: color = EndingRecordInt(command); break;\n",
+      "entry_symbol": "?EndingCreate@@YAPAUEndingView@@XZ",
+      "extra_support_sources": [],
+      "artifact_sha256": {
+        "source.exe": "8d3c35ab3a6347b149f6837df92cfe6cd9ee4a22b999c49def9c348898752a36",
+        "source.map": "60fb953e50b0627236705cf7175de531174bd2eeeea1163a424be58c45d7abf5",
+        "source.pdb": "715e7e3f1c777f68091a3b4788a6ed507e20fa8c266a2b8d251fa711088c2f4b"
+      }
+    },
+    {
+      "name": "run-reference",
+      "compiled_source_sha256": "12250c70f097d2103751a66b30934efcab879d38dc5459145ab71bc4e9aac3e9",
+      "reused_support_objects": 16,
+      "fresh_cold_proof": false,
+      "production_overlay_adopted": false,
+      "results": [
+        {
+          "name": "EndingView::LoadScript",
+          "candidate_size": 108,
+          "target_size": 106,
+          "ordinary_matched": 21,
+          "ordinary_compared": 86,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingView::Initialize",
+          "candidate_size": 590,
+          "target_size": 584,
+          "ordinary_matched": 60,
+          "ordinary_compared": 460,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::Run",
+          "candidate_size": 1576,
+          "target_size": 1568,
+          "ordinary_matched": 571,
+          "ordinary_compared": 1208,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::LoadAnimation",
+          "candidate_size": 131,
+          "target_size": 126,
+          "ordinary_matched": 61,
+          "ordinary_compared": 98,
+          "result": "mismatch"
+        }
+      ],
+      "source_delta": "--- b2e7d3b/src/Ending.cpp\n+++ run-reference/Ending.cpp\n@@ -347,35 +347,39 @@\n             return 0;\n         case 8:\n             {\n-                int slot = EndingRecordInt(command);\n-                g_AnmRenderManagerView->MarkVmForDeletion(animationIds[slot]);\n-                animationIds[slot].value = 0;\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                AnmVmIdView &oldId = animationIds[EndingRecordInt(command)];\n+                g_AnmRenderManagerView->MarkVmForDeletion(oldId);\n+                oldId.value = 0;\n+                const AnmVmIdView &created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 15:\n             if (g_GuiDifficulty == 1)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                const AnmVmIdView &created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 16:\n             if (g_GuiDifficulty == 2)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                const AnmVmIdView &created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 17:\n             if (g_GuiDifficulty == 3)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                const AnmVmIdView &created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 9: color = EndingRecordInt(command); break;\n",
+      "entry_symbol": "?EndingCreate@@YAPAUEndingView@@XZ",
+      "extra_support_sources": [],
+      "artifact_sha256": {
+        "source.exe": "9c0c2f2177b3b8cfd2e74c44d7dcd4d5827fd91e835855b2bcdea1e75204e896",
+        "source.map": "463effb03dfc538d602b707cc3c2463644ea652d2b886c803f9b9c08b43bc1a2",
+        "source.pdb": "3b073992249949a33990c96f9fe9386bdebe032539ecca38590eb588a30dc389"
+      }
+    },
+    {
+      "name": "run-scalar",
+      "compiled_source_sha256": "cc62dc1f397771b06aa569abf30d7f1c49714aa2e889293009064a1d38b2843b",
+      "reused_support_objects": 16,
+      "fresh_cold_proof": false,
+      "production_overlay_adopted": false,
+      "results": [
+        {
+          "name": "EndingView::LoadScript",
+          "candidate_size": 108,
+          "target_size": 106,
+          "ordinary_matched": 21,
+          "ordinary_compared": 86,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingView::Initialize",
+          "candidate_size": 590,
+          "target_size": 584,
+          "ordinary_matched": 60,
+          "ordinary_compared": 460,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::Run",
+          "candidate_size": 1564,
+          "target_size": 1568,
+          "ordinary_matched": 533,
+          "ordinary_compared": 1200,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::LoadAnimation",
+          "candidate_size": 131,
+          "target_size": 126,
+          "ordinary_matched": 61,
+          "ordinary_compared": 98,
+          "result": "mismatch"
+        }
+      ],
+      "source_delta": "--- b2e7d3b/src/Ending.cpp\n+++ run-scalar/Ending.cpp\n@@ -347,35 +347,39 @@\n             return 0;\n         case 8:\n             {\n-                int slot = EndingRecordInt(command);\n-                g_AnmRenderManagerView->MarkVmForDeletion(animationIds[slot]);\n-                animationIds[slot].value = 0;\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                AnmVmIdView &oldId = animationIds[EndingRecordInt(command)];\n+                g_AnmRenderManagerView->MarkVmForDeletion(oldId);\n+                oldId.value = 0;\n+                int created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15).value;\n+                animationIds[EndingRecordInt(instruction)].value = created;\n             }\n             break;\n         case 15:\n             if (g_GuiDifficulty == 1)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                int created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15).value;\n+                animationIds[EndingRecordInt(instruction)].value = created;\n             }\n             break;\n         case 16:\n             if (g_GuiDifficulty == 2)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                int created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15).value;\n+                animationIds[EndingRecordInt(instruction)].value = created;\n             }\n             break;\n         case 17:\n             if (g_GuiDifficulty == 3)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                int created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15).value;\n+                animationIds[EndingRecordInt(instruction)].value = created;\n             }\n             break;\n         case 9: color = EndingRecordInt(command); break;\n",
+      "entry_symbol": "?EndingCreate@@YAPAUEndingView@@XZ",
+      "extra_support_sources": [],
+      "artifact_sha256": {
+        "source.exe": "65191409e126bb9a30317518c5fa3519b93a5d67b64bb6e3f272db3ffe2d9780",
+        "source.map": "a34d51b56d33a84e74605ba2fdaef12c38b8be5582ccbc90eaa7514dc2c2c2de",
+        "source.pdb": "682416b8e3f2a78c6cc1f85c941c84e1801e56a2a5cb9c4e12220cb8f3cafca7"
+      }
+    },
+    {
+      "name": "run-sink",
+      "compiled_source_sha256": "a10fede1723801cabad2d162bbd4f8f85fe43655c75b9be387c00cdcaaf9b947",
+      "reused_support_objects": 16,
+      "fresh_cold_proof": false,
+      "production_overlay_adopted": false,
+      "results": [
+        {
+          "name": "EndingView::LoadScript",
+          "candidate_size": 108,
+          "target_size": 106,
+          "ordinary_matched": 21,
+          "ordinary_compared": 86,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingView::Initialize",
+          "candidate_size": 590,
+          "target_size": 584,
+          "ordinary_matched": 60,
+          "ordinary_compared": 460,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::Run",
+          "candidate_size": 1564,
+          "target_size": 1568,
+          "ordinary_matched": 526,
+          "ordinary_compared": 1200,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::LoadAnimation",
+          "candidate_size": 131,
+          "target_size": 126,
+          "ordinary_matched": 61,
+          "ordinary_compared": 98,
+          "result": "mismatch"
+        }
+      ],
+      "source_delta": "--- b2e7d3b/src/Ending.cpp\n+++ run-sink/Ending.cpp\n@@ -64,6 +64,11 @@\n     }\n     id.value = 0;\n }\n+// Publish only after creation completes; the cursor may change in that call.\n+inline void PublishEndingAnimation(EndingTextVmView *text, const AnmVmIdView &created)\n+{\n+    text->animationIds[EndingRecordInt(text->instruction)] = created;\n+}\n // Observed common node construction; no extra fields or virtual interface.\n struct EndingTaskView : th10::ChainElem\n {\n@@ -340,8 +345,8 @@\n         case 7:\n             g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);\n             g_AnmRenderManagerView->ReleaseAnm(EndingRecordInt(instruction) + 29);\n+            backgroundPath = reinterpret_cast<const char *>(instruction + 8);\n             flags |= 4;\n-            backgroundPath = reinterpret_cast<const char *>(instruction + 8);\n             worker.Start(this, EndingLoadAnimationCallback);\n             instruction = EndingRecordNext(instruction);\n             return 0;\n@@ -350,32 +355,32 @@\n                 int slot = EndingRecordInt(command);\n                 g_AnmRenderManagerView->MarkVmForDeletion(animationIds[slot]);\n                 animationIds[slot].value = 0;\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                PublishEndingAnimation(this, resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15));\n             }\n             break;\n         case 15:\n             if (g_GuiDifficulty == 1)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                PublishEndingAnimation(this, resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15));\n             }\n             break;\n         case 16:\n             if (g_GuiDifficulty == 2)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                PublishEndingAnimation(this, resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15));\n             }\n             break;\n         case 17:\n             if (g_GuiDifficulty == 3)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                PublishEndingAnimation(this, resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15));\n             }\n             break;\n         case 9: color = EndingRecordInt(command); break;\n",
+      "entry_symbol": "?EndingCreate@@YAPAUEndingView@@XZ",
+      "extra_support_sources": [],
+      "artifact_sha256": {
+        "source.exe": "85574a557eeaf3e6683f56bf77f526c6de76073ba244b71fab817001dc625ffc",
+        "source.map": "25c4031afea05a58d3ab15ae3b4bf4177d36b5c46f843e0e1315e19e60b9df7c",
+        "source.pdb": "00ef60e7ae1d623ff54a348fb0814cb42cefe8fd3f3483600a54bfdf45a25c53"
+      }
+    },
+    {
+      "name": "file-context",
+      "compiled_source_sha256": "9dd517246aad3ca6cba8a38c9d1618e1a07342601f018d910a3797dec3e8916b",
+      "reused_support_objects": 16,
+      "fresh_cold_proof": false,
+      "production_overlay_adopted": true,
+      "results": [
+        {
+          "name": "EndingView::LoadScript",
+          "candidate_size": 106,
+          "target_size": 106,
+          "ordinary_matched": 86,
+          "ordinary_compared": 86,
+          "result": "structural-exact"
+        },
+        {
+          "name": "EndingView::Initialize",
+          "candidate_size": 584,
+          "target_size": 584,
+          "ordinary_matched": 277,
+          "ordinary_compared": 460,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::Run",
+          "candidate_size": 1576,
+          "target_size": 1568,
+          "ordinary_matched": 571,
+          "ordinary_compared": 1208,
+          "result": "mismatch"
+        },
+        {
+          "name": "EndingTextVmView::LoadAnimation",
+          "candidate_size": 131,
+          "target_size": 126,
+          "ordinary_matched": 61,
+          "ordinary_compared": 98,
+          "result": "mismatch"
+        }
+      ],
+      "source_delta": "--- b2e7d3b/src/Ending.cpp\n+++ file-context/Ending.cpp\n@@ -340,42 +340,46 @@\n         case 7:\n             g_AsciiManagerView->EnsureSelectionVm(480.0f, 392.0f);\n             g_AnmRenderManagerView->ReleaseAnm(EndingRecordInt(instruction) + 29);\n+            backgroundPath = reinterpret_cast<const char *>(instruction + 8);\n             flags |= 4;\n-            backgroundPath = reinterpret_cast<const char *>(instruction + 8);\n             worker.Start(this, EndingLoadAnimationCallback);\n             instruction = EndingRecordNext(instruction);\n             return 0;\n         case 8:\n             {\n-                int slot = EndingRecordInt(command);\n-                g_AnmRenderManagerView->MarkVmForDeletion(animationIds[slot]);\n-                animationIds[slot].value = 0;\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                AnmVmIdView &oldId = animationIds[EndingRecordInt(command)];\n+                g_AnmRenderManagerView->MarkVmForDeletion(oldId);\n+                oldId.value = 0;\n+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 15:\n             if (g_GuiDifficulty == 1)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 16:\n             if (g_GuiDifficulty == 2)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 17:\n             if (g_GuiDifficulty == 3)\n             {\n                 animationIds[EndingRecordInt(instruction)].Release();\n-                animationIds[EndingRecordInt(instruction)] = resources[EndingRecordInt(instruction, 1)]->\n-                    CreateVmVariant1(EndingRecordInt(instruction, 2), 15);\n+                AnmVmIdView created = resources[EndingRecordInt(instruction, 1)]->\n+                    CreateVmVariant0(EndingRecordInt(instruction, 2), 15);\n+                animationIds[EndingRecordInt(instruction)] = created;\n             }\n             break;\n         case 9: color = EndingRecordInt(command); break;\n",
+      "entry_symbol": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+      "extra_support_sources": [
+        "src/PbgArchive.cpp"
+      ],
+      "artifact_sha256": {
+        "source.exe": "c6212a617baa082e9383488e321261fb8007c72688f0439ab53bcb7166d6013d",
+        "source.map": "73ce517017d64b3d3938f3a2ce91311f93ffadfac1d90f7b97afdb4eb39ae048",
+        "source.pdb": "813370d6b7291b49956804199a61d083d74aebdbbc7197967ca4c2c1c7f2686d"
+      }
+    }
+  ],
+  "selected_source": "ordinary ID value plus explicit statement sequencing, primary-list creator, path-before-busy store; other source forms discarded"
+}
