@@ -25,12 +25,23 @@ scratch paths, or build hashes into this file.
 - Read current repository-wide counts from `docs/PROGRESS.md` or regenerate
   them. Do not reuse counts copied from an older commit or experiment.
 
-## Current local checkpoint (2026-10-19)
+## Current local checkpoint (2026-10-20)
 
 - Continue toward **95% of reviewed authored bytes exact**, with both large
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Child-ID search `ResultMenuFindScript @ 0x004497D0` closes **70 authored
+  exact bytes**. Natural direct ID value plus post-search aggregate return
+  restore the target private ABI and node-owner reload. Two independent full
+  cold14-TU real-Gui-updater links replay70/all2 fields; actual-callee FindVm73
+  is raw-equal in both. All42 inputs agree; boundary/origin are unchanged.
+  All Run controls are restored. Current Run4480/4480, frameD8 and148/150 calls
+  remain nonexact; HUD3772/3836 also stays open. Case order, character split,
+  direct IDs, sprite-expression, predicate/sound and packed-flag controls do
+  not close the parent; final control4468/frameD8/151 calls retains separate
+  opcode20 mode4 copies. The prepared replay inversion was not compiled.
+  See [the evidence and closed/rejected scope](evidence/gui-child-search/README.md).
 - `MarkGameChains @ 0x00409E20` closes 28 authored bytes with unchanged
   `GameManager.cpp`. Two independent cold links pass the complete raw-equal
   static owner; its qualified MAP/PDB selector uses the existing comparator.

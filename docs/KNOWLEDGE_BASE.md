@@ -1596,13 +1596,15 @@ PEe76b8dd3cf6d68082b8d7e0bd1e0793f09fa026950603d2546a082c354e2ee91.
 These are existing accepted bytes, not new credit. No ledger, boundary or
 denominator change is made. Large native artifacts stay local and regenerable.
 
-Fresh target helper4497D0 corroborates aggregate ID ownership: both branches
+That earlier helper4497D0 review corroborated aggregate ID ownership: both branches
 write through hidden output EDI and return that pointer. Its success path,
 like refresh cold blocks42ED23 onward, reloads node->owner before reading ID.
-The candidate keeps the previously loaded owner. Do not replace the aggregate
-with a scalar merely to obtain EAX or add volatile. Target has29 more two-byte
-MOVs and26 more padding bytes, with offsetting instruction differences; the
-54-byte extent gap alone establishes no missing semantic effect.
+That historical candidate kept the previously loaded owner. The complete70-byte
+helper now closes in [the 2026-10-20 post-search proof](evidence/gui-child-search/README.md).
+Do not replace the aggregate with a scalar merely to obtain EAX or add volatile.
+The historical Refresh comparison had29 more target two-byte MOVs and26 more
+padding bytes, with offsetting instruction differences; that54-byte extent
+gap alone established no missing semantic effect.
 
 All thirteen controller and seven refresh mutation controls were re-run after
 the final expansion source and detected functional failures as intended.
@@ -2741,3 +2743,30 @@ mutants and unchanged host dependency pins pass. Remaining FadeIn133, Linear439,
 Envelope349 and Cleanup127, production/runtime, semantic and port gates remain
 open. Original class/TU/source spelling is unknown. See [the full target facts,
 source overlays and independent native proofs](evidence/effect-pulse-dim/README.md).
+
+
+## 2026-10-20 GUI child-ID search exact; parent controls restored
+
+ResultMenuFindScript4497D0..449815 closes the existing70 authored bytes with
+unchanged boundary, maintained source file and origin. Read-only local Ghidra attests the
+original target and complete mapped text;52 incoming direct calls have no
+outside interior references. Passing the actual ID value and finishing the
+child search before constructing the aggregate restore ESI id, EBX script,
+EDI hidden result, the success node-owner reload and plain RET. Root inclusion,
+first-match return, zero result and the existing valid-VM precondition remain.
+No scalar substitution, ABI annotation, volatile or forced padding is added.
+Two independent full14-TU /GL real-Gui-updater links agree on all42 project
+inputs and replay all70 bytes/all2 fields. Actual-callee FindVm73 is raw-equal
+in both carriers, without duplicate credit or a canonical recipe change.
+
+All Gui.cpp parent experiments are restored byte-for-byte: physical case order,
+separate character arms, direct ID objects, consumed sprite expressions,
+loop/wait/sound branch shapes and packed flags remain nonexact. Cumulative
+controls range4464..4528 bytes; restoring frameD8 and17/24 physical spans still
+does not close the whole owner. The final control has151 calls versus150,
+including separate opcode20 mode4 copies; its prepared replay-branch rewrite
+was not compiled. Current Run4480/4480 remains253/3160 ordinary comparable
+positions; HUD3772/3836 remains527/3552. No parent/partial-case credit follows.
+See [the complete evidence and restored-control table](evidence/gui-child-search/README.md).
+Original class/spelling/TU and native product/runtime, semantic and port gates
+remain open; exact bytes do not identify a unique original C++ formulation.

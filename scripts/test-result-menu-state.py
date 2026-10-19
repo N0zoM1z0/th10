@@ -32,7 +32,8 @@ struct AnmVmIdView{int value;AnmVmIdView(int v=0):value(v){}void SetInterrupt(sh
 struct AnmVmLayerNodeView{void*owner;AnmVmLayerNodeView*next,*previous;};
 struct AnmVmView{int id;short scriptIndex,pendingInterrupt;AnmVmLayerNodeView layerNode;};
 static std::map<int,AnmVmView*> vms;
-struct AnmRenderManagerView{AnmVmView*FindVm(int id){return vms.count(id)?vms[id]:NULL;}};
+// Preserve the canonical ID-by-value interface in this synthetic lookup seam.
+struct AnmRenderManagerView{AnmVmView*FindVm(AnmVmIdView id){return vms.count(id.value)?vms[id.value]:NULL;}};
 static AnmRenderManagerView manager;static AnmRenderManagerView*g_AnmRenderManagerView=&manager;
 void EnemyMarkPendingInterrupt(int*id){events.push_back("pending1:"+std::to_string(*id));}
 struct ReplayDataHeader{time_t timestamp;int completionState;};

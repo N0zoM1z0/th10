@@ -1,0 +1,319 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+  "baseline_commit": "774495e",
+  "claim": "new70 authored bytes; existing73-byte actual-callee guard; no GUI parent credit",
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL"
+  ],
+  "entry_symbol": "?UpdateStageElements@GuiView@@SGHPAU1@@Z",
+  "project_input_sha256": {
+    "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+    "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+    "src/AnmRectangle.cpp": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b",
+    "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/DecomphelpLeafAccessors.cpp": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9",
+    "src/DecomphelpLeafTypes.hpp": "5e4f56c5696e44e66dc5d1128b3af44a7ded3f4d2afe8df9cd7002061611b9d6",
+    "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "0bf2353635f2844649361955dd473a5c795bba8107dca60833be3439a377a8f6",
+    "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+    "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/FrontEnd.cpp": "10cbf9525aa8a04748646be7d5221fbf91de491a96877720cef10e737cb61fc2",
+    "src/FrontEnd.hpp": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/Main.cpp": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/Player.cpp": "495fcd5a453b8908e87f5ef658948ff1d5bb74d2b5d33e650ed3eea0399c05a6",
+    "src/Player.hpp": "1747c454b804c1401365dd31735638600926442750d29351b074dfc6248a8f6a",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ReplayManager.hpp": "d49d3e955be6fc0888cfef0fc38b7f94bbc838dc9c1c3f3dca4517799efeb17c",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "4ae174c48a3ec3d2e8d7292294d3ee18e625de08774996556828fb160ad70610",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/Sound.cpp": "57ae7cf4f2835fed9ba57c96444506ebc6816d2e66bfee8f3264ac90a3ec5c00",
+    "src/SoundFormat.hpp": "eec38ef131a86d42c567a262cf41d9c610038b95acfb6edafc9d62f640c22e2a",
+    "src/TransitionEffect.cpp": "57475c2b9ef35961ddad413ce5479e3c415b99fbd1af9742dab85796cc6f0e10",
+    "src/TransitionEffect.hpp": "fa2e93fa8193b0b496959088e0cf24092c0120dab9dd13bf30c0f4061cd0723e"
+  },
+  "cold_proofs": [
+    {
+      "results": [
+        {
+          "unit": "frontend-find-script",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+          "target_address": "0x004497D0",
+          "size": 70,
+          "matched_bytes": 70,
+          "compared_size": 70,
+          "matched_compared_bytes": 70,
+          "image": "build/gpt-6.1-sol/th10-gui-owners-20261020/cold-helper-one/source.exe",
+          "image_sha256": "453d504d192fbd496e308c9821f863c20e5f7108d1ec8e2ca2d22511aed03286",
+          "pdb_guid": "eeeff4a82689f642a6ef941792d8f476",
+          "pdb_age": 1,
+          "candidate_address": "0x0041E5F0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 70,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x4",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0163",
+              "local": false,
+              "candidate_target": "0x0042B408",
+              "target": "0x00491C10",
+              "addend": 0,
+              "target_encoded_value": "0x00491C10"
+            },
+            {
+              "offset": "0xA",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "linked_symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "local": false,
+              "candidate_target": "0x00405610",
+              "target": "0x004491C0",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF9E2"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        {
+          "unit": "anm-manager-find-vm-in-gui-carrier",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+          "target_address": "0x004491C0",
+          "size": 73,
+          "matched_bytes": 73,
+          "compared_size": 73,
+          "matched_compared_bytes": 73,
+          "image": "build/gpt-6.1-sol/th10-gui-owners-20261020/cold-helper-one/source.exe",
+          "image_sha256": "453d504d192fbd496e308c9821f863c20e5f7108d1ec8e2ca2d22511aed03286",
+          "pdb_guid": "eeeff4a82689f642a6ef941792d8f476",
+          "pdb_age": 1,
+          "candidate_address": "0x00405610",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 6,
+          "decoded_bytes": 73,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [],
+          "raw_equal": true,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      ],
+      "matched_bytes": 143,
+      "linkage_count": 2
+    },
+    {
+      "results": [
+        {
+          "unit": "frontend-find-script",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?ResultMenuFindScript@@YA?AUAnmVmIdView@@PAU1@H@Z",
+          "target_address": "0x004497D0",
+          "size": 70,
+          "matched_bytes": 70,
+          "compared_size": 70,
+          "matched_compared_bytes": 70,
+          "image": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+          "image_sha256": "ef69bd13eba09cbeaea858bd1312df57040290a2fc208d1cf53b95025d380ded",
+          "pdb_guid": "5dd2dd932dc4ee4d95d616d53c201463",
+          "pdb_age": 1,
+          "candidate_address": "0x0041E5F0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 70,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x4",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0163",
+              "local": false,
+              "candidate_target": "0x0042B408",
+              "target": "0x00491C10",
+              "addend": 0,
+              "target_encoded_value": "0x00491C10"
+            },
+            {
+              "offset": "0xA",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "linked_symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "local": false,
+              "candidate_target": "0x00405610",
+              "target": "0x004491C0",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF9E2"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        },
+        {
+          "unit": "anm-manager-find-vm-in-gui-carrier",
+          "artifact_kind": "linked-pe",
+          "result": "exact",
+          "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+          "target_address": "0x004491C0",
+          "size": 73,
+          "matched_bytes": 73,
+          "compared_size": 73,
+          "matched_compared_bytes": 73,
+          "image": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+          "image_sha256": "ef69bd13eba09cbeaea858bd1312df57040290a2fc208d1cf53b95025d380ded",
+          "pdb_guid": "5dd2dd932dc4ee4d95d616d53c201463",
+          "pdb_age": 1,
+          "candidate_address": "0x00405610",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 6,
+          "decoded_bytes": 73,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [],
+          "raw_equal": true,
+          "first_differences": [],
+          "capstone_version": "5.0.6"
+        }
+      ],
+      "matched_bytes": 143,
+      "linkage_count": 2
+    }
+  ],
+  "artifacts": [
+    {
+      "label": "cold-helper-one",
+      "files": {
+        "image": {
+          "path": "build/gpt-6.1-sol/th10-gui-owners-20261020/cold-helper-one/source.exe",
+          "sha256": "453d504d192fbd496e308c9821f863c20e5f7108d1ec8e2ca2d22511aed03286",
+          "size": 188416
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/th10-gui-owners-20261020/cold-helper-one/source.map",
+          "sha256": "218de5500553d34e0380c7b829a5c8fa79bf9a6a2617e0b7edb80a74ab329f11",
+          "size": 215397
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/th10-gui-owners-20261020/cold-helper-one/source.pdb",
+          "sha256": "4d48a4b8d3015b24b05561c18e164e160bf11c34c39593b073e3213e4e6b1fb3",
+          "size": 232448
+        }
+      },
+      "retained": false
+    },
+    {
+      "label": "cold-helper-two",
+      "files": {
+        "image": {
+          "path": "build/match-linked/GuiTransitionEffectFactory/source.exe",
+          "sha256": "ef69bd13eba09cbeaea858bd1312df57040290a2fc208d1cf53b95025d380ded",
+          "size": 188416
+        },
+        "map": {
+          "path": "build/match-linked/GuiTransitionEffectFactory/source.map",
+          "sha256": "e0cd86260575ea047462eb4162543b786507a75b4d538dd5f96b6da45cf29fbb",
+          "size": 215397
+        },
+        "pdb": {
+          "path": "build/match-linked/GuiTransitionEffectFactory/source.pdb",
+          "sha256": "b24671848ce91daf9a990c8383bc258e9606e97b59cc43f30aa83fe3ef383e1c",
+          "size": 224256
+        }
+      },
+      "retained": true
+    }
+  ],
+  "unit": "frontend-find-script",
+  "primary_source": "src/Gui.cpp",
+  "support_sources": [
+    "src/AnmManager.cpp",
+    "src/AnmVmCreate.cpp",
+    "src/AnmVmId.cpp",
+    "src/EnemyEclDispatcher.cpp",
+    "src/Player.cpp",
+    "src/FrontEnd.cpp",
+    "src/DecomphelpLeafAccessors.cpp",
+    "src/Main.cpp",
+    "src/Sound.cpp",
+    "src/TransitionEffect.cpp",
+    "src/Chain.cpp",
+    "src/RandomMath.cpp",
+    "src/AnmRectangle.cpp"
+  ],
+  "pdb_source": "src/FrontEnd.cpp",
+  "link_profile": [
+    "/ltcg",
+    "/nodefaultlib",
+    "/subsystem:console",
+    "/incremental:no",
+    "/fixed:no",
+    "/base:0x00400000",
+    "/debug",
+    "/debugtype:cv",
+    "/opt:noref",
+    "/opt:noicf",
+    "/safeseh:no"
+  ],
+  "harness": "unresolved-symbol-data-anchors-v1",
+  "translation_units": [
+    "src/Gui.cpp",
+    "src/AnmManager.cpp",
+    "src/AnmVmCreate.cpp",
+    "src/AnmVmId.cpp",
+    "src/EnemyEclDispatcher.cpp",
+    "src/Player.cpp",
+    "src/FrontEnd.cpp",
+    "src/DecomphelpLeafAccessors.cpp",
+    "src/Main.cpp",
+    "src/Sound.cpp",
+    "src/TransitionEffect.cpp",
+    "src/Chain.cpp",
+    "src/RandomMath.cpp",
+    "src/AnmRectangle.cpp"
+  ],
+  "artifact_policy": "The first independent image and rejected variants were removed after recording complete proofs; the second canonical carrier remains locally reproducible."
+}

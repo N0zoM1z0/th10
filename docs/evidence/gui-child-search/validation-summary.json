@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-20",
+  "scope": "ResultMenuFindScript70 new exact; FindVm73 existing guard in both actual carriers",
+  "native": {
+    "independent_full_cold_links": 2,
+    "translation_units": 14,
+    "project_inputs": 42,
+    "new_bytes_per_image": 70,
+    "new_fields_per_image": 2,
+    "existing_raw_equal_guard_bytes_per_image": 73,
+    "canonical_unit": "frontend-find-script",
+    "canonical_oracle_result": "exact"
+  },
+  "host": {
+    "command": "nice -n 10 scripts/repo-python scripts/test-gui-message-run.py --no-mutations --sanitize --out build/host-tests/gui-child-search-20261020",
+    "returncode": 0,
+    "positive_selections": 13,
+    "standalone_strict_mutants_executed": 0,
+    "all_existing_mutation_anchors_checked": 28,
+    "limits": "Existing documented synthetic dependencies, timer lifetime seams and leak-sanitizer exclusion; no target-runtime claim."
+  },
+  "ci": {
+    "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+    "returncode": 0,
+    "completed_checks": 79,
+    "log_sha256": "16ce018c98f9962d18beb041250c2946a0ee7fe0d4f7039c211b2a940373c5c3",
+    "initial_failure": "Legacy result-menu FindVm seam accepted int; changed to canonical AnmVmIdView by value. Its existing assertions are unchanged; focused test and fresh full CI pass."
+  },
+  "checks": {
+    "verify-toolchain --check": "passed",
+    "validate-tracking --require-target": "passed",
+    "progress": "regenerated; CI check current",
+    "source-completeness Gui": "passed",
+    "source-completeness FrontEnd": "passed",
+    "git diff --check": "passed"
+  },
+  "resource_policy": {
+    "native_builds": "serial nice10",
+    "local_ghidra": "JVM heap768MiB, one active processor"
+  },
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-gui-owners-20261020",
+        "bytes": 18495970
+      },
+      {
+        "path": "build/host-tests/gui-child-search-20261020",
+        "bytes": 3264016
+      }
+    ],
+    "removed_bytes_including_disposable_analysis": 25210990,
+    "retained": "current canonical PE/MAP/PDB and objects; compact rejected overlays, two strict proofs and bounded local Ghidra observations",
+    "preexisting_d3d": "untouched"
+  },
+  "preexisting_untracked_d3d": "untouched and excluded from staging"
+}

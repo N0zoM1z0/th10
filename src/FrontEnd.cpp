@@ -3434,16 +3434,19 @@ void ResultMenuPendingThree(AnmVmIdView *id)
 // an unresolved input ID but still walks vm+0x10: a valid VM is a precondition.
 AnmVmIdView ResultMenuFindScript(AnmVmIdView *id, int scriptIndex)
 {
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id->value);
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*id);
     if (vm == NULL)
         id->value = 0;
-    for (AnmVmLayerNodeView *node = &vm->layerNode; node != NULL; node = node->next)
+    AnmVmLayerNodeView *node;
+    for (node = &vm->layerNode; node != NULL; node = node->next)
     {
         AnmVmView *entry = static_cast<AnmVmView *>(node->owner);
         if (entry->scriptIndex == scriptIndex)
-            return AnmVmIdView(entry->id);
+            break;
     }
-    return AnmVmIdView(0);
+    if (node == NULL)
+        return AnmVmIdView(0);
+    return AnmVmIdView(static_cast<AnmVmView *>(node->owner)->id);
 }
 
 // Target 0x421F60, GUI receiver in EAX; shared maintained score/storage views.
