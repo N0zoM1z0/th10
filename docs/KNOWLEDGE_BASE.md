@@ -2228,3 +2228,49 @@ agreement after pointer-based cursor remembrance, but remains nonexact. Its
 matching regions earn no separate credit. Worker launch/stop, manager release,
 browser destructor/Draw, remaining private ABIs and native product/runtime
 closure remain open.
+
+### 2026-10-19: shared worker and Player option-rebuild interface
+
+The [worker checkpoint](evidence/script-viewer-worker/README.md) closes Stop101
+at0x44C150, Start56 at0x44C1C0 and browser player suspension36 at0x40A010:
+**193 authored exact bytes**, all six bound fields and two independent
+frozen-source cold `/GL /GS` links. Existing boundary/origin classifications
+and worker medium origin confidence remain unchanged. Fourteen existing
+complete-owner guards pass in the two relevant real-entry graphs; no broader
+historical native replay is claimed.
+
+Stop's null-handle path preserves every field. Otherwise it repeats stop=1,
+running=0 before each timeout Sleep1 and Wait200, then closes the current handle
+on any non-timeout status, clears handle/entry and preserves thread ID. Failed
+wait/close results are not repaired. Start stops the previous thread first,
+stores new entry/running/stop flags, passes the actual six `_beginthreadex`
+arguments and stores even a null result without clearing running. Natural
+source plus the real browser caller reproduces the target private registers,
+without register annotations or code-segment shaping. The browser's no-argument
+plain-RET callback address is preserved through the CRT callback-type cast;
+original source typing and Windows thread behavior remain unknown.
+
+RebuildPlayerOptions reads its sole pointer at entryESP+4 and returns RET4.
+Fresh local Ghidra and complete target decode agree; ten direct calls push the
+Player pointer. The database's nine xrefs omit the separately reviewed browser
+call0x40A02D. The maintained interface now expresses that cleanup as `__stdcall`
+without claiming the original source annotation or changing the algorithm.
+The old cdecl suspension caller's extra ADD ESP,4 disappears. All three original
+PlayerOptionCallbacks canonical units pass a focused cold replay with the new
+entry symbol. Earlier nine-call/plain-RET descriptions are historical contexts.
+
+Full Rebuild remains2408/2520 owned bytes and Update1264/1251. Update's ordinary
+structural score changes539/923 to522/923; neither owner earns partial exact
+credit. Creator68/67 differs exactly at its unresolved destructor receiver:
+native MOV ECX,EBX versus target PUSH EBX. Restoring the real browser destructor
+and remaining release bodies is the next concrete calling-context work.
+Host fixtures cover timeouts, changed handles/flags, failed waits/close/create,
+API arguments and ordering. These checks do not open product/runtime, semantic
+or portability gates.
+
+Initializer153/101 has one localized52-byte expansion: target's first edge
+0x40A351 calls PlayerCreate425020, while native inlines its allocation,
+construction, registration and failure cleanup. The subsequent creator call
+is native+0x3A versus target+0x06; the remaining sequence retains that52-byte
+offset. This is an outlining/context lead, not proof of an original noinline
+annotation or a tested source fix.

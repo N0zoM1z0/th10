@@ -991,3 +991,5 @@ BulletManagerView::ResetPool
 EnemyManagerClear
 EnemyManagerView::SuspendCallbacks
 FrontEndInputView::UpdateDebugRepeat
+ScriptViewerWorkerView::Stop
+ScriptViewerWorkerView::Start

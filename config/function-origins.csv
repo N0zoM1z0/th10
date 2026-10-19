@@ -1186,8 +1186,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0044C0E0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0044C100,compiler_generated,GameCxx,exclude,high,target-vc71-scalar-deleting-destructor-2026-09-17
 0x0044C130,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
-0x0044C150,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x0044C1C0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0044C150,authored_game,Worker,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0044C1C0,authored_game,Worker,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044C250,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0044C2A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044C350,authored_game,AnmManager,authored,high,anm-interpolation-evaluators-2026-09-15

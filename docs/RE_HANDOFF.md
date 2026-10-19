@@ -77,13 +77,24 @@ scratch paths, or build hashes into this file.
   Direct edge expressions recover 109 raw-equal bytes; simple AND reversal
   is byte-neutral and a widened temporary regresses. Input-mask 33, cursor 128
   and mode-switch 37 pass same-image guards. No historical full cohort replay.
-- Update remains 1267/1251; pointer-based cursor remembrance raises ordinary
-  diagnostic agreement to 539/923, without parent exact credit. Initializer
-  remains 153/101, creator 68/67, load callback 16/16 differing, player suspension
-  39/36 and Enemy manager destructor 298/300. Next connect worker Start 56 /
-  Stop 101 and remaining manager release calls; recover browser destructor 412
-  and Draw 647. RebuildPlayerOptions cleanup ABI and native product/runtime
-  closure remain open.
+- Worker Stop101, Start56 and player suspension36 now close **193 authored
+  exact bytes** in two frozen-source cold links. Existing origin confidence is
+  preserved. Real bodies and caller let LTCG select the observed private worker
+  registers; all six fields and fourteen existing guards pass. Rebuild's
+  measured single stack-pointer/RET4 interface is expressed by `__stdcall`;
+  its original source annotation remains unknown. Fresh review finds ten direct
+  calls, including browser0x40A02D beyond the persistent database's nine.
+  See [the worker and ABI evidence](evidence/script-viewer-worker/README.md).
+- Update is now1264/1251 with522/923 ordinary diagnostic agreement, and Rebuild
+  remains2408/2520 despite restored RET4; neither receives parent exact credit.
+  Initializer153/101, creator68/67, loader16/16 and Enemy destructor298/300
+  differ. Creator's extra byte is on the unresolved destructor edge (native
+  ECX receiver versus target stack pointer). Next recover browser destructor412,
+  Draw647 and manager release calls; production ownership/runtime stay open.
+- Initializer's extra52 bytes are now localized: target first calls PlayerCreate
+  at0x40A351, while native inlines its allocation/constructor/registration/failure
+  cleanup. The next creator is at native+0x3A versus target+0x06. Test genuine
+  PlayerCreate outlining/context next; no original noinline annotation is proven.
 
 ## Validated large-owner checkpoints (not exact claims)
 

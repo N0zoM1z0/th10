@@ -490,6 +490,7 @@ Player *PlayerCreate();
 // The target machine boundary is one stack Player* argument with callee pop 4;
 // the original source identifier, source convention, TU, and compiler owner are
 // not established.
-void RebuildPlayerOptions(Player *player);
+// Observed TH10 interface: one stack pointer, callee cleanup (RET 4).
+void __stdcall RebuildPlayerOptions(Player *player);
 
 #endif

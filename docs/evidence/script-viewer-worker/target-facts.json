@@ -1,0 +1,244 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "functions": [
+    {
+      "address": "0x44c150",
+      "name": "ScriptViewerWorkerView::Stop",
+      "owned_size": 101,
+      "body_size": 101,
+      "code_sha256": "cfb40c11e58c6679c6865c790c8bf2a2f54b69a441729bcc8ac0b4a1d3780df9",
+      "exit": {
+        "address": "0x44c1b4",
+        "instruction": "ret "
+      },
+      "calls": [
+        {
+          "instruction": "0x44c171",
+          "operand": "edi"
+        },
+        {
+          "instruction": "0x44c18d",
+          "operand": "ebx"
+        },
+        {
+          "instruction": "0x44c198",
+          "operand": "edi"
+        },
+        {
+          "instruction": "0x44c1a6",
+          "operand": "dword ptr [0x4660cc]"
+        }
+      ]
+    },
+    {
+      "address": "0x44c1c0",
+      "name": "ScriptViewerWorkerView::Start",
+      "owned_size": 56,
+      "body_size": 56,
+      "code_sha256": "52ab2c9006f9542467e243360ae450214521211e9c0fef891ba6757cb0bbc761",
+      "exit": {
+        "address": "0x44c1f5",
+        "instruction": "ret 4"
+      },
+      "calls": [
+        {
+          "instruction": "0x44c1c3",
+          "operand": "0x44c150"
+        },
+        {
+          "instruction": "0x44c1e9",
+          "operand": "0x453683"
+        }
+      ]
+    },
+    {
+      "address": "0x40a010",
+      "name": "ScriptViewerSuspendPlayer",
+      "owned_size": 36,
+      "body_size": 36,
+      "code_sha256": "7729b7bf5c562644de48d1d6dcb811c6e2ce521b22131b6e9151a78abcec998f",
+      "exit": {
+        "address": "0x40a033",
+        "instruction": "ret "
+      },
+      "calls": [
+        {
+          "instruction": "0x40a02d",
+          "operand": "0x426f70"
+        }
+      ]
+    },
+    {
+      "address": "0x426f70",
+      "name": "RebuildPlayerOptions",
+      "owned_size": 2520,
+      "body_size": 2494,
+      "code_sha256": "7dfaf871a4841d67e6223b302fa56ceabdf9dbceaa37576aa6e7daab5f12c2fd",
+      "exit": {
+        "address": "0x42792b",
+        "instruction": "ret 4"
+      },
+      "call_count": 40
+    }
+  ],
+  "rebuild_direct_callers": [
+    {
+      "call_address": "0x40a02d",
+      "owner_address": "0x40a010",
+      "next_instruction": "pop esi",
+      "preceding_instruction": {
+        "address": "0x40a02a",
+        "instruction": "mov dword ptr [ecx + 4], esi"
+      },
+      "argument_push": {
+        "address": "0x40a029",
+        "operand": "eax"
+      }
+    },
+    {
+      "call_address": "0x4182e0",
+      "owner_address": "0x418190",
+      "next_instruction": "mov eax, dword ptr [0x4776f0]",
+      "preceding_instruction": {
+        "address": "0x4182dd",
+        "instruction": "mov dword ptr [ecx + 4], edi"
+      },
+      "argument_push": {
+        "address": "0x4182dc",
+        "operand": "eax"
+      }
+    },
+    {
+      "call_address": "0x4184e0",
+      "owner_address": "0x418190",
+      "next_instruction": "mov eax, dword ptr [0x4776f0]",
+      "preceding_instruction": {
+        "address": "0x4184dd",
+        "instruction": "mov dword ptr [ecx + 4], edi"
+      },
+      "argument_push": {
+        "address": "0x4184dc",
+        "operand": "eax"
+      }
+    },
+    {
+      "call_address": "0x41b420",
+      "owner_address": "0x41afd0",
+      "next_instruction": "mov esi, dword ptr [0x477840]",
+      "preceding_instruction": {
+        "address": "0x41b41f",
+        "instruction": "push ecx"
+      },
+      "argument_push": {
+        "address": "0x41b41f",
+        "operand": "ecx"
+      }
+    },
+    {
+      "call_address": "0x41b67a",
+      "owner_address": "0x41afd0",
+      "next_instruction": "mov edx, dword ptr [edi]",
+      "preceding_instruction": {
+        "address": "0x41b679",
+        "instruction": "push ecx"
+      },
+      "argument_push": {
+        "address": "0x41b679",
+        "operand": "ecx"
+      }
+    },
+    {
+      "call_address": "0x424d3d",
+      "owner_address": "0x4247f0",
+      "next_instruction": "pop esi",
+      "preceding_instruction": {
+        "address": "0x424d33",
+        "instruction": "mov dword ptr [ebx + 0x4308], 0x1e"
+      },
+      "argument_push": {
+        "address": "0x424d32",
+        "operand": "ebx"
+      }
+    },
+    {
+      "call_address": "0x4259dd",
+      "owner_address": "0x425730",
+      "next_instruction": "movsx eax, word ptr [0x474c48]",
+      "preceding_instruction": {
+        "address": "0x4259dc",
+        "instruction": "push ebp"
+      },
+      "argument_push": {
+        "address": "0x4259dc",
+        "operand": "ebp"
+      }
+    },
+    {
+      "call_address": "0x425b98",
+      "owner_address": "0x425730",
+      "next_instruction": "cmp dword ptr [ebp + 0x478], 0x1e",
+      "preceding_instruction": {
+        "address": "0x425b97",
+        "instruction": "push ebp"
+      },
+      "argument_push": {
+        "address": "0x425b97",
+        "operand": "ebp"
+      }
+    },
+    {
+      "call_address": "0x425c4c",
+      "owner_address": "0x425730",
+      "next_instruction": "movsx eax, word ptr [0x474c48]",
+      "preceding_instruction": {
+        "address": "0x425c4b",
+        "instruction": "push ebp"
+      },
+      "argument_push": {
+        "address": "0x425c4b",
+        "operand": "ebp"
+      }
+    },
+    {
+      "call_address": "0x42a5ef",
+      "owner_address": "0x42a450",
+      "next_instruction": "mov esi, dword ptr [0x477834]",
+      "preceding_instruction": {
+        "address": "0x42a5e9",
+        "instruction": "mov dword ptr [eax + 0x4474], edx"
+      },
+      "argument_push": {
+        "address": "0x42a5e8",
+        "operand": "eax"
+      }
+    }
+  ],
+  "database_xrefs": 9,
+  "additional_temporarily_reviewed_caller": "0x40A02D",
+  "evidence_classes": {
+    "target": "complete bounded Capstone 5.0.6 decode and exact disk identity",
+    "ghidra": "fresh local decompilation and nine persistent xrefs; provisional signature agrees with one stack pointer",
+    "inference": "__stdcall expresses the observed single stack pointer and RET4 contract; original source annotation and production partition unknown"
+  },
+  "rebuild_stack_parameter": {
+    "instruction_address": "0x00426F89",
+    "instruction": "mov ebp, dword ptr [esp + 0x44]",
+    "prior_stack_adjustment": "sub esp,0x38; push ebx; push ebp",
+    "entry_relative_argument_offset": 4,
+    "single_exit": "0x0042792B RET4",
+    "fresh_ghidra_observation": "one stack parameter; no root in_ECX/in_EDX/unaff_ESI parameter in provisional decompilation",
+    "interpretation": "__stdcall represents the measured one-pointer callee-clean interface, without proving original annotation"
+  },
+  "initializer_followup": {
+    "target_address": "0x0040A350",
+    "target_owned_bytes": 101,
+    "target_first_call": {
+      "site": "0x0040A351",
+      "callee": "0x00425020",
+      "name": "PlayerCreate"
+    },
+    "current_native_owned_bytes": 153,
+    "native_observation": "PlayerCreate allocation/constructor/registration/failure cleanup is inlined before the Bullet creator; next call at native+0x3A versus target+0x06 accounts for the 52-byte extent difference",
+    "interpretation": "test genuine PlayerCreate outlining / production-context recovery next; original noinline annotation unknown; no source or exactness change here"
+  }
+}

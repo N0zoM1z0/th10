@@ -1932,7 +1932,7 @@ int __fastcall PlayerDrawCallback(Player *player)
     return 1;
 }
 
-void RebuildPlayerOptions(Player *player)
+void __stdcall RebuildPlayerOptions(Player *player)
 {
     int i;
     const short power = g_PlayerPower;

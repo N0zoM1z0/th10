@@ -93,6 +93,10 @@ still differ. Enemy manager destruction remains298/300. The original
 RebuildPlayerOptions cleanup ABI, worker launch, manager release helpers,
 browser destructor/Draw and production storage/link/runtime closure stay open.
 
+The dated [worker follow-up](../script-viewer-worker/README.md) closes Start/Stop
+and player suspension, superseding those open-ABI/worker observations. It keeps
+the larger browser and Player owners nonexact.
+
 Host fixtures compile the actual maintained reset, repeat and browser bodies.
 They check destruction-mutated lists, null callbacks, exact clear range and
 untouched prefix, null resource forwarding, counter wrap/threshold behavior,

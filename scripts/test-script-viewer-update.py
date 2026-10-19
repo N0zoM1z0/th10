@@ -72,7 +72,7 @@ struct Entry {const char *name;};
 struct EclVmScriptDatabase {Entry *subroutines;};
 struct EnemyManagerView : ScriptViewerChainOwnerView {EclVmScriptDatabase *scriptDatabase;void SuspendCallbacks();};
 struct GuiView {};
-struct ScriptViewerWorkerView {};
+struct ScriptViewerWorkerView {void Start(void *context,int (*entry)());};
 struct ScriptViewerView {
  int state=0,scriptCount=0,value680=0; char **scriptNames=nullptr;
  FrontEndCursorView menu,files,entries; Float3 position{};
@@ -129,8 +129,8 @@ static void ScriptViewerReleaseItems(ScriptViewerItemsView *p){assert(p==g_Scrip
 static void ScriptViewerReleasePopups(void *p){assert(p==g_ScriptViewerPopups);events.push_back("release-popups");}
 static void ScriptViewerReleaseEnemies(EnemyManagerView *p){assert(p==g_EnemyManager);events.push_back("release-enemies");}
 static int ScriptViewerLoadThread(){return 0;}
-static void ScriptViewerStartWorker(ScriptViewerWorkerView *w,ScriptViewerView *v,int (*entry)()){
- assert(v==activeView&&w==&v->worker&&entry==ScriptViewerLoadThread);events.push_back("worker");
+void ScriptViewerWorkerView::Start(void *context,int (*entry)()){
+ assert(context==activeView&&this==&activeView->worker&&entry==ScriptViewerLoadThread);events.push_back("worker");
 }
 '''
         program += extracted + r'''

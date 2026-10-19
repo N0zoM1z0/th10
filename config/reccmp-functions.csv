@@ -992,3 +992,5 @@ BulletManagerView::ResetPool,0x00405ED0,function
 EnemyManagerClear,0x00409F90,function
 EnemyManagerView::SuspendCallbacks,0x0040D510,function
 FrontEndInputView::UpdateDebugRepeat,0x0040AC20,function
+ScriptViewerWorkerView::Stop,0x0044C150,function
+ScriptViewerWorkerView::Start,0x0044C1C0,function

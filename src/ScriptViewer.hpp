@@ -18,6 +18,8 @@ struct ScriptViewerWorkerView
     void *entry018;
     unsigned int unknown01C;
     ScriptViewerWorkerView();
+    __declspec(noinline) void Stop();
+    __declspec(noinline) void Start(void *context, int (*entry)());
 };
 
 struct ScriptViewerCursorView : FrontEndCursorView

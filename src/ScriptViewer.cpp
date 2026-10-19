@@ -94,8 +94,6 @@ extern void ScriptViewerReleaseBomb(void *owner);                          // 0x
 extern void ScriptViewerReleaseItems(ScriptViewerItemsView *owner);        // 0x41AFB0
 extern void ScriptViewerReleasePopups(void *owner);                        // 0x42B6D0
 extern void ScriptViewerReleaseEnemies(EnemyManagerView *owner);           // 0x40D730
-extern void ScriptViewerStartWorker(
-    ScriptViewerWorkerView *worker, ScriptViewerView *view, int (*entry)());
 extern int ScriptViewerLoadThread(); // 0x40A340
 extern void *ScriptViewerCreateBullets(); // 0x406060
 extern void *ScriptViewerCreateBomb();    // 0x4056B0
@@ -260,7 +258,7 @@ int ScriptViewerView::Update()
                 ScriptViewerReleasePopups(g_ScriptViewerPopups);
                 ScriptViewerReleaseEnemies(g_EnemyManager);
                 flags &= ~2u;
-                ScriptViewerStartWorker(&worker, this, ScriptViewerLoadThread);
+                worker.Start(this, ScriptViewerLoadThread);
                 state = 2;
             }
             break;
