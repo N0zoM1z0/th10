@@ -67,3 +67,11 @@ Runner-only operational bounds: mutation compilation defaults to one worker (`--
 ## Line-ending portability check
 
 Run `python3 scripts/transition_effect_eol_test.py --canonical src` for strict pin tests covering LF, CRLF, mixed line endings, whitespace/content changes, bare CR, and legacy-schema rejection. This host-only portability rule accepts ordinary Git `eol=crlf` checkouts without relaxing dependency identity. It does not rewrite any production input.
+
+The2026-10-19 [allocator/scheduler review](evidence/effect-allocation-abi/README.md)
+updates the exact-one host allocation rewrite to the actual ordinary-new source
+expression and the init_flags function marker to its callee-pop declaration.
+Three dependency LF pins change only for reviewed calling-convention annotations;
+full-file reversal proof is recorded. All843 baseline assertions, the focused
+init_flags negative control and all19 unchanged EOL guards pass. This host seam
+does not establish native ordinary-new exception or failure behavior.

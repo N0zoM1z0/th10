@@ -1,0 +1,22 @@
+{
+  "artifact_kind": "coff-archive",
+  "compared_size": 14,
+  "first_differences": [],
+  "matched_bytes": 14,
+  "matched_compared_bytes": 14,
+  "object": "build/match-runtime/runtime-crt-00452493.obj",
+  "relocations": [
+    {
+      "addend": "0x00000000",
+      "offset": "0x7",
+      "symbol": "__nh_malloc",
+      "target": "0x004526DA",
+      "type": "REL32"
+    }
+  ],
+  "result": "exact",
+  "size": 14,
+  "symbol": "??2@YAPAXI@Z",
+  "target_address": "0x00452493",
+  "unit": "runtime-crt-00452493"
+}

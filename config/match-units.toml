@@ -19618,8 +19618,8 @@ target_address = 0x004198B0
 size = 6
 linkages = []
 
-# LOCAL-ONLY, CONDITIONAL PROPOSAL. Not replayable until static-map selection is supported and reviewed.
-# Append to current manifest only after gates in PROPOSAL.md; no existing producer or unit edits.
+# Complete transition callbacks use explicit qualified static MAP/PDB ownership.
+# They share the real Gui updater graph and strict complete target-field replay.
 
 [units.transition-draw-screen]
 artifact_kind = "linked-pe"
@@ -19627,7 +19627,7 @@ owner_visibility = "static"
 source = "src/Gui.cpp"
 support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
 pdb_source = "src/TransitionEffect.cpp"
-output_dir = "build/match-linked/GuiTransitionEffectCallbacks"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
@@ -19654,7 +19654,7 @@ owner_visibility = "static"
 source = "src/Gui.cpp"
 support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
 pdb_source = "src/TransitionEffect.cpp"
-output_dir = "build/match-linked/GuiTransitionEffectCallbacks"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
@@ -19673,7 +19673,7 @@ owner_visibility = "static"
 source = "src/Gui.cpp"
 support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
 pdb_source = "src/TransitionEffect.cpp"
-output_dir = "build/match-linked/GuiTransitionEffectCallbacks"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
@@ -19692,7 +19692,7 @@ owner_visibility = "static"
 source = "src/Gui.cpp"
 support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
 pdb_source = "src/TransitionEffect.cpp"
-output_dir = "build/match-linked/GuiTransitionEffectCallbacks"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
 profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
 link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
 harness = "unresolved-symbol-data-anchors-v1"
@@ -21782,3 +21782,69 @@ symbol = "?GameResetAnimationSlots@@YAXPAUGameChainOwnerView@@@Z"
 target_address = 4212144
 size = 92
 linkages = [{ offset = 44, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 4681592 }]
+
+[units.chain-register-calc]
+artifact_kind = "linked-pe"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/Chain.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["th10::Chain::RegisterCalc"]
+symbol = "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@P6IHPAX@ZH0@Z"
+target_address = 4497408
+size = 43
+linkages = [{ offset = 3, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 4497104 }, { offset = 13, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 4791268 }, { offset = 33, type = "REL32", symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 4496096 }]
+
+[units.chain-register-draw]
+artifact_kind = "linked-pe"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/Chain.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["th10::Chain::RegisterDraw"]
+symbol = "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@P6IHPAX@ZH0@Z"
+target_address = 4497456
+size = 43
+linkages = [{ offset = 3, type = "REL32", symbol = "?AllocElem@Chain@th10@@SGPAUChainElem@2@P6IHPAX@Z@Z", target = 4497104 }, { offset = 13, type = "DIR32", symbol = "?g_Chain@th10@@3PAUChain@1@A", target = 4791268 }, { offset = 33, type = "REL32", symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z", target = 4496240 }]
+
+[units.transition-fade-out]
+artifact_kind = "linked-pe"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["TransitionFadeOut"]
+symbol = "?TransitionFadeOut@@YIHPAX@Z"
+target_address = 4439360
+size = 93
+linkages = [{ offset = 2, type = "DIR32", symbol = "?g_GameStartupCounter@@3HA", target = 4790436 }, { offset = 30, type = "DIR32", symbol = "__real@437f0000", target = 4656120 }, { offset = 40, type = "DIR32", symbol = "__real@437f0000", target = 4656120 }, { offset = 45, type = "REL32", symbol = "__ftol2", target = 4602668 }, { offset = 81, type = "REL32", symbol = "?Tick@AnmVmTimerView@@QAEXXZ", target = 4214480 }]
+owner_visibility = "static"
+
+[units.transition-draw-dim-screen]
+artifact_kind = "linked-pe"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["TransitionDrawDimScreen"]
+symbol = "?TransitionDrawDimScreen@@YIHPAX@Z"
+target_address = 4441024
+size = 68
+linkages = [{ offset = 53, type = "REL32", symbol = "?DrawColoredRectangle@@YAXPAUAnmFloatRectView@@I@Z", target = 4439456 }]
+owner_visibility = "static"

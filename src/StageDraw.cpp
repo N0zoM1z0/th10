@@ -188,7 +188,7 @@ void StageDisableSupervisorFog(MainSupervisorView *supervisor);
 // Target0x43C8B0: EBX draw priority plus five stack arguments, RET20. The
 // allocation/registration implementation remains external; the caller ignores
 // allocation failure and still proceeds with its transition state writes.
-void *StageCreateTransitionEffect(int drawPriority, int kind, int frames,
+void *__stdcall StageCreateTransitionEffect(int drawPriority, int kind, int frames,
     unsigned int value0, unsigned int value1, unsigned int value2);
 
 static void StageSetRenderState(unsigned int state, unsigned int value)

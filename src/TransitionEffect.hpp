@@ -38,9 +38,10 @@ typedef char TransitionEffectPhysicalLayout[
      offsetof(TransitionEffectView, released) == 0x2c &&
      offsetof(TransitionEffectView, timer) == 0x30) ? 1 : -1];
 
-// Logical source boundary only: target passes priority in EBX, five stack
-// arguments and RET20; genuine caller-linked code generation remains open.
-void *StageCreateTransitionEffect(int drawPriority, int kind, int frames,
+// Target passes priority in EBX and five stack arguments with RET20.
+// This callee-pop spelling is a maintained compiler model, not the original
+// source annotation or a whole-product ABI claim.
+void *__stdcall StageCreateTransitionEffect(int drawPriority, int kind, int frames,
     unsigned int value0, unsigned int value1, unsigned int value2);
 void DestroyTransitionEffect(TransitionEffectView *effect);
 #endif

@@ -87,7 +87,10 @@ def build(source, out, canonical=DEFAULT_CANON, sanitize=False):
     # that body except translating this documented list-head field access.
     chain=once(chain,'node = *(ListNode **)(listBase + 0x18);','node = reinterpret_cast<ListNode *>(listBase)->next;')
     proposed=no_includes(read(source))
-    proposed=once(proposed,'new (std::nothrow) TransitionEffectView','HostNewEffect()')
+    # The native source uses the target's one-argument ordinary allocation.
+    # This existing host allocator seam controls failure and prefill; it does
+    # not claim modern ordinary-new failure/exception behavior.
+    proposed=once(proposed,'new TransitionEffectView','HostNewEffect()')
     proposed=once(proposed,'delete effect;','HostDeleteEffect(effect);')
     timer=block(read(canonical/'AnmManager.hpp'),'struct AnmVmTimerView\n')+';\n'
     viewport=block(read(canonical/'AnmManager.hpp'),'struct AnmViewportView\n')+';\n'

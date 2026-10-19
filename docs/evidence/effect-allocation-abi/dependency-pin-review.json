@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-19",
+  "starting_head": "5ea5f9a",
+  "reason": "Target factory RET20 and complete registrar RET4 bodies support callee-pop models with all real operands retained. Replacing only these annotations reconstructs the entire prior normalized dependencies. No member layout, mutation statement, viewport/RNG/timer dependency or normalization rejection policy changes. The old raw-observation receipt remains historical.",
+  "files": {
+    "src/Chain.cpp": {
+      "old_sha256_lf": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+      "new_sha256_lf": "4aa870fdbfb7db13268e692dffb9da8ffee1035bcd197e65f3bb63f61b754825",
+      "only_callee_pop_annotations_changed": true
+    },
+    "src/Chain.hpp": {
+      "old_sha256_lf": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+      "new_sha256_lf": "ebcaeb89fff529bb0e2953f06b9f59932bf8a9e4be3eac12af96b3e7625a4bcb",
+      "only_callee_pop_annotations_changed": true
+    },
+    "src/StageDraw.cpp": {
+      "old_sha256_lf": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+      "new_sha256_lf": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+      "only_callee_pop_annotations_changed": true
+    }
+  },
+  "evidence": "docs/evidence/effect-allocation-abi/README.md"
+}

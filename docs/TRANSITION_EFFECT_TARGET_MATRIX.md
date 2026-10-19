@@ -8,7 +8,7 @@ There is no existing canonical effect type in inspected sources. A new evidence-
 
 ## Target-bound matrix
 
-All ends below are inclusive; decoded RET followed by CC separates every newly recovered contiguous body. Starts for the eleven callbacks are additionally attested by initializer registration immediates. Extents are provisional complete code boundaries, not authorship/exactness credit.
+All ends below are inclusive; decoded RET followed by CC separates every newly recovered contiguous body. Starts for the eleven callbacks are additionally attested by initializer registration immediates. This matrix alone grants no boundary, authorship or exactness credit; current ledger states and the scoped native evidence are authoritative.
 
 | Address–end | Bytes | Role and dependency |
 |---|---:|---|
@@ -28,11 +28,11 @@ All ends below are inclusive; decoded RET followed by CC separates every newly r
 | 43C8B0–43C901 | 82 | Allocate0x44, timer-constructor flag clear, zero17 words, flags|2, initialize; EBX priority+five stack args; RET20 |
 | 43C910–43C921 | 18 | ESI explicit null-safe cleanup/free entry; plain RET; do not claim separate authored work |
 | 43C930–43C968 | 57 | EAX receiver release trigger: +2C=1, timer SetCurrent(0) inline |
-| 43C970–43CAD4 | 357 | ESI receiver/EBX priority, full9kind initialization; RET20 |
-| 43CAD8–43CAFB | 36 data | Nine selector pointers; separate table ownership obligation |
-| 43CB00–43CB7E | 127 | Actual two-node cleanup; stack receiver RET4; real missing authored ledger candidate |
+| 43C970–43CAFB | 396 | 357 code +3 LEA alignment +36 nine-slot table; ESI receiver/EBX priority, full9kind initialization; RET20 |
+| 43CAD8–43CAFB | 36 data | Nine selector pointers included in the396-byte initializer owner; no separate credit |
+| 43CB00–43CB7E | 127 | Actual two-node cleanup; stack receiver RET4; maintained source remains nonexact |
 
-Substantive factory+initializer+11callbacks+cleanup total2321 bytes. Delete callback/adapter/release entry/source ownership are separate decisions; totals must not become credit or padding targets.
+Factory+complete initializer+11callbacks+cleanup own2360 bytes, including39 initializer alignment/table bytes. Delete callback/adapter/release entry/source ownership are separate decisions; totals must not become credit or padding targets.
 
 ## Complete initializer behavior
 

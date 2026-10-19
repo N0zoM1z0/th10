@@ -2587,3 +2587,38 @@ per image. Their recipes share the new output directory with no duplicate
 credit. Original identifiers/TU and complete alias/storage ownership remain
 unknown. Menu helper119, full update core, product/runtime, semantics and port
 remain open.
+
+## Transition allocator and scheduler interfaces (2026-10-19)
+
+Read-only local Ghidra attests all mapped text before/after temporary metadata,
+with rollback. The target43C8B0 factory calls452493 with a single size0x44 and
+ADD ESP4, then uses EBX priority/five real stack operands and RET20. Fresh pinned
+libcmt extraction proves all14 allocator bytes and its __nh_malloc field: the
+ordinary one-size operator-new symbol. This supersedes the nothrow hypothesis;
+handler/throw/failure and prezero timer object-lifetime behavior remain unknown.
+
+The actual44A000/44A030 convenience registrars consume callbackEAX, priorityEDI
+and one stack user argument, RET4. Source/header callee-pop annotations alone
+restore both complete43-byte bodies; their mutation statements/layouts are
+unchanged. Target43BD40 falling alpha93 and43C3C0 full-screen dim68 have complete
+new boundaries, distinct game-specific behavior and only initializer entry
+references, no external interior references. Authored_game medium classification
+is independent of reference names and compiler matching. Previous registrar
+origin confidence is unchanged. Both canonical cold links, with42 identical
+CPP/header inputs, pass all591 bytes/24 fields:247 new and344 existing guards.
+
+Initializer43C970 owns396 bytes through43CAFB:357 code +3 LEA alignment +36
+nine-slot table43CAD8. All9 destinations are internal starts, selector bounds
+are unsigned0..8, physical order0/1/2/3/5/4/6/7/8, and next cleanup starts43CB00.
+The corrected ownership adds39 authored denominator bytes with zero parent
+credit; the two callbacks add161 reviewed bytes. Native factory remains88/82,
+initializer396/396 still has scheduling differences, cleanup127 remains unequal.
+The positive factory branch/common source return is byte-neutral. Do not infer
+exactness from sizes or relaxed static callback-address normalization.
+
+The14-scenario/843-assertion host baseline, focused init_flags negative control
+and19 EOL pin controls pass. Only three dependency LF pins change, with full-file
+reversal proof for calling-convention annotations alone. Ordinary-new host
+allocation is an explicit failure/prefill seam, not a native exception Oracle.
+The MIT sparse reference commitc6791d82 suggests hypotheses; target facts and
+canonical comparisons establish acceptance. See [the full scoped evidence](evidence/effect-allocation-abi/README.md).

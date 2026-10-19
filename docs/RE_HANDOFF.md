@@ -171,13 +171,31 @@ scratch paths, or build hashes into this file.
   agree. Their guard recipes share the new canonical output directory without
   changing profiles or adding duplicate credit. The119-byte menu helper,
   GameManager update core, storage alias and native product/runtime stay open.
-  Next bounded dependency: StageCreateTransitionEffect82 at43C8B0. Fresh target
-  decoding shows one pushed allocation size0x44, call452493, ADD ESP4, a null
-  branch and RET20. The maintained factory still uses two-argument nothrow
-  allocation and ordinary cdecl; the old14-TU observation reports89/82 and
-  caller cleanup. Review allocator452493/initializer43C970 and actual compiler
-  behavior before correcting those hypotheses; no allocator/exception/runtime
-  equivalence is established merely by the call window.
+  The following allocator/scheduler review supersedes the old nothrow/cdecl
+  hypotheses without granting factory or initializer credit.
+- [Transition allocator and scheduler interfaces](evidence/effect-allocation-abi/README.md)
+  now close **247 authored exact bytes**: calc/draw convenience registrars43x2,
+  falling-alpha callback93 and full-screen dim callback68. Two cold links with42
+  identical CPP/header inputs pass591 complete bytes/all24 fields, including344
+  existing guard bytes. Target allocator452493 is the complete14-byte ordinary
+  one-size pinned CRT body, not the nothrow overload. Ordinary new and callee-pop
+  annotations retain all real operands; Chain mutation bodies are unchanged.
+  Source case order0/1/2/3/5/4/6/7/8 matches the actual physical arms. Host843,
+  focused flags mutation and19 unchanged EOL controls pass. The two callbacks
+  add161 reviewed authored bytes; initializer ownership357+3+36=396 adds39 more
+  denominator bytes and zero parent exact credit. Factory88/82, initializer396
+  scheduling and cleanup127 remain nonexact. Allocation handlers/exceptions,
+  prezero timer lifetime, private compiler context and product/runtime stay open.
+  Revisit these owners with new real lifetime/visibility evidence; do not repeat
+  nothrow, callback-keyword or case-order controls. The old factory source flow
+  change is byte-neutral and does not solve its result-register lifetime.
+  New hypothesis for the next unit: the pinned reference Screen header puts
+  zero-fill/flags2 in its real constructor, while this source still places them
+  in the factory after member construction. Review a natural constructor-owned
+  initialization model against TH10 before adopting it; do not copy its extra
+  timer-flag statement or noinline controls. No such source change is made here.
+  The five other update callbacks remain nonexact in this retained graph; no
+  further callback or partial-body credit is added.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

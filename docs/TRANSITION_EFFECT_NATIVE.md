@@ -1,5 +1,11 @@
 # Transition-effect fixed native observation
 
+The observations below retain their original source binding. The later
+[2026-10-19 allocator/scheduler review](evidence/effect-allocation-abi/README.md)
+supersedes the nothrow/caller-clean hypotheses: ordinary-new factory remains88/82,
+initializer396/396 remains nonexact, and four complete owners now pass strict
+cold replay. Earlier sizes/addresses below are historical observations.
+
 ## Result and authority
 
 One parent-run, nice-10 serial **14-TU** diagnostic links successfully. All twelve effect callbacks naturally retain distinct executable contributions, and all 47 required dependency fragments have positive real owners. The actual updater → Run → factory → initializer → registered kind-5 callbacks/deletion path is now backed by emitted source code. This does not execute callbacks, establish scheduler/runtime storage, or confer canonical credit.

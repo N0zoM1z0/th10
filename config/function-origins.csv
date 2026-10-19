@@ -970,11 +970,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0043BC10,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0043BC40,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
 0x0043BCD0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
+0x0043BD40,authored_game,TransitionEffect,authored,medium,target-effect-behavior-registration-2026-10-19
 0x0043BDA0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0043BF90,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x0043BFA0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0043C1A0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x0043C2C0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
+0x0043C3C0,authored_game,TransitionEffect,authored,medium,target-effect-behavior-registration-2026-10-19
 0x0043C410,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
 0x0043C500,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-audio-render-2026-09-17
 0x0043C870,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18

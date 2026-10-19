@@ -1,0 +1,237 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owners": [
+    {
+      "address": "0x0044A000",
+      "size": 43,
+      "span_end": "0x0044A02A",
+      "sha256": "a222d605a8486a52189614058db5e90d08c88dd265211312a2a43bd4f7f6aed0",
+      "dense_decoded_bytes": 43,
+      "last_instruction": "<CsInsn 0x44a028 [c20400]: ret 4>",
+      "overlaps": [],
+      "following_bytes": "cccccccccc",
+      "linkages": [
+        {
+          "offset": 3,
+          "type": "REL32",
+          "target": "0x00449ED0",
+          "instruction": "call 0x449ed0"
+        },
+        {
+          "offset": 13,
+          "type": "DIR32",
+          "target": "0x00491BE4",
+          "instruction": "mov edx, dword ptr [0x491be4]"
+        },
+        {
+          "offset": 33,
+          "type": "REL32",
+          "target": "0x00449AE0",
+          "instruction": "call 0x449ae0"
+        }
+      ],
+      "whole_file_entry_literals_file_offsets": [],
+      "preceding_16_bytes": "740956e8a984000083c4048bc6c20400"
+    },
+    {
+      "address": "0x0044A030",
+      "size": 43,
+      "span_end": "0x0044A05A",
+      "sha256": "d586063726c0cfc9c5de320189a3395991f51eaad8f1479fa0b84c0b90b1f9f3",
+      "dense_decoded_bytes": 43,
+      "last_instruction": "<CsInsn 0x44a058 [c20400]: ret 4>",
+      "overlaps": [],
+      "following_bytes": "cccccccccc",
+      "linkages": [
+        {
+          "offset": 3,
+          "type": "REL32",
+          "target": "0x00449ED0",
+          "instruction": "call 0x449ed0"
+        },
+        {
+          "offset": 13,
+          "type": "DIR32",
+          "target": "0x00491BE4",
+          "instruction": "mov edx, dword ptr [0x491be4]"
+        },
+        {
+          "offset": 33,
+          "type": "REL32",
+          "target": "0x00449B70",
+          "instruction": "call 0x449b70"
+        }
+      ],
+      "whole_file_entry_literals_file_offsets": [],
+      "preceding_16_bytes": "e8bbfaffff8bc65ec20400cccccccccc"
+    },
+    {
+      "address": "0x0043BD40",
+      "size": 93,
+      "span_end": "0x0043BD9C",
+      "sha256": "eb77f9ae62bf28287002b87c29b886a0d5c534a2084fdec0ccb4279dbbafb4ce",
+      "dense_decoded_bytes": 93,
+      "last_instruction": "<CsInsn 0x43bd9c [c3]: ret >",
+      "overlaps": [],
+      "following_bytes": "cccccc",
+      "linkages": [
+        {
+          "offset": 2,
+          "type": "DIR32",
+          "target": "0x004918A4",
+          "instruction": "mov eax, dword ptr [0x4918a4]"
+        },
+        {
+          "offset": 30,
+          "type": "DIR32",
+          "target": "0x00470BF8",
+          "instruction": "fmul dword ptr [0x470bf8]"
+        },
+        {
+          "offset": 40,
+          "type": "DIR32",
+          "target": "0x00470BF8",
+          "instruction": "fsubr dword ptr [0x470bf8]"
+        },
+        {
+          "offset": 45,
+          "type": "REL32",
+          "target": "0x00463B2C",
+          "instruction": "call 0x463b2c"
+        },
+        {
+          "offset": 81,
+          "type": "REL32",
+          "target": "0x00404ED0",
+          "instruction": "call 0x404ed0"
+        }
+      ],
+      "whole_file_entry_literals_file_offsets": [
+        "0x3bd87",
+        "0x3bde8"
+      ],
+      "preceding_16_bytes": "742408e808ffffff5ec20400cccccccc"
+    },
+    {
+      "address": "0x0043C3C0",
+      "size": 68,
+      "span_end": "0x0043C403",
+      "sha256": "425af8ab29d7b8597dec5a3c09bc638a8c98af029eb29e7aed2b409b5541b610",
+      "dense_decoded_bytes": 68,
+      "last_instruction": "<CsInsn 0x43c403 [c3]: ret >",
+      "overlaps": [],
+      "following_bytes": "cccccccccccccccccccccccc",
+      "linkages": [
+        {
+          "offset": 53,
+          "type": "REL32",
+          "target": "0x0043BDA0",
+          "instruction": "call 0x43bda0"
+        }
+      ],
+      "whole_file_entry_literals_file_offsets": [
+        "0x3be2e"
+      ],
+      "preceding_16_bytes": "010000005e59c3b8070000005e59c3cc"
+    }
+  ],
+  "float255": {
+    "address": "0x00470BF8",
+    "bytes": "00007f43"
+  },
+  "initializer": {
+    "address": "0x0043C970",
+    "old_size": 357,
+    "size": 396,
+    "span_end": "0x0043CAFB",
+    "code_size": 357,
+    "alignment_size": 3,
+    "table_size": 36,
+    "table_address": "0x0043CAD8",
+    "selector": "Unsigned kind0..8; EBP*4; all9 entries internal code starts",
+    "table": [
+      {
+        "kind": 0,
+        "destination": "0x0043C986",
+        "offset": 22
+      },
+      {
+        "kind": 1,
+        "destination": "0x0043C9AE",
+        "offset": 62
+      },
+      {
+        "kind": 2,
+        "destination": "0x0043C9B8",
+        "offset": 72
+      },
+      {
+        "kind": 3,
+        "destination": "0x0043C9E0",
+        "offset": 112
+      },
+      {
+        "kind": 4,
+        "destination": "0x0043C9F5",
+        "offset": 133
+      },
+      {
+        "kind": 5,
+        "destination": "0x0043C9EE",
+        "offset": 126
+      },
+      {
+        "kind": 6,
+        "destination": "0x0043CA1A",
+        "offset": 170
+      },
+      {
+        "kind": 7,
+        "destination": "0x0043CA3F",
+        "offset": 207
+      },
+      {
+        "kind": 8,
+        "destination": "0x0043CA64",
+        "offset": 244
+      }
+    ],
+    "physical_case_order": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      4,
+      6,
+      7,
+      8
+    ],
+    "whole_sha256": "9e40ac9bc381add1419309a8693d4098703383a1c1eb36c294b74b11522acd3b",
+    "new_authored_owned_denominator_bytes": 39,
+    "new_exact_bytes": 0,
+    "no_overlap": true,
+    "base_relocation_directory": [
+      0,
+      0
+    ],
+    "tail_raw_literal_candidates": [
+      {
+        "referenced_value": "0x43cad8",
+        "file_offset": "0x3bd82"
+      }
+    ],
+    "literal_scan_limit": "Whole-file exact32-bit literals only; computed references are not excluded. The one hit is the decoded indexed jump displacement."
+  },
+  "limits": "Literal scan is supplemental; complete local Ghidra reference review establishes observed incoming references. No runtime or original source ownership claim.",
+  "local_ghidra": {
+    "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+    "read_only": true,
+    "temporary_metadata_rolled_back": true,
+    "external_new_callback_range_references": [
+      "EXTERNAL_RANGE_REF 0043bd40 From: 0043c986 To: 0043bd40 Type: DATA Op: 1 ANALYSIS",
+      "EXTERNAL_RANGE_REF 0043bd40 From: 0043c9e7 To: 0043bd40 Type: DATA Op: 1 ANALYSIS",
+      "EXTERNAL_RANGE_REF 0043c3c0 From: 0043ca2d To: 0043c3c0 Type: DATA Op: 1 ANALYSIS"
+    ]
+  }
+}

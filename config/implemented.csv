@@ -1011,3 +1011,7 @@ StageDrawEarlyCallback
 StageDrawLateCallback
 AnmVmTimerView::Tick
 GameResetAnimationSlots
+TransitionFadeOut
+TransitionDrawDimScreen
+th10::Chain::RegisterCalc
+th10::Chain::RegisterDraw

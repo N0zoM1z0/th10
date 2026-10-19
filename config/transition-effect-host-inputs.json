@@ -3,8 +3,8 @@
   "normalization": "crlf-to-lf-only",
   "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",
   "sha256_lf": {
-    "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
-    "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+    "src/Chain.cpp": "4aa870fdbfb7db13268e692dffb9da8ffee1035bcd197e65f3bb63f61b754825",
+    "src/Chain.hpp": "ebcaeb89fff529bb0e2953f06b9f59932bf8a9e4be3eac12af96b3e7625a4bcb",
     "src/AnmManager.cpp": "a3952d13f53d5902854ba0fb58e9d126e4ef84a6ef45756831c2eab7f1aed757",
     "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
@@ -13,7 +13,7 @@
     "src/Rng.hpp": "fac62da48e3fc475d488c987e32ff6856c1d2776b7e311565231ae59bbd70f3d",
     "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
     "src/FrontEnd.cpp": "157f07385d912b81a6dccfcd18b3bda7388d7c4fde92f194610b770bf8bfc661",
-    "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+    "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
     "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03"
   },
   "observed_raw_sha256": {
@@ -87,5 +87,28 @@
     "old_tick_sha256": "cbce922125986aa49f213008f57a8f43970702f41d6c3c5d3ee496ba32093681",
     "new_tick_sha256": "e335fc4b666bad7673ed715e6963fe09f91a8065833d7bb97bcbad433e7c2685",
     "evidence": "docs/evidence/stage-real-callback/README.md"
+  },
+  "reviewed_effect_scheduler_cc_update": {
+    "date": "2026-10-19",
+    "starting_head": "5ea5f9a",
+    "reason": "Target factory RET20 and complete registrar RET4 bodies support callee-pop models with all real operands retained. Replacing only these annotations reconstructs the entire prior normalized dependencies. No member layout, mutation statement, viewport/RNG/timer dependency or normalization rejection policy changes. The old raw-observation receipt remains historical.",
+    "files": {
+      "src/Chain.cpp": {
+        "old_sha256_lf": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "new_sha256_lf": "4aa870fdbfb7db13268e692dffb9da8ffee1035bcd197e65f3bb63f61b754825",
+        "only_callee_pop_annotations_changed": true
+      },
+      "src/Chain.hpp": {
+        "old_sha256_lf": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "new_sha256_lf": "ebcaeb89fff529bb0e2953f06b9f59932bf8a9e4be3eac12af96b3e7625a4bcb",
+        "only_callee_pop_annotations_changed": true
+      },
+      "src/StageDraw.cpp": {
+        "old_sha256_lf": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "new_sha256_lf": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "only_callee_pop_annotations_changed": true
+      }
+    },
+    "evidence": "docs/evidence/effect-allocation-abi/README.md"
   }
 }

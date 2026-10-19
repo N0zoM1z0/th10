@@ -1,0 +1,33 @@
+{
+  "baseline": {
+    "command": "scripts/repo-python scripts/transition_effect_host_test.py --out build/host-tests/effect-allocation-abi",
+    "exit_code": 0,
+    "scenarios": 14,
+    "assertions": 843
+  },
+  "focused_mutation": {
+    "category": "runtime_mutation",
+    "name": "init_flags",
+    "scenario": "selector",
+    "expected_assertion": "FACTORY_ZERO_FLAGS_UNKNOWN",
+    "function_occurrences": 1,
+    "anchor_occurrences": 1,
+    "secondary_anchor_occurrences": null,
+    "function_before_sha256": "6933976dc20dbef6b37a419bffa834155ca1cefaef5f41c7a02df427c464308d",
+    "source_sha256": "351b3e0985db75e9f94ed714f621d6b1edd60c586fb12fe41e68335e0f59cbc0",
+    "status": "EXPECTED_ASSERTION",
+    "compile_returncode": 0,
+    "run_returncode": 86,
+    "stdout": "",
+    "stderr": "ASSERT:FACTORY_ZERO_FLAGS_UNKNOWN\n"
+  },
+  "eol": {
+    "command": "scripts/repo-python scripts/transition_effect_eol_test.py --out build/host-tests/effect-allocation-abi-eol",
+    "exit_code": 0,
+    "passed": 19,
+    "total": 19
+  },
+  "source_sha256": "dac4fab200b36438cd6e35882d727635012a43421e9af5de3c1c11eefa44d5f2",
+  "header_sha256": "35a0070d486b4af5b59251f59be1fa395ae792c233029b9c62718a8719db62b2",
+  "scope": "Actual maintained bodies through documented host seams only; no native failure/exception/runtime claim."
+}

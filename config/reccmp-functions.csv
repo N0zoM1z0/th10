@@ -1012,3 +1012,7 @@ StageDrawEarlyCallback,0x00403060,function
 StageDrawLateCallback,0x00403070,function
 AnmVmTimerView::Tick,0x00404ED0,function
 GameResetAnimationSlots,0x004045B0,function
+TransitionFadeOut,0x0043BD40,function
+TransitionDrawDimScreen,0x0043C3C0,function
+th10::Chain::RegisterCalc,0x0044A000,function
+th10::Chain::RegisterDraw,0x0044A030,function

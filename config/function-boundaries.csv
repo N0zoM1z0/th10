@@ -970,16 +970,18 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043BC10,0x0043BC13,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0043BC40,0x0043BCC6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043BCD0,0x0043BD3B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0043BD40,0x0043BD9C,reviewed,high,effect-allocation-abi-2026-10-19,"Complete target dense decode and read-only temporary Ghidra body agree; padding separates adjacent independent owner. Full-range reference review finds only initializer references to entry, no external interior references. See docs/evidence/effect-allocation-abi/README.md."
 0x0043BDA0,0x0043BF82,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=11; no overlap or external interior branch
 0x0043BF90,0x0043BF92,reviewed,high,target-boundary-audit-2026-09-30,Direct IDA Pro MCP disassembly ends in retn; no overlap or external interior branch; no code or data xrefs
 0x0043BFA0,0x0043C194,reviewed,medium,target-boundary-audit-2026-09-15+ida-isolated-target-boundary-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; independent hash-matched IDA MCP function extent agrees; no independent entry reference observed"
 0x0043C1A0,0x0043C225,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0043C2C0,0x0043C303,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
+0x0043C3C0,0x0043C403,reviewed,high,effect-allocation-abi-2026-10-19,"Complete target dense decode and read-only temporary Ghidra body agree; padding separates adjacent independent owner. Full-range reference review finds only initializer references to entry, no external interior references. See docs/evidence/effect-allocation-abi/README.md."
 0x0043C410,0x0043C453,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0043C500,0x0043C549,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0043C870,0x0043C889,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
 0x0043C8B0,0x0043C901,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=9; no overlap or external interior branch
-0x0043C970,0x0043CAD4,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0043C970,0x0043CAFB,reviewed,high,effect-allocation-abi-2026-10-19,Complete owned396 =357 dense code ending RET20 +3 LEA alignment +36 indexed table. All9 destinations internal; sole observed external tail reference is jump table base43CAD8; next independent cleanup43CB00. No overlap.
 0x0043CB00,0x0043CB7E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043CB80,0x0043CBD7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0043CBE0,0x0043CBE0,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

@@ -329,13 +329,13 @@ void TransitionEffectView::Initialize(int drawPriority, int effectKind, int dura
         updateNode = Chain::RegisterCalc(TransitionFadeOut, 14, this);
         drawNode = Chain::RegisterDraw(TransitionDrawPlayfield, drawPriority, this);
         break;
-    case 4:
-        updateNode = Chain::RegisterCalc(TransitionPulse, 14, this);
-        drawNode = Chain::RegisterDraw(TransitionDrawPulse, drawPriority, this);
-        break;
     case 5:
         updateNode = Chain::RegisterCalc(TransitionFadeIn, 14, this);
         drawNode = Chain::RegisterDraw(TransitionDrawScreen, drawPriority, this);
+        break;
+    case 4:
+        updateNode = Chain::RegisterCalc(TransitionPulse, 14, this);
+        drawNode = Chain::RegisterDraw(TransitionDrawPulse, drawPriority, this);
         break;
     case 6:
         updateNode = Chain::RegisterCalc(TransitionDim, 14, this);
@@ -359,17 +359,18 @@ void TransitionEffectView::Initialize(int drawPriority, int effectKind, int dura
     value2 = third;
 }
 
-// 43C8B0-43C901. nothrow keeps the target's observable null-return branch.
-// Its allocation-library binding and native private argument placement remain
-// unproven; no ABI adapter or allocation-failure success object is fabricated.
-void *StageCreateTransitionEffect(int drawPriority, int kind, int frames,
+// Target43C8B0 calls the one-size ordinary allocator at452493.
+// Historical compiler output determines the observed null-return branch;
+// allocation-handler and runtime behavior remain independent obligations.
+void *__stdcall StageCreateTransitionEffect(int drawPriority, int kind, int frames,
     unsigned int value0, unsigned int value1, unsigned int value2)
 {
-    TransitionEffectView *effect = new (std::nothrow) TransitionEffectView;
-    if (effect == NULL)
-        return NULL;
-    memset(effect, 0, sizeof(*effect));
-    effect->flags |= 2u;
-    effect->Initialize(drawPriority, kind, frames, value0, value1, value2);
+    TransitionEffectView *effect = new TransitionEffectView;
+    if (effect != NULL)
+    {
+        memset(effect, 0, sizeof(*effect));
+        effect->flags |= 2u;
+        effect->Initialize(drawPriority, kind, frames, value0, value1, value2);
+    }
     return effect;
 }

@@ -77,7 +77,7 @@ struct GameChainOwnerView;
 extern GameChainOwnerView *g_GameOwner477830;
 // 0x477830 is the existing GameManager chain-prefix alias for this menu.
 // The target passes this same pointer to 0x423370 in EDI.
-extern void *StageCreateTransitionEffect(int priority, int kind, int frames,
+extern void *__stdcall StageCreateTransitionEffect(int priority, int kind, int frames,
     unsigned int p3, unsigned int p4, unsigned int p5);
 extern int __stdcall GameQueueScaledSoundCommand(float magnitude);
 

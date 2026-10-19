@@ -23,7 +23,7 @@ MUTATIONS=[
   'drawNode = Chain::RegisterDraw(TransitionDrawPlayfield, drawPriority, this);','selector','SELECTOR_DRAW_9'),
  ('selector_kind3_alpha','void TransitionEffectView::Initialize(',
   'alpha = 255;','alpha = 0;','selector','SELECTOR_KIND3_ALPHA'),
- ('init_flags','void *StageCreateTransitionEffect(',
+ ('init_flags','void *__stdcall StageCreateTransitionEffect(',
   'effect->flags |= 2u;','effect->flags |= 4u;','selector','FACTORY_ZERO_FLAGS_UNKNOWN'),
  ('init_payload_early','void TransitionEffectView::Initialize(',
   'using th10::Chain;','using th10::Chain; frames = duration;','selector','INIT_PAYLOAD_AFTER_REGISTRATION'),

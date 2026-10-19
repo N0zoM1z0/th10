@@ -1,0 +1,59 @@
+{
+  "completed_utc": "2026-10-19T16:03:37.793797+00:00",
+  "starting_head": "5ea5f9a",
+  "focused_oracles": {
+    "two_cold_transition_graphs": "591 complete bytes/all24 target-bound fields each;247 new authored bytes;344 existing guards",
+    "stage_draw_guards": "14 complete bytes/all2 fields in separate cold real-StageCreate graph",
+    "pinned_crt_allocator": "14 complete bytes/one relocation, existing excluded/library credit retained"
+  },
+  "checks": [
+    {
+      "command": "scripts/repo-python scripts/verify-toolchain.py --check",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/validate-tracking.py --require-target",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/progress.py",
+      "exit_code": 0
+    },
+    {
+      "command": "scripts/repo-python scripts/ci.py",
+      "exit_code": 0
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "ci_log_sha256": "da6cd090663bf62a8e819a64a337176870279de61ec567fa226170361e3edf12",
+  "cleanup": {
+    "reason": "Completed diagnostic variants superseded by durable target/compiler receipts and the final canonical PE/MAP/PDB with identical target-flow source; no active builds use these paths.",
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-allocation-abi-20261019/baseline",
+        "bytes": 2137490
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-allocation-abi-20261019/ordinary-new",
+        "bytes": 2136576
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-allocation-abi-20261019/factory-callee-pop",
+        "bytes": 2136715
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-allocation-abi-20261019/registrar-callee-pop",
+        "bytes": 2136840
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-allocation-abi-20261019/target-flow",
+        "bytes": 2136478
+      }
+    ],
+    "total_bytes": 10684099
+  },
+  "scope": "No historical full native cohort or whole-product/runtime replay. Pre-existing untracked docs/evidence/d3d-adapter-format remains untouched and unadopted."
+}

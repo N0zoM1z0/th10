@@ -38,8 +38,8 @@ struct Chain
     __declspec(noinline) static int __stdcall AddToDrawChain(ChainElem *elem, int prio, Chain *chain);
     static void __fastcall UnregisterElem(ChainElem *elem, Chain *chain);
     static void __stdcall RemoveAllFromList(unsigned char *listBase, Chain *chain);
-    static ChainElem *RegisterCalc(ChainCallback callback, int prio, void *arg);
-    static ChainElem *RegisterDraw(ChainCallback callback, int prio, void *arg);
+    static ChainElem *__stdcall RegisterCalc(ChainCallback callback, int prio, void *arg);
+    static ChainElem *__stdcall RegisterDraw(ChainCallback callback, int prio, void *arg);
 };
 
 extern Chain *g_Chain;
