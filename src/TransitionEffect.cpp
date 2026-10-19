@@ -113,19 +113,21 @@ static int __fastcall TransitionDrawPlayfield(void *argument)
 static int __fastcall TransitionDim(void *argument)
 {
     TransitionEffectView *effect = static_cast<TransitionEffectView *>(argument);
+    AnmVmTimerView &timer = effect->timer;
     if (effect->released == 0)
     {
-        if (effect->frames != 0 && effect->timer.current <= effect->frames)
+        if (effect->frames != 0 && timer.current <= effect->frames)
             effect->alpha = static_cast<int>(
-                effect->timer.subframe * 128.0f / effect->frames);
+                timer.subframe * 128.0f / effect->frames);
     }
     else
     {
-        if (effect->timer.current > 8)
+        if (timer.current <= 8)
+            effect->alpha = 128 - static_cast<int>(timer.subframe * 16.0f);
+        else
             return 7;
-        effect->alpha = 128 - static_cast<int>(effect->timer.subframe * 16.0f);
     }
-    effect->timer.Tick();
+    timer.Tick();
     return 1;
 }
 
@@ -166,8 +168,8 @@ static int __fastcall TransitionPulse(void *argument)
     }
     else
     {
-        --effect->value0;
         effect->alpha = 0;
+        --effect->value0;
         if (static_cast<int>(effect->value0) <= 0)
             return 0;
         effect->timer.SetCurrent(0);

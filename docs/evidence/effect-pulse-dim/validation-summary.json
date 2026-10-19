@@ -1,0 +1,74 @@
+{
+  "new_authored_exact_bytes": 329,
+  "new_units": 2,
+  "authored_owned_bytes": 270076,
+  "authored_exact_bytes": 60664,
+  "authored_exact_percent": 22.46,
+  "denominator_change": 0,
+  "cold_proofs": 2,
+  "unchanged_inputs_each": 42,
+  "complete_bytes_each": 1398,
+  "linked_fields_each": 77,
+  "existing_guard_bytes": 1069,
+  "existing_guard_fields": 63,
+  "host": "14 scenarios/843 assertions, five strict affected controls passed",
+  "host_dependency_pins": "unchanged",
+  "toolchain_execute": "passed",
+  "toolchain_check": "passed",
+  "tracking_require_target": "passed",
+  "progress": "regenerated",
+  "public_ci": "passed; process exit0 and TH10 target-independent checks passed",
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/pulse-alpha-before-count",
+        "bytes": 2046749
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/dim-positive-release-branch",
+        "bytes": 2046782
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/dim-nested-positive",
+        "bytes": 2046708
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/dim-timer-reference",
+        "bytes": 2046784
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/linear-timer-reference",
+        "bytes": 2046756
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/linear-operand-snapshots",
+        "bytes": 2046889
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/linear-staged-amplitude",
+        "bytes": 2046793
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/cold-one",
+        "bytes": 2136222
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-callbacks-20261020/host-focused",
+        "bytes": 4916314
+      }
+    ],
+    "removed_build_file_bytes": 21379997,
+    "retained": "build/match-linked/GuiTransitionEffectFactory",
+    "preexisting_untracked_d3d": "untouched",
+    "reason": "All listed producers terminal; complete native and source-overlay evidence preserved; one current canonical carrier retained",
+    "removed_private_file_count": 46,
+    "removed_private_file_bytes": 1081558,
+    "total_removed_file_bytes": 22461555
+  },
+  "native_product_runtime_semantic_port": "open",
+  "linear_source_restored_byte_exact": true,
+  "canonical_public_oracles": "Pulse154/all6 and Dim175/all8 passed",
+  "ci_log_sha256": "7c7bf3d005a9b8b36c37e473861fcf19b8eb86715d4bd1e256ca163524a1a929",
+  "whitespace": "passed",
+  "documentation_hygiene": "passed"
+}

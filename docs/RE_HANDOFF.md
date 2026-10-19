@@ -244,10 +244,23 @@ scratch paths, or build hashes into this file.
   binding checks source/name/whole bounds and qualified MAP/PDB entry; the old
   static CALL raw-equal zero-field gate is unchanged. No callback credit follows.
   Five previously missed callbacks add1250 authored bytes and five source maps:
-  FadeIn133, Dim175, Pulse154, LinearShake439, Envelope349. All remain nonexact;
-  Cleanup127 still has four argument-move differences. Host843, three affected
+  FadeIn133, Dim175, Pulse154, LinearShake439, Envelope349. Pulse/Dim now close
+  in the checkpoint below; FadeIn/Linear/Envelope remain nonexact, and Cleanup127
+  still has four argument-move differences. Host843, three affected
   strict mutants,19 EOL controls and15 linked-context tests pass. The two LF
   pins have full-file reversal proof; native product/runtime remain open.
+- [Pulse154 and Dim175](evidence/effect-pulse-dim/README.md) now add329 authored
+  exact bytes with unchanged denominator. Pulse clears alpha before decrementing
+  count. Dim uses a positive released-frame branch and a reference to its actual
+  timer member; the shared Tick algorithm/types/flags are unchanged. Both cold
+  fourteen-TU Gui links pass1398 bytes/all77 fields, with42 identical inputs.
+  Seven prior controls recompile one TU and reuse13 input-checked objects; those
+  are diagnostics only. Linear timer-ref and duration/start snapshots have the
+  identical raw439-byte hash; staged amplitude regresses and all Linear edits
+  are restored. Its FIDIV still occurs earlier in the second RNG recurrence;
+  do not repeat these source controls without new lifetime/partition evidence.
+  Host843 and five affected strict mutants pass; pins unchanged. FadeIn133,
+  Linear439, Envelope349, Cleanup127 and native product/runtime remain open.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

@@ -2716,3 +2716,28 @@ away. The global boundary audit still has the known401100 evidence-text-only
 difference; no unrelated ledger rewrite is adopted. Host843, three affected
 strict controls and19 unchanged EOL controls pass. See [the complete target,
 field and native proof](evidence/effect-initializer/README.md).
+
+## 2026-10-20 complete Pulse and Dim callbacks
+
+This supersedes the preceding nonexact states for43C460/154 and43C310/175.
+Moving the real Pulse alpha reset before unsigned count decrement restores its
+ECX count register and target write order. Positive Dim release branching puts
+return7 after the common timer tail, leaving four ordinary slow-tick load bytes;
+a normal reference to the actual embedded timer restores scale-first FPU
+loading without changing Tick, types, ABI, flags or object layout. Two full
+independent cold14-TU Gui updater links freeze42 identical inputs and pass1398
+complete bytes/all77 fields, including1069 existing guard bytes. Canonical
+transition-pulse154/6 fields and transition-dim175/8 fields grant329 authored
+exact bytes; no boundary/origin/denominator change or callee-only credit.
+
+Seven source diagnostics reuse13 unchanged hash-checked objects after compiling
+only TransitionEffect.cpp; none is a fresh cold claim. The two Dim positive
+branch models remain139/143 until the real timer reference. Linear timer-ref
+and duration/start snapshots reproduce its complete raw439-byte hash; staged
+amplitude regresses332/359 to328/359 and is restored. Its FIDIV is still earlier
+than the target within the second RNG recurrence; partial score/size agreement
+is not exactness. All Linear source bytes are restored. Host843, five strict
+mutants and unchanged host dependency pins pass. Remaining FadeIn133, Linear439,
+Envelope349 and Cleanup127, production/runtime, semantic and port gates remain
+open. Original class/TU/source spelling is unknown. See [the full target facts,
+source overlays and independent native proofs](evidence/effect-pulse-dim/README.md).

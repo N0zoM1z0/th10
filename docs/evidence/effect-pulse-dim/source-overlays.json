@@ -1,0 +1,338 @@
+{
+  "base_commit": "2ed9994",
+  "base_path": "src/TransitionEffect.cpp",
+  "base_sha256": "b4b0b604b78fe7356e3be36b7f8080efd85bffcf0926fefef86aab9b2afe9211",
+  "instructions": "Use UTF-8 preserving CRLF; apply non-overlapping line operations in reverse order to pinned base; verify every old span and resulting hash",
+  "retained_variant": "dim-timer-reference",
+  "variants": {
+    "pulse-alpha-before-count": {
+      "result_sha256": "01d847d114e6f452539d9e5394796d809b8c81654ecdd5944399fd97d422aa42",
+      "operations": [
+        {
+          "start_line": 168,
+          "end_line": 168,
+          "old": "",
+          "new": "        effect->alpha = 0;\r\n"
+        },
+        {
+          "start_line": 169,
+          "end_line": 170,
+          "old": "        effect->alpha = 0;\r\n",
+          "new": ""
+        }
+      ]
+    },
+    "dim-positive-release-branch": {
+      "result_sha256": "6f562d881691c7307370ac56432f24c59875d7d1c54a6d24a3fcfa1f17d676d6",
+      "operations": [
+        {
+          "start_line": 121,
+          "end_line": 122,
+          "old": "    else\r\n",
+          "new": "    else if (effect->timer.current <= 8)\r\n"
+        },
+        {
+          "start_line": 123,
+          "end_line": 125,
+          "old": "        if (effect->timer.current > 8)\r\n            return 7;\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 127,
+          "end_line": 127,
+          "old": "",
+          "new": "    else\r\n        return 7;\r\n"
+        },
+        {
+          "start_line": 168,
+          "end_line": 168,
+          "old": "",
+          "new": "        effect->alpha = 0;\r\n"
+        },
+        {
+          "start_line": 169,
+          "end_line": 170,
+          "old": "        effect->alpha = 0;\r\n",
+          "new": ""
+        }
+      ]
+    },
+    "dim-nested-positive": {
+      "result_sha256": "e215ea33ce3679b9f723fc02be9aa06dfbcc3b03792822f74686a9f74e4c3da3",
+      "operations": [
+        {
+          "start_line": 123,
+          "end_line": 124,
+          "old": "        if (effect->timer.current > 8)\r\n",
+          "new": "        if (effect->timer.current <= 8)\r\n            effect->alpha = 128 - static_cast<int>(effect->timer.subframe * 16.0f);\r\n        else\r\n"
+        },
+        {
+          "start_line": 125,
+          "end_line": 126,
+          "old": "        effect->alpha = 128 - static_cast<int>(effect->timer.subframe * 16.0f);\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 168,
+          "end_line": 168,
+          "old": "",
+          "new": "        effect->alpha = 0;\r\n"
+        },
+        {
+          "start_line": 169,
+          "end_line": 170,
+          "old": "        effect->alpha = 0;\r\n",
+          "new": ""
+        }
+      ]
+    },
+    "dim-timer-reference": {
+      "result_sha256": "57475c2b9ef35961ddad413ce5479e3c415b99fbd1af9742dab85796cc6f0e10",
+      "operations": [
+        {
+          "start_line": 115,
+          "end_line": 115,
+          "old": "",
+          "new": "    AnmVmTimerView &timer = effect->timer;\r\n"
+        },
+        {
+          "start_line": 117,
+          "end_line": 118,
+          "old": "        if (effect->frames != 0 && effect->timer.current <= effect->frames)\r\n",
+          "new": "        if (effect->frames != 0 && timer.current <= effect->frames)\r\n"
+        },
+        {
+          "start_line": 119,
+          "end_line": 120,
+          "old": "                effect->timer.subframe * 128.0f / effect->frames);\r\n",
+          "new": "                timer.subframe * 128.0f / effect->frames);\r\n"
+        },
+        {
+          "start_line": 123,
+          "end_line": 124,
+          "old": "        if (effect->timer.current > 8)\r\n",
+          "new": "        if (timer.current <= 8)\r\n            effect->alpha = 128 - static_cast<int>(timer.subframe * 16.0f);\r\n        else\r\n"
+        },
+        {
+          "start_line": 125,
+          "end_line": 126,
+          "old": "        effect->alpha = 128 - static_cast<int>(effect->timer.subframe * 16.0f);\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 127,
+          "end_line": 128,
+          "old": "    effect->timer.Tick();\r\n",
+          "new": "    timer.Tick();\r\n"
+        },
+        {
+          "start_line": 168,
+          "end_line": 168,
+          "old": "",
+          "new": "        effect->alpha = 0;\r\n"
+        },
+        {
+          "start_line": 169,
+          "end_line": 170,
+          "old": "        effect->alpha = 0;\r\n",
+          "new": ""
+        }
+      ]
+    },
+    "linear-timer-reference": {
+      "result_sha256": "2e0cfddbae3ef15925e580e3a695800cf507a280e4e07069578b62d514e7822c",
+      "operations": [
+        {
+          "start_line": 115,
+          "end_line": 115,
+          "old": "",
+          "new": "    AnmVmTimerView &timer = effect->timer;\r\n"
+        },
+        {
+          "start_line": 117,
+          "end_line": 118,
+          "old": "        if (effect->frames != 0 && effect->timer.current <= effect->frames)\r\n",
+          "new": "        if (effect->frames != 0 && timer.current <= effect->frames)\r\n"
+        },
+        {
+          "start_line": 119,
+          "end_line": 120,
+          "old": "                effect->timer.subframe * 128.0f / effect->frames);\r\n",
+          "new": "                timer.subframe * 128.0f / effect->frames);\r\n"
+        },
+        {
+          "start_line": 123,
+          "end_line": 124,
+          "old": "        if (effect->timer.current > 8)\r\n",
+          "new": "        if (timer.current <= 8)\r\n            effect->alpha = 128 - static_cast<int>(timer.subframe * 16.0f);\r\n        else\r\n"
+        },
+        {
+          "start_line": 125,
+          "end_line": 126,
+          "old": "        effect->alpha = 128 - static_cast<int>(effect->timer.subframe * 16.0f);\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 127,
+          "end_line": 128,
+          "old": "    effect->timer.Tick();\r\n",
+          "new": "    timer.Tick();\r\n"
+        },
+        {
+          "start_line": 168,
+          "end_line": 168,
+          "old": "",
+          "new": "        effect->alpha = 0;\r\n"
+        },
+        {
+          "start_line": 169,
+          "end_line": 170,
+          "old": "        effect->alpha = 0;\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 193,
+          "end_line": 193,
+          "old": "",
+          "new": "    AnmVmTimerView &timer = effect->timer;\r\n"
+        },
+        {
+          "start_line": 195,
+          "end_line": 197,
+          "old": "    effect->timer.Tick();\r\n    if (effect->timer.current >= effect->frames)\r\n",
+          "new": "    timer.Tick();\r\n    if (timer.current >= effect->frames)\r\n"
+        },
+        {
+          "start_line": 199,
+          "end_line": 200,
+          "old": "    const float amplitude = difference * effect->timer.subframe / effect->frames +\r\n",
+          "new": "    const float amplitude = difference * timer.subframe / effect->frames +\r\n"
+        }
+      ]
+    },
+    "linear-operand-snapshots": {
+      "result_sha256": "33e1339882af4c4cc82aab9dda527270e1c2176da9a08abd608996a3e2f6583e",
+      "operations": [
+        {
+          "start_line": 115,
+          "end_line": 115,
+          "old": "",
+          "new": "    AnmVmTimerView &timer = effect->timer;\r\n"
+        },
+        {
+          "start_line": 117,
+          "end_line": 118,
+          "old": "        if (effect->frames != 0 && effect->timer.current <= effect->frames)\r\n",
+          "new": "        if (effect->frames != 0 && timer.current <= effect->frames)\r\n"
+        },
+        {
+          "start_line": 119,
+          "end_line": 120,
+          "old": "                effect->timer.subframe * 128.0f / effect->frames);\r\n",
+          "new": "                timer.subframe * 128.0f / effect->frames);\r\n"
+        },
+        {
+          "start_line": 123,
+          "end_line": 124,
+          "old": "        if (effect->timer.current > 8)\r\n",
+          "new": "        if (timer.current <= 8)\r\n            effect->alpha = 128 - static_cast<int>(timer.subframe * 16.0f);\r\n        else\r\n"
+        },
+        {
+          "start_line": 125,
+          "end_line": 126,
+          "old": "        effect->alpha = 128 - static_cast<int>(effect->timer.subframe * 16.0f);\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 127,
+          "end_line": 128,
+          "old": "    effect->timer.Tick();\r\n",
+          "new": "    timer.Tick();\r\n"
+        },
+        {
+          "start_line": 168,
+          "end_line": 168,
+          "old": "",
+          "new": "        effect->alpha = 0;\r\n"
+        },
+        {
+          "start_line": 169,
+          "end_line": 170,
+          "old": "        effect->alpha = 0;\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 196,
+          "end_line": 197,
+          "old": "    if (effect->timer.current >= effect->frames)\r\n",
+          "new": "    const int duration = effect->frames;\r\n    if (effect->timer.current >= duration)\r\n"
+        },
+        {
+          "start_line": 198,
+          "end_line": 201,
+          "old": "    const int difference = static_cast<int>(effect->value1 - effect->value0);\r\n    const float amplitude = difference * effect->timer.subframe / effect->frames +\r\n        static_cast<int>(effect->value0);\r\n",
+          "new": "    const int startValue = static_cast<int>(effect->value0);\r\n    const int difference = static_cast<int>(\r\n        effect->value1 - static_cast<unsigned int>(startValue));\r\n    const float amplitude = difference * effect->timer.subframe / duration +\r\n        startValue;\r\n"
+        }
+      ]
+    },
+    "linear-staged-amplitude": {
+      "result_sha256": "335cd2519333975b2ad271664da24cf198a7e3ce1aade0f98f60639c9752105e",
+      "operations": [
+        {
+          "start_line": 115,
+          "end_line": 115,
+          "old": "",
+          "new": "    AnmVmTimerView &timer = effect->timer;\r\n"
+        },
+        {
+          "start_line": 117,
+          "end_line": 118,
+          "old": "        if (effect->frames != 0 && effect->timer.current <= effect->frames)\r\n",
+          "new": "        if (effect->frames != 0 && timer.current <= effect->frames)\r\n"
+        },
+        {
+          "start_line": 119,
+          "end_line": 120,
+          "old": "                effect->timer.subframe * 128.0f / effect->frames);\r\n",
+          "new": "                timer.subframe * 128.0f / effect->frames);\r\n"
+        },
+        {
+          "start_line": 123,
+          "end_line": 124,
+          "old": "        if (effect->timer.current > 8)\r\n",
+          "new": "        if (timer.current <= 8)\r\n            effect->alpha = 128 - static_cast<int>(timer.subframe * 16.0f);\r\n        else\r\n"
+        },
+        {
+          "start_line": 125,
+          "end_line": 126,
+          "old": "        effect->alpha = 128 - static_cast<int>(effect->timer.subframe * 16.0f);\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 127,
+          "end_line": 128,
+          "old": "    effect->timer.Tick();\r\n",
+          "new": "    timer.Tick();\r\n"
+        },
+        {
+          "start_line": 168,
+          "end_line": 168,
+          "old": "",
+          "new": "        effect->alpha = 0;\r\n"
+        },
+        {
+          "start_line": 169,
+          "end_line": 170,
+          "old": "        effect->alpha = 0;\r\n",
+          "new": ""
+        },
+        {
+          "start_line": 199,
+          "end_line": 201,
+          "old": "    const float amplitude = difference * effect->timer.subframe / effect->frames +\r\n        static_cast<int>(effect->value0);\r\n",
+          "new": "    float amplitude = difference * effect->timer.subframe;\r\n    amplitude /= effect->frames;\r\n    amplitude += static_cast<int>(effect->value0);\r\n"
+        }
+      ]
+    }
+  }
+}

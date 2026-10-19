@@ -21918,3 +21918,53 @@ linkages = [
   { offset = 0x184, type = "DIR32", target = 0x43ca3f, local = true },
   { offset = 0x188, type = "DIR32", target = 0x43ca64, local = true },
 ]
+
+[units.transition-pulse]
+artifact_kind = "linked-pe"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["TransitionPulse"]
+symbol = "?TransitionPulse@@YIHPAX@Z"
+target_address = 0x43c460
+size = 0x9a
+owner_visibility = "static"
+linkages = [
+  { offset = 0x1, type = "DIR32", symbol = "?g_GameStartupCounter@@3HA", target = 0x4918a4 },
+  { offset = 0x2e, type = "DIR32", symbol = "__real@4f800000", target = 0x470b98 },
+  { offset = 0x3a, type = "REL32", symbol = "__ftol2", target = 0x463b2c },
+  { offset = 0x52, type = "REL32", symbol = "?Tick@AnmVmTimerView@@QAEXXZ", target = 0x404ed0 },
+  { offset = 0x83, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x8b, type = "REL32", symbol = "?Tick@AnmVmTimerView@@QAEXXZ", target = 0x404ed0 },
+]
+
+[units.transition-dim]
+artifact_kind = "linked-pe"
+source = "src/Gui.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/Player.cpp", "src/FrontEnd.cpp", "src/DecomphelpLeafAccessors.cpp", "src/Main.cpp", "src/Sound.cpp", "src/TransitionEffect.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/AnmRectangle.cpp"]
+pdb_source = "src/TransitionEffect.cpp"
+output_dir = "build/match-linked/GuiTransitionEffectFactory"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?UpdateStageElements@GuiView@@SGHPAU1@@Z"
+functions = ["TransitionDim"]
+symbol = "?TransitionDim@@YIHPAX@Z"
+target_address = 0x43c310
+size = 0xaf
+owner_visibility = "static"
+linkages = [
+  { offset = 0x20, type = "DIR32", symbol = "__real@43000000", target = 0x470bf4 },
+  { offset = 0x29, type = "REL32", symbol = "__ftol2", target = 0x463b2c },
+  { offset = 0x3d, type = "DIR32", symbol = "__real@41800000", target = 0x470b48 },
+  { offset = 0x42, type = "REL32", symbol = "__ftol2", target = 0x463b2c },
+  { offset = 0x5d, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x470b68 },
+  { offset = 0x6c, type = "DIR32", symbol = "__real@3f8147ae", target = 0x470b64 },
+  { offset = 0x7d, type = "DIR32", symbol = "__real@3f800000", target = 0x470afc },
+  { offset = 0x98, type = "REL32", symbol = "__ftol2", target = 0x463b2c },
+]
