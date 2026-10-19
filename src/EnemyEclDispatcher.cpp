@@ -1185,6 +1185,8 @@ int EnemyRuntimeView::DispatchEclInstruction()
   EnemyScalarInterpolationView *secondScalarInterpolation;
   float *firstScalarValues;
   float *secondScalarValues;
+  EnemyFloat2 initialPolar;
+  EnemyFloat2 finalPolar;
   float local_2c8;
   float local_2c4;
   float local_2bc;
@@ -1589,6 +1591,7 @@ dispatch_update_primary_anm_bounds:
     return 0;
   case ENEMY_ECL_INTERPOLATE_OFFSET_POLAR:
   case ENEMY_ECL_INTERPOLATE_BASE_POLAR:
+  {
     selectedMotion = &offsetMotion;
     firstScalarInterpolation = &scalarInterpolation0;
     if (opcode == 0x11d) {
@@ -1598,7 +1601,6 @@ dispatch_update_primary_anm_bounds:
       selectedMotion = &baseMotion;
       firstScalarInterpolation = &scalarInterpolation1;
     }
-    firstScalarValues = reinterpret_cast<float *>(firstScalarInterpolation);
     fVar19 = (ReadFloatArgument(2));
     local_2c8 = (float)fVar19;
     fVar19 = (ReadFloatArgument(3));
@@ -1608,56 +1610,53 @@ dispatch_update_primary_anm_bounds:
 
     if (uVar22 != 7) {
       if (!(-999999.0 < local_2c8)) {
-        local_29c = selectedMotion->value1C;
+        finalPolar.x = selectedMotion->value1C;
       }
       else {
-        local_29c = local_2c8;
+        finalPolar.x = local_2c8;
         if ((*(unsigned int *)((int)runtimeAddress + 0x1444) & 0x800) != 0) {
-          fVar19 = EnemyWrapAngle((float)(local_29c - 1.5707964f));
-          local_29c = (float)EnemyWrapAngle((float)(1.5707964f - fVar19));
+          fVar19 = EnemyWrapAngle((float)(finalPolar.x - 1.5707964f));
+          finalPolar.x = (float)EnemyWrapAngle((float)(1.5707964f - fVar19));
         }
       }
       if (!(-999999.0 < local_2c4)) {
-        local_298 = selectedMotion->value18;
+        finalPolar.y = selectedMotion->value18;
       }
       else {
-        local_298 = local_2c4;
+        finalPolar.y = local_2c4;
       }
     }
     else {
       if (-999999.0 < local_2c8) {
-        local_29c = local_2c8;
+        finalPolar.x = local_2c8;
       }
       else {
-        local_29c = 0.0;
+        finalPolar.x = 0.0;
       }
       if (-999999.0 < local_2c4) {
-        local_298 = local_2c4;
+        finalPolar.y = local_2c4;
       }
       else {
-        local_298 = 0.0;
+        finalPolar.y = 0.0;
       }
     }
 
-    local_2a8 = selectedMotion->value1C;
-    local_2a4 = selectedMotion->value18;
-    if (3.1415927f <= static_cast<float>(fabs(local_2a8 - local_29c))) {
-      if (local_29c <= local_2a8) {
-        local_29c = local_29c + 6.2831855f;
+    initialPolar.x = selectedMotion->value1C;
+    initialPolar.y = selectedMotion->value18;
+    if (3.1415927f <= static_cast<float>(fabs(initialPolar.x - finalPolar.x))) {
+      if (initialPolar.x >= finalPolar.x) {
+        finalPolar.x = finalPolar.x + 6.2831855f;
       }
       else {
-        local_2a8 = local_2a8 + 6.2831855f;
+        initialPolar.x = initialPolar.x + 6.2831855f;
       }
     }
-    local_2c8 = local_29c;
-    local_2c4 = local_298;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     firstScalarInterpolation->duration = uVar22;
     firstScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
     firstScalarInterpolation->finalTangent.x = g_EnemyInterpolationBasis.x;
-    fVar9 = local_2a8;
-    fVar10 = local_2a4;
     goto dispatch_initialize_polar_interpolation;
+  }
   case ENEMY_ECL_SET_OFFSET_CIRCLE:
   case ENEMY_ECL_SET_BASE_CIRCLE:
     selectedMotion = &offsetMotion;
@@ -1848,23 +1847,19 @@ dispatch_random_angle_ready:
     }
     uVar22 = ENEMY_READ_INT_DIRECT(1);
     firstScalarInterpolation->mode = uVar22;
-    local_2c4 = 0.0;
-    local_2c8 = local_2bc;
-    vectorScratch.x = local_2bc;
+    finalPolar.y = 0.0;
+    finalPolar.x = local_2bc;
+    initialPolar.x = local_2bc;
     fVar19 = (ReadFloatArgument(2));
-    vectorScratch.y = (float)fVar19;
+    initialPolar.y = (float)fVar19;
     uVar22 = ENEMY_READ_INT_DIRECT(0);
     firstScalarInterpolation->duration = uVar22;
     firstScalarInterpolation->initialTangent = g_EnemyInterpolationBasis;
     firstScalarInterpolation->finalTangent.x = g_EnemyInterpolationBasis.x;
-    fVar9 = vectorScratch.x;
-    fVar10 = vectorScratch.y;
 dispatch_initialize_polar_interpolation:
     firstScalarInterpolation->finalTangent.y = g_EnemyInterpolationBasis.y;
-    firstScalarInterpolation->initial.x = fVar9;
-    firstScalarInterpolation->initial.y = fVar10;
-    firstScalarInterpolation->final.x = local_2c8;
-    firstScalarInterpolation->final.y = local_2c4;
+    firstScalarInterpolation->initial = initialPolar;
+    firstScalarInterpolation->final = finalPolar;
     EnemyInitializeScalarInterpolation(firstScalarInterpolation);
     selectedMotion->flags &= 0xfffffffe;
     return 0;

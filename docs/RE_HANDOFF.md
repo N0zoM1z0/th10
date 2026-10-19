@@ -70,15 +70,19 @@ scratch paths, or build hashes into this file.
   comparable positions. Rotate next to the remaining native lifetime/stack
   frontier or Enemy dispatch; do not repeat integer ABI keywords or parked
   SCALE_TIME/FORMAT controls without new TH10 evidence.
-- Fresh Enemy dispatch now has a pinned eight-TU baseline14512/14416 and
-  retained14500/14416 in two cold links. Polar setup compares saved inputs
-  before publishing additive temporaries, restoring target19 sentinel compares
-  and the shared FCOMP-before-mode-store/CMP/FNSTSW/JZ shape. Stack remains
-  2BC/target2C4; no parent or partial-case credit. Existing402 guard bytes/all5
-  fields pass in both images. Unsigned adapter indices are byte-neutral;
-  smaller14484 ordinary-output deferral adds an unwanted x87 speed lifetime
-  and is rejected. The pre-existing missing angle float32 spill remains open.
-  See [the complete-owner evidence](evidence/enemy-dispatch-polar-lifetime/README.md).
+- Enemy dispatch now uses real initial/final Float2 values shared with random
+  movement. The target angle float32 store, memory subtraction and frame2C4
+  are restored; the complete eight-TU /GL /GS owner remains14524/14416 and
+  polar396/405. All181 selectors,108 ordered groups and19 sentinel comparisons
+  agree. Existing496 guard bytes/all11 fields include the unchanged94-byte
+  WrapAngle in this actual carrier. A conditional PC53/64 witness shows why
+  dropping the final store can change the adjustment branch for a finite input
+  beyond the wrap cap; game reachability/runtime control remain unknown.
+  Ordinary nonmember adapter controls in both formal orders preserve the same
+  register gap and are restored. No parent or partial-case credit follows.
+  See [the storage evidence](evidence/enemy-dispatch-polar-storage/README.md);
+  the [prior input controls](evidence/enemy-dispatch-polar-lifetime/README.md)
+  remain historical.
 - Enemy selector coverage now correctly counts124 outer cases; three inner
   spell cases no longer cause a false duplicate failure. Seven scope/rejection
   controls pass, as do the target/retained181 selectors and108-group checks.
@@ -165,7 +169,7 @@ ledger entries. Rebuild each probe after changing a supporting translation unit.
 | --- | --- | --- | --- |
 | ECL `EclVmContext::Run` | `2f954d0` plus retained scoped jump operands, real Enemy caller /GL graph | 7,020 / 7,020 owned bytes; all 60 table destinations and 88 selector bytes aligned; 6,125 / 6,264 diagnostic comparable matches | 139 ordinary differences, incomplete selector normalization and remaining alias/register/stack structure; non-exact |
 | ANM `ExecuteScript` | 2026-10-19 tangent-first byte-formal source, pinned in primary-alpha evidence; real four-TU /GL /GS graph | 9,948 / 9,964 bytes, frame 0xF8 / target 0xFC; 92 physical groups ordered, 84 target-sized spans; 1,312 / 8,564 whole-owner and 6,492 / 8,000 case-aligned comparable positions | Eight unequal spans, stack homes, register scheduling and remaining aggregate/RNG context; non-exact |
-| Enemy `DispatchEclInstruction` | 2026-10-19 polar-input source, pinned eight-TU /GL /GS direct-entry graph | 14,500 / 14,416 bytes; all 181 selector bytes and 108 ordered groups; frame 0x2BC / target 0x2C4; 19 sentinel comparisons | Polar 386/405, missing angle float32 output store, private argument adapters, spawn/laser lifetimes and stack homes; non-exact |
+| Enemy `DispatchEclInstruction` | 2026-10-19 shared polar-pair storage, pinned eight-TU /GL /GS direct-entry graph | 14,524 / 14,416 bytes; all 181 selector bytes and 108 ordered groups; frame 0x2C4 agrees; 19 sentinel comparisons | Polar 396/405; final-angle float32 store restored; private argument adapters, remaining schedule, spawn/laser lifetimes and stack homes remain non-exact |
 
 The 2026-10-14 bounded Run refinement nests `ReadIntValue` in the
 `SpawnThread` call, restoring target argument-push scheduling. Two cold

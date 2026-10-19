@@ -89,6 +89,7 @@ def main() -> int:
         run("Validate stage lifecycle ownership", [sys.executable, "scripts/test-stage-lifecycle.py"])
         run("Validate enemy callback scale reload", [sys.executable, "scripts/test-enemy-runtime-scale.py"])
         run("Validate enemy motion and interpolation", [sys.executable, "scripts/test-enemy-motion.py"])
+        run("Validate conditional enemy polar storage", [sys.executable, "scripts/check-enemy-polar-rounding-model.py"])
         run("Validate enemy runtime tail", [sys.executable, "scripts/test-enemy-runtime-tail.py"])
         run("Validate item sound owner", [sys.executable, "scripts/test-item-sound-owner.py"])
         run("Validate player damage lifetimes", [sys.executable, "scripts/test-player-damage-lifetime.py"])
