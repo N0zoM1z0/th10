@@ -1,0 +1,65 @@
+{
+  "baseline": "all14 scenarios/843 assertions passed",
+  "guards": [
+    "exact stdout/stderr/exit accepted",
+    "compile failures rejected",
+    "wrong assertions rejected",
+    "polluted stdout rejected",
+    "leading/trailing stderr noise rejected",
+    "extra blank/multiple lines rejected",
+    "missing newline rejected",
+    "signals/timeouts rejected",
+    "survivors rejected",
+    "zero/multiple anchors rejected"
+  ],
+  "results": [
+    {
+      "category": "runtime_mutation",
+      "name": "selector_kind5_update",
+      "scenario": "selector",
+      "expected_assertion": "SELECTOR_UPDATE_9",
+      "function_occurrences": 1,
+      "anchor_occurrences": 1,
+      "secondary_anchor_occurrences": null,
+      "function_before_sha256": "1091fa6ba157357a18d6ae3a3b6aba20a1dcc6ce53c4ef374bde63561bbfd5d0",
+      "source_sha256": "4496809e9b743f216dd6cf49e5f5b0b902304d9202a452dbe3189c275510631c",
+      "status": "EXPECTED_ASSERTION",
+      "compile_returncode": 0,
+      "run_returncode": 86,
+      "stdout": "",
+      "stderr": "ASSERT:SELECTOR_UPDATE_9\n"
+    },
+    {
+      "category": "runtime_mutation",
+      "name": "selector_kind7_draw",
+      "scenario": "selector",
+      "expected_assertion": "SELECTOR_DRAW_9",
+      "function_occurrences": 1,
+      "anchor_occurrences": 1,
+      "secondary_anchor_occurrences": null,
+      "function_before_sha256": "1091fa6ba157357a18d6ae3a3b6aba20a1dcc6ce53c4ef374bde63561bbfd5d0",
+      "source_sha256": "003bbbebddb444dc211b3d517b2980c2a061ff2193f0b3040805d9180a61899a",
+      "status": "EXPECTED_ASSERTION",
+      "compile_returncode": 0,
+      "run_returncode": 86,
+      "stdout": "",
+      "stderr": "ASSERT:SELECTOR_DRAW_9\n"
+    },
+    {
+      "category": "runtime_mutation",
+      "name": "init_delete_early",
+      "scenario": "selector",
+      "expected_assertion": "INIT_DELETE_AFTER_BOTH_REGISTRATIONS",
+      "function_occurrences": 1,
+      "anchor_occurrences": 1,
+      "secondary_anchor_occurrences": null,
+      "function_before_sha256": "1091fa6ba157357a18d6ae3a3b6aba20a1dcc6ce53c4ef374bde63561bbfd5d0",
+      "source_sha256": "8c21d3f197d27b34b7a630abf6c2d5e3ed9736ebb643b5bb87802c698481fba4",
+      "status": "EXPECTED_ASSERTION",
+      "compile_returncode": 0,
+      "run_returncode": 86,
+      "stdout": "",
+      "stderr": "ASSERT:INIT_DELETE_AFTER_BOTH_REGISTRATIONS\n"
+    }
+  ]
+}

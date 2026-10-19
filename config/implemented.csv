@@ -1016,3 +1016,8 @@ TransitionFadeOut
 TransitionDrawDimScreen
 th10::Chain::RegisterCalc
 th10::Chain::RegisterDraw
+TransitionFadeIn
+TransitionDim
+TransitionPulse
+TransitionShakeLinear
+TransitionShakeEnvelope

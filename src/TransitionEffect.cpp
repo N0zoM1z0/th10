@@ -314,39 +314,39 @@ void TransitionEffectView::Initialize(int drawPriority, int effectKind, int dura
     switch (effectKind)
     {
     case 0:
-        updateNode = Chain::RegisterCalc(TransitionFadeOut, 14, this);
-        drawNode = Chain::RegisterDraw(TransitionDrawScreen, drawPriority, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionFadeOut);
+        drawNode = Chain::RegisterDraw(this, drawPriority, TransitionDrawScreen);
         break;
     case 1:
-        updateNode = Chain::RegisterCalc(TransitionShakeLinear, 14, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionShakeLinear);
         break;
     case 2:
-        updateNode = Chain::RegisterCalc(TransitionFadeIn, 14, this);
-        drawNode = Chain::RegisterDraw(TransitionDrawPlayfield, drawPriority, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionFadeIn);
+        drawNode = Chain::RegisterDraw(this, drawPriority, TransitionDrawPlayfield);
         break;
     case 3:
         alpha = 255;
-        updateNode = Chain::RegisterCalc(TransitionFadeOut, 14, this);
-        drawNode = Chain::RegisterDraw(TransitionDrawPlayfield, drawPriority, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionFadeOut);
+        drawNode = Chain::RegisterDraw(this, drawPriority, TransitionDrawPlayfield);
         break;
     case 5:
-        updateNode = Chain::RegisterCalc(TransitionFadeIn, 14, this);
-        drawNode = Chain::RegisterDraw(TransitionDrawScreen, drawPriority, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionFadeIn);
+        drawNode = Chain::RegisterDraw(this, drawPriority, TransitionDrawScreen);
         break;
     case 4:
-        updateNode = Chain::RegisterCalc(TransitionPulse, 14, this);
-        drawNode = Chain::RegisterDraw(TransitionDrawPulse, drawPriority, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionPulse);
+        drawNode = Chain::RegisterDraw(this, drawPriority, TransitionDrawPulse);
         break;
     case 6:
-        updateNode = Chain::RegisterCalc(TransitionDim, 14, this);
-        drawNode = Chain::RegisterDraw(TransitionDrawDimScreen, drawPriority, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionDim);
+        drawNode = Chain::RegisterDraw(this, drawPriority, TransitionDrawDimScreen);
         break;
     case 7:
-        updateNode = Chain::RegisterCalc(TransitionDim, 14, this);
-        drawNode = Chain::RegisterDraw(TransitionDrawDimPlayfield, drawPriority, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionDim);
+        drawNode = Chain::RegisterDraw(this, drawPriority, TransitionDrawDimPlayfield);
         break;
     case 8:
-        updateNode = Chain::RegisterCalc(TransitionShakeEnvelope, 14, this);
+        updateNode = Chain::RegisterCalc(this, 14, TransitionShakeEnvelope);
         break;
     }
     // Invalid kind/failed registration is intentionally not a safe-success path.

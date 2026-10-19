@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from linked_image import static_owner_selector, static_linkage_selector
+from linked_image import static_owner_selector, static_linkage_selector, static_address_selector
 
 import argparse
 from collections import Counter
@@ -41,6 +41,7 @@ def validate_fields(name: str, unit: dict[str, object], compare_size: int) -> No
         if not isinstance(field, dict):
             raise ValueError(f"unit {name!r} has an invalid linkage row")
         static_linkage_selector(unit, field)
+        static_address_selector(unit, field)
         kind = str(field.get("type", ""))
         width = int(field.get("width", SUPPORTED_FIELDS.get(kind, 0)))
         if kind not in SUPPORTED_FIELDS or width != SUPPORTED_FIELDS[kind]:

@@ -3,8 +3,8 @@
   "normalization": "crlf-to-lf-only",
   "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",
   "sha256_lf": {
-    "src/Chain.cpp": "4aa870fdbfb7db13268e692dffb9da8ffee1035bcd197e65f3bb63f61b754825",
-    "src/Chain.hpp": "ebcaeb89fff529bb0e2953f06b9f59932bf8a9e4be3eac12af96b3e7625a4bcb",
+    "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
     "src/AnmManager.cpp": "a3952d13f53d5902854ba0fb58e9d126e4ef84a6ef45756831c2eab7f1aed757",
     "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
@@ -110,5 +110,23 @@
       }
     },
     "evidence": "docs/evidence/effect-allocation-abi/README.md"
+  },
+  "reviewed_registrar_formal_order_update": {
+    "date": "2026-10-20",
+    "starting_head": "f337d0d",
+    "reason": "Only RegisterCalc/RegisterDraw formal order changes to owner, priority, callback; all three real operands and complete mutation bodies are unchanged. Reversing two declarations/definitions reconstructs both entire prior normalized inputs. Strict LF normalization and rejection policy are unchanged; raw historical observations are not acceptance pins.",
+    "files": {
+      "src/Chain.hpp": {
+        "old_sha256_lf": "ebcaeb89fff529bb0e2953f06b9f59932bf8a9e4be3eac12af96b3e7625a4bcb",
+        "new_sha256_lf": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "whole_file_reversal_verified": true
+      },
+      "src/Chain.cpp": {
+        "old_sha256_lf": "4aa870fdbfb7db13268e692dffb9da8ffee1035bcd197e65f3bb63f61b754825",
+        "new_sha256_lf": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
+        "whole_file_reversal_verified": true
+      }
+    },
+    "evidence": "docs/evidence/effect-initializer/README.md"
   }
 }

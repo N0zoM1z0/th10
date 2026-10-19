@@ -161,5 +161,142 @@ class StaticCalls(unittest.TestCase):
             self.compare()
 
 
+class StaticAddresses(unittest.TestCase):
+    """A relocated callback pointer binds an entry, not the callee's codegen."""
+
+    boundary = StaticCalls.boundary
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory(prefix='linked-address-')
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.out = self.root / 'build/fixture'
+        self.out.mkdir(parents=True)
+        fixtures = module('test-static-owner-selection.py')
+        e = fixtures.Evidence(self.out)
+        e.image, e.map, e.pdb = [self.out / ('source.' + x) for x in ['exe', 'map', 'pdb']]
+        e.map_base = 0x500000
+        e.publics = [fixtures.row('_Public', 0, 'source.ltcg.obj', va=0x501000)]
+        e.statics = [fixtures.row(obj='support-00-Private.ltcg.obj', va=0x501020)]
+        e.modules = [str(self.out / 'source.ltcg.obj'), str(self.out / 'support-00-Private.ltcg.obj')]
+        e.write()
+        data = bytearray(e.image.read_bytes())
+        struct.pack_into('<I', data, 0x98 + 28, 0x500000)
+        struct.pack_into('<II', data, 0x98 + 96 + 5 * 8, 0x1180, 12)
+        struct.pack_into('<II2H', data, 0x380, 0x1000, 12, 0x3001, 0)
+        data[0x200:0x208] = b'\xb8' + struct.pack('<I', 0x501020) + b'\xc3\x90\x90'
+        e.image.write_bytes(data)
+        self.image = e.image
+        self.target_path = self.root / 'target.exe'
+        struct.pack_into('<I', data, 0x98 + 28, 0x400000)
+        struct.pack_into('<I', data, 0x201, 0x401020)
+        # Intentionally different complete callee. Pointer exactness must not
+        # silently promote the callback's eight bytes.
+        data[0x220:0x228] = b'\x40\xc3' + b'\x90' * 6
+        self.target_path.write_bytes(data)
+        (self.root / 'config').mkdir()
+        (self.root / 'config/functions.csv').write_text(
+            'address,size,proposed_name,source_file\n0x00401020,8,LocalOwner,src/Private.cpp\n')
+        self.boundary('reviewed', 0x401027)
+        self.field = dict(offset=1, type='DIR32', symbol=fixtures.SYMBOL, target=0x401020,
+                          static_address_source='src/Private.cpp',
+                          static_address_candidate_size=8, static_address_target_size=8)
+        self.unit = dict(artifact_kind='linked-pe', source='src/Public.cpp',
+                         support_sources=['src/Private.cpp'], output_dir='build/fixture',
+                         functions=['Public'], symbol='_Public', target_address=0x401000,
+                         size=8, linkages=[self.field])
+        self.c = module('compare-linked-function.py')
+
+    def compare(self):
+        manifest = dict(target_sha256='fixture', units={'caller': self.unit})
+        original = Path.open
+        def opened(path, *args, **kwargs):
+            if path in (self.c.UNITS_MANIFEST, self.c.TARGET_MANIFEST, self.c.TOOLS_LOCK):
+                return io.BytesIO()
+            return original(path, *args, **kwargs)
+        with patch.object(self.c, 'ROOT', self.root), \
+             patch.object(self.c.tomllib, 'load', side_effect=[manifest, {'target': {'sha256': 'fixture'}},
+                                                            tomllib.loads((ROOT/'config/tools.lock.toml').read_text())]), \
+             patch.object(self.c, 'verified_target', return_value=PEImage(self.target_path)), \
+             patch.object(Path, 'open', opened):
+            return self.c.compare_unit('caller')
+
+    def test_qualified_address_and_parent_only_credit(self):
+        report = self.compare()
+        self.assertEqual(report['result'], 'exact')
+        self.assertEqual(report['matched_bytes'], 8)
+        self.assertFalse(report['raw_equal'])
+        field = report['linkages'][0]
+        self.assertEqual(field['static_address_owner']['size'], 8)
+        self.assertTrue(field['static_address_binding_only'])
+
+    def test_no_implicit_fallback_or_incomplete_descriptor(self):
+        saved = dict(self.field)
+        for key in ['static_address_source', 'static_address_candidate_size', 'static_address_target_size']:
+            del self.field[key]
+            with self.subTest(key=key), self.assertRaises(ValueError):
+                self.compare()
+            self.field.clear(); self.field.update(saved)
+        for key in ['static_address_source', 'static_address_candidate_size', 'static_address_target_size']:
+            del self.field[key]
+        with self.assertRaisesRegex(ValueError, 'resolve uniquely'):
+            self.compare()
+
+    def test_reject_types_mixed_modes_sizes_and_unqualified_sources(self):
+        for changes in [dict(type='REL32'), dict(local=True), dict(addend=1),
+                        dict(static_source='src/Private.cpp', static_size=8),
+                        dict(static_address_candidate_size=7), dict(static_address_candidate_size=True),
+                        dict(static_address_target_size=7), dict(static_address_target_size=False),
+                        dict(static_address_source='src/Absent.cpp'),
+                        dict(static_address_source='../Private.cpp')]:
+            saved = dict(self.field); self.field.update(changes)
+            with self.subTest(changes=changes), self.assertRaises(ValueError):
+                self.compare()
+            self.field.clear(); self.field.update(saved)
+
+    def test_reviewed_boundary_and_source_mapping_are_required(self):
+        for state, end in [('provisional', 0x401027), ('reviewed', 0x401026)]:
+            self.boundary(state, end)
+            with self.subTest(state=state, end=end), self.assertRaisesRegex(ValueError, 'complete reviewed'):
+                self.compare()
+        self.boundary('reviewed', 0x401027)
+        for value in ['', 'src/Public.cpp']:
+            (self.root / 'config/functions.csv').write_text(
+                f'address,size,proposed_name,source_file\n0x00401020,8,LocalOwner,{value}\n')
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, 'source mapping'):
+                self.compare()
+        (self.root / 'config/functions.csv').write_text(
+            'address,size,proposed_name,source_file\n0x00401020,8,OtherCallback,src/Private.cpp\n')
+        with self.assertRaisesRegex(ValueError, 'source name'):
+            self.compare()
+
+    def test_entry_cannot_be_interior(self):
+        data = bytearray(self.image.read_bytes()); struct.pack_into('<I', data, 0x201, 0x501021)
+        self.image.write_bytes(data)
+        with self.assertRaisesRegex(ValueError, 'qualified function entry'):
+            self.compare()
+
+    def test_complete_dense_candidate_and_nonexact_callee_are_independent(self):
+        data = bytearray(self.image.read_bytes()); data[0x227] = 0x0f; self.image.write_bytes(data)
+        with self.assertRaisesRegex(ValueError, 'complete dense'):
+            self.compare()
+        data[0x220:0x228] = b'\xe8' + struct.pack('<i', 0x10) + b'\xc3\x90\x90'
+        self.image.write_bytes(data)
+        self.assertTrue(self.compare()['linkages'][0]['static_address_binding_only'])
+
+    def test_independent_whole_target_size_and_dense_target(self):
+        self.field['static_address_target_size'] = 9
+        (self.root / 'config/functions.csv').write_text(
+            'address,size,proposed_name,source_file\n0x00401020,9,LocalOwner,src/Private.cpp\n')
+        self.boundary('reviewed', 0x401028)
+        report = self.compare()
+        self.assertEqual(report['linkages'][0]['static_address_owner']['size'], 8)
+        self.assertEqual(report['linkages'][0]['static_address_target_size'], 9)
+        data = bytearray(self.target_path.read_bytes()); data[0x228] = 0x0f
+        self.target_path.write_bytes(data)
+        with self.assertRaisesRegex(ValueError, 'target.*complete dense'):
+            self.compare()
+
+
 if __name__ == '__main__':
     unittest.main()

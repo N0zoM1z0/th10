@@ -113,6 +113,21 @@ unknown authored-versus-outlined origin remains unknown after an exact replay.
 The exact claim covers only the complete target extent in the declared source
 and compiler context.
 
+An absolute DIR32 address of an ordinary TU-static C++ function uses a separate
+explicit descriptor: `static_address_source`, `static_address_candidate_size`
+and `static_address_target_size`. Both extents must be complete dense code;
+the target must have a reviewed boundary and a maintained source mapping whose
+TU and unqualified name agree with the exact qualified MAP/PDB symbol. The
+field must name the candidate function entry, with no addend, local mode or
+implicit static lookup. Source-to-object selection comes from the fixed build
+graph. Different declared candidate/target sizes are permitted because this is
+**address binding only**, not callee byte equality. The report labels that scope
+explicitly; the enclosing parent still replays every field and compares every
+owned byte. Callback bytes receive no credit from that parent replay. This lane
+does not change the direct static CALL policy above, which still requires a
+complete raw-equal zero-field callee. See the
+[transition initializer proof](evidence/effect-initializer/README.md).
+
 If a required input, extent, tool profile, or observable cannot be established,
 record `unknown` or an open candidate. Accuracy takes precedence over apparent
 completion.

@@ -2686,3 +2686,33 @@ not unique original compiler partition/visibility or whole-product behavior.
 The reference explicitly calls its ANM parent equivalent with assembly fallback;
 its forced helpers/redundant stores are not natural exact proof. See [the target
 facts, rejected controls and complete guards](evidence/anm-execute-stack-review/README.md).
+
+## 2026-10-20 transition initializer and callback address binding
+
+The complete396-byte0x43C970 initializer closes after only the real registrar
+formal order changes to owner/priority/callback. All16 calls change together;
+callee-pop annotations, all three operands and registrar mutation bodies remain
+unchanged. Target EAX callback/EDI priority/stack owner and both43-byte registrars
+are preserved. Two independent cold14-TU Gui updater links freeze identical42
+inputs and pass1069 complete bytes/all63 fields:396 new plus673 existing guards.
+Original source order, class/TU and production compiler partition remain unknown.
+
+The37 parent fields are15 static function addresses,11 registrar calls, one
+speed pointer and10 local table fields. Independent target decoding and the
+complete nine-slot table bind them; local destinations retain exact relative
+offsets. Explicit static-address metadata checks source/name, both whole extents,
+dense code and unique qualified MAP/PDB entry, with no addend/fallback. This is
+address binding only, even for124/133 or297/349 callbacks. No callee bytes are
+promoted; the old direct static CALL zero-field/raw-equal gate is unchanged.
+Fifteen synthetic controls retain both policies and adversarial failures.
+
+Focused Ghidra and target gap review discovers five complete missing callback
+owners:43C230/133,43C310/175,43C460/154,43C550/439 and43C710/349. Entry-only
+initializer references, dense RET bodies, following CC padding and specific
+game effect/timer/pause/RNG/camera operations establish1250 authored bytes at
+medium origin confidence, independently of native scores. Their source already
+exists; all five remain nonexact. Cleanup127 remains four ordinary move bytes
+away. The global boundary audit still has the known401100 evidence-text-only
+difference; no unrelated ledger rewrite is adopted. Host843, three affected
+strict controls and19 unchanged EOL controls pass. See [the complete target,
+field and native proof](evidence/effect-initializer/README.md).

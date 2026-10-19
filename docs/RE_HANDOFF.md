@@ -234,6 +234,20 @@ scratch paths, or build hashes into this file.
   large Gui owners remain nonexact; their canonical contexts are unchanged.
   Rotate next to the ANM/Enemy major-owner frontier with fresh lifetime evidence;
   do not repeat nothrow, constructor-ownership, case-order or generic caller sweeps.
+- [Transition initializer396](evidence/effect-initializer/README.md) now passes
+  two independent cold14-TU Gui updater links with42 identical inputs. Natural
+  registrar formals owner/priority/callback eliminate18 ordinary scheduling
+  differences; all16 real calls change order together, with bodies/CC unchanged.
+  Ten complete units retain1069 bytes/all63 fields, including673 prior guard
+  bytes. The37 initializer fields include15 explicit static callback addresses,
+  11 calls, one speed pointer and10 local table fields. The new address-only
+  binding checks source/name/whole bounds and qualified MAP/PDB entry; the old
+  static CALL raw-equal zero-field gate is unchanged. No callback credit follows.
+  Five previously missed callbacks add1250 authored bytes and five source maps:
+  FadeIn133, Dim175, Pulse154, LinearShake439, Envelope349. All remain nonexact;
+  Cleanup127 still has four argument-move differences. Host843, three affected
+  strict mutants,19 EOL controls and15 linked-context tests pass. The two LF
+  pins have full-file reversal proof; native product/runtime remain open.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

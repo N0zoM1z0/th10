@@ -193,7 +193,7 @@ void __stdcall Chain::RemoveAllFromList(u8 *listBase, Chain *chain)
     }
 }
 
-ChainElem *__stdcall Chain::RegisterCalc(ChainCallback callback, i32 prio, void *arg)
+ChainElem *__stdcall Chain::RegisterCalc(void *arg, i32 prio, ChainCallback callback)
 {
     ChainElem *elem;
     elem = Chain::AllocElem(callback);
@@ -203,7 +203,7 @@ ChainElem *__stdcall Chain::RegisterCalc(ChainCallback callback, i32 prio, void 
     return elem;
 }
 
-ChainElem *__stdcall Chain::RegisterDraw(ChainCallback callback, i32 prio, void *arg)
+ChainElem *__stdcall Chain::RegisterDraw(void *arg, i32 prio, ChainCallback callback)
 {
     ChainElem *elem;
     elem = Chain::AllocElem(callback);

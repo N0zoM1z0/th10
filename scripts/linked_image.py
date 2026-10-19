@@ -493,6 +493,42 @@ def static_linkage_selector(
     })
 
 
+STATIC_ADDRESS_KEYS = (
+    "static_address_source", "static_address_candidate_size", "static_address_target_size",
+)
+
+
+def static_address_selector(
+    unit: dict[str, object], field: dict[str, object]
+) -> dict[str, object] | None:
+    """Explicit function-address binding; grants no callee byte equality.
+
+    Keep this separate from the stricter zero-field/raw-equal static CALL lane.
+    Both complete extents are declared because a callback need not be exact.
+    """
+    present = {key for key in STATIC_ADDRESS_KEYS if key in field}
+    if not present:
+        return None
+    if present != set(STATIC_ADDRESS_KEYS):
+        raise LinkedImageError("static address requires source and both complete sizes")
+    if unit.get("artifact_kind") != "linked-pe":
+        raise LinkedImageError("static address requires a linked-pe artifact")
+    if (field.get("type") != "DIR32" or field.get("local", False)
+            or field.get("addend", 0) != 0
+            or any(key in field for key in ("static_source", "static_size"))):
+        raise LinkedImageError("static address requires a separate DIR32 entry binding")
+    size = field["static_address_target_size"]
+    if type(size) is not int or size <= 0:
+        raise LinkedImageError("static address requires a positive whole target size")
+    return static_owner_selector({
+        "artifact_kind": "linked-pe", "owner_visibility": "static",
+        "source": unit.get("source"), "pdb_source": field["static_address_source"],
+        "support_sources": unit.get("support_sources", []),
+        "normal_support_sources": unit.get("normal_support_sources", []),
+        "symbol": field.get("symbol"), "size": field["static_address_candidate_size"],
+    })
+
+
 def map_statics(path: Path | str) -> list[dict[str, object]]:
     """Read only the actual Static symbols section; never reinterpret publics."""
     in_statics = False

@@ -348,7 +348,7 @@ void dispatchObserved() {
 void lifetime7() {
     reset();auto *e=make(0,0);auto owner=address(e),updateAddr=address(e->updateNode),drawAddr=address(e->drawNode);
     e->updateNode->deletedCallback=deletedSpy;deleteCalls=deleteDepth=sentinelVisits=0;
-    auto *next=th10::Chain::RegisterCalc(sentinel,15,nullptr);pendingNode=nullptr;maxDepth=0;enterDepths.clear();leaveNesting.clear();
+    auto *next=th10::Chain::RegisterCalc(nullptr,15,sentinel);pendingNode=nullptr;maxDepth=0;enterDepths.clear();leaveNesting.clear();
     dispatchObserved();
     CHECK(deleteCalls==1&&deleteDepth==1,"RET7_DELETE_CALLBACK_UNDER_LOCK");
     CHECK(maxDepth==2&&std::count(enterDepths.begin(),enterDepths.end(),2)==2,"RET7_TWO_RECURSIVE_CLEANUP_LOCKS");
@@ -390,7 +390,7 @@ void cleanup_reload() {
     CHECK(address(e->updateNode)==updateAddr&&address(e->drawNode)==oldAddr,"CLEANUP_DOES_NOT_CLEAR_POINTERS");
     CHECK(th10::g_ChainNestCounter==0,"CLEANUP_TWO_LOCK_CYCLES_BALANCED");HostDeleteEffect(e);
     reset();e=make(5);oldDraw=e->drawNode;
-    auto *replacement=th10::Chain::RegisterDraw(TransitionDrawDimScreen,50,e);pendingNode=nullptr;
+    auto *replacement=th10::Chain::RegisterDraw(e,50,TransitionDrawDimScreen);pendingNode=nullptr;
     const auto firstAddr=address(e->updateNode),replacementAddr=address(replacement);int changes=0;
     leaveHook=[&](){if(!alive(firstAddr)&&changes++==0)e->drawNode=replacement;};
     e->Cleanup();leaveHook={};

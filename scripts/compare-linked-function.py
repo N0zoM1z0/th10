@@ -17,6 +17,8 @@ from linked_image import (
     linked_functions,
     static_owner_selector,
     static_linkage_selector,
+    static_address_selector,
+    STATIC_ADDRESS_KEYS,
     map_publics,
     verify_capstone,
 )
@@ -95,6 +97,8 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
                 "addend": int(raw.get("addend", 0)),
                 **({"static_source": raw["static_source"], "static_size": raw["static_size"]}
                    if static_linkage_selector(unit, raw) is not None else {}),
+                **({key: raw[key] for key in STATIC_ADDRESS_KEYS}
+                   if static_address_selector(unit, raw) is not None else {}),
             }
         )
     return sorted(result, key=lambda row: (int(row["offset"]), str(row["type"])))
@@ -197,6 +201,50 @@ def static_call_target(
         raise ValueError("static callee binding requires a complete zero-field body")
     if image.read_address(candidate, size) != target.read_address(address, size):
         raise ValueError("static callee body differs from the complete target")
+    return function
+
+
+def static_address_target(
+    unit: dict[str, object], field: dict[str, object], directory: Path,
+    image: PEImage, publics: list[dict[str, object]], target: PEImage,
+) -> dict[str, object]:
+    """Bind a qualified function entry, independently of its byte exactness."""
+    selector = static_address_selector(unit, field)
+    if selector is None:
+        raise ValueError("static address target lacks an explicit selector")
+    address = int(field["target"])
+    target_size = int(field["static_address_target_size"])
+    with (ROOT / "config/functions.csv").open(newline="") as stream:
+        owners = [row for row in csv.DictReader(stream) if int(row["address"], 0) == address]
+    with (ROOT / "config/function-boundaries.csv").open(newline="") as stream:
+        bounds = [row for row in csv.DictReader(stream) if int(row["address"], 0) == address]
+    if (len(owners) != 1 or len(bounds) != 1 or int(owners[0]["size"]) != target_size
+            or bounds[0]["state"] != "reviewed"
+            or int(bounds[0]["span_end"], 0) != address + target_size - 1):
+        raise ValueError("static address lacks the complete reviewed target boundary")
+    if (owners[0].get("source_file") != field["static_address_source"]
+            or not owners[0].get("proposed_name")):
+        raise ValueError("static address lacks its maintained target source mapping")
+    # This lane deliberately covers ordinary TU-static C++ functions only.
+    # Bind the maintained name as well as its TU; another callback in the same
+    # source must not become an interchangeable address-normalization target.
+    if not str(field["symbol"]).startswith("?" + owners[0]["proposed_name"] + "@@"):
+        raise ValueError("static address differs from its maintained target source name")
+    linked = linked_functions(directory / "source.exe", directory / "source.map",
+                              directory / "source.pdb", static_owner=selector)
+    functions = [row for row in linked["functions"]
+                 if row["symbol"] == selector["symbol"] and row.get("owner_visibility") == "static"]
+    if len(functions) != 1:
+        raise ValueError("static address must have one qualified complete owner")
+    function = functions[0]
+    candidate = int(function["address"], 0)
+    for label, artifact, symbols, start, size in [
+        ("candidate", image, publics, candidate, int(selector["size"])),
+        ("target", target, [], address, target_size),
+    ]:
+        decoded = linked_code_fields(artifact, symbols, start, size)
+        if not decoded["normalization_complete"] or decoded["decoded_bytes"] != size:
+            raise ValueError(f"static address {label} must be a complete dense code owner")
     return function
 
 
@@ -347,6 +395,7 @@ def compare_unit(name: str) -> dict[str, object]:
     replayed = []
     target = verified_target()
     static_calls = {}
+    static_addresses = {}
     for field in expected:
         key = (int(field["offset"]), str(field["type"]), int(field["width"]))
         observed = actual_by_key[key]
@@ -386,6 +435,15 @@ def compare_unit(name: str) -> dict[str, object]:
             if int(function["address"], 0) != expected_candidate_address:
                 raise ValueError("static call does not enter its qualified callee")
             linked_symbol = semantic
+        elif "static_address_source" in field:
+            address_key = (semantic, *(field[key] for key in STATIC_ADDRESS_KEYS), int(field["target"]))
+            if address_key not in static_addresses:
+                static_addresses[address_key] = static_address_target(
+                    unit, field, directory, candidate_image, publics, target)
+            function = static_addresses[address_key]
+            if int(function["address"], 0) != expected_candidate_address:
+                raise ValueError("static address does not name its qualified function entry")
+            linked_symbol = semantic
         else:
             linked_symbol = aliases.get(semantic, semantic)
             if linked_symbol.startswith(ANCHOR_PREFIX) and aliases.get(semantic) != linked_symbol:
@@ -423,6 +481,10 @@ def compare_unit(name: str) -> dict[str, object]:
                 "target_encoded_value": encoded_text,
                 **({"static_owner": static_calls[static_key]}
                    if "static_source" in field else {}),
+                **({"static_address_owner": static_addresses[address_key],
+                    "static_address_binding_only": True,
+                    "static_address_target_size": field["static_address_target_size"]}
+                   if "static_address_source" in field else {}),
             }
         )
 

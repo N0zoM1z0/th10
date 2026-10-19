@@ -1,0 +1,485 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "provider": "local read-only Ghidra12.1.3 and independently pinned Capstone5.0.6 decode",
+  "mapped_text": {
+    "address": "0x00401000",
+    "size": "0x64A80",
+    "before_and_after_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+    "transaction_rolled_back": true
+  },
+  "initializer": {
+    "address": "0x0043C970",
+    "inclusive_end": "0x0043CAFB",
+    "owned_size": 396,
+    "code_size": 357,
+    "alignment_size": 3,
+    "table_size": 36,
+    "code_sha256": "1c752fb43d4c7d388ea343c5a749e519d05d78548dad582748563dd3efffaee2",
+    "owned_sha256": "9e40ac9bc381add1419309a8693d4098703383a1c1eb36c294b74b11522acd3b",
+    "switch_table_address": "0x0043CAD8",
+    "physical_case_order": [
+      0,
+      1,
+      2,
+      3,
+      5,
+      4,
+      6,
+      7,
+      8
+    ],
+    "target_base_relocations": "absent; fields independently recovered from reviewed operands and all nine table words",
+    "field_counts": {
+      "static_function_addresses": 15,
+      "registrar_calls": 11,
+      "speed_pointer": 1,
+      "local_fields": 10
+    },
+    "target_bound_fields": [
+      {
+        "offset": 18,
+        "type": "DIR32",
+        "target": 4442840,
+        "local": true
+      },
+      {
+        "offset": 23,
+        "type": "DIR32",
+        "target": 4439360,
+        "symbol": "?TransitionFadeOut@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 93,
+        "static_address_target_size": 93
+      },
+      {
+        "offset": 34,
+        "type": "REL32",
+        "target": 4497408,
+        "symbol": "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 42,
+        "type": "DIR32",
+        "target": 4440480,
+        "symbol": "?TransitionDrawScreen@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 134,
+        "static_address_target_size": 134
+      },
+      {
+        "offset": 50,
+        "type": "REL32",
+        "target": 4497456,
+        "symbol": "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 63,
+        "type": "DIR32",
+        "target": 4441424,
+        "symbol": "?TransitionShakeLinear@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 439,
+        "static_address_target_size": 439
+      },
+      {
+        "offset": 73,
+        "type": "DIR32",
+        "target": 4440624,
+        "symbol": "?TransitionFadeIn@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 124,
+        "static_address_target_size": 133
+      },
+      {
+        "offset": 84,
+        "type": "REL32",
+        "target": 4497408,
+        "symbol": "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 93,
+        "type": "DIR32",
+        "target": 4440768,
+        "symbol": "?TransitionDrawPlayfield@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 68,
+        "static_address_target_size": 68
+      },
+      {
+        "offset": 100,
+        "type": "REL32",
+        "target": 4497456,
+        "symbol": "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 120,
+        "type": "DIR32",
+        "target": 4439360,
+        "symbol": "?TransitionFadeOut@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 93,
+        "static_address_target_size": 93
+      },
+      {
+        "offset": 127,
+        "type": "DIR32",
+        "target": 4440624,
+        "symbol": "?TransitionFadeIn@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 124,
+        "static_address_target_size": 133
+      },
+      {
+        "offset": 135,
+        "type": "DIR32",
+        "target": 4441184,
+        "symbol": "?TransitionPulse@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 154,
+        "static_address_target_size": 154
+      },
+      {
+        "offset": 145,
+        "type": "REL32",
+        "target": 4497408,
+        "symbol": "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 153,
+        "type": "DIR32",
+        "target": 4441344,
+        "symbol": "?TransitionDrawPulse@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 74,
+        "static_address_target_size": 74
+      },
+      {
+        "offset": 161,
+        "type": "REL32",
+        "target": 4497456,
+        "symbol": "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 172,
+        "type": "DIR32",
+        "target": 4440848,
+        "symbol": "?TransitionDim@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 175,
+        "static_address_target_size": 175
+      },
+      {
+        "offset": 182,
+        "type": "REL32",
+        "target": 4497408,
+        "symbol": "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 190,
+        "type": "DIR32",
+        "target": 4441024,
+        "symbol": "?TransitionDrawDimScreen@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 68,
+        "static_address_target_size": 68
+      },
+      {
+        "offset": 198,
+        "type": "REL32",
+        "target": 4497456,
+        "symbol": "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 209,
+        "type": "DIR32",
+        "target": 4440848,
+        "symbol": "?TransitionDim@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 175,
+        "static_address_target_size": 175
+      },
+      {
+        "offset": 219,
+        "type": "REL32",
+        "target": 4497408,
+        "symbol": "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 227,
+        "type": "DIR32",
+        "target": 4441104,
+        "symbol": "?TransitionDrawDimPlayfield@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 68,
+        "static_address_target_size": 68
+      },
+      {
+        "offset": 235,
+        "type": "REL32",
+        "target": 4497456,
+        "symbol": "?RegisterDraw@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 245,
+        "type": "DIR32",
+        "target": 4441872,
+        "symbol": "?TransitionShakeEnvelope@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 297,
+        "static_address_target_size": 349
+      },
+      {
+        "offset": 256,
+        "type": "REL32",
+        "target": 4497408,
+        "symbol": "?RegisterCalc@Chain@th10@@SGPAUChainElem@2@PAXHP6IH0@Z@Z"
+      },
+      {
+        "offset": 270,
+        "type": "DIR32",
+        "target": 4442224,
+        "symbol": "?TransitionDelete@@YIHPAX@Z",
+        "static_address_source": "src/TransitionEffect.cpp",
+        "static_address_candidate_size": 26,
+        "static_address_target_size": 26
+      },
+      {
+        "offset": 302,
+        "type": "DIR32",
+        "target": 4681592,
+        "symbol": "?g_AnmGameSpeed@@3MA"
+      },
+      {
+        "offset": 360,
+        "type": "DIR32",
+        "target": 4442502,
+        "local": true
+      },
+      {
+        "offset": 364,
+        "type": "DIR32",
+        "target": 4442542,
+        "local": true
+      },
+      {
+        "offset": 368,
+        "type": "DIR32",
+        "target": 4442552,
+        "local": true
+      },
+      {
+        "offset": 372,
+        "type": "DIR32",
+        "target": 4442592,
+        "local": true
+      },
+      {
+        "offset": 376,
+        "type": "DIR32",
+        "target": 4442613,
+        "local": true
+      },
+      {
+        "offset": 380,
+        "type": "DIR32",
+        "target": 4442606,
+        "local": true
+      },
+      {
+        "offset": 384,
+        "type": "DIR32",
+        "target": 4442650,
+        "local": true
+      },
+      {
+        "offset": 388,
+        "type": "DIR32",
+        "target": 4442687,
+        "local": true
+      },
+      {
+        "offset": 392,
+        "type": "DIR32",
+        "target": 4442724,
+        "local": true
+      }
+    ]
+  },
+  "new_callbacks": [
+    {
+      "address": "0x0043C230",
+      "size": 133,
+      "span_end": "0x0043C2B4",
+      "source_name": "TransitionFadeIn",
+      "role": "Rising alpha, startup abort, two terminal ticks and game pause flags5",
+      "sha256": "bd823ee212b505f3db6785f9fbc6bbdd7acf8bb50024f79f8dfb36fcc24d039f",
+      "following_cc_bytes": 11,
+      "next_entry": "0x0043C2C0",
+      "literal_entry_occurrences": [
+        {
+          "file_offset": "0x3bdb9",
+          "mapped_address": "0x43c9b9"
+        },
+        {
+          "file_offset": "0x3bdef",
+          "mapped_address": "0x43c9ef"
+        }
+      ],
+      "ghidra_body": "BODY 0043c230 [[0043c230, 0043c2b4]]",
+      "outside_references": [
+        {
+          "source": "0x0043C9B8",
+          "destination": "0x0043C230",
+          "kind": "DATA Op: 1 ANALYSIS"
+        },
+        {
+          "source": "0x0043C9EE",
+          "destination": "0x0043C230",
+          "kind": "DATA Op: 1 ANALYSIS"
+        }
+      ],
+      "origin": {
+        "origin": "authored_game",
+        "confidence": "medium",
+        "basis": "specific registered game effects, timer phases, startup/pause state, RNG and camera writes; independent of native score"
+      },
+      "exact": false
+    },
+    {
+      "address": "0x0043C310",
+      "size": 175,
+      "span_end": "0x0043C3BE",
+      "source_name": "TransitionDim",
+      "role": "Unreleased half-opacity ramp and released eight-frame phase",
+      "sha256": "3ab4e08d41ee3c62398817a42b770a3daab420e12cb5fb752b87779e0864aed3",
+      "following_cc_bytes": 1,
+      "next_entry": "0x0043C3C0",
+      "literal_entry_occurrences": [
+        {
+          "file_offset": "0x3be1c",
+          "mapped_address": "0x43ca1c"
+        },
+        {
+          "file_offset": "0x3be41",
+          "mapped_address": "0x43ca41"
+        }
+      ],
+      "ghidra_body": "BODY 0043c310 [[0043c310, 0043c3be]]",
+      "outside_references": [
+        {
+          "source": "0x0043CA1B",
+          "destination": "0x0043C310",
+          "kind": "DATA Op: 1 ANALYSIS"
+        },
+        {
+          "source": "0x0043CA40",
+          "destination": "0x0043C310",
+          "kind": "DATA Op: 1 ANALYSIS"
+        }
+      ],
+      "origin": {
+        "origin": "authored_game",
+        "confidence": "medium",
+        "basis": "specific registered game effects, timer phases, startup/pause state, RNG and camera writes; independent of native score"
+      },
+      "exact": false
+    },
+    {
+      "address": "0x0043C460",
+      "size": 154,
+      "span_end": "0x0043C4F9",
+      "source_name": "TransitionPulse",
+      "role": "Repeated color pulse with signed repetition test and return0 completion",
+      "sha256": "163af6e09bccfa886237605c73d49764955d16b251b1731a1a834f914284131a",
+      "following_cc_bytes": 6,
+      "next_entry": "0x0043C500",
+      "literal_entry_occurrences": [
+        {
+          "file_offset": "0x3bdf7",
+          "mapped_address": "0x43c9f7"
+        }
+      ],
+      "ghidra_body": "BODY 0043c460 [[0043c460, 0043c4f9]]",
+      "outside_references": [
+        {
+          "source": "0x0043C9F6",
+          "destination": "0x0043C460",
+          "kind": "DATA Op: 1 ANALYSIS"
+        }
+      ],
+      "origin": {
+        "origin": "authored_game",
+        "confidence": "medium",
+        "basis": "specific registered game effects, timer phases, startup/pause state, RNG and camera writes; independent of native score"
+      },
+      "exact": false
+    },
+    {
+      "address": "0x0043C550",
+      "size": 439,
+      "span_end": "0x0043C706",
+      "source_name": "TransitionShakeLinear",
+      "role": "Timer-scaled two-axis camera shake using duplicated second RNG halves",
+      "sha256": "ce3e4112ea53c56eb4532e630abe5ee26682aed39d2c09f018a7cb0a7a47240d",
+      "following_cc_bytes": 9,
+      "next_entry": "0x0043C710",
+      "literal_entry_occurrences": [
+        {
+          "file_offset": "0x3bdaf",
+          "mapped_address": "0x43c9af"
+        }
+      ],
+      "ghidra_body": "BODY 0043c550 [[0043c550, 0043c706]]",
+      "outside_references": [
+        {
+          "source": "0x0043C9AE",
+          "destination": "0x0043C550",
+          "kind": "DATA Op: 1 ANALYSIS"
+        }
+      ],
+      "origin": {
+        "origin": "authored_game",
+        "confidence": "medium",
+        "basis": "specific registered game effects, timer phases, startup/pause state, RNG and camera writes; independent of native score"
+      },
+      "exact": false
+    },
+    {
+      "address": "0x0043C710",
+      "size": 349,
+      "span_end": "0x0043C86C",
+      "source_name": "TransitionShakeEnvelope",
+      "role": "Pause-mask77 gated attack/hold/decay shake envelope and camera offsets",
+      "sha256": "8e6176d6a65d9206978f8e1134a15b31db63494345b7e5d31b94c17e0c1e07ee",
+      "following_cc_bytes": 3,
+      "next_entry": "0x0043C870",
+      "literal_entry_occurrences": [
+        {
+          "file_offset": "0x3be65",
+          "mapped_address": "0x43ca65"
+        }
+      ],
+      "ghidra_body": "BODY 0043c710 [[0043c710, 0043c86c]]",
+      "outside_references": [
+        {
+          "source": "0x0043CA64",
+          "destination": "0x0043C710",
+          "kind": "DATA Op: 1 ANALYSIS"
+        }
+      ],
+      "origin": {
+        "origin": "authored_game",
+        "confidence": "medium",
+        "basis": "specific registered game effects, timer phases, startup/pause state, RNG and camera writes; independent of native score"
+      },
+      "exact": false
+    }
+  ],
+  "denominator_added": 1250,
+  "global_boundary_audit": {
+    "result": "known unrelated evidence-text difference at0x401100",
+    "extent_state_confidence": "identical",
+    "automatic_ledger_replacement": false,
+    "focused_five_owners": "complete target/Ghidra proof retained"
+  }
+}

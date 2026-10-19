@@ -1,0 +1,106 @@
+{
+  "new_authored_exact_bytes": 396,
+  "new_reviewed_authored_bytes": 1250,
+  "authored_owned_bytes": 270076,
+  "authored_exact_bytes": 60335,
+  "authored_exact_percent": 22.34,
+  "new_source_mappings": 5,
+  "native_cold_builds": 2,
+  "identical_project_inputs": 42,
+  "full_compared_bytes_each": 1069,
+  "full_linkage_fields_each": 63,
+  "host": "14 scenarios/843 assertions; three affected strict mutation anchors pass",
+  "eol": "19/19 unchanged acceptance/rejection controls pass",
+  "synthetic_linked_context": "15 tests pass, including unchanged static CALL gates",
+  "toolchain_execute": "passed",
+  "toolchain_check": "passed",
+  "tracking_require_target": "passed",
+  "progress": "regenerated",
+  "global_boundary_audit": "known0x401100 evidence-text difference, identical extent/state/confidence; focused new proof retained",
+  "public_ci": "passed; process exit0 and TH10 target-independent checks passed",
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-initializer-20261020/owner-priority-callback",
+        "bytes": 2136848
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-initializer-20261020/host-focused",
+        "bytes": 3272091
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-effect-initializer-20261020/eol",
+        "bytes": 4344
+      }
+    ],
+    "removed_build_file_bytes": 5413283,
+    "retained": "build/match-linked/GuiTransitionEffectFactory",
+    "preexisting_untracked_d3d": "untouched",
+    "reason": "All removed producers terminal; two cold proofs and host outcomes preserved in compact tracked evidence; one current carrier retained",
+    "removed_private_file_count": 26,
+    "removed_private_file_bytes": 330081,
+    "total_removed_file_bytes": 5743364
+  },
+  "native_product_runtime_semantic_port": "open",
+  "remaining_callbacks": {
+    "acceptance_authority": "none; whole-function structural diagnostics in current canonical carrier; no partial credit",
+    "rows": [
+      {
+        "address": "0x0043C230",
+        "symbol": "?TransitionFadeIn@@YIHPAX@Z",
+        "candidate_size": 124,
+        "target_size": 133,
+        "ordinary_matches": 87,
+        "ordinary_comparable_bytes": 113,
+        "normalization_complete": true,
+        "exact": false
+      },
+      {
+        "address": "0x0043C310",
+        "symbol": "?TransitionDim@@YIHPAX@Z",
+        "candidate_size": 175,
+        "target_size": 175,
+        "ordinary_matches": 52,
+        "ordinary_comparable_bytes": 143,
+        "normalization_complete": true,
+        "exact": false
+      },
+      {
+        "address": "0x0043C460",
+        "symbol": "?TransitionPulse@@YIHPAX@Z",
+        "candidate_size": 154,
+        "target_size": 154,
+        "ordinary_matches": 118,
+        "ordinary_comparable_bytes": 130,
+        "normalization_complete": true,
+        "exact": false
+      },
+      {
+        "address": "0x0043C550",
+        "symbol": "?TransitionShakeLinear@@YIHPAX@Z",
+        "candidate_size": 439,
+        "target_size": 439,
+        "ordinary_matches": 332,
+        "ordinary_comparable_bytes": 359,
+        "normalization_complete": true,
+        "exact": false
+      },
+      {
+        "address": "0x0043C710",
+        "symbol": "?TransitionShakeEnvelope@@YIHPAX@Z",
+        "candidate_size": 297,
+        "target_size": 349,
+        "ordinary_matches": 28,
+        "ordinary_comparable_bytes": 289,
+        "normalization_complete": true,
+        "exact": false
+      }
+    ]
+  },
+  "ci_log_sha256": "c0573d14b24f6d472be7d22bdc9b4912c973790fbcc099cc592e601c81540b7b",
+  "whitespace": "passed",
+  "match_unit_graph_check": "1174 units pass",
+  "documentation_hygiene": "passed",
+  "canonical_initializer_oracle": "exact396/396; all37 fields",
+  "full_file_literal_and_ghidra_entry_reference_agreement": "passed for all five new callbacks"
+}
