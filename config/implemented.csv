@@ -976,3 +976,4 @@ TransitionDelete
 StageCreateTransitionEffect
 TransitionEffectView::Initialize
 TransitionEffectView::Cleanup
+MarkGameChains

@@ -1,0 +1,133 @@
+{
+  "scope": "diagnostics only; no exact credit or adopted source changes",
+  "source_base_commit": "31918687f6911303042ac198eb6189833edc6264",
+  "ecl": {
+    "baseline": {
+      "production_source_sha256": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+      "compiled_source_sha256": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+      "image_sha256": "9ce33b34b6d7413bcba63bffd1fd946b4617e50b527e1bae69b342c54882fdc7",
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "raw_matched_bytes": 6233,
+      "comparable_bytes": 6264,
+      "matched_comparable_bytes": 6125,
+      "normalization_complete": false,
+      "relative_dispatch_destinations_equal": true,
+      "selectors_equal": true,
+      "table_slots": 60,
+      "selector_bytes": 88,
+      "existing_exact_controls": {
+        "ecl-vm-host-run": {
+          "result": "exact",
+          "size": 146
+        },
+        "ecl-vm-spawn-thread": {
+          "result": "exact",
+          "size": 142
+        }
+      }
+    },
+    "int-snapshots": {
+      "production_source_sha256": "8f236b6d2bdfa73bbf8747b16e934eb62264d2d54a811ac5f5cec789a1457efb",
+      "compiled_source_sha256": "9cb89166110a1e7770010b5b9d62bcd5e4543484753fae3af633f2dfdbeef11a",
+      "image_sha256": "6ff5931df4e37c47a03aa5ff265fa6d7d70d3c9407c3d9a8c45de47f64006c42",
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "raw_matched_bytes": 6227,
+      "comparable_bytes": 6264,
+      "matched_comparable_bytes": 6119,
+      "normalization_complete": false,
+      "relative_dispatch_destinations_equal": true,
+      "selectors_equal": true,
+      "table_slots": 60,
+      "selector_bytes": 88,
+      "existing_exact_controls": {
+        "ecl-vm-host-run": {
+          "result": "exact",
+          "size": 146
+        },
+        "ecl-vm-spawn-thread": {
+          "result": "exact",
+          "size": 142
+        }
+      }
+    }
+  },
+  "bullet": {
+    "baseline": {
+      "production_source_sha256": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+      "compiled_source_sha256": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+      "image_sha256": "d8ea2508b6d7fc61e956a0bd8031e5d3ae40e18af2871e4576161da75c52db36",
+      "candidate_size": 172,
+      "target_size": 172,
+      "raw_matched_bytes": 83,
+      "comparable_bytes": 140,
+      "matched_comparable_bytes": 77,
+      "normalization_complete": true,
+      "horizontal_guard": {
+        "result": "exact",
+        "size": 148
+      }
+    },
+    "association": {
+      "production_source_sha256": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+      "compiled_source_sha256": "6ae43088693f04397f2b5f69eac75dc84f3a6e6fcb1a71bb0d165b11615ebc61",
+      "image_sha256": "fe70b3a4d43c406892b7538e7fd897e89c7da811ae0d35e8157fdf07e07d3c7f",
+      "candidate_size": 172,
+      "target_size": 172,
+      "raw_matched_bytes": 83,
+      "comparable_bytes": 140,
+      "matched_comparable_bytes": 77,
+      "normalization_complete": true,
+      "horizontal_guard": {
+        "result": "exact",
+        "size": 148
+      }
+    },
+    "lexical": {
+      "production_source_sha256": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+      "compiled_source_sha256": "79856637a30af4131e7393e99f6778cfa5beafeacbe73cefebb4a10e706d74a3",
+      "image_sha256": "a3bbffd1f6992525532bca8f3dc7f89739da2b0dc84b02a06d3982258741baa9",
+      "candidate_size": 166,
+      "target_size": 172,
+      "raw_matched_bytes": 56,
+      "comparable_bytes": 140,
+      "matched_comparable_bytes": 49,
+      "normalization_complete": true,
+      "horizontal_guard": {
+        "result": "exact",
+        "size": 148
+      }
+    },
+    "late-views": {
+      "production_source_sha256": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+      "compiled_source_sha256": "252e316777ff964582c6b18d7101ac4c4f36d1253709fa3829c1aac58dabf51f",
+      "image_sha256": "5020e793905403dc12fa1a1608d84619836106c1a33023467aad7891158b3804",
+      "candidate_size": 166,
+      "target_size": 172,
+      "raw_matched_bytes": 42,
+      "comparable_bytes": 140,
+      "matched_comparable_bytes": 38,
+      "normalization_complete": true,
+      "horizontal_guard": {
+        "result": "exact",
+        "size": 148
+      }
+    }
+  },
+  "compiler_profile_sources": {
+    "ecl": "units.ecl-vm-host-run",
+    "bullet": "units.bullet-update-horizontal-wrap"
+  },
+  "candidate_changes": {
+    "int-snapshots": "Split the five integer compound arithmetic assignments into const left/right operand copies and an explicit result assignment.",
+    "association": "Change only upper-wrap y += height + bottom to y = (height + y) + bottom; emitted owner unchanged.",
+    "lexical": "Use target 448.0f constants and duplicate the timer/sound tail within both wrap branches, without pre-branch reference locals.",
+    "late-views": "Move existing reference locals inside the post-wrap timer/sound block; no arithmetic or interface change."
+  },
+  "limitations": [
+    "Ordinary-byte diagnostics do not establish linked-field identity or acceptance.",
+    "The ECL 88-byte selector suffix leaves normalization incomplete.",
+    "No upstream completion metric, context, code bytes or assembly fallback is adopted."
+  ]
+}

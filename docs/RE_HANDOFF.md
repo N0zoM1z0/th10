@@ -1,6 +1,6 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-14. This is a concise resume brief, not an experiment journal.
+Updated 2026-10-19. This is a concise resume brief, not an experiment journal.
 Keep live totals in the generated [`PROGRESS.md`](PROGRESS.md), durable target
 facts and negative results in [`KNOWLEDGE_BASE.md`](KNOWLEDGE_BASE.md), and
 experiment chronology in Git history. Only explicitly dated, scoped
@@ -18,12 +18,45 @@ scratch paths, or build hashes into this file.
 - Work from the live worktree, including dirty changes. Inspect and continue,
   deliberately supersede, or reject existing work; do not create a clean side
   tree merely to avoid understanding it.
-- Operator-requested commits use `gpt-web: ...`. Do not push from this worktree.
+- Current operator-requested commits use `gpt-6.1-sol: ...`. Do not push from this worktree.
 - Treat Ghidra, decompiler output, adjacent games, compiler diagnostics, and
   similarity scores as evidence or hypotheses according to their Oracle
   boundary. Only canonical replay can grant exact-codegen credit.
 - Read current repository-wide counts from `docs/PROGRESS.md` or regenerate
   them. Do not reuse counts copied from an older commit or experiment.
+
+## Current local checkpoint (2026-10-19)
+
+- Continue toward **95% of reviewed authored bytes exact**, with both large
+  owners and small functions in scope. Use local Ghidra and Bash, serialize
+  native builds, and replay the necessary affected units rather than the full
+  historical cohort. The authored denominator remains provisional.
+- `MarkGameChains @ 0x00409E20` closes 28 authored bytes with unchanged
+  `GameManager.cpp`. Two independent cold links pass the complete raw-equal
+  static owner; its qualified MAP/PDB selector uses the existing comparator.
+  The seven-byte update callback also passes in the canonical artifact.
+  The diagnostic retains the static copy with `/OPT:NOREF`; incoming parent
+  call topology, the initializer and whole-product closure remain open.
+  See [the scoped evidence](evidence/game-manager-static-mark/README.md).
+- Fresh ECL Run remains 7,020 bytes, with 60 table destinations and 88
+  selector bytes aligned; ordinary comparison is 6,125/6,264. Explicit
+  integer-operand snapshots regress six net bytes and were discarded.
+  VerticalWrap reassociation is byte-neutral; duplicated tails and delayed
+  view lifetimes regress to 166/172. No major-owner or wrap credit is added.
+- The issue's reference is now a shallow, sparse local checkout at
+  `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
+  Read its MIT license and treat source/context ideas as hypotheses. Use our
+  target and canonical Oracles for every claim; equivalent and assembly-backed
+  upstream regions are not exact C++ credit here.
+- The pre-existing untracked `docs/evidence/d3d-adapter-format/` experiment
+  remains untouched and unadopted. Read live progress from `PROGRESS.md`.
+- Next major-owner route: review the inventory gap `0x0040A006..0x0040A93F`.
+  Raw target scanning finds possible calls to the new exact helper at
+  `0x0040A655/0x0040A685`, absent from the current Ghidra xref result.
+  Code at `0x0040A010` ends RET at `0x0040A033`, then CC padding precedes
+  `0x0040A040`. Export fresh Ghidra architecture/body ranges before any
+  inventory change; use reference `game/eclview/` only as hypotheses.
+  The gap's code, origins, extents and effect on the denominator stay open.
 
 ## Validated large-owner checkpoints (not exact claims)
 

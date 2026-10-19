@@ -2130,3 +2130,18 @@ See [Radial signed-RNG local evidence](evidence/radial-rng-local/README.md) for 
 ### 2026-10-18: radial initializer Factory acceptance
 
 The complete 803-byte `anm-initialize-pulsing-radial-trail` claim passed Factory forced-recompile replay and was accepted at clean commit `504539f9fcd1e465f7fd7e902af05c042e5d077d`. Receipt: `dd3a0154fc4a5a6ac0ae07cb3e17cde3bf0326b91382e7abf1bb7a78c8a334b0`; job: `40f82069fb8d46dea5d5441fe851b0e6`. The separate 115-byte signed-RNG claim was also accepted at the same source binding, receipt `64fd20e83b5c945ac8005e3af3977730dd9b5550709a6db3e5deebc32e9bce58`. See [the dated radial acceptance record](evidence/radial-rng-local/README.md#factory-acceptance-at-504539f9-2026-10-18) for exact source binding and limits. Earlier Factory-pending wording is historical; ExecuteScript remains outside this exactness claim.
+
+### 2026-10-19: GameManager static callback retirement closure
+
+The previously unmapped authored owner `0x00409E20..0x00409E3B` is reproduced
+by the existing static inline `MarkGameChains` in `GameManager.cpp`. Ghidra
+confirms a direct target caller at `0x00417C53`; owner `+8/+12`
+callback pointers receive independent null tests and node flags `+4 |= 2`.
+Two cold pinned VC7.1 SP1 links reproduce all 28 bytes raw-equal, with complete
+decoding and no link fields. The pre-existing qualified static owner lane binds
+the exact MAP symbol and unique nonoverlapping primary-object PDB contribution;
+no C++ body, ABI, profile or comparator was changed. This adds 28 local canonical
+authored bytes and one source mapping without changing the origin denominator.
+The retained diagnostic static copy does not close the parent's call topology;
+GameManagerInitialize and production/runtime ownership remain nonexact/open.
+See [the bounded evidence and negative ECL/Bullet controls](evidence/game-manager-static-mark/README.md).

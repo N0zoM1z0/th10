@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "scope": "bounded local codegen exactness; no product/runtime or original-source-owner claim",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_base_commit": "31918687f6911303042ac198eb6189833edc6264",
+  "source_file": "src/GameManager.cpp",
+  "source_sha256": "2a09b328a64e45f9f027bfe84b25b5800e21c5e59b7759a97d63925760ed9433",
+  "original_address": "0x00409E20",
+  "original_target_caller": "0x00417C53",
+  "target_owner_bytes": 28,
+  "code_sha256": "ff7169a1ffda26fb648d1b9021d0a6affadd599732ae8acf918d02ca1872f6d1",
+  "unit": "game-manager-mark-chains",
+  "symbol": "?MarkGameChains@@YAXPAUGameChainOwnerView@@@Z",
+  "owner_visibility": "static",
+  "primary_object": "source.ltcg.obj",
+  "entry_symbol": "?OnUpdate@GameManager@@SIIPAU1@@Z",
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL"
+  ],
+  "source_body_modified": false,
+  "compiler_or_comparator_modified": false,
+  "native_parent_call_topology_closed": false,
+  "replays": [
+    {
+      "context": "independent diagnostic cold build",
+      "image_sha256": "30c354b3dc4edf34aa4c863f85db5521d5d102d12240e7ff90ec80a7c1181878",
+      "pdb_guid": "c6381946dbe52f4dbfb1c19f8a905fb7",
+      "size": 28,
+      "decoded_bytes": 28,
+      "linkages": 0,
+      "raw_equal": true,
+      "result": "exact"
+    },
+    {
+      "context": "canonical cold build",
+      "image_sha256": "98f6d80b944872bf23a790a632a58d7268b70659d541fac7246776dab5c19ad2",
+      "pdb_guid": "a6d6dbd2664fa349b8357ae5ed7a2bf6",
+      "size": 28,
+      "decoded_bytes": 28,
+      "linkages": 0,
+      "raw_equal": true,
+      "result": "exact"
+    }
+  ],
+  "same_artifact_guard": {
+    "unit": "game-manager-update-callback",
+    "size": 7,
+    "result": "exact"
+  },
+  "reference": {
+    "repository": "levzzz5154/th10-decomp",
+    "commit": "c6791d82dc9f02e55eca45a5314f900a85481efd",
+    "license": "MIT",
+    "role": "hypothesis only; no upstream implementation imported"
+  },
+  "limitations": [
+    "Original declaration, conceptual owner and production TU remain unknown.",
+    "The /OPT:NOREF diagnostic retains the static body even when callers inline it.",
+    "GameManagerInitialize and ECL/ANM/Enemy major owners receive no exact credit.",
+    "No Factory acceptance or Windows product/runtime validation was performed."
+  ],
+  "diagnostic_static_helper_incoming_edges": [],
+  "target_text_potential_direct_rel32_calls": [
+    "0x40a655",
+    "0x40a685",
+    "0x417c53"
+  ],
+  "target_call_scan_qualification": "Only 0x00417C53 is confirmed by the current Ghidra xref result. Two other raw scan candidates lie in an inventory gap and require separate boundary review; the xref result is not an exhaustive caller claim.",
+  "validation": {
+    "public_ci": "pass",
+    "target_identity": "pass",
+    "tracking": "pass",
+    "toolchain_execution_and_declarations": "pass",
+    "canonical_mark_chains": "28/28 raw exact",
+    "canonical_update_guard": "7/7 exact"
+  },
+  "cleanup": {
+    "files": 693,
+    "logical_bytes": 17636482
+  }
+}

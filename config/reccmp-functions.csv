@@ -977,3 +977,4 @@ TransitionDelete,0x0043C870,function
 StageCreateTransitionEffect,0x0043C8B0,function
 TransitionEffectView::Initialize,0x0043C970,function
 TransitionEffectView::Cleanup,0x0043CB00,function
+MarkGameChains,0x00409E20,function
