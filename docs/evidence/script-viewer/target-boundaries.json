@@ -1,0 +1,280 @@
+{
+  "evidence_id": "script-viewer-target-gap-2026-10-19",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "ghidra": "12.1.3 local readOnly, temporary metadata rolled back, mapped bytes unchanged",
+  "global_boundary_check": "pre-existing check-ledger text differs at 0x401100; no wholesale ledger rewrite",
+  "entries": [
+    {
+      "address": "0x00409EB0",
+      "size": 86,
+      "span_end": "0x00409F05",
+      "name": "ScriptViewerView::ClearScriptNames",
+      "physical_abi": "internal ESI receiver / RET",
+      "disposition": "authored",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "06315db22899565fc8353481dd8a14a1e8390812c3c9e36f72a9f0a3f30f7dcb",
+      "dense_decode": 86,
+      "ghidra_body_bytes": 86,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 2
+    },
+    {
+      "address": "0x0040A010",
+      "size": 36,
+      "span_end": "0x0040A033",
+      "name": "ScriptViewerSuspendPlayer",
+      "physical_abi": "internal EAX Player* / RET",
+      "disposition": "authored",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "7729b7bf5c562644de48d1d6dcb811c6e2ce521b22131b6e9151a78abcec998f",
+      "dense_decode": 36,
+      "ghidra_body_bytes": 36,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 1
+    },
+    {
+      "address": "0x0040A040",
+      "size": 234,
+      "span_end": "0x0040A129",
+      "name": "ScriptViewerView::ScriptViewerView",
+      "physical_abi": "internal EDX receiver / RET",
+      "disposition": "authored",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "1acee54c2ece24d28e1f3a887de3b8ec555562a1a59508b65d49ea5b9e423b7c",
+      "dense_decode": 234,
+      "ghidra_body_bytes": 234,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 0
+    },
+    {
+      "address": "0x0040A130",
+      "size": 106,
+      "span_end": "0x0040A199",
+      "name": "ScriptViewerView::RegisterTasks",
+      "physical_abi": "internal EBX receiver / RET",
+      "disposition": "authored",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "39c67d00024b6d955d78b4a84d5a3778e2cda1d93b3cfbf52163991b8c7f97da",
+      "dense_decode": 106,
+      "ghidra_body_bytes": 106,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 4
+    },
+    {
+      "address": "0x0040A1A0",
+      "size": 412,
+      "span_end": "0x0040A33B",
+      "name": "ScriptViewerView::~ScriptViewerView",
+      "physical_abi": "stack receiver / RET 4",
+      "disposition": "authored",
+      "source": null,
+      "target_code_sha256": "b9bb3bdc04047b8cab1506b12b88a3f8bf420d9bad787eb30e4b1c30b75076a1",
+      "dense_decode": 412,
+      "ghidra_body_bytes": 412,
+      "tail": "ret 4",
+      "suffix_cc": true,
+      "external_control_count": 19
+    },
+    {
+      "address": "0x0040A340",
+      "size": 16,
+      "span_end": "0x0040A34F",
+      "name": "ScriptViewerLoadThread",
+      "physical_abi": "no live-in argument / RET",
+      "disposition": "indeterminate",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "87cb90376e8a1e6842c3ad8e8c53e93e710cbf546f775a1ab44dd89d43708f7c",
+      "dense_decode": 16,
+      "ghidra_body_bytes": 16,
+      "tail": "ret ",
+      "suffix_cc": false,
+      "external_control_count": 1
+    },
+    {
+      "address": "0x0040A350",
+      "size": 101,
+      "span_end": "0x0040A3B4",
+      "name": "ScriptViewerView::InitializeManagers",
+      "physical_abi": "internal ESI receiver / RET",
+      "disposition": "authored",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "e67be468b71606df023888e5568c4fc70754effcc926f5cb6553685ed036a6ce",
+      "dense_decode": 101,
+      "ghidra_body_bytes": 101,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 9
+    },
+    {
+      "address": "0x0040A3C0",
+      "size": 67,
+      "span_end": "0x0040A402",
+      "name": "ScriptViewerCreate",
+      "physical_abi": "no argument / RET",
+      "disposition": "authored",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "b0c55a4c255b15c44f97e3f82239113df7c857deee6a344a7dc6147fa6b5dd5c",
+      "dense_decode": 67,
+      "ghidra_body_bytes": 67,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 5
+    },
+    {
+      "address": "0x0040A410",
+      "size": 27,
+      "span_end": "0x0040A42A",
+      "name": "ScriptViewerScalarDeleteCandidate",
+      "physical_abi": "internal ESI receiver + stack flags / RET 4",
+      "disposition": "indeterminate",
+      "source": null,
+      "target_code_sha256": "7d49eedd3f9cac1dd6683681d4b24be61252bae1f1b3e56d0c92936f1b610989",
+      "dense_decode": 27,
+      "ghidra_body_bytes": 27,
+      "tail": "ret 4",
+      "suffix_cc": true,
+      "external_control_count": 2
+    },
+    {
+      "address": "0x0040A430",
+      "size": 18,
+      "span_end": "0x0040A441",
+      "name": "ScriptViewerReleaseCandidate",
+      "physical_abi": "internal ESI receiver / RET",
+      "disposition": "indeterminate",
+      "source": null,
+      "target_code_sha256": "871ad89be29eb85985303f271ff838e11d8c20fe9865bbf8c27adac6e4f2f7b6",
+      "dense_decode": 18,
+      "ghidra_body_bytes": 18,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 2
+    },
+    {
+      "address": "0x0040A450",
+      "size": 1251,
+      "span_end": "0x0040A932",
+      "name": "ScriptViewerView::Update",
+      "physical_abi": "stack receiver / RET 4",
+      "disposition": "authored",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "6b13d5576c3da399e189a5139dd813fe1bfd4086ebddbbb809fe35939420a2cd",
+      "dense_decode": 1251,
+      "ghidra_body_bytes": 1251,
+      "tail": "ret 4",
+      "suffix_cc": true,
+      "external_control_count": 34
+    },
+    {
+      "address": "0x0040ABE0",
+      "size": 7,
+      "span_end": "0x0040ABE6",
+      "name": "ScriptViewerUpdateCallback",
+      "physical_abi": "ECX context / RET",
+      "disposition": "indeterminate",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "6baad8528fc2dc41e9049f9346c1a5b17a840a06422c8511a3783bef16db688e",
+      "dense_decode": 7,
+      "ghidra_body_bytes": 7,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 1
+    },
+    {
+      "address": "0x0040ABF0",
+      "size": 10,
+      "span_end": "0x0040ABF9",
+      "name": "ScriptViewerDrawCallback",
+      "physical_abi": "ECX context / RET",
+      "disposition": "indeterminate",
+      "source": "src/ScriptViewer.cpp",
+      "target_code_sha256": "2ac8ca9adf4d5ee96b312b5684b1a9755b12a58306f9e60402926ec7d03f920c",
+      "dense_decode": 10,
+      "ghidra_body_bytes": 10,
+      "tail": "ret ",
+      "suffix_cc": true,
+      "external_control_count": 1
+    }
+  ],
+  "total_new_bytes": 2371,
+  "authored_new_bytes": 2293,
+  "ghidra_mapped_region": {
+    "start": "0x00409EB0",
+    "end": "0x0040ABFF",
+    "size": 3408,
+    "sha256": "f400dd110f74e101f5ce82aeaeb87a2e3a37baf44fe9e53a9254b6d839cf2f40",
+    "equals_canonical_target": true,
+    "before_after_equal": true
+  },
+  "selected_control_edges": [
+    {
+      "site": "0x0040A1C5",
+      "kind": "call",
+      "target": "0x00409EB0"
+    },
+    {
+      "site": "0x0040A347",
+      "kind": "call",
+      "target": "0x0040A350"
+    },
+    {
+      "site": "0x0040A3D4",
+      "kind": "call",
+      "target": "0x0040A040"
+    },
+    {
+      "site": "0x0040A3DF",
+      "kind": "call",
+      "target": "0x0040A130"
+    },
+    {
+      "site": "0x0040A3ED",
+      "kind": "call",
+      "target": "0x0040A1A0"
+    },
+    {
+      "site": "0x0040A411",
+      "kind": "call",
+      "target": "0x0040A1A0"
+    },
+    {
+      "site": "0x0040A435",
+      "kind": "call",
+      "target": "0x0040A1A0"
+    },
+    {
+      "site": "0x0040A655",
+      "kind": "call",
+      "target": "0x00409E20"
+    },
+    {
+      "site": "0x0040A685",
+      "kind": "call",
+      "target": "0x00409E20"
+    },
+    {
+      "site": "0x0040A749",
+      "kind": "call",
+      "target": "0x00425090"
+    },
+    {
+      "site": "0x0040A7B0",
+      "kind": "call",
+      "target": "0x00409EB0"
+    },
+    {
+      "site": "0x0040ABE1",
+      "kind": "call",
+      "target": "0x0040A450"
+    },
+    {
+      "site": "0x0040ABF3",
+      "kind": "call",
+      "target": "0x0040A940"
+    }
+  ]
+}

@@ -95,6 +95,7 @@ def main() -> int:
         run("Validate player shot update lifetimes", [sys.executable, "scripts/test-player-shot-update.py"])
         run("Validate player movement ANM identities", [sys.executable, "scripts/test-player-movement-anm.py"])
         run("Validate result/replay-name controller", [sys.executable, "scripts/test-result-menu-state.py"])
+        run("Validate script browser state and event order", [sys.executable, "scripts/test-script-viewer-update.py"])
         run("Validate result-transition and scaled-sound baseline", [sys.executable, "scripts/test-result-transition.py"])
         run("Validate transition-effect logical baseline", [sys.executable, "scripts/transition_effect_host_test.py", "--out", "build/host-tests/transition-effect-ci"])
         run("Validate transition-effect pin portability", [sys.executable, "scripts/transition_effect_eol_test.py", "--out", "build/host-tests/transition-effect-eol-ci"])

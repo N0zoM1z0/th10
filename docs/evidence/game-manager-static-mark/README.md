@@ -23,6 +23,10 @@ and larger gap require fresh inventory/body-range review; they are not new
 authored or exact credit in this checkpoint. The reference's `game/eclview/`
 sources supply hypotheses for this next major-owner route.
 
+Follow-up: the [script browser review](../script-viewer/README.md) confirms
+both additional calls inside the newly inventoried 1,251-byte update owner.
+The paragraph above records the narrower evidence available at this checkpoint.
+
 The emitted helper appears in the MAP's **Static symbols** section rather
 than its public-symbol list. The existing `owner_visibility = "static"`
 lane independently requires the exact decorated symbol and producer object,

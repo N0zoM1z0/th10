@@ -1,0 +1,270 @@
+{
+  "date_utc": "2026-10-19T04:12:15.361370+00:00",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "b3537ca59569083aa98c844f0b7494b737d7dd0e",
+  "claim": "bounded complete-owner codegen; authored origin retained independently",
+  "authored_exact_bytes_added": 426,
+  "indeterminate_exact_bytes_added": 7,
+  "total_new_inventory_bytes": 2371,
+  "authored_inventory_bytes_added": 2293,
+  "source_sha256": {
+    "src/ScriptViewer.cpp": "e0a419dd8d0dd081e549565330b850ebfe776bdb3f67cb31306e12011359c648",
+    "src/ScriptViewer.hpp": "432f209f1b957115fda62ed66e793c9bf71b75ea083a461a7f0ceda362a8b9bf",
+    "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
+    "src/Chain.cpp": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
+    "src/FrontEnd.cpp": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+    "src/Player.cpp": "a5a59afec4ebc184109e2afc5fdd19489029eff15279b349ac4d586d722a4407",
+    "src/Gui.cpp": "f65128ba8708668362dc6f6cb98a30afdd7faf0e20431fe312e1375147f1c251"
+  },
+  "compiler": {
+    "compiler_sha256": "333254d73ee602f6ec14b00e9bf40f533a1b181429943e3634971642af00c9f7",
+    "c_frontend_sha256": "a47ff094f591ac85777f568c44f2d0c9e94295184faa1fb785bbc6f89d887f07",
+    "cpp_frontend_sha256": "42fd57f25e0b536b0b7a817f4ab3ec0aa23fcc5f8e52104ad6f12de167ad2cfa",
+    "optimizer_sha256": "7a6f6d8e4da7b518384ff78f2c41028805d3a1d1a40dc2cc857c391ec81763f5",
+    "linker_sha256": "3e6526234cce5ce962d22f267f84f01d3c540b8ee9129c53f127c5e124fa2b20",
+    "pdb_backend_sha256": "e952861ef44831b5cfaf44cc33dcfadcb77b550a3d1e27337e4727c07d332051",
+    "resource_compiler_sha256": "139597123a5daa11148da6704c779152dc6b693bde65222e6855639164aaf9bb",
+    "resource_converter_sha256": "c08ec0a3053434a0ba017d50cf1fcd8a3bcc32cb67e43a2aefe3c01a41eedbf7"
+  },
+  "graph": {
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/Chain.cpp",
+      "src/FrontEnd.cpp",
+      "src/Player.cpp",
+      "src/Gui.cpp"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+  },
+  "cold_proofs": {
+    "independent_diagnostic": {
+      "image_sha256": "7d7fb39c997f563024c8d28b42c0d9c71f6d79ad5c1aed75034dff1b2fec02af",
+      "pdb_guid": "54ed096c102e0c4aa02742bb34798ba0",
+      "pdb_age": 1,
+      "functions": [
+        {
+          "unit": "script-viewer-constructor",
+          "candidate_address": "0x00401060",
+          "size": 234,
+          "code_sha256": "310390c999eeb202b004cf561e2d340932c07323661a96ba45f0ac12b3f4ce26",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 234,
+          "linkage_fields": 2,
+          "normalization_complete": true,
+          "result": "exact"
+        },
+        {
+          "unit": "script-viewer-register-tasks",
+          "candidate_address": "0x00401150",
+          "size": 106,
+          "code_sha256": "e07fcf3792d27141bdaa1b025a681a88d0d903c6cc818088504222dfadab8804",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 106,
+          "linkage_fields": 12,
+          "normalization_complete": true,
+          "result": "exact"
+        },
+        {
+          "unit": "script-viewer-clear-names",
+          "candidate_address": "0x00401380",
+          "size": 86,
+          "code_sha256": "eff733901441e49b5a2d7e3efbf79d14fa9dc8c8dc9b14d30a4af47ecc4e2fc4",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 86,
+          "linkage_fields": 2,
+          "normalization_complete": true,
+          "result": "exact"
+        },
+        {
+          "unit": "script-viewer-update-callback",
+          "candidate_address": "0x00401900",
+          "size": 7,
+          "code_sha256": "e9337c66e7ff1264ee9bbea8b184dc6ca4bd7aaea712b983be714c9b95c89aba",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 7,
+          "linkage_fields": 1,
+          "normalization_complete": true,
+          "result": "exact"
+        }
+      ]
+    },
+    "canonical": {
+      "image_sha256": "518c0b803cb3baa384fc5173978540fbb25b64dc417f6af07aeb3ffe8014d24f",
+      "pdb_guid": "68383217ac79624eb30a5357cd9c559e",
+      "pdb_age": 1,
+      "functions": [
+        {
+          "unit": "script-viewer-constructor",
+          "candidate_address": "0x00401060",
+          "size": 234,
+          "code_sha256": "310390c999eeb202b004cf561e2d340932c07323661a96ba45f0ac12b3f4ce26",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 234,
+          "linkage_fields": 2,
+          "normalization_complete": true,
+          "result": "exact"
+        },
+        {
+          "unit": "script-viewer-register-tasks",
+          "candidate_address": "0x00401150",
+          "size": 106,
+          "code_sha256": "e07fcf3792d27141bdaa1b025a681a88d0d903c6cc818088504222dfadab8804",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 106,
+          "linkage_fields": 12,
+          "normalization_complete": true,
+          "result": "exact"
+        },
+        {
+          "unit": "script-viewer-clear-names",
+          "candidate_address": "0x00401380",
+          "size": 86,
+          "code_sha256": "eff733901441e49b5a2d7e3efbf79d14fa9dc8c8dc9b14d30a4af47ecc4e2fc4",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 86,
+          "linkage_fields": 2,
+          "normalization_complete": true,
+          "result": "exact"
+        },
+        {
+          "unit": "script-viewer-update-callback",
+          "candidate_address": "0x00401900",
+          "size": 7,
+          "code_sha256": "e9337c66e7ff1264ee9bbea8b184dc6ca4bd7aaea712b983be714c9b95c89aba",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 3,
+          "decoded_bytes": 7,
+          "linkage_fields": 1,
+          "normalization_complete": true,
+          "result": "exact"
+        }
+      ]
+    }
+  },
+  "same_image_controls": {
+    "frontend-cursor-move": {
+      "result": "exact",
+      "size": 128,
+      "decoded_bytes": 128,
+      "normalization_complete": true,
+      "raw_equal": true
+    },
+    "frontend-input-repeated": {
+      "result": "exact",
+      "size": 33,
+      "decoded_bytes": 33,
+      "normalization_complete": true,
+      "raw_equal": true
+    }
+  },
+  "negative_control": {
+    "constructor": "Rejected four ordinary bytes from reversed chained worker-zero assignment order.",
+    "registration": "Structural equality masked reversed 0x474C7C/0x474C80 writes; strict symbol binding rejected field offset0x14. Explicit ordered stores pass."
+  },
+  "larger_and_open_candidates": {
+    "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ": {
+      "candidate_size": 68,
+      "target_address": "0x0040A3C0",
+      "target_size": 67,
+      "raw_matched_bytes": 35,
+      "matched_comparable_bytes": 30,
+      "comparable_bytes": 47,
+      "normalization_complete": true,
+      "result": "mismatch"
+    },
+    "?InitializeManagers@ScriptViewerView@@QAEHXZ": {
+      "candidate_size": 153,
+      "target_address": "0x0040A350",
+      "target_size": 101,
+      "raw_matched_bytes": 6,
+      "matched_comparable_bytes": 3,
+      "comparable_bytes": 57,
+      "normalization_complete": true,
+      "result": "mismatch"
+    },
+    "?ScriptViewerLoadThread@@YAHXZ": {
+      "candidate_size": 16,
+      "target_address": "0x0040A340",
+      "target_size": 16,
+      "raw_matched_bytes": 6,
+      "matched_comparable_bytes": 5,
+      "comparable_bytes": 8,
+      "normalization_complete": true,
+      "result": "mismatch"
+    },
+    "?ScriptViewerSuspendPlayer@@YAXPAUPlayer@@@Z": {
+      "candidate_size": 39,
+      "target_address": "0x0040A010",
+      "target_size": 36,
+      "raw_matched_bytes": 32,
+      "matched_comparable_bytes": 30,
+      "comparable_bytes": 32,
+      "normalization_complete": true,
+      "result": "mismatch"
+    },
+    "?Update@ScriptViewerView@@QAEHXZ": {
+      "candidate_size": 1280,
+      "target_address": "0x0040A450",
+      "target_size": 1251,
+      "raw_matched_bytes": 166,
+      "matched_comparable_bytes": 141,
+      "comparable_bytes": 919,
+      "normalization_complete": true,
+      "result": "mismatch"
+    }
+  },
+  "limits": [
+    "Original source names, declarations, conceptual ownership and production TU remain unknown.",
+    "No full-cohort replay or new Factory acceptance is claimed.",
+    "Native product link, Windows runtime, semantic gate and portability remain open.",
+    "Large Update and InitializeManagers owners remain nonexact; no subset credit."
+  ],
+  "resource_policy": {
+    "native_jobs": 1,
+    "nice": 10,
+    "ghidra_heap_mib": 768,
+    "ghidra_processors": 2,
+    "soft_artifact_budget_mib": 256
+  },
+  "ghidra_mapped_region": {
+    "start": "0x00409EB0",
+    "end": "0x0040ABFF",
+    "size": 3408,
+    "sha256": "f400dd110f74e101f5ce82aeaeb87a2e3a37baf44fe9e53a9254b6d839cf2f40",
+    "equals_canonical_target": true,
+    "before_after_equal": true
+  }
+}

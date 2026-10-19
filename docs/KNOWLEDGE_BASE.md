@@ -2145,3 +2145,49 @@ authored bytes and one source mapping without changing the origin denominator.
 The retained diagnostic static copy does not close the parent's call topology;
 GameManagerInitialize and production/runtime ownership remain nonexact/open.
 See [the bounded evidence and negative ECL/Bullet controls](evidence/game-manager-static-mark/README.md).
+
+### 2026-10-19: script browser inventory and native owners
+
+Fresh local Ghidra temporary functions and complete pinned-target decoding
+close 13 missing boundaries around the debug script browser: 2,371 bytes,
+of which 2,293 are reviewed authored game code. Five callback/delete adapters
+retain indeterminate origin. The temporary metadata is rolled back under
+headless readOnly; target bytes do not change. The existing global boundary
+check differs in historical evidence text at 0x401100; prior ledger rows were
+preserved rather than rewritten. See [the per-owner evidence](evidence/script-viewer/README.md).
+
+Natural `ScriptViewerView` source reproduces complete ClearScriptNames 86 at
+0x409EB0, constructor 234 at 0x40A040, RegisterTasks 106 at 0x40A130 and update
+callback 7 at 0x40ABE0. Two independent cold pinned `/GL /GS` links pass all
+433 owned bytes and all 17 target-bound fields: **426 authored exact bytes**
+and 7 exact bytes whose origin remains unknown. The shared diagnostic also
+passes existing cursor Move 128 and input-mask 33 controls. Registration uses
+flags OR 2 and priorities 5/39. A masked structural match with reversed stage
+global writes was rejected by strict symbol binding before promotion.
+
+Constructor offset 0x10 is a worker-shaped member; Start/Stop establish thread
+handle +4, thread ID +8, stop request +12, running flag +16 and entry +0x18. Its
+four initial zero stores precede the three cursor constructors, embedded ANM
+constructor and whole 0x688 clear. First-word bit 1 and final-word flags +0x684
+are separate storage. Fresh control-flow review confirms 0x40A655/0x40A685
+calling MarkGameChains and 0x40A749 calling the Player release candidate,
+correcting database-limited caller observations without changing origin.
+
+The complete Update 1251 source candidate emits 1280 bytes; manager
+initializer 153/101, creator 68/67, loader 16/16 and suspension 39/36 remain
+nonexact. Current RebuildPlayerOptions cleanup differs on the latter edge;
+its ABI was not falsified to obtain equality. Host fixtures exercise actual
+maintained browser bodies and independently reviewed event/receiver/input
+contracts, without claiming Windows runtime. The destructor 412, Draw 647,
+missing release entries, data owners and product closure remain open. The
+reference contributes MIT-licensed source hypotheses; local target and native
+Oracles alone establish the accepted facts.
+
+The next browser dependency at `0x405ED0` is a complete 45-byte Bullet pool
+reset. It passes manager `+0x3E0B50` to the exact
+`AnmRenderManagerView::MarkLoadedVmsForDeletion @0x4493E0`, clears exactly
+`0xF82BC` dwords from `+0x60`, stores that array address at `+0x10`, and sets
+word `+0x3E07A6` to 5. Existing `BulletManagerView` and `BulletRuntimeView`
+assertions resolve these to all 2,001 records and `bullets[2000].state` at
+record offset `0x446`. This is target/source-layout evidence only; no new
+implementation or exact credit is registered for this dependency.

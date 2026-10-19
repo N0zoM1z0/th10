@@ -977,3 +977,13 @@ StageCreateTransitionEffect
 TransitionEffectView::Initialize
 TransitionEffectView::Cleanup
 MarkGameChains
+ScriptViewerView::ClearScriptNames
+ScriptViewerSuspendPlayer
+ScriptViewerView::ScriptViewerView
+ScriptViewerView::RegisterTasks
+ScriptViewerLoadThread
+ScriptViewerView::InitializeManagers
+ScriptViewerCreate
+ScriptViewerView::Update
+ScriptViewerUpdateCallback
+ScriptViewerDrawCallback

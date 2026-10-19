@@ -50,13 +50,25 @@ scratch paths, or build hashes into this file.
   upstream regions are not exact C++ credit here.
 - The pre-existing untracked `docs/evidence/d3d-adapter-format/` experiment
   remains untouched and unadopted. Read live progress from `PROGRESS.md`.
-- Next major-owner route: review the inventory gap `0x0040A006..0x0040A93F`.
-  Raw target scanning finds possible calls to the new exact helper at
-  `0x0040A655/0x0040A685`, absent from the current Ghidra xref result.
-  Code at `0x0040A010` ends RET at `0x0040A033`, then CC padding precedes
-  `0x0040A040`. Export fresh Ghidra architecture/body ranges before any
-  inventory change; use reference `game/eclview/` only as hypotheses.
-  The gap's code, origins, extents and effect on the denominator stay open.
+- The script-browser gap is now reviewed: 13 new entries, 2,371 total bytes,
+  including 2,293 authored bytes and five origin-indeterminate adapters.
+  Temporary local Ghidra function metadata, rolled back under `-readOnly`,
+  agrees with complete target decoding. Existing global boundary-check evidence
+  text differs at `0x401100`; no broad ledger regeneration was adopted.
+  See [the script-browser evidence](evidence/script-viewer/README.md).
+- ScriptViewer constructor 234, RegisterTasks 106, ClearScriptNames 86 and
+  update callback 7 pass two cold native links and all 17 bound fields:
+  **426 new authored exact bytes**, plus seven origin-indeterminate exact bytes.
+  Registration ORs 2, correcting the reference candidate's OR 1. Worker fields
+  were reviewed against Start/Stop; the +8 field is a thread ID, not an event.
+  Target calls at `0x40A655/0x40A685` to MarkGameChains are confirmed; the
+  previous no-caller claim for Player release 0x425090 is corrected by 0x40A749.
+- Continue the larger ScriptViewer owners: Update remains 1280/1251,
+  InitializeManagers 153/101, creator 68/67, load callback 16/16 differing,
+  suspension 39/36 with unresolved RebuildPlayerOptions cleanup ABI.
+  Recover the destructor 412 and Draw 647; review missing manager release
+  entries and connect real callee graphs before changing ABI declarations.
+  No other source TU changed; no historical full-cohort native replay is claimed.
 
 ## Validated large-owner checkpoints (not exact claims)
 
