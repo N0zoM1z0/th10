@@ -360,6 +360,20 @@ def compare_unit(name: str) -> dict[str, object]:
                     f"local linked field {key!r} leaves the candidate contribution: "
                     f"target={expected_candidate_address:#x}"
                 )
+            target_base = int(unit["target_address"])
+            semantic_target = int(field["target"])
+            if not target_base <= semantic_target < target_base + compared_size:
+                raise ValueError(
+                    f"local linked field {key!r} leaves the target contribution: "
+                    f"target={semantic_target:#x}"
+                )
+            candidate_offset = expected_candidate_address - candidate_address
+            target_offset = semantic_target - target_base
+            if candidate_offset != target_offset:
+                raise ValueError(
+                    f"local linked field {key!r} changes its destination offset: "
+                    f"candidate={candidate_offset:#x} target={target_offset:#x}"
+                )
             linked_symbol = "<local>"
         elif "static_source" in field:
             if observed.get("instruction") != "call":

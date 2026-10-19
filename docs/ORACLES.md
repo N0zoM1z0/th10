@@ -89,6 +89,14 @@ of that bounded function in the declared LTCG context; it does not make the
 anchor image runnable or establish production ownership, translation-unit
 partition, link order, data ownership, or whole-product closure.
 
+An explicitly local address must preserve its destination offset within the
+compared contribution. After accounting for the declared addend, both semantic
+bases must stay inside their respective contributions and have equal relative
+offsets. Being internal does not authorize normalizing a different code label,
+table slot or data position. The synthetic swapped-table and shifted-base
+controls in `scripts/test-linked-local-fields.py` guard this requirement.
+See the [easing extent and local-field audit](evidence/easing-tail-ownership/README.md).
+
 A direct REL32 call to a static callee may explicitly declare both
 `static_source` and `static_size`. This opt-in derives the selected object from
 the unit's source/support list and uses the existing qualified MAP/PDB owner

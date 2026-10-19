@@ -1,0 +1,474 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "address": "0x44c350",
+  "size": 576,
+  "span_end": "0x44c58f",
+  "code_size": 509,
+  "alignment_size": 3,
+  "table_size": 64,
+  "whole_sha256": "d7c59f0eece31d014aad2548683ef9f56c5daf64422eeaf3e247f33f6ab76797",
+  "code_sha256": "1799ade83767d70f47d9f5e6dd0c937ad0c3c2bc4768d78969e488b8d11ffc1b",
+  "alignment_sha256": "53e090edb4fca0626d458dbefa0ae1bcbffc511ed159f1a70641610ad0d9a200",
+  "table_sha256": "d9f909bdf67e64afa67e3dffef37b08535d81ca80e0e02ff1b63b2778247d343",
+  "selector": "EAX mode minus1, unsigned bound15, index scale4; 16 entries; 7/8/default use the linear return",
+  "returns": {
+    "count": 17,
+    "pop_bytes": 8
+  },
+  "table_destinations": [
+    {
+      "slot": 0,
+      "address": "0x44c369",
+      "code_offset": 25
+    },
+    {
+      "slot": 1,
+      "address": "0x44c383",
+      "code_offset": 51
+    },
+    {
+      "slot": 2,
+      "address": "0x44c3a7",
+      "code_offset": 87
+    },
+    {
+      "slot": 3,
+      "address": "0x44c370",
+      "code_offset": 32
+    },
+    {
+      "slot": 4,
+      "address": "0x44c38c",
+      "code_offset": 60
+    },
+    {
+      "slot": 5,
+      "address": "0x44c3b2",
+      "code_offset": 98
+    },
+    {
+      "slot": 6,
+      "address": "0x44c54a",
+      "code_offset": 506
+    },
+    {
+      "slot": 7,
+      "address": "0x44c54a",
+      "code_offset": 506
+    },
+    {
+      "slot": 8,
+      "address": "0x44c3cf",
+      "code_offset": 127
+    },
+    {
+      "slot": 9,
+      "address": "0x44c445",
+      "code_offset": 245
+    },
+    {
+      "slot": 10,
+      "address": "0x44c49f",
+      "code_offset": 335
+    },
+    {
+      "slot": 11,
+      "address": "0x44c404",
+      "code_offset": 180
+    },
+    {
+      "slot": 12,
+      "address": "0x44c471",
+      "code_offset": 289
+    },
+    {
+      "slot": 13,
+      "address": "0x44c4e2",
+      "code_offset": 402
+    },
+    {
+      "slot": 14,
+      "address": "0x44c537",
+      "code_offset": 487
+    },
+    {
+      "slot": 15,
+      "address": "0x44c542",
+      "code_offset": 498
+    }
+  ],
+  "target_pe_base_relocation_directory": [
+    0,
+    0
+  ],
+  "target_base_relocation_count": 0,
+  "field_binding_basis": "Target instruction operands, complete bounded selector/table values, all destinations validated as instruction starts. Target has no PE base relocation directory; no target relocation evidence is claimed. Diagnostic candidate fields separately use its PE base relocations.",
+  "all_destinations_are_instruction_starts": true,
+  "all_target_fields": [
+    {
+      "offset": 21,
+      "type": "DIR32",
+      "target": "0x44c550",
+      "local": true
+    },
+    {
+      "offset": 34,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 44,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 62,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 78,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 100,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 118,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 131,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 148,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 157,
+      "type": "DIR32",
+      "target": "0x470b08",
+      "local": false
+    },
+    {
+      "offset": 167,
+      "type": "DIR32",
+      "target": "0x470b08",
+      "local": false
+    },
+    {
+      "offset": 173,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 184,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 197,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 207,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 213,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 222,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 232,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 238,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 249,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 268,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 277,
+      "type": "DIR32",
+      "target": "0x470b08",
+      "local": false
+    },
+    {
+      "offset": 293,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 306,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 320,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 339,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 360,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 369,
+      "type": "DIR32",
+      "target": "0x470b08",
+      "local": false
+    },
+    {
+      "offset": 387,
+      "type": "DIR32",
+      "target": "0x470b08",
+      "local": false
+    },
+    {
+      "offset": 393,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 406,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 419,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 437,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 443,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 454,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 472,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 478,
+      "type": "DIR32",
+      "target": "0x470b0c",
+      "local": false
+    },
+    {
+      "offset": 491,
+      "type": "DIR32",
+      "target": "0x470b04",
+      "local": false
+    },
+    {
+      "offset": 502,
+      "type": "DIR32",
+      "target": "0x470afc",
+      "local": false
+    },
+    {
+      "offset": 512,
+      "type": "DIR32",
+      "target": "0x44c369",
+      "local": true
+    },
+    {
+      "offset": 516,
+      "type": "DIR32",
+      "target": "0x44c383",
+      "local": true
+    },
+    {
+      "offset": 520,
+      "type": "DIR32",
+      "target": "0x44c3a7",
+      "local": true
+    },
+    {
+      "offset": 524,
+      "type": "DIR32",
+      "target": "0x44c370",
+      "local": true
+    },
+    {
+      "offset": 528,
+      "type": "DIR32",
+      "target": "0x44c38c",
+      "local": true
+    },
+    {
+      "offset": 532,
+      "type": "DIR32",
+      "target": "0x44c3b2",
+      "local": true
+    },
+    {
+      "offset": 536,
+      "type": "DIR32",
+      "target": "0x44c54a",
+      "local": true
+    },
+    {
+      "offset": 540,
+      "type": "DIR32",
+      "target": "0x44c54a",
+      "local": true
+    },
+    {
+      "offset": 544,
+      "type": "DIR32",
+      "target": "0x44c3cf",
+      "local": true
+    },
+    {
+      "offset": 548,
+      "type": "DIR32",
+      "target": "0x44c445",
+      "local": true
+    },
+    {
+      "offset": 552,
+      "type": "DIR32",
+      "target": "0x44c49f",
+      "local": true
+    },
+    {
+      "offset": 556,
+      "type": "DIR32",
+      "target": "0x44c404",
+      "local": true
+    },
+    {
+      "offset": 560,
+      "type": "DIR32",
+      "target": "0x44c471",
+      "local": true
+    },
+    {
+      "offset": 564,
+      "type": "DIR32",
+      "target": "0x44c4e2",
+      "local": true
+    },
+    {
+      "offset": 568,
+      "type": "DIR32",
+      "target": "0x44c537",
+      "local": true
+    },
+    {
+      "offset": 572,
+      "type": "DIR32",
+      "target": "0x44c542",
+      "local": true
+    }
+  ],
+  "overlapping_ledger_owners": [],
+  "next_separate_code_body": {
+    "address": "0x0044C590",
+    "reachable_size": 57,
+    "ledger_entry_added": false
+  },
+  "ledger_change": {
+    "old_size": 509,
+    "new_size": 576,
+    "added_owned_bytes": 67,
+    "new_exact_bytes": 0,
+    "origin_changed": false
+  },
+  "ghidra_tail_references": "Only incoming tail reference in reviewed0x44C54D..0x44C58F is indirect-jump data reference from0x44C362 to0x44C550; full mapped.text verified before/after, metadata rollback.",
+  "fresh_architecture_body_ranges_sha256": "f8fde87c916285a50e28dd24c3a1454846a064d25ef7a606581dc8ed43334e69",
+  "ghidra_review_sha256": "b1b911d19fcf40a4e1e06788c0fea4c192bca8d096b518fa3a026d98268ec1b8",
+  "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+  "boundary_rows_changed_only": [
+    "config/functions.csv:0x0044C350",
+    "config/function-boundaries.csv:0x0044C350"
+  ],
+  "whole_file_tail_literal_scan": {
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "range": [
+      "0x0044C54D",
+      "0x0044C58F"
+    ],
+    "scope": "Every exact little-endian4-byte absolute value in the complete original PE file; absence does not exclude computed references.",
+    "references": [
+      {
+        "literal_address": "0x44c550",
+        "file_offset": "0x4b765"
+      }
+    ]
+  }
+}

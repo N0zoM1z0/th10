@@ -2461,3 +2461,39 @@ The strict transition fixture's extracted timer/viewport/random dependencies
 are unchanged; only reviewed easing declaration/definition pins are recertified.
 Original source/TU ownership, whole product/runtime, semantic and port closure
 remain unknown.
+
+
+## Easing owned table and local-link Oracle checkpoint (2026-10-19)
+
+The [complete ownership review](evidence/easing-tail-ownership/README.md)
+supersedes the509-byte code-only boundary of CalculateAnmInterpolation.
+DEC EAX, unsigned bound15 and indexed scale4 establish all16 entries at44C550.
+Each points to an instruction start in the509-byte body. Code, three internal
+alignment bytes and64 table bytes form576 owned bytes through44C58F; the next
+separately decoded57-byte body starts44C590. Only the indexed jump references
+the reviewed tail. The target has no PE relocation directory: target binding
+uses actual operands/table values, not invented target relocation records.
+A fresh attested architecture export confirms the reachable509-byte body;
+physical ownership remains a separate claim. Only the two affected ledger rows
+change, adding67 owned authored denominator bytes with zero new exact credit.
+Origin and source dispositions remain unchanged.
+
+A causal support-only `/Os` probe, with unchanged source, real Stage Update
+entry and preserved /GL /GS, produces560 complete bytes:494 code +2 alignment
++64 table. It coalesces all returns to one RET8 versus the target17. Default
+source remains612/576 and Fog691/688; the override is not adopted. This size
+policy is closed without further flags or source-lifetime sweeps.
+
+Preparing full table replay exposed an Oracle false positive: local DIR32
+fields were accepted whenever their destinations stayed inside the candidate.
+A synthetic complete24-byte PE/MAP/PDB contribution, relocated between target
+and candidate, still returned24/24 exact after exchanging two table entries
+under comparator06106ea. The corrected comparator requires both semantic bases
+inside their compared extents and equal contribution-relative destination
+offsets after accounting for addends, before rewriting. Five end-to-end controls
+pass normally and under Python-O; existing eight context controls also pass.
+All three existing canonical units using local fields revalidate2704/2704
+bytes/all60 fields, including all18 internal destinations, in retained images.
+No native historical cohort is rebuilt and no accepted exact state changes.
+Original physical compiler partition and native product/runtime/semantic/port
+closure remain open.

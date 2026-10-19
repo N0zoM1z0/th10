@@ -11,7 +11,7 @@ inventory is provisional; reviewed boundary and origin states are counted below.
 | Boundary needs focused review | 0 |
 | Origin review pending | 0 |
 | Confirmed authored functions | 722 |
-| Confirmed authored code bytes | 268,497 |
+| Confirmed authored code bytes | 268,564 |
 | Classified exclusions | 518 |
 | Reviewed, origin indeterminate | 512 |
 | Source-present mappings | 1,008 |

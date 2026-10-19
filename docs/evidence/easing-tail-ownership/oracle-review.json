@@ -1,0 +1,249 @@
+{
+  "schema": 1,
+  "base_commit": "06106ea",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_credit": 0,
+  "guard": "Account for declared addend; require candidate and target semantic bases inside their compared contributions with identical relative offsets, before field rewrite.",
+  "false_positive": {
+    "base_commit": "06106ea",
+    "before_comparator_sha256": "7962e7b95c77834e19663db3277d0508f9fc143afc6f813553b6afc601430604",
+    "after_comparator_sha256": "91d99cbe2aa16da5ea7aa97222deb2f30b2f0471f64cc075a81203bba2357bbd",
+    "fixture": "Synthetic real PE/MAP/PDB, candidate0x501000 versus target0x401000, complete24-byte contribution. MOV references table at+16, whose two local code destinations are+6 and+7. Only control-plane target identity is mocked.",
+    "baseline_result": "exact",
+    "old_result_after_swapping_table_entries": "exact",
+    "wrongly_reported_matched_bytes": 24,
+    "candidate_raw_equal": false,
+    "candidate_image_sha256": "ce6661d2d3a0ed2b65492b6ea34a8e18a4441310266206fab1a31918ec122b26",
+    "new_result": "rejected",
+    "new_rejection": "local linked field (16, 'DIR32', 4) changes its destination offset: candidate=0x7 target=0x6"
+  },
+  "synthetic_controls": {
+    "normal": {
+      "tests": 5,
+      "result": "passed"
+    },
+    "python_O": {
+      "tests": 5,
+      "result": "passed"
+    },
+    "existing_context_controls": {
+      "tests": 8,
+      "result": "passed"
+    }
+  },
+  "retained_artifact_scope": "Every canonical unit with any local field; no historical native builds in this audit. Existing cold proofs remain separate.",
+  "matched_bytes": 2704,
+  "all_field_count": 60,
+  "local_destination_count": 18,
+  "units": [
+    {
+      "unit": "enemy-spawn",
+      "result": "exact",
+      "size": 577,
+      "matched_bytes": 577,
+      "target_address": "0x0040CFB0",
+      "candidate_address": "0x0041E2A0",
+      "image": "build/match-linked/ScriptViewerLifecycle-cold-2/source.exe",
+      "image_sha256": "034cc1f4ae361da85069a85c6b42bcb98619cbd821ab299c33a60cb9137c37c0",
+      "pdb_guid": "8c0f669b789d1848b8307507e4c79d80",
+      "pdb_age": 1,
+      "normalization_complete": false,
+      "decoded_bytes": 576,
+      "data_spans": [
+        {
+          "offset": 576,
+          "width": 1
+        }
+      ],
+      "matched_compared_bytes": 577,
+      "compared_size": 577,
+      "total_fields": 12,
+      "local_fields": [
+        {
+          "field_offset": "0x177",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 524,
+          "target_destination_offset": 524
+        },
+        {
+          "field_offset": "0x17E",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 504,
+          "target_destination_offset": 504
+        },
+        {
+          "field_offset": "0x1F8",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 386,
+          "target_destination_offset": 386
+        },
+        {
+          "field_offset": "0x1FC",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 394,
+          "target_destination_offset": 394
+        },
+        {
+          "field_offset": "0x200",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 418,
+          "target_destination_offset": 418
+        },
+        {
+          "field_offset": "0x204",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 406,
+          "target_destination_offset": 406
+        },
+        {
+          "field_offset": "0x208",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 428,
+          "target_destination_offset": 428
+        }
+      ],
+      "target_extent_sha256": "6925286a2082e0faf4c2bf99f9d91c271be8dff95e6ba369a88a9f5c500babce",
+      "candidate_extent_sha256": "d6304e06f8191568eff3f74c64931de779f70f27fd74f866a4a92933293330d9"
+    },
+    {
+      "unit": "anm-texture-alpha-bleed",
+      "result": "exact",
+      "size": 1463,
+      "matched_bytes": 1463,
+      "target_address": "0x004465B0",
+      "candidate_address": "0x004037C0",
+      "image": "build/match-linked/AnmTextureAlphaBleed/source.exe",
+      "image_sha256": "9737d91d501f79d3cf30e70c0b36aa59cf2698b139f83063ef413ee1c019524b",
+      "pdb_guid": "4dbd4a61a21063469d27575c10950510",
+      "pdb_age": 1,
+      "normalization_complete": true,
+      "decoded_bytes": 1463,
+      "data_spans": [],
+      "matched_compared_bytes": 1463,
+      "compared_size": 1463,
+      "total_fields": 6,
+      "local_fields": [
+        {
+          "field_offset": "0x48",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 1436,
+          "target_destination_offset": 1436
+        },
+        {
+          "field_offset": "0x52",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 1420,
+          "target_destination_offset": 1420
+        },
+        {
+          "field_offset": "0x58C",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 86,
+          "target_destination_offset": 86
+        },
+        {
+          "field_offset": "0x590",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 488,
+          "target_destination_offset": 488
+        },
+        {
+          "field_offset": "0x594",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 942,
+          "target_destination_offset": 942
+        },
+        {
+          "field_offset": "0x598",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 1389,
+          "target_destination_offset": 1389
+        }
+      ],
+      "target_extent_sha256": "c6d51bbc01e98fa0c970e6348fd2e97d7d51abc5a033011664e29919f4484e0f",
+      "candidate_extent_sha256": "cff9b099262c7ade9d32995995cc938ea77e6af79006ab0129e677f73a01f240"
+    },
+    {
+      "unit": "script-viewer-draw",
+      "result": "exact",
+      "size": 664,
+      "matched_bytes": 664,
+      "target_address": "0x0040A940",
+      "candidate_address": "0x00401AD0",
+      "image": "build/match-linked/ScriptViewerLifecycle-cold-2/source.exe",
+      "image_sha256": "034cc1f4ae361da85069a85c6b42bcb98619cbd821ab299c33a60cb9137c37c0",
+      "pdb_guid": "8c0f669b789d1848b8307507e4c79d80",
+      "pdb_age": 1,
+      "normalization_complete": true,
+      "decoded_bytes": 663,
+      "data_spans": [],
+      "matched_compared_bytes": 664,
+      "compared_size": 664,
+      "total_fields": 42,
+      "local_fields": [
+        {
+          "field_offset": "0x44",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 648,
+          "target_destination_offset": 648
+        },
+        {
+          "field_offset": "0x288",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 168,
+          "target_destination_offset": 168
+        },
+        {
+          "field_offset": "0x28C",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 72,
+          "target_destination_offset": 72
+        },
+        {
+          "field_offset": "0x290",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 464,
+          "target_destination_offset": 464
+        },
+        {
+          "field_offset": "0x294",
+          "type": "DIR32",
+          "addend": 0,
+          "candidate_destination_offset": 396,
+          "target_destination_offset": 396
+        }
+      ],
+      "target_extent_sha256": "b9e9560edfacb7b2f8358c0353a31455a2a5b762c00111aeccbe94484a40eb03",
+      "candidate_extent_sha256": "71536f90c98063c290b782347298d87b6db30d65985ff8e6750b16c927b678ce"
+    }
+  ],
+  "full_audit_report_sha256": "a832b9871126467d0171745dbd405faa5d33398194f37994250700db587971dd",
+  "unit_manifest_sha256": "e10b981a2f6840c252e2fda0056d7a86531a117eeac02f145fc2306f31b847b9",
+  "current_comparator_sha256": "91d99cbe2aa16da5ea7aa97222deb2f30b2f0471f64cc075a81203bba2357bbd",
+  "regression_test_sha256": "f054fb85413019706be0f3713cb19bc042dffac0380fabdc412d23a6748effb7",
+  "public_ci": "passed; terminal exit0",
+  "public_ci_log_sha256": "58be865fa23da6c9f14f2bc1e3702b3dd1d1202b620138f041f8f02efd04e142",
+  "final_checks": {
+    "toolchain_check": "passed",
+    "tracking": "passed1752/1008/1162",
+    "generated_progress": "268564 authored owned bytes;59142 exact authored bytes",
+    "whitespace": "passed"
+  }
+}

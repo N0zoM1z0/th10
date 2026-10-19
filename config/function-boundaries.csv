@@ -1196,7 +1196,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0044C1C0,0x0044C1F7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0044C250,0x0044C253,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0044C2A0,0x0044C34A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
-0x0044C350,0x0044C54C,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 509/509, tail ret"
+0x0044C350,0x0044C58F,reviewed,high,target-easing-table-ownership-2026-10-19,"509-byte reachable code +3 internal alignment +64-byte16-entry self dispatch table; all destinations instruction starts inside code; table bound by DEC EAX/CMP15/index4; next separate body0x0044C590. Fresh local read-only Ghidra, target Capstone decode and current body-range export agree on code; no target base relocations claimed. Complete576-byte physical extent; no origin or exactness promotion."
 0x0044C5D0,0x0044C5ED,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x0044C600,0x0044C603,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0044C610,0x0044C610,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

@@ -111,12 +111,24 @@ scratch paths, or build hashes into this file.
   Fog remains691/688 with target frameD4/all14 calls; six LEA stack operands
   differ after diagnostic link/branch normalization. Easing agrees on40/40
   arithmetic instruction paths but remains612/576 including code/alignment/table;
-  shared-tail layout is open. Its ledger stays509 code bytes until complete
-  canonical ownership/replay is established. Named/temporary/common snapshots,
+  shared-tail layout is open. A subsequent [complete ownership review](evidence/easing-tail-ownership/README.md)
+  corrects its ledger to576 owned bytes:509 code +3 alignment +64 table.
+  This adds67 authored denominator bytes and zero exact bytes. One support-only
+  `/Os` control yields560 bytes and one RET8 instead of17; it is not adopted.
+  The linked Oracle now rejects altered internal destination offsets before
+  normalization; all three existing local-field units retain2704/2704 bytes,
+  all60 fields/all18 local destinations using retained PE/MAP/PDBs.
+  Named/temporary/common snapshots,
   result scopes, nonmember value-add and aggregate-return controls are closed;
   rejected APIs are restored. Do not repeat them or sweep ABI keywords/flags
   without new TH10 evidence. Rotate to another complete authored owner, or bring
   additional compiler-context/lifetime evidence for these remaining layouts.
+  One next large-owner route is StageExecuteScript's separately provisional
+  15-slot table (old diagnostics use1868 physical versus the1806 code-only row).
+  Review full target ownership first, then inspect the genuine StageCreate /
+  StageUpdateCallback graph in StageLifecycle.cpp as a possible private-ABI
+  carrier for Update and the dispatcher. Verify target entries/xrefs; add no
+  artificial callers or placeholder callback roots.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

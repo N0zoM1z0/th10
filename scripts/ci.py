@@ -44,6 +44,7 @@ def main() -> int:
         run("Validate LTCG entry identity guards", [sys.executable, "scripts/test-ltcg-entry.py"])
         run("Validate qualified static owners", [sys.executable, "scripts/test-static-owner-selection.py"])
         run("Validate linked profiles and static callees", [sys.executable, "scripts/test-linked-context.py"])
+        run("Validate internal linked destinations", [sys.executable, "scripts/test-linked-local-fields.py"])
         run("Validate replay payload order", [sys.executable, "scripts/test-replay-payload-order.py"])
         run("Validate Enemy dispatch case scopes", [sys.executable, "scripts/test-ecl-dispatch-table.py"])
         run("Validate lexical HUD message phase", [sys.executable, "scripts/test-gui-message-phase.py"])
