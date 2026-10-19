@@ -247,6 +247,9 @@ StageFogView StageFogView::operator-(const StageFogView &other) const
     return StageFogView(start - other.start, end - other.end,
         blue - other.blue, green - other.green, red - other.red, alpha - other.alpha);
 }
+#if defined(_MSC_VER)
+__declspec(noinline)
+#endif
 StageFogView StageFogView::operator+(const StageFogView &other) const
 {
     return StageFogView(start + other.start, end + other.end,
@@ -271,26 +274,28 @@ StageFogView *StageFogInterpolationView::Evaluate(
         {
             timer.SetCurrent(duration);
             duration = 0;
-            if (mode == ANM_INTERPOLATION_ADD)
+            if (mode != ANM_INTERPOLATION_ADD)
             {
-                *output = initial;
+                *output = final;
                 return output;
             }
-            *output = final;
+            *output = initial;
             return output;
         }
     }
 
     if (mode == ANM_INTERPOLATION_ADD)
     {
-        initial = initial + final;
+        const StageFogView initialValue = initial;
+        initial = initialValue + final;
         *output = initial;
         return output;
     }
 
     if (mode == ANM_INTERPOLATION_ACCELERATE)
     {
-        initial = initial + finalTangent;
+        const StageFogView initialValue = initial;
+        initial = initialValue + finalTangent;
         finalTangent = finalTangent + final;
         *output = initial;
         return output;
@@ -306,14 +311,18 @@ StageFogView *StageFogInterpolationView::Evaluate(
         float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
         float finalTangentWeight = minusOne * value * value;
 
-        *output = initial * initialWeight + final * finalWeight +
+        StageFogView result;
+        result = initial * initialWeight + final * finalWeight +
             initialTangent * initialTangentWeight +
             finalTangent * finalTangentWeight;
+        *output = result;
         return output;
     }
 
     float value = CalculateAnmInterpolation(
         mode, timer.subframe, static_cast<float>(duration));
-    *output = (final - initial) * value + initial;
+    StageFogView result;
+    result = (final - initial) * value + initial;
+    *output = result;
     return output;
 }

@@ -1,0 +1,807 @@
+{
+  "schema": 1,
+  "base_commit": "67834915a1108ab3afd081dc03478ddd175e9d59",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_bytes": 0,
+  "new_authored_exact_bytes": 0,
+  "boundary_or_origin_changes": false,
+  "source_present_count_changes": false,
+  "selected_variant": "expanded-easing",
+  "selected_cold_link_count": 1,
+  "project_input_sha256": {
+    "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+    "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.cpp": "ad3fce58007386fdf2049ed1b7e445bc69caf4c13e41e7d7785c8e263255def9",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "native_graph": {
+    "primary_source": "src/StageScript.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?Update@StageScriptView@@QAEHXZ"
+  },
+  "retained_artifact": {
+    "object": "build/match-linked/StageFog/source.ltcg.obj",
+    "image": "build/match-linked/StageFog/source.exe",
+    "map": "build/match-linked/StageFog/source.map",
+    "pdb": "build/match-linked/StageFog/source.pdb"
+  },
+  "artifact_relocation": "Identical complete generated directory copied after strict533/17 replay; not another cold build.",
+  "selected_fog": {
+    "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+    "address": "0x004049A0",
+    "candidate_address": "0x00401C30",
+    "candidate_size": 691,
+    "target_size": 688,
+    "normalization_complete": true,
+    "pdb_owner": {
+      "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+      "size": 691,
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 2,
+      "sha256": "5daff3fd61fa203a233eb487e1e609cd1b0527a295ea6e43964eac1aafc747ab"
+    }
+  },
+  "selected_easing": {
+    "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+    "address": "0x0044C350",
+    "candidate_address": "0x004025D0",
+    "candidate_size": 612,
+    "target_size": 509,
+    "normalization_complete": true,
+    "pdb_owner": {
+      "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+      "size": 612,
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 1,
+      "sha256": "97df35b91b9183e7403469de9346533dca08dd357320b86ac8895f5bdea2223a"
+    }
+  },
+  "easing_shape": {
+    "target": {
+      "code_size": 509,
+      "table_offset": 512,
+      "return_count": 17,
+      "every_return_pop_bytes": 8
+    },
+    "candidate": {
+      "code_size": 547,
+      "table_offset": 548,
+      "return_count": 19,
+      "every_return_pop_bytes": 8
+    },
+    "claim": "diagnostic only; target table ownership not promoted"
+  },
+  "easing_arithmetic_traces": {
+    "claim": "diagnostic only: follows specified dispatch and comparison arm; elides unconditional control transfers; absolute float constants replaced by their four bytes. Not acceptance, real FP execution or reachability proof.",
+    "reports": [
+      {
+        "variant": "stdcall-only",
+        "equal_arithmetic_traces": 30,
+        "trace_count": 40,
+        "candidate_image_sha256": "5836a130eebeeb3831e778bb4c924536c244392713551bdd85f5e04904cf8d48"
+      },
+      {
+        "variant": "expanded-easing",
+        "equal_arithmetic_traces": 40,
+        "trace_count": 40,
+        "candidate_image_sha256": "4f1941096cdd062af465627411c45fcc8383fd0b2f772f1c838bfa97367bbfdb"
+      },
+      {
+        "variant": "canonical-final",
+        "equal_arithmetic_traces": 40,
+        "trace_count": 40,
+        "candidate_image_sha256": "4f1941096cdd062af465627411c45fcc8383fd0b2f772f1c838bfa97367bbfdb"
+      }
+    ]
+  },
+  "guard_replay": {
+    "selected_cold_variant": "expanded-easing",
+    "relocated_identical_artifact": true,
+    "matched_bytes": 533,
+    "linkage_count": 17,
+    "full_report_sha256": "68698184a1ecbe22c28ff8f80974b804f0f9b842f5005bb3b80a62f34ed4b6f2",
+    "image": "build/match-linked/StageFog/source.exe",
+    "image_sha256": "4f1941096cdd062af465627411c45fcc8383fd0b2f772f1c838bfa97367bbfdb",
+    "pdb_guid": "7c786ee43e2cde4da3e5d098dc7aa1cd",
+    "pdb_age": 1,
+    "capstone_version": "5.0.6",
+    "units": [
+      {
+        "unit": "stage-fog-constructor",
+        "result": "exact",
+        "symbol": "??0StageFogView@@QAE@MMMMMM@Z",
+        "target_address": "0x00405040",
+        "size": 94,
+        "matched_bytes": 94,
+        "decoded_bytes": 94,
+        "normalization_complete": true,
+        "candidate_address": "0x00401110",
+        "target_code_sha256": "7322085a4185f69324772b2caf08831ee1392aa0eba73f18ee343395f402dc64",
+        "candidate_code_sha256": "77d0affc3ac802d0aa59324223a95bbbfcb12cdd0afba04816930c01316d058b",
+        "fields": [
+          {
+            "offset": "0x2E",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x3A",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x46",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x52",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          }
+        ]
+      },
+      {
+        "unit": "stage-fog-subtract",
+        "result": "exact",
+        "symbol": "??GStageFogView@@QBE?AU0@ABU0@@Z",
+        "target_address": "0x00404D40",
+        "size": 92,
+        "matched_bytes": 92,
+        "decoded_bytes": 92,
+        "normalization_complete": true,
+        "candidate_address": "0x00401B00",
+        "target_code_sha256": "d269403c7feb70224efa350a106cb1a82c486b9452fcd56916cc552a6d5b45e6",
+        "candidate_code_sha256": "87939e925f8b81b3fb56519c120430e6114e70ee8c602c28aca5dc6e18aad8ba",
+        "fields": [
+          {
+            "offset": "0x3A",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x42",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x4A",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x52",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          }
+        ]
+      },
+      {
+        "unit": "stage-fog-add",
+        "result": "exact",
+        "symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z",
+        "target_address": "0x00404E10",
+        "size": 92,
+        "matched_bytes": 92,
+        "decoded_bytes": 92,
+        "normalization_complete": true,
+        "candidate_address": "0x00401B60",
+        "target_code_sha256": "fa8f0bf017fcb7f1677e684960400384ba5ac21e2bdddff6645345b1ccf52957",
+        "candidate_code_sha256": "e02065ce41bb9da2eba3afe768d5697b74d32ee078e246132d2f4c480a8a7834",
+        "fields": [
+          {
+            "offset": "0x3A",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x42",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x4A",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x52",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          }
+        ]
+      },
+      {
+        "unit": "stage-fog-scale",
+        "result": "exact",
+        "symbol": "??DStageFogView@@QBE?AU0@M@Z",
+        "target_address": "0x00404DA0",
+        "size": 101,
+        "matched_bytes": 101,
+        "decoded_bytes": 101,
+        "normalization_complete": true,
+        "candidate_address": "0x00401BC0",
+        "target_code_sha256": "822800b5f98f4e52cc37ea719a895fc7c6eb4b647c8fac3ca94efabf7000da9e",
+        "candidate_code_sha256": "2be868416dac6664396ffa4d5dc2f8a07e002466a98d48ea5ca5fda98ad3f29c",
+        "fields": [
+          {
+            "offset": "0x41",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x49",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x51",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          },
+          {
+            "offset": "0x59",
+            "type": "REL32",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C"
+          }
+        ]
+      },
+      {
+        "unit": "stage-update-object-vms",
+        "result": "exact",
+        "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+        "target_address": "0x00403990",
+        "size": 154,
+        "matched_bytes": 154,
+        "decoded_bytes": 154,
+        "normalization_complete": true,
+        "candidate_address": "0x00401170",
+        "target_code_sha256": "8abd2d62f3e20010cae91de53f04ddcb999d0b78a203c56195092481f5bdf87d",
+        "candidate_code_sha256": "41b4f9d168e3461f516609584a663a960f9707610437898b82e0b5dd9f7da25a",
+        "fields": [
+          {
+            "offset": "0x54",
+            "type": "REL32",
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "target": "0x0043EE30"
+          }
+        ]
+      }
+    ]
+  },
+  "six_lea_differences": [
+    {
+      "target_instruction": "0x00404AF9",
+      "target_stack_operand": "esp+0x38",
+      "candidate_stack_operand": "esp+0x70"
+    },
+    {
+      "target_instruction": "0x00404B24",
+      "target_stack_operand": "esp+0x38",
+      "candidate_stack_operand": "esp+0x70"
+    },
+    {
+      "target_instruction": "0x00404B97",
+      "target_stack_operand": "esp+0x20",
+      "candidate_stack_operand": "esp+0x3C"
+    },
+    {
+      "target_instruction": "0x00404BAC",
+      "target_stack_operand": "esp+0xAC",
+      "candidate_stack_operand": "esp+0x20"
+    },
+    {
+      "target_instruction": "0x00404BF4",
+      "target_stack_operand": "esp+0x70",
+      "candidate_stack_operand": "esp+0xA8"
+    },
+    {
+      "target_instruction": "0x00404C15",
+      "target_stack_operand": "esp+0x74",
+      "candidate_stack_operand": "esp+0xAC"
+    }
+  ],
+  "controls": [
+    {
+      "variant": "stdcall-only",
+      "fog": {
+        "candidate_size": 661,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "640331543cf32330f1f6c0b75755f8ed74f84272b76597bd6fbcaaa1c5a9a6c1"
+      },
+      "easing": {
+        "candidate_size": 580,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "b05549c1863ed94b4447f64cd53a831ebafed4fce3c119bfa3cb1971d86e8229"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "6f21da9025f4b45c74c5c5e86e6c614e9b1a9207fad3033e94c3c1db305905ad",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "247be01c76616dc2ec7d97f370b6e8d3ffa643cdd45c113d493f8b6c73c1f061",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      }
+    },
+    {
+      "variant": "scoped-initial-final-first",
+      "fog": {
+        "candidate_size": 791,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "d17249e6b44158df5bb147d809b296af1e0d3e0d406d2730ae9ca709bc828bab"
+      },
+      "easing": {
+        "candidate_size": 580,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "1c29b2561e6c11e14e56c21e5993ba797613b980e8d7875cd16c2b3a2b213bad"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "6f21da9025f4b45c74c5c5e86e6c614e9b1a9207fad3033e94c3c1db305905ad",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "8492f8708342d636a961cad05a95a9c8d0759c0337ef261a2dd0b5e0baa9882d",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      }
+    },
+    {
+      "variant": "outlined-add",
+      "fog": {
+        "candidate_size": 691,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "5daff3fd61fa203a233eb487e1e609cd1b0527a295ea6e43964eac1aafc747ab"
+      },
+      "easing": {
+        "candidate_size": 580,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "60d92207463813ef473de176cb803136d9e6bf53f9dacfc975ae55d6d1b9700f"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "6f21da9025f4b45c74c5c5e86e6c614e9b1a9207fad3033e94c3c1db305905ad",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "6e415c994bb5dbfb136e93d774a2a26c20d734fb97d01a8e7bbe8d998dffb8e3",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      }
+    },
+    {
+      "variant": "temporary-initial",
+      "fog": {
+        "candidate_size": 691,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "5daff3fd61fa203a233eb487e1e609cd1b0527a295ea6e43964eac1aafc747ab"
+      },
+      "easing": {
+        "candidate_size": 580,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "60d92207463813ef473de176cb803136d9e6bf53f9dacfc975ae55d6d1b9700f"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "6f21da9025f4b45c74c5c5e86e6c614e9b1a9207fad3033e94c3c1db305905ad",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "d1acecc4ace67ad08b6c79717bafbe7db6e06cc8dcb6dec4adab9fafde6df51c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      }
+    },
+    {
+      "variant": "value-add",
+      "fog": {
+        "candidate_size": 741,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "2be8dfe19561fe3071fdb131e27877a7d2e1baf2c97e57f6366b8b8d7951e710"
+      },
+      "easing": {
+        "candidate_size": 580,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "3ebedc62cbc47d3af691a525cd0bca54203c5eb339c8406264ef8b8263f073fa"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "6f21da9025f4b45c74c5c5e86e6c614e9b1a9207fad3033e94c3c1db305905ad",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "1180f82924ac5ed0409cfc0719e57fb7be005fc50a3741a325e9d2a96a861cb3",
+        "src/StageScript.hpp": "44066b439eafd6bd6d36166f2f8837024b2db6d2d2976d4137092b8bd3a0afb9"
+      },
+      "rejected_addition_candidate_size": 99,
+      "addition_target_size": 92
+    },
+    {
+      "variant": "scoped-results",
+      "fog": {
+        "candidate_size": 684,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "fc352d7b4fdb657eb9d909bf7eec2cdcb12cb45ae87daab8d34457c10bfcd49e"
+      },
+      "easing": {
+        "candidate_size": 580,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "058ff2c173e71b3f7eef6ecc19ff1366e357075ec9ab28b34820271f0c316949"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "6f21da9025f4b45c74c5c5e86e6c614e9b1a9207fad3033e94c3c1db305905ad",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "f71e8739b932e5f60164d04ca045b1dd074f58b472926a999a80744385aa0eb0",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      }
+    },
+    {
+      "variant": "common-initial-value",
+      "fog": {
+        "candidate_size": 691,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "5daff3fd61fa203a233eb487e1e609cd1b0527a295ea6e43964eac1aafc747ab"
+      },
+      "easing": {
+        "candidate_size": 580,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "60d92207463813ef473de176cb803136d9e6bf53f9dacfc975ae55d6d1b9700f"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "6f21da9025f4b45c74c5c5e86e6c614e9b1a9207fad3033e94c3c1db305905ad",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "8f96784c636d9b2c1010bb1819d2b18013504c69b9cb8bb60ebc2481fceddf60",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      }
+    },
+    {
+      "variant": "declared-result",
+      "fog": {
+        "candidate_size": 691,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "5daff3fd61fa203a233eb487e1e609cd1b0527a295ea6e43964eac1aafc747ab"
+      },
+      "easing": {
+        "candidate_size": 580,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "60d92207463813ef473de176cb803136d9e6bf53f9dacfc975ae55d6d1b9700f"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "6f21da9025f4b45c74c5c5e86e6c614e9b1a9207fad3033e94c3c1db305905ad",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "ad3fce58007386fdf2049ed1b7e445bc69caf4c13e41e7d7785c8e263255def9",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      }
+    },
+    {
+      "variant": "expanded-easing",
+      "fog": {
+        "candidate_size": 691,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "pdb_code_sha256": "5daff3fd61fa203a233eb487e1e609cd1b0527a295ea6e43964eac1aafc747ab"
+      },
+      "easing": {
+        "candidate_size": 612,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "97df35b91b9183e7403469de9346533dca08dd357320b86ac8895f5bdea2223a"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "ad3fce58007386fdf2049ed1b7e445bc69caf4c13e41e7d7785c8e263255def9",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      }
+    },
+    {
+      "variant": "aggregate-return",
+      "fog": {
+        "candidate_size": 691,
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAE?AUStageFogView@@XZ",
+        "pdb_code_sha256": "5daff3fd61fa203a233eb487e1e609cd1b0527a295ea6e43964eac1aafc747ab"
+      },
+      "easing": {
+        "candidate_size": 612,
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "pdb_code_sha256": "97df35b91b9183e7403469de9346533dca08dd357320b86ac8895f5bdea2223a"
+      },
+      "changed_project_inputs": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/StageScript.cpp": "8594c1c5b4fe5e921cfd7afa5ac0273c01ba2453b39a00e567c0bbe46b21db33",
+        "src/StageScript.hpp": "a6b9ff2873b9dcb8950ef79bd968fa1c1e8ec2d9c39d94f8c9e0041eb50eefd2"
+      }
+    }
+  ],
+  "enemy_consumer": {
+    "project_input_sha256": {
+      "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+      "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+      "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyGameState.hpp": "43e98a5aa6c323840ef7b9c1ebf1c487775416b85bef95a6b6be984f45968b1e",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/Player.hpp": "1747c454b804c1401365dd31735638600926442750d29351b074dfc6248a8f6a",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    },
+    "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+    "sources": [
+      "src/Enemy.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "candidate_size": 548,
+    "target_size": 652,
+    "shared_callee_symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+    "shared_callee_size": 612,
+    "image_sha256": "83363a63f8cc0303b57c838263ce185fbc5a628dc35315eae99cf8b03f45e439",
+    "call_window": [
+      "0x401c60: add esp, 0x10",
+      "0x401c63: ret ",
+      "0x401c64: push ecx",
+      "0x401c65: mov ecx, dword ptr [esi + 0x28]",
+      "0x401c68: fstp dword ptr [esp]",
+      "0x401c6b: push ecx",
+      "0x401c6c: call 0x403d70",
+      "0x401c71: fld dword ptr [esi + 8]",
+      "0x401c74: fsub dword ptr [esi]",
+      "0x401c76: fmul st(1)",
+      "0x401c78: fadd dword ptr [esi]",
+      "0x401c7a: fstp dword ptr [esp + 0x10]",
+      "0x401c7e: mov edx, dword ptr [esp + 0x10]"
+    ],
+    "prior_stdcall_unexpanded_size": 548,
+    "result": "nonexact; observed easing call has no caller ADD ESP8"
+  },
+  "host_input_review": {
+    "date": "2026-10-19",
+    "starting_head": "6783491",
+    "reason": "Only CalculateAnmInterpolation declaration and complete definition change. Substituting its prior definition and removing the declaration keyword reproduces both entire prior LF-normalized files. Extracted range helper, timer and viewport are byte-identical; strict pin normalization and rejection policy are unchanged. The shared function now models observed callee-pop and repeated x87 inverse powers, without claiming its physical owner exact.",
+    "evidence": "docs/evidence/stage-fog-evaluator/README.md",
+    "inputs": {
+      "src/AnmManager.cpp": {
+        "old_sha256_lf": "2fc6c79a188d650e41f3b9c20be87bf05ee31e76561d8a9f22198db78a0fb647",
+        "new_sha256_lf": "a3952d13f53d5902854ba0fb58e9d126e4ef84a6ef45756831c2eab7f1aed757",
+        "new_raw_sha256": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da"
+      },
+      "src/AnmManager.hpp": {
+        "old_sha256_lf": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+        "new_sha256_lf": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "new_raw_sha256": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e"
+      }
+    },
+    "unchanged_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "unchanged_timer_sha256": "122d5f72af44ce1e803489895d285472edb28dcec954df6c7a91069537eae32d",
+    "unchanged_viewport_sha256": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b"
+  },
+  "tooling_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/linked_image.py": "5d667184a743874d1728c96a91bc1fd6176249dfd1c8413a2b04325d5f7b53b0",
+    "scripts/compare-linked-function.py": "7962e7b95c77834e19663db3277d0508f9fc143afc6f813553b6afc601430604"
+  },
+  "resource_policy": {
+    "native_jobs": 1,
+    "nice": 10,
+    "ghidra_heap_mib": 768,
+    "ghidra_cpus": 1
+  },
+  "checks": {
+    "focused_complete_guards": "passed533/533 and17/17",
+    "toolchain_check": "passed",
+    "tracking": "passed1752/1008/1162",
+    "generated_progress": "unchanged counts",
+    "public_ci": "passed; terminal exit0",
+    "diff_check": "passed",
+    "public_ci_log_sha256": "8084742440f6d026bfb4282d7b07b02bc7adb2383593cb9a939f94abff2da8dc"
+  },
+  "limitations": "No new exactness, source/owner, boundary or origin credit. Arithmetic-path alignment elides unconditional layout; it is not complete equality, execution or FP-runtime proof. Diagnostic images use unresolved anchors and are never run; product/runtime/semantic/port gates remain open.",
+  "direct_consumer_call_review": {
+    "acceptance_authority": "none; shared private call protocol and six nonexact direct consumers only",
+    "callees": [
+      {
+        "graph": "Stage+ANM",
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "size": 612,
+        "return_count": 19,
+        "every_return_pop_bytes": 8,
+        "mode_register": "EAX",
+        "head": [
+          "fld dword ptr [esp + 4]",
+          "dec eax",
+          "cmp eax, 0xf",
+          "fdiv dword ptr [esp + 8]"
+        ]
+      },
+      {
+        "graph": "Enemy",
+        "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+        "size": 612,
+        "return_count": 19,
+        "every_return_pop_bytes": 8,
+        "mode_register": "EAX",
+        "head": [
+          "fld dword ptr [esp + 4]",
+          "dec eax",
+          "cmp eax, 0xf",
+          "fdiv dword ptr [esp + 8]"
+        ]
+      }
+    ],
+    "consumers": [
+      {
+        "symbol": "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z",
+        "target_address": "0x004049A0",
+        "candidate_size": 691,
+        "no_immediate_caller_cleanup": true,
+        "call_window": [
+          "0x25a: mov edx, dword ptr [ebx + 0x78]",
+          "0x25d: push ecx",
+          "0x25e: fstp dword ptr [esp]",
+          "0x261: push edx",
+          "0x262: call 0x4025d0",
+          "0x267: fstp dword ptr [esp + 0x10]",
+          "0x26b: mov eax, dword ptr [esp + 0x10]",
+          "0x26f: push eax",
+          "0x270: lea ecx, [ebx + 0x1c]"
+        ]
+      },
+      {
+        "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+        "target_address": "0x00404610",
+        "candidate_size": 851,
+        "no_immediate_caller_cleanup": true,
+        "call_window": [
+          "0x2e1: push ecx",
+          "0x2e2: mov ecx, dword ptr [esi + 0x38]",
+          "0x2e5: fstp dword ptr [esp]",
+          "0x2e8: push ecx",
+          "0x2e9: call 0x4025d0",
+          "0x2ee: fld dword ptr [esi + 0xc]",
+          "0x2f1: fsub dword ptr [esi]",
+          "0x2f3: mov edx, edi",
+          "0x2f5: fld dword ptr [esi + 0x10]"
+        ]
+      },
+      {
+        "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+        "target_address": "0x00441600",
+        "candidate_size": 791,
+        "no_immediate_caller_cleanup": true,
+        "call_window": [
+          "0x2ad: mov edx, dword ptr [esi + 0x38]",
+          "0x2b0: push ecx",
+          "0x2b1: fstp dword ptr [esp]",
+          "0x2b4: push edx",
+          "0x2b5: call 0x4025d0",
+          "0x2ba: mov ebx, dword ptr [esi]",
+          "0x2bc: mov eax, dword ptr [esi + 0xc]",
+          "0x2bf: sub eax, ebx",
+          "0x2c1: mov dword ptr [esp + 0x14], eax"
+        ]
+      },
+      {
+        "symbol": "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ",
+        "target_address": "0x00441950",
+        "candidate_size": 354,
+        "no_immediate_caller_cleanup": true,
+        "call_window": [
+          "0x13f: mov edi, dword ptr [esi]",
+          "0x141: push ecx",
+          "0x142: fstp dword ptr [esp]",
+          "0x145: push edx",
+          "0x146: call 0x4025d0",
+          "0x14b: mov eax, dword ptr [esi + 4]",
+          "0x14e: sub eax, edi",
+          "0x150: mov dword ptr [esp + 4], eax",
+          "0x154: fimul dword ptr [esp + 4]"
+        ]
+      },
+      {
+        "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+        "target_address": "0x00441AD0",
+        "candidate_size": 653,
+        "no_immediate_caller_cleanup": true,
+        "call_window": [
+          "0x25f: mov edx, dword ptr [esi + 0x28]",
+          "0x262: push ecx",
+          "0x263: fstp dword ptr [esp]",
+          "0x266: push edx",
+          "0x267: call 0x4025d0",
+          "0x26c: fld dword ptr [esi + 8]",
+          "0x26f: fsub dword ptr [esi]",
+          "0x271: mov eax, edi",
+          "0x273: fmul st(1)"
+        ]
+      },
+      {
+        "symbol": "?Evaluate@EnemyScalarInterpolationView@@QAEPAUEnemyFloat2@@PAU2@@Z",
+        "target_address": "0x00412AC0",
+        "candidate_size": 548,
+        "no_immediate_caller_cleanup": true,
+        "call_window": [
+          "0x1e4: push ecx",
+          "0x1e5: mov ecx, dword ptr [esi + 0x28]",
+          "0x1e8: fstp dword ptr [esp]",
+          "0x1eb: push ecx",
+          "0x1ec: call 0x403d70",
+          "0x1f1: fld dword ptr [esi + 8]",
+          "0x1f4: fsub dword ptr [esi]",
+          "0x1f6: fmul st(1)",
+          "0x1f8: fadd dword ptr [esi]"
+        ]
+      }
+    ]
+  },
+  "cleanup": {
+    "removed_bytes": 6016748,
+    "retained_native_graphs": [
+      "build/match-linked/StageFog",
+      "build/gpt-6.1-sol/th10-fog-evaluator-20261019/enemy-consumer"
+    ],
+    "retained_analysis": "Target reviews, current source/input/strict results, rejected-control results and logs remain; redundant source snapshots and build directories removed.",
+    "nine_unchanged_control_inputs": {
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    },
+    "preserved_untracked": "docs/evidence/d3d-adapter-format/"
+  }
+}

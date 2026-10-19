@@ -218,6 +218,7 @@ int main(){
 #include <cassert>
 #include <cmath>
 #include <cstring>
+#define __stdcall
 static float g_AnmGameSpeed=1.0f;
 struct AnmMatrixView {float values[16];};
 struct AnmViewportView {unsigned x,y,width,height;float minZ,maxZ;};
@@ -226,7 +227,7 @@ struct AnmViewportView {unsigned x,y,width,height;float minZ,maxZ;};
         program+=struct_text(anm_header,'struct AnmVmTimerView')
         program+=struct_text(stage_header,'struct StageFogView')
         program+=struct_text(stage_header,'struct StageFogInterpolationView')
-        program+=body('src/AnmManager.cpp','float CalculateAnmInterpolation(')
+        program+=body('src/AnmManager.cpp','float __stdcall CalculateAnmInterpolation(')
         for signature in ['StageFogView::StageFogView(float','StageFogView StageFogView::operator-(', 'StageFogView StageFogView::operator+(', 'StageFogView StageFogView::operator*(', 'StageFogView *StageFogInterpolationView::Evaluate(']:
             program+=body('src/StageScript.cpp',signature)
         program+=r'''

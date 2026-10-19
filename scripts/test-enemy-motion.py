@@ -15,9 +15,9 @@ class EnemyMotion(unittest.TestCase):
     def test_actual_motion_and_interpolation(self):
         h=(ROOT/'src/Enemy.hpp').read_text(); cpp=(ROOT/'src/Enemy.cpp').read_text()
         ah=(ROOT/'src/AnmManager.hpp').read_text(); ac=(ROOT/'src/AnmManager.cpp').read_text()
-        pieces=['#include <cassert>\n#include <cmath>\nusing std::floor;\nstruct PlayerFloat3 {float x,y,z;};\nfloat g_AnmGameSpeed=1;\n']
+        pieces=['#include <cassert>\n#include <cmath>\n#define __stdcall\nusing std::floor;\nstruct PlayerFloat3 {float x,y,z;};\nfloat g_AnmGameSpeed=1;\n']
         pieces += [definition(h,'struct '+name+'\n',True) for name in ['EnemyFloat2','EnemyMotionView','EnemyInterpolationTimerView','EnemyScalarInterpolationView']]
-        pieces += [definition(ah,'enum AnmInterpolationModeView',True),definition(ac,'float CalculateAnmInterpolation('),definition(cpp,'struct EnemyRuntimeVectorView\n',True),definition(cpp,'void EnemyRuntimeVectorView::FromAngleMagnitude('),definition(cpp,'EnemyFloat2 *EnemyScalarInterpolationView::Evaluate('),definition(cpp,'void EnemyAdvanceMotion(')]
+        pieces += [definition(ah,'enum AnmInterpolationModeView',True),definition(ac,'float __stdcall CalculateAnmInterpolation('),definition(cpp,'struct EnemyRuntimeVectorView\n',True),definition(cpp,'void EnemyRuntimeVectorView::FromAngleMagnitude('),definition(cpp,'EnemyFloat2 *EnemyScalarInterpolationView::Evaluate('),definition(cpp,'void EnemyAdvanceMotion(')]
         pieces.append(r'''
 static bool close(float a,float b){return std::fabs(a-b)<0.00002f;}
 // Static zero initialization precedes the maintained timer constructor.

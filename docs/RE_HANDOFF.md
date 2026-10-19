@@ -104,12 +104,19 @@ scratch paths, or build hashes into this file.
   source. The updater includes six internal alignment bytes outside its148-byte
   reachable Ghidra body; existing154-byte physical ownership is unchanged.
   See [the complete native evidence](evidence/stage-fog-native/README.md).
-  Evaluator664/688 retains target frameD4 and14 call identities/order; callback
-  294/304 and dispatcher1972/code1806 remain nonexact. Target modes7/17 snapshot
-  initial before addition; candidate passes it directly. Target easing uses
-  EAX mode/RET8 versus current cdecl caller ADD ESP8. Next: validate these scoped
-  lifetime/callee-pop controls, preserving all five newly exact units; no
-  standard-fastcall or helper-table exactness assumption.
+  The subsequent [evaluator review](evidence/stage-fog-evaluator/README.md)
+  fixes the easing callee-pop model, explicit initial snapshots and inverse-power
+  x87 lifetimes. All six direct consumers are reviewed; five existing units
+  retain533 bytes/all17 fields in the selected cold graph. No new exact credit.
+  Fog remains691/688 with target frameD4/all14 calls; six LEA stack operands
+  differ after diagnostic link/branch normalization. Easing agrees on40/40
+  arithmetic instruction paths but remains612/576 including code/alignment/table;
+  shared-tail layout is open. Its ledger stays509 code bytes until complete
+  canonical ownership/replay is established. Named/temporary/common snapshots,
+  result scopes, nonmember value-add and aggregate-return controls are closed;
+  rejected APIs are restored. Do not repeat them or sweep ABI keywords/flags
+  without new TH10 evidence. Rotate to another complete authored owner, or bring
+  additional compiler-context/lifetime evidence for these remaining layouts.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

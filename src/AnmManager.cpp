@@ -238,7 +238,7 @@ int *AnmVmView::GetIntVarPtr(
 // Target 0x0044C350 computes the normalized interpolation progress used by
 // the scalar and vector interpolation evaluators. Modes 8, 7, and 17 are
 // handled by the evaluators because they also consume or mutate endpoints.
-float CalculateAnmInterpolation(int mode, float current, float duration)
+float __stdcall CalculateAnmInterpolation(int mode, float current, float duration)
 {
     float value = current / duration;
 
@@ -246,59 +246,49 @@ float CalculateAnmInterpolation(int mode, float current, float duration)
     {
     case ANM_INTERPOLATION_EASE_IN:
         return value * value;
-    case ANM_INTERPOLATION_EASE_IN_CUBIC:
-        return value * value * value;
-    case ANM_INTERPOLATION_EASE_IN_QUARTIC:
-        return value * value * value * value;
     case ANM_INTERPOLATION_EASE_OUT:
         return 1.0f - (1.0f - value) * (1.0f - value);
+    case ANM_INTERPOLATION_EASE_IN_CUBIC:
+        return value * value * value;
     case ANM_INTERPOLATION_EASE_OUT_CUBIC:
-        value = 1.0f - value;
-        return 1.0f - value * value * value;
+        return 1.0f - (1.0f - value) * (1.0f - value) *
+            (1.0f - value);
+    case ANM_INTERPOLATION_EASE_IN_QUARTIC:
+        return value * value * value * value;
     case ANM_INTERPOLATION_EASE_OUT_QUARTIC:
-        value = 1.0f - value;
-        return 1.0f - value * value * value * value;
+        return 1.0f - (1.0f - value) * (1.0f - value) *
+            (1.0f - value) * (1.0f - value);
     case ANM_INTERPOLATION_EASE_IN_OUT:
         value += value;
         if (value < 1.0f)
             return value * value * 0.5f;
         return (2.0f - (2.0f - value) * (2.0f - value)) * 0.5f;
-    case ANM_INTERPOLATION_EASE_IN_OUT_CUBIC:
-        value += value;
-        if (value < 1.0f)
-            return value * value * value * 0.5f;
-        value = 2.0f - value;
-        return (2.0f - value * value * value) * 0.5f;
-    case ANM_INTERPOLATION_EASE_IN_OUT_QUARTIC:
-        value += value;
-        if (value < 1.0f)
-            return value * value * value * value * 0.5f;
-        value = 2.0f - value;
-        return (2.0f - value * value * value * value) * 0.5f;
     case ANM_INTERPOLATION_EASE_OUT_IN:
         value += value;
         if (value < 1.0f)
             return 0.5f - (1.0f - value) * (1.0f - value) * 0.5f;
         value -= 1.0f;
         return value * value * 0.5f + 0.5f;
+    case ANM_INTERPOLATION_EASE_IN_OUT_CUBIC:
+        value += value;
+        if (value < 1.0f)
+            return value * value * value * 0.5f;
+        return (2.0f - (2.0f - value) * (2.0f - value) * (2.0f - value)) * 0.5f;
     case ANM_INTERPOLATION_EASE_OUT_IN_CUBIC:
         value += value;
         if (value < 1.0f)
-        {
-            value = 1.0f - value;
-            return 0.5f - value * value * value * 0.5f;
-        }
-        value -= 1.0f;
-        return value * value * value * 0.5f + 0.5f;
+            return 0.5f - (1.0f - value) * (1.0f - value) * (1.0f - value) * 0.5f;
+        return (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * 0.5f + 0.5f;
+    case ANM_INTERPOLATION_EASE_IN_OUT_QUARTIC:
+        value += value;
+        if (value < 1.0f)
+            return value * value * value * value * 0.5f;
+        return (2.0f - (2.0f - value) * (2.0f - value) * (2.0f - value) * (2.0f - value)) * 0.5f;
     case ANM_INTERPOLATION_EASE_OUT_IN_QUARTIC:
         value += value;
         if (value < 1.0f)
-        {
-            value = 1.0f - value;
-            return 0.5f - value * value * value * value * 0.5f;
-        }
-        value -= 1.0f;
-        return value * value * value * value * 0.5f + 0.5f;
+            return 0.5f - (1.0f - value) * (1.0f - value) * (1.0f - value) * (1.0f - value) * 0.5f;
+        return (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * (value - 1.0f) * 0.5f + 0.5f;
     case ANM_INTERPOLATION_CONSTANT_ZERO:
         return 0.0f;
     case ANM_INTERPOLATION_CONSTANT_ONE:

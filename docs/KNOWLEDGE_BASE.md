@@ -2425,3 +2425,39 @@ boundary rewrite or native product/runtime closure follows. The next coherent
 frontier is the complete evaluator's control flow/temporary lifetime, preserving
 the newly exact arithmetic dependencies rather than changing their ABI or
 forcing stores. One canonical image remains; duplicate cold artifacts are removed.
+
+
+## Fog evaluator and easing arithmetic checkpoint (2026-10-19)
+
+The [bounded evidence](evidence/stage-fog-evaluator/README.md) corrects two
+native source-model gaps without new exact credit. CalculateAnmInterpolation
+uses private EAX mode plus two float stack arguments and RET8 in the target.
+The maintained three-argument callee-pop spelling naturally reproduces this
+under VC7.1 LTCG and removes caller ADD ESP8 in all six reviewed consumers.
+This does not establish the original C++ keyword. Fog modes7/17 really copy
+all seven initial dwords before addition; the source now has scoped snapshots.
+Its addition remains outlined, retaining its full92-byte exact helper.
+
+Repeated cubic/quartic inverse expressions reproduce the target's live x87
+instruction paths: all40 diagnostic mode/arm traces agree after only constant
+address substitution and unconditional-transfer elision, versus30 for the
+prior stdcall-only source. This is arithmetic-shape evidence, not complete-byte,
+execution, exceptional-FP, reachable-input or runtime proof. The complete
+candidate still has547 code bytes plus alignment/table for612, versus509+3+64
+for the576-byte target window. Cubic/quartic common-tail placement is unresolved.
+The target's16 table destinations all stay inside its code; local read-only
+Ghidra also decodes a separate57-byte body at44C590 immediately after the table.
+No origin, inventory boundary, denominator or helper exactness is promoted.
+
+Fog's selected owner is691/688 with target frameD4/all14 calls. Only six LEA
+stack operands differ in an instruction-order diagnostic; physical equality
+remains open. Named/temporary/shared initial snapshots, result scopes and a
+natural value-return interface do not close it. Nonmember value-add breaks the
+helper extent99/92. Rejected APIs are restored; do not repeat these models or
+add forced slots/flags without new evidence. The selected real Stage Update
+cold graph passes all five existing canonical units533/533 and17/17 fields.
+The separate Enemy consumer remains548/652 with the corrected call protocol.
+The strict transition fixture's extracted timer/viewport/random dependencies
+are unchanged; only reviewed easing declaration/definition pins are recertified.
+Original source/TU ownership, whole product/runtime, semantic and port closure
+remain unknown.

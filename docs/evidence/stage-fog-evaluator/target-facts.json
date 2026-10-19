@@ -1,0 +1,225 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text_address": "0x00401000",
+  "mapped_text_size": 412288,
+  "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+  "local_ghidra_read_only": true,
+  "temporary_function_metadata_rolled_back": true,
+  "fog": {
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "address": "0x4049a0",
+    "size": 688,
+    "code_sha256": "270ac789426dfbb033ae821a4035d195d6acba779b1fbaab1947b1286ee22e83",
+    "fields": [
+      {
+        "offset": 49,
+        "type": "DIR32",
+        "target": "0x470b68",
+        "instruction": "fcomp dword ptr [0x470b68]",
+        "bytes_at_target": "a4707d3f"
+      },
+      {
+        "offset": 64,
+        "type": "DIR32",
+        "target": "0x470b64",
+        "instruction": "fcomp dword ptr [0x470b64]",
+        "bytes_at_target": "ae47813f"
+      },
+      {
+        "offset": 81,
+        "type": "DIR32",
+        "target": "0x470afc",
+        "instruction": "fadd dword ptr [0x470afc]",
+        "bytes_at_target": "0000803f"
+      },
+      {
+        "offset": 102,
+        "type": "REL32",
+        "target": "0x463b2c",
+        "instruction": "call 0x463b2c"
+      },
+      {
+        "offset": 157,
+        "type": "DIR32",
+        "target": "0x476f78",
+        "instruction": "mov dword ptr [ebx + 0x7c], 0x476f78"
+      },
+      {
+        "offset": 272,
+        "type": "REL32",
+        "target": "0x404e10",
+        "instruction": "call 0x404e10"
+      },
+      {
+        "offset": 324,
+        "type": "REL32",
+        "target": "0x404e10",
+        "instruction": "call 0x404e10"
+      },
+      {
+        "offset": 352,
+        "type": "REL32",
+        "target": "0x404e10",
+        "instruction": "call 0x404e10"
+      },
+      {
+        "offset": 400,
+        "type": "DIR32",
+        "target": "0x470afc",
+        "instruction": "fsub dword ptr [0x470afc]",
+        "bytes_at_target": "0000803f"
+      },
+      {
+        "offset": 410,
+        "type": "DIR32",
+        "target": "0x470afc",
+        "instruction": "fld dword ptr [0x470afc]",
+        "bytes_at_target": "0000803f"
+      },
+      {
+        "offset": 430,
+        "type": "DIR32",
+        "target": "0x470bd4",
+        "instruction": "fld dword ptr [0x470bd4]",
+        "bytes_at_target": "00004040"
+      },
+      {
+        "offset": 448,
+        "type": "DIR32",
+        "target": "0x470afc",
+        "instruction": "fld dword ptr [0x470afc]",
+        "bytes_at_target": "0000803f"
+      },
+      {
+        "offset": 489,
+        "type": "REL32",
+        "target": "0x404da0",
+        "instruction": "call 0x404da0"
+      },
+      {
+        "offset": 508,
+        "type": "REL32",
+        "target": "0x404da0",
+        "instruction": "call 0x404da0"
+      },
+      {
+        "offset": 532,
+        "type": "REL32",
+        "target": "0x404da0",
+        "instruction": "call 0x404da0"
+      },
+      {
+        "offset": 555,
+        "type": "REL32",
+        "target": "0x404da0",
+        "instruction": "call 0x404da0"
+      },
+      {
+        "offset": 570,
+        "type": "REL32",
+        "target": "0x404e10",
+        "instruction": "call 0x404e10"
+      },
+      {
+        "offset": 588,
+        "type": "REL32",
+        "target": "0x404e10",
+        "instruction": "call 0x404e10"
+      },
+      {
+        "offset": 611,
+        "type": "REL32",
+        "target": "0x44c350",
+        "instruction": "call 0x44c350"
+      },
+      {
+        "offset": 634,
+        "type": "REL32",
+        "target": "0x404d40",
+        "instruction": "call 0x404d40"
+      },
+      {
+        "offset": 646,
+        "type": "REL32",
+        "target": "0x404da0",
+        "instruction": "call 0x404da0"
+      },
+      {
+        "offset": 659,
+        "type": "REL32",
+        "target": "0x404e10",
+        "instruction": "call 0x404e10"
+      }
+    ],
+    "returns": [
+      {
+        "offset": "0xdc",
+        "operand": "4"
+      },
+      {
+        "offset": "0xec",
+        "operand": "4"
+      },
+      {
+        "offset": "0x2ad",
+        "operand": "4"
+      }
+    ],
+    "full_decode_bytes": 688
+  },
+  "easing": {
+    "code_address": "0x0044C350",
+    "code_size": 509,
+    "code_end": "0x0044C54C",
+    "all_return_pop_bytes": 8,
+    "return_instruction_count": 17,
+    "mode_register": "EAX",
+    "stack_arguments": [
+      "current float32",
+      "duration float32"
+    ],
+    "alignment_address": "0x0044C54D",
+    "alignment_size": 3,
+    "table_address": "0x0044C550",
+    "table_size": 64,
+    "table_destinations": [
+      "0x0044C369",
+      "0x0044C383",
+      "0x0044C3A7",
+      "0x0044C370",
+      "0x0044C38C",
+      "0x0044C3B2",
+      "0x0044C54A",
+      "0x0044C54A",
+      "0x0044C3CF",
+      "0x0044C445",
+      "0x0044C49F",
+      "0x0044C404",
+      "0x0044C471",
+      "0x0044C4E2",
+      "0x0044C537",
+      "0x0044C542"
+    ],
+    "window_including_table": 576,
+    "next_separately_decoded_body": {
+      "address": "0x0044C590",
+      "size": 57,
+      "ledger_change": false
+    },
+    "direct_consumer_addresses": [
+      "0x00404610",
+      "0x004049A0",
+      "0x00441600",
+      "0x00441950",
+      "0x00441AD0",
+      "0x00412AC0"
+    ],
+    "ledger_code_only_extent_changed": false
+  },
+  "observation_sha256": {
+    "target-ghidra.txt": "b7dafc9785a5a7d4f1a5053156a80cfd27ee2d28f2c438ab44595ddf922522a6",
+    "easing-extent-ghidra.txt": "b1b911d19fcf40a4e1e06788c0fea4c192bca8d096b518fa3a026d98268ec1b8",
+    "ghidra/FogEvaluatorReview.java": "d6186a164b35fe34c3050fea40afb294d04887f258606458f3406d92d0126116",
+    "ghidra/EasingExtentReview.java": "18b073e82731724f997f5978439f9f4e77661a4c99d0bb7583baafb3dfc67ab7"
+  }
+}

@@ -239,7 +239,7 @@ enum AnmInterpolationModeView
     ANM_INTERPOLATION_ACCELERATE = 17
 };
 
-float CalculateAnmInterpolation(int mode, float current, float duration);
+float __stdcall CalculateAnmInterpolation(int mode, float current, float duration);
 
 struct AnmRawInstructionView
 {
