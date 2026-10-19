@@ -123,12 +123,34 @@ scratch paths, or build hashes into this file.
   rejected APIs are restored. Do not repeat them or sweep ABI keywords/flags
   without new TH10 evidence. Rotate to another complete authored owner, or bring
   additional compiler-context/lifetime evidence for these remaining layouts.
-  One next large-owner route is StageExecuteScript's separately provisional
-  15-slot table (old diagnostics use1868 physical versus the1806 code-only row).
-  Review full target ownership first, then inspect the genuine StageCreate /
-  StageUpdateCallback graph in StageLifecycle.cpp as a possible private-ABI
-  carrier for Update and the dispatcher. Verify target entries/xrefs; add no
-  artificial callers or placeholder callback roots.
+- The [real Stage registration graph](evidence/stage-real-callback/README.md)
+  now closes Update304 and Tick72: **376 new authored exact bytes**, plus three
+  seven-byte adapters with indeterminate origin. Two independent cold nine-TU
+  StageCreate links pass987 complete bytes/all36 fields, including590 existing
+  guard bytes. Three real auxiliary calls restore Update's target EAX/plainRET
+  and store schedule. Void Tick removes the prior extra MOV EAX,EDX; all10
+  reviewed target callers discard that result. Its inline definition stays in
+  AnmManager.hpp, while declared native PDB ownership is StageScript.cpp.
+  Original return spelling/class/TU and adapter authorship remain unknown.
+- StageExecuteScript now owns **1868 bytes**, including1806 code +2 alignment
+  +60 table bytes. All15 destinations, bounds, tail references and nonoverlap
+  are target-reviewed; this adds62 authored denominator bytes and no parent
+  exact credit. The genuine registration graph already restores its stack
+  receiver/RET4 and frame8C. Current1868/1868 size agreement remains nonexact
+  (dated ordinary diagnostic1236/1724); old EBX/plainRET claims are obsolete.
+  Color-load scheduling, vector temporaries, op12/13 registers and op14 VMInit
+  receiver remain open. Four channel snapshots regress to1892/frame98 and are
+  restored. Same-layout argument slots and one real bullet caller are neutral
+  and restored. Do not repeat these controls without new evidence.
+  A fresh VMInit matrix has23 calls/eight callers,15 in EnemyBeginSpell.
+  Adding its real EnemyEclDispatcher.cpp source is also byte-neutral: the
+  normalized dispatcher instruction/size sequence is identical, and987/36
+  strict guards pass. That caller-context route is closed. EnemyBeginSpell
+  itself is2476/2432 in this ten-TU context; inspect its own lifetimes/branches
+  or rotate to another full owner. Retain only its PE/MAP/PDB for that frontier.
+  Factory/constructor/init/loader/destructor, Fog/easing and draw cores remain
+  nonexact. Product/runtime, published-camera aliasing, semantics and port stay
+  open. Existing source-state tests remain bounded; no full native cohort replay.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our

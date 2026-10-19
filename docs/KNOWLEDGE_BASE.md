@@ -2497,3 +2497,51 @@ bytes/all60 fields, including all18 internal destinations, in retained images.
 No native historical cohort is rebuilt and no accepted exact state changes.
 Original physical compiler partition and native product/runtime/semantic/port
 closure remain open.
+
+
+## Stage registration graph and complete dispatcher checkpoint (2026-10-19)
+
+The [complete evidence](evidence/stage-real-callback/README.md) closes376
+authored exact bytes: StageScriptView::Update304 and AnmVmTimerView::Tick72.
+Three independently reviewed seven-byte registration adapters add21 exact bytes
+with indeterminate origin. Two independent cold CL13.10.6030/LINK7.10.6030
+links, with identical19 project input hashes, pass all987 complete bytes and36
+independently target-bound fields, including590 existing guard bytes. The
+canonical default recipes pass without another build. The genuine StageCreate
+graph uses nine real TUs; no artificial root/caller, ABI sweep or forced stores.
+
+Three explicit auxiliary ExecuteScript calls replace a three-iteration loop,
+recovering Update's EAX/plainRET and camera-publication/store scheduling without
+memcpy or volatile. Tick's old int candidate74 differs from target72 by one
+MOV EAX,EDX. All10 fresh target call sites overwrite EAX before use; void models
+the unconsumed result while preserving every mutating statement. Original C++
+return spelling, class names and production TU remain unknown. Its inline body
+is in AnmManager.hpp; declared native PDB materialization is StageScript.cpp.
+The strict transition header pin changes only for that reviewed Tick block.
+
+The dispatcher ownership review includes1806 code bytes, two-byte MOV EDI,EDI
+alignment and15 DIR32 table entries:1868 physical bytes through4043CB. Selector
+bound14, EAX*4 and all15 internal instruction destinations agree. No owner
+overlaps the tail. The target has no PE base relocations; literal scanning
+finds the actual indexed operand and one incidental opcode/modrm/disp/imm byte
+pattern at41522F, explicitly classified rather than treated as a pointer. This
+adds62 owned authored denominator bytes and zero dispatcher exact credit.
+
+Rocking's nonzero/switch-case1 structure restores genuine Tick/SetCurrent
+outlining. Case1 re-reads its jump operand after SetCurrent; mode8 stores precede
+final tangents; case14 initializes before its negative-index flag path. Current
+native contribution1868 and frame8C agree, but complete bytes do not: the dated
+ordinary diagnostic is1236/1724. Color loads, vector temporaries, op12/13
+registers and op14 VMInit receiver remain open. Old EBX/plainRET dispatcher
+and ECX Update claims do not describe this real registration graph.
+
+Four channel snapshots regress the dispatcher to1892/frame98; they are removed.
+Same-layout argument slots and one real BulletManager VMInit caller are neutral
+and restored. Fresh target VMInit xrefs count23 calls in eight callers, including
+15 in EnemyBeginSpell. Adding its genuine EnemyEclDispatcher.cpp in a ten-TU,
+27-input control preserves the exact same normalized dispatcher instruction/size
+sequence; all987 strict bytes/all36 fields pass. This caller-context route is
+closed. EnemyBeginSpell itself remains2476/2432, with771/2032 ordinary comparable
+positions in that dated context, and receives no credit. Reference
+three-call/rocking/void-timer ideas are corroborative only.
+No draw-core, lifecycle, Fog/easing, fragment, runtime, semantic or port credit.

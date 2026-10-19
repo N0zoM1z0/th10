@@ -21667,3 +21667,104 @@ size = 154
 linkages = [
   { offset = 0x54, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x0043EE30 },
 ]
+
+[units.stage-update]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp"]
+output_dir = "build/match-linked/StageRealCallback"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+functions = ["StageScriptView::Update"]
+symbol = "?Update@StageScriptView@@QAEHXZ"
+target_address = 0x00402720
+size = 304
+linkages = [
+  { offset = 0x7C, type = "REL32", target = 0x45217C, symbol = "_D3DXVec3Normalize@8" },
+  { offset = 0x8B, type = "REL32", target = 0x403990, symbol = "?UpdateObjectVms@StageScriptView@@QAEHXZ" },
+  { offset = 0x91, type = "REL32", target = 0x403C80, symbol = "?StageExecuteScript@@YGHPAUStageScriptView@@@Z" },
+  { offset = 0xA2, type = "REL32", target = 0x43EE30, symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z" },
+  { offset = 0xBB, type = "DIR32", target = 0x476F78, symbol = "?g_AnmGameSpeed@@3MA" },
+  { offset = 0xCC, type = "DIR32", target = 0x476F78, symbol = "?g_AnmGameSpeed@@3MA" },
+  { offset = 0xD5, type = "REL32", target = 0x43EE30, symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z" },
+  { offset = 0xE1, type = "REL32", target = 0x43EE30, symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z" },
+  { offset = 0xED, type = "REL32", target = 0x43EE30, symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z" },
+  { offset = 0xF7, type = "DIR32", target = 0x476F78, symbol = "?g_AnmGameSpeed@@3MA" },
+  { offset = 0x107, type = "DIR32", target = 0x491D7C, symbol = "?g_StagePublishedCamera@@3UStageCameraStateView@@A" },
+]
+
+[units.anm-timer-tick]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp"]
+output_dir = "build/match-linked/StageRealCallback"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+functions = ["AnmVmTimerView::Tick"]
+symbol = "?Tick@AnmVmTimerView@@QAEXXZ"
+target_address = 0x00404ED0
+size = 72
+linkages = [
+  { offset = 0xC, type = "DIR32", target = 0x470B68, symbol = "__real@3f7d70a4" },
+  { offset = 0x1B, type = "DIR32", target = 0x470B64, symbol = "__real@3f8147ae" },
+  { offset = 0x2C, type = "DIR32", target = 0x470AFC, symbol = "__real@3f800000" },
+  { offset = 0x40, type = "REL32", target = 0x463B2C, symbol = "__ftol2" },
+]
+
+[units.stage-update-callback]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp"]
+output_dir = "build/match-linked/StageRealCallback"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+functions = ["StageUpdateCallback"]
+symbol = "?StageUpdateCallback@@YIHPAUStageScriptView@@@Z"
+target_address = 0x00403050
+size = 7
+linkages = [
+  { offset = 0x3, type = "REL32", target = 0x402720, symbol = "?Update@StageScriptView@@QAEHXZ" },
+]
+pdb_source = "src/StageLifecycle.cpp"
+
+[units.stage-draw-early-callback]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp"]
+output_dir = "build/match-linked/StageRealCallback"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+functions = ["StageDrawEarlyCallback"]
+symbol = "?StageDrawEarlyCallback@@YIHPAUStageScriptView@@@Z"
+target_address = 0x00403060
+size = 7
+linkages = [
+  { offset = 0x2, type = "REL32", target = 0x402850, symbol = "?StageDrawEarly@@YGHPAUStageScriptView@@@Z" },
+]
+pdb_source = "src/StageDraw.cpp"
+
+[units.stage-draw-late-callback]
+artifact_kind = "linked-pe"
+source = "src/StageScript.cpp"
+support_sources = ["src/StageLifecycle.cpp", "src/StageDraw.cpp", "src/Chain.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/FileSystem.cpp"]
+output_dir = "build/match-linked/StageRealCallback"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?StageCreate@@YGPAUStageScriptView@@PBDH@Z"
+functions = ["StageDrawLateCallback"]
+symbol = "?StageDrawLateCallback@@YIHPAUStageScriptView@@@Z"
+target_address = 0x00403070
+size = 7
+linkages = [
+  { offset = 0x2, type = "REL32", target = 0x402CA0, symbol = "?StageDrawLate@@YGHPAUStageScriptView@@@Z" },
+]
+pdb_source = "src/StageDraw.cpp"

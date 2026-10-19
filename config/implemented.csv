@@ -1006,3 +1006,7 @@ ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView
 ScriptViewerReleasePopups
 ScriptViewerWorkerView::~ScriptViewerWorkerView
 ScriptViewerView::Draw
+StageUpdateCallback
+StageDrawEarlyCallback
+StageDrawLateCallback
+AnmVmTimerView::Tick

@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-19",
+  "starting_head": "6a688fe",
+  "reason": "Only the timer Tick signature and its unused explicit return change; every mutating statement is byte-identical. Target helper72 has no current-value return move, whereas the old int candidate74 differs by exactly MOV EAX,EDX. Current maintained callers ignore the result. Substituting the prior Tick block reproduces the entire previous normalized header. Other timer, viewport and RNG dependencies and strict normalization/rejection policies remain unchanged. Original return spelling remains unknown; source uses void for the unconsumed result.",
+  "old_sha256_lf": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+  "new_sha256_lf": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+  "old_tick_sha256": "cbce922125986aa49f213008f57a8f43970702f41d6c3c5d3ee496ba32093681",
+  "new_tick_sha256": "e335fc4b666bad7673ed715e6963fe09f91a8065833d7bb97bcbad433e7c2685",
+  "evidence": "docs/evidence/stage-real-callback/README.md"
+}

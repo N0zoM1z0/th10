@@ -1,0 +1,76 @@
+{
+  "incoming": [
+    {
+      "caller": "0x00403C80",
+      "callee": "0x00404F30",
+      "callee_name": "FUN_00404f30",
+      "kind": "internal",
+      "call_sites": "1"
+    },
+    {
+      "caller": "0x00404450",
+      "callee": "0x00404F30",
+      "callee_name": "FUN_00404f30",
+      "kind": "internal",
+      "call_sites": "1"
+    },
+    {
+      "caller": "0x004067D0",
+      "callee": "0x00404F30",
+      "callee_name": "FUN_00404f30",
+      "kind": "internal",
+      "call_sites": "1"
+    },
+    {
+      "caller": "0x00406D90",
+      "callee": "0x00404F30",
+      "callee_name": "FUN_00404f30",
+      "kind": "internal",
+      "call_sites": "1"
+    },
+    {
+      "caller": "0x00409280",
+      "callee": "0x00404F30",
+      "callee_name": "FUN_00404f30",
+      "kind": "internal",
+      "call_sites": "15"
+    },
+    {
+      "caller": "0x0041AFD0",
+      "callee": "0x00404F30",
+      "callee_name": "FUN_00404f30",
+      "kind": "internal",
+      "call_sites": "1"
+    },
+    {
+      "caller": "0x0041BB00",
+      "callee": "0x00404F30",
+      "callee_name": "FUN_00404f30",
+      "kind": "internal",
+      "call_sites": "2"
+    },
+    {
+      "caller": "0x004247F0",
+      "callee": "0x00404F30",
+      "callee_name": "FUN_00404f30",
+      "kind": "internal",
+      "call_sites": "1"
+    }
+  ],
+  "outgoing": [
+    {
+      "caller": "0x00404F30",
+      "callee": "0x00401DE0",
+      "callee_name": "FUN_00401de0",
+      "kind": "internal",
+      "call_sites": "1"
+    },
+    {
+      "caller": "0x00404F30",
+      "callee": "0x0043E710",
+      "callee_name": "FUN_0043e710",
+      "kind": "internal",
+      "call_sites": "1"
+    }
+  ]
+}

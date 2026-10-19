@@ -6,7 +6,7 @@
     "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
     "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
     "src/AnmManager.cpp": "a3952d13f53d5902854ba0fb58e9d126e4ef84a6ef45756831c2eab7f1aed757",
-    "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+    "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
     "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
@@ -77,5 +77,15 @@
     "unchanged_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
     "unchanged_timer_sha256": "122d5f72af44ce1e803489895d285472edb28dcec954df6c7a91069537eae32d",
     "unchanged_viewport_sha256": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b"
+  },
+  "reviewed_timer_tick_return_update": {
+    "date": "2026-10-19",
+    "starting_head": "6a688fe",
+    "reason": "Only the timer Tick signature and its unused explicit return change; every mutating statement is byte-identical. Target helper72 has no current-value return move, whereas the old int candidate74 differs by exactly MOV EAX,EDX. Current maintained callers ignore the result. Substituting the prior Tick block reproduces the entire previous normalized header. Other timer, viewport and RNG dependencies and strict normalization/rejection policies remain unchanged. Original return spelling remains unknown; source uses void for the unconsumed result.",
+    "old_sha256_lf": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+    "new_sha256_lf": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+    "old_tick_sha256": "cbce922125986aa49f213008f57a8f43970702f41d6c3c5d3ee496ba32093681",
+    "new_tick_sha256": "e335fc4b666bad7673ed715e6963fe09f91a8065833d7bb97bcbad433e7c2685",
+    "evidence": "docs/evidence/stage-real-callback/README.md"
   }
 }

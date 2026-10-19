@@ -1,0 +1,175 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_bytes_if_replayed": 376,
+  "new_indeterminate_bytes_if_replayed": 21,
+  "owners": [
+    {
+      "unit": "stage-update",
+      "address": 4204320,
+      "size": 304,
+      "name": "StageScriptView::Update",
+      "symbol": "?Update@StageScriptView@@QAEHXZ",
+      "pdb_source": null,
+      "whole_target_sha256": "3a51b31dbb28faa07ff43dec93a27d67ea93b9272a6caacc49a8234320317c53",
+      "fields": [
+        {
+          "offset": 124,
+          "type": "REL32",
+          "target": 4530556,
+          "symbol": "_D3DXVec3Normalize@8"
+        },
+        {
+          "offset": 139,
+          "type": "REL32",
+          "target": 4209040,
+          "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ"
+        },
+        {
+          "offset": 145,
+          "type": "REL32",
+          "target": 4209792,
+          "symbol": "?StageExecuteScript@@YGHPAUStageScriptView@@@Z"
+        },
+        {
+          "offset": 162,
+          "type": "REL32",
+          "target": 4451888,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+        },
+        {
+          "offset": 187,
+          "type": "DIR32",
+          "target": 4681592,
+          "symbol": "?g_AnmGameSpeed@@3MA"
+        },
+        {
+          "offset": 204,
+          "type": "DIR32",
+          "target": 4681592,
+          "symbol": "?g_AnmGameSpeed@@3MA"
+        },
+        {
+          "offset": 213,
+          "type": "REL32",
+          "target": 4451888,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+        },
+        {
+          "offset": 225,
+          "type": "REL32",
+          "target": 4451888,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+        },
+        {
+          "offset": 237,
+          "type": "REL32",
+          "target": 4451888,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+        },
+        {
+          "offset": 247,
+          "type": "DIR32",
+          "target": 4681592,
+          "symbol": "?g_AnmGameSpeed@@3MA"
+        },
+        {
+          "offset": 263,
+          "type": "DIR32",
+          "target": 4791676,
+          "symbol": "?g_StagePublishedCamera@@3UStageCameraStateView@@A"
+        }
+      ],
+      "decoded_bytes": 304
+    },
+    {
+      "unit": "anm-timer-tick",
+      "address": 4214480,
+      "size": 72,
+      "name": "AnmVmTimerView::Tick",
+      "symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+      "pdb_source": null,
+      "whole_target_sha256": "5349f4fd279892f975448c3dd7bd04000cead49a6aef8ae46bd11ae580fcbde5",
+      "fields": [
+        {
+          "offset": 12,
+          "type": "DIR32",
+          "target": 4655976,
+          "symbol": "__real@3f7d70a4"
+        },
+        {
+          "offset": 27,
+          "type": "DIR32",
+          "target": 4655972,
+          "symbol": "__real@3f8147ae"
+        },
+        {
+          "offset": 44,
+          "type": "DIR32",
+          "target": 4655868,
+          "symbol": "__real@3f800000"
+        },
+        {
+          "offset": 64,
+          "type": "REL32",
+          "target": 4602668,
+          "symbol": "__ftol2"
+        }
+      ],
+      "decoded_bytes": 72
+    },
+    {
+      "unit": "stage-update-callback",
+      "address": 4206672,
+      "size": 7,
+      "name": "StageUpdateCallback",
+      "symbol": "?StageUpdateCallback@@YIHPAUStageScriptView@@@Z",
+      "pdb_source": "src/StageLifecycle.cpp",
+      "whole_target_sha256": "cd5e9a78796b22cacad2d87b5aa1fcf642e45ad27988a1043e08f8b6f5a82298",
+      "fields": [
+        {
+          "offset": 3,
+          "type": "REL32",
+          "target": 4204320,
+          "symbol": "?Update@StageScriptView@@QAEHXZ"
+        }
+      ],
+      "decoded_bytes": 7
+    },
+    {
+      "unit": "stage-draw-early-callback",
+      "address": 4206688,
+      "size": 7,
+      "name": "StageDrawEarlyCallback",
+      "symbol": "?StageDrawEarlyCallback@@YIHPAUStageScriptView@@@Z",
+      "pdb_source": "src/StageDraw.cpp",
+      "whole_target_sha256": "2280536e2da947c656345b91e67f8c92182c4dc6be481e54d16ec810aee17783",
+      "fields": [
+        {
+          "offset": 2,
+          "type": "REL32",
+          "target": 4204624,
+          "symbol": "?StageDrawEarly@@YGHPAUStageScriptView@@@Z"
+        }
+      ],
+      "decoded_bytes": 7
+    },
+    {
+      "unit": "stage-draw-late-callback",
+      "address": 4206704,
+      "size": 7,
+      "name": "StageDrawLateCallback",
+      "symbol": "?StageDrawLateCallback@@YIHPAUStageScriptView@@@Z",
+      "pdb_source": "src/StageDraw.cpp",
+      "whole_target_sha256": "b5b50116b334a14b4dbef4a2adf6384207803ed8acc5b41c0d01b62352289f02",
+      "fields": [
+        {
+          "offset": 2,
+          "type": "REL32",
+          "target": 4205728,
+          "symbol": "?StageDrawLate@@YGHPAUStageScriptView@@@Z"
+        }
+      ],
+      "decoded_bytes": 7
+    }
+  ]
+}

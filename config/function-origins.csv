@@ -52,6 +52,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00402720,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00402850,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00402CA0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
+0x00403050,unknown,Stage,indeterminate,unknown,target-stage-real-callback-complete-2026-10-19-adapter-origin-unresolved
+0x00403060,unknown,Stage,indeterminate,unknown,target-stage-real-callback-complete-2026-10-19-adapter-origin-unresolved
+0x00403070,unknown,Stage,indeterminate,unknown,target-stage-real-callback-complete-2026-10-19-adapter-origin-unresolved
 0x00403090,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x00403850,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00403990,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17

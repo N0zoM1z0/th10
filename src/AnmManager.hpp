@@ -305,7 +305,7 @@ struct AnmVmTimerView
     {
         Add(static_cast<float>(-value));
     }
-    int Tick()
+    void Tick()
     {
         previous = current;
         if (*scale > 0.99f && *scale < 1.01f)
@@ -318,7 +318,6 @@ struct AnmVmTimerView
             subframe = *scale + subframe;
             current = static_cast<int>(subframe);
         }
-        return current;
     }
     void SetCurrent(int value)
     {

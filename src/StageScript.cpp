@@ -70,7 +70,7 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
         case 1:
             stage->scriptTimer.SetCurrent(integers[1]);
             stage->instruction = reinterpret_cast<StageInstructionView *>(
-                stage->scriptBase + integers[0]);
+                stage->scriptBase + stage->instruction->args.integers[0]);
             continue;
         case 2:
             stage->camera.positionDelta = stage->camera.position;
@@ -147,8 +147,8 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             stage->positionInterpolation.initial = stage->camera.position;
             stage->positionInterpolation.initialTangent = initialTangent;
             stage->positionInterpolation.final = final;
-            stage->positionInterpolation.finalTangent = finalTangent;
             stage->positionInterpolation.mode = 8;
+            stage->positionInterpolation.finalTangent = finalTangent;
             stage->positionInterpolation.timer.SetCurrent(0);
             break;
         }
@@ -161,8 +161,8 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             stage->directionInterpolation.initial = stage->camera.direction;
             stage->directionInterpolation.initialTangent = initialTangent;
             stage->directionInterpolation.final = final;
-            stage->directionInterpolation.finalTangent = finalTangent;
             stage->directionInterpolation.mode = 8;
+            stage->directionInterpolation.finalTangent = finalTangent;
             stage->directionInterpolation.timer.SetCurrent(0);
             break;
         }
@@ -174,10 +174,13 @@ int __stdcall StageExecuteScript(StageScriptView *stage)
             g_StageScriptGlobal4923A8 = integers[0];
             break;
         case 14:
-            if (integers[1] < 0)
-                stage->scriptVms[integers[0]].flags35C &= ~1u;
-            else
+            if (integers[1] >= 0)
                 stage->scriptVms[integers[0]].InitializeForLoadedScript(stage->anm, integers[1]);
+            else
+            {
+                AnmVmView *vm = &stage->scriptVms[integers[0]];
+                vm->flags35C &= ~1u;
+            }
             break;
         }
         stage->instruction = reinterpret_cast<StageInstructionView *>(
@@ -200,13 +203,18 @@ updateInterpolations:
         StageFogView value;
         stage->camera.fog = *stage->fogInterpolation.Evaluate(&value);
     }
-    if (stage->rockingMode == 1)
+    if (stage->rockingMode != 0)
     {
-        stage->camera.rockingOffset = static_cast<float>(
-            sin(stage->rockingTimer.subframe * 0.012271846644580364f - 3.1415927410125732f) * -100.0f);
-        stage->rockingTimer.Tick();
-        if (stage->rockingTimer.current >= 512)
-            stage->rockingTimer.SetCurrent(0);
+        switch (stage->rockingMode)
+        {
+        case 1:
+            stage->camera.rockingOffset = static_cast<float>(
+                sin(stage->rockingTimer.subframe * 0.012271846644580364f - 3.1415927410125732f) * -100.0f);
+            stage->rockingTimer.Tick();
+            if (stage->rockingTimer.current >= 512)
+                stage->rockingTimer.SetCurrent(0);
+            break;
+        }
     }
     return 0;
 }
@@ -230,8 +238,9 @@ int StageScriptView::Update()
     {
         float savedGameSpeed = g_AnmGameSpeed;
         g_AnmGameSpeed = 1.0f;
-        for (int i = 0; i < 3; ++i)
-            AnmRenderManagerView::ExecuteScript(&auxiliaryVms[i]);
+        AnmRenderManagerView::ExecuteScript(&auxiliaryVms[0]);
+        AnmRenderManagerView::ExecuteScript(&auxiliaryVms[1]);
+        AnmRenderManagerView::ExecuteScript(&auxiliaryVms[2]);
         g_AnmGameSpeed = savedGameSpeed;
     }
     auxiliaryActive = 0;

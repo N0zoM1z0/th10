@@ -1007,3 +1007,7 @@ ScriptViewerPopupOwnerView::~ScriptViewerPopupOwnerView,0x0042B570,function
 ScriptViewerReleasePopups,0x0042B6D0,function
 ScriptViewerWorkerView::~ScriptViewerWorkerView,0x0044C130,function
 ScriptViewerView::Draw,0x0040A940,function
+StageUpdateCallback,0x00403050,function
+StageDrawEarlyCallback,0x00403060,function
+StageDrawLateCallback,0x00403070,function
+AnmVmTimerView::Tick,0x00404ED0,function

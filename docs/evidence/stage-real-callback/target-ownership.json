@@ -1,0 +1,258 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+  "dispatcher": {
+    "address": 4209792,
+    "old_size": 1806,
+    "size": 1868,
+    "span_end": "0x4043cb",
+    "code_size": 1806,
+    "alignment_size": 2,
+    "table_size": 60,
+    "code_sha256": "234e08e4598fdab9bd08cdbd8600fa31abda8a4845db788ef1a1e2ad1c8bc4b4",
+    "whole_sha256": "85ba20e44d65bc67a3cd8fb38b747ed98f9c8440ea37b9072b21c08f1251a770",
+    "table_sha256": "e64b2acc4067167b727fd1b8764894a2b2390f643fc06eaa1a3beb7f838578dc",
+    "table_address": "0x00404390",
+    "selector": "15 slots0..14; index EAX scale4; unsigned bound14 after reading short opcode",
+    "table_destinations": [
+      {
+        "slot": 0,
+        "destination": "0x4042b4",
+        "offset": 1588
+      },
+      {
+        "slot": 1,
+        "destination": "0x403cbb",
+        "offset": 59
+      },
+      {
+        "slot": 2,
+        "destination": "0x403d02",
+        "offset": 130
+      },
+      {
+        "slot": 3,
+        "destination": "0x403d73",
+        "offset": 243
+      },
+      {
+        "slot": 4,
+        "destination": "0x403dd5",
+        "offset": 341
+      },
+      {
+        "slot": 5,
+        "destination": "0x403df5",
+        "offset": 373
+      },
+      {
+        "slot": 6,
+        "destination": "0x403e51",
+        "offset": 465
+      },
+      {
+        "slot": 7,
+        "destination": "0x403e71",
+        "offset": 497
+      },
+      {
+        "slot": 8,
+        "destination": "0x403e7f",
+        "offset": 511
+      },
+      {
+        "slot": 9,
+        "destination": "0x403eef",
+        "offset": 623
+      },
+      {
+        "slot": 10,
+        "destination": "0x403fca",
+        "offset": 842
+      },
+      {
+        "slot": 11,
+        "destination": "0x4040d2",
+        "offset": 1106
+      },
+      {
+        "slot": 12,
+        "destination": "0x4041ce",
+        "offset": 1358
+      },
+      {
+        "slot": 13,
+        "destination": "0x404202",
+        "offset": 1410
+      },
+      {
+        "slot": 14,
+        "destination": "0x40420c",
+        "offset": 1420
+      }
+    ],
+    "tail_raw_literal_candidates": [
+      {
+        "address": "0x404390",
+        "file_offset": "0x30b7",
+        "mapped_address": "0x403cb7",
+        "classification": "actual indexed-jump displacement"
+      },
+      {
+        "address": "0x4043c7",
+        "file_offset": "0x1462f",
+        "mapped_address": "0x41522f",
+        "classification": "incidental opcode/modrm/displacement/immediate byte sequence, not an address operand",
+        "containing_instruction": "mov dword ptr [ebx + 0x40], 0"
+      }
+    ],
+    "literal_scan_limit": "Exact4-byte little-endian literal scan across complete target; computed references are not excluded.",
+    "added_authored_owned_bytes": 62,
+    "new_exact_bytes": 0,
+    "target_base_relocation_directory": [
+      0,
+      0
+    ],
+    "overlapping_ledger_owners": []
+  },
+  "new_adapters": [
+    {
+      "address": 4206672,
+      "size": 7,
+      "name": "StageUpdateCallback",
+      "source": "src/StageLifecycle.cpp",
+      "registration_reference": "0x402355",
+      "code_sha256": "cd5e9a78796b22cacad2d87b5aa1fcf642e45ad27988a1043e08f8b6f5a82298",
+      "origin": "unknown",
+      "disposition": "indeterminate",
+      "reason": "Registered ECX adapter is compatible with a source wrapper and compiler/LTCG-generated adapter; target bytes and natural source reproduction do not prove original authorship."
+    },
+    {
+      "address": 4206688,
+      "size": 7,
+      "name": "StageDrawEarlyCallback",
+      "source": "src/StageDraw.cpp",
+      "registration_reference": "0x402388",
+      "code_sha256": "2280536e2da947c656345b91e67f8c92182c4dc6be481e54d16ec810aee17783",
+      "origin": "unknown",
+      "disposition": "indeterminate",
+      "reason": "Registered ECX adapter is compatible with a source wrapper and compiler/LTCG-generated adapter; target bytes and natural source reproduction do not prove original authorship."
+    },
+    {
+      "address": 4206704,
+      "size": 7,
+      "name": "StageDrawLateCallback",
+      "source": "src/StageDraw.cpp",
+      "registration_reference": "0x4023ad",
+      "code_sha256": "b5b50116b334a14b4dbef4a2adf6384207803ed8acc5b41c0d01b62352289f02",
+      "origin": "unknown",
+      "disposition": "indeterminate",
+      "reason": "Registered ECX adapter is compatible with a source wrapper and compiler/LTCG-generated adapter; target bytes and natural source reproduction do not prove original authorship."
+    }
+  ],
+  "tick": {
+    "address": "0x00404ED0",
+    "size": 72,
+    "current_value_return_move_in_target": false,
+    "recorded_target_calls": 10,
+    "all_reviewed_postcall_paths_overwrite_eax_before_use": true,
+    "scope": "Void models unconsumed result; original C++ return spelling/class ownership remains unknown. Native prior int74 has a sole additional MOV EAX,EDX; selected void72 strictly replays all bytes/4 fields.",
+    "observed_postcall_overwrites": [
+      {
+        "call_site": "0x00404368",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x00404378",
+            "instruction": "mov eax, esi"
+          },
+          {
+            "address": "0x00404382",
+            "instruction": "xor eax, eax"
+          }
+        ]
+      },
+      {
+        "call_site": "0x00418784",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x0041878C",
+            "instruction": "mov eax, 1"
+          }
+        ]
+      },
+      {
+        "call_site": "0x0042825D",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x00428264",
+            "instruction": "xor eax, eax"
+          }
+        ]
+      },
+      {
+        "call_site": "0x00416F28",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x00416F30",
+            "instruction": "xor eax, eax"
+          }
+        ]
+      },
+      {
+        "call_site": "0x0043BD90",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x0043BD95",
+            "instruction": "mov eax, 1"
+          }
+        ]
+      },
+      {
+        "call_site": "0x0043C2A8",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x0043C2AD",
+            "instruction": "mov eax, 1"
+          }
+        ]
+      },
+      {
+        "call_site": "0x0043C4B1",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x0043C4B7",
+            "instruction": "mov eax, 1"
+          }
+        ]
+      },
+      {
+        "call_site": "0x0043C4EA",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x0043C4F0",
+            "instruction": "mov eax, 1"
+          }
+        ]
+      },
+      {
+        "call_site": "0x0043C752",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x0043C757",
+            "instruction": "mov eax, dword ptr [edi + 0x20]"
+          }
+        ]
+      },
+      {
+        "call_site": "0x0040581E",
+        "eax_overwrites_before_use": [
+          {
+            "address": "0x00405825",
+            "instruction": "mov eax, 1"
+          }
+        ]
+      }
+    ]
+  },
+  "fresh_body_range_export_sha256": "f8fde87c916285a50e28dd24c3a1454846a064d25ef7a606581dc8ed43334e69"
+}

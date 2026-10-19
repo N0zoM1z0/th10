@@ -1,0 +1,1961 @@
+{
+  "schema": 1,
+  "base_commit": "6a688fea76690ee14232b2ccf0fded7858a850be",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact_bytes": 397,
+  "new_authored_exact_bytes": 376,
+  "new_indeterminate_exact_bytes": 21,
+  "added_authored_owned_bytes": 62,
+  "new_exact_functions": 5,
+  "new_bound_fields": 18,
+  "existing_guard_bytes": 590,
+  "existing_guard_fields": 18,
+  "project_input_sha256": {
+    "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+    "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+    "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+    "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+    "src/StageScript.cpp": "536e18dedfafde3f92f68db588a791f33ab5b44e2312bba62802cd5d321da000",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "native_graph": {
+    "primary_source": "src/StageScript.cpp",
+    "support_sources": [
+      "src/StageLifecycle.cpp",
+      "src/StageDraw.cpp",
+      "src/Chain.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/FileSystem.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?StageCreate@@YGPAUStageScriptView@@PBDH@Z",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "canonical_units": [
+    "anm-timer-tick",
+    "stage-draw-early-callback",
+    "stage-draw-late-callback",
+    "stage-update",
+    "stage-update-callback"
+  ],
+  "canonical_output": "build/match-linked/StageRealCallback",
+  "cold_images": [
+    {
+      "strict_report_sha256": "9a8e6c0222b4438ec3d0cff1c31b21b39b029676a9427060fa03266c1f1d2612",
+      "image_sha256": "210e78c4766c4a5801fbb9bf8f4cb6d6471ab7d7d5664378017b629702a048ac",
+      "pdb_guid": "adcd2a0d5a39ca479d38e162024203b4",
+      "pdb_age": 1,
+      "matched_complete_bytes": 987,
+      "bound_fields": 36,
+      "owners": [
+        {
+          "unit": "stage-update",
+          "result": "exact",
+          "symbol": "?Update@StageScriptView@@QAEHXZ",
+          "target_address": "0x00402720",
+          "size": 304,
+          "matched_bytes": 304,
+          "candidate_address": "0x00401960",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 304,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x7C",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "_D3DXVec3Normalize@8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0096",
+              "local": false,
+              "candidate_target": "0x00411180",
+              "target": "0x0045217C",
+              "addend": 0,
+              "target_encoded_value": "0x0004F9DC"
+            },
+            {
+              "offset": "0x8B",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+              "linked_symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+              "local": false,
+              "candidate_target": "0x00401170",
+              "target": "0x00403990",
+              "addend": 0,
+              "target_encoded_value": "0x000011E1"
+            },
+            {
+              "offset": "0x91",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?StageExecuteScript@@YGHPAUStageScriptView@@@Z",
+              "linked_symbol": "?StageExecuteScript@@YGHPAUStageScriptView@@@Z",
+              "local": false,
+              "candidate_target": "0x00401210",
+              "target": "0x00403C80",
+              "addend": 0,
+              "target_encoded_value": "0x000014CB"
+            },
+            {
+              "offset": "0xA2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003C66A"
+            },
+            {
+              "offset": "0xBB",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+              "local": false,
+              "candidate_target": "0x004110CC",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            },
+            {
+              "offset": "0xCC",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+              "local": false,
+              "candidate_target": "0x004110CC",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            },
+            {
+              "offset": "0xD5",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003C637"
+            },
+            {
+              "offset": "0xE1",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003C62B"
+            },
+            {
+              "offset": "0xED",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003C61F"
+            },
+            {
+              "offset": "0xF7",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+              "local": false,
+              "candidate_target": "0x004110CC",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            },
+            {
+              "offset": "0x107",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_StagePublishedCamera@@3UStageCameraStateView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0079",
+              "local": false,
+              "candidate_target": "0x0041113C",
+              "target": "0x00491D7C",
+              "addend": 0,
+              "target_encoded_value": "0x00491D7C"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "anm-timer-tick",
+          "result": "exact",
+          "symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+          "target_address": "0x00404ED0",
+          "size": 72,
+          "matched_bytes": 72,
+          "candidate_address": "0x00401050",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 72,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0xC",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f7d70a4",
+              "linked_symbol": "__real@3f7d70a4",
+              "local": false,
+              "candidate_target": "0x00410240",
+              "target": "0x00470B68",
+              "addend": 0,
+              "target_encoded_value": "0x00470B68"
+            },
+            {
+              "offset": "0x1B",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f8147ae",
+              "linked_symbol": "__real@3f8147ae",
+              "local": false,
+              "candidate_target": "0x0041023C",
+              "target": "0x00470B64",
+              "addend": 0,
+              "target_encoded_value": "0x00470B64"
+            },
+            {
+              "offset": "0x2C",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f800000",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "candidate_target": "0x00410254",
+              "target": "0x00470AFC",
+              "addend": 0,
+              "target_encoded_value": "0x00470AFC"
+            },
+            {
+              "offset": "0x40",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EC18"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-update-callback",
+          "result": "exact",
+          "symbol": "?StageUpdateCallback@@YIHPAUStageScriptView@@@Z",
+          "target_address": "0x00403050",
+          "size": 7,
+          "matched_bytes": 7,
+          "candidate_address": "0x004025F0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 6,
+          "decoded_bytes": 7,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x3",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?Update@StageScriptView@@QAEHXZ",
+              "linked_symbol": "?Update@StageScriptView@@QAEHXZ",
+              "local": false,
+              "candidate_target": "0x00401960",
+              "target": "0x00402720",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF6C9"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-draw-early-callback",
+          "result": "exact",
+          "symbol": "?StageDrawEarlyCallback@@YIHPAUStageScriptView@@@Z",
+          "target_address": "0x00403060",
+          "size": 7,
+          "matched_bytes": 7,
+          "candidate_address": "0x00403A10",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 8,
+          "decoded_bytes": 7,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?StageDrawEarly@@YGHPAUStageScriptView@@@Z",
+              "linked_symbol": "?StageDrawEarly@@YGHPAUStageScriptView@@@Z",
+              "local": false,
+              "candidate_target": "0x004032D0",
+              "target": "0x00402850",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF7EA"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-draw-late-callback",
+          "result": "exact",
+          "symbol": "?StageDrawLateCallback@@YIHPAUStageScriptView@@@Z",
+          "target_address": "0x00403070",
+          "size": 7,
+          "matched_bytes": 7,
+          "candidate_address": "0x00403A20",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 8,
+          "decoded_bytes": 7,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?StageDrawLate@@YGHPAUStageScriptView@@@Z",
+              "linked_symbol": "?StageDrawLate@@YGHPAUStageScriptView@@@Z",
+              "local": false,
+              "candidate_target": "0x00403670",
+              "target": "0x00402CA0",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFFC2A"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-fog-constructor",
+          "result": "exact",
+          "symbol": "??0StageFogView@@QAE@MMMMMM@Z",
+          "target_address": "0x00405040",
+          "size": 94,
+          "matched_bytes": 94,
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 94,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x2E",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EABA"
+            },
+            {
+              "offset": "0x3A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EAAE"
+            },
+            {
+              "offset": "0x46",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EAA2"
+            },
+            {
+              "offset": "0x52",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EA96"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-fog-subtract",
+          "result": "exact",
+          "symbol": "??GStageFogView@@QBE?AU0@ABU0@@Z",
+          "target_address": "0x00404D40",
+          "size": 92,
+          "matched_bytes": 92,
+          "candidate_address": "0x00401A90",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 92,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x3A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EDAE"
+            },
+            {
+              "offset": "0x42",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EDA6"
+            },
+            {
+              "offset": "0x4A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED9E"
+            },
+            {
+              "offset": "0x52",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED96"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-fog-add",
+          "result": "exact",
+          "symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z",
+          "target_address": "0x00404E10",
+          "size": 92,
+          "matched_bytes": 92,
+          "candidate_address": "0x00401AF0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 92,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x3A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ECDE"
+            },
+            {
+              "offset": "0x42",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ECD6"
+            },
+            {
+              "offset": "0x4A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ECCE"
+            },
+            {
+              "offset": "0x52",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ECC6"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-fog-scale",
+          "result": "exact",
+          "symbol": "??DStageFogView@@QBE?AU0@M@Z",
+          "target_address": "0x00404DA0",
+          "size": 101,
+          "matched_bytes": 101,
+          "candidate_address": "0x00401B50",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 101,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x41",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED47"
+            },
+            {
+              "offset": "0x49",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED3F"
+            },
+            {
+              "offset": "0x51",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED37"
+            },
+            {
+              "offset": "0x59",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED2F"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-update-object-vms",
+          "result": "exact",
+          "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+          "target_address": "0x00403990",
+          "size": 154,
+          "matched_bytes": 154,
+          "candidate_address": "0x00401170",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 154,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x54",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003B448"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "guard-timer-set-current",
+          "result": "exact",
+          "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+          "target_address": "0x00405410",
+          "size": 57,
+          "matched_bytes": 57,
+          "candidate_address": "0x004010A0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 57,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x21",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+              "local": false,
+              "candidate_target": "0x004110CC",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        }
+      ]
+    },
+    {
+      "strict_report_sha256": "732a035fbbfd11a3a0481232900f259f38c8d7738b8eba8cf26ca1c30f39cada",
+      "image_sha256": "6338da84eff57037e9da5e2e3b3a5012fb0ce2217747e4edb66256d2e7be3c43",
+      "pdb_guid": "88d906738d3b854caf1b7d93a817a534",
+      "pdb_age": 1,
+      "matched_complete_bytes": 987,
+      "bound_fields": 36,
+      "owners": [
+        {
+          "unit": "stage-update",
+          "result": "exact",
+          "symbol": "?Update@StageScriptView@@QAEHXZ",
+          "target_address": "0x00402720",
+          "size": 304,
+          "matched_bytes": 304,
+          "candidate_address": "0x00401960",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 304,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x7C",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "_D3DXVec3Normalize@8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0096",
+              "local": false,
+              "candidate_target": "0x00411180",
+              "target": "0x0045217C",
+              "addend": 0,
+              "target_encoded_value": "0x0004F9DC"
+            },
+            {
+              "offset": "0x8B",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+              "linked_symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+              "local": false,
+              "candidate_target": "0x00401170",
+              "target": "0x00403990",
+              "addend": 0,
+              "target_encoded_value": "0x000011E1"
+            },
+            {
+              "offset": "0x91",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?StageExecuteScript@@YGHPAUStageScriptView@@@Z",
+              "linked_symbol": "?StageExecuteScript@@YGHPAUStageScriptView@@@Z",
+              "local": false,
+              "candidate_target": "0x00401210",
+              "target": "0x00403C80",
+              "addend": 0,
+              "target_encoded_value": "0x000014CB"
+            },
+            {
+              "offset": "0xA2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003C66A"
+            },
+            {
+              "offset": "0xBB",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+              "local": false,
+              "candidate_target": "0x004110CC",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            },
+            {
+              "offset": "0xCC",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+              "local": false,
+              "candidate_target": "0x004110CC",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            },
+            {
+              "offset": "0xD5",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003C637"
+            },
+            {
+              "offset": "0xE1",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003C62B"
+            },
+            {
+              "offset": "0xED",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003C61F"
+            },
+            {
+              "offset": "0xF7",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+              "local": false,
+              "candidate_target": "0x004110CC",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            },
+            {
+              "offset": "0x107",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_StagePublishedCamera@@3UStageCameraStateView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0079",
+              "local": false,
+              "candidate_target": "0x0041113C",
+              "target": "0x00491D7C",
+              "addend": 0,
+              "target_encoded_value": "0x00491D7C"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "anm-timer-tick",
+          "result": "exact",
+          "symbol": "?Tick@AnmVmTimerView@@QAEXXZ",
+          "target_address": "0x00404ED0",
+          "size": 72,
+          "matched_bytes": 72,
+          "candidate_address": "0x00401050",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 72,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0xC",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f7d70a4",
+              "linked_symbol": "__real@3f7d70a4",
+              "local": false,
+              "candidate_target": "0x00410240",
+              "target": "0x00470B68",
+              "addend": 0,
+              "target_encoded_value": "0x00470B68"
+            },
+            {
+              "offset": "0x1B",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f8147ae",
+              "linked_symbol": "__real@3f8147ae",
+              "local": false,
+              "candidate_target": "0x0041023C",
+              "target": "0x00470B64",
+              "addend": 0,
+              "target_encoded_value": "0x00470B64"
+            },
+            {
+              "offset": "0x2C",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "__real@3f800000",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "candidate_target": "0x00410254",
+              "target": "0x00470AFC",
+              "addend": 0,
+              "target_encoded_value": "0x00470AFC"
+            },
+            {
+              "offset": "0x40",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EC18"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-update-callback",
+          "result": "exact",
+          "symbol": "?StageUpdateCallback@@YIHPAUStageScriptView@@@Z",
+          "target_address": "0x00403050",
+          "size": 7,
+          "matched_bytes": 7,
+          "candidate_address": "0x004025F0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 6,
+          "decoded_bytes": 7,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x3",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?Update@StageScriptView@@QAEHXZ",
+              "linked_symbol": "?Update@StageScriptView@@QAEHXZ",
+              "local": false,
+              "candidate_target": "0x00401960",
+              "target": "0x00402720",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF6C9"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-draw-early-callback",
+          "result": "exact",
+          "symbol": "?StageDrawEarlyCallback@@YIHPAUStageScriptView@@@Z",
+          "target_address": "0x00403060",
+          "size": 7,
+          "matched_bytes": 7,
+          "candidate_address": "0x00403A10",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 8,
+          "decoded_bytes": 7,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?StageDrawEarly@@YGHPAUStageScriptView@@@Z",
+              "linked_symbol": "?StageDrawEarly@@YGHPAUStageScriptView@@@Z",
+              "local": false,
+              "candidate_target": "0x004032D0",
+              "target": "0x00402850",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFF7EA"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-draw-late-callback",
+          "result": "exact",
+          "symbol": "?StageDrawLateCallback@@YIHPAUStageScriptView@@@Z",
+          "target_address": "0x00403070",
+          "size": 7,
+          "matched_bytes": 7,
+          "candidate_address": "0x00403A20",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 8,
+          "decoded_bytes": 7,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x2",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?StageDrawLate@@YGHPAUStageScriptView@@@Z",
+              "linked_symbol": "?StageDrawLate@@YGHPAUStageScriptView@@@Z",
+              "local": false,
+              "candidate_target": "0x00403670",
+              "target": "0x00402CA0",
+              "addend": 0,
+              "target_encoded_value": "0xFFFFFC2A"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-fog-constructor",
+          "result": "exact",
+          "symbol": "??0StageFogView@@QAE@MMMMMM@Z",
+          "target_address": "0x00405040",
+          "size": 94,
+          "matched_bytes": 94,
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 94,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x2E",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EABA"
+            },
+            {
+              "offset": "0x3A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EAAE"
+            },
+            {
+              "offset": "0x46",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EAA2"
+            },
+            {
+              "offset": "0x52",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EA96"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-fog-subtract",
+          "result": "exact",
+          "symbol": "??GStageFogView@@QBE?AU0@ABU0@@Z",
+          "target_address": "0x00404D40",
+          "size": 92,
+          "matched_bytes": 92,
+          "candidate_address": "0x00401A90",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 92,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x3A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EDAE"
+            },
+            {
+              "offset": "0x42",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005EDA6"
+            },
+            {
+              "offset": "0x4A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED9E"
+            },
+            {
+              "offset": "0x52",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED96"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-fog-add",
+          "result": "exact",
+          "symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z",
+          "target_address": "0x00404E10",
+          "size": 92,
+          "matched_bytes": 92,
+          "candidate_address": "0x00401AF0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 92,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x3A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ECDE"
+            },
+            {
+              "offset": "0x42",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ECD6"
+            },
+            {
+              "offset": "0x4A",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ECCE"
+            },
+            {
+              "offset": "0x52",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ECC6"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-fog-scale",
+          "result": "exact",
+          "symbol": "??DStageFogView@@QBE?AU0@M@Z",
+          "target_address": "0x00404DA0",
+          "size": 101,
+          "matched_bytes": 101,
+          "candidate_address": "0x00401B50",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 101,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x41",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED47"
+            },
+            {
+              "offset": "0x49",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED3F"
+            },
+            {
+              "offset": "0x51",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED37"
+            },
+            {
+              "offset": "0x59",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "__ftol2",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0106",
+              "local": false,
+              "candidate_target": "0x004111A8",
+              "target": "0x00463B2C",
+              "addend": 0,
+              "target_encoded_value": "0x0005ED2F"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "stage-update-object-vms",
+          "result": "exact",
+          "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+          "target_address": "0x00403990",
+          "size": 154,
+          "matched_bytes": 154,
+          "candidate_address": "0x00401170",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 154,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x54",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "local": false,
+              "candidate_target": "0x00408C80",
+              "target": "0x0043EE30",
+              "addend": 0,
+              "target_encoded_value": "0x0003B448"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        },
+        {
+          "unit": "guard-timer-set-current",
+          "result": "exact",
+          "symbol": "?SetCurrent@AnmVmTimerView@@QAEXH@Z",
+          "target_address": "0x00405410",
+          "size": 57,
+          "matched_bytes": 57,
+          "candidate_address": "0x004010A0",
+          "extent_source": "pdb-section-contribution",
+          "pdb_module_index": 4,
+          "decoded_bytes": 57,
+          "normalization_complete": true,
+          "data_spans": [],
+          "linkages": [
+            {
+              "offset": "0x21",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0051",
+              "local": false,
+              "candidate_target": "0x004110CC",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            }
+          ],
+          "raw_equal": false,
+          "first_differences": []
+        }
+      ]
+    }
+  ],
+  "diagnostic_controls": [
+    {
+      "variant": "baseline",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "ad3fce58007386fdf2049ed1b7e445bc69caf4c13e41e7d7785c8e263255def9",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 9,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 294,
+          "target_size": 304,
+          "matched_comparable_bytes": 173,
+          "comparable_bytes": 268,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1972,
+          "target_size": 1868,
+          "matched_comparable_bytes": 193,
+          "comparable_bytes": 1776,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "three-aux-calls",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "ee90e129efcb7f16e84fe41bef4007ffdb1ecb904540fed88e6dcae3f7c18da7",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 9,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 304,
+          "target_size": 304,
+          "matched_comparable_bytes": 260,
+          "comparable_bytes": 260,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1972,
+          "target_size": 1868,
+          "matched_comparable_bytes": 193,
+          "comparable_bytes": 1776,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "rocking-switch",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "55a3b9e134678b1036283580b10ff2da6fc2b1a86ca0fd4810cc6fc6aea1fc2e",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "132b4faf9c970ebbf3ec9466400c8aa8c06103ad7a345e1394feb88f369ccbe1",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 9,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 304,
+          "target_size": 304,
+          "matched_comparable_bytes": 260,
+          "comparable_bytes": 260,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1860,
+          "target_size": 1868,
+          "matched_comparable_bytes": 189,
+          "comparable_bytes": 1724,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "void-tick",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "132b4faf9c970ebbf3ec9466400c8aa8c06103ad7a345e1394feb88f369ccbe1",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 9,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 304,
+          "target_size": 304,
+          "matched_comparable_bytes": 260,
+          "comparable_bytes": 260,
+          "normalization_complete": true
+        },
+        "?Tick@AnmVmTimerView@@QAEXXZ": {
+          "candidate_size": 72,
+          "target_size": 72,
+          "matched_comparable_bytes": 56,
+          "comparable_bytes": 56,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1860,
+          "target_size": 1868,
+          "matched_comparable_bytes": 189,
+          "comparable_bytes": 1724,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "dispatch-load-order",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "313dccdc6212df1b089beb19eb46debfba097ca10a761e5a4144a727a44b36c9",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 9,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 304,
+          "target_size": 304,
+          "matched_comparable_bytes": 260,
+          "comparable_bytes": 260,
+          "normalization_complete": true
+        },
+        "?Tick@AnmVmTimerView@@QAEXXZ": {
+          "candidate_size": 72,
+          "target_size": 72,
+          "matched_comparable_bytes": 56,
+          "comparable_bytes": 56,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1892,
+          "target_size": 1868,
+          "matched_comparable_bytes": 297,
+          "comparable_bytes": 1748,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "dispatch-no-channel-snapshots",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "536e18dedfafde3f92f68db588a791f33ab5b44e2312bba62802cd5d321da000",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 9,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 304,
+          "target_size": 304,
+          "matched_comparable_bytes": 260,
+          "comparable_bytes": 260,
+          "normalization_complete": true
+        },
+        "?Tick@AnmVmTimerView@@QAEXXZ": {
+          "candidate_size": 72,
+          "target_size": 72,
+          "matched_comparable_bytes": 56,
+          "comparable_bytes": 56,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1868,
+          "target_size": 1868,
+          "matched_comparable_bytes": 1236,
+          "comparable_bytes": 1724,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "real-bullet-caller",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.cpp": "f71176f3f9e3c94663391f13f56c52c89babad09b63f46b4114fb73aafa1b5b8",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Player.hpp": "1747c454b804c1401365dd31735638600926442750d29351b074dfc6248a8f6a",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "536e18dedfafde3f92f68db588a791f33ab5b44e2312bba62802cd5d321da000",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 10,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 304,
+          "target_size": 304,
+          "matched_comparable_bytes": 260,
+          "comparable_bytes": 260,
+          "normalization_complete": true
+        },
+        "?Tick@AnmVmTimerView@@QAEXXZ": {
+          "candidate_size": 72,
+          "target_size": 72,
+          "matched_comparable_bytes": 56,
+          "comparable_bytes": 56,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1868,
+          "target_size": 1868,
+          "matched_comparable_bytes": 1236,
+          "comparable_bytes": 1724,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "typed-arg-slots",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "1dc9784ce33e0f160d71c2080326935032629a0aea392ac83e676a9f17433fc9",
+        "src/StageScript.hpp": "fa3d06582bf68aa0662d5e6c5f4e2b9624f159c48231681670fea73d4a94d534"
+      },
+      "translation_units": 9,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 304,
+          "target_size": 304,
+          "matched_comparable_bytes": 260,
+          "comparable_bytes": 260,
+          "normalization_complete": true
+        },
+        "?Tick@AnmVmTimerView@@QAEXXZ": {
+          "candidate_size": 72,
+          "target_size": 72,
+          "matched_comparable_bytes": 56,
+          "comparable_bytes": 56,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1868,
+          "target_size": 1868,
+          "matched_comparable_bytes": 1236,
+          "comparable_bytes": 1724,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "cold2",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "536e18dedfafde3f92f68db588a791f33ab5b44e2312bba62802cd5d321da000",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 9,
+      "reports": {
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_size": 304,
+          "target_size": 304,
+          "matched_comparable_bytes": 260,
+          "comparable_bytes": 260,
+          "normalization_complete": true
+        },
+        "?Tick@AnmVmTimerView@@QAEXXZ": {
+          "candidate_size": 72,
+          "target_size": 72,
+          "matched_comparable_bytes": 56,
+          "comparable_bytes": 56,
+          "normalization_complete": true
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_size": 1868,
+          "target_size": 1868,
+          "matched_comparable_bytes": 1236,
+          "comparable_bytes": 1724,
+          "normalization_complete": true
+        }
+      },
+      "acceptance_authority": "none; only final complete strict replay grants exact credit"
+    },
+    {
+      "variant": "real-spell-caller",
+      "project_input_sha256": {
+        "src/AnmManager.cpp": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.cpp": "ad7aa94ce32aa71399ca5df774d259e7526730afdf4410b6482f129b43477a3c",
+        "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "0bf2353635f2844649361955dd473a5c795bba8107dca60833be3439a377a8f6",
+        "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Player.hpp": "1747c454b804c1401365dd31735638600926442750d29351b074dfc6248a8f6a",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "826b2331d71635a36429e9a70c461a2435f80891dc980e5d07abde0382c47327",
+        "src/StageLifecycle.cpp": "1ca40f10de1316c2d7fdfe7839835a85eee3f789e7233b16865b0a11ff373b1c",
+        "src/StageScript.cpp": "536e18dedfafde3f92f68db588a791f33ab5b44e2312bba62802cd5d321da000",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "translation_units": 10,
+      "added_real_source": "src/EnemyEclDispatcher.cpp",
+      "dispatcher_size": 1868,
+      "dispatcher_diagnostic_ordinary_match": [
+        1236,
+        1724
+      ],
+      "normalized_instruction_and_size_sequence_equal_to_selected": true,
+      "strict_guard_bytes": 987,
+      "strict_guard_fields": 36,
+      "pdb_guid": "e3ee6f3bbc91e94084bb006cab38145b",
+      "image_sha256": "5b94343bc95f8e7253871b9a33ed63d3f72102a971a7da14a88bf5f81be70bc7",
+      "acceptance_authority": "none; no new exact credit and canonical context unchanged"
+    }
+  ],
+  "target_attestation": {
+    "mapped_text_start": "0x00401000",
+    "mapped_text_length": "0x64A80",
+    "mapped_text_before_after_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+    "mode": "local Ghidra readOnly with transaction rollback; disk target and complete mapped .text attested before and after",
+    "evidence_script_sha256": {
+      "ghidra/StageCallbackReview.java": "a96958b6270d6d761e56ae3bcccd3ad165fcd13aef7ba948a2b2672ea9648ffc",
+      "ghidra/StageHelperReview.java": "d81152f153fd276bc952f4375ace0876fedf11cdac17503b5c10a2301b8877ee",
+      "review_fields.py": "8786a77d9df7fe648a7aaf4695124d98f17cf00156af9be08333b7e1c7098fa5",
+      "review_ownership.py": "3211276c08e2172bbcaca881bfcb2f1114bcb5a620f078a488c9807a628082bf"
+    }
+  },
+  "tooling_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/compare-linked-function.py": "91d99cbe2aa16da5ea7aa97222deb2f30b2f0471f64cc075a81203bba2357bbd",
+    "scripts/linked_image.py": "5d667184a743874d1728c96a91bc1fd6176249dfd1c8413a2b04325d5f7b53b0"
+  },
+  "resource_policy": {
+    "native_jobs": 1,
+    "nice": 10,
+    "ghidra_heap_mib": 768,
+    "ghidra_cpus": 1
+  },
+  "limitations": [
+    "Diagnostic anchors do not provide a runnable product.",
+    "No exact credit for the complete target-sized1868 dispatcher or any case fragment.",
+    "Adapter origin stays indeterminate; inline Tick native materialization does not prove original TU/class/return spelling.",
+    "No runtime, published-camera alias, semantic or portability closure."
+  ],
+  "canonical_default_replay": [
+    {
+      "unit": "stage-update",
+      "result": "exact",
+      "size": 304,
+      "matched_bytes": 304,
+      "normalization_complete": true,
+      "image_sha256": "6338da84eff57037e9da5e2e3b3a5012fb0ce2217747e4edb66256d2e7be3c43",
+      "pdb_guid": "88d906738d3b854caf1b7d93a817a534"
+    },
+    {
+      "unit": "anm-timer-tick",
+      "result": "exact",
+      "size": 72,
+      "matched_bytes": 72,
+      "normalization_complete": true,
+      "image_sha256": "6338da84eff57037e9da5e2e3b3a5012fb0ce2217747e4edb66256d2e7be3c43",
+      "pdb_guid": "88d906738d3b854caf1b7d93a817a534"
+    },
+    {
+      "unit": "stage-update-callback",
+      "result": "exact",
+      "size": 7,
+      "matched_bytes": 7,
+      "normalization_complete": true,
+      "image_sha256": "6338da84eff57037e9da5e2e3b3a5012fb0ce2217747e4edb66256d2e7be3c43",
+      "pdb_guid": "88d906738d3b854caf1b7d93a817a534"
+    },
+    {
+      "unit": "stage-draw-early-callback",
+      "result": "exact",
+      "size": 7,
+      "matched_bytes": 7,
+      "normalization_complete": true,
+      "image_sha256": "6338da84eff57037e9da5e2e3b3a5012fb0ce2217747e4edb66256d2e7be3c43",
+      "pdb_guid": "88d906738d3b854caf1b7d93a817a534"
+    },
+    {
+      "unit": "stage-draw-late-callback",
+      "result": "exact",
+      "size": 7,
+      "matched_bytes": 7,
+      "normalization_complete": true,
+      "image_sha256": "6338da84eff57037e9da5e2e3b3a5012fb0ce2217747e4edb66256d2e7be3c43",
+      "pdb_guid": "88d906738d3b854caf1b7d93a817a534"
+    }
+  ],
+  "next_owner_context_observation": {
+    "candidate_size": 2476,
+    "matched_comparable_bytes": 771,
+    "comparable_bytes": 2032,
+    "normalization_complete": true,
+    "address": "0x00409280",
+    "target_size": 2432,
+    "owner": "EnemyBeginSpell",
+    "acceptance_authority": "none; context-specific observation only"
+  },
+  "verification": {
+    "canonical_default_new_units": {
+      "result": "passed",
+      "complete_bytes": 397,
+      "bound_fields": 18
+    },
+    "two_cold_complete_guards": {
+      "result": "passed",
+      "complete_bytes_each": 987,
+      "bound_fields_each": 36
+    },
+    "extra_real_spell_caller_control": {
+      "result": "passed",
+      "complete_bytes": 987,
+      "bound_fields": 36,
+      "dispatcher_effect": "normalized instruction/size sequence identical"
+    },
+    "public_ci": {
+      "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+      "exit_code": 0,
+      "log_sha256": "78aba5c4f62b33f8cf5c4f179e8773e94be67dcaee65d3a12562aea12db33dae",
+      "transition_assertions": 843,
+      "eol_pin_tests": [
+        19,
+        19
+      ]
+    },
+    "final_checks": [
+      "scripts/repo-python scripts/verify-toolchain.py --check",
+      "scripts/repo-python scripts/validate-tracking.py",
+      "scripts/repo-python scripts/progress.py",
+      "git diff --check"
+    ]
+  },
+  "cleanup": {
+    "freed_bytes": 6227011,
+    "canonical_image_retained": true,
+    "other_retained_image": "EnemyBeginSpell unresolved2476/2432 PE/MAP/PDB only",
+    "unrelated_d3d_evidence_preserved": true
+  }
+}
