@@ -1,0 +1,275 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owners": [
+    {
+      "name": "StageFogView::StageFogView",
+      "address": "0x405040",
+      "size": 94,
+      "target_code_sha256": "7322085a4185f69324772b2caf08831ee1392aa0eba73f18ee343395f402dc64",
+      "decoded_instructions": 26,
+      "decoded_bytes": 94,
+      "fields": [
+        {
+          "offset": 46,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x40506d"
+        },
+        {
+          "offset": 58,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x405079"
+        },
+        {
+          "offset": 70,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x405085"
+        },
+        {
+          "offset": 82,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x405091"
+        }
+      ]
+    },
+    {
+      "name": "StageFogView::operator-",
+      "address": "0x404d40",
+      "size": 92,
+      "target_code_sha256": "d269403c7feb70224efa350a106cb1a82c486b9452fcd56916cc552a6d5b45e6",
+      "decoded_instructions": 31,
+      "decoded_bytes": 92,
+      "fields": [
+        {
+          "offset": 58,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404d79"
+        },
+        {
+          "offset": 66,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404d81"
+        },
+        {
+          "offset": 74,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404d89"
+        },
+        {
+          "offset": 82,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404d91"
+        }
+      ]
+    },
+    {
+      "name": "StageFogView::operator+",
+      "address": "0x404e10",
+      "size": 92,
+      "target_code_sha256": "fa8f0bf017fcb7f1677e684960400384ba5ac21e2bdddff6645345b1ccf52957",
+      "decoded_instructions": 31,
+      "decoded_bytes": 92,
+      "fields": [
+        {
+          "offset": 58,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404e49"
+        },
+        {
+          "offset": 66,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404e51"
+        },
+        {
+          "offset": 74,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404e59"
+        },
+        {
+          "offset": 82,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404e61"
+        }
+      ]
+    },
+    {
+      "name": "StageFogView::operator*",
+      "address": "0x404da0",
+      "size": 101,
+      "target_code_sha256": "822800b5f98f4e52cc37ea719a895fc7c6eb4b647c8fac3ca94efabf7000da9e",
+      "decoded_instructions": 31,
+      "decoded_bytes": 101,
+      "fields": [
+        {
+          "offset": 65,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404de0"
+        },
+        {
+          "offset": 73,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404de8"
+        },
+        {
+          "offset": 81,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404df0"
+        },
+        {
+          "offset": 89,
+          "type": "REL32",
+          "target": "0x463b2c",
+          "call_instruction": "0x404df8"
+        }
+      ]
+    },
+    {
+      "name": "StageScriptView::UpdateObjectVms",
+      "address": "0x403990",
+      "size": 154,
+      "target_code_sha256": "8abd2d62f3e20010cae91de53f04ddcb999d0b78a203c56195092481f5bdf87d",
+      "decoded_instructions": 51,
+      "decoded_bytes": 154,
+      "fields": [
+        {
+          "offset": 84,
+          "type": "REL32",
+          "target": "0x43ee30",
+          "call_instruction": "0x4039e3"
+        }
+      ]
+    }
+  ],
+  "provider": "local read-only hash-attested Ghidra12.1.3 plus pinned Capstone5.0.6 full target decode",
+  "mapped_text": {
+    "start": "0x00401000",
+    "size": "0x64A80",
+    "before_and_after_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+    "transaction_rolled_back": true,
+    "headless_read_only": true
+  },
+  "machine_interfaces": {
+    "constructor": "ESI receiver; six float32 stack arguments; RET24; EAX self",
+    "subtract_and_add": "ECX left, EAX right, ESI hidden result; RET; EAX result",
+    "scale": "EAX value, ESI hidden result, one float32 stack argument; RET4; EAX result",
+    "update_object_vms": "EBX stage; plain RET; returns zero in EAX"
+  },
+  "updater_physical_extent": {
+    "start": "0x00403990",
+    "end_inclusive": "0x00403A29",
+    "size": 154,
+    "ghidra_body_bytes": 148,
+    "internal_alignment_start": "0x004039AA",
+    "internal_alignment_bytes": 6,
+    "claim": "all154 physical bytes are reproduced; no manual padding or boundary change"
+  },
+  "shared_conversion": {
+    "symbol": "__ftol2",
+    "target": "0x00463B2C",
+    "references": 16,
+    "claim": "four per constructor/arithmetic owner; low byte stored without saturation; native arithmetic retains live x87 values across FST color stores"
+  },
+  "remaining_owners": {
+    "fog_evaluator": "664/688, frame0xD4 agrees, same14 direct-call identities/order; nonexact",
+    "stage_update": "294/304; nonexact",
+    "stage_dispatcher": "candidate1972-byte contribution versus reviewed1806 code bytes; separately provisional table ownership unchanged, no parent credit"
+  },
+  "next_evaluator_frontier": {
+    "evidence_kind": "target/candidate instructions; proposed source controls remain hypotheses",
+    "target_initial_snapshots": [
+      "mode7: seven-dword initial copy before add at owner+0x10F",
+      "mode17: seven-dword initial copy before add at owner+0x143"
+    ],
+    "candidate_initial_operands": "initial is passed directly to add in both paths; no initial snapshot",
+    "target_easing_mode_register": "EAX; target begins DEC EAX before indexed dispatch",
+    "target_easing_returns": [
+      [
+        "0x44c36d",
+        "8"
+      ],
+      [
+        "0x44c380",
+        "8"
+      ],
+      [
+        "0x44c389",
+        "8"
+      ],
+      [
+        "0x44c3a4",
+        "8"
+      ],
+      [
+        "0x44c3af",
+        "8"
+      ],
+      [
+        "0x44c3cc",
+        "8"
+      ],
+      [
+        "0x44c3e8",
+        "8"
+      ],
+      [
+        "0x44c401",
+        "8"
+      ],
+      [
+        "0x44c429",
+        "8"
+      ],
+      [
+        "0x44c442",
+        "8"
+      ],
+      [
+        "0x44c460",
+        "8"
+      ],
+      [
+        "0x44c4bc",
+        "8"
+      ],
+      [
+        "0x44c4df",
+        "8"
+      ],
+      [
+        "0x44c511",
+        "8"
+      ],
+      [
+        "0x44c534",
+        "8"
+      ],
+      [
+        "0x44c53f",
+        "8"
+      ],
+      [
+        "0x44c54a",
+        "8"
+      ]
+    ],
+    "target_evaluator_easing_call": "owner+0x262, no caller ADD ESP8",
+    "candidate_evaluator_easing_call": "owner+0x247; caller ADD ESP8 at+0x254",
+    "current_source_declaration": "ordinary cdecl CalculateAnmInterpolation(int,float,float)",
+    "next_falsifiable_controls": "scoped initial-value copies in modes7/17; verified callee-pop source interface for shared easing function; completion final-first branch orientation",
+    "constraints": "No source changes at this checkpoint. Preserve all new533 exact bytes. Callee source annotation/original declaration remains unproved; do not claim a standard fastcall EAX interface or promote its code-only509-byte ledger extent/table."
+  }
+}

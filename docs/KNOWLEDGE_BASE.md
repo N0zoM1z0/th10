@@ -2396,3 +2396,32 @@ The existing88-byte undecoded selector limitation is preserved; no comparator
 relaxation, partial credit or parked FORMAT retry occurs. This changes no exact
 ledger count or byte numerator. Remaining large-owner register/stack/context
 work and native product/runtime closure remain open.
+
+### 2026-10-19: Complete stage Fog and object-VM native closure
+
+The [native closure evidence](evidence/stage-fog-native/README.md) adds533
+reviewed authored exact bytes without source/boundary/origin changes: six-float
+Fog constructor94, subtraction92, addition92, scalar multiplication101 and
+UpdateObjectVms154. Two independent cold real-Stage-Update /GL /GS links reproduce
+all complete PDB-owned extents and17 independently target-bound fields. All16
+conversion fields bind __ftol2 at0x463B2C; the updater binds ANM ExecuteScript.
+Thirteen project CPP/quoted-header hashes agree. The new canonical units pass
+at their declared default output directory. Earlier structural-only/no-helper-
+credit wording is historical and does not grant the larger evaluator credit.
+
+The updater's148-byte Ghidra reachable body excludes six internal compiler
+alignment bytes inside the existing154-byte physical owner. Full replay includes
+those bytes; no padding is added and the authored denominator does not change.
+Fog arithmetic retains live x87 color results across FST before low-byte packing
+without saturation. Its actual complete codegen, including hidden-result and
+private argument contracts, is proved only in the declared native context;
+original source/class/TU identities and host conversion semantics remain unknown.
+
+The unchanged evaluator remains664/688 with matching0xD4 frame and14 direct-call
+identities/order. Stage Update remains294/304. Dispatcher1972 includes its
+compiler contribution while the tracked1806 boundary is code-only and table
+ownership remains separately provisional; no parent or partial-case credit,
+boundary rewrite or native product/runtime closure follows. The next coherent
+frontier is the complete evaluator's control flow/temporary lifetime, preserving
+the newly exact arithmetic dependencies rather than changing their ABI or
+forcing stores. One canonical image remains; duplicate cold artifacts are removed.

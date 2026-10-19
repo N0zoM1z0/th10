@@ -1,0 +1,1472 @@
+{
+  "schema": 1,
+  "base_commit": "71e3acd",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_exact_bytes": 533,
+  "new_exact_functions": 5,
+  "new_linkage_fields": 17,
+  "source_changes": false,
+  "boundary_or_origin_changes": false,
+  "project_input_sha256": {
+    "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+    "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.cpp": "247be01c76616dc2ec7d97f370b6e8d3ffa643cdd45c113d493f8b6c73c1f061",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "native_graph": {
+    "primary_source": "src/StageScript.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?Update@StageScriptView@@QAEHXZ"
+  },
+  "canonical_units": [
+    "stage-fog-constructor",
+    "stage-fog-subtract",
+    "stage-fog-add",
+    "stage-fog-scale",
+    "stage-update-object-vms"
+  ],
+  "canonical_default_replay": {
+    "matched_bytes": 533,
+    "linkage_count": 17,
+    "results": [
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x00401110",
+        "capstone_version": "5.0.6",
+        "compared_size": 94,
+        "data_spans": [],
+        "decoded_bytes": 94,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/StageFog/source.exe",
+        "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x2E",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005EABA",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x3A",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005EAAE",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x46",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005EAA2",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x52",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005EA96",
+            "type": "REL32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 94,
+        "matched_compared_bytes": 94,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+        "pdb_module_index": 2,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 94,
+        "symbol": "??0StageFogView@@QAE@MMMMMM@Z",
+        "target_address": "0x00405040",
+        "unit": "stage-fog-constructor"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x00401B00",
+        "capstone_version": "5.0.6",
+        "compared_size": 92,
+        "data_spans": [],
+        "decoded_bytes": 92,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/StageFog/source.exe",
+        "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x3A",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005EDAE",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x42",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005EDA6",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x4A",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ED9E",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x52",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ED96",
+            "type": "REL32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 92,
+        "matched_compared_bytes": 92,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+        "pdb_module_index": 2,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 92,
+        "symbol": "??GStageFogView@@QBE?AU0@ABU0@@Z",
+        "target_address": "0x00404D40",
+        "unit": "stage-fog-subtract"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x00401B60",
+        "capstone_version": "5.0.6",
+        "compared_size": 92,
+        "data_spans": [],
+        "decoded_bytes": 92,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/StageFog/source.exe",
+        "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x3A",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ECDE",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x42",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ECD6",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x4A",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ECCE",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x52",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ECC6",
+            "type": "REL32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 92,
+        "matched_compared_bytes": 92,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+        "pdb_module_index": 2,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 92,
+        "symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z",
+        "target_address": "0x00404E10",
+        "unit": "stage-fog-add"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x00401BC0",
+        "capstone_version": "5.0.6",
+        "compared_size": 101,
+        "data_spans": [],
+        "decoded_bytes": 101,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/StageFog/source.exe",
+        "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x41",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ED47",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x49",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ED3F",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x51",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ED37",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040F154",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+            "local": false,
+            "offset": "0x59",
+            "symbol": "__ftol2",
+            "target": "0x00463B2C",
+            "target_encoded_value": "0x0005ED2F",
+            "type": "REL32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 101,
+        "matched_compared_bytes": 101,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+        "pdb_module_index": 2,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 101,
+        "symbol": "??DStageFogView@@QBE?AU0@M@Z",
+        "target_address": "0x00404DA0",
+        "unit": "stage-fog-scale"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x00401170",
+        "capstone_version": "5.0.6",
+        "compared_size": 154,
+        "data_spans": [],
+        "decoded_bytes": 154,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/StageFog/source.exe",
+        "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x00406F30",
+            "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "local": false,
+            "offset": "0x54",
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "target": "0x0043EE30",
+            "target_encoded_value": "0x0003B448",
+            "type": "REL32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 154,
+        "matched_compared_bytes": 154,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+        "pdb_module_index": 2,
+        "raw_equal": false,
+        "result": "exact",
+        "size": 154,
+        "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+        "target_address": "0x00403990",
+        "unit": "stage-update-object-vms"
+      }
+    ]
+  },
+  "cold_images": {
+    "cold1": {
+      "image_sha256": "1bf3bf7e69113638c7f95c5ea62cd7f0f92558a1d7399d55deb3c1e9500b6b4c",
+      "complete_owners": {
+        "??0StageFogView@@QAE@MMMMMM@Z": {
+          "candidate_address": "0x00401110",
+          "candidate_size": 94,
+          "target_size": 94,
+          "matched_comparable_bytes": 78,
+          "comparable_bytes": 78,
+          "normalization_complete": true,
+          "complete_code_sha256": "77d0affc3ac802d0aa59324223a95bbbfcb12cdd0afba04816930c01316d058b"
+        },
+        "??GStageFogView@@QBE?AU0@ABU0@@Z": {
+          "candidate_address": "0x00401B00",
+          "candidate_size": 92,
+          "target_size": 92,
+          "matched_comparable_bytes": 76,
+          "comparable_bytes": 76,
+          "normalization_complete": true,
+          "complete_code_sha256": "87939e925f8b81b3fb56519c120430e6114e70ee8c602c28aca5dc6e18aad8ba"
+        },
+        "??HStageFogView@@QBE?AU0@ABU0@@Z": {
+          "candidate_address": "0x00401B60",
+          "candidate_size": 92,
+          "target_size": 92,
+          "matched_comparable_bytes": 76,
+          "comparable_bytes": 76,
+          "normalization_complete": true,
+          "complete_code_sha256": "e02065ce41bb9da2eba3afe768d5697b74d32ee078e246132d2f4c480a8a7834"
+        },
+        "??DStageFogView@@QBE?AU0@M@Z": {
+          "candidate_address": "0x00401BC0",
+          "candidate_size": 101,
+          "target_size": 101,
+          "matched_comparable_bytes": 85,
+          "comparable_bytes": 85,
+          "normalization_complete": true,
+          "complete_code_sha256": "2be868416dac6664396ffa4d5dc2f8a07e002466a98d48ea5ca5fda98ad3f29c"
+        },
+        "?UpdateObjectVms@StageScriptView@@QAEHXZ": {
+          "candidate_address": "0x00401170",
+          "candidate_size": 154,
+          "target_size": 154,
+          "matched_comparable_bytes": 150,
+          "comparable_bytes": 150,
+          "normalization_complete": true,
+          "complete_code_sha256": "401a39db9f299398845a636f508ba590037deb4419e96ad3bcf0e6aa17720454"
+        },
+        "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z": {
+          "candidate_address": "0x00401C30",
+          "candidate_size": 664,
+          "target_size": 688,
+          "matched_comparable_bytes": 228,
+          "comparable_bytes": 600,
+          "normalization_complete": true,
+          "complete_code_sha256": "684e23ab02e0c328897ec43a070f54eac0c1f1efabdb9de53560e768a139c33d"
+        },
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_address": "0x004019D0",
+          "candidate_size": 294,
+          "target_size": 304,
+          "matched_comparable_bytes": 180,
+          "comparable_bytes": 268,
+          "normalization_complete": true,
+          "complete_code_sha256": "38ef6c881e13a1a3ad9c96bd6fc0dc084393fae534ca2afce8575a46173d1561"
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_address": "0x00401210",
+          "candidate_size": 1972,
+          "target_size": 1806,
+          "matched_comparable_bytes": 192,
+          "comparable_bytes": 1722,
+          "normalization_complete": true,
+          "complete_code_sha256": "cec11acd74362364c2b8d19817ce73914fe876dcd7bb48e4547ad6d8155498f6"
+        }
+      },
+      "strict_replay": {
+        "claim": "complete target-bound strict replay in declared maintained Stage Update graph; no product/runtime claim",
+        "variant": "cold1",
+        "project_input_sha256": {
+          "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+          "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+          "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+          "src/StageScript.cpp": "247be01c76616dc2ec7d97f370b6e8d3ffa643cdd45c113d493f8b6c73c1f061",
+          "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+        },
+        "manifest_sha256": "ee54b5c7f8f6aaf34b40eba4eaded891a1ee55d77ad99d2e852faa739392c95b",
+        "results": [
+          {
+            "unit": "stage-fog-constructor",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "??0StageFogView@@QAE@MMMMMM@Z",
+            "target_address": "0x00405040",
+            "size": 94,
+            "matched_bytes": 94,
+            "compared_size": 94,
+            "matched_compared_bytes": 94,
+            "image": "build/gpt-6.1-sol/th10-stage-fog-20261019/cold1/source.exe",
+            "image_sha256": "1bf3bf7e69113638c7f95c5ea62cd7f0f92558a1d7399d55deb3c1e9500b6b4c",
+            "pdb_guid": "8d438b3dd985df409c4090aff52b675e",
+            "pdb_age": 1,
+            "candidate_address": "0x00401110",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 94,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x2E",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EABA"
+              },
+              {
+                "offset": "0x3A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EAAE"
+              },
+              {
+                "offset": "0x46",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EAA2"
+              },
+              {
+                "offset": "0x52",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EA96"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          },
+          {
+            "unit": "stage-fog-subtract",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "??GStageFogView@@QBE?AU0@ABU0@@Z",
+            "target_address": "0x00404D40",
+            "size": 92,
+            "matched_bytes": 92,
+            "compared_size": 92,
+            "matched_compared_bytes": 92,
+            "image": "build/gpt-6.1-sol/th10-stage-fog-20261019/cold1/source.exe",
+            "image_sha256": "1bf3bf7e69113638c7f95c5ea62cd7f0f92558a1d7399d55deb3c1e9500b6b4c",
+            "pdb_guid": "8d438b3dd985df409c4090aff52b675e",
+            "pdb_age": 1,
+            "candidate_address": "0x00401B00",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 92,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x3A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EDAE"
+              },
+              {
+                "offset": "0x42",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EDA6"
+              },
+              {
+                "offset": "0x4A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED9E"
+              },
+              {
+                "offset": "0x52",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED96"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          },
+          {
+            "unit": "stage-fog-add",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z",
+            "target_address": "0x00404E10",
+            "size": 92,
+            "matched_bytes": 92,
+            "compared_size": 92,
+            "matched_compared_bytes": 92,
+            "image": "build/gpt-6.1-sol/th10-stage-fog-20261019/cold1/source.exe",
+            "image_sha256": "1bf3bf7e69113638c7f95c5ea62cd7f0f92558a1d7399d55deb3c1e9500b6b4c",
+            "pdb_guid": "8d438b3dd985df409c4090aff52b675e",
+            "pdb_age": 1,
+            "candidate_address": "0x00401B60",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 92,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x3A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ECDE"
+              },
+              {
+                "offset": "0x42",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ECD6"
+              },
+              {
+                "offset": "0x4A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ECCE"
+              },
+              {
+                "offset": "0x52",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ECC6"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          },
+          {
+            "unit": "stage-fog-scale",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "??DStageFogView@@QBE?AU0@M@Z",
+            "target_address": "0x00404DA0",
+            "size": 101,
+            "matched_bytes": 101,
+            "compared_size": 101,
+            "matched_compared_bytes": 101,
+            "image": "build/gpt-6.1-sol/th10-stage-fog-20261019/cold1/source.exe",
+            "image_sha256": "1bf3bf7e69113638c7f95c5ea62cd7f0f92558a1d7399d55deb3c1e9500b6b4c",
+            "pdb_guid": "8d438b3dd985df409c4090aff52b675e",
+            "pdb_age": 1,
+            "candidate_address": "0x00401BC0",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 101,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x41",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED47"
+              },
+              {
+                "offset": "0x49",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED3F"
+              },
+              {
+                "offset": "0x51",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED37"
+              },
+              {
+                "offset": "0x59",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED2F"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          },
+          {
+            "unit": "stage-update-object-vms",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+            "target_address": "0x00403990",
+            "size": 154,
+            "matched_bytes": 154,
+            "compared_size": 154,
+            "matched_compared_bytes": 154,
+            "image": "build/gpt-6.1-sol/th10-stage-fog-20261019/cold1/source.exe",
+            "image_sha256": "1bf3bf7e69113638c7f95c5ea62cd7f0f92558a1d7399d55deb3c1e9500b6b4c",
+            "pdb_guid": "8d438b3dd985df409c4090aff52b675e",
+            "pdb_age": 1,
+            "candidate_address": "0x00401170",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 154,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x54",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+                "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+                "local": false,
+                "candidate_target": "0x00406F30",
+                "target": "0x0043EE30",
+                "addend": 0,
+                "target_encoded_value": "0x0003B448"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          }
+        ],
+        "matched_bytes": 533,
+        "linkage_count": 17
+      }
+    },
+    "cold2": {
+      "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+      "complete_owners": {
+        "??0StageFogView@@QAE@MMMMMM@Z": {
+          "candidate_address": "0x00401110",
+          "candidate_size": 94,
+          "target_size": 94,
+          "matched_comparable_bytes": 78,
+          "comparable_bytes": 78,
+          "normalization_complete": true,
+          "complete_code_sha256": "77d0affc3ac802d0aa59324223a95bbbfcb12cdd0afba04816930c01316d058b"
+        },
+        "??GStageFogView@@QBE?AU0@ABU0@@Z": {
+          "candidate_address": "0x00401B00",
+          "candidate_size": 92,
+          "target_size": 92,
+          "matched_comparable_bytes": 76,
+          "comparable_bytes": 76,
+          "normalization_complete": true,
+          "complete_code_sha256": "87939e925f8b81b3fb56519c120430e6114e70ee8c602c28aca5dc6e18aad8ba"
+        },
+        "??HStageFogView@@QBE?AU0@ABU0@@Z": {
+          "candidate_address": "0x00401B60",
+          "candidate_size": 92,
+          "target_size": 92,
+          "matched_comparable_bytes": 76,
+          "comparable_bytes": 76,
+          "normalization_complete": true,
+          "complete_code_sha256": "e02065ce41bb9da2eba3afe768d5697b74d32ee078e246132d2f4c480a8a7834"
+        },
+        "??DStageFogView@@QBE?AU0@M@Z": {
+          "candidate_address": "0x00401BC0",
+          "candidate_size": 101,
+          "target_size": 101,
+          "matched_comparable_bytes": 85,
+          "comparable_bytes": 85,
+          "normalization_complete": true,
+          "complete_code_sha256": "2be868416dac6664396ffa4d5dc2f8a07e002466a98d48ea5ca5fda98ad3f29c"
+        },
+        "?UpdateObjectVms@StageScriptView@@QAEHXZ": {
+          "candidate_address": "0x00401170",
+          "candidate_size": 154,
+          "target_size": 154,
+          "matched_comparable_bytes": 150,
+          "comparable_bytes": 150,
+          "normalization_complete": true,
+          "complete_code_sha256": "401a39db9f299398845a636f508ba590037deb4419e96ad3bcf0e6aa17720454"
+        },
+        "?Evaluate@StageFogInterpolationView@@QAEPAUStageFogView@@PAU2@@Z": {
+          "candidate_address": "0x00401C30",
+          "candidate_size": 664,
+          "target_size": 688,
+          "matched_comparable_bytes": 228,
+          "comparable_bytes": 600,
+          "normalization_complete": true,
+          "complete_code_sha256": "684e23ab02e0c328897ec43a070f54eac0c1f1efabdb9de53560e768a139c33d"
+        },
+        "?Update@StageScriptView@@QAEHXZ": {
+          "candidate_address": "0x004019D0",
+          "candidate_size": 294,
+          "target_size": 304,
+          "matched_comparable_bytes": 180,
+          "comparable_bytes": 268,
+          "normalization_complete": true,
+          "complete_code_sha256": "38ef6c881e13a1a3ad9c96bd6fc0dc084393fae534ca2afce8575a46173d1561"
+        },
+        "?StageExecuteScript@@YGHPAUStageScriptView@@@Z": {
+          "candidate_address": "0x00401210",
+          "candidate_size": 1972,
+          "target_size": 1806,
+          "matched_comparable_bytes": 192,
+          "comparable_bytes": 1722,
+          "normalization_complete": true,
+          "complete_code_sha256": "cec11acd74362364c2b8d19817ce73914fe876dcd7bb48e4547ad6d8155498f6"
+        }
+      },
+      "strict_replay": {
+        "claim": "complete target-bound strict replay in declared maintained Stage Update graph; no product/runtime claim",
+        "variant": "cold2",
+        "project_input_sha256": {
+          "src/AnmManager.cpp": "d5f27e8865a1e8d584ff8d6879336ff431908136c583e221b45bb921bba142bb",
+          "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+          "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/Chain.hpp": "6aa7e65d47e3fb93585867f8d6c5422e76484ec7ab6fd71e57475cc88472e4c8",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+          "src/StageScript.cpp": "247be01c76616dc2ec7d97f370b6e8d3ffa643cdd45c113d493f8b6c73c1f061",
+          "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+        },
+        "manifest_sha256": "fb84bef6a962e423df3ff3f0b2a8de546f5f177a2b351604da0c392485c75467",
+        "results": [
+          {
+            "unit": "stage-fog-constructor",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "??0StageFogView@@QAE@MMMMMM@Z",
+            "target_address": "0x00405040",
+            "size": 94,
+            "matched_bytes": 94,
+            "compared_size": 94,
+            "matched_compared_bytes": 94,
+            "image": "build/match-linked/StageFog/source.exe",
+            "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+            "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+            "pdb_age": 1,
+            "candidate_address": "0x00401110",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 94,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x2E",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EABA"
+              },
+              {
+                "offset": "0x3A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EAAE"
+              },
+              {
+                "offset": "0x46",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EAA2"
+              },
+              {
+                "offset": "0x52",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EA96"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          },
+          {
+            "unit": "stage-fog-subtract",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "??GStageFogView@@QBE?AU0@ABU0@@Z",
+            "target_address": "0x00404D40",
+            "size": 92,
+            "matched_bytes": 92,
+            "compared_size": 92,
+            "matched_compared_bytes": 92,
+            "image": "build/match-linked/StageFog/source.exe",
+            "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+            "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+            "pdb_age": 1,
+            "candidate_address": "0x00401B00",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 92,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x3A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EDAE"
+              },
+              {
+                "offset": "0x42",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005EDA6"
+              },
+              {
+                "offset": "0x4A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED9E"
+              },
+              {
+                "offset": "0x52",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED96"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          },
+          {
+            "unit": "stage-fog-add",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z",
+            "target_address": "0x00404E10",
+            "size": 92,
+            "matched_bytes": 92,
+            "compared_size": 92,
+            "matched_compared_bytes": 92,
+            "image": "build/match-linked/StageFog/source.exe",
+            "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+            "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+            "pdb_age": 1,
+            "candidate_address": "0x00401B60",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 92,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x3A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ECDE"
+              },
+              {
+                "offset": "0x42",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ECD6"
+              },
+              {
+                "offset": "0x4A",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ECCE"
+              },
+              {
+                "offset": "0x52",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ECC6"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          },
+          {
+            "unit": "stage-fog-scale",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "??DStageFogView@@QBE?AU0@M@Z",
+            "target_address": "0x00404DA0",
+            "size": 101,
+            "matched_bytes": 101,
+            "compared_size": 101,
+            "matched_compared_bytes": 101,
+            "image": "build/match-linked/StageFog/source.exe",
+            "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+            "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+            "pdb_age": 1,
+            "candidate_address": "0x00401BC0",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 101,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x41",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED47"
+              },
+              {
+                "offset": "0x49",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED3F"
+              },
+              {
+                "offset": "0x51",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED37"
+              },
+              {
+                "offset": "0x59",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "__ftol2",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0085",
+                "local": false,
+                "candidate_target": "0x0040F154",
+                "target": "0x00463B2C",
+                "addend": 0,
+                "target_encoded_value": "0x0005ED2F"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          },
+          {
+            "unit": "stage-update-object-vms",
+            "artifact_kind": "linked-pe",
+            "result": "exact",
+            "symbol": "?UpdateObjectVms@StageScriptView@@QAEHXZ",
+            "target_address": "0x00403990",
+            "size": 154,
+            "matched_bytes": 154,
+            "compared_size": 154,
+            "matched_compared_bytes": 154,
+            "image": "build/match-linked/StageFog/source.exe",
+            "image_sha256": "6ea124664f2da1158f94a11d5723237eaed03c5f9fd53d7198810d8c1537346b",
+            "pdb_guid": "eb62acf6df5d4b489e4aec30afa7a174",
+            "pdb_age": 1,
+            "candidate_address": "0x00401170",
+            "extent_source": "pdb-section-contribution",
+            "pdb_module_index": 2,
+            "decoded_bytes": 154,
+            "normalization_complete": true,
+            "data_spans": [],
+            "linkages": [
+              {
+                "offset": "0x54",
+                "type": "REL32",
+                "width": 4,
+                "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+                "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+                "local": false,
+                "candidate_target": "0x00406F30",
+                "target": "0x0043EE30",
+                "addend": 0,
+                "target_encoded_value": "0x0003B448"
+              }
+            ],
+            "raw_equal": false,
+            "first_differences": [],
+            "capstone_version": "5.0.6"
+          }
+        ],
+        "matched_bytes": 533,
+        "linkage_count": 17
+      }
+    }
+  },
+  "evaluator_shape_observation": [
+    {
+      "owner": "target",
+      "size": 688,
+      "frame": [
+        "esp, 0xd4"
+      ],
+      "calls": [
+        {
+          "offset": "0x65",
+          "destination": "0x463b2c",
+          "semantic_symbol": "__ftol2"
+        },
+        {
+          "offset": "0x10f",
+          "destination": "0x404e10",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x143",
+          "destination": "0x404e10",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x15f",
+          "destination": "0x404e10",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x1e8",
+          "destination": "0x404da0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x1fb",
+          "destination": "0x404da0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x213",
+          "destination": "0x404da0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x22a",
+          "destination": "0x404da0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x239",
+          "destination": "0x404e10",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x24b",
+          "destination": "0x404e10",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x262",
+          "destination": "0x44c350",
+          "semantic_symbol": "?CalculateAnmInterpolation@@YAMHMM@Z"
+        },
+        {
+          "offset": "0x279",
+          "destination": "0x404d40",
+          "semantic_symbol": "??GStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x285",
+          "destination": "0x404da0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x292",
+          "destination": "0x404e10",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        }
+      ],
+      "head": [
+        "sub esp, 0xd4",
+        "mov eax, dword ptr [ebx + 0x84]",
+        "push ebp",
+        "mov ebp, dword ptr [esp + 0xdc]",
+        "push esi",
+        "xor esi, esi",
+        "cmp eax, esi",
+        "push edi",
+        "mov dword ptr [esp + 0xc], eax",
+        "jle 0x404a8f",
+        "mov edx, dword ptr [ebx + 0x74]",
+        "mov ecx, dword ptr [ebx + 0x7c]"
+      ]
+    },
+    {
+      "owner": "candidate",
+      "size": 664,
+      "frame": [
+        "esp, 0xd4"
+      ],
+      "calls": [
+        {
+          "offset": "0x65",
+          "destination": "0x40f154",
+          "semantic_symbol": "__ftol2"
+        },
+        {
+          "offset": "0x103",
+          "destination": "0x401b60",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x128",
+          "destination": "0x401b60",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x144",
+          "destination": "0x401b60",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x1cd",
+          "destination": "0x401bc0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x1e0",
+          "destination": "0x401bc0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x1f8",
+          "destination": "0x401bc0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x20f",
+          "destination": "0x401bc0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x21e",
+          "destination": "0x401b60",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x230",
+          "destination": "0x401b60",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x247",
+          "destination": "0x4025b0",
+          "semantic_symbol": "?CalculateAnmInterpolation@@YAMHMM@Z"
+        },
+        {
+          "offset": "0x261",
+          "destination": "0x401b00",
+          "semantic_symbol": "??GStageFogView@@QBE?AU0@ABU0@@Z"
+        },
+        {
+          "offset": "0x26d",
+          "destination": "0x401bc0",
+          "semantic_symbol": "??DStageFogView@@QBE?AU0@M@Z"
+        },
+        {
+          "offset": "0x27a",
+          "destination": "0x401b60",
+          "semantic_symbol": "??HStageFogView@@QBE?AU0@ABU0@@Z"
+        }
+      ],
+      "head": [
+        "sub esp, 0xd4",
+        "mov eax, dword ptr [ebx + 0x84]",
+        "push ebp",
+        "mov ebp, dword ptr [esp + 0xdc]",
+        "push esi",
+        "xor esi, esi",
+        "cmp eax, esi",
+        "push edi",
+        "mov dword ptr [esp + 0xc], eax",
+        "jle 0x401d1f",
+        "mov edx, dword ptr [ebx + 0x74]",
+        "mov ecx, dword ptr [ebx + 0x7c]"
+      ]
+    }
+  ],
+  "tooling_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/ltcg_link.py": "220874ed16eb75c2e9883c93187dab1fdcb72aadca4c7881307c09cb2a7dc0e9",
+    "scripts/linked_image.py": "5d667184a743874d1728c96a91bc1fd6176249dfd1c8413a2b04325d5f7b53b0",
+    "scripts/compare-linked-function.py": "7962e7b95c77834e19663db3277d0508f9fc143afc6f813553b6afc601430604"
+  },
+  "resource_policy": {
+    "native_jobs": 1,
+    "nice": 10,
+    "ghidra_heap_mib": 768,
+    "ghidra_cpus": 1
+  },
+  "first_observer_recovery": "initial post-link observer matched both empty and six-float constructors; input before/after assertion passed before that observation failure. Report regenerated from the completed, unchanged PE/MAP/PDB using the full six-float symbol. No native rebuild or fabricated result.",
+  "limitations": "Five bounded codegen owners only. Diagnostic images contain unresolved anchors and are not executed. Original source/TU ownership, global data storage, whole product/runtime, semantic and port closure remain unknown.",
+  "independent_pdb_guids": [
+    "8d438b3dd985df409c4090aff52b675e",
+    "eb62acf6df5d4b489e4aec30afa7a174"
+  ]
+}
