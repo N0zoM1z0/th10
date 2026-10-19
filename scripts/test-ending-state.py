@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+"""Actual Ending source with explicit SDK, asset, ANM and worker host roles.
+
+Host-only clear retains the live worker vptr, while clearing every ordinary
+field. Timer/node constructor seeds define prefill for this host scenario.
+No native ABI/layout, worker scheduling or target runtime proof is claimed.
+"""
+from pathlib import Path
+import argparse, hashlib, json, os, re, subprocess, tempfile
+ROOT = Path(__file__).resolve().parents[1]
+
+def body(text, signature):
+    if text.count(signature) != 1: raise ValueError('nonunique owner: ' + signature)
+    start = text.index(signature); opening = text.index('{', start); depth = 0
+    for index in range(opening, len(text)):
+        if text[index] == '{': depth += 1
+        elif text[index] == '}':
+            depth -= 1
+            if depth == 0: return text[start:index + 1]
+    raise ValueError('unclosed owner: ' + signature)
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--sanitize', action='store_true')
+    parser.add_argument('--no-mutations', action='store_true')
+    parser.add_argument('--out', type=Path, help='retain generated fixture and input manifest')
+    args = parser.parse_args()
+    if args.out is not None:
+        run_suite(args)
+    else:
+        host_root = ROOT/'build/host-tests'
+        host_root.mkdir(parents=True, exist_ok=True)
+        with tempfile.TemporaryDirectory(prefix='ending-state-', dir=host_root) as output:
+            args.out = Path(output)
+            run_suite(args)
+def run_suite(args):
+    args.out.mkdir(parents=True, exist_ok=True)
+    pending = ['Ending.hpp','Main.hpp','InputState.hpp','FileSystem.hpp','GameErrorContext.hpp','EnemySoundQueue.hpp','TransitionEffect.hpp']; seen=set(); hashes={}
+    while pending:
+        name = pending.pop()
+        if name in seen: continue
+        seen.add(name); path=ROOT/'src'/name; text=path.read_text(); hashes[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest()
+        pending.extend(re.findall(r'^\s*#\s*include\s*"([^"]+)"', text, re.M))
+        text=re.sub(r'typedef\s+char\s+\w+\s*\[[\s\S]*?\]\s*;', '// HOST native-layout assertion omitted.', text)
+        if name=='AnmManager.hpp':
+            old='AnmVmTimerView() { flags &= ~1u; }'; assert text.count(old)==1
+            text=text.replace(old,'AnmVmTimerView() : flags(0) {} // HOST initialized timer prefill.')
+        (args.out/name).write_text(text)
+    (args.out/'windows.h').write_text('''#pragma once
+#include <cstdint>
+typedef void *HWND; typedef void *HINSTANCE; typedef void *HANDLE;
+typedef unsigned int UINT; typedef std::uintptr_t WPARAM; typedef std::intptr_t LPARAM; typedef std::intptr_t LRESULT;
+union LARGE_INTEGER { struct {std::uint32_t LowPart;std::int32_t HighPart;}; std::int64_t QuadPart; };
+struct CRITICAL_SECTION {void *DebugInfo;std::int32_t LockCount;std::int32_t RecursionCount;void *OwningThread;void *LockSemaphore;std::uintptr_t SpinCount;};
+extern "C" void EnterCriticalSection(CRITICAL_SECTION *);
+extern "C" void LeaveCriticalSection(CRITICAL_SECTION *);
+extern "C" void Sleep(unsigned int);
+extern "C" unsigned int WaitForSingleObject(void *, unsigned int);
+extern "C" int CloseHandle(void *);
+#define WAIT_TIMEOUT 258
+''')
+    source=(ROOT/'src/Ending.cpp').read_text(); hashes['src/Ending.cpp']=hashlib.sha256((ROOT/'src/Ending.cpp').read_bytes()).hexdigest()
+    assert source.count('memset(this, 0, sizeof(*this));')==2
+    source=source.replace('memset(this, 0, sizeof(*this));','HostClearEndingText(this);')
+    ctor=body(source,'EndingTaskView()'); assert ctor.count('flags &= ~1u;')==1
+    source=source.replace(ctor,ctor.replace('flags &= ~1u;','flags = 0xa5a5a5a5u & ~1u; // HOST defined node prefill.'))
+    source=re.sub(r'^\s*#include[^\n]*\n','',source,flags=re.M)
+    signatures={'AnmManager.cpp':['AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)','void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)','void AnmRenderManagerView::ReleaseAnm(int index)','void AnmVmTimerView::Initialize()','void AnmVmTimerView::Add(float value)'], 'AnmVmId.cpp':['AnmVmView *AnmVmIdView::GetVm()','void AnmVmIdView::Release()'], 'Player.cpp':['void PlayerSetShotVmInterrupt2(unsigned int *vmId)'], 'FrontEnd.cpp':['void ResultMenuPendingThree(AnmVmIdView *id)'], 'EnemyEclDispatcher.cpp':['__declspec(noinline) void EnemyMarkPendingInterrupt(int *id)','void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)'], 'ScriptViewer.cpp':['ScriptViewerWorkerView::ScriptViewerWorkerView()'], 'ScriptViewerWorker.cpp':['ScriptViewerWorkerView::~ScriptViewerWorkerView()','void ScriptViewerWorkerView::Stop()','void ScriptViewerWorkerView::Start(']}
+    dependencies=[]
+    for name,sigs in signatures.items():
+        path=ROOT/'src'/name; text=path.read_text();hashes[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest();dependencies.extend(body(text,s) for s in sigs)
+    path=ROOT/'src/DecomphelpLeafAccessors.cpp'; hashes[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest(); leaf=path.read_text()
+    dependencies.append('namespace th10 { namespace leaf {\n'+body(leaf,'__declspec(noinline) u32 Fn0040BA80(void)')+'\n'+body(leaf,'__declspec(noinline) u8 * Fn00417010(u8 *p0)')+'\n} }')
+    (args.out/'dependencies.inc').write_text('\n\n'.join(dependencies))
+    variants=[('positive',source,None)]
+    if not args.no_mutations:
+        old='th10::leaf::Fn00417010(instruction + 4)'; assert source.count(old)==1
+        variants.append(('stale_text',source.replace(old,'th10::leaf::Fn00417010(command + 4)'),'text-live-cursor'))
+        old='animationIds[EndingRecordInt(instruction)] = resources'; assert source.count(old)==4
+        variants.append(('stale_animation',source.replace(old,'animationIds[EndingRecordInt(command)] = resources'),'animation-live-destination'))
+        old='flags |= 2;\n                continue;'; assert source.count(old)==1
+        variants.append(('reload_skip',source.replace(old,'flags |= 2;\n                break;'),'reload-first-command'))
+        old='g_FrontEndInput.pressed & 0x1001'; assert source.count(old)==2
+        variants.append(('wrong_press',source.replace(old,'g_FrontEndInput.current & 0x1001'),'wait-pressed-edge'))
+    for name,variant,expected in variants:
+        (args.out/'owner.inc').write_text(variant)
+        command=['flock','/tmp/th10-ending-host.lock','nice','-n','10','g++','-std=c++17','-O1','-g','-Wall','-Wextra','-Wno-unused-function','-Wno-sign-compare','-Wno-class-memaccess','-I',str(args.out),str(ROOT/'scripts/fixtures/ending-state.cpp'),'-o',str(args.out/'fixture')]
+        if args.sanitize:command+=['-fsanitize=address,undefined','-fno-sanitize-recover=all','-fno-pie','-no-pie']
+        built=subprocess.run(command,capture_output=True,text=True)
+        if built.returncode:raise RuntimeError(built.stdout+built.stderr)
+        run=subprocess.run([str(args.out/'fixture')],capture_output=True,text=True,env={**os.environ,'ASAN_OPTIONS':'detect_leaks=1'})
+        want=(0,'','') if expected is None else (1,'','CHECK '+expected+'\n')
+        if (run.returncode,run.stdout,run.stderr)!=want:raise RuntimeError(f'{name}: {run.returncode}\n{run.stdout}{run.stderr}')
+        print('PASS '+name)
+    (args.out/'manifest.json').write_text(json.dumps({'scope':__doc__,'inputs':hashes,'variants':[n for n,_,_ in variants],'sanitize':args.sanitize,'canonical_headers':sorted(seen),'seams':['SDK functions/types','ANM allocation/resource/draw roles','host vptr-preserving clear','defined timer/node prefill','assets/logging/effects/music','static live VM/list objects'],'actual_bodies':signatures},indent=2)+'\n')
+    print('Ending actual source and '+str(len(variants)-1)+' strict mutants pass')
+
+if __name__=='__main__':main()

@@ -1022,3 +1022,16 @@ TransitionDim,0x0043C310,function
 TransitionPulse,0x0043C460,function
 TransitionShakeLinear,0x0043C550,function
 TransitionShakeEnvelope,0x0043C710,function
+EndingTextVmView::~EndingTextVmView,0x0040B3A0,function
+EndingView::LoadScript,0x0040B480,function
+EndingView::Initialize,0x0040B560,function
+EndingView::~EndingView,0x0040B7B0,function
+EndingCreate,0x0040B940,function
+EndingDelete,0x0040B9D0,function
+EndingView::Update,0x0040B9F0,function
+EndingUpdateCallback,0x0040BA70,function
+EndingTextVmView::EndingTextVmView,0x0040BA90,function
+EndingTextVmView::Tick,0x0040BD20,function
+EndingTextVmView::Run,0x0040BD80,function
+EndingLoadAnimationCallback,0x0040C3A0,function
+EndingTextVmView::LoadAnimation,0x0040C3C0,function

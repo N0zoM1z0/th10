@@ -1,0 +1,62 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_base": "68ee317",
+  "Run": {
+    "entry": "0x0040BD80",
+    "prior_owned_size": 1494,
+    "owned_size": 1568,
+    "span_end": "0x0040C39F",
+    "ghidra_reachable_bytes": 1488,
+    "internal_alignment": 6,
+    "tail_alignment": 2,
+    "table_bytes": 72,
+    "indexed_jump": "0x0040BDF0",
+    "table": "0x0040C358",
+    "table_entries": [
+      "0x40c2c7",
+      "0x40c25f",
+      "0x40c25f",
+      "0x40bdf7",
+      "0x40bee0",
+      "0x40befa",
+      "0x40bf9a",
+      "0x40c2d4",
+      "0x40c023",
+      "0x40c15e",
+      "0x40c169",
+      "0x40c1a5",
+      "0x40c1b8",
+      "0x40c23b",
+      "0x40c249",
+      "0x40c077",
+      "0x40c0c4",
+      "0x40c111"
+    ],
+    "target_base_relocation_count": 0,
+    "table_authority": "direct indexed jump guarded0..17, all18 absolute targets inside body, no other references, next callback starts after table",
+    "outside_references": [
+      "OUTSIDE_INTERIOR From: 0040bd21 To: 0040bd80 Type: UNCONDITIONAL_CALL Op: 0 DEFAULT"
+    ]
+  },
+  "new_callbacks": [
+    {
+      "address": "0x0040BA70",
+      "size": 10,
+      "end": "0x0040BA79",
+      "source_reference": "0x0040B5C7"
+    },
+    {
+      "address": "0x0040C3A0",
+      "size": 18,
+      "end": "0x0040C3B1",
+      "source_reference": "0x0040C313"
+    }
+  ],
+  "worker_layout": {
+    "ending_allocation": 236,
+    "worker_offset": 208,
+    "maximum_consumed_worker_end": 28,
+    "existing_view_unknown1C_moved_to_container_unknown02C": true,
+    "original_full_class_size": "unknown"
+  }
+}

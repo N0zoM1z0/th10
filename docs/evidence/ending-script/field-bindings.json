@@ -1,0 +1,215 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "fields": [
+    {
+      "owner": "ending-create",
+      "target_address": "0x0040B940",
+      "offset": "0x4",
+      "type": "REL32",
+      "symbol": "??2@YAPAXI@Z",
+      "target": "0x00452493",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-create",
+      "target_address": "0x0040B940",
+      "offset": "0x34",
+      "type": "DIR32",
+      "symbol": "?g_EndingView@@3PAUEndingView@@A",
+      "target": "0x00477700",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-create",
+      "target_address": "0x0040B940",
+      "offset": "0x40",
+      "type": "REL32",
+      "symbol": "?Initialize@EndingView@@QAEHXZ",
+      "target": "0x0040B560",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-create",
+      "target_address": "0x0040B940",
+      "offset": "0x4E",
+      "type": "REL32",
+      "symbol": "??1EndingView@@QAE@XZ",
+      "target": "0x0040B7B0",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-create",
+      "target_address": "0x0040B940",
+      "offset": "0x54",
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": "0x004524A1",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-delete",
+      "target_address": "0x0040B9D0",
+      "offset": "0x6",
+      "type": "REL32",
+      "symbol": "??1EndingView@@QAE@XZ",
+      "target": "0x0040B7B0",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-delete",
+      "target_address": "0x0040B9D0",
+      "offset": "0xC",
+      "type": "REL32",
+      "symbol": "??3@YAXPAX@Z",
+      "target": "0x004524A1",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-update",
+      "target_address": "0x0040B9F0",
+      "offset": "0x5",
+      "type": "REL32",
+      "symbol": "?Tick@EndingTextVmView@@QAEHXZ",
+      "target": "0x0040BD20",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-update",
+      "target_address": "0x0040B9F0",
+      "offset": "0xE",
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "addend": 972,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-update",
+      "target_address": "0x0040B9F0",
+      "offset": "0x22",
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": "0x00491C28",
+      "addend": 912,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-update",
+      "target_address": "0x0040B9F0",
+      "offset": "0x4E",
+      "type": "DIR32",
+      "symbol": "?g_FrontEndInput@@3UFrontEndInputView@@A",
+      "target": "0x00474E30",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-update-callback",
+      "target_address": "0x0040BA70",
+      "offset": "0x4",
+      "type": "REL32",
+      "symbol": "?Update@EndingView@@QAEHXZ",
+      "target": "0x0040B9F0",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-text-tick",
+      "target_address": "0x0040BD20",
+      "offset": "0x2",
+      "type": "REL32",
+      "symbol": "?Run@EndingTextVmView@@QAGHXZ",
+      "target": "0x0040BD80",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-text-tick",
+      "target_address": "0x0040BD20",
+      "offset": "0x1D",
+      "type": "DIR32",
+      "symbol": "__real@3f7d70a4",
+      "target": "0x00470B68",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-text-tick",
+      "target_address": "0x0040BD20",
+      "offset": "0x2C",
+      "type": "DIR32",
+      "symbol": "__real@3f8147ae",
+      "target": "0x00470B64",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-text-tick",
+      "target_address": "0x0040BD20",
+      "offset": "0x3D",
+      "type": "DIR32",
+      "symbol": "__real@3f800000",
+      "target": "0x00470AFC",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-text-tick",
+      "target_address": "0x0040BD20",
+      "offset": "0x53",
+      "type": "REL32",
+      "symbol": "__ftol2",
+      "target": "0x00463B2C",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-load-animation-callback",
+      "target_address": "0x0040C3A0",
+      "offset": "0x1",
+      "type": "DIR32",
+      "symbol": "?g_EndingView@@3PAUEndingView@@A",
+      "target": "0x00477700",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    },
+    {
+      "owner": "ending-load-animation-callback",
+      "target_address": "0x0040C3A0",
+      "offset": "0xA",
+      "type": "REL32",
+      "symbol": "?LoadAnimation@EndingTextVmView@@QAEHXZ",
+      "target": "0x0040C3C0",
+      "addend": 0,
+      "authority": "TH10 raw instruction operand and reviewed role; not structural-comparison inference"
+    }
+  ],
+  "constant_values": [
+    {
+      "address": "0x00470B68",
+      "bits": "0x3F7D70A4"
+    },
+    {
+      "address": "0x00470B64",
+      "bits": "0x3F8147AE"
+    },
+    {
+      "address": "0x00470AFC",
+      "bits": "0x3F800000"
+    }
+  ],
+  "main_global": {
+    "base": "0x00491C28",
+    "flags_offset": "0x3CC",
+    "next_game_mode_offset": "0x390"
+  },
+  "origin": "three authored owners; three wrapper origins remain indeterminate"
+}

@@ -2777,3 +2777,48 @@ positions; HUD3772/3836 remains527/3552. No parent/partial-case credit follows.
 See [the complete evidence and restored-control table](evidence/gui-child-search/README.md).
 Original class/spelling/TU and native product/runtime, semantic and port gates
 remain open; exact bytes do not identify a unique original C++ formulation.
+
+## 2026-10-20 Ending text workflow and complete small-owner proofs
+
+Ending.cpp/Ending.hpp now map all ten reviewed authored owners (3889 owned
+bytes), plus three indeterminate wrappers. The 40BD80 interpreter's guarded
+18-way jump at40BDF0 owns the complete72-byte table40C358..40C39F. Its physical
+extent is1568:1488 reachable bytes,6 internal alignment,2 tail alignment
+(MOV EDI,EDI),72 table bytes. All destinations are local; the next callback
+starts40C3A0 and the sole outside code reference enters40BD80. This corrects
+the old1494-byte ledger and adds74 authored denominator bytes without exact
+credit. The target has no PE base relocation table; ownership follows raw
+control flow/xrefs/neighboring entries, not hypothetical target relocations.
+
+The new10-byte40BA70 update callback and18-byte40C3A0 background loader callback
+have genuine address references in initialization/Run and complete dense bodies.
+Authorship remains indeterminate, as for the old18-byte40B9D0 nullable delete.
+40C3C0 is a bank loader, not Draw. Records have a four-byte header and byte
+payload length, with integer operands only when consumed. Live cursor reads
+after rendering/VM creation/PreloadAnm, OpenFile-before-current-buffer-free,
+reload's immediate first-command continuation, and pressed-edge input retain
+TH10 order. MIT reference hypotheses do not substitute for these target facts.
+
+Ending's EC allocation and D0 worker member establish the shared1C consumed
+worker prefix. Moving the browser's former unknown trailing word into its
+container at2C preserves browser offsets and size. Original full worker size,
+animation-ID capacity, production TU/data owners and modern C++ lifetime remain
+unknown. Target construction and reload both clear the text object including
+the worker vptr; this behavior is retained, not presented as runtime closure.
+
+Two independent full17-TU /GL /GS /EHs colds with identical project inputs
+strictly replay EndingCreate99, Update111, TextTick93 (303 new authored bytes),
+nullableDelete18 and the two callbacks10/18 (46 indeterminate bytes). Their
+19 fields bind independently to target callees/globals/constants. Complete
+worker Stop101/Start56/destructor16, browser constructor234 and actual outgoing
+ReleaseAnm55 add462 existing guard bytes/all11 fields per image, no duplicate
+credit. All811 complete bytes/all30 fields pass in each carrier. Init, both
+destructors/constructor, LoadScript, Run and bank loader remain nonexact.
+
+Actual-source host tests pass ASan/UBSan/leak detection and four strict cursor,
+reload and input mutants. SDK/assets/rendering are role stubs; host clearing
+preserves a live vptr, timer/node prefill is defined, thread startup is simulated
+and native layout assertions are omitted in host copies. These explicit seams
+cannot prove native lifetime, scheduling, ABI or target runtime. The known
+global401100 evidence-text-only boundary audit discrepancy remains unchanged.
+See [the target, source, exact and host scope](evidence/ending-script/README.md).

@@ -1021,3 +1021,16 @@ TransitionDim
 TransitionPulse
 TransitionShakeLinear
 TransitionShakeEnvelope
+EndingTextVmView::~EndingTextVmView
+EndingView::LoadScript
+EndingView::Initialize
+EndingView::~EndingView
+EndingCreate
+EndingDelete
+EndingView::Update
+EndingUpdateCallback
+EndingTextVmView::EndingTextVmView
+EndingTextVmView::Tick
+EndingTextVmView::Run
+EndingLoadAnimationCallback
+EndingTextVmView::LoadAnimation

@@ -7,6 +7,8 @@
 // Descriptive views of the debug script browser. Original class names and
 // production translation-unit ownership remain unknown. Layout is established
 // by the TH10 constructor, update body and loader, not by the reference project.
+// Consumed shared prefix ends at+1C. Ending allocates EC with this member at D0;
+// the browser preserves its separate unknown bytes at+2C. Original full type unknown.
 struct ScriptViewerWorkerView
 {
     void *thread;
@@ -15,12 +17,13 @@ struct ScriptViewerWorkerView
     int running;
     unsigned int unknown014;
     void *entry018;
-    unsigned int unknown01C;
     ScriptViewerWorkerView();
     virtual ~ScriptViewerWorkerView();
     __declspec(noinline) void Stop();
     __declspec(noinline) void Start(void *context, int (*entry)());
 };
+
+typedef char SharedWorkerPrefixIs1C[(sizeof(ScriptViewerWorkerView) == 0x1c) ? 1 : -1];
 
 struct ScriptViewerCursorView : FrontEndCursorView
 {
@@ -41,6 +44,7 @@ struct ScriptViewerView
     th10::ChainElem *updateTask;
     th10::ChainElem *drawTask;
     ScriptViewerWorkerView worker;
+    unsigned int unknown02C;
     int state;
     char **scriptNames;
     int scriptCount;

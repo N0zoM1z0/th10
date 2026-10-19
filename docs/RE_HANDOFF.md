@@ -31,15 +31,33 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Ending controller/text workflow now maps all10 authored owners/3889 bytes.
+  Complete Run ownership is1568, including18 table entries and2 tail alignment
+  bytes; the corrected denominator gains74 bytes, without partial exact credit.
+  Two full independent17-TU /GL /GS /EHs colds pass811 complete bytes/all30 fields:
+  **303 new authored exact bytes** (Create99/Update111/TextTick93),46 new exact
+  indeterminate bytes (delete18/update callback10/load callback18), plus462
+  existing worker/browser/ReleaseAnm guard bytes. The shared worker1C prefix
+  replaces an unconsumed trailing word; browser offsets/size stay fixed.
+  Actual-source ASan/UBSan and four strict mutants pass with explicit host
+  vptr/SDK/assets/prefill/thread seams. Run1552/1568 and six other authored owners
+  remain nonexact. A private path-before-buffer-clear control keeps loader131/126
+  (69/98 ordinary positions versus61/98); maintained source stays unchanged.
+  Next: review loader flag-write/register lifetime or Run's differing phases
+  using cached hash-checked supports; retain existing exact guards.
+  Avoid flags/ABI/volatile/forced-helper sweeps. Original types/data owners and
+  native lifetime/product/runtime remain open. See
+  [the complete evidence and limits](evidence/ending-script/README.md).
 - Loaded-ANM slot ReleaseAnm4477D0 closes **55 authored exact bytes**. Natural
   post-Release slot reload and sizeof-array upper bound restore the whole body.
   Two independent eight-TU /GL /GS colds pass297 complete bytes/all10 fields,
   including actual Release242/all8 fields as an existing guard; all26 inputs
-  agree. OPT:NOREF retains this helper. Its sole target caller40BD80 remains
-  source-absent; incoming topology and original partition are open. Fresh
+  agree. OPT:NOREF retains this helper. Its sole target caller40BD80 was then
+  source-absent; the newer Ending recovery above now maintains that source edge.
+  Original partition remains open. Fresh
   dispatcher14524 and ANM9948 remain nonexact. Target caller review exposes
-  an 18-entry table at40C358 beyond its1494-byte code boundary; review ownership
-  before reconstructing this larger script interpreter. The MIT ending-text
+  an 18-entry table at40C358 beyond its former1494-byte code boundary; the newer
+  focused review above includes the whole table. The MIT ending-text
   source is a hypothesis; do not copy its volatile casts or forced frame slots.
   See [the complete proofs and scope](evidence/anm-release-slot/README.md).
 - Run follow-up recovers the shared opcode20 mode4 tail and target-observed

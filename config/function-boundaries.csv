@@ -253,10 +253,12 @@ address,span_end,state,confidence,evidence_id,notes
 0x0040B940,0x0040B9A2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040B9D0,0x0040B9E1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0040B9F0,0x0040BA5E,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x40ba73 to entry; independent IDA MCP extent agrees"
+0x0040BA70,0x0040BA79,reviewed,high,ending-target-source-review-2026-10-20,Complete dense raw target and temporary Ghidra function agree; real callback address reference and CC padding through next entry; no overlap.
 0x0040BA80,0x0040BA85,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; data xrefs only at 0x0040B625
 0x0040BA90,0x0040BD17,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0040BD20,0x0040BD7C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0040BD80,0x0040C355,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0040BD80,0x0040C39F,reviewed,high,ending-target-source-review-2026-10-20,Reviewed1488 reachable bytes+6 internal alignment+2 tail alignment+72-byte18-entry table; outside refs only entry; no overlap; next callback40C3A0.
+0x0040C3A0,0x0040C3B1,reviewed,high,ending-target-source-review-2026-10-20,Complete dense raw target and temporary Ghidra function agree; real callback address reference and CC padding through next entry; no overlap.
 0x0040C3C0,0x0040C43D,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x40b4f4 to entry; independent IDA MCP extent agrees"
 0x0040C460,0x0040C462,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x0040C480,0x0040C4C0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=8; no overlap or external interior branch

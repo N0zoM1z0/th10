@@ -1,0 +1,24 @@
+{
+  "authority": "none; one private source-order diagnostic, not cold proof or exact credit",
+  "model": "snapshot backgroundPath before clearing g_StageFilePath; all production sources untouched",
+  "compiled_translation_units": 1,
+  "reused_support_translation_units": 16,
+  "all49_maintained_inputs_unchanged": true,
+  "private_source_sha256": "c3c1f28fb8c143d8b4103f0e062dff72227707ec3ce237aad871a89c87906f25",
+  "size": {
+    "candidate": 131,
+    "target": 126
+  },
+  "ordinary_comparable_positions": {
+    "baseline_matched": 61,
+    "control_matched": 69,
+    "compared": 98
+  },
+  "production_source_changed": false,
+  "artifact_sha256": {
+    "image": "768174e2498033d0baf5d13a2330cda778eac5e94ee39c95db35fe1c3e045674",
+    "map": "8790f0c49da3a981279846836389437f73e17023b9cccd7e07f38154198908ad",
+    "pdb": "52899a5dca5b3d702842931736c5c8647480765c5ffd4c1b08572a7e3e264e98"
+  },
+  "next": "target-backed flag-write/register-lifetime review; do not repeat path-only control or sweep flags/ABI"
+}
