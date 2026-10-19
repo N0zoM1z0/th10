@@ -97,6 +97,19 @@ scratch paths, or build hashes into this file.
   See [the storage evidence](evidence/enemy-dispatch-polar-storage/README.md);
   the [prior input controls](evidence/enemy-dispatch-polar-lifetime/README.md)
   remain historical.
+- The [Enemy storage/forwarder review](evidence/enemy-dispatch-storage-and-forwarder/README.md)
+  restores all source inputs and adds zero exact bytes. Target spawn/spell reuse
+  final ESP+248, but original union/capacity remain unknown. Both separate and
+  case-scoped request models emit14552/frame30C and are rejected. Direct raw-float
+  receiver syntax changes this to wrong ECX; argument snapshot and unsigned index
+  are byte-neutral; all restored. Existing26-byte412AA0 now has a source mapping
+  backed by13 target calls, EAX runtime/two stack words/RET8; origin stays
+  indeterminate. Six baseline complete guards retain791 bytes/all16 fields.
+  Parent remains14524/frame2C4,181 selectors/108 groups/19 sentinel compares;
+  no partial credit. Four primary-only controls reuse hash-checked support objects;
+  baseline and shared-header control are full cold. Do not repeat these storage
+  or wrapper models without new TH10 evidence. Current ReadInt source is direct
+  return; the prior assignment experiment is historical.
 - Enemy selector coverage now correctly counts124 outer cases; three inner
   spell cases no longer cause a false duplicate failure. Seven scope/rejection
   controls pass, as do the target/retained181 selectors and108-group checks.

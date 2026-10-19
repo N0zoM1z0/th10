@@ -1,0 +1,108 @@
+{
+  "authority": "rejected diagnostic source variants only; replay operations in listed order against pinned CRLF inputs",
+  "base_commit": "b3dc30b",
+  "overlays": {
+    "separate-storage": {
+      "base_sha256": "0bf2353635f2844649361955dd473a5c795bba8107dca60833be3439a377a8f6",
+      "result_sha256": "71eb6257cc1ddbedf17e04d1aa05ca6a41af581dcd27b64f03aea2b344ccdea6",
+      "operations": [
+        {
+          "old": "  union {\r\n    EnemySpawnRequestView spawnRequest;\r\n    float floatWords[16];\r\n    unsigned char bytes[0x84];\r\n  } local_90;",
+          "new": "  EnemySpawnRequestView spawnRequest;",
+          "occurrences": 1
+        },
+        {
+          "old": "local_90.spawnRequest",
+          "new": "spawnRequest",
+          "occurrences": 38
+        },
+        {
+          "old": "memset(local_90.floatWords, 0, sizeof(local_90.floatWords));",
+          "new": "memset(&spawnRequest, 0, sizeof(spawnRequest));",
+          "occurrences": 5
+        },
+        {
+          "old": "local_90.bytes",
+          "new": "spellName",
+          "occurrences": 2
+        },
+        {
+          "old": "  case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:\r\n  {\r\n",
+          "new": "  case ENEMY_ECL_START_SPELL_DIFFICULTY_MINUS_2:\r\n  {\r\n    unsigned char spellName[0x84];\r\n",
+          "occurrences": 1
+        }
+      ]
+    },
+    "scoped-request": {
+      "base_sha256": "71eb6257cc1ddbedf17e04d1aa05ca6a41af581dcd27b64f03aea2b344ccdea6",
+      "result_sha256": "aecfdcd3f7a596436ad5dcf72ccb15e7eb1f1a8f4c0a3115b2ab8cd581b3455e",
+      "operations": [
+        {
+          "old": "  EnemySpawnRequestView spawnRequest;\r\n",
+          "new": "",
+          "occurrences": 1
+        },
+        {
+          "old": "  switch(opcode) {\r\n",
+          "new": "  switch(opcode) {\r\n  {\r\n    EnemySpawnRequestView spawnRequest;\r\n",
+          "occurrences": 1
+        },
+        {
+          "old": "dispatch_create_enemy_absolute_mirrored:\r\n  iVar26 = *(int *)(iVar27 + 0x10) + 4;\r\n  iVar26 /= 4;\r\n  memset(&spawnRequest, 0, sizeof(spawnRequest));\r\n  fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));\r\n  spawnRequest.position.x = (float)fVar19;\r\n  fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));\r\n  spawnRequest.position.y = (float)fVar19;\r\n  uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));\r\n  spawnRequest.life = uVar22;\r\n  uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));\r\n  spawnRequest.scoreReward = uVar22;\r\n  uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));\r\n  spawnRequest.itemDropType = uVar22;\r\n  spawnRequest.eclVariables = eclVariables;\r\n  spawnRequest.setFlag0800 = 1;\r\n  goto dispatch_spawn_enemy;\r\n",
+          "new": "",
+          "occurrences": 1
+        },
+        {
+          "old": "  case ENEMY_ECL_SELECT_ANM_RESOURCE:",
+          "new": "dispatch_create_enemy_absolute_mirrored:\r\n  iVar26 = *(int *)(iVar27 + 0x10) + 4;\r\n  iVar26 /= 4;\r\n  memset(&spawnRequest, 0, sizeof(spawnRequest));\r\n  fVar19 = (ReadRawFloatArgument((1), (*(float *)(iVar27 + 0x10 + iVar26 * 4))));\r\n  spawnRequest.position.x = (float)fVar19;\r\n  fVar19 = (ReadRawFloatArgument((2), (*(float *)(iVar27 + 0x14 + iVar26 * 4))));\r\n  spawnRequest.position.y = (float)fVar19;\r\n  uVar22 = ReadRawIntArgument(3, *(int *)(iVar27 + 0x18 + iVar26 * 4));\r\n  spawnRequest.life = uVar22;\r\n  uVar22 = ReadRawIntArgument(4, *(int *)(iVar27 + 0x1c + iVar26 * 4));\r\n  spawnRequest.scoreReward = uVar22;\r\n  uVar22 = ReadRawIntArgument(5, *(int *)(iVar27 + 0x20 + iVar26 * 4));\r\n  spawnRequest.itemDropType = uVar22;\r\n  spawnRequest.eclVariables = eclVariables;\r\n  spawnRequest.setFlag0800 = 1;\r\n  goto dispatch_spawn_enemy;\r\n  }\r\n  case ENEMY_ECL_SELECT_ANM_RESOURCE:",
+          "occurrences": 1
+        }
+      ]
+    },
+    "direct-raw-float-receiver": {
+      "base_sha256": "0bf2353635f2844649361955dd473a5c795bba8107dca60833be3439a377a8f6",
+      "result_sha256": "72f21d1f66799a27b737e83d08d3581339d7b8a09fa457be140d81a929ae4b11",
+      "operations": [
+        {
+          "old": "    EclVmContext *context =\r\n        reinterpret_cast<EclVmContext *>(owner->activeEclContext);\r\n    return context->ReadFloatValue(index, rawValue);",
+          "new": "    return reinterpret_cast<EclVmContext *>(\r\n        owner->activeEclContext)->ReadFloatValue(index, rawValue);",
+          "occurrences": 1
+        }
+      ]
+    },
+    "prefetched-raw-float": {
+      "base_sha256": "0bf2353635f2844649361955dd473a5c795bba8107dca60833be3439a377a8f6",
+      "result_sha256": "473cd581d0dc18cfcfdcc935357c091d60e8fe5821bfa728a56c09c5c63abb60",
+      "operations": [
+        {
+          "old": "    EclVmContext *context =\r\n        reinterpret_cast<EclVmContext *>(owner->activeEclContext);\r\n    return context->ReadFloatValue(index, rawValue);",
+          "new": "    float forwardedValue = rawValue;\r\n    EclVmContext *context =\r\n        reinterpret_cast<EclVmContext *>(owner->activeEclContext);\r\n    return context->ReadFloatValue(index, forwardedValue);",
+          "occurrences": 1
+        }
+      ]
+    },
+    "unsigned-raw-float-index": {
+      "base_sha256": "0bf2353635f2844649361955dd473a5c795bba8107dca60833be3439a377a8f6",
+      "result_sha256": "cf5eb768790c09d88cfac02e045515b79b8d2a276ed790f9c6fa624e65c8fb9a",
+      "operations": [
+        {
+          "old": "float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)",
+          "new": "float EnemyRuntimeView::ReadRawFloatArgument(unsigned int index, float rawValue)",
+          "occurrences": 1
+        }
+      ],
+      "header": {
+        "path": "src/Enemy.hpp",
+        "base_sha256": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "operations": [
+          {
+            "old": "    float ReadRawFloatArgument(int index, float rawValue);",
+            "new": "    float ReadRawFloatArgument(unsigned int index, float rawValue);",
+            "occurrences": 1
+          }
+        ],
+        "result_sha256": "59c58d01eb277199f5a1c332652cffad132d0370769c5915c2b882a143940d61"
+      }
+    }
+  }
+}

@@ -105,6 +105,7 @@ EnemyFullObjectView::DispatchEclInstruction
 EnemyRuntimeView::DispatchEclInstruction
 EnemyRuntimeView::ReadIntArgument
 EnemyRuntimeView::ResolveIntArgument
+EnemyRuntimeView::ReadRawFloatArgument
 EnemyFullObjectView::ReadIntOperand
 EnemyFullObjectView::ResolveIntOperand
 EnemyFullObjectView::ReadFloatOperand

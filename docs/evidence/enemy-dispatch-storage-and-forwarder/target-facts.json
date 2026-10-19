@@ -1,0 +1,73 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "provider": "local read-only Ghidra12.1.3, target bytes independently decoded by pinned Capstone5.0.6",
+  "mapped_text": {
+    "start": "0x00401000",
+    "size": "0x64A80",
+    "before_and_after_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+    "transaction_rolled_back": true
+  },
+  "dispatcher": {
+    "address": "0x0040E770",
+    "owned_size": 14416,
+    "stack_allocation": "0x2C4",
+    "cookie_slot_at_final_esp": "0x2CC",
+    "spawn_clear": {
+      "address": "0x0040E7FA",
+      "storage_base": "ESP+0x248",
+      "rep_stosd": "0x0040E801",
+      "clear_bytes": 64
+    },
+    "spell_decode": {
+      "buffer_address": "0x00410E92",
+      "storage_base": "ESP+0x248",
+      "indexed_address": "0x00410EA4",
+      "byte_store": "0x00410EB0"
+    },
+    "unknowns": [
+      "Original authored union versus compiler slot reuse",
+      "Original spell buffer capacity; existing0x84 is provisional, not proven by cookie distance",
+      "Original source lifetime/GS partition"
+    ]
+  },
+  "raw_float_forwarder": {
+    "address": "0x00412AA0",
+    "owned_size": 26,
+    "inclusive_end": "0x00412AB9",
+    "direct_call_sites": [
+      "0x0040E82B",
+      "0x0040E84B",
+      "0x0040E869",
+      "0x0040E886",
+      "0x0040E9B7",
+      "0x0040E9CC",
+      "0x0040EA19",
+      "0x0040EA34",
+      "0x0040EA4F",
+      "0x0040EB4F",
+      "0x0040EB6F",
+      "0x0040EC67",
+      "0x0040EC7C"
+    ],
+    "receiver": "EAX EnemyRuntimeView*",
+    "index": "first stack dword; forwarded in ECX",
+    "raw_float": "second stack dword; forwarded as one stack dword",
+    "owner_load": "runtime+0x14D8",
+    "context_load": "owner+0x4",
+    "call": {
+      "address": "0x00412AB2",
+      "link_field_offset": 19,
+      "target": "0x0044FF80",
+      "semantic": "EclVmContext::ReadFloatValue"
+    },
+    "return_pop": 8,
+    "origin": "indeterminate; unchanged",
+    "source_mapping": "EnemyRuntimeView::ReadRawFloatArgument in src/EnemyEclDispatcher.cpp",
+    "exact": "nonexact; unchanged"
+  },
+  "reference": {
+    "commit": "c6791d82dc9f02e55eca45a5314f900a85481efd",
+    "file": "matching2/msvc/src/game/enemy/enemy_execute.cpp",
+    "authority": "source hypotheses only; file describes equivalent recovery and assembly exact fallback"
+  }
+}

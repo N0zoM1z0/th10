@@ -1,0 +1,36 @@
+{
+  "source_files_restored": true,
+  "project_input_count": 26,
+  "new_source_mapping": {
+    "address": "0x00412AA0",
+    "size": 26,
+    "origin": "indeterminate",
+    "exact": false
+  },
+  "new_exact_bytes": 0,
+  "authored_owned_bytes": 268826,
+  "authored_exact_bytes": 59939,
+  "authored_source_absent": 173,
+  "authored_source_present_nonexact": 206,
+  "focused_oracle": {
+    "result": "pass",
+    "guard_count": 6,
+    "complete_bytes": 791,
+    "linked_fields": 16
+  },
+  "toolchain_check": "passed",
+  "tracking_require_target": "passed",
+  "progress": "regenerated",
+  "public_ci": "passed; process exit0 and TH10 target-independent checks passed",
+  "cleanup": {
+    "removed_build_count": 5,
+    "removed_build_file_bytes": 4677876,
+    "removed_private_file_count": 32,
+    "removed_private_file_bytes": 3770883,
+    "total_removed_file_bytes": 8448759,
+    "retained_baseline": "build/gpt-6.1-sol/th10-enemy-owners-20261020/baseline",
+    "preexisting_untracked_d3d": "untouched"
+  },
+  "whitespace": "passed",
+  "ci_log_sha256": "2f94dc330512ef352e330f8c5c3aa2d7204da0494261380d98400b6f7bf23699"
+}
