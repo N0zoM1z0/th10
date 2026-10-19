@@ -329,6 +329,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0040D400,0x0040D4EE,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 239/239, tail ret"
 0x0040D4F0,0x0040D4F2,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
 0x0040D500,0x0040D502,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no direct xrefs/callers
+0x0040D510,0x0040D52B,reviewed,high,script-viewer-dependencies-2026-10-19,Complete28-byte pinned target and temporary Ghidra body; internal branches land on instruction starts; direct caller0x40A667; RET followed by CC; no tracked overlap.
 0x0040D530,0x0040D65B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 300/300, tail ret"
 0x0040D660,0x0040D67D,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 30/30, tail ret"
 0x0040D680,0x0040D6A3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 36/36, tail ret"

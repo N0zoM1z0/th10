@@ -426,6 +426,7 @@ struct EnemyManagerView
     EnemyManagerView();
     ~EnemyManagerView();
     int Initialize(const char *eclResourceFilename);
+    __declspec(noinline) void SuspendCallbacks();
 
     unsigned int flags;
     unsigned char unknown004[0x04];
@@ -450,6 +451,10 @@ typedef char EnemyManagerListHeadAt58[
     (offsetof(EnemyManagerView, enemyListHead) == 0x58) ? 1 : -1];
 typedef char EnemyManagerActiveCountAt60[
     (offsetof(EnemyManagerView, activeEnemyCount) == 0x60) ? 1 : -1];
+
+// Maintained stack-bound interface for the complete 0x409F90 clear operation.
+// Target callers push the manager and the callee returns with RET 4.
+void __stdcall EnemyManagerClear(EnemyManagerView *manager);
 
 // 0x40-byte spawn request consumed from the target EAX live-in at 0x40CFB0.
 // Names are assigned only where the downstream TH10 consumer establishes the

@@ -1,0 +1,71 @@
+{
+  "evidence_id": "script-viewer-dependencies-2026-10-19",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "entries": [
+    {
+      "address": "0x00405ED0",
+      "size": 45,
+      "span_end": "0x00405EFC",
+      "name": "BulletManagerView::ResetPool",
+      "module": "BulletManager",
+      "source": "src/BulletLifecycle.cpp",
+      "physical_abi": "internal ESI receiver / RET",
+      "target_code_sha256": "65f356d760e18975ada89b3c3c6660fd19fab3d6d43e987b25f5a0f7282e69fb",
+      "dense_decoded_bytes": 45,
+      "tail": "ret ",
+      "suffix_cc": true
+    },
+    {
+      "address": "0x00409F90",
+      "size": 118,
+      "span_end": "0x0040A005",
+      "name": "EnemyManagerClear",
+      "module": "Enemy",
+      "source": "src/Enemy.cpp",
+      "physical_abi": "stack EnemyManagerView* / RET 4",
+      "target_code_sha256": "782b365517d27258ab001548805f6dfbf8e6fc2795a0c2784681812d306be0f3",
+      "dense_decoded_bytes": 118,
+      "tail": "ret 4",
+      "suffix_cc": true
+    },
+    {
+      "address": "0x0040D510",
+      "size": 28,
+      "span_end": "0x0040D52B",
+      "name": "EnemyManagerView::SuspendCallbacks",
+      "module": "Enemy",
+      "source": "src/Enemy.cpp",
+      "physical_abi": "internal EAX receiver / RET",
+      "target_code_sha256": "ff7169a1ffda26fb648d1b9021d0a6affadd599732ae8acf918d02ca1872f6d1",
+      "dense_decoded_bytes": 28,
+      "tail": "ret ",
+      "suffix_cc": true
+    },
+    {
+      "address": "0x0040AC20",
+      "size": 109,
+      "span_end": "0x0040AC8C",
+      "name": "FrontEndInputView::UpdateDebugRepeat",
+      "module": "Input",
+      "source": "src/InputState.cpp",
+      "physical_abi": "ECX receiver / RET",
+      "target_code_sha256": "538fbe29a386f9790e25a20cc49135561c0f4b20ba53a9d1c6b32704d082fd47",
+      "dense_decoded_bytes": 109,
+      "tail": "ret ",
+      "suffix_cc": true
+    }
+  ],
+  "new_boundary": "0x0040D510..0x0040D52B",
+  "new_boundary_origin": "indeterminate; nullable flag helper could be source-written or compiler/LTCG outlined",
+  "incoming_site": "0x0040A667",
+  "inventory_preflight": "fresh local Ghidra architecture; pre-existing global check-ledger evidence-text difference at0x401100, no broad rewrite",
+  "source_only_stride_note": "InputState is a minimum view; this review does not establish allocation size, record stride or array count.",
+  "ghidra_region": {
+    "start": "0x00409EB0",
+    "end": "0x0040D52F",
+    "size": 13952,
+    "canonical_sha256": "46bbba2226e3e1efcfd5628093ba2c2302e3de847231f3e92ed37db6352404fe",
+    "equals_canonical_before_after": true,
+    "temporary_metadata_rolled_back": true
+  }
+}

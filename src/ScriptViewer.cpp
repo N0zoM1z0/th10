@@ -1,5 +1,7 @@
 #include "Main.hpp"
 #include "ScriptViewer.hpp"
+#include "BulletManager.hpp"
+#include "InputState.hpp"
 #include "Enemy.hpp"
 #include "EclVm.hpp"
 #include "Gui.hpp"
@@ -76,45 +78,18 @@ struct ScriptViewerItemsView
     int unknown10;
     unsigned char slots[0x21cea0];
 };
-struct ScriptViewerInputView
-{
-    unsigned short raw;
-    unsigned short unknown02;
-    unsigned short held;
-    unsigned short repeated;
-    unsigned int pressed;
-    unsigned char unknown0C[0x20];
-    unsigned short previousRaw;
-    unsigned short previousHeld;
-    unsigned short unknown30;
-    unsigned short frameRepeated;
-
-    unsigned short Update();
-    unsigned short IsActive(unsigned short mask);
-    bool IsActiveInline(unsigned short mask) const
-    {
-        return (repeated & mask) || (held & mask);
-    }
-};
 typedef char ScriptViewerInputOffsets[
-    (offsetof(ScriptViewerInputView, frameRepeated) == 0x32 &&
-     offsetof(ScriptViewerItemsView, slots) == 0x14) ? 1 : -1];
+    (offsetof(ScriptViewerItemsView, slots) == 0x14) ? 1 : -1];
 
-extern ScriptViewerInputView g_ScriptViewerInput;         // 0x474E30
-extern ScriptViewerChainOwnerView *g_ScriptViewerBullets; // 0x4776F0
+extern BulletManagerView *g_ScriptViewerBullets;         // 0x4776F0
 extern ScriptViewerItemsView *g_ScriptViewerItems;        // 0x477818
 extern EnemyManagerView *g_EnemyManager;                 // 0x477704
 extern GuiView *g_GuiView;                               // 0x47770C
-extern void ScriptViewerResetBullets(ScriptViewerChainOwnerView *owner); // 0x405ED0
-extern void __stdcall ScriptViewerClearEnemies(EnemyManagerView *owner); // 0x409F90
-extern void ScriptViewerSuspendEnemies(EnemyManagerView *owner);         // 0x40D510
-extern void __stdcall ScriptViewerRequestMode(void *owner, int mode);    // 0x40AC90
-extern unsigned char g_GameSoundState[];                                // 0x491C28
 extern void *g_ScriptViewerBomb;            // 0x4776EC
 extern void *g_ScriptViewerPopups;          // 0x477840
 extern void ScriptViewerReleaseGui(GuiView *owner);                         // 0x4148E0
 extern void ScriptViewerReleasePlayer(Player *owner);                      // 0x425090
-extern void ScriptViewerReleaseBullets(ScriptViewerChainOwnerView *owner);  // 0x406140
+extern void ScriptViewerReleaseBullets(BulletManagerView *owner);          // 0x406140
 extern void ScriptViewerReleaseBomb(void *owner);                          // 0x405730
 extern void ScriptViewerReleaseItems(ScriptViewerItemsView *owner);        // 0x41AFB0
 extern void ScriptViewerReleasePopups(void *owner);                        // 0x42B6D0
@@ -204,53 +179,58 @@ static inline void SelectScriptViewerEntry(FrontEndCursorView &cursor, int value
         cursor.current = 0;
 }
 
+static inline void RememberScriptViewerCursor(FrontEndCursorView *cursor)
+{
+    cursor->previous = cursor->current;
+}
+
 int ScriptViewerView::Update()
 {
     WIN32_FIND_DATAA find;
     switch (state)
     {
     case 4:
-        g_ScriptViewerInput.previousHeld = g_ScriptViewerInput.previousRaw;
-        g_ScriptViewerInput.previousRaw = g_ScriptViewerInput.raw;
-        g_ScriptViewerInput.Update();
-        g_ScriptViewerInput.frameRepeated = g_ScriptViewerInput.repeated;
-        if (g_ScriptViewerInput.frameRepeated & 8)
+        g_FrontEndInput.previousHeld = g_FrontEndInput.previousRaw;
+        g_FrontEndInput.previousRaw = g_FrontEndInput.raw;
+        g_FrontEndInput.UpdateDebugRepeat();
+        g_FrontEndInput.frameMask032 = g_FrontEndInput.pressed;
+        if (g_FrontEndInput.frameMask032 & 8)
         {
             ResumeScriptViewerOwner(g_Player);
             PlayerResetRuntimeState(g_Player);
             ResumeScriptViewerOwner(g_ScriptViewerBullets);
-            ScriptViewerResetBullets(g_ScriptViewerBullets);
+            g_ScriptViewerBullets->ResetPool();
             ResumeScriptViewerOwner(g_EnemyManager);
-            ScriptViewerClearEnemies(g_EnemyManager);
+            EnemyManagerClear(g_EnemyManager);
             ResumeScriptViewerOwner(g_ScriptViewerItems);
             memset(g_ScriptViewerItems->slots, 0, sizeof(g_ScriptViewerItems->slots));
             state = 1;
         }
         break;
     case 1:
-        menu.previous = menu.current;
-        if (g_ScriptViewerInput.IsActiveInline(0x20)) menu.Move(1);
-        if (g_ScriptViewerInput.IsActiveInline(0x10)) menu.Move(-1);
+        RememberScriptViewerCursor(&menu);
+        if (g_FrontEndInput.IsActiveInline(0x20)) menu.Move(1);
+        if (g_FrontEndInput.IsActiveInline(0x10)) menu.Move(-1);
         switch (menu.current)
         {
         case 2:
-            if (g_ScriptViewerInput.repeated & 0x1001)
-                ScriptViewerRequestMode(g_GameSoundState, 3);
+            if (g_FrontEndInput.pressed & 0x1001)
+                g_MainSupervisorView.SetNextGameMode(3);
             break;
         case 1:
             if (g_EnemyManager)
             {
-                entries.previous = entries.current;
-                if (g_ScriptViewerInput.IsActive(0x80)) entries.Move(1);
-                if (g_ScriptViewerInput.IsActive(0x40)) entries.Move(-1);
-                if (g_ScriptViewerInput.pressed & 0x1001)
+                RememberScriptViewerCursor(&entries);
+                if (static_cast<unsigned short>(g_FrontEndInput.IsRepeated(0x80))) entries.Move(1);
+                if (static_cast<unsigned short>(g_FrontEndInput.IsRepeated(0x40))) entries.Move(-1);
+                if (g_FrontEndInput.mask008 & 0x1001)
                 {
                     ScriptViewerSuspendPlayer(g_Player);
                     PlayerResetRuntimeState(g_Player);
                     SuspendScriptViewerOwner(g_ScriptViewerBullets);
-                    ScriptViewerResetBullets(g_ScriptViewerBullets);
-                    ScriptViewerSuspendEnemies(g_EnemyManager);
-                    ScriptViewerClearEnemies(g_EnemyManager);
+                    g_ScriptViewerBullets->ResetPool();
+                    g_EnemyManager->SuspendCallbacks();
+                    EnemyManagerClear(g_EnemyManager);
                     GameResetGui(g_GuiView);
                     SuspendScriptViewerOwner(g_ScriptViewerItems);
                     memset(g_ScriptViewerItems->slots, 0, sizeof(g_ScriptViewerItems->slots));
@@ -267,10 +247,10 @@ int ScriptViewerView::Update()
             }
             break;
         case 0:
-            files.previous = files.current;
-            if (g_ScriptViewerInput.IsActiveInline(0x80)) files.Move(1);
-            if (g_ScriptViewerInput.IsActiveInline(0x40)) files.Move(-1);
-            if (g_ScriptViewerInput.repeated & 0x1001)
+            RememberScriptViewerCursor(&files);
+            if (g_FrontEndInput.IsActiveInline(0x80)) files.Move(1);
+            if (g_FrontEndInput.IsActiveInline(0x40)) files.Move(-1);
+            if (g_FrontEndInput.pressed & 0x1001)
             {
                 ScriptViewerReleaseGui(g_GuiView);
                 ScriptViewerReleasePlayer(g_Player);

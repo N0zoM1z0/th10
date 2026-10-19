@@ -234,6 +234,7 @@ struct BulletManagerView
         int index1, int index2, float angleToPlayer);
     int SpawnBulletPattern(BulletSpawnDescriptorView *descriptor);
     int UpdateBullets();
+    void ResetPool();
 };
 
 typedef char BulletManagerCursorAt10[

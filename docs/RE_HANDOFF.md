@@ -63,12 +63,27 @@ scratch paths, or build hashes into this file.
   were reviewed against Start/Stop; the +8 field is a thread ID, not an event.
   Target calls at `0x40A655/0x40A685` to MarkGameChains are confirmed; the
   previous no-caller claim for Player release 0x425090 is corrected by 0x40A749.
-- Continue the larger ScriptViewer owners: Update remains 1280/1251,
-  InitializeManagers 153/101, creator 68/67, load callback 16/16 differing,
-  suspension 39/36 with unresolved RebuildPlayerOptions cleanup ABI.
-  Recover the destructor 412 and Draw 647; review missing manager release
-  entries and connect real callee graphs before changing ABI declarations.
-  No other source TU changed; no historical full-cohort native replay is claimed.
+- Real browser dependencies now close Bullet reset 45, Enemy clear 118,
+  Enemy suspension 28 and debug input repeat 109: **272 authored exact bytes**
+  plus 28 origin-indeterminate exact bytes. The suspension entry is a new
+  boundary confirmed at 0x40D510 by target decode and temporary Ghidra, with
+  caller 0x40A667; authorship stays unknown. All eight browser units pass two
+  frozen-source cold links in the expanded real ScriptViewerCreate graph.
+  See [the dependency evidence](evidence/script-viewer-dependencies/README.md).
+- `InputState.hpp` shares the existing FrontEnd prefix and the observed
+  debug-repeat offsets without asserting a record stride or allocation size.
+  The archived input-native proposal is unchanged. Target repeat flags OR
+  only bit 0 for every key and are not reset; preserve that unusual behavior.
+  Direct edge expressions recover 109 raw-equal bytes; simple AND reversal
+  is byte-neutral and a widened temporary regresses. Input-mask 33, cursor 128
+  and mode-switch 37 pass same-image guards. No historical full cohort replay.
+- Update remains 1267/1251; pointer-based cursor remembrance raises ordinary
+  diagnostic agreement to 539/923, without parent exact credit. Initializer
+  remains 153/101, creator 68/67, load callback 16/16 differing, player suspension
+  39/36 and Enemy manager destructor 298/300. Next connect worker Start 56 /
+  Stop 101 and remaining manager release calls; recover browser destructor 412
+  and Draw 647. RebuildPlayerOptions cleanup ABI and native product/runtime
+  closure remain open.
 
 ## Validated large-owner checkpoints (not exact claims)
 

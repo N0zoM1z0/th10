@@ -325,7 +325,6 @@ char g_EnemyResourceLoadErrorFormat[] =
 // private register assignment.
 void * __stdcall EnemyLoadFileBytes(
     const char *filename, unsigned int *sizeOut, int mode);
-void EnemyManagerClear(EnemyManagerView *manager);
 
 // Target 0x0040C800-0x0040C80E is the retained constructor for the embedded
 // 0x1008-byte operand-storage state. The two cursors are the only fields that
@@ -1329,6 +1328,45 @@ int EnemyManagerView::Initialize(const char *eclResourceFilename)
     manager->timer.subframe = 0.0f;
     manager->timer.previous = -1;
     return 0;
+}
+
+// Target 0x00409F90-0x0040A005 receives manager on the stack. Save next before
+// deleting an enemy: its virtual destructor may unlink the current list node.
+typedef char EnemyClearResourceSlotAt3AD090[
+    (offsetof(AnmRenderManagerView, loadedAnms) + 9 * sizeof(AnmLoadedView *) ==
+     0x3ad090) ? 1 : -1];
+
+// 0x40D510..0x40D52B, called by the browser before clearing live enemies.
+// Source-written method versus an outlined shared helper remains unknown;
+// noinline retains its observed separate boundary without declaring a private ABI.
+void EnemyManagerView::SuspendCallbacks()
+{
+    if (updateCallbackNode != NULL)
+        updateCallbackNode->flags |= 2u;
+    if (drawCallbackNode != NULL)
+        drawCallbackNode->flags |= 2u;
+}
+
+void __stdcall EnemyManagerClear(EnemyManagerView *manager)
+{
+    for (int slot = 9; slot < 13; ++slot)
+        g_AnmRenderManagerView->MarkLoadedVmsForDeletion(
+            g_AnmRenderManagerView->loadedAnms[slot]);
+
+    EnemyListNodeView *node = manager->enemyListHead;
+    while (node != NULL)
+    {
+        EnemyListNodeView *next = node->next;
+        if (node->enemy != NULL)
+            delete node->enemy;
+        node = next;
+    }
+    manager->spawnCounter = 0;
+    manager->specialEnemySlots[0] = NULL;
+    if (manager->updateCallbackNode != NULL)
+        manager->updateCallbackNode->flags &= ~2u;
+    if (manager->drawCallbackNode != NULL)
+        manager->drawCallbackNode->flags &= ~2u;
 }
 
 // Target 0x0040D530-0x0040D65B carries manager in EAX and returns with plain

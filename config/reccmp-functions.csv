@@ -988,3 +988,7 @@ ScriptViewerCreate,0x0040A3C0,function
 ScriptViewerView::Update,0x0040A450,function
 ScriptViewerUpdateCallback,0x0040ABE0,function
 ScriptViewerDrawCallback,0x0040ABF0,function
+BulletManagerView::ResetPool,0x00405ED0,function
+EnemyManagerClear,0x00409F90,function
+EnemyManagerView::SuspendCallbacks,0x0040D510,function
+FrontEndInputView::UpdateDebugRepeat,0x0040AC20,function

@@ -2191,3 +2191,40 @@ word `+0x3E07A6` to 5. Existing `BulletManagerView` and `BulletRuntimeView`
 assertions resolve these to all 2,001 records and `bullets[2000].state` at
 record offset `0x446`. This is target/source-layout evidence only; no new
 implementation or exact credit is registered for this dependency.
+
+### 2026-10-19: browser manager and debug input dependency closure
+
+The [dependency checkpoint](evidence/script-viewer-dependencies/README.md)
+closes complete Bullet reset 45 at 0x405ED0, Enemy clear 118 at 0x409F90,
+Enemy suspension 28 at 0x40D510 and debug input repeat 109 at 0x40AC20.
+Two frozen-source cold `/GL /GS` links pass all 300 bytes and four bound fields;
+**272 bytes** retain authored origin, while the new 28-byte suspension boundary
+stays origin-indeterminate. Temporary local Ghidra metadata and a canonical
+mapped-region hash establish its caller 0x40A667 and complete extent, with no
+persistent database or target-byte patch. The earlier paragraph's absence of
+implementation/credit records the preceding checkpoint, now superseded here.
+
+Enemy clear uses the renderer's actual loadedAnms 9..12, saves next before
+virtual deletion, clears +0x64 and the first special slot +0x10, and independently
+resumes nonnull callbacks. It does not itself clear active count +0x60. The
+local renderer snapshot produced twelve ordinary differences; the shared
+array expression recovers the target load/save/register schedule. Host fixtures
+include destructor-mutated links and a null resource among all four calls.
+
+The debug input updater clears +4, processes sixteen unsigned 16-bit counters at
++0x38, wraps their increment modulo 65536, and at 26 subtracts 8 and ORs only
+bit 0 into +0x30. That field accumulates and the bit never follows the key index.
+Edge outputs are +0x32/+0x34. A short explicit changed-bits local differs by
+five bytes; AND reversal is byte-neutral, and wide locals regress. Direct
+edge expressions enable shared-XOR code and match all 109 bytes raw-equal.
+The common minimum InputState view preserves the FrontEnd prefix but establishes
+no allocation size, array count or indexed stride; the archived input-native
+experiment is not integrated. Browser mask+8 remains neutrally named.
+
+The four earlier browser exact owners pass in the expanded real caller graph,
+along with cursor Move 128, input mask 33 and mode switch 37. Update improves
+from 1280 to 1267 target-owned candidate bytes against 1251, with 539/923 ordinary
+agreement after pointer-based cursor remembrance, but remains nonexact. Its
+matching regions earn no separate credit. Worker launch/stop, manager release,
+browser destructor/Draw, remaining private ABIs and native product/runtime
+closure remain open.

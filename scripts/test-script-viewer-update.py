@@ -34,6 +34,7 @@ class ScriptViewerUpdate(unittest.TestCase):
             '__declspec(noinline) void ScriptViewerSuspendPlayer',
             'void ScriptViewerView::ClearScriptNames',
             'static inline void SelectScriptViewerEntry',
+            'static inline void RememberScriptViewerCursor',
             'int ScriptViewerView::Update()',
             'int __fastcall ScriptViewerUpdateCallback',
         ])
@@ -51,14 +52,16 @@ static std::vector<std::string> events;
 namespace th10 { struct ChainElem {unsigned flags;}; }
 struct ScriptViewerChainOwnerView { th10::ChainElem *update,*draw; };
 struct Player : ScriptViewerChainOwnerView {};
+struct BulletManagerView : ScriptViewerChainOwnerView {void ResetPool();};
 struct ScriptViewerItemsView : ScriptViewerChainOwnerView {unsigned char slots[0x21cea0];};
-struct ScriptViewerInputView {
- unsigned short raw=0,held=0,repeated=0,previousHeld=0,previousRaw=0,frameRepeated=0;
- unsigned pressed=0;
- unsigned short Update();
- unsigned short IsActive(unsigned short mask){return (held|repeated)&mask;}
- bool IsActiveInline(unsigned short mask)const{return (held|repeated)&mask;}
+struct FrontEndInputView {
+ unsigned short raw=0,repeated=0,pressed=0,previousHeld=0,previousRaw=0,frameMask032=0;
+ unsigned mask008=0;
+ void UpdateDebugRepeat();
+ int IsRepeated(unsigned short mask){return ((repeated|pressed)&mask)!=0;}
+ bool IsActiveInline(unsigned short mask)const{return (repeated|pressed)&mask;}
 };
+
 struct FrontEndCursorView {
  int current=0,previous=0,count=0,wraps=0;
  void Move(int amount){current+=amount;}
@@ -67,7 +70,7 @@ struct Float3 {float x,y,z;};
 struct EnemySpawnRequestView {Float3 position;int score,item,life,flags0,flags1,variables[8];};
 struct Entry {const char *name;};
 struct EclVmScriptDatabase {Entry *subroutines;};
-struct EnemyManagerView : ScriptViewerChainOwnerView {EclVmScriptDatabase *scriptDatabase;};
+struct EnemyManagerView : ScriptViewerChainOwnerView {EclVmScriptDatabase *scriptDatabase;void SuspendCallbacks();};
 struct GuiView {};
 struct ScriptViewerWorkerView {};
 struct ScriptViewerView {
@@ -94,33 +97,33 @@ static int FindNextFileA(HANDLE search,WIN32_FIND_DATAA *out){
 static int FindClose(HANDLE search){
  assert(search==(HANDLE)1||search==INVALID_HANDLE_VALUE);++findCloseCount;return 1;
 }
-static ScriptViewerInputView g_ScriptViewerInput;
-static unsigned short nextRepeated;
-unsigned short ScriptViewerInputView::Update(){events.push_back("input");repeated=nextRepeated;return repeated;}
+static FrontEndInputView g_FrontEndInput;
+void FrontEndInputView::UpdateDebugRepeat(){events.push_back("input");}
 static th10::ChainElem tasks[8];
 static Player player; static Player *g_Player=&player;
-static ScriptViewerChainOwnerView bullets; static ScriptViewerChainOwnerView *g_ScriptViewerBullets=&bullets;
+static BulletManagerView bullets; static BulletManagerView *g_ScriptViewerBullets=&bullets;
 static ScriptViewerItemsView items; static ScriptViewerItemsView *g_ScriptViewerItems=&items;
 static EnemyManagerView enemies; static EnemyManagerView *g_EnemyManager=&enemies;
 static GuiView gui; static GuiView *g_GuiView=&gui;
 static void *g_ScriptViewerBomb=(void *)2,*g_ScriptViewerPopups=(void *)3;
-static unsigned char g_GameSoundState[1];
+struct MainSupervisorView {void SetNextGameMode(int mode);};
+static MainSupervisorView g_MainSupervisorView;
 static ScriptViewerView *activeView;
 static const char *spawnedEntry;
 static EnemySpawnRequestView spawnedRequest;
 static void RebuildPlayerOptions(Player *p){assert(p==g_Player);events.push_back("rebuild");}
 static void PlayerResetRuntimeState(Player *p){assert(p==g_Player);events.push_back("player-reset");}
-static void ScriptViewerResetBullets(ScriptViewerChainOwnerView *p){assert(p==g_ScriptViewerBullets);events.push_back("bullet-reset");}
-static void ScriptViewerClearEnemies(EnemyManagerView *p){assert(p==g_EnemyManager);events.push_back("enemy-clear");}
-static void ScriptViewerSuspendEnemies(EnemyManagerView *p){assert(p==g_EnemyManager);events.push_back("enemy-suspend");}
+void BulletManagerView::ResetPool(){assert(this==g_ScriptViewerBullets);events.push_back("bullet-reset");}
+static void EnemyManagerClear(EnemyManagerView *p){assert(p==g_EnemyManager);events.push_back("enemy-clear");}
+void EnemyManagerView::SuspendCallbacks(){assert(this==g_EnemyManager);events.push_back("enemy-suspend");}
 static void GameResetGui(GuiView *p){assert(p==g_GuiView);events.push_back("gui-reset");}
 static void EnemySpawn(EnemyManagerView *p,const char *name,const EnemySpawnRequestView *r){
  assert(p==g_EnemyManager);events.push_back("spawn");spawnedEntry=name;spawnedRequest=*r;
 }
-static void ScriptViewerRequestMode(void *p,int mode){assert(p==g_GameSoundState&&mode==3);events.push_back("mode3");}
+void MainSupervisorView::SetNextGameMode(int mode){assert(this==&g_MainSupervisorView&&mode==3);events.push_back("mode3");}
 static void ScriptViewerReleaseGui(GuiView *p){assert(p==g_GuiView);events.push_back("release-gui");}
 static void ScriptViewerReleasePlayer(Player *p){assert(p==g_Player);events.push_back("release-player");}
-static void ScriptViewerReleaseBullets(ScriptViewerChainOwnerView *p){assert(p==g_ScriptViewerBullets);events.push_back("release-bullets");}
+static void ScriptViewerReleaseBullets(BulletManagerView *p){assert(p==g_ScriptViewerBullets);events.push_back("release-bullets");}
 static void ScriptViewerReleaseBomb(void *p){assert(p==g_ScriptViewerBomb);events.push_back("release-bomb");}
 static void ScriptViewerReleaseItems(ScriptViewerItemsView *p){assert(p==g_ScriptViewerItems);events.push_back("release-items");}
 static void ScriptViewerReleasePopups(void *p){assert(p==g_ScriptViewerPopups);events.push_back("release-popups");}
@@ -132,7 +135,7 @@ static void ScriptViewerStartWorker(ScriptViewerWorkerView *w,ScriptViewerView *
 '''
         program += extracted + r'''
 static void reset(){
- events.clear();g_ScriptViewerInput=ScriptViewerInputView();spawnedEntry=nullptr;
+ events.clear();g_FrontEndInput=FrontEndInputView();spawnedEntry=nullptr;
  for(auto &task:tasks)task.flags=4;
  player.update=&tasks[0];player.draw=&tasks[1];bullets.update=&tasks[2];bullets.draw=&tasks[3];
  enemies.update=&tasks[4];enemies.draw=&tasks[5];items.update=&tasks[6];items.draw=&tasks[7];
@@ -146,36 +149,39 @@ int main(){
  // Target state4 updates input before resuming and clearing managers.
  reset();ScriptViewerView running;running.state=4;
  for(auto &task:tasks)task.flags=6;
- g_ScriptViewerInput.previousRaw=0x20;g_ScriptViewerInput.raw=0x40;nextRepeated=8;
+ g_FrontEndInput.previousRaw=0x20;g_FrontEndInput.raw=0x40;g_FrontEndInput.pressed=8;
  assert(running.Update()==1&&running.state==1);
- assert(g_ScriptViewerInput.previousHeld==0x20&&g_ScriptViewerInput.previousRaw==0x40&&g_ScriptViewerInput.frameRepeated==8);
+ assert(g_FrontEndInput.previousHeld==0x20&&g_FrontEndInput.previousRaw==0x40&&g_FrontEndInput.frameMask032==8);
  assert(events==std::vector<std::string>({"input","player-reset","bullet-reset","enemy-clear"}));
  for(auto &task:tasks)assert(task.flags==4);
  assert(std::all_of(items.slots,items.slots+sizeof items.slots,[](unsigned char c){return c==0;}));
- reset();running.state=4;nextRepeated=0;running.Update();
+ reset();running.state=4;g_FrontEndInput.pressed=0;running.Update();
  assert(running.state==4&&events==std::vector<std::string>({"input"}));
  // Entry selection uses the selected name and clears the entire spawn packet.
  reset();ScriptViewerView spawn;spawn.state=1;spawn.menu.current=1;
- g_ScriptViewerInput.held=0x80;g_ScriptViewerInput.pressed=0x1001;
+ g_FrontEndInput.repeated=0x80;g_FrontEndInput.mask008=0x1001;
  assert(spawn.Update()==1&&spawn.state==4&&spawn.entries.current==1);
+ assert(spawn.menu.previous==1&&spawn.entries.previous==0);
  assert(events==std::vector<std::string>({"rebuild","player-reset","bullet-reset","enemy-suspend","enemy-clear","gui-reset","spawn"}));
  assert(std::string(spawnedEntry)=="SubB");
  assert(spawnedRequest.position.x==0&&spawnedRequest.position.y==0&&spawnedRequest.position.z==0&&spawnedRequest.life==10000);
  assert(spawnedRequest.score==0&&spawnedRequest.item==0&&spawnedRequest.flags0==0&&spawnedRequest.flags1==0);
  for(int v:spawnedRequest.variables)assert(v==0);
  assert(tasks[0].flags==6&&tasks[1].flags==6&&tasks[2].flags==6&&tasks[3].flags==6&&tasks[6].flags==6&&tasks[7].flags==6);
- // The entry branch consumes pressed, whereas reload/quit consume repeated.
- reset();spawn.state=1;g_ScriptViewerInput.repeated=1;spawn.Update();
+ // The entry branch reads +8, whereas reload/quit read +6.
+ reset();spawn.state=1;g_FrontEndInput.pressed=1;spawn.Update();
  assert(spawn.state==1&&events.empty());
  reset();g_EnemyManager=nullptr;spawn.Update();assert(events.empty());g_EnemyManager=&enemies;
  // Reload passes every current owner in target order, then starts the worker.
  reset();ScriptViewerView reload;activeView=&reload;reload.state=1;reload.flags=10;
- g_ScriptViewerInput.repeated=0x1001;reload.Update();
+ reload.files.current=2;reload.files.previous=-9;
+ g_FrontEndInput.pressed=0x1001;reload.Update();
  assert(reload.state==2&&reload.flags==8);
+ assert(reload.files.previous==2&&reload.files.current==2);
  assert(events==std::vector<std::string>({"release-gui","release-player","release-bullets","release-bomb","release-items","release-popups","release-enemies","worker"}));
- reset();reload.state=1;g_ScriptViewerInput.pressed=1;reload.Update();
+ reset();reload.state=1;g_FrontEndInput.mask008=1;reload.Update();
  assert(reload.state==1&&events.empty());
- reset();ScriptViewerView quit;quit.state=1;quit.menu.current=2;g_ScriptViewerInput.repeated=1;quit.Update();
+ reset();ScriptViewerView quit;quit.state=1;quit.menu.current=2;g_FrontEndInput.pressed=1;quit.Update();
  assert(events==std::vector<std::string>({"mode3"}));
  // Empty search still closes INVALID_HANDLE_VALUE, matching target control flow.
  reset();directory.clear();ScriptViewerView empty;empty.Update();

@@ -987,3 +987,7 @@ ScriptViewerCreate
 ScriptViewerView::Update
 ScriptViewerUpdateCallback
 ScriptViewerDrawCallback
+BulletManagerView::ResetPool
+EnemyManagerClear
+EnemyManagerView::SuspendCallbacks
+FrontEndInputView::UpdateDebugRepeat

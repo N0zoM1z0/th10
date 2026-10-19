@@ -1,6 +1,7 @@
 #include "Main.hpp"
 #include "EnemySoundQueue.hpp"
 #include "FrontEnd.hpp"
+#include "InputState.hpp"
 #include "ReplayManager.hpp"
 #include "FileSystem.hpp"
 #include <stdlib.h>
@@ -86,15 +87,6 @@ tryAgain:
     return current;
 }
 
-
-struct FrontEndInputView
-{
-    unsigned int current;
-    unsigned short repeated;
-    unsigned short pressed;
-
-    int IsRepeated(unsigned short mask);
-};
 
 // TH10 0x0040ACE0. FrontEnd callers keep the shared input object in ECX while
 // /GL promotes the 16-bit mask to EAX. The source method keeps the natural
