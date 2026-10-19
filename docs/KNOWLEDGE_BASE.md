@@ -2363,3 +2363,32 @@ witnesses. They do not establish Windows runtime or x87 edge behavior.
 All nine reviewed authored ScriptViewer owners now have source; only its
 412-byte destructor remains nonexact. Larger manager destruction, Rebuild,
 production owners and the complete product/runtime gate remain open.
+
+### 2026-10-19: ECL Run jump snapshot and alias constraints
+
+The [jump-lifetime checkpoint](evidence/ecl-run-jump-lifetime/README.md)
+keeps the complete Run7020 owner in scope. Fresh target instructions0x44E40F,
+0x44E411,0x44E414 and0x44E416 load one live instruction pointer, read its time,
+store currentTime, then read delta from the same pointer. Maintained jump time
+and delta now explicitly share one scoped snapshot. Native delta addressing
+changes EDI+0x10 to the target's EAX+0x10; result EAX still differs from target
+ECX. The single changed ordinary byte remains unequal, so the diagnostic count
+stays6125/6264 rather than gaining a matched byte. No normal-input runtime bug,
+full jump-base reconstruction, original source identity or exactness is claimed.
+
+Two frozen-source cold real-EnemyRuntimeUpdate `/GL` links retain7020 bytes,
+all60 relative switch destinations and88 selector bytes. Seven existing complete
+host/operand guards pass all919 bytes and17 target-bound fields twice. Source
+and compiler helper interfaces are unchanged. Full fresh-base jump variants
+trigger cross-case optimization and shrink Run to6948; a separate member read
+for delta retains7020 but shifts later table destinations by2. Neither is
+adopted. The scoped operand model keeps the original common advance/base
+structure; its remaining alias/lifetime reconstruction is open.
+
+The fresh whole-owner ordinary discrepancy inventory is13 before the FORMAT
+physical interval,118 within it and8 after it. Candidate-recognized field
+exclusion does not prove semantic case ownership or complete normalization.
+The existing88-byte undecoded selector limitation is preserved; no comparator
+relaxation, partial credit or parked FORMAT retry occurs. This changes no exact
+ledger count or byte numerator. Remaining large-owner register/stack/context
+work and native product/runtime closure remain open.

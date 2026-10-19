@@ -43,6 +43,16 @@ scratch paths, or build hashes into this file.
   integer-operand snapshots regress six net bytes and were discarded.
   VerticalWrap reassociation is byte-neutral; duplicated tails and delayed
   view lifetimes regress to 166/172. No major-owner or wrap credit is added.
+- A fresh jump-lifetime review now uses one scoped live snapshot for Run's
+  time/delta operands. The delta input base becomes target EAX, but its result
+  register still differs; the diagnostic byte count remains 6,125/6,264.
+  Two cold links emit a target-sized 7,020-byte owner with aligned tables; seven
+  complete existing guards passing. Full fresh-base jump models collapse the
+  owner to 6,948; separate delta-member re-read shifts later cases by two bytes.
+  Both routes are rejected. No exact credit or FORMAT reopening follows.
+  See [the source model and controls](evidence/ecl-run-jump-lifetime/README.md).
+  Rotate next to ANM ExecuteScript or Enemy dispatch; revisit this jump branch
+  only with additional alias/lifetime evidence.
 - The issue's reference is now a shallow, sparse local checkout at
   `_reference/th10-decomp`, commit `c6791d82dc9f02e55eca45a5314f900a85481efd`.
   Read its MIT license and treat source/context ideas as hypotheses. Use our
@@ -122,7 +132,7 @@ ledger entries. Rebuild each probe after changing a supporting translation unit.
 
 | Owner | Last checked source context | Observed candidate / target | Open work |
 | --- | --- | --- | --- |
-| ECL `EclVmContext::Run` | `7d77b95`, EclVmStack linked /GL Run probe | 7,020 / 7,020 owned bytes; 59 / 59 dispatch destinations aligned; historical 6,209 raw matches must not be divided by the 6,264 comparable-byte denominator | Remaining register, stack-home, and opcode byte differences; non-exact |
+| ECL `EclVmContext::Run` | `2f954d0` plus retained scoped jump operands, real Enemy caller /GL graph | 7,020 / 7,020 owned bytes; all 60 table destinations and 88 selector bytes aligned; 6,125 / 6,264 diagnostic comparable matches | 139 ordinary differences, incomplete selector normalization and remaining alias/register/stack structure; non-exact |
 | ANM `ExecuteScript` | `d2cddda`, ANM /GL /GS probe | 9,964 / 9,964 bytes, 0xFC target frame, 92 physical groups in order, 84 of 92 spans target-sized; 2,986 / 8,572 raw comparable bytes | Eight non-equal group spans and aggregate/RNG private ABI; non-exact |
 | Enemy `DispatchEclInstruction` | `d2cddda`, selected ECL + ANM support graph | 14,384 / 14,416 bytes; target-sized 181-byte selector, all 108 group destinations in physical order; 0x2BC vs 0x2C4 stack allocation | ECL argument adapters, spawn/laser group lifetimes, stack allocation; non-exact |
 
