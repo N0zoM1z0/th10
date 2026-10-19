@@ -1,0 +1,465 @@
+{
+  "starting_head": "785e91c",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+  "ghidra_read_only_attested_bytes_unchanged": true,
+  "target_owner": {
+    "address": "0x0043EE30",
+    "size": 9964,
+    "sha256": "7aeb1547ffa662357abe252c29cfb339b57aa60983c48f3557cc49c719218df4",
+    "stack_allocation": 252,
+    "pre_table_span": 9588,
+    "jump_table_bytes": 376
+  },
+  "baseline_owner": {
+    "address": "0x004061A0",
+    "size": 9948,
+    "sha256": "fca20866cf5d67abc832457465214e043eec439c7197cbc68ab98074f6f6db58",
+    "stack_allocation": 248,
+    "pre_table_span": 9572,
+    "jump_table_bytes": 376
+  },
+  "observed_ranges": [
+    {
+      "opcode": 9,
+      "target": {
+        "address": "0x00440393",
+        "size": 77,
+        "stack_operands": [
+          {
+            "instruction_offset": 17,
+            "mnemonic": "fstp",
+            "operand_index": 0,
+            "displacement": 64,
+            "width": 4
+          },
+          {
+            "instruction_offset": 26,
+            "mnemonic": "mov",
+            "operand_index": 0,
+            "displacement": 64,
+            "width": 4
+          },
+          {
+            "instruction_offset": 49,
+            "mnemonic": "fld",
+            "operand_index": 0,
+            "displacement": 64,
+            "width": 4
+          }
+        ],
+        "calls": [
+          {
+            "instruction_offset": 12,
+            "address": "0x0043EAC0"
+          },
+          {
+            "instruction_offset": 44,
+            "address": "0x0043ED00"
+          }
+        ],
+        "integer_xor_or": [
+          {
+            "instruction_offset": 30,
+            "mnemonic": "xor",
+            "operands": "edx, edx"
+          },
+          {
+            "instruction_offset": 39,
+            "mnemonic": "xor",
+            "operands": "ecx, ecx"
+          },
+          {
+            "instruction_offset": 69,
+            "mnemonic": "or",
+            "operands": "edi, 0xffffffff"
+          }
+        ]
+      },
+      "candidate": {
+        "address": "0x004076F7",
+        "size": 86,
+        "stack_operands": [
+          {
+            "instruction_offset": 17,
+            "mnemonic": "fstp",
+            "operand_index": 0,
+            "displacement": 180,
+            "width": 4
+          },
+          {
+            "instruction_offset": 29,
+            "mnemonic": "mov",
+            "operand_index": 0,
+            "displacement": 180,
+            "width": 4
+          },
+          {
+            "instruction_offset": 55,
+            "mnemonic": "fld",
+            "operand_index": 0,
+            "displacement": 180,
+            "width": 4
+          }
+        ],
+        "calls": [
+          {
+            "instruction_offset": 12,
+            "address": "0x00401460"
+          },
+          {
+            "instruction_offset": 50,
+            "address": "0x004016A0"
+          }
+        ],
+        "integer_xor_or": [
+          {
+            "instruction_offset": 36,
+            "mnemonic": "xor",
+            "operands": "edx, edx"
+          },
+          {
+            "instruction_offset": 45,
+            "mnemonic": "xor",
+            "operands": "ecx, ecx"
+          },
+          {
+            "instruction_offset": 78,
+            "mnemonic": "or",
+            "operands": "edi, 0xffffffff"
+          }
+        ]
+      }
+    },
+    {
+      "opcode": 11,
+      "target": {
+        "address": "0x00440420",
+        "size": 86,
+        "stack_operands": [
+          {
+            "instruction_offset": 17,
+            "mnemonic": "fstp",
+            "operand_index": 0,
+            "displacement": 136,
+            "width": 4
+          },
+          {
+            "instruction_offset": 29,
+            "mnemonic": "mov",
+            "operand_index": 0,
+            "displacement": 136,
+            "width": 4
+          },
+          {
+            "instruction_offset": 57,
+            "mnemonic": "fsub",
+            "operand_index": 0,
+            "displacement": 136,
+            "width": 4
+          }
+        ],
+        "calls": [
+          {
+            "instruction_offset": 12,
+            "address": "0x0043EAC0"
+          },
+          {
+            "instruction_offset": 50,
+            "address": "0x0043ED00"
+          }
+        ],
+        "integer_xor_or": [
+          {
+            "instruction_offset": 36,
+            "mnemonic": "xor",
+            "operands": "edx, edx"
+          },
+          {
+            "instruction_offset": 45,
+            "mnemonic": "xor",
+            "operands": "ecx, ecx"
+          },
+          {
+            "instruction_offset": 78,
+            "mnemonic": "or",
+            "operands": "edi, 0xffffffff"
+          }
+        ]
+      },
+      "candidate": {
+        "address": "0x0040778D",
+        "size": 77,
+        "stack_operands": [
+          {
+            "instruction_offset": 17,
+            "mnemonic": "fstp",
+            "operand_index": 0,
+            "displacement": 64,
+            "width": 4
+          },
+          {
+            "instruction_offset": 26,
+            "mnemonic": "mov",
+            "operand_index": 0,
+            "displacement": 64,
+            "width": 4
+          },
+          {
+            "instruction_offset": 51,
+            "mnemonic": "fsub",
+            "operand_index": 0,
+            "displacement": 64,
+            "width": 4
+          }
+        ],
+        "calls": [
+          {
+            "instruction_offset": 12,
+            "address": "0x00401460"
+          },
+          {
+            "instruction_offset": 44,
+            "address": "0x004016A0"
+          }
+        ],
+        "integer_xor_or": [
+          {
+            "instruction_offset": 30,
+            "mnemonic": "xor",
+            "operands": "edx, edx"
+          },
+          {
+            "instruction_offset": 39,
+            "mnemonic": "xor",
+            "operands": "ecx, ecx"
+          },
+          {
+            "instruction_offset": 69,
+            "mnemonic": "or",
+            "operands": "edi, 0xffffffff"
+          }
+        ]
+      }
+    },
+    {
+      "opcode": 27,
+      "target": {
+        "address": "0x004402CD",
+        "size": 134,
+        "stack_operands": [
+          {
+            "instruction_offset": 17,
+            "mnemonic": "fstp",
+            "operand_index": 0,
+            "displacement": 128,
+            "width": 4
+          },
+          {
+            "instruction_offset": 29,
+            "mnemonic": "mov",
+            "operand_index": 0,
+            "displacement": 128,
+            "width": 4
+          },
+          {
+            "instruction_offset": 53,
+            "mnemonic": "fstp",
+            "operand_index": 0,
+            "displacement": 180,
+            "width": 4
+          },
+          {
+            "instruction_offset": 65,
+            "mnemonic": "mov",
+            "operand_index": 0,
+            "displacement": 180,
+            "width": 4
+          },
+          {
+            "instruction_offset": 91,
+            "mnemonic": "fld",
+            "operand_index": 0,
+            "displacement": 180,
+            "width": 4
+          },
+          {
+            "instruction_offset": 98,
+            "mnemonic": "fld",
+            "operand_index": 0,
+            "displacement": 128,
+            "width": 4
+          }
+        ],
+        "calls": [
+          {
+            "instruction_offset": 12,
+            "address": "0x0043EAC0"
+          },
+          {
+            "instruction_offset": 48,
+            "address": "0x0043EAC0"
+          },
+          {
+            "instruction_offset": 86,
+            "address": "0x0043ED00"
+          },
+          {
+            "instruction_offset": 107,
+            "address": "0x00463BBA"
+          }
+        ],
+        "integer_xor_or": [
+          {
+            "instruction_offset": 72,
+            "mnemonic": "xor",
+            "operands": "edx, edx"
+          },
+          {
+            "instruction_offset": 81,
+            "mnemonic": "xor",
+            "operands": "ecx, ecx"
+          },
+          {
+            "instruction_offset": 126,
+            "mnemonic": "or",
+            "operands": "edi, 0xffffffff"
+          }
+        ]
+      },
+      "candidate": {
+        "address": "0x0040763A",
+        "size": 125,
+        "stack_operands": [
+          {
+            "instruction_offset": 17,
+            "mnemonic": "fstp",
+            "operand_index": 0,
+            "displacement": 124,
+            "width": 4
+          },
+          {
+            "instruction_offset": 26,
+            "mnemonic": "mov",
+            "operand_index": 0,
+            "displacement": 124,
+            "width": 4
+          },
+          {
+            "instruction_offset": 47,
+            "mnemonic": "fstp",
+            "operand_index": 0,
+            "displacement": 196,
+            "width": 4
+          },
+          {
+            "instruction_offset": 59,
+            "mnemonic": "mov",
+            "operand_index": 0,
+            "displacement": 196,
+            "width": 4
+          },
+          {
+            "instruction_offset": 85,
+            "mnemonic": "fld",
+            "operand_index": 0,
+            "displacement": 196,
+            "width": 4
+          },
+          {
+            "instruction_offset": 92,
+            "mnemonic": "fld",
+            "operand_index": 0,
+            "displacement": 124,
+            "width": 4
+          }
+        ],
+        "calls": [
+          {
+            "instruction_offset": 12,
+            "address": "0x00401460"
+          },
+          {
+            "instruction_offset": 42,
+            "address": "0x00401460"
+          },
+          {
+            "instruction_offset": 80,
+            "address": "0x004016A0"
+          },
+          {
+            "instruction_offset": 98,
+            "address": "0x0040E13C"
+          }
+        ],
+        "integer_xor_or": [
+          {
+            "instruction_offset": 66,
+            "mnemonic": "xor",
+            "operands": "edx, edx"
+          },
+          {
+            "instruction_offset": 75,
+            "mnemonic": "xor",
+            "operands": "ecx, ecx"
+          },
+          {
+            "instruction_offset": 117,
+            "mnemonic": "or",
+            "operands": "edi, 0xffffffff"
+          }
+        ]
+      }
+    },
+    {
+      "opcode": 61,
+      "target": {
+        "address": "0x0043F276",
+        "size": 52,
+        "stack_operands": [],
+        "calls": [],
+        "integer_xor_or": [
+          {
+            "instruction_offset": 15,
+            "mnemonic": "xor",
+            "operands": "eax, 0x200"
+          },
+          {
+            "instruction_offset": 20,
+            "mnemonic": "or",
+            "operands": "eax, 8"
+          },
+          {
+            "instruction_offset": 44,
+            "mnemonic": "or",
+            "operands": "edi, 0xffffffff"
+          }
+        ]
+      },
+      "candidate": {
+        "address": "0x004065E6",
+        "size": 53,
+        "stack_operands": [],
+        "calls": [],
+        "integer_xor_or": [
+          {
+            "instruction_offset": 15,
+            "mnemonic": "xor",
+            "operands": "edx, 0x200"
+          },
+          {
+            "instruction_offset": 21,
+            "mnemonic": "or",
+            "operands": "edx, 8"
+          },
+          {
+            "instruction_offset": 45,
+            "mnemonic": "or",
+            "operands": "edi, 0xffffffff"
+          }
+        ]
+      }
+    }
+  ],
+  "limits": "Raw ESP displacements and instruction order are observations, not original C++ variable/ownership proofs. Physical [2] span includes the common update tail. No parent or partial-case exact credit."
+}

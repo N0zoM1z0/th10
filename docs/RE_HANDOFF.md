@@ -1,6 +1,6 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-19. This is a concise resume brief, not an experiment journal.
+Updated 2026-10-20. This is a concise resume brief, not an experiment journal.
 Keep live totals in the generated [`PROGRESS.md`](PROGRESS.md), durable target
 facts and negative results in [`KNOWLEDGE_BASE.md`](KNOWLEDGE_BASE.md), and
 experiment chronology in Git history. Only explicitly dated, scoped
@@ -70,6 +70,20 @@ scratch paths, or build hashes into this file.
   comparable positions. Rotate next to the remaining native lifetime/stack
   frontier or Enemy dispatch; do not repeat integer ABI keywords or parked
   SCALE_TIME/FORMAT controls without new TH10 evidence.
+- The [fresh ANM stack review](evidence/anm-execute-stack-review/README.md)
+  confirms the current four-TU9948/9964, frameF8/FC and84/92-span frontier.
+  All11 inputs are restored; no source or exact credit is added. ADD9/SUB11
+  swaps are binary32 stack-slot/displacement effects; getter-before-pointer
+  order and MOD2/1/destination/math order already agree. Explicit locals and
+  double fmod API controls produce the identical raw parent; bitfield FLIP_X
+  reaches9964 only by extra Boolean work while retaining frameF8. Reordered
+  raw FLIP_X statements also regress and are restored. The target-sized total
+  is rejected. Actual baseline getters and three existing helpers retain1731
+  complete bytes/all107 fields in this carrier. Diagnostic controls reuse three
+  unchanged, hash-checked support objects; none counts as a fresh cold/exact
+  claim. Do not repeat these local/API/bitfield/order models. Rotate to Enemy
+  dispatch or additional TH10-backed lifetime/partition evidence; keep unknowns
+  rather than forcing registers, frame size or partial-case matches.
 - Enemy dispatch now uses real initial/final Float2 values shared with random
   movement. The target angle float32 store, memory subtraction and frame2C4
   are restored; the complete eight-TU /GL /GS owner remains14524/14416 and

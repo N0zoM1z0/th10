@@ -2655,3 +2655,33 @@ pins and their rejection policy do not change. Whole major-owner previews in
 this retained Gui carrier remain nonexact, and are not a basis for changing
 their canonical profiles or granting partial credit. See [the complete scoped
 proof](evidence/effect-constructor/README.md).
+
+## Fresh ANM operand-stack and FLIP_X controls (2026-10-20)
+
+The current-source four-TU ExecuteScript /GL /GS baseline still emits9948/9964,
+frameF8/FC, all92 physical groups in order and84 equal-sized spans. Fresh read-only
+local Ghidra attests the full mapped target text before/after. ADD9's binary32
+RHS is at targetESP40 versus nativeB4; SUB11 target88 versus native40. MOD27
+uses target80/B4 versus native7C/C4. Baseline conditional getter/destination/math
+ordering already agrees; the length swaps are displacement-width effects, not
+proof of wrong arithmetic. FLIP_X target EAX/XOR-immediate costs one byte less
+than baseline EDX, while FLIP_Y already uses EAX. Original source variables and
+optimization visibility remain unknown.
+
+Explicit ADD/SUB value/pointer lifetimes and float snapshots plus explicit double
+fmod produce the identical raw whole-parent hash. Existing-bitfield FLIP_X emits
+extra Boolean ALU operations and grows its own span61/52; the resulting parent
+is coincidentally9964 but still frameF8, hence rejected. Moving multiplication
+before raw flag update does not improve it. All modified bytes and11 input
+hashes are restored to785e91c. No source, boundary, origin, denominator, parent,
+fragment or exact credit is added. Do not repeat these controls as new hypotheses.
+
+Only the baseline is fully cold; four diagnostics each recompile the changed
+primary and reuse three byte-hash checked /GL support objects after verifying
+all non-primary inputs unchanged. Strict same-carrier validation preserves all
+seven existing owners1731 bytes/all107 fields, including the complete four
+operand getters856/all84 fields. This establishes their bytes in this carrier,
+not unique original compiler partition/visibility or whole-product behavior.
+The reference explicitly calls its ANM parent equivalent with assembly fallback;
+its forced helpers/redundant stores are not natural exact proof. See [the target
+facts, rejected controls and complete guards](evidence/anm-execute-stack-review/README.md).

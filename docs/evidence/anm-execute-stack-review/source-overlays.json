@@ -1,0 +1,36 @@
+{
+  "starting_head": "785e91c",
+  "source": "src/AnmManager.cpp",
+  "base_sha256": "0fefc4e3e9e6b8e391db16b0031e282e8267a374fd711ec07600d65995d9f4da",
+  "encoding": "UTF-8 with original CRLF; exact-one scoped replacements, each applied independently to base",
+  "rejected_overlays": {
+    "named-float-lifetimes": [
+      {
+        "before": "        case ANM_OP_F_ADD:\r\n            *GET_FLOAT_VAR_PTR(0) += GET_FLOAT_VAR(1);\r\n            break;",
+        "after": "        case ANM_OP_F_ADD:\r\n        {\r\n            float value = GET_FLOAT_VAR(1);\r\n            float *destination = GET_FLOAT_VAR_PTR(0);\r\n            *destination = *destination + value;\r\n            break;\r\n        }"
+      },
+      {
+        "before": "        case ANM_OP_F_SUB:\r\n            *GET_FLOAT_VAR_PTR(0) -= GET_FLOAT_VAR(1);\r\n            break;",
+        "after": "        case ANM_OP_F_SUB:\r\n        {\r\n            float value = GET_FLOAT_VAR(1);\r\n            float *destination = GET_FLOAT_VAR_PTR(0);\r\n            *destination = *destination - value;\r\n            break;\r\n        }"
+      }
+    ],
+    "double-remainder-inputs": [
+      {
+        "before": "        case ANM_OP_F_SET_MOD:\r\n            *GET_FLOAT_VAR_PTR(0) =\r\n                fmodf(GET_FLOAT_VAR(1), GET_FLOAT_VAR(2));\r\n            break;",
+        "after": "        case ANM_OP_F_SET_MOD:\r\n        {\r\n            float divisor = GET_FLOAT_VAR(2);\r\n            float dividend = GET_FLOAT_VAR(1);\r\n            float *destination = GET_FLOAT_VAR_PTR(0);\r\n            *destination = static_cast<float>(fmod(\r\n                static_cast<double>(dividend), static_cast<double>(divisor)));\r\n            break;\r\n        }"
+      }
+    ],
+    "flip-x-fields": [
+      {
+        "before": "        case ANM_OP_FLIP_X:\r\n            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;\r\n            vm->scaleX *= -1.0f;\r\n            break;",
+        "after": "        case ANM_OP_FLIP_X:\r\n            vm->flipX ^= 1u;\r\n            vm->scaleX *= -1.0f;\r\n            vm->updateScale = 1;\r\n            break;"
+      }
+    ],
+    "flip-x-statement-order": [
+      {
+        "before": "        case ANM_OP_FLIP_X:\r\n            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;\r\n            vm->scaleX *= -1.0f;\r\n            break;",
+        "after": "        case ANM_OP_FLIP_X:\r\n            vm->scaleX *= -1.0f;\r\n            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;\r\n            break;"
+      }
+    ]
+  }
+}
