@@ -1,0 +1,69 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_base_commit": "b35f147",
+  "completed_checks": [
+    "session recovery; verify-target; verify-toolchain --execute; validate-tracking --require-target; report-reconstruction-status",
+    "fresh local readOnly Ghidra with complete mapped-text identity and rollback;768MiB/one processor",
+    "four one-TU/cached-support source controls; shared-configuration model discarded",
+    "one full fresh18-TU cold;52 frozen maintained inputs still agree",
+    "ten complete existing guard owners:943 bytes/all57 fields; zero new exact credit",
+    "native four-case Run plus two initializer contracts pass; old carrier retains Run pass and fails both initializer contracts",
+    "host legacy source fails selection-original-owner; direct/tagged allocation models explicitly excluded",
+    "ASan/UBSan/leak detection positive and7 exact named mutant failures with declared allocation/placement/throw-cleanup model",
+    "existing canonical loader artifact adopted byte-identically and comparator passed; recipe unchanged",
+    "verify-toolchain --check; validate-tracking; progress regeneration/check; doc hygiene",
+    "complete CI81 groups passed",
+    "final staged whitespace and tracked-work review"
+  ],
+  "ci": {
+    "exit_code": 0,
+    "groups": 81,
+    "log_sha256": "baab3decabb9ce9005920ff6abbb89e76b52299847e0931747d037b1f6f2da47"
+  },
+  "fresh_cold_translation_units": 18,
+  "frozen_inputs": 52,
+  "new_exact_bytes": 0,
+  "authored_exact_bytes": 61198,
+  "authored_owned_bytes": 270150,
+  "origin_boundary_denominator_changes": false,
+  "historical_whole_native_cohort_replayed": false,
+  "initializer_exact": false,
+  "native_auditor_sha256": "e24bf7811cc196d7ee2b52f517713c633fceda6b54ee939b4817d736873979ff",
+  "host_model_limit": "explicit allocation event/placement/throw cleanup; not proof of unmodified host-new-expression order or target runtime",
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-initialize-20261020/call-phases",
+        "bytes": 2279012
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-initialize-20261020/node-order",
+        "bytes": 2278942
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-initialize-20261020/range-forms",
+        "bytes": 2279012
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-initialize-20261020/shared-config",
+        "bytes": 2278160
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-ending-codegen-20261020/proof-one",
+        "bytes": 1563766,
+        "note": "superseded objects/logs only; legacy negative carrier retained"
+      },
+      {
+        "path": "build/host-tests/ending-initialize",
+        "bytes": 1418279
+      }
+    ],
+    "total_removed_bytes": 12097171,
+    "retained": "current canonical carrier, fresh current18-TU carrier/cache, old four-artifact native negative control, compact overlays/proofs",
+    "preexisting_d3d": "untouched"
+  },
+  "known_boundary_limit": "pre-existing401100 evidence-text-only difference not rewritten; no boundary changes in this batch",
+  "preexisting_d3d": "untouched and unstaged",
+  "product_runtime_gate": "open",
+  "semantic_port_gates": "not started"
+}

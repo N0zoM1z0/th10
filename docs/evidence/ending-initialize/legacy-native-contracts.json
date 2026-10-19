@@ -1,0 +1,160 @@
+{
+  "scope": "Audit four Ending creation contracts in native code; grants no exact credit.\n\nThis deliberately checks historical-compiler output as well as the target.\nC++17 host evaluation order cannot prove the destination was read after a call\nin the reconstructed VC7.1 image. Complete-owner exactness is a separate Oracle.\nIt accepts the observed EBP receiver and18-entry table shape; it is not a\ngeneral semantic equivalence checker.\n",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target": {
+    "records": [
+      {
+        "opcode": 8,
+        "creator_call": "0x40c05e",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40c063",
+          "operand_load": "0x40c066",
+          "destination_store": "0x40c06b"
+        }
+      },
+      {
+        "opcode": 15,
+        "creator_call": "0x40c0ab",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40c0b0",
+          "operand_load": "0x40c0b3",
+          "destination_store": "0x40c0b8"
+        }
+      },
+      {
+        "opcode": 16,
+        "creator_call": "0x40c0f8",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40c0fd",
+          "operand_load": "0x40c100",
+          "destination_store": "0x40c105"
+        }
+      },
+      {
+        "opcode": 17,
+        "creator_call": "0x40c145",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40c14a",
+          "operand_load": "0x40c14d",
+          "destination_store": "0x40c152"
+        }
+      }
+    ],
+    "passed": true
+  },
+  "native": {
+    "records": [
+      {
+        "opcode": 8,
+        "creator_call": "0x401f3c",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x401f41",
+          "operand_load": "0x401f44",
+          "destination_store": "0x401f4b"
+        }
+      },
+      {
+        "opcode": 15,
+        "creator_call": "0x401f8b",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x401f90",
+          "operand_load": "0x401f93",
+          "destination_store": "0x401f9a"
+        }
+      },
+      {
+        "opcode": 16,
+        "creator_call": "0x401fda",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x401fdf",
+          "operand_load": "0x401fe2",
+          "destination_store": "0x401fe9"
+        }
+      },
+      {
+        "opcode": 17,
+        "creator_call": "0x402029",
+        "uses_primary_creator": true,
+        "destination_loaded_after_call": true,
+        "destination": {
+          "cursor_load": "0x40202e",
+          "operand_load": "0x402031",
+          "destination_store": "0x402038"
+        }
+      }
+    ],
+    "passed": true
+  },
+  "run_owner": {
+    "symbol": "?Run@EndingTextVmView@@QAGHXZ",
+    "address": "0x00401C60",
+    "size": 1576,
+    "extent_source": "pdb-section-contribution",
+    "section": ".text",
+    "section_number": 1,
+    "section_offset": 3168,
+    "map_object": "source.ltcg.obj",
+    "pdb_module_index": 4,
+    "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-ending-codegen-20261020\\proof-one\\source.ltcg.obj",
+    "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-ending-codegen-20261020\\proof-one\\source.ltcg.obj",
+    "sha256": "3045fce1f316debfc03a207a6b0361b9c63b2824d932f2a25363a822b0a6b752"
+  },
+  "passed": false,
+  "artifact_sha256": {
+    "source.exe": "7ab3a0a338dccf1a767e34cd7ce9c974cca3dd6ad4ccc8b0fea639bd0d12cfe1",
+    "source.map": "4246ece62eee4a23d4d97184cb2c59d13280cbab1aaf8d14a7e36a7174e72c4e",
+    "source.pdb": "574289addeb2eca880086990bc0d61583f614a557f1e63c3cf96f789bf7bd2a8"
+  },
+  "exactness_authority": "none; complete-owner canonical replay is separate",
+  "initialize_target": {
+    "selection_destination_captured_before_call": true,
+    "header_read_after_allocation": true,
+    "selection": {
+      "address_capture": "0x40b64a",
+      "creator_call": "0x40b67b",
+      "destination_store": "0x40b682"
+    },
+    "header": {
+      "allocation_call": "0x40b768",
+      "buffer_load": "0x40b77c",
+      "header_load": "0x40b77f",
+      "constructor_call": "0x40b786"
+    },
+    "passed": true
+  },
+  "initialize_native": {
+    "selection_destination_captured_before_call": false,
+    "header_read_after_allocation": false,
+    "selection": null,
+    "header": null,
+    "passed": false
+  },
+  "initialize_owner": {
+    "symbol": "?Initialize@EndingView@@QAEHXZ",
+    "address": "0x004013C0",
+    "size": 584,
+    "extent_source": "pdb-section-contribution",
+    "section": ".text",
+    "section_number": 1,
+    "section_offset": 960,
+    "map_object": "source.ltcg.obj",
+    "pdb_module_index": 4,
+    "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-ending-codegen-20261020\\proof-one\\source.ltcg.obj",
+    "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-ending-codegen-20261020\\proof-one\\source.ltcg.obj",
+    "sha256": "db0f75bcb13241335489e7d5a90afd3aa51c395f917b0ddc8648c974c0ff7b5d"
+  }
+}

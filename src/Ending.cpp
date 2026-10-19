@@ -64,6 +64,11 @@ inline void ReleaseEndingTextVm(AnmRenderManagerView *manager, AnmVmIdView &id)
     }
     id.value = 0;
 }
+// File header+4 supplies the first instruction offset.
+inline unsigned char *EndingScriptStart(unsigned char *file)
+{
+    return file + EndingRecordInt(file);
+}
 // Observed common node construction; no extra fields or virtual interface.
 struct EndingTaskView : th10::ChainElem
 {
@@ -75,7 +80,7 @@ struct EndingTaskView : th10::ChainElem
         prio = 0;
         flags &= ~1u;
         self = this;
-        next = prev = NULL;
+        prev = next = NULL;
     }
 };
 inline void ReleaseEndingBank(int slot)
@@ -119,31 +124,32 @@ int EndingView::Initialize()
     th10::ChainElem *task = new EndingTaskView;
     task->flags |= 3;
     task->callback = reinterpret_cast<th10::ChainCallback>(EndingUpdateCallback);
-    task->addedCallback = task->deletedCallback = NULL;
+    task->deletedCallback = task->addedCallback = NULL;
     task->arg = this;
     th10::Chain::AddToCalcChain(task, 28, th10::g_Chain);
     updateTask = task;
     task = new EndingTaskView;
     task->flags |= 3;
     task->callback = reinterpret_cast<th10::ChainCallback>(th10::leaf::Fn0040BA80);
-    task->addedCallback = task->deletedCallback = NULL;
+    task->deletedCallback = task->addedCallback = NULL;
     task->arg = this;
     th10::Chain::AddToDrawChain(task, 6, th10::g_Chain);
     drawTask = task;
 
     AnmFloat3View position(480.0f, 392.0f, 0.0f);
-    if (g_AsciiManagerView->auxiliaryVm89A4 == 0)
-        g_AsciiManagerView->auxiliaryVm89A4 =
+    int &auxiliaryId = g_AsciiManagerView->auxiliaryVm89A4;
+    if (auxiliaryId == 0)
+        auxiliaryId =
             g_AsciiManagerView->asciiAnm->CreateVmAtScreenVariant0(6, &position).value;
     endingIndex = g_GuiShotType + g_GuiCharacter * 3;
-    if (g_GameStartupValue474C90 == 0 && g_GuiDifficulty > 0)
+    if (g_GameStartupValue474C90 == 0 && g_GuiDifficulty >= 1)
         endingIndex += 6;
     if (g_GuiPersistentData[0x1d882 + endingIndex] == 0)
         flags |= 1;
     if (g_GuiPersistentData[0x1d88e] == 0)
         flags |= 2;
     g_GuiPersistentData[0x1d882 + endingIndex] = 1;
-    if (endingIndex > 5)
+    if (endingIndex >= 6)
         g_GuiPersistentData[0x1d88e] = 1;
     g_StageFilePath[0] = '\0';
     strcat(g_StageFilePath, g_EndingScriptPaths[endingIndex]);
@@ -153,9 +159,7 @@ int EndingView::Initialize()
         th10::g_GameErrorContext.Log(g_EndingDataErrorMessage);
         return -1;
     }
-    int offset;
-    memcpy(&offset, scriptData + 4, sizeof(offset));
-    text = new EndingTextVmView(scriptData + offset);
+    text = new EndingTextVmView(EndingScriptStart(scriptData));
     return 0;
 }
 
@@ -407,9 +411,7 @@ int __stdcall EndingTextVmView::Run()
                     reinterpret_cast<const char *>(instruction + 4));
                 if (!loaded) return -1;
                 memset(this, 0, sizeof(*this));
-                int offset;
-                memcpy(&offset, loaded + 4, sizeof(offset));
-                instruction = loaded + offset;
+                instruction = EndingScriptStart(loaded);
                 frameTimer.SetCurrent(0);
                 instructionTimer.SetCurrent(0);
                 waitTimer.SetCurrent(0);

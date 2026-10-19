@@ -5,7 +5,8 @@ This deliberately checks historical-compiler output as well as the target.
 C++17 host evaluation order cannot prove the destination was read after a call
 in the reconstructed VC7.1 image. Complete-owner exactness is a separate Oracle.
 It accepts the observed EBP receiver and18-entry table shape; it is not a
-general semantic equivalence checker.
+general semantic equivalence checker. Optional initializer checks cover the
+selection destination and post-allocation header sampling.
 """
 from pathlib import Path
 import argparse
@@ -16,12 +17,15 @@ import tomllib
 
 from capstone import Cs, CS_ARCH_X86, CS_MODE_32
 from capstone.x86 import X86_OP_IMM, X86_OP_MEM, X86_OP_REG, X86_REG_EBP
-from linked_image import PEImage, linked_functions, verify_capstone
+from linked_image import PEImage, linked_functions, map_publics, verify_capstone
 
 ROOT = Path(__file__).resolve().parents[1]
 RUN_SYMBOL = '?Run@EndingTextVmView@@QAGHXZ'
 CREATE_SYMBOL = '?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z'
 SECONDARY_SYMBOL = '?CreateVmVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z'
+INITIALIZE_SYMBOL = '?Initialize@EndingView@@QAEHXZ'
+TEXT_CONSTRUCTOR = '??0EndingTextVmView@@QAE@PAE@Z'
+SCREEN_CREATOR = '?CreateVmAtScreenVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z'
 
 
 def register_load(instruction, base, displacement):
@@ -95,11 +99,79 @@ def inspect(image, address, size, primary, secondary):
                 row['destination_loaded_after_call'] for row in records))
 
 
+def inspect_initialize(image, address, size, creator, allocator, constructor):
+    decoder = Cs(CS_ARCH_X86, CS_MODE_32)
+    decoder.detail = True
+    instructions = list(decoder.disasm(image.read_address(address, size), address))
+    if sum(item.size for item in instructions) != size:
+        raise ValueError('initializer is not densely decoded')
+    def calls(destination):
+        return [index for index, item in enumerate(instructions)
+                if item.mnemonic == 'call' and len(item.operands) == 1
+                and item.operands[0].type == X86_OP_IMM
+                and item.operands[0].imm == destination]
+    creation_calls, constructor_calls = calls(creator), calls(constructor)
+    if len(creation_calls) != 1 or len(constructor_calls) != 1:
+        raise ValueError('initializer lacks unique selection/constructor calls')
+    call = creation_calls[0]
+    selection = None
+    for index, item in enumerate(instructions[:call]):
+        operands = item.operands
+        if (item.mnemonic != 'lea' or len(operands) != 2
+                or operands[0].type != X86_OP_REG or operands[1].type != X86_OP_MEM
+                or operands[1].mem.disp != 0x89a4 or operands[1].mem.index):
+            continue
+        register = operands[0].reg
+        for position in range(index + 1, len(instructions)):
+            later = instructions[position]
+            if (position > call and later.mnemonic == 'mov' and later.operands
+                    and later.operands[0].type == X86_OP_MEM
+                    and later.operands[0].mem.base == register
+                    and not later.operands[0].mem.index and later.operands[0].mem.disp == 0):
+                selection = dict(address_capture=hex(item.address),
+                                 creator_call=hex(instructions[call].address),
+                                 destination_store=hex(later.address))
+                break
+            _, written = later.regs_access()
+            if register in written:
+                break
+        if selection:
+            break
+    ctor = constructor_calls[0]
+    allocation_calls = [index for index in calls(allocator) if index < ctor]
+    if not allocation_calls:
+        raise ValueError('text construction lacks its preceding allocation')
+    allocation = allocation_calls[-1]
+    header = None
+    for index in range(allocation + 1, ctor):
+        register = register_load(instructions[index], X86_REG_EBP, 0x14)
+        if register is None:
+            continue
+        for later in instructions[index + 1:ctor]:
+            if register_load(later, register, 4) is not None:
+                header = dict(allocation_call=hex(instructions[allocation].address),
+                              buffer_load=hex(instructions[index].address),
+                              header_load=hex(later.address),
+                              constructor_call=hex(instructions[ctor].address))
+                break
+            _, written = later.regs_access()
+            if register in written:
+                break
+        if header:
+            break
+    return dict(selection_destination_captured_before_call=selection is not None,
+                header_read_after_allocation=header is not None,
+                selection=selection, header=header,
+                passed=selection is not None and header is not None)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--directory', type=Path, required=True,
                         help='linked carrier with source.exe, source.map and source.pdb')
     parser.add_argument('--json', type=Path)
+    parser.add_argument('--include-initialize', action='store_true',
+                        help='also audit selection-owner and allocation/header sampling')
     args = parser.parse_args()
     with (ROOT/'config/tools.lock.toml').open('rb') as stream:
         verify_capstone(tomllib.load(stream)['capstone'])
@@ -134,12 +206,35 @@ def main():
                   native=result, run_owner=run, passed=result['passed'],
                   artifact_sha256=hashes,
                   exactness_authority='none; complete-owner canonical replay is separate')
+    if args.include_initialize:
+        target_init = inspect_initialize(PEImage(path), 0x40b560, 584,
+                                         0x448d50, 0x452493, 0x40ba90)
+        if not target_init['passed']:
+            raise ValueError('target does not prove initializer sampling contracts')
+        init, screen, text = [owner(name) for name in
+                              [INITIALIZE_SYMBOL, SCREEN_CREATOR, TEXT_CONSTRUCTOR]]
+        allocators = [row for row in map_publics(directory/'source.map')
+                      if row['symbol'] == '??2@YAPAXI@Z']
+        if len(allocators) != 1:
+            raise ValueError('no unique allocator identity')
+        native_init = inspect_initialize(PEImage(directory/'source.exe'),
+                          int(init['address'], 0), init['size'],
+                          int(screen['address'], 0), allocators[0]['address'],
+                          int(text['address'], 0))
+        if artifact_hashes() != hashes:
+            raise ValueError('native carrier changed during initializer audit')
+        report.update(initialize_target=target_init, initialize_native=native_init,
+                      initialize_owner=init,
+                      passed=report['passed'] and native_init['passed'])
     if args.json:
         args.json.parent.mkdir(parents=True, exist_ok=True)
         args.json.write_text(json.dumps(report, indent=2)+'\n')
     print('PASS' if result['passed'] else 'FAIL',
           'native Ending primary-list and post-creation destination contracts')
-    return 0 if result['passed'] else 1
+    if args.include_initialize:
+        print('PASS' if native_init['passed'] else 'FAIL',
+              'native Ending selection-owner and allocation/header contracts')
+    return 0 if report['passed'] else 1
 
 
 if __name__ == '__main__':

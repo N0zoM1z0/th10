@@ -31,6 +31,20 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Ending initialization now captures the original auxiliary-ID destination
+  before VM creation and reads the file header only after text allocation.
+  Old native code fails both sampling contracts; current native code passes
+  them plus the four existing Run creation contracts. The ordinary file-start
+  helper is shared with reload. One full18-TU /GL /GS /EHs cold freezes52 inputs
+  and retains943 complete existing bytes/all57 fields; **zero new exact credit**.
+  Init584/584 remains nonexact. Ordered node clears/range forms are retained;
+  the shared-configuration experiment regresses and is discarded without header
+  changes. Host seven strict ASan/UBSan mutants pass with an explicit allocation
+  event/placement-construction/throw-cleanup seam. Replacement-new/tagged models
+  cached old host arguments and are not evidence for VC7.1 ordering. Next rotate
+  to another owner or require new target evidence before further flag scheduling
+  or configuration controls. See
+  [the sampling contracts and model limits](evidence/ending-initialize/README.md).
 - Ending reload LoadScript40B480 closes **106 authored exact bytes**, with its
   source unchanged. Two full18-TU /GL /GS /EHs colds use the real Main checksum
   entry plus archive dependency and freeze52 inputs. Each strictly passes943

@@ -3,6 +3,8 @@
 
 Host-only clear retains the live worker vptr, while clearing every ordinary
 field. Timer/node constructor seeds define prefill for this host scenario.
+The host allocation event uses explicit storage, placement construction and
+throw cleanup; actual VC7.1 new-expression order is audited separately.
 No native ABI/layout, worker scheduling or target runtime proof is claimed.
 """
 from pathlib import Path
@@ -84,7 +86,22 @@ extern "C" int CloseHandle(void *);
         variants.append(('reload_skip',source.replace(old,'flags |= 2;\n                break;'),'reload-first-command'))
         old='g_FrontEndInput.pressed & 0x1001'; assert source.count(old)==2
         variants.append(('wrong_press',source.replace(old,'g_FrontEndInput.current & 0x1001'),'wait-pressed-edge'))
+        old='auxiliaryId =\n            g_AsciiManagerView->asciiAnm'; assert source.count(old)==1
+        variants.append(('rebound_selection',source.replace(old,'g_AsciiManagerView->auxiliaryVm89A4 =\n            g_AsciiManagerView->asciiAnm'),'selection-original-owner'))
+        old='text = new EndingTextVmView(EndingScriptStart(scriptData));'; assert source.count(old)==1
+        new='unsigned char *early = EndingScriptStart(scriptData);\n    text = new EndingTextVmView(early);'
+        variants.append(('early_header',source.replace(old,new),'allocation-live-header'))
     for name,variant,expected in variants:
+        # HOST allocation event is explicit: the native auditor separately checks
+        # actual VC7.1 new-expression order. Preserve constructor-throw cleanup.
+        opening='text = new EndingTextVmView('; assert variant.count(opening)==1
+        start=variant.index(opening); first=start+len(opening); cursor=first; depth=1
+        while depth:
+            depth+=(variant[cursor]=='(')-(variant[cursor]==')'); cursor+=1
+        assert variant[cursor]==';'
+        argument=variant[first:cursor-1]
+        replacement='{ void *endingStorage = HostAllocateEndingText(this);\n    try { text = new (endingStorage) EndingTextVmView('+argument+'); }\n    catch (...) { ::operator delete(endingStorage); throw; } }'
+        variant=variant[:start]+replacement+variant[cursor+1:]
         (args.out/'owner.inc').write_text(variant)
         command=['flock','/tmp/th10-ending-host.lock','nice','-n','10','g++','-std=c++17','-O1','-g','-Wall','-Wextra','-Wno-unused-function','-Wno-sign-compare','-Wno-class-memaccess','-I',str(args.out),str(ROOT/'scripts/fixtures/ending-state.cpp'),'-o',str(args.out/'fixture')]
         if args.sanitize:command+=['-fsanitize=address,undefined','-fno-sanitize-recover=all','-fno-pie','-no-pie']
@@ -94,7 +111,7 @@ extern "C" int CloseHandle(void *);
         want=(0,'','') if expected is None else (1,'','CHECK '+expected+'\n')
         if (run.returncode,run.stdout,run.stderr)!=want:raise RuntimeError(f'{name}: {run.returncode}\n{run.stdout}{run.stderr}')
         print('PASS '+name)
-    (args.out/'manifest.json').write_text(json.dumps({'scope':__doc__,'inputs':hashes,'variants':[n for n,_,_ in variants],'sanitize':args.sanitize,'canonical_headers':sorted(seen),'seams':['SDK functions/types','ANM allocation/resource/draw roles','host vptr-preserving clear','defined timer/node prefill','assets/logging/effects/music','static live VM/list objects'],'actual_bodies':signatures},indent=2)+'\n')
+    (args.out/'manifest.json').write_text(json.dumps({'scope':__doc__,'inputs':hashes,'variants':[n for n,_,_ in variants],'sanitize':args.sanitize,'canonical_headers':sorted(seen),'seams':['SDK functions/types','ANM allocation/resource/draw roles','host vptr-preserving clear','explicit host allocation event/placement construction/throw cleanup','defined timer/node prefill','assets/logging/effects/music','static live VM/list objects'],'actual_bodies':signatures},indent=2)+'\n')
     print('Ending actual source and '+str(len(variants)-1)+' strict mutants pass')
 
 if __name__=='__main__':main()

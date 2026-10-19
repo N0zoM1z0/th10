@@ -2865,3 +2865,44 @@ the full owners; the helper/scalar forms are discarded. Only the explicit
 aggregate sequencing and TH10-backed behavior corrections are retained.
 Product/runtime, dual-Oracle semantics and port gates remain open. See
 [the complete native, source and host evidence](evidence/ending-load-script/README.md).
+
+## 2026-10-20 Ending initialization sampling corrected
+
+Target40B560/584 captures ASCII+89A4's destination address before screen creation
+448D50 and stores the returned ID through that address afterwards. The previous
+source/native code reloads the global ASCII owner after creation. A normal
+reference now retains the original destination. Target text allocation452493
+precedes reads of the current scriptData member+14 and header offset+4 before
+constructor40BA90. The old source reads that offset before allocation. The
+ordinary EndingScriptStart helper now appears in the new-expression argument
+and the existing opcode12 reload; it expresses the same observed file format
+without invented bounds, types or parser rules.
+
+The optional initializer mode of the native Ending auditor resolves the unique
+PE/MAP/PDB owners and checks captured destination/register use and post-allocation
+header sampling. The b35f147 carrier passes the old four Run checks but fails
+both initialization properties. Selected and final current carriers pass all
+six. One fresh full18-TU /GL /GS /EHs cold agrees on52 maintained source/header
+inputs and strictly retains943 complete existing guard bytes/all57 fields. Its
+byte-identical artifacts update the existing loader carrier without a recipe
+change. No new exact, origin, boundary or denominator credit is granted.
+
+The host selection witness swaps ASCII owners; its original destination and
+replacement sentinel distinguish the source versions. The allocation witness
+replaces the current buffer at a modeled event. Direct replacement-new and
+tagged-allocation attempts in host G++8.4.0 still pass an old argument after
+the hook changes the member; GDB observes both values. This is a bounded host
+observation, not a language rule or compiler-defect claim. The accepted host
+copy explicitly sequences allocation-event/placement-construction with matching
+throw cleanup. The actual unmodified VC7.1 new-expression is checked by the
+native auditor, independently of this seam. Positive ASan/UBSan/leak checks and
+seven exact named mutants pass; older vptr/prefill/layout/SDK/list/worker seams
+remain. No target runtime or general host-new-expression proof follows.
+
+Ordered next/previous/callback clears and observed>=1/>=6 ranges preserve the
+defined behavior. Common configuration storage regresses and is discarded;
+GameScoreState.hpp is unchanged. Init584/584, Run1576/1568, text constructor
+772/648 and bank loader131/126 remain nonexact. Node flag scheduling and other
+register/dataflow choices require fresh evidence; no equivalent-expression
+sweep, fake slot, ABI annotation or forced compiler control is adopted.
+See [the target, native and host scope](evidence/ending-initialize/README.md).

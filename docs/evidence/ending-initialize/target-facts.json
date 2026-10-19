@@ -1,0 +1,29 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "initializer": {
+    "address": "0x0040B560",
+    "owned_size": 584,
+    "span_end": "0x0040B7A7",
+    "boundary_changed": false,
+    "exact": false
+  },
+  "target_contracts": {
+    "selection_destination_captured_before_call": true,
+    "header_read_after_allocation": true,
+    "selection": {
+      "address_capture": "0x40b64a",
+      "creator_call": "0x40b67b",
+      "destination_store": "0x40b682"
+    },
+    "header": {
+      "allocation_call": "0x40b768",
+      "buffer_load": "0x40b77c",
+      "header_load": "0x40b77f",
+      "constructor_call": "0x40b786"
+    },
+    "passed": true
+  },
+  "mapped_text_sha256": "c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a",
+  "ghidra": "fresh local readOnly, whole mapped text checked before/after, transaction rollback",
+  "original_types_owners": "unknown beyond consumed views"
+}

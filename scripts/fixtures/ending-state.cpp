@@ -20,11 +20,14 @@
 #include <algorithm>
 #include <atomic>
 using u8=unsigned char; using u32=unsigned int;
+static bool replaceTextScriptOnAllocation;static unsigned char *textAllocationReplacement;
 static void *freed[20000];static unsigned freedCount;
 static void RecordFree(void *p){if(p){if(freedCount==20000)std::abort();freed[freedCount++]=p;}}
 void *operator new(std::size_t n){void *p=std::malloc(n?n:1);if(!p)throw std::bad_alloc();return p;}
 void operator delete(void *p) noexcept {RecordFree(p);std::free(p);}
 void operator delete(void *p,std::size_t) noexcept {::operator delete(p);}
+// HOST explicit target allocation event; constructor cleanup is in the host copy.
+static void *HostAllocateEndingText(EndingView *owner){void *p=::operator new(sizeof(EndingTextVmView));if(replaceTextScriptOnAllocation){replaceTextScriptOnAllocation=false;owner->scriptData=textAllocationReplacement;}return p;}
 static void HostFree(void *p){RecordFree(p);std::free(p);}
 static bool WasFreed(void *p,unsigned since){for(unsigned i=since;i<freedCount;++i)if(freed[i]==p)return true;return false;}
 struct Failure{const char *label;};
@@ -44,7 +47,7 @@ AsciiManagerView::AsciiManagerView(){}
 AsciiManagerView::~AsciiManagerView(){}
 size_t AsciiManagerView::GetSize(){return sizeof(*this);}
 static AnmRenderManagerView renderer;
-static AsciiManagerView ascii;
+static AsciiManagerView ascii,otherAscii;
 static AnmLoadedView fontBank,asciiBank;
 AnmRenderManagerView *g_AnmRenderManagerView=&renderer;
 AsciiManagerView *g_AsciiManagerView=&ascii;
@@ -63,7 +66,7 @@ static std::vector<std::string> drawn;static std::vector<int> effects,music;
 static std::vector<th10::ChainElem*> tasks;static int registrationCount,closed,logs,ensureCount;
 static void *threadContext;static unsigned(*threadEntry)(void*);
 static std::function<unsigned char*(const char*)> openAction;
-static std::function<void()> drawAction,createAction,preloadAction;
+static std::function<void()> drawAction,createAction,preloadAction,selectionAction;
 static AnmLoadedView *preloadResult;static int preloadSlot;
 static unsigned char *NewBuffer(unsigned n){auto *p=(unsigned char*)std::malloc(n);std::memset(p,0,n);buffers.push_back({p,freedCount});return p;}
 static AnmLoadedView *NewBank(){auto *p=new AnmLoadedView;banks.push_back({p,freedCount});return p;}
@@ -78,10 +81,10 @@ static void Reset(){
  std::memset(renderer.loadedAnms,0,sizeof(renderer.loadedAnms));vmCount=0;
  std::memset(&g_FrontEndInput,0,sizeof(g_FrontEndInput));std::memset(persistent,0,sizeof(persistent));
  std::memset(g_MainSoundOwner,0,sizeof(g_MainSoundOwner));new(g_MainSoundOwner)EnemySoundQueueView;
- ascii.asciiAnm=&asciiBank;ascii.textAnm=&fontBank;ascii.auxiliaryVm89A4=0;
+ g_AsciiManagerView=&ascii;ascii.asciiAnm=&asciiBank;ascii.textAnm=&fontBank;ascii.auxiliaryVm89A4=0;otherAscii.asciiAnm=&asciiBank;otherAscii.textAnm=&fontBank;otherAscii.auxiliaryVm89A4=777;replaceTextScriptOnAllocation=false;textAllocationReplacement=nullptr;
  g_GuiCharacter=g_GuiShotType=g_GuiDifficulty=g_GameStartupValue474C90=0;g_GameStartupCounter=9;g_AnmGameSpeed=1;
  drawn.clear();effects.clear();music.clear();tasks.clear();registrationCount=closed=logs=ensureCount=0;
- drawAction=createAction=preloadAction=nullptr;openAction=nullptr;preloadResult=nullptr;threadContext=nullptr;threadEntry=nullptr;
+ drawAction=createAction=preloadAction=selectionAction=nullptr;openAction=nullptr;preloadResult=nullptr;threadContext=nullptr;threadEntry=nullptr;
 }
 static unsigned char *Record(unsigned op,int arg=0,unsigned frame=0){
  unsigned n=(op==0||op==1||op==2||op==4)?4:(op==7?24:16);auto *p=NewBuffer(n+4);
@@ -105,7 +108,7 @@ char *th10::GameErrorContext::Log(char *fmt,...){CHECK(fmt==g_EndingDataErrorMes
 AnmVmView *AnmRenderManagerView::AllocateVm(){CHECK(vmCount<64,"vm-capacity");AnmVmView *vm=&hostVmPool[vmCount];std::memset(vm,0,sizeof(*vm));vm->id=++vmCount;return vm;}
 AnmVmIdView AnmRenderManagerView::AddVmVariant0(AnmVmView *vm){auto &n=nodes[vm->id-1];n.owner=vm;n.next=primaryVmListHead;n.previous=nullptr;primaryVmListHead=&n;return AnmVmIdView(vm->id);}
 void AnmLoadedView::InitializeVm(AnmVmView *vm,int script){if(createAction)createAction();vm->scriptIndex=(short)script;vm->anmFile=this;}
-AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant0(int script,const AnmFloat3View *p){CHECK(script==6&&p->x==480&&p->y==392&&p->z==0,"selection-position");auto *vm=renderer.AllocateVm();return renderer.AddVmVariant0(vm);}
+AnmVmIdView AnmLoadedView::CreateVmAtScreenVariant0(int script,const AnmFloat3View *p){CHECK(script==6&&p->x==480&&p->y==392&&p->z==0,"selection-position");if(selectionAction)selectionAction();auto *vm=renderer.AllocateVm();return renderer.AddVmVariant0(vm);}
 AnmVmIdView AnmRenderManagerView::AddVmVariant1(AnmVmView *vm){auto &n=nodes[vm->id-1];n.owner=vm;n.next=secondaryVmListHead;n.previous=nullptr;secondaryVmListHead=&n;return AnmVmIdView(vm->id);}
 void AnmLoadedView::Release(){}
 void AnmRenderManagerView::ReleaseSurface(int index){CHECK(index==0,"surface-index");}
@@ -138,6 +141,8 @@ static void RunTests(){
  Reset();{EndingView owner;owner.text=new EndingTextVmView(Record(1));owner.flags=0;owner.text->flags=2;g_FrontEndInput.current=0x100;for(int i=1;i<=12;++i)CHECK(owner.Update()==(i%12?6:1),"fast-update-cycle");owner.text->instruction=Record(0);g_MainSupervisorView.flags|=0x1000;CHECK(owner.Update()==1&&g_MainSupervisorView.nextGameMode==2,"next-mode");}
  Reset();{auto *file=NewBuffer(12);int offset=8;std::memcpy(file+4,&offset,4);unsigned short future=1000;std::memcpy(file+8,&future,2);openAction=[&](const char *p){CHECK(std::string(p)=="e08.msg","ending-path");return file;};g_GuiShotType=2;g_GuiDifficulty=1;EndingView *owner=EndingCreate();CHECK(owner&&owner->endingIndex==8&&registrationCount==2&&owner->flags==3&&persistent[0x1d88a]&&persistent[0x1d88e],"ending-initialization");EndingDelete(owner);CHECK(!g_EndingView,"ending-delete");}
  Reset();{EndingView *owner=EndingCreate();CHECK(!owner&&logs==1&&!g_EndingView,"failed-file-cleanup");}
+ Reset();{auto *file=NewBuffer(12);int offset=8;std::memcpy(file+4,&offset,4);unsigned short future=1000;std::memcpy(file+8,&future,2);EndingView owner;openAction=[&](const char*){return file;};selectionAction=[&]{g_AsciiManagerView=&otherAscii;};CHECK(owner.Initialize()==0,"selection-initialize");CHECK(ascii.auxiliaryVm89A4!=0&&otherAscii.auxiliaryVm89A4==777,"selection-original-owner");}
+ Reset();{auto *old=NewBuffer(12);auto *replacement=NewBuffer(24);int oldOffset=8,newOffset=16;std::memcpy(old+4,&oldOffset,4);std::memcpy(replacement+4,&newOffset,4);unsigned short future=1000;std::memcpy(old+8,&future,2);std::memcpy(replacement+16,&future,2);EndingView owner;openAction=[&](const char*){textAllocationReplacement=replacement;replaceTextScriptOnAllocation=true;return old;};CHECK(owner.Initialize()==0,"allocation-initialize");CHECK(!replaceTextScriptOnAllocation&&owner.text->instruction==replacement+16,"allocation-live-header");}
  Clean();
 }
 int main(){try{RunTests();}catch(Failure failure){Clean();std::fprintf(stderr,"CHECK %s\n",failure.label);return 1;}Clean();return 0;}

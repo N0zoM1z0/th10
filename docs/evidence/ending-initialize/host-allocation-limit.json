@@ -1,0 +1,16 @@
+{
+  "compiler": "G++8.4.0",
+  "profile": "-std=c++17 -O1; ASan/UBSan",
+  "observed_models": [
+    "direct replacement operator new",
+    "tagged allocation function"
+  ],
+  "observed": {
+    "allocation_size_host": 320,
+    "hook_consumed": true,
+    "current_member_changed": true,
+    "constructor_argument": "original buffer+8 rather than replacement buffer+16"
+  },
+  "authority": "GDB observations in this host fixture only; no language-rule/compiler-defect claim",
+  "accepted_model": "explicit host allocation event followed by placement construction/throw cleanup; actual VC7.1 expression checked separately"
+}
