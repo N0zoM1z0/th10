@@ -1,0 +1,19 @@
+{
+  "baseline_cpp_sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+  "baseline_hpp_sha256": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+  "candidate_cpp_sha256": "addb9de47649a892f4241cf20b1992b165ce7b91afa0e0097b4c0ffff19fe463",
+  "candidate_hpp_sha256": "8b4e0e13312bce0b9bab71e16daff79cfa402d55a61e55cca53bd359edc7832b",
+  "reference_commit": "4e4ab0b73eb75f1d3c2e49b39330deabd5fdcf4a",
+  "reference_path": "matching2/msvc/src/game/title/difficulty_select_update.cpp",
+  "reference_git_blob": "68cf2ffad8fc917992ec87b5fa532425210c5ad4",
+  "reference_content_sha256": "bfed310e8d9423eca92222bd233694229bd1648c63dde4f1750c528ce4c0cb79",
+  "reference_response_sha256": "ee2a30a34df25c98e2c22e9bc69da0c59b616c8b811f8447347717d65c073303",
+  "review_sha256": "43a08e799885d666b06877eae77ab78d19bbc3ca24f825cfeee691f1e1b51e22",
+  "scope": "Original one-index edit/model; no reference implementation or controls copied; no c679 material; no adoption/native authority",
+  "archive_status": "unadopted experimental evidence; original patch/model, no upstream implementation copied",
+  "source_package_manifest_sha256": "3fd1e94a27597b7feb4c57b5ddfd1af7c70c1e6089ed35203f96017c058f3645",
+  "source_package_notice_sha256": "d44fb4c312d2ae713962c29a9e225a45da73b528cacfae7a995d73dec5351101",
+  "archive_derivation": "reconstruct.py/model.py/patch/notice copied byte-identically from pinned source package; tests use explicit baseline root and candidate SHA instead of bundled source copies",
+  "reference_repository": "https://github.com/levzzz5154/th10-decomp",
+  "license_scope": "Pinned upstream root MIT notice retained as contextual attribution for authored inspiration; no claim that upstream ClearAnimationSlot ABI is equivalent. No new upstream fetch or broader license audit performed by this archive step."
+}

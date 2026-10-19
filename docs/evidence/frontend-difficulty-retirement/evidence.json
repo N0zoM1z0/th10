@@ -1,0 +1,519 @@
+{
+  "schema": 1,
+  "status": "unadopted diagnostic hypothesis",
+  "source_head": "4a113613d9f4a04b8b70ff739f2965461d6352c6",
+  "target_difficulty_size_metadata_only": 888,
+  "target_difficulty_compared": false,
+  "runtime_retirement_verified": false,
+  "production_adopted": false,
+  "factory_exactness_credit": false,
+  "pair": {
+    "command_id": "repository-command:f856d46bb8884cc182a36596ead7ced5",
+    "receipt_sha256": "7d3e06a67309538e1015805938aa088dd284e297ee69b3d15c758f2f48fd7385",
+    "result": {
+      "adoption_authority": "none",
+      "arm_diagnostics": {
+        "baseline": {
+          "availability_grace_counts": {
+            "expired": 0,
+            "pending": 0,
+            "resolved": 0
+          },
+          "cleanup_reason": "none",
+          "detached_class_counts": {
+            "exited_unattested": 10,
+            "pending_availability": 0,
+            "shared_wine_runtime_host": 7,
+            "unknown": 0,
+            "wineserver32": 0,
+            "wineserver64": 1
+          },
+          "detached_history_count": 18,
+          "detached_history_sha256": "99f5e97014b4dc94a142f617a6d5b4246335b5e9dcb1d0fce4ffd98af130189a",
+          "failure_stage": null,
+          "live_failure_reason_counts": {
+            "availability_grace_expired": 0,
+            "availability_grace_repeated": 0,
+            "capacity_exceeded": 0,
+            "executable_drift": 0,
+            "executable_temporarily_unavailable": 0,
+            "executable_unknown": 0,
+            "identity_unresolved": 0,
+            "prefix_mismatch": 0,
+            "prefix_missing": 0,
+            "prefix_unreadable": 0,
+            "session_not_isolated": 0
+          },
+          "ordinary_client_group_cleanup_complete": true,
+          "primary_reason": "none",
+          "returncode_before_cleanup": 0,
+          "shared_runtime_residual_count": 8,
+          "shared_runtime_sampling_complete": true,
+          "terminal_exit_confirmed_count": 10,
+          "worker_exception_class": null,
+          "worker_phase": "complete"
+        },
+        "candidate": {
+          "availability_grace_counts": {
+            "expired": 0,
+            "pending": 0,
+            "resolved": 0
+          },
+          "cleanup_reason": "none",
+          "detached_class_counts": {
+            "exited_unattested": 19,
+            "pending_availability": 0,
+            "shared_wine_runtime_host": 7,
+            "unknown": 0,
+            "wineserver32": 0,
+            "wineserver64": 1
+          },
+          "detached_history_count": 27,
+          "detached_history_sha256": "92e261e8354ba6fc588fb2fd0a4c73159e14f2b81175f1c5f3c155529f8e9f99",
+          "failure_stage": null,
+          "live_failure_reason_counts": {
+            "availability_grace_expired": 0,
+            "availability_grace_repeated": 0,
+            "capacity_exceeded": 0,
+            "executable_drift": 0,
+            "executable_temporarily_unavailable": 0,
+            "executable_unknown": 0,
+            "identity_unresolved": 0,
+            "prefix_mismatch": 0,
+            "prefix_missing": 0,
+            "prefix_unreadable": 0,
+            "session_not_isolated": 0
+          },
+          "ordinary_client_group_cleanup_complete": true,
+          "primary_reason": "none",
+          "returncode_before_cleanup": 0,
+          "shared_runtime_residual_count": 8,
+          "shared_runtime_sampling_complete": true,
+          "terminal_exit_confirmed_count": 19,
+          "worker_exception_class": null,
+          "worker_phase": "complete"
+        }
+      },
+      "baseline": {
+        "artifacts": {
+          "image": "c64ca391d1dff3e4eb26c24f0b2bf3688ae9f0359358d1cb4756896652c8f34f",
+          "map": "50c423145646cecd58549c23b7b78a1a6ad5f7ab007e8ffd8ebae5ceee77aabd",
+          "pdb": "b8c206651570d67954c20d64bc134da12911c94eae02816da2a6222a8279ff03",
+          "source_object": "3133cb8bd95da3c35592004f3334ea9110f25149ccd61f3b8d5c4191c89a2722"
+        },
+        "cold_link_calls": 1,
+        "dependencies_sha256": "2907992398ed102dce51f14333b13a18afa162bcc83a160e77d14a07493da3aa",
+        "entry": {
+          "address": "0x00404D70",
+          "object": "source.ltcg.obj",
+          "requested": "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z",
+          "rva": 19824,
+          "size": 840,
+          "symbol": "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z"
+        },
+        "owner": {
+          "complete": true,
+          "sha256": "4b3dc20dbb73fb992fb137de6618817e585eba2f64d9ea59adddcd4ad61dc940",
+          "size": 840,
+          "start": 4214128
+        }
+      },
+      "baseline_reused": false,
+      "candidate": {
+        "artifacts": {
+          "image": "cd55009951ee491dc3f529e797c9529cd9da52224e1f152467834d795f9753cc",
+          "map": "1e4ec050a610e3079eca4fb106f6858ee7d396898f252ce16de569e9864a1540",
+          "pdb": "4b11391e06e62afe951bdcce8cdbb52508341db0250c11a2dbf6830f694f33f0",
+          "source_object": "f3cea72121de4eda4110d101d4aa8b1faaa7f24cf73c4fe97ee376972d908334"
+        },
+        "cold_link_calls": 1,
+        "dependencies_sha256": "b95775eb3735b6fd8ee28dbb8a16663a46d94c6142b67d3392e11daa3369f7c7",
+        "entry": {
+          "address": "0x00404D70",
+          "object": "source.ltcg.obj",
+          "requested": "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z",
+          "rva": 19824,
+          "size": 828,
+          "symbol": "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z"
+        },
+        "owner": {
+          "complete": true,
+          "sha256": "6e73fb02aa0af14fe2cefbfa230fc01f2d855e700f7d3edcaedd152e1e5b3aa6",
+          "size": 828,
+          "start": 4214128
+        }
+      },
+      "difference": {
+        "baseline_unmatched_bytes": 12,
+        "candidate_unmatched_bytes": 0,
+        "classification_complete": false,
+        "linkage_difference_bytes": null,
+        "ordinary_difference_bytes": null,
+        "positional_different_bytes": 798,
+        "positional_overlap_bytes": 828,
+        "raw_equal": false
+      },
+      "new_cold_link_calls": 2,
+      "restart_allowed": false,
+      "runtime_executed": false,
+      "source_overlay": {
+        "src/FrontEnd.cpp": {
+          "baseline_sha256": "c26c9c1c00b3caa98a01fc210efdbb898fe6e8cace5a4d84a8072cd3f8a90d5d",
+          "candidate_sha256": "addb9de47649a892f4241cf20b1992b165ce7b91afa0e0097b4c0ffff19fe463"
+        }
+      },
+      "status": "exploratory_complete",
+      "target_exactness_tested": false
+    }
+  },
+  "guard": {
+    "command_id": "repository-command:20b70c8e39344f5ab4efb25d01996062",
+    "receipt_sha256": "d90670ee2d8fab4936460ad356279483ba200cf73fb0e98e96cc8517710121aa",
+    "exit_code": 0,
+    "clean_head_before_after": "4a113613d9f4a04b8b70ff739f2965461d6352c6",
+    "result": {
+      "adoption_authority": "none",
+      "cold_links": 0,
+      "guards": [
+        {
+          "arm": "baseline",
+          "decoded_bytes": 66,
+          "image_sha256": "c64ca391d1dff3e4eb26c24f0b2bf3688ae9f0359358d1cb4756896652c8f34f",
+          "linkage_count": 0,
+          "matched_bytes": 66,
+          "normalization_complete": true,
+          "owner": {
+            "complete": true,
+            "sha256": "a984126ad50c2d1a9795e3a307f75537369e973823fe9cc70343fde69a2d97e5",
+            "size": 66,
+            "start": 4198752
+          },
+          "raw_equal": true,
+          "report_sha256": "1b230ba601bd2256dc1885eb2257a7223c0f94955b1178ca9734ca526a35166e",
+          "result": "exact",
+          "size": 66,
+          "unit": "frontend-cursor-push"
+        },
+        {
+          "arm": "baseline",
+          "decoded_bytes": 47,
+          "image_sha256": "c64ca391d1dff3e4eb26c24f0b2bf3688ae9f0359358d1cb4756896652c8f34f",
+          "linkage_count": 0,
+          "matched_bytes": 47,
+          "normalization_complete": true,
+          "owner": {
+            "complete": true,
+            "sha256": "7db2e34c94fd128c453afc0896a34f2062b3563bef25cf3db84155967b324e85",
+            "size": 47,
+            "start": 4198832
+          },
+          "raw_equal": true,
+          "report_sha256": "c2d7c426601ba7a89fc85683365a88ed89edb464bc2160e87b9c9e6325709522",
+          "result": "exact",
+          "size": 47,
+          "unit": "frontend-cursor-pop"
+        },
+        {
+          "arm": "baseline",
+          "decoded_bytes": 128,
+          "image_sha256": "c64ca391d1dff3e4eb26c24f0b2bf3688ae9f0359358d1cb4756896652c8f34f",
+          "linkage_count": 0,
+          "matched_bytes": 128,
+          "normalization_complete": true,
+          "owner": {
+            "complete": true,
+            "sha256": "88fb7c4b6160b6a62813effb64653e1673704b0b17fb55a7a9e3179ef8992c4e",
+            "size": 128,
+            "start": 4198880
+          },
+          "raw_equal": true,
+          "report_sha256": "52e53eb0d3768adff2524e0cf0563625a3141463446ae1b5b9be69b9855a7518",
+          "result": "exact",
+          "size": 128,
+          "unit": "frontend-cursor-move"
+        },
+        {
+          "arm": "baseline",
+          "decoded_bytes": 33,
+          "image_sha256": "c64ca391d1dff3e4eb26c24f0b2bf3688ae9f0359358d1cb4756896652c8f34f",
+          "linkage_count": 0,
+          "matched_bytes": 33,
+          "normalization_complete": true,
+          "owner": {
+            "complete": true,
+            "sha256": "0b5387e9b82d20490dd35ba380734713c2d44a25b3def1aa6405a77a99f514c1",
+            "size": 33,
+            "start": 4199008
+          },
+          "raw_equal": true,
+          "report_sha256": "f8799259e28077492921c143a8b6397cd4417241c9c697a70c87ba39f0ac0551",
+          "result": "exact",
+          "size": 33,
+          "unit": "frontend-input-repeated"
+        },
+        {
+          "arm": "candidate",
+          "decoded_bytes": 66,
+          "image_sha256": "cd55009951ee491dc3f529e797c9529cd9da52224e1f152467834d795f9753cc",
+          "linkage_count": 0,
+          "matched_bytes": 66,
+          "normalization_complete": true,
+          "owner": {
+            "complete": true,
+            "sha256": "a984126ad50c2d1a9795e3a307f75537369e973823fe9cc70343fde69a2d97e5",
+            "size": 66,
+            "start": 4198752
+          },
+          "raw_equal": true,
+          "report_sha256": "cb36400b667191f4c8b50977e1dabd0d6900604cb5bfb037de77a47124a8a58c",
+          "result": "exact",
+          "size": 66,
+          "unit": "frontend-cursor-push"
+        },
+        {
+          "arm": "candidate",
+          "decoded_bytes": 47,
+          "image_sha256": "cd55009951ee491dc3f529e797c9529cd9da52224e1f152467834d795f9753cc",
+          "linkage_count": 0,
+          "matched_bytes": 47,
+          "normalization_complete": true,
+          "owner": {
+            "complete": true,
+            "sha256": "7db2e34c94fd128c453afc0896a34f2062b3563bef25cf3db84155967b324e85",
+            "size": 47,
+            "start": 4198832
+          },
+          "raw_equal": true,
+          "report_sha256": "a21c4f53bdec9debeaa307965766499682692627930179b3297b442639ab43eb",
+          "result": "exact",
+          "size": 47,
+          "unit": "frontend-cursor-pop"
+        },
+        {
+          "arm": "candidate",
+          "decoded_bytes": 128,
+          "image_sha256": "cd55009951ee491dc3f529e797c9529cd9da52224e1f152467834d795f9753cc",
+          "linkage_count": 0,
+          "matched_bytes": 128,
+          "normalization_complete": true,
+          "owner": {
+            "complete": true,
+            "sha256": "88fb7c4b6160b6a62813effb64653e1673704b0b17fb55a7a9e3179ef8992c4e",
+            "size": 128,
+            "start": 4198880
+          },
+          "raw_equal": true,
+          "report_sha256": "453bc70b42c0409498740375696e58ce165a67199bc089d40ccbab789529b02b",
+          "result": "exact",
+          "size": 128,
+          "unit": "frontend-cursor-move"
+        },
+        {
+          "arm": "candidate",
+          "decoded_bytes": 33,
+          "image_sha256": "cd55009951ee491dc3f529e797c9529cd9da52224e1f152467834d795f9753cc",
+          "linkage_count": 0,
+          "matched_bytes": 33,
+          "normalization_complete": true,
+          "owner": {
+            "complete": true,
+            "sha256": "0b5387e9b82d20490dd35ba380734713c2d44a25b3def1aa6405a77a99f514c1",
+            "size": 33,
+            "start": 4199008
+          },
+          "raw_equal": true,
+          "report_sha256": "ed922fbfccfb592cdac318fcb670db8466741a723ff1600b8546c07bde085b8e",
+          "result": "exact",
+          "size": 33,
+          "unit": "frontend-input-repeated"
+        }
+      ],
+      "materialized_files": [
+        "baseline/scripts/compare-linked-function.py",
+        "baseline/config/target.toml",
+        "baseline/resources/th10.exe",
+        "candidate/scripts/compare-linked-function.py",
+        "candidate/config/target.toml",
+        "candidate/resources/th10.exe"
+      ],
+      "operation_stage": "canonical_compare",
+      "postcheck_failure_phase": null,
+      "primary_failure_phase": null,
+      "prior_pair_status": "exploratory_complete",
+      "restart_allowed": false,
+      "runtime_executed": false,
+      "status": "exact",
+      "write_bytes_before_result": 1021548
+    }
+  },
+  "metadata_provenance": {
+    "command": "repository-command:3a51af8955c54964979d59bdff09c5dd",
+    "captured_bytes": 98957,
+    "pages": 7,
+    "files_sha256": {
+      "preflight-metadata.json": "e5438363ac39fb06a7c272ac948b2765f611dec79ab8919b30c4b34f2d36217b",
+      "preflight-actual-receipt.json": "7b92bb62d2a16e0c2a80f8c5d588312bf01baf3fe36c43b4c9ee859721a5e6ea",
+      "preflight-output-pages.json": "752fe094aeb088b24caf64d62f67bc0bb67ccb523e0c17fc59ef2e4834eea513"
+    }
+  },
+  "canonical_units": {
+    "frontend-cursor-push": {
+      "artifact_kind": "linked-pe",
+      "entry_symbol": "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z",
+      "functions": [
+        "FrontEndCursorView::Push"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "linkages": [],
+      "output_dir": "build/match-linked/FrontEndCursorPush",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "size": 66,
+      "source": "src/FrontEnd.cpp",
+      "symbol": "?Push@FrontEndCursorView@@QAEXXZ",
+      "target_address": 4505120
+    },
+    "frontend-cursor-pop": {
+      "artifact_kind": "linked-pe",
+      "entry_symbol": "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z",
+      "functions": [
+        "FrontEndCursorView::Pop"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "linkages": [],
+      "output_dir": "build/match-linked/FrontEndCursorPush",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "size": 47,
+      "source": "src/FrontEnd.cpp",
+      "symbol": "?Pop@FrontEndCursorView@@QAEXXZ",
+      "target_address": 4505200
+    },
+    "frontend-cursor-move": {
+      "artifact_kind": "linked-pe",
+      "entry_symbol": "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z",
+      "functions": [
+        "FrontEndCursorView::Move"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "linkages": [],
+      "output_dir": "build/match-linked/FrontEndCursorPush",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "size": 128,
+      "source": "src/FrontEnd.cpp",
+      "symbol": "?Move@FrontEndCursorView@@QAEHH@Z",
+      "target_address": 4505248
+    },
+    "frontend-input-repeated": {
+      "artifact_kind": "linked-pe",
+      "entry_symbol": "?UpdateDifficulty@FrontEndControllerView@@SGHPAU1@@Z",
+      "functions": [
+        "FrontEndInputView::IsRepeated"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "linkages": [],
+      "output_dir": "build/match-linked/FrontEndCursorPush",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "size": 33,
+      "source": "src/FrontEnd.cpp",
+      "symbol": "?IsRepeated@FrontEndInputView@@QAEHG@Z",
+      "target_address": 4238560
+    }
+  },
+  "consumed_claims": [
+    "pair baseline",
+    "pair candidate",
+    "retained guard"
+  ],
+  "input_inventory_warning": "Six files were added to isolated trees during the guard; prior absence inventories cannot authorize another execution."
+}

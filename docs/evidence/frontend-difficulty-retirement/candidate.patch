@@ -1,0 +1,11 @@
+--- a/src/FrontEnd.cpp
++++ b/src/FrontEnd.cpp
+@@ -1504,7 +1504,7 @@
+         }
+ 
+         controller->cursor.count = g_ReplayDifficulty < 4 ? 4 : 1;
+-        DeleteVm(controller, 0x62);
++        DeleteVm(controller, rootIndex);
+         CreateVm(controller, rootIndex);
+         InterruptVmNow(controller, rootIndex, 3);
+         InterruptVm(
