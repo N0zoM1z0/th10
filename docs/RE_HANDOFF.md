@@ -42,12 +42,42 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
 candidates, 734 authored functions owning 273274 bytes, 1077 source mappings,
-1216 canonical exact functions overall. Authored exact is **375 functions,
-68104/273274 bytes (24.92%)**. The 219 mapped authored nonexact functions,
+1217 canonical exact functions overall. Authored exact is **376 functions,
+68149/273274 bytes (24.94%)**. The 218 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint supplies real AnmInt3Scale.cpp in the dispatcher graph,
+The latest checkpoint closes the retained45-byte InitD3DInterface439700 owner.
+Calling the existing GameErrorContext::Fatal restores its omitted error-context
+receiver and target EDI save/setup/restore. Two independent complete Main.cpp +
+GameErrorContext.cpp /GL /GS colds through real WinMain freeze9 inputs and
+strictly reproduce45/all5 fields plus the same-image existing Fatal201/all11
+guard. The second cold uses the new canonical main-init-d3d-interface recipe.
+Only45 authored bytes are credited; no denominator/source-map changes.
+WinMain1298->1307/1389 remains nonexact. Supervisor491C28+4 is bound from the
+known base and actual layout, not a coinciding neighboring data-anchor name.
+See [D3D error-context proof](evidence/main-d3d-fatal/README.md).
+All100 CI checks are covered in92+8 segments after correcting a missing new
+validation-file link; code and recipes remain frozen. Final focused checks pass.
+Cleanup removes17 owned terminal native directories/4073413 bytes; selected
+proof/failure carriers and source/control inputs remain.
+
+Fresh ECL controls leave production EclVm/Enemy source unchanged. A completed
+read-only pinned-c2 stack-packing observation plus complete Run7020/all189
+replay retains26 differences in the two-TU graph. FloatResult/logicalResult,
+FORMAT offset and X share one color(weight36); scratch/Y/DX share another
+(weight9). This is not just an equal-weight X/Y slot tie. Scoped float results
+restore geometry/FORMAT homes but move integer arithmetic/logical homes and
+retain32 ordinary differences. Direct/scoped results, bool types, operand
+references/unions, installer declarations and the real callback support are
+not accepted. Native/control recovery is under
+`.analysis/gpt-6.1-sol/ecl-operand-representation-20261021/`.
+FileSystem/PbgArchive real-callee and /Ob1 diagnostics also remain nonexact;
+no caller is invented for retained LoadArchive4357D0, which has no raw direct
+or literal-entry reference. These controls remain separate from canonical
+recipes. All three original large functions remain active.
+
+The preceding checkpoint supplies real AnmInt3Scale.cpp in the dispatcher graph,
 migrating the six shared canonical recipes from eight to nine TUs. Only that
 support uses the already reproduced /GL /GS /Ob1 profile; no C++ source or
 semantic target bindings change. Two independent full nine-TU colds strictly
@@ -269,7 +299,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the real scale proof; RGB results retain
+Latest focused native results are in the D3D error-context proof; RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -284,4 +314,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/enemy-real-scale-support/validation-summary.json).
+[the current validation summary](evidence/main-d3d-fatal/validation-summary.json).

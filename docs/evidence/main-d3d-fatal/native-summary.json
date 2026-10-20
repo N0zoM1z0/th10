@@ -1,0 +1,277 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "e5e63aa",
+  "scope": "One complete new authored exact owner; existing Fatal guard receives no duplicate credit.",
+  "graph": {
+    "source": "src/Main.cpp",
+    "support_sources": [
+      "src/GameErrorContext.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry": "WinMain@16",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "source_sha256": {
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/Main.cpp": "3cec21d2e75554bd8bb684e4a7e499e699283b4add9d684ec2ca8d3a5ecab4c2",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "canonical_unit": "main-init-d3d-interface",
+  "target_address": "0x00439700",
+  "size": 45,
+  "bound_fields": 5,
+  "independent_complete_cold_builds": [
+    {
+      "label": "maintained-cold1",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/maintained-cold1/source.exe",
+          "sha256": "e3d10b944f37b4ad440419920e42b715700f96eed03237b53561a9210f7a6ac6"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/maintained-cold1/source.map",
+          "sha256": "46c566d348b4bbf1dfac44a65961e31b05a2d7ceb9af85b9f2e5270365500d5a"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/maintained-cold1/source.pdb",
+          "sha256": "02004e331d6766818d86dd4248965d3e0ad2b6b0aaf58315bb7313c7aebcd7d7"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/maintained-cold1/source.ltcg.obj",
+          "sha256": "defa1b1ecb9ce2cf92713384dcb98c2ceeb4a301046bbd102b60247e6bfae57b"
+        }
+      },
+      "support_object": {
+        "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/maintained-cold1/support-00-GameErrorContext.ltcg.obj",
+        "sha256": "94bbbebd0c30b35c6b6a50e5c261b2078060a0ad2d5ae13ff2ba156209c6e39d"
+      },
+      "pdb_guid": "da0407a92ec2f04f8e55d485580fd95e",
+      "pdb_age": 1,
+      "owners": [
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "target_address": "0x00439700",
+          "size": 45,
+          "fields": 5,
+          "address": "0x00401BE0",
+          "pdb_module_index": 1,
+          "raw_sha256": "46ae34288199921f3fcfb6d68b5e6908bf1a13e6f99ec593e24bbaaece46d044",
+          "complete_replayed_target_sha256": "94a767e936a76830e4284cb98702d8c43d8d1762d0a3cfb1a9b6de79535591b2"
+        },
+        {
+          "symbol": "?Fatal@GameErrorContext@th10@@QAAPADPADZZ",
+          "target_address": "0x0044B8E0",
+          "size": 201,
+          "fields": 11,
+          "address": "0x00402970",
+          "pdb_module_index": 2,
+          "raw_sha256": "def9b40fc7805b7247c352efc537c3db3efb923e6e21bb8f4e4a099c5c43fd58",
+          "complete_replayed_target_sha256": "f5310ee83b9e4633195ff8f0666c27e7a5b45057802a444c24678779c434e44c"
+        }
+      ]
+    },
+    {
+      "label": "canonical-cold2",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/MainD3DInterface/source.exe",
+          "sha256": "9281c844f43c43013dc7c179f84ad89a5163b4a0324c1127f102554c2a767518"
+        },
+        "map": {
+          "path": "build/match-linked/MainD3DInterface/source.map",
+          "sha256": "b57b730ce16bf7032fcab612d38bb17849a357f2eacc9edd1aa2fb36e0508e9e"
+        },
+        "pdb": {
+          "path": "build/match-linked/MainD3DInterface/source.pdb",
+          "sha256": "90687747553ccbf6c7582517588e71fd97333a3b2f604c25359620fc0f70d4ce"
+        },
+        "object": {
+          "path": "build/match-linked/MainD3DInterface/source.ltcg.obj",
+          "sha256": "74aeaa3551e78a600bdc68274684e9c02f0ccc8ed3702c340649852be77d3ad3"
+        }
+      },
+      "support_object": {
+        "path": "build/match-linked/MainD3DInterface/support-00-GameErrorContext.ltcg.obj",
+        "sha256": "189fb63df914d4581b88b809b4700d0d6a69f904a1dfb34b3ab8c60e48301e73"
+      },
+      "pdb_guid": "be0a0316adea044db9485bab98fd34b6",
+      "pdb_age": 1,
+      "owners": [
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "target_address": "0x00439700",
+          "size": 45,
+          "fields": 5,
+          "address": "0x00401BE0",
+          "pdb_module_index": 1,
+          "raw_sha256": "46ae34288199921f3fcfb6d68b5e6908bf1a13e6f99ec593e24bbaaece46d044",
+          "complete_replayed_target_sha256": "94a767e936a76830e4284cb98702d8c43d8d1762d0a3cfb1a9b6de79535591b2"
+        },
+        {
+          "symbol": "?Fatal@GameErrorContext@th10@@QAAPADPADZZ",
+          "target_address": "0x0044B8E0",
+          "size": 201,
+          "fields": 11,
+          "address": "0x00402970",
+          "pdb_module_index": 2,
+          "raw_sha256": "def9b40fc7805b7247c352efc537c3db3efb923e6e21bb8f4e4a099c5c43fd58",
+          "complete_replayed_target_sha256": "f5310ee83b9e4633195ff8f0666c27e7a5b45057802a444c24678779c434e44c"
+        }
+      ]
+    }
+  ],
+  "baseline": {
+    "source_sha256": {
+      ".analysis/gpt-6.1-sol/main-d3d-fatal-context-20261021/baseline/Main.cpp": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    },
+    "helper_size": 38,
+    "helper_target_size": 45,
+    "artifacts": {
+      "image": {
+        "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/baseline/source.exe",
+        "sha256": "d8d2862b450e2a5c6fa681ba39876f49702b977bfac21e2db3895aaacd306a2e"
+      },
+      "map": {
+        "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/baseline/source.map",
+        "sha256": "aa1f99d1a9acea2c90b85893c85fcfaf22d17694fd53784df6912275f79140c7"
+      },
+      "pdb": {
+        "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/baseline/source.pdb",
+        "sha256": "4de192f2ed23873a60c42615d3becb5c459bbf8f6c273c0ad8f3b61e13653657"
+      },
+      "object": {
+        "path": "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/baseline/source.ltcg.obj",
+        "sha256": "9a60423bf83ada488f088d0869b1d8802c6d0350701a11533fe2b6fe612cd960"
+      }
+    }
+  },
+  "semantic_fields": [
+    {
+      "offset": 3,
+      "type": "REL32",
+      "symbol": "_Direct3DCreate9@4",
+      "target": 4530550
+    },
+    {
+      "offset": 10,
+      "type": "DIR32",
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "target": 4791336,
+      "addend": 4
+    },
+    {
+      "offset": 18,
+      "type": "DIR32",
+      "symbol": "?g_MainD3dCreateError@@3QBDB",
+      "target": 4650656
+    },
+    {
+      "offset": 23,
+      "type": "DIR32",
+      "symbol": "?g_GameErrorContext@th10@@3UGameErrorContext@1@A",
+      "target": 4673392
+    },
+    {
+      "offset": 28,
+      "type": "REL32",
+      "symbol": "?Fatal@GameErrorContext@th10@@QAAPADPADZZ",
+      "target": 4503776
+    }
+  ],
+  "semantic_field_review": {
+    "supervisor_base": "0x00491C28",
+    "d3d_interface_offset": 4,
+    "field_target": "0x00491C2C",
+    "scope": "Existing supervisor base binding plus Main.hpp offsetof assertion and direct target store; no nearest-anchor-name inference.",
+    "error_context": "0x00474F70",
+    "fatal_entry": "0x0044B8E0",
+    "fatal_receiver": "EDI",
+    "format_address": "0x0046F6A0",
+    "d3d_create_thunk": "0x00452176",
+    "d3d_create_iat": "0x004662B4"
+  },
+  "target_review": {
+    "ghidra_transport": "direct local headless; no Factory MCP",
+    "read_only": true,
+    "noanalysis": true,
+    "transaction_rolled_back": true,
+    "max_cpu": 1,
+    "max_heap_mib": 768,
+    "mapped_text_start": "0x00401000",
+    "mapped_text_end_inclusive": "0x00465A80",
+    "mapped_text_size": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "ghidra_helper_function_absent": true,
+    "complete_raw_helper_decode": 45,
+    "target_adjacent_padding_bytes": 3,
+    "no_raw_e8_e9_candidates_to_helper": true,
+    "no_literal_entry_pointer_in_pe": true,
+    "limitation": "These entry-reference checks do not prove absence of computed indirect calls. Physical boundary/origin are independently reviewed ledger claims."
+  },
+  "controls": [
+    {
+      "control": "missing-context-baseline",
+      "result": "rejected",
+      "reason": "PDB contribution size 0x26 differs from manifest 0x2d"
+    },
+    {
+      "control": "wrong-supervisor-addend",
+      "result": "rejected",
+      "reason": "linked field (10, 'DIR32', 4) does not resolve uniquely through '?g_MainSupervisorView@@3UMainSupervisorView@@A': publics=[4210984] expected=0x404124"
+    }
+  ],
+  "winmain_diagnostics": [
+    {
+      "label": "baseline",
+      "size": 1298,
+      "target_size": 1389,
+      "scope": "Complete native extent diagnostic only; parent remains nonexact."
+    },
+    {
+      "label": "maintained-cold1",
+      "size": 1307,
+      "target_size": 1389,
+      "scope": "Complete native extent diagnostic only; parent remains nonexact."
+    },
+    {
+      "label": "canonical-cold2",
+      "size": 1307,
+      "target_size": 1389,
+      "scope": "Complete native extent diagnostic only; parent remains nonexact."
+    }
+  ],
+  "credit": {
+    "new_authored_exact_functions": 1,
+    "new_authored_exact_bytes": 45,
+    "authored_exact_functions": 376,
+    "authored_exact_bytes": 68149,
+    "canonical_exact_functions": 1217,
+    "new_source_mappings": 0,
+    "new_owned_denominator_bytes": 0
+  }
+}

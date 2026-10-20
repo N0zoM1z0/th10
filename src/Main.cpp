@@ -1,3 +1,4 @@
+#include "GameErrorContext.hpp"
 #include "Main.hpp"
 #include "FileSystem.hpp"
 
@@ -584,7 +585,7 @@ int GameWindowView::InitD3DInterface()
     g_MainSupervisorView.d3dInterface = Direct3DCreate9(MAIN_D3D_SDK_VERSION);
     if (g_MainSupervisorView.d3dInterface == NULL)
     {
-        MainFatal(g_MainD3dCreateError);
+        th10::g_GameErrorContext.Fatal(const_cast<char *>(g_MainD3dCreateError));
         return 1;
     }
     return 0;

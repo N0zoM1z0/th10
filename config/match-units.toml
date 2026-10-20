@@ -22795,3 +22795,25 @@ target_address = 0x00412AA0
 size = 26
 linkages = [{ offset = 19, type = "REL32", symbol = "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z", target = 0x0044FF80 }]
 support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
+
+# Complete45-byte retained D3D helper; real Main + GameErrorContext, WinMain entry.
+[units.main-init-d3d-interface]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "WinMain@16"
+output_dir = "build/match-linked/MainD3DInterface"
+functions = ["GameWindowView::InitD3DInterface"]
+symbol = "?InitD3DInterface@GameWindowView@@SAHXZ"
+target_address = 4429568
+size = 45
+linkages = [
+  { offset = 3, type = "REL32", symbol = "_Direct3DCreate9@4", target = 4530550 },
+  { offset = 10, type = "DIR32", symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A", target = 4791336, addend = 4 },
+  { offset = 18, type = "DIR32", symbol = "?g_MainD3dCreateError@@3QBDB", target = 4650656 },
+  { offset = 23, type = "DIR32", symbol = "?g_GameErrorContext@th10@@3UGameErrorContext@1@A", target = 4673392 },
+  { offset = 28, type = "REL32", symbol = "?Fatal@GameErrorContext@th10@@QAAPADPADZZ", target = 4503776 },
+]

@@ -3930,3 +3930,31 @@ The old command's complete reports remain identical. This does not attest
 artifact compilation inputs; producer/source pins remain independent evidence.
 The newly supplied body removes one known missing dependency, while other
 anchors, all three large exact claims and later-phase gates remain open.
+
+### 2026-10-21: D3D failure context and ECL stack-packing observation
+
+The [D3D proof](evidence/main-d3d-fatal/README.md) closes the retained45-byte
+InitD3DInterface439700 owner. Its old MainFatal free alias omitted the target
+474F70 receiver. The maintained GameErrorContext::Fatal call naturally restores
+EDI setup/save/restore. Two full Main/GameErrorContext /GL /GS colds through
+real WinMain freeze9 inputs and replay45/all5 plus existing Fatal201/all11.
+Supervisor491C28+4 is independently bound from the known base and asserted
+layout; a nearest-name diagnostic misleadingly names the adjacent title anchor.
+Old38-byte omission and wrong-addend controls are rejected. Ghidra still has
+no helper function, while dense raw decode/CC boundary and WinMain's inline
+receiver/format/Fatal sequence independently corroborate the reviewed extent.
+Only one authored function/45 bytes is added. WinMain1307/1389, original
+source/physical ownership and later gates remain open.
+
+Fresh private ECL probes and one completed pinned-c2 debugger observation keep
+Run7020/all189 at26 full strict differences in the two-TU context. The actual
+stack-color members are floatResult/logicalResult/FORMAT-offset/X(weight36)
+versus scratch/Y/DX(weight9), not merely a symmetric X/Y allocation tie.
+The unnamed FORMAT-offset member is identified by its emitted slot accesses.
+Scoped float-result source repairs the geometry/FORMAT homes but moves the
+ADD/SUB and logical homes, retaining32 strict differences. Direct boolean
+results retain28; bool-typed shared results shrink Run6864 and are rejected.
+Operand references disturb existing helpers; union getters, int-return trace,
+explicit installer contexts and real callback support do not repair Run.
+These are compiler observations of the current source model, not recovered
+original locals. All EclVm/Enemy changes are restored; no large exact credit.

@@ -1,0 +1,103 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "state": "passed",
+  "scope": "One new complete45-byte authored exact function; no complete historical replay or product/runtime claim.",
+  "native": {
+    "complete_independent_cold_builds": 2,
+    "project_inputs": 9,
+    "all_final_source_pins_equal": true,
+    "all_retained_artifact_pins_equal": true,
+    "new_exact_functions": 1,
+    "new_exact_bytes": 45,
+    "existing_same_image_guard_bytes": 201,
+    "complete_owner_bytes_per_image": 246,
+    "bound_fields_per_image": 16,
+    "canonical_cold_replay_units": 1,
+    "canonical_cold_replay_bytes": 45
+  },
+  "controls": [
+    {
+      "control": "missing-context-baseline",
+      "result": "rejected",
+      "reason": "PDB contribution size 0x26 differs from manifest 0x2d"
+    },
+    {
+      "control": "wrong-supervisor-addend",
+      "result": "rejected",
+      "reason": "linked field (10, 'DIR32', 4) does not resolve uniquely through '?g_MainSupervisorView@@3UMainSupervisorView@@A': publics=[4210984] expected=0x404124"
+    }
+  ],
+  "final_gates": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "main-init-d3d-interface",
+        "--json"
+      ],
+      "returncode": 0,
+      "stdout": "exact45/all5; complete PDB extent and independently bound fields"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "TH10 toolchain declarations OK; execution not requested"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "returncode": 0,
+      "stdout": "tracking OK: 1775 candidates/boundaries, 1077 mappings, 1217 exact"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "returncode": 0,
+      "stdout": "wrote docs/PROGRESS.md and resources/progress.svg"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": ""
+    }
+  ],
+  "ci": {
+    "result": "all100_unique_steps_passed_across_two_segments",
+    "initial_invocation_returncode": 1,
+    "initial_successful_steps": 92,
+    "initial_failed_step": "Validate documentation references",
+    "reason": "Newly referenced validation-summary.json was not yet present. It was supplied; no source, test script or recipe changes were required.",
+    "resumed_invocation_returncode": 0,
+    "resumed_executed_steps": 8,
+    "initial_log_sha256": "81bdd9b5a83351105fb9d5162ed8b1f48eea452111a7f1819690ed18801024ba",
+    "resumed_log_sha256": "03306f59472c50a2cbe2275f4e8a876fa7e1390dbb248ea2b4fcba14490963e5",
+    "coverage_receipt_sha256": "388f73f3c497e6b7b28c3940f68081e641b7fa314f5dee64d74e1c4c157e8534",
+    "ci_script_sha256": "da305b75acbd60b3588a547ef06c58e3d3ff60137e423307e6530712a970260f"
+  },
+  "cleanup": {
+    "native_directories": 17,
+    "native_bytes": 4073413,
+    "scope": "Only terminal owned rejected/superseded native variants; no source, target, canonical carrier, toolchain, database or unrelated D3D work removed.",
+    "retained": [
+      "build/gpt-6.1-sol/ecl-operand-representation-20261021/stack-trace",
+      "build/gpt-6.1-sol/ecl-operand-representation-20261021/scoped-float-results",
+      "build/gpt-6.1-sol/filesystem-archive-context-20261021/real-disk-ob1",
+      "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/baseline",
+      "build/gpt-6.1-sol/main-d3d-fatal-context-20261021/maintained-cold1",
+      "build/match-linked/MainD3DInterface"
+    ]
+  }
+}
