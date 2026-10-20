@@ -3534,3 +3534,34 @@ All controls and graph changes are restored, with zero exact credit. See
 These are historical frozen-source observations: the subsequent ANM header
 change invalidates that ECL cache for current-source replay. Do not reuse it
 without checking every recursive input or rebuilding the necessary graph.
+
+
+### 2026-10-20: Exact Float2/Float3 interpolation value lifetimes
+
+[Two complete canonical vector evaluators](evidence/anm-vector-interpolation/README.md)
+close1539 authored bytes: Float3 404610/887 and Float2 441AD0/652. Both use
+ordinary initial-tuple snapshots for modes7/17 and one shared `t+t` before
+minusOne/Hermite weights. Float2 constructor-return arithmetic and whole-vector
+expressions reproduce target component storage; Float3 completed-duration
+returns use final first, additive initial second. Natural source restores
+frames20/44, all timer/state/math/return instructions and all20 address fields.
+Two independent four-TU /GL /GS colds freeze11 project inputs and strictly pass
+1539/1539 bytes. Nine existing same-image guards preserve2670 bytes/151 fields;
+with the pair, each image passes4209 bytes/all171 fields. Original source type,
+return spelling and physical TU remain unknown; no fake ABI or forced attrs.
+ANM-034 and the prior Float2 frame28/size653 diagnostics are now historical.
+
+Expression order, constructor returns, scalar grouping and output API each
+change C1/C2 materialization; isolated negative controls did not rule out their
+coupled value model. Named/grouped/multiplied2t controls stay nonexact until an
+explicit reusable addition produces the full match. Float3 applies that pattern
+and closes on its first family control. RGB/alpha factor/snapshot/value-interface
+trials remain nonexact and are restored, without general integer-template
+inference. All29 source observations retain frozen scope. See the linked proof.
+
+Numerator66315/273274 (24.27%), unchanged denominator. ExecuteScript stays
+9964/frameFC,89 equal-sized groups/gap14 and7184/7995 aligned comparable;
+matching sizes grant no exact block credit. The current vector-family carrier
+supersedes the preceding ANM source cache. The transition host's extracted
+RNG/timer/viewport blocks are unchanged; reviewed whole-file pins only. Product/
+runtime/semantic/port planes remain open.

@@ -5,8 +5,8 @@
   "sha256_lf": {
     "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
     "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
-    "src/AnmManager.cpp": "0cc9d153ec9880de88b58d0cdf62262ebf391edd52889aaf1b30218fc676bd6c",
-    "src/AnmManager.hpp": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+    "src/AnmManager.cpp": "12c74e08ef75a18f4214593bb87d0089b847c1cf19c9a2b2324594f3e28f46ef",
+    "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
     "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
@@ -154,6 +154,27 @@
       "src/AnmManager.hpp": {
         "old_sha256_lf": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
         "new_sha256_lf": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484"
+      }
+    },
+    "unchanged_extracted_blocks_sha256": {
+      "unsigned int __fastcall AnmRandomU32InRange(": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+      "struct AnmVmTimerView": "162f1c2209fa017e74cdf673e3fd2dc444920aa709205bb0028a533dfd131d7a",
+      "struct AnmViewportView": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b"
+    }
+  },
+  "reviewed_anm_vector_evaluators_update": {
+    "date": "2026-10-20",
+    "starting_head": "09fd5a50c374e1d6a57bc1c91843f25b628bc1bb",
+    "reason": "Only Float2 value-returning arithmetic and the complete Float2/Float3 evaluator bodies change. The extracted RNG helper, timer and viewport are byte-identical after existing CRLF-to-LF normalization. No host adaptations, normalization or rejection policy changes. RGB/alpha and Int3 controls are restored.",
+    "evidence": "docs/evidence/anm-vector-interpolation/README.md",
+    "inputs": {
+      "src/AnmManager.cpp": {
+        "old_sha256_lf": "0cc9d153ec9880de88b58d0cdf62262ebf391edd52889aaf1b30218fc676bd6c",
+        "new_sha256_lf": "12c74e08ef75a18f4214593bb87d0089b847c1cf19c9a2b2324594f3e28f46ef"
+      },
+      "src/AnmManager.hpp": {
+        "old_sha256_lf": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+        "new_sha256_lf": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
       }
     },
     "unchanged_extracted_blocks_sha256": {

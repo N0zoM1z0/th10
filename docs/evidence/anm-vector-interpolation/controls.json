@@ -1,0 +1,757 @@
+{
+  "scope": "Frozen individual controls; only the final current-source canonical pair grants credit. All by-value APIs/free operators/RGB/alpha changes are restored. Do not generalize a negative control beyond its pinned source/profile.",
+  "controls": [
+    {
+      "label": "baseline",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "c462ad38791184fa53205061019f760dcb46c4574f8d40c177d458702562b2eb",
+      "header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 653,
+          "target_size": 652,
+          "matched_comparable_bytes": 212,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "nested-hermite",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "423b318237094613517d8fd14d7e26af4148a39841e0a0d19efe9d6078d100d3",
+      "header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 733,
+          "target_size": 652,
+          "matched_comparable_bytes": 215,
+          "comparable_bytes": 616,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "nested-double",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "ae1b769a63ca61ce04d32d9e72a28f4a9f8dcb413a46e9e48e18455a4e89cd6a",
+      "header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 735,
+          "target_size": 652,
+          "matched_comparable_bytes": 211,
+          "comparable_bytes": 616,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "constructing-expression",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "5c4c1d9a16d9e5a6ffb2648a1efc5fffb472ac7d0eac72d17556c918d2309e5c",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 639,
+          "target_size": 652,
+          "matched_comparable_bytes": 208,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "copying-expression",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "5c4c1d9a16d9e5a6ffb2648a1efc5fffb472ac7d0eac72d17556c918d2309e5c",
+      "header_sha256": "a0f9d8de4d5ddab86b1540be95d82997277cc8b08d02f4a6cba400780163065a",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 863,
+          "target_size": 652,
+          "matched_comparable_bytes": 221,
+          "comparable_bytes": 616,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "value-left-expression",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "5c4c1d9a16d9e5a6ffb2648a1efc5fffb472ac7d0eac72d17556c918d2309e5c",
+      "header_sha256": "07279af6c7ceb15d295c6fc5dcfb71972bc7bf36678c5b6295d05b96742a4d59",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 863,
+          "target_size": 652,
+          "matched_comparable_bytes": 221,
+          "comparable_bytes": 616,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "value-expression",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "b7694cc8d40f08307703aac808cecffeb9ca61009b578c35efed3c79e57aafa3",
+      "header_sha256": "0f8a9c35c0f53e150194919d77ee3fcc36e32a38f0df07c1fd6dd29378328cfa",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAE?AUAnmFloat2View@@XZ",
+          "candidate_size": 603,
+          "target_size": 652,
+          "matched_comparable_bytes": 223,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "value-named-operators",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "b7694cc8d40f08307703aac808cecffeb9ca61009b578c35efed3c79e57aafa3",
+      "header_sha256": "95dc68e218be63128cf2ae2db3f6b2ca4e8a9d2f868da1bc0928974e4bddce43",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAE?AUAnmFloat2View@@XZ",
+          "candidate_size": 815,
+          "target_size": 652,
+          "matched_comparable_bytes": 211,
+          "comparable_bytes": 616,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "inline-pointer",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "fa2781e2249a69539920db9320a5149c863004d9311a0923d298a08b1e255e74",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 608,
+          "target_size": 652,
+          "matched_comparable_bytes": 115,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "inline-value",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "192a88204f87280fb0e19497dc6448ca60cdb4107bde4a20a68392577be07e78",
+      "header_sha256": "0f8a9c35c0f53e150194919d77ee3fcc36e32a38f0df07c1fd6dd29378328cfa",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAE?AUAnmFloat2View@@XZ",
+          "candidate_size": 572,
+          "target_size": 652,
+          "matched_comparable_bytes": 116,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "value-left-result",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "5c4c1d9a16d9e5a6ffb2648a1efc5fffb472ac7d0eac72d17556c918d2309e5c",
+      "header_sha256": "e40065e248fd7b89cefefa526e5234cdae4eac4590342d8a7649b53111bd2461",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 767,
+          "target_size": 652,
+          "matched_comparable_bytes": 229,
+          "comparable_bytes": 616,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "reversed-named-operators",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "a84af2cdb5087db4dba9f10dcac1e3e63af129b6dd0cdc71d6db56d230ef7d9b",
+      "header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 655,
+          "target_size": 652,
+          "matched_comparable_bytes": 209,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "reversed-constructed-operators",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "a84af2cdb5087db4dba9f10dcac1e3e63af129b6dd0cdc71d6db56d230ef7d9b",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 577,
+          "target_size": 652,
+          "matched_comparable_bytes": 220,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "snapshot-reversed",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "111e9bbe586480112af5c849478a3fa39e14b41acd63d83eefa70ab7d46443d8",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 609,
+          "target_size": 652,
+          "matched_comparable_bytes": 236,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "snapshot-inline",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "1b3eda0baa4f12f8947274eeb884eb45fa86f6e49786a4b5885bd33a0a2e3919",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 642,
+          "target_size": 652,
+          "matched_comparable_bytes": 123,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "snapshot-first-weight",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "b6f2dc442c0bb320092a76ef4dd313239bbd718d8dd7eb7b29b8fc00e0e9139f",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 656,
+          "target_size": 652,
+          "matched_comparable_bytes": 396,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "snapshot-weights",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "3891c93b9c89d5d143c069bad7fa1f972ee174c4affde89e191c49db03e2c761",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 671,
+          "target_size": 652,
+          "matched_comparable_bytes": 234,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "snapshot-const-weights",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "d8cb6796a44cfc0ead9cb312264714ba6c53c6d7406383747b5a49d81a0a29cb",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 671,
+          "target_size": 652,
+          "matched_comparable_bytes": 234,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "snapshot-double-literals",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "887866532f4085a30e9c6ddfbc5c12418daf6da1a79cdea749f6692ad16ed0f2",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 679,
+          "target_size": 652,
+          "matched_comparable_bytes": 236,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "minimal-snapshot",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "c12143f166db72c52e72b3264baa6935ed648e79ecc2e77f1ba59a7e8ac58f66",
+      "header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 685,
+          "target_size": 652,
+          "matched_comparable_bytes": 239,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "value-right",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "5c4c1d9a16d9e5a6ffb2648a1efc5fffb472ac7d0eac72d17556c918d2309e5c",
+      "header_sha256": "02075783b14a4d498df2727d2b8497c7e9a7f773d52f19be81727170281b68bd",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 765,
+          "target_size": 652,
+          "matched_comparable_bytes": 212,
+          "comparable_bytes": 616,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "value-right-state-order",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "84727daeee8cd5a6d497bac0714aedda2b8b8e5b9ae0e9874d61755cfc980647",
+      "header_sha256": "02075783b14a4d498df2727d2b8497c7e9a7f773d52f19be81727170281b68bd",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 765,
+          "target_size": 652,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 616,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "shared-double-add",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "bfd0df7da9bb1b95b7825f91b514d01b005a706227cc0b9a34993ee17c7b0234",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 671,
+          "target_size": 652,
+          "matched_comparable_bytes": 234,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "grouped-double-add",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "5aa93bfff9b1e821d177f4572c33ecaa327ce6a7dbe45fa8eb36a172f0484fa5",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 671,
+          "target_size": 652,
+          "matched_comparable_bytes": 234,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "factored-double-add",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "3e373aada13ba4e2d110c65aeaf6f881aed748b3a29d488bd87d47f6542e1e99",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 652,
+          "target_size": 652,
+          "matched_comparable_bytes": 612,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "float3-family",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "6a9e4a1d18e68371ac9c4941fe946936d02c2aed10fad4ed221bd875e18af3e3",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+          "candidate_size": 887,
+          "target_size": 887,
+          "matched_comparable_bytes": 847,
+          "comparable_bytes": 847,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 652,
+          "target_size": 652,
+          "matched_comparable_bytes": 612,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "color-factor",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "f4cfdf8b21f2c41c403dff810281f5dfd997f76ff785f9d70e520ec6a859c73f",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ",
+          "candidate_size": 356,
+          "target_size": 370,
+          "matched_comparable_bytes": 19,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+          "candidate_size": 887,
+          "target_size": 887,
+          "matched_comparable_bytes": 847,
+          "comparable_bytes": 847,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 830,
+          "target_size": 820,
+          "matched_comparable_bytes": 28,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 652,
+          "target_size": 652,
+          "matched_comparable_bytes": 612,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "color-snapshot-factor",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "17105eee4ea72fe8e38212c34ff2182a3aa2f0f0866f466d1daa392a49001d19",
+      "header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ",
+          "candidate_size": 356,
+          "target_size": 370,
+          "matched_comparable_bytes": 19,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+          "candidate_size": 887,
+          "target_size": 887,
+          "matched_comparable_bytes": 847,
+          "comparable_bytes": 847,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 785,
+          "target_size": 820,
+          "matched_comparable_bytes": 26,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 652,
+          "target_size": 652,
+          "matched_comparable_bytes": 612,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    },
+    {
+      "label": "color-vector",
+      "scope": "Exploration only; no credit from structural diagnostics",
+      "primary_sha256": "750829383282b75253fb1439bec8996fdda885d2ce4c73df48c9dba889be5778",
+      "header_sha256": "d27c311d75251fb5ec2d945a3ac3e9678bf9a10726caf9d97445c985de87a47d",
+      "evaluators": [
+        {
+          "symbol": "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ",
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+          "candidate_size": 887,
+          "target_size": 887,
+          "matched_comparable_bytes": 847,
+          "comparable_bytes": 847,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAEPAUAnmInt3View@@PAU2@@Z",
+          "candidate_size": 841,
+          "target_size": 820,
+          "matched_comparable_bytes": 26,
+          "comparable_bytes": 720,
+          "normalization_complete": true
+        },
+        {
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "candidate_size": 652,
+          "target_size": 652,
+          "matched_comparable_bytes": 612,
+          "comparable_bytes": 612,
+          "normalization_complete": true
+        }
+      ]
+    }
+  ]
+}

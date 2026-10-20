@@ -1,0 +1,775 @@
+{
+  "scope": "Two complete canonical linked-PE vector evaluators only; no parent/product/runtime/original-source-identity claim",
+  "starting_head": "09fd5a50c374e1d6a57bc1c91843f25b628bc1bb",
+  "new_authored_exact_bytes": 1539,
+  "authored_exact_bytes": 66315,
+  "authored_owned_bytes": 273274,
+  "source_sha256": {
+    "src/AnmManager.cpp": "6a9e4a1d18e68371ac9c4941fe946936d02c2aed10fad4ed221bd875e18af3e3",
+    "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "canonical_manifest_sha256": "8b3a6351b5871e73766c6371e34205be4e5d4a7f161ae2c9e0c15766916b5839",
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL",
+    "/GS"
+  ],
+  "support_sources": [
+    "src/RandomMath.cpp",
+    "src/AnmVmCreate.cpp",
+    "src/AnmVmId.cpp"
+  ],
+  "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+  "cold_builds": [
+    {
+      "label": "final-cold1",
+      "artifact_count": 1,
+      "build_returncode": 0,
+      "artifact_sha256": {
+        "image": "7dbafc7b07bc32e1535df8b37a5643392a657e695cd2f2d08e735f7b5da84e3a",
+        "map": "6c66fd878de77e628f38037d0e0bc94266125fba31c209cea230992fcd47ef45",
+        "pdb": "a856363cf6f6921a3cab4ff5815df7cffeb3bfe409f4300036f22f0d7127df6e",
+        "object": "36a751b97e66e893addd2ccdfe79add82ac2b8248bb9ed87fddde2355f2db284"
+      },
+      "canonical_report_sha256": "4b797eebd2e27e5f7441810290a01d5a52ae53d680accedd53536ee5638a3d36",
+      "complete_bytes": 1539,
+      "units": [
+        {
+          "unit": "anm-evaluate-scale-interpolation",
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "target_address": "0x00441AD0",
+          "size": 652,
+          "compared_size": 652,
+          "matched_bytes": 652,
+          "decoded_bytes": 652,
+          "normalization_complete": true,
+          "extent_source": "pdb-section-contribution",
+          "pdb_guid": "e47d5534ca65ec4cb998ed358b739e83",
+          "pdb_age": 1,
+          "result": "exact",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1D0",
+              "linked_symbol": "__real@3f7d70a4",
+              "local": false,
+              "offset": "0x1E",
+              "symbol": "__real@3f7d70a4",
+              "target": "0x00470B68",
+              "target_encoded_value": "0x00470B68",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1CC",
+              "linked_symbol": "__real@3f8147ae",
+              "local": false,
+              "offset": "0x2D",
+              "symbol": "__real@3f8147ae",
+              "target": "0x00470B64",
+              "target_encoded_value": "0x00470B64",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x3E",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x53",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x00022005",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E0B8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0046",
+              "local": false,
+              "offset": "0x8B",
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "target": "0x00476F78",
+              "target_encoded_value": "0x00476F78",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x188",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x191",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D20C",
+              "linked_symbol": "__real@40400000",
+              "local": false,
+              "offset": "0x1A3",
+              "symbol": "__real@40400000",
+              "target": "0x00470BD4",
+              "target_encoded_value": "0x00470BD4",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x1AD",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004017D0",
+              "linked_symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "local": false,
+              "offset": "0x247",
+              "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "target": "0x0044C350",
+              "target_encoded_value": "0x0000A635",
+              "type": "REL32",
+              "width": 4
+            }
+          ]
+        },
+        {
+          "unit": "anm-evaluate-float3-interpolation",
+          "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+          "target_address": "0x00404610",
+          "size": 887,
+          "compared_size": 887,
+          "matched_bytes": 887,
+          "decoded_bytes": 887,
+          "normalization_complete": true,
+          "extent_source": "pdb-section-contribution",
+          "pdb_guid": "e47d5534ca65ec4cb998ed358b739e83",
+          "pdb_age": 1,
+          "result": "exact",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1D0",
+              "linked_symbol": "__real@3f7d70a4",
+              "local": false,
+              "offset": "0x25",
+              "symbol": "__real@3f7d70a4",
+              "target": "0x00470B68",
+              "target_encoded_value": "0x00470B68",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1CC",
+              "linked_symbol": "__real@3f8147ae",
+              "local": false,
+              "offset": "0x34",
+              "symbol": "__real@3f8147ae",
+              "target": "0x00470B64",
+              "target_encoded_value": "0x00470B64",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x45",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x5A",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x0005F4BE",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E0B8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0046",
+              "local": false,
+              "offset": "0x8B",
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "target": "0x00476F78",
+              "target_encoded_value": "0x00476F78",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x1FC",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x206",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D20C",
+              "linked_symbol": "__real@40400000",
+              "local": false,
+              "offset": "0x21A",
+              "symbol": "__real@40400000",
+              "target": "0x00470BD4",
+              "target_encoded_value": "0x00470BD4",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x224",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004017D0",
+              "linked_symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "local": false,
+              "offset": "0x30E",
+              "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "target": "0x0044C350",
+              "target_encoded_value": "0x00047A2E",
+              "type": "REL32",
+              "width": 4
+            }
+          ]
+        }
+      ],
+      "same_image_guards": {
+        "complete_bytes": 4209,
+        "bound_fields": 171,
+        "units": [
+          {
+            "unit": "anm-vm-initialize-private",
+            "size": 273,
+            "matched_bytes": 273,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-setup-vertex-buffer",
+            "size": 472,
+            "matched_bytes": 472,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-start-primary-alpha-interpolation",
+            "size": 130,
+            "matched_bytes": 130,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-get-int-var",
+            "size": 144,
+            "matched_bytes": 144,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-get-float-var",
+            "size": 424,
+            "matched_bytes": 424,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-get-int-var-ptr",
+            "size": 132,
+            "matched_bytes": 132,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-get-float-var-ptr",
+            "size": 156,
+            "matched_bytes": 156,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-start-scale-interpolation",
+            "size": 136,
+            "matched_bytes": 136,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-initialize-pulsing-radial-trail",
+            "size": 803,
+            "matched_bytes": 803,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-evaluate-scale-interpolation",
+            "size": 652,
+            "matched_bytes": 652,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-evaluate-float3-interpolation",
+            "size": 887,
+            "matched_bytes": 887,
+            "result": "exact"
+          }
+        ]
+      }
+    },
+    {
+      "label": "final-cold2",
+      "artifact_count": 1,
+      "build_returncode": 0,
+      "artifact_sha256": {
+        "image": "79e8cc61f0f52fb1a980c298e72d0f767a8c1e9fe98ec58b62e19417a35fe7db",
+        "map": "f539a4f346e923cfd372bcae9835504a7cac39167922f4b19c0343c1f199c594",
+        "pdb": "3a96c95cf976197678c8d47558c69c6f1ebd7441016c54f9cc5a966155203920",
+        "object": "86f7b3f0839f8e5909b885b84480ef055e706fe3d84024793f3cb3b58c563b44"
+      },
+      "canonical_report_sha256": "1277feab23590d68ec4e91348a9c99569a764c7925ae5287deb4cec9df4ea323",
+      "complete_bytes": 1539,
+      "units": [
+        {
+          "unit": "anm-evaluate-scale-interpolation",
+          "symbol": "?Evaluate@AnmVmFloat2InterpolationView@@QAEPAUAnmFloat2View@@PAU2@@Z",
+          "target_address": "0x00441AD0",
+          "size": 652,
+          "compared_size": 652,
+          "matched_bytes": 652,
+          "decoded_bytes": 652,
+          "normalization_complete": true,
+          "extent_source": "pdb-section-contribution",
+          "pdb_guid": "64dca89ea1ae524999782cce63f793fd",
+          "pdb_age": 1,
+          "result": "exact",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1D0",
+              "linked_symbol": "__real@3f7d70a4",
+              "local": false,
+              "offset": "0x1E",
+              "symbol": "__real@3f7d70a4",
+              "target": "0x00470B68",
+              "target_encoded_value": "0x00470B68",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1CC",
+              "linked_symbol": "__real@3f8147ae",
+              "local": false,
+              "offset": "0x2D",
+              "symbol": "__real@3f8147ae",
+              "target": "0x00470B64",
+              "target_encoded_value": "0x00470B64",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x3E",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x53",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x00022005",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E0B8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0046",
+              "local": false,
+              "offset": "0x8B",
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "target": "0x00476F78",
+              "target_encoded_value": "0x00476F78",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x188",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x191",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D20C",
+              "linked_symbol": "__real@40400000",
+              "local": false,
+              "offset": "0x1A3",
+              "symbol": "__real@40400000",
+              "target": "0x00470BD4",
+              "target_encoded_value": "0x00470BD4",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x1AD",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004017D0",
+              "linked_symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "local": false,
+              "offset": "0x247",
+              "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "target": "0x0044C350",
+              "target_encoded_value": "0x0000A635",
+              "type": "REL32",
+              "width": 4
+            }
+          ]
+        },
+        {
+          "unit": "anm-evaluate-float3-interpolation",
+          "symbol": "?Evaluate@AnmVmFloat3InterpolationView@@QAEPAUAnmFloat3View@@PAU2@@Z",
+          "target_address": "0x00404610",
+          "size": 887,
+          "compared_size": 887,
+          "matched_bytes": 887,
+          "decoded_bytes": 887,
+          "normalization_complete": true,
+          "extent_source": "pdb-section-contribution",
+          "pdb_guid": "64dca89ea1ae524999782cce63f793fd",
+          "pdb_age": 1,
+          "result": "exact",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1D0",
+              "linked_symbol": "__real@3f7d70a4",
+              "local": false,
+              "offset": "0x25",
+              "symbol": "__real@3f7d70a4",
+              "target": "0x00470B68",
+              "target_encoded_value": "0x00470B68",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1CC",
+              "linked_symbol": "__real@3f8147ae",
+              "local": false,
+              "offset": "0x34",
+              "symbol": "__real@3f8147ae",
+              "target": "0x00470B64",
+              "target_encoded_value": "0x00470B64",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x45",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x5A",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x0005F4BE",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E0B8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0046",
+              "local": false,
+              "offset": "0x8B",
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "target": "0x00476F78",
+              "target_encoded_value": "0x00476F78",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x1FC",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x206",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D20C",
+              "linked_symbol": "__real@40400000",
+              "local": false,
+              "offset": "0x21A",
+              "symbol": "__real@40400000",
+              "target": "0x00470BD4",
+              "target_encoded_value": "0x00470BD4",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x224",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004017D0",
+              "linked_symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "local": false,
+              "offset": "0x30E",
+              "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "target": "0x0044C350",
+              "target_encoded_value": "0x00047A2E",
+              "type": "REL32",
+              "width": 4
+            }
+          ]
+        }
+      ],
+      "same_image_guards": {
+        "complete_bytes": 4209,
+        "bound_fields": 171,
+        "units": [
+          {
+            "unit": "anm-vm-initialize-private",
+            "size": 273,
+            "matched_bytes": 273,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-setup-vertex-buffer",
+            "size": 472,
+            "matched_bytes": 472,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-start-primary-alpha-interpolation",
+            "size": 130,
+            "matched_bytes": 130,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-get-int-var",
+            "size": 144,
+            "matched_bytes": 144,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-get-float-var",
+            "size": 424,
+            "matched_bytes": 424,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-get-int-var-ptr",
+            "size": 132,
+            "matched_bytes": 132,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-get-float-var-ptr",
+            "size": 156,
+            "matched_bytes": 156,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-start-scale-interpolation",
+            "size": 136,
+            "matched_bytes": 136,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-initialize-pulsing-radial-trail",
+            "size": 803,
+            "matched_bytes": 803,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-evaluate-scale-interpolation",
+            "size": 652,
+            "matched_bytes": 652,
+            "result": "exact"
+          },
+          {
+            "unit": "anm-evaluate-float3-interpolation",
+            "size": 887,
+            "matched_bytes": 887,
+            "result": "exact"
+          }
+        ]
+      }
+    }
+  ],
+  "complete_parent": {
+    "address": "0x0043EE30",
+    "target_size": 9964,
+    "candidate_size": 9964,
+    "physical_order_matches": true,
+    "pre_table_span_delta": 0,
+    "case_aligned": {
+      "matched_comparable_bytes": 7184,
+      "comparable_bytes": 7995,
+      "absolute_case_gap_delta": 14,
+      "same_sized_cases": 89,
+      "normalization_complete": true
+    },
+    "exact": false,
+    "credit": 0
+  }
+}

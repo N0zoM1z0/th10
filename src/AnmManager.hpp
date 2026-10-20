@@ -73,26 +73,17 @@ struct AnmFloat2View
 
     AnmFloat2View operator-(const AnmFloat2View &other) const
     {
-        AnmFloat2View result;
-        result.x = x - other.x;
-        result.y = y - other.y;
-        return result;
+        return AnmFloat2View(x - other.x, y - other.y);
     }
 
     AnmFloat2View operator+(const AnmFloat2View &other) const
     {
-        AnmFloat2View result;
-        result.x = x + other.x;
-        result.y = y + other.y;
-        return result;
+        return AnmFloat2View(x + other.x, y + other.y);
     }
 
     AnmFloat2View operator*(float scale) const
     {
-        AnmFloat2View result;
-        result.x = x * scale;
-        result.y = y * scale;
-        return result;
+        return AnmFloat2View(x * scale, y * scale);
     }
 
     AnmFloat2View &operator+=(const AnmFloat2View &other)

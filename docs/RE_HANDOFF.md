@@ -28,7 +28,26 @@ scratch paths, or build hashes into this file.
 
 ## Current local checkpoint (2026-10-20)
 
-- Complete ANM ExecuteScript9964 now restores target frame0xFC and all9588
+- **1539 new authored exact bytes** close the complete Float3 evaluator
+  404610/887 and Float2 scale evaluator441AD0/652. Two independent complete
+  four-TU /GL /GS canonical colds freeze11 project inputs and replay all20
+  address fields with zero difference. Ordinary initial-value snapshots,
+  constructor-return Float2 arithmetic and explicit shared `t+t` recover the
+  target value lifetimes/frames44 and20; Float3 completion branches also align.
+  Nine existing guards preserve2670 bytes/all151 fields; with the new pair,
+  each image strictly passes4209 bytes/all171 fields. Authored exact is now
+  **66315/273274 (24.27%)**, unchanged denominator. RGB/alpha controls are
+  restored and remain nonexact. Original source/TU/return spelling and whole
+  product/runtime closure remain unknown. Parent ExecuteScript remains
+  9964/frameFC,89 equal-sized groups/gap14,7184/7995 aligned diagnostic.
+  See [complete proof](evidence/anm-vector-interpolation/README.md). The
+  preceding source-cache hashes and the old Float2 near-state are historical;
+  use the final canonical vector-family carrier, checking every dependency.
+  All95 CI steps pass; later doc-only additions pass focused checks. About
+  33.6 MB pruned,56 raw source snapshots replaced with verified deltas and28
+  native control dirs removed; one current carrier retained. D3D work untouched.
+- Earlier09fd5a5 checkpoint (superseded vector near-state): complete ANM
+  ExecuteScript9964 restores target frame0xFC and all9588
   pre-table bytes in length, versus9948/frameF8 before this checkpoint. Raw UV
   storage is separated from the math Float2, resolving the prior C2620 union
   blockade; ordinary Float2 construction in SCALE_TIME preserves target Y/X
@@ -39,8 +58,8 @@ scratch paths, or build hashes into this file.
   each image. **Zero new exact credit**; authored exact stays64776/273274
   bytes (23.70%). Remaining unequal intervals are61(+1),60(-7),2(+6); interval2
   includes common updates/alignment. Duration phi/registers, common scale-copy/
-  flag scheduling, same-sized block differences and Float2 evaluator653/652
-  (frame0x28/0x20) remain open.
+  flag scheduling and same-sized block differences remain open. Its old Float2
+  evaluator653/652 (frame0x28/0x20) is now superseded by the exact pair above.
   Negative source/interface controls are restored. See
   [complete scope](evidence/anm-float2-storage/README.md). The older frameF8
   active ANM checkpoint below is superseded; original type/TU/return spelling
@@ -956,28 +975,26 @@ Keep parked FORMAT, radial and sample-loader spelling controls parked.
 
 ## Active large-owner ANM checkpoint (2026-10-20)
 
-The current complete-owner evidence is
-[Float2 construction and UV storage](evidence/anm-float2-storage/README.md).
-Target constructor/materialization evidence supports the retained SCALE_TIME
-change. The old C2620 failure concerned using one constructor-bearing math type
-inside vertex UV's anonymous union; distinct raw UV storage resolves that source
-constraint. Old by-value factory9980/frame104 and prior frameF8 diagnostics are
-historical, not the current source. Do not repeat rejected duration declaration/
-branch spellings, value-return operators, interleaved operand decoding, whole
-scale copies, raw flag OR, captured flip flags, live duration reads, evaluator
-by-value or in-place updates without new evidence. In particular, the interleaved
-model's90 same-sized groups/gap2 changes the target call order and is rejected.
+The current source/evidence is
+[exact vector interpolation](evidence/anm-vector-interpolation/README.md).
+Float2/Float3 now close their complete652/887-byte owners in two independent
+canonical colds. Initial-tuple snapshots and a shared t+t lifetime are material;
+isolated historical constructor/operator/grouping failures were not universal
+no-go results. No by-value output API or value-parameter/free operator survives.
+RGB and alpha trials are restored and must be reviewed independently; the
+normal Int3 scale body is unchanged. Do not repeat the scoped29 controls without
+new target/caller/type evidence.
 
-The active source is9964/frameFC with89 same-sized groups and gap14, still
-nonexact. A final raw comparison finds a concrete next lead: target Float2
-mode7 snapshots the left pair before addition; Hermite doubles t first and
-multiplies final tangent/initial tangent/final/initial in that physical order.
-Current named locals evaluate in the opposite order with extra copies. Natural
-nested vector expressions and a materialized left operand are untested combined
-hypotheses; by-value API alone was already rejected. Duration phi allocation
-and common copy/flag scheduling also remain open. Source spelling and original
-return interface are not established by Ghidra's pointer output. Only the necessary graph and
-related canonical recipes are replayed. Large owners remain the priority.
+The parent remains9964/frameFC with89 equal-sized groups and gap14, nonexact.
+Duration phi allocation, common scale-copy/flag scheduling and same-sized
+ordinary differences remain open. Existing UV/math role separation is retained.
+Seek real caller/TU/alias evidence for those parent lifetimes, or independently
+review the integer evaluator return/caller models. RGB target441600 uses EAX
+receiver, stack output and RET4; hidden-return versus explicit-output source
+models remain an independent caller/ABI lead. Do not infer integer ABI from the
+now-exact float-vector pair. Older ECL/ANM caches referencing the previous header
+are historical; check every dependency before reuse. Large owners remain the
+priority.
 
 ## Enemy major-owner laser prerequisite checkpoint (2026-10-15)
 

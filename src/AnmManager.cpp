@@ -316,26 +316,28 @@ AnmFloat3View *AnmVmFloat3InterpolationView::Evaluate(
         {
             timer.SetCurrent(duration);
             duration = 0;
-            if (mode == ANM_INTERPOLATION_ADD)
+            if (mode != ANM_INTERPOLATION_ADD)
             {
-                *output = initial;
+                *output = final;
                 return output;
             }
-            *output = final;
+            *output = initial;
             return output;
         }
     }
 
     if (mode == ANM_INTERPOLATION_ADD)
     {
-        initial = initial + final;
+        const AnmFloat3View initialValue = initial;
+        initial = initialValue + final;
         *output = initial;
         return output;
     }
 
     if (mode == ANM_INTERPOLATION_ACCELERATE)
     {
-        initial = initial + finalTangent;
+        const AnmFloat3View initialValue = initial;
+        initial = initialValue + finalTangent;
         finalTangent = finalTangent + final;
         *output = initial;
         return output;
@@ -344,9 +346,10 @@ AnmFloat3View *AnmVmFloat3InterpolationView::Evaluate(
     if (mode == ANM_INTERPOLATION_HERMITE)
     {
         float value = timer.subframe / static_cast<float>(duration);
+        float twiceValue = value + value;
         float minusOne = value - 1.0f;
-        float initialWeight = (1.0f + value + value) * minusOne * minusOne;
-        float finalWeight = (3.0f - value - value) * value * value;
+        float initialWeight = (1.0f + twiceValue) * minusOne * minusOne;
+        float finalWeight = (3.0f - twiceValue) * value * value;
         float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
         float finalTangentWeight = minusOne * value * value;
 
@@ -497,14 +500,16 @@ AnmFloat2View *AnmVmFloat2InterpolationView::Evaluate(AnmFloat2View *output)
 
     if (mode == ANM_INTERPOLATION_ADD)
     {
-        initial = initial + final;
+        const AnmFloat2View initialValue = initial;
+        initial = initialValue + final;
         *output = initial;
         return output;
     }
 
     if (mode == ANM_INTERPOLATION_ACCELERATE)
     {
-        initial = initial + finalTangent;
+        const AnmFloat2View initialValue = initial;
+        initial = initialValue + finalTangent;
         finalTangent = finalTangent + final;
         *output = initial;
         return output;
@@ -513,28 +518,21 @@ AnmFloat2View *AnmVmFloat2InterpolationView::Evaluate(AnmFloat2View *output)
     if (mode == ANM_INTERPOLATION_HERMITE)
     {
         float value = timer.subframe / static_cast<float>(duration);
+        float twiceValue = value + value;
         float minusOne = value - 1.0f;
-        float initialWeight = (1.0f + value + value) * minusOne * minusOne;
-        float finalWeight = (3.0f - value - value) * value * value;
+        float initialWeight = (1.0f + twiceValue) * minusOne * minusOne;
+        float finalWeight = (3.0f - twiceValue) * value * value;
         float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
         float finalTangentWeight = minusOne * value * value;
-        AnmFloat2View initialPart = initial * initialWeight;
-        AnmFloat2View finalPart = final * finalWeight;
-        AnmFloat2View initialTangentPart =
-            initialTangent * initialTangentWeight;
-        AnmFloat2View finalTangentPart =
+        *output = initial * initialWeight + final * finalWeight +
+            initialTangent * initialTangentWeight +
             finalTangent * finalTangentWeight;
-        output->x = initialPart.x + finalPart.x +
-            initialTangentPart.x + finalTangentPart.x;
-        output->y = initialPart.y + finalPart.y +
-            initialTangentPart.y + finalTangentPart.y;
         return output;
     }
 
     float value = CalculateAnmInterpolation(
         mode, timer.subframe, static_cast<float>(duration));
-    output->x = (final.x - initial.x) * value + initial.x;
-    output->y = (final.y - initial.y) * value + initial.y;
+    *output = (final - initial) * value + initial;
     return output;
 }
 

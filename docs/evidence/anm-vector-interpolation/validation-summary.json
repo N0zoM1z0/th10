@@ -1,0 +1,27 @@
+{
+  "ci_returncode": 0,
+  "ci_steps": 95,
+  "ci_log_sha256": "b1c279e3ab32308db4228f5f3a7d5a229a6381e70919b588d7b4f8a5bcdcdbe5",
+  "source_frozen_during_ci": true,
+  "project_inputs": 11,
+  "canonical_colds": 2,
+  "new_complete_exact_bytes": 1539,
+  "new_target_bound_fields": 20,
+  "same_image_complete_bytes_per_cold": 4209,
+  "same_image_fields_per_cold": 171,
+  "table_check": "passed",
+  "toolchain_declarations": "passed",
+  "tracking": "passed after ordering the two added matches by address; 1775 candidates/1074 mappings/1204 exact",
+  "progress": "regenerated;66315/273274 authored bytes exact (24.27%)",
+  "current_source_and_native_artifact_hashes": "verified after cleanup and CI",
+  "cleanup": {
+    "before_bytes": 34451468,
+    "after_bytes": 872782,
+    "freed_bytes": 33578686,
+    "source_snapshots_replaced_with_verified_deltas": 56,
+    "native_control_directories_removed": 28,
+    "prior_owned_baseline_pruned": "build/gpt-6.1-sol/th10-anm-float2-storage-20261020/retained-cold2",
+    "retained_native_carrier": "build/match-linked/AnmSetupVertexBuffer",
+    "protected": "Pre-existing untracked D3D evidence and prior ECL checkpoint carrier untouched"
+  }
+}
