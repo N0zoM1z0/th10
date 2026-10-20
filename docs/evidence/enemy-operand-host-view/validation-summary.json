@@ -1,0 +1,69 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "Five modified complete operand adapters; two independent full eight-TU colds, six canonical selections and fourteen complete existing same-image guards. No full historical replay.",
+  "native": {
+    "cold_links": 2,
+    "recursive_inputs": 29,
+    "all_final_input_pins_match": true,
+    "complete_owners_per_image": 19,
+    "complete_bytes_per_image": 1539,
+    "bound_fields_per_image": 32,
+    "new_exact_functions": 5,
+    "new_exact_bytes": 87
+  },
+  "final_gates": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "TH10 toolchain declarations OK; execution not requested"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "returncode": 0,
+      "stdout": "tracking OK: 1775 candidates/boundaries, 1077 mappings, 1216 exact"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "returncode": 0,
+      "stdout": "wrote docs/PROGRESS.md and resources/progress.svg"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": ""
+    }
+  ],
+  "ci": {
+    "result": "passed",
+    "returncode": 0,
+    "steps": 100,
+    "log_sha256": "21e3d05549c5b2407fad804330a362cd114882b42d0b592beeb84e92d63478b5"
+  },
+  "cleanup": {
+    "native_directories": 7,
+    "native_bytes": 6615876,
+    "superseded_analysis_files": 29,
+    "analysis_bytes": 2023175,
+    "total_bytes": 8639051,
+    "retained": [
+      "build/gpt-6.1-sol/enemy-adapter-partition-20261021/baseline",
+      "build/gpt-6.1-sol/enemy-adapter-partition-20261021/retained-cold1",
+      "build/match-linked/AnmReleaseSlot"
+    ],
+    "scope": "Only inspected artifacts owned by this bounded experiment; frozen sources, baseline, both accepted cold carriers, rejected-control receipts and unrelated D3D work preserved."
+  }
+}

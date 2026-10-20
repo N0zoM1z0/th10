@@ -1072,7 +1072,8 @@ float __stdcall EnemyWrapAngle(float angle)
 
 int EnemyRuntimeView::ReadIntArgument(int index)
 {
-    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadInt(index);
+    EclVmHost *const host = reinterpret_cast<EclVmHost *>(owner);
+    return host->activeContext->ReadInt(index);
 }
 
 int *EnemyRuntimeView::ResolveIntArgument(int index)
@@ -1082,24 +1083,26 @@ int *EnemyRuntimeView::ResolveIntArgument(int index)
 
 float EnemyRuntimeView::ReadFloatArgument(int index)
 {
-    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadFloat(index);
+    EclVmHost *const host = reinterpret_cast<EclVmHost *>(owner);
+    return host->activeContext->ReadFloat(index);
 }
 
 float *EnemyRuntimeView::ResolveFloatArgument(int index)
 {
-    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ResolveFloat(index);
+    EclVmHost *const host = reinterpret_cast<EclVmHost *>(owner);
+    return host->activeContext->ResolveFloat(index);
 }
 
 int EnemyRuntimeView::ReadRawIntArgument(int index, int rawValue)
 {
-    return reinterpret_cast<EclVmContext *>(owner->activeEclContext)->ReadIntValue(index, rawValue);
+    EclVmHost *const host = reinterpret_cast<EclVmHost *>(owner);
+    return host->activeContext->ReadIntValue(index, rawValue);
 }
 
 float EnemyRuntimeView::ReadRawFloatArgument(int index, float rawValue)
 {
-    EclVmContext *context =
-        reinterpret_cast<EclVmContext *>(owner->activeEclContext);
-    return EclVmContext::ReadFloatValue(index, context, rawValue);
+    EclVmHost *const host = reinterpret_cast<EclVmHost *>(owner);
+    return EclVmContext::ReadFloatValue(index, host->activeContext, rawValue);
 }
 
 #define ENEMY_READ_INT_DIRECT(index) \

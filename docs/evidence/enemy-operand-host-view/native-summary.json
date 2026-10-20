@@ -1,0 +1,780 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "8cf6146",
+  "scope": "Five complete linked-PE extents; origins indeterminate. No large-owner, runtime or product exactness claim.",
+  "native_graph": {
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "source_sha256": {
+    "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "58779200de1285a31bc97eb5744aba3b739de7bd846b19ebc401498233f89737",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "new_canonical_units": [
+    "enemy-read-int-argument",
+    "enemy-read-float-argument",
+    "enemy-resolve-float-argument",
+    "enemy-read-raw-int-argument",
+    "enemy-read-raw-float-argument"
+  ],
+  "builds": [
+    {
+      "label": "retained-cold1",
+      "kind": "independent full cold eight-TU link",
+      "artifacts": {
+        "object": {
+          "path": "build/gpt-6.1-sol/enemy-adapter-partition-20261021/retained-cold1/source.ltcg.obj",
+          "sha256": "abc4e7eaf5ad76f42bd92747022018afdb56d28404cab6b96fcd1054e7d0787f"
+        },
+        "image": {
+          "path": "build/gpt-6.1-sol/enemy-adapter-partition-20261021/retained-cold1/source.exe",
+          "sha256": "c6402b17d9aa69c3c0a7b70495076645472e6aea07cae3fd122e72ca98d0e863"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/enemy-adapter-partition-20261021/retained-cold1/source.map",
+          "sha256": "6cfa2b5e5cdb08674b89492bdae813b0c29138922d1b565b87ba17033bb16ee8"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/enemy-adapter-partition-20261021/retained-cold1/source.pdb",
+          "sha256": "06198ba29e5865499e0e22c139ed52810f215aab7936783a52cebde1f5fc280f"
+        }
+      },
+      "pdb_guid": "d47ece28fbfa884c803609e05c151fda",
+      "pdb_age": 1,
+      "complete_exact_owners": [
+        {
+          "unit": "float-reader",
+          "symbol": "?ReadFloatArgument@EnemyRuntimeView@@QAEMH@Z",
+          "target_address": "0x00412A60",
+          "candidate_address": "0x004027B0",
+          "size": 14,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "608e71c58216fdaae11b0a84ece4785e7ad2a54b74902220d2035a9af3984780",
+          "complete_replayed_target_sha256": "6d022962c002638e76dde7e120e89d6bc2ac8d7f151997ac28b69b584ae13ead"
+        },
+        {
+          "unit": "float-resolver",
+          "symbol": "?ResolveFloatArgument@EnemyRuntimeView@@QAEPAMH@Z",
+          "target_address": "0x00412A70",
+          "candidate_address": "0x004027C0",
+          "size": 14,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "715ab0d7bc5a1b89ec9b10b5e604d52498c30c24cee573ea0542d7a791a63cca",
+          "complete_replayed_target_sha256": "7c1c4ea26c59be6fcefa7b1dab9b62cd3203dd54af1bad8450e259e6ee74fbbd"
+        },
+        {
+          "unit": "int-reader",
+          "symbol": "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z",
+          "target_address": "0x00412A00",
+          "candidate_address": "0x00402750",
+          "size": 16,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "0511c7681e471a211cd2bc0fa5772d2e00d1008d7776c6ba6392f011e5c4d3f0",
+          "complete_replayed_target_sha256": "011e482e29a35c44f9839c0311646c34eb280cd7460b68b5281c2ce69788f1bb"
+        },
+        {
+          "unit": "raw-int-reader",
+          "symbol": "?ReadRawIntArgument@EnemyRuntimeView@@QAEHHH@Z",
+          "target_address": "0x00412A80",
+          "candidate_address": "0x004027D0",
+          "size": 17,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "1dbc0ffb4b2cf2bcddf8a82efc4458ee1550b05f6e0019b880c1ba2b9caaa6f1",
+          "complete_replayed_target_sha256": "877b71604ba676cea4995ec6ece70aab92f58313cdbf0711b2667ad6c6da8439"
+        },
+        {
+          "unit": "raw-float-reader",
+          "symbol": "?ReadRawFloatArgument@EnemyRuntimeView@@QAEMHM@Z",
+          "target_address": "0x00412AA0",
+          "candidate_address": "0x004027F0",
+          "size": 26,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "f2f51d8470f2910cd7ad26233977168002647177480e5ed5b489c4fe6532b52c",
+          "complete_replayed_target_sha256": "7d9f7ac705c667da213ec6f2fa250f968a14a7ac0d6e330543272186e75f8316"
+        },
+        {
+          "unit": "ecl-vm-read-float",
+          "symbol": "?ReadFloat@EclVmContext@@QAEMI@Z",
+          "target_address": "0x0044FE40",
+          "candidate_address": "0x00406540",
+          "size": 183,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 4,
+          "candidate_raw_sha256": "3175561cb346cab470c391ee3a328dbd1c0183ce74e910e6bfc4a31140f4231d",
+          "complete_replayed_target_sha256": "2ca538193891653fac19d37bf3da384a61d399b71e590c34be12a3f1222d54d9"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "symbol": "?ReadInt@EclVmContext@@QAEHI@Z",
+          "target_address": "0x0044FDB0",
+          "candidate_address": "0x00406400",
+          "size": 144,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "7272a22ed3937d46f01548957b9fcc3a0ec6b73771b4cf9838be8aa85d176b3e",
+          "complete_replayed_target_sha256": "81b1a03f6b065bb35a8482733cd9e6bd8d240d64241a9dd97b0bc488b0615736"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "symbol": "?ReadIntValue@EclVmContext@@QAEHIH@Z",
+          "target_address": "0x0044FF00",
+          "candidate_address": "0x00406380",
+          "size": 124,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "b8eb6dc39f984b2245bee8a870050a73f079e3782c25e647ac122f9cb65e1301",
+          "complete_replayed_target_sha256": "6e1d448146ac92d1779388e0d07179a95950b94a8a9013fdf662518bf1edf0f9"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "candidate_address": "0x00406490",
+          "size": 171,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 4,
+          "candidate_raw_sha256": "4c55b3a2c1c1acc985155b5ff52c97cb56d650a23b67f184c00ee118d39b3989",
+          "complete_replayed_target_sha256": "a5d002df2a338ac482ceb008546447eac1fb0ff526f5acd035282dc7dedcb4c8"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "symbol": "?ResolveInt@EclVmContext@@QAEPAHI@Z",
+          "target_address": "0x00450030",
+          "candidate_address": "0x00406600",
+          "size": 58,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 0,
+          "candidate_raw_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4",
+          "complete_replayed_target_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "symbol": "?ResolveFloat@EclVmContext@@QAEPAMI@Z",
+          "target_address": "0x00450070",
+          "candidate_address": "0x00406640",
+          "size": 93,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 3,
+          "candidate_raw_sha256": "2f6e65af1af3a45d5972603ac7397f5f00528f06ea42751a3770a1485cfc6113",
+          "complete_replayed_target_sha256": "e16795d700fcaf021ef295164abe6e20ea1a05f724c508f3c7396e6c3718420b"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "symbol": "?Run@EclVmHost@@QAEHM@Z",
+          "target_address": "0x0044FD10",
+          "candidate_address": "0x00406B90",
+          "size": 146,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 4,
+          "candidate_raw_sha256": "d2a7b7513769eb0a91160f6b49e28a5d323305e18cc3a5fcc6d818a3ddf1449d",
+          "complete_replayed_target_sha256": "009341c6a7d4a5e2c0eb2536c14e4ca4d2452f6bb01152faae149e9e95a20eb3"
+        },
+        {
+          "unit": "anm-release-slot",
+          "symbol": "?ReleaseAnm@AnmRenderManagerView@@QAEXH@Z",
+          "target_address": "0x004477D0",
+          "candidate_address": "0x0040C1A0",
+          "size": 55,
+          "pdb_module_index": 7,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 2,
+          "candidate_raw_sha256": "0d1655a64279f482159faf3f4780ea4f03fa68d8cff3907b5a3e2c5e6904b821",
+          "complete_replayed_target_sha256": "9b65d0872204662d27d6b0d219904ddf2180f880191e29ce3f793585a1bcad16"
+        },
+        {
+          "unit": "enemy-mark-pending-interrupt",
+          "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+          "target_address": "0x00409E50",
+          "candidate_address": "0x004016F0",
+          "size": 65,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 2,
+          "candidate_raw_sha256": "cb015bffe6e45d68ef13134bc2edd9fecf1b883ba708275840b1fee4e519ff52",
+          "complete_replayed_target_sha256": "0a35ed9851dc77170b5cf52b1c71ef867c11085930210c8d53bf64bc49b0d669"
+        },
+        {
+          "unit": "enemy-sound-queue-sample",
+          "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+          "target_address": "0x0043DC90",
+          "candidate_address": "0x00401A20",
+          "size": 123,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "22fc81ec7a1f3aacc0cd829a92f0a5a066b7006b1b3aafd2a1fe47ff1fb990b8",
+          "complete_replayed_target_sha256": "29730584bd142aae7f8bb5fc12e03afd883a8d705186ef0719353c8c533249ff"
+        },
+        {
+          "unit": "enemy-sound-queue-cue",
+          "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+          "target_address": "0x0043DD10",
+          "candidate_address": "0x00401980",
+          "size": 149,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 3,
+          "candidate_raw_sha256": "e59b459dd1f3a5598895421abc9f9827aff3efc634f7dbf55460aa11bddc5539",
+          "complete_replayed_target_sha256": "d9c92e8fca661f63f3dfbaafa74d8854bc1c675f9009260bce3f967450a798e4"
+        },
+        {
+          "unit": "enemy-drop-vector-from-angle-radii",
+          "symbol": "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z",
+          "target_address": "0x00413270",
+          "candidate_address": "0x00402430",
+          "size": 30,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 0,
+          "candidate_raw_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7",
+          "complete_replayed_target_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7"
+        },
+        {
+          "unit": "enemy-resolve-int-argument",
+          "symbol": "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z",
+          "target_address": "0x00412A10",
+          "candidate_address": "0x00402760",
+          "size": 75,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 0,
+          "candidate_raw_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5",
+          "complete_replayed_target_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5"
+        },
+        {
+          "unit": "enemy-enable-shield",
+          "symbol": "?EnemyEnableBombShield@@YAXPAUEnemyGameStateView@@@Z",
+          "target_address": "0x0040CEA0",
+          "candidate_address": "0x00401740",
+          "size": 36,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 2,
+          "candidate_raw_sha256": "00a59390e5b2dc349c6ae6688a8b91c7d08309d6d9b46a885c0dfafa5ebdcc5f",
+          "complete_replayed_target_sha256": "1c1dd422513bb0b84bb90b14bef42066850ecc08e564f1682289cbaff494a669"
+        }
+      ],
+      "complete_exact_bytes": 1539,
+      "bound_fields": 32,
+      "dispatcher": {
+        "candidate_size": 14404,
+        "target_size": 14416,
+        "case_diagnostics": {
+          "matched_comparable_bytes": 2919,
+          "comparable_bytes": 11156,
+          "absolute_case_gap_delta": 690,
+          "same_sized_cases": 40
+        },
+        "frame": {
+          "target": "esp, 0x2c4",
+          "candidate": "esp, 0x2c4"
+        },
+        "sentinel_comparisons": {
+          "target": 19,
+          "candidate": 19
+        }
+      },
+      "ecl_run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "bound_fields": 189,
+        "local_destinations": 62
+      }
+    },
+    {
+      "label": "canonical-cold2",
+      "kind": "independent full cold eight-TU link",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/AnmReleaseSlot/source.exe",
+          "sha256": "61d8ad3a84fbdd5ab13d1c953e879ded5482a2ed694130f4a00c701bace8e872"
+        },
+        "map": {
+          "path": "build/match-linked/AnmReleaseSlot/source.map",
+          "sha256": "e3cc6773d5937bdaed2fdeceb2b7bfdec79c24d7d93d6c7b3caf242b60502cf5"
+        },
+        "pdb": {
+          "path": "build/match-linked/AnmReleaseSlot/source.pdb",
+          "sha256": "31dcd3b96425ba4a50fa993b5f6d7fdd7ab706f8f78bbd4b4216bcb8190a4e96"
+        },
+        "object": {
+          "path": "build/match-linked/AnmReleaseSlot/source.ltcg.obj",
+          "sha256": "38493b81932b8a9d188d839efd421f939e5e37c91dea142c7793fe369ae3d88f"
+        }
+      },
+      "pdb_guid": "93cf1a40ee8be94f891070a60e3c5ef2",
+      "pdb_age": 1,
+      "complete_exact_owners": [
+        {
+          "unit": "float-reader",
+          "symbol": "?ReadFloatArgument@EnemyRuntimeView@@QAEMH@Z",
+          "target_address": "0x00412A60",
+          "candidate_address": "0x004027B0",
+          "size": 14,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "608e71c58216fdaae11b0a84ece4785e7ad2a54b74902220d2035a9af3984780",
+          "complete_replayed_target_sha256": "6d022962c002638e76dde7e120e89d6bc2ac8d7f151997ac28b69b584ae13ead"
+        },
+        {
+          "unit": "float-resolver",
+          "symbol": "?ResolveFloatArgument@EnemyRuntimeView@@QAEPAMH@Z",
+          "target_address": "0x00412A70",
+          "candidate_address": "0x004027C0",
+          "size": 14,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "715ab0d7bc5a1b89ec9b10b5e604d52498c30c24cee573ea0542d7a791a63cca",
+          "complete_replayed_target_sha256": "7c1c4ea26c59be6fcefa7b1dab9b62cd3203dd54af1bad8450e259e6ee74fbbd"
+        },
+        {
+          "unit": "int-reader",
+          "symbol": "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z",
+          "target_address": "0x00412A00",
+          "candidate_address": "0x00402750",
+          "size": 16,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "0511c7681e471a211cd2bc0fa5772d2e00d1008d7776c6ba6392f011e5c4d3f0",
+          "complete_replayed_target_sha256": "011e482e29a35c44f9839c0311646c34eb280cd7460b68b5281c2ce69788f1bb"
+        },
+        {
+          "unit": "raw-int-reader",
+          "symbol": "?ReadRawIntArgument@EnemyRuntimeView@@QAEHHH@Z",
+          "target_address": "0x00412A80",
+          "candidate_address": "0x004027D0",
+          "size": 17,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "1dbc0ffb4b2cf2bcddf8a82efc4458ee1550b05f6e0019b880c1ba2b9caaa6f1",
+          "complete_replayed_target_sha256": "877b71604ba676cea4995ec6ece70aab92f58313cdbf0711b2667ad6c6da8439"
+        },
+        {
+          "unit": "raw-float-reader",
+          "symbol": "?ReadRawFloatArgument@EnemyRuntimeView@@QAEMHM@Z",
+          "target_address": "0x00412AA0",
+          "candidate_address": "0x004027F0",
+          "size": 26,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "f2f51d8470f2910cd7ad26233977168002647177480e5ed5b489c4fe6532b52c",
+          "complete_replayed_target_sha256": "7d9f7ac705c667da213ec6f2fa250f968a14a7ac0d6e330543272186e75f8316"
+        },
+        {
+          "unit": "ecl-vm-read-float",
+          "symbol": "?ReadFloat@EclVmContext@@QAEMI@Z",
+          "target_address": "0x0044FE40",
+          "candidate_address": "0x00406540",
+          "size": 183,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 4,
+          "candidate_raw_sha256": "3175561cb346cab470c391ee3a328dbd1c0183ce74e910e6bfc4a31140f4231d",
+          "complete_replayed_target_sha256": "2ca538193891653fac19d37bf3da384a61d399b71e590c34be12a3f1222d54d9"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "symbol": "?ReadInt@EclVmContext@@QAEHI@Z",
+          "target_address": "0x0044FDB0",
+          "candidate_address": "0x00406400",
+          "size": 144,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "7272a22ed3937d46f01548957b9fcc3a0ec6b73771b4cf9838be8aa85d176b3e",
+          "complete_replayed_target_sha256": "81b1a03f6b065bb35a8482733cd9e6bd8d240d64241a9dd97b0bc488b0615736"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "symbol": "?ReadIntValue@EclVmContext@@QAEHIH@Z",
+          "target_address": "0x0044FF00",
+          "candidate_address": "0x00406380",
+          "size": 124,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "b8eb6dc39f984b2245bee8a870050a73f079e3782c25e647ac122f9cb65e1301",
+          "complete_replayed_target_sha256": "6e1d448146ac92d1779388e0d07179a95950b94a8a9013fdf662518bf1edf0f9"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "candidate_address": "0x00406490",
+          "size": 171,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 4,
+          "candidate_raw_sha256": "4c55b3a2c1c1acc985155b5ff52c97cb56d650a23b67f184c00ee118d39b3989",
+          "complete_replayed_target_sha256": "a5d002df2a338ac482ceb008546447eac1fb0ff526f5acd035282dc7dedcb4c8"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "symbol": "?ResolveInt@EclVmContext@@QAEPAHI@Z",
+          "target_address": "0x00450030",
+          "candidate_address": "0x00406600",
+          "size": 58,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 0,
+          "candidate_raw_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4",
+          "complete_replayed_target_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "symbol": "?ResolveFloat@EclVmContext@@QAEPAMI@Z",
+          "target_address": "0x00450070",
+          "candidate_address": "0x00406640",
+          "size": 93,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 3,
+          "candidate_raw_sha256": "2f6e65af1af3a45d5972603ac7397f5f00528f06ea42751a3770a1485cfc6113",
+          "complete_replayed_target_sha256": "e16795d700fcaf021ef295164abe6e20ea1a05f724c508f3c7396e6c3718420b"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "symbol": "?Run@EclVmHost@@QAEHM@Z",
+          "target_address": "0x0044FD10",
+          "candidate_address": "0x00406B90",
+          "size": 146,
+          "pdb_module_index": 6,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 4,
+          "candidate_raw_sha256": "d2a7b7513769eb0a91160f6b49e28a5d323305e18cc3a5fcc6d818a3ddf1449d",
+          "complete_replayed_target_sha256": "009341c6a7d4a5e2c0eb2536c14e4ca4d2452f6bb01152faae149e9e95a20eb3"
+        },
+        {
+          "unit": "anm-release-slot",
+          "symbol": "?ReleaseAnm@AnmRenderManagerView@@QAEXH@Z",
+          "target_address": "0x004477D0",
+          "candidate_address": "0x0040C1A0",
+          "size": 55,
+          "pdb_module_index": 7,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 2,
+          "candidate_raw_sha256": "0d1655a64279f482159faf3f4780ea4f03fa68d8cff3907b5a3e2c5e6904b821",
+          "complete_replayed_target_sha256": "9b65d0872204662d27d6b0d219904ddf2180f880191e29ce3f793585a1bcad16"
+        },
+        {
+          "unit": "enemy-mark-pending-interrupt",
+          "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+          "target_address": "0x00409E50",
+          "candidate_address": "0x004016F0",
+          "size": 65,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 2,
+          "candidate_raw_sha256": "cb015bffe6e45d68ef13134bc2edd9fecf1b883ba708275840b1fee4e519ff52",
+          "complete_replayed_target_sha256": "0a35ed9851dc77170b5cf52b1c71ef867c11085930210c8d53bf64bc49b0d669"
+        },
+        {
+          "unit": "enemy-sound-queue-sample",
+          "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+          "target_address": "0x0043DC90",
+          "candidate_address": "0x00401A20",
+          "size": 123,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 1,
+          "candidate_raw_sha256": "22fc81ec7a1f3aacc0cd829a92f0a5a066b7006b1b3aafd2a1fe47ff1fb990b8",
+          "complete_replayed_target_sha256": "29730584bd142aae7f8bb5fc12e03afd883a8d705186ef0719353c8c533249ff"
+        },
+        {
+          "unit": "enemy-sound-queue-cue",
+          "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+          "target_address": "0x0043DD10",
+          "candidate_address": "0x00401980",
+          "size": 149,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 3,
+          "candidate_raw_sha256": "e59b459dd1f3a5598895421abc9f9827aff3efc634f7dbf55460aa11bddc5539",
+          "complete_replayed_target_sha256": "d9c92e8fca661f63f3dfbaafa74d8854bc1c675f9009260bce3f967450a798e4"
+        },
+        {
+          "unit": "enemy-drop-vector-from-angle-radii",
+          "symbol": "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z",
+          "target_address": "0x00413270",
+          "candidate_address": "0x00402430",
+          "size": 30,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 0,
+          "candidate_raw_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7",
+          "complete_replayed_target_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7"
+        },
+        {
+          "unit": "enemy-resolve-int-argument",
+          "symbol": "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z",
+          "target_address": "0x00412A10",
+          "candidate_address": "0x00402760",
+          "size": 75,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 0,
+          "candidate_raw_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5",
+          "complete_replayed_target_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5"
+        },
+        {
+          "unit": "enemy-enable-shield",
+          "symbol": "?EnemyEnableBombShield@@YAXPAUEnemyGameStateView@@@Z",
+          "target_address": "0x0040CEA0",
+          "candidate_address": "0x00401740",
+          "size": 36,
+          "pdb_module_index": 4,
+          "extent_source": "pdb-section-contribution",
+          "field_count": 2,
+          "candidate_raw_sha256": "00a59390e5b2dc349c6ae6688a8b91c7d08309d6d9b46a885c0dfafa5ebdcc5f",
+          "complete_replayed_target_sha256": "1c1dd422513bb0b84bb90b14bef42066850ecc08e564f1682289cbaff494a669"
+        }
+      ],
+      "complete_exact_bytes": 1539,
+      "bound_fields": 32,
+      "dispatcher": {
+        "candidate_size": 14404,
+        "target_size": 14416,
+        "case_diagnostics": {
+          "matched_comparable_bytes": 2919,
+          "comparable_bytes": 11156,
+          "absolute_case_gap_delta": 690,
+          "same_sized_cases": 40
+        },
+        "frame": {
+          "target": "esp, 0x2c4",
+          "candidate": "esp, 0x2c4"
+        },
+        "sentinel_comparisons": {
+          "target": 19,
+          "candidate": 19
+        }
+      },
+      "ecl_run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "bound_fields": 189,
+        "local_destinations": 62
+      }
+    }
+  ],
+  "target_review": {
+    "transport": "direct local Ghidra headless; no Factory MCP",
+    "flags": [
+      "readOnly",
+      "noanalysis",
+      "max-cpu 1",
+      "heap 768m",
+      "transaction rollback"
+    ],
+    "mapped_text_start": "0x00401000",
+    "mapped_text_end_inclusive": "0x00465A80",
+    "mapped_text_size": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "reviewed_extents": [
+      {
+        "address": "0x412a00",
+        "size": 16,
+        "direct_rel32_count": 30,
+        "absolute_pointer_count": 0
+      },
+      {
+        "address": "0x412a60",
+        "size": 14,
+        "direct_rel32_count": 0,
+        "absolute_pointer_count": 0
+      },
+      {
+        "address": "0x412a70",
+        "size": 14,
+        "direct_rel32_count": 0,
+        "absolute_pointer_count": 0
+      },
+      {
+        "address": "0x412a80",
+        "size": 17,
+        "direct_rel32_count": 0,
+        "absolute_pointer_count": 0
+      },
+      {
+        "address": "0x412aa0",
+        "size": 26,
+        "direct_rel32_count": 13,
+        "absolute_pointer_count": 0
+      }
+    ]
+  },
+  "controls": {
+    "standalone_ninth_TU": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "left_size": 14524,
+        "right_size": 14524,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0,
+        "rebound_field_count": 311,
+        "unbound_changed_field_count": 0
+      },
+      {
+        "prefix": "?ReadIntArgument@EnemyRuntimeView",
+        "left_size": 16,
+        "right_size": 16,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0,
+        "rebound_field_count": 1,
+        "unbound_changed_field_count": 0
+      }
+    ],
+    "definition_after_dispatcher": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "left_size": 14524,
+        "right_size": 14524,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0,
+        "rebound_field_count": 553,
+        "unbound_changed_field_count": 0
+      },
+      {
+        "prefix": "?ReadIntArgument@EnemyRuntimeView",
+        "left_size": 16,
+        "right_size": 16,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0,
+        "rebound_field_count": 1,
+        "unbound_changed_field_count": 0
+      }
+    ],
+    "independent_cold_owned_byte_comparison": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "left_size": 14404,
+        "right_size": 14404,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0,
+        "rebound_field_count": 0,
+        "unbound_changed_field_count": 0
+      },
+      {
+        "prefix": "?ReadIntArgument@EnemyRuntimeView",
+        "left_size": 16,
+        "right_size": 16,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0,
+        "rebound_field_count": 0,
+        "unbound_changed_field_count": 0
+      }
+    ],
+    "scope": "Native-to-native owned-byte diagnostics only; all rejected source controls restored."
+  },
+  "validation_scope": {
+    "canonical_cold_units": [
+      "anm-release-slot",
+      "enemy-read-int-argument",
+      "enemy-read-float-argument",
+      "enemy-resolve-float-argument",
+      "enemy-read-raw-int-argument",
+      "enemy-read-raw-float-argument"
+    ],
+    "existing_same_image_guards": 14,
+    "new_complete_units": 5,
+    "full_historical_replay": false,
+    "unchanged_anm_execute_script_replayed": false,
+    "authored_exact_functions": 375,
+    "authored_exact_bytes": 68104,
+    "new_overall_exact_functions": 5,
+    "new_overall_exact_bytes": 87,
+    "new_source_mappings": 3
+  }
+}

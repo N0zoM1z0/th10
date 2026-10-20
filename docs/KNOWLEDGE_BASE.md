@@ -3837,3 +3837,35 @@ unknown. Shared float temporaries trade two repaired angle slots for six wrong
 negation slots. All source controls are restored; Run, StartSubroutine and the
 other two original large owners remain nonexact. No new credit or later-phase
 closure is claimed.
+
+
+### 2026-10-21: Enemy operand host view and five exact adapters
+
+The [operand adapter proof](evidence/enemy-operand-host-view/README.md) closes
+412A00/16,412A60/14,412A70/14,412A80/17 and412AA0/26. Each body loads the full
+owner at runtime+14D8, then its active context at owner+4. The maintained source
+views that loaded owner as the existing EclVmHost before reading activeContext.
+This naturally recovers target EAX intermediates, private entry registers and
+raw-argument scheduling in the complete eight-TU VC7.1 /GL /GS graph. It does
+not establish an original class hierarchy, production TU or allocated-data alias.
+The raw-float method needs the local host variable; a nested direct expression
+instead chooses an incorrect ECX receiver. Existing ResolveIntArgument75 is
+unchanged. Separate-TU and definition-order controls alone do not fix the
+integer adapter's old three differing bytes and are restored.
+
+Fresh local read-only Ghidra rollback confirms complete extents and30/13
+dispatcher calls to the integer/raw-float entries. Independent raw-text REL32
+and executable absolute-pointer scans find no static references to the other
+three entries. The absence of references and matching codegen establish no
+authorship; all five origins remain indeterminate. Three previously unmapped
+maintained methods now have mappings. Overall exact adds five functions87
+bytes; authored exact remains375 functions68104 bytes.
+
+Two independent full cold links agree on all29 recursive inputs and pass19
+complete owners1539 bytes/all32 fields. Dispatcher changes14524->14404/14416;
+40/108 cases have target sizes, absolute case-size gap sum690 instead of792.
+Frame2C4 and19 sentinel comparisons agree, but the polar case399/405 and the
+whole dispatcher remain nonexact. Current eight-TU Run is7020/all189 with27
+ordinary differences, distinct from the two-TU26 result. ANM source is unchanged;
+its bytes are not replayed here. Native product, runtime, semantic and portability gates
+remain open.

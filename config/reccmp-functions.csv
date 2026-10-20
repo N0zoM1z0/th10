@@ -120,6 +120,9 @@ EnemyFullObjectView::DispatchEclInstruction,0x0040E760,function
 EnemyRuntimeView::DispatchEclInstruction,0x0040E770,function
 EnemyRuntimeView::ReadIntArgument,0x00412A00,function
 EnemyRuntimeView::ResolveIntArgument,0x00412A10,function
+EnemyRuntimeView::ReadFloatArgument,0x00412A60,function
+EnemyRuntimeView::ResolveFloatArgument,0x00412A70,function
+EnemyRuntimeView::ReadRawIntArgument,0x00412A80,function
 EnemyRuntimeView::ReadRawFloatArgument,0x00412AA0,function
 EnemyFullObjectView::ReadIntOperand,0x00411FC0,function
 EnemyFullObjectView::ResolveIntOperand,0x00412300,function

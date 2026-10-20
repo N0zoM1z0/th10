@@ -41,11 +41,34 @@ fresh target and compiler evidence. The first bounded changes and measurements
 are recorded in [large-owner call order](evidence/large-owner-call-order/README.md).
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
-candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
-1211 canonical exact functions overall. Authored exact is **375 functions,
+candidates, 734 authored functions owning 273274 bytes, 1077 source mappings,
+1216 canonical exact functions overall. Authored exact is **375 functions,
 68104/273274 bytes (24.92%)**. The 219 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
+
+The latest source checkpoint closes five Enemy operand adapters at412A00/16,
+412A60/14,412A70/14,412A80/17 and412AA0/26:87 bytes total. Viewing the loaded
+full owner as EclVmHost before reading activeContext recovers the target
+intermediate loads, private registers and scheduling. Both target-proven
+dereferences remain; runtime itself is not the host. Two independent full
+eight-TU colds pass19 complete owners1539 bytes/all32 fields, with all29 source
+pins equal. Five origins remain indeterminate, so authored exact stays375/68104.
+The canonical carrier shares `build/match-linked/AnmReleaseSlot`; older carrier
+identities are historical. Source/API and /GL /GS profiles are retained.
+Dispatcher is now14404/14416,40/108 same-sized cases, absolute case-size gap690,
+frame2C4 and19 sentinel comparisons. Polar399/405 and other differences remain.
+Run7020 retains27 ordinary differences/all189 fields in this actual eight-TU
+graph; the separate two-TU26 measurement remains distinct. ANM source is unchanged
+and its bytes are not replayed in this bounded checkpoint. See
+[operand host-view proof](evidence/enemy-operand-host-view/README.md).
+Separate-TU and definition-order integer-adapter controls are neutral and
+restored; the direct raw-float expression has the wrong ECX receiver.
+All three original large owners remain open. A next bounded hypothesis is
+the dispatcher’s direct integer-read macro, which still accesses the partial
+Enemy context before casting; it has not been changed or tested in this proof.
+All100 standard CI checks pass. Inspected cleanup reclaims8639051 bytes from
+seven superseded native directories and29 intermediate analysis files.
 
 The latest diagnostic checkpoint repairs Run table coverage when Capstone stops
 inside the jump table instead of near the end of the selector bytes. Complete
@@ -75,7 +98,7 @@ cancelled earlier CI fixture. See
 [viewport source evidence](evidence/ascii-viewport-transitions/README.md).
 Original large-owner work remains active; integer signatures, FORMAT state,
 and two FLIP_X controls from this round are restored. The new two-TU ECL baseline supersedes its old carrier; the eight-TU Enemy
-carrier still needs current dependency checks after the ANM source/header change.
+carrier has since been cold-rechecked in the operand host-view proof above.
 
 The preceding checkpoint changes ReadFloatValue to ordinary explicit-context
 static source, updating its three real callers. Two independent full two-TU

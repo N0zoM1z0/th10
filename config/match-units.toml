@@ -22714,3 +22714,78 @@ linkages = [
   { offset = 0x30A, type = "REL32", symbol = "__ftol2", target = 0x00463B2C },
 ]
 support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
+
+[units.enemy-read-int-argument]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp"]
+output_dir = "build/match-linked/AnmReleaseSlot"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+functions = ["EnemyRuntimeView::ReadIntArgument"]
+symbol = "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z"
+target_address = 0x00412A00
+size = 16
+linkages = [{ offset = 11, type = "REL32", symbol = "?ReadInt@EclVmContext@@QAEHI@Z", target = 0x0044FDB0 }]
+
+[units.enemy-read-float-argument]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp"]
+output_dir = "build/match-linked/AnmReleaseSlot"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+functions = ["EnemyRuntimeView::ReadFloatArgument"]
+symbol = "?ReadFloatArgument@EnemyRuntimeView@@QAEMH@Z"
+target_address = 0x00412A60
+size = 14
+linkages = [{ offset = 10, type = "REL32", symbol = "?ReadFloat@EclVmContext@@QAEMI@Z", target = 0x0044FE40 }]
+
+[units.enemy-resolve-float-argument]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp"]
+output_dir = "build/match-linked/AnmReleaseSlot"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+functions = ["EnemyRuntimeView::ResolveFloatArgument"]
+symbol = "?ResolveFloatArgument@EnemyRuntimeView@@QAEPAMH@Z"
+target_address = 0x00412A70
+size = 14
+linkages = [{ offset = 10, type = "REL32", symbol = "?ResolveFloat@EclVmContext@@QAEPAMI@Z", target = 0x00450070 }]
+
+[units.enemy-read-raw-int-argument]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp"]
+output_dir = "build/match-linked/AnmReleaseSlot"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+functions = ["EnemyRuntimeView::ReadRawIntArgument"]
+symbol = "?ReadRawIntArgument@EnemyRuntimeView@@QAEHHH@Z"
+target_address = 0x00412A80
+size = 17
+linkages = [{ offset = 12, type = "REL32", symbol = "?ReadIntValue@EclVmContext@@QAEHIH@Z", target = 0x0044FF00 }]
+
+[units.enemy-read-raw-float-argument]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp"]
+output_dir = "build/match-linked/AnmReleaseSlot"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+functions = ["EnemyRuntimeView::ReadRawFloatArgument"]
+symbol = "?ReadRawFloatArgument@EnemyRuntimeView@@QAEMHM@Z"
+target_address = 0x00412AA0
+size = 26
+linkages = [{ offset = 19, type = "REL32", symbol = "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z", target = 0x0044FF80 }]
