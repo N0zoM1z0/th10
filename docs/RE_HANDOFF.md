@@ -28,6 +28,27 @@ scratch paths, or build hashes into this file.
 
 ## Current local checkpoint (2026-10-20)
 
+- Complete ANM ExecuteScript9964 now restores target frame0xFC and all9588
+  pre-table bytes in length, versus9948/frameF8 before this checkpoint. Raw UV
+  storage is separated from the math Float2, resolving the prior C2620 union
+  blockade; ordinary Float2 construction in SCALE_TIME preserves target Y/X
+  evaluation lifetimes. Two fresh complete11-input four-TU colds reproduce
+  89/92 target-sized physical groups, gap sum14 and7184/7995 diagnostic aligned
+  matches, versus84 groups/gap56/6492 of8000 in the fresh unchanged baseline.
+  Nine existing complete guards strictly preserve2670 bytes/all151 fields in
+  each image. **Zero new exact credit**; authored exact stays64776/273274
+  bytes (23.70%). Remaining unequal intervals are61(+1),60(-7),2(+6); interval2
+  includes common updates/alignment. Duration phi/registers, common scale-copy/
+  flag scheduling, same-sized block differences and Float2 evaluator653/652
+  (frame0x28/0x20) remain open.
+  Negative source/interface controls are restored. See
+  [complete scope](evidence/anm-float2-storage/README.md). The older frameF8
+  active ANM checkpoint below is superseded; original type/TU/return spelling
+  remains unknown. Whole Windows i386 product/runtime and later gates stay open.
+  Necessary one-TU canonical replay passes560 bytes/all45 fields (2 units,
+  1 artifact). All95 CI steps pass; subsequent documentation-only additions
+  pass focused doc/whitespace checks. About24.5 MB pruned; one current native
+  carrier plus verified source deltas retained. Protected D3D work untouched.
 - Operator priority is now **large functions first**; park further input-helper
   work. Complete ECL Run7020 improves from139 to28 ordinary diagnostic
   differences (6236/6264), with all60 relative destinations and88 selector bytes
@@ -933,31 +954,30 @@ in ECL Run, ANM ExecuteScript, Enemy dispatch or a similarly important owner.
 Small prerequisites are allowed only to support that selected major owner.
 Keep parked FORMAT, radial and sample-loader spelling controls parked.
 
-## Active large-owner ANM checkpoint (2026-10-15)
+## Active large-owner ANM checkpoint (2026-10-20)
 
-Fresh ExecuteScript baseline was 9900/9964 with79/92 target-sized groups, not
-the earlier historical9964/84-group checkpoint. Two target-backed changes are
-retained: mode9 calls now bind the established script polar owner, and the
-F_SET_RANDOM branches decode operands before selecting each concrete RNG
-receiver. The latter recovers the complete130-byte group and removes the
-unsupported RNG-pointer lifetime across GetFloatVar.
+The current complete-owner evidence is
+[Float2 construction and UV storage](evidence/anm-float2-storage/README.md).
+Target constructor/materialization evidence supports the retained SCALE_TIME
+change. The old C2620 failure concerned using one constructor-bearing math type
+inside vertex UV's anonymous union; distinct raw UV storage resolves that source
+constraint. Old by-value factory9980/frame104 and prior frameF8 diagnostics are
+historical, not the current source. Do not repeat rejected duration declaration/
+branch spellings, value-return operators, interleaved operand decoding, whole
+scale copies, raw flag OR, captured flip flags, live duration reads, evaluator
+by-value or in-place updates without new evidence. In particular, the interleaved
+model's90 same-sized groups/gap2 changes the target call order and is rejected.
 
-Two cold diagnostics and independent review reproduce9948/9964 full owner,
-9572/9588 pre-table span,0xF8 vs target0xFC frame,94 selectors/92 groups in
-order,83 target-sized groups and6331/8000 case-aligned comparable bytes.
-Full-owner comparison remains1212/8564 comparable (1386 raw); zero exact credit.
-Nine size gaps remain: opcode61 +1,48 +9,63 +1,58 -3,60 -14,27 -9,9 +9,
-11 -9,2 -1. Next bounded hypothesis is SCALE_TIME60 aggregate materialization:
-target preserves decodedY separately, retainsX on x87, then builds/copies XY.
-Do not blindly restore older rejected scalar/spelling controls.
-
-SCALE_TIME follow-up controls are now parked: a natural constructor on the
-existing Float2 failed VC7 C2620 because of its vertex-union use. A constructor-
-free by-value factory compiled but introduced an extra aggregate copy, frame
-0x104, owner9980/9964,81 same-sized groups and6073/8008 case-aligned matches.
-Both controls are reverted. Retain the reviewed9948-byte/83-group source.
-Select a fresh major-owner structural/semantic gap rather than extend this
-aggregate spelling search.
+The active source is9964/frameFC with89 same-sized groups and gap14, still
+nonexact. A final raw comparison finds a concrete next lead: target Float2
+mode7 snapshots the left pair before addition; Hermite doubles t first and
+multiplies final tangent/initial tangent/final/initial in that physical order.
+Current named locals evaluate in the opposite order with extra copies. Natural
+nested vector expressions and a materialized left operand are untested combined
+hypotheses; by-value API alone was already rejected. Duration phi allocation
+and common copy/flag scheduling also remain open. Source spelling and original
+return interface are not established by Ghidra's pointer output. Only the necessary graph and
+related canonical recipes are replayed. Large owners remain the priority.
 
 ## Enemy major-owner laser prerequisite checkpoint (2026-10-15)
 

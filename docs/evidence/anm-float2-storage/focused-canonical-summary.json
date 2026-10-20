@@ -1,0 +1,52 @@
+{
+  "result": "exact",
+  "unit_count": 2,
+  "artifact_count": 1,
+  "matched_bytes": 560,
+  "scope": "Necessary existing one-TU canonical StartScaleInterpolation and GetFloatVar recipes; no recipe migration or new credit",
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL"
+  ],
+  "source": "src/AnmManager.cpp",
+  "build_returncode": 0,
+  "canonical_manifest_sha256": "110592e663358fa37e891452766ebe4195b1856a431d45aa9484524a71aa4087",
+  "units": [
+    {
+      "unit": "anm-start-scale-interpolation",
+      "result": "exact",
+      "symbol": "?StartScaleInterpolation@AnmVmView@@QAEXPBUAnmFloat2View@@0HE@Z",
+      "target_address": "0x0041AB70",
+      "size": 136,
+      "matched_bytes": 136,
+      "extent_source": "pdb-section-contribution",
+      "pdb_guid": "7650f228d57fa143abf0f8966d67c91f",
+      "pdb_age": 1,
+      "image_sha256": "b976e4aef186e8ae3ef9cd78ee17aea4ab4cb4b050c2c1eccf10721802627369",
+      "normalization_complete": true,
+      "bound_fields": 1
+    },
+    {
+      "unit": "anm-get-float-var",
+      "result": "exact",
+      "symbol": "?GetFloatVar@AnmVmView@@QAEMM@Z",
+      "target_address": "0x0043EAC0",
+      "size": 424,
+      "matched_bytes": 424,
+      "extent_source": "pdb-section-contribution",
+      "pdb_guid": "7650f228d57fa143abf0f8966d67c91f",
+      "pdb_age": 1,
+      "image_sha256": "b976e4aef186e8ae3ef9cd78ee17aea4ab4cb4b050c2c1eccf10721802627369",
+      "normalization_complete": true,
+      "bound_fields": 44
+    }
+  ],
+  "bound_fields": 45
+}

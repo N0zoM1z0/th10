@@ -3482,3 +3482,55 @@ not an uninitialized pointer. Neither suite establishes full opcode semantics,
 original/native execution or malformed-input safety. Exact numerator and owned
 byte denominator stay unchanged; large-owner, product/runtime and later gates
 remain open.
+
+
+### 2026-10-20: Complete ANM Float2 construction and UV storage
+
+The [new complete-owner checkpoint](evidence/anm-float2-storage/README.md)
+supersedes the old constructor C2620 blockade and frameF8 diagnostic. Vertex
+UV has raw x/y words at14/18 in a1C-byte record; its anonymous union need not
+contain the same maintained class as math Float2. A separate raw storage view
+preserves aliases/size/offsets and permits ordinary empty/two-float math
+constructors. Original type identity and production TU remain hypotheses.
+UV separation and constructors alone are code-neutral. Explicit SCALE_TIME
+value construction recovers target Y/X operand lifetimes and first79 interval
+bytes, plus targetFC frame and9964 complete extent (9588 pre-table bytes).
+
+Two complete independent11-input/four-TU /GL /GS colds reproduce89/92 target-
+sized groups, absolute length gap14 and7184/7995 aligned comparable matches;
+fresh unchanged HEAD2cf915c has9948/F8,84 groups/gap56 and6492/8000. Remaining
+unequal intervals61(+1),60(-7),2(+6) include the common tail and internal
+alignment in interval2. First-difference alignment and total size grant no
+partial exact credit. Whole-owner comparison remains1846/8564. Nine complete
+existing guards preserve2670 bytes/all151 fields in both images. Current Float2
+Eval653/652 and frame28/20 supersede ANM-034's historical656-byte diagnostic.
+The only target caller supplies stack output at4410C0; output-buffer semantics
+do not prove the original source return spelling.
+
+Named/cached duration variants are neutral; interleaving duration between Y/X
+obtains gap2 but contradicts the actual call order and is rejected. Decoded
+scalar construction regresses the parent; constructor-return operators shrink
+the helper to575; by-value Eval grows it to685; in-place updates shrink it to615.
+Whole-scale copies/raw flag OR do not recover target update scheduling. Captured
+flip flags and live instruction duration regress other bytes/groups. All these
+controls are restored. No new exact or denominator credit; product/runtime and
+later gates stay open. The transition host's range helper/timer/viewport are
+unchanged; only their reviewed whole-input pins are refreshed, with strict
+normalization and rejection retained.
+
+### 2026-10-20: ECL Run residual controls remain negative
+
+Eighteen further controls against the frozen HEAD2cf915c two-TU source retain
+or regress Run's28 ordinary differences. Broad/shared math locals, typed payload
+views, percent-loop/index spelling, captured thread/spawn/sine values, mutable
+bitwise operands, unsigned raw negation and moving/splitting stack definitions
+provide no improvement. Removing forced inlining from the pre-existing Pop
+wrappers outlines the body and regresses the parent; no new forced attributes
+are introduced. Adding the actual ReadRawFloatArgument412AA0/26 adapter's
+EnemyEclDispatcher TU with its target-backed /GS cookie adds one difference;
+it does not repair Run's register selection or establish that adapter exact.
+All controls and graph changes are restored, with zero exact credit. See
+[scoped results](evidence/ecl-run-disabled-trace/residual-controls.json).
+These are historical frozen-source observations: the subsequent ANM header
+change invalidates that ECL cache for current-source replay. Do not reuse it
+without checking every recursive input or rebuilding the necessary graph.

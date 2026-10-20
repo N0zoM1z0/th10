@@ -1,0 +1,23 @@
+{
+  "ci_returncode": 0,
+  "ci_steps": 95,
+  "ci_log_sha256": "b10f8d5650fa44af7e049dca0086bbdf1bbc7a7b6e1a72a9af78b8502a08dd02",
+  "target_independent_ci": "passed; no source or config mutation during run",
+  "source_and_carrier_pins": "all11 project source inputs and retained cold artifacts checked after final source restoration",
+  "focused_canonical": "2 existing units,1 one-TU cold artifact,560 bytes/all45 fields exact",
+  "same_image_guards": "9 complete units,2670 bytes/all151 fields exact in each of2 complete independent four-TU colds",
+  "target_table": "94 entries/92 physical destinations/source cases; check passed",
+  "toolchain_declarations": "passed",
+  "tracking": "1775 candidates/1074 mappings/1202 exact; passed",
+  "progress": "regenerated with no credit change",
+  "post_ci_changes": "documentation only; focused documentation/whitespace checks rerun",
+  "cleanup": {
+    "before_bytes": 25829039,
+    "after_bytes": 1332483,
+    "freed_bytes": 24496556,
+    "source_snapshots_replaced_with_verified_deltas": 47,
+    "removed_native_control_directories": 34,
+    "retained_native_carrier": "build/gpt-6.1-sol/th10-anm-float2-storage-20261020/retained-cold2",
+    "protected": "Pre-existing docs/evidence/d3d-adapter-format untouched; prior ECL checkpoint carrier untouched"
+  }
+}

@@ -1,0 +1,1202 @@
+{
+  "acceptance_authority": "none; diagnostic complete-owner source checkpoint with zero new exact credit",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "2cf915c813dfb13fa0d711eee26a6f66a9274a0a",
+  "controls": [
+    {
+      "label": "baseline",
+      "owner_size": 9948,
+      "target_size": 9964,
+      "frame": "0xf8",
+      "whole_owner_comparable_matches": 1312,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": -16,
+      "case_aligned": {
+        "matched_comparable_bytes": 6492,
+        "comparable_bytes": 8000,
+        "absolute_case_gap_delta": 56,
+        "same_sized_cases": 84,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            48
+          ],
+          "candidate_size": 180,
+          "target_size": 171,
+          "gap_delta": 9
+        },
+        {
+          "opcodes": [
+            63
+          ],
+          "candidate_size": 204,
+          "target_size": 203,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 139,
+          "target_size": 153,
+          "gap_delta": -14
+        },
+        {
+          "opcodes": [
+            27
+          ],
+          "candidate_size": 125,
+          "target_size": 134,
+          "gap_delta": -9
+        },
+        {
+          "opcodes": [
+            9
+          ],
+          "candidate_size": 86,
+          "target_size": 77,
+          "gap_delta": 9
+        },
+        {
+          "opcodes": [
+            11
+          ],
+          "candidate_size": 77,
+          "target_size": 86,
+          "gap_delta": -9
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1437,
+          "target_size": 1441,
+          "gap_delta": -4
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+      "primary_sha256": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b"
+    },
+    {
+      "label": "uv-storage",
+      "owner_size": 9948,
+      "target_size": 9964,
+      "frame": "0xf8",
+      "whole_owner_comparable_matches": 1312,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": -16,
+      "case_aligned": {
+        "matched_comparable_bytes": 6492,
+        "comparable_bytes": 8000,
+        "absolute_case_gap_delta": 56,
+        "same_sized_cases": 84,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            48
+          ],
+          "candidate_size": 180,
+          "target_size": 171,
+          "gap_delta": 9
+        },
+        {
+          "opcodes": [
+            63
+          ],
+          "candidate_size": 204,
+          "target_size": 203,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 139,
+          "target_size": 153,
+          "gap_delta": -14
+        },
+        {
+          "opcodes": [
+            27
+          ],
+          "candidate_size": 125,
+          "target_size": 134,
+          "gap_delta": -9
+        },
+        {
+          "opcodes": [
+            9
+          ],
+          "candidate_size": 86,
+          "target_size": 77,
+          "gap_delta": 9
+        },
+        {
+          "opcodes": [
+            11
+          ],
+          "candidate_size": 77,
+          "target_size": 86,
+          "gap_delta": -9
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1437,
+          "target_size": 1441,
+          "gap_delta": -4
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "d630fe670b7c335069aa0536d662514ac743549a593dd623ee29ce26330b91ef",
+      "primary_sha256": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b"
+    },
+    {
+      "label": "math-ctor",
+      "owner_size": 9948,
+      "target_size": 9964,
+      "frame": "0xf8",
+      "whole_owner_comparable_matches": 1312,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": -16,
+      "case_aligned": {
+        "matched_comparable_bytes": 6492,
+        "comparable_bytes": 8000,
+        "absolute_case_gap_delta": 56,
+        "same_sized_cases": 84,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            48
+          ],
+          "candidate_size": 180,
+          "target_size": 171,
+          "gap_delta": 9
+        },
+        {
+          "opcodes": [
+            63
+          ],
+          "candidate_size": 204,
+          "target_size": 203,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 139,
+          "target_size": 153,
+          "gap_delta": -14
+        },
+        {
+          "opcodes": [
+            27
+          ],
+          "candidate_size": 125,
+          "target_size": 134,
+          "gap_delta": -9
+        },
+        {
+          "opcodes": [
+            9
+          ],
+          "candidate_size": 86,
+          "target_size": 77,
+          "gap_delta": 9
+        },
+        {
+          "opcodes": [
+            11
+          ],
+          "candidate_size": 77,
+          "target_size": 86,
+          "gap_delta": -9
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1437,
+          "target_size": 1441,
+          "gap_delta": -4
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b"
+    },
+    {
+      "label": "scale-value-ctor",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7184,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "c462ad38791184fa53205061019f760dcb46c4574f8d40c177d458702562b2eb"
+    },
+    {
+      "label": "value-operators",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7184,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 575,
+      "float2_evaluator_comparable_matches": 213,
+      "math_header_sha256": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+      "primary_sha256": "c462ad38791184fa53205061019f760dcb46c4574f8d40c177d458702562b2eb"
+    },
+    {
+      "label": "scale-duration",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7184,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "0445af819f95a03a4c3c2a2a2eb49fba0cbca818eaae0aa544bd82d9a9f780db"
+    },
+    {
+      "label": "duration-branches",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7184,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "45da362343691da9a0a27cc8734ac9babe8f0f3476a46c666d22de18eaa74100"
+    },
+    {
+      "label": "scale-interleaved",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1976,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7183,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1440,
+          "target_size": 1441,
+          "gap_delta": -1
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "8b9b9312edc649a3b0d1eb2bb6a3c3cba96b033c537d896381e2116d0b3101bd"
+    },
+    {
+      "label": "scale-decoded-values",
+      "owner_size": 9980,
+      "target_size": 9964,
+      "frame": "0x100",
+      "whole_owner_comparable_matches": 1267,
+      "whole_owner_comparable_bytes": 8580,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 16,
+      "case_aligned": {
+        "matched_comparable_bytes": 6942,
+        "comparable_bytes": 8004,
+        "absolute_case_gap_delta": 34,
+        "same_sized_cases": 86,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            48
+          ],
+          "candidate_size": 180,
+          "target_size": 171,
+          "gap_delta": 9
+        },
+        {
+          "opcodes": [
+            63
+          ],
+          "candidate_size": 204,
+          "target_size": 203,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 158,
+          "target_size": 153,
+          "gap_delta": 5
+        },
+        {
+          "opcodes": [
+            17
+          ],
+          "candidate_size": 123,
+          "target_size": 132,
+          "gap_delta": -9
+        },
+        {
+          "opcodes": [
+            31
+          ],
+          "candidate_size": 98,
+          "target_size": 89,
+          "gap_delta": 9
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "02b46907bd19dceba6d1d39c4ef93fe97cb16b258698a97fe9abb5c8f9dd1e81"
+    },
+    {
+      "label": "whole-scale-copy",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7186,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "f249c8d5ab70b1e26c237396ecfb599b64abbb68776d4ca0ec858f389432847b"
+    },
+    {
+      "label": "scale-copy-raw-flag",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7186,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "d0f63278b0e1ee89f41bbe4eaf4448d4a94c6a8831c6aa54ff179642accd30e1"
+    },
+    {
+      "label": "flip-captured-flags",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1838,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7176,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "a0503a7574307e28ce5e9229f3956203480bff226ec3eb4cfd10c4b6bc9ff394"
+    },
+    {
+      "label": "scale-live-duration",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1760,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7107,
+        "comparable_bytes": 7999,
+        "absolute_case_gap_delta": 10,
+        "same_sized_cases": 88,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 157,
+          "target_size": 153,
+          "gap_delta": 4
+        },
+        {
+          "opcodes": [
+            67
+          ],
+          "candidate_size": 74,
+          "target_size": 75,
+          "gap_delta": -1
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1437,
+          "target_size": 1441,
+          "gap_delta": -4
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "725f625e87a07c0dcfd8c128769d5d276761cc4c82b860e4671d8b2a44adbaa3"
+    },
+    {
+      "label": "value-result",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7186,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 685,
+      "float2_evaluator_comparable_matches": 216,
+      "math_header_sha256": "95dc68e218be63128cf2ae2db3f6b2ca4e8a9d2f868da1bc0928974e4bddce43",
+      "primary_sha256": "66c61932c3510e23f59c23dc01fbebb85ad36d5e4c1026bc9325de116724cd02"
+    },
+    {
+      "label": "float2-inplace",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7184,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 615,
+      "float2_evaluator_comparable_matches": 202,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "e977cac409abb51a3a0099ae997f63978f057a7acf6aa776018b56c190e7eb45"
+    }
+  ],
+  "cold_builds": [
+    {
+      "label": "retained-cold1",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7184,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "c462ad38791184fa53205061019f760dcb46c4574f8d40c177d458702562b2eb",
+      "source_sha256": {
+        "src/AnmManager.cpp": "c462ad38791184fa53205061019f760dcb46c4574f8d40c177d458702562b2eb",
+        "src/AnmManager.hpp": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "artifact_sha256": {
+        "object": "7b8a4ae60d8c8d88ac4d3444b5e8615b9039670ffdcddf8e222f44d2755b6f06",
+        "image": "90bb64071b2ea80a658164a5fc1a962a4fcb0c6b20d6adcf74cdea29f67c4532",
+        "map": "7813fda2a2a855f3c61048ca30ca88b5fd58251f3397957e4491641f0889a930",
+        "pdb": "124589db12cc99936f9d3a03bbe829f0b81395fba4c73fd5ca3f0072d290b74a"
+      },
+      "guards": {
+        "complete_bytes": 2670,
+        "bound_fields": 151,
+        "units": [
+          {
+            "unit": "anm-vm-initialize-private",
+            "result": "exact",
+            "size": 273,
+            "matched_bytes": 273
+          },
+          {
+            "unit": "anm-setup-vertex-buffer",
+            "result": "exact",
+            "size": 472,
+            "matched_bytes": 472
+          },
+          {
+            "unit": "anm-start-primary-alpha-interpolation",
+            "result": "exact",
+            "size": 130,
+            "matched_bytes": 130
+          },
+          {
+            "unit": "anm-get-int-var",
+            "result": "exact",
+            "size": 144,
+            "matched_bytes": 144
+          },
+          {
+            "unit": "anm-get-float-var",
+            "result": "exact",
+            "size": 424,
+            "matched_bytes": 424
+          },
+          {
+            "unit": "anm-get-int-var-ptr",
+            "result": "exact",
+            "size": 132,
+            "matched_bytes": 132
+          },
+          {
+            "unit": "anm-get-float-var-ptr",
+            "result": "exact",
+            "size": 156,
+            "matched_bytes": 156
+          },
+          {
+            "unit": "anm-start-scale-interpolation",
+            "result": "exact",
+            "size": 136,
+            "matched_bytes": 136
+          },
+          {
+            "unit": "anm-initialize-pulsing-radial-trail",
+            "result": "exact",
+            "size": 803,
+            "matched_bytes": 803
+          }
+        ]
+      }
+    },
+    {
+      "label": "retained-cold2",
+      "owner_size": 9964,
+      "target_size": 9964,
+      "frame": "0xfc",
+      "whole_owner_comparable_matches": 1846,
+      "whole_owner_comparable_bytes": 8564,
+      "normalization_complete": true,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7184,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 14,
+        "same_sized_cases": 89,
+        "normalization_complete": true
+      },
+      "unequal_intervals": [
+        {
+          "opcodes": [
+            61
+          ],
+          "candidate_size": 53,
+          "target_size": 52,
+          "gap_delta": 1
+        },
+        {
+          "opcodes": [
+            60
+          ],
+          "candidate_size": 146,
+          "target_size": 153,
+          "gap_delta": -7
+        },
+        {
+          "opcodes": [
+            2
+          ],
+          "candidate_size": 1447,
+          "target_size": 1441,
+          "gap_delta": 6
+        }
+      ],
+      "float2_evaluator_size": 653,
+      "float2_evaluator_comparable_matches": 212,
+      "math_header_sha256": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+      "primary_sha256": "c462ad38791184fa53205061019f760dcb46c4574f8d40c177d458702562b2eb",
+      "source_sha256": {
+        "src/AnmManager.cpp": "c462ad38791184fa53205061019f760dcb46c4574f8d40c177d458702562b2eb",
+        "src/AnmManager.hpp": "c8302ce9f931cde66dc148367cc044442cfa5284c3cab55133a2148fbc63c484",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "artifact_sha256": {
+        "object": "7dc41347d8064eda2d55bc475866dabd91ec13b5ce746dbb0b1f575563065db6",
+        "image": "22071dd6ffef2398c501d1362337db087af5792a13f9bb701d1aa944b7888cfc",
+        "map": "900110dc0c93ab677564df8cc8f175d344ff6e615f772fe19b2d8fb05b89b645",
+        "pdb": "73fd129bd097a51dd7e8932c1d74c4956d4342fe81970bb788b6ee8d92a9a37a"
+      },
+      "guards": {
+        "complete_bytes": 2670,
+        "bound_fields": 151,
+        "units": [
+          {
+            "unit": "anm-vm-initialize-private",
+            "result": "exact",
+            "size": 273,
+            "matched_bytes": 273
+          },
+          {
+            "unit": "anm-setup-vertex-buffer",
+            "result": "exact",
+            "size": 472,
+            "matched_bytes": 472
+          },
+          {
+            "unit": "anm-start-primary-alpha-interpolation",
+            "result": "exact",
+            "size": 130,
+            "matched_bytes": 130
+          },
+          {
+            "unit": "anm-get-int-var",
+            "result": "exact",
+            "size": 144,
+            "matched_bytes": 144
+          },
+          {
+            "unit": "anm-get-float-var",
+            "result": "exact",
+            "size": 424,
+            "matched_bytes": 424
+          },
+          {
+            "unit": "anm-get-int-var-ptr",
+            "result": "exact",
+            "size": 132,
+            "matched_bytes": 132
+          },
+          {
+            "unit": "anm-get-float-var-ptr",
+            "result": "exact",
+            "size": 156,
+            "matched_bytes": 156
+          },
+          {
+            "unit": "anm-start-scale-interpolation",
+            "result": "exact",
+            "size": 136,
+            "matched_bytes": 136
+          },
+          {
+            "unit": "anm-initialize-pulsing-radial-trail",
+            "result": "exact",
+            "size": 803,
+            "matched_bytes": 803
+          }
+        ]
+      }
+    }
+  ],
+  "focused_canonical_replay": "See focused-canonical-summary.json; only StartScaleInterpolation and GetFloatVar, sharing one one-TU cold artifact.",
+  "target_review": {
+    "disk_target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "mapped_text_start": "0x00401000",
+    "mapped_text_end_inclusive": "0x00465A80",
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "read_only_ghidra_transcript_sha256": "a0129dac6c67ab567e9e722047b794d199a8ce8db943066aa0e31a1cfcd9b93d",
+    "execute_script": {
+      "address": "0x0043EE30",
+      "size": 9964,
+      "pre_table_span": 9588,
+      "frame": "0xFC",
+      "table_address": "0x004413A4",
+      "table_bytes": 376,
+      "selectors": 94,
+      "physical_destinations": 92,
+      "internal_alignment": [
+        "0x004411C3..0x004411CF",
+        "0x004413A3"
+      ]
+    },
+    "float2_evaluator": {
+      "address": "0x00441AD0",
+      "size": 652,
+      "frame": "0x20",
+      "receiver": "ESI",
+      "output": "EDI",
+      "return": "EAX buffer pointer",
+      "direct_caller": "0x004410C0"
+    },
+    "type_role_limit": "UV data offsets and Float2 value lifetimes are target facts; the maintained type separation and original class/TU/return spelling remain hypotheses.",
+    "float2_followup_observations": {
+      "raw_target_mode7": "0x441BA8..0x441BD8 snapshots initial XY at stack+8/+C before adding final; the current native member operator reads initial directly. Original parameter passing/operator identity remains unknown.",
+      "raw_target_Hermite": "0x441C50 first forms doubled t, then adds1 and subtracts doubled t from3 at0x441C71. Current source spells1+t+t and3-t-t; its native output has different x87 ordering.",
+      "raw_target_weighted_values": "0x441C90..0x441CC7 multiplies final tangent, initial tangent, final and initial in that physical order, retains some values on x87 and then sums. The current source materializes four named vectors in the opposite order.",
+      "bounded_next_hypothesis": "Natural nested vector expressions and one materialized left operand may explain target lifetime/order and frame0x20. A by-value API alone was already rejected at685 bytes; combined expression/API hypotheses are untested. No return spelling, rounding counterexample or exactness is established."
+    }
+  }
+}

@@ -64,6 +64,13 @@ typedef char AnmFloat4ViewSizeIs10[
 
 struct AnmFloat2View
 {
+    AnmFloat2View() {}
+    AnmFloat2View(float x, float y)
+    {
+        this->x = x;
+        this->y = y;
+    }
+
     AnmFloat2View operator-(const AnmFloat2View &other) const
     {
         AnmFloat2View result;
@@ -880,6 +887,15 @@ void __fastcall AnmRemoveChainElement(AnmChainElementView *element, void *chain)
 void __fastcall AnmLoadedSetScript(void *anm, AnmVmView *vm, int scriptIndex);
 void __fastcall AnmReleaseResource(void *resource);
 
+struct AnmTextureUvView
+{
+    float x;
+    float y;
+};
+
+typedef char AnmTextureUvViewSizeIs08[
+    (sizeof(AnmTextureUvView) == 0x08) ? 1 : -1];
+
 struct AnmRenderVertexView
 {
     float x;
@@ -893,7 +909,7 @@ struct AnmRenderVertexView
     };
     union
     {
-        AnmFloat2View uv;
+        AnmTextureUvView uv;
         struct
         {
             float u;
@@ -904,6 +920,10 @@ struct AnmRenderVertexView
 
 typedef char AnmRenderVertexViewSizeIs1C[
     (sizeof(AnmRenderVertexView) == 0x1c) ? 1 : -1];
+typedef char AnmRenderVertexUvOffsets[
+    (offsetof(AnmRenderVertexView, uv) == 0x14 &&
+     offsetof(AnmRenderVertexView, u) == 0x14 &&
+     offsetof(AnmRenderVertexView, v) == 0x18) ? 1 : -1];
 
 struct PulsingRadialTrailDataView
 {

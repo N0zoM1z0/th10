@@ -1,0 +1,369 @@
+{
+  "acceptance_authority": "none; historical frozen-source rejected controls, no adopted ECL source change or exact credit",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_scope": "HEAD 2cf915c813dfb13fa0d711eee26a6f66a9274a0a before the subsequent ANM Float2 header change; this is not a current-source ECL cache",
+  "baseline": {
+    "candidate_size": 7020,
+    "target_size": 7020,
+    "matched_comparable_bytes": 6236,
+    "comparable_bytes": 6264,
+    "ordinary_differences": 28,
+    "normalization_complete": false
+  },
+  "controls": [
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6232,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "shared-math-values",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "e31daf24b2ede29eaaa027bf26817fcb4c72bb6c7c06901017e75c685b3d0f44",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "format-for-lifetime",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "0c820d8fec088ca923bc8b9ec43b4fc3a7d89b5fb0e3fd2e40bbb1bfb1f10892",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6235,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "shared-second-operand",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "239777fc329a2091958e2013e4c03c26a37f08b77c10f1fda1128aa092bc3cc1",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6235,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "real-value-callers",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "18d7a97081cf585c2f3603aa24ac47cbed9339bd00fde2892d736f82af41f59b",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp",
+        "src/EnemyEclDispatcher.cpp"
+      ],
+      "support_profiles": {
+        "src/EnemyEclDispatcher.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ]
+      },
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6233,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "typed-operands",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "8e4f8e38a4eeb8d874367d4849d9e8d64cea2cf576970bd682279639f1764092",
+        "src/EclVm.hpp": "6646a5051a8c73d66cf38b0eef3b619b57ac963bf43713e01dda6720f783d22f"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "unsigned-format-index",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "6c71aec71fadd2003ca2412fc5001e123f155a6e0cf4ee670cc59ea580404483",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "thread-context-local",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "66ed2bd55d341effcefc7c2d64cfe9a0d1d715885d112c0ae5433915d9821d0d",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "mutable-bitwise-or",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "2d48340b4627b6cd95eb92c24bf1c05673f1418e22f160cac2478a8c6c6a6681",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "raw-negation-bits",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "bc58861cbe654d118302e8ed8b0c729cf070b2163a602df161d7c08439cd32be",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "named-sine-value",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "912e50bec2d456821ca4b6da1081175bd1d0084518484a64e4a66798e995cda7",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "typed-helper-views",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "6c49b6b569f2d4964193695a9d941e4fa5b79b2fa28b4f08490cc291c1ddd29f",
+        "src/EclVm.hpp": "6646a5051a8c73d66cf38b0eef3b619b57ac963bf43713e01dda6720f783d22f"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "stack-definitions-last",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "b048e47366d9512590448a867737e899aa3d313fd6baddcd7c85bd47c647dd28",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 4488,
+      "target_size": 7020,
+      "matched_comparable_bytes": 166,
+      "comparable_bytes": 6216,
+      "normalization_complete": false,
+      "label": "natural-inline-pop",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "4fdba8d0d347b550a11a7a620fbfb72bd1011d6c61f1b091ecbdcc45499d7820",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "spawn-raw-local",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "6f7dd44b03af4cd729740c087ae8168eaaefebf121e5a4e00c8bf992337a0988",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 4488,
+      "target_size": 7020,
+      "matched_comparable_bytes": 166,
+      "comparable_bytes": 6216,
+      "normalization_complete": false,
+      "label": "stack-last-natural-pop",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "9f414525c7286c1f0e21f37dc171fe0d89fcca75a9cfd2e8322eb3370d60abbe",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7036,
+      "target_size": 7020,
+      "matched_comparable_bytes": 1333,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "point-float-pair",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "aba30461783dce0ce264ccc39d8f94938d46e0c9be810f50182bf45fcae1fd58",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 7020,
+      "target_size": 7020,
+      "matched_comparable_bytes": 6236,
+      "comparable_bytes": 6264,
+      "normalization_complete": false,
+      "label": "split-stack",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "0e844cf772222cb6c155101742b4473f96e713fe3a122d751b4e1c37e20b9972",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp",
+        ".analysis/gpt-6.1-sol/th10-ecl-run-residual-20261020/EclVmStack.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    },
+    {
+      "candidate_size": 4488,
+      "target_size": 7020,
+      "matched_comparable_bytes": 166,
+      "comparable_bytes": 6216,
+      "normalization_complete": false,
+      "label": "split-stack-natural-pop",
+      "source_sha256": {
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/EclVm.cpp": "67f299369d56ee20a1bef91fa6af5782a33cfe7c1949e3b083285cd487680132",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551"
+      },
+      "support_sources": [
+        "src/Enemy.cpp",
+        ".analysis/gpt-6.1-sol/th10-ecl-run-residual-20261020/EclVmStack.cpp"
+      ],
+      "support_profiles": {},
+      "adopted": false
+    }
+  ],
+  "caller_review": {
+    "direct_Run_callers": [
+      "0x0044FD33",
+      "0x0044FD45"
+    ],
+    "host_Run_callers": [
+      "0x0040E0FE",
+      "0x0040E205"
+    ],
+    "additional_ReadFloatValue_caller": "0x00412AB2 in EnemyRuntimeView::ReadRawFloatArgument 0x00412AA0/26",
+    "support_GS_basis": "Enemy dispatcher 0x0040E770 has a cookie XOR EBP and frame0x2C4; primary EclVm/Enemy profiles stay /GL without /GS",
+    "adapter_exact": false,
+    "read_only_ghidra_transcript_sha256": "c6cacc2990b96868192f7d258f5b5ad7abc046f60fac9948d8e026fc0bcc5faa"
+  }
+}
