@@ -1,0 +1,29 @@
+{
+  "focused_native_replay": {
+    "new_functions": 2,
+    "new_bytes": 212,
+    "existing_guard_bytes": 79,
+    "independent_cold_builds": 2,
+    "all_owner_hashes_equal": true,
+    "recursive_inputs_unchanged": 14
+  },
+  "host": {
+    "script": "scripts/test-hint-load.py",
+    "result": "passed",
+    "strict_mutants_detected": 22,
+    "sanitizer": "undefined"
+  },
+  "ci": {
+    "script": "scripts/ci.py",
+    "result": "passed",
+    "steps": 97
+  },
+  "toolchain_check": "passed",
+  "tracking": "passed",
+  "generated_progress": "current",
+  "full_historical_exact_replay": false,
+  "cleanup": {
+    "owned_negative_build_directories": 7,
+    "removed_bytes": 5399291
+  }
+}

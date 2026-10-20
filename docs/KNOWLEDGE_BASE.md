@@ -3666,3 +3666,20 @@ fields and compares6992/7020 bytes, including the selector data's last undecoded
 byte via an explicit data-span declaration. Restored source/lifetime/profile
 controls have not closed those28 differences. Original/native runtime and
 later gates remain unvalidated.
+
+## 2026-10-20 Hint helper exact boundaries
+
+TH10 HintLookupValue4198C0/98 takes a name pointer in EDX and table/count on
+the stack. The actual LoadHintFile calls419D11/419D39 push those two values;
+both target exits use RET8. Ordinary static stdcall source allows VC7.1 LTCG
+to select this register/stack boundary and reproduces the complete98 bytes.
+The former cdecl candidate had identical body instructions except the return
+cleanup and consequent local branch displacement. This is compiler evidence
+for a natural candidate, not original declaration or production-TU identity.
+
+HintTrimWhitespace41A0A0/114 already matched from its maintained in-place
+space/tab/LF/CR source. Both helpers are qualified static MAP/PDB owners in
+the real two-TU LoadHintFile graph; two independent cold links are raw-equal,
+without address-field normalization. Existing ClearHintLists79/all2 fields
+also replays in both images. No whole-loader or native-runtime claim follows.
+[Reproduction and identities](evidence/hint-small-helpers/README.md).

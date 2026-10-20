@@ -32,9 +32,10 @@ The coherent dependency set is:
 | `0x00419040` | `ClearHintLists` | 79 | authored |
 
 Source presence does not change these origin classifications. Private helper
-register conventions are not forced into source. Loader/parser exact native code generation, original ownership declarations,
-and the wider lifecycle caller graph remain unresolved. The bounded cleanup
-unit below has separate canonical replay evidence.
+register conventions are not forced into source. Whole-loader exact native code
+generation, original ownership declarations, and the wider lifecycle caller
+graph remain unresolved. The bounded cleanup and two helper units below have
+separate canonical replay evidence.
 
 ## Observed storage and lifetime
 
@@ -167,3 +168,18 @@ Factory acceptance is checked separately against the committed snapshot;
 local replay and manifest registration alone are not an accepted receipt.
 The constructor's origin remains indeterminate. No native runtime, original
 translation-unit ownership, or entire-loader exactness follows from cleanup.
+
+## 2026-10-20 exact whitespace and lookup helpers
+
+Two fresh cold links in this same real loader graph reproduce the complete
+HintTrimWhitespace (114 bytes) and HintLookupValue (98 bytes) owners raw-equal.
+Qualified static MAP/PDB selection checks their actual contribution ownership;
+neither needs linkage normalization. ClearHintLists remains exact in both images.
+
+Whitespace source is unchanged. The lookup helper now uses an ordinary
+`__stdcall` declaration: target calls419D11/419D39 push table/count and pass name
+in EDX, and both target returns clean eight bytes. LTCG independently selects
+that private register argument from the three-argument declaration.
+The prior cdecl candidate differed only in return cleanup and its consequent
+local branch displacement. This does not establish the original declaration.
+See [complete helper evidence](evidence/hint-small-helpers/README.md).

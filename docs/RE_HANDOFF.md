@@ -12,7 +12,8 @@ experiments remain in Git, the linked evidence packs and
   `docs/evidence/d3d-adapter-format/` is independent, unadopted work; preserve it.
 - Use `scripts/repo-python`. Inspect `AGENTS.md`, [RE_WORKFLOW.md](RE_WORKFLOW.md)
   and [ORACLES.md](ORACLES.md) before target-dependent work.
-- Current operator-authorized checkpoints use `gpt-6-astra: ...`; do not push.
+- Current operator-authorized checkpoints use English `gpt-6.1-sol: ...`
+  messages and are pushed to `origin/main` after validation.
   The operator requests direct local tools, not Factory MCP. This session uses
   Bash and, when needed, read-only Ghidra headless.
 - Serialize native builds at nice10 or lower priority. Ghidra review uses
@@ -33,18 +34,28 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 ## Current checkpoint
 
-The operator has reopened reconstruction and requested complete exactness for
-ANM ExecuteScript, ECL Run and Enemy DispatchEclInstruction. This work is active;
+The operator has reopened reconstruction for both large and small functions,
+including ANM ExecuteScript, ECL Run and Enemy DispatchEclInstruction. This work is active;
 none of the three is exact yet. Re-evaluate old source/API assumptions against
 fresh target and compiler evidence. The first bounded changes and measurements
 are recorded in [large-owner call order](evidence/large-owner-call-order/README.md).
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
 candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
-1206 canonical exact functions overall. Authored exact is **370 functions,
-67505/273274 bytes (24.70%)**. The 224 mapped authored nonexact functions,
+1208 canonical exact functions overall. Authored exact is **372 functions,
+67717/273274 bytes (24.78%)**. The 222 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
+
+The latest bounded checkpoint closes HintTrimWhitespace41A0A0/114 and
+HintLookupValue4198C0/98 through the real LoadHintFile two-TU graph. Two
+independent cold builds reproduce both complete static owners raw-equal and
+retain ClearHintLists79/all2 fields. Natural stdcall lookup source recovers
+the target callee cleanup; whitespace source already matched. Host parser
+checks pass with22 strict mutants. See [helper proof](evidence/hint-small-helpers/README.md).
+Seven restored negative large-owner build directories were pruned (5,399,291
+bytes); their source controls and reports remain. The three large owners
+remain nonexact.
 
 The preceding checkpoint closes RGB Evaluate441600/820. Two independent
 five-TU /GL /GS canonical colds reproduce all17 target fields. Only the new
@@ -89,6 +100,8 @@ scripts/repo-python scripts/test-anm-rgb-interpolation.py
 scripts/repo-python scripts/report-anm-execute-table.py --check
 ```
 
+The latest operator instruction explicitly requests only necessary affected
+replays, serialized resource-conscious builds and periodic artifact cleanup.
 Replay only the necessary affected units; no full historical replay was run
 for this checkpoint. Existing guard recipes retain their original contexts;
 the RGB pack records explicit additional same-image guard overrides. The

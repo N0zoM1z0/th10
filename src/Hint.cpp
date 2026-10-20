@@ -233,7 +233,7 @@ static void HintSplitLine(const char *line, char *key, char *value)
 }
 
 // Target4198C0. An unmatched token selects value zero.
-static int HintLookupValue(const char *name, const HintNameValue *table, int count)
+static int __stdcall HintLookupValue(const char *name, const HintNameValue *table, int count)
 {
     for (int i = 0; i < count; ++i)
         if (strcmp(name, table[i].name) == 0)

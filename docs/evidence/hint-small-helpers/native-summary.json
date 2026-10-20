@@ -1,0 +1,221 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": {
+    "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/Hint.cpp": "5b153b7d14cbd2a6d77337158466fa69c860427a2e6b1affd196485e7b80d8fa",
+    "src/Hint.hpp": "34c36f65efd6b23091b07dd1e3ed87429a21fbea00c6492b9f7d3ef47de90f2f",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL"
+  ],
+  "support_sources": [
+    "src/FileSystem.cpp"
+  ],
+  "entry_symbol": "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z",
+  "cold_builds": [
+    {
+      "label": "cold1",
+      "directory": "build/gpt-6.1-sol/hint-small-exact-20261020/lookup-stdcall",
+      "artifact_sha256": {
+        "source.exe": "398742e6c28540b34b94f8478ef7e8d88f7b412cc0c30ee37e58e0dc2e23acca",
+        "source.map": "55d3ee8e24fb2bedaac22a51bb317b7cdfb971dfe5e9b6b099501544128b0118",
+        "source.pdb": "04266bfbe1f7b4a75aaaf3344246cd590e5aa6ede8dc18b337be8068dc4c32f4",
+        "source.ltcg.obj": "83c8037f83ff4c9bc5f6191e5416c324c7869d409dc526526028086c4fa3130c",
+        "support-00-FileSystem.ltcg.obj": "8f9cc9611b9306a92e4f2a2441f541916833596e89669abab492ed63c2970b29"
+      },
+      "owners": [
+        {
+          "unit": "hint-trim-whitespace",
+          "target_address": "0x0041A0A0",
+          "candidate_address": "0x00401AF0",
+          "size": 114,
+          "result": "exact",
+          "raw_equal": true,
+          "sha256": "d89633e4e144ce1a0e5bea319c03283d1159e93e689cb7c2a10c8c8aab609514",
+          "linkages": [],
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-small-exact-20261020\\lookup-stdcall\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2800
+          }
+        },
+        {
+          "unit": "hint-lookup-value",
+          "target_address": "0x004198C0",
+          "candidate_address": "0x00401CC0",
+          "size": 98,
+          "result": "exact",
+          "raw_equal": true,
+          "sha256": "475bd5c09fbd74f93594f3eb539435d5e72dbc3d6ba88097aac149b558ee6242",
+          "linkages": [],
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-small-exact-20261020\\lookup-stdcall\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 3264
+          }
+        },
+        {
+          "unit": "hint-clear-lists",
+          "target_address": "0x00419040",
+          "candidate_address": "0x00401D60",
+          "size": 79,
+          "result": "exact",
+          "raw_equal": false,
+          "sha256": "573b23c2b35798b0644d313c01d867571b4aae78350b9da5cbdd06ce04384438",
+          "linkages": [
+            {
+              "offset": "0x1E",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "??3@YAXPAX@Z",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0001",
+              "local": false,
+              "candidate_target": "0x00405004",
+              "target": "0x004524A1",
+              "addend": 0,
+              "target_encoded_value": "0x0003943F"
+            },
+            {
+              "offset": "0x38",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "??3@YAXPAX@Z",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0001",
+              "local": false,
+              "candidate_target": "0x00405004",
+              "target": "0x004524A1",
+              "addend": 0,
+              "target_encoded_value": "0x00039425"
+            }
+          ],
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        }
+      ]
+    },
+    {
+      "label": "cold2",
+      "directory": "build/match-linked/HintLoad",
+      "artifact_sha256": {
+        "source.exe": "bbcdc42cfb6acc1cf90c6686e997cd08bedb679e2f47e6652ce0503e30dfed5c",
+        "source.map": "7918c3cf88a6e277de5ea78648d110810601e01698add78f70d05d3cfc92c406",
+        "source.pdb": "4c074a43cd476647c45bbfcb60478dcfe7fc9a35693e6c42109177cc0ecb776d",
+        "source.ltcg.obj": "c68e5012808947e79b2b054a5dceca5521b054b91d60620ed4098170b5a7a59b",
+        "support-00-FileSystem.ltcg.obj": "03de2abcc3c56444cf112e647285e202c7be2ee911d2e8c3e17f919709a93bcd"
+      },
+      "owners": [
+        {
+          "unit": "hint-clear-lists",
+          "target_address": "0x00419040",
+          "candidate_address": "0x00401D60",
+          "size": 79,
+          "result": "exact",
+          "raw_equal": false,
+          "sha256": "573b23c2b35798b0644d313c01d867571b4aae78350b9da5cbdd06ce04384438",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x00405004",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0001",
+              "local": false,
+              "offset": "0x1E",
+              "symbol": "??3@YAXPAX@Z",
+              "target": "0x004524A1",
+              "target_encoded_value": "0x0003943F",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x00405004",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0001",
+              "local": false,
+              "offset": "0x38",
+              "symbol": "??3@YAXPAX@Z",
+              "target": "0x004524A1",
+              "target_encoded_value": "0x00039425",
+              "type": "REL32",
+              "width": 4
+            }
+          ],
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        },
+        {
+          "unit": "hint-trim-whitespace",
+          "target_address": "0x0041A0A0",
+          "candidate_address": "0x00401AF0",
+          "size": 114,
+          "result": "exact",
+          "raw_equal": true,
+          "sha256": "d89633e4e144ce1a0e5bea319c03283d1159e93e689cb7c2a10c8c8aab609514",
+          "linkages": [],
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintLoad\\source.ltcg.obj",
+            "pdb_source": "src/Hint.cpp",
+            "section_number": 1,
+            "section_offset": 2800,
+            "visibility": "static"
+          }
+        },
+        {
+          "unit": "hint-lookup-value",
+          "target_address": "0x004198C0",
+          "candidate_address": "0x00401CC0",
+          "size": 98,
+          "result": "exact",
+          "raw_equal": true,
+          "sha256": "475bd5c09fbd74f93594f3eb539435d5e72dbc3d6ba88097aac149b558ee6242",
+          "linkages": [],
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintLoad\\source.ltcg.obj",
+            "pdb_source": "src/Hint.cpp",
+            "section_number": 1,
+            "section_offset": 3264,
+            "visibility": "static"
+          }
+        }
+      ]
+    }
+  ],
+  "new_authored_exact_functions": 2,
+  "new_authored_exact_bytes": 212,
+  "guard_bytes": 79,
+  "guard_linkage_fields": 2,
+  "independent_owner_hashes_equal": true
+}

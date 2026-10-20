@@ -19583,6 +19583,40 @@ linkages = [
   { offset = 0x38, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
 ]
 
+[units.hint-trim-whitespace]
+artifact_kind = "linked-pe"
+owner_visibility = "static"
+source = "src/Hint.cpp"
+support_sources = ["src/FileSystem.cpp"]
+pdb_source = "src/Hint.cpp"
+output_dir = "build/match-linked/HintLoad"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z"
+functions = ["HintTrimWhitespace"]
+symbol = "?HintTrimWhitespace@@YAPADPAD@Z"
+target_address = 0x0041A0A0
+size = 114
+linkages = []
+
+[units.hint-lookup-value]
+artifact_kind = "linked-pe"
+owner_visibility = "static"
+source = "src/Hint.cpp"
+support_sources = ["src/FileSystem.cpp"]
+pdb_source = "src/Hint.cpp"
+output_dir = "build/match-linked/HintLoad"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z"
+functions = ["HintLookupValue"]
+symbol = "?HintLookupValue@@YGHPBDPBUHintNameValue@?A0xfca31efb@@H@Z"
+target_address = 0x004198C0
+size = 98
+linkages = []
+
 [units.hint-create-owner]
 artifact_kind = "linked-pe"
 source = "src/Hint.cpp"
