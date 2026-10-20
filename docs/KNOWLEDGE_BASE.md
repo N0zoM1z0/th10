@@ -3013,3 +3013,42 @@ time/renderer/allocation/I/O roles remain host limits. Native SDK declarations
 use the existing Main.hpp shield. Product/runtime, dual-Oracle semantic and
 port gates remain open. Pre-existing D3D evidence and the401100 boundary metadata
 discrepancy are untouched. See [the full scope and reproducible checks](evidence/replay-load/README.md).
+
+## 2026-10-20 Replay callback protocol and FPS exact closure
+
+All three replay callback entries use ECX owner, consistent with generic Chain
+fastcall dispatch. The replay-local cdecl callback pointer/declarations are
+corrected without changing the24-byte element layout. Four maintained source
+mappings recover the58-byte retained control and10/68/28 adapters; their origin
+remains indeterminate. The68-byte adapter uses runtime+58 bit4 and current
+input474E30 bit100, not the older vague behavior flag. Signed frameCounter%4!=0
+selects return6; other paths return1. An ordinary shared member expresses the
+58-byte retained logic. The wrapper remains62/68; result-local63 is rejected.
+The10-byte process adapter remains nonexact because native ESI differs from
+its target EDI receiver; no register annotation is added.
+
+The real28-byte draw adapter restores FPS's target private EDX receiver. Separate
+record exclusion/playback selection retain the two target mode checks and close
+the full182-byte body. Existing ReplayRuntimeState supplies slot477810/+58;
+removing the opaque duplicate game pointer does not establish complete data
+ownership or original types. Both bodies preserve FPS/format/threshold/position/
+color and fresh global ASCII reset. No dummy first register parameter is used.
+
+Two independent full18-TU /GL /GS /EHs colds freeze53 inputs and each strictly
+pass1112 complete bytes/all32 fields: new authored182/all7, indeterminate58/all2
+and28/all2, plus844 existing bytes/all21 fields including actual formatter85
+and the full allocation-EH-bound load181. Only182 authored/86 indeterminate
+credit is added, without origin, boundary or denominator change. Existing
+recipes remain and their shared replay carrier is refreshed. Save1444/1460 and
+draw961/955 stay nonexact; original partition and native product/runtime stay
+open.
+
+Actual callback/control/FPS host bodies, canonical runtime/type declarations
+and function-pointer calls cover NULL/runtime flags/modes/current versus pressed
+input, signed counter boundaries, draw suppression and process-return forwarding.
+ProcessFrame itself is an explicit host role, not target behavior proof. Positive
+ASan/UBSan/leak checks and17 exact named mutants pass, including three callback
+controls. Existing SDK/layout/prefill/time/I/O/renderer/queue seams remain.
+The affected GameManager teardown baseline consumes the canonical fastcall
+pointer typedef and passes. Pre-existing D3D evidence is untouched. See
+[the complete target, native and host scope](evidence/replay-callbacks/README.md).

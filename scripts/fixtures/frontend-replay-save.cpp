@@ -4,6 +4,7 @@
 #define __declspec(x)
 #include "FrontEnd.hpp"
 #include "ReplayManager.hpp"
+#include "ReplayChain.hpp"
 #include "InputState.hpp"
 #include "EnemySoundQueue.hpp"
 #include <algorithm>
@@ -70,7 +71,9 @@ AnmVmView::~AnmVmView() {}
 AsciiManagerView::AsciiManagerView() {}
 AsciiManagerView::~AsciiManagerView() {}
 size_t AsciiManagerView::GetSize() { return sizeof(*this); }
-struct GameManager {};static GameManager game;GameManager *g_GameManager=&game;
+#include "runtime.inc"
+static ReplayRuntimeState runtime;ReplayRuntimeState *g_ReplayRuntime=&runtime;
+static int processResult;int ReplayManager::ProcessFrame(){event("process-frame");return processResult;}
 static AsciiManagerView asciiA,asciiB;
 AsciiManagerView *g_AsciiManagerView=&asciiA;
 struct Text {AsciiManagerView *owner;AnmFloat3View position;unsigned int color;int shadow;std::string value;};
@@ -92,7 +95,7 @@ static void reset(int state=2) {
  std::strcpy(c.scoreEntryName,"        ");std::memset(profile,0,sizeof(profile));std::strcpy((char*)profile+0x1d878,"        ");
  std::memset(data,0,sizeof(data));g_ReplayManager=makeReplay();data[1].timestamp=12345;
  soundOwner={};otherSoundOwner={};std::fill(soundOwner.activeSoundIds,soundOwner.activeSoundIds+12,-1);std::fill(otherSoundOwner.activeSoundIds,otherSoundOwner.activeSoundIds+12,-1);for(int i=0;i<134;++i)g_EnemySoundCueMetadata[i].cueValue=i+500;
- g_FrontEndInput={};failLoad=false;readResult=0;g_GameManager=&game;g_FrontEndSelectedStage=g_FrontEndSelectedStageMirror=-1;g_FrontEndSelectedStageRecord=NULL;
+ g_FrontEndInput={};failLoad=false;readResult=0;runtime={};g_ReplayRuntime=&runtime;processResult=1;g_FrontEndSelectedStage=g_FrontEndSelectedStageMirror=-1;g_FrontEndSelectedStageRecord=NULL;
  asciiA.color=0xff123456;asciiA.drawShadow=3;asciiB.color=0xff654321;asciiB.drawShadow=7;g_AsciiManagerView=&asciiA;
  auxiliaryAddress=&c.difficultyAuxVmId.value;date={};date.tm_year=106;date.tm_mon=8;date.tm_mday=17;date.tm_hour=13;date.tm_min=4;
  texts.clear();events.clear();
@@ -159,7 +162,7 @@ static void suite() {
   CHECK((live.size()==2)==(status==0)&&has("destroy:2")==bool(status),"factory-failure-delete");
  }
  for(bool active:{false,true})for(int mode:{-1,0,1,2,7})for(int fps:{0,29,30,49,50,60,255}) {
-  reset();g_GameManager=active?&game:NULL;g_ReplayManager->mode=mode;g_ReplayManager->replayFps=fps;
+  reset();g_ReplayRuntime=active?&runtime:NULL;g_ReplayManager->mode=mode;g_ReplayManager->replayFps=fps;
   CHECK(g_ReplayManager->DrawFps()==1,"fps-result");bool visible=active&&mode==1;
   CHECK(texts.size()==(visible?1u:0u),"fps-gate");
   if(visible) {
@@ -173,6 +176,17 @@ static void suite() {
  after=[](const std::string&s){if(s=="text:1"){g_AsciiManagerView=&asciiB;g_ReplayManager->replayFps=77;}};
  CHECK(g_ReplayManager->DrawFps()==1,"fps-result");
  CHECK(texts.size()==1&&texts[0].value==" 29"&&asciiA.color==0xff5050ffu&&asciiB.color==0xffffffffu,"fps-current-ascii");
+ for(int result:{-1,0,1,6}) {reset();processResult=result;ReplayChainCallback callback=ReplayProcessFrameCallback;CHECK(callback(g_ReplayManager)==result&&events==std::vector<std::string>({"process-frame"}),"process-callback-forward");}
+ for(bool active:{false,true})for(unsigned flags:{0u,4u,8u})for(int mode:{-1,0,1,2})for(unsigned input:{0u,0x100u,0x200u})for(int counter:{-5,-4,-1,0,1,3,4,5}) {
+  reset();g_ReplayRuntime=active?&runtime:NULL;runtime.flags=flags;g_ReplayManager->mode=mode;g_ReplayManager->frameCounter=counter;g_FrontEndInput.current=input;g_FrontEndInput.pressed=0x100;
+  ReplayChainCallback callback=ReplayPlaybackFrameControlCallback;bool skip=active&&!(flags&4)&&mode==1&&(input&0x100)&&counter%4!=0;
+  CHECK(callback(g_ReplayManager)==(skip?6:1)&&events.empty(),"frame-callback-gates");
+ }
+ for(bool active:{false,true})for(unsigned flags:{0u,4u,8u})for(int mode:{0,1,2}) {
+  reset();g_ReplayRuntime=active?&runtime:NULL;runtime.flags=flags;g_ReplayManager->mode=mode;g_ReplayManager->replayFps=29;
+  ReplayChainCallback callback=ReplayDrawFpsCallback;CHECK(callback(g_ReplayManager)==1,"draw-callback-result");
+  CHECK(texts.size()==(active&&!(flags&4)&&mode==1?1u:0u),"draw-callback-gate");
+ }
  after={};while(!live.empty())delete live.begin()->first;
 }
 int main() {try {suite();}catch(Failure f) {after={};while(!live.empty())delete live.begin()->first;std::fprintf(stderr,"CHECK %s\n",f.label);return 1;}return 0;}

@@ -31,6 +31,21 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Replay FPS429A70 closes **182 new authored exact bytes**; retained control
+  429A30/58 and draw adapter42A430/28 add86 indeterminate exact bytes, with origin
+  unchanged. Actual callback/Chain ECX protocol corrects the replay-local cdecl
+  typedef. Shared current-input bit100/signed modulo logic is recovered; generic
+  behavior-flag wording was inaccurate. Real draw caller derives the private EDX
+  receiver; explicit record exclusion/playback selection preserves both target
+  mode checks. Two full18-TU /GL /GS /EHs colds freeze53 inputs and each pass1112
+  complete bytes/all32 fields, including844 existing bytes. Actual host bodies,
+  canonical typedef/runtime prefix, callback matrices and17 strict ASan/UBSan
+  mutants pass; ProcessFrame is an explicit lower host role. Both calc adapters
+  remain nonexact (process10/10 with ESI/EDI difference; control62/68). Result-
+  local63 is rejected/restored; no dummy args/forced attributes. Save1444/1460
+  and draw961/955 remain open. Next rotate to a larger owner or require new
+  private-ABI/dataflow evidence; do not repeat return-shape controls. See
+  [the complete protocol and proof scope](evidence/replay-callbacks/README.md).
 - Replay factory Load4296F0 closes **181 new authored exact bytes**. Seven target
   callers/two RET4 exits establish its maintained stdcall declaration; direct
   mode2/reader source removes the old normalization. Two independent full18-TU

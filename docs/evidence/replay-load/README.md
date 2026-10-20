@@ -6,6 +6,10 @@ protocol, and its body directly sets mode2 and calls the replay reader. It no
 longer routes through the shared initializer's error-result normalization.
 No register ABI, forced inlining, padding or target-byte source is introduced.
 
+The later [callback/FPS checkpoint](../replay-callbacks/README.md) closes FPS182
+and its28-byte draw adapter; the nonexact FPS discussion below describes the
+initial factory checkpoint. Its original proof remains valid at that scope.
+
 ## Independent target evidence
 
 The original Japanese1.00a executable is SHA-256

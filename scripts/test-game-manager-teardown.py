@@ -138,7 +138,7 @@ def audit_seams(root, source, fixture):
     fixture = fixture.replace('@FLOAT3_DECLARATION@', balanced(anm, 'struct AnmFloat3View\n', True))
     fixture = fixture.replace('@REPLAY_DECLARATIONS@', '\n'.join([
         'class ReplayManager;', balanced(replay, 'struct ReplayListNode\n', True),
-        'typedef int (*ReplayChainCallback)(ReplayManager *manager);',
+        next(line for line in replay_chain.splitlines() if line.startswith('typedef int (__fastcall *ReplayChainCallback)')),
         balanced(replay_chain, 'struct ReplayChainElement\n', True),
         'class ReplayManager { public: ReplayChainElement *updateChain; ReplayChainElement *drawChain; ReplayChainElement *playbackChain; ~ReplayManager(); };']))
     for marker, name in [('@GLOBALS_AND_BOUNDARIES@', 'game-teardown-globals.inc'),

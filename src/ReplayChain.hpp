@@ -5,7 +5,8 @@
 #include <stddef.h>
 
 // Existing ReplayManager.cpp declaration and assertions shared unchanged.
-typedef int (*ReplayChainCallback)(ReplayManager *manager);
+// TH10 chain dispatch and all three replay callback entries pass the owner in ECX.
+typedef int (__fastcall *ReplayChainCallback)(ReplayManager *manager);
 
 struct ReplayChainElement
 {

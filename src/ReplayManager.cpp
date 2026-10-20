@@ -1,5 +1,6 @@
 #include "Main.hpp"
 #include "ReplayChain.hpp"
+#include "InputState.hpp"
 
 #include "Decompress.hpp"
 #include "FileSystem.hpp"
@@ -112,9 +113,9 @@ void ReplayResetStageRuntime(Player *runtime);
 
 int ReplayAddToCalcChain(void *chainManager, ReplayChainElement *element, int priority);
 int ReplayAddToDrawChain(void *chainManager, ReplayChainElement *element, int priority);
-int ReplayProcessFrameCallback(ReplayManager *manager);
-int ReplayPlaybackFrameControlCallback(ReplayManager *manager);
-int ReplayDrawFpsCallback(ReplayManager *manager);
+int __fastcall ReplayProcessFrameCallback(ReplayManager *manager);
+int __fastcall ReplayPlaybackFrameControlCallback(ReplayManager *manager);
+int __fastcall ReplayDrawFpsCallback(ReplayManager *manager);
 
 ReplayStageState::ReplayStageState()
 {
@@ -507,39 +508,59 @@ int ReplayManager::ProcessFrame()
     return 1;
 }
 
-// Maintained shared pointer identity at target0x477810; no GameManager layout.
-struct GameManager;
-extern GameManager *g_GameManager;
+// TH10_REPLAY_FUNCTION: 0x00429A30 ReplayManager::ControlPlaybackFrames
+int ReplayManager::ControlPlaybackFrames()
+{
+    if (g_ReplayRuntime != NULL && mode == REPLAY_MANAGER_PLAYBACK &&
+        (g_FrontEndInput.current & 0x100) != 0 && frameCounter % 4 != 0)
+        return 6;
+    return 1;
+}
+
+// TH10_REPLAY_FUNCTION: 0x0042A3D0 ReplayProcessFrameCallback
+int __fastcall ReplayProcessFrameCallback(ReplayManager *manager)
+{
+    return manager->ProcessFrame();
+}
+
+// TH10_REPLAY_FUNCTION: 0x0042A3E0 ReplayPlaybackFrameControlCallback
+int __fastcall ReplayPlaybackFrameControlCallback(ReplayManager *manager)
+{
+    if (g_ReplayRuntime != NULL && (g_ReplayRuntime->flags & 4) != 0)
+        return 1;
+    return manager->ControlPlaybackFrames();
+}
+
+// TH10_REPLAY_FUNCTION: 0x0042A430 ReplayDrawFpsCallback
+int __fastcall ReplayDrawFpsCallback(ReplayManager *manager)
+{
+    if (g_ReplayRuntime != NULL && (g_ReplayRuntime->flags & 4) != 0)
+        return 1;
+    return manager->DrawFps();
+}
 
 // TH10_REPLAY_FUNCTION: 0x00429A70 ReplayManager::DrawFps
 int ReplayManager::DrawFps()
 {
-    if (g_GameManager != NULL)
+    if (g_ReplayRuntime != NULL && mode != REPLAY_MANAGER_RECORD &&
+        mode == REPLAY_MANAGER_PLAYBACK)
     {
-        switch (mode)
-        {
-        case REPLAY_MANAGER_RECORD:
-            break;
-        case REPLAY_MANAGER_PLAYBACK:
-        {
-            AnmFloat3View position(383.0f, 450.0f, 0.0f);
-            unsigned int color;
-            float fps = replayFps;
-            if (fps < 30.0f)
-                color = 0xff5050ffu;
-            else if (fps < 50.0f)
-                color = 0xffa0a0ffu;
-            else
-                color = 0xffffffffu;
-            g_AsciiManagerView->color = color;
-            g_AsciiManagerView->AddFormatText(&position, "%3d", replayFps);
-            g_AsciiManagerView->color = 0xffffffffu;
-            break;
-        }
-        }
+        AnmFloat3View position(383.0f, 450.0f, 0.0f);
+        unsigned int color;
+        float fps = replayFps;
+        if (fps < 30.0f)
+            color = 0xff5050ffu;
+        else if (fps < 50.0f)
+            color = 0xffa0a0ffu;
+        else
+            color = 0xffffffffu;
+        g_AsciiManagerView->color = color;
+        g_AsciiManagerView->AddFormatText(&position, "%3d", replayFps);
+        g_AsciiManagerView->color = 0xffffffffu;
     }
     return 1;
 }
+
 
 int ReplayManager::SaveReplay(const char *replayPath, const char *replayName)
 {

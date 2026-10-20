@@ -1038,3 +1038,7 @@ EndingTextVmView::LoadAnimation,0x0040C3C0,function
 FrontEndControllerView::UpdateReplaySave,0x00433570,function
 FrontEndControllerView::DrawReplaySave,0x00433B30,function
 ReplayManager::DrawFps,0x00429A70,function
+ReplayManager::ControlPlaybackFrames,0x00429A30,function
+ReplayProcessFrameCallback,0x0042A3D0,function
+ReplayPlaybackFrameControlCallback,0x0042A3E0,function
+ReplayDrawFpsCallback,0x0042A430,function

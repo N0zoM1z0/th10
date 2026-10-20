@@ -191,6 +191,7 @@ class ReplayManager
     void BeginStage();
     int ProcessFrame();
     int DrawFps();
+    int ControlPlaybackFrames();
 
     // Names below are maintained descriptions of target-observed roles. The
     // original member identifiers and physical data owner remain unproven.

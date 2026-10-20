@@ -24,6 +24,7 @@ def main():
         require(sum(i.size for i in instructions)==size,'incomplete dense decode')
         return instructions
     factory=decode(0x4296f0,181);fps=decode(0x429a70,182);callback=decode(0x42a430,28)
+    control=decode(0x429a30,58);process=decode(0x42a3d0,10);skip=decode(0x42a3e0,68)
     calls=Counter(i.operands[0].imm for i in factory if i.mnemonic=='call'and i.operands[0].type==X86_OP_IMM)
     require(calls=={0x452493:1,0x45252d:1,0x42a200:1,0x4294a0:1,0x4524a1:1},'factory calls differ')
     returns=[i for i in factory if i.mnemonic=='ret']
@@ -36,14 +37,17 @@ def main():
     require([i.operands[0].imm for i in fps if i.mnemonic=='call']==[0x401630],'FPS formatter differs')
     require(fps[-1].mnemonic=='ret'and not fps[-1].operands,'FPS return differs')
     require(callback[-1].mnemonic=='jmp'and callback[-1].operands[0].imm==0x429a70,'FPS callback edge differs')
+    require([i.operands[0].imm for i in process if i.mnemonic=='call']==[0x4297d0],'process callback edge differs')
+    require(all(ins[-1].mnemonic=='ret'and not ins[-1].operands for ins in [control,process,skip]),'callback/control return differs')
+    require(struct.unpack('<I',pe_bytes_at(raw,0x429a42,4))[0]==0x474e30 and struct.unpack('<I',pe_bytes_at(raw,0x42a3fb,4))[0]==0x474e30,'frame control current-input slot differs')
     require(struct.unpack('<2f',pe_bytes_at(raw,0x470c2c,8))==(50.0,30.0),'FPS thresholds differ')
     require(pe_bytes_at(raw,0x46e658,4)==b'%3d\0','FPS format differs')
     with (ROOT/'config/function-boundaries.csv').open(newline='')as stream:bounds={int(r['address'],0):r for r in csv.DictReader(stream)}
-    for start,size in [(0x4296f0,181),(0x429a70,182),(0x42a430,28)]:
+    for start,size in [(0x4296f0,181),(0x429a70,182),(0x42a430,28),(0x429a30,58),(0x42a3d0,10),(0x42a3e0,68)]:
         row=bounds[start];require(row['state']=='reviewed'and int(row['span_end'],0)==start+size-1,'target boundary differs')
     for start,size in [(0x4297a5,11),(0x429b26,10),(0x42a44c,4)]:require(pe_bytes_at(raw,start,size)==b'\xcc'*size,'adjacent padding differs')
     print(json.dumps({'authority':'target observations only; no exact or runtime credit','target':identity,
         'factory':{'entry':'0x4296f0','owned_bytes':181,'callers':[hex(x)for x in callers],'stack_cleanup':4,'allocation_eh':eh},
-        'fps':{'entry':'0x429a70','owned_bytes':182,'callback':'0x42a430','callback_bytes':28,'thresholds':[30,50],'format':'%3d'},'result':'passed'},indent=2))
+        'fps':{'entry':'0x429a70','owned_bytes':182,'callback':'0x42a430','callback_bytes':28,'thresholds':[30,50],'format':'%3d'},'callbacks':{'process_bytes':10,'frame_control_bytes':68,'retained_control_bytes':58,'receiver':'ECX callback / private member registers','frame_input_slot':'0x474e30','frame_input_mask':'0x100','suppression_flag':'runtime+58 bit4'},'result':'passed'},indent=2))
 
 if __name__=='__main__':main()

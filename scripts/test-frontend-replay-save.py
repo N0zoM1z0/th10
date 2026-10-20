@@ -12,7 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def body(text, signature):
-    starts = list(re.finditer(re.escape(signature), text))
+    starts = [m for m in re.finditer(re.escape(signature), text)
+              if text.find('{', m.start()) != -1 and
+              (text.find(';', m.start()) == -1 or text.find('{', m.start()) < text.find(';', m.start()))]
     if len(starts) != 1: raise ValueError('nonunique definition: ' + signature)
     start = starts[0].start(); opening = text.index('{', start); depth = 0
     for i in range(opening, len(text)):
@@ -23,7 +25,7 @@ def body(text, signature):
 
 def run(args, output):
     output.mkdir(parents=True, exist_ok=True)
-    hashes = {}; pending = ['FrontEnd.hpp', 'ReplayManager.hpp', 'InputState.hpp', 'EnemySoundQueue.hpp']; seen = set()
+    hashes = {}; pending = ['FrontEnd.hpp', 'ReplayManager.hpp', 'InputState.hpp', 'EnemySoundQueue.hpp', 'ReplayChain.hpp']; seen = set()
     while pending:
         name = pending.pop()
         if name in seen: continue
@@ -47,7 +49,9 @@ def run(args, output):
         'int FrontEndInputView::IsRepeated(', 'static int InputRepeated('])
     p = ROOT/'src/ReplayManager.cpp'; replay = p.read_text(); hashes['src/ReplayManager.cpp'] = hashlib.sha256(p.read_bytes()).hexdigest()
     (output/'replay-delete.inc').write_text(body(replay, 'void ReplayManager::Destroy('))
-    owners += '\n\n' + body(replay, 'ReplayManager *__stdcall ReplayManager::Load(') + '\n\n' + body(replay, 'int ReplayManager::DrawFps()')
+    owners += '\n\n' + body(replay, 'ReplayManager *__stdcall ReplayManager::Load(') + '\n\n' + body(replay, 'int ReplayManager::DrawFps()') + '\n\n' + body(replay, 'int ReplayManager::ControlPlaybackFrames()')
+    owners += '\n\n' + '\n\n'.join(body(replay, 'int __fastcall ' + name + '(') for name in ['ReplayProcessFrameCallback','ReplayPlaybackFrameControlCallback','ReplayDrawFpsCallback'])
+    (output/'runtime.inc').write_text(body(replay,'struct ReplayRuntimeState') + ';')
     p = ROOT/'src/EnemyEclDispatcher.cpp'; enemy = p.read_text(); hashes['src/EnemyEclDispatcher.cpp'] = hashlib.sha256(p.read_bytes()).hexdigest()
     sound = body(enemy, 'struct EnemySoundCueMetadataView') + ';\nEnemySoundCueMetadataView g_EnemySoundCueMetadata[134];\n'
     queue = body(enemy, 'void EnemySoundQueueView::QueueSoundSample(')
@@ -57,10 +61,13 @@ def run(args, output):
     (output/'helpers.inc').write_text(constants + '\n' + helpers)
     variants = [('positive', owners, None)]
     mutations = [
+        ('callback-wrong-input', 'g_FrontEndInput.current & 0x100', 'g_FrontEndInput.pressed & 0x100', 'frame-callback-gates'),
+        ('callback-wrong-modulo', 'frameCounter % 4 != 0', 'frameCounter % 4 == 0', 'frame-callback-gates'),
+        ('callback-wrong-suppress', 'return manager->DrawFps();', 'return 1;', 'draw-callback-gate'),
         ('wrong-load-mode', 'manager->mode = REPLAY_MANAGER_LOAD_ONLY;', 'manager->mode = REPLAY_MANAGER_RECORD;', 'factory-load-mode'),
         ('wrong-fps-threshold', 'fps < 30.0f', 'fps < 31.0f', 'fps-color'),
-        ('wrong-fps-mode', 'case REPLAY_MANAGER_PLAYBACK:', 'case REPLAY_MANAGER_LOAD_ONLY:', 'fps-gate'),
-        ('stale-fps-ascii', 'g_AsciiManagerView->AddFormatText(&position, "%3d", replayFps);\n            g_AsciiManagerView->color = 0xffffffffu;', 'AsciiManagerView *oldAscii = g_AsciiManagerView;\n            oldAscii->AddFormatText(&position, "%3d", replayFps);\n            oldAscii->color = 0xffffffffu;', 'fps-current-ascii'),
+        ('wrong-fps-mode', 'mode != REPLAY_MANAGER_RECORD &&\n        mode == REPLAY_MANAGER_PLAYBACK', 'mode != REPLAY_MANAGER_RECORD &&\n        mode == REPLAY_MANAGER_LOAD_ONLY', 'fps-gate'),
+        ('stale-fps-ascii', 'g_AsciiManagerView->AddFormatText(&position, "%3d", replayFps);\n        g_AsciiManagerView->color = 0xffffffffu;', 'AsciiManagerView *oldAscii = g_AsciiManagerView;\n        oldAscii->AddFormatText(&position, "%3d", replayFps);\n        oldAscii->color = 0xffffffffu;', 'fps-current-ascii'),
         ('wrong-sound-owner', 'g_MainSoundOwner', 'g_AlternateSoundOwner', 'queue-owner'),
         ('wrong-sound-sample', 'FRONT_END_SOUND_UNLOCK, 0', 'FRONT_END_SOUND_UNLOCK, 1', 'queue-sample'),
         ('early-opening', 'stateTimer.current > 6', 'stateTimer.current >= 6', 'opening-seven'),

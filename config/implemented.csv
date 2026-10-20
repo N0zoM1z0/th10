@@ -1037,3 +1037,7 @@ EndingTextVmView::LoadAnimation
 FrontEndControllerView::UpdateReplaySave
 FrontEndControllerView::DrawReplaySave
 ReplayManager::DrawFps
+ReplayManager::ControlPlaybackFrames
+ReplayProcessFrameCallback
+ReplayPlaybackFrameControlCallback
+ReplayDrawFpsCallback
