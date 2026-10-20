@@ -144,6 +144,36 @@ def expected_data_spans(
     return result
 
 
+def require_decode_coverage(
+    field_report: dict[str, object], data_spans: list[dict[str, int]], size: int
+) -> None:
+    if field_report["normalization_complete"]:
+        if data_spans:
+            raise ValueError(
+                "linked unit declares data spans despite complete Capstone normalization"
+            )
+        return
+    decoded = int(field_report["decoded_bytes"])
+    if not 0 <= decoded <= size:
+        raise ValueError("linked decoder extent leaves the compared contribution")
+    if not data_spans:
+        raise ValueError(f"Capstone decoded {decoded} of {size} bytes")
+    covered = set(range(decoded))
+    # Absolute table entries are already accounted for by authoritative PE
+    # relocations. An unlinked selector suffix may follow those entries.
+    for field in field_report["fields"]:
+        if field["type"] == "DIR32" and int(field["width"]) == 4:
+            covered.update(range(int(field["offset"]), int(field["offset"]) + 4))
+    for span in data_spans:
+        if int(span["offset"]) < decoded:
+            raise ValueError("data spans overlap the decoded instruction extent")
+        covered.update(range(int(span["offset"]), int(span["offset"]) + int(span["width"])))
+    if not set(range(size)).issubset(covered):
+        raise ValueError(
+            "complete PE fields and declared data spans do not cover the undecoded trailing extent"
+        )
+
+
 def pack_linked_value(
     code: bytearray,
     field: dict[str, object],
@@ -354,28 +384,7 @@ def compare_unit(name: str) -> dict[str, object]:
         for offset in range(int(row["offset"]), int(row["offset"]) + int(row["width"]))
     }
     data_spans = expected_data_spans(unit, compared_size, occupied)
-    if field_report["normalization_complete"]:
-        if data_spans:
-            raise ValueError(
-                "linked unit declares data spans despite complete Capstone normalization"
-            )
-    else:
-        decoded = int(field_report["decoded_bytes"])
-        cursor = decoded
-        if not data_spans:
-            raise ValueError(
-                f"Capstone decoded {decoded} of {compared_size} bytes"
-            )
-        for span in data_spans:
-            if int(span["offset"]) != cursor:
-                raise ValueError(
-                    "declared data spans do not cover the undecoded trailing extent"
-                )
-            cursor += int(span["width"])
-        if cursor != compared_size:
-            raise ValueError(
-                "declared data spans do not cover the complete undecoded trailing extent"
-            )
+    require_decode_coverage(field_report, data_spans, compared_size)
     actual_key = sorted(
         (int(row["offset"]), str(row["type"]), int(row["width"])) for row in actual
     )

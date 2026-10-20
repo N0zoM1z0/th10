@@ -1,0 +1,57 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "local_ghidra": {
+    "read_only": true,
+    "analysis": false,
+    "metadata_transaction": "rolled back",
+    "max_cpu": 1,
+    "heap_mib": 768,
+    "mapped_text_size": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "mapped_bytes_unchanged": true
+  },
+  "run": {
+    "entry": "0x0044E1A0",
+    "owned_size": 7020,
+    "pre_table_size": 6692,
+    "jump_table": {
+      "address": "0x0044FBC4",
+      "entries": 60,
+      "entry_width": 4
+    },
+    "selector": {
+      "address": "0x0044FCB4",
+      "size": 88
+    },
+    "end": "0x0044FD0B",
+    "strict_fields": 189,
+    "local_fields": 62
+  },
+  "start_subroutine": {
+    "entry": "0x0044DF70",
+    "target_size": 550,
+    "native_baseline_size": 551,
+    "ghidra_body": "one contiguous550-byte extent",
+    "direct_call_sites": [
+      "0x0044E360",
+      "0x00450154"
+    ],
+    "argument_pointer_initialization": "target destination first, value cursor second",
+    "integer_conversion_branch": "target JNE at+0xAD; float conversion falls through; baseline native JE",
+    "single_extra_encoding_byte": [
+      {
+        "scope": "target",
+        "relative_offset": "0x163",
+        "instruction": "mov ecx, dword ptr [edx]",
+        "instruction_size": 2
+      },
+      {
+        "scope": "current_native",
+        "relative_offset": "0x163",
+        "instruction": "mov ecx, dword ptr [ebp]",
+        "instruction_size": 3
+      }
+    ]
+  },
+  "limits": "Source declaration, original types/TU and semantic ownership remain provisional. No new exact credit or product/runtime closure."
+}

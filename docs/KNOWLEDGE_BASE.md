@@ -3811,3 +3811,29 @@ ANM ExecuteScript keeps9964 bytes and the same90/92, gap2,7478/7995 headline
 diagnostics; that does not prove code neutrality. Earlier ECL/Enemy signatures,
 FORMAT state and FLIP_X controls are restored. The three original large owners
 remain nonexact.
+
+
+### 2026-10-21: ECL mixed jump-table and selector coverage
+
+The [current-dependency ECL proof](evidence/ecl-current-dependencies/README.md)
+confirms Run7020/6994 strict bytes,26 ordinary differences and all189 fields
+including62 local destinations in a fresh two-TU /GL cold after the ASCII
+changes. Fifteen complete same-image guards retain1587/all21. StartSubroutine
+is551/550 in this actual context; old522-byte notes are historical.
+
+Address movement can make Capstone stop at6692 instead of7019 while decoding
+owned table data. Sixty complete PE DIR32 fields cover the jump table through
+6931;88 unlinked selectors follow. The comparator now combines those fields
+with an explicit undecoded selector suffix, without omitting comparison bytes.
+The diagnostic validates table references, all60 entries and their destinations,
+the selector domain and complete executable coverage before annotation. A
+copied-image selector change adds one ordinary difference; a shifted local
+entry and an incomplete annotation are rejected. Sixteen synthetic tests pass.
+Target and original carrier bytes are never patched by these controls.
+
+Explicit-context Run has the baseline's complete raw owner hash but proves no
+original C++ declaration. Char storage likewise leaves element signedness
+unknown. Shared float temporaries trade two repaired angle slots for six wrong
+negation slots. All source controls are restored; Run, StartSubroutine and the
+other two original large owners remain nonexact. No new credit or later-phase
+closure is claimed.

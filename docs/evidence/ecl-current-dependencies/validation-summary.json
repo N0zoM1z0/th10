@@ -1,0 +1,160 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "Coverage infrastructure and refreshed diagnostics; production source restored, no new exact credit.",
+  "focused_tests": {
+    "new_synthetic": 16,
+    "linked_local_fields": 5,
+    "linked_context": 22,
+    "static_owner": 50,
+    "native_oracle_controls": 3
+  },
+  "native_baseline": {
+    "run_size": 7020,
+    "run_matched_bytes": 6994,
+    "run_fields": 189,
+    "existing_complete_owners": 15,
+    "existing_complete_bytes": 1587,
+    "existing_bound_fields": 21
+  },
+  "canonical_enemy_spawn": {
+    "result": "exact",
+    "complete_bytes": 577,
+    "fields": 12,
+    "cold": true
+  },
+  "ci": {
+    "result": "passed",
+    "exit_code": 0,
+    "steps": 100,
+    "log_sha256": "74ed0c5737157510849770d5213e6b16f1de22dc79c058c0f44709284e32f3b2"
+  },
+  "cleanup": {
+    "scope": "Terminal owned negative native variants only; current baseline and decoder-stop reproducer retained. Compact reports and source overlays remain private. Canonical output and unrelated D3D evidence untouched.",
+    "removed_bytes": 2592154,
+    "removed_directories": 10,
+    "directories": [
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/argument-pointer-first",
+        "files": 8,
+        "bytes": 255917,
+        "artifact_sha256": {
+          "source.map": "7dbbb0594985a0f017f3f92e9acb6e42dd5547f6de66a9818e4c9e3ab1c62851",
+          "source.exe": "c94e42a0bafe8f5e026c4908f1e6c13d21a4dce5cebbc54c01bb975849ed5099",
+          "source.ltcg.obj": "255704b125e6884c08849ec0bcd9f1f5c2949d04f2bd64f158ab80e28e548bd4",
+          "source.pdb": "5cf1761810fb5b779a0f831e93aae5a9abe5512d7ef2361c72c8d7cc69ed8b3d"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/char-stack-bytes",
+        "files": 11,
+        "bytes": 272560,
+        "artifact_sha256": {
+          "source.map": "f6c29881886ae874bb63a3be926eb913079ab773c474d2823b29003fbc53a0db",
+          "source.exe": "3e6fc11a96f1d0f2e2fe37cceb7140e54843ec7acbbb675f25d9ad3816e122ad",
+          "source.ltcg.obj": "e1d37c816dee6fa6290c02dbe386665ac7f6eac3da043ed40dfe29de2d763b3c",
+          "source.pdb": "e64469e2d80cadb6681820dfc082b3f2b1247db36fa65ea292d82f7fd5425178"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/integer-destination-switch",
+        "files": 8,
+        "bytes": 255981,
+        "artifact_sha256": {
+          "source.map": "3ec9909b54bba823662fb0838923f5e530b1ae01441c69dce375b1d3d3ad6512",
+          "source.exe": "8423bc35278a324dd35d145aab855bbbd928853794ec914d13c9604664e342b2",
+          "source.ltcg.obj": "16d53e3565d48e4aba13aeb7c76137ea0fd7881a9da159285c10c3ace4759c2c",
+          "source.pdb": "beffb688d28beec4c2a458397b11d99359542b9af75095208f19e0def08d7310"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/shared-floats",
+        "files": 8,
+        "bytes": 255885,
+        "artifact_sha256": {
+          "source.map": "f5c4ccb0b462f9a194fb63de40056198de2eb7338810b17113692be27ce35305",
+          "source.exe": "b7d428441f54fb5e5c3e8ee53639dc07234a7f39d04984d6b7df5039fe12fab5",
+          "source.ltcg.obj": "4018af95a37750db90248c8dfedd51636eb2f728e25d51de05b87068f3d28b06",
+          "source.pdb": "5dced72ed6914cd85cc723e9161c5dd38201b1f0541c3ef6058c90550caf4bce"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/shared-y-dy",
+        "files": 8,
+        "bytes": 255893,
+        "artifact_sha256": {
+          "source.map": "cf33b0136c02efddb32d5a65370644440d82ab55f09aa369f702a49ce6d451e0",
+          "source.exe": "c4561450f8db1d190fbc545a2a27d14a27e80a1d5cd5a6d16a7c92eebeeaa09a",
+          "source.ltcg.obj": "af9ca758a57979ff8a72009527ea82628fd7f51b3fcd7e0099599364b30c6cc3",
+          "source.pdb": "24808abb6d8271f1095acb29a20b0288f16683404888c2c1964097e4f4765ffb"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/static-run-float-context",
+        "files": 11,
+        "bytes": 272307,
+        "artifact_sha256": {
+          "source.map": "d310cb4979627c1ccd15fd9a9eaa3cb4de16e116b310ce7e349950c2ffc48c84",
+          "source.exe": "353cfde63f46ff8e8af57907643bd24fb97f3638a8da37ccc43a94cad22d775e",
+          "source.ltcg.obj": "51abcf05844b4cff0fba2fa0c0829fa036470b8a317529d9c791ebb5710715ae",
+          "source.pdb": "08de047def3e63e2801f8c44d5799504469286c577673c9a61782a03ea58203b"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/thread-context",
+        "files": 8,
+        "bytes": 255965,
+        "artifact_sha256": {
+          "source.map": "0ab9b2ce781040f51aef7499c197e5d7e2604b93eb3e75d4565059aac38c5633",
+          "source.exe": "790a0aa4ba7b8537c545ab41e6126f12538656f7693f2b83000b5fd997c20ceb",
+          "source.ltcg.obj": "1d4045cf17552c0e043f0ef1bea5f67227c21227494bd3812f1c090f8f051d45",
+          "source.pdb": "16bbbe177fe6dd9dfa977ef27b8f2c7ed726488547f415678a37630b5761b5a8"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/typed-argument-destination",
+        "files": 8,
+        "bytes": 255946,
+        "artifact_sha256": {
+          "source.map": "1f9f4661a2430218a8317afa26c48491d32d5a49aae0ab617aa207266dbeeabd",
+          "source.exe": "eca89564563d63d3c02ae1cff9e494c6bb7cfe7249d5ae7865df2d1c7b4e3665",
+          "source.ltcg.obj": "99a2055b1c0d6bafef4398730d125686abf2a4c5c3ccd3ba7de8ae7c3d907611",
+          "source.pdb": "3524fba7ef4a055c5f8de7db0545fa71be2877abf9e3986eda69994f5c86cec5"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/typed-float-conversion-first",
+        "files": 8,
+        "bytes": 255884,
+        "artifact_sha256": {
+          "source.map": "e899cc1c6ef82a011b258cc63a87e06f659c240f5d257ee6befa3b168aa63313",
+          "source.exe": "a8ed45251fb5390d08b64f6f6fc845c9ef174bca5bd7e2e63930945e09f187c3",
+          "source.ltcg.obj": "57e12c3a63f10b0c0b6e63f67c04ce127a8874965a049ccc8687f0cdbf0d98e1",
+          "source.pdb": "daff606c8dca0926819b3584ee732465153b2b7693a0ea0cbd95e4a6a708b1cf"
+        }
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/typed-integer-conversion-first",
+        "files": 8,
+        "bytes": 255816,
+        "artifact_sha256": {
+          "source.map": "de9729b0c61bd1a3e4904dd9b378fa4b30609e4f71d1f8724fda4ba72b8a334a",
+          "source.exe": "af6da2ab96829167870f9f0913af90d254fd9c5a92ea2e4650d9d47cabd9f737",
+          "source.ltcg.obj": "ad847e04f6b1bbca31ded3d254a1d80ffd33c46b8701a93650e28ace60c2c77f",
+          "source.pdb": "42603927b4684bedef31e83a85fe2b6b75fc10e56542dbb18d7b94448c3832f3"
+        }
+      }
+    ]
+  },
+  "standard_gates": {
+    "target_identity": "passed",
+    "toolchain_execute": "passed",
+    "toolchain_check": "passed",
+    "tracking_require_target": "passed",
+    "progress": "generated and checked; unchanged totals",
+    "documentation": "passed",
+    "whitespace": "passed"
+  },
+  "final_source_and_artifact_pin_audit": "passed",
+  "new_exact_functions": 0,
+  "new_exact_bytes": 0
+}

@@ -47,7 +47,19 @@ candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest bounded checkpoint reconstructs ASCII camera/viewport effects where
+The latest diagnostic checkpoint repairs Run table coverage when Capstone stops
+inside the jump table instead of near the end of the selector bytes. Complete
+PE fields plus explicit unlinked suffix coverage still compare every owned byte;
+16 synthetic tests and three copied-image controls guard rejection behavior.
+A fresh full two-TU /GL cold confirms Run7020/all189 fields with26 ordinary
+differences. Fifteen same-image existing guards retain1587 bytes/all21 fields.
+All source/type/API controls are restored. EnemySpawn cold-replays577/all12;
+all100 standard CI checks pass. Cleanup removes2,592,154 bytes from10 owned
+obsolete directories. StartSubroutine is currently551/550;
+the older522 diagnostic is stale. No new exact credit. See
+[current ECL evidence](evidence/ecl-current-dependencies/README.md).
+
+The latest source checkpoint reconstructs ASCII camera/viewport effects where
 an earlier interface had only a declaration. Both draw owners now capture the
 viewport index before flush, publish/configure the camera, reload active/device
 state, set the viewport and then write the configured flag. Native offsets are
@@ -62,8 +74,8 @@ bytes from10 owned superseded native directories, in addition to the explicitly
 cancelled earlier CI fixture. See
 [viewport source evidence](evidence/ascii-viewport-transitions/README.md).
 Original large-owner work remains active; integer signatures, FORMAT state,
-and two FLIP_X controls from this round are restored. ECL/Enemy old carriers
-need current dependency checks after the ANM source/header change.
+and two FLIP_X controls from this round are restored. The new two-TU ECL baseline supersedes its old carrier; the eight-TU Enemy
+carrier still needs current dependency checks after the ANM source/header change.
 
 The preceding checkpoint changes ReadFloatValue to ordinary explicit-context
 static source, updating its three real callers. Two independent full two-TU
@@ -145,8 +157,8 @@ graph after any dependency changes before comparing scores.
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
 | ANM ExecuteScript43EE30/9964 | Current six-TU ASCII/Stage context:9964 bytes,90 target-sized groups, absolute gap2, aligned7478/7995; pre-table delta0 | Nonexact. Scale method parameter order repairs the SCALE_TIME interval; BGR snapshots remove8 differences. Unequal intervals61(+1),2(−1). Registers, flag scheduling and common tail remain open. |
-| ECL Run44E1A0/7020 | Two independent full two-TU colds; strict diagnostic validates all189 fields and6994/7020 bytes | Exactly26 ordinary differences remain. Eight-TU Enemy context has27, including an additional SIB byte. Static float-value adapter repairs FORMAT register setup while retaining171-byte canonical callee; no new exact credit. [Current evidence](evidence/ecl-float-value-call-order/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Fresh eight-TU baseline:14524 bytes, frame2C4,181 selector bytes and108 groups | Strict-less polar branch restores the target condition/successor order; unaligned whole-owner scores hide this local change. Adapters, storage, lifetimes and stack homes remain open. |
+| ECL Run44E1A0/7020 | Current full two-TU cold afterccd47a6: strict all189 fields and6994/7020 bytes;15 same-image guards1587/all21 | Exactly26 ordinary differences remain. Eight-TU Enemy context has27, including an additional SIB byte. Static float-value adapter repairs FORMAT register setup while retaining171-byte canonical callee; no new exact credit. [Current evidence](evidence/ecl-float-value-call-order/README.md). |
+| Enemy DispatchEclInstruction40E770/14416 | Pre-ASCII eight-TU baseline:14524 bytes, frame2C4,181 selector bytes and108 groups | Strict-less polar branch restores the target condition/successor order; unaligned whole-owner scores hide this local change. Adapters, storage, lifetimes and stack homes remain open. |
 
 Old rejected controls are scoped observations, not proof that an API or source
 shape is correct. Require a concrete target hypothesis and compare corresponding

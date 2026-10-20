@@ -4,6 +4,11 @@ Target: original Japanese TH10 v1.00a, SHA-256
 `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 Starting checkpoint: `42369b0`.
 
+The one-byte annotation described below is specific to these recorded images.
+The [updated diagnostic](../ecl-current-dependencies/README.md) also supports
+an earlier decode stop in the PE-covered jump table, while comparing all7020
+bytes and every unlinked selector. The original proof and its credit are unchanged.
+
 The complete ECL Run remains **nonexact**. This checkpoint removes two ordinary
 byte differences while preserving the existing exact callee and dependent
 units. It adds no exact functions, bytes or denominator credit. The other two

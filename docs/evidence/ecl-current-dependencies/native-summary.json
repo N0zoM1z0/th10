@@ -1,0 +1,550 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_commit": "ccd47a6",
+  "new_exact_functions": 0,
+  "new_exact_bytes": 0,
+  "production_source_changed": false,
+  "source_sha256": {
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "native_graph": {
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "support_sources": [
+      "src/Enemy.cpp"
+    ],
+    "support_profiles": {},
+    "entry": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+    "support_object_sha256": {
+      "support-00-Enemy.ltcg.obj": "1c1dbb975af2598a992c2665534f7626b71711a394ecb98de04251e8fed72687"
+    }
+  },
+  "build_kind": "Full two-TU cold baseline; primary-only controls reuse the Enemy object only after matching recursive inputs/profile/object hashes. Static Run and char stack controls each cold-build both TUs.",
+  "artifacts": {
+    "object": {
+      "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/baseline/source.ltcg.obj",
+      "sha256": "f8e4d3bab62c1a62282944778bb02f4600c2c40b2e5a7847f2ed402d2b5b130d"
+    },
+    "image": {
+      "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/baseline/source.exe",
+      "sha256": "779b754f2041109c8f52b3157dd6e23d9a289410abe5a7965e1e98f798692537"
+    },
+    "map": {
+      "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/baseline/source.map",
+      "sha256": "4468e677b0e5a4cd3228ea50db1dc67c89d3d5630bf19bf57af29850b86b4a49"
+    },
+    "pdb": {
+      "path": "build/gpt-6.1-sol/ecl-run-thread-stack-20261021/baseline/source.pdb",
+      "sha256": "f68822bccca79a67f52c289ab81149bfb2665172619461f0cbe78024be8cf5b1"
+    }
+  },
+  "run_diagnostic": {
+    "result": "mismatch",
+    "size": 7020,
+    "compared_size": 7020,
+    "matched_bytes": 6994,
+    "ordinary_differences": 26,
+    "bound_fields": 189,
+    "local_fields": 62,
+    "data_spans": [
+      {
+        "offset": 7019,
+        "width": 1
+      }
+    ],
+    "decoded_bytes": 7019,
+    "all_first_differences": [
+      {
+        "offset": "0xEC",
+        "linked": 124,
+        "target": 84
+      },
+      {
+        "offset": "0xF1",
+        "linked": 87,
+        "target": 82
+      },
+      {
+        "offset": "0x12A",
+        "linked": 16,
+        "target": 0
+      },
+      {
+        "offset": "0x12C",
+        "linked": 106,
+        "target": 104
+      },
+      {
+        "offset": "0x14D7",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x151D",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x168A",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x1710",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x181B",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x182B",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1838",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x183C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1840",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1844",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1899",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18B6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18E6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18F8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x191C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1932",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1957",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x199E",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19A8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19BA",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x19E6",
+        "linked": 3,
+        "target": 19
+      },
+      {
+        "offset": "0x19E8",
+        "linked": 0,
+        "target": 2
+      }
+    ]
+  },
+  "existing_same_image_guards": {
+    "units": [
+      {
+        "unit": "ecl-vm-host-run",
+        "result": "exact",
+        "size": 146,
+        "matched_bytes": 146
+      },
+      {
+        "unit": "ecl-vm-spawn-thread",
+        "result": "exact",
+        "size": 142,
+        "matched_bytes": 142
+      },
+      {
+        "unit": "ecl-vm-find-thread",
+        "result": "exact",
+        "size": 36,
+        "matched_bytes": 36
+      },
+      {
+        "unit": "ecl-vm-stop-all-threads",
+        "result": "exact",
+        "size": 31,
+        "matched_bytes": 31
+      },
+      {
+        "unit": "ecl-vm-read-int",
+        "result": "exact",
+        "size": 144,
+        "matched_bytes": 144
+      },
+      {
+        "unit": "ecl-vm-read-float",
+        "result": "exact",
+        "size": 183,
+        "matched_bytes": 183
+      },
+      {
+        "unit": "ecl-vm-read-int-value",
+        "result": "exact",
+        "size": 124,
+        "matched_bytes": 124
+      },
+      {
+        "unit": "ecl-vm-read-float-value",
+        "result": "exact",
+        "size": 171,
+        "matched_bytes": 171
+      },
+      {
+        "unit": "ecl-vm-resolve-int",
+        "result": "exact",
+        "size": 58,
+        "matched_bytes": 58
+      },
+      {
+        "unit": "ecl-vm-resolve-float",
+        "result": "exact",
+        "size": 93,
+        "matched_bytes": 93
+      },
+      {
+        "unit": "ecl-vm-stack-push",
+        "result": "exact",
+        "size": 96,
+        "matched_bytes": 96
+      },
+      {
+        "unit": "ecl-vm-stack-pop",
+        "result": "exact",
+        "size": 122,
+        "matched_bytes": 122
+      },
+      {
+        "unit": "ecl-vm-stack-enter-frame",
+        "result": "exact",
+        "size": 64,
+        "matched_bytes": 64
+      },
+      {
+        "unit": "ecl-vm-stack-leave-frame",
+        "result": "exact",
+        "size": 41,
+        "matched_bytes": 41
+      },
+      {
+        "unit": "ecl-vm-find-subroutine",
+        "result": "exact",
+        "size": 136,
+        "matched_bytes": 136
+      }
+    ],
+    "complete_owners": 15,
+    "complete_bytes": 1587,
+    "bound_fields": 21,
+    "scope": "Additional complete target comparisons in the actual baseline graph. Canonical recipes and credit are not migrated."
+  },
+  "related_owners": [
+    {
+      "symbol": "?StartSubroutine@EclVmContext@@QAEHPAU1@I@Z",
+      "candidate_size": 551,
+      "target_size": 550,
+      "scope": "Noncanonical complete PDB extent diagnostic; no partial credit"
+    },
+    {
+      "symbol": "?AddScriptData@EclVmScriptDatabase@@UAEHPAX@Z",
+      "candidate_size": 547,
+      "target_size": 589,
+      "scope": "Noncanonical complete PDB extent diagnostic; no partial credit"
+    }
+  ],
+  "controls": [
+    {
+      "label": "baseline",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "83a796d84d67501452a754bcdd74f1ef7f3b58eecba8a21872a5b33f47bd085c",
+      "start_subroutine_size": 551,
+      "start_subroutine_owner_sha256": "b7dc975373c87aebf219e54644c5e84109ff4ec6f9ba7851452c5a6146fd2fbe",
+      "result": "production baseline retained"
+    },
+    {
+      "label": "thread-context",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "83a796d84d67501452a754bcdd74f1ef7f3b58eecba8a21872a5b33f47bd085c",
+      "start_subroutine_size": 551,
+      "start_subroutine_owner_sha256": "b7dc975373c87aebf219e54644c5e84109ff4ec6f9ba7851452c5a6146fd2fbe",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "shared-floats",
+      "run_size": 7020,
+      "run_matched_bytes": 6990,
+      "run_ordinary_differences": 30,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "8d7d856e35cbb2d54095a519871a888a0f677474b2a5beec74553fb723d2770f",
+      "start_subroutine_size": 551,
+      "start_subroutine_owner_sha256": "b7dc975373c87aebf219e54644c5e84109ff4ec6f9ba7851452c5a6146fd2fbe",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "shared-y-dy",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "83a796d84d67501452a754bcdd74f1ef7f3b58eecba8a21872a5b33f47bd085c",
+      "start_subroutine_size": 551,
+      "start_subroutine_owner_sha256": "b7dc975373c87aebf219e54644c5e84109ff4ec6f9ba7851452c5a6146fd2fbe",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "static-run-float-context",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "83a796d84d67501452a754bcdd74f1ef7f3b58eecba8a21872a5b33f47bd085c",
+      "start_subroutine_size": 551,
+      "start_subroutine_owner_sha256": "b7dc975373c87aebf219e54644c5e84109ff4ec6f9ba7851452c5a6146fd2fbe",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "char-stack-bytes",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "83a796d84d67501452a754bcdd74f1ef7f3b58eecba8a21872a5b33f47bd085c",
+      "start_subroutine_size": 551,
+      "start_subroutine_owner_sha256": "b7dc975373c87aebf219e54644c5e84109ff4ec6f9ba7851452c5a6146fd2fbe",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "int-conversion-first",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 6692,
+      "data_spans": [
+        {
+          "offset": 6932,
+          "width": 88
+        }
+      ],
+      "run_owner_sha256": "0ec7e58dc5f24a604b001802c99a14835e26a4082cf809035d8827efb83670c9",
+      "start_subroutine_size": 543,
+      "start_subroutine_owner_sha256": "a47803dbced358fffacf713e72d6c4a921f6cefca9aa067a7149a3d08fa50775",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "typed-float-conversion-first",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "4759cc827430f2a184f583c904bf6bd128eafc57f6bff98e6ce2b7b0130d9778",
+      "start_subroutine_size": 584,
+      "start_subroutine_owner_sha256": "6e80c79cca27abd25526fa37a94b52a2e0c4dd1f64dd36021b1a9a38faca6f7a",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "argument-pointer-first",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "83a796d84d67501452a754bcdd74f1ef7f3b58eecba8a21872a5b33f47bd085c",
+      "start_subroutine_size": 551,
+      "start_subroutine_owner_sha256": "8eb96e60ddce35d92d4d8d0892f09f9827a6ed42e72b9a33633662574a786b36",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "typed-argument-destination",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 6692,
+      "data_spans": [
+        {
+          "offset": 6932,
+          "width": 88
+        }
+      ],
+      "run_owner_sha256": "0ec7e58dc5f24a604b001802c99a14835e26a4082cf809035d8827efb83670c9",
+      "start_subroutine_size": 543,
+      "start_subroutine_owner_sha256": "2c154ddf0932892ef1065017a7bcda0a1455652a6cd1bf61f379f405d761f204",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "typed-integer-conversion-first",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "47534cacdfac6ca4097dc78c63b809709aa261d8a98bb155b88026c317522cbe",
+      "start_subroutine_size": 568,
+      "start_subroutine_owner_sha256": "7b7189471939601b53ee9990bb05a0d760b231d021cfc9fa5764f6892712ce93",
+      "result": "rejected and restored"
+    },
+    {
+      "label": "integer-destination-switch",
+      "run_size": 7020,
+      "run_matched_bytes": 6994,
+      "run_ordinary_differences": 26,
+      "run_fields": 189,
+      "decoded_bytes": 7019,
+      "data_spans": [
+        {
+          "offset": 7019,
+          "width": 1
+        }
+      ],
+      "run_owner_sha256": "83a796d84d67501452a754bcdd74f1ef7f3b58eecba8a21872a5b33f47bd085c",
+      "start_subroutine_size": 551,
+      "start_subroutine_owner_sha256": "b7dc975373c87aebf219e54644c5e84109ff4ec6f9ba7851452c5a6146fd2fbe",
+      "result": "rejected and restored"
+    }
+  ],
+  "limits": [
+    "Run remains nonexact; same size is not equality.",
+    "StartSubroutine551/550 and AddScriptData547/589 remain nonexact.",
+    "Explicit-context Run reproduces the baseline Run raw owner hash; it does not prove original staticness or membership.",
+    "Byte-stack signedness control is not evidence for the original element type.",
+    "All three original large owners and product/runtime/semantic/port closure remain open."
+  ]
+}

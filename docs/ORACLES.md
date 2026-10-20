@@ -89,9 +89,10 @@ linker surfaces but adds a target-bound acceptance contract. The comparator
 requires one uniquely named `source.ltcg.obj` PDB contribution, checks its full
 size, requires the pinned Capstone decoder to consume the instruction extent,
 and accepts an undecoded suffix only when every byte is covered by complete,
-authoritative PE base-relocation fields. This narrow suffix rule supports PDB
-code contributions ending in compiler-emitted absolute jump tables while still
-rejecting ordinary undecoded bytes. The comparator rejects any undeclared
+authoritative PE base-relocation fields or explicitly reviewed trailing data
+annotations. This supports PDB code contributions ending in absolute jump tables
+and selectors while rejecting unannotated undecoded bytes. The comparator
+rejects any undeclared
 base-relocation or external control-flow field, validates each declared semantic
 symbol through the linker map or its unique data-anchor alias, and rewrites that
 field to the reviewed target address before comparing all bytes. A zero-field
@@ -107,6 +108,15 @@ offsets. Being internal does not authorize normalizing a different code label,
 table slot or data position. The synthetic swapped-table and shifted-base
 controls in `scripts/test-linked-local-fields.py` guard this requirement.
 See the [easing extent and local-field audit](evidence/easing-tail-ownership/README.md).
+
+When decoding stops in an owned absolute jump table, complete authoritative PE
+DIR32 fields may bridge the gap to an explicitly declared unlinked data suffix.
+Those annotations remain contiguous, trailing, disjoint from decoded bytes and
+all link fields; partial words and relative fields cannot fill coverage gaps.
+Field inventory and semantic binding remain exhaustive, and every data byte is
+still compared. ECL Run additionally validates its reviewed60-entry table and88
+selectors before deriving an annotation. See the
+[table coverage controls](evidence/ecl-current-dependencies/README.md).
 
 A direct REL32 call to a static callee may explicitly declare both
 `static_source` and `static_size`. This opt-in derives the selected object from

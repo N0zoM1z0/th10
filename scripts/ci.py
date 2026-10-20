@@ -45,6 +45,7 @@ def main() -> int:
         run("Validate qualified static owners", [sys.executable, "scripts/test-static-owner-selection.py"])
         run("Validate linked profiles and static callees", [sys.executable, "scripts/test-linked-context.py"])
         run("Validate internal linked destinations", [sys.executable, "scripts/test-linked-local-fields.py"])
+        run("Validate linked table and selector coverage", [sys.executable, "scripts/test-linked-data-coverage.py"])
         run("Validate allocation EH address binding", [sys.executable, "scripts/test-linked-allocation-eh.py"])
         run("Validate replay payload order", [sys.executable, "scripts/test-replay-payload-order.py"])
         run("Validate Enemy dispatch case scopes", [sys.executable, "scripts/test-ecl-dispatch-table.py"])

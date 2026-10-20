@@ -24,6 +24,50 @@ ROOT = Path(__file__).resolve().parents[1]
 RUN_SYMBOL = "?Run@EclVmContext@@QAEHM@Z"
 RUN_ADDRESS = 0x0044E1A0
 RUN_SIZE = 7020
+RUN_CODE_SIZE = 6692
+RUN_TABLE_ENTRIES = 60
+RUN_SELECTOR_OFFSET = RUN_CODE_SIZE + RUN_TABLE_ENTRIES * 4
+
+
+def run_data_spans(image, structural):
+    """Annotate only undecoded selector bytes after validating both tables."""
+    base = int(structural["candidate_address"], 0)
+    fields = structural["linkage_fields"]
+    for relative in (RUN_CODE_SIZE, RUN_SELECTOR_OFFSET):
+        references = [field for field in fields
+                      if field["type"] == "DIR32" and field["width"] == 4
+                      and field["offset"] < RUN_CODE_SIZE
+                      and int(field["candidate_target"], 0) == base + relative
+                      and int(field["target_candidate"], 0) == RUN_ADDRESS + relative]
+        if len(references) != 1:
+            raise ValueError("Run lacks the reviewed unique dispatch-table reference")
+    table = [field for field in fields
+             if RUN_CODE_SIZE <= field["offset"] < RUN_SELECTOR_OFFSET]
+    if (sorted(field["offset"] for field in table)
+            != list(range(RUN_CODE_SIZE, RUN_SELECTOR_OFFSET, 4))):
+        raise ValueError("Run lacks the complete reviewed 60-entry jump table")
+    for field in table:
+        if (field["type"] != "DIR32" or field["width"] != 4
+                or not base <= int(field["candidate_target"], 0) < base + RUN_CODE_SIZE
+                or not RUN_ADDRESS <= int(field["target_candidate"], 0)
+                < RUN_ADDRESS + RUN_CODE_SIZE):
+            raise ValueError("Run jump-table entry leaves its executable body")
+    if any(field["offset"] >= RUN_SELECTOR_OFFSET for field in fields):
+        raise ValueError("Run selector data unexpectedly contains a link field")
+    selector = image.read_address(base + RUN_SELECTOR_OFFSET, RUN_SIZE - RUN_SELECTOR_OFFSET)
+    if len(selector) != 88 or any(value >= RUN_TABLE_ENTRIES for value in selector):
+        raise ValueError("Run selector data leaves the reviewed jump-table domain")
+    decoded = int(structural["decoded_candidate_bytes"])
+    if not RUN_CODE_SIZE <= decoded <= RUN_SIZE:
+        raise ValueError("Run decoding stops before the reviewed executable body")
+    if structural["normalization_complete"]:
+        if decoded != RUN_SIZE:
+            raise ValueError("Run selector coverage is inconsistent with decoding")
+        return []
+    start = max(decoded, RUN_SELECTOR_OFFSET)
+    if start == RUN_SIZE:
+        raise ValueError("Run incomplete decoding has no selector suffix")
+    return [{"offset": start, "width": RUN_SIZE - start}]
 
 
 def module(name: str, path: str):
@@ -112,9 +156,10 @@ def compare(args):
     run.update(
         symbol=RUN_SYMBOL, functions=["EclVmContext::Run"],
         target_address=RUN_ADDRESS, size=RUN_SIZE, linkages=fields,
-        # Only the final selector byte is not consumed by linear decoding.
-        # Declaring it as data still compares it; nothing is masked or omitted.
-        data_spans=[{"offset": 7019, "width": 1}],
+        # Link addresses change how far linear decoding enters owned table data.
+        # PE fields cover the jump table; this annotates the remaining selector
+        # suffix. Every byte is still compared, including all 88 selectors.
+        data_spans=run_data_spans(PEImage(image_path), structural),
     )
     analysis = ROOT / ".analysis"
     analysis.mkdir(exist_ok=True)

@@ -1,0 +1,35 @@
+{
+  "scope": "Synthetic mutations of a temporary copied diagnostic image only. Target and original native artifact unchanged; no reconstruction/runtime credit.",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "positive": {
+    "result": "ordinary mismatch",
+    "matched_bytes": 6994,
+    "compared_size": 7020,
+    "fields": 189,
+    "decoded_bytes": 6692,
+    "data_spans": [
+      {
+        "offset": 6932,
+        "width": 88
+      }
+    ]
+  },
+  "controls": {
+    "selector-byte": {
+      "result": "mismatch",
+      "compared_size": 7020,
+      "matched_bytes": 6993,
+      "offset": "0x1B14",
+      "old": 0,
+      "new": 1
+    },
+    "shifted-local-entry": {
+      "result": "rejected",
+      "reason": "local linked field (6692, 'DIR32', 4) changes its destination offset: candidate=0x19d8 target=0x19d7"
+    },
+    "incomplete-selector-annotation": {
+      "result": "rejected",
+      "reason": "complete PE fields and declared data spans do not cover the undecoded trailing extent"
+    }
+  }
+}
