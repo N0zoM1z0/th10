@@ -1,0 +1,937 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_commit": "42369b0",
+  "new_exact_functions": 0,
+  "new_exact_bytes": 0,
+  "source_declaration_is_hypothesis": true,
+  "retained_private_abi": "EAX context, ECX flag index, stack float; RET4",
+  "signature": {
+    "old_symbol": "?ReadFloatValue@EclVmContext@@QAEMIM@Z",
+    "new_symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+    "maintained_source": "static float __stdcall EclVmContext::ReadFloatValue(unsigned int, EclVmContext *, float)",
+    "real_callers": [
+      "EclVmContext::StartSubroutine",
+      "EclVmContext::Run FORMAT arm",
+      "EnemyRuntimeView::ReadRawFloatArgument"
+    ]
+  },
+  "run_diagnostic_layout": {
+    "complete_size": 7020,
+    "pre_table_bytes": 6692,
+    "table_and_selector_bytes": 328,
+    "fields": 189,
+    "local_fields": 62,
+    "compared_trailing_data": [
+      {
+        "offset": 7019,
+        "width": 1
+      }
+    ],
+    "acceptance_authority": "none; whole Run remains nonexact"
+  },
+  "diagnostics": [
+    {
+      "label": "current-baseline",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+      "source_sha256": {
+        "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "18d7a97081cf585c2f3603aa24ac47cbed9339bd00fde2892d736f82af41f59b",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "artifact": {
+        "image": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/current-baseline/source.exe",
+          "sha256": "8cfa815ea6775cd396b36f64446dbe9c43f097c0ff82b3dec8e4d4243ca35686"
+        },
+        "map": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/current-baseline/source.map",
+          "sha256": "46ceb33cc48fac5b9f6f3dcc6d354e16f2bc4bbc94b85a29997123672712f980"
+        },
+        "pdb": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/current-baseline/source.pdb",
+          "sha256": "15e87d5265a44ac8c72c94cf9b99a0f42b76e84fc5a199298693a1d9e90492c8"
+        },
+        "object": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/current-baseline/source.ltcg.obj",
+          "sha256": "18e924ba3c78a6feeb7155ce7fd5daf6facb4b4af753fbbef405d8e6a6f4a45f"
+        }
+      },
+      "result": "mismatch",
+      "size": 7020,
+      "matched_bytes": 6992,
+      "linkage_fields": 189,
+      "linear_decoded_bytes": 7019,
+      "raw_linear_normalization_complete": false,
+      "declared_data_coverage_complete": true,
+      "ordinary_difference_offsets": [
+        "0xEC",
+        "0xF1",
+        "0x12A",
+        "0x12C",
+        "0x14D7",
+        "0x151D",
+        "0x168A",
+        "0x1710",
+        "0x181B",
+        "0x182B",
+        "0x1838",
+        "0x183C",
+        "0x1840",
+        "0x1844",
+        "0x1899",
+        "0x18B6",
+        "0x18E6",
+        "0x18F8",
+        "0x191C",
+        "0x1932",
+        "0x1957",
+        "0x1991",
+        "0x1993",
+        "0x199E",
+        "0x19A8",
+        "0x19BA",
+        "0x19E6",
+        "0x19E8"
+      ]
+    },
+    {
+      "label": "static-float-adapter",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+      "source_sha256": {
+        "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "artifact": {
+        "object": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/static-float-adapter/source.ltcg.obj",
+          "sha256": "9c1311efaf64f09d43890b99bd1c82f64f6c8c47c5118d1328bf5b1782b1e392"
+        },
+        "image": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/static-float-adapter/source.exe",
+          "sha256": "42a8b773711ff5b0d131eeddccd8062fb614515faa96d0a1613d500d3bfe6e79"
+        },
+        "map": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/static-float-adapter/source.map",
+          "sha256": "9e83a34a07da9ad43102095b0de45ec94a6897122b74dfdad77acfa12d0de6d9"
+        },
+        "pdb": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/static-float-adapter/source.pdb",
+          "sha256": "3da127e366b94bcfb826f6608371d2315486bf70af5e437ec15cc3952c6e43e5"
+        }
+      },
+      "result": "mismatch",
+      "size": 7020,
+      "matched_bytes": 6994,
+      "linkage_fields": 189,
+      "linear_decoded_bytes": 7019,
+      "raw_linear_normalization_complete": false,
+      "declared_data_coverage_complete": true,
+      "ordinary_difference_offsets": [
+        "0xEC",
+        "0xF1",
+        "0x12A",
+        "0x12C",
+        "0x14D7",
+        "0x151D",
+        "0x168A",
+        "0x1710",
+        "0x181B",
+        "0x182B",
+        "0x1838",
+        "0x183C",
+        "0x1840",
+        "0x1844",
+        "0x1899",
+        "0x18B6",
+        "0x18E6",
+        "0x18F8",
+        "0x191C",
+        "0x1932",
+        "0x1957",
+        "0x199E",
+        "0x19A8",
+        "0x19BA",
+        "0x19E6",
+        "0x19E8"
+      ]
+    },
+    {
+      "label": "canonical-host-cold1",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL"
+      ],
+      "support_sources": [
+        "src/Enemy.cpp"
+      ],
+      "entry_symbol": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+      "source_sha256": {
+        "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "artifact": {
+        "image": {
+          "path": "build/match-linked/EclVmHostRunEnemy/source.exe",
+          "sha256": "0d0f53c64f684d5c99e5f04a2046a38a970df454025630076a7a775525849f43"
+        },
+        "map": {
+          "path": "build/match-linked/EclVmHostRunEnemy/source.map",
+          "sha256": "ced1db22ea996f3fd77a430daf82ad4caf0994bf08e027f556e808186952e5e5"
+        },
+        "pdb": {
+          "path": "build/match-linked/EclVmHostRunEnemy/source.pdb",
+          "sha256": "ee6d96e38d05fd4abeb3cce36a103a5ec4a3ffe4577586dd4e8b32d05799c8e6"
+        },
+        "object": {
+          "path": "build/match-linked/EclVmHostRunEnemy/source.ltcg.obj",
+          "sha256": "3ed10c9fcbbbbec1a523557f10b78025e42d90d933a66a30ef612ca53672ce1e"
+        }
+      },
+      "result": "mismatch",
+      "size": 7020,
+      "matched_bytes": 6994,
+      "linkage_fields": 189,
+      "linear_decoded_bytes": 7019,
+      "raw_linear_normalization_complete": false,
+      "declared_data_coverage_complete": true,
+      "ordinary_difference_offsets": [
+        "0xEC",
+        "0xF1",
+        "0x12A",
+        "0x12C",
+        "0x14D7",
+        "0x151D",
+        "0x168A",
+        "0x1710",
+        "0x181B",
+        "0x182B",
+        "0x1838",
+        "0x183C",
+        "0x1840",
+        "0x1844",
+        "0x1899",
+        "0x18B6",
+        "0x18E6",
+        "0x18F8",
+        "0x191C",
+        "0x1932",
+        "0x1957",
+        "0x199E",
+        "0x19A8",
+        "0x19BA",
+        "0x19E6",
+        "0x19E8"
+      ]
+    },
+    {
+      "label": "enemy-support-pin",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp"
+      ],
+      "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "source_sha256": {
+        "src/AnmManager.cpp": "023b8f0353104fc086c4ee997638f6c223db95004c3918ac7c0a24f282ec65ea",
+        "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "18d7a97081cf585c2f3603aa24ac47cbed9339bd00fde2892d736f82af41f59b",
+        "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "0fdc67b1b48c305eddf35897dc918347cf3e65bb0f4bf220f5263cea4c5e0070",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "artifact": {
+        "image": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra/large-owners-20261020/enemy-checkpoint/source.exe",
+          "sha256": "88f962610a466b7cf76ac7fcd0e2a0d27c14aaea8782be224c1aa3826e3832dc"
+        },
+        "map": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra/large-owners-20261020/enemy-checkpoint/source.map",
+          "sha256": "90848057649a072d508304a76445486a593d44cd935495e213e1dbd43c129dce"
+        },
+        "pdb": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra/large-owners-20261020/enemy-checkpoint/source.pdb",
+          "sha256": "98d0a59c84d4c8d04f74f94b098aafda1d1e3e36c62f401de5aeda19b28bfc73"
+        },
+        "object": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6-astra/large-owners-20261020/enemy-checkpoint/source.ltcg.obj",
+          "sha256": "105cdae1bfea9b73bc9b72d69eea70f6b215475531ec0dc1f51655408677bed6"
+        }
+      },
+      "result": "mismatch",
+      "size": 7020,
+      "matched_bytes": 6991,
+      "linkage_fields": 189,
+      "linear_decoded_bytes": 7019,
+      "raw_linear_normalization_complete": false,
+      "declared_data_coverage_complete": true,
+      "ordinary_difference_offsets": [
+        "0xEC",
+        "0xF1",
+        "0x12A",
+        "0x12C",
+        "0x146E",
+        "0x14D7",
+        "0x151D",
+        "0x168A",
+        "0x1710",
+        "0x181B",
+        "0x182B",
+        "0x1838",
+        "0x183C",
+        "0x1840",
+        "0x1844",
+        "0x1899",
+        "0x18B6",
+        "0x18E6",
+        "0x18F8",
+        "0x191C",
+        "0x1932",
+        "0x1957",
+        "0x1991",
+        "0x1993",
+        "0x199E",
+        "0x19A8",
+        "0x19BA",
+        "0x19E6",
+        "0x19E8"
+      ]
+    },
+    {
+      "label": "enemy-static-adapter",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_sources": [
+        "src/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp"
+      ],
+      "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "source_sha256": {
+        "src/AnmManager.cpp": "023b8f0353104fc086c4ee997638f6c223db95004c3918ac7c0a24f282ec65ea",
+        "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "35ba34f4506c910a30af5a3c633ebc17485ddba6ac710c1d41a7c166e37d3017",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "artifact": {
+        "image": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/enemy-static-adapter/source.exe",
+          "sha256": "0ece05b211ca33c706287d66e8c3f97a9c53912acf5fb05b83df8a1e57da498d"
+        },
+        "map": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/enemy-static-adapter/source.map",
+          "sha256": "2d916a55e046235715b402e58fd869c6061b93c84c5d11cf33625b6c925cbb7d"
+        },
+        "pdb": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/enemy-static-adapter/source.pdb",
+          "sha256": "f5cc9689f08f973988c24ebf8383a78e61a980d6ebe0011c0e8375b149479bd9"
+        },
+        "object": {
+          "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-point-angle-20261021/enemy-static-adapter/source.ltcg.obj",
+          "sha256": "1acacdca6ba195d872e4798dd4e12377396c134ffc07b7aed7ece3b2701b0727"
+        }
+      },
+      "result": "mismatch",
+      "size": 7020,
+      "matched_bytes": 6993,
+      "linkage_fields": 189,
+      "linear_decoded_bytes": 7019,
+      "raw_linear_normalization_complete": false,
+      "declared_data_coverage_complete": true,
+      "ordinary_difference_offsets": [
+        "0xEC",
+        "0xF1",
+        "0x12A",
+        "0x12C",
+        "0x146E",
+        "0x14D7",
+        "0x151D",
+        "0x168A",
+        "0x1710",
+        "0x181B",
+        "0x182B",
+        "0x1838",
+        "0x183C",
+        "0x1840",
+        "0x1844",
+        "0x1899",
+        "0x18B6",
+        "0x18E6",
+        "0x18F8",
+        "0x191C",
+        "0x1932",
+        "0x1957",
+        "0x199E",
+        "0x19A8",
+        "0x19BA",
+        "0x19E6",
+        "0x19E8"
+      ]
+    }
+  ],
+  "canonical_ecl_replay": {
+    "result": "exact",
+    "unit_count": 16,
+    "matched_bytes": 1617,
+    "artifact_count": 3,
+    "linkage_fields": 21,
+    "groups": [
+      {
+        "source": "src/EclVm.cpp",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "artifact": "build/match-linked/EclVmStack",
+        "units": [
+          {
+            "unit": "ecl-vm-read-float",
+            "result": "exact",
+            "target_address": "0x0044FE40",
+            "size": 183,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 4
+          },
+          {
+            "unit": "ecl-vm-read-int",
+            "result": "exact",
+            "target_address": "0x0044FDB0",
+            "size": 144,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 1
+          },
+          {
+            "unit": "ecl-vm-read-int-value",
+            "result": "exact",
+            "target_address": "0x0044FF00",
+            "size": 124,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 1
+          },
+          {
+            "unit": "ecl-vm-read-float-value",
+            "result": "exact",
+            "target_address": "0x0044FF80",
+            "size": 171,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 4
+          },
+          {
+            "unit": "ecl-vm-resolve-int",
+            "result": "exact",
+            "target_address": "0x00450030",
+            "size": 58,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 0
+          },
+          {
+            "unit": "ecl-vm-resolve-float",
+            "result": "exact",
+            "target_address": "0x00450070",
+            "size": 93,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 3
+          },
+          {
+            "unit": "ecl-vm-find-thread",
+            "result": "exact",
+            "target_address": "0x00450160",
+            "size": 36,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 0
+          },
+          {
+            "unit": "ecl-vm-stop-all-threads",
+            "result": "exact",
+            "target_address": "0x00450190",
+            "size": 31,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 0
+          },
+          {
+            "unit": "ecl-vm-find-subroutine",
+            "result": "exact",
+            "target_address": "0x00450470",
+            "size": 136,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 0
+          },
+          {
+            "unit": "ecl-vm-stack-push",
+            "result": "exact",
+            "target_address": "0x004505B0",
+            "size": 96,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 0
+          },
+          {
+            "unit": "ecl-vm-stack-enter-frame",
+            "result": "exact",
+            "target_address": "0x00450690",
+            "size": 64,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 0
+          },
+          {
+            "unit": "ecl-vm-stack-pop",
+            "result": "exact",
+            "target_address": "0x00450610",
+            "size": 122,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 1
+          },
+          {
+            "unit": "ecl-vm-stack-leave-frame",
+            "result": "exact",
+            "target_address": "0x004506D0",
+            "size": 41,
+            "image_sha256": "9d8c1e6c371ed7e996881e64c68dede6141d6fd72ac3a960aae215fec856888e",
+            "pdb_guid": "25c8fa301d4a6b47893b9e57a9a479c1",
+            "linkage_fields": 0
+          }
+        ],
+        "retained_cold1_artifact_dir": "build/gpt-6.1-sol/ecl-point-angle-20261021/canonical-stack-cold1"
+      },
+      {
+        "source": "src/EclVm.cpp",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "artifact": "build/match-linked/EclVmHostRunEnemy",
+        "units": [
+          {
+            "unit": "ecl-vm-host-run",
+            "result": "exact",
+            "target_address": "0x0044FD10",
+            "size": 146,
+            "image_sha256": "0d0f53c64f684d5c99e5f04a2046a38a970df454025630076a7a775525849f43",
+            "pdb_guid": "7c010447492fd449ab6991249e3ff178",
+            "linkage_fields": 4
+          },
+          {
+            "unit": "ecl-vm-spawn-thread",
+            "result": "exact",
+            "target_address": "0x004500D0",
+            "size": 142,
+            "image_sha256": "0d0f53c64f684d5c99e5f04a2046a38a970df454025630076a7a775525849f43",
+            "pdb_guid": "7c010447492fd449ab6991249e3ff178",
+            "linkage_fields": 3
+          }
+        ]
+      },
+      {
+        "source": "src/EclVm.cpp",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "artifact": "build/match-linked/EclVmPolar",
+        "units": [
+          {
+            "unit": "ecl-vm-polar-from-angle-magnitude",
+            "result": "exact",
+            "target_address": "0x004501B0",
+            "size": 30,
+            "image_sha256": "0f2b139f55aebda9e9ba01652a0b72e53d5eadcaa73729be5a14242616bfe9d6",
+            "pdb_guid": "13cccf46f751eb4d8589120f8945675b",
+            "linkage_fields": 0
+          }
+        ]
+      }
+    ]
+  },
+  "canonical_value_second_cold": {
+    "result": "exact",
+    "unit_count": 1,
+    "matched_bytes": 171,
+    "artifact_count": 1,
+    "linkage_fields": 4,
+    "groups": [
+      {
+        "source": "src/EclVm.cpp",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "artifact": "build/match-linked/EclVmStack",
+        "units": [
+          {
+            "unit": "ecl-vm-read-float-value",
+            "result": "exact",
+            "target_address": "0x0044FF80",
+            "size": 171,
+            "image_sha256": "0c4c4e944b649ab984669a3bca42b2c807403e94281fc67f5b716d45351cdf5d",
+            "pdb_guid": "940514901a0a1344af83d63993d02c9f",
+            "linkage_fields": 4
+          }
+        ]
+      }
+    ]
+  },
+  "callee_canonical_cold_owner_sha256": "2487906bffd24560510b3152811a1980f1f48af757e7a7f55889b503d9fe91a7",
+  "canonical_value_owner_hashes_equal": true,
+  "canonical_enemy_replay": {
+    "result": "exact",
+    "unit_count": 6,
+    "matched_bytes": 478,
+    "artifact_count": 1,
+    "linkage_fields": 8,
+    "groups": [
+      {
+        "source": "src/EnemyEclDispatcher.cpp",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "artifact": "build/match-linked/EnemyDispatcherHelpers",
+        "units": [
+          {
+            "unit": "enemy-mark-pending-interrupt",
+            "result": "exact",
+            "target_address": "0x00409E50",
+            "size": 65,
+            "image_sha256": "11c446a6d6e2e750aa381ac4ba77f5950c0a67fe67b2c94655b317cd45baeb3a",
+            "pdb_guid": "df746810a6bd3e4e83788fc92535b5a5",
+            "linkage_fields": 2
+          },
+          {
+            "unit": "enemy-sound-queue-sample",
+            "result": "exact",
+            "target_address": "0x0043DC90",
+            "size": 123,
+            "image_sha256": "11c446a6d6e2e750aa381ac4ba77f5950c0a67fe67b2c94655b317cd45baeb3a",
+            "pdb_guid": "df746810a6bd3e4e83788fc92535b5a5",
+            "linkage_fields": 1
+          },
+          {
+            "unit": "enemy-sound-queue-cue",
+            "result": "exact",
+            "target_address": "0x0043DD10",
+            "size": 149,
+            "image_sha256": "11c446a6d6e2e750aa381ac4ba77f5950c0a67fe67b2c94655b317cd45baeb3a",
+            "pdb_guid": "df746810a6bd3e4e83788fc92535b5a5",
+            "linkage_fields": 3
+          },
+          {
+            "unit": "enemy-drop-vector-from-angle-radii",
+            "result": "exact",
+            "target_address": "0x00413270",
+            "size": 30,
+            "image_sha256": "11c446a6d6e2e750aa381ac4ba77f5950c0a67fe67b2c94655b317cd45baeb3a",
+            "pdb_guid": "df746810a6bd3e4e83788fc92535b5a5",
+            "linkage_fields": 0
+          },
+          {
+            "unit": "enemy-resolve-int-argument",
+            "result": "exact",
+            "target_address": "0x00412A10",
+            "size": 75,
+            "image_sha256": "11c446a6d6e2e750aa381ac4ba77f5950c0a67fe67b2c94655b317cd45baeb3a",
+            "pdb_guid": "df746810a6bd3e4e83788fc92535b5a5",
+            "linkage_fields": 0
+          },
+          {
+            "unit": "enemy-enable-shield",
+            "result": "exact",
+            "target_address": "0x0040CEA0",
+            "size": 36,
+            "image_sha256": "11c446a6d6e2e750aa381ac4ba77f5950c0a67fe67b2c94655b317cd45baeb3a",
+            "pdb_guid": "df746810a6bd3e4e83788fc92535b5a5",
+            "linkage_fields": 2
+          }
+        ]
+      }
+    ]
+  },
+  "eight_tu_unchanged_owners": [
+    {
+      "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+      "size": 14524,
+      "old_and_new_owner_sha256": "21c6be9387de63b932fb36a8ecd03b07f2af8b95152c971cc43ca79fef12531b"
+    },
+    {
+      "symbol": "?ReadRawFloatArgument@EnemyRuntimeView@@QAEMHM@Z",
+      "size": 26,
+      "old_and_new_owner_sha256": "42354bedb88bfa8d350dd3109024dae9ccea58bee829174f4dcab6adad19ceaf"
+    }
+  ],
+  "eight_tu_complete_guards": {
+    "owners": 14,
+    "bytes": 1452,
+    "fields": 27,
+    "units": [
+      "ecl-vm-read-float",
+      "ecl-vm-read-int",
+      "ecl-vm-read-int-value",
+      "ecl-vm-read-float-value",
+      "ecl-vm-resolve-int",
+      "ecl-vm-resolve-float",
+      "ecl-vm-host-run",
+      "anm-release-slot",
+      "enemy-mark-pending-interrupt",
+      "enemy-sound-queue-sample",
+      "enemy-sound-queue-cue",
+      "enemy-drop-vector-from-angle-radii",
+      "enemy-resolve-int-argument",
+      "enemy-enable-shield"
+    ]
+  },
+  "format_source_projection": {
+    "scope": "Replay the actual FORMAT arm with bounded packets and operand-service roles.\n\nThis is a host source projection, not execution of the original/native product.\nIt checks argument consumption and live instruction reloads. It does not model\nthe operand services, malformed packets, allocation failure or i386/x87 ABI.\n",
+    "source_sha256": {
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0"
+    },
+    "scenarios": 10,
+    "strict_functional_mutants": 8,
+    "sanitize": true,
+    "results": {
+      "positive": 0,
+      "flag-index": 2,
+      "metadata-stride": 2,
+      "value-stride": 2,
+      "float-tag-g": 2,
+      "percent-consumes": 2,
+      "unknown-consumes": 2,
+      "cursor-step": 2,
+      "cached-instruction": 2
+    }
+  },
+  "restored_controls": [
+    {
+      "control": "inline angle-from-offsets helper",
+      "ordinary_differences": 28,
+      "against": "fresh two-TU baseline",
+      "result": "complete normalized owner is neutral; some raw owner hashes differ as link layout changes"
+    },
+    {
+      "control": "static explicit-context integer-value adapter",
+      "ordinary_differences": 26,
+      "against": "retained static float source",
+      "result": "all seven helper guards exact; no Run improvement"
+    },
+    {
+      "control": "y/dy/counter declaration order",
+      "ordinary_differences": 26,
+      "against": "retained static float source",
+      "result": "all seven helper guards exact; no Run improvement"
+    },
+    {
+      "control": "direct raw-float forwarding expression",
+      "result": "receiver changes from target EAX to ECX; rejected and restored"
+    }
+  ],
+  "cleanup": {
+    "removed_bytes": 3376996,
+    "removed_owned_directories": 5,
+    "retained": "source controls, comparison receipts and positive/baseline carrier artifacts"
+  },
+  "final_validation": {
+    "standard_ci_steps": 97,
+    "standard_ci": "passed",
+    "toolchain_check": "passed",
+    "tracking": "1775 candidates, 1074 mappings, 1211 exact",
+    "progress": "current; no numerator/denominator change",
+    "diff_check": "passed"
+  }
+}

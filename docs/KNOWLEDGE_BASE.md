@@ -3744,3 +3744,33 @@ caller computes the link address before its copy. Clone-store ordering,
 buffer lifetimes, the frame gap and complete loader exactness remain open.
 The existing authored-origin classification is independent of this byte proof.
 [Complete replay and identities](evidence/hint-list-member/README.md).
+
+
+### 2026-10-21: ECL float-value call preparation
+
+The [explicit-context checkpoint](evidence/ecl-float-value-call-order/README.md)
+replaces a provisional member declaration with ordinary static stdcall source,
+ReadFloatValue(flagIndex, context, value), and updates all three real callers.
+VC7.1 LTCG retains the target private EAX-context/ECX-index/stack-float RET4 ABI.
+The complete171-byte callee and all4 fields remain canonical exact in two
+further independent single-TU cold builds, with identical owner hashes. This
+proves compiler compatibility; it does not establish original staticness,
+source declaration, class identity or production TU.
+
+Two independent full two-TU colds preserve Run7020 and all189 diagnostic
+fields, recovering the target MOV EAX,ESI before MOV ECX,EBX in FORMAT. Exactly
+two ordinary differences disappear:28->26, or6994/7020 full strict bytes.
+All16 existing canonical ECL units preserve1617 bytes. The actual eight-TU
+Enemy graph improves29->27; its extra SIB byte at+146E is context-dependent.
+Complete dispatcher14524 and raw-float forwarder26 owner hashes remain equal
+to the hash-pinned prior graph. Whole Run and dispatcher remain nonexact;
+no exact or denominator credit is added.
+
+An inline angle-from-offsets helper, static integer-value adapter and local
+y/dy/counter declaration controls are neutral after complete normalization
+and restored. Direct float-forwarding expression changes its receiver to ECX
+instead of target EAX and is rejected. These observations supersede older
+blanket assumptions about the source signature while preserving the target
+ABI evidence. FORMAT actual-source projection retains10 scenarios/eight
+strict functional mutants under ASan/UBSan/leak checking. Native product,
+runtime, semantic and portability gates remain open.

@@ -47,7 +47,18 @@ candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest bounded checkpoint closes HintLinkView::Append41AB10/52, formerly
+The latest bounded checkpoint changes ReadFloatValue to ordinary explicit-context
+static source, updating its three real callers. Two independent full two-TU
+cold builds preserve Run7020/all189 fields and reduce ordinary differences
+28->26. The existing171-byte callee retains canonical exactness in two further
+single-TU colds; all16 existing ECL units retain1617 bytes. The actual eight-TU
+Enemy graph reduces Run29->27 and retains identical complete dispatcher14524
+and raw-float forwarder26 hashes. No new exact credit is claimed. The original
+static declaration and production TU remain unknown. See
+[float call order](evidence/ecl-float-value-call-order/README.md). All97 standard CI
+checks pass. Cleanup removes3,376,996 bytes from five owned superseded outputs.
+
+The preceding checkpoint closes HintLinkView::Append41AB10/52, formerly
 maintained as free HintAppendLink. Ordinary member source recovers the complete
 raw-equal EAX-head/EDX-node body, including ESI and loop alignment; cdecl versus
 fastcall on the free source was machine-code neutral. Two full four-TU colds
@@ -116,7 +127,7 @@ graph after any dependency changes before comparing scores.
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
 | ANM ExecuteScript43EE30/9964 | Fresh five-TU cold:9964 bytes, frameFC,90 target-sized groups, absolute gap2, aligned7478/7995; pre-table delta0 | Nonexact. Scale method parameter order repairs the SCALE_TIME interval; BGR snapshots remove8 differences. Unequal intervals61(+1),2(−1). Registers, flag scheduling and common tail remain open. |
-| ECL Run44E1A0/7020 | Fresh two-TU replay; noncanonical strict recipe validates all189 address fields and6992/7020 bytes | Exactly28 ordinary differences remain in stack/register choices. Explicit trailing-data declaration closes diagnostic selector coverage; no canonical exact claim. [Current evidence](evidence/large-owner-call-order/README.md). |
+| ECL Run44E1A0/7020 | Two independent full two-TU colds; strict diagnostic validates all189 fields and6994/7020 bytes | Exactly26 ordinary differences remain. Eight-TU Enemy context has27, including an additional SIB byte. Static float-value adapter repairs FORMAT register setup while retaining171-byte canonical callee; no new exact credit. [Current evidence](evidence/ecl-float-value-call-order/README.md). |
 | Enemy DispatchEclInstruction40E770/14416 | Fresh eight-TU baseline:14524 bytes, frame2C4,181 selector bytes and108 groups | Strict-less polar branch restores the target condition/successor order; unaligned whole-owner scores hide this local change. Adapters, storage, lifetimes and stack homes remain open. |
 
 Old rejected controls are scoped observations, not proof that an API or source

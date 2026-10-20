@@ -306,20 +306,21 @@ int EclVmContext::ReadInt(unsigned int index)
     return OperandInt(instruction, index);
 }
 
-float EclVmContext::ReadFloatValue(unsigned int flagIndex, float value)
+float __stdcall EclVmContext::ReadFloatValue(
+    unsigned int flagIndex, EclVmContext *context, float value)
 {
-    if (IsOperandIndirect(instruction, flagIndex))
+    if (IsOperandIndirect(context->instruction, flagIndex))
     {
         if (value >= 0.0f)
             return *reinterpret_cast<float *>(
-                stack.data + stack.frameBase + static_cast<int>(value));
+                context->stack.data + context->stack.frameBase + static_cast<int>(value));
         if (value == -1.0f)
         {
-            stack.Pop('f', sizeof(value), &value);
+            context->stack.Pop('f', sizeof(value), &value);
         }
         else
         {
-            return host->ReadEclFloat(static_cast<int>(value));
+            return context->host->ReadEclFloat(static_cast<int>(value));
         }
     }
     return value;
@@ -537,7 +538,7 @@ int EclVmContext::StartSubroutine(
                 EclVmScalar value;
                 value.integer = reinterpret_cast<const int *>(
                     (*callerInstruction)->operands)[valueOffset / 4];
-                value.real = caller->ReadFloatValue(argumentIndex, value.real);
+                value.real = ReadFloatValue(argumentIndex, caller, value.real);
                 if ((*callerInstruction)->operands[metadataOffset + 1] == 'f')
                     *reinterpret_cast<float *>(argument) = value.real;
                 else
@@ -1187,7 +1188,7 @@ jump_instruction:
                             + 0x14 + inlineBytes + argumentIndex * 8);
                         if (argumentType == 'f' || argumentType == 'g') {
                             EclDebugTrace(scratch, ReadFloatValue(
-                                argumentIndex + 1,
+                                argumentIndex + 1, this,
                                 reinterpret_cast<const float *>(instruction)[
                                     inlineBytes / 4 + 6 + argumentIndex * 2]));
                             ++argumentIndex;

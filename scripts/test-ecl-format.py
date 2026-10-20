@@ -99,8 +99,8 @@ struct Role {
     int ReadIntValue(unsigned flag,int value) {
         record('i',flag,word(value)); return value;
     }
-    float ReadFloatValue(unsigned flag,float value) {
-        record('f',flag,bits(value)); return value;
+    static float ReadFloatValue(unsigned flag,Role *context,float value) {
+        context->record('f',flag,bits(value)); return value;
     }
 };
 static void expect(const Role& role,std::initializer_list<Event> expected) {
