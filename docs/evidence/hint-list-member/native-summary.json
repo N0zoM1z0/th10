@@ -1,0 +1,315 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": {
+    "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/Hint.cpp": "dc37bc971c2102cbe354609f30e15654bc461a6f216d77d55f50b7da3a913cc0",
+    "src/Hint.hpp": "b6c2338e848b4538ecc0111402832517fcfda930b33879854ea14ac8a90088ca",
+    "src/Main.cpp": "fcf7ba4fa5b6af9ce447aa77f2da58eae3c2d53f52b1666b592e9c86b41a40a4",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL",
+    "/GS"
+  ],
+  "support_sources": [
+    "src/FileSystem.cpp",
+    "src/PbgArchive.cpp",
+    "src/Main.cpp"
+  ],
+  "entry_symbol": "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z",
+  "new_exact_functions": 1,
+  "new_authored_exact_bytes": 52,
+  "existing_guard_bytes": 986,
+  "total_complete_owners": 7,
+  "total_replayed_bytes": 1038,
+  "total_linkage_fields": 36,
+  "all_owner_hashes_equal": true,
+  "cold_builds": [
+    {
+      "label": "cold1",
+      "artifact": {
+        "object": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-list-abi-20261020/member-append/source.ltcg.obj",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-list-abi-20261020/member-append/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-list-abi-20261020/member-append/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-list-abi-20261020/member-append/source.pdb"
+      },
+      "artifact_sha256": {
+        "object": "7b2015d4ca1d070c58e27358a928dc15ea0bf97830aa16f9fb9428cf740bcd08",
+        "image": "b7d959ee58edd2ee6ecddc77265f31d98a3f2ec2d4a019d43ea1dea209441f40",
+        "map": "3de885f2e52783c353efdd2a66173157b40a75137d3d63516171abc9026847ce",
+        "pdb": "40ca54b3b8917ec5206dac500d109a636839cb5444ff687019220411bb603c15"
+      },
+      "support_object_sha256": {
+        "support-02-Main.ltcg.obj": "abceb2f6fe67d1974c90b1b7dbfa45c9ec0ae940e45537d7ef73323f49c29398",
+        "support-00-FileSystem.ltcg.obj": "1b02c24c2757c66f216ae505bb0f80c869229fc179303c08dfcf73ef67297fc5",
+        "support-01-PbgArchive.ltcg.obj": "c18f36c8cd82cff39f41f355ed8657905bc08c3d83134284fa308a33d3a663cf"
+      },
+      "owners": [
+        {
+          "unit": "hint-append-link",
+          "target_address": "0x0041AB10",
+          "candidate_address": "0x00401D30",
+          "size": 52,
+          "sha256": "4110697bba59a723c55f47cef0e73c95cfe792fbdbdad62fd632b720795704b5",
+          "raw_equal": true,
+          "linkage_fields": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        },
+        {
+          "unit": "hint-read-line",
+          "target_address": "0x00419F40",
+          "candidate_address": "0x00401B60",
+          "size": 260,
+          "sha256": "b22bcedcdb2159ca59b6f9029dad887022a2c72446bbe0e972b190013a1ee7af",
+          "raw_equal": false,
+          "linkage_fields": 4,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-list-abi-20261020\\member-append\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2784
+          }
+        },
+        {
+          "unit": "hint-split-line",
+          "target_address": "0x0041A050",
+          "candidate_address": "0x00401C70",
+          "size": 75,
+          "sha256": "395b10292503435bb011f15a88bbde03bf06dd55ad785c347b0d927bcce653cc",
+          "raw_equal": false,
+          "linkage_fields": 4,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-list-abi-20261020\\member-append\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2784
+          }
+        },
+        {
+          "unit": "hint-trim-whitespace",
+          "target_address": "0x0041A0A0",
+          "candidate_address": "0x00401AE0",
+          "size": 114,
+          "sha256": "d89633e4e144ce1a0e5bea319c03283d1159e93e689cb7c2a10c8c8aab609514",
+          "raw_equal": true,
+          "linkage_fields": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-list-abi-20261020\\member-append\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2784
+          }
+        },
+        {
+          "unit": "hint-lookup-value",
+          "target_address": "0x004198C0",
+          "candidate_address": "0x00401CC0",
+          "size": 98,
+          "sha256": "475bd5c09fbd74f93594f3eb539435d5e72dbc3d6ba88097aac149b558ee6242",
+          "raw_equal": true,
+          "linkage_fields": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-list-abi-20261020\\member-append\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 3264
+          }
+        },
+        {
+          "unit": "hint-clear-lists",
+          "target_address": "0x00419040",
+          "candidate_address": "0x00401D70",
+          "size": 79,
+          "sha256": "eca447448ee4a66e24c436dbe034843694975e823b37dc0e84a20c4926e9b9eb",
+          "raw_equal": false,
+          "linkage_fields": 2,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        },
+        {
+          "unit": "file-system-open-file",
+          "target_address": "0x0044B360",
+          "candidate_address": "0x00402DE0",
+          "size": 360,
+          "sha256": "25a9ad7e4f7c2c6dd76fe352ddf9cdc3406ac8a1b89539dcf917f5584ebade6b",
+          "raw_equal": false,
+          "linkage_fields": 26,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        }
+      ]
+    },
+    {
+      "label": "cold2",
+      "artifact": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/HintReadLine/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/HintReadLine/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/HintReadLine/source.pdb",
+        "object": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/HintReadLine/source.ltcg.obj"
+      },
+      "artifact_sha256": {
+        "image": "6512e07e69a21a7de799f135962f4e6fb7a2a2e5dfde24545e62a0e458191d42",
+        "map": "11435f124074a39cf874009154605bc12d2ec74db2a73bf5d32caaa449fa98d8",
+        "pdb": "c73cacb198b321271e313bea08a874a389066120252b06dbbd4fb5fe626c3b28",
+        "object": "4d80d0e77e95f3cb3fa73bc1a525167f4b2e6f8ff6a5313a0168629ac0f8a8c6"
+      },
+      "support_object_sha256": {
+        "support-02-Main.ltcg.obj": "d98c7a5a6e02b5defbf79750304662e3f1d10a8ba1b4379e86857d71d85978d1",
+        "support-00-FileSystem.ltcg.obj": "779a4d3bd1e2671672adb113acac82cbc69e590dd9c462dd69ec9c3dab5b9ad3",
+        "support-01-PbgArchive.ltcg.obj": "9f08654e30e032210a01a7df975236432e0b3805f59730e654baf17709cc713f"
+      },
+      "owners": [
+        {
+          "unit": "hint-append-link",
+          "target_address": "0x0041AB10",
+          "candidate_address": "0x00401D30",
+          "size": 52,
+          "sha256": "4110697bba59a723c55f47cef0e73c95cfe792fbdbdad62fd632b720795704b5",
+          "raw_equal": true,
+          "linkage_fields": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        },
+        {
+          "unit": "hint-read-line",
+          "target_address": "0x00419F40",
+          "candidate_address": "0x00401B60",
+          "size": 260,
+          "sha256": "b22bcedcdb2159ca59b6f9029dad887022a2c72446bbe0e972b190013a1ee7af",
+          "raw_equal": false,
+          "linkage_fields": 4,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintReadLine\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2784
+          }
+        },
+        {
+          "unit": "hint-split-line",
+          "target_address": "0x0041A050",
+          "candidate_address": "0x00401C70",
+          "size": 75,
+          "sha256": "395b10292503435bb011f15a88bbde03bf06dd55ad785c347b0d927bcce653cc",
+          "raw_equal": false,
+          "linkage_fields": 4,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintReadLine\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2784
+          }
+        },
+        {
+          "unit": "hint-trim-whitespace",
+          "target_address": "0x0041A0A0",
+          "candidate_address": "0x00401AE0",
+          "size": 114,
+          "sha256": "d89633e4e144ce1a0e5bea319c03283d1159e93e689cb7c2a10c8c8aab609514",
+          "raw_equal": true,
+          "linkage_fields": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintReadLine\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2784
+          }
+        },
+        {
+          "unit": "hint-lookup-value",
+          "target_address": "0x004198C0",
+          "candidate_address": "0x00401CC0",
+          "size": 98,
+          "sha256": "475bd5c09fbd74f93594f3eb539435d5e72dbc3d6ba88097aac149b558ee6242",
+          "raw_equal": true,
+          "linkage_fields": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintReadLine\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 3264
+          }
+        },
+        {
+          "unit": "hint-clear-lists",
+          "target_address": "0x00419040",
+          "candidate_address": "0x00401D70",
+          "size": 79,
+          "sha256": "eca447448ee4a66e24c436dbe034843694975e823b37dc0e84a20c4926e9b9eb",
+          "raw_equal": false,
+          "linkage_fields": 2,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        },
+        {
+          "unit": "file-system-open-file",
+          "target_address": "0x0044B360",
+          "candidate_address": "0x00402DE0",
+          "size": 360,
+          "sha256": "25a9ad7e4f7c2c6dd76fe352ddf9cdc3406ac8a1b89539dcf917f5584ebade6b",
+          "raw_equal": false,
+          "linkage_fields": 26,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        }
+      ]
+    }
+  ],
+  "loader_target_size": 1498,
+  "loader_candidate_size": 1533,
+  "original_class_identity": "unknown"
+}

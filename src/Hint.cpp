@@ -242,8 +242,9 @@ static int __stdcall HintLookupValue(const char *name, const HintNameValue *tabl
 }
 
 // Target41AB10. Preserve the final next-pointer recheck and both link updates.
-static void HintAppendLink(HintLinkView *head, HintLinkView *node)
+void HintLinkView::Append(HintLinkView *node)
 {
+    HintLinkView *head = this;
     while (head->next != 0)
         head = head->next;
     if (head->next != 0)
@@ -400,7 +401,7 @@ int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode)
             }
             // VC7.1 keeps this x87 expression live until the final float store.
             entry->textWidth = static_cast<float>(strlen(entry->text)) * entry->scale * 7.5f;
-            HintAppendLink(&owner->loadedStageLists[stage], &entry->link);
+            owner->loadedStageLists[stage].Append(&entry->link);
             if (mode == 0)
             {
                 HintEntryView *copy = new HintEntryView;
@@ -408,7 +409,7 @@ int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode)
                 copy->link.payload = copy;
                 copy->link.next = 0;
                 copy->link.previous = 0;
-                HintAppendLink(&owner->exportStageLists[stage], &copy->link);
+                owner->exportStageLists[stage].Append(&copy->link);
             }
         }
     }

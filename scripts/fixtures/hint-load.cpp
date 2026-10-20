@@ -429,14 +429,14 @@ int main()
         for (int n = 0; n < 2; ++n) {
             HintEntryView *p = MockNewEntry();
             expectedDeletes.push_back(p);
-            HintAppendLink(group?&owner.exportStageLists[stage]:&owner.loadedStageLists[stage], &p->link);
+            (group?&owner.exportStageLists[stage]:&owner.loadedStageLists[stage])->Append(&p->link);
         }
     }
     // Append does not reset an incoming next link in the ordinary tail path.
     HintLinkView independentHead = {};
     HintEntryView a, b;
     a.link.next = &b.link;
-    HintAppendLink(&independentHead, &a.link);
+    independentHead.Append(&a.link);
     CHECK(a.link.next == &b.link);
     ClearHintLists(&owner);
     CHECK(deleted == expectedDeletes);

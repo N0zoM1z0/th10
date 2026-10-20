@@ -1,0 +1,29 @@
+{
+  "new_authored_exact_functions": 1,
+  "new_authored_exact_bytes": 52,
+  "independent_full_cold_builds": 2,
+  "recursive_project_inputs": 18,
+  "inputs_unchanged": true,
+  "complete_owners": 7,
+  "replayed_bytes": 1038,
+  "linkage_fields": 36,
+  "all_owner_hashes_equal": true,
+  "host": {
+    "script": "scripts/test-hint-load.py",
+    "result": "passed",
+    "strict_mutants_detected": 22
+  },
+  "ci": {
+    "script": "scripts/ci.py",
+    "steps": 97,
+    "result": "passed"
+  },
+  "toolchain_check": "passed",
+  "tracking": "passed",
+  "progress": "current",
+  "full_historical_exact_replay": false,
+  "cleanup": {
+    "directories": 2,
+    "bytes": 791356
+  }
+}

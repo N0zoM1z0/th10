@@ -11,6 +11,8 @@ struct HintLinkView
     void *payload; // Entry on real nodes; HintOwnerView on list sentinels.
     HintLinkView *next;
     HintLinkView *previous;
+
+    void Append(HintLinkView *node);
 };
 struct HintEntryView
 {

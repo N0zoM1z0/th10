@@ -3727,3 +3727,20 @@ owners access the component bytes. A packed/byte view preserves the observed
 0x88 layout. Current constructor51 still has self-link store-order differences;
 its origin is still indeterminate and no exact credit is assigned. The complete
 loader remains1533/1498. [Evidence](evidence/hint-read-line/README.md).
+
+## 2026-10-21 Hint list tail insertion member
+
+The complete52-byte41AB10 tail insertion reproduces raw-equal as the ordinary
+HintLinkView::Append member, with EAX head/EDX node, saved ESI, next-address
+tracking and the target loop alignment. The former free HintAppendLink emits40;
+merely adding fastcall leaves all nine inspected whole-owner hashes unchanged.
+Membership is a successful maintained source candidate, not proof of the
+original class identity, name, visibility or physical source partition.
+
+Two independent full four-TU VC7.1 /GL /GS colds through LoadHintFile reproduce
+all52 bytes without link normalization. Six existing same-image guards retain
+986 bytes/all36 fields. Both caller sites now supply node in EDX; the clone
+caller computes the link address before its copy. Clone-store ordering,
+buffer lifetimes, the frame gap and complete loader exactness remain open.
+The existing authored-origin classification is independent of this byte proof.
+[Complete replay and identities](evidence/hint-list-member/README.md).

@@ -1,6 +1,6 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-20. This file describes the current checkpoint. Historical
+Updated 2026-10-21. This file describes the current checkpoint. Historical
 experiments remain in Git, the linked evidence packs and
 [KNOWLEDGE_BASE.md](KNOWLEDGE_BASE.md); they are not a live work queue.
 
@@ -42,12 +42,23 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
 candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
-1210 canonical exact functions overall. Authored exact is **374 functions,
-68052/273274 bytes (24.90%)**. The 220 mapped authored nonexact functions,
+1211 canonical exact functions overall. Authored exact is **375 functions,
+68104/273274 bytes (24.92%)**. The 219 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest bounded checkpoint closes HintReadLine419F40/260 through the real
+The latest bounded checkpoint closes HintLinkView::Append41AB10/52, formerly
+maintained as free HintAppendLink. Ordinary member source recovers the complete
+raw-equal EAX-head/EDX-node body, including ESI and loop alignment; cdecl versus
+fastcall on the free source was machine-code neutral. Two full four-TU colds
+replay seven complete owners1038 bytes/all36 fields, with all18 input pins and
+seven owner hashes equal. Original class/name/TU remain unknown. See
+[list member proof](evidence/hint-list-member/README.md). The current carrier
+is still `build/match-linked/HintReadLine`, now pinned by this newer proof.
+Loader1533/1498 and constructor51/nonexact remain open. An aggregate link-init
+control grows the constructor to57 and is restored.
+
+The preceding checkpoint closes HintReadLine419F40/260 through the real
 four-TU Hint/Main/FileSystem /GL /GS graph. Ordinary stdcall source recovers
 both RET12 exits. Two full colds replay six complete owners986 bytes/all36
 fields, including the existing OpenFile360/all26 guard. All18 source pins and

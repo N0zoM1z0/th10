@@ -19622,6 +19622,22 @@ linkages = [
   { offset = 0xC6, type = "REL32", symbol = "?HintTrimWhitespace@@YAPADPAD@Z", target = 0x0041A0A0, static_source = "src/Hint.cpp", static_size = 114 },
 ]
 
+[units.hint-append-link]
+artifact_kind = "linked-pe"
+source = "src/Hint.cpp"
+support_sources = ["src/FileSystem.cpp", "src/PbgArchive.cpp", "src/Main.cpp"]
+pdb_source = "src/Hint.cpp"
+output_dir = "build/match-linked/HintReadLine"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL","/GS"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z"
+functions = ["HintLinkView::Append"]
+symbol = "?Append@HintLinkView@@QAEXPAU1@@Z"
+target_address = 0x0041AB10
+size = 52
+linkages = []
+
 [units.hint-split-line]
 artifact_kind = "linked-pe"
 owner_visibility = "static"

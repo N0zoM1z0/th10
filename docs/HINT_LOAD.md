@@ -28,7 +28,7 @@ The coherent dependency set is:
 | `0x0041A050` | `HintSplitLine` | 75 | authored |
 | `0x0041A0A0` | `HintTrimWhitespace` | 114 | authored |
 | `0x004198C0` | `HintLookupValue` | 98 | authored |
-| `0x0041AB10` | `HintAppendLink` | 52 | authored |
+| `0x0041AB10` | `HintLinkView::Append` | 52 | authored |
 | `0x00419040` | `ClearHintLists` | 79 | authored |
 
 Source presence does not change these origin classifications. Private helper
@@ -216,3 +216,17 @@ The entry color now has packed/byte BGRA views matching the target32-bit
 initialization and parser byte accesses. The constructor is51 bytes but still
 has self-link scheduling differences; no exact or origin credit follows.
 See [line-reader identities and limits](evidence/hint-read-line/README.md).
+
+## Exact tail insertion member source
+
+The tail insertion at41AB10 is now maintained as HintLinkView::Append. Natural
+member source reproduces the whole52 bytes raw-equal in two independent full
+cold links, with no linkage fields. The former free HintAppendLink emits40;
+adding fastcall to that free form leaves all nine inspected owner hashes
+unchanged. The member preserves the final next-pointer recheck and incoming
+next-link behavior; production and fixture calls both use that member API.
+
+Six existing same-image guards retain986 bytes/all36 fields. The source view's
+class identity is descriptive, and original class/name/visibility/TU remain
+unknown. Loader and constructor exactness are separate open claims.
+[Full member replay](evidence/hint-list-member/README.md).

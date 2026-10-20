@@ -949,7 +949,7 @@ LoadHintFile
 HintReadLine
 HintSplitLine
 HintTrimWhitespace
-HintAppendLink
+HintLinkView::Append
 HintOwnerView::ConsumeEntries
 HintOwnerView::Update
 HintOwnerView::HintOwnerView
