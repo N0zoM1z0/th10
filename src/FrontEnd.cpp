@@ -4350,6 +4350,158 @@ int ResultMenuUpdate(ResultMenuView *menu)
     return 1;
 }
 
+// Target 0x4224C0. Position is a value argument: RET16 consumes owner + float3.
+// The alphabet length is captured once; the final three cells are control glyphs.
+void __stdcall ResultMenuDrawNameEntry(ResultMenuView *menu, AnmFloat3View position)
+{
+    int characterCount = strlen(g_FrontEndScoreEntryAlphabet);
+    g_AsciiManagerView->AddFormatText(&position, "%s", menu->name);
+    position.x += static_cast<float>(menu->nameIndex * 9);
+    if (menu->nameIndex == 8)
+        position.x -= 9.0f;
+    g_AsciiManagerView->color = 0xffffff00u;
+    g_AsciiManagerView->AddFormatText(&position, "_");
+    g_AsciiManagerView->color = 0xffffffffu;
+
+    position.x = 112.0f;
+    position.y = 320.0f;
+    position.z = 0.0f;
+    for (int index = 0; index < characterCount; ++index)
+    {
+        g_AsciiManagerView->color = menu->keyboard.current == index ?
+            0xffffff00u : 0xff808080u;
+        if (index < characterCount - 3)
+            g_AsciiManagerView->AddFormatText(
+                &position, "%c", g_FrontEndScoreEntryAlphabet[index]);
+        else
+            g_AsciiManagerView->AddFormatText(&position, "%c",
+                index == characterCount - 3 ? 0x81 :
+                index == characterCount - 2 ? 0x7f : 0x80);
+        if (static_cast<unsigned int>(index) % 13 == 12)
+        {
+            position.x = 112.0f;
+            position.y += 16.0f;
+        }
+        else
+            position.x += 18.0f;
+    }
+    g_AsciiManagerView->color = 0xffffffffu;
+}
+
+// Target 0x422660. ASCII+8988 selects the queued text shadow, not a game lock.
+int __stdcall ResultMenuDrawRows(ResultMenuView *menu)
+{
+    g_AsciiManagerView->drawShadow = 1;
+    switch (menu->state)
+    {
+    case 10:
+    case 17:
+    {
+        AnmFloat3View position(48.0f, 64.0f, 0.0f);
+        for (int row = 0; row < 25; ++row)
+        {
+            g_AsciiManagerView->color = menu->cursor.current == row ?
+                0xffffff00u : 0xff808080u;
+            ReplayManager *file = menu->replayFiles[row];
+            if (file != NULL)
+            {
+                ReplayDataHeader *data = file->replayData;
+                tm *date = localtime(reinterpret_cast<time_t *>(&data->timestamp));
+                g_AsciiManagerView->AddFormatText(&position,
+                    "No.%.2d %s %.2d/%.2d/%.2d %s %s %s", row + 1,
+                    data->replayName, date->tm_year % 100, date->tm_mon + 1,
+                    date->tm_mday,
+                    g_ReplayCharacterNames[data->character * 3 + data->shotType],
+                    g_ReplayDifficultyNames[data->difficulty],
+                    g_ReplayCompletionNames[data->completionState]);
+            }
+            else
+                g_AsciiManagerView->AddFormatText(&position,
+                    "No.%.2d -------- --/--/-- ------- - St-", row + 1);
+            position.y += 15.0f;
+        }
+        g_AsciiManagerView->color = 0xffffffffu;
+        break;
+    }
+    case 11:
+    case 18:
+    {
+        int frame = menu->timer.current;
+        int selected = menu->cursor.current;
+        AnmFloat3View position;
+        position.z = 0.0f;
+        if (frame < 10)
+        {
+            float settled = selected * 15.0f + 64.0f;
+            position.y = settled + (224.0f - settled) * frame * 0.1f;
+        }
+        else
+            position.y = 224.0f;
+        position.x = 102.0f;
+        ResultMenuDrawNameEntry(menu, position);
+        position.x = 48.0f;
+        ReplayDataHeader *data = g_ReplayManager->replayData;
+        tm *date = localtime(reinterpret_cast<time_t *>(&data->timestamp));
+        g_AsciiManagerView->AddFormatText(&position,
+            "No.%.2d          %.2d/%.2d/%.2d %s %s %s", selected + 1,
+            date->tm_year % 100, date->tm_mon + 1, date->tm_mday,
+            g_ReplayCharacterNames[data->character * 3 + data->shotType],
+            g_ReplayDifficultyNames[data->difficulty],
+            g_ReplayCompletionNames[g_FrontEndSelectedStage]);
+        break;
+    }
+    case 12:
+    case 19:
+    {
+        int selected = menu->cursor.current;
+        AnmFloat3View position(48.0f, 64.0f, 0.0f);
+        g_AsciiManagerView->AddFormatText(&position, "            Score Ranking!!");
+        position.x = 75.0f;
+        position.y = selected * 18.0f + 96.0f;
+        if (menu->scoreUnavailable == 0)
+            ResultMenuDrawNameEntry(menu, position);
+        else
+            selected = -1;
+        position.x = 48.0f;
+        position.y = 96.0f;
+        for (int row = 0; row < 10; ++row)
+        {
+            g_AsciiManagerView->color = row == selected ?
+                0xffffff00u : 0xff808080u;
+            FrontEndScoreRecordView *record = GetPracticeScoreRecord(
+                g_ReplayCharacter * 3 + g_ReplayShotType, g_ReplayDifficulty, row);
+            if (record->timestamp != 0)
+            {
+                tm *date = localtime(&record->timestamp);
+                // The target resamples the profile and selection after localtime.
+                record = GetPracticeScoreRecord(
+                    g_ReplayCharacter * 3 + g_ReplayShotType, g_ReplayDifficulty, row);
+                g_AsciiManagerView->AddFormatText(&position,
+                    "%2d %s %.9ld%d %.2d/%.2d/%.2d %s", row + 1,
+                    record->name, static_cast<long>(record->score), record->scoreSuffix,
+                    date->tm_year % 100, date->tm_mon + 1, date->tm_mday,
+                    g_FrontEndStageNames[record->stageNameIndex]);
+            }
+            else
+                g_AsciiManagerView->AddFormatText(&position,
+                    "%2d %s %.9ld%d --/--/-- Stage -", row + 1,
+                    record->name, static_cast<long>(record->score), record->scoreSuffix);
+            position.y += 18.0f;
+        }
+        g_AsciiManagerView->color = 0xffffffffu;
+        break;
+    }
+    }
+    g_AsciiManagerView->drawShadow = 0;
+    return 1;
+}
+
+// Target 0x422AA0 is installed as the scheduler draw callback at0x42217A.
+int __fastcall ResultMenuDrawRowsCallback(ResultMenuView *menu)
+{
+    return ResultMenuDrawRows(menu);
+}
+
 #include "ReplayTimingSource.hpp"
 extern int g_GameStartupValue474C90;
 

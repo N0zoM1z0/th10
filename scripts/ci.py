@@ -105,6 +105,7 @@ def main() -> int:
         run("Validate title and main-menu controls", [sys.executable, "scripts/test-frontend-main-menu.py", "--no-mutations"])
         run("Validate MIDI event and timer controls", [sys.executable, "scripts/test-midi-events.py", "--no-mutations"])
         run("Validate spell-panel state and sprite binding", [sys.executable, "scripts/test-spell-panel.py", "--no-mutations"])
+        run("Validate result rows and name-entry ASCII queue", [sys.executable, "scripts/test-result-rows.py", "--no-mutations"])
         run("Validate script browser state and event order", [sys.executable, "scripts/test-script-viewer-update.py"])
         run("Validate script browser display and renderer calls", [sys.executable, "scripts/test-script-viewer-draw.py"])
         run("Validate worker wait and restart order", [sys.executable, "scripts/test-script-viewer-worker.py"])

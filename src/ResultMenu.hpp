@@ -35,4 +35,7 @@ typedef char ResultMenuPauseFields[(offsetof(ResultMenuView,auxiliaryVm)==0x1dc 
 void GameCompleteStageTransition(ResultMenuView *menu);
 void __stdcall ResultMenuUpdateResult(ResultMenuView *menu);
 int ResultMenuUpdate(ResultMenuView *menu);
+void __stdcall ResultMenuDrawNameEntry(ResultMenuView *menu, AnmFloat3View position);
+int __stdcall ResultMenuDrawRows(ResultMenuView *menu);
+int __fastcall ResultMenuDrawRowsCallback(ResultMenuView *menu);
 #endif

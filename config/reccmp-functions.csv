@@ -1053,3 +1053,6 @@ MidiOutputView::ApplyChannelVolumes,0x0043B7A0,function
 MidiTimerView::Tick,0x0043B8B0,function
 EnemyGameStateView::UpdateSpellPanel,0x00408D60,function
 EnemySpellPanelUpdateCallback,0x00409220,function
+ResultMenuDrawNameEntry,0x004224C0,function
+ResultMenuDrawRows,0x00422660,function
+ResultMenuDrawRowsCallback,0x00422AA0,function

@@ -649,6 +649,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004224C0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x00422660,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x00422A90,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x00422AA0,unknown,,indeterminate,unknown,target-result-rows-2026-10-20
 0x00422AB0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00422C30,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00422C80,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17

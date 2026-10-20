@@ -646,9 +646,10 @@ address,span_end,state,confidence,evidence_id,notes
 0x00422220,0x00422356,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00422360,0x004223A2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004223F0,0x004224A2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x004224C0,0x00422653,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x00422660,0x00422A6A,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x422aa1 to entry; independent IDA MCP extent agrees"
+0x004224C0,0x00422653,reviewed,high,target-result-rows-2026-10-20,Complete dense404-byte body; two RET16 exits and two result-row calls; following12 CC bytes. Temporary Ghidra body agrees.
+0x00422660,0x00422A85,reviewed,high,target-result-rows-2026-10-20,"Complete1035-byte code ends in RET4 at422A68; NOP422A6B, guarded four-entry table422A6C and ten selector bytes422A7C..422A85 belong to owner. All destinations are local instruction starts; next ten CC bytes precede callback422A90. Ghidra body1026 omits nine internal alignment bytes."
 0x00422A90,0x00422A99,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; absolute-code-refs=1; no overlap or external interior branch
+0x00422AA0,0x00422AA6,reviewed,high,target-result-rows-2026-10-20,Seven-byte PUSH ECX / CALL422660 / RET callback; independent address installation42217A and CC padding on both sides. No overlap or interior incoming reference.
 0x00422AB0,0x00422C2D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00422C30,0x00422C79,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00422C80,0x004231B9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch

@@ -3157,3 +3157,43 @@ are now stale for this shared
 header/ECL TU; retain its hashes and reject unreviewed whole-cache reuse.
 MIDI cache remains independent. x87, construction, data ownership and native
 product/runtime stay open. See [the focused evidence](evidence/spell-panel/README.md).
+
+
+## Result rows and name-entry drawing (2026-10-20)
+
+Name/grid4224C0 and rows422660 now map1466 authored owned bytes; draw adapter
+422AA0 adds7 source-present indeterminate-origin bytes. Rows owns1062:1035
+code/alignment, NOP422A6B, four pointers422A6C and ten selectors422A7C..422A85.
+Unsigned guard9 after phase-minus10, both reads, local destinations and CC
+neighbors establish27 missing authored denominator bytes. Ghidra's1026-byte
+body separately omits nine internal alignment bytes already in the old code
+extent. Name entry uses a by-value float3 plus owner and two RET16 exits.
+
+ASCII8988 is the draw-shadow field, not the reference's game busy flag. Phases
+10/17 draw25 live-selected slots;11/18 interpolate the name at frame0..9 and
+use current-stage completion;12/19 draw ten score rows with unavailable-name
+highlight suppression. Replay headers survive localtime; score records and
+selection/profile resample after it. Suffix bytes remain signed. Name input
+uses13 columns,18/16 pitch, control glyphs81/7F/80 and the length8 underline
+correction. Actual formatter/queue bodies, not callbacks inside mock formatters,
+supply host output. localtime remapping is an explicit sampling probe with no
+claim that those global changes occur in CRT/game runtime.
+
+Two independent complete two-TU /GL /GS /EHs colds freeze18 inputs and each
+strictly pass628 complete bytes/all21 fields. Name404 adds authored exact bytes;
+adapter7 adds indeterminate exact bytes; old ASCII formatter85 and queue132
+retain217 guard bytes/all4 fields. Source presence and parent exactness remain
+independent. Rows1034/1062 stays nonexact; native code1005 plus29 tail bytes
+requires data-aware review. A typed profile-array control is neutral; earlier
+source is restored. Do not repeat shape/ABI/placement sweeps without new evidence.
+Actual-source ASan/UBSan/leak checks and14 strict named mutants pass. The initial
+AddString140 diagnostic size was wrong; both canonical guard replays use its
+complete132 bytes. Production class/TU/storage/runtime remain open. See
+[the complete proof and reference provenance](evidence/result-rows/README.md).
+
+The final local Ghidra review corrects an old private full-text hash off-by-one:
+401000..465A80 is412289 bytes/64A81h with SHA-256
+cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f.
+The old64A80h digest is only a prefix. Shared distributed end probes already
+include the last byte. See the inclusive-range note in ORACLES.md. All87 public
+CI checks and final focused/toolchain/tracking/progress/whitespace checks pass.

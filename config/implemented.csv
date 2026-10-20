@@ -1052,3 +1052,6 @@ MidiOutputView::ApplyChannelVolumes
 MidiTimerView::Tick
 EnemyGameStateView::UpdateSpellPanel
 EnemySpellPanelUpdateCallback
+ResultMenuDrawNameEntry
+ResultMenuDrawRows
+ResultMenuDrawRowsCallback

@@ -1,0 +1,204 @@
+{
+  "scope": "bounded result draw proof; non-runnable diagnostic image",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_source_owned_bytes": 1466,
+  "new_indeterminate_source_bytes": 7,
+  "authored_denominator_correction": 27,
+  "new_authored_exact_bytes": 404,
+  "new_indeterminate_exact_bytes": 7,
+  "cold_translation_units_each": 2,
+  "complete_compared_bytes_each": 628,
+  "existing_guard_bytes": 217,
+  "linkage_fields_each": 21,
+  "graph": {
+    "source": "src/FrontEnd.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp"
+    ],
+    "entry_symbol": "?ResultMenuDrawRowsCallback@@YIHPAUResultMenuView@@@Z",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/EHs"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "project_input_sha256": {
+    "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+    "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/FrontEnd.cpp": "7e439c78b45bb7d708ab561bfa98eef507aefff2350b9fcf09095fcc277c8bff",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "proofs": [
+    {
+      "cold": "one",
+      "artifacts_sha256": {
+        "source.exe": "e0cef1c488f74d97d320743b1620dc12d65f5d7adececa3753794827ac19c72e",
+        "source.map": "244622b5268d018668537d359c33f35fb3d448eee89ed6937c998ce5c8806cfd",
+        "source.pdb": "691707962c6db28440873e228f05ab36307f46eff3a4d9d3cfd9d02595223913",
+        "link-aliases.rsp": "3bb3c826b6cd3f95a5fd11538b4a338797eafc7afcf30030be8c917201f4bf31"
+      },
+      "results": [
+        {
+          "unit": "result-menu-draw-name-entry",
+          "result": "exact",
+          "size": 404,
+          "compared_size": 404,
+          "decoded_bytes": 404,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 16
+        },
+        {
+          "unit": "result-menu-draw-rows-callback",
+          "result": "exact",
+          "size": 7,
+          "compared_size": 7,
+          "decoded_bytes": 7,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 1
+        },
+        {
+          "unit": "guard-format",
+          "result": "exact",
+          "size": 85,
+          "compared_size": 85,
+          "decoded_bytes": 85,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 4
+        },
+        {
+          "unit": "guard-queue",
+          "result": "exact",
+          "size": 132,
+          "compared_size": 132,
+          "decoded_bytes": 132,
+          "raw_equal": true,
+          "normalization_complete": true,
+          "linkage_fields": 0
+        }
+      ]
+    },
+    {
+      "cold": "two",
+      "artifacts_sha256": {
+        "source.exe": "60d3b94bf0635f79112d869d15b10a0e914c38fe51bf2b65c7ef572d6b52a2f8",
+        "source.map": "14a94500077a1a8e11a3e1595f186302bba7dc8892aacc34831b9dc8c003dfb6",
+        "source.pdb": "36140b37575696167384a8ba1e26f1f4c407c489a70b6de8c2e5e5d402570b57",
+        "link-aliases.rsp": "3bb3c826b6cd3f95a5fd11538b4a338797eafc7afcf30030be8c917201f4bf31"
+      },
+      "results": [
+        {
+          "unit": "result-menu-draw-name-entry",
+          "result": "exact",
+          "size": 404,
+          "compared_size": 404,
+          "decoded_bytes": 404,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 16
+        },
+        {
+          "unit": "result-menu-draw-rows-callback",
+          "result": "exact",
+          "size": 7,
+          "compared_size": 7,
+          "decoded_bytes": 7,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 1
+        },
+        {
+          "unit": "guard-format",
+          "result": "exact",
+          "size": 85,
+          "compared_size": 85,
+          "decoded_bytes": 85,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 4
+        },
+        {
+          "unit": "guard-queue",
+          "result": "exact",
+          "size": 132,
+          "compared_size": 132,
+          "decoded_bytes": 132,
+          "raw_equal": true,
+          "normalization_complete": true,
+          "linkage_fields": 0
+        }
+      ]
+    }
+  ],
+  "parent": {
+    "target_owned_bytes": 1062,
+    "target_code_bytes": 1035,
+    "native_owned_bytes": 1034,
+    "native_code_bytes": 1005,
+    "result": "nonexact; data-aware parent field review remains open"
+  },
+  "control": {
+    "typed_profile_array": "size and structural-comparison neutral; restored"
+  },
+  "host": {
+    "asan_ubsan_leaks": "passed",
+    "strict_mutants": 14,
+    "ascii_helpers": "actual source; no injected callbacks",
+    "localtime": "deterministic role; remapping probes sampling only"
+  },
+  "ghidra": {
+    "mode": "local readOnly/noanalysis; temporary metadata rolled back",
+    "mapped_text_start": "0x401000",
+    "mapped_text_end_inclusive": "0x465a80",
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "bytes_after_review": "unchanged",
+    "correction": "earlier private hash covered only64A80h bytes; final review reran full64A81h range"
+  },
+  "final_checks": {
+    "public_ci_checks_passed": 87,
+    "target_review": "passed",
+    "toolchain_check": "passed",
+    "tracking": "passed",
+    "generated_progress": "current",
+    "whitespace": "passed"
+  }
+}

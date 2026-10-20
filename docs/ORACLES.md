@@ -22,6 +22,17 @@ Decompiler text, names, types, and candidate extents remain provisional. A
 successful build or visually plausible runtime also cannot waive missing bytes,
 relocations, data owners, or scenario observables.
 
+Full mapped-text hashing uses the inclusive manifest range401000..465A80:
+412289 bytes (64A81h), SHA-256
+cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f.
+Derive the size from text_virtual_size or end-minus-start-plus-one. Older local
+review scripts hashed64A80h bytes, yielding
+c1611c9becb832a4e2ba456afc58218fb5b8fafd6c85d19e3addbebb0c946e0a;
+that is a prefix ending465A7F, not a complete mapped-text digest. The shared
+ghidra.py distributed attestation already uses the inclusive end and its final
+16-byte probe covers465A80. The2026-10-20 result-row review separately reran
+the complete corrected memory hash with read-only rollback.
+
 The toolchain smoke proves that normal C/C++ COFF, C++ `/GL`, resources, a
 PE32 link, and PE/PDB contribution binding execute under headless Wine. It
 grants no TH10 source, profile, ownership, or exactness credit. The

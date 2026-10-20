@@ -31,6 +31,26 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Result rows/name drawing now maps1466 authored source bytes plus7 unknown-
+  origin callback bytes. Rows422660 owns1062, correcting27 missing denominator
+  bytes from its guarded four-pointer/ten-selector table and NOP. Name4224C0
+  has a by-value float3/RET16 API; ASCII8988 is drawShadow, not a game busy flag.
+  Live replay/header/score sampling, current-stage completion, signed suffixes
+  and control glyphs are restored. Two independent complete two-TU /GL /GS /EHs
+  colds freeze18 inputs and each strictly pass628 bytes/all21 fields:404 new
+  authored,7 indeterminate,217 existing ASCII guard bytes. Actual formatter/
+  queue host checks pass ASan/UBSan/leaks and14 strict mutants. localtime is a
+  declared role; no fake ASCII callbacks or runtime reachability claim. Rows
+  stays1034/1062; code1005/1035 and data ownership remain explicit. Typed profile
+  control is neutral; earlier source restored. All87 public CI checks pass.
+  The full mapped-text hash is corrected to412289/64A81h bytes through465A80;
+  the old64A80h hash is a prefix. See ORACLES.md; final read-only Ghidra review
+  passed the complete corrected range. Initial AddString140 size error is superseded
+  by two complete132-byte guard replays. Next rotate to41D3D0/1001 or another
+  target-backed large owner; require new context evidence before parent shape
+  controls. FrontEnd's older18-TU cache is historical for the changed source/
+  ResultMenu header as well; MIDI and SpellPanel caches remain separate. See
+  [the complete proof and limits](evidence/result-rows/README.md).
 - Spell-card panel Update408D60 now maps1057 authored source bytes and the
   registered409220 adapter maps10 indeterminate-origin bytes. Ghidra omits12
   internal alignment bytes already covered by the physical boundary. Shared
@@ -45,7 +65,7 @@ scratch paths, or build hashes into this file.
   restored. Existing helper65/356/111 structural diagnostics do not add credit.
   FrontEnd's older cache is stale for EnemyGameState.hpp/EnemyEclDispatcher.cpp;
   hash-check individual dependency closure before object reuse. MIDI's separate
-  cache remains current. Next source gaps include422660/1035 or actual panel
+  cache remains current. Next source gaps then included422660 (now recovered above) or actual panel
   lifecycle4089C0/211; revisit private EDI/x87 only with new context evidence.
   See [the full scope and reference provenance](evidence/spell-panel/README.md).
 - MIDI event/timer recovery maps **2441 authored source bytes** across parser
