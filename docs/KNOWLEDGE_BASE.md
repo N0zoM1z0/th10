@@ -2957,3 +2957,59 @@ callbacks. The MIT pinned reference is hypothesis material; its forced attribute
 linker placement and symbol-number tuning are not adopted. The unrelated401100
 boundary metadata discrepancy and pre-existing D3D evidence are unchanged.
 See [the bounded target, source, native and host evidence](evidence/frontend-replay-save/README.md).
+
+## 2026-10-20 Replay factory exact, generated EH binding and FPS source
+
+Load4296F0's seven raw callers pass a path on the stack and both exits useRET4.
+The former maintained cdecl factory routes mode2 through shared Initialize and
+emits179 bytes with plain RET and NEG/SBB normalization. The target instead
+writes mode2 and directly checks reader42A200. The maintained stdcall factory
+and direct reader expression restore181 complete bytes. These are bounded
+protocol/source observations, not original declaration or inlining claims.
+Two independent full18-TU /GL /GS /EHs colds freeze53 inputs and each strictly
+replay759 bytes/all17 fields: new Load181/all12 and eight old dependencies578/
+all5. Only181 authored bytes are added. Existing Destroy's current carrier is
+refreshed without changing its recipe. Callee/production ownership and runtime
+remain independent.
+
+The factory's EH operand names a MAP-static parent-specific generated handler.
+Its10-byte dispatch shares one21-byte PDB contribution with the11-byte unwind
+action. The new explicit allocation-EH address lane verifies the parent symbol,
+unaliased MAP entry, same PDB object/module and full contribution, immutable
+one-state FuncInfo and its state-1 saved-storage deletion action atEBP-10.
+The handler enters independently bound CxxFrameHandler46276D, and the action
+uses scalar delete4524A1. Target handler46564B points to FuncInfo47169C/map471694/
+action465640. This is address binding only; no generated-child, metadata-owner
+or EH-runtime credit is added. Other shapes fail closed. Thirty-five synthetic
+rejection controls and both actual cold integration proofs pass; old public,
+static and local-field rules remain intact.
+
+The target QueueSoundSample43DC90 has ECX owner/EDI sound/stack sample, whereas
+the previous save-page sound shim remains an unresolved cdecl single-argument
+symbol in native output. Seven calls now use the actual maintained queue method
+with sample0. Direct repeated-input method calls also remove six extra wrapper
+calls. Save first changes1364 to1452, then corrected factory ABI yields1444/1460.
+Direct cursor-setter syntax has identical code and is restored. Draw961/955 and
+both whole update/draw owners stay nonexact; no variable-count, forced inline,
+register-ABI or padding tuning is adopted.
+
+FPS display429A70's182-byte owner is now source-present. Target game pointer
+477810 gates playback mode1; unsigned byte+1C4 is displayed at383/450 with%3d,
+red below30/yellow below50, followed by a fresh global ASCII white reset.
+Its sole observed incoming code edge is the28-byte adapter42A430. Current native
+172/182 remains nonexact; the adapter's source and fastcall chain-type contract
+remain open. No dummy first register argument is added. The currently Replay-
+tagged10 authored rows/5586 bytes are all mapped; this does not prove complete
+untagged subsystem inventory or close indeterminate adapters.
+
+Host regression now executes the actual factory/FPS/queue bodies with the old
+save/cursor/input/delete source. A queue-entry observation, typed objects,
+metadata and sample buffers expose the real owner/sample0 contract. The lower
+reader remains an explicit I/O role; mode2, arbitrary nonzero failures, cleanup
+and preservation of the active global are checked. FPS gate/threshold/format/
+position/color and formatter-driven global replacement witnesses pass. Positive
+ASan/UBSan/leak checks and14 strict named mutants pass; SDK/layout/prefill/int32-
+time/renderer/allocation/I/O roles remain host limits. Native SDK declarations
+use the existing Main.hpp shield. Product/runtime, dual-Oracle semantic and
+port gates remain open. Pre-existing D3D evidence and the401100 boundary metadata
+discrepancy are untouched. See [the full scope and reproducible checks](evidence/replay-load/README.md).

@@ -147,3 +147,15 @@ Keep executable-code and owned-data portions explicit in the evidence.
 compared byte to one claim; its current TH10 uses are excluded runtime units or
 an indeterminate leaf, not an instruction-only authored-byte policy. A boundary
 correction can increase the authored denominator with zero exact credit.
+
+## One-allocation EH entry binding
+
+A linked DIR32 field may explicitly opt into `allocation_eh_handler = true`
+for the supported VC7.1 single-allocation cleanup shape. Its exact parent-named
+MAP static entry must join one unaliased, complete21-byte generated PDB region
+in the same object/module as the already bound parent. Both images must expose
+the immutable one-state FuncInfo, saved storage atEBP-10, scalar-delete action
+and CxxFrameHandler dispatch protocol. Ordinary public/static selectors remain
+unchanged. This supplies an address identity for the complete parent replay;
+it grants no child-code, metadata ownership or EH-runtime credit. Unsupported
+shapes stay unknown. See [the replay factory proof and limitations](evidence/replay-load/README.md).

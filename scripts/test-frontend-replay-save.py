@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Actual replay-save bodies and cursor/input helpers with explicit host roles.
+"""Actual replay-save, replay factory/FPS and cursor/input helpers with host roles.
 
 Canonical FrontEnd/Replay/Input headers are copied with native-layout assertions
 omitted and timer prefill defined. Only owner time_t casts use a host int32 seam.
 VMs, replay I/O/lifecycle, state transitions, time/localtime and ASCII formatting
-are callback-sensitive roles. No target/runtime, ABI, layout or exactness claim.
+are callback-sensitive roles. The actual sound queue has an entry observation. No target/runtime, ABI, layout or exactness claim.
 """
 import argparse, hashlib, json, os, re, subprocess, tempfile
 from pathlib import Path
@@ -23,7 +23,7 @@ def body(text, signature):
 
 def run(args, output):
     output.mkdir(parents=True, exist_ok=True)
-    hashes = {}; pending = ['FrontEnd.hpp', 'ReplayManager.hpp', 'InputState.hpp']; seen = set()
+    hashes = {}; pending = ['FrontEnd.hpp', 'ReplayManager.hpp', 'InputState.hpp', 'EnemySoundQueue.hpp']; seen = set()
     while pending:
         name = pending.pop()
         if name in seen: continue
@@ -47,10 +47,22 @@ def run(args, output):
         'int FrontEndInputView::IsRepeated(', 'static int InputRepeated('])
     p = ROOT/'src/ReplayManager.cpp'; replay = p.read_text(); hashes['src/ReplayManager.cpp'] = hashlib.sha256(p.read_bytes()).hexdigest()
     (output/'replay-delete.inc').write_text(body(replay, 'void ReplayManager::Destroy('))
+    owners += '\n\n' + body(replay, 'ReplayManager *__stdcall ReplayManager::Load(') + '\n\n' + body(replay, 'int ReplayManager::DrawFps()')
+    p = ROOT/'src/EnemyEclDispatcher.cpp'; enemy = p.read_text(); hashes['src/EnemyEclDispatcher.cpp'] = hashlib.sha256(p.read_bytes()).hexdigest()
+    sound = body(enemy, 'struct EnemySoundCueMetadataView') + ';\nEnemySoundCueMetadataView g_EnemySoundCueMetadata[134];\n'
+    queue = body(enemy, 'void EnemySoundQueueView::QueueSoundSample(')
+    opening = queue.index('{'); queue = queue[:opening+1] + '\n    HostObserveQueue(this, soundId, sample); // HOST entry observation.\n' + queue[opening+1:]
+    (output/'sound.inc').write_text(sound + queue)
     constants = body(text, 'enum\n{\n    FRONT_END_FLAG_DEMO_TRANSITION') + ';'
     (output/'helpers.inc').write_text(constants + '\n' + helpers)
     variants = [('positive', owners, None)]
     mutations = [
+        ('wrong-load-mode', 'manager->mode = REPLAY_MANAGER_LOAD_ONLY;', 'manager->mode = REPLAY_MANAGER_RECORD;', 'factory-load-mode'),
+        ('wrong-fps-threshold', 'fps < 30.0f', 'fps < 31.0f', 'fps-color'),
+        ('wrong-fps-mode', 'case REPLAY_MANAGER_PLAYBACK:', 'case REPLAY_MANAGER_LOAD_ONLY:', 'fps-gate'),
+        ('stale-fps-ascii', 'g_AsciiManagerView->AddFormatText(&position, "%3d", replayFps);\n            g_AsciiManagerView->color = 0xffffffffu;', 'AsciiManagerView *oldAscii = g_AsciiManagerView;\n            oldAscii->AddFormatText(&position, "%3d", replayFps);\n            oldAscii->color = 0xffffffffu;', 'fps-current-ascii'),
+        ('wrong-sound-owner', 'g_MainSoundOwner', 'g_AlternateSoundOwner', 'queue-owner'),
+        ('wrong-sound-sample', 'FRONT_END_SOUND_UNLOCK, 0', 'FRONT_END_SOUND_UNLOCK, 1', 'queue-sample'),
         ('early-opening', 'stateTimer.current > 6', 'stateTimer.current >= 6', 'opening-seven'),
         ('stale-header', 'recorded->replayData->completionState = 8;', 'staleHeader->completionState = 8;', 'time-live-header'),
         ('rebound-time-owner', 'recorded->replayData->completionState = 8;', 'g_ReplayManager->replayData->completionState = 8;', 'time-stable-owner'),
@@ -62,7 +74,7 @@ def run(args, output):
     ]
     if not args.no_mutations:
         for name, old, new, label in mutations:
-            assert owners.count(old) == 1, (name, owners.count(old))
+            assert owners.count(old) == (7 if name == 'wrong-sound-owner' else 1), (name, owners.count(old))
             variant = owners
             if name == 'stale-header':
                 old_decl = 'ReplayManager *recorded = g_ReplayManager;'

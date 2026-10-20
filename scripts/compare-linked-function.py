@@ -23,6 +23,7 @@ from linked_image import (
     verify_capstone,
 )
 from ltcg_link import ANCHOR_PREFIX, support_profile_overrides
+from linked_allocation_eh import allocation_eh_selector, allocation_eh_target
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -82,6 +83,7 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
     for raw in raw_fields:
         if not isinstance(raw, dict):
             raise ValueError("linked unit contains an invalid linkage row")
+        allocation_eh_selector(unit, raw)
         kind = str(raw["type"])
         width = int(raw.get("width", FIELD_WIDTHS.get(kind, 0)))
         if kind not in FIELD_WIDTHS or width != FIELD_WIDTHS[kind]:
@@ -95,6 +97,7 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
                 "local": bool(raw.get("local", False)),
                 "target": int(raw["target"]),
                 "addend": int(raw.get("addend", 0)),
+                **({"allocation_eh_handler": True} if raw.get("allocation_eh_handler") else {}),
                 **({"static_source": raw["static_source"], "static_size": raw["static_size"]}
                    if static_linkage_selector(unit, raw) is not None else {}),
                 **({key: raw[key] for key in STATIC_ADDRESS_KEYS}
@@ -396,6 +399,7 @@ def compare_unit(name: str) -> dict[str, object]:
     target = verified_target()
     static_calls = {}
     static_addresses = {}
+    parent_function = dict(function)
     for field in expected:
         key = (int(field["offset"]), str(field["type"]), int(field["width"]))
         observed = actual_by_key[key]
@@ -424,6 +428,11 @@ def compare_unit(name: str) -> dict[str, object]:
                     f"candidate={candidate_offset:#x} target={target_offset:#x}"
                 )
             linked_symbol = "<local>"
+        elif field.get("allocation_eh_handler"):
+            allocation_eh_evidence = allocation_eh_target(
+                unit, field, directory, candidate_image, publics, aliases,
+                target, parent_function, expected_candidate_address)
+            linked_symbol = semantic
         elif "static_source" in field:
             if observed.get("instruction") != "call":
                 raise ValueError("static linkage must be a decoded direct CALL")
@@ -479,6 +488,7 @@ def compare_unit(name: str) -> dict[str, object]:
                 "target": f"0x{int(field['target']):08X}",
                 "addend": int(field["addend"]),
                 "target_encoded_value": encoded_text,
+                **({"allocation_eh": allocation_eh_evidence} if field.get("allocation_eh_handler") else {}),
                 **({"static_owner": static_calls[static_key]}
                    if "static_source" in field else {}),
                 **({"static_address_owner": static_addresses[address_key],

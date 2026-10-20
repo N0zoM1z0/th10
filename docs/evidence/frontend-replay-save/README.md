@@ -7,6 +7,10 @@ screen name and cdecl update declaration are corrected; both target handlers
 consume one stack controller and end in RET4. These source mappings do not
 establish original names, translation units, native product or runtime behavior.
 
+The later [replay factory checkpoint](../replay-load/README.md) closes Load181,
+connects the actual sound queue/input calls and supersedes the diagnostic sizes
+below. This document and its proof metadata retain the initial807a3a7 scope.
+
 ## Target boundaries and source
 
 The original Japanese1.00a target is SHA-256

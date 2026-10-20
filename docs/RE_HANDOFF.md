@@ -31,7 +31,23 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
-- Front-end replay save screen16 now maps update433570/1460 and draw433B30/955,
+- Replay factory Load4296F0 closes **181 new authored exact bytes**. Seven target
+  callers/two RET4 exits establish its maintained stdcall declaration; direct
+  mode2/reader source removes the old normalization. Two independent full18-TU
+  /GL /GS /EHs colds freeze53 inputs and each pass759 complete bytes/all17 fields,
+  including578 existing dependency bytes. The opt-in allocation-EH address lane
+  checks the exact parent MAP static, same-object21-byte PDB region, immutable
+  one-state FuncInfo and storage/delete/frame-handler protocol;35 synthetic
+  rejection controls pass. No generated-child or runtime credit. Current Destroy
+  carrier is refreshed without recipe migration. FPS182 now has source; Replay's
+  tagged10 authored rows/5586 bytes are mapped, with untagged/adapter scope open.
+  Actual-source host factory/FPS/queue tests and14 ASan/UBSan mutants pass.
+  Save updater1444/1460, draw961/955 and FPS172/182 remain nonexact. Direct setter
+  syntax is byte-neutral and restored. Next review the actual28-byte FPS draw
+  adapter/fastcall chain type or cursor initialization branch shape; do not copy
+  dummy register arguments, predicate counts or forced attributes. See
+  [the new complete proof, source and limits](evidence/replay-load/README.md).
+- Initial807a3a7 front-end replay save recovery maps update433570/1460 and draw433B30/955,
   **2415 authored source bytes**. A fresh guarded five-entry table review adds20
   denominator bytes; the former Result name/cdecl update seam are corrected.
   Time keeps its replay owner but reloads the header; save captures the slot

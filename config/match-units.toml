@@ -22166,3 +22166,20 @@ linkages = [
   { offset = 0x06, type = "REL32", symbol = "??1ReplayManager@@QAE@XZ", target = 0x004294A0 },
   { offset = 0x0C, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x004524A1 },
 ]
+
+# Complete stack/RET4 replay factory with validated allocation-EH binding.
+[units.replay-manager-load]
+source = "src/FrontEnd.cpp"
+support_sources = ["src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/AnmVmId.cpp", "src/EnemyEclDispatcher.cpp", "src/ReplayManager.cpp", "src/ScriptViewer.cpp", "src/ScriptViewerWorker.cpp", "src/FileSystem.cpp", "src/Main.cpp", "src/Chain.cpp", "src/RandomMath.cpp", "src/DecomphelpLeafAccessors.cpp", "src/TransitionEffect.cpp", "src/Sound.cpp", "src/Player.cpp", "src/GameErrorContext.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+entry_symbol = "?FrontEndUpdateCallback@@YIHPAUFrontEndControllerView@@@Z"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/ReplayManagerDestroy"
+pdb_source = "src/ReplayManager.cpp"
+functions = ["ReplayManager::Load"]
+symbol = "?Load@ReplayManager@@SGPAV1@PBD@Z"
+target_address = 0x4296f0
+size = 181
+linkages = [{ offset = 0x3, type = "DIR32", symbol = "__ehhandler$?Load@ReplayManager@@SGPAV1@PBD@Z", target = 0x46564b, allocation_eh_handler = true }, { offset = 0x9, type = "DIR32", symbol = "__except_list", target = 0x0 }, { offset = 0x11, type = "DIR32", symbol = "__except_list", target = 0x0 }, { offset = 0x1d, type = "REL32", symbol = "??2@YAPAXI@Z", target = 0x452493 }, { offset = 0x38, type = "DIR32", symbol = "??1ReplayStageState@@QAE@XZ", target = 0x42ac60 }, { offset = 0x3d, type = "DIR32", symbol = "??0ReplayStageState@@QAE@XZ", target = 0x42ac20 }, { offset = 0x4d, type = "REL32", symbol = "??_L@YGXPAXIHP6EX0@Z1@Z", target = 0x45252d }, { offset = 0x76, type = "REL32", symbol = "?LoadReplay@ReplayManager@@QAEHPBD@Z", target = 0x42a200 }, { offset = 0x80, type = "REL32", symbol = "??1ReplayManager@@QAE@XZ", target = 0x4294a0 }, { offset = 0x86, type = "REL32", symbol = "??3@YAXPAX@Z", target = 0x4524a1 }, { offset = 0x97, type = "DIR32", symbol = "__except_list", target = 0x0 }, { offset = 0xab, type = "DIR32", symbol = "__except_list", target = 0x0 }]

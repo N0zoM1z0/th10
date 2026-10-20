@@ -3004,17 +3004,19 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
     {
         FrontEndCursorView *cursor = &controller->cursor;
         cursor->previous = cursor->current;
-        if (InputRepeated(FRONT_END_INPUT_UP))
+        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP))
             cursor->Move(-1);
-        if (InputRepeated(FRONT_END_INPUT_DOWN))
+        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN))
             cursor->Move(1);
         if (cursor->previous != cursor->current)
-            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                FRONT_END_SOUND_MOVE, 0);
 
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
             controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_CLOSING);
-            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                FRONT_END_SOUND_CANCEL, 0);
         }
         else if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
@@ -3039,7 +3041,8 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
                     break;
             }
             controller->scoreEntryNameCursor = length;
-            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                FRONT_END_SOUND_SELECT, 0);
             controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_ENTER_NAME);
         }
         break;
@@ -3049,18 +3052,18 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
     {
         FrontEndCursorView *keyboard = &controller->scoreEntryKeyboardCursor;
         keyboard->previous = keyboard->current;
-        if (InputRepeated(FRONT_END_INPUT_UP))
+        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP))
             keyboard->Move(-FRONT_END_SCORE_ENTRY_COLUMNS);
-        if (InputRepeated(FRONT_END_INPUT_DOWN))
+        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN))
             keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS);
-        if (InputRepeated(FRONT_END_INPUT_LEFT))
+        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_LEFT))
         {
             if (keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS != 0)
                 keyboard->Move(-1);
             else
                 keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS - 1);
         }
-        if (InputRepeated(FRONT_END_INPUT_RIGHT))
+        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_RIGHT))
         {
             if (keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS !=
                 FRONT_END_SCORE_ENTRY_COLUMNS - 1)
@@ -3069,7 +3072,8 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
                 keyboard->Move(1 - FRONT_END_SCORE_ENTRY_COLUMNS);
         }
         if (keyboard->previous != keyboard->current)
-            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                FRONT_END_SOUND_MOVE, 0);
 
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
         {
@@ -3111,7 +3115,8 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
             }
             else if (key == alphabetLength - 1)
             {
-                FrontEndPlaySound(FRONT_END_SOUND_UNLOCK);
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                    FRONT_END_SOUND_UNLOCK, 0);
                 sprintf(replayPath, "th10_%.2d.rpy", controller->cursor.current + 1);
                 ReplayManager::Destroy(controller->replayFiles[controller->cursor.current]);
                 g_ReplayManager->SaveReplay(replayPath, controller->scoreEntryName);
@@ -3122,7 +3127,8 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
                     controller->scoreEntryName);
                 controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
             }
-            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                FRONT_END_SOUND_SELECT, 0);
         }
         if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
         {
@@ -3130,7 +3136,8 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
                 controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
             else
             {
-                FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                    FRONT_END_SOUND_CANCEL, 0);
                 --controller->scoreEntryNameCursor;
                 controller->scoreEntryName[controller->scoreEntryNameCursor] = ' ';
             }
@@ -3166,6 +3173,7 @@ int __stdcall FrontEndControllerView::UpdateReplaySave(
     }
     return 1;
 }
+
 
 
 // TH10_FRONTEND_FUNCTION: 0x00433B30 FrontEndControllerView::DrawReplaySave

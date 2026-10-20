@@ -1,3 +1,4 @@
+#include "Main.hpp"
 #include "ReplayChain.hpp"
 
 #include "Decompress.hpp"
@@ -313,10 +314,11 @@ ReplayManager *ReplayManager::Create(int replayMode, const char *path)
     return manager;
 }
 
-ReplayManager *ReplayManager::Load(const char *path)
+ReplayManager *__stdcall ReplayManager::Load(const char *path)
 {
     ReplayManager *manager = new ReplayManager;
-    if (manager->Initialize(REPLAY_MANAGER_LOAD_ONLY, path) != 0)
+    manager->mode = REPLAY_MANAGER_LOAD_ONLY;
+    if (manager->LoadReplay(path) != 0)
     {
         if (manager != NULL)
             delete manager;
@@ -502,6 +504,40 @@ int ReplayManager::ProcessFrame()
     }
 
     frameCounter++;
+    return 1;
+}
+
+// Maintained shared pointer identity at target0x477810; no GameManager layout.
+struct GameManager;
+extern GameManager *g_GameManager;
+
+// TH10_REPLAY_FUNCTION: 0x00429A70 ReplayManager::DrawFps
+int ReplayManager::DrawFps()
+{
+    if (g_GameManager != NULL)
+    {
+        switch (mode)
+        {
+        case REPLAY_MANAGER_RECORD:
+            break;
+        case REPLAY_MANAGER_PLAYBACK:
+        {
+            AnmFloat3View position(383.0f, 450.0f, 0.0f);
+            unsigned int color;
+            float fps = replayFps;
+            if (fps < 30.0f)
+                color = 0xff5050ffu;
+            else if (fps < 50.0f)
+                color = 0xffa0a0ffu;
+            else
+                color = 0xffffffffu;
+            g_AsciiManagerView->color = color;
+            g_AsciiManagerView->AddFormatText(&position, "%3d", replayFps);
+            g_AsciiManagerView->color = 0xffffffffu;
+            break;
+        }
+        }
+    }
     return 1;
 }
 

@@ -186,10 +186,11 @@ class ReplayManager
     int SaveReplay(const char *replayPath, const char *replayName);
 
     static ReplayManager *Create(int mode, const char *replayPath);
-    static ReplayManager *Load(const char *replayPath);
+    static ReplayManager *__stdcall Load(const char *replayPath);
     static void Destroy(ReplayManager *replayManager);
     void BeginStage();
     int ProcessFrame();
+    int DrawFps();
 
     // Names below are maintained descriptions of target-observed roles. The
     // original member identifiers and physical data owner remain unproven.

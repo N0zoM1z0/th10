@@ -5,6 +5,7 @@
 #include "FrontEnd.hpp"
 #include "ReplayManager.hpp"
 #include "InputState.hpp"
+#include "EnemySoundQueue.hpp"
 #include <algorithm>
 #include <cstdint>
 #include <cstdio>
@@ -23,7 +24,11 @@ static std::vector<std::string> events;
 static std::function<void(const std::string&)> after;
 static void event(const std::string &s) { events.push_back(s); if(after) after(s); }
 #include "helpers.inc"
-static void FrontEndPlaySound(int sound) { event("sound:" + std::to_string(sound)); }
+static EnemySoundQueueView soundOwner,otherSoundOwner;
+#define g_MainSoundOwner reinterpret_cast<unsigned char *>(&soundOwner)
+#define g_AlternateSoundOwner reinterpret_cast<unsigned char *>(&otherSoundOwner)
+static void HostObserveQueue(EnemySoundQueueView *owner,int sound,int sample) { CHECK(owner==&soundOwner,"queue-owner");CHECK(sample==0,"queue-sample");event("sound:"+std::to_string(sound)); }
+#include "sound.inc"
 static void CreateVm(FrontEndControllerView *,int slot) { event("create:" + std::to_string(slot)); }
 void DeleteVm(FrontEndControllerView *,int slot) { event("delete-vm:" + std::to_string(slot)); }
 void FrontEndMarkVmInterrupt(FrontEndControllerView *,int slot,short interrupt) { event("interrupt:" + std::to_string(slot) + ":" + std::to_string(interrupt)); }
@@ -51,8 +56,8 @@ ReplayStageState::~ReplayStageState() {}
 ReplayManager::ReplayManager() { std::memset(this,0,sizeof(*this));live[this]=++nextIdentity;replayData=&data[nextIdentity]; }
 ReplayManager::~ReplayManager() { int id=live.at(this);live.erase(this);if(g_ReplayManager==this) g_ReplayManager=NULL;event("destroy:"+std::to_string(id)); }
 static ReplayManager *makeReplay() { return new ReplayManager; }
-static bool failLoad;
-ReplayManager *ReplayManager::Load(const char *path) { event("load:"+std::string(path));return failLoad?NULL:makeReplay(); }
+static bool failLoad;static int readResult;
+int ReplayManager::LoadReplay(const char *path) { CHECK(mode==REPLAY_MANAGER_LOAD_ONLY,"factory-load-mode");event("load:"+std::string(path));return failLoad?-1:readResult; }
 int ReplayManager::SaveReplay(const char *path,const char *name) { CHECK(this==g_ReplayManager,"save-receiver");event("save:"+std::string(path)+":"+name);return -1; }
 // The maintained null-safe wrapper is included separately by the runner below.
 static std::int32_t HostTime(std::int32_t *value) { *value=12345;event("time");return *value; }
@@ -65,6 +70,7 @@ AnmVmView::~AnmVmView() {}
 AsciiManagerView::AsciiManagerView() {}
 AsciiManagerView::~AsciiManagerView() {}
 size_t AsciiManagerView::GetSize() { return sizeof(*this); }
+struct GameManager {};static GameManager game;GameManager *g_GameManager=&game;
 static AsciiManagerView asciiA,asciiB;
 AsciiManagerView *g_AsciiManagerView=&asciiA;
 struct Text {AsciiManagerView *owner;AnmFloat3View position;unsigned int color;int shadow;std::string value;};
@@ -85,12 +91,17 @@ static void reset(int state=2) {
  c.cursor.saveDepth=1;c.cursor.savedCurrent[0]=4;c.cursor.savedCount[0]=7;
  std::strcpy(c.scoreEntryName,"        ");std::memset(profile,0,sizeof(profile));std::strcpy((char*)profile+0x1d878,"        ");
  std::memset(data,0,sizeof(data));g_ReplayManager=makeReplay();data[1].timestamp=12345;
- g_FrontEndInput={};failLoad=false;g_FrontEndSelectedStage=g_FrontEndSelectedStageMirror=-1;g_FrontEndSelectedStageRecord=NULL;
+ soundOwner={};otherSoundOwner={};std::fill(soundOwner.activeSoundIds,soundOwner.activeSoundIds+12,-1);std::fill(otherSoundOwner.activeSoundIds,otherSoundOwner.activeSoundIds+12,-1);for(int i=0;i<134;++i)g_EnemySoundCueMetadata[i].cueValue=i+500;
+ g_FrontEndInput={};failLoad=false;readResult=0;g_GameManager=&game;g_FrontEndSelectedStage=g_FrontEndSelectedStageMirror=-1;g_FrontEndSelectedStageRecord=NULL;
  asciiA.color=0xff123456;asciiA.drawShadow=3;asciiB.color=0xff654321;asciiB.drawShadow=7;g_AsciiManagerView=&asciiA;
  auxiliaryAddress=&c.difficultyAuxVmId.value;date={};date.tm_year=106;date.tm_mon=8;date.tm_mday=17;date.tm_hour=13;date.tm_min=4;
  texts.clear();events.clear();
 }
-static void update() { CHECK(FrontEndControllerView::UpdateReplaySave(&c)==1,"update-result"); }
+static void update() {
+ CHECK(FrontEndControllerView::UpdateReplaySave(&c)==1,"update-result");
+ int expected[134]={};for(const auto&s:events)if(s.rfind("sound:",0)==0)++expected[std::stoi(s.substr(6))];
+ for(int id=0;id<134;++id)if(expected[id]) {int slot=0;while(slot<12&&soundOwner.activeSoundIds[slot]!=id)++slot;CHECK(slot<12&&soundOwner.sampleCounts[slot]==expected[id]&&soundOwner.cueValues[id]==id+500,"queue-recorded");for(int n=0;n<expected[id];++n)CHECK(soundOwner.samples[slot][n]==0,"queue-recorded");}
+}
 static void draw() { CHECK(FrontEndControllerView::DrawReplaySave(&c)==1,"draw-result"); }
 static bool close(float a,float b) {return std::abs(a-b)<0.001f;}
 static void suite() {
@@ -141,6 +152,27 @@ static void suite() {
  CHECK(texts.size()==94,"draw-live-timer");CHECK(texts[1].position.x==112&&texts[1].position.y==240&&texts[2].position.x==175&&texts[2].value=="_"&&texts[2].color==0xffffff00&&texts[2].owner==&asciiB,"draw-name-caret");
  CHECK(texts[3].position.x==212&&texts[15].position.x==428&&texts[16].position.x==212&&texts[16].position.y==376,"draw-grid-layout");
  CHECK((unsigned char)texts[91].value[0]==0x81&&(unsigned char)texts[92].value[0]==0x7f&&(unsigned char)texts[93].value[0]==0x80&&texts[93].color==0xffffff00&&asciiB.color==0xffffffff&&asciiB.drawShadow==0,"draw-control-glyphs");
+ for(int status:{0,1,-1,7,-2147483647}) {
+  reset();readResult=status;auto *current=g_ReplayManager;auto *loaded=ReplayManager::Load("th10_01.rpy");
+  CHECK(g_ReplayManager==current&&has("load:th10_01.rpy"),"factory-global-owner");
+  CHECK((loaded!=NULL)==(status==0),"factory-read-result");
+  CHECK((live.size()==2)==(status==0)&&has("destroy:2")==bool(status),"factory-failure-delete");
+ }
+ for(bool active:{false,true})for(int mode:{-1,0,1,2,7})for(int fps:{0,29,30,49,50,60,255}) {
+  reset();g_GameManager=active?&game:NULL;g_ReplayManager->mode=mode;g_ReplayManager->replayFps=fps;
+  CHECK(g_ReplayManager->DrawFps()==1,"fps-result");bool visible=active&&mode==1;
+  CHECK(texts.size()==(visible?1u:0u),"fps-gate");
+  if(visible) {
+   auto &t=texts[0];char expected[16];std::snprintf(expected,sizeof(expected),"%3d",fps);
+   CHECK(t.value==expected&&t.position.x==383&&t.position.y==450&&t.position.z==0,"fps-format-position");
+   unsigned int color=fps<30?0xff5050ffu:fps<50?0xffa0a0ffu:0xffffffffu;
+   CHECK(t.color==color&&asciiA.color==0xffffffffu&&asciiA.drawShadow==3,"fps-color");
+  } else CHECK(asciiA.color==0xff123456&&asciiA.drawShadow==3,"fps-inactive-color");
+ }
+ reset();g_ReplayManager->mode=1;g_ReplayManager->replayFps=29;
+ after=[](const std::string&s){if(s=="text:1"){g_AsciiManagerView=&asciiB;g_ReplayManager->replayFps=77;}};
+ CHECK(g_ReplayManager->DrawFps()==1,"fps-result");
+ CHECK(texts.size()==1&&texts[0].value==" 29"&&asciiA.color==0xff5050ffu&&asciiB.color==0xffffffffu,"fps-current-ascii");
  after={};while(!live.empty())delete live.begin()->first;
 }
 int main() {try {suite();}catch(Failure f) {after={};while(!live.empty())delete live.begin()->first;std::fprintf(stderr,"CHECK %s\n",f.label);return 1;}return 0;}
