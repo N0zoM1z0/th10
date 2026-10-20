@@ -1060,3 +1060,5 @@ EnemyLaserLineView::Draw
 Player::CheckLaserContact
 EnemyLaserLineView::Motion0010
 EnemyLaserLineView::RunCommands
+EnemyLaserLineView::Initialize
+EnemyLaserLineView::Motion0040

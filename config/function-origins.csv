@@ -559,8 +559,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041C7D0,authored_game,Enemy,authored,high,target-enemy-effect-list-owner-2026-09-24
 0x0041C800,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x0041C850,authored_game,Enemy,authored,high,target-enemy-effect-list-owner-2026-09-24
+0x0041C880,unknown,,indeterminate,unknown,laser-line-initialization-target-2026-10-20
+0x0041C8C0,authored_game,EnemyLaser,authored,high,laser-line-initialization-target-2026-10-20
 0x0041CA80,authored_game,EnemyLaser,authored,high,laser-line-target-2026-10-20
 0x0041CFD0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x0041D170,authored_game,EnemyLaser,authored,high,laser-line-initialization-target-2026-10-20
 0x0041D2C0,unknown,EnemyLaser,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x0041D3D0,authored_game,EnemyLaser,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0041D7C0,authored_game,EnemyLaser,authored,medium,target-authored-neighbor-and-global-2026-09-17

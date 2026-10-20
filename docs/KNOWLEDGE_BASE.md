@@ -3257,12 +3257,13 @@ counts decrement the actual command operand; copying the command is wrong.
 Both100000 and200000 set timer6 at190. The angle sentinels are<=-990 and>=990,
 not the reference comment's1. NaN is literal for angle, fallback for strict
 width>-999 and ordered growth>=0. The fallback uses growSpeed48, not width44.
-Native mode and counter words retain integer/float reinterpretation. Existing
+Native operand and counter words retain integer/float reinterpretation. Existing
 Bullet caller40708C independently reads script base474170, so the same global
 declaration is reused. Opcode4000 calls actual InitializeForLoadedScript404F30
 with primary VM600 and resource4776F0+3E0B50, then reloads current PC and next
-gate. Only real VM reset/script execution supplies callback roles in the host;
-aim, timers, polar and sound helpers remain pure.
+gate. Only real script binding/execution supplies host callback roles; VM reset,
+aim, timers, polar and sound helpers remain pure. The later0040 consumer shows
+that the previously named mode word is a float angular delta for that slot.
 
 Full5-TU /GL /GS diagnostics freeze25 project inputs. Cached-angle source1364
 is superseded by target-observed field reloads/conditional stores at1368/1356,
@@ -3282,3 +3283,55 @@ another source gap; require new context before further parser/Draw shape work.
 See [the target, compiler and host evidence](evidence/laser-script/README.md).
 All89 public CI checks pass; focused target/toolchain/tracking/progress and
 whitespace checks pass. Superseded controls/host binaries free about4.2 MB.
+
+## Line initialization and timed turning (2026-10-20)
+
+New reviewed owners Initialize41C8C0/442 and Motion004041D170/329 add771
+authored denominator/source bytes. Raw full decodes, CC neighbors and virtual
+slots46DA64/46DA90 establish their boundaries. Game request/VM/state setup and
+motion's game sound owner/callee plus scheduler flags independently establish
+authored origin. Existing constructor41C5B0 remains indeterminate. Neighbor
+41C880/54 is also admitted, with no source and indeterminate origin: it sums
+virtual-slot20 results over prefetched non-state-1 nodes, but no Ghidra refs,
+direct-CALL byte pattern or literal VA is found. No authorship/reachability or
+exact claim is inferred from its complete boundary.
+
+Initialize is ECX=this, one stack request/RET4/EAX0 and copies77 dwords to424.
+It sets stateC=2, initializes primary VM600 using signed type/color and the
+existing Bullet script table, sets pendingInterrupt=2, explicitly executes,
+then samples live request flags and VM flags. Secondary9AC uses fresh laser
+manager47781C/resource458 and current color+103; this is distinct from the
+parser's Enemy-primary resource. Mask pairsFC63FFFF/00600000 andFC7FFFFF/
+00400000 preserve other bits. Timer30 and geometry follow both script steps.
+The owned request is read late; mutation of the incoming request is not a
+replacement for it. Geometry widths/speed/length use1C/20/14, soundId=24,
+positive length gives traveled=.01 and other/unordered lengths give +0.
+Polar writesXY only, preserving velocity Z. Reference names length_step44,
+track_count40C and acceleration4C are not promoted over reviewed consumers.
+
+Motion0040 decays velocity magnitude using fractional elapsed time while
+retaining base speed. Expiry plays the optional sample, increments count,
+clears flag40 at the repeat limit, adds an unwrapped float angular delta,
+installs the next speed, resets timer3, and always performs polar/Tick even
+after flag clear. The parser's formerly named mode word10C is this angular
+delta, next speed108 and duration/limit/count are11C/120/124.
+
+Three complete /GL /GS TUs with a normal by-value deceleration helper produce
+329/329. Two independent cold canonical builds freeze17 inputs and compare
+every byte plus8 target-bound fields exactly, adding329 authored exact bytes.
+Direct-field326 and prebranch-value331 controls are nonexact; the helper
+retains a used value without volatile/forced attributes or byte tricks.
+The unchanged Motion0010 guard retains269/all10 fields after slot4 is typed.
+Init's initial complete4-TU451/442 and VM helper200/202 remain nonexact; later
+motion-entry unused Init450 is not conflated with that graph.
+
+Actual init/motion/parser/timer/aim/sound/VM-wrapper host checks pass ASan/
+UBSan/leaks and27 strict new mutants. VM Initialize is pure field reset:
+the older fixture's reset callback was overbroad, is removed, and23 parser
+mutants pass again with state changes only at actual script binding/execution.
+Host constructor/layout/union and polar roles remain explicit. Original C++
+lifetimes, native x87/exception state, invalid storage/overflow and product/
+runtime reachability are open. Next inspect cleanup609/type-1 init or the
+unreferenced54/query226 independently. See [complete scope](evidence/laser-init/README.md).
+All90 public CI checks pass, with final target/toolchain/tracking/progress/
+whitespace checks. About5.1 MB of superseded controls and host binaries are pruned.

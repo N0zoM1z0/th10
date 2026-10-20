@@ -108,6 +108,7 @@ def main() -> int:
         run("Validate result rows and name-entry ASCII queue", [sys.executable, "scripts/test-result-rows.py", "--no-mutations"])
         run("Validate laser motion and Player contact", [sys.executable, "scripts/test-laser-line.py", "--no-mutations"])
         run("Validate laser command programs and live fields", [sys.executable, "scripts/test-laser-script.py", "--no-mutations"])
+        run("Validate laser initialization and turning motion", [sys.executable, "scripts/test-laser-init.py", "--no-mutations"])
         run("Validate script browser state and event order", [sys.executable, "scripts/test-script-viewer-update.py"])
         run("Validate script browser display and renderer calls", [sys.executable, "scripts/test-script-viewer-draw.py"])
         run("Validate worker wait and restart order", [sys.executable, "scripts/test-script-viewer-worker.py"])

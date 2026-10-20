@@ -51,7 +51,7 @@ extern const float g_EnemyLaserPlayfieldMaximumY=448.0f;
 void EnemyLaserVectorView::FromAngleMagnitude(float a,float n){x=std::cos(a)*n;y=std::sin(a)*n;/* HOST math role deliberately leaves Z untouched. */}
 void PlayerHandleCollisionHit(Player *p){CHECK(p==g_Player,"hit-receiver");event("hit");}
 void EnemyLaserLineView::RunCommands(){event("commands");}
-void EnemyLaserLineView::UnknownSlot04(){throw Failure{"unexpected-slot"};}
+int EnemyLaserLineView::Initialize(const EnemyLaserType0RequestView *){throw Failure{"unexpected-slot"};}
 void EnemyLaserLineView::UnknownSlot10(){throw Failure{"unexpected-slot"};}
 void EnemyLaserLineView::UnknownSlot14(){throw Failure{"unexpected-slot"};}
 void EnemyLaserLineView::UnknownSlot1C(){throw Failure{"unexpected-slot"};}

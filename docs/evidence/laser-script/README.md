@@ -43,7 +43,7 @@ and jump2000000 installs the requested PC without an extra increment.
 | 1 | Set flag1, reset record0 timer, clear its word at7C |
 | 10 | Record1 acceleration, angle choice, timer and polar X/Y; optional sample sound |
 | 20 | Record2 operands/timer; optional sample sound |
-| 40 /80 /100 | Shared record3 mode, growth value, timer and two duration words |
+| 40 /80 /100 | Shared record3 operand0 word, growth value, timer and two duration words |
 | 400 /800 /8000000 | Positive live command counter only; record4 value/state, decrement the actual operand |
 | 4000 | Real embedded-VM InitializeForLoadedScript404F30 |
 | 8000 | Record5 timer from integer operand2 |
@@ -57,8 +57,10 @@ helper; intermediate/unordered values are literal. This corrects the reference
 comment's unsupported threshold1. Zero aim delta returns the actual helper's
 pi/2. The40/80/100 fallback is strict value>-999, otherwise current growSpeed48;
 the400-family fallback requires ordered value>=0. NaN therefore takes different
-paths in these two protocols. The raw integer mode/counter words remain word
+paths in these two protocols. The raw operand/counter words remain word
 reinterprets, not numeric float-to-int conversions.
+The recovered0040 consumer identifies operand0 as a float angular delta;
+meanings in the other motion slots remain provisional.
 
 The script base array474170 is the same physical table read by the existing
 Bullet transform caller40708C, so the maintained g_BulletSpriteScriptBase
@@ -90,9 +92,9 @@ changed. No full historical cohort replay is claimed.
 `scripts/test-laser-script.py` executes the actual parser, canonical timer body,
 EnemyAngleFromPlayer, both sound bodies and InitializeForLoadedScript wrapper.
 Host adaptations omit i386 assertions and define constructor prefills. Live
-typed Player/resource/line/sound objects are used. Polar math and the lower VM
-reset/script-execution boundaries are roles; callbacks occur only at the real
-VM boundaries. Checks cover every opcode family, signed upper bound, gates,
+typed Player/resource/line/sound objects are used. Polar math and lower VM
+boundaries are roles. VM reset is a pure entry observation; callbacks occur
+only at actual script binding/execution. Checks cover every opcode family, signed upper bound, gates,
 finite skip/jump programs, mutation of the original command counter, timer
 integer/float state and selected scale, negative sound IDs, primary resource/
 script capture, and post-script live PC/gate sampling. ASan/UBSan/leak checks

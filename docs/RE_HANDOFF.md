@@ -32,6 +32,28 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Laser Initialize41C8C0/442 and Motion004041D170/329 now map771 newly reviewed
+  authored bytes. Init copies the complete1DC request and starts/steps primary/
+  secondary VMs with live flags/resources, timer30 and late owned geometry;
+  width44/soundId40C/traveled4C names are retained. It is distinct from the
+  indeterminate C++ constructor41C5B0. New motion closes329 authored exact bytes
+  in two independent complete3-TU /GL /GS colds,17 frozen inputs/all8 fields.
+  A normal by-value deceleration helper retains the target's used speed value;
+  no forced attributes/ABI. Motion269/all10 fields remains exact under the
+  changed slot4 declaration. Init's earlier full4-TU451/442 diagnostic and
+  VM200/202 private-receiver mismatch remain nonexact; later motion-entry
+  unused Init450 is a separate context. Record3 operand0 is float angle delta,
+  next speed108/duration11C/repeat120/count124; flag clear does not skip the
+  turn/polar/Tick tail. Raw unreferenced neighbor41C880/54 is newly tracked as
+  indeterminate/source-absent, not credited. Actual-source ASan/UBSan/leaks
+  with27 strict new mutants and23 corrected parser mutants pass. VM reset is
+  pure observation; old reset-time callback was overbroad and moved to real
+  script execution. No constructor/union/native FP/runtime closure claim.
+  Next source gaps include type-0 cleanup41E260/609 or type-1 initialization;
+  unreferenced54/query226 remain separate unknown-origin work. Require new
+  caller/TU data before more Init register controls. See
+  [complete evidence](evidence/laser-init/README.md).
+  All90 public CI checks pass;5.1 MB of current-turn controls/host binaries pruned.
 - Laser command parser41CA80 now maps its complete1356 authored bytes in
   LaserScript.cpp, with no new denominator or exact increment. Eighteen24-byte
   commands at450 retain gate/skip/jump/ID/state, mutable operand counters,

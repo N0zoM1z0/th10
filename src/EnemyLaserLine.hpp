@@ -6,7 +6,7 @@
 struct EnemyLaserLineView
 {
     virtual void RunCommands();
-    virtual void UnknownSlot04();
+    virtual int Initialize(const EnemyLaserType0RequestView *initial);
     virtual int Update();
     virtual int Draw();
     virtual void UnknownSlot10();

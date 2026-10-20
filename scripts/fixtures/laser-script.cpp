@@ -34,14 +34,15 @@ int g_BulletSpriteScriptBase[4]={10,30,100,400};
 static std::vector<std::string> events;static std::function<void(const std::string&)> after;
 static AnmLoadedView *startedResource;static int startedScript;
 static void event(const std::string&s){events.push_back(s);if(after)after(s);}
-void AnmVmView::Initialize(){CHECK(this==&line.primaryVm,"embedded-vm-receiver");event("reset-vm");}
+void AnmVmView::Initialize(){CHECK(this==&line.primaryVm,"embedded-vm-receiver");events.push_back("reset-vm");/* HOST pure observation, no callback. */}
 void AnmLoadedView::InitializeAndExecuteScriptIndex(AnmVmView *vm,int script){CHECK(vm==&line.primaryVm,"embedded-vm-receiver");startedResource=this;startedScript=script;event("start-script");}
 void EnemyLaserVectorView::FromAngleMagnitude(float a,float n){x=std::cos(a)*n;y=std::sin(a)*n;/* HOST math role: Z remains untouched. */}
 #define UNUSED_VOID(name) void EnemyLaserLineView::name(){throw Failure{"unexpected-slot"};}
-UNUSED_VOID(UnknownSlot04) UNUSED_VOID(UnknownSlot10) UNUSED_VOID(UnknownSlot14) UNUSED_VOID(UnknownSlot1C) UNUSED_VOID(UnknownSlot20)
+UNUSED_VOID(UnknownSlot10) UNUSED_VOID(UnknownSlot14) UNUSED_VOID(UnknownSlot1C) UNUSED_VOID(UnknownSlot20)
 UNUSED_VOID(Motion0001) UNUSED_VOID(Motion0010) UNUSED_VOID(Motion0020) UNUSED_VOID(Motion0040) UNUSED_VOID(Motion0100) UNUSED_VOID(Motion0080)
 UNUSED_VOID(Bounce) UNUSED_VOID(Motion100000) UNUSED_VOID(Motion200000) UNUSED_VOID(Motion4000000)
 int EnemyLaserLineView::Update(){throw Failure{"unexpected-slot"};}
+int EnemyLaserLineView::Initialize(const EnemyLaserType0RequestView *){throw Failure{"unexpected-slot"};}
 int EnemyLaserLineView::Draw(){throw Failure{"unexpected-slot"};}
 int EnemyLaserLineView::CheckCollisionBox(EnemyLaserVectorView*,EnemyLaserVectorView*,int){throw Failure{"unexpected-slot"};}
 #include "helpers.inc"
@@ -76,7 +77,7 @@ static void suite(){
  for(float n:{-1000.f,std::numeric_limits<float>::quiet_NaN()}){reset();command(0,0x80).arguments[1].scalar=n;run();CHECK(line.patterns[3].values[0].scalar==7,"grow-speed-fallback");}
  reset();command(0,0x100).arguments[1].scalar=-998.5;run();CHECK(line.patterns[3].values[0].scalar==-998.5,"literal-width-value");
  reset();auto &start=command(0,0x4000);start.arguments[2].integer=2;start.arguments[3].integer=7;run();CHECK((events==std::vector<std::string>{"reset-vm","start-script"})&&startedResource==&resourceA&&startedScript==107&&line.primaryVm.scriptIndex==107,"embedded-script");CHECK(line.primaryVm.position.x==0&&line.primaryVm.position.y==0&&line.primaryVm.position.z==0&&line.primaryVm.positionOffset.x==0&&line.primaryVm.alternatePosition.z==0&&line.primaryVm.glyphWidth==16&&line.primaryVm.glyphHeight==16,"actual-vm-wrapper");
- reset();command(0,0x4000).arguments[2].integer=2;command(6,0x1000000).arguments[2].integer=55;after=[](const std::string&s){if(s=="reset-vm"){g_EnemyPrimaryResourceOwner=&ownerB;line.commandIndex=3;g_BulletSpriteScriptBase[2]=999;}if(s=="start-script")line.commandIndex=5;};run();CHECK(line.commandIndex==7&&line.id==55,"live-pc-after-script");CHECK(startedResource==&resourceA&&startedScript==100,"captured-resource-script");
+ reset();command(0,0x4000).arguments[2].integer=2;command(6,0x1000000).arguments[2].integer=55;after=[](const std::string&s){if(s=="start-script"){g_EnemyPrimaryResourceOwner=&ownerB;g_BulletSpriteScriptBase[2]=999;line.commandIndex=5;}};run();CHECK(line.commandIndex==7&&line.id==55,"live-pc-after-script");CHECK(startedResource==&resourceA&&startedScript==100,"captured-resource-script");
  reset();command(0,0x4000);command(1,0x1000000,0).arguments[2].integer=55;after=[](const std::string&s){if(s=="start-script")line.flags=1;};run();CHECK(line.commandIndex==1&&line.id==88,"live-gate-after-script");
  reset();command(0,0x8000).arguments[2].integer=16777217;line.patterns[5].timer.flags=0x81;run();CHECK(line.patterns[5].timer.current==16777217&&line.patterns[5].timer.previous==16777216&&line.patterns[5].timer.subframe==16777216.f&&line.patterns[5].timer.scale==&privateSpeed,"wait-integer");
  for(unsigned opcode:{0x100000u,0x200000u}){reset();command(0,opcode).arguments[2].integer=-3;run();CHECK(line.flags==opcode&&line.patterns[6].timer.current==-3&&line.patterns[6].timer.previous==-4&&line.patterns[6].timer.subframe==-3&&line.patterns[7].timer.current==77,"shared-wait-record");}
