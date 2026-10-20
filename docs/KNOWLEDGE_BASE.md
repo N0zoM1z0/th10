@@ -3702,3 +3702,28 @@ entries are separate so an earlier CALL cannot bypass the JMP mapping check.
 The22 context and50 ownership tests include adversarial selector, destination,
 boundary and byte controls. No duplicate trim credit follows from a parent.
 [Complete proof and identities](evidence/hint-split-tail/README.md).
+
+## 2026-10-20 Hint line reader and arithmetic source
+
+HintReadLine419F40/260 consumes cursor in EAX and line/remaining/capacity on
+three stack slots. Target calls4199FD/419BE3 and both RET12 exits establish
+callee cleanup. Ordinary four-argument static stdcall source reproduces the
+complete260-byte qualified MAP/PDB extent and all4 fields in two full cold
+Hint/Main/FileSystem /GL /GS links. Five same-image existing guards retain726
+bytes/all32 fields, including the complete OpenFile360. The joint four-TU/GS
+context restores that dependency's target boundary; the two-TU graph selected
+EBX for sizeOut. This does not establish original production partitioning.
+
+Target width arithmetic at419EA5/419EAB/419EBA uses dword operands, followed
+by the final float store419EC6. Natural float source matches that unspilled
+x87 operation shape; explicit double source produced qword constants and a
+preloaded scale. Host tests now request x87 and store the reference width to
+float before comparison. The same pre-existing numeric witness and22 strict
+mutants pass, including an explicit intermediate-store rejection. The original
+game control word/runtime and universal arithmetic equivalence remain unknown.
+
+The target entry initialization writes packed BGRA at418D18 while parser/frame
+owners access the component bytes. A packed/byte view preserves the observed
+0x88 layout. Current constructor51 still has self-link store-order differences;
+its origin is still indeterminate and no exact credit is assigned. The complete
+loader remains1533/1498. [Evidence](evidence/hint-read-line/README.md).

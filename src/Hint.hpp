@@ -29,7 +29,12 @@ struct HintEntryView
     unsigned char unknown74[8];
     float scale;
     float textWidth; // Loader finalization: byte length * scale * 7.5, then float store.
-    unsigned char blue, green, red, alpha;
+    // Target418D18 initializes all BGRA bytes through one packed store.
+    union
+    {
+        unsigned int color;
+        struct { unsigned char blue, green, red, alpha; };
+    };
 };
 struct HintOwnerView
 {

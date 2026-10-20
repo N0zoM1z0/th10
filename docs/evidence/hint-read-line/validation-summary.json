@@ -1,0 +1,35 @@
+{
+  "new_authored_exact_functions": 1,
+  "new_authored_exact_bytes": 260,
+  "independent_full_cold_builds": 2,
+  "recursive_project_inputs": 18,
+  "inputs_unchanged": true,
+  "complete_owners": 6,
+  "replayed_bytes": 986,
+  "linkage_fields": 36,
+  "all_owner_hashes_equal": true,
+  "guard_context": "explicit same-image overrides; old canonical contexts retained",
+  "host": {
+    "script": "scripts/test-hint-load.py",
+    "flags": [
+      "-mfpmath=387",
+      "-fsanitize=undefined"
+    ],
+    "result": "passed",
+    "strict_mutants_detected": 22,
+    "original_game_control_word": "unknown"
+  },
+  "ci": {
+    "script": "scripts/ci.py",
+    "steps": 97,
+    "result": "passed"
+  },
+  "toolchain_check": "passed",
+  "tracking": "passed",
+  "progress": "current",
+  "full_historical_exact_replay": false,
+  "cleanup": {
+    "directories": 5,
+    "bytes": 1456713
+  }
+}

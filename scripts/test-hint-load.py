@@ -30,8 +30,9 @@ MUTATIONS = [('wrong_open_mode',
   '    return 0;\n}\n\n// Target41AB10.',
   '    return -1;\n}\n\n// Target41AB10.'),
  ('float_width_intermediate',
-  'static_cast<float>(static_cast<double>(strlen(entry->text)) * entry->scale * 7.5)',
-  'static_cast<float>(strlen(entry->text)) * entry->scale * 7.5f'),
+  'entry->textWidth = static_cast<float>(strlen(entry->text)) * entry->scale * 7.5f;',
+  'volatile float scaledLength = static_cast<float>(strlen(entry->text)) * entry->scale;\n'
+  '            entry->textWidth = scaledLength * 7.5f;'),
  ('nan_to_upper', 'if (parsedScale > 4.0)', 'if (!(parsedScale <= 4.0))'),
  ('tail_advance',
   'memcpy(line, cursor, *remaining);\n            *remaining = 0;',
@@ -130,7 +131,9 @@ def run(root, header, mutation=None, optimization='O1'):
         for name, text in files.items():
             (directory / name).write_text(text)
         compiled = subprocess.run([
-            'g++', '-std=c++11', '-' + optimization, '-g', '-fsanitize=undefined',
+            # Native VC7.1 evaluates the width expression in x87 until its final
+            # float store. Default host SSE would introduce an earlier rounding.
+            'g++', '-std=c++11', '-mfpmath=387', '-' + optimization, '-g', '-fsanitize=undefined',
             '-fno-sanitize-recover=all', '-I', td,
             str(directory / 'fixture.cpp'), '-o', str(directory / 'fixture'),
         ], capture_output=True, text=True, timeout=60)

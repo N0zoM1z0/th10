@@ -98,10 +98,13 @@ until reset so retained pointer values can be checked safely.
   second comma is absent; green and blue require that second comma.
 - Scale is stored as float but bounded using the live parsed value against
   -4 and 4. Unordered comparisons allow NaN to survive. Width is length times
-  stored scale times 7.5, with a final float destination store. The candidate
-  uses a double intermediate to avoid an invented float-rounding step.
-  Length 3 and scale `1.829711675643921f` yield `41.168514251708984f`, whereas
-  a float intermediate yields `41.16851043701172f`. Native x87 precision and
+  stored scale times 7.5, with a final float destination store. The native
+  float expression reproduces the target's dword operands and unspilled x87
+  operation sequence. The host parser suite explicitly requests x87 evaluation;
+  it does not force a double expression into production source.
+  Under the host x87 model, length 3 and scale `1.829711675643921f` yield
+  `41.168514251708984f`; an explicit intermediate float store instead yields
+  `41.16851043701172f`. Native x87 precision and
   control-word assumptions are not fully established; universal floating-point
   runtime equality is not claimed.
 
@@ -191,3 +194,25 @@ JMPs. The latter require the complete114-byte trim callee to be raw-equal and
 its maintained target source/name to agree. Existing cleanup, lookup and trim
 guards retain291 bytes/all2 fields in both images. See
 [split proof and binding limits](evidence/hint-split-tail/README.md).
+
+## Exact line reader and native arithmetic source
+
+HintReadLine419F40/260 now has two independent full cold replays with all4
+fields in the real Hint/Main/FileSystem four-TU /GL /GS graph. Ordinary
+stdcall source recovers RET12; target calls4199FD/419BE3 push three arguments,
+carry cursor in EAX and perform no caller cleanup. The complete static trim
+callee is checked raw-equal. Five existing guards retain726 bytes/all32 fields.
+
+The broader context also restores the exact360-byte OpenFile boundary. The
+two-TU context specializes that dependency differently and passes sizeOut in
+EBX. Current LoadHintFile is1533/1498 bytes and remains nonexact. Its natural
+float width expression matches the target operand widths. The actual-source
+host test uses x87, checks a stored float reference value, and rejects an
+explicit intermediate-store mutation; the pre-existing numeric witness is
+unchanged. This is a bounded host model, with the original control word and
+native runtime still unknown.
+
+The entry color now has packed/byte BGRA views matching the target32-bit
+initialization and parser byte accesses. The constructor is51 bytes but still
+has self-link scheduling differences; no exact or origin credit follows.
+See [line-reader identities and limits](evidence/hint-read-line/README.md).

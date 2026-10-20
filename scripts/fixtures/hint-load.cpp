@@ -410,7 +410,11 @@ int main()
         load(owner, "Stage : 1\n"+item(string("Scale : ")+scaleText[i]+"\nText : \"xx\"\n"));
         e = one(owner);
         if (i == 7) CHECK(std::isnan(e->scale) && std::isnan(e->textWidth));
-        else CHECK(e->scale == expectedScale[i] && e->textWidth == expectedScale[i]*15);
+        else {
+            // Compare two stored float values under x87 excess precision.
+            volatile float expectedWidth = expectedScale[i]*15;
+            CHECK(e->scale == expectedScale[i] && e->textWidth == expectedWidth);
+        }
     }
     reset();
     ResetOwner(owner);

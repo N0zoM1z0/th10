@@ -19600,6 +19600,28 @@ target_address = 0x0041A0A0
 size = 114
 linkages = []
 
+[units.hint-read-line]
+artifact_kind = "linked-pe"
+owner_visibility = "static"
+source = "src/Hint.cpp"
+support_sources = ["src/FileSystem.cpp", "src/PbgArchive.cpp", "src/Main.cpp"]
+pdb_source = "src/Hint.cpp"
+output_dir = "build/match-linked/HintReadLine"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL","/GS"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z"
+functions = ["HintReadLine"]
+symbol = "?HintReadLine@@YGPADPAD0PAHI@Z"
+target_address = 0x00419F40
+size = 260
+linkages = [
+  { offset = 0x34, type = "REL32", symbol = "_strchr", target = 0x00452730 },
+  { offset = 0x43, type = "REL32", symbol = "_strchr", target = 0x00452730 },
+  { offset = 0x97, type = "REL32", symbol = "_strchr", target = 0x00452730 },
+  { offset = 0xC6, type = "REL32", symbol = "?HintTrimWhitespace@@YAPADPAD@Z", target = 0x0041A0A0, static_source = "src/Hint.cpp", static_size = 114 },
+]
+
 [units.hint-split-line]
 artifact_kind = "linked-pe"
 owner_visibility = "static"

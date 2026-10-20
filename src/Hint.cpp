@@ -155,7 +155,7 @@ HintEntryView::HintEntryView()
     link.next = 0;
     link.previous = 0;
     link.payload = this;
-    blue = green = red = alpha = 255;
+    color = 0xffffffffu;
     remaining = -1;
     time = 300;
     scale = 1.0f;
@@ -179,7 +179,7 @@ static char *HintTrimWhitespace(char *text)
 
 // Target419F40. The unbounded input scans and uncapped final copy are native
 // quirks. No sentinel, delimiter normalization, or final-tail trim is invented.
-static char *HintReadLine(char *cursor, char *line, int *remaining,
+static char *__stdcall HintReadLine(char *cursor, char *line, int *remaining,
                           unsigned int capacity)
 {
     memset(line, 0, capacity);
@@ -398,8 +398,8 @@ int __stdcall LoadHintFile(HintOwnerView *owner, const char *path, int mode)
                 else if (strcmp(key, "End") == 0)
                     break;
             }
-            // Preserve multiplication until the final float destination store.
-            entry->textWidth = static_cast<float>(static_cast<double>(strlen(entry->text)) * entry->scale * 7.5);
+            // VC7.1 keeps this x87 expression live until the final float store.
+            entry->textWidth = static_cast<float>(strlen(entry->text)) * entry->scale * 7.5f;
             HintAppendLink(&owner->loadedStageLists[stage], &entry->link);
             if (mode == 0)
             {

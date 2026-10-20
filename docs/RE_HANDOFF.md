@@ -42,12 +42,24 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
 candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
-1209 canonical exact functions overall. Authored exact is **373 functions,
-67792/273274 bytes (24.81%)**. The 221 mapped authored nonexact functions,
+1210 canonical exact functions overall. Authored exact is **374 functions,
+68052/273274 bytes (24.90%)**. The 220 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest bounded checkpoint closes HintSplitLine41A050/75. An explicit
+The latest bounded checkpoint closes HintReadLine419F40/260 through the real
+four-TU Hint/Main/FileSystem /GL /GS graph. Ordinary stdcall source recovers
+both RET12 exits. Two full colds replay six complete owners986 bytes/all36
+fields, including the existing OpenFile360/all26 guard. All18 source pins and
+six owner hashes agree. The host parser suite explicitly models x87 evaluation
+and still kills22 strict mutants; the original game control word/runtime remain
+unknown. Packed BGRA storage reduces the nonexact constructor72->51 bytes;
+float-expression source and the dependency context reduce LoadHintFile to1533
+versus1498. See [line-reader proof](evidence/hint-read-line/README.md).
+The current carrier is `build/match-linked/HintReadLine`; prior HintLoad pins
+are historical. The constructor's origin stays indeterminate with no credit.
+
+The preceding checkpoint closes HintSplitLine41A050/75. An explicit
 colonless early return recovers target branch layout. Two full cold builds
 replay the complete static owner and all4 fields, plus three existing guards
 291 bytes/all2 fields. Explicit static tail JMP binding additionally requires
