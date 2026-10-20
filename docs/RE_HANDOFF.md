@@ -12,9 +12,9 @@ experiments remain in Git, the linked evidence packs and
   `docs/evidence/d3d-adapter-format/` is independent, unadopted work; preserve it.
 - Use `scripts/repo-python`. Inspect `AGENTS.md`, [RE_WORKFLOW.md](RE_WORKFLOW.md)
   and [ORACLES.md](ORACLES.md) before target-dependent work.
-- Current operator-authorized checkpoints use `gpt-6.1-sol: ...` and are pushed.
-  This local session uses Bash and Ghidra headless. Factory transport rules
-  apply when using that transport; they do not describe these local results.
+- Current operator-authorized checkpoints use `gpt-6-astra: ...`; do not push.
+  The operator requests direct local tools, not Factory MCP. This session uses
+  Bash and, when needed, read-only Ghidra headless.
 - Serialize native builds at nice10 or lower priority. Ghidra review uses
   read-only/noanalysis, rollback, one CPU and 768 MiB. Verify disk identity and
   complete mapped text before/after temporary metadata work:
@@ -33,9 +33,11 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 ## Current checkpoint
 
-The operator has ended the 95% campaign and requested cleanup and handoff.
-There is no active autonomous reconstruction campaign. Large functions remain
-the preference when reconstruction resumes; select one bounded unit then.
+The operator has reopened reconstruction and requested complete exactness for
+ANM ExecuteScript, ECL Run and Enemy DispatchEclInstruction. This work is active;
+none of the three is exact yet. Re-evaluate old source/API assumptions against
+fresh target and compiler evidence. The first bounded changes and measurements
+are recorded in [large-owner call order](evidence/large-owner-call-order/README.md).
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
 candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
@@ -44,7 +46,7 @@ candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The final source change closes RGB Evaluate441600/820. Two independent
+The preceding checkpoint closes RGB Evaluate441600/820. Two independent
 five-TU /GL /GS canonical colds reproduce all17 target fields. Only the new
 `src/AnmInt3Scale.cpp` support TU uses /Ob1; its migrated56-byte operator
 retains existing credit. Twelve same-image existing guards retain4579 bytes
@@ -68,11 +70,13 @@ graph after any dependency changes before comparing scores.
 
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
-| ANM ExecuteScript43EE30/9964 | Current RGB five-TU carrier:9948 bytes, frameFC,89 target-sized groups, absolute gap18, aligned7400/7995; pre-table delta−16 | Nonexact. Unequal physical intervals61(+1),60(−7),2(−10; common updates/alignment included). Private registers, SCALE_TIME and common copy/flags remain open. |
-| ECL Run44E1A0/7020 | Disabled-trace/shared-advance-base checkpoint:7020 bytes,6236/6264 ordinary positions;60 jump destinations and88 selector bytes retained | 28 ordinary differences, stack/register choices and incomplete selector normalization. Cache predates current shared-header inputs. [Evidence](evidence/ecl-run-disabled-trace/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Earlier eight-TU /GL /GS polar checkpoint:14524 bytes, frame2C4,181 selector bytes and108 groups | Argument adapters, polar/storage scheduling, spawn/laser lifetimes and stack homes. Historical context, not a current build. See knowledge-base polar and dispatcher entries. |
+| ANM ExecuteScript43EE30/9964 | Fresh five-TU cold:9964 bytes, frameFC,90 target-sized groups, absolute gap2, aligned7478/7995; pre-table delta0 | Nonexact. Scale method parameter order repairs the SCALE_TIME interval; BGR snapshots remove8 differences. Unequal intervals61(+1),2(−1). Registers, flag scheduling and common tail remain open. |
+| ECL Run44E1A0/7020 | Fresh two-TU replay; noncanonical strict recipe validates all189 address fields and6992/7020 bytes | Exactly28 ordinary differences remain in stack/register choices. Explicit trailing-data declaration closes diagnostic selector coverage; no canonical exact claim. [Current evidence](evidence/large-owner-call-order/README.md). |
+| Enemy DispatchEclInstruction40E770/14416 | Fresh eight-TU baseline:14524 bytes, frame2C4,181 selector bytes and108 groups | Strict-less polar branch restores the target condition/successor order; unaligned whole-owner scores hide this local change. Adapters, storage, lifetimes and stack homes remain open. |
 
-Do not repeat restored API/order/inlining controls solely to chase a score.
+Old rejected controls are scoped observations, not proof that an API or source
+shape is correct. Require a concrete target hypothesis and compare corresponding
+instructions; an unchanged unaligned score does not establish code neutrality.
 Gain new TH10 caller, lifetime, partition or profile evidence. Keep target
 observations, cross-game hypotheses, compiler observations and unknowns distinct.
 

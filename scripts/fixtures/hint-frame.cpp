@@ -40,8 +40,8 @@ struct AnmVmView {
     AnmFloat3View position, positionOffset;
     unsigned int flags35C;
     unsigned char glyphWidth, glyphHeight;
-    void StartScaleInterpolation(const AnmFloat2View *initial,
-        const AnmFloat2View *final, int duration, unsigned char mode);
+    void StartScaleInterpolation(int duration, unsigned char mode,
+        const AnmFloat2View *initial, const AnmFloat2View *final);
 };
 struct AnmLoadedView {
     AnmVmIdView CreateVmAtWorldVariant0(int scriptIndex, const AnmFloat3View *position);
@@ -268,8 +268,8 @@ AnmVmIdView AnmLoadedView::CreateVmAtWorldVariant0(int scriptIndex, const AnmFlo
     return AnmVmIdView(nextId++);
 }
 @ANM_FIND_VM@
-void AnmVmView::StartScaleInterpolation(const AnmFloat2View *initial,
-    const AnmFloat2View *final, int duration, unsigned char mode) {
+void AnmVmView::StartScaleInterpolation(int duration, unsigned char mode,
+    const AnmFloat2View *initial, const AnmFloat2View *final) {
     fixture::Event &event = fixture::Record(fixture::Scale, 0, this);
     event.initial = *initial; event.final = *final; event.duration = duration; event.mode = mode;
     if (fixture::afterScaleSlot != -9999) fixture::owner->nextVmSlot = fixture::afterScaleSlot;

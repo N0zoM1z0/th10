@@ -5,8 +5,8 @@
   "sha256_lf": {
     "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
     "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
-    "src/AnmManager.cpp": "7be1840bb29c2a6905f1c7845cac77d1920bedf773463a7ebf703cfa9d4e5435",
-    "src/AnmManager.hpp": "ccb02971615dd1a19660fc6aaf1e949d63c27baa78316c3a0aeeb1b540bafc8e",
+    "src/AnmManager.cpp": "1b11274cd03f34fd8763ade8c0d45b6a3cfe0373a0102d3d22d6ce71c342c97a",
+    "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
     "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
@@ -19,8 +19,8 @@
   "observed_raw_sha256": {
     "src/Chain.cpp": "4065fd3d9d0752047d3ad21cc540cc06c2235d67ce883dc600c77a13837ce347",
     "src/Chain.hpp": "61043edbe8baa62f6fb4bf238fd7c902307734a8cdf55c531c39add4b3a13640",
-    "src/AnmManager.cpp": "26bf39d6a7446311f373fd972477207c8ef950d54c59c0b68f85f0ccc64669ab",
-    "src/AnmManager.hpp": "961a01f8267f9974838aea4d4102a296548ced89dbc0415ebc471af8f5a549c9",
+    "src/AnmManager.cpp": "023b8f0353104fc086c4ee997638f6c223db95004c3918ac7c0a24f282ec65ea",
+    "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
     "src/AnmRectangle.cpp": "771836d179e0f41a15b25341eb1b67b672b664e9fa45c83b5da8a0455762064b",
     "src/AnmRectangle.hpp": "34206b15a97cb12ce470f4097ebcc27c93ea58d370d2f803f0e60549bd19b268",
     "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
@@ -221,6 +221,27 @@
       "unsigned int __fastcall AnmRandomU32InRange(": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
       "struct AnmVmTimerView\n": "162f1c2209fa017e74cdf673e3fd2dc444920aa709205bb0028a533dfd131d7a",
       "struct AnmViewportView\n": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b"
+    }
+  },
+  "reviewed_anm_scale_call_order_update": {
+    "date": "2026-10-20",
+    "starting_head": "9807edf5878f",
+    "reason": "Scale initializer parameter order and ExecuteScript BGR snapshots change; extracted timer, viewport and random-range helper remain byte-identical after line-ending normalization. Strict whole-file pin rejection remains enabled.",
+    "evidence": "docs/evidence/large-owner-call-order/README.md",
+    "inputs": {
+      "src/AnmManager.cpp": {
+        "old_sha256_lf": "7be1840bb29c2a6905f1c7845cac77d1920bedf773463a7ebf703cfa9d4e5435",
+        "new_sha256_lf": "1b11274cd03f34fd8763ade8c0d45b6a3cfe0373a0102d3d22d6ce71c342c97a"
+      },
+      "src/AnmManager.hpp": {
+        "old_sha256_lf": "ccb02971615dd1a19660fc6aaf1e949d63c27baa78316c3a0aeeb1b540bafc8e",
+        "new_sha256_lf": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2"
+      }
+    },
+    "unchanged_extractions_sha256": {
+      "struct AnmVmTimerView": "162f1c2209fa017e74cdf673e3fd2dc444920aa709205bb0028a533dfd131d7a",
+      "struct AnmViewportView": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b",
+      "unsigned int __fastcall AnmRandomU32InRange(": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1"
     }
   }
 }

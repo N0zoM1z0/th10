@@ -464,8 +464,8 @@ struct AnmVmView
         const AnmFloat3View *initial, const AnmFloat3View *final,
         int duration, unsigned char mode);
     void StartScaleInterpolation(
-        const AnmFloat2View *initial, const AnmFloat2View *final,
-        int duration, unsigned char mode);
+        int duration, unsigned char mode,
+        const AnmFloat2View *initial, const AnmFloat2View *final);
     void StartSecondaryColorInterpolation(
         const AnmColorView *initial, const AnmColorView *final,
         int duration, unsigned char mode);

@@ -532,8 +532,8 @@ AnmFloat2View *AnmVmFloat2InterpolationView::Evaluate(AnmFloat2View *output)
 // target's private LTCG seam keeps the VM in EAX and the final/initial vectors
 // in ECX/EDX, but the state written here is independent of that optimization.
 void AnmVmView::StartScaleInterpolation(
-    const AnmFloat2View *initial, const AnmFloat2View *final,
-    int duration, unsigned char mode)
+    int duration, unsigned char mode,
+    const AnmFloat2View *initial, const AnmFloat2View *final)
 {
     scaleInterpolation.duration = duration;
     scaleInterpolation.mode = mode;
@@ -3375,9 +3375,9 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         case ANM_OP_COLOR1_TIME:
         {
             AnmColorView initialColor;
-            initialColor.red = vm->primaryColor.red;
-            initialColor.green = vm->primaryColor.green;
             initialColor.blue = vm->primaryColor.blue;
+            initialColor.green = vm->primaryColor.green;
+            initialColor.red = vm->primaryColor.red;
             const int finalBlue = GET_INT_VAR(4);
             const int finalGreen = GET_INT_VAR(3);
             const int finalRed = GET_INT_VAR(2);
@@ -3399,9 +3399,9 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
         case ANM_OP_COLOR2_TIME:
         {
             AnmColorView initialColor;
-            initialColor.red = vm->secondaryColor.red;
-            initialColor.green = vm->secondaryColor.green;
             initialColor.blue = vm->secondaryColor.blue;
+            initialColor.green = vm->secondaryColor.green;
+            initialColor.red = vm->secondaryColor.red;
             const int finalBlue = GET_INT_VAR(4);
             const int finalGreen = GET_INT_VAR(3);
             const int finalRed = GET_INT_VAR(2);
@@ -3441,9 +3441,9 @@ int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)
             const AnmFloat2View finalScale(
                 GET_FLOAT_VAR(2), GET_FLOAT_VAR(3));
             vm->StartScaleInterpolation(
+                GET_INT_VAR(0), currentInstruction->byteArgs[4],
                 reinterpret_cast<AnmFloat2View *>(&vm->scaleX),
-                &finalScale,
-                GET_INT_VAR(0), currentInstruction->byteArgs[4]);
+                &finalScale);
             vm->updateScale = 1;
             break;
         }

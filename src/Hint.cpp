@@ -582,7 +582,7 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
             initial.x = static_cast<float>(static_cast<double>(entry->scale) * 1.5);
             initial.y = 0.0f;
             final.x = final.y = entry->scale;
-            vm->StartScaleInterpolation(&initial, &final, 8, 4);
+            vm->StartScaleInterpolation(8, 4, &initial, &final);
         }
         else if (entry->scale <= 2.0f)
         {
@@ -601,7 +601,7 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
             initial.x = static_cast<float>(static_cast<double>(entry->scale) * 0.75);
             initial.y = 0.0f;
             final.x = final.y = static_cast<float>(static_cast<double>(entry->scale) * 0.5);
-            vm->StartScaleInterpolation(&initial, &final, 8, 4);
+            vm->StartScaleInterpolation(8, 4, &initial, &final);
             manager = g_AnmRenderManagerView;
         }
         else
@@ -619,7 +619,7 @@ int HintOwnerView::ConsumeEntries(HintLinkView *first, int freeEntries)
             initial.x = static_cast<float>(static_cast<double>(entry->scale) * 0.75);
             initial.y = 0.0f;
             final.x = final.y = static_cast<float>(static_cast<double>(entry->scale) * 0.5);
-            vm->StartScaleInterpolation(&initial, &final, 8, 4);
+            vm->StartScaleInterpolation(8, 4, &initial, &final);
         }
         slot = nextVmSlot;
         if (entry->alignment >= 0 && entry->alignment <= 2)

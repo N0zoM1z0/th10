@@ -133,7 +133,7 @@ def audit_dependencies(root):
     anm = (canonical / 'AnmManager.hpp').read_text()
     player = (canonical / 'Player.hpp').read_text()
     expected = [
-        'void StartScaleInterpolation(const AnmFloat2View *initial, const AnmFloat2View *final, int duration, unsigned char mode);',
+        'void StartScaleInterpolation(int duration, unsigned char mode, const AnmFloat2View *initial, const AnmFloat2View *final);',
         'AnmVmIdView CreateVmAtWorldVariant0(int scriptIndex, const AnmFloat3View *position);',
         'AnmVmView *FindVm(AnmVmIdView id);',
 
@@ -191,7 +191,7 @@ def mutations(source):
         ('medium-recomputed-after-create', 'unsigned char glyphSize = static_cast<unsigned char>(\n                static_cast<int>(static_cast<double>(entry->scale) * 15.0));', 'unsigned char glyphSize = entry->scale <= 2.0f ? static_cast<unsigned char>(\n                static_cast<int>(static_cast<double>(entry->scale) * 15.0)) : 30;'),
         ('manager-not-refreshed-after-create', 'manager = g_AnmRenderManagerView;\n            vm = manager->FindVm', 'vm = manager->FindVm', 3),
         ('manager-always-refreshed-after-scale', '        slot = nextVmSlot;\n        if (entry->alignment', '        manager = g_AnmRenderManagerView;\n        slot = nextVmSlot;\n        if (entry->alignment'),
-        ('manager-not-refreshed-after-scale', 'vm->StartScaleInterpolation(&initial, &final, 8, 4);\n            manager = g_AnmRenderManagerView;', 'vm->StartScaleInterpolation(&initial, &final, 8, 4);'),
+        ('manager-not-refreshed-after-scale', 'vm->StartScaleInterpolation(8, 4, &initial, &final);\n            manager = g_AnmRenderManagerView;', 'vm->StartScaleInterpolation(8, 4, &initial, &final);'),
         ('manager-not-refreshed-after-text', '            manager = g_AnmRenderManagerView;\n        }\n        vm->primaryColor', '        }\n        vm->primaryColor'),
         ('manager-not-refreshed-after-delete', 'delete entry;\n            manager = g_AnmRenderManagerView;', 'delete entry;'),
         ('cached-next-not-used', '        node = next;\n    }\n    return 0;', '        node = entry->link.next;\n    }\n    return 0;'),
@@ -199,7 +199,7 @@ def mutations(source):
         ('fade-rounded-instead-of-truncated', 'static_cast<unsigned char>(static_cast<int>(\n                alpha -', 'static_cast<unsigned char>(std::lround(\n                alpha -', 2),
         ('interior-alpha-shift-before-byte', 'static_cast<unsigned char>(alpha) >> 2', 'static_cast<unsigned char>(alpha >> 2)'),
         ('unsigned-fade-quotient', '(3 * alpha) / 4', 'static_cast<unsigned int>(3 * alpha) / 4', 2),
-        ('reverse-scale-vectors', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&final, &initial, 8, 4)', 3),
+        ('reverse-scale-vectors', 'StartScaleInterpolation(8, 4, &initial, &final)', 'StartScaleInterpolation(8, 4, &final, &initial)', 3),
         ('wrong-small-script-base', 'nextVmSlot + 2, &entry->position', 'nextVmSlot + 3, &entry->position'),
         ('wrong-large-script-base', 'nextVmSlot + 12, &entry->position', 'nextVmSlot + 13, &entry->position', 2),
         ('safe-format-substitution', 'vm, 0x00FFFFFF, entry->text)', 'vm, 0x00FFFFFF, "%s", entry->text)', 3),
@@ -214,8 +214,8 @@ def mutations(source):
         ('wrong-width-cache', 'cachedWidths[slot] = entry->textWidth;', 'cachedWidths[slot] = entry->scale;'),
         ('skip-y-mutation', 'static_cast<double>(entry->scale) * 8.0 + entry->position.y', 'entry->position.y'),
         ('wrong-small-glyph', 'vm->glyphWidth = vm->glyphHeight = 15;', 'vm->glyphWidth = vm->glyphHeight = 14;'),
-        ('wrong-scale-duration', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&initial, &final, 7, 4)', 3),
-        ('wrong-scale-mode', 'StartScaleInterpolation(&initial, &final, 8, 4)', 'StartScaleInterpolation(&initial, &final, 8, 3)', 3),
+        ('wrong-scale-duration', 'StartScaleInterpolation(8, 4, &initial, &final)', 'StartScaleInterpolation(7, 4, &initial, &final)', 3),
+        ('wrong-scale-mode', 'StartScaleInterpolation(8, 4, &initial, &final)', 'StartScaleInterpolation(8, 3, &initial, &final)', 3),
         ('wrong-time', 'vm->intVar0 = entry->time;', 'vm->intVar0 = entry->remaining;'),
         ('signed-entry-alpha', 'vm->intVar1 = entry->alpha;', 'vm->intVar1 = static_cast<signed char>(entry->alpha);'),
         ('missing-id-not-cleared', 'if (vm == 0)\n        {\n            vmIds[slot].value = 0;\n            continue;', 'if (vm == 0)\n        {\n            continue;'),

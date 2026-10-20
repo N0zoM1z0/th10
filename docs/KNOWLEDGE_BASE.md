@@ -3633,3 +3633,36 @@ no partial credit. Authored exact67505/273274 (24.70%),370 functions; product,
 runtime, semantics and port gates remain open. The operator ended the95%
 campaign and requested cleanup/handoff. Historical claims above retain their
 dated source/profile scopes; use RE_HANDOFF.md and PROGRESS.md for live state.
+
+### 2026-10-20: Reopened large owners; scale call order and polar condition
+
+The operator reopened ANM ExecuteScript, ECL Run and Enemy Dispatch exact work,
+with `gpt-6-astra:` local checkpoints and direct local tools rather than Factory
+MCP. The previous end-of-campaign statement is historical.
+
+[The new scoped evidence](evidence/large-owner-call-order/README.md) revisits
+the assumed scale initializer signature. Duration/mode/initial/final order
+recovers ExecuteScript's complete SCALE_TIME interval, including Y/X reads
+followed by ESI duration materialization; initial/final/duration/mode was not
+a proven original-source fact. All real callers and the canonical decorated
+symbol are updated. The complete136-byte initializer still passes its existing
+strict recipe. Initial packed-color snapshots in BGR order also remove8
+ordinary differences across opcodes57/78.
+
+Two independent five-TU colds reproduce ExecuteScript9964/frameFC,90 same-sized
+intervals, absolute gap2, pre-table delta0 and aligned7478/7995. Twelve existing
+guards pass4579 bytes/all183 fields in each image. FLIP_X(+1), common tail(−1),
+register choices and scheduling remain nonexact. Total size is not acceptance;
+no parent or denominator credit is added.
+
+Enemy's polar shortest-path inner strict-less branch restores target
+40F598's `test ah,5`/parity condition and successor order. The outer fabs guard
+excludes unordered operands from that comparison. An initial code-neutral
+assessment based on unchanged whole-owner diagnostics was disproved by local
+instruction review: an unaligned score can conceal a real local repair.
+Complete dispatcher remains open. Fresh ECL Run reproduces7020 bytes and28
+ordinary differences; a noncanonical strict recipe validates all189 address
+fields and compares6992/7020 bytes, including the selector data's last undecoded
+byte via an explicit data-span declaration. Restored source/lifetime/profile
+controls have not closed those28 differences. Original/native runtime and
+later gates remain unvalidated.

@@ -1602,11 +1602,11 @@ dispatch_update_primary_anm_bounds:
     initialPolar.x = selectedMotion->value1C;
     initialPolar.y = selectedMotion->value18;
     if (3.1415927f <= static_cast<float>(fabs(initialPolar.x - finalPolar.x))) {
-      if (initialPolar.x >= finalPolar.x) {
-        finalPolar.x = finalPolar.x + 6.2831855f;
+      if (initialPolar.x < finalPolar.x) {
+        initialPolar.x = initialPolar.x + 6.2831855f;
       }
       else {
-        initialPolar.x = initialPolar.x + 6.2831855f;
+        finalPolar.x = finalPolar.x + 6.2831855f;
       }
     }
     uVar22 = ENEMY_READ_INT_DIRECT(0);
