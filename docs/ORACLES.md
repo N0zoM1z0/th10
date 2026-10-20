@@ -118,6 +118,16 @@ still compared. ECL Run additionally validates its reviewed60-entry table and88
 selectors before deriving an annotation. See the
 [table coverage controls](evidence/ecl-current-dependencies/README.md).
 
+`diagnose-ecl-run-native.py --context-manifest PATH --unit NAME` selects an
+explicit diagnostic build context without changing canonical recipes. Target
+bindings and callee templates always come from canonical match-units.toml;
+the context cannot replace them. Both files are fingerprinted and must remain
+unchanged during the comparison. The complete callee,189 fields/62 local
+destinations and table/selector coverage requirements remain unchanged.
+Artifact producer/source pins are separate evidence: the command does not
+assert that an existing image was built from the supplied context or current
+source. See the [real scale support proof](evidence/enemy-real-scale-support/README.md).
+
 A direct REL32 call to a static callee may explicitly declare both
 `static_source` and `static_size`. This opt-in derives the selected object from
 the unit's source/support list and uses the existing qualified MAP/PDB owner

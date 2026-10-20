@@ -3899,3 +3899,34 @@ The lower three rank owner reloads, root instruction lifetime, other code
 scheduling and stack homes remain open. Run7020/all189 remains27 differences
 in this context. No new exact or denominator credit is added; original
 declarations, production TU, storage aliases and later-phase gates remain open.
+
+
+### 2026-10-21: Real scale dependency in the common dispatcher carrier
+
+The [real scale proof](evidence/enemy-real-scale-support/README.md) replaces
+AnmInt3View::operator*'s unresolved data anchor with its maintained definition
+in a nine-TU dispatcher graph. The added support alone uses the existing
+reproduced /GL /GS /Ob1 profile. RGB Evaluate grows780->820 and fully matches;
+scale56 also matches. Target Ghidra confirms four calls to441E50, all from
+RGB441600. This is no inference of original profile, hierarchy or physical TU.
+
+Two independent full nine-TU colds strictly preserve21 existing complete target
+owners2415 bytes/all52 fields with all30 project inputs equal. Six shared
+canonical recipes migrate to this graph; all semantic symbol/target pairs and
+exact counts remain unchanged. Other canonical contexts retain their scope.
+ANM ExecuteScript keeps9964 bytes but gains228 aligned diagnostic positions,
+7250->7478/7995;90/92 target-sized spans and gap2 remain. The old anchor image's
+same-size interpreter was not evidence of equivalent code generation.
+ECLRun7020/all189 incl62 local destinations retains27 ordinary differences;
+dispatcher14468/14416 retains40/108 target-sized spans, gap652, frame2C4 and19
+sentinels. The remaining changed native dispatcher call field maps to the
+source-qualified EnemyInitializeLaserType1 helper; its fresh native extent is
+74 against target219 and remains nonexact with indeterminate origin.
+
+ECL diagnostics can now select an explicit context manifest while keeping
+callee templates and target bindings canonical. Both files are hashed/frozen;
+wrong target hashes are rejected and forged override templates are ignored.
+The old command's complete reports remain identical. This does not attest
+artifact compilation inputs; producer/source pins remain independent evidence.
+The newly supplied body removes one known missing dependency, while other
+anchors, all three large exact claims and later-phase gates remain open.

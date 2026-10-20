@@ -1,0 +1,123 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "Six shared compiler-context migrations and optional ECL diagnostic context; no new exact credit, no full historical replay.",
+  "native": {
+    "independent_full_cold_links": 2,
+    "recursive_inputs": 30,
+    "all_final_input_pins_match": true,
+    "all_retained_native_artifacts_match": true,
+    "complete_existing_owners_per_image": 21,
+    "complete_existing_bytes_per_image": 2415,
+    "bound_fields_per_image": 52,
+    "canonical_cold2_units": 6,
+    "canonical_cold2_bytes": 142
+  },
+  "diagnostic_cli": {
+    "final_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+    "controls": [
+      {
+        "control": "baseline-explicit",
+        "run_matched_bytes": 6993,
+        "fields": 189
+      },
+      {
+        "control": "scale-explicit",
+        "run_matched_bytes": 6993,
+        "fields": 189
+      },
+      {
+        "control": "wrong-target",
+        "result": "rejected"
+      },
+      {
+        "control": "overridden-callee-templates",
+        "result": "ignored; canonical guard/run reports identical"
+      }
+    ],
+    "historical_report_identities": [
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/baseline-ecl-before.json",
+        "bytes": 71260,
+        "sha256": "daa992dea8313bae4b818ee12aefcd67e99a690188adf186d42e4b1ca4a10946"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/baseline-ecl-after.json",
+        "bytes": 71464,
+        "sha256": "baae955e862cd607c2f64c8170dc187a19e6169ee394d37fb3173e569d264ea8"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/baseline-explicit-ecl.json",
+        "bytes": 71544,
+        "sha256": "9fdf22aa94f91e98432716bbb049386ce72bd9a3bfe5f4c0402f0a80ef48c2d5"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/scale-explicit-ecl.json",
+        "bytes": 71537,
+        "sha256": "f64dd1aca08c8469da08167cfa2763aae84406f7e62a3d5cb188536629e973da"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/canonical-cold2-ecl.json",
+        "bytes": 71437,
+        "sha256": "f1adf17263de4a849ff8e793c1391b2ea1d180e2368c789ce6312a34fe59b162"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/bad-target-result.json",
+        "bytes": 99,
+        "sha256": "f3744f76f593f0ed6fac0e382cbac8580b8c9c8897b366ef1520e83c22c13bfc"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-real-scale-support-20261021/poisoned-bindings-result.json",
+        "bytes": 71554,
+        "sha256": "976b022465f853ee19a71955e6e7ac8e34be2eb6bfa80f86dd865a5debdd9308"
+      }
+    ]
+  },
+  "final_gates": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "TH10 toolchain declarations OK; execution not requested"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "returncode": 0,
+      "stdout": "tracking OK: 1775 candidates/boundaries, 1077 mappings, 1216 exact"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "returncode": 0,
+      "stdout": "wrote docs/PROGRESS.md and resources/progress.svg"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": ""
+    }
+  ],
+  "ci": {
+    "result": "passed",
+    "returncode": 0,
+    "steps": 100,
+    "log_sha256": "3c4e2bb017dd74a310f0a50f8a9767d7855c36a0d7d1a1832cd6a41be923b4d3"
+  },
+  "cleanup": {
+    "native_directories": 0,
+    "analysis_files": 2,
+    "analysis_bytes": 143018,
+    "scope": "Only two verified duplicate CLI reports removed after core-report equality and identity capture; scripts, inputs, compact controls, failures, both new cold carriers and the eight-TU baseline retained."
+  }
+}

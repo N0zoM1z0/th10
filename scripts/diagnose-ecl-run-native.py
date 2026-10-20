@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Compare the complete ECL Run owner without granting canonical exact credit.
 
-Build the selected canonical context first. This command inspects that artifact;
+Build the selected declared context first. This command inspects that artifact;
 it does not assert that an existing artifact was compiled from current source.
+An explicit context manifest can describe an isolated noncanonical build graph;
+target bindings and callee templates always come from the canonical manifest.
 Exit 0 means complete equality, 1 means an ordinary mismatch, and 2 means an
 unsupported or unbound comparison. All results remain noncanonical diagnostics.
 """
@@ -10,6 +12,7 @@ unsupported or unbound comparison. All results remain noncanonical diagnostics.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -89,7 +92,16 @@ def toml_value(value):
 
 
 def compare(args):
-    manifest = tomllib.loads((ROOT / "config/match-units.toml").read_text())
+    canonical_path = ROOT / "config/match-units.toml"
+    canonical_bytes = canonical_path.read_bytes()
+    canonical = tomllib.loads(canonical_bytes.decode("utf-8"))
+    manifest_path = Path(
+        getattr(args, "context_manifest", None) or canonical_path
+    ).resolve()
+    manifest_bytes = manifest_path.read_bytes()
+    manifest = tomllib.loads(manifest_bytes.decode("utf-8"))
+    if manifest.get("target_sha256") != canonical["target_sha256"]:
+        raise ValueError("context manifest target hash differs from canonical bindings")
     units = manifest["units"]
     context = units[args.unit]
     if context["artifact_kind"] != "linked-pe":
@@ -125,10 +137,10 @@ def compare(args):
         unit.update(output_dir=str(directory.relative_to(ROOT)), pdb_source="src/EclVm.cpp")
         return unit
 
-    guard = contextual(units["ecl-vm-read-float-value"])
-    run = contextual(units["ecl-vm-host-run"])
+    guard = contextual(canonical["units"]["ecl-vm-read-float-value"])
+    run = contextual(canonical["units"]["ecl-vm-host-run"])
     known = set()
-    for unit in units.values():
+    for unit in canonical["units"].values():
         known.add((unit["symbol"], int(unit["target_address"])))
         for field in unit.get("linkages", []):
             if "symbol" in field:
@@ -166,7 +178,7 @@ def compare(args):
     with tempfile.TemporaryDirectory(prefix="ecl-run-native-", dir=analysis) as temporary:
         path = Path(temporary) / "units.toml"
         path.write_text(
-            "target_sha256 = " + toml_value(manifest["target_sha256"]) + "\n"
+            "target_sha256 = " + toml_value(canonical["target_sha256"]) + "\n"
             + "".join(
                 "[units." + name + "]\n" + "".join(
                     key + " = " + toml_value(value) + "\n" for key, value in unit.items()
@@ -178,9 +190,17 @@ def compare(args):
         if guarded["result"] != "exact":
             raise ValueError("the complete same-image float-value callee is not exact")
         result = comparator.compare_unit("run-diagnostic")
+    if manifest_path.read_bytes() != manifest_bytes:
+        raise ValueError("context manifest changed during comparison")
+    if canonical_path.read_bytes() != canonical_bytes:
+        raise ValueError("canonical bindings changed during comparison")
     return {
         "scope": "Noncanonical complete-owner diagnostic; no exact ledger credit.",
         "context_unit": args.unit,
+        "context_manifest": str(manifest_path.relative_to(ROOT))
+        if manifest_path.is_relative_to(ROOT) else str(manifest_path),
+        "context_manifest_sha256": hashlib.sha256(manifest_bytes).hexdigest(),
+        "canonical_bindings_sha256": hashlib.sha256(canonical_bytes).hexdigest(),
         "callee_guard": guarded,
         "run": result,
     }
@@ -190,6 +210,10 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--unit", default="ecl-vm-host-run")
     parser.add_argument("--artifact-dir", help="existing artifact under build/ with the same graph")
+    parser.add_argument(
+        "--context-manifest", type=Path,
+        help="declared build context (target bindings remain canonical)",
+    )
     args = parser.parse_args()
     try:
         result = compare(args)

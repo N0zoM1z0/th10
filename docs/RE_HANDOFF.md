@@ -47,7 +47,24 @@ candidates, 734 authored functions owning 273274 bytes, 1077 source mappings,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint changes only two final rank-count reads to local generic
+The latest checkpoint supplies real AnmInt3Scale.cpp in the dispatcher graph,
+migrating the six shared canonical recipes from eight to nine TUs. Only that
+support uses the already reproduced /GL /GS /Ob1 profile; no C++ source or
+semantic target bindings change. Two independent full nine-TU colds strictly
+replay21 existing complete owners2415 bytes/all52 fields with all30 source pins
+equal. RGB Evaluate780->820 and scale56 now match in this carrier. ANM
+ExecuteScript remains9964 but aligned diagnostic positions improve7250->7478
+of7995;90/92 target-sized spans and absolute gap2 remain. Run7020/all189,
+62 local destinations retains27 ordinary differences; dispatcher14468/14416
+retains gap652,40/108 target-sized spans, frame2C4 and19 sentinels. No new exact
+or denominator credit. See [real dependency proof](evidence/enemy-real-scale-support/README.md).
+ECL diagnostics now accept an explicit context manifest while retaining
+canonical target bindings/callee templates; wrong-target and poisoned-template
+controls pass. New carrier identities supersede the eight-TU image identities.
+The separate RGB and other canonical contexts remain unchanged. Remaining
+anchors keep the diagnostic image non-runnable; all three large owners are open.
+
+The preceding checkpoint changes only two final rank-count reads to local generic
 host views. Target EBX owner reloads for indices10/8 and the rank-five interval's
 eleven integer calls/five returns are recovered. Two independent full eight-TU
 colds reproduce the dispatcher at14468/14416 and retain19 complete existing
@@ -65,11 +82,10 @@ identities. Difficulty-count host and conditional-call controls recover its
 third call but regress rank-five to nine calls/four returns and are restored.
 Generic macro/prologue views are neutral; biased pattern-pointer, direct-rank
 and boolean controls are rejected. All five adapter bodies are unchanged.
-The eight-TU carrier still anchors AnmInt3View::operator* despite the maintained
+The eight-TU carrier still anchored AnmInt3View::operator* despite the maintained
 AnmInt3Scale.cpp body. The separate RGB recipe uses /GL /GS /Ob1 for that support. Adding the real known body in a separate declared dispatcher
-diagnostic graph is untested and should precede assuming this graph's large
-owner behavior is production-like. Preserve the current canonical contexts
-until the enlarged graph has its own complete comparisons.
+diagnostic graph was subsequently tested in the real dependency proof above.
+It establishes the declared bounded context, without production closure.
 All100 standard CI checks pass. Cleanup reclaims9148041 bytes from nine
 owned superseded native directories and eight cloned analysis files.
 
@@ -204,9 +220,9 @@ graph after any dependency changes before comparing scores.
 
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
-| ANM ExecuteScript43EE30/9964 | Current six-TU ASCII/Stage context:9964 bytes,90 target-sized groups, absolute gap2, aligned7478/7995; pre-table delta0 | Nonexact. Scale method parameter order repairs the SCALE_TIME interval; BGR snapshots remove8 differences. Unequal intervals61(+1),2(−1). Registers, flag scheduling and common tail remain open. |
+| ANM ExecuteScript43EE30/9964 | Current two full nine-TU dispatcher colds with real scale support:9964 bytes,90 target-sized groups, absolute gap2, aligned7478/7995 | Nonexact. Old eight-TU anchor graph had7250/7995 despite same size. Unequal intervals61(+1),2(−1); registers, flag scheduling and common tail remain open. |
 | ECL Run44E1A0/7020 | Current full two-TU cold afterccd47a6: strict all189 fields and6994/7020 bytes;15 same-image guards1587/all21 | Exactly26 ordinary differences remain. Eight-TU Enemy context has27, including an additional SIB byte. Static float-value adapter repairs FORMAT register setup while retaining171-byte canonical callee; no new exact credit. [Current evidence](evidence/ecl-float-value-call-order/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Current two full eight-TU colds:14468 bytes, rank-five434/420, frame2C4,181 selectors and108 groups; case-size gap652 | Generic integer calls105/106; missing physical call in1B4. Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
+| Enemy DispatchEclInstruction40E770/14416 | Current two full nine-TU colds with real scale support:14468 bytes, rank-five434/420, frame2C4,181 selectors and108 groups; case-size gap652 | Generic integer calls105/106; missing physical call in1B4. Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
 
 Old rejected controls are scoped observations, not proof that an API or source
 shape is correct. Require a concrete target hypothesis and compare corresponding
@@ -253,7 +269,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the rank-count proof; RGB results retain
+Latest focused native results are in the real scale proof; RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -268,4 +284,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the RGB validation summary](evidence/anm-rgb-interpolation/validation-summary.json).
+[the current validation summary](evidence/enemy-real-scale-support/validation-summary.json).

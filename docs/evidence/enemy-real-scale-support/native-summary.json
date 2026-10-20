@@ -1,0 +1,842 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "f498991",
+  "scope": "Six compiler-context migrations with real known source; no new exact credit or product/runtime claim.",
+  "source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "3b4e09603103c92b3940d305f62281054ae18327db960acea418176c7582a57a",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "canonical_semantic_binding_pairs_unchanged": true,
+  "migrated_units": [
+    "anm-release-slot",
+    "enemy-read-int-argument",
+    "enemy-read-float-argument",
+    "enemy-resolve-float-argument",
+    "enemy-read-raw-int-argument",
+    "enemy-read-raw-float-argument"
+  ],
+  "graph": {
+    "primary_source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+  },
+  "builds": [
+    {
+      "label": "scale-support",
+      "kind": "independent full cold nine-TU link",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/enemy-real-scale-support-20261021/scale-support/source.exe",
+          "sha256": "978515cf2f42ea08142d2d3a95d0061e6c1fb53893ca5b1e8f544f005fb19cce"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/enemy-real-scale-support-20261021/scale-support/source.map",
+          "sha256": "41b2fdfddc9e0b0949a98ce782524317bd2302be6f30c3d8321c22b6b6573416"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/enemy-real-scale-support-20261021/scale-support/source.pdb",
+          "sha256": "623bcd15dcf1c1091dad1e497e5b6a04de398eaf994c17bd46564b3c447d68b7"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/enemy-real-scale-support-20261021/scale-support/source.ltcg.obj",
+          "sha256": "509f90f75c3c4135aa534b8ddeec8ee90896c0aaaaf9be1a0a910be067082805"
+        }
+      },
+      "alias_sha256": "6491963d5288b66a8fcc528b91f2b32e81aaa7343c30a16f3cedf906c041eeef",
+      "scale_alias_absent": true,
+      "pdb_guid": "0ee60bb566c2ff45a69e9dc6ab8c80ee",
+      "pdb_age": 1,
+      "owners": [
+        {
+          "unit": "ecl-vm-read-float",
+          "address": "0x00406580",
+          "pdb_module_index": 6,
+          "raw_sha256": "83ee429da107dde2763f1ab46aa9193f52a1cebffd200648a82b70fe829b797d"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "address": "0x00406440",
+          "pdb_module_index": 6,
+          "raw_sha256": "5b1c8d267750999bebba18621b3ca775d737a7385afd769e45d899af450458e5"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "address": "0x004063C0",
+          "pdb_module_index": 6,
+          "raw_sha256": "f30523d0939d58da29f039198e2752f35d52f97bdeba7c69636acb067a4ce450"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "address": "0x004064D0",
+          "pdb_module_index": 6,
+          "raw_sha256": "34e6f4e68ec0b4908d64e1ee3662ace9420b6ed87c6904b86b99ac9e685c1031"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "address": "0x00406640",
+          "pdb_module_index": 6,
+          "raw_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "address": "0x00406680",
+          "pdb_module_index": 6,
+          "raw_sha256": "03bf847f779b0e57e7f17dc5576bd9e88032169edd316cd44cca75d2c9b18afa"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "address": "0x00406BD0",
+          "pdb_module_index": 6,
+          "raw_sha256": "a3bd74c96c8e1049ba66b33fbff2d42e09a47c83cf8d1053050b7211343f29e3"
+        },
+        {
+          "unit": "anm-release-slot",
+          "address": "0x0040C210",
+          "pdb_module_index": 8,
+          "raw_sha256": "0d714a64e411bb2efbeae9a9411d75a44a78fb3bfade9ff255115ba5dab6bf2e"
+        },
+        {
+          "unit": "enemy-mark-pending-interrupt",
+          "address": "0x004016F0",
+          "pdb_module_index": 4,
+          "raw_sha256": "c55c29fb286324f3c2d08a922ebdc5d055e7aa5450f6a769b4870aae10f34531"
+        },
+        {
+          "unit": "enemy-sound-queue-sample",
+          "address": "0x00401A20",
+          "pdb_module_index": 4,
+          "raw_sha256": "254057d76f3fb3de3d26c5629dc3e4170ffb76429f21788f6a73296f9c9b2d7c"
+        },
+        {
+          "unit": "enemy-sound-queue-cue",
+          "address": "0x00401980",
+          "pdb_module_index": 4,
+          "raw_sha256": "f1d656f963554b52f151427f70958feb05b055b3aca8e56aa5773c6ea18bea17"
+        },
+        {
+          "unit": "enemy-drop-vector-from-angle-radii",
+          "address": "0x00402430",
+          "pdb_module_index": 4,
+          "raw_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7"
+        },
+        {
+          "unit": "enemy-resolve-int-argument",
+          "address": "0x00402760",
+          "pdb_module_index": 4,
+          "raw_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5"
+        },
+        {
+          "unit": "enemy-enable-shield",
+          "address": "0x00401740",
+          "pdb_module_index": 4,
+          "raw_sha256": "60f930e3971399fef4cdb2fe1af1cee95bd79e59c4b3fa42932ab126f8f9b4fe"
+        },
+        {
+          "unit": "enemy-read-int-argument",
+          "address": "0x00402750",
+          "pdb_module_index": 4,
+          "raw_sha256": "1ceebb304839c88fa8ba050446524a5a171084c0af02b2ff9600aa437fc4e843"
+        },
+        {
+          "unit": "enemy-read-float-argument",
+          "address": "0x004027B0",
+          "pdb_module_index": 4,
+          "raw_sha256": "1da3ebb7b2580888f265695e503edbbee2d92f347f7377a026c9a6b460b50a89"
+        },
+        {
+          "unit": "enemy-resolve-float-argument",
+          "address": "0x004027C0",
+          "pdb_module_index": 4,
+          "raw_sha256": "166256aacafe8a082044fd06bfd94c6dc85db2496da0008003ea7537de4479f5"
+        },
+        {
+          "unit": "enemy-read-raw-int-argument",
+          "address": "0x004027D0",
+          "pdb_module_index": 4,
+          "raw_sha256": "51a0cec2d428502ebff1754c6dfb34e8d58326af1e5af6adab536bd8af086f25"
+        },
+        {
+          "unit": "enemy-read-raw-float-argument",
+          "address": "0x004027F0",
+          "pdb_module_index": 4,
+          "raw_sha256": "a9b439559537b0464840516b332f17eff1daee51941bee87bf705997b9692727"
+        },
+        {
+          "unit": "anm-int3-scale",
+          "address": "0x00417F90",
+          "pdb_module_index": 7,
+          "raw_sha256": "507be379993e85577bcf520a333329677accb315ff5e51303df4925b3b496181"
+        },
+        {
+          "unit": "anm-evaluate-rgb-interpolation",
+          "address": "0x00409630",
+          "pdb_module_index": 8,
+          "raw_sha256": "671cdb77e70f03a885c1817fbff6aaf044946333be219f6e402ef52cdc74ec79"
+        }
+      ],
+      "complete_existing_bytes": 2415,
+      "bound_fields": 52
+    },
+    {
+      "label": "canonical-cold2",
+      "kind": "independent full cold nine-TU link",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/AnmReleaseSlot/source.exe",
+          "sha256": "a01a45a64d4a7781f8c063f5a57ce3eea8cfe1d3cd8445758da98a2dfaf72afa"
+        },
+        "map": {
+          "path": "build/match-linked/AnmReleaseSlot/source.map",
+          "sha256": "a47fd8982dabe438792018b131fd6c06574e28327ef8d9fc1fba2455cfbb88ba"
+        },
+        "pdb": {
+          "path": "build/match-linked/AnmReleaseSlot/source.pdb",
+          "sha256": "0e4e728c388f8d4d1bfed16de65b0985f0125e05e0daa399b7a77b4b70e16507"
+        },
+        "object": {
+          "path": "build/match-linked/AnmReleaseSlot/source.ltcg.obj",
+          "sha256": "e42508a03abd56e1144e0afe2369069330df3d9e21e1b3bc22b6d33c8c1f08d5"
+        }
+      },
+      "alias_sha256": "6491963d5288b66a8fcc528b91f2b32e81aaa7343c30a16f3cedf906c041eeef",
+      "scale_alias_absent": true,
+      "pdb_guid": "cd227a6d4175b847a5684bbbf3d6734e",
+      "pdb_age": 1,
+      "owners": [
+        {
+          "unit": "ecl-vm-read-float",
+          "address": "0x00406580",
+          "pdb_module_index": 6,
+          "raw_sha256": "83ee429da107dde2763f1ab46aa9193f52a1cebffd200648a82b70fe829b797d"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "address": "0x00406440",
+          "pdb_module_index": 6,
+          "raw_sha256": "5b1c8d267750999bebba18621b3ca775d737a7385afd769e45d899af450458e5"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "address": "0x004063C0",
+          "pdb_module_index": 6,
+          "raw_sha256": "f30523d0939d58da29f039198e2752f35d52f97bdeba7c69636acb067a4ce450"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "address": "0x004064D0",
+          "pdb_module_index": 6,
+          "raw_sha256": "34e6f4e68ec0b4908d64e1ee3662ace9420b6ed87c6904b86b99ac9e685c1031"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "address": "0x00406640",
+          "pdb_module_index": 6,
+          "raw_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "address": "0x00406680",
+          "pdb_module_index": 6,
+          "raw_sha256": "03bf847f779b0e57e7f17dc5576bd9e88032169edd316cd44cca75d2c9b18afa"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "address": "0x00406BD0",
+          "pdb_module_index": 6,
+          "raw_sha256": "a3bd74c96c8e1049ba66b33fbff2d42e09a47c83cf8d1053050b7211343f29e3"
+        },
+        {
+          "unit": "anm-release-slot",
+          "address": "0x0040C210",
+          "pdb_module_index": 8,
+          "raw_sha256": "0d714a64e411bb2efbeae9a9411d75a44a78fb3bfade9ff255115ba5dab6bf2e"
+        },
+        {
+          "unit": "enemy-mark-pending-interrupt",
+          "address": "0x004016F0",
+          "pdb_module_index": 4,
+          "raw_sha256": "c55c29fb286324f3c2d08a922ebdc5d055e7aa5450f6a769b4870aae10f34531"
+        },
+        {
+          "unit": "enemy-sound-queue-sample",
+          "address": "0x00401A20",
+          "pdb_module_index": 4,
+          "raw_sha256": "254057d76f3fb3de3d26c5629dc3e4170ffb76429f21788f6a73296f9c9b2d7c"
+        },
+        {
+          "unit": "enemy-sound-queue-cue",
+          "address": "0x00401980",
+          "pdb_module_index": 4,
+          "raw_sha256": "f1d656f963554b52f151427f70958feb05b055b3aca8e56aa5773c6ea18bea17"
+        },
+        {
+          "unit": "enemy-drop-vector-from-angle-radii",
+          "address": "0x00402430",
+          "pdb_module_index": 4,
+          "raw_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7"
+        },
+        {
+          "unit": "enemy-resolve-int-argument",
+          "address": "0x00402760",
+          "pdb_module_index": 4,
+          "raw_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5"
+        },
+        {
+          "unit": "enemy-enable-shield",
+          "address": "0x00401740",
+          "pdb_module_index": 4,
+          "raw_sha256": "60f930e3971399fef4cdb2fe1af1cee95bd79e59c4b3fa42932ab126f8f9b4fe"
+        },
+        {
+          "unit": "enemy-read-int-argument",
+          "address": "0x00402750",
+          "pdb_module_index": 4,
+          "raw_sha256": "1ceebb304839c88fa8ba050446524a5a171084c0af02b2ff9600aa437fc4e843"
+        },
+        {
+          "unit": "enemy-read-float-argument",
+          "address": "0x004027B0",
+          "pdb_module_index": 4,
+          "raw_sha256": "1da3ebb7b2580888f265695e503edbbee2d92f347f7377a026c9a6b460b50a89"
+        },
+        {
+          "unit": "enemy-resolve-float-argument",
+          "address": "0x004027C0",
+          "pdb_module_index": 4,
+          "raw_sha256": "166256aacafe8a082044fd06bfd94c6dc85db2496da0008003ea7537de4479f5"
+        },
+        {
+          "unit": "enemy-read-raw-int-argument",
+          "address": "0x004027D0",
+          "pdb_module_index": 4,
+          "raw_sha256": "51a0cec2d428502ebff1754c6dfb34e8d58326af1e5af6adab536bd8af086f25"
+        },
+        {
+          "unit": "enemy-read-raw-float-argument",
+          "address": "0x004027F0",
+          "pdb_module_index": 4,
+          "raw_sha256": "a9b439559537b0464840516b332f17eff1daee51941bee87bf705997b9692727"
+        },
+        {
+          "unit": "anm-int3-scale",
+          "address": "0x00417F90",
+          "pdb_module_index": 7,
+          "raw_sha256": "507be379993e85577bcf520a333329677accb315ff5e51303df4925b3b496181"
+        },
+        {
+          "unit": "anm-evaluate-rgb-interpolation",
+          "address": "0x00409630",
+          "pdb_module_index": 8,
+          "raw_sha256": "671cdb77e70f03a885c1817fbff6aaf044946333be219f6e402ef52cdc74ec79"
+        }
+      ],
+      "complete_existing_bytes": 2415,
+      "bound_fields": 52
+    }
+  ],
+  "complete_existing_target_owners": [
+    {
+      "unit": "ecl-vm-read-float",
+      "symbol": "?ReadFloat@EclVmContext@@QAEMI@Z",
+      "target_address": "0x0044FE40",
+      "size": 183,
+      "fields": 4,
+      "complete_replayed_target_sha256": "2ca538193891653fac19d37bf3da384a61d399b71e590c34be12a3f1222d54d9"
+    },
+    {
+      "unit": "ecl-vm-read-int",
+      "symbol": "?ReadInt@EclVmContext@@QAEHI@Z",
+      "target_address": "0x0044FDB0",
+      "size": 144,
+      "fields": 1,
+      "complete_replayed_target_sha256": "81b1a03f6b065bb35a8482733cd9e6bd8d240d64241a9dd97b0bc488b0615736"
+    },
+    {
+      "unit": "ecl-vm-read-int-value",
+      "symbol": "?ReadIntValue@EclVmContext@@QAEHIH@Z",
+      "target_address": "0x0044FF00",
+      "size": 124,
+      "fields": 1,
+      "complete_replayed_target_sha256": "6e1d448146ac92d1779388e0d07179a95950b94a8a9013fdf662518bf1edf0f9"
+    },
+    {
+      "unit": "ecl-vm-read-float-value",
+      "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+      "target_address": "0x0044FF80",
+      "size": 171,
+      "fields": 4,
+      "complete_replayed_target_sha256": "a5d002df2a338ac482ceb008546447eac1fb0ff526f5acd035282dc7dedcb4c8"
+    },
+    {
+      "unit": "ecl-vm-resolve-int",
+      "symbol": "?ResolveInt@EclVmContext@@QAEPAHI@Z",
+      "target_address": "0x00450030",
+      "size": 58,
+      "fields": 0,
+      "complete_replayed_target_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4"
+    },
+    {
+      "unit": "ecl-vm-resolve-float",
+      "symbol": "?ResolveFloat@EclVmContext@@QAEPAMI@Z",
+      "target_address": "0x00450070",
+      "size": 93,
+      "fields": 3,
+      "complete_replayed_target_sha256": "e16795d700fcaf021ef295164abe6e20ea1a05f724c508f3c7396e6c3718420b"
+    },
+    {
+      "unit": "ecl-vm-host-run",
+      "symbol": "?Run@EclVmHost@@QAEHM@Z",
+      "target_address": "0x0044FD10",
+      "size": 146,
+      "fields": 4,
+      "complete_replayed_target_sha256": "009341c6a7d4a5e2c0eb2536c14e4ca4d2452f6bb01152faae149e9e95a20eb3"
+    },
+    {
+      "unit": "anm-release-slot",
+      "symbol": "?ReleaseAnm@AnmRenderManagerView@@QAEXH@Z",
+      "target_address": "0x004477D0",
+      "size": 55,
+      "fields": 2,
+      "complete_replayed_target_sha256": "9b65d0872204662d27d6b0d219904ddf2180f880191e29ce3f793585a1bcad16"
+    },
+    {
+      "unit": "enemy-mark-pending-interrupt",
+      "symbol": "?EnemyMarkPendingInterrupt@@YAXPAH@Z",
+      "target_address": "0x00409E50",
+      "size": 65,
+      "fields": 2,
+      "complete_replayed_target_sha256": "0a35ed9851dc77170b5cf52b1c71ef867c11085930210c8d53bf64bc49b0d669"
+    },
+    {
+      "unit": "enemy-sound-queue-sample",
+      "symbol": "?QueueSoundSample@EnemySoundQueueView@@QAEXHH@Z",
+      "target_address": "0x0043DC90",
+      "size": 123,
+      "fields": 1,
+      "complete_replayed_target_sha256": "29730584bd142aae7f8bb5fc12e03afd883a8d705186ef0719353c8c533249ff"
+    },
+    {
+      "unit": "enemy-sound-queue-cue",
+      "symbol": "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z",
+      "target_address": "0x0043DD10",
+      "size": 149,
+      "fields": 3,
+      "complete_replayed_target_sha256": "d9c92e8fca661f63f3dfbaafa74d8854bc1c675f9009260bce3f967450a798e4"
+    },
+    {
+      "unit": "enemy-drop-vector-from-angle-radii",
+      "symbol": "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z",
+      "target_address": "0x00413270",
+      "size": 30,
+      "fields": 0,
+      "complete_replayed_target_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7"
+    },
+    {
+      "unit": "enemy-resolve-int-argument",
+      "symbol": "?ResolveIntArgument@EnemyRuntimeView@@QAEPAHH@Z",
+      "target_address": "0x00412A10",
+      "size": 75,
+      "fields": 0,
+      "complete_replayed_target_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5"
+    },
+    {
+      "unit": "enemy-enable-shield",
+      "symbol": "?EnemyEnableBombShield@@YAXPAUEnemyGameStateView@@@Z",
+      "target_address": "0x0040CEA0",
+      "size": 36,
+      "fields": 2,
+      "complete_replayed_target_sha256": "1c1dd422513bb0b84bb90b14bef42066850ecc08e564f1682289cbaff494a669"
+    },
+    {
+      "unit": "enemy-read-int-argument",
+      "symbol": "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z",
+      "target_address": "0x00412A00",
+      "size": 16,
+      "fields": 1,
+      "complete_replayed_target_sha256": "011e482e29a35c44f9839c0311646c34eb280cd7460b68b5281c2ce69788f1bb"
+    },
+    {
+      "unit": "enemy-read-float-argument",
+      "symbol": "?ReadFloatArgument@EnemyRuntimeView@@QAEMH@Z",
+      "target_address": "0x00412A60",
+      "size": 14,
+      "fields": 1,
+      "complete_replayed_target_sha256": "6d022962c002638e76dde7e120e89d6bc2ac8d7f151997ac28b69b584ae13ead"
+    },
+    {
+      "unit": "enemy-resolve-float-argument",
+      "symbol": "?ResolveFloatArgument@EnemyRuntimeView@@QAEPAMH@Z",
+      "target_address": "0x00412A70",
+      "size": 14,
+      "fields": 1,
+      "complete_replayed_target_sha256": "7c1c4ea26c59be6fcefa7b1dab9b62cd3203dd54af1bad8450e259e6ee74fbbd"
+    },
+    {
+      "unit": "enemy-read-raw-int-argument",
+      "symbol": "?ReadRawIntArgument@EnemyRuntimeView@@QAEHHH@Z",
+      "target_address": "0x00412A80",
+      "size": 17,
+      "fields": 1,
+      "complete_replayed_target_sha256": "877b71604ba676cea4995ec6ece70aab92f58313cdbf0711b2667ad6c6da8439"
+    },
+    {
+      "unit": "enemy-read-raw-float-argument",
+      "symbol": "?ReadRawFloatArgument@EnemyRuntimeView@@QAEMHM@Z",
+      "target_address": "0x00412AA0",
+      "size": 26,
+      "fields": 1,
+      "complete_replayed_target_sha256": "7d9f7ac705c667da213ec6f2fa250f968a14a7ac0d6e330543272186e75f8316"
+    },
+    {
+      "unit": "anm-int3-scale",
+      "symbol": "??DAnmInt3View@@QBE?AU0@M@Z",
+      "target_address": "0x00441E50",
+      "size": 56,
+      "fields": 3,
+      "complete_replayed_target_sha256": "d7776001d2a71560f4e42043290e9e79203585c26e8811f241710d9ffec3ba63"
+    },
+    {
+      "unit": "anm-evaluate-rgb-interpolation",
+      "symbol": "?Evaluate@AnmVmColorInterpolationView@@QAE?AUAnmInt3View@@XZ",
+      "target_address": "0x00441600",
+      "size": 820,
+      "fields": 17,
+      "complete_replayed_target_sha256": "e0802c707f0621329cdda8d2aa13e2ca47f4a9645bb1236677f8a0464d8589a1"
+    }
+  ],
+  "baseline": {
+    "source_sha256": {
+      "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3b4e09603103c92b3940d305f62281054ae18327db960acea418176c7582a57a",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+    },
+    "artifact_identities": {
+      "image": {
+        "path": "build/gpt-6.1-sol/enemy-direct-integer-host-20261021/retained-cold1/source.exe",
+        "sha256": "bdb39633c5a8d822a38c8816821c00a6d8be176ea0e8d2d6cc1f72474710a4ec"
+      },
+      "map": {
+        "path": "build/gpt-6.1-sol/enemy-direct-integer-host-20261021/retained-cold1/source.map",
+        "sha256": "7769b5862d0d3774834af766248b66458d0b3953b1ed5ce62eed034f8acd632d"
+      },
+      "pdb": {
+        "path": "build/gpt-6.1-sol/enemy-direct-integer-host-20261021/retained-cold1/source.pdb",
+        "sha256": "55675fde9a0e471d38ea206aa0973b6a889230748ddf45344647805c3cce83ee"
+      },
+      "object": {
+        "path": "build/gpt-6.1-sol/enemy-direct-integer-host-20261021/retained-cold1/source.ltcg.obj",
+        "sha256": "d3fa3a84a72db0f196977e46461f6cfdba26a2b9ff9ed43f10209aaa5a8d4dc2"
+      }
+    },
+    "rgb_size": 780,
+    "scale_has_source_owned_function": false,
+    "anm_case_diagnostics": {
+      "matched_comparable_bytes": 7250,
+      "comparable_bytes": 7995,
+      "absolute_case_gap_delta": 2,
+      "same_sized_cases": 90,
+      "normalization_complete": true
+    }
+  },
+  "large_owners": {
+    "anm": {
+      "size": 9964,
+      "target_size": 9964,
+      "cold1": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "cold2": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      }
+    },
+    "enemy": {
+      "size": 14468,
+      "target_size": 14416,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 2924,
+        "comparable_bytes": 11152,
+        "absolute_case_gap_delta": 652,
+        "same_sized_cases": 40
+      },
+      "frames": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2c4"
+      },
+      "sentinel_counts": {
+        "target": 19,
+        "candidate": 19
+      }
+    },
+    "ecl": {
+      "size": 7020,
+      "target_size": 7020,
+      "matched_bytes": 6993,
+      "ordinary_differences": 27,
+      "bound_fields": 189,
+      "local_destinations": 62
+    }
+  },
+  "native_old_new_comparison": {
+    "whole_owners": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "result": "different or unbound",
+        "ordinary_differences": 1,
+        "unbound_fields": [
+          [
+            11086,
+            "REL32",
+            4,
+            11090
+          ]
+        ]
+      },
+      {
+        "prefix": "?ReadIntArgument@EnemyRuntimeView",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0,
+        "unbound_fields": []
+      },
+      {
+        "prefix": "?ExecuteScript@AnmRenderManagerView",
+        "result": "field inventory differs",
+        "ordinary_differences": null,
+        "unbound_fields": []
+      },
+      {
+        "prefix": "?Run@EclVmContext",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0,
+        "unbound_fields": []
+      }
+    ],
+    "equal_dispatcher_spans": 107,
+    "static_constructor_field": [
+      {
+        "label": "baseline",
+        "offset": 11086,
+        "native_target": "0x00415610",
+        "map_entries": [
+          {
+            "section_number": 1,
+            "section_offset": 83472,
+            "symbol": "?EnemyInitializeLaserType1@@YAPAUEnemyLaserCommonStorageView@@PAUEnemyLaserType1StorageView@@@Z",
+            "address": 4281872,
+            "flags": [
+              "f"
+            ],
+            "object": "support-03-EnemyLaser.ltcg.obj"
+          }
+        ]
+      },
+      {
+        "label": "scale-support",
+        "offset": 11086,
+        "native_target": "0x00415640",
+        "map_entries": [
+          {
+            "section_number": 1,
+            "section_offset": 83520,
+            "symbol": "?EnemyInitializeLaserType1@@YAPAUEnemyLaserCommonStorageView@@PAUEnemyLaserType1StorageView@@@Z",
+            "address": 4281920,
+            "flags": [
+              "f"
+            ],
+            "object": "support-03-EnemyLaser.ltcg.obj"
+          }
+        ]
+      }
+    ],
+    "static_constructor_extents": [
+      {
+        "label": "baseline",
+        "selector": {
+          "symbol": "?EnemyInitializeLaserType1@@YAPAUEnemyLaserCommonStorageView@@PAUEnemyLaserType1StorageView@@@Z",
+          "object": "support-03-EnemyLaser.ltcg.obj",
+          "size": 74
+        },
+        "address": "0x00415610",
+        "size": 74,
+        "owner_visibility": "static"
+      },
+      {
+        "label": "scale-support",
+        "selector": {
+          "symbol": "?EnemyInitializeLaserType1@@YAPAUEnemyLaserCommonStorageView@@PAUEnemyLaserType1StorageView@@@Z",
+          "object": "support-03-EnemyLaser.ltcg.obj",
+          "size": 74
+        },
+        "address": "0x00415640",
+        "size": 74,
+        "owner_visibility": "static"
+      }
+    ]
+  },
+  "independent_cold_native_comparison": {
+    "whole_owners": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0
+      },
+      {
+        "prefix": "?ReadIntArgument@EnemyRuntimeView",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0
+      },
+      {
+        "prefix": "?ExecuteScript@AnmRenderManagerView",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0
+      },
+      {
+        "prefix": "?Run@EclVmContext",
+        "result": "equal after verified field rewrites",
+        "ordinary_differences": 0
+      }
+    ],
+    "equal_dispatcher_spans": 108
+  },
+  "target_review": {
+    "transport": "direct local Ghidra headless, no Factory MCP",
+    "read_only": true,
+    "noanalysis": true,
+    "transaction_rolled_back": true,
+    "max_cpu": 1,
+    "max_heap_mib": 768,
+    "mapped_text_start": "0x00401000",
+    "mapped_text_end_inclusive": "0x00465A80",
+    "mapped_text_size": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "scale_entry": "0x00441E50",
+    "scale_direct_calls": 4,
+    "sole_caller_entry": "0x00441600",
+    "target_bytes_unchanged": true
+  },
+  "context_cli_controls": [
+    {
+      "control": "baseline-explicit",
+      "run_matched_bytes": 6993,
+      "fields": 189
+    },
+    {
+      "control": "scale-explicit",
+      "run_matched_bytes": 6993,
+      "fields": 189
+    },
+    {
+      "control": "wrong-target",
+      "result": "rejected"
+    },
+    {
+      "control": "overridden-callee-templates",
+      "result": "ignored; canonical guard/run reports identical"
+    }
+  ],
+  "ledger_credit": {
+    "new_exact_functions": 0,
+    "new_exact_bytes": 0,
+    "new_source_mappings": 0,
+    "canonical_exact_functions": 1216,
+    "authored_exact_functions": 375,
+    "authored_exact_bytes": 68104
+  }
+}
