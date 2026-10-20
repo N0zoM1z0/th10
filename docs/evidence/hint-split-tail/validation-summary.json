@@ -1,0 +1,25 @@
+{
+  "new_exact_functions": 1,
+  "new_exact_bytes": 75,
+  "independent_full_cold_builds": 2,
+  "complete_owners": 4,
+  "replayed_bytes": 366,
+  "linkage_fields": 6,
+  "owner_hashes_equal": true,
+  "recursive_inputs_unchanged": 14,
+  "final_comparator_both_colds": "passed",
+  "context_tests": 22,
+  "static_owner_tests": 50,
+  "hint_host_strict_mutants": 22,
+  "ci_steps": 97,
+  "ci": "passed",
+  "toolchain_check": "passed",
+  "tracking": "passed",
+  "progress": "current",
+  "full_historical_exact_replay": false,
+  "negative_ecl_and_append_sources_restored": true,
+  "cleanup": {
+    "directories": 3,
+    "bytes": 671588
+  }
+}

@@ -19600,6 +19600,28 @@ target_address = 0x0041A0A0
 size = 114
 linkages = []
 
+[units.hint-split-line]
+artifact_kind = "linked-pe"
+owner_visibility = "static"
+source = "src/Hint.cpp"
+support_sources = ["src/FileSystem.cpp"]
+pdb_source = "src/Hint.cpp"
+output_dir = "build/match-linked/HintLoad"
+profile = ["/TP","/MT","/O2","/Gy","/GF","/Oi","/DNDEBUG","/Isrc","/GL"]
+link_profile = ["/ltcg","/nodefaultlib","/subsystem:console","/incremental:no","/fixed:no","/base:0x00400000","/debug","/debugtype:cv","/opt:noref","/opt:noicf","/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z"
+functions = ["HintSplitLine"]
+symbol = "?HintSplitLine@@YAXPBDPAD1@Z"
+target_address = 0x0041A050
+size = 75
+linkages = [
+  { offset = 0x12, type = "REL32", symbol = "_strchr", target = 0x00452730 },
+  { offset = 0x20, type = "REL32", symbol = "?HintTrimWhitespace@@YAPADPAD@Z", target = 0x0041A0A0, static_source = "src/Hint.cpp", static_size = 114, static_tail_jump = true },
+  { offset = 0x3F, type = "REL32", symbol = "?HintTrimWhitespace@@YAPADPAD@Z", target = 0x0041A0A0, static_source = "src/Hint.cpp", static_size = 114 },
+  { offset = 0x47, type = "REL32", symbol = "?HintTrimWhitespace@@YAPADPAD@Z", target = 0x0041A0A0, static_source = "src/Hint.cpp", static_size = 114, static_tail_jump = true },
+]
+
 [units.hint-lookup-value]
 artifact_kind = "linked-pe"
 owner_visibility = "static"

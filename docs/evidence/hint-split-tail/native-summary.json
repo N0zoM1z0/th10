@@ -1,0 +1,266 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": {
+    "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/Hint.cpp": "3c9781497655420dcaa1b6ffbc19aa703aae59c1f03ca1976e2fb9b3ddcc818b",
+    "src/Hint.hpp": "34c36f65efd6b23091b07dd1e3ed87429a21fbea00c6492b9f7d3ef47de90f2f",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL"
+  ],
+  "support_sources": [
+    "src/FileSystem.cpp"
+  ],
+  "entry_symbol": "?LoadHintFile@@YGHPAUHintOwnerView@@PBDH@Z",
+  "new_exact_functions": 1,
+  "new_exact_bytes": 75,
+  "existing_guard_bytes": 291,
+  "total_complete_owners": 4,
+  "total_replayed_bytes": 366,
+  "total_linkage_fields": 6,
+  "independent_owner_hashes_equal": true,
+  "linkages": [
+    {
+      "offset": 18,
+      "type": "REL32",
+      "symbol": "_strchr",
+      "target": 4532016
+    },
+    {
+      "offset": 32,
+      "type": "REL32",
+      "symbol": "?HintTrimWhitespace@@YAPADPAD@Z",
+      "target": 4300960,
+      "static_source": "src/Hint.cpp",
+      "static_size": 114,
+      "static_tail_jump": true
+    },
+    {
+      "offset": 63,
+      "type": "REL32",
+      "symbol": "?HintTrimWhitespace@@YAPADPAD@Z",
+      "target": 4300960,
+      "static_source": "src/Hint.cpp",
+      "static_size": 114
+    },
+    {
+      "offset": 71,
+      "type": "REL32",
+      "symbol": "?HintTrimWhitespace@@YAPADPAD@Z",
+      "target": 4300960,
+      "static_source": "src/Hint.cpp",
+      "static_size": 114,
+      "static_tail_jump": true
+    }
+  ],
+  "cold_builds": [
+    {
+      "label": "cold1",
+      "artifact": {
+        "object": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-control-flow-20261020/split-cold1/source.ltcg.obj",
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-control-flow-20261020/split-cold1/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-control-flow-20261020/split-cold1/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/hint-control-flow-20261020/split-cold1/source.pdb"
+      },
+      "artifact_sha256": {
+        "object": "af0db040fdd0d09a83406b95bfe7b4f3f37716768527ce9e2f01672bdb669116",
+        "image": "c68be00b61c3066bc013bf5919a7a966c695eb0af6660d1ce5ab714fe24aae6e",
+        "map": "d7286799ba37d1c4eb60a7d27f667d9ab8fa61fd5db4a3ac3c1707a9a46cfbd3",
+        "pdb": "722c001459fd358b5b6c1f40669caff1cc68d9289348f6f7c8dd39423a468d1b"
+      },
+      "owners": [
+        {
+          "unit": "hint-split-line",
+          "target_address": "0x0041A050",
+          "candidate_address": "0x00401C70",
+          "size": 75,
+          "raw_equal": false,
+          "sha256": "d5c75ea22fd84c465ef6b4f57bd62704ba53f0ec6d77c03df7be4deb9e62ed54",
+          "linkage_fields": 4,
+          "static_tail_jumps": 2,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-control-flow-20261020\\split-cold1\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2800
+          }
+        },
+        {
+          "unit": "hint-trim-whitespace",
+          "target_address": "0x0041A0A0",
+          "candidate_address": "0x00401AF0",
+          "size": 114,
+          "raw_equal": true,
+          "sha256": "d89633e4e144ce1a0e5bea319c03283d1159e93e689cb7c2a10c8c8aab609514",
+          "linkage_fields": 0,
+          "static_tail_jumps": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-control-flow-20261020\\split-cold1\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 2800
+          }
+        },
+        {
+          "unit": "hint-lookup-value",
+          "target_address": "0x004198C0",
+          "candidate_address": "0x00401CC0",
+          "size": 98,
+          "raw_equal": true,
+          "sha256": "475bd5c09fbd74f93594f3eb539435d5e72dbc3d6ba88097aac149b558ee6242",
+          "linkage_fields": 0,
+          "static_tail_jumps": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "visibility": "static",
+            "pdb_source": "src/Hint.cpp",
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\hint-control-flow-20261020\\split-cold1\\source.ltcg.obj",
+            "section_number": 1,
+            "section_offset": 3264
+          }
+        },
+        {
+          "unit": "hint-clear-lists",
+          "target_address": "0x00419040",
+          "candidate_address": "0x00401D60",
+          "size": 79,
+          "raw_equal": false,
+          "sha256": "573b23c2b35798b0644d313c01d867571b4aae78350b9da5cbdd06ce04384438",
+          "linkage_fields": 2,
+          "static_tail_jumps": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        }
+      ],
+      "support_object_sha256": {
+        "support-00-FileSystem.ltcg.obj": "974d31b2202f70d8f78ddfaf7cc949c6479c008f26313ff14a2dfa23f7f47bc0"
+      }
+    },
+    {
+      "label": "cold2",
+      "artifact": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/HintLoad/source.exe",
+        "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/HintLoad/source.map",
+        "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/HintLoad/source.pdb",
+        "object": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/HintLoad/source.ltcg.obj"
+      },
+      "artifact_sha256": {
+        "image": "31deed79b17e4ac1fe83cf9811db07edb62b0fc8e7ac4a1c6cf2f1702ad8e00f",
+        "map": "36b469fe2535eb6c769e6dc8fe767604cc9f2ee5aff9f4db856c93085914f9b2",
+        "pdb": "f3902250c463bdce0a75b889b2a614387dd4fc9172164ef00ece9e49f6a467df",
+        "object": "de54528ff02434fbec86b095dae34aec977f8ec07c347cb270877c0f7c2680ce"
+      },
+      "owners": [
+        {
+          "unit": "hint-clear-lists",
+          "target_address": "0x00419040",
+          "candidate_address": "0x00401D60",
+          "size": 79,
+          "raw_equal": false,
+          "sha256": "573b23c2b35798b0644d313c01d867571b4aae78350b9da5cbdd06ce04384438",
+          "linkage_fields": 2,
+          "static_tail_jumps": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": null
+        },
+        {
+          "unit": "hint-trim-whitespace",
+          "target_address": "0x0041A0A0",
+          "candidate_address": "0x00401AF0",
+          "size": 114,
+          "raw_equal": true,
+          "sha256": "d89633e4e144ce1a0e5bea319c03283d1159e93e689cb7c2a10c8c8aab609514",
+          "linkage_fields": 0,
+          "static_tail_jumps": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintLoad\\source.ltcg.obj",
+            "pdb_source": "src/Hint.cpp",
+            "section_number": 1,
+            "section_offset": 2800,
+            "visibility": "static"
+          }
+        },
+        {
+          "unit": "hint-split-line",
+          "target_address": "0x0041A050",
+          "candidate_address": "0x00401C70",
+          "size": 75,
+          "raw_equal": false,
+          "sha256": "d5c75ea22fd84c465ef6b4f57bd62704ba53f0ec6d77c03df7be4deb9e62ed54",
+          "linkage_fields": 4,
+          "static_tail_jumps": 2,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintLoad\\source.ltcg.obj",
+            "pdb_source": "src/Hint.cpp",
+            "section_number": 1,
+            "section_offset": 2800,
+            "visibility": "static"
+          }
+        },
+        {
+          "unit": "hint-lookup-value",
+          "target_address": "0x004198C0",
+          "candidate_address": "0x00401CC0",
+          "size": 98,
+          "raw_equal": true,
+          "sha256": "475bd5c09fbd74f93594f3eb539435d5e72dbc3d6ba88097aac149b558ee6242",
+          "linkage_fields": 0,
+          "static_tail_jumps": 0,
+          "extent_source": "pdb-section-contribution",
+          "owner_selection": {
+            "expected_object": "source.ltcg.obj",
+            "map_object": "source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\HintLoad\\source.ltcg.obj",
+            "pdb_source": "src/Hint.cpp",
+            "section_number": 1,
+            "section_offset": 3264,
+            "visibility": "static"
+          }
+        }
+      ],
+      "support_object_sha256": {
+        "support-00-FileSystem.ltcg.obj": "27983894ef924a0fa06c056825c8bf9bd767bb4f534798f70c1e68b926dfa42d"
+      }
+    }
+  ],
+  "comparison_scripts_sha256": {
+    "scripts/compare-linked-function.py": "23a5edad3a9efb9b51b69adbe34108f47da56f13f8011d6e3bd9ebcb9f5488a1",
+    "scripts/linked_image.py": "6d785f51c57052ba7a3dfb6fe97ec1ff54829d58901bde5a7923013cc570cb21",
+    "scripts/test-linked-context.py": "01e9628489ef49d748f2ecccd689296b029b0ed66d823d3cb15861384af0b736"
+  }
+}

@@ -42,12 +42,23 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
 candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
-1208 canonical exact functions overall. Authored exact is **372 functions,
-67717/273274 bytes (24.78%)**. The 222 mapped authored nonexact functions,
+1209 canonical exact functions overall. Authored exact is **373 functions,
+67792/273274 bytes (24.81%)**. The 221 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest bounded checkpoint closes HintTrimWhitespace41A0A0/114 and
+The latest bounded checkpoint closes HintSplitLine41A050/75. An explicit
+colonless early return recovers target branch layout. Two full cold builds
+replay the complete static owner and all4 fields, plus three existing guards
+291 bytes/all2 fields. Explicit static tail JMP binding additionally requires
+the whole raw-equal trim callee and maintained target source/name mapping;
+the original static CALL default remains unchanged. See
+[split proof](evidence/hint-split-tail/README.md). The canonical HintLoad
+carrier and14 source pins in this proof supersede the prior helper carrier.
+The ECL two-float value-object control grows Run7020->7024/frame108->110;
+it changes the second spill to10C instead of target14 and is restored.
+
+The preceding checkpoint closes HintTrimWhitespace41A0A0/114 and
 HintLookupValue4198C0/98 through the real LoadHintFile two-TU graph. Two
 independent cold builds reproduce both complete static owners raw-equal and
 retain ClearHintLists79/all2 fields. Natural stdcall lookup source recovers

@@ -100,6 +100,7 @@ def expected_fields(unit: dict[str, object]) -> list[dict[str, object]]:
                 **({"allocation_eh_handler": True} if raw.get("allocation_eh_handler") else {}),
                 **({"static_source": raw["static_source"], "static_size": raw["static_size"]}
                    if static_linkage_selector(unit, raw) is not None else {}),
+                **({"static_tail_jump": True} if raw.get("static_tail_jump") else {}),
                 **({key: raw[key] for key in STATIC_ADDRESS_KEYS}
                    if static_address_selector(unit, raw) is not None else {}),
             }
@@ -190,6 +191,11 @@ def static_call_target(
             or bounds[0]["state"] != "reviewed"
             or int(bounds[0]["span_end"], 0) != address + size - 1):
         raise ValueError("static callee lacks the complete reviewed target boundary")
+    if field.get("static_tail_jump"):
+        name = owners[0].get("proposed_name")
+        if (owners[0].get("source_file") != field["static_source"] or not name
+                or not str(field["symbol"]).startswith("?" + name + "@@")):
+            raise ValueError("static tail callee differs from its maintained source mapping")
     linked = linked_functions(directory / "source.exe", directory / "source.map",
                               directory / "source.pdb", static_owner=selector)
     functions = [row for row in linked["functions"]
@@ -434,9 +440,11 @@ def compare_unit(name: str) -> dict[str, object]:
                 target, parent_function, expected_candidate_address)
             linked_symbol = semantic
         elif "static_source" in field:
-            if observed.get("instruction") != "call":
-                raise ValueError("static linkage must be a decoded direct CALL")
-            static_key = (semantic, str(field["static_source"]), int(field["static_size"]), int(field["target"]))
+            instruction = "jmp" if field.get("static_tail_jump") else "call"
+            if observed.get("instruction") != instruction:
+                raise ValueError(f"static linkage must be a decoded direct {instruction.upper()}")
+            static_key = (semantic, str(field["static_source"]), int(field["static_size"]),
+                          int(field["target"]), bool(field.get("static_tail_jump")))
             if static_key not in static_calls:
                 static_calls[static_key] = static_call_target(
                     unit, field, directory, candidate_image, publics, target)
@@ -491,6 +499,7 @@ def compare_unit(name: str) -> dict[str, object]:
                 **({"allocation_eh": allocation_eh_evidence} if field.get("allocation_eh_handler") else {}),
                 **({"static_owner": static_calls[static_key]}
                    if "static_source" in field else {}),
+                **({"static_tail_jump": True} if field.get("static_tail_jump") else {}),
                 **({"static_address_owner": static_addresses[address_key],
                     "static_address_binding_only": True,
                     "static_address_target_size": field["static_address_target_size"]}

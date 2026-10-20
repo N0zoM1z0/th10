@@ -473,14 +473,16 @@ def static_owner_selector(unit: dict[str, object]) -> dict[str, object] | None:
 def static_linkage_selector(
     unit: dict[str, object], field: dict[str, object]
 ) -> dict[str, object] | None:
-    """Opt in to a complete static call target; never infer it from a name."""
-    present = {key for key in ("static_source", "static_size") if key in field}
+    """Opt in to a complete static transfer target; never infer its visibility."""
+    present = {key for key in ("static_source", "static_size", "static_tail_jump") if key in field}
     if not present:
         return None
     if unit.get("artifact_kind") != "linked-pe":
         raise LinkedImageError("static linkage requires a linked-pe artifact")
-    if present != {"static_source", "static_size"}:
+    if not {"static_source", "static_size"}.issubset(present):
         raise LinkedImageError("static linkage requires source and whole size")
+    if "static_tail_jump" in field and field["static_tail_jump"] is not True:
+        raise LinkedImageError("static_tail_jump must be explicitly true")
     if (field.get("type") != "REL32" or field.get("local", False)
             or field.get("addend", 0) != 0):
         raise LinkedImageError("static linkage requires a direct REL32 entry call")
@@ -515,7 +517,7 @@ def static_address_selector(
         raise LinkedImageError("static address requires a linked-pe artifact")
     if (field.get("type") != "DIR32" or field.get("local", False)
             or field.get("addend", 0) != 0
-            or any(key in field for key in ("static_source", "static_size"))):
+            or any(key in field for key in ("static_source", "static_size", "static_tail_jump"))):
         raise LinkedImageError("static address requires a separate DIR32 entry binding")
     size = field["static_address_target_size"]
     if type(size) is not int or size <= 0:

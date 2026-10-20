@@ -221,15 +221,15 @@ static void HintSplitLine(const char *line, char *key, char *value)
 {
     strcpy(key, line);
     char *colon = strchr(key, ':');
-    if (colon != 0)
+    if (colon == 0)
     {
-        strcpy(value, colon + 1);
-        *colon = 0;
         HintTrimWhitespace(key);
-        HintTrimWhitespace(value);
+        return;
     }
-    else
-        HintTrimWhitespace(key);
+    strcpy(value, colon + 1);
+    *colon = 0;
+    HintTrimWhitespace(key);
+    HintTrimWhitespace(value);
 }
 
 // Target4198C0. An unmatched token selects value zero.

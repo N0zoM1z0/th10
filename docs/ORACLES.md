@@ -118,6 +118,15 @@ entries, JMPs and implicit public-to-static fallback are rejected. This binds
 the caller field without adding duplicate credit for the callee. See the
 [script browser lifecycle evidence](evidence/script-viewer-native-lifecycle/README.md).
 
+A static REL32 tail jump uses the same whole raw-equal zero-field callee checks
+and additionally declares `static_tail_jump = true`. This explicit lane requires
+a decoded unconditional JMP to the qualified entry, a complete reviewed target
+boundary and a matching maintained target source/name mapping. CALLs, conditional
+branches, interior entries, missing selectors and nonliteral opt-in values are
+rejected. Without this flag, the original static CALL policy is unchanged.
+Every caller byte is still compared; the flag grants no original source-ABI or
+native-runtime claim. The Hint split helper uses this for its two trim exits.
+
 Target origin is recorded independently from codegen exactness. A canonical
 unit requires a maintained source mapping and reviewed target boundary, but an
 unknown authored-versus-outlined origin remains unknown after an exact replay.

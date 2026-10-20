@@ -183,3 +183,11 @@ that private register argument from the three-argument declaration.
 The prior cdecl candidate differed only in return cleanup and its consequent
 local branch displacement. This does not establish the original declaration.
 See [complete helper evidence](evidence/hint-small-helpers/README.md).
+
+The subsequent HintSplitLine checkpoint uses an explicit colonless early
+return to recover its complete75-byte target layout. Both cold links replay
+all4 fields: strchr, one static trim CALL and two explicit static trim tail
+JMPs. The latter require the complete114-byte trim callee to be raw-equal and
+its maintained target source/name to agree. Existing cleanup, lookup and trim
+guards retain291 bytes/all2 fields in both images. See
+[split proof and binding limits](evidence/hint-split-tail/README.md).

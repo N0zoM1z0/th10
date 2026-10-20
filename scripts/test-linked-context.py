@@ -160,6 +160,91 @@ class StaticCalls(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'direct CALL'):
             self.compare()
 
+    def tail_jump(self):
+        data = bytearray(self.image.read_bytes())
+        data[0x200] = 0xe9
+        self.image.write_bytes(data)
+        self.field['static_tail_jump'] = True
+        (self.root / 'config/functions.csv').write_text(
+            'address,size,source_file,proposed_name\n'
+            '0x00401020,8,src/Private.cpp,LocalOwner\n')
+
+    def test_explicit_tail_jump_binds_complete_callee(self):
+        self.tail_jump()
+        report = self.compare()
+        self.assertEqual(report['result'], 'exact')
+        self.assertTrue(report['linkages'][0]['static_tail_jump'])
+        self.assertEqual(report['linkages'][0]['static_owner']['size'], 8)
+
+    def test_tail_jump_requires_literal_true_and_complete_descriptor(self):
+        for value in (False, None, 0, 1, 'true'):
+            self.field['static_tail_jump'] = value
+            with self.subTest(value=value), self.assertRaisesRegex(ValueError, 'explicitly true'):
+                self.compare()
+        self.field['static_tail_jump'] = True
+        for missing in ('static_source', 'static_size'):
+            saved = self.field.pop(missing)
+            with self.subTest(missing=missing), self.assertRaisesRegex(ValueError, 'source and whole size'):
+                self.compare()
+            self.field[missing] = saved
+
+    def test_tail_jump_opt_in_rejects_call_and_conditional_branch(self):
+        self.field['static_tail_jump'] = True
+        with self.assertRaisesRegex(ValueError, 'direct JMP'):
+            self.compare()
+        data = bytearray(self.image.read_bytes())
+        data[0x200:0x208] = b'\x0f\x85' + struct.pack('<i', 0x20 - 6) + b'\xc3\x90'
+        self.image.write_bytes(data)
+        self.field['offset'] = 2
+        with self.assertRaisesRegex(ValueError, 'direct JMP'):
+            self.compare()
+
+    def test_tail_jump_rejects_interior_candidate_destination(self):
+        self.tail_jump()
+        data = bytearray(self.image.read_bytes())
+        struct.pack_into('<i', data, 0x201, 0x21 - 5)
+        self.image.write_bytes(data)
+        with self.assertRaisesRegex(ValueError, 'enter its qualified callee'):
+            self.compare()
+
+    def test_tail_jump_preserves_callee_byte_and_boundary_checks(self):
+        self.tail_jump()
+        self.test_static_callee_bytes_and_fields_checked()
+        self.test_target_boundary_cannot_be_cropped_or_provisional()
+
+    def test_tail_jump_requires_target_source_and_name(self):
+        self.tail_jump()
+        for source, name in [('src/Wrong.cpp', 'LocalOwner'),
+                             ('src/Private.cpp', 'Other'), ('src/Private.cpp', '')]:
+            (self.root / 'config/functions.csv').write_text(
+                f'address,size,source_file,proposed_name\n0x00401020,8,{source},{name}\n')
+            with self.subTest(source=source, name=name), self.assertRaisesRegex(ValueError, 'source mapping'):
+                self.compare()
+
+    def test_cached_call_does_not_bypass_tail_mapping_check(self):
+        fixtures = module('test-static-owner-selection.py')
+        evidence = fixtures.Evidence(self.out)
+        evidence.image, evidence.map, evidence.pdb = [self.out / ('source.' + x) for x in ['exe', 'map', 'pdb']]
+        evidence.publics = [fixtures.row('_Public', 0, 'source.ltcg.obj')]
+        evidence.statics = [fixtures.row(obj='support-00-Private.ltcg.obj')]
+        evidence.modules = [str(self.out / 'source.ltcg.obj'), str(self.out / 'support-00-Private.ltcg.obj')]
+        evidence.contributions[0] = (0, 12, fixtures.CODE, 0)
+        evidence.write()
+        data = bytearray(evidence.image.read_bytes())
+        data[0x200:0x20c] = (b'\xe8' + struct.pack('<i', 0x20 - 5)
+                             + b'\xe9' + struct.pack('<i', 0x20 - 10) + b'\x90\x90')
+        evidence.image.write_bytes(data)
+        self.unit['size'] = 12
+        self.unit['linkages'] = [dict(self.field), dict(self.field, offset=6, static_tail_jump=True)]
+        with self.assertRaisesRegex(ValueError, 'source mapping'):
+            self.compare()
+        (self.root / 'config/functions.csv').write_text(
+            'address,size,source_file,proposed_name\n0x00401020,8,src/Private.cpp,LocalOwner\n')
+        report = self.compare()
+        self.assertEqual(report['result'], 'exact')
+        self.assertNotIn('static_tail_jump', report['linkages'][0])
+        self.assertTrue(report['linkages'][1]['static_tail_jump'])
+
 
 class StaticAddresses(unittest.TestCase):
     """A relocated callback pointer binds an entry, not the callee's codegen."""

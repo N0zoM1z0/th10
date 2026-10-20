@@ -3683,3 +3683,22 @@ the real two-TU LoadHintFile graph; two independent cold links are raw-equal,
 without address-field normalization. Existing ClearHintLists79/all2 fields
 also replays in both images. No whole-loader or native-runtime claim follows.
 [Reproduction and identities](evidence/hint-small-helpers/README.md).
+
+## 2026-10-20 Hint split layout and static tail binding
+
+HintSplitLine41A050/75 copies the key and tests for a colon, with the colonless
+trim tail before the colon-present body. An explicit early return reproduces
+that layout in two full cold VC7.1 /GL LoadHintFile-context links. The former
+if/else emits71 bytes. All4 link fields bind independently: strchr452730 and
+three trim41A0A0 edges, two of them unconditional tail jumps. Missing-colon
+value retention is preserved. Original declaration/TU and runtime remain open.
+
+A literal static_tail_jump=true opts into complete static REL32 JMP entry
+binding. The callee must have qualified MAP/PDB ownership, a complete reviewed
+target extent, a matching maintained target source/name, dense zero-field
+code and whole raw byte equality. The parent still compares every byte.
+Without the flag the static CALL contract is unchanged. CALL and JMP cache
+entries are separate so an earlier CALL cannot bypass the JMP mapping check.
+The22 context and50 ownership tests include adversarial selector, destination,
+boundary and byte controls. No duplicate trim credit follows from a parent.
+[Complete proof and identities](evidence/hint-split-tail/README.md).
