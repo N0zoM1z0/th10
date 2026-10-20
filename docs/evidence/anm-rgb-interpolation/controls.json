@@ -1,0 +1,652 @@
+{
+  "scope": "Nine historical discovery controls; only the later two canonical cold replays grant exact credit. Raw snapshots are retained privately as verified deltas from the starting Git revision.",
+  "controls": [
+    {
+      "label": "rgb-ops-pointer",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        "src/AnmManager.cpp": "b15de521d4872cab243c2ff2c3f42f744604cfe15eff4c7ab370ded55af90d1e",
+        "src/AnmManager.hpp": "7217cb2b51d0570cfca5e40ac5d9bbb9d77bf3a3622f1246bee4ef5675347fc7",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {},
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "artifact_sha256": {
+        "object": "0c8b804f47d5e3b7c93d74abc54086c4b9c62fbd5d6c02ca44c9a7a867ef0afa",
+        "image": "21f19ca2ab107beb5fc05b5a8d479d8374eb70cfe94c584d459596ab3304d7a5",
+        "map": "4edc134a7f7a82128bdfb5828c390e4f5b8b8e671077ca9ce1917da7fa8ff6fb",
+        "pdb": "2cdf496cee8a43872d6752d4759df9dc9350cd01207f216ecedd97a50c7f5e11"
+      },
+      "rgb": {
+        "candidate_size": 841,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 720,
+        "matched_comparable_bytes": 26,
+        "scale_calls": 0,
+        "ftol2_calls": 0
+      },
+      "parent": {
+        "candidate_size": 9964,
+        "case_aligned": {
+          "matched_comparable_bytes": 7184,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 14,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": 0
+      }
+    },
+    {
+      "label": "rgb-ops-value",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        "src/AnmManager.cpp": "22791498dbede1d6062c8fa379a7bdd2d0692eb090b14d86e3bff0a25dec73ed",
+        "src/AnmManager.hpp": "e36219206998ce02b1a60f90dde80228b441103f9809c7269c3c3219800a39f3",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {},
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "artifact_sha256": {
+        "object": "709a1d59f1591f649515680093f7d198393328abf800d41c2794254de71fa77a",
+        "image": "21e53e2c3787229911fe6c89313a45a9a8435c238f025578634bef79a6c2e6f3",
+        "map": "3c70e2e71fcae102924e076896adb4a531a100ade55dba26274559ff71f357ab",
+        "pdb": "138e65e6471a6bebb509a6b7b605cf23c6ad4f0be402367a7cf03a028c7b6c1b"
+      },
+      "rgb": {
+        "candidate_size": 837,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 720,
+        "matched_comparable_bytes": 29,
+        "scale_calls": 0,
+        "ftol2_calls": 0
+      },
+      "parent": {
+        "candidate_size": 9964,
+        "case_aligned": {
+          "matched_comparable_bytes": 7184,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 14,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": 0
+      }
+    },
+    {
+      "label": "rgb-scale-separate-gl",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": "6fe72e795f7ffe07c9dab14374394610c875d3e800c067618a8f0387c46adb1a",
+        "src/AnmManager.cpp": "22791498dbede1d6062c8fa379a7bdd2d0692eb090b14d86e3bff0a25dec73ed",
+        "src/AnmManager.hpp": "cc80f73c4ea1a510092d98bdb46d618a9df2e7fc1775b0e0c9928f11c85aeb0f",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {},
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp"
+      ],
+      "artifact_sha256": {
+        "object": "c7ab706e55de5f0063905840e378e415a66836e0f302efc99813c88c77804cf0",
+        "image": "b8650eedc576880e0786dc177d035e7ca2db5c9d53fb1e2388452e79959f70e4",
+        "map": "fb33d04eb69f4dba696ccd1fe1c1819fbee6c639e4c1535f7d85b56a91e37ada",
+        "pdb": "648bbbb7e548efd530eb7eac3bb5bd231d449e257f6015a609cc18c421f0f439"
+      },
+      "rgb": {
+        "candidate_size": 837,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 720,
+        "matched_comparable_bytes": 29,
+        "scale_calls": 0,
+        "ftol2_calls": 0
+      },
+      "parent": {
+        "candidate_size": 9964,
+        "case_aligned": {
+          "matched_comparable_bytes": 7184,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 14,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": 0
+      }
+    },
+    {
+      "label": "rgb-scale-separate-ob1",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": "6fe72e795f7ffe07c9dab14374394610c875d3e800c067618a8f0387c46adb1a",
+        "src/AnmManager.cpp": "22791498dbede1d6062c8fa379a7bdd2d0692eb090b14d86e3bff0a25dec73ed",
+        "src/AnmManager.hpp": "cc80f73c4ea1a510092d98bdb46d618a9df2e7fc1775b0e0c9928f11c85aeb0f",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp"
+      ],
+      "artifact_sha256": {
+        "object": "3890a19ef783dac650d1c2fb534bc6ad74cb2e0dfcbc1a74300c15894102acd4",
+        "image": "ed8aca17faa6742fd2de3073517c88e1b5b062beba913412b28580dc3aee8942",
+        "map": "ded6ac104d039d3585c92c5dbafed3496a30f47710d2a03071f0474779b88005",
+        "pdb": "74e33723e571762fc5dae795b12e0149b5b4ac168c185f719a0f8515be8594ab"
+      },
+      "rgb": {
+        "candidate_size": 782,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 760,
+        "matched_comparable_bytes": 545,
+        "scale_calls": 3,
+        "ftol2_calls": 1
+      },
+      "parent": {
+        "candidate_size": 9948,
+        "case_aligned": {
+          "matched_comparable_bytes": 7400,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 18,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": -16
+      }
+    },
+    {
+      "label": "rgb-four-calls-value",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": "6fe72e795f7ffe07c9dab14374394610c875d3e800c067618a8f0387c46adb1a",
+        "src/AnmManager.cpp": "d5b1d0966e9f0abbd01f36c700391e7666518671d35628428db26334753d49fb",
+        "src/AnmManager.hpp": "cc80f73c4ea1a510092d98bdb46d618a9df2e7fc1775b0e0c9928f11c85aeb0f",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp"
+      ],
+      "artifact_sha256": {
+        "image": "b77b81ea77c4e1eac06fcfcc6e9ff23e1b562a9ff820d54608279e169ed7721f",
+        "map": "d2075be15a3fc4836859f2720efce631dc42f6e169f04730dab4e5de8ea90ddf",
+        "pdb": "712f4b23a44beed4863a9e167c145bd30a29387008bb944b585b60e400b61c50",
+        "object": "e9056ef9bb7895ef41458b00db66092cbc27e212f8e164641d576f3c68dc159f"
+      },
+      "rgb": {
+        "candidate_size": 813,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 752,
+        "matched_comparable_bytes": 562,
+        "scale_calls": 3,
+        "ftol2_calls": 1
+      },
+      "parent": {
+        "candidate_size": 9948,
+        "case_aligned": {
+          "matched_comparable_bytes": 7400,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 18,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": -16
+      }
+    },
+    {
+      "label": "rgb-four-calls-result",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": "6fe72e795f7ffe07c9dab14374394610c875d3e800c067618a8f0387c46adb1a",
+        "src/AnmManager.cpp": "5c5fc77f873f7166297cc25ac0bd351f51f8b02a353a2011ea544346b7346a3c",
+        "src/AnmManager.hpp": "cc80f73c4ea1a510092d98bdb46d618a9df2e7fc1775b0e0c9928f11c85aeb0f",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp"
+      ],
+      "artifact_sha256": {
+        "image": "c6983268f870cb61ae7dee90373ccb7e156586109692726836c2e6c7e621cc5c",
+        "map": "8d029558d2dca7985a64fa0d9d817a4f635d2f3e3306fc60f327e308e5d4d28d",
+        "pdb": "6b372d90f9cc1c4f75f64c5e32806ed4a2a62340269b8755c9f0a0925a163dcb",
+        "object": "19467e8aea1bee56df09543d8ece15d36536bc227ddaaf4a7fe0b09d058767a1"
+      },
+      "rgb": {
+        "candidate_size": 814,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 752,
+        "matched_comparable_bytes": 451,
+        "scale_calls": 1,
+        "ftol2_calls": 2
+      },
+      "parent": {
+        "candidate_size": 9948,
+        "case_aligned": {
+          "matched_comparable_bytes": 7400,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 18,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": -16
+      }
+    },
+    {
+      "label": "rgb-linear-scale",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": "6fe72e795f7ffe07c9dab14374394610c875d3e800c067618a8f0387c46adb1a",
+        "src/AnmManager.cpp": "86e3a45cd8f8adc9f06c48d5be2909ddd39c17d616daedc0be6eba5b2de2cdf4",
+        "src/AnmManager.hpp": "71f6c0de8c0305adbd0046e93bc428612d01765f62ca73e40abff1c28b80dcd5",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp"
+      ],
+      "artifact_sha256": {
+        "object": "41a7aa5c689be29618c189869b89ed61541ad24d18bb81b830ff7f3fe0aa511f",
+        "image": "8b31ce84b5460ee11203f2c0394d2a22fa265c9f9765b95c84e0c9ae972d085e",
+        "map": "9fba9e3fc8308ea1d7b97f95a3c802af71b6fb07435a5102604ff261d9dd92e0",
+        "pdb": "2630d3e46e47f3b67f4522872e8733ff712d2fe55bd3504a2edfbd5e662e3a76"
+      },
+      "rgb": {
+        "candidate_size": 818,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 752,
+        "matched_comparable_bytes": 597,
+        "scale_calls": 4,
+        "ftol2_calls": 1
+      },
+      "parent": {
+        "candidate_size": 9948,
+        "case_aligned": {
+          "matched_comparable_bytes": 7400,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 18,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": -16
+      }
+    },
+    {
+      "label": "rgb-linear-scale-2t",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": "6fe72e795f7ffe07c9dab14374394610c875d3e800c067618a8f0387c46adb1a",
+        "src/AnmManager.cpp": "9746e73972252c02064b2241491374b9bc4b364e384c3b8302f1b4e617df2cc8",
+        "src/AnmManager.hpp": "71f6c0de8c0305adbd0046e93bc428612d01765f62ca73e40abff1c28b80dcd5",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp"
+      ],
+      "artifact_sha256": {
+        "image": "35068409a8faef0c6b7c3e9f4e2f5ebca06d800ffe23d98d6d62adbc49e05b90",
+        "map": "b0ce087a5bb7226a1c922ba3ae6df91f3a2d5ffebde507da7aae3186dcabf65d",
+        "pdb": "8c361f99c9ff266f8bedb34683b1ce3cf6926a8ecea40a1698c7fdb8bb9caec9",
+        "object": "c064196ea3c58234246db66c89e373464e04326f8166517fb8eef9ebd098960b"
+      },
+      "rgb": {
+        "candidate_size": 818,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 752,
+        "matched_comparable_bytes": 597,
+        "scale_calls": 4,
+        "ftol2_calls": 1
+      },
+      "parent": {
+        "candidate_size": 9948,
+        "case_aligned": {
+          "matched_comparable_bytes": 7400,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 18,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": -16
+      }
+    },
+    {
+      "label": "rgb-named-results",
+      "acceptance_authority": "none; discovery diagnostic only",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": "6fe72e795f7ffe07c9dab14374394610c875d3e800c067618a8f0387c46adb1a",
+        "src/AnmManager.cpp": "153f073e09c21288f6a622c7777b508ab41c100ff01d34d91840c0dff84d0282",
+        "src/AnmManager.hpp": "71f6c0de8c0305adbd0046e93bc428612d01765f62ca73e40abff1c28b80dcd5",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        ".analysis/gpt-6.1-sol/th10-anm-rgb-value-graph-20261020/AnmInt3Scale.cpp"
+      ],
+      "artifact_sha256": {
+        "image": "6613248f364d121baf6640265c979aba908876a3dbcfb180e1f3616c182fbfe0",
+        "map": "521ecc62638863c58d46e9760d78f42a6dc628cc59d0445693d103321aae9c7d",
+        "pdb": "a66eed7512b98cdaf04a87eb6ba134a5bf8c452b92679a83b51b0eb1cd59a052",
+        "object": "6fb32044e300ab79490235aeb9e526d06cd8e97a38873ffe4d965500a20bc52c"
+      },
+      "rgb": {
+        "candidate_size": 820,
+        "target_size": 820,
+        "normalization_complete": true,
+        "comparable_bytes": 752,
+        "matched_comparable_bytes": 752,
+        "scale_calls": 4,
+        "ftol2_calls": 4
+      },
+      "parent": {
+        "candidate_size": 9948,
+        "case_aligned": {
+          "matched_comparable_bytes": 7400,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 18,
+          "same_sized_cases": 89,
+          "normalization_complete": true
+        },
+        "pre_table_span_delta": -16
+      }
+    }
+  ]
+}

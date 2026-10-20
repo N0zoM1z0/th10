@@ -3607,3 +3607,29 @@ the common copy/flag seam; small score variations are not ownership or type
 proof, so those controls are restored. All28 controls are scoped in the linked
 proof. Current scalar-family carrier supersedes vector-family source-cache
 hashes; old baseline paths are historical after the canonical image rebuild.
+
+
+### 2026-10-20: Exact RGB value graph and handoff supersession
+
+[RGB proof](evidence/anm-rgb-interpolation/README.md) closes441600/820 with17
+independent target fields in two complete five-TU /GL /GS canonical colds,
+all12 raw recursive project inputs frozen. Ordinary by-value RGB, tuple
+arithmetic, shared t+t, named weights/results and separate scale /GL /GS /Ob1
+support recover four real Hermite scale calls. The default uses an ordinary
+inline Scale method, preserving component product truncation before integer
+addition. Scale441E50/56 migrates to AnmInt3Scale.cpp and retains all3 fields;
+this is existing credit. Original production TU/profile/type identity remains
+unknown. Twelve same-image existing guards preserve4579 bytes/all183 fields;
+with RGB/scale each image passes14 owners5455/all203. Actual-source host
+checks pass13 scenarios,9 strict mutants and ASan/UBSan/leaks. Transition-host
+RNG/timer/viewport extractions are unchanged; whole-file pins are reviewed.
+
+This supersedes the immediately preceding RGB outlining frontier, the old
+four-TU current-cache claim and ExecuteScript9964/gap14 measurements as live
+state. Current RGB graph produces ExecuteScript9948/frameFC,89 target-sized
+groups/gap18, pre-table delta−16 and aligned7400/7995. Unequal intervals are
+61(+1),60(−7),2(−10; common updates/alignment included). Parent remains nonexact;
+no partial credit. Authored exact67505/273274 (24.70%),370 functions; product,
+runtime, semantics and port gates remain open. The operator ended the95%
+campaign and requested cleanup/handoff. Historical claims above retain their
+dated source/profile scopes; use RE_HANDOFF.md and PROGRESS.md for live state.

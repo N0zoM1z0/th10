@@ -1,5 +1,11 @@
 # TH10 color Hermite: conditional x87 audit
 
+> Historical context: the candidate mismatches below predate the
+> [exact RGB checkpoint](evidence/anm-rgb-interpolation/README.md). The current
+> five-TU candidate reproduces the complete820-byte evaluator and scale helper.
+> The conditional model and target observations below remain scoped to their
+> recorded inputs; they do not establish runtime x87 state or a gameplay bug.
+
 ## Scope and important limitation
 
 This is an exact rational model of observed arithmetic/store sequences, with

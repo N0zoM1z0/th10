@@ -1,5 +1,7 @@
 # Exact ANM vector interpolation evaluators
 
+> Handoff update, 2026-10-20: RGB820 and alpha370 have since closed. Use the RGB pack for the current five-TU carrier and source pins; measurements below retain their original scope. The operator ended the 95% campaign; see [current handoff](../../RE_HANDOFF.md) and [RGB checkpoint](../anm-rgb-interpolation/README.md).
+
 Two complete authored owners now reproduce the target in two independent
 canonical cold builds: **1,539 new exact bytes**. The authored numerator becomes
 66,315/273,274 bytes (**24.27%**); the denominator is unchanged.
@@ -92,8 +94,8 @@ The **9,964-byte ExecuteScript parent remains nonexact**, frame FC, all 92
 physical destinations ordered, 89 equal-sized intervals and absolute length gap
 14. Its aligned diagnostic remains 7184/7995; equal lengths are not exact blocks.
 No parent or runtime/product credit follows from the two exact children. Whole
-Windows i386 closure and later semantic/port gates remain open; the 95%
-authored-byte exact objective stays active.
+Windows i386 closure and later semantic/port gates remain open. The former
+95% campaign is closed; see the current handoff.
 
 All **95 standard CI steps pass** with source/config frozen. Target/table,
 toolchain declarations, tracking, generated progress and whitespace pass; the

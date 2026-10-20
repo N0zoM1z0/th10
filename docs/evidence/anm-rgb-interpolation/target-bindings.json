@@ -1,0 +1,220 @@
+{
+  "entry": "0x441600",
+  "bytes": 820,
+  "field_inventory": [
+    {
+      "offset": 42,
+      "type": "DIR32",
+      "target": 4655976,
+      "instruction": "fcomp"
+    },
+    {
+      "offset": 57,
+      "type": "DIR32",
+      "target": 4655972,
+      "instruction": "fcomp"
+    },
+    {
+      "offset": 74,
+      "type": "DIR32",
+      "target": 4655868,
+      "instruction": "fadd"
+    },
+    {
+      "offset": 95,
+      "type": "REL32",
+      "target": 4602668,
+      "instruction": "call"
+    },
+    {
+      "offset": 144,
+      "type": "DIR32",
+      "target": 4681592,
+      "instruction": "mov"
+    },
+    {
+      "offset": 437,
+      "type": "DIR32",
+      "target": 4656084,
+      "instruction": "fld"
+    },
+    {
+      "offset": 457,
+      "type": "REL32",
+      "target": 4464208,
+      "instruction": "call"
+    },
+    {
+      "offset": 468,
+      "type": "DIR32",
+      "target": 4655868,
+      "instruction": "fsub"
+    },
+    {
+      "offset": 492,
+      "type": "DIR32",
+      "target": 4655868,
+      "instruction": "fadd"
+    },
+    {
+      "offset": 508,
+      "type": "REL32",
+      "target": 4464208,
+      "instruction": "call"
+    },
+    {
+      "offset": 516,
+      "type": "DIR32",
+      "target": 4655868,
+      "instruction": "fld"
+    },
+    {
+      "offset": 576,
+      "type": "REL32",
+      "target": 4464208,
+      "instruction": "call"
+    },
+    {
+      "offset": 640,
+      "type": "REL32",
+      "target": 4464208,
+      "instruction": "call"
+    },
+    {
+      "offset": 700,
+      "type": "REL32",
+      "target": 4506448,
+      "instruction": "call"
+    },
+    {
+      "offset": 750,
+      "type": "REL32",
+      "target": 4602668,
+      "instruction": "call"
+    },
+    {
+      "offset": 763,
+      "type": "REL32",
+      "target": 4602668,
+      "instruction": "call"
+    },
+    {
+      "offset": 778,
+      "type": "REL32",
+      "target": 4602668,
+      "instruction": "call"
+    }
+  ],
+  "linkages": [
+    {
+      "offset": 42,
+      "type": "DIR32",
+      "target": 4655976,
+      "symbol": "__real@3f7d70a4"
+    },
+    {
+      "offset": 57,
+      "type": "DIR32",
+      "target": 4655972,
+      "symbol": "__real@3f8147ae"
+    },
+    {
+      "offset": 74,
+      "type": "DIR32",
+      "target": 4655868,
+      "symbol": "__real@3f800000"
+    },
+    {
+      "offset": 95,
+      "type": "REL32",
+      "target": 4602668,
+      "symbol": "__ftol2"
+    },
+    {
+      "offset": 144,
+      "type": "DIR32",
+      "target": 4681592,
+      "symbol": "?g_AnmGameSpeed@@3MA"
+    },
+    {
+      "offset": 437,
+      "type": "DIR32",
+      "target": 4656084,
+      "symbol": "__real@40400000"
+    },
+    {
+      "offset": 457,
+      "type": "REL32",
+      "target": 4464208,
+      "symbol": "??DAnmInt3View@@QBE?AU0@M@Z"
+    },
+    {
+      "offset": 468,
+      "type": "DIR32",
+      "target": 4655868,
+      "symbol": "__real@3f800000"
+    },
+    {
+      "offset": 492,
+      "type": "DIR32",
+      "target": 4655868,
+      "symbol": "__real@3f800000"
+    },
+    {
+      "offset": 508,
+      "type": "REL32",
+      "target": 4464208,
+      "symbol": "??DAnmInt3View@@QBE?AU0@M@Z"
+    },
+    {
+      "offset": 516,
+      "type": "DIR32",
+      "target": 4655868,
+      "symbol": "__real@3f800000"
+    },
+    {
+      "offset": 576,
+      "type": "REL32",
+      "target": 4464208,
+      "symbol": "??DAnmInt3View@@QBE?AU0@M@Z"
+    },
+    {
+      "offset": 640,
+      "type": "REL32",
+      "target": 4464208,
+      "symbol": "??DAnmInt3View@@QBE?AU0@M@Z"
+    },
+    {
+      "offset": 700,
+      "type": "REL32",
+      "target": 4506448,
+      "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z"
+    },
+    {
+      "offset": 750,
+      "type": "REL32",
+      "target": 4602668,
+      "symbol": "__ftol2"
+    },
+    {
+      "offset": 763,
+      "type": "REL32",
+      "target": 4602668,
+      "symbol": "__ftol2"
+    },
+    {
+      "offset": 778,
+      "type": "REL32",
+      "target": 4602668,
+      "symbol": "__ftol2"
+    }
+  ],
+  "literal_bits": {
+    "0x470b68": "3f7d70a4",
+    "0x470b64": "3f8147ae",
+    "0x470afc": "3f800000",
+    "0x470bd4": "40400000"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "Independent complete target decode; all8 absolute operands and9 external relative calls. Float bits independently checked; existing target-bound speed, curve, ftol2 and scale identities retained."
+}

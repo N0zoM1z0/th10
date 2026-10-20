@@ -85,13 +85,17 @@ scripts/repo-python scripts/probe-exact-backlog.py --source src/PbgArchive.cpp
 scripts/repo-python scripts/probe-ltcg-backlog.py --source src/PbgArchive.cpp
 scripts/repo-python scripts/probe-ltcg-backlog.py --source src/AnmManager.cpp \
   --entry src/AnmManager.cpp=AsciiManagerCreate
-scripts/repo-python scripts/replay-exact-units.py
+scripts/repo-python scripts/replay-exact-units.py \
+  --unit anm-evaluate-rgb-interpolation --unit anm-int3-scale
 ```
 
 Canonical units that share one source, compiler profile, and artifact context
 are built once. The replay command cold-builds each normal-COFF object or LTCG
 linked image and checks every selected function against the target. COFF units
 declare relocations; linked-PE units declare every link-resolved code field.
+Select the affected units for a bounded change; omitting selectors rebuilds
+the full historical cohort. Current recovery state and unresolved work are in
+[`docs/RE_HANDOFF.md`](docs/RE_HANDOFF.md).
 
 The linked LTCG probe derives function extents from the linker's PDB section
 contributions and reports structural candidates without granting exactness.

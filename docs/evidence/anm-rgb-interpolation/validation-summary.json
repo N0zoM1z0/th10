@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "scope": "Completed RGB reconstruction plus documentation/artifact cleanup and handoff. Two focused five-TU cold links and twelve same-image guards; no full historical native cohort, parent exactness or product/runtime closure.",
+  "starting_head": "f7b809c9c430546a91e0ad1883aefa7d9e068b55",
+  "canonical_colds": 2,
+  "canonical_new_bytes": 820,
+  "canonical_new_fields": 17,
+  "migrated_existing_bytes": 56,
+  "migrated_existing_fields": 3,
+  "existing_guard_owners_each": 12,
+  "existing_guard_bytes_each": 4579,
+  "existing_guard_fields_each": 183,
+  "complete_owners_each": 14,
+  "complete_bytes_each": 5455,
+  "complete_fields_each": 203,
+  "source_inputs_frozen": 12,
+  "post_CI_source_and_artifact_pins": "all final raw inputs and current carrier hashes unchanged",
+  "host": {
+    "scope": "actual RGB/vector/helper source with bounded roles; not original/native runtime",
+    "scenarios": 13,
+    "strict_mutants": 9,
+    "ASan_UBSan_leaks": "passed",
+    "extracted_sha256_lf": {
+      "vector": "e33270b032006a8d4759134b16038ed0722b1cd2c7aa2b2e8fa91e1f40655a38",
+      "body": "167a337ee37c09c4700f01abf8a7ae99af88d22ddfd9cabf38f9e9ed136a148d",
+      "scale": "adf1c92746d372aa648f4b52764d9a9210223bc6586a9164618fbddfbc1bfa73"
+    }
+  },
+  "standard_CI": {
+    "status": "all97 checks passed across frozen-input prefix and scoped resumption",
+    "steps": 97,
+    "prefix_passed_steps": 89,
+    "resumed_steps": 8,
+    "prefix_log_sha256": "6f4ca4cab237cc1fc602ddf1fe21692215361646aa163337dcea216f932fdc9f",
+    "resumed_log_sha256": "a7e274342ab908cedf5b7f72c05d977038523e97dd110fb185245ce5edfd63fe",
+    "resumption_manifest_sha256": "90256b800cf077dd6e71fea792cab14f02fcf8acec028fa6a34a48495cd0bd4d",
+    "validation_history": "First attempt stopped on direct-creation input-freeze rejection during a brace-indent correction. Restarted full run with final source frozen;89 checks passed, then documentation check90 rejected the not-yet-written validation-summary link. Created the summary and ran unchanged public CI commands90..97 through a private selector. All8 pass; no source/fixture or public CI gate changed."
+  },
+  "focused_target_table_toolchain_tracking_progress_whitespace": "passed",
+  "cleanup": {
+    "source_snapshot_delta_roundtrips": 20,
+    "historical_host_ELFs_removed": 590,
+    "native_directories_removed": 10,
+    "removed_file_bytes": 977135845,
+    "source_delta_bytes": 28677,
+    "deletion_inventory_sha256": "c0a7f0fccf3a11f01f4b85b1cbd7ef841bf4b613436a0c6499611615c04abeba",
+    "policy": "Inactive generated host ELFs with retained owner.inc/harness.cpp only; current-pack snapshots become hash-verified deltas; nine discovery native dirs and the replaced old carrier removed.",
+    "retained": "Current RGB canonical carrier, complete final reports/guard manifests, source deltas, historical host sources/inputs/reports, all other native PE/PDBs, target, DB, tools and reference.",
+    "protected_preexisting": "Untracked D3D evidence unchanged by full file-inventory hash check; prior ECL carrier untouched."
+  },
+  "documentation": {
+    "handoff_old_lines": 2221,
+    "handoff_current_lines": 128,
+    "scope": "Replace duplicated checkpoint log with live resume brief; mark old ANM/ECL/rounding contexts historical, clarify local tools and bounded replays, close obsolete95% campaign instruction. Historical evidence and Git chronology retained."
+  },
+  "authored_exact_bytes": 67505,
+  "authored_reviewed_owned_bytes": 273274,
+  "authored_exact_functions": 370,
+  "product_windows_i386": "open",
+  "semantic_and_port": "not started"
+}

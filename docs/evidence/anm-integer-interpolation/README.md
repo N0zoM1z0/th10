@@ -1,5 +1,7 @@
 # Exact ANM alpha evaluator and integer-family boundary review
 
+> Handoff update, 2026-10-20: RGB820 is now exact in the five-TU graph; ExecuteScript is9948/frameFC and remains nonexact. The prior four-TU carrier/pins and outlining controls below describe this historical checkpoint. The operator ended the 95% campaign; see [current handoff](../../RE_HANDOFF.md) and [RGB checkpoint](../anm-rgb-interpolation/README.md).
+
 The complete alpha evaluator at **0x00441950/370 bytes** reproduces TH10 in
 two independent complete canonical cold builds, including all **12 address
 fields**. This adds 370 authored exact bytes. RGB Evaluate820 and its
@@ -96,7 +98,7 @@ better storage model. Keep large-owner work focused on these actual boundaries,
 value lifetimes and common updates.
 
 Whole Windows i386 product/runtime closure and later semantic/port gates remain
-open. The95% authored-byte exact objective remains active. Validation and
+open. Validation and
 artifact cleanup are recorded in [validation summary](validation-summary.json).
 
 All96 standard CI steps pass with source/config frozen. Target/table, toolchain

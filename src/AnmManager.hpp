@@ -260,8 +260,8 @@ typedef char AnmRawInstructionArgumentsAt08[
 struct AnmInt3View
 {
     AnmInt3View() {}
-    // Target 0x00441E50 is reproduced by the value-returning scale operator
-    // below; X/Z/Y argument slots yield VC7.1's observed Y/Z/X evaluation.
+    // X/Z/Y slots preserve the observed Y/Z/X evaluation in the separately
+    // defined scale operator at target 0x00441E50.
     AnmInt3View(int x, int z, int y)
     {
         this->x = x;
@@ -269,13 +269,25 @@ struct AnmInt3View
         this->z = z;
     }
 
-    AnmInt3View operator*(float scale) const
+    AnmInt3View operator+(const AnmInt3View &other) const
     {
-        return AnmInt3View(
-            static_cast<int>(x * scale),
-            static_cast<int>(z * scale),
-            static_cast<int>(y * scale));
+        return AnmInt3View(x + other.x, z + other.z, y + other.y);
     }
+
+    AnmInt3View operator-(const AnmInt3View &other) const
+    {
+        return AnmInt3View(x - other.x, z - other.z, y - other.y);
+    }
+
+    AnmInt3View Scale(float scale) const
+    {
+        const int scaledX = static_cast<int>(x * scale);
+        const int scaledY = static_cast<int>(y * scale);
+        const int scaledZ = static_cast<int>(z * scale);
+        return AnmInt3View(scaledX, scaledZ, scaledY);
+    }
+
+    AnmInt3View operator*(float scale) const;
 
     int x;
     int y;
@@ -363,7 +375,7 @@ struct AnmVmColorInterpolationView
     int duration;
     int mode;
 
-    AnmInt3View *Evaluate(AnmInt3View *output);
+    AnmInt3View Evaluate();
 };
 
 typedef char AnmVmColorInterpolationViewSizeIs4C[

@@ -1,5 +1,7 @@
 # Complete ANM executor: Float2 construction and UV storage
 
+> Handoff update, 2026-10-20: Float2/Float3, alpha and RGB evaluators have since closed. Current ExecuteScript is9948/frameFC in the RGB five-TU graph, still nonexact. Measurements below describe this historical storage checkpoint. The operator ended the 95% campaign; see [current handoff](../../RE_HANDOFF.md) and [RGB checkpoint](../anm-rgb-interpolation/README.md).
+
 `AnmRenderManagerView::ExecuteScript` at 0x43EE30 remains **nonexact** across its
 complete 9,964-byte owner. A separate raw UV storage view permits a normal Float2
 constructor, correcting the earlier C2620 compile error without changing vertex
@@ -124,5 +126,4 @@ The pre-existing untracked D3D evidence remains untouched.
 All95 standard CI steps pass with source/config frozen. Toolchain declarations,
 tracking, regenerated progress, table coverage and whitespace pass. Later
 documentation-only observations receive a focused doc/link and whitespace
-check. See [validation summary](validation-summary.json). The95% authored-byte
-exact goal remains active.
+check. See [validation summary](validation-summary.json). The former95% campaign is closed.

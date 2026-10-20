@@ -1,5 +1,7 @@
 # Complete ECL Run: disabled trace and shared advance base
 
+> Handoff update, 2026-10-20: Run remains nonexact. This pack predates later shared-header changes; its cache is historical until all input pins are verified or a fresh graph is built. The operator ended the 95% campaign; see [current handoff](../../RE_HANDOFF.md) and [RGB checkpoint](../anm-rgb-interpolation/README.md).
+
 The complete **7,020-byte** `EclVmContext::Run` owner remains nonexact.
 Two independent cold real-EnemyRuntimeUpdate links reproduce its full extent,
 all60 relative jump destinations and all88 selector bytes. Diagnostic ordinary
@@ -99,8 +101,7 @@ controls and generated host binaries are pruned; one current carrier remains.
 The pre-existing untracked D3D evidence is untouched.
 
 Whole Windows i386 product/runtime closure, semantic reconstruction and
-portability remain open. Large owners remain the active priority; the95%
-authored-byte exact goal is unchanged.
+portability remain open. Large owners remain the active priority; the former95% campaign is closed.
 
 All95 standard CI checks pass. The final test-runner change only places its
 temporary builds under `build/`; its complete focused suite is rerun afterwards.

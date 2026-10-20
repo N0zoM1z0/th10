@@ -22,12 +22,15 @@ ownership or a complete dependency recipe.
 
 The PE linker version is 7.10. The Rich header contains 232 records at build
 6030 across product IDs 15, 90, 95, 96, and 100, plus explicitly retained older
-records. This supports a VC7.1 SP1-era compiler-family hypothesis. It does not
-yet identify the exact compiler binaries or any per-unit profile.
+records. This supports a VC7.1 SP1-era compiler-family hypothesis. Rich metadata
+alone does not identify exact compiler binaries or per-unit profiles. The
+repository now pins and executes a build-6030 candidate; canonical units prove
+bounded reproducibility in their declared contexts. See [TOOLS.md](TOOLS.md).
 
-The following remain unknown until compiler and link Oracles reproduce them:
+Production-wide identities and graph details remain open:
 
-- exact compiler, linker, librarian, headers, and libraries;
+- original compiler/linker payload, librarian, headers, and libraries beyond
+  the bounded reproduced claims;
 - per-translation-unit flags and calling-convention overrides;
 - translation-unit partition and source order;
 - static libraries and selected members;

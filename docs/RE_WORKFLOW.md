@@ -68,6 +68,10 @@ identity differs.
    target evidence supports a normal non-`/GL` partition for a support TU,
    select it with `--normal-support SOURCE=SUPPORT_SOURCE`. Canonical linked
    units preserve both lists as `support_sources` and `normal_support_sources`.
+   A declared `support_profiles` override may narrow a selected LTCG support's
+   switches while retaining `/GL`; it participates in grouping and replay.
+   The RGB scale support's `/Ob1` is one bounded reproduced hypothesis, not
+   evidence of original production flags. See `docs/ORACLES.md`.
    `rank-exact-backlog.py` accepts the same entry override. A canonical linked
    unit must declare `artifact_kind = "linked-pe"`, the fixed compiler/link
    profiles and harness, its unique PDB-owned symbol extent, and every semantic
@@ -94,8 +98,9 @@ identity differs.
    review changed nonexact dependencies without granting them exact credit.
    Do not routinely replay all prior functions or all consumers of a shared
    source/header merely because they share a build graph. Full owned extents,
-   independent target bindings, cold reproducibility and Factory acceptance
-   requirements for each claimed exact function remain unchanged. Record the
+   independent target bindings and cold reproducibility requirements for each
+   claimed exact function remain unchanged. Factory receipt acceptance is a
+   separate claim when that transport is used. Record the
    actual completed validation scope and any cancelled broader checks. Then
    regenerate progress, update the handoff and per-game knowledge, inspect the
    final diff, and commit one coherent local checkpoint.

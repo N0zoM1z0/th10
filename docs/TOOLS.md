@@ -21,14 +21,25 @@
 | Verify the front-end/options core | `scripts/repo-python scripts/report-frontend-core.py --check [--json]` | Target identity, physical tails/tables/padding, selected call counts, maintained state/layout coverage and ANM child-key invariant |
 | Initialize private Ghidra project | `scripts/repo-python scripts/ghidra.py import` | Operator-only bootstrap; provisional inventory |
 | Attest private Ghidra project | `scripts/repo-python scripts/ghidra.py check` | Target/project binding, no exactness credit |
-| Discover/call Ghidra | Factory provider `th10-ghidra` | Target-attested provisional semantic analysis |
+| Query local Ghidra | `scripts/repo-python scripts/ghidra.py query .analysis/query.txt OPERATION ARG...` | Read-only target-attested provisional semantic analysis |
+| Decompile local functions | `scripts/repo-python scripts/ghidra.py decompile .analysis/functions.txt ADDRESS...` | Bounded source hypotheses, no exactness credit |
+| Discover/call Ghidra through Factory | Factory provider `th10-ghidra`, when that transport is selected | Target-attested provisional semantic analysis |
 | Validate ledgers | `scripts/repo-python scripts/validate-tracking.py --require-target` | Internal consistency and target binding |
 | Report progress | `scripts/repo-python scripts/report-reconstruction-status.py` | Ledger-derived status |
 | Validate public checkout | `scripts/repo-python scripts/ci.py` | Small target-independent checks |
 
 The public game repository contains no MCP server and has no game-specific
-public URL. Web agents use the shared Factory MCP and select repository
-`th10` plus provider `th10-ghidra`.
+public URL. Local sessions can use the headless commands directly. Factory
+clients select repository `th10` plus provider `th10-ghidra` and separately
+attest that transport; a local result is not a Factory receipt. Follow the
+operator's current tool selection in `docs/RE_HANDOFF.md`.
+
+For bounded local review, use one CPU and a bounded Java heap, for example
+`_JAVA_OPTIONS='-Xmx768m -XX:ActiveProcessorCount=1' nice -n 10 scripts/repo-python scripts/ghidra.py check`.
+Keep custom post-scripts read-only/noanalysis, roll back temporary metadata,
+and verify complete mapped-text identity before and after the review. Serialize
+Wine/compiler jobs and select explicit affected units for canonical replay;
+the replay command without selectors rebuilds the full historical cohort.
 
 Ghidra 12.1.3 and Temurin JDK 21.0.12.1 are installed once in private
 Factory-managed storage. The ignored `.tools/ghidra` and `.tools/jdk` links

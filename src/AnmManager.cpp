@@ -367,7 +367,7 @@ AnmFloat3View *AnmVmFloat3InterpolationView::Evaluate(
 
 // Target 0x00441600 is the integer-triplet counterpart used by the two RGB
 // slots. Hermite mode truncates each weighted triplet before summing it.
-AnmInt3View *AnmVmColorInterpolationView::Evaluate(AnmInt3View *output)
+AnmInt3View AnmVmColorInterpolationView::Evaluate()
 {
     if (duration > 0)
     {
@@ -376,62 +376,48 @@ AnmInt3View *AnmVmColorInterpolationView::Evaluate(AnmInt3View *output)
         {
             timer.SetCurrent(duration);
             duration = 0;
-            *output = mode == ANM_INTERPOLATION_ADD ? initial : final;
-            return output;
+            if (mode != ANM_INTERPOLATION_ADD)
+            {
+                return final;
+            }
+            return initial;
         }
     }
 
     if (mode == ANM_INTERPOLATION_ADD)
     {
-        initial.x += final.x;
-        initial.y += final.y;
-        initial.z += final.z;
-        *output = initial;
-        return output;
+        const AnmInt3View initialValue = initial;
+        initial = initialValue + final;
+        return initial;
     }
 
     if (mode == ANM_INTERPOLATION_ACCELERATE)
     {
-        initial.x += finalTangent.x;
-        initial.y += finalTangent.y;
-        initial.z += finalTangent.z;
-        finalTangent.x += final.x;
-        finalTangent.y += final.y;
-        finalTangent.z += final.z;
-        *output = initial;
-        return output;
+        const AnmInt3View initialValue = initial;
+        initial = initialValue + finalTangent;
+        finalTangent = finalTangent + final;
+        return initial;
     }
 
     if (mode == ANM_INTERPOLATION_HERMITE)
     {
         float value = timer.subframe / static_cast<float>(duration);
-        float minusOne = value - 1.0f;
-        float initialWeight = (1.0f + value + value) * minusOne * minusOne;
-        float finalWeight = (3.0f - value - value) * value * value;
+        float twiceValue = value + value;
+        float initialWeight = (1.0f + twiceValue) * (value - 1.0f) * (value - 1.0f);
+        float finalWeight = (3.0f - twiceValue) * value * value;
         float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
-        float finalTangentWeight = minusOne * value * value;
-        AnmInt3View finalPart = final * finalWeight;
-        AnmInt3View initialPart = initial * initialWeight;
-        AnmInt3View initialTangentPart =
-            initialTangent * initialTangentWeight;
-        AnmInt3View finalTangentPart =
-            finalTangent * finalTangentWeight;
+        float finalTangentWeight = (value - 1.0f) * value * value;
 
-        output->x = initialPart.x + finalPart.x +
-            initialTangentPart.x + finalTangentPart.x;
-        output->y = initialPart.y + finalPart.y +
-            initialTangentPart.y + finalTangentPart.y;
-        output->z = initialPart.z + finalPart.z +
-            initialTangentPart.z + finalTangentPart.z;
-        return output;
+        AnmInt3View result = initial * initialWeight + final * finalWeight +
+            initialTangent * initialTangentWeight +
+            finalTangent * finalTangentWeight;
+        return result;
     }
 
     float value = CalculateAnmInterpolation(
         mode, timer.subframe, static_cast<float>(duration));
-    output->x = static_cast<int>((final.x - initial.x) * value) + initial.x;
-    output->y = static_cast<int>((final.y - initial.y) * value) + initial.y;
-    output->z = static_cast<int>((final.z - initial.z) * value) + initial.z;
-    return output;
+    AnmInt3View result = (final - initial).Scale(value) + initial;
+    return result;
 }
 
 // Target 0x00441950 evaluates either primary or secondary alpha through the
@@ -3722,8 +3708,8 @@ stop:
     }
     if (vm->primaryColorInterpolation.duration != 0)
     {
-        AnmInt3View value;
-        vm->primaryColorInterpolation.Evaluate(&value);
+        const AnmInt3View value =
+            vm->primaryColorInterpolation.Evaluate();
         vm->primaryColor.red = static_cast<unsigned char>(value.z);
         vm->primaryColor.green = static_cast<unsigned char>(value.y);
         vm->primaryColor.blue = static_cast<unsigned char>(value.x);
@@ -3747,8 +3733,8 @@ stop:
     }
     if (vm->secondaryColorInterpolation.duration != 0)
     {
-        AnmInt3View value;
-        vm->secondaryColorInterpolation.Evaluate(&value);
+        const AnmInt3View value =
+            vm->secondaryColorInterpolation.Evaluate();
         vm->secondaryColor.red = static_cast<unsigned char>(value.z);
         vm->secondaryColor.green = static_cast<unsigned char>(value.y);
         vm->secondaryColor.blue = static_cast<unsigned char>(value.x);
