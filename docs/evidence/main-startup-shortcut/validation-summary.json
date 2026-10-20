@@ -1,0 +1,208 @@
+{
+  "state": "passed",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "Two new complete authored exact owners in declared three-TU context. No complete historical replay or product/runtime claim.",
+  "native": {
+    "independent_complete_cold_builds": 2,
+    "current_equal_project_input_pins": 12,
+    "new_authored_exact_functions": 2,
+    "new_authored_exact_bytes": 714,
+    "new_independently_bound_fields": 38,
+    "existing_same_image_guard_bytes": 558,
+    "existing_guard_fields": 40,
+    "complete_owned_bytes_per_image": 1272,
+    "bound_fields_per_image": 78,
+    "canonical_cold_replay_units": 2,
+    "canonical_cold_replay_artifacts": 1,
+    "canonical_cold_replay_bytes": 714
+  },
+  "controls": [
+    {
+      "control": "wrong-guid-address",
+      "result": "rejected",
+      "comparison": "mismatch",
+      "matched_bytes": 270,
+      "size": 272,
+      "fields": 12,
+      "first_differences": [
+        {
+          "offset": "0x50",
+          "linked": 76,
+          "target": 28
+        },
+        {
+          "offset": "0x51",
+          "linked": 149,
+          "target": 147
+        }
+      ],
+      "scope": "Mutation of the final canonical three-TU carrier; every unchanged field remains bound."
+    },
+    {
+      "control": "wrong-window-byte-offset",
+      "result": "rejected",
+      "reason": "linked field (377, 'DIR32', 4) does not resolve uniquely through '?g_GameWindowView@@3UGameWindowView@@A': publics=[4214980] expected=0x4050c3",
+      "scope": "Mutation of the final canonical three-TU carrier; every unchanged field remains bound."
+    },
+    {
+      "control": "cdecl-cleanup",
+      "result": "rejected",
+      "reason": "PDB contribution size 0x10c differs from manifest 0x110",
+      "scope": "Historical two-TU source control only; original input hashes preserved. The final independent proofs are three-TU.",
+      "artifact_sha256": {
+        "image": "c06e0cd14761f672fd641f99253bfccc53aa0af603f4c572356437cb14a7a1ee",
+        "map": "ec88f7e0c97779b836030e087016bc27ce3e30f5f58896fc9553fda9fbbc51bd",
+        "pdb": "7cd41a92840d970e7e8c913a2b08ffa5a9c2056adb473814389e8e5d9f3d6157",
+        "object": "108be822f8694044294c89f324bed28f3673b252685d756a45b4472fa6ca664e"
+      },
+      "historical_source_sha256": {
+        ".analysis/gpt-6.1-sol/main-shortcut-20261021/real-shortcut/Main.cpp": "187ca6471ea7df2ec46db6321e02a96abfeb217f950fac143fe1bb8d5ac139c1",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      }
+    },
+    {
+      "control": "fastcall-annotation",
+      "result": "exact alternate annotation",
+      "comparison": "exact",
+      "matched_bytes": 272,
+      "size": 272,
+      "fields": 12,
+      "first_differences": [],
+      "scope": "Historical two-TU source control only; original input hashes preserved. The final independent proofs are three-TU.",
+      "artifact_sha256": {
+        "image": "29c314b7de890af8d1949ded5203a02b47ef9027d02be14865a9bc234ac71229",
+        "map": "3249b4ef14934da364ebdd0c0ace3880a4e198fa6b3bbc4c5ca151b1db9a9ada",
+        "pdb": "897458cc5a9da75cb587ab62a824576f832c9be84e5dcf54076c23f5b6085ad9",
+        "object": "f4d4d24a926d5a9aa60632bf2089cdb4d05c2fc2b10df1c97bf5502d9f0ad67d"
+      },
+      "historical_source_sha256": {
+        ".analysis/gpt-6.1-sol/main-shortcut-20261021/shortcut-fastcall/Main.cpp": "961b423a417e8d8a973be1075412e960d8e3f8b75082c797055315fba7efc4a9",
+        ".analysis/gpt-6.1-sol/main-shortcut-20261021/shortcut-fastcall/Main.hpp": "a7c3e76b760dbaff13cac85247fafe01dfdb65168935d66e329b3b82811df6de",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      }
+    }
+  ],
+  "original_large_graph": {
+    "project_input_pins": 30,
+    "unchanged_pins": 29,
+    "changed_input": "src/Main.hpp",
+    "recompiled_tus": [
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "unchanged_reused_support_objects": 8,
+    "native_ordinary_differences": 0,
+    "complete_existing_guard_bytes": 2415,
+    "complete_existing_guard_fields": 52,
+    "scope": "Only the affected primary TU recompiled, then all3 large native bodies and189-field ECL measurement rechecked. No full historical replay."
+  },
+  "ci": {
+    "command": [
+      "scripts/repo-python",
+      "scripts/ci.py"
+    ],
+    "returncode": 0,
+    "successful_steps": 100,
+    "log_sha256": "5db3943f4de8cdccd481960ade308c745cea1748c90c50149c6631f6a602a6da",
+    "script_sha256": "da305b75acbd60b3588a547ef06c58e3d3ff60137e423307e6530712a970260f",
+    "source_frozen": true
+  },
+  "final_gates": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "main-resolve-shortcut",
+        "--json"
+      ],
+      "returncode": 0,
+      "result": {
+        "result": "exact",
+        "size": 272,
+        "fields": 12
+      }
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "main-check-running-instance",
+        "--json"
+      ],
+      "returncode": 0,
+      "result": {
+        "result": "exact",
+        "size": 442,
+        "fields": 26
+      }
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "result": "TH10 toolchain declarations OK; execution not requested"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "returncode": 0,
+      "result": "tracking OK: 1775 candidates/boundaries, 1078 mappings, 1219 exact"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "returncode": 0,
+      "result": "wrote docs/PROGRESS.md and resources/progress.svg"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "returncode": 0,
+      "result": "TH10 documentation IDs, scratch references and local links OK"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "result": ""
+    }
+  ],
+  "cleanup": {
+    "native_directories": 9,
+    "native_bytes": 2126392,
+    "scope": "Only owned terminal private native candidates; canonical MainStartup, final maintained cold, baseline cdecl failure, target, database, toolchain and unrelated work are retained. A necessary affected-header incremental9TU carrier is additionally retained.",
+    "source_copies_compacted": 8,
+    "retained": [
+      "build/gpt-6.1-sol/main-shortcut-20261021/real-shortcut",
+      "build/gpt-6.1-sol/main-shortcut-20261021/maintained-crlf-cold1",
+      "build/match-linked/MainStartup",
+      "build/gpt-6.1-sol/main-shortcut-20261021/large-header-context"
+    ]
+  }
+}

@@ -294,6 +294,7 @@ GameWindowView::CreateGameWindow
 GameWindowView::InitD3DRendering
 GameWindowView::ResetRenderState
 GameWindowView::CheckForRunningGameInstance
+GameWindowView::ResolveShortcut
 GameWindowView::CalcExecutableChecksum
 FrontEndControllerView::Update
 FrontEndControllerView::SetScreenTarget

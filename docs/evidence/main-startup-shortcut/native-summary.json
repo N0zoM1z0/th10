@@ -1,0 +1,872 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "97e1d5f",
+  "scope": "Two complete new authored exact owners; four existing same-image guards receive no duplicate credit.",
+  "graph": {
+    "source": "src/Main.cpp",
+    "support_sources": [
+      "src/GameErrorContext.cpp",
+      "src/FileSystem.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry": "WinMain@16",
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "source_sha256": {
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/Main.cpp": "e5f11454928953298c6d4eb6010a7c5bdea16a3cb9dd205d4639d84c8aed4227",
+    "src/Main.hpp": "d20cced029f34f90162164416f9f68dbbd1466568c68a41835687acc8e803159",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "canonical_units": [
+    "main-resolve-shortcut",
+    "main-check-running-instance"
+  ],
+  "new_owned_bytes": 714,
+  "new_bound_fields": 38,
+  "independent_complete_cold_builds": [
+    {
+      "label": "maintained-crlf-cold1",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-shortcut-20261021/maintained-crlf-cold1/source.exe",
+          "sha256": "8fdad5fa385310c86e7ec4de778011caec453d2886c2f55cbddc369dd83fcd43"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-shortcut-20261021/maintained-crlf-cold1/source.map",
+          "sha256": "0b84a3f83bce8cfcdc81cfad20f5ca4e7106a0821434e5f831c640072c6e4855"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-shortcut-20261021/maintained-crlf-cold1/source.pdb",
+          "sha256": "2a2c770dc53529b516ecd98b239f176a646246c9ec620f7d2a7f9195eea5ae68"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-shortcut-20261021/maintained-crlf-cold1/source.ltcg.obj",
+          "sha256": "76ab545d9c4375634ae56f8e7b3fac8fcda54e4097e94616b8e40c8edf9eeb8b"
+        }
+      },
+      "support_objects": [
+        {
+          "path": "build/gpt-6.1-sol/main-shortcut-20261021/maintained-crlf-cold1/support-00-GameErrorContext.ltcg.obj",
+          "sha256": "9e6e27a9c5fddc2cbb0bc43a5daa70a067a934ea10cac91cc7583022292b9213"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-shortcut-20261021/maintained-crlf-cold1/support-01-FileSystem.ltcg.obj",
+          "sha256": "4a5d0a5d29765f0469da319ec1fcb47ef74b64ca1f0983e90923303dcb560521"
+        }
+      ],
+      "pdb_guid": "00b7f0ab6450df4eab8b4125b7c47ab3",
+      "pdb_age": 1,
+      "owners": [
+        {
+          "unit": "main-resolve-shortcut",
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "target_address": "0x0043A290",
+          "size": 272,
+          "fields": 12,
+          "address": "0x00402520",
+          "pdb_module_index": 1,
+          "raw_sha256": "e4f2c203833ddb4cab6563b4da8a07c5bef7e106a71e844ee33d56822b980d55",
+          "complete_replayed_target_sha256": "3f8ce3ce5d9e71a6c73abe1c59b97d5fc82d37284ea72cb9a885606cee25611a"
+        },
+        {
+          "unit": "main-check-running-instance",
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "target_address": "0x00439FF0",
+          "size": 442,
+          "fields": 26,
+          "address": "0x00402360",
+          "pdb_module_index": 1,
+          "raw_sha256": "9927c8b082e5a0c99707b4869bfc5d0e2aefa39e35969188db15b67669aa2f71",
+          "complete_replayed_target_sha256": "af5ea5f41858e73b4da2be49973b980f52b2ab5daf15c0d991ba6f7e077082ed"
+        },
+        {
+          "unit": "main-init-d3d-interface",
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "target_address": "0x00439700",
+          "size": 45,
+          "fields": 5,
+          "address": "0x00401C40",
+          "pdb_module_index": 1,
+          "raw_sha256": "8b531fed587542ebef7d547d86579c88299b66c0f15b791fcbfd20a746186ca0",
+          "complete_replayed_target_sha256": "94a767e936a76830e4284cb98702d8c43d8d1762d0a3cfb1a9b6de79535591b2"
+        },
+        {
+          "unit": "decomphelp-game-error-fatal",
+          "symbol": "?Fatal@GameErrorContext@th10@@QAAPADPADZZ",
+          "target_address": "0x0044B8E0",
+          "size": 201,
+          "fields": 11,
+          "address": "0x00402B00",
+          "pdb_module_index": 3,
+          "raw_sha256": "919dd87ac84eaa2d3ec8783c0428708838d4743a45901eb84878173d534c60db",
+          "complete_replayed_target_sha256": "f5310ee83b9e4633195ff8f0666c27e7a5b45057802a444c24678779c434e44c"
+        },
+        {
+          "unit": "decomphelp-game-error-log",
+          "symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+          "target_address": "0x0044B810",
+          "size": 201,
+          "fields": 12,
+          "address": "0x00402A30",
+          "pdb_module_index": 3,
+          "raw_sha256": "e973242fe9e56da6d256b543e55dc47ce59ad4fa97dba9f5140c4f64a4528c89",
+          "complete_replayed_target_sha256": "e656c1d4e04a4fe1113db4f817c541683da7b711b7a93fbe82fb20b8fdf2cbbb"
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "symbol": "?CheckIfFileAlreadyExists@FileSystem@@YGHPBD@Z",
+          "target_address": "0x0044B4D0",
+          "size": 111,
+          "fields": 12,
+          "address": "0x00402E00",
+          "pdb_module_index": 2,
+          "raw_sha256": "272fe8f0d8979fa7556a47d46e2ecb8fc1b96fe2d425da70f99fcf9473a5465f",
+          "complete_replayed_target_sha256": "10bb68861d179b02a4a5d7096e294a765c25016b39af79b76da99d5c31b81b2e"
+        }
+      ]
+    },
+    {
+      "label": "canonical-cold2",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/MainStartup/source.exe",
+          "sha256": "6b9bb6bcff639b552135546b0927a043080c35b74a02cd73bcb9a2ef5a27e78b"
+        },
+        "map": {
+          "path": "build/match-linked/MainStartup/source.map",
+          "sha256": "abbee4cc3c7584a8768f19fcef500f8ff9a7a85928ddd384131f369ec17687c6"
+        },
+        "pdb": {
+          "path": "build/match-linked/MainStartup/source.pdb",
+          "sha256": "3e2eaf7cf4ff9c33a0b18dfefb965d24bdf24206f392604e550d2bf51b57c36b"
+        },
+        "object": {
+          "path": "build/match-linked/MainStartup/source.ltcg.obj",
+          "sha256": "a04429909cd4e0c45ad2073980fcc70ee013f05912d4741c92630c11f8f8f8ba"
+        }
+      },
+      "support_objects": [
+        {
+          "path": "build/match-linked/MainStartup/support-00-GameErrorContext.ltcg.obj",
+          "sha256": "9e1b70a262909a9d734512ba03d5810818e9236bd2e337e044c45a0e5ec503af"
+        },
+        {
+          "path": "build/match-linked/MainStartup/support-01-FileSystem.ltcg.obj",
+          "sha256": "2f31371ab004a057d72484709e50ec6726ccce1737f7c1314625576bdbd6bf9c"
+        }
+      ],
+      "pdb_guid": "f37d72eb5748f44082bed52e24389a87",
+      "pdb_age": 1,
+      "owners": [
+        {
+          "unit": "main-resolve-shortcut",
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "target_address": "0x0043A290",
+          "size": 272,
+          "fields": 12,
+          "address": "0x00402520",
+          "pdb_module_index": 1,
+          "raw_sha256": "e4f2c203833ddb4cab6563b4da8a07c5bef7e106a71e844ee33d56822b980d55",
+          "complete_replayed_target_sha256": "3f8ce3ce5d9e71a6c73abe1c59b97d5fc82d37284ea72cb9a885606cee25611a"
+        },
+        {
+          "unit": "main-check-running-instance",
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "target_address": "0x00439FF0",
+          "size": 442,
+          "fields": 26,
+          "address": "0x00402360",
+          "pdb_module_index": 1,
+          "raw_sha256": "9927c8b082e5a0c99707b4869bfc5d0e2aefa39e35969188db15b67669aa2f71",
+          "complete_replayed_target_sha256": "af5ea5f41858e73b4da2be49973b980f52b2ab5daf15c0d991ba6f7e077082ed"
+        },
+        {
+          "unit": "main-init-d3d-interface",
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "target_address": "0x00439700",
+          "size": 45,
+          "fields": 5,
+          "address": "0x00401C40",
+          "pdb_module_index": 1,
+          "raw_sha256": "8b531fed587542ebef7d547d86579c88299b66c0f15b791fcbfd20a746186ca0",
+          "complete_replayed_target_sha256": "94a767e936a76830e4284cb98702d8c43d8d1762d0a3cfb1a9b6de79535591b2"
+        },
+        {
+          "unit": "decomphelp-game-error-fatal",
+          "symbol": "?Fatal@GameErrorContext@th10@@QAAPADPADZZ",
+          "target_address": "0x0044B8E0",
+          "size": 201,
+          "fields": 11,
+          "address": "0x00402B00",
+          "pdb_module_index": 3,
+          "raw_sha256": "919dd87ac84eaa2d3ec8783c0428708838d4743a45901eb84878173d534c60db",
+          "complete_replayed_target_sha256": "f5310ee83b9e4633195ff8f0666c27e7a5b45057802a444c24678779c434e44c"
+        },
+        {
+          "unit": "decomphelp-game-error-log",
+          "symbol": "?Log@GameErrorContext@th10@@QAAPADPADZZ",
+          "target_address": "0x0044B810",
+          "size": 201,
+          "fields": 12,
+          "address": "0x00402A30",
+          "pdb_module_index": 3,
+          "raw_sha256": "e973242fe9e56da6d256b543e55dc47ce59ad4fa97dba9f5140c4f64a4528c89",
+          "complete_replayed_target_sha256": "e656c1d4e04a4fe1113db4f817c541683da7b711b7a93fbe82fb20b8fdf2cbbb"
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "symbol": "?CheckIfFileAlreadyExists@FileSystem@@YGHPBD@Z",
+          "target_address": "0x0044B4D0",
+          "size": 111,
+          "fields": 12,
+          "address": "0x00402E00",
+          "pdb_module_index": 2,
+          "raw_sha256": "272fe8f0d8979fa7556a47d46e2ecb8fc1b96fe2d425da70f99fcf9473a5465f",
+          "complete_replayed_target_sha256": "10bb68861d179b02a4a5d7096e294a765c25016b39af79b76da99d5c31b81b2e"
+        }
+      ]
+    }
+  ],
+  "semantic_fields": {
+    "main-resolve-shortcut": [
+      {
+        "offset": 7,
+        "type": "DIR32",
+        "symbol": "___security_cookie",
+        "target": 4666976
+      },
+      {
+        "offset": 45,
+        "type": "REL32",
+        "symbol": "@__security_check_cookie@4",
+        "target": 4558501
+      },
+      {
+        "offset": 70,
+        "type": "DIR32",
+        "symbol": "__imp__CoInitialize@4",
+        "target": 4612872
+      },
+      {
+        "offset": 80,
+        "type": "DIR32",
+        "symbol": "_IID_IShellLinkA",
+        "target": 4625180
+      },
+      {
+        "offset": 89,
+        "type": "DIR32",
+        "symbol": "_CLSID_ShellLink",
+        "target": 4625740
+      },
+      {
+        "offset": 95,
+        "type": "DIR32",
+        "symbol": "__imp__CoCreateInstance@20",
+        "target": 4612868
+      },
+      {
+        "offset": 119,
+        "type": "DIR32",
+        "symbol": "_IID_IPersistFile",
+        "target": 4626812
+      },
+      {
+        "offset": 136,
+        "type": "REL32",
+        "symbol": "??2@YAPAXI@Z",
+        "target": 4531347
+      },
+      {
+        "offset": 156,
+        "type": "DIR32",
+        "symbol": "__imp__MultiByteToWideChar@24",
+        "target": 4612356
+      },
+      {
+        "offset": 210,
+        "type": "REL32",
+        "symbol": "??3@YAXPAX@Z",
+        "target": 4531361
+      },
+      {
+        "offset": 240,
+        "type": "DIR32",
+        "symbol": "__imp__CoUninitialize@0",
+        "target": 4612864
+      },
+      {
+        "offset": 259,
+        "type": "REL32",
+        "symbol": "@__security_check_cookie@4",
+        "target": 4558501
+      }
+    ],
+    "main-check-running-instance": [
+      {
+        "offset": 7,
+        "type": "DIR32",
+        "symbol": "___security_cookie",
+        "target": 4666976
+      },
+      {
+        "offset": 15,
+        "type": "DIR32",
+        "symbol": "??_C@_0O@JPPJFPMM@Touhou?510?5App?$AA@",
+        "target": 4649900
+      },
+      {
+        "offset": 32,
+        "type": "DIR32",
+        "symbol": "__imp__CreateMutexA@12",
+        "target": 4612368
+      },
+      {
+        "offset": 37,
+        "type": "DIR32",
+        "symbol": "?g_MainExclusiveMutex@@3PAXA",
+        "target": 4815784
+      },
+      {
+        "offset": 43,
+        "type": "DIR32",
+        "symbol": "__imp__GetLastError@0",
+        "target": 4612364
+      },
+      {
+        "offset": 55,
+        "type": "DIR32",
+        "symbol": "?g_MainAlreadyRunningError@@3QBDB",
+        "target": 4649876
+      },
+      {
+        "offset": 60,
+        "type": "DIR32",
+        "symbol": "?g_GameErrorContext@th10@@3UGameErrorContext@1@A",
+        "target": 4673392
+      },
+      {
+        "offset": 65,
+        "type": "REL32",
+        "symbol": "?Fatal@GameErrorContext@th10@@QAAPADPADZZ",
+        "target": 4503776
+      },
+      {
+        "offset": 86,
+        "type": "REL32",
+        "symbol": "@__security_check_cookie@4",
+        "target": 4558501
+      },
+      {
+        "offset": 135,
+        "type": "DIR32",
+        "symbol": "__imp__GetModuleFileNameA@12",
+        "target": 4612316
+      },
+      {
+        "offset": 151,
+        "type": "DIR32",
+        "symbol": "__imp__GetConsoleTitleA@8",
+        "target": 4612352
+      },
+      {
+        "offset": 162,
+        "type": "DIR32",
+        "symbol": "__imp__GetStartupInfoA@4",
+        "target": 4612360
+      },
+      {
+        "offset": 183,
+        "type": "REL32",
+        "symbol": "_strrchr",
+        "target": 4532528
+      },
+      {
+        "offset": 198,
+        "type": "REL32",
+        "symbol": "?CheckIfFileAlreadyExists@FileSystem@@YGHPBD@Z",
+        "target": 4502736
+      },
+      {
+        "offset": 220,
+        "type": "DIR32",
+        "symbol": "??_C@_04PCJMIFHK@?4lnk?$AA@",
+        "target": 4649868
+      },
+      {
+        "offset": 226,
+        "type": "REL32",
+        "symbol": "__stricmp",
+        "target": 4588878
+      },
+      {
+        "offset": 255,
+        "type": "REL32",
+        "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+        "target": 4432528
+      },
+      {
+        "offset": 265,
+        "type": "REL32",
+        "symbol": "_strrchr",
+        "target": 4532528
+      },
+      {
+        "offset": 270,
+        "type": "DIR32",
+        "symbol": "??_C@_04PCJMIFHK@?4lnk?$AA@",
+        "target": 4649868
+      },
+      {
+        "offset": 276,
+        "type": "REL32",
+        "symbol": "__stricmp",
+        "target": 4588878
+      },
+      {
+        "offset": 377,
+        "type": "DIR32",
+        "symbol": "?g_GameWindowView@@3UGameWindowView@@A",
+        "target": 4793584,
+        "addend": 40
+      },
+      {
+        "offset": 383,
+        "type": "DIR32",
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "target": 4791336,
+        "addend": 972
+      },
+      {
+        "offset": 394,
+        "type": "DIR32",
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "target": 4791336,
+        "addend": 972
+      },
+      {
+        "offset": 403,
+        "type": "DIR32",
+        "symbol": "?g_MainExclusiveMutex@@3PAXA",
+        "target": 4815784
+      },
+      {
+        "offset": 415,
+        "type": "DIR32",
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "target": 4791336,
+        "addend": 972
+      },
+      {
+        "offset": 431,
+        "type": "REL32",
+        "symbol": "@__security_check_cookie@4",
+        "target": 4558501
+      }
+    ]
+  },
+  "semantic_field_review": {
+    "guids": [
+      {
+        "name": "CLSID_ShellLink",
+        "address": "0x46954c",
+        "uuid": "00021401-0000-0000-c000-000000000046",
+        "sha256": "7b31ed5242714608a8c9683585a2fca84231b949ab535c7802ab3ac68c49a748"
+      },
+      {
+        "name": "IID_IShellLinkA",
+        "address": "0x46931c",
+        "uuid": "000214ee-0000-0000-c000-000000000046",
+        "sha256": "27bcdc8b39773b808bd34333e64e304138a8afceb66e8d85ff66ba5bd2aefa2a"
+      },
+      {
+        "name": "IID_IPersistFile",
+        "address": "0x46997c",
+        "uuid": "0000010b-0000-0000-c000-000000000046",
+        "sha256": "ced01174fa3d1f2c7468b77cfbf59ff4311f7cb16ab07d9e4cd16e0630cbb1cf"
+      }
+    ],
+    "imports": [
+      {
+        "address": "0x466308",
+        "dll": "ole32.dll",
+        "name": "CoInitialize"
+      },
+      {
+        "address": "0x466304",
+        "dll": "ole32.dll",
+        "name": "CoCreateInstance"
+      },
+      {
+        "address": "0x466300",
+        "dll": "ole32.dll",
+        "name": "CoUninitialize"
+      },
+      {
+        "address": "0x466104",
+        "dll": "KERNEL32.dll",
+        "name": "MultiByteToWideChar"
+      }
+    ],
+    "window_base": "0x004924F0",
+    "path_flag_offset": "0x28",
+    "path_flag_access_width": 1,
+    "supervisor_base": "0x00491C28",
+    "flags_offset": "0x3CC",
+    "error_context": "0x00474F70",
+    "fatal_entry": "0x0044B8E0",
+    "scope": "Independent target payload/import-table/ABI/layout review; nearest diagnostic anchor names are not semantic evidence. Native GUID data owners remain unresolved."
+  },
+  "target_review": {
+    "ghidra_transport": "direct local headless; no Factory MCP",
+    "read_only": true,
+    "noanalysis": true,
+    "transaction_rolled_back": true,
+    "max_cpu": 1,
+    "max_heap_mib": 768,
+    "mapped_text_start": "0x00401000",
+    "mapped_text_end_inclusive": "0x00465A80",
+    "mapped_text_size": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "resolver_extent": "0x0043A290..0x0043A39F",
+    "next_entry": "0x0043A3A0",
+    "startup_extent": "0x00439FF0..0x0043A1A9",
+    "following_padding": 6,
+    "sole_direct_resolver_call": "0x0043A0EE",
+    "flag_direct_refs": [
+      {
+        "address": "0x00439920",
+        "operation": "byte read"
+      },
+      {
+        "address": "0x0043A167",
+        "operation": "byte write"
+      }
+    ],
+    "limitation": "Typed decompiler arguments and original identifiers remain provisional; indirect accesses and product/runtime closure are not established by direct xrefs."
+  },
+  "controls": [
+    {
+      "control": "wrong-guid-address",
+      "result": "rejected",
+      "comparison": "mismatch",
+      "matched_bytes": 270,
+      "size": 272,
+      "fields": 12,
+      "first_differences": [
+        {
+          "offset": "0x50",
+          "linked": 76,
+          "target": 28
+        },
+        {
+          "offset": "0x51",
+          "linked": 149,
+          "target": 147
+        }
+      ],
+      "scope": "Mutation of the final canonical three-TU carrier; every unchanged field remains bound."
+    },
+    {
+      "control": "wrong-window-byte-offset",
+      "result": "rejected",
+      "reason": "linked field (377, 'DIR32', 4) does not resolve uniquely through '?g_GameWindowView@@3UGameWindowView@@A': publics=[4214980] expected=0x4050c3",
+      "scope": "Mutation of the final canonical three-TU carrier; every unchanged field remains bound."
+    },
+    {
+      "control": "cdecl-cleanup",
+      "result": "rejected",
+      "reason": "PDB contribution size 0x10c differs from manifest 0x110",
+      "scope": "Historical two-TU source control only; original input hashes preserved. The final independent proofs are three-TU.",
+      "artifact_sha256": {
+        "image": "c06e0cd14761f672fd641f99253bfccc53aa0af603f4c572356437cb14a7a1ee",
+        "map": "ec88f7e0c97779b836030e087016bc27ce3e30f5f58896fc9553fda9fbbc51bd",
+        "pdb": "7cd41a92840d970e7e8c913a2b08ffa5a9c2056adb473814389e8e5d9f3d6157",
+        "object": "108be822f8694044294c89f324bed28f3673b252685d756a45b4472fa6ca664e"
+      },
+      "historical_source_sha256": {
+        ".analysis/gpt-6.1-sol/main-shortcut-20261021/real-shortcut/Main.cpp": "187ca6471ea7df2ec46db6321e02a96abfeb217f950fac143fe1bb8d5ac139c1",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      }
+    },
+    {
+      "control": "fastcall-annotation",
+      "result": "exact alternate annotation",
+      "comparison": "exact",
+      "matched_bytes": 272,
+      "size": 272,
+      "fields": 12,
+      "first_differences": [],
+      "scope": "Historical two-TU source control only; original input hashes preserved. The final independent proofs are three-TU.",
+      "artifact_sha256": {
+        "image": "29c314b7de890af8d1949ded5203a02b47ef9027d02be14865a9bc234ac71229",
+        "map": "3249b4ef14934da364ebdd0c0ace3880a4e198fa6b3bbc4c5ca151b1db9a9ada",
+        "pdb": "897458cc5a9da75cb587ab62a824576f832c9be84e5dcf54076c23f5b6085ad9",
+        "object": "f4d4d24a926d5a9aa60632bf2089cdb4d05c2fc2b10df1c97bf5502d9f0ad67d"
+      },
+      "historical_source_sha256": {
+        ".analysis/gpt-6.1-sol/main-shortcut-20261021/shortcut-fastcall/Main.cpp": "961b423a417e8d8a973be1075412e960d8e3f8b75082c797055315fba7efc4a9",
+        ".analysis/gpt-6.1-sol/main-shortcut-20261021/shortcut-fastcall/Main.hpp": "a7c3e76b760dbaff13cac85247fafe01dfdb65168935d66e329b3b82811df6de",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      }
+    }
+  ],
+  "annotation_control": {
+    "stdcall_size": 272,
+    "fastcall_size": 272,
+    "scope": "Ordinary declarations generate the same private body; original source annotation remains unresolved."
+  },
+  "nonexact_dependencies": {
+    "WinMain": {
+      "candidate_size": 1311,
+      "target_size": 1389,
+      "scope": "Three-TU declared-context diagnostic only; no exact or runtime credit."
+    },
+    "InitD3DRendering": {
+      "candidate_size": 1051,
+      "target_size": 1159,
+      "scope": "Three-TU declared-context diagnostic only; no exact or runtime credit."
+    },
+    "CalcExecutableChecksum": {
+      "candidate_size": 199,
+      "target_size": 207,
+      "scope": "Three-TU declared-context diagnostic only; no exact or runtime credit."
+    },
+    "OpenFile": {
+      "candidate_size": 297,
+      "target_size": 360,
+      "scope": "Three-TU declared-context diagnostic only; no exact or runtime credit."
+    }
+  },
+  "credit": {
+    "new_authored_exact_functions": 2,
+    "new_authored_exact_bytes": 714,
+    "new_source_mappings": 1,
+    "new_denominator_bytes": 0,
+    "canonical_exact_functions": 1219,
+    "authored_exact_functions": 378,
+    "authored_exact_bytes": 68863
+  },
+  "canonical_replay": {
+    "artifacts": 1,
+    "units": 2,
+    "bytes": 714,
+    "full_historical_replay": false,
+    "receipt_sha256": "c5c48bacca4c1a0698e6f8975ff90948d4448b16612f7165f263f84f9b1c4144"
+  },
+  "large_header_dependency": {
+    "scope": "Necessary incremental dependency diagnostic only, not an independent complete cold or new exact credit.",
+    "source_sha256": {
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3b4e09603103c92b3940d305f62281054ae18327db960acea418176c7582a57a",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/Main.hpp": "d20cced029f34f90162164416f9f68dbbd1466568c68a41835687acc8e803159",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+    },
+    "changed_header": {
+      "path": "src/Main.hpp",
+      "old_sha256": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "new_sha256": "d20cced029f34f90162164416f9f68dbbd1466568c68a41835687acc8e803159"
+    },
+    "recompiled_tus": [
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "unchanged_reused_support_objects": [
+      {
+        "source": "src/EclVm.cpp",
+        "object": "support-00-EclVm.ltcg.obj",
+        "sha256": "23562098609b6284fc76c02b199b598e8eb18577d3a27503ee1e579b4e67db8a"
+      },
+      {
+        "source": "src/AnmManager.cpp",
+        "object": "support-01-AnmManager.ltcg.obj",
+        "sha256": "3c15cf3231365e5bda8cfc9621506b1a1b8c10f9ccd8b3cdf0b828e38daea4de"
+      },
+      {
+        "source": "src/AnmVmCreate.cpp",
+        "object": "support-02-AnmVmCreate.ltcg.obj",
+        "sha256": "fb4fa78322df318da5566a1d68182fb8488fb772403d22d3fe408685fa4c89c3"
+      },
+      {
+        "source": "src/EnemyLaser.cpp",
+        "object": "support-03-EnemyLaser.ltcg.obj",
+        "sha256": "9734e70fca298d54e686207668b36434e86ff99148e39d234d89d796b7ae6f72"
+      },
+      {
+        "source": "src/Enemy.cpp",
+        "object": "support-04-Enemy.ltcg.obj",
+        "sha256": "6f471121ade26cc151d9c36a82117566dbfd7b8274e995f6b9c47e9fcef0e0f7"
+      },
+      {
+        "source": "src/AnmVmId.cpp",
+        "object": "support-05-AnmVmId.ltcg.obj",
+        "sha256": "27b58220d3d37d415ac5429ba4ad63f905d5a13f910d3b43325f0189f0c95354"
+      },
+      {
+        "source": "src/RandomMath.cpp",
+        "object": "support-06-RandomMath.ltcg.obj",
+        "sha256": "2a148cea21fae91352e34ee65272e0a269eb85fb76520784ee77dff954f3cc44"
+      },
+      {
+        "source": "src/AnmInt3Scale.cpp",
+        "object": "support-07-AnmInt3Scale.ltcg.obj",
+        "sha256": "cebf99e3cc1eac8623019bed0400d7db7442b0a1be314a68df4db8f9672d76da"
+      }
+    ],
+    "artifacts": {
+      "image": {
+        "path": "build/gpt-6.1-sol/main-shortcut-20261021/large-header-context/source.exe",
+        "sha256": "36776282551cb479c3d2241e6ce5af2a9ac198c759cbfb851d068e042e3f2658"
+      },
+      "map": {
+        "path": "build/gpt-6.1-sol/main-shortcut-20261021/large-header-context/source.map",
+        "sha256": "ab24bf99591a0b44d72b64b75bc673fffd0d8f398b027ca0f3db31540ac6a1d9"
+      },
+      "pdb": {
+        "path": "build/gpt-6.1-sol/main-shortcut-20261021/large-header-context/source.pdb",
+        "sha256": "56294668c54443e37e8c0275246c88c02ad346e1f28f0ea3f75a1feb44bad49e"
+      },
+      "object": {
+        "path": "build/gpt-6.1-sol/main-shortcut-20261021/large-header-context/source.ltcg.obj",
+        "sha256": "90be6673233c90067138027d291b936838d20f2f65e83e5cc177d1420ea6ef85"
+      }
+    },
+    "native_comparisons": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "left_size": 14468,
+        "right_size": 14468,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?ReadIntArgument@EnemyRuntimeView",
+        "left_size": 16,
+        "right_size": 16,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?ExecuteScript@AnmRenderManagerView",
+        "left_size": 9964,
+        "right_size": 9964,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?Run@EclVmContext",
+        "left_size": 7020,
+        "right_size": 7020,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      }
+    ],
+    "existing_complete_guards": {
+      "functions": 21,
+      "bytes": 2415,
+      "fields": 52
+    },
+    "current_nonexact": {
+      "anm": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "ecl": {
+        "size": 7020,
+        "ordinary_differences": 27,
+        "fields": 189
+      },
+      "enemy": {
+        "size": 14468,
+        "target_size": 14416,
+        "case_gap": 652,
+        "same_sized_cases": 40,
+        "stack_allocations": {
+          "target": "esp, 0x2c4",
+          "candidate": "esp, 0x2c4"
+        },
+        "sentinel_compares": {
+          "target": 19,
+          "candidate": 19
+        }
+      }
+    }
+  }
+}

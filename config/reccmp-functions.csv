@@ -313,6 +313,7 @@ GameWindowView::CreateGameWindow,0x00439730,function
 GameWindowView::InitD3DRendering,0x00439890,function
 GameWindowView::ResetRenderState,0x00439D20,function
 GameWindowView::CheckForRunningGameInstance,0x00439FF0,function
+GameWindowView::ResolveShortcut,0x0043A290,function
 GameWindowView::CalcExecutableChecksum,0x0043A1C0,function
 FrontEndControllerView::Update,0x0042CDF0,function
 FrontEndControllerView::SetScreenTarget,0x0042C5C0,function

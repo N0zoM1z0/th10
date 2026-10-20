@@ -2,6 +2,7 @@
 #include "Main.hpp"
 #include "FileSystem.hpp"
 
+#include <shlobj.h>
 #include <direct.h>
 #include <mmsystem.h>
 #include <math.h>
@@ -893,7 +894,7 @@ int GameWindowView::CheckForRunningGameInstance()
     g_MainExclusiveMutex = CreateMutexA(NULL, TRUE, "Touhou 10 App");
     if (GetLastError() == ERROR_ALREADY_EXISTS)
     {
-        MainFatal(g_MainAlreadyRunningError);
+        th10::g_GameErrorContext.Fatal(const_cast<char *>(g_MainAlreadyRunningError));
         return -1;
     }
 
@@ -905,11 +906,7 @@ int GameWindowView::CheckForRunningGameInstance()
     GetConsoleTitleA(consoleTitle, 0x105);
     GetStartupInfoA(&startupInfo);
 
-    if (startupInfo.lpTitle == NULL)
-    {
-        g_MainSupervisorView.flags |= MAIN_FLAG_NO_STARTUP_TITLE;
-    }
-    else
+    if (startupInfo.lpTitle != NULL)
     {
         extension = strrchr(startupInfo.lpTitle, '.');
         if (FileSystem::CheckIfFileAlreadyExists(startupInfo.lpTitle) &&
@@ -933,7 +930,58 @@ int GameWindowView::CheckForRunningGameInstance()
         }
         g_MainSupervisorView.flags &= ~MAIN_FLAG_NO_STARTUP_TITLE;
     }
+    else
+    {
+        g_MainSupervisorView.flags |= MAIN_FLAG_NO_STARTUP_TITLE;
+    }
     return (g_MainExclusiveMutex != NULL) - 1;
+}
+
+// TH10_MAIN_FUNCTION: 0x0043A290 GameWindowView::ResolveShortcut
+// The sole startup caller supplies destination/capacity through LTCG's private
+// EBX/EDI convention. The ordinary declaration keeps all three source inputs.
+int __stdcall GameWindowView::ResolveShortcut(
+    const char *shortcutPath, char *destination, int destinationSize)
+{
+    HRESULT result;
+    IPersistFile *persistFile;
+    IShellLinkA *shellLink;
+    int returnValue;
+    WIN32_FIND_DATAA findData;
+    LPWSTR widePath;
+
+    if (destination == NULL)
+        return FALSE;
+
+    returnValue = FALSE;
+    CoInitialize(NULL);
+    result = CoCreateInstance(
+        CLSID_ShellLink, NULL, CLSCTX_INPROC_SERVER, IID_IShellLinkA,
+        reinterpret_cast<void **>(&shellLink));
+    if (SUCCEEDED(result))
+    {
+        result = shellLink->QueryInterface(
+            IID_IPersistFile, reinterpret_cast<void **>(&persistFile));
+        if (SUCCEEDED(result))
+        {
+            widePath = new WCHAR[destinationSize];
+            MultiByteToWideChar(
+                CP_ACP, 0, shortcutPath, -1, widePath, destinationSize);
+            result = persistFile->Load(widePath, STGM_READ);
+            if (SUCCEEDED(result))
+            {
+                result = shellLink->GetPath(
+                    destination, destinationSize, &findData, 0);
+                if (SUCCEEDED(result))
+                    returnValue = TRUE;
+            }
+            delete widePath;
+            persistFile->Release();
+        }
+        shellLink->Release();
+    }
+    CoUninitialize();
+    return returnValue;
 }
 
 // TH10_MAIN_FUNCTION: 0x0043A1C0 GameWindowView::CalcExecutableChecksum

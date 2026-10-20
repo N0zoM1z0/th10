@@ -3958,3 +3958,31 @@ Operand references disturb existing helpers; union getters, int-return trace,
 explicit installer contexts and real callback support do not repair Run.
 These are compiler observations of the current source model, not recovered
 original locals. All EclVm/Enemy changes are restored; no large exact credit.
+
+
+### 2026-10-21: real shortcut body and byte-wide startup path flag
+
+The [startup proof](evidence/main-startup-shortcut/README.md) closes the full
+439FF0/442 caller and43A290/272 resolver:714 new authored exact bytes. The
+maintained SDK COM body replaces a declaration-only dependency. Ordinary
+stdcall source recovers EBX destination/EDI capacity and one stack path/RET4;
+a fastcall control is identical, while cdecl gives268. Original annotation and
+physical ownership remain unknown. The caller also restores its real Fatal
+receiver and keeps the nonnull-title path first. Target492518 is read/written
+as one byte, so GameWindow+28 is a byte field with29..2B kept unknown, preserving
+all following offsets. GUID payloads and import-table identities are reviewed
+independently of decompiler prototypes or neighboring diagnostic anchors.
+
+Two full three-TU Main/GameErrorContext/FileSystem colds through real WinMain
+replay both new owners714/all38 and four existing same-image guards558/all40.
+No duplicate credit is assigned. WinMain1311/1389, rendering1051/1159,
+checksum199/207 and OpenFile297/360 remain nonexact in this carrier. The real
+FileSystem support is retained instead of anchoring its known111-byte check.
+One new source mapping; boundary/origin/authored denominators are unchanged.
+Main.hpp is also an actual dispatcher dependency. Only that TU is recompiled;
+eight unchanged support objects are hash-reused. Complete native-to-native
+comparison preserves all three large bodies, while21 existing guards2415/all52
+and current Run7020/all189/27 differences are rechecked. One of30 input hashes
+changes; do not describe the whole graph as unchanged. These are incremental
+diagnostics, with no large exact credit. The original large owners and later
+phase gates remain open.

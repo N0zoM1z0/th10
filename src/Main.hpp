@@ -184,7 +184,8 @@ struct GameWindowView
     unsigned char padding015[3];          // +0x15
     LARGE_INTEGER performanceFrequency;  // +0x18
     LARGE_INTEGER performanceStart;      // +0x20
-    int usesRelativePath;                // +0x28
+    unsigned char usesRelativePath;      // +0x28
+    unsigned char unknown029[3];         // +0x29
     int screenSaveActive;                // +0x2C
     int lowPowerActive;                  // +0x30
     int powerOffActive;                  // +0x34
@@ -204,7 +205,7 @@ struct GameWindowView
     static void ResetRenderState();
     static int CheckForRunningGameInstance();
     static int CalcExecutableChecksum();
-    static int ResolveShortcut(
+    static int __stdcall ResolveShortcut(
         const char *shortcutPath, char *destination, int destinationSize);
 };
 #pragma pack(pop)
@@ -214,7 +215,9 @@ typedef char GameWindowViewSizeIs58[
 typedef char GameWindowViewPerformanceFrequencyAt18[
     (offsetof(GameWindowView, performanceFrequency) == 0x18) ? 1 : -1];
 typedef char GameWindowViewRelativePathAt28[
-    (offsetof(GameWindowView, usesRelativePath) == 0x28) ? 1 : -1];
+    (offsetof(GameWindowView, usesRelativePath) == 0x28 &&
+     sizeof(((GameWindowView *)0)->usesRelativePath) == 1 &&
+     offsetof(GameWindowView, screenSaveActive) == 0x2c) ? 1 : -1];
 typedef char GameWindowViewCurrentTimestampAt38[
     (offsetof(GameWindowView, currentTimestamp) == 0x38 &&
      offsetof(GameWindowView, timeOrigin) == 0x50) ? 1 : -1];

@@ -41,13 +41,40 @@ fresh target and compiler evidence. The first bounded changes and measurements
 are recorded in [large-owner call order](evidence/large-owner-call-order/README.md).
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
-candidates, 734 authored functions owning 273274 bytes, 1077 source mappings,
-1217 canonical exact functions overall. Authored exact is **376 functions,
-68149/273274 bytes (24.94%)**. The 218 mapped authored nonexact functions,
+candidates, 734 authored functions owning 273274 bytes, 1078 source mappings,
+1219 canonical exact functions overall. Authored exact is **378 functions,
+68863/273274 bytes (25.20%)**. The 217 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint closes the retained45-byte InitD3DInterface439700 owner.
+The latest checkpoint closes CheckForRunningGameInstance439FF0/442 and
+ResolveShortcut43A290/272:714 new authored exact bytes, one new source mapping.
+The real SDK COM body recovers its private EBX/EDI arguments naturally. The
+caller restores its Fatal receiver, uses the target byte-wide GameWindow+28
+path flag, and keeps the nonnull-title path first. Two independent complete
+Main/GameErrorContext/FileSystem /GL /GS colds through real WinMain strictly
+replay714/all38 plus four existing guards558/all40,1272/all78 per image.
+The second cold canonically replays only the two new units in one build.
+Target GUIDs/imports, full boundaries and byte-field accesses are independently
+reviewed; cdecl, swapped-GUID and wrong-addend controls fail. Stdcall and
+fastcall source produce the same private body, so original annotation/TU/profile
+remain unknown. Main source closure still lacks8-byte ActivateWindow and
+233-byte dialog code. WinMain1311/1389, rendering1051/1159, checksum199/207 and
+OpenFile297/360 are separate nonexact observations in this three-TU carrier.
+See [startup source proof](evidence/main-startup-shortcut/README.md).
+All100 standard CI checks pass in one invocation. Cleanup removes9 owned
+terminal native directories/2126392 bytes, retaining both final cold carriers,
+one cdecl failure and verified source/control deltas. Final focused gates pass.
+The original ANM/Enemy/ECL C++ sources are unchanged, but Main.hpp changes
+one of30 nine-TU inputs. Only EnemyEclDispatcher.cpp consumes it. A necessary
+primary-TU recompile with eight hash-verified unchanged support objects keeps
+all3 complete large native bodies equal after verified field rewrites;21
+existing complete guards retain2415/all52. Current ANM9964/gap2, Run7020/all189
+with27 differences and dispatcher14468/gap652/frame2C4/19 sentinels persist.
+This is an incremental dependency check, separate from both startup colds;
+all three large exact goals stay active.
+
+The preceding checkpoint closes the retained45-byte InitD3DInterface439700 owner.
 Calling the existing GameErrorContext::Fatal restores its omitted error-context
 receiver and target EDI save/setup/restore. Two independent complete Main.cpp +
 GameErrorContext.cpp /GL /GS colds through real WinMain freeze9 inputs and
@@ -299,7 +326,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the D3D error-context proof; RGB results retain
+Latest focused native results are in the startup source proof; RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -314,4 +341,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/main-d3d-fatal/validation-summary.json).
+[the current validation summary](evidence/main-startup-shortcut/validation-summary.json).
