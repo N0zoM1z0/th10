@@ -91,6 +91,8 @@ def main() -> int:
         run("Validate stage script state and callback", [sys.executable, "scripts/test-stage-script-state.py"])
         run("Validate stage projected bounds and draw", [sys.executable, "scripts/test-stage-draw.py"])
         run("Validate stage camera setup", [sys.executable, "scripts/test-stage-camera.py"])
+        run("Validate ASCII viewport transitions", [sys.executable, "scripts/test-ascii-viewport.py", "--sanitize"])
+        run("Validate ASCII glyph paths", [sys.executable, "scripts/test-ascii-glyphs.py", "--sanitize"])
         run("Validate stage draw passes", [sys.executable, "scripts/test-stage-draw-passes.py"])
         run("Validate stage lifecycle ownership", [sys.executable, "scripts/test-stage-lifecycle.py"])
         run("Validate enemy callback scale reload", [sys.executable, "scripts/test-enemy-runtime-scale.py"])

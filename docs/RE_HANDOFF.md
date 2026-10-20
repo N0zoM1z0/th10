@@ -47,7 +47,25 @@ candidates, 734 authored functions owning 273274 bytes, 1074 source mappings,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest bounded checkpoint changes ReadFloatValue to ordinary explicit-context
+The latest bounded checkpoint reconstructs ASCII camera/viewport effects where
+an earlier interface had only a declaration. Both draw owners now capture the
+viewport index before flush, publish/configure the camera, reload active/device
+state, set the viewport and then write the configured flag. Native offsets are
+asserted partial views; allocated storage aliases remain open. Newline paths
+now skip spacing, and each regular glyph marks dirty bit8 after copying
+dimensions. Real StageDraw support gives regular726/738 and GUI572/570
+bytes; high callback7/10 remains nonexact. Eighteen same-image complete guards
+pass6596 bytes/all266 fields; two existing canonical units cold-replay337 bytes.
+Host viewport checks pass72 scenarios/eight strict mutants; glyph checks pass198/three,
+all with sanitizers. No new exact credit. All99 standard CI checks pass; cleanup removes9,058,987
+bytes from10 owned superseded native directories, in addition to the explicitly
+cancelled earlier CI fixture. See
+[viewport source evidence](evidence/ascii-viewport-transitions/README.md).
+Original large-owner work remains active; integer signatures, FORMAT state,
+and two FLIP_X controls from this round are restored. ECL/Enemy old carriers
+need current dependency checks after the ANM source/header change.
+
+The preceding checkpoint changes ReadFloatValue to ordinary explicit-context
 static source, updating its three real callers. Two independent full two-TU
 cold builds preserve Run7020/all189 fields and reduce ordinary differences
 28->26. The existing171-byte callee retains canonical exactness in two further
@@ -126,7 +144,7 @@ graph after any dependency changes before comparing scores.
 
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
-| ANM ExecuteScript43EE30/9964 | Fresh five-TU cold:9964 bytes, frameFC,90 target-sized groups, absolute gap2, aligned7478/7995; pre-table delta0 | Nonexact. Scale method parameter order repairs the SCALE_TIME interval; BGR snapshots remove8 differences. Unequal intervals61(+1),2(−1). Registers, flag scheduling and common tail remain open. |
+| ANM ExecuteScript43EE30/9964 | Current six-TU ASCII/Stage context:9964 bytes,90 target-sized groups, absolute gap2, aligned7478/7995; pre-table delta0 | Nonexact. Scale method parameter order repairs the SCALE_TIME interval; BGR snapshots remove8 differences. Unequal intervals61(+1),2(−1). Registers, flag scheduling and common tail remain open. |
 | ECL Run44E1A0/7020 | Two independent full two-TU colds; strict diagnostic validates all189 fields and6994/7020 bytes | Exactly26 ordinary differences remain. Eight-TU Enemy context has27, including an additional SIB byte. Static float-value adapter repairs FORMAT register setup while retaining171-byte canonical callee; no new exact credit. [Current evidence](evidence/ecl-float-value-call-order/README.md). |
 | Enemy DispatchEclInstruction40E770/14416 | Fresh eight-TU baseline:14524 bytes, frame2C4,181 selector bytes and108 groups | Strict-less polar branch restores the target condition/successor order; unaligned whole-owner scores hide this local change. Adapters, storage, lifetimes and stack homes remain open. |
 
@@ -152,7 +170,9 @@ for this checkpoint. Existing guard recipes retain their original contexts;
 the RGB pack records explicit additional same-image guard overrides. The
 scale recipe alone was migrated to the five-TU graph.
 
-The retained current ANM carrier is `build/match-linked/AnmRgbInterpolation`.
+The retained canonical RGB carrier is `build/match-linked/AnmRgbInterpolation`.
+Its source pins are historical after the ASCII changes; the current diagnostic
+carrier and focused guards are in the newer ASCII proof.
 Verify all12 raw project-input hashes and four artifact hashes against
 `docs/evidence/anm-rgb-interpolation/native-summary.json` cold2 before reuse.
 Older ANM carrier/source hashes are historical. The replaced

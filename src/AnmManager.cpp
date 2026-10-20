@@ -1,5 +1,6 @@
 #include "GameErrorContext.hpp"
 #include "AnmManager.hpp"
+#include "StageScript.hpp"
 #include "FileSystem.hpp"
 #include "Chain.hpp"
 
@@ -32,10 +33,23 @@ struct MainSupervisorAnmPrefixView
     D3d9DeviceView *d3dDevice;
     unsigned char padding00C[0xe0];
     unsigned int backbufferFormat;
+    unsigned char unknown0F0[0x064];
+    StageCameraStateView backgroundCamera;
+    StageCameraStateView gameplayCamera;
+    AnmViewportOwnerView *activeViewport;
+    int viewportConfigured;
 };
 
 typedef char MainSupervisorAnmPrefixBackbufferFormatAt0EC[
     (offsetof(MainSupervisorAnmPrefixView, backbufferFormat) == 0x0ec) ? 1 : -1];
+
+// These camera views overlap Main's opaque storage; allocated data ownership
+// remains open. The target's ASCII transitions prove these field addresses.
+typedef char MainSupervisorAnmCameraFields[
+    (offsetof(MainSupervisorAnmPrefixView, backgroundCamera) == 0x154 &&
+     offsetof(MainSupervisorAnmPrefixView, gameplayCamera) == 0x26c &&
+     offsetof(MainSupervisorAnmPrefixView, activeViewport) == 0x384 &&
+     offsetof(MainSupervisorAnmPrefixView, viewportConfigured) == 0x388) ? 1 : -1];
 
 // Target 0x0044BC10 adds an angular delta and bounds the result to the
 // engine's signed-pi interval. The loop cap is part of the target body.
@@ -4210,13 +4224,33 @@ int AsciiManagerView::AddGuiFormatText(
     return strlen(buffer);
 }
 
-static void ConfigureAsciiViewport(int viewportIndex)
-{
-    if (viewportIndex != 0)
-        AsciiConfigureBackgroundViewport(0);
-    else
-        AsciiConfigureBackgroundViewport(1);
-}
+void StageConfigureCamera(StageCameraStateView *camera);
+
+// The target expands these camera/viewport effects at the draw sites.
+#define CONFIGURE_ASCII_VIEWPORT(viewportIndex) \
+    do \
+    { \
+        MainSupervisorAnmPrefixView *main = \
+            reinterpret_cast<MainSupervisorAnmPrefixView *>(&g_MainSupervisorView); \
+        if ((viewportIndex) != 0) \
+        { \
+            StageCameraStateView *camera = &main->backgroundCamera; \
+            main->activeViewport = reinterpret_cast<AnmViewportOwnerView *>(camera); \
+            StageConfigureCamera(camera); \
+            g_Direct3DDevice->vtable->SetViewport( \
+                g_Direct3DDevice, &main->activeViewport->viewport); \
+            main->viewportConfigured = 0; \
+        } \
+        else \
+        { \
+            StageCameraStateView *camera = &main->gameplayCamera; \
+            main->activeViewport = reinterpret_cast<AnmViewportOwnerView *>(camera); \
+            StageConfigureCamera(camera); \
+            g_Direct3DDevice->vtable->SetViewport( \
+                g_Direct3DDevice, &main->activeViewport->viewport); \
+            main->viewportConfigured = 1; \
+        } \
+    } while (0)
 
 // Target 0x004423C0-0x004423D8 multiplies two color channels with 7-bit
 // normalization and saturates the result to one byte.
@@ -6062,9 +6096,9 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
 
         if (currentViewport != string->viewportIndex)
         {
-            g_AnmRenderManagerView->FlushVertexBuffer();
             currentViewport = string->viewportIndex;
-            ConfigureAsciiViewport(currentViewport);
+            g_AnmRenderManagerView->FlushVertexBuffer();
+            CONFIGURE_ASCII_VIEWPORT(currentViewport);
         }
 
         text = reinterpret_cast<unsigned char *>(string->text);
@@ -6076,35 +6110,40 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
                     lineHeight * string->scaleY;
                 manager->primaryVm014.position.x = string->position.x;
             }
-            else if (*text != ' ')
+            else
             {
-                AnmSpriteView *sprite =
-                    &manager->asciiAnm->sprites[
-                        string->smallFont * 0x62 + *text - ' '];
-                manager->primaryVm014.loadedSprite = sprite;
-                manager->primaryVm014.spriteWidth = sprite->width;
-                manager->primaryVm014.spriteHeight = sprite->height;
-
-                if (string->drawShadow != 0)
+                if (*text != ' ')
                 {
-                    manager->primaryVm014.primaryColor.value =
-                        static_cast<int>(string->color & 0xff000000u);
-                    reinterpret_cast<unsigned char *>(
-                        &manager->primaryVm014.primaryColor.value)[3] =
-                            static_cast<unsigned char>(string->color >> 25);
-                    manager->primaryVm014.position.x += 2.0f;
-                    manager->primaryVm014.position.y += 2.0f;
+                    AnmSpriteView *sprite =
+                        &manager->asciiAnm->sprites[
+                            string->smallFont * 0x62 + *text - ' '];
+                    manager->primaryVm014.loadedSprite = sprite;
+                    manager->primaryVm014.spriteWidth = sprite->width;
+                    manager->primaryVm014.spriteHeight = sprite->height;
+                    manager->primaryVm014.flags35C |= 8u;
+
+                    if (string->drawShadow != 0)
+                    {
+                        manager->primaryVm014.primaryColor.value =
+                            static_cast<int>(string->color & 0xff000000u);
+                        reinterpret_cast<unsigned char *>(
+                            &manager->primaryVm014.primaryColor.value)[3] =
+                                static_cast<unsigned char>(string->color >> 25);
+                        manager->primaryVm014.position.x += 2.0f;
+                        manager->primaryVm014.position.y += 2.0f;
+                        g_AnmRenderManagerView->DrawNoRotation(
+                            &manager->primaryVm014);
+                        manager->primaryVm014.position.x -= 2.0f;
+                        manager->primaryVm014.position.y -= 2.0f;
+                    }
+
+                    manager->primaryVm014.primaryColor.value = string->color;
                     g_AnmRenderManagerView->DrawNoRotation(
                         &manager->primaryVm014);
-                    manager->primaryVm014.position.x -= 2.0f;
-                    manager->primaryVm014.position.y -= 2.0f;
-                }
 
-                manager->primaryVm014.primaryColor.value = string->color;
-                g_AnmRenderManagerView->DrawNoRotation(
-                    &manager->primaryVm014);
+                }
+                manager->primaryVm014.position.x += spaceWidth;
             }
-            manager->primaryVm014.position.x += spaceWidth;
             ++text;
         }
     }
@@ -6112,7 +6151,7 @@ int __stdcall AsciiManagerDrawStrings(AsciiManagerView *manager)
     if (currentViewport != 0)
     {
         g_AnmRenderManagerView->FlushVertexBuffer();
-        ConfigureAsciiViewport(0);
+        CONFIGURE_ASCII_VIEWPORT(0);
     }
     return 1;
 }
@@ -6142,9 +6181,9 @@ int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
 
         if (currentViewport != string->viewportIndex)
         {
-            g_AnmRenderManagerView->FlushVertexBuffer();
             currentViewport = string->viewportIndex;
-            ConfigureAsciiViewport(currentViewport);
+            g_AnmRenderManagerView->FlushVertexBuffer();
+            CONFIGURE_ASCII_VIEWPORT(currentViewport);
         }
 
         text = reinterpret_cast<unsigned char *>(string->text);
@@ -6155,20 +6194,24 @@ int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
                 manager->primaryVm014.position.y += 14.0f * string->scaleY;
                 manager->primaryVm014.position.x = string->position.x;
             }
-            else if (*text != ' ')
+            else
             {
-                AnmSpriteView *sprite =
-                    &manager->asciiAnm->sprites[*text - ' '];
-                manager->primaryVm014.loadedSprite = sprite;
-                manager->primaryVm014.primaryColor.value = string->color;
-                if (manager->primaryVm014.scaleX == 1.0f)
-                    g_AnmRenderManagerView->DrawNoRotation(
-                        &manager->primaryVm014);
-                else
-                    g_AnmRenderManagerView->DrawNoRotationNoRound(
-                        &manager->primaryVm014);
+                if (*text != ' ')
+                {
+                    AnmSpriteView *sprite =
+                        &manager->asciiAnm->sprites[*text - ' '];
+                    manager->primaryVm014.loadedSprite = sprite;
+                    manager->primaryVm014.primaryColor.value = string->color;
+                    if (manager->primaryVm014.scaleX == 1.0f)
+                        g_AnmRenderManagerView->DrawNoRotation(
+                            &manager->primaryVm014);
+                    else
+                        g_AnmRenderManagerView->DrawNoRotationNoRound(
+                            &manager->primaryVm014);
+
+                }
+                manager->primaryVm014.position.x += spaceWidth;
             }
-            manager->primaryVm014.position.x += spaceWidth;
             ++text;
         }
     }
@@ -6176,7 +6219,7 @@ int __stdcall AsciiManagerDrawGuiStrings(AsciiManagerView *manager)
     if (currentViewport != 0)
     {
         g_AnmRenderManagerView->FlushVertexBuffer();
-        ConfigureAsciiViewport(0);
+        CONFIGURE_ASCII_VIEWPORT(0);
     }
     return 1;
 }

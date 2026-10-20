@@ -3774,3 +3774,40 @@ blanket assumptions about the source signature while preserving the target
 ABI evidence. FORMAT actual-source projection retains10 scenarios/eight
 strict functional mutants under ASan/UBSan/leak checking. Native product,
 runtime, semantic and portability gates remain open.
+
+
+### 2026-10-21: ASCII viewport publication and glyph paths
+
+The [viewport source checkpoint](evidence/ascii-viewport-transitions/README.md)
+replaces a declaration-only viewport role with the effects present in both
+complete target ASCII draw owners. Record viewport selection is captured before
+flush; camera publication precedes StageConfigureCamera; active viewport and
+device reloads precede SetViewport; the configured flag is written last.
+Nonzero modes use491D7C/flag0, zero modes491E94/flag1; a nonzero tail restores
+the default camera. Main offsets154/26C/384/388 are asserted partial views,
+not recovered allocated-data ownership. Cross-view aliases remain open.
+
+The actual six-TU GL/GS graph includes real StageDraw.cpp. Regular draw grows
+542->726/738, GUI draw417->572/570, low callback10->7/7 and high callback10->7/10.
+The latter now adapts a stack receiver; GUI manager EBP/record EBX still differs
+from target EBX/EBP. This supersedes an unconditional interpretation of the
+older EDI register-coloring blocker. Member/fastcall declarations, indexed
+record lifetime and callback entry controls do not solve it in these contexts.
+No new exact or denominator credit is claimed.
+
+Seventeen complete same-image existing guards retain6589 bytes/all265 fields;
+the low callback adds7/all1. Its canonical normal-COFF unit and Initialize330
+canonical linked unit cold-replay337 bytes. Actual-source viewport projection
+passes72 scenarios/eight strict functional mutants under ASan/UBSan/leaks,
+including synthetic external replacement and flush-time record edits. Camera
+internals, full renderer equality, runtime and product closure remain open.
+Both newline paths reset X and advance Y, jumping past horizontal spacing.
+The regular glyph path copies sprite width/height then marks VM bit8 for each
+glyph; the old source omitted this publication. GUI keeps its existing size
+state and correctly uses rounded drawing only for ordered scaleX==1. Glyph
+projection passes198 scenarios/three strict mutants with sanitizers; it excludes
+x87 precision and whole-renderer behavior.
+ANM ExecuteScript keeps9964 bytes and the same90/92, gap2,7478/7995 headline
+diagnostics; that does not prove code neutrality. Earlier ECL/Enemy signatures,
+FORMAT state and FLIP_X controls are restored. The three original large owners
+remain nonexact.

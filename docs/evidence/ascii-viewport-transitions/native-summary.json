@@ -1,0 +1,1563 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "base_commit": "277ab88",
+  "new_exact_functions": 0,
+  "new_exact_bytes": 0,
+  "scope": "Target-backed camera/viewport effects, selection lifetime, newline spacing and regular per-glyph dirty publication; no complete renderer or large-owner equality claim.",
+  "native_graph": {
+    "primary_source": "src/AnmManager.cpp",
+    "support_sources": [
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/StageDraw.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+  },
+  "source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "artifact": {
+    "image": {
+      "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ascii-render-member-20261021/glyph-dirty/source.exe",
+      "sha256": "30669e4b3df5fb409f98833ec77f7e0a9704085a370be08b66e6a8e60990b271"
+    },
+    "map": {
+      "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ascii-render-member-20261021/glyph-dirty/source.map",
+      "sha256": "9e95e06069c3ccf18eefb045f3f1d77de3a75e29e17cf6e1f1df12ebbc64eec7"
+    },
+    "pdb": {
+      "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ascii-render-member-20261021/glyph-dirty/source.pdb",
+      "sha256": "498d0333272e6547939138eb5dc1a9141fa30e8ef13b16bc11cca43368c45bb7"
+    },
+    "object": {
+      "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ascii-render-member-20261021/glyph-dirty/source.ltcg.obj",
+      "sha256": "23bcb6f2a7a9b8e7d0f2dad71c7bef6520eccc6d3c24cc5d5f5795be472566af"
+    }
+  },
+  "build_kind": "primary freshly compiled and linked; five support objects reused only after recursive nonprimary input/profile/object hash checks against viewport-view cold",
+  "support_object_sha256": {
+    "support-00-RandomMath.ltcg.obj": "c185b03dc73da6e1b79934614d378cdbc0f8002527169fb839cf5e01cdf4711d",
+    "support-01-AnmVmCreate.ltcg.obj": "a7855d41a7d3b3ca77ac4f9ccbecdb94eabdd0cf5c80b084ff818a70d1075d9e",
+    "support-02-AnmVmId.ltcg.obj": "2a70c91c8b74bcbbbc6734c93a411f0461388f5feca34114397de3edf4cf7b16",
+    "support-03-AnmInt3Scale.ltcg.obj": "db7a28941079beb538f0df17fdbf4f032fbe9bcde7a55054a1927156907cbcff",
+    "support-04-StageDraw.ltcg.obj": "d9ef43eaedf03cba0969121861134304b216edfcf1478198b04963d21a379be9"
+  },
+  "current_diagnostics": [
+    {
+      "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "target_address": "0x0043EE30",
+      "candidate_size": 9964,
+      "target_size": 9964,
+      "matched_comparable_bytes": 1938,
+      "comparable_bytes": 8564,
+      "normalization_complete": true,
+      "owner_sha256": "f8a91f5448ca6183824b4abba7e191b1dc3676dca6826afe79bad98f72dd1957"
+    },
+    {
+      "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+      "target_address": "0x00401A50",
+      "candidate_size": 572,
+      "target_size": 570,
+      "matched_comparable_bytes": 37,
+      "comparable_bytes": 458,
+      "normalization_complete": true,
+      "owner_sha256": "aa8767cacd5b6de7419de7f82aaceb27a8feaf29311998c5a8ee6fd79529c0f5"
+    },
+    {
+      "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+      "target_address": "0x004215A0",
+      "candidate_size": 330,
+      "target_size": 330,
+      "matched_comparable_bytes": 250,
+      "comparable_bytes": 290,
+      "normalization_complete": true,
+      "owner_sha256": "ad9f99c6d0c2fbfe669fe805db9bd3daac6a81e8a8ef04fac2641981e2565872"
+    },
+    {
+      "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+      "target_address": "0x00401520",
+      "candidate_size": 7,
+      "target_size": 10,
+      "matched_comparable_bytes": 0,
+      "comparable_bytes": 6,
+      "normalization_complete": true,
+      "owner_sha256": "b4a04859912c31a9b3f20f514e21a26d9d0fb569f625c0163bed294247d8872c"
+    },
+    {
+      "symbol": "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z",
+      "target_address": "0x00401760",
+      "candidate_size": 726,
+      "target_size": 738,
+      "matched_comparable_bytes": 137,
+      "comparable_bytes": 618,
+      "normalization_complete": true,
+      "owner_sha256": "764972a57955edcec00252723f0d81ab87326edacf7fedb3537326edccda0eb8"
+    },
+    {
+      "symbol": "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z",
+      "target_address": "0x00401510",
+      "candidate_size": 7,
+      "target_size": 7,
+      "matched_comparable_bytes": 3,
+      "comparable_bytes": 3,
+      "normalization_complete": true,
+      "owner_sha256": "7f5e328c33748bfa5fc53138aeabeb0d73cee2fd67fcc6a4405e627395d3b2de"
+    }
+  ],
+  "same_image_existing_guards": {
+    "complete_owners": 18,
+    "complete_bytes": 6596,
+    "bound_fields": 266,
+    "units": [
+      {
+        "unit": "anm-vm-initialize-private",
+        "result": "exact",
+        "size": 273,
+        "linkage_fields": 0
+      },
+      {
+        "unit": "anm-setup-vertex-buffer",
+        "result": "exact",
+        "size": 472,
+        "linkage_fields": 22
+      },
+      {
+        "unit": "anm-start-primary-alpha-interpolation",
+        "result": "exact",
+        "size": 130,
+        "linkage_fields": 1
+      },
+      {
+        "unit": "anm-get-int-var",
+        "result": "exact",
+        "size": 144,
+        "linkage_fields": 15
+      },
+      {
+        "unit": "anm-get-float-var",
+        "result": "exact",
+        "size": 424,
+        "linkage_fields": 44
+      },
+      {
+        "unit": "anm-get-int-var-ptr",
+        "result": "exact",
+        "size": 132,
+        "linkage_fields": 11
+      },
+      {
+        "unit": "anm-get-float-var-ptr",
+        "result": "exact",
+        "size": 156,
+        "linkage_fields": 14
+      },
+      {
+        "unit": "anm-start-scale-interpolation",
+        "result": "exact",
+        "size": 136,
+        "linkage_fields": 1
+      },
+      {
+        "unit": "anm-initialize-pulsing-radial-trail",
+        "result": "exact",
+        "size": 803,
+        "linkage_fields": 43
+      },
+      {
+        "unit": "anm-evaluate-scale-interpolation",
+        "result": "exact",
+        "size": 652,
+        "linkage_fields": 10
+      },
+      {
+        "unit": "anm-evaluate-float3-interpolation",
+        "result": "exact",
+        "size": 887,
+        "linkage_fields": 10
+      },
+      {
+        "unit": "anm-evaluate-alpha-interpolation",
+        "result": "exact",
+        "size": 370,
+        "linkage_fields": 12
+      },
+      {
+        "unit": "anm-evaluate-rgb-interpolation",
+        "result": "exact",
+        "size": 820,
+        "linkage_fields": 17
+      },
+      {
+        "unit": "anm-int3-scale",
+        "result": "exact",
+        "size": 56,
+        "linkage_fields": 3
+      },
+      {
+        "unit": "anm-render-draw-no-rotation",
+        "result": "exact",
+        "size": 515,
+        "linkage_fields": 29
+      },
+      {
+        "unit": "anm-render-draw-no-rotation-no-round",
+        "result": "exact",
+        "size": 486,
+        "linkage_fields": 29
+      },
+      {
+        "unit": "anm-render-flush-vertex-buffer",
+        "result": "exact",
+        "size": 133,
+        "linkage_fields": 4
+      },
+      {
+        "unit": "low-guard",
+        "result": "exact",
+        "size": 7,
+        "linkage_fields": 1
+      }
+    ]
+  },
+  "focused_canonical_cold": {
+    "result": "exact",
+    "unit_count": 2,
+    "matched_bytes": 337,
+    "artifact_count": 2,
+    "groups": [
+      {
+        "artifact_kind": "coff",
+        "artifact": "build/match/AnmManager.obj",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc"
+        ],
+        "artifact_sha256": {
+          "build/match/AnmManager.obj": "4727f9c2d424ec18f52188fb81e5a3f4c0185ed135dac88acb6e0244a789f720"
+        },
+        "units": [
+          {
+            "unit": "ascii-manager-on-draw-low",
+            "result": "exact",
+            "size": 7,
+            "target_address": "0x00401510"
+          }
+        ]
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "artifact": "build/match-linked/AsciiManagerInitialize",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "artifact_sha256": {
+          "build/match-linked/AsciiManagerInitialize/source.exe": "35c914dfa448244922293ceb8c2984ab1d109530f1cdbe2e38c9a6f5d3255afe",
+          "build/match-linked/AsciiManagerInitialize/source.map": "6fe75f8a92e5060700c4f380f7c567ed04e8c9efbe18491c9fb219eebd21dabf",
+          "build/match-linked/AsciiManagerInitialize/source.pdb": "47722d6c322822bf8d377624c41bd5e15534520181d956079635c6c6b36bbb72",
+          "build/match-linked/AsciiManagerInitialize/source.ltcg.obj": "0771ef75da70640742f097722dec602d6cbcdddc63186074683ede9408c2b470"
+        },
+        "units": [
+          {
+            "unit": "ascii-manager-initialize",
+            "result": "exact",
+            "size": 330,
+            "target_address": "0x00401110"
+          }
+        ]
+      }
+    ]
+  },
+  "host_projection": {
+    "viewport": {
+      "scope": "Project the actual ASCII viewport transitions with explicit service roles.\n\nChecks publication, flush-time selection, camera/device reloads and final flags.\nCamera internals and target layouts/ABI are outside this host-only projection.\n",
+      "source_sha256": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+      "scenarios": 72,
+      "functional_mutants": 8,
+      "sanitize": true,
+      "results": {
+        "positive": {
+          "exit": 0,
+          "predicate": null
+        },
+        "swapped-cameras": {
+          "exit": 2,
+          "predicate": "camera-selection"
+        },
+        "unpublished-camera": {
+          "exit": 2,
+          "predicate": "camera-publication"
+        },
+        "cached-viewport": {
+          "exit": 2,
+          "predicate": "viewport-reload"
+        },
+        "cached-device": {
+          "exit": 2,
+          "predicate": "device-reload"
+        },
+        "early-flag": {
+          "exit": 2,
+          "predicate": "flag-order"
+        },
+        "inverted-flag": {
+          "exit": 2,
+          "predicate": "final-flag"
+        },
+        "late-selection": {
+          "exit": 2,
+          "predicate": "camera-selection"
+        },
+        "missing-camera": {
+          "exit": 2,
+          "predicate": "call-order"
+        }
+      }
+    },
+    "glyphs": {
+      "scope": "Project actual per-record ASCII setup and glyph loops against target traces.\n\nTyped host roles observe glyph positions, dimensions, dirty flags, shadow color\nand rounded/non-rounded selection. Queue traversal, viewport changes, renderer\ninternals, i386 layout/ABI and original/native-product execution are excluded.\nOnly exact integer-valued geometry and a GUI unordered-comparison control are\nused; this is not an x87 precision or control-word proof.\n",
+      "source_sha256": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+      "scenarios": 198,
+      "strict_mutants": 3,
+      "sanitize": true,
+      "results": {
+        "positive": {
+          "exit": 0,
+          "predicate": null
+        },
+        "newline-spacing": {
+          "exit": 2,
+          "predicate": "glyph-position"
+        },
+        "missing-glyph-dirty": {
+          "exit": 2,
+          "predicate": "glyph-dirty"
+        },
+        "gui-draw-mode": {
+          "exit": 2,
+          "predicate": "draw-mode"
+        }
+      }
+    }
+  },
+  "pin_review": {
+    "extracted_blocks_unchanged": {
+      "unsigned int __fastcall AnmRandomU32InRange(": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+      "struct AnmVmTimerView\n": "162f1c2209fa017e74cdf673e3fd2dc444920aa709205bb0028a533dfd131d7a",
+      "struct AnmViewportView\n": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b"
+    },
+    "reviewed_pin_changes": {
+      "src/AnmManager.cpp": {
+        "before": "1b11274cd03f34fd8763ade8c0d45b6a3cfe0373a0102d3d22d6ce71c342c97a",
+        "after": "aa3bcbe7234c1f97beb3b1653f5d6505ca20cc1623d4a52a8a792600f57e683d"
+      },
+      "src/AnmManager.hpp": {
+        "before": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+        "after": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65"
+      }
+    },
+    "scope": "Only the three extracted source blocks are projected; normalization and unknown-input rejection remain unchanged."
+  },
+  "diagnostic_contexts": [
+    {
+      "label": "baseline",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "023b8f0353104fc086c4ee997638f6c223db95004c3918ac7c0a24f282ec65ea",
+        "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "1f5fdafd5348a6276bc758e46240336a4e1380fe7397f8d58e0832c587327251"
+        },
+        {
+          "symbol": "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401760",
+          "candidate_size": 542,
+          "target_size": 738,
+          "matched_comparable_bytes": 34,
+          "comparable_bytes": 682,
+          "normalization_complete": true,
+          "owner_sha256": "6a610bc26719c504490da4911461e2c9459d2bcea475dece5b0e6a4870a36565"
+        },
+        {
+          "symbol": "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401510",
+          "candidate_size": 10,
+          "target_size": 7,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 4,
+          "normalization_complete": true,
+          "owner_sha256": "77a7188d61b66aedd7a8f44547e756d063e6458b6d7b725efa9339f63e9bddcf"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 10,
+          "target_size": 10,
+          "matched_comparable_bytes": 3,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "ec4c4298ee57491454bd37c5952efa39d56e85c958bbcb7c73dda536e8d8efc7"
+        },
+        {
+          "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401A50",
+          "candidate_size": 417,
+          "target_size": 570,
+          "matched_comparable_bytes": 39,
+          "comparable_bytes": 522,
+          "normalization_complete": true,
+          "owner_sha256": "17ddd151074f71b06d7df1834cad1b15246af4ca29ff8039337dc342acacff10"
+        }
+      ]
+    },
+    {
+      "label": "member",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "18b048e14bb87d9791bf30048b5c1721a8147e3bb999698d0c218041b65b238d",
+        "src/AnmManager.hpp": "8603d34a8fad1018b01e32e3c7b6379250414ffca7e82ba004f44c3f5ae8e23d",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "1f5fdafd5348a6276bc758e46240336a4e1380fe7397f8d58e0832c587327251"
+        },
+        {
+          "symbol": "?DrawGuiStrings@AsciiManagerView@@QAEHXZ",
+          "target_address": "0x00401A50",
+          "candidate_size": 417,
+          "target_size": 570,
+          "matched_comparable_bytes": 39,
+          "comparable_bytes": 522,
+          "normalization_complete": true,
+          "owner_sha256": "17ddd151074f71b06d7df1834cad1b15246af4ca29ff8039337dc342acacff10"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 10,
+          "target_size": 10,
+          "matched_comparable_bytes": 3,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "ec4c4298ee57491454bd37c5952efa39d56e85c958bbcb7c73dda536e8d8efc7"
+        }
+      ]
+    },
+    {
+      "label": "viewport-view",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/StageDraw.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "6018d772d2c0cd6a164e1d3d9bd23a8c88a6c4e10d5ae060d0f8384b329146d5",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "acc4c5a55a29563a65ee4f120cf8bb1659c9856d1d040ccce895151265a0ab67"
+        },
+        {
+          "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401A50",
+          "candidate_size": 466,
+          "target_size": 570,
+          "matched_comparable_bytes": 19,
+          "comparable_bytes": 502,
+          "normalization_complete": true,
+          "owner_sha256": "d84052ad1ab02b66be4396becb54049a2050055badf35b44506c284a99e244b8"
+        },
+        {
+          "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+          "target_address": "0x004215A0",
+          "candidate_size": 330,
+          "target_size": 330,
+          "matched_comparable_bytes": 250,
+          "comparable_bytes": 290,
+          "normalization_complete": true,
+          "owner_sha256": "f39f694956b5963c7705068eb45e006af2875d307dbc8b7dc9d3e81913212d5f"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 7,
+          "target_size": 10,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "492656db688050e68959d932de8a4fa0e5d482327491b521f21eac42bdfffb22"
+        }
+      ]
+    },
+    {
+      "label": "viewport-expanded",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/StageDraw.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "7bc8364fcd946b768c647d34312d6c4b8336de2f8398dd0cdbf5ea84494a5cd9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "08f9dca6d781526fc24d4faa5bdba669247678113c90b859595baa26cfc51db6"
+        },
+        {
+          "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401A50",
+          "candidate_size": 571,
+          "target_size": 570,
+          "matched_comparable_bytes": 32,
+          "comparable_bytes": 458,
+          "normalization_complete": true,
+          "owner_sha256": "e9ea28d4d6fbec543841dddeb6d89b1e661f982295e5cd6e2af10e113d861746"
+        },
+        {
+          "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+          "target_address": "0x004215A0",
+          "candidate_size": 330,
+          "target_size": 330,
+          "matched_comparable_bytes": 250,
+          "comparable_bytes": 290,
+          "normalization_complete": true,
+          "owner_sha256": "ca5994aa0cdb552384c03f6bd077de9e34e247755feac14f249c5c2041ae90d6"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 7,
+          "target_size": 10,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "b51e65942ea9ac7dae78977c40e39b5ea7cb4c5a8d7abd9f9de3413ff80cf4b7"
+        },
+        {
+          "symbol": "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401760",
+          "candidate_size": 708,
+          "target_size": 738,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 618,
+          "normalization_complete": true,
+          "owner_sha256": "fa47372c1f696cde2a1fd064995c1ce67441eef230495c4379bcd6bdc5ccdc64"
+        },
+        {
+          "symbol": "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401510",
+          "candidate_size": 7,
+          "target_size": 7,
+          "matched_comparable_bytes": 3,
+          "comparable_bytes": 3,
+          "normalization_complete": true,
+          "owner_sha256": "7f5e328c33748bfa5fc53138aeabeb0d73cee2fd67fcc6a4405e627395d3b2de"
+        }
+      ]
+    },
+    {
+      "label": "viewport-member",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/StageDraw.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "1dc627a7f484f844615dbbe74c35ea12b1172c904c4e675502818fd4b93d2291",
+        "src/AnmManager.hpp": "add5c45d9f05b4a5ef1ce710b221b6a4ed97be2c2821065633d931a8a1c0150d",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "08f9dca6d781526fc24d4faa5bdba669247678113c90b859595baa26cfc51db6"
+        },
+        {
+          "symbol": "?DrawGuiStrings@AsciiManagerView@@QAEHXZ",
+          "target_address": "0x00401A50",
+          "candidate_size": 571,
+          "target_size": 570,
+          "matched_comparable_bytes": 32,
+          "comparable_bytes": 458,
+          "normalization_complete": true,
+          "owner_sha256": "e9ea28d4d6fbec543841dddeb6d89b1e661f982295e5cd6e2af10e113d861746"
+        },
+        {
+          "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+          "target_address": "0x004215A0",
+          "candidate_size": 330,
+          "target_size": 330,
+          "matched_comparable_bytes": 250,
+          "comparable_bytes": 290,
+          "normalization_complete": true,
+          "owner_sha256": "ca5994aa0cdb552384c03f6bd077de9e34e247755feac14f249c5c2041ae90d6"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 7,
+          "target_size": 10,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "b51e65942ea9ac7dae78977c40e39b5ea7cb4c5a8d7abd9f9de3413ff80cf4b7"
+        }
+      ]
+    },
+    {
+      "label": "viewport-indexed",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/StageDraw.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "f9e6a7342c3992f9aa20665e49bce45d278f6bf8603f31ebabaf5c424b4010e4",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "08f9dca6d781526fc24d4faa5bdba669247678113c90b859595baa26cfc51db6"
+        },
+        {
+          "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401A50",
+          "candidate_size": 572,
+          "target_size": 570,
+          "matched_comparable_bytes": 34,
+          "comparable_bytes": 458,
+          "normalization_complete": true,
+          "owner_sha256": "af7b801b55f189460daf97be0bd9b6a3864005c7526bc91a260824a28dea98f8"
+        },
+        {
+          "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+          "target_address": "0x004215A0",
+          "candidate_size": 330,
+          "target_size": 330,
+          "matched_comparable_bytes": 250,
+          "comparable_bytes": 290,
+          "normalization_complete": true,
+          "owner_sha256": "ca5994aa0cdb552384c03f6bd077de9e34e247755feac14f249c5c2041ae90d6"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 7,
+          "target_size": 10,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "b51e65942ea9ac7dae78977c40e39b5ea7cb4c5a8d7abd9f9de3413ff80cf4b7"
+        }
+      ]
+    },
+    {
+      "label": "callback-entry",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/StageDraw.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "7bc8364fcd946b768c647d34312d6c4b8336de2f8398dd0cdbf5ea84494a5cd9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "08f9dca6d781526fc24d4faa5bdba669247678113c90b859595baa26cfc51db6"
+        },
+        {
+          "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401A50",
+          "candidate_size": 571,
+          "target_size": 570,
+          "matched_comparable_bytes": 32,
+          "comparable_bytes": 458,
+          "normalization_complete": true,
+          "owner_sha256": "e9ea28d4d6fbec543841dddeb6d89b1e661f982295e5cd6e2af10e113d861746"
+        },
+        {
+          "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+          "target_address": "0x004215A0",
+          "candidate_size": 330,
+          "target_size": 330,
+          "matched_comparable_bytes": 250,
+          "comparable_bytes": 290,
+          "normalization_complete": true,
+          "owner_sha256": "ca5994aa0cdb552384c03f6bd077de9e34e247755feac14f249c5c2041ae90d6"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 7,
+          "target_size": 10,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "b51e65942ea9ac7dae78977c40e39b5ea7cb4c5a8d7abd9f9de3413ff80cf4b7"
+        },
+        {
+          "symbol": "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401760",
+          "candidate_size": 708,
+          "target_size": 738,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 618,
+          "normalization_complete": true,
+          "owner_sha256": "fa47372c1f696cde2a1fd064995c1ce67441eef230495c4379bcd6bdc5ccdc64"
+        },
+        {
+          "symbol": "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401510",
+          "candidate_size": 7,
+          "target_size": 7,
+          "matched_comparable_bytes": 3,
+          "comparable_bytes": 3,
+          "normalization_complete": true,
+          "owner_sha256": "7f5e328c33748bfa5fc53138aeabeb0d73cee2fd67fcc6a4405e627395d3b2de"
+        }
+      ]
+    },
+    {
+      "label": "viewport-fastcall",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/StageDraw.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "a2939f705effc4412dcdd37405afea272549ea985e5ae7a0d1c34360028bca76",
+        "src/AnmManager.hpp": "1d49adc3557ef1e1f0edca441699ecfca154cc016cb55dd47e92389482f23035",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "08f9dca6d781526fc24d4faa5bdba669247678113c90b859595baa26cfc51db6"
+        },
+        {
+          "symbol": "?AsciiManagerDrawGuiStrings@@YIHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401A50",
+          "candidate_size": 571,
+          "target_size": 570,
+          "matched_comparable_bytes": 32,
+          "comparable_bytes": 458,
+          "normalization_complete": true,
+          "owner_sha256": "e9ea28d4d6fbec543841dddeb6d89b1e661f982295e5cd6e2af10e113d861746"
+        },
+        {
+          "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+          "target_address": "0x004215A0",
+          "candidate_size": 330,
+          "target_size": 330,
+          "matched_comparable_bytes": 250,
+          "comparable_bytes": 290,
+          "normalization_complete": true,
+          "owner_sha256": "ca5994aa0cdb552384c03f6bd077de9e34e247755feac14f249c5c2041ae90d6"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 7,
+          "target_size": 10,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "b51e65942ea9ac7dae78977c40e39b5ea7cb4c5a8d7abd9f9de3413ff80cf4b7"
+        }
+      ]
+    },
+    {
+      "label": "newline-paths",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/StageDraw.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "dd210d3153a9dae11256d61c8d65fd799b3519ff3664d5f8088802f2e29e4db3",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "08f9dca6d781526fc24d4faa5bdba669247678113c90b859595baa26cfc51db6"
+        },
+        {
+          "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401A50",
+          "candidate_size": 572,
+          "target_size": 570,
+          "matched_comparable_bytes": 37,
+          "comparable_bytes": 458,
+          "normalization_complete": true,
+          "owner_sha256": "0780c054376ee236d7d5a892dd6c0df01bc5ead7ee547664a989533437a15b1a"
+        },
+        {
+          "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+          "target_address": "0x004215A0",
+          "candidate_size": 330,
+          "target_size": 330,
+          "matched_comparable_bytes": 250,
+          "comparable_bytes": 290,
+          "normalization_complete": true,
+          "owner_sha256": "ca5994aa0cdb552384c03f6bd077de9e34e247755feac14f249c5c2041ae90d6"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 7,
+          "target_size": 10,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "b51e65942ea9ac7dae78977c40e39b5ea7cb4c5a8d7abd9f9de3413ff80cf4b7"
+        },
+        {
+          "symbol": "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401760",
+          "candidate_size": 709,
+          "target_size": 738,
+          "matched_comparable_bytes": 139,
+          "comparable_bytes": 618,
+          "normalization_complete": true,
+          "owner_sha256": "ebaef40cb2df3b8a23c3d78cebf27592c7bc2e4bf392fec7f0c455ed9bec0135"
+        },
+        {
+          "symbol": "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401510",
+          "candidate_size": 7,
+          "target_size": 7,
+          "matched_comparable_bytes": 3,
+          "comparable_bytes": 3,
+          "normalization_complete": true,
+          "owner_sha256": "7f5e328c33748bfa5fc53138aeabeb0d73cee2fd67fcc6a4405e627395d3b2de"
+        }
+      ]
+    },
+    {
+      "label": "glyph-dirty",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "support_sources": [
+        "src/RandomMath.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/AnmVmId.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/StageDraw.cpp"
+      ],
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageDraw.cpp": "caca3bfe5389ede3a06acd6f8e2dcc480bb47296c46e21733092c40e4abc4b84",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "target_address": "0x0043EE30",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1938,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "owner_sha256": "f8a91f5448ca6183824b4abba7e191b1dc3676dca6826afe79bad98f72dd1957"
+        },
+        {
+          "symbol": "?AsciiManagerDrawGuiStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401A50",
+          "candidate_size": 572,
+          "target_size": 570,
+          "matched_comparable_bytes": 37,
+          "comparable_bytes": 458,
+          "normalization_complete": true,
+          "owner_sha256": "aa8767cacd5b6de7419de7f82aaceb27a8feaf29311998c5a8ee6fd79529c0f5"
+        },
+        {
+          "symbol": "?StageConfigureCamera@@YAXPAUStageCameraStateView@@@Z",
+          "target_address": "0x004215A0",
+          "candidate_size": 330,
+          "target_size": 330,
+          "matched_comparable_bytes": 250,
+          "comparable_bytes": 290,
+          "normalization_complete": true,
+          "owner_sha256": "ad9f99c6d0c2fbfe669fe805db9bd3daac6a81e8a8ef04fac2641981e2565872"
+        },
+        {
+          "symbol": "?OnDrawHighPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401520",
+          "candidate_size": 7,
+          "target_size": 10,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6,
+          "normalization_complete": true,
+          "owner_sha256": "b4a04859912c31a9b3f20f514e21a26d9d0fb569f625c0163bed294247d8872c"
+        },
+        {
+          "symbol": "?AsciiManagerDrawStrings@@YGHPAUAsciiManagerView@@@Z",
+          "target_address": "0x00401760",
+          "candidate_size": 726,
+          "target_size": 738,
+          "matched_comparable_bytes": 137,
+          "comparable_bytes": 618,
+          "normalization_complete": true,
+          "owner_sha256": "764972a57955edcec00252723f0d81ab87326edacf7fedb3537326edccda0eb8"
+        },
+        {
+          "symbol": "?OnDrawLowPriority@AsciiManagerView@@SIHPAU1@@Z",
+          "target_address": "0x00401510",
+          "candidate_size": 7,
+          "target_size": 7,
+          "matched_comparable_bytes": 3,
+          "comparable_bytes": 3,
+          "normalization_complete": true,
+          "owner_sha256": "7f5e328c33748bfa5fc53138aeabeb0d73cee2fd67fcc6a4405e627395d3b2de"
+        }
+      ]
+    }
+  ],
+  "restored_large_owner_controls": [
+    {
+      "label": "static-index-runtime",
+      "result": "restored; no exact credit",
+      "reports": [
+        {
+          "symbol": "?ReadIntArgument@EnemyRuntimeView@@SGHHPAU1@@Z",
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12,
+          "owner_sha256": "afbf43b074702e5fa2140114d436272464192b47789c9f847eb7843b3ed119ef"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "candidate_size": 14524,
+          "target_size": 14416,
+          "matched_comparable_bytes": 617,
+          "comparable_bytes": 11580,
+          "owner_sha256": "9927283bf4731ebc933b86f66702e517015e7a842533eb4897d3e83b30f33d05"
+        },
+        {
+          "symbol": "?ReadInt@EclVmContext@@QAEHI@Z",
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140,
+          "owner_sha256": "9ecf61b6df5ec7d20bbadc12f10ad5040f92f89e6054cf9c50f0d9e637b0b818"
+        },
+        {
+          "symbol": "?Run@EclVmHost@@QAEHM@Z",
+          "candidate_size": 146,
+          "target_size": 146,
+          "matched_comparable_bytes": 130,
+          "comparable_bytes": 130,
+          "owner_sha256": "28deed9e6a16ab23c9c9bb5d82de2f20b09f4328c520d18bfd1c9354cfb4c024"
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "candidate_size": 7020,
+          "target_size": 7020,
+          "matched_comparable_bytes": 6237,
+          "comparable_bytes": 6264,
+          "owner_sha256": "35ece3e10eb793e3929c329a8124afff14695c0b08d7620ea2bb04ff4ee1f04f"
+        }
+      ]
+    },
+    {
+      "label": "static-runtime-index",
+      "result": "restored; no exact credit",
+      "reports": [
+        {
+          "symbol": "?ReadIntArgument@EnemyRuntimeView@@SGHPAU1@H@Z",
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12,
+          "owner_sha256": "afbf43b074702e5fa2140114d436272464192b47789c9f847eb7843b3ed119ef"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "candidate_size": 14524,
+          "target_size": 14416,
+          "matched_comparable_bytes": 613,
+          "comparable_bytes": 11580,
+          "owner_sha256": "21c6be9387de63b932fb36a8ecd03b07f2af8b95152c971cc43ca79fef12531b"
+        },
+        {
+          "symbol": "?ReadInt@EclVmContext@@QAEHI@Z",
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140,
+          "owner_sha256": "9ecf61b6df5ec7d20bbadc12f10ad5040f92f89e6054cf9c50f0d9e637b0b818"
+        },
+        {
+          "symbol": "?Run@EclVmHost@@QAEHM@Z",
+          "candidate_size": 146,
+          "target_size": 146,
+          "matched_comparable_bytes": 130,
+          "comparable_bytes": 130,
+          "owner_sha256": "28deed9e6a16ab23c9c9bb5d82de2f20b09f4328c520d18bfd1c9354cfb4c024"
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "candidate_size": 7020,
+          "target_size": 7020,
+          "matched_comparable_bytes": 6237,
+          "comparable_bytes": 6264,
+          "owner_sha256": "35ece3e10eb793e3929c329a8124afff14695c0b08d7620ea2bb04ff4ee1f04f"
+        }
+      ]
+    },
+    {
+      "label": "static-callee-index-context",
+      "result": "restored; no exact credit",
+      "reports": [
+        {
+          "symbol": "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z",
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 7,
+          "comparable_bytes": 12,
+          "owner_sha256": "eaea08ca37a8ed17873673be1db56a40d79481711fe23cad71de3941b5879c03"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "candidate_size": 14580,
+          "target_size": 14416,
+          "matched_comparable_bytes": 669,
+          "comparable_bytes": 11572,
+          "owner_sha256": "93e87c7f63eadbe3f4f6705b459fd79168e290d27dfa0dfbabb2266926501036"
+        },
+        {
+          "symbol": "?ReadInt@EclVmContext@@SGHIPAU1@@Z",
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140,
+          "owner_sha256": "5e3aa599772c4109a97648615344c552abb313f2bd276c03e2ce8cfe4df044fc"
+        },
+        {
+          "symbol": "?Run@EclVmHost@@QAEHM@Z",
+          "candidate_size": 146,
+          "target_size": 146,
+          "matched_comparable_bytes": 130,
+          "comparable_bytes": 130,
+          "owner_sha256": "057f419db30306c55b25c0665b08e165d218a310e1d3de1373f9c4559c308add"
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "candidate_size": 7020,
+          "target_size": 7020,
+          "matched_comparable_bytes": 6237,
+          "comparable_bytes": 6264,
+          "owner_sha256": "64497ca7c29ec49883bd2e0ed6f6148037b7993058f2691dc1dfdc5ce6cba126"
+        }
+      ],
+      "full_callee_guard": {
+        "result": "exact",
+        "size": 144,
+        "linkage_fields": 1
+      }
+    },
+    {
+      "label": "static-callee-context-index",
+      "result": "restored; no exact credit",
+      "reports": [
+        {
+          "symbol": "?ReadIntArgument@EnemyRuntimeView@@QAEHH@Z",
+          "candidate_size": 16,
+          "target_size": 16,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 12,
+          "owner_sha256": "dd30b47982ba874668e77cf08c527fbf9875589284160d88f5156b00b7873337"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "candidate_size": 14536,
+          "target_size": 14416,
+          "matched_comparable_bytes": 619,
+          "comparable_bytes": 11580,
+          "owner_sha256": "777eb802a76c9bda8a177ac1ea203304d0c96ae88d425230e7fe780163a98176"
+        },
+        {
+          "symbol": "?ReadInt@EclVmContext@@SGHPAU1@I@Z",
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140,
+          "owner_sha256": "40137efd72057b2763cd926de5619d23a4a8e227bfafa64cdc89f2b42f67f240"
+        },
+        {
+          "symbol": "?Run@EclVmHost@@QAEHM@Z",
+          "candidate_size": 146,
+          "target_size": 146,
+          "matched_comparable_bytes": 130,
+          "comparable_bytes": 130,
+          "owner_sha256": "5e512bf620dfd78b065baf6c092e9f19eb4ee9bbf57a8818b36d67cb598d3399"
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "candidate_size": 7020,
+          "target_size": 7020,
+          "matched_comparable_bytes": 6237,
+          "comparable_bytes": 6264,
+          "owner_sha256": "e79547c933b755f9b48f04596a24b4fa955864d311f0c389f9773788a2c41a70"
+        }
+      ],
+      "full_callee_guard": {
+        "result": "exact",
+        "size": 144,
+        "linkage_fields": 1
+      }
+    },
+    {
+      "label": "format-state",
+      "result": "restored; no exact credit",
+      "reports": [
+        {
+          "symbol": "?ReadInt@EclVmContext@@QAEHI@Z",
+          "candidate_size": 144,
+          "target_size": 144,
+          "matched_comparable_bytes": 140,
+          "comparable_bytes": 140,
+          "owner_sha256": "1ed15909f353f005c832765e67548cd0a686ef63093d9381e4cfae7eb7586ae2"
+        },
+        {
+          "symbol": "?Run@EclVmHost@@QAEHM@Z",
+          "candidate_size": 148,
+          "target_size": 146,
+          "matched_comparable_bytes": 33,
+          "comparable_bytes": 130,
+          "owner_sha256": "b0aba0183ba5d0575c47395a571d790e6dd24894f808f05550a265e280d2f075"
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "candidate_size": 6932,
+          "target_size": 7020,
+          "matched_comparable_bytes": 412,
+          "comparable_bytes": 6268,
+          "owner_sha256": "bd4aff112035d0cdfecd47e171f23a7a863f59684e451afe5c94be1c20e7bfd7"
+        }
+      ]
+    },
+    {
+      "label": "anm-flip-inline",
+      "result": "restored; no exact credit",
+      "reports": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_size": 9932,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1179,
+          "comparable_bytes": 8564,
+          "owner_sha256": "4a80a620de734741633bb3d9fbd49ecbafe9324f5c34222b7ef8491fc782b9f7"
+        }
+      ]
+    },
+    {
+      "label": "anm-flip-captured",
+      "result": "restored; no exact credit",
+      "reports": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1930,
+          "comparable_bytes": 8564,
+          "owner_sha256": "3c540e324007213dfe06004529b421f7f03c05141c35a32e17f1d47df12efccf"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "The 10-byte high callback remains nonexact; current six-TU candidate is seven bytes with a stack receiver into the renderer.",
+    "GUI renderer572/570 and regular renderer726/738 remain nonexact.",
+    "ExecuteScript9964 and case diagnostics7478/7995,90/92 equal spans,gap2 remain diagnostics only.",
+    "Camera330/330 remains nonexact at250/290 comparable positions.",
+    "No allocated-data alias, whole-product, original/native runtime, dual-Oracle or port closure."
+  ]
+}

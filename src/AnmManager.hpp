@@ -1299,7 +1299,6 @@ float __stdcall AddNormalizeAngle(float angle, float delta);
 
 unsigned char __fastcall MixAnmColor(
     unsigned char source, unsigned char multiplier);
-void __cdecl AsciiConfigureBackgroundViewport(int index);
 
 struct AnmErrorLoggerView
 {

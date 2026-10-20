@@ -1,0 +1,216 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+  "mapped_text_size": 412289,
+  "ghidra": "local readOnly/noanalysis, maxcpu1, heap768m, temporary metadata transaction rolled back; complete mapped text equal before/after",
+  "owners": [
+    {
+      "address": "0x401510",
+      "size": 7,
+      "last_instruction": "0x401516",
+      "calls": [
+        {
+          "address": "0x401511",
+          "destination": "0x401760"
+        }
+      ]
+    },
+    {
+      "address": "0x401520",
+      "size": 10,
+      "last_instruction": "0x401529",
+      "calls": [
+        {
+          "address": "0x401523",
+          "destination": "0x401a50"
+        }
+      ]
+    },
+    {
+      "address": "0x401760",
+      "size": 738,
+      "last_instruction": "0x401a3f",
+      "calls": [
+        {
+          "address": "0x401827",
+          "destination": "0x442f50"
+        },
+        {
+          "address": "0x40183b",
+          "destination": "0x4215a0"
+        },
+        {
+          "address": "0x401855",
+          "destination": "dword ptr [ecx + 0xbc]"
+        },
+        {
+          "address": "0x401872",
+          "destination": "0x4215a0"
+        },
+        {
+          "address": "0x40188c",
+          "destination": "dword ptr [ecx + 0xbc]"
+        },
+        {
+          "address": "0x40196d",
+          "destination": "0x443080"
+        },
+        {
+          "address": "0x4019a6",
+          "destination": "0x443080"
+        },
+        {
+          "address": "0x4019ef",
+          "destination": "0x442f50"
+        },
+        {
+          "address": "0x4019ff",
+          "destination": "0x4215a0"
+        },
+        {
+          "address": "0x401a19",
+          "destination": "dword ptr [ecx + 0xbc]"
+        }
+      ]
+    },
+    {
+      "address": "0x401a50",
+      "size": 570,
+      "last_instruction": "0x401c89",
+      "calls": [
+        {
+          "address": "0x401af4",
+          "destination": "0x442f50"
+        },
+        {
+          "address": "0x401b08",
+          "destination": "0x4215a0"
+        },
+        {
+          "address": "0x401b22",
+          "destination": "dword ptr [ecx + 0xbc]"
+        },
+        {
+          "address": "0x401b3f",
+          "destination": "0x4215a0"
+        },
+        {
+          "address": "0x401b59",
+          "destination": "dword ptr [ecx + 0xbc]"
+        },
+        {
+          "address": "0x401be3",
+          "destination": "0x443290"
+        },
+        {
+          "address": "0x401bf4",
+          "destination": "0x443080"
+        },
+        {
+          "address": "0x401c3d",
+          "destination": "0x442f50"
+        },
+        {
+          "address": "0x401c4d",
+          "destination": "0x4215a0"
+        },
+        {
+          "address": "0x401c67",
+          "destination": "dword ptr [ecx + 0xbc]"
+        }
+      ]
+    },
+    {
+      "address": "0x4215a0",
+      "size": 330,
+      "last_instruction": "0x4216e9",
+      "calls": [
+        {
+          "address": "0x4215b0",
+          "destination": "0x442f50"
+        },
+        {
+          "address": "0x421601",
+          "destination": "0x452194"
+        },
+        {
+          "address": "0x42164d",
+          "destination": "0x45219a"
+        },
+        {
+          "address": "0x42165d",
+          "destination": "dword ptr [edx + 0xb0]"
+        },
+        {
+          "address": "0x42166e",
+          "destination": "dword ptr [ecx + 0xb0]"
+        },
+        {
+          "address": "0x4216c3",
+          "destination": "0x45217c"
+        }
+      ]
+    }
+  ],
+  "main_view": {
+    "base": "0x00491C28",
+    "background_camera": {
+      "offset": "0x154",
+      "address": "0x00491D7C"
+    },
+    "default_camera": {
+      "offset": "0x26C",
+      "address": "0x00491E94"
+    },
+    "active_viewport": {
+      "offset": "0x384",
+      "address": "0x00491FAC"
+    },
+    "configured_flag": {
+      "offset": "0x388",
+      "address": "0x00491FB0",
+      "width": 4
+    }
+  },
+  "branch_contract": {
+    "nonzero_viewport": "publish background, configure camera, reload active/device, SetViewport, flag0",
+    "zero_viewport": "publish default, configure camera, reload active/device, SetViewport, flag1",
+    "selection": "viewportIndex is captured before FlushVertexBuffer",
+    "tail": "if currentViewport is nonzero, flush and restore default/flag1"
+  },
+  "ownership": "partial target-backed views only; original type/class/macro spelling and alias-coherent allocated storage remain unknown",
+  "glyph_contract": {
+    "regular_newline": {
+      "test": "0x4018B2",
+      "reset_x_advance_y": "0x4018B6..0x4018CC",
+      "jump": "0x4018D2 -> 0x4019BB",
+      "skipped_spacing": "0x4019AB..0x4019B5"
+    },
+    "gui_newline": {
+      "test": "0x401B79",
+      "reset_x_advance_y": "0x401B7D..0x401B95",
+      "jump": "0x401B9B -> 0x401C09",
+      "skipped_spacing": "0x401BF9..0x401C03"
+    },
+    "regular_each_glyph": {
+      "sprite_height_offset": "0x30",
+      "sprite_width_offset": "0x34",
+      "vm_width_offset": "0x4C",
+      "vm_height_offset": "0x50",
+      "dirty_bit": 8,
+      "instructions": "0x401903..0x40191B"
+    },
+    "gui_draw_mode": {
+      "comparison": "scaleX == 1.0f, ordered equality",
+      "parity_branch": "0x401BD7 JNP -> 0x401BEA",
+      "equal": "0x401BF4 -> 0x443080 rounded",
+      "other_including_unordered": "0x401BE3 -> 0x443290 no-round",
+      "existing_source": "confirmed, unchanged"
+    },
+    "float_constants": {
+      "0x470B08": 2.0,
+      "0x470C88": 14.0,
+      "0x470AFC": 1.0
+    }
+  }
+}

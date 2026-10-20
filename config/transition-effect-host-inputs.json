@@ -5,8 +5,8 @@
   "sha256_lf": {
     "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
     "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
-    "src/AnmManager.cpp": "1b11274cd03f34fd8763ade8c0d45b6a3cfe0373a0102d3d22d6ce71c342c97a",
-    "src/AnmManager.hpp": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+    "src/AnmManager.cpp": "aa3bcbe7234c1f97beb3b1653f5d6505ca20cc1623d4a52a8a792600f57e683d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
     "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
@@ -242,6 +242,27 @@
       "struct AnmVmTimerView": "162f1c2209fa017e74cdf673e3fd2dc444920aa709205bb0028a533dfd131d7a",
       "struct AnmViewportView": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b",
       "unsigned int __fastcall AnmRandomU32InRange(": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1"
+    }
+  },
+  "reviewed_ascii_draw_update": {
+    "date": "2026-10-21",
+    "starting_head": "277ab88",
+    "reason": "ASCII viewport/camera effects, newline paths and regular glyph dirty publication change; three host-projected blocks are independently identical after CRLF-to-LF only. Strict normalization and whole-file pin rejection remain unchanged.",
+    "evidence": "docs/evidence/ascii-viewport-transitions/README.md",
+    "inputs": {
+      "src/AnmManager.cpp": {
+        "before": "1b11274cd03f34fd8763ade8c0d45b6a3cfe0373a0102d3d22d6ce71c342c97a",
+        "after": "aa3bcbe7234c1f97beb3b1653f5d6505ca20cc1623d4a52a8a792600f57e683d"
+      },
+      "src/AnmManager.hpp": {
+        "before": "b3256ae63b5c277af218a392354ab863f01a32c84e5ce88fc5d2628cfc5285c2",
+        "after": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65"
+      }
+    },
+    "unchanged_extractions_sha256": {
+      "unsigned int __fastcall AnmRandomU32InRange(": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+      "struct AnmVmTimerView\n": "162f1c2209fa017e74cdf673e3fd2dc444920aa709205bb0028a533dfd131d7a",
+      "struct AnmViewportView\n": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b"
     }
   }
 }
