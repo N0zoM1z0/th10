@@ -46,7 +46,7 @@ def run(args,out):
         ('no-hold-add','holdTimer.Add(-1.0f);','holdTimer.Add(0.0f);','hold-speed'),
         ('collision-gate','length > 16.0f && width > 3.0f','length >= 16.0f && width > 3.0f','collision-length-gate'),
         ('graze-period','age.current % 5 == 0','age.current % 4 == 0','signed-graze-period'),
-        ('wrong-sprite-axis','width / vm->loadedSprite->width','width / vm->loadedSprite->height','scale-axes'),
+        ('wrong-sprite-axis','width / sprite->width','width / sprite->height','scale-axes'),
         ('omit-scale-bit','flags |= 8u;','flags |= 0u;','scale-flags'),
         ('tail-inclusive','if (traveled == 0.0f)','if (traveled >= 0.0f)','strict-tail-zero'),
         ('wrong-draw-field','primaryVm.position.x =','primaryVm.positionOffset.x =','draw-position-field'),

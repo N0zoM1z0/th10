@@ -1,5 +1,10 @@
 # Type-0 laser update, draw and Player contact
 
+Follow-up2026-10-20: Update41D3D0 now passes two complete canonical four-TU
+colds with all1001 bytes/31 fields after ordinary used sprite snapshots restore
+the final read/store scheduling. The earlier nonexact diagnostics below remain
+historical. See [the current proof and scope](../laser-type1/README.md).
+
 The maintained source now covers **1645 authored bytes**: Update41D3D0/1001,
 Draw41D7C0/173 and Player contact4267F0/471. Motion0010 at41D2C0 adds269
 source-present bytes with its existing indeterminate origin preserved. Its

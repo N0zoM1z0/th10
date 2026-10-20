@@ -3357,3 +3357,41 @@ whitespace checks. About5.1 MB of superseded controls and host binaries are prun
   copy, but does not solve the private binder registers or ANM scheduling.
   No forced volatile/placement/ABI fix is accepted. Native exactness and product
   closure stay open; see [complete scope](evidence/laser-clear/README.md).
+
+## Type1 laser lifecycle and state table (2026-10-20)
+
+- Missing slots41E5C0/309 and41EA40/173 of table46DA10 now have independent
+  complete boundary/source reviews. Update41E700 has816 code bytes plus16
+  owned table bytes41EA30: unsigned(state−2)<=3 selects four internal entries
+  for states2/3/4/5. No relocations are present in the original image; the
+  guarded domain and destinations establish table ownership. Adds498 authored
+  owned bytes at medium-confidence origin, independent of codegen results.
+- Request424/1F8 and VMs61C/9C8 keep D74 layout. Request18/1C are angle/angular
+  velocity,20/24 maximum/initial length,28 width,2C growth speed; signed
+  durations30/34/38/3C and signed type40/color42 are target-observed. Init's
+  runtime width44 starts2; runtime48 is growth speed. Reference width names
+  and sprite-axis names are wrong for our independently established fields.
+- Init copies126 DWORDs, sets state3, uses actual VM wrapper404F30 and explicit
+  Execute43EE30, live resource47781C+458/flags and late owned geometry/sound24.
+  It does not reset age or assign velocity/traveled. Storage constructor219
+  remains separately indeterminate; host object construction is an adaptation.
+- Update attaches to Enemy477704 slot0/full1068 before applying request velocity,
+  uses signed/fractional wait/grow/hold/shrink phases, with grow→hold→shrink
+  fallthrough and immediate retirement. It resets but does not tick age.
+  External advancement remains unreviewed. State2/4 and length>16 enable
+  contact without the type0 width>3 gate; wide collision taper uses1/3.
+- Scale axes remain sprite.width34/height30. Draw950/CFC are VM.position334,
+  distinct from allocating positionOffset340. Post-script/post-draw traveled,
+  Player, resource, sound position and renderer reads remain live. Polar scratch
+  Z has no established native prefill; host17 is an explicit diagnostic role.
+- Formal binder-argument-order control is neutral for the three parent native
+  diagnostics; do not alter the already exact273-byte pure VM reset or invent
+  register parameters to fit these callers. See [full scope](evidence/laser-type1/README.md).
+
+- Used sprite snapshots before X scaling and freshly before Y scaling reproduce
+  the shared final30-byte scheduling difference in type0 and type1. Type1's
+  complete832-byte owner and type0's complete1001 now each pass two independent
+  completefive-/four-TU canonical colds:24/22 frozen inputs,34/31 exhaustively
+  bound fields, all1833 owned bytes. The new type1 table base/four pointers are
+  local fields with preserved offsets. Motion0010269/all10 fields passes the
+  focused existing guard. No forced attributes/ABI or product/runtime claim.

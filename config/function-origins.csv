@@ -572,7 +572,9 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041DD80,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0041E260,authored_game,EnemyLaser,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0041E4D0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
-0x0041E700,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x0041E5C0,authored_game,EnemyLaser,authored,medium,target-laser-type1-lifecycle-2026-10-20
+0x0041E700,authored_game,EnemyLaser,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x0041EA40,authored_game,EnemyLaser,authored,medium,target-laser-type1-lifecycle-2026-10-20
 0x0041EAF0,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0041EB00,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x0041EFA0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17

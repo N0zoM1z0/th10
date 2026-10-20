@@ -22413,3 +22413,100 @@ linkages = [
   { offset = 282, type = "DIR32", symbol = "__real@3f800000", target = 0x470AFC },
   { offset = 316, type = "REL32", symbol = "__ftol2", target = 0x463B2C },
 ]
+
+[units.laser-type1-update]
+artifact_kind = "linked-pe"
+source = "src/LaserType1.cpp"
+support_sources = ["src/AnmManager.cpp", "src/EnemyLaser.cpp", "src/LaserLine.cpp", "src/EnemyEclDispatcher.cpp"]
+output_dir = "build/match-linked/LaserType1Update"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Update@EnemyLaserType1View@@UAEHXZ"
+functions = ["EnemyLaserType1View::Update"]
+symbol = "?Update@EnemyLaserType1View@@UAEHXZ"
+target_address = 0x41e700
+size = 832
+linkages = [
+  { offset = 0x18, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x3d, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x50, type = "REL32", symbol = "?AddNormalizeAngle@@YGMMM@Z", target = 0x44bc10 },
+  { offset = 0x62, type = "DIR32", symbol = "?g_EnemyManager@@3PAUEnemyManagerView@@A", target = 0x477704 },
+  { offset = 0x87, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x93, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x9f, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0xd7, type = "DIR32", local = true, target = 0x41ea30 },
+  { offset = 0xf0, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x115, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x13a, type = "REL32", symbol = "?SetCurrent@AnmVmTimerView@@QAEXH@Z", target = 0x405410 },
+  { offset = 0x19d, type = "DIR32", symbol = "__real@41800000", target = 0x470b48 },
+  { offset = 0x1b2, type = "DIR32", symbol = "__real@3dcccccd", target = 0x470c18 },
+  { offset = 0x1c2, type = "REL32", symbol = "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z", target = 0x41f800 },
+  { offset = 0x1ec, type = "DIR32", symbol = "__real@42000000", target = 0x470bcc },
+  { offset = 0x1fc, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0x204, type = "DIR32", symbol = "__real@41800000", target = 0x470b48 },
+  { offset = 0x20a, type = "DIR32", symbol = "__real@3eaaaaab", target = 0x470cc4 },
+  { offset = 0x221, type = "DIR32", symbol = "__real@3f4ccccd", target = 0x470cc0 },
+  { offset = 0x228, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x477834 },
+  { offset = 0x236, type = "REL32", symbol = "?CheckLaserContact@Player@@QAEHPBUPlayerFloat3@@MMM@Z", target = 0x4267f0 },
+  { offset = 0x241, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x477834 },
+  { offset = 0x28a, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x4776f0 },
+  { offset = 0x298, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x477834 },
+  { offset = 0x2ae, type = "REL32", symbol = "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z", target = 0x448db0 },
+  { offset = 0x2bc, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x492590 },
+  { offset = 0x2c1, type = "REL32", symbol = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z", target = 0x43dd10 },
+  { offset = 0x306, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x43ee30 },
+  { offset = 0x30c, type = "DIR32", symbol = "__real@00000000", target = 0x470b04 },
+  { offset = 0x325, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x43ee30 },
+  { offset = 0x330, type = "DIR32", local = true, target = 0x41e829 },
+  { offset = 0x334, type = "DIR32", local = true, target = 0x41e7db },
+  { offset = 0x338, type = "DIR32", local = true, target = 0x41e800 },
+  { offset = 0x33c, type = "DIR32", local = true, target = 0x41e845 },
+]
+
+[units.laser-line-update]
+artifact_kind = "linked-pe"
+source = "src/LaserLine.cpp"
+support_sources = ["src/AnmManager.cpp", "src/EnemyLaser.cpp", "src/EnemyEclDispatcher.cpp"]
+output_dir = "build/match-linked/LaserLineUpdate"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Update@EnemyLaserLineView@@UAEHXZ"
+functions = ["EnemyLaserLineView::Update"]
+symbol = "?Update@EnemyLaserLineView@@UAEHXZ"
+target_address = 0x41d3d0
+size = 1001
+linkages = [
+  { offset = 0xfb, type = "REL32", symbol = "?Add@AnmVmTimerView@@QAEXM@Z", target = 0x44bf40 },
+  { offset = 0x10a, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x145, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x14e, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x157, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476f78 },
+  { offset = 0x182, type = "DIR32", symbol = "__real@00000000", target = 0x470b04 },
+  { offset = 0x1b7, type = "DIR32", symbol = "__real@00000000", target = 0x470b04 },
+  { offset = 0x1d9, type = "REL32", symbol = "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z", target = 0x41f800 },
+  { offset = 0x209, type = "REL32", symbol = "?IsOutsidePlayfield@EnemyLaserVectorView@@QAEHMM@Z", target = 0x41f7a0 },
+  { offset = 0x21a, type = "REL32", symbol = "?IsOutsidePlayfield@EnemyLaserVectorView@@QAEHMM@Z", target = 0x41f7a0 },
+  { offset = 0x239, type = "REL32", symbol = "?Add@AnmVmTimerView@@QAEXM@Z", target = 0x44bf40 },
+  { offset = 0x242, type = "DIR32", symbol = "__real@41800000", target = 0x470b48 },
+  { offset = 0x256, type = "DIR32", symbol = "__real@40400000", target = 0x470bd4 },
+  { offset = 0x26d, type = "DIR32", symbol = "__real@3dcccccd", target = 0x470c18 },
+  { offset = 0x27b, type = "REL32", symbol = "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z", target = 0x41f800 },
+  { offset = 0x2a5, type = "DIR32", symbol = "__real@42000000", target = 0x470bcc },
+  { offset = 0x2b5, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0x2bd, type = "DIR32", symbol = "__real@41800000", target = 0x470b48 },
+  { offset = 0x2c3, type = "DIR32", symbol = "__real@3f000000", target = 0x470b0c },
+  { offset = 0x2d7, type = "DIR32", symbol = "__real@3f4ccccd", target = 0x470cc0 },
+  { offset = 0x2e9, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x477834 },
+  { offset = 0x2ef, type = "REL32", symbol = "?CheckLaserContact@Player@@QAEHPBUPlayerFloat3@@MMM@Z", target = 0x4267f0 },
+  { offset = 0x2fa, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x477834 },
+  { offset = 0x343, type = "DIR32", symbol = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", target = 0x4776f0 },
+  { offset = 0x351, type = "DIR32", symbol = "?g_Player@@3PAUPlayer@@A", target = 0x477834 },
+  { offset = 0x367, type = "REL32", symbol = "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z", target = 0x448db0 },
+  { offset = 0x375, type = "DIR32", symbol = "?g_MainSoundOwner@@3PAEA", target = 0x492590 },
+  { offset = 0x37a, type = "REL32", symbol = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z", target = 0x43dd10 },
+  { offset = 0x3bf, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x43ee30 },
+  { offset = 0x3c5, type = "DIR32", symbol = "__real@00000000", target = 0x470b04 },
+  { offset = 0x3dd, type = "REL32", symbol = "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z", target = 0x43ee30 },
+]

@@ -28,6 +28,29 @@ scratch paths, or build hashes into this file.
 
 ## Current local checkpoint (2026-10-20)
 
+- Type1 lifecycle now maps1314 owned authored bytes: omitted Init41E5C0/309,
+  Draw41EA40/173 and Update41E700/832. The four-pointer state table41EA30 adds16
+  missing bytes; new entries add482, so denominator grows498 independently.
+  Request28 is width and2C growth speed; runtime width44 starts2, speed48 is
+  distinct. Correct sprite axes34/30 replace misleading reference names. Age
+  resets but never ticks here; zero/negative phases fall through correctly.
+  Typed whole-vector attachment, expiry-first grow flow and ordinary used sprite
+  snapshots close **1833 new authored exact bytes** across Type1 Update832 and
+  Type0 Update1001. Two independent completefive-/four-TU canonical colds freeze
+  24/22 inputs and replay34/31 fields, including the complete local state table.
+  Existing Motion0010269/all10 guard passes. Full actual-owner/VM-wrapper/Player/
+  timer/sound host ASan/UBSan/leaks passes34 new and21 existing strict mutants.
+  Formal binder-argument-order shadow control is normalized-byte-neutral and
+  not promoted; exact pure VM reset273 stays untouched. Init313/309 and Draw
+  actual-entry173/173 remain nonexact. Native Z/lifetime/product/runtime planes
+  stay open. Public92 checks pass across verified85-check prefix and targeted
+  resumption (81 retained,11 fresh), after pending-cold ledger rejection; no
+  public gate changed. Current type1-batch carrier/cache supersedes old laser
+  input hashes for EnemyLaser.hpp/LaserLine.cpp; check each dependency before
+  reuse. Next inspect type1 Clear41F400/623 or another large source gap, or gain
+  new caller/TU/alias evidence before Init/Draw controls. See
+  [complete proof and limits](evidence/laser-type1/README.md).
+  7.9 MB of superseded controls/host artifacts pruned; pre-existing D3D evidence untouched.
 - Laser Clear41E260/609 now maps its complete authored source with no new
   denominator/exact credit. Slot14h/RET4 samples6 then12, uses signed color,
   live laser resource/renderer/length, actual Item Spawn477818/41BB00, and
@@ -44,10 +67,9 @@ scratch paths, or build hashes into this file.
   guards pass719 bytes/all22 fields. Host ASan/UBSan/leaks and25 strict mutants
   pass. No full historical replay; old laser-init cache hashes are historical
   for this changed header/EnemyLaser.cpp; use the current clear-batch cache
-  with per-dependency hash checks. Next target table46DA10 has untracked slot4
-  41E5C0 and slotC41EA40; their extents/origins are unreviewed. Review these
-  before type1 Update41E700/816 or another large gap. Query41E4D0 stays a
-  separate unknown-origin frontier. See [complete scope](evidence/laser-clear/README.md).
+  with per-dependency hash checks. Its then-untracked type1 slots41E5C0 and
+  41EA40 and the Update table are now reviewed by the lifecycle batch above.
+  Query41E4D0 remains a separate unknown-origin frontier. See [complete scope](evidence/laser-clear/README.md).
   All91 public CI checks pass;1.9 MB of superseded controls/host artifacts pruned.
 - Continue toward **95% of reviewed authored bytes exact**, with both large
   owners and small functions in scope. Use local Ghidra and Bash, serialize

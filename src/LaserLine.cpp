@@ -149,9 +149,11 @@ int EnemyLaserLineView::Update()
                 QueueSoundCue(28, position.x);
         }
     }
+    AnmSpriteView *sprite = primaryVm.loadedSprite;
     AnmVmView *vm = &primaryVm;
-    SetLaserScaleComponent(vm->scaleX, vm->flags35C, width / vm->loadedSprite->width);
-    SetLaserScaleComponent(vm->scaleY, vm->flags35C, length / vm->loadedSprite->height);
+    SetLaserScaleComponent(vm->scaleX, vm->flags35C, width / sprite->width);
+    sprite = primaryVm.loadedSprite;
+    SetLaserScaleComponent(vm->scaleY, vm->flags35C, length / sprite->height);
     AnmRenderManagerView::ExecuteScript(vm);
     if (traveled == 0.0f)
         AnmRenderManagerView::ExecuteScript(&secondaryVm);

@@ -572,7 +572,9 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041DD80,0x0041E255,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0041E260,0x0041E4C0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0041E4D0,0x0041E5B1,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
-0x0041E700,0x0041EA2F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
+0x0041E5C0,0x0041E6F4,reviewed,high,target-laser-type1-lifecycle-2026-10-20,"Complete dense raw decode and RET; virtual entry reference only, neighboring CC/owned table boundaries reviewed; no overlap or external interior branch."
+0x0041E700,0x0041EA3F,reviewed,high,target-laser-type1-lifecycle-2026-10-20,"Complete dense816-byte code including internal alignment plus16-byte state pointer table41EA30. Selector unsigned(state-2)<=3, all four destinations within code, next Draw starts41EA40; no external interior branch."
+0x0041EA40,0x0041EAEC,reviewed,high,target-laser-type1-lifecycle-2026-10-20,"Complete dense raw decode and RET; virtual entry reference only, neighboring CC/owned table boundaries reviewed; no overlap or external interior branch."
 0x0041EAF0,0x0041EAF2,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; data xrefs only at 0x46DA20
 0x0041EB00,0x0041EF92,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0041EFA0,0x0041F3F3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
