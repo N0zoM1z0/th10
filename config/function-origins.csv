@@ -559,10 +559,11 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x0041C7D0,authored_game,Enemy,authored,high,target-enemy-effect-list-owner-2026-09-24
 0x0041C800,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-middle-game-2026-09-17
 0x0041C850,authored_game,Enemy,authored,high,target-enemy-effect-list-owner-2026-09-24
+0x0041CA80,authored_game,EnemyLaser,authored,high,laser-line-target-2026-10-20
 0x0041CFD0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
-0x0041D2C0,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
-0x0041D3D0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
-0x0041D7C0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x0041D2C0,unknown,EnemyLaser,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
+0x0041D3D0,authored_game,EnemyLaser,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x0041D7C0,authored_game,EnemyLaser,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x0041D870,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x0041D880,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x0041DD80,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
@@ -689,7 +690,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00426610,authored_game,Player,authored,high,target-player-angle-to-point-exact-2026-09-24
 0x00426660,authored_game,Enemy,authored,high,target-enemy-angle-from-player-exact-2026-09-24
 0x004266B0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
-0x004267F0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
+0x004267F0,authored_game,Player,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
 0x004269D0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00426CF0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00426F70,authored_game,Player,authored,high,player-option-rebuild-2026-09-13

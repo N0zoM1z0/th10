@@ -1,5 +1,6 @@
 #include "AnmManager.hpp"
 #include "EnemyLaser.hpp"
+#include "EnemySoundQueue.hpp"
 #include <new>
 
 #include <stddef.h>
@@ -50,10 +51,6 @@ int EnemyLaserVectorView::IsOutsidePlayfield(
 }
 
 
-struct EnemySoundQueueView
-{
-    void QueueSoundSample(int soundId, int sample);
-};
 
 extern unsigned char g_MainSoundOwner[];
 extern float __stdcall EnemyWrapAngle(float angle);

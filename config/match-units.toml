@@ -22363,3 +22363,29 @@ size = 7
 linkages = [
   { offset = 0x2, type = "REL32", symbol = "?ResultMenuDrawRows@@YGHPAUResultMenuView@@@Z", target = 0x422660 },
 ]
+
+[units.laser-line-motion-0010]
+artifact_kind = "linked-pe"
+source = "src/LaserLine.cpp"
+support_sources = []
+output_dir = "build/match-linked/LaserLineMotion"
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "?Motion0010@EnemyLaserLineView@@UAEXXZ"
+functions = ["EnemyLaserLineView::Motion0010"]
+symbol = "?Motion0010@EnemyLaserLineView@@UAEXXZ"
+target_address = 0x0041D2C0
+size = 269
+linkages = [
+  { offset = 34, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476F78 },
+  { offset = 52, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476F78 },
+  { offset = 64, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476F78 },
+  { offset = 76, type = "DIR32", symbol = "?g_AnmGameSpeed@@3MA", target = 0x476F78 },
+  { offset = 121, type = "DIR32", symbol = "__real@38d1b717", target = 0x470C58 },
+  { offset = 139, type = "DIR32", symbol = "__real@38d1b717", target = 0x470C58 },
+  { offset = 183, type = "DIR32", symbol = "__real@3f7d70a4", target = 0x470B68 },
+  { offset = 198, type = "DIR32", symbol = "__real@3f8147ae", target = 0x470B64 },
+  { offset = 218, type = "DIR32", symbol = "__real@3f800000", target = 0x470AFC },
+  { offset = 254, type = "REL32", symbol = "__ftol2", target = 0x463B2C },
+]

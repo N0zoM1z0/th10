@@ -18,7 +18,8 @@ scratch paths, or build hashes into this file.
 - Work from the live worktree, including dirty changes. Inspect and continue,
   deliberately supersede, or reject existing work; do not create a clean side
   tree merely to avoid understanding it.
-- Current operator-requested commits use `gpt-6.1-sol: ...`. Do not push from this worktree.
+- Current operator-requested commits use `gpt-6.1-sol: ...`. The operator
+  explicitly requested pushing checkpoints on2026-10-20; push completed work.
 - Treat Ghidra, decompiler output, adjacent games, compiler diagnostics, and
   similarity scores as evidence or hypotheses according to their Oracle
   boundary. Only canonical replay can grant exact-codegen credit.
@@ -31,6 +32,27 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Laser line Update41D3D0/1001, Draw41D7C0/173 and Player contact4267F0/471
+  now map1645 authored source bytes. Motion0010/269 maps indeterminate source
+  and closes269 indeterminate exact bytes in two independent single-TU /GL /GS
+  colds,12 frozen inputs/all10 fields. No authored exact increment. The omitted
+  slot0 parser41CA80 owns1356 bytes (1269 code span including10 alignment,
+  plus3 alignment/20 pointers/64 selectors), added as authored/source-absent.
+  Source declaration is not a mapping. Scale uses sprite.width34/height30;
+  Draw writes VM.position334, not positionOffset340. Live motion flags, signed
+  graze modulo5, fresh Player/resource/sound/draw sampling and negated unordered
+  contact rejects are restored. Actual-helper host ASan/UBSan/leaks plus21
+  strict mutants pass. Native4-TU Update1001/1001 remains847/877 comparable;
+  Draw168/173, contact453/471 stay nonexact. Draw-entry2-TU172/173 is not exact.
+  Player header client compiles separately; the existing Player collision-hit
+  declaration is shared and all88 public CI checks pass. Polar writes onlyXY; native scratch
+  Z and x87 exceptions remain unknown, with explicit host Z prefill/lifetime
+  roles. No constructor/vtable installation/product/runtime claim. Current
+  Motion cache is separate; older FrontEnd/SpellPanel dependency hashes changed
+  through Player.hpp/ECL. Next recover parser1356, then its initialization
+  entry41C8C0 or another large source gap; require new scale-tail/caller context
+  evidence before parent codegen controls. See
+  [the complete source, proof and limits](evidence/laser-line/README.md).
 - Result rows/name drawing now maps1466 authored source bytes plus7 unknown-
   origin callback bytes. Rows422660 owns1062, correcting27 missing denominator
   bytes from its guarded four-pointer/ten-selector table and NOP. Name4224C0

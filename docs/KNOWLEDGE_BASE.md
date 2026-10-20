@@ -3197,3 +3197,47 @@ cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f.
 The old64A80h digest is only a prefix. Shared distributed end probes already
 include the last byte. See the inclusive-range note in ORACLES.md. All87 public
 CI checks and final focused/toolchain/tracking/progress/whitespace checks pass.
+
+## Laser line owners and missing command parser (2026-10-20)
+
+Target slot46DA60+0 identifies omitted41CA80:1269-byte code span contains10
+alignment bytes omitted by Ghidra1259, then3 alignment/20 pointers/64 selectors
+through41CFCB. DEC/CMP3F/JA guards the selector, all five destinations are local,
+and CC separates both neighbors. Raw game opcode/flag/timer/Player/resource/
+sound behavior independently supports authored classification. Admit1356
+denominator bytes with no source mapping or exact credit; the virtual source
+declaration is not a body. Local Ghidra is read-only, complete mapped hash
+attested, transaction rolled back, with no external interior reference seen.
+
+Update41D3D0/1001, Draw41D7C0/173 and Player laser contact4267F0/471 now map1645
+authored source bytes. Existing primary resource4776F0+3E0B50 has one shared
+header; the canonical sound-queue definition replaces an inconsistent local
+same-name type. Native assertions retain lineD58 and VMs600/9AC. Scale divides
+sprite width34/height30; Draw writes VM.position334, not positionOffset340.
+Motion calls re-read live flags in target slot order. Hits re-read Player after
+the actual hit boundary; grazes use signed age%5, primary script434, then fresh
+line X for actual cue28. Player contact retains negated unordered rejection,
+lower-Y graze bounds, GUI/state/highlight gates and stack/RET4 hit boundary426CF0.
+The hit body remains source-absent; the old option-position label was wrong.
+
+Motion0010/269 now has source and two independent single-TU /GL /GS canonical
+colds with12 frozen inputs, all269 bytes and10 explicit fields. Its origin
+remains indeterminate: no authored exact increment. Four-TU Update1001/1001
+is still847/877 comparable, with differences beginning at380h in scale-tail
+scheduling; Draw168/173 and contact453/471 remain nonexact. Real Draw-entry
+control172/173 stays nonexact. Existing bounds91/timer88/sound149 structural
+diagnostics grant no new credit. The Player header client compiles separately.
+
+Actual-owner/helper ASan/UBSan/leak checks pass with21 strict named mutants.
+Native polar writes onlyXY; scratch Z and x87 exception effects are unknown.
+Host adapts the two local Z prefills to17 and explicitly starts the acceleration
+view lifetime in opaque storage. Unknown virtuals, math, VM/render/hit calls
+and outer object lifetimes are declared roles; no general numeric, native
+reachability, constructor/vtable installation, product or port claim follows.
+The existing PlayerHandleCollisionHit stack/RET4 declaration is reused from
+PlayerCollision.cpp. Final four-TU diagnostics preserve the same nonexact
+sizes/scores, and all88 public CI checks pass.
+Header dependency hashes invalidate affected older FrontEnd/SpellPanel objects;
+independent MIDI cache remains separate. Next recover parser1356 or another
+source gap; require new lifetime/caller evidence before more parent shape work.
+See [the complete proof and reference scope](evidence/laser-line/README.md).

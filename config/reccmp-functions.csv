@@ -1056,3 +1056,7 @@ EnemySpellPanelUpdateCallback,0x00409220,function
 ResultMenuDrawNameEntry,0x004224C0,function
 ResultMenuDrawRows,0x00422660,function
 ResultMenuDrawRowsCallback,0x00422AA0,function
+EnemyLaserLineView::Update,0x0041D3D0,function
+EnemyLaserLineView::Draw,0x0041D7C0,function
+Player::CheckLaserContact,0x004267F0,function
+EnemyLaserLineView::Motion0010,0x0041D2C0,function

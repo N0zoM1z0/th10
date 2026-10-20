@@ -1,6 +1,7 @@
 #include "Main.hpp"
 #include "EnemySoundQueue.hpp"
 #include "EnemyGameState.hpp"
+#include "EnemyPrimaryResources.hpp"
 #include "Enemy.hpp"
 #include "EnemyLaser.hpp"
 #include "EclVm.hpp"
@@ -150,11 +151,6 @@ enum EnemyEclOpcode
     ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY = 0x1B4,
 };
 
-struct EnemyPrimaryResourceOwnerView
-{
-    unsigned char unknown000000[0x3e0b50];
-    AnmLoadedView *primaryEnemyResource;
-};
 
 struct EnemyManagedVmView;
 struct EnemyBulletPatternCopyView
@@ -189,7 +185,6 @@ typedef char EnemyCancelManagerResourceAt3E0B50[
 extern int g_EnemyDifficulty;
 extern EnemyManagerView *g_EnemyManager;
 extern EnemyGameStateView *g_EnemyGameState;
-extern EnemyPrimaryResourceOwnerView *g_EnemyPrimaryResourceOwner;
 extern void *g_EnemyBulletManager;
 extern PlayerFloat3 g_EnemyGlobalPositionOffset;
 extern PlayerFloat3 g_EnemyInterpolationOrigin;

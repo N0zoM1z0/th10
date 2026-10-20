@@ -559,6 +559,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041C7D0,0x0041C7FB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0041C800,0x0041C84B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0041C850,0x0041C87B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
+0x0041CA80,0x0041CFCB,reviewed,high,laser-line-target-2026-10-20,Complete1269-byte code span (10 alignment)+3 tail alignment+5x4 pointers+64 selectors; unsigned DEC/CMP3F guard and every local destination reviewed; CC through41CFCF; vtable46DA60 and no external interior branch.
 0x0041CFD0,0x0041D169,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0041D2C0,0x0041D3CC,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0041D3D0,0x0041D7B8,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch

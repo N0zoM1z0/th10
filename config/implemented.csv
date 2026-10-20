@@ -1055,3 +1055,7 @@ EnemySpellPanelUpdateCallback
 ResultMenuDrawNameEntry
 ResultMenuDrawRows
 ResultMenuDrawRowsCallback
+EnemyLaserLineView::Update
+EnemyLaserLineView::Draw
+Player::CheckLaserContact
+EnemyLaserLineView::Motion0010

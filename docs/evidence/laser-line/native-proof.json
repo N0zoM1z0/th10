@@ -1,0 +1,266 @@
+{
+  "scope": "laser source/exact recovery; anchor images are not products",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_source_owned_bytes": 1645,
+  "new_indeterminate_source_bytes": 269,
+  "new_authored_denominator_bytes": 1356,
+  "new_authored_exact_bytes": 0,
+  "new_indeterminate_exact_bytes": 269,
+  "cold_translation_units_each": 1,
+  "project_input_sha256": {
+    "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+    "src/EnemyLaserLine.hpp": "5dffe20adcab1de46e0dd253033a23fc99ecef8a3ae823128f5b8e48ac54882e",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/LaserLine.cpp": "27b2e41a4d59e14bf75fa8639d187f7e957e2b4699d21d6becb2eecaff2bb313",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "graph": {
+    "artifact_kind": "linked-pe",
+    "source": "src/LaserLine.cpp",
+    "support_sources": [],
+    "output_dir": "build/match-linked/LaserLineMotion",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "?Motion0010@EnemyLaserLineView@@UAEXXZ",
+    "functions": [
+      "EnemyLaserLineView::Motion0010"
+    ],
+    "symbol": "?Motion0010@EnemyLaserLineView@@UAEXXZ",
+    "target_address": 4313792,
+    "size": 269,
+    "linkages": [
+      {
+        "offset": 34,
+        "type": "DIR32",
+        "symbol": "?g_AnmGameSpeed@@3MA",
+        "target": 4681592
+      },
+      {
+        "offset": 52,
+        "type": "DIR32",
+        "symbol": "?g_AnmGameSpeed@@3MA",
+        "target": 4681592
+      },
+      {
+        "offset": 64,
+        "type": "DIR32",
+        "symbol": "?g_AnmGameSpeed@@3MA",
+        "target": 4681592
+      },
+      {
+        "offset": 76,
+        "type": "DIR32",
+        "symbol": "?g_AnmGameSpeed@@3MA",
+        "target": 4681592
+      },
+      {
+        "offset": 121,
+        "type": "DIR32",
+        "symbol": "__real@38d1b717",
+        "target": 4656216
+      },
+      {
+        "offset": 139,
+        "type": "DIR32",
+        "symbol": "__real@38d1b717",
+        "target": 4656216
+      },
+      {
+        "offset": 183,
+        "type": "DIR32",
+        "symbol": "__real@3f7d70a4",
+        "target": 4655976
+      },
+      {
+        "offset": 198,
+        "type": "DIR32",
+        "symbol": "__real@3f8147ae",
+        "target": 4655972
+      },
+      {
+        "offset": 218,
+        "type": "DIR32",
+        "symbol": "__real@3f800000",
+        "target": 4655868
+      },
+      {
+        "offset": 254,
+        "type": "REL32",
+        "symbol": "__ftol2",
+        "target": 4602668
+      }
+    ]
+  },
+  "proofs": [
+    {
+      "cold": "one",
+      "artifact_sha256": {
+        "source.map": "9d83fdc69b7ffe795963b58d375be8e6fa8f158b7c527e52d565d287c36ff6a8",
+        "source.exe": "59f1d7f2068784f5cf11f1dc8b0ed908297c0a9958fe8da45ead4f0f715c9af6",
+        "source.ltcg.obj": "0e85085b10d850c6a2678764d7cb5de2b92b75abf9d544119fc1fff8477e0d1c",
+        "link-anchors.obj": "11a58572adbaabb370ef88292fd8b0eb78cd7d7837253c3025d23c282f32d467",
+        "source.pdb": "fdb628335d636ef2249acc85c1f08103701d506c32b9f5a964fd8f7297edeb3b"
+      },
+      "pdb_guid": "4e666eb32ed691428d02d8e67601de4c",
+      "result": "exact",
+      "complete_owned_bytes": 269,
+      "complete_compared_bytes": 269,
+      "decoded_bytes": 269,
+      "linked_fields": 10,
+      "normalization_complete": true,
+      "raw_equal": false
+    },
+    {
+      "cold": "two",
+      "artifact_sha256": {
+        "source.map": "05e256d3e5fc58c10ad5989596dcb8e2c6137eeb76f74d559e3f4e869a842769",
+        "source.exe": "f5dd39eafc169025689d262a8ef2c3949d676999c3964999843f24dbef1e7eb6",
+        "source.ltcg.obj": "47c0c2c9ee62c68d8193132369889839ae5371df5990fb833162d1af80b6457c",
+        "link-anchors.obj": "6e5f5b9dc73aa8ba850bf64ed9bf1265b1aaafd8ab13d63f857955c08ed251aa",
+        "source.pdb": "e0a0fc22e6e9f3dac431c39d380173267354a29c2503d9a1552880cf56e21ecf"
+      },
+      "pdb_guid": "3e4b9c30e2017849a1b7060360046687",
+      "result": "exact",
+      "complete_owned_bytes": 269,
+      "complete_compared_bytes": 269,
+      "decoded_bytes": 269,
+      "linked_fields": 10,
+      "normalization_complete": true,
+      "raw_equal": false
+    }
+  ],
+  "diagnostic": {
+    "authority": "none",
+    "source": "src/LaserLine.cpp",
+    "support_sources": [
+      "src/EnemyLaser.cpp",
+      "src/AnmManager.cpp",
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "entry_symbol": "?Update@EnemyLaserLineView@@UAEHXZ",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "project_input_sha256": {
+      "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+      "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3504107c3c00b2bf678965a3bbfb91f0a121eef3297c6c20c3ea68903430fe8c",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "2cddc20f43bf26aee89b31354bdf7c02d76c121f5a09c8dff70a64a4b117ac83",
+      "src/EnemyLaser.hpp": "b37486fc9421707645588b8b239d8c24a10f5d71d4b05fd34f6e8aa228be3743",
+      "src/EnemyLaserLine.hpp": "5dffe20adcab1de46e0dd253033a23fc99ecef8a3ae823128f5b8e48ac54882e",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/LaserLine.cpp": "27b2e41a4d59e14bf75fa8639d187f7e957e2b4699d21d6becb2eecaff2bb313",
+      "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    },
+    "reports": [
+      {
+        "name": "EnemyLaserLineView::Update",
+        "candidate_size": 1001,
+        "target_size": 1001,
+        "result": "mismatch",
+        "comparable_bytes": 877,
+        "matched_comparable_bytes": 847
+      },
+      {
+        "name": "EnemyLaserLineView::Draw",
+        "candidate_size": 168,
+        "target_size": 173,
+        "result": "mismatch",
+        "comparable_bytes": 133,
+        "matched_comparable_bytes": 11
+      },
+      {
+        "name": "EnemyLaserLineView::Motion0010",
+        "candidate_size": 266,
+        "target_size": 269,
+        "result": "mismatch",
+        "comparable_bytes": 229,
+        "matched_comparable_bytes": 31
+      },
+      {
+        "name": "Player::CheckLaserContact",
+        "candidate_size": 453,
+        "target_size": 471,
+        "result": "mismatch",
+        "comparable_bytes": 439,
+        "matched_comparable_bytes": 75
+      },
+      {
+        "name": "EnemyLaserVectorView::IsOutsidePlayfield",
+        "candidate_size": 91,
+        "target_size": 91,
+        "result": "structural-exact",
+        "comparable_bytes": 75,
+        "matched_comparable_bytes": 75
+      },
+      {
+        "name": "AnmVmTimerView::Add",
+        "candidate_size": 88,
+        "target_size": 88,
+        "result": "structural-exact",
+        "comparable_bytes": 72,
+        "matched_comparable_bytes": 72
+      },
+      {
+        "name": "EnemySoundQueueView::QueueSoundCue",
+        "candidate_size": 149,
+        "target_size": 149,
+        "result": "structural-exact",
+        "comparable_bytes": 137,
+        "matched_comparable_bytes": 137
+      }
+    ]
+  }
+}

@@ -408,6 +408,7 @@ struct Player
 
     Player();
     ~Player();
+    int CheckLaserContact(const PlayerFloat3 *origin, float angle, float width, float length);
     int CalculateDamageToTarget(
         const PlayerFloat3 *targetPosition,
         const PlayerFloat3 *targetSize,
