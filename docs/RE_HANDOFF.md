@@ -31,6 +31,23 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Title/main-menu recovery maps **1637 authored source bytes** across entry
+  42D300/288, interactive menu42D420/1280 and progress query42C850/69. Four
+  guarded local tables plus one NOP correct105 missing denominator bytes.
+  Source restores screen2 transition flag2, typed title resource+18/auxiliary
+  ID+684, cancellation-on-quit priority and double music-room sound10. The
+  six-marker query closes **69 new authored exact bytes**: two independent
+  full18-TU /GL /GS /EHs colds freeze53 inputs and each pass1181 complete
+  bytes/all32 fields, including1112 prior bytes. Actual-source ASan/UBSan/leak
+  checks and9 strict mutants pass. The sound owner is a fixed native array;
+  host roles use a fixed typed queue object. Entry284/288 and menu1308/1280
+  remain nonexact; source presence grants no parent-byte credit. Shared
+  ReplayManagerDestroy carrier now also owns frontend-has-any-clear. Current
+  input/object cache is recorded in the main-menu batch support-cache.json;
+  superseded replay cache/artifacts are pruned after validation. Next rotate
+  to a larger source gap (43B110/1323 remains queued) or require new private-
+  ABI/context evidence before menu codegen variants. See
+  [the complete target, native and host scope](evidence/frontend-main-menu/README.md).
 - Replay FPS429A70 closes **182 new authored exact bytes**; retained control
   429A30/58 and draw adapter42A430/28 add86 indeterminate exact bytes, with origin
   unchanged. Actual callback/Chain ECX protocol corrects the replay-local cdecl

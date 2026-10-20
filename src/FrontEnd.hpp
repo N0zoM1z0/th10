@@ -180,7 +180,7 @@ struct FrontEndControllerView
     unsigned char unknown000[0x010];
     FrontEndTransitionOwnerView *transitionOwner;
     AnmLoadedView *frontAnm;
-    int unknown018;
+    AnmLoadedView *titleAnm;
     int screen;
     int screenState;
     FrontEndCursorView cursor;
@@ -198,7 +198,7 @@ struct FrontEndControllerView
     unsigned char unknown5FC[0x18];
     AnmVmIdView musicRowVmIds[20];
     AnmVmIdView musicCommentVmIds[8];
-    int unknown684;
+    AnmVmIdView titleAuxVmId;
     int musicTrackCount;
     int musicCommentLine;
     int musicSelectedTrack;
@@ -249,6 +249,11 @@ struct FrontEndControllerView
     void SetScreenStateTarget(int state);
     void SetScreenTarget(int screen);
 };
+
+typedef char FrontEndControllerTitleSlots[
+    (offsetof(FrontEndControllerView, titleAnm) == 0x18 &&
+     offsetof(FrontEndControllerView, titleAuxVmId) == 0x684) ? 1 : -1];
+
 
 typedef char FrontEndControllerStateAt1C[
     (offsetof(FrontEndControllerView, screen) == 0x1c &&

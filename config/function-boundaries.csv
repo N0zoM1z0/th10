@@ -782,7 +782,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0042C750,0x0042C76A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=7; no overlap or external interior branch
 0x0042C770,0x0042C7B0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=36; no overlap or external interior branch
 0x0042C830,0x0042C836,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
-0x0042C850,0x0042C894,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0042C850,0x0042C894,reviewed,high,target-main-menu-owned-extent-2026-10-20,Tests exactly six profile progress bytes at +0x1D888 through +0x1D88D; true means a nonzero byte. 69-byte code followed by eleven CC bytes. Original profile type/source owner remains unknown.
 0x0042C8C0,0x0042C91C,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042C920,0x0042C9EB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0042CAA0,0x0042CB5F,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x42c9f7 to entry; independent IDA MCP extent agrees"
@@ -793,8 +793,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x0042D260,0x0042D2D3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 111/116; owned indirect control table at 0x0042D2B4
 0x0042D2E0,0x0042D2E6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail jmp"
 0x0042D2F0,0x0042D2F6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail jmp"
-0x0042D300,0x0042D40B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0042D420,0x0042D8CA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0042D300,0x0042D41F,reviewed,high,target-main-menu-owned-extent-2026-10-20,Three states plus exit; five guarded local destinations; dispatcher calls from 0x42D065. Complete 268-byte code plus 20-byte switch table at 0x42D40C through 0x42D41F; next owner starts 0x42D420.
+0x0042D420,0x0042D91F,reviewed,high,target-main-menu-owned-extent-2026-10-20,"Eight-item interactive title menu; dispatcher calls from 0x42D0BD. Complete 1195-byte code, one NOP, five-entry state table at 0x42D8CC and two eight-entry item tables at 0x42D8E0/0x42D900 through 0x42D91F; next Options owner starts 0x42D920."
 0x0042D920,0x0042E593,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 3187/3188; owned indirect control table at 0x0042E580
 0x0042E5A0,0x0042F53E,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 3999/3999, tail jmp"
 0x0042F540,0x0042F8AF,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 879/880; owned indirect control table at 0x0042F89C

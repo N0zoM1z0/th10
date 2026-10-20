@@ -155,8 +155,8 @@ extern void FrontEndResetAsciiAuxiliary(int *state);
 extern signed char *__fastcall FrontEndGetControllerState(int controllerIndex);
 extern int FrontEndReadKeyboardState(unsigned char *keyboardState);
 
-extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
-extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
+int __stdcall FrontEndUpdateMainMenu(FrontEndControllerView *controller);
+int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
 int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
 extern void EnemyMarkPendingInterrupt(int *vmId);
@@ -813,6 +813,217 @@ int AsciiManagerView::EnsureSelectionVm(float x, float y)
 }
 
 
+// TH10_FRONTEND_FUNCTION: 0x0042C850 FrontEndHasAnyClear
+// Six per-shot progress bytes select whether Extra is available. The broader
+// profile owner and the original type/name remain unresolved.
+int FrontEndHasAnyClear(const unsigned char *profile)
+{
+    if (profile[0x1d888] != 0 || profile[0x1d889] != 0 ||
+        profile[0x1d88a] != 0 || profile[0x1d88b] != 0 ||
+        profile[0x1d88c] != 0 || profile[0x1d88d] != 0)
+        return 1;
+    return 0;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x0042D300 FrontEndUpdateMainMenu
+int __stdcall FrontEndUpdateMainMenu(FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case 0:
+        if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x58]) == NULL)
+        {
+            CreateVm(controller, 0x58);
+            CreateVm(controller, 0x5a);
+            controller->titleAuxVmId =
+                controller->titleAnm->CreateVmVariant0(0, 15);
+        }
+        controller->SetScreenStateTarget(1);
+        controller->cursor.SetCurrent(0);
+        // The opening threshold is sampled after the phase/timer reset.
+    case 1:
+        if (controller->stateTimer.current > 10)
+            controller->SetScreenStateTarget(2);
+        break;
+    case 2:
+        if ((g_FrontEndInput.pressed & 0x160b) != 0)
+        {
+            FrontEndMarkVmInterrupt(controller, 0x5a, 6);
+            controller->SetScreenStateTarget(4);
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                0x20, 0);
+            EnemyMarkPendingInterrupt(&controller->titleAuxVmId.value);
+        }
+        break;
+    case 4:
+        if (controller->stateTimer.current >= 30)
+            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x0042D420 FrontEndUpdateMainMenuReturn
+int __stdcall FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case 0:
+        controller->cursor.count = 8;
+        if (FrontEndHasAnyClear(g_FrontEndProfileData) == 0)
+            controller->cursor.DisableEntry(1);
+        if ((g_FrontEndFlags & 0x10) != 0)
+        {
+            controller->cursor.SetCurrent(2);
+            g_FrontEndFlags &= ~0x10u;
+        }
+        if (g_AnmRenderManagerView->FindVm(controller->vmIds[0x58]) == NULL)
+            CreateVm(controller, 0x58);
+        CreateVm(controller, 0);
+        controller->SetScreenStateTarget(1);
+    case 1:
+        if (controller->stateTimer.current > 10)
+        {
+            controller->SetScreenStateTarget(2);
+            InterruptVmNow(controller, 0, 3);
+            FrontEndMarkVmInterrupt(
+                controller, 0, static_cast<short>(controller->cursor.current + 0x11));
+        }
+        break;
+    case 2:
+    {
+        FrontEndCursorView *cursor = &controller->cursor;
+        cursor->previous = cursor->current;
+        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_UP))
+            cursor->Move(-1);
+        if (g_FrontEndInput.IsRepeated(FRONT_END_INPUT_DOWN))
+            cursor->Move(1);
+        if (cursor->previous != cursor->current)
+        {
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                FRONT_END_SOUND_MOVE, 0);
+            InterruptVmNow(controller, 0, 3);
+            FrontEndMarkVmInterrupt(
+                controller, 0, static_cast<short>(cursor->current + 7));
+        }
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            if (cursor->current == 7)
+                goto quit;
+            reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                FRONT_END_SOUND_CANCEL, 0);
+            cursor->SetCurrent(7);
+            InterruptVmNow(controller, 0, 3);
+            FrontEndMarkVmInterrupt(
+                controller, 0, static_cast<short>(cursor->current + 7));
+        }
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            FrontEndMarkVmInterrupt(controller, 0, 6);
+            switch (cursor->current)
+            {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                    FRONT_END_SOUND_SELECT, 0);
+                FrontEndMarkVmInterrupt(controller, 0x5a, 7);
+                FrontEndMarkVmInterrupt(controller, 0x5b, 7);
+                controller->SetScreenStateTarget(4);
+                break;
+            case 5:
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                    FRONT_END_SOUND_SELECT, 0);
+                FrontEndMarkVmInterrupt(controller, 0x5a, 7);
+                FrontEndMarkVmInterrupt(controller, 0x5b, 7);
+                controller->SetScreenStateTarget(4);
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                    FRONT_END_SOUND_SELECT, 0);
+                break;
+            case 6:
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                    FRONT_END_SOUND_SELECT, 0);
+                controller->SetScreenStateTarget(4);
+                InterruptVmNow(controller, 0x5a, 3);
+                InterruptVmNow(controller, 0x5b, 3);
+                break;
+            case 7:
+            quit:
+                reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundSample(
+                    FRONT_END_SOUND_CANCEL, 0);
+                controller->SetScreenStateTarget(4);
+                break;
+            }
+        }
+        break;
+    }
+    case 4:
+        if (controller->stateTimer.current >= 20)
+        {
+            FrontEndCursorView *cursor = &controller->cursor;
+            switch (cursor->current)
+            {
+            case 0:
+                g_FrontEndFlags &= ~0x10u;
+                DeleteVm(controller, 0x58);
+                controller->SetScreenTarget(FRONT_END_SCREEN_DIFFICULTY);
+                cursor->Push();
+                if (g_ReplayDifficulty >= 4)
+                    g_ReplayDifficulty = 1;
+                cursor->SetCurrent(g_ReplayDifficulty);
+                break;
+            case 1:
+                g_FrontEndFlags &= ~0x10u;
+                DeleteVm(controller, 0x58);
+                controller->SetScreenTarget(FRONT_END_SCREEN_DIFFICULTY);
+                cursor->Push();
+                controller->savedDifficulty = g_ReplayDifficulty;
+                g_ReplayDifficulty = 4;
+                cursor->SetCurrent(0);
+                break;
+            case 2:
+                g_FrontEndFlags |= 0x10;
+                DeleteVm(controller, 0x58);
+                controller->SetScreenTarget(FRONT_END_SCREEN_DIFFICULTY);
+                cursor->Push();
+                if (g_ReplayDifficulty >= 4)
+                    g_ReplayDifficulty = 1;
+                cursor->SetCurrent(g_ReplayDifficulty);
+                break;
+            case 3:
+                DeleteVm(controller, 0x58);
+                controller->SetScreenTarget(FRONT_END_SCREEN_REPLAY);
+                cursor->Push();
+                break;
+            case 4:
+                DeleteVm(controller, 0x58);
+                controller->SetScreenTarget(FRONT_END_SCREEN_PRACTICE);
+                cursor->Push();
+                break;
+            case 5:
+                DeleteVm(controller, 0x58);
+                controller->SetScreenTarget(FRONT_END_SCREEN_MUSIC_ROOM);
+                cursor->Push();
+                break;
+            case 6:
+                controller->SetScreenTarget(FRONT_END_SCREEN_OPTIONS);
+                cursor->Push();
+                break;
+            case 7:
+                controller->SetScreenTarget(FRONT_END_SCREEN_START_GAME);
+                break;
+            }
+        }
+        break;
+    }
+    return 1;
+}
+
+
 // TH10_FRONTEND_FUNCTION: 0x0042CDF0 FrontEndControllerView::Update
 int FrontEndControllerView::Update()
 {
@@ -831,6 +1042,7 @@ int FrontEndControllerView::Update()
         FrontEndUpdateMainMenu(this);
         break;
     case FRONT_END_SCREEN_MAIN_MENU_RETURN:
+        transitionOwner->flags004 |= FRONT_END_TRANSITION_ACTIVE;
         FrontEndUpdateMainMenuReturn(this);
         break;
     case FRONT_END_SCREEN_START_GAME:

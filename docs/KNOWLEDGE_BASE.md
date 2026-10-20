@@ -3052,3 +3052,37 @@ controls. Existing SDK/layout/prefill/time/I/O/renderer/queue seams remain.
 The affected GameManager teardown baseline consumes the canonical fastcall
 pointer typedef and passes. Pre-existing D3D evidence is untouched. See
 [the complete target, native and host scope](evidence/replay-callbacks/README.md).
+
+
+## Title entry and interactive menu (2026-10-20)
+
+Target/local read-only Ghidra review identifies 42D300 as the title-entry path
+and 42D420 as the interactive eight-item menu. Their complete physical owners
+are 288 and1280 bytes: the former has268 code+20 table bytes; the latter has1195
+code+one NOP+84 table bytes. Four unsigned-guarded local tables, their complete
+destinations, direct dispatcher callers and adjacent independent owners establish
+ownership. This adds105 authored denominator bytes without inventing code or
+using nonexistent target PE relocations. Maintained natural source plus the69-
+byte six-progress-marker query42C850 maps1637 authored bytes. Source names do
+not identify original symbols/TUs or the full score-file owner.
+
+The title resource at controller+18 and auxiliary VM ID at+684 are now typed
+and asserted. Title entry only recreates slots88/90 and the auxiliary when88 is
+missing; pressed160B starts its30-frame close. The interactive menu uses six
+profile bytes1D888..1D88D to gate Extra, preserves cancellation-on-quit priority,
+queues music-room sound10 both before and after phase4 reset, and routes eight
+items to6/6/6/12/11/14/4/3 after20 frames. Extra saves difficulty before setting4;
+ordinary/practice selection caps values>=4 to1. Source Update now preserves the
+observed transition-owner flag2 write before the screen2 call.
+
+Cached diagnostic retained entry284/288 and menu1308/1280; they remain nonexact.
+The progress-query body is69/69 raw-equal, fully decoded with zero link fields.
+Two independent complete18-TU /GL /GS /EHs colds freeze53 source/header inputs
+and each pass1181 complete bytes/all32 fields, including1112 prior guard bytes.
+Only the query adds69 authored exact bytes. The shared ReplayManagerDestroy
+carrier is refreshed for its same build group. The strict cold proof and
+host scope are recorded in [the focused evidence](evidence/frontend-main-menu/README.md).
+Actual owners/cursor/input/queue bodies and canonical headers are host-tested
+with explicit VM/state/layout/prefill roles; nine named mutants include input
+priority, frame boundaries, Extra persistence and auxiliary identity. No native
+product, runtime, complete source ownership or semantic/port claim follows.

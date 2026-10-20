@@ -1042,3 +1042,6 @@ ReplayManager::ControlPlaybackFrames,0x00429A30,function
 ReplayProcessFrameCallback,0x0042A3D0,function
 ReplayPlaybackFrameControlCallback,0x0042A3E0,function
 ReplayDrawFpsCallback,0x0042A430,function
+FrontEndUpdateMainMenu,0x0042D300,function
+FrontEndUpdateMainMenuReturn,0x0042D420,function
+FrontEndHasAnyClear,0x0042C850,function

@@ -1041,3 +1041,6 @@ ReplayManager::ControlPlaybackFrames
 ReplayProcessFrameCallback
 ReplayPlaybackFrameControlCallback
 ReplayDrawFpsCallback
+FrontEndUpdateMainMenu
+FrontEndUpdateMainMenuReturn
+FrontEndHasAnyClear
