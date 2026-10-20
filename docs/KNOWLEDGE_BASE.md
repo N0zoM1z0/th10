@@ -3335,3 +3335,25 @@ runtime reachability are open. Next inspect cleanup609/type-1 init or the
 unreferenced54/query226 independently. See [complete scope](evidence/laser-init/README.md).
 All90 public CI checks pass, with final target/toolchain/tracking/progress/
 whitespace checks. About5.1 MB of superseded controls and host binaries are pruned.
+
+## Laser line clear and actual Item Spawn binding (2026-10-20)
+
+- Clear41E260 owns609 bytes through41E4C0, slot14h of46DA60, one stack mode,
+  RET4/EAX count. It samples at6 then stride12 with strict ordered initial
+  12<length and live distance+6<length continuation. Explicit zero stepZ is
+  added after each segment; initial signed-zero Z is not preserved forever.
+  Finally stateC=1, distinct from deletion byte50. Source present, not exact.
+- Signed color44A selects2*color+17 from current laser manager47781C resource458.
+  The actual world creator writes positionOffset340 plus224/16, executes
+  binder43E710 and registers with the post-script current renderer491C10.
+  Resource/color/length are live between script executions; geometric step and
+  original position are captured once. Entry/equality/NaN rules are distinct
+  from the four negated margin32 playfield rejects, which accept unordered.
+- Enabled item drops use actual ItemManager477818/Spawn41BB00 with pointECX,
+  receiverEAX, stack8/FFFFFFFF/-pi/2/0.6 and RET16. Four existing collision
+  owners41D880/41DD80/41EB00/41EFA0 share that helper/global. The invented
+  cancel-effect manager alias is removed; canonical ItemManager.hpp is shared.
+- Natural three-float construction/assignment reflects the observed temporary
+  copy, but does not solve the private binder registers or ANM scheduling.
+  No forced volatile/placement/ABI fix is accepted. Native exactness and product
+  closure stay open; see [complete scope](evidence/laser-clear/README.md).

@@ -1063,3 +1063,4 @@ EnemyLaserLineView::Motion0010,0x0041D2C0,function
 EnemyLaserLineView::RunCommands,0x0041CA80,function
 EnemyLaserLineView::Initialize,0x0041C8C0,function
 EnemyLaserLineView::Motion0040,0x0041D170,function
+EnemyLaserLineView::Clear,0x0041E260,function

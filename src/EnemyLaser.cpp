@@ -1,5 +1,6 @@
 #include "AnmManager.hpp"
 #include "EnemyLaser.hpp"
+#include "ItemManager.hpp"
 #include "EnemySoundQueue.hpp"
 #include <new>
 
@@ -151,15 +152,6 @@ void EnemyLaserBoundaryStateView::UpdateBoundary()
 // dwords (0x1DC bytes).  Its short type/color pair at +0x24/+0x26 and the
 // pattern payload at +0x2C are also independently observed by the dispatcher
 // and request-apply path.
-struct EnemyLaserHitEffectManagerView
-{
-    void SpawnCancelEffect(
-        EnemyLaserVectorView *position,
-        int kind, int color, float angle, float scale);
-};
-
-extern EnemyLaserHitEffectManagerView *g_EnemyLaserHitEffectManager;
-
 struct EnemyLaserManagerResourceView
 {
     unsigned char unknown000[0x458];
@@ -265,8 +257,9 @@ int EnemyLaserType0CollisionView::CheckCollisionBox(
             if (capture != 0 &&
                 sample.IsOutsidePlayfield(32.0f, 32.0f) == 0)
             {
-                g_EnemyLaserHitEffectManager->SpawnCancelEffect(
-                    &sample, 8, -1, -1.5707964f, 0.6f);
+                g_ItemManager->Spawn(
+                    reinterpret_cast<const AnmFloat3View *>(&sample),
+                    8, 0xffffffffu, -1.5707964f, 0.6f);
             }
 
             EnemyLaserManagerResourceView *manager =
@@ -412,8 +405,9 @@ int EnemyLaserType0CollisionView::CheckCollisionCircle(
                 g_EnemyPlayfieldMinY <= sample.y + 32.0f &&
                 sample.y - 32.0f < g_EnemyPlayfieldMaxY)
             {
-                g_EnemyLaserHitEffectManager->SpawnCancelEffect(
-                    &sample, 8, -1, -1.5707964f, 0.6f);
+                g_ItemManager->Spawn(
+                    reinterpret_cast<const AnmFloat3View *>(&sample),
+                    8, 0xffffffffu, -1.5707964f, 0.6f);
             }
 
             EnemyLaserManagerResourceView *manager =
@@ -613,8 +607,9 @@ int EnemyLaserType1CollisionView::CheckCollisionBox(
             if (capture != 0 &&
                 sample.IsOutsidePlayfield(32.0f, 32.0f) == 0)
             {
-                g_EnemyLaserHitEffectManager->SpawnCancelEffect(
-                    &sample, 8, -1, -1.5707964f, 0.6f);
+                g_ItemManager->Spawn(
+                    reinterpret_cast<const AnmFloat3View *>(&sample),
+                    8, 0xffffffffu, -1.5707964f, 0.6f);
             }
 
             EnemyLaserManagerResourceView *manager =
@@ -740,8 +735,9 @@ int EnemyLaserType1CollisionView::CheckCollisionCircle(
                 g_EnemyPlayfieldMinY <= sample.y + 32.0f &&
                 sample.y - 32.0f < g_EnemyPlayfieldMaxY)
             {
-                g_EnemyLaserHitEffectManager->SpawnCancelEffect(
-                    &sample, 8, -1, -1.5707964f, 0.6f);
+                g_ItemManager->Spawn(
+                    reinterpret_cast<const AnmFloat3View *>(&sample),
+                    8, 0xffffffffu, -1.5707964f, 0.6f);
             }
 
             EnemyLaserManagerResourceView *manager =

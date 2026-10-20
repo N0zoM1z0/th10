@@ -53,7 +53,7 @@ void PlayerHandleCollisionHit(Player *p){CHECK(p==g_Player,"hit-receiver");event
 void EnemyLaserLineView::RunCommands(){event("commands");}
 int EnemyLaserLineView::Initialize(const EnemyLaserType0RequestView *){throw Failure{"unexpected-slot"};}
 void EnemyLaserLineView::UnknownSlot10(){throw Failure{"unexpected-slot"};}
-void EnemyLaserLineView::UnknownSlot14(){throw Failure{"unexpected-slot"};}
+int EnemyLaserLineView::Clear(int){throw Failure{"unexpected-slot"};}
 void EnemyLaserLineView::UnknownSlot1C(){throw Failure{"unexpected-slot"};}
 void EnemyLaserLineView::UnknownSlot20(){throw Failure{"unexpected-slot"};}
 void EnemyLaserLineView::Motion0001(){event("m1");}

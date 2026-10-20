@@ -10,7 +10,7 @@ struct EnemyLaserLineView
     virtual int Update();
     virtual int Draw();
     virtual void UnknownSlot10();
-    virtual void UnknownSlot14();
+    virtual int Clear(int spawnItems);
     virtual int CheckCollisionBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
     virtual void UnknownSlot1C();
     virtual void UnknownSlot20();

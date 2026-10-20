@@ -38,7 +38,8 @@ void AnmVmView::Initialize(){CHECK(this==&line.primaryVm,"embedded-vm-receiver")
 void AnmLoadedView::InitializeAndExecuteScriptIndex(AnmVmView *vm,int script){CHECK(vm==&line.primaryVm,"embedded-vm-receiver");startedResource=this;startedScript=script;event("start-script");}
 void EnemyLaserVectorView::FromAngleMagnitude(float a,float n){x=std::cos(a)*n;y=std::sin(a)*n;/* HOST math role: Z remains untouched. */}
 #define UNUSED_VOID(name) void EnemyLaserLineView::name(){throw Failure{"unexpected-slot"};}
-UNUSED_VOID(UnknownSlot10) UNUSED_VOID(UnknownSlot14) UNUSED_VOID(UnknownSlot1C) UNUSED_VOID(UnknownSlot20)
+int EnemyLaserLineView::Clear(int){throw Failure{"unexpected-slot"};}
+UNUSED_VOID(UnknownSlot10) UNUSED_VOID(UnknownSlot1C) UNUSED_VOID(UnknownSlot20)
 UNUSED_VOID(Motion0001) UNUSED_VOID(Motion0010) UNUSED_VOID(Motion0020) UNUSED_VOID(Motion0040) UNUSED_VOID(Motion0100) UNUSED_VOID(Motion0080)
 UNUSED_VOID(Bounce) UNUSED_VOID(Motion100000) UNUSED_VOID(Motion200000) UNUSED_VOID(Motion4000000)
 int EnemyLaserLineView::Update(){throw Failure{"unexpected-slot"};}

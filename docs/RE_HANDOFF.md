@@ -28,6 +28,27 @@ scratch paths, or build hashes into this file.
 
 ## Current local checkpoint (2026-10-20)
 
+- Laser Clear41E260/609 now maps its complete authored source with no new
+  denominator/exact credit. Slot14h/RET4 samples6 then12, uses signed color,
+  live laser resource/renderer/length, actual Item Spawn477818/41BB00, and
+  finally sets stateC=1/returns count. World coordinates use VM.offset340,
+  distinct from Draw334. Explicit zero stepZ is added, including signed-zero
+  behavior. Four collision owners share actual ItemManager.hpp/global/method;
+  the invented cancel-effect alias is removed. Actual creators/allocator/list/
+  kind8 Item source host checks cover fresh post-script state with no fake
+  callbacks in pure helpers. Aggregate/direct-constructor4-TU /GL /GS597 and
+  natural constructor/assignment613 remain nonexact against609; the latter
+  reflects the target's three-float temporary/copy, with private binder
+  registers/ANM scheduling still open. Require new caller/TU evidence before
+  more shape controls. Focused existing polar/bounds/Motion0010/Motion0040
+  guards pass719 bytes/all22 fields. Host ASan/UBSan/leaks and25 strict mutants
+  pass. No full historical replay; old laser-init cache hashes are historical
+  for this changed header/EnemyLaser.cpp; use the current clear-batch cache
+  with per-dependency hash checks. Next target table46DA10 has untracked slot4
+  41E5C0 and slotC41EA40; their extents/origins are unreviewed. Review these
+  before type1 Update41E700/816 or another large gap. Query41E4D0 stays a
+  separate unknown-origin frontier. See [complete scope](evidence/laser-clear/README.md).
+  All91 public CI checks pass;1.9 MB of superseded controls/host artifacts pruned.
 - Continue toward **95% of reviewed authored bytes exact**, with both large
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
