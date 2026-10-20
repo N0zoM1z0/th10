@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "owner": {
+    "address": "0x0044E1A0",
+    "span_end": "0x0044FD0B",
+    "size": 7020,
+    "sha256": "b802e20de41d15a9bd59d3b7110f99840e56e5d40f27a2cda159b883d9fe3667",
+    "pre_table_bytes": 6692,
+    "code_bytes": 6690,
+    "alignment_bytes": "8bff",
+    "jump_slots": 60,
+    "jump_table_address": "0x0044FBC4",
+    "selector_bytes": 88,
+    "selector_address": "0x0044FCB4",
+    "following_padding": "cccccccc"
+  },
+  "ghidra": {
+    "transport": "local readOnly/noanalysis headless; no IDA/Factory MCP",
+    "max_heap_mib": 768,
+    "active_processor_count": 1,
+    "program_executable_sha256_verified": true,
+    "entire_mapped_text_start": "0x00401000",
+    "entire_mapped_text_size": 412289,
+    "before_and_after_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "transaction_rolled_back": true,
+    "review_output_sha256": "c6cacc2990b96868192f7d258f5b5ad7abc046f60fac9948d8e026fc0bcc5faa"
+  },
+  "observations": [
+    "44E40F loads live instruction through EBX;44E411/414 read/store time and44E416 reads delta through the same EAX;44E419 joins44FB81.",
+    "44FB77 loads instruction from context+4,44FB7A loads size and44FB81 adds offset to the same EAX base.",
+    "FORMAT allocates1024 bytes, copies/truncates the string, retains percent/d/f dispatch and discards typed operand-service results; original source trace identity is unknown."
+  ],
+  "reference_hypothesis": {
+    "repository": "https://github.com/levzzz5154/th10-decomp.git",
+    "commit": "c6791d82dc9f02e55eca45a5314f900a85481efd",
+    "path": "matching2/msvc/src/script/sptcmd/ecl_core_interpreter.cpp",
+    "license": "docs/licenses/th10-decomp-MIT.txt",
+    "scope": "source-shape hypothesis only; unused text and retained branch are TH10 target observations"
+  }
+}

@@ -3445,3 +3445,40 @@ See [complete scope](evidence/laser-type1-clear/README.md).
   frame854/850 remain nonexact. No original source ABI/TU/data owner or native
   product/runtime claim follows. Actual-owner/helper source passes32 strict
   ASan/UBSan/leak mutation controls. See [full scope](evidence/input-polling/README.md).
+
+
+### 2026-10-20: Complete ECL Run disabled-trace and advance-base model
+
+The [complete-owner checkpoint](evidence/ecl-run-disabled-trace/README.md)
+retains all7020 bytes,60 relative switch destinations and88 selectors. A natural
+empty variadic trace consumer, suggested by the pinned MIT reference, preserves
+FORMAT's redundant percent arm and argument-evaluation lifetimes. A single
+counter increments within each typed arm; VC7.1 derives the three observed
+induction values without either old volatile qualifier. Original logging
+identity/definition and production TU ownership remain hypotheses. A common
+increment produces7028/7020; typed-arm increments recover7020 and6231/6264
+comparable matches. Removing the sink removes the percent arm, so this is
+new consumer/lifetime evidence rather than a repetition of the old isolated
+switch/qualifier controls.
+
+One explicit advance snapshot then restores the fresh EAX jump base / ECX delta
+and ordinary advance sequence observed at44E40F/44FB77/44FB81. In the new trace
+context this does not reproduce the old6948-byte regression. Two final16-input
+cold real-EnemyRuntimeUpdate links reproduce7020 and6236/6264 comparable
+positions; ordinary differences fall139 to28 (16 before FORMAT,10 within its
+physical interval,2 after). The selector suffix still leaves generic
+normalization incomplete. No full-owner or partial exact credit is added.
+
+Counter declaration placement, squared-sum expression order and named trace
+results are code-neutral in the shared-base context; a point-angle result local
+is code-neutral against the old baseline. All controls are restored. No forced
+registers, noinline, padding, fake ABI or copied target code is used. Eight
+complete same-image guards strictly preserve1061 bytes/all20 fields twice.
+FORMAT actual-source host checks pass10 scenarios/eight strict functional
+mutants under ASan/UBSan/leak checking, including live instruction replacement.
+A reviewed private control-projection adapter retains all11 assertion-only
+mutants; its stale-base mutation assigns the cached current pointer explicitly,
+not an uninitialized pointer. Neither suite establishes full opcode semantics,
+original/native execution or malformed-input safety. Exact numerator and owned
+byte denominator stay unchanged; large-owner, product/runtime and later gates
+remain open.

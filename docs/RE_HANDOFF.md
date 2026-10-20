@@ -28,6 +28,22 @@ scratch paths, or build hashes into this file.
 
 ## Current local checkpoint (2026-10-20)
 
+- Operator priority is now **large functions first**; park further input-helper
+  work. Complete ECL Run7020 improves from139 to28 ordinary diagnostic
+  differences (6236/6264), with all60 relative destinations and88 selector bytes
+  retained in two complete16-input cold real-caller links. A natural disabled
+  variadic trace plus branch-local consumption replaces both volatile locals;
+  one live shared advance base restores the target jump/common dataflow.
+  Eight existing complete guards strictly pass1061 bytes/all20 fields twice.
+  Actual FORMAT projection passes10 scenarios/all8 strict mutants with
+  ASan/UBSan/leaks; the existing control projection retains11 strict mutants
+  through a reviewed private adapter. Zero new exact credit: authored exact
+  remains64776/273274 bytes (23.70%). Stack homes, four index encodings, other
+  register choices and selector normalization stay open. Do not repeat the
+  code-neutral point-result, counter-declaration, squared-order or trace-value
+  controls. About13.2 MB of superseded native/host/report artifacts pruned;
+  one current carrier retained. All95 public CI checks and the final focused
+  default-build-path check pass. See [complete scope](evidence/ecl-run-disabled-trace/README.md).
 - Input polling now maps1947 existing authored bytes in InputPolling.cpp:
   joystick merge44A190/833, buttons44A4E0/264 and frame poll44A5F0/850. The
   button query closes264 authored exact bytes in two completeone-TU /GL /GS
@@ -678,7 +694,7 @@ ledger entries. Rebuild each probe after changing a supporting translation unit.
 
 | Owner | Last checked source context | Observed candidate / target | Open work |
 | --- | --- | --- | --- |
-| ECL `EclVmContext::Run` | `2f954d0` plus retained scoped jump operands, real Enemy caller /GL graph | 7,020 / 7,020 owned bytes; all 60 table destinations and 88 selector bytes aligned; 6,125 / 6,264 diagnostic comparable matches | 139 ordinary differences, incomplete selector normalization and remaining alias/register/stack structure; non-exact |
+| ECL `EclVmContext::Run` | 2026-10-20 disabled trace / branch-local consumption / shared advance base, pinned in current evidence; real Enemy caller /GL graph | 7,020 / 7,020 owned bytes; all 60 table destinations and 88 selector bytes aligned; 6,236 / 6,264 diagnostic comparable matches | 28 ordinary differences, incomplete selector normalization and remaining register/stack structure; non-exact |
 | ANM `ExecuteScript` | 2026-10-19 tangent-first byte-formal source, pinned in primary-alpha evidence; real four-TU /GL /GS graph | 9,948 / 9,964 bytes, frame 0xF8 / target 0xFC; 92 physical groups ordered, 84 target-sized spans; 1,312 / 8,564 whole-owner and 6,492 / 8,000 case-aligned comparable positions | Eight unequal spans, stack homes, register scheduling and remaining aggregate/RNG context; non-exact |
 | Enemy `DispatchEclInstruction` | 2026-10-19 shared polar-pair storage, pinned eight-TU /GL /GS direct-entry graph | 14,524 / 14,416 bytes; all 181 selector bytes and 108 ordered groups; frame 0x2C4 agrees; 19 sentinel comparisons | Polar 396/405; final-angle float32 store restored; private argument adapters, remaining schedule, spawn/laser lifetimes and stack homes remain non-exact |
 

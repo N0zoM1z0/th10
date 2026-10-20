@@ -1,5 +1,8 @@
 #include "EclVm.hpp"
 
+// FORMAT source shape informed by th10-decomp (MIT), commit c6791d82dc9f02e55eca45a5314f900a85481efd.
+// See docs/licenses/th10-decomp-MIT.txt; target/native evidence remains authoritative.
+
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>
@@ -685,6 +688,13 @@ void EclVmHost::StopAllThreads()
 }
 
 
+// Model the disabled variadic trace suggested by FORMAT's unused text copy.
+// Argument evaluation remains observable; the original trace definition is unknown.
+static void EclDebugTrace(const char *format, ...)
+{
+}
+
+
 int EclVmContext::Run(float timeDelta)
 {
     EclVmInstruction **const instructionCursor = &instruction;
@@ -695,6 +705,7 @@ int EclVmContext::Run(float timeDelta)
     while (static_cast<float>((*instructionCursor)->time) <= currentTime) {
         EclVmInstruction *current = *instructionCursor;
         int instructionOffset;
+        EclVmInstruction *advanceInstruction;
 
         if ((difficultyMask & current->difficultyMask) != 0) {
             int floatResult;
@@ -794,9 +805,9 @@ int EclVmContext::Run(float timeDelta)
             case ECL_VM_JUMP:
 jump_instruction:
             {
-                EclVmInstruction *jumpInstruction = *instructionCursor;
-                currentTime = static_cast<float>(OperandInt(jumpInstruction, 1));
-                instructionOffset = OperandInt(jumpInstruction, 0);
+                advanceInstruction = *instructionCursor;
+                currentTime = static_cast<float>(OperandInt(advanceInstruction, 1));
+                instructionOffset = OperandInt(advanceInstruction, 0);
                 goto advance_instruction;
             }
 
@@ -1155,46 +1166,42 @@ jump_instruction:
                 char *scratch = static_cast<char *>(malloc(0x400));
                 scratch[0] = '\0';
 
-                if (cursor != NULL) {
-                    int flagIndex = 1;
-                    volatile int metadataOffset = 0;
-                    int valueWord = 6;
-                    const char * volatile percent;
-                    do {
-                        const char *found = strchr(cursor, '%');
-                        percent = found;
-                        if (found == NULL)
-                            break;
+                int argumentIndex = 0;
+                while (cursor != NULL) {
+                    const char *percent = strchr(cursor, '%');
+                    if (percent == NULL)
+                        break;
 
-                        strcpy(scratch, cursor);
-                        scratch[percent - cursor] = '\0';
-                        const char conversion = percent[1];
-                        if (conversion == '%') {
-                            cursor = percent + 2;
-                            continue;
+                    strcpy(scratch, cursor);
+                    scratch[percent - cursor] = '\0';
+                    switch (percent[1]) {
+                    case '%':
+                        EclDebugTrace(scratch);
+                        break;
+                    case 'd':
+                    case 'f':
+                    {
+                        const int inlineBytes = OperandInt(instruction, 0);
+                        const char argumentType = *(
+                            reinterpret_cast<const char *>(instruction)
+                            + 0x14 + inlineBytes + argumentIndex * 8);
+                        if (argumentType == 'f' || argumentType == 'g') {
+                            EclDebugTrace(scratch, ReadFloatValue(
+                                argumentIndex + 1,
+                                reinterpret_cast<const float *>(instruction)[
+                                    inlineBytes / 4 + 6 + argumentIndex * 2]));
+                            ++argumentIndex;
+                        } else {
+                            EclDebugTrace(scratch, ReadIntValue(
+                                argumentIndex + 1,
+                                reinterpret_cast<const int *>(instruction)[
+                                    inlineBytes / 4 + 6 + argumentIndex * 2]));
+                            ++argumentIndex;
                         }
-                        if (conversion == 'd' || conversion == 'f') {
-                            const int inlineBytes = OperandInt(instruction, 0);
-                            const char argumentType = *(
-                                reinterpret_cast<const char *>(instruction)
-                                + 0x14 + inlineBytes + metadataOffset);
-                            if (argumentType == 'f' || argumentType == 'g') {
-                                ReadFloatValue(
-                                    flagIndex,
-                                    reinterpret_cast<const float *>(instruction)[
-                                        inlineBytes / 4 + valueWord]);
-                            } else {
-                                ReadIntValue(
-                                    flagIndex,
-                                    reinterpret_cast<const int *>(instruction)[
-                                        inlineBytes / 4 + valueWord]);
-                            }
-                            metadataOffset += 8;
-                            valueWord += 2;
-                            ++flagIndex;
-                        }
-                        cursor = percent + 2;
-                    } while (cursor != NULL);
+                        break;
+                    }
+                    }
+                    cursor = percent + 2;
                 }
                 free(scratch);
                 break;
@@ -1207,14 +1214,13 @@ jump_instruction:
             }
         }
 
-        current = *instructionCursor;
-        instructionOffset = current->size;
+        advanceInstruction = *instructionCursor;
+        instructionOffset = advanceInstruction->size;
 advance_instruction:
         unsigned char *advanceBytes =
-            reinterpret_cast<unsigned char *>(current);
+            reinterpret_cast<unsigned char *>(advanceInstruction);
         advanceBytes += instructionOffset;
-        current = reinterpret_cast<EclVmInstruction *>(advanceBytes);
-        *instructionCursor = current;
+        *instructionCursor = reinterpret_cast<EclVmInstruction *>(advanceBytes);
     }
 
     currentTime += timeDelta;

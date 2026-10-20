@@ -48,6 +48,7 @@ def main() -> int:
         run("Validate allocation EH address binding", [sys.executable, "scripts/test-linked-allocation-eh.py"])
         run("Validate replay payload order", [sys.executable, "scripts/test-replay-payload-order.py"])
         run("Validate Enemy dispatch case scopes", [sys.executable, "scripts/test-ecl-dispatch-table.py"])
+        run("Validate ECL FORMAT argument consumption", [sys.executable, "scripts/test-ecl-format.py", "--sanitize"])
         run("Validate lexical HUD message phase", [sys.executable, "scripts/test-gui-message-phase.py"])
         run("Validate lexical HUD boss-gauge phase", [sys.executable, "scripts/test-gui-boss-gauge-phase.py"])
         run("Validate HUD boss-gauge selection", [sys.executable, "scripts/test-gui-boss-gauge-selector.py"])
