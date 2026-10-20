@@ -3869,3 +3869,33 @@ whole dispatcher remain nonexact. Current eight-TU Run is7020/all189 with27
 ordinary differences, distinct from the two-TU26 result. ANM source is unchanged;
 its bytes are not replayed here. Native product, runtime, semantic and portability gates
 remain open.
+
+
+### 2026-10-21: Rank-count owner reloads and physical call sharing
+
+The [rank-count proof](evidence/enemy-rank-count-owner/README.md) changes only
+the final rank-count reads10/8 to local generic host views. Both now reuse EBX
+for the loaded owner as in the target. The rank-five physical interval grows
+369->434 against420, restoring target eleven generic integer calls and five
+returns. Root ReadInt callsites increase103->105 against106; the remaining
+physical deficit is specifically1B4, three target calls versus two candidate
+calls. Static call counts do not establish equivalent execution traces.
+
+Two independent full eight-TU colds retain19 complete existing exact owners,
+1539 bytes/all32 fields, with29 source pins equal. Dispatcher is14468/14416,
+40/108 target-sized groups, absolute case-size gap652 instead of690, frame2C4
+and19 sentinel comparisons. Native-to-native comparison validates real image
+hashes and encoded destinations, then binds local branches by case/offset.
+It finds101 equal old/new physical spans; seven differ or remain unbound.
+Ordinary-byte, shifted-local-destination and stale-field-cache controls reject
+false equality. All108 spans agree between the independent cold images.
+
+Generic macro and prologue views are neutral. A biased typed pattern pointer,
+direct lower-rank branches and boolean predicate do not close the interval.
+Difficulty-count host and constant-call controls recover1B4's third call but
+lose two rank calls again; both are restored. This demonstrates nonlocal
+tail-sharing effects rather than a monotonic source-shape improvement.
+The lower three rank owner reloads, root instruction lifetime, other code
+scheduling and stack homes remain open. Run7020/all189 remains27 differences
+in this context. No new exact or denominator credit is added; original
+declarations, production TU, storage aliases and later-phase gates remain open.

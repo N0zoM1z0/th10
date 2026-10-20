@@ -47,7 +47,33 @@ candidates, 734 authored functions owning 273274 bytes, 1077 source mappings,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest source checkpoint closes five Enemy operand adapters at412A00/16,
+The latest checkpoint changes only two final rank-count reads to local generic
+host views. Target EBX owner reloads for indices10/8 and the rank-five interval's
+eleven integer calls/five returns are recovered. Two independent full eight-TU
+colds reproduce the dispatcher at14468/14416 and retain19 complete existing
+exact owners1539/all32, with all29 source pins equal. Rank-five is434/420;
+absolute case-size gap652 instead of690, with40/108 target-sized spans,
+frame2C4 and19 sentinels. Root generic integer calls103->105 versus target106;
+the remaining physical-call deficit is specifically1B4, target3/candidate2.
+Native-to-native case comparison binds internal destinations explicitly and
+finds101/108 old/new spans equal, leaving seven changed or unbound. Two copied
+byte/destination controls and a stale-field-cache control reject false equality.
+Run7020/all189 retains27 ordinary differences. No new exact or denominator
+credit. See [rank-count evidence](evidence/enemy-rank-count-owner/README.md).
+The canonical `build/match-linked/AnmReleaseSlot` carrier has this newer proof's
+identities. Difficulty-count host and conditional-call controls recover its
+third call but regress rank-five to nine calls/four returns and are restored.
+Generic macro/prologue views are neutral; biased pattern-pointer, direct-rank
+and boolean controls are rejected. All five adapter bodies are unchanged.
+The eight-TU carrier still anchors AnmInt3View::operator* despite the maintained
+AnmInt3Scale.cpp body. The separate RGB recipe uses /GL /GS /Ob1 for that support. Adding the real known body in a separate declared dispatcher
+diagnostic graph is untested and should precede assuming this graph's large
+owner behavior is production-like. Preserve the current canonical contexts
+until the enlarged graph has its own complete comparisons.
+All100 standard CI checks pass. Cleanup reclaims9148041 bytes from nine
+owned superseded native directories and eight cloned analysis files.
+
+The preceding source checkpoint closes five Enemy operand adapters at412A00/16,
 412A60/14,412A70/14,412A80/17 and412AA0/26:87 bytes total. Viewing the loaded
 full owner as EclVmHost before reading activeContext recovers the target
 intermediate loads, private registers and scheduling. Both target-proven
@@ -64,9 +90,8 @@ and its bytes are not replayed in this bounded checkpoint. See
 [operand host-view proof](evidence/enemy-operand-host-view/README.md).
 Separate-TU and definition-order integer-adapter controls are neutral and
 restored; the direct raw-float expression has the wrong ECX receiver.
-All three original large owners remain open. A next bounded hypothesis is
-the dispatcher’s direct integer-read macro, which still accesses the partial
-Enemy context before casting; it has not been changed or tested in this proof.
+All three original large owners remain open. The direct integer-read macro
+was subsequently tested in the rank-count proof above and was byte-neutral.
 All100 standard CI checks pass. Inspected cleanup reclaims8639051 bytes from
 seven superseded native directories and29 intermediate analysis files.
 
@@ -181,7 +206,7 @@ graph after any dependency changes before comparing scores.
 | --- | --- | --- |
 | ANM ExecuteScript43EE30/9964 | Current six-TU ASCII/Stage context:9964 bytes,90 target-sized groups, absolute gap2, aligned7478/7995; pre-table delta0 | Nonexact. Scale method parameter order repairs the SCALE_TIME interval; BGR snapshots remove8 differences. Unequal intervals61(+1),2(−1). Registers, flag scheduling and common tail remain open. |
 | ECL Run44E1A0/7020 | Current full two-TU cold afterccd47a6: strict all189 fields and6994/7020 bytes;15 same-image guards1587/all21 | Exactly26 ordinary differences remain. Eight-TU Enemy context has27, including an additional SIB byte. Static float-value adapter repairs FORMAT register setup while retaining171-byte canonical callee; no new exact credit. [Current evidence](evidence/ecl-float-value-call-order/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Pre-ASCII eight-TU baseline:14524 bytes, frame2C4,181 selector bytes and108 groups | Strict-less polar branch restores the target condition/successor order; unaligned whole-owner scores hide this local change. Adapters, storage, lifetimes and stack homes remain open. |
+| Enemy DispatchEclInstruction40E770/14416 | Current two full eight-TU colds:14468 bytes, rank-five434/420, frame2C4,181 selectors and108 groups; case-size gap652 | Generic integer calls105/106; missing physical call in1B4. Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
 
 Old rejected controls are scoped observations, not proof that an API or source
 shape is correct. Require a concrete target hypothesis and compare corresponding
@@ -228,7 +253,8 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Focused native and host results are in the RGB proof. Run the standard gates
+Latest focused native results are in the rank-count proof; RGB results retain
+their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
 ```sh

@@ -1,0 +1,98 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "scope": "Two nonexact dispatcher pointer-view changes only; no new canonical or authored exact credit. No full historical replay.",
+  "native": {
+    "independent_full_cold_links": 2,
+    "recursive_inputs": 29,
+    "all_final_input_pins_match": true,
+    "all_retained_native_artifacts_match": true,
+    "complete_existing_owners_per_image": 19,
+    "complete_existing_bytes_per_image": 1539,
+    "bound_fields_per_image": 32,
+    "canonical_cold2_units": 6,
+    "canonical_cold2_bytes": 142
+  },
+  "private_case_diagnostic_controls": {
+    "scope": "Private native-to-native byte diagnostic only; no target patching or exactness credit.",
+    "self_compare_equal_cases": 108,
+    "mutations": [
+      {
+        "control": "ordinary-case-control",
+        "result": "different or unbound",
+        "equal_cases": 107,
+        "ordinary_differences": 1,
+        "unbound_fields": 0,
+        "copied_image_sha256": "4ac2a54ed9f2cb712b5cdf2ddd0ea8872a092b8f3fc4e5607e6b255785e14b93"
+      },
+      {
+        "control": "local-case-control",
+        "result": "different or unbound",
+        "equal_cases": 107,
+        "ordinary_differences": 1,
+        "unbound_fields": 1,
+        "copied_image_sha256": "5aeae0a855f8e0fee814b640f4b60bec410dce560029757c3d2c8f21dc3224ed"
+      },
+      {
+        "control": "linked-cache-control",
+        "result": "stale external-field metadata rejected",
+        "copied_image_sha256": "ae2a62e92c6bfbf84ff4346e28b3bb7850d599fe8e3d7dd99c71a1d5f5263900"
+      }
+    ],
+    "original_image_unchanged": true
+  },
+  "final_gates": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": "TH10 toolchain declarations OK; execution not requested"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "returncode": 0,
+      "stdout": "tracking OK: 1775 candidates/boundaries, 1077 mappings, 1216 exact"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "returncode": 0,
+      "stdout": "wrote docs/PROGRESS.md and resources/progress.svg"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "returncode": 0,
+      "stdout": ""
+    }
+  ],
+  "ci": {
+    "result": "passed",
+    "returncode": 0,
+    "steps": 100,
+    "log_sha256": "c2059a200bb0a0a1ea4bcd43b503390bd74e0e17270cabc5eef55968cb47fa5e"
+  },
+  "cleanup": {
+    "native_directories": 9,
+    "native_bytes": 7845301,
+    "analysis_files": 8,
+    "analysis_bytes": 1302740,
+    "total_bytes": 9148041,
+    "retained": [
+      "build/gpt-6.1-sol/enemy-direct-integer-host-20261021/retained-cold1",
+      "build/match-linked/AnmReleaseSlot",
+      "previous proof baseline in build/gpt-6.1-sol/enemy-adapter-partition-20261021/retained-cold1"
+    ],
+    "scope": "Only terminal owned negative/superseded native variants and copied-mutation recipes/reports; source overlays, compact control receipts, raw failure diagnostics and both current cold carriers retained."
+  }
+}

@@ -2231,9 +2231,8 @@ dispatch_bullet_count_high:
       uVar22 = ENEMY_READ_INT_DIRECT(9);
       *(short *)(iVar26 + 0x4b8) = (short)uVar22;
       {
-        EclVmContext *countContext =
-            reinterpret_cast<EclVmContext *>(owner->activeEclContext);
-        uVar22 = countContext->ReadInt(10);
+        EclVmHost *const countHost = reinterpret_cast<EclVmHost *>(owner);
+        uVar22 = countHost->activeContext->ReadInt(10);
       }
       *(short *)(iVar26 + 0x4ba) = (short)uVar22;
       return 0;
@@ -2243,9 +2242,8 @@ dispatch_bullet_count_high:
       uVar22 = ENEMY_READ_INT_DIRECT(7);
       *(short *)(iVar26 + 0x4b8) = (short)uVar22;
       {
-        EclVmContext *countContext =
-            reinterpret_cast<EclVmContext *>(owner->activeEclContext);
-        uVar22 = countContext->ReadInt(8);
+        EclVmHost *const countHost = reinterpret_cast<EclVmHost *>(owner);
+        uVar22 = countHost->activeContext->ReadInt(8);
       }
       *(short *)(iVar26 + 0x4ba) = (short)uVar22;
       return 0;
