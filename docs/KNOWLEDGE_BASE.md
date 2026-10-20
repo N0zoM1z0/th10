@@ -3395,3 +3395,19 @@ whitespace checks. About5.1 MB of superseded controls and host binaries are prun
   bound fields, all1833 owned bytes. The new type1 table base/four pointers are
   local fields with preserved offsets. Motion0010269/all10 fields passes the
   focused existing guard. No forced attributes/ABI or product/runtime claim.
+
+## Type1 laser Clear and offscreen counts (2026-10-20)
+
+Clear41F400/623, slot14h46DA24, now has complete maintained source. Its result
+is integer EAX count, not Ghidra's provisional float. Raw polar41F800 preserves
+EDX; the caller's zero establishes stepZ and the empty result. Every6+12 sample
+counts before bounds. Outer margin16 gates actual allocation/binding/outlined
+registration; enabled Item Spawn additionally uses nested margin32. All eight
+rejects are negated and accept NaN; ordered entry/tail exclude NaN/equality.
+Cached y+16 is reused for VM.offset344 after allocation; X adds224 and Z is
+copied, then zero Z is added per segment. Script execution precedes fresh
+registration/Item/length reads and final stateC=1. Fullfour-TU627/623 remains
+nonexact with receiver spill/private binder registers/scheduling differences.
+No exact or denominator increment;29 actual-source ASan/UBSan/leak mutation
+controls pass. Slot20 query41F670/226 stays separately untracked, origin unknown.
+See [complete scope](evidence/laser-type1-clear/README.md).

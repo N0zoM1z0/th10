@@ -1,0 +1,634 @@
+{
+  "authority": "compiler/host observations only; zero exact-byte or denominator increment",
+  "source_head": "dca8371579d0ab73b72158e041f1dec2efa996f7",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_audit": {
+    "result": "passed",
+    "authority": "target observations only; no native/runtime credit",
+    "target": {
+      "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/resources/th10.exe",
+      "size": 487936,
+      "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+      "sha1": "a2011f30d6c3ec02cbccc2e457d856ae1b8d9082",
+      "md5": "7dc488d82c81dd4aee4ba098b8804d83",
+      "pe": {
+        "machine_id": 332,
+        "section_count": 4,
+        "timestamp_unix": 1186086096,
+        "linker_version": "7.10",
+        "entry_rva": 341980,
+        "entry_point": 4536284,
+        "image_base": 4194304,
+        "size_of_image": 638976,
+        "headers_raw_size": 1024,
+        "relocations_stripped": true,
+        "sections": [
+          {
+            "name": ".text",
+            "rva": 4096,
+            "virtual_size": 412289,
+            "raw_offset": 1024,
+            "raw_size": 412672
+          },
+          {
+            "name": ".rdata",
+            "rva": 417792,
+            "virtual_size": 51782,
+            "raw_offset": 413696,
+            "raw_size": 52224
+          },
+          {
+            "name": ".data",
+            "rva": 471040,
+            "virtual_size": 156492,
+            "raw_offset": 465920,
+            "raw_size": 16896
+          },
+          {
+            "name": ".rsrc",
+            "rva": 630784,
+            "virtual_size": 4832,
+            "raw_offset": 482816,
+            "raw_size": 5120
+          }
+        ]
+      },
+      "rich_header": {
+        "checksum": 827500360,
+        "clear_data_size": 136,
+        "records": [
+          {
+            "product_id": 96,
+            "build": 6030,
+            "count": 15
+          },
+          {
+            "product_id": 105,
+            "build": 2067,
+            "count": 3
+          },
+          {
+            "product_id": 15,
+            "build": 6030,
+            "count": 33
+          },
+          {
+            "product_id": 95,
+            "build": 6030,
+            "count": 131
+          },
+          {
+            "product_id": 95,
+            "build": 2179,
+            "count": 2
+          },
+          {
+            "product_id": 28,
+            "build": 9178,
+            "count": 1
+          },
+          {
+            "product_id": 93,
+            "build": 2067,
+            "count": 2
+          },
+          {
+            "product_id": 96,
+            "build": 4035,
+            "count": 1
+          },
+          {
+            "product_id": 93,
+            "build": 2179,
+            "count": 8
+          },
+          {
+            "product_id": 1,
+            "build": 0,
+            "count": 187
+          },
+          {
+            "product_id": 93,
+            "build": 4035,
+            "count": 9
+          },
+          {
+            "product_id": 95,
+            "build": 4035,
+            "count": 2
+          },
+          {
+            "product_id": 100,
+            "build": 6030,
+            "count": 52
+          },
+          {
+            "product_id": 94,
+            "build": 3052,
+            "count": 1
+          },
+          {
+            "product_id": 90,
+            "build": 6030,
+            "count": 1
+          }
+        ]
+      }
+    },
+    "owner": {
+      "address": "0x41f400",
+      "size": 623,
+      "slot": 20,
+      "initial_sample": 6,
+      "stride": 12,
+      "outer_margin": 16,
+      "item_margin": 32,
+      "count_includes_offscreen": true,
+      "result": "integer EAX",
+      "polar_preserves_edx": true,
+      "step_z": 0,
+      "creation": "direct allocator/binder/outlined registrar",
+      "vm_offset_field": "0x340"
+    },
+    "unreviewed_frontier": "slot20 query41F670 remains separately untracked"
+  },
+  "diagnostics": [
+    {
+      "label": "initial",
+      "full_cold": true,
+      "source": "src/LaserType1Clear.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/EnemyLaser.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "entry_symbol": "?Clear@EnemyLaserType1View@@UAEHH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "input_sha256": {
+        "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyLaserType1.hpp": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "373ea005be2a6dd7dbe25193afc803e52078a4dcdf51172b2d0bdf1b66d67faa",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/LaserType1Clear.cpp": "5798081199a19ee3bd0be7d79c339e78fcf14a959cbefdd28945af86f1d67355",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-laser-type1-clear-20261020/initial/source.exe": "1464bceb8275bbb84992e94d4e5a0f95edf3cbbd10628ab3f5dd9d5b12b89c17",
+        "build/gpt-6.1-sol/th10-laser-type1-clear-20261020/initial/source.map": "f043681bbd8d6d64b95cabfcf4fed29ac7e89a307a8219072e8d14893ca1a633",
+        "build/gpt-6.1-sol/th10-laser-type1-clear-20261020/initial/source.pdb": "e5c46aa227db0f97b947d918fddd255c1836dd9861b84096bed03309d8004188"
+      },
+      "reports": [
+        {
+          "name": "EnemyLaserType1View::Clear",
+          "owner": {
+            "symbol": "?Clear@EnemyLaserType1View@@UAEHH@Z",
+            "address": "0x00401030",
+            "size": 503,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 48,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\source.ltcg.obj",
+            "sha256": "23cc59637f21bcd872c94681372017ac21e52e87601057ae8164e086515075ad"
+          },
+          "result": "mismatch",
+          "candidate_size": 503,
+          "target_size": 623,
+          "decoded_candidate_bytes": 503,
+          "normalization_complete": true,
+          "raw_matched_bytes": 16,
+          "comparable_bytes": 527,
+          "matched_comparable_bytes": 14
+        },
+        {
+          "name": "AnmLoadedView::CreateVmAtWorldVariant0",
+          "owner": {
+            "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+            "address": "0x00405F70",
+            "size": 116,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 20336,
+            "map_object": "support-00-AnmManager.ltcg.obj",
+            "pdb_module_index": 4,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\support-00-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\support-00-AnmManager.ltcg.obj",
+            "sha256": "fed9d4a6e8b4e10a79b5d83612700eec1f66fbc34bf94966650b7f14f7b47044"
+          },
+          "result": "mismatch",
+          "candidate_size": 116,
+          "target_size": 118,
+          "decoded_candidate_bytes": 116,
+          "normalization_complete": true,
+          "raw_matched_bytes": 30,
+          "comparable_bytes": 90,
+          "matched_comparable_bytes": 25
+        },
+        {
+          "name": "ItemManagerView::Spawn",
+          "owner": {
+            "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+            "address": "0x0040F1B0",
+            "size": 795,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 57776,
+            "map_object": "support-02-ItemManager.ltcg.obj",
+            "pdb_module_index": 3,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\support-02-ItemManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\support-02-ItemManager.ltcg.obj",
+            "sha256": "542fb8788d0fc6fd27e4242208e9b12204392088c6ff0aa601bbd397c41dc71d"
+          },
+          "result": "mismatch",
+          "candidate_size": 795,
+          "target_size": 819,
+          "decoded_candidate_bytes": 795,
+          "normalization_complete": true,
+          "raw_matched_bytes": 58,
+          "comparable_bytes": 751,
+          "matched_comparable_bytes": 52
+        },
+        {
+          "name": "AnmRenderManagerView::AddVmVariant0",
+          "owner": {
+            "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "address": "0x00402DA0",
+            "size": 118,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 7584,
+            "map_object": "support-00-AnmManager.ltcg.obj",
+            "pdb_module_index": 4,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\support-00-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\support-00-AnmManager.ltcg.obj",
+            "sha256": "39e1aaf20ccc6f0c90ef9a2ae5bac14f89797203148cadca4365fa49502f9c22"
+          },
+          "result": "structural-exact",
+          "candidate_size": 118,
+          "target_size": 118,
+          "decoded_candidate_bytes": 118,
+          "normalization_complete": true,
+          "raw_matched_bytes": 118,
+          "comparable_bytes": 118,
+          "matched_comparable_bytes": 118
+        },
+        {
+          "name": "EnemyLaserVectorView::FromAngleMagnitude",
+          "owner": {
+            "symbol": "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z",
+            "address": "0x0040C660",
+            "size": 30,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 46688,
+            "map_object": "support-01-EnemyLaser.ltcg.obj",
+            "pdb_module_index": 2,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\support-01-EnemyLaser.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\initial\\support-01-EnemyLaser.ltcg.obj",
+            "sha256": "ee204b7afd1b942c09db2fb55b55a65701e35832fd7d1b7a039a1b854eaeca35"
+          },
+          "result": "structural-exact",
+          "candidate_size": 30,
+          "target_size": 30,
+          "decoded_candidate_bytes": 30,
+          "normalization_complete": true,
+          "raw_matched_bytes": 30,
+          "comparable_bytes": 30,
+          "matched_comparable_bytes": 30
+        }
+      ]
+    },
+    {
+      "label": "direct",
+      "full_cold": true,
+      "source": "src/LaserType1Clear.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/EnemyLaser.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "entry_symbol": "?Clear@EnemyLaserType1View@@UAEHH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "input_sha256": {
+        "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+        "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyLaserType1.hpp": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "373ea005be2a6dd7dbe25193afc803e52078a4dcdf51172b2d0bdf1b66d67faa",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/LaserType1Clear.cpp": "11ef7e2086ff24db4cdd66eed1b96ff1a2051ae7b7734398a2be2ee57604366c",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-laser-type1-clear-20261020/direct/source.exe": "4240bf686e7287d87a905ad1bb14afe94b2a3797bb88289900caa3261aaf6203",
+        "build/gpt-6.1-sol/th10-laser-type1-clear-20261020/direct/source.map": "3cfb5f1fa16f733a24684c115d41e860e7b18b4ce40b4c8a9e8da40e37a22d2f",
+        "build/gpt-6.1-sol/th10-laser-type1-clear-20261020/direct/source.pdb": "c5e2b356d6516acdf658a01be4cfe5ce9e40a5db615efa013806ffee4df3fb7a"
+      },
+      "reports": [
+        {
+          "name": "EnemyLaserType1View::Clear",
+          "owner": {
+            "symbol": "?Clear@EnemyLaserType1View@@UAEHH@Z",
+            "address": "0x00401030",
+            "size": 627,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 48,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\source.ltcg.obj",
+            "sha256": "968b90737e41e4c73169641cfad6a5e14320bf5e98efd668cf319db04bef09b0"
+          },
+          "result": "mismatch",
+          "candidate_size": 627,
+          "target_size": 623,
+          "decoded_candidate_bytes": 627,
+          "normalization_complete": true,
+          "raw_matched_bytes": 298,
+          "comparable_bytes": 507,
+          "matched_comparable_bytes": 274
+        },
+        {
+          "name": "AnmLoadedView::CreateVmAtWorldVariant0",
+          "owner": {
+            "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+            "address": "0x00405FF0",
+            "size": 116,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 20464,
+            "map_object": "support-00-AnmManager.ltcg.obj",
+            "pdb_module_index": 4,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\support-00-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\support-00-AnmManager.ltcg.obj",
+            "sha256": "fed9d4a6e8b4e10a79b5d83612700eec1f66fbc34bf94966650b7f14f7b47044"
+          },
+          "result": "mismatch",
+          "candidate_size": 116,
+          "target_size": 118,
+          "decoded_candidate_bytes": 116,
+          "normalization_complete": true,
+          "raw_matched_bytes": 30,
+          "comparable_bytes": 90,
+          "matched_comparable_bytes": 25
+        },
+        {
+          "name": "ItemManagerView::Spawn",
+          "owner": {
+            "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+            "address": "0x0040F230",
+            "size": 795,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 57904,
+            "map_object": "support-02-ItemManager.ltcg.obj",
+            "pdb_module_index": 3,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\support-02-ItemManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\support-02-ItemManager.ltcg.obj",
+            "sha256": "ae025f9c8dec1a536d9f247c75552180dda9a538dd92c43b5a03648b3d8d5819"
+          },
+          "result": "mismatch",
+          "candidate_size": 795,
+          "target_size": 819,
+          "decoded_candidate_bytes": 795,
+          "normalization_complete": true,
+          "raw_matched_bytes": 58,
+          "comparable_bytes": 751,
+          "matched_comparable_bytes": 52
+        },
+        {
+          "name": "AnmRenderManagerView::AddVmVariant0",
+          "owner": {
+            "symbol": "?AddVmVariant0@AnmRenderManagerView@@QAE?AUAnmVmIdView@@PAUAnmVmView@@@Z",
+            "address": "0x00402E20",
+            "size": 118,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 7712,
+            "map_object": "support-00-AnmManager.ltcg.obj",
+            "pdb_module_index": 4,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\support-00-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\support-00-AnmManager.ltcg.obj",
+            "sha256": "39e1aaf20ccc6f0c90ef9a2ae5bac14f89797203148cadca4365fa49502f9c22"
+          },
+          "result": "structural-exact",
+          "candidate_size": 118,
+          "target_size": 118,
+          "decoded_candidate_bytes": 118,
+          "normalization_complete": true,
+          "raw_matched_bytes": 118,
+          "comparable_bytes": 118,
+          "matched_comparable_bytes": 118
+        },
+        {
+          "name": "EnemyLaserVectorView::FromAngleMagnitude",
+          "owner": {
+            "symbol": "?FromAngleMagnitude@EnemyLaserVectorView@@QAEXMM@Z",
+            "address": "0x0040C6E0",
+            "size": 30,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 46816,
+            "map_object": "support-01-EnemyLaser.ltcg.obj",
+            "pdb_module_index": 2,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\support-01-EnemyLaser.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-laser-type1-clear-20261020\\direct\\support-01-EnemyLaser.ltcg.obj",
+            "sha256": "ee204b7afd1b942c09db2fb55b55a65701e35832fd7d1b7a039a1b854eaeca35"
+          },
+          "result": "structural-exact",
+          "candidate_size": 30,
+          "target_size": 30,
+          "decoded_candidate_bytes": 30,
+          "normalization_complete": true,
+          "raw_matched_bytes": 30,
+          "comparable_bytes": 30,
+          "matched_comparable_bytes": 30
+        }
+      ]
+    }
+  ],
+  "host": {
+    "scope": "Exercise actual type1 laser Clear, ANM creation/allocation/list and Item Spawn bodies.\n\nHost layout/constructor prefills, polar math and script execution are explicit\nroles. Script execution alone may mutate live state. Kind8 uses actual Item\nSpawn code and has no injected callback. No native ABI/FP/lifetime/runtime claim.\n",
+    "inputs": {
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/EnemyLaserType1.hpp": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/LaserType1Clear.cpp": "11ef7e2086ff24db4cdd66eed1b96ff1a2051ae7b7734398a2be2ee57604366c",
+      "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+      "src/ItemManager.cpp": "373ea005be2a6dd7dbe25193afc803e52078a4dcdf51172b2d0bdf1b66d67faa",
+      "scripts/test-laser-type1-clear.py": "50e3d4868da3801dfbb2d98a07a75e75770f7ebfb58135a4f9fa4fcc1d8c1ef8",
+      "scripts/fixtures/laser-type1-clear.cpp": "877b304ea776b0c91d5fe5623783f2125051e77b52182c717f48d0f6e46c14ec",
+      "scripts/test-frontend-replay-save.py": "028a421cc37a195455b3fc89266d2f9459e7f686a464cf24404650920277a25f"
+    },
+    "sanitize": true,
+    "complete_mutation_suite": true,
+    "variants": [
+      "positive",
+      "wrong-start",
+      "wrong-z",
+      "wrong-stride",
+      "wrong-y-stride",
+      "inclusive-initial",
+      "unordered-initial",
+      "inclusive-tail",
+      "unordered-tail",
+      "omit-z-addition",
+      "wrong-progress",
+      "signed-color",
+      "wrong-resource",
+      "screen-creator",
+      "ignore-mode",
+      "outer-too-small",
+      "inner-too-small",
+      "outer-x-unbounded",
+      "outer-unordered",
+      "count-only-emitted",
+      "wrong-kind",
+      "wrong-angle",
+      "wrong-speed",
+      "stale-item",
+      "stale-length",
+      "stale-script",
+      "unordered-bounds",
+      "wrong-retirement",
+      "early-retirement",
+      "wrong-return"
+    ]
+  },
+  "existing_canonical_inputs": "Unchanged; only new LaserType1Clear.cpp added under src. Existing manifests and exact ledger unchanged. No historical replay.",
+  "private_evidence_sha256": {
+    ".analysis/gpt-6.1-sol/th10-laser-type1-clear-20261020/target-ghidra.txt": "2a9cbf90877dbaeebe95c3f80fbdd9e2696f00fb5f239d916161268adb3ba9f1",
+    ".analysis/gpt-6.1-sol/th10-laser-type1-clear-20261020/ghidra.log": "20888b073d48996f358ddb8bbcd06a3ffe7800b1acd2330a72fb0d6fcd60dac1",
+    ".analysis/gpt-6.1-sol/th10-laser-type1-clear-20261020/ghidra/LaserType1ClearReview.java": "098a88148aad2fcab248ce6c2e4039e49bff86a8e44c8c6e3b95ce9217d63681",
+    ".analysis/gpt-6.1-sol/th10-laser-type1-clear-20261020/host-direct.log": "3b46a254c8536d5ae7ee14e472f97a033cd789c97b59f73512de14e515605fdc",
+    ".analysis/gpt-6.1-sol/th10-laser-type1-clear-20261020/initial.json": "7bf156ab64feae3d605d9cbd7d11b545b2d2362e3bab40806ab93b8c6aed9e51",
+    ".analysis/gpt-6.1-sol/th10-laser-type1-clear-20261020/direct.json": "ced089ce7b9dd97e516c748467cff1750620a83383d4f4c7ce179828b750e64c"
+  },
+  "limits": [
+    "No runnable diagnostic image: unresolved anchors",
+    "Host roles/adaptations do not prove native x87, original lifetime or gameplay reachability",
+    "Item795/819 is code/physical-size diagnostic, not complete table ownership replay",
+    "Neighbor query41F670/226 remains untracked and origin unknown"
+  ],
+  "canonical_impact": {
+    "src_changed_from_head": [
+      "src/LaserType1Clear.cpp"
+    ],
+    "accepted_type1_and_line_update_inputs_checked": {
+      "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+      "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3504107c3c00b2bf678965a3bbfb91f0a121eef3297c6c20c3ea68903430fe8c",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyLaserLine.hpp": "7fded6867889d41110085110f9ec39a75a7139488ce00475e881f7de27ef58dc",
+      "src/EnemyLaserType1.hpp": "6e5b9265662415bd2180431598c3d9eb3c9b41d8f1d5cf88b8cac1da8d9d678b",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/LaserLine.cpp": "001ad4d1e0b6fe7f13e659b9c3e56a36d1c60f1ca8075241b331e9529b6bad03",
+      "src/LaserType1.cpp": "27fba91c2ed157457d158d76d9438c6721e1604dc723f327bc5e7d4453d9d034",
+      "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    },
+    "existing_canonical_inputs_changed": [],
+    "new_primary_in_any_canonical_unit": false,
+    "claim": "Dependency freshness only; this is not a new native replay. Historical nonexact diagnostic input hashes are deliberately not reused."
+  },
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-laser-type1-clear-20261020/initial",
+        "bytes": 613962
+      },
+      {
+        "path": "build/host-tests/laser-type1-clear-current",
+        "bytes": 640707
+      }
+    ],
+    "bytes_freed": 1254669,
+    "retained": "Final direct four-TU native carrier, target/Ghidra audits, compiler/host receipts and logs. Initial generic-creator carrier is superseded; its hashes are historical."
+  },
+  "public_ci": {
+    "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+    "result": "passed",
+    "exit_code": 0,
+    "checks": 93,
+    "mode": "one fresh complete canonical run; no retained prefix or skipped commands",
+    "script_sha256": "d819bc6741075dfd5178ce6d3e10d362724ac37ee1d1347749efd0df3d1feff4",
+    "private_log": ".analysis/gpt-6.1-sol/th10-laser-type1-clear-20261020/ci.log",
+    "log_sha256": "8b7c2b54b1b9bc91e9d254e3fa684720490e2cc39a2d1ac320f2c001508eff8a"
+  }
+}

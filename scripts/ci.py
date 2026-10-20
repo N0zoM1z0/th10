@@ -111,6 +111,7 @@ def main() -> int:
         run("Validate laser initialization and turning motion", [sys.executable, "scripts/test-laser-init.py", "--no-mutations"])
         run("Validate laser clearing, VM lists and item spawning", [sys.executable, "scripts/test-laser-clear.py", "--no-mutations"])
         run("Validate type1 laser phases and runtime interfaces", [sys.executable, "scripts/test-laser-type1.py", "--no-mutations"])
+        run("Validate type1 laser clearing and offscreen counts", [sys.executable, "scripts/test-laser-type1-clear.py", "--no-mutations"])
         run("Validate script browser state and event order", [sys.executable, "scripts/test-script-viewer-update.py"])
         run("Validate script browser display and renderer calls", [sys.executable, "scripts/test-script-viewer-draw.py"])
         run("Validate worker wait and restart order", [sys.executable, "scripts/test-script-viewer-worker.py"])

@@ -1067,3 +1067,4 @@ EnemyLaserLineView::Clear,0x0041E260,function
 EnemyLaserType1View::Initialize,0x0041E5C0,function
 EnemyLaserType1View::Draw,0x0041EA40,function
 EnemyLaserType1View::Update,0x0041E700,function
+EnemyLaserType1View::Clear,0x0041F400,function

@@ -578,7 +578,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x0041EAF0,0x0041EAF2,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; data xrefs only at 0x46DA20
 0x0041EB00,0x0041EF92,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
 0x0041EFA0,0x0041F3F3,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
-0x0041F400,0x0041F66E,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
+0x0041F400,0x0041F66E,reviewed,high,target-laser-type1-clear-2026-10-20,"Complete623-byte raw decode, two RET4 exits and internal branches; slot14h46DA24 reference only. Previous owner ends41F3F3 then12CC; following byte41F66F isCC and query begins41F670. No overlap or external interior branch in fresh Ghidra/raw review."
 0x0041F7A0,0x0041F7FA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=4; no overlap or external interior branch
 0x0041F800,0x0041F81D,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=10; no overlap or external interior branch
 0x0041F820,0x0041F832,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

@@ -28,6 +28,20 @@ scratch paths, or build hashes into this file.
 
 ## Current local checkpoint (2026-10-20)
 
+- Type1 Clear41F400/623 now maps its complete authored source. Integer EAX
+  count includes offscreen samples; raw polar-preserved EDX proves zero Z and
+  empty count despite provisional Ghidra float output. Outer margin16 gates
+  direct VM allocation/binding/outlined registration; nested margin32 and mode
+  gate actual kind8 Item Spawn. Cached y+16, strict length tests, fresh owners
+  and post-script stateC=1 are retained. Actual-source ASan/UBSan/leak checks
+  pass29 strict mutants. Fullfour-TU627/623 stays nonexact; no exact or owned
+  denominator increment. Existing canonical source/header inputs are unchanged;
+  no historical replay. Next gain real caller/TU/alias evidence for private
+  binder/receiver scheduling, or review the separate untracked slot20 query
+  41F670/226 without assuming authored origin. See
+  [complete scope](evidence/laser-type1-clear/README.md).
+  All93 public CI checks pass in one fresh complete run;1.25 MB pruned and
+  final native/host source hashes verified. Pre-existing D3D evidence untouched.
 - Type1 lifecycle now maps1314 owned authored bytes: omitted Init41E5C0/309,
   Draw41EA40/173 and Update41E700/832. The four-pointer state table41EA30 adds16
   missing bytes; new entries add482, so denominator grows498 independently.
@@ -47,7 +61,7 @@ scratch paths, or build hashes into this file.
   resumption (81 retained,11 fresh), after pending-cold ledger rejection; no
   public gate changed. Current type1-batch carrier/cache supersedes old laser
   input hashes for EnemyLaser.hpp/LaserLine.cpp; check each dependency before
-  reuse. Next inspect type1 Clear41F400/623 or another large source gap, or gain
+  reuse. Type1 Clear is now mapped above; inspect another large source gap or gain
   new caller/TU/alias evidence before Init/Draw controls. See
   [complete proof and limits](evidence/laser-type1/README.md).
   7.9 MB of superseded controls/host artifacts pruned; pre-existing D3D evidence untouched.
