@@ -75,7 +75,7 @@ def main():
     for a,x in [(0x470B40,-192.),(0x470B3C,192.),(0x470B04,0.),(0x470B38,448.),(0x470B4C,224.),(0x470B48,16.),(0x470C58,.0001),(0x470B68,.99),(0x470B64,1.01),(0x470AFC,1.),(0x470CA8,1.5),(0x470CA4,-1.5)]:require(pe_bytes_at(raw,a,4)==struct.pack('<f',x),'constant identity differs')
     with (ROOT/'config/function-boundaries.csv').open(newline='')as f:ledger={int(r['address'],0):r for r in csv.DictReader(f)}
     for a,z in [(0x41CA80,1356),(0x41D2C0,269),(0x41D3D0,1001),(0x41D7C0,173),(0x4267F0,471)]:require(ledger[a]['state']=='reviewed'and int(ledger[a]['span_end'],0)==a+z-1,'physical ledger differs')
-    print(json.dumps({'result':'passed','authority':'target observations only; no codegen/runtime credit','target':identity,'parser':{'address':'0x41CA80','ghidra_body_bytes':1259,'code_span_bytes':1269,'internal_alignment_bytes':10,'tail_alignment_bytes':3,'pointer_bytes':20,'selector_bytes':64,'owned_bytes':1356,'source':'absent'},'vtable':[hex(a)for a in vtable],'mapped_authored_source_bytes':1645,'mapped_indeterminate_source_bytes':269,'polar_Z_prefill':'unknown'},indent=2))
+    print(json.dumps({'result':'passed','authority':'target observations only; no codegen/runtime credit','target':identity,'parser':{'address':'0x41CA80','ghidra_body_bytes':1259,'code_span_bytes':1269,'internal_alignment_bytes':10,'tail_alignment_bytes':3,'pointer_bytes':20,'selector_bytes':64,'owned_bytes':1356},'vtable':[hex(a)for a in vtable],'reviewed_authored_line_owner_bytes':1645,'motion_owner_bytes':269,'polar_Z_prefill':'unknown'},indent=2))
 
 
 if __name__=='__main__':main()

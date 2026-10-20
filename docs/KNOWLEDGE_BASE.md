@@ -3241,3 +3241,44 @@ Header dependency hashes invalidate affected older FrontEnd/SpellPanel objects;
 independent MIDI cache remains separate. Next recover parser1356 or another
 source gap; require new lifetime/caller evidence before more parent shape work.
 See [the complete proof and reference scope](evidence/laser-line/README.md).
+
+## Laser command parser recovery (2026-10-20)
+
+RunCommands41CA80 now has source for its existing1356 authored bytes; no new
+denominator or exact credit. Type-0 request+2C (line450) holds eighteen24-byte
+commands, four operand words/opcode10/gate14. Anonymous word unions preserve
+existing raw copies and1DC/34 native sizes, without asserting original C++
+types or union lifetimes. The target uses signed PC<18 without a negative
+guard. Zero stops, active flags plus zero gate stop, SKIP80000000 continues
+within the frame, unknown commands advance, ID preserves operand bits and
+jump2000000 replaces PC without an extra increment. Positive400/800/8000000
+counts decrement the actual command operand; copying the command is wrong.
+
+Both100000 and200000 set timer6 at190. The angle sentinels are<=-990 and>=990,
+not the reference comment's1. NaN is literal for angle, fallback for strict
+width>-999 and ordered growth>=0. The fallback uses growSpeed48, not width44.
+Native mode and counter words retain integer/float reinterpretation. Existing
+Bullet caller40708C independently reads script base474170, so the same global
+declaration is reused. Opcode4000 calls actual InitializeForLoadedScript404F30
+with primary VM600 and resource4776F0+3E0B50, then reloads current PC and next
+gate. Only real VM reset/script execution supplies callback roles in the host;
+aim, timers, polar and sound helpers remain pure.
+
+Full5-TU /GL /GS diagnostics freeze25 project inputs. Cached-angle source1364
+is superseded by target-observed field reloads/conditional stores at1368/1356,
+still nonexact. Existing57/67/30/123/149 helper structural diagnostics add no
+credit. The embedded VM receiver is private EDX versus targetESI; shared-tail
+scheduling and production TU context stay unresolved. A Draw primary-VM
+pointer-lifetime control173/173 yields86/133 comparable and is restored; size
+equality is not exactness. Existing Motion269/all10 fields passes a focused
+canonical cold replay after the shared-header change, with origin unchanged.
+
+Actual-owner/timer/aim/sound/VM-wrapper ASan/UBSan/leak checks and23 strict named
+mutants pass. Valid live storage/operand indices and finite programs are the
+host domain. Negative PCs, infinite loops, overflow, invalid pointers, original
+union/object lifetime, native x87 bits/exceptions and product/runtime closure
+remain unknown. The original D3D work is preserved. Next inspect41C8C0 or
+another source gap; require new context before further parser/Draw shape work.
+See [the target, compiler and host evidence](evidence/laser-script/README.md).
+All89 public CI checks pass; focused target/toolchain/tracking/progress and
+whitespace checks pass. Superseded controls/host binaries free about4.2 MB.

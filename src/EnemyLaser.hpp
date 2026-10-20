@@ -58,10 +58,32 @@ struct EnemyEffectWaitManager
         const PlayerFloat3 *position, float radius, int mode);
 };
 
+// Scalar words retain the target's integer/float reinterpretation per opcode.
+union EnemyLaserWordView
+{
+    float scalar;
+    int integer;
+    unsigned int bits;
+};
+struct EnemyLaserCommandView
+{
+    EnemyLaserWordView arguments[4];
+    unsigned int opcode;
+    int allowWhileActive;
+};
+typedef char EnemyLaserCommandLayout[
+    (sizeof(EnemyLaserCommandView) == 0x18 &&
+     offsetof(EnemyLaserCommandView, opcode) == 0x10 &&
+     offsetof(EnemyLaserCommandView, allowWhileActive) == 0x14) ? 1 : -1];
+
 struct EnemyLaserPatternRecordView
 {
     AnmVmTimerView timer;
-    unsigned char unknown014[0x34 - 0x14];
+    union
+    {
+        unsigned char unknown014[0x34 - 0x14];
+        EnemyLaserWordView values[8];
+    };
 };
 struct EnemyLaserCommonStorageView
 {
@@ -140,7 +162,11 @@ struct EnemyLaserType0RequestView
     short type;
     short color;
     unsigned int flags;
-    unsigned int patternWords[0x6c];
+    union
+    {
+        unsigned int patternWords[0x6c];
+        EnemyLaserCommandView commands[18];
+    };
 };
 
 typedef char EnemyLaserType0RequestViewSizeIs1DC[

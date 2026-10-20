@@ -1,0 +1,198 @@
+{
+  "scope": "laser command source recovery; compiler diagnosis only, no new exact credit",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_authored_source_owned_bytes": 1356,
+  "new_authored_denominator_bytes": 0,
+  "new_authored_exact_bytes": 0,
+  "translation_units": 5,
+  "source": "src/LaserScript.cpp",
+  "support_sources": [
+    "src/AnmManager.cpp",
+    "src/EnemyLaser.cpp",
+    "src/EnemyEclDispatcher.cpp",
+    "src/Enemy.cpp"
+  ],
+  "entry_symbol": "?RunCommands@EnemyLaserLineView@@UAEXXZ",
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL",
+    "/GS"
+  ],
+  "project_input_sha256": {
+    "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+    "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.hpp": "a01e19c6bb2659e258444cd57018947fe6f5444522b75d2b5777e13f55ffe551",
+    "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "3504107c3c00b2bf678965a3bbfb91f0a121eef3297c6c20c3ea68903430fe8c",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "2cddc20f43bf26aee89b31354bdf7c02d76c121f5a09c8dff70a64a4b117ac83",
+    "src/EnemyLaser.hpp": "f4d6135b47aed5a7c6860e35166034dbf550176ff80b01c4c1ef56c574d18ef3",
+    "src/EnemyLaserLine.hpp": "5dffe20adcab1de46e0dd253033a23fc99ecef8a3ae823128f5b8e48ac54882e",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/LaserScript.cpp": "2f8474386a59cd91aebb19a206e850048f5e92b73ba25a20e66f225f0e32b041",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "reports": [
+    {
+      "name": "EnemyLaserLineView::RunCommands",
+      "candidate_size": 1368,
+      "target_size": 1356,
+      "result": "mismatch",
+      "comparable_bytes": 1232,
+      "matched_comparable_bytes": 200
+    },
+    {
+      "name": "AnmVmTimerView::SetCurrent",
+      "candidate_size": 57,
+      "target_size": 57,
+      "result": "structural-exact",
+      "comparable_bytes": 53,
+      "matched_comparable_bytes": 53
+    },
+    {
+      "name": "EnemyAngleFromPlayer",
+      "candidate_size": 67,
+      "target_size": 67,
+      "result": "structural-exact",
+      "comparable_bytes": 55,
+      "matched_comparable_bytes": 55
+    },
+    {
+      "name": "AnmVmView::InitializeForLoadedScript",
+      "candidate_size": 200,
+      "target_size": 202,
+      "result": "mismatch",
+      "comparable_bytes": 194,
+      "matched_comparable_bytes": 24
+    },
+    {
+      "name": "EnemyLaserVectorView::FromAngleMagnitude",
+      "candidate_size": 30,
+      "target_size": 30,
+      "result": "structural-exact",
+      "comparable_bytes": 30,
+      "matched_comparable_bytes": 30
+    },
+    {
+      "name": "EnemySoundQueueView::QueueSoundSample",
+      "candidate_size": 123,
+      "target_size": 123,
+      "result": "structural-exact",
+      "comparable_bytes": 119,
+      "matched_comparable_bytes": 119
+    },
+    {
+      "name": "EnemySoundQueueView::QueueSoundCue",
+      "candidate_size": 149,
+      "target_size": 149,
+      "result": "structural-exact",
+      "comparable_bytes": 137,
+      "matched_comparable_bytes": 137
+    }
+  ],
+  "artifact_sha256": {
+    "source.exe": "2cab13a62492e7ff7377ad42058eba4cd601e0eacc41a1e23dc625a9678ce86b",
+    "source.map": "29e7fdd04ce80338af3169cf13ea7166dd398e3cca181cd997e84af5645d15d5",
+    "source.pdb": "7b5be78c2f3e23de5ebd83084ced3155f95ff1ad830b46a9a209094b864b050f"
+  },
+  "restored_draw_control": {
+    "context": "actual virtual Draw entry, LaserLine.cpp + AnmManager.cpp /GL /GS",
+    "change": "hold primary VM pointer across normalization/draw",
+    "candidate_owned_bytes": 173,
+    "target_owned_bytes": 173,
+    "matched_comparable_bytes": 86,
+    "comparable_bytes": 133,
+    "result": "nonexact; restored earlier source",
+    "project_input_sha256": {
+      "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+      "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EnemyLaser.hpp": "f4d6135b47aed5a7c6860e35166034dbf550176ff80b01c4c1ef56c574d18ef3",
+      "src/EnemyLaserLine.hpp": "5dffe20adcab1de46e0dd253033a23fc99ecef8a3ae823128f5b8e48ac54882e",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/LaserLine.cpp": "b41a1557473856d0d231e87a49effa13074f6e8c0f5c16515fda3f1390fbabcc",
+      "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    }
+  },
+  "source_controls": [
+    {
+      "source": "cached scalar angle / ordinary ternary",
+      "candidate_owned_bytes": 1364,
+      "target_owned_bytes": 1356,
+      "result": "nonexact",
+      "source_sha256": "d3e78a9d34e7bc311828f6239599f129c99228ce75e5748ef29361d6aebfa4d6"
+    },
+    {
+      "source": "target-observed angle rereads and conditional payload store",
+      "candidate_owned_bytes": 1368,
+      "target_owned_bytes": 1356,
+      "result": "nonexact; retained for observed x87 reread protocol",
+      "source_sha256": "2f8474386a59cd91aebb19a206e850048f5e92b73ba25a20e66f225f0e32b041"
+    }
+  ],
+  "existing_exact_guard": {
+    "unit": "laser-line-motion-0010",
+    "result": "exact",
+    "complete_owned_bytes": 269,
+    "complete_compared_bytes": 269,
+    "linked_fields": 10,
+    "image_sha256": "ba78658c877bce04127a1a968239e30a9d3e135b196c32b9efe4721a6142f2e4",
+    "pdb_guid": "58c00deab239c149a4b5923fc4b318e3",
+    "project_input_sha256": {
+      "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EnemyLaser.hpp": "f4d6135b47aed5a7c6860e35166034dbf550176ff80b01c4c1ef56c574d18ef3",
+      "src/EnemyLaserLine.hpp": "5dffe20adcab1de46e0dd253033a23fc99ecef8a3ae823128f5b8e48ac54882e",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/LaserLine.cpp": "27b2e41a4d59e14bf75fa8639d187f7e957e2b4699d21d6becb2eecaff2bb313",
+      "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    }
+  },
+  "link_profile": [
+    "/ltcg",
+    "/nodefaultlib",
+    "/subsystem:console",
+    "/incremental:no",
+    "/fixed:no",
+    "/base:0x00400000",
+    "/debug",
+    "/debugtype:cv",
+    "/opt:noref",
+    "/opt:noicf",
+    "/safeseh:no"
+  ],
+  "harness": "unresolved-symbol-data-anchors-v1"
+}

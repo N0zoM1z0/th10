@@ -1060,3 +1060,4 @@ EnemyLaserLineView::Update,0x0041D3D0,function
 EnemyLaserLineView::Draw,0x0041D7C0,function
 Player::CheckLaserContact,0x004267F0,function
 EnemyLaserLineView::Motion0010,0x0041D2C0,function
+EnemyLaserLineView::RunCommands,0x0041CA80,function

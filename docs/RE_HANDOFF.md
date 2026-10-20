@@ -32,6 +32,25 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Laser command parser41CA80 now maps its complete1356 authored bytes in
+  LaserScript.cpp, with no new denominator or exact increment. Eighteen24-byte
+  commands at450 retain gate/skip/jump/ID/state, mutable operand counters,
+  +/-990 angle sentinels, -999 growth fallback and the same timer6 for100000/
+  200000. Existing Bullet script table474170, primary resource4776F0 and actual
+  VM initializer404F30 are reused; post-call PC/gates are live. Shared request/
+  pattern word unions preserve old raw fields and native sizes. Actual-owner/
+  timer/aim/VM-wrapper/sound ASan/UBSan/leaks plus23 strict mutants pass.
+  Complete5-TU /GL /GS diagnostic freezes25 inputs:1368/1356 nonexact; initial
+  cached-angle1364 is superseded by target-observed x87 reload source. Helpers
+  57/67/30/123/149 structurally agree without new credit; VM200/202 private EDX
+  receiver differs from targetESI. Motion269/all10 fields passes its required
+  canonical cold guard with the changed header. Draw VM-pointer control173/173
+  remains86/133 comparable and is restored. Do not repeat those shape controls
+  without new caller/TU/ABI evidence. Negative PC, cyclic programs, original
+  union lifetime and native FP effects stay outside host scope. Next inspect
+  untracked initialization slot41C8C0 or another large source gap; the parser's
+  body is now source-present. See [complete scope](evidence/laser-script/README.md).
+  All89 public CI checks pass;4.2 MB of superseded controls/host binaries pruned.
 - Laser line Update41D3D0/1001, Draw41D7C0/173 and Player contact4267F0/471
   now map1645 authored source bytes. Motion0010/269 maps indeterminate source
   and closes269 indeterminate exact bytes in two independent single-TU /GL /GS

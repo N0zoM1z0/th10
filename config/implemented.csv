@@ -1059,3 +1059,4 @@ EnemyLaserLineView::Update
 EnemyLaserLineView::Draw
 Player::CheckLaserContact
 EnemyLaserLineView::Motion0010
+EnemyLaserLineView::RunCommands
