@@ -3565,3 +3565,45 @@ matching sizes grant no exact block credit. The current vector-family carrier
 supersedes the preceding ANM source cache. The transition host's extracted
 RNG/timer/viewport blocks are unchanged; reviewed whole-file pins only. Product/
 runtime/semantic/port planes remain open.
+
+
+### 2026-10-20: Scalar alpha conversion boundary and RGB outlining frontier
+
+[Complete alpha proof](evidence/anm-integer-interpolation/README.md) closes
+441950/370 with12 independent target fields in two complete four-TU /GL /GS
+canonical colds,11 recursive inputs frozen. Target scalar easing performs
+`FIMUL`, `FIADD`, then tail-jumps to ftol2: truncation encloses the entire
+affine sum. A coefficient0.5 fade255 to0 gives127; product-only truncation
+previously gave128. RGB intentionally has product truncation followed by
+integer addition; scalar repair must not be generalized to it.
+
+Named four Hermite weights and shared t+t recover alpha size370/frame8;
+several return/product/declaration permutations remain6 ordinary bytes off.
+A named float result accumulating final endpoint, final tangent, initial
+tangent, initial endpoint before one cast reproduces all instructions.
+Twelve existing same-image guards preserve4265 bytes/all174 fields twice;
+with alpha,13 complete owners pass4635/all186. Actual body/owner/enum host
+extraction passes12 scenarios,8 strict named-exit mutants and ASan/UBSan/leaks
+using explicit timer/linear-curve roles. Original/native runtime, physical
+source identity and later product/semantic/port planes remain unknown.
+The reviewed authored numerator is66685/273274 (24.40%).
+
+Fresh target/Ghidra RGB review confirms private EAX receiver, stack result,
+RET4 and4 real calls to Int3Scale441E50/56 at4417C8,4417FB,44183F,44187F.
+Target RGB has4 ftol2 calls overall; current candidate has16, with all four
+scale operations inlined. The exact standalone56-byte leaf did not establish
+parent call topology. By-value return API and a normal out-of-class scale
+definition in the same /GL TU do not solve this. Global /Ob1 recovers4 calls,
+but regresses radial and parent owners; /GL stays enabled and all such
+controls are restored. Reference inliner-threshold notes are hypotheses;
+forced attributes are not adopted. Real caller/TU/profile evidence is the
+next step before changing that seam again.
+
+Target executor loads/stores both RGB results in R/G/B order. Retaining that
+ordinary source order raises whole diagnostic1846 to1850 of8564, while the
+9964/frameFC parent still has89 target-sized groups/gap14 and7184/7995 aligned
+agreement. Scale whole-value casts and explicit flag-word OR do not repair
+the common copy/flag seam; small score variations are not ownership or type
+proof, so those controls are restored. All28 controls are scoped in the linked
+proof. Current scalar-family carrier supersedes vector-family source-cache
+hashes; old baseline paths are historical after the canonical image rebuild.

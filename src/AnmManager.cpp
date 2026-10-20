@@ -465,17 +465,23 @@ int AnmVmAlphaInterpolationView::Evaluate()
     if (mode == ANM_INTERPOLATION_HERMITE)
     {
         float value = timer.subframe / static_cast<float>(duration);
+        float twiceValue = value + value;
         float minusOne = value - 1.0f;
-        return static_cast<int>(
-            (1.0f + value + value) * minusOne * minusOne * initial +
-            (3.0f - value - value) * value * value * final +
-            (1.0f - value) * (1.0f - value) * value * initialTangent +
-            minusOne * value * value * finalTangent);
+        float initialWeight = (1.0f + twiceValue) * minusOne * minusOne;
+        float finalWeight = (3.0f - twiceValue) * value * value;
+        float initialTangentWeight = (1.0f - value) * (1.0f - value) * value;
+        float finalTangentWeight = minusOne * value * value;
+        float result = finalWeight * final;
+        result += finalTangentWeight * finalTangent;
+        result += initialTangentWeight * initialTangent;
+        result += initialWeight * initial;
+        return static_cast<int>(result);
     }
 
+    const int initialValue = initial;
     float value = CalculateAnmInterpolation(
         mode, timer.subframe, static_cast<float>(duration));
-    return static_cast<int>((final - initial) * value) + initial;
+    return static_cast<int>((final - initialValue) * value + initialValue);
 }
 
 // Target 0x00441AD0 evaluates the 0x3C-byte scale slot.
@@ -3718,9 +3724,9 @@ stop:
     {
         AnmInt3View value;
         vm->primaryColorInterpolation.Evaluate(&value);
-        vm->primaryColor.blue = static_cast<unsigned char>(value.x);
-        vm->primaryColor.green = static_cast<unsigned char>(value.y);
         vm->primaryColor.red = static_cast<unsigned char>(value.z);
+        vm->primaryColor.green = static_cast<unsigned char>(value.y);
+        vm->primaryColor.blue = static_cast<unsigned char>(value.x);
     }
     if (vm->primaryAlphaInterpolation.duration != 0)
         vm->primaryColor.alpha = static_cast<unsigned char>(
@@ -3743,9 +3749,9 @@ stop:
     {
         AnmInt3View value;
         vm->secondaryColorInterpolation.Evaluate(&value);
-        vm->secondaryColor.blue = static_cast<unsigned char>(value.x);
-        vm->secondaryColor.green = static_cast<unsigned char>(value.y);
         vm->secondaryColor.red = static_cast<unsigned char>(value.z);
+        vm->secondaryColor.green = static_cast<unsigned char>(value.y);
+        vm->secondaryColor.blue = static_cast<unsigned char>(value.x);
     }
     if (vm->secondaryAlphaInterpolation.duration != 0)
         vm->secondaryColor.alpha = static_cast<unsigned char>(

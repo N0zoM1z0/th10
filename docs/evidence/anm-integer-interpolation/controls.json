@@ -1,0 +1,1625 @@
+{
+  "scope": "Complete-extent structural diagnostics only; scores do not grant exact credit. Only final canonical alpha colds accept a new owner. All other source/interface/profile controls restored; retained executor RGB store order matches direct target observations.",
+  "records": [
+    {
+      "label": "alpha-accumulate",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "def4306e432a3417ee1b77faa95cad20cd512fb77e63cf41c2caa3b59aa5a48f",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 322,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "3cda7256cc3793895a84169311514da4dbf6b4e02fc1ff9372f25ffe00f35a0e",
+      "full_report_retained": true,
+      "case_report_sha256": "bb96a889ba538504efcf3a94344da26d701ca2354f2a127b712d71baa847452e"
+    },
+    {
+      "label": "alpha-affine-cast",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "ce1c12c28ce1c447f89a1dd64a8b21f417aa85d1c1ffa0d50ed21638f542482e",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 364,
+          "target_size": 370,
+          "matched_comparable_bytes": 222,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "7df98729ffaef6e253c1a94b8f881a0482efc357434b3fd46a5f52b73069711c",
+      "full_report_retained": false,
+      "case_report_sha256": "7f9da4c30ac9a9618d4295cd642cf4e599ce895d2b425cf6e468be9265b3a018"
+    },
+    {
+      "label": "alpha-affine-factor",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "351f8fa1e4089bb5a9ce9ef139da0d9da399a816206338f9434d4c25ac8b5ad7",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 366,
+          "target_size": 370,
+          "matched_comparable_bytes": 238,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "20ad5963bb7399a2029abc458c3cd11356f09f81ef0220f8eb6d675103f625e8",
+      "full_report_retained": false,
+      "case_report_sha256": "6652c3661650dedd3b7c488ea0c2ed277e35e08a755b54368942e3cd72424785"
+    },
+    {
+      "label": "alpha-affine-snapshot",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "631881307351fa0fdc57991c132e62666ede420d333dc25183b803b2261a0774",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 366,
+          "target_size": 370,
+          "matched_comparable_bytes": 238,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "96dcfb709fd34721ccecdadc07df250720189ca95515e101c17fa14f01581eae",
+      "full_report_retained": false,
+      "case_report_sha256": "dd1b439e52db420b06a527403e92845574e619dff909f92a4bb478a121d94e15"
+    },
+    {
+      "label": "alpha-final-tangent-first",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "1f264dae860e06dc35ecd92e1a711b040abfe7be8579667467f73a069286c91c",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 316,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "330cb468c93b2ede6f8adf121241cc3b22281d1507a9970cd6cfe79cabc812f8",
+      "full_report_retained": false,
+      "case_report_sha256": "f51613fb91df7f373c490f3abc76aced795132338e421fbb0c116c3ef7935294"
+    },
+    {
+      "label": "alpha-member-first",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "6cbfbcd23cdbdaf1757796370357749445ab3b336311002a4dd86cf79de816e4",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 316,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "4ba8839ba25fcc49fdcf418bbf179833d7b6ae52640d8dbb3ed1a60263e38304",
+      "full_report_retained": false,
+      "case_report_sha256": "14482e02a27115703ef606f664e9748e89f70bd5b3988be0f92b2a9e0897b721"
+    },
+    {
+      "label": "alpha-tangent-both",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "9300c7263035e8e9558e43179a271ca8283975be65d98befae6ccc090326b49c",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 316,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "f4faa56c2c43a17e1a42948b6468c2ff20b81ac112e8a048f96d1cb3fd1d456b",
+      "full_report_retained": false,
+      "case_report_sha256": "5220cea090074e4826517de6969989dc1efba35dc20e1171c809244266c6f8c7"
+    },
+    {
+      "label": "alpha-tangent-leading",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "b4196d4829344d52a0137e56eafd4ae8e539cc8833b9a0d272e8bb13a37dc788",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 316,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "109c81f39edd19fea965d51dfaeff5825319526f81904c0b67d0165fed8ef78a",
+      "full_report_retained": false,
+      "case_report_sha256": "be097bd3eed4ea3e6b4edd1a80ae051998d22aed0aa9c2dd4e8b6d4f5c633dd5"
+    },
+    {
+      "label": "alpha-tangent-square",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "1b4cdddbf7ea5bb392e3af34e09fbc57bbbd75189834ee6006ac07cf5c9690e4",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 316,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "e5d621fd9f0e691e8948c606a48d5d8a9d9f3e0821e8be115f4d86aaa3c36267",
+      "full_report_retained": false,
+      "case_report_sha256": "ba7c26acb5759f875cf078a08d7564023d9f9690b32d0e4f4a3314a4010e05a5"
+    },
+    {
+      "label": "alpha-target-sum-order",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "38e2473c0039ec9e5e72b516cbfe28fbb1dbdf3b8f1acbe70db3f2d346302b5f",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 366,
+          "target_size": 370,
+          "matched_comparable_bytes": 238,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "2ace1f29723e4c0d5e49fd33091013c57ad7e41891a53f40bf18dfa1a433fe58",
+      "full_report_retained": false,
+      "case_report_sha256": "cf8252b1020ff2e4843797f73ed41b5c12655b56538dd7b9584f86bc3bd5c425"
+    },
+    {
+      "label": "alpha-weight-declarations",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "9b46448297d4a769fe9d8d6c1778f9127ba7e73230b2d93d55d755c84c20b5d7",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 316,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "9fb371d9469e67400f9037932be369aed13a03ff09c832ef921cda0845a03d3b",
+      "full_report_retained": false,
+      "case_report_sha256": "1246627e004c6280bfaf883619d673e7ace7cc7a4b15cc02d5f7aedc0064336f"
+    },
+    {
+      "label": "alpha-weight-target-order",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "a359e8276c6a6dc14dab4b2c567b842e97853ffb69c708ac30129646d23bdd49",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 316,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "643f6bf8500e94b71dfd89a3e8c100fdf60e5c3d7620bf2bde5465a10b571c0a",
+      "full_report_retained": false,
+      "case_report_sha256": "6747e940243a932c1409295b04bd0133e053c1250f66baee7213fb7e2da76a01"
+    },
+    {
+      "label": "alpha-weight-values",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "ff41ce5b7a971ca0ef8856d584c10458aceb691f24df29b083450366d1e63d37",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 316,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "77862fd1a749395fbb8832c1771f80fce76ae3b6fb6e4ba0cff1974bfe8c0531",
+      "full_report_retained": false,
+      "case_report_sha256": "a94613d739e3326cb76b3e1e71220eb3c76ef45769f2354cefa25c41cff64f2c"
+    },
+    {
+      "label": "baseline",
+      "build_kind": "historical pinned carrier reused at session entry",
+      "source_sha256": {
+        "src/AnmManager.cpp": "6a9e4a1d18e68371ac9c4941fe946936d02c2aed10fad4ed221bd875e18af3e3",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "c48be5458e403c4f5306e5fe969a23cf5410e1a126c64119d6cf5a2777d384df",
+      "full_report_retained": true,
+      "case_report_sha256": "11bc36f583cc1e879ffe14b2f4009e5809f0bffe802970309f919360ff92800d"
+    },
+    {
+      "label": "color-value-constructed-factor",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "fbbb0f19e67697ccb10720dbb11577ba51165b28f0c657c02e7fdf01f7e12f14",
+        "src/AnmManager.hpp": "b522fc4abbdc204e522b869dee8d752caf06d3223289a71b3933662002af9baf"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 843,
+          "target_size": 820,
+          "matched_comparable_bytes": 30,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "1e4cf1c9e1b827a8c5fb379e7ae1edd0341e15fb6d609e80a3838521ec152cf5",
+      "full_report_retained": false,
+      "case_report_sha256": "332b7003b169bdd3a8b500b0d0b0fdba648e872e3cbfbdf559d0929179a1be55"
+    },
+    {
+      "label": "color-value-constructed",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "66ee512409225cf51d8e86bb1d5a6273fa2330d112d8af930e5e8495c7fc81a4",
+        "src/AnmManager.hpp": "b522fc4abbdc204e522b869dee8d752caf06d3223289a71b3933662002af9baf"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 831,
+          "target_size": 820,
+          "matched_comparable_bytes": 23,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "d741ec60d34bdb160cb9cea8a14a78d163c294fed3faf887d761045a374bfd30",
+      "full_report_retained": false,
+      "case_report_sha256": "4fadf2eccb99792dde9b6c52832473644bf71ca7e403fd2873d3557a613c4cff"
+    },
+    {
+      "label": "color-value-factored",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "c31b49293bf1e0fafd114ff7e5b4e0a81bcd47721eac4e30151cc55c4898be2e",
+        "src/AnmManager.hpp": "b522fc4abbdc204e522b869dee8d752caf06d3223289a71b3933662002af9baf"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 845,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "013a193cc5242cbf227bd0104aff6bd2f792a0a3d1236f79e8fbf1d15d3fe614",
+      "full_report_retained": false,
+      "case_report_sha256": "e7e76d240198a83657225d288dd21701c44e26b02d01c3a84643f1c6baa10a23"
+    },
+    {
+      "label": "color-value-named",
+      "build_kind": "complete four-TU diagnostic cold; no canonical exact authority",
+      "source_sha256": {
+        "src/AnmManager.cpp": "a27530d82b03caeaff175799f228bc209ba647880310e221a08b16867e838e31",
+        "src/AnmManager.hpp": "b522fc4abbdc204e522b869dee8d752caf06d3223289a71b3933662002af9baf"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 831,
+          "target_size": 820,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "788308e1cce74d5f28146d0bd47200d7b3ecbec8d09665ba6e70cebb8dac3884",
+      "full_report_retained": false,
+      "case_report_sha256": "c8cd232f026b42020f79440b4ad8d33304249cc88c674eca92f585245e221b6e"
+    },
+    {
+      "label": "outline-pointer-ob1",
+      "build_kind": "complete four-TU diagnostic cold; no canonical exact authority",
+      "source_sha256": {
+        "src/AnmManager.cpp": "0889387d31805f69e1a8ed2641d043ea0b26da74e86f3663861847b8765155be",
+        "src/AnmManager.hpp": "f7b47bddcdb8ee8694fbbf21ccfdb63774a97429c4d0aab2d261514c6cad6191"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 728,
+          "target_size": 820,
+          "matched_comparable_bytes": 203,
+          "comparable_bytes": 752,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 4,
+            "??DAnmInt3View@@QBE?AU0@M@Z": 4,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9948,
+          "target_size": 9964,
+          "matched_comparable_bytes": 430,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 3115,
+            "comparable_bytes": 8094,
+            "absolute_case_gap_delta": 325,
+            "same_sized_cases": 9,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "c5efd630ac3fb0c9207b4c716ef40c941c282e22a0a95cac9ca916063b262205",
+      "full_report_retained": true,
+      "case_report_sha256": "a7636293e99fd531ed882a33ab9bfc7ad2a198f248ffe64b9a1a9ad09029f7ed"
+    },
+    {
+      "label": "outline-pointer",
+      "build_kind": "complete four-TU diagnostic cold; no canonical exact authority",
+      "source_sha256": {
+        "src/AnmManager.cpp": "0889387d31805f69e1a8ed2641d043ea0b26da74e86f3663861847b8765155be",
+        "src/AnmManager.hpp": "f7b47bddcdb8ee8694fbbf21ccfdb63774a97429c4d0aab2d261514c6cad6191"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "0093212504afb0b300df9d3c947385531c7b7bda997aae271d864e4bb1e0a433",
+      "full_report_retained": false,
+      "case_report_sha256": "038bd8476c4fe2886c62f8b823f83f9b2e86bf049d5a936cde5a947941e61f33"
+    },
+    {
+      "label": "outline-value-ob1",
+      "build_kind": "complete four-TU diagnostic cold; no canonical exact authority",
+      "source_sha256": {
+        "src/AnmManager.cpp": "57dc3d593f114a6aea6e57f468b4f04d4307e784ff4ce153c5dce0aea5846b98",
+        "src/AnmManager.hpp": "048066e51ecb8785d5c4250249f0e1536937116680518f6987ebd262b9265625"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 772,
+          "target_size": 820,
+          "matched_comparable_bytes": 243,
+          "comparable_bytes": 752,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 4,
+            "??DAnmInt3View@@QBE?AU0@M@Z": 4,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9948,
+          "target_size": 9964,
+          "matched_comparable_bytes": 430,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 3115,
+            "comparable_bytes": 8094,
+            "absolute_case_gap_delta": 325,
+            "same_sized_cases": 9,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "54d6ae0023b3054b78e2bec3a5dcf0af8570f5687054cbcccf866592dfb4ddbf",
+      "full_report_retained": false,
+      "case_report_sha256": "d520c1e5850abf2bd418ef3ede334cb6ed819450a558bdc1dc10a3a8f21fdaad"
+    },
+    {
+      "label": "outline-value",
+      "build_kind": "complete four-TU diagnostic cold; no canonical exact authority",
+      "source_sha256": {
+        "src/AnmManager.cpp": "57dc3d593f114a6aea6e57f468b4f04d4307e784ff4ce153c5dce0aea5846b98",
+        "src/AnmManager.hpp": "048066e51ecb8785d5c4250249f0e1536937116680518f6987ebd262b9265625"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 831,
+          "target_size": 820,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1846,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "58461d509924567c5a4191fc2c28f873b88ff7e4f371896a009464dcd65f3de1",
+      "full_report_retained": false,
+      "case_report_sha256": "296015403d85fcbc67bdd58fbddd00405e517a9771745b1508bf7f557b411950"
+    },
+    {
+      "label": "rgb-target-stores-alpha",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "4b6c35b8b5b5abc38a43130a51b97b5af324c656c128da2c8546affb987bea59",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 322,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1850,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "68bc014a5c109c346615323fde9531163acfa1c6f321f27886eb57720cba2be6",
+      "full_report_retained": true,
+      "case_report_sha256": "2db41d2014eca99ffda70af69e814f4d798e8c8d4003b1ee1f27fc26a6601a99"
+    },
+    {
+      "label": "rgb-target-stores",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "b3235adb48b47a683a79a8948bcce27468ef763d5da7c208a52a0d62e8fbc52f",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 354,
+          "target_size": 370,
+          "matched_comparable_bytes": 14,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1850,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "396a14891c9a2af0eb0a30d932cd92f15c9f699eb7076a2bc1973a63cd7ec91e",
+      "full_report_retained": false,
+      "case_report_sha256": "a180b4aeb8cc9715b91138c7fa53552ead4929c9fdd6ebf80d248def3ed99910"
+    },
+    {
+      "label": "scale-copy-view-local",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "dcabd4de9c289f082b28b337b52e2aa4e734af86c3f8b2a7b7a55b8e82e07e76",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 322,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1852,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7185,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "b77b40d2bef36e5ab006acaaf4b3ef42b1d5180d3dbf276d29bbb7ec15114eb7",
+      "full_report_retained": false,
+      "case_report_sha256": "00e77155001bd01471547593fc8db82868d1278db65254b0250efec7f778c87e"
+    },
+    {
+      "label": "scale-copy-view",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "5d940b3ca4c9e0916c3a59266270200bf7f3a589f594853cc84a6cd098453688",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 322,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1850,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7186,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "3d2d7e6c36d6c19d71d597dfb7ff69cc5d93705f4fcc259c463e2687c0066399",
+      "full_report_retained": false,
+      "case_report_sha256": "ed7793d73d02a84411c393a5ff53b63bb49f40bada657a75d09611b156951f5a"
+    },
+    {
+      "label": "scale-view-word-flag",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "47efdedb527d833cc42e05fd700577036824753276060502457ae793ae3c1789",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 322,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1850,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7186,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "296ea6de5cfbabe436c8f7b38bc40e26604485edd3e962a06b20e5e20ecbeff3",
+      "full_report_retained": false,
+      "case_report_sha256": "d1142e8722c2fadaa314049895384c3cbde37971bb396235f7518ad762bf17d5"
+    },
+    {
+      "label": "scale-word-flag",
+      "build_kind": "source-only warm diagnostic; 3 support objects hash-checked",
+      "source_sha256": {
+        "src/AnmManager.cpp": "3ab1356321400edbc615199fbc373535df842ca7866e238e84a258ad15a49271",
+        "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "reports": {
+        "alpha": {
+          "candidate_size": 370,
+          "target_size": 370,
+          "matched_comparable_bytes": 322,
+          "comparable_bytes": 322,
+          "normalization_complete": true
+        },
+        "RGB": {
+          "candidate_size": 791,
+          "target_size": 820,
+          "matched_comparable_bytes": 29,
+          "comparable_bytes": 720,
+          "normalization_complete": true,
+          "relative_call_symbols": {
+            "__ftol2": 16,
+            "?CalculateAnmInterpolation@@YGMHMM@Z": 1
+          }
+        },
+        "ExecuteScript": {
+          "candidate_size": 9964,
+          "target_size": 9964,
+          "matched_comparable_bytes": 1850,
+          "comparable_bytes": 8564,
+          "normalization_complete": true,
+          "case_aligned_diagnostic": {
+            "matched_comparable_bytes": 7184,
+            "comparable_bytes": 7995,
+            "absolute_case_gap_delta": 14,
+            "same_sized_cases": 89,
+            "normalization_complete": true
+          }
+        }
+      },
+      "full_report_sha256": "3102f2fcb8f76c467ef6413c903523a6925720bfb333fc9d21a437a70e895fed",
+      "full_report_retained": false,
+      "case_report_sha256": "dfd1b53c97da884ed928f157ffdec9a5ed64879726801dea2f7fd24914b20a18"
+    }
+  ],
+  "negative_results": [
+    "RGB by-value returns do not alone recover the private ABI or scale outlining. Moving the normal scale definition out of the header into the same /GL TU does not alone recover four real calls.",
+    "Global /Ob1 restores four RGB scale calls and four ftol2 calls, but changes other complete owners and the parent graph; rejected as a global profile. /GL is preserved in all controls.",
+    "Alpha named weights recover size370/frame8, but several reordered expressions/products remain six ordinary bytes different. Stepwise float accumulation in target order closes the complete body.",
+    "Scale whole-value casts and explicit raw flag OR do not repair the common scale-copy/flag seam. Small diagnostic score variations are not source-type/ownership proof; all restored."
+  ],
+  "baseline_recursive_inputs_sha256": {
+    "src/AnmManager.cpp": "6a9e4a1d18e68371ac9c4941fe946936d02c2aed10fad4ed221bd875e18af3e3",
+    "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "reproduction": "Each record replaces only its declared CPP/HPP hashes in the baseline eleven-input graph. Verified source deltas retained privately; complete diagnostic cold needed after native-control cleanup. Selected baseline/discovery/outlining/final reports and both canonical colds retained; other full reports are superseded by scoped public records."
+}

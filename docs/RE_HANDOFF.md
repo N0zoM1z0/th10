@@ -28,6 +28,28 @@ scratch paths, or build hashes into this file.
 
 ## Current local checkpoint (2026-10-20)
 
+- **370 new authored exact bytes** close complete scalar-alpha Evaluate
+  441950/370. Two independent complete four-TU /GL /GS canonical colds
+  freeze11 project inputs and replay all12 fields, including the final jump.
+  Default easing adds initial before integer truncation (255 to0 at0.5 gives
+  127, previously128); shared t+t, named weights and stepwise Hermite
+  accumulation recover frame8 and every ordinary byte. Twelve existing
+  same-image guards preserve4265 bytes/all174 fields twice; with alpha each
+  image strictly passes4635 bytes/all186 fields. Actual-source host checks
+  pass12 scenarios,8 strict mutants and ASan/UBSan/leaks. Authored exact is
+  **66685/273274 (24.40%)**, unchanged denominator. RGB store order now follows
+  target R/G/B; parent ExecuteScript9964/frameFC remains nonexact,89 equal-sized
+  groups/gap14 and7184/7995 aligned diagnostic (whole ordinary1850/8564).
+  Target RGB has4 real Int3 scale calls; native inlines all4. By-value API and
+  same-TU normal definition do not solve outlining; global /Ob1 restores calls
+  but regresses other owners and is restored. Scale cast/flag controls are
+  restored. [Proof and next large-function work](evidence/anm-integer-interpolation/README.md).
+  Original source/TU, product/runtime and later gates remain open. The new
+  integer-family final canonical carrier supersedes the old source cache;
+  check every dependency and artifact pin. Protected D3D evidence untouched.
+  All96 standard CI checks pass; post-CI raw source/artifact pins are unchanged.
+  About28.2 MB pruned:35 raw source snapshots become verified deltas and27
+  native control dirs are removed; one current canonical carrier retained.
 - **1539 new authored exact bytes** close the complete Float3 evaluator
   404610/887 and Float2 scale evaluator441AD0/652. Two independent complete
   four-TU /GL /GS canonical colds freeze11 project inputs and replay all20

@@ -1,0 +1,29 @@
+{
+  "status": "passed",
+  "scope": "New complete alpha owner and twelve same-image guards only; no whole historical native cohort replay, parent exact credit, product/runtime or semantic/port closure.",
+  "starting_head": "20b5926bf4e2bffbfcc319dffad5b87c4f8bed5f",
+  "canonical_colds": 2,
+  "canonical_new_bytes": 370,
+  "canonical_new_fields": 12,
+  "existing_guard_bytes_each": 4265,
+  "existing_guard_fields_each": 174,
+  "host_scenarios": 12,
+  "strict_named_assertion_mutants": 8,
+  "positive_ASan_UBSan_leak_detection": "passed",
+  "source_inputs_frozen": 11,
+  "post_CI_source_and_artifact_pins": "all raw hashes unchanged",
+  "target_toolchain_tracking_table_progress_whitespace": "passed",
+  "standard_CI": {
+    "returncode": 0,
+    "steps": 96,
+    "log_sha256": "31fc536f2d95fd5dd064a54f78021de4b6941d468911162fa55cc449ee71e201"
+  },
+  "source_snapshot_delta_roundtrips": 35,
+  "native_control_directories_removed": 27,
+  "superseded_report_files_removed": 97,
+  "net_bytes_pruned": 28231108,
+  "retained": "One current canonical native carrier; verified control-source deltas and selected bounded reports.",
+  "protected_preexisting_work": "D3D evidence and prior ECL carrier untouched",
+  "authored_exact_bytes": 66685,
+  "authored_reviewed_owned_bytes": 273274
+}

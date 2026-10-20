@@ -81,6 +81,7 @@ def main() -> int:
         run("Validate GUI draw contracts", [sys.executable, "scripts/test-gui-draw.py"])
         run("Validate laser owner bindings", [sys.executable, "scripts/test-laser-owner-binding.py", "--opt", "O2", "--no-mutations"])
         run("Validate rectangle contracts and strict mutations", [sys.executable, "scripts/test-anm-rectangle.py"])
+        run("Validate alpha interpolation and strict mutations", [sys.executable, "scripts/test-anm-alpha-interpolation.py"])
         run("Validate loaded-ANM slot release", [sys.executable, "scripts/test-anm-release-slot.py"])
         run("Validate GUI draw arithmetic witnesses", [sys.executable, "scripts/test-gui-draw-arithmetic.py"])
         run("Validate GUI draw complete-header layout", [sys.executable, "scripts/test-gui-draw-layout.py"])

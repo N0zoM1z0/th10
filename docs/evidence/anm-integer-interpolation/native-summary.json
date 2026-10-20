@@ -1,0 +1,625 @@
+{
+  "scope": "New complete370-byte alpha evaluator; twelve same-image existing guards retain4265 bytes/all174 fields. No RGB/ExecuteScript/product/runtime exact credit.",
+  "starting_head": "20b5926bf4e2bffbfcc319dffad5b87c4f8bed5f",
+  "new_authored_exact_bytes": 370,
+  "source_sha256": {
+    "src/AnmManager.cpp": "4b6c35b8b5b5abc38a43130a51b97b5af324c656c128da2c8546affb987bea59",
+    "src/AnmManager.hpp": "6ed978ea010656eb0bf1fdad5724cf87864b2aa65258f62e53cb51320772bd84",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "canonical_manifest_sha256": "eadd950213ad39f1bf2b38c4732562bc796da7b690ae0ec374b82b32c51d1493",
+  "profile": [
+    "/TP",
+    "/MT",
+    "/O2",
+    "/Gy",
+    "/GF",
+    "/Oi",
+    "/DNDEBUG",
+    "/Isrc",
+    "/GL",
+    "/GS"
+  ],
+  "support_sources": [
+    "src/RandomMath.cpp",
+    "src/AnmVmCreate.cpp",
+    "src/AnmVmId.cpp"
+  ],
+  "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+  "cold_builds": [
+    {
+      "label": "final-cold1",
+      "canonical_units": [
+        {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00402120",
+          "capstone_version": "5.0.6",
+          "compared_size": 370,
+          "data_spans": [],
+          "decoded_bytes": 370,
+          "extent_source": "pdb-section-contribution",
+          "first_differences": [],
+          "image_sha256": "dab6d3d2416004529e4eca19a790b94782172b77bb6fc686aa3c35afd8f29106",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1D0",
+              "linked_symbol": "__real@3f7d70a4",
+              "local": false,
+              "offset": "0x1E",
+              "symbol": "__real@3f7d70a4",
+              "target": "0x00470B68",
+              "target_encoded_value": "0x00470B68",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1CC",
+              "linked_symbol": "__real@3f8147ae",
+              "local": false,
+              "offset": "0x2D",
+              "symbol": "__real@3f8147ae",
+              "target": "0x00470B64",
+              "target_encoded_value": "0x00470B64",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x3E",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x53",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x00022185",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E0B8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0046",
+              "local": false,
+              "offset": "0x8A",
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "target": "0x00476F78",
+              "target_encoded_value": "0x00476F78",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0xF6",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0xFC",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D20C",
+              "linked_symbol": "__real@40400000",
+              "local": false,
+              "offset": "0x104",
+              "symbol": "__real@40400000",
+              "target": "0x00470BD4",
+              "target_encoded_value": "0x00470BD4",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x12B",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x13A",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x0002209E",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004017D0",
+              "linked_symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "local": false,
+              "offset": "0x157",
+              "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "target": "0x0044C350",
+              "target_encoded_value": "0x0000A8A5",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x16E",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x0002206A",
+              "type": "REL32",
+              "width": 4
+            }
+          ],
+          "matched_bytes": 370,
+          "matched_compared_bytes": 370,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "pdb_module_index": 1,
+          "raw_equal": false,
+          "result": "exact",
+          "returncode": 0,
+          "size": 370,
+          "symbol": "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ",
+          "target_address": "0x00441950",
+          "unit": "anm-evaluate-alpha-interpolation"
+        }
+      ],
+      "artifact_sha256": {
+        "image": "dab6d3d2416004529e4eca19a790b94782172b77bb6fc686aa3c35afd8f29106",
+        "map": "2e85de6abcbd79ccd5bc7593375c5408e914ab7351b1c0bd273d4077af6af2c3",
+        "pdb": "af827da32d2c14123ecd2c3f107c43fbbe120639aca1509bed247074727537cf",
+        "object": "a2be573cdfabbadd084caebae117a91409b118f1d6effb978be68892358f6b3d"
+      },
+      "canonical_report_sha256": "294d9889abc77b15f652b94d8a11c87dc11f45d61568c0aea4ce323fbe5adbc3",
+      "existing_guards": [
+        {
+          "unit": "anm-vm-initialize-private",
+          "size": 273,
+          "matched_bytes": 273,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 0
+        },
+        {
+          "unit": "anm-setup-vertex-buffer",
+          "size": 472,
+          "matched_bytes": 472,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 22
+        },
+        {
+          "unit": "anm-start-primary-alpha-interpolation",
+          "size": 130,
+          "matched_bytes": 130,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 1
+        },
+        {
+          "unit": "anm-get-int-var",
+          "size": 144,
+          "matched_bytes": 144,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 15
+        },
+        {
+          "unit": "anm-get-float-var",
+          "size": 424,
+          "matched_bytes": 424,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 44
+        },
+        {
+          "unit": "anm-get-int-var-ptr",
+          "size": 132,
+          "matched_bytes": 132,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 11
+        },
+        {
+          "unit": "anm-get-float-var-ptr",
+          "size": 156,
+          "matched_bytes": 156,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 14
+        },
+        {
+          "unit": "anm-start-scale-interpolation",
+          "size": 136,
+          "matched_bytes": 136,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 1
+        },
+        {
+          "unit": "anm-initialize-pulsing-radial-trail",
+          "size": 803,
+          "matched_bytes": 803,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 43
+        },
+        {
+          "unit": "anm-evaluate-scale-interpolation",
+          "size": 652,
+          "matched_bytes": 652,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 10
+        },
+        {
+          "unit": "anm-evaluate-float3-interpolation",
+          "size": 887,
+          "matched_bytes": 887,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 10
+        },
+        {
+          "unit": "anm-int3-scale",
+          "size": 56,
+          "matched_bytes": 56,
+          "result": "exact",
+          "pdb_guid": "8049a9c100679a4e9d22a43381db21eb",
+          "fields": 3
+        }
+      ],
+      "guard_bytes": 4265,
+      "guard_fields": 174,
+      "guard_manifest_sha256": "fc69dcd7e2c5df3f2918d150b761e514d1a3b9612be397f62c40168b5ee90670"
+    },
+    {
+      "label": "final-cold2",
+      "canonical_units": [
+        {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00402120",
+          "capstone_version": "5.0.6",
+          "compared_size": 370,
+          "data_spans": [],
+          "decoded_bytes": 370,
+          "extent_source": "pdb-section-contribution",
+          "first_differences": [],
+          "image_sha256": "f3228efe9649eb71b3a652c57cd95b8e7aa3f47c94611639bd7e0332c151a1b4",
+          "linkages": [
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1D0",
+              "linked_symbol": "__real@3f7d70a4",
+              "local": false,
+              "offset": "0x1E",
+              "symbol": "__real@3f7d70a4",
+              "target": "0x00470B68",
+              "target_encoded_value": "0x00470B68",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1CC",
+              "linked_symbol": "__real@3f8147ae",
+              "local": false,
+              "offset": "0x2D",
+              "symbol": "__real@3f8147ae",
+              "target": "0x00470B64",
+              "target_encoded_value": "0x00470B64",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x3E",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x53",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x00022185",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E0B8",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0046",
+              "local": false,
+              "offset": "0x8A",
+              "symbol": "?g_AnmGameSpeed@@3MA",
+              "target": "0x00476F78",
+              "target_encoded_value": "0x00476F78",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0xF6",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0xFC",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D20C",
+              "linked_symbol": "__real@40400000",
+              "local": false,
+              "offset": "0x104",
+              "symbol": "__real@40400000",
+              "target": "0x00470BD4",
+              "target_encoded_value": "0x00470BD4",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040D1E4",
+              "linked_symbol": "__real@3f800000",
+              "local": false,
+              "offset": "0x12B",
+              "symbol": "__real@3f800000",
+              "target": "0x00470AFC",
+              "target_encoded_value": "0x00470AFC",
+              "type": "DIR32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x13A",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x0002209E",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x004017D0",
+              "linked_symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "local": false,
+              "offset": "0x157",
+              "symbol": "?CalculateAnmInterpolation@@YGMHMM@Z",
+              "target": "0x0044C350",
+              "target_encoded_value": "0x0000A8A5",
+              "type": "REL32",
+              "width": 4
+            },
+            {
+              "addend": 0,
+              "candidate_target": "0x0040E148",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0082",
+              "local": false,
+              "offset": "0x16E",
+              "symbol": "__ftol2",
+              "target": "0x00463B2C",
+              "target_encoded_value": "0x0002206A",
+              "type": "REL32",
+              "width": 4
+            }
+          ],
+          "matched_bytes": 370,
+          "matched_compared_bytes": 370,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "pdb_module_index": 1,
+          "raw_equal": false,
+          "result": "exact",
+          "returncode": 0,
+          "size": 370,
+          "symbol": "?Evaluate@AnmVmAlphaInterpolationView@@QAEHXZ",
+          "target_address": "0x00441950",
+          "unit": "anm-evaluate-alpha-interpolation"
+        }
+      ],
+      "artifact_sha256": {
+        "image": "f3228efe9649eb71b3a652c57cd95b8e7aa3f47c94611639bd7e0332c151a1b4",
+        "map": "04a9e801eefd5b6057dbe488c3cea6c5342cd314bcb4ea351a1fcbdb2a1faff5",
+        "pdb": "3c1744f34a217885a92fff650d1f157f5691ef51495aa1cf7497c83536145462",
+        "object": "4f5923a9de52a5e6407ddc1d8c36c81b6db1432293846bb81ac566c7c7c0c096"
+      },
+      "canonical_report_sha256": "04a686a062937a7280801619d64cb4640fb16268309e42c9f6ec0b46849a7992",
+      "existing_guards": [
+        {
+          "unit": "anm-vm-initialize-private",
+          "size": 273,
+          "matched_bytes": 273,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 0
+        },
+        {
+          "unit": "anm-setup-vertex-buffer",
+          "size": 472,
+          "matched_bytes": 472,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 22
+        },
+        {
+          "unit": "anm-start-primary-alpha-interpolation",
+          "size": 130,
+          "matched_bytes": 130,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 1
+        },
+        {
+          "unit": "anm-get-int-var",
+          "size": 144,
+          "matched_bytes": 144,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 15
+        },
+        {
+          "unit": "anm-get-float-var",
+          "size": 424,
+          "matched_bytes": 424,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 44
+        },
+        {
+          "unit": "anm-get-int-var-ptr",
+          "size": 132,
+          "matched_bytes": 132,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 11
+        },
+        {
+          "unit": "anm-get-float-var-ptr",
+          "size": 156,
+          "matched_bytes": 156,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 14
+        },
+        {
+          "unit": "anm-start-scale-interpolation",
+          "size": 136,
+          "matched_bytes": 136,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 1
+        },
+        {
+          "unit": "anm-initialize-pulsing-radial-trail",
+          "size": 803,
+          "matched_bytes": 803,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 43
+        },
+        {
+          "unit": "anm-evaluate-scale-interpolation",
+          "size": 652,
+          "matched_bytes": 652,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 10
+        },
+        {
+          "unit": "anm-evaluate-float3-interpolation",
+          "size": 887,
+          "matched_bytes": 887,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 10
+        },
+        {
+          "unit": "anm-int3-scale",
+          "size": 56,
+          "matched_bytes": 56,
+          "result": "exact",
+          "pdb_guid": "f06f44306700474e94485e6ce75f8b6d",
+          "fields": 3
+        }
+      ],
+      "guard_bytes": 4265,
+      "guard_fields": 174,
+      "guard_manifest_sha256": "fc69dcd7e2c5df3f2918d150b761e514d1a3b9612be397f62c40168b5ee90670"
+    }
+  ],
+  "ExecuteScript_diagnostic": {
+    "candidate_size": 9964,
+    "target_size": 9964,
+    "matched_comparable_bytes": 1850,
+    "comparable_bytes": 8564,
+    "case_aligned": {
+      "matched_comparable_bytes": 7184,
+      "comparable_bytes": 7995,
+      "absolute_case_gap_delta": 14,
+      "same_sized_cases": 89,
+      "normalization_complete": true
+    }
+  },
+  "host": {
+    "scope": "host source logic with bounded roles; not TH10/native runtime",
+    "scenarios": 12,
+    "strict_mutants": 8,
+    "ASan_UBSan_leaks": "passed",
+    "body_sha256_lf": "d88645ada6483aa1d6983d7110f4fd07ef280a649c6867ce05eb0f7ce3431d14"
+  }
+}
