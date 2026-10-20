@@ -1044,3 +1044,9 @@ ReplayDrawFpsCallback
 FrontEndUpdateMainMenu
 FrontEndUpdateMainMenuReturn
 FrontEndHasAnyClear
+MidiReadVariableLength
+MidiOutputView::ResetTracks
+MidiOutputView::Tick
+MidiOutputView::ProcessEvent
+MidiOutputView::ApplyChannelVolumes
+MidiTimerView::Tick

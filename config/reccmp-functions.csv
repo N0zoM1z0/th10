@@ -1045,3 +1045,9 @@ ReplayDrawFpsCallback,0x0042A430,function
 FrontEndUpdateMainMenu,0x0042D300,function
 FrontEndUpdateMainMenuReturn,0x0042D420,function
 FrontEndHasAnyClear,0x0042C850,function
+MidiReadVariableLength,0x0043A730,function
+MidiOutputView::ResetTracks,0x0043ACE0,function
+MidiOutputView::Tick,0x0043AF30,function
+MidiOutputView::ProcessEvent,0x0043B110,function
+MidiOutputView::ApplyChannelVolumes,0x0043B7A0,function
+MidiTimerView::Tick,0x0043B8B0,function

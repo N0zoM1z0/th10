@@ -22250,3 +22250,67 @@ symbol = "?FrontEndHasAnyClear@@YAHPBE@Z"
 target_address = 0x0042C850
 size = 69
 linkages = []
+
+# Full MIDI helper; independent origin/product gates.
+[units.midi-reset-tracks]
+source = "src/Midi.cpp"
+support_sources = []
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?Tick@MidiOutputView@@UAEXXZ"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/MidiEventTick"
+functions = ["MidiOutputView::ResetTracks"]
+symbol = "?ResetTracks@MidiOutputView@@QAEXXZ"
+target_address = 0x43ace0
+size = 132
+linkages = []
+
+# Full MIDI helper; independent origin/product gates.
+[units.midi-read-variable-length]
+source = "src/Midi.cpp"
+support_sources = []
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?Tick@MidiOutputView@@UAEXXZ"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/MidiEventTick"
+functions = ["MidiReadVariableLength"]
+symbol = "?MidiReadVariableLength@@YAIPAPAE@Z"
+target_address = 0x43a730
+size = 26
+linkages = []
+
+# Full MIDI helper; independent origin/product gates.
+[units.midi-default-timer-tick]
+source = "src/Midi.cpp"
+support_sources = []
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?Tick@MidiOutputView@@UAEXXZ"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/MidiEventTick"
+functions = ["MidiTimerView::Tick"]
+symbol = "?Tick@MidiTimerView@@UAEXXZ"
+target_address = 0x43b8b0
+size = 1
+linkages = []
+
+# Full MIDI helper; independent origin/product gates.
+[units.midi-apply-channel-volumes]
+source = "src/Midi.cpp"
+support_sources = []
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+entry_symbol = "?Tick@MidiOutputView@@UAEXXZ"
+artifact_kind = "linked-pe"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/MidiEventTick"
+functions = ["MidiOutputView::ApplyChannelVolumes"]
+symbol = "?ApplyChannelVolumes@MidiOutputView@@QAEXH@Z"
+target_address = 0x43b7a0
+size = 140
+linkages = [{ offset = 61, type = "REL32", symbol = "__ftol2", target = 4602668 }, { offset = 118, type = "DIR32", symbol = "__imp__midiOutShortMsg@8", target = 4612760 }]

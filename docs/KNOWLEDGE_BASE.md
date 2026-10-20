@@ -3086,3 +3086,43 @@ Actual owners/cursor/input/queue bodies and canonical headers are host-tested
 with explicit VM/state/layout/prefill roles; nine named mutants include input
 priority, frame boundaries, Extra persistence and auxiliary identity. No native
 product, runtime, complete source ownership or semantic/port claim follows.
+
+
+## MIDI event/timer owner recovery (2026-10-20)
+
+TH10-local read-only Ghidra, complete raw code/guards and adjacent padding identify
+parser43B110 as1670 owned bytes:1323 executable plus347 of pointer tables,
+compressed113/65/94-byte indices and alignment through43B795. This corrects the
+authored denominator; no parser exact credit. Together with virtual Tick473,
+reset132, volume140 and VLQ reader26,2441 authored bytes now have maintained
+source. New default timer callback43B8B0/1 is named by base vtable46F810 and has
+fifteen following CC bytes. Its source-written/generated/shared origin stays
+indeterminate. The trampoline43A6E0 dispatches vptr slot0; derived slot46F80C names
+Tick43AF30. A16-byte timer base preserves all native offsets while a flat virtual
+class fails VC7.1 offset assertions. Descriptive types do not close original
+class identity, vtable data, constructors or the complete allocation owner.
+
+The parser's tempo recurrence is target IMUL101h, not a conventional base100h;
+payload07 A1 20 yields503752. Both signed clock parameters are sign-extended to
+unsigned64 before modular multiplication/division. End-of-track leaves running
+status/time unchanged; loop2/4 save/restore cursors/event times and all clock
+state before the final delta read. SysEx retains pending allocations without a
+device and frees both objects on prepare/long failure, with live handle/ring
+sampling. Tick checks sign-extended event time as unsigned, observes the current
+track table after processing, increments elapsed before empty-track rewind and
+returns immediately on terminal fade. These are bounded target/source facts;
+finite SDK/allocation-role host checks are not TH10/native runtime validation.
+
+Two independent complete single-TU /GL colds freeze Midi.cpp/Midi.hpp and each
+strictly pass378 complete bytes/all5 fields: reset132, reader26 and volume140 add298 authored
+exact bytes, default callback1 adds one origin-indeterminate byte, and existing
+UnprepareHeader79 remains exact. The old canonical StopPlayback-entry recipe
+also cold-replays79/all3. Actual complete-source ASan/UBSan/leak checks and13
+strict named mutants pass. Only three transmitted message bytes are observed;
+the target's untouched high byte and x87/runtime behavior remain outside host
+proof. Tick481/473, parser1614/1670 and StopPlayback200/129 remain
+nonexact. Ordinary member declaration is byte-neutral; early calculation of the used
+status byte before FTOL closes all140 volume bytes and both fields. The Tick
+fade polarity control484/473 is rejected/restored. No forced volatile,
+packing, placement or invented register context is adopted. See
+[the complete evidence and retained license](evidence/midi-events/README.md).

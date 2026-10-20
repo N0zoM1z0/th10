@@ -31,6 +31,27 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- MIDI event/timer recovery maps **2441 authored source bytes** across parser
+  43B110/1670, virtual Tick43AF30/473, reset43ACE0/132, reader43A730/26 and
+  volume43B7A0/140. Three compressed switches add347 missing denominator bytes.
+  Tempo really multiplies by101h; preserve signed-to-unsigned64 clock extension,
+  loop snapshots, EOT early return, fresh stream/table reads and SysEx lifetime.
+  Timer trampoline/vtables support a16-byte base; flat virtual layout fails
+  native assertions. Default RET callback43B8B0/1 is a new indeterminate owner.
+  Reset132+reader26+volume140 close **298 authored exact bytes**; callback adds1 unknown-
+  origin exact byte. Two independent complete single-TU /GL colds freeze2 inputs
+  and each pass378 complete bytes/all5 fields, including79 existing bytes. The
+  unchanged canonical StopPlayback recipe also cold-replays UnprepareHeader79.
+  Full actual-source ASan/UBSan/leak checks and13 strict mutants pass with WinMM,
+  SDK/layout and allocation roles; no native/runtime high-message-byte claim.
+  Tick481/473, parser1614/1670 and Stop200/129 stay nonexact.
+  Ordinary-member control is byte-neutral. A used status local computed before
+  FTOL closes volume140/all2 fields. Tick fade polarity484 is rejected/restored;
+  no volatile/packing/placement tuning.
+  MidiEventTick carrier/cache is separate from the still-current FrontEnd graph.
+  Next source gaps include408D60/1057 and422660/1035. Rotate there or require
+  new compiler/alias/lifetime evidence before further MIDI codegen controls. See
+  [the complete MIDI target/native/host scope](evidence/midi-events/README.md).
 - Title/main-menu recovery maps **1637 authored source bytes** across entry
   42D300/288, interactive menu42D420/1280 and progress query42C850/69. Four
   guarded local tables plus one NOP correct105 missing denominator bytes.

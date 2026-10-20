@@ -961,8 +961,9 @@ address,span_end,state,confidence,evidence_id,notes
 0x0043AEB0,0x0043AEFE,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch
 0x0043AF00,0x0043AF26,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0043AF30,0x0043B108,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; aligned-data-refs=1; no overlap or external interior branch
-0x0043B110,0x0043B63A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0043B110,0x0043B795,reviewed,high,target-midi-event-extent-2026-10-20,Complete dense executable decode; reviewed returns/callers. Parser owns all three unsigned-guarded compressed tables through0x43B795; next independent channel-volume owner starts0x43B7A0.
 0x0043B7A0,0x0043B82B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0043B8B0,0x0043B8B0,reviewed,high,target-midi-base-timer-2026-10-20,One-byte RET entry named by timer-base vtable0x46F810; fifteen following CC bytes; separate retained RET entry at0x43B8C0.
 0x0043B8C0,0x0043B8C0,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x0043B8D0,0x0043BA86,reviewed,high,target-boundary-audit-2026-09-15+ida-direct-entry-target-decode-2026-09-17,"Complete dense decode ends in ret, but no independent entry reference was found; direct target call/jump at 0x43ba9f to entry; independent IDA MCP extent agrees"
 0x0043BA90,0x0043BAE2,reviewed,high,target-ida-missed-pointer-boundary-2026-09-17,Complete target dense decode ends in RET; independent push pointer at 0x00420222; hash-attested IDA contiguous extent agrees; no tracked overlap.

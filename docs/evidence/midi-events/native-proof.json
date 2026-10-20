@@ -1,0 +1,178 @@
+{
+  "scope": "bounded MIDI source/exact recovery; diagnostic anchors are non-runnable",
+  "new_authored_source_owned_bytes": 2441,
+  "new_indeterminate_source_bytes": 1,
+  "authored_denominator_correction": 347,
+  "new_authored_exact_bytes": 298,
+  "new_indeterminate_exact_bytes": 1,
+  "cold_translation_units_each": 1,
+  "complete_compared_bytes_each": 378,
+  "existing_guard_bytes": 79,
+  "linkage_fields_each": 5,
+  "graph": {
+    "source": "src/Midi.cpp",
+    "support_sources": [],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "entry_symbol": "?Tick@MidiOutputView@@UAEXXZ",
+    "artifact_kind": "linked-pe",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "project_input_sha256": {
+    "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06"
+  },
+  "proofs": [
+    {
+      "cold": "one",
+      "artifacts_sha256": {
+        "source.exe": "9665f0b5072ab8dd60b5f045280e8a393ed5616cc139fa059ff07fab60f0f733",
+        "source.map": "9a779a3aa0776996fce80a7b5adbd4c9651b89cd8aa08995ac23e3642bf76317",
+        "source.pdb": "598175ca7817fd4ed500ec14249ea70383996202f16711501a408a4a868540ce",
+        "link-aliases.rsp": "8ca0546b8d25f880bbed14b3e66195ae681fd727ab7b4a27f2128df150619bc8"
+      },
+      "results": [
+        {
+          "unit": "midi-apply-channel-volumes",
+          "result": "exact",
+          "size": 140,
+          "compared_size": 140,
+          "decoded_bytes": 140,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 2
+        },
+        {
+          "unit": "midi-reset-tracks",
+          "result": "exact",
+          "size": 132,
+          "compared_size": 132,
+          "decoded_bytes": 132,
+          "raw_equal": true,
+          "normalization_complete": true,
+          "linkage_fields": 0
+        },
+        {
+          "unit": "midi-read-variable-length",
+          "result": "exact",
+          "size": 26,
+          "compared_size": 26,
+          "decoded_bytes": 26,
+          "raw_equal": true,
+          "normalization_complete": true,
+          "linkage_fields": 0
+        },
+        {
+          "unit": "midi-default-timer-tick",
+          "result": "exact",
+          "size": 1,
+          "compared_size": 1,
+          "decoded_bytes": 1,
+          "raw_equal": true,
+          "normalization_complete": true,
+          "linkage_fields": 0
+        },
+        {
+          "unit": "midi-unprepare-header",
+          "result": "exact",
+          "size": 79,
+          "compared_size": 79,
+          "decoded_bytes": 79,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 3
+        }
+      ]
+    },
+    {
+      "cold": "two",
+      "artifacts_sha256": {
+        "source.exe": "eb76f2f0204173de8afcc58ec19d691aa656e7e01606be63bb86de4d2c38b50c",
+        "source.map": "d5c108acc68f32d2cf781c07eda591495ff39b3495ad4d1d60b910f92821b804",
+        "source.pdb": "2c30c7f9174993a5f59f4ca8aeccccabea4744e93a8bf37b8b8e3b3f46b6e79b",
+        "link-aliases.rsp": "8ca0546b8d25f880bbed14b3e66195ae681fd727ab7b4a27f2128df150619bc8"
+      },
+      "results": [
+        {
+          "unit": "midi-apply-channel-volumes",
+          "result": "exact",
+          "size": 140,
+          "compared_size": 140,
+          "decoded_bytes": 140,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 2
+        },
+        {
+          "unit": "midi-reset-tracks",
+          "result": "exact",
+          "size": 132,
+          "compared_size": 132,
+          "decoded_bytes": 132,
+          "raw_equal": true,
+          "normalization_complete": true,
+          "linkage_fields": 0
+        },
+        {
+          "unit": "midi-read-variable-length",
+          "result": "exact",
+          "size": 26,
+          "compared_size": 26,
+          "decoded_bytes": 26,
+          "raw_equal": true,
+          "normalization_complete": true,
+          "linkage_fields": 0
+        },
+        {
+          "unit": "midi-default-timer-tick",
+          "result": "exact",
+          "size": 1,
+          "compared_size": 1,
+          "decoded_bytes": 1,
+          "raw_equal": true,
+          "normalization_complete": true,
+          "linkage_fields": 0
+        },
+        {
+          "unit": "midi-unprepare-header",
+          "result": "exact",
+          "size": 79,
+          "compared_size": 79,
+          "decoded_bytes": 79,
+          "raw_equal": false,
+          "normalization_complete": true,
+          "linkage_fields": 3
+        }
+      ]
+    }
+  ],
+  "old_canonical": {
+    "unit": "midi-unprepare-header",
+    "result": "exact",
+    "image_sha256": "eac5917fe7bb9bc176feaf765a03acd27de85d6436e7db547ed371391677549a",
+    "compared_size": 79,
+    "normalization_complete": true
+  }
+}
