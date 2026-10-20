@@ -1,0 +1,1452 @@
+{
+  "state": "controller query exact; other owners source-present/nonexact",
+  "source_head": "8edcc4a40204f8bd09d58d0bcc5834264e0b23fd",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text_bytes": 412289,
+  "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+  "target_audit": {
+    "result": "passed",
+    "authority": "target observations only; no codegen/product/runtime credit",
+    "target": {
+      "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/resources/th10.exe",
+      "size": 487936,
+      "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+      "sha1": "a2011f30d6c3ec02cbccc2e457d856ae1b8d9082",
+      "md5": "7dc488d82c81dd4aee4ba098b8804d83",
+      "pe": {
+        "machine_id": 332,
+        "section_count": 4,
+        "timestamp_unix": 1186086096,
+        "linker_version": "7.10",
+        "entry_rva": 341980,
+        "entry_point": 4536284,
+        "image_base": 4194304,
+        "size_of_image": 638976,
+        "headers_raw_size": 1024,
+        "relocations_stripped": true,
+        "sections": [
+          {
+            "name": ".text",
+            "rva": 4096,
+            "virtual_size": 412289,
+            "raw_offset": 1024,
+            "raw_size": 412672
+          },
+          {
+            "name": ".rdata",
+            "rva": 417792,
+            "virtual_size": 51782,
+            "raw_offset": 413696,
+            "raw_size": 52224
+          },
+          {
+            "name": ".data",
+            "rva": 471040,
+            "virtual_size": 156492,
+            "raw_offset": 465920,
+            "raw_size": 16896
+          },
+          {
+            "name": ".rsrc",
+            "rva": 630784,
+            "virtual_size": 4832,
+            "raw_offset": 482816,
+            "raw_size": 5120
+          }
+        ]
+      },
+      "rich_header": {
+        "checksum": 827500360,
+        "clear_data_size": 136,
+        "records": [
+          {
+            "product_id": 96,
+            "build": 6030,
+            "count": 15
+          },
+          {
+            "product_id": 105,
+            "build": 2067,
+            "count": 3
+          },
+          {
+            "product_id": 15,
+            "build": 6030,
+            "count": 33
+          },
+          {
+            "product_id": 95,
+            "build": 6030,
+            "count": 131
+          },
+          {
+            "product_id": 95,
+            "build": 2179,
+            "count": 2
+          },
+          {
+            "product_id": 28,
+            "build": 9178,
+            "count": 1
+          },
+          {
+            "product_id": 93,
+            "build": 2067,
+            "count": 2
+          },
+          {
+            "product_id": 96,
+            "build": 4035,
+            "count": 1
+          },
+          {
+            "product_id": 93,
+            "build": 2179,
+            "count": 8
+          },
+          {
+            "product_id": 1,
+            "build": 0,
+            "count": 187
+          },
+          {
+            "product_id": 93,
+            "build": 4035,
+            "count": 9
+          },
+          {
+            "product_id": 95,
+            "build": 4035,
+            "count": 2
+          },
+          {
+            "product_id": 100,
+            "build": 6030,
+            "count": 52
+          },
+          {
+            "product_id": 94,
+            "build": 3052,
+            "count": 1
+          },
+          {
+            "product_id": 90,
+            "build": 6030,
+            "count": 1
+          }
+        ]
+      }
+    },
+    "owners": {
+      "0x44a130": {
+        "size": 37,
+        "instructions": 16
+      },
+      "0x44a160": {
+        "size": 43,
+        "instructions": 16
+      },
+      "0x44a190": {
+        "size": 833,
+        "instructions": 282
+      },
+      "0x44a4e0": {
+        "size": 264,
+        "instructions": 80
+      },
+      "0x44a5f0": {
+        "size": 850,
+        "instructions": 278
+      }
+    },
+    "record_stride": 106,
+    "gameplay_counter_offset": 10,
+    "debug_counter_offset": 56,
+    "mapping_offset": 88,
+    "retry_limit": "initial Acquire plus at most400 retries; no state fetch after Poll failure",
+    "origin_of_unreferenced_helpers": "indeterminate; source identity is descriptive"
+  },
+  "diagnostics": [
+    {
+      "label": "initial",
+      "authority": "compiler observations only; no exact credit",
+      "full_cold": true,
+      "source": "src/InputPolling.cpp",
+      "support_sources": [],
+      "entry_symbol": "?PollInputFrame@@YIXH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "project_input_sha256": {
+        "src/InputPolling.cpp": "2487588794ed325d92b97c7c47448f39cf46ae2bafd48bc65792090dc751c72b",
+        "src/InputPolling.hpp": "c4b67dad5cf94a682cd56ec6c9eb78d420ac1ce6431f096e37d6bd113ba8d047",
+        "src/InputState.hpp": "345b8e3fb45968bdb830cebd058bcbc8a0d7cc60a07acd75a252d5f81f724c1f"
+      },
+      "reports": [
+        {
+          "name": "MergeJoystickInput",
+          "owner": {
+            "symbol": "?MergeJoystickInput@@YGGGHH@Z",
+            "address": "0x00401050",
+            "size": 885,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 80,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\initial\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\initial\\source.ltcg.obj",
+            "sha256": "e9309a0de292177435602989fd7f75efe8d2b4058abcdcac8f5ac2eaef7dd28e"
+          },
+          "result": "mismatch",
+          "candidate_size": 885,
+          "target_size": 833,
+          "comparable_bytes": 745,
+          "matched_comparable_bytes": 39,
+          "normalization_complete": true
+        },
+        {
+          "name": "FrontEndGetControllerState",
+          "owner": {
+            "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+            "address": "0x004013D0",
+            "size": 264,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 976,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\initial\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\initial\\source.ltcg.obj",
+            "sha256": "3e6aa58c01024d3bf2eea2f8177bb731dfdfff502a06e488f88361b2563cae5e"
+          },
+          "result": "structural-exact",
+          "candidate_size": 264,
+          "target_size": 264,
+          "comparable_bytes": 216,
+          "matched_comparable_bytes": 216,
+          "normalization_complete": true
+        },
+        {
+          "name": "PollInputFrame",
+          "owner": {
+            "symbol": "?PollInputFrame@@YIXH@Z",
+            "address": "0x004014E0",
+            "size": 855,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1248,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\initial\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\initial\\source.ltcg.obj",
+            "sha256": "777f34cba642b7c6cfe593306a0bf0fff50208d3ba0e1fe52d001b804c97ae77"
+          },
+          "result": "mismatch",
+          "candidate_size": 855,
+          "target_size": 850,
+          "comparable_bytes": 810,
+          "matched_comparable_bytes": 673,
+          "normalization_complete": true
+        }
+      ],
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-input-poll-20261020/initial/source.exe": "5d482bffdb29f6214f373a36c4a1205f3928d7d63ef21c4b0002d402a3942567",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/initial/source.map": "9684f1640a230672d71c759cb443f4881c266800e8a2829defff90fb932e6bbb",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/initial/source.pdb": "14c23fa95e806d0f982859b94ea747d57c7ee8c4a1ec076a376921fc3cd8332c"
+      }
+    },
+    {
+      "label": "argument-order",
+      "authority": "compiler observations only; no exact credit",
+      "full_cold": true,
+      "source": "src/InputPolling.cpp",
+      "support_sources": [],
+      "entry_symbol": "?PollInputFrame@@YIXH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "project_input_sha256": {
+        "src/InputPolling.cpp": "b875ec4a7572d05f2bf6f1142f4fff07bc5078dfe2169d32aaf0d18bbe640192",
+        "src/InputPolling.hpp": "d49c9f7b2404e49664c206e076d0da386bf1d611cbff0e05d1547a42c9062cc5",
+        "src/InputState.hpp": "345b8e3fb45968bdb830cebd058bcbc8a0d7cc60a07acd75a252d5f81f724c1f"
+      },
+      "reports": [
+        {
+          "name": "MergeJoystickInput",
+          "owner": {
+            "symbol": "?MergeJoystickInput@@YGGHHG@Z",
+            "address": "0x00401050",
+            "size": 885,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 80,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\argument-order\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\argument-order\\source.ltcg.obj",
+            "sha256": "68f90a0afac7aca43a73d3a5a9018517082027a8bd3a01f2fb7fb8cbc87ba4bc"
+          },
+          "result": "mismatch",
+          "candidate_size": 885,
+          "target_size": 833,
+          "comparable_bytes": 745,
+          "matched_comparable_bytes": 39,
+          "normalization_complete": true
+        },
+        {
+          "name": "FrontEndGetControllerState",
+          "owner": {
+            "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+            "address": "0x004013D0",
+            "size": 264,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 976,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\argument-order\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\argument-order\\source.ltcg.obj",
+            "sha256": "3e6aa58c01024d3bf2eea2f8177bb731dfdfff502a06e488f88361b2563cae5e"
+          },
+          "result": "structural-exact",
+          "candidate_size": 264,
+          "target_size": 264,
+          "comparable_bytes": 216,
+          "matched_comparable_bytes": 216,
+          "normalization_complete": true
+        },
+        {
+          "name": "PollInputFrame",
+          "owner": {
+            "symbol": "?PollInputFrame@@YIXH@Z",
+            "address": "0x004014E0",
+            "size": 855,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1248,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\argument-order\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\argument-order\\source.ltcg.obj",
+            "sha256": "0e3b4154afbcdbf71efb385e7fbf3010141b16a09bf451e1c7a9ab6a39f647c6"
+          },
+          "result": "mismatch",
+          "candidate_size": 855,
+          "target_size": 850,
+          "comparable_bytes": 810,
+          "matched_comparable_bytes": 671,
+          "normalization_complete": true
+        }
+      ],
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-input-poll-20261020/argument-order/source.exe": "4aa513bd27977f0216cac750fff993c24d2f8891c73b79969fa1372b92429ea3",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/argument-order/source.map": "b3d5a300bd7672c575a478bfb120ef2293f38b219513a092bb749dc8251a6cef",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/argument-order/source.pdb": "56b08c97b7d8cab9f8b5d16a0bcb1fc3b028b4b95669298595533a2cc1740a5a"
+      }
+    },
+    {
+      "label": "natural-shift",
+      "authority": "compiler observations only; no exact credit",
+      "full_cold": true,
+      "source": "src/InputPolling.cpp",
+      "support_sources": [],
+      "entry_symbol": "?PollInputFrame@@YIXH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "project_input_sha256": {
+        "src/InputPolling.cpp": "461ee68bb19a8b436e78481408d2f6bce56b380f40afabbec61e81bd7d730dc4",
+        "src/InputPolling.hpp": "d49c9f7b2404e49664c206e076d0da386bf1d611cbff0e05d1547a42c9062cc5",
+        "src/InputState.hpp": "345b8e3fb45968bdb830cebd058bcbc8a0d7cc60a07acd75a252d5f81f724c1f"
+      },
+      "reports": [
+        {
+          "name": "MergeJoystickInput",
+          "owner": {
+            "symbol": "?MergeJoystickInput@@YGGHHG@Z",
+            "address": "0x00401050",
+            "size": 895,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 80,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\natural-shift\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\natural-shift\\source.ltcg.obj",
+            "sha256": "61549d6a27acac37499b9cb48b1e9a592058de415827f74c957b0109832504a0"
+          },
+          "result": "mismatch",
+          "candidate_size": 895,
+          "target_size": 833,
+          "comparable_bytes": 745,
+          "matched_comparable_bytes": 52,
+          "normalization_complete": true
+        },
+        {
+          "name": "FrontEndGetControllerState",
+          "owner": {
+            "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+            "address": "0x004013D0",
+            "size": 264,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 976,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\natural-shift\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\natural-shift\\source.ltcg.obj",
+            "sha256": "3e6aa58c01024d3bf2eea2f8177bb731dfdfff502a06e488f88361b2563cae5e"
+          },
+          "result": "structural-exact",
+          "candidate_size": 264,
+          "target_size": 264,
+          "comparable_bytes": 216,
+          "matched_comparable_bytes": 216,
+          "normalization_complete": true
+        },
+        {
+          "name": "PollInputFrame",
+          "owner": {
+            "symbol": "?PollInputFrame@@YIXH@Z",
+            "address": "0x004014E0",
+            "size": 856,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1248,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\natural-shift\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\natural-shift\\source.ltcg.obj",
+            "sha256": "5c4d03760e34e71d001e0e54fc1d7016f9caf6a8e82c009e31e1eddb890d76d3"
+          },
+          "result": "mismatch",
+          "candidate_size": 856,
+          "target_size": 850,
+          "comparable_bytes": 810,
+          "matched_comparable_bytes": 674,
+          "normalization_complete": true
+        }
+      ],
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-input-poll-20261020/natural-shift/source.exe": "8bca0f78fc7987820f282af17a362eb51b30000eef11dcf3816eb777f9d46231",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/natural-shift/source.map": "11337d53fb4a7bd3c288eb603e8c37f7ece9c6829ab352197dfc4d0825f1eb61",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/natural-shift/source.pdb": "799b44a89460d9c40f2a58e4e8e966bb1d3a521ed20424cd549253dfa0937ddb"
+      }
+    },
+    {
+      "label": "word-record",
+      "authority": "compiler observations only; no exact credit",
+      "full_cold": true,
+      "source": "src/InputPolling.cpp",
+      "support_sources": [],
+      "entry_symbol": "?PollInputFrame@@YIXH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "project_input_sha256": {
+        "src/InputPolling.cpp": "e87cf96305e4c54fbbc9229c0aff3f8a71b0a7470bcf5be6556df93fcb35afea",
+        "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+        "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b"
+      },
+      "reports": [
+        {
+          "name": "MergeJoystickInput",
+          "owner": {
+            "symbol": "?MergeJoystickInput@@YGGHHG@Z",
+            "address": "0x00401050",
+            "size": 895,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 80,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\word-record\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\word-record\\source.ltcg.obj",
+            "sha256": "61549d6a27acac37499b9cb48b1e9a592058de415827f74c957b0109832504a0"
+          },
+          "result": "mismatch",
+          "candidate_size": 895,
+          "target_size": 833,
+          "comparable_bytes": 745,
+          "matched_comparable_bytes": 52,
+          "normalization_complete": true
+        },
+        {
+          "name": "FrontEndGetControllerState",
+          "owner": {
+            "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+            "address": "0x004013D0",
+            "size": 264,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 976,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\word-record\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\word-record\\source.ltcg.obj",
+            "sha256": "3e6aa58c01024d3bf2eea2f8177bb731dfdfff502a06e488f88361b2563cae5e"
+          },
+          "result": "structural-exact",
+          "candidate_size": 264,
+          "target_size": 264,
+          "comparable_bytes": 216,
+          "matched_comparable_bytes": 216,
+          "normalization_complete": true
+        },
+        {
+          "name": "PollInputFrame",
+          "owner": {
+            "symbol": "?PollInputFrame@@YIXH@Z",
+            "address": "0x004014E0",
+            "size": 856,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1248,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\word-record\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\word-record\\source.ltcg.obj",
+            "sha256": "5c4d03760e34e71d001e0e54fc1d7016f9caf6a8e82c009e31e1eddb890d76d3"
+          },
+          "result": "mismatch",
+          "candidate_size": 856,
+          "target_size": 850,
+          "comparable_bytes": 810,
+          "matched_comparable_bytes": 674,
+          "normalization_complete": true
+        }
+      ],
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-input-poll-20261020/word-record/source.exe": "74cae8cdc9d3afdf3a23427a8829f0ea113dbe14290e62337b038b18e476a61c",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/word-record/source.map": "e2e1caa22b6d3d31eebb17609994b904c39dbf75fb7eb4f613efbc25687859a5",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/word-record/source.pdb": "e11f70deb90bcf28ceff6534b56568e7975a590e200dcdbb21552c0792cd46f9"
+      }
+    },
+    {
+      "label": "helper-return",
+      "authority": "compiler observations only; no exact credit",
+      "full_cold": true,
+      "source": "src/InputPolling.cpp",
+      "support_sources": [],
+      "entry_symbol": "?PollInputFrame@@YIXH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "project_input_sha256": {
+        "src/InputPolling.cpp": "0e82d4be2183276f5340a4c514e6ed332f9d5c14c05bb469b0f24b07662b2b60",
+        "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+        "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b"
+      },
+      "reports": [
+        {
+          "name": "MergeJoystickInput",
+          "owner": {
+            "symbol": "?MergeJoystickInput@@YGGHHG@Z",
+            "address": "0x00401060",
+            "size": 865,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 96,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\helper-return\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\helper-return\\source.ltcg.obj",
+            "sha256": "2421f3472057ed82495b08ab9bc88ee66ca6e808f1d9acc9f7112192fbbd9e31"
+          },
+          "result": "mismatch",
+          "candidate_size": 865,
+          "target_size": 833,
+          "comparable_bytes": 745,
+          "matched_comparable_bytes": 58,
+          "normalization_complete": true
+        },
+        {
+          "name": "FrontEndGetControllerState",
+          "owner": {
+            "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+            "address": "0x004013D0",
+            "size": 264,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 976,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\helper-return\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\helper-return\\source.ltcg.obj",
+            "sha256": "3e6aa58c01024d3bf2eea2f8177bb731dfdfff502a06e488f88361b2563cae5e"
+          },
+          "result": "structural-exact",
+          "candidate_size": 264,
+          "target_size": 264,
+          "comparable_bytes": 216,
+          "matched_comparable_bytes": 216,
+          "normalization_complete": true
+        },
+        {
+          "name": "PollInputFrame",
+          "owner": {
+            "symbol": "?PollInputFrame@@YIXH@Z",
+            "address": "0x004014E0",
+            "size": 854,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1248,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\helper-return\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\helper-return\\source.ltcg.obj",
+            "sha256": "2d55811afa11235f2265de66346c1893bbbcaf167fcf7c3142b4b302f24a2c3a"
+          },
+          "result": "mismatch",
+          "candidate_size": 854,
+          "target_size": 850,
+          "comparable_bytes": 810,
+          "matched_comparable_bytes": 664,
+          "normalization_complete": true
+        }
+      ],
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-input-poll-20261020/helper-return/source.exe": "d8dabf96ef76dfe5b6a223dd40d691eccac0013421bb92390cfd9149bca299f5",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/helper-return/source.map": "756bd24b825830477f63c71a2e1448c578c251965063b197ec361cd6df00c556",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/helper-return/source.pdb": "0c799e6ff4e1f4650a99f2e3b85ca894e9286fcd0fbcdf57995c816fd308061e"
+      }
+    },
+    {
+      "label": "fastcall",
+      "authority": "compiler observations only; no exact credit",
+      "full_cold": true,
+      "source": "src/InputPolling.cpp",
+      "support_sources": [],
+      "entry_symbol": "?PollInputFrame@@YIXH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "project_input_sha256": {
+        "src/InputPolling.cpp": "09398f8deaefca8593c6af1fad9a666f0c15ce307ef6824194863caed8fe275a",
+        "src/InputPolling.hpp": "d10b7b02cd52b1b4d0c284e5da339b22d66b3090476a86bbe8b431bcc4deb93b",
+        "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b"
+      },
+      "reports": [
+        {
+          "name": "MergeJoystickInput",
+          "owner": {
+            "symbol": "?MergeJoystickInput@@YIGHHG@Z",
+            "address": "0x00401060",
+            "size": 865,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 96,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\fastcall\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\fastcall\\source.ltcg.obj",
+            "sha256": "2421f3472057ed82495b08ab9bc88ee66ca6e808f1d9acc9f7112192fbbd9e31"
+          },
+          "result": "mismatch",
+          "candidate_size": 865,
+          "target_size": 833,
+          "comparable_bytes": 745,
+          "matched_comparable_bytes": 58,
+          "normalization_complete": true
+        },
+        {
+          "name": "FrontEndGetControllerState",
+          "owner": {
+            "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+            "address": "0x004013D0",
+            "size": 264,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 976,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\fastcall\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\fastcall\\source.ltcg.obj",
+            "sha256": "3e6aa58c01024d3bf2eea2f8177bb731dfdfff502a06e488f88361b2563cae5e"
+          },
+          "result": "structural-exact",
+          "candidate_size": 264,
+          "target_size": 264,
+          "comparable_bytes": 216,
+          "matched_comparable_bytes": 216,
+          "normalization_complete": true
+        },
+        {
+          "name": "PollInputFrame",
+          "owner": {
+            "symbol": "?PollInputFrame@@YIXH@Z",
+            "address": "0x004014E0",
+            "size": 854,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1248,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\fastcall\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\fastcall\\source.ltcg.obj",
+            "sha256": "2d55811afa11235f2265de66346c1893bbbcaf167fcf7c3142b4b302f24a2c3a"
+          },
+          "result": "mismatch",
+          "candidate_size": 854,
+          "target_size": 850,
+          "comparable_bytes": 810,
+          "matched_comparable_bytes": 664,
+          "normalization_complete": true
+        }
+      ],
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-input-poll-20261020/fastcall/source.exe": "eb591e4f27e5f0c4dc6932c94ab5484800a1c18c63f03c29e80901cd1f3b7386",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/fastcall/source.map": "5a082a97d9daf75f488ca1e12749be04b10feff1e8b11d9532991d21c756c334",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/fastcall/source.pdb": "6715a581c82df4808e701d13d12e7c15de283f103a78fbbbe2967c82fd8cd215"
+      }
+    },
+    {
+      "label": "reference-order",
+      "authority": "compiler observations only; no exact credit",
+      "full_cold": true,
+      "source": "src/InputPolling.cpp",
+      "support_sources": [],
+      "entry_symbol": "?PollInputFrame@@YIXH@Z",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "project_input_sha256": {
+        "src/InputPolling.cpp": "81fcea0ee72f07a3ce3188ae9591fae43f751ec6318e0065375159a0064ea31c",
+        "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+        "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b"
+      },
+      "reports": [
+        {
+          "name": "MergeJoystickInput",
+          "owner": {
+            "symbol": "?MergeJoystickInput@@YGGHHG@Z",
+            "address": "0x00401060",
+            "size": 865,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 96,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\reference-order\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\reference-order\\source.ltcg.obj",
+            "sha256": "2421f3472057ed82495b08ab9bc88ee66ca6e808f1d9acc9f7112192fbbd9e31"
+          },
+          "result": "mismatch",
+          "candidate_size": 865,
+          "target_size": 833,
+          "comparable_bytes": 745,
+          "matched_comparable_bytes": 58,
+          "normalization_complete": true
+        },
+        {
+          "name": "FrontEndGetControllerState",
+          "owner": {
+            "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+            "address": "0x004013D0",
+            "size": 264,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 976,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\reference-order\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\reference-order\\source.ltcg.obj",
+            "sha256": "3e6aa58c01024d3bf2eea2f8177bb731dfdfff502a06e488f88361b2563cae5e"
+          },
+          "result": "structural-exact",
+          "candidate_size": 264,
+          "target_size": 264,
+          "comparable_bytes": 216,
+          "matched_comparable_bytes": 216,
+          "normalization_complete": true
+        },
+        {
+          "name": "PollInputFrame",
+          "owner": {
+            "symbol": "?PollInputFrame@@YIXH@Z",
+            "address": "0x004014E0",
+            "size": 854,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 1248,
+            "map_object": "source.ltcg.obj",
+            "pdb_module_index": 1,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\reference-order\\source.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\th10-input-poll-20261020\\reference-order\\source.ltcg.obj",
+            "sha256": "e9b8f12980f54663cf16023a165433d600a8ca8d047b4482d355103616c69ffc"
+          },
+          "result": "mismatch",
+          "candidate_size": 854,
+          "target_size": 850,
+          "comparable_bytes": 810,
+          "matched_comparable_bytes": 676,
+          "normalization_complete": true
+        }
+      ],
+      "artifact_sha256": {
+        "build/gpt-6.1-sol/th10-input-poll-20261020/reference-order/source.exe": "c57feedf5d66ba1e8d55d26803496e41f21ddd55f1e993ffb832cb76635f2026",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/reference-order/source.map": "9a10af60a155cc01bbd8c88854493f28c236c76675b4ebe95c0d5ad459809529",
+        "build/gpt-6.1-sol/th10-input-poll-20261020/reference-order/source.pdb": "6fdeba36fd214a7d425f13058849e5cc3d1283a6a83556a03279d44a751c5c37"
+      }
+    }
+  ],
+  "host": {
+    "scope": "Execute all three actual TH10 input polling bodies with scripted OS/COM roles.\n\nHost ABI macros and pointer-layout assertion omission are explicit adaptations;\nthe6A input layout assertions remain active. Failed raw GetDeviceState fills its\nbuffer in this fixture; unwritten failure data and invalid indexes/WinMM shifts\nare outside its defined domain. No native runtime/lifetime/ABI claim follows.\n",
+    "inputs": {
+      "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+      "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+      "src/InputPolling.cpp": "81fcea0ee72f07a3ce3188ae9591fae43f751ec6318e0065375159a0064ea31c",
+      "scripts/test-input-polling.py": "d581975d6ce5edac84e6bd64adb0b681b9331cf38d89cd5b2fecdac33473c0af",
+      "scripts/fixtures/input-polling.cpp": "2db0450cfa191d970361a52f3fdf90ba06da29e9a91bdacee032d7cf42844698"
+    },
+    "sanitize": true,
+    "complete_mutation_suite": true,
+    "variants": [
+      "positive",
+      "record-stride",
+      "keyboard-enabled",
+      "keyboard-bool",
+      "keyboard-low-bit",
+      "keyboard-z",
+      "keyboard-di-z",
+      "keyboard-diagonal",
+      "keyboard-positive-result",
+      "keyboard-acquire",
+      "disabled-joystick",
+      "winmm-index",
+      "query-index",
+      "winmm-zero",
+      "winmm-shift",
+      "winmm-negative",
+      "winmm-x-equality",
+      "winmm-caps-index",
+      "query-high-bits",
+      "merge-positive-result",
+      "merge-zero",
+      "merge-negative-result",
+      "query-result",
+      "direct-x-equality",
+      "acquire-limit",
+      "late-publication",
+      "repeat-threshold",
+      "repeat-period",
+      "repeat-mask",
+      "repeat-clear",
+      "repeat-release",
+      "frame-release",
+      "helper-return"
+    ]
+  },
+  "private_evidence_sha256": {
+    ".analysis/gpt-6.1-sol/th10-input-poll-20261020/target-ghidra.txt": "f11abe1415d97f83c665d3b02520fdd9a413f5ecb724f6db139546f820947352",
+    ".analysis/gpt-6.1-sol/th10-input-poll-20261020/ghidra.log": "ed76eccf32ed45a69dfa57b3997d16f65cff9cf5d393af22795c0bab826855f7",
+    ".analysis/gpt-6.1-sol/th10-input-poll-20261020/ghidra/InputPollReview.java": "af4a4c2d919468ff224818db45e7cc2466b8dd9628b21e36dd13412b745cbbe2",
+    ".analysis/gpt-6.1-sol/th10-input-poll-20261020/host-final.log": "1715d1f39f9235e0485d2bb37e2d6add8008cd83e94159e7b3845b4f3555d9e7"
+  },
+  "canonical_impact": {
+    "src_changed_from_head": [
+      "src/InputPolling.cpp",
+      "src/InputPolling.hpp"
+    ],
+    "existing_source_or_header_changed": false,
+    "existing_canonical_units_replayed": [],
+    "claim": "All existing canonical primary/support inputs are unchanged. Only new controller query is replayed.",
+    "verified_src_diff": [
+      "A\tsrc/InputPolling.cpp",
+      "A\tsrc/InputPolling.hpp"
+    ]
+  },
+  "canonical": {
+    "unit": "input-controller-buttons",
+    "project_input_sha256": {
+      "src/InputPolling.cpp": "81fcea0ee72f07a3ce3188ae9591fae43f751ec6318e0065375159a0064ea31c",
+      "src/InputPolling.hpp": "d0a7c779f0055b18c74f9b76dbef404666cb12ff8921d6f46fe18c846e97acfc",
+      "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b"
+    },
+    "unit_definition_sha256": "72f9f3b5177eb4f9f5bae24928bbec8566793a67357708820199eaf953b4bd39",
+    "linkage_count": 12,
+    "rounds": [
+      {
+        "artifact_count": 1,
+        "groups": [
+          {
+            "artifact": "build/match-linked/InputPolling",
+            "artifact_kind": "linked-pe",
+            "build_returncode": 0,
+            "build_unit": "input-controller-buttons",
+            "cold_driver": "scripts/ltcg_link.py:cold_link",
+            "profile": [
+              "/TP",
+              "/MT",
+              "/O2",
+              "/Gy",
+              "/GF",
+              "/Oi",
+              "/DNDEBUG",
+              "/Isrc",
+              "/GL",
+              "/GS"
+            ],
+            "source": "src/InputPolling.cpp",
+            "units": [
+              {
+                "artifact_kind": "linked-pe",
+                "candidate_address": "0x004013D0",
+                "capstone_version": "5.0.6",
+                "compared_size": 264,
+                "data_spans": [],
+                "decoded_bytes": 264,
+                "extent_source": "pdb-section-contribution",
+                "first_differences": [],
+                "image": "build/match-linked/InputPolling/source.exe",
+                "image_sha256": "71da7898b4130dfb9d46fdd6f91b500346cd0ff592519dac52e27e6b3271b8ea",
+                "linkages": [
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403028",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0010",
+                    "local": false,
+                    "offset": "0x7",
+                    "symbol": "___security_cookie",
+                    "target": "0x00473660",
+                    "target_encoded_value": "0x00473660",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x0040300C",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                    "local": false,
+                    "offset": "0x20",
+                    "symbol": "?g_InputJoystickButtons@@3PACA",
+                    "target": "0x00497BB0",
+                    "target_encoded_value": "0x00497BB0",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403004",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0001",
+                    "local": false,
+                    "offset": "0x27",
+                    "symbol": "?g_FrontEndSupervisorFlags@@3IA",
+                    "target": "0x00491FF4",
+                    "target_encoded_value": "0x00491FF4",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403030",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0012",
+                    "local": false,
+                    "offset": "0x56",
+                    "symbol": "__imp__joyGetPosEx@8",
+                    "target": "0x00466280",
+                    "target_encoded_value": "0x00466280",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x0040300C",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                    "local": false,
+                    "offset": "0x6F",
+                    "symbol": "?g_InputJoystickButtons@@3PACA",
+                    "target": "0x00497BB0",
+                    "target_encoded_value": "0x00497BB0",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403020",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+                    "local": false,
+                    "offset": "0x80",
+                    "symbol": "?g_InputPadDevices@@3PAPAUInputDeviceView@@A",
+                    "target": "0x00491C3C",
+                    "target_encoded_value": "0x00491C3C",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403020",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+                    "local": false,
+                    "offset": "0x92",
+                    "symbol": "?g_InputPadDevices@@3PAPAUInputDeviceView@@A",
+                    "target": "0x00491C3C",
+                    "target_encoded_value": "0x00491C3C",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403020",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+                    "local": false,
+                    "offset": "0xA8",
+                    "symbol": "?g_InputPadDevices@@3PAPAUInputDeviceView@@A",
+                    "target": "0x00491C3C",
+                    "target_encoded_value": "0x00491C3C",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403020",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+                    "local": false,
+                    "offset": "0xC7",
+                    "symbol": "?g_InputPadDevices@@3PAPAUInputDeviceView@@A",
+                    "target": "0x00491C3C",
+                    "target_encoded_value": "0x00491C3C",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x0040300C",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                    "local": false,
+                    "offset": "0xE5",
+                    "symbol": "?g_InputJoystickButtons@@3PACA",
+                    "target": "0x00497BB0",
+                    "target_encoded_value": "0x00497BB0",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x0040300C",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                    "local": false,
+                    "offset": "0xF8",
+                    "symbol": "?g_InputJoystickButtons@@3PACA",
+                    "target": "0x00497BB0",
+                    "target_encoded_value": "0x00497BB0",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403024",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0009",
+                    "local": false,
+                    "offset": "0xFD",
+                    "symbol": "@__security_check_cookie@4",
+                    "target": "0x00458EA5",
+                    "target_encoded_value": "0x0000E8C4",
+                    "type": "REL32",
+                    "width": 4
+                  }
+                ],
+                "matched_bytes": 264,
+                "matched_compared_bytes": 264,
+                "normalization_complete": true,
+                "pdb_age": 1,
+                "pdb_guid": "44a5cd55ed714c4391ba83ba749ec137",
+                "pdb_module_index": 1,
+                "raw_equal": false,
+                "result": "exact",
+                "returncode": 0,
+                "size": 264,
+                "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+                "target_address": "0x0044A4E0",
+                "unit": "input-controller-buttons"
+              }
+            ]
+          }
+        ],
+        "matched_bytes": 264,
+        "result": "exact",
+        "source_count": 1,
+        "unit_count": 1,
+        "artifact_sha256": {
+          "build/match-linked/InputPolling/source.map": "292a2601ddad07b72a41e46026080eec1aafff817049f8834a7e921848e0ed3c",
+          "build/match-linked/InputPolling/link-attempt-2.log": "39744f66bd08a3d736130247ca578d041edec3bf4190f742aa12e9db6c6f58e3",
+          "build/match-linked/InputPolling/source.exe": "71da7898b4130dfb9d46fdd6f91b500346cd0ff592519dac52e27e6b3271b8ea",
+          "build/match-linked/InputPolling/source.ltcg.obj": "046ba69f9fa9b4a1e245f7b13f8e2fc448740aae65f08f927d601fd40368d1de",
+          "build/match-linked/InputPolling/link-attempt-3.log": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+          "build/match-linked/InputPolling/link-attempt-1.log": "47f31f1668497bc1f03ed0ae9a9d385f3d01b2f904fb93e54d3f13bf01437cb4",
+          "build/match-linked/InputPolling/link-aliases.rsp": "85921fb80e2306d417cb0f83801b65b11bfc59c9709b009094c4ce4cccf368eb",
+          "build/match-linked/InputPolling/link-anchors.obj": "353c042d009c2cb929718514064876d7883ab2677b1ffe48b7659e1fb83c887f",
+          "build/match-linked/InputPolling/link-anchors.c": "553439f5f1d8990de0e8d1c23a3858819ce22e59e3540d6d3bcb4183c7f85ef1",
+          "build/match-linked/InputPolling/source.pdb": "3f809c8ef2085edf9381477d99721ffa6ca8c034f7d31acf9923d22e030fbe0b"
+        }
+      },
+      {
+        "artifact_count": 1,
+        "groups": [
+          {
+            "artifact": "build/match-linked/InputPolling",
+            "artifact_kind": "linked-pe",
+            "build_returncode": 0,
+            "build_unit": "input-controller-buttons",
+            "cold_driver": "scripts/ltcg_link.py:cold_link",
+            "profile": [
+              "/TP",
+              "/MT",
+              "/O2",
+              "/Gy",
+              "/GF",
+              "/Oi",
+              "/DNDEBUG",
+              "/Isrc",
+              "/GL",
+              "/GS"
+            ],
+            "source": "src/InputPolling.cpp",
+            "units": [
+              {
+                "artifact_kind": "linked-pe",
+                "candidate_address": "0x004013D0",
+                "capstone_version": "5.0.6",
+                "compared_size": 264,
+                "data_spans": [],
+                "decoded_bytes": 264,
+                "extent_source": "pdb-section-contribution",
+                "first_differences": [],
+                "image": "build/match-linked/InputPolling/source.exe",
+                "image_sha256": "7e7ae963d2d15df1c2f2527ca608f2b7883bb8474334bf3120b9878d0a406bb4",
+                "linkages": [
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403028",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0010",
+                    "local": false,
+                    "offset": "0x7",
+                    "symbol": "___security_cookie",
+                    "target": "0x00473660",
+                    "target_encoded_value": "0x00473660",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x0040300C",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                    "local": false,
+                    "offset": "0x20",
+                    "symbol": "?g_InputJoystickButtons@@3PACA",
+                    "target": "0x00497BB0",
+                    "target_encoded_value": "0x00497BB0",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403004",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0001",
+                    "local": false,
+                    "offset": "0x27",
+                    "symbol": "?g_FrontEndSupervisorFlags@@3IA",
+                    "target": "0x00491FF4",
+                    "target_encoded_value": "0x00491FF4",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403030",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0012",
+                    "local": false,
+                    "offset": "0x56",
+                    "symbol": "__imp__joyGetPosEx@8",
+                    "target": "0x00466280",
+                    "target_encoded_value": "0x00466280",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x0040300C",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                    "local": false,
+                    "offset": "0x6F",
+                    "symbol": "?g_InputJoystickButtons@@3PACA",
+                    "target": "0x00497BB0",
+                    "target_encoded_value": "0x00497BB0",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403020",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+                    "local": false,
+                    "offset": "0x80",
+                    "symbol": "?g_InputPadDevices@@3PAPAUInputDeviceView@@A",
+                    "target": "0x00491C3C",
+                    "target_encoded_value": "0x00491C3C",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403020",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+                    "local": false,
+                    "offset": "0x92",
+                    "symbol": "?g_InputPadDevices@@3PAPAUInputDeviceView@@A",
+                    "target": "0x00491C3C",
+                    "target_encoded_value": "0x00491C3C",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403020",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+                    "local": false,
+                    "offset": "0xA8",
+                    "symbol": "?g_InputPadDevices@@3PAPAUInputDeviceView@@A",
+                    "target": "0x00491C3C",
+                    "target_encoded_value": "0x00491C3C",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403020",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0008",
+                    "local": false,
+                    "offset": "0xC7",
+                    "symbol": "?g_InputPadDevices@@3PAPAUInputDeviceView@@A",
+                    "target": "0x00491C3C",
+                    "target_encoded_value": "0x00491C3C",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x0040300C",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                    "local": false,
+                    "offset": "0xE5",
+                    "symbol": "?g_InputJoystickButtons@@3PACA",
+                    "target": "0x00497BB0",
+                    "target_encoded_value": "0x00497BB0",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x0040300C",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0003",
+                    "local": false,
+                    "offset": "0xF8",
+                    "symbol": "?g_InputJoystickButtons@@3PACA",
+                    "target": "0x00497BB0",
+                    "target_encoded_value": "0x00497BB0",
+                    "type": "DIR32",
+                    "width": 4
+                  },
+                  {
+                    "addend": 0,
+                    "candidate_target": "0x00403024",
+                    "linked_symbol": "_th10_ltcg_probe_anchor_0009",
+                    "local": false,
+                    "offset": "0xFD",
+                    "symbol": "@__security_check_cookie@4",
+                    "target": "0x00458EA5",
+                    "target_encoded_value": "0x0000E8C4",
+                    "type": "REL32",
+                    "width": 4
+                  }
+                ],
+                "matched_bytes": 264,
+                "matched_compared_bytes": 264,
+                "normalization_complete": true,
+                "pdb_age": 1,
+                "pdb_guid": "1cc3f4d07f67a7408cd21517f0aec8b3",
+                "pdb_module_index": 1,
+                "raw_equal": false,
+                "result": "exact",
+                "returncode": 0,
+                "size": 264,
+                "symbol": "?FrontEndGetControllerState@@YIPACH@Z",
+                "target_address": "0x0044A4E0",
+                "unit": "input-controller-buttons"
+              }
+            ]
+          }
+        ],
+        "matched_bytes": 264,
+        "result": "exact",
+        "source_count": 1,
+        "unit_count": 1,
+        "artifact_sha256": {
+          "build/match-linked/InputPolling/source.map": "e3360d3d0d183be8c3de510249a971319b08eddd423deaa9a8baa992bd19b0b4",
+          "build/match-linked/InputPolling/link-attempt-2.log": "7d0652264eace33dad4a5ecfccbba17169094bb9a99c8a00562be25d50dbf3de",
+          "build/match-linked/InputPolling/source.exe": "7e7ae963d2d15df1c2f2527ca608f2b7883bb8474334bf3120b9878d0a406bb4",
+          "build/match-linked/InputPolling/source.ltcg.obj": "1061c2585dde279b81968a0de31e5d7976057af0e400f26c6f01d2039edfd3b6",
+          "build/match-linked/InputPolling/link-attempt-3.log": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215",
+          "build/match-linked/InputPolling/link-attempt-1.log": "47f31f1668497bc1f03ed0ae9a9d385f3d01b2f904fb93e54d3f13bf01437cb4",
+          "build/match-linked/InputPolling/link-aliases.rsp": "85921fb80e2306d417cb0f83801b65b11bfc59c9709b009094c4ce4cccf368eb",
+          "build/match-linked/InputPolling/link-anchors.obj": "5df39918ca6ef64d0b7fdbd293daea6672b67fe1f05fc1ea4d65c54bc5217daf",
+          "build/match-linked/InputPolling/link-anchors.c": "553439f5f1d8990de0e8d1c23a3858819ce22e59e3540d6d3bcb4183c7f85ef1",
+          "build/match-linked/InputPolling/source.pdb": "55da7c400afe4de8523a2cb31950ebac4aa0b01ed069c724b4fdef413775fcb5"
+        }
+      }
+    ],
+    "new_authored_exact_bytes": 264,
+    "new_authored_owned_bytes": 0,
+    "new_indeterminate_owned_bytes": 80
+  },
+  "independent_target_import_bindings": {
+    "0x466280": {
+      "dll": "WINMM.dll",
+      "symbol": "joyGetPosEx"
+    },
+    "0x466208": {
+      "dll": "USER32.dll",
+      "symbol": "GetKeyboardState"
+    }
+  },
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/th10-input-poll-20261020/initial",
+        "bytes": 53020
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-input-poll-20261020/argument-order",
+        "bytes": 53073
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-input-poll-20261020/natural-shift",
+        "bytes": 53126
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-input-poll-20261020/word-record",
+        "bytes": 53197
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-input-poll-20261020/helper-return",
+        "bytes": 53250
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-input-poll-20261020/fastcall",
+        "bytes": 53225
+      },
+      {
+        "path": "build/gpt-6.1-sol/th10-input-poll-20261020/reference-order",
+        "bytes": 53260
+      },
+      {
+        "path": "build/host-tests/input-polling-current",
+        "bytes": 565254
+      }
+    ],
+    "bytes_freed": 937405,
+    "retained": "Current canonical InputPolling native carrier also reproduces the two open owners; frozen receipts, source controls, raw/Ghidra reports and compact logs retained locally. Superseded diagnostic artifact hashes are historical."
+  },
+  "helper_extent_observation": {
+    "MergeDirectButton": "No PDB contribution in the final canonical carrier; inlined static definition",
+    "MergeWinMmButton": "No PDB contribution in the final canonical carrier; inlined static definition",
+    "scope": "PE/map/PDB-bound observation; original linkage/outlining and source identity remain unknown"
+  },
+  "target_audit_script_sha256": "b32003d3c74798745fae526147b5c657a11935437ae74dabb04e9506053341a1",
+  "public_ci": {
+    "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+    "result": "passed",
+    "exit_code": 0,
+    "checks": 94,
+    "mode": "one fresh complete canonical run; no prefix reuse or skipped commands",
+    "script_sha256": "b3fb0b79e1abfbc9feacb95bc23cb938d713c8db224cdb94e6a20a5ee6080467",
+    "private_log": ".analysis/gpt-6.1-sol/th10-input-poll-20261020/ci.log",
+    "log_sha256": "7deac881e489bc6423bbf87d613da24856680d72cc41c8fd971cc28dada260b9",
+    "post_run_scope": "Current target-only audit rerun after adding predecessor padding verification; source, host fixture and canonical definition unchanged."
+  }
+}

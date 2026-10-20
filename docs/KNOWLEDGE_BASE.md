@@ -3411,3 +3411,37 @@ nonexact with receiver spill/private binder registers/scheduling differences.
 No exact or denominator increment;29 actual-source ASan/UBSan/leak mutation
 controls pass. Slot20 query41F670/226 stays separately untracked, origin unknown.
 See [complete scope](evidence/laser-type1-clear/README.md).
+
+## Input polling, word records and button helper returns (2026-10-20)
+
+- Joystick44A190 and frame44A5F0 independently establish6A stride at474E30.
+  Current/previous0/2, repeat4, pressed6/released8, sixteen gameplay countersA,
+  separate debug block2C..57 and nine signed bindings58..69 form a natural
+  all-word view. The older partial FrontEnd aggregate alias is not extended;
+  complete array ownership, original common type and C++ lifetime remain open.
+- WinMM joystick ID is boolean(padIndex), while unsigned capabilities use the
+  original index. Raw button query44A4E0 always uses WinMM ID0. Mapped actions
+  use signed entries0/1/3/2/8; four intermediate direction bindings are unused.
+  Unsigned WinMM quarter zones and signed DirectInput thresholds are strict.
+- Failed DirectInput Poll attempts Acquire once plus up to400 input-lost
+  retries and never fetches state afterward. Merge zeroes its272-byte record
+  and rejects negative GetDeviceState results. Raw query leaves its record
+  uninitialized and ignores that result before copying128 bytes. Preserve the
+  discrepancy; conditional host error roles supply written bytes explicitly.
+- Enabled4924FC gates keyboard only; flags200/400 select independent keyboard/
+  pad backends. BOOL GetKeyboardState is unchecked, while any nonzero DirectInput
+  keyboard result acquires once and contributes no key bits. Joystick still
+  merges before late state publication. Held gameplay counters wrap16 bits,
+  repeat their own bit at26 and subtract8; released counters reset. This differs
+  from the already exact debug routine's intentional bit-zero accumulation.
+- Missing helpers44A130/37 and44A160/43 have no entry references; both update
+  output and return zero-extended selected action or0. Their complete raw
+  bodies justify real helper returns, but cannot prove source-written origin
+  versus optimizer outline. They remain indeterminate, source-present/nonexact.
+  WinMM natural C++ shift is defined only for valid0..31 bindings; x86 CL
+  masking outside that domain is not a portability guarantee.
+- Complete query264/all12 bound fields closes authored exact bytes in two
+  independent frozen three-input canonical /GL /GS colds. Merge865/833 and
+  frame854/850 remain nonexact. No original source ABI/TU/data owner or native
+  product/runtime claim follows. Actual-owner/helper source passes32 strict
+  ASan/UBSan/leak mutation controls. See [full scope](evidence/input-polling/README.md).

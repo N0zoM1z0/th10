@@ -1179,9 +1179,11 @@ address,span_end,state,confidence,evidence_id,notes
 0x0044A000,0x0044A02A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x0044A030,0x0044A05A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x0044A0C0,0x0044A128,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0044A190,0x0044A4D0,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0044A4E0,0x0044A5E7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x0044A5F0,0x0044A941,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0044A130,0x0044A154,reviewed,high,target-input-poll-2026-10-20,"Complete37-byte dense body; two RET exits with observed pop; neighboringCC boundaries reviewed, no overlap or external interior branch. No entry xrefs; fresh read-only Ghidra/raw review."
+0x0044A160,0x0044A18A,reviewed,high,target-input-poll-2026-10-20,"Complete43-byte dense body; two RET exits with observed pop; neighboringCC boundaries reviewed, no overlap or external interior branch. No entry xrefs; fresh read-only Ghidra/raw review."
+0x0044A190,0x0044A4D0,reviewed,high,target-input-poll-2026-10-20,"Complete833-byte raw extent includes3-byte nonexecuted LEA alignment44A35D between Ghidra ranges; four RET8 exits, internal branches, sole actual caller44A8B8 and15 followingCC bytes reviewed."
+0x0044A4E0,0x0044A5E7,reviewed,high,target-input-poll-2026-10-20,"Complete dense extent, observed return ABI and only known caller; neighborCC and all internal branches reviewed in fresh target-attested Ghidra/raw audit."
+0x0044A5F0,0x0044A941,reviewed,high,target-input-poll-2026-10-20,"Complete dense extent, observed return ABI and only known caller; neighborCC and all internal branches reviewed in fresh target-attested Ghidra/raw audit."
 0x0044B010,0x0044B076,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0044B080,0x0044B0CA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x0044B0D0,0x0044B212,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch

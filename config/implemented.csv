@@ -1067,3 +1067,8 @@ EnemyLaserType1View::Initialize
 EnemyLaserType1View::Draw
 EnemyLaserType1View::Update
 EnemyLaserType1View::Clear
+MergeDirectButton
+MergeWinMmButton
+MergeJoystickInput
+FrontEndGetControllerState
+PollInputFrame

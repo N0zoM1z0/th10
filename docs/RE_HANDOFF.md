@@ -28,6 +28,27 @@ scratch paths, or build hashes into this file.
 
 ## Current local checkpoint (2026-10-20)
 
+- Input polling now maps1947 existing authored bytes in InputPolling.cpp:
+  joystick merge44A190/833, buttons44A4E0/264 and frame poll44A5F0/850. The
+  button query closes264 authored exact bytes in two completeone-TU /GL /GS
+  canonical colds,3 frozen project inputs/all12 bound fields. Two missing
+  helper bodies44A130/37 and44A160/43 are reviewed/source-present but remain
+  indeterminate; no authored denominator increment. Their actual action/zero
+  return contract supersedes the initial void-helper hypothesis. Natural6A
+  word record reuses474E30; old partial FrontEnd/header and all prior canonical
+  inputs are unchanged. Gameplay countersA differ from debug counters38.
+  Keyboard-only enable, failed/positive HRESULT differences, initial Acquire
+  plus400 retries, fresh devices and unchecked raw-query state copy are retained.
+  Actual-source ASan/UBSan/leaks passes32 strict mutants. Merge865/833 and
+  frame854/850 stay nonexact; formal-order/CC/reference-order controls do not
+  establish original source ABI or fix private register/scheduling differences.
+  Next gain real caller/storage/context evidence for those owners, or inspect
+  other source gaps. See [complete evidence](evidence/input-polling/README.md).
+  Current static helpers have no PDB contribution despite target37/43-byte
+  bodies; original linkage/outlining is a concrete open hypothesis. No forced
+  noinline or synthetic entry is adopted. About0.94 MB pruned.
+  All94 public CI checks pass in one fresh complete run; final native/host/
+  artifact hashes are current. Authored exact is now64776/273274 bytes.
 - Type1 Clear41F400/623 now maps its complete authored source. Integer EAX
   count includes offscreen samples; raw polar-preserved EDX proves zero Z and
   empty count despite provisional Ghidra float output. Outer margin16 gates
