@@ -1050,3 +1050,5 @@ MidiOutputView::Tick
 MidiOutputView::ProcessEvent
 MidiOutputView::ApplyChannelVolumes
 MidiTimerView::Tick
+EnemyGameStateView::UpdateSpellPanel
+EnemySpellPanelUpdateCallback

@@ -1,5 +1,6 @@
 #include "Main.hpp"
 #include "EnemySoundQueue.hpp"
+#include "EnemyGameState.hpp"
 #include "Enemy.hpp"
 #include "EnemyLaser.hpp"
 #include "EclVm.hpp"
@@ -149,44 +150,6 @@ enum EnemyEclOpcode
     ENEMY_ECL_SET_BULLET_COUNT_BY_DIFFICULTY = 0x1B4,
 };
 
-struct EnemyGameStateView
-{
-    unsigned char unknown000[0x10];
-    AnmVmView stageVms[2];
-    AnmVmIdView asciiVmId;
-    AnmVmIdView nameVmId;
-    AnmVmIdView stageVmId;
-    int managedVmId;
-    AnmVmView frontVms[8];
-    AnmVmView secondaryFrontVms[5];
-    AnmVmTimerView spellTimer;
-    char spellName[0x40];
-    int spellId;
-    unsigned int flags378C;
-    int initialSpellBonus;
-    int spellBonus;
-    int spellValue;
-    AnmFloat3View effectPosition;
-};
-typedef char EnemySpellEmbeddedVmsAt10[
-    (offsetof(EnemyGameStateView, stageVms) == 0x10) ? 1 : -1];
-typedef char EnemySpellFrontVmsAt778[
-    (offsetof(EnemyGameStateView, frontVms) == 0x778 &&
-     offsetof(EnemyGameStateView, secondaryFrontVms) == 0x24d8) ? 1 : -1];
-typedef char EnemySpellTimerAt3734[
-    (offsetof(EnemyGameStateView, spellTimer) == 0x3734) ? 1 : -1];
-typedef char EnemySpellNameAt3748[
-    (offsetof(EnemyGameStateView, spellName) == 0x3748 &&
-     offsetof(EnemyGameStateView, spellId) == 0x3788) ? 1 : -1];
-typedef char EnemySpellValuesAt3790[
-    (offsetof(EnemyGameStateView, initialSpellBonus) == 0x3790 &&
-     offsetof(EnemyGameStateView, spellBonus) == 0x3794 &&
-     offsetof(EnemyGameStateView, spellValue) == 0x3798 &&
-     offsetof(EnemyGameStateView, effectPosition) == 0x379c) ? 1 : -1];
-typedef char EnemyGameStateVmIdAt774[
-    (offsetof(EnemyGameStateView, managedVmId) == 0x774) ? 1 : -1];
-typedef char EnemyGameStateFlagsAt378C[
-    (offsetof(EnemyGameStateView, flags378C) == 0x378c) ? 1 : -1];
 struct EnemyPrimaryResourceOwnerView
 {
     unsigned char unknown000000[0x3e0b50];
@@ -819,12 +782,12 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
             &state->secondaryFrontVms[i], i + 0x42);
     }
 
-    state->asciiVmId = g_AsciiManagerView->asciiAnm->CreateVmVariant0(1, 15);
-    state->nameVmId = g_AsciiManagerView->textAnm->CreateVmVariant0(0x48, 15);
-    state->stageVmId = g_AsciiManagerView->asciiAnm->CreateVmVariant0(2, 15);
-    AnmVmView *nameVm = g_AnmRenderManagerView->FindVm(state->nameVmId);
+    state->panelVmIds[0] = g_AsciiManagerView->asciiAnm->CreateVmVariant0(1, 15);
+    state->panelVmIds[1] = g_AsciiManagerView->textAnm->CreateVmVariant0(0x48, 15);
+    state->panelVmIds[2] = g_AsciiManagerView->asciiAnm->CreateVmVariant0(2, 15);
+    AnmVmView *nameVm = g_AnmRenderManagerView->FindVm(state->panelVmIds[1]);
     if (nameVm == 0) {
-        state->nameVmId.value = 0;
+        state->panelVmIds[1].value = 0;
     }
     g_AnmRenderManagerView->DrawTextRight(nameVm, 0x00ffffffu, name);
     reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->
@@ -869,13 +832,13 @@ void __stdcall EnemyBeginSpell(int gameState, int spellId, char *name, int value
         node = node->next;
     }
     child->intVar2 = value;
-    state->spellValue = value;
+    state->spellDuration = value;
     int bonus = (g_EnemyChapterState.stage * 3 + 10) *
         g_EnemyChapterState.spellBonusBase * 10;
+    state->currentSpellBonus = bonus;
     state->initialSpellBonus = bonus;
-    state->spellBonus = bonus;
     if (bonus >= 100000000) {
-        state->spellBonus = 99999999;
+        state->initialSpellBonus = 99999999;
     }
     g_EnemyPrimaryResourceOwner->primaryEnemyResource->
         CreateVmVariant0(0x1ab, 15);

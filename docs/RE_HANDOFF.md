@@ -31,6 +31,23 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Spell-card panel Update408D60 now maps1057 authored source bytes and the
+  registered409220 adapter maps10 indeterminate-origin bytes. Ghidra omits12
+  internal alignment bytes already covered by the physical boundary. Shared
+  EnemyGameStateView replaces inconsistent same-name definitions; current bonus
+  is3790, initial3794, duration3798. BeginSpell's cap stays on3794 only. Actual
+  digit calls are SetSprite43E5A0 with explicit VM execution, not script reset.
+  The actual-helper host suite passes ASan/UBSan/leaks and13 strict mutants;
+  ECL/Enemy/Player pass native compile-only interface checks; all86 public CI
+  checks pass. Final complete
+  three-TU /GL /GS cold freezes16 inputs: Update1060/1057, adapter7/10 remain
+  nonexact; no new exact credit. Call-then-return-one adapter13 is rejected and
+  restored. Existing helper65/356/111 structural diagnostics do not add credit.
+  FrontEnd's older cache is stale for EnemyGameState.hpp/EnemyEclDispatcher.cpp;
+  hash-check individual dependency closure before object reuse. MIDI's separate
+  cache remains current. Next source gaps include422660/1035 or actual panel
+  lifecycle4089C0/211; revisit private EDI/x87 only with new context evidence.
+  See [the full scope and reference provenance](evidence/spell-panel/README.md).
 - MIDI event/timer recovery maps **2441 authored source bytes** across parser
   43B110/1670, virtual Tick43AF30/473, reset43ACE0/132, reader43A730/26 and
   volume43B7A0/140. Three compressed switches add347 missing denominator bytes.
@@ -48,9 +65,10 @@ scratch paths, or build hashes into this file.
   Ordinary-member control is byte-neutral. A used status local computed before
   FTOL closes volume140/all2 fields. Tick fade polarity484 is rejected/restored;
   no volatile/packing/placement tuning.
-  MidiEventTick carrier/cache is separate from the still-current FrontEnd graph.
-  Next source gaps include408D60/1057 and422660/1035. Rotate there or require
-  new compiler/alias/lifetime evidence before further MIDI codegen controls. See
+  MidiEventTick carrier/cache is separate from the then-current FrontEnd graph.
+  Next source gaps then included408D60/1057 (now recovered above) and422660/1035.
+  Rotate there or require new compiler/alias/lifetime evidence before further
+  MIDI codegen controls. See
   [the complete MIDI target/native/host scope](evidence/midi-events/README.md).
 - Title/main-menu recovery maps **1637 authored source bytes** across entry
   42D300/288, interactive menu42D420/1280 and progress query42C850/69. Four

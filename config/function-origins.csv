@@ -179,6 +179,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00408C90,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-early-game-2026-09-17
 0x00408D60,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x004091C0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x00409220,unknown,,indeterminate,unknown,target-spell-panel-review-2026-10-20
 0x00409230,authored_game,AnmManager,authored,high,anm-pair-draw-callback-2026-09-15
 0x00409270,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x00409280,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17

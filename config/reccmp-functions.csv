@@ -1051,3 +1051,5 @@ MidiOutputView::Tick,0x0043AF30,function
 MidiOutputView::ProcessEvent,0x0043B110,function
 MidiOutputView::ApplyChannelVolumes,0x0043B7A0,function
 MidiTimerView::Tick,0x0043B8B0,function
+EnemyGameStateView::UpdateSpellPanel,0x00408D60,function
+EnemySpellPanelUpdateCallback,0x00409220,function

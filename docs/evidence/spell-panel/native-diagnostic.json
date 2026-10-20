@@ -1,0 +1,128 @@
+{
+  "authority": "compiler diagnostic only; zero new exact bytes",
+  "new_authored_source_owned_bytes": 1057,
+  "new_indeterminate_source_owned_bytes": 10,
+  "authored_denominator_correction": 0,
+  "cold_translation_units": 3,
+  "graph": {
+    "source": "src/SpellPanel.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/AnmVmId.cpp"
+    ],
+    "entry_symbol": "?EnemySpellPanelUpdateCallback@@YIHPAUEnemyGameStateView@@@Z",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ]
+  },
+  "project_input_sha256": {
+    "src/AnmManager.cpp": "ce7a572457c60546a9101981f5ee864c8f4e832015c08b49c7501dbfbf95dc5b",
+    "src/AnmManager.hpp": "5d701e0224cbe0db1289749ec898a4559f4980f7062f3a290c8a8bfc0b8ac138",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/Main.hpp": "ae49087657d26b2068e9ad73e6994f5fbf1efaebbafed5fad92e508c7938cb03",
+    "src/Player.hpp": "1747c454b804c1401365dd31735638600926442750d29351b074dfc6248a8f6a",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/SpellPanel.cpp": "9fa87f6a3a6447524af3d2136010a114cfb3ab9358866dbd28c0d560f6f7bb91",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "artifacts_sha256": {
+    "source.exe": "d0e92f32d3f377e0a528e6b9864fc8ea9b69b6de2223c2fb4ab37fd70d3a78dd",
+    "source.map": "8c8b694fb20acd737f70c59f62059b75d5f981a65c8676bfcfb4d14bf60cd8cf",
+    "source.pdb": "7c57cccf25914cfd4e7755bea513f2488a06da135e0cdb4aa513d8d8126b197c"
+  },
+  "diagnostics": [
+    {
+      "name": "EnemyGameStateView::UpdateSpellPanel",
+      "candidate_size": 1060,
+      "target_size": 1057,
+      "result": "mismatch",
+      "comparable_bytes": 917,
+      "matched_comparable_bytes": 427,
+      "linkage_fields": 35,
+      "pdb_owner_sha256": "b1e7e25a3d3262265cb840a179d19cc63b90817c8e6c20f1b83818a6bf2c7c31"
+    },
+    {
+      "name": "EnemySpellPanelUpdateCallback",
+      "candidate_size": 7,
+      "target_size": 10,
+      "result": "mismatch",
+      "comparable_bytes": 6,
+      "matched_comparable_bytes": 0,
+      "linkage_fields": 1,
+      "pdb_owner_sha256": "dcc5d4708685af92bb77e8b11b8412b98db93b33be5bf1e4f13a10907805b639"
+    },
+    {
+      "name": "AnmVmIdView::SetInterrupt",
+      "candidate_size": 65,
+      "target_size": 65,
+      "result": "structural-exact",
+      "comparable_bytes": 57,
+      "matched_comparable_bytes": 57,
+      "linkage_fields": 2,
+      "pdb_owner_sha256": "e1049748ce8658b87d00c006c93efbaffdadb9ef558c228fd52aaaa4153267d5"
+    },
+    {
+      "name": "AnmLoadedView::SetSprite",
+      "candidate_size": 356,
+      "target_size": 356,
+      "result": "structural-exact",
+      "comparable_bytes": 348,
+      "matched_comparable_bytes": 348,
+      "linkage_fields": 2,
+      "pdb_owner_sha256": "4997ebf3bcaa192f7be0efe6df1b045f54b0e4a350f849bae40a1760a3c94471"
+    },
+    {
+      "name": "AnmRenderManagerView::SetVmWorldPosition",
+      "candidate_size": 111,
+      "target_size": 111,
+      "result": "structural-exact",
+      "comparable_bytes": 91,
+      "matched_comparable_bytes": 91,
+      "linkage_fields": 5,
+      "pdb_owner_sha256": "5ea169b9256810f90906fefb878a3303cbf8c436e3f49cdd2c9d9bdb9fe11532"
+    }
+  ],
+  "control": {
+    "callback_call_then_return_one": {
+      "member_size": 1060,
+      "callback_size": 13,
+      "result": "rejected; restored forwarding source"
+    }
+  },
+  "host": {
+    "positive": "passed ASan/UBSan/leaks",
+    "strict_mutants": 13,
+    "observation": "actual sprite helper; pure entry recorder; VM execution is an explicit host role"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "final_checks": {
+    "target_audit": "passed",
+    "native_interface_compile_sources": [
+      "EnemyEclDispatcher.cpp",
+      "Enemy.cpp",
+      "Player.cpp"
+    ],
+    "public_ci_checks_passed": 86,
+    "toolchain_check": "passed",
+    "tracking": "passed",
+    "generated_progress": "current",
+    "whitespace": "passed"
+  }
+}

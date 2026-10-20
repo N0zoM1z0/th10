@@ -3126,3 +3126,34 @@ status byte before FTOL closes all140 volume bytes and both fields. The Tick
 fade polarity control484/473 is rejected/restored. No forced volatile,
 packing, placement or invented register context is adopted. See
 [the complete evidence and retained license](evidence/midi-events/README.md).
+
+
+## Spell-card panel frame owner (2026-10-20)
+
+Update408D60 now maps its complete1057 authored bytes; registered adapter409220
+adds ten source-present indeterminate-origin bytes. Ghidra's1045-byte body omits
+two internal six-byte alignment instructions; raw extent ends at409180 and
+needs no denominator change. Registration4089C2 and the CC-delimited callback
+establish ECX-to-EDI forwarding, not original source authorship. Shared
+EnemyGameStateView now has one canonical header instead of incompatible
+same-name definitions. Bonus current3790/initial3794/duration3798 names follow
+the target. BeginSpell still caps only3794, preserving its observed quirk.
+
+Digit calls43E5A0 are SetSprite, not43E7E0 script initialization/execution. The
+actual sprite helper has no callbacks. Bonus execution retains the value but
+resamples resources; counters capture one GUI, reload its resource four times
+and resample their second statistics record before all five VMs execute.
+Pre-frame60/300, post-frame120, strict playerY96/128 and flag8 behavior are
+target-audited. Marker slot0 uses enemy+1068 and the actual world-position helper.
+
+Final complete three-TU /GL /GS cold freezes16 inputs and emits1060/1057 plus
+callback7/10, both nonexact. The call-then-return-one callback control is13/10
+and rejected/restored. Existing helpers65/356/111 are structurally unchanged
+modulo2/2/5 fields in this graph; no new canonical replay/credit follows.
+Actual-source/helper ASan/UBSan/leak checks and13 strict named mutants pass.
+ECL/Enemy/Player compile-only native interface checks and the actual auxiliary
+player fixture pass. All86 public CI checks pass. Older FrontEnd cache inputs
+are now stale for this shared
+header/ECL TU; retain its hashes and reject unreviewed whole-cache reuse.
+MIDI cache remains independent. x87, construction, data ownership and native
+product/runtime stay open. See [the focused evidence](evidence/spell-panel/README.md).
