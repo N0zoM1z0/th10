@@ -1034,3 +1034,5 @@ EndingTextVmView::Tick
 EndingTextVmView::Run
 EndingLoadAnimationCallback
 EndingTextVmView::LoadAnimation
+FrontEndControllerView::UpdateReplaySave
+FrontEndControllerView::DrawReplaySave

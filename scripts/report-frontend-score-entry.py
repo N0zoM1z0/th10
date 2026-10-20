@@ -154,7 +154,7 @@ def source_report(
         "key == alphabetLength - 2",
         "key == alphabetLength - 1",
         "g_FrontEndProfileData + 0x1d878",
-        "SetScreen(controller, FRONT_END_SCREEN_RESULT)",
+        "controller->SetScreenTarget(FRONT_END_SCREEN_REPLAY_SAVE)",
         "GetPracticeScoreRecord(shot, g_ReplayDifficulty, row)",
         'ascii->AddFormatText(&position, "%s", controller->scoreEntryName)',
         'ascii->AddFormatText(&position, "_")',

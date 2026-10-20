@@ -31,6 +31,21 @@ scratch paths, or build hashes into this file.
   owners and small functions in scope. Use local Ghidra and Bash, serialize
   native builds, and replay the necessary affected units rather than the full
   historical cohort. The authored denominator remains provisional.
+- Front-end replay save screen16 now maps update433570/1460 and draw433B30/955,
+  **2415 authored source bytes**. A fresh guarded five-entry table review adds20
+  denominator bytes; the former Result name/cdecl update seam are corrected.
+  Time keeps its replay owner but reloads the header; save captures the slot
+  after writing/before loading; close destroys25 objects then clears50 slots.
+  Unchanged ReplayManager::Destroy4297B0 closes **18 new authored exact bytes**
+  in the real callback graph. Two independent full18-TU /GL /GS /EHs colds
+  freeze53 inputs and each pass422 complete bytes/all4 fields, including404
+  existing cursor/screen guard bytes. Actual-source ASan/UBSan/leak checks and
+  eight strict mutants pass. Update1364/1460 and draw961/955 remain nonexact;
+  target-expanded repeated-input tests versus six native helper calls are an
+  open context hypothesis. No forced attributes or reference placement adopted.
+  Next use TH10 evidence for a natural caller/TU context or another source gap;
+  do not repeat standalone delete-syntax/ABI sweeps. Product/runtime stays open.
+  See [the evidence and reproducible checks](evidence/frontend-replay-save/README.md).
 - Ending initialization now captures the original auxiliary-ID destination
   before VM creation and reads the file header only after text allocation.
   Old native code fails both sampling contracts; current native code passes

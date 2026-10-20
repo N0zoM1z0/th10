@@ -1035,3 +1035,5 @@ EndingTextVmView::Tick,0x0040BD20,function
 EndingTextVmView::Run,0x0040BD80,function
 EndingLoadAnimationCallback,0x0040C3A0,function
 EndingTextVmView::LoadAnimation,0x0040C3C0,function
+FrontEndControllerView::UpdateReplaySave,0x00433570,function
+FrontEndControllerView::DrawReplaySave,0x00433B30,function

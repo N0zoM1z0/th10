@@ -159,8 +159,7 @@ extern int FrontEndUpdateMainMenu(FrontEndControllerView *controller);
 extern int FrontEndUpdateMainMenuReturn(FrontEndControllerView *controller);
 extern int FrontEndBeginGame();
 int __stdcall FrontEndUpdateMusicRoom(FrontEndControllerView *controller);
-extern int FrontEndUpdateResult(FrontEndControllerView *controller);
-extern int __stdcall FrontEndDrawResult(FrontEndControllerView *controller);
+extern void EnemyMarkPendingInterrupt(int *vmId);
 // TH10 practice unlock helper: 0x0042C8C0, reviewed 93-byte extent.
 // The source signature preserves the observed explicit profile receiver;
 // The target passes it in EAX; source-to-native ABI correspondence and
@@ -873,8 +872,8 @@ int FrontEndControllerView::Update()
     case FRONT_END_SCREEN_SCORE_ENTRY:
         UpdateScoreEntry(this);
         break;
-    case FRONT_END_SCREEN_RESULT:
-        FrontEndUpdateResult(this);
+    case FRONT_END_SCREEN_REPLAY_SAVE:
+        UpdateReplaySave(this);
         break;
     }
 
@@ -903,8 +902,8 @@ int FrontEndControllerView::Draw()
     case FRONT_END_SCREEN_SCORE_ENTRY:
         DrawScoreEntry(this);
         break;
-    case FRONT_END_SCREEN_RESULT:
-        FrontEndDrawResult(this);
+    case FRONT_END_SCREEN_REPLAY_SAVE:
+        DrawReplaySave(this);
         break;
     case FRONT_END_SCREEN_STAGE:
         DrawStageScores();
@@ -2858,7 +2857,7 @@ int __stdcall FrontEndControllerView::UpdateScoreEntry(
                 controller,
                 0x9a + g_ReplayShotType + g_ReplayCharacter * 3);
             DeleteVm(controller, 0xa0 + g_ReplayDifficulty);
-        controller->SetScreenTarget(FRONT_END_SCREEN_RESULT);
+            controller->SetScreenTarget(FRONT_END_SCREEN_REPLAY_SAVE);
         }
         break;
     }
@@ -2972,6 +2971,306 @@ int __stdcall FrontEndControllerView::DrawScoreEntry(
     }
     return 1;
 }
+
+// TH10_FRONTEND_FUNCTION: 0x00433570 FrontEndControllerView::UpdateReplaySave
+int __stdcall FrontEndControllerView::UpdateReplaySave(
+    FrontEndControllerView *controller)
+{
+    char replayPath[64];
+    switch (controller->screenState)
+    {
+    case FRONT_END_REPLAY_SAVE_INITIALIZE:
+        controller->cursor.count = 25;
+        controller->cursor.wraps = 1;
+        controller->cursor.SetCurrent(0);
+        g_FrontEndSelectedStageRecord = g_FrontEndStageRecords[8];
+        g_FrontEndSelectedStage = 8;
+        g_FrontEndSelectedStageMirror = 8;
+        for (int replayNumber = 1; replayNumber <= 25; ++replayNumber)
+        {
+            sprintf(replayPath, "th10_%.2d.rpy", replayNumber);
+            controller->replayFiles[replayNumber - 1] =
+                ReplayManager::Load(replayPath);
+        }
+        CreateVm(controller, 0x69);
+        controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_OPENING);
+        // The opening timer is tested on the initialization frame too.
+    case FRONT_END_REPLAY_SAVE_OPENING:
+        if (controller->stateTimer.current > 6)
+            controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
+        break;
+
+    case FRONT_END_REPLAY_SAVE_SELECT_SLOT:
+    {
+        FrontEndCursorView *cursor = &controller->cursor;
+        cursor->previous = cursor->current;
+        if (InputRepeated(FRONT_END_INPUT_UP))
+            cursor->Move(-1);
+        if (InputRepeated(FRONT_END_INPUT_DOWN))
+            cursor->Move(1);
+        if (cursor->previous != cursor->current)
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_CLOSING);
+            FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+        }
+        else if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            FrontEndCursorView *keyboard = &controller->scoreEntryKeyboardCursor;
+            controller->selectedReplay = cursor->current;
+            keyboard->SetCurrent(0);
+            keyboard->count = strlen(g_FrontEndScoreEntryAlphabet);
+            keyboard->wraps = 1;
+            // Keep this replay owner across time(), but reload its header.
+            ReplayManager *recorded = g_ReplayManager;
+            time(reinterpret_cast<time_t *>(&recorded->replayData->timestamp));
+            recorded->replayData->completionState = 8;
+            strcpy(controller->scoreEntryName,
+                reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878));
+            controller->scoreEntryNameCursor = 0;
+            if (strcmp(controller->scoreEntryName, "        ") != 0)
+                keyboard->Move(-1);
+            int length;
+            for (length = FRONT_END_SCORE_ENTRY_NAME_LENGTH; length > 0; --length)
+            {
+                if (controller->scoreEntryName[length - 1] != ' ')
+                    break;
+            }
+            controller->scoreEntryNameCursor = length;
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+            controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_ENTER_NAME);
+        }
+        break;
+    }
+
+    case FRONT_END_REPLAY_SAVE_ENTER_NAME:
+    {
+        FrontEndCursorView *keyboard = &controller->scoreEntryKeyboardCursor;
+        keyboard->previous = keyboard->current;
+        if (InputRepeated(FRONT_END_INPUT_UP))
+            keyboard->Move(-FRONT_END_SCORE_ENTRY_COLUMNS);
+        if (InputRepeated(FRONT_END_INPUT_DOWN))
+            keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS);
+        if (InputRepeated(FRONT_END_INPUT_LEFT))
+        {
+            if (keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS != 0)
+                keyboard->Move(-1);
+            else
+                keyboard->Move(FRONT_END_SCORE_ENTRY_COLUMNS - 1);
+        }
+        if (InputRepeated(FRONT_END_INPUT_RIGHT))
+        {
+            if (keyboard->current % FRONT_END_SCORE_ENTRY_COLUMNS !=
+                FRONT_END_SCORE_ENTRY_COLUMNS - 1)
+                keyboard->Move(1);
+            else
+                keyboard->Move(1 - FRONT_END_SCORE_ENTRY_COLUMNS);
+        }
+        if (keyboard->previous != keyboard->current)
+            FrontEndPlaySound(FRONT_END_SOUND_MOVE);
+
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CONFIRM) != 0)
+        {
+            const char *alphabet = g_FrontEndScoreEntryAlphabet;
+            int alphabetLength = strlen(alphabet);
+            int key = keyboard->current;
+            if (key < alphabetLength - 3)
+            {
+                int cursor = controller->scoreEntryNameCursor;
+                if (cursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                {
+                    controller->scoreEntryName[cursor] = alphabet[key];
+                    ++controller->scoreEntryNameCursor;
+                    if (controller->scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                        keyboard->SetCurrent(alphabetLength - 1);
+                }
+                else
+                    controller->scoreEntryName[cursor - 1] = alphabet[key];
+            }
+            else if (key == alphabetLength - 3)
+            {
+                int cursor = controller->scoreEntryNameCursor;
+                if (cursor < FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                {
+                    controller->scoreEntryName[cursor] = ' ';
+                    ++controller->scoreEntryNameCursor;
+                    if (controller->scoreEntryNameCursor >= FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                        keyboard->SetCurrent(alphabetLength - 1);
+                }
+                else
+                    controller->scoreEntryName[cursor - 1] = ' ';
+            }
+            else if (key == alphabetLength - 2)
+            {
+                if (controller->scoreEntryNameCursor == 0)
+                    break;
+                --controller->scoreEntryNameCursor;
+                controller->scoreEntryName[controller->scoreEntryNameCursor] = ' ';
+            }
+            else if (key == alphabetLength - 1)
+            {
+                FrontEndPlaySound(FRONT_END_SOUND_UNLOCK);
+                sprintf(replayPath, "th10_%.2d.rpy", controller->cursor.current + 1);
+                ReplayManager::Destroy(controller->replayFiles[controller->cursor.current]);
+                g_ReplayManager->SaveReplay(replayPath, controller->scoreEntryName);
+                // Saving may change the slot; loading keeps this sampled slot.
+                int slot = controller->cursor.current;
+                controller->replayFiles[slot] = ReplayManager::Load(replayPath);
+                strcpy(reinterpret_cast<char *>(g_FrontEndProfileData + 0x1d878),
+                    controller->scoreEntryName);
+                controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
+            }
+            FrontEndPlaySound(FRONT_END_SOUND_SELECT);
+        }
+        if ((g_FrontEndInput.pressed & FRONT_END_INPUT_CANCEL) != 0)
+        {
+            if (controller->scoreEntryNameCursor == 0)
+                controller->SetScreenStateTarget(FRONT_END_REPLAY_SAVE_SELECT_SLOT);
+            else
+            {
+                FrontEndPlaySound(FRONT_END_SOUND_CANCEL);
+                --controller->scoreEntryNameCursor;
+                controller->scoreEntryName[controller->scoreEntryNameCursor] = ' ';
+            }
+        }
+        break;
+    }
+
+    case FRONT_END_REPLAY_SAVE_CLOSING:
+        if (controller->stateTimer.current >= 6)
+        {
+            DeleteVm(controller, 0x69);
+            FrontEndMarkVmInterrupt(controller, 0x5a, 8);
+            FrontEndMarkVmInterrupt(controller, 0x5b, 8);
+            DeleteVm(controller, 0x5e);
+            EnemyMarkPendingInterrupt(&controller->difficultyAuxVmId.value);
+            controller->SetScreenTarget(FRONT_END_SCREEN_MAIN_MENU_RETURN);
+            controller->cursor.Pop();
+            ReplayManager *recorded = g_ReplayManager;
+            if (recorded != NULL)
+                delete recorded;
+            FrontEndLoadMusic(0, "bgm/th10_02.wav");
+            FrontEndPlayMusic(0, 0);
+            for (int slot = 0; slot < 25; ++slot)
+            {
+                ReplayManager *replay = controller->replayFiles[slot];
+                if (replay != NULL)
+                    delete replay;
+            }
+            // Only numbered slots are destroyed, but all fifty are cleared.
+            memset(controller->replayFiles, 0, sizeof(controller->replayFiles));
+        }
+        break;
+    }
+    return 1;
+}
+
+
+// TH10_FRONTEND_FUNCTION: 0x00433B30 FrontEndControllerView::DrawReplaySave
+int __stdcall FrontEndControllerView::DrawReplaySave(
+    FrontEndControllerView *controller)
+{
+    switch (controller->screenState)
+    {
+    case FRONT_END_REPLAY_SAVE_ENTER_NAME:
+    {
+        AnmFloat3View position(58.0f, 240.0f, 0.0f);
+        int slot = controller->selectedReplay;
+        if (controller->stateTimer.current < 10)
+            position.y = (10.0f - controller->stateTimer.subframe) *
+                ((slot * 15 + 80) - 240.0f) * 0.1f + 240.0f;
+        ReplayDataHeader *data = g_ReplayManager->replayData;
+        tm *date = localtime(reinterpret_cast<time_t *>(&data->timestamp));
+        g_AsciiManagerView->AddFormatText(
+            &position, "No.%.2d %s %.2d/%.2d/%.2d %.2d:%.2d %s %s %s %2.1f%%",
+            slot + 1, "        ", date->tm_year % 100, date->tm_mon + 1,
+            date->tm_mday, date->tm_hour, date->tm_min,
+            g_ReplayCharacterNames[data->character * 3 + data->shotType],
+            g_ReplayDifficultyNames[data->difficulty],
+            g_ReplayCompletionNames[8], data->slowRate);
+        if (controller->stateTimer.current >= 10)
+        {
+            int alphabetLength = strlen(g_FrontEndScoreEntryAlphabet);
+            position.x = 112.0f;
+            position.y = 240.0f;
+            position.z = 0.0f;
+            g_AsciiManagerView->color = 0xffffffffu;
+            g_AsciiManagerView->AddFormatText(&position, "%s", controller->scoreEntryName);
+            position.x = controller->scoreEntryNameCursor * 9 + 112.0f;
+            if (controller->scoreEntryNameCursor == FRONT_END_SCORE_ENTRY_NAME_LENGTH)
+                position.x -= 9.0f;
+            g_AsciiManagerView->color = 0xffffff00u;
+            g_AsciiManagerView->AddFormatText(&position, "_");
+            g_AsciiManagerView->color = 0xffffffffu;
+            position.x = 212.0f;
+            position.y = 360.0f;
+            position.z = 0.0f;
+            for (int key = 0; key < alphabetLength; ++key)
+            {
+                g_AsciiManagerView->color = controller->scoreEntryKeyboardCursor.current == key
+                    ? 0xffffff00u : 0xff808080u;
+                int glyph;
+                if (key < alphabetLength - 3)
+                    glyph = g_FrontEndScoreEntryAlphabet[key];
+                else if (key == alphabetLength - 3)
+                    glyph = 0x81;
+                else if (key == alphabetLength - 2)
+                    glyph = 0x7f;
+                else
+                    glyph = 0x80;
+                g_AsciiManagerView->AddFormatText(&position, "%c", glyph);
+                if (static_cast<unsigned int>(key) % FRONT_END_SCORE_ENTRY_COLUMNS ==
+                    FRONT_END_SCORE_ENTRY_COLUMNS - 1)
+                {
+                    position.x = 212.0f;
+                    position.y += 16.0f;
+                }
+                else
+                    position.x += 18.0f;
+            }
+            g_AsciiManagerView->color = 0xffffffffu;
+        }
+        break;
+    }
+
+    case FRONT_END_REPLAY_SAVE_SELECT_SLOT:
+    {
+        AnmFloat3View position(58.0f, 80.0f, 0.0f);
+        g_AsciiManagerView->drawShadow = 1;
+        for (int slot = 0; slot < 25; ++slot)
+        {
+            g_AsciiManagerView->color = controller->cursor.current == slot
+                ? 0xffffff00u : 0xff808080u;
+            ReplayManager *replay = controller->replayFiles[slot];
+            if (replay != NULL)
+            {
+                ReplayDataHeader *data = replay->replayData;
+                tm *date = localtime(reinterpret_cast<time_t *>(&data->timestamp));
+                g_AsciiManagerView->AddFormatText(
+                    &position, "No.%.2d %s %.2d/%.2d/%.2d %.2d:%.2d %s %s %s %2.1f%%",
+                    slot + 1, data->replayName, date->tm_year % 100, date->tm_mon + 1,
+                    date->tm_mday, date->tm_hour, date->tm_min,
+                    g_ReplayCharacterNames[data->character * 3 + data->shotType],
+                    g_ReplayDifficultyNames[data->difficulty],
+                    g_ReplayCompletionNames[data->completionState], data->slowRate);
+            }
+            else
+                g_AsciiManagerView->AddFormatText(
+                    &position, "No.%.2d -------- --/--/-- --:-- ------- ------- --- ---%%", slot + 1);
+            position.y += 15.0f;
+        }
+        break;
+    }
+    default:
+        return 1;
+    }
+    g_AsciiManagerView->color = 0xffffffffu;
+    g_AsciiManagerView->drawShadow = 0;
+    return 1;
+}
+
 
 // Original Japanese CP932 text, preserved as byte-valued C++ string literals.
 static const char g_MusicLockedTitleFormat[] = "No.%d  \201H\201H\201H\201H\201H\201H\201H\201H\201H\201H\201H";

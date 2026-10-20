@@ -812,8 +812,8 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004329F0,authored_game,FrontEnd,authored,high,frontend-practice-draw-2026-09-15
 0x00432CB0,authored_game,FrontEnd,authored,high,frontend-score-entry-2026-09-15
 0x00433230,authored_game,FrontEnd,authored,high,frontend-score-entry-2026-09-15
-0x00433570,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
-0x00433B30,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
+0x00433570,authored_game,FrontEnd,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x00433B30,authored_game,FrontEnd,authored,medium,target-authored-data-and-edge-2026-09-17
 0x00433EF0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x004349E0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x00434A20,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17

@@ -812,8 +812,8 @@ address,span_end,state,confidence,evidence_id,notes
 0x004329F0,0x00432CA0,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 689/689, tail ret"
 0x00432CB0,0x00433227,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,Prior boundary evidence retained; dense decode 1395/1400; owned indirect control table at 0x00433218
 0x00433230,0x00433569,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 826/826, tail ret"
-0x00433570,0x00433B0F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
-0x00433B30,0x00433EEA,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x00433570,0x00433B23,reviewed,high,target-local-ghidra-replay-save-2026-10-20,Dense code1440 incl3 internal alignment bytes; guarded unsigned0..4 indexed jump owns five-entry20-byte absolute table433B10..433B23; all five destinations local; only external code reference is dispatcher entry;12 CC bytes before433B30
+0x00433B30,0x00433EEA,reviewed,high,target-local-ghidra-replay-save-2026-10-20,Complete955-byte RET4 body includes7 internal alignment bytes433D09..433D0F; only external entry call from draw dispatcher42D29C; five CC bytes before433EF0
 0x00433EF0,0x004349C9,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004349E0,0x00434A1A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00434A20,0x00434A7B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=3; no overlap or external interior branch

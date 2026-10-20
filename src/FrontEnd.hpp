@@ -79,7 +79,7 @@ enum FrontEndScreenView
     FRONT_END_SCREEN_START_GAME_13 = 13,
     FRONT_END_SCREEN_MUSIC_ROOM = 14,
     FRONT_END_SCREEN_SCORE_ENTRY = 15,
-    FRONT_END_SCREEN_RESULT = 16
+    FRONT_END_SCREEN_REPLAY_SAVE = 16
 };
 
 
@@ -120,6 +120,16 @@ enum FrontEndReplayStateView
     FRONT_END_REPLAY_STARTING = 3,
     FRONT_END_REPLAY_SELECT_STAGE = 4,
     FRONT_END_REPLAY_CLOSING = 5
+};
+
+
+enum FrontEndReplaySaveStateView
+{
+    FRONT_END_REPLAY_SAVE_INITIALIZE = 0,
+    FRONT_END_REPLAY_SAVE_OPENING = 1,
+    FRONT_END_REPLAY_SAVE_SELECT_SLOT = 2,
+    FRONT_END_REPLAY_SAVE_ENTER_NAME = 3,
+    FRONT_END_REPLAY_SAVE_CLOSING = 4
 };
 
 
@@ -230,6 +240,8 @@ struct FrontEndControllerView
     int DrawPractice();
     static int __stdcall UpdateScoreEntry(FrontEndControllerView *controller);
     static int __stdcall DrawScoreEntry(FrontEndControllerView *controller);
+    static int __stdcall UpdateReplaySave(FrontEndControllerView *controller);
+    static int __stdcall DrawReplaySave(FrontEndControllerView *controller);
 
     // Target 0x0042C620 keeps the screen-state/timer reset as a private
     // controller seam.  The descriptive suffix avoids claiming the original

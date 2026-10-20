@@ -100,6 +100,7 @@ def main() -> int:
         run("Validate player shot update lifetimes", [sys.executable, "scripts/test-player-shot-update.py"])
         run("Validate player movement ANM identities", [sys.executable, "scripts/test-player-movement-anm.py"])
         run("Validate result/replay-name controller", [sys.executable, "scripts/test-result-menu-state.py"])
+        run("Validate front-end replay save", [sys.executable, "scripts/test-frontend-replay-save.py", "--no-mutations"])
         run("Validate script browser state and event order", [sys.executable, "scripts/test-script-viewer-update.py"])
         run("Validate script browser display and renderer calls", [sys.executable, "scripts/test-script-viewer-draw.py"])
         run("Validate worker wait and restart order", [sys.executable, "scripts/test-script-viewer-worker.py"])

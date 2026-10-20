@@ -2906,3 +2906,54 @@ GameScoreState.hpp is unchanged. Init584/584, Run1576/1568, text constructor
 register/dataflow choices require fresh evidence; no equivalent-expression
 sweep, fake slot, ABI annotation or forced compiler control is adopted.
 See [the target, native and host scope](evidence/ending-initialize/README.md).
+
+## 2026-10-20 Front-end replay-save owners and contextual replay deletion
+
+Screen16 is the replay-save page, not the in-game result controller. Raw update
+and draw dispatcher table entries select433570 and433B30 with one pushed
+controller; both handlers end inRET4. The update's physical owner is1460 through
+433B23: dense code1440 plus a guarded unsigned0..4 five-entry absolute table at
+433B10. All destinations are local starts;12 CC bytes precede433B30. Draw955
+includes7 internal alignment bytes and ends before five CC bytes/433EF0.
+Read-only local Ghidra verifies target and complete mapped text before/after,
+rolls back temporary metadata, and observes only the respective dispatcher
+entry calls into these reviewed ranges. The public focused audit reproduces
+guard/table/branch/call/neighbor and ledger checks. The authored denominator
+increases20; the source mappings recover2415 bytes and grant no parent exactness.
+
+The maintained five-phase source preserves initialization fallthrough, opening
+current>6 versus closing>=6, slot-cancel priority and name-confirm-before-cancel.
+Empty backspace exits before common sound and cancellation. Time retains the
+original replay object but reloads its header after the call. Saving ignores
+its return value, destroys the old numbered slot before writing, and captures
+the destination slot after SaveReplay but before Load. Closing marks the
+observed VM IDs, retires controller+5D0, returns/pops, deletes the captured global
+replay and starts music before numbered-slot destruction. Exactly25 objects
+are destroyed, but all50 pointers are cleared. Drawing keeps a replay header
+across localtime, reloads ASCII globals around formatter calls and reads the
+timer again after the moving-preview summary. The first preview inherits color;
+completion8 and conditional final color/shadow stores are target observations.
+
+With the actual recovered front-end callback and real ReplayManager body,
+unchanged Destroy4297B0 now exactly reproduces18 bytes and its two complete
+independently bound calls to destructor4294A0 and scalar delete4524A1. Earlier
+27-byte standalone diagnostics lacked this caller context; delete syntax and
+private ABI annotations are not changed. Two independent full18-TU /GL /GS /EHs
+cold links freeze53 source/header inputs and each strictly compare422 complete
+bytes/all4 fields, including five existing cursor/screen guards404/all2.
+Only new18-byte authored credit is added. The related update callback passes
+7/all1 in this graph. Draw callback5/7 in the alternate graph triggers a focused
+cold of its original one-TU canonical recipe; that independently passes7/all1,
+with no recipe migration or extra credit. Update1364/1460 and draw961/955 remain
+nonexact; six native repeated-input helper calls versus target-expanded tests
+identify a further context hypothesis, not grounds to force inlining. Original
+partition, native product/runtime, dual-Oracle semantic and port gates stay open.
+
+Actual-owner/cursor/input/delete-wrapper host tests consume canonical headers
+with explicit layout/prefill/int32-time seams and callback-sensitive dependency
+roles. Positive ASan/UBSan/leak checks and eight strict named mutants pass.
+These synthetic witnesses do not establish native ABI, x87 or real target
+callbacks. The MIT pinned reference is hypothesis material; its forced attributes,
+linker placement and symbol-number tuning are not adopted. The unrelated401100
+boundary metadata discrepancy and pre-existing D3D evidence are unchanged.
+See [the bounded target, source, native and host evidence](evidence/frontend-replay-save/README.md).
