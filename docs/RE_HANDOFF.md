@@ -42,6 +42,20 @@ source-present/nonexact and130 source-absent. Source-present authored bytes are
 246417/273576 (90.07%).523 origins remain indeterminate; the complete-game
 denominator remains unknown.
 
+The latest [thread/register controls](evidence/ecl-thread-register-controls/README.md)
+test11 private source models without changing maintained code or exact credit.
+Four are raw-neutral. Two operand-pointer forms produce identical31-difference
+Run bodies. Five shared-node scopes fix SIB+146E but add RETURN+AF, retaining27
+and identical whole Run bodies. Their unchanged count is not raw neutrality.
+All images pass35 full guards4424/all118, Run7020/all189/62locals/full171callee;
+ANM and Enemy remain raw-identical. Each recompiles one ECL object and reuses
+nine verified game objects; no new full cold is claimed.
+
+Earlier standalone StopThread pointer locals were already executed in older
+residual/current-dependency contexts. The prepared/unexecuted statement applied
+only to the thread-expression campaign, not all history. Do not repeat that
+control as new or use its old two-TU26 as a current-source score.
+
 The latest [ECL raw-word negation correction](evidence/ecl-raw-negation/README.md)
 expresses opcode55 with the existing unsigned bits member,0u-bits. Target44F851
 is NEG EDX followed by Push f/4. The old reconstructed signed expression
@@ -92,19 +106,30 @@ is401100 provenance text. Ordinary tracking/CI success does not waive it.
 
 ## Current checkpoint validation and recovery
 
-Focused native/raw-NEG/FORMAT checks and **107 full CI checks pass** for the
-frozen source/test/fixture/CI files. [Validation](evidence/ecl-raw-negation/validation-summary.json)
-records each scope separately. All351 code/test paths remain unchanged through CI.
-Only validation documentation and ignored-output cleanup follow it.
+The thread/register native controls and **107 fresh full CI checks pass**. All351
+maintained code/test paths remain unchanged through CI and equal the preceding
+passed source state. Only validation documentation and classified ignored-output
+cleanup follow CI.
+Current32 inputs and15 canonical artifacts still equal the raw-NEG pins; the
+unmodified maintained Run diagnostic freshly repeats7020/6993/27.
 
-Current private work: `.analysis/gpt-6.1-sol/ecl-operand-homes-20261022/`;
-start with RECOVERY.md and manifest.json. Retain the actual canonical cold,
-pre-edit baseline snapshot and small shared-first-neg-bits failure, plus compact
-source overlays/reports and producers. [Cleanup](evidence/ecl-raw-negation/cleanup-summary.json)
-removes11780625 logical file bytes from eight superseded controls and four
-reproducible CI output trees. Nine independent
-untracked D3D files and unclassified older state remain preserved. Broad exact
-reconstruction stays active; product/runtime closure remains open.
+Current private work: `.analysis/gpt-6.1-sol/ecl-thread-registers-20261022/`;
+start with RECOVERY.md and manifest.json. Retain current canonical baseline and
+one minimal shared-thread-flags failure, plus exact overlays/reports/producers.
+Cleanup removes14115654 logical file bytes from ten superseded controls,
+four reproducible CI trees and campaign bytecode. Prior raw-NEG baseline snapshot
+and historical contexts keep their recorded scopes. Nine unrelated untracked D3D
+files and older unclassified
+analysis/provider state remain preserved. Broad exact reconstruction stays active.
+
+The next bounded route is a Chain source-completeness review. Maintained
+Chain.cpp already defines AddToCalcChain, AddToDrawChain and AllocElem, while
+449AE0/131,449B70/131 and449ED0/74 still have empty source fields. Existing
+canonical caller fields bind the first two target addresses, but complete body,
+ABI and behavior review is still needed before mapping or exact promotion.
+Also review449AA0/59 and WinMain's callback-owner creation seam; its old scheduler
+reset name and untyped free declaration are hypotheses. No source count changes
+are made from this lead. Avoid another round of the same ECL scope controls.
 
 ## Three large owners remain nonexact
 

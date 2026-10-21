@@ -1,0 +1,825 @@
+{
+  "starting_head": "bd9be468094aeee854585dd6bba47566b62d3cb9",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_or_recipe_changed": false,
+  "new_exact_credit": false,
+  "source_and_native_reference": {
+    "path": "docs/evidence/ecl-raw-negation/native-summary.json",
+    "sha256": "b16cfb848c534b93a7854e2d75ae7270fb5e5bc2adaddb98a686744f76ac7a80",
+    "source_inputs": 32,
+    "native_artifacts": 15,
+    "all_current_pins_verified": true
+  },
+  "baseline": {
+    "run_size": 7020,
+    "ordinary_differences": 27,
+    "fields": 189,
+    "local_destinations": 62,
+    "callee_bytes": 171,
+    "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+    "tool": "unmodified maintained scripts/diagnose-ecl-run-native.py",
+    "full_cold_in_this_batch": false
+  },
+  "private_native_scope": "11 serial controls; each compiles only ECL and reuses nine verified baseline game objects before full relink. No complete cold build in this batch. All35 complete guards/4424 bytes/118 fields pass per image.",
+  "controls": [
+    {
+      "label": "spawn-signed-index",
+      "candidate_source_sha256": "84b945cc1a8851bbb2a0bc664914e8b442aa7c504765101d3a0c4f7d75101dc6",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "baseline_ordinary_offsets_fixed": [],
+      "new_ordinary_offsets": [],
+      "normalized_changed_offsets": [],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -745,7 +745,7 @@\n \n             case ECL_VM_SPAWN_THREAD_WITH_ID:\n             {\n-                const unsigned int operandIndex =\n+                const int operandIndex =\n                     static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;\n                 host->SpawnThread(\n                     ReadIntValue(1, OperandInt(current, operandIndex)), 1);\n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-signed-index/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "c2a59f249b1dafd537fdaf51b640ecee064f34ecc5a1dd94d8ac3e30fe21230f",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "24766d5b59d34691896e28cf7852872b163e1b1e5f7df1a3048d3fcdeb805a83",
+      "pdb_guid": "17c9af24b0263e43952f953cfd0498ed",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "spawn-word-pointer",
+      "candidate_source_sha256": "a00139606350b8457ed4ad87c2ef97cd6b4fb767eca1364a965c89d32843d85e",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 31,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "0e1fe8f6b2ce77e456d823c7023abcbcb4ffaf81b34ff40bef141bac5f5deff4",
+      "baseline_ordinary_offsets_fixed": [],
+      "new_ordinary_offsets": [
+        "0xE3",
+        "0xE6",
+        "0xE9",
+        "0xED"
+      ],
+      "normalized_changed_offsets": [
+        "0xE3",
+        "0xE6",
+        "0xE9",
+        "0xEC",
+        "0xED",
+        "0xF1"
+      ],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -747,8 +747,10 @@\n             {\n                 const unsigned int operandIndex =\n                     static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;\n+                const int *const argumentWords =\n+                    reinterpret_cast<const int *>(current->operands);\n                 host->SpawnThread(\n-                    ReadIntValue(1, OperandInt(current, operandIndex)), 1);\n+                    ReadIntValue(1, argumentWords[operandIndex]), 1);\n                 break;\n             }\n \n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-word-pointer/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "23a278e55ecb324518c5a83c71112dc0bf934f38df950fdeaea57d8cd0dc9201",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "6a98fb570ff74959890b9fe35b527f80e72093a518f19263cdafe9c0b51d8602",
+      "pdb_guid": "37949631c442874aa86eeb79186df729",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "5c5bdbe085e405510c363c83b516d8ac45fec6394285db17659b299f72b47738",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "spawn-live-cursor",
+      "candidate_source_sha256": "986ae6da690452ebaf1470745325bec5ac41e55b4f89739f8dbb6bf85ef69a52",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "baseline_ordinary_offsets_fixed": [],
+      "new_ordinary_offsets": [],
+      "normalized_changed_offsets": [],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -748,7 +748,7 @@\n                 const unsigned int operandIndex =\n                     static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;\n                 host->SpawnThread(\n-                    ReadIntValue(1, OperandInt(current, operandIndex)), 1);\n+                    ReadIntValue(1, OperandInt(*instructionCursor, operandIndex)), 1);\n                 break;\n             }\n \n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-live-cursor/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "f947260e374ed43421981a06c91c5c4e756a7470e1ad31fa1ed2be2f89aecbf7",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "af6864868cb3f97d8d921f1cf7c2426566ed1d7f885585ffc3f2c693604b116e",
+      "pdb_guid": "ade93bb4d8110140a2213d8014c0f652",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "spawn-struct-word-index",
+      "candidate_source_sha256": "607e163c50ee1e6615b87f82ca482b889e6c9ed20df619e939e593e35d9bcf7c",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 31,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "0e1fe8f6b2ce77e456d823c7023abcbcb4ffaf81b34ff40bef141bac5f5deff4",
+      "baseline_ordinary_offsets_fixed": [],
+      "new_ordinary_offsets": [
+        "0xE3",
+        "0xE6",
+        "0xE9",
+        "0xED"
+      ],
+      "normalized_changed_offsets": [
+        "0xE3",
+        "0xE6",
+        "0xE9",
+        "0xEC",
+        "0xED",
+        "0xF1"
+      ],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -748,7 +748,7 @@\n                 const unsigned int operandIndex =\n                     static_cast<unsigned int>(OperandInt(current, 0) + 4) >> 2;\n                 host->SpawnThread(\n-                    ReadIntValue(1, OperandInt(current, operandIndex)), 1);\n+                    ReadIntValue(1, reinterpret_cast<const int *>(current)[operandIndex + 4]), 1);\n                 break;\n             }\n \n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-struct-word-index/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "247bd09dd46258a93b8190c69d0c1205e9813c241a6e7d749b3b096d5092fcd7",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "476c3f581395c2b6a2cc2c06d159ffedf85bd0c6c5bb345791962431a333dabe",
+      "pdb_guid": "b95548e4f6127d4e99de7ef9dc9ac276",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "5c5bdbe085e405510c363c83b516d8ac45fec6394285db17659b299f72b47738",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "shared-thread-node",
+      "candidate_source_sha256": "6573214f825717dab532e20c19e4c94060b17c9277cdd69a46932994c34f16e3",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "bb67ea405380afb4146a4d98c9f8a4ab1d1a178222c93defad52e2d5b1689066",
+      "baseline_ordinary_offsets_fixed": [
+        "0x146E"
+      ],
+      "new_ordinary_offsets": [
+        "0xAF"
+      ],
+      "normalized_changed_offsets": [
+        "0xAF",
+        "0x146E"
+      ],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            EclVmThreadNode *thread;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -754,7 +755,7 @@\n \n             case ECL_VM_STOP_THREAD:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->instruction = NULL;\n                 break;\n@@ -762,7 +763,7 @@\n \n             case ECL_VM_SET_THREAD_FLAG:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->flags |= 1;\n                 break;\n@@ -770,7 +771,7 @@\n \n             case ECL_VM_CLEAR_THREAD_FLAG:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->flags &= ~1U;\n                 break;\n@@ -778,7 +779,7 @@\n \n             case ECL_VM_SET_THREAD_CONTROL:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                 {\n                     EclVmContext *const threadContext = thread->context;\n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-node/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "4f59a4fee253a73841e7c3c6a8aa45e6616704a82b0b060179ef62e35c2f0ade",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "729829389825f56aace0f07c52e798bf8f91b1ab747f7b0fdcaf485bc6cbf7a6",
+      "pdb_guid": "7c358357a59cf444b297dd3a13c94d15",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "1eb5ab85481afb77692f8121e3e5613a9edbb1cb19503d961fc3f0dc7f1f203a",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "shared-thread-context",
+      "candidate_source_sha256": "f5ac2452e11a3bae77b2fc2801e50a72a851c15c6ce149cdbd64dbd0a5b8c829",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "baseline_ordinary_offsets_fixed": [],
+      "new_ordinary_offsets": [],
+      "normalized_changed_offsets": [],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            EclVmContext *threadContext;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -756,32 +757,41 @@\n             {\n                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n-                    thread->context->instruction = NULL;\n+                {\n+                    threadContext = thread->context;\n+                    threadContext->instruction = NULL;\n+                }\n                 break;\n             }\n \n             case ECL_VM_SET_THREAD_FLAG:\n-            {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n-                if (thread != NULL)\n-                    thread->context->flags |= 1;\n-                break;\n-            }\n-\n-            case ECL_VM_CLEAR_THREAD_FLAG:\n-            {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n-                if (thread != NULL)\n-                    thread->context->flags &= ~1U;\n-                break;\n-            }\n-\n-            case ECL_VM_SET_THREAD_CONTROL:\n             {\n                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                 {\n-                    EclVmContext *const threadContext = thread->context;\n+                    threadContext = thread->context;\n+                    threadContext->flags |= 1;\n+                }\n+                break;\n+            }\n+\n+            case ECL_VM_CLEAR_THREAD_FLAG:\n+            {\n+                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                if (thread != NULL)\n+                {\n+                    threadContext = thread->context;\n+                    threadContext->flags &= ~1U;\n+                }\n+                break;\n+            }\n+\n+            case ECL_VM_SET_THREAD_CONTROL:\n+            {\n+                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                if (thread != NULL)\n+                {\n+                    threadContext = thread->context;\n                     const int control = ReadInt(1);\n                     threadContext->threadControl = control;\n                 }\n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-context/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "734316c1bc7938612935a9acb9cf685f64acdc21c94747db7a4ae07106815c4a",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "847dd1d665ffc4e13660ec63f4e43e1f0993db263dfbeaa796af14e9ab65fd4f",
+      "pdb_guid": "5e542933b4970b4691d8b8a76e0ad81c",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "shared-thread-both",
+      "candidate_source_sha256": "cd617bd6dd93926982aad8fb3c0ffd0ef5f424714dec0ea7802e80c24b2a3810",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "bb67ea405380afb4146a4d98c9f8a4ab1d1a178222c93defad52e2d5b1689066",
+      "baseline_ordinary_offsets_fixed": [
+        "0x146E"
+      ],
+      "new_ordinary_offsets": [
+        "0xAF"
+      ],
+      "normalized_changed_offsets": [
+        "0xAF",
+        "0x146E"
+      ],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,8 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            EclVmThreadNode *thread;\n+            EclVmContext *threadContext;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -754,34 +756,43 @@\n \n             case ECL_VM_STOP_THREAD:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n-                if (thread != NULL)\n-                    thread->context->instruction = NULL;\n-                break;\n-            }\n-\n-            case ECL_VM_SET_THREAD_FLAG:\n-            {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n-                if (thread != NULL)\n-                    thread->context->flags |= 1;\n-                break;\n-            }\n-\n-            case ECL_VM_CLEAR_THREAD_FLAG:\n-            {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n-                if (thread != NULL)\n-                    thread->context->flags &= ~1U;\n-                break;\n-            }\n-\n-            case ECL_VM_SET_THREAD_CONTROL:\n-            {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                 {\n-                    EclVmContext *const threadContext = thread->context;\n+                    threadContext = thread->context;\n+                    threadContext->instruction = NULL;\n+                }\n+                break;\n+            }\n+\n+            case ECL_VM_SET_THREAD_FLAG:\n+            {\n+                thread = host->FindThread(ReadInt(0));\n+                if (thread != NULL)\n+                {\n+                    threadContext = thread->context;\n+                    threadContext->flags |= 1;\n+                }\n+                break;\n+            }\n+\n+            case ECL_VM_CLEAR_THREAD_FLAG:\n+            {\n+                thread = host->FindThread(ReadInt(0));\n+                if (thread != NULL)\n+                {\n+                    threadContext = thread->context;\n+                    threadContext->flags &= ~1U;\n+                }\n+                break;\n+            }\n+\n+            case ECL_VM_SET_THREAD_CONTROL:\n+            {\n+                thread = host->FindThread(ReadInt(0));\n+                if (thread != NULL)\n+                {\n+                    threadContext = thread->context;\n                     const int control = ReadInt(1);\n                     threadContext->threadControl = control;\n                 }\n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-both/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "9903fe4592edf1e2ba9e0c38105cd44ab4d2a1fb48591da68556c9fb3e69a676",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "ede4f0341af37896dadaf41f9dc63c667e76d17ba89cedba476cd2fd139a9ef0",
+      "pdb_guid": "40b625748865794c9bc6a9c84526cefb",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "1eb5ab85481afb77692f8121e3e5613a9edbb1cb19503d961fc3f0dc7f1f203a",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "stop-context-reference",
+      "candidate_source_sha256": "9bea97e04bdc345a4744da25189ff946482450c0c151d3e9a2d727b2677382a3",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "baseline_ordinary_offsets_fixed": [],
+      "new_ordinary_offsets": [],
+      "normalized_changed_offsets": [],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -756,7 +756,10 @@\n             {\n                 EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n-                    thread->context->instruction = NULL;\n+                {\n+                    EclVmContext &stoppedContext = *thread->context;\n+                    stoppedContext.instruction = NULL;\n+                }\n                 break;\n             }\n \n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/stop-context-reference/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "f88e8d1ef4940f4c350dc05b5d3882cd96a90ee8a3a94701b51438071120e03a",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "f8bc52dcacf7de224a03aad78fa6976a0e409bc3814099a893e23a1117487b8a",
+      "pdb_guid": "87a4f7236f2c3f409cb064e14a0a5939",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "shared-thread-leaves",
+      "candidate_source_sha256": "f96972f664c7bf34e84c072389499b92229868827e12b6436579d791e215a9dc",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "bb67ea405380afb4146a4d98c9f8a4ab1d1a178222c93defad52e2d5b1689066",
+      "baseline_ordinary_offsets_fixed": [
+        "0x146E"
+      ],
+      "new_ordinary_offsets": [
+        "0xAF"
+      ],
+      "normalized_changed_offsets": [
+        "0xAF",
+        "0x146E"
+      ],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            EclVmThreadNode *thread;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -754,7 +755,7 @@\n \n             case ECL_VM_STOP_THREAD:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->instruction = NULL;\n                 break;\n@@ -762,7 +763,7 @@\n \n             case ECL_VM_SET_THREAD_FLAG:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->flags |= 1;\n                 break;\n@@ -770,7 +771,7 @@\n \n             case ECL_VM_CLEAR_THREAD_FLAG:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->flags &= ~1U;\n                 break;\n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-leaves/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "f6e06e2212800599157ee74c36214952df47fd1a2884fd41d4afe7fc28ba3615",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "9f6e263f9aceb25e36e50cc9f048d2c8ad5090474a2eeb43a86bf3362bffd8e3",
+      "pdb_guid": "c6f1788f55728f4780ca5f3e552c398a",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "1eb5ab85481afb77692f8121e3e5613a9edbb1cb19503d961fc3f0dc7f1f203a",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "shared-thread-flags",
+      "candidate_source_sha256": "71ede20b9db4918a82a2bf0e023d0515939b0541f1a4311620cb4ba464f2b006",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "bb67ea405380afb4146a4d98c9f8a4ab1d1a178222c93defad52e2d5b1689066",
+      "baseline_ordinary_offsets_fixed": [
+        "0x146E"
+      ],
+      "new_ordinary_offsets": [
+        "0xAF"
+      ],
+      "normalized_changed_offsets": [
+        "0xAF",
+        "0x146E"
+      ],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            EclVmThreadNode *thread;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -762,7 +763,7 @@\n \n             case ECL_VM_SET_THREAD_FLAG:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->flags |= 1;\n                 break;\n@@ -770,7 +771,7 @@\n \n             case ECL_VM_CLEAR_THREAD_FLAG:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->flags &= ~1U;\n                 break;\n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-flags/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "97a7d3e04ac1eb8c92815f79c1b87586215f5c077b9a7d1a8eeebae2d7389593",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "d442575f2451b88702456f98d0df494772edff4b8fb9b13d20bfdf8c9f5a6daa",
+      "pdb_guid": "b24d1b07c67515499800b82449763345",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "1eb5ab85481afb77692f8121e3e5613a9edbb1cb19503d961fc3f0dc7f1f203a",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    },
+    {
+      "label": "shared-thread-stop-control",
+      "candidate_source_sha256": "bd5360131f09774a079000c99e33e76c23112b5235baa13e6bfa99d17a27593c",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "56fe1a372747fb809f7b186a856e4411905244bcfb9a2b52d43a19ac10070285",
+          "support-01-AnmManager.ltcg.obj": "d1a705177c7bd396f1ce5289fbaaf157b7b41f03a6b741346838c0d376414867",
+          "support-02-AnmVmCreate.ltcg.obj": "f8b6cfc142b390f495e02762d3d3f76a1fa56560656c6fb68db1ea30a1937a0a",
+          "support-03-EnemyLaser.ltcg.obj": "dc5e797ef546f2236753a23842142eff43669791b96b0047776837dc43fc4c81",
+          "support-04-Enemy.ltcg.obj": "e9593aba499893b258459762a9387d6c6f8ee6d44c9ea7fd220e0b7cf0d4e6ad",
+          "support-05-AnmVmId.ltcg.obj": "26b721015fd24781c51450863d4574fa852e57e44d851c9c7a2649392a9d182a",
+          "support-06-RandomMath.ltcg.obj": "d1e4528fdaef82b9369680d124305dd6cfb48bab77a49ce6c73d9f28c6fe9ca1",
+          "support-07-AnmInt3Scale.ltcg.obj": "f4280c1cab92e85622e3c16375a52b52ad59ed8d63f7776e8f53f3298d9013e0",
+          "support-08-ItemManager.ltcg.obj": "edefb139212c5980198aeb82dcb1e86c22c26b522adbbe3332de5fade0dfa58a",
+          "link-anchors.obj": "0fd77db2698fd28cd60d16d46d155e0613c975c0dcceb04a8951acbbf0a12904",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118,
+        "all_exact": true
+      },
+      "target_replayed_run_sha256": "bb67ea405380afb4146a4d98c9f8a4ab1d1a178222c93defad52e2d5b1689066",
+      "baseline_ordinary_offsets_fixed": [
+        "0x146E"
+      ],
+      "new_ordinary_offsets": [
+        "0xAF"
+      ],
+      "normalized_changed_offsets": [
+        "0xAF",
+        "0x146E"
+      ],
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            EclVmThreadNode *thread;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -754,7 +755,7 @@\n \n             case ECL_VM_STOP_THREAD:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                     thread->context->instruction = NULL;\n                 break;\n@@ -778,7 +779,7 @@\n \n             case ECL_VM_SET_THREAD_CONTROL:\n             {\n-                EclVmThreadNode *thread = host->FindThread(ReadInt(0));\n+                thread = host->FindThread(ReadInt(0));\n                 if (thread != NULL)\n                 {\n                     EclVmContext *const threadContext = thread->context;\n",
+      "private_source_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-stop-control/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "86d238d2fd0d1bfbbbd110872a9bf4f7bb17166c1da7d430816d1d18bed99536",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      },
+      "native_image_sha256": "e2dd724349e651fa5832a4112eec29597e0df3f7cde996677d1dafd1fe5de968",
+      "pdb_guid": "704b4d2202cd564d83297178cee4a7e1",
+      "pdb_age": 1,
+      "large_raw_body_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "1eb5ab85481afb77692f8121e3e5613a9edbb1cb19503d961fc3f0dc7f1f203a",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      }
+    }
+  ],
+  "history_correction": {
+    "scope": "Prepared/unexecuted statements applied only to the old thread-expression campaign, not all earlier work.",
+    "older_executed_proofs": [
+      "docs/evidence/ecl-run-disabled-trace/residual-controls.json: thread-context-local",
+      "docs/evidence/ecl-current-dependencies/README.md: explicit StopThread context local retained26 in its two-TU context"
+    ],
+    "no_fresh_score_for_old_source_contexts": true
+  },
+  "adjacent_hypothesis_search": {
+    "scope": "Thread/async/SpawnThread/FindThread identifiers in selected TH08 EclRun.cpp/Low, TH09 EclRunControl and TH095 ecl/EclRun.cpp/Low",
+    "result": "No analogous thread operation identified in that limited search; no adjacent-game fact imported.",
+    "not_an_exhaustive_behavior_claim": true
+  },
+  "unknowns": [
+    "original source spelling, variable lifetimes and physical TU",
+    "cause of target register/address choices",
+    "whole Windows i386 product and runtime closure"
+  ],
+  "validation": {
+    "state": "passed; no maintained game/test/fixture/recipe change",
+    "native_controls": 11,
+    "full_cold_builds_in_this_batch": 0,
+    "full_ci": {
+      "returncode": 0,
+      "checks": 107,
+      "log_sha256": "630063f5c7397a421aadafe02564cae9757622e2c1b7263e7c3eb33c7f3add6e",
+      "frozen_code_test_paths": 351,
+      "frozen_manifest_sha256": "909e4ca5811f97cdfe0d602589e157526d892f2890959f0c604de3f76a2a6ce7",
+      "unchanged_after_ci": true
+    },
+    "final_scope": "All eleven complete Run/callee and35-helper comparisons passed with recorded ordinary differences; maintained baseline Run repeats27 via unmodified diagnostic. Source32/native15/canonical recipe and9 unrelated D3D pins verified unchanged.",
+    "phase": "exact reconstruction active; native product/runtime open; semantic and port not started",
+    "final_gates": {
+      "target_identity": "pass",
+      "toolchain --execute": "pass at preflight",
+      "toolchain --check": "pass",
+      "tracking --require-target": "pass",
+      "progress.py": "generated; counts/artifacts unchanged; CI --check pass",
+      "documentation_hygiene": "pass",
+      "canonical_match_graph": "pass1238 units",
+      "whole_build_graph": "pass as explicitly open skeleton",
+      "whitespace": "pass"
+    }
+  },
+  "cleanup": {
+    "state": "complete",
+    "logical_file_bytes_removed": 14115654,
+    "removed_paths": [
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-signed-index",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-signed-index/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-word-pointer",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-word-pointer/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-live-cursor",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-live-cursor/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-struct-word-index",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/spawn-struct-word-index/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-node",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-node/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-context",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-context/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-both",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-both/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/stop-context-reference",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/stop-context-reference/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-leaves",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-leaves/EclVm.cpp",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-stop-control",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-stop-control/EclVm.cpp",
+      "build/host-tests/gui-message-run-ci",
+      "build/host-tests/gui-message-lifecycle-ci",
+      "build/host-tests/transition-effect-ci",
+      "build/host-tests/transition-effect-eol-ci",
+      ".analysis/gpt-6.1-sol/ecl-thread-registers-20261022/__pycache__"
+    ],
+    "retained": [
+      "build/match-linked/EnemyItemDrops",
+      "build/gpt-6.1-sol/ecl-thread-registers-20261022/shared-thread-flags",
+      "exact source patches, strict reports and reproduction driver",
+      "earlier raw-NEG historical baseline snapshot and its own scoped carriers"
+    ],
+    "unclassified_or_unrelated_state": "preserved"
+  },
+  "ghidra": {
+    "mode": "readOnly/noanalysis/rollback; maxcpu1; heap768MiB",
+    "full_mapped_bytes": 412289,
+    "full_mapped_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "before_after": "pass",
+    "log_sha256": "8e72060fa8b1305cffe234ca38c141442bb3675cd45dee1390d81fe1129a74a6",
+    "result_sha256": "9eca9837ef3f8d2834e57c83ca1cb26747f3826691f25de982364b9408610fc8"
+  },
+  "reproduction_driver_sha256": "9ca3e12b14b19ec5e4001079236c4827f6d77dfa17dfa782f0c8a9f80b478ce7"
+}

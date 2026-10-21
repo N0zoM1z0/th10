@@ -4677,3 +4677,33 @@ Host contracts exercise17 literal payloads/34 invocations, sanitizers and three
 strict functional controls using the actual case/union and an explicit stack
 seam. Host pointer width, native layout, stack conversion and runtime remain
 separate. [Full evidence and limits](evidence/ecl-raw-negation/README.md).
+
+
+## ECL thread operands and coupled SIB allocation (2026-10-22)
+
+Eleven private controls use the hash-current ten-TU graph after bd9be46, each
+compiling one ECL /GL object and reusing nine verified game objects. Every full
+link retains35 complete guards4424/all118 and Run7020/all189/62locals/full171
+callee. No maintained source, recipe or ledger changes; no exact credit.
+Signed nonnegative operand index, live cursor lookup, shared context pointer
+and a stopped-context reference preserve all three complete raw large bodies.
+Named operand-word pointer and direct instruction-word indexing produce the
+same31-difference Run: four new opcode10 differences, none repaired. Target
+still uses ECX index/EDX raw ID and pushes outer1 before ReadIntValue; host is
+reloaded after it. Original source types/expression spelling stay unknown.
+
+Sharing the thread-node local across four cases, with/without shared contexts,
+or across only the leaf trio, flag pair or stop/control pair gives the same
+complete target-replayed Run. Each fixes SIB+146E and reverses RETURN SIB+AF,
+keeping27 ordinary differences. They differ from the baseline only at these two
+replayed bytes; equal scores are not raw equality. All eleven retain raw ANM9964
+and Enemy14352 bodies. No source is adopted from this coupled allocation route.
+Private source routing changes only two path literals and ROOT discovery;
+core comparator, canonical bindings and every field/table/callee check remain.
+Actual-source baseline uses the unmodified maintained diagnostic.
+
+The prior prepared/unexecuted StopThread-context statement was campaign-local,
+not a complete history audit. Earlier residual/current-dependency packs already
+executed a standalone pointer local; the latter retained historical two-TU26.
+Do not repeat it as a new untested idea or promote that old result to current
+source. [Thread-register evidence](evidence/ecl-thread-register-controls/README.md).

@@ -104,7 +104,10 @@ Only18 raw bytes EF..100 change; all later Run bytes and both other complete
 large native owners stay equal. Naming only the unsigned raw ID preserves the
 nested call and all three complete native bodies, including all7020 target-replayed
 Run bytes;27 differences remain. No maintained source is adopted. Separate
-spawn-only and stop-context-only forms remain prepared/unexecuted. The native
+spawn-only and stop-context-only forms remain prepared/unexecuted in that
+thread-expression campaign. Older standalone context-pointer controls did run;
+see the later [history correction and thread controls](../ecl-thread-register-controls/README.md).
+The native
 summary records exact source/artifact identities and the unchanged31 current
 inputs/27 final artifacts. The same101-check CI result remains applicable to
 unchanged execution inputs; updated documentation is checked separately.
