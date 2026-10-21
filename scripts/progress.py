@@ -136,7 +136,9 @@ inventory is provisional; reviewed boundary and origin states are counted below.
 The tracked-candidate denominator remains provisional because unresolved `.text`
 gaps can contain code, data, thunks, tables, and padding. While origin review,
 indeterminate attribution, or inventory closure remain pending, the authored
-exact denominator is unknown. A mapped name, maintained source, successful
+exact denominator for the complete game is unknown. The SVG bar shows exact
+bytes divided by the currently classified authored bytes, with that inventory
+explicitly marked provisional. A mapped name, maintained source, successful
 compilation, or Ghidra similarity
 does not contribute to the exact totals.
 """
@@ -147,30 +149,21 @@ def render_svg(values: dict[str, int]) -> str:
     reviewed = values["review_completed"]
     review_pct = 100 * reviewed / total if total else 0.0
     review_width = 512 * review_pct / 100
-    if values["review_pending"] or values["indeterminate"]:
-        exact_label = "denominator pending"
-        exact_width = 0.0
-        exact_detail = (
-            f"{values['authored_matches']:,} authored / {values['matches']:,} exact · "
-            f"{values['exact_bytes']:,} codegen bytes"
-        )
-        aria_exact = "authored exact denominator pending"
-    else:
-        exact_pct = (
-            100 * values["authored_exact_bytes"] / values["authored_bytes"]
-            if values["authored_bytes"] else 0.0
-        )
-        exact_label = f"{exact_pct:.2f}%"
-        exact_width = 512 * exact_pct / 100
-        exact_detail = (
-            f"{values['authored_matches']:,} / {values['authored']:,} authored · "
-            f"{values['authored_exact_bytes']:,} / {values['authored_bytes']:,} bytes"
-        )
-        aria_exact = f"authored {exact_pct:.2f}% exact bytes"
+    exact_pct = (
+        100 * values["authored_exact_bytes"] / values["authored_bytes"]
+        if values["authored_bytes"] else 0.0
+    )
+    exact_label = f"{exact_pct:.2f}% · provisional"
+    exact_width = 512 * exact_pct / 100
+    exact_detail = (
+        f"{values['authored_matches']:,} / {values['authored']:,} functions · "
+        f"{values['authored_exact_bytes']:,} / {values['authored_bytes']:,} bytes"
+    )
+    aria_exact = f"currently classified authored bytes {exact_pct:.2f}% exact, provisional inventory"
     return f'''<svg xmlns="http://www.w3.org/2000/svg" width="560" height="176" role="img" aria-label="TH10 reconstruction progress: {aria_exact}, origin and boundary review {review_pct:.2f}%">
   <rect width="560" height="176" rx="8" fill="#1f2335"/>
   <text x="24" y="28" fill="#f4f4f5" font-family="sans-serif" font-size="16" font-weight="600">TH10 reconstruction progress</text>
-  <text x="24" y="52" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Authored exact</text>
+  <text x="24" y="52" fill="#f4f4f5" font-family="sans-serif" font-size="13" font-weight="600">Authored exact bytes</text>
   <text x="536" y="52" fill="#f4f4f5" text-anchor="end" font-family="monospace" font-size="13">{exact_label}</text>
   <rect x="24" y="60" width="512" height="12" rx="6" fill="#3b4058"/>
   <rect x="24" y="60" width="{exact_width:.2f}" height="12" rx="6" fill="#9b6de3"/>

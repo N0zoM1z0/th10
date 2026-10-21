@@ -104,6 +104,7 @@ def main() -> int:
         run("Validate enemy item scatter numeric sequence", [sys.executable, "scripts/test-enemy-item-scatter.py"])
         run("Validate enemy death service order and live storage", [sys.executable, "scripts/test-enemy-finalize-death.py"])
         run("Validate bullet cancel transition and timer order", [sys.executable, "scripts/test-enemy-cancel-record.py"])
+        run("Validate circle cancellation and unordered comparisons", [sys.executable, "scripts/test-enemy-circle-cancel.py"])
         run("Validate player damage lifetimes", [sys.executable, "scripts/test-player-damage-lifetime.py"])
         run("Validate player damage prerequisites", [sys.executable, "scripts/test-player-damage-prerequisites.py"])
         run("Validate auxiliary player damage", [sys.executable, "scripts/test-player-auxiliary-damage.py"])

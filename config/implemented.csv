@@ -1082,3 +1082,4 @@ MainTakeScreenshot
 MainReleaseAnmSurfaces
 MainServiceAnmScreenshots
 MainScreenshotWorker
+EnemyCancelManagerView::CancelBulletPattern

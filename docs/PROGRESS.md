@@ -14,19 +14,21 @@ inventory is provisional; reviewed boundary and origin states are counted below.
 | Confirmed authored code bytes | 273,576 |
 | Classified exclusions | 518 |
 | Reviewed, origin indeterminate | 523 |
-| Source-present mappings | 1,084 |
-| Source-present with authored origin | 601 |
+| Source-present mappings | 1,085 |
+| Source-present with authored origin | 602 |
 | Source-present origin review pending | 0 |
 | Source-present origin indeterminate | 483 |
 | Authored source-present exact backlog | 209 |
-| Canonical exact functions | 1,233 |
-| Canonical exact codegen bytes | 138,336 |
-| Canonical exact functions with authored origin | 392 |
-| Canonical exact authored bytes | 71,828 |
+| Canonical exact functions | 1,234 |
+| Canonical exact codegen bytes | 138,596 |
+| Canonical exact functions with authored origin | 393 |
+| Canonical exact authored bytes | 72,088 |
 
 The tracked-candidate denominator remains provisional because unresolved `.text`
 gaps can contain code, data, thunks, tables, and padding. While origin review,
 indeterminate attribution, or inventory closure remain pending, the authored
-exact denominator is unknown. A mapped name, maintained source, successful
+exact denominator for the complete game is unknown. The SVG bar shows exact
+bytes divided by the currently classified authored bytes, with that inventory
+explicitly marked provisional. A mapped name, maintained source, successful
 compilation, or Ghidra similarity
 does not contribute to the exact totals.

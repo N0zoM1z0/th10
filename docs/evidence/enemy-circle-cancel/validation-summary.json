@@ -1,0 +1,199 @@
+{
+  "state": "validated",
+  "focused": {
+    "canonical_units": 7,
+    "canonical_bytes": 457,
+    "canonical_groups": 2,
+    "independent_complete_colds": 2,
+    "owners_per_cold": 35,
+    "bytes_per_cold": 4424,
+    "fields_per_cold": 118,
+    "source_controls_executed": 4,
+    "controls_adopted": 1,
+    "negative_controls_rejected": 4,
+    "host_scenarios": 6480,
+    "host_strict_mutants": 10,
+    "new_exact_unit_bytes": 260,
+    "existing_coff_replayed_bytes": 197
+  },
+  "cleanup": {
+    "scope": "Only inspected terminal controls and host outputs, plus one unexecuted private source copy; accepted colds and complete279-byte failure retained",
+    "directories": 6,
+    "bytes": 6719057,
+    "unrelated_d3d": "untouched"
+  },
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "standard_ci_invocations": 1,
+  "gates": [
+    {
+      "label": "focused",
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "enemy-cancel-bullet-pattern",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.38,
+      "log": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/final-focused.json",
+      "log_sha256": "f3ce5d20b505e8d4fc04ac1ac5641e2f0f0b92fa258bd8853e009e20bb19d79d"
+    },
+    {
+      "label": "run",
+      "command": [
+        "scripts/repo-python",
+        "scripts/diagnose-ecl-run-native.py",
+        "--unit",
+        "enemy-cancel-bullet-pattern",
+        "--artifact-dir",
+        "build/match-linked/EnemyItemDrops"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "seconds": 0.624,
+      "log": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/final-run.json",
+      "log_sha256": "2f9317e00dd4db624f87ce74d96dd90bf2804c3f4c5c664dde0a8d4dd362a72d"
+    },
+    {
+      "label": "toolchain",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.161,
+      "log": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/final-toolchain.log",
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "label": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.458,
+      "log": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/final-tracking.log",
+      "log_sha256": "18e9c980e4487a79dbf87d871e51bdc2df019f9285bbdd7b3d2474a387e4d7d7"
+    },
+    {
+      "label": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.144,
+      "log": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/final-progress.log",
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "label": "ci",
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 424.08,
+      "log": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/final-ci.log",
+      "log_sha256": "7d9c96b851ccc37f19658944c272b990a7e0c753ff540097d684f180b92782d5",
+      "steps": 104
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.047,
+      "log": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/final-diff.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "affected-coff",
+      "command": [
+        "scripts/repo-python",
+        "scripts/replay-exact-units.py",
+        "--unit",
+        "enemy-set-chapter",
+        "--unit",
+        "enemy-set-laser-position",
+        "--unit",
+        "enemy-find-laser",
+        "--unit",
+        "enemy-configure-interrupt",
+        "--unit",
+        "enemy-wait-for-effect",
+        "--unit",
+        "enemy-apply-bullet-clear",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "log": ".analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/affected-coff-replay.json",
+      "log_sha256": "27206d4d612cd090f823555e6c6031e490fe3d4078cdc08758455482f459c06f"
+    }
+  ],
+  "native_summary_sha256": "99c4c0a8b0ea0e25433713d8a08667414876fbdc61bb1274e0cd848089c51cbd",
+  "canonical_reconstruction": {
+    "authored_exact_functions": 393,
+    "authored_exact_bytes": 72088,
+    "canonical_exact_functions": 1234,
+    "new_authored_bytes": 260,
+    "new_source_mappings": 1,
+    "denominator_change": 0
+  },
+  "standard_ci_checks": 104,
+  "pins_before": {
+    "raw_inputs": 32,
+    "native_artifacts": 30,
+    "result": "all unchanged"
+  },
+  "pins_after": {
+    "raw_inputs": 32,
+    "native_artifacts": 30,
+    "result": "all unchanged"
+  },
+  "final_gates_receipt_sha256": "b7f9163180d26d39d5668541b64061483579ba719e16d9f6923151cca8a81cef",
+  "additional_affected_coff_replay": {
+    "artifact": "build/match/EnemyEclDispatcher.obj",
+    "sha256": "66929ab735faaab22161e550d08fe402be7d28391a32caca337c9dba7b5c3ab0",
+    "units": 6,
+    "bytes": 197,
+    "result": "exact",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc"
+    ],
+    "receipt_sha256": "27206d4d612cd090f823555e6c6031e490fe3d4078cdc08758455482f459c06f"
+  },
+  "pins_after_all_checks": {
+    "raw_inputs": 32,
+    "linked_artifacts": 30,
+    "additional_coff_artifacts": 1,
+    "result": "all current"
+  }
+}

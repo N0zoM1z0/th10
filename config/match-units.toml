@@ -23185,3 +23185,20 @@ symbol = "?EnemyCancelBulletRecord@@YAIPAE@Z"
 target_address = 4227120
 size = 199
 linkages = [{ "offset" = 41, "type" = "REL32", "symbol" = "?IsOutsidePlayfield@EnemyBulletPositionView@@QAEHMM@Z", "target" = 4228784 }, { "offset" = 82, "type" = "DIR32", "symbol" = "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A", "target" = 4683504 }, { "offset" = 103, "type" = "REL32", "symbol" = "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z", "target" = 4492720 }, { "offset" = 149, "type" = "DIR32", "symbol" = "?g_AnmGameSpeed@@3MA", "target" = 4681592 }]
+
+# Complete circle cancellation with target float3 storage and unordered branch.
+[units.enemy-cancel-bullet-pattern]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/AnmInt3Scale.cpp", "src/ItemManager.cpp"]
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+output_dir = "build/match-linked/EnemyItemDrops"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+functions = ["EnemyCancelManagerView::CancelBulletPattern"]
+symbol = "?CancelBulletPattern@EnemyCancelManagerView@@QAEIPBUPlayerFloat3@@MHH@Z"
+target_address = 4227328
+size = 260
+linkages = [{ "offset" = 137, "type" = "DIR32", "symbol" = "__real@3f000000", "target" = 4655884 }, { "offset" = 179, "type" = "REL32", "symbol" = "?EnemyCancelBulletRecord@@YAIPAE@Z", "target" = 4227120 }, { "offset" = 196, "type" = "REL32", "symbol" = "?IsOutsidePlayfield@EnemyBulletPositionView@@QAEHMM@Z", "target" = 4228784 }, { "offset" = 213, "type" = "DIR32", "symbol" = "?g_ItemManager@@3PAUItemManagerView@@A", "target" = 4683800 }, { "offset" = 232, "type" = "REL32", "symbol" = "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z", "target" = 4307712 }]

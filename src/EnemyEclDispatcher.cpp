@@ -8,12 +8,7 @@
 #include "EclVm.hpp"
 #include "Rng.hpp"
 #include "Gui.hpp"
-
-struct BulletSpawnDescriptorView;
-struct BulletManagerView
-{
-    int SpawnBulletPattern(BulletSpawnDescriptorView *descriptor);
-};
+#include "BulletManager.hpp"
 
 #include <math.h>
 #include <new>
@@ -427,30 +422,44 @@ __declspec(noinline) unsigned int EnemyCancelBulletRecord(
     return 1;
 }
 
+struct EnemyCircleDisplacementView : PlayerFloat3
+{
+    EnemyCircleDisplacementView(float xValue, float yValue, float zValue)
+    {
+        x = xValue;
+        y = yValue;
+        z = zValue;
+    }
+};
+
 __declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
     const PlayerFloat3 *position, float radius, int mode, int flags)
 {
-    unsigned char *bullet = bulletStorage;
+    BulletRuntimeView *bullet =
+        reinterpret_cast<BulletRuntimeView *>(bulletStorage);
     for (int remaining = 2000; remaining != 0;
-         --remaining, bullet += 0x7f0) {
-        short state = *reinterpret_cast<short *>(bullet + 0x446);
+         --remaining, ++bullet) {
+        short state = bullet->state;
         if (state == 0 || state == 3) {
             continue;
         }
-        if (flags != 0 && *reinterpret_cast<int *>(bullet + 4) != 0) {
+        if (flags != 0 && bullet->cancelBehavior != 0) {
             continue;
         }
 
-        EnemyBulletPositionView *bulletPosition =
-            reinterpret_cast<EnemyBulletPositionView *>(bullet + 0x3b4);
-        float dx = bulletPosition->x - position->x;
-        float dy = bulletPosition->y - position->y;
+        PlayerFloat3 displacement = EnemyCircleDisplacementView(
+            bullet->position.x - position->x,
+            bullet->position.y - position->y,
+            bullet->position.z - position->z);
         float effectiveRadius =
-            *reinterpret_cast<float *>(bullet + 0x3f0) *
-                g_EnemyCancelHalfScale +
+            bullet->collisionWidth *
+                0.5f +
             radius;
-        if (dx * dx + dy * dy <= effectiveRadius * effectiveRadius) {
-            EnemyCancelBulletRecord(bullet);
+        if (!(displacement.x * displacement.x +
+                displacement.y * displacement.y > effectiveRadius * effectiveRadius)) {
+            EnemyCancelBulletRecord(reinterpret_cast<unsigned char *>(bullet));
+            EnemyBulletPositionView *bulletPosition =
+                reinterpret_cast<EnemyBulletPositionView *>(&bullet->position);
             if (bulletPosition->IsOutsidePlayfield(2.0f, 2.0f) == 0 &&
                 mode != 0) {
                 g_ItemManager->Spawn(

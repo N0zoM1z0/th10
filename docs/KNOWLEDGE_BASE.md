@@ -4371,3 +4371,43 @@ Run/all189/62locals retains27 ordinary differences and exact171-byte callee.
 All three large goals stay active/nonexact. The current EnemyItemDrops cache
 is pinned by this new proof; older source/artifact pins for that path are
 historical. Authored exact becomes392/71828; all later phase gates remain open.
+
+
+### 2026-10-21: Circle cancellation preserves unordered and float3 storage
+
+[Circle-cancel evidence](evidence/enemy-circle-cancel/README.md) maps the
+existing reviewed authored408100..408203 owner and closes260/all5. Boundary,
+authored disposition and denominator do not change. Fresh local Ghidra sees
+five direct callers and full RET12 extent, followed by twelveCC. Target uses
+EAX manager, EBX point, three stack inputs,2000 rows from manager+60/stride7F0,
+state0/3 and optional cancelBehavior filtering. Full XYZ differences are stored
+and copied in frame18; distance uses only XY. TEST AH,5/JNP after x87 comparison
+lets unordered inputs follow cancellation. Old <= source excluded NaNs; negated
+> preserves target behavior. Cancel return is ignored; bounds margins2 are
+checked before mode and ItemManager::Spawn uses the post-cancel position/global.
+
+Comparison-only and an ordinary float3 subtraction remain215 bytes. A derived
+float3 value copied to its base preserves full storage but raw-byte traversal
+emits279/RET16. Actual BulletRuntimeView traversal plus literal0.5 recovers
+complete260/RET12 naturally. The real BulletManager header replaces a partial
+declaration; no barrier, asm, padding or forced-register source is used. The
+MIT reference suggests value shape only; original class/TU/profile/data owners
+remain unknown. Extra ordinary native constructor code has no target exact claim.
+
+Two independent full ten-TU GL/GS colds freeze32 equal raw inputs. Each passes
+35 complete owners4424/all118, new260 plus34 guards4164/all113. All5 fields bind
+independently to half470B0C, cancel408030, bounds4086B0, ItemManager slot477818
+and Spawn41BB00. Canonical cold2 selects new260, one group; final affected-source normal-COFF
+replay retains six existing helpers197 bytes under their original profile in
+one additional compile. Four strict
+negative controls reject wrong constant, copied ordinary status/pool bytes and
+complete279-byte extent; original target stays unchanged. The maintained-body
+live-object host projection passes6480 scenarios and ten intended-assertion
+mutants under sanitizers, without native ABI/layout/x87 or game-runtime claims.
+Complete mapped-text412289-byte identity stays unchanged before/after Ghidra.
+
+Current complete native ANM9964/Run7020 equal the previous bodies after verified
+field rewrites; Run remains27 ordinary differences. Dispatcher14464/14416 has
+frame2C4,19sentinels,42/108 target-sized groups and case gap650; no large owner
+receives exact credit. The SVG now displays exact bytes/current classified
+authored bytes with a provisional label, leaving complete-game inventory open.

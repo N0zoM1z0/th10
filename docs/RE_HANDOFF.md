@@ -41,43 +41,61 @@ fresh target and compiler evidence. The first bounded changes and measurements
 are recorded in [large-owner call order](evidence/large-owner-call-order/README.md).
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1776 reviewed
-candidates, 735 authored functions owning 273576 bytes, 1084 source mappings,
-1233 canonical exact functions overall. Authored exact is **392 functions,
-71828/273576 bytes (26.26%)**. The 209 mapped authored nonexact functions,
+candidates, 735 authored functions owning 273576 bytes, 1085 source mappings,
+1234 canonical exact functions overall. Authored exact is **393 functions,
+72088/273576 bytes (26.35%)**. The 209 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
-authored denominator is provisional.
+authored denominator is provisional. The SVG now visibly fills the authored
+bar from current classified exact bytes and labels the ratio provisional.
+The complete-game denominator remains unknown.
 
-The latest checkpoint closes EnemyCancelBulletRecord408030..4080F6:
-**199 new authored exact bytes/all4 fields**, without boundary, origin, source-map
-or denominator changes. Branch-local state3/animation1 transitions let VC7.1
-merge stores while keeping EBP/zero only on the screen path. The old200-byte
-source and a target-sized193/199 reversed-store control reject. Original class,
-annotation, physical TU and profile remain unknown. See
-[cancel-record proof](evidence/enemy-cancel-record-lifetimes/README.md).
+The latest checkpoint closes EnemyCancelManagerView::CancelBulletPattern at
+408100..408203: **260 new authored exact bytes/all5 fields**. This existing
+reviewed authored owner gains one source mapping; its boundary/disposition and
+denominator do not change. The old <= comparison excluded unordered inputs,
+unlike target TEST AH,5/JNP. Negated > restores that path. Ordinary derived/base
+float3 copying retains Z and the full frame18; traversing actual BulletRuntimeView
+with literal0.5 recovers EAX manager, EBX point and RET12. Four private source
+controls execute; only the typed record/vector is adopted. Original class/TU/
+profile/data ownership remain unknown. See
+[circle-cancel proof](evidence/enemy-circle-cancel/README.md).
 
-Two independent full ten-TU GL/GS colds freeze31 equal raw inputs and each pass
-34 complete owners4164/all113, including new199 and33 prior guards3965/all109.
-Canonical cold2 selects only new199, one shared build group; no full historical
-replay. The current carrier remains `build/match-linked/EnemyItemDrops`, pinned
-by this new proof. Independent cold1 is
-`build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1`.
-All three complete native large bodies are RAW-equal to their prior carrier
-and between both colds. Current Run7020/all189/62locals retains27 ordinary
-differences with its171-byte float guard exact. All three remain active/nonexact.
+Two independent full ten-TU GL/GS colds freeze32 equal recursive raw inputs
+(the real BulletManager.hpp adds one). Each passes35 complete owners4424/all118:
+new260 plus34 prior guards4164/all113. Canonical cold2 selects only new260,
+one shared group; no full historical replay. The current carrier remains
+`build/match-linked/EnemyItemDrops`, pinned by this new proof. Independent cold1:
+`build/gpt-6.1-sol/enemy-circle-cancel-20261021/maintained-cold1`.
+Both colds have identical raw complete circle/ANM/Run/dispatcher bodies.
+ANM9964 and Run7020 retain complete native equality to the preceding carrier
+after verified field rewrites. Current Run/all189/62locals stays27 ordinary
+differences,171-byte float guard exact. Dispatcher is now14464/14416, frame2C4,
+19sentinels,42/108 target-sized groups and absolute case gap650 (previous14468,
+40/108,gap652). Case-aligned matched comparable bytes2980/11152 are diagnostic
+only. All three original large owners remain active/nonexact.
 
-Fresh direct Ghidra observes seven direct calls and full199-byte body, followed
-by nineCC. Full mapped text is unchanged. Four native/template controls reject;
-288 logical live-object host scenarios and eight strict mutants pass under
-sanitizers. Five inspected terminal/generated directories are pruned/5087628
-bytes; accepted colds,193/199 and200-byte failures and copied-native control
-remain. Private recovery is
-`.analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/RECOVERY.md`.
-All103 standard CI checks pass in one invocation. Final199/all4, expected
-Run7020/27, toolchain/tracking/progress/docs/whitespace gates pass;31 raw inputs
-and30 retained native artifact pins remain current after CI. The tightened
-host classifier revalidates all8 mutants at their intended assertions; temporary
-outputs are automatically removed. Independent untracked D3D work is untouched;
-product/runtime/semantic/port gates stay open.
+Fresh direct Ghidra observes five direct calls and full260-byte body followed
+by twelveCC. Complete mapped-text identity is unchanged. Four strict native/
+template controls reject;6480 live-object host scenarios and ten intended-
+assertion mutants pass under sanitizers. Six inspected terminal/unexecuted
+owned directories are pruned/6719057 bytes; accepted colds,279-byte failure,
+source/producer/strict/guard reports and copied-native controls remain.
+Private recovery is
+`.analysis/gpt-6.1-sol/enemy-circle-cancel-20261021/RECOVERY.md`.
+All104 standard CI checks pass in one invocation. The six affected existing
+normal-COFF helpers pass197 bytes in one additional shared compile under their
+original profile. Total selected canonical replay7 units457 bytes/two groups;
+32 raw inputs,30 linked artifacts and one additional COFF object remain current.
+Final focused260/all5, expected Run7020/27 and standard toolchain/tracking/
+progress/docs/whitespace gates pass. Independent D3D
+work is untouched; native-product/runtime/semantic/port gates stay open.
+
+The preceding checkpoint closes EnemyCancelBulletRecord408030..4080F6,
+199/all4, with branch-local state/animation transitions. Its31-input source and
+mutable canonical carrier pins are now historical; its independent cold1 at
+`build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1`
+is retained. This prior body remains a complete199-byte guard in both current
+images. See [cancel-record proof](evidence/enemy-cancel-record-lifetimes/README.md).
 
 The preceding ECL diagnostic executes eight source/profile controls, adopts
 none, and retains27 current ordinary differences. Six controls preserve every
@@ -543,9 +561,9 @@ graph after any dependency changes before comparing scores.
 
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
-| ANM ExecuteScript43EE30/9964 | Current two full ten-TU cancel-record colds retain complete native9964-body raw equality; prior90/92 groups and gap2 remain through that equality | Nonexact. Registers, flag scheduling, intervals61(+1)/2(−1) and common tail remain open. No target exact credit from native equality. |
-| ECL Run44E1A0/7020 | Current full ten-TU cancel-record graph: complete7020/all189/62locals,6993 matched,171-byte float callee exact | Nonexact,27 ordinary differences. Historical separate two-TU26 is not current after Enemy source edits. Thread argument, SIB, stack-home and common-latch differences remain. [Current evidence](evidence/enemy-cancel-record-lifetimes/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Current two full ten-TU cancel-record colds retain complete native14468-body raw equality; frame2C4,181 selectors/108 groups and gap652 persist | Generic integer calls105/106; 1B4 third read shares a native1AA tail (three calls on every selected static return path). Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
+| ANM ExecuteScript43EE30/9964 | Current two full ten-TU circle-cancel colds have identical complete9964 bodies; equality to the preceding carrier requires verified field rewrites. Prior90/92 groups and gap2 persist through complete equality | Nonexact. Registers, flag scheduling, intervals61(+1)/2(−1) and common tail remain open. No target exact credit from native equality. |
+| ECL Run44E1A0/7020 | Current full ten-TU circle-cancel graph: complete7020/all189/62locals,6993 matched,171-byte float callee exact | Nonexact,27 ordinary differences. Historical separate two-TU26 is not current. Thread argument, SIB, stack-home and common-latch differences remain. [Current evidence](evidence/enemy-circle-cancel/README.md). |
+| Enemy DispatchEclInstruction40E770/14416 | Current two full ten-TU circle-cancel colds:14464/14416, frame2C4,19sentinels,181 selectors/108 groups in target order;42 target-sized groups, absolute gap650 | Nonexact. Instruction lifetime, storage, register scheduling and stack homes remain open. Historical105/106 integer-call counts and1B4/1AA shared-tail addresses have not been freshly counted here; do not use them as current missing-read evidence. No parent or case exact credit. |
 
 Old rejected controls are scoped observations, not proof that an API or source
 shape is correct. Require a concrete target hypothesis and compare corresponding
@@ -553,8 +571,8 @@ instructions; an unchanged unaligned score does not establish code neutrality.
 Gain new TH10 caller, lifetime, partition or profile evidence. Keep target
 observations, cross-game hypotheses, compiler observations and unknowns distinct.
 For the dispatcher, opcode1B4 already contains three genuine source integer
-reads. Fresh complete bounded CFG review finds exactly three generic ReadInt
-calls on every selected static return path in both images: native404A4C is
+reads. A preceding complete bounded CFG review found exactly three generic
+ReadInt calls on every selected static return path in those two images: native404A4C is
 physically inside1AA and shared by1B4; target41054F/410580/4105BE stay in1B4.
 Calls are assumed returning and predicates unconstrained; no argument/runtime
 equivalence is claimed. The earlier two-versus-three region count is layout,
@@ -568,8 +586,8 @@ or assume a new context fixes it without fresh target lifetime evidence.
 
 ```sh
 scripts/repo-python scripts/replay-exact-units.py \
-  --unit enemy-cancel-bullet-record --json
-scripts/repo-python scripts/test-enemy-cancel-record.py --mutations
+  --unit enemy-cancel-bullet-pattern --json
+scripts/repo-python scripts/test-enemy-circle-cancel.py --mutations
 scripts/repo-python scripts/report-anm-execute-table.py --check
 ```
 
@@ -603,7 +621,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the cancel-record proof; death-service/item-scatter/read-open/worker/RGB results retain
+Latest focused native results are in the circle-cancel proof; death-service/item-scatter/read-open/worker/RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -618,4 +636,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/enemy-cancel-record-lifetimes/validation-summary.json).
+[the current validation summary](evidence/enemy-circle-cancel/validation-summary.json).
