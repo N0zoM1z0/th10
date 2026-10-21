@@ -1,0 +1,143 @@
+{
+  "state": "validation passed; no maintained source adoption or exact credit",
+  "focused": {
+    "executed_controls": 8,
+    "adopted": 0,
+    "complete_7020_replay_equal_controls": 6,
+    "unsupported_controls": 2,
+    "helpers_per_control": 32,
+    "helper_bytes_per_control": 3874,
+    "helper_fields_per_control": 105,
+    "current_run": {
+      "size": 7020,
+      "matched_bytes": 6993,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "callee_guard_size": 171,
+      "callee_guard_result": "exact",
+      "exit": 1,
+      "exact_credit": false
+    }
+  },
+  "cleanup": {
+    "directories": 6,
+    "bytes": 6241608,
+    "retained": [
+      "current canonical baseline and its independent cold1",
+      "unbound FORMAT-call7020 failure",
+      "full6876 extent failure"
+    ],
+    "unrelated_d3d": "untouched"
+  },
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "standard_ci_invocations": 1,
+  "standard_ci_steps": 102,
+  "gates": [
+    {
+      "label": "run",
+      "command": [
+        "scripts/repo-python",
+        "scripts/diagnose-ecl-run-native.py",
+        "--unit",
+        "enemy-finalize-death",
+        "--artifact-dir",
+        "build/match-linked/EnemyItemDrops"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "seconds": 0.589,
+      "log_sha256": "a4cd4f81404dddb316574a773a625506844d0164117eac20cf404364001d4c4c",
+      "log": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/final-run.json"
+    },
+    {
+      "label": "toolchain",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.135,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508",
+      "log": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/final-toolchain.log"
+    },
+    {
+      "label": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.353,
+      "log_sha256": "2d40cc050a7a862cab74267a8cd80d1244a5c9e5c1f5b51fa8221c6f039a4efb",
+      "log": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/final-tracking.log"
+    },
+    {
+      "label": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.142,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6",
+      "log": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/final-progress.log"
+    },
+    {
+      "label": "ci",
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 422.904,
+      "log_sha256": "cd8a5b82857bdb4430fd0b10619ea5c7ea0a81e42def549c28cd8a7825489434",
+      "log": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/final-ci.log",
+      "steps": 102
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.016,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "log": ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/final-diff.log"
+    }
+  ],
+  "pins_before": {
+    "current_raw_inputs": 31,
+    "current_native_artifacts": 31,
+    "result": "all unchanged"
+  },
+  "pins_after": {
+    "current_raw_inputs": 31,
+    "current_native_artifacts": 31,
+    "result": "all unchanged"
+  },
+  "canonical_reconstruction": {
+    "authored_exact_functions": 391,
+    "authored_exact_bytes": 71629,
+    "canonical_exact_functions": 1232,
+    "change": 0
+  },
+  "native_summary_sha256": "559294b053c93fe6b833867b0a84433e021af281ce7f466b6582db6fe340597d",
+  "replay_scope": "Eight changed ECL support objects with nine hash-verified cached objects each, their32 complete helper guards, and final complete current Run; no full historical canonical replay.",
+  "final_gates_receipt_sha256": "660aff8515ed405a6a44a83864c87e9497b92372c281133d3900dbe73f1ddfa2"
+}

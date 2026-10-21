@@ -1,0 +1,1594 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "6a2bcf5",
+  "scope": "Eight private source/profile controls, no maintained source/recipe/ledger adoption and no exact credit",
+  "maintained_source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "0371b2d0ec4acc3973dc70abc69d8afe045b9ea1d1f789abd5563fe23d30eefe",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "baseline_graph": {
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+  },
+  "baseline_artifacts": {
+    "image": {
+      "path": "build/match-linked/EnemyItemDrops/source.exe",
+      "sha256": "4409855716c7c210ebca6f9a4bc83f078c4e8904cfb65dd77a59607cc14755a8"
+    },
+    "map": {
+      "path": "build/match-linked/EnemyItemDrops/source.map",
+      "sha256": "c57c573a635826cab8f8c0c876bfb6cdc2a934640cb0963bad64012c5137f88f"
+    },
+    "pdb": {
+      "path": "build/match-linked/EnemyItemDrops/source.pdb",
+      "sha256": "9ad8cf6c44362d157f1b3049c8bc47b117d4e536787eb5ddcc9fcd3122e9c133"
+    },
+    "object": {
+      "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+      "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+    }
+  },
+  "baseline_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+  "guard_inventory": [
+    {
+      "unit": "enemy-drop-item-counts",
+      "address": "0x0040C9A0",
+      "size": 48,
+      "fields": 3,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-drop-item-counts-core",
+      "address": "0x0040C9D0",
+      "size": 503,
+      "fields": 27,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-wrap-angle",
+      "address": "0x0044BC70",
+      "size": 94,
+      "fields": 6,
+      "result": "exact"
+    },
+    {
+      "unit": "rng-get-random-u16",
+      "address": "0x0044B9B0",
+      "size": 39,
+      "fields": 0,
+      "result": "exact"
+    },
+    {
+      "unit": "rng-get-random-u32",
+      "address": "0x0044B9E0",
+      "size": 78,
+      "fields": 0,
+      "result": "exact"
+    },
+    {
+      "unit": "rng-get-random-f32",
+      "address": "0x0044BB20",
+      "size": 109,
+      "fields": 2,
+      "result": "exact"
+    },
+    {
+      "unit": "rng-get-random-f32-signed",
+      "address": "0x0044BB90",
+      "size": 115,
+      "fields": 3,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-read-float",
+      "address": "0x0044FE40",
+      "size": 183,
+      "fields": 4,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-read-int",
+      "address": "0x0044FDB0",
+      "size": 144,
+      "fields": 1,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-read-int-value",
+      "address": "0x0044FF00",
+      "size": 124,
+      "fields": 1,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-read-float-value",
+      "address": "0x0044FF80",
+      "size": 171,
+      "fields": 4,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-resolve-int",
+      "address": "0x00450030",
+      "size": 58,
+      "fields": 0,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-resolve-float",
+      "address": "0x00450070",
+      "size": 93,
+      "fields": 3,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-host-run",
+      "address": "0x0044FD10",
+      "size": 146,
+      "fields": 4,
+      "result": "exact"
+    },
+    {
+      "unit": "anm-release-slot",
+      "address": "0x004477D0",
+      "size": 55,
+      "fields": 2,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-mark-pending-interrupt",
+      "address": "0x00409E50",
+      "size": 65,
+      "fields": 2,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-sound-queue-sample",
+      "address": "0x0043DC90",
+      "size": 123,
+      "fields": 1,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-sound-queue-cue",
+      "address": "0x0043DD10",
+      "size": 149,
+      "fields": 3,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-drop-vector-from-angle-radii",
+      "address": "0x00413270",
+      "size": 30,
+      "fields": 0,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-resolve-int-argument",
+      "address": "0x00412A10",
+      "size": 75,
+      "fields": 0,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-enable-shield",
+      "address": "0x0040CEA0",
+      "size": 36,
+      "fields": 2,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-read-int-argument",
+      "address": "0x00412A00",
+      "size": 16,
+      "fields": 1,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-read-float-argument",
+      "address": "0x00412A60",
+      "size": 14,
+      "fields": 1,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-resolve-float-argument",
+      "address": "0x00412A70",
+      "size": 14,
+      "fields": 1,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-read-raw-int-argument",
+      "address": "0x00412A80",
+      "size": 17,
+      "fields": 1,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-read-raw-float-argument",
+      "address": "0x00412AA0",
+      "size": 26,
+      "fields": 1,
+      "result": "exact"
+    },
+    {
+      "unit": "anm-int3-scale",
+      "address": "0x00441E50",
+      "size": 56,
+      "fields": 3,
+      "result": "exact"
+    },
+    {
+      "unit": "anm-evaluate-rgb-interpolation",
+      "address": "0x00441600",
+      "size": 820,
+      "fields": 17,
+      "result": "exact"
+    },
+    {
+      "unit": "game-score-extend-faith-timer",
+      "address": "0x00412FF0",
+      "size": 93,
+      "fields": 2,
+      "result": "exact"
+    },
+    {
+      "unit": "enemy-finalize-death",
+      "address": "0x0040E5F0",
+      "size": 162,
+      "fields": 9,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-stack-push",
+      "address": "0x004505B0",
+      "size": 96,
+      "fields": 0,
+      "result": "exact"
+    },
+    {
+      "unit": "ecl-vm-stack-pop",
+      "address": "0x00450610",
+      "size": 122,
+      "fields": 1,
+      "result": "exact"
+    }
+  ],
+  "complete_guard_owners_per_control": 32,
+  "complete_guard_bytes_per_control": 3874,
+  "complete_guard_fields_per_control": 105,
+  "controls": [
+    {
+      "label": "push-float-const-ref",
+      "strict": {
+        "run_bytes": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "locals": 62,
+        "callee_guard": "exact"
+      },
+      "run_candidate_size": 7020,
+      "guards": {
+        "owners": 32,
+        "bytes": 3874,
+        "fields": 105,
+        "result": "exact"
+      },
+      "producer_receipt_sha256": "7820f5e449032243dfd45d10c586388300442aebea191be4d68f256f28513ceb",
+      "source_sha256": "424c8da9f204535a270cfb904f08534f52f172775ee6fa3e82f25441bb28e803",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/push-float-const-ref/source.exe",
+          "sha256": "5bbc1cf694bb218b334038bdc97420d7e71b4e5b978360eb428af2bfcfd86bb4"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/push-float-const-ref/source.map",
+          "sha256": "d7a28792d3fd2444cb534492f7341a5c5a9f1f23000ebe8c2dbc7eea6eed7cf9"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/push-float-const-ref/source.pdb",
+          "sha256": "8837c5c271325bff02664ec75e0e2e56cff182264fd673274012aaecfde1a8ee"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/push-float-const-ref/source.ltcg.obj",
+          "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+        }
+      },
+      "target_replayed_run_equal_to_baseline": true,
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "native_owners": [
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_native_equal": true,
+          "baseline_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+          "candidate_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3"
+        },
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_native_equal": true,
+          "baseline_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+          "candidate_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14468,
+          "raw_native_equal": true,
+          "baseline_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+          "candidate_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+        }
+      ],
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/push-float-const-ref/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "changed_ecl_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "changed_source_roles": [
+        "src/EclVm.cpp"
+      ],
+      "adapter": {
+        "scope": "actual-source/PDB path substitution only",
+        "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "private_script_sha256": "44ef1730e3ffb97e998fa29a618349ec407ece85788273e3c45365cea48969c6"
+      },
+      "changed_object_sha256": "be8b0d66143d7e2162e627aba67f6e8edacd9a484c6e3218d940eb860dcae101"
+    },
+    {
+      "label": "pop-direct-buffer",
+      "strict": {
+        "scope": "Unsupported/unbound complete comparison; no ordinary-byte score or exact credit",
+        "error": "external field lacks one prebound target: {'offset': 6524, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x00406370', 'candidate_symbols': ['?ReadIntValue@EclVmContext@@QAEHIH@Z'], 'instruction_end': 6528, 'target_encoded_value': '0xEB000003', 'target_candidate': '0xEB44FB23'}"
+      },
+      "run_candidate_size": 7020,
+      "guards": {
+        "owners": 32,
+        "bytes": 3874,
+        "fields": 105,
+        "result": "exact"
+      },
+      "producer_receipt_sha256": "7cfe44816d29300ba2e92ffd58dbdb20a418a667bbc473cad2067960401e26be",
+      "source_sha256": "bdbf2b9f72d268ae91f519f2b6c53e6055dee73e48f68acac90d709236095d37",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-direct-buffer/source.exe",
+          "sha256": "ab1db0eb08c664c99935600b163dcf9ab02aaf4bab06f47e2bc99e4713a87fd0"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-direct-buffer/source.map",
+          "sha256": "15aa025a2617bc2b308fb5421b4e456a826147263c289392730d3ecc68451c00"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-direct-buffer/source.pdb",
+          "sha256": "7b94d62db7efa2107607ff39cb7d87f70a9d153adb37a6861b05c88783fc4e4f"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-direct-buffer/source.ltcg.obj",
+          "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+        }
+      },
+      "native_owners": [
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_native_equal": false,
+          "baseline_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+          "candidate_sha256": "97a2c03dec8f683c97003f5f94ff90ed709bb338887ac558a90fb5c1a1a00980"
+        },
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_native_equal": true,
+          "baseline_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+          "candidate_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14468,
+          "raw_native_equal": true,
+          "baseline_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+          "candidate_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+        }
+      ],
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-direct-buffer/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "changed_ecl_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "changed_source_roles": [
+        "src/EclVm.cpp"
+      ],
+      "adapter": {
+        "scope": "actual-source/PDB path substitution only",
+        "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "private_script_sha256": "11c4cd282777468b60d024b458ad35189c3a1dce4da82adbd6927b3a0b9a6fae"
+      },
+      "changed_object_sha256": "25fb8817e0f86e9bade6f4d67995de59673faf49058e437d3f8b9cfc626c6a6d"
+    },
+    {
+      "label": "pop-readonly-byte-view",
+      "strict": {
+        "run_bytes": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "locals": 62,
+        "callee_guard": "exact"
+      },
+      "run_candidate_size": 7020,
+      "guards": {
+        "owners": 32,
+        "bytes": 3874,
+        "fields": 105,
+        "result": "exact"
+      },
+      "producer_receipt_sha256": "d22fe25fe01e3150b4c84b7b0b1a8137829f4807304ece91b6ae8c115150d86a",
+      "source_sha256": "883a454584f27f239a6fe7c2dc63b9cf5b774261bdefdafed68df6b047dc4f5c",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-readonly-byte-view/source.exe",
+          "sha256": "720df80f5124327e3780a010091d425535d9f00e435c665c5323b0127596f154"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-readonly-byte-view/source.map",
+          "sha256": "744e8f982a66855a58bddbdae35713f9ce5bc21801618a15d07c72ec73c3d53c"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-readonly-byte-view/source.pdb",
+          "sha256": "99e27847ac0f274da726820a88bf21daeb5012301d1a5fe0d1e2cc2e327e4c8f"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-readonly-byte-view/source.ltcg.obj",
+          "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+        }
+      },
+      "target_replayed_run_equal_to_baseline": true,
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "native_owners": [
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_native_equal": true,
+          "baseline_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+          "candidate_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3"
+        },
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_native_equal": true,
+          "baseline_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+          "candidate_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14468,
+          "raw_native_equal": true,
+          "baseline_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+          "candidate_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+        }
+      ],
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/pop-readonly-byte-view/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "changed_ecl_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "changed_source_roles": [
+        "src/EclVm.cpp"
+      ],
+      "adapter": {
+        "scope": "actual-source/PDB path substitution only",
+        "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "private_script_sha256": "1ba9c7d2659258fa6d954ca04471639cf6648960339adc4ff4c2957966ef901c"
+      },
+      "changed_object_sha256": "fe38e18790edb9bf46b4576fedf4813290ba775d2512e67256bda7e95936a746"
+    },
+    {
+      "label": "unsigned-comparison-word",
+      "strict": {
+        "scope": "Unsupported/unbound complete comparison; no ordinary-byte score or exact credit",
+        "error": "Run must have one complete 7020-byte PDB extent"
+      },
+      "run_candidate_size": 6876,
+      "guards": {
+        "owners": 32,
+        "bytes": 3874,
+        "fields": 105,
+        "result": "exact"
+      },
+      "producer_receipt_sha256": "0875af7977f01313d0f14a2cd16a50c7b2b64bc31680bc298b9701610db6f0bf",
+      "source_sha256": "32218a5493d32f37072a13f51d8ea9e883cddee31d5aab6ff786de7df7c7ed77",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/unsigned-comparison-word/source.exe",
+          "sha256": "2724338f781755cb0d08a3749fd9acc9be39561b24b01f240155a783764a91ad"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/unsigned-comparison-word/source.map",
+          "sha256": "a9ff60b52ef36d1b9997191e33ba3913a45d2a9d764f80626b7ee2618e7e2d17"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/unsigned-comparison-word/source.pdb",
+          "sha256": "237069212de61ade4aa3778de8c5c9d402cc8486da2731e614d8b01fe7b3abbb"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/unsigned-comparison-word/source.ltcg.obj",
+          "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+        }
+      },
+      "native_owners": [
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 6876,
+          "raw_native_equal": false,
+          "baseline_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+          "candidate_sha256": "99608b5f44a6cf224a5ca9afaa0a5313439735396cd64a3de4c6d88752abb550"
+        },
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_native_equal": false,
+          "baseline_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+          "candidate_sha256": "3361e1d0da06fc2f8037aeb5eeef88a28b5b4600d7b2ac508e48c9e5ae8851a8"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14468,
+          "raw_native_equal": false,
+          "baseline_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+          "candidate_sha256": "599bcc0ab7d3d3ca3e25f4d505bd492af02e4febfc20ee058b7283aa232c080b"
+        }
+      ],
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/unsigned-comparison-word/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "changed_ecl_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "changed_source_roles": [
+        "src/EclVm.cpp"
+      ],
+      "adapter": {
+        "scope": "actual-source/PDB path substitution only",
+        "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "private_script_sha256": "deca3f938a267fb9f0a050e329d65f7e17a123fa24a18ab11204f34d0f4a6cbb"
+      },
+      "changed_object_sha256": "a7b98cbc7aeebb46a2312de70dfd1d96ae8e0a9da1945fee1aa0900c829996f1"
+    },
+    {
+      "label": "comparison-scalar-record",
+      "strict": {
+        "run_bytes": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "locals": 62,
+        "callee_guard": "exact"
+      },
+      "run_candidate_size": 7020,
+      "guards": {
+        "owners": 32,
+        "bytes": 3874,
+        "fields": 105,
+        "result": "exact"
+      },
+      "producer_receipt_sha256": "3b2582ef989a9c5e4de91a94beb7619e3085c672a927ed60bcc24806592bd766",
+      "source_sha256": "f3f51fb84ea26cef8f72beff6dc3d957c7928663ac3869c3bc6a8865cf38d3d7",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/comparison-scalar-record/source.exe",
+          "sha256": "c8c7a084332826ec4ce33b260c8196ccd6ee10d68dfd874da67018687d0b8471"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/comparison-scalar-record/source.map",
+          "sha256": "dcd23bd9b0adc072aab151ce21d2dfb9491fd91f54a602f6dcd1b986521ff890"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/comparison-scalar-record/source.pdb",
+          "sha256": "7f6d4f3b51db1e708cdb780afa033d6af3f49b3ba372c03c2f9af9e8e4ea5099"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/comparison-scalar-record/source.ltcg.obj",
+          "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+        }
+      },
+      "target_replayed_run_equal_to_baseline": true,
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "native_owners": [
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_native_equal": true,
+          "baseline_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+          "candidate_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3"
+        },
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_native_equal": true,
+          "baseline_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+          "candidate_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14468,
+          "raw_native_equal": true,
+          "baseline_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+          "candidate_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+        }
+      ],
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/comparison-scalar-record/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "changed_ecl_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "changed_source_roles": [
+        "src/EclVm.cpp"
+      ],
+      "adapter": {
+        "scope": "actual-source/PDB path substitution only",
+        "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "private_script_sha256": "4522c8e4b37bcd28a641c70babc8b2a3defafca5f5bc860b6be38eefe416ff37"
+      },
+      "changed_object_sha256": "cef55fa4fab2f999a31c3b17d5a7df96f76646bffebfce43288a3626619e5806"
+    },
+    {
+      "label": "ecl-tune-g7",
+      "strict": {
+        "run_bytes": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "locals": 62,
+        "callee_guard": "exact"
+      },
+      "run_candidate_size": 7020,
+      "guards": {
+        "owners": 32,
+        "bytes": 3874,
+        "fields": 105,
+        "result": "exact"
+      },
+      "producer_receipt_sha256": "099e8a9436a0f219468a10169c0c50a466369cbb0d33f5b272c58ecc8e3eaa53",
+      "source_sha256": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g7/source.exe",
+          "sha256": "fdb86f3d9a9809efc5406fa9f920dd71e656bcb50a764236c904ab0a753805aa"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g7/source.map",
+          "sha256": "34337fe6f2cae0128b44c250517f56a02eb2041725b59406425425feeca72349"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g7/source.pdb",
+          "sha256": "da69cc4ac8b1fb9f56559de95c0f9b05847639bd076c6484b78c81e056f903a2"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g7/source.ltcg.obj",
+          "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+        }
+      },
+      "target_replayed_run_equal_to_baseline": true,
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "native_owners": [
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_native_equal": true,
+          "baseline_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+          "candidate_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3"
+        },
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_native_equal": true,
+          "baseline_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+          "candidate_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14468,
+          "raw_native_equal": true,
+          "baseline_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+          "candidate_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+        }
+      ],
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g7/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g7/EclVm.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/G7"
+        ]
+      },
+      "changed_ecl_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/G7"
+      ],
+      "changed_source_roles": [],
+      "adapter": {
+        "scope": "actual-source/PDB path substitution only",
+        "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "private_script_sha256": "517d90fe839ba823077b82046169c1eb9cd4790edb4536847719203bbca4c8ec"
+      },
+      "changed_object_sha256": "bb81e97706d8184f0b43661efb98da4d763855ad311f7d67deb7548ee11f652d",
+      "compile_log_sha256": "b6d830caaafc7c9b201f81c8550f8f31a1f5f87414b0dd81ed24492c9e2e9bf2",
+      "requested_cpu_flag_diagnosed_ignored": false
+    },
+    {
+      "label": "ecl-tune-g6",
+      "strict": {
+        "run_bytes": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "locals": 62,
+        "callee_guard": "exact"
+      },
+      "run_candidate_size": 7020,
+      "guards": {
+        "owners": 32,
+        "bytes": 3874,
+        "fields": 105,
+        "result": "exact"
+      },
+      "producer_receipt_sha256": "df72e7747f7a05df8d300a94a3af79ee52676e4897652261b6c421e20122e034",
+      "source_sha256": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g6/source.exe",
+          "sha256": "27490ac8333be8de419edb7fe18cf56cfba76cd70b5b54544473722f2b4db017"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g6/source.map",
+          "sha256": "dcc08c136f2b9c3236f2322cfe61723747792f86bd2afd281b582c01d054857e"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g6/source.pdb",
+          "sha256": "3643d03684bb72eb03fb452d32ea303401df042bc857a874dec47b6ee11be48d"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g6/source.ltcg.obj",
+          "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+        }
+      },
+      "target_replayed_run_equal_to_baseline": true,
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "native_owners": [
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_native_equal": true,
+          "baseline_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+          "candidate_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3"
+        },
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_native_equal": true,
+          "baseline_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+          "candidate_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14468,
+          "raw_native_equal": true,
+          "baseline_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+          "candidate_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+        }
+      ],
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g6/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ],
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/ecl-tune-g6/EclVm.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/G6"
+        ]
+      },
+      "changed_ecl_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/G6"
+      ],
+      "changed_source_roles": [],
+      "adapter": {
+        "scope": "actual-source/PDB path substitution only",
+        "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "private_script_sha256": "ea9858d6c7c9ced947220aa5d9493c7a534e2622e131ef12856f28b460a5ebd9"
+      },
+      "changed_object_sha256": "e775eff0310cffe19d262d6fc4c9d30274d1f919279c04902a3af9127d7bfc97",
+      "compile_log_sha256": "b6d830caaafc7c9b201f81c8550f8f31a1f5f87414b0dd81ed24492c9e2e9bf2",
+      "requested_cpu_flag_diagnosed_ignored": false
+    },
+    {
+      "label": "run-scope-comparison-lifetimes",
+      "strict": {
+        "run_bytes": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "locals": 62,
+        "callee_guard": "exact"
+      },
+      "run_candidate_size": 7020,
+      "guards": {
+        "owners": 32,
+        "bytes": 3874,
+        "fields": 105,
+        "result": "exact"
+      },
+      "producer_receipt_sha256": "1f135be00a3ddbff65c09ada1f6c291029ce95b38a68d47c3e336dd8e027e947",
+      "source_sha256": "3a38841197f92c998ca9682f4b5b7bef5d88a0ce27b5d3f3f215c10984b50321",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/run-scope-comparison-lifetimes/source.exe",
+          "sha256": "7e575bab88dbf4d5602ac1610559ef942223e215e945e6f7976839268eec5632"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/run-scope-comparison-lifetimes/source.map",
+          "sha256": "d16d49cbb158f84f8cb8ad1ab895d43b3857bb511e048397cadd20a9c91abd7c"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/run-scope-comparison-lifetimes/source.pdb",
+          "sha256": "a9633f95dd2393207054b480623a831f03d8d7815e05e0ff4cb51d8c0e01ce3f"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/run-scope-comparison-lifetimes/source.ltcg.obj",
+          "sha256": "997c2060b502d02b6428a21df09bfcb926f5059e75dde349fdb012593174ba04"
+        }
+      },
+      "target_replayed_run_equal_to_baseline": true,
+      "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "native_owners": [
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_native_equal": true,
+          "baseline_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+          "candidate_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3"
+        },
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_native_equal": true,
+          "baseline_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+          "candidate_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14468,
+          "raw_native_equal": true,
+          "baseline_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+          "candidate_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+        }
+      ],
+      "source": "src/EnemyEclDispatcher.cpp",
+      "support_sources": [
+        ".analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/run-scope-comparison-lifetimes/EclVm.cpp",
+        "src/AnmManager.cpp",
+        "src/AnmVmCreate.cpp",
+        "src/EnemyLaser.cpp",
+        "src/Enemy.cpp",
+        "src/AnmVmId.cpp",
+        "src/RandomMath.cpp",
+        "src/AnmInt3Scale.cpp",
+        "src/ItemManager.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "support_profiles": {
+        "src/AnmInt3Scale.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/Ob1"
+        ]
+      },
+      "changed_ecl_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "changed_source_roles": [
+        "src/EclVm.cpp"
+      ],
+      "adapter": {
+        "scope": "actual-source/PDB path substitution only",
+        "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "private_script_sha256": "72e4bb05501c658922f698e88f8735c4d2ba8392f654e370ef2b296c93ca9e63"
+      },
+      "changed_object_sha256": "4e4412976dadc2bc0dc2ccb65e904f9c0954e8a7f6cf5691226fa70976651914"
+    }
+  ],
+  "variant_definitions": {
+    "push-float-const-ref": "Only PushFloat helper float value -> const float &value; every call remains an rvalue and the stack Push contract is unchanged.",
+    "pop-direct-buffer": "Remove Pop local stackData/valueAddress/typeAddress aliases, use memcpy(value,data+stackTop,size) and storedType=data[stackTop]; preserve member-index rereads/order.",
+    "pop-readonly-byte-view": "Keep all Pop local aliases, qualify stackData and valueAddress pointees const unsigned char.",
+    "unsigned-comparison-word": "Run floatResult int -> unsigned int; all assignments remain Boolean0/1; PushInt(const int&) materializes an int temporary through implicit conversion.",
+    "comparison-scalar-record": "Run floatResult int -> existing EclVmScalar; assign/use integer member, preserving signed integer addressability.",
+    "ecl-tune-g7": "Exact baseline source bytes; append /G7 only to the ECL support profile, retaining GL/GS and every other TU/profile.",
+    "ecl-tune-g6": "Exact baseline source bytes; append /G6 only to the ECL support profile, retaining GL/GS and every other TU/profile.",
+    "run-scope-comparison-lifetimes": "Move int floatResult/logicalResult declarations from per-opcode difficulty block to after null guard before while; no initialization, field, call or arithmetic changes."
+  },
+  "ghidra": {
+    "transport": "direct local headless",
+    "read_only": true,
+    "no_analysis": true,
+    "rollback": true,
+    "cpu": 1,
+    "heap_mib": 768,
+    "mapped_text_bytes": 412289,
+    "mapped_text_inclusive": "401000..465A80",
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "before_after_equal": true,
+    "review_sha256": "8191e77056e040c88811874b4e73fa534ebb5817161fa212712eb37e5c8057c8",
+    "observation": "SINE/COS converge on one float store and retained4505B0 Push.450610 Pop has no current Ghidra function/instruction record; its existing complete ledger/PDB/target-byte comparison is independent."
+  },
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  },
+  "current_complete_run_diagnostic": {
+    "scope": "Noncanonical complete-owner diagnostic; no exact ledger credit.",
+    "result": "mismatch",
+    "target_address": "0x0044E1A0",
+    "candidate_address": "0x00406D30",
+    "size": 7020,
+    "matched_bytes": 6993,
+    "compared_size": 7020,
+    "fields": 189,
+    "local_destinations": 62,
+    "callee_guard_size": 171,
+    "callee_guard_result": "exact",
+    "first_differences": [
+      {
+        "offset": "0xEC",
+        "linked": 124,
+        "target": 84
+      },
+      {
+        "offset": "0xF1",
+        "linked": 87,
+        "target": 82
+      },
+      {
+        "offset": "0x12A",
+        "linked": 16,
+        "target": 0
+      },
+      {
+        "offset": "0x12C",
+        "linked": 106,
+        "target": 104
+      },
+      {
+        "offset": "0x146E",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x14D7",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x151D",
+        "linked": 7,
+        "target": 56
+      },
+      {
+        "offset": "0x168A",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x1710",
+        "linked": 8,
+        "target": 1
+      },
+      {
+        "offset": "0x181B",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x182B",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1838",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x183C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1840",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1844",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x1899",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18B6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18E6",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x18F8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x191C",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1932",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x1957",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x199E",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19A8",
+        "linked": 20,
+        "target": 24
+      },
+      {
+        "offset": "0x19BA",
+        "linked": 24,
+        "target": 20
+      },
+      {
+        "offset": "0x19E6",
+        "linked": 3,
+        "target": 19
+      },
+      {
+        "offset": "0x19E8",
+        "linked": 0,
+        "target": 2
+      }
+    ],
+    "residual_groups": [
+      {
+        "offsets": [
+          "0xEC",
+          "0xF1"
+        ],
+        "opcode": "0x10",
+        "role": "spawn thread ID"
+      },
+      {
+        "offsets": [
+          "0x12A",
+          "0x12C"
+        ],
+        "opcode": "0x11",
+        "role": "stop thread"
+      },
+      {
+        "offsets": [
+          "0x146E"
+        ],
+        "opcode": "0x4B",
+        "role": "XOR commuted address"
+      },
+      {
+        "offsets": [
+          "0x14D7",
+          "0x151D"
+        ],
+        "opcode": "0x4C",
+        "role": "OR commuted addresses"
+      },
+      {
+        "offsets": [
+          "0x168A"
+        ],
+        "opcode": "0x55",
+        "role": "negate float raw storage"
+      },
+      {
+        "offsets": [
+          "0x1710"
+        ],
+        "opcode": "0x4F",
+        "role": "SINE"
+      },
+      {
+        "offsets": [
+          "0x181B",
+          "0x182B",
+          "0x1838",
+          "0x183C",
+          "0x1840",
+          "0x1844"
+        ],
+        "opcode": "0x56",
+        "role": "length squared homes"
+      },
+      {
+        "offsets": [
+          "0x1899",
+          "0x18B6"
+        ],
+        "opcode": "0x57",
+        "role": "point angle homes"
+      },
+      {
+        "offsets": [
+          "0x18E6",
+          "0x18F8",
+          "0x191C",
+          "0x1932",
+          "0x1957",
+          "0x199E",
+          "0x19A8",
+          "0x19BA"
+        ],
+        "opcode": "0x1E",
+        "role": "FORMAT homes"
+      },
+      {
+        "offsets": [
+          "0x19E6",
+          "0x19E8"
+        ],
+        "role": "common instruction latch"
+      }
+    ],
+    "limitation": "This noncanonical diagnostic grants no exact credit. Older two-TU allocator-color weights have not been remeasured in this current ten-TU graph."
+  }
+}

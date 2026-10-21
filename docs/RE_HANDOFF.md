@@ -47,7 +47,35 @@ candidates, 735 authored functions owning 273576 bytes, 1084 source mappings,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint closes EnemyFinalizeDeath40E5F0..40E691:
+The latest diagnostic checkpoint executes eight private ECL value-lifetime/
+processor-profile controls without maintained source, recipe or ledger changes.
+Six retain every byte of all three complete native large bodies and all7020
+target-replayed Run bytes; Run stays7020/all189/62locals with27 ordinary
+differences. Pop direct addressing instead moves the FORMAT call field to197C
+and is unsupported/unbound; an unsigned comparison word yields full6876/7020
+and is unsupported. Neither failure has an ordinary-byte score. Each control
+passes32 complete helpers3874/all105, including Push96 and Pop122. Standalone
+helper equality does not determine the inlined caller. See
+[ECL control evidence](evidence/ecl-value-lifetimes/README.md).
+
+The six neutral forms are PushFloat const-reference, readonly Pop byte aliases,
+existing EclVmScalar integer member, comparison declarations before the loop,
+and ECL-only /G6 or /G7. CPU controls preserve GL/GS and compile identical source;
+their captured logs do not diagnose ignored options. These observations do not
+identify original declarations or establish a general compiler policy. Fresh
+direct Ghidra confirms shared SINE/COS Push, while450610 Pop has no current
+function/instruction record; the independent122-byte comparison still passes.
+Six terminal duplicate builds are pruned/6241608 bytes; both failures remain.
+Private recovery is
+`.analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/RECOVERY.md`.
+Old two-TU allocator color weights have not been remeasured in this graph.
+All102 standard CI checks pass in one invocation. Final complete Run,
+toolchain/tracking/progress/docs/whitespace gates pass with the expected Run
+mismatch; all31 raw inputs and31 retained native artifact hashes remain current.
+No full historical exact replay is performed. All three original large goals
+and later phase gates stay open.
+
+The latest exact checkpoint closes EnemyFinalizeDeath40E5F0..40E691:
 **162 new authored exact bytes/all9 fields**. Real QueueSoundCue and
 CreateVmAtWorldVariant0 replace receiverless free aliases; noinline on the
 existing shared ExtendFaithTimer and explicit position/drop-block lifetimes

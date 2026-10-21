@@ -4306,3 +4306,31 @@ Zeroed upper bits or dword storage do not establish an unsigned selector:
 both paths explicitly sign-extend16 before the range adjustment. No opcode
 representation change is tested or adopted from this observation. The current
 death-service receipt pins the raw observation and records its limitation.
+
+
+### 2026-10-21: ECL scalar lifetimes and support-only CPU profiles
+
+[Eight ECL controls](evidence/ecl-value-lifetimes/README.md) recompile only the
+ECL support in the current ten-TU GL/GS graph and reuse nine hash-verified
+objects. Every control retains32 complete helpers3874/all105, including
+Push96 and Pop122. PushFloat const-reference, readonly Pop byte aliases,
+existing EclVmScalar integer member, comparison declarations before the loop,
+and ECL-only /G6 or /G7 each preserve all native bytes of ANM9964, Run7020 and
+Enemy14468 plus all7020 target-replayed Run bytes. Run stays27 ordinary
+differences/all189 fields/62locals. CPU controls compile identical source and
+capture no ignored-option diagnostic; this proves neutrality only here.
+
+Removing Pop's byte aliases while preserving index rereads/order moves a late
+FORMAT ReadIntValue call field to197C, outside the prebound target position.
+The strict7020 comparison is unsupported/unbound. Changing the Boolean result
+word to unsigned int introduces an implicit int temporary at PushInt(const int&)
+and shrinks the complete Run contribution to6876/7020, also unsupported. Neither
+receives an ordinary score. Both retain all32 helpers: standalone helper equality
+does not determine its inlined caller's byte identity. No maintained source,
+profile, recipe or ledger is changed, and no original declaration is inferred.
+
+Fresh direct Ghidra confirms SINE/COS share a float store at44F934 and Push
+call44F941; residual1710 belongs to SINE. The current database has no function
+or instruction record for Pop450610. Its independently qualified122-byte
+PDB/target comparison passes; provisional metadata absence is not boundary
+evidence. Full412289-byte mapped-text identity is unchanged before/after review.
