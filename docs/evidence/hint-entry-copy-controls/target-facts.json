@@ -1,0 +1,29 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "ghidra": {
+    "mode": "local readOnly/noanalysis; rollback",
+    "max_cpu": 1,
+    "heap_mib": 768,
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "before_after": "equal",
+    "function_body": "41A120..41A1FB /220"
+  },
+  "position_copy": {
+    "source": "live EBX Player position",
+    "target_offset": "0x8B",
+    "position_and_strncpy_call_bytes": 34,
+    "call_target": "452960",
+    "argument_bytes": 12,
+    "fragment_exact_credit": false
+  },
+  "constructor": {
+    "entry": "0x418D00",
+    "size": 51,
+    "origin": "indeterminate; unchanged",
+    "target_sha256": "bd8d9bc1b4abb1826277bcdb5c8a1e1fc16be4ea7d5dd952d8467434f04899db",
+    "observation": "standalone and inlined copies schedule remaining differently; do not infer unique original source order"
+  },
+  "tail": "target stores alignment before two separate474C84 reads and chooses chapter counter474C8C before nonzero branch; candidate still shares the read",
+  "adjacent_game_search": "No HintEntry/Caution!/hint_auto analogue found in the three approved adjacent src trees; no cross-game fact adopted"
+}

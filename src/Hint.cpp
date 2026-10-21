@@ -156,9 +156,9 @@ HintEntryView::HintEntryView()
     link.previous = 0;
     link.payload = this;
     color = 0xffffffffu;
-    remaining = -1;
     time = 300;
     scale = 1.0f;
+    remaining = -1;
 }
 
 // Target41A0A0. Shift the terminating NUL along with each leading byte.
@@ -731,14 +731,12 @@ HintEntryView *HintOwnerView::AddAutomaticEntry(
     HintEntryView *entry = new HintEntryView;
     exportStageLists[g_GameStartupMode].Append(&entry->link);
     entry->remaining = 30;
-    entry->position.x = position->x;
-    entry->position.y = position->y;
-    entry->position.z = position->z;
+    memcpy(&entry->position, position, sizeof(entry->position));
     strncpy(entry->text, text, 64);
     entry->alignment = 0;
     entry->base = g_GameFrameRestorePending;
-    entry->count = g_GameFrameRestorePending == 0
-        ? g_GameFrameCounter0 : g_GameFrameCounter1;
+    entry->count = g_GameFrameRestorePending != 0
+        ? g_GameFrameCounter1 : g_GameFrameCounter0;
     return entry;
 }
 

@@ -1,0 +1,74 @@
+{
+  "scope": "explicit current-batch stopped outputs only; logical file bytes, not filesystem blocks",
+  "removed_bytes": 6260601,
+  "removed": [
+    {
+      "path": "build/gpt-6.1-sol/hint-entry-copy-20261022/copy12",
+      "files": 15,
+      "bytes": 1034826,
+      "class": "reproducible-cache",
+      "producer": "probe-entry.py copy12",
+      "reason": "stopped, superseded control carrier; exact input overlays/hash receipts and compact results retained"
+    },
+    {
+      "path": "build/gpt-6.1-sol/hint-entry-copy-20261022/copy12-inverted",
+      "files": 15,
+      "bytes": 1034916,
+      "class": "reproducible-cache",
+      "producer": "probe-entry.py copy12-inverted",
+      "reason": "stopped, superseded control carrier; exact input overlays/hash receipts and compact results retained"
+    },
+    {
+      "path": "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-channels",
+      "files": 15,
+      "bytes": 1035117,
+      "class": "reproducible-cache",
+      "producer": "probe-entry.py constructor-channels",
+      "reason": "stopped, superseded control carrier; exact input overlays/hash receipts and compact results retained"
+    },
+    {
+      "path": "build/host-tests/gui-message-run-ci",
+      "files": 49,
+      "bytes": 1836391,
+      "class": "reproducible-cache",
+      "producer": "scripts/test-gui-message-run.py via passed frozen CI106",
+      "reason": "reproducible host binaries/text; terminal0 log and source pins retained"
+    },
+    {
+      "path": "build/host-tests/gui-message-lifecycle-ci",
+      "files": 28,
+      "bytes": 508430,
+      "class": "reproducible-cache",
+      "producer": "scripts/test-gui-message-lifecycle.py via passed frozen CI106",
+      "reason": "reproducible host binaries/text; terminal0 log and source pins retained"
+    },
+    {
+      "path": "build/host-tests/transition-effect-ci",
+      "files": 7,
+      "bytes": 806575,
+      "class": "reproducible-cache",
+      "producer": "scripts/transition_effect_host_test.py via passed frozen CI106",
+      "reason": "reproducible host binaries/text; terminal0 log and source pins retained"
+    },
+    {
+      "path": "build/host-tests/transition-effect-eol-ci",
+      "files": 1,
+      "bytes": 4346,
+      "class": "reproducible-cache",
+      "producer": "scripts/transition_effect_eol_test.py via passed frozen CI106",
+      "reason": "reproducible host binaries/text; terminal0 log and source pins retained"
+    }
+  ],
+  "retained": [
+    "selected private constructor-last native graph",
+    "canonical PlayerState2Hint native graph",
+    "prior Player private final-frozen baseline",
+    "four exact experiment-input overlays and source pins",
+    "compact native/target/host/CI receipts and unresolved220-byte owner facts"
+  ],
+  "preserved": [
+    "all nine independent untracked D3D files",
+    "unclassified older analysis",
+    "target, Ghidra database, toolchains and Wine state"
+  ]
+}

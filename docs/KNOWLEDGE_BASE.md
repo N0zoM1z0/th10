@@ -4602,3 +4602,27 @@ original construction/runtime. All32 canonical ten-TU pins remain current; the
 old eleven-TU Player-containing context is historical after the new source.
 Source mappings rise602->605, authored exact396->397 and72283->72387 bytes.
 [Complete source, target, compiler and scope evidence](evidence/player-state2-hint/README.md).
+
+
+## Hint entry copy and initialization controls (2026-10-22)
+
+In the real six-TU Player update graph,12-byte position memcpy recovers the
+three target integer load/store pairs and EAX destination. The34-byte XYZ/
+strncpy-call fragment is equal after its one independently bound REL32, but is
+not a whole-function match. Equivalent nonzero-first chapter selection recovers
+target branch/counter order. Moving remaining initialization after time/scale
+changes only the inlined store order: the standalone51-byte constructor remains
+raw-identical and still has14 ordinary differences. The selected allocator is
+212/220, not exact. Its merged chapter read, allocation-pointer/self-link
+scheduling and late alignment store remain open; duplicate target reads alone
+do not establish volatile.
+
+Four cold source controls and a further selected canonical cold retain /GL and
+the real caller. All complete Caution104/all2 guards pass; all five selected
+native bodies repeat raw independently. Chained BGRA initialization regresses
+allocator/constructor to242/72 and is rejected/restored. The enlarged rejected
+graph moves linked addresses, so raw changes in nonexact callees are not claimed
+as ordinary-code regressions. State2 and lifecycle actual-source contracts pass
+seven and65 strict functional controls. No new source mapping, exact credit,
+origin/layout/TU claim or later phase gate changes. See
+[entry-copy evidence](evidence/hint-entry-copy-controls/README.md).

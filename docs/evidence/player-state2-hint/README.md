@@ -8,6 +8,12 @@ Only **AddCaution104 is newly canonical exact**. Authored/source totals become
 bytes are246417/273576 (90.07%); remaining source-absent130. This is not a complete
 game denominator or a runnable product claim.
 
+This packet describes the immutable `bdba3f7` source context. The later
+[entry-copy controls](../hint-entry-copy-controls/README.md) change Hint.cpp and
+replace the canonical carrier with its new source context; the private
+final-frozen baseline remains retained. Replay historical claims from their
+pinned commit, rather than treating these source hashes as current.
+
 ## Target observations and recovered source
 
 Raw target instructions, callsites and read-only Ghidra agree on all three

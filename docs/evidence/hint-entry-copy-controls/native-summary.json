@@ -1,0 +1,338 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "base_commit": "bdba3f7464d39333f8958f6580c6cf38ea6bfe01",
+  "scope": "bounded natural source/codegen improvement; zero new exact functions or bytes",
+  "context": {
+    "source": "src/Player.cpp",
+    "supports": [
+      "src/Hint.cpp",
+      "src/ItemManager.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmId.cpp",
+      "src/Gui.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "entry": "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z",
+    "match_manifest_sha256": "4a05059383759d279c3d239ad3f0629654c29a6afb6101ed18d6e2048d8e87b7"
+  },
+  "source_sha256": {
+    "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "a6a6acb7418900f4a94e153843b3ed6a2b5675d197678eeadff50a54076c28a2",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.cpp": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "selected": "constructor-last",
+  "baseline_entry_size": 210,
+  "target_entry_size": 220,
+  "variants": [
+    {
+      "label": "copy12",
+      "change": "three scalar XYZ assignments -> memcpy of the12-byte position",
+      "Hint_cpp_sha256": "6cc8de7d2dc299e309723c368a8c7a660a245b6333d87c2b2b7c4bc25396611d",
+      "entry_size": 212,
+      "constructor_size": 51,
+      "constructor_ordinary_differences": 14,
+      "position_call_fragment": {
+        "candidate_offset": "0x89",
+        "target_offset": "0x8B",
+        "size": 34,
+        "linkage": "single REL32 to independently resolved _strncpy / target452960",
+        "after_link_replay_equal": true,
+        "exact_credit": false
+      },
+      "whole_caution_guard": "104/all2 exact",
+      "raw_identical_other_bodies": [
+        "?PlayerTransitionToState2@@",
+        "?AddCaution@HintOwnerView@@",
+        "?PlayerUpdateCallbackBody@@"
+      ],
+      "changed_raw_other_bodies": [],
+      "raw_change_scope": "No complete nonexact-owner address-rebinding claim; Caution independently compares all104 bytes and fields.",
+      "entry_raw_sha256": "12207526c587cf91516b352c3443a375e4ec181b2ef857e3376420b4f786f6e5"
+    },
+    {
+      "label": "copy12-inverted",
+      "change": "add equivalent !=0 conditional with chapter counter as first alternative",
+      "Hint_cpp_sha256": "1130c798885b0f0ca34f9b481271fe4ff7b4855a6d3874ca48d1ef6e517109ed",
+      "entry_size": 212,
+      "constructor_size": 51,
+      "constructor_ordinary_differences": 14,
+      "position_call_fragment": {
+        "candidate_offset": "0x89",
+        "target_offset": "0x8B",
+        "size": 34,
+        "linkage": "single REL32 to independently resolved _strncpy / target452960",
+        "after_link_replay_equal": true,
+        "exact_credit": false
+      },
+      "whole_caution_guard": "104/all2 exact",
+      "raw_identical_other_bodies": [
+        "?PlayerTransitionToState2@@",
+        "?AddCaution@HintOwnerView@@",
+        "?PlayerUpdateCallbackBody@@"
+      ],
+      "changed_raw_other_bodies": [],
+      "raw_change_scope": "No complete nonexact-owner address-rebinding claim; Caution independently compares all104 bytes and fields.",
+      "entry_raw_sha256": "1b8485015afe864ee3d816b57b9834fdd42db0e5c214dbd709a1e7c5fb10e8b2"
+    },
+    {
+      "label": "constructor-last",
+      "change": "add remaining initialization after time/scale; selected",
+      "Hint_cpp_sha256": "a6a6acb7418900f4a94e153843b3ed6a2b5675d197678eeadff50a54076c28a2",
+      "entry_size": 212,
+      "constructor_size": 51,
+      "constructor_ordinary_differences": 14,
+      "position_call_fragment": {
+        "candidate_offset": "0x89",
+        "target_offset": "0x8B",
+        "size": 34,
+        "linkage": "single REL32 to independently resolved _strncpy / target452960",
+        "after_link_replay_equal": true,
+        "exact_credit": false
+      },
+      "whole_caution_guard": "104/all2 exact",
+      "raw_identical_other_bodies": [
+        "?PlayerTransitionToState2@@",
+        "?AddCaution@HintOwnerView@@",
+        "?PlayerUpdateCallbackBody@@"
+      ],
+      "changed_raw_other_bodies": [],
+      "raw_change_scope": "No complete nonexact-owner address-rebinding claim; Caution independently compares all104 bytes and fields.",
+      "entry_raw_sha256": "851d0f2420a4ebdacfcbd58f3365b490d804e97f9e370c3e1ea78cb8efd78214"
+    },
+    {
+      "label": "constructor-channels",
+      "change": "replace packed color assignment with chained BGRA assignments; rejected and restored",
+      "Hint_cpp_sha256": "e71259ea30f1a788d5c0839d417c8aec2773f8045f53c20cd127a1e29a77e853",
+      "entry_size": 242,
+      "constructor_size": 72,
+      "constructor_ordinary_differences": 52,
+      "position_call_fragment": {
+        "candidate_offset": "0xa7",
+        "target_offset": "0x8B",
+        "size": 34,
+        "linkage": "single REL32 to independently resolved _strncpy / target452960",
+        "after_link_replay_equal": true,
+        "exact_credit": false
+      },
+      "whole_caution_guard": "104/all2 exact",
+      "raw_identical_other_bodies": [
+        "?PlayerUpdateCallbackBody@@"
+      ],
+      "changed_raw_other_bodies": [
+        "?PlayerTransitionToState2@@",
+        "?AddCaution@HintOwnerView@@"
+      ],
+      "raw_change_scope": "No complete nonexact-owner address-rebinding claim; Caution independently compares all104 bytes and fields.",
+      "entry_raw_sha256": "854ef3678df24d705e56bc7abada74e84aef53e2c5f1d94c2d711c6e634c6036"
+    }
+  ],
+  "private_caution": {
+    "unit": "hint-add-caution",
+    "artifact_kind": "linked-pe",
+    "result": "exact",
+    "symbol": "?AddCaution@HintOwnerView@@QAEXPBDPBUPlayerFloat3@@@Z",
+    "target_address": "0x00424650",
+    "size": 104,
+    "matched_bytes": 104,
+    "compared_size": 104,
+    "matched_compared_bytes": 104,
+    "image": "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/source.exe",
+    "image_sha256": "d06d862dabc8026fca518b2370162f432c388ed0333e380b4f53d78ad1bd01ae",
+    "pdb_guid": "eb6dc78f72877f4b87345f40c589936d",
+    "pdb_age": 1,
+    "candidate_address": "0x00405FD0",
+    "extent_source": "pdb-section-contribution",
+    "pdb_module_index": 1,
+    "decoded_bytes": 104,
+    "normalization_complete": true,
+    "data_spans": [],
+    "linkages": [
+      {
+        "offset": "0x1",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GameStartupMode@@3HA",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0141",
+        "local": false,
+        "candidate_target": "0x00417234",
+        "target": "0x00474C7C",
+        "addend": 0,
+        "target_encoded_value": "0x00474C7C"
+      },
+      {
+        "offset": "0x32",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+        "linked_symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+        "local": false,
+        "candidate_target": "0x00405EF0",
+        "target": "0x0041A120",
+        "addend": 0,
+        "target_encoded_value": "0xFFFF5A9A"
+      }
+    ],
+    "raw_equal": false,
+    "first_differences": [],
+    "capstone_version": "5.0.6"
+  },
+  "canonical_caution": {
+    "artifact_kind": "linked-pe",
+    "candidate_address": "0x00405FD0",
+    "capstone_version": "5.0.6",
+    "compared_size": 104,
+    "data_spans": [],
+    "decoded_bytes": 104,
+    "extent_source": "pdb-section-contribution",
+    "first_differences": [],
+    "image": "build/match-linked/PlayerState2Hint/source.exe",
+    "image_sha256": "c5ec9a74b2fb7858baf3534c2c7597c15e159b2ba33737e2d16556755bfff400",
+    "linkages": [
+      {
+        "addend": 0,
+        "candidate_target": "0x00417234",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0141",
+        "local": false,
+        "offset": "0x1",
+        "symbol": "?g_GameStartupMode@@3HA",
+        "target": "0x00474C7C",
+        "target_encoded_value": "0x00474C7C",
+        "type": "DIR32",
+        "width": 4
+      },
+      {
+        "addend": 0,
+        "candidate_target": "0x00405EF0",
+        "linked_symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+        "local": false,
+        "offset": "0x32",
+        "symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+        "target": "0x0041A120",
+        "target_encoded_value": "0xFFFF5A9A",
+        "type": "REL32",
+        "width": 4
+      }
+    ],
+    "matched_bytes": 104,
+    "matched_compared_bytes": 104,
+    "normalization_complete": true,
+    "pdb_age": 1,
+    "pdb_guid": "0234d9cad0ed63419ecb3b568acb92fd",
+    "pdb_module_index": 1,
+    "raw_equal": false,
+    "result": "exact",
+    "returncode": 0,
+    "size": 104,
+    "symbol": "?AddCaution@HintOwnerView@@QAEXPBDPBUPlayerFloat3@@@Z",
+    "target_address": "0x00424650",
+    "unit": "hint-add-caution"
+  },
+  "selected_native_bodies": {
+    "?PlayerTransitionToState2@@": {
+      "size": 782,
+      "raw_sha256": "687ea51b8c84413696cd55e8255e3902a84e8120ba081592f8e7e54d9a9ed5ff",
+      "repeat_in_canonical_cold": true
+    },
+    "?AddCaution@HintOwnerView@@": {
+      "size": 104,
+      "raw_sha256": "99ec2247f71824ea5ff0223327bccdbf93b8c75ce3bcb39d56d60e0e32413995",
+      "repeat_in_canonical_cold": true
+    },
+    "?AddAutomaticEntry@HintOwnerView@@": {
+      "size": 212,
+      "raw_sha256": "851d0f2420a4ebdacfcbd58f3365b490d804e97f9e370c3e1ea78cb8efd78214",
+      "repeat_in_canonical_cold": true
+    },
+    "?PlayerUpdateCallbackBody@@": {
+      "size": 2808,
+      "raw_sha256": "2d050cbc07144e8853e8a4b468ca84619ca4df3a157c137a475539741f8b845b",
+      "repeat_in_canonical_cold": true
+    },
+    "??0HintEntryView@@": {
+      "size": 51,
+      "raw_sha256": "162d73e286634caeed96185bef0720d10cb8a6ca0f49045ec543bd4a016d448d",
+      "repeat_in_canonical_cold": true
+    }
+  },
+  "current_native_artifact_sha256": {
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/source.map": "4ddf668e519230b480396d801f37cc398b65776c8a8e1a00408f47d6b4749c4a",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/support-02-AnmManager.ltcg.obj": "ba87bb25ee24c9405f8c58c1aa43554ad2ff9af1edb9f49f1b2f7db0025d9d34",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/link-attempt-2.log": "3e3940279746416db20c8ccafa0ad09aebb665fff606724de592ecdabf586228",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/source.exe": "d06d862dabc8026fca518b2370162f432c388ed0333e380b4f53d78ad1bd01ae",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/support-00-Hint.ltcg.obj": "b01f8cc1efb3268972989698a3f185d784a94653ba114047c21b36097d81185d",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/source.ltcg.obj": "de8631f6d59a1dcc9d830b16aee86bfb1cbc8ae1605db9c2c5eab5da5b3e6372",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/support-03-AnmVmId.ltcg.obj": "5f37eaf0fccdb6fe684ef4f224802393701c57c0303fb03846a8eca48b72afc7",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/link-attempt-1.log": "2790e8d308c1a6025dc7fd937798fb8f6c21684e6d6b9928c48773a97e2a33a7",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/support-01-ItemManager.ltcg.obj": "ad8384551aaefea609c0f85c28ff39b64054366236092f27a12eaf501ece3a3c",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/link-aliases.rsp": "40132409705a452936719f79daed9bc95deadf42da79b9001eb108af41f29142",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/link-anchors.obj": "e75d633e7d331d25d652804a87823abf2261331e1eded6b466f44286fe98609f",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/link-anchors.c": "920082eda9343569383a94200358fd39228e02a943eed11446367996d18e235a",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/support-04-Gui.ltcg.obj": "fee4cf59c9271717e0fac5ab270d5d7e586763d7992824e94d692bbe77556496",
+    "build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last/source.pdb": "d3ed7f8303a3a5de3b304d3b39e293c97a23687d5ee3fcc8adf1082c74264b0a",
+    "build/match-linked/PlayerState2Hint/link-aliases.rsp": "40132409705a452936719f79daed9bc95deadf42da79b9001eb108af41f29142",
+    "build/match-linked/PlayerState2Hint/link-anchors.c": "920082eda9343569383a94200358fd39228e02a943eed11446367996d18e235a",
+    "build/match-linked/PlayerState2Hint/link-anchors.obj": "d1cd798ecf6c77e257046e3719e419c263331007242e417a6211ff546acd04a7",
+    "build/match-linked/PlayerState2Hint/link-attempt-1.log": "912fa5d6969978e695b7f6d5ac948112ad6034c22422416c8ce7740b984f5ecd",
+    "build/match-linked/PlayerState2Hint/link-attempt-2.log": "0888ef0677bd5cc1b90665a7a5bb589845259da7f6f3a99636078da5d6459041",
+    "build/match-linked/PlayerState2Hint/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "build/match-linked/PlayerState2Hint/source.exe": "c5ec9a74b2fb7858baf3534c2c7597c15e159b2ba33737e2d16556755bfff400",
+    "build/match-linked/PlayerState2Hint/source.ltcg.obj": "fcfc04cef53e1f981a3adf04af03c4122e328811f56326a2c7f5eeb3bb11edac",
+    "build/match-linked/PlayerState2Hint/source.map": "3935ebd878605461f041a77312a3f5ec59be3a2f57aef1e49875dfbf66d7103d",
+    "build/match-linked/PlayerState2Hint/source.pdb": "337aa9a08bea8d1ef9a443909773197e2a605365c986b178b752961d942dbec2",
+    "build/match-linked/PlayerState2Hint/support-00-Hint.ltcg.obj": "25b7739101331a4c2674f69d67ec21e6d0527cc6e4366e3c3484c3a2a65f126c",
+    "build/match-linked/PlayerState2Hint/support-01-ItemManager.ltcg.obj": "42570a4967061edd32350d482cf842eb5626c2c0013e3d24c6963d2e874e70d5",
+    "build/match-linked/PlayerState2Hint/support-02-AnmManager.ltcg.obj": "9f841db87da72ff77a27ba2c64b52d4522ae3cdd15d9791d6f53bba7a67e64b0",
+    "build/match-linked/PlayerState2Hint/support-03-AnmVmId.ltcg.obj": "5dae243fa918fba004de1c5ae0d780e7d6164db1674df56839288edd3800235c",
+    "build/match-linked/PlayerState2Hint/support-04-Gui.ltcg.obj": "39f8daa4723efccbdad5524c0087f741af54d47b5b0844e7d0b924dec18b22eb"
+  },
+  "limits": [
+    "Allocator212/220 and constructor51/51 with14 ordinary differences remain nonexact.",
+    "A replayed34-byte fragment is a diagnostic only and adds no exact credit.",
+    "Shared chapter load, allocation pointer and self-link scheduling remain unresolved; duplicate target loads do not prove volatile.",
+    "Source spelling, original classes/TUs, product closure and runtime behavior remain unproven."
+  ],
+  "constructor_baseline_raw_sha256": "162d73e286634caeed96185bef0720d10cb8a6ca0f49045ec543bd4a016d448d",
+  "large_context_continuity": {
+    "canonical_ten_TU_inputs": 32,
+    "changed_inputs": [],
+    "scope": "source/header input identity only; no new large-owner replay or exact claim"
+  }
+}

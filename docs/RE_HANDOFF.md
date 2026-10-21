@@ -37,37 +37,48 @@ scripts/repo-python scripts/report-reconstruction-status.py
 [Generated progress](PROGRESS.md):1776 reviewed candidates,735 confirmed
 authored functions/273576 bytes,1088 source mappings and1238 exact functions
 overall. Authored exact is **397 functions/72387 bytes (26.46% provisional)**;
-overall exact138897 bytes.605 authored functions now have source,208 remain
+overall exact138897 bytes.605 authored functions have source,208 remain
 source-present/nonexact and130 source-absent. Source-present authored bytes are
 246417/273576 (90.07%).523 origins remain indeterminate; the complete-game
 denominator remains unknown.
 
-The latest [Player state2 and caution work](evidence/player-state2-hint/README.md)
-recovers three complete source bodies:4269D0/796,41A120/220 and424650/104.
-Only HintOwnerView::AddCaution is newly exact: two independent full six-TU cold
-links retain104 bytes/all2 fields and the same raw body. One graph is the
-private final-frozen carrier, the other canonical hint-add-caution under
-`build/match-linked/PlayerState2Hint`. It uses Player's real update entry and
-Hint, ItemManager, AnmManager, AnmVmId and Gui supports. New allocator210/220,
-transition782/796 and parent2808/3089 remain nonexact in this particular graph.
-Bound callee addresses grant no callee-byte credit or original owner/TU claim.
-The unchanged normal-COFF Player wrapper cold-replays7 bytes/all1 field.
+The latest [Hint entry controls](evidence/hint-entry-copy-controls/README.md)
+recover the target position/call instruction shape, chapter-branch direction and
+inlined initialization order using natural source. AddAutomaticEntry now emits
+212/220 in the selected six-TU graph and remains nonexact; no exact count or byte
+credit changes. The34-byte position/call fragment is a diagnostic only. The
+standalone constructor remains51/51 with14 ordinary differences; its raw body
+is unchanged by the selected initialization order. Four-channel initialization
+regresses to242/220 and72/51 and is restored to the packed color assignment.
+Shared chapter loads, allocation-pointer and self-link scheduling remain open;
+do not infer volatile or a unique original spelling from these observations.
 
-Raw ABI review restores Caution's live Player-position argument lost by Ghidra.
-The spell-panel clear deliberately skips frontVm2 and clears seven others.
-Reuse EnemyGameState.hpp's already-reviewed4776F4 view and the canonical Hint
-owner477814; no duplicate GUI/global storage is introduced. Source contracts
-exercise1792 transitions plus one bounded-copy case, actual timer/faith/rank/link/
-constructor/delete bodies, ASan/UBSan/leaks and seven strict functional controls.
-Host role projections do not establish native storage, original construction,
-TH10 runtime or product closure. See the current proof for its validation scope.
+The prior [Player state2 and caution work](evidence/player-state2-hint/README.md)
+recovers three complete source bodies:4269D0/796,41A120/220 and424650/104. It
+added only Caution104 exact. Current independent full six-TU colds still prove
+all104 bytes/all2 fields. Player transition782/796 and parent2808/3089 remain
+nonexact in this graph. Bound callee addresses grant no callee-byte credit or
+original owner/TU claim. The Player wrapper's prior normal-COFF7/all1 cold is
+unchanged; no wrapper replay is needed for this Hint-only edit.
 
-Private current work is `.analysis/gpt-6.1-sol/player-shot-source-20261022/`;
-start with RECOVERY.md and manifest.json. All32 old canonical ten-TU source pins
-are unchanged. The old actual eleven-TU graph changes Player.cpp and is now
-historical: rebuild before using its measurements with current source. The new
-six-TU graph is a different caller context, not an improvement score for the
-three large owners. Native artifacts and recursive inputs are pinned separately.
+The spell-panel clear preserves frontVm2 and clears seven others;4776F4/477814
+reuse the existing panel/Hint views. Faith/rank use existing shared methods.
+Actual-source state2 contracts exercise1792 transitions plus one bounded-copy
+case, sanitizers and seven strict functional controls. Existing lifecycle
+contracts and65 strict intended-CHECK controls also pass with the changed real
+constructor. Host role projections prove neither native storage/private ABI,
+original construction nor TH10 runtime/product closure.
+
+Current private work is `.analysis/gpt-6.1-sol/hint-entry-copy-20261022/`;
+start with RECOVERY.md and manifest.json. The selected private carrier is
+`build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last`, and the independent
+canonical cold is `build/match-linked/PlayerState2Hint`. All five selected native
+bodies repeat raw;30 recursive inputs and both artifact sets are pinned in
+[current evidence](evidence/hint-entry-copy-controls/native-summary.json).
+The prior Player private final-frozen graph remains a historical baseline after
+the Hint edit. All32 canonical ten-TU large-owner source pins remain unchanged;
+the older eleven-TU Player-containing graph remains historical. These six-TU
+measurements are not improvement scores for the three large owners.
 
 Global automatic/manual boundary audit drift remains open:1114 metadata-different
 rows,49 state differences and107 confidence differences, zero geometry differences.
@@ -77,26 +88,19 @@ Earlier [ECL controls](evidence/ecl-storage-controls/README.md) and the
 [17-byte RET4 correction](evidence/leaf-compare-extent/README.md) retain their
 original checkpoints and validation scopes.
 
-## Current checkpoint validation and cleanup
+## Current checkpoint validation
 
-The frozen Player/Hint source passes **106 CI checks**. Two final complete
-six-TU colds, the unchanged7-byte Player wrapper,1792 transition cases plus one
-bounded-copy case and seven strict functional controls all pass. The final
-private carrier is `build/gpt-6.1-sol/player-state2-20261022/final-frozen`;
-both final carriers and30 recursive source/header pins are recorded in
-[current native evidence](evidence/player-state2-hint/native-summary.json).
+The frozen Hint source passes **106 CI checks**. Focused native, state2 and
+lifecycle checks also pass; [validation](evidence/hint-entry-copy-controls/validation-summary.json)
+records their separate scopes. No source, tests or fixtures changed during CI.
+Only validation documentation and ignored-output cleanup follow it. Final
+source/native pins and focused gates are checked again before checkpoint.
 
-[Validation](evidence/player-state2-hint/validation-summary.json) records the
-three earlier incomplete attempts and the bounded Hint frame extractor repair.
-No game source, test source or fixture changed during the successful frozen run.
-Only validation documentation and ignored-output cleanup follow it; repeat the
-focused documentation/tracking/progress/toolchain/whitespace gates before commit.
-
-[Cleanup](evidence/player-state2-hint/cleanup-summary.json) removes5339430 logical
-file bytes. Final carriers, passed receipts and unresolved observations remain;
-superseded initial/typed-position builds, reproducible CI host outputs and
-Git-recoverable baseline copies are pruned. All nine independent D3D files retain
-their prior hashes. The broad reconstruction goal and later phase gates stay open.
+[Cleanup](evidence/hint-entry-copy-controls/cleanup-summary.json) removes6260601
+logical file bytes from three superseded native controls and four reproducible
+CI host-output trees. Current two native carriers, prior private baseline,
+exact input overlays and compact unresolved facts remain. Nine independent D3D
+files and unclassified older state are preserved. Broad reconstruction stays active.
 
 ## Three large owners remain nonexact
 

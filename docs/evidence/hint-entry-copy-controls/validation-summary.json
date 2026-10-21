@@ -1,0 +1,30 @@
+{
+  "full_ci": {
+    "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+    "checks": 106,
+    "exit_code": 0,
+    "log_sha256": "c0cdb77df8850967041c20c175378a72f73108c5cb512c95cd1683bdb3898fba",
+    "scope": "target-independent source/infrastructure checks; no target/native-product runtime claim"
+  },
+  "focused": {
+    "target_toolchain_tracking": "passed fresh target, executed toolchain and tracking preflight",
+    "native": "four variant cold links, one independent selected canonical cold; whole Caution104/all2 passes in each",
+    "source": "1792 transitions plus one bounded-copy case; ASan/UBSan/leaks and seven strict functional controls",
+    "lifecycle": "existing lifecycle suite and65 strict intended-CHECK controls passed",
+    "source_contract_log_sha256": "b210184e0383b441de8a04060172229d4bd77532890684960761604176a34ddd",
+    "lifecycle_log_sha256": "4747a0d3f2aa4f9bf0c6827181c1db4c35ba25de9b23b78c89ab5b1d7a50803c"
+  },
+  "frozen_source_sha256": {
+    "src/Hint.cpp": "a6a6acb7418900f4a94e153843b3ed6a2b5675d197678eeadff50a54076c28a2",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/Player.cpp": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+    "scripts/ci.py": "b74236f2c15d06654d93d6ed6328f8dff937610b7d12efa1311a81b77dcd806d",
+    "scripts/test-player-state2.py": "a9cb07de3136da11fcfdd330ca3b32c2f8130b9e85b917111de920361e91f0eb",
+    "scripts/test-hint-lifecycle.py": "8934ffb9b7aec43e1b7c5cce60e3764eebb3dd89d573caed515ef15ab2fec2da",
+    "scripts/test-hint-frame.py": "cfe15630ddd6a1169ea40cb45df2580971e799659ce69153396cbf8187ab6fa0",
+    "scripts/fixtures/player-state2.cpp": "60b6421b1099ab4610ec2008213f08a6c5387335ba60f967f20bfbd9df843539"
+  },
+  "exact_credit_change": 0,
+  "phase_gates": "native product/runtime open; semantic reconstruction and portability not started",
+  "after_CI": "Only validation documentation and ignored-output cleanup; source and test pins unchanged. Focused gates repeat before commit."
+}
