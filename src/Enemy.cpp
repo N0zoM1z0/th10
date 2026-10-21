@@ -8,6 +8,7 @@
 #include "GuiScore.hpp"
 #include "Gui.hpp"
 #include "EnemySoundQueue.hpp"
+#include "ItemManager.hpp"
 
 #include <math.h>
 #include <new>
@@ -302,9 +303,7 @@ EnemyEclInstructionView *EnemyLookupEclSubroutine(
 void EnemyPlayDeathSound(int soundId, float positionX);
 void EnemySpawnDeathEffect(
     const PlayerFloat3 *position, void *resource, int scriptId);
-void EnemySpawnItem(
-    const PlayerFloat3 *position, int itemType, int owner, float angle, float speed);
-void EnemyDropItemCountsCore(
+void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock);
 
 void __fastcall EnemyUnlinkCallbackNode(
@@ -1827,8 +1826,8 @@ int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy)
 
     if (runtime->itemDropType > 0)
     {
-        EnemySpawnItem(
-            &runtime->worldMotion.position,
+        g_ItemManager->Spawn(
+            reinterpret_cast<const AnmFloat3View *>(&runtime->worldMotion.position),
             runtime->itemDropType,
             -1,
             -1.5707964f,

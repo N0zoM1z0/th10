@@ -1,0 +1,79 @@
+{
+  "state": "passed",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "focused": {
+    "new_owners": 2,
+    "new_bytes": 551,
+    "new_fields": 30,
+    "independent_complete_colds": 2,
+    "owners_per_cold": 28,
+    "complete_bytes_per_cold": 3401,
+    "fields_per_cold": 93,
+    "canonical_units": 3,
+    "canonical_bytes": 645,
+    "canonical_artifact_groups": 2,
+    "host_scenarios": 228,
+    "host_mutants_rejected": 4,
+    "native_template_controls_rejected": 3,
+    "current_large_run_differences": 27
+  },
+  "cleanup": {
+    "directories": 16,
+    "bytes": 17808307,
+    "retained": [
+      "both final cold carriers (canonical cold2 outside this directory)",
+      "old receiver/RNG failure",
+      "final14-byte-prologue failure",
+      "copied-native height rejection",
+      "maintained host positive/mutant receipts"
+    ],
+    "unrelated_d3d": "preserved"
+  },
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  },
+  "standard_ci": {
+    "result": "passed",
+    "steps": 101,
+    "uninterrupted_invocations": 1,
+    "log_sha256": "43f22f49e1ff8e29b8fa90837740b38c129db617795c6080b8942a06a633156e"
+  },
+  "final_focused_comparisons": [
+    {
+      "unit": "enemy-drop-item-counts",
+      "bytes": 48,
+      "fields": 3,
+      "receipt_sha256": "cb74cc877370972c149de07413aa399d1b89af5384d180667d31beb08f5ea25c"
+    },
+    {
+      "unit": "enemy-drop-item-counts-core",
+      "bytes": 503,
+      "fields": 27,
+      "receipt_sha256": "d01a14b7c62fdfe9cccffd9f6c99aa72f39fca978476e054c6bbc7c4d3bf2a23"
+    },
+    {
+      "unit": "enemy-wrap-angle",
+      "bytes": 94,
+      "fields": 6,
+      "receipt_sha256": "3f7e535bac8be648468b99e5e90ecc6c7df39cb91ca665c169cb277ab993894c"
+    }
+  ],
+  "post_ci_pin_validation": {
+    "result": "unchanged",
+    "actual_raw_inputs": 31,
+    "unique_final_native_artifacts": 27,
+    "artifact_pins_sha256": "d246a64e6d0a6ba075fb0d19f42b6e8930428da973e2775880761f03238a0a4a"
+  },
+  "final_gates": [
+    "focused complete new551/all30 and modified WrapAngle94/all6 comparisons",
+    "toolchain declarations",
+    "tracking",
+    "generated progress",
+    "documentation references",
+    "git diff --check"
+  ]
+}

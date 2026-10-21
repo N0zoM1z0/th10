@@ -1,5 +1,6 @@
 #include "Main.hpp"
 #include "EnemySoundQueue.hpp"
+#include "ItemManager.hpp"
 #include "EnemyGameState.hpp"
 #include "EnemyPrimaryResources.hpp"
 #include "Enemy.hpp"
@@ -288,9 +289,6 @@ static __declspec(noinline) void EnemyInitializePositionInterpolation(
     words[0x38 / 4] = 0;
     words[0x30 / 4] = static_cast<unsigned int>(-1);
 }
-extern void EnemySpawnItem(
-    const PlayerFloat3 *position, int itemType, int owner,
-    float angle, float speed);
 extern void EnemySpawnCancelEffect(
     float *position, int kind, int color, float angle, float scale);
 extern int *EnemyCreateCancelVm(void *resource);
@@ -454,8 +452,8 @@ __declspec(noinline) unsigned int EnemyCancelManagerView::CancelBulletPattern(
             EnemyCancelBulletRecord(bullet);
             if (bulletPosition->IsOutsidePlayfield(2.0f, 2.0f) == 0 &&
                 mode != 0) {
-                EnemySpawnItem(
-                    reinterpret_cast<PlayerFloat3 *>(bulletPosition),
+                g_ItemManager->Spawn(
+                    reinterpret_cast<const AnmFloat3View *>(bulletPosition),
                     8, -1, -1.5707964f, 0.6f);
             }
         }
@@ -725,7 +723,7 @@ void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)
     }
 }
 
-extern float __stdcall EnemyWrapAngle(float angle);
+extern __declspec(noinline) float __stdcall EnemyWrapAngle(float angle);
 
 // Target pointer slots: playback at 477838 and statistics at 47783C.
 // Statistics indices and bonus input use receiver-relative slots in the
@@ -987,14 +985,16 @@ struct EnemyDropVectorView
     }
 };
 
-__declspec(noinline) void EnemyDropItemCountsCore(
+// Scatter storage/order informed by th10-decomp (MIT), commit
+// c6791d82dc9f02e55eca45a5314f900a85481efd; TH10 target/native evidence is authoritative.
+// See docs/licenses/th10-decomp-MIT.txt.
+__declspec(noinline) void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock)
 {
-    int *counts = itemDropBlock + 1;
     float angle = g_RngView.GetRandomF32Signed() * 3.1415927f;
 
     for (int itemIndex = 0; itemIndex < 11; ++itemIndex) {
-        for (int i = 0; i < counts[itemIndex]; ++i) {
+        for (int i = 0; i < itemDropBlock[itemIndex + 1]; ++i) {
             EnemyDropVectorView offset;
             offset.FromAngleRadii(
                 angle,
@@ -1002,26 +1002,24 @@ __declspec(noinline) void EnemyDropItemCountsCore(
                 reinterpret_cast<float *>(itemDropBlock)[14]);
 
             unsigned int radiusBits = g_RngView.GetRandomU32();
+            // VC7.1 supplies the target unsigned high-bit correction once.
             float radiusScale = static_cast<float>(radiusBits);
-            if (static_cast<int>(radiusBits) < 0) {
-                radiusScale += 4294967296.0f;
-            }
+            const float height = position->z;
             radiusScale =
                 radiusScale * 1.1641532182693481e-10f + 0.5f;
 
-            PlayerFloat3 dropPosition;
-            dropPosition.x = position->x + offset.x * radiusScale;
-            dropPosition.y = position->y + offset.y * radiusScale;
-            dropPosition.z = position->z;
+            offset.x *= radiusScale;
+            offset.y *= radiusScale;
+            offset.x += position->x;
+            offset.y += position->y;
+            offset.z = height;
 
-            EnemySpawnItem(
-                &dropPosition, itemIndex + 1, -1, -1.5707964f, 2.2f);
+            g_ItemManager->Spawn(
+                reinterpret_cast<const AnmFloat3View *>(&offset),
+                itemIndex + 1, 0xffffffffu, -1.5707964f, 2.2f);
 
             unsigned int angleBits = g_RngView.GetRandomU32();
             float angleRandom = static_cast<float>(angleBits);
-            if (static_cast<int>(angleBits) < 0) {
-                angleRandom += 4294967296.0f;
-            }
             angleRandom =
                 angleRandom * 4.656612873077393e-10f - 1.0f;
             angle = EnemyWrapAngle(
@@ -1029,15 +1027,16 @@ __declspec(noinline) void EnemyDropItemCountsCore(
         }
     }
 
-    memset(counts, 0, 12 * sizeof(int));
+    memset(itemDropBlock + 1, 0, 12 * sizeof(int));
 }
 
 static __declspec(noinline) void EnemyDropItemCounts(
     const PlayerFloat3 *position, int *itemDropBlock)
 {
     if (*itemDropBlock > 0) {
-        EnemySpawnItem(
-            position, *itemDropBlock, -1, -1.5707964f, 2.2f);
+        g_ItemManager->Spawn(
+            reinterpret_cast<const AnmFloat3View *>(position),
+            *itemDropBlock, -1, -1.5707964f, 2.2f);
     }
     EnemyDropItemCountsCore(position, itemDropBlock);
     *itemDropBlock = 0;
@@ -1052,7 +1051,7 @@ static float EnemyAbsoluteFloat(float value)
 
 // Target 0x0044BC70-0x0044BCCD wraps one angle into the signed-pi interval.
 // The shared counter and 32-iteration guard are both visible in the target.
-float __stdcall EnemyWrapAngle(float angle)
+__declspec(noinline) float __stdcall EnemyWrapAngle(float angle)
 {
     int i = 0;
     while (angle > 3.1415927f)

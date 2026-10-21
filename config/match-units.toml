@@ -23083,3 +23083,70 @@ linkages = [
   { offset = 0x72, type = "DIR32", symbol = "__imp__LeaveCriticalSection@4", target = 0x004660B4 },
   { offset = 0x78, type = "DIR32", symbol = "?gReplayFileOpenCount@@3EA", target = 0x0049231E },
 ]
+
+# Complete drop wrapper/core in the real ten-TU ItemManager caller graph.
+[units.enemy-drop-item-counts]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/AnmInt3Scale.cpp", "src/ItemManager.cpp"]
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+output_dir = "build/match-linked/EnemyItemDrops"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+owner_visibility = "static"
+pdb_source = "src/EnemyEclDispatcher.cpp"
+functions = ["EnemyDropItemCounts"]
+symbol = "?EnemyDropItemCounts@@YAXPBUPlayerFloat3@@PAH@Z"
+target_address = 0x0040C9A0
+size = 48
+linkages = [
+  { offset = 0x17, type = "DIR32", symbol = "?g_ItemManager@@3PAUItemManagerView@@A", target = 0x00477818 },
+  { offset = 0x1E, type = "REL32", symbol = "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z", target = 0x0041BB00 },
+  { offset = 0x24, type = "REL32", symbol = "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z", target = 0x0040C9D0 },
+]
+
+[units.enemy-drop-item-counts-core]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/AnmInt3Scale.cpp", "src/ItemManager.cpp"]
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+output_dir = "build/match-linked/EnemyItemDrops"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+functions = ["EnemyDropItemCountsCore"]
+symbol = "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z"
+target_address = 0x0040C9D0
+size = 503
+linkages = [
+  { offset = 0xB, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0x10, type = "REL32", target = 0x0044BB90, symbol = "?GetRandomF32Signed@RngView@@QAEMXZ" },
+  { offset = 0x16, type = "DIR32", target = 0x00470B18, symbol = "__real@40490fdb" },
+  { offset = 0x52, type = "REL32", target = 0x00413270, symbol = "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z" },
+  { offset = 0x57, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0x7A, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0x7F, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0x85, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A", addend = 4 },
+  { offset = 0xA8, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0xBC, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A", addend = 4 },
+  { offset = 0xC8, type = "DIR32", target = 0x00470B98, symbol = "__real@4f800000" },
+  { offset = 0xD5, type = "DIR32", target = 0x00470D18, symbol = "__real@2f000000" },
+  { offset = 0xE5, type = "DIR32", target = 0x00470B0C, symbol = "__real@3f000000" },
+  { offset = 0xF2, type = "DIR32", target = 0x00477818, symbol = "?g_ItemManager@@3PAUItemManagerView@@A" },
+  { offset = 0x11E, type = "REL32", target = 0x0041BB00, symbol = "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z" },
+  { offset = 0x123, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0x146, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0x14B, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0x151, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A", addend = 4 },
+  { offset = 0x174, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A" },
+  { offset = 0x188, type = "DIR32", target = 0x004918B0, symbol = "?g_RngView@@3URngView@@A", addend = 4 },
+  { offset = 0x194, type = "DIR32", target = 0x00470B98, symbol = "__real@4f800000" },
+  { offset = 0x19A, type = "DIR32", target = 0x00470BEC, symbol = "__real@30000000" },
+  { offset = 0x1A1, type = "DIR32", target = 0x00470AFC, symbol = "__real@3f800000" },
+  { offset = 0x1A7, type = "DIR32", target = 0x00470C48, symbol = "__real@3f490fdb" },
+  { offset = 0x1B1, type = "DIR32", target = 0x00470B94, symbol = "__real@3fc90fdb" },
+  { offset = 0x1B9, type = "REL32", target = 0x0044BC70, symbol = "?EnemyWrapAngle@@YGMM@Z" },
+]

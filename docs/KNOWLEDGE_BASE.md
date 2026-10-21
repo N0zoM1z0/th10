@@ -4200,3 +4200,44 @@ branch destinations and exact144-byte callee binding. It treats calls as
 returning and predicates as unconstrained; argument/runtime equivalence remains
 unproven. Root105/106 physical calls and whole-function nonexactness remain.
 See the read-open receipt's enemy_count_cfg for the bounded observation.
+
+
+### 2026-10-21: Enemy item scatter receiver, conversion and storage
+
+[Item-scatter evidence](evidence/enemy-item-scatter/README.md) closes the existing
+48-byte wrapper40C9A0 and503-byte core40C9D0, all3+27 fields, without changing
+boundaries, source mappings or denominator. Four maintained callers now load the
+real ItemManager receiver and invoke its ordinary Spawn member; target private
+EAX manager/ECX position/four stack arguments RET16 arises naturally with the
+actual ItemManager.cpp present. The prior free declaration omitted the receiver.
+Spawn795/819 and FinalizeDeath246/162 remain nonexact in this ten-TU graph.
+
+For each random unsigned dword VC7.1 already emits the high-bit float conversion
+correction. The old manual signed test added a second correction absent from TH10.
+The core now uses ordinary unsigned conversion once. One existing three-float
+vector carries offset then final position; height is read before scaling. Angle
+wrap remains a separate call; direct block indexing avoids a counts-pointer
+spill. Eleven item kinds are looped, twelve count words cleared. Ordinary stdcall
+recovers core ESI/stack/RET4, and the static wrapper recovers EAX/EDI. These are
+compatible source/codegen observations, not original spelling/annotation/TU facts.
+The MIT th10-decomp reference suggests storage/order only; no assembly scaffold
+or adjacent-game layout is substituted for TH10 evidence.
+
+GenerationCount4918B4 binds actual RngView4918B0 +4. The diagnostic linker can
+place an unrelated cookie fallback label at that same native address; nearest
+label is not semantic identity. Full independent field inventory and target
+literal-bit review reject the tempting wrong binding. Two complete ten-TU colds
+freeze31 equal raw inputs and pass28 complete owners3401/all93 each. Canonical
+replay selects new551 plus modified WrapAngle94 only. Wrong count addend, wrong
+manager target and native height displacement8->4 reject; target stays read-only.
+The maintained host projection passes228 numeric/sequence/clear scenarios under
+sanitizers and rejects4 mutants, without an i386 ABI/rounding or game-runtime claim.
+
+Current large graph Run7020/all189/62locals retains27 ordinary differences; the
+old two-TU26 is historical after Enemy source changes. Full native ANM/Run bodies
+remain equal after verified field rewrites, while dispatcher changes two ordinary
+bytes and stays14468/14416, frame2C4,19 sentinels,40/108 same-size groups/gap652.
+Fresh prologue review has packetESI in both target/native, target switchECX versus
+nativeEDI; a private old target-packetECX claim was wrong. Target branches reload
+opcode after operand calls, so caching it is unsupported. All three large owners
+remain active/nonexact. No native-product/runtime/semantic/port gate closes.

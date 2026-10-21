@@ -1,0 +1,2067 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "7bd9e60e21a8c18225383fb2bc22b897eb9609c3",
+  "scope": "Complete two already-reviewed authored owners551/all30; no boundary/origin/source-map/denominator expansion or parent/product/runtime/semantic/port credit",
+  "source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "d9136b7bf7c4ab2725ae507c9b077f7b2110853e047776c6fbf9d0e8163f2978",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "0371b2d0ec4acc3973dc70abc69d8afe045b9ea1d1f789abd5563fe23d30eefe",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "373ea005be2a6dd7dbe25193afc803e52078a4dcdf51172b2d0bdf1b66d67faa",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "graph": {
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+  },
+  "independent_complete_cold_builds": [
+    {
+      "label": "final-cold1",
+      "scope": "Independent complete ten-TU cold compile/link, fresh unresolved-symbol harness; no cached object reuse",
+      "artifacts": {
+        "object": {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/source.ltcg.obj",
+          "sha256": "4ed6d9f09ff3c6e5912fd8ee234974d1facecdf9a3855ab55e6dc512538fa9c1"
+        },
+        "image": {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/source.exe",
+          "sha256": "48a70bed532c6fce1288a850cbe8a565fa206c43e5ea9a93b9dad76e941b02ab"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/source.map",
+          "sha256": "255679d9c28907db55ec9e4e6de7d2e261fe4f1b2aaeccd220fe9b32c7ba46ab"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/source.pdb",
+          "sha256": "d97f353ed5fb0a23d9ea3f059034f8676f45561003a207d5816bef5c62533935"
+        }
+      },
+      "support_objects": [
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-00-EclVm.ltcg.obj",
+          "sha256": "ec3c0ef8e330252f63fcbe9d0e4617fa78d7e6a70d37bfee9d8956dfe5bce0eb"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-01-AnmManager.ltcg.obj",
+          "sha256": "554df87d48215f9f8138ae517c0b55742601882938a90c0ab190568b076fcc78"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-02-AnmVmCreate.ltcg.obj",
+          "sha256": "f3787039a1a97bb2e49d016e56e2585a09930aeee1997fd6eb71187c2ceada52"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-03-EnemyLaser.ltcg.obj",
+          "sha256": "30ddc23dd05454c3d49f270f12eefb476e202605493b0011a9a570c60a0efe1b"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-04-Enemy.ltcg.obj",
+          "sha256": "f7c0b9ec0fbe176083f84e34c5029c7c9e0cf92e76839c8d509dcc66b0e561b9"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-05-AnmVmId.ltcg.obj",
+          "sha256": "099dd6b6458a856d68777eed870cc8439303adfe47e2705044fca226539d426c"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-06-RandomMath.ltcg.obj",
+          "sha256": "5a9757703476ab9d3af1b4a216a276c2269c77f6a68dc89e4e91cedd3a34c343"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-07-AnmInt3Scale.ltcg.obj",
+          "sha256": "7446329cbe25650fd782e09cb72ae678fc6d1bf2507c01cb801964d87a57e0bd"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/support-08-ItemManager.ltcg.obj",
+          "sha256": "a1fa67de6efd9bdacaeea743265be46cc298b0f67695b8b0a74f3e6155c77674"
+        }
+      ],
+      "owners": [
+        {
+          "unit": "enemy-drop-item-counts",
+          "address": "0x0040C9A0",
+          "size": 48,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00402650",
+          "candidate_raw_sha256": "511b1d7fe3ad196d16f0269b8dff2f1cced981201c8f7a1f33fc14db51d4f29e",
+          "target_raw_sha256": "7bc373bbe59556127dec2e813dd10090c62696f916dd44716992b592eeb54820"
+        },
+        {
+          "unit": "enemy-drop-item-counts-core",
+          "address": "0x0040C9D0",
+          "size": 503,
+          "fields": 27,
+          "result": "exact",
+          "candidate_address": "0x00402450",
+          "candidate_raw_sha256": "aa08aff97b98fad541928525a3ade4223aad0a73bfdd39d069792f2de7b65eb3",
+          "target_raw_sha256": "4c1cb8ba88a59ea2e5b89fd300b959e7181c57d48f0dab7758fc9d2554392eba"
+        },
+        {
+          "unit": "enemy-wrap-angle",
+          "address": "0x0044BC70",
+          "size": 94,
+          "fields": 6,
+          "result": "exact",
+          "candidate_address": "0x004026A0",
+          "candidate_raw_sha256": "b94f7dad71f09be2593c42b746b848637965518e0adad1942564782f4dda44e9",
+          "target_raw_sha256": "4dc88fb434a79c65fdf821a9f617a73fac7b621aa48a980a8d7ef9bad55178ba"
+        },
+        {
+          "unit": "rng-get-random-u16",
+          "address": "0x0044B9B0",
+          "size": 39,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x00417E30",
+          "candidate_raw_sha256": "3355983b4b965fc6809688596e9cd484d8b07b905e78d6878d0c7194a9bfb4a1",
+          "target_raw_sha256": "3355983b4b965fc6809688596e9cd484d8b07b905e78d6878d0c7194a9bfb4a1"
+        },
+        {
+          "unit": "rng-get-random-u32",
+          "address": "0x0044B9E0",
+          "size": 78,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x00417E60",
+          "candidate_raw_sha256": "2b20fcb8a0ece13f7f1465509980c2681494efcbbf532a71a2baaa4404973d09",
+          "target_raw_sha256": "2b20fcb8a0ece13f7f1465509980c2681494efcbbf532a71a2baaa4404973d09"
+        },
+        {
+          "unit": "rng-get-random-f32",
+          "address": "0x0044BB20",
+          "size": 109,
+          "fields": 2,
+          "result": "exact",
+          "candidate_address": "0x00417EB0",
+          "candidate_raw_sha256": "b383c5bb8040a842342efa7a4b9c9a65c542b67eedf082282157ef1f825a6f7b",
+          "target_raw_sha256": "4a34b5f81cf42c148f1654aab70226e2aca038bc770d8bd58999cf7745d11667"
+        },
+        {
+          "unit": "rng-get-random-f32-signed",
+          "address": "0x0044BB90",
+          "size": 115,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00417F20",
+          "candidate_raw_sha256": "109a7d2875e30b464bcc1387207ca32eb567b7df38aa988b34959d0d9d76a8e5",
+          "target_raw_sha256": "30a9e36f9995b3708cf740d70b7070158ebaa63937bcdaa8068f5402a88485b2"
+        },
+        {
+          "unit": "ecl-vm-read-float",
+          "address": "0x0044FE40",
+          "size": 183,
+          "fields": 4,
+          "result": "exact",
+          "candidate_address": "0x00406530",
+          "candidate_raw_sha256": "96cb0f18def3f5ff8d0732c60cf7287550becddae4fe2924e369d526b47ff31c",
+          "target_raw_sha256": "2ca538193891653fac19d37bf3da384a61d399b71e590c34be12a3f1222d54d9"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "address": "0x0044FDB0",
+          "size": 144,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x004063F0",
+          "candidate_raw_sha256": "cacfe962eecdd2e0bfca5a38337eec3189bdaae5c27a869b85690c65e8846e75",
+          "target_raw_sha256": "81b1a03f6b065bb35a8482733cd9e6bd8d240d64241a9dd97b0bc488b0615736"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "address": "0x0044FF00",
+          "size": 124,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00406370",
+          "candidate_raw_sha256": "14c6e6a12809b2a7db842d0940d63df32d40c71ee8f811285a40b85f61e2ed68",
+          "target_raw_sha256": "6e1d448146ac92d1779388e0d07179a95950b94a8a9013fdf662518bf1edf0f9"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "address": "0x0044FF80",
+          "size": 171,
+          "fields": 4,
+          "result": "exact",
+          "candidate_address": "0x00406480",
+          "candidate_raw_sha256": "4e93cf4f670c106d0e7e82c54628043dc5efe04ae805fb4076d4fe72b90f39f0",
+          "target_raw_sha256": "a5d002df2a338ac482ceb008546447eac1fb0ff526f5acd035282dc7dedcb4c8"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "address": "0x00450030",
+          "size": 58,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x004065F0",
+          "candidate_raw_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4",
+          "target_raw_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "address": "0x00450070",
+          "size": 93,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00406630",
+          "candidate_raw_sha256": "a4c32f81489a2e0bd87ebda9841340f79f6b9bccbd779781a7f1f8d9b9539c06",
+          "target_raw_sha256": "e16795d700fcaf021ef295164abe6e20ea1a05f724c508f3c7396e6c3718420b"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "address": "0x0044FD10",
+          "size": 146,
+          "fields": 4,
+          "result": "exact",
+          "candidate_address": "0x00406B80",
+          "candidate_raw_sha256": "16ae575ae81c2e3edd661f27e005fb6bae93646879f672a88900b3c1475f54d3",
+          "target_raw_sha256": "009341c6a7d4a5e2c0eb2536c14e4ca4d2452f6bb01152faae149e9e95a20eb3"
+        },
+        {
+          "unit": "anm-release-slot",
+          "address": "0x004477D0",
+          "size": 55,
+          "fields": 2,
+          "result": "exact",
+          "candidate_address": "0x0040C1C0",
+          "candidate_raw_sha256": "551d3281fd854e6779aea8231ea69e273b4348d35d1fe11939364b9aa1887e31",
+          "target_raw_sha256": "9b65d0872204662d27d6b0d219904ddf2180f880191e29ce3f793585a1bcad16"
+        },
+        {
+          "unit": "enemy-mark-pending-interrupt",
+          "address": "0x00409E50",
+          "size": 65,
+          "fields": 2,
+          "result": "exact",
+          "candidate_address": "0x004016F0",
+          "candidate_raw_sha256": "a3f5ebf01d815d43dcf00031076bd7eb7306d9f7cdfb0bad80ad1b58a4af0f98",
+          "target_raw_sha256": "0a35ed9851dc77170b5cf52b1c71ef867c11085930210c8d53bf64bc49b0d669"
+        },
+        {
+          "unit": "enemy-sound-queue-sample",
+          "address": "0x0043DC90",
+          "size": 123,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00401A20",
+          "candidate_raw_sha256": "78b77250d27238d90d009cd8937ddab2ee933eaae221591d99cd577c8907f606",
+          "target_raw_sha256": "29730584bd142aae7f8bb5fc12e03afd883a8d705186ef0719353c8c533249ff"
+        },
+        {
+          "unit": "enemy-sound-queue-cue",
+          "address": "0x0043DD10",
+          "size": 149,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00401980",
+          "candidate_raw_sha256": "f28060aec6e8405ccacadf0193477c85fd77b2289eccba1990ca3c6215dfce8a",
+          "target_raw_sha256": "d9c92e8fca661f63f3dfbaafa74d8854bc1c675f9009260bce3f967450a798e4"
+        },
+        {
+          "unit": "enemy-drop-vector-from-angle-radii",
+          "address": "0x00413270",
+          "size": 30,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x00402430",
+          "candidate_raw_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7",
+          "target_raw_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7"
+        },
+        {
+          "unit": "enemy-resolve-int-argument",
+          "address": "0x00412A10",
+          "size": 75,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x00402710",
+          "candidate_raw_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5",
+          "target_raw_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5"
+        },
+        {
+          "unit": "enemy-enable-shield",
+          "address": "0x0040CEA0",
+          "size": 36,
+          "fields": 2,
+          "result": "exact",
+          "candidate_address": "0x00401740",
+          "candidate_raw_sha256": "8daeede636eb68a16fd1d5b99f914cc546d30f011911a43223a3c382c700bdb9",
+          "target_raw_sha256": "1c1dd422513bb0b84bb90b14bef42066850ecc08e564f1682289cbaff494a669"
+        },
+        {
+          "unit": "enemy-read-int-argument",
+          "address": "0x00412A00",
+          "size": 16,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00402700",
+          "candidate_raw_sha256": "1ceebb304839c88fa8ba050446524a5a171084c0af02b2ff9600aa437fc4e843",
+          "target_raw_sha256": "011e482e29a35c44f9839c0311646c34eb280cd7460b68b5281c2ce69788f1bb"
+        },
+        {
+          "unit": "enemy-read-float-argument",
+          "address": "0x00412A60",
+          "size": 14,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00402760",
+          "candidate_raw_sha256": "1da3ebb7b2580888f265695e503edbbee2d92f347f7377a026c9a6b460b50a89",
+          "target_raw_sha256": "6d022962c002638e76dde7e120e89d6bc2ac8d7f151997ac28b69b584ae13ead"
+        },
+        {
+          "unit": "enemy-resolve-float-argument",
+          "address": "0x00412A70",
+          "size": 14,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00402770",
+          "candidate_raw_sha256": "166256aacafe8a082044fd06bfd94c6dc85db2496da0008003ea7537de4479f5",
+          "target_raw_sha256": "7c1c4ea26c59be6fcefa7b1dab9b62cd3203dd54af1bad8450e259e6ee74fbbd"
+        },
+        {
+          "unit": "enemy-read-raw-int-argument",
+          "address": "0x00412A80",
+          "size": 17,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00402780",
+          "candidate_raw_sha256": "51a0cec2d428502ebff1754c6dfb34e8d58326af1e5af6adab536bd8af086f25",
+          "target_raw_sha256": "877b71604ba676cea4995ec6ece70aab92f58313cdbf0711b2667ad6c6da8439"
+        },
+        {
+          "unit": "enemy-read-raw-float-argument",
+          "address": "0x00412AA0",
+          "size": 26,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x004027A0",
+          "candidate_raw_sha256": "a9b439559537b0464840516b332f17eff1daee51941bee87bf705997b9692727",
+          "target_raw_sha256": "7d9f7ac705c667da213ec6f2fa250f968a14a7ac0d6e330543272186e75f8316"
+        },
+        {
+          "unit": "anm-int3-scale",
+          "address": "0x00441E50",
+          "size": 56,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00417FA0",
+          "candidate_raw_sha256": "2d6e180a2aa55e46be3bc65fbc124200f2e0036cd3f5cae97a82f0c2ad14ce93",
+          "target_raw_sha256": "d7776001d2a71560f4e42043290e9e79203585c26e8811f241710d9ffec3ba63"
+        },
+        {
+          "unit": "anm-evaluate-rgb-interpolation",
+          "address": "0x00441600",
+          "size": 820,
+          "fields": 17,
+          "result": "exact",
+          "candidate_address": "0x004095E0",
+          "candidate_raw_sha256": "15ef42a99c3c97dd7683cc63bcd449c02e2bc5ad6980816baed36bafb5992059",
+          "target_raw_sha256": "e0802c707f0621329cdda8d2aa13e2ca47f4a9645bb1236677f8a0464d8589a1"
+        }
+      ],
+      "complete_bytes": 3401,
+      "fields": 93
+    },
+    {
+      "label": "canonical-cold2",
+      "scope": "Independent complete ten-TU cold compile/link, fresh unresolved-symbol harness; no cached object reuse",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/EnemyItemDrops/source.exe",
+          "sha256": "6412af74cf149d76b4861dc9f13c0c801b75a17cc3497d53eedc01464e986dde"
+        },
+        "map": {
+          "path": "build/match-linked/EnemyItemDrops/source.map",
+          "sha256": "8cb5a39f0c318fc5b487c2e8894584609c97b3f95dd2969e3e80b59dd91ae7d7"
+        },
+        "pdb": {
+          "path": "build/match-linked/EnemyItemDrops/source.pdb",
+          "sha256": "40c097b8cfdc5701b57f363923c8c5c8c378b613c153d1c1f181e0bf2f7058fc"
+        },
+        "object": {
+          "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+          "sha256": "1198287728b7f63d1ec1c5818be503a4176d704254891a512ad33fe43ef37a83"
+        }
+      },
+      "support_objects": [
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+          "sha256": "a56a8dd3e3592d52f82d390ac3426c011df972f444122f119266064ceca5b50b"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+          "sha256": "0d966b3f1f1d1acfea0499517e07ce620f9876195b30733f17bedbb2274bcda4"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+          "sha256": "df5ca54484065f9815c92db702be3d87a2ba7a1e3ea15c12f17c42e472257222"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+          "sha256": "f7a2c9e9ced6ece6b2c183f1c5a084c7f37fbaa318ae920868db6cb3a2b67f83"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+          "sha256": "a8b4e659fedde33bf8aa480cde045e535db5699c179c35d2dcea1c50fe0bb0be"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+          "sha256": "cf4c2784a48482e7f92e37324638018eded83dcc6339db164d63a39c4aa14fbd"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+          "sha256": "b88db59ecda1e9ace4c9a34d3c6c49dd54d3307c28f9afb3b4cfcd71cfe1bd4c"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+          "sha256": "751304550fd1738f6ceadd2fb0be8bff63b1a543fb8188f1aa23560eb5010c7b"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+          "sha256": "43948815d1aa78da466418d6a66d07251d7460f78f206943da37286dd5725020"
+        }
+      ],
+      "owners": [
+        {
+          "unit": "enemy-drop-item-counts",
+          "address": "0x0040C9A0",
+          "size": 48,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00402650",
+          "candidate_raw_sha256": "511b1d7fe3ad196d16f0269b8dff2f1cced981201c8f7a1f33fc14db51d4f29e",
+          "target_raw_sha256": "7bc373bbe59556127dec2e813dd10090c62696f916dd44716992b592eeb54820"
+        },
+        {
+          "unit": "enemy-drop-item-counts-core",
+          "address": "0x0040C9D0",
+          "size": 503,
+          "fields": 27,
+          "result": "exact",
+          "candidate_address": "0x00402450",
+          "candidate_raw_sha256": "aa08aff97b98fad541928525a3ade4223aad0a73bfdd39d069792f2de7b65eb3",
+          "target_raw_sha256": "4c1cb8ba88a59ea2e5b89fd300b959e7181c57d48f0dab7758fc9d2554392eba"
+        },
+        {
+          "unit": "enemy-wrap-angle",
+          "address": "0x0044BC70",
+          "size": 94,
+          "fields": 6,
+          "result": "exact",
+          "candidate_address": "0x004026A0",
+          "candidate_raw_sha256": "b94f7dad71f09be2593c42b746b848637965518e0adad1942564782f4dda44e9",
+          "target_raw_sha256": "4dc88fb434a79c65fdf821a9f617a73fac7b621aa48a980a8d7ef9bad55178ba"
+        },
+        {
+          "unit": "rng-get-random-u16",
+          "address": "0x0044B9B0",
+          "size": 39,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x00417E30",
+          "candidate_raw_sha256": "3355983b4b965fc6809688596e9cd484d8b07b905e78d6878d0c7194a9bfb4a1",
+          "target_raw_sha256": "3355983b4b965fc6809688596e9cd484d8b07b905e78d6878d0c7194a9bfb4a1"
+        },
+        {
+          "unit": "rng-get-random-u32",
+          "address": "0x0044B9E0",
+          "size": 78,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x00417E60",
+          "candidate_raw_sha256": "2b20fcb8a0ece13f7f1465509980c2681494efcbbf532a71a2baaa4404973d09",
+          "target_raw_sha256": "2b20fcb8a0ece13f7f1465509980c2681494efcbbf532a71a2baaa4404973d09"
+        },
+        {
+          "unit": "rng-get-random-f32",
+          "address": "0x0044BB20",
+          "size": 109,
+          "fields": 2,
+          "result": "exact",
+          "candidate_address": "0x00417EB0",
+          "candidate_raw_sha256": "b383c5bb8040a842342efa7a4b9c9a65c542b67eedf082282157ef1f825a6f7b",
+          "target_raw_sha256": "4a34b5f81cf42c148f1654aab70226e2aca038bc770d8bd58999cf7745d11667"
+        },
+        {
+          "unit": "rng-get-random-f32-signed",
+          "address": "0x0044BB90",
+          "size": 115,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00417F20",
+          "candidate_raw_sha256": "109a7d2875e30b464bcc1387207ca32eb567b7df38aa988b34959d0d9d76a8e5",
+          "target_raw_sha256": "30a9e36f9995b3708cf740d70b7070158ebaa63937bcdaa8068f5402a88485b2"
+        },
+        {
+          "unit": "ecl-vm-read-float",
+          "address": "0x0044FE40",
+          "size": 183,
+          "fields": 4,
+          "result": "exact",
+          "candidate_address": "0x00406530",
+          "candidate_raw_sha256": "96cb0f18def3f5ff8d0732c60cf7287550becddae4fe2924e369d526b47ff31c",
+          "target_raw_sha256": "2ca538193891653fac19d37bf3da384a61d399b71e590c34be12a3f1222d54d9"
+        },
+        {
+          "unit": "ecl-vm-read-int",
+          "address": "0x0044FDB0",
+          "size": 144,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x004063F0",
+          "candidate_raw_sha256": "cacfe962eecdd2e0bfca5a38337eec3189bdaae5c27a869b85690c65e8846e75",
+          "target_raw_sha256": "81b1a03f6b065bb35a8482733cd9e6bd8d240d64241a9dd97b0bc488b0615736"
+        },
+        {
+          "unit": "ecl-vm-read-int-value",
+          "address": "0x0044FF00",
+          "size": 124,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00406370",
+          "candidate_raw_sha256": "14c6e6a12809b2a7db842d0940d63df32d40c71ee8f811285a40b85f61e2ed68",
+          "target_raw_sha256": "6e1d448146ac92d1779388e0d07179a95950b94a8a9013fdf662518bf1edf0f9"
+        },
+        {
+          "unit": "ecl-vm-read-float-value",
+          "address": "0x0044FF80",
+          "size": 171,
+          "fields": 4,
+          "result": "exact",
+          "candidate_address": "0x00406480",
+          "candidate_raw_sha256": "4e93cf4f670c106d0e7e82c54628043dc5efe04ae805fb4076d4fe72b90f39f0",
+          "target_raw_sha256": "a5d002df2a338ac482ceb008546447eac1fb0ff526f5acd035282dc7dedcb4c8"
+        },
+        {
+          "unit": "ecl-vm-resolve-int",
+          "address": "0x00450030",
+          "size": 58,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x004065F0",
+          "candidate_raw_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4",
+          "target_raw_sha256": "c5ef954c63756cabaa54d70f0b7c1d23fa347e3d5ee57646b8c5d1d049d73da4"
+        },
+        {
+          "unit": "ecl-vm-resolve-float",
+          "address": "0x00450070",
+          "size": 93,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00406630",
+          "candidate_raw_sha256": "a4c32f81489a2e0bd87ebda9841340f79f6b9bccbd779781a7f1f8d9b9539c06",
+          "target_raw_sha256": "e16795d700fcaf021ef295164abe6e20ea1a05f724c508f3c7396e6c3718420b"
+        },
+        {
+          "unit": "ecl-vm-host-run",
+          "address": "0x0044FD10",
+          "size": 146,
+          "fields": 4,
+          "result": "exact",
+          "candidate_address": "0x00406B80",
+          "candidate_raw_sha256": "16ae575ae81c2e3edd661f27e005fb6bae93646879f672a88900b3c1475f54d3",
+          "target_raw_sha256": "009341c6a7d4a5e2c0eb2536c14e4ca4d2452f6bb01152faae149e9e95a20eb3"
+        },
+        {
+          "unit": "anm-release-slot",
+          "address": "0x004477D0",
+          "size": 55,
+          "fields": 2,
+          "result": "exact",
+          "candidate_address": "0x0040C1C0",
+          "candidate_raw_sha256": "551d3281fd854e6779aea8231ea69e273b4348d35d1fe11939364b9aa1887e31",
+          "target_raw_sha256": "9b65d0872204662d27d6b0d219904ddf2180f880191e29ce3f793585a1bcad16"
+        },
+        {
+          "unit": "enemy-mark-pending-interrupt",
+          "address": "0x00409E50",
+          "size": 65,
+          "fields": 2,
+          "result": "exact",
+          "candidate_address": "0x004016F0",
+          "candidate_raw_sha256": "a3f5ebf01d815d43dcf00031076bd7eb7306d9f7cdfb0bad80ad1b58a4af0f98",
+          "target_raw_sha256": "0a35ed9851dc77170b5cf52b1c71ef867c11085930210c8d53bf64bc49b0d669"
+        },
+        {
+          "unit": "enemy-sound-queue-sample",
+          "address": "0x0043DC90",
+          "size": 123,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00401A20",
+          "candidate_raw_sha256": "78b77250d27238d90d009cd8937ddab2ee933eaae221591d99cd577c8907f606",
+          "target_raw_sha256": "29730584bd142aae7f8bb5fc12e03afd883a8d705186ef0719353c8c533249ff"
+        },
+        {
+          "unit": "enemy-sound-queue-cue",
+          "address": "0x0043DD10",
+          "size": 149,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00401980",
+          "candidate_raw_sha256": "f28060aec6e8405ccacadf0193477c85fd77b2289eccba1990ca3c6215dfce8a",
+          "target_raw_sha256": "d9c92e8fca661f63f3dfbaafa74d8854bc1c675f9009260bce3f967450a798e4"
+        },
+        {
+          "unit": "enemy-drop-vector-from-angle-radii",
+          "address": "0x00413270",
+          "size": 30,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x00402430",
+          "candidate_raw_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7",
+          "target_raw_sha256": "b081646cca0de493a8c0706db4b6692595201505c98537d05de1f6d08b57baf7"
+        },
+        {
+          "unit": "enemy-resolve-int-argument",
+          "address": "0x00412A10",
+          "size": 75,
+          "fields": 0,
+          "result": "exact",
+          "candidate_address": "0x00402710",
+          "candidate_raw_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5",
+          "target_raw_sha256": "d245b374b82a7dfb5e158fe9a4f88236e218c735d5112e0b5ee49915347b72d5"
+        },
+        {
+          "unit": "enemy-enable-shield",
+          "address": "0x0040CEA0",
+          "size": 36,
+          "fields": 2,
+          "result": "exact",
+          "candidate_address": "0x00401740",
+          "candidate_raw_sha256": "8daeede636eb68a16fd1d5b99f914cc546d30f011911a43223a3c382c700bdb9",
+          "target_raw_sha256": "1c1dd422513bb0b84bb90b14bef42066850ecc08e564f1682289cbaff494a669"
+        },
+        {
+          "unit": "enemy-read-int-argument",
+          "address": "0x00412A00",
+          "size": 16,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00402700",
+          "candidate_raw_sha256": "1ceebb304839c88fa8ba050446524a5a171084c0af02b2ff9600aa437fc4e843",
+          "target_raw_sha256": "011e482e29a35c44f9839c0311646c34eb280cd7460b68b5281c2ce69788f1bb"
+        },
+        {
+          "unit": "enemy-read-float-argument",
+          "address": "0x00412A60",
+          "size": 14,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00402760",
+          "candidate_raw_sha256": "1da3ebb7b2580888f265695e503edbbee2d92f347f7377a026c9a6b460b50a89",
+          "target_raw_sha256": "6d022962c002638e76dde7e120e89d6bc2ac8d7f151997ac28b69b584ae13ead"
+        },
+        {
+          "unit": "enemy-resolve-float-argument",
+          "address": "0x00412A70",
+          "size": 14,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00402770",
+          "candidate_raw_sha256": "166256aacafe8a082044fd06bfd94c6dc85db2496da0008003ea7537de4479f5",
+          "target_raw_sha256": "7c1c4ea26c59be6fcefa7b1dab9b62cd3203dd54af1bad8450e259e6ee74fbbd"
+        },
+        {
+          "unit": "enemy-read-raw-int-argument",
+          "address": "0x00412A80",
+          "size": 17,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x00402780",
+          "candidate_raw_sha256": "51a0cec2d428502ebff1754c6dfb34e8d58326af1e5af6adab536bd8af086f25",
+          "target_raw_sha256": "877b71604ba676cea4995ec6ece70aab92f58313cdbf0711b2667ad6c6da8439"
+        },
+        {
+          "unit": "enemy-read-raw-float-argument",
+          "address": "0x00412AA0",
+          "size": 26,
+          "fields": 1,
+          "result": "exact",
+          "candidate_address": "0x004027A0",
+          "candidate_raw_sha256": "a9b439559537b0464840516b332f17eff1daee51941bee87bf705997b9692727",
+          "target_raw_sha256": "7d9f7ac705c667da213ec6f2fa250f968a14a7ac0d6e330543272186e75f8316"
+        },
+        {
+          "unit": "anm-int3-scale",
+          "address": "0x00441E50",
+          "size": 56,
+          "fields": 3,
+          "result": "exact",
+          "candidate_address": "0x00417FA0",
+          "candidate_raw_sha256": "2d6e180a2aa55e46be3bc65fbc124200f2e0036cd3f5cae97a82f0c2ad14ce93",
+          "target_raw_sha256": "d7776001d2a71560f4e42043290e9e79203585c26e8811f241710d9ffec3ba63"
+        },
+        {
+          "unit": "anm-evaluate-rgb-interpolation",
+          "address": "0x00441600",
+          "size": 820,
+          "fields": 17,
+          "result": "exact",
+          "candidate_address": "0x004095E0",
+          "candidate_raw_sha256": "15ef42a99c3c97dd7683cc63bcd449c02e2bc5ad6980816baed36bafb5992059",
+          "target_raw_sha256": "e0802c707f0621329cdda8d2aa13e2ca47f4a9645bb1236677f8a0464d8589a1"
+        }
+      ],
+      "complete_bytes": 3401,
+      "fields": 93
+    }
+  ],
+  "new_owner_bindings": {
+    "enemy-drop-item-counts": [
+      {
+        "offset": 23,
+        "type": "DIR32",
+        "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+        "target": 4683800
+      },
+      {
+        "offset": 30,
+        "type": "REL32",
+        "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+        "target": 4307712
+      },
+      {
+        "offset": 36,
+        "type": "REL32",
+        "symbol": "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z",
+        "target": 4245968
+      }
+    ],
+    "enemy-drop-item-counts-core": [
+      {
+        "offset": 11,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 16,
+        "type": "REL32",
+        "target": 4504464,
+        "symbol": "?GetRandomF32Signed@RngView@@QAEMXZ"
+      },
+      {
+        "offset": 22,
+        "type": "DIR32",
+        "target": 4655896,
+        "symbol": "__real@40490fdb"
+      },
+      {
+        "offset": 82,
+        "type": "REL32",
+        "target": 4272752,
+        "symbol": "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z"
+      },
+      {
+        "offset": 87,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 122,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 127,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 133,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A",
+        "addend": 4
+      },
+      {
+        "offset": 168,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 188,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A",
+        "addend": 4
+      },
+      {
+        "offset": 200,
+        "type": "DIR32",
+        "target": 4656024,
+        "symbol": "__real@4f800000"
+      },
+      {
+        "offset": 213,
+        "type": "DIR32",
+        "target": 4656408,
+        "symbol": "__real@2f000000"
+      },
+      {
+        "offset": 229,
+        "type": "DIR32",
+        "target": 4655884,
+        "symbol": "__real@3f000000"
+      },
+      {
+        "offset": 242,
+        "type": "DIR32",
+        "target": 4683800,
+        "symbol": "?g_ItemManager@@3PAUItemManagerView@@A"
+      },
+      {
+        "offset": 286,
+        "type": "REL32",
+        "target": 4307712,
+        "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z"
+      },
+      {
+        "offset": 291,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 326,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 331,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 337,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A",
+        "addend": 4
+      },
+      {
+        "offset": 372,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A"
+      },
+      {
+        "offset": 392,
+        "type": "DIR32",
+        "target": 4790448,
+        "symbol": "?g_RngView@@3URngView@@A",
+        "addend": 4
+      },
+      {
+        "offset": 404,
+        "type": "DIR32",
+        "target": 4656024,
+        "symbol": "__real@4f800000"
+      },
+      {
+        "offset": 410,
+        "type": "DIR32",
+        "target": 4656108,
+        "symbol": "__real@30000000"
+      },
+      {
+        "offset": 417,
+        "type": "DIR32",
+        "target": 4655868,
+        "symbol": "__real@3f800000"
+      },
+      {
+        "offset": 423,
+        "type": "DIR32",
+        "target": 4656200,
+        "symbol": "__real@3f490fdb"
+      },
+      {
+        "offset": 433,
+        "type": "DIR32",
+        "target": 4656020,
+        "symbol": "__real@3fc90fdb"
+      },
+      {
+        "offset": 441,
+        "type": "REL32",
+        "target": 4504688,
+        "symbol": "?EnemyWrapAngle@@YGMM@Z"
+      }
+    ]
+  },
+  "field_review": [
+    {
+      "offset": 11,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 16,
+      "reason": "existing reviewed canonical callee target or independently reviewed ItemManager Spawn819 boundary/ABI",
+      "semantic_symbol": "?GetRandomF32Signed@RngView@@QAEMXZ",
+      "target": 4504464,
+      "native": 4292384
+    },
+    {
+      "offset": 22,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@40490fdb",
+      "target": 4655896,
+      "native": 4301372
+    },
+    {
+      "offset": 82,
+      "reason": "existing reviewed canonical callee target or independently reviewed ItemManager Spawn819 boundary/ABI",
+      "semantic_symbol": "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z",
+      "target": 4272752,
+      "native": 4203568
+    },
+    {
+      "offset": 87,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 122,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 127,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 133,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790452,
+      "native": 4305584
+    },
+    {
+      "offset": 168,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 188,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790452,
+      "native": 4305584
+    },
+    {
+      "offset": 200,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@4f800000",
+      "target": 4656024,
+      "native": 4301392
+    },
+    {
+      "offset": 213,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@2f000000",
+      "target": 4656408,
+      "native": 4301524
+    },
+    {
+      "offset": 229,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@3f000000",
+      "target": 4655884,
+      "native": 4301356
+    },
+    {
+      "offset": 242,
+      "reason": "target ItemManager global read and maintained canonical owner, not receiverless alias",
+      "semantic_symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+      "target": 4683800,
+      "native": 4305724
+    },
+    {
+      "offset": 286,
+      "reason": "existing reviewed canonical callee target or independently reviewed ItemManager Spawn819 boundary/ABI",
+      "semantic_symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+      "target": 4307712,
+      "native": 4297104
+    },
+    {
+      "offset": 291,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 326,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 331,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 337,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790452,
+      "native": 4305584
+    },
+    {
+      "offset": 372,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790448,
+      "native": 4305580
+    },
+    {
+      "offset": 392,
+      "reason": "actual RngView base + generationCount member4; never bind the neighboring cookie anchor",
+      "semantic_symbol": "?g_RngView@@3URngView@@A",
+      "target": 4790452,
+      "native": 4305584
+    },
+    {
+      "offset": 404,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@4f800000",
+      "target": 4656024,
+      "native": 4301392
+    },
+    {
+      "offset": 410,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@30000000",
+      "target": 4656108,
+      "native": 4301408
+    },
+    {
+      "offset": 417,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@3f800000",
+      "target": 4655868,
+      "native": 4301360
+    },
+    {
+      "offset": 423,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@3f490fdb",
+      "target": 4656200,
+      "native": 4301520
+    },
+    {
+      "offset": 433,
+      "reason": "compiler real literal name plus independent exact native/target float-bit equality",
+      "semantic_symbol": "__real@3fc90fdb",
+      "target": 4656020,
+      "native": 4301416
+    },
+    {
+      "offset": 441,
+      "reason": "existing reviewed canonical callee target or independently reviewed ItemManager Spawn819 boundary/ABI",
+      "semantic_symbol": "?EnemyWrapAngle@@YGMM@Z",
+      "target": 4504688,
+      "native": 4204192
+    }
+  ],
+  "canonical_focused_replay": {
+    "artifact_count": 2,
+    "groups": [
+      {
+        "artifact": "build/match/EnemyEclDispatcher.obj",
+        "artifact_kind": "coff",
+        "build_returncode": 0,
+        "build_unit": "enemy-wrap-angle",
+        "cold_removed": [
+          "build/match/EnemyEclDispatcher.obj"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc"
+        ],
+        "source": "src/EnemyEclDispatcher.cpp",
+        "units": [
+          {
+            "artifact_kind": "coff",
+            "compared_size": 94,
+            "first_differences": [],
+            "matched_bytes": 94,
+            "matched_compared_bytes": 94,
+            "object": "build/match/EnemyEclDispatcher.obj",
+            "relocations": [
+              {
+                "addend": "0x00000000",
+                "offset": "0x8",
+                "symbol": "__real@40490fdb",
+                "target": "0x00470B18",
+                "type": "DIR32"
+              },
+              {
+                "addend": "0x00000000",
+                "offset": "0x15",
+                "symbol": "__real@40c90fdb",
+                "target": "0x00470B14",
+                "type": "DIR32"
+              },
+              {
+                "addend": "0x00000000",
+                "offset": "0x23",
+                "symbol": "__real@40490fdb",
+                "target": "0x00470B18",
+                "type": "DIR32"
+              },
+              {
+                "addend": "0x00000000",
+                "offset": "0x30",
+                "symbol": "__real@c0490fdb",
+                "target": "0x00470B10",
+                "type": "DIR32"
+              },
+              {
+                "addend": "0x00000000",
+                "offset": "0x42",
+                "symbol": "__real@40c90fdb",
+                "target": "0x00470B14",
+                "type": "DIR32"
+              },
+              {
+                "addend": "0x00000000",
+                "offset": "0x50",
+                "symbol": "__real@c0490fdb",
+                "target": "0x00470B10",
+                "type": "DIR32"
+              }
+            ],
+            "result": "exact",
+            "returncode": 0,
+            "size": 94,
+            "symbol": "?EnemyWrapAngle@@YGMM@Z",
+            "target_address": "0x0044BC70",
+            "unit": "enemy-wrap-angle"
+          }
+        ]
+      },
+      {
+        "artifact": "build/match-linked/EnemyItemDrops",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "enemy-drop-item-counts",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": "src/EnemyEclDispatcher.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00402650",
+            "capstone_version": "5.0.6",
+            "compared_size": 48,
+            "data_spans": [],
+            "decoded_bytes": 48,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/EnemyItemDrops/source.exe",
+            "image_sha256": "6412af74cf149d76b4861dc9f13c0c801b75a17cc3497d53eedc01464e986dde",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B33C",
+                "linked_symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+                "local": false,
+                "offset": "0x17",
+                "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+                "target": "0x00477818",
+                "target_encoded_value": "0x00477818",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00419190",
+                "linked_symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+                "local": false,
+                "offset": "0x1E",
+                "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+                "target": "0x0041BB00",
+                "target_encoded_value": "0x0000F13E",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00402450",
+                "linked_symbol": "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z",
+                "local": false,
+                "offset": "0x24",
+                "symbol": "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z",
+                "target": "0x0040C9D0",
+                "target_encoded_value": "0x00000008",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 48,
+            "matched_compared_bytes": 48,
+            "normalization_complete": true,
+            "owner_selection": {
+              "expected_object": "source.ltcg.obj",
+              "map_object": "source.ltcg.obj",
+              "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+              "pdb_source": "src/EnemyEclDispatcher.cpp",
+              "section_number": 1,
+              "section_offset": 5712,
+              "visibility": "static"
+            },
+            "pdb_age": 1,
+            "pdb_guid": "f7fb4265c172974182f4e71493bd5d85",
+            "pdb_module_index": 4,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 48,
+            "symbol": "?EnemyDropItemCounts@@YAXPBUPlayerFloat3@@PAH@Z",
+            "target_address": "0x0040C9A0",
+            "unit": "enemy-drop-item-counts"
+          },
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00402450",
+            "capstone_version": "5.0.6",
+            "compared_size": 503,
+            "data_spans": [],
+            "decoded_bytes": 503,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/EnemyItemDrops/source.exe",
+            "image_sha256": "6412af74cf149d76b4861dc9f13c0c801b75a17cc3497d53eedc01464e986dde",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0xB",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00417F20",
+                "linked_symbol": "?GetRandomF32Signed@RngView@@QAEMXZ",
+                "local": false,
+                "offset": "0x10",
+                "symbol": "?GetRandomF32Signed@RngView@@QAEMXZ",
+                "target": "0x0044BB90",
+                "target_encoded_value": "0x0003F1AC",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A23C",
+                "linked_symbol": "__real@40490fdb",
+                "local": false,
+                "offset": "0x16",
+                "symbol": "__real@40490fdb",
+                "target": "0x00470B18",
+                "target_encoded_value": "0x00470B18",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00402430",
+                "linked_symbol": "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z",
+                "local": false,
+                "offset": "0x52",
+                "symbol": "?FromAngleRadii@EnemyDropVectorView@@QAEXMMM@Z",
+                "target": "0x00413270",
+                "target_encoded_value": "0x0000684A",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x57",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x7A",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x7F",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 4,
+                "candidate_target": "0x0041B2B0",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x85",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0xA8",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 4,
+                "candidate_target": "0x0041B2B0",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0xBC",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A250",
+                "linked_symbol": "__real@4f800000",
+                "local": false,
+                "offset": "0xC8",
+                "symbol": "__real@4f800000",
+                "target": "0x00470B98",
+                "target_encoded_value": "0x00470B98",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A2D4",
+                "linked_symbol": "__real@2f000000",
+                "local": false,
+                "offset": "0xD5",
+                "symbol": "__real@2f000000",
+                "target": "0x00470D18",
+                "target_encoded_value": "0x00470D18",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A22C",
+                "linked_symbol": "__real@3f000000",
+                "local": false,
+                "offset": "0xE5",
+                "symbol": "__real@3f000000",
+                "target": "0x00470B0C",
+                "target_encoded_value": "0x00470B0C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B33C",
+                "linked_symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+                "local": false,
+                "offset": "0xF2",
+                "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+                "target": "0x00477818",
+                "target_encoded_value": "0x00477818",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x00419190",
+                "linked_symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+                "local": false,
+                "offset": "0x11E",
+                "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+                "target": "0x0041BB00",
+                "target_encoded_value": "0x0000F00E",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x123",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x146",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x14B",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 4,
+                "candidate_target": "0x0041B2B0",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x151",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B2AC",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x174",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 4,
+                "candidate_target": "0x0041B2B0",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0165",
+                "local": false,
+                "offset": "0x188",
+                "symbol": "?g_RngView@@3URngView@@A",
+                "target": "0x004918B0",
+                "target_encoded_value": "0x004918B4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A250",
+                "linked_symbol": "__real@4f800000",
+                "local": false,
+                "offset": "0x194",
+                "symbol": "__real@4f800000",
+                "target": "0x00470B98",
+                "target_encoded_value": "0x00470B98",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A260",
+                "linked_symbol": "__real@30000000",
+                "local": false,
+                "offset": "0x19A",
+                "symbol": "__real@30000000",
+                "target": "0x00470BEC",
+                "target_encoded_value": "0x00470BEC",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A230",
+                "linked_symbol": "__real@3f800000",
+                "local": false,
+                "offset": "0x1A1",
+                "symbol": "__real@3f800000",
+                "target": "0x00470AFC",
+                "target_encoded_value": "0x00470AFC",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A2D0",
+                "linked_symbol": "__real@3f490fdb",
+                "local": false,
+                "offset": "0x1A7",
+                "symbol": "__real@3f490fdb",
+                "target": "0x00470C48",
+                "target_encoded_value": "0x00470C48",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041A268",
+                "linked_symbol": "__real@3fc90fdb",
+                "local": false,
+                "offset": "0x1B1",
+                "symbol": "__real@3fc90fdb",
+                "target": "0x00470B94",
+                "target_encoded_value": "0x00470B94",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x004026A0",
+                "linked_symbol": "?EnemyWrapAngle@@YGMM@Z",
+                "local": false,
+                "offset": "0x1B9",
+                "symbol": "?EnemyWrapAngle@@YGMM@Z",
+                "target": "0x0044BC70",
+                "target_encoded_value": "0x0003F0E3",
+                "type": "REL32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 503,
+            "matched_compared_bytes": 503,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "f7fb4265c172974182f4e71493bd5d85",
+            "pdb_module_index": 4,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 503,
+            "symbol": "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z",
+            "target_address": "0x0040C9D0",
+            "unit": "enemy-drop-item-counts-core"
+          }
+        ]
+      }
+    ],
+    "matched_bytes": 645,
+    "result": "exact",
+    "source_count": 1,
+    "unit_count": 3
+  },
+  "negative_controls": {
+    "scope": "Declared-field and copied-native controls only; original target never patched",
+    "controls": [
+      {
+        "control": "rng-generation-count-wrong-addend",
+        "result": "rejected",
+        "error": "linked field (133, 'DIR32', 4) does not resolve uniquely through '?g_RngView@@3URngView@@A': publics=[4305580] expected=0x41b2b0"
+      },
+      {
+        "control": "wrong-item-manager-target",
+        "result": "rejected",
+        "comparison": "mismatch",
+        "matched_bytes": 502,
+        "size": 503
+      },
+      {
+        "control": "copied-native-height-eight-to-four",
+        "result": "rejected",
+        "comparison": "mismatch",
+        "matched_bytes": 502,
+        "size": 503,
+        "native_instruction": "0x402520",
+        "owner_offset": 208,
+        "old": "8b5608",
+        "new": "8b5604",
+        "image_sha256": "3cbda5e3be8aef5ca8411f174af28d6aedc73953370ddc7b065aace488785d7e"
+      }
+    ]
+  },
+  "host_projection": {
+    "scope": "Maintained complete core/vector/wrap host projection with scripted RNG and synthetic item sink; not original/native-game runtime or i386 ABI/rounding proof",
+    "source": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/src/EnemyEclDispatcher.cpp",
+    "source_sha256": "0371b2d0ec4acc3973dc70abc69d8afe045b9ea1d1f789abd5563fe23d30eefe",
+    "adaptations": [
+      "host PlayerFloat3/AnmFloat3 alias uses ordinary constructed objects",
+      "Item sink copies object representation with memcpy",
+      "two offset radius reads use memcpy",
+      "actual vector uses its maintained non-MSVC sin/cos arm"
+    ],
+    "sanitizers": "address,undefined,leaks",
+    "scenarios": 228,
+    "strict_mutants": 4,
+    "results": [
+      {
+        "control": "positive",
+        "returncode": 0,
+        "result": "passed",
+        "stdout": "228 actual-body host scenarios passed",
+        "program_sha256": "f4c92921e36ccdef605533f07822bd0b32efdcb8ed8cf28df81ec2a8081f7b4b"
+      },
+      {
+        "control": "duplicate-radiusBits",
+        "returncode": -6,
+        "result": "rejected",
+        "stdout": "",
+        "program_sha256": "56e23308b1ab2ddae314a7886e4d1bdc382686214be847cafbd0d4ddd5badba6"
+      },
+      {
+        "control": "duplicate-angleBits",
+        "returncode": -6,
+        "result": "rejected",
+        "stdout": "",
+        "program_sha256": "e0e269925190a3c03acd70cb8cb35b366b7d704d811363303ff7648dca6790c6"
+      },
+      {
+        "control": "clear-eleven",
+        "returncode": -6,
+        "result": "rejected",
+        "stdout": "",
+        "program_sha256": "cd6b2c83b059ffdf113e9bdd8a36f8c5f393c796995d834ee3bbf55656635f29"
+      },
+      {
+        "control": "wrong-manager",
+        "returncode": -6,
+        "result": "rejected",
+        "stdout": "",
+        "program_sha256": "bed6fc3ba3a407856cb2ab1a50dc63e913f2e1c8e3d3ebeee000cab0fe9b0464"
+      }
+    ]
+  },
+  "large_native_comparison": [
+    {
+      "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+      "left_size": 14468,
+      "right_size": 14468,
+      "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+      "result": "different or unbound",
+      "unbound_changed_fields": [],
+      "ordinary_differences": 2,
+      "first_differences": [
+        5918,
+        5924
+      ],
+      "rebound_field_count": 424,
+      "full_comparison_sha256": "d449a9a7a4182d6e70ef6ec756db86f3e27fd976b3aad698da39a4d427e55cd3"
+    },
+    {
+      "prefix": "?ExecuteScript@AnmRenderManagerView",
+      "left_size": 9964,
+      "right_size": 9964,
+      "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+      "result": "equal after verified field rewrites",
+      "unbound_changed_fields": [],
+      "ordinary_differences": 0,
+      "first_differences": [],
+      "rebound_field_count": 159,
+      "full_comparison_sha256": "d449a9a7a4182d6e70ef6ec756db86f3e27fd976b3aad698da39a4d427e55cd3"
+    },
+    {
+      "prefix": "?Run@EclVmContext",
+      "left_size": 7020,
+      "right_size": 7020,
+      "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+      "result": "equal after verified field rewrites",
+      "unbound_changed_fields": [],
+      "ordinary_differences": 0,
+      "first_differences": [],
+      "rebound_field_count": 103,
+      "full_comparison_sha256": "d449a9a7a4182d6e70ef6ec756db86f3e27fd976b3aad698da39a4d427e55cd3"
+    }
+  ],
+  "large_baseline_carrier": {
+    "image": {
+      "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/source.exe",
+      "sha256": "b8986deb417bbc6e22effc67c4d0a2d01b93af500c9db7bf70e4e26baa35cdf4"
+    },
+    "map": {
+      "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/source.map",
+      "sha256": "f2d466340b5827c225eb056e040aace54cf7e16250b3f1a38ae3d8be40f965a3"
+    },
+    "pdb": {
+      "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/source.pdb",
+      "sha256": "f81163f63818048623699fa191220a169c1aaccfa8c56941605737ba7f18ca97"
+    },
+    "object": {
+      "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/source.ltcg.obj",
+      "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+    }
+  },
+  "current_dispatcher_diagnostic": {
+    "acceptance_authority": "none",
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "candidate_image_sha256": "48a70bed532c6fce1288a850cbe8a565fa206c43e5ea9a93b9dad76e941b02ab",
+    "stack_allocations": {
+      "target": "esp, 0x2c4",
+      "candidate": "esp, 0x2c4"
+    },
+    "sentinel_compare_counts": {
+      "target": 19,
+      "candidate": 19
+    },
+    "case_aligned": {
+      "matched_comparable_bytes": 2924,
+      "comparable_bytes": 11152,
+      "absolute_case_gap_delta": 652,
+      "same_sized_cases": 40
+    },
+    "layout": {
+      "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/source.exe",
+      "function_address": "0x004027C0",
+      "contribution_size": 14468,
+      "jump_table_address": "0x00405DB4",
+      "selector_table_address": "0x00405F64",
+      "selector_equal": true,
+      "selector_equal_bytes": 181,
+      "target_pre_table_span": 13760,
+      "candidate_pre_table_span": 13812,
+      "pre_table_span_delta": 52,
+      "target_suffix_bytes": 43,
+      "candidate_suffix_bytes": 43,
+      "physical_order_matches": true,
+      "first_physical_order_difference": null
+    },
+    "complete_private_report_sha256": "46e30d4a32e8f415111978fa1cb342739792a7fd0cea61afd930048ad15dba01"
+  },
+  "current_complete_run_diagnostic": {
+    "scope": "Noncanonical complete-owner diagnostic; no exact ledger credit.",
+    "context_unit": "enemy-drop-item-counts-core",
+    "context_manifest": "config/match-units.toml",
+    "context_manifest_sha256": "268c3a219307fa2990cb17f9f35b47137924841139f6957db3223a3edc30c948",
+    "canonical_bindings_sha256": "268c3a219307fa2990cb17f9f35b47137924841139f6957db3223a3edc30c948",
+    "run": {
+      "result": "mismatch",
+      "size": 7020,
+      "matched_bytes": 6993,
+      "image": "build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1/source.exe",
+      "image_sha256": "48a70bed532c6fce1288a850cbe8a565fa206c43e5ea9a93b9dad76e941b02ab",
+      "pdb_guid": "b67414811fec5f44ad5366cb7ef115ef",
+      "pdb_age": 1,
+      "candidate_address": "0x00406D30",
+      "extent_source": "pdb-section-contribution",
+      "decoded_bytes": 6752,
+      "data_spans": [
+        {
+          "offset": 6932,
+          "width": 88
+        }
+      ],
+      "first_differences": [
+        {
+          "offset": "0xEC",
+          "linked": 124,
+          "target": 84
+        },
+        {
+          "offset": "0xF1",
+          "linked": 87,
+          "target": 82
+        },
+        {
+          "offset": "0x12A",
+          "linked": 16,
+          "target": 0
+        },
+        {
+          "offset": "0x12C",
+          "linked": 106,
+          "target": 104
+        },
+        {
+          "offset": "0x146E",
+          "linked": 7,
+          "target": 56
+        },
+        {
+          "offset": "0x14D7",
+          "linked": 7,
+          "target": 56
+        },
+        {
+          "offset": "0x151D",
+          "linked": 7,
+          "target": 56
+        },
+        {
+          "offset": "0x168A",
+          "linked": 8,
+          "target": 1
+        },
+        {
+          "offset": "0x1710",
+          "linked": 8,
+          "target": 1
+        },
+        {
+          "offset": "0x181B",
+          "linked": 20,
+          "target": 24
+        },
+        {
+          "offset": "0x182B",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x1838",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x183C",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x1840",
+          "linked": 20,
+          "target": 24
+        },
+        {
+          "offset": "0x1844",
+          "linked": 20,
+          "target": 24
+        },
+        {
+          "offset": "0x1899",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x18B6",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x18E6",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x18F8",
+          "linked": 20,
+          "target": 24
+        },
+        {
+          "offset": "0x191C",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x1932",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x1957",
+          "linked": 20,
+          "target": 24
+        },
+        {
+          "offset": "0x199E",
+          "linked": 20,
+          "target": 24
+        },
+        {
+          "offset": "0x19A8",
+          "linked": 20,
+          "target": 24
+        },
+        {
+          "offset": "0x19BA",
+          "linked": 24,
+          "target": 20
+        },
+        {
+          "offset": "0x19E6",
+          "linked": 3,
+          "target": 19
+        },
+        {
+          "offset": "0x19E8",
+          "linked": 0,
+          "target": 2
+        }
+      ]
+    },
+    "complete_fields": 189,
+    "local_fields": 62,
+    "callee_guard": {
+      "result": "exact",
+      "size": 171,
+      "matched_bytes": 171,
+      "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z"
+    },
+    "callee_guard_fields": 4,
+    "complete_private_report_sha256": "57d1fa02a7b66ea810c927ad80da289b78831ddd0439c9bd64fedb04e28ab024"
+  },
+  "remaining_nonexact_sizes": {
+    "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+      "candidate": 14468,
+      "target": 14416
+    },
+    "?Run@EclVmContext@@QAEHM@Z": {
+      "candidate": 7020,
+      "target": 7020
+    },
+    "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+      "candidate": 9964,
+      "target": 9964
+    },
+    "?EnemyFinalizeDeath@@YGHPAUEnemyFullObjectView@@@Z": {
+      "candidate": 246,
+      "target": 162
+    },
+    "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z": {
+      "candidate": 795,
+      "target": 819
+    }
+  },
+  "ghidra": {
+    "transport": "direct local headless",
+    "read_only": true,
+    "no_analysis": true,
+    "rollback": true,
+    "cpu": 1,
+    "heap_mib": 768,
+    "mapped_text_inclusive": "401000..465A80",
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "before_after_equal": true,
+    "review_sha256": "e3c229b00fe979f2393a2eaf56af945a50fb3ce105a9a6fcd78f39408dc74cc5"
+  }
+}

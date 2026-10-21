@@ -42,12 +42,48 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1776 reviewed
 candidates, 735 authored functions owning 273576 bytes, 1084 source mappings,
-1229 canonical exact functions overall. Authored exact is **388 functions,
-70916/273576 bytes (25.92%)**. The 213 mapped authored nonexact functions,
+1231 canonical exact functions overall. Authored exact is **390 functions,
+71467/273576 bytes (26.12%)**. The 211 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint closes ReplayFile::Open44B6B0/137/all12. Ordinary
+The latest checkpoint closes EnemyDropItemCounts40C9A0/48/all3 and
+EnemyDropItemCountsCore40C9D0/503/all27: **551 new authored exact bytes**.
+All four item callers now use the real ItemManager receiver; the core uses one
+ordinary unsigned conversion per draw, in-place three-float storage, outlined
+WrapAngle, direct count indexing and ordinary stdcall. Eleven kinds are processed
+and twelve words cleared. Two independent full ten-TU GL/GS colds through real
+dispatcher with actual ItemManager.cpp freeze31 equal raw inputs; each passes28
+complete owners3401/all93. Canonical cold2 selects only the new pair and modified
+normal-COFF WrapAngle94: three units645 bytes/two groups. No denominator or
+source-map expansion. Three native/template controls and four host mutants reject;
+228 maintained-body host scenarios pass under sanitizers. See
+[item-scatter proof](evidence/enemy-item-scatter/README.md).
+
+Current large carrier is `build/match-linked/EnemyItemDrops`, independently
+corroborated by `build/gpt-6.1-sol/enemy-tail-packet-20261021/final-cold1`.
+The proof pins31 current raw inputs, four artifacts and nine support objects per
+cold. Earlier30-input nine-TU and16-input two-TU pins are historical after the
+Enemy source edits. Full ANM9964 and Run7020 retain native equality after verified
+fields; the current complete Run7020/all189/62locals diagnostic retains27 ordinary
+differences. Dispatcher14468/14416 changes two ordinary bytes but retains frame2C4,
+19 sentinels,40/108 target-sized groups and gap652. No large exact credit.
+Real Item Spawn795/819 and FinalizeDeath246/162 remain nonexact. Fresh target
+prologue has packet ESI, unlike one old private ECX assumption; later branches
+reload opcode after operand calls, so cached opcode is unsupported. Native1B4's
+third ReadInt is shared from1AA; the physical105/106 site count is not a missing
+source read. All three original large exact goals remain active.
+
+Sixteen inspected terminal native/host directories are pruned/17808307 bytes;
+private sources/receipts, final colds and selected failures remain. The private
+pack is `.analysis/gpt-6.1-sol/enemy-tail-packet-20261021/`; old probe.py assumes
+pre-adoption source hashes and must not be rerun over accepted source. No Factory
+MCP, no subagents; unrelated D3D evidence is untouched.
+All101 standard CI checks pass in one invocation. Final focused645-byte
+comparisons, toolchain/tracking/progress/docs/whitespace gates pass;31 raw inputs
+and27 final native artifact hashes remain unchanged after CI.
+
+The preceding checkpoint closes ReplayFile::Open44B6B0/137/all12. Ordinary
 stdcall declaration/definition recover target RET4 and reuse of the no-longer-live
 path home for the failure message pointer. The old135-byte cdecl form remains
 wrong even in the real LoadReplay graph. Two independent complete FileSystem +
@@ -63,7 +99,8 @@ consumes it. Necessary support recompilation plus eight hash-verified reused
 objects and relink retain all three complete native bodies after verified field
 rewrites;21 complete target guards retain2415/all52. Run7020/all189 stays27
 differences in this real graph; no large exact credit or new independent large
-cold is claimed. Current carrier and pins are in the read-open proof.
+cold was claimed there. That preceding carrier/pins are historical after the
+current item-scatter source changes.
 
 The distinct integer-value signature flag/context/value, unlike old
 context/flag/value, is tested in a consistent copied two-TU cold. Seven complete
@@ -478,7 +515,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the read-open proof; worker/RGB results retain
+Latest focused native results are in the item-scatter proof; read-open/worker/RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -493,4 +530,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/replay-open-context/validation-summary.json).
+[the current validation summary](evidence/enemy-item-scatter/validation-summary.json).
