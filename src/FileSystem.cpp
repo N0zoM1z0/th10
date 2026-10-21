@@ -122,7 +122,7 @@ openError:
 }
 
 // TH10_FILESYSTEM_FUNCTION: 0x0044B4D0 FileSystem::CheckIfFileAlreadyExists
-int __stdcall CheckIfFileAlreadyExists(const char *path)
+__declspec(noinline) int __stdcall CheckIfFileAlreadyExists(const char *path)
 {
     EnterCriticalSection(&gReplayFileCriticalSection);
     ++gReplayFileOpenCount;

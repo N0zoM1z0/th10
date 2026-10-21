@@ -5,7 +5,7 @@
   "sha256_lf": {
     "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
     "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
-    "src/AnmManager.cpp": "aa3bcbe7234c1f97beb3b1653f5d6505ca20cc1623d4a52a8a792600f57e683d",
+    "src/AnmManager.cpp": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
@@ -264,5 +264,17 @@
       "struct AnmVmTimerView\n": "162f1c2209fa017e74cdf673e3fd2dc444920aa709205bb0028a533dfd131d7a",
       "struct AnmViewportView\n": "9e8fa871d07f917c9ed70e97bb7511e434ea4b923b12ad36c5cec9a7f947a53b"
     }
+  },
+  "reviewed_screenshot_capture_update": {
+    "date": "2026-10-21",
+    "starting_head": "020636e8e186264c2751d1943013cf55b0ef9a8f",
+    "reason": "Only CaptureToTexture changes: target-proven texture reload after Flush/GetBackBuffer. Reversing that complete body reconstructs the entire previous LF-normalized source. The host-extracted AnmRandomU32InRange body and timer/viewport/header dependencies are unchanged. Strict normalization and pin rejection policy are unchanged.",
+    "input": "src/AnmManager.cpp",
+    "old_sha256_lf": "aa3bcbe7234c1f97beb3b1653f5d6505ca20cc1623d4a52a8a792600f57e683d",
+    "new_sha256_lf": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
+    "new_raw_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "whole_file_reversal_verified": true,
+    "unchanged_extracted_rng_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "evidence": "docs/evidence/main-screenshot-context/README.md"
   }
 }

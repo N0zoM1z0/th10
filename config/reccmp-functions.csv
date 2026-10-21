@@ -1079,3 +1079,6 @@ MergeWinMmButton,0x0044A160,function
 MergeJoystickInput,0x0044A190,function
 FrontEndGetControllerState,0x0044A4E0,function
 PollInputFrame,0x0044A5F0,function
+MainTakeScreenshot,0x00420670,function
+MainReleaseAnmSurfaces,0x00438A30,function
+MainServiceAnmScreenshots,0x00438A60,function

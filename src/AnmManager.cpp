@@ -2623,9 +2623,8 @@ void AnmRenderManagerView::CaptureToTexture(
     D3d9SurfaceView *textureSurface;
     D3d9RectView sourceRect;
     D3d9RectView destinationRect;
-    D3d9TextureView *texture = loadedAnms[anmIndex]->textures[entryIndex].texture;
 
-    if (texture == NULL)
+    if (loadedAnms[anmIndex]->textures[entryIndex].texture == NULL)
         return;
     FlushVertexBuffer();
     if (g_Direct3DDevice->vtable->GetBackBuffer(
@@ -2633,6 +2632,8 @@ void AnmRenderManagerView::CaptureToTexture(
     {
         return;
     }
+    // Flush/GetBackBuffer can change the loaded texture; target reloads it.
+    D3d9TextureView *texture = loadedAnms[anmIndex]->textures[entryIndex].texture;
     if (texture->vtable->GetSurfaceLevel(
             texture, 0, &textureSurface) != 0)
     {

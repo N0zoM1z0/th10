@@ -9,6 +9,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <process.h>
 #include <string.h>
 #include <winnls32.h>
 
@@ -93,9 +94,21 @@ extern void MainConfigureGameplayViewport(int viewportIndex);
 extern void MainPrepareDraw();
 extern void MainStopReplayScan();
 extern void MainSetScreenColor(unsigned int color);
-extern void MainReleaseAnmSurfaces(AnmRenderManagerView *manager);
+// Target 0x00438A30 releases and clears the 32 primary surfaces.
+// Outlining reproduces the two physical target calls; original spelling is unknown.
+__declspec(noinline) void MainReleaseAnmSurfaces(AnmRenderManagerView *manager)
+{
+    for (int i = 0; i < 32; ++i)
+    {
+        if (manager->surfaces[i] != NULL)
+        {
+            manager->surfaces[i]->vtable->Release(manager->surfaces[i]);
+            manager->surfaces[i] = NULL;
+        }
+    }
+}
 extern void MainServiceAnmScreenshots(AnmRenderManagerView *manager);
-extern void MainTakeScreenshot(MainSupervisorView *supervisor, const char *path);
+int MainTakeScreenshot(MainSupervisorView *supervisor, const char *path);
 extern void MainStartSoundThread(unsigned char *soundOwner, HWND window);
 extern int MainProcessSoundQueues(unsigned char *soundOwner);
 extern void MainRequestSoundThreadStop(unsigned char *soundOwner);
@@ -116,6 +129,156 @@ void MainSupervisorView::SetNextGameMode(int mode)
         nextGameMode = mode;
     else
         nextGameMode = 2;
+}
+
+
+// A local partial view; only target-observed screenshot fields are named.
+struct MainScreenshotContextView
+{
+    unsigned char unknown000[8];
+    D3d9DeviceView *device;
+    unsigned char unknown00C[0xe0];
+    unsigned int format;
+    unsigned char unknown0F0[0x41c];
+    int pending;
+    BITMAPFILEHEADER fileHeader;
+    BITMAPINFO *bitmapInfo;
+    unsigned char *pixels;
+    char filename[256];
+};
+typedef char MainScreenshotFieldOffsets[
+    (offsetof(MainScreenshotContextView, device) == 8 &&
+     offsetof(MainScreenshotContextView, format) == 0xec &&
+     offsetof(MainScreenshotContextView, pending) == 0x50c &&
+     offsetof(MainScreenshotContextView, fileHeader) == 0x510 &&
+     offsetof(MainScreenshotContextView, bitmapInfo) == 0x520 &&
+     offsetof(MainScreenshotContextView, pixels) == 0x524 &&
+     offsetof(MainScreenshotContextView, filename) == 0x528 &&
+     sizeof(BITMAPFILEHEADER) == 14) ? 1 : -1];
+extern char g_MainScreenshotUnexpectedFormat[];
+extern char g_MainScreenshotAllocationError[];
+extern char g_MainScreenshot16BitUnsupported[];
+extern unsigned long g_MainScreenshotThreadHandle;
+extern void __cdecl MainScreenshotWorker(void *argument);
+
+// Target 0x00420670. Keep the observed format and allocation error behavior.
+int MainTakeScreenshot(MainSupervisorView *supervisor, const char *path)
+{
+    MainScreenshotContextView *state =
+        reinterpret_cast<MainScreenshotContextView *>(supervisor);
+    D3d9SurfaceView *surface;
+    D3d9LockedRectView locked;
+    int row;
+    int outputOffset;
+    while (state->pending != 0)
+        Sleep(10);
+    surface = NULL;
+    state->device->vtable->GetBackBuffer(
+        state->device, 0, 0, 0, &surface);
+    memset(&state->fileHeader, 0, sizeof(state->fileHeader));
+    state->fileHeader.bfType = 0x4d42;
+    state->fileHeader.bfOffBits = 54;
+    state->fileHeader.bfSize = 54;
+    strcpy(state->filename, path);
+
+    switch (state->format)
+    {
+    case MAIN_D3D_FORMAT_X8R8G8B8:
+        state->bitmapInfo = static_cast<BITMAPINFO *>(malloc(sizeof(BITMAPINFO)));
+        if (state->bitmapInfo == NULL)
+        {
+            th10::g_GameErrorContext.Log(g_MainScreenshotAllocationError);
+            goto out;
+        }
+        memset(state->bitmapInfo, 0, sizeof(BITMAPINFO));
+        state->pixels = static_cast<unsigned char *>(malloc(640 * 480 * 3));
+        if (state->pixels == NULL)
+        {
+            th10::g_GameErrorContext.Log(g_MainScreenshotAllocationError);
+            goto out;
+        }
+        state->fileHeader.bfSize += 640 * 480 * 3;
+        state->bitmapInfo->bmiHeader.biBitCount = 24;
+        state->bitmapInfo->bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+        state->bitmapInfo->bmiHeader.biWidth = 640;
+        state->bitmapInfo->bmiHeader.biHeight = 480;
+        state->bitmapInfo->bmiHeader.biPlanes = 1;
+        state->bitmapInfo->bmiHeader.biCompression = BI_RGB;
+        surface->vtable->LockRect(surface, &locked, NULL, 0);
+        for (row = 479, outputOffset = 0; row > -1; --row, outputOffset += 640 * 3)
+        {
+            unsigned char *destination = state->pixels + outputOffset;
+            unsigned char *source = static_cast<unsigned char *>(locked.bits) + locked.pitch * row;
+            for (int column = 0; column < 640; ++column)
+            {
+                *reinterpret_cast<unsigned short *>(destination) =
+                    *reinterpret_cast<unsigned short *>(source);
+                destination[2] = source[2];
+                source += 4;
+                destination += 3;
+            }
+        }
+        surface->vtable->UnlockRect(surface);
+        g_MainScreenshotThreadHandle = _beginthread(MainScreenshotWorker, 0, NULL);
+        break;
+    case MAIN_D3D_FORMAT_R5G6B5:
+        th10::g_GameErrorContext.Log(g_MainScreenshot16BitUnsupported);
+        break;
+    default:
+        th10::g_GameErrorContext.Log(g_MainScreenshotUnexpectedFormat);
+        return 1;
+    }
+    goto out;
+out:
+    if (surface != NULL)
+        surface->vtable->Release(surface);
+    return 0;
+}
+
+
+struct MainAnmCaptureRequestView
+{
+    int surfaceIndex;
+    int anmIndex;
+    int textureSourceX, textureSourceY, textureSourceWidth, textureSourceHeight;
+    int textureDestinationX, textureDestinationY;
+    int textureDestinationWidth, textureDestinationHeight;
+    int textureIndex;
+    int surfaceSourceX, surfaceSourceY, surfaceSourceWidth, surfaceSourceHeight;
+    int surfaceDestinationX, surfaceDestinationY;
+    int surfaceDestinationWidth, surfaceDestinationHeight;
+};
+typedef char MainAnmCaptureRequestOffsets[
+    (sizeof(MainAnmCaptureRequestView) == 0x4c &&
+     offsetof(MainAnmCaptureRequestView, textureIndex) == 0x28 &&
+     offsetof(MainAnmCaptureRequestView, surfaceSourceX) == 0x2c) ? 1 : -1];
+
+// Target 0x00438A60. This local view names only the observed request prefix;
+// the older shared-header coordinate labels are provisional.
+__declspec(noinline) void MainServiceAnmScreenshots(AnmRenderManagerView *manager)
+{
+    MainAnmCaptureRequestView *request =
+        reinterpret_cast<MainAnmCaptureRequestView *>(manager);
+    if (request->anmIndex >= 0)
+    {
+        manager->CaptureToTexture(
+            request->anmIndex, request->textureIndex,
+            request->textureSourceX, request->textureSourceY,
+            request->textureSourceWidth, request->textureSourceHeight,
+            request->textureDestinationX, request->textureDestinationY,
+            request->textureDestinationWidth, request->textureDestinationHeight);
+        request->anmIndex = -1;
+    }
+    if (request->surfaceIndex >= 0)
+    {
+        manager->CaptureToSurface(
+            request->surfaceIndex,
+            request->surfaceSourceX, request->surfaceSourceY,
+            request->surfaceSourceWidth, request->surfaceSourceHeight,
+            request->surfaceDestinationX, request->surfaceDestinationY,
+            request->surfaceDestinationWidth, request->surfaceDestinationHeight);
+        request->surfaceIndex = -1;
+    }
 }
 
 // TH10_MAIN_FUNCTION: 0x00438AD0 WinMain

@@ -1078,3 +1078,6 @@ MergeWinMmButton
 MergeJoystickInput
 FrontEndGetControllerState
 PollInputFrame
+MainTakeScreenshot
+MainReleaseAnmSurfaces
+MainServiceAnmScreenshots

@@ -1,0 +1,99 @@
+{
+  "state": "passed",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "focused_native": {
+    "independent_complete_ten_tu_colds": 2,
+    "per_image_complete_owners": 16,
+    "per_image_bytes": 3325,
+    "per_image_bound_fields": 172,
+    "new_exact_owners": 5,
+    "new_exact_bytes": 1134,
+    "new_bound_fields": 39,
+    "canonical_replay_units": 7,
+    "canonical_replay_bytes": 1605,
+    "canonical_build_groups": 3,
+    "negative_controls_rejected": 4,
+    "final_comparison_sha256": "9949dd8a2ef98a35665f5d31d891996ed911ebd0e8a0edb74132031b6723cb2e"
+  },
+  "large_dependency": {
+    "recompiled": "actual AnmManager.cpp support only",
+    "unchanged_objects_reused": 8,
+    "complete_native_owners_compared": 3,
+    "result": "equal after verified fields; all three target exact goals remain active"
+  },
+  "gates": {
+    "toolchain_check": "passed",
+    "tracking": "1775 candidates/boundaries,1083 mappings,1227 exact",
+    "main_source_closure": "23/23 source present,19 exact;4 nonexact3206 bytes",
+    "progress": "regenerated",
+    "ci": {
+      "result": "passed",
+      "steps": 100,
+      "completed_before_pin_gate": 80,
+      "resumed_after_pin_refresh": 20,
+      "first_log_sha256": "c872e6f1d22182b85c14a470fdc59cb4a27e085d451754708a88ab541c11fc96",
+      "resumed_log_sha256": "f99946b8893adde54f65a0a32a9279a4afb4e73998efe4132b9aab11476a849d",
+      "resume_receipt_sha256": "be8a41bdb83f36abea9260f8c603323fc814fb4183d8226c6c6f1d9e063efb3c",
+      "mode": "First80 passed,81st failed closed on old whole-file ANM pin; after whole-file reversal/RNG extraction proof and one reviewed LF pin refresh, actual same CI implementation resumes checks81..100. Production sources stay frozen. Not one uninterrupted invocation."
+    },
+    "diff_check": "passed",
+    "documentation_hygiene": "passed"
+  },
+  "host_pin_update": {
+    "date": "2026-10-21",
+    "starting_head": "020636e8e186264c2751d1943013cf55b0ef9a8f",
+    "reason": "Only CaptureToTexture changes: target-proven texture reload after Flush/GetBackBuffer. Reversing that complete body reconstructs the entire previous LF-normalized source. The host-extracted AnmRandomU32InRange body and timer/viewport/header dependencies are unchanged. Strict normalization and pin rejection policy are unchanged.",
+    "input": "src/AnmManager.cpp",
+    "old_sha256_lf": "aa3bcbe7234c1f97beb3b1653f5d6505ca20cc1623d4a52a8a792600f57e683d",
+    "new_sha256_lf": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
+    "new_raw_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "whole_file_reversal_verified": true,
+    "unchanged_extracted_rng_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "evidence": "docs/evidence/main-screenshot-context/README.md"
+  },
+  "scope": "Only necessary seven canonical units and same-image focused guards; no full historical exact replay. Product/runtime/semantic/port gates remain open.",
+  "boundary_inventory": "Separate check-ledger attempt failed on unrelated old401100 evidence/notes mismatch, extent unchanged. Selected five extents independently reviewed; not represented as an automatic inventory pass.",
+  "cleanup": {
+    "removed_native_directories": [
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/outline-release",
+        "bytes": 336282,
+        "files": 11,
+        "reason": "Terminal owned superseded diagnostic; source snapshots/producer scripts/input and artifact identities retained, independent full cold proofs kept"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/outline-both",
+        "bytes": 336431,
+        "files": 11,
+        "reason": "Terminal owned superseded diagnostic; source snapshots/producer scripts/input and artifact identities retained, independent full cold proofs kept"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/real-screenshot",
+        "bytes": 371526,
+        "files": 14,
+        "reason": "Terminal owned superseded diagnostic; source snapshots/producer scripts/input and artifact identities retained, independent full cold proofs kept"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/screenshot-two-errors",
+        "bytes": 778900,
+        "files": 16,
+        "reason": "Terminal owned superseded diagnostic; source snapshots/producer scripts/input and artifact identities retained, independent full cold proofs kept"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/texture-reload",
+        "bytes": 779124,
+        "files": 16,
+        "reason": "Terminal owned superseded diagnostic; source snapshots/producer scripts/input and artifact identities retained, independent full cold proofs kept"
+      }
+    ],
+    "bytes_reclaimed": 2602263,
+    "retained": [
+      "Both independent actual final cold proof carriers",
+      "real-capture stale-cache failure",
+      "capture-lifetimes same-size failure",
+      "large-current actual nine-TU carrier",
+      "all private source variants and compact reports"
+    ],
+    "unrelated": "Pre-existing untracked D3D evidence, other sessions, target, tools and databases untouched"
+  }
+}

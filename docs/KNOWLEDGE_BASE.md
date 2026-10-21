@@ -4074,3 +4074,46 @@ existing var_order pragmas as unknown; these controls do not alter them. Current
 parent90/92 target-sized groups, gap2 and7478/7995 aligned diagnostic remain
 nonexact, without partial credit. Complete source/cold/control identities are
 linked from the checksum proof; canonical source/API remains unchanged.
+
+
+## Main screenshot and ANM capture context (2026-10-21)
+
+Complete target/Ghidra review and two independent full ten-TU colds close
+release438A30/43, request service438A60/111, Present4391F0/236,
+screenshot420670/504 and CaptureToTexture448270/240:1134 authored bytes/all39
+fields. Ordinary source plus real definitions recover ESI service/supervisor,
+EAX filename and the texture callee's ECX/EBX/EAX protocol naturally. Explicit
+noinline definitions reproduce target release/FileCheck call boundaries while
+retainingGL/GS; this does not identify original annotations or physical TUs.
+
+CaptureToTexture loads its texture through manager+3AD06C/entry+120 at448281
+and reloads it at4482BB after FlushVertexBuffer and GetBackBuffer. Keeping the
+old cached pointer changes observable source dataflow, the callee ABI and its
+caller107/111. Reloading gives complete240/all3 and service111/all2. Correct the
+old padding hypothesis: C22000 at44835D..44835F is one RET32; all240 bytes are
+owned instructions. No boundary-size or denominator change is needed.
+
+Request prefix0 is surface index,4 ANM index,28 texture entry;8..24 are texture
+source then destination rectangles,2C..48 surface coordinates. Several old
+shared ANM prefix labels reverse source/destination or request meaning. A
+target-bound local partial view leaves those shared headers unchanged.
+
+Screenshot has device8, formatEC, pending50C,14-byte file header510, info520,
+pixels524 and filename528. The global thread-handle address492134 equals
+supervisor491C28+50C, without proving production data ownership. Format22
+allocates44 bytes plus921600 pixels and converts bottom-up640x480 BGRA->BGR;
+format23 logs, default logs/returns1 before surface cleanup. Allocation errors
+retain target cleanup and do not invent frees. Separate natural failure logs
+merge into the target first error block; a same-size504 shared-label variant
+fails exhaustive field inventory. Sleep is independently bound to named
+KERNEL32 slot4660AC. Callback420540 is dense302 bytes through42066D followed
+by twoCC; its inventory/source/body exactness remains separate pending work.
+
+Both final images freeze24 equal inputs and pass16 complete owners3325/all172,
+including11 existing guards2191/all133. Canonical replay selects seven units,
+1605 bytes/three groups. Wrong supervisor addend and interior callback controls
+reject. AnmManager's changed support is recompiled in the actual nine-TU large
+graph with eight attested unchanged objects: all three complete large native
+bodies are equal after verified fields; no large target-exact credit follows.
+See [complete screenshot proof](evidence/main-screenshot-context/README.md).
+Native product, runtime, semantic and portability gates remain open.

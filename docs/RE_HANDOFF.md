@@ -41,41 +41,56 @@ fresh target and compiler evidence. The first bounded changes and measurements
 are recorded in [large-owner call order](evidence/large-owner-call-order/README.md).
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
-candidates, 734 authored functions owning 273274 bytes, 1080 source mappings,
-1222 canonical exact functions overall. Authored exact is **381 functions,
-69343/273274 bytes (25.37%)**. The 216 mapped authored nonexact functions,
+candidates, 734 authored functions owning 273274 bytes, 1083 source mappings,
+1227 canonical exact functions overall. Authored exact is **386 functions,
+70477/273274 bytes (25.79%)**. The 214 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint closes CalcExecutableChecksum43A1C0/207/all9 fields.
-Natural signed division, pointer countdown, outer success path and cursor/base
-snapshot restore the target register/save lifetimes. Two complete five-TU
-Main/error/file/MIDI/archive /GL /GS colds through real WinMain freeze17 equal
-inputs and strictly replay11 owners2191/all133 per image. The second cold
-replays only the new207-byte recipe plus the affected original OpenFile360
-recipe in its separate three-TU context:567 bytes across two groups.
-Main now has15 exact owners out of20 source-present authored owners; five
-remain nonexact, owning3442 bytes. See
-[checksum proof](evidence/main-executable-checksum/README.md).
-All100 standard CI steps pass in one invocation. Thirteen owned terminal
-native discovery directories are pruned; ANM's measured portion is5712627 bytes,
-Main's deleted-byte total is explicitly unrecorded. All source snapshots and
-artifact identities are retained, with checksum cold proofs and one negative.
+The latest checkpoint closes surface release438A30/43, screenshot request
+service438A60/111, Present4391F0/236, screenshot420670/504 and
+CaptureToTexture448270/240: **1134 new authored exact bytes/all39 fields**,
+with three new source mappings. Natural real bodies recover private registers
+and ESI save lifetimes; the two release calls and FileCheck remain explicitly
+outlined. CaptureToTexture reloads its texture after Flush/GetBackBuffer,
+matching both target owner loads. Its finalC22000 is the complete three-byte
+RET32, correcting the old two-padding-byte claim without changing240 ownership.
+Two independent full ten-TU GL/GS colds through real WinMain freeze24 equal
+inputs and strictly replay16 complete owners3325/all172 each. Canonical cold2
+selects only the five new units and affected original FileCheck111/OpenFile360:
+seven units1605 bytes across three groups. Main now has23/23 source-present
+authored owners,19 exact and four nonexact owning3206 bytes. See
+[screenshot context proof](evidence/main-screenshot-context/README.md).
+The screenshot worker's dense302-byte entry420540..42066D is independently
+reviewed for callback address identity, but its inventory/source admission and
+child exactness are separate pending work. Keep the observed allocation/format
+error behavior; no runtime, product or original-owner/profile claim is made.
 
-A separate unadopted follow-up finds a natural body for the missing
-MainReleaseAnmSurfaces438A30/43; its complete native body is raw-equal, but
-inlining grows Present339->371/236. Physical target release/FileCheck calls
-remain outlined. Private source, current input/object pins and call inventory
-are in `.analysis/gpt-6.1-sol/main-surfaces-20261021/RECOVERY.md`. Next test those
-actual outlining boundaries; do not adopt the caller regression or grant43
-credit from one warm diagnostic. Production checksum checkpoint excludes it.
+Because AnmManager.cpp changed, the actual nine-TU large graph recompiles that
+one support and reuses eight hash-verified unchanged objects. All30 current
+inputs and full artifacts are pinned in the new proof. Complete ANM9964,
+Run7020 and dispatcher14468 native bodies remain equal after verified link
+field rewrites. Existing target differences persist: ANM90/92 groups/gap2,
+Run27 ordinary differences/all189 fields (separate two-TU26), Enemy gap652,
+frame2C4 and19 sentinels. The current large carrier is
+`build/gpt-6.1-sol/main-surface-outlines-20261021/large-current`.
+Only Main.cpp, FileSystem.cpp and the bounded capture helper in AnmManager.cpp
+change; shared headers remain unchanged. The three original large exact goals
+remain active. The old checksum proof's large-input pins are now historical.
+All100 standard CI checks pass in80+20 segments. The first invocation stops
+at the strict whole-file ANM host pin after80 passed; whole-file reversal and
+unchanged extracted RNG proof justify only that LF pin refresh. The actual same
+CI implementation resumes81..100; no uninterrupted pass is claimed. Final
+toolchain, tracking, progress and diff gates pass. Cleanup removes five owned
+terminal native builds/2602263 bytes, retaining both cold proofs, two failures
+and the current large carrier. Unrelated D3D evidence remains untouched.
 
-Main.hpp is unchanged and Main.cpp is not a dependency of the current large
-nine-TU graph; all30 source and four artifact pins remain unchanged. No extra
-large rebuild is required. ANM9964/gap2, ECL7020/all189/27 differences and
-Enemy14468/gap652 remain nonexact; separate two-TU Run remains26.
+The preceding checkpoint closes CalcExecutableChecksum43A1C0/207/all9 fields.
+Two independent complete five-TU colds replay11 owners2191/all133 per image;
+the new context above retains every one of those guards. Its private negative
+ANM source/interface controls remain useful evidence, not a live work queue.
 
-Eight new ANM source/interface controls are rejected. The complete four actual
+At the preceding checkpoint, eight ANM source/interface controls were rejected. The complete four actual
 getters and Float2/Float3/alpha/RGB evaluators pass as part of28 owners5180/all168.
 Member and ordinary free stdcall GetFloatVar both reproduce424/all44, so source
 ownership is not recovered by the private ESI protocol. A full nine-TU ordinary
@@ -83,7 +98,7 @@ unused-receiver manager-member ExecuteScript control also preserves its entire
 native9964-byte owner and Run7020, with28 guards intact. G6/G7 and one natural
 local-pointer rename are neutral. Wrapper/cdecl variants regress. Do not repeat
 these hypotheses or infer target exactness from native equality; no ANM source
-change is adopted. The source/control/artifact identities are in the checksum
+change from those controls was adopted. The source/control/artifact identities are in the checksum
 proof and private `.analysis/gpt-6.1-sol/anm-execute-flags-20261021/RECOVERY.md`.
 
 The preceding checkpoint closes WindowProc4390E0/265 and retained
@@ -102,7 +117,7 @@ One changed header input requires a new primary-only large-graph rebuild with
 eight verified unchanged support objects. Complete large native bodies remain
 equal after verified field rewrites,21 existing guards2415/all52 pass, and
 ANM9964/gap2, Run7020/all189/27 differences and Enemy14468/gap652 remain nonexact.
-The current large carrier is
+The then-current large carrier was
 `build/gpt-6.1-sol/main-window-callback-20261021/large-header-context`;
 source/artifact pins are in the window proof. Product/runtime gates remain open.
 All100 standard CI checks pass in one invocation; final focused gates pass.
@@ -389,7 +404,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the checksum proof; RGB results retain
+Latest focused native results are in the screenshot context proof; RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -404,4 +419,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/main-executable-checksum/validation-summary.json).
+[the current validation summary](evidence/main-screenshot-context/validation-summary.json).
