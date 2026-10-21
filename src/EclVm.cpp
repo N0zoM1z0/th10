@@ -1107,7 +1107,8 @@ jump_instruction:
                 // then pushes that dword with type 'f'.  This is not x87 FCHS.
                 EclVmScalar value;
                 stack.Pop('f', sizeof(value), &value);
-                value.integer = -value.integer;
+                // Raw DWORD negation is modulo32, including negative-zero bits.
+                value.bits = 0u - value.bits;
                 stack.Push('f', sizeof(value), &value);
                 break;
             }

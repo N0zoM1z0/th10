@@ -1,0 +1,80 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_observed": {
+    "owner": "EclVmContext::Run",
+    "address": "0x0044E1A0",
+    "size": 7020,
+    "opcode": "0x55",
+    "operation": "0x0044F851 NEG EDX (32-bit raw word)",
+    "push": "0x0044F85C DL=0x66; 0x0044F85E PUSH4; 0x0044F860 CALL0x004505B0",
+    "meaning": "Read float storage (including tag conversion when needed), negate its raw dword modulo 2^32 and push with float tag; not FCHS.",
+    "original_signedness": "unknown"
+  },
+  "ghidra": {
+    "mode": "readOnly/noanalysis/rollback/maxcpu1/768MiB",
+    "mapped_range": "0x00401000..0x00465A80 inclusive",
+    "mapped_bytes": 412289,
+    "mapped_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "before_after": "pass",
+    "private_log_sha256": "e26bd9af4eaa6b2e352b7e73050692ebf44c4458d58e2cea165f07a68187ab39"
+  },
+  "old_source_ub": {
+    "source_sha256": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "arm_sha256": "cc2c00dd3e52e2bb2f835e78e7753378824be9ce2e5f38fc50ae4ff96d2930a5",
+    "input": "0x80000000",
+    "returncode": 1,
+    "diagnostic": "UBSan confirms signed INT_MIN negation in actual source arm",
+    "target_operation": "NEG EDX at44F851, modulo32 raw word",
+    "host_scope": "exact union and case source; host union may be8 bytes due unused pointer; seam zeroes sizeof storage and projects first4 bytes; not native ABI or VMStack conversion proof",
+    "functional_mutation_kill": false
+  },
+  "new_source": {
+    "expression": "value.bits = 0u - value.bits;",
+    "arm_sha256": "607fd0c2aadaed2100c147625f02b792157303b94e232af028585ef764ac8d89",
+    "uses_existing_unsigned_union_member": true
+  },
+  "host_contract": {
+    "script": "scripts/test-ecl-raw-negation.py",
+    "script_sha256": "7303ed7ffb93c29ea152c4c0c20412d9f5ef1b99f746097e12effb3118a33344",
+    "fixture": "scripts/fixtures/ecl-raw-negation.cpp",
+    "fixture_sha256": "dcb54a06fcc81fa5ca37121631c4fae834d7a68e6664bbacb5cfbc0f7994530d",
+    "edge_payloads": 17,
+    "executions": 34,
+    "sanitizers": [
+      "ASan",
+      "UBSan",
+      "leaks"
+    ],
+    "strict_functional_controls": [
+      "sign-bit flip => word_negate",
+      "complement without +1 => word_negate",
+      "Push integer tag => push_float_tag"
+    ],
+    "scope": "Extract actual source union/case. Host stack seam initializes requested union storage and projects its first dword; an unused host pointer may widen the union. No native union layout, VMStack conversion/underflow, private ABI or TH10 runtime proof.",
+    "no_functional_kill_for": [
+      "compilation error",
+      "signal",
+      "sanitizer report",
+      "unexpected assertion"
+    ],
+    "log_sha256": "3d4de89dc54ab83fd83732c68f2df321b2f5cf1c8a4a231661a1638a6835cef6"
+  },
+  "existing_format_contract": {
+    "result": "pass",
+    "scenarios": 10,
+    "functional_mutants": 8,
+    "sanitizers": [
+      "ASan",
+      "UBSan",
+      "leaks"
+    ],
+    "log_sha256": "8694321e9273ced472fec345baf250485e0b34c86df8a3605e52a38cdf9dc98d"
+  },
+  "control_projection_attempt": {
+    "result": "not validated",
+    "reason": "Historical test-ecl-control-projection.py invocation omitted required --source-root. The legacy runner additionally carries obsolete source/header pins; it was not changed or counted as passed."
+  },
+  "no_new_exact_credit": true,
+  "whole_product_runtime": "open",
+  "semantic_and_port": "not started"
+}

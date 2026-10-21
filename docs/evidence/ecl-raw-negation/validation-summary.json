@@ -1,0 +1,63 @@
+{
+  "state": "passed; no maintained game/test/fixture/CI edits during or after full CI",
+  "focused": {
+    "canonical_cold": {
+      "result": "exact",
+      "units": 5,
+      "bytes": 1172,
+      "artifact_groups": 1,
+      "game_TUs": 10,
+      "log_sha256": "2e3b3b289e334e94c1b06561634300eb475ada50606b728d06a9cf20bd8abf14"
+    },
+    "same_image_guards": {
+      "owners": 35,
+      "bytes": 4424,
+      "fields": 118,
+      "result": "exact"
+    },
+    "run": {
+      "target_size": 7020,
+      "native_size": 7020,
+      "matched_bytes": 6993,
+      "ordinary_differences": 27,
+      "fields": 189,
+      "local_destinations": 62,
+      "complete_float_callee": 171,
+      "callee_result": "exact",
+      "exact_credit": false,
+      "tool": "unmodified scripts/diagnose-ecl-run-native.py"
+    },
+    "large_native_bodies_raw_identical": true,
+    "raw_negation_host": "17 payloads/34 executions/3 strict functional controls, ASan/UBSan/leaks",
+    "format_host": "10 scenarios/8 functional controls, ASan/UBSan/leaks"
+  },
+  "full_ci": {
+    "result": "pass",
+    "returncode": 0,
+    "checks": 107,
+    "log_sha256": "dd4db076fada595100b701e58ad93d4a7bb49ce99af6ca8a8451f33d965849cb",
+    "frozen_code_test_files": 351,
+    "frozen_input_manifest_sha256": "81c14002cbb8d0b313f9464d072916e44d918a34483ce70270d63650c64a7f19",
+    "unchanged_after_ci": true,
+    "resource_policy": "serial nice10; nested host compilers share existing lock"
+  },
+  "cleanup": {
+    "result": "complete",
+    "record": "cleanup-summary.json",
+    "logical_file_bytes_removed": 11780625
+  },
+  "exact_statistics_changed": false,
+  "final_gates": {
+    "verify-target": "pass",
+    "verify-toolchain --execute": "pass at preflight",
+    "verify-toolchain --check": "pass",
+    "validate-tracking --require-target": "pass",
+    "report-reconstruction-status": "pass; Windows product open; semantic and port not started",
+    "progress": "generated and CI --check pass; exact statistics unchanged",
+    "check-doc-hygiene": "pass",
+    "build-match-unit --check": "pass",
+    "build --check": "pass; explicitly open skeleton",
+    "git diff --check": "pass"
+  },
+  "source_and_artifact_pins_after_ci": "32 source/header and15 current native artifacts verified; original15 snapshot artifacts verified;9 unrelated untracked D3D files unchanged"
+}

@@ -4648,3 +4648,32 @@ copy/operator+= translation grows ANM9984/gap38. No form is adopted. Raw body,
 instruction and field scope must supplement positional totals. Original source
 order, TU partition and the remaining allocator/register causes stay unknown.
 See [count/residual controls](evidence/anm-count-residual-controls/README.md).
+
+
+## ECL raw-word negation and geometric operand homes (2026-10-22)
+
+Target opcode55 performs32-bit NEG EDX at44F851, then pushes four bytes with
+float tag66h through4505B0. It negates the raw word after float-tag conversion,
+not the floating sign. Original source signedness is unknown. The reconstructed
+signed union-member expression has UB for80000000h, a valid negative-zero
+payload; an actual-source UBSan projection reproduces that failure. Using the
+existing unsigned bits member and0u-bits preserves modulo2^32 without signed
+overflow. A full actual-source ten-TU cold proves all three complete large
+native bodies raw-identical before/after; five canonical units and35 complete
+same-image guards retain1172 and4424 exact bytes respectively. Run stays7020
+with27 ordinary differences/all189 fields/62 locals/complete171-byte callee.
+No new exact credit or product/runtime/semantic/port claim follows.
+
+Grouping/reversing LengthSquared declarations, moving FORMAT counter into for
+scope and sharing only the second geometric temporary are raw-neutral. Sharing
+the first across LengthSquared/PointAngle fixes two PointAngle stack homes but
+adds six NEG_FLOAT differences, yielding31. Pair/reversed-pair forms reproduce
+that regression; unsigned NEG does not remove it. Source spelling alone does
+not establish the original lifetime/TU. Private controls compile only one ECL
+object and reuse nine verified objects; final proof is the independent full
+canonical cold with the unmodified diagnostic. Current source pins supersede
+the earlier32-input context; historical two-TU26 is not freshly revalidated.
+Host contracts exercise17 literal payloads/34 invocations, sanitizers and three
+strict functional controls using the actual case/union and an explicit stack
+seam. Host pointer width, native layout, stack conversion and runtime remain
+separate. [Full evidence and limits](evidence/ecl-raw-negation/README.md).

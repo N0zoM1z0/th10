@@ -1,5 +1,10 @@
 # ANM radial counter scheduling
 
+The later [ECL raw-word negation correction](../ecl-raw-negation/README.md)
+supplies new current32-input/15-artifact pins after its full ten-TU cold.
+This packet's hashes remain historical. Its original canonical outputs were
+copied before rebuilding; all three complete large native bodies remain equal.
+
 The later [count/residual controls](../anm-count-residual-controls/README.md)
 execute the formerly prepared expression option against the unchanged current
 ten-TU graph. It regresses and is not adopted. This packet retains its original

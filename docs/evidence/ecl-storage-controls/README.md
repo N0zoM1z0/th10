@@ -1,5 +1,10 @@
 # ECL Run storage and result lifetime controls
 
+The later [raw-word negation correction](../ecl-raw-negation/README.md) changes
+EclVm.cpp while preserving the complete current ten-TU native bodies. This
+packet's two-TU26-difference result and source pins remain historical; they
+have not been replayed for that source change.
+
 Started 2026-10-21 at `768d612`. This is a diagnostic checkpoint with no source
 change or new exact credit. All four source controls are restored.
 

@@ -42,70 +42,74 @@ source-present/nonexact and130 source-absent. Source-present authored bytes are
 246417/273576 (90.07%).523 origins remain indeterminate; the complete-game
 denominator remains unknown.
 
-The latest [Hint entry controls](evidence/hint-entry-copy-controls/README.md)
-recover the target position/call instruction shape, chapter-branch direction and
-inlined initialization order using natural source. AddAutomaticEntry now emits
-212/220 in the selected six-TU graph and remains nonexact; no exact count or byte
-credit changes. The34-byte position/call fragment is a diagnostic only. The
-standalone constructor remains51/51 with14 ordinary differences; its raw body
-is unchanged by the selected initialization order. Four-channel initialization
-regresses to242/220 and72/51 and is restored to the packed color assignment.
-Shared chapter loads, allocation-pointer and self-link scheduling remain open;
-do not infer volatile or a unique original spelling from these observations.
+The latest [ECL raw-word negation correction](evidence/ecl-raw-negation/README.md)
+expresses opcode55 with the existing unsigned bits member,0u-bits. Target44F851
+is NEG EDX followed by Push f/4. The old reconstructed signed expression
+triggers UBSan for valid negative-zero bits80000000h. The adopted source
+preserves observed modulo32 arithmetic; this is not floating sign inversion.
+Original source signedness remains unknown. No new mapping or exact credit.
 
+One full actual-source canonical ten-TU cold passes five units1172 bytes. The
+same image passes35 complete guards4424/all118. All three complete large native
+bodies are raw-identical to the pre-edit baseline and private positive. The
+unmodified maintained diagnostic retains Run7020/6993, all189 fields/62locals
+and complete171-byte float callee exact. New current32-input/15-artifact hashes
+are in [native evidence](evidence/ecl-raw-negation/native-summary.json).
+Old radial/context receipts retain historical source/artifact meanings; their
+original15 outputs were copied to
+`build/gpt-6.1-sol/ecl-operand-homes-20261022/baseline-ten-tu` before rebuilding.
+The older two-TU26-difference source context has not been replayed for this edit.
+
+Nine private controls compile one ECL /GL object and reuse nine verified game
+objects. Declaration/scope forms and second-temporary sharing are raw-neutral.
+First-temporary sharing fixes two PointAngle homes but adds six NEG_FLOAT
+ordinary differences (31 total); pair/reversed forms repeat it. Combining that
+sharing with unsigned NEG still gives31 and is rejected. Private diagnostic
+source routing changes only two path literals plus ROOT discovery, keeping the
+core comparator/bindings/coverage unchanged. Actual-source final proof uses the
+unmodified maintained tool. No original lifetime, spelling or TU claim follows.
+
+Actual-source raw-NEG contracts pass17 literal payloads/34 invocations with
+ASan/UBSan/leaks and three strict functional controls. The explicit stack seam
+projects the first dword of initialized host union storage; its pointer may
+widen storage. Native layout, stack conversion/underflow, private ABI and game
+runtime are not proved. Existing FORMAT passes10 scenarios/eight controls with
+sanitizers. A historical control-projection runner was attempted without its
+required source-root argument and is not counted as passed; its old hard pins
+are not refreshed by this batch.
+
+The previous [Hint entry controls](evidence/hint-entry-copy-controls/README.md)
+recover position/call, chapter-branch and initialization ordering. Allocator
+212/220 and standalone constructor51/51 with14 differences remain nonexact.
 The prior [Player state2 and caution work](evidence/player-state2-hint/README.md)
-recovers three complete source bodies:4269D0/796,41A120/220 and424650/104. It
-added only Caution104 exact. Current independent full six-TU colds still prove
-all104 bytes/all2 fields. Player transition782/796 and parent2808/3089 remain
-nonexact in this graph. Bound callee addresses grant no callee-byte credit or
-original owner/TU claim. The Player wrapper's prior normal-COFF7/all1 cold is
-unchanged; no wrapper replay is needed for this Hint-only edit.
+added three source bodies and Caution104 exact. Its canonical six-TU source
+context is independent of this ECL edit. Semantic host projections do not
+establish native storage/private ABI or product closure.
 
-The spell-panel clear preserves frontVm2 and clears seven others;4776F4/477814
-reuse the existing panel/Hint views. Faith/rank use existing shared methods.
-Actual-source state2 contracts exercise1792 transitions plus one bounded-copy
-case, sanitizers and seven strict functional controls. Existing lifecycle
-contracts and65 strict intended-CHECK controls also pass with the changed real
-constructor. Host role projections prove neither native storage/private ABI,
-original construction nor TH10 runtime/product closure.
+Global automatic/manual boundary audit drift remains open:1114 metadata rows,
+49 state and107 confidence differences, zero geometry differences; first failure
+is401100 provenance text. Ordinary tracking/CI success does not waive it.
 
-Current private work is `.analysis/gpt-6.1-sol/hint-entry-copy-20261022/`;
-start with RECOVERY.md and manifest.json. The selected private carrier is
-`build/gpt-6.1-sol/hint-entry-copy-20261022/constructor-last`, and the independent
-canonical cold is `build/match-linked/PlayerState2Hint`. All five selected native
-bodies repeat raw;30 recursive inputs and both artifact sets are pinned in
-[current evidence](evidence/hint-entry-copy-controls/native-summary.json).
-The prior Player private final-frozen graph remains a historical baseline after
-the Hint edit. All32 canonical ten-TU large-owner source pins remain unchanged;
-the older eleven-TU Player-containing graph remains historical. These six-TU
-measurements are not improvement scores for the three large owners.
+## Current checkpoint validation and recovery
 
-Global automatic/manual boundary audit drift remains open:1114 metadata-different
-rows,49 state differences and107 confidence differences, zero geometry differences.
-It still first fails at401100's provenance text. Do not bulk overwrite the ledger
-or equate ordinary tracking/CI success with this independent audit passing.
-Earlier [ECL controls](evidence/ecl-storage-controls/README.md) and the
-[17-byte RET4 correction](evidence/leaf-compare-extent/README.md) retain their
-original checkpoints and validation scopes.
+Focused native/raw-NEG/FORMAT checks and **107 full CI checks pass** for the
+frozen source/test/fixture/CI files. [Validation](evidence/ecl-raw-negation/validation-summary.json)
+records each scope separately. All351 code/test paths remain unchanged through CI.
+Only validation documentation and ignored-output cleanup follow it.
 
-## Current checkpoint validation
-
-The frozen Hint source passes **106 CI checks**. Focused native, state2 and
-lifecycle checks also pass; [validation](evidence/hint-entry-copy-controls/validation-summary.json)
-records their separate scopes. No source, tests or fixtures changed during CI.
-Only validation documentation and ignored-output cleanup follow it. Final
-source/native pins and focused gates are checked again before checkpoint.
-
-[Cleanup](evidence/hint-entry-copy-controls/cleanup-summary.json) removes6260601
-logical file bytes from three superseded native controls and four reproducible
-CI host-output trees. Current two native carriers, prior private baseline,
-exact input overlays and compact unresolved facts remain. Nine independent D3D
-files and unclassified older state are preserved. Broad reconstruction stays active.
+Current private work: `.analysis/gpt-6.1-sol/ecl-operand-homes-20261022/`;
+start with RECOVERY.md and manifest.json. Retain the actual canonical cold,
+pre-edit baseline snapshot and small shared-first-neg-bits failure, plus compact
+source overlays/reports and producers. [Cleanup](evidence/ecl-raw-negation/cleanup-summary.json)
+removes11780625 logical file bytes from eight superseded controls and four
+reproducible CI output trees. Nine independent
+untracked D3D files and unclassified older state remain preserved. Broad exact
+reconstruction stays active; product/runtime closure remains open.
 
 ## Three large owners remain nonexact
 
-The [fresh ECL storage controls](evidence/ecl-storage-controls/README.md)
-independently reproduce the two-TU cold Run baseline:7020 bytes,26 ordinary
+The historical [ECL storage controls](evidence/ecl-storage-controls/README.md)
+independently reproduced their pre-edit two-TU cold Run baseline:7020 bytes,26 ordinary
 differences, all189 fields/62 locals and the complete171-byte float callee exact.
 Grouped LengthSquared declarations, earlier FORMAT counter initialization and
 reversed Pop pointer additions produce the identical raw Run body. Sharing one
@@ -117,10 +121,10 @@ three neutral carriers are pruned (771355 file bytes). Its manifest binds the
 restored source, complete input graph, results and independent D3D hashes.
 Do not infer original source spelling or TU ownership from these controls.
 
-The table retains the canonical ten-TU checkpoint measurements; its32 input
-pins still agree. The historical eleven-TU context is no longer current after
-the Player edit. Aligned positions and equal-sized groups are diagnostics,
-not partial exact credit; this batch claims no fresh large-owner comparison.
+The table retains its measurements after the unsigned-NEG ten-TU cold reproduces
+all three complete native bodies raw. New32 input pins supersede the older radial
+source pins. The eleven-TU context is historical after the Player and ECL edits.
+Aligned positions and equal-sized groups are diagnostics, not partial exact credit.
 
 | Owner / target | Current measurement | Remaining work |
 | --- | --- | --- |
@@ -133,8 +137,8 @@ strict table/selector annotations still cover all7020 bytes, 60 table words and
 88 selectors. Keep the historical separate two-TU result (26 differences)
 distinct from the current 27-difference graphs.
 
-The [fresh count/residual controls](evidence/anm-count-residual-controls/README.md)
-resolve the previously uncompiled expression option in the current ten-TU graph.
+The preceding [count/residual controls](evidence/anm-count-residual-controls/README.md)
+resolve the previously uncompiled expression option in their pre-edit ten-TU graph.
 That legacy form and a current-layout one-based loop produce identical complete
 three-owner bodies, reducing ANM7541->7475 diagnostic positions. Four source
 spelling/local controls are raw-neutral. Single-axis flag splitting reverses
@@ -145,14 +149,14 @@ rejected; maintained source, canonical recipes and exact statistics stay unchang
 Each compiles one /GL object and reuses nine verified game objects, not a full
 cold ten-TU build;35 whole guards4424/all118 and Run7020/all189/62locals pass.
 
-Current ANM private work is `.analysis/gpt-6.1-sol/anm-radial-expression-20261022/`;
+Prior ANM private work is `.analysis/gpt-6.1-sol/anm-radial-expression-20261022/`;
 read its RECOVERY/manifest. Keep the current ten-TU baseline and small combined-
 flags failure, plus compact input overlays/results. Earlier
 [residual/data audit](evidence/anm-residual-data-audit/README.md) and the historical
 eleven-TU failure retain their original scopes. No original source spelling or
 physical TU is proven, and a positional total alone cannot authorize adoption.
 
-This control batch passes106 full CI checks with unchanged maintained game code;
+That control batch passed106 full CI checks with unchanged maintained game code;
 the current35 whole guards pass again afterward. Only validation documentation
 and ignored-output cleanup follow. The [summary](evidence/anm-count-residual-controls/summary.json)
 records scope and cleanup of17132488 logical file bytes. All12 exact source
@@ -183,7 +187,8 @@ already regressed to14476/gap662 in an older nine-TU context.
 | Canonical two-TU range helper | `build/match-linked/AnmRandomU32InRange` | AnmManager + RandomMath; complete 88-byte helper raw-equal, zero fields |
 | Rejected combined radial/flags control | `build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags` | Source, image/MAP/PDB and input pins retained |
 
-Current public hashes, source overlays and target facts are in
+Current ten-TU hashes are in [the raw-NEG pack](evidence/ecl-raw-negation/native-summary.json).
+Historical radial source overlays and target facts are in
 [the radial counter pack](evidence/anm-radial-count/README.md). Private manifests,
 producer scripts, reports and CI logs are under
 `.analysis/gpt-6.1-sol/anm-vertex-count-20261021/`; start with `RECOVERY.md`.

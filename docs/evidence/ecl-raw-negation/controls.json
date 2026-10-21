@@ -1,0 +1,395 @@
+{
+  "baseline_head": "6b4e11d143e0b405acb417bb83ccc03c6423ea98",
+  "baseline_source_sha256": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+  "scope": "Nine private controls compile one ECL /GL object and reuse nine hash-verified game objects; no full cold claim or exact credit. Each strict full Run diagnostic preserves 189 fields/62 locals and the complete 171-byte float callee.",
+  "source_routing": "Only two maintained diagnostic source-path literals and ROOT discovery are adapted for honest private source/PDB selection. Comparator, canonical target bindings, field/selector coverage and callee rules are unchanged. Final actual-source comparison uses the unmodified maintained tool.",
+  "controls": [
+    {
+      "label": "length-declarations",
+      "candidate_source_sha256": "67c0fc681f65b54416114ec7c3ee9ea159d3b838af70861be2d1de88c5ab9bbf",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -1141,8 +1141,10 @@\n \n             case ECL_VM_LENGTH_SQUARED:\n             {\n-                const float x = ReadFloat(1);\n-                const float y = ReadFloat(2);\n+                float x;\n+                float y;\n+                x = ReadFloat(1);\n+                y = ReadFloat(2);\n                 *ResolveFloat(0) = x * x + y * y;\n                 break;\n             }\n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/length-declarations/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "e87f4ea7d988a0c831c7e064eebb1646bbaf8bbce7201b50bfeea25ba46d404e",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    },
+    {
+      "label": "length-reverse-declarations",
+      "candidate_source_sha256": "d2fd2c6a54a0bbfb07d321a18f351c5e5fbfa5eae53e841c1e2467d083a95a82",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -1141,8 +1141,10 @@\n \n             case ECL_VM_LENGTH_SQUARED:\n             {\n-                const float x = ReadFloat(1);\n-                const float y = ReadFloat(2);\n+                float y;\n+                float x;\n+                x = ReadFloat(1);\n+                y = ReadFloat(2);\n                 *ResolveFloat(0) = x * x + y * y;\n                 break;\n             }\n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/length-reverse-declarations/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "28acafe36607325bfb50fc99d01bf6838a49c29a03eaa79a94d8f5203fd0acdc",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    },
+    {
+      "label": "format-for-scope",
+      "candidate_source_sha256": "ca0f8b93569dd75f702018ba539e7d168a2a1b8a80b1585a76608a4791fb8c37",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -1167,8 +1167,7 @@\n                 char *scratch = static_cast<char *>(malloc(0x400));\n                 scratch[0] = '\\0';\n \n-                int argumentIndex = 0;\n-                while (cursor != NULL) {\n+                for (int argumentIndex = 0; cursor != NULL; ) {\n                     const char *percent = strchr(cursor, '%');\n                     if (percent == NULL)\n                         break;\n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/format-for-scope/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "5ef2e7be88d5ddd0648f3c8b69676fa46812ef7ee3be5b8c578b5fe8c4eabbe7",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    },
+    {
+      "label": "shared-first",
+      "candidate_source_sha256": "531766fad3110457cd99e3a24b8a6e7b40c28e789cf84162bd80e2f0b4ad2ae0",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 31,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            float firstFloat;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -1141,9 +1142,9 @@\n \n             case ECL_VM_LENGTH_SQUARED:\n             {\n-                const float x = ReadFloat(1);\n+                firstFloat = ReadFloat(1);\n                 const float y = ReadFloat(2);\n-                *ResolveFloat(0) = x * x + y * y;\n+                *ResolveFloat(0) = firstFloat * firstFloat + y * y;\n                 break;\n             }\n \n@@ -1153,10 +1154,10 @@\n \n             case ECL_VM_POINT_ANGLE:\n             {\n-                const float dx = ReadFloat(2) - ReadFloat(0);\n+                firstFloat = ReadFloat(2) - ReadFloat(0);\n                 const float dy = ReadFloat(3) - ReadFloat(1);\n                 *ResolveFloat(0) =\n-                    static_cast<float>(atan2(dy, dx));\n+                    static_cast<float>(atan2(dy, firstFloat));\n                 break;\n             }\n \n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-first/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "54c6045e6cb0157d2465602add0d4bf1d31afdb88406b253cefbc7fe86b2d739",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    },
+    {
+      "label": "shared-second",
+      "candidate_source_sha256": "2baba53e68900145bf4ed7476a50d006737eba2a20a280546f41e7db3bdc347b",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            float secondFloat;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -1142,8 +1143,8 @@\n             case ECL_VM_LENGTH_SQUARED:\n             {\n                 const float x = ReadFloat(1);\n-                const float y = ReadFloat(2);\n-                *ResolveFloat(0) = x * x + y * y;\n+                secondFloat = ReadFloat(2);\n+                *ResolveFloat(0) = x * x + secondFloat * secondFloat;\n                 break;\n             }\n \n@@ -1154,9 +1155,9 @@\n             case ECL_VM_POINT_ANGLE:\n             {\n                 const float dx = ReadFloat(2) - ReadFloat(0);\n-                const float dy = ReadFloat(3) - ReadFloat(1);\n+                secondFloat = ReadFloat(3) - ReadFloat(1);\n                 *ResolveFloat(0) =\n-                    static_cast<float>(atan2(dy, dx));\n+                    static_cast<float>(atan2(secondFloat, dx));\n                 break;\n             }\n \n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-second/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "30d7a18e1972c48289481dd8581d729b25c5794852e196582e3a3f6361bd61e3",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    },
+    {
+      "label": "shared-pair",
+      "candidate_source_sha256": "9fe2d08c7eaa1e2190f992e7fa59c22ca5ab13527a90d5b539ea849dea4c1a03",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 31,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,8 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            float firstFloat;\n+            float secondFloat;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -1141,9 +1143,9 @@\n \n             case ECL_VM_LENGTH_SQUARED:\n             {\n-                const float x = ReadFloat(1);\n-                const float y = ReadFloat(2);\n-                *ResolveFloat(0) = x * x + y * y;\n+                firstFloat = ReadFloat(1);\n+                secondFloat = ReadFloat(2);\n+                *ResolveFloat(0) = firstFloat * firstFloat + secondFloat * secondFloat;\n                 break;\n             }\n \n@@ -1153,10 +1155,10 @@\n \n             case ECL_VM_POINT_ANGLE:\n             {\n-                const float dx = ReadFloat(2) - ReadFloat(0);\n-                const float dy = ReadFloat(3) - ReadFloat(1);\n+                firstFloat = ReadFloat(2) - ReadFloat(0);\n+                secondFloat = ReadFloat(3) - ReadFloat(1);\n                 *ResolveFloat(0) =\n-                    static_cast<float>(atan2(dy, dx));\n+                    static_cast<float>(atan2(secondFloat, firstFloat));\n                 break;\n             }\n \n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-pair/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "212ab78e103f65f5f58a2fe30d6381fc043830763ddf563cd3d39331e58df564",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    },
+    {
+      "label": "shared-pair-reversed",
+      "candidate_source_sha256": "d07c69475eb62b8504a57227f56e29656c4dffa0c0cc027e864a41dcb710404a",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 31,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,8 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            float secondFloat;\n+            float firstFloat;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -1141,9 +1143,9 @@\n \n             case ECL_VM_LENGTH_SQUARED:\n             {\n-                const float x = ReadFloat(1);\n-                const float y = ReadFloat(2);\n-                *ResolveFloat(0) = x * x + y * y;\n+                firstFloat = ReadFloat(1);\n+                secondFloat = ReadFloat(2);\n+                *ResolveFloat(0) = firstFloat * firstFloat + secondFloat * secondFloat;\n                 break;\n             }\n \n@@ -1153,10 +1155,10 @@\n \n             case ECL_VM_POINT_ANGLE:\n             {\n-                const float dx = ReadFloat(2) - ReadFloat(0);\n-                const float dy = ReadFloat(3) - ReadFloat(1);\n+                firstFloat = ReadFloat(2) - ReadFloat(0);\n+                secondFloat = ReadFloat(3) - ReadFloat(1);\n                 *ResolveFloat(0) =\n-                    static_cast<float>(atan2(dy, dx));\n+                    static_cast<float>(atan2(secondFloat, firstFloat));\n                 break;\n             }\n \n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-pair-reversed/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "76c3e31ce2c93fcc14193a5afc05e226b2dd8da1eddeb354bc7d1c6c6e43fc81",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    },
+    {
+      "label": "neg-bits",
+      "candidate_source_sha256": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 27,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -1107,7 +1107,8 @@\n                 // then pushes that dword with type 'f'.  This is not x87 FCHS.\n                 EclVmScalar value;\n                 stack.Pop('f', sizeof(value), &value);\n-                value.integer = -value.integer;\n+                // Raw DWORD negation is modulo32, including negative-zero bits.\n+                value.bits = 0u - value.bits;\n                 stack.Push('f', sizeof(value), &value);\n                 break;\n             }\n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/neg-bits/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "d34957e0c271af9f2c2a49f1652424a9ad92d7e480ef6ace4fb7876bddded54f",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    },
+    {
+      "label": "shared-first-neg-bits",
+      "candidate_source_sha256": "e0a06038cdf0ac0995c30796890a267a5f45c977c6f1cac426d370f78eb10122",
+      "build_scope": {
+        "compiled": [
+          "support-00-EclVm.ltcg.obj"
+        ],
+        "reused_object_and_anchor_sha256": {
+          "source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+          "support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a",
+          "support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+          "support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+          "support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+          "support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+          "support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+          "support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+          "support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+          "link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+          "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "full_cold": false
+      },
+      "run_size": 7020,
+      "ordinary_differences": 31,
+      "guards": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "large_raw_bodies_equal_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": false,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "source_patch": "--- a/src/EclVm.cpp\n+++ b/src/EclVm.cpp\n@@ -711,6 +711,7 @@\n         if ((difficultyMask & current->difficultyMask) != 0) {\n             int floatResult;\n             int logicalResult;\n+            float firstFloat;\n             switch (current->opcode) {\n             case ECL_VM_NOP:\n                 break;\n@@ -1107,7 +1108,8 @@\n                 // then pushes that dword with type 'f'.  This is not x87 FCHS.\n                 EclVmScalar value;\n                 stack.Pop('f', sizeof(value), &value);\n-                value.integer = -value.integer;\n+                // Raw DWORD negation is modulo32, including negative-zero bits.\n+                value.bits = 0u - value.bits;\n                 stack.Push('f', sizeof(value), &value);\n                 break;\n             }\n@@ -1141,9 +1143,9 @@\n \n             case ECL_VM_LENGTH_SQUARED:\n             {\n-                const float x = ReadFloat(1);\n+                firstFloat = ReadFloat(1);\n                 const float y = ReadFloat(2);\n-                *ResolveFloat(0) = x * x + y * y;\n+                *ResolveFloat(0) = firstFloat * firstFloat + y * y;\n                 break;\n             }\n \n@@ -1153,10 +1155,10 @@\n \n             case ECL_VM_POINT_ANGLE:\n             {\n-                const float dx = ReadFloat(2) - ReadFloat(0);\n+                firstFloat = ReadFloat(2) - ReadFloat(0);\n                 const float dy = ReadFloat(3) - ReadFloat(1);\n                 *ResolveFloat(0) =\n-                    static_cast<float>(atan2(dy, dx));\n+                    static_cast<float>(atan2(dy, firstFloat));\n                 break;\n             }\n \n",
+      "private_routing": {
+        "source": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-first-neg-bits/EclVm.cpp",
+        "original_tool_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+        "adapter_sha256": "cf981ad074f1ca867e02d3612cdcfaedb57983d3cea77b3deb924665bbadba1c",
+        "changes": "only two explicit ECL source-path literals and repository ROOT discovery; no target binding, field/callee/table/selector/extent/decoder comparison change",
+        "acceptance_authority": "none"
+      }
+    }
+  ]
+}

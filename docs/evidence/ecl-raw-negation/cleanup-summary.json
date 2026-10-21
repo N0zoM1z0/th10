@@ -1,0 +1,190 @@
+{
+  "state": "complete; terminal native/CI producers and all retained source/native pins verified",
+  "logical_file_bytes_removed": 11780625,
+  "removed": [
+    {
+      "path": "build/gpt-6.1-sol/ecl-operand-homes-20261022/length-declarations",
+      "class": "reproducible-cache",
+      "producer": "private probe.py; one ECL object plus nine verified baseline objects and relink",
+      "reason": "Superseded by full actual-source cold; exact overlay/report retained",
+      "logical_file_bytes": 1040812,
+      "files": 16
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/length-declarations/EclVm.cpp",
+      "class": "session-scratch",
+      "producer": "private probe.py source control",
+      "reason": "Complete exact patch and baseline source hash retained in public controls.json",
+      "logical_file_bytes": 37319,
+      "files": 1
+    },
+    {
+      "path": "build/gpt-6.1-sol/ecl-operand-homes-20261022/length-reverse-declarations",
+      "class": "reproducible-cache",
+      "producer": "private probe.py; one ECL object plus nine verified baseline objects and relink",
+      "reason": "Superseded by full actual-source cold; exact overlay/report retained",
+      "logical_file_bytes": 1040844,
+      "files": 16
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/length-reverse-declarations/EclVm.cpp",
+      "class": "session-scratch",
+      "producer": "private probe.py source control",
+      "reason": "Complete exact patch and baseline source hash retained in public controls.json",
+      "logical_file_bytes": 37319,
+      "files": 1
+    },
+    {
+      "path": "build/gpt-6.1-sol/ecl-operand-homes-20261022/format-for-scope",
+      "class": "reproducible-cache",
+      "producer": "private probe.py; one ECL object plus nine verified baseline objects and relink",
+      "reason": "Superseded by full actual-source cold; exact overlay/report retained",
+      "logical_file_bytes": 1040729,
+      "files": 16
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/format-for-scope/EclVm.cpp",
+      "class": "session-scratch",
+      "producer": "private probe.py source control",
+      "reason": "Complete exact patch and baseline source hash retained in public controls.json",
+      "logical_file_bytes": 37277,
+      "files": 1
+    },
+    {
+      "path": "build/gpt-6.1-sol/ecl-operand-homes-20261022/shared-first",
+      "class": "reproducible-cache",
+      "producer": "private probe.py; one ECL object plus nine verified baseline objects and relink",
+      "reason": "Superseded by full actual-source cold; exact overlay/report retained",
+      "logical_file_bytes": 1040767,
+      "files": 16
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-first/EclVm.cpp",
+      "class": "session-scratch",
+      "producer": "private probe.py source control",
+      "reason": "Complete exact patch and baseline source hash retained in public controls.json",
+      "logical_file_bytes": 37342,
+      "files": 1
+    },
+    {
+      "path": "build/gpt-6.1-sol/ecl-operand-homes-20261022/shared-second",
+      "class": "reproducible-cache",
+      "producer": "private probe.py; one ECL object plus nine verified baseline objects and relink",
+      "reason": "Superseded by full actual-source cold; exact overlay/report retained",
+      "logical_file_bytes": 1040713,
+      "files": 16
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-second/EclVm.cpp",
+      "class": "session-scratch",
+      "producer": "private probe.py source control",
+      "reason": "Complete exact patch and baseline source hash retained in public controls.json",
+      "logical_file_bytes": 37348,
+      "files": 1
+    },
+    {
+      "path": "build/gpt-6.1-sol/ecl-operand-homes-20261022/shared-pair",
+      "class": "reproducible-cache",
+      "producer": "private probe.py; one ECL object plus nine verified baseline objects and relink",
+      "reason": "Superseded by full actual-source cold; exact overlay/report retained",
+      "logical_file_bytes": 1040749,
+      "files": 16
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-pair/EclVm.cpp",
+      "class": "session-scratch",
+      "producer": "private probe.py source control",
+      "reason": "Complete exact patch and baseline source hash retained in public controls.json",
+      "logical_file_bytes": 37397,
+      "files": 1
+    },
+    {
+      "path": "build/gpt-6.1-sol/ecl-operand-homes-20261022/shared-pair-reversed",
+      "class": "reproducible-cache",
+      "producer": "private probe.py; one ECL object plus nine verified baseline objects and relink",
+      "reason": "Superseded by full actual-source cold; exact overlay/report retained",
+      "logical_file_bytes": 1040722,
+      "files": 16
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/shared-pair-reversed/EclVm.cpp",
+      "class": "session-scratch",
+      "producer": "private probe.py source control",
+      "reason": "Complete exact patch and baseline source hash retained in public controls.json",
+      "logical_file_bytes": 37397,
+      "files": 1
+    },
+    {
+      "path": "build/gpt-6.1-sol/ecl-operand-homes-20261022/neg-bits",
+      "class": "reproducible-cache",
+      "producer": "private probe.py; one ECL object plus nine verified baseline objects and relink",
+      "reason": "Superseded by full actual-source cold; exact overlay/report retained",
+      "logical_file_bytes": 1040776,
+      "files": 16
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/ecl-operand-homes-20261022/neg-bits/EclVm.cpp",
+      "class": "session-scratch",
+      "producer": "private probe.py source control",
+      "reason": "Complete exact patch and baseline source hash retained in public controls.json",
+      "logical_file_bytes": 37372,
+      "files": 1
+    },
+    {
+      "path": "build/host-tests/gui-message-run-ci",
+      "class": "reproducible-cache",
+      "producer": "scripts/test-gui-message-run.py via passed full CI",
+      "reason": "Terminal CI complete; logs and frozen source pins retained",
+      "logical_file_bytes": 1836391,
+      "files": 49,
+      "tree_fingerprint_sha256": "80bcf4896ac0a86efd7102cdb6134e50fef6d2a9df507598a5dec2780336b0ff"
+    },
+    {
+      "path": "build/host-tests/gui-message-lifecycle-ci",
+      "class": "reproducible-cache",
+      "producer": "scripts/test-gui-message-lifecycle.py via passed full CI",
+      "reason": "Terminal CI complete; logs and frozen source pins retained",
+      "logical_file_bytes": 508430,
+      "files": 28,
+      "tree_fingerprint_sha256": "cda0fad005635e16b15c2066b16511ffae988869386fb8f41f3c23cd79348dfd"
+    },
+    {
+      "path": "build/host-tests/transition-effect-ci",
+      "class": "reproducible-cache",
+      "producer": "scripts/transition_effect_host_test.py via passed full CI",
+      "reason": "Terminal CI complete; logs and frozen source pins retained",
+      "logical_file_bytes": 806575,
+      "files": 7,
+      "tree_fingerprint_sha256": "1bd3a3145833d4c0cfbbececc859b5c61026b77d5fec4183666b884e62ee0ca3"
+    },
+    {
+      "path": "build/host-tests/transition-effect-eol-ci",
+      "class": "reproducible-cache",
+      "producer": "scripts/transition_effect_eol_test.py via passed full CI",
+      "reason": "Terminal CI complete; logs and frozen source pins retained",
+      "logical_file_bytes": 4346,
+      "files": 1,
+      "tree_fingerprint_sha256": "8cd9c2500fbfa5fae7e389ad51b3d8bdfb4faccbc30f60b6e5480c31f327fc6b"
+    }
+  ],
+  "retained": [
+    "build/match-linked/EnemyItemDrops",
+    "build/gpt-6.1-sol/ecl-operand-homes-20261022/baseline-ten-tu",
+    "build/gpt-6.1-sol/ecl-operand-homes-20261022/shared-first-neg-bits",
+    "compact patches/reports/producers and actual old-source UBSan reproduction"
+  ],
+  "unrelated_preexisting_files_preserved": {
+    "docs/evidence/d3d-adapter-format/.gitattributes": "ed498fc91b1843b2e372ddc35249846ed8411aa4b63361dc2fede9f454e0fb25",
+    "docs/evidence/d3d-adapter-format/README.md": "75412206932d385780dcfc84288f87a72b32545fdfe9cfba8d462969ca446ce1",
+    "docs/evidence/d3d-adapter-format/REFERENCE_LICENSE.txt": "2928b2f628a94dc67b9c8fbc97bf85f7fe0444bc38e34e898befb4e450463b2f",
+    "docs/evidence/d3d-adapter-format/candidate.patch": "20f79cba52efad0ef229b0343b6c8ca7eea23ca813b301e45a95111a48558a4d",
+    "docs/evidence/d3d-adapter-format/evidence.json": "cac2ad3b15a0cab5b0dfbd186f068d05979fca84c64f146934ce45e976e1afca",
+    "docs/evidence/d3d-adapter-format/model.py": "b7be4e6b3bbceebddd3716ff8e2c48fed082245470485ddf70a8db42784dfc0c",
+    "docs/evidence/d3d-adapter-format/provenance.json": "d2e14614a1a9a683ab9f04210f76be95ee9c7fcc32b12dad71e94b9679f8e6d0",
+    "docs/evidence/d3d-adapter-format/reconstruct.py": "3f2a09ac896cbb1c12a6a4901a62ef6a23cf006a7cb08bcb7d9046bf40cf5512",
+    "docs/evidence/d3d-adapter-format/test_candidate.py": "e74122636a34597a213bd53514d43f7665559177227eb2ccc7128bf6932cc6a7"
+  },
+  "legacy_provider_target_toolchain_state": "untouched",
+  "retained_campaign_analysis_logical_bytes": 8579911,
+  "retained_private_native_logical_bytes": 2081262
+}
