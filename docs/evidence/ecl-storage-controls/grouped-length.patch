@@ -1,0 +1,8 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -1144,2 +1144,3 @@
+-                const float x = ReadFloat(1);
+-                const float y = ReadFloat(2);
++                float x, y;
++                x = ReadFloat(1);
++                y = ReadFloat(2);

@@ -1,0 +1,8 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -78 +78 @@
+-    unsigned char *const valueAddress = stackData + stackTop;
++    unsigned char *const valueAddress = stackTop + stackData;
+@@ -84 +84 @@
+-        const unsigned char *const typeAddress = stackData + stackTop;
++        const unsigned char *const typeAddress = stackTop + stackData;

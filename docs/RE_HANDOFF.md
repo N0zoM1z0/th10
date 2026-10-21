@@ -1,7 +1,7 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-21. The operator requested cleanup and handoff; reconstruction
-experiments are stopped at this checkpoint. Historical investigations belong in
+Updated 2026-10-22. Exact reconstruction is active under the operator's renewed
+instruction to checkpoint and push bounded work. Historical investigations belong in
 Git, [the knowledge base](KNOWLEDGE_BASE.md) and linked evidence packs. Older
 reports describe their own source/build context, not the current baseline.
 
@@ -57,6 +57,19 @@ explicit ID-value construction; see [ID-value evidence](evidence/pending-id-valu
 Those histories retain their original input pins and validation scope.
 
 ## Three large owners remain nonexact
+
+The [fresh ECL storage controls](evidence/ecl-storage-controls/README.md)
+independently reproduce the two-TU cold Run baseline:7020 bytes,26 ordinary
+differences, all189 fields/62 locals and the complete171-byte float callee exact.
+Grouped LengthSquared declarations, earlier FORMAT counter initialization and
+reversed Pop pointer additions produce the identical raw Run body. Sharing one
+integer result adds a difference at+AF, rather than the larger graph's+146E.
+All four controls are restored; no exact credit or maintained source changes.
+The baseline and selected failure remain under
+`.analysis/gpt-6.1-sol/ecl-residual-storage-20261021/` and its matching build root;
+three neutral carriers are pruned (771355 file bytes). Its manifest binds the
+restored source, complete input graph, results and independent D3D hashes.
+Do not infer original source spelling or TU ownership from these controls.
 
 All measurements below were refreshed under the current dependencies. Aligned
 positions and equal-sized groups are diagnostics, not partial exact credit.

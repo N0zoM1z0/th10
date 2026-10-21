@@ -1,0 +1,51 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -712,2 +712 @@
+-            int floatResult;
+-            int logicalResult;
++            int opcodeResult;
+@@ -998,2 +997,2 @@
+-                floatResult = left == right;
+-                PushInt(this, floatResult);
++                opcodeResult = left == right;
++                PushInt(this, opcodeResult);
+@@ -1007,2 +1006,2 @@
+-                floatResult = left != right;
+-                PushInt(this, floatResult);
++                opcodeResult = left != right;
++                PushInt(this, opcodeResult);
+@@ -1016,2 +1015,2 @@
+-                floatResult = left < right;
+-                PushInt(this, floatResult);
++                opcodeResult = left < right;
++                PushInt(this, opcodeResult);
+@@ -1025,2 +1024,2 @@
+-                floatResult = left <= right;
+-                PushInt(this, floatResult);
++                opcodeResult = left <= right;
++                PushInt(this, opcodeResult);
+@@ -1034,2 +1033,2 @@
+-                floatResult = left > right;
+-                PushInt(this, floatResult);
++                opcodeResult = left > right;
++                PushInt(this, opcodeResult);
+@@ -1043,2 +1042,2 @@
+-                floatResult = left >= right;
+-                PushInt(this, floatResult);
++                opcodeResult = left >= right;
++                PushInt(this, opcodeResult);
+@@ -1049,2 +1048,2 @@
+-                floatResult = PopFloat(this) == 0.0f;
+-                PushInt(this, floatResult);
++                opcodeResult = PopFloat(this) == 0.0f;
++                PushInt(this, opcodeResult);
+@@ -1057,2 +1056,2 @@
+-                logicalResult = left != 0 || right != 0;
+-                PushInt(this, logicalResult);
++                opcodeResult = left != 0 || right != 0;
++                PushInt(this, opcodeResult);
+@@ -1066,2 +1065,2 @@
+-                logicalResult = left != 0 && right != 0;
+-                PushInt(this, logicalResult);
++                opcodeResult = left != 0 && right != 0;
++                PushInt(this, opcodeResult);

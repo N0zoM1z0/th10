@@ -1,0 +1,7 @@
+--- a/src/EclVm.cpp
++++ b/src/EclVm.cpp
+@@ -1164,0 +1165 @@
++                int argumentIndex = 0;
+@@ -1169,2 +1169,0 @@
+-
+-                int argumentIndex = 0;

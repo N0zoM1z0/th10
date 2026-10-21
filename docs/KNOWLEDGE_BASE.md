@@ -4533,3 +4533,20 @@ Authored exact is396/72283 bytes,26.42% provisional. See
 | ID | Evidence | Fact | Source |
 | --- | --- | --- | --- |
 | ANM-114 | observed / source-codegen improvement / non-exact | Grouped seven real locals and original vertex-count expressions recover TH10 radial LEA ESI,[EAX-1]/TEST/spill/FILD setup before coefficient divisions and remove native's late MOV ESI,EAX. Both current actual33-input eleven-TU and full32-input canonical ten-TU graphs emit9964/9964,90/92 equal groups,gap2 and7541/7995 diagnostic positions versus7478. Private positive and maintained-source all3 large bodies reproduce raw; actual Run/Enemy remain unchanged. All46 guards5335/all142 and canonical35 guards4424/all118 pass; five accepted units cold-replay. One-based vertex loop regresses; combined split flags fix Tick but reverse radial Z and are rejected. Adjacent TH095 declarations/loop are hypothesis only; TH10 closing writes/calls retained. Names/declaration order/bounds changed together, so original spelling or unique mechanism is unproved. Current45 absolute-memory references still pass21 literal payload and24 global/vector address checks; this is not exhaustive field or runtime validation. No new exact/case credit, ownership or phase-gate promotion. | Fresh local read-only target/mapped-text attestation; current compiler/cold/pinned field guards; docs/evidence/anm-radial-count/README.md |
+
+## ECL Run storage controls (2026-10-21)
+
+A new cold canonical two-TU context reproduces the complete7020-byte Run with
+26 ordinary differences,189 bound fields/62 local destinations and an exact
+171-byte ReadFloatValue callee. The complete baseline raw owner hash is
+38b82dac92d83f70d377f5a2434cb86d7c0b8d057383cacdbd979d09aff070aa.
+Grouping LengthSquared x/y declarations, initializing FORMAT's argument counter
+earlier and reversing both Pop pointer additions each reproduce that raw body.
+These specific forms therefore do not control the residual in this context.
+Sharing the two integer opcode-result locals adds a RETURN difference at+AF;
+it does not reproduce the larger graph's extra SIB at+146E. All four controls
+are restored. Only baseline is cold; controls recompile the primary and relink
+against hash-verified support/input pins. No source, exact, ownership, runtime
+or product credit is added. Read-only/noanalysis Ghidra validates the complete
+412289-byte mapped text under maxcpu1/768 MiB; native builds are serial/nice10.
+See [complete evidence and source controls](evidence/ecl-storage-controls/README.md).
