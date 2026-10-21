@@ -1,0 +1,1586 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "8651694",
+  "scope": "One newly inventoried complete authored callback302/all30. One source mapping and exact unit; reviewed authored denominator expands302. No original owner/profile, product, runtime, semantic or port claim.",
+  "source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/FileSystem.cpp": "630e5d4a5794ecf136696fb9720f02212c877d1932fc2ff093c6e67a55fec8c8",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/Main.cpp": "134ce1c010a1da99af151aaea4f3a7a3e8e1ad361740d64b83eb8cae23d37963",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "graph": {
+    "source": "src/Main.cpp",
+    "support_sources": [
+      "src/GameErrorContext.cpp",
+      "src/FileSystem.cpp",
+      "src/Midi.cpp",
+      "src/PbgArchive.cpp",
+      "src/AnmManager.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/AnmVmId.cpp",
+      "src/AnmInt3Scale.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "scale_support_profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/Ob1"
+    ],
+    "entry": "WinMain@16"
+  },
+  "independent_complete_cold_builds": [
+    {
+      "label": "maintained-cold1",
+      "scope": "Independent complete ten-TU cold; all ten source objects rebuilt and fresh unresolved-symbol harness generated",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/source.exe",
+          "sha256": "950845184e902cd08d4eeadef67140fdf4275df3224e1bfe13acc35653b93d66"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/source.map",
+          "sha256": "a808d75058f18e00573f3ab01f5a75465a35db0e37efdac52b769131f2a87c81"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/source.pdb",
+          "sha256": "c194cfb9cb49dfa8e40ae2bbf2de39ccbfeb51a4c659ded7069a43637b00ab42"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/source.ltcg.obj",
+          "sha256": "3251cad0f6b0678caaaffe330a29a9d8057e89bc1aba7be15416e831195e1af7"
+        }
+      },
+      "objects": [
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/source.ltcg.obj",
+          "sha256": "3251cad0f6b0678caaaffe330a29a9d8057e89bc1aba7be15416e831195e1af7"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-00-GameErrorContext.ltcg.obj",
+          "sha256": "cb1ce6a8c927d5558351c58378a69d2b800052b3e5e5237d7e44bf54ee10a155"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-01-FileSystem.ltcg.obj",
+          "sha256": "b74c79fc13d51b7aad1142550ecb819f5b380de57bc9c6ed1c7e47989a1dc8a2"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-02-Midi.ltcg.obj",
+          "sha256": "ce35896f77e46b3ff28c1881a04d42fc6844560c25686b54abd2971118353ae1"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-03-PbgArchive.ltcg.obj",
+          "sha256": "76c8d017ce7133e1435b8ed3f6e1710c4ab05f196d7ca4f86a562b9f05da0672"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-04-AnmManager.ltcg.obj",
+          "sha256": "ae255de94ab673594d435ed179f9e4e59250dd1b38709ec2e834682135f65665"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-05-RandomMath.ltcg.obj",
+          "sha256": "5f1832ebb4a8261b6f6cd133d9dac678f201d22debdad92eb2646e9c510d31bc"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-06-AnmVmCreate.ltcg.obj",
+          "sha256": "72737e67f1b0090d6e2dffe575db5524cda31377e4843c8561945d1fb12a5db4"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-07-AnmVmId.ltcg.obj",
+          "sha256": "317643adfe68b3bff7612d1871dad19c5a8a78b4dac4cdd255ef9aa8d1c37610"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-screenshot-worker-20261021/maintained-cold1/support-08-AnmInt3Scale.ltcg.obj",
+          "sha256": "c350df66e52a8639eab18ab8cbb11dd3dcabf592a33cd7124dd15964658591b8"
+        }
+      ],
+      "owners": [
+        {
+          "unit": "main-release-anm-surfaces",
+          "address": "0x00438A30",
+          "size": 43,
+          "fields": 0,
+          "result": "exact"
+        },
+        {
+          "unit": "main-service-anm-screenshots",
+          "address": "0x00438A60",
+          "size": 111,
+          "fields": 2,
+          "result": "exact"
+        },
+        {
+          "unit": "main-present",
+          "address": "0x004391F0",
+          "size": 236,
+          "fields": 20,
+          "result": "exact"
+        },
+        {
+          "unit": "main-take-screenshot",
+          "address": "0x00420670",
+          "size": 504,
+          "fields": 14,
+          "result": "exact"
+        },
+        {
+          "unit": "anm-capture-to-texture",
+          "address": "0x00448270",
+          "size": 240,
+          "fields": 3,
+          "result": "exact"
+        },
+        {
+          "unit": "main-screenshot-worker",
+          "address": "0x00420540",
+          "size": 302,
+          "fields": 30,
+          "result": "exact"
+        },
+        {
+          "unit": "main-executable-checksum",
+          "address": "0x0043A1C0",
+          "size": 207,
+          "fields": 9,
+          "result": "exact"
+        },
+        {
+          "unit": "main-activate-window",
+          "address": "0x0043A1B0",
+          "size": 8,
+          "fields": 1,
+          "result": "exact"
+        },
+        {
+          "unit": "main-window-proc",
+          "address": "0x004390E0",
+          "size": 265,
+          "fields": 16,
+          "result": "exact"
+        },
+        {
+          "unit": "main-resolve-shortcut",
+          "address": "0x0043A290",
+          "size": 272,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "main-check-running-instance",
+          "address": "0x00439FF0",
+          "size": 442,
+          "fields": 26,
+          "result": "exact"
+        },
+        {
+          "unit": "main-init-d3d-interface",
+          "address": "0x00439700",
+          "size": 45,
+          "fields": 5,
+          "result": "exact"
+        },
+        {
+          "unit": "decomphelp-game-error-fatal",
+          "address": "0x0044B8E0",
+          "size": 201,
+          "fields": 11,
+          "result": "exact"
+        },
+        {
+          "unit": "decomphelp-game-error-log",
+          "address": "0x0044B810",
+          "size": 201,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "address": "0x0044B4D0",
+          "size": 111,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "midi-unprepare-header",
+          "address": "0x0043AEB0",
+          "size": 79,
+          "fields": 3,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-open-file",
+          "address": "0x0044B360",
+          "size": 360,
+          "fields": 26,
+          "result": "exact"
+        },
+        {
+          "unit": "filesystem-open-write-file",
+          "address": "0x0044B620",
+          "size": 137,
+          "fields": 12,
+          "result": "exact"
+        }
+      ],
+      "complete_bytes": 3764,
+      "bound_fields": 214,
+      "replay_sha256": "01988067f4f9bfb14cfbb9f06a7428bc4091e7fd462923a3a4851a6ba4c8d4d3"
+    },
+    {
+      "label": "canonical-cold2",
+      "scope": "Independent complete ten-TU cold; all ten source objects rebuilt and fresh unresolved-symbol harness generated",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/MainScreenshots/source.exe",
+          "sha256": "356ce00dd5e126c38a73e03426bdf80c46b241b156d6543553e817a8e01de1ea"
+        },
+        "map": {
+          "path": "build/match-linked/MainScreenshots/source.map",
+          "sha256": "db4269334e3a9b4fe426146ad19c055fc671b675b9b7253cf8b137c808e94a11"
+        },
+        "pdb": {
+          "path": "build/match-linked/MainScreenshots/source.pdb",
+          "sha256": "3c8923e073b7369441ffd4715d646982d21cf7d1ed7d6ddd0ad0c86cf463e72e"
+        },
+        "object": {
+          "path": "build/match-linked/MainScreenshots/source.ltcg.obj",
+          "sha256": "d98e6fbee1a5a841041a65d958baccb3ad696ad0a9af7cebfdbdbee7c4da4c6c"
+        }
+      },
+      "objects": [
+        {
+          "path": "build/match-linked/MainScreenshots/source.ltcg.obj",
+          "sha256": "d98e6fbee1a5a841041a65d958baccb3ad696ad0a9af7cebfdbdbee7c4da4c6c"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-00-GameErrorContext.ltcg.obj",
+          "sha256": "42fddbdee8fb5528cc8a1c29ac01bfc8e02b5a7df8567b3854214be37c581e57"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-01-FileSystem.ltcg.obj",
+          "sha256": "f356072472639db6c0337e809000ab699c1780ed2498cf39427d73d1a5d33bf6"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-02-Midi.ltcg.obj",
+          "sha256": "e8086f1effef8f75edf5c8d73163f0146ce9f45ff7fec62c6c2318d5c103ad8e"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-03-PbgArchive.ltcg.obj",
+          "sha256": "60091ff22db08554a643f6bad813006dd63b5348362f09a93c64f8e60c5c84d5"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-04-AnmManager.ltcg.obj",
+          "sha256": "254acc0e1561c08a0bb1b864ddc6c728f390ad23456dad5ca3dbf08b63c7fb7f"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-05-RandomMath.ltcg.obj",
+          "sha256": "b3c250e0498ac693a5cef6d12c96895af9a3278a38cff456fcae46ecc3289fdb"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-06-AnmVmCreate.ltcg.obj",
+          "sha256": "17d62b482b81c0fdecee6527b08e808fc027f2b28a9dee6312fcc7d99c5ad0b9"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-07-AnmVmId.ltcg.obj",
+          "sha256": "01fb3f6ba417974a49722d13e1066527dbff12b475c1d48e192f676175850c72"
+        },
+        {
+          "path": "build/match-linked/MainScreenshots/support-08-AnmInt3Scale.ltcg.obj",
+          "sha256": "3b15200ac81b50c5c7e3d6c1547aa72bf5659fabb09c32dc4ac37ed6cc8b017f"
+        }
+      ],
+      "owners": [
+        {
+          "unit": "main-release-anm-surfaces",
+          "address": "0x00438A30",
+          "size": 43,
+          "fields": 0,
+          "result": "exact"
+        },
+        {
+          "unit": "main-service-anm-screenshots",
+          "address": "0x00438A60",
+          "size": 111,
+          "fields": 2,
+          "result": "exact"
+        },
+        {
+          "unit": "main-present",
+          "address": "0x004391F0",
+          "size": 236,
+          "fields": 20,
+          "result": "exact"
+        },
+        {
+          "unit": "main-take-screenshot",
+          "address": "0x00420670",
+          "size": 504,
+          "fields": 14,
+          "result": "exact"
+        },
+        {
+          "unit": "anm-capture-to-texture",
+          "address": "0x00448270",
+          "size": 240,
+          "fields": 3,
+          "result": "exact"
+        },
+        {
+          "unit": "main-screenshot-worker",
+          "address": "0x00420540",
+          "size": 302,
+          "fields": 30,
+          "result": "exact"
+        },
+        {
+          "unit": "main-executable-checksum",
+          "address": "0x0043A1C0",
+          "size": 207,
+          "fields": 9,
+          "result": "exact"
+        },
+        {
+          "unit": "main-activate-window",
+          "address": "0x0043A1B0",
+          "size": 8,
+          "fields": 1,
+          "result": "exact"
+        },
+        {
+          "unit": "main-window-proc",
+          "address": "0x004390E0",
+          "size": 265,
+          "fields": 16,
+          "result": "exact"
+        },
+        {
+          "unit": "main-resolve-shortcut",
+          "address": "0x0043A290",
+          "size": 272,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "main-check-running-instance",
+          "address": "0x00439FF0",
+          "size": 442,
+          "fields": 26,
+          "result": "exact"
+        },
+        {
+          "unit": "main-init-d3d-interface",
+          "address": "0x00439700",
+          "size": 45,
+          "fields": 5,
+          "result": "exact"
+        },
+        {
+          "unit": "decomphelp-game-error-fatal",
+          "address": "0x0044B8E0",
+          "size": 201,
+          "fields": 11,
+          "result": "exact"
+        },
+        {
+          "unit": "decomphelp-game-error-log",
+          "address": "0x0044B810",
+          "size": 201,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "address": "0x0044B4D0",
+          "size": 111,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "midi-unprepare-header",
+          "address": "0x0043AEB0",
+          "size": 79,
+          "fields": 3,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-open-file",
+          "address": "0x0044B360",
+          "size": 360,
+          "fields": 26,
+          "result": "exact"
+        },
+        {
+          "unit": "filesystem-open-write-file",
+          "address": "0x0044B620",
+          "size": 137,
+          "fields": 12,
+          "result": "exact"
+        }
+      ],
+      "complete_bytes": 3764,
+      "bound_fields": 214,
+      "replay_sha256": "bbe57900eebe4fb86e4f5349660e6efcc293d6e6941e66eec675d5872e34ab60"
+    }
+  ],
+  "worker_fields": [
+    {
+      "offset": "0x3",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0134",
+      "local": false,
+      "candidate_target": "0x00412740",
+      "target": "0x00491C28",
+      "addend": 1320,
+      "target_encoded_value": "0x00492150"
+    },
+    {
+      "offset": "0x8",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?OpenWriteFile@FileSystem@@YGHPBD@Z",
+      "linked_symbol": "?OpenWriteFile@FileSystem@@YGHPBD@Z",
+      "local": false,
+      "candidate_target": "0x00403650",
+      "target": "0x0044B620",
+      "addend": 0,
+      "target_encoded_value": "0x0002B0D4"
+    },
+    {
+      "offset": "0xD",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileHandle@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0072",
+      "local": false,
+      "candidate_target": "0x00412120",
+      "target": "0x00474C38",
+      "addend": 0,
+      "target_encoded_value": "0x00474C38"
+    },
+    {
+      "offset": "0x1F",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__WriteFile@20",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0213",
+      "local": false,
+      "candidate_target": "0x00412354",
+      "target": "0x004660D4",
+      "addend": 0,
+      "target_encoded_value": "0x004660D4"
+    },
+    {
+      "offset": "0x2E",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0134",
+      "local": false,
+      "candidate_target": "0x00412728",
+      "target": "0x00491C28",
+      "addend": 1296,
+      "target_encoded_value": "0x00492138"
+    },
+    {
+      "offset": "0x3C",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__CloseHandle@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0170",
+      "local": false,
+      "candidate_target": "0x004122A8",
+      "target": "0x004660CC",
+      "addend": 0,
+      "target_encoded_value": "0x004660CC"
+    },
+    {
+      "offset": "0x42",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__LeaveCriticalSection@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0195",
+      "local": false,
+      "candidate_target": "0x0041230C",
+      "target": "0x004660B4",
+      "addend": 0,
+      "target_encoded_value": "0x004660B4"
+    },
+    {
+      "offset": "0x4A",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileHandle@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0072",
+      "local": false,
+      "candidate_target": "0x00412120",
+      "target": "0x00474C38",
+      "addend": 0,
+      "target_encoded_value": "0x00474C38"
+    },
+    {
+      "offset": "0x52",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0071",
+      "local": false,
+      "candidate_target": "0x0041211C",
+      "target": "0x004922A4",
+      "addend": 0,
+      "target_encoded_value": "0x004922A4"
+    },
+    {
+      "offset": "0x5A",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0073",
+      "local": false,
+      "candidate_target": "0x00412124",
+      "target": "0x0049231E",
+      "addend": 0,
+      "target_encoded_value": "0x0049231E"
+    },
+    {
+      "offset": "0x5F",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileHandle@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0072",
+      "local": false,
+      "candidate_target": "0x00412120",
+      "target": "0x00474C38",
+      "addend": 0,
+      "target_encoded_value": "0x00474C38"
+    },
+    {
+      "offset": "0x6E",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0134",
+      "local": false,
+      "candidate_target": "0x00412738",
+      "target": "0x00491C28",
+      "addend": 1312,
+      "target_encoded_value": "0x00492148"
+    },
+    {
+      "offset": "0x86",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileHandle@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0072",
+      "local": false,
+      "candidate_target": "0x00412120",
+      "target": "0x00474C38",
+      "addend": 0,
+      "target_encoded_value": "0x00474C38"
+    },
+    {
+      "offset": "0x8E",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0071",
+      "local": false,
+      "candidate_target": "0x0041211C",
+      "target": "0x004922A4",
+      "addend": 0,
+      "target_encoded_value": "0x004922A4"
+    },
+    {
+      "offset": "0x96",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0073",
+      "local": false,
+      "candidate_target": "0x00412124",
+      "target": "0x0049231E",
+      "addend": 0,
+      "target_encoded_value": "0x0049231E"
+    },
+    {
+      "offset": "0x9B",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileHandle@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0072",
+      "local": false,
+      "candidate_target": "0x00412120",
+      "target": "0x00474C38",
+      "addend": 0,
+      "target_encoded_value": "0x00474C38"
+    },
+    {
+      "offset": "0xA6",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0134",
+      "local": false,
+      "candidate_target": "0x0041273C",
+      "target": "0x00491C28",
+      "addend": 1316,
+      "target_encoded_value": "0x0049214C"
+    },
+    {
+      "offset": "0xC4",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileHandle@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0072",
+      "local": false,
+      "candidate_target": "0x00412120",
+      "target": "0x00474C38",
+      "addend": 0,
+      "target_encoded_value": "0x00474C38"
+    },
+    {
+      "offset": "0xCC",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0071",
+      "local": false,
+      "candidate_target": "0x0041211C",
+      "target": "0x004922A4",
+      "addend": 0,
+      "target_encoded_value": "0x004922A4"
+    },
+    {
+      "offset": "0xD4",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0073",
+      "local": false,
+      "candidate_target": "0x00412124",
+      "target": "0x0049231E",
+      "addend": 0,
+      "target_encoded_value": "0x0049231E"
+    },
+    {
+      "offset": "0xD9",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileHandle@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0072",
+      "local": false,
+      "candidate_target": "0x00412120",
+      "target": "0x00474C38",
+      "addend": 0,
+      "target_encoded_value": "0x00474C38"
+    },
+    {
+      "offset": "0xE6",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0071",
+      "local": false,
+      "candidate_target": "0x0041211C",
+      "target": "0x004922A4",
+      "addend": 0,
+      "target_encoded_value": "0x004922A4"
+    },
+    {
+      "offset": "0xEE",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0073",
+      "local": false,
+      "candidate_target": "0x00412124",
+      "target": "0x0049231E",
+      "addend": 0,
+      "target_encoded_value": "0x0049231E"
+    },
+    {
+      "offset": "0xF6",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0134",
+      "local": false,
+      "candidate_target": "0x00412738",
+      "target": "0x00491C28",
+      "addend": 1312,
+      "target_encoded_value": "0x00492148"
+    },
+    {
+      "offset": "0x100",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "_free",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0227",
+      "local": false,
+      "candidate_target": "0x0041238C",
+      "target": "0x00452422",
+      "addend": 0,
+      "target_encoded_value": "0x00031DDE"
+    },
+    {
+      "offset": "0x109",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0134",
+      "local": false,
+      "candidate_target": "0x00412738",
+      "target": "0x00491C28",
+      "addend": 1312,
+      "target_encoded_value": "0x00492148"
+    },
+    {
+      "offset": "0x10E",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0134",
+      "local": false,
+      "candidate_target": "0x0041273C",
+      "target": "0x00491C28",
+      "addend": 1316,
+      "target_encoded_value": "0x0049214C"
+    },
+    {
+      "offset": "0x118",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "_free",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0227",
+      "local": false,
+      "candidate_target": "0x0041238C",
+      "target": "0x00452422",
+      "addend": 0,
+      "target_encoded_value": "0x00031DC6"
+    },
+    {
+      "offset": "0x121",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0134",
+      "local": false,
+      "candidate_target": "0x0041273C",
+      "target": "0x00491C28",
+      "addend": 1316,
+      "target_encoded_value": "0x0049214C"
+    },
+    {
+      "offset": "0x127",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainScreenshotThreadHandle@@3KA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0130",
+      "local": false,
+      "candidate_target": "0x00412208",
+      "target": "0x00492134",
+      "addend": 0,
+      "target_encoded_value": "0x00492134"
+    }
+  ],
+  "new_owned_bytes": 302,
+  "new_bound_fields": 30,
+  "canonical_replay": {
+    "units": [
+      "main-screenshot-worker",
+      "main-take-screenshot"
+    ],
+    "unit_count": 2,
+    "complete_bytes": 806,
+    "artifact_groups": 1,
+    "receipt_sha256": "db4191bc1a917ab69d8071d9e26c72d91ccffeb258227558095cfe01cef85a42"
+  },
+  "target_review": {
+    "mode": "Direct readOnly/noanalysis local Ghidra; rolled-back temporary worker metadata; CPU1 heap768MiB; no Factory MCP",
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "mapped_text_bytes": 412289,
+    "entry": "0x00420540",
+    "end_inclusive": "0x0042066D",
+    "size": 302,
+    "published_callback": "DIR32 immediate at instruction42083F in exact parent420670/504",
+    "external_reference_review": "EXTERNAL_REFERENCE From: 0042083f To: 00420540 Type: DATA Op: 0 ANALYSIS\nentry_refs=1; external_interior_refs=0; complete_mapped_text_sha256=cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f\nReadOnly/noanalysis; no metadata or byte mutations.\n",
+    "imports": [
+      {
+        "address": "0x4660b4",
+        "library": "KERNEL32.dll",
+        "name": "LeaveCriticalSection"
+      },
+      {
+        "address": "0x4660cc",
+        "library": "KERNEL32.dll",
+        "name": "CloseHandle"
+      },
+      {
+        "address": "0x4660d4",
+        "library": "KERNEL32.dll",
+        "name": "WriteFile"
+      }
+    ],
+    "boundary_before": {
+      "summary": {
+        "tracked_candidates": 1775,
+        "reviewed": 1727,
+        "provisional": 23,
+        "needs_review": 25,
+        "overlap_pairs": 10,
+        "overlap_candidates": 20,
+        "tracked_union_bytes": 349634,
+        "untracked_gap_bytes": 62655,
+        "pure_alignment_gaps": 971,
+        "pure_alignment_bytes": 8590,
+        "unresolved_gaps": 434,
+        "unresolved_gap_bytes": 54065,
+        "untracked_direct_targets": 4,
+        "untracked_data_targets": 82,
+        "ghidra_body_functions": 1195,
+        "ghidra_sparse_body_functions": 122,
+        "ghidra_remote_body_functions": 2,
+        "remote_body_direct_targets": 2,
+        "indirect_control_tables": 101,
+        "unowned_indirect_control_tables": 18
+      },
+      "worker_gap": [
+        {
+          "start": "0x0042053C",
+          "end": "0x0042066F",
+          "size": 308,
+          "kind": "unresolved",
+          "alignment_prefix": 4,
+          "alignment_suffix": 2
+        }
+      ],
+      "worker_entry": []
+    },
+    "boundary_after": {
+      "summary": {
+        "tracked_candidates": 1776,
+        "reviewed": 1728,
+        "provisional": 23,
+        "needs_review": 25,
+        "overlap_pairs": 10,
+        "overlap_candidates": 20,
+        "tracked_union_bytes": 349936,
+        "untracked_gap_bytes": 62353,
+        "pure_alignment_gaps": 973,
+        "pure_alignment_bytes": 8596,
+        "unresolved_gaps": 433,
+        "unresolved_gap_bytes": 53757,
+        "untracked_direct_targets": 4,
+        "untracked_data_targets": 82,
+        "ghidra_body_functions": 1195,
+        "ghidra_sparse_body_functions": 122,
+        "ghidra_remote_body_functions": 2,
+        "remote_body_direct_targets": 2,
+        "indirect_control_tables": 101,
+        "unowned_indirect_control_tables": 18
+      },
+      "worker_boundary": [
+        {
+          "address": "0x00420540",
+          "span_end": "0x0042066D",
+          "state": "reviewed",
+          "confidence": "high",
+          "evidence_id": "prior-target-boundary-review+target-boundary-audit-2026-09-15",
+          "notes": "Prior boundary evidence retained; dense decode 302/302, tail ret"
+        }
+      ],
+      "surrounding_gaps": [
+        {
+          "start": "0x0042053C",
+          "end": "0x0042053F",
+          "size": 4,
+          "kind": "alignment",
+          "alignment_prefix": 4,
+          "alignment_suffix": 0
+        },
+        {
+          "start": "0x0042066E",
+          "end": "0x0042066F",
+          "size": 2,
+          "kind": "alignment",
+          "alignment_prefix": 2,
+          "alignment_suffix": 0
+        }
+      ]
+    },
+    "automatic_ledger_check": "First pre-existing mismatch401100 evidence/notes preserved; full automatic ledger agreement not claimed. Selected new302 extent independently reviewed and separately agrees with focused automatic dense boundary result."
+  },
+  "negative_controls": [
+    {
+      "control": "wrong-info-field",
+      "result": "rejected",
+      "reason": "linked field (110, 'DIR32', 4) does not resolve uniquely through '?g_MainSupervisorView@@3UMainSupervisorView@@A': publics=[4268568] expected=0x412214"
+    },
+    {
+      "control": "wrong-header-length",
+      "result": "rejected",
+      "comparison": "mismatch",
+      "matched_bytes": 301,
+      "size": 302,
+      "first_differences": [
+        {
+          "offset": "0x2C",
+          "linked": 15,
+          "target": 14
+        }
+      ]
+    },
+    {
+      "control": "stale-warm-callback-alias",
+      "result": "rejected",
+      "reason": "linked field (464, 'DIR32', 4) does not resolve uniquely through '?MainScreenshotWorker@@YAXPAX@Z': publics=[4268256] expected=0x4010a0"
+    }
+  ],
+  "warm_cache_failure": {
+    "scope": "Strict callback field rejected stale external alias; no exact acceptance",
+    "reason": "Old warm alias response still maps newly defined MainScreenshotWorker to a data anchor; real PDB/MAP owner302 exists. Preserve comparator rejection and regenerate fresh harness in full colds.",
+    "artifacts": {
+      "image": {
+        "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/main-screenshot-worker-20261021/real-worker/source.exe",
+        "sha256": "4de71eb95a6afd4b6c103f225babeefcd2ee7bb9615a41ea467c56cab716c1e0"
+      },
+      "map": {
+        "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/main-screenshot-worker-20261021/real-worker/source.map",
+        "sha256": "94e06e784eb2c65619e29212e07c84919b2d5f1bfbe240687393e22f6b070d0f"
+      },
+      "pdb": {
+        "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/main-screenshot-worker-20261021/real-worker/source.pdb",
+        "sha256": "9c2fbe9076647f257fe61bb95d29506946c324aa02ba2718c05cd7656d7bc410"
+      },
+      "object": {
+        "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/main-screenshot-worker-20261021/real-worker/source.ltcg.obj",
+        "sha256": "82bd8e332bc921f6254fc53467c0441d3cec17d89ca6e09bb2cbca922ab9e813"
+      }
+    }
+  },
+  "large_dependency": {
+    "scope": "No new large build: Main.cpp is absent from actual nine-TU graph; EclVm/Enemy/ANM source and every actual30 raw input and four artifacts/eight support objects remain hash-identical. Retained three full native measurements stay current; no large exact credit.",
+    "source_sha256": {
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+      "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3b4e09603103c92b3940d305f62281054ae18327db960acea418176c7582a57a",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+    },
+    "artifacts": {
+      "image": {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/source.exe",
+        "sha256": "7d304f1952118c234fe505df6752406ecf82fc04b7d414a98885daf9da98a850"
+      },
+      "map": {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/source.map",
+        "sha256": "c4ee30a0333107b1b1509d71793050a9f64959e9a4c94f579bd715f0941e85b0"
+      },
+      "pdb": {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/source.pdb",
+        "sha256": "0be6d5af7129efef67399d5f38721cf8bee67a248a0e7b8ca12f2b344850f2be"
+      },
+      "object": {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/source.ltcg.obj",
+        "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+      }
+    },
+    "support_objects": [
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/support-00-EclVm.ltcg.obj",
+        "sha256": "23562098609b6284fc76c02b199b598e8eb18577d3a27503ee1e579b4e67db8a"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/support-01-AnmManager.ltcg.obj",
+        "sha256": "1f1fdd72192bbb899bf8ad2a112ebdb4069a99d9881a3925fedfe7678d28188c"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/support-02-AnmVmCreate.ltcg.obj",
+        "sha256": "fb4fa78322df318da5566a1d68182fb8488fb772403d22d3fe408685fa4c89c3"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/support-03-EnemyLaser.ltcg.obj",
+        "sha256": "9734e70fca298d54e686207668b36434e86ff99148e39d234d89d796b7ae6f72"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/support-04-Enemy.ltcg.obj",
+        "sha256": "6f471121ade26cc151d9c36a82117566dbfd7b8274e995f6b9c47e9fcef0e0f7"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/support-05-AnmVmId.ltcg.obj",
+        "sha256": "27b58220d3d37d415ac5429ba4ad63f905d5a13f910d3b43325f0189f0c95354"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/support-06-RandomMath.ltcg.obj",
+        "sha256": "2a148cea21fae91352e34ee65272e0a269eb85fb76520784ee77dff954f3cc44"
+      },
+      {
+        "path": "build/gpt-6.1-sol/main-surface-outlines-20261021/large-current/support-07-AnmInt3Scale.ltcg.obj",
+        "sha256": "cebf99e3cc1eac8623019bed0400d7db7442b0a1be314a68df4db8f9672d76da"
+      }
+    ],
+    "inherited_native_comparison": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "left_size": 14468,
+        "right_size": 14468,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?ExecuteScript@AnmRenderManagerView",
+        "left_size": 9964,
+        "right_size": 9964,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?Run@EclVmContext",
+        "left_size": 7020,
+        "right_size": 7020,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      }
+    ]
+  },
+  "ecl_controls": {
+    "scope": "Private complete-owner diagnostics; no exact credit",
+    "parent": "8651694",
+    "preflight": "four required commands passed; Gh full inclusive mapped text unchanged readOnly/noanalysis/rollback CPU1 heap768MiB",
+    "baseline_raw_source_sha256": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "baseline": {
+      "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-residual-storage-20261021/copy-baseline/source.exe",
+      "map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-residual-storage-20261021/copy-baseline/source.map",
+      "pdb": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-residual-storage-20261021/copy-baseline/source.pdb",
+      "object": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/ecl-residual-storage-20261021/copy-baseline/source.ltcg.obj"
+    },
+    "baseline_source_sha256": {
+      ".analysis/gpt-6.1-sol/ecl-residual-storage-20261021/copy-baseline/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    },
+    "baseline_strict": {
+      "size": 7020,
+      "matched": 6994,
+      "fields": 189,
+      "local_fields": 62,
+      "callee_guard171": "exact"
+    },
+    "residual_groups": {
+      "thread_register_bytes": 4,
+      "commuted_addressing_bytes": 4,
+      "stack_home_bytes": 16,
+      "common_latch_register_bytes": 2
+    },
+    "controls": [
+      {
+        "label": "operand-snapshots",
+        "producer_source_sha256": {
+          ".analysis/gpt-6.1-sol/ecl-operation-lifetimes-20261021/operand-snapshots/EclVm.cpp": "1496a902ef9b419f8e69a06578b43c6efe47d138ea436e6acbfb0c56f4d75355",
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+          "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+          "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+          "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "entry": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+        "reused_support": {
+          "support-00-Enemy.ltcg.obj": "3b3288f272b11d4c4d4c94aa4927bf0ab60e5311d7d10c568171fd5e0b68bc6e"
+        },
+        "candidate_size": 7020,
+        "ordinary_differences": 39,
+        "strict_matched_bytes": 6981,
+        "strict_result": "mismatch",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/operand-snapshots/source.exe",
+            "sha256": "6d1e718475013f19f250b3c62dabc648c6522607f8a546d82bb252e654c02ae8"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/operand-snapshots/source.map",
+            "sha256": "876957c97a93b7491bd167be7deb48b4f7b99b8dfc9d4f0db7a08a3be2635e39"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/operand-snapshots/source.pdb",
+            "sha256": "fd19cf0f490102cc95174c05c9af958d6c975a4e7fcba27af8636b874463a3d2"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/operand-snapshots/source.ltcg.obj",
+            "sha256": "e8ebb9ea5592d8160e1ecd1c04987d0bd68dd432861a1282fba3412637eef536"
+          }
+        },
+        "result": "Rejected; production source unchanged"
+      },
+      {
+        "label": "explicit-arithmetic",
+        "producer_source_sha256": {
+          ".analysis/gpt-6.1-sol/ecl-operation-lifetimes-20261021/explicit-arithmetic/EclVm.cpp": "a25b8f35da503d158c91ec71061a6e0f0c66616efd3f09d58bd248c5a94b38d5",
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+          "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+          "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+          "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "entry": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+        "reused_support": {
+          "support-00-Enemy.ltcg.obj": "3b3288f272b11d4c4d4c94aa4927bf0ab60e5311d7d10c568171fd5e0b68bc6e"
+        },
+        "candidate_size": 7020,
+        "ordinary_differences": 26,
+        "strict_matched_bytes": 6994,
+        "strict_result": "mismatch",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/explicit-arithmetic/source.exe",
+            "sha256": "fff33c54c8fd7f0f9c2de0102bf262f2c9f5676b6b5ed37ad97572a67668e72a"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/explicit-arithmetic/source.map",
+            "sha256": "e6839b69df6e1eda88b584b8c45e3ab189b27e900226c52bb2f7da3736e3baa5"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/explicit-arithmetic/source.pdb",
+            "sha256": "ff79a904b13476b6c6005d9dd7fae59c0cddc1b6a690f1a4c814fda636ba0945"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/explicit-arithmetic/source.ltcg.obj",
+            "sha256": "e37f1a54f2bad7778c88c4e288a0c33e8cb021b03a64dc1039607a37101db378"
+          }
+        },
+        "result": "Rejected; production source unchanged",
+        "artifact_disposition": "Pruned terminal negative; complete source variant, producer, field/extent diagnostics and artifact hashes retained"
+      },
+      {
+        "label": "cursor-rebind",
+        "producer_source_sha256": {
+          ".analysis/gpt-6.1-sol/ecl-operation-lifetimes-20261021/cursor-rebind/EclVm.cpp": "345797840c15f04f9e88471857ee8b003e734d332bc41bf800fcd72f59950e8b",
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+          "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+          "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+          "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "entry": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+        "reused_support": {
+          "support-00-Enemy.ltcg.obj": "3b3288f272b11d4c4d4c94aa4927bf0ab60e5311d7d10c568171fd5e0b68bc6e"
+        },
+        "candidate_size": 7052,
+        "ordinary_differences": null,
+        "strict_matched_bytes": null,
+        "strict_result": "Run must have one complete 7020-byte PDB extent",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/cursor-rebind/source.exe",
+            "sha256": "efe2aad0bb5f95331a24afbfc40a22b8c363a7768b2345d5602ccb03c63dd724"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/cursor-rebind/source.map",
+            "sha256": "7667dbd518fbd7bb9ce81139b37c830ec180cc3407eb458b3bb8d11f5c60366e"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/cursor-rebind/source.pdb",
+            "sha256": "b7418ff217de840242584d3a3fa5e4d201966fa1d8ed1c4de8487a2e5482a649"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/cursor-rebind/source.ltcg.obj",
+            "sha256": "9b08d87630939bd6488d4bf1fd035aedaee378120e267ff29df9a4aa4e40e76e"
+          }
+        },
+        "result": "Rejected; production source unchanged",
+        "artifact_disposition": "Pruned terminal negative; complete source variant, producer, field/extent diagnostics and artifact hashes retained"
+      },
+      {
+        "label": "named-angle-result",
+        "producer_source_sha256": {
+          ".analysis/gpt-6.1-sol/ecl-operation-lifetimes-20261021/named-angle-result/EclVm.cpp": "1430a787d0a2f0129e8a0b42b7b7aa55915be2dc00540d4054af8b18b0476327",
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+          "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+          "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+          "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "entry": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+        "reused_support": {
+          "support-00-Enemy.ltcg.obj": "3b3288f272b11d4c4d4c94aa4927bf0ab60e5311d7d10c568171fd5e0b68bc6e"
+        },
+        "candidate_size": 7020,
+        "ordinary_differences": 26,
+        "strict_matched_bytes": 6994,
+        "strict_result": "mismatch",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/named-angle-result/source.exe",
+            "sha256": "3855492a53dae110324308510fa9ab5543d76ad66084509de3e62ec498346a6c"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/named-angle-result/source.map",
+            "sha256": "9cb9658a50b6ccac30ad047bcae1d58de836cf03ade72bc7cb5e03908df587e7"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/named-angle-result/source.pdb",
+            "sha256": "f2fca156f95a37e77ca34619f5618699f4983de8a4313117a671aaa84d99b379"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/named-angle-result/source.ltcg.obj",
+            "sha256": "67263c708c9951d1c8369ce030fa5bcbebd0f01362be0467bccc07dce3beaedd"
+          }
+        },
+        "result": "Rejected; production source unchanged",
+        "artifact_disposition": "Pruned terminal negative; complete source variant, producer, field/extent diagnostics and artifact hashes retained"
+      },
+      {
+        "label": "shared-comparison-result",
+        "producer_source_sha256": {
+          ".analysis/gpt-6.1-sol/ecl-operation-lifetimes-20261021/shared-comparison-result/EclVm.cpp": "444c2c055616975db95bece3d5ecb2e125f188dc599fa034ba06957ccd523761",
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+          "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+          "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+          "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "entry": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+        "reused_support": {
+          "support-00-Enemy.ltcg.obj": "3b3288f272b11d4c4d4c94aa4927bf0ab60e5311d7d10c568171fd5e0b68bc6e"
+        },
+        "candidate_size": 7020,
+        "ordinary_differences": 27,
+        "strict_matched_bytes": 6993,
+        "strict_result": "mismatch",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/shared-comparison-result/source.exe",
+            "sha256": "9d9d20e25782f45283fdf10f1e7011c78b52b061053b8df9f474ccaf6048863e"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/shared-comparison-result/source.map",
+            "sha256": "0ff4fdced26ac752349f07c8c9a562f196f6161d8c04be3683a9c8e919383db8"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/shared-comparison-result/source.pdb",
+            "sha256": "3ef1975a6348280c4b62d817b7549e18644f26c7e3812621d365aa7786feb4ba"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/shared-comparison-result/source.ltcg.obj",
+            "sha256": "cd4a1a9c45b03cbf98641401a92bd36cb091568fd25d7e7bfffc8ebc7654cf6d"
+          }
+        },
+        "result": "Rejected; production source unchanged",
+        "artifact_disposition": "Pruned terminal negative; complete source variant, producer, field/extent diagnostics and artifact hashes retained"
+      },
+      {
+        "label": "scratch-record",
+        "producer_source_sha256": {
+          ".analysis/gpt-6.1-sol/ecl-operation-lifetimes-20261021/scratch-record/EclVm.cpp": "7633420ada536cc2dc9211c12f56f5d4cc88da61858f647cf07a9792fd80654c",
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+          "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+          "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+          "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "entry": "?EnemyRuntimeUpdate@@YGHPAUEnemyRuntimeView@@@Z",
+        "reused_support": {
+          "support-00-Enemy.ltcg.obj": "3b3288f272b11d4c4d4c94aa4927bf0ab60e5311d7d10c568171fd5e0b68bc6e"
+        },
+        "candidate_size": 6940,
+        "ordinary_differences": null,
+        "strict_matched_bytes": null,
+        "strict_result": "Run must have one complete 7020-byte PDB extent",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/scratch-record/source.exe",
+            "sha256": "ff9017003c17b7aec2a17b8cc9be01b496009c333e9b38c3c5d1e14d8022edb3"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/scratch-record/source.map",
+            "sha256": "6f4722a156983baf64a2e2febb17936ff598ba45666592bfa5369edad884fb40"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/scratch-record/source.pdb",
+            "sha256": "78a5759b0e1f37607947672cb99a6a8329afa439f651af3dc82cc54b42aeda7f"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/scratch-record/source.ltcg.obj",
+            "sha256": "668f329b278aa9b31b0887d525beb27c12f75a458acee0b83e37b248483ea13c"
+          }
+        },
+        "result": "Rejected; production source unchanged"
+      }
+    ],
+    "current_source_unchanged": true,
+    "native_neutrality": [
+      {
+        "label": "explicit-arithmetic",
+        "complete_replayed_bytes_equal_baseline": true,
+        "scope": "Both complete7020-byte comparisons rewrite all189 independently bound fields; full26-byte difference maps equal against the same attested target. No target-exact claim."
+      },
+      {
+        "label": "named-angle-result",
+        "complete_replayed_bytes_equal_baseline": true,
+        "scope": "Both complete7020-byte comparisons rewrite all189 independently bound fields; full26-byte difference maps equal against the same attested target. No target-exact claim."
+      }
+    ],
+    "cleanup": {
+      "removed": [
+        {
+          "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/explicit-arithmetic",
+          "bytes": 256065,
+          "files": 8
+        },
+        {
+          "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/cursor-rebind",
+          "bytes": 256077,
+          "files": 8
+        },
+        {
+          "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/named-angle-result",
+          "bytes": 256074,
+          "files": 8
+        },
+        {
+          "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/shared-comparison-result",
+          "bytes": 256066,
+          "files": 8
+        }
+      ],
+      "bytes": 1024282,
+      "retained_native": [
+        "operand-snapshots39/7020",
+        "scratch-record6940",
+        "unchanged baseline in prior residual-storage pack"
+      ],
+      "scope": "Only owned terminal controls removed; production, target, tools, other sessions untouched"
+    }
+  },
+  "credit": {
+    "new_authored_functions": 1,
+    "new_reviewed_owned_bytes": 302,
+    "new_source_mappings": 1,
+    "new_exact_functions": 1,
+    "new_exact_bytes": 302,
+    "canonical_exact_functions": 1228,
+    "authored_exact_functions": 387,
+    "authored_exact_bytes": 70779,
+    "reviewed_authored_functions": 735,
+    "reviewed_authored_bytes": 273576,
+    "source_mappings": 1084,
+    "main_source_present": 24,
+    "main_exact": 20,
+    "main_remaining_nonexact_count": 4,
+    "main_remaining_nonexact_bytes": 3206
+  }
+}

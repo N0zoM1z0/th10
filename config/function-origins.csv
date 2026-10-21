@@ -602,6 +602,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x004203C0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x004203F0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x00420470,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x00420540,authored_game,Main,authored,medium,main-screenshot-worker-2026-10-21
 0x00420670,authored_game,Main,authored,medium,main-screenshot-context-2026-10-21
 0x00420870,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00420A90,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17

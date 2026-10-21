@@ -4117,3 +4117,46 @@ graph with eight attested unchanged objects: all three complete large native
 bodies are equal after verified fields; no large target-exact credit follows.
 See [complete screenshot proof](evidence/main-screenshot-context/README.md).
 Native product, runtime, semantic and portability gates remain open.
+
+
+## Screenshot worker inventory and ECL lifetime controls (2026-10-21)
+
+Original Ghidra lacks a function420540, but MainTakeScreenshot420670/504
+publishes that entry at42083F to _beginthread. Fresh readOnly/noanalysis,
+CPU1/768MiB Ghidra review rolls temporary metadata back and verifies full mapped
+text before/after. Complete target/PDB code is302 bytes420540..42066D, between
+fourCC42053C..53F and twoCC42066E..66F. The former308-byte unresolved inventory
+gap loses302 code bytes and becomes two pure padding gaps. A separate Ghidra
+reference query observes exactly the entry data ref and no exterior interior
+ref. This admits one reviewed authored owner and expands the denominator302;
+it does not identify original callback name/class/TU or global ownership.
+
+Ordinary void cdecl(void*) source writes14 header bytes,40 info bytes and
+921600 pixel bytes through the real FileSystem helpers, then frees/clears
+supervisor+520/+524 and clears492134. Target error behavior, including helper
+handle/lock/count behavior, remains intact. LTCG derives one DWORD local and
+conditional register saves naturally. Two independent full ten-TU colds freeze
+24 equal raw inputs, strictly pass new302/all30 plus17 guards3462/all184 in each
+image, and canonically replay only worker/parent806 bytes/one group. Wrong info
+offset and native copied14->15 count controls reject; target bytes never change.
+
+An important cache boundary: the former declaration-only callback had a fallback
+data alias. After adding a real definition, its warm MAP/PDB function exists
+but the old alias-response metadata still redirects field binding. The existing
+strict comparator rejects it. Fresh full cold harnesses omit that obsolete
+fallback and pass without Oracle changes. Do not blindly reuse fallback maps
+after changing the set of definitions. See [worker proof](evidence/main-screenshot-worker/README.md).
+
+Fresh ECL target/native localization verifies current retained two-TU Run
+7020/all189/62 locals and exact171-byte float-value guard, with26 ordinary
+bytes: four thread-register, four commuted addressing,16 stack-home and two
+common-latch register bytes. Six source-only controls are rejected. Immutable
+arithmetic snapshots give39, shared integer comparison result27; cursor rebind
+grows7052 and a concrete overlaid POD scratch model shrinks6940, outside the
+complete7020 comparator contract. Explicit arithmetic and named angle-result
+forms preserve complete target-replayed baseline bytes, not only scores.
+These are compiler observations, not proof of original source names/types or
+a blanket prohibition on aggregates. All actual ECL/Enemy source is unchanged.
+Main.cpp is absent from the current nine-TU large graph; all30 current input
+pins and four artifacts/eight support objects stay unchanged, so no new large
+replay is required. All three large exact goals and later phase gates stay open.

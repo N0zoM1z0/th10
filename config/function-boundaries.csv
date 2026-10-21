@@ -602,6 +602,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x004203C0,0x004203EF,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x004203F0,0x0042046F,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00420470,0x0042053B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x00420540,0x0042066D,reviewed,high,main-screenshot-worker-2026-10-21,"Reviewed complete302-byte callback: dense302/302 decode through RET42066D, CC42053C..53F before and42066E..66F after. Sole Ghidra external entry reference42083F is a DIR32 callback pointer; no external interior reference observed. Rolled-back Ghidra body matches full target/PDB extent."
 0x00420670,0x00420867,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00420870,0x00420A85,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00420A90,0x00420B07,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=10; no overlap or external interior branch

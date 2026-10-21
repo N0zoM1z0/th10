@@ -40,14 +40,51 @@ none of the three is exact yet. Re-evaluate old source/API assumptions against
 fresh target and compiler evidence. The first bounded changes and measurements
 are recorded in [large-owner call order](evidence/large-owner-call-order/README.md).
 
-Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
-candidates, 734 authored functions owning 273274 bytes, 1083 source mappings,
-1227 canonical exact functions overall. Authored exact is **386 functions,
-70477/273274 bytes (25.79%)**. The 214 mapped authored nonexact functions,
+Live totals are generated in [PROGRESS.md](PROGRESS.md): 1776 reviewed
+candidates, 735 authored functions owning 273576 bytes, 1084 source mappings,
+1228 canonical exact functions overall. Authored exact is **387 functions,
+70779/273576 bytes (25.87%)**. The 214 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint closes surface release438A30/43, screenshot request
+The latest checkpoint admits the missing screenshot callback420540..42066D
+and closes its complete302 bytes/all30 fields. The prior308-byte unresolved
+gap is now302 owned bytes plus fourCC before/twoCC after; no prior extent is
+overwritten. Natural cdecl callback source uses real FileSystem open/write/close
+definitions, preserves target failure behavior, frees/clears both buffers and
+clears the thread handle. Fresh direct Ghidra shows one external entry data
+reference42083F and no external interior reference; metadata is rolled back.
+Two independent complete ten-TU GL/GS colds through real WinMain freeze24 equal
+raw inputs and pass18 full owners3764/all214 each. Canonical cold2 selects only
+new worker302 plus affected parent504: two units806 bytes/one group. Wrong info
+offset and copied-native14->15 header-count controls reject. An old warm fallback
+alias for the newly defined callback is also rejected; fresh harnesses pass
+without changing the Oracle. Main now has24/24 tracked source-present authored
+owners,20 exact, four nonexact/3206 bytes. Original class/name/TU/profile and
+product/runtime/semantic/port gates remain open. See
+[worker proof](evidence/main-screenshot-worker/README.md).
+All100 standard CI checks pass in one invocation. Final focused/toolchain/
+tracking/progress/docs/diff gates pass. Four owned terminal ECL control builds
+are pruned/1024282 bytes; complete source/receipts and two failures remain.
+Both worker cold proofs, the stale-alias failure and current large carrier are
+retained. Unrelated D3D work is untouched.
+
+Six private ECL lifetime/consumer controls are rejected; production EclVm and
+Enemy source/header stay unchanged. Fresh full comparison verifies current
+retained two-TU Run7020/all189/62-local,171-byte callee exact,26 ordinary bytes:
+four thread-register bytes, four commuted addressing bytes,16 stack homes and
+two common-latch bytes. It is not only a stack swap. Snapshots39, shared integer
+result27, rebound cursor7052 and shared POD record6940 do not improve it.
+Explicit arithmetic and named angle-result controls preserve its COMPLETE
+target-replayed bytes, beyond equal scores. Private source/producer/receipts
+are in `.analysis/gpt-6.1-sol/ecl-operation-lifetimes-20261021/RECOVERY.md`.
+Main.cpp is not in the actual nine-TU large graph; all30 raw inputs and four
+artifacts/eight support objects remain pinned current. No extra large rebuild
+is required. All three large exact goals remain active/nonexact with their
+prior complete native measurements unchanged. The current large carrier stays
+`build/gpt-6.1-sol/main-surface-outlines-20261021/large-current`.
+
+The preceding checkpoint closes surface release438A30/43, screenshot request
 service438A60/111, Present4391F0/236, screenshot420670/504 and
 CaptureToTexture448270/240: **1134 new authored exact bytes/all39 fields**,
 with three new source mappings. Natural real bodies recover private registers
@@ -61,9 +98,9 @@ selects only the five new units and affected original FileCheck111/OpenFile360:
 seven units1605 bytes across three groups. Main now has23/23 source-present
 authored owners,19 exact and four nonexact owning3206 bytes. See
 [screenshot context proof](evidence/main-screenshot-context/README.md).
-The screenshot worker's dense302-byte entry420540..42066D is independently
-reviewed for callback address identity, but its inventory/source admission and
-child exactness are separate pending work. Keep the observed allocation/format
+At that checkpoint the302-byte screenshot callback was only independently
+reviewed for address identity; its inventory/source/exact admission is now
+completed in the newer worker proof above. Keep the observed allocation/format
 error behavior; no runtime, product or original-owner/profile claim is made.
 
 Because AnmManager.cpp changed, the actual nine-TU large graph recompiles that
@@ -404,7 +441,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the screenshot context proof; RGB results retain
+Latest focused native results are in the worker proof; RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -419,4 +456,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/main-screenshot-context/validation-summary.json).
+[the current validation summary](evidence/main-screenshot-worker/validation-summary.json).

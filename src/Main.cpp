@@ -159,7 +159,29 @@ extern char g_MainScreenshotUnexpectedFormat[];
 extern char g_MainScreenshotAllocationError[];
 extern char g_MainScreenshot16BitUnsupported[];
 extern unsigned long g_MainScreenshotThreadHandle;
-extern void __cdecl MainScreenshotWorker(void *argument);
+// Target 0x00420540 writes the captured BMP and retires its two buffers.
+void __cdecl MainScreenshotWorker(void *argument)
+{
+    MainScreenshotContextView *state =
+        reinterpret_cast<MainScreenshotContextView *>(&g_MainSupervisorView);
+    FileSystem::OpenWriteFile(state->filename);
+    FileSystem::WriteToOpenFile(&state->fileHeader, sizeof(state->fileHeader));
+    FileSystem::WriteToOpenFile(state->bitmapInfo, sizeof(BITMAPINFOHEADER));
+    FileSystem::WriteToOpenFile(state->pixels, 640 * 480 * 3);
+    FileSystem::CloseWriteFile();
+    if (state->bitmapInfo != NULL)
+    {
+        free(state->bitmapInfo);
+        state->bitmapInfo = NULL;
+    }
+    if (state->pixels != NULL)
+    {
+        free(state->pixels);
+        state->pixels = NULL;
+    }
+    g_MainScreenshotThreadHandle = 0;
+}
+
 
 // Target 0x00420670. Keep the observed format and allocation error behavior.
 int MainTakeScreenshot(MainSupervisorView *supervisor, const char *path)

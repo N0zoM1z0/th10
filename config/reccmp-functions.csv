@@ -1082,3 +1082,4 @@ PollInputFrame,0x0044A5F0,function
 MainTakeScreenshot,0x00420670,function
 MainReleaseAnmSurfaces,0x00438A30,function
 MainServiceAnmScreenshots,0x00438A60,function
+MainScreenshotWorker,0x00420540,function

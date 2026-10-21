@@ -1,0 +1,72 @@
+{
+  "state": "passed",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "new_exact": {
+    "function": "MainScreenshotWorker",
+    "size": 302,
+    "fields": 30,
+    "new_authored_denominator_bytes": 302,
+    "new_source_mappings": 1
+  },
+  "focused_scope": {
+    "independent_complete_ten_tu_colds": 2,
+    "per_image_complete_owners": 18,
+    "per_image_bytes": 3764,
+    "per_image_fields": 214,
+    "existing_guards_per_image": 17,
+    "existing_guard_bytes": 3462,
+    "existing_guard_fields": 184,
+    "canonical_units": 2,
+    "canonical_bytes": 806,
+    "canonical_groups": 1,
+    "negative_controls_rejected": 3
+  },
+  "ci": {
+    "result": "passed",
+    "checks": 100,
+    "mode": "One uninterrupted invocation",
+    "log_sha256": "cf25efd6c2263d35debd8763a4324c6b1dba5195f03b7081a37419d4ab71f7c0"
+  },
+  "gates": {
+    "toolchain": "passed",
+    "tracking": "1776 candidates/boundaries,1084 mappings,1228 exact",
+    "main_source": "24/24 source present,20 exact;4 nonexact3206 bytes",
+    "progress": "regenerated",
+    "docs": "passed",
+    "diff_check": "passed"
+  },
+  "large_scope": "No new large replay:30 actual raw inputs and all retained artifacts unchanged; source Main.cpp not in nine-TU graph. Original three large goals active/nonexact.",
+  "ecl_scope": "Six private ECL controls rejected, no production ECL/Enemy changes, no large exact credit. Four full7020 diagnostics include all189 fields/62 locals and exact171-byte callee; sizes7052/6940 unsupported by full7020 contract.",
+  "boundary_scope": "New302 selected extent independently reviewed and agrees with focused automatic boundary result; old global401100 metadata disagreement preserved, full automatic ledger agreement not claimed.",
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/explicit-arithmetic",
+        "bytes": 256065,
+        "files": 8
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/cursor-rebind",
+        "bytes": 256077,
+        "files": 8
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/named-angle-result",
+        "bytes": 256074,
+        "files": 8
+      },
+      {
+        "path": "build/gpt-6.1-sol/ecl-operation-lifetimes-20261021/shared-comparison-result",
+        "bytes": 256066,
+        "files": 8
+      }
+    ],
+    "bytes": 1024282,
+    "retained_native": [
+      "operand-snapshots39/7020",
+      "scratch-record6940",
+      "unchanged baseline in prior residual-storage pack"
+    ],
+    "scope": "Only owned terminal controls removed; production, target, tools, other sessions untouched"
+  }
+}
