@@ -1,0 +1,136 @@
+{
+  "acceptance_authority": "none",
+  "scope": "Addresses and ordinary instructions from current TH10 target and current eleven-TU candidate. A zero diagnostic difference after blind field exclusion is not exactness.",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "baseline_case_summary": {
+    "matched_comparable_bytes": 7478,
+    "comparable_bytes": 7995,
+    "absolute_case_gap_delta": 2,
+    "same_sized_cases": 90,
+    "normalization_complete": true
+  },
+  "ordinary_positional_residuals": [
+    {
+      "opcodes": [
+        91
+      ],
+      "target_start": "0x0043EF32",
+      "kind": "layer/file loading and push order; temporary registers",
+      "candidate_start": "0x0040DAD2"
+    },
+    {
+      "opcodes": [
+        61
+      ],
+      "target_start": "0x43F276",
+      "target_size": 52,
+      "candidate_size": 53,
+      "target_flag_register": "EAX",
+      "candidate_flag_register": "EDX",
+      "xor_encoding_bytes": {
+        "target": 5,
+        "candidate": 6
+      }
+    },
+    {
+      "opcodes": [
+        49,
+        53
+      ],
+      "kind": "three float-variable index push temporaries",
+      "target_registers": [
+        "EDX",
+        "EAX",
+        "ECX"
+      ],
+      "candidate_registers": [
+        "ECX",
+        "EDX",
+        "EAX"
+      ]
+    },
+    {
+      "opcodes": [
+        54
+      ],
+      "kind": "two float-variable index push temporaries",
+      "target_registers": [
+        "EDX",
+        "EAX"
+      ],
+      "candidate_registers": [
+        "ECX",
+        "EDX"
+      ]
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target_start": "0x440E03",
+      "target_size": 1441,
+      "candidate_size": 1440,
+      "scope_note": "Physical static-opcode interval includes the common update tail.",
+      "radial_count": {
+        "target": "LEA ESI,[EAX-1] before coefficient division",
+        "candidate": "DEC EAX and late MOV ESI,EAX",
+        "target_address": "0x44117B"
+      },
+      "slow_tick": {
+        "target": "FLD [ECX]; FADD [EBP+64]",
+        "candidate": "FLD [EBP+64]; FADD [ECX]",
+        "target_address": "0x441377",
+        "source_already_spells": "*scale + subframe"
+      }
+    }
+  ],
+  "control_coupling": {
+    "radial_countdown": {
+      "raw_changed_offsets": [
+        "0x23EE",
+        "0x23F4"
+      ],
+      "effect": "commutes radial vector X addition; count allocation remains wrong"
+    },
+    "separate_countdown": "all three complete native bodies raw-equal to baseline",
+    "split_flags": {
+      "raw_changed_offsets": [
+        "0x249A",
+        "0x24A0",
+        "0x2548",
+        "0x2549",
+        "0x254A",
+        "0x254B"
+      ],
+      "effect": "slow Tick matches the target load order, but radial vector Z addition reverses; FLIP_X still uses EDX"
+    },
+    "mixed_updateScale": "same complete native owner hashes as split flags"
+  },
+  "target_review": {
+    "transport": "direct local read-only/noanalysis Ghidra",
+    "cpu": 1,
+    "heap_mib": 768,
+    "transaction": "rollback",
+    "mapped_text": {
+      "start": "0x401000",
+      "end_inclusive": "0x465A80",
+      "bytes": 412289,
+      "sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+      "unchanged": true
+    }
+  },
+  "global_aliases": {
+    "vector_bases": [
+      "0x491C14",
+      "0x491E6C"
+    ],
+    "view_width": 12,
+    "diagnostic_anchor_width": 4,
+    "colliding_references": 10,
+    "naive_symbol_only_result": {
+      "false_mismatches": 9,
+      "unresolved": 6
+    },
+    "conclusion": "MAP-at-address alone does not identify the source global for interior vector references. Preserve the reviewed base plus addend within the real opcode scope; do not reinterpret these reads as Chain/device/preload/quad globals. No source/data-owner or runtime repair is claimed."
+  }
+}

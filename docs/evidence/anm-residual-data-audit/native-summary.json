@@ -1,0 +1,1385 @@
+{
+  "scope": "No source/header/profile/recipe adoption; no exact-byte credit. Four current eleven-TU compiler controls and a separately bounded target/candidate data-reference audit.",
+  "base_commit": "3ca8f9807ad0a514672da31413e417b45e476bbd",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.cpp": "7d3eadeea972ed7900f2f62cf427f7b8ac4aa18e7392bd02db77843a13f8dc55",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "canonical_manifest_sha256": "b90b114bc53bafa0379db6b3cb5765e8f8079fb92565548d8e683c4f62cadf3c",
+  "current_baselines": {
+    "eleven-tu": {
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.cpp": "7d3eadeea972ed7900f2f62cf427f7b8ac4aa18e7392bd02db77843a13f8dc55",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\support-01-AnmManager.ltcg.obj",
+          "sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+          "raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.map": "e94062a637cb149afdebbcc0d7fde6dff49b504e0370218f881685dac1178e86",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.exe": "86429b9d8f03b9cb09ddc7c522030e88d2a090eb279e39073c8b3f49ca266612",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.pdb": "636ce087c3e736cb83ec4d8086a231d6aa02d4b59c4a4eafa03eabf2ebdbee9f",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "dispatcher_case_aligned": {
+        "matched_comparable_bytes": 3219,
+        "comparable_bytes": 11148,
+        "absolute_case_gap_delta": 566,
+        "same_sized_cases": 42
+      },
+      "dispatcher_frame": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2c4"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "dispatcher_layout": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.exe",
+        "function_address": "0x00402830",
+        "contribution_size": 14352,
+        "jump_table_address": "0x00405DB0",
+        "selector_table_address": "0x00405F60",
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "target_pre_table_span": 13760,
+        "candidate_pre_table_span": 13696,
+        "pre_table_span_delta": -64,
+        "target_suffix_bytes": 43,
+        "candidate_suffix_bytes": 43,
+        "physical_order_matches": true,
+        "first_physical_order_difference": null
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_fields": 62,
+        "callee_guard": "exact",
+        "selector_bytes": 88,
+        "whole_owned_extent_compared": true,
+        "generic_normalization_complete": false
+      },
+      "straight_laser_cfg": {
+        "case_entry": "0x4051EB",
+        "tail_jump": "0x40536B",
+        "shared_tail": "0x405612",
+        "factory_call": "0x405618",
+        "factory_entry": "0x415630",
+        "factory_size": 153,
+        "caller_stack_cleanup": 8,
+        "returned_id_store": "0x40562C",
+        "limit": "The independent factory call is restored, but request/type remain stack parameters and private target ESI/EDI/RET4 convention is not recovered."
+      }
+    },
+    "canonical-ten-tu": {
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/match-linked/EnemyItemDrops",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "owner_visibility": "static",
+        "pdb_source": "src/EnemyEclDispatcher.cpp",
+        "functions": [
+          "EnemyDropItemCounts"
+        ],
+        "symbol": "?EnemyDropItemCounts@@YAXPBUPlayerFloat3@@PAH@Z",
+        "target_address": 4245920,
+        "size": 48,
+        "linkages": [
+          {
+            "offset": 23,
+            "type": "DIR32",
+            "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+            "target": 4683800
+          },
+          {
+            "offset": 30,
+            "type": "REL32",
+            "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+            "target": 4307712
+          },
+          {
+            "offset": 36,
+            "type": "REL32",
+            "symbol": "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z",
+            "target": 4245968
+          }
+        ]
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9B0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51632,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+          "sha256": "60b8f75acdff19c9d0ab2f44f864798e307c688907889b9ca3b6c6d63107655c",
+          "raw_sha256": "60b8f75acdff19c9d0ab2f44f864798e307c688907889b9ca3b6c6d63107655c"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D00",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23808,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-00-EclVm.ltcg.obj",
+          "sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+          "raw_sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+          "sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42",
+          "raw_sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+        }
+      },
+      "artifacts": {
+        "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "3c0620e30c3357b39a2763089490bf5602724f1155895b15a0b99c924cb387a6",
+        "build/match-linked/EnemyItemDrops/source.map": "7621b789d32e0e49881b2484e2fb0fd8f25a30e3b8c7f2b3c94695ab0be706ee",
+        "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "800665c33103e14140ea75974c70ca090e1a5031a669d59d409cf09f1b518b2b",
+        "build/match-linked/EnemyItemDrops/source.exe": "8e4f14845a4079e388b26f2c78590541648b227d68dcbcfe8e86134901622c75",
+        "build/match-linked/EnemyItemDrops/source.ltcg.obj": "b22ef7a8c3dfa9d955ac4853bfd464907f61b4c6c04fcbdb866f5666e316127f",
+        "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "1f62f5d4bb258fc53722310bc40f1f1a89b98de86d62fed5d6f8a6e60c856a8e",
+        "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "40a376c488d308613ab33001d5502b3a58021e3a38a66b97d8ffcafefab7fb30",
+        "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "dd25521d899c8efb999ba6cf021a312d2391352804a654c61db5abffb0d1ddde",
+        "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "79e265450d8937ddabb063ae659d212e95c5eaabe146247bd723311baf856a88",
+        "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "e701e68b0ebe57de1d46ac4c513b32e0c883921ef5c90575ec31569115b870f5",
+        "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+        "build/match-linked/EnemyItemDrops/link-anchors.obj": "575d055e3469ebe3c3ffaccfe3b60aa8e0a9f0af7ca72c277d2c7fcac063bd12",
+        "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "6fab698b72615a492a7831a843494dcb948f3e27baf78b69c7d2f1f810a31abb",
+        "build/match-linked/EnemyItemDrops/source.pdb": "cdacd7e2ad2ded393a5a309216f43ceb211ac73dcf9892e30c686d5062867e48",
+        "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "c7d4d1afb8bfe18e679216950cd80575a77a7df068d66b47458fb066682ba7fa"
+      },
+      "guard_summary": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "dispatcher_case_aligned": {
+        "matched_comparable_bytes": 3219,
+        "comparable_bytes": 11148,
+        "absolute_case_gap_delta": 566,
+        "same_sized_cases": 42
+      },
+      "dispatcher_frame": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2c4"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "dispatcher_layout": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/EnemyItemDrops/source.exe",
+        "function_address": "0x00402810",
+        "contribution_size": 14352,
+        "jump_table_address": "0x00405D90",
+        "selector_table_address": "0x00405F40",
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "target_pre_table_span": 13760,
+        "candidate_pre_table_span": 13696,
+        "pre_table_span_delta": -64,
+        "target_suffix_bytes": 43,
+        "candidate_suffix_bytes": 43,
+        "physical_order_matches": true,
+        "first_physical_order_difference": null
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_fields": 62,
+        "callee_guard": "exact",
+        "selector_bytes": 88,
+        "whole_owned_extent_compared": true,
+        "generic_normalization_complete": false
+      }
+    }
+  },
+  "controls": [
+    {
+      "name": "radial-countdown",
+      "candidate_source_sha256": "19bc1a6e61278849ad356b47594d78d226ba955023c255ad491f3c5bc3a2fe5d",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-countdown\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-countdown\\support-01-AnmManager.ltcg.obj",
+          "sha256": "98bbae8622a455290b927f6927b9cc94b503263a8e0fa0cec49c7d7c9d4375f3",
+          "raw_sha256": "98bbae8622a455290b927f6927b9cc94b503263a8e0fa0cec49c7d7c9d4375f3"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-countdown\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-countdown\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-countdown\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-countdown\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/source.map": "bdff163d997d2d29c9afd79d0cbf65b721ee57420d43d3d608c48e10f6c3946b",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/source.exe": "e703eefd079c6192fda4bd49f17419a0ce556bb6b1b9d70cbd8c39c9b17181ad",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/source.pdb": "53a1b7c02ae762116ba068e5fc2634b27ca10e5411e8a0511e8738f04312be04",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown/support-01-AnmManager.ltcg.obj": "1e78d464ecc0cc21a352c04d2a80cdc90257367024ef8bfc73adf63540d51aa5"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_fields": 62
+      },
+      "adopted": false,
+      "artifact_status": "historical hashes; terminal disposable directory pruned"
+    },
+    {
+      "name": "radial-separate-countdown",
+      "candidate_source_sha256": "fb95adc64f6f6b38f11fad1e7df54cc1a6df5c4e8cac4db4555fb3d193981a39",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-separate-countdown\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-separate-countdown\\support-01-AnmManager.ltcg.obj",
+          "sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+          "raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-separate-countdown\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-separate-countdown\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-separate-countdown\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\radial-separate-countdown\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/source.map": "7555319db2e2688e5861a2d99fadd96025cc99b153a3b058088807ac0755dc5c",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/source.exe": "ca9ef9651627fc8e779f2fcd01da1b0694fa674ffac8f7fa11ed6c2578d2b607",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/source.pdb": "40b49007c29f640bd7474f0be5347c11707c1e69868dc07868a35fe0e2c4d01c",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown/support-01-AnmManager.ltcg.obj": "e9b033f97fd51593c0686d39827b06790eef16a7c3293dc7e2cc92b3f2831906"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_fields": 62
+      },
+      "adopted": false,
+      "artifact_status": "historical hashes; terminal disposable directory pruned"
+    },
+    {
+      "name": "flip-split-flags",
+      "candidate_source_sha256": "580b139a0cee8eee0ca3ea9c42c3860e7ee6ade727724358d3a7418879a18aed",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-split-flags\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-split-flags\\support-01-AnmManager.ltcg.obj",
+          "sha256": "fd383d46f7346f93bc86b988376e23f7eba573b84508b7ee0217222c16667671",
+          "raw_sha256": "fd383d46f7346f93bc86b988376e23f7eba573b84508b7ee0217222c16667671"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-split-flags\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-split-flags\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-split-flags\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-split-flags\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/source.map": "af36be67d3e8b152b471a63372887c48454e67161392d9794c5d2d452d80d2b7",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/source.exe": "4006e5d53db6d357b138051acbc7725f205e41ce6b0a635cab2dcd45f767ce1e",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/source.pdb": "f8d76427eacb6f24565c60e780239b86c55d9baa35cfc8ea7534ddcc0e22d7b5",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags/support-01-AnmManager.ltcg.obj": "31b34a62d270cf29bbee8f46237e5736aa817d8bfb0243ff92731abd93ff44ed"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7477,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_fields": 62
+      },
+      "adopted": false,
+      "artifact_status": "retained unresolved coupling candidate"
+    },
+    {
+      "name": "flip-update-scale-field",
+      "candidate_source_sha256": "02dc0ca2f018a4da6f0e40a98e06f809f9b542b6ec9071c231af5c7300bf3d87",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "reused_object_sha256": {
+        "source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-update-scale-field\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-update-scale-field\\support-01-AnmManager.ltcg.obj",
+          "sha256": "fd383d46f7346f93bc86b988376e23f7eba573b84508b7ee0217222c16667671",
+          "raw_sha256": "fd383d46f7346f93bc86b988376e23f7eba573b84508b7ee0217222c16667671"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-update-scale-field\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-update-scale-field\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-update-scale-field\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-flip-copy-20261021\\flip-update-scale-field\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/source.map": "84ae75613911f37fd306c0645801926d45c777362cb27310384d9e142d8160be",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/source.exe": "d4dc3c97ba69143bd1b43778e6b3261cb3b2d5a6d4e2331ef7ed2bfc42448ce6",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/source.pdb": "25f7eed512056c16aeb0f7bb2605c108d6c4800befd119772901740cf99af6e6",
+        "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field/support-01-AnmManager.ltcg.obj": "056537f0a0f47b97ed987bd124cc6bbafd957ab77ed0b9988ee2b4356b5d3d8d"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7477,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_fields": 62
+      },
+      "adopted": false,
+      "artifact_status": "historical hashes; terminal disposable directory pruned"
+    }
+  ],
+  "complete_raw_native_comparison": {
+    "scope": "Complete raw native-to-native comparison only, same-size PDB owners; target exactness remains unproved.",
+    "baseline_image_sha256": "86429b9d8f03b9cb09ddc7c522030e88d2a090eb279e39073c8b3f49ca266612",
+    "results": [
+      {
+        "variant": "radial-countdown",
+        "owners": [
+          {
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "size": 9964,
+            "baseline_raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+            "candidate_raw_sha256": "98bbae8622a455290b927f6927b9cc94b503263a8e0fa0cec49c7d7c9d4375f3",
+            "raw_differences": 2,
+            "offsets": [
+              9198,
+              9204
+            ]
+          },
+          {
+            "symbol": "?Run@EclVmContext@@QAEHM@Z",
+            "size": 7020,
+            "baseline_raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+            "candidate_raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+            "raw_differences": 0,
+            "offsets": []
+          },
+          {
+            "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+            "size": 14352,
+            "baseline_raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+            "candidate_raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+            "raw_differences": 0,
+            "offsets": []
+          }
+        ]
+      },
+      {
+        "variant": "radial-separate-countdown",
+        "owners": [
+          {
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "size": 9964,
+            "baseline_raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+            "candidate_raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+            "raw_differences": 0,
+            "offsets": []
+          },
+          {
+            "symbol": "?Run@EclVmContext@@QAEHM@Z",
+            "size": 7020,
+            "baseline_raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+            "candidate_raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+            "raw_differences": 0,
+            "offsets": []
+          },
+          {
+            "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+            "size": 14352,
+            "baseline_raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+            "candidate_raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+            "raw_differences": 0,
+            "offsets": []
+          }
+        ]
+      },
+      {
+        "variant": "flip-split-flags",
+        "owners": [
+          {
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "size": 9964,
+            "baseline_raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+            "candidate_raw_sha256": "fd383d46f7346f93bc86b988376e23f7eba573b84508b7ee0217222c16667671",
+            "raw_differences": 6,
+            "offsets": [
+              9370,
+              9376,
+              9544,
+              9545,
+              9546,
+              9547
+            ]
+          },
+          {
+            "symbol": "?Run@EclVmContext@@QAEHM@Z",
+            "size": 7020,
+            "baseline_raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+            "candidate_raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+            "raw_differences": 0,
+            "offsets": []
+          },
+          {
+            "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+            "size": 14352,
+            "baseline_raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+            "candidate_raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+            "raw_differences": 0,
+            "offsets": []
+          }
+        ]
+      },
+      {
+        "variant": "flip-update-scale-field",
+        "owners": [
+          {
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "size": 9964,
+            "baseline_raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+            "candidate_raw_sha256": "fd383d46f7346f93bc86b988376e23f7eba573b84508b7ee0217222c16667671",
+            "raw_differences": 6,
+            "offsets": [
+              9370,
+              9376,
+              9544,
+              9545,
+              9546,
+              9547
+            ]
+          },
+          {
+            "symbol": "?Run@EclVmContext@@QAEHM@Z",
+            "size": 7020,
+            "baseline_raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+            "candidate_raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+            "raw_differences": 0,
+            "offsets": []
+          },
+          {
+            "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+            "size": 14352,
+            "baseline_raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+            "candidate_raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+            "raw_differences": 0,
+            "offsets": []
+          }
+        ]
+      }
+    ]
+  },
+  "absolute_memory_audit_counts": {
+    "cases": 92,
+    "paired": 45,
+    "literals": 21,
+    "bound_globals": 9,
+    "reviewed_vector_fields": 15,
+    "anchor_name_collisions": 10,
+    "mismatches": 0,
+    "unknowns": 0
+  },
+  "naive_symbol_binding_rejected": {
+    "false_mismatches": 9,
+    "unknowns": 6,
+    "reason": "four-byte unresolved data anchors collide with interior vector components"
+  },
+  "canonical_replays": 0,
+  "independent_full_colds": 0,
+  "compiler_compiles": 4,
+  "game_objects_reused_per_control": 10,
+  "cleanup": {
+    "reclaimed_bytes": 6166736,
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown",
+        "bytes": 1192768
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown",
+        "bytes": 217556
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown-structural.json",
+        "bytes": 484454
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown-guards.json",
+        "bytes": 91640
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-countdown-guards.toml",
+        "bytes": 68273
+      },
+      {
+        "path": "build/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown",
+        "bytes": 1192777
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown",
+        "bytes": 217578
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown-structural.json",
+        "bytes": 484526
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown-guards.json",
+        "bytes": 92063
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/radial-separate-countdown-guards.toml",
+        "bytes": 69200
+      },
+      {
+        "path": "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field",
+        "bytes": 1192852
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field",
+        "bytes": 217576
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field-structural.json",
+        "bytes": 484510
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field-guards.json",
+        "bytes": 91969
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-flip-copy-20261021/flip-update-scale-field-guards.toml",
+        "bytes": 68994
+      }
+    ],
+    "retained": "Current ten-/eleven-TU baselines, one split-flags coupling image/MAP/PDB/objects and reproducing source/overlays; unrelated D3D work untouched."
+  },
+  "inventory_note_sha256": "4afcdfbf54d44dfede7b9ef4380f7b3365e554d31df2ae8dcee16d4d97ebac4e",
+  "inventory_note_update": "Only0x43EE30 notes changed; all function size/state/origin/boundary and exact/source counts unchanged."
+}

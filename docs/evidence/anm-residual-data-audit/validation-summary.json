@@ -1,0 +1,80 @@
+{
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "bd3d36fdf6ab0bc62e3ba627689fdac03480fb81df090cefd9a668981414e48e"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "15a163018e500a72753ba246fc010383a9a2f812778346b71e0a07ab5ae9828a"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ci_checks": 105,
+  "focused_oracle": {
+    "compiler_controls": 4,
+    "full_owners_per_control": 46,
+    "bytes_per_control": 5335,
+    "fields_per_control": 142,
+    "source_adoptions": 0,
+    "profile_or_recipe_changes": 0,
+    "canonical_replays": 0,
+    "independent_full_colds": 0,
+    "reason": "Maintained code/header/profile/recipe unchanged. All current baselines are hash-verified; no historical cold replay is necessary."
+  },
+  "absolute_memory_audit": {
+    "cases": 92,
+    "paired": 45,
+    "literals": 21,
+    "bound_globals": 9,
+    "reviewed_vector_fields": 15,
+    "anchor_name_collisions": 10,
+    "mismatches": 0,
+    "unknowns": 0
+  },
+  "current_source_and_native_pins": "all33/32 baseline source inputs and16/15 artifacts pass; retained coupling candidate also pinned",
+  "inventory_changed_fields": [
+    [
+      "0x0043EE30",
+      "notes"
+    ]
+  ],
+  "exact_ledger_counts": "unchanged",
+  "svg": "visible135.28px/512px,26.42% provisional authored ratio",
+  "cleanup_reclaimed_bytes": 6166736,
+  "limitations": "All3 original large owners remain nonexact; no source/origin/boundary/data-owner/runtime/native-product/semantic/port promotion."
+}

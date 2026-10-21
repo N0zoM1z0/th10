@@ -34,7 +34,25 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 ## Current checkpoint
 
-The latest bounded dispatcher checkpoint replaces two laser pattern-copy
+Latest investigation: ANM residual/data audit; no code/profile/recipe adoption.
+Four natural countdown/flag controls retain46 helpers5335/all142 and unchanged
+Run/Enemy raw bodies, but do not close ANM. A separate countdown is fully
+byte-neutral; split flags fix slow Tick order but reverse radial Z addition.
+The six positional residual regions are91/61/49/53/54/2. All45 absolute-memory
+operands in92 case spans pass21 literal and24 global/vector address checks.
+Ten vector-component accesses alias unrelated4-byte harness anchor names;
+never infer their source identity from MAP-at-address. Reviewed vector bases
+491C14/491E6C require the real component addend and opcode scope. This excludes
+prologue/immediate/call/table references and grants no exact or runtime credit.
+Only43EE30's inventory note is refreshed; all33/32 baseline inputs and16/15
+native artifacts, exact ledgers/counts and visible26.42% SVG remain unchanged.
+See [current ANM evidence](evidence/anm-residual-data-audit/README.md).
+Retained unresolved split-flags candidate:
+`build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags`.
+Recovery: `.analysis/gpt-6.1-sol/anm-flip-copy-20261021/RECOVERY.md`.
+The original three large functions remain active/nonexact.
+
+The preceding source checkpoint replaces two laser pattern-copy
 loops with typed-array memcpy. Current actual33-input eleven-TU link emits
 14352/14416 bytes, frame2C4/19sentinels/181selectors/108ordered groups,
 42target-sized groups and aggregate gap566 (previous650). Whole-case aligned

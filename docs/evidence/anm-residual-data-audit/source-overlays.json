@@ -1,0 +1,55 @@
+{
+  "base_commit": "3ca8f9807ad0a514672da31413e417b45e476bbd",
+  "method": "Apply each independent exact-one CRLF replacement to src/AnmManager.cpp at the base commit; all four candidates were compiled but none adopted.",
+  "baseline_source_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+  "variants": {
+    "radial-countdown": {
+      "base_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "candidate_sha256": "19bc1a6e61278849ad356b47594d78d226ba955023c255ad491f3c5bc3a2fe5d",
+      "edits": [
+        {
+          "old": "        for (int i = 0; i < segmentCount; ++i)",
+          "new": "        for (; segmentCount > 0; --segmentCount)"
+        }
+      ]
+    },
+    "radial-separate-countdown": {
+      "base_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "candidate_sha256": "fb95adc64f6f6b38f11fad1e7df54cc1a6df5c4e8cac4db4555fb3d193981a39",
+      "edits": [
+        {
+          "old": "        for (int i = 0; i < segmentCount; ++i)",
+          "new": "        for (int remaining = segmentCount; remaining > 0; --remaining)"
+        }
+      ]
+    },
+    "flip-split-flags": {
+      "base_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "candidate_sha256": "580b139a0cee8eee0ca3ea9c42c3860e7ee6ade727724358d3a7418879a18aed",
+      "edits": [
+        {
+          "old": "            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;",
+          "new": "            vm->flags35C ^= 1u << 9;\r\n            vm->flags35C |= 8u;"
+        },
+        {
+          "old": "            vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;",
+          "new": "            vm->flags35C ^= 1u << 10;\r\n            vm->flags35C |= 8u;"
+        }
+      ]
+    },
+    "flip-update-scale-field": {
+      "base_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "candidate_sha256": "02dc0ca2f018a4da6f0e40a98e06f809f9b542b6ec9071c231af5c7300bf3d87",
+      "edits": [
+        {
+          "old": "            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;",
+          "new": "            vm->flags35C ^= 1u << 9;\r\n            vm->updateScale = 1;"
+        },
+        {
+          "old": "            vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;",
+          "new": "            vm->flags35C ^= 1u << 10;\r\n            vm->updateScale = 1;"
+        }
+      ]
+    }
+  }
+}

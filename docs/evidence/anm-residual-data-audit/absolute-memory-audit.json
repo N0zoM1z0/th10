@@ -1,0 +1,1568 @@
+{
+  "scope": "Per-case ordered absolute-memory operands only. Counts and mnemonic/operand index/width must agree before pairing. Constant bytes checked against actual __real payload; globals bound by existing canonical targets or two explicit TH10-reviewed12-byte vector bases restricted to their real operand cases. Vector addends are preserved even when the diagnostic4-byte data anchor aliases another public name. Immediate addresses/calls/jump tables and missing bindings remain outside this audit. No exactness or runtime credit.",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "candidate_image_sha256": "86429b9d8f03b9cb09ddc7c522030e88d2a090eb279e39073c8b3f49ca266612",
+  "source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.cpp": "7d3eadeea972ed7900f2f62cf427f7b8ac4aa18e7392bd02db77843a13f8dc55",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "reviewed_vector_bindings": [
+    {
+      "symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "target": 4791316,
+      "width": 12,
+      "opcodes": [
+        56,
+        59
+      ],
+      "candidate": 4317700
+    },
+    {
+      "symbol": "?g_AnmPositionOffsetDelta@@3UAnmFloat3View@@A",
+      "target": 4791916,
+      "width": 12,
+      "opcodes": [
+        2
+      ],
+      "candidate": 4317668
+    }
+  ],
+  "counts": {
+    "cases": 92,
+    "paired": 45,
+    "literals": 21,
+    "bound_globals": 9,
+    "reviewed_vector_fields": 15,
+    "anchor_name_collisions": 10,
+    "mismatches": 0,
+    "unknowns": 0
+  },
+  "rows": [
+    {
+      "opcodes": [
+        61
+      ],
+      "target": {
+        "instruction": "0x43f27f",
+        "mnemonic": "fmul",
+        "operand": 0,
+        "width": 4,
+        "address": 4655968
+      },
+      "candidate": {
+        "instruction": "0x40de1f",
+        "mnemonic": "fmul",
+        "operand": 0,
+        "width": 4,
+        "address": 4313724
+      },
+      "symbols": [
+        "__real@bf800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "000080bf",
+      "target_payload": "000080bf",
+      "candidate_payload": "000080bf",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        62
+      ],
+      "target": {
+        "instruction": "0x43f2b3",
+        "mnemonic": "fmul",
+        "operand": 0,
+        "width": 4,
+        "address": 4655968
+      },
+      "candidate": {
+        "instruction": "0x40de54",
+        "mnemonic": "fmul",
+        "operand": 0,
+        "width": 4,
+        "address": 4313724
+      },
+      "symbols": [
+        "__real@bf800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "000080bf",
+      "target_payload": "000080bf",
+      "candidate_payload": "000080bf",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        56
+      ],
+      "target": {
+        "instruction": "0x43f8cd",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791316
+      },
+      "candidate": {
+        "instruction": "0x40e46e",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317700
+      },
+      "symbols": [
+        "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+        "_th10_ltcg_probe_anchor_0123"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 0,
+      "expected_target": "0x491c14",
+      "equal": true,
+      "colliding_anchor_symbols": []
+    },
+    {
+      "opcodes": [
+        56
+      ],
+      "target": {
+        "instruction": "0x43f8da",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791320
+      },
+      "candidate": {
+        "instruction": "0x40e47b",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317704
+      },
+      "symbols": [
+        "?g_Chain@th10@@3PAUChain@1@A",
+        "_th10_ltcg_probe_anchor_0124"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 4,
+      "expected_target": "0x491c18",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_Chain@th10@@3PAUChain@1@A"
+      ]
+    },
+    {
+      "opcodes": [
+        56
+      ],
+      "target": {
+        "instruction": "0x43f8e3",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791324
+      },
+      "candidate": {
+        "instruction": "0x40e484",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317708
+      },
+      "symbols": [
+        "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+        "_th10_ltcg_probe_anchor_0125"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 8,
+      "expected_target": "0x491c1c",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A"
+      ]
+    },
+    {
+      "opcodes": [
+        56
+      ],
+      "target": {
+        "instruction": "0x43f8eb",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791316
+      },
+      "candidate": {
+        "instruction": "0x40e48c",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317700
+      },
+      "symbols": [
+        "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+        "_th10_ltcg_probe_anchor_0123"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 0,
+      "expected_target": "0x491c14",
+      "equal": true,
+      "colliding_anchor_symbols": []
+    },
+    {
+      "opcodes": [
+        56
+      ],
+      "target": {
+        "instruction": "0x43f8f9",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791320
+      },
+      "candidate": {
+        "instruction": "0x40e49a",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317704
+      },
+      "symbols": [
+        "?g_Chain@th10@@3PAUChain@1@A",
+        "_th10_ltcg_probe_anchor_0124"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 4,
+      "expected_target": "0x491c18",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_Chain@th10@@3PAUChain@1@A"
+      ]
+    },
+    {
+      "opcodes": [
+        56
+      ],
+      "target": {
+        "instruction": "0x43f901",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791324
+      },
+      "candidate": {
+        "instruction": "0x40e4a2",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317708
+      },
+      "symbols": [
+        "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+        "_th10_ltcg_probe_anchor_0125"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 8,
+      "expected_target": "0x491c1c",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A"
+      ]
+    },
+    {
+      "opcodes": [
+        59
+      ],
+      "target": {
+        "instruction": "0x43fc94",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791316
+      },
+      "candidate": {
+        "instruction": "0x40e835",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317700
+      },
+      "symbols": [
+        "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+        "_th10_ltcg_probe_anchor_0123"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 0,
+      "expected_target": "0x491c14",
+      "equal": true,
+      "colliding_anchor_symbols": []
+    },
+    {
+      "opcodes": [
+        59
+      ],
+      "target": {
+        "instruction": "0x43fca2",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791320
+      },
+      "candidate": {
+        "instruction": "0x40e843",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317704
+      },
+      "symbols": [
+        "?g_Chain@th10@@3PAUChain@1@A",
+        "_th10_ltcg_probe_anchor_0124"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 4,
+      "expected_target": "0x491c18",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_Chain@th10@@3PAUChain@1@A"
+      ]
+    },
+    {
+      "opcodes": [
+        59
+      ],
+      "target": {
+        "instruction": "0x43fcab",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791324
+      },
+      "candidate": {
+        "instruction": "0x40e84c",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317708
+      },
+      "symbols": [
+        "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+        "_th10_ltcg_probe_anchor_0125"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 8,
+      "expected_target": "0x491c1c",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A"
+      ]
+    },
+    {
+      "opcodes": [
+        59
+      ],
+      "target": {
+        "instruction": "0x43fcb4",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791316
+      },
+      "candidate": {
+        "instruction": "0x40e855",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317700
+      },
+      "symbols": [
+        "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+        "_th10_ltcg_probe_anchor_0123"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 0,
+      "expected_target": "0x491c14",
+      "equal": true,
+      "colliding_anchor_symbols": []
+    },
+    {
+      "opcodes": [
+        59
+      ],
+      "target": {
+        "instruction": "0x43fcc1",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791320
+      },
+      "candidate": {
+        "instruction": "0x40e862",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317704
+      },
+      "symbols": [
+        "?g_Chain@th10@@3PAUChain@1@A",
+        "_th10_ltcg_probe_anchor_0124"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 4,
+      "expected_target": "0x491c18",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_Chain@th10@@3PAUChain@1@A"
+      ]
+    },
+    {
+      "opcodes": [
+        59
+      ],
+      "target": {
+        "instruction": "0x43fcca",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4791324
+      },
+      "candidate": {
+        "instruction": "0x40e86b",
+        "mnemonic": "mov",
+        "operand": 1,
+        "width": 4,
+        "address": 4317708
+      },
+      "symbols": [
+        "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A",
+        "_th10_ltcg_probe_anchor_0125"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmZeroVector491C14@@3UAnmFloat3View@@A",
+      "addend": 8,
+      "expected_target": "0x491c1c",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_Direct3DDevice@@3PAUD3d9DeviceView@@A"
+      ]
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440e17",
+        "mnemonic": "mov",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40f9b8",
+        "mnemonic": "mov",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440e42",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4655876
+      },
+      "candidate": {
+        "instruction": "0x40f9e3",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4313652
+      },
+      "symbols": [
+        "__real@00000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "00000000",
+      "target_payload": "00000000",
+      "candidate_payload": "00000000",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440e54",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40f9f5",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440e87",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4655876
+      },
+      "candidate": {
+        "instruction": "0x40fa28",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4313652
+      },
+      "symbols": [
+        "__real@00000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "00000000",
+      "target_payload": "00000000",
+      "candidate_payload": "00000000",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440e99",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40fa3a",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440eb8",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4655876
+      },
+      "candidate": {
+        "instruction": "0x40fa59",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4313652
+      },
+      "symbols": [
+        "__real@00000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "00000000",
+      "target_payload": "00000000",
+      "candidate_payload": "00000000",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440eca",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40fa6b",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440ee9",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4655876
+      },
+      "candidate": {
+        "instruction": "0x40fa8a",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4313652
+      },
+      "symbols": [
+        "__real@00000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "00000000",
+      "target_payload": "00000000",
+      "candidate_payload": "00000000",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440efb",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40fa9c",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f19",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4655876
+      },
+      "candidate": {
+        "instruction": "0x40faba",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4313652
+      },
+      "symbols": [
+        "__real@00000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "00000000",
+      "target_payload": "00000000",
+      "candidate_payload": "00000000",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f2b",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40facc",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f49",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40faea",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f58",
+        "mnemonic": "fcom",
+        "operand": 0,
+        "width": 4,
+        "address": 4655868
+      },
+      "candidate": {
+        "instruction": "0x40faf9",
+        "mnemonic": "fcom",
+        "operand": 0,
+        "width": 4,
+        "address": 4313676
+      },
+      "symbols": [
+        "__real@3f800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000803f",
+      "target_payload": "0000803f",
+      "candidate_payload": "0000803f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f68",
+        "mnemonic": "fsub",
+        "operand": 0,
+        "width": 4,
+        "address": 4655868
+      },
+      "candidate": {
+        "instruction": "0x40fb09",
+        "mnemonic": "fsub",
+        "operand": 0,
+        "width": 4,
+        "address": 4313676
+      },
+      "symbols": [
+        "__real@3f800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000803f",
+      "target_payload": "0000803f",
+      "candidate_payload": "0000803f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f73",
+        "mnemonic": "fcom",
+        "operand": 0,
+        "width": 4,
+        "address": 4655876
+      },
+      "candidate": {
+        "instruction": "0x40fb14",
+        "mnemonic": "fcom",
+        "operand": 0,
+        "width": 4,
+        "address": 4313652
+      },
+      "symbols": [
+        "__real@00000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "00000000",
+      "target_payload": "00000000",
+      "candidate_payload": "00000000",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f80",
+        "mnemonic": "fadd",
+        "operand": 0,
+        "width": 4,
+        "address": 4655868
+      },
+      "candidate": {
+        "instruction": "0x40fb21",
+        "mnemonic": "fadd",
+        "operand": 0,
+        "width": 4,
+        "address": 4313676
+      },
+      "symbols": [
+        "__real@3f800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000803f",
+      "target_payload": "0000803f",
+      "candidate_payload": "0000803f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f8d",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40fb2e",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440f9c",
+        "mnemonic": "fcom",
+        "operand": 0,
+        "width": 4,
+        "address": 4655868
+      },
+      "candidate": {
+        "instruction": "0x40fb3d",
+        "mnemonic": "fcom",
+        "operand": 0,
+        "width": 4,
+        "address": 4313676
+      },
+      "symbols": [
+        "__real@3f800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000803f",
+      "target_payload": "0000803f",
+      "candidate_payload": "0000803f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440fac",
+        "mnemonic": "fsub",
+        "operand": 0,
+        "width": 4,
+        "address": 4655868
+      },
+      "candidate": {
+        "instruction": "0x40fb4d",
+        "mnemonic": "fsub",
+        "operand": 0,
+        "width": 4,
+        "address": 4313676
+      },
+      "symbols": [
+        "__real@3f800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000803f",
+      "target_payload": "0000803f",
+      "candidate_payload": "0000803f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440fb7",
+        "mnemonic": "fcom",
+        "operand": 0,
+        "width": 4,
+        "address": 4655876
+      },
+      "candidate": {
+        "instruction": "0x40fb58",
+        "mnemonic": "fcom",
+        "operand": 0,
+        "width": 4,
+        "address": 4313652
+      },
+      "symbols": [
+        "__real@00000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "00000000",
+      "target_payload": "00000000",
+      "candidate_payload": "00000000",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440fc4",
+        "mnemonic": "fadd",
+        "operand": 0,
+        "width": 4,
+        "address": 4655868
+      },
+      "candidate": {
+        "instruction": "0x40fb65",
+        "mnemonic": "fadd",
+        "operand": 0,
+        "width": 4,
+        "address": 4313676
+      },
+      "symbols": [
+        "__real@3f800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000803f",
+      "target_payload": "0000803f",
+      "candidate_payload": "0000803f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440fdc",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4791916
+      },
+      "candidate": {
+        "instruction": "0x40fb7d",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317668
+      },
+      "symbols": [
+        "?g_AnmPositionOffsetDelta@@3UAnmFloat3View@@A",
+        "_th10_ltcg_probe_anchor_0115"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmPositionOffsetDelta@@3UAnmFloat3View@@A",
+      "addend": 0,
+      "expected_target": "0x491e6c",
+      "equal": true,
+      "colliding_anchor_symbols": []
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x440fee",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4791920
+      },
+      "candidate": {
+        "instruction": "0x40fb8f",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317672
+      },
+      "symbols": [
+        "?g_AnmPreloadStopRequested@@3CA",
+        "_th10_ltcg_probe_anchor_0116"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmPositionOffsetDelta@@3UAnmFloat3View@@A",
+      "addend": 4,
+      "expected_target": "0x491e70",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_AnmPreloadStopRequested@@3CA"
+      ]
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x441000",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4791924
+      },
+      "candidate": {
+        "instruction": "0x40fba1",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4317676
+      },
+      "symbols": [
+        "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A",
+        "_th10_ltcg_probe_anchor_0117"
+      ],
+      "kind": "reviewed-vector-field",
+      "base_symbol": "?g_AnmPositionOffsetDelta@@3UAnmFloat3View@@A",
+      "addend": 8,
+      "expected_target": "0x491e74",
+      "equal": true,
+      "colliding_anchor_symbols": [
+        "?g_AnmQuadVertices@@3PAUAnmRenderVertexView@@A"
+      ]
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x441188",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4655892
+      },
+      "candidate": {
+        "instruction": "0x40fd27",
+        "mnemonic": "fld",
+        "operand": 0,
+        "width": 4,
+        "address": 4313684
+      },
+      "symbols": [
+        "__real@40c90fdb"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "db0fc940",
+      "target_payload": "db0fc940",
+      "candidate_payload": "db0fc940",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x441203",
+        "mnemonic": "fmul",
+        "operand": 0,
+        "width": 4,
+        "address": 4655884
+      },
+      "candidate": {
+        "instruction": "0x40fda3",
+        "mnemonic": "fmul",
+        "operand": 0,
+        "width": 4,
+        "address": 4313672
+      },
+      "symbols": [
+        "__real@3f000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000003f",
+      "target_payload": "0000003f",
+      "candidate_payload": "0000003f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x44128b",
+        "mnemonic": "fmul",
+        "operand": 0,
+        "width": 4,
+        "address": 4655884
+      },
+      "candidate": {
+        "instruction": "0x40fe2b",
+        "mnemonic": "fmul",
+        "operand": 0,
+        "width": 4,
+        "address": 4313672
+      },
+      "symbols": [
+        "__real@3f000000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000003f",
+      "target_payload": "0000003f",
+      "candidate_payload": "0000003f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x441349",
+        "mnemonic": "fcomp",
+        "operand": 0,
+        "width": 4,
+        "address": 4655976
+      },
+      "candidate": {
+        "instruction": "0x40fee9",
+        "mnemonic": "fcomp",
+        "operand": 0,
+        "width": 4,
+        "address": 4313660
+      },
+      "symbols": [
+        "__real@3f7d70a4"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "a4707d3f",
+      "target_payload": "a4707d3f",
+      "candidate_payload": "a4707d3f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x441358",
+        "mnemonic": "fcomp",
+        "operand": 0,
+        "width": 4,
+        "address": 4655972
+      },
+      "candidate": {
+        "instruction": "0x40fef8",
+        "mnemonic": "fcomp",
+        "operand": 0,
+        "width": 4,
+        "address": 4313656
+      },
+      "symbols": [
+        "__real@3f8147ae"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "ae47813f",
+      "target_payload": "ae47813f",
+      "candidate_payload": "ae47813f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x441369",
+        "mnemonic": "fadd",
+        "operand": 0,
+        "width": 4,
+        "address": 4655868
+      },
+      "candidate": {
+        "instruction": "0x40ff09",
+        "mnemonic": "fadd",
+        "operand": 0,
+        "width": 4,
+        "address": 4313676
+      },
+      "symbols": [
+        "__real@3f800000"
+      ],
+      "target_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "candidate_section": {
+        "name": ".rdata",
+        "characteristics": "0x40000040",
+        "writable": false
+      },
+      "kind": "literal",
+      "symbol_payload": "0000803f",
+      "target_payload": "0000803f",
+      "candidate_payload": "0000803f",
+      "equal": true
+    },
+    {
+      "opcodes": [
+        2
+      ],
+      "target": {
+        "instruction": "0x441391",
+        "mnemonic": "mov",
+        "operand": 0,
+        "width": 4,
+        "address": 4681592
+      },
+      "candidate": {
+        "instruction": "0x40ff31",
+        "mnemonic": "mov",
+        "operand": 0,
+        "width": 4,
+        "address": 4317652
+      },
+      "symbols": [
+        "_th10_ltcg_probe_anchor_0111",
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "kind": "bound-global",
+      "expected_target": "0x476f78",
+      "canonical_symbols": [
+        "?g_AnmGameSpeed@@3MA"
+      ],
+      "equal": true
+    }
+  ],
+  "mismatches": [],
+  "unknowns": []
+}
