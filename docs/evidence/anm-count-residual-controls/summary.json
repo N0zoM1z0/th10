@@ -1,0 +1,399 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "base_commit": "0387cd204f210186cc26995d2059df9818eddf1b",
+  "scope": "twelve falsifiable ANM source/codegen controls; none adopted; zero exact/source/extent credit changes",
+  "baseline": {
+    "receipt": "docs/evidence/anm-radial-count/native-summary.json#/current_contexts/canonical",
+    "receipt_sha256": "0d6b13dc94b1df63fb9b7f5d6899c7874d09221b8bd6550f1a5fb49713881123",
+    "verified_source_header_inputs": 32,
+    "verified_native_artifacts": 15,
+    "context": "current ten-TU graph, excluding Player/Hint/Gui",
+    "ANM": {
+      "size": 9964,
+      "diagnostics": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      }
+    },
+    "native_body_raw_sha256": {
+      "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+      "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+      "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+    },
+    "match_manifest_sha256": "4a05059383759d279c3d239ad3f0629654c29a6afb6101ed18d6e2048d8e87b7"
+  },
+  "build_scope": {
+    "per_control": "one AnmManager /GL /GS compile, nine hash-verified reused game objects, existing anchors and full ten-object link",
+    "full_ten_TU_cold": false,
+    "resource_policy": "serial nice10; one changed /GL object plus verified reuse for experiments; Ghidra1CPU/768MiB/readOnly/noanalysis"
+  },
+  "target_review": {
+    "mode": "local Ghidra readOnly/noanalysis, rollback",
+    "max_cpu": 1,
+    "heap_mib": 768,
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "before_after": "equal",
+    "new_boundary_or_origin_claim": false
+  },
+  "controls": [
+    {
+      "label": "legacy-expressions",
+      "candidate_source_sha256": "700043ccd70f87d48ef01d4cd890d38d69a535d6d3c7596f854e00bc9a85779d",
+      "overlay_sha256": "6e0073445704a28ec674ab5e7979451bdf727d2278b486529f884e1a33740fde",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7475,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "51754728e2778215e986c51499f4fdac3892140c05b6f3d6ce0552a177f12e96",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "grouped-one-based",
+      "candidate_source_sha256": "fbc9f9792657a31a842e3fda9fdb20f0c8ed3cff1b1ac7d3f997f6a305c4ac82",
+      "overlay_sha256": "cde0b9204fdd8c663413aa3b3bf4aed524bec42df8ce2945580b2d8cf3425c3a",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7475,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "51754728e2778215e986c51499f4fdac3892140c05b6f3d6ce0552a177f12e96",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "component-locals",
+      "candidate_source_sha256": "b38c792dda16cac33ca3398e53beb1f7b5558a59344fb6d77260c05585aaba8b",
+      "overlay_sha256": "9c39ee47f687e0f0f66c978ad151df551361903b8c7df0e7d09e2d841c2b5419",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "float-mask-truth",
+      "candidate_source_sha256": "421fe7d4606dbb1d5a64a93d58491050474fa48035a415ef0698c5f32941c435",
+      "overlay_sha256": "fae6b29fbc8cc945f8b16d51f7a24a00be0eee3fea54b246162d8750cab7120b",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "instruction-local-name",
+      "candidate_source_sha256": "5155fda81ad47661c2c1e6c2ea83b30ed0bf03d6b919b5e87ce60334c2272b96",
+      "overlay_sha256": "5eef2548c588acfcf1c011a671485d92b6c375d6253dd4ebae2e8ea05d45daa0",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "child-script-local",
+      "candidate_source_sha256": "77e081dafb7d184db7d13b34f5914b03ebacb15682703ed69738c784791cd243",
+      "overlay_sha256": "bdf7d22733d82905de8d59e3d33550a977b76c6448f1ee4184c6db2a2a9cb1c2",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "flip-x-only",
+      "candidate_source_sha256": "88c96dd220e5612de3ec0cc88c09e23f8fa0efc4bb962f3f062034f4c25160b1",
+      "overlay_sha256": "5a8443dd37b0cdc3342deb13107958ac7eeabc3fea8b2d6300b44819526d3623",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "61488f859dfd424bdc538b3c81f35571193e488c560e0b92896797da40b31fc7",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "flip-y-only",
+      "candidate_source_sha256": "d4a5a7bdf3fe22fedfa0056e82b1b6b22a7d256606dfbfd575f66a47fd6a27fd",
+      "overlay_sha256": "7d2139acdeec7d75bb129dcd53238bc3aebf8b85a709d23ac91e5b613e0c57d5",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "61488f859dfd424bdc538b3c81f35571193e488c560e0b92896797da40b31fc7",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "flip-both",
+      "candidate_source_sha256": "ef6e2cfc6c4034ab5243a3050ff32c2239f8cfa444a838578993f267f86de3a7",
+      "overlay_sha256": "d7acfc4e263a1f9dfedad58af4b5b124c20bd8f3b9b954629077834a56ab3099",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7540,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "de5d7cf49731da7e68bf8805a034858b82b08dbe91e394b72e1a5620c66fe764",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "flip-both-reverse-second",
+      "candidate_source_sha256": "1bef3b4939f778d62d303f7a74aca11c1a096909ea547811facdb73e53d6533c",
+      "overlay_sha256": "cf7a0f1dd0a5d162eccfc72c3ae4446dc070bec81a349270c3863d77ea596d85",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7540,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "5757864251639e4cd8fe931a83d6ddc1e8c915d09395409092b22e5f963b878a",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "flip-both-reverse-all",
+      "candidate_source_sha256": "e0db9843e0f9f6233769fd9247faef975a4722146d07df8e1edf15add46262e7",
+      "overlay_sha256": "b00782427c050f0eee92cf6e5f840d9528a9b8e64a85c624b33ae6e2924c1543",
+      "ANM_size": 9964,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 7540,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "c875a10134ed88bad2cf9ddf9df1a79e0be518f199e42348474775ebf5dda207",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    },
+    {
+      "label": "flip-both-inplace-second",
+      "candidate_source_sha256": "416352791046756df001089c1534bf509a1dc9323f8b57e87f577cdea7537818",
+      "overlay_sha256": "680cc33daa1b9b7345c5571840ff7c56694dc9e997689d6d2cbb8a13cd03403a",
+      "ANM_size": 9984,
+      "case_diagnostics": {
+        "matched_comparable_bytes": 6832,
+        "comparable_bytes": 8004,
+        "absolute_case_gap_delta": 38,
+        "same_sized_cases": 86,
+        "normalization_complete": true
+      },
+      "native_body_raw_sha256": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "e417738f1a0d90eef55a5939662fe9acbddd9565718e5d8dd06ad53386fb2829",
+        "?Run@EclVmContext@@QAEHM@Z": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "99daed1578ef6cbe78cee388da85c414c1b6a835d3c840e6c36256c1b67faa01"
+      },
+      "raw_equal_to_baseline": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": false,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": false
+      },
+      "whole_guards": "35 owners /4424 bytes /118 fields exact",
+      "ECL_Run": "7020 bytes,6993 matched,all189 fields/62 locals and complete171-byte float callee checked"
+    }
+  ],
+  "observed_nonlocal_interaction": {
+    "X_only": "second radial vertex Y/Z additions reverse; Tick unchanged; diagnostic total stays7541",
+    "Y_only": "same complete native body as X-only",
+    "both": "same-context current ten-TU confirms Tick order recovery and second-vertex Z regression; diagnostic7540",
+    "reverse_second": "Z recovers but second-vertex X/Y reverse",
+    "reverse_all": "first-vertex XYZ and second-vertex XY reverse",
+    "inplace_second": "translation temporary/lifetime change grows ANM to9984 and gap38; rejected",
+    "scope": "decoded instruction/ordinary-byte observations, not whole-function exactness"
+  },
+  "diagnostic_wrapper_recovery": "First native link/guards completed; canonical uppercase target address spelling repaired in case-wrapper JSON; no rebuild or Oracle changes.",
+  "adjacent_hypothesis": {
+    "repository": "TH095",
+    "head": "e4113fbc370972e2b59f32d1d313ea50f3502411",
+    "source": "src/AnmManager.cpp",
+    "source_sha256": "465d68404a2634c81bb7063a8067442d171e10518b5d235b8c9fe9d49d0dc349",
+    "scope": "declaration/macro/name hypotheses only; all TH10 conclusions use TH10 target/compiler evidence"
+  },
+  "validation": {
+    "CI": {
+      "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+      "checks": 106,
+      "exit_code": 0,
+      "log_sha256": "f892a79bba56d6d2926d1d1b0bb69df38e333b561cfb9d7bef262385f126287f",
+      "scope": "target-independent source/infrastructure; not native-product runtime"
+    },
+    "frozen_source_sha256": {
+      "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+      "scripts/ci.py": "b74236f2c15d06654d93d6ed6328f8dff937610b7d12efa1311a81b77dcd806d",
+      "scripts/transition_effect_host_test.py": "225a1fb85d5b83e36411792faf62ee1ae5991da4f171d3ce5901dc83b63a808e",
+      "scripts/transition_effect_eol_test.py": "c39c10a8c8853fcd14bf2071f225df57a7dd5a8fa972e8218f5c2e8579ecbc51"
+    },
+    "final_current_canonical_guards": "35 complete owners/4424 bytes/all118 fields pass again",
+    "after_CI": "Only validation documentation and ignored-output cleanup; source/test/config pins unchanged"
+  },
+  "limits": [
+    "No maintained C/C++, recipe, header, ABI, acceptance policy or exact ledger change.",
+    "Positional diagnostic equality can hide ordinary instruction regressions.",
+    "All original large exact owners remain nonexact.",
+    "Global boundary audit, product/runtime closure, semantic reconstruction and portability remain open."
+  ],
+  "cleanup": {
+    "removed_logical_file_bytes": 17132488,
+    "removed_native_control_carriers": 11,
+    "removed_private_full_source_snapshots": 11,
+    "removed_reproducible_CI_host_trees": 4,
+    "removed_redundant_full_instruction_dumps": 10,
+    "retained_failure": "build/gpt-6.1-sol/anm-radial-expression-20261022/flip-both",
+    "retained_failure_source": "private flip-both/AnmManager.cpp with exact input hash",
+    "source_overlays": "all12 independently reconstructed and hash-verified before pruning",
+    "retained_baseline": "unchanged current canonical ten-TU carrier/source and artifact pins",
+    "preserved": "all9 independent D3D files; unclassified legacy artifacts; target, Ghidra, toolchains and Wine state"
+  }
+}

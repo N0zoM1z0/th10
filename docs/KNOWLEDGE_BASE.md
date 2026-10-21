@@ -4626,3 +4626,25 @@ as ordinary-code regressions. State2 and lifecycle actual-source contracts pass
 seven and65 strict functional controls. No new source mapping, exact credit,
 origin/layout/TU claim or later phase gate changes. See
 [entry-copy evidence](evidence/hint-entry-copy-controls/README.md).
+
+
+## ANM count/residual source controls (2026-10-22)
+
+Twelve private controls in the hash-current ten-TU graph compile one AnmManager
+/GL /GS object and reuse nine attested game objects. Every full link passes35
+complete guards4424/all118, Run7020/all189/62locals with27 ordinary differences
+and its complete171-byte float callee. None changes maintained source or exact
+credit. The previously uncompiled legacy count expression and a current-layout
+one-based loop produce identical complete three-large-owner bodies, reducing
+ANM diagnostic positions7541->7475. Named float result locals, float-mask truth
+syntax, a short instruction-local name and a child91 script-index local leave
+all three large native bodies raw-identical to baseline.
+
+Independent X/Y split-flag controls are identical to each other and reverse
+second-vertex Y/Z operands despite unchanged7541 totals. Same-context combined
+flags recover target Tick441377 but reverse second-vertex Z4412C8 (7540).
+Reversing second/all vector sums recovers Z while regressing other components;
+copy/operator+= translation grows ANM9984/gap38. No form is adopted. Raw body,
+instruction and field scope must supplement positional totals. Original source
+order, TU partition and the remaining allocator/register causes stay unknown.
+See [count/residual controls](evidence/anm-count-residual-controls/README.md).

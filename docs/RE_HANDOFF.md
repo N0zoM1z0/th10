@@ -133,11 +133,30 @@ strict table/selector annotations still cover all7020 bytes, 60 table words and
 88 selectors. Keep the historical separate two-TU result (26 differences)
 distinct from the current 27-difference graphs.
 
-ANM's combined radial/flag control fixes slow Tick load order but reverses the
-radial Z operands; it is rejected and retained as the smallest current failure.
-A one-based count control is rejected; the additional prepared repeated-expression
-variant was not compiled. Earlier [residual/data audit](evidence/anm-residual-data-audit/README.md)
-records other rejected forms. No original source spelling or physical TU is proven.
+The [fresh count/residual controls](evidence/anm-count-residual-controls/README.md)
+resolve the previously uncompiled expression option in the current ten-TU graph.
+That legacy form and a current-layout one-based loop produce identical complete
+three-owner bodies, reducing ANM7541->7475 diagnostic positions. Four source
+spelling/local controls are raw-neutral. Single-axis flag splitting reverses
+second-vertex Y/Z while leaving total7541 unchanged. Same-context combined flags
+recover Tick order but reverse Z (7540); reversed-vector repairs regress other
+components, and copy/operator+= translation grows ANM9984/gap38. All twelve are
+rejected; maintained source, canonical recipes and exact statistics stay unchanged.
+Each compiles one /GL object and reuses nine verified game objects, not a full
+cold ten-TU build;35 whole guards4424/all118 and Run7020/all189/62locals pass.
+
+Current ANM private work is `.analysis/gpt-6.1-sol/anm-radial-expression-20261022/`;
+read its RECOVERY/manifest. Keep the current ten-TU baseline and small combined-
+flags failure, plus compact input overlays/results. Earlier
+[residual/data audit](evidence/anm-residual-data-audit/README.md) and the historical
+eleven-TU failure retain their original scopes. No original source spelling or
+physical TU is proven, and a positional total alone cannot authorize adoption.
+
+This control batch passes106 full CI checks with unchanged maintained game code;
+the current35 whole guards pass again afterward. Only validation documentation
+and ignored-output cleanup follow. The [summary](evidence/anm-count-residual-controls/summary.json)
+records scope and cleanup of17132488 logical file bytes. All12 exact source
+overlays, current canonical baseline and the small combined-flags failure remain.
 
 The current bounded data audit validates 45 ordered absolute-memory operands
 inside 92 ANM spans: 21 literals, 9 canonical globals and 15 vector fields.

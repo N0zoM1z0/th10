@@ -1,5 +1,10 @@
 # ANM radial counter scheduling
 
+The later [count/residual controls](../anm-count-residual-controls/README.md)
+execute the formerly prepared expression option against the unchanged current
+ten-TU graph. It regresses and is not adopted. This packet retains its original
+checkpoint context and prepared/not-executed history.
+
 The maintained render-mode9 block now declares its seven real locals together,
 snapshots the original vertex count, and uses count-1 for the coefficients and
 loop bound. Its ordinary counter setup now matches TH10: LEA ESI,[EAX-1], TEST
