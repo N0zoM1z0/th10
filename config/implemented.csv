@@ -1090,3 +1090,5 @@ th10::Chain::Chain
 th10::Chain::AddToCalcChain
 th10::Chain::AddToDrawChain
 th10::Chain::AllocElem
+MainRunCalcChain
+MainRunDrawChain

@@ -1,6 +1,6 @@
 # Transition effect host contracts
 
-These are LOCAL-ONLY semantic tests, not a target build, target execution, exactness claim, scheduler reconstruction, or proof of 32-bit layout/private calling conventions. No reference implementation is copied into the fixture. Every proposed body and selector is read from `src/TransitionEffect.cpp` at test generation time.
+These are LOCAL-ONLY semantic tests, not a target build, target execution, exactness claim, or proof of 32-bit layout/private calling conventions. No reference implementation is copied into the fixture. Effect bodies come from `src/TransitionEffect.cpp`; complete maintained Chain dispatchers are included directly through the declared host roles.
 
 ## Run
 
@@ -15,6 +15,17 @@ python3 scripts/transition_effect_mutations.py
 The default is repository-local `src`; there is no silent remote or machine-specific fallback. The runners enforce the seven strict LF-normalized dependency hashes from version 2 of `config/transition-effect-host-inputs.json` before generating or compiling. Only byte sequences CRLF are changed to LF. Ordinary whitespace, bare CR, BOM, and every other content change are rejected; there is no raw-hash fallback. The configuration retains original observed raw hashes as provenance only. Execution manifests retain raw and normalized hashes, byte counts, and CRLF/bare-CR counts for the source, header, fixture, and other inputs, alongside the extracted timer/range-helper/adapted-Chain hashes, compiler command, output, and return codes. Extraction uses this same explicit byte normalization, never universal-newline decoding. Only local host g++ is invoked.
 
 ## Actual bodies and declared seams
+
+The2026-10-22 [dispatcher recovery](evidence/chain-dispatchers/README.md) refreshes
+only the Chain.cpp active LF pin, retaining all six other active dependencies.
+Actual Calc now drives the return0/7 lifetime scenarios. Its former subset
+dispatcher and model-specific status gate are superseded by two actual count
+assertions. A new scenario covers42 Calc/Draw calls: all status cases and signed
+defaults, enable-mask recheck, null/disabled counting, forced outputs after prior
+work, restart, drawing defaults, locked deletion and cached-next insertion.
+The complete sanitized baseline passes1375 assertions. Eight strict generated
+faulty-code controls pass through `scripts/test-chain-dispatcher-controls.py`;
+they do not edit canonical source or relax its pins. All19 EOL checks pass.
 
 The 2026-10-19 dependency refresh changes only the Chain declaration/definition
 pins for the reviewed `UnregisterElem` fastcall spelling. The complete native
@@ -52,7 +63,7 @@ raw provenance. Extraction rules and rejection tests are unchanged.
 - Host allocation uses malloc plus placement construction and fills effect storage with `0xa5` before the actual constructor, so a missing factory zero-fill is observable. Nodes are actually released, not kept alive in a quarantine. This fixture choice does not prove ISO-defined initialization: the canonical timer constructor reads its flags member before the factory memset. The compiler's uninitialized-member warning is retained. Sanitizer success does not resolve this inherited constructor/object-lifetime concern.
 - A `std::recursive_mutex` models recursive Windows critical-section behavior and records nesting. It is not a Windows critical section or a concurrency proof. Registration snapshots observe partial publication at the real canonical insertion lock boundary; they do not schedule concurrent engine callbacks. The final frames-before-kind write order is additionally checked as an explicitly labeled source-order check.
 - The renderer is an argument/event-observation seam. It records rectangle, color, viewport, captured manager flush, and later global device/manager observations. It does not execute the real rectangle renderer, D3D device, or validate physical global aliases.
-- The scheduler is an explicitly named observed-protocol seam for statuses 0, 1, and 7 only. It caches next before a callback, runs update unlocked, invokes the delete callback while locked, and observes both recursive cleanup cycles. It is not the missing canonical calc/draw dispatcher, and its successful traversal does not establish real-engine asynchronous lifetime closure.
+- Complete maintained Calc/Draw algorithms run with native host pointers and the explicit recursive-mutex/allocation roles. The original0/1/7 subset scheduler model is removed. Successful status, traversal and recursive cleanup checks do not establish native scheduler bytes, Windows concurrency, storage aliases or asynchronous engine lifetime closure.
 
 ## Coverage
 

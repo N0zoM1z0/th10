@@ -3,7 +3,7 @@
   "normalization": "crlf-to-lf-only",
   "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",
   "sha256_lf": {
-    "src/Chain.cpp": "702be9ec128b49e29a7fc4b524208d5ab8dffb7a831d38e66a2834a6d5e97769",
+    "src/Chain.cpp": "8774beb2acb663f30904f857067decadd194b4f385f471aedd0a9c07e7b25aa8",
     "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
     "src/AnmManager.cpp": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
@@ -320,5 +320,17 @@
     "historical_extra_keys": "Unused historical entries are left unchanged; active dependency set remains the existing seven files.",
     "host_migration": "Real element/owner constructors now execute; use actual intrusive-list accessors; remove obsolete offset adaptations; reconstruct fixture owners in place to keep self links live; preserve843 prior assertions and add16 sentinel property assertions.",
     "scope": "Host field effects/prefill/ownership only; no target layout/private ABI, allocator, runtime or whole-product claim."
+  },
+  "chain_dispatcher_review_20261022": {
+    "target_review": "Full Calc308/Draw268 code, alignment and target-guarded local tables; callee-pop4/int result; complete source recovered nonexact.",
+    "changed_active_LF_pins": {
+      "src/Chain.cpp": {
+        "old": "702be9ec128b49e29a7fc4b524208d5ab8dffb7a831d38e66a2834a6d5e97769",
+        "new": "8774beb2acb663f30904f857067decadd194b4f385f471aedd0a9c07e7b25aa8"
+      }
+    },
+    "other_six_active_dependencies_unchanged": true,
+    "normalization_policy_unchanged": true,
+    "host": "Replace limited dispatcher model with actual maintained code in lifetime0/7; add literal status0..7/default/count/lock/flag/restart/cache cases. Pointer width/allocation/lock/renderer remain host seams."
   }
 }

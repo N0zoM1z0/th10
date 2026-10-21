@@ -44,7 +44,12 @@ Signed word reinterpretation follows the target VC7.1 two's-complement model. Ex
 
 Ordinary expressions use float source types; target x87 keeps extended precision at several sites, particularly kind1's first output. Host SSE tests establish only finite representable selected cases. NaNs, infinities, out-of-range conversion and full x87 exception/precision equivalence remain unsupported. No algebraic tuning or rounding hacks are added to match instructions.
 
-No real scheduler dispatcher source exists for449C00/449D40. Host protocol tests validate only the observed interaction contract. Mode4 retains effect and draw node after scheduler return0, and updateNode becomes stale. External ownership/leak resolution remains unknown. No automatic cleanup repair is invented.
+The later [Chain recovery](evidence/chain-dispatchers/README.md) supplies complete
+449C00/449D40 dispatcher source and runs actual Calc in the host lifetime tests.
+Native dispatcher codegen, Windows concurrency and whole-engine storage remain
+unproved. Mode4 retains effect and draw node after scheduler return0, and
+updateNode becomes stale. External ownership/leak resolution remains unknown.
+No automatic cleanup repair is invented.
 
 The extern direct-storage declarations, heap ownership, Windows recursive-lock implementation, private register ABIs, original source/TU, production build inclusion, exact target function/table extents and full native behavior all remain separate integration/Oracle obligations.
 

@@ -1,0 +1,481 @@
+{
+  "state": "source-present/nonexact; zero new exact credit",
+  "starting_head": "e558d61e9562e2e9a37b85a5be7389b9cfe29a67",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "full_mapped_text": {
+    "start": "0x00401000",
+    "end_inclusive": "0x00465A80",
+    "bytes": 412289,
+    "before_and_after_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "review": "readOnly/noanalysis/rollback; one CPU,768MiB heap"
+  },
+  "owners": [
+    {
+      "address": "0x449c00",
+      "code_bytes": 273,
+      "owned_alignment_bytes": 3,
+      "table_address": "0x449d14",
+      "table_entries": 8,
+      "table_destinations": [
+        "0x449ca6",
+        "0x449cc7",
+        "0x449c96",
+        "0x449cde",
+        "0x449cd4",
+        "0x449ce8",
+        "0x449c30",
+        "0x449cbb"
+      ],
+      "target_PE_base_relocation_directory": "absent; no relocation claim for target words",
+      "reviewed_pointer_field_type": "absolute local code destination, independently decoded target table",
+      "all_destinations_inside_complete_code": true,
+      "table_guard_unsigned_maximum": 7,
+      "sole_Ghidra_incoming_table_reference": "0x449c8f",
+      "complete_size": 308,
+      "end_inclusive": "0x449d33",
+      "next_four_bytes": "CC padding",
+      "owned_bytes_sha256": "7a2b7e91eb6e387ccc6e82442e01ece983980b8765fd98354675356e0452b1c7"
+    },
+    {
+      "address": "0x449d40",
+      "code_bytes": 241,
+      "owned_alignment_bytes": 3,
+      "table_address": "0x449e34",
+      "table_entries": 6,
+      "table_destinations": [
+        "0x449dd4",
+        "0x449ddf",
+        "0x449dcc",
+        "0x449dfe",
+        "0x449df4",
+        "0x449e08"
+      ],
+      "target_PE_base_relocation_directory": "absent; no relocation claim for target words",
+      "reviewed_pointer_field_type": "absolute local code destination, independently decoded target table",
+      "all_destinations_inside_complete_code": true,
+      "table_guard_unsigned_maximum": 5,
+      "sole_Ghidra_incoming_table_reference": "0x449dc5",
+      "complete_size": 268,
+      "end_inclusive": "0x449e4b",
+      "next_four_bytes": "CC padding",
+      "owned_bytes_sha256": "769bf95c0db8e2d1e1844a5a661b03c919ee060216a003f748ec9c486a9f6293"
+    }
+  ],
+  "measured_abi": "Both entries: stack owner pointer, RET4, EAX processed-count result. Callback arg in ECX. Original source annotation/name/TU unknown.",
+  "Main_calls": {
+    "calc": "0x00439424 PUSH owner;0x0043942F CALL; return controls exit/restart",
+    "draw": "0x004394D7 PUSH owner;0x004394D8 CALL; returned count ignored"
+  },
+  "enable_mask": 2,
+  "enable_bit_index": 1,
+  "null_callback": "skipped and uncounted",
+  "disabled_nonnull_callback": "skipped but counted",
+  "traversal": "cache next before invoking callback; mutations affect later passes/restart as observed",
+  "locking": "enter/increment byte; leave/decrement before callback; enter/increment after; optional calc7 delete callback locked; final leave/decrement",
+  "statuses": {
+    "0": "unregister only; count and advance cached next",
+    "1_or_other": "count and advance",
+    "2": "retry same element, recheck enabled mask",
+    "3": "force result1 and break",
+    "4": "force result0 and break",
+    "5": "force result-1 and break",
+    "6": "calc restart/reset count; draw default",
+    "7": "calc optional delete callback without implicit unregister; draw default"
+  },
+  "source_sha256": {
+    "src/Chain.cpp": "8774beb2acb663f30904f857067decadd194b4f385f471aedd0a9c07e7b25aa8",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/Main.cpp": "9cce8257321bde23fdb88b6f42f7412a3b6a425a138f7bda0482796fd300cd8e",
+    "scripts/fixtures/transition-effect.cpp": "4f5c4d38c87a8325d9170ab376f092167abb9f28b03660c103f6909bff12231b",
+    "scripts/test-chain-dispatcher-controls.py": "df99afffe180552a319b3c5b54fb323f69cfe06a5414fd7049fdf44e0a0adfda",
+    "scripts/transition_effect_host_test.py": "a56b2f2e27862e79ddc37a3cd8d363ad031247ac79ed2152d68b122b65c4a0a2",
+    "scripts/ci.py": "04bb9e9b66038f95b72e7689b76d69a630f2ee09a274320df068a55798f52816",
+    "config/transition-effect-host-inputs.json": "d834d5b71aa785be37abb7ca6320b21922a443bd28e50f0f7313cd83563494f7"
+  },
+  "initial_three_TU": {
+    "scope": "full cold three-TU diagnostic; no exact credit without complete independent linked-field proof",
+    "context": {
+      "source": "src/Main.cpp",
+      "support_sources": [
+        "src/Chain.cpp",
+        "src/GameErrorContext.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry_symbol": "WinMain@16",
+      "output_dir": "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main"
+    },
+    "direct_input_sha256": {
+      "src/Main.cpp": "9cce8257321bde23fdb88b6f42f7412a3b6a425a138f7bda0482796fd300cd8e",
+      "src/Chain.cpp": "8774beb2acb663f30904f857067decadd194b4f385f471aedd0a9c07e7b25aa8",
+      "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+      "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e"
+    },
+    "artifact_sha256": {
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/source.map": "1e0ddf9a0d27995b39b2b9b829bb7da96eaef2ed6254be3abdd3e57a92695571",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/link-attempt-2.log": "3f5a091b646213d024102cc5edf660fcbdf48ac76bca3a1de2e463f6d1420717",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/source.exe": "a1a8a99f00e99c5aa2add0ea3e7fdc9d49e68a96ab9af0c6b19935a87f0d516f",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/source.ltcg.obj": "bd64c8c065b1cdacb2898dcd8277e28f76bbe155b1542ff2fd43ff24a1077e3d",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/support-00-Chain.ltcg.obj": "07cb497b12c1cf7da98077ef121c83e537a86db4713aeec54b96f6f7b49f41d2",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/link-attempt-1.log": "96d0c805162d5ce809a44eaa6fc8713c121d912f136cda3155f4458c796199e7",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/support-01-GameErrorContext.ltcg.obj": "63ca4f8181169feffdd6e085e04b53599c18111de9816754cb9d8fc9fb269878",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/link-aliases.rsp": "59fe01af46b5d1a7ccd7ff1491ba78eb3901615880a81b997efe4274db1b0ba6",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/link-anchors.obj": "fadc28e846a8b76d87fcc1676c0fb1fb294685a7944f4ea07f6475d3619bc3ae",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/link-anchors.c": "26b2973a640b108c7d3f329e777e63062c2939c7db1b4673e08c3c56f43674ad",
+      "build/gpt-6.1-sol/chain-source-closure-20261022/initial-main/source.pdb": "d7bed625939e307910775f347b792a61f42c52a8c580251dbefd80284636d10c"
+    },
+    "owners": {
+      "?MainRunCalcChain": {
+        "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+        "address": "0x004031A0",
+        "size": 428,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 8608,
+        "map_object": "support-00-Chain.ltcg.obj",
+        "pdb_module_index": 3,
+        "sha256": "ac553163c21f5fabcbdaf6107381b7cc6d72eb2272b798f9a0a90986ef3fc397"
+      },
+      "?MainRunDrawChain": {
+        "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+        "address": "0x00403350",
+        "size": 272,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 9040,
+        "map_object": "support-00-Chain.ltcg.obj",
+        "pdb_module_index": 3,
+        "sha256": "f57e2387238eec50a432132c3f08df8501832b5468c32474e0c5bd9f543befaa"
+      }
+    },
+    "limit": "Context differs in both compiler flags and visible sources from the14-TU graph; cause not isolated."
+  },
+  "actual_fourteen_TU": {
+    "context": {
+      "artifact_kind": "linked-pe",
+      "source": "src/ScriptViewer.cpp",
+      "output_dir": "build/match-linked/ScriptViewerLifecycle-cold-2",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+      "functions": [
+        "Chain::UnregisterElem"
+      ],
+      "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+      "target_address": 4497248,
+      "size": 114,
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/Chain.cpp",
+        "src/FrontEnd.cpp",
+        "src/Player.cpp",
+        "src/Gui.cpp",
+        "src/Enemy.cpp",
+        "src/BulletLifecycle.cpp",
+        "src/InputState.cpp",
+        "src/Main.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/ScriptViewerLifecycle.cpp",
+        "src/ItemManager.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "support_profiles": {
+        "src/Enemy.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ]
+      },
+      "pdb_source": "src/Chain.cpp",
+      "linkages": [
+        {
+          "offset": 104,
+          "type": "REL32",
+          "symbol": "_free",
+          "target": 4531361
+        }
+      ]
+    },
+    "owners": [
+      {
+        "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+        "address": "0x0040D880",
+        "size": 316,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51328,
+        "map_object": "support-01-Chain.ltcg.obj",
+        "pdb_module_index": 14,
+        "sha256": "8ea3958b15f6ddc2e397b3369fdefbc567875123b6b1d404fb7669016f34de0d"
+      },
+      {
+        "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+        "address": "0x0040D9C0",
+        "size": 272,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51648,
+        "map_object": "support-01-Chain.ltcg.obj",
+        "pdb_module_index": 14,
+        "sha256": "38c8dce06d2acb4ba5724f21ea8d16838e925f092033b5fd341e943e9b0f33ec"
+      }
+    ],
+    "artifact_sha256": {
+      "build/match-linked/ScriptViewerLifecycle-cold-2/source.map": "f2092ecb0ad3f3a7efbfe298ac5697fb30f5b47ede0deebcc84d1ce48be8af95",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/link-attempt-2.log": "919100db25d8563bfb11dd327ae84c45ae8619fba571ea8472c78991f4e7fe1d",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/source.exe": "08bab2e4d5b8f70828a94f37afec32421c7a282dbad741bb653c31eda2ec2daf",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/source.ltcg.obj": "37112ad5a03183a50ebbc738c0783640b436e1fa0c3fdd587054ff44fc71968c",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-07-InputState.ltcg.obj": "eff4a4c8d968d29bd3b1cfd15d280c207ae8539a4395faa26aa3713aa603acae",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-10-ScriptViewerLifecycle.ltcg.obj": "8ae199fbdff953a62d6e2d4acf47fb4ea1ae9855fb220ad96dd7221314c21c24",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-05-Enemy.ltcg.obj": "b7ce7bb9b7f5c3725f18095f4600702356b39908b770770eac11d5511bc4384b",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-09-ScriptViewerWorker.ltcg.obj": "58b77e414c00f1f9cc45847320d04cd706c10429c3850f01a211a1eee28151f0",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-00-AnmManager.ltcg.obj": "7e414948f5eac8b24459b68ea4eaf45d11014d7873b5d5bc7732d8229a443bd2",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-11-ItemManager.ltcg.obj": "edf308d9379bfb267889f88d1a607d7804eca3b6888dea76d5e071e9abb4537a",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/link-attempt-1.log": "6e031e5e53dae9a8b3527d01b39041349c57dc9b845e56f72193dd4b8c1e4e09",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-02-FrontEnd.ltcg.obj": "ee855003474ee77d3da9f786b6411d9ee161b98032ea739da18371a29b066280",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-03-Player.ltcg.obj": "0abb920a7e0133c8cfd3ca0bc191abfc60777383b7e4ac8a7ca00fd7d6fd9421",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-01-Chain.ltcg.obj": "c6892175825fcaa299d626825d3e15eed427d6efe2cf4c1dee7341f4b8afd309",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/link-aliases.rsp": "1f1e41589c61635ef65678bb8629e22008415a9cdf95b64165fe832f0430ad1f",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/link-anchors.obj": "778ae714c61b58c300bf4dfa18904f46716ac1cff0e7f610ccc4153066bf6f56",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/link-anchors.c": "485de38fae5411bae5e818d29bc45707d93dde5bee29e7a5422e1fa65086a9b2",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-08-Main.ltcg.obj": "edcbe86879a04b138478d1421ff3f93a5697a1fd6121298dd768409220d0c5c4",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-04-Gui.ltcg.obj": "4b96f79fb551da3d31d65a73fe9d2281dbb245228a7cda55eace66b980360036",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/source.pdb": "d8fe5a4d63dcd16dd98f371ad0088c928cf0f52be6270d6ac7be29e10c0cae4c",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-06-BulletLifecycle.ltcg.obj": "c8b72530c21b1cfd09c8526ba1b811e78014fbb1b0ee59dbc3113a16be9f6818",
+      "build/match-linked/ScriptViewerLifecycle-cold-2/support-12-AnmVmId.ltcg.obj": "e622a107bbb6d875507a92003e64f0ab11de4c33bfbef5734d79f409b459cd51"
+    },
+    "exactness": "Complete native extents316/272 differ from target308/268. No exact claim or ordinary-byte score from structural masks."
+  },
+  "compiler_controls": [
+    {
+      "label": "postfix-counter",
+      "scope": "One Chain recompile +13 verified game-object reuse, full14-TU real caller graph; not a full cold.",
+      "adopted": false,
+      "source_sha256": "bed6913092b417a1a4168d36a0a5135b9fabb7d6c955ba9e167f0cf63efd07ef",
+      "source_patch_from_maintained": "--- src/Chain.cpp\n+++ postfix-counter/Chain.cpp\n@@ -229,7 +229,7 @@\n     int result;\n \n     EnterCriticalSection(&th10::g_CriticalSections[0]);\n-    ++th10::g_ChainNestCounter;\n+    th10::g_ChainNestCounter++;\n restart:\n     updatedCount = 0;\n     node = chain->CalcList()->next;\n@@ -243,10 +243,10 @@\n             if (elem->flags & 2)\n             {\n                 LeaveCriticalSection(&th10::g_CriticalSections[0]);\n-                --th10::g_ChainNestCounter;\n+                th10::g_ChainNestCounter--;\n                 result = elem->callback(elem->arg);\n                 EnterCriticalSection(&th10::g_CriticalSections[0]);\n-                ++th10::g_ChainNestCounter;\n+                th10::g_ChainNestCounter++;\n                 switch (result)\n                 {\n                 case 0:\n@@ -279,7 +279,7 @@\n     }\n loop_exit:\n     LeaveCriticalSection(&th10::g_CriticalSections[0]);\n-    --th10::g_ChainNestCounter;\n+    th10::g_ChainNestCounter--;\n     return updatedCount;\n }\n \n@@ -293,7 +293,7 @@\n     int result;\n \n     EnterCriticalSection(&th10::g_CriticalSections[0]);\n-    ++th10::g_ChainNestCounter;\n+    th10::g_ChainNestCounter++;\n     updatedCount = 0;\n     node = chain->DrawList()->next;\n     while (node != NULL)\n@@ -306,10 +306,10 @@\n             if (elem->flags & 2)\n             {\n                 LeaveCriticalSection(&th10::g_CriticalSections[0]);\n-                --th10::g_ChainNestCounter;\n+                th10::g_ChainNestCounter--;\n                 result = elem->callback(elem->arg);\n                 EnterCriticalSection(&th10::g_CriticalSections[0]);\n-                ++th10::g_ChainNestCounter;\n+                th10::g_ChainNestCounter++;\n                 switch (result)\n                 {\n                 case 0:\n@@ -334,6 +334,6 @@\n     }\n loop_exit:\n     LeaveCriticalSection(&th10::g_CriticalSections[0]);\n-    --th10::g_ChainNestCounter;\n+    th10::g_ChainNestCounter--;\n     return updatedCount;\n }\n",
+      "raw_outcome": [
+        {
+          "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+          "complete_size": 316,
+          "raw_equal_to_baseline": true,
+          "raw_different_positions": []
+        },
+        {
+          "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+          "complete_size": 272,
+          "raw_equal_to_baseline": true,
+          "raw_different_positions": []
+        }
+      ],
+      "cached_input_sha256": {
+        "source.ltcg.obj": "37112ad5a03183a50ebbc738c0783640b436e1fa0c3fdd587054ff44fc71968c",
+        "support-00-AnmManager.ltcg.obj": "7e414948f5eac8b24459b68ea4eaf45d11014d7873b5d5bc7732d8229a443bd2",
+        "support-02-FrontEnd.ltcg.obj": "ee855003474ee77d3da9f786b6411d9ee161b98032ea739da18371a29b066280",
+        "support-03-Player.ltcg.obj": "0abb920a7e0133c8cfd3ca0bc191abfc60777383b7e4ac8a7ca00fd7d6fd9421",
+        "support-04-Gui.ltcg.obj": "4b96f79fb551da3d31d65a73fe9d2281dbb245228a7cda55eace66b980360036",
+        "support-05-Enemy.ltcg.obj": "b7ce7bb9b7f5c3725f18095f4600702356b39908b770770eac11d5511bc4384b",
+        "support-06-BulletLifecycle.ltcg.obj": "c8b72530c21b1cfd09c8526ba1b811e78014fbb1b0ee59dbc3113a16be9f6818",
+        "support-07-InputState.ltcg.obj": "eff4a4c8d968d29bd3b1cfd15d280c207ae8539a4395faa26aa3713aa603acae",
+        "support-08-Main.ltcg.obj": "edcbe86879a04b138478d1421ff3f93a5697a1fd6121298dd768409220d0c5c4",
+        "support-09-ScriptViewerWorker.ltcg.obj": "58b77e414c00f1f9cc45847320d04cd706c10429c3850f01a211a1eee28151f0",
+        "support-10-ScriptViewerLifecycle.ltcg.obj": "8ae199fbdff953a62d6e2d4acf47fb4ea1ae9855fb220ad96dd7221314c21c24",
+        "support-11-ItemManager.ltcg.obj": "edf308d9379bfb267889f88d1a607d7804eca3b6888dea76d5e071e9abb4537a",
+        "support-12-AnmVmId.ltcg.obj": "e622a107bbb6d875507a92003e64f0ab11de4c33bfbef5734d79f409b459cd51",
+        "link-anchors.obj": "778ae714c61b58c300bf4dfa18904f46716ac1cff0e7f610ccc4153066bf6f56",
+        "link-aliases.rsp": "1f1e41589c61635ef65678bb8629e22008415a9cdf95b64165fe832f0430ad1f"
+      }
+    },
+    {
+      "label": "postfix-case-order",
+      "scope": "One Chain recompile +13 verified game-object reuse, full14-TU real caller graph; not a full cold.",
+      "adopted": false,
+      "source_sha256": "59c969cd11df190e0f9be4d33285c9d30d38ebdc96b12a90ae6a9ec5396d710c",
+      "source_patch_from_maintained": "--- src/Chain.cpp\n+++ postfix-case-order/Chain.cpp\n@@ -229,7 +229,7 @@\n     int result;\n \n     EnterCriticalSection(&th10::g_CriticalSections[0]);\n-    ++th10::g_ChainNestCounter;\n+    th10::g_ChainNestCounter++;\n restart:\n     updatedCount = 0;\n     node = chain->CalcList()->next;\n@@ -243,10 +243,10 @@\n             if (elem->flags & 2)\n             {\n                 LeaveCriticalSection(&th10::g_CriticalSections[0]);\n-                --th10::g_ChainNestCounter;\n+                th10::g_ChainNestCounter--;\n                 result = elem->callback(elem->arg);\n                 EnterCriticalSection(&th10::g_CriticalSections[0]);\n-                ++th10::g_ChainNestCounter;\n+                th10::g_ChainNestCounter++;\n                 switch (result)\n                 {\n                 case 0:\n@@ -256,11 +256,11 @@\n                     continue;\n                 case 2:\n                     goto execute_again;\n+                case 4:\n+                    updatedCount = 0;\n+                    goto loop_exit;\n                 case 3:\n                     updatedCount = 1;\n-                    goto loop_exit;\n-                case 4:\n-                    updatedCount = 0;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -279,7 +279,7 @@\n     }\n loop_exit:\n     LeaveCriticalSection(&th10::g_CriticalSections[0]);\n-    --th10::g_ChainNestCounter;\n+    th10::g_ChainNestCounter--;\n     return updatedCount;\n }\n \n@@ -293,7 +293,7 @@\n     int result;\n \n     EnterCriticalSection(&th10::g_CriticalSections[0]);\n-    ++th10::g_ChainNestCounter;\n+    th10::g_ChainNestCounter++;\n     updatedCount = 0;\n     node = chain->DrawList()->next;\n     while (node != NULL)\n@@ -306,10 +306,10 @@\n             if (elem->flags & 2)\n             {\n                 LeaveCriticalSection(&th10::g_CriticalSections[0]);\n-                --th10::g_ChainNestCounter;\n+                th10::g_ChainNestCounter--;\n                 result = elem->callback(elem->arg);\n                 EnterCriticalSection(&th10::g_CriticalSections[0]);\n-                ++th10::g_ChainNestCounter;\n+                th10::g_ChainNestCounter++;\n                 switch (result)\n                 {\n                 case 0:\n@@ -317,11 +317,11 @@\n                     break;\n                 case 2:\n                     goto execute_again;\n+                case 4:\n+                    updatedCount = 0;\n+                    goto loop_exit;\n                 case 3:\n                     updatedCount = 1;\n-                    goto loop_exit;\n-                case 4:\n-                    updatedCount = 0;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -334,6 +334,6 @@\n     }\n loop_exit:\n     LeaveCriticalSection(&th10::g_CriticalSections[0]);\n-    --th10::g_ChainNestCounter;\n+    th10::g_ChainNestCounter--;\n     return updatedCount;\n }\n",
+      "raw_outcome": [
+        {
+          "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+          "complete_size": 316,
+          "raw_equal_to_baseline": false,
+          "raw_different_positions": [
+            225,
+            235,
+            296,
+            300
+          ]
+        },
+        {
+          "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+          "complete_size": 272,
+          "raw_equal_to_baseline": false,
+          "raw_different_positions": [
+            190,
+            200,
+            260,
+            264
+          ]
+        }
+      ],
+      "cached_input_sha256": {
+        "source.ltcg.obj": "37112ad5a03183a50ebbc738c0783640b436e1fa0c3fdd587054ff44fc71968c",
+        "support-00-AnmManager.ltcg.obj": "7e414948f5eac8b24459b68ea4eaf45d11014d7873b5d5bc7732d8229a443bd2",
+        "support-02-FrontEnd.ltcg.obj": "ee855003474ee77d3da9f786b6411d9ee161b98032ea739da18371a29b066280",
+        "support-03-Player.ltcg.obj": "0abb920a7e0133c8cfd3ca0bc191abfc60777383b7e4ac8a7ca00fd7d6fd9421",
+        "support-04-Gui.ltcg.obj": "4b96f79fb551da3d31d65a73fe9d2281dbb245228a7cda55eace66b980360036",
+        "support-05-Enemy.ltcg.obj": "b7ce7bb9b7f5c3725f18095f4600702356b39908b770770eac11d5511bc4384b",
+        "support-06-BulletLifecycle.ltcg.obj": "c8b72530c21b1cfd09c8526ba1b811e78014fbb1b0ee59dbc3113a16be9f6818",
+        "support-07-InputState.ltcg.obj": "eff4a4c8d968d29bd3b1cfd15d280c207ae8539a4395faa26aa3713aa603acae",
+        "support-08-Main.ltcg.obj": "edcbe86879a04b138478d1421ff3f93a5697a1fd6121298dd768409220d0c5c4",
+        "support-09-ScriptViewerWorker.ltcg.obj": "58b77e414c00f1f9cc45847320d04cd706c10429c3850f01a211a1eee28151f0",
+        "support-10-ScriptViewerLifecycle.ltcg.obj": "8ae199fbdff953a62d6e2d4acf47fb4ea1ae9855fb220ad96dd7221314c21c24",
+        "support-11-ItemManager.ltcg.obj": "edf308d9379bfb267889f88d1a607d7804eca3b6888dea76d5e071e9abb4537a",
+        "support-12-AnmVmId.ltcg.obj": "e622a107bbb6d875507a92003e64f0ab11de4c33bfbef5734d79f409b459cd51",
+        "link-anchors.obj": "778ae714c61b58c300bf4dfa18904f46716ac1cff0e7f610ccc4153066bf6f56",
+        "link-aliases.rsp": "1f1e41589c61635ef65678bb8629e22008415a9cdf95b64165fe832f0430ad1f"
+      }
+    }
+  ],
+  "boundary_audit": {
+    "before": {
+      "rows_with_metadata_differences": 1114,
+      "state_differences": 49,
+      "confidence_differences": 107,
+      "geometry_differences": 0
+    },
+    "after": {
+      "rows_with_metadata_differences": 1116,
+      "state_differences": 49,
+      "confidence_differences": 107,
+      "geometry_differences": 0
+    },
+    "before_indirect_control_tables": 18,
+    "after_indirect_control_tables": 16,
+    "current_reviewed_owners": [
+      {
+        "address": "0x00449C00",
+        "span_end": "0x00449D33",
+        "state": "reviewed",
+        "confidence": "high",
+        "evidence_id": "prior-target-boundary-review+target-boundary-audit-2026-09-15",
+        "notes": "Prior boundary evidence retained; dense decode 303/308; owned indirect control table at 0x00449D14"
+      },
+      {
+        "address": "0x00449D40",
+        "span_end": "0x00449E4B",
+        "state": "reviewed",
+        "confidence": "high",
+        "evidence_id": "prior-target-boundary-review+target-boundary-audit-2026-09-15",
+        "notes": "Prior boundary evidence retained; dense decode 267/268; owned indirect control table at 0x00449E34"
+      }
+    ],
+    "current_summary": {
+      "tracked_candidates": 1776,
+      "reviewed": 1727,
+      "provisional": 23,
+      "needs_review": 26,
+      "overlap_pairs": 10,
+      "overlap_candidates": 20,
+      "tracked_union_bytes": 350000,
+      "untracked_gap_bytes": 62289,
+      "pure_alignment_gaps": 975,
+      "pure_alignment_bytes": 8612,
+      "unresolved_gaps": 431,
+      "unresolved_gap_bytes": 53677,
+      "untracked_direct_targets": 4,
+      "untracked_data_targets": 82,
+      "ghidra_body_functions": 1195,
+      "ghidra_sparse_body_functions": 122,
+      "ghidra_remote_body_functions": 2,
+      "remote_body_direct_targets": 2,
+      "indirect_control_tables": 101,
+      "unowned_indirect_control_tables": 16
+    },
+    "fresh_Ghidra_ranges": {
+      "path": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/.analysis/boundaries/function-body-ranges.csv",
+      "available": true,
+      "function_count": 1195,
+      "range_count": 1419,
+      "sparse_function_count": 122,
+      "remote_function_count": 2
+    },
+    "scope": "Known global metadata drift remains open; only the two independently reviewed owned-table geometries changed. The ordinary full --check-ledger is still expected to fail on401100 provenance."
+  },
+  "large_context": {
+    "evidence_file": "docs/evidence/chain-source-closure/native-summary.json",
+    "file_sha256": "0e6a2a751afd9bf98fe39e15a49d110418f68c48acc48748a3aa2187597c5f68",
+    "source_inputs": 32,
+    "native_artifacts": 15,
+    "pins_revalidated_unchanged": true,
+    "new_cold_or_guard_or_Run_replay": false
+  },
+  "progress": {
+    "authored_functions": 734,
+    "authored_bytes": 273579,
+    "authored_source_functions": 610,
+    "authored_source_bytes": 247329,
+    "source_nonexact": 213,
+    "authored_source_absent": 124,
+    "unknown_origins": 524,
+    "total_source_mappings": 1094,
+    "authored_exact_functions": 397,
+    "authored_exact_bytes": 72387,
+    "overall_exact_functions": 1238,
+    "overall_exact_bytes": 138897,
+    "new_exact_functions": 0,
+    "new_exact_bytes": 0
+  },
+  "open": [
+    "native dispatcher counter/branch scheduling",
+    "original source names/classes/TUs and flags",
+    "remaining Chain ownership/release inventory",
+    "491BE4 global physical alias/data owner",
+    "whole Windows i386 product/runtime",
+    "semantic and portability gates"
+  ]
+}

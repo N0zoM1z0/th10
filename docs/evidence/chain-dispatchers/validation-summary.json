@@ -1,0 +1,198 @@
+{
+  "focused_native": {
+    "selected_units": 4,
+    "exact_bytes": 282,
+    "complete_cold_groups": [
+      {
+        "result": "exact",
+        "full_cold_translation_units": 14,
+        "artifact": "build/match-linked/ScriptViewerLifecycle-cold-2",
+        "units": [
+          {
+            "unit": "decomphelp-chain-unregister",
+            "size": 114,
+            "matched_bytes": 114,
+            "linked_fields": 1,
+            "image_sha256": "08bab2e4d5b8f70828a94f37afec32421c7a282dbad741bb653c31eda2ec2daf"
+          },
+          {
+            "unit": "decomphelp-chain-remove-all",
+            "size": 82,
+            "matched_bytes": 82,
+            "linked_fields": 7,
+            "image_sha256": "08bab2e4d5b8f70828a94f37afec32421c7a282dbad741bb653c31eda2ec2daf"
+          }
+        ],
+        "matched_bytes": 196
+      },
+      {
+        "result": "exact",
+        "full_cold_translation_units": 14,
+        "artifact": "build/match-linked/GuiTransitionEffectFactory",
+        "units": [
+          {
+            "unit": "chain-register-calc",
+            "size": 43,
+            "matched_bytes": 43,
+            "linked_fields": 3,
+            "image_sha256": "e033ef13a5f9a8ab1d2a2ca6dd23e47db589db2885b18186d21ae21485d027a0"
+          },
+          {
+            "unit": "chain-register-draw",
+            "size": 43,
+            "matched_bytes": 43,
+            "linked_fields": 3,
+            "image_sha256": "e033ef13a5f9a8ab1d2a2ca6dd23e47db589db2885b18186d21ae21485d027a0"
+          }
+        ],
+        "matched_bytes": 86
+      }
+    ],
+    "new_exact_credit": 0
+  },
+  "host": {
+    "sanitized_baseline_assertions": 1375,
+    "dispatcher_scenario_invocations": 42,
+    "strict_faulty_code_controls": [
+      {
+        "name": "calc_restart",
+        "expected_assertion": "CHAIN_RETRY_RESTART_VISITS",
+        "status": "EXPECTED_ASSERTION",
+        "before_sha256": "18dba42bb52637237a95eb6adbced7c10b3a99842c6442c2b0d0fc11ebc95b54",
+        "after_sha256": "c3367af649b11e965452bfb8391dd540aa8db18a0b001c2838b6c98c26a2b640"
+      },
+      {
+        "name": "draw_restart",
+        "expected_assertion": "CHAIN_RETRY_RESTART_VISITS",
+        "status": "EXPECTED_ASSERTION",
+        "before_sha256": "dfdd1eb87240998b657f3761f7e105080247812cfffad02f8902d91163e951a5",
+        "after_sha256": "9366a4191650c0dd68716ff2ca44cc392219fe9e184b94ca5c0e447a234234d5"
+      },
+      {
+        "name": "calc_delete_missing",
+        "expected_assertion": "CHAIN_CALC7_DRAW_DEFAULT_DELETE",
+        "status": "EXPECTED_ASSERTION",
+        "before_sha256": "18dba42bb52637237a95eb6adbced7c10b3a99842c6442c2b0d0fc11ebc95b54",
+        "after_sha256": "d5fa365adb934062f35fb38747c09eabc702b434dde24e46ceed4ff304c10a7b"
+      },
+      {
+        "name": "draw_delete_added",
+        "expected_assertion": "CHAIN_CALC7_DRAW_DEFAULT_DELETE",
+        "status": "EXPECTED_ASSERTION",
+        "before_sha256": "dfdd1eb87240998b657f3761f7e105080247812cfffad02f8902d91163e951a5",
+        "after_sha256": "7a57eef781771c74e1dcd3f188b68ec4ea03687e634fb4cd9b2b8421b4364d8a"
+      },
+      {
+        "name": "retry_guard_bypassed",
+        "expected_assertion": "CHAIN_ENABLED_AND_RETRY_RECHECK",
+        "status": "EXPECTED_ASSERTION",
+        "before_sha256": "18dba42bb52637237a95eb6adbced7c10b3a99842c6442c2b0d0fc11ebc95b54",
+        "after_sha256": "28cd8f5796c8f044e754c250ccb0c8d8e3f68d35a332140fb278fead5c8b5d06"
+      },
+      {
+        "name": "next_refreshed_after_callback",
+        "expected_assertion": "CHAIN_CACHED_NEXT_SKIPS_NEW_NODE",
+        "status": "EXPECTED_ASSERTION",
+        "before_sha256": "18dba42bb52637237a95eb6adbced7c10b3a99842c6442c2b0d0fc11ebc95b54",
+        "after_sha256": "7422b3c37b30b71398256a79150229eb3780014f2be40778254383419a31601d"
+      },
+      {
+        "name": "null_callback_counted",
+        "expected_assertion": "CHAIN_NULL_DISABLED_COUNTS",
+        "status": "EXPECTED_ASSERTION",
+        "before_sha256": "18dba42bb52637237a95eb6adbced7c10b3a99842c6442c2b0d0fc11ebc95b54",
+        "after_sha256": "5167320f1fb1a21351ff4385433e072fc8faac4a4ef6cb5a8a8a6889e9858fea"
+      },
+      {
+        "name": "exit_keeps_previous_count",
+        "expected_assertion": "CHAIN_FORCED_RESULT_REPLACES_COUNT",
+        "status": "EXPECTED_ASSERTION",
+        "before_sha256": "18dba42bb52637237a95eb6adbced7c10b3a99842c6442c2b0d0fc11ebc95b54",
+        "after_sha256": "c75dcb33f7805b257de36cc6c06b8df5bcc4932a2b3048f30e94119217380acc"
+      }
+    ],
+    "strict_classifier_self_guards": [
+      "exact stdout/stderr/exit accepted",
+      "compile failures rejected",
+      "wrong assertions rejected",
+      "polluted stdout rejected",
+      "leading/trailing stderr noise rejected",
+      "extra blank/multiple lines rejected",
+      "missing newline rejected",
+      "signals/timeouts rejected",
+      "survivors rejected",
+      "zero/multiple anchors rejected"
+    ],
+    "EOL_checks": 19,
+    "active_LF_dependency_pins_refreshed": [
+      "Chain.cpp"
+    ],
+    "other_active_dependencies_unchanged": 6,
+    "scope": "Actual algorithms with explicit host lock/allocation/renderer roles; no native ABI, concurrency or whole-game runtime proof."
+  },
+  "full_ci": {
+    "state": "passed",
+    "groups": 108,
+    "returncode": 0,
+    "maintained_source_test_config_paths": 368,
+    "all_frozen_raw_inputs_unchanged": true,
+    "new_status_control_group_passed": true,
+    "complete_host_assertions": 1375,
+    "log_sha256": "59ac42150ad1b42b6eada3768d9878870ffdbeceb2dbc9201b1d651c68bc9e3b"
+  },
+  "cleanup": {
+    "state": "complete",
+    "removed_logical_file_bytes": 15845902,
+    "removed_trees": [
+      {
+        "path": "build/gpt-6.1-sol/chain-dispatchers-20261022/postfix-counter",
+        "logical_file_bytes": 1701486
+      },
+      {
+        "path": "build/host-tests/chain-dispatch-review",
+        "logical_file_bytes": 1724330
+      },
+      {
+        "path": "build/host-tests/chain-dispatch-final",
+        "logical_file_bytes": 1724376
+      },
+      {
+        "path": "build/host-tests/chain-dispatch-controls-review",
+        "logical_file_bytes": 7481453
+      },
+      {
+        "path": "build/host-tests/chain-dispatch-eol-review",
+        "logical_file_bytes": 4346
+      },
+      {
+        "path": "build/host-tests/gui-message-run-ci",
+        "logical_file_bytes": 1837168
+      },
+      {
+        "path": "build/host-tests/gui-message-lifecycle-ci",
+        "logical_file_bytes": 509243
+      },
+      {
+        "path": "build/host-tests/transition-effect-ci",
+        "logical_file_bytes": 839599
+      },
+      {
+        "path": "build/host-tests/transition-effect-eol-ci",
+        "logical_file_bytes": 4346
+      }
+    ],
+    "extra_superseded_dump": {
+      "name": "target-ghidra-initial.txt",
+      "bytes": 19555,
+      "sha256": "1cb0ec3607d36c775d063d9fb285276d74891c3f27ef0f6a59e396f740f9907f"
+    },
+    "retained": [
+      "current canonical14TU carriers",
+      "initial3TU comparison carrier at recorded prior-prefix path",
+      "minimal case-order native failure",
+      "compact source overlays/reports/producers and final Ghidra review"
+    ],
+    "unrelated_D3D_files_preserved": 9,
+    "shared_provider_and_legacy_unknown": "untouched"
+  }
+}

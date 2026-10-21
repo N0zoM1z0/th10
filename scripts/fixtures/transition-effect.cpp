@@ -327,33 +327,16 @@ void timer_body() {
     e->timer.flags=0;e->timer.scale=nullptr;e->Release();CHECK(e->timer.scale==&g_AnmGameSpeed&&(e->timer.flags&1),"TIMER_RELEASE_LAZY_INIT");close(e);
 }
 
-// Observed 449C00 protocol seam. This is NOT the absent canonical dispatcher.
-// Only statuses needed by these tests are modeled; no scheduler ownership claim.
+// The complete maintained dispatchers now drive these lifetime scenarios.
 int sentinelVisits=0,deleteCalls=0,deleteDepth=0;
 int sentinel(void *) { CHECK(th10::g_CriticalSections[0].depth==0,"DISPATCH_CALLBACK_UNLOCKED");++sentinelVisits;return 1; }
 int deletedSpy(void *arg) { ++deleteCalls;deleteDepth=th10::g_CriticalSections[0].depth;return TransitionDelete(arg); }
-void dispatchObserved() {
-    auto *lock=&th10::g_CriticalSections[0];
-    EnterCriticalSection(lock);++th10::g_ChainNestCounter;
-    auto *node=th10::g_Chain->CalcList()->next;
-    while(node) {
-        auto *next=node->next; // retained before the owner may delete current.
-        auto *elem=node->elem;auto callback=elem->callback;void *arg=elem->arg;
-        LeaveCriticalSection(lock);--th10::g_ChainNestCounter;
-        const int code=callback(arg);
-        EnterCriticalSection(lock);++th10::g_ChainNestCounter;
-        if(code==0)th10::Chain::UnregisterElem(elem,th10::g_Chain);
-        else if(code==7) { auto deleted=elem->deletedCallback;if(deleted)deleted(arg); }
-        else CHECK(code==1,"DISPATCH_SEAM_SUPPORTED_STATUS");
-        node=next; // no access to freed elem/current node.
-    }
-    LeaveCriticalSection(lock);--th10::g_ChainNestCounter;
-}
+
 void lifetime7() {
     reset();auto *e=make(0,0);auto owner=address(e),updateAddr=address(e->updateNode),drawAddr=address(e->drawNode);
     e->updateNode->deletedCallback=deletedSpy;deleteCalls=deleteDepth=sentinelVisits=0;
     auto *next=th10::Chain::RegisterCalc(nullptr,15,sentinel);pendingNode=nullptr;maxDepth=0;enterDepths.clear();leaveNesting.clear();
-    dispatchObserved();
+    CHECK(MainRunCalcChain(th10::g_Chain)==2,"RET7_ACTUAL_DISPATCH_COUNT");
     CHECK(deleteCalls==1&&deleteDepth==1,"RET7_DELETE_CALLBACK_UNDER_LOCK");
     CHECK(maxDepth==2&&std::count(enterDepths.begin(),enterDepths.end(),2)==2,"RET7_TWO_RECURSIVE_CLEANUP_LOCKS");
     CHECK(sentinelVisits==1,"RET7_CACHED_NEXT_SURVIVES_FREE");
@@ -364,7 +347,7 @@ void lifetime7() {
 void lifetime0() {
     reset();auto *e=make(4,0,1,0x80112233);auto owner=address(e),updateAddr=address(e->updateNode),drawAddr=address(e->drawNode);
     e->updateNode->deletedCallback=deletedSpy;deleteCalls=0;
-    dispatchObserved();
+    CHECK(MainRunCalcChain(th10::g_Chain)==1,"RET0_ACTUAL_DISPATCH_COUNT");
     CHECK(deleteCalls==0&&freedEffects==0&&freedNodes==1,"RET0_DOES_NOT_DELETE_OWNER");
     CHECK(alive(owner)&&!alive(updateAddr)&&alive(drawAddr),"RET0_OWNER_AND_DRAW_SURVIVE");
     // Observe only the pointer value in the LIVE owner. Never dereference the
@@ -420,6 +403,83 @@ void chain_heads() {
         chain->~Chain();
     }
 }
+
+struct DispatchState {
+    th10::ChainElem *elem=nullptr,*insert=nullptr;
+    int first=1,later=1,calls=0,deleted=0;
+    bool disable=false,draw=false;
+};
+void registerDispatch(th10::ChainElem *elem,int priority,bool draw) {
+    if(draw)th10::Chain::AddToDrawChain(elem,priority,&chainA);
+    else th10::Chain::AddToCalcChain(elem,priority,&chainA);
+}
+int dispatchCallback(void *arg) {
+    auto *state=static_cast<DispatchState *>(arg);
+    CHECK(th10::g_CriticalSections[0].depth==0&&th10::g_ChainNestCounter==0,"CHAIN_CALLBACK_UNLOCKED");
+    ++state->calls;
+    if(state->disable)state->elem->flags&=~2u;
+    if(state->calls==1&&state->insert)registerDispatch(state->insert,2,state->draw);
+    return state->calls==1?state->first:state->later;
+}
+int dispatchDeleted(void *arg) {
+    auto *state=static_cast<DispatchState *>(arg);
+    CHECK(th10::g_CriticalSections[0].depth==1&&th10::g_ChainNestCounter==1,"CHAIN_DELETE_CALLBACK_LOCKED");
+    ++state->deleted;
+    return 1;
+}
+void configureDispatch(th10::ChainElem &elem,DispatchState &state) {
+    state.elem=&elem;elem.flags=2;elem.arg=&state;
+    elem.callback=dispatchCallback;elem.deletedCallback=dispatchDeleted;
+}
+void dispatch_statuses() {
+    reset();
+    CHECK(MainRunCalcChain(&chainA)==0&&MainRunDrawChain(&chainA)==0,"CHAIN_EMPTY_COUNTS");
+    for(bool draw:{false,true}) {
+        auto run=[&](){return draw?MainRunDrawChain(&chainA):MainRunCalcChain(&chainA);};
+        for(int status:{0,1,2,3,4,5,6,7,8,-1,INT_MIN,INT_MAX}) {
+            reset();th10::ChainElem a,b;DispatchState first,last;
+            configureDispatch(a,first);configureDispatch(b,last);
+            first.first=status;first.draw=last.draw=draw;
+            registerDispatch(&a,1,draw);registerDispatch(&b,3,draw);
+            const int expected=status==3?1:status==4?0:status==5?-1:2;
+            CHECK(run()==expected,"CHAIN_STATUS_RESULT");
+            CHECK(first.calls==(status==2||(!draw&&status==6)?2:1),"CHAIN_RETRY_RESTART_VISITS");
+            CHECK(last.calls==((status>=3&&status<=5)?0:1),"CHAIN_EARLY_EXIT_SKIPS_TAIL");
+            CHECK(first.deleted==(!draw&&status==7?1:0),"CHAIN_CALC7_DRAW_DEFAULT_DELETE");
+            CHECK((a.callback==nullptr)==(status==0),"CHAIN_STATUS0_UNREGISTERS_ONLY");
+            CHECK(th10::g_CriticalSections[0].depth==0&&th10::g_ChainNestCounter==0,"CHAIN_STATUS_BALANCED");
+            th10::Chain::UnregisterElem(&a,&chainA);th10::Chain::UnregisterElem(&b,&chainA);
+        }
+        for(int mode:{0,1,2}) {
+            reset();th10::ChainElem a,b;DispatchState first,last;
+            configureDispatch(a,first);configureDispatch(b,last);
+            if(mode==0)a.callback=nullptr;
+            if(mode==1)a.flags=0;
+            if(mode==2){first.first=2;first.disable=true;}
+            registerDispatch(&a,1,draw);registerDispatch(&b,3,draw);
+            CHECK(run()==(mode==0?1:2),"CHAIN_NULL_DISABLED_COUNTS");
+            CHECK(first.calls==(mode==2?1:0),"CHAIN_ENABLED_AND_RETRY_RECHECK");
+            CHECK(last.calls==1,"CHAIN_DISABLED_RETAINS_NEXT");
+            th10::Chain::UnregisterElem(&a,&chainA);th10::Chain::UnregisterElem(&b,&chainA);
+        }
+        for(int status:{3,4,5}) {
+            reset();th10::ChainElem a,b,c,d;DispatchState sa,sb,sc,sd;
+            configureDispatch(a,sa);configureDispatch(b,sb);configureDispatch(c,sc);configureDispatch(d,sd);sc.first=status;
+            registerDispatch(&a,1,draw);registerDispatch(&b,2,draw);registerDispatch(&c,3,draw);registerDispatch(&d,4,draw);
+            CHECK(run()==(status==3?1:status==4?0:-1),"CHAIN_FORCED_RESULT_REPLACES_COUNT");
+            CHECK(sa.calls==1&&sb.calls==1&&sc.calls==1&&sd.calls==0,"CHAIN_FORCED_RESULT_VISITS");
+            for(auto *node:{&a,&b,&c,&d})th10::Chain::UnregisterElem(node,&chainA);
+        }
+        reset();th10::ChainElem a,b,c;DispatchState sa,sb,sc;
+        configureDispatch(a,sa);configureDispatch(b,sb);configureDispatch(c,sc);
+        sa.insert=&c;sa.draw=draw;
+        registerDispatch(&a,1,draw);registerDispatch(&b,3,draw);
+        CHECK(run()==2&&sa.calls==1&&sb.calls==1&&sc.calls==0,"CHAIN_CACHED_NEXT_SKIPS_NEW_NODE");
+        CHECK(run()==3&&sa.calls==2&&sb.calls==2&&sc.calls==1,"CHAIN_INSERTED_NODE_NEXT_PASS");
+        for(auto *node:{&a,&b,&c})th10::Chain::UnregisterElem(node,&chainA);
+    }
+}
+
 void unregister_no_delete() {
     reset();auto *e=make(5);deleteCalls=0;e->updateNode->deletedCallback=deletedSpy;
     auto *u=e->updateNode,*d=e->drawNode;th10::Chain::UnregisterElem(u,&chainA);
@@ -435,7 +495,7 @@ void unregister_no_delete() {
 int main(int argc,char **argv) {
     const std::string which=argc>1?argv[1]:"all";
     const std::vector<std::pair<std::string,std::function<void()>>> cases={
-        {"chain_heads",host::chain_heads},{"source_order",host::source_order},{"precision_gap",host::known_precision_gap},{"selector",host::selector},{"fades",host::fades},{"dim",host::dim},{"pulse",host::pulse},
+        {"dispatch_statuses",host::dispatch_statuses},{"chain_heads",host::chain_heads},{"source_order",host::source_order},{"precision_gap",host::known_precision_gap},{"selector",host::selector},{"fades",host::fades},{"dim",host::dim},{"pulse",host::pulse},
         {"draw",host::draw_callbacks},{"linear",host::linear},{"envelope",host::envelope},{"timer",host::timer_body},
         {"lifetime7",host::lifetime7},{"lifetime0",host::lifetime0},{"cleanup",host::cleanup_reload},{"unregister",host::unregister_no_delete}};
     try {

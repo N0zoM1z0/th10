@@ -3,6 +3,7 @@
 
 Proposed callback bodies come directly from --source. Dependencies are extracted
 from pinned canonical files. See docs/TRANSITION_EFFECT_HOST_TESTS.md for every host adaptation.
+Recovered complete Chain dispatchers run through explicit host lock/allocation roles.
 """
 from pathlib import Path
 import argparse, hashlib, json, os, re, subprocess, sys
@@ -133,7 +134,7 @@ void HostFree(void *);
     if sanitize:cmd[1:1]=['-fsanitize=address,undefined','-fno-omit-frame-pointer','-no-pie']
     completed=subprocess.run(cmd,text=True,capture_output=True)
     (out/'compile.stdout').write_text(completed.stdout);(out/'compile.stderr').write_text(completed.stderr)
-    manifest={'claim':'HOST SEMANTICS ONLY; no target ABI, layout, native compiler, renderer, or real scheduler proof','inputs':{str(p):sha(p) for p in inputs},'input_fingerprints':{str(p):fingerprint(p) for p in inputs},'canonical_observations':canonical_observations,'pin_normalization':'crlf-to-lf-only','generated_sha256':sha(cpp),'extracted_hashes':{'timer_struct':hashlib.sha256(timer.encode()).hexdigest(),'range_helper':hashlib.sha256(rng_helper.encode()).hexdigest(),'adapted_chain':hashlib.sha256(chain.encode()).hexdigest()},'command':cmd,'compile_returncode':completed.returncode,'alloc_field_adaptations':adaptation_counts,'sanitizers':sanitize}
+    manifest={'claim':'HOST SEMANTICS ONLY; actual dispatcher algorithm, no target ABI/layout, native compiler, Windows concurrency, renderer or whole-game runtime proof','inputs':{str(p):sha(p) for p in inputs},'input_fingerprints':{str(p):fingerprint(p) for p in inputs},'canonical_observations':canonical_observations,'pin_normalization':'crlf-to-lf-only','generated_sha256':sha(cpp),'extracted_hashes':{'timer_struct':hashlib.sha256(timer.encode()).hexdigest(),'range_helper':hashlib.sha256(rng_helper.encode()).hexdigest(),'adapted_chain':hashlib.sha256(chain.encode()).hexdigest()},'command':cmd,'compile_returncode':completed.returncode,'alloc_field_adaptations':adaptation_counts,'sanitizers':sanitize}
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     if completed.returncode:raise RuntimeError('HOST COMPILE FAILED: '+completed.stderr)
     return out/'harness'

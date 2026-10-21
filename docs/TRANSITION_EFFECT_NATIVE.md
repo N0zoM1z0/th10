@@ -1,5 +1,10 @@
 # Transition-effect fixed native observation
 
+Later [Chain dispatcher recovery](evidence/chain-dispatchers/README.md) adds
+complete Calc/Draw source and actual-source host protocol tests. The fixed
+observations below retain their original compiler/source contexts; native
+dispatcher exactness, Windows runtime and physical storage remain open.
+
 The [2026-10-20 constructor review](evidence/effect-constructor/README.md)
 now closes the complete82-byte factory and both fields through natural
 constructor-owned reset. Two cold links also retain591 existing guard bytes.

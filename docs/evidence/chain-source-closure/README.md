@@ -1,5 +1,11 @@
 # Chain construction and missing source mappings
 
+Later context: [dispatcher recovery](../chain-dispatchers/README.md) changes
+Chain.cpp and Main.cpp and rebuilds the two affected14-TU carriers. This pack's
+construction/source and cold receipts retain their historical inputs. Its
+ten-TU32-input/15-artifact pins remain current: neither changed CPP is in that
+graph, Chain.hpp is unchanged, and all hashes are revalidated without replay.
+
 Reviewed 2026-10-22 from `d30cbc5`. Four complete TH10 target owners now map to
 maintained Chain source. Three insertion/allocation bodies already existed but
 were unmapped; the two-sentinel constructor and WinMain's existing creation

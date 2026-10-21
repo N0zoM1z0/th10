@@ -1091,3 +1091,5 @@ th10::Chain::Chain,0x00449AA0,function
 th10::Chain::AddToCalcChain,0x00449AE0,function
 th10::Chain::AddToDrawChain,0x00449B70,function
 th10::Chain::AllocElem,0x00449ED0,function
+MainRunCalcChain,0x00449C00,function
+MainRunDrawChain,0x00449D40,function

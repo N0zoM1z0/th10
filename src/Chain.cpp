@@ -1,4 +1,4 @@
-// Natural C++ candidate adapted from external commit
+// Initial list helpers adapted from external commit
 // 649147241f6a931c849d905ca9badc264049db5b.
 // Chain::UnregisterElem and Chain::RemoveAllFromList are canonical exact; see
 // docs/KNOWLEDGE_BASE.md and config/match-units.toml.
@@ -215,4 +215,125 @@ ChainElem *__stdcall Chain::RegisterDraw(void *arg, i32 prio, ChainCallback call
 void *MainCreateCallbackOwner()
 {
     return new th10::Chain;
+}
+
+// TH10 frame dispatchers. The names are descriptive; original source ownership
+// is unknown. Both target entries take one stack argument and end in RET 4.
+int __stdcall MainRunCalcChain(void *owner)
+{
+    th10::Chain *chain = static_cast<th10::Chain *>(owner);
+    th10::ListNode *node;
+    th10::ListNode *next;
+    th10::ChainElem *elem;
+    int updatedCount;
+    int result;
+
+    EnterCriticalSection(&th10::g_CriticalSections[0]);
+    ++th10::g_ChainNestCounter;
+restart:
+    updatedCount = 0;
+    node = chain->CalcList()->next;
+    while (node != NULL)
+    {
+        next = node->next;
+        elem = node->elem;
+        if (elem->callback != NULL)
+        {
+execute_again:
+            if (elem->flags & 2)
+            {
+                LeaveCriticalSection(&th10::g_CriticalSections[0]);
+                --th10::g_ChainNestCounter;
+                result = elem->callback(elem->arg);
+                EnterCriticalSection(&th10::g_CriticalSections[0]);
+                ++th10::g_ChainNestCounter;
+                switch (result)
+                {
+                case 0:
+                    th10::Chain::UnregisterElem(elem, chain);
+                    ++updatedCount;
+                    node = next;
+                    continue;
+                case 2:
+                    goto execute_again;
+                case 3:
+                    updatedCount = 1;
+                    goto loop_exit;
+                case 4:
+                    updatedCount = 0;
+                    goto loop_exit;
+                case 5:
+                    updatedCount = -1;
+                    goto loop_exit;
+                case 6:
+                    goto restart;
+                case 7:
+                    if (elem->deletedCallback != NULL)
+                        elem->deletedCallback(elem->arg);
+                    break;
+                }
+            }
+            ++updatedCount;
+        }
+        node = next;
+    }
+loop_exit:
+    LeaveCriticalSection(&th10::g_CriticalSections[0]);
+    --th10::g_ChainNestCounter;
+    return updatedCount;
+}
+
+int __stdcall MainRunDrawChain(void *owner)
+{
+    th10::Chain *chain = static_cast<th10::Chain *>(owner);
+    th10::ListNode *node;
+    th10::ListNode *next;
+    th10::ChainElem *elem;
+    int updatedCount;
+    int result;
+
+    EnterCriticalSection(&th10::g_CriticalSections[0]);
+    ++th10::g_ChainNestCounter;
+    updatedCount = 0;
+    node = chain->DrawList()->next;
+    while (node != NULL)
+    {
+        next = node->next;
+        elem = node->elem;
+        if (elem->callback != NULL)
+        {
+execute_again:
+            if (elem->flags & 2)
+            {
+                LeaveCriticalSection(&th10::g_CriticalSections[0]);
+                --th10::g_ChainNestCounter;
+                result = elem->callback(elem->arg);
+                EnterCriticalSection(&th10::g_CriticalSections[0]);
+                ++th10::g_ChainNestCounter;
+                switch (result)
+                {
+                case 0:
+                    th10::Chain::UnregisterElem(elem, chain);
+                    break;
+                case 2:
+                    goto execute_again;
+                case 3:
+                    updatedCount = 1;
+                    goto loop_exit;
+                case 4:
+                    updatedCount = 0;
+                    goto loop_exit;
+                case 5:
+                    updatedCount = -1;
+                    goto loop_exit;
+                }
+            }
+            ++updatedCount;
+        }
+        node = next;
+    }
+loop_exit:
+    LeaveCriticalSection(&th10::g_CriticalSections[0]);
+    --th10::g_ChainNestCounter;
+    return updatedCount;
 }

@@ -4749,3 +4749,39 @@ them after full CI exposed the missing link dependency. Host seams do not
 establish native ABI, dispatcher
 behavior or product runtime. The target491BE4 alias between g_MainCallbackOwner/
 g_Chain, dispatcher source, data ownership and whole Windows product remain open.
+
+## 2026-10-22 Chain dispatchers and owned switch tables
+
+[Complete target/source evidence](evidence/chain-dispatchers/README.md) recovers
+Calc449C00 and Draw449D40. Both take a stack owner, RET4 and return a processed
+count in EAX; Main's existing declarations now express that physical interface.
+Original identifiers, method/free-function shape, annotation and TU are unknown.
+The old273/241-byte spans stopped at RET. Guarded local tables at449D14(8 words)
+and449E34(6 words), plus3 bytes of alignment each, belong to their dispatchers:
+complete extents308 through449D33 and268 through449E4B. All destinations are
+inside the respective code and each table has only its owner's indexed-jump
+xref, with following CC padding. Target PE relocations are absent. The62-byte
+denominator correction adds no exact credit. Authored source is610/734 and
+247329/273579 bytes; exact397/72387 is unchanged.
+
+Both runners cache next before a callback. Null callbacks are uncounted;
+nonnull callbacks with enable mask0x2 clear are counted without execution.
+Callbacks run unlocked with ECX=argument. Result0 unregisters only;2 retries
+with an enable-mask recheck;3/4/5 force1/0/-1 and break. Calc6 resets/restarts;
+Calc7 invokes an optional locked delete callback without implicit unregister.
+Draw6/7 are ordinary default results. Negative/out-of-range values are also
+defaults. Physical lock/byte-counter ordering is preserved without asserting
+concurrency safety or arbitrary callback-mutation lifetime closure.
+
+The former transition subset dispatcher is replaced with actual maintained
+source. Sanitized1375 assertions cover42 new status-scenario calls and existing
+freeing/recursive-cleanup cases. Eight strict faulty-code controls and19 EOL
+checks pass with one active dependency pin refresh. Host allocation/lock/renderer
+roles do not establish native runtime. Two full14-TU cold groups preserve four
+existing exact helpers282 bytes. New native runners remain316/272 versus308/268;
+the separate3-TU context emits428/272 and differs in profile and visibility.
+Postfix counters are raw-neutral; case4/3 reordering changes two constants/two
+table fields in each whole body, with unchanged size/raw totals. Neither is
+adopted. Existing large32/15 source/artifact pins remain current without replay.
+Fresh global boundary audit has zero geometry drift; metadata1116 rows,49 state/
+107 confidence differences remain open, while unowned indirect tables18->16.
