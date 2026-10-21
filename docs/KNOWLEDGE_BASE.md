@@ -4241,3 +4241,17 @@ Fresh prologue review has packetESI in both target/native, target switchECX vers
 nativeEDI; a private old target-packetECX claim was wrong. Target branches reload
 opcode after operand calls, so caching it is unsupported. All three large owners
 remain active/nonexact. No native-product/runtime/semantic/port gate closes.
+
+
+Two additional private thread-expression controls retain all28 complete helper
+owners3401/all93 after recompiling only ECL and reusing nine verified native
+objects. A named resolved thread ID before SpawnThread moves the outer constant
+push after ReadIntValue; its CALL field shifts247->245. The7020 comparison is
+unsupported/unbound, not an ordinary-difference score. Only18 raw bytes EF..100
+change; the rest of Run and both other full large native bodies stay equal.
+Naming only the unsigned raw thread ID preserves the nested call, every native
+byte of all three large owners and all7020 target-replayed Run bytes; the current
+27 ordinary differences remain. Neither source is adopted. No original
+expression order or compiler declaration is established. Separate spawn-only
+and stop-context-only forms remain unexecuted. The item-scatter receipt records
+these bounded compiler observations and the unchanged31 current source pins.

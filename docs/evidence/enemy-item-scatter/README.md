@@ -95,6 +95,20 @@ calls. Caching that opcode is therefore not supported by the target review.
 The preceding checkpoint's bounded1B4 shared-tail call-count conclusion still
 applies; physical-region call count is not a missing source read.
 
+Two further private ECL thread-expression controls recompile only EclVm.cpp,
+reusing nine hash-verified native objects in this same ten-TU order. Both pass
+all28 helper owners3401/all93. Naming the resolved thread ID before SpawnThread
+moves the outer constant push after ReadIntValue and its CALL field247->245;
+the complete7020 contract rejects it as unbound, with no ordinary-byte score.
+Only18 raw bytes EF..100 change; all later Run bytes and both other complete
+large native owners stay equal. Naming only the unsigned raw ID preserves the
+nested call and all three complete native bodies, including all7020 target-replayed
+Run bytes;27 differences remain. No maintained source is adopted. Separate
+spawn-only and stop-context-only forms remain prepared/unexecuted. The native
+summary records exact source/artifact identities and the unchanged31 current
+inputs/27 final artifacts. The same101-check CI result remains applicable to
+unchanged execution inputs; updated documentation is checked separately.
+
 ```sh
 scripts/repo-python scripts/replay-exact-units.py \
   --unit enemy-drop-item-counts --unit enemy-drop-item-counts-core \

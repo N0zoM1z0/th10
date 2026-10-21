@@ -75,5 +75,25 @@
     "generated progress",
     "documentation references",
     "git diff --check"
-  ]
+  ],
+  "ecl_thread_controls": {
+    "executed": 2,
+    "adopted": 0,
+    "helper_owners_per_control": 28,
+    "helper_bytes_per_control": 3401,
+    "helper_fields_per_control": 93,
+    "named_raw_id_full_run_differences": 27,
+    "named_raw_id_complete_native_large_bodies_equal": 3,
+    "named_resolved_id_comparison": "unsupported/unbound;CALL field moves247->245;no ordinary-difference count",
+    "unchanged_after_controls": {
+      "maintained_raw_inputs": 31,
+      "final_native_artifacts": 27
+    },
+    "cleanup": {
+      "directories": 1,
+      "bytes": 1040840,
+      "retained": "nonexact nested-call-order native failure and both final exact cold carriers"
+    },
+    "ci_scope": "Earlier same-turn101-check invocation remains applicable to unchanged maintained execution inputs; documentation revalidated separately"
+  }
 }

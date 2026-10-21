@@ -2063,5 +2063,319 @@
     "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
     "before_after_equal": true,
     "review_sha256": "e3c229b00fe979f2393a2eaf56af945a50fb3ce105a9a6fcd78f39408dc74cc5"
+  },
+  "ecl_thread_expression_controls": {
+    "scope": "Two private source-only controls; no maintained source/recipe/ledger change, no exact credit",
+    "parent_checkpoint": "0bad835",
+    "raw_inputs": 31,
+    "changed_support": "EclVm.cpp only;9 unaffected native objects hash-verified",
+    "controls": [
+      {
+        "label": "named-thread-results",
+        "scope": "One changed support recompile, nine hash-verified unchanged objects; private natural-source diagnostic only, no exact credit",
+        "candidate_source_sha256": "7e3445585f531e5a835d70baec5ba877d2b4d7626f6aff1d60188aa981a41488",
+        "graph": {
+          "source": "src/EnemyEclDispatcher.cpp",
+          "support_sources": [
+            ".analysis/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-thread-results/EclVm.cpp",
+            "src/AnmManager.cpp",
+            "src/AnmVmCreate.cpp",
+            "src/EnemyLaser.cpp",
+            "src/Enemy.cpp",
+            "src/AnmVmId.cpp",
+            "src/RandomMath.cpp",
+            "src/AnmInt3Scale.cpp",
+            "src/ItemManager.cpp"
+          ],
+          "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "support_profiles": {
+            "src/AnmInt3Scale.cpp": [
+              "/TP",
+              "/MT",
+              "/O2",
+              "/Gy",
+              "/GF",
+              "/Oi",
+              "/DNDEBUG",
+              "/Isrc",
+              "/GL",
+              "/GS",
+              "/Ob1"
+            ]
+          }
+        },
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-thread-results/source.exe",
+            "sha256": "1517aefbbf35063784b3be8beadeae6a611931dc7ff8792b43a7aa1e625799b5"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-thread-results/source.map",
+            "sha256": "d727ba80168c9dff99b4cab63925f7dac4a02e6dfdfc4d0dcddcc7d9358e2e2b"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-thread-results/source.pdb",
+            "sha256": "d11c620e5ba43332ba3ca5aba4cb3a5bdc7c7afad0d73767142fa1cf3151c3d0"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-thread-results/source.ltcg.obj",
+            "sha256": "1198287728b7f63d1ec1c5818be503a4176d704254891a512ad33fe43ef37a83"
+          }
+        },
+        "cached_object_sha256": {
+          "source.ltcg.obj": "1198287728b7f63d1ec1c5818be503a4176d704254891a512ad33fe43ef37a83",
+          "support-01-AnmManager.ltcg.obj": "0d966b3f1f1d1acfea0499517e07ce620f9876195b30733f17bedbb2274bcda4",
+          "support-02-AnmVmCreate.ltcg.obj": "df5ca54484065f9815c92db702be3d87a2ba7a1e3ea15c12f17c42e472257222",
+          "support-03-EnemyLaser.ltcg.obj": "f7a2c9e9ced6ece6b2c183f1c5a084c7f37fbaa318ae920868db6cb3a2b67f83",
+          "support-04-Enemy.ltcg.obj": "a8b4e659fedde33bf8aa480cde045e535db5699c179c35d2dcea1c50fe0bb0be",
+          "support-05-AnmVmId.ltcg.obj": "cf4c2784a48482e7f92e37324638018eded83dcc6339db164d63a39c4aa14fbd",
+          "support-06-RandomMath.ltcg.obj": "b88db59ecda1e9ace4c9a34d3c6c49dd54d3307c28f9afb3b4cfcd71cfe1bd4c",
+          "support-07-AnmInt3Scale.ltcg.obj": "751304550fd1738f6ceadd2fb0be8bff63b1a543fb8188f1aa23560eb5010c7b",
+          "support-08-ItemManager.ltcg.obj": "43948815d1aa78da466418d6a66d07251d7460f78f206943da37286dd5725020",
+          "link-anchors.obj": "5f6f7d1000bc317c0e8f87ba1fbe55d8d50934d55df60ded0b74e94d4620a6c7",
+          "link-aliases.rsp": "5cc9e531201d7ada03003c8669502a6ef50fd7f275ea643948779159afc4d2ba"
+        },
+        "changed_object_sha256": "23a5cd9c0e10a5d3ba501602a3c4339b14ded64d4dde9ff2dc724c4ec21b28ac",
+        "strict": {
+          "scope": "Unsupported/unbound complete comparison; no ordinary-byte score or exact credit",
+          "error": "external field lacks one prebound target: {'offset': 245, 'width': 4, 'type': 'REL32', 'instruction': 'call', 'candidate_target': '0x00406370', 'candidate_symbols': ['?ReadIntValue@EclVmContext@@QAEHIH@Z'], 'instruction_end': 249, 'target_encoded_value': '0x1C65E8D6', 'target_candidate': '0x1CAACB6F'}"
+        },
+        "guards": {
+          "owners": 28,
+          "bytes": 3401,
+          "fields": 93,
+          "result": "exact"
+        },
+        "adapter": {
+          "scope": "actual-source/PDB path substitution only",
+          "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+          "private_script_sha256": "2b21beb87840d5351bd6f4db6d606c97157d63c8625eeeb7965bd0650bd86088"
+        },
+        "full_producer_receipt_sha256": "a5c8fdd9e52d9eb29f8b86499432f8e6aaa2840bba872b4fa4f9d4ef6d5417c9"
+      },
+      {
+        "label": "named-raw-thread-id",
+        "scope": "One changed support recompile, nine hash-verified unchanged objects; private natural-source diagnostic only, no exact credit",
+        "candidate_source_sha256": "a7852a4a6f6267cf06a21347030ee2c9a14954e797c5c249f5aca744cfe572c9",
+        "graph": {
+          "source": "src/EnemyEclDispatcher.cpp",
+          "support_sources": [
+            ".analysis/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-raw-thread-id/EclVm.cpp",
+            "src/AnmManager.cpp",
+            "src/AnmVmCreate.cpp",
+            "src/EnemyLaser.cpp",
+            "src/Enemy.cpp",
+            "src/AnmVmId.cpp",
+            "src/RandomMath.cpp",
+            "src/AnmInt3Scale.cpp",
+            "src/ItemManager.cpp"
+          ],
+          "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "support_profiles": {
+            "src/AnmInt3Scale.cpp": [
+              "/TP",
+              "/MT",
+              "/O2",
+              "/Gy",
+              "/GF",
+              "/Oi",
+              "/DNDEBUG",
+              "/Isrc",
+              "/GL",
+              "/GS",
+              "/Ob1"
+            ]
+          }
+        },
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-raw-thread-id/source.exe",
+            "sha256": "cd9c0b1f16268734585cfa5c7cd8eed9d1ad0a61bfc19a6c7a76c6e118c831e7"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-raw-thread-id/source.map",
+            "sha256": "2063141ebde24e8607f8796f389d4f679d484effff7b1a22c4d1f48e562fdd12"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-raw-thread-id/source.pdb",
+            "sha256": "5665eccd7849659e0d01b287c43d2009f44fc31e2aeef8cb53ffe46cf7998ee4"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/named-raw-thread-id/source.ltcg.obj",
+            "sha256": "1198287728b7f63d1ec1c5818be503a4176d704254891a512ad33fe43ef37a83"
+          }
+        },
+        "cached_object_sha256": {
+          "source.ltcg.obj": "1198287728b7f63d1ec1c5818be503a4176d704254891a512ad33fe43ef37a83",
+          "support-01-AnmManager.ltcg.obj": "0d966b3f1f1d1acfea0499517e07ce620f9876195b30733f17bedbb2274bcda4",
+          "support-02-AnmVmCreate.ltcg.obj": "df5ca54484065f9815c92db702be3d87a2ba7a1e3ea15c12f17c42e472257222",
+          "support-03-EnemyLaser.ltcg.obj": "f7a2c9e9ced6ece6b2c183f1c5a084c7f37fbaa318ae920868db6cb3a2b67f83",
+          "support-04-Enemy.ltcg.obj": "a8b4e659fedde33bf8aa480cde045e535db5699c179c35d2dcea1c50fe0bb0be",
+          "support-05-AnmVmId.ltcg.obj": "cf4c2784a48482e7f92e37324638018eded83dcc6339db164d63a39c4aa14fbd",
+          "support-06-RandomMath.ltcg.obj": "b88db59ecda1e9ace4c9a34d3c6c49dd54d3307c28f9afb3b4cfcd71cfe1bd4c",
+          "support-07-AnmInt3Scale.ltcg.obj": "751304550fd1738f6ceadd2fb0be8bff63b1a543fb8188f1aa23560eb5010c7b",
+          "support-08-ItemManager.ltcg.obj": "43948815d1aa78da466418d6a66d07251d7460f78f206943da37286dd5725020",
+          "link-anchors.obj": "5f6f7d1000bc317c0e8f87ba1fbe55d8d50934d55df60ded0b74e94d4620a6c7",
+          "link-aliases.rsp": "5cc9e531201d7ada03003c8669502a6ef50fd7f275ea643948779159afc4d2ba"
+        },
+        "changed_object_sha256": "4e091a5abc4c9878655f623de8ee9b2a51d172cd78e78e67397051e5e0790429",
+        "strict": {
+          "run_bytes": 7020,
+          "matched_bytes": 6993,
+          "fields": 189,
+          "locals": 62,
+          "callee_guard": "exact"
+        },
+        "guards": {
+          "owners": 28,
+          "bytes": 3401,
+          "fields": 93,
+          "result": "exact"
+        },
+        "adapter": {
+          "scope": "actual-source/PDB path substitution only",
+          "original_script_sha256": "026a7c088b75950e1463db95440791ddd4fc6e29e49f801434545435238557aa",
+          "private_script_sha256": "3156fba729b50e57bf0ab84a0ce7f85fe880f3b5a59bfb672c3f63f6e9c76363"
+        },
+        "full_producer_receipt_sha256": "67b71b0068639ff5c38c42454df43fc520987af431ae1d165a5b2e3bb326cdc9"
+      }
+    ],
+    "native_equality": {
+      "scope": "Complete native body equality; source controls remain nonexact",
+      "comparisons": [
+        {
+          "label": "named-thread-results",
+          "owners": [
+            {
+              "symbol": "?Run@EclVmContext@@QAEHM@Z",
+              "size": 7020,
+              "raw_native_equal": false,
+              "ordinary_scope": "raw native-to-native only; target exactness remains unknown",
+              "different_raw_bytes": 18,
+              "first_raw_differences": [
+                239,
+                240,
+                241,
+                242,
+                243,
+                244,
+                245,
+                246,
+                247,
+                248,
+                249,
+                250,
+                251,
+                252,
+                253,
+                254,
+                255,
+                256
+              ],
+              "baseline_body_sha256": "0555d86fa75b8d4da919b936a5f06b39ff614b46756ea81bf83623e6fe789ea0",
+              "control_body_sha256": "ca093e4ba43b189aa807ab995b02776cb921b055c719cebb8f274d5f35e2a286"
+            },
+            {
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "size": 9964,
+              "raw_native_equal": true,
+              "ordinary_scope": "raw native-to-native only; target exactness remains unknown",
+              "different_raw_bytes": 0,
+              "first_raw_differences": [],
+              "baseline_body_sha256": "a2f8ac51dc0266321ba796b337e02bb6fb3cb6638696e58c382a64d66835b450",
+              "control_body_sha256": "a2f8ac51dc0266321ba796b337e02bb6fb3cb6638696e58c382a64d66835b450"
+            },
+            {
+              "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+              "size": 14468,
+              "raw_native_equal": true,
+              "ordinary_scope": "raw native-to-native only; target exactness remains unknown",
+              "different_raw_bytes": 0,
+              "first_raw_differences": [],
+              "baseline_body_sha256": "c015ae4a46f1d331a2c1fc3e5b8befe19046f2ac7c0a790719abd55efed988f4",
+              "control_body_sha256": "c015ae4a46f1d331a2c1fc3e5b8befe19046f2ac7c0a790719abd55efed988f4"
+            }
+          ]
+        },
+        {
+          "label": "named-raw-thread-id",
+          "owners": [
+            {
+              "symbol": "?Run@EclVmContext@@QAEHM@Z",
+              "size": 7020,
+              "raw_native_equal": true,
+              "ordinary_scope": "raw native-to-native only; target exactness remains unknown",
+              "different_raw_bytes": 0,
+              "first_raw_differences": [],
+              "baseline_body_sha256": "0555d86fa75b8d4da919b936a5f06b39ff614b46756ea81bf83623e6fe789ea0",
+              "control_body_sha256": "0555d86fa75b8d4da919b936a5f06b39ff614b46756ea81bf83623e6fe789ea0"
+            },
+            {
+              "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+              "size": 9964,
+              "raw_native_equal": true,
+              "ordinary_scope": "raw native-to-native only; target exactness remains unknown",
+              "different_raw_bytes": 0,
+              "first_raw_differences": [],
+              "baseline_body_sha256": "a2f8ac51dc0266321ba796b337e02bb6fb3cb6638696e58c382a64d66835b450",
+              "control_body_sha256": "a2f8ac51dc0266321ba796b337e02bb6fb3cb6638696e58c382a64d66835b450"
+            },
+            {
+              "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+              "size": 14468,
+              "raw_native_equal": true,
+              "ordinary_scope": "raw native-to-native only; target exactness remains unknown",
+              "different_raw_bytes": 0,
+              "first_raw_differences": [],
+              "baseline_body_sha256": "c015ae4a46f1d331a2c1fc3e5b8befe19046f2ac7c0a790719abd55efed988f4",
+              "control_body_sha256": "c015ae4a46f1d331a2c1fc3e5b8befe19046f2ac7c0a790719abd55efed988f4"
+            }
+          ]
+        }
+      ],
+      "raw_thread_id_complete_target_replayed_bytes_equal": true,
+      "replayed_bytes": 7020,
+      "replayed_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+      "baseline_strict_sha256": "57d1fa02a7b66ea810c927ad80da289b78831ddd0439c9bd64fedb04e28ab024",
+      "private_strict_sha256": "ae6f8c8ab91152302871911982eee9f0b73cb56730b3d334fe0cf54f8bfb826f"
+    },
+    "source_variants": {
+      "named_thread_results": "SPAWN_THREAD_WITH_ID names rawThreadId then resolved threadId before SpawnThread(threadId,1); STOP_THREAD names thread->context before clearing instruction",
+      "named_raw_thread_id": "const unsigned int rawThreadId = OperandInt(current, operandIndex); host->SpawnThread(ReadIntValue(1, rawThreadId), 1);"
+    },
+    "interpretation": "Naming the resolved threadId moves the outer constant push after ReadIntValue; its CALL field shifts247->245, so the7020 strict field contract rejects it without an ordinary-difference count. Only18 raw bytes EF..100 change; all later Run bytes and complete other2 native owners stay equal. Naming only the raw ID preserves all3 native bodies and every target-replayed Run byte, retaining27 differences. This does not prove original source spelling.",
+    "prepared_but_unexecuted": [
+      "named-spawn-result",
+      "stopped-context-local"
+    ],
+    "post_control_current_pins": {
+      "raw_inputs": 31,
+      "final_native_artifacts": 27,
+      "result": "unchanged"
+    }
   }
 }

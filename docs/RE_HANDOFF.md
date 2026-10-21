@@ -83,6 +83,15 @@ All101 standard CI checks pass in one invocation. Final focused645-byte
 comparisons, toolchain/tracking/progress/docs/whitespace gates pass;31 raw inputs
 and27 final native artifact hashes remain unchanged after CI.
 
+Two further ECL thread-expression controls recompile only EclVm.cpp and reuse
+nine verified objects. Both retain28 complete helpers3401/all93. Naming the
+resolved thread ID moves its CALL field247->245: complete7020 is unbound, with
+no ordinary-difference score. Naming only the raw unsigned ID retains every
+byte of all three native large bodies and all7020 target-replayed Run bytes;
+27 differences remain. No source adopted. One terminal duplicate control is
+pruned/1040840 bytes; failure retained. See the item-scatter proof and private
+`.analysis/gpt-6.1-sol/ecl-thread-expression-lifetimes-20261021/RECOVERY.md`.
+
 The preceding checkpoint closes ReplayFile::Open44B6B0/137/all12. Ordinary
 stdcall declaration/definition recover target RET4 and reuse of the no-longer-live
 path home for the failure message pointer. The old135-byte cdecl form remains
