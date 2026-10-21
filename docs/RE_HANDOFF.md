@@ -42,12 +42,40 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1776 reviewed
 candidates, 735 authored functions owning 273576 bytes, 1084 source mappings,
-1228 canonical exact functions overall. Authored exact is **387 functions,
-70779/273576 bytes (25.87%)**. The 214 mapped authored nonexact functions,
+1229 canonical exact functions overall. Authored exact is **388 functions,
+70916/273576 bytes (25.92%)**. The 213 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint admits the missing screenshot callback420540..42066D
+The latest checkpoint closes ReplayFile::Open44B6B0/137/all12. Ordinary
+stdcall declaration/definition recover target RET4 and reuse of the no-longer-live
+path home for the failure message pointer. The old135-byte cdecl form remains
+wrong even in the real LoadReplay graph. Two independent complete FileSystem +
+ReplayManager GL/GS colds through real LoadReplay freeze18 equal raw inputs and
+strictly pass five owners496/all47 each. Canonical replay selects only12 directly
+affected FileSystem/ReplayManager units1541 bytes in their original contexts.
+Three controls reject; no boundary/origin/source-map/denominator expansion.
+The two-TU loader improves468->458/450 but is still nonexact. See
+[read-open proof](evidence/replay-open-context/README.md).
+
+FileSystem.hpp changes one of30 actual nine-TU inputs. Only AnmManager.cpp
+consumes it. Necessary support recompilation plus eight hash-verified reused
+objects and relink retain all three complete native bodies after verified field
+rewrites;21 complete target guards retain2415/all52. Run7020/all189 stays27
+differences in this real graph; no large exact credit or new independent large
+cold is claimed. Current carrier and pins are in the read-open proof.
+
+The distinct integer-value signature flag/context/value, unlike old
+context/flag/value, is tested in a consistent copied two-TU cold. Seven complete
+helper guards919/all17 pass, but full Run7020/all189/62locals stays26 differences
+and is completely byte-equal to the baseline after verified field rewrites.
+Null guard before const cursor declaration instead yields61 differences at7020,
+with the same seven guards. Both rejected; production EclVm/Enemy untouched.
+Three terminal native control directories/802006 bytes are pruned with identities
+and exact source/report recovery retained. All three original large goals stay
+active. See the private ecl-integer-value-context-20261021 recovery note.
+
+The preceding checkpoint admits the missing screenshot callback420540..42066D
 and closes its complete302 bytes/all30 fields. The prior308-byte unresolved
 gap is now302 owned bytes plus fourCC before/twoCC after; no prior extent is
 overwritten. Natural cdecl callback source uses real FileSystem open/write/close
@@ -394,13 +422,22 @@ graph after any dependency changes before comparing scores.
 | --- | --- | --- |
 | ANM ExecuteScript43EE30/9964 | Current two full nine-TU dispatcher colds with real scale support:9964 bytes,90 target-sized groups, absolute gap2, aligned7478/7995 | Nonexact. Old eight-TU anchor graph had7250/7995 despite same size. Unequal intervals61(+1),2(−1); registers, flag scheduling and common tail remain open. |
 | ECL Run44E1A0/7020 | Current full two-TU cold afterccd47a6: strict all189 fields and6994/7020 bytes;15 same-image guards1587/all21 | Exactly26 ordinary differences remain. Eight-TU Enemy context has27, including an additional SIB byte. Static float-value adapter repairs FORMAT register setup while retaining171-byte canonical callee; no new exact credit. [Current evidence](evidence/ecl-float-value-call-order/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Current two full nine-TU colds with real scale support:14468 bytes, rank-five434/420, frame2C4,181 selectors and108 groups; case-size gap652 | Generic integer calls105/106; missing physical call in1B4. Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
+| Enemy DispatchEclInstruction40E770/14416 | Current two full nine-TU colds with real scale support:14468 bytes, rank-five434/420, frame2C4,181 selectors and108 groups; case-size gap652 | Generic integer calls105/106; 1B4 third read shares a native1AA tail (three calls on every selected static return path). Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
 
 Old rejected controls are scoped observations, not proof that an API or source
 shape is correct. Require a concrete target hypothesis and compare corresponding
 instructions; an unchanged unaligned score does not establish code neutrality.
 Gain new TH10 caller, lifetime, partition or profile evidence. Keep target
 observations, cross-game hypotheses, compiler observations and unknowns distinct.
+For the dispatcher, opcode1B4 already contains three genuine source integer
+reads. Fresh complete bounded CFG review finds exactly three generic ReadInt
+calls on every selected static return path in both images: native404A4C is
+physically inside1AA and shared by1B4; target41054F/410580/4105BE stay in1B4.
+Calls are assumed returning and predicates unconstrained; no argument/runtime
+equivalence is claimed. The earlier two-versus-three region count is layout,
+not a missing read. Review tail sharing and packet lifetime before adding one.
+The reused integer iVar27 mixes the initial instruction address with unrelated later uses;
+a distinct typed packet lifetime remains a bounded untested hypothesis.
 
 ## Reproduction and retained local state
 
@@ -441,7 +478,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the worker proof; RGB results retain
+Latest focused native results are in the read-open proof; worker/RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -456,4 +493,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/main-screenshot-worker/validation-summary.json).
+[the current validation summary](evidence/replay-open-context/validation-summary.json).

@@ -1,0 +1,792 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "c7fddc3",
+  "scope": "One complete already reviewed authored unit137/all12; no boundary/origin/source-map expansion or product/runtime/semantic/port closure",
+  "source_sha256": {
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/FileSystem.cpp": "b2b20c98166dfaf83fc2abfe3ae8005329ba4e0fb63c73049c0015141f17f634",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/InputState.hpp": "882d32eff49f2cd5fb4f6d2bbd9fcd40836343c506979762e64bdc71a5b0039b",
+    "src/Lzss.hpp": "9961324199243ba650b9ec74b16456675ec5cdba6622210d17c82ef4f79f6146",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/ReplayChain.hpp": "8661329fb1439e2a62e21d3be26f6a54509842e896f5ec400f6da99710b6d2de",
+    "src/ReplayManager.cpp": "82c21944fad4b21c03caae4048076b86720fac3e36af626cf42a51f0ea53d449",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ReplayTimingSource.hpp": "aa97c1a1799e0197a1dbb8b3ccddc3e627da22ca7c6015fb9a8e32d3e949add6",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "graph": {
+    "source": "src/FileSystem.cpp",
+    "support_sources": [
+      "src/ReplayManager.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry": "?LoadReplay@ReplayManager@@QAEHPBD@Z"
+  },
+  "independent_complete_cold_builds": [
+    {
+      "label": "maintained-cold1",
+      "scope": "Independent complete FileSystem + ReplayManager /GL /GS cold, real LoadReplay entry and fresh unresolved-symbol harness",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/replay-open-context-20261021/maintained-cold1/source.exe",
+          "sha256": "f2748ae36d7dc12ec3390418b8bb59e8b1c7a6cc02161dbe04574f3a0029fc4b"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/replay-open-context-20261021/maintained-cold1/source.map",
+          "sha256": "4a3618f5a84b0bb9c2283d47deb2986f48827823bfbb5ed4e1b6db7975e93aec"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/replay-open-context-20261021/maintained-cold1/source.pdb",
+          "sha256": "2a4c1f505f5769e1d443274c2d42d1811a19ff498a165602f6563c954f9035be"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/replay-open-context-20261021/maintained-cold1/source.ltcg.obj",
+          "sha256": "ec01b45ddf116619dd2089edaa5acaf91d290daf05a126ec2265d2934b9065b3"
+        }
+      },
+      "objects": [
+        {
+          "path": "build/gpt-6.1-sol/replay-open-context-20261021/maintained-cold1/source.ltcg.obj",
+          "sha256": "ec01b45ddf116619dd2089edaa5acaf91d290daf05a126ec2265d2934b9065b3"
+        },
+        {
+          "path": "build/gpt-6.1-sol/replay-open-context-20261021/maintained-cold1/support-00-ReplayManager.ltcg.obj",
+          "sha256": "be9ddc1a043c64824f9500cdf4a12b3592a790617ea84e8c353620dc58e58e54"
+        }
+      ],
+      "owners": [
+        {
+          "unit": "replay-file-open",
+          "address": "0x0044B6B0",
+          "size": 137,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "replay-file-read",
+          "address": "0x0044B790",
+          "size": 74,
+          "fields": 6,
+          "result": "exact"
+        },
+        {
+          "unit": "filesystem-open-write-file",
+          "address": "0x0044B620",
+          "size": 137,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "address": "0x0044B4D0",
+          "size": 111,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-close-write-file",
+          "address": "0x0044B7E0",
+          "size": 37,
+          "fields": 5,
+          "result": "exact"
+        }
+      ],
+      "complete_bytes": 496,
+      "bound_fields": 47,
+      "replay_sha256": "7bc6c8f45feeb7b7126f7e8ad76f6520976a70aed752265d6dc22f4bb4cdb7b9"
+    },
+    {
+      "label": "canonical-cold2",
+      "scope": "Independent complete FileSystem + ReplayManager /GL /GS cold, real LoadReplay entry and fresh unresolved-symbol harness",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/ReplayFileOpen/source.exe",
+          "sha256": "ef1482ca2a4e9d47f3fd9f9cf6a6d32a0645c38903f18079418a034eb273f004"
+        },
+        "map": {
+          "path": "build/match-linked/ReplayFileOpen/source.map",
+          "sha256": "a7b632457c972ee5e34d3ca5cdf79c63a6263d645661ffbfc61114ba302ff40a"
+        },
+        "pdb": {
+          "path": "build/match-linked/ReplayFileOpen/source.pdb",
+          "sha256": "55db4775340daddba6e8237d58ddc6136aec2abb9bb809ad903b07ccb470338d"
+        },
+        "object": {
+          "path": "build/match-linked/ReplayFileOpen/source.ltcg.obj",
+          "sha256": "03b32abdf40e4f4fc5ce95e37f40491dfe548ae1a41d582daf06ba8fe4f3e70e"
+        }
+      },
+      "objects": [
+        {
+          "path": "build/match-linked/ReplayFileOpen/source.ltcg.obj",
+          "sha256": "03b32abdf40e4f4fc5ce95e37f40491dfe548ae1a41d582daf06ba8fe4f3e70e"
+        },
+        {
+          "path": "build/match-linked/ReplayFileOpen/support-00-ReplayManager.ltcg.obj",
+          "sha256": "056438da21a1dd33f84044da1dbf3996f0c0707f9793b1e5a23e275fc641c2b4"
+        }
+      ],
+      "owners": [
+        {
+          "unit": "replay-file-open",
+          "address": "0x0044B6B0",
+          "size": 137,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "replay-file-read",
+          "address": "0x0044B790",
+          "size": 74,
+          "fields": 6,
+          "result": "exact"
+        },
+        {
+          "unit": "filesystem-open-write-file",
+          "address": "0x0044B620",
+          "size": 137,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "address": "0x0044B4D0",
+          "size": 111,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-close-write-file",
+          "address": "0x0044B7E0",
+          "size": 37,
+          "fields": 5,
+          "result": "exact"
+        }
+      ],
+      "complete_bytes": 496,
+      "bound_fields": 47,
+      "replay_sha256": "cc5de73c01f0042455e97427c03aa1506fbf048e5852a99b112997f13055ed0d"
+    }
+  ],
+  "open_fields": [
+    {
+      "offset": "0x1",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0020",
+      "local": false,
+      "candidate_target": "0x00404050",
+      "target": "0x004922A4",
+      "addend": 0,
+      "target_encoded_value": "0x004922A4"
+    },
+    {
+      "offset": "0x7",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__EnterCriticalSection@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0068",
+      "local": false,
+      "candidate_target": "0x00404110",
+      "target": "0x004660B0",
+      "addend": 0,
+      "target_encoded_value": "0x004660B0"
+    },
+    {
+      "offset": "0xC",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0022",
+      "local": false,
+      "candidate_target": "0x00404058",
+      "target": "0x0049231E",
+      "addend": 0,
+      "target_encoded_value": "0x0049231E"
+    },
+    {
+      "offset": "0x20",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0022",
+      "local": false,
+      "candidate_target": "0x00404058",
+      "target": "0x0049231E",
+      "addend": 0,
+      "target_encoded_value": "0x0049231E"
+    },
+    {
+      "offset": "0x30",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__CreateFileA@28",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0067",
+      "local": false,
+      "candidate_target": "0x0040410C",
+      "target": "0x004660C4",
+      "addend": 0,
+      "target_encoded_value": "0x004660C4"
+    },
+    {
+      "offset": "0x38",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileHandle@@3PAXA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0021",
+      "local": false,
+      "candidate_target": "0x00404054",
+      "target": "0x00474C38",
+      "addend": 0,
+      "target_encoded_value": "0x00474C38"
+    },
+    {
+      "offset": "0x4E",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__GetLastError@0",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0071",
+      "local": false,
+      "candidate_target": "0x0040411C",
+      "target": "0x0046610C",
+      "addend": 0,
+      "target_encoded_value": "0x0046610C"
+    },
+    {
+      "offset": "0x5C",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__FormatMessageA@28",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0069",
+      "local": false,
+      "candidate_target": "0x00404114",
+      "target": "0x00466124",
+      "addend": 0,
+      "target_encoded_value": "0x00466124"
+    },
+    {
+      "offset": "0x67",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__LocalFree@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0073",
+      "local": false,
+      "candidate_target": "0x00404124",
+      "target": "0x00466128",
+      "addend": 0,
+      "target_encoded_value": "0x00466128"
+    },
+    {
+      "offset": "0x6C",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileCriticalSection@@3U_RTL_CRITICAL_SECTION@@A",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0020",
+      "local": false,
+      "candidate_target": "0x00404050",
+      "target": "0x004922A4",
+      "addend": 0,
+      "target_encoded_value": "0x004922A4"
+    },
+    {
+      "offset": "0x72",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__LeaveCriticalSection@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0072",
+      "local": false,
+      "candidate_target": "0x00404120",
+      "target": "0x004660B4",
+      "addend": 0,
+      "target_encoded_value": "0x004660B4"
+    },
+    {
+      "offset": "0x78",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?gReplayFileOpenCount@@3EA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0022",
+      "local": false,
+      "candidate_target": "0x00404058",
+      "target": "0x0049231E",
+      "addend": 0,
+      "target_encoded_value": "0x0049231E"
+    }
+  ],
+  "canonical_replay": {
+    "unit_count": 12,
+    "complete_bytes": 1541,
+    "artifact_groups": 8,
+    "receipt_sha256": "aaf1a2037b684cf7bb102e8f7def1f45bbc65f6eb2eff3d436a59f52e65a3ce0",
+    "units": [
+      "file-system-close-write-file",
+      "replay-file-read",
+      "file-system-check-if-file-already-exists",
+      "file-system-open-file",
+      "filesystem-write-file",
+      "filesystem-open-write-file",
+      "replay-manager-destroy",
+      "replay-manager-load",
+      "replay-draw-fps",
+      "replay-control-playback-frames",
+      "replay-draw-fps-callback",
+      "replay-file-open"
+    ]
+  },
+  "target_review": {
+    "mode": "Direct local Ghidra readOnly/noanalysis rollback CPU1 heap768MiB; no Factory MCP",
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "mapped_text_bytes": 412289,
+    "entry": "0x0044B6B0",
+    "end_inclusive": "0x0044B738",
+    "size": 137,
+    "padding": "seven CC through44B73F",
+    "caller": "one real LoadReplay call42A269",
+    "private_stack": "one stack path, both exits RET4; failure message pointer reuses no-longer-live parameter home",
+    "sibling_target_differences": {
+      "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+      "size": 137,
+      "differences": [
+        {
+          "offset": "0x16",
+          "writer": "0x0",
+          "reader": "0x8"
+        },
+        {
+          "offset": "0x18",
+          "writer": "0x2",
+          "reader": "0x3"
+        },
+        {
+          "offset": "0x2c",
+          "writer": "0x40",
+          "reader": "0x80"
+        }
+      ]
+    }
+  },
+  "negative_controls": [
+    {
+      "control": "wrong-create-file-iat",
+      "result": "rejected",
+      "comparison": "mismatch",
+      "matched_bytes": 136,
+      "size": 137,
+      "first_differences": [
+        {
+          "offset": "0x30",
+          "linked": 212,
+          "target": 196
+        }
+      ]
+    },
+    {
+      "control": "native-write-access",
+      "result": "rejected",
+      "comparison": "mismatch",
+      "matched_bytes": 136,
+      "size": 137,
+      "first_differences": [
+        {
+          "offset": "0x2C",
+          "linked": 64,
+          "target": 128
+        }
+      ]
+    },
+    {
+      "control": "cdecl-source",
+      "result": "rejected",
+      "reason": "PDB contribution size 0x87 differs from manifest 0x89"
+    }
+  ],
+  "other_loader_context": {
+    "scope": "separate actual eighteen-TU /EHs graph, no cross-context progress claim",
+    "candidate_size": 406,
+    "target_size": 450,
+    "exact": false
+  },
+  "large_dependency": {
+    "scope": "necessary incremental dependency check; not an independent full cold or new exact credit",
+    "source_sha256": {
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3b4e09603103c92b3940d305f62281054ae18327db960acea418176c7582a57a",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+    },
+    "artifacts": {
+      "image": {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/source.exe",
+        "sha256": "b8986deb417bbc6e22effc67c4d0a2d01b93af500c9db7bf70e4e26baa35cdf4"
+      },
+      "map": {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/source.map",
+        "sha256": "f2d466340b5827c225eb056e040aace54cf7e16250b3f1a38ae3d8be40f965a3"
+      },
+      "pdb": {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/source.pdb",
+        "sha256": "f81163f63818048623699fa191220a169c1aaccfa8c56941605737ba7f18ca97"
+      },
+      "object": {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/source.ltcg.obj",
+        "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+      }
+    },
+    "support_objects": [
+      {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/support-00-EclVm.ltcg.obj",
+        "sha256": "23562098609b6284fc76c02b199b598e8eb18577d3a27503ee1e579b4e67db8a"
+      },
+      {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/support-01-AnmManager.ltcg.obj",
+        "sha256": "197944cd451239080ba565a7b6cbfaaf92da307f45d84c4b5bcf4300e2a590d6"
+      },
+      {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/support-02-AnmVmCreate.ltcg.obj",
+        "sha256": "fb4fa78322df318da5566a1d68182fb8488fb772403d22d3fe408685fa4c89c3"
+      },
+      {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/support-03-EnemyLaser.ltcg.obj",
+        "sha256": "9734e70fca298d54e686207668b36434e86ff99148e39d234d89d796b7ae6f72"
+      },
+      {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/support-04-Enemy.ltcg.obj",
+        "sha256": "6f471121ade26cc151d9c36a82117566dbfd7b8274e995f6b9c47e9fcef0e0f7"
+      },
+      {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/support-05-AnmVmId.ltcg.obj",
+        "sha256": "27b58220d3d37d415ac5429ba4ad63f905d5a13f910d3b43325f0189f0c95354"
+      },
+      {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/support-06-RandomMath.ltcg.obj",
+        "sha256": "2a148cea21fae91352e34ee65272e0a269eb85fb76520784ee77dff954f3cc44"
+      },
+      {
+        "path": "build/gpt-6.1-sol/replay-open-context-20261021/large-check/support-07-AnmInt3Scale.ltcg.obj",
+        "sha256": "cebf99e3cc1eac8623019bed0400d7db7442b0a1be314a68df4db8f9672d76da"
+      }
+    ],
+    "recompiled": [
+      "src/AnmManager.cpp"
+    ],
+    "reused_objects": [
+      {
+        "source": "src/EnemyEclDispatcher.cpp",
+        "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce",
+        "object": "source.ltcg.obj"
+      },
+      {
+        "source": "src/EclVm.cpp",
+        "sha256": "23562098609b6284fc76c02b199b598e8eb18577d3a27503ee1e579b4e67db8a",
+        "object": "support-00-EclVm.ltcg.obj"
+      },
+      {
+        "source": "src/AnmVmCreate.cpp",
+        "sha256": "fb4fa78322df318da5566a1d68182fb8488fb772403d22d3fe408685fa4c89c3",
+        "object": "support-02-AnmVmCreate.ltcg.obj"
+      },
+      {
+        "source": "src/EnemyLaser.cpp",
+        "sha256": "9734e70fca298d54e686207668b36434e86ff99148e39d234d89d796b7ae6f72",
+        "object": "support-03-EnemyLaser.ltcg.obj"
+      },
+      {
+        "source": "src/Enemy.cpp",
+        "sha256": "6f471121ade26cc151d9c36a82117566dbfd7b8274e995f6b9c47e9fcef0e0f7",
+        "object": "support-04-Enemy.ltcg.obj"
+      },
+      {
+        "source": "src/AnmVmId.cpp",
+        "sha256": "27b58220d3d37d415ac5429ba4ad63f905d5a13f910d3b43325f0189f0c95354",
+        "object": "support-05-AnmVmId.ltcg.obj"
+      },
+      {
+        "source": "src/RandomMath.cpp",
+        "sha256": "2a148cea21fae91352e34ee65272e0a269eb85fb76520784ee77dff954f3cc44",
+        "object": "support-06-RandomMath.ltcg.obj"
+      },
+      {
+        "source": "src/AnmInt3Scale.cpp",
+        "sha256": "cebf99e3cc1eac8623019bed0400d7db7442b0a1be314a68df4db8f9672d76da",
+        "object": "support-07-AnmInt3Scale.ltcg.obj"
+      }
+    ],
+    "object_neutrality": [
+      {
+        "source": "src/AnmManager.cpp",
+        "old_sha256": "1f1fdd72192bbb899bf8ad2a112ebdb4069a99d9881a3925fedfe7678d28188c",
+        "new_sha256": "197944cd451239080ba565a7b6cbfaaf92da307f45d84c4b5bcf4300e2a590d6",
+        "complete_ltcg_object_equal": false
+      }
+    ],
+    "native_comparison": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "left_size": 14468,
+        "right_size": 14468,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?ExecuteScript@AnmRenderManagerView",
+        "left_size": 9964,
+        "right_size": 9964,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?Run@EclVmContext",
+        "left_size": 7020,
+        "right_size": 7020,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      }
+    ],
+    "existing_guards": {
+      "owners": 21,
+      "complete_bytes": 2415,
+      "bound_fields": 52
+    },
+    "run_diagnostic": {
+      "size": 7020,
+      "matched_bytes": 6993,
+      "fields": 189,
+      "ordinary_differences": 27,
+      "scope": "actual nine-TU graph, nonexact"
+    }
+  },
+  "ecl_controls": {
+    "baseline_replayed_sha256": "bf32c5c5f111fef9d94e7f93260db35b11f8adeda1899979237d4e96ce4abecf",
+    "controls": [
+      {
+        "label": "consistent-flag-context-value",
+        "full_size": 7020,
+        "fields": 189,
+        "ordinary_differences": 26,
+        "replayed_sha256": "bf32c5c5f111fef9d94e7f93260db35b11f8adeda1899979237d4e96ce4abecf",
+        "complete_replayed_bytes_equal_baseline": true
+      },
+      {
+        "label": "cursor-after-guard",
+        "full_size": 7020,
+        "fields": 189,
+        "ordinary_differences": 61,
+        "replayed_sha256": "b73b6284625749418e66c6452f64119970968396ebcbd6edd6f8c6f0d781c668",
+        "complete_replayed_bytes_equal_baseline": false
+      }
+    ]
+  },
+  "credit": {
+    "new_exact_functions": 1,
+    "new_exact_bytes": 137,
+    "new_source_mappings": 0,
+    "new_reviewed_owned_bytes": 0,
+    "canonical_exact_functions": 1229,
+    "authored_exact_functions": 388,
+    "authored_exact_bytes": 70916,
+    "reviewed_authored_functions": 735,
+    "reviewed_authored_bytes": 273576,
+    "source_mappings": 1084,
+    "mapped_authored_nonexact": 213
+  },
+  "enemy_count_cfg": {
+    "scope": "Target-bound static CFG observation, no source/ABI/exact/runtime credit",
+    "source_opcode": "0x1B4",
+    "native_image_sha256": "b8986deb417bbc6e22effc67c4d0a2d01b93af500c9db7bf70e4e26baa35cdf4",
+    "graphs": [
+      {
+        "role": "target",
+        "scope": "direct static CFG of selected case only; calls treated as returning, branch predicates unconstrained, external callee behavior not simulated",
+        "entry": "0x41054a",
+        "physical_end_exclusive": "0x4105e1",
+        "generic_read_callee": "0x44fdb0",
+        "reachable_read_call_instructions": [
+          {
+            "address": "0x41054f",
+            "within_physical_case": true,
+            "physical_group_opcodes": [
+              "0x1b4"
+            ]
+          },
+          {
+            "address": "0x410580",
+            "within_physical_case": true,
+            "physical_group_opcodes": [
+              "0x1b4"
+            ]
+          },
+          {
+            "address": "0x4105be",
+            "within_physical_case": true,
+            "physical_group_opcodes": [
+              "0x1b4"
+            ]
+          }
+        ],
+        "generic_read_counts_on_static_paths": [
+          3
+        ],
+        "visited_instructions": 52,
+        "out_of_physical_case_edges": []
+      },
+      {
+        "role": "native",
+        "scope": "direct static CFG of selected case only; calls treated as returning, branch predicates unconstrained, external callee behavior not simulated",
+        "entry": "0x4045dc",
+        "physical_end_exclusive": "0x40466a",
+        "generic_read_callee": "0x406440",
+        "reachable_read_call_instructions": [
+          {
+            "address": "0x4045e0",
+            "within_physical_case": true,
+            "physical_group_opcodes": [
+              "0x1b4"
+            ]
+          },
+          {
+            "address": "0x404625",
+            "within_physical_case": true,
+            "physical_group_opcodes": [
+              "0x1b4"
+            ]
+          },
+          {
+            "address": "0x404a4c",
+            "within_physical_case": false,
+            "physical_group_opcodes": [
+              "0x1aa"
+            ]
+          }
+        ],
+        "generic_read_counts_on_static_paths": [
+          3
+        ],
+        "visited_instructions": 55,
+        "out_of_physical_case_edges": [
+          [
+            "0x404640",
+            "0x404a43"
+          ],
+          [
+            "0x404a43",
+            "0x404a49"
+          ],
+          [
+            "0x404a49",
+            "0x404a4c"
+          ],
+          [
+            "0x404a4c",
+            "0x404a51"
+          ],
+          [
+            "0x404a51",
+            "0x404a58"
+          ],
+          [
+            "0x404a58",
+            "0x404a5a"
+          ],
+          [
+            "0x404a5a",
+            "0x404a5b"
+          ],
+          [
+            "0x404a5b",
+            "0x404a5c"
+          ],
+          [
+            "0x404a5c",
+            "0x404a5d"
+          ],
+          [
+            "0x404a5d",
+            "0x404a64"
+          ],
+          [
+            "0x404a64",
+            "0x404a66"
+          ],
+          [
+            "0x404a66",
+            "0x404a6b"
+          ],
+          [
+            "0x404a6b",
+            "0x404a6d"
+          ],
+          [
+            "0x404a6d",
+            "0x404a6e"
+          ],
+          [
+            "0x404650",
+            "0x404a43"
+          ],
+          [
+            "0x404665",
+            "0x404a43"
+          ]
+        ]
+      }
+    ]
+  }
+}

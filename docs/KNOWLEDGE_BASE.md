@@ -190,7 +190,7 @@ target and maintained source before using it as an implementation constraint.
 | FILESYSTEM-005 | observed / corroborated | `0x0044B220-0x0044B352` is the reviewed authored inverse transform paired with `FILESYSTEM-004`. Its machine boundary consumes the initial XOR seed in live-in AL plus five stack arguments (data, size, XOR increment, chunk size, max bytes) and returns with `ret 0x14`; `0x0044B353-0x0044B35F` is CC padding before `0x0044B360`. It copies `min(size,maxBytes)` bytes to scratch, preserves the same small tail rule as Decrypt, then reads each scratch chunk in reverse odd/even order while writing sequentially back to the original buffer and evolving the XOR key. Replay save calls it twice with `(seed, increment, chunk) = (0x3D,0x7A,0x80)` then `(0xAA,0xE1,0x400)`; score save uses `(0xAC,0x35,0x10)`, and all observed calls use `maxBytes == size`. Maintained `FileSystem::Encrypt` is adjacent-supported naming after TH10-local recovery, not an original-symbol/TU claim. | Attested TH10 function/decompile/caller/callee/xref/disassembly evidence; three raw TH10 call sites and direct boundary bytes; committed TH09/TH095 source only for later naming/source-shape corroboration |
 | FILESYSTEM-006 | observed / exact-normal-coff | `FileSystem::CloseWriteFile @ 0x0044B7E0` has a complete 37-byte authored boundary. When the shared file handle is valid, it closes the handle, leaves the shared critical section, decrements the active-file byte, and returns zero. Natural maintained source emits the same 37 bytes with pinned VC7.1 SP1 normal COFF; two independent cold builds and a focused canonical replay pass all five complete DIR32 fields (three globals and two Win32 imports) with zero differences. This bounded exact claim does not establish original source/TU, production codegen profile, or ownership of the referenced data. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | FILESYSTEM-007 | observed / corroborated | The replay disk-read seam contains three newly reviewed authored bodies. `0x0044B6B0-0x0044B738` opens a read-only shared handle while holding the file critical section and is maintained descriptively as `ReplayFile::Open`; `0x0044B790-0x0044B7D9` consumes a private live-in EDI byte count, allocates that many bytes, reads from the shared handle, and is maintained as `ReplayFile::Read`; `0x0044B7E0-0x0044B804` closes a valid shared handle, releases the critical section, decrements the active-file count, and is maintained as `FileSystem::CloseWriteFile`. Each extent is followed by CC padding. These names are adjacent-supported after TH10-local behavior recovery. `ReplayFile::Open`, `ReplayFile::Read`, and `FileSystem::CloseWriteFile` now have maintained source mappings; original-TU and exactness claims remain independent. | Direct TH10 raw disassembly/imports/shared-state accesses; attested function/decompile/caller evidence where provider transport succeeded; committed TH095 `ReplayFile`/`FileSystem` source used only for later naming corroboration |
-| FILESYSTEM-008 | observed / compiler exact | Maintained `ReplayFile::Read` source, compiled with pinned VC7.1 SP1 `/GL` under the `ReplayFile::Open` entry graph, reproduces the complete 74-byte target extent after exhaustive resolution of six handle, allocator, and Win32 import fields. An independent diagnostic build and the canonical cold replay both agree. `ReplayFile::Open` remains non-exact at 135 candidate bytes versus 137 target bytes (18/89 comparable bytes matched). | Direct TH10 target bytes and imports; PDB-owned linked-image extents; `replay-file-read` canonical unit; independent `/GL` diagnostic |
+| FILESYSTEM-008 | observed / compiler exact | Maintained `ReplayFile::Read` source, compiled with pinned VC7.1 SP1 `/GL` under the `ReplayFile::Open` entry graph, reproduces the complete 74-byte target extent after exhaustive resolution of six handle, allocator, and Win32 import fields. An independent diagnostic build and the canonical cold replay both agree. The original cdecl opener diagnostic was135/137; the later [read-open proof](evidence/replay-open-context/README.md) closes the complete137/all12 with ordinary stdcall source through real LoadReplay. Both boundaries are now canonical exact; original source spelling/production ownership and runtime remain unknown. | Direct TH10 target bytes and imports; PDB-owned linked-image extents; `replay-file-read` canonical unit; independent `/GL` diagnostic |
 | FILESYSTEM-009 | observed / canonical-linked-exact | FileSystem::CheckIfFileAlreadyExists at 0x0044B4D0 owns 111 bytes through RET 4; the following CC is excluded. Natural source enters the shared critical section, increments the unsigned-byte open count, opens read-only with shared-read/sequential-normal flags, closes a valid handle, and returns 1/0 through duplicated cleanup. Both paths leave the critical section before decrementing the count. The independently observed one-stack-argument callee-clean contract is represented by __stdcall; four complete target caller sites agree. This is not a claim about original declaration spelling or physical production TU/profile. A cdecl control is 107/111 with incorrect plain RET exits; the natural callee-clean form is 111/111 in normal COFF and /GL linked diagnostics. Two independent strict canonical cold links reproduce the complete 111-byte PDB-owned extent, all twelve exhaustively bound DIR32 fields, and zero ordinary differences. All 13 existing affected units pass 2,387 bytes across eight artifacts, including Main and ReplayManager caller contexts. Factory acceptance remains a separate receipt boundary. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 | FILESYSTEM-010 | observed / canonical-linked-exact | `FileSystem::OpenFile @ 0x0044B360–0x0044B4C7` reproduces its complete 360-byte owner and all 26 independently reviewed fields in two canonical cold links with distinct PE/PDB identities. Natural three-parameter `__stdcall` source under the real Main checksum `/GL /GS` graph produces the target-private EAX filename plus stack sizeOut/mode and RET 8. Mode zero is archive-only; other modes are disk-only. Source preserves the second-separator search's original-path fallback, archive size publication before allocation, ignored archive-reader/ReadFile results, and Leave-before-count-decrement cleanup. The archive is the distinct singleton at `0x00497990`, not the twenty-pack array at `0x004923B0`. Field +0x65 binds the singleton with addend 4; the diagnostic map's neighboring restart-log anchor is not its semantic owner. The ordinary convention/ANM context and subsequent natural reader/context/TU controls did not close the complete owner; the selected callee-clean Main graph, null-first selections, and target-supported outlined lookup context do. All 161 existing affected exact units pass 27,909/27,909 bytes across 49 cold artifacts, including the complete transitive FileSystem header closure. Local canonical authored exact becomes 43,050 / 266,187 (16.17%); the 500 indeterminate origins are unchanged. Factory PASS and ACCEPTED on the first attempt at a129047, job de160cebc24d46f6bb09657a36783fec, receipt 8d2ac1e0ab4a90b6ab9b3ce20098f035b31f4679730cfb8260efda8b416c72b6. Original declaration spelling, TU/profile ownership, native product closure and runtime remain unknown. | TH10 target-bound review; canonical manifest and replay remain authoritative for exact units; prior scratch receipts were pruned |
 
@@ -4160,3 +4160,43 @@ a blanket prohibition on aggregates. All actual ECL/Enemy source is unchanged.
 Main.cpp is absent from the current nine-TU large graph; all30 current input
 pins and four artifacts/eight support objects stay unchanged, so no new large
 replay is required. All three large exact goals and later phase gates stay open.
+
+
+### 2026-10-21: Replay read-open stack cleanup and ECL controls
+
+[Read-open evidence](evidence/replay-open-context/README.md) closes137/all12 at
+44B6B0..44B738. The target sibling write opener differs at only three constant
+bytes16/18/2C. Target RET4 and failure-message reuse of the dead path home are
+observed independently; natural stdcall declaration/definition reproduce both.
+Original cdecl emits135 bytes in the actual LoadReplay graph, with a separate
+PUSH ECX local and POP ECX/plain RET. No original annotation or production TU
+identity is inferred from the compatible source. Two independent full two-TU
+GL/GS colds pass496/all47 across five complete owners, and12 selected canonical
+FileSystem/ReplayManager units pass1541 bytes. Caller LoadReplay remains458/450
+in the two-TU entry graph; no parent credit. Native product/runtime remain open.
+
+The header changes only AnmManager.cpp in the actual nine-TU graph. Recompile
+that support, verify eight other object/input closures, then relink: all three
+complete native large bodies remain equal after verified field rewrites and21
+prior complete guards pass2415/all52. Current Run stays7020/all189 with27
+ordinary differences. This is dependency validation, not an independent cold.
+
+The private flag/context/value integer adapter is distinct from the old
+context-first control. Its complete124/all1 and171/all4 callees and five other
+helpers pass919/all17, but Run7020/all189/62locals retains26 ordinary differences
+and all7020 replayed bytes equal baseline. Moving only the null guard before the
+const cursor declaration yields61 differences with the same seven helper guards;
+no source adopted. Neither result establishes original staticness or local names.
+Pruned terminal native controls retain exact sources and comparison identities.
+
+
+A bounded fresh CFG review of current Enemy opcode1B4 finds three generic
+ReadInt calls on every static return path in both target and native code. The
+native third call404A4C is physically inside1AA and shared by1B4; the other two
+are4045E0/404625. Target41054F/410580/4105BE all lie in1B4. Native/target
+physical-region counts2/3 therefore do not establish a missing runtime read.
+The traversal validates the181-selector layout, complete pre-table decode,
+branch destinations and exact144-byte callee binding. It treats calls as
+returning and predicates as unconstrained; argument/runtime equivalence remains
+unproven. Root105/106 physical calls and whole-function nonexactness remain.
+See the read-open receipt's enemy_count_cfg for the bounded observation.

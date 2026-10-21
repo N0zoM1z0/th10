@@ -20,7 +20,7 @@ extern PbgArchive g_MainPbgArchive;
 namespace ReplayFile
 {
 // TH10_FILESYSTEM_FUNCTION: 0x0044B6B0 ReplayFile::Open
-int Open(const char *path)
+int __stdcall Open(const char *path)
 {
     EnterCriticalSection(&gReplayFileCriticalSection);
     ++gReplayFileOpenCount;

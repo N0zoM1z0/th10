@@ -2,7 +2,7 @@
 
 namespace ReplayFile
 {
-int Open(const char *path);
+int __stdcall Open(const char *path);
 void *Read(unsigned int size);
 }
 

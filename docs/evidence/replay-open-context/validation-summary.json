@@ -1,0 +1,61 @@
+{
+  "state": "passed",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "standard_ci": {
+    "result": "passed",
+    "steps": 100,
+    "uninterrupted_invocations": 1,
+    "log_sha256": "dca02f39655ce8fff13c7fd1f378fdc8135f652dabd9b1c4ac2c099e8fdee9b5"
+  },
+  "focused": {
+    "new_owner_bytes": 137,
+    "new_owner_fields": 12,
+    "independent_full_colds": 2,
+    "owners_per_cold": 5,
+    "complete_bytes_per_cold": 496,
+    "fields_per_cold": 47,
+    "canonical_affected_units": 12,
+    "canonical_affected_bytes": 1541,
+    "canonical_artifact_groups": 8,
+    "final_focused_result": "exact",
+    "final_receipt_sha256": "18500b231ad6be978cb69398d96cf7f1bc5634829bf102f98f01c259a9ac32bc",
+    "necessary_large_recompile": [
+      "src/AnmManager.cpp"
+    ],
+    "large_prior_guards": 21,
+    "large_guard_bytes": 2415,
+    "large_guard_fields": 52,
+    "large_native_bodies_equal_after_verified_fields": 3,
+    "large_run_ordinary_differences": 27
+  },
+  "post_ci_pin_validation": {
+    "opener_raw_inputs": 18,
+    "large_raw_inputs": 30,
+    "unique_native_artifacts": 22,
+    "canonical_linked_unit_image_hashes": 11,
+    "result": "unchanged"
+  },
+  "negative_controls": {
+    "rejected": 3
+  },
+  "cleanup": {
+    "owned_terminal_build_directories": 5,
+    "removed_bytes": 1089460,
+    "retained": "both final opener cold carriers; original cdecl failure; current large carrier; original ECL baseline; exact private source/control receipts"
+  },
+  "final_gates": [
+    "focused complete137/all12 comparison",
+    "toolchain declarations",
+    "tracking",
+    "current generated progress",
+    "documentation links",
+    "git diff --check"
+  ],
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  }
+}
