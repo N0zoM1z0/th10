@@ -1,5 +1,11 @@
 # Chain calculation and drawing dispatchers
 
+Later [canonical native acceptance](../chain-dispatcher-native/README.md) closes
+both complete owners308/268 and all44 fields in two actual-source cold builds.
+The nonexact compiler observations below retain their original scalar-view
+source contexts. Boundary/protocol facts remain valid; product/storage/runtime
+limits remain open.
+
 Reviewed2026-10-22 from `e558d61`. Maintained source now implements the two frame
 scheduler calls already declared in Main. Both complete owners remain nonexact.
 Two recovered switch tables also correct the old RET-only boundaries. This adds

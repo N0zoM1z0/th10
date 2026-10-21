@@ -1,0 +1,104 @@
+{
+  "two_new_canonical_colds": {
+    "first_units": 4,
+    "first_bytes": 772,
+    "second_units": 2,
+    "second_bytes": 576,
+    "complete_TUs_each": 14,
+    "new_function_bytes": 576,
+    "new_fields": 44,
+    "source_functions": "Calc308/23 fields,Draw268/21 fields",
+    "code_data_coverage": "Complete contribution coverage including reviewed alignment and14 local table words; decoder consumption307/263 is not a code-only count. Existing exhaustive DIR32/local-offset rules unchanged."
+  },
+  "additional_register_cold": {
+    "units": 2,
+    "bytes": 86,
+    "complete_TUs": 14
+  },
+  "unique_validated_functions": 6,
+  "unique_validated_bytes": 858,
+  "host": {
+    "sanitized_assertions": 1375,
+    "strict_faulty_code_controls": 8,
+    "EOL_checks": 19,
+    "global_view_projections": {
+      "criticalSections0": 8,
+      "lockCounts0": 8
+    },
+    "active_LF_pins_changed": [
+      "Chain.cpp"
+    ],
+    "other_active_dependencies_unchanged": 6,
+    "scope": "Existing host roles only, no policy/classifier weakening."
+  },
+  "full_ci": {
+    "state": "passed",
+    "groups": 108,
+    "returncode": 0,
+    "maintained_source_test_config_paths": 368,
+    "all_frozen_inputs_unchanged": true,
+    "log_sha256": "93ee7445905e8571d0fb97433b4b243fabd8c5f504608d37af420ababb9bfe50"
+  },
+  "cleanup": {
+    "state": "complete",
+    "removed_logical_file_bytes": 20432288,
+    "removed_trees": [
+      {
+        "path": "build/gpt-6.1-sol/chain-counter-codegen-20261022/scalar-wrappers",
+        "logical_file_bytes": 1701797
+      },
+      {
+        "path": "build/gpt-6.1-sol/chain-counter-codegen-20261022/supervisor-wrappers",
+        "logical_file_bytes": 1710281
+      },
+      {
+        "path": "build/gpt-6.1-sol/chain-counter-codegen-20261022/supervisor-case-order",
+        "logical_file_bytes": 1709967
+      },
+      {
+        "path": "build/gpt-6.1-sol/chain-counter-codegen-20261022/include-only",
+        "logical_file_bytes": 1709640
+      },
+      {
+        "path": "build/gpt-6.1-sol/chain-counter-codegen-20261022/signed-scalar",
+        "logical_file_bytes": 1199965
+      },
+      {
+        "path": "build/host-tests/chain-counter-review",
+        "logical_file_bytes": 1724525
+      },
+      {
+        "path": "build/host-tests/chain-counter-controls",
+        "logical_file_bytes": 7481262
+      },
+      {
+        "path": "build/host-tests/chain-counter-eol",
+        "logical_file_bytes": 4346
+      },
+      {
+        "path": "build/host-tests/gui-message-run-ci",
+        "logical_file_bytes": 1837168
+      },
+      {
+        "path": "build/host-tests/gui-message-lifecycle-ci",
+        "logical_file_bytes": 509243
+      },
+      {
+        "path": "build/host-tests/transition-effect-ci",
+        "logical_file_bytes": 839748
+      },
+      {
+        "path": "build/host-tests/transition-effect-eol-ci",
+        "logical_file_bytes": 4346
+      }
+    ],
+    "retained": [
+      "actual first-cold full snapshot",
+      "current second-cold canonical carrier",
+      "same-sized supervisor-direct local-destination failure",
+      "compact sources/patches/reports/producers and Ghidra review"
+    ],
+    "unrelated_D3D_files_preserved": 9,
+    "shared_provider_and_unknown_state": "untouched"
+  }
+}

@@ -1,25 +1,26 @@
 # TH10 reconstruction handoff
 
 Updated2026-10-22. Exact reconstruction remains **active-incomplete**. Current
-bounded work recovers both Chain frame dispatchers and their owned switch tables,
-with source and actual-source host contracts. It adds no exact functions/bytes.
+batch closes both Chain frame dispatchers in the canonical linked-PE Oracle:
+**308/268 complete owned bytes,44 fields, two independent actual-source colds**.
+New credit is two authored functions/576 bytes; product/runtime remains open.
 
-## Recovery and operator preferences
+## Resume safely
 
-- Only ignored `resources/th10.exe`, original Japanese v1.00a, SHA-256
+- Original Japanese v1.00a only, ignored `resources/th10.exe`, SHA-256
   `2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040`.
 - Read AGENTS.md, [RE_WORKFLOW.md](RE_WORKFLOW.md), [ORACLES.md](ORACLES.md),
-  inspect Git status/diffs and recover dirty work before editing.
-- Preserve the nine independent untracked `docs/evidence/d3d-adapter-format/`
-  files; never stage or clean them as part of this batch.
-- Repository Python uses `scripts/repo-python`. Operator preference: direct
-  local tools, no Factory MCP; native builds serial nice10, Ghidra readOnly/
-  noanalysis/rollback, one CPU,768 MiB heap.
+  inspect status/diffs and recover dirty work before editing.
+- Preserve nine independent untracked `docs/evidence/d3d-adapter-format/` files.
+  Their bytes are checked; never stage or clean them with this batch.
+- Use `scripts/repo-python`. Operator preference: direct local tools, no Factory
+  MCP; native builds serial nice10; Ghidra readOnly/noanalysis/rollback, one CPU,
+  768 MiB heap. No subagents without explicit authorization.
 - Full mapped text401000..465A80 inclusive is412289 bytes, SHA-256
   `cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f`.
-  Older64A80-byte hashes cover a truncated prefix.
-- Authorized English `gpt-6.1-sol: ...` checkpoints are committed and pushed
-  to `origin/main` after validation. Replay only necessary affected units.
+  Older64A80-byte hashes cover only a truncated prefix.
+- Authorized English `gpt-6.1-sol: ...` checkpoints are committed and pushed to
+  `origin/main` after validation. Replay only necessary affected units.
 
 ```sh
 git status --short --branch
@@ -30,85 +31,87 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
-## Current source and metrics
+## Current source and exact progress
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
-273579 owned bytes;1094 total source mappings. Authored source610/247329 bytes,
-213 source-present/nonexact,124 source-absent. Authored exact **397/72387 bytes**,
-26.46% of the provisional byte denominator; overall exact1238/138897 bytes.
-There are524 indeterminate origins, so these are not whole-game completion rates.
+273579 owned bytes;1094 source mappings. Authored source610/247329 bytes,
+211 source-present/nonexact,124 source-absent. Authored exact **399/72963 bytes**,
+26.67% of provisional authored bytes; overall exact1240/139473 bytes. Unknown
+origins524 keep the whole-game denominator unresolved.
 
-[Dispatcher evidence](evidence/chain-dispatchers/README.md) recovers MainRunCalcChain
-at449C00 and MainRunDrawChain at449D40. Both stack-owner/RET4 entries return their
-count in EAX. Main's declarations now use int __stdcall, including drawing's
-previously erased return. Original source names/annotation/method/TU remain unknown.
+The [native dispatcher proof](evidence/chain-dispatcher-native/README.md) closes
+Calc449C00..449D33/308 and Draw449D40..449E4B/268, including all internal/post-RET
+alignment and eight/six guarded local table words. The earlier62-byte table
+ownership correction is separate from this576-byte exact numerator gain.
+Physical stack-owner/RET4 and EAX count remain; original source annotation,
+free-function/method spelling, names, classes, physical TU and flags are unknown.
 
-The old273/241-byte RET-only spans omitted owned suffixes. Calc has3 alignment
-bytes and eight table words at449D14: complete308 through449D33. Draw has3 and six
-words at449E34: complete268 through449E4B. Unsigned guards, local destinations,
-sole owner xrefs and adjacent CC padding establish ownership. Target PE relocations
-are absent. The62-byte denominator correction adds no exact credit. Function
-count/origins remain unchanged; two authored source mappings are added.
+Natural source reuses existing MainSupervisor CS[0]/unsigned lockCounts[0] at
+base491C28+64C/+6F4, the known492274/49231C pair, and places case4 before3.
+No new global definition, counter type, volatile, target-byte copy, fake return,
+ABI or inert padding is introduced. Other Chain helpers retain prior scalar
+aliases. This exact codegen does not close their source storage/data ownership.
 
-Both cache next before the callback. Null callbacks are uncounted; nonnull but
-disabled(mask0x2, bit1) callbacks count without executing. The callback runs unlocked
-with ECX argument. Status0 unregisters only;2 retries with enable-mask recheck;
-3/4/5 force1/0/-1 and break. Calc6 resets/restarts;7 calls the optional locked
-delete callback without implicit unregister. Draw6/7 and out-of-range values
-are defaults. No invented safe invalid-pointer paths or asynchronous lifetime
-closure follow.
+Both runners cache next before callbacks; null callbacks are uncounted, disabled
+nonnull callbacks(mask0x2, bit1) counted. Callbacks run unlocked with ECX argument.
+0 unregisters only;2 retries with enabled-mask recheck;3/4/5 force1/0/-1 and break.
+Calc6 resets/restarts;7 invokes an optional locked delete callback without implicit
+unregister. Draw6/7 and out-of-range values are defaults. No arbitrary callback
+mutation/concurrency or invalid-pointer success guarantee follows.
 
-The prior [construction review](evidence/chain-source-closure/README.md) establishes
-two0x24-byte heads in a0x48-byte owner, ownership-bit-only initialization and
-untouched argument words. Constructor449AA0/59 remains origin-indeterminate:
-implicit versus explicit outer construction is unresolved. Its earlier59-byte
-denominator removal and this62-byte table addition are separate corrections.
-The491BE4 g_MainCallbackOwner/g_Chain physical alias/data owner remains open.
+The [construction review](evidence/chain-source-closure/README.md) retains two
+0x24-byte heads in the0x48-byte owner, partial ownership-bit initialization and
+untouched argument words. Constructor449AA0/59 stays origin-indeterminate and
+nonexact; implicit versus explicit outer construction is unknown. The491BE4
+physical g_MainCallbackOwner/g_Chain alias and production data owner remain open.
 
-## Native and host validation
+## Current validation and recovery
 
-Two actual-source full14-TU cold groups preserve four existing exact helpers/
-282 bytes: Unregister114, RemoveAll82, RegisterCalc43 and RegisterDraw43, with
-complete field replay. No all-consumer or full reconstruction replay is claimed.
-The new runners remain nonexact in that graph: Calc316/308, Draw272/268.
-A separate full Main/Chain/GameError3-TU diagnostic gives428/272 and inlines Calc's
-unregister path. Both source visibility and flags differ between contexts, so
-cause/original production partition is unknown. No masked ordinary-byte score.
+Two independent full14-TU actual-source colds pass the new pair576/all44. First
+cold also passes existing Unregister114/RemoveAll82 (four units772 total); its
+full outputs are snapshotted before the second cold. Additional registration
+cold passes43+43. Six unique units858 bytes are checked, with only576 new credit.
+Canonical chain-run-calc/draw share the existing identical build-group output
+with the lifecycle helpers. Profiles/support overrides remain declared, with
+`/GL` retained. A dedicated duplicate output was rejected before compilation;
+no build-graph invariant was weakened. Full source visibility/original flags are
+not inferred from this reproduced14-TU context.
 
-Two controls each recompile one Chain object and reuse13 verified objects, not
-full colds. Postfix counter spelling is raw-neutral for both whole bodies.
-Case4-before3 changes two constants and two table fields per body, while size/raw
-scores stay equal. The latter is not raw-neutral; neither control is adopted.
+Private one-Chain-object/13-cache controls distinguish scalar wrappers/header-only
+(316/272) from direct/member wrappers(308/268). Correct4/3 ordering then passes
+all bytes. Equal-sized wrong table destinations fail the unchanged local-offset
+gate at Calc+120h and Draw+100h. Signed-byte source compiled but its cached link
+lacked the new decorated symbol: no linked comparison or signedness conclusion.
+Do not repeat these forms as unexecuted hypotheses. They are not full colds.
 
-The existing [large32-input/15-artifact pins](evidence/chain-source-closure/native-summary.json)
-remain current after fresh hash checks: both changed CPPs are outside that graph
-and Chain.hpp is unchanged. There is no new ten-TU cold,35-guard replay or Run
-measurement. Older raw-NEG/thread contexts retain their historical meanings.
+Source host1375 ASan/UBSan assertions, eight strict faulty-code controls and19
+EOL guards pass. Two new member-view projections map onto the same existing host
+mutex/counter roles, exactly eight occurrences each, recorded in the manifest.
+Only the active Chain.cpp LF pin changes; six other dependencies and strict
+CRLF-to-LF-only rejection remain unchanged. No native layout/Windows concurrency/
+renderer/game-runtime proof is implied by those host roles.
 
-Actual-source host Calc replaces the transition subset model in lifetime0/7.
-The obsolete subset-only status gate is superseded by actual count assertions.
-Full sanitized1375 checks cover existing effect/constructor cases plus42 new
-Calc/Draw calls with literal status/flag/count/lock/restart/cache expectations.
-Eight strict faulty-code controls and19 EOL guards pass. Only one active strict
-LF dependency pin, Chain.cpp, changes; other six and normalization stay strict.
-The new reusable runner adds one CI group. Host mutex/allocation/renderer roles
-do not establish native ABI, Windows concurrency or whole-game runtime.
+All1238 preexisting canonical unit definitions and existing
+[large32-input/15-artifact pins](evidence/chain-source-closure/native-summary.json)
+are freshly checked unchanged. The whole canonical manifest fingerprint changes
+only by adding two units, so the old file hash is historical. Chain.cpp is outside
+the large graph; Main.hpp is unchanged. No new large cold,35-guard replay or Run
+measurement is claimed. Old scalar dispatcher receipts retain historical scope.
 
-All108 fresh full CI groups pass; all368 frozen source/test/config raw inputs
-remain unchanged through CI. Classified cleanup removes15845902 logical file
-bytes from nine owned reproducible trees and one superseded dump. Current
-carriers, one failed control and compact evidence remain; provider/legacy
-state and nine independent D3D files are untouched. Final scope/results belong in
-[validation](evidence/chain-dispatchers/validation-summary.json).
-Private recovery: `.analysis/gpt-6.1-sol/chain-dispatchers-20261022/RECOVERY.md` and
-manifest.json. The initial diagnostic carrier uses a prior build prefix from
-its template; its actual path is recorded and no old path was overwritten.
-Do not blindly rerun old producers or --existing recovery paths.
+All108 fresh full CI groups pass; all368 frozen source/test/config inputs
+remain byte-identical throughout CI. Classified cleanup removes20432288 logical
+file bytes from12 owned reproducible trees. Both actual cold carriers, one
+equal-sized rejected model and compact facts remain. Provider/legacy state and
+nine independent D3D files are preserved. Final results:
+[validation](evidence/chain-dispatcher-native/validation-summary.json).
+Private recovery: `.analysis/gpt-6.1-sol/chain-counter-codegen-20261022/RECOVERY.md`
+and manifest.json. Retain actual first-cold snapshot and current second-cold
+carrier, one equal-sized failing local-table model, and compact producers/facts.
+Do not blindly rerun old producers that restore source or reuse historical pins.
 
-Fresh global boundary audit still fails first at401100 metadata provenance:
-1116 rows (previous1114),49 state and107 confidence differences, zero geometry
-differences. Two new manual table notes add two metadata differences. Unowned
-indirect tables18->16. Ordinary tracking/CI success does not waive this audit.
+Global manual/automatic boundary metadata drift remains open:1116 rows,49 state
+and107 confidence differences, zero geometry differences. First failure401100
+provenance. Unowned indirect tables16. Ordinary tracking/CI does not waive it.
 
 ## Large owners and next route
 
@@ -118,17 +121,13 @@ indirect tables18->16. Ordinary tracking/CI success does not waive this audit.
 |ECL44E1A0 /7020|7020/6993,27 differences;189 fields/62 locals;171-byte float callee exact|Thread argument, SIB, homes and latch|
 |Enemy40E770 /14416|14352 bytes; frame2C4;181 selectors/108 groups;42 target-sized groups; aggregate gap566|Laser ABI, shared tails and packet/register/stack lifetime|
 
-Run still uses strict60-table-word/88-selector annotations despite the generic
+Run still uses strict60-table-word/88-selector coverage despite the generic
 normalization flag at its final selector byte. Older two-TU26 is historical.
-Do not repeat the11 rejected thread controls or the two new dispatcher spellings
-as fresh hypotheses. Current dispatcher codegen route is the callback-adjacent
-byte decrement/import scheduling: target direct DEC differs from the native
-load/decrement/store and changes short/long branch layout. Investigate wrappers,
-types or optimizer context with target/compiler evidence, not volatile/padding
-tricks or fabricated ABI. Remaining Chain ownership/release inventory also needs
-review; this batch does not establish complete production ownership.
+The next bounded route can test whether the same known supervisor member view
+recovers Calc/Draw insertion scheduling or audit remaining Chain source/ownership.
+Do not transfer exactness across functions or change metadata from adjacency.
+Original signedness/class/TU remain unknown even when codegen matches.
 
-Keep boundary, origin, source, exactness, native product and runtime separate.
-Whole Windows i386 build/runtime closure remains open: globals, static init,
-resources, libraries, link order and exercised paths need audit. Semantic
+Whole Windows i386 product/runtime closure is open: globals, static init,
+resources, libraries, link order and exercised paths still need audit. Semantic
 reconstruction and portability have not started. The broad goal remains active.

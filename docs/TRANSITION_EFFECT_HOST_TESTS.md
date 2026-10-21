@@ -16,6 +16,15 @@ The default is repository-local `src`; there is no silent remote or machine-spec
 
 ## Actual bodies and declared seams
 
+The later [native runner match](evidence/chain-dispatcher-native/README.md) changes
+dispatchers to existing MainSupervisor member views and target4/3 source order.
+The host projects criticalSections[0] and criticalSectionLockCounts[0] onto the
+same existing mutex/counter roles with exactly eight rewrites each, recorded in
+the manifest. No other source access is silently adapted. Only Chain.cpp's active
+LF pin changes; the other six and strict normalization remain unchanged. Full1375
+sanitized assertions, eight strict controls and19 EOL guards still pass. These
+role mappings do not prove native MainSupervisor storage or Windows concurrency.
+
 The2026-10-22 [dispatcher recovery](evidence/chain-dispatchers/README.md) refreshes
 only the Chain.cpp active LF pin, retaining all six other active dependencies.
 Actual Calc now drives the return0/7 lifetime scenarios. Its former subset

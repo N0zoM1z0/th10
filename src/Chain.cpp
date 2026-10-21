@@ -3,6 +3,7 @@
 // Chain::UnregisterElem and Chain::RemoveAllFromList are canonical exact; see
 // docs/KNOWLEDGE_BASE.md and config/match-units.toml.
 #include "Chain.hpp"
+#include "Main.hpp"
 #include <windows.h>
 #include <stdlib.h>
 
@@ -228,8 +229,8 @@ int __stdcall MainRunCalcChain(void *owner)
     int updatedCount;
     int result;
 
-    EnterCriticalSection(&th10::g_CriticalSections[0]);
-    ++th10::g_ChainNestCounter;
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[0];
 restart:
     updatedCount = 0;
     node = chain->CalcList()->next;
@@ -242,11 +243,11 @@ restart:
 execute_again:
             if (elem->flags & 2)
             {
-                LeaveCriticalSection(&th10::g_CriticalSections[0]);
-                --th10::g_ChainNestCounter;
+                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+                --g_MainSupervisorView.criticalSectionLockCounts[0];
                 result = elem->callback(elem->arg);
-                EnterCriticalSection(&th10::g_CriticalSections[0]);
-                ++th10::g_ChainNestCounter;
+                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+                ++g_MainSupervisorView.criticalSectionLockCounts[0];
                 switch (result)
                 {
                 case 0:
@@ -256,11 +257,11 @@ execute_again:
                     continue;
                 case 2:
                     goto execute_again;
-                case 3:
-                    updatedCount = 1;
-                    goto loop_exit;
                 case 4:
                     updatedCount = 0;
+                    goto loop_exit;
+                case 3:
+                    updatedCount = 1;
                     goto loop_exit;
                 case 5:
                     updatedCount = -1;
@@ -278,8 +279,8 @@ execute_again:
         node = next;
     }
 loop_exit:
-    LeaveCriticalSection(&th10::g_CriticalSections[0]);
-    --th10::g_ChainNestCounter;
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    --g_MainSupervisorView.criticalSectionLockCounts[0];
     return updatedCount;
 }
 
@@ -292,8 +293,8 @@ int __stdcall MainRunDrawChain(void *owner)
     int updatedCount;
     int result;
 
-    EnterCriticalSection(&th10::g_CriticalSections[0]);
-    ++th10::g_ChainNestCounter;
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    ++g_MainSupervisorView.criticalSectionLockCounts[0];
     updatedCount = 0;
     node = chain->DrawList()->next;
     while (node != NULL)
@@ -305,11 +306,11 @@ int __stdcall MainRunDrawChain(void *owner)
 execute_again:
             if (elem->flags & 2)
             {
-                LeaveCriticalSection(&th10::g_CriticalSections[0]);
-                --th10::g_ChainNestCounter;
+                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+                --g_MainSupervisorView.criticalSectionLockCounts[0];
                 result = elem->callback(elem->arg);
-                EnterCriticalSection(&th10::g_CriticalSections[0]);
-                ++th10::g_ChainNestCounter;
+                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+                ++g_MainSupervisorView.criticalSectionLockCounts[0];
                 switch (result)
                 {
                 case 0:
@@ -317,11 +318,11 @@ execute_again:
                     break;
                 case 2:
                     goto execute_again;
-                case 3:
-                    updatedCount = 1;
-                    goto loop_exit;
                 case 4:
                     updatedCount = 0;
+                    goto loop_exit;
+                case 3:
+                    updatedCount = 1;
                     goto loop_exit;
                 case 5:
                     updatedCount = -1;
@@ -333,7 +334,7 @@ execute_again:
         node = next;
     }
 loop_exit:
-    LeaveCriticalSection(&th10::g_CriticalSections[0]);
-    --th10::g_ChainNestCounter;
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    --g_MainSupervisorView.criticalSectionLockCounts[0];
     return updatedCount;
 }

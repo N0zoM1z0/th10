@@ -79,6 +79,16 @@ def build(source, out, canonical=DEFAULT_CANON, sanitize=False):
         expected_count=1
         if n!=expected_count: raise RuntimeError(f'canonical adaptation count {n}, expected {expected_count}: {old}')
         adaptation_counts[old]=n;chain=chain.replace(old,new)
+    # The dispatchers use the reviewed MainSupervisor members. Project these
+    # two storage views onto the existing host lock/counter roles only.
+    global_view_adaptations={}
+    for old,new in {
+        '&g_MainSupervisorView.criticalSections[0]':'&th10::g_CriticalSections[0]',
+        'g_MainSupervisorView.criticalSectionLockCounts[0]':'th10::g_ChainNestCounter',
+    }.items():
+        n=chain.count(old)
+        if n!=8: raise RuntimeError(f'canonical global-view adaptation count {n}, expected 8: {old}')
+        global_view_adaptations[old]=n;chain=chain.replace(old,new)
     # RemoveAllFromList alone has a raw +0x18 host-incompatible load; retain
     # that body except translating this documented list-head field access.
     chain=once(chain,'node = *(ListNode **)(listBase + 0x18);','node = reinterpret_cast<ListNode *>(listBase)->next;')
@@ -134,7 +144,7 @@ void HostFree(void *);
     if sanitize:cmd[1:1]=['-fsanitize=address,undefined','-fno-omit-frame-pointer','-no-pie']
     completed=subprocess.run(cmd,text=True,capture_output=True)
     (out/'compile.stdout').write_text(completed.stdout);(out/'compile.stderr').write_text(completed.stderr)
-    manifest={'claim':'HOST SEMANTICS ONLY; actual dispatcher algorithm, no target ABI/layout, native compiler, Windows concurrency, renderer or whole-game runtime proof','inputs':{str(p):sha(p) for p in inputs},'input_fingerprints':{str(p):fingerprint(p) for p in inputs},'canonical_observations':canonical_observations,'pin_normalization':'crlf-to-lf-only','generated_sha256':sha(cpp),'extracted_hashes':{'timer_struct':hashlib.sha256(timer.encode()).hexdigest(),'range_helper':hashlib.sha256(rng_helper.encode()).hexdigest(),'adapted_chain':hashlib.sha256(chain.encode()).hexdigest()},'command':cmd,'compile_returncode':completed.returncode,'alloc_field_adaptations':adaptation_counts,'sanitizers':sanitize}
+    manifest={'claim':'HOST SEMANTICS ONLY; actual dispatcher algorithm, no target ABI/layout, native compiler, Windows concurrency, renderer or whole-game runtime proof','inputs':{str(p):sha(p) for p in inputs},'input_fingerprints':{str(p):fingerprint(p) for p in inputs},'canonical_observations':canonical_observations,'pin_normalization':'crlf-to-lf-only','generated_sha256':sha(cpp),'extracted_hashes':{'timer_struct':hashlib.sha256(timer.encode()).hexdigest(),'range_helper':hashlib.sha256(rng_helper.encode()).hexdigest(),'adapted_chain':hashlib.sha256(chain.encode()).hexdigest()},'command':cmd,'compile_returncode':completed.returncode,'alloc_field_adaptations':adaptation_counts,'global_view_adaptations':global_view_adaptations,'sanitizers':sanitize}
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     if completed.returncode:raise RuntimeError('HOST COMPILE FAILED: '+completed.stderr)
     return out/'harness'

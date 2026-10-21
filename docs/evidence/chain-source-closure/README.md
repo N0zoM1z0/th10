@@ -1,5 +1,9 @@
 # Chain construction and missing source mappings
 
+The later [exact runner proof](../chain-dispatcher-native/README.md) adds two
+canonical units. Existing large32/15 source/artifact pins and their unit recipes
+remain unchanged, but this pack's old whole-manifest SHA is now historical.
+
 Later context: [dispatcher recovery](../chain-dispatchers/README.md) changes
 Chain.cpp and Main.cpp and rebuilds the two affected14-TU carriers. This pack's
 construction/source and cold receipts retain their historical inputs. Its

@@ -1,0 +1,1932 @@
+{
+  "state": "canonical exact in declared context; product/original ownership unresolved",
+  "starting_head": "4c4c98ac879bcacdee570e713de534bc50871edf",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text": {
+    "bytes": 412289,
+    "inclusive_range": [
+      "0x00401000",
+      "0x00465A80"
+    ],
+    "before_after_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "readOnly_noanalysis_rollback": true
+  },
+  "source_sha256": {
+    "src/Chain.cpp": "d729a451acee4c0910cba489f8f66c0f8a92bab997f7a2f496448eb5cbc197d7",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "scripts/transition_effect_host_test.py": "8fe7b4d9e473d85c5942c34f052b0b06f5d662592fe307fb2bddf922d9c79fff",
+    "config/transition-effect-host-inputs.json": "8bebc30d1f0cd2e27132a46d73368c21d837b88c176cfbd046306bf3e72b7750",
+    "config/match-units.toml": "ad04f50e44151b9db2a32975ee46ea3e92df9a2779a832fc6ff226f4b019aa47"
+  },
+  "data_model": {
+    "reviewed_base": "0x00491C28",
+    "critical_sections_offset": 1612,
+    "counter_array_offset": 1780,
+    "CS0": "0x00492274",
+    "counter0": "0x0049231C",
+    "source_counter_type": "existing unsigned char[7], unchanged",
+    "original_source_type_owner_TU": "unknown",
+    "no_new_global_definition": true
+  },
+  "canonical_units": {
+    "chain-run-calc": {
+      "artifact_kind": "linked-pe",
+      "source": "src/ScriptViewer.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/Chain.cpp",
+        "src/FrontEnd.cpp",
+        "src/Player.cpp",
+        "src/Gui.cpp",
+        "src/Enemy.cpp",
+        "src/BulletLifecycle.cpp",
+        "src/InputState.cpp",
+        "src/Main.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/ScriptViewerLifecycle.cpp",
+        "src/ItemManager.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "output_dir": "build/match-linked/ScriptViewerLifecycle-cold-2",
+      "functions": [
+        "MainRunCalcChain"
+      ],
+      "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+      "pdb_source": "src/Chain.cpp",
+      "target_address": 4496384,
+      "size": 308,
+      "support_profiles": {
+        "src/Enemy.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ]
+      },
+      "linkages": [
+        {
+          "offset": 6,
+          "type": "DIR32",
+          "symbol": "__imp__EnterCriticalSection@4",
+          "target": 4612272
+        },
+        {
+          "offset": 14,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 21,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 27,
+          "type": "DIR32",
+          "symbol": "__imp__LeaveCriticalSection@4",
+          "target": 4612276
+        },
+        {
+          "offset": 34,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 97,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 105,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 116,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 126,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 137,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 146,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496660
+        },
+        {
+          "offset": 173,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248
+        },
+        {
+          "offset": 241,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 248,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 258,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 276,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496550
+        },
+        {
+          "offset": 280,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496583
+        },
+        {
+          "offset": 284,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496534
+        },
+        {
+          "offset": 288,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496606
+        },
+        {
+          "offset": 292,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496596
+        },
+        {
+          "offset": 296,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496616
+        },
+        {
+          "offset": 300,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496432
+        },
+        {
+          "offset": 304,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496571
+        }
+      ]
+    },
+    "chain-run-draw": {
+      "artifact_kind": "linked-pe",
+      "source": "src/ScriptViewer.cpp",
+      "support_sources": [
+        "src/AnmManager.cpp",
+        "src/Chain.cpp",
+        "src/FrontEnd.cpp",
+        "src/Player.cpp",
+        "src/Gui.cpp",
+        "src/Enemy.cpp",
+        "src/BulletLifecycle.cpp",
+        "src/InputState.cpp",
+        "src/Main.cpp",
+        "src/ScriptViewerWorker.cpp",
+        "src/ScriptViewerLifecycle.cpp",
+        "src/ItemManager.cpp",
+        "src/AnmVmId.cpp"
+      ],
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHs"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "entry_symbol": "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ",
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "output_dir": "build/match-linked/ScriptViewerLifecycle-cold-2",
+      "functions": [
+        "MainRunDrawChain"
+      ],
+      "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+      "pdb_source": "src/Chain.cpp",
+      "target_address": 4496704,
+      "size": 268,
+      "support_profiles": {
+        "src/Enemy.cpp": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ]
+      },
+      "linkages": [
+        {
+          "offset": 7,
+          "type": "DIR32",
+          "symbol": "__imp__EnterCriticalSection@4",
+          "target": 4612272
+        },
+        {
+          "offset": 12,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 20,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 30,
+          "type": "DIR32",
+          "symbol": "__imp__LeaveCriticalSection@4",
+          "target": 4612276
+        },
+        {
+          "offset": 38,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 87,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 95,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 106,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 116,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 127,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 136,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496948
+        },
+        {
+          "offset": 155,
+          "type": "REL32",
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "target": 4497248
+        },
+        {
+          "offset": 211,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1612
+        },
+        {
+          "offset": 218,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 226,
+          "type": "DIR32",
+          "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+          "target": 4791336,
+          "addend": 1780
+        },
+        {
+          "offset": 244,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496852
+        },
+        {
+          "offset": 248,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496863
+        },
+        {
+          "offset": 252,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496844
+        },
+        {
+          "offset": 256,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496894
+        },
+        {
+          "offset": 260,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496884
+        },
+        {
+          "offset": 264,
+          "type": "DIR32",
+          "local": true,
+          "target": 4496904
+        }
+      ]
+    }
+  },
+  "canonical_manifest_sha256": "ad04f50e44151b9db2a32975ee46ea3e92df9a2779a832fc6ff226f4b019aa47",
+  "complete_second_cold_results": {
+    "artifact_count": 1,
+    "groups": [
+      {
+        "artifact": "build/match-linked/ScriptViewerLifecycle-cold-2",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "chain-run-calc",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/EHs"
+        ],
+        "source": "src/ScriptViewer.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x0040D880",
+            "capstone_version": "5.0.6",
+            "compared_size": 308,
+            "data_spans": [],
+            "decoded_bytes": 307,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/ScriptViewerLifecycle-cold-2/source.exe",
+            "image_sha256": "0cbb3cc4365e5576f49320568ab8a8ab5229a3c62db9964a8f41ff6a4627e2a9",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x00426694",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0407",
+                "local": false,
+                "offset": "0x6",
+                "symbol": "__imp__EnterCriticalSection@4",
+                "target": "0x004660B0",
+                "target_encoded_value": "0x004660B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1612,
+                "candidate_target": "0x00426B70",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0xE",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x00492274",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x15",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x004266C8",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0420",
+                "local": false,
+                "offset": "0x1B",
+                "symbol": "__imp__LeaveCriticalSection@4",
+                "target": "0x004660B4",
+                "target_encoded_value": "0x004660B4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x22",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1612,
+                "candidate_target": "0x00426B70",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x61",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x00492274",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x69",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1612,
+                "candidate_target": "0x00426B70",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x74",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x00492274",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x7E",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x89",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D994",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x92",
+                "symbol": "<local>",
+                "target": "0x00449D14",
+                "target_encoded_value": "0x00449D14",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D6F0",
+                "linked_symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+                "local": false,
+                "offset": "0xAD",
+                "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+                "target": "0x00449F60",
+                "target_encoded_value": "0x000002AF",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 1612,
+                "candidate_target": "0x00426B70",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0xF1",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x00492274",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0xF8",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x102",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D926",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x114",
+                "symbol": "<local>",
+                "target": "0x00449CA6",
+                "target_encoded_value": "0x00449CA6",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D947",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x118",
+                "symbol": "<local>",
+                "target": "0x00449CC7",
+                "target_encoded_value": "0x00449CC7",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D916",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x11C",
+                "symbol": "<local>",
+                "target": "0x00449C96",
+                "target_encoded_value": "0x00449C96",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D95E",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x120",
+                "symbol": "<local>",
+                "target": "0x00449CDE",
+                "target_encoded_value": "0x00449CDE",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D954",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x124",
+                "symbol": "<local>",
+                "target": "0x00449CD4",
+                "target_encoded_value": "0x00449CD4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D968",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x128",
+                "symbol": "<local>",
+                "target": "0x00449CE8",
+                "target_encoded_value": "0x00449CE8",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D8B0",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x12C",
+                "symbol": "<local>",
+                "target": "0x00449C30",
+                "target_encoded_value": "0x00449C30",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D93B",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x130",
+                "symbol": "<local>",
+                "target": "0x00449CBB",
+                "target_encoded_value": "0x00449CBB",
+                "type": "DIR32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 308,
+            "matched_compared_bytes": 308,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "68a304d84a17fe46ab474b8ccb7f822c",
+            "pdb_module_index": 14,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 308,
+            "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+            "target_address": "0x00449C00",
+            "unit": "chain-run-calc"
+          },
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x0040D9C0",
+            "capstone_version": "5.0.6",
+            "compared_size": 268,
+            "data_spans": [],
+            "decoded_bytes": 263,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/ScriptViewerLifecycle-cold-2/source.exe",
+            "image_sha256": "0cbb3cc4365e5576f49320568ab8a8ab5229a3c62db9964a8f41ff6a4627e2a9",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x00426694",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0407",
+                "local": false,
+                "offset": "0x7",
+                "symbol": "__imp__EnterCriticalSection@4",
+                "target": "0x004660B0",
+                "target_encoded_value": "0x004660B0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1612,
+                "candidate_target": "0x00426B70",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0xC",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x00492274",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x14",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x004266C8",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0420",
+                "local": false,
+                "offset": "0x1E",
+                "symbol": "__imp__LeaveCriticalSection@4",
+                "target": "0x004660B4",
+                "target_encoded_value": "0x004660B4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x26",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1612,
+                "candidate_target": "0x00426B70",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x57",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x00492274",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x5F",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1612,
+                "candidate_target": "0x00426B70",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x6A",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x00492274",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x74",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0x7F",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040DAB4",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x88",
+                "symbol": "<local>",
+                "target": "0x00449E34",
+                "target_encoded_value": "0x00449E34",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D6F0",
+                "linked_symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+                "local": false,
+                "offset": "0x9B",
+                "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+                "target": "0x00449F60",
+                "target_encoded_value": "0x00000181",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 1612,
+                "candidate_target": "0x00426B70",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0xD3",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x00492274",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0xDA",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 1780,
+                "candidate_target": "0x00426C18",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+                "local": false,
+                "offset": "0xE2",
+                "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+                "target": "0x00491C28",
+                "target_encoded_value": "0x0049231C",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040DA54",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0xF4",
+                "symbol": "<local>",
+                "target": "0x00449DD4",
+                "target_encoded_value": "0x00449DD4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040DA5F",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0xF8",
+                "symbol": "<local>",
+                "target": "0x00449DDF",
+                "target_encoded_value": "0x00449DDF",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040DA4C",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0xFC",
+                "symbol": "<local>",
+                "target": "0x00449DCC",
+                "target_encoded_value": "0x00449DCC",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040DA7E",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x100",
+                "symbol": "<local>",
+                "target": "0x00449DFE",
+                "target_encoded_value": "0x00449DFE",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040DA74",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x104",
+                "symbol": "<local>",
+                "target": "0x00449DF4",
+                "target_encoded_value": "0x00449DF4",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040DA88",
+                "linked_symbol": "<local>",
+                "local": true,
+                "offset": "0x108",
+                "symbol": "<local>",
+                "target": "0x00449E08",
+                "target_encoded_value": "0x00449E08",
+                "type": "DIR32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 268,
+            "matched_compared_bytes": 268,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "68a304d84a17fe46ab474b8ccb7f822c",
+            "pdb_module_index": 14,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 268,
+            "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+            "target_address": "0x00449D40",
+            "unit": "chain-run-draw"
+          }
+        ]
+      }
+    ],
+    "matched_bytes": 576,
+    "result": "exact",
+    "source_count": 1,
+    "unit_count": 2
+  },
+  "first_cold": {
+    "selected_unit_count": 4,
+    "bytes": 772,
+    "snapshot": "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1",
+    "snapshot_sha256": {
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/source.map": "f1881bd353d1174b05c10e657854171f747d68418fd6780635dba6545643fd70",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/link-attempt-2.log": "919100db25d8563bfb11dd327ae84c45ae8619fba571ea8472c78991f4e7fe1d",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/source.exe": "9577ebc636dcfd31f17a2534555d5a760ab693ed8a5dc47b640e42a5b6887017",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/source.ltcg.obj": "f0228879267563208955587d3ad0303f2a7997f0df33a2b7ed7398616a6fcc1c",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-07-InputState.ltcg.obj": "ee9755ab51069d7aa11bfea1e01d67f47550660233da8f55a8adfc810f101def",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-10-ScriptViewerLifecycle.ltcg.obj": "46efe6501cb1da90e1af6e4ad1d2ea27b672b1031b098c0405f9f91042ddf368",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-05-Enemy.ltcg.obj": "d08f2f8fc3ac5d2c3ef384eb3276f74f9a49e3dc46c69dc0a478ab15fe684bb0",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-09-ScriptViewerWorker.ltcg.obj": "16d94fff206a123ae8faca12c94fe1e1482da3d7ba1e59ceaf6e1a5c3d520e84",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-00-AnmManager.ltcg.obj": "402be3118c0b35e8df124ceee64b4cd4f4c5fd49857f312685261a50a1534154",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-11-ItemManager.ltcg.obj": "5afa089e199d27c5598351fcf744eadc6413f4d45ccf29c901b48d4d3da3a3f4",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/link-attempt-1.log": "6e031e5e53dae9a8b3527d01b39041349c57dc9b845e56f72193dd4b8c1e4e09",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-02-FrontEnd.ltcg.obj": "9c349985e2b54c70c05aed970938698730483168bd8a3a48ca7bfa00a63fea70",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-03-Player.ltcg.obj": "3b3293296dd029b868c186dc272fb3e4e242dd48e5b587ae2b920e7507fa64e5",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-01-Chain.ltcg.obj": "5f3c5345b9fb343c36b91613e0ad837adc6139ab258bda3a4661cc90a91edf0f",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/link-aliases.rsp": "1f1e41589c61635ef65678bb8629e22008415a9cdf95b64165fe832f0430ad1f",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/link-anchors.obj": "d7ade1e9ab94cf8c571966b668f22fdadbfbea319a3f0d4997d8f9e30429af5d",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/link-anchors.c": "485de38fae5411bae5e818d29bc45707d93dde5bee29e7a5422e1fa65086a9b2",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-08-Main.ltcg.obj": "1d9b9d7df1d21f85100657de6103694dd3402814eabfc3fb08875f2e32148186",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-04-Gui.ltcg.obj": "494673814db1b13407e826096d45e2bf52abf532f9f6cd869ffa6bb845d30346",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/source.pdb": "24e920c34e60baa6a250c7e791c2c75906e3a3bffc958cf900c968282e4091e2",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-06-BulletLifecycle.ltcg.obj": "9b78cf48dd2b3173addd351305e544bb792578074b7144a9e3e211127cb75e1c",
+      "build/gpt-6.1-sol/chain-counter-codegen-20261022/cold-1/support-12-AnmVmId.ltcg.obj": "d6953d4f0f7afbd0be5fede2e2c587cef41781bab8138f4d1096bf92b18d256b"
+    },
+    "new_unit_results": [
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x0040D880",
+        "capstone_version": "5.0.6",
+        "compared_size": 308,
+        "data_spans": [],
+        "decoded_bytes": 307,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/ScriptViewerLifecycle-cold-2/source.exe",
+        "image_sha256": "9577ebc636dcfd31f17a2534555d5a760ab693ed8a5dc47b640e42a5b6887017",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x00426694",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0407",
+            "local": false,
+            "offset": "0x6",
+            "symbol": "__imp__EnterCriticalSection@4",
+            "target": "0x004660B0",
+            "target_encoded_value": "0x004660B0",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1612,
+            "candidate_target": "0x00426B70",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0xE",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x00492274",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x15",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x004266C8",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0420",
+            "local": false,
+            "offset": "0x1B",
+            "symbol": "__imp__LeaveCriticalSection@4",
+            "target": "0x004660B4",
+            "target_encoded_value": "0x004660B4",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x22",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1612,
+            "candidate_target": "0x00426B70",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x61",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x00492274",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x69",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1612,
+            "candidate_target": "0x00426B70",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x74",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x00492274",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x7E",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x89",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D994",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x92",
+            "symbol": "<local>",
+            "target": "0x00449D14",
+            "target_encoded_value": "0x00449D14",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D6F0",
+            "linked_symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+            "local": false,
+            "offset": "0xAD",
+            "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+            "target": "0x00449F60",
+            "target_encoded_value": "0x000002AF",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 1612,
+            "candidate_target": "0x00426B70",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0xF1",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x00492274",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0xF8",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x102",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D926",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x114",
+            "symbol": "<local>",
+            "target": "0x00449CA6",
+            "target_encoded_value": "0x00449CA6",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D947",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x118",
+            "symbol": "<local>",
+            "target": "0x00449CC7",
+            "target_encoded_value": "0x00449CC7",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D916",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x11C",
+            "symbol": "<local>",
+            "target": "0x00449C96",
+            "target_encoded_value": "0x00449C96",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D95E",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x120",
+            "symbol": "<local>",
+            "target": "0x00449CDE",
+            "target_encoded_value": "0x00449CDE",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D954",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x124",
+            "symbol": "<local>",
+            "target": "0x00449CD4",
+            "target_encoded_value": "0x00449CD4",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D968",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x128",
+            "symbol": "<local>",
+            "target": "0x00449CE8",
+            "target_encoded_value": "0x00449CE8",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D8B0",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x12C",
+            "symbol": "<local>",
+            "target": "0x00449C30",
+            "target_encoded_value": "0x00449C30",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D93B",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x130",
+            "symbol": "<local>",
+            "target": "0x00449CBB",
+            "target_encoded_value": "0x00449CBB",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 308,
+        "matched_compared_bytes": 308,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "59600a1194d7d14da27f823945b7218a",
+        "pdb_module_index": 14,
+        "raw_equal": false,
+        "result": "exact",
+        "returncode": 0,
+        "size": 308,
+        "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+        "target_address": "0x00449C00",
+        "unit": "chain-run-calc"
+      },
+      {
+        "artifact_kind": "linked-pe",
+        "candidate_address": "0x0040D9C0",
+        "capstone_version": "5.0.6",
+        "compared_size": 268,
+        "data_spans": [],
+        "decoded_bytes": 263,
+        "extent_source": "pdb-section-contribution",
+        "first_differences": [],
+        "image": "build/match-linked/ScriptViewerLifecycle-cold-2/source.exe",
+        "image_sha256": "9577ebc636dcfd31f17a2534555d5a760ab693ed8a5dc47b640e42a5b6887017",
+        "linkages": [
+          {
+            "addend": 0,
+            "candidate_target": "0x00426694",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0407",
+            "local": false,
+            "offset": "0x7",
+            "symbol": "__imp__EnterCriticalSection@4",
+            "target": "0x004660B0",
+            "target_encoded_value": "0x004660B0",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1612,
+            "candidate_target": "0x00426B70",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0xC",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x00492274",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x14",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x004266C8",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0420",
+            "local": false,
+            "offset": "0x1E",
+            "symbol": "__imp__LeaveCriticalSection@4",
+            "target": "0x004660B4",
+            "target_encoded_value": "0x004660B4",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x26",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1612,
+            "candidate_target": "0x00426B70",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x57",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x00492274",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x5F",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1612,
+            "candidate_target": "0x00426B70",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x6A",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x00492274",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x74",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0x7F",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040DAB4",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x88",
+            "symbol": "<local>",
+            "target": "0x00449E34",
+            "target_encoded_value": "0x00449E34",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040D6F0",
+            "linked_symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+            "local": false,
+            "offset": "0x9B",
+            "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+            "target": "0x00449F60",
+            "target_encoded_value": "0x00000181",
+            "type": "REL32",
+            "width": 4
+          },
+          {
+            "addend": 1612,
+            "candidate_target": "0x00426B70",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0xD3",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x00492274",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0xDA",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 1780,
+            "candidate_target": "0x00426C18",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0315",
+            "local": false,
+            "offset": "0xE2",
+            "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+            "target": "0x00491C28",
+            "target_encoded_value": "0x0049231C",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040DA54",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0xF4",
+            "symbol": "<local>",
+            "target": "0x00449DD4",
+            "target_encoded_value": "0x00449DD4",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040DA5F",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0xF8",
+            "symbol": "<local>",
+            "target": "0x00449DDF",
+            "target_encoded_value": "0x00449DDF",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040DA4C",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0xFC",
+            "symbol": "<local>",
+            "target": "0x00449DCC",
+            "target_encoded_value": "0x00449DCC",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040DA7E",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x100",
+            "symbol": "<local>",
+            "target": "0x00449DFE",
+            "target_encoded_value": "0x00449DFE",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040DA74",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x104",
+            "symbol": "<local>",
+            "target": "0x00449DF4",
+            "target_encoded_value": "0x00449DF4",
+            "type": "DIR32",
+            "width": 4
+          },
+          {
+            "addend": 0,
+            "candidate_target": "0x0040DA88",
+            "linked_symbol": "<local>",
+            "local": true,
+            "offset": "0x108",
+            "symbol": "<local>",
+            "target": "0x00449E08",
+            "target_encoded_value": "0x00449E08",
+            "type": "DIR32",
+            "width": 4
+          }
+        ],
+        "matched_bytes": 268,
+        "matched_compared_bytes": 268,
+        "normalization_complete": true,
+        "pdb_age": 1,
+        "pdb_guid": "59600a1194d7d14da27f823945b7218a",
+        "pdb_module_index": 14,
+        "raw_equal": false,
+        "result": "exact",
+        "returncode": 0,
+        "size": 268,
+        "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+        "target_address": "0x00449D40",
+        "unit": "chain-run-draw"
+      }
+    ]
+  },
+  "independent_target_local_offset_negative": {
+    "calc": {
+      "result": "unsupported",
+      "error": "local linked field (288, 'DIR32', 4) changes its destination offset: candidate=0xd4 target=0xde"
+    },
+    "draw": {
+      "result": "unsupported",
+      "error": "local linked field (256, 'DIR32', 4) changes its destination offset: candidate=0xb4 target=0xbe"
+    }
+  },
+  "source_models": [
+    {
+      "label": "scalar-wrappers",
+      "scope": "one changed Chain object +13 hash-verified existing game objects; not a full cold",
+      "source_sha256": "c435b1a5b42c31e39a957b7751c3ac1ae0c0ca2840b6cc9b126be4fe212a1222",
+      "source_patch_from_adopted": "--- src/Chain.cpp\n+++ scalar-wrappers/Chain.cpp\n@@ -3,7 +3,6 @@\n // Chain::UnregisterElem and Chain::RemoveAllFromList are canonical exact; see\n // docs/KNOWLEDGE_BASE.md and config/match-units.toml.\n #include \"Chain.hpp\"\n-#include \"Main.hpp\"\n #include <windows.h>\n #include <stdlib.h>\n \n@@ -220,6 +219,17 @@\n \n // TH10 frame dispatchers. The names are descriptive; original source ownership\n // is unknown. Both target entries take one stack argument and end in RET 4.\n+static __inline void ChainEnterSection()\n+{\n+    EnterCriticalSection(&th10::g_CriticalSections[0]);\n+    ++th10::g_ChainNestCounter;\n+}\n+static __inline void ChainLeaveSection()\n+{\n+    LeaveCriticalSection(&th10::g_CriticalSections[0]);\n+    --th10::g_ChainNestCounter;\n+}\n+\n int __stdcall MainRunCalcChain(void *owner)\n {\n     th10::Chain *chain = static_cast<th10::Chain *>(owner);\n@@ -229,8 +239,7 @@\n     int updatedCount;\n     int result;\n \n-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+    ChainEnterSection();\n restart:\n     updatedCount = 0;\n     node = chain->CalcList()->next;\n@@ -243,11 +252,9 @@\n execute_again:\n             if (elem->flags & 2)\n             {\n-                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                --g_MainSupervisorView.criticalSectionLockCounts[0];\n+                ChainLeaveSection();\n                 result = elem->callback(elem->arg);\n-                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+                ChainEnterSection();\n                 switch (result)\n                 {\n                 case 0:\n@@ -257,11 +264,11 @@\n                     continue;\n                 case 2:\n                     goto execute_again;\n+                case 3:\n+                    updatedCount = 1;\n+                    goto loop_exit;\n                 case 4:\n                     updatedCount = 0;\n-                    goto loop_exit;\n-                case 3:\n-                    updatedCount = 1;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -279,8 +286,7 @@\n         node = next;\n     }\n loop_exit:\n-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    --g_MainSupervisorView.criticalSectionLockCounts[0];\n+    ChainLeaveSection();\n     return updatedCount;\n }\n \n@@ -293,8 +299,7 @@\n     int updatedCount;\n     int result;\n \n-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+    ChainEnterSection();\n     updatedCount = 0;\n     node = chain->DrawList()->next;\n     while (node != NULL)\n@@ -306,11 +311,9 @@\n execute_again:\n             if (elem->flags & 2)\n             {\n-                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                --g_MainSupervisorView.criticalSectionLockCounts[0];\n+                ChainLeaveSection();\n                 result = elem->callback(elem->arg);\n-                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+                ChainEnterSection();\n                 switch (result)\n                 {\n                 case 0:\n@@ -318,11 +321,11 @@\n                     break;\n                 case 2:\n                     goto execute_again;\n+                case 3:\n+                    updatedCount = 1;\n+                    goto loop_exit;\n                 case 4:\n                     updatedCount = 0;\n-                    goto loop_exit;\n-                case 3:\n-                    updatedCount = 1;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -334,7 +337,6 @@\n         node = next;\n     }\n loop_exit:\n-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    --g_MainSupervisorView.criticalSectionLockCounts[0];\n+    ChainLeaveSection();\n     return updatedCount;\n }\n",
+      "owners": {
+        "?MainRunCalcChain": {
+          "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+          "size": 316,
+          "body_sha256": "ba2e4b1540d3363c9e6b455ec6e375a7f59e9cabca93ce934786f9a178a69358"
+        },
+        "?MainRunDrawChain": {
+          "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+          "size": 272,
+          "body_sha256": "0b9a314325f4f85fc9b61093a94132069fbc4121b95b342f8788ddfc2e08ed21"
+        },
+        "?UnregisterElem@Chain": {
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "size": 114,
+          "body_sha256": "beb72d7abb6bfc269c0515f8857aa0d1c19d7d50edc7526b3eac350117e6c62f"
+        },
+        "?RemoveAllFromList@Chain": {
+          "symbol": "?RemoveAllFromList@Chain@th10@@SGXPAEPAU12@@Z",
+          "size": 82,
+          "body_sha256": "c4f2aadfe8ff8e8af9c4ffacd59b30b8ddd88476f9298de88aa93043e1e2c100"
+        }
+      },
+      "adopted": false
+    },
+    {
+      "label": "supervisor-direct",
+      "scope": "one changed Chain object +13 hash-verified existing game objects; not a full cold",
+      "source_sha256": "474710d160c623fa0b6fc6e5288762899c48dcbc4795cde057cd2766c61deb3c",
+      "source_patch_from_adopted": "--- src/Chain.cpp\n+++ supervisor-direct/Chain.cpp\n@@ -257,11 +257,11 @@\n                     continue;\n                 case 2:\n                     goto execute_again;\n+                case 3:\n+                    updatedCount = 1;\n+                    goto loop_exit;\n                 case 4:\n                     updatedCount = 0;\n-                    goto loop_exit;\n-                case 3:\n-                    updatedCount = 1;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -318,11 +318,11 @@\n                     break;\n                 case 2:\n                     goto execute_again;\n+                case 3:\n+                    updatedCount = 1;\n+                    goto loop_exit;\n                 case 4:\n                     updatedCount = 0;\n-                    goto loop_exit;\n-                case 3:\n-                    updatedCount = 1;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n",
+      "owners": {
+        "?MainRunCalcChain": {
+          "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+          "size": 308,
+          "body_sha256": "4e80eaf65260ef1d6d8610133ce34d84dc8c2c9e422bd807e461241d773d849b"
+        },
+        "?MainRunDrawChain": {
+          "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+          "size": 268,
+          "body_sha256": "3ee9f7e531c7188fbca953e068972527c1e6a614f363c1902d212c3cc63f44a8"
+        },
+        "?UnregisterElem@Chain": {
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "size": 114,
+          "body_sha256": "beb72d7abb6bfc269c0515f8857aa0d1c19d7d50edc7526b3eac350117e6c62f"
+        },
+        "?RemoveAllFromList@Chain": {
+          "symbol": "?RemoveAllFromList@Chain@th10@@SGXPAEPAU12@@Z",
+          "size": 82,
+          "body_sha256": "c4f2aadfe8ff8e8af9c4ffacd59b30b8ddd88476f9298de88aa93043e1e2c100"
+        }
+      },
+      "adopted": false
+    },
+    {
+      "label": "supervisor-wrappers",
+      "scope": "one changed Chain object +13 hash-verified existing game objects; not a full cold",
+      "source_sha256": "fa966ef0198c79c7240d4e6907f87908d9111a9993c5641dc9e7318f7a813a50",
+      "source_patch_from_adopted": "--- src/Chain.cpp\n+++ supervisor-wrappers/Chain.cpp\n@@ -220,6 +220,17 @@\n \n // TH10 frame dispatchers. The names are descriptive; original source ownership\n // is unknown. Both target entries take one stack argument and end in RET 4.\n+static __inline void ChainEnterSection(int id)\n+{\n+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[id]);\n+    ++g_MainSupervisorView.criticalSectionLockCounts[id];\n+}\n+static __inline void ChainLeaveSection(int id)\n+{\n+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[id]);\n+    --g_MainSupervisorView.criticalSectionLockCounts[id];\n+}\n+\n int __stdcall MainRunCalcChain(void *owner)\n {\n     th10::Chain *chain = static_cast<th10::Chain *>(owner);\n@@ -229,8 +240,7 @@\n     int updatedCount;\n     int result;\n \n-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+    ChainEnterSection(0);\n restart:\n     updatedCount = 0;\n     node = chain->CalcList()->next;\n@@ -243,11 +253,9 @@\n execute_again:\n             if (elem->flags & 2)\n             {\n-                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                --g_MainSupervisorView.criticalSectionLockCounts[0];\n+                ChainLeaveSection(0);\n                 result = elem->callback(elem->arg);\n-                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+                ChainEnterSection(0);\n                 switch (result)\n                 {\n                 case 0:\n@@ -257,11 +265,11 @@\n                     continue;\n                 case 2:\n                     goto execute_again;\n+                case 3:\n+                    updatedCount = 1;\n+                    goto loop_exit;\n                 case 4:\n                     updatedCount = 0;\n-                    goto loop_exit;\n-                case 3:\n-                    updatedCount = 1;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -279,8 +287,7 @@\n         node = next;\n     }\n loop_exit:\n-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    --g_MainSupervisorView.criticalSectionLockCounts[0];\n+    ChainLeaveSection(0);\n     return updatedCount;\n }\n \n@@ -293,8 +300,7 @@\n     int updatedCount;\n     int result;\n \n-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+    ChainEnterSection(0);\n     updatedCount = 0;\n     node = chain->DrawList()->next;\n     while (node != NULL)\n@@ -306,11 +312,9 @@\n execute_again:\n             if (elem->flags & 2)\n             {\n-                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                --g_MainSupervisorView.criticalSectionLockCounts[0];\n+                ChainLeaveSection(0);\n                 result = elem->callback(elem->arg);\n-                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+                ChainEnterSection(0);\n                 switch (result)\n                 {\n                 case 0:\n@@ -318,11 +322,11 @@\n                     break;\n                 case 2:\n                     goto execute_again;\n+                case 3:\n+                    updatedCount = 1;\n+                    goto loop_exit;\n                 case 4:\n                     updatedCount = 0;\n-                    goto loop_exit;\n-                case 3:\n-                    updatedCount = 1;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -334,7 +338,6 @@\n         node = next;\n     }\n loop_exit:\n-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    --g_MainSupervisorView.criticalSectionLockCounts[0];\n+    ChainLeaveSection(0);\n     return updatedCount;\n }\n",
+      "owners": {
+        "?MainRunCalcChain": {
+          "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+          "size": 308,
+          "body_sha256": "b0f6dd51ba1608cf47ad113080a1f5fef2cf852e6d81a45bb33c2c147ba9c709"
+        },
+        "?MainRunDrawChain": {
+          "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+          "size": 268,
+          "body_sha256": "a191955def7b2edb4ae1d3ed2803fe280d4880607819f23165f73764b1d8efdf"
+        },
+        "?UnregisterElem@Chain": {
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "size": 114,
+          "body_sha256": "beb72d7abb6bfc269c0515f8857aa0d1c19d7d50edc7526b3eac350117e6c62f"
+        },
+        "?RemoveAllFromList@Chain": {
+          "symbol": "?RemoveAllFromList@Chain@th10@@SGXPAEPAU12@@Z",
+          "size": 82,
+          "body_sha256": "c4f2aadfe8ff8e8af9c4ffacd59b30b8ddd88476f9298de88aa93043e1e2c100"
+        }
+      },
+      "adopted": false
+    },
+    {
+      "label": "supervisor-case-order",
+      "scope": "one changed Chain object +13 hash-verified existing game objects; not a full cold",
+      "source_sha256": "d729a451acee4c0910cba489f8f66c0f8a92bab997f7a2f496448eb5cbc197d7",
+      "source_patch_from_adopted": "",
+      "owners": {
+        "?MainRunCalcChain": {
+          "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+          "size": 308,
+          "body_sha256": "8c3a7ced937e202c787791ae98b62beebe30f3735be437ad04bfcc224d22214c"
+        },
+        "?MainRunDrawChain": {
+          "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+          "size": 268,
+          "body_sha256": "b8007e7dac9282fcc1b48b987aaa38f989acc3cc3cdb573c33541ed20e27f367"
+        },
+        "?UnregisterElem@Chain": {
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "size": 114,
+          "body_sha256": "beb72d7abb6bfc269c0515f8857aa0d1c19d7d50edc7526b3eac350117e6c62f"
+        },
+        "?RemoveAllFromList@Chain": {
+          "symbol": "?RemoveAllFromList@Chain@th10@@SGXPAEPAU12@@Z",
+          "size": 82,
+          "body_sha256": "c4f2aadfe8ff8e8af9c4ffacd59b30b8ddd88476f9298de88aa93043e1e2c100"
+        }
+      },
+      "adopted": true
+    },
+    {
+      "label": "include-only",
+      "scope": "one changed Chain object +13 hash-verified existing game objects; not a full cold",
+      "source_sha256": "23ab28ccfdf6e630e26679319987dddb7c7972f516fec3ac718492c1987fcaec",
+      "source_patch_from_adopted": "--- src/Chain.cpp\n+++ include-only/Chain.cpp\n@@ -229,8 +229,8 @@\n     int updatedCount;\n     int result;\n \n-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+    EnterCriticalSection(&th10::g_CriticalSections[0]);\n+    ++th10::g_ChainNestCounter;\n restart:\n     updatedCount = 0;\n     node = chain->CalcList()->next;\n@@ -243,11 +243,11 @@\n execute_again:\n             if (elem->flags & 2)\n             {\n-                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                --g_MainSupervisorView.criticalSectionLockCounts[0];\n+                LeaveCriticalSection(&th10::g_CriticalSections[0]);\n+                --th10::g_ChainNestCounter;\n                 result = elem->callback(elem->arg);\n-                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+                EnterCriticalSection(&th10::g_CriticalSections[0]);\n+                ++th10::g_ChainNestCounter;\n                 switch (result)\n                 {\n                 case 0:\n@@ -257,11 +257,11 @@\n                     continue;\n                 case 2:\n                     goto execute_again;\n+                case 3:\n+                    updatedCount = 1;\n+                    goto loop_exit;\n                 case 4:\n                     updatedCount = 0;\n-                    goto loop_exit;\n-                case 3:\n-                    updatedCount = 1;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -279,8 +279,8 @@\n         node = next;\n     }\n loop_exit:\n-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    --g_MainSupervisorView.criticalSectionLockCounts[0];\n+    LeaveCriticalSection(&th10::g_CriticalSections[0]);\n+    --th10::g_ChainNestCounter;\n     return updatedCount;\n }\n \n@@ -293,8 +293,8 @@\n     int updatedCount;\n     int result;\n \n-    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+    EnterCriticalSection(&th10::g_CriticalSections[0]);\n+    ++th10::g_ChainNestCounter;\n     updatedCount = 0;\n     node = chain->DrawList()->next;\n     while (node != NULL)\n@@ -306,11 +306,11 @@\n execute_again:\n             if (elem->flags & 2)\n             {\n-                LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                --g_MainSupervisorView.criticalSectionLockCounts[0];\n+                LeaveCriticalSection(&th10::g_CriticalSections[0]);\n+                --th10::g_ChainNestCounter;\n                 result = elem->callback(elem->arg);\n-                EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-                ++g_MainSupervisorView.criticalSectionLockCounts[0];\n+                EnterCriticalSection(&th10::g_CriticalSections[0]);\n+                ++th10::g_ChainNestCounter;\n                 switch (result)\n                 {\n                 case 0:\n@@ -318,11 +318,11 @@\n                     break;\n                 case 2:\n                     goto execute_again;\n+                case 3:\n+                    updatedCount = 1;\n+                    goto loop_exit;\n                 case 4:\n                     updatedCount = 0;\n-                    goto loop_exit;\n-                case 3:\n-                    updatedCount = 1;\n                     goto loop_exit;\n                 case 5:\n                     updatedCount = -1;\n@@ -334,7 +334,7 @@\n         node = next;\n     }\n loop_exit:\n-    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);\n-    --g_MainSupervisorView.criticalSectionLockCounts[0];\n+    LeaveCriticalSection(&th10::g_CriticalSections[0]);\n+    --th10::g_ChainNestCounter;\n     return updatedCount;\n }\n",
+      "owners": {
+        "?MainRunCalcChain": {
+          "symbol": "?MainRunCalcChain@@YGHPAX@Z",
+          "size": 316,
+          "body_sha256": "8ea3958b15f6ddc2e397b3369fdefbc567875123b6b1d404fb7669016f34de0d"
+        },
+        "?MainRunDrawChain": {
+          "symbol": "?MainRunDrawChain@@YGHPAX@Z",
+          "size": 272,
+          "body_sha256": "38c8dce06d2acb4ba5724f21ea8d16838e925f092033b5fd341e943e9b0f33ec"
+        },
+        "?UnregisterElem@Chain": {
+          "symbol": "?UnregisterElem@Chain@th10@@SIXPAUChainElem@2@PAU12@@Z",
+          "size": 114,
+          "body_sha256": "beb72d7abb6bfc269c0515f8857aa0d1c19d7d50edc7526b3eac350117e6c62f"
+        },
+        "?RemoveAllFromList@Chain": {
+          "symbol": "?RemoveAllFromList@Chain@th10@@SGXPAEPAU12@@Z",
+          "size": 82,
+          "body_sha256": "c4f2aadfe8ff8e8af9c4ffacd59b30b8ddd88476f9298de88aa93043e1e2c100"
+        }
+      },
+      "adopted": false
+    },
+    {
+      "label": "signed-scalar",
+      "scope": "source compilation completed; cached-harness link failed before image/comparison",
+      "source_sha256": "105f22627e3f6a5ed5f1f8a5d26f4b21cfba75486fa960b901b68db290668b90",
+      "link_failure": "New signed-char decorated3CA symbol absent from cached unsigned3EA data-anchor response. No signedness or codegen conclusion.",
+      "log_sha256": "1e04530db9f4aca7a7e2cdb6520c3914b9472f8b986a6f84b9f5dac9a9ff8912",
+      "adopted": false
+    }
+  ],
+  "prior_large_context": {
+    "scope": "All1238 prior unit definitions unchanged;32 prior large source pins/15 native artifacts unchanged. Whole manifest SHA changes solely adding two units. No new large cold/guard/Run replay.",
+    "old_manifest_sha256": "4a05059383759d279c3d239ad3f0629654c29a6afb6101ed18d6e2048d8e87b7",
+    "new_manifest_sha256": "ad04f50e44151b9db2a32975ee46ea3e92df9a2779a832fc6ff226f4b019aa47",
+    "unchanged_prior_units": 1238,
+    "source_sha256": {
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+      "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+    },
+    "native_artifact_sha256": {
+      "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+      "build/match-linked/EnemyItemDrops/source.map": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+      "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+      "build/match-linked/EnemyItemDrops/source.exe": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+      "build/match-linked/EnemyItemDrops/source.ltcg.obj": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+      "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+      "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+      "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+      "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+      "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+      "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+      "build/match-linked/EnemyItemDrops/link-anchors.obj": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+      "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8",
+      "build/match-linked/EnemyItemDrops/source.pdb": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+      "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0"
+    }
+  },
+  "credit": {
+    "new_authored_exact_functions": 2,
+    "new_authored_exact_bytes": 576,
+    "authored_exact_functions": 399,
+    "authored_exact_bytes": 72963,
+    "overall_exact_functions": 1240,
+    "overall_exact_bytes": 139473,
+    "authored_source_functions": 610,
+    "authored_source_bytes": 247329,
+    "authored_functions": 734,
+    "authored_bytes": 273579,
+    "source_nonexact": 211,
+    "source_absent": 124,
+    "unknown_origins": 524
+  },
+  "limits": [
+    "No original class/variable/source spelling or TU/profile authorship claim",
+    "No global storage alias/data-owner closure",
+    "Diagnostic PE not a runnable Windows product",
+    "No Windows concurrency/renderer/game-runtime/semantic/port claim"
+  ]
+}

@@ -4785,3 +4785,31 @@ table fields in each whole body, with unchanged size/raw totals. Neither is
 adopted. Existing large32/15 source/artifact pins remain current without replay.
 Fresh global boundary audit has zero geometry drift; metadata1116 rows,49 state/
 107 confidence differences remain open, while unowned indirect tables18->16.
+
+## 2026-10-22 Canonical exact Chain frame runners
+
+The [native proof](evidence/chain-dispatcher-native/README.md) closes all308 bytes/
+23 fields of Calc449C00 and268/21 of Draw449D40 in two independent actual-source
+full14-TU VC7.1 build6030 colds. Owned alignment and all14 local table words are
+included; data-base/addend and local-destination checks are unchanged. One
+same-sized negative is rejected for wrong local destinations, not normalized.
+Two existing lifecycle helpers196 and registration wrappers86 also replay exact;
+new credit is only576 bytes, bringing authored399/72963 and overall1240/139473.
+
+Natural source now uses existing MainSupervisor criticalSections[0] and unsigned
+criticalSectionLockCounts[0] at base491C28+64C/+6F4, the known492274/49231C pair,
+and places case4 before3. A scalar wrapper and header-only control retain316/272;
+member direct/wrapper forms recover sizes but still fail local3/4 ordering. The
+combined direct member/order model passes all44 exhaustive fields. No global
+definition, counter type, volatile, ABI invention or padding is introduced.
+The signed-scalar source compiles but its cached-harness link lacks the newly
+decorated signed data symbol; no original signedness conclusion follows.
+
+The original class/TU/profile, source data aliases and production storage remain
+unknown despite exact codegen. Host1375/8 strict controls/19 EOL pass with two
+explicit eight-occurrence storage-role projections and one strict LF pin update.
+All1238 old unit definitions and large32/15 source/artifact pins remain unchanged;
+only the whole canonical manifest fingerprint changes by adding two units.
+No new large-owner replay or Windows runtime/product/semantic/port closure is
+claimed. The prior62-byte table-denominator correction is separate from this
+576-byte exact numerator gain.
