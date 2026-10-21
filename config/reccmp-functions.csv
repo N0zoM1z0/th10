@@ -1084,3 +1084,6 @@ MainReleaseAnmSurfaces,0x00438A30,function
 MainServiceAnmScreenshots,0x00438A60,function
 MainScreenshotWorker,0x00420540,function
 EnemyCancelManagerView::CancelBulletPattern,0x00408100,function
+PlayerTransitionToState2,0x004269D0,function
+HintOwnerView::AddCaution,0x00424650,function
+HintOwnerView::AddAutomaticEntry,0x0041A120,function

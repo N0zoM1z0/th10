@@ -3,8 +3,8 @@
 
 This host fixture proves bounded source contracts, not target execution, original
 class layout on this host, native FP control word, registration ABI, or codegen
-identity. Hint.hpp, Chain.hpp, AnmVmId.hpp, GameEffectUpdate.hpp and the source tail
-starting at // Target419120. are copied into an isolated build, together with
+identity. Hint.hpp, Chain.hpp, AnmVmId.hpp, GameEffectUpdate.hpp and the source
+from // Target419120. through Update's closing brace are copied into an isolated build, together with
 the source-extracted genuine entry and owner constructors. The only Hint source
 substitution maps the single delete entry; dependency to a live observer that
 checks/snapshots the entry before invoking the matching real delete. Mutations
@@ -279,9 +279,12 @@ def verify_classifier():
 def run(root, compiler, selected, sanitize, skip_mutations=False, optimization='O1'):
     source = (root / 'src/Hint.cpp').read_text()
     require(source.count(MARKER) == 1, 'expected exactly one Hint owner source marker')
+    update = extract_function(source, 'int HintOwnerView::Update()')
+    frame_end = source.index(update) + len(update)
+    require(frame_end > source.index(MARKER), 'Hint frame source order changed')
     source = '\n\n'.join(extract_function(source, signature) for signature in [
         'HintEntryView::HintEntryView()', 'HintOwnerView::HintOwnerView()'
-    ]) + '\n\n' + source[source.index(MARKER):]
+    ]) + '\n\n' + source[source.index(MARKER):frame_end]
     fixture = audit_dependencies(root)
     verify_classifier()
     env = dict(os.environ)

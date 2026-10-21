@@ -1,0 +1,95 @@
+{
+  "scope": "reviewed current-batch outputs only; logical file bytes, not measured filesystem blocks",
+  "removed_bytes": 5339430,
+  "removed": [
+    {
+      "path": "build/gpt-6.1-sol/player-state2-20261022/initial",
+      "bytes": 1034726,
+      "files": 15,
+      "class": "session-scratch",
+      "producer": "probe-state2.py initial",
+      "reason": "superseded by typed-position and canonical cold proof; old cast-based signature not adopted"
+    },
+    {
+      "path": "build/gpt-6.1-sol/player-state2-20261022/typed-position",
+      "bytes": 1034966,
+      "files": 15,
+      "class": "reproducible-cache",
+      "producer": "probe-state2.py typed-position",
+      "reason": "superseded by final-frozen and canonical cold receipts; all four raw native bodies repeat"
+    },
+    {
+      "path": "build/host-tests/gui-message-run-ci",
+      "bytes": 1836391,
+      "files": 49,
+      "class": "reproducible-cache",
+      "producer": "scripts/test-gui-message-run.py via scripts/ci.py",
+      "reason": "reproducible host outputs; frozen CI106 passed"
+    },
+    {
+      "path": "build/host-tests/gui-message-lifecycle-ci",
+      "bytes": 508430,
+      "files": 28,
+      "class": "reproducible-cache",
+      "producer": "scripts/test-gui-message-lifecycle.py via scripts/ci.py",
+      "reason": "reproducible host outputs; frozen CI106 passed"
+    },
+    {
+      "path": "build/host-tests/transition-effect-ci",
+      "bytes": 806575,
+      "files": 7,
+      "class": "reproducible-cache",
+      "producer": "scripts/transition_effect_host_test.py via scripts/ci.py",
+      "reason": "reproducible host outputs; frozen CI106 passed"
+    },
+    {
+      "path": "build/host-tests/transition-effect-eol-ci",
+      "bytes": 4346,
+      "files": 1,
+      "class": "reproducible-cache",
+      "producer": "scripts/transition_effect_eol_test.py via scripts/ci.py",
+      "reason": "reproducible host outputs; frozen CI106 passed"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/player-shot-source-20261022/Player.cpp.before",
+      "bytes": 80400,
+      "files": 1,
+      "class": "reproducible-cache",
+      "producer": "baseline dd241de:src/Player.cpp",
+      "reason": "exactly reproducible from immutable Git with recorded EOL mode",
+      "sha256": "7d3eadeea972ed7900f2f62cf427f7b8ac4aa18e7392bd02db77843a13f8dc55",
+      "eol": "LF"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/player-shot-source-20261022/Hint.cpp.before",
+      "bytes": 29258,
+      "files": 1,
+      "class": "reproducible-cache",
+      "producer": "baseline dd241de:src/Hint.cpp",
+      "reason": "exactly reproducible from immutable Git with recorded EOL mode",
+      "sha256": "dc37bc971c2102cbe354609f30e15654bc461a6f216d77d55f50b7da3a913cc0",
+      "eol": "CRLF"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/player-shot-source-20261022/Hint.hpp.before",
+      "bytes": 4338,
+      "files": 1,
+      "class": "reproducible-cache",
+      "producer": "baseline dd241de:src/Hint.hpp",
+      "reason": "exactly reproducible from immutable Git with recorded EOL mode",
+      "sha256": "b6c2338e848b4538ecc0111402832517fcfda930b33879854ea14ac8a90088ca",
+      "eol": "CRLF"
+    }
+  ],
+  "retained": [
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen",
+    "build/match-linked/PlayerState2Hint",
+    "final cold/native/host/CI receipts and compact facts",
+    "unresolved automatic-entry and parent-table observations"
+  ],
+  "preserved": [
+    "nine independent untracked D3D files",
+    "unclassified older analysis",
+    "target, Ghidra database, toolchains and Wine state"
+  ]
+}

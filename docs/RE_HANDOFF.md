@@ -34,58 +34,69 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 ## Current source and progress
 
-[Generated progress](PROGRESS.md): 1776 reviewed candidates, 735 confirmed
-authored functions / 273576 bytes, 1085 source mappings, 1237 exact functions
-overall. Authored exact is **396 functions / 72283 bytes (26.42% provisional)**.
-The [SVG](../resources/progress.svg) visibly fills 135.28 of 512 pixels.
-There are 206 mapped authored nonexact functions and 523 indeterminate origins;
-the complete-game denominator remains unknown. The latest extent correction
-adds two overall exact bytes (138793 total), with authored credit unchanged.
+[Generated progress](PROGRESS.md):1776 reviewed candidates,735 confirmed
+authored functions/273576 bytes,1088 source mappings and1238 exact functions
+overall. Authored exact is **397 functions/72387 bytes (26.46% provisional)**;
+overall exact138897 bytes.605 authored functions now have source,208 remain
+source-present/nonexact and130 source-absent. Source-present authored bytes are
+246417/273576 (90.07%).523 origins remain indeterminate; the complete-game
+denominator remains unknown.
 
-The [404E90 RET4 correction](evidence/leaf-compare-extent/README.md) replaces
-the old15-byte ledger/17-byte comparison with an explicit complete17-byte owner.
-One focused cold passes17/17, dense decode17 and zero fields. Copied-image
-immediate-byte controls each yield16/17; a cropped15-byte manifest is rejected.
-Source and indeterminate origin are unchanged. Current private proof is under
-`.analysis/gpt-6.1-sol/leaf-compare-extent-20261022/`; the canonical shared
-DecomphelpLeafAccessors carrier has been rebuilt, so old artifact pins are
-historical. No other unit replay is claimed.
+The latest [Player state2 and caution work](evidence/player-state2-hint/README.md)
+recovers three complete source bodies:4269D0/796,41A120/220 and424650/104.
+Only HintOwnerView::AddCaution is newly exact: two independent full six-TU cold
+links retain104 bytes/all2 fields and the same raw body. One graph is the
+private final-frozen carrier, the other canonical hint-add-caution under
+`build/match-linked/PlayerState2Hint`. It uses Player's real update entry and
+Hint, ItemManager, AnmManager, AnmVmId and Gui supports. New allocator210/220,
+transition782/796 and parent2808/3089 remain nonexact in this particular graph.
+Bound callee addresses grant no callee-byte credit or original owner/TU claim.
+The unchanged normal-COFF Player wrapper cold-replays7 bytes/all1 field.
 
-Fresh Ghidra architecture/body ranges expose global automatic/manual audit
-drift:1111 rows differ in metadata,49 in state,107 in confidence, zero in
-geometry after the leaf correction. `report-boundary-inventory.py --check-ledger`
-still fails first at401100's provenance text. Reviewed owned tables, isolated
-entries and overlapping runtime entries require separate reconciliation; these
-counts are not49 proven invalid boundaries. Do not bulk rewrite the ledger or
-silently equate tracking/CI success with this independent audit passing.
+Raw ABI review restores Caution's live Player-position argument lost by Ghidra.
+The spell-panel clear deliberately skips frontVm2 and clears seven others.
+Reuse EnemyGameState.hpp's already-reviewed4776F4 view and the canonical Hint
+owner477814; no duplicate GUI/global storage is introduced. Source contracts
+exercise1792 transitions plus one bounded-copy case, actual timer/faith/rank/link/
+constructor/delete bodies, ASan/UBSan/leaks and seven strict functional controls.
+Host role projections do not establish native storage, original construction,
+TH10 runtime or product closure. See the current proof for its validation scope.
 
-The corrected baseline passes all105 standard CI checks; its log and current
-control producer are pinned in the leaf evidence pack. Baseline ledger copies
-are hash-verified against immutable `fdc0240` before pruning; generated outputs
-of four terminal CI host fixtures are also removed. See its validation summary
-for exact cleanup counts. No game source changes have been adopted in these
-two follow-ups. Next source route: bounded Player state2 transition4269D0/796,
-called directly at425AA4 by the maintained update body. Read-only Ghidra facts
-and a second, unselected shot-spawn candidate427E90/717 are retained under
-`.analysis/gpt-6.1-sol/player-shot-source-20261022/`. Source routing remains a
-hypothesis until raw ABI, side effects and maintained owners are reconciled.
-Reuse EnemyGameState.hpp's already-reviewed global4776F4 partial view; do not
-invent a duplicate GUI owner for this spell-panel state.
+Private current work is `.analysis/gpt-6.1-sol/player-shot-source-20261022/`;
+start with RECOVERY.md and manifest.json. All32 old canonical ten-TU source pins
+are unchanged. The old actual eleven-TU graph changes Player.cpp and is now
+historical: rebuild before using its measurements with current source. The new
+six-TU graph is a different caller context, not an improvement score for the
+three large owners. Native artifacts and recursive inputs are pinned separately.
 
-The latest source change is confined to `src/AnmManager.cpp`'s render-mode9
-locals and count expressions. Grouped ordinary declarations and original
-vertex-count bounds recover `LEA ESI,[EAX-1]`, test/spill/FILD scheduling and
-remove a delayed ESI copy. Both current ten- and eleven-TU contexts retain
-9964 bytes and improve aligned ANM diagnostic agreement from 7478 to
-7541/7995. No header, ABI, layout, compiler profile, entry or recipe changes.
-See [radial counter evidence](evidence/anm-radial-count/README.md) and ANM-114.
+Global automatic/manual boundary audit drift remains open:1114 metadata-different
+rows,49 state differences and107 confidence differences, zero geometry differences.
+It still first fails at401100's provenance text. Do not bulk overwrite the ledger
+or equate ordinary tracking/CI success with this independent audit passing.
+Earlier [ECL controls](evidence/ecl-storage-controls/README.md) and the
+[17-byte RET4 correction](evidence/leaf-compare-extent/README.md) retain their
+original checkpoints and validation scopes.
 
-The preceding source change replaces two Enemy laser pattern-copy loops with
-typed-array `memcpy`: dispatcher 14464 -> 14352 bytes, aggregate group-size gap
-650 -> 566. See [laser-copy evidence](evidence/enemy-laser-pattern-copy/README.md).
-The latest exact checkpoint closes two 65-byte shared pending helpers through
-explicit ID-value construction; see [ID-value evidence](evidence/pending-id-value/README.md).
-Those histories retain their original input pins and validation scope.
+## Current checkpoint validation and cleanup
+
+The frozen Player/Hint source passes **106 CI checks**. Two final complete
+six-TU colds, the unchanged7-byte Player wrapper,1792 transition cases plus one
+bounded-copy case and seven strict functional controls all pass. The final
+private carrier is `build/gpt-6.1-sol/player-state2-20261022/final-frozen`;
+both final carriers and30 recursive source/header pins are recorded in
+[current native evidence](evidence/player-state2-hint/native-summary.json).
+
+[Validation](evidence/player-state2-hint/validation-summary.json) records the
+three earlier incomplete attempts and the bounded Hint frame extractor repair.
+No game source, test source or fixture changed during the successful frozen run.
+Only validation documentation and ignored-output cleanup follow it; repeat the
+focused documentation/tracking/progress/toolchain/whitespace gates before commit.
+
+[Cleanup](evidence/player-state2-hint/cleanup-summary.json) removes5339430 logical
+file bytes. Final carriers, passed receipts and unresolved observations remain;
+superseded initial/typed-position builds, reproducible CI host outputs and
+Git-recoverable baseline copies are pruned. All nine independent D3D files retain
+their prior hashes. The broad reconstruction goal and later phase gates stay open.
 
 ## Three large owners remain nonexact
 
@@ -102,8 +113,10 @@ three neutral carriers are pruned (771355 file bytes). Its manifest binds the
 restored source, complete input graph, results and independent D3D hashes.
 Do not infer original source spelling or TU ownership from these controls.
 
-All measurements below were refreshed under the current dependencies. Aligned
-positions and equal-sized groups are diagnostics, not partial exact credit.
+The table retains the canonical ten-TU checkpoint measurements; its32 input
+pins still agree. The historical eleven-TU context is no longer current after
+the Player edit. Aligned positions and equal-sized groups are diagnostics,
+not partial exact credit; this batch claims no fresh large-owner comparison.
 
 | Owner / target | Current measurement | Remaining work |
 | --- | --- | --- |
@@ -142,7 +155,7 @@ already regressed to14476/gap662 in an older nine-TU context.
 
 | Context | Retained output | Input/artifact identity |
 | --- | --- | --- |
-| Actual eleven-TU large graph, including Player | `build/gpt-6.1-sol/anm-vertex-count-20261021/adopted` | 33 source/header inputs, 16 native artifacts; 46 whole guards / 5335 bytes / 142 fields |
+| Historical eleven-TU graph, Player input changed | `build/gpt-6.1-sol/anm-vertex-count-20261021/adopted` | 33 source/header inputs, 16 native artifacts; 46 whole guards / 5335 bytes / 142 fields |
 | Canonical ten-TU graph, excluding Player | `build/match-linked/EnemyItemDrops` | 32 inputs, 15 artifacts; five selected canonical units; 35 same-image whole guards / 4424 bytes / 118 fields |
 | Canonical two-TU range helper | `build/match-linked/AnmRandomU32InRange` | AnmManager + RandomMath; complete 88-byte helper raw-equal, zero fields |
 | Rejected combined radial/flags control | `build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags` | Source, image/MAP/PDB and input pins retained |
@@ -174,9 +187,9 @@ scripts/repo-python scripts/diagnose-ecl-run-native.py \
   --artifact-dir build/match-linked/EnemyItemDrops
 ```
 
-## Completed validation and cleanup
+## Prior radial checkpoint validation and cleanup
 
-The frozen code passed **105 CI checks**. One full ten-TU cold replay covers
+The radial checkpoint code passed **105 CI checks**. One full ten-TU cold replay covers
 five accepted units; an additional distinct two-TU cold covers the range
 helper. These are two artifact groups, not two independent repetitions of the
 complete large context. The actual-source three large native bodies reproduce
@@ -200,8 +213,8 @@ The private `handoff-cleanup.json` records the latter paths, producers and sizes
 records the retained scope. Unclassified older analysis, independent D3D work,
 target, databases, toolchains, Wine/provider state and reference checkout remain.
 
-Only documentation and ignored-artifact cleanup followed the successful full
-CI; focused document/tracking/progress/toolchain checks and source/native hash
+At that prior checkpoint, only documentation and ignored-artifact cleanup
+followed its successful full CI; focused document/tracking/progress/toolchain checks and source/native hash
 verification are repeated for handoff. No new experiment or broad replay is
 needed to validate those cleanup edits. Future source work must run its affected
 Oracle and finish the standard gates:

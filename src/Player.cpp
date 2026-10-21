@@ -2,6 +2,8 @@
 #include "Player.hpp"
 #include "AnmVmId.hpp"
 #include "BulletManager.hpp"
+#include "GameScoreState.hpp"
+#include "Hint.hpp"
 
 #include <stddef.h>
 #include <math.h>
@@ -481,6 +483,49 @@ static void MarkPlayerVmDeleteState(unsigned int id, unsigned short state)
             node->value->deleteState = state;
         }
     }
+}
+
+// Target4269D0. The maintained update caller enters state2 after its state4
+// timer reaches eight. Resource, timer, option and panel storage remain the
+// existing shared views; this body grants no original type/TU or exact claim.
+void PlayerTransitionToState2(Player *player)
+{
+    const int faithLoss = ((g_GameScoreState.faith - 5000) / 3) * 10;
+    const int lives = g_PlayerLivesDisplayCount - 1;
+    g_PlayerLivesDisplayCount = lives;
+    g_GameScoreState.DecayFaith(faithLoss);
+    if (lives >= 0)
+        GuiSetLivesDisplayCount(g_GuiView, lives);
+
+    player->runtimeState = 2;
+    player->updateTimer1.SetCurrent(0);
+    player->highlightTimer.SetCurrent(180);
+    reinterpret_cast<AnmLoadedView *>(player->resource)->InitializeAndExecuteScriptIndex(
+        reinterpret_cast<AnmVmView *>(&player->drawVm), 0);
+    for (int i = 0; i < 4; ++i)
+    {
+        player->options[i].state = 0;
+        MarkPlayerVmDeleteState(player->options[i].primaryVmId, 1);
+        MarkPlayerVmDeleteState(player->options[i].secondaryVmId, 1);
+    }
+    player->optionCount = 0;
+    if (g_PlayerUpdateGate10->value10 != 1)
+        g_GameOwner477814->AddCaution("Caution!",
+            &player->drawPosition);
+
+    EnemyGameStateView *panel = g_EnemyGameState;
+    if (panel->spellTimer.current >= 60)
+    {
+        panel->currentSpellBonus = 0;
+        panel->flags378C &= ~2u;
+        for (int slot = 0; slot < 8; ++slot)
+        {
+            // Target clears seven VM flags; the third VM is deliberately kept.
+            if (slot != 2)
+                panel->frontVms[slot].flags35C &= ~2u;
+        }
+    }
+    g_GameScoreState.AddRank(-0x400);
 }
 
 static int ScalePlayerOptionCoordinate(float value)

@@ -5,6 +5,7 @@
 
 // Descriptive reconstruction views, not recovered original class names.
 // Fields are established by the exporter, loader, constructor and frame owners.
+struct PlayerFloat3;
 struct HintEntryView;
 struct HintLinkView
 {
@@ -46,6 +47,9 @@ struct HintOwnerView
     static int __fastcall OnDraw(void *owner);
     int ConsumeEntries(HintLinkView *first, int freeEntries);
     int Update();
+    // Target41A120 and424650; ordinary member spellings, private ABI unproven.
+    HintEntryView *AddAutomaticEntry(const char *text, const PlayerFloat3 *position);
+    void AddCaution(const char *text, const PlayerFloat3 *position);
     unsigned int flags;
     unsigned char unknown04[4];
     th10::ChainElem *updateChain;

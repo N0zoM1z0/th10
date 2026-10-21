@@ -144,6 +144,7 @@ def main() -> int:
         run("Validate supervisor binding identity", [sys.executable, "scripts/test-main-supervisor-bindings.py"])
         run("Validate score insertion and publication", [sys.executable, "scripts/test-score-insertion.py"])
         run("Validate Player power-state transitions", [sys.executable, "scripts/test-player-update-state.py"])
+        run("Validate Player state2 and automatic hints", [sys.executable, "scripts/test-player-state2.py", "--baseline-only"])
         run("Validate documentation references", [sys.executable, "scripts/check-doc-hygiene.py"])
         run("Validate ledgers", [sys.executable, "scripts/validate-tracking.py"])
         run(

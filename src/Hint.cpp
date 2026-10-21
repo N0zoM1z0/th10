@@ -718,3 +718,48 @@ int HintOwnerView::Update()
     ++counter14;
     return 1;
 }
+
+// Shared game counters already used by GameManager; these are not new storage.
+extern int g_GameFrameCounter0; // target474C88
+extern int g_GameFrameCounter1; // target474C8C
+
+// Target41A120. Append before copying the supplied position and text, preserving
+// the target's allocation/publication order and 64-byte bounded copy.
+HintEntryView *HintOwnerView::AddAutomaticEntry(
+    const char *text, const PlayerFloat3 *position)
+{
+    HintEntryView *entry = new HintEntryView;
+    exportStageLists[g_GameStartupMode].Append(&entry->link);
+    entry->remaining = 30;
+    entry->position.x = position->x;
+    entry->position.y = position->y;
+    entry->position.z = position->z;
+    strncpy(entry->text, text, 64);
+    entry->alignment = 0;
+    entry->base = g_GameFrameRestorePending;
+    entry->count = g_GameFrameRestorePending == 0
+        ? g_GameFrameCounter0 : g_GameFrameCounter1;
+    return entry;
+}
+
+// Target424650. Existing positive remaining counts are decremented once before
+// the new caution entry is published. The position is a real second argument.
+void HintOwnerView::AddCaution(
+    const char *text, const PlayerFloat3 *position)
+{
+    for (HintLinkView *node = exportStageLists[g_GameStartupMode].next; node != 0; )
+    {
+        HintLinkView *next = node->next;
+        HintEntryView *entry = static_cast<HintEntryView *>(node->payload);
+        if (entry->remaining > 0)
+            --entry->remaining;
+        node = next;
+    }
+    HintEntryView *entry = AddAutomaticEntry(text, position);
+    entry->count -= 60;
+    if (entry->count <= 0)
+        entry->count = 1;
+    entry->time = 90;
+    entry->color = 0xffff8080u;
+    entry->remaining = 30;
+}

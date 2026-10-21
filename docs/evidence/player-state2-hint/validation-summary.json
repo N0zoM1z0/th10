@@ -1,0 +1,61 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "base_commit": "dd241de9f9a29e7891b3e64eb3a40038d8addf90",
+  "full_ci": {
+    "command": "nice -n 10 scripts/repo-python scripts/ci.py",
+    "checks": 106,
+    "exit_code": 0,
+    "log_sha256": "ccd35c305f7d069c991dcc2033028f53139cc85a92f2a3e83631509538067cec",
+    "scope": "target-independent source and infrastructure checks; not TH10/native-product runtime"
+  },
+  "focused": {
+    "disk_target": "verified original Japanese v1.00a",
+    "toolchain_execute": "passed normal COFF, LTCG, resources and PE32 link",
+    "new_exact": "two independent complete six-TU colds; AddCaution104/all2 fields",
+    "unchanged_wrapper": "normal COFF cold7/all1 field",
+    "copied_native_controls": "positive104; changed branch103; wrong global and interior callee rejected",
+    "host_source": "1792 transitions plus one bounded-copy case; ASan/UBSan/leaks and seven strict functional controls",
+    "Hint_source_scope": "15/15 classified authored owners have maintained source; 8 exact; not proof of complete subsystem ownership",
+    "tracking_progress_docs_graph_whitespace": "passed before full CI; repeated after documentation-only completion"
+  },
+  "frozen_source_sha256": {
+    "src/Player.cpp": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+    "src/Hint.cpp": "260df77dc4b87f24f40effd460f50361cfedf7b83ab31329ca334b2893955d63",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "scripts/test-hint-frame.py": "cfe15630ddd6a1169ea40cb45df2580971e799659ce69153396cbf8187ab6fa0",
+    "scripts/test-player-state2.py": "a9cb07de3136da11fcfdd330ca3b32c2f8130b9e85b917111de920361e91f0eb",
+    "scripts/fixtures/player-state2.cpp": "60b6421b1099ab4610ec2008213f08a6c5387335ba60f967f20bfbd9df843539",
+    "scripts/ci.py": "b74236f2c15d06654d93d6ed6328f8dff937610b7d12efa1311a81b77dcd806d"
+  },
+  "frame_fixture_repair": {
+    "source_region_unchanged": true,
+    "normalized_region_sha256": "201b81544cf292f733e3c9b54c76ed48b6cbe478c6f075a7dab7b8d62b72e572",
+    "old_tail_extraction": "included newly appended helpers and failed on absent fixture counters",
+    "new_scope": "exact complete ConsumeEntries/Update region through final closing brace",
+    "assertions_models_mutations_classifiers": "unchanged"
+  },
+  "earlier_incomplete_attempts": [
+    {
+      "session": 19100,
+      "terminal": 1,
+      "reason": "legacy EOF frame extraction included appended helper definitions; complete original frame region now bounded and unchanged"
+    },
+    {
+      "session": 28696,
+      "terminal": 1,
+      "reason": "all code checks passed; exact match appended at EOF violated address ordering; inserted at correct address preserving all existing row text"
+    },
+    {
+      "session": 96448,
+      "terminal": 1,
+      "reason": "state label comment and fixture entry corrected while portrait test held source fingerprint; test correctly rejected source changes"
+    }
+  ],
+  "independent_global_boundary_audit": "still unresolved; 1114 metadata-different rows,49 state and107 confidence differences, zero geometry differences; ordinary CI does not waive this audit",
+  "limits": [
+    "Only AddCaution104 receives new exact credit.",
+    "AddAutomaticEntry210/220 and PlayerTransitionToState2 782/796 remain nonexact in this graph.",
+    "Native product graph/data/initialization/resources/link/runtime closure remains open.",
+    "Semantic reconstruction and portability have not started."
+  ]
+}

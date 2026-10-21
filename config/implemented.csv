@@ -1083,3 +1083,6 @@ MainReleaseAnmSurfaces
 MainServiceAnmScreenshots
 MainScreenshotWorker
 EnemyCancelManagerView::CancelBulletPattern
+PlayerTransitionToState2
+HintOwnerView::AddCaution
+HintOwnerView::AddAutomaticEntry

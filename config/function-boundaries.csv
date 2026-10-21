@@ -508,7 +508,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00419F40,0x0041A043,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041A050,0x0041A09A,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x0041A0A0,0x0041A111,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=13; no overlap or external interior branch
-0x0041A120,0x0041A1FB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x0041A120,0x0041A1FB,reviewed,high,player-state2-hint-target-2026-10-22,Fresh complete dense target decode and read-only/noanalysis Ghidra body agree on this unchanged extent; call/argument and side-effect review recorded in player-state2-hint evidence. Original source ownership remains independent.
 0x0041A200,0x0041AAC6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in jmp; direct-code-refs=1; no overlap or external interior branch
 0x0041AB10,0x0041AB43,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x0041AB50,0x0041AB56,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
@@ -674,7 +674,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00424610,0x00424615,reviewed,medium,target-ida-leaf-review-2026-09-30,Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence.
 0x00424620,0x00424638,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
 0x00424640,0x00424643,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs
-0x00424650,0x004246B7,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x00424650,0x004246B7,reviewed,high,player-state2-hint-target-2026-10-22,Fresh complete dense target decode and read-only/noanalysis Ghidra body agree on this unchanged extent; call/argument and side-effect review recorded in player-state2-hint evidence. Original source ownership remains independent.
 0x004246C0,0x004247B3,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 244/244, tail ret"
 0x004247C0,0x004247C6,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 7/7, tail ret"
 0x004247D0,0x004247D9,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 10/10, tail ret"
@@ -697,7 +697,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00426660,0x004266A2,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
 0x004266B0,0x004267EB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x004267F0,0x004269C6,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
-0x004269D0,0x00426CEB,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
+0x004269D0,0x00426CEB,reviewed,high,player-state2-hint-target-2026-10-22,Fresh complete dense target decode and read-only/noanalysis Ghidra body agree on this unchanged extent; call/argument and side-effect review recorded in player-state2-hint evidence. Original source ownership remains independent.
 0x00426CF0,0x00426F62,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=2; no overlap or external interior branch
 0x00426F70,0x00427947,reviewed,high,target-player-option-table-2026-10-02,"Complete target ownership: 2494-byte executable body with RET4, two-byte MOV EDI,EDI alignment, six-slot jump table at 0x00427930-0x00427947 with domain0..5 and internal instruction destinations. Unique indexed read at 0x0042704E; no other table-slot xrefs. Ghidra reachable body2471 plus three unreachable sleds23; next independent entry0x00427950 follows eight CC bytes. No exactness promotion."
 0x00427950,0x0042795B,reviewed,high,prior-target-boundary-review+target-boundary-audit-2026-09-15,"Prior boundary evidence retained; dense decode 12/12, tail ret"

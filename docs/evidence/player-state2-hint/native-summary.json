@@ -1,0 +1,334 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "base_commit": "dd241de9f9a29e7891b3e64eb3a40038d8addf90",
+  "scope": "Three complete source mappings and one bounded104-byte exact helper; no product/runtime closure",
+  "context": {
+    "source": "src/Player.cpp",
+    "supports": [
+      "src/Hint.cpp",
+      "src/ItemManager.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmId.cpp",
+      "src/Gui.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "entry": "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z"
+  },
+  "source_sha256": {
+    "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameEffectUpdate.hpp": "f1d254dce3f70b47f96da0178ac70215f5c582a556e7d03b1be1e2e72e4587ec",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Hint.cpp": "260df77dc4b87f24f40effd460f50361cfedf7b83ab31329ca334b2893955d63",
+    "src/Hint.hpp": "cb89c5586766bb8a01422d6e749f34a69ce9bb2e59cd800f636fe46620d3f6b9",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.cpp": "482356817265e47618134308610a7f583a4a444bb25093248e4c821f84f56eeb",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "native_body_sha256": "99ec2247f71824ea5ff0223327bccdbf93b8c75ce3bcb39d56d60e0e32413995",
+  "cold_builds": 2,
+  "private_first": {
+    "unit": "hint-add-caution",
+    "artifact_kind": "linked-pe",
+    "result": "exact",
+    "symbol": "?AddCaution@HintOwnerView@@QAEXPBDPBUPlayerFloat3@@@Z",
+    "target_address": "0x00424650",
+    "size": 104,
+    "matched_bytes": 104,
+    "compared_size": 104,
+    "matched_compared_bytes": 104,
+    "image": "build/gpt-6.1-sol/player-state2-20261022/final-frozen/source.exe",
+    "image_sha256": "5d6ffc5b59c81156f188c4baf0efe592ca39eba3545388902ee31047af1ef6a6",
+    "pdb_guid": "d0bff77f57ce18438ff9cbc9244e007d",
+    "pdb_age": 1,
+    "candidate_address": "0x00405FD0",
+    "extent_source": "pdb-section-contribution",
+    "pdb_module_index": 1,
+    "decoded_bytes": 104,
+    "normalization_complete": true,
+    "data_spans": [],
+    "linkages": [
+      {
+        "offset": "0x1",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GameStartupMode@@3HA",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0141",
+        "local": false,
+        "candidate_target": "0x00417234",
+        "target": "0x00474C7C",
+        "addend": 0,
+        "target_encoded_value": "0x00474C7C"
+      },
+      {
+        "offset": "0x32",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+        "linked_symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+        "local": false,
+        "candidate_target": "0x00405EF0",
+        "target": "0x0041A120",
+        "addend": 0,
+        "target_encoded_value": "0xFFFF5A9A"
+      }
+    ],
+    "raw_equal": false,
+    "first_differences": [],
+    "capstone_version": "5.0.6"
+  },
+  "canonical_second": {
+    "artifact_kind": "linked-pe",
+    "candidate_address": "0x00405FD0",
+    "capstone_version": "5.0.6",
+    "compared_size": 104,
+    "data_spans": [],
+    "decoded_bytes": 104,
+    "extent_source": "pdb-section-contribution",
+    "first_differences": [],
+    "image": "build/match-linked/PlayerState2Hint/source.exe",
+    "image_sha256": "3797de674e1e1678a1a21702d8e571f66308f3d100c9b516a35f145dd8fc0cfc",
+    "linkages": [
+      {
+        "addend": 0,
+        "candidate_target": "0x00417234",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0141",
+        "local": false,
+        "offset": "0x1",
+        "symbol": "?g_GameStartupMode@@3HA",
+        "target": "0x00474C7C",
+        "target_encoded_value": "0x00474C7C",
+        "type": "DIR32",
+        "width": 4
+      },
+      {
+        "addend": 0,
+        "candidate_target": "0x00405EF0",
+        "linked_symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+        "local": false,
+        "offset": "0x32",
+        "symbol": "?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z",
+        "target": "0x0041A120",
+        "target_encoded_value": "0xFFFF5A9A",
+        "type": "REL32",
+        "width": 4
+      }
+    ],
+    "matched_bytes": 104,
+    "matched_compared_bytes": 104,
+    "normalization_complete": true,
+    "pdb_age": 1,
+    "pdb_guid": "ee09a001a46c9c48bb16db0ce82b4070",
+    "pdb_module_index": 1,
+    "raw_equal": false,
+    "result": "exact",
+    "returncode": 0,
+    "size": 104,
+    "symbol": "?AddCaution@HintOwnerView@@QAEXPBDPBUPlayerFloat3@@@Z",
+    "target_address": "0x00424650",
+    "unit": "hint-add-caution"
+  },
+  "current_native_artifact_sha256": {
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/link-aliases.rsp": "40132409705a452936719f79daed9bc95deadf42da79b9001eb108af41f29142",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/link-anchors.c": "920082eda9343569383a94200358fd39228e02a943eed11446367996d18e235a",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/link-anchors.obj": "09c25e3db9c4fa0c3e057ed0a03508dc01059fb1045afafac6a5c187668439b0",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/link-attempt-1.log": "7db1b07691d0fb8c206ed65b702f8e1c397c29ed428c84849256a9f6208ca05b",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/link-attempt-2.log": "e1bf4ffc42e5cb066098aef769943e10387940972c1a4f54d5cb75544281a00e",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/source.exe": "5d6ffc5b59c81156f188c4baf0efe592ca39eba3545388902ee31047af1ef6a6",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/source.ltcg.obj": "39f9a4e94f5ba1bef84bc357c53b8d9c83e329b5e73793a4f15b2c5239572a24",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/source.map": "531a46f618e36e73e2fb68b974541face0406b444d211501a234cacb1e0b6659",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/source.pdb": "b5bedd1c416e29fa4bee78f816d1b054c247343316ade6406cbbfeaa3b8910da",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/support-00-Hint.ltcg.obj": "6c179d913b17cfe9b53e31028439fe8d64107fd999ead704e6eedce3fd941637",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/support-01-ItemManager.ltcg.obj": "e651eb775e7bb667d244e59ea8ac493a6c41031cdfc9eeb133525e45d45f17df",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/support-02-AnmManager.ltcg.obj": "95b80cf12598f1b7b428728fe240f1e16ba8dea830f1d4702699b2ec9fbd15b5",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/support-03-AnmVmId.ltcg.obj": "efc3ee717cad1928003064c85f1d211773976e3a661c85f0c5c4edc238c7827b",
+    "build/gpt-6.1-sol/player-state2-20261022/final-frozen/support-04-Gui.ltcg.obj": "594b917416515f565feac554bae3f1bdb18bd7f8420ee57c23012fea9053ff30",
+    "build/match-linked/PlayerState2Hint/link-aliases.rsp": "40132409705a452936719f79daed9bc95deadf42da79b9001eb108af41f29142",
+    "build/match-linked/PlayerState2Hint/link-anchors.c": "920082eda9343569383a94200358fd39228e02a943eed11446367996d18e235a",
+    "build/match-linked/PlayerState2Hint/link-anchors.obj": "c000a4bb54027a355be6947b8d18c7d4347b59a00a275ad2e41c0c2046d960d4",
+    "build/match-linked/PlayerState2Hint/link-attempt-1.log": "912fa5d6969978e695b7f6d5ac948112ad6034c22422416c8ce7740b984f5ecd",
+    "build/match-linked/PlayerState2Hint/link-attempt-2.log": "0888ef0677bd5cc1b90665a7a5bb589845259da7f6f3a99636078da5d6459041",
+    "build/match-linked/PlayerState2Hint/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+    "build/match-linked/PlayerState2Hint/source.exe": "3797de674e1e1678a1a21702d8e571f66308f3d100c9b516a35f145dd8fc0cfc",
+    "build/match-linked/PlayerState2Hint/source.ltcg.obj": "552a6c4e60f4ebcc1531b862088ce12c725695d7adcbf456bd1a7d15ea214d2e",
+    "build/match-linked/PlayerState2Hint/source.map": "3b611039e37c020c5f2a742b49f263b107b3591d955874aa36113cd249e9e2f9",
+    "build/match-linked/PlayerState2Hint/source.pdb": "102f5fe0449441c393000c8a8ed88ec3737a0c746217fb87cc2cf21a7c03726f",
+    "build/match-linked/PlayerState2Hint/support-00-Hint.ltcg.obj": "e4427e79e894ba45ca78ba22ed4d3801458991ef95b704a9f1c82a23314b57e4",
+    "build/match-linked/PlayerState2Hint/support-01-ItemManager.ltcg.obj": "373e8299495625d9f02254d445f849f3f6f70980cd88bf6d0f6fc9d3ddf14679",
+    "build/match-linked/PlayerState2Hint/support-02-AnmManager.ltcg.obj": "9848b571c02037383804ad64ef5d438e5817c33e847e538b937f6085ae13f61a",
+    "build/match-linked/PlayerState2Hint/support-03-AnmVmId.ltcg.obj": "8c6d3240a770ef5859a0a5c10a7f1b1402b96289f2aa011811c725f1596a6915",
+    "build/match-linked/PlayerState2Hint/support-04-Gui.ltcg.obj": "99fd19b9cc1c6f45382a971ea218977d9ab9504413f53c18a7413aa60390a0c9"
+  },
+  "other_owner_diagnostics": {
+    "?PlayerTransitionToState2@@": {
+      "candidate_size": 782,
+      "target_size": 796,
+      "acceptance_authority": "none"
+    },
+    "?AddCaution@HintOwnerView@@": {
+      "candidate_size": 104,
+      "target_size": 104,
+      "acceptance_authority": "none"
+    },
+    "?AddAutomaticEntry@HintOwnerView@@": {
+      "candidate_size": 210,
+      "target_size": 220,
+      "acceptance_authority": "none"
+    },
+    "?PlayerUpdateCallbackBody@@": {
+      "candidate_size": 2808,
+      "target_size": 3089,
+      "acceptance_authority": "none"
+    }
+  },
+  "large_context_continuity": {
+    "adopted": {
+      "pinned_inputs": 33,
+      "changed_inputs": [
+        "src/Player.cpp"
+      ],
+      "current_input_identity": false
+    },
+    "canonical": {
+      "pinned_inputs": 32,
+      "changed_inputs": [],
+      "current_input_identity": true
+    }
+  },
+  "controls": {
+    "scope": "temporary copied native image only; original carrier unchanged",
+    "controls": [
+      {
+        "control": "copied-positive",
+        "result": "exact",
+        "matched_bytes": 104
+      },
+      {
+        "control": "zero-remaining-guard",
+        "result": "mismatch",
+        "matched_bytes": 103,
+        "size": 104
+      },
+      {
+        "control": "wrong-stage-global",
+        "result": "rejected",
+        "reason": "linked field (1, 'DIR32', 4) does not resolve uniquely through '?g_GameStartupMode@@3HA': publics=[4289076] expected=0x417238"
+      },
+      {
+        "control": "interior-entry-call",
+        "result": "rejected",
+        "reason": "linked field (50, 'REL32', 4) does not resolve uniquely through '?AddAutomaticEntry@HintOwnerView@@QAEPAUHintEntryView@@PBDPBUPlayerFloat3@@@Z': publics=[4218608] expected=0x405ef1"
+      }
+    ],
+    "native_hashes": {
+      "build/match-linked/PlayerState2Hint/link-aliases.rsp": "40132409705a452936719f79daed9bc95deadf42da79b9001eb108af41f29142",
+      "build/match-linked/PlayerState2Hint/link-anchors.c": "920082eda9343569383a94200358fd39228e02a943eed11446367996d18e235a",
+      "build/match-linked/PlayerState2Hint/link-anchors.obj": "c000a4bb54027a355be6947b8d18c7d4347b59a00a275ad2e41c0c2046d960d4",
+      "build/match-linked/PlayerState2Hint/link-attempt-1.log": "912fa5d6969978e695b7f6d5ac948112ad6034c22422416c8ce7740b984f5ecd",
+      "build/match-linked/PlayerState2Hint/link-attempt-2.log": "0888ef0677bd5cc1b90665a7a5bb589845259da7f6f3a99636078da5d6459041",
+      "build/match-linked/PlayerState2Hint/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/match-linked/PlayerState2Hint/source.exe": "3797de674e1e1678a1a21702d8e571f66308f3d100c9b516a35f145dd8fc0cfc",
+      "build/match-linked/PlayerState2Hint/source.ltcg.obj": "552a6c4e60f4ebcc1531b862088ce12c725695d7adcbf456bd1a7d15ea214d2e",
+      "build/match-linked/PlayerState2Hint/source.map": "3b611039e37c020c5f2a742b49f263b107b3591d955874aa36113cd249e9e2f9",
+      "build/match-linked/PlayerState2Hint/source.pdb": "102f5fe0449441c393000c8a8ed88ec3737a0c746217fb87cc2cf21a7c03726f",
+      "build/match-linked/PlayerState2Hint/support-00-Hint.ltcg.obj": "e4427e79e894ba45ca78ba22ed4d3801458991ef95b704a9f1c82a23314b57e4",
+      "build/match-linked/PlayerState2Hint/support-01-ItemManager.ltcg.obj": "373e8299495625d9f02254d445f849f3f6f70980cd88bf6d0f6fc9d3ddf14679",
+      "build/match-linked/PlayerState2Hint/support-02-AnmManager.ltcg.obj": "9848b571c02037383804ad64ef5d438e5817c33e847e538b937f6085ae13f61a",
+      "build/match-linked/PlayerState2Hint/support-03-AnmVmId.ltcg.obj": "8c6d3240a770ef5859a0a5c10a7f1b1402b96289f2aa011811c725f1596a6915",
+      "build/match-linked/PlayerState2Hint/support-04-Gui.ltcg.obj": "99fd19b9cc1c6f45382a971ea218977d9ab9504413f53c18a7413aa60390a0c9"
+    },
+    "copied_outputs_removed": true
+  },
+  "ordinary_wrapper": {
+    "artifact_count": 1,
+    "groups": [
+      {
+        "artifact": "build/match/PlayerUpdateCallback.obj",
+        "artifact_kind": "coff",
+        "build_returncode": 0,
+        "build_unit": "player-update-callback",
+        "cold_removed": [
+          "build/match/PlayerUpdateCallback.obj"
+        ],
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc"
+        ],
+        "source": "src/Player.cpp",
+        "units": [
+          {
+            "artifact_kind": "coff",
+            "compared_size": 7,
+            "first_differences": [],
+            "matched_bytes": 7,
+            "matched_compared_bytes": 7,
+            "object": "build/match/PlayerUpdateCallback.obj",
+            "relocations": [
+              {
+                "addend": "0x00000000",
+                "offset": "0x2",
+                "symbol": "?PlayerUpdateCallbackBody@@YGHPAUPlayer@@@Z",
+                "target": "0x00425730",
+                "type": "REL32"
+              }
+            ],
+            "result": "exact",
+            "returncode": 0,
+            "size": 7,
+            "symbol": "?PlayerUpdateCallback@@YIHPAUPlayer@@@Z",
+            "target_address": "0x00426500",
+            "unit": "player-update-callback"
+          }
+        ]
+      }
+    ],
+    "matched_bytes": 7,
+    "result": "exact",
+    "source_count": 1,
+    "unit_count": 1
+  },
+  "limitations": [
+    "Only Caution104 is newly exact. AddAutomaticEntry210/220 and Player state2 transition782/796 remain nonexact.",
+    "Bound calls and source types do not prove original classes, TU partition or data ownership.",
+    "Host role projections are synthetic contracts; not TH10 runtime, private ABI or native-storage proof.",
+    "The old eleven-TU artifact including Player is historical after this change; the unchanged canonical ten-TU inputs are separately verified."
+  ]
+}

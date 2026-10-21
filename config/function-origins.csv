@@ -508,7 +508,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00419F40,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0041A050,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0041A0A0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x0041A120,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x0041A120,authored_game,Hint,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0041A200,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
 0x0041AB10,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0041AB50,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
@@ -674,7 +674,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00424610,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00424620,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00424640,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
-0x00424650,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-late-game-2026-09-17
+0x00424650,authored_game,Hint,authored,medium,target-ida-reviewed-late-game-2026-09-17
 0x004246C0,authored_game,Player,authored,high,player-lifecycle-2026-09-14
 0x004247C0,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
 0x004247D0,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
@@ -697,7 +697,7 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00426660,authored_game,Enemy,authored,high,target-enemy-angle-from-player-exact-2026-09-24
 0x004266B0,authored_game,GameUnassigned,authored,medium,target-authored-data-and-edge-2026-09-17
 0x004267F0,authored_game,Player,authored,medium,target-ida-reviewed-game-behavior-2026-09-17
-0x004269D0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x004269D0,authored_game,Player,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00426CF0,authored_game,GameUnassigned,authored,medium,target-authored-call-and-globals-2026-09-17
 0x00426F70,authored_game,Player,authored,high,player-option-rebuild-2026-09-13
 0x00427950,unknown,Player,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18

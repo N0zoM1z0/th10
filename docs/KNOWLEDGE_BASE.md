@@ -4567,3 +4567,38 @@ audit still has1111 metadata-different rows,49 state differences and107 confiden
 differences with zero geometry differences; it is a separate unresolved audit,
 not proof that all historical manual decisions are invalid. No bulk overwrite
 or acceptance relaxation is performed. See [RET4 evidence](evidence/leaf-compare-extent/README.md).
+
+
+## Player state2 and automatic caution hints (2026-10-22)
+
+Target4269D0/796 is the state2 transition called at425AA4 by maintained Player
+update. The complete natural source now covers faith loss/floor, life display,
+state/timers, script0, four option resets and VM deletion, live-position caution,
+spell-panel invalidation and clamped rank adjustment. Target spellTimer>=60
+clears currentSpellBonus/bit1 and frontVm indices0,1,3,4,5,6,7, preserving index2.
+No new panel or Hint owner storage is introduced:4776F4/477814 reuse existing views.
+
+Target424650/104 has ESI owner plus text and position stack arguments/RET8;
+41A120/220 takes EBX position plus owner/text stack arguments/RET8. Ghidra loses
+these private parameters. Both now have complete Hint source. The latter
+allocates0x88 (136) bytes and publishes into the current-stage export list before
+copying live XYZ and64 text bytes; constructor zeros and textWidth zero remain.
+The former decrements only positive old remaining counts, floors count-60 at1
+and writes time90/colorFFFF8080/remaining30. The old difficulty-indexed resource
+note is superseded by the target stage-list relationships.
+
+AddCaution alone closes104 bytes in two independent full six-TU /GL cold links
+under the real PlayerUpdateCallback entry. PDB owner is Hint support; stage DIR32
+and AddAutomaticEntry REL32 are exhaustively bound. Raw bodies repeat. Changed
+branch yields103/104; wrong stage global and interior callee entry are rejected.
+Source/API/type/TU spellings and ownership remain hypotheses. Allocator210/220,
+transition782/796 and parent2808/3089 stay nonexact; these graph-specific sizes
+are not partial exact credit. The unchanged normal-COFF wrapper passes7/all1.
+
+Actual-source contracts cover1792 transition inputs plus one bounded text case,
+ASan/UBSan/leaks and seven strict functional mutants, with explicit host role
+projections/GUI/ANM/allocation seams. They prove neither native ABI/storage nor
+original construction/runtime. All32 canonical ten-TU pins remain current; the
+old eleven-TU Player-containing context is historical after the new source.
+Source mappings rise602->605, authored exact396->397 and72283->72387 bytes.
+[Complete source, target, compiler and scope evidence](evidence/player-state2-hint/README.md).
