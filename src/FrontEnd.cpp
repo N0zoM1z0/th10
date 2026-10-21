@@ -3928,7 +3928,7 @@ static void ResultMenuSound(int soundId)
 // Target 0x4243F0 and 0x40C4D0. Pending publication only, no script execution.
 void ResultMenuPendingSix(AnmVmIdView *id)
 {
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id->value);
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*id);
     if (vm != NULL)
     {
         vm->pendingInterrupt = 6;
@@ -3939,7 +3939,7 @@ void ResultMenuPendingSix(AnmVmIdView *id)
 }
 void ResultMenuPendingThree(AnmVmIdView *id)
 {
-    AnmVmView *vm = g_AnmRenderManagerView->FindVm(id->value);
+    AnmVmView *vm = g_AnmRenderManagerView->FindVm(*id);
     if (vm != NULL)
     {
         vm->pendingInterrupt = 3;

@@ -299,7 +299,7 @@ void PlayerSetShotVmInterrupt2(unsigned int *vmId)
         node = node->next;
     }
 }
-void PlayerSetShotVmDeleteState3(unsigned int *vmId);
+extern void ResultMenuPendingThree(AnmVmIdView *id);
 void PlayerMarkShotVmPending(unsigned int vmId);
 extern int g_GameStatisticsIndex0; // target 0x474C68, shared GameManager identity
 
@@ -1227,7 +1227,8 @@ int PlayerUpdateShots(Player *player)
             shot->state == PLAYER_SHOT_ACTIVE &&
             shot->collisionVmTransitionPending == 1)
         {
-            PlayerSetShotVmDeleteState3(&shot->primaryVmId);
+            ResultMenuPendingThree(
+                reinterpret_cast<AnmVmIdView *>(&shot->primaryVmId));
             shot->collisionVmTransitionPending = 0;
         }
         descriptor = shot->descriptor;

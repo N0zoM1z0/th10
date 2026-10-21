@@ -1,0 +1,165 @@
+{
+  "state": "validated",
+  "native_summary_sha256": "646e15b97e6d6bba08eaf581a60c343b9d034eb3cc29c5beaa79e537f544e22e",
+  "target_facts_sha256": "39ac9aa5501c6078de9ca320a0f753a44b5bb703a9da653584ccfe238f78b816",
+  "pins_before": {
+    "current_inputs": 45,
+    "canonical_large_artifacts": 15,
+    "current_menu_artifacts": 7,
+    "current_large_artifacts": 16,
+    "retained_5tu_artifacts": 10,
+    "result": "all current"
+  },
+  "pins_after": {
+    "current_inputs": 45,
+    "canonical_large_artifacts": 15,
+    "current_menu_artifacts": 7,
+    "current_large_artifacts": 16,
+    "retained_5tu_artifacts": 10,
+    "result": "all current"
+  },
+  "gates": [
+    {
+      "label": "rows-exact",
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "result-menu-draw-name-entry",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.398,
+      "log_sha256": "5c39a12094b0eeb62f8a40a1f09328b89bba3109280b0071d310d81dd9ed434d"
+    },
+    {
+      "label": "caller-binding",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/ecl-square-order-20261021/verify-player-call.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.202,
+      "log_sha256": "7ef0de9d7e5122064b2cb30343d373a7549f3434f327bde96b712e487179c888"
+    },
+    {
+      "label": "run",
+      "command": [
+        "scripts/repo-python",
+        "scripts/diagnose-ecl-run-native.py",
+        "--unit",
+        "context",
+        "--context-manifest",
+        "docs/evidence/player-pending3-route/large-context.toml",
+        "--artifact-dir",
+        "build/gpt-6.1-sol/ecl-square-order-20261021/current-player"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "seconds": 0.521,
+      "log_sha256": "14a8700685c0bf655ff9291728debd913525fa231c41dabe05c0f56c13a9a7c2"
+    },
+    {
+      "label": "toolchain",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.177,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "label": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.406,
+      "log_sha256": "2583ffcf257c1bffde7d669be08f56e97e828cdeef1aad262f421d8abfe6cd64"
+    },
+    {
+      "label": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.158,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "label": "docs",
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.151,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.066,
+      "log_sha256": "96ed9d3ebda61e3f76d862740e2f9f9175705c60b3d9ea8457d52ca6a5203791"
+    }
+  ],
+  "ci": {
+    "session": 19225,
+    "observed_terminal_exit": 0,
+    "checks": 105,
+    "invocations": 1,
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "scripts/repo-python",
+      "scripts/ci.py"
+    ],
+    "log_sha256": "1461da348ad561ec212d91bee9512908bb266eb80aab4376a17bee8bcf966bee",
+    "code_frozen_before_launch": true
+  },
+  "standard_ci_invocations": 1,
+  "standard_ci_checks": 105,
+  "focused_canonical_scope": [
+    "result-menu-draw-name-entry"
+  ],
+  "complete_near_candidates": [
+    {
+      "size": 65,
+      "matched": 63,
+      "fields": 2,
+      "residual_offsets": [
+        1,
+        8
+      ]
+    },
+    {
+      "size": 65,
+      "matched": 63,
+      "fields": 2,
+      "residual_offsets": [
+        1,
+        8
+      ]
+    }
+  ],
+  "new_exact_functions": 0,
+  "new_exact_bytes": 0,
+  "proof_scope": "Source/callee closure and bounded pointer/field identity; no whole Player caller equality, runtime or product closure."
+}

@@ -1,0 +1,131 @@
+{
+  "scope": "Complete caller decode and bounded direct-call/argument-displacement observation, not whole caller equivalence, original class ownership or runtime proof.",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "target_caller": {
+    "address": "0x00428280",
+    "size": 876,
+    "call": {
+      "call_address": "0x00428370",
+      "call_offset": 240,
+      "callee": "0x0040C4D0",
+      "argument_register": "eax",
+      "argument_displacement": 36,
+      "iterator_register": "edi",
+      "initial_iterator_player_offset": 1212,
+      "first_id_player_offset": 1248,
+      "loop_stride": 92,
+      "next_instructions": [
+        {
+          "address": "0x00428375",
+          "mnemonic": "mov",
+          "operands": "dword ptr [edi + 0x34], ebx"
+        },
+        {
+          "address": "0x00428378",
+          "mnemonic": "mov",
+          "operands": "ecx, dword ptr [edi + 0x38]"
+        },
+        {
+          "address": "0x0042837B",
+          "mnemonic": "mov",
+          "operands": "dword ptr [edi + 0x30], ebx"
+        }
+      ]
+    }
+  },
+  "candidate_caller": {
+    "symbol": "?PlayerUpdateShots@@YAHPAUPlayer@@@Z",
+    "address": "0x00417FE0",
+    "size": 738,
+    "extent_source": "pdb-section-contribution",
+    "map_object": "support-01-Player.ltcg.obj"
+  },
+  "candidate_call": {
+    "call_address": "0x004180C7",
+    "call_offset": 231,
+    "callee": "0x004096C0",
+    "argument_register": "eax",
+    "argument_displacement": 4,
+    "iterator_register": "esi",
+    "initial_iterator_player_offset": 1244,
+    "first_id_player_offset": 1248,
+    "loop_stride": 92,
+    "next_instructions": [
+      {
+        "address": "0x004180CC",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esi + 0x14], ebx"
+      },
+      {
+        "address": "0x004180CF",
+        "mnemonic": "mov",
+        "operands": "eax, dword ptr [esi + 0x18]"
+      },
+      {
+        "address": "0x004180D2",
+        "mnemonic": "mov",
+        "operands": "dword ptr [esi + 0x10], ebx"
+      }
+    ]
+  },
+  "candidate_helper": {
+    "symbol": "?ResultMenuPendingThree@@YAXPAUAnmVmIdView@@@Z",
+    "address": "0x004096C0",
+    "size": 65,
+    "extent_source": "pdb-section-contribution",
+    "map_object": "source.ltcg.obj"
+  },
+  "native_image_sha256": "7f053d6eec0cabd7a354035947d60645426380752acde04dbb94f1ac59c111a9",
+  "target_family": [
+    {
+      "address": "0x0040C4D0",
+      "size": 65,
+      "interrupt": 3,
+      "raw_sha256": "a76f94561df0ba1eb7d970f8fd05a6ad8166e93bd65742df41dd7463c21df038",
+      "only_constant_difference_from_pending2": 24,
+      "normalized_call_offset": 10
+    },
+    {
+      "address": "0x004243F0",
+      "size": 65,
+      "interrupt": 6,
+      "raw_sha256": "ce0edf819196c15ce88dce2ae27a1df9c6e31e4d409053bc509b15b000d53e64",
+      "only_constant_difference_from_pending2": 24,
+      "normalized_call_offset": 10
+    }
+  ],
+  "negative": {
+    "result": "rejected",
+    "error": "expected one shared pending3 call, found 0",
+    "scope": "copied native CALL redirected to real same-sized pending6 body; original target/native unchanged",
+    "mutant_sha256": "e967a27139806c5e6db399f59c243a66da790ee50cd5d03e2ca89e31188ce059"
+  },
+  "ghidra": {
+    "read_only": true,
+    "noanalysis": true,
+    "transaction_rolled_back": true,
+    "max_cpu": 1,
+    "heap": "768m",
+    "complete_mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "report_sha256": {
+      "target-ghidra.txt": "b32a7ba9a31be75cb794652425b6fca7a524b390445552cfdd97bd17d5c12632",
+      "menu-ghidra.txt": "981b1d091c547192f0bec567a334eb33b34b3410884e3dd0e687ed96bdd9fd3e",
+      "player-caller-ghidra.txt": "c8268434779c19e6ffd8ed0eda86d166a16ceb5da805a4a70eaa8f5b667ed1aa"
+    }
+  },
+  "remaining_helper_bytes": {
+    "scope": "Both input pointers are EAX; only loaded ID payload is ECX versus target EAX.",
+    "offsets": [
+      1,
+      8
+    ],
+    "target_sequence": [
+      "MOV EAX,[EAX]",
+      "PUSH EAX"
+    ],
+    "native_sequence": [
+      "MOV ECX,[EAX]",
+      "PUSH ECX"
+    ]
+  }
+}

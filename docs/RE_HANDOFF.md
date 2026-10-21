@@ -49,7 +49,34 @@ authored denominator is provisional. The SVG now visibly fills the authored
 bar from current classified exact bytes and labels the ratio provisional.
 The complete-game denominator remains unknown.
 
-The latest bounded checkpoint closes PlayerSetShotVmInterrupt2 at40C480,
+The latest source checkpoint restores PlayerUpdateShots' actual pending3 call
+at428370->40C4D0, replacing an unresolved misleading DeleteState3 alias. Two
+menu helpers pass their existing typed IDs to FindVm. Complete target876/native738
+caller decode verifies the direct helper entry and biased iterator identity:
+full-shot+20/+24 versus+40/+4 both reach ID+44, stride5C. The callers remain
+nonexact; no ordinary score is given to unequal extents.
+
+Current two-/five-TU helpers remain65/63/all2. Both input pointers are EAX;
+the residual bytes are the loaded ID payload in ECX versus target EAX. The
+prior private inputECX interpretation was wrong. Stdcall and consistent member
+controls are restored. Canonical row404/all16 cold-replays; current33-input
+large diagnostic recompiles Player once/reuses ten objects/fresh anchors and
+retains46 helpers5335/all142. Run7020/all189/62locals stays27, exact171-byte
+callee and all7020 target-replayed bytes equal the prior payload. Its generic
+decoder flag is false while strict table-field/selector coverage remains complete.
+Current ANM7478/7995/90groups/gap2 and Enemy14464/frame2C4/19/42groups/gap650
+are remeasured. Original large goals and later phase gates remain open.
+
+See [pending3 source/caller proof](evidence/player-pending3-route/README.md).
+Current additional carrier: `build/gpt-6.1-sol/ecl-square-order-20261021/current-player`.
+The prior real-player33-input source pin is historical after this Player change;
+its earlier measurements retain their original scope. The accepted ten-TU
+canonical carrier below is unchanged. Four owned terminal native directories
+are pruned/4379425 bytes; source/producer/comparison snapshots and selected5TU
+caller failure remain. Recovery: `.analysis/gpt-6.1-sol/ecl-square-order-20261021/RECOVERY.md`.
+No new exact credit: the visible authored progress bar remains26.37%.
+
+The preceding bounded checkpoint closes PlayerSetShotVmInterrupt2 at40C480,
 complete65 bytes and both address fields, without changing maintained C++.
 Fresh local Ghidra confirms eight callers and pending-only root-child propagation.
 Two independent existing three-TU Player constructor cold builds freeze23
@@ -697,7 +724,8 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused routing/creator diagnostics are in the child/creator proof;
+Latest focused caller/payload diagnostics are in the pending3 proof; earlier
+routing/creator diagnostics remain in the child/creator proof;
 exact results are in
 the circle-cancel proof; death-service/item-scatter/read-open/worker/RGB results retain
 their historical scope. Run the standard gates
@@ -714,4 +742,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/anm-child-creator-context/validation-summary.json).
+[the current validation summary](evidence/player-pending3-route/validation-summary.json).

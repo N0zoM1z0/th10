@@ -10,6 +10,7 @@ class ShotUpdate(unittest.TestCase):
   program=r'''
 #include <cassert>
 #include <vector>
+struct AnmVmIdView{int value;};
 struct PlayerFloat3{float x,y,z;};struct Player;struct PlayerShotRuntimeView;
 struct PlayerShotDescriptorView{unsigned char type;signed char sourceIndex;void(*updateCallback)(Player*,PlayerShotRuntimeView*);};
 struct PlayerTimerView{int current,previous;float subframe;float*scale;};
@@ -26,7 +27,7 @@ void updateB(Player*p,PlayerShotRuntimeView*s){assert(p==&player&&s==&player.sho
 void PlayerSetShotVmDeleteState1(unsigned*id){assert(id==&player.shots[0].primaryVmId||id==&player.shots[0].secondaryVmId);events.push_back(3);
  // Adversarial boundary fixture only: the real interrupt helper is not claimed to replace descriptors.
  if(mode==3||mode==4)player.shots[0].descriptor=&b;}
-void PlayerSetShotVmDeleteState3(unsigned*id){assert(id==&player.shots[0].primaryVmId);events.push_back(4);if(mode==5)player.shots[0].descriptor=&b;}
+void ResultMenuPendingThree(AnmVmIdView*id){assert(reinterpret_cast<unsigned*>(id)==&player.shots[0].primaryVmId);events.push_back(4);if(mode==5)player.shots[0].descriptor=&b;}
 void PlayerSetShotVelocityFromPolar(PlayerFloat3*v,float,float){events.push_back(5);*v={0,0,0};}
 float PlayerWrapShotAngle(float x){return x;}
 void PlayerAdvanceShotMotion(PlayerShotMotionView*m){assert(m==&player.shots[0].motion);events.push_back(6);}

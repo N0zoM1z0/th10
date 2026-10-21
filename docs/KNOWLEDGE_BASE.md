@@ -4462,3 +4462,31 @@ correct. Flag-before-third changes a207-byte helper without extent improvement.
 All eight full Run7020 comparisons retain identical target-replayed bytes,
 189fields/62locals and27 residuals. No source/header/profile/recipe or exact
 ledger adoption; all three original large goals and later gates remain open.
+
+
+### Player pending3 source/callee closure and payload register (2026-10-21)
+
+Target428370 calls40C4D0, the existing pending3/root-child helper, rather than a
+separate deletion service. PlayerUpdateShots now names that maintained body;
+both menu pending helpers pass their existing ID objects to FindVm by value.
+The full target876/native738 callers are not equal and receive no byte score.
+Observed iterator bias closes the argument: targetfull-shot+20/+24 and
+nativefull-shot+40/+4 both reach ID+44, initiallyPlayer+4E0, stride5C. A unique
+PDB-owned direct call verifies the body binding in the31-input five-TU graph.
+The copied-native call-to-pending6 control and old-alias source fixture reject.
+
+Current two-/five-TU helpers each bind both fields and match63/65. Both inputs
+are EAX; the residual+1/+8 bytes are MOV ECX,[EAX]/PUSH ECX versus target
+MOV EAX,[EAX]/PUSH EAX. The earlier private inputECX interpretation was wrong.
+Stdcall and consistent member controls do not repair this payload register and
+are not retained. Original declaration/class/storage ownership stay unknown.
+
+The existing canonical row404/all16 cold-replays. Current Player-only incremental
+large context freezes33 inputs and retains46 complete helpers5335/all142.
+Run7020/all189/62locals keeps27 differences and exact171-byte callee; all complete
+replayed bytes retain SHA830db1c5...a472. The generic decoder flag is false for
+this image, while authoritative table fields plus reviewed selector annotations
+satisfy full owned-byte coverage. ANM9964/7478/7995/90groups/gap2 and Enemy14464/
+frame2C4/19sentinels/42groups/gap650 remain nonexact. The length-square expression
+control preserves all three complete raw native bodies in its preceding source
+context. No exact totals change. See [pending3 evidence](evidence/player-pending3-route/README.md).
