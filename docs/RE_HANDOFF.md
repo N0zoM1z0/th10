@@ -49,7 +49,30 @@ authored denominator is provisional. The SVG now visibly fills the authored
 bar from current classified exact bytes and labels the ratio provisional.
 The complete-game denominator remains unknown.
 
-The latest checkpoint closes EnemyCancelManagerView::CancelBulletPattern at
+The latest bounded large-owner investigation tests the current ANM timer tail.
+An unchanged private ANM positive and two ordinary full Tick expansions (scale
+first versus subframe += scale) preserve every raw byte of all three complete
+native bodies9964/7020/14464. Each retains35 helpers4424/all118. ANM stays7478/
+7995 case-aligned,90/92 target-sized groups,gap2. Adding /Op only to the ANM
+support grows its owner to10140, scale56->82 and RGB820->769;33 guards3548/all98
+remain exact. The initial cached-anchor link is terminal-failed on8 new math
+symbols; private anchor recovery (11 total added symbols) reuses all game
+objects and completes. Run stays27 with all7020 target-replayed bytes equal;
+Op dispatcher's21 unbound fields receive no ordinary score/identity claim.
+No source/header/profile/recipe/ledger is adopted. The circle-cancel source and
+current canonical carrier pins below remain live. See
+[ANM timer evidence](evidence/anm-timer-sequencing/README.md).
+Three terminal private duplicate images are pruned/3124040 bytes; the completed
+Op failure and full source/compile/guard receipts remain. Recovery is
+`.analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/RECOVERY.md`.
+All104 standard CI checks pass in one invocation. Fresh current ANM9964
+case measurement remains7478/7995,90/92,gap2; complete Run/all189/62locals
+retains27 ordinary differences. Final toolchain/tracking/progress/docs/diff
+checks pass; all32 raw inputs,15 current canonical artifacts and the retained
+profile failure artifacts remain current after CI. No extra canonical replay
+is needed for unchanged production source/interfaces.
+
+The latest exact checkpoint closes EnemyCancelManagerView::CancelBulletPattern at
 408100..408203: **260 new authored exact bytes/all5 fields**. This existing
 reviewed authored owner gains one source mapping; its boundary/disposition and
 denominator do not change. The old <= comparison excluded unordered inputs,
@@ -561,7 +584,7 @@ graph after any dependency changes before comparing scores.
 
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
-| ANM ExecuteScript43EE30/9964 | Current two full ten-TU circle-cancel colds have identical complete9964 bodies; equality to the preceding carrier requires verified field rewrites. Prior90/92 groups and gap2 persist through complete equality | Nonexact. Registers, flag scheduling, intervals61(+1)/2(−1) and common tail remain open. No target exact credit from native equality. |
+| ANM ExecuteScript43EE30/9964 | Current two full ten-TU circle-cancel colds have identical complete9964 bodies; equality to the preceding carrier requires verified field rewrites. Fresh timer-batch diagnosis remeasures7478/7995,90/92 groups and gap2 | Nonexact. Registers, flag scheduling, intervals61(+1)/2(−1) and common tail remain open. No target exact credit from native equality. |
 | ECL Run44E1A0/7020 | Current full ten-TU circle-cancel graph: complete7020/all189/62locals,6993 matched,171-byte float callee exact | Nonexact,27 ordinary differences. Historical separate two-TU26 is not current. Thread argument, SIB, stack-home and common-latch differences remain. [Current evidence](evidence/enemy-circle-cancel/README.md). |
 | Enemy DispatchEclInstruction40E770/14416 | Current two full ten-TU circle-cancel colds:14464/14416, frame2C4,19sentinels,181 selectors/108 groups in target order;42 target-sized groups, absolute gap650 | Nonexact. Instruction lifetime, storage, register scheduling and stack homes remain open. Historical105/106 integer-call counts and1B4/1AA shared-tail addresses have not been freshly counted here; do not use them as current missing-read evidence. No parent or case exact credit. |
 
@@ -621,7 +644,8 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the circle-cancel proof; death-service/item-scatter/read-open/worker/RGB results retain
+Latest focused diagnostics are in the ANM timer proof; exact results are in
+the circle-cancel proof; death-service/item-scatter/read-open/worker/RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -636,4 +660,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/enemy-circle-cancel/validation-summary.json).
+[the current validation summary](evidence/anm-timer-sequencing/validation-summary.json).

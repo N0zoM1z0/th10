@@ -4411,3 +4411,24 @@ field rewrites; Run remains27 ordinary differences. Dispatcher14464/14416 has
 frame2C4,19sentinels,42/108 target-sized groups and case gap650; no large owner
 receives exact credit. The SVG now displays exact bytes/current classified
 authored bytes with a provisional label, leaving complete-game inventory open.
+
+
+### 2026-10-21: ANM timer expression order and precision-profile limits
+
+[Current timer evidence](evidence/anm-timer-sequencing/README.md) rechecks the
+ANM9964 owner in the accepted ten-TU graph. Target441377 loads scale before
+adding subframe; native loads subframe first even though maintained Tick
+already spells scale + subframe. An unchanged private positive and two ordinary
+call-site expansions, with original addition versus subframe += scale, preserve
+every raw byte of all complete ANM9964/Run7020/dispatcher14464 bodies. Each
+retains35 complete helpers4424/all118. Source operand order cannot by itself
+identify the original source from this target load order.
+
+One ANM-support-only /Op control grows the complete owner to10140, scale56->82
+and RGB820->769, retaining only33 helpers3548/all98. Its first cached-anchor link
+fails; rebuilding private non-runnable address anchors, without game recompiles,
+adds11 math symbols and completes. Run/all189/62locals retains27 differences and
+all7020 target-replayed bytes; Op dispatcher's21 unbound fields receive no
+ordinary-byte score or identity claim. This rejects the bounded current profile,
+not every possible original partition/profile. No production source/header/
+recipe/ledger or phase state changes; the three original large goals stay open.

@@ -1,0 +1,1069 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "ed17b0d",
+  "scope": "Four current ten-TU ANM diagnostics (unchanged positive, two natural expansions, one precision profile); no maintained code/header/profile/recipe/ledger adoption, no new exact credit",
+  "maintained_source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "de2c1fdceefe6aaa8a2c14af12eb04c5cc49d9f188dc04c091078fdf2dc29c2f",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "current_canonical_artifact_sha256": {
+    "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "build/match-linked/EnemyItemDrops/link-anchors.obj": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+    "build/match-linked/EnemyItemDrops/source.exe": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+    "build/match-linked/EnemyItemDrops/source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "build/match-linked/EnemyItemDrops/source.map": "5d5e4f30e2de91a5f1accad45a4f246a84d0a80b684e92d7214137a09b89d390",
+    "build/match-linked/EnemyItemDrops/source.pdb": "dc7dc128c33d781396fbc1db289416607aa21b8e6f47360fab821625ccc9b4ac",
+    "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57"
+  },
+  "graph": {
+    "artifact_kind": "linked-pe",
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "producer": {
+    "script": "private probe.py",
+    "sha256": "09e2478cff8b762e6f835edb370fe6845ed6b5afd91297c0e99cefc4d549a29b",
+    "op_link_resume_sha256": "bd1d3c8f49e5e01528047b3b16418c6acbae7abbb2eb5184d737c8cbba370008",
+    "native_equality_sha256": "c7d4dea291c6f6e2fe6f2038e63cdb84ddb906bce18a5d16db388e4fbb733ff9",
+    "parent_proof_sha256": "99c4c0a8b0ea0e25433713d8a08667414876fbdc61bb1274e0cd848089c51cbd"
+  },
+  "controls": [
+    {
+      "label": "copied-baseline",
+      "source_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "compile_log_sha256": "e80a56ac4d6fa4689d7a279258e858bbbb2d2bb0beffeeab193462d36df08e65",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/copied-baseline/source.exe",
+          "sha256": "4b9d159cdb6dcd0808d34a394ca10309e8df694e8f71cf83c3e8292cff3b4fc2"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/copied-baseline/source.map",
+          "sha256": "5029758726132f0d8d97561072f1dee0980304013e6ac1820db2b5523e72b634"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/copied-baseline/source.pdb",
+          "sha256": "800a86636743eae87130233ef6bc104a8d25eca5e539a381fdb1b26f4ba0a7f7"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/copied-baseline/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained": false,
+      "reused_object_sha256": {
+        "source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+        "support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "link-anchors.obj": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+        "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+      },
+      "changed_object_sha256": "d5e9563ebb8e43c15edc9a349e602cbb6c7a5cc39bdf7294045065a3999404fa",
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA20",
+          "size": 9964,
+          "raw_sha256": "36826b8b54d8fd2fc3159a3e62527f9bd7f02c3c34ca1c702ebb878d96c8d26d"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D70",
+          "size": 7020,
+          "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402810",
+          "size": 14464,
+          "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c"
+        }
+      },
+      "guards": {
+        "owners": 35,
+        "exact": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "guard_failures": [],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "candidate_contribution_size": 9964,
+        "physical_order_matches": true,
+        "pre_table_span_delta": 0,
+        "case_aligned": {
+          "matched_comparable_bytes": 7478,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 2,
+          "same_sized_cases": 90,
+          "normalization_complete": true
+        }
+      },
+      "producer_receipt_sha256": "ca6ff897f83bf30fee208a3b13508fed5fce60239c6e15559b435efc88eb8f7b",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/copied-baseline/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/copied-baseline",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "source_path": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/copied-baseline/AnmManager.cpp"
+    },
+    {
+      "label": "tick-inline-scale-first",
+      "source_sha256": "351e49638edb4221416767c969543649026ba90c4aa2994e0c7e3d831212718a",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "compile_log_sha256": "6f793678cb3d9eae26552018ce9357ecbbfed3148ab8612aba0fa3c88273c7c8",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-scale-first/source.exe",
+          "sha256": "65b5c2a017698596e99601c121c06e759bbbc554874558ccd9c9f7b696ff786f"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-scale-first/source.map",
+          "sha256": "7877155a62d913369d1a19322191f552727e1b11b39aa583f3923c6b41a8cf8e"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-scale-first/source.pdb",
+          "sha256": "4321e27df764f50d364333412e4fe764c48fa917755bf9c26eab1e3e7ac05c14"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-scale-first/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained": false,
+      "reused_object_sha256": {
+        "source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+        "support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "link-anchors.obj": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+        "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+      },
+      "changed_object_sha256": "fd9b89bc936817d73c8f215bf847dd4ea3ad791a870204d9ab46fdd443ce463a",
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA20",
+          "size": 9964,
+          "raw_sha256": "36826b8b54d8fd2fc3159a3e62527f9bd7f02c3c34ca1c702ebb878d96c8d26d"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D70",
+          "size": 7020,
+          "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402810",
+          "size": 14464,
+          "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c"
+        }
+      },
+      "guards": {
+        "owners": 35,
+        "exact": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "guard_failures": [],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "candidate_contribution_size": 9964,
+        "physical_order_matches": true,
+        "pre_table_span_delta": 0,
+        "case_aligned": {
+          "matched_comparable_bytes": 7478,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 2,
+          "same_sized_cases": 90,
+          "normalization_complete": true
+        }
+      },
+      "producer_receipt_sha256": "fd509dff9143de4844ae3a708e5f10d3aa0ecbc467657f322e8590cb5dc1a885",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-scale-first/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-scale-first",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "source_path": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-scale-first/AnmManager.cpp"
+    },
+    {
+      "label": "tick-inline-subframe-first",
+      "source_sha256": "9d7a6678579db1f2952e46c3a1fc36c37a9c5b24b8f0df5616868e00e524cb18",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "compile_log_sha256": "8f139fa43b564082e6fa777645791916eb350f67ff696c6d86ec6d3478a824bc",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-subframe-first/source.exe",
+          "sha256": "0b006329d69a3736a496afc9250709696a12b28939e628b409bd1667a6ec76e5"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-subframe-first/source.map",
+          "sha256": "51efd934147ac27b72dc4e21e62aa8db5350ea0c98b0af57c8a16e755ef91be2"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-subframe-first/source.pdb",
+          "sha256": "e9485e778cf2e2ccb425bea18b6efa3850c047d8852baedfdcccb3e09dd9cb08"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-subframe-first/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained": false,
+      "reused_object_sha256": {
+        "source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+        "support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "link-anchors.obj": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+        "link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+      },
+      "changed_object_sha256": "dcdf9ee3216888f9212a8d43b71f0841944cea47a4e77bf9bead0837f40e3485",
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA20",
+          "size": 9964,
+          "raw_sha256": "36826b8b54d8fd2fc3159a3e62527f9bd7f02c3c34ca1c702ebb878d96c8d26d"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D70",
+          "size": 7020,
+          "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402810",
+          "size": 14464,
+          "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c"
+        }
+      },
+      "guards": {
+        "owners": 35,
+        "exact": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "guard_failures": [],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "candidate_contribution_size": 9964,
+        "physical_order_matches": true,
+        "pre_table_span_delta": 0,
+        "case_aligned": {
+          "matched_comparable_bytes": 7478,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 2,
+          "same_sized_cases": 90,
+          "normalization_complete": true
+        }
+      },
+      "producer_receipt_sha256": "0cc1a771ae5fa97792846458e19dca95314ac6b98525d7501f2cc1a55b6704eb",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-subframe-first/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-subframe-first",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "source_path": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/tick-inline-subframe-first/AnmManager.cpp"
+    },
+    {
+      "label": "anm-op-consistency",
+      "source_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Op"
+      ],
+      "compile_log_sha256": "7b050d94ec223481dbeeb19974ea93fa8c7ec0eab083315973c55de0625facb1",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/source.exe",
+          "sha256": "edcef6d0f66d884d726851f1caeead5d3db0caec63f91cb3a579798f7ece13f6"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/source.map",
+          "sha256": "377ad7623773a7b05d7e69b6d3636f5b1117854cf7c77da88fce8350e063fc5e"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/source.pdb",
+          "sha256": "9279f268500990b1afd30fe37d5a1b659d15d6b6ab7340884f183227cab90950"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained": true,
+      "reused_object_sha256": {
+        "source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+        "support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57"
+      },
+      "changed_object_sha256": "0ae7b52dda82fdcc323b38ac10683368a89ba690979cfe2f95702a2a6cf4b1fa",
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040E030",
+          "size": 10140,
+          "raw_sha256": "84a2c6d3bef158623b5eedc24390ada9a341b55b9d5f1ac93c2e903de0e6670a"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x004070E0",
+          "size": 7020,
+          "raw_sha256": "a240345eb89e9e9dea8c6f8d0734f959924f4459b5dc97c3eb385559d5037c51"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402B80",
+          "size": 14464,
+          "raw_sha256": "efee27cc0a95e5ccdec1ee0706a516f3f155d8549f6d02f25fc46a1b25c91893"
+        }
+      },
+      "guards": {
+        "owners": 35,
+        "exact": 33,
+        "bytes": 3548,
+        "fields": 98
+      },
+      "guard_failures": [
+        {
+          "unit": "anm-int3-scale",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x52 differs from manifest 0x38"
+        },
+        {
+          "unit": "anm-evaluate-rgb-interpolation",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x301 differs from manifest 0x334"
+        }
+      ],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "candidate_contribution_size": 10140,
+        "physical_order_matches": true,
+        "pre_table_span_delta": 176,
+        "case_aligned": {
+          "matched_comparable_bytes": 3917,
+          "comparable_bytes": 8076,
+          "absolute_case_gap_delta": 570,
+          "same_sized_cases": 56,
+          "normalization_complete": true
+        }
+      },
+      "producer_receipt_sha256": "bf58dca4cdd7bd8a5c8609255edcbae4e1bc6597c29898481c49fc1c49d768fa",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ],
+          ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/AnmManager.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Op"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "source_path": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/AnmManager.cpp"
+    }
+  ],
+  "complete_native_equality": {
+    "scope": "All complete current bodies; exhaustive field-key equality and common semantic symbols/internal offsets only; no blanket masks",
+    "full_private_report_sha256": "8874f531b87b17077065535d20fea04218b7ff2b9c5479b0cfad03e6b23d1a8d",
+    "results": [
+      {
+        "label": "copied-baseline",
+        "owners": [
+          {
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 9964,
+            "candidate_size": 9964,
+            "result": "raw equal",
+            "raw_sha256": "36826b8b54d8fd2fc3159a3e62527f9bd7f02c3c34ca1c702ebb878d96c8d26d"
+          },
+          {
+            "symbol": "?Run@EclVmContext@@QAEHM@Z",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 7020,
+            "candidate_size": 7020,
+            "result": "raw equal",
+            "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b"
+          },
+          {
+            "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 14464,
+            "candidate_size": 14464,
+            "result": "raw equal",
+            "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c"
+          }
+        ],
+        "complete_target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472"
+      },
+      {
+        "label": "tick-inline-scale-first",
+        "owners": [
+          {
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 9964,
+            "candidate_size": 9964,
+            "result": "raw equal",
+            "raw_sha256": "36826b8b54d8fd2fc3159a3e62527f9bd7f02c3c34ca1c702ebb878d96c8d26d"
+          },
+          {
+            "symbol": "?Run@EclVmContext@@QAEHM@Z",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 7020,
+            "candidate_size": 7020,
+            "result": "raw equal",
+            "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b"
+          },
+          {
+            "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 14464,
+            "candidate_size": 14464,
+            "result": "raw equal",
+            "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c"
+          }
+        ],
+        "complete_target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472"
+      },
+      {
+        "label": "tick-inline-subframe-first",
+        "owners": [
+          {
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 9964,
+            "candidate_size": 9964,
+            "result": "raw equal",
+            "raw_sha256": "36826b8b54d8fd2fc3159a3e62527f9bd7f02c3c34ca1c702ebb878d96c8d26d"
+          },
+          {
+            "symbol": "?Run@EclVmContext@@QAEHM@Z",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 7020,
+            "candidate_size": 7020,
+            "result": "raw equal",
+            "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b"
+          },
+          {
+            "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 14464,
+            "candidate_size": 14464,
+            "result": "raw equal",
+            "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c"
+          }
+        ],
+        "complete_target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472"
+      },
+      {
+        "label": "anm-op-consistency",
+        "owners": [
+          {
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 9964,
+            "candidate_size": 10140,
+            "result": "size differs"
+          },
+          {
+            "symbol": "?Run@EclVmContext@@QAEHM@Z",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 7020,
+            "candidate_size": 7020,
+            "result": "equal after verified field rewrites",
+            "unbound_fields": [],
+            "ordinary_differences": 0,
+            "old_raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b",
+            "new_raw_sha256": "a240345eb89e9e9dea8c6f8d0734f959924f4459b5dc97c3eb385559d5037c51",
+            "verified_rebound_field_count": 103,
+            "verified_rebound_fields_sha256": "e6dc0451565e534aad1f0731b0001175e0b0d22b5828f3e62d5d223886ae5396"
+          },
+          {
+            "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+            "scope": "complete native-body identity only; no callee/product or target equality",
+            "baseline_size": 14464,
+            "candidate_size": 14464,
+            "result": "different or unbound",
+            "unbound_fields": [
+              [
+                302,
+                "REL32",
+                4,
+                306
+              ],
+              [
+                1780,
+                "REL32",
+                4,
+                1784
+              ],
+              [
+                2031,
+                "REL32",
+                4,
+                2035
+              ],
+              [
+                3086,
+                "REL32",
+                4,
+                3090
+              ],
+              [
+                4361,
+                "REL32",
+                4,
+                4365
+              ],
+              [
+                4426,
+                "REL32",
+                4,
+                4430
+              ],
+              [
+                5288,
+                "REL32",
+                4,
+                5292
+              ],
+              [
+                9528,
+                "REL32",
+                4,
+                9532
+              ],
+              [
+                9631,
+                "REL32",
+                4,
+                9635
+              ],
+              [
+                9804,
+                "REL32",
+                4,
+                9808
+              ],
+              [
+                9829,
+                "REL32",
+                4,
+                9833
+              ],
+              [
+                11086,
+                "REL32",
+                4,
+                11090
+              ],
+              [
+                11926,
+                "REL32",
+                4,
+                11930
+              ],
+              [
+                12065,
+                "REL32",
+                4,
+                12069
+              ],
+              [
+                12148,
+                "REL32",
+                4,
+                12152
+              ],
+              [
+                12192,
+                "REL32",
+                4,
+                12196
+              ],
+              [
+                12268,
+                "REL32",
+                4,
+                12272
+              ],
+              [
+                12344,
+                "REL32",
+                4,
+                12348
+              ],
+              [
+                12420,
+                "REL32",
+                4,
+                12424
+              ],
+              [
+                12643,
+                "REL32",
+                4,
+                12647
+              ],
+              [
+                13390,
+                "REL32",
+                4,
+                13394
+              ]
+            ],
+            "ordinary_differences": null,
+            "old_raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c",
+            "new_raw_sha256": "efee27cc0a95e5ccdec1ee0706a516f3f155d8549f6d02f25fc46a1b25c91893",
+            "verified_rebound_field_count": 416,
+            "verified_rebound_fields_sha256": "0acb790b929dbf206dcc692ba109e0a4c1ea978d0d9c24736728740bd0e1af9d"
+          }
+        ],
+        "complete_target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472"
+      }
+    ]
+  },
+  "profile_link_recovery": {
+    "initial_cached_link": "terminal failure;8 new CRT math symbols, not a complete comparison",
+    "fresh_private_anchors": true,
+    "total_additional_symbols": [
+      "__CIatan2",
+      "__CIcos",
+      "__CIsin",
+      "_acos",
+      "_atan",
+      "_cos",
+      "_fabs",
+      "_fmod",
+      "_sin",
+      "_sqrt",
+      "_tan"
+    ],
+    "game_recompiles_during_resume": 0,
+    "scope": "same non-runnable diagnostic harness, only private anchor objects rebuilt",
+    "initial_failure_log_sha256": "2b7c3be1b9eee551091a312b807b8f3b8521febaf38dfb328e1b88497edadbcb",
+    "retained_failure_artifact_sha256": {
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/link-aliases.rsp": "dac07d9c213bee92921128ddf639aa32091807ac23fe4515f57b7cd2060de02c",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/link-anchors.c": "df196c11f407b3e22da3fe2e2c0ddfd3a5e4c3a4654464610477ccdcbd8e0d11",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/link-anchors.obj": "aa6c15be279e76bb7a528bc919265f74f49bae4e8aa8b74ca235e96b7928584a",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/link-extended-attempt-1.log": "d8f1e9523fcf7cf41be282984c10de362f35b21aa59dde31b125d334174518c0",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/link-extended-attempt-2.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/link.log": "2b7c3be1b9eee551091a312b807b8f3b8521febaf38dfb328e1b88497edadbcb",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/source.exe": "edcef6d0f66d884d726851f1caeead5d3db0caec63f91cb3a579798f7ece13f6",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/source.map": "377ad7623773a7b05d7e69b6d3636f5b1117854cf7c77da88fce8350e063fc5e",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/source.pdb": "9279f268500990b1afd30fe37d5a1b659d15d6b6ab7340884f183227cab90950",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-01-AnmManager.ltcg.obj": "0ae7b52dda82fdcc323b38ac10683368a89ba690979cfe2f95702a2a6cf4b1fa",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+      "build/gpt-6.1-sol/anm-timer-sequencing-20261021/anm-op-consistency/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57"
+    }
+  },
+  "ghidra": {
+    "transport": "direct local readOnly/noanalysis/rollback",
+    "cpu": 1,
+    "heap_mib": 768,
+    "complete_mapped_text": {
+      "first": "0x00401000",
+      "last_inclusive": "0x00465A80",
+      "bytes": 412289,
+      "sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+      "unchanged": true
+    },
+    "target_observation": "slow Tick tail441377 FLD [ECX];441379 FADD [EBP+64], unlike current native reverse loads",
+    "output_sha256": "9d72327f43ffaa74165a5b2afced31104aec74e0915df1caa8ef039682ab17ac"
+  },
+  "limitations": [
+    "No original class/TU/profile identification",
+    "No full independent cold or canonical replay claimed for private controls",
+    "Case diagnostics are noncanonical; no partial parent credit",
+    "Op dispatcher14464 has21 changed fields without proven semantic identity: no ordinary-byte score or native-equality claim",
+    "No runtime/native-product/semantic/port gate change"
+  ]
+}

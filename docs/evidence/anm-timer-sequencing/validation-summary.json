@@ -1,0 +1,145 @@
+{
+  "state": "validated",
+  "new_exact_bytes": 0,
+  "adopted_controls": 0,
+  "source_controls_executed": 3,
+  "unchanged_positive_controls": 1,
+  "game_tu_compiles": 4,
+  "reused_game_objects_per_control": 9,
+  "independent_complete_colds": 0,
+  "canonical_replays": 0,
+  "cleanup": {
+    "scope": "Only inspected terminal duplicate private native images; current canonical/independent images, selected Op failure, all source/compile/strict/guard receipts retained",
+    "directories": 3,
+    "bytes": 3124040,
+    "unrelated_d3d": "untouched"
+  },
+  "native_summary_sha256": "047be957090427486a9b93738115c2f32a7751cd60747edceee61eda20cbf7b4",
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  },
+  "gates": [
+    {
+      "label": "anm",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/current-anm.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.352,
+      "log": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/final-anm.json",
+      "log_sha256": "90f5529203c01e6f80c27e6add712fc8ac356f2c047c629b4482f3412c58165d"
+    },
+    {
+      "label": "run",
+      "command": [
+        "scripts/repo-python",
+        "scripts/diagnose-ecl-run-native.py",
+        "--unit",
+        "enemy-cancel-bullet-pattern",
+        "--artifact-dir",
+        "build/match-linked/EnemyItemDrops"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "seconds": 0.548,
+      "log": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/final-run.json",
+      "log_sha256": "2f9317e00dd4db624f87ce74d96dd90bf2804c3f4c5c664dde0a8d4dd362a72d"
+    },
+    {
+      "label": "toolchain",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.139,
+      "log": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/final-toolchain.log",
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "label": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.325,
+      "log": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/final-tracking.log",
+      "log_sha256": "18e9c980e4487a79dbf87d871e51bdc2df019f9285bbdd7b3d2474a387e4d7d7"
+    },
+    {
+      "label": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.154,
+      "log": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/final-progress.log",
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "label": "ci",
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 413.043,
+      "log": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/final-ci.log",
+      "log_sha256": "96c1283f2a6e3a40412da036af73ae259183962a34922c6f082b0c78758a517c",
+      "steps": 104
+    },
+    {
+      "label": "docs",
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.142,
+      "log": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/final-docs.log",
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.013,
+      "log": ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/final-diff.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "pins_before": {
+    "raw_inputs": 32,
+    "current_canonical_artifacts": 15,
+    "retained_failure_artifacts": 19,
+    "result": "all unchanged"
+  },
+  "pins_after": {
+    "raw_inputs": 32,
+    "current_canonical_artifacts": 15,
+    "retained_failure_artifacts": 19,
+    "result": "all unchanged"
+  },
+  "standard_ci_invocations": 1,
+  "standard_ci_checks": 104,
+  "final_gates_receipt_sha256": "aa07ecc754aea3f7f5860206aca7b8c7df049435ec9586927517f34fb421239a"
+}
