@@ -4024,3 +4024,53 @@ primary dependency closure of the nine-TU dispatcher graph; a primary-only
 recompile and eight hash-verified support objects retain all three complete
 large native bodies and21 complete guards2415/all52. Large functions remain
 nonexact; current pins supersede the preceding header carrier only.
+
+
+## Executable checksum dataflow and complete replay (2026-10-21)
+
+CalcExecutableChecksum43A1C0..43A28E owns207 bytes before one CC byte; its sole
+Ghidra direct caller is438B9E. Target GetModuleFileNameA uses PE slot4660DC,
+independently decoded as KERNEL32's named import. A success-first outer path,
+checksum initialization after that API, natural signed fileSize/4−1 and a
+pointer countdown reproduce the complete target. Letting the cursor receive
+the loader return first, then preserving the base before null-test, recovers
+ECX/EBX roles and EDI file-size lifetime. Merely hoisting declarations is
+neutral; a same-size207 negative has a shifted global field and is rejected.
+The cursor/base source types and names remain hypotheses, not recovered symbols.
+
+Real PbgArchive visibility restores the complete OpenFile360/all26 and its
+EAX pathname plus stack sizeOut/mode/RET8. The old four-TU297-byte reader's
+EBX out pointer is the wrong caller context. A complete five-TU dependency-only
+baseline still gives old checksum168; source corrections are separately needed.
+Changing to the genuine checksum entry alone is neutral. Both final proofs use
+real WinMain, /GL /GS and17 equal frozen project inputs. Two independent full
+colds strictly replay11 owners2191/all133; only207/all9 receives new credit.
+The affected original three-TU OpenFile recipe also cold-replays. Size492384
+then checksum492380 are published only after freeing the original buffer.
+Swapped-global-target controls reject. See [complete checksum proof](evidence/main-executable-checksum/README.md).
+No production header changes; all30 large-graph inputs and four artifact pins
+remain unchanged, so no new large replay is needed. Product/runtime remain open.
+
+## ANM source-kind and processor controls (2026-10-21)
+
+The current actual nine-TU graph strictly passes four operand readers856/all84
+and all four Float2/Float3/alpha/RGB evaluators as part of28 complete existing
+owners5180/all168. Missing getter bodies/receiver adaptation is not the residual
+explanation. GetFloatVar target43EAC0 receives liveESI plus stackfloat andRET4.
+An ordinary free stdcall implementation reproduces the same complete424/all44
+as the current member source. Binding those two fully proven callees leaves
+the complete9964-byte executor native-to-native equal; source kind is not unique.
+Free cdecl has368 bytes and grows the parent10156; forwarding value helpers
+produce10524. All are rejected, with no production interface or owner change.
+
+An ordinary manager-member ExecuteScript with unused manager receiver, suggested
+only as a hypothesis by TH09, also retains the complete native9964 parent in a
+fresh full nine-TU cold. Its28 guards pass5180/all168 and Run7020 is unchanged.
+Enemy's native comparison has one unbound changed REL32 field to the qualified
+EnemyInitializeLaserType1 helper; do not label it an ordinary code difference.
+G6/G7 and one clear local-pointer rename each preserve all three native owners
+after verified fields. No name sweep is justified. Compiler output diagnoses
+existing var_order pragmas as unknown; these controls do not alter them. Current
+parent90/92 target-sized groups, gap2 and7478/7995 aligned diagnostic remain
+nonexact, without partial credit. Complete source/cold/control identities are
+linked from the checksum proof; canonical source/API remains unchanged.

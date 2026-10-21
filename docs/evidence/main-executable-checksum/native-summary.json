@@ -1,0 +1,1919 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "7f45a438471eeb7e56e226e6abbfa041dbc8a805",
+  "scope": "One new complete authored exact checksum owner207/all9. No parent-fragment, source-owner, production/profile, runtime, semantic or port claim.",
+  "graph": {
+    "source": "src/Main.cpp",
+    "support_sources": [
+      "src/GameErrorContext.cpp",
+      "src/FileSystem.cpp",
+      "src/Midi.cpp",
+      "src/PbgArchive.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry": "WinMain@16",
+    "link_profile": "Unchanged canonical LTCG diagnostic link profile/data-anchor harness"
+  },
+  "source_sha256": {
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+    "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/Main.cpp": "dcde83cb8e6e9c729d43e0f9f808fe050c2e8ee43c29fd44c7b7af2b4b864e4b",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "new_owned_bytes": 207,
+  "new_bound_fields": 9,
+  "canonical_unit": "main-executable-checksum",
+  "independent_complete_cold_builds": [
+    {
+      "label": "maintained-cold1",
+      "kind": "Independent complete five-TU cold; all five objects rebuilt",
+      "source_pins_sha256": "25d286a82c000f80fedd72ad5aa856e670e91947e033950a0d68db5ae9779e9f",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/source.exe",
+          "sha256": "e47e4ab2749e2d2ead2e0aac8e43a557a0c997db1b3ef7fcbfb146f76e900190"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/source.map",
+          "sha256": "fe36930802757106b7db59a88b9a2d2023ebfdfffe31d2f81e1b210b18aa3fcc"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/source.pdb",
+          "sha256": "1d8b4fd172e088d3cf637d7802cd963e5262d9cfc5715f2d8ac750e8acf65b67"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/source.ltcg.obj",
+          "sha256": "f2be1d03315f87f14446222f3fce4c158085aa7c4d87dfd7563dda990a585cbb"
+        }
+      },
+      "objects": [
+        {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/source.ltcg.obj",
+          "sha256": "f2be1d03315f87f14446222f3fce4c158085aa7c4d87dfd7563dda990a585cbb"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/support-00-GameErrorContext.ltcg.obj",
+          "sha256": "30734cd60f485cd42c53bf1bf40677233da6b04c2f1edd8dcd9ca27241c53a58"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/support-01-FileSystem.ltcg.obj",
+          "sha256": "22863be227340d1a551197187463b260928ce8adee07b5785fc13eb5ed61d8af"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/support-02-Midi.ltcg.obj",
+          "sha256": "704554f5c559aec78dd39c811b838b5e4b56ce6dce66e6ec13c86b0b62804d79"
+        },
+        {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/maintained-cold1/support-03-PbgArchive.ltcg.obj",
+          "sha256": "23b1c504d81c5e6a60f426e66d573f6db6f77e1de28bec1905d567ea3cdd2300"
+        }
+      ],
+      "replay_sha256": "d15fa83febf1d9edfbc7f4ccd030cb01350b11162cab4c194e9d203411fdd97f",
+      "owners": [
+        {
+          "unit": "main-executable-checksum",
+          "address": "0x0043A1C0",
+          "size": 207,
+          "fields": 9,
+          "result": "exact"
+        },
+        {
+          "unit": "main-activate-window",
+          "address": "0x0043A1B0",
+          "size": 8,
+          "fields": 1,
+          "result": "exact"
+        },
+        {
+          "unit": "main-window-proc",
+          "address": "0x004390E0",
+          "size": 265,
+          "fields": 16,
+          "result": "exact"
+        },
+        {
+          "unit": "main-resolve-shortcut",
+          "address": "0x0043A290",
+          "size": 272,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "main-check-running-instance",
+          "address": "0x00439FF0",
+          "size": 442,
+          "fields": 26,
+          "result": "exact"
+        },
+        {
+          "unit": "main-init-d3d-interface",
+          "address": "0x00439700",
+          "size": 45,
+          "fields": 5,
+          "result": "exact"
+        },
+        {
+          "unit": "decomphelp-game-error-fatal",
+          "address": "0x0044B8E0",
+          "size": 201,
+          "fields": 11,
+          "result": "exact"
+        },
+        {
+          "unit": "decomphelp-game-error-log",
+          "address": "0x0044B810",
+          "size": 201,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "address": "0x0044B4D0",
+          "size": 111,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "midi-unprepare-header",
+          "address": "0x0043AEB0",
+          "size": 79,
+          "fields": 3,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-open-file",
+          "address": "0x0044B360",
+          "size": 360,
+          "fields": 26,
+          "result": "exact"
+        }
+      ],
+      "complete_bytes": 2191,
+      "bound_fields": 133,
+      "new_owner_raw_sha256": "42ddb85892fc7185b45e6cc99fa24a0ba9d82916bc7cfc125a27128ddcaa75f2"
+    },
+    {
+      "label": "canonical-cold2",
+      "kind": "Independent complete five-TU cold; all five objects rebuilt",
+      "source_pins_sha256": "25d286a82c000f80fedd72ad5aa856e670e91947e033950a0d68db5ae9779e9f",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/MainExecutableChecksum/source.exe",
+          "sha256": "b8f2fcd06b04f117ec6050e5b0acee578b66120216a0e26a9af1abcc064bb4f5"
+        },
+        "map": {
+          "path": "build/match-linked/MainExecutableChecksum/source.map",
+          "sha256": "0cc2f83b549f9164fed30ec1a55cdefee2695cc55fa204958341ae277f4bce77"
+        },
+        "pdb": {
+          "path": "build/match-linked/MainExecutableChecksum/source.pdb",
+          "sha256": "a5e8b3d2eb72e91a8cb938cefa421952aee89b7ccd1a346273913f7514b5aa68"
+        },
+        "object": {
+          "path": "build/match-linked/MainExecutableChecksum/source.ltcg.obj",
+          "sha256": "c79528195dbec3073d29a7d1754779e1c824853f0670743bbe63f0c8ff96d3c9"
+        }
+      },
+      "objects": [
+        {
+          "path": "build/match-linked/MainExecutableChecksum/source.ltcg.obj",
+          "sha256": "c79528195dbec3073d29a7d1754779e1c824853f0670743bbe63f0c8ff96d3c9"
+        },
+        {
+          "path": "build/match-linked/MainExecutableChecksum/support-00-GameErrorContext.ltcg.obj",
+          "sha256": "88df1713da8d5f144837bd928d6e9cd04a71eadabc63fa81f868975bbc775ab8"
+        },
+        {
+          "path": "build/match-linked/MainExecutableChecksum/support-01-FileSystem.ltcg.obj",
+          "sha256": "2de5fb6500dfcafaf51abb0b6a10445cddca8c491f0555cfdca75bc536a0b03f"
+        },
+        {
+          "path": "build/match-linked/MainExecutableChecksum/support-02-Midi.ltcg.obj",
+          "sha256": "fe21923e512627cc6af954fa645bea640106c5db5438e897b4c60015f2f11771"
+        },
+        {
+          "path": "build/match-linked/MainExecutableChecksum/support-03-PbgArchive.ltcg.obj",
+          "sha256": "3d917529ef5eab11631b667c4e85f94ca51661ff099ce289e82a45c4b65c06e2"
+        }
+      ],
+      "replay_sha256": "042a88bb6b749d5bf452c3ebccfa888ad8674ce68c09bc18048aefc4303acaaf",
+      "owners": [
+        {
+          "unit": "main-executable-checksum",
+          "address": "0x0043A1C0",
+          "size": 207,
+          "fields": 9,
+          "result": "exact"
+        },
+        {
+          "unit": "main-activate-window",
+          "address": "0x0043A1B0",
+          "size": 8,
+          "fields": 1,
+          "result": "exact"
+        },
+        {
+          "unit": "main-window-proc",
+          "address": "0x004390E0",
+          "size": 265,
+          "fields": 16,
+          "result": "exact"
+        },
+        {
+          "unit": "main-resolve-shortcut",
+          "address": "0x0043A290",
+          "size": 272,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "main-check-running-instance",
+          "address": "0x00439FF0",
+          "size": 442,
+          "fields": 26,
+          "result": "exact"
+        },
+        {
+          "unit": "main-init-d3d-interface",
+          "address": "0x00439700",
+          "size": 45,
+          "fields": 5,
+          "result": "exact"
+        },
+        {
+          "unit": "decomphelp-game-error-fatal",
+          "address": "0x0044B8E0",
+          "size": 201,
+          "fields": 11,
+          "result": "exact"
+        },
+        {
+          "unit": "decomphelp-game-error-log",
+          "address": "0x0044B810",
+          "size": 201,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "address": "0x0044B4D0",
+          "size": 111,
+          "fields": 12,
+          "result": "exact"
+        },
+        {
+          "unit": "midi-unprepare-header",
+          "address": "0x0043AEB0",
+          "size": 79,
+          "fields": 3,
+          "result": "exact"
+        },
+        {
+          "unit": "file-system-open-file",
+          "address": "0x0044B360",
+          "size": 360,
+          "fields": 26,
+          "result": "exact"
+        }
+      ],
+      "complete_bytes": 2191,
+      "bound_fields": 133,
+      "new_owner_raw_sha256": "42ddb85892fc7185b45e6cc99fa24a0ba9d82916bc7cfc125a27128ddcaa75f2"
+    }
+  ],
+  "semantic_fields": [
+    {
+      "offset": "0x7",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "___security_cookie",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0098",
+      "local": false,
+      "candidate_target": "0x00406188",
+      "target": "0x00473660",
+      "addend": 0,
+      "target_encoded_value": "0x00473660"
+    },
+    {
+      "offset": "0x22",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "__imp__GetModuleFileNameA@12",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0123",
+      "local": false,
+      "candidate_target": "0x004061EC",
+      "target": "0x004660DC",
+      "addend": 0,
+      "target_encoded_value": "0x004660DC"
+    },
+    {
+      "offset": "0x3E",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z",
+      "linked_symbol": "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z",
+      "local": false,
+      "candidate_target": "0x00402DC0",
+      "target": "0x0044B360",
+      "addend": 0,
+      "target_encoded_value": "0x0001115E"
+    },
+    {
+      "offset": "0x59",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "@__security_check_cookie@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0090",
+      "local": false,
+      "candidate_target": "0x00406168",
+      "target": "0x00458EA5",
+      "addend": 0,
+      "target_encoded_value": "0x0001EC88"
+    },
+    {
+      "offset": "0x8A",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "_free",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0160",
+      "local": false,
+      "candidate_target": "0x00406280",
+      "target": "0x00452422",
+      "addend": 0,
+      "target_encoded_value": "0x000181D4"
+    },
+    {
+      "offset": "0x93",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainExecutableSize@@3IA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0077",
+      "local": false,
+      "candidate_target": "0x00406134",
+      "target": "0x00492384",
+      "addend": 0,
+      "target_encoded_value": "0x00492384"
+    },
+    {
+      "offset": "0x9A",
+      "type": "DIR32",
+      "width": 4,
+      "symbol": "?g_MainExecutableChecksum@@3IA",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0076",
+      "local": false,
+      "candidate_target": "0x00406130",
+      "target": "0x00492380",
+      "addend": 0,
+      "target_encoded_value": "0x00492380"
+    },
+    {
+      "offset": "0xAC",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "@__security_check_cookie@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0090",
+      "local": false,
+      "candidate_target": "0x00406168",
+      "target": "0x00458EA5",
+      "addend": 0,
+      "target_encoded_value": "0x0001EC35"
+    },
+    {
+      "offset": "0xC4",
+      "type": "REL32",
+      "width": 4,
+      "symbol": "@__security_check_cookie@4",
+      "linked_symbol": "_th10_ltcg_probe_anchor_0090",
+      "local": false,
+      "candidate_target": "0x00406168",
+      "target": "0x00458EA5",
+      "addend": 0,
+      "target_encoded_value": "0x0001EC1D"
+    }
+  ],
+  "target_review": {
+    "mode": "Direct local readOnly/noanalysis Ghidra, rolled back, CPU1 heap768MiB; no Factory MCP",
+    "mapped_text": {
+      "start": "0x00401000",
+      "end_inclusive": "0x00465A80",
+      "size": 412289,
+      "sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f"
+    },
+    "extent": {
+      "start": "0x0043A1C0",
+      "end_inclusive": "0x0043A28E",
+      "size": 207,
+      "following_cc_bytes": 1,
+      "sole_direct_caller": "0x00438B9E",
+      "internal_loop_alignment": "Seven-byte LEA ESP,[ESP] before43A240; generated naturally by optimizer, not source padding"
+    },
+    "iat": {
+      "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+      "iat": "0x004660DC",
+      "library": "KERNEL32.dll",
+      "function": "GetModuleFileNameA"
+    },
+    "globals": {
+      "executable_size": "0x00492384",
+      "checksum": "0x00492380",
+      "evidence": "Direct target writes43A251 and43A258 after free; proposed semantic names, data ownership not established"
+    },
+    "callee": "Complete FileSystemOpenFile44B360/360: private EAX pathname, stack sizeOut/mode, RET8; all26 fields strictly pass in both final images"
+  },
+  "private_controls": [
+    {
+      "label": "five-tu-baseline",
+      "scope": "Historical private diagnostic only, not an independent final cold",
+      "entry": "WinMain@16",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/Main.cpp": "89763866ff2c607f89525cb9abede003e15fcea65ba51ca0f0756d3e0c0e234c",
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.exe",
+          "sha256": "745c21b64d4cb282585969294310166ad9b2ca3efc777a6ab3a37bc8f0b9c074"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.map",
+          "sha256": "d03709b6af9d02d7df1a3987301243972f400e1b20129d754b05da9aaaf740fa"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.pdb",
+          "sha256": "2c3de75b94b4ed797f7bfc26b2a274d55a61d1acbe57d0ee79d0985e7b1a69a0"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.ltcg.obj",
+          "sha256": "495424233e1f9ca540b5c6f7015e2838d87f5994f70c9301543a5cbbe3143bdc"
+        }
+      },
+      "checksum": {
+        "candidate_size": 168,
+        "target_size": 207,
+        "matched_structural_comparable_bytes": 12,
+        "comparable_bytes": 175
+      }
+    },
+    {
+      "label": "five-tu-root-baseline",
+      "scope": "Historical private diagnostic only, not an independent final cold",
+      "entry": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/Main.cpp": "89763866ff2c607f89525cb9abede003e15fcea65ba51ca0f0756d3e0c0e234c",
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.exe",
+          "sha256": "44910561946907d439445db72ca8dd83a32a54741cb72872c6f3be1253aff546"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.map",
+          "sha256": "360807bec8eeb997ef5510b350055cf09e09403d4849cf4edbf2de8d32c1b092"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.pdb",
+          "sha256": "aaad65a692a9455932afdd60773fb6e16f28d1cc7d97528f70a133033ba16fac"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.ltcg.obj",
+          "sha256": "d3fa7b15dc66e08e513a6c742fce2635977399535040bba0d34775344b06a4b7"
+        }
+      },
+      "checksum": {
+        "candidate_size": 168,
+        "target_size": 207,
+        "matched_structural_comparable_bytes": 12,
+        "comparable_bytes": 175
+      }
+    },
+    {
+      "label": "pointer-countdown-early-sum",
+      "scope": "Historical private diagnostic only, not an independent final cold",
+      "entry": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/Main.cpp": "aee9a2b78fc69f190a3339ceebb02d4fb529368ba90a429279de4e8394213f2f",
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.exe",
+          "sha256": "5d31d62f7b2e28087c216e926cb73e303a176386b1199dbc07c6c01d28971aa5"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.map",
+          "sha256": "092c4b894d32740e022753bc8bac91b0fa421cad3960ec84d505e4eecc413f52"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.pdb",
+          "sha256": "8cce2db35c74e637063a0db9597ca1f916cb8513cfd4f5dfb5aa3afcdef41d00"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.ltcg.obj",
+          "sha256": "26a11164e0fbcb67ce564df053ea42d305790f058bc5ba5b9e103735a54b7482"
+        }
+      },
+      "checksum": {
+        "candidate_size": 199,
+        "target_size": 207,
+        "matched_structural_comparable_bytes": 36,
+        "comparable_bytes": 171
+      }
+    },
+    {
+      "label": "success-first",
+      "scope": "Historical private diagnostic only, not an independent final cold",
+      "entry": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/success-first/Main.cpp": "d5b6f601e7334d05ac6cadff7aefff5d26a02bc2c2719724fc53af2d6ab9516a",
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/success-first/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.exe",
+          "sha256": "173021416c52cb21becdec3457f648c48d0f6098dd000cbce72ed3f6a6c6c871"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.map",
+          "sha256": "c338f2239a9f869a420687b997cc0fdcfb77262a505b06fabf95d5bc88e9f8b2"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.pdb",
+          "sha256": "8635989749b01d8a70a54f18468e408c6e527285b0519ecfc641d7c31af5d77d"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.ltcg.obj",
+          "sha256": "6886fe71adf9a0a550dbd5989fcf129b9ab09a6fac41205be83e6ef33aa4e0e2"
+        }
+      },
+      "checksum": {
+        "candidate_size": 207,
+        "target_size": 207,
+        "matched_structural_comparable_bytes": 113,
+        "comparable_bytes": 171
+      }
+    },
+    {
+      "label": "success-first-cursor",
+      "scope": "Historical private diagnostic only, not an independent final cold",
+      "entry": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/Main.cpp": "7e45a69b4d562235d2e7015d4c9369c20dcc0aae3aa841df6a53bb85494c3a5a",
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.exe",
+          "sha256": "ee878c45cd925e1d2a127d40ebaf263c3401ac7996add4eec738dbd4d080345c"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.map",
+          "sha256": "e426d183ca5d81e0823465a23a28b57400a3dcf2163fe0f2fcd2eefb3c22f22d"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.pdb",
+          "sha256": "0e874d488ce1b01e8166b2ee7575b027d01449ecb47d551be569f9aea5573e5b"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.ltcg.obj",
+          "sha256": "a06db234898d41ae1387cacefc2070ed1a546f07e590afe369fd79aa1bf6babd"
+        }
+      },
+      "checksum": {
+        "candidate_size": 207,
+        "target_size": 207,
+        "matched_structural_comparable_bytes": 152,
+        "comparable_bytes": 171
+      }
+    },
+    {
+      "label": "function-locals",
+      "scope": "Historical private diagnostic only, not an independent final cold",
+      "entry": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/function-locals/Main.cpp": "415fb950dbed8046a05d39acfcb013d88e198ca09807cd179a4ee1bd1bbd552e",
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/function-locals/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/function-locals/source.exe",
+          "sha256": "5cff9c67f5946bfcc334b044864fb316b0754b1e56588225f9b27f15f699f4f7"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/function-locals/source.map",
+          "sha256": "4f9ff7c10a0f92e1cecbc51d388fb5ff4675002f8f1d138ce90726500b468e69"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/function-locals/source.pdb",
+          "sha256": "01343d37c13ac04e0f5f72741d74fec52cd02f557766a07f2709d3de56366919"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/function-locals/source.ltcg.obj",
+          "sha256": "0397bfcd606c74534f6507478cb3fa24e6c1340ac0e567cf2f1bbc4445206922"
+        }
+      },
+      "checksum": {
+        "candidate_size": 207,
+        "target_size": 207,
+        "matched_structural_comparable_bytes": 152,
+        "comparable_bytes": 171
+      }
+    },
+    {
+      "label": "cursor-first",
+      "scope": "Historical private diagnostic only, not an independent final cold",
+      "entry": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/cursor-first/Main.cpp": "dcde83cb8e6e9c729d43e0f9f808fe050c2e8ee43c29fd44c7b7af2b4b864e4b",
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/cursor-first/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.exe",
+          "sha256": "fe1ceb3b00ce64939ed744852a2df1c1347ecabda1ac21a7a14437cde52f7a0e"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.map",
+          "sha256": "460c2a5be5a5af92d21614e6dc99e31dd99add247a68963246bb5bf9eab519f4"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.pdb",
+          "sha256": "ef19de3a41842832d8e39db593f82665728e885f9e98c61e69f86d2b6c6c9147"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.ltcg.obj",
+          "sha256": "ad22704af0653e5a7ce9c67957479d82026ba94d7be2da7c28a46567a5cb6044"
+        }
+      },
+      "checksum": {
+        "candidate_size": 207,
+        "target_size": 207,
+        "matched_structural_comparable_bytes": 171,
+        "comparable_bytes": 171
+      }
+    },
+    {
+      "label": "cursor-first-winmain",
+      "scope": "Historical private diagnostic only, not an independent final cold",
+      "entry": "WinMain@16",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/Main.cpp": "dcde83cb8e6e9c729d43e0f9f808fe050c2e8ee43c29fd44c7b7af2b4b864e4b",
+        ".analysis/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.exe",
+          "sha256": "1a6a69dc754c1dec260643ef38ba5a3ba1bf49e6dc6d325632e29684a41b12d3"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.map",
+          "sha256": "17256dfc4ce100440c319a1e658b2401b1dafb7599e586d597ddcea901d12d56"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.pdb",
+          "sha256": "446122062b0fa6615d5827b0c783ae7979ea5f8ededae29977232b1f5dfb1f1b"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.ltcg.obj",
+          "sha256": "9727c75832852d4e463822500c7e813c277f939bbd17c504d16af1520bcdc326"
+        }
+      },
+      "checksum": {
+        "candidate_size": 207,
+        "target_size": 207,
+        "matched_structural_comparable_bytes": 171,
+        "comparable_bytes": 171
+      }
+    }
+  ],
+  "negative_controls": [
+    {
+      "control": "swapped-global-targets",
+      "result": "rejected",
+      "comparison": "mismatch",
+      "size": 207,
+      "matched_bytes": 205,
+      "fields": 9,
+      "first_differences": [
+        {
+          "offset": "0x93",
+          "linked": 128,
+          "target": 132
+        },
+        {
+          "offset": "0x9A",
+          "linked": 132,
+          "target": 128
+        }
+      ]
+    },
+    {
+      "control": "same-size-source-negative",
+      "result": "rejected",
+      "reason": "linked fields differ from manifest: actual=[(7, 'DIR32', 4), (34, 'DIR32', 4), (62, 'REL32', 4), (89, 'REL32', 4), (138, 'REL32', 4), (147, 'DIR32', 4), (155, 'DIR32', 4), (172, 'REL32', 4), (196, 'REL32', 4)] expected=[(7, 'DIR32', 4), (34, 'DIR32', 4), (62, 'REL32', 4), (89, 'REL32', 4), (138, 'REL32', 4), (147, 'DIR32', 4), (154, 'DIR32', 4), (172, 'REL32', 4), (196, 'REL32', 4)]"
+    }
+  ],
+  "canonical_replay": {
+    "unit_count": 2,
+    "artifact_count": 2,
+    "matched_bytes": 567,
+    "receipt_sha256": "05523a55c541399ca24d0ca4654404f5a8ef076ab2b3b9fb193f3193dc3bbebe",
+    "units": [
+      "main-executable-checksum",
+      "file-system-open-file"
+    ]
+  },
+  "large_dependency": {
+    "scope": "No large replay needed: Main.cpp is not in the current actual thirty-input graph; Main.hpp and every actual input remain raw-identical.",
+    "source_sha256": {
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3b4e09603103c92b3940d305f62281054ae18327db960acea418176c7582a57a",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+    },
+    "artifacts": {
+      "image": {
+        "path": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.exe",
+        "sha256": "992a306c1660c0c62263782bd4107890ed21ed51bac6fdd6baf8a8702b547a48"
+      },
+      "map": {
+        "path": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.map",
+        "sha256": "1d4625863e31ed9ace009358817e817d67447107455e87690faa57022dc4728f"
+      },
+      "pdb": {
+        "path": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.pdb",
+        "sha256": "58ce1608cd82ddeca179e196896f80086d8993773ee66bfcf877f6be813c2e16"
+      },
+      "object": {
+        "path": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.ltcg.obj",
+        "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+      }
+    },
+    "new_large_exact_credit": 0
+  },
+  "anm_source_interface_controls": {
+    "scope": "Eight rejected private controls; maintained ANM/Enemy/ECL code and all30 actual source inputs unchanged. No exact credit. Source-kind nonuniqueness does not recover original names or ownership.",
+    "controls": [
+      {
+        "label": "getter-value-first",
+        "kind": "one Anm-TU recompile plus eight verified reused objects",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "changed_anm_profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-value-first/source.exe",
+            "sha256": "64a06e31bdbbc47744499dbbefb0f390dfe9485bb20d15cb7c47d1761b2d8954"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-value-first/source.map",
+            "sha256": "32f5fe7a623b2b72390ace8cf78a96e25673b1bcd07ba382044db10384893f3d"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-value-first/source.pdb",
+            "sha256": "adf65ee01b3ea3e94e561c02887d093483dc2a750f61cbc07a0f4eeb33039518"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-value-first/source.ltcg.obj",
+            "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+          }
+        },
+        "parent_size": 10524,
+        "result": "rejected; no production mutation or exact credit",
+        "source_pins_sha256": "85768caeec5ea56eabf1df65f18b3096d2a9395681cbd9c1bf6458eb8a2a1900",
+        "guards": {
+          "complete_exact_count": 28,
+          "complete_exact_bytes": 5180,
+          "bound_exact_fields": 168
+        },
+        "cases": {
+          "matched_comparable_bytes": 3880,
+          "comparable_bytes": 8147,
+          "absolute_case_gap_delta": 594,
+          "same_sized_cases": 50,
+          "normalization_complete": true
+        }
+      },
+      {
+        "label": "getter-owner-first",
+        "kind": "one Anm-TU recompile plus eight verified reused objects",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "changed_anm_profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-owner-first/source.exe",
+            "sha256": "14bbdc0433cd64e50e4a146e6fe8c737e8494f59537eb010a43192a784f8102f"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-owner-first/source.map",
+            "sha256": "bb2675fc8e8748f013fdae51b451ffb07b167f8c7199918c6bda5160141ec880"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-owner-first/source.pdb",
+            "sha256": "6261bd8bcb86feb25b2b538d29e7162d369b5fed74db3308bf5de255ec1b0865"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-owner-first/source.ltcg.obj",
+            "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+          }
+        },
+        "parent_size": 10524,
+        "result": "rejected; no production mutation or exact credit",
+        "source_pins_sha256": "1f832b2a3c217db977a74e704d6ba3894e80a1c6dfcb5d7347cfd0a06ce02a6f"
+      },
+      {
+        "label": "profile-g6",
+        "kind": "one Anm-TU recompile plus eight verified reused objects",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "changed_anm_profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/G6"
+        ],
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g6/source.exe",
+            "sha256": "8bfdd1770af7a409c97e9954f428cd34b176aad6732def1e80114c856bc514a3"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g6/source.map",
+            "sha256": "61d44bd358156744ef91835b4be302a2abe36a520d3703662942f97a4f706deb"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g6/source.pdb",
+            "sha256": "6f3b14df344850267fb7593529dd25cf8da337aa9cf09d097b5c10fd6d8cd455"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g6/source.ltcg.obj",
+            "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+          }
+        },
+        "parent_size": 9964,
+        "result": "rejected; no production mutation or exact credit",
+        "source_pins_sha256": "93f566e01a5879ea4c9f922661a978c3729760180d13a74e174c117b823fc862",
+        "guards": {
+          "complete_exact_count": 28,
+          "complete_exact_bytes": 5180,
+          "bound_exact_fields": 168
+        },
+        "cases": {
+          "matched_comparable_bytes": 7478,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 2,
+          "same_sized_cases": 90,
+          "normalization_complete": true
+        },
+        "native_comparisons": [
+          {
+            "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+            "left_size": 14468,
+            "right_size": 14468,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?ExecuteScript@AnmRenderManagerView",
+            "left_size": 9964,
+            "right_size": 9964,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?Run@EclVmContext",
+            "left_size": 7020,
+            "right_size": 7020,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          }
+        ]
+      },
+      {
+        "label": "profile-g7",
+        "kind": "one Anm-TU recompile plus eight verified reused objects",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "changed_anm_profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS",
+          "/G7"
+        ],
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g7/source.exe",
+            "sha256": "4c56c585e43046f47149eb6ed4fe15a4b81baf2c8675fe71a7fbc3dcb489070b"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g7/source.map",
+            "sha256": "7bc4cd7b312ffad862ad9e2af651310759e7a2ebad587705a74419f81baeaf17"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g7/source.pdb",
+            "sha256": "71bc897cfedccff99259b5efcab2f1ed63fba87ae7c902e71a14ec187d876ea6"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g7/source.ltcg.obj",
+            "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+          }
+        },
+        "parent_size": 9964,
+        "result": "rejected; no production mutation or exact credit",
+        "source_pins_sha256": "5844122069efe5beaad57679d004266f3babb4a009754f2f5fd2c691bf8cc66b",
+        "guards": {
+          "complete_exact_count": 28,
+          "complete_exact_bytes": 5180,
+          "bound_exact_fields": 168
+        },
+        "cases": {
+          "matched_comparable_bytes": 7478,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 2,
+          "same_sized_cases": 90,
+          "normalization_complete": true
+        },
+        "native_comparisons": [
+          {
+            "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+            "left_size": 14468,
+            "right_size": 14468,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?ExecuteScript@AnmRenderManagerView",
+            "left_size": 9964,
+            "right_size": 9964,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?Run@EclVmContext",
+            "left_size": 7020,
+            "right_size": 7020,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          }
+        ]
+      },
+      {
+        "label": "free-getter-value-first",
+        "kind": "one Anm-TU recompile plus eight verified reused objects",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "changed_anm_profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-value-first/source.exe",
+            "sha256": "0e283603f73547a7adb8340945a50ecc77595ce2326f55b60fa501f7f82d4c60"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-value-first/source.map",
+            "sha256": "396b8d5252e2ee7c3d6ed1280b23b11bc7bc86c79d9569e83a89a91398fe91c4"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-value-first/source.pdb",
+            "sha256": "aa7c9c8ffce6e593ec67d9256b1d01f4cd3ab91db3f79c5ea8c2526559af4a0e"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-value-first/source.ltcg.obj",
+            "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+          }
+        },
+        "parent_size": 10156,
+        "result": "rejected; no production mutation or exact credit",
+        "source_pins_sha256": "e910e79eef9d99328d7fde7b24f330dd8cfc6cd66c527ebb1fcc622fd440185f"
+      },
+      {
+        "label": "free-getter-stdcall",
+        "kind": "one Anm-TU recompile plus eight verified reused objects",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "changed_anm_profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-stdcall/source.exe",
+            "sha256": "1a77ccf6f03aa7ba314f6a860a458372bacbe1435822f7fe7e949a4b1034ecfa"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-stdcall/source.map",
+            "sha256": "c9dfb77e96868d24ab3a06d3e5357bcdab4049d0c092fb6aee8ee00a5c003740"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-stdcall/source.pdb",
+            "sha256": "35ddc3acf9b58f429596c4b3b4341432f899c314a9f7f692a08f73b681418e15"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-stdcall/source.ltcg.obj",
+            "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+          }
+        },
+        "parent_size": 9964,
+        "result": "rejected; no production mutation or exact credit",
+        "source_pins_sha256": "df8de794e9adb7bd4af8ed7990d04feed4c3688b1709564e59bcb1445a07c95f",
+        "guards": {
+          "complete_exact_count": 28,
+          "complete_exact_bytes": 5180,
+          "bound_exact_fields": 168
+        },
+        "cases": {
+          "matched_comparable_bytes": 7478,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 2,
+          "same_sized_cases": 90,
+          "normalization_complete": true
+        },
+        "native_comparisons": [
+          {
+            "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+            "left_size": 14468,
+            "right_size": 14468,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?ExecuteScript@AnmRenderManagerView",
+            "left_size": 9964,
+            "right_size": 9964,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?Run@EclVmContext",
+            "left_size": 7020,
+            "right_size": 7020,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          }
+        ]
+      },
+      {
+        "label": "member-execute",
+        "kind": "full nine-TU private cold",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "changed_anm_profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/member-execute/source.exe",
+            "sha256": "d9505d8164bcf1ab61447754376d4d3cb547d7a18e452ba88679f0fe5ec7ccf3"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/member-execute/source.map",
+            "sha256": "f689e83696df4255f35d2074428907518f462fa1fa933b4df36c683081574cbe"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/member-execute/source.pdb",
+            "sha256": "ab735656d129a952f18e4a8a4c6c06ad3efafd674e4a039352dee2de646f3112"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/member-execute/source.ltcg.obj",
+            "sha256": "01d61dd2d8509a775ab8778e8719235344e6a3f03af152e7e1db652d0465e7ca"
+          }
+        },
+        "parent_size": 9964,
+        "result": "rejected; no production mutation or exact credit",
+        "source_pins_sha256": "bc43ced1df8ccecd72c4616b88163c0a8dd673eca4de221c26fb7efd47b3fe41",
+        "guards": {
+          "complete_exact_count": 28,
+          "complete_exact_bytes": 5180,
+          "bound_exact_fields": 168
+        },
+        "cases": {
+          "matched_comparable_bytes": 7478,
+          "comparable_bytes": 7995,
+          "absolute_case_gap_delta": 2,
+          "same_sized_cases": 90,
+          "normalization_complete": true
+        },
+        "native_comparisons": [
+          {
+            "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+            "left_size": 14468,
+            "right_size": 14468,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "different or unbound",
+            "unbound_changed_fields": [
+              [
+                11086,
+                "REL32",
+                4,
+                11090
+              ]
+            ],
+            "ordinary_differences": 1,
+            "first_differences": [
+              11086
+            ]
+          },
+          {
+            "prefix": "?ExecuteScript@AnmRenderManagerView",
+            "left_size": 9964,
+            "right_size": 9964,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?Run@EclVmContext",
+            "left_size": 7020,
+            "right_size": 7020,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          }
+        ]
+      },
+      {
+        "label": "instruction-name",
+        "kind": "one Anm TU recompile plus eight verified reused objects",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "changed_anm_profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "artifacts": {
+          "image": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/instruction-name/source.exe",
+            "sha256": "aebea3766a053dfe05feb004a11c766b8f97ca99efc109f97787228d3639d037"
+          },
+          "map": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/instruction-name/source.map",
+            "sha256": "f0d3e0810aecf55266d3fc4140528f47cb096c667c9ebb44fd84566db67ee66c"
+          },
+          "pdb": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/instruction-name/source.pdb",
+            "sha256": "928be587242f5a366e537d5cc9fe501336a8300232e53f18ce465c92285312ab"
+          },
+          "object": {
+            "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/instruction-name/source.ltcg.obj",
+            "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+          }
+        },
+        "parent_size": 9964,
+        "result": "rejected; full three native owners unchanged after verified fields",
+        "source_pins_sha256": "7cbc0eb5af7bc1e03b49767211df10aa552b934e3efb42d3ac72a311b2a4c29e",
+        "native_comparisons": [
+          {
+            "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+            "left_size": 14468,
+            "right_size": 14468,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?ExecuteScript@AnmRenderManagerView",
+            "left_size": 9964,
+            "right_size": 9964,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          },
+          {
+            "prefix": "?Run@EclVmContext",
+            "left_size": 7020,
+            "right_size": 7020,
+            "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+            "result": "equal after verified field rewrites",
+            "unbound_changed_fields": [],
+            "ordinary_differences": 0,
+            "first_differences": []
+          }
+        ]
+      }
+    ],
+    "source_kind_fact": "Member GetFloatVar and ordinary free stdcall source both reproduce complete424/all44; full parent native bytes unchanged after binding the two fully proven callees. Ordinary unused-receiver manager member ExecuteScript also preserves the complete9964 native owner in a fresh nine-TU cold. This is not target equality for the executor.",
+    "baseline_complete_existing_guard_count": 28,
+    "baseline_complete_guard_bytes": 5180,
+    "baseline_bound_fields": 168
+  },
+  "credit": {
+    "new_authored_exact_functions": 1,
+    "new_authored_exact_bytes": 207,
+    "new_source_mappings": 0,
+    "canonical_exact_functions": 1222,
+    "authored_exact_functions": 381,
+    "authored_exact_bytes": 69343,
+    "source_mappings": 1080,
+    "mapped_authored_nonexact": 216
+  },
+  "main_source_closure": {
+    "authored_functions": 20,
+    "source_present": 20,
+    "owned_bytes": 6825,
+    "exact_functions": 15,
+    "remaining_nonexact_functions": 5,
+    "remaining_nonexact_bytes": 3442
+  },
+  "affected_file_loader_cold": {
+    "source": "src/Main.cpp",
+    "support_sources": [
+      "src/FileSystem.cpp",
+      "src/PbgArchive.cpp"
+    ],
+    "entry": "?CalcExecutableChecksum@GameWindowView@@SAHXZ",
+    "source_sha256": {
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/Decompress.hpp": "9e336b0437f7205f5edbdffe2a9aebe7ea1e9ca09a7e69e07ef8ab1693ad9913",
+      "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/Main.cpp": "dcde83cb8e6e9c729d43e0f9f808fe050c2e8ee43c29fd44c7b7af2b4b864e4b",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+      "src/PbgArchive.cpp": "b204fd723b5ff52abbc966a5b4f4f6e250f71f1302fd6ee28f36798773797b4e",
+      "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+      "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+      "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+    },
+    "artifacts": {
+      "image": {
+        "path": "build/match-linked/FileSystemOpen/source.exe",
+        "sha256": "f1256b19e1a7690ef36acf337a2e5c794ea216f560ef51281eff6522dda91aa2"
+      },
+      "map": {
+        "path": "build/match-linked/FileSystemOpen/source.map",
+        "sha256": "6a6206b223aa4a6ea1fd6951aede9471bb72c8c92523e8fa90ee3f03e99f3d18"
+      },
+      "pdb": {
+        "path": "build/match-linked/FileSystemOpen/source.pdb",
+        "sha256": "7641d002162fe8360dcb4c96fcee5cd1a22ac4e488e06633500c3134cc3b681c"
+      },
+      "object": {
+        "path": "build/match-linked/FileSystemOpen/source.ltcg.obj",
+        "sha256": "848c76eea7afd7353d86b51a90e8e342ac1f780540caa88e3709952c982dfee2"
+      }
+    },
+    "result": "Complete360/all26 existing canonical owner exact; no new credit"
+  },
+  "cleanup": {
+    "anm_measured_native": {
+      "directories": 6,
+      "bytes": 5712627,
+      "removed": [
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-value-first",
+          "bytes": 954317
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-owner-first",
+          "bytes": 954317
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g6",
+          "bytes": 950000
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g7",
+          "bytes": 950000
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-value-first",
+          "bytes": 953958
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/instruction-name",
+          "bytes": 950035
+        }
+      ]
+    },
+    "main_retired_native": {
+      "scope": "Owned terminal discovery native dirs are pruned, retaining maintained-cold1 and function-locals negative. Earlier cleanup stopped before persisting its size receipt; public artifact pins recover all seven identities. No cold proof, source change or target was lost. Deleted source copies recovered by exact baseline/current raw hashes before saving line edits.",
+      "directories": 7,
+      "bytes": null,
+      "byte_measurement": "Not retained for this seven-directory deletion; do not invent a byte total.",
+      "removed": [
+        {
+          "label": "five-tu-baseline",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.exe",
+              "sha256": "745c21b64d4cb282585969294310166ad9b2ca3efc777a6ab3a37bc8f0b9c074"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.map",
+              "sha256": "d03709b6af9d02d7df1a3987301243972f400e1b20129d754b05da9aaaf740fa"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.pdb",
+              "sha256": "2c3de75b94b4ed797f7bfc26b2a274d55a61d1acbe57d0ee79d0985e7b1a69a0"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.ltcg.obj",
+              "sha256": "495424233e1f9ca540b5c6f7015e2838d87f5994f70c9301543a5cbbe3143bdc"
+            }
+          }
+        },
+        {
+          "label": "five-tu-root-baseline",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.exe",
+              "sha256": "44910561946907d439445db72ca8dd83a32a54741cb72872c6f3be1253aff546"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.map",
+              "sha256": "360807bec8eeb997ef5510b350055cf09e09403d4849cf4edbf2de8d32c1b092"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.pdb",
+              "sha256": "aaad65a692a9455932afdd60773fb6e16f28d1cc7d97528f70a133033ba16fac"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.ltcg.obj",
+              "sha256": "d3fa7b15dc66e08e513a6c742fce2635977399535040bba0d34775344b06a4b7"
+            }
+          }
+        },
+        {
+          "label": "pointer-countdown-early-sum",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.exe",
+              "sha256": "5d31d62f7b2e28087c216e926cb73e303a176386b1199dbc07c6c01d28971aa5"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.map",
+              "sha256": "092c4b894d32740e022753bc8bac91b0fa421cad3960ec84d505e4eecc413f52"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.pdb",
+              "sha256": "8cce2db35c74e637063a0db9597ca1f916cb8513cfd4f5dfb5aa3afcdef41d00"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.ltcg.obj",
+              "sha256": "26a11164e0fbcb67ce564df053ea42d305790f058bc5ba5b9e103735a54b7482"
+            }
+          }
+        },
+        {
+          "label": "success-first",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.exe",
+              "sha256": "173021416c52cb21becdec3457f648c48d0f6098dd000cbce72ed3f6a6c6c871"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.map",
+              "sha256": "c338f2239a9f869a420687b997cc0fdcfb77262a505b06fabf95d5bc88e9f8b2"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.pdb",
+              "sha256": "8635989749b01d8a70a54f18468e408c6e527285b0519ecfc641d7c31af5d77d"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.ltcg.obj",
+              "sha256": "6886fe71adf9a0a550dbd5989fcf129b9ab09a6fac41205be83e6ef33aa4e0e2"
+            }
+          }
+        },
+        {
+          "label": "success-first-cursor",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.exe",
+              "sha256": "ee878c45cd925e1d2a127d40ebaf263c3401ac7996add4eec738dbd4d080345c"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.map",
+              "sha256": "e426d183ca5d81e0823465a23a28b57400a3dcf2163fe0f2fcd2eefb3c22f22d"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.pdb",
+              "sha256": "0e874d488ce1b01e8166b2ee7575b027d01449ecb47d551be569f9aea5573e5b"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.ltcg.obj",
+              "sha256": "a06db234898d41ae1387cacefc2070ed1a546f07e590afe369fd79aa1bf6babd"
+            }
+          }
+        },
+        {
+          "label": "cursor-first",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.exe",
+              "sha256": "fe1ceb3b00ce64939ed744852a2df1c1347ecabda1ac21a7a14437cde52f7a0e"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.map",
+              "sha256": "460c2a5be5a5af92d21614e6dc99e31dd99add247a68963246bb5bf9eab519f4"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.pdb",
+              "sha256": "ef19de3a41842832d8e39db593f82665728e885f9e98c61e69f86d2b6c6c9147"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.ltcg.obj",
+              "sha256": "ad22704af0653e5a7ce9c67957479d82026ba94d7be2da7c28a46567a5cb6044"
+            }
+          }
+        },
+        {
+          "label": "cursor-first-winmain",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.exe",
+              "sha256": "1a6a69dc754c1dec260643ef38ba5a3ba1bf49e6dc6d325632e29684a41b12d3"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.map",
+              "sha256": "17256dfc4ce100440c319a1e658b2401b1dafb7599e586d597ddcea901d12d56"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.pdb",
+              "sha256": "446122062b0fa6615d5827b0c783ae7979ea5f8ededae29977232b1f5dfb1f1b"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.ltcg.obj",
+              "sha256": "9727c75832852d4e463822500c7e813c277f939bbd17c504d16af1520bcdc326"
+            }
+          }
+        }
+      ]
+    },
+    "retired_native_directories": 13,
+    "total_deleted_bytes": null,
+    "note": "Main deletion size receipt was interrupted; its seven directories are independently accounted by prior public artifact identities. All source snapshots recovered/hashed and compacted before further cleanup. No lost cold proof."
+  }
+}

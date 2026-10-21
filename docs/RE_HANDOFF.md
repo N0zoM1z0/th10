@@ -42,12 +42,51 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
 candidates, 734 authored functions owning 273274 bytes, 1080 source mappings,
-1221 canonical exact functions overall. Authored exact is **380 functions,
-69136/273274 bytes (25.30%)**. The 217 mapped authored nonexact functions,
+1222 canonical exact functions overall. Authored exact is **381 functions,
+69343/273274 bytes (25.37%)**. The 216 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint closes WindowProc4390E0/265 and retained
+The latest checkpoint closes CalcExecutableChecksum43A1C0/207/all9 fields.
+Natural signed division, pointer countdown, outer success path and cursor/base
+snapshot restore the target register/save lifetimes. Two complete five-TU
+Main/error/file/MIDI/archive /GL /GS colds through real WinMain freeze17 equal
+inputs and strictly replay11 owners2191/all133 per image. The second cold
+replays only the new207-byte recipe plus the affected original OpenFile360
+recipe in its separate three-TU context:567 bytes across two groups.
+Main now has15 exact owners out of20 source-present authored owners; five
+remain nonexact, owning3442 bytes. See
+[checksum proof](evidence/main-executable-checksum/README.md).
+All100 standard CI steps pass in one invocation. Thirteen owned terminal
+native discovery directories are pruned; ANM's measured portion is5712627 bytes,
+Main's deleted-byte total is explicitly unrecorded. All source snapshots and
+artifact identities are retained, with checksum cold proofs and one negative.
+
+A separate unadopted follow-up finds a natural body for the missing
+MainReleaseAnmSurfaces438A30/43; its complete native body is raw-equal, but
+inlining grows Present339->371/236. Physical target release/FileCheck calls
+remain outlined. Private source, current input/object pins and call inventory
+are in `.analysis/gpt-6.1-sol/main-surfaces-20261021/RECOVERY.md`. Next test those
+actual outlining boundaries; do not adopt the caller regression or grant43
+credit from one warm diagnostic. Production checksum checkpoint excludes it.
+
+Main.hpp is unchanged and Main.cpp is not a dependency of the current large
+nine-TU graph; all30 source and four artifact pins remain unchanged. No extra
+large rebuild is required. ANM9964/gap2, ECL7020/all189/27 differences and
+Enemy14468/gap652 remain nonexact; separate two-TU Run remains26.
+
+Eight new ANM source/interface controls are rejected. The complete four actual
+getters and Float2/Float3/alpha/RGB evaluators pass as part of28 owners5180/all168.
+Member and ordinary free stdcall GetFloatVar both reproduce424/all44, so source
+ownership is not recovered by the private ESI protocol. A full nine-TU ordinary
+unused-receiver manager-member ExecuteScript control also preserves its entire
+native9964-byte owner and Run7020, with28 guards intact. G6/G7 and one natural
+local-pointer rename are neutral. Wrapper/cdecl variants regress. Do not repeat
+these hypotheses or infer target exactness from native equality; no ANM source
+change is adopted. The source/control/artifact identities are in the checksum
+proof and private `.analysis/gpt-6.1-sol/anm-execute-flags-20261021/RECOVERY.md`.
+
+The preceding checkpoint closes WindowProc4390E0/265 and retained
 ActivateWindow43A1B0/8:273 new authored exact bytes/all17 fields. A real
 MidiOutputView::UnprepareHeader call plus common final DefWindowProcA source
 return recovers the target private MIDI arguments and four live callback
@@ -350,7 +389,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the window callback proof; RGB results retain
+Latest focused native results are in the checksum proof; RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -365,4 +404,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/main-window-callback/validation-summary.json).
+[the current validation summary](evidence/main-executable-checksum/validation-summary.json).

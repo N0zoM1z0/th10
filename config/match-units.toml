@@ -22900,3 +22900,29 @@ linkages = [
   { offset = 244, type = "DIR32", symbol = "__imp__SetForegroundWindow@4", target = 0x004661F0 },
   { offset = 254, type = "DIR32", symbol = "__imp__DefWindowProcA@16", target = 0x00466248 },
 ]
+
+# Actual WinMain with real archive, file, error and MIDI bodies; full checksum owner.
+[units.main-executable-checksum]
+artifact_kind = "linked-pe"
+source = "src/Main.cpp"
+support_sources = ["src/GameErrorContext.cpp", "src/FileSystem.cpp", "src/Midi.cpp", "src/PbgArchive.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+entry_symbol = "WinMain@16"
+output_dir = "build/match-linked/MainExecutableChecksum"
+functions = ["GameWindowView::CalcExecutableChecksum"]
+symbol = "?CalcExecutableChecksum@GameWindowView@@SAHXZ"
+target_address = 4432320
+size = 207
+linkages = [
+  { offset = 7, type = "DIR32", symbol = "___security_cookie", target = 4666976 },
+  { offset = 34, type = "DIR32", symbol = "__imp__GetModuleFileNameA@12", target = 4612316 },
+  { offset = 62, type = "REL32", symbol = "?OpenFile@FileSystem@@YGPAEPBDPAHH@Z", target = 4502368 },
+  { offset = 89, type = "REL32", symbol = "@__security_check_cookie@4", target = 4558501 },
+  { offset = 138, type = "REL32", symbol = "_free", target = 4531234 },
+  { offset = 147, type = "DIR32", symbol = "?g_MainExecutableSize@@3IA", target = 4793220 },
+  { offset = 154, type = "DIR32", symbol = "?g_MainExecutableChecksum@@3IA", target = 4793216 },
+  { offset = 172, type = "REL32", symbol = "@__security_check_cookie@4", target = 4558501 },
+  { offset = 196, type = "REL32", symbol = "@__security_check_cookie@4", target = 4558501 },
+]

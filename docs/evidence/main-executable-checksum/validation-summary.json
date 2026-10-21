@@ -1,0 +1,361 @@
+{
+  "state": "passed",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "native": {
+    "independent_complete_colds": 2,
+    "current_project_input_pins": 17,
+    "new_authored_exact_functions": 1,
+    "new_authored_exact_bytes": 207,
+    "new_fields": 9,
+    "complete_guards_per_image": 11,
+    "complete_bytes_per_image": 2191,
+    "fields_per_image": 133,
+    "canonical_replayed_units": 2,
+    "canonical_replayed_bytes": 567
+  },
+  "scope": "Complete207-byte new authored exact owner; necessary affected567-byte canonical replay only; no complete historical replay or product/runtime claim.",
+  "ci": {
+    "returncode": 0,
+    "steps": 100,
+    "names": [
+      "Compile workflow Python",
+      "Validate LTCG entry identity guards",
+      "Validate qualified static owners",
+      "Validate linked profiles and static callees",
+      "Validate internal linked destinations",
+      "Validate linked table and selector coverage",
+      "Validate allocation EH address binding",
+      "Validate replay payload order",
+      "Validate Enemy dispatch case scopes",
+      "Validate ECL FORMAT argument consumption",
+      "Validate lexical HUD message phase",
+      "Validate lexical HUD boss-gauge phase",
+      "Validate HUD boss-gauge selection",
+      "Validate HUD lifetimes and countdown sounds",
+      "Validate automatic hint export",
+      "Validate hint loading and parsing",
+      "Validate hint frame contracts",
+      "Validate conditional hint arithmetic",
+      "Validate hint lifecycle contracts",
+      "Validate GameManager cleanup contract",
+      "Validate statistics save contract",
+      "Validate GUI lifecycle contract",
+      "Validate GUI message construction and unwind contracts",
+      "Validate GUI message Run baseline",
+      "Validate enemy-name dispatch controls",
+      "Validate canonical replay mode controls",
+      "Validate enemy portrait sprite controls",
+      "Validate stage complete20 controls",
+      "Validate stage event18 controls",
+      "Validate direct creation caller controls",
+      "Validate portrait creation controls",
+      "Validate GUI message construction-Run-destruction baseline",
+      "Validate GUI draw contracts",
+      "Validate laser owner bindings",
+      "Validate rectangle contracts and strict mutations",
+      "Validate alpha interpolation and strict mutations",
+      "Validate RGB interpolation and strict mutations",
+      "Validate loaded-ANM slot release",
+      "Validate GUI draw arithmetic witnesses",
+      "Validate GUI draw complete-header layout",
+      "Validate GUI reset event order",
+      "Validate music-room state and parsers",
+      "Validate stage script state and callback",
+      "Validate stage projected bounds and draw",
+      "Validate stage camera setup",
+      "Validate ASCII viewport transitions",
+      "Validate ASCII glyph paths",
+      "Validate stage draw passes",
+      "Validate stage lifecycle ownership",
+      "Validate enemy callback scale reload",
+      "Validate enemy motion and interpolation",
+      "Validate conditional enemy polar storage",
+      "Validate enemy runtime tail",
+      "Validate item sound owner",
+      "Validate player damage lifetimes",
+      "Validate player damage prerequisites",
+      "Validate auxiliary player damage",
+      "Validate player shot update lifetimes",
+      "Validate player movement ANM identities",
+      "Validate result/replay-name controller",
+      "Validate front-end replay save",
+      "Validate title and main-menu controls",
+      "Validate MIDI event and timer controls",
+      "Validate spell-panel state and sprite binding",
+      "Validate result rows and name-entry ASCII queue",
+      "Validate laser motion and Player contact",
+      "Validate laser command programs and live fields",
+      "Validate laser initialization and turning motion",
+      "Validate laser clearing, VM lists and item spawning",
+      "Validate type1 laser phases and runtime interfaces",
+      "Validate type1 laser clearing and offscreen counts",
+      "Validate input polling, device failures and gameplay repeat",
+      "Validate script browser state and event order",
+      "Validate script browser display and renderer calls",
+      "Validate worker wait and restart order",
+      "Validate Ending owner and script state",
+      "Validate browser and manager destruction order",
+      "Validate manager pool reset order",
+      "Validate debug input repeat edges",
+      "Validate result-transition and scaled-sound baseline",
+      "Validate transition-effect logical baseline",
+      "Validate transition-effect pin portability",
+      "Validate pause/capture controller",
+      "Validate practice controller state",
+      "Validate key-config display lifetimes",
+      "Validate options-refresh lifetimes",
+      "Validate options controller state",
+      "Validate options topology recognizer",
+      "Validate options timer predicate",
+      "Validate supervisor binding identity",
+      "Validate score insertion and publication",
+      "Validate Player power-state transitions",
+      "Validate documentation references",
+      "Validate ledgers",
+      "Validate ANM/ECL core source completeness",
+      "Validate toolchain declarations",
+      "Validate canonical match graph",
+      "Validate open whole-build graph",
+      "Check generated progress",
+      "Check whitespace"
+    ],
+    "log_sha256": "0f081c22f0197e9b993a363fe12941e69f465ddaefd73b325f4d2d1af422ca20"
+  },
+  "negative_controls": [
+    {
+      "control": "swapped-global-targets",
+      "result": "rejected",
+      "comparison": "mismatch",
+      "size": 207,
+      "matched_bytes": 205,
+      "fields": 9,
+      "first_differences": [
+        {
+          "offset": "0x93",
+          "linked": 128,
+          "target": 132
+        },
+        {
+          "offset": "0x9A",
+          "linked": 132,
+          "target": 128
+        }
+      ]
+    },
+    {
+      "control": "same-size-source-negative",
+      "result": "rejected",
+      "reason": "linked fields differ from manifest: actual=[(7, 'DIR32', 4), (34, 'DIR32', 4), (62, 'REL32', 4), (89, 'REL32', 4), (138, 'REL32', 4), (147, 'DIR32', 4), (155, 'DIR32', 4), (172, 'REL32', 4), (196, 'REL32', 4)] expected=[(7, 'DIR32', 4), (34, 'DIR32', 4), (62, 'REL32', 4), (89, 'REL32', 4), (138, 'REL32', 4), (147, 'DIR32', 4), (154, 'DIR32', 4), (172, 'REL32', 4), (196, 'REL32', 4)]"
+    }
+  ],
+  "large_dependency_check": "All30 raw source pins and four native artifact pins unchanged; Main.cpp is absent from that graph, Main.hpp unchanged; no large replay required.",
+  "final_checks": [
+    "main-executable-checksum207/all9 exact",
+    "file-system-open-file360/all26 exact",
+    "two complete five-TU colds,11 guards2191/all133 per image",
+    "verify-toolchain.py --check",
+    "validate-tracking.py",
+    "progress.py and --check",
+    "ci.py,all100 checks",
+    "check-doc-hygiene.py",
+    "git diff --check"
+  ],
+  "cleanup": {
+    "anm_measured_native": {
+      "directories": 6,
+      "bytes": 5712627,
+      "removed": [
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-value-first",
+          "bytes": 954317
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/getter-owner-first",
+          "bytes": 954317
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g6",
+          "bytes": 950000
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/profile-g7",
+          "bytes": 950000
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/free-getter-value-first",
+          "bytes": 953958
+        },
+        {
+          "path": "build/gpt-6.1-sol/anm-execute-flags-20261021/instruction-name",
+          "bytes": 950035
+        }
+      ]
+    },
+    "main_retired_native": {
+      "scope": "Owned terminal discovery native dirs are pruned, retaining maintained-cold1 and function-locals negative. Earlier cleanup stopped before persisting its size receipt; public artifact pins recover all seven identities. No cold proof, source change or target was lost. Deleted source copies recovered by exact baseline/current raw hashes before saving line edits.",
+      "directories": 7,
+      "bytes": null,
+      "byte_measurement": "Not retained for this seven-directory deletion; do not invent a byte total.",
+      "removed": [
+        {
+          "label": "five-tu-baseline",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.exe",
+              "sha256": "745c21b64d4cb282585969294310166ad9b2ca3efc777a6ab3a37bc8f0b9c074"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.map",
+              "sha256": "d03709b6af9d02d7df1a3987301243972f400e1b20129d754b05da9aaaf740fa"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.pdb",
+              "sha256": "2c3de75b94b4ed797f7bfc26b2a274d55a61d1acbe57d0ee79d0985e7b1a69a0"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-baseline/source.ltcg.obj",
+              "sha256": "495424233e1f9ca540b5c6f7015e2838d87f5994f70c9301543a5cbbe3143bdc"
+            }
+          }
+        },
+        {
+          "label": "five-tu-root-baseline",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.exe",
+              "sha256": "44910561946907d439445db72ca8dd83a32a54741cb72872c6f3be1253aff546"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.map",
+              "sha256": "360807bec8eeb997ef5510b350055cf09e09403d4849cf4edbf2de8d32c1b092"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.pdb",
+              "sha256": "aaad65a692a9455932afdd60773fb6e16f28d1cc7d97528f70a133033ba16fac"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/five-tu-root-baseline/source.ltcg.obj",
+              "sha256": "d3fa7b15dc66e08e513a6c742fce2635977399535040bba0d34775344b06a4b7"
+            }
+          }
+        },
+        {
+          "label": "pointer-countdown-early-sum",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.exe",
+              "sha256": "5d31d62f7b2e28087c216e926cb73e303a176386b1199dbc07c6c01d28971aa5"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.map",
+              "sha256": "092c4b894d32740e022753bc8bac91b0fa421cad3960ec84d505e4eecc413f52"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.pdb",
+              "sha256": "8cce2db35c74e637063a0db9597ca1f916cb8513cfd4f5dfb5aa3afcdef41d00"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/pointer-countdown-early-sum/source.ltcg.obj",
+              "sha256": "26a11164e0fbcb67ce564df053ea42d305790f058bc5ba5b9e103735a54b7482"
+            }
+          }
+        },
+        {
+          "label": "success-first",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.exe",
+              "sha256": "173021416c52cb21becdec3457f648c48d0f6098dd000cbce72ed3f6a6c6c871"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.map",
+              "sha256": "c338f2239a9f869a420687b997cc0fdcfb77262a505b06fabf95d5bc88e9f8b2"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.pdb",
+              "sha256": "8635989749b01d8a70a54f18468e408c6e527285b0519ecfc641d7c31af5d77d"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first/source.ltcg.obj",
+              "sha256": "6886fe71adf9a0a550dbd5989fcf129b9ab09a6fac41205be83e6ef33aa4e0e2"
+            }
+          }
+        },
+        {
+          "label": "success-first-cursor",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.exe",
+              "sha256": "ee878c45cd925e1d2a127d40ebaf263c3401ac7996add4eec738dbd4d080345c"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.map",
+              "sha256": "e426d183ca5d81e0823465a23a28b57400a3dcf2163fe0f2fcd2eefb3c22f22d"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.pdb",
+              "sha256": "0e874d488ce1b01e8166b2ee7575b027d01449ecb47d551be569f9aea5573e5b"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/success-first-cursor/source.ltcg.obj",
+              "sha256": "a06db234898d41ae1387cacefc2070ed1a546f07e590afe369fd79aa1bf6babd"
+            }
+          }
+        },
+        {
+          "label": "cursor-first",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.exe",
+              "sha256": "fe1ceb3b00ce64939ed744852a2df1c1347ecabda1ac21a7a14437cde52f7a0e"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.map",
+              "sha256": "460c2a5be5a5af92d21614e6dc99e31dd99add247a68963246bb5bf9eab519f4"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.pdb",
+              "sha256": "ef19de3a41842832d8e39db593f82665728e885f9e98c61e69f86d2b6c6c9147"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first/source.ltcg.obj",
+              "sha256": "ad22704af0653e5a7ce9c67957479d82026ba94d7be2da7c28a46567a5cb6044"
+            }
+          }
+        },
+        {
+          "label": "cursor-first-winmain",
+          "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain",
+          "artifacts": {
+            "image": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.exe",
+              "sha256": "1a6a69dc754c1dec260643ef38ba5a3ba1bf49e6dc6d325632e29684a41b12d3"
+            },
+            "map": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.map",
+              "sha256": "17256dfc4ce100440c319a1e658b2401b1dafb7599e586d597ddcea901d12d56"
+            },
+            "pdb": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.pdb",
+              "sha256": "446122062b0fa6615d5827b0c783ae7979ea5f8ededae29977232b1f5dfb1f1b"
+            },
+            "object": {
+              "path": "build/gpt-6.1-sol/main-checksum-20261021/cursor-first-winmain/source.ltcg.obj",
+              "sha256": "9727c75832852d4e463822500c7e813c277f939bbd17c504d16af1520bcdc326"
+            }
+          }
+        }
+      ]
+    },
+    "retired_native_directories": 13,
+    "total_deleted_bytes": null,
+    "note": "Main deletion size receipt was interrupted; its seven directories are independently accounted by prior public artifact identities. All source snapshots recovered/hashed and compacted before further cleanup. No lost cold proof."
+  },
+  "final_source_pins_equal": true
+}

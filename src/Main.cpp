@@ -1031,27 +1031,30 @@ INT_PTR CALLBACK MainConfigurationDialogProc(
 int GameWindowView::CalcExecutableChecksum()
 {
     char moduleFilename[264];
-    unsigned char *fileData;
-    unsigned int checksum = 0;
+    unsigned int *fileData;
+    unsigned int checksum;
     int fileSize;
-    int wordCount;
-    int i;
+    unsigned int *cursor;
+    int remaining;
 
-    if (GetModuleFileNameA(NULL, moduleFilename, 0x105) == 0)
-        return -1;
+    if (GetModuleFileNameA(NULL, moduleFilename, 0x105) != 0)
+    {
+        checksum = 0;
+        cursor = reinterpret_cast<unsigned int *>(
+            FileSystem::OpenFile(moduleFilename, &fileSize, 1));
+        fileData = cursor;
+        if (cursor == NULL)
+            return -1;
 
-    fileData = FileSystem::OpenFile(moduleFilename, &fileSize, 1);
-    if (fileData == NULL)
-        return -1;
+        for (remaining = fileSize / 4 - 1; remaining > 0; --remaining)
+            checksum += *cursor++;
 
-    wordCount = ((fileSize + ((fileSize >> 31) & 3)) >> 2) - 1;
-    for (i = 0; i < wordCount; ++i)
-        checksum += reinterpret_cast<unsigned int *>(fileData)[i];
-
-    free(fileData);
-    g_MainExecutableSize = fileSize;
-    g_MainExecutableChecksum = checksum;
-    return checksum;
+        free(fileData);
+        g_MainExecutableSize = fileSize;
+        g_MainExecutableChecksum = checksum;
+        return checksum;
+    }
+    return -1;
 }
 
 // Target 0x004134B0-0x004135C7 is TH10's half-second FPS sampler.  The
