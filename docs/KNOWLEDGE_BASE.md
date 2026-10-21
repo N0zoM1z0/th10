@@ -4432,3 +4432,32 @@ all7020 target-replayed bytes; Op dispatcher's21 unbound fields receive no
 ordinary-byte score or identity claim. This rejects the bounded current profile,
 not every possible original partition/profile. No production source/header/
 recipe/ledger or phase state changes; the three original large goals stay open.
+
+
+### 2026-10-21: ANM child call identity and real creator context
+
+[Child/creator evidence](evidence/anm-child-creator-context/README.md) rechecks
+source and target routes88->448D00,90->448F60,91->448E30,92->449090. Three older
+90/91 caller comments are reversed; current source already has correct routes.
+The new checker joins source creators/canonical address bindings with actual
+target94-slot dispatch/CALLs and optional PE/MAP/PDB owners, following all eight
+bounded static paths. CALLs are assumed returning, predicates unconstrained;
+no parent/callee exactness or runtime claim follows.24 synthetic layouts/192
+paths and16 strict negatives plus four actual source/copied-native negatives
+reject incorrect routing without mutating the target.
+
+The actual ten-TU context has four74-byte creator extents, unsupported against
+73. Adding only unchanged Player.cpp reuses ten objects, freezes33 raw inputs
+and restores incoming initializer ECX/two-stack/RET8 plus all four73-byte creator
+comparisons.45 complete guards5270/all140 pass. Initializer207/217 and world116/
+118 stay nonexact. Fresh Ghidra shows46 incoming initializer calls; this does
+not close all original source/caller/partition facts or prove normal COFF.
+
+One coherent private storage-base type cold recompiles all11 TUs and preserves
+all five measured complete native bodies raw. Named script operand, flag snapshot,
+copy blocks and base assignment remain neutral in their actual parent contexts;
+direct temporary.GetVm regresses ANM aligned7478->7460 while keeping call routing
+correct. Flag-before-third changes a207-byte helper without extent improvement.
+All eight full Run7020 comparisons retain identical target-replayed bytes,
+189fields/62locals and27 residuals. No source/header/profile/recipe or exact
+ledger adoption; all three original large goals and later gates remain open.

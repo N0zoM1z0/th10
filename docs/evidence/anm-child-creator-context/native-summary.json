@@ -1,0 +1,2330 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "f1596fa",
+  "scope": "ANM four-child direct-call binding and real initializer caller closure; three stale opcode comments corrected; no maintained C++/header/profile/recipe or exact ledger change",
+  "maintained_source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "de2c1fdceefe6aaa8a2c14af12eb04c5cc49d9f188dc04c091078fdf2dc29c2f",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.cpp": "495fcd5a453b8908e87f5ef658948ff1d5bb74d2b5d33e650ed3eea0399c05a6",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "canonical_artifact_sha256": {
+    "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+    "build/match-linked/EnemyItemDrops/link-anchors.obj": "1360d265f411265cd005d2403a810cde02cdb6e6753e04c9c107fc04210abf15",
+    "build/match-linked/EnemyItemDrops/source.exe": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+    "build/match-linked/EnemyItemDrops/source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "build/match-linked/EnemyItemDrops/source.map": "5d5e4f30e2de91a5f1accad45a4f246a84d0a80b684e92d7214137a09b89d390",
+    "build/match-linked/EnemyItemDrops/source.pdb": "dc7dc128c33d781396fbc1db289416607aa21b8e6f47360fab821625ccc9b4ac",
+    "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57"
+  },
+  "retained_native_artifact_sha256": {
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.map": "9fb1470c2842d6a3b3d41b91f54a5fadd88c645f2528bb5c28d0bef43061b9ad",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.exe": "6a2129bd89f66059ddb8557ec31d05ee7f17c91220adc64f84ba6f456b3a0f64",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-09-Player.ltcg.obj": "0dc85147d4cad6d0299e3e2c52737042055339b12c74010b77d72684354cdfc0",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/link-aliases.rsp": "3750e0fe01366a8c4c401efb4a17acc07410bdc57d272726690ac9ead47ddad9",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/link-anchors.obj": "43138fe4fb9b45679ca793fbdfad1a09a5a0056286390c08e1d8b75c9e2c9937",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.pdb": "ef7ab5aba9c4f7ccdeb53e0b1436f7e5311222d1a5f3cab6d8f6f705184279e8",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/source.map": "6e94b0b02535130a9b81a3903b1cca5f3c68074f41cb401eb3c1c954dba15329",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/source.exe": "2163324e5abc7f0e76e3e108bff0859558f76abc77702435418073b4b329823c",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-09-Player.ltcg.obj": "0dc85147d4cad6d0299e3e2c52737042055339b12c74010b77d72684354cdfc0",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-02-AnmVmCreate.ltcg.obj": "f4bc1c77f3bd27fd99313dd73a5d0c813491b9d64c17d3efc67b939e374d9b6c",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/link-aliases.rsp": "3750e0fe01366a8c4c401efb4a17acc07410bdc57d272726690ac9ead47ddad9",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/link-anchors.obj": "43138fe4fb9b45679ca793fbdfad1a09a5a0056286390c08e1d8b75c9e2c9937",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/source.pdb": "853317d7e98c9993dfaadc5e4a1f5ff6c1dde9c56fb7becf6023ba6ddb4b6c60",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b"
+  },
+  "baseline_10tu_guards": {
+    "owners": 45,
+    "exact": 41,
+    "bytes": 4978,
+    "fields": 120,
+    "unsupported_creators": "Four complete74-byte owners cannot compare as73; no ordinary-byte score"
+  },
+  "real_player_graph": {
+    "artifact_kind": "linked-pe",
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp",
+      "src/Player.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/real-player",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "controls": [
+    {
+      "label": "real-player",
+      "scope": "Eleven-TU diagnostic graph with actual unchanged Player caller; only new Player source compiled, ten prior game objects hash-verified reused; no full cold or exact credit",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/real-player",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "guard_summary": {
+        "owners": 45,
+        "exact": 45,
+        "bytes": 5270,
+        "fields": 140
+      },
+      "guard_failures": [],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA40",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D90",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402830",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff"
+        },
+        "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "address": "0x00413F30",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f"
+        },
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "address": "0x0040D630",
+          "size": 116,
+          "raw_sha256": "987a175eaadd103ba5eacbd4dd420e8496d1502407ccc59efa020e061847c5c0"
+        }
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.exe",
+          "sha256": "6a2129bd89f66059ddb8557ec31d05ee7f17c91220adc64f84ba6f456b3a0f64"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.map",
+          "sha256": "9fb1470c2842d6a3b3d41b91f54a5fadd88c645f2528bb5c28d0bef43061b9ad"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.pdb",
+          "sha256": "ef7ab5aba9c4f7ccdeb53e0b1436f7e5311222d1a5f3cab6d8f6f705184279e8"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained_native": true,
+      "producer_receipt_sha256": "547d3c5e5da9c59c38e33dc6b98cef92b5b3c7d9aff787992d58e50b12a8f2c5",
+      "new_inputs": [
+        "src/Player.cpp"
+      ],
+      "game_tus_compiled": 1,
+      "game_objects_reused": 10,
+      "actual_source_inventory_sha256": "1d620478b0ba5b6d7513a048426902e99c0658dddceaea46f0de49102e7db194",
+      "changed_input_sha256": {}
+    },
+    {
+      "label": "child91-direct-temporary",
+      "scope": "Current ten-TU graph; one ANM support recompile/nine hash-verified unchanged objects, diagnostic only, no exact credit",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/child91-direct-temporary/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-direct-temporary",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "guard_summary": {
+        "owners": 45,
+        "exact": 41,
+        "bytes": 4978,
+        "fields": 120
+      },
+      "guard_failures": [
+        {
+          "unit": "anm-loaded-create-vm-variant0",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x4a differs from manifest 0x49"
+        },
+        {
+          "unit": "anm-loaded-create-vm-variant2",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x4a differs from manifest 0x49"
+        },
+        {
+          "unit": "anm-loaded-create-vm-variant1",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x4a differs from manifest 0x49"
+        },
+        {
+          "unit": "anm-loaded-create-vm-variant3",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x4a differs from manifest 0x49"
+        }
+      ],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "matched_comparable_bytes": 7460,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA20",
+          "size": 9964,
+          "raw_sha256": "c0f84691e36b3fe19464738ad5b2ed56fa24078423c9f85e2416a6d1ed98f59c"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D70",
+          "size": 7020,
+          "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402810",
+          "size": 14464,
+          "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c"
+        }
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-direct-temporary/source.exe",
+          "sha256": "695b334b70f74c51acc4fa2788be3659d23603d0c0881ef9f77306ced718bb04"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-direct-temporary/source.map",
+          "sha256": "fd45e3edde4eae1f15d311de61a2a234dce168191cd1c14c7ad24300d73b0871"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-direct-temporary/source.pdb",
+          "sha256": "9e1c584c33cf58ddaac4174f82933bb392b069e9392385ff29a9fd3821fbfe20"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-direct-temporary/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained_native": false,
+      "producer_receipt_sha256": "73cfb7055eb670b49df7fa9d0ba6dbe07f0a86b8daea5a9104b9c904c3c045d9",
+      "game_tus_compiled": 1,
+      "game_objects_reused": 9,
+      "actual_source_inventory_sha256": "003f30e052be75b2292863162219609e51a26505df6041e86883df2510194cfb",
+      "changed_input_sha256": {
+        "src/AnmManager.cpp": "62c3c85031bd7281af0c85b37e07d23d3b13818e1de1047e3ae25ca7d09a8ccf"
+      }
+    },
+    {
+      "label": "child91-script-local",
+      "scope": "Current ten-TU graph; one ANM support recompile/nine hash-verified unchanged objects, diagnostic only, no exact credit",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/child91-script-local/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-script-local",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "guard_summary": {
+        "owners": 45,
+        "exact": 41,
+        "bytes": 4978,
+        "fields": 120
+      },
+      "guard_failures": [
+        {
+          "unit": "anm-loaded-create-vm-variant0",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x4a differs from manifest 0x49"
+        },
+        {
+          "unit": "anm-loaded-create-vm-variant2",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x4a differs from manifest 0x49"
+        },
+        {
+          "unit": "anm-loaded-create-vm-variant1",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x4a differs from manifest 0x49"
+        },
+        {
+          "unit": "anm-loaded-create-vm-variant3",
+          "result": "unsupported",
+          "error": "PDB contribution size 0x4a differs from manifest 0x49"
+        }
+      ],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA20",
+          "size": 9964,
+          "raw_sha256": "36826b8b54d8fd2fc3159a3e62527f9bd7f02c3c34ca1c702ebb878d96c8d26d"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D70",
+          "size": 7020,
+          "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402810",
+          "size": 14464,
+          "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c"
+        }
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-script-local/source.exe",
+          "sha256": "159968df8e23a07bca31af2e2145352f931c9f8b8bc23ca2dfc3be3463ed9816"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-script-local/source.map",
+          "sha256": "39fffe2a1cf0ba7975bdee04f62c0b40be9db04dd8dff2c62aca24d27b89905b"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-script-local/source.pdb",
+          "sha256": "912d67aa11b4ac34d6825e7c65bcb9ca39953e5e2d8e661b293bb1971a9eb023"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/child91-script-local/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained_native": false,
+      "producer_receipt_sha256": "29e912ee9505f4eb31ccb3a487e9f54079ddbf72fb90001b400432c5e94fe5fc",
+      "game_tus_compiled": 1,
+      "game_objects_reused": 9,
+      "actual_source_inventory_sha256": "1c0cd4b81a43cec0a197098e7f8787f410ff25c65135af82d02b8a8ca9b75f3f",
+      "changed_input_sha256": {
+        "src/AnmManager.cpp": "30d9cc7b432a5147f047b49785101b5114c4de20b3968e1e3e08bc98a81acd7b"
+      }
+    },
+    {
+      "label": "initializer-flags-snapshot",
+      "scope": "One private initializer recompile,ten hash-verified game objects reused in actual eleven-TU Player graph; diagnostic only",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/initializer-flags-snapshot/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flags-snapshot",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "exact": 45,
+        "bytes": 5270,
+        "fields": 140
+      },
+      "guard_failures": [
+        {
+          "unit": "initializer-candidate",
+          "result": "unsupported",
+          "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+        }
+      ],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA40",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D90",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402830",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff"
+        },
+        "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "address": "0x00413F30",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f"
+        }
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flags-snapshot/source.exe",
+          "sha256": "e597ef02fb569379db2c40c8b8db9dda86d67192ef5a5933efc6e4a64c1427cb"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flags-snapshot/source.map",
+          "sha256": "a8ece69a143f227400e1f8131418b2c62dd2802092b516aeac0371cb16ec8b29"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flags-snapshot/source.pdb",
+          "sha256": "7fa1492f667c721006e77953c2b81ce434ad9db4088cbacaa3ab45b1e22ad5b0"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flags-snapshot/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained_native": false,
+      "producer_receipt_sha256": "3ec34eaed16944b782cfbad225605e4409ea2fc44158679fa78978e061bf7748",
+      "initializer": {
+        "unit": "initializer-candidate",
+        "result": "unsupported",
+        "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+      },
+      "game_tus_compiled": 1,
+      "game_objects_reused": 10,
+      "actual_source_inventory_sha256": "9a00cc6796f04e396da638f5e8de4ac3c2f8d58dbb78134a9232cf1c681ff02c",
+      "changed_input_sha256": {
+        "src/AnmVmCreate.cpp": "8a87f628bbe01b2dcd56610357f2ad5233408dcbc91893046c52d2b9e188579a"
+      }
+    },
+    {
+      "label": "vector-storage-base",
+      "scope": "One complete eleven-TU cold with one consistent private vector header; no exact credit/adoption",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmManager.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmVmCreate.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/EnemyLaser.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/Enemy.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmVmId.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/RandomMath.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmInt3Scale.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/ItemManager.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/Player.cpp"
+        ],
+        "support_profiles": {
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/IZ:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\.analysis\\gpt-6.1-sol\\anm-child-routing-20261021\\vector-storage-base\\src",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/IZ:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\.analysis\\gpt-6.1-sol\\anm-child-routing-20261021\\vector-storage-base\\src",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "exact": 45,
+        "bytes": 5270,
+        "fields": 140
+      },
+      "guard_failures": [
+        {
+          "unit": "initializer-candidate",
+          "result": "unsupported",
+          "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+        }
+      ],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA40",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D90",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402830",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff"
+        },
+        "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "address": "0x00413F30",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f"
+        },
+        "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z": {
+          "address": "0x0040D630",
+          "size": 116,
+          "raw_sha256": "987a175eaadd103ba5eacbd4dd420e8496d1502407ccc59efa020e061847c5c0"
+        }
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/source.exe",
+          "sha256": "abc30c44dbae7361a3bb0a3cafb6d4494149108d4c66e16274d57174e7393269"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/source.map",
+          "sha256": "e6eb8bd413d36bb41be0db8968c706f3381005c135fbb680c01983a7b4dabc21"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/source.pdb",
+          "sha256": "c1b327c7bd773c57dd975d2403c9ed95e03602036889e95eeabf4089bdeab714"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/source.ltcg.obj",
+          "sha256": "9d1af9cb141f11cb2072e1db6ea324fc9ad7ef105ae42fdb40e49f2da89f4805"
+        }
+      },
+      "retained_native": false,
+      "producer_receipt_sha256": "728054a46252ba1812c7d394b0511f91b97f125309dcf4f61d861a440bccd98c",
+      "initializer": {
+        "unit": "initializer-candidate",
+        "result": "unsupported",
+        "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+      },
+      "game_tus_compiled": 11,
+      "game_objects_reused": 0,
+      "actual_source_inventory_sha256": "954d31c1ae40f03837446c3a2098ffed8cb3a97d8376008c505b5fe8d92faef4",
+      "changed_input_sha256": {
+        "src/AnmManager.hpp": "0df1f471fa6ba5bcb0509395713eec927f8510688dd383e404b63b6d6ea0dc2b"
+      }
+    },
+    {
+      "label": "initializer-base-storage",
+      "scope": "One private initializer recompile,ten hash-verified game objects reused in actual eleven-TU Player graph; diagnostic only",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmManager.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/initializer-base-storage/AnmVmCreate.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/EnemyLaser.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/Enemy.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmVmId.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/RandomMath.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmInt3Scale.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/ItemManager.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/Player.cpp"
+        ],
+        "support_profiles": {
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/vector-storage-base/src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/IZ:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\.analysis\\gpt-6.1-sol\\anm-child-routing-20261021\\vector-storage-base\\src",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/IZ:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\.analysis\\gpt-6.1-sol\\anm-child-routing-20261021\\vector-storage-base\\src",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-base-storage",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "exact": 45,
+        "bytes": 5270,
+        "fields": 140
+      },
+      "guard_failures": [
+        {
+          "unit": "initializer-candidate",
+          "result": "unsupported",
+          "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+        }
+      ],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA40",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D90",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402830",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff"
+        },
+        "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "address": "0x00413F30",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f"
+        }
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-base-storage/source.exe",
+          "sha256": "eedf5c343d1be9752c132ae7c976534cb3acbd2d959f265daf31bbfeee9228a4"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-base-storage/source.map",
+          "sha256": "3daf0356d8d791126b3148284151424ba53503e1739ac8e81f66ce70a763eb1b"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-base-storage/source.pdb",
+          "sha256": "b3e2543c6bf1f5efc51994733289cecd700a1e697256eab1f7dfda8cfce97c68"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-base-storage/source.ltcg.obj",
+          "sha256": "9d1af9cb141f11cb2072e1db6ea324fc9ad7ef105ae42fdb40e49f2da89f4805"
+        }
+      },
+      "retained_native": false,
+      "producer_receipt_sha256": "400b9fc2a6c8fe873d901e18d2e5535f1e77296a256621b06110d70b1a89ed9e",
+      "initializer": {
+        "unit": "initializer-candidate",
+        "result": "unsupported",
+        "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+      },
+      "game_tus_compiled": 1,
+      "game_objects_reused": 10,
+      "actual_source_inventory_sha256": "5afeaa5d2a66a5ca4c95c2d41d15756be4fd8978de9d88dcd8a5423118e92f91",
+      "changed_input_sha256": {
+        "src/AnmManager.hpp": "0df1f471fa6ba5bcb0509395713eec927f8510688dd383e404b63b6d6ea0dc2b",
+        "src/AnmVmCreate.cpp": "d4d6356240fb16f67f468f93ff44115511212501edf7d338fd5bab968eb8b568"
+      }
+    },
+    {
+      "label": "initializer-copy-blocks",
+      "scope": "One private initializer recompile,ten hash-verified game objects reused in actual eleven-TU Player graph; diagnostic only",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/initializer-copy-blocks/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-copy-blocks",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "exact": 45,
+        "bytes": 5270,
+        "fields": 140
+      },
+      "guard_failures": [
+        {
+          "unit": "initializer-candidate",
+          "result": "unsupported",
+          "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+        }
+      ],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA40",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D90",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402830",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff"
+        },
+        "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "address": "0x00413F30",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f"
+        }
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-copy-blocks/source.exe",
+          "sha256": "93935de8745428e7666d1b1f378052e9764c9c74aa8ef80dc756fe88adb9183f"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-copy-blocks/source.map",
+          "sha256": "31538a65dc0f04c56c918069505259911f2cf54d3d257f616eaadfe6e1191f26"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-copy-blocks/source.pdb",
+          "sha256": "661a57ae15f8b3f6e381cac3228691289785471f8bf0ac57b5e9898b5421073c"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-copy-blocks/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained_native": false,
+      "producer_receipt_sha256": "59abed3b8b133e810865c2f6c43b1fb36475c0f69b91d582e02116b8d12bc359",
+      "initializer": {
+        "unit": "initializer-candidate",
+        "result": "unsupported",
+        "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+      },
+      "game_tus_compiled": 1,
+      "game_objects_reused": 10,
+      "actual_source_inventory_sha256": "a451b2b459dcb2ecd782d19ccbdaf8e46e530798c18b68e1c4c33c7d5e992875",
+      "changed_input_sha256": {
+        "src/AnmVmCreate.cpp": "508e098637defb08e9bb9397842a0de2f6745372a11dedb4406af7222ee757a1"
+      }
+    },
+    {
+      "label": "initializer-flag-before-third",
+      "scope": "One private initializer recompile,ten hash-verified game objects reused in actual eleven-TU Player graph; diagnostic only",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          ".analysis/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "exact": 45,
+        "bytes": 5270,
+        "fields": 140
+      },
+      "guard_failures": [
+        {
+          "unit": "initializer-candidate",
+          "result": "unsupported",
+          "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+        }
+      ],
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993
+      },
+      "case_diagnostic": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "owner_extents": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "address": "0x0040DA40",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "address": "0x00406D90",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "address": "0x00402830",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff"
+        },
+        "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z": {
+          "address": "0x00413F30",
+          "size": 207,
+          "raw_sha256": "acc3c732917bb799be622e7aa0bfbfaf42cf0e2a12d2cc8a92ecc6be4bf0a3d3"
+        }
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/source.exe",
+          "sha256": "2163324e5abc7f0e76e3e108bff0859558f76abc77702435418073b4b329823c"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/source.map",
+          "sha256": "6e94b0b02535130a9b81a3903b1cca5f3c68074f41cb401eb3c1c954dba15329"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/source.pdb",
+          "sha256": "853317d7e98c9993dfaadc5e4a1f5ff6c1dde9c56fb7becf6023ba6ddb4b6c60"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/anm-child-routing-20261021/initializer-flag-before-third/source.ltcg.obj",
+          "sha256": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3"
+        }
+      },
+      "retained_native": true,
+      "producer_receipt_sha256": "3fc98532a40421b0f101cd51c6fe8028263b8fd9bb66dbba2d6a3df9dca42121",
+      "initializer": {
+        "unit": "initializer-candidate",
+        "result": "unsupported",
+        "error": "PDB contribution size 0xcf differs from manifest 0xd9"
+      },
+      "game_tus_compiled": 1,
+      "game_objects_reused": 10,
+      "actual_source_inventory_sha256": "7d9ea89ff8503a279a9f9af0c2e78bbbff6f2f92229e701e11b1b52fb591a9d2",
+      "changed_input_sha256": {
+        "src/AnmVmCreate.cpp": "e5d00027d1285ef4604e88cc2def777b84602345f781829423964fbdc650a379"
+      }
+    }
+  ],
+  "complete_raw_native_equality": [
+    {
+      "label": "child91-direct-temporary",
+      "scope": "Complete raw native bodies in their actual parent context; no target exact credit",
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_sha256": "c0f84691e36b3fe19464738ad5b2ed56fa24078423c9f85e2416a6d1ed98f59c",
+          "baseline_size": 9964,
+          "raw_equal": false
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b",
+          "baseline_size": 7020,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14464,
+          "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c",
+          "baseline_size": 14464,
+          "raw_equal": true
+        }
+      ]
+    },
+    {
+      "label": "child91-script-local",
+      "scope": "Complete raw native bodies in their actual parent context; no target exact credit",
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_sha256": "36826b8b54d8fd2fc3159a3e62527f9bd7f02c3c34ca1c702ebb878d96c8d26d",
+          "baseline_size": 9964,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_sha256": "bf1253fda6d1da974fbf6f71ecc8d516489df585379c83f264b34ac915647b9b",
+          "baseline_size": 7020,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14464,
+          "raw_sha256": "aee82e8b7d40b9db6aedfb16fb4775ebda0b0cdfd775e714ba7d12b20512803c",
+          "baseline_size": 14464,
+          "raw_equal": true
+        }
+      ]
+    },
+    {
+      "label": "initializer-flags-snapshot",
+      "scope": "Complete raw native bodies in their actual parent context; no target exact credit",
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670",
+          "baseline_size": 9964,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0",
+          "baseline_size": 7020,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff",
+          "baseline_size": 14464,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f",
+          "baseline_size": 207,
+          "raw_equal": true
+        }
+      ]
+    },
+    {
+      "label": "vector-storage-base",
+      "scope": "Complete raw native bodies in their actual parent context; no target exact credit",
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670",
+          "baseline_size": 9964,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0",
+          "baseline_size": 7020,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff",
+          "baseline_size": 14464,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f",
+          "baseline_size": 207,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+          "size": 116,
+          "raw_sha256": "987a175eaadd103ba5eacbd4dd420e8496d1502407ccc59efa020e061847c5c0",
+          "baseline_size": 116,
+          "raw_equal": true
+        }
+      ]
+    },
+    {
+      "label": "initializer-base-storage",
+      "scope": "Complete raw native bodies in their actual parent context; no target exact credit",
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670",
+          "baseline_size": 9964,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0",
+          "baseline_size": 7020,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff",
+          "baseline_size": 14464,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f",
+          "baseline_size": 207,
+          "raw_equal": true
+        }
+      ]
+    },
+    {
+      "label": "initializer-copy-blocks",
+      "scope": "Complete raw native bodies in their actual parent context; no target exact credit",
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670",
+          "baseline_size": 9964,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0",
+          "baseline_size": 7020,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff",
+          "baseline_size": 14464,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "size": 207,
+          "raw_sha256": "fe59dc58b6c7e5064471463c895e36ca70e69fcc28335573a93c6dea58518f4f",
+          "baseline_size": 207,
+          "raw_equal": true
+        }
+      ]
+    },
+    {
+      "label": "initializer-flag-before-third",
+      "scope": "Complete raw native bodies in their actual parent context; no target exact credit",
+      "owners": [
+        {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "size": 9964,
+          "raw_sha256": "0edf9b52fd888ff1e20935928c1d3fb2b46114bab69caf6e58be226d75dc9670",
+          "baseline_size": 9964,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "size": 7020,
+          "raw_sha256": "05497449230715d88951c40acfe5e75b3090120456dde208cd038615c33560d0",
+          "baseline_size": 7020,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "size": 14464,
+          "raw_sha256": "47d6fe0c2be36bede05c4ee6129da68821593084b100b258785a6442cc63c0ff",
+          "baseline_size": 14464,
+          "raw_equal": true
+        },
+        {
+          "symbol": "?InitializeVm@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+          "size": 207,
+          "raw_sha256": "acc3c732917bb799be622e7aa0bfbfaf42cf0e2a12d2cc8a92ecc6be4bf0a3d3",
+          "baseline_size": 207,
+          "raw_equal": false
+        }
+      ]
+    }
+  ],
+  "routing": {
+    "current": {
+      "scope": "Four source/target call routes only; no parent/callee exactness or runtime claim",
+      "assumptions": "CALLs return; conditional predicates unconstrained; bounded child region",
+      "source_factories": {
+        "88": "CreateVmVariant0",
+        "90": "CreateVmVariant1",
+        "91": "CreateVmVariant2",
+        "92": "CreateVmVariant3"
+      },
+      "target": {
+        "region_start": "0x0043EF06",
+        "region_end_exclusive": "0x0043F06B",
+        "routes": [
+          {
+            "opcode": 88,
+            "entry": "0x0043EF06",
+            "creator": "0x00448D00",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x00448D00",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              },
+              {
+                "calls": [
+                  "0x0043EC70",
+                  "0x00448D00",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              }
+            ]
+          },
+          {
+            "opcode": 90,
+            "entry": "0x0043EF61",
+            "creator": "0x00448F60",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x00448F60",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              },
+              {
+                "calls": [
+                  "0x0043EC70",
+                  "0x00448F60",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              }
+            ]
+          },
+          {
+            "opcode": 91,
+            "entry": "0x0043EF32",
+            "creator": "0x00448E30",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x00448E30",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              },
+              {
+                "calls": [
+                  "0x0043EC70",
+                  "0x00448E30",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              }
+            ]
+          },
+          {
+            "opcode": 92,
+            "entry": "0x0043EFE6",
+            "creator": "0x00449090",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x00449090",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              },
+              {
+                "calls": [
+                  "0x0043EC70",
+                  "0x00449090",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              }
+            ]
+          }
+        ]
+      },
+      "candidate": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/EnemyItemDrops/source.exe",
+        "image_sha256": "bb752665c6ece19f60b7f112ab2ae71859ef15aee80fa41f385a1439bc0be6d8",
+        "region_start": "0x0040DAF6",
+        "region_end_exclusive": "0x0040DC5B",
+        "routes": [
+          {
+            "opcode": 88,
+            "entry": "0x0040DAF6",
+            "creator": "0x0040D560",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x0040D560",
+                  "0x00417C90",
+                  "0x0040A0B0"
+                ],
+                "exit": "0x0040DA94"
+              },
+              {
+                "calls": [
+                  "0x00408E30",
+                  "0x0040D560",
+                  "0x00417C90",
+                  "0x0040A0B0"
+                ],
+                "exit": "0x0040DA94"
+              }
+            ]
+          },
+          {
+            "opcode": 90,
+            "entry": "0x0040DB51",
+            "creator": "0x0040D690",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x0040D690",
+                  "0x00417C90",
+                  "0x0040A0B0"
+                ],
+                "exit": "0x0040DA94"
+              },
+              {
+                "calls": [
+                  "0x00408E30",
+                  "0x0040D690",
+                  "0x00417C90",
+                  "0x0040A0B0"
+                ],
+                "exit": "0x0040DA94"
+              }
+            ]
+          },
+          {
+            "opcode": 91,
+            "entry": "0x0040DB22",
+            "creator": "0x0040D7C0",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x0040D7C0",
+                  "0x00417C90",
+                  "0x0040A0B0"
+                ],
+                "exit": "0x0040DA94"
+              },
+              {
+                "calls": [
+                  "0x00408E30",
+                  "0x0040D7C0",
+                  "0x00417C90",
+                  "0x0040A0B0"
+                ],
+                "exit": "0x0040DA94"
+              }
+            ]
+          },
+          {
+            "opcode": 92,
+            "entry": "0x0040DBD6",
+            "creator": "0x0040D8F0",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x0040D8F0",
+                  "0x00417C90",
+                  "0x0040A0B0"
+                ],
+                "exit": "0x0040DA94"
+              },
+              {
+                "calls": [
+                  "0x00408E30",
+                  "0x0040D8F0",
+                  "0x00417C90",
+                  "0x0040A0B0"
+                ],
+                "exit": "0x0040DA94"
+              }
+            ]
+          }
+        ],
+        "creator_owners": {
+          "CreateVmVariant2": {
+            "symbol": "?CreateVmVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "address": "0x0040D7C0",
+            "size": 74,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 51136,
+            "map_object": "support-01-AnmManager.ltcg.obj",
+            "pdb_module_index": 7,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+            "sha256": "23298d50db2228532b345d8bfc9e8e166ba256fcc572407246935eead1ce59ca"
+          },
+          "CreateVmVariant3": {
+            "symbol": "?CreateVmVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "address": "0x0040D8F0",
+            "size": 74,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 51440,
+            "map_object": "support-01-AnmManager.ltcg.obj",
+            "pdb_module_index": 7,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+            "sha256": "22f378eecc7d651435a56752dab5c202510014ac237859937ecec3464527b523"
+          },
+          "CreateVmVariant0": {
+            "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "address": "0x0040D560",
+            "size": 74,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50528,
+            "map_object": "support-01-AnmManager.ltcg.obj",
+            "pdb_module_index": 7,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+            "sha256": "f0649c53073919758cbb96a737f6b3b82a674af54d8b14eff13234033ee61b81"
+          },
+          "CreateVmVariant1": {
+            "symbol": "?CreateVmVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "address": "0x0040D690",
+            "size": 74,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50832,
+            "map_object": "support-01-AnmManager.ltcg.obj",
+            "pdb_module_index": 7,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+            "sha256": "0ecfbd7c72bdc35d9d4b1edcd7ee202137687e52c0e598636ca791f562a3a3bb"
+          }
+        },
+        "qualification": "Entry/address binding only; whole callee bytes must be checked separately"
+      }
+    },
+    "real-player": {
+      "scope": "Four source/target call routes only; no parent/callee exactness or runtime claim",
+      "assumptions": "CALLs return; conditional predicates unconstrained; bounded child region",
+      "source_factories": {
+        "88": "CreateVmVariant0",
+        "90": "CreateVmVariant1",
+        "91": "CreateVmVariant2",
+        "92": "CreateVmVariant3"
+      },
+      "target": {
+        "region_start": "0x0043EF06",
+        "region_end_exclusive": "0x0043F06B",
+        "routes": [
+          {
+            "opcode": 88,
+            "entry": "0x0043EF06",
+            "creator": "0x00448D00",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x00448D00",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              },
+              {
+                "calls": [
+                  "0x0043EC70",
+                  "0x00448D00",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              }
+            ]
+          },
+          {
+            "opcode": 90,
+            "entry": "0x0043EF61",
+            "creator": "0x00448F60",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x00448F60",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              },
+              {
+                "calls": [
+                  "0x0043EC70",
+                  "0x00448F60",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              }
+            ]
+          },
+          {
+            "opcode": 91,
+            "entry": "0x0043EF32",
+            "creator": "0x00448E30",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x00448E30",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              },
+              {
+                "calls": [
+                  "0x0043EC70",
+                  "0x00448E30",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              }
+            ]
+          },
+          {
+            "opcode": 92,
+            "entry": "0x0043EFE6",
+            "creator": "0x00449090",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x00449090",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              },
+              {
+                "calls": [
+                  "0x0043EC70",
+                  "0x00449090",
+                  "0x00449450",
+                  "0x00413200"
+                ],
+                "exit": "0x0043EEA4"
+              }
+            ]
+          }
+        ]
+      },
+      "candidate": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.exe",
+        "image_sha256": "6a2129bd89f66059ddb8557ec31d05ee7f17c91220adc64f84ba6f456b3a0f64",
+        "region_start": "0x0040DB16",
+        "region_end_exclusive": "0x0040DC7B",
+        "routes": [
+          {
+            "opcode": 88,
+            "entry": "0x0040DB16",
+            "creator": "0x0040D580",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x0040D580",
+                  "0x00417CB0",
+                  "0x0040A0D0"
+                ],
+                "exit": "0x0040DAB4"
+              },
+              {
+                "calls": [
+                  "0x00408E50",
+                  "0x0040D580",
+                  "0x00417CB0",
+                  "0x0040A0D0"
+                ],
+                "exit": "0x0040DAB4"
+              }
+            ]
+          },
+          {
+            "opcode": 90,
+            "entry": "0x0040DB71",
+            "creator": "0x0040D6B0",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x0040D6B0",
+                  "0x00417CB0",
+                  "0x0040A0D0"
+                ],
+                "exit": "0x0040DAB4"
+              },
+              {
+                "calls": [
+                  "0x00408E50",
+                  "0x0040D6B0",
+                  "0x00417CB0",
+                  "0x0040A0D0"
+                ],
+                "exit": "0x0040DAB4"
+              }
+            ]
+          },
+          {
+            "opcode": 91,
+            "entry": "0x0040DB42",
+            "creator": "0x0040D7E0",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x0040D7E0",
+                  "0x00417CB0",
+                  "0x0040A0D0"
+                ],
+                "exit": "0x0040DAB4"
+              },
+              {
+                "calls": [
+                  "0x00408E50",
+                  "0x0040D7E0",
+                  "0x00417CB0",
+                  "0x0040A0D0"
+                ],
+                "exit": "0x0040DAB4"
+              }
+            ]
+          },
+          {
+            "opcode": 92,
+            "entry": "0x0040DBF6",
+            "creator": "0x0040D910",
+            "static_paths": 2,
+            "paths": [
+              {
+                "calls": [
+                  "0x0040D910",
+                  "0x00417CB0",
+                  "0x0040A0D0"
+                ],
+                "exit": "0x0040DAB4"
+              },
+              {
+                "calls": [
+                  "0x00408E50",
+                  "0x0040D910",
+                  "0x00417CB0",
+                  "0x0040A0D0"
+                ],
+                "exit": "0x0040DAB4"
+              }
+            ]
+          }
+        ],
+        "creator_owners": {
+          "CreateVmVariant0": {
+            "symbol": "?CreateVmVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "address": "0x0040D580",
+            "size": 73,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50560,
+            "map_object": "support-01-AnmManager.ltcg.obj",
+            "pdb_module_index": 7,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-child-routing-20261021\\real-player\\support-01-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-child-routing-20261021\\real-player\\support-01-AnmManager.ltcg.obj",
+            "sha256": "b650bce74c11bd48e04fae942c28a0b519f187ff6a5603c6ea89e4ff5d5865ef"
+          },
+          "CreateVmVariant3": {
+            "symbol": "?CreateVmVariant3@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "address": "0x0040D910",
+            "size": 73,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 51472,
+            "map_object": "support-01-AnmManager.ltcg.obj",
+            "pdb_module_index": 7,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-child-routing-20261021\\real-player\\support-01-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-child-routing-20261021\\real-player\\support-01-AnmManager.ltcg.obj",
+            "sha256": "9e16e783edb8ed07a2e5cf3423fce5246f5033a94a0ec0873e20be09036c5f54"
+          },
+          "CreateVmVariant1": {
+            "symbol": "?CreateVmVariant1@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "address": "0x0040D6B0",
+            "size": 73,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 50864,
+            "map_object": "support-01-AnmManager.ltcg.obj",
+            "pdb_module_index": 7,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-child-routing-20261021\\real-player\\support-01-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-child-routing-20261021\\real-player\\support-01-AnmManager.ltcg.obj",
+            "sha256": "2e157fb126f89755fde6b3035accd256a3ea29b6a581c4afe948ff52d39b633e"
+          },
+          "CreateVmVariant2": {
+            "symbol": "?CreateVmVariant2@AnmLoadedView@@QAE?AUAnmVmIdView@@HI@Z",
+            "address": "0x0040D7E0",
+            "size": 73,
+            "extent_source": "pdb-section-contribution",
+            "section": ".text",
+            "section_number": 1,
+            "section_offset": 51168,
+            "map_object": "support-01-AnmManager.ltcg.obj",
+            "pdb_module_index": 7,
+            "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-child-routing-20261021\\real-player\\support-01-AnmManager.ltcg.obj",
+            "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-child-routing-20261021\\real-player\\support-01-AnmManager.ltcg.obj",
+            "sha256": "a4745c1aeb51a4bbf7973f90d04471ddaa42c6b759c088bf00a4805f663bbf8c"
+          }
+        },
+        "qualification": "Entry/address binding only; whole callee bytes must be checked separately"
+      }
+    }
+  },
+  "routing_negative_controls": {
+    "scope": "Two private source controls and two copied diagnostic PE call fields; no original target mutation; all rejected at intended call-routing condition",
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "controls": [
+      {
+        "label": "wrong-source-child91",
+        "command": [
+          "scripts/repo-python",
+          "scripts/report-anm-child-routing.py",
+          "--source",
+          "/home/pentester/coding/codex_ida/th10-reconstruction/th10/.analysis/gpt-6.1-sol/anm-child-routing-20261021/wrong-source-child91.cpp",
+          "--json"
+        ],
+        "returncode": 2,
+        "result": "rejected at intended routing check",
+        "log_sha256": "6d8033417c1397a3fddbf7a5f054be47d0abb3249e8c3b64bfc718b5c23492e9",
+        "revalidated_tool_sha256": "04e43d2b7554daeb786fa264e0f1b7718db3d0ee9032779f8828c8d44dc4da39"
+      },
+      {
+        "label": "swapped-source-90-91",
+        "command": [
+          "scripts/repo-python",
+          "scripts/report-anm-child-routing.py",
+          "--source",
+          "/home/pentester/coding/codex_ida/th10-reconstruction/th10/.analysis/gpt-6.1-sol/anm-child-routing-20261021/swapped-source-90-91.cpp",
+          "--json"
+        ],
+        "returncode": 2,
+        "result": "rejected at intended routing check",
+        "log_sha256": "6d8033417c1397a3fddbf7a5f054be47d0abb3249e8c3b64bfc718b5c23492e9",
+        "revalidated_tool_sha256": "04e43d2b7554daeb786fa264e0f1b7718db3d0ee9032779f8828c8d44dc4da39"
+      },
+      {
+        "label": "copied-native-creator",
+        "command": [
+          "scripts/repo-python",
+          "scripts/report-anm-child-routing.py",
+          "--artifact-dir",
+          "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/anm-child-routing-20261021/copied-native-creator",
+          "--json"
+        ],
+        "returncode": 2,
+        "result": "rejected at intended routing check",
+        "log_sha256": "6d8033417c1397a3fddbf7a5f054be47d0abb3249e8c3b64bfc718b5c23492e9",
+        "image_sha256": "cea4e095d989b983c9cf67ccdb1cbb6ff8771310c654f4473aa96ee050d96820",
+        "call_address": "0x40db65",
+        "original_destination": "0x40d7e0",
+        "replacement_destination": "0x40d6b0",
+        "revalidated_tool_sha256": "04e43d2b7554daeb786fa264e0f1b7718db3d0ee9032779f8828c8d44dc4da39"
+      },
+      {
+        "label": "copied-native-resolver",
+        "command": [
+          "scripts/repo-python",
+          "scripts/report-anm-child-routing.py",
+          "--artifact-dir",
+          "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/anm-child-routing-20261021/copied-native-resolver",
+          "--json"
+        ],
+        "returncode": 2,
+        "result": "rejected at intended routing check",
+        "log_sha256": "6d8033417c1397a3fddbf7a5f054be47d0abb3249e8c3b64bfc718b5c23492e9",
+        "image_sha256": "b204357ecd42d71fda8c63df9ac72de374d39c3e3a360ae7b22e5b12209c8312",
+        "call_address": "0x40dc1d",
+        "original_destination": "0x417cb0",
+        "replacement_destination": "0x40a0f0",
+        "revalidated_tool_sha256": "04e43d2b7554daeb786fa264e0f1b7718db3d0ee9032779f8828c8d44dc4da39"
+      }
+    ]
+  },
+  "routing_target_independent_fixtures": {
+    "layouts": 24,
+    "static_paths": 192,
+    "strict_negative_fixtures": 16,
+    "claim": "Synthetic decoder/source/control-flow fixtures, no target/runtime credit"
+  },
+  "new_scripts": {
+    "scripts/report-anm-child-routing.py": "04e43d2b7554daeb786fa264e0f1b7718db3d0ee9032779f8828c8d44dc4da39",
+    "scripts/test-anm-child-routing.py": "31203f7f22577e9a0bdc2a0b0d8aa8c31443302c5f56697e22acbfd6fca083c6"
+  },
+  "ghidra": {
+    "transport": "direct local readOnly/noanalysis/rollback",
+    "cpu": 1,
+    "heap_mib": 768,
+    "initializer_incoming_calls": 46,
+    "complete_mapped_text": {
+      "first": "0x00401000",
+      "last_inclusive": "0x00465A80",
+      "bytes": 412289,
+      "sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+      "unchanged": true
+    },
+    "reports": {
+      "target-ghidra.txt": "b4e7dd1f27f73d01f43d74b42df98ef7fead76b4cbc7bd050594801e83c6fa01",
+      "initializer-ghidra.txt": "8683f158c602a8eac83ed38173b5aae453c28de8dd35a68246f45b2767c3af9e"
+    }
+  },
+  "vector_storage_hypothesis": {
+    "scope": "Consistent whole-project private type-shape hypothesis, no maintained header change; POD float3 storage base plus existing AnmFloat3View API; no original SDK/class claim",
+    "created_at_utc": "2026-10-21T10:24:46.748247+00:00",
+    "baseline_roles": {
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+      "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "de2c1fdceefe6aaa8a2c14af12eb04c5cc49d9f188dc04c091078fdf2dc29c2f",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.cpp": "495fcd5a453b8908e87f5ef658948ff1d5bb74d2b5d33e650ed3eea0399c05a6",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+    },
+    "changed_roles": [
+      "src/AnmManager.hpp"
+    ],
+    "provider_hypothesis": {
+      "/home/pentester/coding/codex_ida/th10-reconstruction/th10/.tools/msvc710-sp1/Vc7/PlatformSDK/Include/d3dx8math.h": "6373c377915189244f252dee90970b1839806c1b7010c436f7d75b3e50d604a6",
+      "/home/pentester/coding/codex_ida/th10-reconstruction/th10/.tools/msvc710-sp1/Vc7/PlatformSDK/Include/d3dx8math.inl": "1e80e1577e74f6aac96231c26f31882446c0af9b2c413f754b713c893ecbcdb9",
+      "/home/pentester/coding/codex_ida/th10-reconstruction/th10/.tools/msvc710-sp1/Vc7/PlatformSDK/Include/d3d8types.h": "c9c5806717a1a0c49bcee31ec80689eac8da1406ba2f3bae7ae3cf2bd906a070"
+    },
+    "provider_fact": "SDK8 D3DXVECTOR3 derives D3DVECTOR with float3 storage; TH10 SDK9 source/class remains unproven",
+    "profile_policy": "Replace only /Isrc with private include directory; retain GL/GS/O2 and scale-only Ob1; compile all11 TUs to avoid mixed type definitions"
+  },
+  "corrections": [
+    {
+      "address": "0x00448AC0",
+      "old": "opcode91 caller",
+      "correct": "opcode90 caller"
+    },
+    {
+      "address": "0x00448E30",
+      "old": "opcode90 caller",
+      "correct": "opcode91 caller"
+    },
+    {
+      "address": "0x00448F60",
+      "old": "opcode91 caller",
+      "correct": "opcode90 caller"
+    }
+  ],
+  "limitations": [
+    "No original class/TU/profile identified",
+    "Only one complete private type-shape cold; no repeated full maintained cold claimed",
+    "Call routing is not parent/callee byte exactness; CALLs assumed returning",
+    "Initializer207/217 and world116/118 remain unsupported complete extents",
+    "Original three large owners and native-product/runtime/semantic/port gates remain open"
+  ],
+  "complete_target_replayed_run_equality": {
+    "scope": "Every strict complete7020-byte comparison binds all189 fields/62locals and exact171-byte callee; all27 residual bytes are enumerated, not truncated, and identical. This proves complete target-replayed equality to the one verified target across8 controls, beyond equal scores.",
+    "target_replayed_run_sha256": "830db1c50fc4f1228d0bfbf99f08c51e9d9e36043990d2900820c8b55600a472",
+    "controls": [
+      {
+        "label": "real-player",
+        "complete_size": 7020,
+        "ordinary_differences": 27,
+        "full_residual_vector_sha256": "bbef15a51490b5b56c2b397c9a1f9e5dcce0803bdf8930d7ba19ab8112f293d3"
+      },
+      {
+        "label": "child91-direct-temporary",
+        "complete_size": 7020,
+        "ordinary_differences": 27,
+        "full_residual_vector_sha256": "bbef15a51490b5b56c2b397c9a1f9e5dcce0803bdf8930d7ba19ab8112f293d3"
+      },
+      {
+        "label": "child91-script-local",
+        "complete_size": 7020,
+        "ordinary_differences": 27,
+        "full_residual_vector_sha256": "bbef15a51490b5b56c2b397c9a1f9e5dcce0803bdf8930d7ba19ab8112f293d3"
+      },
+      {
+        "label": "initializer-flags-snapshot",
+        "complete_size": 7020,
+        "ordinary_differences": 27,
+        "full_residual_vector_sha256": "bbef15a51490b5b56c2b397c9a1f9e5dcce0803bdf8930d7ba19ab8112f293d3"
+      },
+      {
+        "label": "vector-storage-base",
+        "complete_size": 7020,
+        "ordinary_differences": 27,
+        "full_residual_vector_sha256": "bbef15a51490b5b56c2b397c9a1f9e5dcce0803bdf8930d7ba19ab8112f293d3"
+      },
+      {
+        "label": "initializer-base-storage",
+        "complete_size": 7020,
+        "ordinary_differences": 27,
+        "full_residual_vector_sha256": "bbef15a51490b5b56c2b397c9a1f9e5dcce0803bdf8930d7ba19ab8112f293d3"
+      },
+      {
+        "label": "initializer-copy-blocks",
+        "complete_size": 7020,
+        "ordinary_differences": 27,
+        "full_residual_vector_sha256": "bbef15a51490b5b56c2b397c9a1f9e5dcce0803bdf8930d7ba19ab8112f293d3"
+      },
+      {
+        "label": "initializer-flag-before-third",
+        "complete_size": 7020,
+        "ordinary_differences": 27,
+        "full_residual_vector_sha256": "bbef15a51490b5b56c2b397c9a1f9e5dcce0803bdf8930d7ba19ab8112f293d3"
+      }
+    ]
+  },
+  "real_player_dispatcher_diagnostic": {
+    "acceptance_authority": "none",
+    "stack_allocations": {
+      "target": "esp, 0x2c4",
+      "candidate": "esp, 0x2c4"
+    },
+    "sentinel_compare_counts": {
+      "target": 19,
+      "candidate": 19
+    },
+    "case_aligned": {
+      "matched_comparable_bytes": 2980,
+      "comparable_bytes": 11152,
+      "absolute_case_gap_delta": 650,
+      "same_sized_cases": 42
+    }
+  }
+}

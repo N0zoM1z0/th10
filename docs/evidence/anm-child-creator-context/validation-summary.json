@@ -1,0 +1,203 @@
+{
+  "state": "validated",
+  "new_exact_bytes": 0,
+  "adopted_source_controls": 0,
+  "executed_controls": 8,
+  "game_tu_compiles": 18,
+  "complete_private_type_colds": 1,
+  "canonical_replays": 0,
+  "source_fact_corrections": 3,
+  "routing_static_paths_per_image": 8,
+  "actual_negative_controls": 4,
+  "synthetic_layouts": 24,
+  "synthetic_paths": 192,
+  "synthetic_strict_mutants": 16,
+  "cleanup": {
+    "scope": "Owned terminal duplicate native controls, reproducible copied-PE mutants and unexecuted alternatives only; source/producer/guard/field/control receipts and selected207-byte failure retained",
+    "directories": 11,
+    "bytes": 8444651,
+    "unrelated_d3d": "untouched"
+  },
+  "native_summary_sha256": "1c4298a8d460e5ae555db85fc3a99d318ce1dc4510c48845acf3db7993c5843a",
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  },
+  "gates": [
+    {
+      "label": "routing-current",
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-anm-child-routing.py",
+        "--artifact-dir",
+        "build/match-linked/EnemyItemDrops",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.368,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-routing-current.json",
+      "log_sha256": "004327972a5801e542259e5421d0f91c56a4bd3b08161477c50379094a7d1189"
+    },
+    {
+      "label": "routing-player",
+      "command": [
+        "scripts/repo-python",
+        "scripts/report-anm-child-routing.py",
+        "--artifact-dir",
+        "build/gpt-6.1-sol/anm-child-routing-20261021/real-player",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.363,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-routing-player.json",
+      "log_sha256": "76d5e02a8dbe94b2561a376b889c8676a5ab692c6c7f78a086e3fd091966b617"
+    },
+    {
+      "label": "routing-fixtures",
+      "command": [
+        "scripts/repo-python",
+        "scripts/test-anm-child-routing.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.249,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-routing-fixtures.log",
+      "log_sha256": "c1afa3ff2b8e32c93a47d408a99358bdc48faea29594cdab99ff3871401b5163"
+    },
+    {
+      "label": "guards",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/anm-child-routing-20261021/focused-guards.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 1.423,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-guards.log",
+      "log_sha256": "3c2a079e863314ae170c509f503417d532a234a0f5c252716625150e9c7db8fe"
+    },
+    {
+      "label": "anm",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/anm-timer-sequencing-20261021/current-anm.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.329,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-anm.json",
+      "log_sha256": "90f5529203c01e6f80c27e6add712fc8ac356f2c047c629b4482f3412c58165d"
+    },
+    {
+      "label": "run",
+      "command": [
+        "scripts/repo-python",
+        "scripts/diagnose-ecl-run-native.py",
+        "--unit",
+        "enemy-cancel-bullet-pattern",
+        "--artifact-dir",
+        "build/match-linked/EnemyItemDrops"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "seconds": 0.601,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-run.json",
+      "log_sha256": "2f9317e00dd4db624f87ce74d96dd90bf2804c3f4c5c664dde0a8d4dd362a72d"
+    },
+    {
+      "label": "toolchain",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.163,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-toolchain.log",
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "label": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.352,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-tracking.log",
+      "log_sha256": "18e9c980e4487a79dbf87d871e51bdc2df019f9285bbdd7b3d2474a387e4d7d7"
+    },
+    {
+      "label": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.145,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-progress.log",
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "label": "ci",
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 544.168,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-ci.log",
+      "log_sha256": "08581a19bb5888e81c30e50bbf60b7fa872c812d7b28dddf767684aa3a83ad52",
+      "steps": 105
+    },
+    {
+      "label": "docs",
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.162,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-docs.log",
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.024,
+      "log": ".analysis/gpt-6.1-sol/anm-child-routing-20261021/final-diff.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "pins_before": {
+    "raw_inputs": 33,
+    "canonical_artifacts": 15,
+    "additional_native_artifacts": 32,
+    "result": "all unchanged"
+  },
+  "pins_after": {
+    "raw_inputs": 33,
+    "canonical_artifacts": 15,
+    "additional_native_artifacts": 32,
+    "result": "all unchanged"
+  },
+  "standard_ci_invocations": 1,
+  "standard_ci_checks": 105,
+  "final_gates_receipt_sha256": "8575a97e574ef6699a8a09b10e5a13b6e97cf82044aac85b1532d59d4897412b"
+}

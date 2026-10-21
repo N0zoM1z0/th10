@@ -85,6 +85,7 @@ def main() -> int:
         run("Validate alpha interpolation and strict mutations", [sys.executable, "scripts/test-anm-alpha-interpolation.py"])
         run("Validate RGB interpolation and strict mutations", [sys.executable, "scripts/test-anm-rgb-interpolation.py"])
         run("Validate loaded-ANM slot release", [sys.executable, "scripts/test-anm-release-slot.py"])
+        run("Validate ANM child call routing", [sys.executable, "scripts/test-anm-child-routing.py"])
         run("Validate GUI draw arithmetic witnesses", [sys.executable, "scripts/test-gui-draw-arithmetic.py"])
         run("Validate GUI draw complete-header layout", [sys.executable, "scripts/test-gui-draw-layout.py"])
         run("Validate GUI reset event order", [sys.executable, "scripts/test-gui-reset-order.py"])

@@ -49,7 +49,45 @@ authored denominator is provisional. The SVG now visibly fills the authored
 bar from current classified exact bytes and labels the ratio provisional.
 The complete-game denominator remains unknown.
 
-The latest bounded large-owner investigation tests the current ANM timer tail.
+The latest child/creator investigation corrects three stale90/91 caller comments:
+source and target both route88->448D00,90->448F60,91->448E30,92->449090. No C++
+routing change is needed. A new bounded source/target/PE-PDB caller checker
+validates optional GetInt then creator/GetVm/InsertAfter across eight static
+paths per image. It grants no parent/callee byte credit. Synthetic24-layout/
+192-path and16 strict negatives, plus four actual source/copied-native negatives,
+pass. See [child/creator evidence](evidence/anm-child-creator-context/README.md).
+
+Current ten-TU context passes41/45 complete guards4978/all120; its four creators
+are complete74/73 and unsupported before scoring. The existing canonical
+creator recipe is a separate three-TU /GL/no-GS context, not this diagnostic.
+Appending only real Player.cpp
+recompiles that one TU and reuses ten verified objects, freezing33 inputs. It
+restores initializer ECX/two-stack/RET8 and all four73-byte creator guards:
+45 complete helpers5270/all140. Initializer207/217 and world116/118 stay nonexact.
+Fresh direct Ghidra lists46 initializer incoming calls; no complete caller/source
+closure is claimed. The additional eleven-TU diagnostic is
+`build/gpt-6.1-sol/anm-child-routing-20261021/real-player`; it does not supersede
+the accepted canonical carrier/source pins below.
+
+Eight controls compile18 game TUs total, including one consistent full11-TU
+private vector-type cold. Direct temporary child91 regresses aligned ANM to7460;
+named script operand and most initializer/copy forms preserve their entire
+native bodies. The private storage-base cold preserves all five measured bodies
+raw. Flag-before-third changes only its207-byte helper. None is adopted. All
+Run7020/all189/62locals retain the identical complete target-replayed bytes and27
+residuals;171-byte callee stays exact. Fresh eleven-TU ANM stays7478/7995,90/92,
+gap2; dispatcher14464/frame2C4/19sentinels/42target-sized groups/gap650. No parent
+or case exact credit. All three original large goals remain active.
+Eleven owned terminal/unexecuted directories are pruned/8444651 bytes. Recovery:
+`.analysis/gpt-6.1-sol/anm-child-routing-20261021/RECOVERY.md`. Original C++/headers/
+profiles/recipes/exact totals and independent D3D work are unchanged.
+All105 standard CI checks pass in one invocation. Final two-image routing,
+16 synthetic negatives,45 full helper guards5270/all140, fresh current ANM
+and expected Run7020/27, toolchain/tracking/progress/docs/whitespace gates pass.
+All33 maintained inputs,15 canonical artifacts and32 retained native artifacts
+remain current after CI. No full historical or extra canonical replay is run.
+
+The preceding bounded large-owner investigation tests the ANM timer tail.
 An unchanged private ANM positive and two ordinary full Tick expansions (scale
 first versus subframe += scale) preserve every raw byte of all three complete
 native bodies9964/7020/14464. Each retains35 helpers4424/all118. ANM stays7478/
@@ -644,7 +682,8 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused diagnostics are in the ANM timer proof; exact results are in
+Latest focused routing/creator diagnostics are in the child/creator proof;
+exact results are in
 the circle-cancel proof; death-service/item-scatter/read-open/worker/RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
@@ -660,4 +699,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/anm-timer-sequencing/validation-summary.json).
+[the current validation summary](evidence/anm-child-creator-context/validation-summary.json).
