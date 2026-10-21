@@ -4813,3 +4813,28 @@ only the whole canonical manifest fingerprint changes by adding two units.
 No new large-owner replay or Windows runtime/product/semantic/port closure is
 claimed. The prior62-byte table-denominator correction is separate from this
 576-byte exact numerator gain.
+
+## 2026-10-22 Canonical exact Chain insertion owners
+
+The [insertion proof](evidence/chain-insertion-native/README.md) closes the complete
+131-byte owners at449AE0 and449B70, each with seven independently target-derived
+DIR32 fields. Both target bodies densely decode through RET4. The physical ESI
+element, EDI signed priority and stack owner remain; optional ECX-argument added
+callbacks run before locking, their result survives insertion, and equal-priority
+newcomers precede existing elements. Source names/class/TU/profile remain unknown.
+
+The old scalar source was already131/131 bytes but its counter fields29h/3Bh
+did not match target25h/31h. The unchanged exhaustive inventory rejects it.
+Using the existing MainSupervisor members only in these two functions recovers
+all bytes/fields without changing types, signatures, algorithm or padding. A
+private one-object control is distinct from the two independent full14-TU
+actual-source colds. The first passes new262 plus existing frame576; the second
+passes new262 again. Only262 new bytes receive credit: authored401/73225,
+overall1242/139735, source-present610/nonexact209/absent124, denominator734/273579.
+
+Fresh host1375 ASan/UBSan assertions, eight strict controls and19 EOL guards pass.
+Two existing projections now require12 occurrences each; only the active
+Chain.cpp LF pin changes. All1240 prior unit dictionaries and large32/15 pins
+remain unchanged; whole manifest hashes and older shared-carrier receipts retain
+their historical scope. No new large-owner replay, global-storage/alias closure,
+native Windows runtime, semantic reconstruction or portability claim follows.

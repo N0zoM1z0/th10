@@ -117,3 +117,9 @@ otherwise retain their prior meanings. Original data storage aliases, global
 ownership/static initialization and faithful Windows i386 product/runtime remain
 open. Semantic reconstruction and portability have not started. Private recovery:
 `.analysis/gpt-6.1-sol/chain-counter-codegen-20261022/RECOVERY.md`.
+
+The subsequent [insertion matches](../chain-insertion-native/README.md) change
+only two other Chain bodies and refresh the host projection count to twelve.
+Their first actual-source cold freshly preserves both runners, 576 bytes/all44
+fields. That batch supersedes the shared second carrier; the receipts and first
+snapshot above retain historical source/context scope.

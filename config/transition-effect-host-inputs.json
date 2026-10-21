@@ -3,7 +3,7 @@
   "normalization": "crlf-to-lf-only",
   "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",
   "sha256_lf": {
-    "src/Chain.cpp": "d729a451acee4c0910cba489f8f66c0f8a92bab997f7a2f496448eb5cbc197d7",
+    "src/Chain.cpp": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68",
     "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
     "src/AnmManager.cpp": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
@@ -344,5 +344,17 @@
     "source": "Use already reviewed unsigned-byte MainSupervisor members and target-supported4/3 case ordering; no new globals/types/volatile/ABI padding.",
     "host": "Project two existing supervisor member views onto existing host roles, exactly8 occurrences each; normalization and rejection rules unchanged.",
     "acceptance": "Two independent actual-source full14TU canonical cold replays pass308/268 and44 exhaustive fields; source/ownership/runtime claims remain separate."
+  },
+  "chain_insertion_codegen_review_20261022": {
+    "changed_active_LF_pin": {
+      "src/Chain.cpp": {
+        "old": "d729a451acee4c0910cba489f8f66c0f8a92bab997f7a2f496448eb5cbc197d7",
+        "new": "94e24ab50ea9ae8dd2abeabe48c0347f66f84bb0c237615568ce08a4df3dbf68"
+      }
+    },
+    "other_six_active_dependencies_unchanged": true,
+    "source": "Use existing unsigned-byte supervisor member views in AddToCalcChain/AddToDrawChain; no signature, type, algorithm, volatile or padding changes.",
+    "host": "Existing member projections now have exactly12 occurrences each; same host storage roles and strict CRLF-to-LF-only policy.",
+    "acceptance": "Two independent full14TU actual-source canonical cold replays pass262/14 exhaustive fields; source/ownership/runtime claims remain separate."
   }
 }

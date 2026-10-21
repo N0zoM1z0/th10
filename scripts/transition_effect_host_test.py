@@ -87,7 +87,7 @@ def build(source, out, canonical=DEFAULT_CANON, sanitize=False):
         'g_MainSupervisorView.criticalSectionLockCounts[0]':'th10::g_ChainNestCounter',
     }.items():
         n=chain.count(old)
-        if n!=8: raise RuntimeError(f'canonical global-view adaptation count {n}, expected 8: {old}')
+        if n!=12: raise RuntimeError(f'canonical global-view adaptation count {n}, expected 12: {old}')
         global_view_adaptations[old]=n;chain=chain.replace(old,new)
     # RemoveAllFromList alone has a raw +0x18 host-incompatible load; retain
     # that body except translating this documented list-head field access.

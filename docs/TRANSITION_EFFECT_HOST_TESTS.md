@@ -19,7 +19,8 @@ The default is repository-local `src`; there is no silent remote or machine-spec
 The later [native runner match](evidence/chain-dispatcher-native/README.md) changes
 dispatchers to existing MainSupervisor member views and target4/3 source order.
 The host projects criticalSections[0] and criticalSectionLockCounts[0] onto the
-same existing mutex/counter roles with exactly eight rewrites each, recorded in
+same existing mutex/counter roles. The [insertion match](evidence/chain-insertion-native/README.md)
+extends these projections from eight to exactly twelve rewrites each, recorded in
 the manifest. No other source access is silently adapted. Only Chain.cpp's active
 LF pin changes; the other six and strict normalization remain unchanged. Full1375
 sanitized assertions, eight strict controls and19 EOL guards still pass. These

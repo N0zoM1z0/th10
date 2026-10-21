@@ -1,0 +1,83 @@
+{
+  "native": {
+    "first_cold_units": 4,
+    "first_cold_bytes": 838,
+    "second_cold_units": 2,
+    "second_cold_bytes": 262,
+    "complete_TUs_each": 14,
+    "new_fields": 14,
+    "each_new_dense_decode_bytes": 131,
+    "unique_validated_units": 4,
+    "unique_validated_bytes": 838
+  },
+  "host": {
+    "state": "passed",
+    "sanitized_assertions": 1375,
+    "strict_faulty_code_controls": 8,
+    "EOL_checks": 19,
+    "global_view_projections_each": 12,
+    "active_LF_pins_changed": [
+      "Chain.cpp"
+    ],
+    "other_six_dependencies_unchanged": true,
+    "strict_normalization_unchanged": true
+  },
+  "full_ci": {
+    "state": "passed",
+    "groups": 108,
+    "returncode": 0,
+    "maintained_source_test_config_paths": 368,
+    "all_frozen_inputs_unchanged": true,
+    "log_sha256": "a4153dd7b019aff0d299e6c39f68dc670a391b3965cd000f0aff770c56295899",
+    "earlier_run": "intentionally stopped before narrowing unrelated CSV quote formatting; no verdict or credit for that run"
+  },
+  "cleanup": {
+    "state": "complete",
+    "removed_logical_file_bytes": 14120146,
+    "removed_trees": [
+      {
+        "path": "build/gpt-6.1-sol/chain-insertion-codegen-20261022/supervisor",
+        "logical_file_bytes": 1709974
+      },
+      {
+        "path": "build/host-tests/chain-insertion-review",
+        "logical_file_bytes": 1724587
+      },
+      {
+        "path": "build/host-tests/chain-insertion-controls",
+        "logical_file_bytes": 7481774
+      },
+      {
+        "path": "build/host-tests/chain-insertion-eol",
+        "logical_file_bytes": 4346
+      },
+      {
+        "path": "build/host-tests/gui-message-run-ci",
+        "logical_file_bytes": 1837168
+      },
+      {
+        "path": "build/host-tests/gui-message-lifecycle-ci",
+        "logical_file_bytes": 509243
+      },
+      {
+        "path": "build/host-tests/transition-effect-ci",
+        "logical_file_bytes": 839798
+      },
+      {
+        "path": "build/host-tests/transition-effect-eol-ci",
+        "logical_file_bytes": 4346
+      }
+    ],
+    "removed_files": [
+      ".analysis/gpt-6.1-sol/chain-insertion-codegen-20261022/supervisor-disassembly.txt"
+    ],
+    "retained": [
+      "full first actual-source cold snapshot",
+      "current second actual-source canonical carrier",
+      "compact private source model, strict receipts and baseline negative inventory/disassembly",
+      "local Ghidra read-only producer and compact facts; unresolved ownership evidence"
+    ],
+    "independent_D3D_files_preserved": 9,
+    "shared_provider_and_legacy_unknown_state": "untouched"
+  }
+}

@@ -23542,3 +23542,117 @@ offset = 264
 type = "DIR32"
 local = true
 target = 4496904
+
+# Chain insertion owners: complete target-derived field contracts.
+[units.chain-add-calc]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+functions = ["th10::Chain::AddToCalcChain"]
+symbol = "?AddToCalcChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+pdb_source = "src/Chain.cpp"
+target_address = 4496096
+size = 131
+[units.chain-add-calc.support_profiles]
+"src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+[[units.chain-add-calc.linkages]]
+offset = 25
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1612
+[[units.chain-add-calc.linkages]]
+offset = 31
+type = "DIR32"
+symbol = "__imp__EnterCriticalSection@4"
+target = 4612272
+[[units.chain-add-calc.linkages]]
+offset = 37
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1780
+[[units.chain-add-calc.linkages]]
+offset = 49
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1780
+[[units.chain-add-calc.linkages]]
+offset = 106
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1612
+[[units.chain-add-calc.linkages]]
+offset = 115
+type = "DIR32"
+symbol = "__imp__LeaveCriticalSection@4"
+target = 4612276
+[[units.chain-add-calc.linkages]]
+offset = 121
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1780
+[units.chain-add-draw]
+artifact_kind = "linked-pe"
+source = "src/ScriptViewer.cpp"
+support_sources = ["src/AnmManager.cpp", "src/Chain.cpp", "src/FrontEnd.cpp", "src/Player.cpp", "src/Gui.cpp", "src/Enemy.cpp", "src/BulletLifecycle.cpp", "src/InputState.cpp", "src/Main.cpp", "src/ScriptViewerWorker.cpp", "src/ScriptViewerLifecycle.cpp", "src/ItemManager.cpp", "src/AnmVmId.cpp"]
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/EHs"]
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+entry_symbol = "?ScriptViewerCreate@@YAPAUScriptViewerView@@XZ"
+harness = "unresolved-symbol-data-anchors-v1"
+output_dir = "build/match-linked/ScriptViewerLifecycle-cold-2"
+functions = ["th10::Chain::AddToDrawChain"]
+symbol = "?AddToDrawChain@Chain@th10@@SGHPAUChainElem@2@HPAU12@@Z"
+pdb_source = "src/Chain.cpp"
+target_address = 4496240
+size = 131
+[units.chain-add-draw.support_profiles]
+"src/Enemy.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL"]
+[[units.chain-add-draw.linkages]]
+offset = 25
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1612
+[[units.chain-add-draw.linkages]]
+offset = 31
+type = "DIR32"
+symbol = "__imp__EnterCriticalSection@4"
+target = 4612272
+[[units.chain-add-draw.linkages]]
+offset = 37
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1780
+[[units.chain-add-draw.linkages]]
+offset = 49
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1780
+[[units.chain-add-draw.linkages]]
+offset = 106
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1612
+[[units.chain-add-draw.linkages]]
+offset = 115
+type = "DIR32"
+symbol = "__imp__LeaveCriticalSection@4"
+target = 4612276
+[[units.chain-add-draw.linkages]]
+offset = 121
+type = "DIR32"
+symbol = "?g_MainSupervisorView@@3UMainSupervisorView@@A"
+target = 4791336
+addend = 1780

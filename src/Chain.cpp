@@ -59,8 +59,8 @@ __declspec(noinline) i32 __stdcall Chain::AddToCalcChain(ChainElem *elem, i32 pr
         result = elem->addedCallback(elem->arg);
         elem->addedCallback = NULL;
     }
-    EnterCriticalSection(&g_CriticalSections[0]);
-    g_ChainNestCounter++;
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    g_MainSupervisorView.criticalSectionLockCounts[0]++;
     {
         ListNode *cur;
         ListNode *node;
@@ -81,8 +81,8 @@ __declspec(noinline) i32 __stdcall Chain::AddToCalcChain(ChainElem *elem, i32 pr
         cur->next = node;
         node->prev = cur;
     }
-    LeaveCriticalSection(&g_CriticalSections[0]);
-    g_ChainNestCounter--;
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    g_MainSupervisorView.criticalSectionLockCounts[0]--;
     return result;
 }
 
@@ -95,8 +95,8 @@ __declspec(noinline) i32 __stdcall Chain::AddToDrawChain(ChainElem *elem, i32 pr
         result = elem->addedCallback(elem->arg);
         elem->addedCallback = NULL;
     }
-    EnterCriticalSection(&g_CriticalSections[0]);
-    g_ChainNestCounter++;
+    EnterCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    g_MainSupervisorView.criticalSectionLockCounts[0]++;
     {
         ListNode *cur;
         ListNode *node;
@@ -117,8 +117,8 @@ __declspec(noinline) i32 __stdcall Chain::AddToDrawChain(ChainElem *elem, i32 pr
         cur->next = node;
         node->prev = cur;
     }
-    LeaveCriticalSection(&g_CriticalSections[0]);
-    g_ChainNestCounter--;
+    LeaveCriticalSection(&g_MainSupervisorView.criticalSections[0]);
+    g_MainSupervisorView.criticalSectionLockCounts[0]--;
     return result;
 }
 
