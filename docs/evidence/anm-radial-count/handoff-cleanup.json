@@ -1,0 +1,189 @@
+{
+  "status": "completed",
+  "date": "2026-10-21",
+  "scope": "Operator-requested handoff cleanup after the frozen source passed105 CI checks; no new reconstruction experiment.",
+  "documentation": {
+    "file": "docs/RE_HANDOFF.md",
+    "lines_before": 837,
+    "lines_after": 176,
+    "change": "Replace repeated chronological measurements with current state, residuals, immutable evidence links, validation and recovery commands."
+  },
+  "previous_reclaimed_bytes": 5087074,
+  "additional_reclaimed_bytes": 14587901,
+  "total_reclaimed_file_bytes": 19674975,
+  "removed": [
+    {
+      "path": "build/host-tests",
+      "files": 134,
+      "bytes": 7539926,
+      "class": "reproducible-cache",
+      "producer": "scripts/ci.py and maintained host-test builders"
+    },
+    {
+      "path": "build/pycache",
+      "files": 374,
+      "bytes": 6939239,
+      "class": "reproducible-cache",
+      "producer": "scripts/ci.py PYTHONPYCACHEPREFIX"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/adopted-case2-diff.txt",
+      "files": 1,
+      "bytes": 536,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/canonical-case2-diff.txt",
+      "files": 1,
+      "bytes": 536,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-case2-diff.txt",
+      "files": 1,
+      "bytes": 536,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags-case2-diff.txt",
+      "files": 1,
+      "bytes": 556,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/adopted-candidate-case2.txt",
+      "files": 1,
+      "bytes": 13335,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/adopted-target-case2.txt",
+      "files": 1,
+      "bytes": 13308,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/canonical-candidate-case2.txt",
+      "files": 1,
+      "bytes": 13335,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/canonical-target-case2.txt",
+      "files": 1,
+      "bytes": 13308,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-candidate-case2.txt",
+      "files": 1,
+      "bytes": 13335,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags-candidate-case2.txt",
+      "files": 1,
+      "bytes": 13335,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags-target-case2.txt",
+      "files": 1,
+      "bytes": 13308,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-target-case2.txt",
+      "files": 1,
+      "bytes": 13308,
+      "class": "session-scratch",
+      "producer": "current campaign inspect-case2.py"
+    }
+  ],
+  "retained": [
+    "current actual eleven-TU link",
+    "current canonical ten-TU link",
+    "canonical two-TU range-helper link",
+    "combined radial-flags failure source and native link",
+    "source overlays, current reports, hash manifests and CI logs",
+    "historical producer-dependent carriers",
+    "unclassified older analysis and provider state"
+  ],
+  "independent_work": "All9 pre-existing untracked D3D evidence files preserved byte-for-byte and excluded from this checkpoint.",
+  "limits": "Logical file sizes, not a filesystem free-space guarantee. Unclassified legacy artifacts and provider state were preserved. Earlier source/native validation remains in validation-summary.json; subsequent changes are documentation and ignored-artifact lifecycle only.",
+  "post_cleanup_verification": {
+    "status": "passed",
+    "steps": [
+      {
+        "command": [
+          "scripts/repo-python",
+          "scripts/verify-toolchain.py",
+          "--check"
+        ],
+        "exit_code": 0,
+        "output_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+      },
+      {
+        "command": [
+          "scripts/repo-python",
+          "scripts/validate-tracking.py",
+          "--require-target"
+        ],
+        "exit_code": 0,
+        "output_sha256": "dcdaafa82734bb2a75b2d05f5fbbf757f05eba26f00b12c621e5866374e35b3b"
+      },
+      {
+        "command": [
+          "scripts/repo-python",
+          "scripts/progress.py",
+          "--check"
+        ],
+        "exit_code": 0,
+        "output_sha256": "d9c37039657cc0a1a10d8f7a205617b4eaf5851f9e7572226287bc7e5e4aa423"
+      },
+      {
+        "command": [
+          "scripts/repo-python",
+          "scripts/check-doc-hygiene.py"
+        ],
+        "exit_code": 0,
+        "output_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "current_contexts": {
+      "adopted": {
+        "source_inputs": 33,
+        "native_artifacts": 16
+      },
+      "canonical": {
+        "source_inputs": 32,
+        "native_artifacts": 15
+      }
+    },
+    "selected_failure_artifacts": 16,
+    "range_native_artifacts": 7,
+    "independent_d3d_files_unchanged": 9,
+    "frozen_ci_log_identity": "105-check passed log matches validation-summary.json; no source change afterward",
+    "inventory_change": "43EE30 notes only; exact ledgers/counts/recipes unchanged"
+  }
+}

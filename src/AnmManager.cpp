@@ -3760,16 +3760,22 @@ stop:
 
     if (vm->renderMode == 9)
     {
-        int segmentCount = vm->intVar0 - 1;
-        float angleValue = vm->rotation.z;
-        float angleStep = 6.2831855f / segmentCount;
-        AnmRenderVertexView *vertex =
-            static_cast<AnmRenderVertexView *>(vm->generatedVertices);
-        float textureV = 0.0f;
-        float textureStep =
-            static_cast<float>(vm->intVar1) / segmentCount;
+        int vertexCount;
+        float textureV;
+        float angleValue;
+        AnmRenderVertexView *vertex;
+        float angle;
+        float textureStep;
+        int vertexIndex;
 
-        for (int i = 0; i < segmentCount; ++i)
+        vertexCount = vm->intVar0;
+        angleValue = vm->rotation.z;
+        angle = 6.2831855f / (vertexCount - 1);
+        vertex = static_cast<AnmRenderVertexView *>(vm->generatedVertices);
+        textureV = 0.0f;
+        textureStep = static_cast<float>(vm->intVar1) / (vertexCount - 1);
+
+        for (vertexIndex = 0; vertexIndex < vertexCount - 1; ++vertexIndex)
         {
             vertex[0].rhw = 1.0f;
             vertex[0].diffuse.value = vm->primaryColor.value;
@@ -3796,7 +3802,7 @@ stop:
             ++vertex;
 
             textureV += textureStep;
-            angleValue = AddNormalizeAngle(angleValue, angleStep);
+            angleValue = AddNormalizeAngle(angleValue, angle);
         }
 
         vertex[0] = static_cast<AnmRenderVertexView *>(

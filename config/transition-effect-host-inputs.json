@@ -5,7 +5,7 @@
   "sha256_lf": {
     "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
     "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
-    "src/AnmManager.cpp": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
+    "src/AnmManager.cpp": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
     "src/AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15",
@@ -276,5 +276,31 @@
     "whole_file_reversal_verified": true,
     "unchanged_extracted_rng_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
     "evidence": "docs/evidence/main-screenshot-context/README.md"
+  },
+  "reviewed_radial_count_update": {
+    "date": "2026-10-21",
+    "starting_head": "f434a48bab06034e7a7620fe507c75bea596ed44",
+    "evidence": "docs/evidence/anm-radial-count/README.md",
+    "input": "src/AnmManager.cpp",
+    "reason": "Only unrelated ExecuteScript radial locals/bounds changed; the exact host-extracted range helper and all six other dependency files remain LF-byte-identical. Strict EOL/hash rejection and fixture algorithms remain unchanged.",
+    "old_cpp_sha256_lf": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
+    "new_cpp_sha256_lf": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
+    "new_cpp_sha256_raw": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+    "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+    "unchanged_other_dependencies": {
+      "Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
+      "Rng.hpp": "fac62da48e3fc475d488c987e32ff6856c1d2776b7e311565231ae59bbd70f3d",
+      "RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15"
+    },
+    "native_replay": {
+      "unit": "anm-random-u32-in-range",
+      "result": "exact",
+      "bytes": 88,
+      "raw_equal": true,
+      "image_sha256": "218c8ac42f573e9c34bf15de24f898ef15f77acd23af9cd99b157d109295b7d2"
+    }
   }
 }

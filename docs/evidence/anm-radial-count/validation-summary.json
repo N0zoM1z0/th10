@@ -1,0 +1,239 @@
+{
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "bd3d36fdf6ab0bc62e3ba627689fdac03480fb81df090cefd9a668981414e48e"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "0ff6addd1f2d537ee017b339ffcead26f15f38f101027d1293b9caf93ae1fdc4"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ci_checks": 105,
+  "focused_canonical_scope": {
+    "full_colds": 2,
+    "units": [
+      "enemy-drop-item-counts",
+      "enemy-drop-item-counts-core",
+      "enemy-finalize-death",
+      "enemy-cancel-bullet-record",
+      "enemy-cancel-bullet-pattern"
+    ],
+    "additional_same_image_guards": {
+      "owners": 35,
+      "bytes": 4424,
+      "fields": 118
+    },
+    "total_units": 6,
+    "dependency_unit": "anm-random-u32-in-range",
+    "scope_note": "One full ten-TU artifact for5 primary units; one distinct full two-TU artifact for the affected88-byte host dependency. Not two repeated full-root contexts."
+  },
+  "actual_native_guards": {
+    "owners": 46,
+    "bytes": 5335,
+    "fields": 142
+  },
+  "canonical_native_guards": {
+    "owners": 35,
+    "bytes": 4424,
+    "fields": 118
+  },
+  "source_and_artifact_pins": "all current33/32 source inputs and16/15 native artifacts plus retained combined-control source/native artifacts pass",
+  "source_changes": [
+    "src/AnmManager.cpp render-mode9 declarations/count expressions only"
+  ],
+  "inventory_changed_fields": [
+    [
+      "0x0043EE30",
+      "notes"
+    ]
+  ],
+  "exact_unit_or_byte_credit": 0,
+  "match_boundary_origin_source_ledgers_and_recipes": "unchanged",
+  "svg": "visible135.28px/512px;26.42% provisional",
+  "absolute_memory_audit": {
+    "cases": 92,
+    "paired": 45,
+    "literals": 21,
+    "bound_globals": 9,
+    "reviewed_vector_fields": 15,
+    "anchor_name_collisions": 10,
+    "mismatches": 0,
+    "unknowns": 0
+  },
+  "host_pin_recovery": {
+    "initial_ci": "terminal failure at strict whole-file AnmManager.cpp LF pin after the source update",
+    "review": {
+      "reason": "Only unrelated ExecuteScript radial locals/bounds changed; the exact host-extracted range helper and all six other dependency files remain LF-byte-identical. Strict EOL/hash rejection and fixture algorithms remain unchanged.",
+      "old_cpp_sha256_lf": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
+      "new_cpp_sha256_lf": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
+      "new_cpp_sha256_raw": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+      "unchanged_other_dependencies": {
+        "Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
+        "Rng.hpp": "fac62da48e3fc475d488c987e32ff6856c1d2776b7e311565231ae59bbd70f3d",
+        "RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15"
+      },
+      "native_replay": {
+        "unit": "anm-random-u32-in-range",
+        "result": "exact",
+        "bytes": 88,
+        "raw_equal": true,
+        "image_sha256": "218c8ac42f573e9c34bf15de24f898ef15f77acd23af9cd99b157d109295b7d2"
+      }
+    },
+    "config": "config/transition-effect-host-inputs.json",
+    "config_sha256": "f4340e8153b3e662ca3cbd93b6f641b3dc76cdae75b6f73ff2c4a2887bdeb40a",
+    "baseline_assertions": 843,
+    "eol_pin_tests": "19/19",
+    "range_recipe": {
+      "artifact_kind": "linked-pe",
+      "source": "src/AnmManager.cpp",
+      "support_sources": [
+        "src/RandomMath.cpp"
+      ],
+      "output_dir": "build/match-linked/AnmRandomU32InRange",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "functions": [
+        "AnmRandomU32InRange"
+      ],
+      "symbol": "?AnmRandomU32InRange@@YIIPAURngView@@I@Z",
+      "target_address": 4443008,
+      "size": 88,
+      "linkages": []
+    },
+    "range_result": {
+      "artifact_count": 1,
+      "groups": [
+        {
+          "artifact": "build/match-linked/AnmRandomU32InRange",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "anm-random-u32-in-range",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "source": "src/AnmManager.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00401400",
+              "capstone_version": "5.0.6",
+              "compared_size": 88,
+              "data_spans": [],
+              "decoded_bytes": 88,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/AnmRandomU32InRange/source.exe",
+              "image_sha256": "218c8ac42f573e9c34bf15de24f898ef15f77acd23af9cd99b157d109295b7d2",
+              "linkages": [],
+              "matched_bytes": 88,
+              "matched_compared_bytes": 88,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "7dc17f70d8c5f744a519a19ca3ad6d2e",
+              "pdb_module_index": 1,
+              "raw_equal": true,
+              "result": "exact",
+              "returncode": 0,
+              "size": 88,
+              "symbol": "?AnmRandomU32InRange@@YIIPAURngView@@I@Z",
+              "target_address": "0x0043CB80",
+              "unit": "anm-random-u32-in-range"
+            }
+          ]
+        }
+      ],
+      "matched_bytes": 88,
+      "result": "exact",
+      "source_count": 1,
+      "unit_count": 1
+    },
+    "artifact_sha256": {
+      "build/match-linked/AnmRandomU32InRange/source.map": "3c26dab8e0a1e1a6de449cb2cfae7da0531be8f84b4d7209b914136035ba3119",
+      "build/match-linked/AnmRandomU32InRange/source.exe": "218c8ac42f573e9c34bf15de24f898ef15f77acd23af9cd99b157d109295b7d2",
+      "build/match-linked/AnmRandomU32InRange/source.ltcg.obj": "ab05de43ee8727cb7d7e0d2cee732b0cce0740842bb27d16909de2b22464a7bf",
+      "build/match-linked/AnmRandomU32InRange/support-00-RandomMath.ltcg.obj": "9c3280e048c5875ee05d1a7689f12f88beef029438099b1f49984b715ebf064c",
+      "build/match-linked/AnmRandomU32InRange/link-aliases.rsp": "4feb7372b54dc1fbed38aa2c504158e6e360117f6f22ea3738ee5e67d09479e2",
+      "build/match-linked/AnmRandomU32InRange/link-anchors.obj": "3152f5b39d4f2d7b590ceb1792a92462cc1a24856b842a83cbfb09ed881111bd",
+      "build/match-linked/AnmRandomU32InRange/source.pdb": "3932b7ce688501730a54e4a2ca79fd01d3389930531d274f3dfe338368534a2c"
+    },
+    "policy": "Exactly one LF file pin refreshed; original strict normalization/rejection, host extraction/adaptations and assertions unchanged. Observed raw provenance in prior pin metadata remains historical."
+  },
+  "cleanup_reclaimed_bytes": 5087074,
+  "limits": "All3 original large functions remain nonexact. No partial-case exactness, original-source/owner/profile claim, product/runtime/semantic/port gate closure."
+}

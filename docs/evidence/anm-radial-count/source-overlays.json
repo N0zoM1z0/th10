@@ -1,0 +1,57 @@
+{
+  "base_commit": "f434a48bab06034e7a7620fe507c75bea596ed44",
+  "baseline_source_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+  "method": "Each independent exact-one CRLF replacement applies to src/AnmManager.cpp at the base commit. All3 controls compiled; only radial-declarations adopted.",
+  "variants": {
+    "original-vertex-count": {
+      "base_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "candidate_sha256": "e07e2108facadcd6d3b2a0fa793a33b9f1c9eba0b5ca2d2f45bcf59943b7543a",
+      "edits": [
+        {
+          "old": "        int segmentCount = vm->intVar0 - 1;",
+          "new": "        int vertexCount = vm->intVar0;\r\n        int segmentCount = vertexCount - 1;"
+        },
+        {
+          "old": "        for (int i = 0; i < segmentCount; ++i)",
+          "new": "        for (int i = 1; i < vertexCount; ++i)"
+        }
+      ]
+    },
+    "radial-declarations": {
+      "base_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "candidate_sha256": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "edits": [
+        {
+          "old": "        int segmentCount = vm->intVar0 - 1;\r\n        float angleValue = vm->rotation.z;\r\n        float angleStep = 6.2831855f / segmentCount;\r\n        AnmRenderVertexView *vertex =\r\n            static_cast<AnmRenderVertexView *>(vm->generatedVertices);\r\n        float textureV = 0.0f;\r\n        float textureStep =\r\n            static_cast<float>(vm->intVar1) / segmentCount;\r\n\r\n        for (int i = 0; i < segmentCount; ++i)",
+          "new": "        int vertexCount;\r\n        float textureV;\r\n        float angleValue;\r\n        AnmRenderVertexView *vertex;\r\n        float angle;\r\n        float textureStep;\r\n        int vertexIndex;\r\n\r\n        vertexCount = vm->intVar0;\r\n        angleValue = vm->rotation.z;\r\n        angle = 6.2831855f / (vertexCount - 1);\r\n        vertex = static_cast<AnmRenderVertexView *>(vm->generatedVertices);\r\n        textureV = 0.0f;\r\n        textureStep = static_cast<float>(vm->intVar1) / (vertexCount - 1);\r\n\r\n        for (vertexIndex = 0; vertexIndex < vertexCount - 1; ++vertexIndex)"
+        },
+        {
+          "old": "            angleValue = AddNormalizeAngle(angleValue, angleStep);",
+          "new": "            angleValue = AddNormalizeAngle(angleValue, angle);"
+        }
+      ]
+    },
+    "radial-declarations-flags": {
+      "base_sha256": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+      "candidate_sha256": "ef6e2cfc6c4034ab5243a3050ff32c2239f8cfa444a838578993f267f86de3a7",
+      "edits": [
+        {
+          "old": "        int segmentCount = vm->intVar0 - 1;\r\n        float angleValue = vm->rotation.z;\r\n        float angleStep = 6.2831855f / segmentCount;\r\n        AnmRenderVertexView *vertex =\r\n            static_cast<AnmRenderVertexView *>(vm->generatedVertices);\r\n        float textureV = 0.0f;\r\n        float textureStep =\r\n            static_cast<float>(vm->intVar1) / segmentCount;\r\n\r\n        for (int i = 0; i < segmentCount; ++i)",
+          "new": "        int vertexCount;\r\n        float textureV;\r\n        float angleValue;\r\n        AnmRenderVertexView *vertex;\r\n        float angle;\r\n        float textureStep;\r\n        int vertexIndex;\r\n\r\n        vertexCount = vm->intVar0;\r\n        angleValue = vm->rotation.z;\r\n        angle = 6.2831855f / (vertexCount - 1);\r\n        vertex = static_cast<AnmRenderVertexView *>(vm->generatedVertices);\r\n        textureV = 0.0f;\r\n        textureStep = static_cast<float>(vm->intVar1) / (vertexCount - 1);\r\n\r\n        for (vertexIndex = 0; vertexIndex < vertexCount - 1; ++vertexIndex)"
+        },
+        {
+          "old": "            angleValue = AddNormalizeAngle(angleValue, angleStep);",
+          "new": "            angleValue = AddNormalizeAngle(angleValue, angle);"
+        },
+        {
+          "old": "            vm->flags35C = (vm->flags35C ^ (1u << 9)) | 8u;",
+          "new": "            vm->flags35C ^= 1u << 9;\r\n            vm->flags35C |= 8u;"
+        },
+        {
+          "old": "            vm->flags35C = (vm->flags35C ^ (1u << 10)) | 8u;",
+          "new": "            vm->flags35C ^= 1u << 10;\r\n            vm->flags35C |= 8u;"
+        }
+      ]
+    }
+  }
+}

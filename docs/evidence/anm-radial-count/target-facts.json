@@ -1,0 +1,67 @@
+{
+  "acceptance_authority": "none",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text": {
+    "start": "0x401000",
+    "end_inclusive": "0x465A80",
+    "bytes": 412289,
+    "sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "unchanged": true
+  },
+  "ghidra": {
+    "transport": "direct local read-only/noanalysis",
+    "cpu": 1,
+    "heap_mib": 768,
+    "transaction": "rollback",
+    "review_entry": "0x43EE30"
+  },
+  "counter": {
+    "input_load": "0x441175",
+    "derived_count": "0x44117B",
+    "target_form": "LEA ESI,[EAX-1]",
+    "test": "0x44117E",
+    "integer_spill": "0x441180",
+    "fild": "0x441184",
+    "loop_back_edge": "0x441302",
+    "decrement": "0x4412FD",
+    "candidate_before": "DEC EAX; TEST EAX,EAX; spill EAX; later MOV ESI,EAX",
+    "candidate_after": "Same ordinary setup instruction sequence as target in both current10/11-TU graphs; delayed copy removed"
+  },
+  "remaining_common_interval": {
+    "opcodes": [
+      2
+    ],
+    "target_size": 1441,
+    "candidate_size": 1440,
+    "alignment": {
+      "target": "13-byte unreachable loop alignment",
+      "candidate": "12-byte alternative alignment/jump sequence"
+    },
+    "slow_tick": {
+      "target_address": "0x441377",
+      "target": "FLD [ECX]; FADD [EBP+64]",
+      "candidate": "FLD [EBP+64]; FADD [ECX]"
+    },
+    "scope": "After diagnostic address exclusion and instruction-sequence alignment, only these ordinary differences remain in this physical common interval; calls/data/control identities are not thereby exhaustively established."
+  },
+  "rejected_flag_combination": {
+    "counter": "still matches",
+    "slow_tick": "target load order recovered",
+    "radial_z": "now reversed versus target at4412C8/4412CE; no adoption"
+  },
+  "data_audit": {
+    "counts": {
+      "cases": 92,
+      "paired": 45,
+      "literals": 21,
+      "bound_globals": 9,
+      "reviewed_vector_fields": 15,
+      "anchor_name_collisions": 10,
+      "mismatches": 0,
+      "unknowns": 0
+    },
+    "output_sha256": "f9619757454a660a46d878272fa5ee663054ad034ebb363ab96820945e7e8e7e",
+    "producer_sha256": "b0c2395563495a39f189971c899974bc33c5158e8b3d379e9a125f7ba3f362cd",
+    "scope": "Ordered absolute-memory operands inside92 case spans only; preserves reviewed491C14/491E6C field addends despite4-byte data-anchor aliasing. Excludes prologue/calls/immediate addresses/tables/indexed memory.21 literal references in read-only rdata match actual payloads; no exactness/data-owner/runtime credit."
+  }
+}

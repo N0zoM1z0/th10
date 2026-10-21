@@ -1,0 +1,1117 @@
+{
+  "scope": "Source-only counter/declaration reconstruction improves target radial setup; whole ANM remains nonexact. Three independent private controls, actual-source eleven-TU recompile and one full canonical ten-TU cold.",
+  "base_commit": "f434a48bab06034e7a7620fe507c75bea596ed44",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "canonical_manifest_sha256": "b90b114bc53bafa0379db6b3cb5765e8f8079fb92565548d8e683c4f62cadf3c",
+  "current_contexts": {
+    "adopted": {
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.cpp": "7d3eadeea972ed7900f2f62cf427f7b8ac4aa18e7392bd02db77843a13f8dc55",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\support-01-AnmManager.ltcg.obj",
+          "sha256": "4c0211346ebc53a936ddb8228c9efe887c36ab62642b9e629fdd7952eb77f92a",
+          "raw_sha256": "4c0211346ebc53a936ddb8228c9efe887c36ab62642b9e629fdd7952eb77f92a"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/source.map": "e19adfc8c5412a28c6af73c60bc75fe987e3398ed187fcf974f63af67d23a9f3",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/source.exe": "c2ba6a70bee7fa1846736467d7046d2d6548a851f355fb42564e7a9167488b92",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/source.pdb": "c2d5ff682a1f8830c72fd6e9fd95b27fccd56638f5959959000a5d1240c065a3",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/adopted/support-01-AnmManager.ltcg.obj": "0678c2fc75f9be8e3be75612c0abb5379de257cce0c9163b2dca8d660f2bc6a4"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_fields": 62,
+        "callee_guard": "exact"
+      }
+    },
+    "canonical": {
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/match-linked/EnemyItemDrops",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "owner_visibility": "static",
+        "pdb_source": "src/EnemyEclDispatcher.cpp",
+        "functions": [
+          "EnemyDropItemCounts"
+        ],
+        "symbol": "?EnemyDropItemCounts@@YAXPBUPlayerFloat3@@PAH@Z",
+        "target_address": 4245920,
+        "size": 48,
+        "linkages": [
+          {
+            "offset": 23,
+            "type": "DIR32",
+            "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+            "target": 4683800
+          },
+          {
+            "offset": 30,
+            "type": "REL32",
+            "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+            "target": 4307712
+          },
+          {
+            "offset": 36,
+            "type": "REL32",
+            "symbol": "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z",
+            "target": 4245968
+          }
+        ]
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9B0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51632,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+          "sha256": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b",
+          "raw_sha256": "81395c638ec49831c4f891eb9724fda1239b66b965b3906b3918637bf4ef093b"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D00",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23808,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-00-EclVm.ltcg.obj",
+          "sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+          "raw_sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+          "sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42",
+          "raw_sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+        }
+      },
+      "artifacts": {
+        "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "4f8e3359b7a53e56deaca2e9121fd5ebee92c1e1de596dd3b3575130c1c5a056",
+        "build/match-linked/EnemyItemDrops/source.map": "3400a754dd182fb8be85fbf69e2ae41a71e37f59602c30e8d3ee496561dd3b82",
+        "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "7ce62cb35e03783b4691e466807fec6bc1c05192317348ded881a6e21bf4e993",
+        "build/match-linked/EnemyItemDrops/source.exe": "b652c3c81e356f05ec9eb6cd9c988f73476675ad29451f4122b3764a76af8823",
+        "build/match-linked/EnemyItemDrops/source.ltcg.obj": "45972218dfbe7014009a5fad6837d921b96ee8a43eb0cddec50d710896ef7016",
+        "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "28259347c6bc3c37fc5f24e3b2d4f228d46382774683dd7f4d9c1fd44b6f79a8",
+        "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "9d223caa9aabab439bcbdc0dbc638a5dc7094d2be546be5eff9c967f92eadee6",
+        "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "5cccdf5aeceea97164e167ba95875bcd50b7f6fe3546c2f12fd7817a6606d3e7",
+        "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "2613f1f2f11c94fab7228a0a352eea114d072bbb0417d616729abf98ab34e730",
+        "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "31c6e0ea0d25304986d246aed52208d5ce2a676e36b6266de1021be35a922945",
+        "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+        "build/match-linked/EnemyItemDrops/link-anchors.obj": "0d881dcdbbefb8744a787898a5ffc7b57486d57bff55465cb6f3cfc6c9c35fb8",
+        "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "3741859ea8444949e64deffa082729572a050aa24ad2ec62a1f79f52a3f404d3",
+        "build/match-linked/EnemyItemDrops/source.pdb": "41524aedfe5e054e2618d0b0034d4febd02d6f073e822acf123932ff0b18cdd3",
+        "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "433c1e146920d717aa8530a9c79efe0e8fb737055736b0c447ca7fd60e200a0a"
+      },
+      "guard_summary": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "fields": 189,
+        "local_fields": 62,
+        "callee_guard": "exact"
+      }
+    }
+  },
+  "controls": [
+    {
+      "name": "original-vertex-count",
+      "adopted": false,
+      "candidate_source_sha256": "e07e2108facadcd6d3b2a0fa793a33b9f1c9eba0b5ca2d2f45bcf59943b7543a",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\original-vertex-count\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\original-vertex-count\\support-01-AnmManager.ltcg.obj",
+          "sha256": "b2fc1ca221cabc8588770b36d041ec690eff16d91b2a21b88fe33e526e8c5c35",
+          "raw_sha256": "b2fc1ca221cabc8588770b36d041ec690eff16d91b2a21b88fe33e526e8c5c35"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\original-vertex-count\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\original-vertex-count\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\original-vertex-count\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\original-vertex-count\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/source.map": "31c2b3cf51f23df5b921792564e590fd569a4b3b416433432fdedd05637db291",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/source.exe": "f09405db6d3ba244fb1071d501a8100be7e809a4b8fa41d27ea14c4162d35cbd",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/source.pdb": "69ab8541079a2a40adc5377a6fd5243d403ec3894138ab085840ac117cc9d128",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count/support-01-AnmManager.ltcg.obj": "24ac56dd2ef72ac4b9fcb62f23b2cd7ae9a77a34d74f7b2ea1c29b73baaee17b"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7475,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "artifact_status": "terminal native directory pruned; positive source retained and actual-source bodies reproduce it"
+    },
+    {
+      "name": "radial-declarations",
+      "adopted": true,
+      "candidate_source_sha256": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations\\support-01-AnmManager.ltcg.obj",
+          "sha256": "4c0211346ebc53a936ddb8228c9efe887c36ab62642b9e629fdd7952eb77f92a",
+          "raw_sha256": "4c0211346ebc53a936ddb8228c9efe887c36ab62642b9e629fdd7952eb77f92a"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/source.map": "b2cfff96c75552df2c827ba9570788c77c2c1e9767ac2d58582931b3b98e7bcf",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/source.exe": "15012068ddc19f7146daaddf2e62b42535150689705a299613208887f5f13889",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/source.pdb": "0358f2a037401285e68f0bcee6c732f440d2438817c85921348f1454965a19ca",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations/support-01-AnmManager.ltcg.obj": "d9a927ce7e8f613606d3675d9a9acd923b3859a5d7609464bc6ab3325e64d44c"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7541,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "artifact_status": "terminal native directory pruned; positive source retained and actual-source bodies reproduce it"
+    },
+    {
+      "name": "radial-declarations-flags",
+      "adopted": false,
+      "candidate_source_sha256": "ef6e2cfc6c4034ab5243a3050ff32c2239f8cfa444a838578993f267f86de3a7",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations-flags\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations-flags\\support-01-AnmManager.ltcg.obj",
+          "sha256": "839835eec4482c782703dee098dcf0bb87ed1d1562aec4465435b7fc16290a2d",
+          "raw_sha256": "839835eec4482c782703dee098dcf0bb87ed1d1562aec4465435b7fc16290a2d"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations-flags\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations-flags\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations-flags\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\radial-declarations-flags\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/source.map": "cc497c8225bad9d9a663a696f43a871b75bf54b67189a776761d98a9886823ac",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/source.exe": "6083f7d2ec3d9e83469542403fb9d325d10b70e196a2d13c1484749b03349e44",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/source.pdb": "71d70b2802967735970fb3427b94fadb6e7fb9877eacc266ffad0d6708dd9fcd",
+        "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-flags/support-01-AnmManager.ltcg.obj": "91c163629deb8dd87811c4365a74ebe80173be06c299142995c9d988c0311bf4"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7540,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "artifact_status": "retained current coupling failure"
+    }
+  ],
+  "prepared_not_executed": [
+    "original-count-expressions"
+  ],
+  "adoption_native_equality": {
+    "scope": "Complete private-candidate versus maintained-source native equality; no target exactness claim.",
+    "owners": {
+      "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+      "?Run@EclVmContext@@QAEHM@Z": true,
+      "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+    },
+    "raw_bodies": {
+      "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "address": "0x0040D9D0",
+        "size": 9964,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51664,
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\support-01-AnmManager.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\support-01-AnmManager.ltcg.obj",
+        "sha256": "4c0211346ebc53a936ddb8228c9efe887c36ab62642b9e629fdd7952eb77f92a",
+        "raw_sha256": "4c0211346ebc53a936ddb8228c9efe887c36ab62642b9e629fdd7952eb77f92a"
+      },
+      "?Run@EclVmContext@@QAEHM@Z": {
+        "symbol": "?Run@EclVmContext@@QAEHM@Z",
+        "address": "0x00406D20",
+        "size": 7020,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 23840,
+        "map_object": "support-00-EclVm.ltcg.obj",
+        "pdb_module_index": 2,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\support-00-EclVm.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\support-00-EclVm.ltcg.obj",
+        "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+        "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+      },
+      "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+        "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "address": "0x00402830",
+        "size": 14352,
+        "extent_source": "pdb-section-contribution",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 6192,
+        "map_object": "source.ltcg.obj",
+        "pdb_module_index": 4,
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\source.ltcg.obj",
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-vertex-count-20261021\\adopted\\source.ltcg.obj",
+        "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+        "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+      }
+    }
+  },
+  "source_changes": [
+    "Only the render-mode9 local declarations/count expressions and angular-step identifier in AnmManager.cpp; no header/API/layout/compiler-profile/entry changes."
+  ],
+  "adjacent_hypothesis": {
+    "scope": "Adjacent-game hypothesis only; no TH10 byte/layout/owner or runtime proof",
+    "source": "/home/pentester/coding/codex_ida/th095-reconstruction/th095/src/AnmManager.cpp",
+    "sha256": "465d68404a2634c81bb7063a8067442d171e10518b5d235b8c9fe9d49d0dc349",
+    "head": "e4113fbc370972e2b59f32d1d313ea50f3502411",
+    "source_status": "",
+    "observed_shape": "Original mesh vertex count; locals declared before assignments; coefficient and loop use count minus one; short angular step name. TH095 final-V write and position callback are not adopted."
+  },
+  "absolute_memory_audit": {
+    "counts": {
+      "cases": 92,
+      "paired": 45,
+      "literals": 21,
+      "bound_globals": 9,
+      "reviewed_vector_fields": 15,
+      "anchor_name_collisions": 10,
+      "mismatches": 0,
+      "unknowns": 0
+    },
+    "output_sha256": "f9619757454a660a46d878272fa5ee663054ad034ebb363ab96820945e7e8e7e",
+    "producer_sha256": "b0c2395563495a39f189971c899974bc33c5158e8b3d379e9a125f7ba3f362cd",
+    "scope": "Ordered absolute-memory operands inside92 case spans only; preserves reviewed491C14/491E6C field addends despite4-byte data-anchor aliasing. Excludes prologue/calls/immediate addresses/tables/indexed memory.21 literal references in read-only rdata match actual payloads; no exactness/data-owner/runtime credit."
+  },
+  "canonical_replay_scope": {
+    "full_colds": 2,
+    "units": [
+      "enemy-drop-item-counts",
+      "enemy-drop-item-counts-core",
+      "enemy-finalize-death",
+      "enemy-cancel-bullet-record",
+      "enemy-cancel-bullet-pattern"
+    ],
+    "additional_same_image_guards": {
+      "owners": 35,
+      "bytes": 4424,
+      "fields": 118
+    },
+    "total_units": 6,
+    "dependency_unit": "anm-random-u32-in-range",
+    "scope_note": "One full ten-TU artifact for5 primary units; one distinct full two-TU artifact for the affected88-byte host dependency. Not two repeated full-root contexts."
+  },
+  "limitations": [
+    "Whole ANM9964 still nonexact; ordinary positional7478->7541/7995 is diagnostic only",
+    "No new exact function/case/byte claim",
+    "Source declaration order, variable identities/names and loop expressions changed together; cause is not uniquely isolated",
+    "TH095 declarations/loop are hypotheses only; TH095 closing-V quirk and callback are not adopted",
+    "Original source class/TU/production profile/data owners/runtime remain unknown; product/semantic/port gates remain open"
+  ],
+  "inventory_note_sha256": "f46e7915df397f8a8c8c0bb3e4fcdf666bc67d42fb1c902151c7dedaf0d30958",
+  "cleanup": {
+    "reclaimed_bytes": 5087074,
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count",
+        "bytes": 1192871
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count",
+        "bytes": 217593
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count-structural.json",
+        "bytes": 484518
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count-guards.json",
+        "bytes": 92016
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/original-vertex-count-guards.toml",
+        "bytes": 69097
+      },
+      {
+        "path": "build/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations",
+        "bytes": 1192860
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-structural.json",
+        "bytes": 484502
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-guards.json",
+        "bytes": 91922
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/anm-vertex-count-20261021/radial-declarations-guards.toml",
+        "bytes": 68891
+      },
+      {
+        "path": "build/gpt-6.1-sol/anm-flip-copy-20261021/flip-split-flags",
+        "bytes": 1192804
+      }
+    ],
+    "retained": "Current canonical ten-TU and actual-source eleven-TU baselines, positive source, combined-flags failure image/MAP/PDB/source and reproducible overlays. Older split-flags image superseded. Independent D3D work untouched."
+  },
+  "host_pin_recovery": {
+    "initial_ci": "terminal failure at strict whole-file AnmManager.cpp LF pin after the source update",
+    "review": {
+      "reason": "Only unrelated ExecuteScript radial locals/bounds changed; the exact host-extracted range helper and all six other dependency files remain LF-byte-identical. Strict EOL/hash rejection and fixture algorithms remain unchanged.",
+      "old_cpp_sha256_lf": "875e79ef33824fb599d01245e9f47d8924d5595a90696799ae66ee6700adae51",
+      "new_cpp_sha256_lf": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
+      "new_cpp_sha256_raw": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "unchanged_extracted_range_helper_sha256": "4c05abf3c1f5e0d169264b10f8de0a916d49144c1dc077d7827f26797149fbd1",
+      "unchanged_other_dependencies": {
+        "Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
+        "Rng.hpp": "fac62da48e3fc475d488c987e32ff6856c1d2776b7e311565231ae59bbd70f3d",
+        "RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "AnmRectangle.hpp": "7eeb70da9786280db71e3a3db66fe07efa420489bc4259333337106a4e49fe15"
+      },
+      "native_replay": {
+        "unit": "anm-random-u32-in-range",
+        "result": "exact",
+        "bytes": 88,
+        "raw_equal": true,
+        "image_sha256": "218c8ac42f573e9c34bf15de24f898ef15f77acd23af9cd99b157d109295b7d2"
+      }
+    },
+    "config": "config/transition-effect-host-inputs.json",
+    "config_sha256": "f4340e8153b3e662ca3cbd93b6f641b3dc76cdae75b6f73ff2c4a2887bdeb40a",
+    "baseline_assertions": 843,
+    "eol_pin_tests": "19/19",
+    "range_recipe": {
+      "artifact_kind": "linked-pe",
+      "source": "src/AnmManager.cpp",
+      "support_sources": [
+        "src/RandomMath.cpp"
+      ],
+      "output_dir": "build/match-linked/AnmRandomU32InRange",
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "link_profile": [
+        "/ltcg",
+        "/nodefaultlib",
+        "/subsystem:console",
+        "/incremental:no",
+        "/fixed:no",
+        "/base:0x00400000",
+        "/debug",
+        "/debugtype:cv",
+        "/opt:noref",
+        "/opt:noicf",
+        "/safeseh:no"
+      ],
+      "harness": "unresolved-symbol-data-anchors-v1",
+      "entry_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+      "functions": [
+        "AnmRandomU32InRange"
+      ],
+      "symbol": "?AnmRandomU32InRange@@YIIPAURngView@@I@Z",
+      "target_address": 4443008,
+      "size": 88,
+      "linkages": []
+    },
+    "range_result": {
+      "artifact_count": 1,
+      "groups": [
+        {
+          "artifact": "build/match-linked/AnmRandomU32InRange",
+          "artifact_kind": "linked-pe",
+          "build_returncode": 0,
+          "build_unit": "anm-random-u32-in-range",
+          "cold_driver": "scripts/ltcg_link.py:cold_link",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "source": "src/AnmManager.cpp",
+          "units": [
+            {
+              "artifact_kind": "linked-pe",
+              "candidate_address": "0x00401400",
+              "capstone_version": "5.0.6",
+              "compared_size": 88,
+              "data_spans": [],
+              "decoded_bytes": 88,
+              "extent_source": "pdb-section-contribution",
+              "first_differences": [],
+              "image": "build/match-linked/AnmRandomU32InRange/source.exe",
+              "image_sha256": "218c8ac42f573e9c34bf15de24f898ef15f77acd23af9cd99b157d109295b7d2",
+              "linkages": [],
+              "matched_bytes": 88,
+              "matched_compared_bytes": 88,
+              "normalization_complete": true,
+              "pdb_age": 1,
+              "pdb_guid": "7dc17f70d8c5f744a519a19ca3ad6d2e",
+              "pdb_module_index": 1,
+              "raw_equal": true,
+              "result": "exact",
+              "returncode": 0,
+              "size": 88,
+              "symbol": "?AnmRandomU32InRange@@YIIPAURngView@@I@Z",
+              "target_address": "0x0043CB80",
+              "unit": "anm-random-u32-in-range"
+            }
+          ]
+        }
+      ],
+      "matched_bytes": 88,
+      "result": "exact",
+      "source_count": 1,
+      "unit_count": 1
+    },
+    "artifact_sha256": {
+      "build/match-linked/AnmRandomU32InRange/source.map": "3c26dab8e0a1e1a6de449cb2cfae7da0531be8f84b4d7209b914136035ba3119",
+      "build/match-linked/AnmRandomU32InRange/source.exe": "218c8ac42f573e9c34bf15de24f898ef15f77acd23af9cd99b157d109295b7d2",
+      "build/match-linked/AnmRandomU32InRange/source.ltcg.obj": "ab05de43ee8727cb7d7e0d2cee732b0cce0740842bb27d16909de2b22464a7bf",
+      "build/match-linked/AnmRandomU32InRange/support-00-RandomMath.ltcg.obj": "9c3280e048c5875ee05d1a7689f12f88beef029438099b1f49984b715ebf064c",
+      "build/match-linked/AnmRandomU32InRange/link-aliases.rsp": "4feb7372b54dc1fbed38aa2c504158e6e360117f6f22ea3738ee5e67d09479e2",
+      "build/match-linked/AnmRandomU32InRange/link-anchors.obj": "3152f5b39d4f2d7b590ceb1792a92462cc1a24856b842a83cbfb09ed881111bd",
+      "build/match-linked/AnmRandomU32InRange/source.pdb": "3932b7ce688501730a54e4a2ca79fd01d3389930531d274f3dfe338368534a2c"
+    },
+    "policy": "Exactly one LF file pin refreshed; original strict normalization/rejection, host extraction/adaptations and assertions unchanged. Observed raw provenance in prior pin metadata remains historical."
+  }
+}
