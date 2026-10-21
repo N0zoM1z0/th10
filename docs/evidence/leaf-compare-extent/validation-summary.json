@@ -1,0 +1,83 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "focused_cold_replay": "17/17 raw equal; complete17-byte PDB extent; zero fields",
+  "controls": "copied positive17/17; two immediate-byte mutants16/17; cropped15 rejected",
+  "ci": {
+    "status": "passed",
+    "checks": 105,
+    "log_sha256": "4ebc482813b9cc858eabcc7985b70ec5f4b0d011081974b744b4411b48144fae",
+    "script_sha256": "0d1678239ef5f15b8b6a795d55b3ce39d133165c16358d6a2f29981c1e0443ed"
+  },
+  "tracking": "passed;1776 candidates,1085 source mappings,1237 exact",
+  "toolchain_declarations": "passed",
+  "progress": "current;138793 overall exact bytes; authored396/72283 unchanged",
+  "global_boundary_audit": "unresolved1111 metadata rows/49 state differences/107 confidence differences; zero geometry differences after correction",
+  "source_change": false,
+  "cleanup": {
+    "file_bytes": 6184806,
+    "groups": [
+      {
+        "path": ".analysis/gpt-6.1-sol/leaf-compare-extent-20261022/functions.csv",
+        "bytes": 1085858,
+        "class": "reproducible-cache",
+        "producer": "git show fdc02405fb396ac834e4d508f5b5aa5de1052a84:config/functions.csv",
+        "reason": "exact baseline retained in immutable Git; relevant old/new rows preserved in public evidence"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/leaf-compare-extent-20261022/function-boundaries.csv",
+        "bytes": 323730,
+        "class": "reproducible-cache",
+        "producer": "git show fdc02405fb396ac834e4d508f5b5aa5de1052a84:config/function-boundaries.csv",
+        "reason": "exact baseline retained in immutable Git; relevant old/new rows preserved in public evidence"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/leaf-compare-extent-20261022/matches.csv",
+        "bytes": 382645,
+        "class": "reproducible-cache",
+        "producer": "git show fdc02405fb396ac834e4d508f5b5aa5de1052a84:config/matches.csv",
+        "reason": "exact baseline retained in immutable Git; relevant old/new rows preserved in public evidence"
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/leaf-compare-extent-20261022/match-units.toml",
+        "bytes": 1236831,
+        "class": "reproducible-cache",
+        "producer": "git show fdc02405fb396ac834e4d508f5b5aa5de1052a84:config/match-units.toml",
+        "reason": "exact baseline retained in immutable Git; relevant old/new rows preserved in public evidence"
+      },
+      {
+        "path": "build/host-tests/gui-message-run-ci",
+        "files": 49,
+        "bytes": 1836391,
+        "producer": "scripts/ci.py explicit --out fixture",
+        "class": "reproducible-cache",
+        "reason": "CI terminal0; extracted fixture and binaries reproducible; full passed log retained"
+      },
+      {
+        "path": "build/host-tests/gui-message-lifecycle-ci",
+        "files": 28,
+        "bytes": 508430,
+        "producer": "scripts/ci.py explicit --out fixture",
+        "class": "reproducible-cache",
+        "reason": "CI terminal0; extracted fixture and binaries reproducible; full passed log retained"
+      },
+      {
+        "path": "build/host-tests/transition-effect-ci",
+        "files": 7,
+        "bytes": 806575,
+        "producer": "scripts/ci.py explicit --out fixture",
+        "class": "reproducible-cache",
+        "reason": "CI terminal0; extracted fixture and binaries reproducible; full passed log retained"
+      },
+      {
+        "path": "build/host-tests/transition-effect-eol-ci",
+        "files": 1,
+        "bytes": 4346,
+        "producer": "scripts/ci.py explicit --out fixture",
+        "class": "reproducible-cache",
+        "reason": "CI terminal0; extracted fixture and binaries reproducible; full passed log retained"
+      }
+    ]
+  },
+  "unrelated_d3d_evidence": "preserved; not staged",
+  "product_runtime_semantic_port": "open; no new claims"
+}

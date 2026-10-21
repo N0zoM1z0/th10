@@ -1,0 +1,244 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "starting_head": "fdc02405fb396ac834e4d508f5b5aa5de1052a84",
+  "claim": "Correct complete code extent and existing exact-byte accounting; no new authored function or source coverage",
+  "target": {
+    "address": "0x00404E90",
+    "size": 17,
+    "last_instruction": {
+      "address": "0x00404E9E",
+      "size": 3,
+      "operation": "RET 4"
+    },
+    "next_alignment": "0x00404EA1",
+    "raw_sha256": "a4aba0bd71d542235c8e06decbe57be1474eb760f54352435ea8e915e73938c3"
+  },
+  "ledger_changes": {
+    "functions.csv": {
+      "before": {
+        "address": "0x00404E90",
+        "size": "15",
+        "span_end": "0x00404E9E",
+        "current_name": "raw_00404e90",
+        "proposed_name": "th10::leaf::LeafCompare00404E90View::Compare",
+        "module": "AnmManager",
+        "status": "exact",
+        "match_percent": "100.00",
+        "calling_convention": "internal ECX view* + stack int / RET 4",
+        "signature": "int (int)",
+        "is_thunk": "false",
+        "source_file": "src/DecomphelpLeafAccessors.cpp",
+        "evidence": "Direct IDA Pro MCP byte/boundary review shows the complete signed comparison leaf followed by CC padding; no code callers or relocations. Canonical linked replay of the natural member view is zero-difference.",
+        "owner": "",
+        "notes": "origin indeterminate: target owner and authorship remain unresolved."
+      },
+      "after": {
+        "address": "0x00404E90",
+        "size": "17",
+        "span_end": "0x00404EA0",
+        "current_name": "raw_00404e90",
+        "proposed_name": "th10::leaf::LeafCompare00404E90View::Compare",
+        "module": "AnmManager",
+        "status": "exact",
+        "match_percent": "100.00",
+        "calling_convention": "internal ECX view* + stack int / RET 4",
+        "signature": "int (int)",
+        "is_thunk": "false",
+        "source_file": "src/DecomphelpLeafAccessors.cpp",
+        "evidence": "Target-bound complete17-byte signed comparison leaf through RET4 immediate at404E9F..404EA0; CC padding starts404EA1. Canonical linked replay covers the complete17-byte PDB extent with zero fields. Origin remains indeterminate.",
+        "owner": "",
+        "notes": "origin indeterminate: target owner and authorship remain unresolved."
+      }
+    },
+    "function-boundaries.csv": {
+      "before": {
+        "address": "0x00404E90",
+        "span_end": "0x00404E9E",
+        "state": "reviewed",
+        "confidence": "medium",
+        "evidence_id": "target-ida-leaf-review-2026-09-30",
+        "notes": "Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence."
+      },
+      "after": {
+        "address": "0x00404E90",
+        "span_end": "0x00404EA0",
+        "state": "reviewed",
+        "confidence": "high",
+        "evidence_id": "target-leaf-ret4-extent-2026-10-22",
+        "notes": "Complete17-byte dense target decode ends RET4 at404E9E..404EA0; CC padding begins404EA1. Old15-byte ledger ended at the RET opcode while compare_size17 already covered both immediate bytes. No physical overlap; origin remains indeterminate."
+      }
+    },
+    "matches.csv": {
+      "before": {
+        "address": "0x00404E90",
+        "name": "th10::leaf::LeafCompare00404E90View::Compare",
+        "size": "15",
+        "status": "exact",
+        "match_percent": "100.00",
+        "unit": "game-decomphelp-compare-00404e90",
+        "evidence": "Canonical linked-PE replay of the complete DecomphelpLeafAccessors.cpp TU with pinned VC7.1 SP1 build6030; direct IDA Pro MCP boundary/byte review; raw bytes and complete PDB extent are zero-difference."
+      },
+      "after": {
+        "address": "0x00404E90",
+        "name": "th10::leaf::LeafCompare00404E90View::Compare",
+        "size": "17",
+        "status": "exact",
+        "match_percent": "100.00",
+        "unit": "game-decomphelp-compare-00404e90",
+        "evidence": "Canonical linked-PE cold replay of the complete17-byte PDB extent against the hash-attested target; all RET4 immediate bytes participate; zero linked fields. Prior15-byte credit with compare_size17 is superseded."
+      }
+    }
+  },
+  "native_replay": {
+    "artifact_count": 1,
+    "groups": [
+      {
+        "artifact": "build/match-linked/DecomphelpLeafAccessors",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "game-decomphelp-compare-00404e90",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL"
+        ],
+        "source": "src/DecomphelpLeafAccessors.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00401000",
+            "capstone_version": "5.0.6",
+            "compared_size": 17,
+            "data_spans": [],
+            "decoded_bytes": 17,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/DecomphelpLeafAccessors/source.exe",
+            "image_sha256": "cf5195ac163bffe11bf28ecab124f3d25e8f6a41e9f193a1163a376ccb55466d",
+            "linkages": [],
+            "matched_bytes": 17,
+            "matched_compared_bytes": 17,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "0180e2a88e14b2458bf7362cc90da03c",
+            "pdb_module_index": 1,
+            "raw_equal": true,
+            "result": "exact",
+            "returncode": 0,
+            "size": 17,
+            "symbol": "?Compare@LeafCompare00404E90View@leaf@th10@@QAEHH@Z",
+            "target_address": "0x00404E90",
+            "unit": "game-decomphelp-compare-00404e90"
+          }
+        ]
+      }
+    ],
+    "matched_bytes": 17,
+    "result": "exact",
+    "source_count": 1,
+    "unit_count": 1
+  },
+  "comparator_controls": {
+    "scope": "Full-owner comparator controls on a temporary copied native image; no target/native-runtime claim",
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "original_native_image_unchanged": true,
+    "input_artifact_sha256": {
+      "build/match-linked/DecomphelpLeafAccessors/source.map": "95c9a5489af60c6e8a74ab58f37f172a51732b649b2304c57e3d39437f495da1",
+      "build/match-linked/DecomphelpLeafAccessors/link-attempt-2.log": "08ba4d7768f8b0ce4f3269b4e6c848dbb5e4755526306d540fb322e3a6887f79",
+      "build/match-linked/DecomphelpLeafAccessors/source.exe": "cf5195ac163bffe11bf28ecab124f3d25e8f6a41e9f193a1163a376ccb55466d",
+      "build/match-linked/DecomphelpLeafAccessors/source.ltcg.obj": "c6caae389b4db7c0113aa6aa8272357ba672a7583c921c03c9fc11b297fb55b6",
+      "build/match-linked/DecomphelpLeafAccessors/link-attempt-1.log": "a1d272187add4a0e57e7b5b4d4d02e52b4654df01db64f60d71d8175505626b0",
+      "build/match-linked/DecomphelpLeafAccessors/link-aliases.rsp": "c8e44a2e6193f984b56c259bbe4a947b046dfbad522a25e893461d895c9c48ba",
+      "build/match-linked/DecomphelpLeafAccessors/link-anchors.obj": "6680a03bccc0a9c0dd14e6ca7a6c11aede211c68b10500187e9aa7547947350b",
+      "build/match-linked/DecomphelpLeafAccessors/link-anchors.c": "048eba89ca1e867750afde5e75cbf487f586c3e50a59f354bdc2dad6edcea5f8",
+      "build/match-linked/DecomphelpLeafAccessors/source.pdb": "2e3940ac6d9a890a5b8c84f1fac081d5e6f72c207041cac6a93b464bd185eb34",
+      "config/match-units.toml": "e24c3a4acbf884a1dcacb29778cfbb35c6bb59ad9afb84195e8553fca7b0e043",
+      "src/DecomphelpLeafAccessors.cpp": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9"
+    },
+    "controls": [
+      {
+        "control": "copied-image-positive",
+        "result": "exact",
+        "matched": 17,
+        "size": 17
+      },
+      {
+        "control": "ret-immediate-byte-15",
+        "result": "mismatch",
+        "matched": 16,
+        "size": 17,
+        "difference_offsets": [
+          "0xF"
+        ]
+      },
+      {
+        "control": "ret-immediate-byte-16",
+        "result": "mismatch",
+        "matched": 16,
+        "size": 17,
+        "difference_offsets": [
+          "0x10"
+        ]
+      },
+      {
+        "control": "cropped-size-without-compare-size",
+        "result": "rejected",
+        "reason": "PDB contribution size 0x11 differs from manifest 0xf"
+      }
+    ],
+    "cleanup": "temporary copied images, maps, PDB and objects removed at context exit"
+  },
+  "fresh_target_audit_leaf": {
+    "address": "0x00404E90",
+    "span_end": "0x00404EA0",
+    "state": "reviewed",
+    "confidence": "high",
+    "evidence_id": "prior-target-boundary-review+target-boundary-audit-2026-09-15",
+    "notes": "Prior boundary evidence retained; dense decode 17/17, tail ret"
+  },
+  "global_automatic_ledger_drift": {
+    "different_rows": 1111,
+    "state_differences": 49,
+    "confidence_differences": 107,
+    "geometry_differences": 0,
+    "first_difference": {
+      "address": "0x00401100",
+      "fields": [
+        "evidence_id",
+        "notes"
+      ]
+    },
+    "global_check_passed": false,
+    "audit_counts": {
+      "tracked_candidates": 1776,
+      "reviewed": 1727,
+      "provisional": 23,
+      "needs_review": 26,
+      "overlap_pairs": 10,
+      "overlap_candidates": 20,
+      "tracked_union_bytes": 349938,
+      "untracked_gap_bytes": 62351,
+      "pure_alignment_gaps": 973,
+      "pure_alignment_bytes": 8596,
+      "unresolved_gaps": 433,
+      "unresolved_gap_bytes": 53755,
+      "untracked_direct_targets": 4,
+      "untracked_data_targets": 82,
+      "ghidra_body_functions": 1195,
+      "ghidra_sparse_body_functions": 122,
+      "ghidra_remote_body_functions": 2,
+      "remote_body_direct_targets": 2,
+      "indirect_control_tables": 101,
+      "unowned_indirect_control_tables": 18
+    },
+    "scope": "Independent automated diagnostics versus historical manual ledger, not 49 proven bad boundaries; no bulk ledger rewrite"
+  },
+  "source_sha256": "b5d2293969a0805a783fd8f7a45dfe4a89257a8ffa111b084d1c72d2e24fd5a9"
+}

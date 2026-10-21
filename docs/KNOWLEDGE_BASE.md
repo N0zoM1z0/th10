@@ -4550,3 +4550,20 @@ against hash-verified support/input pins. No source, exact, ownership, runtime
 or product credit is added. Read-only/noanalysis Ghidra validates the complete
 412289-byte mapped text under maxcpu1/768 MiB; native builds are serial/nice10.
 See [complete evidence and source controls](evidence/ecl-storage-controls/README.md).
+
+## Comparison leaf RET4 extent correction (2026-10-22)
+
+Fresh target-bound inventory rejects the old15-byte boundary at404E90..404E9E:
+the last byte is the RET4 opcode, with its two immediate bytes at404E9F..404EA0.
+The complete17-byte dense body is followed by CC at404EA1. Canonical source and
+indeterminate origin are unchanged; the prior recipe already compared17 bytes
+using compare_size. Function/boundary/match rows and the unit now explicitly
+cover17 bytes, with no compare_size override. One focused cold proves raw17/17,
+complete PDB ownership/dense decode and zero fields. Two independent immediate
+mutations of a temporary copied native image each yield16/17; a cropped15-byte
+manifest is rejected by PDB extent validation. This adds2 overall exact bytes,
+not authored bytes or source coverage. The larger automatic/manual boundary
+audit still has1111 metadata-different rows,49 state differences and107 confidence
+differences with zero geometry differences; it is a separate unresolved audit,
+not proof that all historical manual decisions are invalid. No bulk overwrite
+or acceptance relaxation is performed. See [RET4 evidence](evidence/leaf-compare-extent/README.md).

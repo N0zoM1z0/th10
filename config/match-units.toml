@@ -5896,8 +5896,7 @@ entry_symbol = "?Fn00404990@leaf@th10@@YAIPAE@Z"
 functions = ["th10::leaf::LeafCompare00404E90View::Compare"]
 symbol = "?Compare@LeafCompare00404E90View@leaf@th10@@QAEHH@Z"
 target_address = 0x00404E90
-size = 15
-compare_size = 17
+size = 17
 linkages = []
 
 [units.game-decomphelp-float-get-00404ec0]

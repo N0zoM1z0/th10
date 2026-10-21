@@ -184,9 +184,12 @@ table with unresolved ownership remains outside the function until reviewed.
 
 Keep executable-code and owned-data portions explicit in the evidence.
 `compare_size` can cover a larger compiler artifact without crediting every
-compared byte to one claim; its current TH10 uses are excluded runtime units or
-an indeterminate leaf, not an instruction-only authored-byte policy. A boundary
-correction can increase the authored denominator with zero exact credit.
+compared byte to one claim. It cannot justify ending a code boundary inside an
+instruction. The indeterminate404E90 leaf's old15-byte credit/17-byte comparison
+is superseded by a complete17-byte boundary and ordinary17-byte unit; see the
+[RET4 extent correction](evidence/leaf-compare-extent/README.md). This is not an
+instruction-only authored-byte policy. A boundary correction can increase the
+authored denominator with zero exact credit.
 
 ## One-allocation EH entry binding
 

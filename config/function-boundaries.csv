@@ -73,7 +73,7 @@ address,span_end,state,confidence,evidence_id,notes
 0x00404D40,0x00404D9B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=1; no overlap or external interior branch
 0x00404DA0,0x00404E04,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=5; no overlap or external interior branch
 0x00404E10,0x00404E6B,reviewed,high,target-boundary-audit-2026-09-15,Complete dense decode ends in ret; direct-code-refs=6; no overlap or external interior branch
-0x00404E90,0x00404E9E,reviewed,medium,target-ida-leaf-review-2026-09-30,Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence.
+0x00404E90,0x00404EA0,reviewed,high,target-leaf-ret4-extent-2026-10-22,Complete17-byte dense target decode ends RET4 at404E9E..404EA0; CC padding begins404EA1. Old15-byte ledger ended at the RET opcode while compare_size17 already covered both immediate bytes. No physical overlap; origin remains indeterminate.
 0x00404EC0,0x00404EC3,reviewed,medium,target-ida-leaf-review-2026-09-30,Direct IDA Pro MCP byte read covers the complete leaf extent and ret tail; CC padding follows with no interior branch evidence.
 0x00404ED0,0x00404F17,reviewed,high,target-stage-real-callback-complete-2026-10-19,Complete72-byte dense decode ends RET; fresh read-only target-attested Ghidra finds10 incoming call sites; each postcall path overwrites EAX before use. No overlap; see docs/evidence/stage-real-callback/README.md.
 0x00404F20,0x00404F27,reviewed,high,target-boundary-audit-2026-09-29,Direct IDA disassembly ends in retn; no overlap or external interior branch; no code callers; no code/data xrefs

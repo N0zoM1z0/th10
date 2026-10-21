@@ -39,7 +39,38 @@ authored functions / 273576 bytes, 1085 source mappings, 1237 exact functions
 overall. Authored exact is **396 functions / 72283 bytes (26.42% provisional)**.
 The [SVG](../resources/progress.svg) visibly fills 135.28 of 512 pixels.
 There are 206 mapped authored nonexact functions and 523 indeterminate origins;
-the complete-game denominator remains unknown. This batch adds no exact credit.
+the complete-game denominator remains unknown. The latest extent correction
+adds two overall exact bytes (138793 total), with authored credit unchanged.
+
+The [404E90 RET4 correction](evidence/leaf-compare-extent/README.md) replaces
+the old15-byte ledger/17-byte comparison with an explicit complete17-byte owner.
+One focused cold passes17/17, dense decode17 and zero fields. Copied-image
+immediate-byte controls each yield16/17; a cropped15-byte manifest is rejected.
+Source and indeterminate origin are unchanged. Current private proof is under
+`.analysis/gpt-6.1-sol/leaf-compare-extent-20261022/`; the canonical shared
+DecomphelpLeafAccessors carrier has been rebuilt, so old artifact pins are
+historical. No other unit replay is claimed.
+
+Fresh Ghidra architecture/body ranges expose global automatic/manual audit
+drift:1111 rows differ in metadata,49 in state,107 in confidence, zero in
+geometry after the leaf correction. `report-boundary-inventory.py --check-ledger`
+still fails first at401100's provenance text. Reviewed owned tables, isolated
+entries and overlapping runtime entries require separate reconciliation; these
+counts are not49 proven invalid boundaries. Do not bulk rewrite the ledger or
+silently equate tracking/CI success with this independent audit passing.
+
+The corrected baseline passes all105 standard CI checks; its log and current
+control producer are pinned in the leaf evidence pack. Baseline ledger copies
+are hash-verified against immutable `fdc0240` before pruning; generated outputs
+of four terminal CI host fixtures are also removed. See its validation summary
+for exact cleanup counts. No game source changes have been adopted in these
+two follow-ups. Next source route: bounded Player state2 transition4269D0/796,
+called directly at425AA4 by the maintained update body. Read-only Ghidra facts
+and a second, unselected shot-spawn candidate427E90/717 are retained under
+`.analysis/gpt-6.1-sol/player-shot-source-20261022/`. Source routing remains a
+hypothesis until raw ABI, side effects and maintained owners are reconciled.
+Reuse EnemyGameState.hpp's already-reviewed global4776F4 partial view; do not
+invent a duplicate GUI owner for this spell-panel state.
 
 The latest source change is confined to `src/AnmManager.cpp`'s render-mode9
 locals and count expressions. Grouped ordinary declarations and original
