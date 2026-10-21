@@ -1,0 +1,890 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "b9d6cb5",
+  "scope": "One existing authored199-byte owner/all4 fields; boundaries, origin, source mappings and denominator unchanged. Three original large owners and later phase gates remain open.",
+  "source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "0c4bc7b5acfa3d8570fbd5254c4a8c7bf16f0678ddfc030203c601dc4d06d061",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "graph": {
+    "artifact_kind": "linked-pe",
+    "source": "src/EnemyEclDispatcher.cpp",
+    "support_sources": [
+      "src/EclVm.cpp",
+      "src/AnmManager.cpp",
+      "src/AnmVmCreate.cpp",
+      "src/EnemyLaser.cpp",
+      "src/Enemy.cpp",
+      "src/AnmVmId.cpp",
+      "src/RandomMath.cpp",
+      "src/AnmInt3Scale.cpp",
+      "src/ItemManager.cpp"
+    ],
+    "support_profiles": {
+      "src/AnmInt3Scale.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Ob1"
+      ]
+    },
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1"
+  },
+  "independent_complete_cold_builds": [
+    {
+      "label": "maintained-cold1",
+      "producer": {
+        "kind": "independent complete ten-TU cold",
+        "entry": {
+          "requested": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x004027C0",
+          "rva": 10176,
+          "object": "source.ltcg.obj",
+          "size": 14468
+        },
+        "all_tus_recompiled": 10
+      },
+      "producer_receipt_sha256": "6b11b5cae754893f20057f01820824a732ece9c3c4d977224400148e5f131b16",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/source.exe",
+          "sha256": "008efcc79c4848c54815bd2356034f992ae3ccae4ebad19968ab5b88a6596172"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/source.map",
+          "sha256": "14d1a50451e4999cc675972fe7b8be20c5c95e8bcf801171094d0b2c0ad642b3"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/source.pdb",
+          "sha256": "1b34711903f03ed3c617fdeb8772ee9dd3a88daa60b1fe33f00b729316b752a5"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/source.ltcg.obj",
+          "sha256": "12418a32d8a851d5bca2c881149214a6571a2e34389cb2671004f3994a9414c4"
+        }
+      },
+      "support_objects": [
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-00-EclVm.ltcg.obj",
+          "sha256": "11a95803f74d81a41824971e7eda4462fd3d18051c8e8d69d9aff928bfac12bb"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-01-AnmManager.ltcg.obj",
+          "sha256": "69697f8b5f7019b8e775c9b7576310bdc80139c8d3d1da1e52f895f29d175437"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-02-AnmVmCreate.ltcg.obj",
+          "sha256": "bf84d828d2c5ce1198283faf851b08a1ae69f5a3de13ee9d88ea6cd3e251bfbe"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-03-EnemyLaser.ltcg.obj",
+          "sha256": "31ad25d74a47027f28f15d6bebfd68cc10a6a50c6508663c2891fff8d5970aff"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-04-Enemy.ltcg.obj",
+          "sha256": "09d7b06d13a06f3828212858affe055935b0648348efc0258f181fe0a11ae547"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-05-AnmVmId.ltcg.obj",
+          "sha256": "17b1c34fb19b8a50ed8293eebb03d00f2e95b4244d782132606623bb3d3b9bfa"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-06-RandomMath.ltcg.obj",
+          "sha256": "4ceaf3ca347debd06df79fa6b9ce794e2204ef5aae1903cd8ebe032c19f76edc"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-07-AnmInt3Scale.ltcg.obj",
+          "sha256": "31e6ec95ef20da28d3e1582428137afff230cad54c404f726e4696d4d43baec4"
+        },
+        {
+          "path": "build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1/support-08-ItemManager.ltcg.obj",
+          "sha256": "90de09f3ffe651923120ab6c59920f98cc228a955c02f1dec9387df669702f74"
+        }
+      ],
+      "complete_guards": {
+        "owners": 34,
+        "bytes": 4164,
+        "fields": 113,
+        "result": "exact"
+      },
+      "new_owner": {
+        "address": "0x00401540",
+        "size": 199,
+        "raw_sha256": "2ca77aed829dc1dbcfaecd138298bed14d066658783ae7b12831ac531573656b"
+      },
+      "run": {
+        "bytes": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "locals": 62
+      }
+    },
+    {
+      "label": "canonical-cold2",
+      "producer": {
+        "kind": "completed selected canonical cold replay",
+        "all_tus_recompiled": 10,
+        "receipt_sha256": "8db36d5dff8e4bda747e06575710a55a9deda661e02593df26787081a3538df1"
+      },
+      "producer_receipt_sha256": "d5d218736cd8b1e98af4161b77c96e9308c54af16f6124033e88f975fe4528fd",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/match-linked/EnemyItemDrops",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/EnemyItemDrops/source.exe",
+          "sha256": "142e7956b7de97812ca7c36ea51823131040642cf5763f18432bea9791b05e4a"
+        },
+        "map": {
+          "path": "build/match-linked/EnemyItemDrops/source.map",
+          "sha256": "d0d729bc8cefd501fe30dc2b86cd053dcb00352afd6d15dbbb3ea33f18764384"
+        },
+        "pdb": {
+          "path": "build/match-linked/EnemyItemDrops/source.pdb",
+          "sha256": "7eeb711b3eabd0a1d6e2f6b8709e20a4fbe6bf4038c1e45aad3e777fe3274a2d"
+        },
+        "object": {
+          "path": "build/match-linked/EnemyItemDrops/source.ltcg.obj",
+          "sha256": "e6740cfe7ff80202c3c912d94d26cb00338f1bfbdfe3ac03565bf5d06bc85c22"
+        }
+      },
+      "support_objects": [
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj",
+          "sha256": "083f5ad788483f2975830eac1036b2c850728b741e525783610e0dd6214a38d7"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj",
+          "sha256": "5b31f9ae6249003fe57e9e9abb0ac3d1e6a80d5d0534badd153c7d95009fe579"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj",
+          "sha256": "dcf9d0e1708a7912f4e4429e6b547bf6531ab2bbfbc0871ad541069913e66a9c"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj",
+          "sha256": "e1b55dd6ea2c0bbc1b99f73b135a518853001054f35bde5d6ef4d8f09216bbe9"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj",
+          "sha256": "ef0fa559c83cd7409f1131f4355e2ec6dd56df30abe95c485875c7d6f7d9dc75"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj",
+          "sha256": "081a735588f0002931973b8953b51bce15081bacebfd9cc7d9ac2832d4fce91d"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj",
+          "sha256": "5aaced3c067d45399188402f97a4add46073c967b337aec6ce0ce60997b149db"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj",
+          "sha256": "6ea47857e554ecda93310a41c3bf7b43202eeb13de15f79b0ffe438a2efa4835"
+        },
+        {
+          "path": "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj",
+          "sha256": "b152d85a794795e450ab5cd735d0c43ada14803808f5fdaacaf108744143bae0"
+        }
+      ],
+      "complete_guards": {
+        "owners": 34,
+        "bytes": 4164,
+        "fields": 113,
+        "result": "exact"
+      },
+      "new_owner": {
+        "address": "0x00401540",
+        "size": 199,
+        "raw_sha256": "2ca77aed829dc1dbcfaecd138298bed14d066658783ae7b12831ac531573656b"
+      },
+      "run": {
+        "bytes": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "locals": 62
+      }
+    }
+  ],
+  "new_owner_bindings": [
+    {
+      "offset": 41,
+      "type": "REL32",
+      "symbol": "?IsOutsidePlayfield@EnemyBulletPositionView@@QAEHMM@Z",
+      "target": 4228784
+    },
+    {
+      "offset": 82,
+      "type": "DIR32",
+      "symbol": "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A",
+      "target": 4683504
+    },
+    {
+      "offset": 103,
+      "type": "REL32",
+      "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+      "target": 4492720
+    },
+    {
+      "offset": 149,
+      "type": "DIR32",
+      "symbol": "?g_AnmGameSpeed@@3MA",
+      "target": 4681592
+    }
+  ],
+  "target_owner": {
+    "address": "0x00408030",
+    "size": 199,
+    "end": "0x004080F6",
+    "following_padding": 9,
+    "sha256": "104d9d3111629b8e843a524b4be11b5d826e0b6c5e10cd08b773d07e30f9f89f"
+  },
+  "binding_review": {
+    "0x29": "Direct target CALL4086B0, complete same-image91/all4 bounds guard.",
+    "0x52": "Target pointer slot4776F0, existing partial resource view; loaded resource at receiver3E0B50. No production owner inference.",
+    "0x67": "Direct CALL448DB0 binds actual maintained CreateVmAtWorldVariant0; callee remains116/118 nonexact.",
+    "0x95": "Target timer scale476F78, existing independently bound g_AnmGameSpeed."
+  },
+  "source_controls": [
+    {
+      "label": "zero-after-script",
+      "producer_receipt_sha256": "475eb5b4e636a63345e4a54fc3e8f982e6a35a11600a3a067c07e9f75f4f82d3",
+      "private_source_sha256": "2b093470a47b11a08c89510a1e7a184efbfaa8e1c3da0294ffa86258c027f0c2",
+      "owner": {
+        "address": "0x00401540",
+        "size": 200,
+        "raw_sha256": "511f41cc0daa86b531fba900df1aaa9a6532f281502e19a03fbd333e9412818a"
+      },
+      "complete_guards": {
+        "owners": 33,
+        "bytes": 3965,
+        "fields": 109,
+        "result": "exact"
+      },
+      "comparison": {
+        "scope": "Unsupported complete extent or field binding; no ordinary score or exact credit",
+        "error": "PDB contribution size 0xc8 differs from manifest 0xc7"
+      },
+      "adopted": false
+    },
+    {
+      "label": "outside-early-return",
+      "producer_receipt_sha256": "5b4d346b536f0d55575764cd864353e03214b224683b59d2aca6b8a6985f348f",
+      "private_source_sha256": "a3396ee7c1a8b6919924a313a77405dc61fa4f9caea9814783cce5abf7789e21",
+      "owner": {
+        "address": "0x00401540",
+        "size": 200,
+        "raw_sha256": "9f4ba6fc03dc434d16e35e361f6fb4c849774b6337c13f8d77c516f213c11731"
+      },
+      "complete_guards": {
+        "owners": 33,
+        "bytes": 3965,
+        "fields": 109,
+        "result": "exact"
+      },
+      "comparison": {
+        "scope": "Unsupported complete extent or field binding; no ordinary score or exact credit",
+        "error": "PDB contribution size 0xc8 differs from manifest 0xc7"
+      },
+      "adopted": false
+    },
+    {
+      "label": "implicit-zero",
+      "producer_receipt_sha256": "33357754c9bc86044a3e39a56eac4ca02e61b8e6aaef3e5e8d2eb45fd7920be9",
+      "private_source_sha256": "3c4d147515c7564295c9e81d242d4404a3c534ef37c20938179c30bb73ca0e4f",
+      "owner": {
+        "address": "0x00401540",
+        "size": 200,
+        "raw_sha256": "511f41cc0daa86b531fba900df1aaa9a6532f281502e19a03fbd333e9412818a"
+      },
+      "complete_guards": {
+        "owners": 33,
+        "bytes": 3965,
+        "fields": 109,
+        "result": "exact"
+      },
+      "comparison": {
+        "scope": "Unsupported complete extent or field binding; no ordinary score or exact credit",
+        "error": "PDB contribution size 0xc8 differs from manifest 0xc7"
+      },
+      "adopted": false
+    },
+    {
+      "label": "branch-local-state",
+      "producer_receipt_sha256": "9be8f395eb932e3978d1ab5168bb7bac780f4dc9e02215997085594cd93310bd",
+      "private_source_sha256": "8ba0cd23b1ce17af63549e959f9a6a2930ac1b8bceeaf58bd0ea10da1f75f326",
+      "owner": {
+        "address": "0x00401540",
+        "size": 199,
+        "raw_sha256": "4ab726bfd4c0e253e8c3bfc88dbb3c0d3054f0d838053ecfb201f24b1faeb024"
+      },
+      "complete_guards": {
+        "owners": 33,
+        "bytes": 3965,
+        "fields": 109,
+        "result": "exact"
+      },
+      "comparison": {
+        "result": "mismatch",
+        "size": 199,
+        "matched_bytes": 193,
+        "first_differences": [
+          {
+            "offset": "0x32",
+            "linked": 70,
+            "target": 12
+          },
+          {
+            "offset": "0x33",
+            "linked": 4,
+            "target": 3
+          },
+          {
+            "offset": "0x36",
+            "linked": 3,
+            "target": 1
+          },
+          {
+            "offset": "0x3B",
+            "linked": 12,
+            "target": 70
+          },
+          {
+            "offset": "0x3C",
+            "linked": 3,
+            "target": 4
+          },
+          {
+            "offset": "0x3F",
+            "linked": 1,
+            "target": 3
+          }
+        ]
+      },
+      "adopted": false
+    },
+    {
+      "label": "branch-state-first",
+      "producer_receipt_sha256": "12eeee1ebfb83cc24ecb099a216aaaa18466cf6f958ac57100763bea27fa88c1",
+      "private_source_sha256": "076335fe098bacbc296985120ff98dbcf68384aa29e8596ed4cd12a9a377334b",
+      "owner": {
+        "address": "0x00401540",
+        "size": 199,
+        "raw_sha256": "2ca77aed829dc1dbcfaecd138298bed14d066658783ae7b12831ac531573656b"
+      },
+      "complete_guards": {
+        "owners": 33,
+        "bytes": 3965,
+        "fields": 109,
+        "result": "exact"
+      },
+      "comparison": {
+        "result": "exact",
+        "size": 199,
+        "matched_bytes": 199,
+        "first_differences": []
+      },
+      "adopted": true
+    }
+  ],
+  "canonical_focused_replay": {
+    "artifact_count": 1,
+    "groups": [
+      {
+        "artifact": "build/match-linked/EnemyItemDrops",
+        "artifact_kind": "linked-pe",
+        "build_returncode": 0,
+        "build_unit": "enemy-cancel-bullet-record",
+        "cold_driver": "scripts/ltcg_link.py:cold_link",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": "src/EnemyEclDispatcher.cpp",
+        "units": [
+          {
+            "artifact_kind": "linked-pe",
+            "candidate_address": "0x00401540",
+            "capstone_version": "5.0.6",
+            "compared_size": 199,
+            "data_spans": [],
+            "decoded_bytes": 199,
+            "extent_source": "pdb-section-contribution",
+            "first_differences": [],
+            "image": "build/match-linked/EnemyItemDrops/source.exe",
+            "image_sha256": "142e7956b7de97812ca7c36ea51823131040642cf5763f18432bea9791b05e4a",
+            "linkages": [
+              {
+                "addend": 0,
+                "candidate_target": "0x004014E0",
+                "linked_symbol": "?IsOutsidePlayfield@EnemyBulletPositionView@@QAEHMM@Z",
+                "local": false,
+                "offset": "0x29",
+                "symbol": "?IsOutsidePlayfield@EnemyBulletPositionView@@QAEHMM@Z",
+                "target": "0x004086B0",
+                "target_encoded_value": "0x00000653",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B218",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0128",
+                "local": false,
+                "offset": "0x52",
+                "symbol": "?g_EnemyPrimaryResourceOwner@@3PAUEnemyPrimaryResourceOwnerView@@A",
+                "target": "0x004776F0",
+                "target_encoded_value": "0x004776F0",
+                "type": "DIR32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0040D5D0",
+                "linked_symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+                "local": false,
+                "offset": "0x67",
+                "symbol": "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z",
+                "target": "0x00448DB0",
+                "target_encoded_value": "0x00040D15",
+                "type": "REL32",
+                "width": 4
+              },
+              {
+                "addend": 0,
+                "candidate_target": "0x0041B14C",
+                "linked_symbol": "_th10_ltcg_probe_anchor_0077",
+                "local": false,
+                "offset": "0x95",
+                "symbol": "?g_AnmGameSpeed@@3MA",
+                "target": "0x00476F78",
+                "target_encoded_value": "0x00476F78",
+                "type": "DIR32",
+                "width": 4
+              }
+            ],
+            "matched_bytes": 199,
+            "matched_compared_bytes": 199,
+            "normalization_complete": true,
+            "pdb_age": 1,
+            "pdb_guid": "9acdaa1cb0f2e74fa5192faa8083beb9",
+            "pdb_module_index": 4,
+            "raw_equal": false,
+            "result": "exact",
+            "returncode": 0,
+            "size": 199,
+            "symbol": "?EnemyCancelBulletRecord@@YAIPAE@Z",
+            "target_address": "0x00408030",
+            "unit": "enemy-cancel-bullet-record"
+          }
+        ]
+      }
+    ],
+    "matched_bytes": 199,
+    "result": "exact",
+    "source_count": 1,
+    "unit_count": 1
+  },
+  "negative_controls": {
+    "scope": "Wrong field, copied native byte, complete same-size and complete oversized controls; target unchanged",
+    "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+    "controls": [
+      {
+        "control": "wrong-resource-pointer-slot",
+        "result": "rejected",
+        "comparison": "mismatch",
+        "matched_bytes": 198,
+        "size": 199
+      },
+      {
+        "control": "copied-native-state-three-to-two",
+        "result": "rejected",
+        "comparison": "mismatch",
+        "matched_bytes": 198,
+        "size": 199,
+        "owner_offset": 63,
+        "image_sha256": "7cb930900078989b20079b91c32d6fe212a1d3b3f296eab3287ee61a5cee6d8b"
+      },
+      {
+        "control": "same-size-reversed-store-order",
+        "result": "rejected",
+        "comparison": "mismatch",
+        "matched_bytes": 193,
+        "size": 199
+      },
+      {
+        "control": "complete-original-two-hundred-byte-extent",
+        "result": "rejected",
+        "error": "PDB contribution size 0xc8 differs from manifest 0xc7"
+      }
+    ]
+  },
+  "host_projection": {
+    "scope": "Complete maintained body projected to logical live host fields and mutable service sinks; no target layout, i386 ABI or original/native-game runtime claim",
+    "source_sha256": "0c4bc7b5acfa3d8570fbd5254c4a8c7bf16f0678ddfc030203c601dc4d06d061",
+    "producer_sha256": "6092638d2f136fc12e8b3afcb7cd760dcf17e9df3dffae02468f88cadcb35add",
+    "scenarios": 288,
+    "strict_mutants": 8,
+    "adaptations": {
+      "reinterpret_cast<EnemyBulletPositionView *>(bullet + 0x3b4)": "&bullet->position",
+      "reinterpret_cast<const AnmFloat3View *>(\n                        bullet + 0x3b4)": "&bullet->position",
+      "reinterpret_cast<short *>(bullet + 0x446)": "&bullet->state",
+      "reinterpret_cast<short *>(bullet + 0x30c)": "&bullet->animation",
+      "reinterpret_cast<int *>(bullet + 0x438)": "&bullet->script",
+      "reinterpret_cast<unsigned int *>(bullet + 0x408)": "&bullet->timer.flags",
+      "reinterpret_cast<int *>(bullet + 0x3fc)": "&bullet->timer.current",
+      "reinterpret_cast<int *>(bullet + 0x3f8)": "&bullet->timer.previous",
+      "reinterpret_cast<float *>(bullet + 0x400)": "&bullet->timer.subframe",
+      "reinterpret_cast<float **>(bullet + 0x404)": "&bullet->timer.scale",
+      "reinterpret_cast<unsigned int *>(bullet)": "&bullet->flags"
+    },
+    "sanitizers": "address,undefined,leaks",
+    "results": [
+      {
+        "control": "positive",
+        "result": "passed",
+        "expected_assertion": null,
+        "returncode": 0,
+        "program_sha256": "4d3a7d1d6de245dd3ef37ce2dd89d8bdeffd8bca141f3c103ae7dc83be608663",
+        "log_sha256": "d287234942993909aa5ad30c074cbc9c7c8e7b405fe10cd93a5fb8f32aac3b39"
+      },
+      {
+        "control": "wrong-state-predicate",
+        "result": "rejected",
+        "expected_assertion": "result==unsigned(valid)",
+        "returncode": -6,
+        "program_sha256": "32c9bb20908cd4ceb71d75ef690152be6f041a1c17850f3095db3e9a468503f5",
+        "log_sha256": "11c679fcfa6e0520516a9b15cb055f832eadb4d599c5a05644c73d6710f36a5d"
+      },
+      {
+        "control": "wrong-transition-state",
+        "result": "rejected",
+        "expected_assertion": "bullet.state==(valid?3:state)&&bullet.animation==(valid?1:7)",
+        "returncode": -6,
+        "program_sha256": "9dc40eafb9eef19b2bf782a8b7c0d9a4a794751a43d0b5ab164ce81f28650811",
+        "log_sha256": "59f2f4ad72ff75a1b5028e38d0257231f5e7d168ba7c88d9f2bea7a6405bf159"
+      },
+      {
+        "control": "wrong-animation-state",
+        "result": "rejected",
+        "expected_assertion": "bullet.state==(valid?3:state)&&bullet.animation==(valid?1:7)",
+        "returncode": -6,
+        "program_sha256": "a454a7f06aeaf2caca13c002d77b775ff498f1df7c9a392c1ba6d2cb15503d29",
+        "log_sha256": "a5b77a26fbe2adbeb0246d48e7e1a0b6aee57eba88756bfbc386df313c8dfded"
+      },
+      {
+        "control": "skip-script-zero",
+        "result": "rejected",
+        "expected_assertion": "events==expected",
+        "returncode": -6,
+        "program_sha256": "a306d09ad634d1f2ea44f04ac2af731f82db56967b9b331230566070bc93e114",
+        "log_sha256": "955488a74d45b9c433525940f026a07d74ad6820a8209ef79b2ec0dafb8b9cf3"
+      },
+      {
+        "control": "wrong-resource",
+        "result": "rejected",
+        "expected_assertion": "this==g_EnemyPrimaryResourceOwner->primaryEnemyResource",
+        "returncode": -6,
+        "program_sha256": "749b9ca9d8b33d22ed9106a7a481f1b962876f9a1f9d2fc5d3e1a10ba9e9f1f4",
+        "log_sha256": "beea8f4f22072f53eaf596fe773f29c1b0c876db7d5ae250e478182da7e203f1"
+      },
+      {
+        "control": "lose-timer-flags",
+        "result": "rejected",
+        "expected_assertion": "bullet.timer.flags==(before|1u)",
+        "returncode": -6,
+        "program_sha256": "93de5d91fb4172f880feb680ba8495a0c5a4a6ea8b2424f269a64881b56f011a",
+        "log_sha256": "2c5580d727123c1d85cc0d1e3a656015137d15730d57250051a71e7bc52238fb"
+      },
+      {
+        "control": "always-initialize-timer",
+        "result": "rejected",
+        "expected_assertion": "bullet.timer.scale==(initialize?&g_AnmGameSpeed:&otherScale)",
+        "returncode": -6,
+        "program_sha256": "36397a058d2768c6cce457b2380697bfa86347ed5968c8dd238d9bd46c5bdb9d",
+        "log_sha256": "fd117d6c249a6cbfa2e609d25a9c28ea2d73fd23d134517346394e8a40ee1afc"
+      },
+      {
+        "control": "wrong-removal-bit",
+        "result": "rejected",
+        "expected_assertion": "bullet.flags==(0x40u|(valid&&off?8u:0u))&&bullet.script==script",
+        "returncode": -6,
+        "program_sha256": "cae45231b3a8caddd1bb3097ab75420babfc27957c7f8683d4011769fdf10f67",
+        "log_sha256": "deeb9420dabb9404b64d0e246bbb4d91b6b55e1b467b17a2e21d87a56b70a9e9"
+      }
+    ]
+  },
+  "large_native_comparison": {
+    "against_previous_carrier": [
+      {
+        "symbol": "?Run@EclVmContext@@QAEHM@Z",
+        "bytes": 7020,
+        "raw_equal": true,
+        "old_image_sha256": "4409855716c7c210ebca6f9a4bc83f078c4e8904cfb65dd77a59607cc14755a8",
+        "new_image_sha256": "008efcc79c4848c54815bd2356034f992ae3ccae4ebad19968ab5b88a6596172",
+        "old_body_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3",
+        "new_body_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3"
+      },
+      {
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "bytes": 9964,
+        "raw_equal": true,
+        "old_image_sha256": "4409855716c7c210ebca6f9a4bc83f078c4e8904cfb65dd77a59607cc14755a8",
+        "new_image_sha256": "008efcc79c4848c54815bd2356034f992ae3ccae4ebad19968ab5b88a6596172",
+        "old_body_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db",
+        "new_body_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+      },
+      {
+        "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "bytes": 14468,
+        "raw_equal": true,
+        "old_image_sha256": "4409855716c7c210ebca6f9a4bc83f078c4e8904cfb65dd77a59607cc14755a8",
+        "new_image_sha256": "008efcc79c4848c54815bd2356034f992ae3ccae4ebad19968ab5b88a6596172",
+        "old_body_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428",
+        "new_body_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+      }
+    ],
+    "between_independent_colds": [
+      {
+        "symbol": "?Run@EclVmContext@@QAEHM@Z",
+        "bytes": 7020,
+        "two_colds_raw_equal": true,
+        "body_sha256": "42165683ff447bf27ce8cc7799c08de8b7024d30a7c3067d0e808f2aa45ea4e3"
+      },
+      {
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+        "bytes": 9964,
+        "two_colds_raw_equal": true,
+        "body_sha256": "954f6481e4ac788d6005a5e573efb7609f4c64028597c3605ce7db0668b359db"
+      },
+      {
+        "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "bytes": 14468,
+        "two_colds_raw_equal": true,
+        "body_sha256": "9b232c94875abc59b059f4f70220664e11f8b08b0c69a17161fbefc928615428"
+      }
+    ],
+    "exact_credit": false
+  },
+  "current_complete_run_diagnostic": {
+    "bytes": 7020,
+    "matched_bytes": 6993,
+    "ordinary_differences": 27,
+    "fields": 189,
+    "local_destinations": 62,
+    "callee_guard": 171,
+    "scope": "noncanonical diagnostic"
+  },
+  "ghidra": {
+    "transport": "direct local headless",
+    "read_only": true,
+    "no_analysis": true,
+    "rollback": true,
+    "cpu": 1,
+    "heap_mib": 768,
+    "mapped_text_bytes": 412289,
+    "mapped_text_inclusive": "401000..465A80",
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "before_after_equal": true,
+    "review_sha256": "474d73a16e2547139a51ad9e7e3741d4532ec18c7f42ee0b34336c556406366a",
+    "observed_direct_entry_callers": [
+      "0x004070E0",
+      "0x00407243",
+      "0x004081B2",
+      "0x00415D62",
+      "0x00425879",
+      "0x00425A59",
+      "0x00425D55"
+    ]
+  },
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  }
+}

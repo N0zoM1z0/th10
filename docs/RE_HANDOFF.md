@@ -42,40 +42,52 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1776 reviewed
 candidates, 735 authored functions owning 273576 bytes, 1084 source mappings,
-1232 canonical exact functions overall. Authored exact is **391 functions,
-71629/273576 bytes (26.18%)**. The 210 mapped authored nonexact functions,
+1233 canonical exact functions overall. Authored exact is **392 functions,
+71828/273576 bytes (26.26%)**. The 209 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest diagnostic checkpoint executes eight private ECL value-lifetime/
-processor-profile controls without maintained source, recipe or ledger changes.
-Six retain every byte of all three complete native large bodies and all7020
-target-replayed Run bytes; Run stays7020/all189/62locals with27 ordinary
-differences. Pop direct addressing instead moves the FORMAT call field to197C
-and is unsupported/unbound; an unsigned comparison word yields full6876/7020
-and is unsupported. Neither failure has an ordinary-byte score. Each control
-passes32 complete helpers3874/all105, including Push96 and Pop122. Standalone
-helper equality does not determine the inlined caller. See
-[ECL control evidence](evidence/ecl-value-lifetimes/README.md).
+The latest checkpoint closes EnemyCancelBulletRecord408030..4080F6:
+**199 new authored exact bytes/all4 fields**, without boundary, origin, source-map
+or denominator changes. Branch-local state3/animation1 transitions let VC7.1
+merge stores while keeping EBP/zero only on the screen path. The old200-byte
+source and a target-sized193/199 reversed-store control reject. Original class,
+annotation, physical TU and profile remain unknown. See
+[cancel-record proof](evidence/enemy-cancel-record-lifetimes/README.md).
 
-The six neutral forms are PushFloat const-reference, readonly Pop byte aliases,
-existing EclVmScalar integer member, comparison declarations before the loop,
-and ECL-only /G6 or /G7. CPU controls preserve GL/GS and compile identical source;
-their captured logs do not diagnose ignored options. These observations do not
-identify original declarations or establish a general compiler policy. Fresh
-direct Ghidra confirms shared SINE/COS Push, while450610 Pop has no current
-function/instruction record; the independent122-byte comparison still passes.
-Six terminal duplicate builds are pruned/6241608 bytes; both failures remain.
-Private recovery is
-`.analysis/gpt-6.1-sol/ecl-push-value-lifetimes-20261021/RECOVERY.md`.
-Old two-TU allocator color weights have not been remeasured in this graph.
-All102 standard CI checks pass in one invocation. Final complete Run,
-toolchain/tracking/progress/docs/whitespace gates pass with the expected Run
-mismatch; all31 raw inputs and31 retained native artifact hashes remain current.
-No full historical exact replay is performed. All three original large goals
-and later phase gates stay open.
+Two independent full ten-TU GL/GS colds freeze31 equal raw inputs and each pass
+34 complete owners4164/all113, including new199 and33 prior guards3965/all109.
+Canonical cold2 selects only new199, one shared build group; no full historical
+replay. The current carrier remains `build/match-linked/EnemyItemDrops`, pinned
+by this new proof. Independent cold1 is
+`build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/maintained-cold1`.
+All three complete native large bodies are RAW-equal to their prior carrier
+and between both colds. Current Run7020/all189/62locals retains27 ordinary
+differences with its171-byte float guard exact. All three remain active/nonexact.
 
-The latest exact checkpoint closes EnemyFinalizeDeath40E5F0..40E691:
+Fresh direct Ghidra observes seven direct calls and full199-byte body, followed
+by nineCC. Full mapped text is unchanged. Four native/template controls reject;
+288 logical live-object host scenarios and eight strict mutants pass under
+sanitizers. Five inspected terminal/generated directories are pruned/5087628
+bytes; accepted colds,193/199 and200-byte failures and copied-native control
+remain. Private recovery is
+`.analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/RECOVERY.md`.
+All103 standard CI checks pass in one invocation. Final199/all4, expected
+Run7020/27, toolchain/tracking/progress/docs/whitespace gates pass;31 raw inputs
+and30 retained native artifact pins remain current after CI. The tightened
+host classifier revalidates all8 mutants at their intended assertions; temporary
+outputs are automatically removed. Independent untracked D3D work is untouched;
+product/runtime/semantic/port gates stay open.
+
+The preceding ECL diagnostic executes eight source/profile controls, adopts
+none, and retains27 current ordinary differences. Six controls preserve every
+native/replayed byte; direct Pop addressing and unsigned comparison storage
+fail strict binding/extent checks. Older two-TU allocator color weights remain
+unverified in this ten-TU graph. See
+[ECL control evidence](evidence/ecl-value-lifetimes/README.md). Its source and
+mutable-carrier pins are now historical after the cancel-record source change.
+
+The preceding exact checkpoint closes EnemyFinalizeDeath40E5F0..40E691:
 **162 new authored exact bytes/all9 fields**. Real QueueSoundCue and
 CreateVmAtWorldVariant0 replace receiverless free aliases; noinline on the
 existing shared ExtendFaithTimer and explicit position/drop-block lifetimes
@@ -88,9 +100,9 @@ in its prior two-TU no-GS recipe: two units255 bytes/two groups. No boundary,
 origin, source-map or denominator expansion. See
 [death-service proof](evidence/enemy-finalize-services/README.md).
 
-Current carrier remains `build/match-linked/EnemyItemDrops`, now pinned by the
-new death-service proof; its older item-scatter artifact/source pins are
-historical. Independent cold1 is
+The preceding death-service proof pins the earlier contents of
+`build/match-linked/EnemyItemDrops`; those mutable-cache/source pins are now
+historical. Its independent cold1 remains
 `build/gpt-6.1-sol/enemy-finalize-real-services-20261021/maintained-cold1`.
 Complete ANM9964, Run7020 and dispatcher14468 native bodies retain equality
 after verified field rewrites; fresh complete Run/all189/62locals stays27
@@ -531,9 +543,9 @@ graph after any dependency changes before comparing scores.
 
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
-| ANM ExecuteScript43EE30/9964 | Current two full ten-TU death-service colds retain complete native9964-body equality; prior90/92 groups and gap2 remain through that equality | Nonexact. Registers, flag scheduling, intervals61(+1)/2(−1) and common tail remain open. No target exact credit from native equality. |
-| ECL Run44E1A0/7020 | Current full ten-TU death-service graph: complete7020/all189/62locals,6993 matched,171-byte float callee exact | Nonexact,27 ordinary differences. Historical separate two-TU26 is not current after Enemy source edits. Thread argument, SIB, stack-home and common-latch differences remain. [Current evidence](evidence/enemy-finalize-services/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Current two full ten-TU death-service colds retain complete native14468-body equality; frame2C4,181 selectors/108 groups and gap652 persist | Generic integer calls105/106; 1B4 third read shares a native1AA tail (three calls on every selected static return path). Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
+| ANM ExecuteScript43EE30/9964 | Current two full ten-TU cancel-record colds retain complete native9964-body raw equality; prior90/92 groups and gap2 remain through that equality | Nonexact. Registers, flag scheduling, intervals61(+1)/2(−1) and common tail remain open. No target exact credit from native equality. |
+| ECL Run44E1A0/7020 | Current full ten-TU cancel-record graph: complete7020/all189/62locals,6993 matched,171-byte float callee exact | Nonexact,27 ordinary differences. Historical separate two-TU26 is not current after Enemy source edits. Thread argument, SIB, stack-home and common-latch differences remain. [Current evidence](evidence/enemy-cancel-record-lifetimes/README.md). |
+| Enemy DispatchEclInstruction40E770/14416 | Current two full ten-TU cancel-record colds retain complete native14468-body raw equality; frame2C4,181 selectors/108 groups and gap652 persist | Generic integer calls105/106; 1B4 third read shares a native1AA tail (three calls on every selected static return path). Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
 
 Old rejected controls are scoped observations, not proof that an API or source
 shape is correct. Require a concrete target hypothesis and compare corresponding
@@ -556,8 +568,8 @@ or assume a new context fixes it without fresh target lifetime evidence.
 
 ```sh
 scripts/repo-python scripts/replay-exact-units.py \
-  --unit anm-evaluate-rgb-interpolation --unit anm-int3-scale --json
-scripts/repo-python scripts/test-anm-rgb-interpolation.py
+  --unit enemy-cancel-bullet-record --json
+scripts/repo-python scripts/test-enemy-cancel-record.py --mutations
 scripts/repo-python scripts/report-anm-execute-table.py --check
 ```
 
@@ -591,7 +603,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the death-service proof; item-scatter/read-open/worker/RGB results retain
+Latest focused native results are in the cancel-record proof; death-service/item-scatter/read-open/worker/RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -606,4 +618,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/enemy-finalize-services/validation-summary.json).
+[the current validation summary](evidence/enemy-cancel-record-lifetimes/validation-summary.json).

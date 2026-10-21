@@ -392,10 +392,9 @@ __declspec(noinline) unsigned int EnemyCancelBulletRecord(
 
     EnemyBulletPositionView *position =
         reinterpret_cast<EnemyBulletPositionView *>(bullet + 0x3b4);
-    int outside = position->IsOutsidePlayfield(8.0f, 8.0f);
-    *reinterpret_cast<short *>(bullet + 0x30c) = 1;
-    *reinterpret_cast<short *>(bullet + 0x446) = 3;
-    if (outside == 0) {
+    if (position->IsOutsidePlayfield(8.0f, 8.0f) == 0) {
+        *reinterpret_cast<short *>(bullet + 0x446) = 3;
+        *reinterpret_cast<short *>(bullet + 0x30c) = 1;
         int zero = 0;
         int effectScript = *reinterpret_cast<int *>(bullet + 0x438);
         if (effectScript >= 0) {
@@ -422,6 +421,8 @@ __declspec(noinline) unsigned int EnemyCancelBulletRecord(
         *reinterpret_cast<int *>(bullet + 0x3f8) = -1;
         return 1;
     }
+    *reinterpret_cast<short *>(bullet + 0x446) = 3;
+    *reinterpret_cast<short *>(bullet + 0x30c) = 1;
     *reinterpret_cast<unsigned int *>(bullet) |= 8;
     return 1;
 }

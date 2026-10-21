@@ -4334,3 +4334,40 @@ call44F941; residual1710 belongs to SINE. The current database has no function
 or instruction record for Pop450610. Its independently qualified122-byte
 PDB/target comparison passes; provisional metadata absence is not boundary
 evidence. Full412289-byte mapped-text identity is unchanged before/after review.
+
+
+### 2026-10-21: Bullet cancel transition and branch-local state
+
+[Cancel-record evidence](evidence/enemy-cancel-record-lifetimes/README.md) closes
+the existing199-byte408030..4080F6 owner/all4 fields without boundary, origin,
+source-map or denominator expansion. Fresh direct Ghidra observes seven direct
+calls; raw target endsRET then nineCC before408100. Only states1/2 react. Both
+paths set state3/animation1; the screen path conditionally creates a world VM
+then initializes/restarts the timer, while the outside path sets flags bit8.
+The resource pointer is4776F0, resource+3E0B50; original data owner stays unknown.
+
+Old source stores the state pair before the outer branch and emits200 bytes:
+EBX zero is shared with the bounds-result comparison and saved/restored even
+outside. Moving zero after the script or using literal zeros preserves every
+old byte; early return remains200 with changed layout. Branch-local writes
+recover199 and narrow EBP/zero to the screen path. Animation-first source still
+emits the two merged stores in reverse target order,193/199. State-first source
+lets VC7.1 emit target animation1/state3 order and all199 bytes match. The MIT
+reference corroborates source shape only. No original class/TU/profile is inferred.
+
+Two independent full ten-TU GL/GS colds freeze31 equal raw inputs. Each strictly
+passes34 complete owners4164/all113, new199 plus33 guards3965/all109. Canonical
+replay selects only the new unit/one group. Bounds91, world creation448DB0 and
+the two global identities independently bind all4 fields; world116/118 remains
+nonexact. Four controls reject wrong pointer slot, copied-native state3->2,
+complete reversed-store199 and complete oversized200. Original target is unchanged.
+The maintained-body logical host projection passes288 live-object scenarios
+and8 strict intended-assertion mutants under sanitizers, without native ABI/
+layout, game-runtime or product claims.
+
+All complete native ANM9964, Run7020 and dispatcher14468 bytes equal the previous
+carrier and both new colds, with no address rewrites needed. Full current
+Run/all189/62locals retains27 ordinary differences and exact171-byte callee.
+All three large goals stay active/nonexact. The current EnemyItemDrops cache
+is pinned by this new proof; older source/artifact pins for that path are
+historical. Authored exact becomes392/71828; all later phase gates remain open.

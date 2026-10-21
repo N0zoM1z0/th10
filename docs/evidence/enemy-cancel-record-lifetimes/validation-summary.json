@@ -1,0 +1,172 @@
+{
+  "state": "validated",
+  "focused": {
+    "canonical_units": 1,
+    "canonical_bytes": 199,
+    "canonical_groups": 1,
+    "independent_complete_colds": 2,
+    "owners_per_cold": 34,
+    "bytes_per_cold": 4164,
+    "fields_per_cold": 113,
+    "source_controls_executed": 5,
+    "controls_adopted": 1,
+    "negative_controls_rejected": 4,
+    "host_scenarios": 288,
+    "host_strict_mutants": 8
+  },
+  "cleanup": {
+    "scope": "Owned terminal duplicate controls, one unexecuted source copy and reproducible host outputs; source/strict/guard receipts and host receipt/logs retained",
+    "directories": 5,
+    "bytes": 5087628,
+    "retained": [
+      "both accepted maintained cold images",
+      "same-size193/199 failure",
+      "complete200-byte failure",
+      "copied-native state mutation",
+      "source variants and producer/target/strict/guard reports"
+    ],
+    "unrelated_d3d": "untouched"
+  },
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "standard_ci_invocations": 1,
+  "standard_ci_checks": 103,
+  "gates": [
+    {
+      "label": "focused",
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "enemy-cancel-bullet-record",
+        "--json"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.411,
+      "log": ".analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/final-focused.json",
+      "log_sha256": "7be08e7f8ef9a1f5f7b4e81a2a2b1d125cf11d4860d96413ca85d194d4f232c9"
+    },
+    {
+      "label": "run",
+      "command": [
+        "scripts/repo-python",
+        "scripts/diagnose-ecl-run-native.py",
+        "--unit",
+        "enemy-cancel-bullet-record",
+        "--artifact-dir",
+        "build/match-linked/EnemyItemDrops"
+      ],
+      "expected_exit": 1,
+      "actual_exit": 1,
+      "seconds": 0.618,
+      "log": ".analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/final-run.json",
+      "log_sha256": "09a2c7a02f6068107d12ffcc36aa9418fa551e6ae9e996c58a24a47d909dacae"
+    },
+    {
+      "label": "toolchain",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.147,
+      "log": ".analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/final-toolchain.log",
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "label": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.327,
+      "log": ".analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/final-tracking.log",
+      "log_sha256": "5ff77b52dfd4ef85a3193e4a431754e8b609d46ee4a491af71939f834175fcf6"
+    },
+    {
+      "label": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.15,
+      "log": ".analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/final-progress.log",
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "label": "ci",
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 404.087,
+      "log": ".analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/final-ci.log",
+      "log_sha256": "c944b92c7552e6e106de07f1063c42d8ebe474f13ce59b9e583c715838f7ce79",
+      "steps": 103
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "actual_exit": 0,
+      "seconds": 0.044,
+      "log": ".analysis/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/final-diff.log",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "pins_before": {
+    "raw_inputs": 31,
+    "native_artifacts": 30,
+    "result": "all unchanged"
+  },
+  "pins_after": {
+    "raw_inputs": 31,
+    "native_artifacts": 30,
+    "result": "all unchanged"
+  },
+  "host_strict_revalidation": {
+    "command": [
+      "scripts/repo-python",
+      "scripts/test-enemy-cancel-record.py",
+      "--mutations",
+      "--out",
+      "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/enemy-cancel-record-lifetimes-20261021/host-final-r7l36udr"
+    ],
+    "actual_exit": 0,
+    "seconds": 7.015,
+    "producer_sha256": "6092638d2f136fc12e8b3afcb7cd760dcf17e9df3dffae02468f88cadcb35add",
+    "receipt_sha256": "57bc11ef1125bd8080cdb514aae2fc0b1c6d92f89282adc330b3defd7fe81842",
+    "log_sha256": "3831fc94f9d5070f23cb5161e0a15280f935e93c1fa830f7c1db64e9cf07f0b8",
+    "temporary_output_bytes": 1860908,
+    "temporary_output_removed": true
+  },
+  "native_summary_sha256": "2d3eddcdc439de3fc966e9ed4be5e13c1cd852bd2b3042f37d3c01e290ab8e42",
+  "final_gates_receipt_sha256": "06f7ee137637f8376581080fd1c5b71f16f74dc489d5e9ae81618b2882aa9019",
+  "replay_scope": "Only new199-byte canonical unit, one shared cold build group. Two complete ten-TU colds and33 same-image helper guards; no full historical replay.",
+  "canonical_reconstruction": {
+    "authored_exact_functions": 392,
+    "authored_exact_bytes": 71828,
+    "canonical_exact_functions": 1233,
+    "new_authored_bytes": 199,
+    "denominator_change": 0
+  }
+}
