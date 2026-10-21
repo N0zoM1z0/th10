@@ -4490,3 +4490,28 @@ satisfy full owned-byte coverage. ANM9964/7478/7995/90groups/gap2 and Enemy14464
 frame2C4/19sentinels/42groups/gap650 remain nonexact. The length-square expression
 control preserves all three complete raw native bodies in its preceding source
 context. No exact totals change. See [pending3 evidence](evidence/player-pending3-route/README.md).
+
+
+### Explicit VM-ID value construction closes two helpers (2026-10-21)
+
+ResultMenuPendingThree40C4D0/65 and PendingSix4243F0/65 now replay complete and
+canonical exact. Their input pointer was alreadyEAX; direct class-copy source
+usedECX for the loaded ID value. Two existing AnmVmIdView(id->value) constructor
+expressions recover targetMOV EAX,[EAX]/PUSH EAX without changing ABI declarations,
+headers, profiles or entry. This is an observed source/codegen relation, not a
+claim about original spelling or object ownership.
+
+Two independent full2TU colds freeze19 project inputs and reproduce new130bytes/
+all4 fields plus existingRows404/all16,534/all20 total. Allthree native body hashes
+repeat. Additional5TU link reuses the newcanonicalFrontend object+four verified
+unchanged supports (no extra game compile) and passes599/all22 includingexisting
+Playerpending2/65. Playercall/bias and copiedwrong-helper rejection pass; full
+caller738/876 and product/runtime/semantic/port gates remain open.
+
+Onlyexplicit-id was executed; two prepared alternatives were nevercompiled and
+are pruned withthe superseded positive native artifact,1137143bytes total.
+All33 current large inputs/16artifacts and canonical large carrier remain
+unchanged becauseFrontend.cpp is absent fromthat graph; no newlarge score or
+compile is claimed. All1235previousrecipes remain unchanged andtwo are added.
+Authored exact is396/72283 bytes,26.42% provisional. See
+[explicit ID proof](evidence/pending-id-value/README.md).

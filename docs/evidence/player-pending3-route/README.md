@@ -1,5 +1,10 @@
 # Player pending3 caller binding (2026-10-21)
 
+This pack records the source and cache state of b471372. The later
+[explicit-value checkpoint](../pending-id-value/README.md) closes both65-byte
+helpers and advances the mutable canonical row artifact; the63/65 observations
+below retain their historical scope.
+
 PlayerUpdateShots now calls the existing shared pending-interrupt3 implementation
 instead of the unresolved `PlayerSetShotVmDeleteState3` placeholder. The target
 call at428370 goes to40C4D0, which publishes pending3 to a resolved VM and root

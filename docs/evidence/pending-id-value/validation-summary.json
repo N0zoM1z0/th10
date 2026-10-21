@@ -1,0 +1,156 @@
+{
+  "state": "validated",
+  "native_summary_sha256": "584a49df970991ce141f9ba24aa3af818a98fb9ebb681ea36bcdd5a3e619305a",
+  "target_facts_sha256": "08045f5a369491dafccd23bb1e8d74b3cea5fabc42e479363cd51d94b2927faf",
+  "pins_before": {
+    "current_inputs": 45,
+    "canonical_inputs": 19,
+    "canonical_artifacts": 7,
+    "first_cold_artifacts": 7,
+    "five_tu_artifacts": 10,
+    "unchanged_large_artifacts": 31,
+    "result": "all current"
+  },
+  "pins_after": {
+    "current_inputs": 45,
+    "canonical_inputs": 19,
+    "canonical_artifacts": 7,
+    "first_cold_artifacts": 7,
+    "five_tu_artifacts": 10,
+    "unchanged_large_artifacts": 31,
+    "result": "all current"
+  },
+  "gates": [
+    {
+      "label": "result-menu-pending-three",
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "result-menu-pending-three",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.436,
+      "log_sha256": "0ec363bae16278cb11de2bf20e77f740f2fd6cdba31aa7e379e257e1cbfa5aaa"
+    },
+    {
+      "label": "result-menu-pending-six",
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "result-menu-pending-six",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.418,
+      "log_sha256": "1e3bfcdcb13354700bcc7ccb01510bc061eb33871b08c376efd13090c97f8059"
+    },
+    {
+      "label": "result-menu-draw-name-entry",
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "result-menu-draw-name-entry",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.53,
+      "log_sha256": "8f7c2f153d07ea01acc80dc0607c4f3df69e203745522d6a0aa5a011bc5b323b"
+    },
+    {
+      "label": "player-call",
+      "command": [
+        "scripts/repo-python",
+        ".analysis/gpt-6.1-sol/pending-id-value-20261021/verify-player-call.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.271,
+      "log_sha256": "7ef0de9d7e5122064b2cb30343d373a7549f3434f327bde96b712e487179c888"
+    },
+    {
+      "label": "toolchain",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.209,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "label": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.434,
+      "log_sha256": "bd3d36fdf6ab0bc62e3ba627689fdac03480fb81df090cefd9a668981414e48e"
+    },
+    {
+      "label": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.172,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "label": "docs",
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.192,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.054,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "ci": {
+    "session": 12935,
+    "observed_terminal_exit": 0,
+    "checks": 105,
+    "invocations": 1,
+    "command": [
+      "nice",
+      "-n",
+      "10",
+      "scripts/repo-python",
+      "scripts/ci.py"
+    ],
+    "log_sha256": "787830bb21df534c86592a73d7caa2f74948da08bd29a445c5edf83cb09c6264",
+    "code_frozen_before_launch": true
+  },
+  "standard_ci_invocations": 1,
+  "standard_ci_checks": 105,
+  "new_exact_functions": 2,
+  "new_exact_bytes": 130,
+  "canonical_replay_scope": [
+    "result-menu-pending-three",
+    "result-menu-pending-six",
+    "result-menu-draw-name-entry"
+  ],
+  "cold_proof_scope": "Two independently complete2TU cold builds, three whole owners534/all20; additional5TU four whole owners599/all22.",
+  "large_scope": "No new compile or ordinary-byte score; all33 relevant inputs and16+15 artifacts unchanged.",
+  "authored_exact_functions": 396,
+  "authored_exact_bytes": 72283,
+  "authored_denominator_bytes": 273576,
+  "authored_percent_provisional": 26.42
+}

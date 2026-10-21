@@ -42,14 +42,36 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1776 reviewed
 candidates, 735 authored functions owning 273576 bytes, 1085 source mappings,
-1235 canonical exact functions overall. Authored exact is **394 functions,
-72153/273576 bytes (26.37%)**. The 208 mapped authored nonexact functions,
+1237 canonical exact functions overall. Authored exact is **396 functions,
+72283/273576 bytes (26.42%)**. The 206 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional. The SVG now visibly fills the authored
 bar from current classified exact bytes and labels the ratio provisional.
 The complete-game denominator remains unknown.
 
-The latest source checkpoint restores PlayerUpdateShots' actual pending3 call
+The latest exact checkpoint closes both shared pending helpers: PendingThree
+40C4D0/65 and PendingSix4243F0/65, adding130 authored exact bytes. Explicit
+AnmVmIdView(id->value) construction replaces the direct object copy in two
+FindVm expressions. Both inputs already matched EAX; the loaded value now
+also uses targetEAX. No header/signature/ABI annotation/profile/entry change.
+Two independent complete two-TU /GL /GS /EHs cold builds freeze19 inputs and
+replay three whole owners534/all20, including the existing404-byte row guard.
+Allthree native bodies reproduce raw. A separate five-TU link reuses the new
+canonical FrontEnd object and four verified unchanged supports, compiles no
+further game source and passes four complete owners599/all22, including
+existing Playerpending2/65. The actual Player call/bias proof and copied-native
+wrong-helper rejection still pass. No whole Player caller/runtime claim.
+
+See [explicit ID value proof](evidence/pending-id-value/README.md).
+Only one private value probe was executed; two prepared alternatives were not
+compiled. Superseded positive and unexecuted sources reclaim1137143 bytes.
+The current33-input large graph excludes FrontEnd.cpp, all33 inputs/16 artifacts
+and the canonical large carrier remain unchanged. No new large compile or byte
+score is claimed. All1235 previous recipes remain unchanged; two are added.
+Original ANM/ECL/Enemy large goals remain active/nonexact. Recovery:
+`.analysis/gpt-6.1-sol/pending-id-value-20261021/RECOVERY.md`.
+
+The preceding source checkpoint restores PlayerUpdateShots' actual pending3 call
 at428370->40C4D0, replacing an unresolved misleading DeleteState3 alias. Two
 menu helpers pass their existing typed IDs to FindVm. Complete target876/native738
 caller decode verifies the direct helper entry and biased iterator identity:
@@ -74,7 +96,8 @@ its earlier measurements retain their original scope. The accepted ten-TU
 canonical carrier below is unchanged. Four owned terminal native directories
 are pruned/4379425 bytes; source/producer/comparison snapshots and selected5TU
 caller failure remain. Recovery: `.analysis/gpt-6.1-sol/ecl-square-order-20261021/RECOVERY.md`.
-No new exact credit: the visible authored progress bar remains26.37%.
+That preceding source-only checkpoint added no exact credit; the two helpers
+subsequently close in the explicit-value proof above.
 
 The preceding bounded checkpoint closes PlayerSetShotVmInterrupt2 at40C480,
 complete65 bytes and both address fields, without changing maintained C++.
@@ -724,7 +747,8 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused caller/payload diagnostics are in the pending3 proof; earlier
+Latest exact results are in the explicit-ID-value proof. Earlier focused
+caller/payload diagnostics are in the pending3 proof; earlier
 routing/creator diagnostics remain in the child/creator proof;
 exact results are in
 the circle-cancel proof; death-service/item-scatter/read-open/worker/RGB results retain
@@ -742,4 +766,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/player-pending3-route/validation-summary.json).
+[the current validation summary](evidence/pending-id-value/validation-summary.json).
