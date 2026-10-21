@@ -4255,3 +4255,54 @@ byte of all three large owners and all7020 target-replayed Run bytes; the curren
 expression order or compiler declaration is established. Separate spawn-only
 and stop-context-only forms remain unexecuted. The item-scatter receipt records
 these bounded compiler observations and the unchanged31 current source pins.
+
+
+### 2026-10-21: Enemy death finalizer real services and local lifetimes
+
+[Death-service evidence](evidence/enemy-finalize-services/README.md) closes the
+existing162-byte40E5F0..40E691 owner/all9 fields without boundary, origin,
+source-map or denominator changes. Its sole observed direct caller is
+RuntimeUpdate40E249; RET4 ends40E691 before14CC. The earlier receiverless
+EnemyPlayDeathSound/EnemySpawnDeathEffect prototypes were insufficient source
+models. Real QueueSoundCue and CreateVmAtWorldVariant0 recover sound ESI/EBX,
+selected ANM resource, position and hidden return transport. The unused ANM
+result naturally occupies the dead enemy parameter home, LEA[ESP+18] at offset39.
+No fixed registers, fake arguments, assembly or target changes are used.
+
+All nine observed ExtendFaithTimer references are direct calls, one death and
+eight collection sites. A compatible noinline definition retains its existing
+93/all2 exact body in the original declared no-GS recipe and in the ten-TU
+caller graph. Real services alone give260/162; outlining gives165/162. Separate
+position/drop-block locals after effect creation recover target ESI position
+and EBP block lifetime, eliminating duplicate position LEA and the last3 bytes.
+These compiler observations do not recover original annotation/class/TU/profile.
+The MIT reference corroborates local lifetimes only; target/compiler bytes are
+acceptance evidence. Score state474C40 already has independent GAMESTATE-001
+support; its new caller field establishes no production data ownership.
+
+Two independent complete ten-TU GL/GS colds freeze31 equal raw inputs and each
+strictly pass30 full owners3656/all104. Canonical replay selects only new162 and
+modified existing Faith93:255bytes/two groups. A grouping preflight initially
+rejects two output directories for one graph before any native build; assigning
+its existing shared output fixes metadata only. Three controls reject wrong
+sound binding, copied-native ANM result-home18->14 and the full165-byte extent.
+The maintained host projection passes432 scenarios and7 intended-assertion
+mutants with ordinary live logical containers, pointer identities and mutable
+service boundaries. It supplies no native layout/ABI or game-runtime claim.
+
+Current native ANM9964, Run7020 and Enemy14468 bodies remain equal after verified
+field rewrites. Full current Run/all189/62locals stays27 ordinary differences.
+Old separate two-TU26 is historical after Enemy source changes. World116/118,
+Spawn795/819, Runtime2356/2412 and item update2232/2320 remain nonexact; no parent
+or callee credit follows from this162-byte caller. All three original large
+exact goals and later phase gates remain open. The typed-packet control was
+already executed in its older nine-TU context and regressed14476/gap662; the
+old handoff's untested label was stale, not new evidence.
+
+Fresh same-target dispatcher prologue review finds target zeroed EAX/AX16 load
+followed by MOVSX ECX,AX; current native zeroed ECX/CX16 load followed by MOVSX
+EDI,CX. Both spill the raw carrier as a dword (targetESP10, nativeESP14).
+Zeroed upper bits or dword storage do not establish an unsigned selector:
+both paths explicitly sign-extend16 before the range adjustment. No opcode
+representation change is tested or adopted from this observation. The current
+death-service receipt pins the raw observation and records its limitation.

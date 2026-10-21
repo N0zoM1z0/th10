@@ -42,12 +42,49 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1776 reviewed
 candidates, 735 authored functions owning 273576 bytes, 1084 source mappings,
-1231 canonical exact functions overall. Authored exact is **390 functions,
-71467/273576 bytes (26.12%)**. The 211 mapped authored nonexact functions,
+1232 canonical exact functions overall. Authored exact is **391 functions,
+71629/273576 bytes (26.18%)**. The 210 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint closes EnemyDropItemCounts40C9A0/48/all3 and
+The latest checkpoint closes EnemyFinalizeDeath40E5F0..40E691:
+**162 new authored exact bytes/all9 fields**. Real QueueSoundCue and
+CreateVmAtWorldVariant0 replace receiverless free aliases; noinline on the
+existing shared ExtendFaithTimer and explicit position/drop-block lifetimes
+recover target ESI/EBP, dead parameter-home reuse for the ANM result, and RET4.
+Ordinary source/annotation is compatible evidence; original declaration/TU/
+profile remain unknown. Two independent complete ten-TU GL/GS colds through
+real dispatcher freeze31 equal raw inputs and each pass30 complete owners
+3656/all104. Canonical cold2 selects only new162 plus modified existing Faith93
+in its prior two-TU no-GS recipe: two units255 bytes/two groups. No boundary,
+origin, source-map or denominator expansion. See
+[death-service proof](evidence/enemy-finalize-services/README.md).
+
+Current carrier remains `build/match-linked/EnemyItemDrops`, now pinned by the
+new death-service proof; its older item-scatter artifact/source pins are
+historical. Independent cold1 is
+`build/gpt-6.1-sol/enemy-finalize-real-services-20261021/maintained-cold1`.
+Complete ANM9964, Run7020 and dispatcher14468 native bodies retain equality
+after verified field rewrites; fresh complete Run/all189/62locals stays27
+ordinary differences. The three original large goals stay active/nonexact.
+World creator116/118, Spawn795/819, RuntimeUpdate2356/2412 and item update2232/2320
+receive no exact credit. All nine observed timer references are direct calls;
+no original noinline annotation is inferred. Dense162 endsRET4 before14CC.
+
+Host projection passes432 live-storage/order scenarios and7 strict mutants
+under sanitizers; three native/template controls reject. Four inspected owned
+terminal directories are pruned/5342450 bytes; final colds and165-byte failure
+remain. Private recovery is
+`.analysis/gpt-6.1-sol/enemy-finalize-real-services-20261021/RECOVERY.md`.
+An initial canonical group preflight rejects conflicting output directories
+before compiling; corrected recipe uses the existing same-graph output.
+Source/profile/entry/field contracts remain unchanged. No failed cold is counted.
+Unrelated D3D evidence is untouched.
+All102 standard CI checks pass in one invocation; final focused255/all11,
+toolchain/tracking/progress/docs/whitespace gates pass. All31 raw inputs and31
+final native artifacts remain hash-current after CI.
+
+The preceding checkpoint closes EnemyDropItemCounts40C9A0/48/all3 and
 EnemyDropItemCountsCore40C9D0/503/all27: **551 new authored exact bytes**.
 All four item callers now use the real ItemManager receiver; the core uses one
 ordinary unsigned conversion per draw, in-place three-float storage, outlined
@@ -466,9 +503,9 @@ graph after any dependency changes before comparing scores.
 
 | Owner | Last measured context | Remaining work |
 | --- | --- | --- |
-| ANM ExecuteScript43EE30/9964 | Current two full nine-TU dispatcher colds with real scale support:9964 bytes,90 target-sized groups, absolute gap2, aligned7478/7995 | Nonexact. Old eight-TU anchor graph had7250/7995 despite same size. Unequal intervals61(+1),2(−1); registers, flag scheduling and common tail remain open. |
-| ECL Run44E1A0/7020 | Current full two-TU cold afterccd47a6: strict all189 fields and6994/7020 bytes;15 same-image guards1587/all21 | Exactly26 ordinary differences remain. Eight-TU Enemy context has27, including an additional SIB byte. Static float-value adapter repairs FORMAT register setup while retaining171-byte canonical callee; no new exact credit. [Current evidence](evidence/ecl-float-value-call-order/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Current two full nine-TU colds with real scale support:14468 bytes, rank-five434/420, frame2C4,181 selectors and108 groups; case-size gap652 | Generic integer calls105/106; 1B4 third read shares a native1AA tail (three calls on every selected static return path). Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
+| ANM ExecuteScript43EE30/9964 | Current two full ten-TU death-service colds retain complete native9964-body equality; prior90/92 groups and gap2 remain through that equality | Nonexact. Registers, flag scheduling, intervals61(+1)/2(−1) and common tail remain open. No target exact credit from native equality. |
+| ECL Run44E1A0/7020 | Current full ten-TU death-service graph: complete7020/all189/62locals,6993 matched,171-byte float callee exact | Nonexact,27 ordinary differences. Historical separate two-TU26 is not current after Enemy source edits. Thread argument, SIB, stack-home and common-latch differences remain. [Current evidence](evidence/enemy-finalize-services/README.md). |
+| Enemy DispatchEclInstruction40E770/14416 | Current two full ten-TU death-service colds retain complete native14468-body equality; frame2C4,181 selectors/108 groups and gap652 persist | Generic integer calls105/106; 1B4 third read shares a native1AA tail (three calls on every selected static return path). Two final rank owner reloads recovered; lower three, instruction lifetime, storage, register scheduling and stack homes remain open. No parent or case exact credit. |
 
 Old rejected controls are scoped observations, not proof that an API or source
 shape is correct. Require a concrete target hypothesis and compare corresponding
@@ -482,8 +519,10 @@ physically inside1AA and shared by1B4; target41054F/410580/4105BE stay in1B4.
 Calls are assumed returning and predicates unconstrained; no argument/runtime
 equivalence is claimed. The earlier two-versus-three region count is layout,
 not a missing read. Review tail sharing and packet lifetime before adding one.
-The reused integer iVar27 mixes the initial instruction address with unrelated later uses;
-a distinct typed packet lifetime remains a bounded untested hypothesis.
+The reused integer iVar27 mixes the initial packet and unrelated later values.
+A distinct typed packet was already tested in the preceding private nine-TU
+context and regressed to14476/gap662; do not describe that control as untested
+or assume a new context fixes it without fresh target lifetime evidence.
 
 ## Reproduction and retained local state
 
@@ -524,7 +563,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the item-scatter proof; read-open/worker/RGB results retain
+Latest focused native results are in the death-service proof; item-scatter/read-open/worker/RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -539,4 +578,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/enemy-item-scatter/validation-summary.json).
+[the current validation summary](evidence/enemy-finalize-services/validation-summary.json).

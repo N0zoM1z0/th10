@@ -300,9 +300,6 @@ EnemyManagedVmView *EnemyResolveManagedVmId(unsigned int *vmId);
 float EnemyAngleFromPlayer(Player *player, const PlayerFloat3 *position);
 EnemyEclInstructionView *EnemyLookupEclSubroutine(
     EnemyEclResourceView *scriptDatabase, const char *name);
-void EnemyPlayDeathSound(int soundId, float positionX);
-void EnemySpawnDeathEffect(
-    const PlayerFloat3 *position, void *resource, int scriptId);
 void __stdcall EnemyDropItemCountsCore(
     const PlayerFloat3 *position, int *itemDropBlock);
 
@@ -1806,36 +1803,42 @@ EnemyFullObjectView::~EnemyFullObjectView()
 
 }
 
-// Reviewed target 0x0040E5F0-0x0040E691 finalization path. The direct callees
-// use private register live-ins; these descriptive calls express only the
-// target-observed logical values and do not claim their original declarations.
+// Target 0x0040E5F0-0x0040E691 uses the real sound, ANM, item and score services.
+// Position/drop-block lifetimes corroborated by th10-decomp (MIT), commit
+// c6791d82dc9f02e55eca45a5314f900a85481efd; TH10 target/compiler evidence is authoritative.
+// See docs/licenses/th10-decomp-MIT.txt.
 int __stdcall EnemyFinalizeDeath(EnemyFullObjectView *enemy)
 {
     EnemyRuntimeView *runtime = &enemy->runtime;
 
     if (runtime->deathSoundId >= 0)
-        EnemyPlayDeathSound(runtime->deathSoundId, runtime->worldMotion.position.x);
+        reinterpret_cast<EnemySoundQueueView *>(g_MainSoundOwner)->QueueSoundCue(
+            runtime->deathSoundId, runtime->worldMotion.position.x);
 
     if (runtime->deathEffectScript >= 0)
     {
-        EnemySpawnDeathEffect(
-            &runtime->worldMotion.position,
-            g_EnemyManager->effectResources[runtime->deathEffectResourceIndex],
-            runtime->deathEffectScript);
+        reinterpret_cast<AnmLoadedView *>(
+            g_EnemyManager->effectResources[runtime->deathEffectResourceIndex])->
+                CreateVmAtWorldVariant0(
+                    runtime->deathEffectScript,
+                    reinterpret_cast<const AnmFloat3View *>(
+                        &runtime->worldMotion.position));
     }
 
-    if (runtime->itemDropType > 0)
+    const PlayerFloat3 *position = &runtime->worldMotion.position;
+    int *itemDropBlock = &runtime->itemDropType;
+    if (*itemDropBlock > 0)
     {
         g_ItemManager->Spawn(
-            reinterpret_cast<const AnmFloat3View *>(&runtime->worldMotion.position),
-            runtime->itemDropType,
+            reinterpret_cast<const AnmFloat3View *>(position),
+            *itemDropBlock,
             -1,
             -1.5707964f,
             2.2f);
     }
 
-    EnemyDropItemCountsCore(&runtime->worldMotion.position, &runtime->itemDropType);
-    runtime->itemDropType = 0;
+    EnemyDropItemCountsCore(position, itemDropBlock);
+    *itemDropBlock = 0;
     g_GameScoreState.ExtendFaithTimer(10);
     return 1;
 }

@@ -162,7 +162,8 @@ void ItemPowerDisplayOwnerView::UpdatePowerDisplay(int value, int percent)
 
 // The target calls the same 0x44BF40 timer implementation as the ANM
 // executor. Both independently reviewed storage views have the same layout.
-void GameScoreStateView::ExtendFaithTimer(int amount)
+// The observed death/collection callers retain this complete shared helper.
+__declspec(noinline) void GameScoreStateView::ExtendFaithTimer(int amount)
 {
     if (timer.current < 130)
     {

@@ -23150,3 +23150,21 @@ linkages = [
   { offset = 0x1B1, type = "DIR32", target = 0x00470B94, symbol = "__real@3fc90fdb" },
   { offset = 0x1B9, type = "REL32", target = 0x0044BC70, symbol = "?EnemyWrapAngle@@YGMM@Z" },
 ]
+
+# Complete death finalizer through the real shared sound/ANM/item/score graph.
+[units.enemy-finalize-death]
+artifact_kind = "linked-pe"
+source = "src/EnemyEclDispatcher.cpp"
+support_sources = ["src/EclVm.cpp", "src/AnmManager.cpp", "src/AnmVmCreate.cpp", "src/EnemyLaser.cpp", "src/Enemy.cpp", "src/AnmVmId.cpp", "src/RandomMath.cpp", "src/AnmInt3Scale.cpp", "src/ItemManager.cpp"]
+support_profiles = { "src/AnmInt3Scale.cpp" = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS", "/Ob1"] }
+profile = ["/TP", "/MT", "/O2", "/Gy", "/GF", "/Oi", "/DNDEBUG", "/Isrc", "/GL", "/GS"]
+entry_symbol = "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+output_dir = "build/match-linked/EnemyItemDrops"
+link_profile = ["/ltcg", "/nodefaultlib", "/subsystem:console", "/incremental:no", "/fixed:no", "/base:0x00400000", "/debug", "/debugtype:cv", "/opt:noref", "/opt:noicf", "/safeseh:no"]
+harness = "unresolved-symbol-data-anchors-v1"
+pdb_source = "src/Enemy.cpp"
+functions = ["EnemyFinalizeDeath"]
+symbol = "?EnemyFinalizeDeath@@YGHPAUEnemyFullObjectView@@@Z"
+target_address = 4253168
+size = 162
+linkages = [{ "offset" = 26, "type" = "DIR32", "symbol" = "?g_MainSoundOwner@@3PAEA", "target" = 4793744 }, { "offset" = 31, "type" = "REL32", "symbol" = "?QueueSoundCue@EnemySoundQueueView@@QAEXHM@Z", "target" = 4447504 }, { "offset" = 53, "type" = "DIR32", "symbol" = "?g_EnemyManager@@3PAUEnemyManagerView@@A", "target" = 4683524 }, { "offset" = 74, "type" = "REL32", "symbol" = "?CreateVmAtWorldVariant0@AnmLoadedView@@QAE?AUAnmVmIdView@@HPBUAnmFloat3View@@@Z", "target" = 4492720 }, { "offset" = 114, "type" = "DIR32", "symbol" = "?g_ItemManager@@3PAUItemManagerView@@A", "target" = 4683800 }, { "offset" = 121, "type" = "REL32", "symbol" = "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z", "target" = 4307712 }, { "offset" = 127, "type" = "REL32", "symbol" = "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z", "target" = 4245968 }, { "offset" = 134, "type" = "DIR32", "symbol" = "?g_GameScoreState@@3UGameScoreStateView@@A", "target" = 4672576 }, { "offset" = 146, "type" = "REL32", "symbol" = "?ExtendFaithTimer@GameScoreStateView@@QAEXH@Z", "target" = 4272112 }]

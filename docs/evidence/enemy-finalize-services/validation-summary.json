@@ -1,0 +1,79 @@
+{
+  "state": "passed",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "focused": {
+    "new_owner_bytes": 162,
+    "new_owner_fields": 9,
+    "independent_complete_colds": 2,
+    "owners_per_cold": 30,
+    "complete_bytes_per_cold": 3656,
+    "fields_per_cold": 104,
+    "canonical_affected_units": 2,
+    "canonical_affected_bytes": 255,
+    "canonical_artifact_groups": 2,
+    "host_scenarios": 432,
+    "strict_host_mutants": 7,
+    "native_template_controls": 3
+  },
+  "pre_ci_pin_validation": {
+    "actual_raw_inputs": 31,
+    "faith_recipe_project_inputs": 15,
+    "unique_final_native_artifacts": 31,
+    "result": "unchanged"
+  },
+  "cleanup": {
+    "directories": 4,
+    "bytes": 5342450,
+    "retained": [
+      "two final full ten-TU cold carriers",
+      "modified Faith original two-TU canonical carrier",
+      "complete165-byte lifetime failure",
+      "copied-native return-home rejection",
+      "public host projection and mutant receipts"
+    ],
+    "unrelated_d3d": "untouched"
+  },
+  "phase_state": {
+    "original_three_large_owners": "active/nonexact",
+    "native_product": "open",
+    "runtime": "unknown",
+    "semantic": "not started",
+    "port": "not started"
+  },
+  "standard_ci": {
+    "result": "passed",
+    "steps": 102,
+    "uninterrupted_invocations": 1,
+    "log_sha256": "bde2e81776564808ca369822ead60468f269e549970decbce0491d14a97538c6"
+  },
+  "final_focused_comparisons": [
+    {
+      "unit": "enemy-finalize-death",
+      "size": 162,
+      "fields": 9,
+      "result": "exact",
+      "receipt_sha256": "d69aa120a3a6135035fdb96710c719ab20ecfe64ff18e55b5234d11a57da1b2a"
+    },
+    {
+      "unit": "game-score-extend-faith-timer",
+      "size": 93,
+      "fields": 2,
+      "result": "exact",
+      "receipt_sha256": "dc6e70ddc88b201e7b4f8a8adf128825d3f7cf8ed034575d8770a222d32a6eb1"
+    }
+  ],
+  "post_ci_pin_validation": {
+    "result": "unchanged",
+    "actual_raw_inputs": 31,
+    "unique_final_native_artifacts": 31,
+    "artifact_pins_sha256": "835769833540ca90e3ba471b26eb7e5516f0c6a141657f488c067869f821c413"
+  },
+  "final_gates": [
+    "focused complete162/all9 and modified Faith93/all2 comparisons",
+    "toolchain declarations",
+    "tracking",
+    "generated progress",
+    "documentation references",
+    "git diff --check"
+  ]
+}
