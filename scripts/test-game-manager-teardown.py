@@ -133,7 +133,11 @@ def audit_seams(root, source, fixture):
     statistics = statistics[:statistics.index(begin)] + statistics[statistics.index(end) + len(end):]
     statistics = statistics.replace('#pragma once', '')
     fixture = statistics + '\n' + fixture
-    fixture = fixture.replace('@CHAIN_DECLARATIONS@', canonical(root, 'Chain.hpp'))
+    chain_source = canonical(root, 'Chain.cpp')
+    chain_constructors = '\nnamespace th10 {\n' + '\n'.join(
+        balanced(chain_source, anchor) for anchor in
+        ['ChainElem::ChainElem()', 'Chain::Chain()']) + '\n}\n'
+    fixture = fixture.replace('@CHAIN_DECLARATIONS@', canonical(root, 'Chain.hpp') + chain_constructors)
     fixture = fixture.replace('@VM_ID_DECLARATIONS@', canonical(root, 'AnmVmId.hpp').replace('#pragma once', '/* amalgamated header: pragma once removed */'))
     fixture = fixture.replace('@FLOAT3_DECLARATION@', balanced(anm, 'struct AnmFloat3View\n', True))
     fixture = fixture.replace('@REPLAY_DECLARATIONS@', '\n'.join([

@@ -67,11 +67,6 @@ def build(source, out, canonical=DEFAULT_CANON, sanitize=False):
     # named fields so the unchanged dependency algorithm can run on 64-bit.
     substitutions={
         'new ChainElem':'HostNewNode()',
-        '*(u32 *)((u8 *)elem + 0x4)':'elem->flags',
-        '*(u32 *)((u8 *)elem + 0x8)':'elem->callback',
-        '*(u32 *)((u8 *)elem + 0xc)':'elem->addedCallback',
-        '*(u32 *)((u8 *)elem + 0x10)':'elem->deletedCallback',
-        '*(u32 *)((u8 *)elem + 0x0)':'elem->prio',
         '*(ChainCallback *)((u8 *)elem + 0x0c)':'elem->addedCallback',
         '*(ChainCallback *)((u8 *)elem + 0x10)':'elem->deletedCallback',
         '*(ChainCallback *)((u8 *)elem + 0x8)':'elem->callback',
@@ -80,7 +75,7 @@ def build(source, out, canonical=DEFAULT_CANON, sanitize=False):
     adaptation_counts={}
     for old,new in substitutions.items():
         n=chain.count(old)
-        expected_count=4 if old=='*(u32 *)((u8 *)elem + 0x4)' else 1
+        expected_count=1
         if n!=expected_count: raise RuntimeError(f'canonical adaptation count {n}, expected {expected_count}: {old}')
         adaptation_counts[old]=n;chain=chain.replace(old,new)
     # RemoveAllFromList alone has a raw +0x18 host-incompatible load; retain

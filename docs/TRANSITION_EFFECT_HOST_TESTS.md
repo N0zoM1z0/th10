@@ -24,6 +24,20 @@ The host fixture already erases `__fastcall`, so its algorithms and seams are
 unchanged. The pin file retains the original raw hashes and receipt as historical
 provenance and records the two reviewed normalized-hash updates separately.
 
+The2026-10-22 [Chain constructor/layout recovery](evidence/chain-source-closure/README.md)
+refreshes exactly the two active Chain LF pins after target and native review;
+the other five active dependencies and CRLF-to-LF-only rejection policy stay
+unchanged. Chain.cpp now supplies actual constructors and a complete two-head
+owner. The host compiles those constructors, uses their actual list accessors,
+and retains exact-one checks for allocation, three callback lvalues and free.
+Obsolete integer-offset constructor rewrites are removed. Fixture resets destroy
+and reconstruct heads in place, preserving their live self links.
+Two differently prefilled owners add16 constructor observations for ownership
+bit preservation, zero callbacks/priority/links, self identity and untouched
+argument words; one usual post-scenario lock check raises843 assertions to860.
+The sanitized baseline and19 EOL checks pass. These observations do not establish
+native layout, the missing calc/draw dispatcher or concurrent engine lifetime.
+
 A second 2026-10-19 refresh updates only the AnmManager.cpp normalized pin
 after primary-alpha tangent initialization moved before endpoint stores; see
 [the full native evidence](evidence/anm-primary-alpha-local/README.md).

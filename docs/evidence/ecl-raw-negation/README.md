@@ -1,5 +1,11 @@
 # ECL raw float-word negation and operand homes
 
+Context update2026-10-22: the later [Chain recovery](../chain-source-closure/README.md)
+changes the shared Chain.hpp input and rebuilds the canonical ten-TU graph.
+This pack's32-input/15-artifact pins are now historical. The new
+[current pins](../chain-source-closure/native-summary.json) reproduce all three
+complete large bodies raw-identically and retain Run's27 ordinary differences.
+
 Started 2026-10-22 at `6b4e11d`. Opcode55 in Run negates the raw float word:
 target44F851 is `NEG EDX`, followed by a four-byte Push with tag66h. This is
 integer word arithmetic, including the payload80000000h, rather than floating

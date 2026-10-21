@@ -1087,3 +1087,7 @@ EnemyCancelManagerView::CancelBulletPattern,0x00408100,function
 PlayerTransitionToState2,0x004269D0,function
 HintOwnerView::AddCaution,0x00424650,function
 HintOwnerView::AddAutomaticEntry,0x0041A120,function
+th10::Chain::Chain,0x00449AA0,function
+th10::Chain::AddToCalcChain,0x00449AE0,function
+th10::Chain::AddToDrawChain,0x00449B70,function
+th10::Chain::AllocElem,0x00449ED0,function

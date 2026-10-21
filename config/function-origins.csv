@@ -1169,13 +1169,13 @@ address,origin,subsystem,disposition,confidence,evidence_id
 0x00449A20,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-29
 0x00449A30,unknown,,indeterminate,unknown,decomphelp-leaf-corroboration-2026-09-30
 0x00449A90,unknown,,indeterminate,unknown,target-ida-origin-indeterminate-2026-09-18
-0x00449AA0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x00449AE0,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
-0x00449B70,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
+0x00449AA0,unknown,Chain,indeterminate,unknown,target-chain-constructor-origin-indeterminate-2026-10-22
+0x00449AE0,authored_game,Chain,authored,medium,target-authored-neighbor-and-global-2026-09-17+target-chain-source-closure-2026-10-22
+0x00449B70,authored_game,Chain,authored,medium,target-authored-neighbor-and-global-2026-09-17+target-chain-source-closure-2026-10-22
 0x00449C00,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00449D40,authored_game,GameUnassigned,authored,medium,target-authored-neighbor-and-global-2026-09-17
 0x00449E50,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
-0x00449ED0,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
+0x00449ED0,authored_game,Chain,authored,medium,target-ida-reviewed-game-component-2026-09-17+target-chain-source-closure-2026-10-22
 0x00449F60,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044A000,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17
 0x0044A030,authored_game,GameUnassigned,authored,medium,target-ida-reviewed-game-component-2026-09-17

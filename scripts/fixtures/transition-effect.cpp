@@ -72,7 +72,11 @@ void reset() {
     for(const auto &a:allocations)CHECK(!a.second.alive,"HOST_NO_UNFINISHED_OWNERS");
     allocations.clear();
     CHECK(th10::g_CriticalSections[0].depth==0&&th10::g_ChainNestCounter==0,"HOST_LOCK_BALANCED");
-    chainA={};chainB={};th10::g_Chain=&chainA;game={};g_ResultGameManager=&game;
+    // Reconstruct real sentinels in place; copying a temporary would stale self.
+    chainA.~Chain();chainB.~Chain();
+    std::memset(&chainA,0,sizeof(chainA));std::memset(&chainB,0,sizeof(chainB));
+    new(&chainA) th10::Chain;new(&chainB) th10::Chain;
+    th10::g_Chain=&chainA;game={};g_ResultGameManager=&game;
     g_AnmGameSpeed=1;g_GameStartupCounter=0;g_RngView={};
     g_TransitionShakeX=91;g_TransitionShakeY=92;
     g_TransitionViewport={};g_TransitionViewport.x=7;g_TransitionViewport.y=9;
@@ -331,7 +335,7 @@ int deletedSpy(void *arg) { ++deleteCalls;deleteDepth=th10::g_CriticalSections[0
 void dispatchObserved() {
     auto *lock=&th10::g_CriticalSections[0];
     EnterCriticalSection(lock);++th10::g_ChainNestCounter;
-    auto *node=th10::g_Chain->calcList.next;
+    auto *node=th10::g_Chain->CalcList()->next;
     while(node) {
         auto *next=node->next; // retained before the owner may delete current.
         auto *elem=node->elem;auto callback=elem->callback;void *arg=elem->arg;
@@ -365,7 +369,7 @@ void lifetime0() {
     CHECK(alive(owner)&&!alive(updateAddr)&&alive(drawAddr),"RET0_OWNER_AND_DRAW_SURVIVE");
     // Observe only the pointer value in the LIVE owner. Never dereference the
     // freed update node and never run production Cleanup on this stale state.
-    CHECK(address(e->updateNode)==updateAddr&&chainA.calcList.next==nullptr&&chainA.drawList.next!=nullptr,"RET0_STORED_UPDATE_POINTER_STALE");
+    CHECK(address(e->updateNode)==updateAddr&&chainA.CalcList()->next==nullptr&&chainA.DrawList()->next!=nullptr,"RET0_STORED_UPDATE_POINTER_STALE");
     CHECK(draw(e)==1,"RET0_DRAW_STILL_CALLABLE");
     th10::Chain::UnregisterElem(e->drawNode,&chainA);HostDeleteEffect(e);
 }
@@ -380,7 +384,7 @@ void cleanup_reload() {
     reset();auto *e=make(5);auto *oldDraw=e->drawNode;
     // Detach draw without freeing it, then publish it on a different chain.
     auto *n=reinterpret_cast<th10::ListNode *>(&oldDraw->self);
-    chainA.drawList.next=nullptr;n->prev=nullptr;n->next=nullptr;
+    chainA.DrawList()->next=nullptr;n->prev=nullptr;n->next=nullptr;
     th10::Chain::AddToDrawChain(oldDraw,37,&chainB);
     const auto updateAddr=address(e->updateNode),oldAddr=address(oldDraw);
     int hookCount=0;
@@ -397,22 +401,41 @@ void cleanup_reload() {
     CHECK(!alive(firstAddr)&&!alive(replacementAddr)&&alive(address(oldDraw)),"CLEANUP_RELOADS_DRAW_POINTER");
     th10::Chain::UnregisterElem(oldDraw,&chainA);HostDeleteEffect(e);
 }
+// Actual constructors on explicitly prefilled host storage. This checks field
+// effects and retained bytes, not target pointer width or WinMain heap state.
+void chain_heads() {
+    for(unsigned char pattern:{static_cast<unsigned char>(0xa5),static_cast<unsigned char>(0x5a)}) {
+        alignas(th10::Chain) unsigned char storage[sizeof(th10::Chain)];
+        std::memset(storage,pattern,sizeof(storage));
+        auto *chain=new(storage) th10::Chain;
+        const unsigned int flags=pattern==0xa5?0xa5a5a5a4u:0x5a5a5a5au;
+        for(auto *head:{&chain->calcHead,&chain->drawHead}) {
+            unsigned int observedFlags;std::memcpy(&observedFlags,&head->flags,sizeof(observedFlags));
+            CHECK(observedFlags==flags,"CHAIN_CTOR_OWNERSHIP_BIT_ONLY");
+            CHECK(head->prio==0&&head->callback==nullptr&&head->addedCallback==nullptr&&head->deletedCallback==nullptr,"CHAIN_CTOR_PRIORITY_CALLBACKS");
+            CHECK(head->self==head&&head->next==nullptr&&head->prev==nullptr,"CHAIN_CTOR_LIVE_SELF_AND_LINKS");
+            unsigned char expected[sizeof(head->arg)];std::memset(expected,pattern,sizeof(expected));
+            CHECK(std::memcmp(&head->arg,expected,sizeof(expected))==0,"CHAIN_CTOR_ARGUMENT_BYTES_RETAINED");
+        }
+        chain->~Chain();
+    }
+}
 void unregister_no_delete() {
     reset();auto *e=make(5);deleteCalls=0;e->updateNode->deletedCallback=deletedSpy;
     auto *u=e->updateNode,*d=e->drawNode;th10::Chain::UnregisterElem(u,&chainA);
     CHECK(deleteCalls==0&&freedEffects==0,"UNREGISTER_NEVER_DELETED_CALLBACK");
     th10::Chain::UnregisterElem(d,&chainA);HostDeleteEffect(e);
     reset();e=make(5);deleteCalls=0;e->updateNode->deletedCallback=deletedSpy;
-    th10::Chain::RemoveAllFromList(reinterpret_cast<unsigned char *>(&chainA.calcList),&chainA);
-    CHECK(deleteCalls==0&&freedEffects==0&&chainA.calcList.next==nullptr,"REMOVE_ALL_NEVER_DELETED_CALLBACK");
-    th10::Chain::RemoveAllFromList(reinterpret_cast<unsigned char *>(&chainA.drawList),&chainA);
+    th10::Chain::RemoveAllFromList(reinterpret_cast<unsigned char *>(chainA.CalcList()),&chainA);
+    CHECK(deleteCalls==0&&freedEffects==0&&chainA.CalcList()->next==nullptr,"REMOVE_ALL_NEVER_DELETED_CALLBACK");
+    th10::Chain::RemoveAllFromList(reinterpret_cast<unsigned char *>(chainA.DrawList()),&chainA);
     HostDeleteEffect(e);
 }
 }
 int main(int argc,char **argv) {
     const std::string which=argc>1?argv[1]:"all";
     const std::vector<std::pair<std::string,std::function<void()>>> cases={
-        {"source_order",host::source_order},{"precision_gap",host::known_precision_gap},{"selector",host::selector},{"fades",host::fades},{"dim",host::dim},{"pulse",host::pulse},
+        {"chain_heads",host::chain_heads},{"source_order",host::source_order},{"precision_gap",host::known_precision_gap},{"selector",host::selector},{"fades",host::fades},{"dim",host::dim},{"pulse",host::pulse},
         {"draw",host::draw_callbacks},{"linear",host::linear},{"envelope",host::envelope},{"timer",host::timer_body},
         {"lifetime7",host::lifetime7},{"lifetime0",host::lifetime0},{"cleanup",host::cleanup_reload},{"unregister",host::unregister_no_delete}};
     try {

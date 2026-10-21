@@ -3,8 +3,8 @@
   "normalization": "crlf-to-lf-only",
   "committed_base": "67ced17fff5dfe758a33000b3f83c92002187373",
   "sha256_lf": {
-    "src/Chain.cpp": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
-    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/Chain.cpp": "702be9ec128b49e29a7fc4b524208d5ab8dffb7a831d38e66a2834a6d5e97769",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
     "src/AnmManager.cpp": "b9a1ebdd97117da8d6d389fddfb17d2ee06e946bc8bd8a89a9052cf3fd9b8ae5",
     "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
     "src/AnmRectangle.cpp": "5fee8b94dfae6ef81ba253ef81e588ab2c37b62278977f9bef5d204314aa9964",
@@ -302,5 +302,23 @@
       "raw_equal": true,
       "image_sha256": "218c8ac42f573e9c34bf15de24f898ef15f77acd23af9cd99b157d109295b7d2"
     }
+  },
+  "chain_source_review_20261022": {
+    "base": "d30cbc5b5607438f28ba26d177ff74b6692dbab4",
+    "review": "Fresh TH10 full59/74/131/131 body, caller, width and ABI review; actual Main3TU/Chain3TU native contributions inspected; nonexact source models grant no byte credit.",
+    "changed_strict_lf_pins": {
+      "src/Chain.hpp": {
+        "old": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "new": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e"
+      },
+      "src/Chain.cpp": {
+        "old": "0619e2e76e4f99254afa379df6f1dedcf85a08ee98bef74a9d00fb5f059dfc84",
+        "new": "702be9ec128b49e29a7fc4b524208d5ab8dffb7a831d38e66a2834a6d5e97769"
+      }
+    },
+    "other_five_active_dependencies_unchanged": true,
+    "historical_extra_keys": "Unused historical entries are left unchanged; active dependency set remains the existing seven files.",
+    "host_migration": "Real element/owner constructors now execute; use actual intrusive-list accessors; remove obsolete offset adaptations; reconstruct fixture owners in place to keep self links live; preserve843 prior assertions and add16 sentinel property assertions.",
+    "scope": "Host field effects/prefill/ownership only; no target layout/private ABI, allocator, runtime or whole-product claim."
   }
 }

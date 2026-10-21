@@ -68,9 +68,15 @@ extern "C" int CloseHandle(void *);
     source=source.replace(ctor,ctor.replace('flags &= ~1u;','flags = 0xa5a5a5a5u & ~1u; // HOST defined node prefill.'))
     source=re.sub(r'^\s*#include[^\n]*\n','',source,flags=re.M)
     signatures={'AnmManager.cpp':['AnmVmView *AnmRenderManagerView::FindVm(AnmVmIdView id)','void AnmRenderManagerView::MarkVmForDeletion(AnmVmIdView id)','void AnmRenderManagerView::ReleaseAnm(int index)','void AnmVmTimerView::Initialize()','void AnmVmTimerView::Add(float value)','AnmVmIdView AnmLoadedView::CreateVmVariant0(','AnmVmIdView AnmLoadedView::CreateVmVariant1('], 'AnmVmId.cpp':['AnmVmView *AnmVmIdView::GetVm()','void AnmVmIdView::Release()'], 'Player.cpp':['void PlayerSetShotVmInterrupt2(unsigned int *vmId)'], 'FrontEnd.cpp':['void ResultMenuPendingThree(AnmVmIdView *id)'], 'EnemyEclDispatcher.cpp':['__declspec(noinline) void EnemyMarkPendingInterrupt(int *id)','void EnemySoundQueueView::QueueSoundSample(int soundId, int sample)'], 'ScriptViewer.cpp':['ScriptViewerWorkerView::ScriptViewerWorkerView()'], 'ScriptViewerWorker.cpp':['ScriptViewerWorkerView::~ScriptViewerWorkerView()','void ScriptViewerWorkerView::Stop()','void ScriptViewerWorkerView::Start(']}
+    signatures['Chain.cpp']=['ChainElem::ChainElem()', 'Chain::Chain()']
     dependencies=[]
     for name,sigs in signatures.items():
-        path=ROOT/'src'/name; text=path.read_text();hashes[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest();dependencies.extend(body(text,s) for s in sigs)
+        path=ROOT/'src'/name; text=path.read_text();hashes[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest()
+        extracted=[body(text,s) for s in sigs]
+        if name=='Chain.cpp':
+            dependencies.append('namespace th10 {\n'+'\n'.join(extracted)+'\n}')
+        else:
+            dependencies.extend(extracted)
     path=ROOT/'src/DecomphelpLeafAccessors.cpp'; hashes[str(path)]=hashlib.sha256(path.read_bytes()).hexdigest(); leaf=path.read_text()
     dependencies.append('namespace th10 { namespace leaf {\n'+body(leaf,'__declspec(noinline) u32 Fn0040BA80(void)')+'\n'+body(leaf,'__declspec(noinline) u8 * Fn00417010(u8 *p0)')+'\n} }')
     (args.out/'dependencies.inc').write_text('\n\n'.join(dependencies))

@@ -4707,3 +4707,45 @@ not a complete history audit. Earlier residual/current-dependency packs already
 executed a standalone pointer local; the latter retained historical two-TU26.
 Do not repeat it as a new untested idea or promote that old result to current
 source. [Thread-register evidence](evidence/ecl-thread-register-controls/README.md).
+
+## 2026-10-22 Chain construction and source mapping
+
+The [Chain evidence](evidence/chain-source-closure/README.md) reviews four complete
+owners:449AA0/59 constructor,449AE0/131 calc insertion,449B70/131 draw insertion
+and449ED0/74 allocation. WinMain438BA5 pushes0x48 before operator new452493;
+438BB3 invokes the initializer. The owner has two0x24-byte elements, each with
+self/next/prev at14h/18h/1Ch and untouched argument at20h. Construction clears
+only ownership bit0, preserves other flag bits, zeros callbacks/priority/links
+and sets each self pointer. The former0x44-byte view omitted its final argument
+word. Actual maintained member construction now expresses this layout; native
+i386 assertions bind both sizes.
+
+Insertion keeps the added-callback result, clears that callback, enters critical
+section492274 through IAT4660B0, increments byte49231C, inserts before the first
+next signed priority >= new priority, leaves through IAT4660B4 and decrements
+the counter. New equal-priority entries precede older entries. Allocation
+conditionally constructs after requesting0x24 but still reaches unconditional
+setters on a null result. These three previously existing bodies gain mappings.
+Original identifiers, physical TU and allocator/runtime semantics remain unknown.
+
+The outer constructor's authorship is indeterminate: member construction does
+not distinguish implicit synthesis from an explicit outer declaration. This
+removes one59-byte authored owner, without asserting compiler/excluded origin.
+Four new mappings add three authored-source owners, reaching608/734. Exact397/
+72387 bytes is unchanged; the byte percentage changes only because the authored
+denominator becomes273517.
+
+Actual-source three-TU native code remains nonexact: constructor59/43 raw equal
+positions, allocator69/74 and131-byte insertions with shifted linked fields.
+Strict full comparison rejects incompatible extents/inventories; masked totals
+are not ordinary-byte scores. Four affected full cold groups preserve10 existing
+exact units1784 bytes,35 same-image whole guards4424/all118 and Run's27 differences.
+Complete ANM/Run/Enemy native bodies remain raw-identical after the header edit.
+The linked pack owns new32-input/15-artifact pins. Host860 assertions and19 strict
+EOL guards pass using actual constructors; source-extracted constructors also
+preserve Hint/teardown fixtures. Ending's copied-header fixture likewise requires
+both actual constructor definitions; its builder now extracts and fingerprints
+them after full CI exposed the missing link dependency. Host seams do not
+establish native ABI, dispatcher
+behavior or product runtime. The target491BE4 alias between g_MainCallbackOwner/
+g_Chain, dispatcher source, data ownership and whole Windows product remain open.

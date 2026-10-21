@@ -1,0 +1,166 @@
+{
+  "focused_native": {
+    "selected_unit_count": 10,
+    "exact_bytes": 1784,
+    "full_cold_groups": [
+      {
+        "report": "legacy-lifecycle-cold.json",
+        "result": "exact",
+        "artifact": "build/match-linked/ScriptViewerLifecycle-cold-2",
+        "full_cold_translation_units": 14,
+        "unit_count": 2,
+        "matched_bytes": 196,
+        "units": [
+          "decomphelp-chain-unregister",
+          "decomphelp-chain-remove-all"
+        ]
+      },
+      {
+        "report": "register-cold.json",
+        "result": "exact",
+        "artifact": "build/match-linked/GuiTransitionEffectFactory",
+        "full_cold_translation_units": 14,
+        "unit_count": 2,
+        "matched_bytes": 86,
+        "units": [
+          "chain-register-calc",
+          "chain-register-draw"
+        ]
+      },
+      {
+        "report": "large-current-cold.json",
+        "result": "exact",
+        "artifact": "build/match-linked/EnemyItemDrops",
+        "full_cold_translation_units": 10,
+        "unit_count": 5,
+        "matched_bytes": 1172,
+        "units": [
+          "enemy-drop-item-counts",
+          "enemy-drop-item-counts-core",
+          "enemy-finalize-death",
+          "enemy-cancel-bullet-record",
+          "enemy-cancel-bullet-pattern"
+        ]
+      },
+      {
+        "report": "ascii-current-cold.json",
+        "result": "exact",
+        "artifact": "build/match-linked/AsciiManagerInitialize",
+        "full_cold_translation_units": 3,
+        "unit_count": 1,
+        "matched_bytes": 330,
+        "units": [
+          "ascii-manager-initialize"
+        ]
+      }
+    ],
+    "claim": "Selected affected units only; zero new credit; no all-consumer replay."
+  },
+  "same_image_guards": {
+    "functions": 35,
+    "bytes": 4424,
+    "fields": 118
+  },
+  "maintained_run_diagnostic": {
+    "size": 7020,
+    "matched_bytes": 6993,
+    "ordinary_differences": 27,
+    "fields": 189,
+    "locals": 62,
+    "complete_callee": 171
+  },
+  "all_three_large_raw_bodies_unchanged": true,
+  "host": {
+    "transition_sanitized_assertions": 860,
+    "retained_prior_assertions": 843,
+    "new_head_property_checks": 16,
+    "new_post_scenario_lock_check": 1,
+    "strict_eol_checks": 19,
+    "active_dependency_pins_changed": [
+      "Chain.cpp",
+      "Chain.hpp"
+    ],
+    "other_active_pins_unchanged": 5,
+    "hint_sanitized_baseline": "passed",
+    "game_teardown_sanitized_baseline_cases": 70,
+    "scope": "Actual constructors with explicit host storage/allocation/lock/renderer seams; no native runtime claim.",
+    "ending_sanitized_baseline": "passed; actual constructors extracted; existing prefill and assertions retained"
+  },
+  "full_ci": {
+    "state": "passed",
+    "groups": 107,
+    "returncode": 0,
+    "source_test_config_files_frozen": 367,
+    "raw_inputs_unchanged_during_and_after_ci": true,
+    "ci_log_sha256": "db93e1e3101b4b151d4d5c29bd653319fff6ab0afd308f4790b54b67534ec08d",
+    "scope": "One fresh complete passed target-independent CI rerun; native checks separately listed.",
+    "attempt_1": {
+      "result": "failed",
+      "groups_started": 82,
+      "failure": "Undefined references to actual ChainElem/Chain constructors in copied-header Ending host fixture.",
+      "input_scope": "All367 original frozen source/test/config hashes remained unchanged during the failed run.",
+      "repair": "Builder now extracts and hashes the two actual Chain.cpp constructors; game source, comparator and exact ledgers unchanged.",
+      "log_sha256": "ac493c4f93c5cbbe4d3029bafe4a724b35117876e98b2dee38e0176c7f3628b4"
+    }
+  },
+  "cleanup": {
+    "state": "complete",
+    "removed_logical_file_bytes": 7751908,
+    "removed_trees": [
+      {
+        "path": "build/gpt-6.1-sol/chain-source-closure-20261022/natural-chain-first",
+        "logical_file_bytes": 493311
+      },
+      {
+        "path": "build/gpt-6.1-sol/chain-source-closure-20261022/links-first",
+        "logical_file_bytes": 250255
+      },
+      {
+        "path": "build/gpt-6.1-sol/chain-source-closure-20261022/group-callbacks",
+        "logical_file_bytes": 250241
+      },
+      {
+        "path": "build/gpt-6.1-sol/chain-source-closure-20261022/ownership-last",
+        "logical_file_bytes": 250206
+      },
+      {
+        "path": "build/host-tests/chain-source-transition-review",
+        "logical_file_bytes": 1665299
+      },
+      {
+        "path": "build/host-tests/chain-source-transition-final",
+        "logical_file_bytes": 1665726
+      },
+      {
+        "path": "build/host-tests/chain-source-eol-review",
+        "logical_file_bytes": 4346
+      },
+      {
+        "path": "build/host-tests/gui-message-run-ci",
+        "logical_file_bytes": 1837168
+      },
+      {
+        "path": "build/host-tests/gui-message-lifecycle-ci",
+        "logical_file_bytes": 509243
+      },
+      {
+        "path": "build/host-tests/transition-effect-ci",
+        "logical_file_bytes": 821767
+      },
+      {
+        "path": "build/host-tests/transition-effect-eol-ci",
+        "logical_file_bytes": 4346
+      }
+    ],
+    "retained": [
+      "current canonical affected-unit artifacts",
+      "final Main3TU diagnostic",
+      "pre-edit ASCII baseline",
+      "parent natural-main carrier needed by object-reuse producer",
+      "minimal flag-first failure",
+      "all compact reports/source overlays/producers"
+    ],
+    "unrelated_D3D_files_preserved": 9,
+    "shared_provider_and_legacy_unknown_state": "untouched"
+  }
+}

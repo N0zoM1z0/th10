@@ -106,6 +106,14 @@ def audit_dependencies(root):
         require(normalized(field) in normalized(main), 'audited Main dependency changed: ' + field)
     require('externAnmRenderManagerView*g_AnmRenderManagerView;' in compact, 'audited ANM global changed')
     fixture = fixture.replace('@ANM_FLOAT3@', balanced(anm, 'struct AnmFloat3View\n', True))
+    # Compile real scheduler constructors for the copied complete declarations.
+    # Registration/locking boundaries remain the explicit host seams below.
+    chain = (canonical / 'Chain.cpp').read_text()
+    constructors = '\nnamespace th10 {\n' + '\n'.join(
+        balanced(chain, anchor) for anchor in
+        ['ChainElem::ChainElem()', 'Chain::Chain()']) + '\n}\n'
+    require(fixture.count('#include "Hint.hpp"') == 1, 'Hint header insertion changed')
+    fixture = fixture.replace('#include "Hint.hpp"', '#include "Hint.hpp"\n' + constructors)
     return fixture.replace('@ANM_LAYER_NODE@', balanced(anm, 'struct AnmVmLayerNodeView\n', True))
 
 

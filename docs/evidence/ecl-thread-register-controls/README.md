@@ -1,5 +1,11 @@
 # ECL thread operands and shared node lifetimes
 
+Context update2026-10-22: subsequent [Chain source recovery](../chain-source-closure/README.md)
+changes the shared header. The pins described below remain historical evidence
+for this campaign; [new current pins](../chain-source-closure/native-summary.json)
+bind its affected ten-TU cold and retain all three complete large raw bodies
+and the27-difference Run result. The eleven private controls are not rerun.
+
 Started 2026-10-22 at `bd9be46`. Eleven private natural-source controls test the
 remaining early Run register choices in the current ten-TU context. None is
 adopted. Maintained game code, headers, recipes, mappings and exact counts remain

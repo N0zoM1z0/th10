@@ -16,39 +16,35 @@ namespace th10
 extern CRITICAL_SECTION g_CriticalSections[7];
 extern u8 g_ChainNestCounter;
 
+ChainElem::ChainElem()
+{
+    callback = NULL;
+    addedCallback = NULL;
+    deletedCallback = NULL;
+    prio = 0;
+    // The constructor initializes only the ownership bit, preserving the rest.
+    flagBits.heapAllocated = 0;
+    self = this;
+    next = NULL;
+    prev = NULL;
+}
+
+Chain::Chain()
+{
+}
+
 __declspec(noinline) ChainElem * __stdcall Chain::AllocElem(ChainCallback callback)
 {
     ChainElem *elem;
     ChainCallback cb;
-    u32 flags;
-    u32 flagsMasked;
-    u32 flagsOrOne;
 
     elem = new ChainElem;
-    if (elem != NULL)
-    {
-        flags = *(u32 *)((u8 *)elem + 0x4);
-        *(u32 *)((u8 *)elem + 0x8) = 0;
-        *(u32 *)((u8 *)elem + 0xc) = 0;
-        *(u32 *)((u8 *)elem + 0x10) = 0;
-        *(u32 *)((u8 *)elem + 0x0) = 0;
-        flagsMasked = flags & ~1;
-        *(u32 *)((u8 *)elem + 0x4) = flagsMasked;
-        elem->self = elem;
-        elem->next = NULL;
-        elem->prev = NULL;
-    }
-    else
-    {
-        elem = NULL;
-    }
 
     cb = callback;
     *(ChainCallback *)((u8 *)elem + 0x0c) = NULL;
     *(ChainCallback *)((u8 *)elem + 0x10) = NULL;
-    flagsOrOne = *(u32 *)((u8 *)elem + 0x4) | 1;
     *(ChainCallback *)((u8 *)elem + 0x8) = cb;
-    *(u32 *)((u8 *)elem + 0x4) = flagsOrOne;
+    elem->flagBits.heapAllocated = 1;
     return elem;
 }
 
@@ -68,7 +64,7 @@ __declspec(noinline) i32 __stdcall Chain::AddToCalcChain(ChainElem *elem, i32 pr
         ListNode *cur;
         ListNode *node;
         elem->prio = prio;
-        cur = &chain->calcList;
+        cur = chain->CalcList();
         while (cur->next != NULL)
         {
             if (cur->next->elem->prio >= prio)
@@ -104,7 +100,7 @@ __declspec(noinline) i32 __stdcall Chain::AddToDrawChain(ChainElem *elem, i32 pr
         ListNode *cur;
         ListNode *node;
         elem->prio = prio;
-        cur = &chain->drawList;
+        cur = chain->DrawList();
         while (cur->next != NULL)
         {
             if (cur->next->elem->prio >= prio)
@@ -130,14 +126,14 @@ void __fastcall Chain::UnregisterElem(ChainElem *elem, Chain *chain)
     ListNode *node;
     if (elem == NULL)
         return;
-    node = &chain->calcList;
+    node = chain->CalcList();
     while (node != NULL)
     {
         if (node->elem == elem)
             goto found;
         node = node->next;
     }
-    node = &chain->drawList;
+    node = chain->DrawList();
     while (node != NULL)
     {
         if (node->elem == elem)
@@ -214,3 +210,9 @@ ChainElem *__stdcall Chain::RegisterDraw(void *arg, i32 prio, ChainCallback call
 }
 
 } // namespace th10
+
+// WinMain's existing creation expression allocates the complete two-head owner.
+void *MainCreateCallbackOwner()
+{
+    return new th10::Chain;
+}
