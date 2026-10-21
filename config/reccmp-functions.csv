@@ -305,6 +305,8 @@ GuiMessageVmView::Run,0x00415E90,function
 GuiScoreView::Add,0x00409D90,function
 WinMain,0x00438AD0,function
 GameWindowView::WindowProc,0x004390E0,function
+GameWindowView::ActivateWindow,0x0043A1B0,function
+MainConfigurationDialogProc,0x0043A3A0,function
 GameWindowView::Present,0x004391F0,function
 GameWindowView::Render,0x00439390,function
 GameWindowView::GetTimestamp,0x00439540,function

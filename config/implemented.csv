@@ -286,6 +286,8 @@ GuiMessageVmView::Run
 GuiScoreView::Add
 WinMain
 GameWindowView::WindowProc
+GameWindowView::ActivateWindow
+MainConfigurationDialogProc
 GameWindowView::Present
 GameWindowView::Render
 GameWindowView::GetTimestamp

@@ -196,6 +196,7 @@ struct GameWindowView
 
     static LRESULT __stdcall WindowProc(
         HWND window, UINT message, WPARAM wparam, LPARAM lparam);
+    static void ActivateWindow(HWND window);
     static void Present();
     static int __stdcall Render(GameWindowView *window);
     static double GetTimestamp();

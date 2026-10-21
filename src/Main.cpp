@@ -1,6 +1,7 @@
 #include "GameErrorContext.hpp"
 #include "Main.hpp"
 #include "FileSystem.hpp"
+#include "Midi.hpp"
 
 #include <shlobj.h>
 #include <direct.h>
@@ -100,7 +101,6 @@ extern int MainProcessSoundQueues(unsigned char *soundOwner);
 extern void MainRequestSoundThreadStop(unsigned char *soundOwner);
 extern int MainJoinSoundThread(unsigned char *soundOwner);
 extern int MainReleaseSound(unsigned char *soundOwner);
-extern void MainMusicHandleMessage(void *musicOwner, LPARAM messageData);
 extern void MainStopMusic(void *musicOwner);
 extern void MainDestroyMusic(void *musicOwner);
 extern void MainFreeRegisteredAllocation(void *allocation);
@@ -337,6 +337,13 @@ stop:
     return 0;
 }
 
+// TH10_MAIN_FUNCTION: 0x0043A1B0 GameWindowView::ActivateWindow
+// Retained HWND wrapper; WindowProc contains the same action inline.
+void GameWindowView::ActivateWindow(HWND window)
+{
+    SetForegroundWindow(window);
+}
+
 // TH10_MAIN_FUNCTION: 0x004390E0 GameWindowView::WindowProc
 // The target stores this standard four-argument callback in WNDCLASSA and all
 // exits use RET 0x10; the extra decompiler `this` parameter is not physical.
@@ -346,13 +353,13 @@ LRESULT __stdcall GameWindowView::WindowProc(
     switch (message)
     {
     case WM_LBUTTONDOWN:
-        SetForegroundWindow(window);
+        ActivateWindow(window);
         break;
-    case 0x3c9:
+    case MM_MOM_DONE:
         if (g_MainSupervisorView.musicOwner != NULL)
         {
-            MainMusicHandleMessage(g_MainSupervisorView.musicOwner, lparam);
-            return DefWindowProcA(window, message, wparam, lparam);
+            static_cast<MidiOutputView *>(g_MainSupervisorView.musicOwner)
+                ->UnprepareHeader(reinterpret_cast<MIDIHDR *>(lparam));
         }
         break;
     case WM_SETCURSOR:
@@ -376,7 +383,7 @@ LRESULT __stdcall GameWindowView::WindowProc(
     case WM_ACTIVATEAPP:
         g_GameWindowView.windowIsInactive = wparam == 0;
         g_GameWindowView.windowIsActive = (int)wparam;
-        return DefWindowProcA(window, message, wparam, lparam);
+        break;
     }
     return DefWindowProcA(window, message, wparam, lparam);
 }
@@ -982,6 +989,40 @@ int __stdcall GameWindowView::ResolveShortcut(
     }
     CoUninitialize();
     return returnValue;
+}
+
+// TH10_MAIN_FUNCTION: 0x0043A3A0 MainConfigurationDialogProc
+// Four-argument dialog callback; the target returns zero on every path.
+INT_PTR CALLBACK MainConfigurationDialogProc(
+    HWND dialog, UINT message, WPARAM wparam, LPARAM lparam)
+{
+    (void)lparam;
+    switch (message)
+    {
+    case WM_INITDIALOG:
+        SendMessageA(GetDlgItem(dialog, 202), BM_SETCHECK, BST_CHECKED, 0);
+        return 0;
+    case WM_COMMAND:
+        switch (LOWORD(wparam))
+        {
+        case 201:
+            if (IsDlgButtonChecked(dialog, 202) == BST_CHECKED)
+                g_MainSupervisorView.options |= 0x100;
+            else
+                g_MainSupervisorView.options &= ~0x100u;
+            EndDialog(dialog, IDYES);
+            break;
+        case 203:
+            if (IsDlgButtonChecked(dialog, 202) == BST_CHECKED)
+                g_MainSupervisorView.options |= 0x100;
+            else
+                g_MainSupervisorView.options &= ~0x100u;
+            EndDialog(dialog, IDNO);
+            break;
+        }
+        break;
+    }
+    return 0;
 }
 
 // TH10_MAIN_FUNCTION: 0x0043A1C0 GameWindowView::CalcExecutableChecksum

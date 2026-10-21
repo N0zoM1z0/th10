@@ -3986,3 +3986,41 @@ and current Run7020/all189/27 differences are rechecked. One of30 input hashes
 changes; do not describe the whole graph as unchanged. These are incremental
 diagnostics, with no large exact credit. The original large owners and later
 phase gates remain open.
+
+
+## Window callback source lifetime and actual MIDI callee (2026-10-21)
+
+Target WindowProc4390E0/265 registers as a standard four-argument stdcall
+callback and returns RET16. Its MM_MOM_DONE callee43AEB0 is the maintained
+MidiOutputView::UnprepareHeader79, receiving owner in EDX and header in ESI.
+A direct typed call plus real Midi.cpp support in a four-TU /GL /GS WinMain
+context reproduces that private convention naturally. A guessed two-argument
+music stub cannot establish it. GameWindow4924F0+0C/+10 are DWORD stores;
+windowed supervisor491C28+13D remains byte-wide. Anchor names coinciding with
+these field addresses are not owner evidence.
+
+Compiler observation: the explicit per-case DefWindowProc returns produce276
+bytes with only two callback parameters held in saved registers. One common
+source return produces265 bytes/all16 independently bound fields, with four
+live parameters and three physical delegate returns. Return type int,
+callback-root entry, /Zi and /G6 or /G7 do not repair the per-case source;
+/Os regresses. No return type/ABI/profile override is adopted. TH09 source
+suggests the common-source pattern but is not acceptance evidence.
+
+Natural static ActivateWindow(HWND) source yields the retained8-byte private
+EAX wrapper43A1B0 and inlines the corresponding WindowProc action. The raw
+extent ends43A1B7 before eight CC bytes, with no direct/literal entry xref.
+Original class, return spelling and physical source ownership stay unknown.
+Two independent complete four-TU colds reproduce both new owners273/all17
+and seven existing owners1351/all81,1624/all98 per image. The original
+CreateGameWindow341 recipe also replays. Wrong field-addend and IAT controls
+fail. See [complete window evidence](evidence/main-window-callback/README.md).
+
+MainConfigurationDialogProc43A3A0/233 has maintained source for checkbox202,
+WM_COMMAND low words201/203, supervisor options bit100 and EndDialog6/7.
+Every target path returns zero with RET16. A233-byte candidate still differs;
+source closure20/20 does not imply exact14/20. Main.hpp changes only the
+primary dependency closure of the nine-TU dispatcher graph; a primary-only
+recompile and eight hash-verified support objects retain all three complete
+large native bodies and21 complete guards2415/all52. Large functions remain
+nonexact; current pins supersede the preceding header carrier only.

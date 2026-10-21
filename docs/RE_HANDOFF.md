@@ -41,13 +41,37 @@ fresh target and compiler evidence. The first bounded changes and measurements
 are recorded in [large-owner call order](evidence/large-owner-call-order/README.md).
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1775 reviewed
-candidates, 734 authored functions owning 273274 bytes, 1078 source mappings,
-1219 canonical exact functions overall. Authored exact is **378 functions,
-68863/273274 bytes (25.20%)**. The 217 mapped authored nonexact functions,
+candidates, 734 authored functions owning 273274 bytes, 1080 source mappings,
+1221 canonical exact functions overall. Authored exact is **380 functions,
+69136/273274 bytes (25.30%)**. The 217 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional.
 
-The latest checkpoint closes CheckForRunningGameInstance439FF0/442 and
+The latest checkpoint closes WindowProc4390E0/265 and retained
+ActivateWindow43A1B0/8:273 new authored exact bytes/all17 fields. A real
+MidiOutputView::UnprepareHeader call plus common final DefWindowProcA source
+return recovers the target private MIDI arguments and four live callback
+parameters. Standard LRESULT/stdcall source and /GL /GS remain unchanged.
+Two full Main/GameErrorContext/FileSystem/Midi colds through real WinMain freeze
+14 identical inputs and strictly replay nine owners1624/all98 per image. The
+second cold replays the two new units together and separately replays affected
+CreateGameWindow341 in its original context: three units614 bytes total.
+MainConfigurationDialogProc233 gains source but stays nonexact even at the same
+size. Main has source for all20 reviewed authored owners;14 are exact and six
+remain nonexact. See [window proof](evidence/main-window-callback/README.md).
+One changed header input requires a new primary-only large-graph rebuild with
+eight verified unchanged support objects. Complete large native bodies remain
+equal after verified field rewrites,21 existing guards2415/all52 pass, and
+ANM9964/gap2, Run7020/all189/27 differences and Enemy14468/gap652 remain nonexact.
+The current large carrier is
+`build/gpt-6.1-sol/main-window-callback-20261021/large-header-context`;
+source/artifact pins are in the window proof. Product/runtime gates remain open.
+All100 standard CI checks pass in one invocation; final focused gates pass.
+Cleanup removes20 owned terminal native directories/5801419 bytes, retaining
+the first actual final cold, canonical cold, MIDI negative and current large
+carrier. Source deltas, input pins and reports remain. Three large goals stay active.
+
+The preceding checkpoint closes CheckForRunningGameInstance439FF0/442 and
 ResolveShortcut43A290/272:714 new authored exact bytes, one new source mapping.
 The real SDK COM body recovers its private EBX/EDI arguments naturally. The
 caller restores its Fatal receiver, uses the target byte-wide GameWindow+28
@@ -326,7 +350,7 @@ Adjacent TH08/TH09/TH095 and reference source are hypotheses only.
 
 ## Checkpoint completion
 
-Latest focused native results are in the startup source proof; RGB results retain
+Latest focused native results are in the window callback proof; RGB results retain
 their historical scope. Run the standard gates
 before the next commit; regenerate progress after ledger changes:
 
@@ -341,4 +365,4 @@ git diff --check
 Clean only inspected, attributable artifacts after retaining reproducible
 evidence. Preserve unknown work, D3D evidence, private target, databases,
 toolchains and reference checkout. Final validation and cleanup totals are in
-[the current validation summary](evidence/main-startup-shortcut/validation-summary.json).
+[the current validation summary](evidence/main-window-callback/validation-summary.json).

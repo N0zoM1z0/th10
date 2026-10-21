@@ -1,0 +1,2291 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "parent_checkpoint": "aa021216f5ea06221d1c0db7211e27d9d1a00cb4",
+  "scope": "Two complete new exact owners/273 bytes, plus source-only nonexact dialog callback233. No denominator, physical ownership, product/runtime, semantic or port claim.",
+  "graph": {
+    "sources": [
+      "src/Main.cpp",
+      "src/GameErrorContext.cpp",
+      "src/FileSystem.cpp",
+      "src/Midi.cpp"
+    ],
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS"
+    ],
+    "support_profiles": {
+      "src/GameErrorContext.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/FileSystem.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "src/Midi.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ]
+    },
+    "entry": "WinMain@16"
+  },
+  "source_sha256": {
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+    "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+    "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/Main.cpp": "89763866ff2c607f89525cb9abede003e15fcea65ba51ca0f0756d3e0c0e234c",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+    "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+    "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+  },
+  "canonical_units": [
+    "main-activate-window",
+    "main-window-proc"
+  ],
+  "new_owned_bytes": 273,
+  "new_bound_fields": 17,
+  "independent_complete_cold_builds": [
+    {
+      "label": "maintained-final-cold1",
+      "kind": "Independent complete four-TU cold",
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/maintained-final-cold1/source.exe",
+          "sha256": "1172adcd82611b63e4cd9ad97d5eed62390a500e8b5666d4d751025f0b25ba48"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/maintained-final-cold1/source.map",
+          "sha256": "84bf6b2b0568be08b28ba502b08c213bacc25e2875798e333ba67d7e0a9a868b"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/maintained-final-cold1/source.pdb",
+          "sha256": "b809b135b78bbbee9fa8850f75b4de650462de90b67c9c7a8990da298a161c2e"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/maintained-final-cold1/source.ltcg.obj",
+          "sha256": "e90088be2400770ef4464a018b1a291ab3bf1e50f9c856aba1caf001a2803e52"
+        }
+      },
+      "source_sha256": {
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Main.cpp": "89763866ff2c607f89525cb9abede003e15fcea65ba51ca0f0756d3e0c0e234c",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "replay_sha256": "bb469fba1dc16c9bfd5983c4db9ba438cda39ab5d71ef6193724b5eb2f3a12b7",
+      "owners": [
+        {
+          "unit": "main-activate-window",
+          "address": "0x0043A1B0",
+          "size": 8,
+          "result": "exact",
+          "field_count": 1
+        },
+        {
+          "unit": "main-window-proc",
+          "address": "0x004390E0",
+          "size": 265,
+          "result": "exact",
+          "field_count": 16
+        },
+        {
+          "unit": "main-resolve-shortcut",
+          "address": "0x0043A290",
+          "size": 272,
+          "result": "exact",
+          "field_count": 12
+        },
+        {
+          "unit": "main-check-running-instance",
+          "address": "0x00439FF0",
+          "size": 442,
+          "result": "exact",
+          "field_count": 26
+        },
+        {
+          "unit": "main-init-d3d-interface",
+          "address": "0x00439700",
+          "size": 45,
+          "result": "exact",
+          "field_count": 5
+        },
+        {
+          "unit": "decomphelp-game-error-fatal",
+          "address": "0x0044B8E0",
+          "size": 201,
+          "result": "exact",
+          "field_count": 11
+        },
+        {
+          "unit": "decomphelp-game-error-log",
+          "address": "0x0044B810",
+          "size": 201,
+          "result": "exact",
+          "field_count": 12
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "address": "0x0044B4D0",
+          "size": 111,
+          "result": "exact",
+          "field_count": 12
+        },
+        {
+          "unit": "midi-unprepare-header",
+          "address": "0x0043AEB0",
+          "size": 79,
+          "result": "exact",
+          "field_count": 3
+        }
+      ],
+      "complete_bytes": 1624,
+      "bound_fields": 98
+    },
+    {
+      "label": "canonical-cold2",
+      "kind": "Independent complete four-TU cold",
+      "artifacts": {
+        "image": {
+          "path": "build/match-linked/MainWindowCallbacks/source.exe",
+          "sha256": "c8111622c7eb0242e34db2dd9ef3c17773113f086fd4f84727ab1aa5b58b29d5"
+        },
+        "map": {
+          "path": "build/match-linked/MainWindowCallbacks/source.map",
+          "sha256": "0cb6da6c0349ceb4ae957f5de5ad4df9976a0b91d6a14a4d3d20cb53452ede99"
+        },
+        "pdb": {
+          "path": "build/match-linked/MainWindowCallbacks/source.pdb",
+          "sha256": "f1902649d75ce5d9886517f12e3251de1fd367c37b13e559f1f81816b9f8ce4a"
+        },
+        "object": {
+          "path": "build/match-linked/MainWindowCallbacks/source.ltcg.obj",
+          "sha256": "4ddb191f86f9dad9ecfe0ae5b1de4e364e9cd37de27f6c46eeee218317dfced2"
+        }
+      },
+      "source_sha256": {
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Main.cpp": "89763866ff2c607f89525cb9abede003e15fcea65ba51ca0f0756d3e0c0e234c",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "replay_sha256": "f6c86f83fc110df10b8fd77754aa7d39bd7029a166429006a6502325aa82fc5b",
+      "owners": [
+        {
+          "unit": "main-activate-window",
+          "address": "0x0043A1B0",
+          "size": 8,
+          "result": "exact",
+          "field_count": 1
+        },
+        {
+          "unit": "main-window-proc",
+          "address": "0x004390E0",
+          "size": 265,
+          "result": "exact",
+          "field_count": 16
+        },
+        {
+          "unit": "main-resolve-shortcut",
+          "address": "0x0043A290",
+          "size": 272,
+          "result": "exact",
+          "field_count": 12
+        },
+        {
+          "unit": "main-check-running-instance",
+          "address": "0x00439FF0",
+          "size": 442,
+          "result": "exact",
+          "field_count": 26
+        },
+        {
+          "unit": "main-init-d3d-interface",
+          "address": "0x00439700",
+          "size": 45,
+          "result": "exact",
+          "field_count": 5
+        },
+        {
+          "unit": "decomphelp-game-error-fatal",
+          "address": "0x0044B8E0",
+          "size": 201,
+          "result": "exact",
+          "field_count": 11
+        },
+        {
+          "unit": "decomphelp-game-error-log",
+          "address": "0x0044B810",
+          "size": 201,
+          "result": "exact",
+          "field_count": 12
+        },
+        {
+          "unit": "file-system-check-if-file-already-exists",
+          "address": "0x0044B4D0",
+          "size": 111,
+          "result": "exact",
+          "field_count": 12
+        },
+        {
+          "unit": "midi-unprepare-header",
+          "address": "0x0043AEB0",
+          "size": 79,
+          "result": "exact",
+          "field_count": 3
+        }
+      ],
+      "complete_bytes": 1624,
+      "bound_fields": 98
+    }
+  ],
+  "target_review": {
+    "mode": "Direct local read-only Ghidra, noanalysis, rollback, CPU1, heap768MiB; no Factory MCP",
+    "mapped_text": {
+      "start": "0x00401000",
+      "end_inclusive": "0x00465A80",
+      "size": 412289,
+      "sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f"
+    },
+    "helper": {
+      "start": "0x0043A1B0",
+      "size": 8,
+      "end_inclusive": "0x0043A1B7",
+      "following_cc_bytes": 8,
+      "direct_or_literal_entry_xrefs": 0
+    },
+    "window": {
+      "start": "0x004390E0",
+      "size": 265,
+      "end_inclusive": "0x004391E8",
+      "following_cc_bytes": 7,
+      "abi": "Standard four-argument LRESULT stdcall callback, RET16; provisional Ghidra this argument rejected by raw instructions"
+    },
+    "dialog": {
+      "start": "0x0043A3A0",
+      "size": 233,
+      "end_inclusive": "0x0043A488",
+      "following_cc_bytes": 7,
+      "candidate_size": 233,
+      "result": "nonexact",
+      "source_presence_only": true
+    },
+    "field_binding": "GameWindow4924F0+0C/+10 are DWORD active/inactive, supervisor491C28+13D is windowed byte, +3C0 music owner and +3CC flags. Coinciding neighbor anchor names are not evidence.",
+    "midi_callee": "Actual target43AEB0 is maintained MidiOutputView::UnprepareHeader, owner EDX and header ESI in caller; strict same-image79/all3 guard passed."
+  },
+  "controls": [
+    {
+      "label": "activation",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/activation/Main.cpp": "91437719a8781321a9233d7ca8b6edb4a727631b11706dd5119ab5d9a8a13667",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/activation/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/activation/source.exe",
+          "sha256": "0d48f439b91caa1b9075aeb898759c7ad8079f12ad595696c2ad5b7258fbbb51"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/activation/source.map",
+          "sha256": "0fd3769aaaff1549edb3436ca6bbe399c7eb714e8a1261f3c08cb1eabe16109f"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/activation/source.pdb",
+          "sha256": "89ad48e85cdeb6af42c053eba0c873c46bcbe40e70172d3e6be6470deecea35e"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/activation/source.ltcg.obj",
+          "sha256": "5f34f1ddd4ffdd776d03274a1f8a3ca6120d4b2890fdf3facfc35450366fb806"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 280,
+          "target_size": 265,
+          "matched_comparable_bytes": 16,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "combined",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/combined/Main.cpp": "19c38b3dfda6c3c410300eca492ea91417b8cef413710fab97211f64e091d0c6",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/combined/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/combined/source.exe",
+          "sha256": "872d0e50f5a9feb112300f1e9d752b2b32addcdd1bb2454497ef8ebc322bf46b"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/combined/source.map",
+          "sha256": "3a38c8d96f158ca3c2f6643ed16791e7f6e9cb22fcad3092c7c03e6b1cbf9ff2"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/combined/source.pdb",
+          "sha256": "181300c0ed63ec5db28a640480454c856b0990f867da90db6516faa2545c501b"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/combined/source.ltcg.obj",
+          "sha256": "44c00aa2a59952cfd12a65155feefe767c63d4ee3b06543880b8060f265e1a06"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 225,
+          "target_size": 233,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 177
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 276,
+          "target_size": 265,
+          "matched_comparable_bytes": 15,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "midi",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/midi/Main.cpp": "7034ee68e5777d6dd30252cc257fd90cf70050813101cd8d05600a624e91bbe0",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/midi/Main.hpp": "d20cced029f34f90162164416f9f68dbbd1466568c68a41835687acc8e803159",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/midi/source.exe",
+          "sha256": "a6764c4be4eba4e62093e4df87481f0faac29916c750aacf9b5e80667420a8e0"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/midi/source.map",
+          "sha256": "5cb4bd7cc242b48dad2f7fad7de4dc1ad9ad8526b23d45b4603003e46b6963fd"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/midi/source.pdb",
+          "sha256": "eedeaf7a4f50ed0612cb35a8da9833f8f671a993f7678d1038a73ccd3bbf99ec"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/midi/source.ltcg.obj",
+          "sha256": "3d7e2311088389389b55e9c0c7bf7cb574c083603c658e061bbea970b72122b4"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 276,
+          "target_size": 265,
+          "matched_comparable_bytes": 15,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "window-common-default",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-common-default/Main.cpp": "1021324039a8d8910406f12bc68c94ac15c02417ab655fd392f58639d4ae6717",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-common-default/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-common-default/source.exe",
+          "sha256": "726ed84127cdfd1d040d8669268eabd7cd7567ea3874dc5a014f1b14f21e9396"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-common-default/source.map",
+          "sha256": "2a4b551d19b091fec24da1acccc33ed7e79b8af7668baafb5efa3e20f512dac0"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-common-default/source.pdb",
+          "sha256": "6e4c649765b6e7848802c6e975754da81621554861dbeec7f4fdffd97b5a24d2"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-common-default/source.ltcg.obj",
+          "sha256": "c0bed7a221e0903757ab7fd4329b86a0bdf8c4f6f4e400d99ffc368905ee72cf"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 225,
+          "target_size": 233,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 177
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 265,
+          "target_size": 265,
+          "matched_comparable_bytes": 201,
+          "comparable_bytes": 201
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "window-int-return",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-int-return/Main.cpp": "a8ebcbb9c3a14f58e469cc7fe8d987b1da3c9de6029caef7e9fbd98e0c6db01b",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-int-return/Main.hpp": "f32c16f98cc32bfc9afb7b6306d41dde18ff47d4daba6dd370f5e5b22b11f158",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-int-return/source.exe",
+          "sha256": "9725373bba716884199f7ccd5991a2efbd89700d1e1e2d9f3cd209b8fd75b171"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-int-return/source.map",
+          "sha256": "a0c1c91cfa29703350367241dbdc527d4b28687543a84111ff484604ce79861f"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-int-return/source.pdb",
+          "sha256": "7524720d7075eaef153c8d37ed4c8234423240d070d2d5a880b14ce238cd995a"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-int-return/source.ltcg.obj",
+          "sha256": "2652f0a08985262a473fb5bc6bbe085f96f14b0cc39599a8baad94975c4325a1"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 225,
+          "target_size": 233,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 177
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 276,
+          "target_size": 265,
+          "matched_comparable_bytes": 15,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "window-entry",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-entry/Main.cpp": "19c38b3dfda6c3c410300eca492ea91417b8cef413710fab97211f64e091d0c6",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-entry/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-entry/source.exe",
+          "sha256": "5d9eea21d494a6aa38ee704d345e00fc705bfc6fd3b0c8e4454c477d58e72de0"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-entry/source.map",
+          "sha256": "3647a984a2acee225031e4f98551c1c5ce174e0defae5cc8bde8a9b7d10c48ac"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-entry/source.pdb",
+          "sha256": "102c4245c62bd860aebf1ffc8611e29d73abbcb677e6ac43c0e9bb8ae4f4bf0c"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-entry/source.ltcg.obj",
+          "sha256": "9b709ec63369a8a41089416b5c1206c9c4d136f9ba6340be8364b5ebfbf51852"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 225,
+          "target_size": 233,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 177
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 276,
+          "target_size": 265,
+          "matched_comparable_bytes": 15,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "window-size",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-size/Main.cpp": "19c38b3dfda6c3c410300eca492ea91417b8cef413710fab97211f64e091d0c6",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-size/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Os"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-size/source.exe",
+          "sha256": "8d1365338e88a72b9760b11174ca05445eee058155be433a33363166ecad5294"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-size/source.map",
+          "sha256": "f7ba01a2543e7df3a0eca5d3a6d89a7ba28b1c38a9b6bb6c90ddb240eaf94102"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-size/source.pdb",
+          "sha256": "0d2f4d621ebccbdfc3952cbdf4cc9934b9a10fd4621c20ff44e9898142538fd8"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-size/source.ltcg.obj",
+          "sha256": "08d76c3388c9a3e5cfb80f3c3ab843d13e05d82b110b31c8986b3b6e53622ba7"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 11,
+          "target_size": 8,
+          "matched_comparable_bytes": 0,
+          "comparable_bytes": 6
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 156,
+          "target_size": 233,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 197
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 219,
+          "target_size": 265,
+          "matched_comparable_bytes": 3,
+          "comparable_bytes": 209
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 248,
+          "target_size": 272,
+          "matched_comparable_bytes": 5,
+          "comparable_bytes": 228
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 392,
+          "target_size": 442,
+          "matched_comparable_bytes": 9,
+          "comparable_bytes": 350
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 41,
+          "target_size": 45,
+          "matched_comparable_bytes": 11,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1111,
+          "target_size": 1389,
+          "matched_comparable_bytes": 31,
+          "comparable_bytes": 913
+        }
+      ]
+    },
+    {
+      "label": "window-debug",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-debug/Main.cpp": "19c38b3dfda6c3c410300eca492ea91417b8cef413710fab97211f64e091d0c6",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-debug/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/Zi"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-debug/source.exe",
+          "sha256": "fecce68e5ed4e131cf84b608f73dcfc8d6ff0d7dd5de5b48fa6698cf6956f05b"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-debug/source.map",
+          "sha256": "ffc4abbea7e234b01ce014fb06f2f582e619ca98b8b9ddd12ce5910468baaf61"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-debug/source.pdb",
+          "sha256": "4977a8399540655c673c4b72cf648fe09d85d50a78b6ee5b3914521e082539e9"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-debug/source.ltcg.obj",
+          "sha256": "d7e9ccb9e6a48ec79094d2fb491edb91d35aa2d56a799737e91dbaf451820366"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 225,
+          "target_size": 233,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 177
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 276,
+          "target_size": 265,
+          "matched_comparable_bytes": 15,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "window-g6",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-g6/Main.cpp": "19c38b3dfda6c3c410300eca492ea91417b8cef413710fab97211f64e091d0c6",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-g6/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/G6"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-g6/source.exe",
+          "sha256": "a43fdc45d9f8b1d3181eeabfc958105bd54495553781b80ab580940d887c994d"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-g6/source.map",
+          "sha256": "172ed4088712d8a8a1658fa7e8230a5e0332522ab53060d7ab3250063686cc92"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-g6/source.pdb",
+          "sha256": "80d7e47ab28c5158ad7b8b8af424b1b93f4bfacee6e4a0988220dff1510c13b1"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-g6/source.ltcg.obj",
+          "sha256": "c38d74d2205067afb4417b3194c0e183201a4cc14a0bcf27093c922ebf36e059"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 225,
+          "target_size": 233,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 177
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 276,
+          "target_size": 265,
+          "matched_comparable_bytes": 15,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "window-g7",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-g7/Main.cpp": "19c38b3dfda6c3c410300eca492ea91417b8cef413710fab97211f64e091d0c6",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/window-g7/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/G7"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-g7/source.exe",
+          "sha256": "42ec607cbebe910feb612be17a757633a41eae2913906dceced1a8b7e45bfc87"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-g7/source.map",
+          "sha256": "e7eb81b17935e534e9f9c93452b57c4050d953f45b3b498765c6b5e59b2d951c"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-g7/source.pdb",
+          "sha256": "badd9bcb4c727cd54347899cf39723697734c4de7dc36815f815722fe58ad216"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/window-g7/source.ltcg.obj",
+          "sha256": "edc20cfa46b4d73660e3eea81c1efc08ee368a090a698ce3c9b2b9bc63add8fe"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 225,
+          "target_size": 233,
+          "matched_comparable_bytes": 22,
+          "comparable_bytes": 177
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 276,
+          "target_size": 265,
+          "matched_comparable_bytes": 15,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    },
+    {
+      "label": "dialog-return-init",
+      "scope": "Historical private diagnostic only; never final exact authority",
+      "source_sha256": {
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/dialog-return-init/Main.cpp": "a104568636feb41f0f8891d168096e5697fcde65d513a0eb666a604edb35e11e",
+        ".analysis/gpt-6.1-sol/main-window-callback-20261021/dialog-return-init/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/FileSystem.cpp": "9f5c76eab078e90f7789fd078ff53d8d4dade66a5ef01cc16ff83e9e05ce8248",
+        "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+        "src/GameErrorContext.cpp": "d6bbbc23eb5413a81641814ec5c7045cca9c49e6a149217505514dd7d33045d4",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/Midi.cpp": "f847c1e0aa9dbd9c1ebaf796056db50a43af3ffd950fc48f38b62bfaa6566a67",
+        "src/Midi.hpp": "8ed76f8cc8e1c6aac287213a8fc00fa009a31303924552252a1920278e8c7f06",
+        "src/PbgArchive.hpp": "2edccc57591c66c72841c10074903905c461c5e5ee7d137b8fa7447fb44277a8",
+        "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+      },
+      "profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "entry": "WinMain@16",
+      "support_sources": [
+        "src/GameErrorContext.cpp",
+        "src/FileSystem.cpp",
+        "src/Midi.cpp"
+      ],
+      "artifacts": {
+        "image": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/dialog-return-init/source.exe",
+          "sha256": "7579c3c24d637f1263770fc1155c730f4a208c7f21b4bf8621763d6c21fa97dd"
+        },
+        "map": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/dialog-return-init/source.map",
+          "sha256": "6fe88eba80c3540cdb9153e04d5378357b290c0f56735656b1c057501ccd43d6"
+        },
+        "pdb": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/dialog-return-init/source.pdb",
+          "sha256": "6619af70a79d34355020ab7f75fd5cb975d93ee404a34000a70f43c8357a8f60"
+        },
+        "object": {
+          "path": "build/gpt-6.1-sol/main-window-callback-20261021/dialog-return-init/source.ltcg.obj",
+          "sha256": "98b962a68594506023da5cb325d0a19be97bb2b82282d7cbda1d3c92fa68966e"
+        }
+      },
+      "reports": [
+        {
+          "symbol": "?ActivateWindow@GameWindowView@@SAXPAUHWND__@@@Z",
+          "candidate_size": 8,
+          "target_size": 8,
+          "matched_comparable_bytes": 4,
+          "comparable_bytes": 4
+        },
+        {
+          "symbol": "?MainConfigurationDialogProc@@YGHPAUHWND__@@IIJ@Z",
+          "candidate_size": 233,
+          "target_size": 233,
+          "matched_comparable_bytes": 152,
+          "comparable_bytes": 177
+        },
+        {
+          "symbol": "?WindowProc@GameWindowView@@SGJPAUHWND__@@IIJ@Z",
+          "candidate_size": 276,
+          "target_size": 265,
+          "matched_comparable_bytes": 15,
+          "comparable_bytes": 205
+        },
+        {
+          "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+          "candidate_size": 79,
+          "target_size": 79,
+          "matched_comparable_bytes": 67,
+          "comparable_bytes": 67
+        },
+        {
+          "symbol": "?ResolveShortcut@GameWindowView@@SGHPBDPADH@Z",
+          "candidate_size": 272,
+          "target_size": 272,
+          "matched_comparable_bytes": 224,
+          "comparable_bytes": 224
+        },
+        {
+          "symbol": "?CheckForRunningGameInstance@GameWindowView@@SAHXZ",
+          "candidate_size": 442,
+          "target_size": 442,
+          "matched_comparable_bytes": 338,
+          "comparable_bytes": 338
+        },
+        {
+          "symbol": "?InitD3DInterface@GameWindowView@@SAHXZ",
+          "candidate_size": 45,
+          "target_size": 45,
+          "matched_comparable_bytes": 25,
+          "comparable_bytes": 25
+        },
+        {
+          "symbol": "_WinMain@16",
+          "candidate_size": 1311,
+          "target_size": 1389,
+          "matched_comparable_bytes": 40,
+          "comparable_bytes": 837
+        }
+      ]
+    }
+  ],
+  "negative_controls": [
+    {
+      "control": "wrong-active-field-addend",
+      "result": "rejected",
+      "reason": "linked field (63, 'DIR32', 4) does not resolve uniquely through '?g_GameWindowView@@3UGameWindowView@@A': publics=[4214972] expected=0x4050b8"
+    },
+    {
+      "control": "wrong-foreground-iat",
+      "result": "rejected",
+      "comparison": "mismatch",
+      "first_differences": [
+        {
+          "offset": "0x3",
+          "linked": 36,
+          "target": 240
+        },
+        {
+          "offset": "0x4",
+          "linked": 98,
+          "target": 97
+        }
+      ],
+      "matched_bytes": 6,
+      "size": 8
+    }
+  ],
+  "canonical_replay": {
+    "receipt_sha256": "f8d89160d8f899878e368b1ff967849c218fa4a343c32b1f7b45c90435091400",
+    "unit_count": 3,
+    "matched_bytes": 614,
+    "artifact_count": 2,
+    "units": [
+      "main-activate-window",
+      "main-window-proc",
+      "main-create-game-window"
+    ]
+  },
+  "large_header_dependency": {
+    "scope": "none; necessary incremental dependency diagnostic, not independent complete cold or new exact credit",
+    "source_sha256": {
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3b4e09603103c92b3940d305f62281054ae18327db960acea418176c7582a57a",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+      "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+      "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+      "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5"
+    },
+    "changed_header": {
+      "path": "src/Main.hpp",
+      "old_sha256": "d20cced029f34f90162164416f9f68dbbd1466568c68a41835687acc8e803159",
+      "new_sha256": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9"
+    },
+    "recompiled_tus": [
+      "src/EnemyEclDispatcher.cpp"
+    ],
+    "unchanged_reused_support_objects": [
+      {
+        "source": "src/EclVm.cpp",
+        "object": "support-00-EclVm.ltcg.obj",
+        "sha256": "23562098609b6284fc76c02b199b598e8eb18577d3a27503ee1e579b4e67db8a",
+        "dependency_pins": {
+          "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+          "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0"
+        }
+      },
+      {
+        "source": "src/AnmManager.cpp",
+        "object": "support-01-AnmManager.ltcg.obj",
+        "sha256": "3c15cf3231365e5bda8cfc9621506b1a1b8c10f9ccd8b3cdf0b828e38daea4de",
+        "dependency_pins": {
+          "src/AnmManager.cpp": "293ed18e48641961d4273220dc90de8452829b15236d6afa00751eeeb1827fd6",
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/FileSystem.hpp": "d30f1a6264a78ab9869296f9ab07b2016b9f6658ceb68ddb503b4559edc45f2d",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+          "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+        }
+      },
+      {
+        "source": "src/AnmVmCreate.cpp",
+        "object": "support-02-AnmVmCreate.ltcg.obj",
+        "sha256": "fb4fa78322df318da5566a1d68182fb8488fb772403d22d3fe408685fa4c89c3",
+        "dependency_pins": {
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        }
+      },
+      {
+        "source": "src/EnemyLaser.cpp",
+        "object": "support-03-EnemyLaser.ltcg.obj",
+        "sha256": "9734e70fca298d54e686207668b36434e86ff99148e39d234d89d796b7ae6f72",
+        "dependency_pins": {
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+          "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+          "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        }
+      },
+      {
+        "source": "src/Enemy.cpp",
+        "object": "support-04-Enemy.ltcg.obj",
+        "sha256": "6f471121ade26cc151d9c36a82117566dbfd7b8274e995f6b9c47e9fcef0e0f7",
+        "dependency_pins": {
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+          "src/Enemy.cpp": "4ee67e5aba397d23e334decbd14bac840d5077739eb2c9a60266a692c347d162",
+          "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+          "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+          "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+          "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+          "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+          "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+          "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+          "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+          "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        }
+      },
+      {
+        "source": "src/AnmVmId.cpp",
+        "object": "support-05-AnmVmId.ltcg.obj",
+        "sha256": "27b58220d3d37d415ac5429ba4ad63f905d5a13f910d3b43325f0189f0c95354",
+        "dependency_pins": {
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        }
+      },
+      {
+        "source": "src/RandomMath.cpp",
+        "object": "support-06-RandomMath.ltcg.obj",
+        "sha256": "2a148cea21fae91352e34ee65272e0a269eb85fb76520784ee77dff954f3cc44",
+        "dependency_pins": {
+          "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        }
+      },
+      {
+        "source": "src/AnmInt3Scale.cpp",
+        "object": "support-07-AnmInt3Scale.ltcg.obj",
+        "sha256": "cebf99e3cc1eac8623019bed0400d7db7442b0a1be314a68df4db8f9672d76da",
+        "dependency_pins": {
+          "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+          "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+          "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+          "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+          "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c"
+        }
+      }
+    ],
+    "artifacts": {
+      "image": {
+        "path": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.exe",
+        "sha256": "992a306c1660c0c62263782bd4107890ed21ed51bac6fdd6baf8a8702b547a48"
+      },
+      "map": {
+        "path": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.map",
+        "sha256": "1d4625863e31ed9ace009358817e817d67447107455e87690faa57022dc4728f"
+      },
+      "pdb": {
+        "path": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.pdb",
+        "sha256": "58ce1608cd82ddeca179e196896f80086d8993773ee66bfcf877f6be813c2e16"
+      },
+      "object": {
+        "path": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.ltcg.obj",
+        "sha256": "f0dfc3c0ac91d770ee5e19d1ed76704e6cc6fd8822dcee20f5ad80141dacb3ce"
+      }
+    },
+    "native_comparisons": [
+      {
+        "prefix": "?DispatchEclInstruction@EnemyRuntimeView",
+        "left_size": 14468,
+        "right_size": 14468,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?ReadIntArgument@EnemyRuntimeView",
+        "left_size": 16,
+        "right_size": 16,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?ExecuteScript@AnmRenderManagerView",
+        "left_size": 9964,
+        "right_size": 9964,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      },
+      {
+        "prefix": "?Run@EclVmContext",
+        "left_size": 7020,
+        "right_size": 7020,
+        "scope": "Native-to-native byte diagnostic only, not target equality or semantic/runtime proof",
+        "result": "equal after verified field rewrites",
+        "rebound_fields": [],
+        "unbound_changed_fields": [],
+        "ordinary_differences": 0,
+        "first_differences": []
+      }
+    ],
+    "complete_guard_count": 21,
+    "complete_guard_bytes": 2415,
+    "complete_guard_fields": 52,
+    "ecl_complete_diagnostic": {
+      "scope": "Noncanonical complete-owner diagnostic; no exact ledger credit.",
+      "context_unit": "ecl-vm-host-run",
+      "context_manifest": ".analysis/gpt-6.1-sol/main-window-callback-20261021/large-header-context-guard-units.toml",
+      "context_manifest_sha256": "ab621d9c852a3cc81d1e7484b3afaed7b9c6313bcff18a63ccfaf8a75d4b55e7",
+      "canonical_bindings_sha256": "d80248fd819f3fc15d367fe94fbf504672a0a800953a57877e68ac4042291bd8",
+      "callee_guard": {
+        "unit": "float-value-guard",
+        "artifact_kind": "linked-pe",
+        "result": "exact",
+        "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+        "target_address": "0x0044FF80",
+        "size": 171,
+        "matched_bytes": 171,
+        "compared_size": 171,
+        "matched_compared_bytes": 171,
+        "image": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.exe",
+        "image_sha256": "992a306c1660c0c62263782bd4107890ed21ed51bac6fdd6baf8a8702b547a48",
+        "pdb_guid": "c2622657f165a04a85804e4eb600c0b7",
+        "pdb_age": 1,
+        "candidate_address": "0x004064D0",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 6,
+        "decoded_bytes": 171,
+        "normalization_complete": true,
+        "data_spans": [],
+        "raw_equal": false,
+        "first_differences": [],
+        "capstone_version": "5.0.6",
+        "field_count": 4
+      },
+      "run": {
+        "unit": "run-diagnostic",
+        "artifact_kind": "linked-pe",
+        "result": "mismatch",
+        "symbol": "?Run@EclVmContext@@QAEHM@Z",
+        "target_address": "0x0044E1A0",
+        "size": 7020,
+        "matched_bytes": 6993,
+        "compared_size": 7020,
+        "matched_compared_bytes": 6993,
+        "image": "build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.exe",
+        "image_sha256": "992a306c1660c0c62263782bd4107890ed21ed51bac6fdd6baf8a8702b547a48",
+        "pdb_guid": "c2622657f165a04a85804e4eb600c0b7",
+        "pdb_age": 1,
+        "candidate_address": "0x00406D80",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 6,
+        "decoded_bytes": 7019,
+        "normalization_complete": false,
+        "data_spans": [
+          {
+            "offset": 7019,
+            "width": 1
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [
+          {
+            "offset": "0xEC",
+            "linked": 124,
+            "target": 84
+          },
+          {
+            "offset": "0xF1",
+            "linked": 87,
+            "target": 82
+          },
+          {
+            "offset": "0x12A",
+            "linked": 16,
+            "target": 0
+          },
+          {
+            "offset": "0x12C",
+            "linked": 106,
+            "target": 104
+          },
+          {
+            "offset": "0x146E",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x14D7",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x151D",
+            "linked": 7,
+            "target": 56
+          },
+          {
+            "offset": "0x168A",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x1710",
+            "linked": 8,
+            "target": 1
+          },
+          {
+            "offset": "0x181B",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x182B",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1838",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x183C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1840",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1844",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x1899",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18B6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18E6",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x18F8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x191C",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1932",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x1957",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x199E",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19A8",
+            "linked": 20,
+            "target": 24
+          },
+          {
+            "offset": "0x19BA",
+            "linked": 24,
+            "target": 20
+          },
+          {
+            "offset": "0x19E6",
+            "linked": 3,
+            "target": 19
+          },
+          {
+            "offset": "0x19E8",
+            "linked": 0,
+            "target": 2
+          }
+        ],
+        "capstone_version": "5.0.6",
+        "field_count": 189,
+        "local_field_count": 62
+      }
+    },
+    "anm_case_diagnostic": {
+      "acceptance_authority": "none",
+      "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+      "candidate_image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.exe",
+      "candidate_image_sha256": "992a306c1660c0c62263782bd4107890ed21ed51bac6fdd6baf8a8702b547a48",
+      "candidate_map": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/main-window-callback-20261021/large-header-context/source.map",
+      "candidate_address": "0x0040DA30",
+      "candidate_contribution_size": 9964,
+      "physical_order_matches": true,
+      "pre_table_span_delta": 0,
+      "case_aligned": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      }
+    },
+    "enemy_case_diagnostic": {
+      "acceptance_authority": "none",
+      "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+      "candidate_image_sha256": "992a306c1660c0c62263782bd4107890ed21ed51bac6fdd6baf8a8702b547a48",
+      "layout": {
+        "jump_table_address": "0x00405E04",
+        "selector_equal": true,
+        "physical_order_matches": true
+      },
+      "stack_allocations": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2c4"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "case_aligned": {
+        "matched_comparable_bytes": 2924,
+        "comparable_bytes": 11152,
+        "absolute_case_gap_delta": 652,
+        "same_sized_cases": 40
+      }
+    }
+  },
+  "source_closure": {
+    "module": "Main",
+    "authored_functions": 20,
+    "source_present": 20,
+    "owned_bytes": 6825,
+    "canonical_exact_functions": 14,
+    "remaining_nonexact_functions": 6,
+    "remaining_nonexact_bytes": 3649
+  },
+  "credit": {
+    "new_source_mappings": 2,
+    "new_authored_exact_functions": 2,
+    "new_authored_exact_bytes": 273,
+    "canonical_exact_functions": 1221,
+    "authored_exact_functions": 380,
+    "authored_exact_bytes": 69136,
+    "source_mappings": 1080,
+    "mapped_authored_nonexact": 217
+  },
+  "semantic_fields": {
+    "main-activate-window": [
+      {
+        "offset": "0x3",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__SetForegroundWindow@4",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0130",
+        "local": false,
+        "candidate_target": "0x00405208",
+        "target": "0x004661F0",
+        "addend": 0,
+        "target_encoded_value": "0x004661F0"
+      }
+    ],
+    "main-window-proc": [
+      {
+        "offset": "0x3F",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GameWindowView@@3UGameWindowView@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0047",
+        "local": false,
+        "candidate_target": "0x004050C8",
+        "target": "0x004924F0",
+        "addend": 12,
+        "target_encoded_value": "0x004924FC"
+      },
+      {
+        "offset": "0x44",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GameWindowView@@3UGameWindowView@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0047",
+        "local": false,
+        "candidate_target": "0x004050CC",
+        "target": "0x004924F0",
+        "addend": 16,
+        "target_encoded_value": "0x00492500"
+      },
+      {
+        "offset": "0x4A",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__DefWindowProcA@16",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0100",
+        "local": false,
+        "candidate_target": "0x00405190",
+        "target": "0x00466248",
+        "addend": 0,
+        "target_encoded_value": "0x00466248"
+      },
+      {
+        "offset": "0x57",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0075",
+        "local": false,
+        "candidate_target": "0x004054F8",
+        "target": "0x00491C28",
+        "addend": 972,
+        "target_encoded_value": "0x00491FF4"
+      },
+      {
+        "offset": "0x6C",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0075",
+        "local": false,
+        "candidate_target": "0x00405269",
+        "target": "0x00491C28",
+        "addend": 317,
+        "target_encoded_value": "0x00491D65"
+      },
+      {
+        "offset": "0x75",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_GameWindowView@@3UGameWindowView@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0047",
+        "local": false,
+        "candidate_target": "0x004050CC",
+        "target": "0x004924F0",
+        "addend": 16,
+        "target_encoded_value": "0x00492500"
+      },
+      {
+        "offset": "0x81",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__ShowCursor@4",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0131",
+        "local": false,
+        "candidate_target": "0x0040520C",
+        "target": "0x00466230",
+        "addend": 0,
+        "target_encoded_value": "0x00466230"
+      },
+      {
+        "offset": "0x89",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__SetCursor@4",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0129",
+        "local": false,
+        "candidate_target": "0x00405204",
+        "target": "0x00466224",
+        "addend": 0,
+        "target_encoded_value": "0x00466224"
+      },
+      {
+        "offset": "0xA2",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__LoadCursorA@8",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0119",
+        "local": false,
+        "candidate_target": "0x004051DC",
+        "target": "0x00466260",
+        "addend": 0,
+        "target_encoded_value": "0x00466260"
+      },
+      {
+        "offset": "0xA9",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__SetCursor@4",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0129",
+        "local": false,
+        "candidate_target": "0x00405204",
+        "target": "0x00466224",
+        "addend": 0,
+        "target_encoded_value": "0x00466224"
+      },
+      {
+        "offset": "0xB1",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__ShowCursor@4",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0131",
+        "local": false,
+        "candidate_target": "0x0040520C",
+        "target": "0x00466230",
+        "addend": 0,
+        "target_encoded_value": "0x00466230"
+      },
+      {
+        "offset": "0xD3",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "?g_MainSupervisorView@@3UMainSupervisorView@@A",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0075",
+        "local": false,
+        "candidate_target": "0x004054EC",
+        "target": "0x00491C28",
+        "addend": 960,
+        "target_encoded_value": "0x00491FE8"
+      },
+      {
+        "offset": "0xDC",
+        "type": "REL32",
+        "width": 4,
+        "symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+        "linked_symbol": "?UnprepareHeader@MidiOutputView@@QAEHPAUmidihdr_tag@@@Z",
+        "local": false,
+        "candidate_target": "0x004033C0",
+        "target": "0x0043AEB0",
+        "addend": 0,
+        "target_encoded_value": "0x00001CF0"
+      },
+      {
+        "offset": "0xE6",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__DefWindowProcA@16",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0100",
+        "local": false,
+        "candidate_target": "0x00405190",
+        "target": "0x00466248",
+        "addend": 0,
+        "target_encoded_value": "0x00466248"
+      },
+      {
+        "offset": "0xF4",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__SetForegroundWindow@4",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0130",
+        "local": false,
+        "candidate_target": "0x00405208",
+        "target": "0x004661F0",
+        "addend": 0,
+        "target_encoded_value": "0x004661F0"
+      },
+      {
+        "offset": "0xFE",
+        "type": "DIR32",
+        "width": 4,
+        "symbol": "__imp__DefWindowProcA@16",
+        "linked_symbol": "_th10_ltcg_probe_anchor_0100",
+        "local": false,
+        "candidate_target": "0x00405190",
+        "target": "0x00466248",
+        "addend": 0,
+        "target_encoded_value": "0x00466248"
+      }
+    ]
+  },
+  "guard_context_note": "Seven existing recipes are unchanged; these receipts use explicit additional four-TU same-image guard contexts."
+}
