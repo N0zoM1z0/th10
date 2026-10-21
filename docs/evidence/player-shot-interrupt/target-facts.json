@@ -1,0 +1,45 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+  "owner": {
+    "address": "0x0040C480",
+    "size": 65,
+    "end": "0x0040C4C0",
+    "raw_sha256": "b835c1ac695ae0f0ab032776a1f920df4f88ffb5f2f6471de4ca1c6e081c70ee",
+    "incoming_id_pointer": "EAX",
+    "return_instruction": "RET",
+    "references": [
+      "0x0040BE7F",
+      "0x0040BEBD",
+      "0x00415F62",
+      "0x0041602A",
+      "0x00416082",
+      "0x004162BA",
+      "0x0041630C",
+      "0x00428797"
+    ]
+  },
+  "fields": [
+    {
+      "offset": 4,
+      "type": "DIR32",
+      "target": "0x00491C10",
+      "role": "global manager pointer"
+    },
+    {
+      "offset": 10,
+      "type": "REL32",
+      "target": "0x004491C0",
+      "role": "FindVm"
+    }
+  ],
+  "observations": [
+    "Read 32-bit VM id through incoming EAX pointer; FindVm receives manager through EDX and one pushed id value.",
+    "On found VM store interrupt2 as a16-bit word at+0x304, preserving the id.",
+    "If+0x18 previous link is nonzero return; otherwise walk+0x14 next and node+0 owner, node+4 next.",
+    "No ExecuteScript, removal or ID clear."
+  ],
+  "ghidra_report_sha256": "a079f7f014dd30b1f92ea1b65ba2787b9f1bf90e86c78abe9b3ae7bff7adec50",
+  "ghidra_read_only": true,
+  "ghidra_transaction_rolled_back": true
+}

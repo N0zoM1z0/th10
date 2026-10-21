@@ -42,14 +42,29 @@ are recorded in [large-owner call order](evidence/large-owner-call-order/README.
 
 Live totals are generated in [PROGRESS.md](PROGRESS.md): 1776 reviewed
 candidates, 735 authored functions owning 273576 bytes, 1085 source mappings,
-1234 canonical exact functions overall. Authored exact is **393 functions,
-72088/273576 bytes (26.35%)**. The 209 mapped authored nonexact functions,
+1235 canonical exact functions overall. Authored exact is **394 functions,
+72153/273576 bytes (26.37%)**. The 208 mapped authored nonexact functions,
 523 indeterminate origins and unresolved inventory gaps remain open; the
 authored denominator is provisional. The SVG now visibly fills the authored
 bar from current classified exact bytes and labels the ratio provisional.
 The complete-game denominator remains unknown.
 
-The latest child/creator investigation corrects three stale90/91 caller comments:
+The latest bounded checkpoint closes PlayerSetShotVmInterrupt2 at40C480,
+complete65 bytes and both address fields, without changing maintained C++.
+Fresh local Ghidra confirms eight callers and pending-only root-child propagation.
+Two independent existing three-TU Player constructor cold builds freeze23
+inputs and reproduce the full new65-byte owner plus the existing273-byte
+Player reset guard/all eight combined fields. Only these shared-artifact units
+are replayed. See [Player interrupt evidence](evidence/player-shot-interrupt/README.md).
+ANM restart remains287 bytes/265 matching replay bytes/all four fields; initializing
+helper remains197/203 in the real eleven-TU context. Three private natural
+source controls fail to improve it and preserve all three large native bodies
+raw. No source/profile/entry change is adopted. Two neutral native directories
+and one unexecuted source are pruned/2603728 bytes; retained source/cache pins
+remain current. Recovery: `.analysis/gpt-6.1-sol/anm-script-restart-20261021/RECOVERY.md`.
+The original three large goals remain active/nonexact.
+
+The preceding child/creator investigation corrects three stale90/91 caller comments:
 source and target both route88->448D00,90->448F60,91->448E30,92->449090. No C++
 routing change is needed. A new bounded source/target/PE-PDB caller checker
 validates optional GetInt then creator/GetVm/InsertAfter across eight static

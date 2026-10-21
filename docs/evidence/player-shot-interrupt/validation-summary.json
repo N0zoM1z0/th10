@@ -1,0 +1,121 @@
+{
+  "state": "validated",
+  "native_summary_sha256": "5c4d1f1645fade4d1fb17c0dbe5781d37cf18b9357cac630b242164ab71108d1",
+  "target_facts_sha256": "af5e7a2b0f934f9ed61ad9c9cf1d174a9a026e1a0c7ba7d14e125616d8667aae",
+  "pins_before": {
+    "player_inputs": 23,
+    "large_context_inputs": 33,
+    "large_context_artifacts": 16,
+    "canonical_player_artifacts": 8,
+    "retained_first_cold_artifacts": 8,
+    "result": "all current"
+  },
+  "pins_after": {
+    "player_inputs": 23,
+    "large_context_inputs": 33,
+    "large_context_artifacts": 16,
+    "canonical_player_artifacts": 8,
+    "retained_first_cold_artifacts": 8,
+    "result": "all current"
+  },
+  "gates": [
+    {
+      "label": "new-owner",
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "player-set-shot-vm-interrupt2",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.514,
+      "log_sha256": "929a2c84309980f9e2b1c03785b23ed3d4bd844c15d07d04f20ead8744e4bbca"
+    },
+    {
+      "label": "shared-reset",
+      "command": [
+        "scripts/repo-python",
+        "scripts/compare-linked-function.py",
+        "--unit",
+        "player-reset-runtime-state",
+        "--json"
+      ],
+      "exit_code": 0,
+      "seconds": 0.459,
+      "log_sha256": "354198f75c8a9f3e9ac9f6db616e6898a52d2b3c9c9ad8f82616cf11b55dccd8"
+    },
+    {
+      "label": "toolchain",
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.19,
+      "log_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "label": "tracking",
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.438,
+      "log_sha256": "2583ffcf257c1bffde7d669be08f56e97e828cdeef1aad262f421d8abfe6cd64"
+    },
+    {
+      "label": "progress",
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.178,
+      "log_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "label": "ci",
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "exit_code": 0,
+      "seconds": 535.402,
+      "log_sha256": "6af5cad10f6d83068766caa834130d371b33571527ffefcad418cd0494af6791",
+      "checks": 105
+    },
+    {
+      "label": "docs",
+      "command": [
+        "scripts/repo-python",
+        "scripts/check-doc-hygiene.py"
+      ],
+      "exit_code": 0,
+      "seconds": 0.171,
+      "log_sha256": "d124779276ee65b30368facd63aa1a03b63d1b23bf7098987ceec2444df26e09"
+    },
+    {
+      "label": "diff",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "seconds": 0.041,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "standard_ci_invocations": 1,
+  "standard_ci_checks": 105,
+  "canonical_replay_scope": [
+    "player-set-shot-vm-interrupt2",
+    "player-reset-runtime-state"
+  ],
+  "new_exact_functions": 1,
+  "new_exact_bytes": 65,
+  "maintained_cpp_changes": 0
+}

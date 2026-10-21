@@ -1,0 +1,1149 @@
+{
+  "scope": "One new canonical65-byte authored owner; complete address-bound comparison in two independent three-TU cold builds. Three private ANM spelling controls rejected. No large-owner exact credit or product/runtime closure.",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "unit": "player-set-shot-vm-interrupt2",
+  "canonical_recipe": {
+    "artifact_kind": "linked-pe",
+    "source": "src/Player.cpp",
+    "support_sources": [
+      "src/AnmManager.cpp",
+      "src/Gui.cpp"
+    ],
+    "pdb_source": "src/Player.cpp",
+    "output_dir": "build/match-linked/PlayerResetRuntimeState",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL"
+    ],
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "entry_symbol": "??0Player@@QAE@XZ",
+    "functions": [
+      "PlayerSetShotVmInterrupt2"
+    ],
+    "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+    "target_address": 4244608,
+    "size": 65,
+    "linkages": [
+      {
+        "offset": 4,
+        "type": "DIR32",
+        "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+        "target": 4791312
+      },
+      {
+        "offset": 10,
+        "type": "REL32",
+        "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+        "target": 4493760
+      }
+    ]
+  },
+  "canonical_manifest_sha256": "9bdeb6c8f74daccfc4d7ecd07a5886f3bd8169a902be0afd9a41ef83ab8e9ae9",
+  "source_sha256": {
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/FrontEnd.hpp": "f8c4769f33d1594d1f23d836fb3c7bce9c5aa07c59d129efe85ad139f3650921",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameStageDescriptor.hpp": "f79629bd3ade0a1c5664b229e05bdbf34f9d5e5de763fc4976a5218d8a84aeb3",
+    "src/Gui.cpp": "13229656bcc568a2a5ecf392660e718ffcbcacb1c13b5ea5b7817b36977b53ff",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.cpp": "495fcd5a453b8908e87f5ef658948ff1d5bb74d2b5d33e650ed3eea0399c05a6",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/ReplayManager.hpp": "4045e682f1fa2e6680b3159f0e7ab60904ab633b0ef54bfed7109e0b3a8f4f07",
+    "src/ResultMenu.hpp": "ad9e69fe0a65a4199b93ab69292a690ba3d47dd152dac80e34f3e1f78814d594",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "colds": [
+    {
+      "cold": 1,
+      "seconds": 76.822,
+      "build_log_sha256": "0bc4e78ac53c5fd191851cc250e863ef8fe2c99def959caf153fec99b66ec75a",
+      "checks": [
+        {
+          "unit": "player-set-shot-vm-interrupt2",
+          "result": "exact",
+          "size": 65,
+          "matched_bytes": 65,
+          "linkages": [
+            {
+              "offset": "0x4",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+              "local": false,
+              "candidate_target": "0x004141BC",
+              "target": "0x00491C10",
+              "addend": 0,
+              "target_encoded_value": "0x00491C10"
+            },
+            {
+              "offset": "0xA",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "linked_symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "local": false,
+              "candidate_target": "0x00405C10",
+              "target": "0x004491C0",
+              "addend": 0,
+              "target_encoded_value": "0x0003CD32"
+            }
+          ]
+        },
+        {
+          "unit": "player-reset-runtime-state",
+          "result": "exact",
+          "size": 273,
+          "matched_bytes": 273,
+          "linkages": [
+            {
+              "offset": "0x1B",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerTimerScale@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0182",
+              "local": false,
+              "candidate_target": "0x004142D8",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            },
+            {
+              "offset": "0xCE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+              "local": false,
+              "candidate_target": "0x004141BC",
+              "target": "0x00491C10",
+              "addend": 0,
+              "target_encoded_value": "0x00491C10"
+            },
+            {
+              "offset": "0xF0",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "candidate_target": "0x00405D20",
+              "target": "0x004492A0",
+              "addend": 0,
+              "target_encoded_value": "0x0002441C"
+            },
+            {
+              "offset": "0xF5",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GuiView@@3PAUGuiView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0152",
+              "local": false,
+              "candidate_target": "0x00414260",
+              "target": "0x0047770C",
+              "addend": 0,
+              "target_encoded_value": "0x0047770C"
+            },
+            {
+              "offset": "0x107",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerLivesDisplayCount@@3HC",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0170",
+              "local": false,
+              "candidate_target": "0x004142A8",
+              "target": "0x00474C70",
+              "addend": 0,
+              "target_encoded_value": "0x00474C70"
+            },
+            {
+              "offset": "0x10D",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?GuiSetLivesDisplayCount@@YAXPAUGuiView@@H@Z",
+              "linked_symbol": "?GuiSetLivesDisplayCount@@YAXPAUGuiView@@H@Z",
+              "local": false,
+              "candidate_target": "0x00410950",
+              "target": "0x00413790",
+              "addend": 0,
+              "target_encoded_value": "0xFFFEE8EF"
+            }
+          ]
+        }
+      ],
+      "owners": {
+        "?PlayerSetShotVmInterrupt2@@YAXPAI@Z": {
+          "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+          "address": "0x00401260",
+          "size": 65,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 608,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 1,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerResetRuntimeState\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerResetRuntimeState\\source.ltcg.obj",
+          "sha256": "fbb95b5b77c7389f8eb1135cb3e1a0ca2606502db0a2db25343431be5085edba",
+          "raw_sha256": "fbb95b5b77c7389f8eb1135cb3e1a0ca2606502db0a2db25343431be5085edba"
+        },
+        "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z": {
+          "symbol": "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z",
+          "address": "0x00401830",
+          "size": 273,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 2096,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 1,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerResetRuntimeState\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerResetRuntimeState\\source.ltcg.obj",
+          "sha256": "a0be04295e5c329750b8cf04ad652887578d3b7c7824abb0db9f3b1998b3a8aa",
+          "raw_sha256": "a0be04295e5c329750b8cf04ad652887578d3b7c7824abb0db9f3b1998b3a8aa"
+        }
+      },
+      "artifact_sha256": {
+        "build/match-linked/PlayerResetRuntimeState/source.map": "d182f6c65db64855135be6475065bb9e4fe2278e695b57e9804384ef66c9f76a",
+        "build/match-linked/PlayerResetRuntimeState/source.exe": "da6c22a51cb6672fe8080cea67c5cd144392a2b419bbff1ede6ffd3bcfaf079c",
+        "build/match-linked/PlayerResetRuntimeState/source.ltcg.obj": "306ac38fc74a456ace75aed16f2e33e6904aad34c002c2785ab4aa79e17c4922",
+        "build/match-linked/PlayerResetRuntimeState/support-01-Gui.ltcg.obj": "3993f75092b99843c170f9a258a4edc29639d50b8a6356eb9c6f2b7b7af67970",
+        "build/match-linked/PlayerResetRuntimeState/support-00-AnmManager.ltcg.obj": "034985bd099676a44f4fe82517ac0766f4f18010f18d3c19cc250ba4a0b4fe59",
+        "build/match-linked/PlayerResetRuntimeState/link-aliases.rsp": "ee24c8501aa52b73f4a79b7d43cd1f3e6051dd2515a6cb96639d378a93914d37",
+        "build/match-linked/PlayerResetRuntimeState/link-anchors.obj": "56f7885a4cf40f9e43080e4ee183946ae8232905dcb7848baa819a03c33eeb90",
+        "build/match-linked/PlayerResetRuntimeState/source.pdb": "a59da5d4da2f6bf140f34bbc69ccc1788ee392707f5836e82b723b0b02b36a91"
+      }
+    },
+    {
+      "cold": 2,
+      "seconds": 72.111,
+      "build_log_sha256": "0bc4e78ac53c5fd191851cc250e863ef8fe2c99def959caf153fec99b66ec75a",
+      "checks": [
+        {
+          "unit": "player-set-shot-vm-interrupt2",
+          "result": "exact",
+          "size": 65,
+          "matched_bytes": 65,
+          "linkages": [
+            {
+              "offset": "0x4",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+              "local": false,
+              "candidate_target": "0x004141BC",
+              "target": "0x00491C10",
+              "addend": 0,
+              "target_encoded_value": "0x00491C10"
+            },
+            {
+              "offset": "0xA",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "linked_symbol": "?FindVm@AnmRenderManagerView@@QAEPAUAnmVmView@@UAnmVmIdView@@@Z",
+              "local": false,
+              "candidate_target": "0x00405C10",
+              "target": "0x004491C0",
+              "addend": 0,
+              "target_encoded_value": "0x0003CD32"
+            }
+          ]
+        },
+        {
+          "unit": "player-reset-runtime-state",
+          "result": "exact",
+          "size": 273,
+          "matched_bytes": 273,
+          "linkages": [
+            {
+              "offset": "0x1B",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerTimerScale@@3MA",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0182",
+              "local": false,
+              "candidate_target": "0x004142D8",
+              "target": "0x00476F78",
+              "addend": 0,
+              "target_encoded_value": "0x00476F78"
+            },
+            {
+              "offset": "0xCE",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+              "local": false,
+              "candidate_target": "0x004141BC",
+              "target": "0x00491C10",
+              "addend": 0,
+              "target_encoded_value": "0x00491C10"
+            },
+            {
+              "offset": "0xF0",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "linked_symbol": "?MarkVmForDeletion@AnmRenderManagerView@@QAEXUAnmVmIdView@@@Z",
+              "local": false,
+              "candidate_target": "0x00405D20",
+              "target": "0x004492A0",
+              "addend": 0,
+              "target_encoded_value": "0x0002441C"
+            },
+            {
+              "offset": "0xF5",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_GuiView@@3PAUGuiView@@A",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0152",
+              "local": false,
+              "candidate_target": "0x00414260",
+              "target": "0x0047770C",
+              "addend": 0,
+              "target_encoded_value": "0x0047770C"
+            },
+            {
+              "offset": "0x107",
+              "type": "DIR32",
+              "width": 4,
+              "symbol": "?g_PlayerLivesDisplayCount@@3HC",
+              "linked_symbol": "_th10_ltcg_probe_anchor_0170",
+              "local": false,
+              "candidate_target": "0x004142A8",
+              "target": "0x00474C70",
+              "addend": 0,
+              "target_encoded_value": "0x00474C70"
+            },
+            {
+              "offset": "0x10D",
+              "type": "REL32",
+              "width": 4,
+              "symbol": "?GuiSetLivesDisplayCount@@YAXPAUGuiView@@H@Z",
+              "linked_symbol": "?GuiSetLivesDisplayCount@@YAXPAUGuiView@@H@Z",
+              "local": false,
+              "candidate_target": "0x00410950",
+              "target": "0x00413790",
+              "addend": 0,
+              "target_encoded_value": "0xFFFEE8EF"
+            }
+          ]
+        }
+      ],
+      "owners": {
+        "?PlayerSetShotVmInterrupt2@@YAXPAI@Z": {
+          "symbol": "?PlayerSetShotVmInterrupt2@@YAXPAI@Z",
+          "address": "0x00401260",
+          "size": 65,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 608,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 1,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerResetRuntimeState\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerResetRuntimeState\\source.ltcg.obj",
+          "sha256": "fbb95b5b77c7389f8eb1135cb3e1a0ca2606502db0a2db25343431be5085edba",
+          "raw_sha256": "fbb95b5b77c7389f8eb1135cb3e1a0ca2606502db0a2db25343431be5085edba"
+        },
+        "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z": {
+          "symbol": "?PlayerResetRuntimeState@@YAXPAUPlayer@@@Z",
+          "address": "0x00401830",
+          "size": 273,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 2096,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 1,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerResetRuntimeState\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\PlayerResetRuntimeState\\source.ltcg.obj",
+          "sha256": "a0be04295e5c329750b8cf04ad652887578d3b7c7824abb0db9f3b1998b3a8aa",
+          "raw_sha256": "a0be04295e5c329750b8cf04ad652887578d3b7c7824abb0db9f3b1998b3a8aa"
+        }
+      },
+      "artifact_sha256": {
+        "build/match-linked/PlayerResetRuntimeState/source.map": "52793434e295ca9af5dbfdee826aa51c0138b8307f21251d4c603226a41825a4",
+        "build/match-linked/PlayerResetRuntimeState/source.exe": "8da2077b88adc36754e2e47d11aed57ca63b6e2ee2bf98d4e0f4dde4416fe8a2",
+        "build/match-linked/PlayerResetRuntimeState/source.ltcg.obj": "8f9ddcf520f147ef5308ab2ae16ec03a1d33690ec4d06b5da4f6b5c4af5738e3",
+        "build/match-linked/PlayerResetRuntimeState/support-01-Gui.ltcg.obj": "73f5569450775d304a6bc90e227160ceaac638881a8f009fee9d3af360f87434",
+        "build/match-linked/PlayerResetRuntimeState/support-00-AnmManager.ltcg.obj": "1e4459661a96a69b4acff7ca824e7f19dc8799a409548ec3528eb2608311c92e",
+        "build/match-linked/PlayerResetRuntimeState/link-aliases.rsp": "ee24c8501aa52b73f4a79b7d43cd1f3e6051dd2515a6cb96639d378a93914d37",
+        "build/match-linked/PlayerResetRuntimeState/link-anchors.obj": "c57fe53cc6a549022c3b51dffadb14b91ea092456a0e95ba5000fd04606258e3",
+        "build/match-linked/PlayerResetRuntimeState/source.pdb": "c1939c4e173d70910ba927ac2304c40d21915299b4f4c37224fc705b9c87b09e"
+      }
+    }
+  ],
+  "cold1_retained_directory": "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1",
+  "cold1_retained_artifact_sha256": {
+    "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1/source.map": "d182f6c65db64855135be6475065bb9e4fe2278e695b57e9804384ef66c9f76a",
+    "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1/source.exe": "da6c22a51cb6672fe8080cea67c5cd144392a2b419bbff1ede6ffd3bcfaf079c",
+    "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1/source.ltcg.obj": "306ac38fc74a456ace75aed16f2e33e6904aad34c002c2785ab4aa79e17c4922",
+    "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1/support-01-Gui.ltcg.obj": "3993f75092b99843c170f9a258a4edc29639d50b8a6356eb9c6f2b7b7af67970",
+    "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1/support-00-AnmManager.ltcg.obj": "034985bd099676a44f4fe82517ac0766f4f18010f18d3c19cc250ba4a0b4fe59",
+    "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1/link-aliases.rsp": "ee24c8501aa52b73f4a79b7d43cd1f3e6051dd2515a6cb96639d378a93914d37",
+    "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1/link-anchors.obj": "56f7885a4cf40f9e43080e4ee183946ae8232905dcb7848baa819a03c33eeb90",
+    "build/gpt-6.1-sol/anm-script-restart-20261021/player-cold1/source.pdb": "a59da5d4da2f6bf140f34bbc69ccc1788ee392707f5836e82b723b0b02b36a91"
+  },
+  "large_context_source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "de2c1fdceefe6aaa8a2c14af12eb04c5cc49d9f188dc04c091078fdf2dc29c2f",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.cpp": "495fcd5a453b8908e87f5ef658948ff1d5bb74d2b5d33e650ed3eea0399c05a6",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "large_context_artifact_sha256": {
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.map": "9fb1470c2842d6a3b3d41b91f54a5fadd88c645f2528bb5c28d0bef43061b9ad",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.exe": "6a2129bd89f66059ddb8557ec31d05ee7f17c91220adc64f84ba6f456b3a0f64",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-09-Player.ltcg.obj": "0dc85147d4cad6d0299e3e2c52737042055339b12c74010b77d72684354cdfc0",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/link-aliases.rsp": "3750e0fe01366a8c4c401efb4a17acc07410bdc57d272726690ac9ead47ddad9",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/link-anchors.obj": "43138fe4fb9b45679ca793fbdfad1a09a5a0056286390c08e1d8b75c9e2c9937",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.pdb": "ef7ab5aba9c4f7ccdeb53e0b1436f7e5311222d1a5f3cab6d8f6f705184279e8",
+    "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b"
+  },
+  "controls": [
+    {
+      "label": "guard-before-snapshot",
+      "parent_raw_equal": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "result": {
+        "unit": "restart",
+        "artifact_kind": "linked-pe",
+        "result": "mismatch",
+        "symbol": "?SetAndExecuteScriptIdx@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+        "target_address": "0x0043E8B0",
+        "size": 287,
+        "matched_bytes": 265,
+        "compared_size": 287,
+        "matched_compared_bytes": 265,
+        "image": "build/gpt-6.1-sol/anm-script-restart-20261021/guard-before-snapshot/source.exe",
+        "image_sha256": "fd8a53bedcd2c53dfac41ed7d2056bbf14fcab325f9fec9bea7de5daa32ca93d",
+        "pdb_guid": "a8b39113c948f54eb32119484d304dd2",
+        "pdb_age": 1,
+        "candidate_address": "0x0040D460",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 7,
+        "decoded_bytes": 287,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x47",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@bf800000",
+            "linked_symbol": "__real@bf800000",
+            "local": false,
+            "candidate_target": "0x0041D27C",
+            "target": "0x00470B60",
+            "addend": 0,
+            "target_encoded_value": "0x00470B60"
+          },
+          {
+            "offset": "0xEA",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmGameSpeed@@3MA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+            "local": false,
+            "candidate_target": "0x0041E1D4",
+            "target": "0x00476F78",
+            "addend": 0,
+            "target_encoded_value": "0x00476F78"
+          },
+          {
+            "offset": "0x10F",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "local": false,
+            "candidate_target": "0x0040DA40",
+            "target": "0x0043EE30",
+            "addend": 0,
+            "target_encoded_value": "0x0000046D"
+          },
+          {
+            "offset": "0x114",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0119",
+            "local": false,
+            "candidate_target": "0x0041E1F4",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [
+          {
+            "offset": "0x1",
+            "linked": 139,
+            "target": 87
+          },
+          {
+            "offset": "0x2",
+            "linked": 241,
+            "target": 139
+          },
+          {
+            "offset": "0x3",
+            "linked": 139,
+            "target": 249
+          },
+          {
+            "offset": "0x4",
+            "linked": 138,
+            "target": 139
+          },
+          {
+            "offset": "0x5",
+            "linked": 28,
+            "target": 138
+          },
+          {
+            "offset": "0x6",
+            "linked": 1,
+            "target": 28
+          },
+          {
+            "offset": "0x7",
+            "linked": 0,
+            "target": 1
+          },
+          {
+            "offset": "0x9",
+            "linked": 87,
+            "target": 0
+          },
+          {
+            "offset": "0xB",
+            "linked": 60,
+            "target": 52
+          },
+          {
+            "offset": "0xC",
+            "linked": 177,
+            "target": 185
+          },
+          {
+            "offset": "0x10",
+            "linked": 249,
+            "target": 241
+          },
+          {
+            "offset": "0x26",
+            "linked": 176,
+            "target": 184
+          },
+          {
+            "offset": "0x2C",
+            "linked": 176,
+            "target": 184
+          },
+          {
+            "offset": "0x32",
+            "linked": 198,
+            "target": 199
+          },
+          {
+            "offset": "0x43",
+            "linked": 206,
+            "target": 207
+          },
+          {
+            "offset": "0x4C",
+            "linked": 246,
+            "target": 247
+          },
+          {
+            "offset": "0x52",
+            "linked": 176,
+            "target": 184
+          },
+          {
+            "offset": "0x73",
+            "linked": 190,
+            "target": 191
+          },
+          {
+            "offset": "0x79",
+            "linked": 112,
+            "target": 120
+          },
+          {
+            "offset": "0xC8",
+            "linked": 184,
+            "target": 176
+          },
+          {
+            "offset": "0xCE",
+            "linked": 184,
+            "target": 176
+          },
+          {
+            "offset": "0xE2",
+            "linked": 112,
+            "target": 120
+          }
+        ],
+        "capstone_version": "5.0.6"
+      }
+    },
+    {
+      "label": "flip-bitfields",
+      "parent_raw_equal": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "result": {
+        "result": "unsupported",
+        "error": "linked fields differ from manifest: actual=[(74, 'DIR32', 4), (234, 'DIR32', 4), (271, 'REL32', 4), (276, 'DIR32', 4)] expected=[(71, 'DIR32', 4), (234, 'DIR32', 4), (271, 'REL32', 4), (276, 'DIR32', 4)]"
+      }
+    },
+    {
+      "label": "combined-valid-body",
+      "parent_raw_equal": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": true,
+        "?Run@EclVmContext@@QAEHM@Z": true,
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": true
+      },
+      "result": {
+        "unit": "restart",
+        "artifact_kind": "linked-pe",
+        "result": "mismatch",
+        "symbol": "?SetAndExecuteScriptIdx@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+        "target_address": "0x0043E8B0",
+        "size": 287,
+        "matched_bytes": 265,
+        "compared_size": 287,
+        "matched_compared_bytes": 265,
+        "image": "build/gpt-6.1-sol/anm-script-restart-20261021/combined-valid-body/source.exe",
+        "image_sha256": "ada60a0a937fac206ba0a97f13f747894d097d94109079402411b285f7fda283",
+        "pdb_guid": "5caa25519203a545bf828037b3259b84",
+        "pdb_age": 1,
+        "candidate_address": "0x0040D460",
+        "extent_source": "pdb-section-contribution",
+        "pdb_module_index": 7,
+        "decoded_bytes": 287,
+        "normalization_complete": true,
+        "data_spans": [],
+        "linkages": [
+          {
+            "offset": "0x47",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "__real@bf800000",
+            "linked_symbol": "__real@bf800000",
+            "local": false,
+            "candidate_target": "0x0041D27C",
+            "target": "0x00470B60",
+            "addend": 0,
+            "target_encoded_value": "0x00470B60"
+          },
+          {
+            "offset": "0xEA",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmGameSpeed@@3MA",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+            "local": false,
+            "candidate_target": "0x0041E1D4",
+            "target": "0x00476F78",
+            "addend": 0,
+            "target_encoded_value": "0x00476F78"
+          },
+          {
+            "offset": "0x10F",
+            "type": "REL32",
+            "width": 4,
+            "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+            "local": false,
+            "candidate_target": "0x0040DA40",
+            "target": "0x0043EE30",
+            "addend": 0,
+            "target_encoded_value": "0x0000046D"
+          },
+          {
+            "offset": "0x114",
+            "type": "DIR32",
+            "width": 4,
+            "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+            "linked_symbol": "_th10_ltcg_probe_anchor_0119",
+            "local": false,
+            "candidate_target": "0x0041E1F4",
+            "target": "0x00491C10",
+            "addend": 0,
+            "target_encoded_value": "0x00491C10"
+          }
+        ],
+        "raw_equal": false,
+        "first_differences": [
+          {
+            "offset": "0x1",
+            "linked": 139,
+            "target": 87
+          },
+          {
+            "offset": "0x2",
+            "linked": 241,
+            "target": 139
+          },
+          {
+            "offset": "0x3",
+            "linked": 139,
+            "target": 249
+          },
+          {
+            "offset": "0x4",
+            "linked": 138,
+            "target": 139
+          },
+          {
+            "offset": "0x5",
+            "linked": 28,
+            "target": 138
+          },
+          {
+            "offset": "0x6",
+            "linked": 1,
+            "target": 28
+          },
+          {
+            "offset": "0x7",
+            "linked": 0,
+            "target": 1
+          },
+          {
+            "offset": "0x9",
+            "linked": 87,
+            "target": 0
+          },
+          {
+            "offset": "0xB",
+            "linked": 60,
+            "target": 52
+          },
+          {
+            "offset": "0xC",
+            "linked": 177,
+            "target": 185
+          },
+          {
+            "offset": "0x10",
+            "linked": 249,
+            "target": 241
+          },
+          {
+            "offset": "0x26",
+            "linked": 176,
+            "target": 184
+          },
+          {
+            "offset": "0x2C",
+            "linked": 176,
+            "target": 184
+          },
+          {
+            "offset": "0x32",
+            "linked": 198,
+            "target": 199
+          },
+          {
+            "offset": "0x43",
+            "linked": 206,
+            "target": 207
+          },
+          {
+            "offset": "0x4C",
+            "linked": 246,
+            "target": 247
+          },
+          {
+            "offset": "0x52",
+            "linked": 176,
+            "target": 184
+          },
+          {
+            "offset": "0x73",
+            "linked": 190,
+            "target": 191
+          },
+          {
+            "offset": "0x79",
+            "linked": 112,
+            "target": 120
+          },
+          {
+            "offset": "0xC8",
+            "linked": 184,
+            "target": 176
+          },
+          {
+            "offset": "0xCE",
+            "linked": 184,
+            "target": 176
+          },
+          {
+            "offset": "0xE2",
+            "linked": 112,
+            "target": 120
+          }
+        ],
+        "capstone_version": "5.0.6"
+      }
+    }
+  ],
+  "cleanup": [
+    {
+      "path": "build/gpt-6.1-sol/anm-script-restart-20261021/guard-before-snapshot",
+      "bytes": 1193106,
+      "reason": "terminal neutral control; frozen private source, producer hashes and comparison receipt retained"
+    },
+    {
+      "path": "build/gpt-6.1-sol/anm-script-restart-20261021/combined-valid-body",
+      "bytes": 1193041,
+      "reason": "terminal neutral control; frozen private source, producer hashes and comparison receipt retained"
+    },
+    {
+      "path": ".analysis/gpt-6.1-sol/anm-script-restart-20261021/flip-local-scope",
+      "bytes": 217581,
+      "reason": "prepared source only, never compiled; no executed result claimed"
+    }
+  ],
+  "cleanup_bytes": 2603728,
+  "target_facts_sha256": "af5e7a2b0f934f9ed61ad9c9cf1d174a9a026e1a0c7ba7d14e125616d8667aae",
+  "private_recovery": ".analysis/gpt-6.1-sol/anm-script-restart-20261021/RECOVERY.md",
+  "anm_baseline": {
+    "binder194": {
+      "unit": "binder",
+      "artifact_kind": "linked-pe",
+      "result": "exact",
+      "symbol": "?SetAndExecuteScriptIndex@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+      "target_address": "0x0043E7E0",
+      "size": 194,
+      "matched_bytes": 194,
+      "compared_size": 194,
+      "matched_compared_bytes": 194,
+      "image": "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.exe",
+      "image_sha256": "6a2129bd89f66059ddb8557ec31d05ee7f17c91220adc64f84ba6f456b3a0f64",
+      "pdb_guid": "60e877bdf4f2e0468583f015e1e6cd85",
+      "pdb_age": 1,
+      "candidate_address": "0x0040D1F0",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 7,
+      "decoded_bytes": 194,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x7C",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmGameSpeed@@3MA",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+          "local": false,
+          "candidate_target": "0x0041E1D4",
+          "target": "0x00476F78",
+          "addend": 0,
+          "target_encoded_value": "0x00476F78"
+        },
+        {
+          "offset": "0xA1",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040DA40",
+          "target": "0x0043EE30",
+          "addend": 0,
+          "target_encoded_value": "0x000005AB"
+        },
+        {
+          "offset": "0xA6",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0119",
+          "local": false,
+          "candidate_target": "0x0041E1F4",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [],
+      "capstone_version": "5.0.6"
+    },
+    "restart287": {
+      "unit": "restart",
+      "artifact_kind": "linked-pe",
+      "result": "mismatch",
+      "symbol": "?SetAndExecuteScriptIdx@AnmLoadedView@@QAEXPAUAnmVmView@@H@Z",
+      "target_address": "0x0043E8B0",
+      "size": 287,
+      "matched_bytes": 265,
+      "compared_size": 287,
+      "matched_compared_bytes": 265,
+      "image": "build/gpt-6.1-sol/anm-child-routing-20261021/real-player/source.exe",
+      "image_sha256": "6a2129bd89f66059ddb8557ec31d05ee7f17c91220adc64f84ba6f456b3a0f64",
+      "pdb_guid": "60e877bdf4f2e0468583f015e1e6cd85",
+      "pdb_age": 1,
+      "candidate_address": "0x0040D460",
+      "extent_source": "pdb-section-contribution",
+      "pdb_module_index": 7,
+      "decoded_bytes": 287,
+      "normalization_complete": true,
+      "data_spans": [],
+      "linkages": [
+        {
+          "offset": "0x47",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "__real@bf800000",
+          "linked_symbol": "__real@bf800000",
+          "local": false,
+          "candidate_target": "0x0041D27C",
+          "target": "0x00470B60",
+          "addend": 0,
+          "target_encoded_value": "0x00470B60"
+        },
+        {
+          "offset": "0xEA",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmGameSpeed@@3MA",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0111",
+          "local": false,
+          "candidate_target": "0x0041E1D4",
+          "target": "0x00476F78",
+          "addend": 0,
+          "target_encoded_value": "0x00476F78"
+        },
+        {
+          "offset": "0x10F",
+          "type": "REL32",
+          "width": 4,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "linked_symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "local": false,
+          "candidate_target": "0x0040DA40",
+          "target": "0x0043EE30",
+          "addend": 0,
+          "target_encoded_value": "0x0000046D"
+        },
+        {
+          "offset": "0x114",
+          "type": "DIR32",
+          "width": 4,
+          "symbol": "?g_AnmRenderManagerView@@3PAUAnmRenderManagerView@@A",
+          "linked_symbol": "_th10_ltcg_probe_anchor_0119",
+          "local": false,
+          "candidate_target": "0x0041E1F4",
+          "target": "0x00491C10",
+          "addend": 0,
+          "target_encoded_value": "0x00491C10"
+        }
+      ],
+      "raw_equal": false,
+      "first_differences": [
+        {
+          "offset": "0x1",
+          "linked": 139,
+          "target": 87
+        },
+        {
+          "offset": "0x2",
+          "linked": 241,
+          "target": 139
+        },
+        {
+          "offset": "0x3",
+          "linked": 139,
+          "target": 249
+        },
+        {
+          "offset": "0x4",
+          "linked": 138,
+          "target": 139
+        },
+        {
+          "offset": "0x5",
+          "linked": 28,
+          "target": 138
+        },
+        {
+          "offset": "0x6",
+          "linked": 1,
+          "target": 28
+        },
+        {
+          "offset": "0x7",
+          "linked": 0,
+          "target": 1
+        },
+        {
+          "offset": "0x9",
+          "linked": 87,
+          "target": 0
+        },
+        {
+          "offset": "0xB",
+          "linked": 60,
+          "target": 52
+        },
+        {
+          "offset": "0xC",
+          "linked": 177,
+          "target": 185
+        },
+        {
+          "offset": "0x10",
+          "linked": 249,
+          "target": 241
+        },
+        {
+          "offset": "0x26",
+          "linked": 176,
+          "target": 184
+        },
+        {
+          "offset": "0x2C",
+          "linked": 176,
+          "target": 184
+        },
+        {
+          "offset": "0x32",
+          "linked": 198,
+          "target": 199
+        },
+        {
+          "offset": "0x43",
+          "linked": 206,
+          "target": 207
+        },
+        {
+          "offset": "0x4C",
+          "linked": 246,
+          "target": 247
+        },
+        {
+          "offset": "0x52",
+          "linked": 176,
+          "target": 184
+        },
+        {
+          "offset": "0x73",
+          "linked": 190,
+          "target": 191
+        },
+        {
+          "offset": "0x79",
+          "linked": 112,
+          "target": 120
+        },
+        {
+          "offset": "0xC8",
+          "linked": 184,
+          "target": 176
+        },
+        {
+          "offset": "0xCE",
+          "linked": 184,
+          "target": 176
+        },
+        {
+          "offset": "0xE2",
+          "linked": 112,
+          "target": 120
+        }
+      ],
+      "capstone_version": "5.0.6"
+    },
+    "initializing_helper": {
+      "target_size": 203,
+      "native_size": 197,
+      "ordinary_score": "none: complete native extent differs from target"
+    }
+  }
+}
