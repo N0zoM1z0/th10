@@ -1,0 +1,88 @@
+{
+  "status": "passed",
+  "steps": [
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/verify-toolchain.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output_sha256": "1bc17b129b67640e5c1ccecf9a75996a1bce5d9125955f3b736edd5db1a99508"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/validate-tracking.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "bd3d36fdf6ab0bc62e3ba627689fdac03480fb81df090cefd9a668981414e48e"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/progress.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "e6acaf92b5b68ccaec73d0b371af248c28bc2d0a94373f16834f289ce00640c6"
+    },
+    {
+      "command": [
+        "scripts/repo-python",
+        "scripts/ci.py"
+      ],
+      "exit_code": 0,
+      "output_sha256": "5519888ac677d9206fc7d8f17bd40a6be327998ad701cfdcfa7b3360eaf7c062"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "focused_canonical_cold": {
+    "complete_cold": "passed",
+    "focused_units": 5,
+    "guards": {
+      "owners": 35,
+      "bytes": 4424,
+      "fields": 118
+    },
+    "source_and_artifact_pins": "passed",
+    "report_repair": "Canonical report used lower-case address metadata; fixed formatting only. No further native compile/link."
+  },
+  "native_diagnostic_guards": {
+    "owners": 46,
+    "bytes": 5335,
+    "fields": 142
+  },
+  "native_canonical_guards": {
+    "owners": 35,
+    "bytes": 4424,
+    "fields": 118
+  },
+  "source_and_artifact_pins": "all current33/32 source pins and16/15 native artifact pins verified after checks",
+  "canonical_manifest": "unchanged",
+  "exact_ledger": "unchanged",
+  "svg": "visible135.28px of512px;26.42% provisional authored exact ratio",
+  "cleanup_reclaimed_bytes": 7838863,
+  "limits": "No new exact units, full historical replay, product execution, runtime/semantic or portability closure. All three original large functions remain nonexact.",
+  "ci_checks": 105,
+  "post_ci_note_review": {
+    "inventory_changed_fields": [
+      [
+        "0x0040E770",
+        "notes"
+      ]
+    ],
+    "validate-tracking": "passed",
+    "check-doc-hygiene": "passed",
+    "progress-check": "passed",
+    "git-diff-check": "passed",
+    "scope": "Only inventory prose changed after the full CI run; focused tracking/document/progress checks were repeated. No new C++/header/recipe/status/size/origin/boundary changes."
+  }
+}

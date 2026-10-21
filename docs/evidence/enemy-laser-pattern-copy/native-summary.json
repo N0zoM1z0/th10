@@ -1,0 +1,1178 @@
+{
+  "scope": "No new exact units; complete large owners remain nonexact. Current actual-source eleven-TU diagnostic plus one full canonical ten-TU cold; primary-only probes reuse hash-verified support objects.",
+  "base_commit": "6abb2dee7f3ff7b8d54964f515140f658310e52b",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "canonical_manifest_sha256": "b90b114bc53bafa0379db6b3cb5765e8f8079fb92565548d8e683c4f62cadf3c",
+  "current_contexts": {
+    "eleven-tu": {
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.cpp": "7d3eadeea972ed7900f2f62cf427f7b8ac4aa18e7392bd02db77843a13f8dc55",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\support-01-AnmManager.ltcg.obj",
+          "sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+          "raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\adopted\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.map": "e94062a637cb149afdebbcc0d7fde6dff49b504e0370218f881685dac1178e86",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.exe": "86429b9d8f03b9cb09ddc7c522030e88d2a090eb279e39073c8b3f49ca266612",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.ltcg.obj": "4b117f123af25a7572d665a44e4a3e7c220a997bf31c5b8e59db18d86eb4cf81",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/link-anchors.obj": "11bbee5c851ba9d7644c45d766fed7c07810bbb8d71f041ce1775339a591cace",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.pdb": "636ce087c3e736cb83ec4d8086a231d6aa02d4b59c4a4eafa03eabf2ebdbee9f",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "dispatcher_case_aligned": {
+        "matched_comparable_bytes": 3219,
+        "comparable_bytes": 11148,
+        "absolute_case_gap_delta": 566,
+        "same_sized_cases": 42
+      },
+      "dispatcher_frame": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2c4"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "dispatcher_layout": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted/source.exe",
+        "function_address": "0x00402830",
+        "contribution_size": 14352,
+        "jump_table_address": "0x00405DB0",
+        "selector_table_address": "0x00405F60",
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "target_pre_table_span": 13760,
+        "candidate_pre_table_span": 13696,
+        "pre_table_span_delta": -64,
+        "target_suffix_bytes": 43,
+        "candidate_suffix_bytes": 43,
+        "physical_order_matches": true,
+        "first_physical_order_difference": null
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_fields": 62,
+        "callee_guard": "exact",
+        "selector_bytes": 88,
+        "whole_owned_extent_compared": true,
+        "generic_normalization_complete": false
+      },
+      "straight_laser_cfg": {
+        "case_entry": "0x4051EB",
+        "tail_jump": "0x40536B",
+        "shared_tail": "0x405612",
+        "factory_call": "0x405618",
+        "factory_entry": "0x415630",
+        "factory_size": 153,
+        "caller_stack_cleanup": 8,
+        "returned_id_store": "0x40562C",
+        "limit": "The independent factory call is restored, but request/type remain stack parameters and private target ESI/EDI/RET4 convention is not recovered."
+      }
+    },
+    "canonical-ten-tu": {
+      "source_sha256": {
+        "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+        "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+        "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+        "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+        "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+        "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+        "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+        "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+        "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+        "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+        "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+        "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+        "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+        "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+        "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+        "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+        "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+        "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+        "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+        "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+        "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+        "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+        "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+        "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+        "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+        "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+        "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+        "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+        "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+        "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+        "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+        "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+      },
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/match-linked/EnemyItemDrops",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "owner_visibility": "static",
+        "pdb_source": "src/EnemyEclDispatcher.cpp",
+        "functions": [
+          "EnemyDropItemCounts"
+        ],
+        "symbol": "?EnemyDropItemCounts@@YAXPBUPlayerFloat3@@PAH@Z",
+        "target_address": 4245920,
+        "size": 48,
+        "linkages": [
+          {
+            "offset": 23,
+            "type": "DIR32",
+            "symbol": "?g_ItemManager@@3PAUItemManagerView@@A",
+            "target": 4683800
+          },
+          {
+            "offset": 30,
+            "type": "REL32",
+            "symbol": "?Spawn@ItemManagerView@@QAEHPBUAnmFloat3View@@HIMM@Z",
+            "target": 4307712
+          },
+          {
+            "offset": 36,
+            "type": "REL32",
+            "symbol": "?EnemyDropItemCountsCore@@YGXPBUPlayerFloat3@@PAH@Z",
+            "target": 4245968
+          }
+        ]
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9B0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51632,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-01-AnmManager.ltcg.obj",
+          "sha256": "60b8f75acdff19c9d0ab2f44f864798e307c688907889b9ca3b6c6d63107655c",
+          "raw_sha256": "60b8f75acdff19c9d0ab2f44f864798e307c688907889b9ca3b6c6d63107655c"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D00",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23808,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\support-00-EclVm.ltcg.obj",
+          "sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7",
+          "raw_sha256": "6a5523c1a7dc2eccd756109729a4b759c0a73dd05fbb9ef8247f48b6b209dae7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402810",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6160,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\match-linked\\EnemyItemDrops\\source.ltcg.obj",
+          "sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42",
+          "raw_sha256": "9ae1981f15ef5d77cc1ee6e4fb5c8e7c5d9f20d076b3d5483e8460f6d36a8c42"
+        }
+      },
+      "artifacts": {
+        "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "3c0620e30c3357b39a2763089490bf5602724f1155895b15a0b99c924cb387a6",
+        "build/match-linked/EnemyItemDrops/source.map": "7621b789d32e0e49881b2484e2fb0fd8f25a30e3b8c7f2b3c94695ab0be706ee",
+        "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "800665c33103e14140ea75974c70ca090e1a5031a669d59d409cf09f1b518b2b",
+        "build/match-linked/EnemyItemDrops/source.exe": "8e4f14845a4079e388b26f2c78590541648b227d68dcbcfe8e86134901622c75",
+        "build/match-linked/EnemyItemDrops/source.ltcg.obj": "b22ef7a8c3dfa9d955ac4853bfd464907f61b4c6c04fcbdb866f5666e316127f",
+        "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "1f62f5d4bb258fc53722310bc40f1f1a89b98de86d62fed5d6f8a6e60c856a8e",
+        "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "40a376c488d308613ab33001d5502b3a58021e3a38a66b97d8ffcafefab7fb30",
+        "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "dd25521d899c8efb999ba6cf021a312d2391352804a654c61db5abffb0d1ddde",
+        "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "79e265450d8937ddabb063ae659d212e95c5eaabe146247bd723311baf856a88",
+        "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "e701e68b0ebe57de1d46ac4c513b32e0c883921ef5c90575ec31569115b870f5",
+        "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+        "build/match-linked/EnemyItemDrops/link-anchors.obj": "575d055e3469ebe3c3ffaccfe3b60aa8e0a9f0af7ca72c277d2c7fcac063bd12",
+        "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "6fab698b72615a492a7831a843494dcb948f3e27baf78b69c7d2f1f810a31abb",
+        "build/match-linked/EnemyItemDrops/source.pdb": "cdacd7e2ad2ded393a5a309216f43ceb211ac73dcf9892e30c686d5062867e48",
+        "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "c7d4d1afb8bfe18e679216950cd80575a77a7df068d66b47458fb066682ba7fa"
+      },
+      "guard_summary": {
+        "owners": 35,
+        "bytes": 4424,
+        "fields": 118
+      },
+      "dispatcher_case_aligned": {
+        "matched_comparable_bytes": 3219,
+        "comparable_bytes": 11148,
+        "absolute_case_gap_delta": 566,
+        "same_sized_cases": 42
+      },
+      "dispatcher_frame": {
+        "target": "esp, 0x2c4",
+        "candidate": "esp, 0x2c4"
+      },
+      "sentinel_compare_counts": {
+        "target": 19,
+        "candidate": 19
+      },
+      "dispatcher_layout": {
+        "image": "/home/pentester/coding/codex_ida/th10-reconstruction/th10/build/match-linked/EnemyItemDrops/source.exe",
+        "function_address": "0x00402810",
+        "contribution_size": 14352,
+        "jump_table_address": "0x00405D90",
+        "selector_table_address": "0x00405F40",
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "target_pre_table_span": 13760,
+        "candidate_pre_table_span": 13696,
+        "pre_table_span_delta": -64,
+        "target_suffix_bytes": 43,
+        "candidate_suffix_bytes": 43,
+        "physical_order_matches": true,
+        "first_physical_order_difference": null
+      },
+      "anm_case_aligned": {
+        "matched_comparable_bytes": 7478,
+        "comparable_bytes": 7995,
+        "absolute_case_gap_delta": 2,
+        "same_sized_cases": 90,
+        "normalization_complete": true
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_fields": 62,
+        "callee_guard": "exact",
+        "selector_bytes": 88,
+        "whole_owned_extent_compared": true,
+        "generic_normalization_complete": false
+      }
+    }
+  },
+  "experiments": [
+    {
+      "name": "copy",
+      "retained": true,
+      "candidate_source_sha256": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040D9D0",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51664,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\copy\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\copy\\support-01-AnmManager.ltcg.obj",
+          "sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+          "raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406D20",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23840,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\copy\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\copy\\support-00-EclVm.ltcg.obj",
+          "sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+          "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14352,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\copy\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\copy\\source.ltcg.obj",
+          "sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+          "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/source.map": "9c8718e45f74154e539c02be01ce8f6e5ba0b38a2a59774db6cdfaf34aa32ed1",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/source.exe": "53a8309fbf5eb89f3e9e2456f710219455642c81f9b6e0abcfb9fa0db97354f4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/source.ltcg.obj": "10f221f2c256ce22ff6d04efe7491bc3967c6b176b8e749f9d78a57e181f5f77",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/link-anchors.obj": "d33a0ff9debb0319cfd00c7df8dd51ee53175016086020dcd8f06bcdd8213971",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/source.pdb": "4c2e73a11c4c4320488dc40ab5e7e7d1dddaf3d5bcf61962f1ee2b785437b6cc",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "dispatcher_case_aligned": {
+        "matched_comparable_bytes": 3219,
+        "comparable_bytes": 11148,
+        "absolute_case_gap_delta": 566,
+        "same_sized_cases": 42
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_fields": 62
+      },
+      "artifact_status": "Historical terminal probe hashes; disposable native directory pruned after actual-source confirmation."
+    },
+    {
+      "name": "aim-block",
+      "retained": false,
+      "candidate_source_sha256": "d13486ae4b2880245d9c49d5d4693ac14f1333de76576f281abe884796b94ace",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040DA50",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51792,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block\\support-01-AnmManager.ltcg.obj",
+          "sha256": "1ef15b096486f88abb960ac27ff80487d8a84b1f6d28fd45fa073e4964f8fce2",
+          "raw_sha256": "1ef15b096486f88abb960ac27ff80487d8a84b1f6d28fd45fa073e4964f8fce2"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406DA0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23968,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block\\support-00-EclVm.ltcg.obj",
+          "sha256": "43f4064d92c212f82edf2d19133d294d2748ea571b92f9e6eeb56f5217313c9f",
+          "raw_sha256": "43f4064d92c212f82edf2d19133d294d2748ea571b92f9e6eeb56f5217313c9f"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14468,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block\\source.ltcg.obj",
+          "sha256": "84518040bb2e8349c86e63cd21f05571722f99abd9dddca63b8a231755d25dd6",
+          "raw_sha256": "84518040bb2e8349c86e63cd21f05571722f99abd9dddca63b8a231755d25dd6"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/source.map": "95f7082ee1249bec4090514d3e2f88ed505f249b32e70a21cd4cf0bbef7b1d9f",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/source.exe": "71053a7c87a329af793a74a2de51f97447b4302d845453329072f152c74dd2fe",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/source.ltcg.obj": "06643aadeae02b51f2a4d9976ffe937f91d8f4e0f32ca4c684feed68469905ab",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/link-anchors.obj": "dbbd35956d9d9ef09f8db656a5eb63cd5d7fb2b78269864ad839f0f687b12d93",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/source.pdb": "b4e63940191a9c930e3889eb9d84c375e3e90c8e8bd1543832564b06d05b7bee",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "dispatcher_case_aligned": {
+        "matched_comparable_bytes": 3011,
+        "comparable_bytes": 11152,
+        "absolute_case_gap_delta": 652,
+        "same_sized_cases": 43
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_fields": 62
+      },
+      "artifact_status": "Historical terminal probe hashes; disposable native directory pruned after actual-source confirmation."
+    },
+    {
+      "name": "laser-identity",
+      "retained": false,
+      "candidate_source_sha256": "28b981fed7be9ce5fa6f6ec8afc8ba08f6992d8fccf2cfd25a9b0cd1cbfc7df6",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040DA80",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51840,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\laser-identity\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\laser-identity\\support-01-AnmManager.ltcg.obj",
+          "sha256": "5d8859c598e80735885bec240bdeebb6d752899a5dbd3ce9dcba022fef0892c4",
+          "raw_sha256": "5d8859c598e80735885bec240bdeebb6d752899a5dbd3ce9dcba022fef0892c4"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406DD0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 24016,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\laser-identity\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\laser-identity\\support-00-EclVm.ltcg.obj",
+          "sha256": "291980bc92e0257f991d96ac9a34233f4d35783749fafa4739e9021eeb474a30",
+          "raw_sha256": "291980bc92e0257f991d96ac9a34233f4d35783749fafa4739e9021eeb474a30"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14516,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\laser-identity\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\laser-identity\\source.ltcg.obj",
+          "sha256": "266540fd1f5a16f47a38b843ac633965df8704b28d9070211cb48c5fbb118995",
+          "raw_sha256": "266540fd1f5a16f47a38b843ac633965df8704b28d9070211cb48c5fbb118995"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/source.map": "fac0dc26aa358c58c27d783b31ee8f9f7cb25dd6b48b4d76bca4afc4858b0ff1",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/source.exe": "945ec5b15cf1543919469729337ff844e9ea9f68c4e2b0beccab38667196e796",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/source.ltcg.obj": "4e7e3e653f25097a96584708a12b70c1b2146498e8a3bfc32896104a974439c3",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-03-EnemyLaser.ltcg.obj": "af5eeef46b87d1aab6327823112483a18012a6a93ef55cac9a78310e5566624f",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/link-anchors.obj": "f9c26bac1750fcf3c2389aa9d9faf57bdebf960c489a8e01fc8e948f15aa687f",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/source.pdb": "2c1ebd2126e4a82eb0b150cbfcd7a29c1997b834fbc4c65b85a3942f43e5ae9e",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "dispatcher_case_aligned": {
+        "matched_comparable_bytes": 2980,
+        "comparable_bytes": 11148,
+        "absolute_case_gap_delta": 628,
+        "same_sized_cases": 42
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_fields": 62
+      },
+      "artifact_status": "Historical terminal probe hashes; disposable native directory pruned after actual-source confirmation."
+    },
+    {
+      "name": "aim-block-tail-a",
+      "retained": false,
+      "candidate_source_sha256": "c27c2c4f1c7afd0039a9bf94964615b0758b013d70d2cf1ff2f6f1b2bd6349c1",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "source": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/EnemyEclDispatcher.cpp",
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp",
+          "src/Player.cpp"
+        ],
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "output_dir": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "harness": "unresolved-symbol-data-anchors-v1"
+      },
+      "owners": {
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z",
+          "address": "0x0040DA50",
+          "size": 9964,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 51792,
+          "map_object": "support-01-AnmManager.ltcg.obj",
+          "pdb_module_index": 7,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block-tail-a\\support-01-AnmManager.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block-tail-a\\support-01-AnmManager.ltcg.obj",
+          "sha256": "1ef15b096486f88abb960ac27ff80487d8a84b1f6d28fd45fa073e4964f8fce2",
+          "raw_sha256": "1ef15b096486f88abb960ac27ff80487d8a84b1f6d28fd45fa073e4964f8fce2"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "address": "0x00406DA0",
+          "size": 7020,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 23968,
+          "map_object": "support-00-EclVm.ltcg.obj",
+          "pdb_module_index": 2,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block-tail-a\\support-00-EclVm.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block-tail-a\\support-00-EclVm.ltcg.obj",
+          "sha256": "43f4064d92c212f82edf2d19133d294d2748ea571b92f9e6eeb56f5217313c9f",
+          "raw_sha256": "43f4064d92c212f82edf2d19133d294d2748ea571b92f9e6eeb56f5217313c9f"
+        },
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "address": "0x00402830",
+          "size": 14476,
+          "extent_source": "pdb-section-contribution",
+          "section": ".text",
+          "section_number": 1,
+          "section_offset": 6192,
+          "map_object": "source.ltcg.obj",
+          "pdb_module_index": 4,
+          "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block-tail-a\\source.ltcg.obj",
+          "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\enemy-laser-lifetime-20261021\\aim-block-tail-a\\source.ltcg.obj",
+          "sha256": "960cafa44be05cf293cd724a59373958409d1db3d3f6135364be3345bd967986",
+          "raw_sha256": "960cafa44be05cf293cd724a59373958409d1db3d3f6135364be3345bd967986"
+        }
+      },
+      "artifacts": {
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-07-AnmInt3Scale.ltcg.obj": "c1ac8d9b64c817ee965d882f76cb913f219ecf6c39fdf12ef4ecedc590fc9210",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/source.map": "9627204895d281a8fa06ba94723379fb5b7bccbc8b14de54e1d730879d5efb80",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-05-AnmVmId.ltcg.obj": "c5de834c7876a230725c78300968fc38c4fe1550fe9b9d811abea8f355b883bb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/source.exe": "b7accf9dc6bcac6482fa89b8eef3334882a9ab568a4a5781a5d9f3a593544b07",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/source.ltcg.obj": "64fca6eb95d7078ab7019de1b174d1a1281f333a7177e01b31bae8653a76704a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-04-Enemy.ltcg.obj": "c7dd5e7888bf3a89f5d6c74c110874b04827c658028b036f396d466d8a737ea4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-06-RandomMath.ltcg.obj": "4093b297ca91e9faed6c2782ec4a3bfa6fd6d270596ffc3f2d08a70b0ac767b4",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-03-EnemyLaser.ltcg.obj": "5abb2e0d4284248bf6f18a4d2851f4ce0e50186187391fd1f8ff526470d100ef",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-09-Player.ltcg.obj": "24d2eff283c8fbca29ec0c8fd83fe1946f7f3a2950abf02f5770ee707bc57f1a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-02-AnmVmCreate.ltcg.obj": "99a823e68b85142662c39ce4c2200a9088047e579ff8f6635d08e5063e9f193c",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-00-EclVm.ltcg.obj": "363bb501c39bd527a6ce0fbe5df514e18e861c63b7f7580934669df278c8888a",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/link-aliases.rsp": "ea921ef5e6544a319351116b4d5b3f950a2eb9779dbe2f655c4857c83d5261cb",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/link-anchors.obj": "341983494085a997b0ca512ae1b3a237a91b0c768d97b29046c3e8d561f3d144",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-08-ItemManager.ltcg.obj": "7d3349dd02ea08df779418f4f0793fe31ea2a6efc29f1d2e58ab0f53f1398a57",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/source.pdb": "bc59a1bad01068f1aac3fe0511cc27b93c9cb496a7854d48cce15ef48336231c",
+        "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a/support-01-AnmManager.ltcg.obj": "d2707e23056ffa357fb5d0e77ca92c3c61049dfac0db58652c1378419ec4ff8b"
+      },
+      "guard_summary": {
+        "owners": 46,
+        "bytes": 5335,
+        "fields": 142
+      },
+      "dispatcher_case_aligned": {
+        "matched_comparable_bytes": 3016,
+        "comparable_bytes": 11150,
+        "absolute_case_gap_delta": 636,
+        "same_sized_cases": 42
+      },
+      "run": {
+        "size": 7020,
+        "matched_bytes": 6993,
+        "fields": 189,
+        "local_fields": 62
+      },
+      "artifact_status": "Historical terminal probe hashes; disposable native directory pruned after actual-source confirmation."
+    }
+  ],
+  "private_copy_vs_actual_source": {
+    "scope": "Complete raw native-to-native owner equality; no target exactness",
+    "owners": {
+      "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+        "raw_sha256": "4d20d15f39584e42589c3f69396a37d52e93745133f0939b85aba219632b2c45",
+        "size": 9964
+      },
+      "?Run@EclVmContext@@QAEHM@Z": {
+        "raw_sha256": "36f91017a637b757821265c293ee112b6cdbeeaedbfb5c032dfaa0c4333cb6f7",
+        "size": 7020
+      },
+      "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+        "raw_sha256": "72b44f7231f5eb528cf8c1b31ed1b3275150f40fcdeffe549aa21c531782d9c1",
+        "size": 14352
+      }
+    }
+  },
+  "prepared_but_not_executed": [
+    "aim",
+    "copy-aim"
+  ],
+  "unchanged_ledgers": [
+    "config/matches.csv",
+    "config/implemented.csv",
+    "config/match-units.toml"
+  ],
+  "cleanup": {
+    "removed": [
+      {
+        "path": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy",
+        "bytes": 1249966
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy-structural.json",
+        "bytes": 484414
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy-guards.json",
+        "bytes": 91458
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/copy-guards.toml",
+        "bytes": 68706
+      },
+      {
+        "path": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block",
+        "bytes": 1250445
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block",
+        "bytes": 111740
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-structural.json",
+        "bytes": 484631
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-guards.json",
+        "bytes": 91698
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-guards.toml",
+        "bytes": 69251
+      },
+      {
+        "path": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity",
+        "bytes": 1250548
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity",
+        "bytes": 30727
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity-structural.json",
+        "bytes": 485942
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity-guards.json",
+        "bytes": 91875
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/laser-identity-guards.toml",
+        "bytes": 68095
+      },
+      {
+        "path": "build/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a",
+        "bytes": 1250494
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a",
+        "bytes": 111742
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a-structural.json",
+        "bytes": 485083
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a-guards.json",
+        "bytes": 92034
+      },
+      {
+        "path": ".analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/aim-block-tail-a-guards.toml",
+        "bytes": 70014
+      }
+    ],
+    "reclaimed_bytes": 7838863,
+    "retained": "Current canonical ten-TU and actual-source eleven-TU images/MAP/PDB/objects; all baseline source pins, compact negative reports and reproducible overlays. Independent d3d-adapter-format untouched."
+  },
+  "baseline_factory": {
+    "source_context": "Frozen pre-change eleven-TU carrier; executable hash verified against initial recovery manifest",
+    "candidate_size": 153,
+    "target_size": 153,
+    "matched_comparable_bytes": 16,
+    "comparable_bytes": 137,
+    "candidate_image_sha256": "b5ae4e996eabbd48201721a1dd68c333968e3e6c63ce285fcb3b46f54fda1cd1"
+  },
+  "inventory_note_update": "Only the existing0x40E770 notes field is refreshed from the older item-scatter measurement; all inventory size/state/origin/boundary and exact/source-presence ledgers stay unchanged.",
+  "inventory_note_sha256": "76238d6f7b7a1aabb6889d814fe57cc7fa20813b48f51c1bcf913b7338ea5101"
+}

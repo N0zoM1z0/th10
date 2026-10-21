@@ -2435,13 +2435,9 @@ dispatch_select_bullet_count_low:
       pfVar15 = pfVar15 + 1;
     }
     if (opcode == 0x1af) {
-      puVar5 = &bulletPatterns[0].words[8];
-      puVar14 = &local_288.words[11];
-      for (iVar27 = 0x6c; iVar27 != 0; iVar27 = iVar27 + -1) {
-        *puVar14 = *puVar5;
-        puVar5 = puVar5 + 1;
-        puVar14 = puVar14 + 1;
-      }
+      memcpy(local_288.type0.patternWords,
+             &bulletPatterns[0].words[8],
+             sizeof(local_288.type0.patternWords));
     }
     vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);
@@ -2476,13 +2472,9 @@ dispatch_select_bullet_count_low:
     reinterpret_cast<float *>(&local_288)[11] = 8.0f;
     puVar5 = (unsigned int *)((int)ResolveIntArgument(0));
     if (*(short *)(iVar27 + 4) == 0x1b0) {
-      puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);
-      puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;
-      for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {
-        *puVar13 = *puVar14;
-        puVar14 = puVar14 + 1;
-        puVar13 = puVar13 + 1;
-      }
+      memcpy(local_288.type1.patternWords,
+             &bulletPatterns[0].words[8],
+             sizeof(local_288.type1.patternWords));
     }
     vectorScratch.x = *(float *)((int)runtimeAddress + 0x1344) + *(float *)((int)runtimeAddress + 0x2c);
     vectorScratch.y = *(float *)((int)runtimeAddress + 0x1348) + *(float *)((int)runtimeAddress + 0x30);

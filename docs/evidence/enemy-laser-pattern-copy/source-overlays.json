@@ -1,0 +1,97 @@
+{
+  "base_commit": "6abb2dee7f3ff7b8d54964f515140f658310e52b",
+  "base_source_sha256": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "33c30d604de1a4c6f102d9729689a05c452298a04c8a121688c7f844fed9fa0d",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "aee2b26df64bb280410b3800e2ed1d55861d8f19cef4aacb7fe095ecf7050e4b",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "6ecc5ecba5404fd1cfc6a0a2ab33f6d17afa805a8a8efeb27fe55ee3e7b04a00",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "de2c1fdceefe6aaa8a2c14af12eb04c5cc49d9f188dc04c091078fdf2dc29c2f",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.cpp": "7d3eadeea972ed7900f2f62cf427f7b8ac4aa18e7392bd02db77843a13f8dc55",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "method": "Apply each ordered replacement independently to its base source, retaining exact CRLF bytes. The copy variant alone is adopted. No generated target/decompiler bytes are embedded.",
+  "variants": {
+    "copy": {
+      "source": "src/EnemyEclDispatcher.cpp",
+      "base_sha256": "de2c1fdceefe6aaa8a2c14af12eb04c5cc49d9f188dc04c091078fdf2dc29c2f",
+      "candidate_sha256": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+      "edits": [
+        {
+          "old": "      puVar5 = &bulletPatterns[0].words[8];\r\n      puVar14 = &local_288.words[11];\r\n      for (iVar27 = 0x6c; iVar27 != 0; iVar27 = iVar27 + -1) {\r\n        *puVar14 = *puVar5;\r\n        puVar5 = puVar5 + 1;\r\n        puVar14 = puVar14 + 1;\r\n      }",
+          "new": "      memcpy(local_288.type0.patternWords,\r\n             &bulletPatterns[0].words[8],\r\n             sizeof(local_288.type0.patternWords));"
+        },
+        {
+          "old": "    if (*(short *)(iVar27 + 4) == 0x1b0) {\r\n      puVar14 = (unsigned int *)((int)runtimeAddress + 0x2e4);\r\n      puVar13 = reinterpret_cast<unsigned int *>(&local_288) + 18;\r\n      for (iVar26 = 0x6c; iVar26 != 0; iVar26 = iVar26 + -1) {\r\n        *puVar13 = *puVar14;\r\n        puVar14 = puVar14 + 1;\r\n        puVar13 = puVar13 + 1;\r\n      }",
+          "new": "    if (*(short *)(iVar27 + 4) == 0x1b0) {\r\n      memcpy(local_288.type1.patternWords,\r\n             &bulletPatterns[0].words[8],\r\n             sizeof(local_288.type1.patternWords));"
+        }
+      ]
+    },
+    "aim-block": {
+      "source": "src/EnemyEclDispatcher.cpp",
+      "base_sha256": "de2c1fdceefe6aaa8a2c14af12eb04c5cc49d9f188dc04c091078fdf2dc29c2f",
+      "candidate_sha256": "d13486ae4b2880245d9c49d5d4693ac14f1333de76576f281abe884796b94ace",
+      "edits": [
+        {
+          "old": "  case ENEMY_ECL_AIM_BULLET_AT_PLAYER:\r\n    pfVar15 = (float *)(reinterpret_cast<int>(g_Player) + 0x3c0);\r\n    fVar19 = (ReadFloatArgument(1));\r\n    iVar26 = reinterpret_cast<int>(g_Player);\r\n    fVar21 = (ReadFloatArgument(2));\r\n    fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,\r\n                   *pfVar15 - (float)fVar19);\r\n    goto dispatch_store_float_result;",
+          "new": "  case ENEMY_ECL_AIM_BULLET_AT_PLAYER:\r\n    {\r\n      const PlayerFloat3 *firstPosition = &g_Player->drawPosition;\r\n      float x = ReadFloatArgument(1);\r\n      const PlayerFloat3 *secondPosition = &g_Player->drawPosition;\r\n      float y = ReadFloatArgument(2);\r\n      fVar19 = atan2(secondPosition->y - y, firstPosition->x - x);\r\n      goto dispatch_store_float_result;\r\n    }"
+        }
+      ]
+    },
+    "laser-identity": {
+      "source": "src/EnemyLaser.cpp",
+      "base_sha256": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "candidate_sha256": "28b981fed7be9ce5fa6f6ec8afc8ba08f6992d8fccf2cfd25a9b0cd1cbfc7df6",
+      "edits": [
+        {
+          "old": "            laser = storage ? EnemyInitializeLaserType0(storage) : NULL;",
+          "new": "            if (storage) {\r\n                EnemyInitializeLaserType0(storage);\r\n                laser = &storage->common;\r\n            } else {\r\n                laser = NULL;\r\n            }"
+        },
+        {
+          "old": "            laser = storage ? EnemyInitializeLaserType1(storage) : NULL;",
+          "new": "            if (storage) {\r\n                EnemyInitializeLaserType1(storage);\r\n                laser = &storage->common;\r\n            } else {\r\n                laser = NULL;\r\n            }"
+        }
+      ]
+    },
+    "aim-block-tail-a": {
+      "source": "src/EnemyEclDispatcher.cpp",
+      "base_sha256": "de2c1fdceefe6aaa8a2c14af12eb04c5cc49d9f188dc04c091078fdf2dc29c2f",
+      "candidate_sha256": "c27c2c4f1c7afd0039a9bf94964615b0758b013d70d2cf1ff2f6f1b2bd6349c1",
+      "edits": [
+        {
+          "old": "  case ENEMY_ECL_AIM_BULLET_AT_PLAYER:\r\n    pfVar15 = (float *)(reinterpret_cast<int>(g_Player) + 0x3c0);\r\n    fVar19 = (ReadFloatArgument(1));\r\n    iVar26 = reinterpret_cast<int>(g_Player);\r\n    fVar21 = (ReadFloatArgument(2));\r\n    fVar19 = atan2(*(float *)(iVar26 + 0x3c4) - fVar21,\r\n                   *pfVar15 - (float)fVar19);\r\n    goto dispatch_store_float_result;",
+          "new": "  case ENEMY_ECL_AIM_BULLET_AT_PLAYER:\r\n    {\r\n      const PlayerFloat3 *firstPosition = &g_Player->drawPosition;\r\n      float x = ReadFloatArgument(1);\r\n      const PlayerFloat3 *secondPosition = &g_Player->drawPosition;\r\n      float y = ReadFloatArgument(2);\r\n      fVar19 = atan2(secondPosition->y - y, firstPosition->x - x);\r\n      goto dispatch_store_float_result;\r\n    }"
+        },
+        {
+          "old": "      fVar19 = atan2(secondPosition->y - y, firstPosition->x - x);\r\n      goto dispatch_store_float_result;",
+          "new": "      fVar21 = atan2(secondPosition->y - y, firstPosition->x - x);\r\n      goto dispatch_store_float_result_a;"
+        }
+      ]
+    }
+  }
+}

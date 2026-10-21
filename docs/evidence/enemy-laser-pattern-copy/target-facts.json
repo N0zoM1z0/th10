@@ -1,0 +1,65 @@
+{
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "mapped_text": {
+    "start": "0x401000",
+    "end_inclusive": "0x465A80",
+    "size": 412289,
+    "sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f"
+  },
+  "ghidra": {
+    "transport": "direct local read-only headless",
+    "noanalysis": true,
+    "transaction": "rolled back",
+    "max_cpu": 1,
+    "max_heap_mib": 768,
+    "bytes_unchanged": true,
+    "review_entries": [
+      "0x40E770",
+      "0x41C510",
+      "0x41C5B0",
+      "0x41C680"
+    ]
+  },
+  "pattern_copies": [
+    {
+      "opcode": "0x1AF",
+      "source_enemy_offset": "0x2E4",
+      "request_offset": "0x2C",
+      "dwords": 108,
+      "rep_movsd": "0x41101C"
+    },
+    {
+      "opcode": "0x1B0",
+      "source_enemy_offset": "0x2E4",
+      "request_offset": "0x48",
+      "dwords": 108,
+      "rep_movsd": "0x41117A"
+    }
+  ],
+  "straight_laser": {
+    "start": "0x41113E",
+    "fire_laser_call": "0x4112C9",
+    "callee": "0x41C510",
+    "manager_register": "ESI",
+    "request_register": "EDI",
+    "stack_type": 1,
+    "return_pointer_home": "ESP+0x10"
+  },
+  "aim_shared_tail": {
+    "aim_start": "0x411C5A",
+    "jump": "0x411CA1",
+    "destination": "0x411956",
+    "physically_in_rank5_span": true,
+    "tail_size": 49,
+    "jump_size": 5,
+    "duplicated_interval_excess": 44
+  },
+  "constructors": {
+    "type0": "0x41C5B0",
+    "type1": "0x41C680",
+    "input_register": "EBX",
+    "return_register": "EAX",
+    "return_identity": "same allocated object"
+  },
+  "limits": "Target observations establish bytes/calls/storage, not original source spelling, class/TU ownership, runtime closure or partial-case exactness."
+}

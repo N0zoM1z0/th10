@@ -4515,3 +4515,9 @@ unchanged becauseFrontend.cpp is absent fromthat graph; no newlarge score or
 compile is claimed. All1235previousrecipes remain unchanged andtwo are added.
 Authored exact is396/72283 bytes,26.42% provisional. See
 [explicit ID proof](evidence/pending-id-value/README.md).
+
+## Enemy laser pattern-copy scheduling
+
+| ID | Evidence | Fact | Source |
+| --- | --- | --- | --- |
+| ENEMY-093 | observed / source-codegen improvement / non-exact | Target1AF/1B0 copy108 dwords from runtime+2E4 into request+2C/+48. Replacing the two equivalent pointer loops with existing typed-array memcpy removes source-relative stack-address arithmetic and de-inlines straight-laser allocation into a shared independent FireLaser call. Current actual33-input/eleven-TU dispatcher is14352/14416,frame2C4,19sentinels,181selectors/108ordered groups,42equal spans,gap566 versus650. All46 guards retain5335/all142; ANM9964 and Run7020/27ordinary/all189/62locals remain. Fresh full canonical ten-TU cold passes five accepted units plus35 contextual guards4424/all118. Only the dispatcher inventory note is refreshed; no new exact bytes, recipes or state counts. Target411CA1 jumps to rank5's49-byte tail411956; replacing that five-byte jump with a cloned tail adds44 bytes; physical deficits are not missing-logic proof. Block-local aim, allocation identity and alternate result-tail controls are rejected; factory identity remains161/153 with wrong private ABI despite30/137 positions. | Direct local read-only Ghidra; exact target/mapped-text attestation; complete native extents, field-bound Run, canonical focused cold and source overlays; docs/evidence/enemy-laser-pattern-copy/README.md |

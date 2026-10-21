@@ -34,6 +34,28 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 ## Current checkpoint
 
+The latest bounded dispatcher checkpoint replaces two laser pattern-copy
+loops with typed-array memcpy. Current actual33-input eleven-TU link emits
+14352/14416 bytes, frame2C4/19sentinels/181selectors/108ordered groups,
+42target-sized groups and aggregate gap566 (previous650). Whole-case aligned
+agreement is3219/11148 versus2980/11152; no exact credit. Straight-laser now
+uses a real independent factory call through a shared tail, not an inline
+allocation. Native raw bodies for all three large owners reproduce the private
+copy result. All46 guards5335/all142 pass; ANM9964/gap2 and Run7020/27ordinary/
+all189/62locals remain. The full current canonical ten-TU cold passes itsfive
+accepted units plus35 contextual guards4424/all118; see the separate measurements.
+Only the dispatcher inventory note is refreshed; match/recipe/state/byte counts
+stay unchanged. SVG remains visibly26.42% provisional.
+Three executed aim/allocation controls are rejected; don't repeat them without
+new TH10 evidence. Target411CA1 jumps into rank5's49-byte shared tail at411956,
+so physical branch deficits are not missing-logic proof. Direct read-only Ghidra
+attests complete mapped text; one CPU/768MiB, serial nice10 builds.
+See [laser copy evidence](evidence/enemy-laser-pattern-copy/README.md).
+Current actual carrier: `build/gpt-6.1-sol/enemy-laser-lifetime-20261021/adopted`.
+Canonical current: `build/match-linked/EnemyItemDrops`. Prior large source pins
+are historical after this one EnemyEclDispatcher.cpp change. Recovery:
+`.analysis/gpt-6.1-sol/enemy-laser-lifetime-20261021/RECOVERY.md`.
+
 The operator has reopened reconstruction for both large and small functions,
 including ANM ExecuteScript, ECL Run and Enemy DispatchEclInstruction. This work is active;
 none of the three is exact yet. Re-evaluate old source/API assumptions against
@@ -49,7 +71,7 @@ authored denominator is provisional. The SVG now visibly fills the authored
 bar from current classified exact bytes and labels the ratio provisional.
 The complete-game denominator remains unknown.
 
-The latest exact checkpoint closes both shared pending helpers: PendingThree
+The preceding exact checkpoint closes both shared pending helpers: PendingThree
 40C4D0/65 and PendingSix4243F0/65, adding130 authored exact bytes. Explicit
 AnmVmIdView(id->value) construction replaces the direct object copy in two
 FindVm expressions. Both inputs already matched EAX; the loaded value now
@@ -682,14 +704,16 @@ Semantic reconstruction and portability have not started.
 
 ## Open large owners
 
-These are scoped historical diagnostics, not exact claims. Rebuild the actual
-graph after any dependency changes before comparing scores.
+Current measurements come from the laser-copy checkpoint's actual eleven-TU
+link and fresh full canonical ten-TU cold. Their identities and separate
+metrics are in [the evidence](evidence/enemy-laser-pattern-copy/native-summary.json).
+Rebuild the actual graph after dependency changes before comparing scores.
 
-| Owner | Last measured context | Remaining work |
+| Owner | Current eleven-TU measurement | Remaining work |
 | --- | --- | --- |
-| ANM ExecuteScript43EE30/9964 | Current two full ten-TU circle-cancel colds have identical complete9964 bodies; equality to the preceding carrier requires verified field rewrites. Fresh timer-batch diagnosis remeasures7478/7995,90/92 groups and gap2 | Nonexact. Registers, flag scheduling, intervals61(+1)/2(−1) and common tail remain open. No target exact credit from native equality. |
-| ECL Run44E1A0/7020 | Current full ten-TU circle-cancel graph: complete7020/all189/62locals,6993 matched,171-byte float callee exact | Nonexact,27 ordinary differences. Historical separate two-TU26 is not current. Thread argument, SIB, stack-home and common-latch differences remain. [Current evidence](evidence/enemy-circle-cancel/README.md). |
-| Enemy DispatchEclInstruction40E770/14416 | Current two full ten-TU circle-cancel colds:14464/14416, frame2C4,19sentinels,181 selectors/108 groups in target order;42 target-sized groups, absolute gap650 | Nonexact. Instruction lifetime, storage, register scheduling and stack homes remain open. Historical105/106 integer-call counts and1B4/1AA shared-tail addresses have not been freshly counted here; do not use them as current missing-read evidence. No parent or case exact credit. |
+| ANM ExecuteScript43EE30/9964 |9964 bytes;7478/7995 aligned,90/92 target-sized groups,gap2|Nonexact. Registers, flags, intervals61(+1)/2(−1) and common tail remain. |
+| ECL Run44E1A0/7020 |Complete7020/all189/62locals,6993matched;171-byte callee exact|Nonexact,27 ordinary differences. Thread argument, SIB, stack homes and common latch remain. Historical separate two-TU26 is not current. |
+| Enemy DispatchEclInstruction40E770/14416 |14352/14416,frame2C4,19sentinels,181selectors/108ordered groups;42target-sized groups,gap566|Nonexact. Laser factory private ABI, tail sharing, lifetime/storage/register/stack scheduling remain. No partial-case exact credit. |
 
 Old rejected controls are scoped observations, not proof that an API or source
 shape is correct. Require a concrete target hypothesis and compare corresponding
