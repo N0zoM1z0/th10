@@ -1,0 +1,1431 @@
+{
+  "starting_head": "553e11856a207d479a15e0b5d0de373a984d850f",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "acceptance_authority": "none for parent or cases",
+  "new_exact_credit": 0,
+  "private_manifest_sha256": "d59dfc7456890e3cf83fc5b0cf531648249df50e8bb256ec21bf15390df74610",
+  "canonical_manifest_sha256": "8ef1e6f9232cba78a2e108546adf769d5f84a07f89d039d4c06d08bb6eba7760",
+  "context_source_pins": {
+    "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+    "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+    "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+    "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+    "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+    "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+    "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+    "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+    "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+    "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+    "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+    "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+    "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+    "src/EnemyEclDispatcher.cpp": "21b701b5a793b8bf2619c1d711c3bdb5caf992d98a41ec039f499a1ff1decd2d",
+    "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+    "src/EnemyLaser.cpp": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+    "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+    "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+    "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+    "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+    "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+    "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+    "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+    "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+    "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+    "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+    "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+    "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+    "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+    "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+    "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+    "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+  },
+  "target_sentinel_forms": [
+    {
+      "opcodes": [
+        "0x118",
+        "0x11a"
+      ],
+      "forms": [
+        "fcomp",
+        "fcom"
+      ]
+    },
+    {
+      "opcodes": [
+        "0x119",
+        "0x11b"
+      ],
+      "forms": [
+        "fcomp",
+        "fcomp"
+      ]
+    },
+    {
+      "opcodes": [
+        "0x11c",
+        "0x11e"
+      ],
+      "forms": [
+        "fcomp",
+        "fcomp"
+      ]
+    },
+    {
+      "opcodes": [
+        "0x11d",
+        "0x11f"
+      ],
+      "forms": [
+        "fcomp",
+        "fcomp",
+        "fcomp"
+      ]
+    },
+    {
+      "opcodes": [
+        "0x120",
+        "0x122"
+      ],
+      "forms": [
+        "fcomp",
+        "fcomp",
+        "fcomp",
+        "fcomp"
+      ]
+    },
+    {
+      "opcodes": [
+        "0x121",
+        "0x123"
+      ],
+      "forms": [
+        "fcomp",
+        "fcomp",
+        "fcom",
+        "fcomp"
+      ]
+    },
+    {
+      "opcodes": [
+        "0x12a",
+        "0x12b"
+      ],
+      "forms": [
+        "fcomp",
+        "fcom"
+      ]
+    }
+  ],
+  "controls": [
+    {
+      "label": "baseline",
+      "producer_sha256": "fa2574fbc2658c426250a549fabf21acd84e8fb92d690fb01e32ad539645a8fa",
+      "artifact_directory": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/baseline-before-adoption",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/match-linked/EnemyItemDrops",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [],
+      "reused_objects": {},
+      "reused_harness": {},
+      "parent_size": 14352,
+      "whole_body_raw_sha256": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "c023d09b474d9e2709fb8b2129187424e42d0431c52ed5875c393c9609bdc3ec",
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": "f746582899ca09d4e7f1954df4922eec787905c88e55c347aa75059501b96334",
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "ecc4f403bd88ef4a8b03580d032ad4bd992aa00442d26418bdaa69a90d12d9a7",
+        "?Run@EclVmContext@@QAEHM@Z": "f100d3e5185e4979e1939dea3359a6b499ba0db3cefa347fb0f2b646b10e556e"
+      },
+      "frame": "esp, 0x2c4",
+      "sentinel_forms": [
+        {
+          "opcodes": [
+            "0x118",
+            "0x11a"
+          ],
+          "forms": [
+            "fcomp",
+            "fcom"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x119",
+            "0x11b"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x11c",
+            "0x11e"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x11d",
+            "0x11f"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x120",
+            "0x122"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x121",
+            "0x123"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x12a",
+            "0x12b"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        }
+      ],
+      "sentinel_forms_equal_target": false,
+      "case_aligned": {
+        "comparable": 11134,
+        "gap": 336,
+        "matched": 3251,
+        "same_sized": 45
+      },
+      "size_transitions": [],
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "anm": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ecl": {
+        "size": 7020,
+        "matched": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/match-linked/EnemyItemDrops/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/match-linked/EnemyItemDrops/link-anchors.c": {
+          "bytes": 12239,
+          "sha256": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16"
+        },
+        "build/match-linked/EnemyItemDrops/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-1.log": {
+          "bytes": 39576,
+          "sha256": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-2.log": {
+          "bytes": 820,
+          "sha256": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-3.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/match-linked/EnemyItemDrops/source.exe": {
+          "bytes": 122880,
+          "sha256": "f89ae913f0121ac795d5e1ef3615bc735e61661f93e8d4850e53cc1745f7c7a7"
+        },
+        "build/match-linked/EnemyItemDrops/source.ltcg.obj": {
+          "bytes": 157588,
+          "sha256": "93e4af3d4d86602bcfdb5a9de70056ce59330cd6912c8e7c6b63d125027feccf"
+        },
+        "build/match-linked/EnemyItemDrops/source.map": {
+          "bytes": 92342,
+          "sha256": "c839b3794ec708eaea0fe47a9bec0d78f6bf60662c726e51510b64a1107a8a56"
+        },
+        "build/match-linked/EnemyItemDrops/source.pdb": {
+          "bytes": 117760,
+          "sha256": "de1de777f774b88cefd2d7a43f3e1c322a370627064d9959f138463a54d64bc1"
+        },
+        "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    },
+    {
+      "label": "sentinel-left",
+      "producer_sha256": "fa2574fbc2658c426250a549fabf21acd84e8fb92d690fb01e32ad539645a8fa",
+      "artifact_directory": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": ".analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "02ae0573a5b9fd8feffb225c6cc8254f8ed8a765e0efb2e01a5a772afea3c7ee",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b"
+        }
+      ],
+      "reused_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "parent_size": 14336,
+      "whole_body_raw_sha256": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": "e84bd507a6faac1cc37e88ed3325a1aa87e3ac73078f4fe58911ddd057a92ca9",
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+        "?Run@EclVmContext@@QAEHM@Z": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+      },
+      "frame": "esp, 0x2c4",
+      "sentinel_forms": [
+        {
+          "opcodes": [
+            "0x118",
+            "0x11a"
+          ],
+          "forms": [
+            "fcomp",
+            "fcom"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x119",
+            "0x11b"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x11c",
+            "0x11e"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x11d",
+            "0x11f"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x120",
+            "0x122"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x121",
+            "0x123"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcom",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x12a",
+            "0x12b"
+          ],
+          "forms": [
+            "fcomp",
+            "fcom"
+          ]
+        }
+      ],
+      "sentinel_forms_equal_target": true,
+      "case_aligned": {
+        "comparable": 11128,
+        "gap": 328,
+        "matched": 3245,
+        "same_sized": 45
+      },
+      "size_transitions": [
+        {
+          "opcodes": [
+            "0x121",
+            "0x123"
+          ],
+          "target_size": 525,
+          "before": 532,
+          "after": 530
+        },
+        {
+          "opcodes": [
+            "0x12a",
+            "0x12b"
+          ],
+          "target_size": 92,
+          "before": 95,
+          "after": 93
+        },
+        {
+          "opcodes": [
+            "0x156",
+            "0x15c",
+            "0x165",
+            "0x166",
+            "0x167"
+          ],
+          "target_size": 219,
+          "before": 226,
+          "after": 215
+        },
+        {
+          "opcodes": [],
+          "target_size": 24,
+          "before": 26,
+          "after": 25
+        }
+      ],
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "anm": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ecl": {
+        "size": 7020,
+        "matched": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/link.log": {
+          "bytes": 104,
+          "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/source.exe": {
+          "bytes": 122880,
+          "sha256": "76250d0903e4b308d190aba0083b5dddfe020a16d16d1665c42cb3e2ca1ae355"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/source.ltcg.obj": {
+          "bytes": 157816,
+          "sha256": "02ae0573a5b9fd8feffb225c6cc8254f8ed8a765e0efb2e01a5a772afea3c7ee"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/source.map": {
+          "bytes": 92342,
+          "sha256": "f731f568671b0693cf4c93e8ccfcb9cbbd5f337cd38798036eb5c060f93c5f4a"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/source.pdb": {
+          "bytes": 117760,
+          "sha256": "1e87942e4c71dacdb95e3dac577d88f7e40a0712879a91cf9646dd71c79d5b7b"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/sentinel-left/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    },
+    {
+      "label": "local-opcode",
+      "producer_sha256": "ac513fd34e3f26dc836a17d9ef092db3376be88d89d0ebde550fea2f9b682346",
+      "artifact_directory": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": ".analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [
+        {
+          "exit_code": 0,
+          "object_sha256": "470937730ea8f0737457bbc6766af1482d9f945c4343014a6ad945b9008ebe0f",
+          "profile": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS"
+          ],
+          "role": "src/EnemyEclDispatcher.cpp",
+          "source": ".analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/src/EnemyEclDispatcher.cpp",
+          "source_sha256": "a7b55055ebdfc9f14835765bedd382a2fb4608cb99a5a8a3ec87fea2bbf00e18"
+        }
+      ],
+      "reused_objects": {
+        "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+        "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2",
+        "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+        "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+        "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+        "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+        "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+        "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+        "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      },
+      "reused_harness": {
+        "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+        "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      "parent_size": 14352,
+      "whole_body_raw_sha256": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "c023d09b474d9e2709fb8b2129187424e42d0431c52ed5875c393c9609bdc3ec",
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": "f746582899ca09d4e7f1954df4922eec787905c88e55c347aa75059501b96334",
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "ecc4f403bd88ef4a8b03580d032ad4bd992aa00442d26418bdaa69a90d12d9a7",
+        "?Run@EclVmContext@@QAEHM@Z": "f100d3e5185e4979e1939dea3359a6b499ba0db3cefa347fb0f2b646b10e556e"
+      },
+      "frame": "esp, 0x2c4",
+      "sentinel_forms": [
+        {
+          "opcodes": [
+            "0x118",
+            "0x11a"
+          ],
+          "forms": [
+            "fcomp",
+            "fcom"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x119",
+            "0x11b"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x11c",
+            "0x11e"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x11d",
+            "0x11f"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x120",
+            "0x122"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x121",
+            "0x123"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x12a",
+            "0x12b"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        }
+      ],
+      "sentinel_forms_equal_target": false,
+      "case_aligned": {
+        "comparable": 11134,
+        "gap": 336,
+        "matched": 3251,
+        "same_sized": 45
+      },
+      "size_transitions": [],
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "anm": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ecl": {
+        "size": 7020,
+        "matched": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/source.exe": {
+          "bytes": 122880,
+          "sha256": "bfe550b75b577f882e39621fef7e4a9afba4e2ee4392e5d67b62e8039ac0d930"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/source.ltcg.obj": {
+          "bytes": 157815,
+          "sha256": "470937730ea8f0737457bbc6766af1482d9f945c4343014a6ad945b9008ebe0f"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/source.map": {
+          "bytes": 92342,
+          "sha256": "edfee226c584a2e0fb3e1b64a6d13c15a8e009989bba5df111fba4a1c31b7301"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/source.pdb": {
+          "bytes": 117760,
+          "sha256": "834d92f47f17851e6d321a1e0ed59e106cb1363668e71e38bc7648ac0ea96778"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    },
+    {
+      "label": "adopted",
+      "producer_sha256": "f62f4056d8b77213e6bd41cb71a27bc125068a294fd2d185a009a276b3d1777d",
+      "artifact_directory": "build/match-linked/EnemyItemDrops",
+      "context": {
+        "artifact_kind": "linked-pe",
+        "entry_symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+        "harness": "unresolved-symbol-data-anchors-v1",
+        "link_profile": [
+          "/ltcg",
+          "/nodefaultlib",
+          "/subsystem:console",
+          "/incremental:no",
+          "/fixed:no",
+          "/base:0x00400000",
+          "/debug",
+          "/debugtype:cv",
+          "/opt:noref",
+          "/opt:noicf",
+          "/safeseh:no"
+        ],
+        "output_dir": "build/match-linked/EnemyItemDrops",
+        "profile": [
+          "/TP",
+          "/MT",
+          "/O2",
+          "/Gy",
+          "/GF",
+          "/Oi",
+          "/DNDEBUG",
+          "/Isrc",
+          "/GL",
+          "/GS"
+        ],
+        "source": "src/EnemyEclDispatcher.cpp",
+        "support_profiles": {
+          "src/AnmInt3Scale.cpp": [
+            "/TP",
+            "/MT",
+            "/O2",
+            "/Gy",
+            "/GF",
+            "/Oi",
+            "/DNDEBUG",
+            "/Isrc",
+            "/GL",
+            "/GS",
+            "/Ob1"
+          ]
+        },
+        "support_sources": [
+          "src/EclVm.cpp",
+          "src/AnmManager.cpp",
+          "src/AnmVmCreate.cpp",
+          "src/EnemyLaser.cpp",
+          "src/Enemy.cpp",
+          "src/AnmVmId.cpp",
+          "src/RandomMath.cpp",
+          "src/AnmInt3Scale.cpp",
+          "src/ItemManager.cpp"
+        ]
+      },
+      "compiled_inputs": [],
+      "reused_objects": {},
+      "reused_harness": {},
+      "parent_size": 14336,
+      "whole_body_raw_sha256": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": "57f5b26e49d8146b5f188f91c98a33a3d34496994045ed46cd75f03097045136",
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": "e84bd507a6faac1cc37e88ed3325a1aa87e3ac73078f4fe58911ddd057a92ca9",
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": "73b736676af6d945070714aa4286a11fd62fa13c28799c03f550f8df0570291f",
+        "?Run@EclVmContext@@QAEHM@Z": "8c70ef243f1ca015ec8c47500b9aa4719c36912a52c67e477c061807b3af0121"
+      },
+      "frame": "esp, 0x2c4",
+      "sentinel_forms": [
+        {
+          "opcodes": [
+            "0x118",
+            "0x11a"
+          ],
+          "forms": [
+            "fcomp",
+            "fcom"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x119",
+            "0x11b"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x11c",
+            "0x11e"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x11d",
+            "0x11f"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x120",
+            "0x122"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcomp",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x121",
+            "0x123"
+          ],
+          "forms": [
+            "fcomp",
+            "fcomp",
+            "fcom",
+            "fcomp"
+          ]
+        },
+        {
+          "opcodes": [
+            "0x12a",
+            "0x12b"
+          ],
+          "forms": [
+            "fcomp",
+            "fcom"
+          ]
+        }
+      ],
+      "sentinel_forms_equal_target": true,
+      "case_aligned": {
+        "comparable": 11128,
+        "gap": 328,
+        "matched": 3245,
+        "same_sized": 45
+      },
+      "size_transitions": [
+        {
+          "opcodes": [
+            "0x121",
+            "0x123"
+          ],
+          "target_size": 525,
+          "before": 532,
+          "after": 530
+        },
+        {
+          "opcodes": [
+            "0x12a",
+            "0x12b"
+          ],
+          "target_size": 92,
+          "before": 95,
+          "after": 93
+        },
+        {
+          "opcodes": [
+            "0x156",
+            "0x15c",
+            "0x165",
+            "0x166",
+            "0x167"
+          ],
+          "target_size": 219,
+          "before": 226,
+          "after": 215
+        },
+        {
+          "opcodes": [],
+          "target_size": 24,
+          "before": 26,
+          "after": 25
+        }
+      ],
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "anm": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ecl": {
+        "size": 7020,
+        "matched": 6993,
+        "fields": 189,
+        "local_destinations": 62,
+        "callee_bytes": 171
+      },
+      "artifacts": {
+        "build/match-linked/EnemyItemDrops/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/match-linked/EnemyItemDrops/link-anchors.c": {
+          "bytes": 12239,
+          "sha256": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16"
+        },
+        "build/match-linked/EnemyItemDrops/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-1.log": {
+          "bytes": 39576,
+          "sha256": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-2.log": {
+          "bytes": 820,
+          "sha256": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149"
+        },
+        "build/match-linked/EnemyItemDrops/link-attempt-3.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/match-linked/EnemyItemDrops/source.exe": {
+          "bytes": 122880,
+          "sha256": "92d650933e7e3735d2225ea4680783d4f1391e8ac92f387eb660909b1f78cbe0"
+        },
+        "build/match-linked/EnemyItemDrops/source.ltcg.obj": {
+          "bytes": 157588,
+          "sha256": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657"
+        },
+        "build/match-linked/EnemyItemDrops/source.map": {
+          "bytes": 92342,
+          "sha256": "6162ce4405e846ee3b09abbddb2e8316d58ea56b3063a7c528d5f06d6a2a6412"
+        },
+        "build/match-linked/EnemyItemDrops/source.pdb": {
+          "bytes": 117760,
+          "sha256": "c94f77beb2f1cf5d1a88242a22e876758bd6a6d3a893286312861235d91b17b5"
+        },
+        "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      }
+    }
+  ],
+  "adoption": {
+    "source_sha256": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+    "candidate_source_sha256": "4340bafd4fbbdcd79f46bc5ecdbc476405977ddffe9c902bef9d42752188185b",
+    "only_extra_source_change": "none; maintained source equals private candidate",
+    "compiled_game_objects": 1,
+    "reused_game_objects": 9,
+    "reused_harness_files": 2,
+    "full_cold": false,
+    "archive": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/baseline-before-adoption",
+    "archive_files": {
+      "support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+      "source.map": "c839b3794ec708eaea0fe47a9bec0d78f6bf60662c726e51510b64a1107a8a56",
+      "support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+      "link-attempt-2.log": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+      "source.exe": "f89ae913f0121ac795d5e1ef3615bc735e61661f93e8d4850e53cc1745f7c7a7",
+      "source.ltcg.obj": "93e4af3d4d86602bcfdb5a9de70056ce59330cd6912c8e7c6b63d125027feccf",
+      "support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+      "support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+      "link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+      "link-attempt-1.log": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+      "support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+      "support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+      "link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+      "link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+      "link-anchors.c": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+      "support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+      "source.pdb": "de1de777f774b88cefd2d7a43f3e1c322a370627064d9959f138463a54d64bc1",
+      "support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    "new_artifacts": {
+      "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84",
+      "build/match-linked/EnemyItemDrops/source.map": "6162ce4405e846ee3b09abbddb2e8316d58ea56b3063a7c528d5f06d6a2a6412",
+      "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3",
+      "build/match-linked/EnemyItemDrops/link-attempt-2.log": "51cd2e1c41039576a2397467184451e73b88e3f61e71e3483ddab5f5ea14d149",
+      "build/match-linked/EnemyItemDrops/source.exe": "92d650933e7e3735d2225ea4680783d4f1391e8ac92f387eb660909b1f78cbe0",
+      "build/match-linked/EnemyItemDrops/source.ltcg.obj": "f147a2dcd1cf1f4f260f906ffc1d17b567413396e5c398171993b1b483e41657",
+      "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0",
+      "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5",
+      "build/match-linked/EnemyItemDrops/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab",
+      "build/match-linked/EnemyItemDrops/link-attempt-1.log": "4c0d1844b0953e8187caf217fee9c7c024bbeeeadd073a989a6623c1e591052a",
+      "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159",
+      "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c",
+      "build/match-linked/EnemyItemDrops/link-aliases.rsp": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d",
+      "build/match-linked/EnemyItemDrops/link-anchors.obj": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265",
+      "build/match-linked/EnemyItemDrops/link-anchors.c": "900c03a540f3b1b544f9a1882e288b242a9a2e2a694908b007cae647dd917d16",
+      "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15",
+      "build/match-linked/EnemyItemDrops/source.pdb": "c94f77beb2f1cf5d1a88242a22e876758bd6a6d3a893286312861235d91b17b5",
+      "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    }
+  },
+  "maintained_guards": {
+    "count": 38,
+    "bytes": 5039,
+    "fields": 125
+  },
+  "opcode_declaration_four_body_raw_neutral": true,
+  "private_and_maintained_four_body_raw_equal": true,
+  "cleanup": {
+    "files": 16,
+    "bytes": 1066539,
+    "inventory": [
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/link-aliases.rsp",
+        "bytes": 19994,
+        "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/link-anchors.obj",
+        "bytes": 11653,
+        "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/link.log",
+        "bytes": 167,
+        "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/source.exe",
+        "bytes": 122880,
+        "sha256": "bfe550b75b577f882e39621fef7e4a9afba4e2ee4392e5d67b62e8039ac0d930"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/source.ltcg.obj",
+        "bytes": 157815,
+        "sha256": "470937730ea8f0737457bbc6766af1482d9f945c4343014a6ad945b9008ebe0f"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/source.map",
+        "bytes": 92342,
+        "sha256": "edfee226c584a2e0fb3e1b64a6d13c15a8e009989bba5df111fba4a1c31b7301"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/source.pdb",
+        "bytes": 117760,
+        "sha256": "834d92f47f17851e6d321a1e0ed59e106cb1363668e71e38bc7648ac0ea96778"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-00-EclVm.ltcg.obj",
+        "bytes": 55445,
+        "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-01-AnmManager.ltcg.obj",
+        "bytes": 247856,
+        "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-02-AnmVmCreate.ltcg.obj",
+        "bytes": 10892,
+        "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-03-EnemyLaser.ltcg.obj",
+        "bytes": 44123,
+        "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-04-Enemy.ltcg.obj",
+        "bytes": 97582,
+        "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-05-AnmVmId.ltcg.obj",
+        "bytes": 13646,
+        "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-06-RandomMath.ltcg.obj",
+        "bytes": 3947,
+        "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-07-AnmInt3Scale.ltcg.obj",
+        "bytes": 10486,
+        "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+      },
+      {
+        "path": "build/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/local-opcode/support-08-ItemManager.ltcg.obj",
+        "bytes": 59951,
+        "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+      }
+    ]
+  },
+  "unrelated_untracked": {
+    "docs/evidence/d3d-adapter-format/README.md": "75412206932d385780dcfc84288f87a72b32545fdfe9cfba8d462969ca446ce1",
+    "docs/evidence/d3d-adapter-format/reconstruct.py": "3f2a09ac896cbb1c12a6a4901a62ef6a23cf006a7cb08bcb7d9046bf40cf5512",
+    "docs/evidence/d3d-adapter-format/.gitattributes": "ed498fc91b1843b2e372ddc35249846ed8411aa4b63361dc2fede9f454e0fb25",
+    "docs/evidence/d3d-adapter-format/evidence.json": "cac2ad3b15a0cab5b0dfbd186f068d05979fca84c64f146934ce45e976e1afca",
+    "docs/evidence/d3d-adapter-format/candidate.patch": "20f79cba52efad0ef229b0343b6c8ca7eea23ca813b301e45a95111a48558a4d",
+    "docs/evidence/d3d-adapter-format/test_candidate.py": "e74122636a34597a213bd53514d43f7665559177227eb2ccc7128bf6932cc6a7",
+    "docs/evidence/d3d-adapter-format/provenance.json": "d2e14614a1a9a683ab9f04210f76be95ee9c7fcc32b12dad71e94b9679f8e6d0",
+    "docs/evidence/d3d-adapter-format/REFERENCE_LICENSE.txt": "2928b2f628a94dc67b9c8fbc97bf85f7fe0444bc38e34e898befb4e450463b2f",
+    "docs/evidence/d3d-adapter-format/model.py": "b7be4e6b3bbceebddd3716ff8e2c48fed082245470485ddf70a8db42784dfc0c"
+  },
+  "full_ci_run": false,
+  "full_cold_pair": false,
+  "terminal_exit_codes": {
+    "68841": 0,
+    "61573": 0,
+    "23086": 0,
+    "23806": 0,
+    "76818": 0,
+    "42847": 0
+  }
+}

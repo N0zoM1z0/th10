@@ -5293,3 +5293,14 @@ different instruction sequence. These are compiler observations, not original
 source authorship or complete-parent exactness. Adopted motion group180/179
 still differs in registers, stack slots and scheduling. See
 [motion lifetime evidence](evidence/enemy-motion-lifetime/README.md).
+
+## Enemy remaining sentinel comparisons (2026-10-22)
+
+At target40F6F1 and40F8FE groups, direct FCOM compares the retained x87 value
+with double -999999.0. Float-left source predicates recover this form at the
+remaining two sites; keep the negation at the fallback site to preserve unordered
+behavior. All19 actual sentinel values and ordered FCOM/FCOMP forms now agree
+in this compiler context, without proving the surrounding instructions exact.
+A const short opcode initialized at first use is raw-neutral across four complete
+bodies; it does not repair packet/opcode register allocation. See
+[sentinel evidence](evidence/enemy-sentinel-lowering/README.md).

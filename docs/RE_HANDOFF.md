@@ -1,12 +1,13 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-Enemy motion-source adoption removes pointer spill traffic and recovers direct
-FCOM in group0x118/0x11a:193 ->180 bytes versus179. Parent14352/14416 is now64
-short (previously48); aggregate group gap improves348 ->336. Register/stack and
-scheduling differences remain; no new exact credit. Authored409/74716,
-overall1252/141647, source613/247945, nonexact204 and absent121 unchanged.
-ANM9964 and ECL7020/6993 remain nonexact.
+Enemy sentinel operand-order changes recover two direct FCOM sites; all19
+sentinel reference values and ordered comparison forms now agree with target.
+Parent14336/14416 is80 short (previously64); group gap improves336 ->328.
+Register, stack and scheduling differences remain; no new exact credit.
+Authored409/74716, overall1252/141647, source613/247945, nonexact204 and absent121
+unchanged. ANM9964 and ECL7020/6993 remain nonexact.
+See [Enemy sentinel checkpoint](evidence/enemy-sentinel-lowering/README.md).
 See [Enemy motion checkpoint](evidence/enemy-motion-lifetime/README.md).
 See [Enemy spawn-tail checkpoint](evidence/enemy-spawn-tail-layout/README.md).
 See [ANM float-service contexts](evidence/anm-float-service-context/README.md)
@@ -56,7 +57,24 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
-## Latest Enemy motion checkpoint
+## Latest Enemy sentinel checkpoint
+
+Adopt two float-left comparisons, retaining the negation for unordered behavior.
+Groups0x121/0x123 and0x12a/0x12b shrink532 ->530 and95 ->93 against525/92.
+All19 sentinel comparison forms match; this grants no group or parent exactness.
+Parent14336/14416, aligned3245/11128,45 target-sized groups/gap328. A const
+opcode local declaration is raw-neutral across four complete bodies; unadopted.
+Current packet/opcode registers differ from target; older notes refer to older
+contexts. Private and maintained primary rebuilds have identical four complete
+raw bodies, compile1/reuse9.38 complete guards5039/all125 pass. Archive19 native
+files/32 source inputs; remove16 rejected files/1066539 bytes. All owned jobs
+terminal0; no full CI. Recovery:
+`.analysis/gpt-6-astra-medium/enemy-sentinel-lowering-20261022/RECOVERY.md`.
+The sentinel-form discrepancy is exhausted in this context. Next examine ECL's
+remaining27 byte differences or a materially different Enemy register-lifetime
+hypothesis; declaration-only opcode movement has been falsified.
+
+## Previous Enemy motion checkpoint
 
 Six controls isolate explicit component sums and Y-left float comparison.
 Local pointer scopes/operand scopes/integer pointer forms do not remove the
@@ -872,7 +890,7 @@ indirect tables16. Ordinary tracking/CI does not waive this separate gate.
 | --- | --- | --- |
 |ANM43EE30 /9964|9964 bytes;7541/7995 aligned positions;90/92 target-sized groups; aggregate gap2|Child91, temporaries49/53/54, FlipX61, common-tail2 and Tick order|
 |ECL44E1A0 /7020|7020/6993,27 differences;189 fields/62 locals;171-byte float callee exact|Thread argument, SIB, homes and latch|
-|Enemy40E770 /14416|14352 bytes; frame2C4;181 selectors/108 groups;45 target-sized groups; aggregate gap336|Laser ABI, shared tails and packet/register/stack lifetime|
+|Enemy40E770 /14416|14336 bytes; frame2C4;181 selectors/108 groups;45 target-sized groups; aggregate gap328|Laser ABI, shared tails and packet/register/stack lifetime|
 
 The current ECL scope/storage/order/profile family is a measured plateau, not
 proof that Run is exhausted. The subsequent child/flag controls below also

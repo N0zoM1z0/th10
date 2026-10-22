@@ -1,0 +1,19 @@
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -1121,7 +1121,6 @@
+ 
+ {
+   int runtimeAddress = reinterpret_cast<int>(this);
+-  short opcode;
+   float fVar2;
+   unsigned char bVar3;
+   unsigned int uVar4;
+@@ -1175,7 +1174,7 @@
+ 
+   iVar26 = reinterpret_cast<int>(owner);
+   iVar27 = reinterpret_cast<int>(owner->activeEclContext->currentInstruction);
+-  opcode = *(short *)(iVar27 + 4);
++  const short opcode = *(short *)(iVar27 + 4);
+   switch(opcode) {
+   case ENEMY_ECL_CREATE_ENEMY_IF_NO_BOSS:
+     if (*(int *)(reinterpret_cast<int>(g_EnemyManager) + 0x10) != 0) {

@@ -1703,7 +1703,7 @@ dispatch_update_primary_anm_bounds:
     local_2a4 = selectedMotion->value18;
     local_2a8 = selectedMotion->value1C;
 
-    if (!(-999999.0 < fVar19)) {
+    if (!(fVar19 > -999999.0)) {
       fVar19 = selectedMotion->value24;
     }
     if (-999999.0 < local_2bc) {
@@ -1752,7 +1752,7 @@ dispatch_update_primary_anm_bounds:
     if (-999999.0 < (float)fVar19) {
       *(float *)(iVar26 + 0xc) = (float)fVar19;
     }
-    if (-999999.0 < fVar21) {
+    if (fVar21 > -999999.0) {
       *(float *)(iVar26 + 0x10) = (float)fVar21;
     }
     goto dispatch_copy_player_to_motion;
