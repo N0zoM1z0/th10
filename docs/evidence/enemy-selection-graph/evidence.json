@@ -1,0 +1,3463 @@
+{
+  "adopted": false,
+  "controls": [
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.exe": {
+          "bytes": 122880,
+          "sha256": "de1cf69a95affd477831080f80313778c293e7119af01cc1d4f4c7d013d16ab9"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.ltcg.obj": {
+          "bytes": 157889,
+          "sha256": "7399f1f5822050cc07c9f3a2c36e0b50b17a8fdb46f811aac37a7bffeb0d262f"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.map": {
+          "bytes": 92342,
+          "sha256": "3d78cd73bfc71380a3b2774786ed75be23f9ca3403fe29a6b26f775bf95d747c"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.pdb": {
+          "bytes": 117760,
+          "sha256": "9bf47fdc7c3bdbcbf2a78b85be122819abd170ddbce982e80f7cec76dc67846e"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14340,
+          "raw_sha256": "b766843bed4f9254b78adf6179f7c75a9e06f58279c03165a6a50b92e2dfa881"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "f746582899ca09d4e7f1954df4922eec787905c88e55c347aa75059501b96334"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "ecc4f403bd88ef4a8b03580d032ad4bd992aa00442d26418bdaa69a90d12d9a7"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "f100d3e5185e4979e1939dea3359a6b499ba0db3cefa347fb0f2b646b10e556e"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11135,
+        "gap": 334,
+        "matched": 3267,
+        "same_sized": 46
+      },
+      "changed_cases": [
+        {
+          "baseline": {
+            "candidate_address": "0x40417b",
+            "candidate_size": 67,
+            "comparable_bytes": 35,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 10,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x164"
+            ],
+            "slot": 64,
+            "target_address": "0x4100ea",
+            "target_size": 65
+          },
+          "candidate": {
+            "candidate_address": "0x40417b",
+            "candidate_size": 57,
+            "comparable_bytes": 37,
+            "gap_delta": -8,
+            "matched_comparable_bytes": 14,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x164"
+            ],
+            "slot": 64,
+            "target_address": "0x4100ea",
+            "target_size": 65
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404efd",
+            "candidate_size": 215,
+            "comparable_bytes": 183,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 16,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x156",
+              "0x15c",
+              "0x165",
+              "0x166",
+              "0x167"
+            ],
+            "slot": 51,
+            "target_address": "0x410e7b",
+            "target_size": 219
+          },
+          "candidate": {
+            "candidate_address": "0x404ef3",
+            "candidate_size": 224,
+            "comparable_bytes": 184,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x156",
+              "0x15c",
+              "0x165",
+              "0x166",
+              "0x167"
+            ],
+            "slot": 51,
+            "target_address": "0x410e7b",
+            "target_size": 219
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405939",
+            "candidate_size": 125,
+            "comparable_bytes": 137,
+            "gap_delta": -44,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15e"
+            ],
+            "slot": 58,
+            "target_address": "0x4118e2",
+            "target_size": 169
+          },
+          "candidate": {
+            "candidate_address": "0x405938",
+            "candidate_size": 128,
+            "comparable_bytes": 141,
+            "gap_delta": -41,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15e"
+            ],
+            "slot": 58,
+            "target_address": "0x4118e2",
+            "target_size": 169
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405c80",
+            "candidate_size": 117,
+            "comparable_bytes": 60,
+            "gap_delta": 41,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ae"
+            ],
+            "slot": 104,
+            "target_address": "0x411c5a",
+            "target_size": 76
+          },
+          "candidate": {
+            "candidate_address": "0x405c82",
+            "candidate_size": 120,
+            "comparable_bytes": 60,
+            "gap_delta": 44,
+            "matched_comparable_bytes": 39,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ae"
+            ],
+            "slot": 104,
+            "target_address": "0x411c5a",
+            "target_size": 76
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405d67",
+            "candidate_size": 25,
+            "comparable_bytes": 20,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 19,
+            "normalization_complete": true,
+            "opcodes": [],
+            "slot": 107,
+            "target_address": "0x411d18",
+            "target_size": 24
+          },
+          "candidate": {
+            "candidate_address": "0x405d6c",
+            "candidate_size": 24,
+            "comparable_bytes": 20,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 20,
+            "normalization_complete": true,
+            "opcodes": [],
+            "slot": 107,
+            "target_address": "0x411d18",
+            "target_size": 24
+          }
+        }
+      ],
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406450",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.exe",
+          "image_sha256": "de1cf69a95affd477831080f80313778c293e7119af01cc1d4f4c7d013d16ab9",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "059c3ebc17999d4bbb135b9ab6cc687e",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D00",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.exe",
+          "image_sha256": "de1cf69a95affd477831080f80313778c293e7119af01cc1d4f4c7d013d16ab9",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "059c3ebc17999d4bbb135b9ab6cc687e",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "rank-five-ascending",
+      "layout": {
+        "candidate_pre_table_span": 13684,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14340,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.exe",
+        "jump_table_address": "0x00405D84",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -76,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F34",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "55f2f782958b8b9bfd1645a577eac61f80c8823227a71e2e4c93d9c26482c0ab",
+      "report_sha256": "6604038e245e8ac94cfbeebb25b003862d2592435c984ab5ffc2dc460113b83c",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059b7",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x15e",
+          "size": 128,
+          "start": "0x405938"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405cf9",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405c82"
+        }
+      ],
+      "terminal_exit_code": 0
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.exe": {
+          "bytes": 122880,
+          "sha256": "1e7b96bff0935661447ac40d2faa0f4b622e84e277a710a781f24b205b711daf"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.ltcg.obj": {
+          "bytes": 159311,
+          "sha256": "416a6183541f9a4cf383f6f678a78e5bcc08eeba1983498284b2c4b0f3038d3d"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.map": {
+          "bytes": 92342,
+          "sha256": "212d6680b4ac39c937a95a72b0bb7fd09187e00960521702d92ec8f13c0a0615"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.pdb": {
+          "bytes": 117760,
+          "sha256": "99e42babacfe09bd1ed189170e5fef154c03895ba0ab132aa5d4b41b07ccff3a"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14412,
+          "raw_sha256": "45d2c0abfde02ee4eee080bd69a32611adba997ecc52d8fcc41ac74288dc217c"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "15390f2e5b188a960250a92ad183cecafd746cea048926a6e78d59e48665a45f"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "1ab4b2aabb52779576c085108339359b2943a9b550b33f37495bfad57ae789cf"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "43f2943efb44594a8d69c87053a47d0ae61286a4f4b8025a1c44e6140148bf42"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11135,
+        "gap": 326,
+        "matched": 3292,
+        "same_sized": 45
+      },
+      "changed_cases": [
+        {
+          "baseline": {
+            "candidate_address": "0x402881",
+            "candidate_size": 403,
+            "comparable_bytes": 335,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 263,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x100"
+            ],
+            "slot": 0,
+            "target_address": "0x40e7e1",
+            "target_size": 403
+          },
+          "candidate": {
+            "candidate_address": "0x402881",
+            "candidate_size": 403,
+            "comparable_bytes": 335,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 268,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x100"
+            ],
+            "slot": 0,
+            "target_address": "0x40e7e1",
+            "target_size": 403
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402bb6",
+            "candidate_size": 269,
+            "comparable_bytes": 238,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x104"
+            ],
+            "slot": 4,
+            "target_address": "0x40eb16",
+            "target_size": 270
+          },
+          "candidate": {
+            "candidate_address": "0x402bb6",
+            "candidate_size": 269,
+            "comparable_bytes": 238,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 41,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x104"
+            ],
+            "slot": 4,
+            "target_address": "0x40eb16",
+            "target_size": 270
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402df1",
+            "candidate_size": 155,
+            "comparable_bytes": 119,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 13,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x103"
+            ],
+            "slot": 3,
+            "target_address": "0x40ed54",
+            "target_size": 159
+          },
+          "candidate": {
+            "candidate_address": "0x402df1",
+            "candidate_size": 155,
+            "comparable_bytes": 119,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x103"
+            ],
+            "slot": 3,
+            "target_address": "0x40ed54",
+            "target_size": 159
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402e8c",
+            "candidate_size": 52,
+            "comparable_bytes": 36,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 2,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x107"
+            ],
+            "slot": 7,
+            "target_address": "0x40edf3",
+            "target_size": 53
+          },
+          "candidate": {
+            "candidate_address": "0x402e8c",
+            "candidate_size": 52,
+            "comparable_bytes": 36,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 1,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x107"
+            ],
+            "slot": 7,
+            "target_address": "0x40edf3",
+            "target_size": 53
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402ec0",
+            "candidate_size": 180,
+            "comparable_bytes": 144,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 13,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x110"
+            ],
+            "slot": 16,
+            "target_address": "0x40ee28",
+            "target_size": 175
+          },
+          "candidate": {
+            "candidate_address": "0x402ec0",
+            "candidate_size": 180,
+            "comparable_bytes": 144,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x110"
+            ],
+            "slot": 16,
+            "target_address": "0x40ee28",
+            "target_size": 175
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x403079",
+            "candidate_size": 219,
+            "comparable_bytes": 189,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 32,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x106"
+            ],
+            "slot": 6,
+            "target_address": "0x40efd5",
+            "target_size": 225
+          },
+          "candidate": {
+            "candidate_address": "0x403079",
+            "candidate_size": 219,
+            "comparable_bytes": 189,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 31,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x106"
+            ],
+            "slot": 6,
+            "target_address": "0x40efd5",
+            "target_size": 225
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x403154",
+            "candidate_size": 148,
+            "comparable_bytes": 116,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 72,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x10d"
+            ],
+            "slot": 13,
+            "target_address": "0x40f0b6",
+            "target_size": 148
+          },
+          "candidate": {
+            "candidate_address": "0x403154",
+            "candidate_size": 148,
+            "comparable_bytes": 116,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 71,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x10d"
+            ],
+            "slot": 13,
+            "target_address": "0x40f0b6",
+            "target_size": 148
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4031e8",
+            "candidate_size": 180,
+            "comparable_bytes": 159,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x118",
+              "0x11a"
+            ],
+            "slot": 18,
+            "target_address": "0x40f14a",
+            "target_size": 179
+          },
+          "candidate": {
+            "candidate_address": "0x4031e8",
+            "candidate_size": 180,
+            "comparable_bytes": 159,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 10,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x118",
+              "0x11a"
+            ],
+            "slot": 18,
+            "target_address": "0x40f14a",
+            "target_size": 179
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4034f8",
+            "candidate_size": 399,
+            "comparable_bytes": 337,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x11d",
+              "0x11f"
+            ],
+            "slot": 21,
+            "target_address": "0x40f460",
+            "target_size": 405
+          },
+          "candidate": {
+            "candidate_address": "0x4034f8",
+            "candidate_size": 399,
+            "comparable_bytes": 337,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 17,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x11d",
+              "0x11f"
+            ],
+            "slot": 21,
+            "target_address": "0x40f460",
+            "target_size": 405
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x403784",
+            "candidate_size": 530,
+            "comparable_bytes": 462,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 24,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x121",
+              "0x123"
+            ],
+            "slot": 23,
+            "target_address": "0x40f6f1",
+            "target_size": 525
+          },
+          "candidate": {
+            "candidate_address": "0x403784",
+            "candidate_size": 530,
+            "comparable_bytes": 462,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x121",
+              "0x123"
+            ],
+            "slot": 23,
+            "target_address": "0x40f6f1",
+            "target_size": 525
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40417b",
+            "candidate_size": 67,
+            "comparable_bytes": 35,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 10,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x164"
+            ],
+            "slot": 64,
+            "target_address": "0x4100ea",
+            "target_size": 65
+          },
+          "candidate": {
+            "candidate_address": "0x40417b",
+            "candidate_size": 86,
+            "comparable_bytes": 41,
+            "gap_delta": 21,
+            "matched_comparable_bytes": 16,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x164"
+            ],
+            "slot": 64,
+            "target_address": "0x4100ea",
+            "target_size": 65
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40424e",
+            "candidate_size": 83,
+            "comparable_bytes": 72,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 8,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19b"
+            ],
+            "slot": 85,
+            "target_address": "0x4101ba",
+            "target_size": 84
+          },
+          "candidate": {
+            "candidate_address": "0x404261",
+            "candidate_size": 83,
+            "comparable_bytes": 72,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19b"
+            ],
+            "slot": 85,
+            "target_address": "0x4101ba",
+            "target_size": 84
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404371",
+            "candidate_size": 88,
+            "comparable_bytes": 72,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 45,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x192"
+            ],
+            "slot": 76,
+            "target_address": "0x4102db",
+            "target_size": 88
+          },
+          "candidate": {
+            "candidate_address": "0x404384",
+            "candidate_size": 88,
+            "comparable_bytes": 72,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 46,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x192"
+            ],
+            "slot": 76,
+            "target_address": "0x4102db",
+            "target_size": 88
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404904",
+            "candidate_size": 434,
+            "comparable_bytes": 356,
+            "gap_delta": 14,
+            "matched_comparable_bytes": 82,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1aa"
+            ],
+            "slot": 100,
+            "target_address": "0x410885",
+            "target_size": 420
+          },
+          "candidate": {
+            "candidate_address": "0x404917",
+            "candidate_size": 434,
+            "comparable_bytes": 356,
+            "gap_delta": 14,
+            "matched_comparable_bytes": 70,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1aa"
+            ],
+            "slot": 100,
+            "target_address": "0x410885",
+            "target_size": 420
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404ab6",
+            "candidate_size": 204,
+            "comparable_bytes": 174,
+            "gap_delta": -2,
+            "matched_comparable_bytes": 6,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ab"
+            ],
+            "slot": 101,
+            "target_address": "0x410a29",
+            "target_size": 206
+          },
+          "candidate": {
+            "candidate_address": "0x404ac9",
+            "candidate_size": 204,
+            "comparable_bytes": 174,
+            "gap_delta": -2,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ab"
+            ],
+            "slot": 101,
+            "target_address": "0x410a29",
+            "target_size": 206
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404efd",
+            "candidate_size": 215,
+            "comparable_bytes": 183,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 16,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x156",
+              "0x15c",
+              "0x165",
+              "0x166",
+              "0x167"
+            ],
+            "slot": 51,
+            "target_address": "0x410e7b",
+            "target_size": 219
+          },
+          "candidate": {
+            "candidate_address": "0x404f10",
+            "candidate_size": 227,
+            "comparable_bytes": 187,
+            "gap_delta": 8,
+            "matched_comparable_bytes": 19,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x156",
+              "0x15c",
+              "0x165",
+              "0x166",
+              "0x167"
+            ],
+            "slot": 51,
+            "target_address": "0x410e7b",
+            "target_size": 219
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4051c1",
+            "candidate_size": 379,
+            "comparable_bytes": 387,
+            "gap_delta": -60,
+            "matched_comparable_bytes": 53,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19d",
+              "0x1b0"
+            ],
+            "slot": 87,
+            "target_address": "0x41113e",
+            "target_size": 439
+          },
+          "candidate": {
+            "candidate_address": "0x4051e0",
+            "candidate_size": 379,
+            "comparable_bytes": 387,
+            "gap_delta": -60,
+            "matched_comparable_bytes": 55,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19d",
+              "0x1b0"
+            ],
+            "slot": 87,
+            "target_address": "0x41113e",
+            "target_size": 439
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40547a",
+            "candidate_size": 409,
+            "comparable_bytes": 337,
+            "gap_delta": 12,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ad",
+              "0x1b2"
+            ],
+            "slot": 103,
+            "target_address": "0x411437",
+            "target_size": 397
+          },
+          "candidate": {
+            "candidate_address": "0x405499",
+            "candidate_size": 409,
+            "comparable_bytes": 337,
+            "gap_delta": 12,
+            "matched_comparable_bytes": 41,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ad",
+              "0x1b2"
+            ],
+            "slot": 103,
+            "target_address": "0x411437",
+            "target_size": 397
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405613",
+            "candidate_size": 139,
+            "comparable_bytes": 109,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19e"
+            ],
+            "slot": 88,
+            "target_address": "0x4115c4",
+            "target_size": 137
+          },
+          "candidate": {
+            "candidate_address": "0x405632",
+            "candidate_size": 139,
+            "comparable_bytes": 109,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 41,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19e"
+            ],
+            "slot": 88,
+            "target_address": "0x4115c4",
+            "target_size": 137
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40590c",
+            "candidate_size": 45,
+            "comparable_bytes": 27,
+            "gap_delta": 6,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15d"
+            ],
+            "slot": 57,
+            "target_address": "0x4118bb",
+            "target_size": 39
+          },
+          "candidate": {
+            "candidate_address": "0x40592b",
+            "candidate_size": 36,
+            "comparable_bytes": 32,
+            "gap_delta": -3,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15d"
+            ],
+            "slot": 57,
+            "target_address": "0x4118bb",
+            "target_size": 39
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405939",
+            "candidate_size": 125,
+            "comparable_bytes": 137,
+            "gap_delta": -44,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15e"
+            ],
+            "slot": 58,
+            "target_address": "0x4118e2",
+            "target_size": 169
+          },
+          "candidate": {
+            "candidate_address": "0x40594f",
+            "candidate_size": 163,
+            "comparable_bytes": 129,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15e"
+            ],
+            "slot": 58,
+            "target_address": "0x4118e2",
+            "target_size": 169
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405c80",
+            "candidate_size": 117,
+            "comparable_bytes": 60,
+            "gap_delta": 41,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ae"
+            ],
+            "slot": 104,
+            "target_address": "0x411c5a",
+            "target_size": 76
+          },
+          "candidate": {
+            "candidate_address": "0x405cbc",
+            "candidate_size": 132,
+            "comparable_bytes": 60,
+            "gap_delta": 56,
+            "matched_comparable_bytes": 44,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ae"
+            ],
+            "slot": 104,
+            "target_address": "0x411c5a",
+            "target_size": 76
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405cf5",
+            "candidate_size": 114,
+            "comparable_bytes": 94,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 84,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x170"
+            ],
+            "slot": 73,
+            "target_address": "0x411ca6",
+            "target_size": 114
+          },
+          "candidate": {
+            "candidate_address": "0x405d40",
+            "candidate_size": 114,
+            "comparable_bytes": 94,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 92,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x170"
+            ],
+            "slot": 73,
+            "target_address": "0x411ca6",
+            "target_size": 114
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405d67",
+            "candidate_size": 25,
+            "comparable_bytes": 20,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 19,
+            "normalization_complete": true,
+            "opcodes": [],
+            "slot": 107,
+            "target_address": "0x411d18",
+            "target_size": 24
+          },
+          "candidate": {
+            "candidate_address": "0x405db2",
+            "candidate_size": 26,
+            "comparable_bytes": 20,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 19,
+            "normalization_complete": true,
+            "opcodes": [],
+            "slot": 107,
+            "target_address": "0x411d18",
+            "target_size": 24
+          }
+        }
+      ],
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406490",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.exe",
+          "image_sha256": "1e7b96bff0935661447ac40d2faa0f4b622e84e277a710a781f24b205b711daf",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "4ab0fc017e9ab44db0439434668eb3ec",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D40",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.exe",
+          "image_sha256": "1e7b96bff0935661447ac40d2faa0f4b622e84e277a710a781f24b205b711daf",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "4ab0fc017e9ab44db0439434668eb3ec",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "scoped-selection-sinks",
+      "layout": {
+        "candidate_pre_table_span": 13756,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14412,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.exe",
+        "jump_table_address": "0x00405DCC",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -4,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F7C",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "55f2f782958b8b9bfd1645a577eac61f80c8823227a71e2e4c93d9c26482c0ab",
+      "report_sha256": "e08ccc42e2c851d31bdcbd70d2f88867f519bbd535cd8cde50ae347e25821d82",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059f1",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x15e",
+          "size": 163,
+          "start": "0x40594f"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405d3f",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 132,
+          "start": "0x405cbc"
+        }
+      ],
+      "terminal_exit_code": 0
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.exe": {
+          "bytes": 122880,
+          "sha256": "5866a7a238e9f2c1f5075b81039ec491f5044a5ac2bcd5a3b6b83ffd26527e83"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.ltcg.obj": {
+          "bytes": 159948,
+          "sha256": "afd35b3fb79d717c71431e2a9ad29c30db857c61c211b34ec24e4776d4445bb3"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.map": {
+          "bytes": 92342,
+          "sha256": "be23fc62dd1a686582e12d5cfca7c4c75194cead116701b170221cb9dfde6419"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.pdb": {
+          "bytes": 117760,
+          "sha256": "127b254edffc6c543b4ef7d72304d77c72509d6ccee3c8fc66ccd8ac35edbe52"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14412,
+          "raw_sha256": "e69b2a0811fadbda968ed3ec7b67d3349d53a71336b33506dfec59d0c2a4690e"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "15390f2e5b188a960250a92ad183cecafd746cea048926a6e78d59e48665a45f"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "1ab4b2aabb52779576c085108339359b2943a9b550b33f37495bfad57ae789cf"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "43f2943efb44594a8d69c87053a47d0ae61286a4f4b8025a1c44e6140148bf42"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11135,
+        "gap": 326,
+        "matched": 3286,
+        "same_sized": 45
+      },
+      "changed_cases": [
+        {
+          "baseline": {
+            "candidate_address": "0x402881",
+            "candidate_size": 403,
+            "comparable_bytes": 335,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 263,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x100"
+            ],
+            "slot": 0,
+            "target_address": "0x40e7e1",
+            "target_size": 403
+          },
+          "candidate": {
+            "candidate_address": "0x402881",
+            "candidate_size": 403,
+            "comparable_bytes": 335,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 268,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x100"
+            ],
+            "slot": 0,
+            "target_address": "0x40e7e1",
+            "target_size": 403
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402bb6",
+            "candidate_size": 269,
+            "comparable_bytes": 238,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x104"
+            ],
+            "slot": 4,
+            "target_address": "0x40eb16",
+            "target_size": 270
+          },
+          "candidate": {
+            "candidate_address": "0x402bb6",
+            "candidate_size": 269,
+            "comparable_bytes": 238,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 41,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x104"
+            ],
+            "slot": 4,
+            "target_address": "0x40eb16",
+            "target_size": 270
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402df1",
+            "candidate_size": 155,
+            "comparable_bytes": 119,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 13,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x103"
+            ],
+            "slot": 3,
+            "target_address": "0x40ed54",
+            "target_size": 159
+          },
+          "candidate": {
+            "candidate_address": "0x402df1",
+            "candidate_size": 155,
+            "comparable_bytes": 119,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x103"
+            ],
+            "slot": 3,
+            "target_address": "0x40ed54",
+            "target_size": 159
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402e8c",
+            "candidate_size": 52,
+            "comparable_bytes": 36,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 2,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x107"
+            ],
+            "slot": 7,
+            "target_address": "0x40edf3",
+            "target_size": 53
+          },
+          "candidate": {
+            "candidate_address": "0x402e8c",
+            "candidate_size": 52,
+            "comparable_bytes": 36,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 1,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x107"
+            ],
+            "slot": 7,
+            "target_address": "0x40edf3",
+            "target_size": 53
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402ec0",
+            "candidate_size": 180,
+            "comparable_bytes": 144,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 13,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x110"
+            ],
+            "slot": 16,
+            "target_address": "0x40ee28",
+            "target_size": 175
+          },
+          "candidate": {
+            "candidate_address": "0x402ec0",
+            "candidate_size": 180,
+            "comparable_bytes": 144,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x110"
+            ],
+            "slot": 16,
+            "target_address": "0x40ee28",
+            "target_size": 175
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x403079",
+            "candidate_size": 219,
+            "comparable_bytes": 189,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 32,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x106"
+            ],
+            "slot": 6,
+            "target_address": "0x40efd5",
+            "target_size": 225
+          },
+          "candidate": {
+            "candidate_address": "0x403079",
+            "candidate_size": 219,
+            "comparable_bytes": 189,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 31,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x106"
+            ],
+            "slot": 6,
+            "target_address": "0x40efd5",
+            "target_size": 225
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x403154",
+            "candidate_size": 148,
+            "comparable_bytes": 116,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 72,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x10d"
+            ],
+            "slot": 13,
+            "target_address": "0x40f0b6",
+            "target_size": 148
+          },
+          "candidate": {
+            "candidate_address": "0x403154",
+            "candidate_size": 148,
+            "comparable_bytes": 116,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 71,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x10d"
+            ],
+            "slot": 13,
+            "target_address": "0x40f0b6",
+            "target_size": 148
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4031e8",
+            "candidate_size": 180,
+            "comparable_bytes": 159,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x118",
+              "0x11a"
+            ],
+            "slot": 18,
+            "target_address": "0x40f14a",
+            "target_size": 179
+          },
+          "candidate": {
+            "candidate_address": "0x4031e8",
+            "candidate_size": 180,
+            "comparable_bytes": 159,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 10,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x118",
+              "0x11a"
+            ],
+            "slot": 18,
+            "target_address": "0x40f14a",
+            "target_size": 179
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4034f8",
+            "candidate_size": 399,
+            "comparable_bytes": 337,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x11d",
+              "0x11f"
+            ],
+            "slot": 21,
+            "target_address": "0x40f460",
+            "target_size": 405
+          },
+          "candidate": {
+            "candidate_address": "0x4034f8",
+            "candidate_size": 399,
+            "comparable_bytes": 337,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 17,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x11d",
+              "0x11f"
+            ],
+            "slot": 21,
+            "target_address": "0x40f460",
+            "target_size": 405
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x403784",
+            "candidate_size": 530,
+            "comparable_bytes": 462,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 24,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x121",
+              "0x123"
+            ],
+            "slot": 23,
+            "target_address": "0x40f6f1",
+            "target_size": 525
+          },
+          "candidate": {
+            "candidate_address": "0x403784",
+            "candidate_size": 530,
+            "comparable_bytes": 462,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x121",
+              "0x123"
+            ],
+            "slot": 23,
+            "target_address": "0x40f6f1",
+            "target_size": 525
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40417b",
+            "candidate_size": 67,
+            "comparable_bytes": 35,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 10,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x164"
+            ],
+            "slot": 64,
+            "target_address": "0x4100ea",
+            "target_size": 65
+          },
+          "candidate": {
+            "candidate_address": "0x40417b",
+            "candidate_size": 86,
+            "comparable_bytes": 41,
+            "gap_delta": 21,
+            "matched_comparable_bytes": 16,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x164"
+            ],
+            "slot": 64,
+            "target_address": "0x4100ea",
+            "target_size": 65
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40424e",
+            "candidate_size": 83,
+            "comparable_bytes": 72,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 8,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19b"
+            ],
+            "slot": 85,
+            "target_address": "0x4101ba",
+            "target_size": 84
+          },
+          "candidate": {
+            "candidate_address": "0x404261",
+            "candidate_size": 83,
+            "comparable_bytes": 72,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19b"
+            ],
+            "slot": 85,
+            "target_address": "0x4101ba",
+            "target_size": 84
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404371",
+            "candidate_size": 88,
+            "comparable_bytes": 72,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 45,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x192"
+            ],
+            "slot": 76,
+            "target_address": "0x4102db",
+            "target_size": 88
+          },
+          "candidate": {
+            "candidate_address": "0x404384",
+            "candidate_size": 88,
+            "comparable_bytes": 72,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 46,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x192"
+            ],
+            "slot": 76,
+            "target_address": "0x4102db",
+            "target_size": 88
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404904",
+            "candidate_size": 434,
+            "comparable_bytes": 356,
+            "gap_delta": 14,
+            "matched_comparable_bytes": 82,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1aa"
+            ],
+            "slot": 100,
+            "target_address": "0x410885",
+            "target_size": 420
+          },
+          "candidate": {
+            "candidate_address": "0x404917",
+            "candidate_size": 434,
+            "comparable_bytes": 356,
+            "gap_delta": 14,
+            "matched_comparable_bytes": 70,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1aa"
+            ],
+            "slot": 100,
+            "target_address": "0x410885",
+            "target_size": 420
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404ab6",
+            "candidate_size": 204,
+            "comparable_bytes": 174,
+            "gap_delta": -2,
+            "matched_comparable_bytes": 6,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ab"
+            ],
+            "slot": 101,
+            "target_address": "0x410a29",
+            "target_size": 206
+          },
+          "candidate": {
+            "candidate_address": "0x404ac9",
+            "candidate_size": 204,
+            "comparable_bytes": 174,
+            "gap_delta": -2,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ab"
+            ],
+            "slot": 101,
+            "target_address": "0x410a29",
+            "target_size": 206
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404efd",
+            "candidate_size": 215,
+            "comparable_bytes": 183,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 16,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x156",
+              "0x15c",
+              "0x165",
+              "0x166",
+              "0x167"
+            ],
+            "slot": 51,
+            "target_address": "0x410e7b",
+            "target_size": 219
+          },
+          "candidate": {
+            "candidate_address": "0x404f10",
+            "candidate_size": 227,
+            "comparable_bytes": 187,
+            "gap_delta": 8,
+            "matched_comparable_bytes": 19,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x156",
+              "0x15c",
+              "0x165",
+              "0x166",
+              "0x167"
+            ],
+            "slot": 51,
+            "target_address": "0x410e7b",
+            "target_size": 219
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405078",
+            "candidate_size": 329,
+            "comparable_bytes": 283,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19c",
+              "0x1af"
+            ],
+            "slot": 86,
+            "target_address": "0x410ff7",
+            "target_size": 327
+          },
+          "candidate": {
+            "candidate_address": "0x405097",
+            "candidate_size": 329,
+            "comparable_bytes": 283,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 14,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19c",
+              "0x1af"
+            ],
+            "slot": 86,
+            "target_address": "0x410ff7",
+            "target_size": 327
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4051c1",
+            "candidate_size": 379,
+            "comparable_bytes": 387,
+            "gap_delta": -60,
+            "matched_comparable_bytes": 53,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19d",
+              "0x1b0"
+            ],
+            "slot": 87,
+            "target_address": "0x41113e",
+            "target_size": 439
+          },
+          "candidate": {
+            "candidate_address": "0x4051e0",
+            "candidate_size": 379,
+            "comparable_bytes": 387,
+            "gap_delta": -60,
+            "matched_comparable_bytes": 57,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19d",
+              "0x1b0"
+            ],
+            "slot": 87,
+            "target_address": "0x41113e",
+            "target_size": 439
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40533c",
+            "candidate_size": 318,
+            "comparable_bytes": 278,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 31,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ac",
+              "0x1b1"
+            ],
+            "slot": 102,
+            "target_address": "0x4112f5",
+            "target_size": 322
+          },
+          "candidate": {
+            "candidate_address": "0x40535b",
+            "candidate_size": 318,
+            "comparable_bytes": 278,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 29,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ac",
+              "0x1b1"
+            ],
+            "slot": 102,
+            "target_address": "0x4112f5",
+            "target_size": 322
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40547a",
+            "candidate_size": 409,
+            "comparable_bytes": 337,
+            "gap_delta": 12,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ad",
+              "0x1b2"
+            ],
+            "slot": 103,
+            "target_address": "0x411437",
+            "target_size": 397
+          },
+          "candidate": {
+            "candidate_address": "0x405499",
+            "candidate_size": 409,
+            "comparable_bytes": 337,
+            "gap_delta": 12,
+            "matched_comparable_bytes": 36,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ad",
+              "0x1b2"
+            ],
+            "slot": 103,
+            "target_address": "0x411437",
+            "target_size": 397
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405613",
+            "candidate_size": 139,
+            "comparable_bytes": 109,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19e"
+            ],
+            "slot": 88,
+            "target_address": "0x4115c4",
+            "target_size": 137
+          },
+          "candidate": {
+            "candidate_address": "0x405632",
+            "candidate_size": 139,
+            "comparable_bytes": 109,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 41,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19e"
+            ],
+            "slot": 88,
+            "target_address": "0x4115c4",
+            "target_size": 137
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40590c",
+            "candidate_size": 45,
+            "comparable_bytes": 27,
+            "gap_delta": 6,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15d"
+            ],
+            "slot": 57,
+            "target_address": "0x4118bb",
+            "target_size": 39
+          },
+          "candidate": {
+            "candidate_address": "0x40592b",
+            "candidate_size": 36,
+            "comparable_bytes": 32,
+            "gap_delta": -3,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15d"
+            ],
+            "slot": 57,
+            "target_address": "0x4118bb",
+            "target_size": 39
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405939",
+            "candidate_size": 125,
+            "comparable_bytes": 137,
+            "gap_delta": -44,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15e"
+            ],
+            "slot": 58,
+            "target_address": "0x4118e2",
+            "target_size": 169
+          },
+          "candidate": {
+            "candidate_address": "0x40594f",
+            "candidate_size": 163,
+            "comparable_bytes": 129,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15e"
+            ],
+            "slot": 58,
+            "target_address": "0x4118e2",
+            "target_size": 169
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405c80",
+            "candidate_size": 117,
+            "comparable_bytes": 60,
+            "gap_delta": 41,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ae"
+            ],
+            "slot": 104,
+            "target_address": "0x411c5a",
+            "target_size": 76
+          },
+          "candidate": {
+            "candidate_address": "0x405cbc",
+            "candidate_size": 132,
+            "comparable_bytes": 60,
+            "gap_delta": 56,
+            "matched_comparable_bytes": 44,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ae"
+            ],
+            "slot": 104,
+            "target_address": "0x411c5a",
+            "target_size": 76
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405cf5",
+            "candidate_size": 114,
+            "comparable_bytes": 94,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 84,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x170"
+            ],
+            "slot": 73,
+            "target_address": "0x411ca6",
+            "target_size": 114
+          },
+          "candidate": {
+            "candidate_address": "0x405d40",
+            "candidate_size": 114,
+            "comparable_bytes": 94,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 92,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x170"
+            ],
+            "slot": 73,
+            "target_address": "0x411ca6",
+            "target_size": 114
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405d67",
+            "candidate_size": 25,
+            "comparable_bytes": 20,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 19,
+            "normalization_complete": true,
+            "opcodes": [],
+            "slot": 107,
+            "target_address": "0x411d18",
+            "target_size": 24
+          },
+          "candidate": {
+            "candidate_address": "0x405db2",
+            "candidate_size": 26,
+            "comparable_bytes": 20,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 19,
+            "normalization_complete": true,
+            "opcodes": [],
+            "slot": 107,
+            "target_address": "0x411d18",
+            "target_size": 24
+          }
+        }
+      ],
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406490",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.exe",
+          "image_sha256": "5866a7a238e9f2c1f5075b81039ec491f5044a5ac2bcd5a3b6b83ffd26527e83",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "9495cb7404970c4f965546072f7488c1",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D40",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.exe",
+          "image_sha256": "5866a7a238e9f2c1f5075b81039ec491f5044a5ac2bcd5a3b6b83ffd26527e83",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "9495cb7404970c4f965546072f7488c1",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "scoped-mixed-sinks",
+      "layout": {
+        "candidate_pre_table_span": 13756,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14412,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.exe",
+        "jump_table_address": "0x00405DCC",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -4,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F7C",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "f27c8ba7220f8784c46ab7bda7e36c05bd34ab29cb034e695efaa1ffa675aa3f",
+      "report_sha256": "838055532a8f6838bbdeaf7155f250fdb91f959656d7a27ca6ff9bf6e39eef3f",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059f1",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x15e",
+          "size": 163,
+          "start": "0x40594f"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405d3f",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 132,
+          "start": "0x405cbc"
+        }
+      ],
+      "terminal_exit_code": 0
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/link.log": {
+          "bytes": 104,
+          "sha256": "5340ec0790f9074e483214c9b815231cbf0dfcf079a8120e6a0998b5af602215"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/source.exe": {
+          "bytes": 122880,
+          "sha256": "f19ffea117911c16946064a8c02335c3967a9e21a5183f6788eb4fe97571a2eb"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/source.ltcg.obj": {
+          "bytes": 159137,
+          "sha256": "a9d076d9dd793455d1aa81c4b6869ac3467bac44fa9eecedde4763d0d0b8cd67"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/source.map": {
+          "bytes": 92342,
+          "sha256": "e06652df8468e79dc3a458a64825512140aa69e0aacbb3c4e930faa25b23222d"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/source.pdb": {
+          "bytes": 117760,
+          "sha256": "23cd2de9c03be1dd498fe2c951d2e57bbf4d3f96727a6876d711ac658f1f56a4"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14396,
+          "raw_sha256": "3dd4b8b83e80e52915c2ed4c35bd53a50ca501f7ec92537a03b10bb51cbff210"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "27fb4831051c661f6f0511f200f10407c4bc7211b52e5458de0c193bb5c3349f"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "9b8592927d7db1e053f85b52bd119f7dfdddb375929e7f2e76933ce3ab11bad7"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "9915cb620523c37f78317c335626f6820e357dc1452a16998ffd12e40f35c25b"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11138,
+        "gap": 298,
+        "matched": 3331,
+        "same_sized": 46
+      },
+      "changed_cases": [
+        {
+          "baseline": {
+            "candidate_address": "0x402881",
+            "candidate_size": 403,
+            "comparable_bytes": 335,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 263,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x100"
+            ],
+            "slot": 0,
+            "target_address": "0x40e7e1",
+            "target_size": 403
+          },
+          "candidate": {
+            "candidate_address": "0x402881",
+            "candidate_size": 403,
+            "comparable_bytes": 335,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 266,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x100"
+            ],
+            "slot": 0,
+            "target_address": "0x40e7e1",
+            "target_size": 403
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402bb6",
+            "candidate_size": 269,
+            "comparable_bytes": 238,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x104"
+            ],
+            "slot": 4,
+            "target_address": "0x40eb16",
+            "target_size": 270
+          },
+          "candidate": {
+            "candidate_address": "0x402bb6",
+            "candidate_size": 269,
+            "comparable_bytes": 238,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 41,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x104"
+            ],
+            "slot": 4,
+            "target_address": "0x40eb16",
+            "target_size": 270
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402df1",
+            "candidate_size": 155,
+            "comparable_bytes": 119,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 13,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x103"
+            ],
+            "slot": 3,
+            "target_address": "0x40ed54",
+            "target_size": 159
+          },
+          "candidate": {
+            "candidate_address": "0x402df1",
+            "candidate_size": 155,
+            "comparable_bytes": 119,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x103"
+            ],
+            "slot": 3,
+            "target_address": "0x40ed54",
+            "target_size": 159
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402e8c",
+            "candidate_size": 52,
+            "comparable_bytes": 36,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 2,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x107"
+            ],
+            "slot": 7,
+            "target_address": "0x40edf3",
+            "target_size": 53
+          },
+          "candidate": {
+            "candidate_address": "0x402e8c",
+            "candidate_size": 52,
+            "comparable_bytes": 36,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 1,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x107"
+            ],
+            "slot": 7,
+            "target_address": "0x40edf3",
+            "target_size": 53
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x402ec0",
+            "candidate_size": 180,
+            "comparable_bytes": 144,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 13,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x110"
+            ],
+            "slot": 16,
+            "target_address": "0x40ee28",
+            "target_size": 175
+          },
+          "candidate": {
+            "candidate_address": "0x402ec0",
+            "candidate_size": 180,
+            "comparable_bytes": 144,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x110"
+            ],
+            "slot": 16,
+            "target_address": "0x40ee28",
+            "target_size": 175
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x403079",
+            "candidate_size": 219,
+            "comparable_bytes": 189,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 32,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x106"
+            ],
+            "slot": 6,
+            "target_address": "0x40efd5",
+            "target_size": 225
+          },
+          "candidate": {
+            "candidate_address": "0x403079",
+            "candidate_size": 219,
+            "comparable_bytes": 189,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 31,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x106"
+            ],
+            "slot": 6,
+            "target_address": "0x40efd5",
+            "target_size": 225
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4031e8",
+            "candidate_size": 180,
+            "comparable_bytes": 159,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 12,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x118",
+              "0x11a"
+            ],
+            "slot": 18,
+            "target_address": "0x40f14a",
+            "target_size": 179
+          },
+          "candidate": {
+            "candidate_address": "0x4031e8",
+            "candidate_size": 180,
+            "comparable_bytes": 159,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 10,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x118",
+              "0x11a"
+            ],
+            "slot": 18,
+            "target_address": "0x40f14a",
+            "target_size": 179
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4034f8",
+            "candidate_size": 399,
+            "comparable_bytes": 337,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x11d",
+              "0x11f"
+            ],
+            "slot": 21,
+            "target_address": "0x40f460",
+            "target_size": 405
+          },
+          "candidate": {
+            "candidate_address": "0x4034f8",
+            "candidate_size": 399,
+            "comparable_bytes": 337,
+            "gap_delta": -6,
+            "matched_comparable_bytes": 16,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x11d",
+              "0x11f"
+            ],
+            "slot": 21,
+            "target_address": "0x40f460",
+            "target_size": 405
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x403784",
+            "candidate_size": 530,
+            "comparable_bytes": 462,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 24,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x121",
+              "0x123"
+            ],
+            "slot": 23,
+            "target_address": "0x40f6f1",
+            "target_size": 525
+          },
+          "candidate": {
+            "candidate_address": "0x403784",
+            "candidate_size": 530,
+            "comparable_bytes": 462,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x121",
+              "0x123"
+            ],
+            "slot": 23,
+            "target_address": "0x40f6f1",
+            "target_size": 525
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40417b",
+            "candidate_size": 67,
+            "comparable_bytes": 35,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 10,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x164"
+            ],
+            "slot": 64,
+            "target_address": "0x4100ea",
+            "target_size": 65
+          },
+          "candidate": {
+            "candidate_address": "0x40417b",
+            "candidate_size": 70,
+            "comparable_bytes": 41,
+            "gap_delta": 5,
+            "matched_comparable_bytes": 20,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x164"
+            ],
+            "slot": 64,
+            "target_address": "0x4100ea",
+            "target_size": 65
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40424e",
+            "candidate_size": 83,
+            "comparable_bytes": 72,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 8,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19b"
+            ],
+            "slot": 85,
+            "target_address": "0x4101ba",
+            "target_size": 84
+          },
+          "candidate": {
+            "candidate_address": "0x404251",
+            "candidate_size": 83,
+            "comparable_bytes": 72,
+            "gap_delta": -1,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19b"
+            ],
+            "slot": 85,
+            "target_address": "0x4101ba",
+            "target_size": 84
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404371",
+            "candidate_size": 88,
+            "comparable_bytes": 72,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 45,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x192"
+            ],
+            "slot": 76,
+            "target_address": "0x4102db",
+            "target_size": 88
+          },
+          "candidate": {
+            "candidate_address": "0x404374",
+            "candidate_size": 88,
+            "comparable_bytes": 72,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 46,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x192"
+            ],
+            "slot": 76,
+            "target_address": "0x4102db",
+            "target_size": 88
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404904",
+            "candidate_size": 434,
+            "comparable_bytes": 356,
+            "gap_delta": 14,
+            "matched_comparable_bytes": 82,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1aa"
+            ],
+            "slot": 100,
+            "target_address": "0x410885",
+            "target_size": 420
+          },
+          "candidate": {
+            "candidate_address": "0x404907",
+            "candidate_size": 434,
+            "comparable_bytes": 356,
+            "gap_delta": 14,
+            "matched_comparable_bytes": 70,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1aa"
+            ],
+            "slot": 100,
+            "target_address": "0x410885",
+            "target_size": 420
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404ab6",
+            "candidate_size": 204,
+            "comparable_bytes": 174,
+            "gap_delta": -2,
+            "matched_comparable_bytes": 6,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ab"
+            ],
+            "slot": 101,
+            "target_address": "0x410a29",
+            "target_size": 206
+          },
+          "candidate": {
+            "candidate_address": "0x404ab9",
+            "candidate_size": 204,
+            "comparable_bytes": 174,
+            "gap_delta": -2,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ab"
+            ],
+            "slot": 101,
+            "target_address": "0x410a29",
+            "target_size": 206
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x404efd",
+            "candidate_size": 215,
+            "comparable_bytes": 183,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 16,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x156",
+              "0x15c",
+              "0x165",
+              "0x166",
+              "0x167"
+            ],
+            "slot": 51,
+            "target_address": "0x410e7b",
+            "target_size": 219
+          },
+          "candidate": {
+            "candidate_address": "0x404f00",
+            "candidate_size": 227,
+            "comparable_bytes": 187,
+            "gap_delta": 8,
+            "matched_comparable_bytes": 18,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x156",
+              "0x15c",
+              "0x165",
+              "0x166",
+              "0x167"
+            ],
+            "slot": 51,
+            "target_address": "0x410e7b",
+            "target_size": 219
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405078",
+            "candidate_size": 329,
+            "comparable_bytes": 283,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19c",
+              "0x1af"
+            ],
+            "slot": 86,
+            "target_address": "0x410ff7",
+            "target_size": 327
+          },
+          "candidate": {
+            "candidate_address": "0x405087",
+            "candidate_size": 329,
+            "comparable_bytes": 283,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 14,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19c",
+              "0x1af"
+            ],
+            "slot": 86,
+            "target_address": "0x410ff7",
+            "target_size": 327
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x4051c1",
+            "candidate_size": 379,
+            "comparable_bytes": 387,
+            "gap_delta": -60,
+            "matched_comparable_bytes": 53,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19d",
+              "0x1b0"
+            ],
+            "slot": 87,
+            "target_address": "0x41113e",
+            "target_size": 439
+          },
+          "candidate": {
+            "candidate_address": "0x4051d0",
+            "candidate_size": 379,
+            "comparable_bytes": 387,
+            "gap_delta": -60,
+            "matched_comparable_bytes": 57,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19d",
+              "0x1b0"
+            ],
+            "slot": 87,
+            "target_address": "0x41113e",
+            "target_size": 439
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40533c",
+            "candidate_size": 318,
+            "comparable_bytes": 278,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 31,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ac",
+              "0x1b1"
+            ],
+            "slot": 102,
+            "target_address": "0x4112f5",
+            "target_size": 322
+          },
+          "candidate": {
+            "candidate_address": "0x40534b",
+            "candidate_size": 318,
+            "comparable_bytes": 278,
+            "gap_delta": -4,
+            "matched_comparable_bytes": 29,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ac",
+              "0x1b1"
+            ],
+            "slot": 102,
+            "target_address": "0x4112f5",
+            "target_size": 322
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40547a",
+            "candidate_size": 409,
+            "comparable_bytes": 337,
+            "gap_delta": 12,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ad",
+              "0x1b2"
+            ],
+            "slot": 103,
+            "target_address": "0x411437",
+            "target_size": 397
+          },
+          "candidate": {
+            "candidate_address": "0x405489",
+            "candidate_size": 409,
+            "comparable_bytes": 337,
+            "gap_delta": 12,
+            "matched_comparable_bytes": 36,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ad",
+              "0x1b2"
+            ],
+            "slot": 103,
+            "target_address": "0x411437",
+            "target_size": 397
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405613",
+            "candidate_size": 139,
+            "comparable_bytes": 109,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 40,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19e"
+            ],
+            "slot": 88,
+            "target_address": "0x4115c4",
+            "target_size": 137
+          },
+          "candidate": {
+            "candidate_address": "0x405622",
+            "candidate_size": 139,
+            "comparable_bytes": 109,
+            "gap_delta": 2,
+            "matched_comparable_bytes": 41,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x19e"
+            ],
+            "slot": 88,
+            "target_address": "0x4115c4",
+            "target_size": 137
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x40590c",
+            "candidate_size": 45,
+            "comparable_bytes": 27,
+            "gap_delta": 6,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15d"
+            ],
+            "slot": 57,
+            "target_address": "0x4118bb",
+            "target_size": 39
+          },
+          "candidate": {
+            "candidate_address": "0x40591b",
+            "candidate_size": 36,
+            "comparable_bytes": 32,
+            "gap_delta": -3,
+            "matched_comparable_bytes": 15,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15d"
+            ],
+            "slot": 57,
+            "target_address": "0x4118bb",
+            "target_size": 39
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405939",
+            "candidate_size": 125,
+            "comparable_bytes": 137,
+            "gap_delta": -44,
+            "matched_comparable_bytes": 7,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15e"
+            ],
+            "slot": 58,
+            "target_address": "0x4118e2",
+            "target_size": 169
+          },
+          "candidate": {
+            "candidate_address": "0x40593f",
+            "candidate_size": 177,
+            "comparable_bytes": 132,
+            "gap_delta": 8,
+            "matched_comparable_bytes": 79,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x15e"
+            ],
+            "slot": 58,
+            "target_address": "0x4118e2",
+            "target_size": 169
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405c80",
+            "candidate_size": 117,
+            "comparable_bytes": 60,
+            "gap_delta": 41,
+            "matched_comparable_bytes": 23,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ae"
+            ],
+            "slot": 104,
+            "target_address": "0x411c5a",
+            "target_size": 76
+          },
+          "candidate": {
+            "candidate_address": "0x405cba",
+            "candidate_size": 120,
+            "comparable_bytes": 60,
+            "gap_delta": 44,
+            "matched_comparable_bytes": 39,
+            "normalization_complete": true,
+            "opcodes": [
+              "0x1ae"
+            ],
+            "slot": 104,
+            "target_address": "0x411c5a",
+            "target_size": 76
+          }
+        },
+        {
+          "baseline": {
+            "candidate_address": "0x405d67",
+            "candidate_size": 25,
+            "comparable_bytes": 20,
+            "gap_delta": 1,
+            "matched_comparable_bytes": 19,
+            "normalization_complete": true,
+            "opcodes": [],
+            "slot": 107,
+            "target_address": "0x411d18",
+            "target_size": 24
+          },
+          "candidate": {
+            "candidate_address": "0x405da4",
+            "candidate_size": 24,
+            "comparable_bytes": 20,
+            "gap_delta": 0,
+            "matched_comparable_bytes": 20,
+            "normalization_complete": true,
+            "opcodes": [],
+            "slot": 107,
+            "target_address": "0x411d18",
+            "target_size": 24
+          }
+        }
+      ],
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406480",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/source.exe",
+          "image_sha256": "f19ffea117911c16946064a8c02335c3967a9e21a5183f6788eb4fe97571a2eb",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "0fe87803a667424485bacf99a8cd0e67",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D30",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 6752,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/source.exe",
+          "image_sha256": "f19ffea117911c16946064a8c02335c3967a9e21a5183f6788eb4fe97571a2eb",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "0fe87803a667424485bacf99a8cd0e67",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "scoped-rank-shared-aim",
+      "layout": {
+        "candidate_pre_table_span": 13740,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14396,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-rank-shared-aim/source.exe",
+        "jump_table_address": "0x00405DBC",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -20,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F6C",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "a422b6a14ce027aeabb7d47b37a1f0bec46e96cf693a0b4eed2a9ee154342c43",
+      "report_sha256": "1ab6bc71779a0e8c30287b7f2fd1f50b09861ab743dc69393ccf87e980a0d7d7",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059eb",
+            "mnemonic": "jmp",
+            "operand": "0x405d01"
+          },
+          "opcode": "0x15e",
+          "size": 177,
+          "start": "0x40593f"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405d31",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405cba"
+        }
+      ],
+      "terminal_exit_code": 0
+    }
+  ],
+  "hash_verified_unchanged": {
+    "baseline_artifact_sha256": 19,
+    "baseline_source_sha256": 32,
+    "frozen_inputs": 373,
+    "source_sha256": 108,
+    "unrelated_untracked": 9
+  },
+  "new_exact_credit": 0,
+  "previous_goal_turn_classification": "progress: reordered aim recovers shared-tail shape but violates physical order; test branch graph without moving case labels",
+  "removed_artifacts": [
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.map",
+      "sha256": "3d78cd73bfc71380a3b2774786ed75be23f9ca3403fe29a6b26f775bf95d747c"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.exe",
+      "sha256": "de1cf69a95affd477831080f80313778c293e7119af01cc1d4f4c7d013d16ab9"
+    },
+    {
+      "bytes": 157889,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.ltcg.obj",
+      "sha256": "7399f1f5822050cc07c9f3a2c36e0b50b17a8fdb46f811aac37a7bffeb0d262f"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/source.pdb",
+      "sha256": "9bf47fdc7c3bdbcbf2a78b85be122819abd170ddbce982e80f7cec76dc67846e"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/rank-five-ascending/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.map",
+      "sha256": "212d6680b4ac39c937a95a72b0bb7fd09187e00960521702d92ec8f13c0a0615"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.exe",
+      "sha256": "1e7b96bff0935661447ac40d2faa0f4b622e84e277a710a781f24b205b711daf"
+    },
+    {
+      "bytes": 159311,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.ltcg.obj",
+      "sha256": "416a6183541f9a4cf383f6f678a78e5bcc08eeba1983498284b2c4b0f3038d3d"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/source.pdb",
+      "sha256": "99e42babacfe09bd1ed189170e5fef154c03895ba0ab132aa5d4b41b07ccff3a"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-selection-sinks/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.map",
+      "sha256": "be23fc62dd1a686582e12d5cfca7c4c75194cead116701b170221cb9dfde6419"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.exe",
+      "sha256": "5866a7a238e9f2c1f5075b81039ec491f5044a5ac2bcd5a3b6b83ffd26527e83"
+    },
+    {
+      "bytes": 159948,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.ltcg.obj",
+      "sha256": "afd35b3fb79d717c71431e2a9ad29c30db857c61c211b34ec24e4776d4445bb3"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/source.pdb",
+      "sha256": "127b254edffc6c543b4ef7d72304d77c72509d6ccee3c8fc66ccd8ac35edbe52"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-selection-graph-20261022/scoped-mixed-sinks/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    }
+  ],
+  "retained_carrier": "scoped-rank-shared-aim",
+  "starting_head": "6ecb5a6f9302c711d8cb52e34b5d77dd06550c42",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+}

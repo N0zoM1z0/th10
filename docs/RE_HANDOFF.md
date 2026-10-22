@@ -1,16 +1,17 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-Enemy tail-placement controls are unadopted. Moving the typed-pointer aim case
-before rank-three produces aim76 and rank-five172 (target76/169), with aim jumping
-into a49-byte rank tail. However physical case order differs at ordinal95, so
-the normal order diagnostic rejects it; no aggregate case score is claimed.
-Swapping tail labels is raw-neutral; dedicated results change stack homes, and
-splitting aim Y is then raw-neutral. Retain the reordered carrier for joint
-case-layout/branch-sharing investigation. Maintained Enemy14336/14416, gap328;
-ANM9964,7541/7995,90/92/gap2; ECL7020/6993 remain unchanged.
-Authored409/74716, overall1252/141647, source613/247945, nonexact204 and absent121
-unchanged. No new exact credit.
+Enemy selection-graph controls retain target case order but remain unadopted.
+Best combined scoped-rank/shared-aim candidate is14396/14416,3331/11138, gap298;
+rank-five177/169 gains the target high/middle branch orientation (79 matched
+positions versus7). Rank zero still duplicates a tail, rank one jumps into aim,
+and rank-three loses a redundant target branch. Retain this candidate to test
+middle/zero read sharing without moving cases. Fully scoped14412-byte controls
+instead move FPATAN after resolution; equal/near total size is insufficient.
+Maintained Enemy14336/14416, gap328; ANM9964,7541/7995,90/92/gap2; ECL7020/6993
+remain unchanged. Authored409/74716, overall1252/141647, source613/247945,
+nonexact204 and absent121 unchanged. No new exact credit.
+See [Enemy selection graph](evidence/enemy-selection-graph/README.md).
 See [Enemy tail placement](evidence/enemy-tail-placement/README.md).
 See [Enemy rank/result routing](evidence/enemy-rank-result-routing/README.md).
 See [ANM expression contexts](evidence/anm-expression-context/README.md).

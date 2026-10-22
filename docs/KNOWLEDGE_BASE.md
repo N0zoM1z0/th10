@@ -5351,3 +5351,16 @@ control is exact or adoptable. Swapping only read/store label blocks is raw
 neutral. Dedicated float results change stack homes; separating aim Y afterward
 is raw-neutral across four complete bodies. See
 [tail placement evidence](evidence/enemy-tail-placement/README.md).
+
+## Enemy scoped selection and aim evaluation order (2026-10-22)
+
+Direct target bytes4118BB..4118E1 select index0 on both non-high rank-three
+paths, but branch to different result tails. Fully scoped difficulty/rank/aim
+read/store blocks recover high-rank back-edges and ESP+10 spills, yet compile
+FPATAN after ResolveFloat, unlike target. The14412-byte parent is therefore
+not almost exact merely because it is four bytes short. Combining scoped rank
+reads with the existing shared aim result restores evaluation order and gains
+target high/middle branch orientation, producing14396 bytes and case gap298.
+Its duplicated zero-result tail, tail inside aim and collapsed rank-three branch
+remain wrong. No source is adopted. See
+[selection-graph evidence](evidence/enemy-selection-graph/README.md).
