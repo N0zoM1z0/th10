@@ -1,0 +1,34 @@
+--- a/src/EnemyEclDispatcher.cpp
++++ b/src/EnemyEclDispatcher.cpp
+@@ -1474,23 +1474,25 @@
+   // Movement and interpolation instructions.
+   case ENEMY_ECL_SET_OFFSET_POSITION:
+   case ENEMY_ECL_SET_BASE_POSITION:
+-    selectedMotion = &offsetMotion;
++  {
++    EnemyMotionView *motion = &offsetMotion;
+     if (opcode != 0x118) {
+-      selectedMotion = &baseMotion;
++      motion = &baseMotion;
+     }
+     fVar19 = (ReadFloatArgument(0));
+     fVar21 = (ReadFloatArgument(1));
+     if (-999999.0 < (float)fVar19) {
+-      selectedMotion->position.x = (float)fVar19;
++      motion->position.x = (float)fVar19;
+     }
+     if (-999999.0 < fVar21) {
+-      selectedMotion->position.y = (float)fVar21;
+-    }
+-    selectedMotion->flags &= 0xfffffffe;
++      motion->position.y = (float)fVar21;
++    }
++    motion->flags &= 0xfffffffe;
+     *reinterpret_cast<AnmFloat3View *>(&worldMotion.position) =
+         *reinterpret_cast<const AnmFloat3View *>(&baseMotion.position) +
+         *reinterpret_cast<const AnmFloat3View *>(&offsetMotion.position);
+     return 0;
++  }
+   case ENEMY_ECL_ADD_OFFSET_POSITION:
+   case ENEMY_ECL_ADD_BASE_POSITION:
+     pfVar15 = (float *)((int)runtimeAddress + 0x58);

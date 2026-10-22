@@ -1474,6 +1474,7 @@ dispatch_update_primary_anm_bounds:
   // Movement and interpolation instructions.
   case ENEMY_ECL_SET_OFFSET_POSITION:
   case ENEMY_ECL_SET_BASE_POSITION:
+  {
     selectedMotion = &offsetMotion;
     if (opcode != 0x118) {
       selectedMotion = &baseMotion;
@@ -1483,14 +1484,16 @@ dispatch_update_primary_anm_bounds:
     if (-999999.0 < (float)fVar19) {
       selectedMotion->position.x = (float)fVar19;
     }
-    if (-999999.0 < fVar21) {
+    if (fVar21 > -999999.0) {
       selectedMotion->position.y = (float)fVar21;
     }
     selectedMotion->flags &= 0xfffffffe;
     *reinterpret_cast<AnmFloat3View *>(&worldMotion.position) =
-        *reinterpret_cast<const AnmFloat3View *>(&baseMotion.position) +
-        *reinterpret_cast<const AnmFloat3View *>(&offsetMotion.position);
+        AnmFloat3View(baseMotion.position.x + offsetMotion.position.x,
+                      baseMotion.position.y + offsetMotion.position.y,
+                      baseMotion.position.z + offsetMotion.position.z);
     return 0;
+  }
   case ENEMY_ECL_ADD_OFFSET_POSITION:
   case ENEMY_ECL_ADD_BASE_POSITION:
     pfVar15 = (float *)((int)runtimeAddress + 0x58);

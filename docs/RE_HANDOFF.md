@@ -1,11 +1,13 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Enemy
-spawn-field source adoption grows the parent from 14352 to 14368 / 14416 bytes
-(48 short). Three early groups recover target sizes; overall group gap falls
-566 to 348, with collateral nonexact regressions explicitly recorded. No new
-exact credit: authored409/74716, overall1252/141647 unchanged. Source613/247945,
-nonexact204, absent121. ANM9964 and ECL7020/6993 remain nonexact.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
+Enemy motion-source adoption removes pointer spill traffic and recovers direct
+FCOM in group0x118/0x11a:193 ->180 bytes versus179. Parent14352/14416 is now64
+short (previously48); aggregate group gap improves348 ->336. Register/stack and
+scheduling differences remain; no new exact credit. Authored409/74716,
+overall1252/141647, source613/247945, nonexact204 and absent121 unchanged.
+ANM9964 and ECL7020/6993 remain nonexact.
+See [Enemy motion checkpoint](evidence/enemy-motion-lifetime/README.md).
 See [Enemy spawn-tail checkpoint](evidence/enemy-spawn-tail-layout/README.md).
 See [ANM float-service contexts](evidence/anm-float-service-context/README.md)
 and [ANM flip evidence](evidence/anm-flip-lowering/README.md).
@@ -54,7 +56,24 @@ scripts/repo-python scripts/validate-tracking.py --require-target
 scripts/repo-python scripts/report-reconstruction-status.py
 ```
 
-## Latest Enemy spawn-tail checkpoint
+## Latest Enemy motion checkpoint
+
+Six controls isolate explicit component sums and Y-left float comparison.
+Local pointer scopes/operand scopes/integer pointer forms do not remove the
+spill. Double Y changes x87 comparison shape without changing diagnostic totals;
+keep float. Adopt explicit sum plus `y > -999999.0`: motion group180/179,
+parent14352/14416, aligned3251/11134,45 target-sized groups/gap336. The
+interpolation group regresses306 ->304 against313; spell improves227 ->226
+against219. Private and fresh maintained-path primary rebuilds have identical
+four complete raw bodies. Each compiles1/reuses9, not a full cold pair.
+38 complete guards5039/all125 pass, including both existing constructors.
+Archive19 former native files and32 source inputs; remove64 rejected files /
+4265743 bytes. All owned jobs terminal0; no full CI. Recovery:
+`.analysis/gpt-6-astra-medium/enemy-motion-lifetime-20261022/RECOVERY.md`.
+Next focus on opcode/pointer register allocation and spill placement in this
+large dispatcher. Do not infer correctness from matching aggregate scores.
+
+## Previous Enemy spawn-tail checkpoint
 
 Five source controls tested; adopt only local spawn-field fills with a shared
 spawn call. Private and maintained-path primary rebuilds produce four identical
@@ -853,7 +872,7 @@ indirect tables16. Ordinary tracking/CI does not waive this separate gate.
 | --- | --- | --- |
 |ANM43EE30 /9964|9964 bytes;7541/7995 aligned positions;90/92 target-sized groups; aggregate gap2|Child91, temporaries49/53/54, FlipX61, common-tail2 and Tick order|
 |ECL44E1A0 /7020|7020/6993,27 differences;189 fields/62 locals;171-byte float callee exact|Thread argument, SIB, homes and latch|
-|Enemy40E770 /14416|14368 bytes; frame2C4;181 selectors/108 groups;45 target-sized groups; aggregate gap348|Laser ABI, shared tails and packet/register/stack lifetime|
+|Enemy40E770 /14416|14352 bytes; frame2C4;181 selectors/108 groups;45 target-sized groups; aggregate gap336|Laser ABI, shared tails and packet/register/stack lifetime|
 
 The current ECL scope/storage/order/profile family is a measured plateau, not
 proof that Run is exhausted. The subsequent child/flag controls below also

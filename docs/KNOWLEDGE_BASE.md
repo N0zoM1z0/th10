@@ -5279,3 +5279,17 @@ source authorship or exactness. The maintained and private selected rebuilds
 have identical complete dispatcher/ANM/ECL/factory raw bodies. Other dispatcher
 groups regress, so neither matching sizes nor the smaller aggregate gap proves
 the entire parent. See [spawn-tail evidence](evidence/enemy-spawn-tail-layout/README.md).
+
+## Enemy motion pointer and x87 source constraints (2026-10-22)
+
+Target40F14A retains its selected motion pointer in ESI across two float reads,
+then compares Y with direct FCOM against the double sentinel. In the current
+VC7.1 context, explicit base/offset component sums remove the prior pointer
+spill; restricting pointer scope or expressing its address as an integer does
+not. Writing the float comparison as `y > -999999.0` removes the extra FLD ST(0)
+and recovers the target comparison form. A double-Y control instead loads the
+constant and compares ST(1): equal group size and aggregate scores concealed a
+different instruction sequence. These are compiler observations, not original
+source authorship or complete-parent exactness. Adopted motion group180/179
+still differs in registers, stack slots and scheduling. See
+[motion lifetime evidence](evidence/enemy-motion-lifetime/README.md).
