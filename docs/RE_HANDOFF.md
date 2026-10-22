@@ -1,10 +1,11 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Complete
-FileSystem::LoadArchive4357D0 is now exact36/all4 fields after two independent
-full four-TU colds. Authored exact406/73985, overall1247/140495. Source remains
-613/247945 owned bytes; nonexact207, absent121. FileSystem source13/13, exact11/13.
-See [registration proof](evidence/filesystem-load-archive/README.md),
+PbgArchive::ReadDecompressEntry434DD0 is now exact281/all10 fields after two
+independent full four-TU colds. Authored exact407/74266, overall1248/140776.
+Source remains613/247945 owned bytes; nonexact206, absent121. FileSystem remains
+source13/13, exact11/13. See [entry reader proof](evidence/pbgarchive-read-decompress-entry/README.md),
+[registration proof](evidence/filesystem-load-archive/README.md),
 [archive load proof](evidence/pbgarchive-load/README.md),
 [read proof](evidence/filesystem-path-read/README.md),
 [size/EH proof](evidence/filesystem-path-size/README.md),
@@ -41,11 +42,51 @@ scripts/repo-python scripts/report-reconstruction-status.py
 
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
 273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
-207 source-present/nonexact,121 source-absent. Authored exact **406/73985 bytes**;
-overall exact1247/140495 bytes. Unknown origins524 keep the whole-game denominator
+206 source-present/nonexact,121 source-absent. Authored exact **407/74266 bytes**;
+overall exact1248/140776 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest complete archive registration checkpoint
+## Latest complete archive entry reader checkpoint
+
+Starting b5fc8a9, fresh local readOnly/noanalysis Ghidra reviews both transforms,
+all6 decrypt/3 encrypt recorded call sites and two archive callers, with all
+412289 mapped bytes unchanged before/after rollback,maxcpu1/heap768. AL seed,
+five stack arguments and RET20 are target machine facts, not original source
+annotations. Supplementary untyped address surveys establish no data owners.
+
+A consistent four-TU /Gz control retains GL/GS/EHsc, archiveOb1 and normal ResFile.
+Transforms become286/RET20 versus targets323/307 and remain nonexact. The reader
+becomes281 bytes but fails exhaustive field inventory9 versus10. Direct indexed
+profile arguments restore all10 fields, leaving35 ordinary byte differences.
+Initializing the checksum after filename length recovers all281 bytes/all10.
+The latter two controls each recompile only archive support/reuse3 pinned source
+objects. Late-buffer and combined-lifetime forms are declared but unexecuted.
+The accepted source changes no signature/header/layout/global or inline control.
+
+Two actual independent full4TU canonical colds pass281/all10 plus9 existing whole
+guards956/all52, totaling1237/all62 each. Separate affected original-profile
+path Read214/GetSize190 cold passes404/all27, preserving existing recipes.
+All1247 prior canonical dictionaries remain unchanged. Only281 new authored
+bytes are credited; decrypt/decompress callees and profile data gain no credit.
+Original source/TU/flags/class and product/runtime remain unknown.
+
+Keep new first cold at
+`build/gpt-6.1-sol/filesystem-transform-context-20261022/accepted-cold-1` and second
+at `build/match-linked/PbgArchiveReadDecompressEntry`. The different complete /Gz
+build group uses its own output. The previous original-profile canonical13 files
+are archived at the registration packet's cold-2 path before the affected replay;
+current `FileSystemPathSize` now contains that fresh original-profile replay.
+Private recovery: `.analysis/gpt-6.1-sol/filesystem-transform-context-20261022/RECOVERY.md`.
+Fresh111-group CI passes with all373 final code/test/config inputs unchanged.
+Hash-checked cleanup removes33 files/493754 logical bytes in three superseded
+private control carriers; actual colds and compact proofs remain. The32 large
+source/header and15 native baseline hashes remain unchanged; no large replay
+is claimed. Final validation and cleanup are recorded in the
+[reader packet](evidence/pbgarchive-read-decompress-entry/validation-summary.json).
+Old pre-adoption producer pins are historical: never restore source or rerun
+them blindly. Preserve9 independent D3D files and all independent phase gates.
+
+## Previous complete archive registration checkpoint
 
 Starting pushed/remote-verified fdbe829, a normal success-first LoadArchive
 branch replaces the previous early failure return. The private one-primary/
@@ -430,15 +471,26 @@ without repeating neutral models. Keep /GL and do not force registers or
 returns. The old File.cpp string still has no code xref and establishes no
 original source ownership.
 
-Current retained four-TU transform contributions are284 bytes each versus
-target Decrypt323/Encrypt307. Both native heads preserve AL into BL, but native
-returns RET while targets return RET20. This is an ABI/context diagnosis only,
-not a whole transform comparison or exact credit. Inspect TH10 callers and
-consistent compiler/TU context before changing any convention. TH09/TH095
+The original-profile transform contributions were284 each/RET, versus target
+Decrypt323/Encrypt307/RET20. The subsequent consistent /Gz probe produces286 each
+with RET20 and keeps9 whole guards956/all52 exact; current reader acceptance
+retains that context. This establishes one reproduced cleanup context, not the
+original convention/TU/flags or transform exactness. ParseHeader is355 versus350
+in the measured probe. Continue TH10-local operand/branch/lifetime or caller
+investigation without repeating the /Gz/reference/direct-field/late-checksum
+controls. A subsequent private one-support control replaces ParseHeader seek
+origin from the unresolved g_PbgFileSeekModes[0] load with target-observed
+FILE_BEGIN=0, yielding351 versus350 while all10 current whole guards1237/all62
+pass. This is not a complete parser comparison or adopted source. Inspect late
+parser-state declarations/cleanup and independently bind the full target before
+credit; original data-owner versus constant-folding explanations remain unknown.
+Compact result: parse-literal-origin.json in the current private directory.
+TH09/TH095
 headers/implementation suggest ordinary data-first signatures only; they do not
 prove TH10 types/flags/ABI. TH095 provisional packed locals and unused writes
-are not TH10 evidence and must not be imported as padding. Compact current
-PDB extents are `next-transform-extents.json` in this private campaign.
+are not TH10 evidence and must not be imported as padding. Compact scope/results
+are in the current transform-context private directory; older PDB extents retain
+their historical source/profile scope.
 
 PbgArchive::Load434C30 retains its complete108/all7 canonical contract. Its two
 cached comparisons in the preceding Read packet were routing evidence, not a

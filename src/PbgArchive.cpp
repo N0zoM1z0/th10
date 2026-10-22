@@ -145,18 +145,19 @@ unsigned char *PbgArchive::ReadDecompressEntry(const char *filename,
     if (m_FileAbstraction->Read(compressedData, compressedSize) == 0)
         goto read_error;
 
-    u8 filenameChecksum = 0;
+    size_t remaining = strlen(entry->filename);
     const u8 *cursor = (const u8 *)entry->filename;
-    for (size_t remaining = strlen(entry->filename); remaining != 0;
-         --remaining, ++cursor)
+    u8 filenameChecksum = 0;
+    for (; remaining != 0; --remaining, ++cursor)
     {
         filenameChecksum = (u8)(filenameChecksum + *cursor);
     }
     filenameChecksum %= 8;
-    PbgDecryptProfile &profile = g_PbgDecryptProfiles[filenameChecksum];
-    FileSystem::Decrypt(compressedData, compressedSize, profile.xorValue,
-                        profile.xorValueIncrement, profile.chunkSize,
-                        profile.maxBytes);
+    FileSystem::Decrypt(compressedData, compressedSize,
+                        g_PbgDecryptProfiles[filenameChecksum].xorValue,
+                        g_PbgDecryptProfiles[filenameChecksum].xorValueIncrement,
+                        g_PbgDecryptProfiles[filenameChecksum].chunkSize,
+                        g_PbgDecryptProfiles[filenameChecksum].maxBytes);
 
     unsigned char *decompressedData;
     if (compressedSize != (i32)decompressedSize)

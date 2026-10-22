@@ -1,0 +1,55 @@
+{
+  "affected_original_profile_cold": {
+    "bytes": 404,
+    "fields": 27,
+    "units": 2
+  },
+  "canonical_cold_pair": {
+    "actual_full_four_TU_builds": 2,
+    "existing_whole_guard_bytes_each": 956,
+    "existing_whole_guard_count_each": 9,
+    "existing_whole_guard_fields_each": 52,
+    "new_parent_bytes_each": 281,
+    "new_parent_fields_each": 10,
+    "total_checked_bytes_each": 1237,
+    "total_fields_each": 62
+  },
+  "ci": {
+    "command_groups": 111,
+    "exit_code": 0,
+    "frozen_input_count": 373,
+    "input_inventory_sha256": "b9591a19e867796ebbec98cbaa270b9763bb577b65c22a20f12d05ad450b44ef",
+    "inputs_unchanged": true,
+    "log_sha256": "1906d22deb333bcd3b493d377ff341a988f397c7bfb8fca50ddc8535201c644c",
+    "status": "passed"
+  },
+  "cleanup": {
+    "files": 33,
+    "logical_bytes": 493754,
+    "paths": [
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/gz-all",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/direct-profile-fields",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/checksum-after-length"
+    ],
+    "retained": "new actual cold pair, fresh original-profile affected replay and archived predecessor, compact target/source/producers/results, prior cold proofs and9 unrelated D3D files",
+    "status": "removed",
+    "trees": 3
+  },
+  "counts": {
+    "authored": 734,
+    "authored_bytes": 273579,
+    "authored_exact": 407,
+    "authored_exact_bytes": 74266,
+    "origin_indeterminate": 524,
+    "overall_exact": 1248,
+    "overall_exact_bytes": 140776,
+    "source": 613,
+    "source_absent": 121,
+    "source_bytes": 247945,
+    "source_nonexact": 206
+  },
+  "new_exact_functions": 1,
+  "new_exact_owned_bytes": 281,
+  "phase": "active-incomplete; whole product/runtime open; semantic and port not started",
+  "status": "passed for bounded declared-context codegen, affected original-context preservation and111-group CI"
+}

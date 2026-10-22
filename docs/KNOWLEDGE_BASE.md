@@ -5053,3 +5053,30 @@ Authored exact becomes406/73985, overall1247/140495; source613/nonexact207/absen
 FileSystem source13/13, exact11/13; transforms323/307 remain nonexact. Actual
 product/runtime, original identifier/TU/flags and physical data owners remain
 unknown. [Complete registration proof and limits](evidence/filesystem-load-archive/README.md).
+
+## Exact archive entry reader and cleanup context (2026-10-22)
+
+ReadDecompressEntry434DD0..434EE8 is complete281 bytes, including compiler loop
+alignment, with six REL32 calls and four DIR32 profile-field addresses. The
+calls bind lookup, allocation, two frees, decrypt and decompression; profile
+accesses use the existing474BD8 view plus8/4/1/0 at twelve-byte row stride.
+Callee bodies, profile data/owners and native runtime receive no duplicate credit.
+
+Fresh target/Ghidra review confirms all6 decrypt and3 encrypt call sites pass AL
+seed/five stack arguments and rely on RET20. A consistent four-TU /Gz context
+retaining GL/GS/EHsc, archiveOb1 and normal ResFile reproduces that cleanup;
+it does not prove original source annotations or flags. Transform bodies remain
+286 versus323/307. Reader size281 alone initially fails its field inventory9/10.
+Direct indexed arguments recover ten fields but leave35 ordinary differences;
+checksum initialization after filename length recovers all281 bytes/all10.
+Both source controls compile one archive support/reuse3 objects. Unexecuted
+buffer-lifetime alternatives gain no evidence. No source ABI/header/layout/
+global/algorithm or inline-control change is adopted.
+
+Two subsequent actual full four-TU colds pass new281/all10 plus nine whole
+guards956/all52 each, totaling1237/all62. Affected existing original-context
+Read214/GetSize190 independently cold-pass404/all27. All1247 prior canonical
+dictionaries remain unchanged. Authored exact407/74266, overall1248/140776;
+source613/nonexact206/absent121. Original names/class/lifetime/TU/production flags,
+data owners and whole product/runtime remain unknown.
+[Complete reader proof and limits](evidence/pbgarchive-read-decompress-entry/README.md).
