@@ -1,0 +1,325 @@
+{
+  "cleanup": {
+    "files": 50,
+    "historical_retention_superseded": "Earlier constructor packet retained the old prefix-fast carrier; it is now replaced by the reviewed full nineteen-slot member-order carrier.",
+    "logical_bytes": 3213746,
+    "retained": "latest member-order157 carrier and consistent32-source overlay; all compact producers/patches/results; accepted constructor cold1/current cold2; old baseline15/32; D3D9 untouched"
+  },
+  "controls": [
+    {
+      "ANM": {
+        "case_aligned": {
+          "absolute_case_gap_delta": 2,
+          "comparable_bytes": 7995,
+          "matched_comparable_bytes": 7541,
+          "normalization_complete": true,
+          "same_sized_cases": 90
+        },
+        "size": 9964
+      },
+      "ECL": {
+        "complete_float_callee": 171,
+        "fields": 189,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "size": 7020
+      },
+      "Enemy": {
+        "case_aligned": {
+          "comparable": 11145,
+          "gap": 562,
+          "matched": 3225,
+          "same_sized": 43
+        },
+        "physical_groups": 108,
+        "selectors": 181,
+        "size": 14344
+      },
+      "additional_constructors": [
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 98,
+          "unit": "base-construction"
+        },
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 202,
+          "unit": "type0-construction"
+        },
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 219,
+          "unit": "type1-construction"
+        }
+      ],
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "consistent_overlay_files": 32,
+      "exit_code": 0,
+      "factory": {
+        "ret_operands": [
+          "8",
+          "8"
+        ],
+        "size": 157,
+        "strict_comparator": {
+          "error": "PDB contribution size 0x9d differs from manifest 0x99",
+          "result": "unsupported",
+          "unit": "factory"
+        },
+        "symbol": "?EnemyFireLaser@@YGIPAXPAUEnemyLaserRequestScratch@@H@Z"
+      },
+      "first_link_passed": true,
+      "fresh_game_source_compiles": 10,
+      "harness_regenerated": false,
+      "label": "typed-construction-stdcall",
+      "native_session": 82378,
+      "new_factory_symbol_never_anchored": true,
+      "producer_sha256": "7896e2346fbe8c5d6fe9301881898cb601114b6f29b73cee540bac627fa362a9",
+      "reused_game_source_objects": 0,
+      "reused_pinned_harness_files": 2,
+      "source_roles_changed": [
+        "src/EnemyLaser.cpp",
+        "src/EnemyLaser.hpp"
+      ]
+    },
+    {
+      "ANM": {
+        "case_aligned": {
+          "absolute_case_gap_delta": 2,
+          "comparable_bytes": 7995,
+          "matched_comparable_bytes": 7541,
+          "normalization_complete": true,
+          "same_sized_cases": 90
+        },
+        "size": 9964
+      },
+      "ECL": {
+        "complete_float_callee": 171,
+        "fields": 189,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "size": 7020
+      },
+      "Enemy": {
+        "case_aligned": {
+          "comparable": 11145,
+          "gap": 566,
+          "matched": 3221,
+          "same_sized": 42
+        },
+        "physical_groups": 108,
+        "selectors": 181,
+        "size": 14344
+      },
+      "additional_constructors": [
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 98,
+          "unit": "base-construction"
+        },
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 202,
+          "unit": "type0-construction"
+        },
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 219,
+          "unit": "type1-construction"
+        }
+      ],
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "consistent_overlay_files": 32,
+      "exit_code": 0,
+      "factory": {
+        "ret_operands": [
+          "8",
+          "8"
+        ],
+        "size": 157,
+        "strict_comparator": {
+          "error": "PDB contribution size 0x9d differs from manifest 0x99",
+          "result": "unsupported",
+          "unit": "factory"
+        },
+        "symbol": "?EnemyFireLaser@@YIIPAXHPAUEnemyLaserRequestScratch@@@Z"
+      },
+      "first_link_passed": true,
+      "fresh_game_source_compiles": 10,
+      "harness_regenerated": false,
+      "label": "typed-construction-fast-order",
+      "native_session": 81624,
+      "new_factory_symbol_never_anchored": true,
+      "producer_sha256": "7361e4796ef2cdcb89ae12f2886102071521fa22b009c4dd90b1488c8f3796ff",
+      "reused_game_source_objects": 0,
+      "reused_pinned_harness_files": 2,
+      "source_roles_changed": [
+        "src/EnemyEclDispatcher.cpp",
+        "src/EnemyLaser.cpp",
+        "src/EnemyLaser.hpp"
+      ]
+    },
+    {
+      "ANM": {
+        "case_aligned": {
+          "absolute_case_gap_delta": 2,
+          "comparable_bytes": 7995,
+          "matched_comparable_bytes": 7541,
+          "normalization_complete": true,
+          "same_sized_cases": 90
+        },
+        "size": 9964
+      },
+      "ECL": {
+        "complete_float_callee": 171,
+        "fields": 189,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "size": 7020
+      },
+      "Enemy": {
+        "case_aligned": {
+          "comparable": 11145,
+          "gap": 566,
+          "matched": 3221,
+          "same_sized": 42
+        },
+        "physical_groups": 108,
+        "selectors": 181,
+        "size": 14344
+      },
+      "additional_constructors": [
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 98,
+          "unit": "base-construction"
+        },
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 202,
+          "unit": "type0-construction"
+        },
+        {
+          "fields": 2,
+          "result": "exact",
+          "size": 219,
+          "unit": "type1-construction"
+        }
+      ],
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "consistent_overlay_files": 32,
+      "exit_code": 0,
+      "factory": {
+        "ret_operands": [
+          "8",
+          "8"
+        ],
+        "size": 157,
+        "strict_comparator": {
+          "error": "PDB contribution size 0x9d differs from manifest 0x99",
+          "result": "unsupported",
+          "unit": "factory"
+        },
+        "symbol": "?FireLaser@EnemyLaserManagerStorageView@@QAEIHPAUEnemyLaserRequestScratch@@@Z"
+      },
+      "first_link_passed": true,
+      "fresh_game_source_compiles": 10,
+      "harness_regenerated": false,
+      "label": "typed-construction-member-order",
+      "native_session": 96956,
+      "new_factory_symbol_never_anchored": true,
+      "producer_sha256": "10c0b32ee60fe05a3b5c34d17eff00993f3ab40e507efcf3f8f9c726beb44604",
+      "reused_game_source_objects": 0,
+      "reused_pinned_harness_files": 2,
+      "source_roles_changed": [
+        "src/EnemyEclDispatcher.cpp",
+        "src/EnemyLaser.cpp",
+        "src/EnemyLaser.hpp"
+      ]
+    }
+  ],
+  "cross_game_hypothesis": {
+    "TH09": "Reviewed BulletLaserSpawn pool form is not a matching factory.",
+    "TH095": "Provisional PhotoEffectManagerView::Spawn(type,args) suggests only the ordinary member/type-first source shape. No adjacent address, layout, behavior or exactness is TH10 evidence; its forced-inline/compiler-storage helpers are not copied."
+  },
+  "fastcall_order_and_member_order_raw_peers": {
+    "bodies": {
+      "0x0040E770": {
+        "sha256": "eec749ea665af0f9f42944adeffeb9a7564984c91de00ad7ceb3e4ddf490ad1c",
+        "size": 14344
+      },
+      "0x0041C510": {
+        "sha256": "4695017b86483ce09013646c000f2d78aedaf453de6a977280180a4927523bee",
+        "size": 157
+      },
+      "0x0043EE30": {
+        "sha256": "b97cf5575df9b148cdeb15e5e11dbf833de88f0f323bbac5ae8193a35b13e9de",
+        "size": 9964
+      },
+      "0x0044E1A0": {
+        "sha256": "f100d3e5185e4979e1939dea3359a6b499ba0db3cefa347fb0f2b646b10e556e",
+        "size": 7020
+      }
+    },
+    "result": "four complete bodies raw-identical",
+    "scope": "native-to-native comparison only; no original-source ABI or runtime proof"
+  },
+  "harness_metadata_correction": "Raw producer summaries inherited a hardcoded harness_regenerated=true field. Actual attempt logs show one successful link, zero added symbols, and both pinned harness files unchanged. This packet reports two harness reuses and no regeneration.",
+  "maintained_source_test_config_inputs_unchanged": 373,
+  "maintained_sources_unchanged": 108,
+  "reordered_shape_observation": {
+    "request": "still loaded by four-byte MOV ECX,[ESP+0xC] late after saved EBX; then PUSH ECX",
+    "scope": "native and target machine observations only; not original declaration or target equality",
+    "target_request": "PUSH EDI; no corresponding request stack load",
+    "type": "MOV EAX,[ESP+4] now agrees with target slot"
+  },
+  "scope_limits": [
+    "All three are distinct diagnostic hypotheses, not an acceptance cold pair.",
+    "Five normal-COFF contracts remain additional linked guards only.",
+    "Complete constructor comparisons grant no duplicate credit.",
+    "No source/header/ABI/profile/ledger change is adopted.",
+    "The results do not exhaust natural source forms, real caller visibility, link partitions or production flags.",
+    "Whole Windows i386 product/runtime open; semantic/port unstarted."
+  ],
+  "starting_head": "3e6cb469dcd06ad630c6e7771cc2168801074b2a",
+  "status": "three actual source controls; none adopted; no exact gain",
+  "target_factory": {
+    "address": "0x0041C510",
+    "bytes": 153,
+    "instructions": 44,
+    "manager": "ESI",
+    "request": "EDI",
+    "ret_operands": [
+      "4",
+      "4"
+    ],
+    "type": "stack +4 on entry"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+}

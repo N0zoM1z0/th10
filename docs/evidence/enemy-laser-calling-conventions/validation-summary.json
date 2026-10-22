@@ -1,0 +1,36 @@
+{
+  "canonical_native_core_unchanged": 15,
+  "ci": "not repeated per latest operator speed instruction; prior111-group CI passed at source-identical3e6cb46",
+  "cleanup": {
+    "files": 50,
+    "historical_retention_superseded": "Earlier constructor packet retained the old prefix-fast carrier; it is now replaced by the reviewed full nineteen-slot member-order carrier.",
+    "logical_bytes": 3213746,
+    "retained": "latest member-order157 carrier and consistent32-source overlay; all compact producers/patches/results; accepted constructor cold1/current cold2; old baseline15/32; D3D9 untouched"
+  },
+  "counts": {
+    "authored_exact": 409,
+    "authored_exact_bytes": 74716,
+    "overall_exact": 1252,
+    "overall_exact_bytes": 141647
+  },
+  "each_image": {
+    "bytes": 5137,
+    "fields": 127,
+    "functions": 39
+  },
+  "focused_final_checks": [
+    "both current canonical constructor comparators",
+    "verify-toolchain.py --check",
+    "validate-tracking.py",
+    "progress.py and --check",
+    "check-doc-hygiene.py",
+    "staged/unstaged git diff --check"
+  ],
+  "frozen_inputs_unchanged": 373,
+  "independent_D3D_files_unchanged": 9,
+  "maintained_sources_unchanged": 108,
+  "new_exact_bytes": 0,
+  "new_exact_functions": 0,
+  "phase": "active-incomplete",
+  "status": "three focused controls and all39 complete comparisons per image passed; factory rejected"
+}

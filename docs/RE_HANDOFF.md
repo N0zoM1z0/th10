@@ -1,10 +1,12 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Natural
-Enemy laser construction adds two complete canonical matches202/219, with origin
-still indeterminate. Authored exact409/74716 is unchanged; overall1252/141647.
-Source remains613/247945 owned bytes; nonexact204, absent121.
-Archive source15/15, exact15/15; FileSystem source13/13, exact11/13.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
+three full-source factory calling-convention controls are not adopted; maintained
+source and exact counts remain unchanged. The preceding natural construction
+checkpoint added202/219 with indeterminate origin. Authored409/74716 stays
+unchanged; overall1252/141647. Source613/247945, nonexact204, absent121.
+Archive15/15 exact; FileSystem11/13 exact, both source-complete.
+See [factory ABI controls](evidence/enemy-laser-calling-conventions/README.md).
 See [laser construction proof](evidence/enemy-laser-constructors/README.md).
 See [Enemy laser source controls](evidence/enemy-laser-source-controls/README.md),
 [ANM common-tail/ABI evidence](evidence/anm-common-tail-abi-controls/README.md),
@@ -56,7 +58,59 @@ scripts/repo-python scripts/report-reconstruction-status.py
 overall exact1252/141647 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest complete Enemy laser construction checkpoint
+## Latest bounded laser factory parameter checkpoint
+
+Starting pushed/remote-verified3e6cb469dcd06ad630c6e7771cc2168801074b2a. Latest
+operator prefix is `gpt-6-astra-medium: ...`; prioritize reconstruction speed,
+focused affected comparisons and necessary checks. Full CI belongs at meaningful
+stage checkpoints; it is not repeated for every small batch.
+
+Three actual consistent32-file/all10-source GL/GS controls terminate0: stdcall
+82378, fastcall/type-first81624 and ordinary member/type-first96956. Each reuses
+zero source objects and two pinned harness files; first link succeeds with zero
+new anchors. Old raw summary harness_regenerated=true is a hardcoded stale flag:
+attempt logs and actual hashes prove no regeneration. Source inputs and both
+profiles remain unchanged during each measured run. Free/member factory names
+cannot be anchored, and every actual direct call is converted consistently.
+
+All emit factory157/RET8 rather than target153/RET4. Stdcall retains type at
+entryESP8; reordered free/member forms use targetESP4 but request still arrives
+from a late MOV ECX,[ESP+C]/PUSH ECX rather than targetPUSH EDI. Strict complete
+PDB-extent comparison rejects157 versus153; no crop or parent credit. The latter
+two are four-owner whole-byte raw-identical: Enemy14344, factory157, ANM9964,
+ECL7020. Membership alone is neutral in these two contexts, not globally ruled
+out. All39 complete checks5137/all127 pass per image:36 previous guards4618/
+all121 and full base98/type0202/type1219 all2. No duplicate constructor credit.
+
+Enemy aligned3225/11145/gap562/43 target-sized groups for stdcall, versus
+3221/11145/gap566/42 for reordered free/member; all181 selectors/108 ordered
+groups remain. ANM9964/7541of7995/90of92/gap2; ECL7020/6993/27/189/62/171
+remain. Every score is diagnostic. Maintained source/header/ABI, old profiles,
+recipes, ledgers, origin/boundary states and all373 code/test/config inputs are
+unchanged, as are108 source,32 large-context,15 canonical native and9 D3D pins.
+
+TH09 pool spawn is not a matching analogue. Provisional TH095 Spawn(type,args)
+suggests only the tested ordinary member shape; no adjacent addresses, layout,
+semantics, exactness or forced-inline/compiler-storage helpers are imported.
+
+Hash-checked cleanup removes50 owned files/3213746 logical bytes: superseded old
+prefix-fast, new stdcall and reordered-fast native carriers. Retain latest
+member-order157 carrier/32-file overlay, all compact source patches/producers/
+results, accepted construction cold1/current cold2 and old baseline15/32.
+This supersedes the preceding packet's retention of the old prefix-fast carrier.
+Source-identical3e6cb46 already passed111 CI groups; no full CI repeated per new
+operator instruction. Both current canonical constructor comparators, toolchain/tracking, generated
+progress, documentation and whitespace checks pass. See
+[evidence](evidence/enemy-laser-calling-conventions/README.md).
+
+Next investigate request liveness and real callback/caller visibility in the
+natural construction context. All ten reviewed direct calls are included;
+missing production owners or real callback definitions remain hypotheses to
+review rather than proven explanations. Preserve complete constructor/36-guard
+proofs and whole table/callee checks. Counts unchanged; product/runtime open,
+semantic/port unstarted.
+
+## Previous complete Enemy laser construction checkpoint
 
 Starting pushed2a7c199, current target/toolchain execute64998/tracking/status pass.
 Direct readOnly/noanalysis Ghidra32749 terminates0 with rollback/maxcpu1/heap768;
