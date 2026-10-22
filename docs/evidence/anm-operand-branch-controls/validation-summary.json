@@ -1,0 +1,183 @@
+{
+  "ci": {
+    "completed_groups": 111,
+    "exit_code": 0,
+    "input_counts_unchanged": {
+      "baseline_artifact_sha256": 15,
+      "baseline_source_sha256": 32,
+      "frozen_inputs": 373,
+      "source_sha256": 108,
+      "unrelated_untracked": 9
+    },
+    "input_inventory_sha256": "30b971c86beda25006c5d4a48e87fff4171ea49a69b258d91aec9ac81826383d",
+    "log_sha256": "a30445b8ca3c0108032deec2dc90b28532a114145342150297495d8550b841d3",
+    "status": "passed"
+  },
+  "cleanup": {
+    "files": 32,
+    "logical_bytes": 2083152,
+    "retained": "canonical32-source/15-artifact baseline, first actual10012-byte failure, all compact sources/producers/reports and9 independent D3D files",
+    "status": "removed",
+    "trees": 2
+  },
+  "controls": [
+    {
+      "ECL": {
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_different_bytes": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020,
+        "whole_callee_bytes_exact": 171
+      },
+      "candidate_owner": {
+        "address": "0x0040D9B0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\conditional-destination-stores\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\conditional-destination-stores\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51632,
+        "sha256": "489347328d4ebbcb65534803bcc1379c5ad5f23cfe9ce935bbe160b8490b372d",
+        "size": 10012,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 70,
+        "comparable_bytes": 8001,
+        "matched_comparable_bytes": 7066,
+        "normalization_complete": true,
+        "same_sized_cases": 86
+      },
+      "child_static_paths": 8,
+      "label": "conditional-destination-stores",
+      "maintained_source_adopted": false,
+      "new_exact_credit": 0,
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    },
+    {
+      "ECL": {
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_different_bytes": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020,
+        "whole_callee_bytes_exact": 171
+      },
+      "candidate_owner": {
+        "address": "0x0040D9B0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\literal-first-value-select\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\literal-first-value-select\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51632,
+        "sha256": "2985e5fbf8c7333d53c348b81998839a315dff6c99543809865262d3dde57116",
+        "size": 9964,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7439,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "child_static_paths": 8,
+      "label": "literal-first-value-select",
+      "maintained_source_adopted": false,
+      "new_exact_credit": 0,
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    },
+    {
+      "ECL": {
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_different_bytes": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020,
+        "whole_callee_bytes_exact": 171
+      },
+      "candidate_owner": {
+        "address": "0x0040D9E0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\inline-float-operand-helper\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\inline-float-operand-helper\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51680,
+        "sha256": "ac02e322fcaf7b3b1821ec3b53c159a2e677514e5b9a21153b56b210a043f8ac",
+        "size": 9836,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 130,
+        "comparable_bytes": 7999,
+        "matched_comparable_bytes": 7277,
+        "normalization_complete": true,
+        "same_sized_cases": 87
+      },
+      "child_static_paths": 8,
+      "label": "inline-float-operand-helper",
+      "maintained_source_adopted": false,
+      "new_exact_credit": 0,
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    }
+  ],
+  "counts": {
+    "authored_exact": 409,
+    "authored_exact_bytes": 74716,
+    "overall_exact": 1250,
+    "overall_exact_bytes": 141226,
+    "source": 613,
+    "source_absent": 121,
+    "source_nonexact": 204
+  },
+  "final_checks": {
+    "Ghidra_exit_code": 0,
+    "Ghidra_session": 23296,
+    "documentation_hygiene": "passed",
+    "focused_case_diagnostic": "completed:7066/8001,86/92,gap70;acceptance authority none",
+    "git_diff_check": "passed",
+    "native_probe_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "native_probe_sessions": {
+      "conditional-destination-stores": 46032,
+      "inline-float-operand-helper": 79830,
+      "literal-first-value-select": 44276
+    },
+    "preflight_exit_code": 0,
+    "preflight_session": 31618,
+    "progress_generated_and_checked": "passed",
+    "toolchain_check": "passed",
+    "tracking": "passed"
+  },
+  "new_exact_functions": 0,
+  "new_exact_owned_bytes": 0,
+  "phase": "active-incomplete; whole Windows i386 product/runtime open; semantic and port not started",
+  "status": "three measured regressions rejected; maintained baseline preserved;111-group CI passed; no exact credit"
+}

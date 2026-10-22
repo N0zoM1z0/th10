@@ -1,0 +1,1301 @@
+{
+  "Ghidra": {
+    "entry_and_incoming_references_observed": true,
+    "heap_MiB": 768,
+    "mapped_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "maxcpu": 1,
+    "noanalysis": true,
+    "readOnly": true,
+    "review_sha256": "442c159263fddf30dfec646c1079fe61e33dc57f53cd1d94839715a25e33a7a3",
+    "reviewed_spans": [
+      "43F2DE..43F419",
+      "441340..4413A3"
+    ],
+    "signature_and_function_body_provisional": true,
+    "transaction": "rollback",
+    "transport": "direct-local-headless"
+  },
+  "adjacent_source_hypothesis": {
+    "observation": "Adjacent source snapshots use variable-first conditional values followed by ordered component stores.",
+    "scope": "Read-only source-shape hypothesis only; no TH10 address/bytes/layout/ownership/flags/exactness transferred. TH095 semantics and names are provisional.",
+    "sources": [
+      {
+        "game": "TH08",
+        "line_ranges": [
+          [
+            218,
+            220
+          ],
+          [
+            289,
+            307
+          ]
+        ],
+        "path": "src/AnmManager.cpp",
+        "sha256": "1c354795fa862d3da2d1164f567980bf813ede9fc1bb5aa1d37d7ee3cf17b24e"
+      },
+      {
+        "game": "TH09",
+        "line_ranges": [
+          [
+            403,
+            405
+          ],
+          [
+            474,
+            492
+          ]
+        ],
+        "path": "src/AnmManagerExecuteScript.cpp",
+        "sha256": "3afbca492a47fddd7a196c4696d0ee25a7f9dae5e31f85d64e4ca77cc77ac64f"
+      },
+      {
+        "game": "TH095",
+        "line_ranges": [
+          [
+            288,
+            290
+          ],
+          [
+            359,
+            373
+          ]
+        ],
+        "path": "src/AnmManager.cpp",
+        "sha256": "465d68404a2634c81bb7063a8067442d171e10518b5d235b8c9fe9d49d0dc349"
+      }
+    ]
+  },
+  "baseline": {
+    "ANM_candidate_size": 9964,
+    "ANM_case_aligned": {
+      "absolute_case_gap_delta": 2,
+      "comparable_bytes": 7995,
+      "matched_comparable_bytes": 7541,
+      "same_sized_cases": 90
+    },
+    "ANM_target_size": 9964,
+    "canonical_carrier_unit": "enemy-drop-item-counts",
+    "native_artifact_sha256": {
+      "build/match-linked/EnemyItemDrops/link-aliases.rsp": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9",
+      "build/match-linked/EnemyItemDrops/link-anchors.obj": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f",
+      "build/match-linked/EnemyItemDrops/source.exe": "b5c7204224fb2936f818de6e9dcfd4ab7eb4154852c1ca31041cc7559adbaf4f",
+      "build/match-linked/EnemyItemDrops/source.ltcg.obj": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab",
+      "build/match-linked/EnemyItemDrops/source.map": "21ed385e87deb58e73b0cfba35fba1d71ab65167d434188d269825c06910fad4",
+      "build/match-linked/EnemyItemDrops/source.pdb": "d3bbae8bd88faff785117c5a598acd2766b8be4f8995deb865979b93e68d10ed",
+      "build/match-linked/EnemyItemDrops/support-00-EclVm.ltcg.obj": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8",
+      "build/match-linked/EnemyItemDrops/support-01-AnmManager.ltcg.obj": "42e7b358ccf7ac2660114ad24f8045f3d20284e45ef90f86dfc47e158568cdc0",
+      "build/match-linked/EnemyItemDrops/support-02-AnmVmCreate.ltcg.obj": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359",
+      "build/match-linked/EnemyItemDrops/support-03-EnemyLaser.ltcg.obj": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2",
+      "build/match-linked/EnemyItemDrops/support-04-Enemy.ltcg.obj": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44",
+      "build/match-linked/EnemyItemDrops/support-05-AnmVmId.ltcg.obj": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0",
+      "build/match-linked/EnemyItemDrops/support-06-RandomMath.ltcg.obj": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e",
+      "build/match-linked/EnemyItemDrops/support-07-AnmInt3Scale.ltcg.obj": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d",
+      "build/match-linked/EnemyItemDrops/support-08-ItemManager.ltcg.obj": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8"
+    },
+    "source_header_sha256": {
+      "src/AnmInt3Scale.cpp": "bcacf1bba73832022f4ee8398e111e0ae58efbec546b8981700f033a331192a5",
+      "src/AnmManager.cpp": "453e6d176f79e0bd541cca3abae1a313f2e0a1b684c202aa53d80b96b2ffa564",
+      "src/AnmManager.hpp": "ac32adb6c294209060f6bb676c236a702f8f1c015d756179c7e564c6c3976e65",
+      "src/AnmVmCreate.cpp": "49f873ff06835a86826c4d2647b33fd60957c4cf476033f7b25dc7afa0c50b83",
+      "src/AnmVmId.cpp": "fbcaca3cef47d29b8bd0292de050e958baad858435c77ac255b9bf923e10e67f",
+      "src/AnmVmId.hpp": "b700f281acff5d909d85d2bd9bbf456237eee89f8d3a1ce36df871a48172ef1d",
+      "src/BulletManager.hpp": "327653814ed23b2e4d1c4767b8b9bdc701a677e334f34945202a45fcff1d3199",
+      "src/Chain.hpp": "10aa6bcebbd3300ea842695eab105158e149286aa138c9d349e5e8ca3956997e",
+      "src/D3d9View.hpp": "1ac63c6a4913c9a6ca0be7add05a36793316b56c9d58de049d226448440249f6",
+      "src/EclVm.cpp": "da0469bcaad9daf49f423051bdc15101d605ab13f58942be6f6c38ad70fd6369",
+      "src/EclVm.hpp": "233c7a81061451834f6f95bed2df3c9946e9840267c0c2c105dc48f4e3e7cea0",
+      "src/Enemy.cpp": "9591b6d7949b35c5ae5ac61afa3e73375ad61b232f5044948c916e17f226e5d7",
+      "src/Enemy.hpp": "703ac5e26fc850255a36f56fb0edf61ee1371a78e253214898c32a39747604a6",
+      "src/EnemyEclDispatcher.cpp": "3292adf5a3f1ef19d541f19bf39639db3b485fb008c39ee7421aed9946c31c73",
+      "src/EnemyGameState.hpp": "e8305f71c2d71f297b47b168c5c98635fbd3e7a8eec52e5df315f04d63131b5b",
+      "src/EnemyLaser.cpp": "1434c73f4cbfb55152eecdc2b637df2d68736571a009472e1d5234dee258a8b1",
+      "src/EnemyLaser.hpp": "0b64641250ff5c628332780478b7dbb81fc49b4f0dc1597f3c9ccbcbbda7adec",
+      "src/EnemyPrimaryResources.hpp": "04a17976eed5475a24531179cf22b05cad0b3907554b3d655ac45a127d281ba7",
+      "src/EnemySoundQueue.hpp": "1fdc23149fca106bd00413a7acbdb3bc39849364a1ff0807e41c66d1365574e8",
+      "src/FileSystem.hpp": "441fe4caf4bf6898d1323fe613f61527a92ec146afb9090a0a70a2be5960da4f",
+      "src/GameErrorContext.hpp": "155a62dd199a369f8aadb6a2ec0fc42b4e6f860a64ab8b52963fd6eaf66782b4",
+      "src/GameScoreState.hpp": "b60ab162a785257d4e5c2d325cbbb3225f2e5b42fbfc5e24e0ba5f12edba6924",
+      "src/Gui.hpp": "c15c0f4393e6ed3e9a873ae7404ac8a15f6dd7d3a95697d3ffb02999ea586030",
+      "src/GuiScore.hpp": "d7dbb1d9c76132a3c53aff0d2045539e2e7f9149276ac480f91f46a61bd70cd5",
+      "src/ItemManager.cpp": "b9896e47f36dd09a3200e842a3c3903643e4f1ed1824f3d9a9eb0aec7b4f993c",
+      "src/ItemManager.hpp": "ad459bd53beadb65fd9484893da839c42ed60cb87092ab6630e0ac38e15a8bbc",
+      "src/Main.hpp": "0c96c7547cd2e69f76f6b066811937f16e1cfde624860fbd8ccfffc069aa58a9",
+      "src/Player.hpp": "9cb9583407cea17cd850aa8d9a01ffce192683d656dde56bacba1baf856046bf",
+      "src/PlayerCollision.hpp": "62b6123f819d647db54f800f7d077c0b6870cb67790dadbace01c3c2d9da9fbb",
+      "src/RandomMath.cpp": "5866b8573e21b45ff421d4e3930a1d58660a4cf7725e39fd9ec319cc04f7fca1",
+      "src/Rng.hpp": "7600d386e72c0cab29cea5e1c50ab08a6b7390b05d641a595c01921af4bcd49c",
+      "src/StageScript.hpp": "d317e4ab3e5f97ee36f6b37c9630784c740165ff63d37a8e2d6b3e8910246b87"
+    }
+  },
+  "baseline_body_comparisons": [
+    {
+      "baseline_body_comparisons": [
+        {
+          "baseline_size": 9964,
+          "candidate_size": 10012,
+          "raw_equal": false,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "raw_equal": true,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z"
+        },
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14352,
+          "equal_after_only_same_callee_field_replay": true,
+          "raw_equal": false,
+          "remaining_different_bytes": 0,
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "verified_same_callee_fields_replayed": [
+            {
+              "field_offset": 881,
+              "same_callee_symbols": [
+                "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+              ]
+            },
+            {
+              "field_offset": 1167,
+              "same_callee_symbols": [
+                "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+              ]
+            },
+            {
+              "field_offset": 1431,
+              "same_callee_symbols": [
+                "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+              ]
+            },
+            {
+              "field_offset": 1537,
+              "same_callee_symbols": [
+                "?Release@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 1758,
+              "same_callee_symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            },
+            {
+              "field_offset": 2009,
+              "same_callee_symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            },
+            {
+              "field_offset": 2189,
+              "same_callee_symbols": [
+                "?Release@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 2228,
+              "same_callee_symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            },
+            {
+              "field_offset": 2276,
+              "same_callee_symbols": [
+                "?ClearFlag2@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 2384,
+              "same_callee_symbols": [
+                "?Release@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 2432,
+              "same_callee_symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            },
+            {
+              "field_offset": 2484,
+              "same_callee_symbols": [
+                "?ClearFlag2@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 5604,
+              "same_callee_symbols": [
+                "?ClearFlag2@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 5684,
+              "same_callee_symbols": [
+                "?SetFlag2@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 10653,
+              "same_callee_symbols": [
+                "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+              ]
+            },
+            {
+              "field_offset": 11362,
+              "same_callee_symbols": [
+                "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+              ]
+            },
+            {
+              "field_offset": 11753,
+              "same_callee_symbols": [
+                "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "conditional-destination-stores"
+    },
+    {
+      "baseline_body_comparisons": [
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "raw_equal": false,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "raw_equal": true,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z"
+        },
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14352,
+          "raw_equal": true,
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ"
+        }
+      ],
+      "label": "literal-first-value-select"
+    },
+    {
+      "baseline_body_comparisons": [
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9836,
+          "raw_equal": false,
+          "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "raw_equal": true,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z"
+        },
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14352,
+          "equal_after_only_same_callee_field_replay": true,
+          "raw_equal": false,
+          "remaining_different_bytes": 0,
+          "symbol": "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ",
+          "verified_same_callee_fields_replayed": [
+            {
+              "field_offset": 881,
+              "same_callee_symbols": [
+                "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+              ]
+            },
+            {
+              "field_offset": 1167,
+              "same_callee_symbols": [
+                "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+              ]
+            },
+            {
+              "field_offset": 1431,
+              "same_callee_symbols": [
+                "?EnemySpawn@@YGPAUEnemyFullObjectView@@PAUEnemyManagerView@@PBDPBUEnemySpawnRequestView@@@Z"
+              ]
+            },
+            {
+              "field_offset": 1537,
+              "same_callee_symbols": [
+                "?Release@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 1758,
+              "same_callee_symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            },
+            {
+              "field_offset": 2009,
+              "same_callee_symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            },
+            {
+              "field_offset": 2189,
+              "same_callee_symbols": [
+                "?Release@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 2228,
+              "same_callee_symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            },
+            {
+              "field_offset": 2276,
+              "same_callee_symbols": [
+                "?ClearFlag2@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 2384,
+              "same_callee_symbols": [
+                "?Release@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 2432,
+              "same_callee_symbols": [
+                "?GetVm@AnmVmIdView@@QAEPAUAnmVmView@@XZ"
+              ]
+            },
+            {
+              "field_offset": 2484,
+              "same_callee_symbols": [
+                "?ClearFlag2@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 5604,
+              "same_callee_symbols": [
+                "?ClearFlag2@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 5684,
+              "same_callee_symbols": [
+                "?SetFlag2@AnmVmIdView@@QAEXXZ"
+              ]
+            },
+            {
+              "field_offset": 10653,
+              "same_callee_symbols": [
+                "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+              ]
+            },
+            {
+              "field_offset": 11362,
+              "same_callee_symbols": [
+                "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+              ]
+            },
+            {
+              "field_offset": 11753,
+              "same_callee_symbols": [
+                "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z"
+              ]
+            }
+          ]
+        }
+      ],
+      "label": "inline-float-operand-helper"
+    }
+  ],
+  "controls": [
+    {
+      "ECL": {
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_different_bytes": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020,
+        "whole_callee_bytes_exact": 171
+      },
+      "actual_source_compiles": 1,
+      "artifacts_observed_before_cleanup": {
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/link-aliases.rsp": {
+          "bytes": 16325,
+          "sha256": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/link-anchors.obj": {
+          "bytes": 9961,
+          "sha256": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/source.exe": {
+          "bytes": 122880,
+          "sha256": "2b8b0bbf499ac42a2ee3ac1ba0fcbc81b230a63fcfa2fa0be2436a49864a46c5"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/source.ltcg.obj": {
+          "bytes": 157029,
+          "sha256": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/source.map": {
+          "bytes": 85060,
+          "sha256": "34bbf437acefa34bef18ab292a1db49c79161e7fde42cf934626cf18d2fa450c"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/source.pdb": {
+          "bytes": 109568,
+          "sha256": "256e23ec2065f146862255c59ce9873663e43cc2185d9551d030f1e4fae7d7cb"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-01-AnmManager.ltcg.obj": {
+          "bytes": 248801,
+          "sha256": "c6f7cb6e1c74b973e7bdd69f2928fc6acd3e70e855f70c5b89cd1bf3aa66c27d"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 40467,
+          "sha256": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/conditional-destination-stores/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8"
+        }
+      },
+      "candidate_owner": {
+        "address": "0x0040D9B0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\conditional-destination-stores\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\conditional-destination-stores\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51632,
+        "sha256": "489347328d4ebbcb65534803bcc1379c5ad5f23cfe9ce935bbe160b8490b372d",
+        "size": 10012,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 70,
+        "comparable_bytes": 8001,
+        "matched_comparable_bytes": 7066,
+        "normalization_complete": true,
+        "same_sized_cases": 86
+      },
+      "child_static_paths": 8,
+      "full_native_cold": false,
+      "label": "conditional-destination-stores",
+      "maintained_source_adopted": false,
+      "new_exact_credit": 0,
+      "operand_cases": [
+        {
+          "candidate_address": "0x0040DE5F",
+          "candidate_size": 136,
+          "comparable_bytes": 96,
+          "gap_delta": 24,
+          "matched_comparable_bytes": 12,
+          "normalization_complete": true,
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "target_size": 112
+        },
+        {
+          "candidate_address": "0x0040DEE7",
+          "candidate_size": 136,
+          "comparable_bytes": 96,
+          "gap_delta": 24,
+          "matched_comparable_bytes": 12,
+          "normalization_complete": true,
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "target_size": 112
+        },
+        {
+          "candidate_address": "0x0040DF6F",
+          "candidate_size": 94,
+          "comparable_bytes": 78,
+          "gap_delta": 2,
+          "matched_comparable_bytes": 10,
+          "normalization_complete": true,
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "target_size": 92
+        }
+      ],
+      "producer_sha256": "637a9f8622ff6ac3a258042008d0a0cb0013448e188ff082d6c41bbf86493bab",
+      "reused_source_objects": 9,
+      "source_patch": "--- a/src/AnmManager.cpp\n+++ b/src/AnmManager.cpp\n@@ -3251,21 +3251,59 @@\n             break;\n \n         case ANM_OP_ROTATION:\n-            vm->rotation.x = GET_FLOAT_VAR(0);\n-            vm->rotation.y = GET_FLOAT_VAR(1);\n-            vm->rotation.z = GET_FLOAT_VAR(2);\n+        {\n+            if ((currentInstruction->variableMask & (1 << 0)) != 0)\n+                vm->rotation.x = vm->GetFloatVar(\n+                    currentInstruction->floatArgs[0]);\n+            else\n+                vm->rotation.x = currentInstruction->floatArgs[0];\n+            if ((currentInstruction->variableMask & (1 << 1)) != 0)\n+                vm->rotation.y = vm->GetFloatVar(\n+                    currentInstruction->floatArgs[1]);\n+            else\n+                vm->rotation.y = currentInstruction->floatArgs[1];\n+            if ((currentInstruction->variableMask & (1 << 2)) != 0)\n+                vm->rotation.z = vm->GetFloatVar(\n+                    currentInstruction->floatArgs[2]);\n+            else\n+                vm->rotation.z = currentInstruction->floatArgs[2];\n             vm->updateRotation = 1;\n             break;\n+        }\n         case ANM_OP_ANGULAR_VELOCITY:\n-            vm->angularVelocity.x = GET_FLOAT_VAR(0);\n-            vm->angularVelocity.y = GET_FLOAT_VAR(1);\n-            vm->angularVelocity.z = GET_FLOAT_VAR(2);\n+        {\n+            if ((currentInstruction->variableMask & (1 << 0)) != 0)\n+                vm->angularVelocity.x = vm->GetFloatVar(\n+                    currentInstruction->floatArgs[0]);\n+            else\n+                vm->angularVelocity.x = currentInstruction->floatArgs[0];\n+            if ((currentInstruction->variableMask & (1 << 1)) != 0)\n+                vm->angularVelocity.y = vm->GetFloatVar(\n+                    currentInstruction->floatArgs[1]);\n+            else\n+                vm->angularVelocity.y = currentInstruction->floatArgs[1];\n+            if ((currentInstruction->variableMask & (1 << 2)) != 0)\n+                vm->angularVelocity.z = vm->GetFloatVar(\n+                    currentInstruction->floatArgs[2]);\n+            else\n+                vm->angularVelocity.z = currentInstruction->floatArgs[2];\n             vm->updateRotation = 1;\n             break;\n+        }\n         case ANM_OP_SCALE_GROWTH:\n-            vm->scaleGrowth.x = GET_FLOAT_VAR(0);\n-            vm->scaleGrowth.y = GET_FLOAT_VAR(1);\n-            break;\n+        {\n+            if ((currentInstruction->variableMask & (1 << 0)) != 0)\n+                vm->scaleGrowth.x = vm->GetFloatVar(\n+                    currentInstruction->floatArgs[0]);\n+            else\n+                vm->scaleGrowth.x = currentInstruction->floatArgs[0];\n+            if ((currentInstruction->variableMask & (1 << 1)) != 0)\n+                vm->scaleGrowth.y = vm->GetFloatVar(\n+                    currentInstruction->floatArgs[1]);\n+            else\n+                vm->scaleGrowth.y = currentInstruction->floatArgs[1];\n+            break;\n+        }\n \n         case ANM_OP_ALPHA1_TIME_LINEAR:\n             vm->StartPrimaryAlphaInterpolation(\n",
+      "source_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "source_sha256": "55c5701ca59d3e9d97f2751882a3f681d74d0e043a497133d6393bcf867f3701",
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    },
+    {
+      "ECL": {
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_different_bytes": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020,
+        "whole_callee_bytes_exact": 171
+      },
+      "actual_source_compiles": 1,
+      "artifacts_observed_before_cleanup": {
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/link-aliases.rsp": {
+          "bytes": 16325,
+          "sha256": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/link-anchors.obj": {
+          "bytes": 9961,
+          "sha256": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/source.exe": {
+          "bytes": 122880,
+          "sha256": "87288bd8a423100dc1243d5c5a5c44a709e06b9de93d16021067361cfbb3b576"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/source.ltcg.obj": {
+          "bytes": 157029,
+          "sha256": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/source.map": {
+          "bytes": 85060,
+          "sha256": "5a1a59f091dbe0d3c155d2ceaf9c1cbfdaf4296d33920958e3f5d2b9363fc136"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/source.pdb": {
+          "bytes": 109568,
+          "sha256": "602f18d9f8253551a6de8091275f0fb4cfd3614d1fbb121d422a78db262cd9f0"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-01-AnmManager.ltcg.obj": {
+          "bytes": 248188,
+          "sha256": "896c61e3dff7378b8dd04db6fb3c47a4a81f2e15f9d076c844951291f2ac28df"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 40467,
+          "sha256": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/literal-first-value-select/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8"
+        }
+      },
+      "candidate_owner": {
+        "address": "0x0040D9B0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\literal-first-value-select\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\literal-first-value-select\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51632,
+        "sha256": "2985e5fbf8c7333d53c348b81998839a315dff6c99543809865262d3dde57116",
+        "size": 9964,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7439,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "child_static_paths": 8,
+      "full_native_cold": false,
+      "label": "literal-first-value-select",
+      "maintained_source_adopted": false,
+      "new_exact_credit": 0,
+      "operand_cases": [
+        {
+          "candidate_address": "0x0040DE5F",
+          "candidate_size": 112,
+          "comparable_bytes": 96,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 58,
+          "normalization_complete": true,
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "target_size": 112
+        },
+        {
+          "candidate_address": "0x0040DECF",
+          "candidate_size": 112,
+          "comparable_bytes": 96,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 58,
+          "normalization_complete": true,
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "target_size": 112
+        },
+        {
+          "candidate_address": "0x0040DF3F",
+          "candidate_size": 92,
+          "comparable_bytes": 76,
+          "gap_delta": 0,
+          "matched_comparable_bytes": 34,
+          "normalization_complete": true,
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "target_size": 92
+        }
+      ],
+      "producer_sha256": "5918eff46c1e3492e5e8a292f1aab506d57910dbcd1207564286dfec5d4e230d",
+      "reused_source_objects": 9,
+      "source_patch": "--- a/src/AnmManager.cpp\n+++ b/src/AnmManager.cpp\n@@ -3251,20 +3251,44 @@\n             break;\n \n         case ANM_OP_ROTATION:\n-            vm->rotation.x = GET_FLOAT_VAR(0);\n-            vm->rotation.y = GET_FLOAT_VAR(1);\n-            vm->rotation.z = GET_FLOAT_VAR(2);\n+            vm->rotation.x =\n+                (currentInstruction->variableMask & (1 << 0)) == 0\n+                    ? currentInstruction->floatArgs[0]\n+                    : vm->GetFloatVar(currentInstruction->floatArgs[0]);\n+            vm->rotation.y =\n+                (currentInstruction->variableMask & (1 << 1)) == 0\n+                    ? currentInstruction->floatArgs[1]\n+                    : vm->GetFloatVar(currentInstruction->floatArgs[1]);\n+            vm->rotation.z =\n+                (currentInstruction->variableMask & (1 << 2)) == 0\n+                    ? currentInstruction->floatArgs[2]\n+                    : vm->GetFloatVar(currentInstruction->floatArgs[2]);\n             vm->updateRotation = 1;\n             break;\n         case ANM_OP_ANGULAR_VELOCITY:\n-            vm->angularVelocity.x = GET_FLOAT_VAR(0);\n-            vm->angularVelocity.y = GET_FLOAT_VAR(1);\n-            vm->angularVelocity.z = GET_FLOAT_VAR(2);\n+            vm->angularVelocity.x =\n+                (currentInstruction->variableMask & (1 << 0)) == 0\n+                    ? currentInstruction->floatArgs[0]\n+                    : vm->GetFloatVar(currentInstruction->floatArgs[0]);\n+            vm->angularVelocity.y =\n+                (currentInstruction->variableMask & (1 << 1)) == 0\n+                    ? currentInstruction->floatArgs[1]\n+                    : vm->GetFloatVar(currentInstruction->floatArgs[1]);\n+            vm->angularVelocity.z =\n+                (currentInstruction->variableMask & (1 << 2)) == 0\n+                    ? currentInstruction->floatArgs[2]\n+                    : vm->GetFloatVar(currentInstruction->floatArgs[2]);\n             vm->updateRotation = 1;\n             break;\n         case ANM_OP_SCALE_GROWTH:\n-            vm->scaleGrowth.x = GET_FLOAT_VAR(0);\n-            vm->scaleGrowth.y = GET_FLOAT_VAR(1);\n+            vm->scaleGrowth.x =\n+                (currentInstruction->variableMask & (1 << 0)) == 0\n+                    ? currentInstruction->floatArgs[0]\n+                    : vm->GetFloatVar(currentInstruction->floatArgs[0]);\n+            vm->scaleGrowth.y =\n+                (currentInstruction->variableMask & (1 << 1)) == 0\n+                    ? currentInstruction->floatArgs[1]\n+                    : vm->GetFloatVar(currentInstruction->floatArgs[1]);\n             break;\n \n         case ANM_OP_ALPHA1_TIME_LINEAR:\n",
+      "source_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "source_sha256": "b1f919d5d485840a602cdb567ea02e746f8fe13f85e49c7fc6879a0ff48c3992",
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    },
+    {
+      "ECL": {
+        "decoded_bytes": 7019,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_different_bytes": 27,
+        "reviewed_selector_suffix_bytes": 1,
+        "size": 7020,
+        "whole_callee_bytes_exact": 171
+      },
+      "actual_source_compiles": 1,
+      "artifacts_observed_before_cleanup": {
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/link-aliases.rsp": {
+          "bytes": 16325,
+          "sha256": "5137aee983b2f98eb9e429c892f67f8c65236e147728e10db799995a6fc83af9"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/link-anchors.obj": {
+          "bytes": 9961,
+          "sha256": "a70107b2c0408df3de2a56ff9419c47a9b2b0f3281daa87395dc92bbba9fbf2f"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/source.exe": {
+          "bytes": 122880,
+          "sha256": "e8245f3fe5ab1f91a72b7cbcf71bc9b1cafdd5e92dac0560a9e104d403416f5f"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/source.ltcg.obj": {
+          "bytes": 157029,
+          "sha256": "8f1f94c1171dc67765e21a5d3248e31e21c27a7d3893358afce768c958e0d1ab"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/source.map": {
+          "bytes": 85195,
+          "sha256": "4767ad073ca76e2d25419cf5628996bc3e0902ccc485e4549ae1711e196a2e02"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/source.pdb": {
+          "bytes": 109568,
+          "sha256": "cc12749adb36cda826c937f27f53f9a50732e70482c188038efc853d6b3a4550"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "c22ae9f12d19ad2410d4422c6e020131d11b730a3ec2381b77c93497aaa54dd8"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-01-AnmManager.ltcg.obj": {
+          "bytes": 248017,
+          "sha256": "481d89aba01f5c72a71399cdce835b761a0c75b69e91f121eae88e981b5f9574"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "91783c1961fc4bc50e96416db746d05ecd51183dc74ee392f91bb2f0b5842359"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 40467,
+          "sha256": "5dc6a147a40aaa5cbb88191159626dc14dc38382331906ea7c430d446a3b64c2"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "11e2c7cb585f46b4f6c881c71cea9cce485d76367fca55b0bb84f05c5c1cbf44"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "aef4bb7450dec52964a5905eb58898da6dc44f3536a542dba1bf3f16fbdbcfc0"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "9bd5809cc978074ae523d2bb223310a536dbcd00bea1996abc461496136ebe0e"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "51fd66e4d4dc98aeb3943e11e59bbfdeaa7f3bbdeb4cd9f8d5071a569459ec2d"
+        },
+        "build/gpt-6.1-sol/anm-branch-stores-20261022/inline-float-operand-helper/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "4352474569e4b7204173a61e66145f57f4937237a40e669c8cebfb8f608842d8"
+        }
+      },
+      "candidate_owner": {
+        "address": "0x0040D9E0",
+        "extent_source": "pdb-section-contribution",
+        "map_object": "support-01-AnmManager.ltcg.obj",
+        "pdb_module": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\inline-float-operand-helper\\support-01-AnmManager.ltcg.obj",
+        "pdb_module_index": 7,
+        "pdb_object": "Z:\\home\\pentester\\coding\\codex_ida\\th10-reconstruction\\th10\\build\\gpt-6.1-sol\\anm-branch-stores-20261022\\inline-float-operand-helper\\support-01-AnmManager.ltcg.obj",
+        "section": ".text",
+        "section_number": 1,
+        "section_offset": 51680,
+        "sha256": "ac02e322fcaf7b3b1821ec3b53c159a2e677514e5b9a21153b56b210a043f8ac",
+        "size": 9836,
+        "symbol": "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z"
+      },
+      "case_aligned": {
+        "absolute_case_gap_delta": 130,
+        "comparable_bytes": 7999,
+        "matched_comparable_bytes": 7277,
+        "normalization_complete": true,
+        "same_sized_cases": 87
+      },
+      "child_static_paths": 8,
+      "full_native_cold": false,
+      "label": "inline-float-operand-helper",
+      "maintained_source_adopted": false,
+      "new_exact_credit": 0,
+      "operand_cases": [
+        {
+          "candidate_address": "0x0040DE8F",
+          "candidate_size": 75,
+          "comparable_bytes": 96,
+          "gap_delta": -37,
+          "matched_comparable_bytes": 0,
+          "normalization_complete": true,
+          "opcodes": [
+            49
+          ],
+          "target_address": "0x0043F2DE",
+          "target_size": 112
+        },
+        {
+          "candidate_address": "0x0040DEDA",
+          "candidate_size": 75,
+          "comparable_bytes": 96,
+          "gap_delta": -37,
+          "matched_comparable_bytes": 0,
+          "normalization_complete": true,
+          "opcodes": [
+            53
+          ],
+          "target_address": "0x0043F34E",
+          "target_size": 112
+        },
+        {
+          "candidate_address": "0x0040DF25",
+          "candidate_size": 52,
+          "comparable_bytes": 80,
+          "gap_delta": -40,
+          "matched_comparable_bytes": 0,
+          "normalization_complete": true,
+          "opcodes": [
+            54
+          ],
+          "target_address": "0x0043F3BE",
+          "target_size": 92
+        }
+      ],
+      "producer_sha256": "7994649771d5dc1c27359bb8cbb2b147bb6322b149d55237fa75f05bd5e166d1",
+      "reused_source_objects": 9,
+      "source_patch": "--- a/src/AnmManager.cpp\n+++ b/src/AnmManager.cpp\n@@ -3095,6 +3095,14 @@\n     (sizeof(AnmScriptVectorView) == 0x0c) ? 1 : -1];\n \n \n+static inline float AnmReadFloatOperand(AnmVmView *vm,\n+                                 const AnmRawInstructionView *instruction, int index)\n+{\n+    if ((instruction->variableMask & (1 << index)) != 0)\n+        return vm->GetFloatVar(instruction->floatArgs[index]);\n+    return instruction->floatArgs[index];\n+}\n+\n int __stdcall AnmRenderManagerView::ExecuteScript(AnmVmView *vm)\n {\n     AnmRawInstructionView *currentInstruction;\n@@ -3251,20 +3259,20 @@\n             break;\n \n         case ANM_OP_ROTATION:\n-            vm->rotation.x = GET_FLOAT_VAR(0);\n-            vm->rotation.y = GET_FLOAT_VAR(1);\n-            vm->rotation.z = GET_FLOAT_VAR(2);\n+            vm->rotation.x = AnmReadFloatOperand(vm, currentInstruction, 0);\n+            vm->rotation.y = AnmReadFloatOperand(vm, currentInstruction, 1);\n+            vm->rotation.z = AnmReadFloatOperand(vm, currentInstruction, 2);\n             vm->updateRotation = 1;\n             break;\n         case ANM_OP_ANGULAR_VELOCITY:\n-            vm->angularVelocity.x = GET_FLOAT_VAR(0);\n-            vm->angularVelocity.y = GET_FLOAT_VAR(1);\n-            vm->angularVelocity.z = GET_FLOAT_VAR(2);\n+            vm->angularVelocity.x = AnmReadFloatOperand(vm, currentInstruction, 0);\n+            vm->angularVelocity.y = AnmReadFloatOperand(vm, currentInstruction, 1);\n+            vm->angularVelocity.z = AnmReadFloatOperand(vm, currentInstruction, 2);\n             vm->updateRotation = 1;\n             break;\n         case ANM_OP_SCALE_GROWTH:\n-            vm->scaleGrowth.x = GET_FLOAT_VAR(0);\n-            vm->scaleGrowth.y = GET_FLOAT_VAR(1);\n+            vm->scaleGrowth.x = AnmReadFloatOperand(vm, currentInstruction, 0);\n+            vm->scaleGrowth.y = AnmReadFloatOperand(vm, currentInstruction, 1);\n             break;\n \n         case ANM_OP_ALPHA1_TIME_LINEAR:\n",
+      "source_profile": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS"
+      ],
+      "source_sha256": "8b2745ae60c61fbf62638feed0c148ba49ac2086b6282641f29e5728827dd42c",
+      "whole_guard_bytes": 4424,
+      "whole_guard_count": 35,
+      "whole_guard_fields": 118
+    }
+  ],
+  "current_maintained_source_count": 108,
+  "frozen_source_test_config_input_count": 373,
+  "guard_contract_revalidation": [
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-drop-item-counts",
+      "guard": "enemy-drop-item-counts",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-drop-item-counts-core",
+      "guard": "enemy-drop-item-counts-core",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "coff",
+      "canonical_unit": "enemy-wrap-angle",
+      "guard": "enemy-wrap-angle",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "coff",
+      "canonical_unit": "rng-get-random-u16",
+      "guard": "rng-get-random-u16",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "coff",
+      "canonical_unit": "rng-get-random-u32",
+      "guard": "rng-get-random-u32",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "coff",
+      "canonical_unit": "rng-get-random-f32",
+      "guard": "rng-get-random-f32",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "coff",
+      "canonical_unit": "rng-get-random-f32-signed",
+      "guard": "rng-get-random-f32-signed",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-read-float",
+      "guard": "ecl-vm-read-float",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-read-int",
+      "guard": "ecl-vm-read-int",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-read-int-value",
+      "guard": "ecl-vm-read-int-value",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-read-float-value",
+      "guard": "ecl-vm-read-float-value",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-resolve-int",
+      "guard": "ecl-vm-resolve-int",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-resolve-float",
+      "guard": "ecl-vm-resolve-float",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-host-run",
+      "guard": "ecl-vm-host-run",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "anm-release-slot",
+      "guard": "anm-release-slot",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-mark-pending-interrupt",
+      "guard": "enemy-mark-pending-interrupt",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-sound-queue-sample",
+      "guard": "enemy-sound-queue-sample",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-sound-queue-cue",
+      "guard": "enemy-sound-queue-cue",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-drop-vector-from-angle-radii",
+      "guard": "enemy-drop-vector-from-angle-radii",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-resolve-int-argument",
+      "guard": "enemy-resolve-int-argument",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-enable-shield",
+      "guard": "enemy-enable-shield",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-read-int-argument",
+      "guard": "enemy-read-int-argument",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-read-float-argument",
+      "guard": "enemy-read-float-argument",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-resolve-float-argument",
+      "guard": "enemy-resolve-float-argument",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-read-raw-int-argument",
+      "guard": "enemy-read-raw-int-argument",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-read-raw-float-argument",
+      "guard": "enemy-read-raw-float-argument",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "anm-int3-scale",
+      "guard": "anm-int3-scale",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "anm-evaluate-rgb-interpolation",
+      "guard": "anm-evaluate-rgb-interpolation",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "game-score-extend-faith-timer",
+      "guard": "game-score-extend-faith-timer",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-finalize-death",
+      "guard": "enemy-finalize-death",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-stack-push",
+      "guard": "ecl-vm-stack-push",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "ecl-vm-stack-pop",
+      "guard": "ecl-vm-stack-pop",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-bullet-playfield-bounds",
+      "guard": "enemy-bullet-playfield-bounds",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-cancel-bullet-record",
+      "guard": "cancel-record",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": true
+    },
+    {
+      "additional_guard_kind": "linked-pe",
+      "canonical_artifact_kind": "linked-pe",
+      "canonical_unit": "enemy-cancel-bullet-pattern",
+      "guard": "circle-cancel",
+      "original_artifact_or_TU_ownership_claim": false,
+      "same_complete_extent_and_semantic_fields": true,
+      "source_mapping_refreshed": false
+    }
+  ],
+  "inline_helper_observation": {
+    "address": "0x40d9b0",
+    "ordinary_inline_hint_was_insufficient_for_this_shape": true,
+    "remaining_parent_calls": [
+      {
+        "call_address": "0x40de94",
+        "opcodes": [
+          49
+        ]
+      },
+      {
+        "call_address": "0x40dea4",
+        "opcodes": [
+          49
+        ]
+      },
+      {
+        "call_address": "0x40deb4",
+        "opcodes": [
+          49
+        ]
+      },
+      {
+        "call_address": "0x40dedf",
+        "opcodes": [
+          53
+        ]
+      },
+      {
+        "call_address": "0x40deef",
+        "opcodes": [
+          53
+        ]
+      },
+      {
+        "call_address": "0x40deff",
+        "opcodes": [
+          53
+        ]
+      },
+      {
+        "call_address": "0x40df2a",
+        "opcodes": [
+          54
+        ]
+      },
+      {
+        "call_address": "0x40df3a",
+        "opcodes": [
+          54
+        ]
+      }
+    ],
+    "symbol": "?AnmReadFloatOperand@@YAMPAUAnmVmView@@PBUAnmRawInstructionView@@H@Z"
+  },
+  "limits": [
+    "Case-aligned counts are noncanonical diagnostics, not exact function or per-case credit.",
+    "Five existing COFF contracts are additional linked guards here, without ownership promotion.",
+    "Enemy comparison replays only named identical callee fields against the retained candidate baseline; it is not a new target-exactness proof.",
+    "Source, identifiers, original class/TU/flags/data owners and full native product/runtime remain independent.",
+    "No new full ten-TU cold or separate ANM runtime campaign is claimed."
+  ],
+  "new_exact_functions": 0,
+  "new_exact_owned_bytes": 0,
+  "scope": "Three actual one-ANM-GL/nine-reused-object controls; diagnostic only; no maintained source or exact credit change.",
+  "starting_head": "e19a98fe068d9388dc7661d7321937a861869b96",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+}

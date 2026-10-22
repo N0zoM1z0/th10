@@ -1,12 +1,13 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Complete
-PbgArchive::LoadFromResource434CA0 is now exact100/all6 after two independent
-full four-TU colds with unchanged source. Authored exact409/74716, overall1250/
-141226. Source remains613/247945 owned bytes; nonexact204, absent121.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
+ANM operand-form controls reject three measured variants; maintained source
+and exact totals remain unchanged. Authored exact409/74716, overall1250/141226.
+Source remains613/247945 owned bytes; nonexact204, absent121.
 Archive source15/15, exact15/15;
 FileSystem remains source13/13, exact11/13.
-See [resource load proof](evidence/pbgarchive-load-from-resource/README.md),
+See [ANM branch controls](evidence/anm-operand-branch-controls/README.md),
+[resource load proof](evidence/pbgarchive-load-from-resource/README.md),
 [header proof](evidence/pbgarchive-parse-header/README.md),
 [entry reader proof](evidence/pbgarchive-read-decompress-entry/README.md),
 [registration proof](evidence/filesystem-load-archive/README.md),
@@ -50,7 +51,48 @@ scripts/repo-python scripts/report-reconstruction-status.py
 overall exact1250/141226 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest complete resource archive load checkpoint
+## Latest bounded ANM operand-form checkpoint
+
+Starting pushed/remote-verifiede19a98f, all108 maintained source/header files,
+373 source/test/config inputs,32 large-source/header pins,15 baseline artifacts
+and9 independent D3D files are verified. Fresh direct readOnly/noanalysis Ghidra
+reviews the existing ANM entry/incoming references,49/53/54 and final timer,
+with rollback/maxcpu1/heap768 MiB and all412289 mapped bytes unchanged.
+Ghidra's provisional signature and body ranges remain unpromoted.
+
+Three actual one-ANM-GL/nine-reused-source-object controls: conditional stores
+10012/7066of8001, literal-first value selection9964/7439of7995 and ordinary inline
+helper9836/7277of7999. Same-sized groups86/90/87 of92; aggregate gaps70/2/130.
+The inline hint leaves8 actual helper calls. None is adopted; baseline remains
+9964/7541of7995/90of92/gap2. This is a bounded source-form plateau, not an
+exhausted function, unique-original-source proof or a blocker.
+
+Each image passes35 complete linked guards4424/all118 and8 bounded child paths.
+Five guards originate from separate canonical COFF contracts, unchanged. ECL
+remains7020/6993/all189/62 with complete171-byte callee exact;7019 decoded plus
+the reviewed one-byte selector covers the full owner despite the generic false
+normalization flag. All3 whole ECL raw bodies equal baseline. Enemy14352 versus
+14416: literal-first raw-equal; the other two have only changed CALL fields to
+independently identical map callees. This is baseline preservation only.
+
+TH08/TH09/provisional TH095 source reads support the variable-first component
+form as hypothesis material only. No cross-game facts or original TU/flags,
+data ownership, whole product/runtime or semantic/port credit is promoted.
+The [branch-control packet](evidence/anm-operand-branch-controls/README.md)
+contains complete scope, source patches and final validation. Private recovery:
+`.analysis/gpt-6.1-sol/anm-branch-stores-20261022/RECOVERY.md`.
+Hash-checked cleanup removes32 files/2083152 logical bytes in two superseded
+carriers. Keep the canonical baseline, first10012-byte failure, compact producers/
+sources/reports and9 independent D3D files. Current409/74716/1250 remains.
+Fresh111-group CI exits0 with all373 final inputs,108 maintained sources and
+32/15 baseline pins unchanged. Focused case diagnosis, toolchain/tracking,
+generated progress, documentation links and whitespace complete successfully;
+the case diagnosis remains noncanonical and mismatching.
+Next investigate a distinct common-tail2 lifetime or global register-allocation
+context; do not repeat these three or prior raw-input/named-result/helper/timer
+forms. Source and exact gates remain independent of the open product/runtime.
+
+## Previous complete resource archive load checkpoint
 
 Starting pushed/remote-verified73fbf4c, fresh local Ghidra reviews the existing
 100-byte retained body and vtable reference, with no incoming reference observed.

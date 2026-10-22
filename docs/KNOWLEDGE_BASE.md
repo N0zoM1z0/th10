@@ -5133,3 +5133,24 @@ source613/nonexact204/absent121. Archive15/15 authored owners now exact under
 their separate contexts. Whole Windows i386 product/runtime, data owners and
 semantic/port gates remain open.
 [Complete resource loader proof and limits](evidence/pbgarchive-load-from-resource/README.md).
+
+## ANM operand branch and inline controls (2026-10-22)
+
+Fresh readOnly/noanalysis Ghidra reviews ANM49/53/54 and the final timer region,
+attesting all412289 mapped bytes unchanged with rollback/maxcpu1/heap768 MiB.
+Three actual one-ANM-GL/nine-reused-object source controls reject conditional
+destination stores10012/7066of8001, literal-first values9964/7439of7995 and
+ordinary inline helper9836/7277of7999. The latter retains8 actual parent helper
+calls. Baseline9964/7541of7995 remains best; no maintained source is adopted.
+The source patches preserve ordered input/call/store behavior as hypotheses,
+without original-source, private ABI, flag or physical-owner inference.
+
+Each image passes35 whole guards4424/all118 and8 bounded child routes. ECL raw
+7020 stays baseline-identical and retains27 ordinary differences with189 fields/
+62 locals and171-byte callee exact. Full coverage is7019 decoded plus1 reviewed
+selector; its generic normalization flag is still false. Enemy14352 remains
+baseline-identical raw or after only changed CALL fields with matching map
+callee identities; this is not new target equality. TH08/TH09/provisional TH095
+source-shape corroboration transfers no TH10 facts. The family is bounded,
+not exhausted. Exact counts remain409/74716 authored and1250/141226 overall.
+[ANM branch controls and limits](evidence/anm-operand-branch-controls/README.md).
