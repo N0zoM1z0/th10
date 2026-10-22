@@ -898,8 +898,8 @@ SoundPlayerView::LoadSoundSample
 FileSystem::WriteFile
 FileSystem::OpenWriteFile
 EnemyFireLaser
-EnemyInitializeLaserType0
-EnemyInitializeLaserType1
+EnemyLaserType0StorageView::EnemyLaserType0StorageView
+EnemyLaserType1StorageView::EnemyLaserType1StorageView
 GameResetGui
 FrontEndUpdateMusicRoom
 FrontEndMusicSkipLine

@@ -824,29 +824,106 @@ int EnemyLaserType1CollisionView::CheckCollisionCircle(
 // Construction seam for the four dispatcher laser groups. The 19-slot tables
 // are target-bound external storage, not replacement two-slot C++ vtables.
 // Only slot 1 is invoked here: both targets use ECX, a stack request and RET 4.
-struct EnemyLaserApplyPrefixView
+// Construction view of the nineteen surveyed virtual slots.
+// Declarations encode reviewed i386 protocols; original names, full table extent,
+// callback implementations and production data ownership remain unknown.
+// These virtual methods are declarations only; the diagnostic link records
+// unresolved address anchors and is not a runnable product.
+struct EnemyLaserConstructionBaseView
 {
-    virtual void UncalledSlot0();
-    virtual int ApplyRequest(EnemyLaserRequestScratch *request);
-};
-extern const void *g_EnemyLaserBaseVtable[19];   // target 0x0046DAB0
-extern const void *g_EnemyLaserType0Vtable[19];  // target 0x0046DA60
-extern const void *g_EnemyLaserType1Vtable[19];  // target 0x0046DA10
+    virtual void RunCommands();
+    virtual int ApplyRequest(const EnemyLaserRequestScratch *request);
+    virtual int Update();
+    virtual int Draw();
+    virtual int Unlink();
+    virtual int Clear(int mode);
+    virtual int CheckBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
+    virtual int CheckCircle(EnemyLaserVectorView *, float, int);
+    virtual int CheckPoint(EnemyLaserVectorView *, float);
+    virtual void Motion0001();
+    virtual void Motion0010();
+    virtual void Motion0020();
+    virtual void Motion0040();
+    virtual void Motion0100();
+    virtual void Motion0080();
+    virtual void Bounce();
+    virtual void Motion100000();
+    virtual void Motion200000();
+    virtual void Motion4000000();
 
-struct EnemyLaserType0StorageView
+    EnemyLaserCommonStorageView *previous;
+    EnemyLaserCommonStorageView *next;
+    unsigned int unknown00C;
+    AnmVmTimerView timer;
+    unsigned char unknown024[0x54 - 0x24];
+    unsigned int id;
+    EnemyLaserPatternRecordView patterns[18];
+    unsigned char unknown400[0x410 - 0x400];
+    AnmVmTimerView finalTimer;
+
+    EnemyLaserConstructionBaseView()
+    {
+        memset(this, 0, sizeof(*this));
+        timer.SetCurrent(0);
+    }
+};
+struct EnemyLaserType0RequestConstructionView : EnemyLaserType0RequestView
 {
-    EnemyLaserCommonStorageView common;
-    EnemyLaserType0RequestView request;
+    EnemyLaserType0RequestConstructionView()
+    {
+        memset(this, 0, sizeof(*this));
+    }
+};
+struct EnemyLaserType1RequestConstructionView : EnemyLaserType1RequestView
+{
+    EnemyLaserType1RequestConstructionView()
+    {
+        memset(this, 0, sizeof(*this));
+        fixed2C = 8.0f;
+    }
+};
+struct EnemyLaserType0StorageView : EnemyLaserConstructionBaseView
+{
+    EnemyLaserType0RequestConstructionView request;
     AnmVmView primaryVm;
     AnmVmView secondaryVm;
+
+    EnemyLaserType0StorageView() {}
+    virtual void RunCommands();
+    virtual int ApplyRequest(const EnemyLaserRequestScratch *request);
+    virtual int Update();
+    virtual int Draw();
+    virtual int Unlink();
+    virtual int Clear(int mode);
+    virtual int CheckBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
+    virtual int CheckCircle(EnemyLaserVectorView *, float, int);
+    virtual int CheckPoint(EnemyLaserVectorView *, float);
+    virtual void Motion0010();
+    virtual void Motion0040();
+    virtual void Bounce();
 };
-struct EnemyLaserType1StorageView
+struct EnemyLaserType1StorageView : EnemyLaserConstructionBaseView
 {
-    EnemyLaserCommonStorageView common;
-    EnemyLaserType1RequestView request;
+    EnemyLaserType1RequestConstructionView request;
     AnmVmView primaryVm;
     AnmVmView secondaryVm;
+
+    EnemyLaserType1StorageView() {}
+    virtual int ApplyRequest(const EnemyLaserRequestScratch *request);
+    virtual int Update();
+    virtual int Draw();
+    virtual int Unlink();
+    virtual int Clear(int mode);
+    virtual int CheckBox(EnemyLaserVectorView *, EnemyLaserVectorView *, int);
+    virtual int CheckCircle(EnemyLaserVectorView *, float, int);
+    virtual int CheckPoint(EnemyLaserVectorView *, float);
 };
+typedef char EnemyLaserConstructionBaseLayout[
+    (sizeof(EnemyLaserConstructionBaseView) == 0x424 &&
+     offsetof(EnemyLaserConstructionBaseView, timer) == 0x10 &&
+     offsetof(EnemyLaserConstructionBaseView, id) == 0x54 &&
+     sizeof(EnemyLaserType0RequestConstructionView) == 0x1dc &&
+     sizeof(EnemyLaserType1RequestConstructionView) == 0x1f8) ? 1 : -1];
 typedef char EnemyLaserType0Layout[
     (sizeof(EnemyLaserType0StorageView) == 0xd58 &&
      offsetof(EnemyLaserType0StorageView, request) == 0x424 &&
@@ -858,21 +935,6 @@ typedef char EnemyLaserType1Layout[
      offsetof(EnemyLaserType1StorageView, primaryVm) == 0x61c &&
      offsetof(EnemyLaserType1StorageView, secondaryVm) == 0x9c8) ? 1 : -1];
 
-// The caller provides raw allocated storage. Explicit placement construction
-// preserves the observed order without guessing the other virtual contracts.
-static EnemyLaserCommonStorageView *EnemyInitializeLaserCommon(
-    EnemyLaserCommonStorageView *laser)
-{
-    laser->vtable = g_EnemyLaserBaseVtable;
-    new (&laser->timer) AnmVmTimerView;
-    for (int i = 0; i < 18; ++i)
-        new (&laser->patterns[i].timer) AnmVmTimerView;
-    new (&laser->finalTimer) AnmVmTimerView;
-    memset(laser, 0, sizeof(*laser));
-    laser->timer.SetCurrent(0);
-    return laser;
-}
-
 // Target 0x0040CF40. Keep the unusual raw request initialization independent of
 // the enclosing object, as used by the real dispatcher and type-1 constructor.
 EnemyLaserRequestScratch *EnemyInitializeLaserConfig(
@@ -881,28 +943,6 @@ EnemyLaserRequestScratch *EnemyInitializeLaserConfig(
     memset(request, 0, sizeof(*request));
     request->type1.fixed2C = 8.0f;
     return request;
-}
-
-static EnemyLaserCommonStorageView *EnemyInitializeLaserType0(
-    EnemyLaserType0StorageView *laser)
-{
-    EnemyInitializeLaserCommon(&laser->common);
-    laser->common.vtable = g_EnemyLaserType0Vtable;
-    memset(&laser->request, 0, sizeof(laser->request));
-    new (&laser->primaryVm) AnmVmView;
-    new (&laser->secondaryVm) AnmVmView;
-    return &laser->common;
-}
-static EnemyLaserCommonStorageView *EnemyInitializeLaserType1(
-    EnemyLaserType1StorageView *laser)
-{
-    EnemyInitializeLaserCommon(&laser->common);
-    laser->common.vtable = g_EnemyLaserType1Vtable;
-    EnemyInitializeLaserConfig(
-        reinterpret_cast<EnemyLaserRequestScratch *>(&laser->request));
-    new (&laser->primaryVm) AnmVmView;
-    new (&laser->secondaryVm) AnmVmView;
-    return &laser->common;
 }
 
 // Target 0x0041C510. Allocation failure still reaches the target's null write;
@@ -917,33 +957,28 @@ unsigned int EnemyFireLaser(
         return 0;
     if (++manager->nextId == 0)
         manager->nextId = 1;
-    EnemyLaserCommonStorageView *laser;
+    EnemyLaserConstructionBaseView *laser;
     switch (type)
     {
     case 0:
         {
-            EnemyLaserType0StorageView *storage =
-                static_cast<EnemyLaserType0StorageView *>(
-                    operator new(sizeof(EnemyLaserType0StorageView)));
-            laser = storage ? EnemyInitializeLaserType0(storage) : NULL;
+            laser = new EnemyLaserType0StorageView;
         }
         break;
     case 1:
         {
-            EnemyLaserType1StorageView *storage =
-                static_cast<EnemyLaserType1StorageView *>(
-                    operator new(sizeof(EnemyLaserType1StorageView)));
-            laser = storage ? EnemyInitializeLaserType1(storage) : NULL;
+            laser = new EnemyLaserType1StorageView;
         }
         break;
     default:
         return manager->nextId;
     }
     laser->id = manager->nextId;
-    laser->previous = manager->tail;
-    manager->tail->next = laser;
+    EnemyLaserCommonStorageView *previousTail = manager->tail;
+    laser->previous = previousTail;
+    previousTail->next = reinterpret_cast<EnemyLaserCommonStorageView *>(laser);
     ++manager->count;
-    manager->tail = laser;
-    reinterpret_cast<EnemyLaserApplyPrefixView *>(laser)->ApplyRequest(request);
+    manager->tail = reinterpret_cast<EnemyLaserCommonStorageView *>(laser);
+    laser->ApplyRequest(request);
     return manager->nextId;
 }

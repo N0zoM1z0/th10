@@ -1,0 +1,52 @@
+{
+  "ci": {
+    "all_final_inputs_unchanged": true,
+    "exit_code": 0,
+    "groups": 111,
+    "log_sha256": "cb7cc8ab554113a42b7e7a090ae5a77128dae29982e9142a548f096fa0a9e51e",
+    "native_session": 22108,
+    "status": "passed"
+  },
+  "cleanup": {
+    "files": 88,
+    "logical_bytes": 5353571,
+    "retained": "first accepted full cold19 files, current canonical second cold, baseline15/32, distinct fastcall157 full cold and overlay, compact source/producers/results, unrelated D3D9 untouched"
+  },
+  "counts": {
+    "authored_exact": 409,
+    "authored_exact_bytes": 74716,
+    "overall_exact": 1252,
+    "overall_exact_bytes": 141647,
+    "source": 613,
+    "source_absent": 121,
+    "source_nonexact": 204
+  },
+  "each_cold_total_full_checks": {
+    "bytes": 5137,
+    "fields": 127,
+    "functions": 39
+  },
+  "final_checks": [
+    "two focused canonical linked comparators",
+    "verify-toolchain.py --check",
+    "validate-tracking.py",
+    "progress.py and --check",
+    "ci.py111 groups",
+    "check-doc-hygiene.py",
+    "staged and unstaged git diff --check"
+  ],
+  "final_input_counts": {
+    "current_native_files": 19,
+    "maintained_source_files": 108,
+    "retained_old_native_core_files": 15,
+    "retained_old_source_headers": 32,
+    "source_test_config": 373,
+    "unrelated_D3D_files": 9
+  },
+  "new_authored_exact_functions": 0,
+  "new_exact_functions": 2,
+  "new_exact_owned_bytes": 421,
+  "phase": "active-incomplete; whole Windows i386 product/runtime open; semantic and port unstarted",
+  "prior_exact_dictionaries_unchanged": 1250,
+  "status": "two canonical full cold proofs and final111-group CI passed"
+}

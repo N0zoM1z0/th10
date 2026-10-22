@@ -1,12 +1,11 @@
 # TH10 reconstruction handoff
 
-Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-Enemy laser source controls complete five actual hypotheses and correct caller
-counting; maintained source and exact totals remain unchanged. Authored exact409/74716,
-overall1250/141226.
+Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Natural
+Enemy laser construction adds two complete canonical matches202/219, with origin
+still indeterminate. Authored exact409/74716 is unchanged; overall1252/141647.
 Source remains613/247945 owned bytes; nonexact204, absent121.
-Archive source15/15, exact15/15;
-FileSystem remains source13/13, exact11/13.
+Archive source15/15, exact15/15; FileSystem source13/13, exact11/13.
+See [laser construction proof](evidence/enemy-laser-constructors/README.md).
 See [Enemy laser source controls](evidence/enemy-laser-source-controls/README.md),
 [ANM common-tail/ABI evidence](evidence/anm-common-tail-abi-controls/README.md),
 [ANM branch controls](evidence/anm-operand-branch-controls/README.md),
@@ -34,8 +33,11 @@ See [Enemy laser source controls](evidence/enemy-laser-source-controls/README.md
 - Full mapped text401000..465A80 inclusive is412289 bytes, SHA-256
   `cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f`.
   Older64A80-byte hashes cover only a truncated prefix.
-- Authorized English `gpt-6.1-sol: ...` checkpoints are committed and pushed to
+- Authorized English `gpt-6-astra-medium: ...` checkpoints are committed and pushed to
   `origin/main` after validation. Replay only necessary affected units.
+- Latest operator steering: prioritize reconstruction speed. Use focused affected
+  exact replays and necessary checks per batch; reserve full CI for meaningful
+  stage checkpoints rather than every small batch.
 
 ```sh
 git status --short --branch
@@ -51,10 +53,80 @@ scripts/repo-python scripts/report-reconstruction-status.py
 [Generated progress](PROGRESS.md):1776 reviewed candidates,734 authored functions/
 273579 owned bytes;1097 source mappings. Authored source613/247945 bytes,
 204 source-present/nonexact,121 source-absent. Authored exact **409/74716 bytes**;
-overall exact1250/141226 bytes. Unknown origins524 keep the whole-game denominator
+overall exact1252/141647 bytes. Unknown origins524 keep the whole-game denominator
 unresolved. Boundary/origin/source/exact/product/runtime remain separate claims.
 
-## Latest bounded Enemy laser source checkpoint
+## Latest complete Enemy laser construction checkpoint
+
+Starting pushed2a7c199, current target/toolchain execute64998/tracking/status pass.
+Direct readOnly/noanalysis Ghidra32749 terminates0 with rollback/maxcpu1/heap768;
+all412289 mapped text bytes and three independent76-byte virtual-prefix windows
+agree with disk. The nineteen words per window do not prove full table extents
+or data ownership; callbacks are declarations only, without fake implementations.
+
+One maintained source, EnemyLaser.cpp, replaces manual raw-storage helpers with
+real C++ base/request/two-AnmVm construction, typed base virtual dispatch and a
+single cached tail read. All shared headers, external factory signature,
+compiler profiles and prior canonical recipes remain unchanged. Two constructor
+source mappings are renamed, preserving their reviewed boundaries and
+indeterminate origins. Generic base98 source/match stays unchanged; its natural
+construction reproduction is an extra whole guard, no duplicate credit.
+
+Actual independent canonical full ten-source colds91613 and85686 each exit0,
+reproduce202/all2 and219/all2 plus base98/all2, and pass36 complete prior guards
+4618/all121. Both retain allGL/GS and the scale Ob1 override, regenerate the
+harness and reuse no game-source objects. Complete post-cold reviews77741 and
+59330 also terminate0. Each image has39 whole checks5137/all127. Existing1250
+match dictionaries and all previous recipes are unchanged; new units are
+`enemy-laser-type0-constructor` and `enemy-laser-type1-constructor` in the
+existing EnemyItemDrops build group.
+
+Enemy stays14352/3219of11148/gap566/42 target-sized groups with2C4 frame,
+19 sentinels and181 selectors/108 ordered groups. ANM stays9964/7541of7995/
+90of92/gap2. ECL stays7020/6993/27/189/62/171,7019 decoded plus one reviewed
+selector, generic normalization flag false. Whole native Enemy/ANM/ECL baseline
+bytes are preserved after275/60/41 independently verified changed fields.
+Seventeen Enemy fields bind source aggregate bases plus4/8/58; neighboring
+four-byte address-anchor names are explicitly rejected as member identity.
+
+Factory remains153/plain RET rather than target153/RET4. Standard fastcall
+experiment157/RET8 still places request on stack and is not adopted. Header-inline
+VM constructor visibility is neutral and not adopted. Other private genuine
+constructor/typed-interface controls are recorded in the new proof packet.
+No factory, parent-case, original class/TU/ABI, data-owner or runtime credit.
+Seven previously untracked virtual entrypoints are routes only; no inventory
+or boundary changes. The first import failure and missing-functions replay
+preparation fail before usable comparison/build evidence; corrected proofs
+above are actual successful full cold builds.
+
+Retain first accepted cold19 files at
+`build/gpt-6.1-sol/enemy-construction-context-20261022/accepted-cold-1`, current
+second at `build/match-linked/EnemyItemDrops`, baseline-before-adoption15 files,
+32 old source/header copies, distinct fastcall157 carrier/overlay and compact
+producers/results. Hash-checked cleanup removes88 owned superseded files/
+5353571 logical bytes. Preserve all9 unrelated D3D files unstaged. Old producers
+pin superseded source/recipe/native baselines: do not restore current source or
+metadata to satisfy them. Private recovery:
+`.analysis/gpt-6.1-sol/enemy-construction-context-20261022/RECOVERY.md`.
+All111 final CI groups terminate with actual exit0. All373 final source/test/
+config inputs,108 maintained source files and19 current native files remain
+unchanged, as do accepted-cold-1 and baseline15/32 hashes and all9 D3D files.
+Focused canonical two-unit comparators, toolchain/tracking, Enemy/EnemyLaser
+source completeness, progress, documentation/public-tree and whitespace pass.
+See the packet validation summary.
+
+Next investigate the factory's real caller-dependent private ABI in the new
+natural-construction context. An untested ordinary stdcall declaration with all
+real callers is a bounded candidate, not an established ABI. Earlier member and
+reference controls used the old placement-construction context; they are not
+universal exclusions. Any revisit must name the changed optimizer context and
+retain all ten real calls rather than repeat an identical old experiment.
+Preserve complete constructor proofs,36 whole guards and all major-body/table
+checks. Authored exact stays
+409/74716; overall1252/141647. Whole Windows i386 product/runtime remains open;
+semantic/port stages unstarted.
+
+## Previous bounded Enemy laser source checkpoint
 
 Starting pushed/remote-verifieda50ad2a, target, executed toolchain62774, tracking
 and live status pass. Source108/frozen373/baseline32/native15/D3D9 hashes pass.

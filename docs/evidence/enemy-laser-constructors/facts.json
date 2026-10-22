@@ -1,0 +1,414 @@
+{
+  "cleanup": {
+    "files": 88,
+    "logical_bytes": 5353571,
+    "retained": "first accepted full cold19 files, current canonical second cold, baseline15/32, distinct fastcall157 full cold and overlay, compact source/producers/results, unrelated D3D9 untouched"
+  },
+  "cold_replays": [
+    {
+      "ANM_cases": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ECL": {
+        "complete_callee_size": 171,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "size": 7020
+      },
+      "Enemy_cases": {
+        "comparable": 11148,
+        "gap": 566,
+        "matched": 3219,
+        "same_sized": 42
+      },
+      "additional_base_constructor_guard": {
+        "fields": 2,
+        "new_credit": false,
+        "result": "exact",
+        "size": 98,
+        "target": "0x0041C030"
+      },
+      "cold": 1,
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "exit_code": 0,
+      "factory_bytes": 153,
+      "factory_exits": [
+        "plain RET",
+        "plain RET"
+      ],
+      "fresh_game_source_compiles": 10,
+      "harness": "fresh canonical unresolved-symbol-data-anchors-v1",
+      "native_session": 91613,
+      "new_exact_units": [
+        {
+          "fields": 2,
+          "matched_bytes": 202,
+          "size": 202,
+          "target_address": "0x0041C5B0",
+          "unit": "enemy-laser-type0-constructor"
+        },
+        {
+          "fields": 2,
+          "matched_bytes": 219,
+          "size": 219,
+          "target_address": "0x0041C680",
+          "unit": "enemy-laser-type1-constructor"
+        }
+      ],
+      "peer_results": [
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14352,
+          "changed_fields_replayed": 275,
+          "ordinary_differences": 0,
+          "raw_equal": false,
+          "result": "verified semantic-field peer equality",
+          "target": "0x0040E770",
+          "unresolved_fields": 0
+        },
+        {
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "changed_fields_replayed": 0,
+          "ordinary_differences": 106,
+          "raw_equal": false,
+          "result": "peer differs or field identity unresolved",
+          "target": "0x0041C510",
+          "unresolved_fields": 0
+        },
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "changed_fields_replayed": 60,
+          "ordinary_differences": 0,
+          "raw_equal": false,
+          "result": "verified semantic-field peer equality",
+          "target": "0x0043EE30",
+          "unresolved_fields": 0
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "changed_fields_replayed": 41,
+          "ordinary_differences": 0,
+          "raw_equal": false,
+          "result": "verified semantic-field peer equality",
+          "target": "0x0044E1A0",
+          "unresolved_fields": 0
+        }
+      ],
+      "profile": "all game sources GL/GS; original scale Ob1 override retained; serial nice10",
+      "reused_source_objects": 0
+    },
+    {
+      "ANM_cases": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "ECL": {
+        "complete_callee_size": 171,
+        "fields": 189,
+        "generic_normalization_complete": false,
+        "local_destinations": 62,
+        "matched_bytes": 6993,
+        "ordinary_differences": 27,
+        "size": 7020
+      },
+      "Enemy_cases": {
+        "comparable": 11148,
+        "gap": 566,
+        "matched": 3219,
+        "same_sized": 42
+      },
+      "additional_base_constructor_guard": {
+        "fields": 2,
+        "new_credit": false,
+        "result": "exact",
+        "size": 98,
+        "target": "0x0041C030"
+      },
+      "cold": 2,
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "exit_code": 0,
+      "factory_bytes": 153,
+      "factory_exits": [
+        "plain RET",
+        "plain RET"
+      ],
+      "fresh_game_source_compiles": 10,
+      "harness": "fresh canonical unresolved-symbol-data-anchors-v1",
+      "native_session": 85686,
+      "new_exact_units": [
+        {
+          "fields": 2,
+          "matched_bytes": 202,
+          "size": 202,
+          "target_address": "0x0041C5B0",
+          "unit": "enemy-laser-type0-constructor"
+        },
+        {
+          "fields": 2,
+          "matched_bytes": 219,
+          "size": 219,
+          "target_address": "0x0041C680",
+          "unit": "enemy-laser-type1-constructor"
+        }
+      ],
+      "peer_results": [
+        {
+          "baseline_size": 14352,
+          "candidate_size": 14352,
+          "changed_fields_replayed": 275,
+          "ordinary_differences": 0,
+          "raw_equal": false,
+          "result": "verified semantic-field peer equality",
+          "target": "0x0040E770",
+          "unresolved_fields": 0
+        },
+        {
+          "baseline_size": 153,
+          "candidate_size": 153,
+          "changed_fields_replayed": 0,
+          "ordinary_differences": 106,
+          "raw_equal": false,
+          "result": "peer differs or field identity unresolved",
+          "target": "0x0041C510",
+          "unresolved_fields": 0
+        },
+        {
+          "baseline_size": 9964,
+          "candidate_size": 9964,
+          "changed_fields_replayed": 60,
+          "ordinary_differences": 0,
+          "raw_equal": false,
+          "result": "verified semantic-field peer equality",
+          "target": "0x0043EE30",
+          "unresolved_fields": 0
+        },
+        {
+          "baseline_size": 7020,
+          "candidate_size": 7020,
+          "changed_fields_replayed": 41,
+          "ordinary_differences": 0,
+          "raw_equal": false,
+          "result": "verified semantic-field peer equality",
+          "target": "0x0044E1A0",
+          "unresolved_fields": 0
+        }
+      ],
+      "profile": "all game sources GL/GS; original scale Ob1 override retained; serial nice10",
+      "reused_source_objects": 0
+    }
+  ],
+  "control_summary": [
+    {
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory_bytes": 153,
+      "factory_exits": [
+        "plain RET",
+        "plain RET"
+      ],
+      "fresh_source_compiles": 10,
+      "harness": "Diagnostic-only address anchors regenerated as needed; pre-existing aliases preserved. No executable callback implementations.",
+      "label": "header-inline-vm",
+      "producer_sha256": "e4d79cc8764b413400b337d7784a1aa12f8692be517f3ee890c0f0961966435a",
+      "reused_source_objects": 0
+    },
+    {
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory_bytes": 159,
+      "factory_exits": [
+        "plain RET",
+        "plain RET"
+      ],
+      "fresh_source_compiles": 1,
+      "harness": "Diagnostic-only address anchors regenerated as needed; pre-existing aliases preserved. No executable callback implementations.",
+      "label": "prefix-construction",
+      "producer_sha256": "f29f7a64a10077295713cbd740d59512fa07769b4301d1c9966ea3abd957a101",
+      "reused_source_objects": 9
+    },
+    {
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory_bytes": 153,
+      "factory_exits": [
+        "plain RET",
+        "plain RET"
+      ],
+      "fresh_source_compiles": 1,
+      "harness": "Diagnostic-only address anchors regenerated as needed; pre-existing aliases preserved. No executable callback implementations.",
+      "label": "prefix-construction-tail",
+      "producer_sha256": "16e14db21ccd66935aca9c648ae9f404aca713a25925ed631872dba4b0e918c5",
+      "reused_source_objects": 9
+    },
+    {
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory_bytes": 157,
+      "factory_exits": [
+        "8",
+        "8"
+      ],
+      "fresh_source_compiles": 10,
+      "harness": "Diagnostic-only address anchors regenerated as needed; pre-existing aliases preserved. No executable callback implementations.",
+      "label": "prefix-construction-fast",
+      "producer_sha256": "1eeb4c971ab0e649530f9094c6e0f2b36add6851ee001dcb19cbaf5e99762284",
+      "reused_source_objects": 0
+    },
+    {
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory_bytes": 153,
+      "factory_exits": [
+        "plain RET",
+        "plain RET"
+      ],
+      "fresh_source_compiles": 1,
+      "harness": "Diagnostic-only address anchors regenerated as needed; pre-existing aliases preserved. No executable callback implementations.",
+      "label": "observed-virtual-construction",
+      "producer_sha256": "8f830cb25a5d883329ee7df877e843c6a02b99c7b2a231cd4ceaa985f303be2a",
+      "reused_source_objects": 9
+    },
+    {
+      "complete_guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "factory_bytes": 153,
+      "factory_exits": [
+        "plain RET",
+        "plain RET"
+      ],
+      "fresh_source_compiles": 1,
+      "harness": "Diagnostic-only address anchors regenerated as needed; pre-existing aliases preserved. No executable callback implementations.",
+      "label": "typed-construction-factory",
+      "producer_sha256": "1cf2c09494047db4a80aac3eeba4795ca6f129bfadcce233bb15a0d298548bd5",
+      "reused_source_objects": 9
+    }
+  ],
+  "maintained_source": {
+    "changed_maintained_source_files": 1,
+    "path": "src/EnemyLaser.cpp",
+    "public_factory_signature_changed": false,
+    "sha256": "db14a477159c11b8552a7ade0e6da3ef12238371e5e2ea707408c532615923b5",
+    "shared_headers_changed": false
+  },
+  "peer_member_fields": {
+    "rank_addend": 88,
+    "rank_field_offsets": [
+      7781,
+      7819,
+      8308,
+      8345,
+      8407,
+      8445,
+      8961,
+      9006,
+      12559,
+      12604,
+      12794,
+      12843,
+      12903,
+      13170
+    ],
+    "rank_symbol": "?g_EnemyChapterState@@3UEnemyChapterStateView@@A",
+    "requirement": "both decoded DIR32 destinations equal each image unique semantic MAP/alias base plus the unchanged source-member offset; neighboring anchor identities rejected",
+    "scope": "native baseline peer check only",
+    "vector_offsets": {
+      "2901": 4,
+      "2923": 8,
+      "2936": 4
+    },
+    "vector_symbol": "?g_EnemyInterpolationOrigin@@3UPlayerFloat3@@A"
+  },
+  "scope_limits": [
+    "No original identifier, physical TU/profile or source-authorship proof.",
+    "No implementation or physical ownership credit for generated vtable data or unresolved virtual callbacks.",
+    "The already-exact base98 primary ledger/source mapping remains unchanged; natural reproduction is an extra guard only.",
+    "Five separate normal-COFF contracts among36 guards remain separate; extra linked checks do not change their artifact kind.",
+    "Factory and three main interpreter bodies remain nonexact; native product/runtime and semantic/port gates remain open."
+  ],
+  "starting_head": "2a7c19974dda97f5fd49e42800993cecbabc60f7",
+  "status": "two canonical complete constructor matches; origin indeterminate; no game-authored exact gain",
+  "target_review": {
+    "combined_window_sha256": "ce2513646d0a8d7a4bd9da355a2ea3694b766e3906df646f3d9fa3983552617e",
+    "direct_local_ghidra_session": 32749,
+    "exit_code": 0,
+    "full_mapped_text_bytes": 412289,
+    "full_mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "heap_mib": 768,
+    "independent_data_windows": [
+      {
+        "address": "0x0046DAB0",
+        "bytes": 76
+      },
+      {
+        "address": "0x0046DA60",
+        "bytes": 76
+      },
+      {
+        "address": "0x0046DA10",
+        "bytes": 76
+      }
+    ],
+    "max_cpu": 1,
+    "no_analysis": true,
+    "read_only": true,
+    "rollback": true,
+    "window_scope": "observed nineteen-word prefixes only; no physical full-table extent or data-owner credit"
+  },
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040",
+  "untracked_entry_routes": [
+    "0x0041BF00",
+    "0x0041BF30",
+    "0x0041BF70",
+    "0x0041BF60",
+    "0x0041BF50",
+    "0x0041BF80",
+    "0x0041F670"
+  ]
+}
