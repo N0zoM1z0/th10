@@ -1,0 +1,78 @@
+{
+  "Ob1_current_source_guard": {
+    "bytes": 1237,
+    "fields": 62,
+    "full_cold": false,
+    "reused_source_objects": 3,
+    "source_compilations": 1
+  },
+  "affected_original_profile_cold": {
+    "bytes": 108,
+    "fields": 7
+  },
+  "canonical_cold_pair": {
+    "actual_full_four_TU_builds": 2,
+    "existing_whole_guard_bytes_each": 1230,
+    "existing_whole_guard_count_each": 8,
+    "existing_whole_guard_fields_each": 48,
+    "new_parent_bytes_each": 350,
+    "new_parent_fields_each": 10,
+    "total_checked_bytes_each": 1580,
+    "total_fields_each": 58
+  },
+  "ci": {
+    "completed_groups": 111,
+    "completion_observation_sha256": "25eafcead73cba2121eace3eb39c0acc9d703197edda00cb80f2e9184b6041f3",
+    "direct_ci_exit_status_observed": false,
+    "frozen_input_count": 373,
+    "frozen_inputs_unchanged": 373,
+    "independent_D3D_files_unchanged": 9,
+    "input_inventory_sha256": "df0cc9ee499308f38be393e39e36d222b0de432359fdf183e15c0bb801f31e0d",
+    "log_sha256": "6a221c37a0015a56f9a7caea5b431c566032a1b4103c072b4d3b42fe36ac91f8",
+    "native_pid_termination_verified": true,
+    "status": "passed",
+    "success_marker": "TH10 target-independent checks passed"
+  },
+  "cleanup": {
+    "files": 40,
+    "logical_bytes": 647797,
+    "paths": [
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/parse-literal-origin",
+      "build/gpt-6.1-sol/archive-header-context-20261022/late-parser-state",
+      "build/gpt-6.1-sol/archive-header-context-20261022/guarded-error-cleanup",
+      "build/gpt-6.1-sol/archive-header-context-20261022/allocator-inline-context"
+    ],
+    "retained": "both actual new parser colds, all affected original-context/current reader proofs and archived predecessor, compact target/source/producers/results and9 unrelated D3D files",
+    "status": "removed",
+    "trees": 4
+  },
+  "counts": {
+    "Archive_exact": 14,
+    "Archive_nonexact_bytes": 100,
+    "Archive_source": 15,
+    "authored": 734,
+    "authored_bytes": 273579,
+    "authored_exact": 408,
+    "authored_exact_bytes": 74616,
+    "origin_indeterminate": 524,
+    "overall_exact": 1249,
+    "overall_exact_bytes": 141126,
+    "source": 613,
+    "source_absent": 121,
+    "source_bytes": 247945,
+    "source_nonexact": 205
+  },
+  "final_checks": {
+    "Archive_source_completeness": "15/15 source;14 exact;100 bytes nonexact",
+    "documentation_hygiene": "passed",
+    "focused_parser": "350/all10 exact",
+    "git_diff_check": "passed",
+    "progress_generated_and_checked": "passed",
+    "toolchain_check": "passed",
+    "tracking": "passed"
+  },
+  "new_exact_functions": 1,
+  "new_exact_owned_bytes": 350,
+  "phase": "active-incomplete; full product/runtime open; semantic and port not started",
+  "status": "two actual complete parser colds, affected original-context preservation,111-group CI and final focused checks passed"
+}

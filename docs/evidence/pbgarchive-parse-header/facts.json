@@ -1,0 +1,799 @@
+{
+  "additional_existing_allocator_guard": {
+    "bytes": 327,
+    "canonical_kind": "coff",
+    "claim": "whole guard plus allocation-EH address identity only; no duplicate credit or production ownership inference",
+    "fields": 10,
+    "new_context_kind": "linked-pe",
+    "unit": "pbgarchive-alloc-entries"
+  },
+  "affected_original_profile_cold": {
+    "artifacts": {
+      "build/match-linked/FileSystemPathSize/link-aliases.rsp": "7c3a0296de56f8fa64f632473d9ac5395908ea364b57d705d4a785ceb7c5ce78",
+      "build/match-linked/FileSystemPathSize/link-anchors.c": "e8f58d6f61966c547ba576553e6074116397f56165c575a45b25eb0f32ad7776",
+      "build/match-linked/FileSystemPathSize/link-anchors.obj": "25a856c21380f7e9010c4b1bf85ebc259661c6bc9fee1e1dc1ee191e0e6c0067",
+      "build/match-linked/FileSystemPathSize/link-attempt-1.log": "84e4c06069c65b468e9789ed3122a91acf50d58f1fafc00bbd2939c121c3fed0",
+      "build/match-linked/FileSystemPathSize/link-attempt-2.log": "186fe162dd6108f53c1a7e1e8a749fac6cf24557aa6b4e5656376bc428555b0d",
+      "build/match-linked/FileSystemPathSize/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/match-linked/FileSystemPathSize/source.exe": "97fc81e54be2fceaa7f747dbb072c16298be8fdf93b7ff5831858472c258d71e",
+      "build/match-linked/FileSystemPathSize/source.ltcg.obj": "3650d03df6889e5bc66e89b45d63f9cff9eec0616411e668df8778b7b7cfea54",
+      "build/match-linked/FileSystemPathSize/source.map": "f8ef607cbf2f8371d2b67356db877d71611fae1bbb97b9b7a0a3e21f064a6777",
+      "build/match-linked/FileSystemPathSize/source.pdb": "da358645687787816a290934b7eb152bf40221096e3274f0c95384a4c4921dcc",
+      "build/match-linked/FileSystemPathSize/support-00-PbgArchive.ltcg.obj": "e03dbec2e6d273b92422089a8edb5a166521b6beebc95d1bbb0126292dc2e578",
+      "build/match-linked/FileSystemPathSize/support-01-PbgFile.ltcg.obj": "b94a01fbf6c90ade58b487472a52e077b2d421f961ccba2fa282dcd0f07a7715",
+      "build/match-linked/FileSystemPathSize/support-02-ResFile.normal.obj": "cb9e86c544e9c78c7c6e7760d3a491c4054193227302e81b3ffbd8bca7108a3c"
+    },
+    "bytes": 108,
+    "fields": 7,
+    "report_sha256": "afc13ec76019e98089350cdaaae3f926a766d040939fa15d9a50c988f2bb52c6",
+    "result": "exact",
+    "unit": "pbgarchive-load"
+  },
+  "canonical_colds": [
+    {
+      "actual_source_TUs_compiled": 4,
+      "artifacts": {
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/link-aliases.rsp": "7c3a0296de56f8fa64f632473d9ac5395908ea364b57d705d4a785ceb7c5ce78",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/link-anchors.c": "e8f58d6f61966c547ba576553e6074116397f56165c575a45b25eb0f32ad7776",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/link-anchors.obj": "9dc6e43631bc4f1d2c8d076489d578b20c2146c231b221bebde3d877a2933a19",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/link-attempt-1.log": "64d7d5a8e3ed90f6ca5785a0c796d4e064473d4ae21587532e2305d340f3baf8",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/link-attempt-2.log": "161f8688beb11668258d3d278bf36c64151825a936a3ddf756f0a6b396c0655b",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/source.exe": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/source.ltcg.obj": "30a2237c2bf8a3517bffea584f2a532c474cbc225738faa592e798603aa70aa4",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/source.map": "34e9e78abef2ce8832cc6f4ca267aa9ecb726fa6364d430d7d619f418f06364a",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/source.pdb": "49e2ac2baec9b79c1a56b610553b50a0818ab2804f88567b8357c00b5a0609db",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/support-00-PbgArchive.ltcg.obj": "5bc40c7ace64471e02d78957fd41e3774ba2e13dc682c321d6e91e2955fcf087",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/support-01-PbgFile.ltcg.obj": "9a82e0f3a994376ad1e431d16f9b8faeea553ee18d0f25bd593d6af51adff938",
+        "build/gpt-6.1-sol/archive-header-context-20261022/accepted-cold-1/support-02-ResFile.normal.obj": "e7334c0405eca286d9c60668ab6716afaa17a9fbbf053f33e759c77f5f469ecb"
+      },
+      "bound_report_sha256": "bf64b74563ac1b7f032a7d7261d72ba3d93f2c7aacc6411d9b0be506ac1cf1e2",
+      "build_report_sha256": "917c683a993ce7389bd9b623148d2a8306e756331289337dab535027e005b9c4",
+      "cold": 1,
+      "input_inventory_sha256": "a32bff1e70499208f76db8abfbf5b7454406585a2f8d0f6df64c936e2e5ee5e3",
+      "parent_and_guards": [
+        {
+          "candidate_address": "0x00401F60",
+          "extent_source": "pdb-section-contribution",
+          "fields": 10,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 350,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 350,
+          "symbol": "?ParseHeader@PbgArchive@@QAE_NPBD@Z",
+          "unit": "pbgarchive-parse-header"
+        },
+        {
+          "candidate_address": "0x00401030",
+          "extent_source": "pdb-section-contribution",
+          "fields": 7,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 212,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 212,
+          "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+          "unit": "find"
+        },
+        {
+          "candidate_address": "0x00402660",
+          "extent_source": "pdb-section-contribution",
+          "fields": 2,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 46,
+          "pdb_module_index": 5,
+          "result": "exact",
+          "size": 46,
+          "symbol": "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z",
+          "unit": "caller"
+        },
+        {
+          "candidate_address": "0x00401F20",
+          "extent_source": "pdb-section-contribution",
+          "fields": 1,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 51,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 51,
+          "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+          "unit": "entry-size"
+        },
+        {
+          "candidate_address": "0x00401A10",
+          "extent_source": "pdb-section-contribution",
+          "fields": 1,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 53,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 53,
+          "symbol": "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z",
+          "unit": "find-entry"
+        },
+        {
+          "candidate_address": "0x00402310",
+          "extent_source": "pdb-section-contribution",
+          "fields": 3,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 46,
+          "pdb_module_index": 2,
+          "result": "exact",
+          "size": 46,
+          "symbol": "??1CPbgFile@@UAE@XZ",
+          "unit": "destructor"
+        },
+        {
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "fields": 14,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 214,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 214,
+          "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+          "unit": "read"
+        },
+        {
+          "candidate_address": "0x00401E00",
+          "extent_source": "pdb-section-contribution",
+          "fields": 10,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 281,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 281,
+          "symbol": "?ReadDecompressEntry@PbgArchive@@QAEPAEPBDPAE@Z",
+          "unit": "entry-reader"
+        },
+        {
+          "candidate_address": "0x004020C0",
+          "extent_source": "pdb-section-contribution",
+          "fields": 10,
+          "image_sha256": "77c180c43415fb99cbda78006df8687916ab4887e2725bf37140526da448cc32",
+          "matched_bytes": 327,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 327,
+          "symbol": "?AllocEntries@PbgArchive@@QAEPAUPbgArchiveEntry@@PAXHI@Z",
+          "unit": "allocator"
+        }
+      ]
+    },
+    {
+      "actual_source_TUs_compiled": 4,
+      "artifacts": {
+        "build/match-linked/PbgArchiveParseHeader/link-aliases.rsp": "7c3a0296de56f8fa64f632473d9ac5395908ea364b57d705d4a785ceb7c5ce78",
+        "build/match-linked/PbgArchiveParseHeader/link-anchors.c": "e8f58d6f61966c547ba576553e6074116397f56165c575a45b25eb0f32ad7776",
+        "build/match-linked/PbgArchiveParseHeader/link-anchors.obj": "e7de3a044d2bec5d2510ce48c2307f6e662bdd3f9a2c6e0548849f64e6c61aff",
+        "build/match-linked/PbgArchiveParseHeader/link-attempt-1.log": "7b1308e8a642bf223220b5498103c1ab2f2fabce3a08cf410f27c0843d135c94",
+        "build/match-linked/PbgArchiveParseHeader/link-attempt-2.log": "695301ae1f9e0b0136acc37fae8f00b109613574ed063290fc6438aa292340c1",
+        "build/match-linked/PbgArchiveParseHeader/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+        "build/match-linked/PbgArchiveParseHeader/source.exe": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+        "build/match-linked/PbgArchiveParseHeader/source.ltcg.obj": "97974f621c4356c77a2e699a39148dc4d8ee48e0aa0214efe47fe5ff24bfa4f5",
+        "build/match-linked/PbgArchiveParseHeader/source.map": "85f60c541bb8142b995a0aa2f65e10dc7bde7f89e28fcd1554322d7dfb29e112",
+        "build/match-linked/PbgArchiveParseHeader/source.pdb": "9eec1db71a8a086ae297e33b670bb4370a5244d9779c45c14c7004ec791ffb30",
+        "build/match-linked/PbgArchiveParseHeader/support-00-PbgArchive.ltcg.obj": "a08f3170f047dc877064691e5d850ddaff13b8053a24814510aef5b5addaf28a",
+        "build/match-linked/PbgArchiveParseHeader/support-01-PbgFile.ltcg.obj": "46cb08c933fc49c15c4f3d1766aa225caac1b538beb828339a3e1398e02bb3d8",
+        "build/match-linked/PbgArchiveParseHeader/support-02-ResFile.normal.obj": "ddf10fc7f87141634fe4c43eb893af6ae485f044b3167fdbf81a747f5d478f6a"
+      },
+      "bound_report_sha256": "a213799913d769dc10d3378cfa3ebc4947e4032d6a8a7e4e642030412f011bc1",
+      "build_report_sha256": "00769d2411f89cf5965525caf733d3dc4bae996ba6a6b564c1d871f49be53fb4",
+      "cold": 2,
+      "input_inventory_sha256": "a32bff1e70499208f76db8abfbf5b7454406585a2f8d0f6df64c936e2e5ee5e3",
+      "parent_and_guards": [
+        {
+          "candidate_address": "0x00401F60",
+          "extent_source": "pdb-section-contribution",
+          "fields": 10,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 350,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 350,
+          "symbol": "?ParseHeader@PbgArchive@@QAE_NPBD@Z",
+          "unit": "pbgarchive-parse-header"
+        },
+        {
+          "candidate_address": "0x00401030",
+          "extent_source": "pdb-section-contribution",
+          "fields": 7,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 212,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 212,
+          "symbol": "?FindArchive@ArchiveOrDiskPathView@@QAEPAVPbgArchive@@XZ",
+          "unit": "find"
+        },
+        {
+          "candidate_address": "0x00402660",
+          "extent_source": "pdb-section-contribution",
+          "fields": 2,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 46,
+          "pdb_module_index": 5,
+          "result": "exact",
+          "size": 46,
+          "symbol": "?Open@CMemoryPbgFile@@UAE_NPBDPAD@Z",
+          "unit": "caller"
+        },
+        {
+          "candidate_address": "0x00401F20",
+          "extent_source": "pdb-section-contribution",
+          "fields": 1,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 51,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 51,
+          "symbol": "?GetEntryDecompressedSize@PbgArchive@@QAEIPBD@Z",
+          "unit": "entry-size"
+        },
+        {
+          "candidate_address": "0x00401A10",
+          "extent_source": "pdb-section-contribution",
+          "fields": 1,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 53,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 53,
+          "symbol": "?FindEntry@PbgArchive@@QAEPAUPbgArchiveEntry@@PBD@Z",
+          "unit": "find-entry"
+        },
+        {
+          "candidate_address": "0x00402310",
+          "extent_source": "pdb-section-contribution",
+          "fields": 3,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 46,
+          "pdb_module_index": 2,
+          "result": "exact",
+          "size": 46,
+          "symbol": "??1CPbgFile@@UAE@XZ",
+          "unit": "destructor"
+        },
+        {
+          "candidate_address": "0x00401110",
+          "extent_source": "pdb-section-contribution",
+          "fields": 14,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 214,
+          "pdb_module_index": 1,
+          "result": "exact",
+          "size": 214,
+          "symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+          "unit": "read"
+        },
+        {
+          "candidate_address": "0x00401E00",
+          "extent_source": "pdb-section-contribution",
+          "fields": 10,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 281,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 281,
+          "symbol": "?ReadDecompressEntry@PbgArchive@@QAEPAEPBDPAE@Z",
+          "unit": "entry-reader"
+        },
+        {
+          "candidate_address": "0x004020C0",
+          "extent_source": "pdb-section-contribution",
+          "fields": 10,
+          "image_sha256": "58a5ea1319d6dbbe7cc691030fdabeaf0fc14ed735e123f2fe4954985d7c97ff",
+          "matched_bytes": 327,
+          "pdb_module_index": 3,
+          "result": "exact",
+          "size": 327,
+          "symbol": "?AllocEntries@PbgArchive@@QAEPAUPbgArchiveEntry@@PAXHI@Z",
+          "unit": "allocator"
+        }
+      ]
+    }
+  ],
+  "claim": {
+    "callee_EH_metadata_data_or_runtime_credit": 0,
+    "end_inclusive": "0x004350CD",
+    "new_exact_functions": 1,
+    "new_exact_owned_bytes": 350,
+    "owned_bytes": 350,
+    "start": "0x00434F70",
+    "unit": "pbgarchive-parse-header"
+  },
+  "date": "2026-10-22",
+  "input_sha256": {
+    "config/tools.lock.toml": "24d77ab218e86ea8b888418922a31db9a3cf30f54bb73450a04967a4a501db9f",
+    "scripts/build-match-unit.py": "5ed4084bd07ec4ca3c70d6adafe536c68e0afcd7edf6a6a1f85635893e543fc3",
+    "scripts/compare-linked-function.py": "25ac689539c7ea15140585941f8f082aa67f1db402dc1b8b6717ec9b14f1375c",
+    "scripts/linked_allocation_eh.py": "aa8544b4ed7472733d736d746d462b9324b64fb1f6331cf2507d4f9f8f27ee4e",
+    "scripts/replay-exact-units.py": "3907eca4644c10f2ea097149f142e5d3d449d512e48ec79314dfbf3eebca0a41",
+    "src/FileSystem.cpp": "2fd64d260e4647bcafddab3636650c29d1b379e163c2ff9671d5b287a4f39260",
+    "src/PbgArchive.cpp": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7",
+    "src/PbgArchive.hpp": "8166459e24b00a31cc047fb2580b6baf99db51d402ccb2e19f3cb93c2f767a46",
+    "src/PbgFile.cpp": "a493f3107882a56c0acbe22ab322817452aede110357b7848ead170b42ed349a",
+    "src/PbgFile.hpp": "8310f93282042f99a872480a81f4dbf28123962efb69552b76e6ce49c5eff402",
+    "src/ResFile.cpp": "e0b1c0d2c3d08ebbd1d11781aed570c039d6fb6599e1d0095be7a28414c24a54",
+    "src/ResFile.hpp": "a4ee5f1d9d65ada71b0213bab5f474ae55eea1ebac149f6c9e27b0a2f723be3b"
+  },
+  "large_baseline": {
+    "baseline_native_artifact_sha256": 15,
+    "baseline_native_source_sha256": 32,
+    "scope": "fresh hashes only; no large build/comparison"
+  },
+  "local_ghidra": {
+    "dump_sha256": "972805115ead567c92beb0f8a49990f447b56561c33c317e705cfb5f7af01bd0",
+    "mapped_text_unchanged_before_after": true,
+    "mode": "readOnly/noanalysis/rollback,maxcpu1,heap768MiB",
+    "reuse_packet": "docs/evidence/pbgarchive-read-decompress-entry/facts.json"
+  },
+  "new_context_incompatible_old_units": {
+    "filesystem-load-archive": {
+      "native_bytes": 35,
+      "target_bytes": 36
+    },
+    "filesystem-path-size": {
+      "native_bytes": 263,
+      "target_bytes": 190
+    },
+    "pbgarchive-load": {
+      "native_bytes": 231,
+      "target_bytes": 108
+    }
+  },
+  "previous_canonical_unit_dictionaries_unchanged": 1248,
+  "prior_Ob1_current_source_control": {
+    "adopted_source_matches_private_sha256": true,
+    "bytes": 1237,
+    "compiled_source_TUs": 1,
+    "fields": 62,
+    "report_sha256": "84192c4bf1c663e5996cca858ad202d78134d682b3cecd7a553cbb61374ece19",
+    "reused_source_objects": 3,
+    "scope": "current-source one-support comparison, not a fresh full old-context cold",
+    "whole_functions": 10
+  },
+  "prior_original_profile_archive": {
+    "artifacts": {
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/link-aliases.rsp": "aa0394bd06b59812ed846abecd79a2055af1c8b6f224b657d1984d635d0bbb47",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/link-anchors.c": "c703f2d4399db3289df6c7646065971a3f7c7749d8e71c545da6f900b7305990",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/link-anchors.obj": "bb05f998bf502c0db59a10d60b5884690764ec87fd1f62976b614118ef8dc2bd",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/link-attempt-1.log": "0e8cc1e6856d9995363ab733904165b3cca65e52387414e40799161fbdc94492",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/link-attempt-2.log": "5c2e65c905e91407cf794a1cca5e355bafe574262cedbcac0aef403d13f7fe7e",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/link-attempt-3.log": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/source.exe": "0928af276cde3ad02782790994dc0eaf20ec849f804792cc497999ec0520bb84",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/source.ltcg.obj": "172a634bf3d71855d28c9edf468bf140209a1031cbb207b085b25347d711e3a9",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/source.map": "50a0e4e201dc3205759edf994731a34869760ba998789170482e828600c93479",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/source.pdb": "354e80628e48c24a54031fbcf9fcaeddf0dbe592603010d256e24c93252c73b0",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/support-00-PbgArchive.ltcg.obj": "5bd8b8176c5be3ea0036db55eb8aa27bda4be3f11cf8faf9bc0d3e9780b24e29",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/support-01-PbgFile.ltcg.obj": "4d3bfa3962b4fbdc658b143621f4d62c9cf2b469dbee4ba851f2f411eae0e463",
+      "build/gpt-6.1-sol/filesystem-transform-context-20261022/prior-original-profile/support-02-ResFile.normal.obj": "9241c32e6f10ba7bdd3494aa731895e5ba4a857f5f5e4c1800449f388a74e814"
+    },
+    "scope": "Reader checkpoint original-profile affected replay retained before parser affected Load cold"
+  },
+  "private_controls": [
+    {
+      "compiled_source_TUs": 1,
+      "guard_results": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 214,
+          "result": "exact",
+          "size": 214,
+          "unit": "read"
+        },
+        {
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "unit": "size"
+        },
+        {
+          "matched_bytes": 108,
+          "result": "exact",
+          "size": 108,
+          "unit": "archive-load"
+        },
+        {
+          "matched_bytes": 36,
+          "result": "exact",
+          "size": 36,
+          "unit": "wrapper"
+        },
+        {
+          "matched_bytes": 281,
+          "result": "exact",
+          "size": 281,
+          "unit": "entry-reader"
+        }
+      ],
+      "model": "parse-literal-origin",
+      "parser_size": 351,
+      "producer_sha256": "ba60cfd95a1575c892ffbe1e8d62b36a765616cee56822e4fb10fa422d173b0b",
+      "report_sha256": "544bfa8ec2cb8d26e196712749d3190bf21b4df351c47d1bbe06c0460a992c3e",
+      "reused_source_objects": 3,
+      "source_sha256": "859eac2f7027d39096dbc03c852ccf4fc8cc1d46abd0e6d7df270b08ef1a6dff"
+    },
+    {
+      "compiled_source_TUs": 1,
+      "guard_results": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 214,
+          "result": "exact",
+          "size": 214,
+          "unit": "read"
+        },
+        {
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "unit": "size"
+        },
+        {
+          "matched_bytes": 108,
+          "result": "exact",
+          "size": 108,
+          "unit": "archive-load"
+        },
+        {
+          "matched_bytes": 36,
+          "result": "exact",
+          "size": 36,
+          "unit": "wrapper"
+        },
+        {
+          "matched_bytes": 281,
+          "result": "exact",
+          "size": 281,
+          "unit": "entry-reader"
+        }
+      ],
+      "model": "late-parser-state",
+      "parser_size": 351,
+      "producer_sha256": "0b63c7bb870edbf6bafb949f344318512e5c4424aa220359fcc0918751b5f47e",
+      "report_sha256": "0fb8e4008769daed1de0f291d1e0806774efa8b1f7534576e6882600fac1b6be",
+      "reused_source_objects": 3,
+      "source_sha256": "6f348fd8a1228c2e573779c496b13ac1c824c438fe08e7a488a7bfe2da1c5002"
+    },
+    {
+      "compiled_source_TUs": 1,
+      "guard_results": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 214,
+          "result": "exact",
+          "size": 214,
+          "unit": "read"
+        },
+        {
+          "matched_bytes": 190,
+          "result": "exact",
+          "size": 190,
+          "unit": "size"
+        },
+        {
+          "matched_bytes": 108,
+          "result": "exact",
+          "size": 108,
+          "unit": "archive-load"
+        },
+        {
+          "matched_bytes": 36,
+          "result": "exact",
+          "size": 36,
+          "unit": "wrapper"
+        },
+        {
+          "matched_bytes": 281,
+          "result": "exact",
+          "size": 281,
+          "unit": "entry-reader"
+        }
+      ],
+      "model": "guarded-error-cleanup",
+      "parser_size": 351,
+      "producer_sha256": "0ae06b0865e292c6aac481d54d89eb87db25f87ace30b2e15f0a9b94a2b2cc56",
+      "report_sha256": "84192c4bf1c663e5996cca858ad202d78134d682b3cecd7a553cbb61374ece19",
+      "reused_source_objects": 3,
+      "source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+    },
+    {
+      "compiled_source_TUs": 1,
+      "guard_results": [
+        {
+          "matched_bytes": 212,
+          "result": "exact",
+          "size": 212,
+          "unit": "find"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "caller"
+        },
+        {
+          "matched_bytes": 51,
+          "result": "exact",
+          "size": 51,
+          "unit": "entry-size"
+        },
+        {
+          "matched_bytes": 53,
+          "result": "exact",
+          "size": 53,
+          "unit": "find-entry"
+        },
+        {
+          "matched_bytes": 46,
+          "result": "exact",
+          "size": 46,
+          "unit": "destructor"
+        },
+        {
+          "matched_bytes": 214,
+          "result": "exact",
+          "size": 214,
+          "unit": "read"
+        },
+        {
+          "error": "PDB contribution size 0x107 differs from manifest 0xbe",
+          "result": "unsupported",
+          "unit": "size"
+        },
+        {
+          "error": "PDB contribution size 0xe7 differs from manifest 0x6c",
+          "result": "unsupported",
+          "unit": "archive-load"
+        },
+        {
+          "error": "PDB contribution size 0x23 differs from manifest 0x24",
+          "result": "unsupported",
+          "unit": "wrapper"
+        },
+        {
+          "matched_bytes": 281,
+          "result": "exact",
+          "size": 281,
+          "unit": "entry-reader"
+        }
+      ],
+      "model": "allocator-inline-context",
+      "parser_size": 350,
+      "producer_sha256": "764d32405cd1df4f13bdfbf1a2b800369d4bff53db9f5a27648bc25a7c111298",
+      "report_sha256": "c66dc600d96489173d946db03f44ce539a49f9c6df521991d63fa4e1c2f39ff1",
+      "reused_source_objects": 3,
+      "source_sha256": "71ae2894ec2aac5a9215de5a5d3d6fe21be94ce537729d48dec515c8b2f812b7"
+    }
+  ],
+  "recipe": {
+    "artifact_kind": "linked-pe",
+    "entry_symbol": "?Read@ArchiveOrDiskPathView@@QAEPAEPAE@Z",
+    "functions": [
+      "PbgArchive::ParseHeader"
+    ],
+    "harness": "unresolved-symbol-data-anchors-v1",
+    "link_profile": [
+      "/ltcg",
+      "/nodefaultlib",
+      "/subsystem:console",
+      "/incremental:no",
+      "/fixed:no",
+      "/base:0x00400000",
+      "/debug",
+      "/debugtype:cv",
+      "/opt:noref",
+      "/opt:noicf",
+      "/safeseh:no"
+    ],
+    "linkages": [
+      {
+        "offset": 27,
+        "symbol": "?g_PbgFileOpenModes@@3PAPADA",
+        "target": 4671752,
+        "type": "DIR32"
+      },
+      {
+        "offset": 91,
+        "symbol": "?Decrypt@FileSystem@@YGPAEPAEHEEHH@Z",
+        "target": 4501712,
+        "type": "REL32"
+      },
+      {
+        "offset": 182,
+        "symbol": "_malloc",
+        "target": 4531974,
+        "type": "REL32"
+      },
+      {
+        "offset": 225,
+        "symbol": "?Decrypt@FileSystem@@YGPAEPAEHEEHH@Z",
+        "target": 4501712,
+        "type": "REL32"
+      },
+      {
+        "offset": 239,
+        "symbol": "?DecompressData@@YGPAEPAEH0H@Z",
+        "target": 4414912,
+        "type": "REL32"
+      },
+      {
+        "offset": 256,
+        "symbol": "?AllocEntries@PbgArchive@@QAEPAUPbgArchiveEntry@@PAXHI@Z",
+        "target": 4411600,
+        "type": "REL32"
+      },
+      {
+        "offset": 268,
+        "symbol": "_free",
+        "target": 4531234,
+        "type": "REL32"
+      },
+      {
+        "offset": 274,
+        "symbol": "_free",
+        "target": 4531234,
+        "type": "REL32"
+      },
+      {
+        "offset": 298,
+        "symbol": "_free",
+        "target": 4531234,
+        "type": "REL32"
+      },
+      {
+        "offset": 311,
+        "symbol": "_free",
+        "target": 4531234,
+        "type": "REL32"
+      }
+    ],
+    "normal_support_sources": [
+      "src/ResFile.cpp"
+    ],
+    "output_dir": "build/match-linked/PbgArchiveParseHeader",
+    "pdb_source": "src/PbgArchive.cpp",
+    "profile": [
+      "/TP",
+      "/MT",
+      "/O2",
+      "/Gy",
+      "/GF",
+      "/Oi",
+      "/DNDEBUG",
+      "/Isrc",
+      "/GL",
+      "/GS",
+      "/EHsc",
+      "/Gz"
+    ],
+    "size": 350,
+    "source": "src/FileSystem.cpp",
+    "support_profiles": {
+      "src/PbgArchive.cpp": [
+        "/TP",
+        "/MT",
+        "/O2",
+        "/Gy",
+        "/GF",
+        "/Oi",
+        "/DNDEBUG",
+        "/Isrc",
+        "/GL",
+        "/GS",
+        "/EHsc",
+        "/Ob2",
+        "/Gz"
+      ]
+    },
+    "support_sources": [
+      "src/PbgArchive.cpp",
+      "src/PbgFile.cpp",
+      "src/ResFile.cpp"
+    ],
+    "symbol": "?ParseHeader@PbgArchive@@QAE_NPBD@Z",
+    "target_address": 4411248
+  },
+  "starting_head": "62e6cd17ed8053cb52fff6f072e9f2a61407eadb",
+  "target": {
+    "identity": "original Japanese TH10 v1.00a",
+    "mapped_text_bytes": 412289,
+    "mapped_text_sha256": "cbe16ea35965fd0e6cda23b3680c72e806924c488202f1c9a6602a606f925d2f",
+    "sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+  },
+  "unknowns": [
+    "original source expressions/class/TU/production flags and physical data ownership",
+    "whole Windows i386 production graph and runtime",
+    "semantic reconstruction and portability"
+  ]
+}

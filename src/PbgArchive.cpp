@@ -209,7 +209,7 @@ bool PbgArchive::ParseHeader(const char *filename)
     u32 archiveSize = m_FileAbstraction->GetSize();
     u32 fileTableOffset =
         archiveSize - (u32)header.encodedFileTableCompressedSize;
-    m_FileAbstraction->Seek(fileTableOffset, g_PbgFileSeekModes[0]);
+    m_FileAbstraction->Seek(fileTableOffset, FILE_BEGIN);
 
     i32 fileTableSize = header.encodedFileTableCompressedSize;
     fileTableBuffer = (unsigned char *)malloc(fileTableSize);
@@ -236,13 +236,13 @@ bool PbgArchive::ParseHeader(const char *filename)
     return true;
 
 parse_error:
-    free(fileTableBuffer);
-    free(decompressedFileTable);
+    if (fileTableBuffer != NULL)
+        free(fileTableBuffer);
+    if (decompressedFileTable != NULL)
+        free(decompressedFileTable);
     if (m_FileAbstraction != NULL)
-    {
         delete m_FileAbstraction;
-        m_FileAbstraction = NULL;
-    }
+    m_FileAbstraction = NULL;
     return false;
 }
 

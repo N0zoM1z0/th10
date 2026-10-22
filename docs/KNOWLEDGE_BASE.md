@@ -5080,3 +5080,31 @@ dictionaries remain unchanged. Authored exact407/74266, overall1248/140776;
 source613/nonexact206/absent121. Original names/class/lifetime/TU/production flags,
 data owners and whole product/runtime remain unknown.
 [Complete reader proof and limits](evidence/pbgarchive-read-decompress-entry/README.md).
+
+## Exact archive header and allocator context (2026-10-22)
+
+ParseHeader434F70..4350CD is complete350 bytes/all10 fields. Target seek uses
+literal0, error cleanup skips null temporary buffers and clears the backend
+pointer after conditional deletion. Maintained source adopts these operations;
+the previous unresolved mode-array read does not prove the original expression
+or any physical data owner. No header/interface/layout/global declaration changes.
+
+Literal-origin, late-state and guarded-cleanup one-support controls each emit351;
+the late-state form is neutral. They retain10 whole guards1237/all62. ArchiveOb2
+on the same corrected source emits the target350/all10 and allocator327/all10.
+The latter is an additional linked guard of an already exact normal-COFF unit;
+allocation-EH metadata/code gains no credit. No static-helper/header change is
+tested or adopted. Original inlining policy, source/TU and calling conventions
+remain unknown despite this reproduced context.
+
+Two actual full4TU colds independently pass new350/all10 and8 whole guards1230/
+all48, totaling1580/all58. Three old functions do not match in this new context
+(size263,Load231,registration35), so they are excluded from its guard success.
+Their original recipes remain unchanged and the same source retains the old
+Ob1 cohort1237/all62 via1 support compilation/3 reused objects. A separate fresh
+original-profile Load cold passes108/all7. All1248 prior unit dictionaries remain.
+
+Only350 new bytes count: authored408/74616, overall1249/141126; source613/
+nonexact205/absent121. Archive source15/15, exact14/15; resource load100 remains.
+Whole product/runtime, physical data owners and semantic/port stages stay open.
+[Complete header proof and limits](evidence/pbgarchive-parse-header/README.md).
