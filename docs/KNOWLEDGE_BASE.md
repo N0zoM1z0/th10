@@ -5364,3 +5364,15 @@ target high/middle branch orientation, producing14396 bytes and case gap298.
 Its duplicated zero-result tail, tail inside aim and collapsed rank-three branch
 remain wrong. No source is adopted. See
 [selection-graph evidence](evidence/enemy-selection-graph/README.md).
+
+## Enemy common source reads do not fix native sharing (2026-10-22)
+
+In the scoped-rank/shared-aim context, directing middle/zero ranks through one
+source read/store label makes VC7.1 put index3 locally and redirect the middle
+range to difficulty. It loses the preceding target branch topology despite a
+two-byte improvement in aggregate case gap. Fresh versus reused index locals
+are raw-neutral across all four complete bodies. Sharing only the fVar21 result
+store and scoping only difficulty each expand rank-five to241 versus169.
+These specific forms do not solve tail ownership; source goto sharing is not
+native block placement evidence. See
+[read-sharing controls](evidence/enemy-rank-read-sharing/README.md).

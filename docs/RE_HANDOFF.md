@@ -1,16 +1,18 @@
 # TH10 reconstruction handoff
 
 Updated 2026-10-22. Exact reconstruction remains **active-incomplete**. Latest
-Enemy selection-graph controls retain target case order but remain unadopted.
-Best combined scoped-rank/shared-aim candidate is14396/14416,3331/11138, gap298;
-rank-five177/169 gains the target high/middle branch orientation (79 matched
-positions versus7). Rank zero still duplicates a tail, rank one jumps into aim,
-and rank-three loses a redundant target branch. Retain this candidate to test
-middle/zero read sharing without moving cases. Fully scoped14412-byte controls
-instead move FPATAN after resolution; equal/near total size is insufficient.
-Maintained Enemy14336/14416, gap328; ANM9964,7541/7995,90/92/gap2; ECL7020/6993
-remain unchanged. Authored409/74716, overall1252/141647, source613/247945,
-nonexact204 and absent121 unchanged. No new exact credit.
+Enemy middle/zero sharing controls are unadopted. Fresh/existing index locals
+produce four raw-identical complete bodies: Enemy14380, gap296, but lose the
+preceding candidate's target index3 back-edge and middle fallthrough. Shared
+fVar21 store and difficulty-only scope controls produce rank-five241/169 and
+worse parent gaps372/384. All keep the result tail in aim; all four carriers
+were inventoried and removed. Retain the preceding scoped-rank/shared-aim
+candidate14396/14416,3331/11138/gap298 for further result-lifetime work, not the
+new lower-gap296 control. Maintained Enemy14336/14416, gap328; ANM9964,
+7541/7995,90/92/gap2; ECL7020/6993 remain unchanged. Authored409/74716,
+overall1252/141647, source613/247945, nonexact204 and absent121 unchanged.
+No new exact credit.
+See [Enemy read-sharing controls](evidence/enemy-rank-read-sharing/README.md).
 See [Enemy selection graph](evidence/enemy-selection-graph/README.md).
 See [Enemy tail placement](evidence/enemy-tail-placement/README.md).
 See [Enemy rank/result routing](evidence/enemy-rank-result-routing/README.md).

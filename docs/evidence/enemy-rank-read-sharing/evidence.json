@@ -1,0 +1,1119 @@
+{
+  "adopted": false,
+  "controls": [
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.exe": {
+          "bytes": 122880,
+          "sha256": "fe57e1f976fd9fefdff228bfea8236112916cfe5b051fc92ad4cac3ac1bb3025"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.ltcg.obj": {
+          "bytes": 159153,
+          "sha256": "90abd386718035c9c3a789fe65a25532bf5f799f6197061f22b26553b9ffb4bb"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.map": {
+          "bytes": 92342,
+          "sha256": "e8c3624538eb7ea5e59c295f75bdf5b51e7c9e3a25e7c7b47133e9f31fa9f722"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.pdb": {
+          "bytes": 117760,
+          "sha256": "d4fa1da9927285a8a7ca6d78c72b64ce68fe1bffe871811291eec332798f3421"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14380,
+          "raw_sha256": "0efe4de206ea2a4e95c282f2364e2e65673d3086f48869fe78b81d6578c62fc8"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "ccc05e19f2600f83dbf76cb9a5aa4569e02ff13a62f7a1158562c0aaf6ee036a"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "54dff6443c4e81f26e7251580d08500f7e52905512749c0574980b26b6b36e5b"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "3c751b5b7d1164f68f0d258a8185828a9d3fae7a658cfc7a0b2013133319006b"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11131,
+        "gap": 296,
+        "matched": 3266,
+        "same_sized": 46
+      },
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406470",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.exe",
+          "image_sha256": "fe57e1f976fd9fefdff228bfea8236112916cfe5b051fc92ad4cac3ac1bb3025",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "8f88f0d39e75a04cbbc57235dcbefebf",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D20",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.exe",
+          "image_sha256": "fe57e1f976fd9fefdff228bfea8236112916cfe5b051fc92ad4cac3ac1bb3025",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "8f88f0d39e75a04cbbc57235dcbefebf",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "shared-read-index",
+      "layout": {
+        "candidate_pre_table_span": 13724,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14380,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.exe",
+        "jump_table_address": "0x00405DAC",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -36,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F5C",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "4f10cabab5586fc16bac65ee6c7aa2a7bc69afb0632f556242f2f55e80099706",
+      "report_sha256": "0bbff6f9c55455138a68f6aed485dc41649ab28bd30d6b661b40de1d7a7f08c0",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059db",
+            "mnemonic": "jmp",
+            "operand": "0x405cf1"
+          },
+          "opcode": "0x15e",
+          "size": 180,
+          "start": "0x40592c"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405d21",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405caa"
+        }
+      ],
+      "terminal_exit_code": 0
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.exe": {
+          "bytes": 122880,
+          "sha256": "192a892dc43cc8c9b86a486ccfb4f6e60794e1ade168dc9e1921c4cd1b3c4692"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.ltcg.obj": {
+          "bytes": 159134,
+          "sha256": "4f1e39e8884d2b94505e90eb61538dcb8c5898cf0cd5560ec22921bd565a32eb"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.map": {
+          "bytes": 92342,
+          "sha256": "4ad056107a5edabbb3c7f50ed0a4d558a8290218ce6eefaa2b1c8c2d4478bc93"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.pdb": {
+          "bytes": 117760,
+          "sha256": "08f0b86c1aaee0b899aa5afe3522011fcd88ee16e0308ff96ca7ffa4d42bfc89"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14380,
+          "raw_sha256": "0efe4de206ea2a4e95c282f2364e2e65673d3086f48869fe78b81d6578c62fc8"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "ccc05e19f2600f83dbf76cb9a5aa4569e02ff13a62f7a1158562c0aaf6ee036a"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "54dff6443c4e81f26e7251580d08500f7e52905512749c0574980b26b6b36e5b"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "3c751b5b7d1164f68f0d258a8185828a9d3fae7a658cfc7a0b2013133319006b"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11131,
+        "gap": 296,
+        "matched": 3266,
+        "same_sized": 46
+      },
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406470",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.exe",
+          "image_sha256": "192a892dc43cc8c9b86a486ccfb4f6e60794e1ade168dc9e1921c4cd1b3c4692",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "15250490548efa4f9b820a9f179545ff",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D20",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.exe",
+          "image_sha256": "192a892dc43cc8c9b86a486ccfb4f6e60794e1ade168dc9e1921c4cd1b3c4692",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "15250490548efa4f9b820a9f179545ff",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "shared-read-existing",
+      "layout": {
+        "candidate_pre_table_span": 13724,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14380,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.exe",
+        "jump_table_address": "0x00405DAC",
+        "physical_order_matches": true,
+        "pre_table_span_delta": -36,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F5C",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "4f10cabab5586fc16bac65ee6c7aa2a7bc69afb0632f556242f2f55e80099706",
+      "report_sha256": "b39653429f631487786e4e0817313ef69727dca401c858eaeca42f821c206825",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x4059db",
+            "mnemonic": "jmp",
+            "operand": "0x405cf1"
+          },
+          "opcode": "0x15e",
+          "size": 180,
+          "start": "0x40592c"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405d21",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405caa"
+        }
+      ],
+      "terminal_exit_code": 0
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.exe": {
+          "bytes": 122880,
+          "sha256": "50aaa63c5e5acd2ce41f2fd7b7d4ecc0117c56c728b6130e3319d7a2647dc097"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.ltcg.obj": {
+          "bytes": 159068,
+          "sha256": "f69f22238eccff4db6226fb14bbaac6e6166775aee997e1cf421267e55f6150c"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.map": {
+          "bytes": 92342,
+          "sha256": "bf2d5090820bb7426915e51a1e8053cdb4b017da972df577394b83740941f8ed"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.pdb": {
+          "bytes": 117760,
+          "sha256": "de4ea150f71e1ef583ee3aec110f905566bb2ecd4ab5ca4cdc8a7cdd1e0344a9"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14428,
+          "raw_sha256": "0d8e0b168f3e773229cd745536a6a4cf906424f6740dd4ad7e89866d235b8b97"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "8d97cf7decd11c2ada6bd104f67b281f1a0f4a06c0f9cf4c160fdcd56c1a18d2"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "2ea49bf5d0bf6527f3c731a99a906dc6ef79ff31d3a779b64aef06cc52f1b658"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "8340220dd490a758b69408ce113e11a6449984a63e4f0d4ec2e1cf0040187d2b"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11143,
+        "gap": 372,
+        "matched": 3253,
+        "same_sized": 45
+      },
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x004064A0",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.exe",
+          "image_sha256": "50aaa63c5e5acd2ce41f2fd7b7d4ecc0117c56c728b6130e3319d7a2647dc097",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "c06a3cc087f0bb4ba9f08aecb5362ae5",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D50",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.exe",
+          "image_sha256": "50aaa63c5e5acd2ce41f2fd7b7d4ecc0117c56c728b6130e3319d7a2647dc097",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "c06a3cc087f0bb4ba9f08aecb5362ae5",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "shared-result-values",
+      "layout": {
+        "candidate_pre_table_span": 13772,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14428,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.exe",
+        "jump_table_address": "0x00405DDC",
+        "physical_order_matches": true,
+        "pre_table_span_delta": 12,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F8C",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "4f10cabab5586fc16bac65ee6c7aa2a7bc69afb0632f556242f2f55e80099706",
+      "report_sha256": "3a7087911819e5cd31334df3138dfbb5ead8f36c7140b1ea84b0c6b672defdb5",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x405a09",
+            "mnemonic": "jmp",
+            "operand": "0x405d1f"
+          },
+          "opcode": "0x15e",
+          "size": 241,
+          "start": "0x40591d"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405d4f",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405cd8"
+        }
+      ],
+      "terminal_exit_code": 0
+    },
+    {
+      "anm_case_diagnostic": {
+        "absolute_case_gap_delta": 2,
+        "comparable_bytes": 7995,
+        "matched_comparable_bytes": 7541,
+        "normalization_complete": true,
+        "same_sized_cases": 90
+      },
+      "artifacts": {
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/link-aliases.rsp": {
+          "bytes": 19994,
+          "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/link-anchors.obj": {
+          "bytes": 11653,
+          "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/link.log": {
+          "bytes": 167,
+          "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.exe": {
+          "bytes": 122880,
+          "sha256": "13f98ca86d617db95089a49e409bf8b4ead4a390acd84180cb15847c84e8030d"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.ltcg.obj": {
+          "bytes": 158499,
+          "sha256": "e6122ace68642055fb105af97706ad43bef9afd53cb71f18efebbaa531a9bc2e"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.map": {
+          "bytes": 92342,
+          "sha256": "a8c73d6b1ca876cf068dcf3b6cf928e71b652edc6400dd5e7a900079189bf2f0"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.pdb": {
+          "bytes": 117760,
+          "sha256": "4fda70ffee7ab5fd55e5642a60d177a026da682e5a5d6a40b0715d412e206ed2"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-00-EclVm.ltcg.obj": {
+          "bytes": 55445,
+          "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-01-AnmManager.ltcg.obj": {
+          "bytes": 247856,
+          "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-02-AnmVmCreate.ltcg.obj": {
+          "bytes": 10892,
+          "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-03-EnemyLaser.ltcg.obj": {
+          "bytes": 44123,
+          "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-04-Enemy.ltcg.obj": {
+          "bytes": 97582,
+          "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-05-AnmVmId.ltcg.obj": {
+          "bytes": 13646,
+          "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-06-RandomMath.ltcg.obj": {
+          "bytes": 3947,
+          "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-07-AnmInt3Scale.ltcg.obj": {
+          "bytes": 10486,
+          "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+        },
+        "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-08-ItemManager.ltcg.obj": {
+          "bytes": 59951,
+          "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+        }
+      },
+      "bodies": {
+        "?DispatchEclInstruction@EnemyRuntimeView@@QAEHXZ": {
+          "candidate_size": 14440,
+          "raw_sha256": "66f7e234e6267a40f99d51e455e33047d6e0e9390abbb5d8e014fa1ccba77ccf"
+        },
+        "?EnemyFireLaser@@YAIPAXPAUEnemyLaserRequestScratch@@H@Z": {
+          "candidate_size": 153,
+          "raw_sha256": "9387bd5ea5f183f36a825d443ab65b7aca3d8d31fd127cc5b4e084e84172effe"
+        },
+        "?ExecuteScript@AnmRenderManagerView@@SGHPAUAnmVmView@@@Z": {
+          "candidate_size": 9964,
+          "raw_sha256": "ca6e828f87a340a71fa333def76d824a589fe162ebccfc27a7c2689dcecc1030"
+        },
+        "?Run@EclVmContext@@QAEHM@Z": {
+          "candidate_size": 7020,
+          "raw_sha256": "d51c959ffbb6f77a3511009f8a376f6d99d0500dbe69fe4973dc5b2b7c80c303"
+        }
+      },
+      "case_aligned": {
+        "comparable": 11143,
+        "gap": 384,
+        "matched": 3255,
+        "same_sized": 46
+      },
+      "ecl": {
+        "callee_guard": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x004064B0",
+          "capstone_version": "5.0.6",
+          "compared_size": 171,
+          "decoded_bytes": 171,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.exe",
+          "image_sha256": "13f98ca86d617db95089a49e409bf8b4ead4a390acd84180cb15847c84e8030d",
+          "matched_bytes": 171,
+          "matched_compared_bytes": 171,
+          "normalization_complete": true,
+          "pdb_age": 1,
+          "pdb_guid": "ccd3d211609e7e4ab624fb814537105c",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "exact",
+          "size": 171,
+          "symbol": "?ReadFloatValue@EclVmContext@@SGMIPAU1@M@Z",
+          "target_address": "0x0044FF80",
+          "unit": "float-value-guard"
+        },
+        "run": {
+          "artifact_kind": "linked-pe",
+          "candidate_address": "0x00406D60",
+          "capstone_version": "5.0.6",
+          "compared_size": 7020,
+          "decoded_bytes": 7019,
+          "extent_source": "pdb-section-contribution",
+          "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.exe",
+          "image_sha256": "13f98ca86d617db95089a49e409bf8b4ead4a390acd84180cb15847c84e8030d",
+          "matched_bytes": 6993,
+          "matched_compared_bytes": 6993,
+          "normalization_complete": false,
+          "pdb_age": 1,
+          "pdb_guid": "ccd3d211609e7e4ab624fb814537105c",
+          "pdb_module_index": 2,
+          "raw_equal": false,
+          "result": "mismatch",
+          "size": 7020,
+          "symbol": "?Run@EclVmContext@@QAEHM@Z",
+          "target_address": "0x0044E1A0",
+          "unit": "run-diagnostic"
+        }
+      },
+      "guards": {
+        "bytes": 4618,
+        "count": 36,
+        "exact": 36,
+        "fields": 121
+      },
+      "label": "scoped-difficulty-only",
+      "layout": {
+        "candidate_pre_table_span": 13784,
+        "candidate_suffix_bytes": 43,
+        "contribution_size": 14440,
+        "first_physical_order_difference": null,
+        "function_address": "0x00402810",
+        "image": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.exe",
+        "jump_table_address": "0x00405DE8",
+        "physical_order_matches": true,
+        "pre_table_span_delta": 24,
+        "selector_equal": true,
+        "selector_equal_bytes": 181,
+        "selector_table_address": "0x00405F98",
+        "target_pre_table_span": 13760,
+        "target_suffix_bytes": 43
+      },
+      "producer_sha256": "4f10cabab5586fc16bac65ee6c7aa2a7bc69afb0632f556242f2f55e80099706",
+      "report_sha256": "b882c2b160e3e8305c98bbae9c064320384ecab02af068cf01076ac35f273152",
+      "selected_cases": [
+        {
+          "last_instruction": {
+            "address": "0x405a17",
+            "mnemonic": "jmp",
+            "operand": "0x405d2d"
+          },
+          "opcode": "0x15e",
+          "size": 241,
+          "start": "0x40592b"
+        },
+        {
+          "last_instruction": {
+            "address": "0x405d5d",
+            "mnemonic": "ret",
+            "operand": ""
+          },
+          "opcode": "0x1ae",
+          "size": 120,
+          "start": "0x405ce6"
+        }
+      ],
+      "terminal_exit_code": 0
+    }
+  ],
+  "hash_verified_unchanged": {
+    "baseline_artifact_sha256": 19,
+    "baseline_source_sha256": 32,
+    "candidate_source_sha256": 1,
+    "frozen_inputs": 373,
+    "source_sha256": 108,
+    "unrelated_untracked": 9
+  },
+  "new_exact_credit": 0,
+  "previous_goal_turn_classification": "progress: scoped rank/shared aim recovered high/middle branches; duplicated zero tail defines next experiment",
+  "raw_equalities": [
+    [
+      "shared-read-index",
+      "shared-read-existing",
+      "four complete bodies"
+    ]
+  ],
+  "removed_artifacts": [
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.map",
+      "sha256": "e8c3624538eb7ea5e59c295f75bdf5b51e7c9e3a25e7c7b47133e9f31fa9f722"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.exe",
+      "sha256": "fe57e1f976fd9fefdff228bfea8236112916cfe5b051fc92ad4cac3ac1bb3025"
+    },
+    {
+      "bytes": 159153,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.ltcg.obj",
+      "sha256": "90abd386718035c9c3a789fe65a25532bf5f799f6197061f22b26553b9ffb4bb"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/source.pdb",
+      "sha256": "d4fa1da9927285a8a7ca6d78c72b64ce68fe1bffe871811291eec332798f3421"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-index/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.map",
+      "sha256": "4ad056107a5edabbb3c7f50ed0a4d558a8290218ce6eefaa2b1c8c2d4478bc93"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.exe",
+      "sha256": "192a892dc43cc8c9b86a486ccfb4f6e60794e1ade168dc9e1921c4cd1b3c4692"
+    },
+    {
+      "bytes": 159134,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.ltcg.obj",
+      "sha256": "4f1e39e8884d2b94505e90eb61538dcb8c5898cf0cd5560ec22921bd565a32eb"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/source.pdb",
+      "sha256": "08f0b86c1aaee0b899aa5afe3522011fcd88ee16e0308ff96ca7ffa4d42bfc89"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-read-existing/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.map",
+      "sha256": "bf2d5090820bb7426915e51a1e8053cdb4b017da972df577394b83740941f8ed"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.exe",
+      "sha256": "50aaa63c5e5acd2ce41f2fd7b7d4ecc0117c56c728b6130e3319d7a2647dc097"
+    },
+    {
+      "bytes": 159068,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.ltcg.obj",
+      "sha256": "f69f22238eccff4db6226fb14bbaac6e6166775aee997e1cf421267e55f6150c"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/source.pdb",
+      "sha256": "de4ea150f71e1ef583ee3aec110f905566bb2ecd4ab5ca4cdc8a7cdd1e0344a9"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/shared-result-values/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    },
+    {
+      "bytes": 10486,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-07-AnmInt3Scale.ltcg.obj",
+      "sha256": "0a4e7af2959940420c35b663d04cf082bbdc09aa2817d8302631f39e61989e84"
+    },
+    {
+      "bytes": 92342,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.map",
+      "sha256": "a8c73d6b1ca876cf068dcf3b6cf928e71b652edc6400dd5e7a900079189bf2f0"
+    },
+    {
+      "bytes": 13646,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-05-AnmVmId.ltcg.obj",
+      "sha256": "e9b6e65daef63728047af6cc61fa48efc58c8f107e1725b9aefd15c1712eb0b3"
+    },
+    {
+      "bytes": 122880,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.exe",
+      "sha256": "13f98ca86d617db95089a49e409bf8b4ead4a390acd84180cb15847c84e8030d"
+    },
+    {
+      "bytes": 158499,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.ltcg.obj",
+      "sha256": "e6122ace68642055fb105af97706ad43bef9afd53cb71f18efebbaa531a9bc2e"
+    },
+    {
+      "bytes": 167,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/link.log",
+      "sha256": "8e8d1d5e3220c0a5729454abe0c15ca6a6f9c7d9f4bc6add229219b07c94a6a1"
+    },
+    {
+      "bytes": 97582,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-04-Enemy.ltcg.obj",
+      "sha256": "453f2d9b948bbf6bccc14ec516de2658e85452db1b5bcfd816021341b67edeb0"
+    },
+    {
+      "bytes": 3947,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-06-RandomMath.ltcg.obj",
+      "sha256": "6ae4f6758a6ee5e586e4766112e8f2e99a202caa4f1e17452b56934972b9c6d5"
+    },
+    {
+      "bytes": 44123,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-03-EnemyLaser.ltcg.obj",
+      "sha256": "2e6213659fa2c920cb1b8ec01b037ef271fafc1b10c80f11a17a3048c8c105ab"
+    },
+    {
+      "bytes": 10892,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-02-AnmVmCreate.ltcg.obj",
+      "sha256": "6f6324527969935eb530007d2b3d76cf77faffabfedee9cd0e9cb50e66fbf159"
+    },
+    {
+      "bytes": 55445,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-00-EclVm.ltcg.obj",
+      "sha256": "df105fb26bb6237169469ff39b077b5e6ba24986d6364dd4b744b82142c6354c"
+    },
+    {
+      "bytes": 19994,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/link-aliases.rsp",
+      "sha256": "dbb79ba0d57f83fb227df6e4897efb7ddde7f08d33f74e52d26db367475a5f4d"
+    },
+    {
+      "bytes": 11653,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/link-anchors.obj",
+      "sha256": "a578674fdbc6057af31527dcc348b5568d299f27cfc59ecf8033b6869cda3265"
+    },
+    {
+      "bytes": 59951,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-08-ItemManager.ltcg.obj",
+      "sha256": "f5050918f53155a2f7d772dff4468dc2103157729bbf9c9804129dcc49500e15"
+    },
+    {
+      "bytes": 117760,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/source.pdb",
+      "sha256": "4fda70ffee7ab5fd55e5642a60d177a026da682e5a5d6a40b0715d412e206ed2"
+    },
+    {
+      "bytes": 247856,
+      "path": "build/gpt-6-astra-medium/enemy-rank-read-sharing-20261022/scoped-difficulty-only/support-01-AnmManager.ltcg.obj",
+      "sha256": "cfcde2f682bf35ec19406949212a6fb2996214eafc9dbf84bdd7bd83215888d2"
+    }
+  ],
+  "retained_carrier": "none new; previous scoped-rank-shared-aim remains retained",
+  "starting_head": "83d828a01c18c40c2f4f0f1865e482737dcfdb88",
+  "target_sha256": "2f14760b6fbbf57549541583283badb9a19a4222b90f0a146d5aa17f01dc9040"
+}
